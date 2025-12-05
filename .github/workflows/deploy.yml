@@ -1,0 +1,3 @@
+git rm -r .github/workflows
+git commit -m "Remove all workflows"
+git push origin main
