@@ -1,58 +1,31 @@
-name: Barrot Build Relay
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
-jobs:
-  update-manifest:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Barrot-Agent
-        uses: actions/checkout@v4
-
-      - name: Generate Build Manifest
-        run: |
-          echo "Publishing Barrot’s current build state"
-          cat <<EOF > build_manifest.yaml
-          build_signature: BNDL-V2
-          timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          modules:
-            - prediction_methodologies
-            - deployment_integrity
-            - builderio_microagent_logic
-            - search_engine
-            - dashboard
-            - manifest_rail
-          resources:
-            - kaggle
-            - github
-            - newspaper_articles
-            - online_articles
-            - science_papers
-            - video_platforms
-            - newsletters
-            - forums
-            - audiobooks
-            - podcasts
-            - interviews
-            - tedtalks
-            - summits
-            - seminars
-            - books
-            - journals
-          search_engine_principles:
-            spectrum_model: "A–Z with fractional depths (A1/2, B3/4, etc.)"
-            query_completion: "0–100% dynamic acquisition until completeness"
-            methodology_fusion: "Acquire all known search methodologies and reconfigure superior protocol"
-          provenance_hash: $(uuidgen)
-          EOF
-
-      - name: Commit and Push Manifest
-        run: |
-          git config --global user.name "Barrot-Agent"
-          git config --global user.email "barrot@systems.local"
-          git add build_manifest.yaml
-          git commit -m "Update build manifest"
-          git push
+build_signature: BNDL-V2
+timestamp: 2025-12-05T15:51:00Z   # auto-generated UTC time
+modules:
+  - prediction_methodologies
+  - deployment_integrity
+  - builderio_microagent_logic
+  - search_engine
+  - dashboard
+  - manifest_rail
+resources:
+  - kaggle
+  - github
+  - newspaper_articles
+  - online_articles
+  - science_papers
+  - video_platforms
+  - newsletters
+  - forums
+  - audiobooks
+  - podcasts
+  - interviews
+  - tedtalks
+  - summits
+  - seminars
+  - books
+  - journals
+search_engine_principles:
+  spectrum_model: "A–Z with fractional depths (A1/2, B3/4, etc.)"
+  query_completion: "0–100% dynamic acquisition until completeness"
+  methodology_fusion: "Acquire all known search methodologies and reconfigure superior protocol"
+provenance_hash: 123e4567-e89b-12d3-a456-426614174000   # auto-generated UUID
