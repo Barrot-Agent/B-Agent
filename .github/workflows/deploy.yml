@@ -1,11 +1,11 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -22,7 +22,7 @@ jobs:
       - name: Upload site files
         uses: actions/upload-pages-artifact@v2
         with:
-          path: site   # this points to your index.html
+          path: site   # adjust if your site folder is different
 
       - name: Deploy to GitHub Pages
         id: deployment
