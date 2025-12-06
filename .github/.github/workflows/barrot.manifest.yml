@@ -62,3 +62,4 @@ jobs:
         run: |
           megacmd put build_manifest.yaml /Barrot/Manifests/
           megacmd put index.html /Barrot/Dashboard/
+runs-on: ubuntu-latest
