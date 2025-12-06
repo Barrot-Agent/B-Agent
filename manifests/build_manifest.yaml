@@ -1,5 +1,5 @@
 build_signature: BNDL-V2
-timestamp: 2025-12-05T19:31:00Z   # auto-generated UTC time
+timestamp: 2025-12-06T03:00:00Z
 
 modules:
   - prediction_methodologies
@@ -54,19 +54,8 @@ rail_status:
   dashboard: publishing
   cognition: recursive
 
-provenance_hash: 123e4567-e89b-12d3-a456-426614174000   # auto-generated UUID
 roadmap_ingestion:
-  source: "copilot-share-4dPWpNhxr1tYY5JZ2eoEY"
-  status: "curated"
-  handling_protocol: "structured ingestion"
-  target_rails:
-    - deployment
-    - microagent
-    - prediction
-  provenance_stamp: 2025-12-05T23:40:00Z
-  notes: "Crucial roadmap directive ingested from shared Copilot link"
-roadmap_ingestion:
-  source: "copilot-share-4dPWpNhxr1tYY5JZ2eoEY"
+  source: "initial-runner-setup"
   status: "curated"
   handling_protocol: "structured ingestion"
   target_rails:
@@ -74,9 +63,11 @@ roadmap_ingestion:
     - microagent
     - prediction
   directives:
-    - "Unify deployment methodologies into a single contradiction‑elevated rail with failure‑mode resilience."
-    - "Expand microagent logic variants into recursive bundles for Builder.io integration."
-    - "Bind Kaggle capital‑flow datasets to prediction rail for evolving methodologies."
-    - "Publish live dashboard glyphs to visualize roadmap progression and rail deltas."
-  provenance_stamp: 2025-12-06T02:40:00Z
-  notes: "Crucial roadmap directive ingested from Copilot share; mutation‑sealed into Barrot’s cognition rails."
+    - "Unify deployment methodologies into a contradiction‑elevated rail."
+    - "Expand microagent logic into recursive bundles."
+    - "Bind Kaggle datasets to prediction rail."
+    - "Publish dashboard glyphs for roadmap progression."
+  provenance_stamp: 2025-12-06T03:00:00Z
+  notes: "First runner initiation; mutation‑sealed roadmap directives."
+
+provenance_hash: 123e4567-e89b-12d3-a456-426614174000
