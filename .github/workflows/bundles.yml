@@ -1,0 +1,23 @@
+name: Save Bundles to Repo
+
+on:
+  workflow_dispatch:   # lets you trigger manually
+  push:                # or trigger on code pushes
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+        uses: actions/checkout@v3
+
+      - name: Generate bundle
+        run: |
+          echo "This is a test bundle" > Barrot-Bundles/test.txt
+
+      - name: Commit bundle to repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Barrot-Bundles/
+          git commit -m "Add new bundle"
+          git push
