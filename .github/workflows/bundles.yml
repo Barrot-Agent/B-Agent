@@ -1,7 +1,12 @@
 name: Save Bundles to Repo
 
+# Trigger manually or on push
 on:
   workflow_dispatch:
+  push:
+
+permissions:
+  contents: write   # allow pushing back to the repo
 
 jobs:
   bundle:
@@ -11,12 +16,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Generate bundle
-        run: echo "This is a test bundle" > Barrot-Bundles/test.txt
+        run: |
+          mkdir -p Barrot-Bundles
+          echo "This is a test bundle" > Barrot-Bundles/test.txt
 
       - name: Commit bundle to repo
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add Barrot-Bundles/
-          git commit -m "Add new bundle"
+          git commit -m "Add new bundle" || echo "No changes to commit"
           git push
