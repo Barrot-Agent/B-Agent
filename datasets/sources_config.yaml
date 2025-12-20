@@ -1,0 +1,115 @@
+# Dataset Sources Configuration
+# This file defines the sources for automated dataset ingestion
+
+datasets:
+  # Mathematical and Logical Datasets
+  mathematical:
+    - name: "Combinatorial Structures Database"
+      source: "kaggle"
+      identifier: "combinatorial-structures"
+      tags: ["combinatorics", "algebra", "permutations"]
+      frequency: "monthly"
+      priority: "high"
+    
+    - name: "Group Theory Examples"
+      source: "github"
+      repository: "gap-system/gap"
+      path: "data/groups"
+      tags: ["group-theory", "symmetry"]
+      frequency: "weekly"
+      priority: "medium"
+    
+    - name: "Recursive Function Patterns"
+      source: "public-apis"
+      endpoint: "https://api.oeis.org/search"
+      tags: ["recursion", "sequences"]
+      frequency: "monthly"
+      priority: "medium"
+
+  # Programming Libraries
+  programming_libraries:
+    - name: "Python Permutation Tools"
+      source: "github"
+      repositories:
+        - "python/cpython/Lib/itertools.py"
+        - "more-itertools/more-itertools"
+        - "sympy/sympy/combinatorics"
+      tags: ["python", "itertools", "combinatorics"]
+      frequency: "weekly"
+      priority: "high"
+    
+    - name: "Combinatorial Algorithms"
+      source: "github"
+      search_query: "permutation algorithm stars:>100"
+      tags: ["algorithms", "implementations"]
+      frequency: "monthly"
+      priority: "medium"
+
+  # Machine Learning Training Data
+  ml_training:
+    - name: "Optimization Problem Datasets"
+      source: "kaggle"
+      identifiers:
+        - "traveling-salesman-problem"
+        - "vehicle-routing-problem"
+        - "job-shop-scheduling"
+      tags: ["optimization", "np-hard", "permutations"]
+      frequency: "monthly"
+      priority: "high"
+    
+    - name: "Permutation Learning Benchmarks"
+      source: "openai"
+      dataset_type: "reinforcement-learning"
+      tags: ["ml", "permutation-learning", "benchmarks"]
+      frequency: "weekly"
+      priority: "high"
+    
+    - name: "Combinatorial Optimization Papers"
+      source: "arxiv"
+      categories: ["cs.DS", "math.CO", "cs.LG"]
+      tags: ["research", "algorithms", "ml"]
+      frequency: "weekly"
+      priority: "medium"
+
+  # Quantum Computing Libraries
+  quantum:
+    - name: "Qiskit Permutation Circuits"
+      source: "github"
+      repository: "Qiskit/qiskit"
+      path: "qiskit/circuit/library"
+      tags: ["quantum", "circuits", "permutations"]
+      frequency: "weekly"
+      priority: "medium"
+    
+    - name: "Quantum Algorithm Datasets"
+      source: "quantum-libraries"
+      platforms: ["IBM Quantum", "Google Quantum AI"]
+      tags: ["quantum-algorithms", "optimization"]
+      frequency: "monthly"
+      priority: "low"
+
+# Ingestion Configuration
+ingestion_settings:
+  retry_attempts: 3
+  timeout_seconds: 300
+  validation_enabled: true
+  schema_validation: true
+  auto_annotation: true
+  backup_enabled: true
+  
+# Storage Configuration
+storage:
+  local_path: "datasets/"
+  structure:
+    - "mathematical/"
+    - "programming-libraries/"
+    - "ml-training/"
+    - "quantum/"
+  metadata_path: "datasets/metadata/"
+  
+# Quality Assurance
+quality_checks:
+  - "schema_validation"
+  - "completeness_check"
+  - "duplicate_detection"
+  - "format_verification"

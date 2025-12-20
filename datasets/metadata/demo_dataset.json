@@ -1,0 +1,33 @@
+{
+  "dataset_id": "demo_permutation_001",
+  "name": "Demonstration Dataset - Permutations and Recursion",
+  "category": "mathematical",
+  "source": {
+    "platform": "synthetic-generation",
+    "url": "internal-demonstration"
+  },
+  "ingestion": {
+    "first_ingested": "2025-12-20T23:48:31.023048+00:00Z",
+    "last_updated": "2025-12-20T23:48:31.023053+00:00Z",
+    "frequency": "on-demand",
+    "status": "completed"
+  },
+  "statistics": {
+    "record_count": 5,
+    "size_bytes": 4274,
+    "version": "demo-1.0"
+  },
+  "schema_reference": "recursive_annotation,combinatorial_algebra",
+  "quality_metrics": {
+    "completeness": 1.0,
+    "consistency": 1.0,
+    "validation_passed": true
+  },
+  "tags": [
+    "demonstration",
+    "permutations",
+    "recursion",
+    "symmetric-group"
+  ],
+  "description": "Demonstration dataset showing recursive functions and permutation group structures"
+}
