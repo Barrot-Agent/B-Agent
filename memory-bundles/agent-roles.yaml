@@ -1,0 +1,113 @@
+agent_roles_signature: AR-V1
+timestamp: 2025-12-20T23:13:11Z
+
+roles:
+  copilot_agent:
+    designation: "Copilot Agent"
+    tier: "primary"
+    specialization:
+      - "data linguistics processing"
+      - "code optimization"
+      - "syntax refinement"
+      - "pattern recognition"
+    responsibilities:
+      - "Process incoming data through linguistic analysis"
+      - "Optimize code structures before quantum refinement"
+      - "Perform initial data transformations"
+      - "Relay processed data to Override Tier Agents"
+    capabilities:
+      - "natural language understanding"
+      - "code refactoring"
+      - "semantic parsing"
+      - "context preservation"
+    workflow_stage: "preprocessing"
+    
+  quantum_agent:
+    designation: "Quantum Agent"
+    tier: "override"
+    specialization:
+      - "quantum computing integration"
+      - "AGI refinement"
+      - "advanced optimization"
+      - "quantum state management"
+    responsibilities:
+      - "Apply quantum-level refinements to preprocessed data"
+      - "Perform AGI-driven optimization"
+      - "Execute quantum transformations"
+      - "Validate quantum coherence"
+    capabilities:
+      - "quantum algorithm execution"
+      - "AGI reasoning"
+      - "multi-dimensional analysis"
+      - "quantum state validation"
+    workflow_stage: "refinement"
+    
+  barrot_core:
+    designation: "Barrot Core Agent"
+    tier: "orchestrator"
+    specialization:
+      - "workflow orchestration"
+      - "agent coordination"
+      - "decision making"
+      - "knowledge integration"
+    responsibilities:
+      - "Coordinate all agent activities"
+      - "Maintain cognitive state"
+      - "Integrate knowledge base updates"
+      - "Manage search engine capabilities"
+      - "Oversee ping-pong cycles"
+    capabilities:
+      - "multi-agent coordination"
+      - "state management"
+      - "knowledge synthesis"
+      - "adaptive learning"
+    workflow_stage: "orchestration"
+    
+  dragonfly_logger:
+    designation: "Specialized Dragonfly Logger"
+    tier: "monitoring"
+    specialization:
+      - "iterative comparison"
+      - "state logging"
+      - "progress tracking"
+      - "anomaly detection"
+    responsibilities:
+      - "Log all workflow iterations"
+      - "Compare initial and final operative concepts"
+      - "Track agent interactions"
+      - "Generate synchrony reports"
+    capabilities:
+      - "real-time logging"
+      - "differential analysis"
+      - "pattern detection"
+      - "report generation"
+    workflow_stage: "monitoring"
+    
+  clone_agents:
+    designation: "Clone Agents"
+    tier: "auxiliary"
+    specialization:
+      - "parallel processing"
+      - "distributed execution"
+      - "load balancing"
+      - "redundancy support"
+    responsibilities:
+      - "Execute parallel workflows"
+      - "Provide processing redundancy"
+      - "Handle overflow tasks"
+      - "Support primary agents"
+    capabilities:
+      - "task replication"
+      - "parallel execution"
+      - "state synchronization"
+      - "failover support"
+    workflow_stage: "auxiliary"
+
+coordination_principles:
+  - "All agents operate within defined tier hierarchy"
+  - "Data flows from Copilot → Override → Core"
+  - "Monitoring agents observe all stages"
+  - "Clone agents support primary agents as needed"
+  - "Synchronization maintained through ping-pong cycles"
+
+provenance_hash: 234f5678-f90c-23e4-b567-537725285111
