@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dataset Metadata Schema",
+  "description": "Metadata schema for tracking ingested datasets",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "description": "Unique identifier for the dataset"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable dataset name"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["mathematical", "programming-libraries", "ml-training", "quantum"],
+      "description": "Dataset category"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "type": "string",
+          "enum": ["kaggle", "openai", "github", "quantum-libraries", "public-apis"]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "api_endpoint": {
+          "type": "string"
+        }
+      },
+      "required": ["platform"]
+    },
+    "ingestion": {
+      "type": "object",
+      "properties": {
+        "first_ingested": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "frequency": {
+          "type": "string",
+          "enum": ["daily", "weekly", "monthly", "on-demand"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "paused", "completed", "failed"]
+        }
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "record_count": {
+          "type": "integer"
+        },
+        "size_bytes": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "schema_reference": {
+      "type": "string",
+      "description": "Reference to the annotation schema used"
+    },
+    "quality_metrics": {
+      "type": "object",
+      "properties": {
+        "completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "consistency": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "validation_passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": ["dataset_id", "name", "category", "source", "ingestion"]
+}

@@ -1,0 +1,207 @@
+name: Dataset Ingestion - ML Training Data
+
+on:
+  schedule:
+    # Run weekly on Monday at 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ingest-ml-datasets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy pandas scikit-learn jsonschema pyyaml requests
+
+      - name: Ingest Optimization Problem Datasets
+        run: |
+          mkdir -p datasets/ml-training/optimization
+          
+          # Create ML dataset ingestion script
+          cat > ingest_ml_data.py << 'EOFPYTHON'
+          import os
+          import json
+          import numpy as np
+          from datetime import datetime
+          
+          # Generate synthetic optimization datasets for training
+          def generate_tsp_instances(n_instances=100, n_cities_range=(10, 50)):
+              """Generate Traveling Salesman Problem instances"""
+              instances = []
+              
+              for i in range(n_instances):
+                  n_cities = np.random.randint(*n_cities_range)
+                  # Generate random city coordinates
+                  coordinates = np.random.rand(n_cities, 2) * 100
+                  
+                  instance = {
+                      "id": f"tsp_{i:04d}",
+                      "type": "traveling_salesman",
+                      "n_cities": n_cities,
+                      "coordinates": coordinates.tolist(),
+                      "difficulty": "medium" if n_cities < 30 else "hard"
+                  }
+                  instances.append(instance)
+              
+              return instances
+          
+          def generate_permutation_patterns(n_patterns=100, n_range=(5, 20)):
+              """Generate permutation learning patterns"""
+              patterns = []
+              
+              for i in range(n_patterns):
+                  n = np.random.randint(*n_range)
+                  # Generate a random permutation
+                  permutation = np.random.permutation(n).tolist()
+                  
+                  # Calculate permutation properties
+                  inversions = sum(1 for j in range(n) for k in range(j+1, n) 
+                                   if permutation[j] > permutation[k])
+                  
+                  pattern = {
+                      "id": f"perm_{i:04d}",
+                      "type": "permutation_pattern",
+                      "size": n,
+                      "permutation": permutation,
+                      "inversions": inversions,
+                      "is_even": (inversions % 2 == 0)
+                  }
+                  patterns.append(pattern)
+              
+              return patterns
+          
+          # Generate datasets
+          print("Generating TSP instances...")
+          tsp_data = generate_tsp_instances(100)
+          
+          print("Generating permutation patterns...")
+          perm_data = generate_permutation_patterns(100)
+          
+          # Save datasets
+          os.makedirs("datasets/ml-training/optimization", exist_ok=True)
+          
+          with open("datasets/ml-training/optimization/tsp_instances.json", "w") as f:
+              json.dump(tsp_data, f, indent=2)
+          
+          with open("datasets/ml-training/optimization/permutation_patterns.json", "w") as f:
+              json.dump(perm_data, f, indent=2)
+          
+          # Create metadata
+          metadata = {
+              "dataset_id": "ml_optimization_training",
+              "name": "ML Optimization Training Dataset",
+              "category": "ml-training",
+              "source": {
+                  "platform": "synthetic-generation",
+                  "url": "internal"
+              },
+              "ingestion": {
+                  "last_updated": datetime.utcnow().isoformat() + "Z",
+                  "frequency": "weekly",
+                  "status": "completed"
+              },
+              "statistics": {
+                  "tsp_instances": len(tsp_data),
+                  "permutation_patterns": len(perm_data),
+                  "total_records": len(tsp_data) + len(perm_data)
+              },
+              "tags": ["optimization", "permutations", "ml-training", "synthetic"]
+          }
+          
+          os.makedirs("datasets/metadata", exist_ok=True)
+          with open("datasets/metadata/ml_training.json", "w") as f:
+              json.dump(metadata, f, indent=2)
+          
+          print(f"Generated {len(tsp_data)} TSP instances")
+          print(f"Generated {len(perm_data)} permutation patterns")
+          EOFPYTHON
+          
+          python ingest_ml_data.py
+
+      - name: Generate Benchmark Datasets
+        run: |
+          # Create benchmark generation script
+          cat > generate_benchmarks.py << 'EOFPYTHON'
+          import os
+          import json
+          import numpy as np
+          from datetime import datetime
+          
+          def generate_sorting_benchmarks(n_benchmarks=50):
+              """Generate benchmarks for permutation-based sorting"""
+              benchmarks = []
+              
+              for i in range(n_benchmarks):
+                  n = np.random.randint(10, 100)
+                  array = np.random.permutation(n).tolist()
+                  
+                  benchmark = {
+                      "id": f"sort_{i:04d}",
+                      "type": "sorting_benchmark",
+                      "input": array,
+                      "size": n,
+                      "expected_comparisons": n * np.log2(n),  # approximate
+                      "complexity": "O(n log n)"
+                  }
+                  benchmarks.append(benchmark)
+              
+              return benchmarks
+          
+          def generate_combinatorial_optimization(n_problems=50):
+              """Generate combinatorial optimization problems"""
+              problems = []
+              
+              for i in range(n_problems):
+                  n_items = np.random.randint(5, 30)
+                  
+                  problem = {
+                      "id": f"combo_{i:04d}",
+                      "type": "combinatorial_optimization",
+                      "n_items": n_items,
+                      "weights": np.random.randint(1, 100, n_items).tolist(),
+                      "values": np.random.randint(1, 100, n_items).tolist(),
+                      "capacity": np.random.randint(n_items * 10, n_items * 50)
+                  }
+                  problems.append(problem)
+              
+              return problems
+          
+          # Generate benchmarks
+          sorting_benchmarks = generate_sorting_benchmarks(50)
+          combo_problems = generate_combinatorial_optimization(50)
+          
+          # Save benchmarks
+          os.makedirs("datasets/ml-training/benchmarks", exist_ok=True)
+          
+          with open("datasets/ml-training/benchmarks/sorting_benchmarks.json", "w") as f:
+              json.dump(sorting_benchmarks, f, indent=2)
+          
+          with open("datasets/ml-training/benchmarks/combinatorial_problems.json", "w") as f:
+              json.dump(combo_problems, f, indent=2)
+          
+          print(f"Generated {len(sorting_benchmarks)} sorting benchmarks")
+          print(f"Generated {len(combo_problems)} combinatorial problems")
+          EOFPYTHON
+          
+          python generate_benchmarks.py
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add datasets/
+          git commit -m "Ingest ML training datasets - $(date -u +'%Y-%m-%d')" || echo "No changes to commit"
+          git push

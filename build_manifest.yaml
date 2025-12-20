@@ -8,6 +8,10 @@ modules:
   - search_engine
   - dashboard
   - manifest_rail
+  - permutation_capabilities
+  - combinatorial_algebra
+  - recursive_functions
+  - quantum_integration
 
 resources:
   - kaggle
@@ -28,6 +32,10 @@ resources:
   - seminars
   - books
   - journals
+  - openai_datasets
+  - quantum_libraries
+  - arxiv
+  - public_apis
 
 rail_status:
   ingestion: active
@@ -36,6 +44,9 @@ rail_status:
   prediction: evolving
   dashboard: publishing
   cognition: recursive
+  permutation: active
+  combinatorial: active
+  quantum: active
 
 roadmap_ingestion:
   source: "initial-runner-setup"
@@ -45,12 +56,20 @@ roadmap_ingestion:
     - deployment
     - microagent
     - prediction
+    - permutation
+    - combinatorial
+    - quantum
   directives:
     - "Unify deployment methodologies into a contradiction‑elevated rail."
     - "Expand microagent logic into recursive bundles."
     - "Bind Kaggle datasets to prediction rail."
     - "Publish dashboard glyphs for roadmap progression."
+    - "Ingest mathematical and logical datasets for combinatorial algebra."
+    - "Integrate programming libraries for permutation operations."
+    - "Establish automated dataset ingestion pipelines."
+    - "Enable quantum computing library integration."
+    - "Standardize recursive and combinatory annotation schemas."
   provenance_stamp: 2025-12-06T03:15:00Z
-  notes: "First runner initiation; mutation‑sealed roadmap directives."
+  notes: "First runner initiation; mutation‑sealed roadmap directives. Enhanced with permutation capabilities."
 
 provenance_hash: 123e4567-e89b-12d3-a456-426614174000
