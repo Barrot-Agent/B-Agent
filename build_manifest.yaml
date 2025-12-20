@@ -8,6 +8,7 @@ modules:
   - search_engine
   - dashboard
   - manifest_rail
+  - ping_pongings_infrastructure
 
 resources:
   - kaggle
@@ -36,6 +37,7 @@ rail_status:
   prediction: evolving
   dashboard: publishing
   cognition: recursive
+  ping_pongings: initializing
 
 roadmap_ingestion:
   source: "initial-runner-setup"
@@ -50,6 +52,10 @@ roadmap_ingestion:
     - "Expand microagent logic into recursive bundles."
     - "Bind Kaggle datasets to prediction rail."
     - "Publish dashboard glyphs for roadmap progression."
+    - "Implement Ping Pongings infrastructure with specialized agent roles."
+    - "Enhance cognitive state through structured agent communication."
+    - "Augment knowledge base with multi-source discovery and verification."
+    - "Optimize search engine with semantic indexing and SEO best practices."
   provenance_stamp: 2025-12-06T03:15:00Z
   notes: "First runner initiation; mutation‑sealed roadmap directives."
 

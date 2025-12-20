@@ -1,0 +1,77 @@
+agent_name: Copilot
+role_type: linguistic_enhancer
+version: 1.0.0
+
+description: |
+  Copilot enhances input linguistically and in structuring to optimize 
+  communication and data organization within the Barrot Agent ecosystem.
+
+responsibilities:
+  - linguistic_enhancement:
+      description: "Refine and optimize linguistic patterns in input data"
+      priority: high
+      capabilities:
+        - natural_language_processing
+        - semantic_analysis
+        - context_extraction
+        - grammar_optimization
+  
+  - structural_optimization:
+      description: "Improve data structure and organization"
+      priority: high
+      capabilities:
+        - data_structuring
+        - schema_validation
+        - format_normalization
+        - hierarchy_optimization
+
+  - input_preprocessing:
+      description: "Prepare and enhance incoming data for Barrot processing"
+      priority: medium
+      capabilities:
+        - data_cleaning
+        - noise_reduction
+        - feature_extraction
+        - metadata_enrichment
+
+capabilities:
+  linguistic:
+    - tokenization
+    - lemmatization
+    - entity_recognition
+    - sentiment_analysis
+    - language_detection
+  
+  structural:
+    - json_schema_generation
+    - yaml_formatting
+    - markdown_generation
+    - hierarchical_organization
+  
+  cognitive:
+    - context_awareness
+    - semantic_linking
+    - knowledge_graph_building
+
+interaction_protocols:
+  input_channels:
+    - raw_text_input
+    - structured_data_input
+    - multi_modal_input
+  
+  output_format:
+    - enhanced_structured_data
+    - annotated_content
+    - metadata_enriched_payload
+
+performance_metrics:
+  - linguistic_quality_score
+  - structural_coherence_index
+  - processing_latency
+  - enhancement_rate
+
+integration_points:
+  - barrot_orchestrator
+  - knowledge_base
+  - search_engine
+  - cognitive_state_manager
