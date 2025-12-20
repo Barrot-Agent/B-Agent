@@ -1,33 +1,320 @@
 name: Barrot Repo Cleanup
 
+# Workflow #3: Monitor and Cleanup Tasks
+# Automates cleanup processes with backup mechanisms and comprehensive logging
 on:
-  workflow_dispatch:   # run manually
+  workflow_dispatch:   # Manual trigger for on-demand cleanup
   schedule:
-    - cron: "0 0 * * 0"   # run weekly on Sunday at midnight
+    - cron: "0 0 * * 0"   # Weekly automated cleanup on Sunday at midnight UTC
 
 permissions:
   contents: write
 
+env:
+  # Environment-specific configurations
+  BACKUP_DIR: "backups"
+  LOG_DIR: "logs"
+  MAX_BUNDLES: 10
+  BACKUP_RETENTION_DAYS: 30
+
 jobs:
   cleanup:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch full history for better backup context
 
-      - name: Remove old bundles (keep last 10)
+      - name: Setup logging
+        id: setup_log
         run: |
+          # Create log directory if it doesn't exist
+          mkdir -p $LOG_DIR
+          
+          # Generate log file name with timestamp
+          LOG_FILE="$LOG_DIR/cleanup-$(date +%Y%m%d-%H%M%S).log"
+          echo "log_file=$LOG_FILE" >> $GITHUB_OUTPUT
+          
+          # Initialize log file
+          cat > "$LOG_FILE" <<EOF
+          ===================================
+          Barrot Repository Cleanup
+          ===================================
+          Started: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Triggered by: ${{ github.actor }}
+          Event: ${{ github.event_name }}
+          Environment: ${{ github.ref }}
+          ===================================
+          
+          EOF
+          
+          echo "✅ Logging initialized: $LOG_FILE"
+          echo "Log file created at: $LOG_FILE" | tee -a "$LOG_FILE"
+
+      - name: Create backup before cleanup
+        id: backup
+        run: |
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          echo "Creating backup of critical data..." | tee -a "$LOG_FILE"
+          
+          # Create backup directory with timestamp
+          BACKUP_TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          BACKUP_PATH="$BACKUP_DIR/cleanup-backup-$BACKUP_TIMESTAMP"
+          mkdir -p "$BACKUP_PATH"
+          
+          # Backup bundles directory
+          if [ -d "Barrot-Bundles" ]; then
+            echo "Backing up Barrot-Bundles..." | tee -a "$LOG_FILE"
+            cp -r Barrot-Bundles "$BACKUP_PATH/" || echo "Warning: Failed to backup bundles" | tee -a "$LOG_FILE"
+            BUNDLE_COUNT=$(ls -1 Barrot-Bundles 2>/dev/null | wc -l)
+            echo "  → Backed up $BUNDLE_COUNT bundle(s)" | tee -a "$LOG_FILE"
+          fi
+          
+          # Backup any existing logs
+          if [ -d "$LOG_DIR" ] && [ "$(ls -A $LOG_DIR 2>/dev/null)" ]; then
+            echo "Backing up existing logs..." | tee -a "$LOG_FILE"
+            cp -r $LOG_DIR "$BACKUP_PATH/logs-backup" 2>/dev/null || true
+          fi
+          
+          # Backup memory bundles
+          if [ -d "memory-bundles" ]; then
+            echo "Backing up memory-bundles..." | tee -a "$LOG_FILE"
+            cp -r memory-bundles "$BACKUP_PATH/" || echo "Warning: Failed to backup memory bundles" | tee -a "$LOG_FILE"
+          fi
+          
+          # Create backup manifest
+          cat > "$BACKUP_PATH/manifest.txt" <<EOF
+          Backup created: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Trigger: ${{ github.event_name }}
+          Actor: ${{ github.actor }}
+          Repository: ${{ github.repository }}
+          Commit: ${{ github.sha }}
+          EOF
+          
+          echo "backup_path=$BACKUP_PATH" >> $GITHUB_OUTPUT
+          echo "✅ Backup completed: $BACKUP_PATH" | tee -a "$LOG_FILE"
+
+      - name: Analyze current state
+        id: analyze
+        run: |
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          echo "" | tee -a "$LOG_FILE"
+          echo "Analyzing repository state..." | tee -a "$LOG_FILE"
+          echo "-----------------------------------" | tee -a "$LOG_FILE"
+          
+          # Count bundles
+          if [ -d "Barrot-Bundles" ]; then
+            BUNDLE_COUNT=$(ls -1 Barrot-Bundles 2>/dev/null | wc -l)
+            echo "Total bundles: $BUNDLE_COUNT" | tee -a "$LOG_FILE"
+            echo "Max bundles to keep: $MAX_BUNDLES" | tee -a "$LOG_FILE"
+            
+            if [ $BUNDLE_COUNT -gt $MAX_BUNDLES ]; then
+              TO_REMOVE=$((BUNDLE_COUNT - MAX_BUNDLES))
+              echo "Bundles to remove: $TO_REMOVE" | tee -a "$LOG_FILE"
+              echo "bundles_to_remove=$TO_REMOVE" >> $GITHUB_OUTPUT
+            else
+              echo "No bundles need removal" | tee -a "$LOG_FILE"
+              echo "bundles_to_remove=0" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No Barrot-Bundles directory found" | tee -a "$LOG_FILE"
+            echo "bundles_to_remove=0" >> $GITHUB_OUTPUT
+          fi
+          
+          # Check for temp files
+          TEMP_FILES=$(find . -maxdepth 1 -type f \( -name "*.log" -o -name "*.cache" -o -name "*.tmp" \) 2>/dev/null | wc -l)
+          echo "Temporary files found: $TEMP_FILES" | tee -a "$LOG_FILE"
+          echo "temp_files=$TEMP_FILES" >> $GITHUB_OUTPUT
+          
+          # Check for tmp directory
+          if [ -d "tmp" ]; then
+            TMP_SIZE=$(du -sh tmp 2>/dev/null | cut -f1)
+            echo "tmp/ directory size: $TMP_SIZE" | tee -a "$LOG_FILE"
+            echo "has_tmp=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_tmp=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "-----------------------------------" | tee -a "$LOG_FILE"
+
+      - name: Remove old bundles (keep last ${{ env.MAX_BUNDLES }})
+        id: remove_bundles
+        if: steps.analyze.outputs.bundles_to_remove > 0
+        run: |
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          echo "" | tee -a "$LOG_FILE"
+          echo "Removing old bundles..." | tee -a "$LOG_FILE"
+          
           mkdir -p Barrot-Bundles
-          ls -t Barrot-Bundles | tail -n +11 | xargs -I {} rm -f Barrot-Bundles/{}
+          
+          # List files to be removed
+          echo "Files to be removed:" | tee -a "$LOG_FILE"
+          ls -t Barrot-Bundles | tail -n +$((MAX_BUNDLES + 1)) | tee -a "$LOG_FILE"
+          
+          # Remove old bundles using safe iteration
+          REMOVED=0
+          ls -t Barrot-Bundles | tail -n +$((MAX_BUNDLES + 1)) | while IFS= read -r file; do
+            if [ -f "Barrot-Bundles/$file" ]; then
+              if rm -f "Barrot-Bundles/$file"; then
+                echo "  ✓ Removed: $file" | tee -a "$LOG_FILE"
+                REMOVED=$((REMOVED + 1))
+              else
+                echo "  ✗ Failed to remove: $file" | tee -a "$LOG_FILE"
+              fi
+            fi
+          done
+          
+          # Count actual removed files for output
+          INITIAL_COUNT=$(wc -w <<< "$(ls -t Barrot-Bundles 2>/dev/null)" || echo 0)
+          REMOVED=${{ steps.analyze.outputs.bundles_to_remove }}
+          
+          echo "removed_count=$REMOVED" >> $GITHUB_OUTPUT
+          echo "✅ Removed $REMOVED old bundle(s)" | tee -a "$LOG_FILE"
 
       - name: Remove temp files
+        id: remove_temp
         run: |
-          rm -rf tmp/ *.log *.cache || true
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          echo "" | tee -a "$LOG_FILE"
+          echo "Removing temporary files..." | tee -a "$LOG_FILE"
+          
+          CLEANUP_ERRORS=0
+          
+          # Remove tmp directory
+          if [ -d "tmp" ]; then
+            if rm -rf tmp/; then
+              echo "  ✓ Removed tmp/ directory" | tee -a "$LOG_FILE"
+            else
+              echo "  ✗ Failed to remove tmp/ directory" | tee -a "$LOG_FILE"
+              CLEANUP_ERRORS=$((CLEANUP_ERRORS + 1))
+            fi
+          fi
+          
+          # Remove log files (except current cleanup logs)
+          CURRENT_LOG="${{ steps.setup_log.outputs.log_file }}"
+          for logfile in $(find . -maxdepth 1 -name "*.log" -type f); do
+            if [ "$logfile" != "./$CURRENT_LOG" ]; then
+              if rm -f "$logfile"; then
+                echo "  ✓ Removed: $logfile" | tee -a "$LOG_FILE"
+              else
+                echo "  ✗ Failed to remove: $logfile" | tee -a "$LOG_FILE"
+                CLEANUP_ERRORS=$((CLEANUP_ERRORS + 1))
+              fi
+            fi
+          done
+          
+          # Remove cache files
+          for cachefile in $(find . -maxdepth 1 -name "*.cache" -type f); do
+            if rm -f "$cachefile"; then
+              echo "  ✓ Removed: $cachefile" | tee -a "$LOG_FILE"
+            else
+              echo "  ✗ Failed to remove: $cachefile" | tee -a "$LOG_FILE"
+              CLEANUP_ERRORS=$((CLEANUP_ERRORS + 1))
+            fi
+          done
+          
+          echo "cleanup_errors=$CLEANUP_ERRORS" >> $GITHUB_OUTPUT
+          
+          if [ $CLEANUP_ERRORS -eq 0 ]; then
+            echo "✅ Temporary files cleaned successfully" | tee -a "$LOG_FILE"
+          else
+            echo "⚠️ Cleanup completed with $CLEANUP_ERRORS error(s)" | tee -a "$LOG_FILE"
+          fi
 
-      - name: Commit cleanup
+      - name: Clean old backups
+        id: clean_backups
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          echo "" | tee -a "$LOG_FILE"
+          echo "Cleaning old backups (older than $BACKUP_RETENTION_DAYS days)..." | tee -a "$LOG_FILE"
+          
+          if [ -d "$BACKUP_DIR" ]; then
+            # Find and remove old backups
+            REMOVED_BACKUPS=0
+            while IFS= read -r backup; do
+              if rm -rf "$backup"; then
+                echo "  ✓ Removed old backup: $backup" | tee -a "$LOG_FILE"
+                REMOVED_BACKUPS=$((REMOVED_BACKUPS + 1))
+              fi
+            done < <(find "$BACKUP_DIR" -maxdepth 1 -type d -mtime +$BACKUP_RETENTION_DAYS 2>/dev/null)
+            
+            echo "Removed $REMOVED_BACKUPS old backup(s)" | tee -a "$LOG_FILE"
+          fi
+
+      - name: Finalize log
+        if: always()
+        run: |
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          echo "" | tee -a "$LOG_FILE"
+          echo "===================================" | tee -a "$LOG_FILE"
+          echo "Cleanup Summary" | tee -a "$LOG_FILE"
+          echo "===================================" | tee -a "$LOG_FILE"
+          echo "Backup created: ${{ steps.backup.outputs.backup_path }}" | tee -a "$LOG_FILE"
+          echo "Bundles removed: ${{ steps.remove_bundles.outputs.removed_count || 0 }}" | tee -a "$LOG_FILE"
+          echo "Cleanup errors: ${{ steps.remove_temp.outputs.cleanup_errors || 0 }}" | tee -a "$LOG_FILE"
+          echo "Overall status: ${{ job.status }}" | tee -a "$LOG_FILE"
+          echo "Completed: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" | tee -a "$LOG_FILE"
+          echo "===================================" | tee -a "$LOG_FILE"
+          
+          cat "$LOG_FILE"
+
+      - name: Upload logs as artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cleanup-logs
+          path: ${{ env.LOG_DIR }}/
+          retention-days: 90
+
+      - name: Commit cleanup changes
+        id: commit
+        run: |
+          LOG_FILE="${{ steps.setup_log.outputs.log_file }}"
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add all changes
           git add -A
-          git commit -m "Repo cleanup by Barrot" || echo "Nothing to clean"
-          git push
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit" | tee -a "$LOG_FILE"
+            echo "committed=false" >> $GITHUB_OUTPUT
+          else
+            # Create commit message
+            git commit -m "Automated cleanup by Barrot - $(date -u +%Y-%m-%d)"
+            git push
+            
+            echo "Changes committed and pushed" | tee -a "$LOG_FILE"
+            echo "committed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Report status
+        if: always()
+        run: |
+          echo ""
+          echo "========================================"
+          echo "  Barrot Cleanup Workflow Complete"
+          echo "========================================"
+          echo ""
+          echo "Status: ${{ job.status }}"
+          echo "Committed: ${{ steps.commit.outputs.committed || 'N/A' }}"
+          echo ""
+          
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "All cleanup tasks completed successfully"
+            exit 0
+          else
+            echo "Some cleanup tasks encountered issues"
+            echo "Check the logs for details"
+            exit 0
+          fi
