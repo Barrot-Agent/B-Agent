@@ -8,6 +8,15 @@ modules:
   - search_engine
   - dashboard
   - manifest_rail
+  - autonomous_learning
+  - multimodal_processor
+  - knowledge_graph
+  - theory_of_mind
+  - ethics_alignment
+  - quantum_integration
+  - multi_agent_simulation
+  - creativity_loops
+  - monitoring_dashboard
 
 resources:
   - kaggle
@@ -36,6 +45,16 @@ rail_status:
   prediction: evolving
   dashboard: publishing
   cognition: recursive
+  agi_enhancements: active
+  autonomous_learning: initialized
+  multimodal: initialized
+  knowledge_graph: initialized
+  theory_of_mind: initialized
+  ethics_alignment: initialized
+  quantum_integration: initialized
+  enhanced_search: initialized
+  multi_agent_sim: initialized
+  creativity_loops: initialized
 
 roadmap_ingestion:
   source: "initial-runner-setup"
