@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Barrot - Advanced AI-powered multimedia platform with streaming, rendering, and recording capabilities">
+    <title>Barrot - AI Multimedia Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>Barrot</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#streaming" class="nav-link">Streaming</a></li>
+                <li><a href="#studio" class="nav-link">Studio</a></li>
+                <li><a href="#chat" class="nav-link">Chat</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to <span class="gradient-text">Barrot</span></h1>
+            <p class="hero-subtitle">Your AI-powered multimedia platform for streaming, rendering, and creative production</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('streaming')">
+                    <i class="fas fa-play"></i> Start Streaming
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('chat')">
+                    <i class="fas fa-comments"></i> Chat with Barrot
+                </button>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <canvas id="heroCanvas"></canvas>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Live Streaming</h3>
+                    <p>Real-time video and audio streaming with high-quality rendering support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>3D Rendering</h3>
+                    <p>Advanced 3D visualization and rendering tools for creative projects</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Recording Studio</h3>
+                    <p>Professional-grade virtual studio for audio and video production</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-waveform"></i>
+                    </div>
+                    <h3>Audio Production</h3>
+                    <p>Complete audio editing and production tools with real-time effects</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Assistant</h3>
+                    <p>Chat with Barrot AI for intelligent assistance and automation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Storage</h3>
+                    <p>Secure cloud storage for all your projects and media files</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Streaming Section -->
+    <section id="streaming" class="streaming-section">
+        <div class="container">
+            <h2 class="section-title">Live Streaming</h2>
+            <div class="streaming-container">
+                <div class="video-player">
+                    <video id="streamVideo" controls></video>
+                    <div class="stream-controls">
+                        <button id="startStream" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start Stream
+                        </button>
+                        <button id="stopStream" class="btn btn-danger" disabled>
+                            <i class="fas fa-stop"></i> Stop Stream
+                        </button>
+                        <button id="toggleAudio" class="btn btn-secondary">
+                            <i class="fas fa-microphone"></i> Toggle Audio
+                        </button>
+                        <button id="toggleVideo" class="btn btn-secondary">
+                            <i class="fas fa-video"></i> Toggle Video
+                        </button>
+                    </div>
+                </div>
+                <div class="stream-info">
+                    <h3>Stream Status</h3>
+                    <div class="status-panel">
+                        <div class="status-item">
+                            <span class="status-label">Status:</span>
+                            <span id="streamStatus" class="status-value">Offline</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Duration:</span>
+                            <span id="streamDuration" class="status-value">00:00:00</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Quality:</span>
+                            <select id="qualitySelector" class="quality-select">
+                                <option value="1080p">1080p HD</option>
+                                <option value="720p" selected>720p HD</option>
+                                <option value="480p">480p SD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recording Studio Section -->
+    <section id="studio" class="studio-section">
+        <div class="container">
+            <h2 class="section-title">Recording Studio</h2>
+            <div class="studio-container">
+                <div class="studio-workspace">
+                    <div class="audio-visualizer">
+                        <canvas id="audioCanvas"></canvas>
+                    </div>
+                    <div class="studio-controls">
+                        <button id="recordBtn" class="btn btn-record">
+                            <i class="fas fa-circle"></i> Record
+                        </button>
+                        <button id="pauseBtn" class="btn btn-secondary" disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button id="stopRecBtn" class="btn btn-danger" disabled>
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        <button id="playbackBtn" class="btn btn-primary" disabled>
+                            <i class="fas fa-play"></i> Playback
+                        </button>
+                        <button id="downloadBtn" class="btn btn-success" disabled>
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                    <div class="audio-controls">
+                        <div class="control-group">
+                            <label for="volumeControl">Volume:</label>
+                            <input type="range" id="volumeControl" min="0" max="100" value="80" class="slider">
+                            <span id="volumeValue">80%</span>
+                        </div>
+                        <div class="control-group">
+                            <label for="reverbControl">Reverb:</label>
+                            <input type="range" id="reverbControl" min="0" max="100" value="0" class="slider">
+                            <span id="reverbValue">0%</span>
+                        </div>
+                        <div class="control-group">
+                            <label for="delayControl">Delay:</label>
+                            <input type="range" id="delayControl" min="0" max="100" value="0" class="slider">
+                            <span id="delayValue">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recordings-list">
+                    <h3>Your Recordings</h3>
+                    <div id="recordingsList" class="recordings-container">
+                        <p class="empty-state">No recordings yet. Start recording to see your files here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Rendering Section -->
+    <section class="rendering-section">
+        <div class="container">
+            <h2 class="section-title">3D Rendering</h2>
+            <div class="rendering-container">
+                <div class="render-canvas-container">
+                    <canvas id="renderCanvas"></canvas>
+                </div>
+                <div class="render-controls">
+                    <h3>Rendering Controls</h3>
+                    <div class="control-group">
+                        <label>Shape:</label>
+                        <select id="shapeSelector" class="form-select">
+                            <option value="cube">Cube</option>
+                            <option value="sphere">Sphere</option>
+                            <option value="torus">Torus</option>
+                            <option value="cone">Cone</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="rotationSpeed">Rotation Speed:</label>
+                        <input type="range" id="rotationSpeed" min="0" max="100" value="50" class="slider">
+                    </div>
+                    <div class="control-group">
+                        <label for="colorPicker">Color:</label>
+                        <input type="color" id="colorPicker" value="#00ff88">
+                    </div>
+                    <div class="control-group">
+                        <button id="resetRender" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                        <button id="exportRender" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="chat-section">
+        <div class="container">
+            <h2 class="section-title">Chat with Barrot</h2>
+            <div class="chat-container">
+                <div class="chat-box">
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm Barrot, your AI assistant. How can I help you today?</p>
+                                <span class="message-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Type your message..." class="chat-input">
+                        <button id="sendMessage" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chat-suggestions">
+                    <h3>Quick Questions</h3>
+                    <div class="suggestions-list">
+                        <button class="suggestion-btn" onclick="sendQuickQuestion('How do I start streaming?')">
+                            How do I start streaming?
+                        </button>
+                        <button class="suggestion-btn" onclick="sendQuickQuestion('What features do you offer?')">
+                            What features do you offer?
+                        </button>
+                        <button class="suggestion-btn" onclick="sendQuickQuestion('How do I record audio?')">
+                            How do I record audio?
+                        </button>
+                        <button class="suggestion-btn" onclick="sendQuickQuestion('Tell me about 3D rendering')">
+                            Tell me about 3D rendering
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Barrot</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Barrot is a cutting-edge AI-powered multimedia platform designed to revolutionize the way you create, stream, and interact with media content. Our platform combines advanced technologies like WebRTC, Web Audio API, and Three.js to provide a seamless and powerful creative experience.</p>
+                    <p>Whether you're a content creator, musician, or developer, Barrot provides all the tools you need to bring your creative vision to life, all within your browser.</p>
+                    <div class="tech-stack">
+                        <h3>Built With</h3>
+                        <div class="tech-icons">
+                            <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-badge"><i class="fas fa-cube"></i> Three.js</span>
+                            <span class="tech-badge"><i class="fas fa-video"></i> WebRTC</span>
+                            <span class="tech-badge"><i class="fas fa-waveform"></i> Web Audio API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Barrot</h3>
+                    <p>AI-powered multimedia platform</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#streaming">Streaming</a></li>
+                        <li><a href="#studio">Studio</a></li>
+                        <li><a href="#chat">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/Barrot-Agent" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Barrot. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget">
+        <button id="chatWidgetBtn" class="chat-widget-btn">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/streaming.js"></script>
+    <script src="js/studio.js"></script>
+    <script src="js/rendering.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
