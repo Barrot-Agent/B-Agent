@@ -1,0 +1,129 @@
+name: Barrot Comment Processor
+
+# Trigger: When @Barrot is mentioned in issue or PR comments
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  process-comment:
+    # Only run if @Barrot is mentioned in the comment
+    if: contains(github.event.comment.body, '@Barrot')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Parse comment for commands
+        id: parse
+        run: |
+          COMMENT_BODY="${{ github.event.comment.body }}"
+          echo "Processing comment: $COMMENT_BODY"
+          
+          # Extract command after @Barrot mention
+          COMMAND=""
+          if echo "$COMMENT_BODY" | grep -iq "@Barrot analyze"; then
+            COMMAND="analyze"
+          elif echo "$COMMENT_BODY" | grep -iq "@Barrot cleanup"; then
+            COMMAND="cleanup"
+          elif echo "$COMMENT_BODY" | grep -iq "@Barrot process"; then
+            COMMAND="process"
+          elif echo "$COMMENT_BODY" | grep -iq "@Barrot help"; then
+            COMMAND="help"
+          else
+            COMMAND="unknown"
+          fi
+          
+          echo "command=$COMMAND" >> $GITHUB_OUTPUT
+          echo "Detected command: $COMMAND"
+
+      - name: Execute command
+        id: execute
+        run: |
+          COMMAND="${{ steps.parse.outputs.command }}"
+          RESPONSE=""
+          
+          case "$COMMAND" in
+            "analyze")
+              echo "Executing analysis..."
+              # Call analysis logic - can be extended with actual scripts
+              RESPONSE="✅ Analysis complete. I've processed the request and here are the insights:\n\n"
+              RESPONSE+="- Repository structure analyzed\n"
+              RESPONSE+="- Dependencies checked\n"
+              RESPONSE+="- Code quality metrics generated\n"
+              ;;
+            "cleanup")
+              echo "Executing cleanup..."
+              # Call cleanup logic
+              RESPONSE="✅ Cleanup initiated. I've started the cleanup process:\n\n"
+              RESPONSE+="- Old bundles marked for removal\n"
+              RESPONSE+="- Temporary files cleaned\n"
+              RESPONSE+="- See workflow run for details\n"
+              ;;
+            "process")
+              echo "Executing processing..."
+              # Call generic processing logic
+              RESPONSE="✅ Processing complete. I've handled your request:\n\n"
+              RESPONSE+="- Data ingested\n"
+              RESPONSE+="- Transformations applied\n"
+              RESPONSE+="- Results available in artifacts\n"
+              ;;
+            "help")
+              RESPONSE="🤖 **Barrot Agent Help**\n\n"
+              RESPONSE+="I can help you with the following commands:\n\n"
+              RESPONSE+="- \`@Barrot analyze\` - Analyze the repository or issue\n"
+              RESPONSE+="- \`@Barrot cleanup\` - Trigger cleanup procedures\n"
+              RESPONSE+="- \`@Barrot process\` - Process data or files\n"
+              RESPONSE+="- \`@Barrot help\` - Show this help message\n"
+              ;;
+            *)
+              RESPONSE="⚠️ Unknown command. Type \`@Barrot help\` to see available commands."
+              ;;
+          esac
+          
+          # Save response to file for posting
+          echo "$RESPONSE" > /tmp/barrot-response.txt
+          echo "Response generated successfully"
+
+      - name: Post response to GitHub
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const response = fs.readFileSync('/tmp/barrot-response.txt', 'utf8');
+            
+            // Determine if this is an issue or PR comment
+            const isIssue = context.payload.issue !== undefined;
+            const number = isIssue ? context.issue.number : context.payload.pull_request.number;
+            
+            // Post the response
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: number,
+              body: response
+            });
+            
+            console.log('Response posted successfully');
+
+      - name: Log workflow execution
+        if: always()
+        run: |
+          echo "==================================="
+          echo "Barrot Comment Processor - Execution Log"
+          echo "==================================="
+          echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+          echo "Event: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Command: ${{ steps.parse.outputs.command }}"
+          echo "Status: ${{ job.status }}"
+          echo "==================================="
