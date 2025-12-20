@@ -68,6 +68,8 @@ jobs:
                   permutation = np.random.permutation(n).tolist()
                   
                   # Calculate permutation properties
+                  # Note: Using O(n²) inversion count for small permutations (n<=20)
+                  # For larger datasets, consider using merge-sort based O(n log n) approach
                   inversions = sum(1 for j in range(n) for k in range(j+1, n) 
                                    if permutation[j] > permutation[k])
                   

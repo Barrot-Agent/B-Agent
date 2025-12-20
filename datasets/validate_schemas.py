@@ -13,8 +13,16 @@ from typing import Dict, Any
 def load_schema(schema_name: str) -> Dict[str, Any]:
     """Load a JSON schema from the schemas directory."""
     schema_path = Path('datasets/schemas') / f'{schema_name}.json'
-    with open(schema_path, 'r') as f:
-        return json.load(f)
+    try:
+        with open(schema_path, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            f"Schema file not found: {schema_path}\n"
+            f"Please ensure the schema file exists in the datasets/schemas/ directory."
+        )
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON in schema {schema_name}: {e}")
 
 
 def validate_schemas():

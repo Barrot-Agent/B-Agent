@@ -8,7 +8,7 @@ including schema validation, data generation, and metadata management.
 
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -44,7 +44,7 @@ def create_sample_recursive_data():
             ],
             "source": {
                 "origin": "demonstration",
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 "dataset": "recursive-functions-demo"
             }
         },
@@ -77,7 +77,7 @@ def create_sample_recursive_data():
             ],
             "source": {
                 "origin": "demonstration",
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 "dataset": "recursive-functions-demo"
             }
         }
@@ -120,7 +120,7 @@ def create_sample_permutation_data():
             },
             "provenance": {
                 "source": "demonstration",
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 "algorithm": "manual-construction"
             }
         },
@@ -154,7 +154,7 @@ def create_sample_permutation_data():
             },
             "provenance": {
                 "source": "demonstration",
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 "algorithm": "manual-construction"
             }
         },
@@ -188,7 +188,7 @@ def create_sample_permutation_data():
             },
             "provenance": {
                 "source": "demonstration",
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 "algorithm": "manual-construction"
             }
         }
@@ -230,8 +230,8 @@ def save_demonstration_data():
             "url": "internal-demonstration"
         },
         "ingestion": {
-            "first_ingested": datetime.utcnow().isoformat() + "Z",
-            "last_updated": datetime.utcnow().isoformat() + "Z",
+            "first_ingested": datetime.now(timezone.utc).isoformat() + "Z",
+            "last_updated": datetime.now(timezone.utc).isoformat() + "Z",
             "frequency": "on-demand",
             "status": "completed"
         },

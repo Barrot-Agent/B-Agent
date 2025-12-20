@@ -31,7 +31,7 @@ jobs:
         id: schedule
         run: |
           # Check if it's the 1st of the month (Kaggle - monthly)
-          if [ $(date +%d) -eq 01 ] || [ "${{ inputs.force_all }}" == "true" ]; then
+          if [ $(date +%-d) -eq 1 ] || [ "${{ inputs.force_all }}" == "true" ]; then
             echo "run_kaggle=true" >> $GITHUB_OUTPUT
           else
             echo "run_kaggle=false" >> $GITHUB_OUTPUT
@@ -52,7 +52,7 @@ jobs:
           fi
           
           # Check if it's the 15th (Quantum - monthly)
-          if [ $(date +%d) -eq 15 ] || [ "${{ inputs.force_all }}" == "true" ]; then
+          if [ $(date +%-d) -eq 15 ] || [ "${{ inputs.force_all }}" == "true" ]; then
             echo "run_quantum=true" >> $GITHUB_OUTPUT
           else
             echo "run_quantum=false" >> $GITHUB_OUTPUT

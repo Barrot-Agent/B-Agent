@@ -8,7 +8,7 @@ numpy>=1.24.0  # Numerical computing
 scipy>=1.11.0  # Scientific computing with combinatorial functions
 
 # Group Theory and Algebra
-sage-numerical-backends-coin>=10.0  # Optional: SageMath numerical backends
+# sage-numerical-backends-coin>=10.0  # Optional: SageMath backend (only for advanced algebraic computations, requires SageMath installation)
 networkx>=3.1  # Graph theory for permutation graphs
 
 # Machine Learning and Optimization
