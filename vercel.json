@@ -16,8 +16,22 @@
       "dest": "backend/server.js"
     },
     {
+      "src": "/css/(.*)",
+      "dest": "website/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "website/js/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "website/$1"
+      "dest": "website/index.html"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/website/index.html"
     }
   ]
 }
