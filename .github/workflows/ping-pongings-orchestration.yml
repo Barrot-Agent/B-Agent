@@ -175,36 +175,36 @@ jobs:
           TIMESTAMP="${{ needs.ping_initiation.outputs.timestamp }}"
           TASK_TYPE="${{ needs.ping_initiation.outputs.task_classification }}"
           COHERENCE="${{ needs.quantum_refinement.outputs.coherence_score }}"
+          TRANSFORMATIONS="${{ needs.copilot_preprocessing.outputs.transformations }}"
+          REFINEMENT_STATUS="${{ needs.quantum_refinement.outputs.refinement_status }}"
           
           mkdir -p memory-bundles/dragonfly-logs
           
           LOG_FILE="memory-bundles/dragonfly-logs/log-$(date +%Y%m%d).md"
           
-          cat >> "$LOG_FILE" << EOF
-          
-### [$WORKFLOW_ID] Ping-Pong Cycle
-**Timestamp:** $TIMESTAMP
-**Task Type:** $TASK_TYPE
-
-**FSOC (Fresh Start Operative Concept):**
-- Input Classification: $TASK_TYPE
-- Initial State: Baseline
-
-**Processing Pipeline:**
-- Copilot: ${{ needs.copilot_preprocessing.outputs.transformations }}
-- Quantum: AGI refinement applied
-- Integration: Knowledge base updated
-
-**FOC (Final Operative Concept):**
-- Output Status: ${{ needs.quantum_refinement.outputs.refinement_status }}
-- Final Coherence: $COHERENCE
-
-**DELTA:**
-- Synchrony Score: $COHERENCE
-- Status: ✅ Successful
-
----
-EOF
+          echo "" >> "$LOG_FILE"
+          echo "### [$WORKFLOW_ID] Ping-Pong Cycle" >> "$LOG_FILE"
+          echo "Timestamp: $TIMESTAMP" >> "$LOG_FILE"
+          echo "Task Type: $TASK_TYPE" >> "$LOG_FILE"
+          echo "" >> "$LOG_FILE"
+          echo "FSOC (Fresh Start Operative Concept):" >> "$LOG_FILE"
+          echo "- Input Classification: $TASK_TYPE" >> "$LOG_FILE"
+          echo "- Initial State: Baseline" >> "$LOG_FILE"
+          echo "" >> "$LOG_FILE"
+          echo "Processing Pipeline:" >> "$LOG_FILE"
+          echo "- Copilot: $TRANSFORMATIONS" >> "$LOG_FILE"
+          echo "- Quantum: AGI refinement applied" >> "$LOG_FILE"
+          echo "- Integration: Knowledge base updated" >> "$LOG_FILE"
+          echo "" >> "$LOG_FILE"
+          echo "FOC (Final Operative Concept):" >> "$LOG_FILE"
+          echo "- Output Status: $REFINEMENT_STATUS" >> "$LOG_FILE"
+          echo "- Final Coherence: $COHERENCE" >> "$LOG_FILE"
+          echo "" >> "$LOG_FILE"
+          echo "DELTA:" >> "$LOG_FILE"
+          echo "- Synchrony Score: $COHERENCE" >> "$LOG_FILE"
+          echo "- Status: Successful" >> "$LOG_FILE"
+          echo "" >> "$LOG_FILE"
+          echo "----------" >> "$LOG_FILE"
           
           echo "📊 Dragonfly log updated: $LOG_FILE"
           
