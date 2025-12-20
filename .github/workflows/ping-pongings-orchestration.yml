@@ -216,7 +216,7 @@ jobs:
           echo "🔍 Validating synchrony..."
           echo "📊 Current: $COHERENCE | Threshold: $THRESHOLD"
           
-          if (( $(echo "$COHERENCE >= $THRESHOLD" | bc -l) )); then
+          if awk "BEGIN {exit !($COHERENCE >= $THRESHOLD)}"; then
             echo "✅ Synchrony threshold met"
           else
             echo "⚠️  Synchrony below threshold - additional iteration may be needed"
@@ -234,7 +234,14 @@ jobs:
           
       - name: Pull latest changes
         run: |
-          git pull --rebase origin ${{ github.ref_name }} || true
+          git pull --rebase origin ${{ github.ref_name }} || {
+            echo "⚠️  Pull failed - checking for conflicts"
+            if git status | grep -q "rebase in progress"; then
+              echo "❌ Merge conflict detected - aborting rebase"
+              git rebase --abort
+              exit 1
+            fi
+          }
         
       - name: Commit workflow cycle updates
         run: |
@@ -242,4 +249,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add memory-bundles/
           git commit -m "🔄 Ping-Pong cycle: ${{ needs.ping_initiation.outputs.workflow_id }}" || echo "No changes to commit"
-          git push || echo "Push failed - may need manual intervention"
+          
+          if ! git push; then
+            echo "⚠️  Push failed - may need manual intervention"
+            exit 1
+          fi

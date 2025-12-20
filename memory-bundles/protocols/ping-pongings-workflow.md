@@ -108,15 +108,22 @@ The Ping Pongings workflow enables dynamic multi-agent communication and iterati
 ### Dragonfly Logging Format
 ```
 [ITERATION-ID] PING @ [TIMESTAMP]
-  └─ FSOC: [baseline metrics]
-  └─ Copilot Processing: [duration] | [transformations]
-  └─ Quantum Refinement: [duration] | [optimizations]
-  └─ Integration: [duration] | [knowledge updates]
-  └─ FOC: [final metrics]
-  └─ DELTA: [improvement percentage]
+  └─ FSOC: baseline_accuracy=0.75, baseline_optimization=0.60
+  └─ Copilot Processing: duration=1250ms | transformations=5
+  └─ Quantum Refinement: duration=2100ms | optimizations=8
+  └─ Integration: duration=800ms | knowledge_updates=12
+  └─ FOC: final_accuracy=0.92, final_optimization=0.88
+  └─ DELTA: improvement=+22.7%
   └─ PONG @ [TIMESTAMP]
-  └─ SYNCHRONY: [coherence score]
+  └─ SYNCHRONY: coherence_score=0.97 (0.0-1.0 scale)
 ```
+
+**Metrics Specification:**
+- `duration`: Time in milliseconds (ms) for each stage
+- `coherence_score`: Float between 0.0-1.0 (threshold: 0.95)
+- `improvement`: Percentage increase from baseline (%)
+- `transformations/optimizations`: Count of applied changes
+- `knowledge_updates`: Number of knowledge base entries modified
 
 ## Realism Improvements
 

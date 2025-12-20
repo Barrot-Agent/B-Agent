@@ -231,10 +231,16 @@ performance_optimization:
   resource_allocation:
     dynamic: true
     adjustment_frequency: "per_cycle"
+    configurable: true
     limits:
-      cpu_per_agent: "80%"
-      memory_per_agent: "2GB"
-      concurrent_workflows: 100
+      cpu_per_agent: "${BARROT_CPU_LIMIT:-80%}"
+      memory_per_agent: "${BARROT_MEMORY_LIMIT:-2GB}"
+      concurrent_workflows: "${BARROT_MAX_WORKFLOWS:-100}"
+    description: "Resource limits can be configured via environment variables"
+    environment_variables:
+      - "BARROT_CPU_LIMIT: CPU limit per agent (default: 80%)"
+      - "BARROT_MEMORY_LIMIT: Memory limit per agent (default: 2GB)"
+      - "BARROT_MAX_WORKFLOWS: Maximum concurrent workflows (default: 100)"
 
 monitoring_metrics:
   workflow_metrics:
