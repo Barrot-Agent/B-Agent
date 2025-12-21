@@ -1,19 +1,81 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Success — NecroSynergist</title>
+  <title>Barrot Agent - Blockchain Projects</title>
   <style>
-    body { font-family:sans-serif; text-align:center; padding:2em; background:#f9f9f9; }
-    h1 { font-size:2em; color:#2ecc71; }
-    p { font-size:1.2em; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      text-align: center; 
+      padding: 2em; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      max-width: 800px;
+    }
+    h1 { 
+      font-size: 2.5em; 
+      color: #667eea; 
+      margin-bottom: 1rem;
+    }
+    p { 
+      font-size: 1.2em; 
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    .project-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+      font-size: 1rem;
+    }
     .confetti { animation: pop 0.5s ease-in-out; }
     @keyframes pop { 0% { transform:scale(0.8); } 100% { transform:scale(1); } }
   </style>
 </head>
 <body>
-  <h1 class="confetti">Thanks! 🎉</h1>
-  <p>Checkout completed. You’ll be redirected shortly.</p>
-  <script>setTimeout(()=>location.href="/portal",3000)</script>
+  <div class="container confetti">
+    <h1>🤖 Barrot Agent Projects</h1>
+    <p>Explore our blockchain innovations and decentralized solutions</p>
+    
+    <div class="projects">
+      <a href="chameleon-presale.html" class="project-card">
+        <h2>🦎 Chameleon Chain</h2>
+        <p>The Adaptive Blockchain for Modern DeFi - Join our token presale and learn about cost-effective blockchain infrastructure</p>
+      </a>
+    </div>
+  </div>
 </body>
 </html>
