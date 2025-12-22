@@ -194,7 +194,7 @@ gh workflow run "Barrot Scheduled Orchestration" \
 ### View Dashboard
 
 After execution, the dashboard is available at:
-`https://<your-username>.github.io/Barrot-Agent/`
+`https://<owner>.github.io/<repo>/` (e.g., `https://barrot-agent.github.io/Barrot-Agent/`)
 
 ## Architecture Benefits
 
