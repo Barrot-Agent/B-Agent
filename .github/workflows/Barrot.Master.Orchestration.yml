@@ -17,6 +17,14 @@ on:
         description: 'Override Tier Agent level (1-5)'
         required: false
         default: '3'
+      enable_web_scanning:
+        description: 'Enable web intelligence scanning'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
 
 permissions:
   contents: write
@@ -908,3 +916,33 @@ jobs:
           echo "4. 🧩 Knowledge Synthesizer (Override-Tier-Agent-L4)" >> $GITHUB_STEP_SUMMARY
           echo "5. ☁️ Storage Orchestrator (Infrastructure-Coordinator-L2)" >> $GITHUB_STEP_SUMMARY
           echo "6. 🔮 Prediction Architect (Quantum-Reasoning-Variant-L5)" >> $GITHUB_STEP_SUMMARY
+  
+  # ============================================================================
+  # PHASE 8: WEB INTELLIGENCE INTEGRATION (Optional)
+  # ============================================================================
+
+  trigger-web-intelligence:
+    name: Trigger Web Intelligence Scan
+    runs-on: ubuntu-latest
+    needs: [generate-execution-report]
+    if: github.event.inputs.enable_web_scanning == 'true' || github.event_name == 'push'
+    steps:
+      - name: Trigger Web Scanner
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await github.rest.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'Barrot.Web.Intelligence.Scanner.yml',
+                ref: 'main',
+                inputs: {
+                  scan_depth: 'deep',
+                  data_resolution_threshold: '85'
+                }
+              });
+              console.log('✅ Web Intelligence Scanner triggered');
+            } catch (error) {
+              console.log('ℹ️ Web Intelligence Scanner not available or already running');
+            }
