@@ -17,6 +17,7 @@ We've developed a comprehensive roadmap for Barrot's development and optimizatio
 - **[📖 Strategic Roadmap](STRATEGIC_ROADMAP.md)** - Complete long-term vision and quarterly plans
 - **[⚡ Next Steps & Priorities](NEXT_STEPS_PRIORITIES.md)** - Immediate action items with detailed breakdowns
 - **[🎯 Quick Reference](QUICK_REFERENCE.md)** - Summary of key priorities and success metrics
+- **[📅 Development Timeline](DEVELOPMENT_TIMELINE.md)** - Visual quarterly timeline with milestones
 
 ## 🎯 Current Focus Areas
 
