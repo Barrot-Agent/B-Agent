@@ -1,0 +1,72 @@
+name: Barrot Scheduled Orchestration
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      intensity:
+        description: 'Execution intensity (light/normal/heavy)'
+        required: false
+        default: 'normal'
+        type: choice
+        options:
+          - light
+          - normal
+          - heavy
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  trigger-orchestration:
+    name: Trigger Master Orchestration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine Parameters
+        id: params
+        run: |
+          INTENSITY="${{ github.event.inputs.intensity || 'normal' }}"
+          
+          case $INTENSITY in
+            light)
+              CLONES=2
+              TIER=2
+              ;;
+            heavy)
+              CLONES=5
+              TIER=5
+              ;;
+            *)
+              CLONES=3
+              TIER=3
+              ;;
+          esac
+          
+          echo "clone_count=$CLONES" >> $GITHUB_OUTPUT
+          echo "agent_tier=$TIER" >> $GITHUB_OUTPUT
+          echo "intensity=$INTENSITY" >> $GITHUB_OUTPUT
+
+      - name: Invoke Master Orchestration
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'Barrot.Master.Orchestration.yml',
+              ref: 'main',
+              inputs: {
+                clone_count: '${{ steps.params.outputs.clone_count }}',
+                agent_tier: '${{ steps.params.outputs.agent_tier }}',
+                force_full_execution: 'false'
+              }
+            });
+            
+            console.log('✅ Master Orchestration triggered');
+            console.log('Intensity: ${{ steps.params.outputs.intensity }}');
+            console.log('Clones: ${{ steps.params.outputs.clone_count }}');
+            console.log('Agent Tier: ${{ steps.params.outputs.agent_tier }}');
