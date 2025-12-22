@@ -115,14 +115,20 @@ class BarrotSnapshotGenerator:
             if build_manifest_path.exists():
                 with open(build_manifest_path, 'r') as f:
                     manifest = yaml.safe_load(f)
+                    
+                    # Validate manifest structure
+                    if not isinstance(manifest, dict):
+                        return {"error": "Invalid manifest structure: not a dictionary"}
+                    
                     timestamp = manifest.get("timestamp", "UNKNOWN")
                     # Convert datetime to string if needed
                     if isinstance(timestamp, datetime):
                         timestamp = timestamp.isoformat().replace("+00:00", "Z")
+                    
                     return {
                         "build_signature": manifest.get("build_signature", "UNKNOWN"),
                         "timestamp": timestamp,
-                        "modules": manifest.get("modules", []),
+                        "modules": manifest.get("modules", []) if isinstance(manifest.get("modules"), list) else [],
                         "provenance_hash": manifest.get("provenance_hash", "UNKNOWN")
                     }
         except Exception as e:
@@ -138,7 +144,16 @@ class BarrotSnapshotGenerator:
             if build_manifest_path.exists():
                 with open(build_manifest_path, 'r') as f:
                     manifest = yaml.safe_load(f)
-                    return manifest.get("rail_status", {})
+                    
+                    # Validate manifest structure
+                    if not isinstance(manifest, dict):
+                        return {"error": "Invalid manifest structure"}
+                    
+                    rail_status = manifest.get("rail_status", {})
+                    # Validate rail_status is a dict
+                    if isinstance(rail_status, dict):
+                        return rail_status
+                    return {}
         except Exception as e:
             return {"error": f"Failed to read rail status: {str(e)}"}
         

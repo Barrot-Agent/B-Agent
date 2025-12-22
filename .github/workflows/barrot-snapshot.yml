@@ -64,7 +64,9 @@ jobs:
       
       - name: Generate action snapshot for push
         run: |
-          python snapshot_generator.py action "push_event" '{"branch": "${{ github.ref }}", "commit": "${{ github.sha }}", "author": "${{ github.actor }}", "message": "${{ github.event.head_commit.message }}"}'
+          # Escape commit message for JSON
+          COMMIT_MSG=$(echo '${{ github.event.head_commit.message }}' | jq -Rs .)
+          python snapshot_generator.py action "push_event" "{\"branch\": \"${{ github.ref }}\", \"commit\": \"${{ github.sha }}\", \"author\": \"${{ github.actor }}\", \"message\": $COMMIT_MSG}"
       
       - name: Update build ledger
         run: |

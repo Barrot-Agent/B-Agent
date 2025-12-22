@@ -17,6 +17,10 @@ class ActionTracker:
     def __init__(self):
         self.base_dir = Path(__file__).parent
         self.generator_path = self.base_dir / "snapshot_generator.py"
+        
+        # Validate generator path exists and is a file
+        if not self.generator_path.exists() or not self.generator_path.is_file():
+            raise FileNotFoundError(f"Snapshot generator not found at {self.generator_path}")
     
     def track_action(self, action_type, details, status="executing"):
         """
@@ -130,7 +134,11 @@ def main():
             sys.exit(1)
         
         action_type = sys.argv[2]
-        details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        try:
+            details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        except json.JSONDecodeError as e:
+            print(f"Error: Invalid JSON in details: {e}", file=sys.stderr)
+            sys.exit(1)
         snapshot_id = tracker.track_action(action_type, details)
         print(f"Tracked action: {snapshot_id}")
     
@@ -140,7 +148,11 @@ def main():
             sys.exit(1)
         
         action_type = sys.argv[2]
-        details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        try:
+            details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        except json.JSONDecodeError as e:
+            print(f"Error: Invalid JSON in details: {e}", file=sys.stderr)
+            sys.exit(1)
         snapshot_id = tracker.track_start(action_type, details)
         print(f"Started tracking: {snapshot_id}")
     
@@ -150,7 +162,11 @@ def main():
             sys.exit(1)
         
         action_type = sys.argv[2]
-        details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        try:
+            details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+        except json.JSONDecodeError as e:
+            print(f"Error: Invalid JSON in details: {e}", file=sys.stderr)
+            sys.exit(1)
         snapshot_id = tracker.track_complete(action_type, details)
         print(f"Completed tracking: {snapshot_id}")
     
@@ -161,7 +177,11 @@ def main():
         
         action_type = sys.argv[2]
         error = sys.argv[3]
-        details = json.loads(sys.argv[4]) if len(sys.argv) > 4 else {}
+        try:
+            details = json.loads(sys.argv[4]) if len(sys.argv) > 4 else {}
+        except json.JSONDecodeError as e:
+            print(f"Error: Invalid JSON in details: {e}", file=sys.stderr)
+            sys.exit(1)
         snapshot_id = tracker.track_failure(action_type, error, details)
         print(f"Failed tracking: {snapshot_id}")
     

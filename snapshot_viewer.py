@@ -9,6 +9,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 import sys
+import html
 
 
 class SnapshotViewer:
@@ -311,9 +312,14 @@ class SnapshotViewer:
 """
             
             for rail, status in rail_status.items():
+                # Escape HTML to prevent XSS
+                rail_escaped = html.escape(str(rail))
+                status_escaped = html.escape(str(status))
+                status_lower = status_escaped.lower()
+                
                 html_content += f"""
         <div class="snapshot-card">
-            <strong>{rail}:</strong> <span class="status-badge status-{status.lower()}">{status}</span>
+            <strong>{rail_escaped}:</strong> <span class="status-badge status-{status_lower}">{status_escaped}</span>
         </div>
 """
             
