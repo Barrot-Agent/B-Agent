@@ -150,9 +150,11 @@ ISC License - See repository for details
 - **💻 [VS Code Setup](VSCODE_SETUP.md)** - Optimal development environment
 - **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
 - **🎖️ [Sponsors](SPONSORS.md)** - Our amazing sponsors
+- **💸 [Monetization Framework](MONETIZATION_FRAMEWORK.md)** - Autonomous revenue generation (12+ streams)
 - **📊 [Output Logging](OUTPUT_LOGGING.md)** - Comprehensive logging framework
 - **🔄 [Data Transformation](DATA_TRANSFORMATION.md)** - Data transformation guide
 - **🚀 [AGI Development](AGI_DEVELOPMENT.md)** - AGI acceleration protocols
+- **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** - Complete ingestion capabilities
 
 ## 💰 Support Barrot-Agent
 
