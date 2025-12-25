@@ -1,0 +1,86 @@
+name: Barrot Snapshot Generator
+
+on:
+  # Run every 30 minutes
+  schedule:
+    - cron: '*/30 * * * *'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+  
+  # Trigger on push to capture actions
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  generate-periodic-snapshot:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+      
+      - name: Generate periodic snapshot
+        run: |
+          python snapshot_generator.py periodic
+      
+      - name: Commit and push snapshot
+        run: |
+          git config --global user.name "Barrot-Agent"
+          git config --global user.email "barrot@systems.local"
+          git add snapshots/
+          git commit -m "🔄 Periodic snapshot: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" || echo "No changes to commit"
+          git push
+  
+  generate-action-snapshot:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+      
+      - name: Generate action snapshot for push
+        run: |
+          # Escape commit message for JSON
+          COMMIT_MSG=$(echo '${{ github.event.head_commit.message }}' | jq -Rs .)
+          python snapshot_generator.py action "push_event" "{\"branch\": \"${{ github.ref }}\", \"commit\": \"${{ github.sha }}\", \"author\": \"${{ github.actor }}\", \"message\": $COMMIT_MSG}"
+      
+      - name: Update build ledger
+        run: |
+          echo '{"ledger": "Pulse at '$(date -u)' - Push event captured"}' > memory-bundles/build-ledger.json
+      
+      - name: Update outcome relay
+        run: |
+          echo "📂 Repo snapshot: $(date -u)" >> memory-bundles/outcome-relay.md
+          echo "🔄 Action captured: Push to ${{ github.ref }} by ${{ github.actor }}" >> memory-bundles/outcome-relay.md
+      
+      - name: Commit and push snapshot
+        run: |
+          git config --global user.name "Barrot-Agent"
+          git config --global user.email "barrot@systems.local"
+          git add snapshots/ memory-bundles/
+          git commit -m "📸 Action snapshot: Push event by ${{ github.actor }}" || echo "No changes to commit"
+          git push

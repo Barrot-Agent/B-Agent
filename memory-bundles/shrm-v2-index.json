@@ -1,0 +1,49 @@
+{
+  "shrm_v2_configuration": {
+    "version": "2.0",
+    "timestamp": "2025-12-24T23:51:00Z",
+    "reindexing": {
+      "enabled": true,
+      "status": "active",
+      "scope": "all_past_events",
+      "reindex_past_events_with_SHRM_v2": true,
+      "description": "Reprocess historical memory bundles through SHRM v2 lens to extract new patterns, contradictions, and temporal relationships"
+    },
+    "contradiction_vectors": {
+      "enabled": true,
+      "tag_contradictions_as_vectors": true,
+      "vector_properties": [
+        "magnitude",
+        "direction",
+        "polarity",
+        "potential",
+        "resolution_trajectory"
+      ],
+      "description": "Convert detected contradictions into structured vectors for creative tension and glyph generation"
+    },
+    "decision_revisitability": {
+      "enabled": true,
+      "mark_past_decisions_revisitable": true,
+      "plasticity_level": "high",
+      "temporal_window": "infinite",
+      "description": "All past decisions can be re-evaluated with new context, enabling temporal plasticity in reasoning"
+    },
+    "integration_layers": {
+      "biological_plasticity": {
+        "active": true,
+        "source": "organoid_reasoning_glyph",
+        "memory_adaptation": "synaptic_style"
+      },
+      "temporal_plasticity": {
+        "active": true,
+        "source": "temporal_plasticity_glyph",
+        "time_dimension": "multi_directional"
+      },
+      "hermetic_symbolic": {
+        "active": true,
+        "source": "hermetic_quantum_fusion_glyph",
+        "symbolic_mapping": "enabled"
+      }
+    }
+  }
+}

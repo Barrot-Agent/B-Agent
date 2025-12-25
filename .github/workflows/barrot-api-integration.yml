@@ -1,0 +1,251 @@
+name: Barrot API Integration
+
+# Trigger: Manual dispatch or file upload events
+on:
+  workflow_dispatch:
+    inputs:
+      data_type:
+        description: 'Type of data to send (issue, pr, file, custom)'
+        required: true
+        default: 'custom'
+        type: choice
+        options:
+          - issue
+          - pr
+          - file
+          - custom
+      data_id:
+        description: 'ID of the issue/PR (if applicable)'
+        required: false
+        type: string
+      custom_message:
+        description: 'Custom message or data to send'
+        required: false
+        type: string
+  issues:
+    types: [opened, edited]
+  pull_request:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  send-to-api:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Prepare data payload
+        id: prepare
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title || '' }}
+          ISSUE_USER: ${{ github.event.issue.user.login || '' }}
+          PR_TITLE: ${{ github.event.pull_request.title || '' }}
+          PR_USER: ${{ github.event.pull_request.user.login || '' }}
+          CUSTOM_MESSAGE: ${{ github.event.inputs.custom_message || '' }}
+        run: |
+          echo "Preparing data for API submission..."
+          
+          # Determine data type
+          DATA_TYPE="${{ github.event.inputs.data_type || 'auto' }}"
+          
+          # Create payload based on event type using jq for proper JSON encoding
+          if [ "${{ github.event_name }}" == "issues" ]; then
+            DATA_TYPE="issue"
+            jq -n \
+              --arg type "issue" \
+              --arg source "github" \
+              --arg repository "${{ github.repository }}" \
+              --argjson issue_number "${{ github.event.issue.number }}" \
+              --arg title "$ISSUE_TITLE" \
+              --arg author "$ISSUE_USER" \
+              --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+              '{type: $type, source: $source, repository: $repository, issue_number: $issue_number, title: $title, author: $author, timestamp: $timestamp}' \
+              > /tmp/api-payload.json
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            DATA_TYPE="pr"
+            jq -n \
+              --arg type "pull_request" \
+              --arg source "github" \
+              --arg repository "${{ github.repository }}" \
+              --argjson pr_number "${{ github.event.pull_request.number }}" \
+              --arg title "$PR_TITLE" \
+              --arg author "$PR_USER" \
+              --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+              '{type: $type, source: $source, repository: $repository, pr_number: $pr_number, title: $title, author: $author, timestamp: $timestamp}' \
+              > /tmp/api-payload.json
+          else
+            # Manual dispatch
+            jq -n \
+              --arg type "$DATA_TYPE" \
+              --arg source "github" \
+              --arg repository "${{ github.repository }}" \
+              --arg message "$CUSTOM_MESSAGE" \
+              --arg triggered_by "${{ github.actor }}" \
+              --arg timestamp "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+              '{type: $type, source: $source, repository: $repository, message: $message, triggered_by: $triggered_by, timestamp: $timestamp}' \
+              > /tmp/api-payload.json
+          fi
+          
+          echo "Payload prepared:"
+          cat /tmp/api-payload.json
+          
+          echo "data_type=$DATA_TYPE" >> $GITHUB_OUTPUT
+
+      - name: Send data to Copilot API
+        id: send_api
+        env:
+          # Use secrets for API configuration
+          COPILOT_API_URL: ${{ secrets.COPILOT_API_URL || 'https://api.example.com/barrot/ingest' }}
+          COPILOT_API_KEY: ${{ secrets.COPILOT_API_KEY || '' }}
+        run: |
+          echo "Sending data to Copilot API..."
+          
+          # Check if API URL is configured
+          if [ "$COPILOT_API_URL" == "https://api.example.com/barrot/ingest" ]; then
+            echo "⚠️ Warning: Using default API URL. Configure COPILOT_API_URL secret for actual integration."
+            echo "status=mock" >> $GITHUB_OUTPUT
+            echo "response=Mock response: Data would be sent to API" >> $GITHUB_OUTPUT
+          else
+            # Send actual API request
+            if [ -n "$COPILOT_API_KEY" ]; then
+              RESPONSE=$(curl -s -X POST "$COPILOT_API_URL" \
+                -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $COPILOT_API_KEY" \
+                -d @/tmp/api-payload.json \
+                -w "\n%{http_code}" || echo "000")
+              
+              HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+              BODY=$(echo "$RESPONSE" | head -n-1)
+              
+              if [ "$HTTP_CODE" == "200" ] || [ "$HTTP_CODE" == "201" ]; then
+                echo "status=success" >> $GITHUB_OUTPUT
+                echo "response=$BODY" >> $GITHUB_OUTPUT
+                echo "✅ Data sent successfully (HTTP $HTTP_CODE)"
+              else
+                echo "status=error" >> $GITHUB_OUTPUT
+                echo "response=HTTP $HTTP_CODE: $BODY" >> $GITHUB_OUTPUT
+                echo "❌ Failed to send data (HTTP $HTTP_CODE)"
+              fi
+            else
+              echo "⚠️ Warning: COPILOT_API_KEY not configured"
+              echo "status=no_key" >> $GITHUB_OUTPUT
+              echo "response=No API key configured" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Fetch processed data from API
+        id: fetch_api
+        if: steps.send_api.outputs.status == 'success'
+        env:
+          COPILOT_API_URL: ${{ secrets.COPILOT_API_URL || 'https://api.example.com/barrot/ingest' }}
+          COPILOT_API_KEY: ${{ secrets.COPILOT_API_KEY || '' }}
+        run: |
+          echo "Fetching processed data from Copilot API..."
+          
+          # Wait a moment for processing
+          sleep 5
+          
+          if [ -n "$COPILOT_API_KEY" ]; then
+            # Construct fetch URL by replacing 'ingest' with 'fetch' if present, otherwise append '/fetch'
+            if echo "$COPILOT_API_URL" | grep -q "ingest"; then
+              FETCH_URL="${COPILOT_API_URL/ingest/fetch}"
+            else
+              FETCH_URL="${COPILOT_API_URL%/}/fetch"
+            fi
+            
+            RESPONSE=$(curl -s -X GET "$FETCH_URL" \
+              -H "Authorization: Bearer $COPILOT_API_KEY" \
+              -H "Accept: application/json" || echo '{"error": "fetch failed"}')
+            
+            echo "$RESPONSE" > /tmp/api-response.json
+            echo "insights=$RESPONSE" >> $GITHUB_OUTPUT
+            echo "✅ Data fetched successfully"
+          else
+            echo '{"message": "No API key configured"}' > /tmp/api-response.json
+            echo "insights={}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post insights to GitHub
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const status = '${{ steps.send_api.outputs.status }}';
+            const dataType = '${{ steps.prepare.outputs.data_type }}';
+            
+            let body = '🤖 **Barrot API Integration Report**\n\n';
+            body += `**Data Type:** ${dataType}\n`;
+            body += `**Timestamp:** ${new Date().toISOString()}\n`;
+            body += `**Status:** ${status}\n\n`;
+            
+            if (status === 'success') {
+              body += '✅ Data successfully sent to Copilot API\n';
+              body += '✅ Processed insights retrieved\n\n';
+              body += '**Response:**\n```json\n${{ steps.send_api.outputs.response }}\n```\n';
+            } else if (status === 'mock') {
+              body += '⚠️ Running in mock mode. Configure secrets for actual API integration:\n';
+              body += '- `COPILOT_API_URL`: API endpoint URL\n';
+              body += '- `COPILOT_API_KEY`: API authentication key\n';
+            } else if (status === 'no_key') {
+              body += '⚠️ API key not configured. Add `COPILOT_API_KEY` secret to enable integration.\n';
+            } else {
+              body += '❌ Failed to send data to API\n';
+              body += `**Error:** ${{ steps.send_api.outputs.response }}\n`;
+            }
+            
+            // Only post if triggered by issue or PR event
+            if (context.eventName === 'issues' || context.eventName === 'pull_request') {
+              const number = context.issue ? context.issue.number : context.payload.pull_request.number;
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: number,
+                body: body
+              });
+              
+              console.log('Insights posted to GitHub');
+            } else {
+              console.log('Workflow dispatch - insights logged below:');
+              console.log(body);
+            }
+
+      - name: Save integration logs
+        if: always()
+        run: |
+          mkdir -p logs
+          LOG_FILE="logs/api-integration-$(date +%Y%m%d-%H%M%S).log"
+          
+          cat > "$LOG_FILE" <<EOF
+          ===================================
+          Barrot API Integration - Execution Log
+          ===================================
+          Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Event: ${{ github.event_name }}
+          Actor: ${{ github.actor }}
+          Data Type: ${{ steps.prepare.outputs.data_type }}
+          API Status: ${{ steps.send_api.outputs.status }}
+          Job Status: ${{ job.status }}
+          ===================================
+          Payload:
+          $(cat /tmp/api-payload.json)
+          ===================================
+          EOF
+          
+          echo "Log saved to $LOG_FILE"
+          cat "$LOG_FILE"
+
+      - name: Upload logs as artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-integration-logs
+          path: logs/
+          retention-days: 30
