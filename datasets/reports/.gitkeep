@@ -1,0 +1,11 @@
+# Ingestion Reports
+
+This directory contains status reports from the dataset ingestion pipeline.
+
+Reports include:
+- Ingestion status for all data sources
+- Schedule information
+- Success/failure metrics
+- Next run times
+
+Reports are generated daily by the master ingestion pipeline.

@@ -1,0 +1,164 @@
+name: Dataset Ingestion - Quantum Libraries
+
+on:
+  schedule:
+    # Run monthly on the 15th at 04:00 UTC
+    - cron: '0 4 15 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ingest-quantum-libraries:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests jsonschema pyyaml
+
+      - name: Ingest Quantum Computing Libraries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p datasets/quantum
+          
+          # Create quantum library ingestion script
+          cat > ingest_quantum.py << 'EOFPYTHON'
+          import os
+          import json
+          import requests
+          from datetime import datetime, timezone
+          
+          # Quantum computing repositories
+          quantum_repos = [
+              "Qiskit/qiskit",
+              "quantumlib/Cirq",
+              "PennyLaneAI/pennylane",
+              "QuTiP/qutip",
+              "rigetti/pyquil"
+          ]
+          
+          headers = {
+              "Authorization": f"token {os.environ.get('GITHUB_TOKEN', '')}",
+              "Accept": "application/vnd.github.v3+json"
+          }
+          
+          quantum_libraries = []
+          
+          for repo in quantum_repos:
+              try:
+                  url = f"https://api.github.com/repos/{repo}"
+                  response = requests.get(url, headers=headers)
+                  
+                  if response.status_code == 200:
+                      repo_data = response.json()
+                      
+                      library_info = {
+                          "name": repo_data["name"],
+                          "full_name": repo_data["full_name"],
+                          "description": repo_data.get("description", ""),
+                          "url": repo_data["html_url"],
+                          "stars": repo_data["stargazers_count"],
+                          "language": repo_data.get("language", "Unknown"),
+                          "topics": repo_data.get("topics", []),
+                          "last_updated": repo_data["updated_at"],
+                          "ingestion_timestamp": datetime.now(timezone.utc).isoformat() + "Z",
+                          "category": "quantum-computing"
+                      }
+                      
+                      quantum_libraries.append(library_info)
+                      print(f"Ingested quantum library: {repo}")
+              
+              except Exception as e:
+                  print(f"Error processing {repo}: {e}")
+          
+          # Save quantum library metadata
+          os.makedirs("datasets/metadata", exist_ok=True)
+          with open("datasets/metadata/quantum_libraries.json", "w") as f:
+              json.dump({
+                  "ingestion_timestamp": datetime.now(timezone.utc).isoformat() + "Z",
+                  "source": "quantum-github",
+                  "libraries": quantum_libraries,
+                  "count": len(quantum_libraries)
+              }, f, indent=2)
+          
+          print(f"Successfully ingested {len(quantum_libraries)} quantum libraries")
+          EOFPYTHON
+          
+          python ingest_quantum.py
+
+      - name: Catalog Quantum Algorithms
+        run: |
+          # Create quantum algorithm catalog
+          cat > catalog_quantum_algorithms.py << 'EOFPYTHON'
+          import json
+          from datetime import datetime, timezone
+          
+          # Catalog of quantum algorithms relevant to permutations
+          quantum_algorithms = [
+              {
+                  "name": "Quantum Fourier Transform",
+                  "description": "Quantum algorithm for computing discrete Fourier transform",
+                  "relevance": "Permutation symmetries and cycle structure",
+                  "complexity": "O(n^2)",
+                  "applications": ["factoring", "period-finding", "hidden-subgroup"],
+                  "libraries": ["qiskit", "cirq", "pennylane"]
+              },
+              {
+                  "name": "Grover's Algorithm",
+                  "description": "Quantum search algorithm with quadratic speedup",
+                  "relevance": "Searching permutation space",
+                  "complexity": "O(sqrt(N))",
+                  "applications": ["unstructured-search", "optimization"],
+                  "libraries": ["qiskit", "cirq"]
+              },
+              {
+                  "name": "Quantum Approximate Optimization",
+                  "description": "Variational quantum algorithm for combinatorial optimization",
+                  "relevance": "Solving permutation-based optimization problems",
+                  "complexity": "Variable (depends on depth)",
+                  "applications": ["max-cut", "traveling-salesman", "scheduling"],
+                  "libraries": ["qiskit", "pennylane"]
+              },
+              {
+                  "name": "Variational Quantum Eigensolver",
+                  "description": "Hybrid quantum-classical algorithm for finding eigenvalues",
+                  "relevance": "Group representation theory",
+                  "complexity": "Variable",
+                  "applications": ["quantum-chemistry", "optimization"],
+                  "libraries": ["qiskit", "pennylane", "cirq"]
+              }
+          ]
+          
+          catalog = {
+              "catalog_timestamp": datetime.now(timezone.utc).isoformat() + "Z",
+              "algorithms": quantum_algorithms,
+              "count": len(quantum_algorithms),
+              "focus": "permutation-and-combinatorial-applications"
+          }
+          
+          with open("datasets/quantum/algorithm_catalog.json", "w") as f:
+              json.dump(catalog, f, indent=2)
+          
+          print(f"Cataloged {len(quantum_algorithms)} quantum algorithms")
+          EOFPYTHON
+          
+          python catalog_quantum_algorithms.py
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add datasets/
+          git commit -m "Ingest quantum libraries - $(date -u +'%Y-%m-%d')" || echo "No changes to commit"
+          git push

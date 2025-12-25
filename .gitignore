@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -15,6 +16,36 @@ tmp/
 temp/
 *.tmp
 *.cache
+=======
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+>>>>>>> origin/copilot/ingest-datasets-and-tools
 
 # IDE
 .vscode/
@@ -27,6 +58,7 @@ temp/
 .DS_Store
 Thumbs.db
 
+<<<<<<< HEAD
 # Environment variables
 .env
 .env.local
@@ -39,3 +71,21 @@ coverage/
 # Backups
 *.bak
 *.backup
+=======
+# Logs
+*.log
+
+# Temporary files
+tmp/
+*.tmp
+*.cache
+
+# Dataset demonstration files (can be regenerated)
+datasets/demonstration/
+
+# Node modules
+node_modules/
+
+# Build artifacts
+*.pyc
+>>>>>>> origin/copilot/ingest-datasets-and-tools

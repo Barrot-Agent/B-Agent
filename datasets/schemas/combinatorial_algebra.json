@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Combinatorial Algebra Schema",
+  "description": "Schema for combinatorial algebra structures and permutation data",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier"
+    },
+    "structure_type": {
+      "type": "string",
+      "enum": ["permutation", "combination", "partition", "composition", "young_tableau", "lattice"],
+      "description": "Type of combinatorial structure"
+    },
+    "elements": {
+      "type": "array",
+      "description": "Elements in the structure",
+      "items": {
+        "type": ["string", "number"]
+      }
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Size of the structure (n in S_n)"
+    },
+    "order": {
+      "type": "integer",
+      "description": "Order of the algebraic structure"
+    },
+    "generators": {
+      "type": "array",
+      "description": "Generator set for the structure",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "representation": {
+            "type": ["array", "string"]
+          }
+        }
+      }
+    },
+    "operations": {
+      "type": "array",
+      "description": "Algebraic operations defined on the structure",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "arity": {
+            "type": "integer"
+          },
+          "definition": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "subgroups": {
+      "type": "array",
+      "description": "Notable subgroups or substructures",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "invariants": {
+      "type": "object",
+      "description": "Algebraic invariants",
+      "properties": {
+        "cycle_type": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "sign": {
+          "type": "integer",
+          "enum": [1, -1]
+        },
+        "fixed_points": {
+          "type": "array",
+          "items": {
+            "type": ["string", "number"]
+          }
+        }
+      }
+    },
+    "representation": {
+      "type": "object",
+      "description": "Different representations of the structure",
+      "properties": {
+        "cycle_notation": {
+          "type": "string"
+        },
+        "matrix": {
+          "type": "array",
+          "items": {
+            "type": "array"
+          }
+        },
+        "one_line": {
+          "type": "array"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "algorithm": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["id", "structure_type", "size"]
+}
