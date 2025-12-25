@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -68,6 +69,8 @@ temp/
 =======
 =======
 >>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
+=======
+>>>>>>> origin/copilot/add-snapshot-functionality
 # Python
 __pycache__/
 *.py[cod]
@@ -93,6 +96,7 @@ wheels/
 # Virtual environments
 venv/
 <<<<<<< HEAD
+<<<<<<< HEAD
 env/
 ENV/
 env.bak/
@@ -106,6 +110,12 @@ env/
 
 # IDEs
 >>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
+=======
+ENV/
+env/
+
+# IDE
+>>>>>>> origin/copilot/add-snapshot-functionality
 .vscode/
 .idea/
 *.swp
@@ -116,6 +126,7 @@ env/
 .DS_Store
 Thumbs.db
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 # Environment variables
@@ -180,3 +191,10 @@ htmlcov/
 Thumbs.db
 .DS_Store
 >>>>>>> origin/copilot/add-barrot-website-functionality
+=======
+# Logs
+*.log
+
+# HTML dashboards (generated)
+snapshot_dashboard.html
+>>>>>>> origin/copilot/add-snapshot-functionality

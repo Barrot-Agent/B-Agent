@@ -1,0 +1,19 @@
+{
+  "snapshot_id": "action_20251222_022715_337517",
+  "snapshot_type": "action",
+  "timestamp": "2025-12-22T02:27:15.337517Z",
+  "action": {
+    "type": "build_complete",
+    "status": "executing",
+    "details": {
+      "module": "main-app",
+      "duration": "45s",
+      "status": "success"
+    },
+    "started_at": "2025-12-22T02:27:15.337517Z"
+  },
+  "metadata": {
+    "generated_by": "BarrotSnapshotGenerator",
+    "version": "1.0.0"
+  }
+}
