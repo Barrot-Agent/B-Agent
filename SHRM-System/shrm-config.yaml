@@ -1,0 +1,30 @@
+system_name: SHRM
+full_name: System Health & Resource Monitor
+version: 1.0.0
+timestamp: 2025-12-25T20:38:37Z
+
+monitoring_scope:
+  - system_health
+  - resource_allocation
+  - workflow_integrity
+  - bundle_synchronization
+  - rail_status
+
+interaction_protocol:
+  type: ping-pong
+  partner: Barrot-Agent
+  frequency: scheduled
+  response_mode: reactive
+
+health_metrics:
+  - cpu_utilization
+  - memory_usage
+  - disk_space
+  - network_connectivity
+  - service_availability
+
+status:
+  operational: true
+  last_pong: Thu Dec 25 20:43:26 UTC 2025
+  monitoring: active
+  integration: enabled
