@@ -8,6 +8,7 @@ modules:
   - search_engine
   - dashboard
   - manifest_rail
+  - shrm_v2_reasoning
 
 resources:
   - kaggle
@@ -28,6 +29,14 @@ resources:
   - seminars
   - books
   - journals
+  - huggingface_datasets
+  - semantic_scholar
+  - wikipedia_dumps
+  - arxiv
+  - pubmed
+  - internet_archive
+  - gdelt_project
+  - event_registry
 
 rail_status:
   ingestion: active
@@ -36,6 +45,9 @@ rail_status:
   prediction: evolving
   dashboard: publishing
   cognition: recursive
+  shrm_v2_contradiction: active
+  shrm_v2_symbolic: active
+  shrm_v2_augmented: recursive
 
 roadmap_ingestion:
   source: "initial-runner-setup"
@@ -50,6 +62,10 @@ roadmap_ingestion:
     - "Expand microagent logic into recursive bundles."
     - "Bind Kaggle datasets to prediction rail."
     - "Publish dashboard glyphs for roadmap progression."
+    - "Activate SHRM v2 framework for enhanced reasoning capabilities."
+    - "Ingest high-impact datasets aligned with contradiction harvesting."
+    - "Integrate symbolic reasoning datasets for formal proof and logic."
+    - "Deploy multimodal augmented cognition across text, image, video, and mixed-data sources."
   provenance_stamp: 2025-12-06T03:15:00Z
   notes: "First runner initiation; mutation‑sealed roadmap directives."
 

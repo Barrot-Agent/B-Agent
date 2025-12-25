@@ -1,0 +1,662 @@
+{
+  "shrm_v2_dataset_registry": {
+    "version": "1.0",
+    "last_updated": "2025-12-25T00:22:00Z",
+    "framework": "SHRM v2 (Symbolic-Hybrid Reasoning Matrix Version 2)",
+    "total_datasets": 63,
+    "categories": {
+      "contradiction_harvesting": {
+        "count": 14,
+        "datasets": [
+          {
+            "id": "multinli",
+            "name": "Multi-Genre Natural Language Inference",
+            "type": "text",
+            "size": "433k sentence pairs",
+            "shrm_alignment": "contradiction_detection",
+            "priority": "high",
+            "phase": 1,
+            "sources": [
+              "kaggle.com/datasets/shankar394/multinli",
+              "huggingface.co/datasets/multi_nli"
+            ],
+            "metrics": ["contradiction_detection_rate", "cross_genre_consistency"]
+          },
+          {
+            "id": "fever",
+            "name": "Fact Extraction and VERification",
+            "type": "text",
+            "size": "185k claims with evidence",
+            "shrm_alignment": "evidence_contradiction_resolution",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "fever.ai",
+              "kaggle.com/datasets/streicherlouw/fever"
+            ],
+            "metrics": ["multi_hop_accuracy", "evidence_synthesis_quality"]
+          },
+          {
+            "id": "argument_mining",
+            "name": "Argument Mining Corpus",
+            "type": "text",
+            "size": "400k argument pairs",
+            "shrm_alignment": "dialectical_synthesis",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "args.me",
+              "kaggle.com/datasets/shahules/debate-arguments"
+            ],
+            "metrics": ["opposing_viewpoint_integration", "synthesis_coherence"]
+          },
+          {
+            "id": "historical_contradictions",
+            "name": "Historical Document Contradictions",
+            "type": "text",
+            "size": "50k+ documents",
+            "shrm_alignment": "temporal_contradiction_analysis",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "archive.org",
+              "loc.gov/collections"
+            ],
+            "metrics": ["temporal_consistency", "truth_extraction_rate"]
+          },
+          {
+            "id": "scientific_contradictions",
+            "name": "Scientific Paper Contradictions",
+            "type": "text",
+            "size": "2M+ papers",
+            "shrm_alignment": "scientific_conflict_resolution",
+            "priority": "high",
+            "phase": 3,
+            "sources": [
+              "semanticscholar.org/api",
+              "kaggle.com/datasets/Cornell-University/arxiv",
+              "pubmed.ncbi.nlm.nih.gov"
+            ],
+            "metrics": ["contradiction_identification", "methodological_analysis"]
+          },
+          {
+            "id": "news_evolution",
+            "name": "News Event Evolution Dataset",
+            "type": "temporal_text",
+            "size": "1M+ articles, 10k+ events",
+            "shrm_alignment": "temporal_consistency_tracking",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "gdeltproject.org",
+              "eventregistry.org"
+            ],
+            "metrics": ["narrative_drift_detection", "correction_identification"]
+          },
+          {
+            "id": "wikipedia_revisions",
+            "name": "Wikipedia Revision History",
+            "type": "temporal_text",
+            "size": "6B+ edits",
+            "shrm_alignment": "consensus_formation_through_contradiction",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "dumps.wikimedia.org",
+              "kaggle.com/datasets/wikipedia"
+            ],
+            "metrics": ["consensus_emergence", "contradiction_resolution_patterns"]
+          },
+          {
+            "id": "violin",
+            "name": "Video-and-Language Inference",
+            "type": "video_text",
+            "size": "95k video-statement pairs",
+            "shrm_alignment": "multimodal_contradiction_detection",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "github.com/jimmy646/violin"
+            ],
+            "metrics": ["video_text_entailment", "multimodal_contradiction_rate"]
+          },
+          {
+            "id": "anli",
+            "name": "Adversarial Natural Language Inference",
+            "type": "text",
+            "size": "162k examples",
+            "shrm_alignment": "robust_contradiction_detection",
+            "priority": "high",
+            "phase": 3,
+            "sources": [
+              "github.com/facebookresearch/anli"
+            ],
+            "metrics": ["adversarial_robustness", "subtle_contradiction_detection"]
+          }
+        ]
+      },
+      "symbolic_reasoning": {
+        "count": 19,
+        "datasets": [
+          {
+            "id": "math_dataset",
+            "name": "MATH Dataset (Hendrycks)",
+            "type": "mathematical",
+            "size": "12.5k problems",
+            "shrm_alignment": "symbolic_manipulation_proof",
+            "priority": "high",
+            "phase": 1,
+            "sources": [
+              "github.com/hendrycks/math",
+              "kaggle.com/datasets/samuelcortinhas/math-dataset"
+            ],
+            "metrics": ["problem_solving_rate", "step_accuracy", "proof_completeness"]
+          },
+          {
+            "id": "lean_theorem",
+            "name": "Lean Theorem Prover Corpus",
+            "type": "formal_proof",
+            "size": "100k+ theorems",
+            "shrm_alignment": "formal_symbolic_reasoning",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "github.com/leanprover-community/mathlib"
+            ],
+            "metrics": ["proof_completion", "formal_verification_rate"]
+          },
+          {
+            "id": "proofwiki",
+            "name": "ProofWiki Dataset",
+            "type": "mathematical_proof",
+            "size": "20k+ proofs",
+            "shrm_alignment": "logical_inference_chains",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "proofwiki.org"
+            ],
+            "metrics": ["proof_structure_understanding", "strategy_learning"]
+          },
+          {
+            "id": "logiqa",
+            "name": "LogiQA Dataset",
+            "type": "logical_reasoning",
+            "size": "8,678 questions",
+            "shrm_alignment": "formal_logic_application",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "github.com/lgw863/LogiQA-dataset"
+            ],
+            "metrics": ["logical_deduction_accuracy", "constraint_satisfaction"]
+          },
+          {
+            "id": "ruletaker",
+            "name": "RuleTaker Dataset",
+            "type": "rule_based_reasoning",
+            "size": "100k+ examples",
+            "shrm_alignment": "rule_based_symbolic_reasoning",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "allenai.org/data/ruletaker"
+            ],
+            "metrics": ["multi_hop_inference", "rule_application_accuracy"]
+          },
+          {
+            "id": "asp_benchmarks",
+            "name": "Answer Set Programming Benchmarks",
+            "type": "logic_programming",
+            "size": "1000+ problems",
+            "shrm_alignment": "constraint_satisfaction_logic",
+            "priority": "low",
+            "phase": 3,
+            "sources": [
+              "aspcomp.org",
+              "potassco.org"
+            ],
+            "metrics": ["non_monotonic_reasoning", "constraint_solving_rate"]
+          },
+          {
+            "id": "arc",
+            "name": "Abstraction and Reasoning Corpus",
+            "type": "visual_symbolic",
+            "size": "1000 tasks",
+            "shrm_alignment": "pattern_abstraction_symbolic_transfer",
+            "priority": "high",
+            "phase": 3,
+            "sources": [
+              "github.com/fchollet/ARC",
+              "kaggle.com/competitions/arc-prize"
+            ],
+            "metrics": ["abstract_reasoning", "fluid_intelligence", "pattern_completion"]
+          },
+          {
+            "id": "ravens_matrices",
+            "name": "Raven's Progressive Matrices",
+            "type": "visual_symbolic",
+            "size": "70k+ problems",
+            "shrm_alignment": "symbolic_pattern_inference",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "github.com/WellyZhang/RAVEN"
+            ],
+            "metrics": ["multi_rule_inference", "abstract_pattern_recognition"]
+          },
+          {
+            "id": "codecontests",
+            "name": "CodeContests Dataset",
+            "type": "algorithmic",
+            "size": "13k problems",
+            "shrm_alignment": "algorithmic_reasoning",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "github.com/deepmind/code_contests"
+            ],
+            "metrics": ["algorithmic_problem_solving", "multi_step_reasoning"]
+          },
+          {
+            "id": "apps",
+            "name": "APPS (Automated Programming Progress)",
+            "type": "code_synthesis",
+            "size": "10k problems",
+            "shrm_alignment": "code_reasoning_synthesis",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "github.com/hendrycks/apps"
+            ],
+            "metrics": ["program_synthesis", "test_case_passing_rate"]
+          }
+        ]
+      },
+      "augmented_cognition": {
+        "count": 30,
+        "datasets": [
+          {
+            "id": "vqa_v2",
+            "name": "Visual Question Answering v2",
+            "type": "vision_language",
+            "size": "1.1M questions, 200k images",
+            "shrm_alignment": "visual_linguistic_reasoning",
+            "priority": "high",
+            "phase": 1,
+            "sources": [
+              "visualqa.org",
+              "kaggle.com/datasets/vishnu0399/vqa-v2"
+            ],
+            "metrics": ["cross_modal_accuracy", "visual_grounding"]
+          },
+          {
+            "id": "conceptual_captions",
+            "name": "Conceptual Captions",
+            "type": "vision_language",
+            "size": "3.3M image-caption pairs",
+            "shrm_alignment": "concept_grounding_across_modalities",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "github.com/google-research-datasets/conceptual-captions"
+            ],
+            "metrics": ["concept_recognition", "unified_representation_quality"]
+          },
+          {
+            "id": "gqa",
+            "name": "GQA (Visual Reasoning)",
+            "type": "vision_language",
+            "size": "22M questions, 113k images",
+            "shrm_alignment": "compositional_visual_reasoning",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "cs.stanford.edu/people/dorarad/gqa"
+            ],
+            "metrics": ["compositional_reasoning", "multi_hop_visual_inference"]
+          },
+          {
+            "id": "activitynet",
+            "name": "ActivityNet",
+            "type": "video",
+            "size": "20k videos, 200 classes",
+            "shrm_alignment": "temporal_visual_reasoning",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "activity-net.org",
+              "kaggle.com/datasets/farzadnekouei/activitynet"
+            ],
+            "metrics": ["temporal_dynamics", "causality_understanding"]
+          },
+          {
+            "id": "howto100m",
+            "name": "HowTo100M",
+            "type": "video_text",
+            "size": "136M clips, 1.2M videos",
+            "shrm_alignment": "procedural_reasoning_video_text",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "github.com/antoine77340/howto100m"
+            ],
+            "metrics": ["procedural_knowledge", "weakly_supervised_learning"]
+          },
+          {
+            "id": "charades",
+            "name": "Charades Dataset",
+            "type": "video",
+            "size": "9.8k videos, 27k actions",
+            "shrm_alignment": "fine_grained_temporal_reasoning",
+            "priority": "low",
+            "phase": 2,
+            "sources": [
+              "allenai.org/plato/charades"
+            ],
+            "metrics": ["temporal_relationships", "simultaneous_action_understanding"]
+          },
+          {
+            "id": "audioset",
+            "name": "AudioSet",
+            "type": "audio_visual",
+            "size": "2M clips, 632 classes",
+            "shrm_alignment": "audio_visual_scene_understanding",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "research.google.com/audioset"
+            ],
+            "metrics": ["sensory_integration", "scene_understanding"]
+          },
+          {
+            "id": "spoken_squad",
+            "name": "Spoken SQuAD",
+            "type": "audio_text",
+            "size": "37k+ questions",
+            "shrm_alignment": "audio_text_reasoning",
+            "priority": "low",
+            "phase": 3,
+            "sources": [
+              "github.com/chiahsuan156/spoken-squad"
+            ],
+            "metrics": ["audio_reasoning", "robustness_to_imperfection"]
+          },
+          {
+            "id": "conceptnet",
+            "name": "ConceptNet",
+            "type": "knowledge_graph",
+            "size": "8M nodes, 21M edges",
+            "shrm_alignment": "symbolic_semantic_integration",
+            "priority": "high",
+            "phase": 1,
+            "sources": [
+              "conceptnet.io",
+              "github.com/commonsense/conceptnet5"
+            ],
+            "metrics": ["knowledge_integration", "commonsense_reasoning"]
+          },
+          {
+            "id": "wikidata",
+            "name": "Wikidata",
+            "type": "knowledge_graph",
+            "size": "100M+ entities, 1.4B+ statements",
+            "shrm_alignment": "large_scale_relational_reasoning",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "wikidata.org",
+              "dumps.wikimedia.org"
+            ],
+            "metrics": ["relational_reasoning", "factual_grounding"]
+          },
+          {
+            "id": "atomic",
+            "name": "ATOMIC (Atlas of Machine Commonsense)",
+            "type": "knowledge_graph",
+            "size": "877k if-then tuples",
+            "shrm_alignment": "causal_commonsense_reasoning",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "allenai.org/data/atomic"
+            ],
+            "metrics": ["causal_inference", "commonsense_prediction"]
+          },
+          {
+            "id": "clevr",
+            "name": "CLEVR",
+            "type": "vision_language",
+            "size": "100k images, 1M questions",
+            "shrm_alignment": "compositional_reasoning_testing",
+            "priority": "high",
+            "phase": 2,
+            "sources": [
+              "cs.stanford.edu/people/jcjohns/clevr"
+            ],
+            "metrics": ["systematic_compositional_reasoning", "controlled_evaluation"]
+          },
+          {
+            "id": "nlvr2",
+            "name": "Natural Language Visual Reasoning",
+            "type": "vision_language",
+            "size": "107k examples",
+            "shrm_alignment": "language_vision_grounding",
+            "priority": "medium",
+            "phase": 2,
+            "sources": [
+              "github.com/lil-lab/nlvr"
+            ],
+            "metrics": ["semantic_grounding", "complex_language_understanding"]
+          },
+          {
+            "id": "vcr",
+            "name": "Visual Commonsense Reasoning",
+            "type": "vision_language",
+            "size": "290k questions, 110k scenes",
+            "shrm_alignment": "commonsense_visual_reasoning",
+            "priority": "high",
+            "phase": 3,
+            "sources": [
+              "visualcommonsense.com"
+            ],
+            "metrics": ["theory_of_mind", "social_dynamics_inference"]
+          },
+          {
+            "id": "scienceqa",
+            "name": "ScienceQA",
+            "type": "multimodal_science",
+            "size": "21k examples",
+            "shrm_alignment": "scientific_reasoning_integration",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "github.com/lupantech/ScienceQA"
+            ],
+            "metrics": ["scientific_knowledge", "multimodal_integration"]
+          },
+          {
+            "id": "ai2_diagrams",
+            "name": "AI2 Diagrams Dataset",
+            "type": "visual_symbolic",
+            "size": "5k diagrams",
+            "shrm_alignment": "diagram_understanding_reasoning",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "allenai.org/data/diagrams"
+            ],
+            "metrics": ["abstract_visualization", "symbolic_visual_reasoning"]
+          },
+          {
+            "id": "pubmed_multimodal",
+            "name": "PubMed Multimodal Dataset",
+            "type": "medical_multimodal",
+            "size": "1.6M papers, 5M+ figures",
+            "shrm_alignment": "scientific_literature_understanding",
+            "priority": "low",
+            "phase": 3,
+            "sources": [
+              "pubmed.ncbi.nlm.nih.gov",
+              "pmc.ncbi.nlm.nih.gov/oai/oai.cgi"
+            ],
+            "metrics": ["medical_reasoning", "image_text_integration"]
+          },
+          {
+            "id": "winogrande",
+            "name": "Winogrande",
+            "type": "text_commonsense",
+            "size": "44k problems",
+            "shrm_alignment": "robust_commonsense_reasoning",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "winogrande.allenai.org"
+            ],
+            "metrics": ["disambiguation", "world_knowledge"]
+          },
+          {
+            "id": "break",
+            "name": "Break Dataset (Question Decomposition)",
+            "type": "text",
+            "size": "83k examples",
+            "shrm_alignment": "recursive_reasoning_decomposition",
+            "priority": "high",
+            "phase": 3,
+            "sources": [
+              "github.com/allenai/break"
+            ],
+            "metrics": ["decomposition_quality", "meta_cognitive_reasoning"]
+          },
+          {
+            "id": "causal_news",
+            "name": "Causal News Corpus",
+            "type": "text_causal",
+            "size": "5k articles",
+            "shrm_alignment": "causal_inference_text",
+            "priority": "low",
+            "phase": 3,
+            "sources": [
+              "github.com/CogComp/Causal-News-Corpus"
+            ],
+            "metrics": ["causal_extraction", "narrative_causality"]
+          },
+          {
+            "id": "causal_benchmark",
+            "name": "Causal Benchmark Suite",
+            "type": "causal_inference",
+            "size": "multiple datasets",
+            "shrm_alignment": "formal_causal_reasoning",
+            "priority": "medium",
+            "phase": 3,
+            "sources": [
+              "causalbenchmark.com"
+            ],
+            "metrics": ["causal_graph_inference", "causation_vs_correlation"]
+          },
+          {
+            "id": "narrativeqa",
+            "name": "NarrativeQA",
+            "type": "long_context_text",
+            "size": "46k questions, 1,567 stories",
+            "shrm_alignment": "long_context_reasoning",
+            "priority": "low",
+            "phase": 3,
+            "sources": [
+              "github.com/deepmind/narrativeqa"
+            ],
+            "metrics": ["long_range_dependencies", "narrative_understanding"]
+          },
+          {
+            "id": "quality",
+            "name": "QuALITY",
+            "type": "long_context_text",
+            "size": "6.7k questions",
+            "shrm_alignment": "extended_context_reasoning",
+            "priority": "low",
+            "phase": 3,
+            "sources": [
+              "github.com/nyu-mll/quality"
+            ],
+            "metrics": ["information_synthesis", "memory_integration"]
+          }
+        ]
+      }
+    },
+    "implementation_phases": [
+      {
+        "phase": 1,
+        "duration_weeks": 4,
+        "focus": "Foundation",
+        "datasets": ["multinli", "math_dataset", "vqa_v2", "conceptnet"],
+        "success_criteria": {
+          "contradiction_detection": 0.85,
+          "math_problem_solving": 0.60,
+          "vqa_accuracy": 0.70,
+          "knowledge_integration": 0.80
+        }
+      },
+      {
+        "phase": 2,
+        "duration_weeks": 8,
+        "focus": "Expansion",
+        "datasets": ["fever", "lean_theorem", "howto100m", "wikidata", "clevr"],
+        "success_criteria": {
+          "multi_hop_reasoning": 0.75,
+          "proof_completion": 0.40,
+          "video_understanding": 0.65,
+          "compositional_reasoning": 0.80
+        }
+      },
+      {
+        "phase": 3,
+        "duration_weeks": 12,
+        "focus": "Mastery",
+        "datasets": ["scientific_contradictions", "arc", "vcr", "anli", "codecontests"],
+        "success_criteria": {
+          "scientific_synthesis": 0.85,
+          "arc_completion": 0.30,
+          "commonsense_reasoning": 0.80,
+          "adversarial_robustness": 0.70,
+          "code_generation": 0.50
+        }
+      },
+      {
+        "phase": 4,
+        "duration_weeks": 12,
+        "focus": "Integration",
+        "datasets": "all",
+        "success_criteria": {
+          "cross_modal_contradiction": 0.80,
+          "grounded_symbolic_reasoning": 0.75,
+          "recursive_meta_reasoning": 0.70,
+          "unified_performance": 0.75
+        }
+      }
+    ],
+    "acquisition_status": {
+      "immediate_access": 45,
+      "requires_processing": 12,
+      "requires_generation": 4,
+      "requires_license": 2
+    },
+    "storage_requirements": {
+      "estimated_total_gb": 15000,
+      "by_category": {
+        "text": 500,
+        "images": 2000,
+        "video": 10000,
+        "knowledge_graphs": 100,
+        "code": 50,
+        "audio": 2000,
+        "other": 350
+      }
+    },
+    "integration_protocols": {
+      "omega_ingest_compatible": true,
+      "keyseer_insight_compatible": true,
+      "prediction_methodologies_compatible": true,
+      "microagent_logic_compatible": true
+    }
+  }
+}
