@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "View Build Manifest",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/build_manifest.yaml",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run Barrot Dashboard",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://barrot-agent.github.io/Barrot-Agent/",
+      "webRoot": "${workspaceFolder}/site"
+    }
+  ]
+}

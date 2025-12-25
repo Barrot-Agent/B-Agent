@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Recursive Annotation Schema",
+  "description": "Schema for annotating recursive structures and combinatory patterns in ingested data",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the recursive structure"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["recursive_function", "combinatorial_pattern", "group_theory", "permutation"],
+      "description": "Type of recursive or combinatory structure"
+    },
+    "depth": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Recursion depth level"
+    },
+    "base_case": {
+      "type": "object",
+      "description": "Base case definition for recursive structures",
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "value": {
+          "type": ["string", "number", "array"]
+        }
+      }
+    },
+    "recursive_case": {
+      "type": "object",
+      "description": "Recursive case definition",
+      "properties": {
+        "transformation": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "complexity": {
+      "type": "object",
+      "description": "Computational complexity analysis",
+      "properties": {
+        "time": {
+          "type": "string"
+        },
+        "space": {
+          "type": "string"
+        }
+      }
+    },
+    "properties": {
+      "type": "object",
+      "description": "Mathematical properties",
+      "properties": {
+        "associative": {
+          "type": "boolean"
+        },
+        "commutative": {
+          "type": "boolean"
+        },
+        "idempotent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "description": "Example instances of the pattern",
+      "items": {
+        "type": "object",
+        "properties": {
+          "input": {
+            "type": ["string", "array", "object"]
+          },
+          "output": {
+            "type": ["string", "array", "object"]
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "Data provenance information",
+      "properties": {
+        "origin": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dataset": {
+          "type": "string"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "type", "depth", "source"]
+}

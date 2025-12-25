@@ -1,0 +1,417 @@
+{
+  "inventorsHub": {
+    "version": "1.0.0",
+    "platform": {
+      "name": "The Inventor's Hub",
+      "tagline": "Where Innovation Meets Opportunity",
+      "launchDate": "2026-07-01T00:00:00Z",
+      "website": "https://inventors-hub.barrot.io"
+    },
+    "tokenomics": {
+      "token": {
+        "symbol": "INVENT",
+        "name": "Inventor Token",
+        "decimals": 18,
+        "totalSupply": "500000000000000000000000000",
+        "network": "Chameleon Chain",
+        "contractAddress": "TBD"
+      },
+      "distribution": {
+        "inventorRewards": {
+          "allocation": "225000000000000000000000000",
+          "percentage": 45,
+          "vestingSchedule": "Released based on platform milestones"
+        },
+        "communityGovernance": {
+          "allocation": "100000000000000000000000000",
+          "percentage": 20,
+          "vestingSchedule": "Unlocked at DAO launch"
+        },
+        "developmentTeam": {
+          "allocation": "75000000000000000000000000",
+          "percentage": 15,
+          "vestingSchedule": "3-year linear vesting"
+        },
+        "marketingPartnerships": {
+          "allocation": "50000000000000000000000000",
+          "percentage": 10,
+          "vestingSchedule": "Released based on milestones"
+        },
+        "liquidityTreasury": {
+          "allocation": "50000000000000000000000000",
+          "percentage": 10,
+          "vestingSchedule": "Managed by treasury"
+        }
+      },
+      "rewardSchedule": {
+        "ideaSubmission": "10000000000000000000",
+        "qualitySubmission": "50000000000000000000",
+        "communityVoting": "1000000000000000000",
+        "mentorshipSession": "50000000000000000000",
+        "successfulCollab": "500000000000000000000",
+        "bugBountyMin": "100000000000000000000",
+        "bugBountyMax": "10000000000000000000000"
+      },
+      "staking": {
+        "tiers": [
+          {
+            "duration": 30,
+            "apy": 8,
+            "minimumStake": "1000000000000000000000"
+          },
+          {
+            "duration": 90,
+            "apy": 12,
+            "minimumStake": "5000000000000000000000"
+          },
+          {
+            "duration": 365,
+            "apy": 15,
+            "minimumStake": "10000000000000000000000"
+          }
+        ],
+        "unstakingPeriod": 7
+      }
+    },
+    "membership": {
+      "tiers": [
+        {
+          "name": "Basic",
+          "price": 0,
+          "features": [
+            "5 idea submissions per month",
+            "Basic collaboration tools",
+            "Community access",
+            "Standard support"
+          ],
+          "limits": {
+            "submissions": 5,
+            "storage": 1073741824,
+            "collaborators": 3
+          }
+        },
+        {
+          "name": "Pro",
+          "price": 19,
+          "currency": "USD",
+          "billingPeriod": "monthly",
+          "features": [
+            "Unlimited idea submissions",
+            "Advanced analytics",
+            "Priority support",
+            "Featured listings (1/month)",
+            "API access"
+          ],
+          "limits": {
+            "submissions": -1,
+            "storage": 10737418240,
+            "collaborators": 10
+          }
+        },
+        {
+          "name": "Enterprise",
+          "price": 199,
+          "currency": "USD",
+          "billingPeriod": "monthly",
+          "features": [
+            "Everything in Pro",
+            "Team accounts (up to 25 users)",
+            "White-label options",
+            "Dedicated account manager",
+            "Custom integrations",
+            "SLA guarantee"
+          ],
+          "limits": {
+            "submissions": -1,
+            "storage": 107374182400,
+            "collaborators": 25,
+            "teamMembers": 25
+          }
+        }
+      ],
+      "annualDiscount": 20
+    },
+    "fees": {
+      "transaction": {
+        "sales": 5,
+        "licensing": 5,
+        "royalties": 3
+      },
+      "featured": {
+        "listing": 50,
+        "boost": 25,
+        "category": 100
+      },
+      "services": {
+        "patentFiling": 99,
+        "expertReview": 49,
+        "escrow": 1
+      }
+    },
+    "categories": [
+      {
+        "id": "tech-software",
+        "name": "Technology & Software",
+        "subcategories": [
+          "Mobile Apps",
+          "Web Applications",
+          "AI & Machine Learning",
+          "Blockchain",
+          "DevOps Tools",
+          "Cybersecurity"
+        ]
+      },
+      {
+        "id": "hardware-electronics",
+        "name": "Hardware & Electronics",
+        "subcategories": [
+          "IoT Devices",
+          "Wearables",
+          "Robotics",
+          "Circuit Design",
+          "Sensors",
+          "Consumer Electronics"
+        ]
+      },
+      {
+        "id": "biotech",
+        "name": "Biotechnology",
+        "subcategories": [
+          "Medical Devices",
+          "Pharmaceuticals",
+          "Diagnostics",
+          "Genetic Engineering",
+          "Lab Equipment"
+        ]
+      },
+      {
+        "id": "green-energy",
+        "name": "Green Energy",
+        "subcategories": [
+          "Solar Technology",
+          "Wind Power",
+          "Battery Storage",
+          "Hydrogen Fuel",
+          "Energy Efficiency"
+        ]
+      },
+      {
+        "id": "consumer-products",
+        "name": "Consumer Products",
+        "subcategories": [
+          "Home Goods",
+          "Kitchen Gadgets",
+          "Fitness Equipment",
+          "Travel Accessories",
+          "Pet Products"
+        ]
+      },
+      {
+        "id": "industrial",
+        "name": "Industrial Design",
+        "subcategories": [
+          "Manufacturing Processes",
+          "Materials Science",
+          "Automation",
+          "Quality Control",
+          "Supply Chain"
+        ]
+      },
+      {
+        "id": "art-creative",
+        "name": "Art & Creative",
+        "subcategories": [
+          "Design Tools",
+          "Digital Art",
+          "Music Technology",
+          "Content Creation",
+          "Educational Tools"
+        ]
+      },
+      {
+        "id": "social-impact",
+        "name": "Social Innovation",
+        "subcategories": [
+          "Education",
+          "Healthcare Access",
+          "Environmental Solutions",
+          "Community Development",
+          "Accessibility"
+        ]
+      }
+    ],
+    "ratings": {
+      "innovationScore": {
+        "min": 1,
+        "max": 10,
+        "weight": 30
+      },
+      "feasibilityScore": {
+        "min": 1,
+        "max": 10,
+        "weight": 25
+      },
+      "marketPotential": {
+        "min": 1,
+        "max": 10,
+        "weight": 25
+      },
+      "impactRating": {
+        "min": 1,
+        "max": 10,
+        "weight": 20
+      },
+      "minimumReviews": 5,
+      "expertMultiplier": 2
+    },
+    "collaboration": {
+      "roles": [
+        "Lead Inventor",
+        "Co-Inventor",
+        "Technical Advisor",
+        "Business Strategist",
+        "Designer",
+        "Engineer",
+        "Marketer",
+        "Investor"
+      ],
+      "contributionTracking": {
+        "types": [
+          "Conceptual Development",
+          "Technical Implementation",
+          "Design Work",
+          "Testing & Validation",
+          "Documentation",
+          "Funding",
+          "Marketing"
+        ],
+        "granularity": "hourly"
+      },
+      "revenueSharing": {
+        "model": "smart-contract",
+        "minimumShare": 1,
+        "maximumShare": 100,
+        "automatic": true
+      }
+    },
+    "governance": {
+      "dao": {
+        "proposalThreshold": "100000000000000000000000",
+        "votingPeriod": 604800,
+        "quorum": 10,
+        "approvalThreshold": 60
+      },
+      "votingTopics": [
+        "Platform Fees",
+        "Token Distribution",
+        "Feature Roadmap",
+        "Partnership Approval",
+        "Treasury Management",
+        "Category Addition",
+        "Policy Changes"
+      ]
+    },
+    "partnerships": {
+      "universities": [
+        "MIT",
+        "Stanford",
+        "UC Berkeley",
+        "Cambridge",
+        "ETH Zurich"
+      ],
+      "makerSpaces": [
+        "TechShop",
+        "FabLab",
+        "Hackerspace"
+      ],
+      "legal": [
+        "Patent Attorney Network",
+        "IP Law Firms"
+      ],
+      "accelerators": [
+        "Y Combinator",
+        "Techstars",
+        "500 Startups"
+      ],
+      "manufacturing": [
+        "PCBWay",
+        "Alibaba",
+        "ThomasNet"
+      ],
+      "funding": [
+        "Kickstarter",
+        "Indiegogo",
+        "Angel List"
+      ]
+    },
+    "roadmap": {
+      "Q2-2026": {
+        "title": "Beta Launch",
+        "milestones": [
+          "Platform MVP release",
+          "1,000 early adopter onboarding",
+          "Core features: submission, collaboration",
+          "Security audit completion"
+        ]
+      },
+      "Q3-2026": {
+        "title": "Public Launch",
+        "milestones": [
+          "Open registration",
+          "INVENT token generation event",
+          "Marketing campaign launch",
+          "10,000 registered inventors",
+          "First partnerships announced"
+        ]
+      },
+      "Q4-2026": {
+        "title": "Ecosystem Growth",
+        "milestones": [
+          "Manufacturing partnerships",
+          "Patent attorney network",
+          "Chameleon Chain integration",
+          "International expansion (5 countries)",
+          "Mobile app beta"
+        ]
+      },
+      "2027": {
+        "title": "Platform Maturity",
+        "milestones": [
+          "100,000+ registered inventors",
+          "$10M+ annual GMV",
+          "DAO governance activation",
+          "Mobile apps (iOS, Android)",
+          "50+ strategic partnerships"
+        ]
+      }
+    },
+    "metrics": {
+      "targets": {
+        "yearOne": {
+          "activeUsers": 50000,
+          "ideasSubmitted": 100000,
+          "commercializations": 500,
+          "gmv": 50000000,
+          "platformRevenue": 2500000
+        },
+        "yearTwo": {
+          "activeUsers": 150000,
+          "ideasSubmitted": 500000,
+          "commercializations": 2000,
+          "gmv": 200000000,
+          "platformRevenue": 10000000
+        }
+      },
+      "kpis": [
+        "Monthly Active Users",
+        "Idea Submission Rate",
+        "Collaboration Success Rate",
+        "Average Transaction Value",
+        "Token Holder Count",
+        "Platform Revenue",
+        "User Retention Rate",
+        "NPS Score"
+      ]
+    }
+  }
+}
