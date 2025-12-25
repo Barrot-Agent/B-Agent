@@ -1,12 +1,33 @@
+<<<<<<< HEAD
 name: GitHub Pages
 
 on:
   push:
     branches: [ main ]
+=======
+name: Deploy Barrot Website
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+>>>>>>> origin/copilot/add-barrot-website-functionality
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     permissions:
       contents: read
       pages: write
@@ -26,3 +47,46 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+=======
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          npm install
+      
+      - name: Run tests
+        run: |
+          npm test
+      
+      - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm install -g vercel
+          vercel --prod --token=$VERCEL_TOKEN
+      
+      - name: Setup Pages (Alternative deployment)
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: actions/configure-pages@v3
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './website'
+      
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        id: deployment
+        uses: actions/deploy-pages@v2
+>>>>>>> origin/copilot/add-barrot-website-functionality
