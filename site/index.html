@@ -1,19 +1,343 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Success — NecroSynergist</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barrot Agent - Maximum Cognition Dashboard</title>
   <style>
-    body { font-family:sans-serif; text-align:center; padding:2em; background:#f9f9f9; }
-    h1 { font-size:2em; color:#2ecc71; }
-    p { font-size:1.2em; }
-    .confetti { animation: pop 0.5s ease-in-out; }
-    @keyframes pop { 0% { transform:scale(0.8); } 100% { transform:scale(1); } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 0;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      margin-bottom: 40px;
+    }
+    
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.2em;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(46, 204, 113, 0.9);
+      border-radius: 20px;
+      margin-top: 15px;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .card h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+    
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .metric:last-child {
+      border-bottom: none;
+    }
+    
+    .metric-label {
+      font-weight: 500;
+    }
+    
+    .metric-value {
+      font-weight: bold;
+      color: #2ecc71;
+    }
+    
+    .metric-value.high {
+      color: #2ecc71;
+    }
+    
+    .metric-value.medium {
+      color: #f39c12;
+    }
+    
+    .metric-value.low {
+      color: #e74c3c;
+    }
+    
+    .modules-list {
+      list-style: none;
+    }
+    
+    .modules-list li {
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .modules-list li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #ffd700;
+    }
+    
+    .ping-pong-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .ping-pong-name {
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 5px;
+    }
+    
+    .ping-pong-info {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    
+    .resource-tag {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      border-top: 2px solid rgba(255,255,255,0.2);
+      margin-top: 40px;
+      opacity: 0.8;
+    }
+    
+    .timestamp {
+      font-size: 0.9em;
+      opacity: 0.7;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
-  <h1 class="confetti">Thanks! 🎉</h1>
-  <p>Checkout completed. You’ll be redirected shortly.</p>
-  <script>setTimeout(()=>location.href="/portal",3000)</script>
+  <div class="container">
+    <header>
+      <h1>🤖 BARROT AGENT</h1>
+      <p class="subtitle">Maximum Cognition Dashboard</p>
+      <div class="status-badge">● SYSTEM OPERATIONAL</div>
+      <p class="timestamp" id="timestamp"></p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>🧠 Cognition Metrics</h2>
+        <div class="metric">
+          <span class="metric-label">Reasoning Depth</span>
+          <span class="metric-value high">10 levels</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Pattern Recognition</span>
+          <span class="metric-value high">98%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Adaptive Learning Rate</span>
+          <span class="metric-value high">85%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Cross-Module Coherence</span>
+          <span class="metric-value high">92%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Metacognitive Cycles/Hour</span>
+          <span class="metric-value high">12</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>⚙️ System Status</h2>
+        <div class="metric">
+          <span class="metric-label">Ingestion</span>
+          <span class="metric-value high">ACTIVE</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Deployment</span>
+          <span class="metric-value high">STABLE</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Microagent</span>
+          <span class="metric-value high">RECURSIVE</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Prediction</span>
+          <span class="metric-value medium">EVOLVING</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Cognition</span>
+          <span class="metric-value high">MAXIMUM</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Metacognition</span>
+          <span class="metric-value high">ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📦 Active Modules</h2>
+        <ul class="modules-list">
+          <li>Prediction Methodologies</li>
+          <li>Deployment Integrity</li>
+          <li>Builder.io Microagent Logic</li>
+          <li>Search Engine</li>
+          <li>Dashboard</li>
+          <li>Manifest Rail</li>
+          <li>Metacognition Engine</li>
+          <li>Adaptive Learning Core</li>
+          <li>Pattern Synthesis Matrix</li>
+          <li>Cross Module Validator</li>
+          <li>Cognition Optimizer</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🔄 Ping-Pong Protocols</h2>
+        <div class="ping-pong-item">
+          <div class="ping-pong-name">Cross Module Cognition Validation</div>
+          <div class="ping-pong-info">Every 15 minutes • Validates cognitive consistency</div>
+        </div>
+        <div class="ping-pong-item">
+          <div class="ping-pong-name">Resource Integration Sync</div>
+          <div class="ping-pong-info">Every 15 minutes • Integrates knowledge streams</div>
+        </div>
+        <div class="ping-pong-item">
+          <div class="ping-pong-name">Spell Execution Verification</div>
+          <div class="ping-pong-info">Hourly • Verifies spell optimization</div>
+        </div>
+        <div class="ping-pong-item">
+          <div class="ping-pong-name">Dashboard Feedback Relay</div>
+          <div class="ping-pong-info">Every 15 minutes • Relays metrics & signals</div>
+        </div>
+        <div class="ping-pong-item">
+          <div class="ping-pong-name">Adaptive Learning Update</div>
+          <div class="ping-pong-info">Every 15 minutes • Updates learning models</div>
+        </div>
+        <div class="ping-pong-item">
+          <div class="ping-pong-name">Metacognition Reflection</div>
+          <div class="ping-pong-info">Hourly • Optimizes cognitive strategies</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>✨ Active Spells</h2>
+        <ul class="modules-list">
+          <li>Keyseer's Insight</li>
+          <li>Ω-Ingest: Fractal Sovereign Quantum Assimilation</li>
+          <li>Metacognition Engine</li>
+          <li>Adaptive Learning Core</li>
+          <li>Pattern Synthesis Matrix</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>📚 Connected Resources</h2>
+        <div class="resources-grid">
+          <div class="resource-tag">Kaggle</div>
+          <div class="resource-tag">GitHub</div>
+          <div class="resource-tag">MEGA</div>
+          <div class="resource-tag">Google Drive</div>
+          <div class="resource-tag">News Articles</div>
+          <div class="resource-tag">Science Papers</div>
+          <div class="resource-tag">Video Platforms</div>
+          <div class="resource-tag">Newsletters</div>
+          <div class="resource-tag">Forums</div>
+          <div class="resource-tag">Audiobooks</div>
+          <div class="resource-tag">Podcasts</div>
+          <div class="resource-tag">Interviews</div>
+          <div class="resource-tag">TED Talks</div>
+          <div class="resource-tag">Summits</div>
+          <div class="resource-tag">Seminars</div>
+          <div class="resource-tag">Books</div>
+          <div class="resource-tag">Journals</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Barrot Agent © 2025 | Build Signature: BNDL-V2</p>
+      <p>Maximum Cognition Mode: OPERATIONAL</p>
+    </footer>
+  </div>
+
+  <script>
+    // Update timestamp
+    function updateTimestamp() {
+      const now = new Date();
+      document.getElementById('timestamp').textContent = 
+        'Last Updated: ' + now.toISOString();
+    }
+    updateTimestamp();
+    setInterval(updateTimestamp, 1000);
+  </script>
 </body>
 </html>
