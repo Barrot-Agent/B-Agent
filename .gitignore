@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-=======
-# Dependencies
-node_modules/
 package-lock.json
 yarn.lock
 
@@ -23,29 +15,29 @@ backend/db/*.db-journal
 .env.local
 .env.development
 .env.production
+.env.*.local
+
+# Build outputs
+dist/
+build/
+.next/
+out/
 
 # Logs
 logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
 pids/
 *.pid
 *.seed
 *.pid.lock
->>>>>>> origin/copilot/add-barrot-website-functionality
 
-# Build outputs
-dist/
-build/
-<<<<<<< HEAD
-*.log
-=======
-.next/
-out/
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.cache
 
 # IDE and editor files
 .vscode/
@@ -53,33 +45,25 @@ out/
 *.swp
 *.swo
 *~
+
+# OS
 .DS_Store
+Thumbs.db
 
 # Testing
 coverage/
 .nyc_output/
->>>>>>> origin/copilot/add-barrot-website-functionality
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Temporary files
-tmp/
-temp/
-*.tmp
-*.cache
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
-=======
->>>>>>> origin/copilot/add-snapshot-functionality
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -95,87 +79,13 @@ wheels/
 
 # Virtual environments
 venv/
-<<<<<<< HEAD
-<<<<<<< HEAD
-env/
 ENV/
+env/
 env.bak/
 venv.bak/
->>>>>>> origin/copilot/ingest-datasets-and-tools
-
-# IDE
-=======
-ENV/
-env/
-
-# IDEs
->>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
-=======
-ENV/
-env/
-
-# IDE
->>>>>>> origin/copilot/add-snapshot-functionality
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Test coverage
-coverage/
-.nyc_output/
-
-# Backups
-*.bak
-*.backup
-=======
-# Logs
-*.log
-
-# Temporary files
-tmp/
-*.tmp
-*.cache
-
-# Dataset demonstration files (can be regenerated)
-datasets/demonstration/
-
-# Node modules
-node_modules/
-
-# Build artifacts
-*.pyc
->>>>>>> origin/copilot/ingest-datasets-and-tools
-=======
-# Logs
-*.log
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
 
 # Jupyter
 .ipynb_checkpoints
-
-# Temporary files
-/tmp/
-*.tmp
->>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
-=======
 
 # Vercel
 .vercel
@@ -183,18 +93,17 @@ htmlcov/
 # Production
 *.production
 
-# Recordings (optional - uncomment if you don't want to commit recordings)
-# recordings/
-# *.webm
+# Backups
+*.bak
+*.backup
 
-# OS files
-Thumbs.db
-.DS_Store
->>>>>>> origin/copilot/add-barrot-website-functionality
-=======
-# Logs
-*.log
+# Dataset demonstration files (can be regenerated)
+datasets/demonstration/
 
 # HTML dashboards (generated)
 snapshot_dashboard.html
->>>>>>> origin/copilot/add-snapshot-functionality
+
+# Product ZIPs (for Gumroad upload - keep in repo for easy access)
+# Uncomment if you don't want to commit product ZIPs
+# *.zip
+# GitHub-Actions-Workflow-Bundle.zip
