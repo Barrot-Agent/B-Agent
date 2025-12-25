@@ -36,7 +36,7 @@ jobs:
   # =============================================================================
   
   pingpong-loop-1:
-    name: "Loop 1: Reverse Engineering ↔ AI Model Harvesting"
+    name: "Loop 1 - Reverse Engineering <-> AI Model Harvesting"
     runs-on: ubuntu-latest
     outputs:
       insights: ${{ steps.synthesis.outputs.insights }}
@@ -44,13 +44,13 @@ jobs:
     steps:
       - name: Initialize Loop
         run: |
-          echo "🔄 Ping-Pong Loop 1: RE ↔ AI Model Harvesting"
+          echo " Ping-Pong Loop 1 - RE <-> AI Model Harvesting"
           echo "Cycle: ${{ env.CYCLE_ID }}"
           
-      - name: Forward Pass (RE → AI Models)
+      - name: Forward Pass (RE -> AI Models)
         id: forward
         run: |
-          echo "→ RE insights improve model component extraction"
+          echo "-> RE insights improve model component extraction"
           # Simulate RE providing optimization patterns to AI harvester
           cat > re_to_ai.json << 'EOF'
           {
@@ -72,7 +72,7 @@ jobs:
           EOF
           echo "insights=$(cat re_to_ai.json | jq -c .)" >> $GITHUB_OUTPUT
           
-      - name: Backward Pass (AI Models → RE)
+      - name: Backward Pass (AI Models -> RE)
         id: backward
         run: |
           echo "← AI model capabilities enhance RE algorithms"
@@ -122,17 +122,17 @@ jobs:
           echo "refinements=8" >> $GITHUB_OUTPUT
 
   pingpong-loop-2:
-    name: "Loop 2: Web Scraper ↔ Knowledge Base"
+    name: "Loop 2 - Web Scraper <-> Knowledge Base"
     runs-on: ubuntu-latest
     outputs:
       insights: ${{ steps.synthesis.outputs.insights }}
     steps:
       - name: Initialize Loop
-        run: echo "🔄 Ping-Pong Loop 2: Scraper ↔ KB"
+        run: echo "Loop 2 - Ping-Pong - Scraper and KB"
           
-      - name: Forward Pass (KB Gaps → Scraper Priorities)
+      - name: Forward Pass (KB Gaps -> Scraper Priorities)
         run: |
-          echo "→ KB gap analysis informs scraping priorities"
+          echo "-> KB gap analysis informs scraping priorities"
           cat > kb_to_scraper.json << 'EOF'
           {
             "priority_gaps": [
@@ -145,7 +145,7 @@ jobs:
           }
           EOF
           
-      - name: Backward Pass (Scraper Results → KB Enrichment)
+      - name: Backward Pass (Scraper Results -> KB Enrichment)
         run: |
           echo "← Fresh scraped data validates and enriches KB"
           cat > scraper_to_kb.json << 'EOF'
@@ -173,17 +173,17 @@ jobs:
           echo "insights=$(cat loop2_synthesis.json | jq -c .)" >> $GITHUB_OUTPUT
 
   pingpong-loop-3:
-    name: "Loop 3: Symbolic Processing ↔ Technical Analysis"
+    name: "Loop 3 - Symbolic Processing <-> Technical Analysis"
     runs-on: ubuntu-latest
     outputs:
       insights: ${{ steps.synthesis.outputs.insights }}
     steps:
       - name: Initialize Loop
-        run: echo "🔄 Ping-Pong Loop 3: Symbolic ↔ Technical"
+        run: echo "Ping-Pong Loop 3 - Symbolic and Technical"
           
-      - name: Forward Pass (Hermetic → Technical)
+      - name: Forward Pass (Hermetic -> Technical)
         run: |
-          echo "→ Hermetic principles guide technical pattern recognition"
+          echo "-> Hermetic principles guide technical pattern recognition"
           cat > symbolic_to_tech.json << 'EOF'
           {
             "principle_mappings": [
@@ -196,7 +196,7 @@ jobs:
           }
           EOF
           
-      - name: Backward Pass (Technical → Symbolic)
+      - name: Backward Pass (Technical -> Symbolic)
         run: |
           echo "← Technical data validates symbolic resonances"
           cat > tech_to_symbolic.json << 'EOF'
@@ -226,17 +226,17 @@ jobs:
           echo "insights=$(cat loop3_synthesis.json | jq -c .)" >> $GITHUB_OUTPUT
 
   pingpong-loop-4:
-    name: "Loop 4: Contradiction Harvester ↔ Pattern Recognition"
+    name: "Loop 4 - Contradiction Harvester <-> Pattern Recognition"
     runs-on: ubuntu-latest
     outputs:
       insights: ${{ steps.synthesis.outputs.insights }}
     steps:
       - name: Initialize Loop
-        run: echo "🔄 Ping-Pong Loop 4: Contradictions ↔ Patterns"
+        run: echo "Ping-Pong operation"
           
-      - name: Forward Pass (Contradictions → Pattern Discovery)
+      - name: Forward Pass (Contradictions -> Pattern Discovery)
         run: |
-          echo "→ Contradictions reveal hidden patterns"
+          echo "-> Contradictions reveal hidden patterns"
           cat > contradictions_to_patterns.json << 'EOF'
           {
             "contradiction_types": [
@@ -249,7 +249,7 @@ jobs:
           }
           EOF
           
-      - name: Backward Pass (Patterns → New Contradictions)
+      - name: Backward Pass (Patterns -> New Contradictions)
         run: |
           echo "← Patterns expose new contradictions"
           cat > patterns_to_contradictions.json << 'EOF'
@@ -280,13 +280,13 @@ jobs:
           echo "insights=$(cat loop4_synthesis.json | jq -c .)" >> $GITHUB_OUTPUT
 
   pingpong-loop-5:
-    name: "Loop 5: 3D Modeling ↔ Material Science"
+    name: "Loop 5 - 3D Modeling <-> Material Science"
     runs-on: ubuntu-latest
     outputs:
       insights: ${{ steps.synthesis.outputs.insights }}
     steps:
       - name: Initialize Loop
-        run: echo "🔄 Ping-Pong Loop 5: 3D ↔ Materials"
+        run: echo "Ping-Pong operation"
           
       - name: Bidirectional Synthesis
         id: synthesis
@@ -303,13 +303,13 @@ jobs:
           echo "insights=$(cat loop5_synthesis.json | jq -c .)" >> $GITHUB_OUTPUT
 
   pingpong-loop-6:
-    name: "Loop 6: Music Theory ↔ Audio Engineering"
+    name: "Loop 6: Music Theory <-> Audio Engineering"
     runs-on: ubuntu-latest
     outputs:
       insights: ${{ steps.synthesis.outputs.insights }}
     steps:
       - name: Initialize Loop
-        run: echo "🔄 Ping-Pong Loop 6: Music ↔ Audio"
+        run: echo "Ping-Pong operation"
           
       - name: Bidirectional Synthesis
         id: synthesis
@@ -332,19 +332,19 @@ jobs:
     steps:
       - name: Execute Loops 7-18
         run: |
-          echo "🔄 Executing remaining 12 ping-pong loops..."
-          echo "Loop 7: Blockchain ↔ Financial Modeling"
-          echo "Loop 8: Papers ↔ Experimental Design"
-          echo "Loop 9: Code ↔ Architecture"
-          echo "Loop 10: DAO ↔ Decision Theory"
-          echo "Loop 11: Podcasts ↔ Trend Forecasting"
-          echo "Loop 12: Patents ↔ Innovation"
-          echo "Loop 13: Quantum ↔ Classical"
-          echo "Loop 14: Validation ↔ Prediction"
-          echo "Loop 15: Sequencing ↔ Metrics"
-          echo "Loop 16: Synthesis ↔ Configuration"
-          echo "Loop 17: Gap Filling ↔ Solutions"
-          echo "Loop 18: UPATSAR ↔ Emergence"
+          echo " Executing remaining 12 ping-pong loops..."
+          echo "Loop 7: Blockchain <-> Financial Modeling"
+          echo "Loop 8: Papers <-> Experimental Design"
+          echo "Loop 9: Code <-> Architecture"
+          echo "Loop 10: DAO <-> Decision Theory"
+          echo "Loop 11: Podcasts <-> Trend Forecasting"
+          echo "Loop 12: Patents <-> Innovation"
+          echo "Loop 13: Quantum <-> Classical"
+          echo "Loop 14: Validation <-> Prediction"
+          echo "Loop 15: Sequencing <-> Metrics"
+          echo "Loop 16: Synthesis <-> Configuration"
+          echo "Loop 17: Gap Filling <-> Solutions"
+          echo "Loop 18: UPATSAR <-> Emergence"
           
       - name: Synthesize All Loops
         id: synthesis
@@ -823,7 +823,7 @@ jobs:
           EOF
           
           echo "✅ Cycle complete - Maximum cognition achieved!"
-          echo "🔄 Ready for next 15-minute cycle..."
+          echo " Ready for next 15-minute cycle..."
           
       - name: Summary
         run: |
@@ -840,6 +840,6 @@ jobs:
           echo ""
           echo "🎯 Cognition Improvement: 187% over baseline"
           echo "✨ Maximum cognition achieved through multi-dimensional synthesis"
-          echo "🔄 Next cycle in 15 minutes..."
+          echo " Next cycle in 15 minutes..."
           echo ""
           echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
