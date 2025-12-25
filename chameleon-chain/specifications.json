@@ -1,0 +1,201 @@
+{
+  "chameleonChain": {
+    "version": "1.0.0",
+    "networkId": "chameleon-mainnet-1",
+    "consensus": {
+      "algorithm": "Chameleon-BFT",
+      "blockTime": 2,
+      "finalityTime": 3,
+      "validatorCount": 100,
+      "adaptiveProtocols": [
+        "PoS",
+        "PoW-emulation",
+        "PoA",
+        "BFT",
+        "Tendermint",
+        "HotStuff"
+      ]
+    },
+    "performance": {
+      "tps": 100000,
+      "latency": 500,
+      "blockSize": 10485760,
+      "stateSize": "unlimited"
+    },
+    "nativeToken": {
+      "symbol": "CHAM",
+      "name": "Chameleon Token",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000000",
+      "genesisAllocation": {
+        "ecosystem": "400000000000000000000000000",
+        "team": "250000000000000000000000000",
+        "presale": "200000000000000000000000000",
+        "partnerships": "100000000000000000000000000",
+        "treasury": "50000000000000000000000000"
+      }
+    },
+    "interoperability": {
+      "supportedChains": [
+        {
+          "name": "Ethereum",
+          "chainId": 1,
+          "bridgeContract": "TBD_DEPLOY_MAINNET",
+          "status": "active"
+        },
+        {
+          "name": "Binance Smart Chain",
+          "chainId": 56,
+          "bridgeContract": "TBD_DEPLOY_MAINNET",
+          "status": "active"
+        },
+        {
+          "name": "Polygon",
+          "chainId": 137,
+          "bridgeContract": "TBD_DEPLOY_MAINNET",
+          "status": "active"
+        },
+        {
+          "name": "Bitcoin",
+          "protocol": "UTXO",
+          "bridgeType": "threshold-signature",
+          "status": "active"
+        },
+        {
+          "name": "Solana",
+          "protocol": "Proof-of-History",
+          "bridgeContract": "...",
+          "status": "active"
+        },
+        {
+          "name": "Cosmos",
+          "protocol": "IBC",
+          "channelId": "channel-0",
+          "status": "active"
+        }
+      ],
+      "bridgeProtocol": {
+        "type": "trustless",
+        "validators": 67,
+        "threshold": "2/3+1",
+        "attestationDelay": 10,
+        "relayers": 100
+      }
+    },
+    "smartContracts": {
+      "vmSupport": [
+        "EVM",
+        "WASM",
+        "MoveVM",
+        "SolanaVM"
+      ],
+      "languages": [
+        "Solidity",
+        "Vyper",
+        "Rust",
+        "Move",
+        "AssemblyScript"
+      ],
+      "gasModel": "dynamic",
+      "maxGasPerBlock": 50000000
+    },
+    "security": {
+      "cryptography": {
+        "hashing": "SHA3-256",
+        "signing": "ECDSA-secp256k1",
+        "quantumResistant": "Dilithium",
+        "zkProofs": "Groth16"
+      },
+      "validators": {
+        "minimumStake": "10000000000000000000000",
+        "slashingConditions": [
+          "double-signing",
+          "downtime",
+          "invalid-attestation"
+        ],
+        "slashingPercentage": {
+          "minor": 1,
+          "major": 5,
+          "critical": 100
+        }
+      }
+    },
+    "governance": {
+      "proposalThreshold": "1000000000000000000000000",
+      "votingPeriod": 604800,
+      "executionDelay": 604800,
+      "quorum": 10,
+      "approvalThreshold": 51
+    },
+    "economics": {
+      "transactionFees": {
+        "minimum": "1000000000000000",
+        "baseFee": "dynamic",
+        "priorityFee": "user-defined",
+        "feeDistribution": {
+          "validators": 60,
+          "burn": 30,
+          "treasury": 10
+        }
+      },
+      "inflation": {
+        "annual": 5,
+        "target": "validators-stakers",
+        "halvingSchedule": false
+      }
+    },
+    "presale": {
+      "rounds": [
+        {
+          "name": "Seed",
+          "price": 0.01,
+          "allocation": "50000000000000000000000000",
+          "bonus": 10,
+          "vesting": "20% TGE, 80% linear 12 months"
+        },
+        {
+          "name": "Private",
+          "price": 0.015,
+          "allocation": "70000000000000000000000000",
+          "bonus": 5,
+          "vesting": "20% TGE, 80% linear 10 months"
+        },
+        {
+          "name": "Public",
+          "price": 0.02,
+          "allocation": "80000000000000000000000000",
+          "bonus": 0,
+          "vesting": "30% TGE, 70% linear 8 months"
+        }
+      ],
+      "launchDate": "2026-06-01T00:00:00Z",
+      "listingPrice": 0.025
+    },
+    "roadmap": {
+      "Q1-2026": [
+        "Testnet launch",
+        "Validator onboarding",
+        "Developer SDK release",
+        "Security audits"
+      ],
+      "Q2-2026": [
+        "Mainnet launch",
+        "Token Generation Event",
+        "First 10 partnerships",
+        "Bridge activation for 5 chains"
+      ],
+      "Q3-2026": [
+        "20+ chain support",
+        "DeFi primitives launch",
+        "Mobile wallet release",
+        "Grant program initiation"
+      ],
+      "Q4-2026": [
+        "AI-optimized routing",
+        "Enterprise partnerships",
+        "Governance activation",
+        "100+ dApps milestone"
+      ]
+    }
+  }
+}
