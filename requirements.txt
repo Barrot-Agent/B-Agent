@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Permutation and Combinatorial Libraries
 itertools-recipes>=0.0.2  # Extended itertools recipes for permutations
 sympy>=1.12  # Symbolic mathematics including permutation groups
@@ -29,3 +30,50 @@ pennylane>=0.33.0  # Quantum machine learning
 kaggle>=1.5.16  # Kaggle API for dataset downloads
 requests>=2.31.0  # HTTP library
 pyyaml>=6.0  # YAML parsing for configurations
+=======
+# Barrot AGI Dependencies
+
+# Core dependencies
+python>=3.8
+
+# Data processing
+numpy>=1.21.0
+pandas>=1.3.0
+
+# Machine Learning (optional but recommended)
+# Install as needed for full functionality
+# scikit-learn>=1.0.0
+# torch>=1.10.0
+# tensorflow>=2.8.0
+
+# Multimodal Processing
+# opencv-python>=4.5.0  # For image processing
+# openai-whisper>=20230124  # For audio transcription
+# librosa>=0.9.0  # For audio analysis
+
+# Knowledge Graphs
+# neo4j>=5.0.0  # For Neo4j integration
+# py2neo>=2021.2.3  # Alternative Neo4j driver
+
+# Quantum Computing
+# qiskit>=0.39.0  # IBM Qiskit for quantum algorithms
+# qiskit-aer>=0.11.0  # Qiskit simulator
+
+# NLP and Transformers
+# sentence-transformers>=2.2.0  # For semantic embeddings
+# transformers>=4.25.0  # Hugging Face transformers
+# openai>=0.27.0  # OpenAI API (Gemini alternative)
+
+# Reinforcement Learning
+# stable-baselines3>=1.7.0  # For RL algorithms
+# gym>=0.21.0  # OpenAI Gym environments
+
+# Monitoring and Visualization
+# streamlit>=1.15.0  # For interactive dashboards
+# plotly>=5.11.0  # For interactive plots
+# prometheus-client>=0.15.0  # For Grafana integration
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+>>>>>>> origin/copilot/enhance-autonomous-learning-capabilities

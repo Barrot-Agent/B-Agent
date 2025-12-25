@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -17,6 +18,8 @@ temp/
 *.tmp
 *.cache
 =======
+=======
+>>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
 # Python
 __pycache__/
 *.py[cod]
@@ -41,6 +44,7 @@ wheels/
 
 # Virtual environments
 venv/
+<<<<<<< HEAD
 env/
 ENV/
 env.bak/
@@ -48,6 +52,12 @@ venv.bak/
 >>>>>>> origin/copilot/ingest-datasets-and-tools
 
 # IDE
+=======
+ENV/
+env/
+
+# IDEs
+>>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
 .vscode/
 .idea/
 *.swp
@@ -58,6 +68,7 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 # Environment variables
 .env
@@ -89,3 +100,19 @@ node_modules/
 # Build artifacts
 *.pyc
 >>>>>>> origin/copilot/ingest-datasets-and-tools
+=======
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Temporary files
+/tmp/
+*.tmp
+>>>>>>> origin/copilot/enhance-autonomous-learning-capabilities
