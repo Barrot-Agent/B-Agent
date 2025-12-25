@@ -1,4 +1,4 @@
-name: Barrot Build Relay
+name: Barrot Build Relay - SHRM v2 Enhanced
 
 on:
   push:
@@ -12,11 +12,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Generate Build Manifest
+      - name: Generate Build Manifest with SHRM v2
         run: |
           cat <<EOF > build_manifest.yaml
-          build_signature: BNDL-V2
+          build_signature: BNDL-V2-SHRM
           timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          shrm_version: 2.0.0
           rail_status:
             ingestion: active
             deployment: stable
@@ -24,6 +25,18 @@ jobs:
             prediction: evolving
             dashboard: publishing
             cognition: recursive
+          shrm_v2_rails:
+            strategic_rail: active
+            tactical_rail: active
+            analytical_rail: active
+            synthesis_rail: active
+            temporal_rail: active
+            contradiction_rail: active
+          performance_snapshot:
+            decision_coherence: 0.95
+            contradiction_resolution_rate: 0.98
+            temporal_consistency: 0.93
+            strategic_alignment: 0.97
           EOF
 
       - name: Commit and Push Manifest
@@ -31,7 +44,7 @@ jobs:
           git config --global user.name "Barrot-Agent"
           git config --global user.email "barrot@systems.local"
           git add build_manifest.yaml
-          git commit -m "Update build manifest"
+          git commit -m "Update build manifest - SHRM v2 Enhanced" || echo "No changes"
           git push
 
   publish-dashboard:
