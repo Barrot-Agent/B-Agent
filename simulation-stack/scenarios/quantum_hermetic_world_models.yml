@@ -63,12 +63,12 @@ test_configurations:
       - symbolic: hermetic_principle_model
       - practical: platform_manifestation_model
     integration:
-      - Vertical: connect layers hierarchically
-      - Horizontal: map correspondences across layers
-      - Temporal: track evolution through time
+      vertical: connect layers hierarchically
+      horizontal: map correspondences across layers
+      temporal: track evolution through time
     expected_behaviors:
       - Coherent cross-layer reasoning
-      - "As above, so below" validation
+      - As above so below validation
       - Practical manifestation from abstract principles
       - Contradiction as creative polarity
 
