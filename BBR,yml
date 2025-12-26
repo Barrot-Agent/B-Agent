@@ -1,5 +1,9 @@
 name: Barrot Build Relay
 
+reasoning_engine: SHRM_v2
+contradiction_harvesting: enabled
+temporal_plasticity: enabled
+
 on:
   push:
     branches: [ main ]
@@ -17,6 +21,7 @@ jobs:
           cat <<EOF > build_manifest.yaml
           build_signature: BNDL-V2
           timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          reasoning_engine: SHRM_v2
           rail_status:
             ingestion: active
             deployment: stable
