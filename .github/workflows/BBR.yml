@@ -11,6 +11,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-manifest:
@@ -39,8 +41,12 @@ jobs:
           git config --global user.name "Barrot-Agent"
           git config --global user.email "barrot@systems.local"
           git add build_manifest.yaml
-          git commit -m "Update build manifest" || echo "No changes to commit"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "Update build manifest"
+            git push
+          else
+            echo "No changes to commit"
+          fi
 
   publish-dashboard:
     runs-on: ubuntu-latest
