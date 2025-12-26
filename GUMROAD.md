@@ -50,7 +50,7 @@ Barrot-Agent/
 The following files already exist in the repository that may be related to a checkout/sales flow:
 
 - **`site/index.html`** - Contains a "Checkout completed" success page
-  - Location: `/site/index.html`
+  - Location: `site/index.html`
   - Purpose: Post-checkout success page with redirect to portal
 
 ## Setting Up Gumroad Integration
@@ -99,4 +99,4 @@ If you're looking for specific Gumroad files that should already exist:
 
 ---
 
-*Last updated: December 25, 2025*
+*Last updated: December 2024*
