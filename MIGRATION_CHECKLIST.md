@@ -2,6 +2,8 @@
 
 Use this checklist when executing the default branch migration.
 
+**📱 Mobile Compatible**: This migration can be performed from Termux (Android) or iSH (iOS). See the mobile section in [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for details.
+
 ## Pre-Migration
 
 - [ ] Review [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) thoroughly

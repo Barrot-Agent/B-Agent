@@ -140,6 +140,50 @@ git pull
 git branch -D Main
 ```
 
+## 📱 Using from Mobile (Termux/iSH)
+
+Yes! You can run the migration from mobile terminals like Termux (Android) or iSH (iOS).
+
+### Termux (Android)
+
+The migration script works perfectly in Termux. Make sure you have git installed:
+
+```bash
+# Update packages (if needed)
+pkg update && pkg upgrade
+
+# Install git (if not already installed)
+pkg install git
+
+# Navigate to your repository
+cd ~/projects/Barrot-Agent
+
+# Run the migration script
+bash migrate-default-branch.sh
+```
+
+**Note**: After running the script, you'll still need to change the default branch in GitHub settings. You can:
+- Use GitHub Mobile app: Repository → Settings → Branches → Change default
+- Use a browser on your phone: Navigate to repository settings
+- Use GitHub CLI if installed in Termux: `gh repo edit --default-branch main`
+
+### iSH (iOS)
+
+Similar steps apply for iSH:
+
+```bash
+# Ensure git is installed
+apk add git
+
+# Navigate to repository
+cd ~/Barrot-Agent
+
+# Run migration
+bash migrate-default-branch.sh
+```
+
+For more mobile setup details, see [MOBILE_SETUP.md](MOBILE_SETUP.md).
+
 ## Checking Current Default Branch
 
 To verify which branch is the default:

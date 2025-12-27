@@ -23,6 +23,8 @@ git pull
 git branch -D Main
 ```
 
+**📱 Mobile Users (Termux/iSH)**: These commands work the same on Termux (Android) and iSH (iOS)!
+
 ### For New Clones
 
 New clones will automatically use the `main` branch:
