@@ -83,7 +83,7 @@ heroku open
 **Configuration**:
 - Buildpack: Python
 - Process: `web` serving static files on port $PORT
-- Free tier available
+- Pricing: Basic tier ($5-7/month) - Note: Heroku discontinued free tier in November 2022
 
 ---
 
@@ -299,7 +299,7 @@ services:
 - ✅ Need simple, straightforward deployment
 - ✅ Want one-click deployment
 - ✅ Familiar with Heroku ecosystem
-- ⚠️ Note: No longer offers free tier (paid plans start at $5/month)
+- ⚠️ Note: No longer offers free tier - paid plans start at $5-7/month (Basic tier)
 
 ### Use Render when:
 - ✅ Want modern alternative to Heroku

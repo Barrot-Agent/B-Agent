@@ -1,5 +1,7 @@
 # Barrot-Agent Python Dependencies
-# Minimal dependencies for serving static dashboard
+# For static file serving, no external packages required
 
-# No additional dependencies required for static file serving
-# Python's built-in http.server is used
+# Python version constraint
+python>=3.11
+
+# Standard library only - using Python's built-in http.server module
