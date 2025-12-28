@@ -1,8 +1,9 @@
 name: Barrot Build Relay
 
-reasoning_engine: SHRM_v2
-contradiction_harvesting: enabled
-temporal_plasticity: enabled
+# Workflow Configuration Notes:
+# - reasoning_engine: SHRM_v2
+# - contradiction_harvesting: enabled
+# - temporal_plasticity: enabled
 
 on:
   push:
