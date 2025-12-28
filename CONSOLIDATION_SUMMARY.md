@@ -183,6 +183,9 @@ Directories:
 
 ### For Operations
 1. ✅ Required secrets already configured (Vercel tokens confirmed)
+   - Verify in GitHub Settings → Secrets and variables → Actions
+   - Required: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
+   - Validation: Check deployment workflow runs for successful authentication
 2. Enable branch protection for Main
 3. Run cleanup_merged_branches.sh to remove old branches
 4. Set up Dependabot

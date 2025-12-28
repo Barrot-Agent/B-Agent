@@ -51,6 +51,13 @@ The following secrets are configured in repository settings:
 - ✅ `VERCEL_PROJECT_ID` - For Vercel project
 - ✅ `GITHUB_TOKEN` - Automatically provided by GitHub Actions
 
+**Validation Instructions:**
+To verify secret configuration:
+1. Navigate to: GitHub Settings → Secrets and variables → Actions
+2. Confirm all three Vercel secrets are present
+3. Test deployment workflow to validate authentication
+4. Check workflow run logs for successful Vercel connections
+
 #### Python Script Security
 - All Python scripts use shebang `#!/usr/bin/env python3`
 - Scripts are executable with proper permissions
