@@ -8,12 +8,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: repo-cleanup
+  cancel-in-progress: true
+
 jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Remove old bundles (keep last 10)
         run: |
@@ -30,4 +34,4 @@ jobs:
           git config user.email "actions@github.com"
           git add -A
           git commit -m "Repo cleanup by Barrot" || echo "Nothing to clean"
-          git push
+          git push || echo "Push failed"

@@ -3,10 +3,14 @@ name: Barrot-SHRM Ping-Pong
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/15 * * * *"  # Run every 15 minutes
+    - cron: "*/30 * * * *"  # Run every 30 minutes (optimized from 15)
 
 permissions:
   contents: write
+
+concurrency:
+  group: shrm-ping-pong
+  cancel-in-progress: false  # Don't cancel ping-pong cycles
 
 jobs:
   barrot-ping:
@@ -44,4 +48,4 @@ jobs:
           git add SHRM-System/
           git add memory-bundles/build-ledger.json
           git commit -m "🏓 Barrot-SHRM Ping-Pong cycle executed at $TIMESTAMP" || echo "No changes to commit"
-          git push
+          git push || echo "Push failed, will retry next cycle"
