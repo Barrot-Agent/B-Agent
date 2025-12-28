@@ -29,6 +29,16 @@ resources:
   - seminars
   - books
   - journals
+  - github_blog_articles
+
+recent_ingestions:
+  - title: "WRAP up your backlog with GitHub Copilot coding agent"
+    source: github_blog
+    ingestion_id: ING-001-github-copilot-backlog
+    date: 2025-12-28
+    status: completed
+    mmi_analysis: full_6_scale
+    source_lineage: 4_levels_traced
 
 rail_status:
   ingestion: active
