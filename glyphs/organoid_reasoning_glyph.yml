@@ -1,5 +1,10 @@
 name: Organoid Reasoning Glyph
 symbol: 🧠⟲◬
+symbol_fallback: organoid_reasoning_operator
+symbol_rendering_notes: >
+  Primary glyph uses emoji/Unicode characters (🧠⟲◬) and may require UTF-8
+  encoding and modern fonts for correct rendering. Use `symbol_fallback` in
+  environments or tools where these characters are not reliably displayed.
 type: biological_computation_operator
 version: 1.0
 

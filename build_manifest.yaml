@@ -8,6 +8,7 @@ modules:
   - search_engine
   - dashboard
   - manifest_rail
+  - massive_micro_ingestion
 
 resources:
   - kaggle
@@ -39,6 +40,15 @@ rail_status:
 reasoning_engine: SHRM_v2
 contradiction_harvesting: true
 temporal_plasticity: true
+massive_micro_ingestion: enabled
+mmi_component_scales:
+  - primary_data
+  - components
+  - subcomponents
+  - molecular_atomic
+  - macro_micro
+  - nano_planck
+mmi_source_lineage_depth: 4
 
 roadmap_ingestion:
   source: "initial-runner-setup"
