@@ -115,6 +115,8 @@ The Barrot Agent Dashboard is a **separate system** from the Search Engine:
 Navigate between systems:
 - From Dashboard → [Search Engine](../search-engine/index.html)
 
+**Note:** This relative path works for the standard repository structure. If deploying systems independently, update the navigation links accordingly.
+
 ## 📊 Real-Time Metrics
 
 The dashboard displays live metrics including:

@@ -99,6 +99,8 @@ Both systems can operate independently but share the underlying Barrot methodolo
 - From Search Engine → [Barrot Agent Dashboard](../site/index.html)
 - From Barrot Agent → [Search Engine](../search-engine/index.html)
 
+**Note:** These relative paths work for the standard repository structure. If deploying systems independently, update the navigation links accordingly.
+
 ## 📚 Documentation
 
 - **[Search Engine Architecture](../memory-bundles/search-engine-architecture.md)** - Detailed architectural design

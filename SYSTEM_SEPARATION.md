@@ -60,8 +60,8 @@ This separation ensures modularity, maintainability, and focused functionality f
 - Production: `https://barrot-agent.github.io/Barrot-Agent/search-engine/`
 
 **Documentation:**
-- [Search Engine README](../search-engine/README.md)
-- [Search Engine Architecture](../memory-bundles/search-engine-architecture.md)
+- [Search Engine README](search-engine/README.md)
+- [Search Engine Architecture](memory-bundles/search-engine-architecture.md)
 
 ---
 
@@ -92,7 +92,7 @@ This separation ensures modularity, maintainability, and focused functionality f
 - Production: `https://barrot-agent.github.io/Barrot-Agent/site/`
 
 **Documentation:**
-- [Agent Dashboard README](../site/README.md)
+- [Agent Dashboard README](site/README.md)
 
 ---
 
