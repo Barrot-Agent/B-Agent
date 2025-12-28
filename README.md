@@ -2,6 +2,8 @@
 
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
+> **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
+
 ## 🚀 Quick Start
 
 ### 💻 Desktop/Server Setup
@@ -146,6 +148,7 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
 - **📱 [Mobile Setup](MOBILE_SETUP.md)** - Access Barrot from your phone
 - **💻 [VS Code Setup](VSCODE_SETUP.md)** - Optimal development environment
 - **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
