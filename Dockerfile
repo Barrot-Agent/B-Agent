@@ -19,4 +19,5 @@ COPY site/ /app/site/
 EXPOSE 8080
 
 # Serve static files with Python's built-in HTTP server
-CMD ["python3", "-m", "http.server", "8080", "--directory", "site"]
+# Use PORT environment variable if set, otherwise default to 8080
+CMD python3 -m http.server ${PORT:-8080} --directory site

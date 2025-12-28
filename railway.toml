@@ -4,7 +4,6 @@ dockerfilePath = "Dockerfile"
 
 [deploy]
 numReplicas = 1
-startCommand = "python3 -m http.server 8080 --directory site"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
