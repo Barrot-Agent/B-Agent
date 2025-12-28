@@ -114,19 +114,29 @@ View recent activity:
 cat memory-bundles/outcome-relay.md | tail -20
 ```
 
-## 🐳 Docker Support
+## 🚀 Deployment
 
-Run Barrot-Agent in a container:
+Barrot-Agent can be deployed to multiple cloud platforms:
+
+- **GitHub Pages** (Current): https://barrot-agent.github.io/Barrot-Agent/
+- **Heroku**: One-click deployment with `app.json`
+- **Render**: Static site deployment with `render.yaml`
+- **Railway**: Docker-based deployment with `railway.json`
+- **Fly.io**: Global edge deployment with `fly.toml`
+- **Docker**: Self-hosted container deployment
+
+**[📖 See Full Deployment Guide](DEPLOYMENT.md)**
+
+### Quick Deploy
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Barrot-Agent/Barrot-Agent)
+
+### Docker
 
 ```bash
 docker build -t barrot-agent .
-docker run barrot-agent
+docker run -p 8080:8080 barrot-agent
 ```
-
-The Dockerfile includes:
-- Ubuntu 22.04 base
-- Git, curl, and essential tools
-- GitHub Actions runner setup
 
 ## 🤝 Contributing
 
@@ -148,6 +158,8 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
+- **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
 - **📱 [Mobile Setup](MOBILE_SETUP.md)** - Access Barrot from your phone
 - **💻 [VS Code Setup](VSCODE_SETUP.md)** - Optimal development environment

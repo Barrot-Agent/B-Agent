@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: barrot-agent
+    env: static
+    buildCommand: echo "No build required - serving static files"
+    staticPublishPath: ./site
+    envVars:
+      - key: BARROT_ENV
+        value: render
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

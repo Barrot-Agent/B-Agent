@@ -49,6 +49,37 @@ platforms:
   - cash_app
   - paypal
 
+# Free Platform Alternatives for Research
+free_platform_research:
+  compute:
+    - render
+    - railway
+    - fly_io
+    - koyeb
+    - cyclic_sh
+  edge_computing:
+    - cloudflare_workers
+    - deno_deploy
+    - vercel_edge
+    - netlify_edge
+  databases:
+    - planetscale
+    - cockroachdb
+    - supabase
+    - firebase
+    - deta_base
+  search_engines:
+    - meilisearch
+    - typesense
+    - sonic
+    - zinc
+    - pagefind
+  hosting:
+    - cloudflare_pages
+    - github_pages
+    - gitlab_pages
+    - surge_sh
+
 summits:
   - democratize_intelligence_summit
   - global_ai_summits_10yr
@@ -144,6 +175,14 @@ capabilities:
   - hackathon_prize_optimization
   - roi_opportunity_analysis
   - financial_performance_tracking
+  - platform_alternatives_research
+  - deployment_methodology_formulation
+  - edge_computing_experimentation
+  - serverless_architecture_testing
+  - distributed_system_design
+  - cost_optimization_strategies
+  - search_engine_architecture_design
+  - novel_algorithm_development
 
 rail_status:
   ingestion: active

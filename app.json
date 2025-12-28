@@ -1,0 +1,34 @@
+{
+  "name": "Barrot-Agent",
+  "description": "Intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment",
+  "repository": "https://github.com/Barrot-Agent/Barrot-Agent",
+  "logo": "https://raw.githubusercontent.com/Barrot-Agent/Barrot-Agent/main/site/barrot-icon.png",
+  "keywords": [
+    "ai",
+    "agent",
+    "data-ingestion",
+    "prediction",
+    "automation",
+    "agi"
+  ],
+  "website": "https://barrot-agent.github.io/Barrot-Agent/",
+  "success_url": "/",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [],
+  "env": {
+    "BARROT_ENV": {
+      "description": "Environment for Barrot-Agent deployment",
+      "value": "heroku"
+    }
+  }
+}
