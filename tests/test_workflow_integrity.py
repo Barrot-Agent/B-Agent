@@ -39,18 +39,22 @@ class TestWorkflowIntegrity(unittest.TestCase):
                     with open(filepath, 'r') as f:
                         workflow = yaml.safe_load(f)
                         self.assertIn('name', workflow)
-                        # YAML parser converts 'on' to True in some cases, check for either
-                        self.assertTrue('on' in workflow or True in workflow)
+                        # YAML parser may convert 'on' to True; check keys explicitly
+                        self.assertTrue(
+                            any(k == 'on' or k is True for k in workflow.keys()),
+                            "Workflow missing trigger configuration"
+                        )
                         self.assertIn('jobs', workflow)
     
     def test_bbr_workflow_structure(self):
         """Test BBR workflow has correct structure"""
         bbr_path = os.path.join(self.workflows_dir, 'BBR.yml')
-        if os.path.exists(bbr_path):
-            with open(bbr_path, 'r') as f:
-                workflow = yaml.safe_load(f)
-                self.assertIn('update-manifest', workflow['jobs'])
-                self.assertIn('publish-dashboard', workflow['jobs'])
+        self.assertTrue(os.path.exists(bbr_path), "BBR.yml workflow file is missing")
+        
+        with open(bbr_path, 'r') as f:
+            workflow = yaml.safe_load(f)
+            self.assertIn('update-manifest', workflow['jobs'])
+            self.assertIn('publish-dashboard', workflow['jobs'])
 
 
 if __name__ == '__main__':

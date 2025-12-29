@@ -8,7 +8,6 @@ the required structure and contains valid data.
 import sys
 import yaml
 from datetime import datetime
-from pathlib import Path
 
 
 def load_manifest(manifest_path='build_manifest.yaml'):
@@ -88,11 +87,22 @@ def validate_rail_status(manifest):
     elif len(rail_status) == 0:
         errors.append("rail_status is empty")
     else:
-        valid_statuses = ['active', 'stable', 'recursive', 'evolving', 'publishing',
-                         'initializing', 'developing', 'ACTIVE', 'OPERATIONAL']
+        # Canonical lowercase status values
+        valid_statuses = [
+            'active',
+            'stable',
+            'recursive',
+            'evolving',
+            'publishing',
+            'initializing',
+            'developing',
+            'operational',
+        ]
         
         for rail, status in rail_status.items():
-            if status not in valid_statuses:
+            # Normalize to lowercase for comparison
+            normalized_status = str(status).lower()
+            if normalized_status not in valid_statuses:
                 errors.append(f"Invalid status '{status}' for rail '{rail}'")
     
     return errors

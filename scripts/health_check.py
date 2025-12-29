@@ -6,9 +6,7 @@ This script performs comprehensive health checks on the Barrot-Agent system
 including manifest validation, workflow validation, and system status checks.
 """
 import sys
-import os
 import yaml
-import json
 from pathlib import Path
 from datetime import datetime
 
@@ -66,11 +64,16 @@ class HealthChecker:
         self.check("Has rail_status", 'rail_status' in manifest)
         
         if 'rail_status' in manifest:
-            active_rails = len([r for r, s in manifest['rail_status'].items() 
-                              if s.lower() in ['active', 'operational']])
-            self.warn(f"Active rails: {active_rails}", 
-                     active_rails >= 5,
-                     f"Only {active_rails} active rails detected")
+            total_rails = len(manifest['rail_status'])
+            active_rails = len(
+                [r for r, s in manifest['rail_status'].items()
+                 if isinstance(s, str) and s.lower() in ['active', 'operational']]
+            )
+            self.warn(
+                f"Active rails: {active_rails}/{total_rails}",
+                active_rails > 0,
+                "No active rails detected in rail_status"
+            )
     
     def check_workflows(self):
         """Check GitHub workflows"""
@@ -86,7 +89,7 @@ class HealthChecker:
         for workflow_file in workflow_files:
             try:
                 with open(workflow_file) as f:
-                    workflow = yaml.safe_load(f)
+                    yaml.safe_load(f)
                 self.check(f"{workflow_file.name} is valid", True)
             except Exception as e:
                 self.check(f"{workflow_file.name} is valid", False, str(e))

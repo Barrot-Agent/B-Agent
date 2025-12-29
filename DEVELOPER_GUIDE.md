@@ -341,10 +341,10 @@ The CI/CD pipeline includes basic security scanning:
 
 ## 📚 Additional Resources
 
-- [Main README](../README.md)
-- [Gap Analysis](../GAP_ANALYSIS.md)
-- [Deployment Guide](../DEPLOYMENT.md)
-- [Ingestion Manifest](../INGESTION_MANIFEST.md)
+- [Main README](README.md)
+- [Gap Analysis](GAP_ANALYSIS.md)
+- [Deployment Guide](DEPLOYMENT.md)
+- [Ingestion Manifest](INGESTION_MANIFEST.md)
 
 ---
 

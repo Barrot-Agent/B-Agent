@@ -48,12 +48,26 @@ class TestManifestValidation(unittest.TestCase):
         self.assertGreater(len(self.manifest['rail_status']), 0)
     
     def test_rail_status_values(self):
-        """Test that rail status values are valid"""
-        valid_statuses = ['active', 'stable', 'recursive', 'evolving', 'publishing', 
-                         'initializing', 'developing', 'ACTIVE', 'OPERATIONAL']
+        """Test that rail status values are valid (canonical lowercase)"""
+        # Canonical lowercase status values
+        valid_statuses = [
+            'active',
+            'stable',
+            'recursive',
+            'evolving',
+            'publishing',
+            'initializing',
+            'developing',
+            'operational',
+        ]
         for rail, status in self.manifest['rail_status'].items():
-            self.assertIn(status, valid_statuses, 
-                         f"Invalid status '{status}' for rail '{rail}'")
+            # Normalize to lowercase for comparison
+            normalized_status = str(status).lower()
+            self.assertIn(
+                normalized_status,
+                valid_statuses,
+                f"Invalid status '{status}' for rail '{rail}'"
+            )
     
     def test_resources_list(self):
         """Test that resources list exists and is valid"""
