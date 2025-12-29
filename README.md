@@ -2,6 +2,22 @@
 
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
+## 🔄 Two Distinct Systems
+
+Barrot-Agent now maintains **two independent systems**:
+
+### 🔍 Search Engine
+Privacy-first search with quantum-enhanced algorithms and edge computing
+- **Access**: [Search Engine](https://barrot-agent.github.io/Barrot-Agent/search-engine/)
+- **Docs**: [search-engine/README.md](search-engine/README.md)
+
+### 🦜 Agent Dashboard  
+Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
+- **Access**: [Agent Dashboard](https://barrot-agent.github.io/Barrot-Agent/site/)
+- **Docs**: [site/README.md](site/README.md)
+
+**[📖 Learn more about the separation](SYSTEM_SEPARATION.md)**
+
 > **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
 ## 🚀 Quick Start
@@ -18,8 +34,9 @@ Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabili
    cat build_manifest.yaml
    ```
 
-3. Access the dashboard:
-   - Visit: https://barrot-agent.github.io/Barrot-Agent/
+3. Access the systems:
+   - **Agent Dashboard**: https://barrot-agent.github.io/Barrot-Agent/site/
+   - **Search Engine**: https://barrot-agent.github.io/Barrot-Agent/search-engine/
 
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
@@ -42,7 +59,8 @@ Barrot-Agent/
 ├── Barrot-Agent/          # Agent configuration
 ├── Barrot-Bundles/        # Bundle storage
 ├── memory-bundles/        # Memory and activity logs
-├── site/                  # Web dashboard files
+├── site/                  # Barrot Agent dashboard
+├── search-engine/         # Standalone search engine
 ├── spells/                # Agent capability definitions
 ├── build_manifest.yaml    # Current build status
 └── MOBILE_SETUP.md       # Mobile setup guide
@@ -54,9 +72,33 @@ Barrot-Agent/
 - **Prediction Methodologies** - Advanced prediction capabilities
 - **Deployment Integrity** - Reliable deployment systems
 - **Microagent Logic** - Builder.io integration
-- **Search Engine** - Comprehensive search capabilities
-- **Dashboard** - Real-time status monitoring
+- **Search Engine** - Standalone search system (see `/search-engine/`)
+- **Dashboard** - Agent management interface (see `/site/`)
 - **Manifest Rail** - Build tracking system
+
+### Two Distinct Systems
+
+#### 🔍 Search Engine (`/search-engine/`)
+A standalone, privacy-first search engine with:
+- Quantum-enhanced search algorithms
+- Edge-first architecture for global distribution
+- Zero tracking and complete privacy
+- Dynamic ingestion modes for real-time processing
+
+**[→ Visit Search Engine](search-engine/)**
+
+#### 🦜 Barrot Agent Dashboard (`/site/`)
+Comprehensive automation platform featuring:
+- Data Mastery & Protocol Development
+- Competitor Surveillance Network
+- Integrated Development Environment (IDE)
+- Digital Audio Workstation (DAW)
+- Web3 Integration Hub
+- NFT Marketplace
+- Chameleon Chain Blockchain
+- Operations Monitoring
+
+**[→ Visit Agent Dashboard](site/)**
 
 ### Agent Spells
 - **Ω-Ingest** (Omega-Ingest) - Quantum data assimilation
@@ -91,10 +133,14 @@ Automated workflows handle:
 
 ## 📊 Monitoring
 
-### Web Dashboard
-Access the live dashboard at:
+### Web Dashboards
+Access the live dashboards at:
 ```
-https://barrot-agent.github.io/Barrot-Agent/
+# Barrot Agent Dashboard
+https://barrot-agent.github.io/Barrot-Agent/site/
+
+# Search Engine
+https://barrot-agent.github.io/Barrot-Agent/search-engine/
 ```
 
 ### GitHub Actions
@@ -158,6 +204,9 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** - Details on the modular separation
+- **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
+- **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
