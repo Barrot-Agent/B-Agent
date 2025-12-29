@@ -1,0 +1,199 @@
+name: Barrot Unified Workflow
+
+# This unified workflow consolidates functionality from:
+# - BBR.yml (Build Relay)
+# - Barrot-SHRM-PingPong.yml (Health Monitoring)
+# - Barrot.Repo.Cleanup.yml (Repository Maintenance)
+# - workflows.barrot.bundles.yml (Bundle Generation)
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "*/15 * * * *"  # Ping-pong every 15 minutes
+    - cron: "0 0 * * 0"     # Cleanup weekly on Sunday at midnight
+  workflow_dispatch:
+    inputs:
+      job_to_run:
+        description: 'Specific job to run (all, build, ping-pong, cleanup, bundle)'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - build
+          - ping-pong
+          - cleanup
+          - bundle
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  # Job 1: Update Build Manifest (from BBR.yml)
+  # Runs on: push to main, manual dispatch
+  update-manifest:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && 
+       (github.event.inputs.job_to_run == 'all' || github.event.inputs.job_to_run == 'build'))
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate Build Manifest
+        run: |
+          cat <<EOF > build_manifest.yaml
+          build_signature: BNDL-V2
+          timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          reasoning_engine: SHRM_v2
+          rail_status:
+            ingestion: active
+            deployment: stable
+            microagent: recursive
+            prediction: evolving
+            dashboard: publishing
+            cognition: recursive
+          EOF
+
+      - name: Commit and Push Manifest
+        run: |
+          git config --global user.name "Barrot-Agent"
+          git config --global user.email "barrot@systems.local"
+          git add build_manifest.yaml
+          if ! git diff --staged --quiet; then
+            git commit -m "Update build manifest"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+  # Job 2: Publish Dashboard to GitHub Pages (from BBR.yml)
+  # Runs after update-manifest
+  publish-dashboard:
+    runs-on: ubuntu-latest
+    needs: update-manifest
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && 
+       (github.event.inputs.job_to_run == 'all' || github.event.inputs.job_to_run == 'build'))
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Pull latest changes
+        run: git pull origin main
+
+      - name: Generate Dashboard HTML
+        run: |
+          mkdir -p dashboard-output
+          echo "<html><body><h1>Barrot Build Status</h1>" > dashboard-output/index.html
+          echo "<pre>" >> dashboard-output/index.html
+          cat build_manifest.yaml >> dashboard-output/index.html
+          echo "</pre></body></html>" >> dashboard-output/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dashboard-output
+
+  # Job 3: Barrot-SHRM Ping-Pong Health Check (from Barrot-SHRM-PingPong.yml)
+  # Runs on: schedule (every 15 minutes), manual dispatch
+  barrot-ping-pong:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.schedule == '*/15 * * * *' ||
+      (github.event_name == 'workflow_dispatch' && 
+       (github.event.inputs.job_to_run == 'all' || github.event.inputs.job_to_run == 'ping-pong'))
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Barrot Ping
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          echo "🏓 Barrot PING sent to SHRM at $TIMESTAMP" >> memory-bundles/outcome-relay.md
+          echo "🔵 Barrot PING -> SHRM at $TIMESTAMP" >> SHRM-System/shrm-response-log.md
+          
+      - name: SHRM Pong Response
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          echo "🏓 SHRM PONG received from Barrot at $TIMESTAMP" >> SHRM-System/shrm-response-log.md
+          echo "🟢 SHRM PONG <- Barrot at $TIMESTAMP" >> memory-bundles/outcome-relay.md
+          
+          # Update SHRM health status
+          sed -i "s/last_pong: .*/last_pong: $TIMESTAMP/" SHRM-System/shrm-config.yaml
+          
+      - name: Update Build Ledger
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          echo "{\"ledger\": \"Ping-Pong at $TIMESTAMP\"}" > memory-bundles/build-ledger.json
+
+      - name: Commit Changes
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@systems.local"
+          git add memory-bundles/outcome-relay.md
+          git add SHRM-System/
+          git add memory-bundles/build-ledger.json
+          git commit -m "🏓 Barrot-SHRM Ping-Pong cycle executed at $TIMESTAMP" || echo "No changes to commit"
+          git push
+
+  # Job 4: Repository Cleanup (from Barrot.Repo.Cleanup.yml)
+  # Runs on: schedule (weekly Sunday midnight), manual dispatch
+  repo-cleanup:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.schedule == '0 0 * * 0' ||
+      (github.event_name == 'workflow_dispatch' && 
+       (github.event.inputs.job_to_run == 'all' || github.event.inputs.job_to_run == 'cleanup'))
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Remove old bundles (keep last 10)
+        run: |
+          mkdir -p Barrot-Bundles
+          ls -t Barrot-Bundles | tail -n +11 | xargs -I {} rm -f Barrot-Bundles/{}
+
+      - name: Remove temp files
+        run: |
+          rm -rf tmp/ *.log *.cache || true
+
+      - name: Commit cleanup
+        run: |
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@systems.local"
+          git add -A
+          git commit -m "Repo cleanup by Barrot" || echo "Nothing to clean"
+          git push
+
+  # Job 5: Generate and Save Bundles (from workflows.barrot.bundles.yml)
+  # Runs on: manual dispatch only
+  generate-bundle:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' && 
+      (github.event.inputs.job_to_run == 'all' || github.event.inputs.job_to_run == 'bundle')
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate bundle
+        run: echo "This is a test bundle" > Barrot-Bundles/test-$(date +%Y%m%d%H%M%S).txt
+
+      - name: Commit bundle to repo
+        run: |
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@systems.local"
+          git add Barrot-Bundles/
+          git commit -m "Add new bundle" || echo "No changes to commit"
+          git push

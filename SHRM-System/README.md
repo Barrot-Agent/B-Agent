@@ -38,4 +38,4 @@ The Barrot-SHRM ping-pong cycle operates as follows:
 - Syncs status in `SHRM-System/shrm-config.yaml`
 
 ## Workflow
-The ping-pong cycle is automated via `.github/workflows/Barrot-SHRM-PingPong.yml` and runs on a schedule or can be triggered manually.
+The ping-pong cycle is automated via the `barrot-ping-pong` job in `.github/workflows/barrot-unified.yml` and runs on a schedule (every 15 minutes) or can be triggered manually with the 'ping-pong' option.

@@ -332,7 +332,7 @@ Barrot-Agent/
 │   ├── omega-ingest.md     # Data ingestion spell
 │   └── keyseer-insight.md  # Key analysis spell
 ├── build_manifest.yaml     # Current build manifest
-├── BBR.yml                 # Build relay workflow
+├── barrot-unified.yml      # Unified workflow (build relay, ping-pong, cleanup, bundles)
 ├── Dockerfile              # Container configuration
 ├── package.json            # Node package config
 └── README.md               # Main documentation
