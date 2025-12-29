@@ -2,7 +2,9 @@
 
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
-> **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
+> **📌 Note**: All branches have been successfully consolidated into `main`. See [BRANCH_CONSOLIDATION.md](BRANCH_CONSOLIDATION.md) for details.
+>
+> **📌 Previous Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
 ## 🚀 Quick Start
 
@@ -158,6 +160,7 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🔀 [Branch Consolidation](BRANCH_CONSOLIDATION.md)** - Complete report on branch consolidation
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
