@@ -3,6 +3,10 @@ name: 🔮 Asynchronous Insight Generation
 on:
   schedule:
     # Every 30 minutes, 24/7/365
+    # Note: This is designed for demonstration. In production, consider:
+    # - Conditional execution based on actual need
+    # - Self-hosted runners to avoid GitHub Actions minute consumption
+    # - Event-driven triggers rather than fixed schedule
     - cron: '*/30 * * * *'
   
   workflow_dispatch:
@@ -37,10 +41,11 @@ jobs:
           echo "🔍 Identifying problems needing insight..."
           
           # Create problem identification report
-          cat > /tmp/problems_identified.md << 'EOF'
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          cat > /tmp/problems_identified.md << EOF
           # Problems Identified for Asynchronous Insight Cycle
           
-          **Cycle Started**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Cycle Started**: $TIMESTAMP
           
           ## Active Problems
           
@@ -513,10 +518,11 @@ jobs:
           # Update AGI puzzle progress
           mkdir -p memory-bundles
           
-          cat > memory-bundles/asynchronous-insights-latest.md << 'EOF'
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          cat > memory-bundles/asynchronous-insights-latest.md << EOF
           # Latest Asynchronous Insight Cycle Results
           
-          **Cycle Completed**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Cycle Completed**: $TIMESTAMP
           **Cycle Duration**: 30 minutes
           **Cycle Number**: Auto-incrementing
           

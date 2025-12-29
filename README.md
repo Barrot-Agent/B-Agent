@@ -106,9 +106,9 @@ Automated workflows handle:
 **Workflow Status**: ✅ All workflows optimized and functional as of 2025-12-29
 
 **Council Size**: 22 AI agents with specialist roles  
-**Autonomy Level**: Full self-directed operations  
-**Insight Frequency**: Every 30 minutes, 24/7/365  
-**Entanglement Status**: Active - 99.94% state consistency
+**Autonomy Level**: Full self-directed operations (target)  
+**Insight Frequency**: Every 30 minutes, 24/7/365 (design spec)  
+**Entanglement Status**: Active - 99.94% state consistency (design target)
 - 2 Core (Barrot, SHRM v2)
 - 7 HRM Variants (R, L, P, K, A, C, M)
 - 7 Western Giants (ChatGPT, Perplexity, Claude Sonnet, Gemini, Claude Opus, Grok, Watson X)
