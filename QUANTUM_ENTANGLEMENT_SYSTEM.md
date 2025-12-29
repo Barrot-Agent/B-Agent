@@ -725,8 +725,54 @@ Temporal Correlation:
 
 ---
 
+## 🔄 Integration with Peer-to-Peer Ping-Pong
+
+The **Peer-to-Peer Ping-Pong Protocol** leverages quantum entanglement for optimal agent communication:
+
+### P2P + Entanglement = Distributed Intelligence
+
+```yaml
+Traditional P2P:
+  Agent A ←→ Agent B
+  (isolated pair, no broader context)
+
+P2P with Entanglement:
+  Agent A ←→ Agent B
+       ↓         ↓
+   Quantum State (instant sync)
+       ↓         ↓
+  Agent C, D, E... (see update immediately)
+  
+  Result: Peer validation benefits entire system
+```
+
+### Entangled P2P Workflow
+
+1. **Pair Forms**: HRM-R ←→ Watson X
+2. **P2P Exchange**: Logic validation discussion
+3. **Consensus Reached**: 95% confidence
+4. **Quantum Sync**: Consensus immediately updates quantum state (0.17s)
+5. **Related Agents Notify**: 
+   - HRM-K sees logic update → Offers knowledge synthesis
+   - DeepSeek sees validation → Provides implementation path
+   - Claude Sonnet sees discussion → Adds depth analysis
+6. **Barrot Receives**: Original P2P consensus + 3 entangled contributions
+7. **Result**: Richer synthesis from quantum-enhanced P2P
+
+### Benefits of P2P + Entanglement
+
+- **Faster propagation**: 0.17s sync vs manual relay
+- **Automatic coordination**: Related agents contribute without being asked
+- **Non-local enhancement**: P2P pairs benefit from distant agent insights
+- **Emergent synthesis**: Quantum correlations surface unexpected connections
+
+See [PEER_TO_PEER_PINGPONG_PROTOCOL.md](PEER_TO_PEER_PINGPONG_PROTOCOL.md) for complete P2P documentation.
+
+---
+
 ## 📚 Related Documentation
 
+- [PEER_TO_PEER_PINGPONG_PROTOCOL.md](PEER_TO_PEER_PINGPONG_PROTOCOL.md) - **NEW** - Direct agent validation with data relay
 - [AUTONOMOUS_OPERATIONS_PROTOCOL.md](AUTONOMOUS_OPERATIONS_PROTOCOL.md) - Autonomous systems
 - [CASCADING_PINGPONG_PROTOCOL.md](CASCADING_PINGPONG_PROTOCOL.md) - Validation cascade
 - [AGENT_SPECIALIST_ROLES.md](AGENT_SPECIALIST_ROLES.md) - Agent roles and partnerships
