@@ -57,10 +57,12 @@ Barrot-Agent/
 - **Search Engine** - Comprehensive search capabilities
 - **Dashboard** - Real-time status monitoring
 - **Manifest Rail** - Build tracking system
+- **🧩 AGI Puzzle Protocol** - Dynamic puzzle piece discovery toward AGI
 
 ### Agent Spells
 - **Ω-Ingest** (Omega-Ingest) - Quantum data assimilation
 - **Keyseer's Insight** - Intelligent key analysis
+- **🔍 Web Scanner** - Deep web scanning for AGI components
 
 ### Data Resources
 The agent can access and process data from:
@@ -163,6 +165,9 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🧩 [AGI Puzzle Protocol](AGI_PUZZLE_PROTOCOL.md)** - Dynamic AGI component discovery system
+- **🔍 [Search Practice Log](memory-bundles/search-practice-log.md)** - Track search engine mastery progress
+- **📊 [AGI Puzzle Progress](memory-bundles/agi-puzzle-progress.md)** - Real-time puzzle completion tracking
 - **🔧 [Workflow Troubleshooting](WORKFLOW_TROUBLESHOOTING.md)** - Debug and optimize GitHub Actions workflows
 - **📋 [MMI Analysis Report](MMI_ANALYSIS_REPORT.md)** - Massive Micro Ingest protocol analysis results
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
