@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Generate Build Manifest
         run: |
@@ -43,10 +45,10 @@ jobs:
           git config --global user.email "barrot@systems.local"
           git add build_manifest.yaml
           if ! git diff --staged --quiet; then
-            git commit -m "Update build manifest"
+            git commit -m "🔄 Update build manifest [skip ci]"
             git push
           else
-            echo "No changes to commit"
+            echo "✅ No changes to commit"
           fi
 
   publish-dashboard:
@@ -65,7 +67,7 @@ jobs:
       - name: Generate Dashboard HTML
         run: |
           mkdir -p dashboard-output
-          echo "<html><body><h1>Barrot Build Status</h1>" > dashboard-output/index.html
+          echo "<html><head><title>Barrot Build Status</title><style>body{font-family:monospace;padding:20px;background:#0d1117;color:#c9d1d9}pre{background:#161b22;padding:15px;border-radius:6px}</style></head><body><h1>🦜 Barrot Build Status</h1>" > dashboard-output/index.html
           echo "<pre>" >> dashboard-output/index.html
           cat build_manifest.yaml >> dashboard-output/index.html
           echo "</pre></body></html>" >> dashboard-output/index.html
@@ -75,3 +77,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dashboard-output
+          force_orphan: true

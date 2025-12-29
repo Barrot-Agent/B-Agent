@@ -1,7 +1,7 @@
 name: Default Branch Sync
 
 # This workflow helps synchronize the new 'main' branch with the old 'Main' branch
-# during the transition period. Remove this workflow after migration is complete.
+# during the transition period. This can be safely removed after full migration is complete.
 
 on:
   workflow_dispatch:  # Manual trigger only
@@ -19,7 +19,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch all history for all branches
           
@@ -38,7 +38,7 @@ jobs:
             
             # Merge Main into main
             git checkout main || git checkout -b main
-            git merge Main --no-edit -m "Sync: Merge changes from Main to main"
+            git merge Main --no-edit -m "🔄 Sync: Merge changes from Main to main"
             git push origin main
             
             echo "✅ Successfully synced Main -> main"
@@ -60,4 +60,4 @@ jobs:
           echo "1. Change default branch to 'main' in repository settings" >> $GITHUB_STEP_SUMMARY
           echo "2. Update branch protection rules" >> $GITHUB_STEP_SUMMARY
           echo "3. Notify contributors about the change" >> $GITHUB_STEP_SUMMARY
-          echo "4. After migration, remove this workflow" >> $GITHUB_STEP_SUMMARY
+          echo "4. After migration complete, remove this workflow and delete Main branch" >> $GITHUB_STEP_SUMMARY

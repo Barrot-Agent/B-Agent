@@ -13,21 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Remove old bundles (keep last 10)
         run: |
           mkdir -p Barrot-Bundles
-          ls -t Barrot-Bundles | tail -n +11 | xargs -I {} rm -f Barrot-Bundles/{}
+          if [ "$(ls -A Barrot-Bundles 2>/dev/null)" ]; then
+            ls -t Barrot-Bundles | tail -n +11 | xargs -I {} rm -f Barrot-Bundles/{} || true
+          fi
 
       - name: Remove temp files
         run: |
-          rm -rf tmp/ *.log *.cache || true
+          rm -rf tmp/ *.log *.cache 2>/dev/null || true
 
       - name: Commit cleanup
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Repo cleanup by Barrot" || echo "Nothing to clean"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "🧹 Repo cleanup by Barrot"
+            git push
+          else
+            echo "✅ Nothing to clean"
+          fi
