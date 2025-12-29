@@ -1,0 +1,21 @@
+# SHRM V2 Configuration
+version: 2.0
+metadata:
+  author: Barrot-Agent
+  created: 2025-12-25 00:14:07
+strategy:
+  type: hybrid
+  parameters:
+    - name: threshold
+      value: 0.7
+    - name: max_retries
+      value: 5
+logging:
+  level: debug
+  output: logs/shrm_v2.log
+  format: "{time} - {level} - {message}"
+dependencies:
+  - name: module_1
+    version: ^1.2.0
+  - name: module_2
+    version: ^3.4.1
