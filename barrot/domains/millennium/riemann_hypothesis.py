@@ -8,7 +8,7 @@ class RiemannHypothesis(MillenniumProblem):
             name="Riemann Hypothesis",
             description="All non-trivial zeros of the Riemann zeta function have real part 1/2",
             keywords=["number theory", "zeta function", "prime numbers", "analytic number theory"],
-            year_posed=1859  # Actually posed much earlier
+            year_posed=1859
         )
     
     def get_formal_statement(self) -> str:

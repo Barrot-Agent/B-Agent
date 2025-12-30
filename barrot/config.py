@@ -7,9 +7,9 @@ from typing import List, Optional
 class IngestionConfig:
     arxiv_api_url: str = "https://export.arxiv.org/api/query"
     # endpoints/tokens for: hackathons, newsletters, forums, DAOs, Discord, etc.
-    newsletters_sources: Optional[List[str]] = None
-    forums_sources: Optional[List[str]] = None
-    daos_sources: Optional[List[str]] = None
+    newsletters_sources: List[str] = field(default_factory=list)
+    forums_sources: List[str] = field(default_factory=list)
+    daos_sources: List[str] = field(default_factory=list)
 
 @dataclass
 class PathsConfig:

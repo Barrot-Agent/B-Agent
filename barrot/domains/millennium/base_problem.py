@@ -9,7 +9,7 @@ class MillenniumProblem(ABC):
     name: str
     prize_amount: int = 1_000_000  # USD
     status: str = "open"  # "open" or "solved"
-    year_posed: int = 2000
+    year_posed: int = 0  # Year the problem was first posed (0 = unspecified)
     description: str = ""
     keywords: List[str] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
