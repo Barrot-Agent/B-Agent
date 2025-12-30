@@ -152,10 +152,10 @@ def test_constraints_validation():
         template = offload.load_template()
         
         constraints = template["constraints"]
-        assert constraints["no_internal_simulation"] == True
-        assert constraints["must_defer_to_github_system"] == True
-        assert constraints["sacred_protocol"] == True
-        assert constraints["non_negotiable"] == True
+        assert constraints["no_internal_simulation"] is True
+        assert constraints["must_defer_to_github_system"] is True
+        assert constraints["sacred_protocol"] is True
+        assert constraints["non_negotiable"] is True
         
         print("  ✅ All constraints properly set")
         return True
@@ -191,7 +191,7 @@ def test_validation_check():
         offload = PingPongOffload()
         result = offload.validate_no_internal_simulation()
         
-        assert result == True
+        assert result is True
         print("  ✅ Validation check passed")
         return True
     except Exception as e:

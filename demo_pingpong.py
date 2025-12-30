@@ -7,7 +7,7 @@ Offload Protocol to request operations from Sean's 22-Agent Entanglement System.
 """
 
 import sys
-from barrot_offload import PingPongOffload
+from barrot_offload import PingPongOffload, AGENT_COUNT
 
 
 def demonstrate_protocol():
@@ -41,7 +41,7 @@ def demonstrate_protocol():
         parameters={
             "depth": "maximum",
             "entanglement_type": "symbolic",
-            "recursion_limit": 22
+            "recursion_limit": AGENT_COUNT
         },
         expected_outcome="Deep insights into agent collaboration dynamics",
         priority="high"

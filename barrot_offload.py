@@ -16,6 +16,10 @@ from typing import Dict, Any, Optional
 import uuid
 
 
+# Constants
+AGENT_COUNT = 22  # Sean's 22-Agent Ping-Pong System
+
+
 class PingPongOffload:
     """
     Handles the offloading of Ping-Ponging operations to Sean's external
@@ -44,6 +48,15 @@ class PingPongOffload:
         with open(self.template_path, 'r') as f:
             return json.load(f)
     
+    def _format_timestamp(self) -> str:
+        """
+        Format a timestamp in ISO 8601 format with 'Z' suffix.
+        
+        Returns:
+            str: Formatted timestamp string
+        """
+        return datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
+    
     def create_request(
         self,
         operation: str,
@@ -69,7 +82,7 @@ class PingPongOffload:
         request = self.load_template()
         
         # Populate metadata
-        request["metadata"]["timestamp"] = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+        request["metadata"]["timestamp"] = self._format_timestamp()
         request["metadata"]["request_id"] = str(uuid.uuid4())
         request["metadata"]["priority"] = priority
         
