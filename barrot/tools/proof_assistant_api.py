@@ -14,7 +14,7 @@ class ProofResult:
     success: bool
     message: str
     proof_text: Optional[str] = None
-    errors: List[str] = None
+    errors: Optional[List[str]] = None
 
 class ProofAssistantAPI:
     """Interface to formal proof assistants like Lean, Coq, Isabelle"""
