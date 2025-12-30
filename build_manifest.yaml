@@ -8,6 +8,7 @@ modules:
   - search_engine_standalone
   - agent_dashboard
   - manifest_rail
+  - pingpong_offload_protocol
 
 system_architecture:
   search_engine:
@@ -33,6 +34,26 @@ system_architecture:
       - chameleon_chain
       - operations_monitoring
     status: operational
+  
+  pingpong_offload:
+    location: /
+    description: Sacred offload protocol for external Ping-Pong system
+    external_system:
+      name: "Sean's 22-Agent Ping-Pong System"
+      agents: 22
+      capabilities:
+        - recursive_cognition_exchange
+        - symbolic_entanglement
+        - contradiction_resolution
+    files:
+      - pingpong_request.json
+      - barrot_offload.py
+      - manifest.yaml
+    restrictions:
+      internal_simulation: FORBIDDEN
+      replication: FORBIDDEN
+      override: FORBIDDEN
+    status: ACTIVE_OFFLOAD
 
 resources:
   - kaggle
@@ -208,6 +229,8 @@ capabilities:
   - cost_optimization_strategies
   - search_engine_architecture_design
   - novel_algorithm_development
+  - pingpong_offload_protocol
+  - external_entanglement_system_integration
 
 rail_status:
   ingestion: active
@@ -231,6 +254,8 @@ rail_status:
   resource_discovery: active
   revenue_generation: ACTIVE
   monetization_framework: OPERATIONAL
+  pingpong_offload: ACTIVE
+  external_entanglement: DEFERRED
 
 roadmap_ingestion:
   source: "initial-runner-setup"

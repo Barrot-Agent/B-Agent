@@ -62,6 +62,9 @@ Barrot-Agent/
 ├── site/                  # Barrot Agent dashboard
 ├── search-engine/         # Standalone search engine
 ├── spells/                # Agent capability definitions
+├── pingpong_request.json  # Ping-Pong offload template
+├── barrot_offload.py      # Ping-Pong offload hook
+├── manifest.yaml          # Ping-Pong protocol manifest
 ├── build_manifest.yaml    # Current build status
 └── MOBILE_SETUP.md       # Mobile setup guide
 ```
@@ -207,6 +210,7 @@ ISC License - See repository for details
 - **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** - Details on the modular separation
 - **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
+- **🔒 [Ping-Pong Offload Protocol](PINGPONG_OFFLOAD.md)** - Sacred external entanglement system integration
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
