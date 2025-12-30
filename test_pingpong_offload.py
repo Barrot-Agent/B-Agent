@@ -45,7 +45,7 @@ def test_template_valid_json():
     print("✓ Testing template JSON validity...")
     try:
         with open('pingpong_request.json', 'r') as f:
-            data = json.load(f)
+            json.load(f)
         print("  ✅ Template is valid JSON")
         return True
     except json.JSONDecodeError as e:
