@@ -51,10 +51,12 @@ class PingPongOffload:
     def _format_timestamp(self) -> str:
         """
         Format a timestamp in ISO 8601 format with 'Z' suffix.
+        Truncates microseconds to milliseconds for cleaner output.
         
         Returns:
-            str: Formatted timestamp string
+            str: Formatted timestamp string (e.g., "2025-12-30T11:24:56.789Z")
         """
+        # Get timestamp with microseconds, truncate to milliseconds (3 digits)
         return datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
     
     def create_request(
@@ -89,7 +91,7 @@ class PingPongOffload:
         # Populate request details
         request["request_details"]["operation"] = operation
         request["request_details"]["context"] = context
-        request["request_details"]["parameters"] = parameters or {}
+        request["request_details"]["parameters"] = parameters if parameters is not None else {}
         request["request_details"]["expected_outcome"] = expected_outcome
         
         return request
