@@ -1,6 +1,6 @@
 # barrot/tools/proof_assistant_api.py
 from typing import Optional, List, Dict, Any
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 
 class ProofAssistant(Enum):
@@ -14,7 +14,7 @@ class ProofResult:
     success: bool
     message: str
     proof_text: Optional[str] = None
-    errors: Optional[List[str]] = None
+    errors: List[str] = field(default_factory=list)
 
 class ProofAssistantAPI:
     """Interface to formal proof assistants like Lean, Coq, Isabelle"""

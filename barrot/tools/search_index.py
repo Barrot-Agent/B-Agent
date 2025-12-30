@@ -1,5 +1,5 @@
 # barrot/tools/search_index.py
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
 
 @dataclass
@@ -30,6 +30,6 @@ class SearchIndex:
                     break
         return results
     
-    def get_document(self, doc_id: str) -> Document:
+    def get_document(self, doc_id: str) -> Optional[Document]:
         """Retrieve a document by ID"""
         return self.documents.get(doc_id)
