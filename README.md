@@ -158,7 +158,6 @@ emit_pingpong_request(payload)  # Creates pingpong_request.json
 ```
 
 The external system monitors commits to `pingpong_request.json` and processes requests automatically.
-- Bundle management
 
 ## 📊 Monitoring
 
