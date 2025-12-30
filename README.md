@@ -220,6 +220,7 @@ ISC License - See repository for details
 - **🚀 [AGI Development](AGI_DEVELOPMENT.md)** - AGI acceleration protocols
 - **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** - Complete ingestion capabilities
 - **🧮 [Millennium Problems Status](MILLENNIUM_PROBLEMS_STATUS.md)** - Progress on the Seven Millennium Prize Problems
+- **🚀 [Advanced Propulsion Research](ADVANCED_PROPULSION_RESEARCH.md)** - Revolutionary plane engine, 3D-printable hoverbike, and warp drive development
 
 ## 💰 Support Barrot-Agent
 
