@@ -95,6 +95,7 @@ def test_class_initialization():
     print("✓ Testing class initialization...")
     try:
         offload = PingPongOffload()
+        assert isinstance(offload, PingPongOffload)
         print("  ✅ Class initialized successfully")
         return True
     except Exception as e:
