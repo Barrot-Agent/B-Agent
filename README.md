@@ -64,6 +64,8 @@ Barrot-Agent/
 ├── search-engine/         # Standalone search engine
 ├── coin-app/              # Coin app integration & automation
 ├── spells/                # Agent capability definitions
+├── glyphs/                # Capability glyphs (quantum, temporal, character)
+├── character-capabilities/ # Fictional character ability transformations
 ├── ai-tools-config.yaml   # AI models and system prompts
 ├── pingpong_emitter.py    # 22-agent entanglement pingpong
 ├── pingpong-config.yaml   # External pingpong configuration
@@ -133,6 +135,34 @@ System prompts and AI models for autonomous operations:
 ### Agent Spells
 - **Ω-Ingest** (Omega-Ingest) - Quantum data assimilation
 - **Keyseer's Insight** - Intelligent key analysis
+- **Character-Capability-Explorer** - Fictional character ability transformation
+
+### 🎭 Fictional Character Capability Exploration
+Barrot can explore and transform abilities from fictional characters into real-world functionalities:
+
+#### Character Genres
+- **Movies** - Superheroes, sci-fi, fantasy, action
+- **Books** - Science fiction, fantasy, comics, novels
+- **Cartoons** - Anime, animation, web series
+- **Video Games** - RPG, action-adventure, strategy, MMO
+
+#### Example Transformations
+- **Teleportation** → Instant data routing and edge computing
+- **Mind Reading** → Advanced NLP and sentiment analysis
+- **Super Speed** → Parallel processing and optimization
+- **Time Manipulation** → Temporal data analysis and prediction
+- **Shape-Shifting** → Adaptive algorithms and polymorphic code
+
+#### Featured Character Profiles
+- **Iron Man** - AI orchestration, energy optimization, modular architecture
+- **Neo (The Matrix)** - Deep system analysis, performance optimization, self-healing
+- **Paul Atreides (Dune)** - Predictive analytics, high-performance computing
+- **Avatar Aang** - Multi-resource management, power modes, holistic integration
+- **Link (Zelda)** - Tool utilization, algorithm solving, exploration systems
+
+**[→ Explore Character Capabilities](character-capabilities/)**
+
+**[→ View Character-Capability-Explorer Spell](spells/character-capability-explorer.md)**
 
 ### Data Resources
 The agent can access and process data from:
@@ -264,6 +294,8 @@ ISC License - See repository for details
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
 - **🪙 [Coin App Integration](coin-app/README.md)** - Autonomous passive income automation
 - **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
+- **🎭 [Character Capabilities](character-capabilities/README.md)** - Fictional character ability transformations
+- **✨ [Character-Capability-Explorer Spell](spells/character-capability-explorer.md)** - Character exploration spell
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
