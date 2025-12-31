@@ -83,6 +83,9 @@ Barrot-Agent/
 - **AI Tools** - System prompts and models for autonomous operations (see `ai-tools-config.yaml`)
 - **Manifest Rail** - Build tracking system
 - **22-Agent Entanglement Pingpong** - External cognitive processing system
+- **🔮 Quantum Entanglement** - Ping Pong quantum principles for enhanced cognitive processing
+- **🧠 AGI Reasoning** - AGI-level reasoning and problem-solving capabilities
+- **⚡ Advanced Algorithms** - Computational efficiency optimization and intelligent algorithm selection
 
 ### Two Distinct Systems
 
@@ -255,6 +258,7 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🔮 [Quantum AGI Integration](QUANTUM_AGI_INTEGRATION.md)** - Quantum Entanglement, AGI, and Advanced Algorithmic Logic integration
 - **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** - Details on the modular separation
 - **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
