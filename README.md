@@ -89,6 +89,7 @@ Barrot-Agent/
 - **🧠 AGI Reasoning** - AGI-level reasoning and problem-solving capabilities
 - **⚡ Advanced Algorithms** - Computational efficiency optimization and intelligent algorithm selection
 - **📧 Email Intelligence** - Automated email analysis and information extraction
+- **🚀 Superior Framework** - Integrates Ping Ponging, UPATSTAR, and MMI for enhanced performance (see [SUPERIOR_FRAMEWORK.md](SUPERIOR_FRAMEWORK.md))
 
 ### Two Distinct Systems
 
