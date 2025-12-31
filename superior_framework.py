@@ -10,7 +10,7 @@ from typing import Dict, List, Any, Optional
 from collections import defaultdict
 
 # Import framework components
-from emit_pingpong import emit_pingpong_request
+from pingpong_emitter import emit_pingpong_request  # Using the standardized version
 from upatstar import upatstar_orchestrator, process_adaptive
 from mmi_integration import mmi_orchestrator, ingest_multi_modal, mmi_self_ingest
 
@@ -194,27 +194,37 @@ class SuperiorFrameworkOrchestrator:
         
         return integration_status
     
-    def trigger_mmi_self_ingestion(self, recursion_depth: int = 1) -> Dict[str, Any]:
+    def trigger_mmi_self_ingestion(self, recursion_depth: int = 1, 
+                                   enable_pingpong: bool = True) -> Dict[str, Any]:
         """
         Trigger MMI self-ingestion for recursive cognitive processing
-        Can be used with pingpong for external processing
+        
+        Args:
+            recursion_depth: Depth of recursive processing (default: 1)
+            enable_pingpong: Whether to emit to 22-agent system (default: True)
+        
+        Returns:
+            Dict with self-ingestion results and ping pong status
         """
         mmi_result = self.mmi.self_ingest(recursion_depth)
         
+        pingpong_emitted = False
         # Optionally emit to pingpong for external processing
-        pingpong_payload = {
-            "topic": "MMI Self-Ingestion",
-            "glyph": "GLYPH_MMI",
-            "recursion_depth": recursion_depth,
-            "mmi_result": mmi_result,
-            "notes": "Triggering recursive cognition exchange for MMI self-ingestion."
-        }
-        emit_pingpong_request(pingpong_payload)
+        if enable_pingpong:
+            pingpong_payload = {
+                "topic": "MMI Self-Ingestion",
+                "glyph": "GLYPH_MMI",
+                "recursion_depth": recursion_depth,
+                "mmi_result": mmi_result,
+                "notes": "Triggering recursive cognition exchange for MMI self-ingestion."
+            }
+            emit_pingpong_request(pingpong_payload)
+            pingpong_emitted = True
         
         return {
             "operation": "mmi_self_ingestion",
             "mmi_result": mmi_result,
-            "pingpong_emitted": True,
+            "pingpong_emitted": pingpong_emitted,
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
     

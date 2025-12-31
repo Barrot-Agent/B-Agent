@@ -6,7 +6,7 @@ and intelligent processing transformation across multiple paradigms.
 
 import json
 from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional, Tuple, Callable
 from collections import defaultdict
 
 
@@ -149,7 +149,7 @@ class ProcessingTransformationPipeline:
         self.transformations = []
         self.pipeline_stages = []
         
-    def add_transformation(self, name: str, transform_func: callable):
+    def add_transformation(self, name: str, transform_func: Callable[[Any], Any]):
         """Add a transformation stage to the pipeline"""
         self.transformations.append({
             "name": name,

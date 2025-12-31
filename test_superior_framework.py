@@ -207,14 +207,14 @@ class TestMMI(unittest.TestCase):
         test_data = {
             "text_field": "Some text",
             "structured_field": {"nested": "data"},
-            "created_time": "2025-12-31",  # Changed to have "time" in the key name
+            "created_time": "2025-12-31",  # Key name contains 'time' for temporal inference
             "other": 123
         }
         
         modality_map = mmi_orchestrator._infer_modalities(test_data)
         self.assertEqual(modality_map["text_field"], "text")
         self.assertEqual(modality_map["structured_field"], "structured")
-        self.assertEqual(modality_map["created_time"], "temporal")  # Updated key name
+        self.assertEqual(modality_map["created_time"], "temporal")  # Inferred from key name pattern
     
     def test_self_ingestion(self):
         """Test MMI self-ingestion"""
