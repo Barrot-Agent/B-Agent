@@ -65,6 +65,8 @@ Barrot-Agent/
 ├── coin-app/              # Coin app integration & automation
 ├── spells/                # Agent capability definitions
 ├── ai-tools-config.yaml   # AI models and system prompts
+├── mcp_server_ping.py     # MCP server integration for Playwright & GitHub
+├── mcp-servers-config.yaml # MCP servers configuration
 ├── pingpong_emitter.py    # 22-agent entanglement pingpong
 ├── pingpong-config.yaml   # External pingpong configuration
 ├── build_manifest.yaml    # Current build status
@@ -81,6 +83,7 @@ Barrot-Agent/
 - **Dashboard** - Agent management interface (see `/site/`)
 - **Coin App Integration** - Autonomous passive income automation (see `/coin-app/`)
 - **AI Tools** - System prompts and models for autonomous operations (see `ai-tools-config.yaml`)
+- **MCP Server Integration** - Playwright & GitHub MCP servers for enhanced capabilities (see `mcp_server_ping.py`)
 - **Manifest Rail** - Build tracking system
 - **22-Agent Entanglement Pingpong** - External cognitive processing system
 
@@ -182,6 +185,41 @@ emit_pingpong_request(payload)  # Creates pingpong_request.json
 
 The external system monitors commits to `pingpong_request.json` and processes requests automatically.
 
+### MCP Server Integration
+Barrot utilizes Model Context Protocol (MCP) servers to enhance autonomous capabilities:
+- **Management**: Playwright and GitHub MCP servers
+- **Configuration**: `mcp-servers-config.yaml`
+- **Ping Module**: `mcp_server_ping.py` Python module
+- **Benefits**: See `MCP_BENEFITS_REPORT.md` for comprehensive analysis
+
+**Usage Example:**
+```python
+from mcp_server_ping import MCPServerPing
+
+# Initialize and ping MCP servers
+mcp = MCPServerPing()
+responses = mcp.collect_all_responses()
+
+# Analyze capabilities and benefits
+analysis = mcp.analyze_capabilities()
+
+# Generate comprehensive benefits report
+mcp.save_benefits_report("MCP_BENEFITS_REPORT.md")
+```
+
+**Key Capabilities:**
+- **Playwright MCP**: Browser automation, screenshot capture, UI testing, mobile emulation
+- **GitHub MCP**: Issue management, workflow monitoring, code search, PR automation
+
+**Operational Improvements:**
+- Automated web application testing
+- Visual code review with screenshots
+- Enhanced GitHub issue resolution
+- Workflow automation and CI/CD integration
+- Web-based passive income expansion
+
+See `mcp_usage_examples.py` for detailed usage patterns and integration examples.
+
 ## 📊 Monitoring
 
 ### Web Dashboards
@@ -260,6 +298,7 @@ ISC License - See repository for details
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
 - **🪙 [Coin App Integration](coin-app/README.md)** - Autonomous passive income automation
 - **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
+- **🔌 [MCP Server Integration](MCP_BENEFITS_REPORT.md)** - Playwright & GitHub MCP servers benefits and analysis
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
