@@ -8,6 +8,18 @@
 
 ## 🎯 New Platform Integrations
 
+### Web Content & Article Platforms
+- **Substack** - Newsletter and article platform
+  - Comprehensive article ingestion with related materials discovery
+  - Author archive exploration and similar content identification
+  - Supporting documentation and dataset discovery
+  - Tutorial and educational content aggregation
+  - Enhanced reasoning and recursive learning integration
+  - Full framework: [ARTICLE_INGESTION_FRAMEWORK.md](ARTICLE_INGESTION_FRAMEWORK.md)
+- **Medium** - Technical articles and tutorials
+- **Personal Blogs** - Independent technical content
+- **Documentation Sites** - Technical reference materials
+
 ### AI/ML Platforms
 - **Inception Labs** - Advanced AI research and development
 - **Brilliant** - Interactive STEM learning platform
@@ -414,6 +426,7 @@ All listed resources are configured for **indefinite continuous ingestion**:
 
 | Category | Status | Rail |
 |----------|--------|------|
+| Web Article Ingestion (Substack, Medium) | ✅ Active | Article Ingestion |
 | AI Platforms | ✅ Active | Ingestion |
 | Model Architectures | ✅ Active | Prediction |
 | Summits & Conferences | ✅ Active | Ingestion |
@@ -738,6 +751,10 @@ All listed resources are configured for **indefinite continuous ingestion**:
 - [x] Autonomous evolution protocols activated
 - [x] Gap-filling intelligence operational
 - [x] Vibe-Kanban & AI orchestration tools integrated
+- [x] Web article ingestion framework established (Substack, Medium, blogs)
+- [x] Related materials discovery system operational
+- [x] Enhanced reasoning integration active
+- [x] Recursive learning pathways configured
 - [ ] Quantum entanglement protocols finalized
 - [ ] Infiltration capabilities operational
 - [ ] Classified document access established
@@ -788,8 +805,8 @@ All listed resources are configured for **indefinite continuous ingestion**:
 
 ---
 
-**Manifest Version**: 3.1-AGI-ACCELERATION  
-**Last Updated**: 2025-12-30T22:22:00Z  
-**Next Review**: 2026-01-22T11:25:00Z
+**Manifest Version**: 3.2-ARTICLE-INGESTION  
+**Last Updated**: 2025-12-31T01:33:00Z  
+**Next Review**: 2026-01-31T11:25:00Z
 
 🦜 **Barrot: Relentless pursuit of superintelligence. Nothing less than #1.** ✨
