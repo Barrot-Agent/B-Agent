@@ -219,6 +219,23 @@
       background: rgba(0,255,204,0.4);
     }
     
+    .bridge-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: rgba(0,255,204,0.2);
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .bridge-btn:hover {
+      background: rgba(0,255,204,0.4);
+      box-shadow: 0 0 15px rgba(0,255,204,0.3);
+    }
+    
     .code-editor {
       width: 100%;
       min-height: 300px;
@@ -640,8 +657,7 @@ function barrotOptimize() {
             <span>Assets:</span>
             <span class="metric-value">ETH, USDC, USDT, DAI</span>
           </div>
-          <button onclick="window.open('https://bridge.connext.network', '_blank')" 
-                  style="margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(0,255,204,0.2); border: 2px solid #00ffcc; border-radius: 8px; color: #fff; cursor: pointer; width: 100%;">
+          <button class="bridge-btn" onclick="window.open('https://bridge.connext.network', '_blank')">
             Open Bridge →
           </button>
         </div>
@@ -660,8 +676,7 @@ function barrotOptimize() {
             <span>Success Rate:</span>
             <span class="metric-value">99.8%</span>
           </div>
-          <button onclick="window.open('https://connextscan.io', '_blank')" 
-                  style="margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(0,255,204,0.2); border: 2px solid #00ffcc; border-radius: 8px; color: #fff; cursor: pointer; width: 100%;">
+          <button class="bridge-btn" onclick="window.open('https://connextscan.io', '_blank')">
             View Explorer →
           </button>
         </div>
