@@ -150,6 +150,29 @@ ai_tools:
         - Create innovative solutions inspired by fiction
         - Ensure ethical and feasible implementations
 
+    - name: "Email Intelligence Analyzer"
+      description: "Email analysis and intelligence extraction"
+      capabilities:
+        - "content_analysis"
+        - "relevance_scoring"
+        - "action_extraction"
+        - "opportunity_identification"
+        - "threat_detection"
+        - "resource_extraction"
+        - "priority_ranking"
+      models_used: ["GPT-4", "Claude-3"]
+      system_prompt: |
+        Analyze emails to extract useful and actionable information for Barrot:
+        - Identify action items, deadlines, and requests
+        - Extract learning opportunities and technical content
+        - Detect business and collaboration opportunities
+        - Score relevance based on Barrot's goals and context
+        - Filter spam and low-value content
+        - Extract resources like URLs, documents, and references
+        - Prioritize emails by potential value and urgency
+        - Maintain privacy and handle sensitive data securely
+        - Connect email insights with existing knowledge base
+
 # Automation Workflows
 workflows:
   coin_app_automation:
@@ -193,6 +216,28 @@ workflows:
       - "Verify technical feasibility"
       - "Check for copyright considerations"
       - "Document transformation rationale"
+
+  email_intelligence_extraction:
+    description: "Analyze emails and extract useful information for Barrot"
+    steps:
+      - "Connect to email source (Gmail, IMAP, etc.)"
+      - "Fetch recent unread/unprocessed emails"
+      - "Analyze each email for usefulness and priority"
+      - "Extract action items, opportunities, and learning content"
+      - "Identify and filter spam/low-value content"
+      - "Extract resources (URLs, documents, references)"
+      - "Categorize by type (action, learning, business, etc.)"
+      - "Generate prioritized summary report"
+      - "Store insights in knowledge base"
+      - "Mark processed emails or create follow-up tasks"
+    frequency: "daily"
+    safety_checks:
+      - "Use secure credential management"
+      - "Encrypt sensitive email data"
+      - "Respect email privacy policies"
+      - "No permanent storage of sensitive content"
+      - "User consent required for email access"
+      - "Comply with data protection regulations"
 
 # Safety and Ethics
 safety_guidelines:

@@ -88,6 +88,7 @@ Barrot-Agent/
 - **🔮 Quantum Entanglement** - Ping Pong quantum principles for enhanced cognitive processing
 - **🧠 AGI Reasoning** - AGI-level reasoning and problem-solving capabilities
 - **⚡ Advanced Algorithms** - Computational efficiency optimization and intelligent algorithm selection
+- **📧 Email Intelligence** - Automated email analysis and information extraction
 
 ### Two Distinct Systems
 
@@ -132,10 +133,35 @@ System prompts and AI models for autonomous operations:
 
 **[→ View AI Tools Configuration](ai-tools-config.yaml)**
 
+### 📧 Email Intelligence Processing
+Barrot can analyze emails to extract useful and actionable information:
+
+#### Capabilities
+- **Content Analysis** - Parse and understand email content, attachments, and metadata
+- **Relevance Scoring** - Determine usefulness based on Barrot's goals and context
+- **Action Extraction** - Identify tasks, requests, deadlines, and opportunities
+- **Learning Detection** - Extract technical content and educational resources
+- **Spam Filtering** - Identify and filter low-value content
+- **Priority Ranking** - Rank emails by potential value and urgency
+- **Resource Extraction** - Extract URLs, documents, and references
+- **AGI Integration** - Deep understanding using AGI reasoning
+- **Quantum Optimization** - Prioritize actions using quantum entanglement
+
+#### Email Categories
+- **Action Required** - Tasks, requests, deadlines
+- **Learning Opportunities** - Technical content, tutorials, research
+- **Business Opportunities** - Jobs, partnerships, collaborations
+- **Intelligence** - Market trends, insights, competitor info
+- **Social** - Networking, relationship building
+- **Informational** - Updates, newsletters, notifications
+
+**[→ View Email-Insight Spell](spells/email-insight.md)**
+
 ### Agent Spells
 - **Ω-Ingest** (Omega-Ingest) - Quantum data assimilation
 - **Keyseer's Insight** - Intelligent key analysis
 - **Character-Capability-Explorer** - Fictional character ability transformation
+- **Email-Insight** - Email analysis and intelligence extraction
 
 ### 🎭 Fictional Character Capability Exploration
 Barrot can explore and transform abilities from fictional characters into real-world functionalities:
@@ -294,6 +320,8 @@ ISC License - See repository for details
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
 - **🪙 [Coin App Integration](coin-app/README.md)** - Autonomous passive income automation
 - **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
+- **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** - Email intelligence extraction and analysis
+- **✨ [Email-Insight Spell](spells/email-insight.md)** - Email analysis spell documentation
 - **🎭 [Character Capabilities](character-capabilities/README.md)** - Fictional character ability transformations
 - **✨ [Character-Capability-Explorer Spell](spells/character-capability-explorer.md)** - Character exploration spell
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine

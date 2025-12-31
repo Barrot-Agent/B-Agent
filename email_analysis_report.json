@@ -1,0 +1,355 @@
+{
+  "email_analyzer_report": {
+    "version": "1.0.0",
+    "total_emails_analyzed": 12,
+    "timestamp": "2025-12-31T03:38:18.127446+00:00",
+    "analysis_history": [
+      {
+        "email_id": "email_001",
+        "subject": "New Python library for machine learning - Review needed by Friday",
+        "sender": "colleague@company.com",
+        "date": "2025-12-31T03:38:18.123657+00:00",
+        "priority": "medium",
+        "categories": [
+          "action_required",
+          "learning_opportunity"
+        ],
+        "usefulness_score": 0.8,
+        "is_useful": true,
+        "action_items": [
+          {
+            "description": "Could you please review the API and give me your feedback by Friday? \n        We need to decide if we should integrate this into our project",
+            "context": "extracted from email body"
+          }
+        ],
+        "learning_content": [
+          {
+            "type": "technical_content",
+            "source": "email_body",
+            "relevance": "high"
+          },
+          {
+            "type": "educational_document",
+            "source": "fastml_comparison.pdf",
+            "relevance": "medium"
+          }
+        ],
+        "opportunities": [],
+        "resources": [
+          {
+            "url": "https://fastml.readthedocs.io/",
+            "type": "documentation"
+          },
+          {
+            "url": "https://github.com/fastml/fastml.",
+            "type": "code_repository"
+          }
+        ],
+        "analysis_timestamp": "2025-12-31T03:38:18.124828+00:00",
+        "recommendation": "Action required - 1 item(s) need attention"
+      },
+      {
+        "email_id": "email_001",
+        "subject": "Urgent: Server maintenance required",
+        "sender": "ops@company.com",
+        "date": "2025-12-31T03:38:18.124945+00:00",
+        "priority": "high",
+        "categories": [
+          "action_required"
+        ],
+        "usefulness_score": 0.55,
+        "is_useful": true,
+        "action_items": [
+          {
+            "description": "Please respond ASAP",
+            "context": "extracted from email body"
+          }
+        ],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.125420+00:00",
+        "recommendation": "Action required - 1 item(s) need attention"
+      },
+      {
+        "email_id": "email_002",
+        "subject": "Weekly newsletter - Tech trends",
+        "sender": "newsletter@techblog.com",
+        "date": "2025-12-31T03:38:18.124949+00:00",
+        "priority": "noise",
+        "categories": [
+          "intelligence"
+        ],
+        "usefulness_score": 0.15,
+        "is_useful": false,
+        "action_items": [],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.125550+00:00",
+        "recommendation": "Archive or delete - low value content"
+      },
+      {
+        "email_id": "email_003",
+        "subject": "Job opportunity - Senior Engineer position",
+        "sender": "recruiter@bigtech.com",
+        "date": "2025-12-31T03:38:18.124951+00:00",
+        "priority": "noise",
+        "categories": [
+          "business_opportunity"
+        ],
+        "usefulness_score": 0.3,
+        "is_useful": true,
+        "action_items": [],
+        "learning_content": [],
+        "opportunities": [
+          {
+            "type": "job",
+            "subject": "Job opportunity - Senior Engineer position",
+            "potential": "medium"
+          }
+        ],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.125684+00:00",
+        "recommendation": "Review opportunities - 1 potential opportunity(ies)"
+      },
+      {
+        "email_id": "email_004",
+        "subject": "Limited time offer - Click now!",
+        "sender": "marketing@spam.com",
+        "date": "2025-12-31T03:38:18.124953+00:00",
+        "priority": "noise",
+        "categories": [
+          "spam"
+        ],
+        "usefulness_score": 0.0,
+        "is_useful": false,
+        "action_items": [],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.125752+00:00",
+        "recommendation": "Archive or delete - low value content"
+      },
+      {
+        "email_id": "email_005",
+        "subject": "Tutorial: Advanced Python techniques",
+        "sender": "education@learning.com",
+        "date": "2025-12-31T03:38:18.124954+00:00",
+        "priority": "low",
+        "categories": [
+          "learning_opportunity"
+        ],
+        "usefulness_score": 0.45,
+        "is_useful": true,
+        "action_items": [],
+        "learning_content": [
+          {
+            "type": "technical_content",
+            "source": "email_body",
+            "relevance": "high"
+          },
+          {
+            "type": "educational_document",
+            "source": "python_tutorial.pdf",
+            "relevance": "medium"
+          }
+        ],
+        "opportunities": [],
+        "resources": [
+          {
+            "url": "https://learning.com/python",
+            "type": "general"
+          }
+        ],
+        "analysis_timestamp": "2025-12-31T03:38:18.125879+00:00",
+        "recommendation": "Review for learning - contains useful technical content"
+      },
+      {
+        "email_id": "email_learning",
+        "subject": "New course on Quantum Computing",
+        "sender": "courses@university.edu",
+        "date": "2025-12-31T03:38:18.125987+00:00",
+        "priority": "low",
+        "categories": [
+          "learning_opportunity"
+        ],
+        "usefulness_score": 0.45,
+        "is_useful": true,
+        "action_items": [],
+        "learning_content": [
+          {
+            "type": "technical_content",
+            "source": "email_body",
+            "relevance": "high"
+          },
+          {
+            "type": "educational_document",
+            "source": "quantum_syllabus.pdf",
+            "relevance": "medium"
+          },
+          {
+            "type": "educational_document",
+            "source": "lecture_notes.pdf",
+            "relevance": "medium"
+          }
+        ],
+        "opportunities": [],
+        "resources": [
+          {
+            "url": "https://university.edu/quantum-course",
+            "type": "general"
+          },
+          {
+            "url": "https://arxiv.org/quantum-computing-intro",
+            "type": "research"
+          },
+          {
+            "url": "https://github.com/university/quantum-examples",
+            "type": "code_repository"
+          },
+          {
+            "url": "https://docs.quantum.edu/",
+            "type": "documentation"
+          }
+        ],
+        "analysis_timestamp": "2025-12-31T03:38:18.126278+00:00",
+        "recommendation": "Review for learning - contains useful technical content"
+      },
+      {
+        "email_id": "email_opportunity",
+        "subject": "Partnership proposal for AI collaboration",
+        "sender": "partner@startup.com",
+        "date": "2025-12-31T03:38:18.126408+00:00",
+        "priority": "medium",
+        "categories": [
+          "action_required",
+          "learning_opportunity",
+          "business_opportunity"
+        ],
+        "usefulness_score": 1.0,
+        "is_useful": true,
+        "action_items": [
+          {
+            "description": "Would you be interested in discussing this opportunity further?",
+            "context": "extracted from email body"
+          }
+        ],
+        "learning_content": [
+          {
+            "type": "technical_content",
+            "source": "email_body",
+            "relevance": "high"
+          },
+          {
+            "type": "educational_document",
+            "source": "partnership_proposal.pdf",
+            "relevance": "medium"
+          }
+        ],
+        "opportunities": [
+          {
+            "type": "job",
+            "subject": "Partnership proposal for AI collaboration",
+            "potential": "medium"
+          },
+          {
+            "type": "collaboration",
+            "subject": "Partnership proposal for AI collaboration",
+            "potential": "medium"
+          },
+          {
+            "type": "business",
+            "subject": "Partnership proposal for AI collaboration",
+            "potential": "medium"
+          }
+        ],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.126690+00:00",
+        "recommendation": "Action required - 1 item(s) need attention"
+      },
+      {
+        "email_id": "spam_001",
+        "subject": "You won a million dollars! Click here now!",
+        "sender": "noreply@spam.com",
+        "date": "2025-12-31T03:38:18.126820+00:00",
+        "priority": "noise",
+        "categories": [
+          "spam"
+        ],
+        "usefulness_score": 0.0,
+        "is_useful": false,
+        "action_items": [],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.126917+00:00",
+        "recommendation": "Archive or delete - low value content"
+      },
+      {
+        "email_id": "legit_001",
+        "subject": "Team meeting tomorrow at 2pm",
+        "sender": "manager@company.com",
+        "date": "2025-12-31T03:38:18.126826+00:00",
+        "priority": "medium",
+        "categories": [
+          "action_required"
+        ],
+        "usefulness_score": 0.45,
+        "is_useful": true,
+        "action_items": [
+          {
+            "description": "Please confirm attendance",
+            "context": "extracted from email body"
+          }
+        ],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.127098+00:00",
+        "recommendation": "Action required - 1 item(s) need attention"
+      },
+      {
+        "email_id": "email_-287735664953719513",
+        "subject": "Test email 1",
+        "sender": "test1@example.com",
+        "date": "2025-12-31T03:38:18.127163+00:00",
+        "priority": "noise",
+        "categories": [
+          "informational"
+        ],
+        "usefulness_score": 0.0,
+        "is_useful": false,
+        "action_items": [],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.127324+00:00",
+        "recommendation": "Archive or delete - low value content"
+      },
+      {
+        "email_id": "email_4332338641028528969",
+        "subject": "Test email 2 - Urgent action needed",
+        "sender": "test2@example.com",
+        "date": "2025-12-31T03:38:18.127169+00:00",
+        "priority": "high",
+        "categories": [
+          "action_required"
+        ],
+        "usefulness_score": 0.55,
+        "is_useful": true,
+        "action_items": [
+          {
+            "description": "Please respond to this urgent request by tomorrow",
+            "context": "extracted from email body"
+          }
+        ],
+        "learning_content": [],
+        "opportunities": [],
+        "resources": [],
+        "analysis_timestamp": "2025-12-31T03:38:18.127428+00:00",
+        "recommendation": "Action required - 1 item(s) need attention"
+      }
+    ]
+  }
+}

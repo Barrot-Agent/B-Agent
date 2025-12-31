@@ -25,6 +25,11 @@ from advanced_algorithms import (
     performance_monitor,
     optimize_algorithm
 )
+from email_analyzer import (
+    email_analyzer,
+    analyze_email,
+    analyze_emails
+)
 
 
 class BarrotIntegratedSystem:
@@ -179,6 +184,108 @@ class BarrotIntegratedSystem:
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
     
+    def analyze_emails_with_intelligence(self, emails: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Analyze emails using integrated AGI reasoning and quantum optimization
+        Extracts useful information relevant to Barrot's goals
+        
+        Args:
+            emails: List of email data dictionaries
+        
+        Returns:
+            Comprehensive email intelligence report with prioritized insights
+        """
+        start_time = datetime.now(timezone.utc)
+        
+        # Step 1: Analyze emails using email analyzer
+        email_analysis = analyze_emails(emails)
+        
+        # Step 2: Use AGI reasoning to understand context and extract deeper insights
+        useful_emails = [
+            email for email in email_analysis['detailed_analyses'] 
+            if email['is_useful']
+        ]
+        
+        agi_insights = []
+        for email in useful_emails[:5]:  # Process top 5 useful emails with AGI
+            problem = f"Extract actionable insights from email: {email['subject']}"
+            context = {
+                "email_content": email,
+                "barrot_goals": ["learning", "automation", "opportunities", "optimization"]
+            }
+            agi_analysis = solve_with_agi(problem, context)
+            agi_insights.append({
+                "email_subject": email['subject'],
+                "agi_analysis": agi_analysis
+            })
+        
+        # Step 3: Use quantum optimization to prioritize actions
+        if email_analysis['action_items']:
+            action_options = [
+                {
+                    "action": item['description'][:50],
+                    "priority": 0.8 if 'urgent' in item['description'].lower() else 0.6,
+                    "confidence": 0.75
+                }
+                for item in email_analysis['action_items'][:5]
+            ]
+            
+            quantum_prioritization = create_entangled_decision_space(
+                "email_actions",
+                action_options
+            )
+        else:
+            quantum_prioritization = None
+        
+        # Step 4: Track performance
+        processing_time = (datetime.now(timezone.utc) - start_time).total_seconds()
+        self.performance_tracker.track_metric("email_processing_time", processing_time)
+        
+        return {
+            "email_analysis": email_analysis,
+            "agi_insights": agi_insights,
+            "quantum_prioritization": quantum_prioritization,
+            "processing_time_seconds": processing_time,
+            "intelligence_summary": self._generate_intelligence_summary(
+                email_analysis, agi_insights
+            ),
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    
+    def _generate_intelligence_summary(
+        self,
+        email_analysis: Dict[str, Any],
+        agi_insights: List[Dict[str, Any]]
+    ) -> str:
+        """Generate human-readable intelligence summary from email analysis"""
+        summary_parts = []
+        
+        # Overall statistics
+        total = email_analysis['total_emails']
+        useful = email_analysis['useful_emails']
+        summary_parts.append(f"Processed {total} emails, {useful} contain useful information.")
+        
+        # High priority items
+        high_priority = email_analysis['high_priority_count']
+        if high_priority > 0:
+            summary_parts.append(f"{high_priority} require immediate attention.")
+        
+        # Action items
+        action_count = email_analysis['total_action_items']
+        if action_count > 0:
+            summary_parts.append(f"Identified {action_count} action items for follow-up.")
+        
+        # Opportunities
+        opp_count = email_analysis['total_opportunities']
+        if opp_count > 0:
+            summary_parts.append(f"Found {opp_count} potential opportunities to explore.")
+        
+        # AGI insights
+        if agi_insights:
+            summary_parts.append(f"AGI analysis provided deep insights on {len(agi_insights)} key emails.")
+        
+        return " ".join(summary_parts)
+    
     def get_system_status(self) -> Dict[str, Any]:
         """Get comprehensive system status"""
         return {
@@ -192,6 +299,7 @@ class BarrotIntegratedSystem:
             },
             "algorithm_status": self.algorithm_optimizer.get_optimization_report(),
             "performance_summary": self.performance_tracker.get_performance_summary(),
+            "email_analysis_history": len(email_analyzer.analysis_history),
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
     
@@ -204,7 +312,8 @@ class BarrotIntegratedSystem:
                     "quantum_entanglement",
                     "agi_reasoning",
                     "advanced_algorithms",
-                    "performance_optimization"
+                    "performance_optimization",
+                    "email_intelligence"
                 ],
                 "system_status": self.get_system_status(),
                 "backward_compatibility": "maintained",
@@ -256,3 +365,16 @@ def agi_solve(problem: str, context: Optional[Dict[str, Any]] = None) -> Dict[st
 def optimize_performance(algorithm_name: str):
     """Decorator for performance optimization"""
     return optimize_algorithm(algorithm_name)
+
+
+def process_emails(emails: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Convenient function to process emails with Barrot's integrated intelligence
+    
+    Args:
+        emails: List of email data dictionaries
+    
+    Returns:
+        Comprehensive email intelligence report with AGI insights and quantum prioritization
+    """
+    return barrot_system.analyze_emails_with_intelligence(emails)
