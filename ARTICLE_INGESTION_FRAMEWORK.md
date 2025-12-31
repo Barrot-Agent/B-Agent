@@ -260,16 +260,43 @@ This framework enables Barrot to systematically ingest content from web articles
 
 ## 🚀 Usage Instructions
 
-### For Substack Articles
-1. Provide Substack article URL
-2. System extracts content and metadata
-3. Discovers related articles in author's archive
-4. Identifies cited sources and references
-5. Locates datasets and tools mentioned
-6. Creates ingestion response document
-7. Updates knowledge base
+### How to Trigger Article Ingestion
 
-### For Medium Articles
+**Method 1: Direct Request**
+Simply provide the article URL in a request to Barrot:
+```
+"Ingest this article: https://example.substack.com/p/article-title"
+```
+
+**Method 2: Issue/PR Description**
+Create an issue or PR with the article URL:
+```markdown
+Title: Ingest [Article Topic]
+Body: Please ingest: https://example.substack.com/p/article-title
+```
+
+**Method 3: Batch Processing**
+Provide multiple URLs for sequential ingestion:
+```
+Ingest these articles:
+1. https://example1.substack.com/p/article-1
+2. https://medium.com/article-2
+3. https://blog.example.com/article-3
+```
+
+### Automated Workflow
+
+**For Substack Articles**:
+1. Provide Substack article URL to Barrot
+2. System automatically:
+   - Extracts content and metadata
+   - Discovers related articles in author's archive
+   - Identifies cited sources and references
+   - Locates datasets and tools mentioned
+   - Creates ingestion response document
+   - Updates knowledge base
+
+**For Medium Articles**:
 1. Provide Medium article URL
 2. Extract content (handle paywall if needed)
 3. Discover author's publication and series
@@ -277,12 +304,31 @@ This framework enables Barrot to systematically ingest content from web articles
 5. Capture code repositories linked
 6. Document in knowledge base
 
-### For Other Platforms
+**For Other Platforms**:
 1. Provide article URL
 2. Platform-agnostic extraction
 3. Manual review for completeness
 4. Standard ingestion workflow
 5. Documentation and integration
+
+### Tools & Dependencies
+
+**Required Python Packages** (auto-install on first use):
+```bash
+pip install beautifulsoup4>=4.12.0
+pip install requests>=2.31.0
+pip install lxml>=4.9.0
+pip install html5lib>=1.1
+```
+
+**Optional Enhancement Packages**:
+```bash
+pip install scrapy>=2.11.0  # For advanced scraping
+pip install readability-lxml>=0.8.1  # For reader mode extraction
+pip install newspaper3k>=0.2.8  # For article parsing
+```
+
+**Integration**: These dependencies are checked and installed automatically when ingestion is triggered. No manual setup required.
 
 ---
 

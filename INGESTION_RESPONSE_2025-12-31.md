@@ -259,6 +259,18 @@ knowledge_base:
 
 ## 🚀 Ready-to-Execute Workflow
 
+### How to Trigger Ingestion
+
+**Simply provide the article URL to Barrot in any of these ways**:
+
+1. **Direct Request**: "Ingest this article: https://example.substack.com/p/article-title"
+2. **Issue/PR**: Create an issue with the URL in the description
+3. **Batch Request**: Provide multiple URLs for sequential processing
+
+The framework will automatically handle the rest.
+
+### Automated Processing Steps
+
 When a Substack article URL is provided, the system will:
 
 ### Automated Steps

@@ -22,7 +22,12 @@
 **Category**: Content Ingestion Infrastructure
 **Framework**: [ARTICLE_INGESTION_FRAMEWORK.md](../ARTICLE_INGESTION_FRAMEWORK.md)
 **Type**: Comprehensive ingestion system
-**Description**: Complete framework for ingesting web articles along with all related materials including similar articles, supporting documentation, adjacent datasets, toolkits, and corresponding tutorials. System enables comprehensive knowledge ecosystem creation from single article URLs, with automatic discovery of 50-100+ related resources. Includes enhanced reasoning integration, recursive learning pathway creation, and seamless knowledge base integration. Processing time: 15-25 minutes per article (fully automated).
+**Description**: 
+Complete framework for ingesting web articles along with all related materials including similar articles, supporting documentation, adjacent datasets, toolkits, and corresponding tutorials. 
+
+System enables comprehensive knowledge ecosystem creation from single article URLs, with automatic discovery of 50-100+ related resources. Includes enhanced reasoning integration, recursive learning pathway creation, and seamless knowledge base integration. 
+
+Processing time: 15-25 minutes per article (fully automated).
 
 **Key Features**:
 - Multi-platform support (Substack, Medium, personal blogs, documentation sites)
