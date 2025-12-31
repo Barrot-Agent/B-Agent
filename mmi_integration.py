@@ -231,12 +231,13 @@ class MMIOrchestrator:
         modality_map = {}
         
         for key, value in data.items():
-            if isinstance(value, str):
+            # Check key name patterns first
+            if "time" in key.lower() or "date" in key.lower():
+                modality_map[key] = "temporal"
+            elif isinstance(value, str):
                 modality_map[key] = "text"
             elif isinstance(value, (dict, list)):
                 modality_map[key] = "structured"
-            elif "time" in key.lower() or "date" in key.lower():
-                modality_map[key] = "temporal"
             else:
                 modality_map[key] = "hybrid"
         
