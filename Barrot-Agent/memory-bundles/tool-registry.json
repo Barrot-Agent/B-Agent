@@ -1,0 +1,47 @@
+{
+  "data_processing_text_processor_1767146083": {
+    "name": "text_processor",
+    "description": "Process text with various operations",
+    "category": "data_processing",
+    "parameters": [
+      {
+        "name": "text",
+        "type": "str",
+        "description": "Input text",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "operation",
+        "type": "str",
+        "description": "Operation to perform",
+        "required": true,
+        "default": null
+      }
+    ],
+    "returns": "str",
+    "safety_level": 1,
+    "usage_count": 0,
+    "success_rate": 1.0,
+    "average_duration": 0.0
+  },
+  "computation_calculator_1767146083": {
+    "name": "calculator",
+    "description": "Perform mathematical computations",
+    "category": "computation",
+    "parameters": [
+      {
+        "name": "expression",
+        "type": "str",
+        "description": "Math expression",
+        "required": true,
+        "default": null
+      }
+    ],
+    "returns": "float",
+    "safety_level": 2,
+    "usage_count": 0,
+    "success_rate": 1.0,
+    "average_duration": 0.0
+  }
+}

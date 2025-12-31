@@ -73,6 +73,14 @@ Barrot-Agent/
 
 ## 🎯 Features
 
+### Enhanced AI Framework (NEW!)
+- **ReAct Reasoning** - Thought-Action-Observation cycles for grounded intelligence
+- **Tree-of-Thoughts** - Multi-path exploration and backtracking
+- **Self-Reflection** - Continuous self-evaluation and improvement
+- **Advanced Memory** - Episodic, semantic, and working memory systems
+- **Multi-Agent Orchestration** - Role-based agent collaboration (inspired by CrewAI)
+- **Tool Management** - Intelligent tool selection and safe execution
+
 ### Core Modules
 - **Prediction Methodologies** - Advanced prediction capabilities
 - **Deployment Integrity** - Reliable deployment systems
@@ -255,6 +263,8 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🚀 [Framework Enhancement Analysis](FRAMEWORK_ENHANCEMENT_ANALYSIS.md)** - Comprehensive analysis of AI agent frameworks and enhancement strategy
+- **🔧 [Framework Integration Guide](FRAMEWORK_INTEGRATION_GUIDE.md)** - Integration guide for enhanced framework components
 - **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** - Details on the modular separation
 - **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation

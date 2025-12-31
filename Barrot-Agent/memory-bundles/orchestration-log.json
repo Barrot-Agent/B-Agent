@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2025-12-31T01:54:34.967972",
+    "event_type": "agent_registered",
+    "details": {
+      "agent_id": "analyst_01",
+      "role": "analyst"
+    }
+  },
+  {
+    "timestamp": "2025-12-31T01:54:34.968114",
+    "event_type": "agent_registered",
+    "details": {
+      "agent_id": "developer_01",
+      "role": "developer"
+    }
+  },
+  {
+    "timestamp": "2025-12-31T01:54:34.968296",
+    "event_type": "agent_registered",
+    "details": {
+      "agent_id": "researcher_01",
+      "role": "researcher"
+    }
+  },
+  {
+    "timestamp": "2025-12-31T01:54:34.968707",
+    "event_type": "task_delegated",
+    "details": {
+      "task_id": "task_1_1767146074",
+      "agent_id": "analyst_01",
+      "description": "Analyze AI agent frameworks"
+    }
+  },
+  {
+    "timestamp": "2025-12-31T01:54:34.968899",
+    "event_type": "task_delegated",
+    "details": {
+      "task_id": "task_2_1767146074",
+      "agent_id": "developer_01",
+      "description": "Implement ReAct reasoning module"
+    }
+  }
+]
