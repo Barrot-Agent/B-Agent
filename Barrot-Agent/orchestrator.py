@@ -294,11 +294,12 @@ class TaskDelegator:
                 agent.current_task = None
                 agent.tasks_completed += 1
                 
-                # Update success rate
-                if success:
-                    agent.success_rate = (agent.success_rate * agent.tasks_completed + 1) / (agent.tasks_completed + 1)
-                else:
-                    agent.success_rate = (agent.success_rate * agent.tasks_completed) / (agent.tasks_completed + 1)
+                # Update success rate (tasks_completed was just incremented)
+                old_count = agent.tasks_completed - 1
+                if success and old_count >= 0:
+                    agent.success_rate = (agent.success_rate * old_count + 1.0) / agent.tasks_completed
+                elif old_count >= 0:
+                    agent.success_rate = (agent.success_rate * old_count) / agent.tasks_completed
                 
                 self.role_manager.update_agent_status(agent.agent_id, "idle")
     

@@ -479,10 +479,12 @@ class ToolExecutor:
     
     def _save_log(self):
         """Save execution log"""
+        # Keep last 1000 executions (configurable)
+        MAX_LOG_ENTRIES = 1000
         try:
             with open(self.execution_log_path, 'w') as f:
                 json.dump(
-                    [asdict(e) for e in self.execution_log[-1000:]],  # Keep last 1000
+                    [asdict(e) for e in self.execution_log[-MAX_LOG_ENTRIES:]],
                     f,
                     indent=2
                 )
@@ -531,10 +533,34 @@ class ToolManager:
         
         # Example: Math computation tool
         def compute(expression: str) -> float:
-            # Simple and safe evaluation (in practice, use proper parser)
+            # Safe mathematical evaluation using ast
+            import ast
+            import operator
+            
+            # Allowed operations
+            ops = {
+                ast.Add: operator.add,
+                ast.Sub: operator.sub,
+                ast.Mult: operator.mul,
+                ast.Div: operator.truediv,
+                ast.Pow: operator.pow,
+                ast.USub: operator.neg
+            }
+            
+            def eval_expr(node):
+                if isinstance(node, ast.Num):
+                    return node.n
+                elif isinstance(node, ast.BinOp):
+                    return ops[type(node.op)](eval_expr(node.left), eval_expr(node.right))
+                elif isinstance(node, ast.UnaryOp):
+                    return ops[type(node.op)](eval_expr(node.operand))
+                else:
+                    raise ValueError("Unsupported operation")
+            
             try:
-                return eval(expression, {"__builtins__": {}}, {})
-            except:
+                tree = ast.parse(expression, mode='eval')
+                return float(eval_expr(tree.body))
+            except Exception:
                 return 0.0
         
         self.registry.register_tool(
