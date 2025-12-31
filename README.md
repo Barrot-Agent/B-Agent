@@ -107,6 +107,7 @@ Comprehensive automation platform featuring:
 - Integrated Development Environment (IDE)
 - Digital Audio Workstation (DAW)
 - Web3 Integration Hub
+  - **🌉 Connext Bridge** - Cross-chain asset transfers across 9+ networks
 - NFT Marketplace
 - Chameleon Chain Blockchain
 - **🪙 Coin App Automation** - Passive income through geocaching, surveys, and games
@@ -122,6 +123,24 @@ Autonomous passive income generation through:
 - **Income Tracking** - Real-time earnings dashboard and analytics
 
 **[→ Read Coin App Documentation](coin-app/README.md)**
+
+### 🌉 Connext Bridge Integration
+Cross-chain bridge for seamless asset transfers across multiple blockchains:
+- **Supported Networks** - Ethereum, Polygon, Arbitrum, Optimism, BNB Chain, Base, Linea, Gnosis, and more
+- **Supported Assets** - ETH, WETH, USDC, USDT, DAI
+- **Cross-Chain Messaging** - xCall for cross-chain Solidity calls
+- **Zero Slippage Tokens** - xERC20 for cross-chain native tokens
+- **Chain Abstraction** - Build dApps that work across any supported chain
+- **Bridge Portal** - https://bridge.connext.network
+- **Analytics** - Real-time monitoring via ConnextScan explorer
+
+**Key Features:**
+- **Modular Verification** - Inherits security from canonical bridges
+- **Fast Transfers** - Average bridge time under 5 minutes
+- **Trust-Minimized** - No external validators required
+- **Developer-Friendly** - Simple integration with comprehensive documentation
+
+**[→ View Connext Configuration](connext-config.yaml)**
 
 ### 🤖 AI Tools Configuration
 System prompts and AI models for autonomous operations:
@@ -293,6 +312,7 @@ ISC License - See repository for details
 - **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
 - **🪙 [Coin App Integration](coin-app/README.md)** - Autonomous passive income automation
+- **🌉 [Connext Bridge Integration](CONNEXT_INTEGRATION.md)** - Cross-chain bridge documentation
 - **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
 - **🎭 [Character Capabilities](character-capabilities/README.md)** - Fictional character ability transformations
 - **✨ [Character-Capability-Explorer Spell](spells/character-capability-explorer.md)** - Character exploration spell
