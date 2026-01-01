@@ -16,7 +16,7 @@ on:
     - cron: "0 */6 * * *"  # Run every 6 hours
   push:
     branches:
-      - Main
+      - main
     paths:
       - 'Barrot-Agent/**'
       - 'memory-bundles/**'
@@ -119,7 +119,7 @@ jobs:
         run: |
           git config user.name "Barrot-Agent"
           git config user.email "238745440+Barrot-Agent@users.noreply.github.com"
-          git pull origin Main --rebase || true
+          git pull origin main --rebase || true
 
       - name: Commit cognitive state
         run: |
@@ -130,4 +130,4 @@ jobs:
 
       - name: Push changes
         run: |
-          git push origin Main || echo "Push failed or no changes"
+          git push origin main || echo "Push failed or no changes"
