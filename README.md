@@ -2,7 +2,9 @@
 
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
-> **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
+> **📌 Note**: All branches have been successfully consolidated into `main`. See [BRANCH_CONSOLIDATION.md](BRANCH_CONSOLIDATION.md) for details.
+>
+> **📌 Previous Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
 ## 🚀 Quick Start
 
@@ -234,6 +236,7 @@ Economics:
 
 ## 📚 Documentation
 
+- **🔀 [Branch Consolidation](BRANCH_CONSOLIDATION.md)** - Complete report on branch consolidation
 - **✨ [Progressive Ping-Pong Upgrade](PROGRESSIVE_PINGPONG_UPGRADE.md)** - Iterative quality enhancement with 22 AI agents (NEW!)
 - **🧩 [AGI Puzzle Protocol](AGI_PUZZLE_PROTOCOL.md)** - Dynamic AGI component discovery system
 - **🤖 [Multi-Agent Parallel System](MULTI_AGENT_PARALLEL_SYSTEM.md)** - 7-clone parallel architecture  
