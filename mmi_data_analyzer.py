@@ -10,7 +10,7 @@ for datasets, content, and knowledge worth ingesting with maximum priority.
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Tuple
 from dataclasses import dataclass, asdict
 from enum import Enum
@@ -367,7 +367,7 @@ class MMIDataAnalyzer:
         recommendations = self.generate_prioritized_recommendations()
         
         output = {
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "analysis_version": "1.0",
             "agi_gaps_identified": {k.value: v for k, v in self.current_agi_gaps.items()},
             "recommendations": [
@@ -410,7 +410,7 @@ class MMIDataAnalyzer:
         
         report = f"""# 🧠 Barrot MMI (Massive Micro Ingestion) Analysis Report
 
-**Generated**: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC  
+**Generated**: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC  
 **Analysis Version**: 1.0  
 **Total High-Impact Sources Identified**: {len(self.high_impact_sources)}
 
