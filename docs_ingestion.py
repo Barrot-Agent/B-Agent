@@ -11,7 +11,12 @@ from datetime import datetime
 from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
 from html.parser import HTMLParser
-import re
+
+try:
+    import yaml
+    HAS_YAML = True
+except ImportError:
+    HAS_YAML = False
 
 
 class DocParser(HTMLParser):
@@ -48,9 +53,60 @@ class DocParser(HTMLParser):
 class DocsIngestionSystem:
     """Documentation ingestion system for multiple platforms"""
     
-    def __init__(self, output_dir='ingested_docs'):
+    def __init__(self, output_dir='ingested_docs', config_file='docs-ingestion-config.yaml'):
         self.output_dir = output_dir
-        self.platforms = {
+        self.config_file = config_file
+        
+        # Try to load configuration from YAML file
+        self.config = self._load_config()
+        
+        # Use configuration if loaded, otherwise use defaults
+        if self.config and 'ingestion_config' in self.config:
+            self.platforms = self._load_platforms_from_config()
+            if self.config['ingestion_config'].get('output', {}).get('directory'):
+                self.output_dir = self.config['ingestion_config']['output']['directory']
+        else:
+            # Fallback to hardcoded defaults if config file not available
+            self.platforms = self._get_default_platforms()
+        
+        # Create output directory if it doesn't exist
+        os.makedirs(self.output_dir, exist_ok=True)
+        
+    def _load_config(self):
+        """Load configuration from YAML file if available"""
+        if not HAS_YAML:
+            print("⚠️  PyYAML not installed, using default configuration")
+            return None
+            
+        if not os.path.exists(self.config_file):
+            print(f"⚠️  Config file {self.config_file} not found, using default configuration")
+            return None
+            
+        try:
+            with open(self.config_file, 'r', encoding='utf-8') as f:
+                return yaml.safe_load(f)
+        except Exception as e:
+            print(f"⚠️  Error loading config file: {e}, using default configuration")
+            return None
+    
+    def _load_platforms_from_config(self):
+        """Load platform configurations from the YAML config"""
+        platforms = {}
+        config_platforms = self.config['ingestion_config'].get('platforms', {})
+        
+        for key, platform_config in config_platforms.items():
+            if platform_config.get('enabled', True):
+                platforms[key] = {
+                    'name': platform_config.get('name', key),
+                    'base_url': platform_config.get('base_url', ''),
+                    'key_paths': platform_config.get('key_sections', [])
+                }
+        
+        return platforms
+    
+    def _get_default_platforms(self):
+        """Return default platform configuration if config file not available"""
+        return {
             'github': {
                 'name': 'GitHub Docs',
                 'base_url': 'https://docs.github.com',
@@ -95,9 +151,6 @@ class DocsIngestionSystem:
                 ]
             }
         }
-        
-        # Create output directory if it doesn't exist
-        os.makedirs(self.output_dir, exist_ok=True)
         
     def fetch_page(self, url, max_retries=3):
         """Fetch a single documentation page with retry logic"""
