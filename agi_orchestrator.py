@@ -157,9 +157,26 @@ class AGIOrchestrator:
         
         # Stage 3: Discover transformative insights
         data_fragments = self._extract_data_fragments(problem, context)
-        insights = discover_transformative_insights(data_fragments)
-        if insights:
-            capabilities_used.append(AGICapability.TRANSFORMATIVE_INSIGHTS.value)
+        insights = []
+        if data_fragments:
+            try:
+                # Acquire fragments first to get IDs
+                fragment_ids = []
+                for frag in data_fragments:
+                    frag_id = transformative_engine.acquire_data_fragment(
+                        frag['content'],
+                        frag['source'],
+                        frag['category']
+                    )
+                    fragment_ids.append(frag_id)
+                
+                # Now discover insights
+                insights = discover_transformative_insights(fragment_ids)
+                if insights:
+                    capabilities_used.append(AGICapability.TRANSFORMATIVE_INSIGHTS.value)
+            except Exception:
+                # If transformative insights fails, continue without it
+                insights = []
         
         # Stage 4: Algorithmic optimization
         optimal_approach = optimize_algorithm(problem, quantum_result)
