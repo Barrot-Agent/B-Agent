@@ -8,7 +8,7 @@ Represents multi-perspective reasoning and dialectical synthesis.
 import json
 import random
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -107,7 +107,7 @@ def emit_glyph(consensus, votes, arguments):
     glyph_content = f"""glyph_name: COUNCIL_ALIGNMENT_GLYPH
 glyph_id: COUNCIL-001
 version: 1.0.0
-timestamp: {datetime.utcnow().isoformat()}Z
+timestamp: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 description: >
   Emitted when the council of diverse agent perspectives reaches consensus.
@@ -154,7 +154,7 @@ usage_context: >
 def log_deliberation(consensus, votes, arguments):
     """Log council deliberation to TRACE_LOG.md"""
     log_entry = f"""
-## Council Deliberation: {datetime.utcnow().isoformat()}Z
+## Council Deliberation: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 **Consensus Reached:** {"Yes" if consensus['reached'] else "No"}
 **Average Agreement:** {consensus['avg_agreement']:.2f}

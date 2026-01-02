@@ -8,7 +8,7 @@ and keeps memory lean but symbolic.
 import json
 import os
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -105,7 +105,7 @@ def create_summary(content, filename):
     lines = content.split('\n')
     
     summary = f"""# Compressed Memory: {filename}
-**Compressed:** {datetime.utcnow().isoformat()}Z
+**Compressed:** {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 **Original lines:** {len(lines)}
 
 ## Key Symbolic Markers
@@ -142,7 +142,7 @@ def emit_glyph(compression_stats):
     glyph_content = f"""glyph_name: MEMORY_COMPRESSION_GLYPH
 glyph_id: COMPRESS-001
 version: 1.0.0
-timestamp: {datetime.utcnow().isoformat()}Z
+timestamp: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 description: >
   Emitted when memory compression is performed on old cognition logs.
@@ -164,7 +164,7 @@ attributes:
 compression_metrics:
   files_compressed: {compression_stats.get('compressed_count', 0)}
   bytes_saved: {compression_stats.get('total_saved', 0)}
-  compression_date: {datetime.utcnow().isoformat()}Z
+  compression_date: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 integration_points:
   - memory_management
@@ -184,7 +184,7 @@ usage_context: >
 def log_compression(memory_analysis, compression_stats):
     """Log compression activity to TRACE_LOG.md"""
     log_entry = f"""
-## Memory Compression: {datetime.utcnow().isoformat()}Z
+## Memory Compression: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 **Total Memory:** {memory_analysis['total_size']} bytes
 **Total Files:** {memory_analysis['total_files']}

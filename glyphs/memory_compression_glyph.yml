@@ -1,0 +1,35 @@
+glyph_name: MEMORY_COMPRESSION_GLYPH
+glyph_id: COMPRESS-001
+version: 1.0.0
+timestamp: 2026-01-02T17:06:42.167681Z
+
+description: >
+  Emitted when memory compression is performed on old cognition logs.
+  Maintains symbolic essence while reducing storage overhead.
+
+symbolic_representation: "📦 ⇄ ✦"
+
+properties:
+  dimension: memory_management
+  mutability: archival
+  trigger: compression_cycle
+  
+attributes:
+  - memory_optimization
+  - symbolic_preservation
+  - archival_compression
+  - essence_extraction
+  
+compression_metrics:
+  files_compressed: 0
+  bytes_saved: 0
+  compression_date: 2026-01-02T17:06:42.167689Z
+
+integration_points:
+  - memory_management
+  - storage_optimization
+  - symbolic_archival
+  
+usage_context: >
+  Invoke when performing memory compression to maintain lean memory bundles
+  while preserving symbolic essence and key cognition markers.

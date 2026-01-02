@@ -1,0 +1,44 @@
+glyph_name: COUNCIL_ALIGNMENT_GLYPH
+glyph_id: COUNCIL-001
+version: 1.0.0
+timestamp: 2026-01-02T17:06:59.747626Z
+
+description: >
+  Emitted when the council of diverse agent perspectives reaches consensus.
+  Represents dialectical synthesis through multi-perspective deliberation.
+
+symbolic_representation: "⚖ 🗳 ✓"
+
+properties:
+  dimension: multi_perspective
+  mutability: consensus_based
+  trigger: council_deliberation
+  
+attributes:
+  - dialectical_reasoning
+  - perspective_synthesis
+  - consensus_building
+  - disagreement_resolution
+  
+consensus_metrics:
+  reached: true
+  avg_agreement: 0.62
+  disagreement_level: 0.058
+  participating_agents: 5
+
+council_votes:
+  - Pragmatist: 0.73 (practical_solutions)
+  - Theorist: 0.72 (conceptual_frameworks)
+  - Skeptic: 0.26 (critical_analysis)
+  - Optimist: 0.44 (opportunity_seeking)
+  - Guardian: 0.95 (risk_mitigation)
+
+integration_points:
+  - multi_agent_reasoning
+  - consensus_protocols
+  - dialectical_synthesis
+  
+usage_context: >
+  Invoke when simulating multi-perspective deliberation to ensure decisions
+  incorporate diverse viewpoints and reach genuine consensus rather than
+  premature agreement.

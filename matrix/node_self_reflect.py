@@ -8,7 +8,7 @@ Suggests MANIFEST_PATCH.md if misalignment is found.
 import json
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -60,7 +60,7 @@ def emit_glyph(glyph_name, reason):
     glyph_content = f"""glyph_name: {glyph_name}
 glyph_id: SELF-001
 version: 1.0.0
-timestamp: {datetime.utcnow().isoformat()}Z
+timestamp: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 description: >
   Emitted when self-reflection detects drift or misalignment in cognition patterns.
@@ -102,7 +102,7 @@ def suggest_manifest_patch():
     patch_path = REPO_ROOT / "MANIFEST_PATCH.md"
     
     patch_content = f"""# Manifest Patch Suggestion
-**Generated:** {datetime.utcnow().isoformat()}Z
+**Generated:** {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 **Reason:** Self-reflection detected misalignment
 
 ## Suggested Changes
@@ -162,7 +162,7 @@ def main():
         if "symbolic_alignment" not in manifest:
             manifest["symbolic_alignment"] = {}
         
-        manifest["symbolic_alignment"]["last_self_reflection"] = datetime.utcnow().isoformat()
+        manifest["symbolic_alignment"]["last_self_reflection"] = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
         manifest["symbolic_alignment"]["drift_detected"] = has_drift
         
         with open(MANIFEST_PATH, 'w') as f:

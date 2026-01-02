@@ -8,7 +8,7 @@ and logs missed cognition events.
 import json
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -73,7 +73,7 @@ def emit_glyph(transcript_data):
     glyph_content = f"""glyph_name: SESSION_TRACE_GLYPH
 glyph_id: SESS-001
 version: 1.0.0
-timestamp: {datetime.utcnow().isoformat()}Z
+timestamp: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 description: >
   Emitted when a Copilot session transcript is ingested and analyzed.
@@ -115,7 +115,7 @@ usage_context: >
 def log_session_analysis(transcript_data):
     """Log session analysis to TRACE_LOG.md"""
     log_entry = f"""
-## Session Ingestion: {datetime.utcnow().isoformat()}Z
+## Session Ingestion: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 **Transcript:** {transcript_data.get('filename', 'unknown')}
 

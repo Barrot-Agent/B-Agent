@@ -1,0 +1,35 @@
+glyph_name: SESSION_TRACE_GLYPH
+glyph_id: SESS-001
+version: 1.0.0
+timestamp: 2026-01-02T17:06:42.195251Z
+
+description: >
+  Emitted when a Copilot session transcript is ingested and analyzed.
+  Captures session events, cognition triggers, and missed events for traceability.
+
+symbolic_representation: "📝 ⟿ ✦"
+
+properties:
+  dimension: session_tracing
+  mutability: archival
+  trigger: transcript_ingestion
+  
+attributes:
+  - session_capture
+  - event_extraction
+  - cognition_tracking
+  - missed_event_detection
+  
+session_summary:
+  total_events: 0
+  cognition_events: 0
+  missed_events: 0
+  
+integration_points:
+  - copilot_sessions
+  - trace_logging
+  - event_analysis
+  
+usage_context: >
+  Invoke when ingesting and analyzing Copilot session transcripts to maintain
+  complete traceability of cognition events and system interactions.

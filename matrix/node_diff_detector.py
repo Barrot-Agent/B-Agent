@@ -8,7 +8,7 @@ if beliefs or tools have changed.
 import json
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -100,7 +100,7 @@ def emit_glyph(changes):
     glyph_content = f"""glyph_name: COGNITION_SHIFT_GLYPH
 glyph_id: SHIFT-001
 version: 1.0.0
-timestamp: {datetime.utcnow().isoformat()}Z
+timestamp: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 description: >
   Emitted when cognition snapshots show significant changes in beliefs or tools.
@@ -142,7 +142,7 @@ def log_changes(changes):
     trace_log = BUNDLES_PATH / "TRACE_LOG.md"
     
     log_entry = f"""
-## Diff Detection: {datetime.utcnow().isoformat()}Z
+## Diff Detection: {datetime.now(timezone.utc).replace(tzinfo=None).isoformat()}Z
 
 **Changes Detected:** {"Yes" if changes['has_changes'] else "No"}
 

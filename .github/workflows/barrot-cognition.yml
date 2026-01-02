@@ -1,0 +1,101 @@
+name: Barrot Cognition Cycle
+
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_source:
+        description: 'Source of the trigger'
+        required: false
+        default: 'manual'
+      trigger_time:
+        description: 'Time of trigger'
+        required: false
+      nodes_to_run:
+        description: 'Comma-separated list of nodes to run (empty = all)'
+        required: false
+        default: ''
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+
+jobs:
+  run-cognition:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Display trigger information
+        run: |
+          echo "Trigger Source: ${{ github.event.inputs.trigger_source || 'scheduled' }}"
+          echo "Trigger Time: ${{ github.event.inputs.trigger_time || github.event.repository.updated_at }}"
+          echo "Nodes to Run: ${{ github.event.inputs.nodes_to_run || 'all' }}"
+      
+      - name: Run Barrot Bootstrap
+        run: |
+          echo "[WORKFLOW] Running Barrot cognition cycle..."
+          python barrot_bootstrap.py || echo "[WORKFLOW] Bootstrap completed with warnings"
+      
+      - name: Run specific nodes if requested
+        if: ${{ github.event.inputs.nodes_to_run != '' }}
+        run: |
+          IFS=',' read -ra NODES <<< "${{ github.event.inputs.nodes_to_run }}"
+          for node in "${NODES[@]}"; do
+            node_file="matrix/${node}.py"
+            if [ -f "$node_file" ]; then
+              echo "[WORKFLOW] Running $node_file..."
+              python "$node_file" || echo "[WORKFLOW] Node $node completed with warnings"
+            else
+              echo "[WORKFLOW] Warning: $node_file not found"
+            fi
+          done
+      
+      - name: Log Sync Event
+        run: |
+          echo "" >> memory-bundles/onedrive-sync-log.md
+          echo "## Sync Event: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> memory-bundles/onedrive-sync-log.md
+          echo "**Trigger Source:** ${{ github.event.inputs.trigger_source || 'scheduled' }}" >> memory-bundles/onedrive-sync-log.md
+          echo "**Trigger Time:** ${{ github.event.inputs.trigger_time || github.event.repository.updated_at }}" >> memory-bundles/onedrive-sync-log.md
+          echo "**Nodes Run:** ${{ github.event.inputs.nodes_to_run || 'all' }}" >> memory-bundles/onedrive-sync-log.md
+          echo "**Status:** Completed" >> memory-bundles/onedrive-sync-log.md
+          echo "" >> memory-bundles/onedrive-sync-log.md
+          echo "---" >> memory-bundles/onedrive-sync-log.md
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git add .
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push results
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "Barrot Agent"
+          git config user.email "barrot@barrot-agent.github.io"
+          git add .
+          git commit -m "Cognition cycle completed via ${{ github.event.inputs.trigger_source || 'scheduled trigger' }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Summary
+        run: |
+          echo "### Cognition Cycle Complete 🦜" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event.inputs.trigger_source || 'scheduled' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time:** $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_STEP_SUMMARY
+          echo "**Changes:** ${{ steps.check_changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check [TRACE_LOG.md](../memory-bundles/TRACE_LOG.md) for details." >> $GITHUB_STEP_SUMMARY
