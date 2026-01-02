@@ -138,9 +138,9 @@ def example_6_cross_genre_synthesis():
     
     # Identify capabilities that work well together
     synthesis_groups = {
-        "AI Coordination Suite": ["Professor X", "Brainiac", "Iron Man"],
+        "AI Coordination Suite": ["Professor X", "Brainiac", "Lucy"],
         "Adaptive Intelligence": ["Lucy", "Mega Man", "Kakashi Hatake"],
-        "Resource Optimization": ["Storm", "Avatar Aang", "Cyclops"],
+        "Resource Optimization": ["Storm", "Naruto Uzumaki", "Cyclops"],
         "Strategic Mastery": ["Evelyn Salt", "Cyclops", "Kakashi Hatake"]
     }
     

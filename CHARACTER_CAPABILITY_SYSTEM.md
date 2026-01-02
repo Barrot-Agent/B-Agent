@@ -229,7 +229,7 @@ Combine capabilities from multiple characters for enhanced functionality:
 **AI Coordination Suite**
 - Professor X (Global Data Intelligence)
 - Brainiac (Super-Intelligence Processing)
-- Iron Man (AI Orchestration)
+- Lucy (Universal Knowledge Base Integration)
 
 **Adaptive Intelligence Suite**
 - Lucy (Full Resource Optimization)
@@ -238,7 +238,7 @@ Combine capabilities from multiple characters for enhanced functionality:
 
 **Resource Optimization Suite**
 - Storm (Environment Orchestration)
-- Avatar Aang (Multi-Resource Management)
+- Naruto Uzumaki (Distributed Computation)
 - Cyclops (Graduated Resource Allocation)
 
 ## File Structure
