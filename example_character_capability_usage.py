@@ -295,8 +295,11 @@ def main():
         try:
             example()
         except KeyError as e:
-            print(f"\n❌ KeyError in {example.__name__}: {e}")
-            print("   This usually means a character was not found in the database.")
+            print(f"\n❌ KeyError in {example.__name__}: Character key {e} not found in database")
+            print("   Available characters:", ", ".join(list(create_character_database().characters.keys())[:5]) + ", ...")
+        except IndexError as e:
+            print(f"\n❌ IndexError in {example.__name__}: {e}")
+            print("   This usually means a capabilities list was empty.")
         except (IOError, OSError) as e:
             print(f"\n❌ File error in {example.__name__}: {e}")
         except Exception as e:

@@ -95,7 +95,21 @@ def sanitize_name(name: str, separator: str = "_") -> str:
     Returns:
         Sanitized string with lowercase and special characters removed
     """
-    return name.lower().replace(' ', separator).replace('.', '').replace('-', separator)
+    import re
+    # Convert to lowercase
+    result = name.lower()
+    # Replace common separators with our separator
+    result = result.replace(' ', separator).replace('-', separator).replace('_', separator)
+    # Remove apostrophes, quotes, and other punctuation
+    result = result.replace("'", "").replace('"', "")
+    # Remove any characters that aren't alphanumeric or our separator
+    result = re.sub(r'[^a-z0-9' + separator + r']', '', result)
+    # Replace multiple consecutive separators with a single one
+    result = re.sub(separator + r'+', separator, result)
+    # Remove leading/trailing separators
+    result = result.strip(separator)
+    return result
+
 
 
 class CharacterCapabilityAnalyzer:
@@ -237,8 +251,14 @@ class CharacterCapabilityAnalyzer:
         for cap in character.capabilities:
             feature_name = sanitize_name(cap.framework_feature)
             md += f"  - {feature_name}\n"
-        md += f"implementation_priority: {character.capabilities[0].implementation_priority}\n"
-        md += f"estimated_impact: {character.capabilities[0].estimated_impact}\n"
+        
+        # Use first capability's priority/impact or defaults if no capabilities
+        if character.capabilities:
+            md += f"implementation_priority: {character.capabilities[0].implementation_priority}\n"
+            md += f"estimated_impact: {character.capabilities[0].estimated_impact}\n"
+        else:
+            md += f"implementation_priority: medium\n"
+            md += f"estimated_impact: moderate\n"
         md += "```\n\n"
         
         md += "### Dependencies\n"
