@@ -19,7 +19,7 @@ Barrot-Agent can be accessed and managed from your mobile device in several ways
 The simplest way to interact with Barrot-Agent is through the web dashboard:
 
 1. **Open your mobile browser** (Chrome, Safari, Firefox, etc.)
-2. **Navigate to**: `https://barrot-agent.github.io/Barrot-Agent/`
+2. **Navigate to**: `https://barrot-agent.github.io/B-Agent/`
 3. **Bookmark the page** for quick access
 
 The dashboard displays:
@@ -50,7 +50,7 @@ The dashboard displays:
 
 1. Open GitHub app
 2. Navigate to **Repositories**
-3. Search for `Barrot-Agent/Barrot-Agent`
+3. Search for `Barrot-Agent/B-Agent`
 4. Tap to open the repository
 
 ### Monitor and Trigger Workflows
@@ -126,10 +126,10 @@ mkdir -p projects
 cd projects
 
 # Clone the repository
-git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+git clone https://github.com/Barrot-Agent/B-Agent.git
 
 # Navigate into the repository
-cd Barrot-Agent
+cd B-Agent
 
 # Verify the clone
 ls -la
@@ -210,10 +210,10 @@ git config --global user.email "your.email@example.com"
 cd ~
 
 # Clone the repository
-git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+git clone https://github.com/Barrot-Agent/B-Agent.git
 
 # Navigate into the repository
-cd Barrot-Agent
+cd B-Agent
 
 # View contents
 ls -la
@@ -230,12 +230,12 @@ Same commands as Android Termux (see above).
 ### Viewing the Repository Website
 
 1. Open browser on your phone
-2. Navigate to: `https://barrot-agent.github.io/Barrot-Agent/`
+2. Navigate to: `https://barrot-agent.github.io/B-Agent/`
 3. View live build status and manifests
 
 ### Using GitHub.com Mobile Site
 
-1. Navigate to: `https://github.com/Barrot-Agent/Barrot-Agent`
+1. Navigate to: `https://github.com/Barrot-Agent/B-Agent`
 2. Tap the menu icon (≡) to access:
    - Code
    - Issues
@@ -263,7 +263,7 @@ To authenticate Git operations on mobile:
 2. **Use the token**:
    ```bash
    # When prompted for password, use the PAT
-   git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+   git clone https://github.com/Barrot-Agent/B-Agent.git
    # Username: your-github-username
    # Password: [paste your PAT]
    ```
@@ -282,12 +282,12 @@ To authenticate Git operations on mobile:
 
 **Via Web Dashboard:**
 ```
-https://barrot-agent.github.io/Barrot-Agent/
+https://barrot-agent.github.io/B-Agent/
 ```
 
 **Via GitHub Actions:**
 ```
-https://github.com/Barrot-Agent/Barrot-Agent/actions
+https://github.com/Barrot-Agent/B-Agent/actions
 ```
 
 **Via Mobile Terminal:**

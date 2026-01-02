@@ -218,7 +218,7 @@ We commit to:
 
 **General Inquiries**: barrot-agent@example.com  
 **Enterprise Partnerships**: barrot-agent-enterprise@example.com  
-**Technical Support**: github.com/Barrot-Agent/Barrot-Agent/issues
+**Technical Support**: github.com/Barrot-Agent/B-Agent/issues
 
 **Response Times**:
 - Sponsors: Within 24 hours

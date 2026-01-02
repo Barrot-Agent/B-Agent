@@ -29,7 +29,7 @@ Barrot-Agent is now fully configured with:
 ### 📱 Mobile Access (Round 1)
 - [x] **MOBILE_SETUP.md** (442 lines) - Complete mobile setup guide
 - [x] **MOBILE_QUICKSTART.md** (97 lines) - Quick reference card
-- [x] Web dashboard access at https://barrot-agent.github.io/Barrot-Agent/
+- [x] Web dashboard access at https://barrot-agent.github.io/B-Agent/
 - [x] GitHub Mobile app instructions
 - [x] Android Termux setup guide
 - [x] iOS iSH setup guide
@@ -288,7 +288,7 @@ monetization_framework: OPERATIONAL # NEW
 ## 🎯 What You Can Do Right Now
 
 ### Mobile Access
-- Open browser on phone: https://barrot-agent.github.io/Barrot-Agent/
+- Open browser on phone: https://barrot-agent.github.io/B-Agent/
 - Install GitHub Mobile app from App Store/Play Store
 - Setup Termux (Android) or iSH (iOS) for terminal access
 - Clone and manage repository from phone

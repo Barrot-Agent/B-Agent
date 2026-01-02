@@ -41,7 +41,7 @@ git push origin main
 
 ### 2. Update Default Branch in GitHub
 
-1. Go to repository settings: `https://github.com/Barrot-Agent/Barrot-Agent/settings`
+1. Go to repository settings: `https://github.com/Barrot-Agent/B-Agent/settings`
 2. Click on "Branches" in the left sidebar
 3. In the "Default branch" section, click the switch icon
 4. Select `main` from the dropdown

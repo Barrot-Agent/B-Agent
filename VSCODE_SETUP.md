@@ -349,8 +349,8 @@ Update file associations in settings:
 
 ## 💬 Get Help
 
-- **Issues**: [GitHub Issues](https://github.com/Barrot-Agent/Barrot-Agent/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Barrot-Agent/Barrot-Agent/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Barrot-Agent/B-Agent/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Barrot-Agent/B-Agent/discussions)
 - **Email**: barrot-agent@example.com
 
 ---

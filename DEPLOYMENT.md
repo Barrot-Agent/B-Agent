@@ -1,6 +1,6 @@
-# 🚀 Barrot-Agent Deployment Guide
+# 🚀 B-Agent Deployment Guide
 
-This guide covers deployment options for Barrot-Agent across multiple cloud platforms.
+This guide covers deployment options for B-Agent across multiple cloud platforms.
 
 ## 📋 Table of Contents
 
@@ -19,10 +19,10 @@ This guide covers deployment options for Barrot-Agent across multiple cloud plat
 
 ## Overview
 
-Barrot-Agent can be deployed to various cloud platforms. The repository includes configuration files for multiple platforms to provide flexibility in deployment choices.
+B-Agent can be deployed to various cloud platforms. The repository includes configuration files for multiple platforms to provide flexibility in deployment choices.
 
 **Current Deployment**: GitHub Pages (via Vercel)
-- **URL**: https://barrot-agent.github.io/Barrot-Agent/
+- **URL**: https://barrot-agent.github.io/B-Agent/
 - **Status**: ✅ Active
 
 ---
@@ -44,7 +44,7 @@ The dashboard is currently deployed via GitHub Pages and can also be deployed di
 2. Alternatively, connect your GitHub repo to Vercel
 3. Vercel will auto-detect the configuration
 
-**URL**: https://barrot-agent.github.io/Barrot-Agent/
+**URL**: https://barrot-agent.github.io/B-Agent/
 
 ---
 
@@ -60,7 +60,7 @@ Deploy Barrot-Agent to Heroku with a single click or via CLI.
 - `runtime.txt` - Python version specification
 
 **Quick Deploy**:
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Barrot-Agent/Barrot-Agent)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Barrot-Agent/B-Agent)
 
 **Manual Deployment**:
 ```bash
@@ -333,7 +333,7 @@ For deployment issues:
 1. Check platform-specific logs
 2. Review configuration files
 3. Consult platform documentation
-4. Open an issue: https://github.com/Barrot-Agent/Barrot-Agent/issues
+4. Open an issue: https://github.com/Barrot-Agent/B-Agent/issues
 
 ---
 

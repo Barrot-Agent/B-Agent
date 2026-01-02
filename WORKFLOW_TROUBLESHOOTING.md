@@ -72,7 +72,7 @@ echo "content" >> memory-bundles/file.md
 
 ### Viewing Workflow Logs
 
-1. Go to [Actions tab](https://github.com/Barrot-Agent/Barrot-Agent/actions)
+1. Go to [Actions tab](https://github.com/Barrot-Agent/B-Agent/actions)
 2. Click on the failed workflow run
 3. Click on the failed job
 4. Review step-by-step logs

@@ -134,7 +134,7 @@ git branch -D Main  # Optional
 
 - **Full Guide**: [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md)
 - **Quick Reference**: [BRANCH_QUICK_REFERENCE.md](BRANCH_QUICK_REFERENCE.md)
-- **Issues**: [GitHub Issues](https://github.com/Barrot-Agent/Barrot-Agent/issues)
+- **Issues**: [GitHub Issues](https://github.com/Barrot-Agent/B-Agent/issues)
 
 ## 📅 Timeline
 

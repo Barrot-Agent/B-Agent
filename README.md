@@ -1,6 +1,6 @@
-# 🦜 Barrot-Agent
+# 🦜 B-Agent
 
-Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
+Welcome to **B-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
 > **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
@@ -9,8 +9,8 @@ Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabili
 ### 💻 Desktop/Server Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Barrot-Agent/Barrot-Agent.git
-   cd Barrot-Agent
+   git clone https://github.com/Barrot-Agent/B-Agent.git
+   cd B-Agent
    ```
 
 2. View the current build manifest:
@@ -19,7 +19,7 @@ Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabili
    ```
 
 3. Access the dashboard:
-   - Visit: https://barrot-agent.github.io/Barrot-Agent/
+   - Visit: https://barrot-agent.github.io/B-Agent/
 
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
@@ -37,7 +37,7 @@ The mobile guide covers:
 ## 📁 Repository Structure
 
 ```
-Barrot-Agent/
+B-Agent/
 ├── .github/workflows/      # GitHub Actions automation
 ├── Barrot-Agent/          # Agent configuration
 ├── Barrot-Bundles/        # Bundle storage
@@ -121,13 +121,13 @@ For troubleshooting, see **[WORKFLOW_TROUBLESHOOTING.md](WORKFLOW_TROUBLESHOOTIN
 ### Web Dashboard
 Access the live dashboard at:
 ```
-https://barrot-agent.github.io/Barrot-Agent/
+https://barrot-agent.github.io/B-Agent/
 ```
 
 ### GitHub Actions
 Monitor workflow runs:
 ```
-https://github.com/Barrot-Agent/Barrot-Agent/actions
+https://github.com/Barrot-Agent/B-Agent/actions
 ```
 
 ### Build Status
@@ -143,9 +143,9 @@ cat memory-bundles/outcome-relay.md | tail -20
 
 ## 🚀 Deployment
 
-Barrot-Agent can be deployed to multiple cloud platforms:
+B-Agent can be deployed to multiple cloud platforms:
 
-- **GitHub Pages** (Current): https://barrot-agent.github.io/Barrot-Agent/
+- **GitHub Pages** (Current): https://barrot-agent.github.io/B-Agent/
 - **Heroku**: One-click deployment with `app.json`
 - **Render**: Static site deployment with `render.yaml`
 - **Railway**: Docker-based deployment with `railway.json`
@@ -156,7 +156,7 @@ Barrot-Agent can be deployed to multiple cloud platforms:
 
 ### Quick Deploy
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Barrot-Agent/Barrot-Agent)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Barrot-Agent/B-Agent)
 
 ### Docker
 
@@ -179,9 +179,9 @@ ISC License - See repository for details
 
 ## 🔗 Links
 
-- **Repository**: https://github.com/Barrot-Agent/Barrot-Agent
-- **Dashboard**: https://barrot-agent.github.io/Barrot-Agent/
-- **Issues**: https://github.com/Barrot-Agent/Barrot-Agent/issues
+- **Repository**: https://github.com/Barrot-Agent/B-Agent
+- **Dashboard**: https://barrot-agent.github.io/B-Agent/
+- **Issues**: https://github.com/Barrot-Agent/B-Agent/issues
 
 ## 📖 Comprehensive Documentation
 
@@ -258,9 +258,9 @@ Economics:
 - **🚀 [AGI Development](AGI_DEVELOPMENT.md)** - AGI acceleration protocols
 - **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** - Complete ingestion capabilities
 
-## 💰 Support Barrot-Agent
+## 💰 Support B-Agent
 
-Love Barrot-Agent? Consider becoming a sponsor!
+Love B-Agent? Consider becoming a sponsor!
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-💰-pink)](SPONSORSHIP.md)
 
@@ -275,4 +275,4 @@ Your sponsorship helps us:
 
 ---
 
-**Barrot-Agent** - Intelligent automation and data processing at your fingertips 🦜✨
+**B-Agent** - Intelligent automation and data processing at your fingertips 🦜✨

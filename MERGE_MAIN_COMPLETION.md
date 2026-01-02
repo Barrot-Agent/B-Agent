@@ -34,7 +34,7 @@ The repository includes an executable script `delete-main-branch.sh` that automa
 - Clone the repository and navigate to it (or navigate to it if already cloned):
   ```bash
   # If you don't have the repository yet:
-  git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+  git clone https://github.com/Barrot-Agent/B-Agent.git
   cd Barrot-Agent
   
   # If you already have it cloned:
@@ -56,7 +56,7 @@ git push origin --delete Main
 ```
 
 **Option 3: Via GitHub web interface:**
-1. Go to https://github.com/Barrot-Agent/Barrot-Agent/branches
+1. Go to https://github.com/Barrot-Agent/B-Agent/branches
 2. Find the `Main` branch
 3. Click the delete icon/button
 

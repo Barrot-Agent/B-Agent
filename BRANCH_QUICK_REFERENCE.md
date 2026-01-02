@@ -30,7 +30,7 @@ git branch -D Main
 New clones will automatically use the `main` branch:
 
 ```bash
-git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+git clone https://github.com/Barrot-Agent/B-Agent.git
 cd Barrot-Agent
 # You're now on the main branch
 ```
@@ -69,8 +69,8 @@ git push origin main
 ## 🆘 Need Help?
 
 - **Full Migration Guide**: [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md)
-- **Issues**: [Open an issue](https://github.com/Barrot-Agent/Barrot-Agent/issues)
-- **Workflow Problems**: Check [GitHub Actions](https://github.com/Barrot-Agent/Barrot-Agent/actions)
+- **Issues**: [Open an issue](https://github.com/Barrot-Agent/B-Agent/issues)
+- **Workflow Problems**: Check [GitHub Actions](https://github.com/Barrot-Agent/B-Agent/actions)
 
 ---
 

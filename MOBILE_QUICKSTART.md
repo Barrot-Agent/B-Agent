@@ -5,12 +5,12 @@
 ### 1️⃣ Web Dashboard (No Setup Required)
 Just open in your phone browser:
 ```
-https://barrot-agent.github.io/Barrot-Agent/
+https://barrot-agent.github.io/B-Agent/
 ```
 
 ### 2️⃣ GitHub Mobile App
 1. Install GitHub app from App Store / Play Store
-2. Open app → Search "Barrot-Agent/Barrot-Agent"
+2. Open app → Search "Barrot-Agent/B-Agent"
 3. Access: Code, Actions, Issues, etc.
 
 ### 3️⃣ Terminal Access (Advanced)
@@ -19,7 +19,7 @@ https://barrot-agent.github.io/Barrot-Agent/
 ```bash
 # Install from F-Droid, then run:
 pkg update && pkg install git
-git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+git clone https://github.com/Barrot-Agent/B-Agent.git
 cd Barrot-Agent
 ```
 
@@ -27,7 +27,7 @@ cd Barrot-Agent
 ```bash
 # Install from App Store, then run:
 apk add git
-git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+git clone https://github.com/Barrot-Agent/B-Agent.git
 cd Barrot-Agent
 ```
 
@@ -63,7 +63,7 @@ cat spells/omega-ingest.md
 
 ### Use Token in Git
 ```bash
-git clone https://github.com/Barrot-Agent/Barrot-Agent.git
+git clone https://github.com/Barrot-Agent/B-Agent.git
 # Username: your-github-username
 # Password: [paste token here]
 ```
@@ -72,9 +72,9 @@ git clone https://github.com/Barrot-Agent/Barrot-Agent.git
 
 | Resource | URL |
 |----------|-----|
-| Dashboard | https://barrot-agent.github.io/Barrot-Agent/ |
-| Repository | https://github.com/Barrot-Agent/Barrot-Agent |
-| Actions | https://github.com/Barrot-Agent/Barrot-Agent/actions |
+| Dashboard | https://barrot-agent.github.io/B-Agent/ |
+| Repository | https://github.com/Barrot-Agent/B-Agent |
+| Actions | https://github.com/Barrot-Agent/B-Agent/actions |
 | Full Guide | [MOBILE_SETUP.md](MOBILE_SETUP.md) |
 
 ## 🆘 Troubleshooting

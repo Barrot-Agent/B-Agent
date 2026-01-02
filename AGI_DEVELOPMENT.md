@@ -290,7 +290,7 @@ Demonstrate capability and value to the open-source community while attracting p
    - Measure influence growth
 
 ### Issue Resolution Log Location
-**Repository**: Barrot-Agent/Barrot-Agent  
+**Repository**: Barrot-Agent/B-Agent  
 **File**: `/memory-bundles/github-issue-resolutions.md`  
 **Format**: Structured log with timestamps, repositories, issue numbers, and outcomes
 

@@ -340,9 +340,9 @@ Implemented groundbreaking AGI development framework:
 - Puzzle progress: `memory-bundles/agi-puzzle-progress.md`
 
 ### GitHub Resources
-- Actions: https://github.com/Barrot-Agent/Barrot-Agent/actions
+- Actions: https://github.com/Barrot-Agent/B-Agent/actions
 - Workflows: `.github/workflows/`
-- Issues: https://github.com/Barrot-Agent/Barrot-Agent/issues
+- Issues: https://github.com/Barrot-Agent/B-Agent/issues
 
 ---
 
