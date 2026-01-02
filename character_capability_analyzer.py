@@ -7,6 +7,7 @@ transforming them into actionable, real-world features for Barrot.
 
 import json
 import os
+import re
 from typing import Dict, List, Any
 from dataclasses import dataclass, asdict
 from enum import Enum
@@ -95,11 +96,15 @@ def sanitize_name(name: str, separator: str = "_") -> str:
     Returns:
         Sanitized string with lowercase and special characters removed
     """
-    import re
     # Convert to lowercase
     result = name.lower()
-    # Replace common separators with our separator
-    result = result.replace(' ', separator).replace('-', separator).replace('_', separator)
+    # Replace common separators with our separator (only if different)
+    if separator != ' ':
+        result = result.replace(' ', separator)
+    if separator != '-':
+        result = result.replace('-', separator)
+    if separator != '_':
+        result = result.replace('_', separator)
     # Remove apostrophes, quotes, and other punctuation
     result = result.replace("'", "").replace('"', "")
     # Remove any characters that aren't alphanumeric or our separator

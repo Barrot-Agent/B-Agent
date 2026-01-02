@@ -4,6 +4,8 @@ Example usage of the Character Capability Analyzer
 Demonstrates how Barrot can dynamically search for and analyze character capabilities
 """
 
+import json
+import traceback
 from character_capability_analyzer import (
     CharacterCapabilityAnalyzer,
     Character,
@@ -307,7 +309,6 @@ def main():
             print(f"\n❌ File error in {example.__name__}: {e}")
         except Exception as e:
             print(f"\n❌ Unexpected error in {example.__name__}: {type(e).__name__}: {e}")
-            import traceback
             traceback.print_exc()
     
     print("\n" + "=" * 70)
