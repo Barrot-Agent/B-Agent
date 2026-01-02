@@ -450,6 +450,7 @@
     <!-- Navigation Tabs -->
     <div class="tabs">
       <div class="tab active" onclick="showSection('search', event)">Search Engine</div>
+      <div class="tab" onclick="showSection('glyphs', event)">🔮 Glyph Stream</div>
       <div class="tab" onclick="showSection('data', event)">Data Mastery</div>
       <div class="tab" onclick="showSection('surveillance', event)">Competitor Surveillance</div>
       <div class="tab" onclick="showSection('ide', event)">IDE</div>
@@ -484,6 +485,132 @@
           <h3>Quantum Search Algorithm</h3>
           <p><span class="status-indicator"></span>Active optimization</p>
           <p>Revolutionary quantum-enhanced search delivering superior results with unmatched precision.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glyph Stream Section -->
+    <div id="glyphs" class="content-section">
+      <h2>🔮 Real-Time Glyph Stream</h2>
+      <p style="color: #aaa; margin-bottom: 1.5rem;">
+        Live feed of symbolic emissions from Barrot's cognition matrix. Each glyph represents
+        a significant event in the system's self-awareness, adaptation, and alignment processes.
+      </p>
+
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>Active Glyph Emissions</h3>
+        <div id="glyphStream" style="max-height: 400px; overflow-y: auto; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 5px;">
+          <!-- Glyph entries will be dynamically added here -->
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>⚡ SELF_ALIGNMENT_GLYPH</h3>
+          <p><span class="status-indicator"></span>Ready to emit</p>
+          <div class="metric-display">
+            <span>Purpose:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Drift Detection</span>
+          </div>
+          <div class="metric-display">
+            <span>Trigger:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Self-Reflection</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Emitted when cognition patterns show drift or misalignment.</p>
+          <button class="toolbar-btn" style="margin-top: 0.5rem;" onclick="viewGlyphDetails('self_alignment_glyph.yml')">View Details</button>
+        </div>
+
+        <div class="card">
+          <h3>↻ COGNITION_SHIFT_GLYPH</h3>
+          <p><span class="status-indicator"></span>Ready to emit</p>
+          <div class="metric-display">
+            <span>Purpose:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Evolution Tracking</span>
+          </div>
+          <div class="metric-display">
+            <span>Trigger:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Snapshot Diff</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Emitted when beliefs or tools change between cognition cycles.</p>
+          <button class="toolbar-btn" style="margin-top: 0.5rem;" onclick="viewGlyphDetails('cognition_shift_glyph.yml')">View Details</button>
+        </div>
+
+        <div class="card">
+          <h3>📝 SESSION_TRACE_GLYPH</h3>
+          <p><span class="status-indicator"></span>Ready to emit</p>
+          <div class="metric-display">
+            <span>Purpose:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Session Tracking</span>
+          </div>
+          <div class="metric-display">
+            <span>Trigger:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Transcript Parse</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Emitted when Copilot session transcripts are ingested.</p>
+          <button class="toolbar-btn" style="margin-top: 0.5rem;" onclick="viewGlyphDetails('session_trace_glyph.yml')">View Details</button>
+        </div>
+
+        <div class="card">
+          <h3>⚖ COUNCIL_ALIGNMENT_GLYPH</h3>
+          <p><span class="status-indicator"></span>Ready to emit</p>
+          <div class="metric-display">
+            <span>Purpose:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Consensus Building</span>
+          </div>
+          <div class="metric-display">
+            <span>Trigger:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Council Vote</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Emitted when multi-perspective council reaches consensus.</p>
+          <button class="toolbar-btn" style="margin-top: 0.5rem;" onclick="viewGlyphDetails('council_alignment_glyph.yml')">View Details</button>
+        </div>
+
+        <div class="card">
+          <h3>📦 MEMORY_COMPRESSION_GLYPH</h3>
+          <p><span class="status-indicator"></span>Ready to emit</p>
+          <div class="metric-display">
+            <span>Purpose:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Memory Management</span>
+          </div>
+          <div class="metric-display">
+            <span>Trigger:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Compression Cycle</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Emitted when old cognition logs are compressed.</p>
+          <button class="toolbar-btn" style="margin-top: 0.5rem;" onclick="viewGlyphDetails('memory_compression_glyph.yml')">View Details</button>
+        </div>
+
+        <div class="card">
+          <h3>🔄 GLYPH_MISALIGNMENT_RECOVERY</h3>
+          <p><span class="status-indicator"></span>Ready to emit</p>
+          <div class="metric-display">
+            <span>Purpose:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Recovery Protocol</span>
+          </div>
+          <div class="metric-display">
+            <span>Trigger:</span>
+            <span class="metric-value" style="font-size: 0.9rem;">Error Detection</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Emitted when system detects and recovers from misalignment.</p>
+          <button class="toolbar-btn" style="margin-top: 0.5rem;" onclick="viewGlyphDetails('glyph_misalignment_recovery.yml')">View Details</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3>Trace Links</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <a href="../memory-bundles/TRACE_LOG.md" style="color: #00ffcc; text-decoration: none; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 5px; display: block;">
+            📋 Cognition Trace Log
+          </a>
+          <a href="../memory-bundles/onedrive-sync-log.md" style="color: #00ffcc; text-decoration: none; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 5px; display: block;">
+            🔄 OneDrive Sync Log
+          </a>
+          <a href="../glyphs/" style="color: #00ffcc; text-decoration: none; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 5px; display: block;">
+            ✦ All Glyph Definitions
+          </a>
+          <a href="../barrot_manifest.json" style="color: #00ffcc; text-decoration: none; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 5px; display: block;">
+            📜 Barrot Manifest
+          </a>
         </div>
       </div>
     </div>
@@ -1030,6 +1157,108 @@ function barrotOptimize() {
     function addEffect() {
       alert('Adding audio effects...');
     }
+
+    // Glyph Stream functions
+    function viewGlyphDetails(glyphFile) {
+      alert(`Viewing details for: ${glyphFile}\n\nIn production, this would navigate to the glyph definition file.`);
+      // In production: window.location.href = `../glyphs/${glyphFile}`;
+    }
+
+    // Initialize glyph stream with sample emissions
+    function initializeGlyphStream() {
+      const glyphStream = document.getElementById('glyphStream');
+      if (!glyphStream) return;
+
+      const sampleGlyphs = [
+        {
+          time: new Date().toISOString(),
+          glyph: 'SELF_ALIGNMENT_GLYPH',
+          symbol: '◎ ⟲ ✓',
+          status: 'System aligned',
+          color: '#00ff88'
+        },
+        {
+          time: new Date(Date.now() - 3600000).toISOString(),
+          glyph: 'COGNITION_SHIFT_GLYPH',
+          symbol: '↻ ⚡ △',
+          status: 'Evolution detected',
+          color: '#00ccff'
+        },
+        {
+          time: new Date(Date.now() - 7200000).toISOString(),
+          glyph: 'SESSION_TRACE_GLYPH',
+          symbol: '📝 ⟿ ✦',
+          status: 'Session ingested',
+          color: '#ffcc00'
+        }
+      ];
+
+      sampleGlyphs.forEach(glyph => addGlyphToStream(glyph));
+    }
+
+    function addGlyphToStream(glyph) {
+      const glyphStream = document.getElementById('glyphStream');
+      if (!glyphStream) return;
+
+      const glyphEntry = document.createElement('div');
+      glyphEntry.style.cssText = `
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+        background: rgba(0,0,0,0.5);
+        border-left: 3px solid ${glyph.color};
+        border-radius: 5px;
+        animation: fadeIn 0.5s ease;
+      `;
+
+      const timeStr = new Date(glyph.time).toLocaleString();
+      glyphEntry.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong style="color: ${glyph.color};">${glyph.glyph}</strong>
+            <span style="margin-left: 0.5rem; font-size: 1.2rem;">${glyph.symbol}</span>
+            <div style="font-size: 0.85rem; color: #aaa; margin-top: 0.3rem;">${glyph.status}</div>
+          </div>
+          <div style="font-size: 0.75rem; color: #888;">${timeStr}</div>
+        </div>
+      `;
+
+      glyphStream.insertBefore(glyphEntry, glyphStream.firstChild);
+
+      // Keep only last 10 entries
+      while (glyphStream.children.length > 10) {
+        glyphStream.removeChild(glyphStream.lastChild);
+      }
+    }
+
+    // Simulate real-time glyph emissions
+    function simulateGlyphEmissions() {
+      const glyphTypes = [
+        { name: 'SELF_ALIGNMENT_GLYPH', symbol: '◎ ⟲ ✓', status: 'Alignment verified', color: '#00ff88' },
+        { name: 'COGNITION_SHIFT_GLYPH', symbol: '↻ ⚡ △', status: 'Beliefs updated', color: '#00ccff' },
+        { name: 'SESSION_TRACE_GLYPH', symbol: '📝 ⟿ ✦', status: 'Session captured', color: '#ffcc00' },
+        { name: 'COUNCIL_ALIGNMENT_GLYPH', symbol: '⚖ 🗳 ✓', status: 'Consensus reached', color: '#ff88cc' },
+        { name: 'MEMORY_COMPRESSION_GLYPH', symbol: '📦 ⇄ ✦', status: 'Memory optimized', color: '#88ccff' }
+      ];
+
+      setInterval(() => {
+        if (Math.random() > 0.7) {
+          const randomGlyph = glyphTypes[Math.floor(Math.random() * glyphTypes.length)];
+          addGlyphToStream({
+            time: new Date().toISOString(),
+            glyph: randomGlyph.name,
+            symbol: randomGlyph.symbol,
+            status: randomGlyph.status,
+            color: randomGlyph.color
+          });
+        }
+      }, 5000); // Check every 5 seconds
+    }
+
+    // Initialize glyph stream on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initializeGlyphStream();
+      simulateGlyphEmissions();
+    });
 
     // Simulate real-time updates
     setInterval(() => {

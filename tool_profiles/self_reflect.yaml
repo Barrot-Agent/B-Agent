@@ -1,0 +1,36 @@
+tool_name: self_reflect
+tool_id: TOOL-REFLECT-001
+version: 1.0.0
+
+description: >
+  Self-reflection node that analyzes cognition patterns for drift and misalignment.
+  Reads historical cognition runs and emits alignment glyphs as needed.
+
+tool_contract:
+  input_format: "markdown"
+  output_format: "glyph"
+  invocation: "manual or matrix-triggered"
+
+input_schema:
+  - trace_log: "path to TRACE_LOG.md"
+  - run_count: "number of recent runs to analyze (default: 3)"
+
+output_schema:
+  - glyph_emission: "SELF_ALIGNMENT_GLYPH if drift detected"
+  - manifest_patch: "MANIFEST_PATCH.md if misalignment found"
+  - status_update: "Updated symbolic_alignment in manifest"
+
+execution_triggers:
+  - scheduled: "daily at 00:00 UTC"
+  - manual: "python matrix/node_self_reflect.py"
+  - matrix: "automatic via barrot_bootstrap.py"
+
+dependencies:
+  - barrot_manifest.json
+  - memory-bundles/TRACE_LOG.md
+  - glyphs/
+
+performance_metrics:
+  execution_time: "< 1 second"
+  memory_usage: "< 10 MB"
+  io_operations: "read-only on logs, write on glyph emission"

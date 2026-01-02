@@ -1,0 +1,37 @@
+tool_name: memory_compressor
+tool_id: TOOL-COMPRESS-001
+version: 1.0.0
+
+description: >
+  Memory management node that compresses old cognition logs while preserving
+  symbolic essence. Emits MEMORY_COMPRESSION_GLYPH.
+
+tool_contract:
+  input_format: "markdown"
+  output_format: "glyph"
+  invocation: "manual or matrix-triggered"
+
+input_schema:
+  - memory_directory: "path to memory-bundles/"
+  - age_threshold: "days before compression (default: 30)"
+  - size_threshold: "minimum file size for compression"
+
+output_schema:
+  - glyph_emission: "MEMORY_COMPRESSION_GLYPH"
+  - compressed_files: "Created in memory-bundles/compressed/"
+  - compression_log: "Appended to TRACE_LOG.md"
+
+execution_triggers:
+  - scheduled: "weekly on Sunday"
+  - manual: "python matrix/node_memory_compressor.py"
+  - matrix: "automatic via barrot_bootstrap.py"
+
+dependencies:
+  - memory-bundles/*.md
+  - memory-bundles/TRACE_LOG.md
+  - glyphs/
+
+performance_metrics:
+  execution_time: "< 5 seconds (depends on file count)"
+  memory_usage: "< 50 MB"
+  io_operations: "read all bundles, write compressed versions"

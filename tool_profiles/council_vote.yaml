@@ -1,0 +1,35 @@
+tool_name: council_vote
+tool_id: TOOL-COUNCIL-001
+version: 1.0.0
+
+description: >
+  Multi-perspective deliberation simulator that models agent disagreements
+  and consensus building. Emits COUNCIL_ALIGNMENT_GLYPH upon consensus.
+
+tool_contract:
+  input_format: "markdown"
+  output_format: "glyph"
+  invocation: "manual or matrix-triggered"
+
+input_schema:
+  - deliberation_topic: "topic for council deliberation"
+  - council_agents: "list of perspective agents"
+
+output_schema:
+  - glyph_emission: "COUNCIL_ALIGNMENT_GLYPH if consensus reached"
+  - vote_log: "Appended to TRACE_LOG.md"
+  - consensus_metrics: "Agreement scores and variance"
+
+execution_triggers:
+  - scheduled: "before major decisions"
+  - manual: "python matrix/council_vote.py"
+  - matrix: "automatic via barrot_bootstrap.py"
+
+dependencies:
+  - memory-bundles/TRACE_LOG.md
+  - glyphs/
+
+performance_metrics:
+  execution_time: "< 1 second"
+  memory_usage: "< 5 MB"
+  io_operations: "write glyph and log only"

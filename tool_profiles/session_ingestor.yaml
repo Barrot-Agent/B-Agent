@@ -1,0 +1,36 @@
+tool_name: session_ingestor
+tool_id: TOOL-SESSION-001
+version: 1.0.0
+
+description: >
+  Session transcript parser that ingests Copilot session logs and extracts
+  cognition events. Emits SESSION_TRACE_GLYPH and logs missed events.
+
+tool_contract:
+  input_format: "markdown"
+  output_format: "glyph"
+  invocation: "manual or matrix-triggered"
+
+input_schema:
+  - transcript_directory: "path to memory-bundles/"
+  - patterns: "session keywords (session, transcript, copilot)"
+
+output_schema:
+  - glyph_emission: "SESSION_TRACE_GLYPH"
+  - event_log: "Appended to TRACE_LOG.md"
+  - missed_events: "List of cognition events not captured"
+
+execution_triggers:
+  - scheduled: "after session completion"
+  - manual: "python matrix/node_session_ingestor.py"
+  - matrix: "automatic via barrot_bootstrap.py"
+
+dependencies:
+  - memory-bundles/*session*.md
+  - memory-bundles/TRACE_LOG.md
+  - glyphs/
+
+performance_metrics:
+  execution_time: "< 3 seconds"
+  memory_usage: "< 20 MB"
+  io_operations: "read transcripts, write glyph and log"

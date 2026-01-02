@@ -1,0 +1,36 @@
+tool_name: diff_detector
+tool_id: TOOL-DIFF-001
+version: 1.0.0
+
+description: >
+  Snapshot comparison node that detects changes in beliefs and tools between
+  cognition cycles. Emits COGNITION_SHIFT_GLYPH when evolution is detected.
+
+tool_contract:
+  input_format: "markdown"
+  output_format: "glyph"
+  invocation: "manual or matrix-triggered"
+
+input_schema:
+  - snapshot_directory: "path to memory-bundles/"
+  - comparison_count: "number of snapshots to compare (default: 2)"
+
+output_schema:
+  - glyph_emission: "COGNITION_SHIFT_GLYPH if changes detected"
+  - change_log: "Appended to TRACE_LOG.md"
+  - diff_report: "Summary of beliefs and tools changes"
+
+execution_triggers:
+  - scheduled: "after each cognition cycle"
+  - manual: "python matrix/node_diff_detector.py"
+  - matrix: "automatic via barrot_bootstrap.py"
+
+dependencies:
+  - memory-bundles/SNAPSHOT_*.md
+  - memory-bundles/TRACE_LOG.md
+  - glyphs/
+
+performance_metrics:
+  execution_time: "< 2 seconds"
+  memory_usage: "< 15 MB"
+  io_operations: "read snapshots, write glyph and log"
