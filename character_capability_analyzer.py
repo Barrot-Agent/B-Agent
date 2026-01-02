@@ -84,6 +84,20 @@ class Character:
         }
 
 
+def sanitize_name(name: str, separator: str = "_") -> str:
+    """
+    Sanitize a name for use in identifiers or filenames.
+    
+    Args:
+        name: The name to sanitize
+        separator: Character to use as separator (default: "_")
+    
+    Returns:
+        Sanitized string with lowercase and special characters removed
+    """
+    return name.lower().replace(' ', separator).replace('.', '').replace('-', separator)
+
+
 class CharacterCapabilityAnalyzer:
     """Main analyzer for character capabilities"""
     
@@ -217,11 +231,11 @@ class CharacterCapabilityAnalyzer:
         
         md += "### Integration into Barrot Framework\n\n"
         md += "```yaml\n"
-        md += f"capability_name: {character.name.lower().replace(' ', '_').replace('.', '')}_suite\n"
+        md += f"capability_name: {sanitize_name(character.name)}_suite\n"
         md += f"origin: {character.name}\n"
         md += "features:\n"
         for cap in character.capabilities:
-            feature_name = cap.framework_feature.lower().replace(' ', '_').replace('-', '_')
+            feature_name = sanitize_name(cap.framework_feature)
             md += f"  - {feature_name}\n"
         md += f"implementation_priority: {character.capabilities[0].implementation_priority}\n"
         md += f"estimated_impact: {character.capabilities[0].estimated_impact}\n"
@@ -244,8 +258,8 @@ class CharacterCapabilityAnalyzer:
         genre_dir = os.path.join(self.character_dir, character.genre.value)
         os.makedirs(genre_dir, exist_ok=True)
         
-        # Create filename
-        filename = f"{character.name.lower().replace(' ', '-').replace('.', '')}.md"
+        # Create filename using sanitize_name with dash separator
+        filename = f"{sanitize_name(character.name, separator='-')}.md"
         filepath = os.path.join(genre_dir, filename)
         
         # Generate and save markdown

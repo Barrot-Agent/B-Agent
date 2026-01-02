@@ -294,8 +294,15 @@ def main():
     for example in examples:
         try:
             example()
+        except KeyError as e:
+            print(f"\n❌ KeyError in {example.__name__}: {e}")
+            print("   This usually means a character was not found in the database.")
+        except (IOError, OSError) as e:
+            print(f"\n❌ File error in {example.__name__}: {e}")
         except Exception as e:
-            print(f"\n❌ Error in {example.__name__}: {e}")
+            print(f"\n❌ Unexpected error in {example.__name__}: {type(e).__name__}: {e}")
+            import traceback
+            traceback.print_exc()
     
     print("\n" + "=" * 70)
     print("✨ All examples completed!")
