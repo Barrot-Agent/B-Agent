@@ -90,8 +90,7 @@ def compress_old_logs(old_files):
         
         print(f"[MEMORY_COMPRESSOR] Compressed {file_path.name}: {original_size} -> {compressed_size} bytes (saved {saved})")
         
-        # Optionally remove original (for now, we'll keep it)
-        # file_path.unlink()
+        # Original files are kept in place for safety; only compressed versions are created
         
         compressed_count += 1
     

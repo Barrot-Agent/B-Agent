@@ -55,10 +55,9 @@ def simulate_deliberation(topic="system_alignment"):
     for agent in COUNCIL_AGENTS:
         # Each agent votes with some randomness influenced by their bias
         base_vote = random.uniform(0, 1)
-        weighted_vote = base_vote * agent['weight']
         
-        # Normalize to agreement scale (0-1)
-        agreement = min(1.0, weighted_vote)
+        # Apply weight and normalize to agreement scale (0-1)
+        agreement = min(1.0, base_vote * agent['weight'])
         
         votes.append({
             'agent': agent['name'],
