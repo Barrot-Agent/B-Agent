@@ -91,6 +91,12 @@ Barrot-Agent/
 - **📧 Email Intelligence** - Automated email analysis and information extraction
 - **🚀 Superior Framework** - Integrates Ping Ponging, UPATSTAR, and MMI for enhanced performance (see [SUPERIOR_FRAMEWORK.md](SUPERIOR_FRAMEWORK.md))
 
+### Enhanced Systems (v1.1.0)
+- **📝 Protocol Logger** - Comprehensive logging system for all operations (see [ENHANCED_SYSTEMS.md](ENHANCED_SYSTEMS.md))
+- **⚖️ Conflict Resolver** - Advanced contradiction and paradox resolution
+- **🔧 Repository Manager** - Automated repository health and maintenance
+- **🛡️ Protection System** - Hierarchical protection with priority ordering (User→Family→Humanity)
+
 ### Two Distinct Systems
 
 #### 🔍 Search Engine (`/search-engine/`)

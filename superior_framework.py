@@ -14,6 +14,12 @@ from pingpong_emitter import emit_pingpong_request  # Using the standardized ver
 from upatstar import upatstar_orchestrator, process_adaptive
 from mmi_integration import mmi_orchestrator, ingest_multi_modal, mmi_self_ingest
 
+# Import enhanced systems
+from protocol_logger import protocol_logger, log_protocol
+from conflict_resolver import conflict_resolver, resolve_conflict, resolve_paradox
+from repo_manager import repo_manager
+from protection_system import protection_system, assess_threat
+
 
 class VantagePointAnalyzer:
     """
@@ -98,6 +104,10 @@ class SuperiorFrameworkOrchestrator:
         self.vantage_analyzer = VantagePointAnalyzer()
         self.upatstar = upatstar_orchestrator
         self.mmi = mmi_orchestrator
+        self.protocol_logger = protocol_logger
+        self.conflict_resolver = conflict_resolver
+        self.repo_manager = repo_manager
+        self.protection_system = protection_system
         self.active = True
         self.initialization_time = datetime.now(timezone.utc).isoformat()
         self.operations_count = 0
@@ -250,11 +260,137 @@ class SuperiorFrameworkOrchestrator:
                     "status": "external_system",
                     "managed_by": "22-agent_entanglement",
                     "integration": "seamless"
+                },
+                "protocol_logger": {
+                    "total_protocols": self.protocol_logger.protocol_count,
+                    "session_id": self.protocol_logger.session_id
+                },
+                "conflict_resolver": {
+                    "total_resolutions": self.conflict_resolver.resolution_count,
+                    "unresolved_count": len(self.conflict_resolver.unresolved_conflicts)
+                },
+                "protection_system": {
+                    "active": True,
+                    "priority_levels": 3,
+                    "active_protocols": len(self.protection_system.active_protocols)
                 }
             },
             "integration_status": self.seamless_integration_check(),
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
+    
+    def resolve_conflicts_and_paradoxes(self, conflicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Resolve multiple conflicts and paradoxes
+        Implements indefinite iteration until resolution
+        """
+        results = self.conflict_resolver.resolve_batch_conflicts(conflicts)
+        
+        # Log each resolution
+        for resolution in results["resolutions"]:
+            self.protocol_logger.log_conflict_resolution(
+                conflict=str(resolution.get("conflict", "")),
+                resolution=resolution.get("resolution", ""),
+                method=resolution.get("strategy", "unknown"),
+                confidence=resolution.get("confidence", 0.0)
+            )
+        
+        return results
+    
+    def execute_cognition_sprint(self, sprint_objective: str,
+                                 duration_limit: Optional[float] = None) -> Dict[str, Any]:
+        """
+        Execute a cognition sprint for rapid optimization
+        
+        Args:
+            sprint_objective: Goal of the cognition sprint
+            duration_limit: Optional time limit in seconds
+        
+        Returns:
+            Sprint results and metrics
+        """
+        start_time = datetime.now(timezone.utc)
+        
+        # Multi-vantage analysis of the objective
+        vantage_analysis = self.vantage_analyzer.analyze_from_all_vantage_points(
+            sprint_objective
+        )
+        
+        # UPATSTAR adaptive processing
+        upatstar_result = self.upatstar.process_with_adaptation(
+            sprint_objective,
+            {"sprint_mode": True, "urgency": "high"}
+        )
+        
+        end_time = datetime.now(timezone.utc)
+        duration = (end_time - start_time).total_seconds()
+        
+        sprint_result = {
+            "objective": sprint_objective,
+            "duration_seconds": duration,
+            "vantage_analysis": vantage_analysis,
+            "adaptive_processing": upatstar_result,
+            "outcome": "completed",
+            "timestamp": end_time.isoformat()
+        }
+        
+        # Log the sprint
+        self.protocol_logger.log_cognition_sprint(
+            sprint_type="framework_sprint",
+            objective=sprint_objective,
+            duration_seconds=duration,
+            outcome=sprint_result
+        )
+        
+        return sprint_result
+    
+    def manage_repository_health(self) -> Dict[str, Any]:
+        """
+        Analyze and manage repository health
+        Detects conflicts, redundancies, and provides recommendations
+        """
+        analysis = self.repo_manager.analyze_repository()
+        
+        # Log repository management action
+        self.protocol_logger.log_protocol(
+            "repository_management",
+            {
+                "analysis": analysis,
+                "branches": analysis.get("branches", {}),
+                "conflicts": analysis.get("merge_conflicts", {}),
+                "redundancies": analysis.get("redundancies", {})
+            },
+            priority="normal",
+            tags=["repository", "management", "maintenance"]
+        )
+        
+        return analysis
+    
+    def assess_and_respond_to_threat(self, threat_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Assess a threat and activate appropriate protection protocols
+        Follows priority hierarchy: User & Self → Family → Humanity
+        """
+        assessment = self.protection_system.assess_threat(threat_data)
+        
+        # Automatically activate protocols for high-priority threats
+        if assessment.get("response_urgency") in ["immediate", "urgent"]:
+            protocols = assessment.get("recommended_protocols", [])
+            for protocol in protocols:
+                self.protection_system.activate_protection_protocol(
+                    protocol,
+                    threat_data.get("affected_entities", [])
+                )
+        
+        # Log protection action
+        self.protocol_logger.log_protection_action(
+            threat_level=assessment.get("threat_level", "unknown"),
+            protected_entities=threat_data.get("affected_entities", []),
+            action_taken=f"Assessed and activated {len(assessment.get('recommended_protocols', []))} protocols",
+            outcome="protocols_activated"
+        )
+        
+        return assessment
     
     def generate_framework_report(self) -> str:
         """
