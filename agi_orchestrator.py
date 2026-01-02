@@ -174,8 +174,9 @@ class AGIOrchestrator:
                 insights = discover_transformative_insights(fragment_ids)
                 if insights:
                     capabilities_used.append(AGICapability.TRANSFORMATIVE_INSIGHTS.value)
-            except Exception:
+            except (KeyError, TypeError, AttributeError) as e:
                 # If transformative insights fails, continue without it
+                # This can happen if data format is unexpected
                 insights = []
         
         # Stage 4: Algorithmic optimization
@@ -520,15 +521,45 @@ class AGIOrchestrator:
         self.metrics.timestamp = datetime.now(timezone.utc).isoformat()
     
     def _apply_improvements(self, improvements: List[Dict[str, Any]]):
-        """Apply improvements to the system"""
+        """
+        Apply improvements to the system
+        
+        Updates configuration based on identified improvement areas.
+        """
         for improvement in improvements:
             if improvement["area"] == "decision_confidence":
+                # Increase reasoning depth to improve confidence
                 agi_engine.reasoning_depth = min(10, agi_engine.reasoning_depth + 1)
+            elif improvement["area"] == "capability_integration":
+                # Capability integration improvements handled by tracking usage
+                pass
     
     def _assess_capability(self, capability: AGICapability) -> float:
-        """Assess current performance of a capability"""
-        # Simplified assessment
-        return 0.75
+        """
+        Assess current performance of a capability
+        
+        Returns a performance score based on recent usage and success rates.
+        """
+        # Count usage in recent decisions
+        if not self.decision_history:
+            return 0.5  # Default for no history
+        
+        recent_decisions = self.decision_history[-10:]
+        usage_count = sum(
+            1 for d in recent_decisions 
+            if capability.value in d.capabilities_used
+        )
+        
+        # Calculate performance based on usage and confidence
+        if usage_count == 0:
+            return 0.5  # Unused capability
+        
+        # Average confidence when this capability was used
+        confidence_sum = sum(
+            d.confidence for d in recent_decisions
+            if capability.value in d.capabilities_used
+        )
+        return confidence_sum / usage_count
     
     def _generate_enhancement_strategies(self, capability: AGICapability) -> List[Dict[str, Any]]:
         """Generate strategies for enhancing a capability"""
