@@ -1,7 +1,7 @@
 glyph_name: MEMORY_COMPRESSION_GLYPH
 glyph_id: COMPRESS-001
 version: 1.0.0
-timestamp: 2026-01-02T17:10:40.978464Z
+timestamp: 2026-01-02T17:14:20.270172Z
 
 description: >
   Emitted when memory compression is performed on old cognition logs.
@@ -23,7 +23,7 @@ attributes:
 compression_metrics:
   files_compressed: 0
   bytes_saved: 0
-  compression_date: 2026-01-02T17:10:40.978473Z
+  compression_date: 2026-01-02T17:14:20.270181Z
 
 integration_points:
   - memory_management
