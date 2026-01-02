@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "outcome_id": "LO-PR123-1",
+    "timestamp": "2026-01-02T13:09:55.915307",
+    "conflict_type": "content",
+    "strategy_used": "auto_merge",
+    "success": true,
+    "time_to_resolve": 5.0,
+    "manual_intervention_required": false,
+    "lessons_learned": [
+      "Successfully resolved src/config.py",
+      "Strategy: Rerere (Reuse Recorded Resolution) was effective"
+    ],
+    "improvements_suggested": [
+      "Keep using automated resolution"
+    ]
+  },
+  {
+    "outcome_id": "LO-PR123-2",
+    "timestamp": "2026-01-02T13:09:55.915344",
+    "conflict_type": "content",
+    "strategy_used": "auto_merge",
+    "success": true,
+    "time_to_resolve": 5.0,
+    "manual_intervention_required": false,
+    "lessons_learned": [
+      "Successfully resolved src/auth.py",
+      "Strategy: Rerere (Reuse Recorded Resolution) was effective"
+    ],
+    "improvements_suggested": [
+      "Keep using automated resolution"
+    ]
+  }
+]
