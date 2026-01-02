@@ -141,7 +141,7 @@ class MergeConflictMicroIngestion:
         self.tools: List[ToolReference] = []
         self.best_practices: List[BestPractice] = []
         self.learning_outcomes: List[LearningOutcome] = []
-        self.strategy_success_rates: Dict[str, float] = {}
+        self.strategy_success_rates: Dict[str, List[float]] = {}
         
     def initialize_knowledge_base(self) -> None:
         """Initialize the knowledge base with foundational patterns and strategies"""
