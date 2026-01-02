@@ -130,21 +130,23 @@
         overflow-y: hidden;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x proximity;
+        scroll-snap-type: x mandatory;
         padding-bottom: 0.5rem;
       }
       
       .tab {
         flex-shrink: 0;
-        min-width: fit-content;
+        min-width: 120px;
         padding: 0.9rem 1.2rem;
         font-size: 0.95rem;
         scroll-snap-align: start;
         white-space: nowrap;
+        touch-action: manipulation;
       }
       
       .card {
         padding: 1.25rem;
+        touch-action: manipulation;
       }
       
       .card h3 {
@@ -159,6 +161,7 @@
         justify-content: center;
         padding: 0.9rem 1.2rem;
         font-size: 0.9rem;
+        touch-action: manipulation;
       }
       
       .grid-2 {
@@ -182,6 +185,7 @@
       .nft-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 1rem;
+        touch-action: manipulation;
       }
       
       .nft-image {
@@ -292,7 +296,7 @@
       .bridge-btn,
       .card,
       .nft-card {
-        -webkit-tap-highlight-color: rgba(0, 255, 204, 0.3);
+        -webkit-tap-highlight-color: rgba(0, 255, 204, 0.2);
       }
       
       .tab:active,
@@ -300,11 +304,13 @@
       .toolbar-btn:active,
       .bridge-btn:active {
         transform: scale(0.97);
+        will-change: transform;
       }
       
       .card:active,
       .nft-card:active {
         transform: translateY(-2px);
+        will-change: transform;
       }
     }
     
