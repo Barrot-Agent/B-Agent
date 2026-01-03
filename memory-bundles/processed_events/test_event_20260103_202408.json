@@ -1,0 +1,37 @@
+{
+  "event_type": "test_event",
+  "validation": {
+    "passed": true,
+    "quality_score": 95
+  },
+  "integration": {
+    "timestamp": "2026-01-03T20:24:08.037399",
+    "agent": "IntegrationAgent",
+    "integrations": [
+      "glyph_emission",
+      "trace_log"
+    ],
+    "outputs": [
+      {
+        "type": "glyph",
+        "name": "TEST_EVENT_GLYPH",
+        "emitter": "IntegrationAgent",
+        "timestamp": "2026-01-03T20:24:08.037403",
+        "symbolic_representation": "\u2726",
+        "context": {
+          "event_type": "test_event",
+          "categories": [],
+          "quality_score": 95
+        }
+      },
+      {
+        "type": "trace_entry",
+        "timestamp": "2026-01-03T20:24:08.037407",
+        "event_type": "test_event",
+        "pipeline": "unknown",
+        "duration": 0,
+        "quality_score": 95
+      }
+    ]
+  }
+}

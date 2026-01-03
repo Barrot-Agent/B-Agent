@@ -1,0 +1,145 @@
+{
+  "event_type": "test_cognition_event",
+  "source": "test_source",
+  "summary": "AI completed in one hour what team built in year",
+  "description": "Testing compression and acceleration of cognition with agents",
+  "_pipeline_metadata": {
+    "pipeline_name": "FullTestPipeline",
+    "start_time": "2026-01-03T20:24:08.037638",
+    "stages_executed": [
+      {
+        "stage_name": "Ingestion",
+        "agents": [
+          "IngestionAgent"
+        ],
+        "duration_seconds": 8e-06
+      },
+      {
+        "stage_name": "Enrichment",
+        "agents": [
+          "EnrichmentAgent"
+        ],
+        "duration_seconds": 4.9e-05
+      },
+      {
+        "stage_name": "Analysis",
+        "agents": [
+          "AnalysisAgent"
+        ],
+        "duration_seconds": 1.1e-05
+      },
+      {
+        "stage_name": "Validation",
+        "agents": [
+          "ValidationAgent"
+        ],
+        "duration_seconds": 1.1e-05
+      }
+    ]
+  },
+  "ingestion": {
+    "timestamp": "2026-01-03T20:24:08.037649",
+    "agent": "IngestionAgent",
+    "validated": true,
+    "source": "test_source",
+    "event_type": "test_cognition_event",
+    "complete": true
+  },
+  "enrichment": {
+    "timestamp": "2026-01-03T20:24:08.037686",
+    "agent": "EnrichmentAgent",
+    "context_added": [
+      "symbolic_representation",
+      "categories",
+      "temporal_context"
+    ]
+  },
+  "symbolic_representation": "\ud83e\udde0 \u27ff \u2726",
+  "categories": [
+    "cognition_compression",
+    "agentic_systems"
+  ],
+  "temporal_context": {
+    "processing_date": "2026-01-03T20:24:08.037698",
+    "year": 2026,
+    "relevance_window": "current"
+  },
+  "analysis": {
+    "timestamp": "2026-01-03T20:24:08.037720",
+    "agent": "AnalysisAgent",
+    "insights": [
+      {
+        "type": "temporal_compression",
+        "insight": "Significant time compression observed in cognitive task completion"
+      }
+    ],
+    "patterns": [
+      {
+        "pattern": "cognitive_efficiency",
+        "description": "Event demonstrates compression of cognitive processes"
+      },
+      {
+        "pattern": "autonomous_capability",
+        "description": "Event involves autonomous agent capabilities"
+      }
+    ],
+    "implications": [],
+    "completeness_score": 7
+  },
+  "validation": {
+    "timestamp": "2026-01-03T20:24:08.037734",
+    "agent": "ValidationAgent",
+    "checks": [
+      {
+        "check": "ingestion_complete",
+        "status": "passed"
+      },
+      {
+        "check": "enrichment_complete",
+        "status": "passed"
+      },
+      {
+        "check": "analysis_complete",
+        "status": "passed"
+      }
+    ],
+    "passed": true,
+    "warnings": [],
+    "errors": [],
+    "status": "passed",
+    "quality_score": 100.0
+  },
+  "integration": {
+    "timestamp": "2026-01-03T20:24:08.037749",
+    "agent": "IntegrationAgent",
+    "integrations": [
+      "glyph_emission",
+      "trace_log"
+    ],
+    "outputs": [
+      {
+        "type": "glyph",
+        "name": "TEST_COGNITION_EVENT_GLYPH",
+        "emitter": "IntegrationAgent",
+        "timestamp": "2026-01-03T20:24:08.037752",
+        "symbolic_representation": "\ud83e\udde0 \u27ff \u2726",
+        "context": {
+          "event_type": "test_cognition_event",
+          "categories": [
+            "cognition_compression",
+            "agentic_systems"
+          ],
+          "quality_score": 100.0
+        }
+      },
+      {
+        "type": "trace_entry",
+        "timestamp": "2026-01-03T20:24:08.037756",
+        "event_type": "test_cognition_event",
+        "pipeline": "FullTestPipeline",
+        "duration": 0,
+        "quality_score": 100.0
+      }
+    ]
+  }
+}
