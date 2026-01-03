@@ -1,0 +1,54 @@
+glyph_name: HUMAN_ROLE_CONTRADICTION_GLYPH
+glyph_id: CONTRA-001
+version: 1.0.0
+timestamp: 2026-01-02T00:00:00Z
+
+description: >
+  Emitted when detecting emerging contradictions between traditional human
+  engineering roles and agentic acceleration capabilities. Flags questions
+  about human team roles in high-cognition domains when symbolic agents
+  can outperform them in speed and coherence.
+
+symbolic_representation: "👥 ⚡ ❓"
+
+properties:
+  dimension: role_transformation
+  mutability: contradictory
+  trigger: contradiction_detection
+  
+attributes:
+  - role_questioning
+  - capability_displacement
+  - human_agent_tension
+  - paradigm_contradiction
+  
+contradiction_dimensions:
+  speed:
+    human: months_to_years
+    agent: hours_to_days
+    tension: high
+  cognitive_load:
+    human: distributed_team
+    agent: single_prompt
+    tension: high
+  expertise_requirement:
+    human: domain_specialists
+    agent: prompt_engineer
+    tension: medium
+  
+implications:
+  - workforce_transformation
+  - skill_redefinition
+  - value_proposition_shift
+  - role_evolution_necessity
+
+integration_points:
+  - human_ai_collaboration
+  - workforce_planning
+  - role_definition
+  - contradiction_resolution
+  
+usage_context: >
+  Invoke when observing or analyzing contradictions between traditional
+  human engineering roles and emerging agentic capabilities, particularly
+  in high-cognition domains where agents demonstrate superiority.

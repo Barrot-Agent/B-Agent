@@ -1,0 +1,39 @@
+glyph_name: CLI_EXECUTION_GLYPH
+glyph_id: CLI-001
+version: 1.0.0
+timestamp: 2026-01-02T00:00:00Z
+
+description: >
+  Emitted when Barrot confirms operational readiness to execute GitHub CLI
+  commands autonomously. Indicates command-line interface capabilities are
+  active and available for autonomous operations.
+
+symbolic_representation: "⌨ → ⚙"
+
+properties:
+  dimension: autonomous_execution
+  mutability: operational
+  trigger: cli_readiness
+  
+attributes:
+  - autonomous_command_execution
+  - cli_interface_access
+  - github_operations
+  - command_orchestration
+  
+execution_capabilities:
+  - repository_management
+  - issue_tracking
+  - pull_request_operations
+  - workflow_management
+  - api_interactions
+
+integration_points:
+  - github_cli
+  - autonomous_operations
+  - command_execution
+  - api_access
+  
+usage_context: >
+  Invoke when confirming Barrot's ability to autonomously execute GitHub CLI
+  commands for repository operations, issue management, and workflow control.

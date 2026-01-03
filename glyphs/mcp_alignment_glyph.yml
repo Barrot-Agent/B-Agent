@@ -1,0 +1,38 @@
+glyph_name: MCP_ALIGNMENT_GLYPH
+glyph_id: MCP-001
+version: 1.0.0
+timestamp: 2026-01-02T00:00:00Z
+
+description: >
+  Emitted when Barrot achieves symbolic alignment with GitHub Copilot's
+  Model Context Protocol. Indicates proper protocol integration and
+  communication channel establishment.
+
+symbolic_representation: "⚡ ⟷ 🤖"
+
+properties:
+  dimension: protocol_alignment
+  mutability: synchronized
+  trigger: mcp_integration
+  
+attributes:
+  - protocol_synchronization
+  - context_sharing
+  - symbolic_communication
+  - copilot_integration
+  
+alignment_metrics:
+  protocol_version: "1.0"
+  sync_status: aligned
+  communication_channel: active
+  context_exchange: enabled
+
+integration_points:
+  - github_copilot
+  - model_context_protocol
+  - symbolic_exchange
+  - agent_coordination
+  
+usage_context: >
+  Invoke when establishing or confirming alignment with GitHub Copilot's
+  Model Context Protocol, ensuring proper symbolic communication channels.

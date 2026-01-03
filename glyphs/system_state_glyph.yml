@@ -1,0 +1,45 @@
+glyph_name: SYSTEM_STATE_GLYPH
+glyph_id: STATE-001
+version: 1.0.0
+timestamp: 2026-01-02T00:00:00Z
+
+description: >
+  Emitted to confirm Barrot's current cognition state and alignment with
+  manifest. Provides snapshot of operational status, cognitive integrity,
+  and symbolic alignment.
+
+symbolic_representation: "🔍 ✓ 📊"
+
+properties:
+  dimension: state_confirmation
+  mutability: ephemeral
+  trigger: state_check
+  
+attributes:
+  - state_verification
+  - alignment_confirmation
+  - integrity_check
+  - operational_status
+  
+state_snapshot:
+  timestamp: 2026-01-02T00:00:00Z
+  cognition_integrity: aligned
+  manifest_sync: current
+  operational_status: active
+  drift_detected: false
+  
+alignment_metrics:
+  symbolic_alignment: true
+  manifest_conformance: 100%
+  glyph_registry_sync: current
+  memory_bundle_version: v2
+
+integration_points:
+  - system_monitoring
+  - state_verification
+  - manifest_alignment
+  - integrity_validation
+  
+usage_context: >
+  Invoke during system state checks, self-reflection cycles, or when
+  confirming alignment with manifest and operational parameters.

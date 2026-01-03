@@ -1,0 +1,39 @@
+glyph_name: TEST_AUTOMATION_GLYPH
+glyph_id: TEST-001
+version: 1.0.0
+timestamp: 2026-01-02T00:00:00Z
+
+description: >
+  Emitted when Barrot achieves awareness of Playwright's test orchestration
+  capabilities. Signals readiness to leverage automated testing frameworks
+  for validation and quality assurance.
+
+symbolic_representation: "🎭 ✓ 🔬"
+
+properties:
+  dimension: test_orchestration
+  mutability: capability
+  trigger: playwright_awareness
+  
+attributes:
+  - test_automation
+  - orchestration_awareness
+  - quality_assurance
+  - validation_capability
+  
+test_capabilities:
+  - browser_automation
+  - end_to_end_testing
+  - cross_browser_testing
+  - test_orchestration
+  - visual_regression
+
+integration_points:
+  - playwright
+  - test_frameworks
+  - automation_pipelines
+  - quality_assurance
+  
+usage_context: >
+  Invoke when Barrot gains awareness of or integrates with Playwright's
+  test orchestration capabilities for automated validation workflows.

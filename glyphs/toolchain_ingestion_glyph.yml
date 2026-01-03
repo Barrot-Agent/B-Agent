@@ -1,0 +1,43 @@
+glyph_name: TOOLCHAIN_INGESTION_GLYPH
+glyph_id: TOOL-001
+version: 1.0.0
+timestamp: 2026-01-02T00:00:00Z
+
+description: >
+  Emitted upon successful ingestion of external toolchains into Barrot's
+  operational environment. Confirms integration of Playwright, GitHub Copilot MCP,
+  and GitHub CLI protocols.
+
+symbolic_representation: "🔧 ⟿ ✓"
+
+properties:
+  dimension: toolchain_integration
+  mutability: operational
+  trigger: protocol_ingestion
+  
+attributes:
+  - protocol_integration
+  - toolchain_enablement
+  - capability_expansion
+  - operational_readiness
+  
+ingested_protocols:
+  - name: Playwright
+    type: test_automation
+    status: integrated
+  - name: GitHub_Copilot_MCP
+    type: model_context_protocol
+    status: integrated
+  - name: GitHub_CLI
+    type: command_interface
+    status: integrated
+
+integration_points:
+  - automation_tools
+  - mcp_protocols
+  - cli_execution
+  - test_orchestration
+  
+usage_context: >
+  Invoke when external toolchains are successfully integrated into Barrot's
+  operational environment, confirming readiness for autonomous execution.
