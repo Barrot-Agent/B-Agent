@@ -250,6 +250,165 @@ def test_stress_scenarios():
     print("✓ Stress scenarios handled correctly")
     return True
 
+def test_overlap_resolver():
+    """Test overlap resolution node"""
+    print("\n[TEST] Testing overlap resolver...")
+    
+    import node_overlap_resolver
+    
+    # Test semantic token extraction
+    text = "This is a test directive that must be followed"
+    tokens = node_overlap_resolver.extract_semantic_tokens(text)
+    assert len(tokens) > 0, "Should extract semantic tokens"
+    assert "directive" in tokens, "Should extract 'directive'"
+    
+    # Test semantic similarity
+    tokens1 = ["test", "directive", "must", "follow"]
+    tokens2 = ["test", "directive", "shall", "follow"]
+    similarity = node_overlap_resolver.calculate_semantic_similarity(tokens1, tokens2)
+    assert 0.0 <= similarity <= 1.0, f"Similarity should be 0-1, got {similarity}"
+    assert similarity > 0.5, f"Similar token sets should have high similarity, got {similarity}"
+    
+    # Test with empty tokens
+    empty_similarity = node_overlap_resolver.calculate_semantic_similarity([], tokens1)
+    assert empty_similarity == 0.0, "Empty tokens should have 0 similarity"
+    
+    print("✓ Overlap resolver working correctly")
+    return True
+
+def test_proximity_aligner():
+    """Test asynchronous proximity aligner node"""
+    print("\n[TEST] Testing proximity aligner...")
+    
+    import node_async_proximity_aligner
+    
+    # Test timestamp parsing
+    ts1 = node_async_proximity_aligner.parse_timestamp("2026-01-03T10:00:00")
+    assert ts1 is not None, "Should parse ISO timestamp"
+    
+    ts2 = node_async_proximity_aligner.parse_timestamp("2026-01-03")
+    assert ts2 is not None, "Should parse date-only timestamp"
+    
+    # Test with mock temporal data
+    from datetime import datetime, timedelta
+    
+    temporal_data = [
+        {
+            'timestamp': datetime(2026, 1, 3, 10, 0, 0),
+            'source': 'test1.json',
+            'type': 'test',
+            'content': 'test directive must follow protocol'
+        },
+        {
+            'timestamp': datetime(2026, 1, 3, 14, 0, 0),  # 4 hours later
+            'source': 'test2.json',
+            'type': 'test',
+            'content': 'test directive must follow protocol'
+        }
+    ]
+    
+    proximities = node_async_proximity_aligner.detect_asynchronous_proximities(temporal_data)
+    assert isinstance(proximities, list), "Should return list of proximities"
+    
+    print("✓ Proximity aligner working correctly")
+    return True
+
+def test_continuous_sync_engine():
+    """Test continuous synchronization engine node"""
+    print("\n[TEST] Testing continuous sync engine...")
+    
+    import node_continuous_sync_engine
+    
+    # Test directory hash computation
+    test_path = Path(__file__).parent
+    hash1 = node_continuous_sync_engine.compute_directory_hash(test_path)
+    assert hash1 is not None, "Should compute directory hash"
+    assert isinstance(hash1, str), "Hash should be a string"
+    assert len(hash1) == 64, "SHA256 hash should be 64 characters"
+    
+    # Test sync state management
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_path = Path(tmpdir)
+        
+        # Override paths for testing
+        original_bundles = node_continuous_sync_engine.BUNDLES_PATH
+        node_continuous_sync_engine.BUNDLES_PATH = tmp_path
+        
+        try:
+            # Test loading default state
+            state = node_continuous_sync_engine.load_sync_state()
+            assert 'last_sync' in state, "State should have last_sync"
+            assert 'component_hashes' in state, "State should have component_hashes"
+            assert 'sync_count' in state, "State should have sync_count"
+            
+            # Test saving state
+            state['sync_count'] = 1
+            node_continuous_sync_engine.save_sync_state(state)
+            
+            # Test loading saved state
+            loaded_state = node_continuous_sync_engine.load_sync_state()
+            assert loaded_state['sync_count'] == 1, "Should load saved sync count"
+            
+            print("✓ Continuous sync engine working correctly")
+            return True
+            
+        finally:
+            # Restore original path
+            node_continuous_sync_engine.BUNDLES_PATH = original_bundles
+
+def test_new_glyphs_in_mapper():
+    """Test that new glyphs are registered in glyph mapper"""
+    print("\n[TEST] Testing new glyph registrations...")
+    
+    import glyph_mapper
+    
+    # Check new glyph mappings exist
+    new_glyphs = [
+        "OVERLAP_RESOLUTION_GLYPH",
+        "SYNCHRONIZATION_GLYPH",
+        "COGNITION_ALIGNMENT_GLYPH",
+        "CONTINUOUS_SYNCHRONIZATION_GLYPH"
+    ]
+    
+    for glyph_name in new_glyphs:
+        assert glyph_name in glyph_mapper.GLYPH_ACTION_MAPPINGS, f"{glyph_name} not in mappings"
+        
+        mapping = glyph_mapper.GLYPH_ACTION_MAPPINGS[glyph_name]
+        assert 'actions' in mapping, f"{glyph_name} should have actions"
+        assert 'priority' in mapping, f"{glyph_name} should have priority"
+        assert len(mapping['actions']) > 0, f"{glyph_name} should have at least one action"
+    
+    print("✓ New glyphs registered correctly")
+    return True
+
+def test_manifest_updates():
+    """Test that manifest has been updated with new configuration"""
+    print("\n[TEST] Testing manifest updates...")
+    
+    manifest_path = Path(__file__).parent.parent / "barrot_manifest.json"
+    
+    with open(manifest_path, 'r') as f:
+        manifest = json.load(f)
+    
+    # Check new fields
+    assert 'overlap_resolution' in manifest, "Manifest should have overlap_resolution"
+    assert manifest['overlap_resolution'] == 'enabled', "overlap_resolution should be enabled"
+    
+    assert 'asynchronous_alignment' in manifest, "Manifest should have asynchronous_alignment"
+    assert manifest['asynchronous_alignment'] == 'enabled', "asynchronous_alignment should be enabled"
+    
+    assert 'continuous_synchronization' in manifest, "Manifest should have continuous_synchronization"
+    assert manifest['continuous_synchronization'] is True, "continuous_synchronization should be true"
+    
+    assert 'glyphs_emitted' in manifest, "Manifest should have glyphs_emitted"
+    assert isinstance(manifest['glyphs_emitted'], list), "glyphs_emitted should be a list"
+    assert len(manifest['glyphs_emitted']) == 4, "Should have 4 glyphs listed"
+    
+    assert 'last_overlap_sync_directive' in manifest, "Manifest should have last_overlap_sync_directive"
+    
+    print("✓ Manifest updated correctly")
+    return True
+
 def run_all_tests():
     """Run all tests"""
     print("=" * 60)
@@ -263,7 +422,12 @@ def run_all_tests():
         ("Glyph Mapper", test_glyph_mapper),
         ("Glyph Insights", test_glyph_insights),
         ("Edge Cases", test_edge_cases),
-        ("Stress Scenarios", test_stress_scenarios)
+        ("Stress Scenarios", test_stress_scenarios),
+        ("Overlap Resolver", test_overlap_resolver),
+        ("Proximity Aligner", test_proximity_aligner),
+        ("Continuous Sync Engine", test_continuous_sync_engine),
+        ("New Glyphs in Mapper", test_new_glyphs_in_mapper),
+        ("Manifest Updates", test_manifest_updates)
     ]
     
     passed = 0
