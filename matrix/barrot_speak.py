@@ -8,7 +8,6 @@ Dependencies: barrot_manifest.json, memory-bundles/
 """
 
 import json
-import os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,15 +26,16 @@ def load_recent_memory(n=3):
     if not MEMORY_DIR.exists():
         return []
     
-    files = sorted(
-        [f for f in os.listdir(MEMORY_DIR) if f.endswith(".md")],
-        key=lambda x: os.path.getmtime(os.path.join(MEMORY_DIR, x)),
-        reverse=True
-    )
+    # Get all .md files with their modification times
+    md_files = [(f, f.stat().st_mtime) for f in MEMORY_DIR.iterdir() if f.suffix == ".md"]
     
+    # Sort by modification time (most recent first)
+    md_files.sort(key=lambda x: x[1], reverse=True)
+    
+    # Read the n most recent files
     memory_contents = []
-    for f in files[:n]:
-        with open(os.path.join(MEMORY_DIR, f)) as file:
+    for file_path, _ in md_files[:n]:
+        with open(file_path) as file:
             memory_contents.append(file.read())
     
     return memory_contents
