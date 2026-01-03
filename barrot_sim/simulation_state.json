@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-01-03T21:26:27.782902+00:00",
+  "last_updated": "2026-01-03T21:31:07.762557+00:00",
   "active_chambers": [],
   "history": [
     {
@@ -339,6 +339,90 @@
         "council_votes": [],
         "reality_drift": 0.0,
         "closed_at": "2026-01-03T21:26:27.782693+00:00"
+      }
+    },
+    {
+      "chamber_id": "test_chamber_1",
+      "mode": "forecast",
+      "active": false,
+      "state": {
+        "created": "2026-01-03T21:31:07.759464+00:00",
+        "agents": [
+          {
+            "id": "agent_0",
+            "name": "Test Agent",
+            "config": {
+              "name": "Test Agent",
+              "type": "forecaster"
+            },
+            "mutations": [],
+            "added_at": "2026-01-03T21:31:07.759570+00:00"
+          }
+        ],
+        "directives": [
+          {
+            "directive": {
+              "name": "TEST_DIRECTIVE"
+            },
+            "injected_at": "2026-01-03T21:31:07.759575+00:00",
+            "impact": null
+          },
+          {
+            "directive": {
+              "name": "TEST_DIRECTIVE"
+            },
+            "injected_at": "2026-01-03T21:31:07.759585+00:00",
+            "impact": null
+          }
+        ],
+        "glyphs_emitted": [],
+        "council_votes": [],
+        "reality_drift": 0.0,
+        "closed_at": "2026-01-03T21:31:07.759821+00:00"
+      }
+    },
+    {
+      "chamber_id": "integration_test",
+      "mode": "test",
+      "active": false,
+      "state": {
+        "created": "2026-01-03T21:31:07.761576+00:00",
+        "agents": [
+          {
+            "id": "agent_0",
+            "name": "Integration Agent",
+            "config": {
+              "agent_id": "integration_agent",
+              "name": "Integration Agent",
+              "type": "tester",
+              "capabilities": [],
+              "mutations": [],
+              "performance_history": [],
+              "created_at": "2026-01-03T21:31:07.761655+00:00"
+            },
+            "mutations": [],
+            "added_at": "2026-01-03T21:31:07.761659+00:00"
+          }
+        ],
+        "directives": [],
+        "glyphs_emitted": [],
+        "council_votes": [],
+        "reality_drift": 0.0,
+        "closed_at": "2026-01-03T21:31:07.761771+00:00"
+      }
+    },
+    {
+      "chamber_id": "dup_test",
+      "mode": "forecast",
+      "active": false,
+      "state": {
+        "created": "2026-01-03T21:31:07.762396+00:00",
+        "agents": [],
+        "directives": [],
+        "glyphs_emitted": [],
+        "council_votes": [],
+        "reality_drift": 0.0,
+        "closed_at": "2026-01-03T21:31:07.762476+00:00"
       }
     }
   ]

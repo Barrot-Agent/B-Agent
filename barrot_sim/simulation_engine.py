@@ -201,17 +201,21 @@ class SimulationEngine:
     
     def _run_forecast(self, chamber: SimulationChamber, scenario: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Run forecasting simulation"""
+        from .directive_forecast import DirectiveForecaster
+        
+        forecaster = DirectiveForecaster()
         outcomes = []
+        
         for directive in scenario.get("directives", []):
             chamber.inject_directive(directive)
+            # Use actual forecasting logic
+            forecast_report = forecaster.forecast_directive(directive)
             outcome = {
                 "directive": directive,
-                "predicted_impact": {
-                    "memory_impact": "low",
-                    "matrix_impact": "medium",
-                    "council_impact": "high"
-                },
-                "confidence": 0.75
+                "predicted_impact": forecast_report["impacts"],
+                "confidence": forecast_report["confidence"],
+                "risks": forecast_report["risks"],
+                "opportunities": forecast_report["opportunities"]
             }
             outcomes.append(outcome)
         return outcomes
@@ -219,13 +223,23 @@ class SimulationEngine:
     def _run_test(self, chamber: SimulationChamber, scenario: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Run testing simulation"""
         outcomes = []
-        for protocol in scenario.get("protocols", []):
+        protocols = scenario.get("protocols", [])
+        
+        for protocol in protocols:
+            # Simulate protocol testing with varying results
+            protocol_name = protocol.get("name", "UNKNOWN")
+            constraints = protocol.get("constraints", [])
+            
+            # Base consistency and stability
+            consistency = 0.95 - (len(constraints) * 0.02)  # More constraints = lower consistency
+            stability = 0.92 - (len(constraints) * 0.015)
+            
             outcome = {
                 "protocol": protocol,
-                "test_result": "passed",
+                "test_result": "passed" if consistency > 0.8 else "failed",
                 "metrics": {
-                    "consistency": 0.95,
-                    "stability": 0.92
+                    "consistency": max(0.5, min(1.0, consistency)),
+                    "stability": max(0.5, min(1.0, stability))
                 }
             }
             outcomes.append(outcome)
@@ -235,10 +249,25 @@ class SimulationEngine:
         """Run stress testing simulation"""
         outcomes = []
         stress_level = scenario.get("stress_level", "medium")
+        
+        # Map stress level to resilience
+        stress_impact = {
+            "low": 0.95,
+            "medium": 0.88,
+            "high": 0.75,
+            "extreme": 0.60
+        }
+        
+        resilience = stress_impact.get(stress_level, 0.88)
+        
+        # Determine if breaking point is reached
+        breaking_point = None if resilience > 0.70 else f"at_{stress_level}_stress"
+        
         outcome = {
             "stress_level": stress_level,
-            "breaking_point": None,
-            "resilience_score": 0.88
+            "breaking_point": breaking_point,
+            "resilience_score": resilience,
+            "recommendation": "increase_capacity" if breaking_point else "within_limits"
         }
         outcomes.append(outcome)
         return outcomes
@@ -246,11 +275,26 @@ class SimulationEngine:
     def _run_paradox(self, chamber: SimulationChamber, scenario: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Run paradox resolution simulation"""
         outcomes = []
-        for paradox in scenario.get("paradoxes", []):
+        paradoxes = scenario.get("paradoxes", [])
+        
+        for paradox in paradoxes:
+            # Analyze paradox complexity
+            paradox_text = str(paradox).lower()
+            has_contradiction = "and" in paradox_text or "but" in paradox_text
+            
+            # Resolution strategy based on paradox type
+            if has_contradiction:
+                resolution = "polarity_navigation"
+                coherence = 0.82
+            else:
+                resolution = "synthesis"
+                coherence = 0.90
+            
             outcome = {
                 "paradox": paradox,
-                "resolution": "polarity_navigation",
-                "coherence": 0.82
+                "resolution": resolution,
+                "coherence": coherence,
+                "strategy": "hermetic_polarity" if has_contradiction else "dialectic_synthesis"
             }
             outcomes.append(outcome)
         return outcomes
@@ -259,10 +303,24 @@ class SimulationEngine:
         """Run recursive simulation"""
         outcomes = []
         depth = scenario.get("recursion_depth", 3)
+        max_depth = min(depth, 10)  # Cap at 10 to prevent infinite loops
+        
+        # Simulate convergence behavior
+        convergence = depth <= 5  # Deeper recursion = less likely to converge
+        
+        if convergence:
+            final_state = "stable"
+            iterations = depth
+        else:
+            final_state = "oscillating"
+            iterations = max_depth
+        
         outcome = {
             "recursion_depth": depth,
-            "convergence": True,
-            "final_state": "stable"
+            "max_depth_reached": iterations,
+            "convergence": convergence,
+            "final_state": final_state,
+            "iterations_to_converge": iterations if convergence else None
         }
         outcomes.append(outcome)
         return outcomes

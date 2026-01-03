@@ -40,14 +40,28 @@ class CouncilAgent:
         """Apply bias-based adjustment"""
         adjustment = 0.0
         
-        if self.bias == "practical_solutions" and conditions.get("practicality", "low") == "high":
-            adjustment += 0.2
-        elif self.bias == "critical_analysis" and conditions.get("complexity", "low") == "high":
-            adjustment -= 0.1
-        elif self.bias == "opportunity_seeking" and conditions.get("opportunity", "low") == "high":
-            adjustment += 0.15
-        elif self.bias == "risk_mitigation" and conditions.get("risk", "low") == "high":
-            adjustment -= 0.2
+        # Map bias to conditions
+        bias_condition_map = {
+            "practical_solutions": ("practicality", 0.2),
+            "conceptual_frameworks": ("complexity", -0.1),
+            "critical_analysis": ("complexity", 0.1),
+            "opportunity_seeking": ("opportunity", 0.15),
+            "risk_mitigation": ("risk", -0.2),
+            "empirical_validation": ("practicality", 0.15),
+            "fault_detection": ("risk", -0.15)
+        }
+        
+        if self.bias in bias_condition_map:
+            condition_key, bias_adjustment = bias_condition_map[self.bias]
+            condition_value = conditions.get(condition_key, "medium")
+            
+            # Apply adjustment based on condition value
+            if condition_value == "high" and bias_adjustment > 0:
+                adjustment = bias_adjustment
+            elif condition_value == "high" and bias_adjustment < 0:
+                adjustment = bias_adjustment
+            elif condition_value == "low" and bias_adjustment < 0:
+                adjustment = -bias_adjustment * 0.5
         
         return adjustment
     

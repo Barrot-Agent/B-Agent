@@ -75,11 +75,19 @@ class RealityDriftDetector:
             sim_value = sim_state.metrics.get(metric_name, 0.0)
             
             drift = abs(live_value - sim_value)
+            
+            # Calculate percentage more robustly
+            if live_value >= 0.01:
+                drift_percentage = round((drift / live_value) * 100, 1)
+            else:
+                # For very small values, use absolute drift as percentage indicator
+                drift_percentage = round(drift * 100, 1)
+            
             drift_metrics[metric_name] = {
                 "live_value": live_value,
                 "simulated_value": sim_value,
                 "drift": round(drift, 3),
-                "drift_percentage": round((drift / max(live_value, 0.01)) * 100, 1)
+                "drift_percentage": drift_percentage
             }
             total_drift += drift
         

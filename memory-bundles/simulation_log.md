@@ -1258,3 +1258,419 @@
   }
 }
 ```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:31:07.759509+00:00
+
+```json
+{
+  "chamber_id": "test_chamber_1",
+  "mode": "forecast"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:31:07.759632+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "TEST_DIRECTIVE",
+    "forecast_time": "2026-01-03T21:31:07.759589+00:00",
+    "impacts": {
+      "memory": "low",
+      "matrix": "low",
+      "council": "low"
+    },
+    "confidence": 0.5,
+    "risks": [],
+    "opportunities": [],
+    "recommendations": [
+      "Implementation can proceed with standard monitoring"
+    ]
+  },
+  "timestamp": "2026-01-03T21:31:07.759610+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:31:07.759749+00:00
+
+```json
+{
+  "chamber_id": "test_chamber_1",
+  "scenario": {
+    "directives": [
+      {
+        "name": "TEST_DIRECTIVE"
+      }
+    ]
+  },
+  "started_at": "2026-01-03T21:31:07.759579+00:00",
+  "outcomes": [
+    {
+      "directive": {
+        "name": "TEST_DIRECTIVE"
+      },
+      "predicted_impact": {
+        "memory": "low",
+        "matrix": "low",
+        "council": "low"
+      },
+      "confidence": 0.5,
+      "risks": [],
+      "opportunities": []
+    }
+  ],
+  "completed_at": "2026-01-03T21:31:07.759725+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:31:07.759843+00:00
+
+```json
+{
+  "chamber_id": "test_chamber_1",
+  "results": {
+    "chamber_id": "test_chamber_1",
+    "mode": "forecast",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:31:07.759464+00:00",
+      "agents": [
+        {
+          "id": "agent_0",
+          "name": "Test Agent",
+          "config": {
+            "name": "Test Agent",
+            "type": "forecaster"
+          },
+          "mutations": [],
+          "added_at": "2026-01-03T21:31:07.759570+00:00"
+        }
+      ],
+      "directives": [
+        {
+          "directive": {
+            "name": "TEST_DIRECTIVE"
+          },
+          "injected_at": "2026-01-03T21:31:07.759575+00:00",
+          "impact": null
+        },
+        {
+          "directive": {
+            "name": "TEST_DIRECTIVE"
+          },
+          "injected_at": "2026-01-03T21:31:07.759585+00:00",
+          "impact": null
+        }
+      ],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:31:07.759821+00:00"
+    }
+  }
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:31:07.760537+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "MEMORY_ENHANCEMENT_DIRECTIVE",
+    "forecast_time": "2026-01-03T21:31:07.760491+00:00",
+    "impacts": {
+      "memory": "high",
+      "matrix": "high",
+      "council": "low"
+    },
+    "confidence": 0.85,
+    "risks": [
+      {
+        "area": "memory",
+        "risk": "High impact on memory may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "matrix",
+        "risk": "High impact on matrix may cause instability",
+        "severity": "high"
+      }
+    ],
+    "opportunities": [
+      {
+        "area": "memory",
+        "opportunity": "Potential for memory enhancement",
+        "value": "high"
+      },
+      {
+        "area": "matrix",
+        "opportunity": "Potential for matrix enhancement",
+        "value": "high"
+      }
+    ],
+    "recommendations": [
+      "Monitor memory closely during implementation",
+      "Monitor matrix closely during implementation"
+    ]
+  },
+  "timestamp": "2026-01-03T21:31:07.760515+00:00"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:31:07.760655+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "TEST_1",
+    "forecast_time": "2026-01-03T21:31:07.760618+00:00",
+    "impacts": {
+      "memory": "low",
+      "matrix": "low",
+      "council": "low"
+    },
+    "confidence": 0.5,
+    "risks": [],
+    "opportunities": [],
+    "recommendations": [
+      "Implementation can proceed with standard monitoring"
+    ]
+  },
+  "timestamp": "2026-01-03T21:31:07.760636+00:00"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:31:07.760765+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "TEST_2",
+    "forecast_time": "2026-01-03T21:31:07.760729+00:00",
+    "impacts": {
+      "memory": "low",
+      "matrix": "low",
+      "council": "low"
+    },
+    "confidence": 0.5,
+    "risks": [],
+    "opportunities": [],
+    "recommendations": [
+      "Implementation can proceed with standard monitoring"
+    ]
+  },
+  "timestamp": "2026-01-03T21:31:07.760746+00:00"
+}
+```
+
+## COUNCIL_ECHO_GLYPH
+**Timestamp:** 2026-01-03T21:31:07.761117+00:00
+
+```json
+{
+  "deliberation": {
+    "topic": "Test topic",
+    "timestamp": "2026-01-03T21:31:07.761089+00:00",
+    "baseline": {
+      "conditions": {
+        "practicality": "high",
+        "complexity": "medium",
+        "risk": "low"
+      },
+      "votes": {
+        "Pragmatist": 1.2,
+        "Theorist": 0.529072180937036,
+        "Skeptic": 0.7771025214010759,
+        "Optimist": 0.6010394379905414,
+        "Guardian": 0.8640032648344005,
+        "Experimentalist": 0.7396479919867792,
+        "Error Spotter": 0.7010535801089306
+      },
+      "consensus": {
+        "reached": true,
+        "avg_agreement": 0.773,
+        "disagreement_level": 0.149,
+        "participating_agents": 7
+      }
+    }
+  },
+  "timestamp": "2026-01-03T21:31:07.761094+00:00"
+}
+```
+
+## COUNCIL_ECHO_GLYPH
+**Timestamp:** 2026-01-03T21:31:07.761271+00:00
+
+```json
+{
+  "deliberation": {
+    "topic": "Test topic 2",
+    "timestamp": "2026-01-03T21:31:07.761223+00:00",
+    "baseline": {
+      "conditions": {
+        "practicality": "low"
+      },
+      "votes": {
+        "Pragmatist": 0.6827685805765292,
+        "Theorist": 0.4823929441802866,
+        "Skeptic": 0.6980449221440848,
+        "Optimist": 0.46251174387572364,
+        "Guardian": 1.128738047653142,
+        "Experimentalist": 0.8718579356266642,
+        "Error Spotter": 0.5221383603966956
+      },
+      "consensus": {
+        "reached": true,
+        "avg_agreement": 0.693,
+        "disagreement_level": 0.177,
+        "participating_agents": 7
+      }
+    },
+    "altered": {
+      "conditions": {
+        "practicality": "high"
+      },
+      "votes": {
+        "Pragmatist": 0.6235782641771427,
+        "Theorist": 0.3721295688098323,
+        "Skeptic": 0.7693218389368046,
+        "Optimist": 0.4458579660195682,
+        "Guardian": 1.1640269177851867,
+        "Experimentalist": 0.9312848740833257,
+        "Error Spotter": 0.547555250078093
+      },
+      "consensus": {
+        "reached": true,
+        "avg_agreement": 0.693,
+        "disagreement_level": 0.224,
+        "participating_agents": 7
+      }
+    },
+    "delta": {
+      "agreement_change": 0.0,
+      "disagreement_change": 0.047,
+      "consensus_changed": false
+    }
+  },
+  "timestamp": "2026-01-03T21:31:07.761251+00:00"
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:31:07.761607+00:00
+
+```json
+{
+  "chamber_id": "integration_test",
+  "mode": "test"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:31:07.761687+00:00
+
+```json
+{
+  "chamber_id": "integration_test",
+  "scenario": {
+    "protocols": [
+      {
+        "name": "INTEGRATION_TEST"
+      }
+    ]
+  },
+  "started_at": "2026-01-03T21:31:07.761662+00:00",
+  "outcomes": [
+    {
+      "protocol": {
+        "name": "INTEGRATION_TEST"
+      },
+      "test_result": "passed",
+      "metrics": {
+        "consistency": 0.95,
+        "stability": 0.92
+      }
+    }
+  ],
+  "completed_at": "2026-01-03T21:31:07.761669+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:31:07.761794+00:00
+
+```json
+{
+  "chamber_id": "integration_test",
+  "results": {
+    "chamber_id": "integration_test",
+    "mode": "test",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:31:07.761576+00:00",
+      "agents": [
+        {
+          "id": "agent_0",
+          "name": "Integration Agent",
+          "config": {
+            "agent_id": "integration_agent",
+            "name": "Integration Agent",
+            "type": "tester",
+            "capabilities": [],
+            "mutations": [],
+            "performance_history": [],
+            "created_at": "2026-01-03T21:31:07.761655+00:00"
+          },
+          "mutations": [],
+          "added_at": "2026-01-03T21:31:07.761659+00:00"
+        }
+      ],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:31:07.761771+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:31:07.762432+00:00
+
+```json
+{
+  "chamber_id": "dup_test",
+  "mode": "forecast"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:31:07.762496+00:00
+
+```json
+{
+  "chamber_id": "dup_test",
+  "results": {
+    "chamber_id": "dup_test",
+    "mode": "forecast",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:31:07.762396+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:31:07.762476+00:00"
+    }
+  }
+}
+```

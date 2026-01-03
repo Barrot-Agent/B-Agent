@@ -37,27 +37,63 @@ class DirectiveForecast:
     
     def analyze_memory_impact(self) -> DirectiveImpactLevel:
         """Analyze impact on memory systems"""
-        # Heuristic analysis based on directive properties
-        if "memory" in self.directive_name.lower():
+        # Check if memory is explicitly listed in impact areas
+        impact_areas = self.directive.get("impact_areas", [])
+        if "memory" in [area.lower() for area in impact_areas]:
             return DirectiveImpactLevel.HIGH
-        elif "store" in self.directive_name.lower():
+        
+        # Check directive name and description
+        text_to_check = f"{self.directive_name} {self.directive.get('description', '')}".lower()
+        if "memory" in text_to_check or "store" in text_to_check or "compression" in text_to_check:
             return DirectiveImpactLevel.MEDIUM
+        
+        # Check requirements
+        requirements = self.directive.get("requirements", [])
+        if any("memory" in str(req).lower() for req in requirements):
+            return DirectiveImpactLevel.MEDIUM
+        
         return DirectiveImpactLevel.LOW
     
     def analyze_matrix_impact(self) -> DirectiveImpactLevel:
         """Analyze impact on cognition matrix"""
-        if "matrix" in self.directive_name.lower():
+        # Check if matrix is explicitly listed in impact areas
+        impact_areas = self.directive.get("impact_areas", [])
+        if "matrix" in [area.lower() for area in impact_areas]:
             return DirectiveImpactLevel.HIGH
-        elif "glyph" in self.directive_name.lower():
+        
+        # Check directive name and description
+        text_to_check = f"{self.directive_name} {self.directive.get('description', '')}".lower()
+        if "matrix" in text_to_check or "cognition" in text_to_check:
             return DirectiveImpactLevel.MEDIUM
+        elif "glyph" in text_to_check:
+            return DirectiveImpactLevel.MEDIUM
+        
+        # Check requirements
+        requirements = self.directive.get("requirements", [])
+        if any("matrix" in str(req).lower() or "glyph" in str(req).lower() for req in requirements):
+            return DirectiveImpactLevel.MEDIUM
+        
         return DirectiveImpactLevel.LOW
     
     def analyze_council_impact(self) -> DirectiveImpactLevel:
         """Analyze impact on council deliberation"""
-        if "council" in self.directive_name.lower():
+        # Check if council is explicitly listed in impact areas
+        impact_areas = self.directive.get("impact_areas", [])
+        if "council" in [area.lower() for area in impact_areas]:
             return DirectiveImpactLevel.HIGH
-        elif "vote" in self.directive_name.lower():
+        
+        # Check directive name and description
+        text_to_check = f"{self.directive_name} {self.directive.get('description', '')}".lower()
+        if "council" in text_to_check or "consensus" in text_to_check:
             return DirectiveImpactLevel.MEDIUM
+        elif "vote" in text_to_check or "deliberation" in text_to_check:
+            return DirectiveImpactLevel.MEDIUM
+        
+        # Check requirements
+        requirements = self.directive.get("requirements", [])
+        if any("council" in str(req).lower() for req in requirements):
+            return DirectiveImpactLevel.MEDIUM
+        
         return DirectiveImpactLevel.LOW
     
     def run_forecast(self) -> Dict[str, Any]:
