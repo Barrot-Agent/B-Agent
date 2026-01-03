@@ -64,6 +64,9 @@ B-Agent/
 - **🔮 Asynchronous Insights** - Problem-solving every 30 minutes, 24/7
 
 ### Agent Spells
+- **∞ Massive Micro Ingest (MMI)** - Complete granularity decomposition (macro → planckments)
+- **🔄 Self-Ingestion** - Barrot ingests himself for complete self-knowledge
+- **🤖 Auto-Implementation** - Automatically implements findings into infrastructure
 - **Ω-Ingest** (Omega-Ingest) - Quantum data assimilation
 - **Keyseer's Insight** - Intelligent key analysis
 - **🔍 Web Scanner** - Deep web scanning for AGI components
@@ -440,6 +443,7 @@ Economics:
 - **📊 [AGI Puzzle Progress](memory-bundles/agi-puzzle-progress.md)** - Real-time puzzle completion tracking
 - **🔧 [Workflow Troubleshooting](WORKFLOW_TROUBLESHOOTING.md)** - Debug and optimize GitHub Actions workflows
 - **📋 [MMI Analysis Report](MMI_ANALYSIS_REPORT.md)** - Massive Micro Ingest protocol analysis results
+- **🔄 [Modes of Ingestion](memory-bundles/MODES_OF_INGESTION.md)** - Permanent MMI reference (NEVER DELETE)
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
