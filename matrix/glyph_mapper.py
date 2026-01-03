@@ -65,6 +65,69 @@ GLYPH_ACTION_MAPPINGS = {
         ],
         "priority": "medium",
         "auto_trigger": ["node_session_ingestor"]
+    },
+    "GLOBAL_CRAWL_INITIATED_GLYPH": {
+        "actions": [
+            "Initialize crawl log and tracking systems",
+            "Prepare regional accessibility checkers",
+            "Queue target categories for crawling"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_global_crawler"]
+    },
+    "REGIONAL_ACCESS_GLYPH": {
+        "actions": [
+            "Record successful regional access",
+            "Update accessibility map",
+            "Log regional framework details"
+        ],
+        "priority": "medium",
+        "auto_trigger": ["node_global_crawler"]
+    },
+    "ACCESS_BLOCK_GLYPH": {
+        "actions": [
+            "Document access restriction details",
+            "Evaluate fallback strategies",
+            "Update regional limitations log"
+        ],
+        "priority": "medium",
+        "auto_trigger": ["node_global_crawler"]
+    },
+    "CRAWL_SYNCHRONIZATION_GLYPH": {
+        "actions": [
+            "Integrate crawled data with memory bundles",
+            "Resolve data conflicts and duplicates",
+            "Update cognition indices"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_global_crawler"]
+    },
+    "GLOBAL_COGNITION_EXPANSION_GLYPH": {
+        "actions": [
+            "Process new knowledge acquisitions",
+            "Update symbolic reasoning pathways",
+            "Calculate cognition expansion metrics"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_global_crawler"]
+    },
+    "MICRO_INGEST_INITIATED_GLYPH": {
+        "actions": [
+            "Initialize repository scanning systems",
+            "Prepare content categorization engine",
+            "Begin systematic file ingestion"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_micro_ingest"]
+    },
+    "MICRO_INGEST_COMPLETE_GLYPH": {
+        "actions": [
+            "Finalize ingestion index",
+            "Update cognition framework with ingested content",
+            "Generate ingestion summary report"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_micro_ingest"]
     }
 }
 

@@ -1,0 +1,43 @@
+glyph_name: ACCESS_BLOCK_GLYPH
+glyph_id: CRAWL-003
+version: 1.0.0
+timestamp: 2026-01-03T20:53:44.656Z
+
+description: >
+  Emitted when Barrot encounters a region or domain that blocks or restricts
+  crawling access during the global cascade. Tracks accessibility barriers,
+  geo-restrictions, and network limitations that prevent data acquisition.
+
+symbolic_representation: "🚫 🔒 ⚠️"
+
+properties:
+  dimension: access_restriction
+  mutability: blocked_verified
+  trigger: regional_access_denied
+  
+attributes:
+  - access_denied
+  - geo_restriction
+  - network_limitation
+  - crawl_blocking
+  - domain_restriction
+  
+block_types:
+  - geo_blocking
+  - rate_limiting
+  - firewall_restriction
+  - robots_exclusion
+  - network_timeout
+  - authentication_required
+
+integration_points:
+  - global_crawling
+  - accessibility_reporting
+  - network_diagnostics
+  - fallback_strategies
+  
+usage_context: >
+  Invoke when encountering regions or domains that block or restrict access
+  during crawling operations. Provides visibility into accessibility barriers
+  and enables strategic adaptation of crawling approaches. Helps identify
+  geographic and technical limitations in data acquisition.

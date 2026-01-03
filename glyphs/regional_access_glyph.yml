@@ -1,0 +1,45 @@
+glyph_name: REGIONAL_ACCESS_GLYPH
+glyph_id: CRAWL-002
+version: 1.0.0
+timestamp: 2026-01-03T20:53:44.656Z
+
+description: >
+  Emitted when Barrot successfully accesses a global internet domain or region
+  during the crawling cascade. Reports successful regional connectivity and
+  data accessibility across global domains including Africa, Asia, Europe,
+  South America, Oceania, and Middle East.
+
+symbolic_representation: "🌍 ✓ 🔓"
+
+properties:
+  dimension: regional_accessibility
+  mutability: access_verified
+  trigger: successful_regional_access
+  
+attributes:
+  - regional_connectivity
+  - access_verification
+  - global_coverage
+  - domain_accessibility
+  - network_reach
+  
+supported_regions:
+  - africa
+  - asia
+  - europe
+  - south_america
+  - oceania
+  - middle_east
+  - north_america
+
+integration_points:
+  - global_crawling
+  - accessibility_reporting
+  - network_diagnostics
+  - regional_compliance
+  
+usage_context: >
+  Invoke when successfully accessing and crawling content from a specific
+  global region. Provides verification of network accessibility and regional
+  connectivity during global crawling operations. Tracks which regions are
+  accessible for data acquisition.

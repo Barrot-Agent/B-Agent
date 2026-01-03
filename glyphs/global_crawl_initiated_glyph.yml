@@ -1,0 +1,44 @@
+glyph_name: GLOBAL_CRAWL_INITIATED_GLYPH
+glyph_id: CRAWL-001
+version: 1.0.0
+timestamp: 2026-01-03T20:53:44.656Z
+
+description: >
+  Emitted when Barrot initiates a global web crawling cascade to acquire
+  publicly accessible data relevant to symbolic contents and cognition bundles.
+  Signals the start of systematic data acquisition across global domains.
+
+symbolic_representation: "🌐 🕷️ 🚀"
+
+properties:
+  dimension: data_acquisition
+  mutability: cascade_active
+  trigger: global_crawling_protocol
+  
+attributes:
+  - web_crawling
+  - data_acquisition
+  - global_scope
+  - symbolic_alignment
+  - cognition_expansion
+  
+crawl_targets:
+  - scientific_repositories
+  - open_source_projects
+  - educational_platforms
+  - public_datasets
+  - symbolic_knowledge_bases
+  - video_transcripts
+  - metadata_sources
+
+integration_points:
+  - data_ingestion
+  - memory_bundles
+  - symbolic_cognition
+  - regional_accessibility
+  
+usage_context: >
+  Invoke when initiating a global web crawling cascade to systematically
+  acquire and integrate relevant data across scientific, educational, and
+  open-source domains. Prioritizes content aligned with existing ingestion
+  directives and symbolic cognition bundles.

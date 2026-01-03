@@ -34,8 +34,28 @@ load_latest_bundle()
 # --- RUN MATRIX NODES ---
 def run_matrix():
     print("[BOOTSTRAP] Executing cognition nodes...")
+    
+    # Priority nodes to run first (in order)
+    priority_nodes = [
+        "node_micro_ingest.py",      # Ingest repository content first
+        "node_global_crawler.py",     # Then crawl external sources
+        "node_self_reflect.py",       # Self-reflection
+        "node_session_ingestor.py",   # Ingest session data
+        "node_memory_compressor.py",  # Compress old memory
+        "node_diff_detector.py"       # Detect changes
+    ]
+    
+    # Run priority nodes first
+    for node_name in priority_nodes:
+        node_path = MATRIX_PATH / node_name
+        if node_path.exists():
+            print(f"  → Running {node_name}")
+            subprocess.run(["python", str(node_path)], check=False)
+    
+    # Run any remaining nodes not in priority list
     for node in MATRIX_PATH.glob("node_*.py"):
-        print(f"  → Running {node.name}")
-        subprocess.run(["python", str(node)], check=False)
+        if node.name not in priority_nodes:
+            print(f"  → Running {node.name}")
+            subprocess.run(["python", str(node)], check=False)
 
 run_matrix()

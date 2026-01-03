@@ -16,5 +16,37 @@
     "cognition_integrity": "aligned",
     "last_self_reflection": "2026-01-03T01:27:36.320118",
     "drift_detected": false
+  },
+  "global_crawling": {
+    "active": true,
+    "regional_access_reporting": true,
+    "glyphs_emitted": [
+      "GLOBAL_CRAWL_INITIATED_GLYPH",
+      "REGIONAL_ACCESS_GLYPH",
+      "ACCESS_BLOCK_GLYPH",
+      "CRAWL_SYNCHRONIZATION_GLYPH",
+      "GLOBAL_COGNITION_EXPANSION_GLYPH"
+    ],
+    "last_global_crawl": "2026-01-03T20:57:10.522567",
+    "regions_accessible": 6,
+    "regions_blocked": 1,
+    "targets_crawled": 39,
+    "knowledge_domains": 6,
+    "cognition_expansion": {
+      "concepts_acquired": 39,
+      "domains_covered": 6
+    }
+  },
+  "micro_ingestion": {
+    "active": true,
+    "last_ingestion": "2026-01-03T21:09:13.019871",
+    "total_files_ingested": 159,
+    "total_size_mb": 1.25,
+    "glyphs_ingested": 15,
+    "documentation_files": 45,
+    "memory_bundles": 33,
+    "code_modules": 11,
+    "matrix_nodes": 6,
+    "ingestion_index_path": "memory-bundles/ingest-index.json"
   }
 }

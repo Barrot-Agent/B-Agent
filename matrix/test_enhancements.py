@@ -250,6 +250,147 @@ def test_stress_scenarios():
     print("✓ Stress scenarios handled correctly")
     return True
 
+def test_global_crawler_glyphs():
+    """Test global crawler glyph definitions"""
+    print("\n[TEST] Testing global crawler glyph definitions...")
+    
+    import glyph_mapper
+    
+    # Check that global crawler glyphs are defined in mappings
+    required_glyphs = [
+        "GLOBAL_CRAWL_INITIATED_GLYPH",
+        "REGIONAL_ACCESS_GLYPH",
+        "ACCESS_BLOCK_GLYPH",
+        "CRAWL_SYNCHRONIZATION_GLYPH",
+        "GLOBAL_COGNITION_EXPANSION_GLYPH"
+    ]
+    
+    for glyph_name in required_glyphs:
+        assert glyph_name in glyph_mapper.GLYPH_ACTION_MAPPINGS, f"{glyph_name} not in glyph mappings"
+        mapping = glyph_mapper.GLYPH_ACTION_MAPPINGS[glyph_name]
+        assert 'actions' in mapping, f"{glyph_name} missing actions"
+        assert 'priority' in mapping, f"{glyph_name} missing priority"
+        assert len(mapping['actions']) > 0, f"{glyph_name} has no actions defined"
+    
+    print("✓ Global crawler glyphs properly defined")
+    return True
+
+def test_global_crawler_regional_access():
+    """Test global crawler regional accessibility simulation"""
+    print("\n[TEST] Testing regional accessibility simulation...")
+    
+    import node_global_crawler
+    
+    # Test regional access simulation
+    test_region = {
+        "name": "TestRegion",
+        "domains": ["test1", "test2"],
+        "framework": "Test Framework"
+    }
+    
+    access_result = node_global_crawler.simulate_regional_access(test_region)
+    
+    assert 'region' in access_result, "Missing region in access result"
+    assert 'accessible' in access_result, "Missing accessible flag in result"
+    assert 'framework' in access_result, "Missing framework in result"
+    assert 'timestamp' in access_result, "Missing timestamp in result"
+    assert access_result['region'] == "TestRegion", "Region name mismatch"
+    
+    print("✓ Regional accessibility simulation working correctly")
+    return True
+
+def test_global_crawler_manifest_update():
+    """Test global crawler manifest updates"""
+    print("\n[TEST] Testing manifest update with global crawling data...")
+    
+    import node_global_crawler
+    import json
+    
+    # Create temporary manifest for testing
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_manifest = Path(tmpdir) / "test_manifest.json"
+        
+        # Create initial manifest
+        initial_manifest = {
+            "barrot_identity": {"github_user": "Test", "repo": "Test"},
+            "cognition": {}
+        }
+        
+        with open(tmp_manifest, 'w') as f:
+            json.dump(initial_manifest, f)
+        
+        # Override manifest path
+        original_manifest_path = node_global_crawler.MANIFEST_PATH
+        node_global_crawler.MANIFEST_PATH = tmp_manifest
+        
+        try:
+            # Simulate update
+            regional_results = {
+                "accessible_count": 5,
+                "blocked_count": 2
+            }
+            sync_results = {
+                "total_targets": 30,
+                "categories": 6
+            }
+            expansion_results = {
+                "new_concepts": 30,
+                "domains": 6
+            }
+            
+            node_global_crawler.update_manifest_with_crawl_data(
+                regional_results, 
+                sync_results, 
+                expansion_results
+            )
+            
+            # Verify manifest was updated
+            with open(tmp_manifest, 'r') as f:
+                updated_manifest = json.load(f)
+            
+            assert 'global_crawling' in updated_manifest, "global_crawling section missing"
+            gc = updated_manifest['global_crawling']
+            
+            assert gc['active'] == True, "active flag not set"
+            assert gc['regional_access_reporting'] == True, "reporting flag not set"
+            assert gc['regions_accessible'] == 5, "accessible regions count mismatch"
+            assert gc['regions_blocked'] == 2, "blocked regions count mismatch"
+            assert gc['targets_crawled'] == 30, "targets crawled count mismatch"
+            assert len(gc['glyphs_emitted']) == 5, "glyphs emitted count mismatch"
+            
+            print("✓ Manifest update working correctly")
+            return True
+            
+        finally:
+            # Restore original path
+            node_global_crawler.MANIFEST_PATH = original_manifest_path
+
+def test_global_crawler_integration():
+    """Test global crawler end-to-end integration"""
+    print("\n[TEST] Testing global crawler integration...")
+    
+    import node_global_crawler
+    
+    # Test that all global regions are defined
+    assert len(node_global_crawler.GLOBAL_REGIONS) >= 6, "Not enough global regions defined"
+    
+    # Test that all crawl target categories are defined
+    assert len(node_global_crawler.CRAWL_TARGETS) >= 5, "Not enough crawl target categories"
+    
+    # Verify each region has required fields
+    for region in node_global_crawler.GLOBAL_REGIONS:
+        assert 'name' in region, "Region missing name"
+        assert 'domains' in region, "Region missing domains"
+        assert 'framework' in region, "Region missing framework"
+        assert len(region['domains']) > 0, f"Region {region['name']} has no domains"
+    
+    # Verify each crawl target category has targets
+    for category, targets in node_global_crawler.CRAWL_TARGETS.items():
+        assert len(targets) > 0, f"Category {category} has no targets"
+    
+    print("✓ Global crawler integration verified")
+    return True
+
 def run_all_tests():
     """Run all tests"""
     print("=" * 60)
@@ -263,7 +404,11 @@ def run_all_tests():
         ("Glyph Mapper", test_glyph_mapper),
         ("Glyph Insights", test_glyph_insights),
         ("Edge Cases", test_edge_cases),
-        ("Stress Scenarios", test_stress_scenarios)
+        ("Stress Scenarios", test_stress_scenarios),
+        ("Global Crawler Glyphs", test_global_crawler_glyphs),
+        ("Global Crawler Regional Access", test_global_crawler_regional_access),
+        ("Global Crawler Manifest Update", test_global_crawler_manifest_update),
+        ("Global Crawler Integration", test_global_crawler_integration)
     ]
     
     passed = 0

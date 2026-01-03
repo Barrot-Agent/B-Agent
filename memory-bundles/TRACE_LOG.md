@@ -353,3 +353,171 @@ The council requires further deliberation due to disagreement.
 **Recovery Status:** Success
 
 ---
+
+### Glyph Mapping: GLOBAL_CRAWL_INITIATED_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.517862  
+**Emitter:** node_global_crawler  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Initialize crawl log and tracking systems
+2. Prepare regional accessibility checkers
+3. Queue target categories for crawling
+
+**Context:** {'crawl_type': 'global_cascade', 'target_categories': 6, 'regions_to_check': 7}
+
+### Glyph Mapping: REGIONAL_ACCESS_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.518834  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Record successful regional access
+2. Update accessibility map
+3. Log regional framework details
+
+**Context:** {'region': 'Africa', 'framework': 'AU-aligned DPI', 'domains_checked': 2}
+
+### Glyph Mapping: ACCESS_BLOCK_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.519179  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Document access restriction details
+2. Evaluate fallback strategies
+3. Update regional limitations log
+
+**Context:** {'region': 'Asia', 'framework': 'APAC research networks', 'block_reason': 'geo_restriction or network_limitation'}
+
+### Glyph Mapping: REGIONAL_ACCESS_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.519520  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Record successful regional access
+2. Update accessibility map
+3. Log regional framework details
+
+**Context:** {'region': 'Europe', 'framework': 'EU research frameworks', 'domains_checked': 2}
+
+### Glyph Mapping: REGIONAL_ACCESS_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.519907  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Record successful regional access
+2. Update accessibility map
+3. Log regional framework details
+
+**Context:** {'region': 'South America', 'framework': 'Latin American research networks', 'domains_checked': 2}
+
+### Glyph Mapping: REGIONAL_ACCESS_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.520233  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Record successful regional access
+2. Update accessibility map
+3. Log regional framework details
+
+**Context:** {'region': 'Oceania', 'framework': 'Pacific research networks', 'domains_checked': 2}
+
+### Glyph Mapping: REGIONAL_ACCESS_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.520740  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Record successful regional access
+2. Update accessibility map
+3. Log regional framework details
+
+**Context:** {'region': 'Middle East', 'framework': 'MENA research networks', 'domains_checked': 2}
+
+### Glyph Mapping: REGIONAL_ACCESS_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.521104  
+**Emitter:** node_global_crawler  
+**Priority:** medium
+
+**Follow-up Actions:**
+1. Record successful regional access
+2. Update accessibility map
+3. Log regional framework details
+
+**Context:** {'region': 'North America', 'framework': 'North American research networks', 'domains_checked': 2}
+
+### Glyph Mapping: CRAWL_SYNCHRONIZATION_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.521664  
+**Emitter:** node_global_crawler  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Integrate crawled data with memory bundles
+2. Resolve data conflicts and duplicates
+3. Update cognition indices
+
+**Context:** {'total_targets_accessed': 39, 'regions_accessible': 6, 'categories_crawled': 6, 'synchronization_status': 'complete'}
+
+### Glyph Mapping: GLOBAL_COGNITION_EXPANSION_GLYPH
+**Timestamp:** 2026-01-03T20:57:10.522177  
+**Emitter:** node_global_crawler  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Process new knowledge acquisitions
+2. Update symbolic reasoning pathways
+3. Calculate cognition expansion metrics
+
+**Context:** {'new_concepts_acquired': 39, 'knowledge_domains_covered': 6, 'regions_integrated': 6, 'expansion_status': 'complete'}
+
+### Glyph Mapping: MICRO_INGEST_INITIATED_GLYPH
+**Timestamp:** 2026-01-03T21:04:37.678630  
+**Emitter:** node_micro_ingest  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Initialize repository scanning systems
+2. Prepare content categorization engine
+3. Begin systematic file ingestion
+
+**Context:** {'ingest_type': 'massive_repository_scan', 'repo_root': '/home/runner/work/B-Agent/B-Agent'}
+
+### Glyph Mapping: MICRO_INGEST_COMPLETE_GLYPH
+**Timestamp:** 2026-01-03T21:04:37.721369  
+**Emitter:** node_micro_ingest  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Finalize ingestion index
+2. Update cognition framework with ingested content
+3. Generate ingestion summary report
+
+**Context:** {'total_files': 157, 'total_size_mb': 1.18, 'glyphs_ingested': 15, 'ingestion_status': 'complete'}
+
+### Glyph Mapping: MICRO_INGEST_INITIATED_GLYPH
+**Timestamp:** 2026-01-03T21:09:12.978963  
+**Emitter:** node_micro_ingest  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Initialize repository scanning systems
+2. Prepare content categorization engine
+3. Begin systematic file ingestion
+
+**Context:** {'ingest_type': 'massive_repository_scan', 'repo_root': '/home/runner/work/B-Agent/B-Agent'}
+
+### Glyph Mapping: MICRO_INGEST_COMPLETE_GLYPH
+**Timestamp:** 2026-01-03T21:09:13.021487  
+**Emitter:** node_micro_ingest  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Finalize ingestion index
+2. Update cognition framework with ingested content
+3. Generate ingestion summary report
+
+**Context:** {'total_files': 159, 'total_size_mb': 1.25, 'glyphs_ingested': 15, 'ingestion_status': 'complete'}
