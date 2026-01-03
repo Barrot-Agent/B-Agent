@@ -8,12 +8,16 @@ for Barrot's cognition fusion directive.
 
 import json
 import hashlib
+import uuid
 from datetime import datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 BUNDLES_PATH = REPO_ROOT / "memory-bundles"
 AGENT_REGISTRY_PATH = BUNDLES_PATH / "agent_registry.json"
+
+# Configuration
+MAX_RECURSION_DEPTH = 3
 
 # Base agent templates
 BASE_AGENTS = [
@@ -34,9 +38,9 @@ BASE_AGENTS = [
 ]
 
 def generate_agent_id(base_id, mutation_index):
-    """Generate unique agent ID for cloned/mutated agents"""
-    seed = f"{base_id}_{mutation_index}_{datetime.utcnow().isoformat()}"
-    return hashlib.md5(seed.encode()).hexdigest()[:12]
+    """Generate unique agent ID using UUID for cloned/mutated agents"""
+    # Use UUID for better uniqueness guarantees
+    return f"{base_id}_{str(uuid.uuid4())[:8]}"
 
 def clone_agent(base_agent, purpose=None):
     """Clone an agent with optional purpose specialization"""

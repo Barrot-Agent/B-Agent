@@ -8,6 +8,7 @@ ingestion, reflection, and implementation.
 
 import json
 import hashlib
+import uuid
 from datetime import datetime
 from pathlib import Path
 
@@ -15,6 +16,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 BUNDLES_PATH = REPO_ROOT / "memory-bundles"
 PROTOCOLS_PATH = BUNDLES_PATH / "protocols"
 PROTOCOL_REGISTRY_PATH = PROTOCOLS_PATH / "registry.json"
+
+# Configuration
+MAX_DYNAMIC_DOMAINS = 2
+MAX_OBJECTIVES_PER_DOMAIN = 2
+MAX_RECURSION_DEPTH = 2
 
 # Ensure protocols directory exists
 PROTOCOLS_PATH.mkdir(exist_ok=True)
@@ -72,9 +78,9 @@ PROTOCOL_TEMPLATES = {
 }
 
 def generate_protocol_id(protocol_name):
-    """Generate unique protocol ID"""
-    seed = f"{protocol_name}_{datetime.utcnow().isoformat()}"
-    return hashlib.md5(seed.encode()).hexdigest()[:16]
+    """Generate unique protocol ID using UUID"""
+    # Use UUID for better uniqueness guarantees
+    return str(uuid.uuid4())[:16]
 
 def load_protocol_registry():
     """Load or create protocol registry"""
@@ -193,8 +199,8 @@ def synthesize_protocols():
     domains = ["cognition", "data_processing", "agent_coordination", "system_optimization"]
     objectives = ["enhancement", "validation", "integration", "monitoring"]
     
-    for domain in domains[:2]:  # Limit to avoid explosion
-        for objective in objectives[:2]:
+    for domain in domains[:MAX_DYNAMIC_DOMAINS]:  # Use config limit
+        for objective in objectives[:MAX_OBJECTIVES_PER_DOMAIN]:
             dynamic_protocol = generate_dynamic_protocol(domain, objective)
             registry["protocols"].append(dynamic_protocol)
             protocols_synthesized += 1
@@ -203,7 +209,7 @@ def synthesize_protocols():
     print("[PROTOCOL_SYNTHESIZER] Generating recursive protocol variations...")
     if registry["protocols"]:
         base_protocol = registry["protocols"][0]  # Use first protocol as base
-        recursive_protocols = generate_recursive_protocols(base_protocol, depth=2)
+        recursive_protocols = generate_recursive_protocols(base_protocol, depth=MAX_RECURSION_DEPTH)
         registry["protocols"].extend(recursive_protocols)
         protocols_synthesized += len(recursive_protocols)
     

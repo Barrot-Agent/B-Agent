@@ -15,6 +15,10 @@ from collections import defaultdict
 REPO_ROOT = Path(__file__).resolve().parent.parent
 BUNDLES_PATH = REPO_ROOT / "memory-bundles"
 
+# Configuration
+MAX_FILES_TO_ANALYZE = 50  # Configurable limit for file analysis
+SIMILARITY_THRESHOLD = 0.4  # Minimum similarity for overlap detection
+
 def analyze_document_for_directives(file_path):
     """Extract directives from a markdown or text document"""
     try:
@@ -152,7 +156,10 @@ def resolve_overlaps():
     md_files = list(REPO_ROOT.glob("*.md"))
     md_files.extend(BUNDLES_PATH.glob("*.md"))
     
-    for md_file in md_files[:20]:  # Limit to first 20 to avoid overwhelming
+    # Prioritize important files and limit to configured maximum
+    md_files = md_files[:MAX_FILES_TO_ANALYZE]
+    
+    for md_file in md_files:
         directives = analyze_document_for_directives(md_file)
         all_directives.extend(directives)
     
@@ -160,7 +167,7 @@ def resolve_overlaps():
     
     # Find overlaps
     print("[OVERLAP_RESOLVER] Analyzing for overlapping directives...")
-    overlaps = find_overlapping_directives(all_directives, similarity_threshold=0.4)
+    overlaps = find_overlapping_directives(all_directives, similarity_threshold=SIMILARITY_THRESHOLD)
     
     print(f"[OVERLAP_RESOLVER] Detected {len(overlaps)} overlapping directive pairs")
     

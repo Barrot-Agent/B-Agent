@@ -16,6 +16,9 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 BUNDLES_PATH = REPO_ROOT / "memory-bundles"
 MANIFEST_PATH = REPO_ROOT / "barrot_manifest.json"
 
+# Configuration
+MAX_FILES_TO_SCAN = 30  # Configurable limit for file scanning
+
 # Contradiction indicators
 CONTRADICTION_PATTERNS = [
     (r"(must|shall)\s+not", r"(must|shall)\s+(?!not)"),
@@ -199,8 +202,11 @@ def resolve_paradoxes():
     all_paradoxes = []
     
     # Scan markdown files
-    md_files = list(REPO_ROOT.glob("*.md"))[:15]  # Limit scan
-    md_files.extend(list(BUNDLES_PATH.glob("*.md"))[:15])
+    md_files = list(REPO_ROOT.glob("*.md"))
+    md_files.extend(list(BUNDLES_PATH.glob("*.md")))
+    
+    # Limit to configured maximum
+    md_files = md_files[:MAX_FILES_TO_SCAN]
     
     for md_file in md_files:
         try:

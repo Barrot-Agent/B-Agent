@@ -1,10 +1,10 @@
 # Paradox Resolution Report
 
-**Generated**: 2026-01-03T20:56:06.099984Z
+**Generated**: 2026-01-03T21:00:23.877053Z
 
 ## Summary
 
-- **Contradictions Found**: 6
+- **Contradictions Found**: 8
 - **Paradoxes Found**: 0
 - **Drift Indicators**: 0
 - **Capsized Logic Instances**: 1
@@ -76,7 +76,7 @@
 
 ## Unified Cognition
 
-**Resolutions Applied**: 6
+**Resolutions Applied**: 8
 
 **Confidence Score**: 0.7
 
@@ -113,3 +113,23 @@
 
 **Operational Protocol**:
 - Always assume user may have incomplete understandi
+- t
+```
+
+---
+
+## 🛠️ Workflow Best Practices
+
+### 1. Always Use Specific Action Versions
+
+❌ **Bad**: `u
+- -
+
+## 🔐 Security Considerations
+
+### Permissions
+
+Always use minimal required permissions:
+
+```yaml
+
