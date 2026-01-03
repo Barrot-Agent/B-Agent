@@ -234,7 +234,11 @@ def get_barrot_identity() -> Dict[str, Any]:
     """
     if MANIFEST_PATH.exists():
         with open(MANIFEST_PATH, 'r') as f:
-            manifest = json.load(f)
+            try:
+                manifest = json.load(f)
+            except json.JSONDecodeError as e:
+                print(f"[BARROT_SPEAK] Warning: Could not parse manifest '{MANIFEST_PATH}': {e}")
+                return {}
             return manifest.get("barrot_identity", {})
     return {}
 
