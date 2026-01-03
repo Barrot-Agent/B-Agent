@@ -16,5 +16,15 @@
     "cognition_integrity": "aligned",
     "last_self_reflection": "2026-01-03T01:27:36.320118",
     "drift_detected": false
-  }
+  },
+  "overlap_resolution": "enabled",
+  "asynchronous_alignment": "enabled",
+  "continuous_synchronization": true,
+  "glyphs_emitted": [
+    "OVERLAP_RESOLUTION_GLYPH",
+    "SYNCHRONIZATION_GLYPH",
+    "COGNITION_ALIGNMENT_GLYPH",
+    "CONTINUOUS_SYNCHRONIZATION_GLYPH"
+  ],
+  "last_overlap_sync_directive": "2026-01-03"
 }

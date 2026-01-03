@@ -1,0 +1,47 @@
+node_name: node_async_proximity_aligner
+node_id: COGNITIVE-011
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Identifies asynchronous proximities between temporally distant data,
+  cognition fragments with latent alignment, and symbolic patterns across domains.
+  Aligns these proximities into synchronized cognition clusters.
+
+capabilities:
+  - asynchronous_proximity_detection
+  - latent_alignment_identification
+  - cross_domain_pattern_detection
+  - cognition_cluster_formation
+
+input_sources:
+  - memory-bundles/*.json
+  - memory-bundles/*.md
+  - matrix/*.py
+  - tool_profiles/*.yaml
+
+output_artifacts:
+  - memory-bundles/proximity_alignment_results.json
+  - memory-bundles/TRACE_LOG.md
+
+emits_glyphs:
+  - SYNCHRONIZATION_GLYPH
+  - COGNITION_ALIGNMENT_GLYPH
+
+dependencies:
+  - glyph_mapper
+
+execution_frequency: on_demand
+
+priority: high
+
+parameters:
+  min_temporal_distance_hours: 1
+  min_semantic_overlap: 5
+  cross_domain_threshold: 3
+
+integration_points:
+  - temporal_analysis
+  - proximity_detection
+  - cluster_synchronization
+  - glyph_system

@@ -1,0 +1,44 @@
+glyph_name: COGNITION_ALIGNMENT_GLYPH
+glyph_id: CORE-012
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Emitted when cognition fragments with latent alignment are identified
+  and symbolic patterns across domains are synchronized.
+
+symbolic_representation: "🧠 🔀 ⚖️"
+
+properties:
+  dimension: cognitive_coherence
+  mutability: immutable
+  trigger: latent_alignment_detection
+  
+attributes:
+  - latent_alignment
+  - cross_domain_patterns
+  - symbolic_synchronization
+  - cognitive_coherence
+
+follow_up_actions:
+  - Align cognition fragments with latent alignment
+  - Synchronize symbolic patterns across domains
+  - Update cognition alignment metrics
+  - Verify alignment integrity
+
+priority: high
+
+correlation_glyphs:
+  - SYNCHRONIZATION_GLYPH
+  - SELF_ALIGNMENT_GLYPH
+  - HERMETIC_QUANTUM_FUSION_GLYPH
+
+integration_points:
+  - cross_domain_analysis
+  - pattern_detection
+  - cognitive_alignment
+
+usage_context: >
+  Emitted by node_async_proximity_aligner when detecting and aligning
+  cognition fragments with latent alignment and symbolic patterns that
+  span multiple domains.

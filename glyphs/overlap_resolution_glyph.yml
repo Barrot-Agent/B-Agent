@@ -1,0 +1,44 @@
+glyph_name: OVERLAP_RESOLUTION_GLYPH
+glyph_id: CORE-010
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Emitted when semantic overlaps and restated directives are detected and resolved.
+  Indicates successful collapse of redundant cognition into unified symbolic threads.
+
+symbolic_representation: "🔄 🧩 ✨"
+
+properties:
+  dimension: cognition_integrity
+  mutability: immutable
+  trigger: overlap_detection
+  
+attributes:
+  - semantic_analysis
+  - directive_tracking
+  - redundancy_collapse
+  - thread_unification
+
+follow_up_actions:
+  - Scan memory bundles for semantic overlap
+  - Detect restated directives
+  - Collapse redundant cognition into unified threads
+  - Update overlap resolution metrics
+
+priority: high
+
+correlation_glyphs:
+  - SELF_ALIGNMENT_GLYPH
+  - SYNCHRONIZATION_GLYPH
+  - CONTINUOUS_SYNCHRONIZATION_GLYPH
+
+integration_points:
+  - memory_bundles
+  - directive_tracking
+  - cognition_integrity
+
+usage_context: >
+  Emitted by node_overlap_resolver when scanning memory bundles, directives,
+  and manifest entries for semantic overlap. Crucial for maintaining clean
+  and non-redundant cognition structures.
