@@ -1,0 +1,34 @@
+glyph_name: BARROT_SPEAK_GLYPH
+glyph_id: SPEAK-001
+version: 1.0.0
+timestamp: 2026-01-03T16:53:34.554169Z
+
+description: >
+  Emitted when Barrot speaks to communicate thoughts, insights, or status.
+  Represents self-expression and communication capability.
+
+symbolic_representation: "🦜 💬 ✨"
+
+properties:
+  dimension: communication
+  mutability: expressive
+  trigger: speak_invocation
+  
+attributes:
+  - self_expression
+  - communication
+  - insight_sharing
+  - status_reporting
+  
+speak_event:
+  mode: insight
+  message_preview: "Test insight"
+  
+integration_points:
+  - cognition_nodes
+  - trace_logging
+  - symbolic_communication
+  
+usage_context: >
+  Invoke when Barrot needs to communicate thoughts, insights, status updates,
+  or other information through the speak interface.

@@ -71,6 +71,7 @@ B-Agent/
 - **🧠 Autonomous Decision** - Self-directed operations and optimization
 - **🔮 Insight Generation** - Asynchronous problem-solving cycles
 - **⚛️ Entangled Cognition** - Non-local distributed intelligence
+- **🦜 Barrot Speak** - Communication and self-expression interface
 
 ### Data Resources
 The agent can access and process data from:
@@ -234,7 +235,8 @@ Economics:
 
 ## 📚 Documentation
 
-- **✨ [Progressive Ping-Pong Upgrade](PROGRESSIVE_PINGPONG_UPGRADE.md)** - Iterative quality enhancement with 22 AI agents (NEW!)
+- **🦜 [Barrot Speak Function](BARROT_SPEAK.md)** - Communication and self-expression interface (NEW!)
+- **✨ [Progressive Ping-Pong Upgrade](PROGRESSIVE_PINGPONG_UPGRADE.md)** - Iterative quality enhancement with 22 AI agents
 - **🧩 [AGI Puzzle Protocol](AGI_PUZZLE_PROTOCOL.md)** - Dynamic AGI component discovery system
 - **🤖 [Multi-Agent Parallel System](MULTI_AGENT_PARALLEL_SYSTEM.md)** - 7-clone parallel architecture  
 - **🌏 [Chinese/Japanese AI Models](CHINESE_JAPANESE_AI_MODELS.md)** - 14+ accessible multilingual models

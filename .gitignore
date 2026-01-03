@@ -15,6 +15,12 @@ temp/
 *.tmp
 *.cache
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
 # OS files
 .DS_Store
 Thumbs.db

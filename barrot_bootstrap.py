@@ -3,6 +3,9 @@ import json
 import subprocess
 from pathlib import Path
 
+# Import barrot speak function
+from barrot_speak import barrot_speak
+
 # --- CONFIGURATION ---
 REPO_ROOT = Path(__file__).resolve().parent
 MANIFEST_PATH = REPO_ROOT / "barrot_manifest.json"
@@ -20,6 +23,9 @@ last_ingestion = manifest["cognition"].get("last_ingestion", "UNKNOWN")
 
 print(f"[BOOTSTRAP] Barrot identity: {barrot_id}/{repo}")
 print(f"[BOOTSTRAP] Last cognition snapshot: {last_ingestion}")
+
+# Greet using speak function
+barrot_speak(f"Bootstrap initiated for {barrot_id}/{repo}", mode="info", log_to_trace=False)
 
 # --- REHYDRATE MEMORY ---
 def load_latest_bundle():
