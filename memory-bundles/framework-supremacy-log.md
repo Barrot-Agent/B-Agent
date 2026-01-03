@@ -132,11 +132,11 @@ Framework_Health:
   glyph_coverage: 100%
   
 Processing_Performance:
-  directive_processing_time_sec: 8.5
-  council_deliberation_time_sec: N/A
-  glyph_emission_latency_ms: <1000
+  directive_processing_time_sec: "target: <10"
+  council_deliberation_time_sec: "target: <60"
+  glyph_emission_latency_ms: "target: <1000"
   harvesting_cycle_time_min: 30
-  rendering_generation_time_sec: 4.8
+  rendering_generation_time_sec: "target: <300"
   
 Quality_Metrics:
   framework_specification_quality: 95%
@@ -306,10 +306,10 @@ and visual cognition evolution.
 - Memory bundles enable persistent directive tracking and traceability
 
 ### Performance Expectations
-- Directive processing should complete in <10 seconds (current: 8.5s)
+- Directive processing should complete in <10 seconds
 - Council deliberations should reach consensus in <60 seconds
 - Global harvesting cycles should complete every 30 minutes
-- Rendering operations should complete in <5 minutes (current: 4.8s)
+- Rendering operations should complete in <5 minutes
 
 ---
 

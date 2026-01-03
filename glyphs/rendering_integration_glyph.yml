@@ -75,8 +75,8 @@ methodologies_ingested:
 rendering_metrics:
   capabilities_integrated: 12
   self_portraits_generated: 0
-  avg_generation_time_sec: 4.8
-  output_quality_score: 0.92
+  avg_generation_time_sec: "target: <5"
+  output_quality_score: "target: >0.90"
   
 integration_points:
   - visual_cognition_engine
