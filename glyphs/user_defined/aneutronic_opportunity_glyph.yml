@@ -1,0 +1,50 @@
+glyph_name: ANEUTRONIC_OPPORTUNITY_GLYPH
+glyph_id: FUSION-004
+version: 1.0.0
+timestamp: 2026-01-03T20:58:00Z
+user_defined: true
+
+description: >
+  Monitors aneutronic fusion progress (p-B11, etc.) offering cleaner energy with reduced
+  shielding requirements. Potential leapfrog opportunity due to lower competition.
+
+symbolic_representation: "⚛️ ✨ 🎯"
+
+properties:
+  dimension: leapfrog_opportunity
+  mutability: configurable
+  trigger: aneutronic_milestone
+  
+attributes:
+  - aneutronic_fusion
+  - clean_energy
+  - reduced_shielding
+  - leapfrog_potential
+  - competitive_advantage
+
+follow_up_actions:
+  - Document aneutronic fusion progress in research log
+  - Assess leapfrog potential vs deuterium-tritium fusion
+  - Evaluate reduced shielding benefits for compact systems
+  - Monitor competitive landscape in aneutronic space
+  - Consider strategic partnerships or acquisitions
+
+priority: medium
+
+metadata:
+  owner: barrot_research_system
+  research_domain: aneutronic_fusion
+  integration_target: next_generation_ordr
+  leapfrog_indicator: true
+  version: 1.0.0
+
+integration_points:
+  - nuclear_fusion_research_log
+  - ordr_development_priority
+  - competitive_intelligence_system
+  - leapfrog_opportunity_detection
+
+usage_context: >
+  Emitted when aneutronic fusion research shows progress. Less mature than tokamak/ICF
+  approaches but offers potential competitive advantage due to cleaner operation and
+  reduced complexity. Strategic option for second-generation ORDR systems.

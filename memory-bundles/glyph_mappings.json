@@ -17,6 +17,214 @@
       },
       "created_at": "2026-01-03T07:45:49.157197",
       "version": "1.0.0"
+    },
+    "WARP_DRIVE_FEASIBILITY_GLYPH": {
+      "name": "WARP_DRIVE_FEASIBILITY_GLYPH",
+      "description": "Tracks warp drive feasibility research updates and breakthroughs",
+      "actions": [
+        "Update warp-drive-research-log.md with new findings",
+        "Analyze feasibility implications for ORDR development",
+        "Assess competitive advantage opportunities",
+        "Emit RESEARCH_SYNTHESIS_GLYPH if cross-domain insights identified",
+        "Alert Leapfrog Opportunity Agent if breakthrough detected"
+      ],
+      "priority": "high",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "warp_drive_physics",
+        "integration_target": "ordr_development",
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "SUBLUMINAL_MODEL_ALIGNMENT_GLYPH": {
+      "name": "SUBLUMINAL_MODEL_ALIGNMENT_GLYPH",
+      "description": "Monitors practical subluminal warp drive model alignment",
+      "actions": [
+        "Log subluminal model updates in warp-drive-research-log.md",
+        "Evaluate energy requirements vs fusion capabilities",
+        "Map subluminal principles to cognitive acceleration architectures",
+        "Update ORDR technical specifications",
+        "Assess near-term implementation feasibility"
+      ],
+      "priority": "very_high",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "subluminal_warp_models",
+        "integration_target": "ordr_cognitive_acceleration",
+        "practical_focus": true,
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "SPACETIME_MANIPULATION_GLYPH": {
+      "name": "SPACETIME_MANIPULATION_GLYPH",
+      "description": "Tracks spacetime manipulation insights for cognitive field optimization",
+      "actions": [
+        "Document spacetime manipulation insights in research logs",
+        "Map physics principles to cognitive architecture patterns",
+        "Design cognitive field manipulation experiments",
+        "Update ORDR theoretical framework",
+        "Engage theoretical physics and AI research agents jointly"
+      ],
+      "priority": "critical",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "spacetime_cognitive_mapping",
+        "integration_target": "ordr_core_architecture",
+        "breakthrough_potential": "very_high",
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "RESEARCH_SYNTHESIS_GLYPH": {
+      "name": "RESEARCH_SYNTHESIS_GLYPH",
+      "description": "Cross-research pattern synthesis and leapfrog opportunity identification",
+      "actions": [
+        "Document synthesis insights across all relevant research logs",
+        "Convene multi-agent deliberation on integration approach",
+        "Assess competitive implications and IP strategy",
+        "Update ORDR development roadmap if significant",
+        "Alert leadership for strategic decision-making"
+      ],
+      "priority": "critical",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "meta_synthesis",
+        "integration_target": "all_research_domains",
+        "breakthrough_indicator": true,
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "RESEARCH_LOOP_GLYPH": {
+      "name": "RESEARCH_LOOP_GLYPH",
+      "description": "Maintains continuous research processing loop heartbeat",
+      "actions": [
+        "Verify all research agents are active and responsive",
+        "Check research stream ingestion rates",
+        "Validate competitive intelligence monitoring",
+        "Confirm glyph emission pathways operational",
+        "Log loop health metrics to TRACE_LOG.md"
+      ],
+      "priority": "medium",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "operational_monitoring",
+        "integration_target": "research_infrastructure",
+        "heartbeat_interval": "hourly",
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "FUSION_FEASIBILITY_GLYPH": {
+      "name": "FUSION_FEASIBILITY_GLYPH",
+      "description": "Tracks nuclear fusion breakthroughs and commercial progress",
+      "actions": [
+        "Update nuclear-fusion-research-log.md with breakthrough details",
+        "Assess timeline implications for ORDR development",
+        "Evaluate energy output scaling for warp drive requirements",
+        "Update fusion-warp-ORDR integration architecture",
+        "Alert energy scaling and integration agents"
+      ],
+      "priority": "high",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "nuclear_fusion",
+        "integration_target": "ordr_energy_infrastructure",
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "ENERGY_SCALING_GLYPH": {
+      "name": "ENERGY_SCALING_GLYPH",
+      "description": "Monitors fusion energy scaling for warp and ORDR power requirements",
+      "actions": [
+        "Log energy scaling data in fusion research log",
+        "Calculate energy sufficiency for warp field generation",
+        "Model ORDR cognitive processing power requirements",
+        "Update fusion-warp-ORDR integration specifications",
+        "Assess timeline to energy availability"
+      ],
+      "priority": "very_high",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "energy_systems",
+        "integration_target": "warp_ordr_power_infrastructure",
+        "critical_path": true,
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "FUSION_WARP_INTEGRATION_GLYPH": {
+      "name": "FUSION_WARP_INTEGRATION_GLYPH",
+      "description": "Identifies fusion-warp integration opportunities and architectures",
+      "actions": [
+        "Document integration architecture in both research logs",
+        "Design fusion-warp energy coupling interfaces",
+        "Prototype integration concepts",
+        "Update ORDR unified system specifications",
+        "Assess patent opportunities for integration approaches"
+      ],
+      "priority": "critical",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "system_integration",
+        "integration_target": "fusion_warp_ordr_unified_system",
+        "breakthrough_potential": "very_high",
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "COMPACT_FUSION_GLYPH": {
+      "name": "COMPACT_FUSION_GLYPH",
+      "description": "Tracks compact fusion miniaturization and efficiency improvements",
+      "actions": [
+        "Log compact fusion developments in research log",
+        "Assess size/power trade-offs for ORDR systems",
+        "Design distributed ORDR network architectures",
+        "Evaluate portable warp drive feasibility",
+        "Track commercial compact fusion companies"
+      ],
+      "priority": "high",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "compact_fusion_systems",
+        "integration_target": "distributed_ordr_portable_warp",
+        "market_enabler": true,
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
+    },
+    "ANEUTRONIC_OPPORTUNITY_GLYPH": {
+      "name": "ANEUTRONIC_OPPORTUNITY_GLYPH",
+      "description": "Monitors aneutronic fusion as potential leapfrog opportunity",
+      "actions": [
+        "Document aneutronic fusion progress in research log",
+        "Assess leapfrog potential vs deuterium-tritium fusion",
+        "Evaluate reduced shielding benefits for compact systems",
+        "Monitor competitive landscape in aneutronic space",
+        "Consider strategic partnerships or acquisitions"
+      ],
+      "priority": "medium",
+      "metadata": {
+        "owner": "barrot_research_system",
+        "research_domain": "aneutronic_fusion",
+        "integration_target": "next_generation_ordr",
+        "leapfrog_indicator": true,
+        "version": "1.0.0"
+      },
+      "created_at": "2026-01-03T20:58:00Z",
+      "version": "1.0.0"
     }
   },
   "history": [
