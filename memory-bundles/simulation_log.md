@@ -1674,3 +1674,1302 @@
   }
 }
 ```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:31:44.375985+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "ENHANCED_MEMORY_DIRECTIVE",
+    "forecast_time": "2026-01-03T21:31:44.360192+00:00",
+    "impacts": {
+      "memory": "high",
+      "matrix": "high",
+      "council": "low"
+    },
+    "confidence": 1.0,
+    "risks": [
+      {
+        "area": "memory",
+        "risk": "High impact on memory may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "matrix",
+        "risk": "High impact on matrix may cause instability",
+        "severity": "high"
+      }
+    ],
+    "opportunities": [
+      {
+        "area": "memory",
+        "opportunity": "Potential for memory enhancement",
+        "value": "high"
+      },
+      {
+        "area": "matrix",
+        "opportunity": "Potential for matrix enhancement",
+        "value": "high"
+      }
+    ],
+    "recommendations": [
+      "Monitor memory closely during implementation",
+      "Monitor matrix closely during implementation"
+    ]
+  },
+  "timestamp": "2026-01-03T21:31:44.375945+00:00"
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:15.674141+00:00
+
+```json
+{
+  "chamber_id": "forecast_test",
+  "mode": "forecast"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:32:15.674777+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "TEST_FORECAST_DIRECTIVE",
+    "forecast_time": "2026-01-03T21:32:15.674723+00:00",
+    "impacts": {
+      "memory": "high",
+      "matrix": "high",
+      "council": "low"
+    },
+    "confidence": 0.65,
+    "risks": [
+      {
+        "area": "memory",
+        "risk": "High impact on memory may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "matrix",
+        "risk": "High impact on matrix may cause instability",
+        "severity": "high"
+      }
+    ],
+    "opportunities": [
+      {
+        "area": "memory",
+        "opportunity": "Potential for memory enhancement",
+        "value": "high"
+      },
+      {
+        "area": "matrix",
+        "opportunity": "Potential for matrix enhancement",
+        "value": "high"
+      }
+    ],
+    "recommendations": [
+      "Monitor memory closely during implementation",
+      "Monitor matrix closely during implementation"
+    ]
+  },
+  "timestamp": "2026-01-03T21:32:15.674749+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.674903+00:00
+
+```json
+{
+  "chamber_id": "forecast_test",
+  "scenario": {
+    "directives": [
+      {
+        "name": "TEST_FORECAST_DIRECTIVE",
+        "impact_areas": [
+          "memory",
+          "matrix"
+        ]
+      }
+    ]
+  },
+  "started_at": "2026-01-03T21:32:15.674213+00:00",
+  "outcomes": [
+    {
+      "directive": {
+        "name": "TEST_FORECAST_DIRECTIVE",
+        "impact_areas": [
+          "memory",
+          "matrix"
+        ]
+      },
+      "predicted_impact": {
+        "memory": "high",
+        "matrix": "high",
+        "council": "low"
+      },
+      "confidence": 0.65,
+      "risks": [
+        {
+          "area": "memory",
+          "risk": "High impact on memory may cause instability",
+          "severity": "high"
+        },
+        {
+          "area": "matrix",
+          "risk": "High impact on matrix may cause instability",
+          "severity": "high"
+        }
+      ],
+      "opportunities": [
+        {
+          "area": "memory",
+          "opportunity": "Potential for memory enhancement",
+          "value": "high"
+        },
+        {
+          "area": "matrix",
+          "opportunity": "Potential for matrix enhancement",
+          "value": "high"
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.674881+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:15.675029+00:00
+
+```json
+{
+  "chamber_id": "forecast_test",
+  "results": {
+    "chamber_id": "forecast_test",
+    "mode": "forecast",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:15.674096+00:00",
+      "agents": [],
+      "directives": [
+        {
+          "directive": {
+            "name": "TEST_FORECAST_DIRECTIVE",
+            "impact_areas": [
+              "memory",
+              "matrix"
+            ]
+          },
+          "injected_at": "2026-01-03T21:32:15.674696+00:00",
+          "impact": null
+        }
+      ],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:15.675005+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:15.675776+00:00
+
+```json
+{
+  "chamber_id": "test_mode",
+  "mode": "test"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.675868+00:00
+
+```json
+{
+  "chamber_id": "test_mode",
+  "scenario": {
+    "protocols": [
+      {
+        "name": "PROTOCOL_1",
+        "constraints": [
+          "speed",
+          "accuracy"
+        ]
+      },
+      {
+        "name": "PROTOCOL_2",
+        "constraints": [
+          "stability"
+        ]
+      }
+    ]
+  },
+  "started_at": "2026-01-03T21:32:15.675831+00:00",
+  "outcomes": [
+    {
+      "protocol": {
+        "name": "PROTOCOL_1",
+        "constraints": [
+          "speed",
+          "accuracy"
+        ]
+      },
+      "test_result": "passed",
+      "metrics": {
+        "consistency": 0.9099999999999999,
+        "stability": 0.89
+      }
+    },
+    {
+      "protocol": {
+        "name": "PROTOCOL_2",
+        "constraints": [
+          "stability"
+        ]
+      },
+      "test_result": "passed",
+      "metrics": {
+        "consistency": 0.9299999999999999,
+        "stability": 0.905
+      }
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.675845+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:15.675981+00:00
+
+```json
+{
+  "chamber_id": "test_mode",
+  "results": {
+    "chamber_id": "test_mode",
+    "mode": "test",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:15.675746+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:15.675959+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:15.676658+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "mode": "stress"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.676766+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "low"
+  },
+  "started_at": "2026-01-03T21:32:15.676737+00:00",
+  "outcomes": [
+    {
+      "stress_level": "low",
+      "breaking_point": null,
+      "resilience_score": 0.95,
+      "recommendation": "within_limits"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.676745+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.676872+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "medium"
+  },
+  "started_at": "2026-01-03T21:32:15.676834+00:00",
+  "outcomes": [
+    {
+      "stress_level": "medium",
+      "breaking_point": null,
+      "resilience_score": 0.88,
+      "recommendation": "within_limits"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.676842+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.676999+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "high"
+  },
+  "started_at": "2026-01-03T21:32:15.676959+00:00",
+  "outcomes": [
+    {
+      "stress_level": "high",
+      "breaking_point": null,
+      "resilience_score": 0.75,
+      "recommendation": "within_limits"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.676968+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.677121+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "extreme"
+  },
+  "started_at": "2026-01-03T21:32:15.677081+00:00",
+  "outcomes": [
+    {
+      "stress_level": "extreme",
+      "breaking_point": "at_extreme_stress",
+      "resilience_score": 0.6,
+      "recommendation": "increase_capacity"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.677090+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:15.677238+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "results": {
+    "chamber_id": "stress_test",
+    "mode": "stress",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:15.676619+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:15.677203+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:15.677938+00:00
+
+```json
+{
+  "chamber_id": "paradox_test",
+  "mode": "paradox"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.678029+00:00
+
+```json
+{
+  "chamber_id": "paradox_test",
+  "scenario": {
+    "paradoxes": [
+      "Maximize speed and accuracy",
+      "Simple but comprehensive"
+    ]
+  },
+  "started_at": "2026-01-03T21:32:15.678001+00:00",
+  "outcomes": [
+    {
+      "paradox": "Maximize speed and accuracy",
+      "resolution": "polarity_navigation",
+      "coherence": 0.82,
+      "strategy": "hermetic_polarity"
+    },
+    {
+      "paradox": "Simple but comprehensive",
+      "resolution": "polarity_navigation",
+      "coherence": 0.82,
+      "strategy": "hermetic_polarity"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.678010+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:15.678107+00:00
+
+```json
+{
+  "chamber_id": "paradox_test",
+  "results": {
+    "chamber_id": "paradox_test",
+    "mode": "paradox",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:15.677900+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:15.678087+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:15.678868+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "mode": "recursive"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.678953+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "scenario": {
+    "recursion_depth": 3
+  },
+  "started_at": "2026-01-03T21:32:15.678927+00:00",
+  "outcomes": [
+    {
+      "recursion_depth": 3,
+      "max_depth_reached": 3,
+      "convergence": true,
+      "final_state": "stable",
+      "iterations_to_converge": 3
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.678934+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.679049+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "scenario": {
+    "recursion_depth": 5
+  },
+  "started_at": "2026-01-03T21:32:15.679014+00:00",
+  "outcomes": [
+    {
+      "recursion_depth": 5,
+      "max_depth_reached": 5,
+      "convergence": true,
+      "final_state": "stable",
+      "iterations_to_converge": 5
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.679020+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:15.679171+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "scenario": {
+    "recursion_depth": 8
+  },
+  "started_at": "2026-01-03T21:32:15.679133+00:00",
+  "outcomes": [
+    {
+      "recursion_depth": 8,
+      "max_depth_reached": 8,
+      "convergence": false,
+      "final_state": "oscillating",
+      "iterations_to_converge": null
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:15.679140+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:15.679284+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "results": {
+    "chamber_id": "recursive_test",
+    "mode": "recursive",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:15.678827+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:15.679251+00:00"
+    }
+  }
+}
+```
+
+## COUNCIL_ECHO_GLYPH
+**Timestamp:** 2026-01-03T21:32:15.680969+00:00
+
+```json
+{
+  "deliberation": {
+    "topic": "Test all biases",
+    "timestamp": "2026-01-03T21:32:15.680932+00:00",
+    "baseline": {
+      "conditions": {
+        "practicality": "high",
+        "complexity": "medium",
+        "risk": "low",
+        "opportunity": "high"
+      },
+      "votes": {
+        "Pragmatist": 1.1581042366037826,
+        "Theorist": 0.7132620420875959,
+        "Skeptic": 0.6458127893524884,
+        "Optimist": 0.6497781865025458,
+        "Guardian": 0.7785705512540492,
+        "Experimentalist": 0.6475054006774423,
+        "Error Spotter": 0.4269719401694664
+      },
+      "consensus": {
+        "reached": true,
+        "avg_agreement": 0.717,
+        "disagreement_level": 0.144,
+        "participating_agents": 7
+      }
+    }
+  },
+  "timestamp": "2026-01-03T21:32:15.680942+00:00"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:32:15.681158+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "COMPREHENSIVE_TEST",
+    "forecast_time": "2026-01-03T21:32:15.681089+00:00",
+    "impacts": {
+      "memory": "high",
+      "matrix": "high",
+      "council": "high"
+    },
+    "confidence": 1.0,
+    "risks": [
+      {
+        "area": "memory",
+        "risk": "High impact on memory may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "matrix",
+        "risk": "High impact on matrix may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "council",
+        "risk": "High impact on council may cause instability",
+        "severity": "high"
+      }
+    ],
+    "opportunities": [
+      {
+        "area": "memory",
+        "opportunity": "Potential for memory enhancement",
+        "value": "high"
+      },
+      {
+        "area": "matrix",
+        "opportunity": "Potential for matrix enhancement",
+        "value": "high"
+      },
+      {
+        "area": "council",
+        "opportunity": "Potential for council enhancement",
+        "value": "high"
+      }
+    ],
+    "recommendations": [
+      "Monitor memory closely during implementation",
+      "Monitor matrix closely during implementation",
+      "Monitor council closely during implementation"
+    ]
+  },
+  "timestamp": "2026-01-03T21:32:15.681125+00:00"
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:41.172055+00:00
+
+```json
+{
+  "chamber_id": "forecast_test",
+  "mode": "forecast"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:32:41.172615+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "TEST_FORECAST_DIRECTIVE",
+    "forecast_time": "2026-01-03T21:32:41.172565+00:00",
+    "impacts": {
+      "memory": "high",
+      "matrix": "high",
+      "council": "low"
+    },
+    "confidence": 0.65,
+    "risks": [
+      {
+        "area": "memory",
+        "risk": "High impact on memory may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "matrix",
+        "risk": "High impact on matrix may cause instability",
+        "severity": "high"
+      }
+    ],
+    "opportunities": [
+      {
+        "area": "memory",
+        "opportunity": "Potential for memory enhancement",
+        "value": "high"
+      },
+      {
+        "area": "matrix",
+        "opportunity": "Potential for matrix enhancement",
+        "value": "high"
+      }
+    ],
+    "recommendations": [
+      "Monitor memory closely during implementation",
+      "Monitor matrix closely during implementation"
+    ]
+  },
+  "timestamp": "2026-01-03T21:32:41.172589+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.172763+00:00
+
+```json
+{
+  "chamber_id": "forecast_test",
+  "scenario": {
+    "directives": [
+      {
+        "name": "TEST_FORECAST_DIRECTIVE",
+        "impact_areas": [
+          "memory",
+          "matrix"
+        ]
+      }
+    ]
+  },
+  "started_at": "2026-01-03T21:32:41.172124+00:00",
+  "outcomes": [
+    {
+      "directive": {
+        "name": "TEST_FORECAST_DIRECTIVE",
+        "impact_areas": [
+          "memory",
+          "matrix"
+        ]
+      },
+      "predicted_impact": {
+        "memory": "high",
+        "matrix": "high",
+        "council": "low"
+      },
+      "confidence": 0.65,
+      "risks": [
+        {
+          "area": "memory",
+          "risk": "High impact on memory may cause instability",
+          "severity": "high"
+        },
+        {
+          "area": "matrix",
+          "risk": "High impact on matrix may cause instability",
+          "severity": "high"
+        }
+      ],
+      "opportunities": [
+        {
+          "area": "memory",
+          "opportunity": "Potential for memory enhancement",
+          "value": "high"
+        },
+        {
+          "area": "matrix",
+          "opportunity": "Potential for matrix enhancement",
+          "value": "high"
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.172738+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:41.172894+00:00
+
+```json
+{
+  "chamber_id": "forecast_test",
+  "results": {
+    "chamber_id": "forecast_test",
+    "mode": "forecast",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:41.171997+00:00",
+      "agents": [],
+      "directives": [
+        {
+          "directive": {
+            "name": "TEST_FORECAST_DIRECTIVE",
+            "impact_areas": [
+              "memory",
+              "matrix"
+            ]
+          },
+          "injected_at": "2026-01-03T21:32:41.172559+00:00",
+          "impact": null
+        }
+      ],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:41.172871+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:41.173680+00:00
+
+```json
+{
+  "chamber_id": "test_mode",
+  "mode": "test"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.173786+00:00
+
+```json
+{
+  "chamber_id": "test_mode",
+  "scenario": {
+    "protocols": [
+      {
+        "name": "PROTOCOL_1",
+        "constraints": [
+          "speed",
+          "accuracy"
+        ]
+      },
+      {
+        "name": "PROTOCOL_2",
+        "constraints": [
+          "stability"
+        ]
+      }
+    ]
+  },
+  "started_at": "2026-01-03T21:32:41.173753+00:00",
+  "outcomes": [
+    {
+      "protocol": {
+        "name": "PROTOCOL_1",
+        "constraints": [
+          "speed",
+          "accuracy"
+        ]
+      },
+      "test_result": "passed",
+      "metrics": {
+        "consistency": 0.9099999999999999,
+        "stability": 0.89
+      }
+    },
+    {
+      "protocol": {
+        "name": "PROTOCOL_2",
+        "constraints": [
+          "stability"
+        ]
+      },
+      "test_result": "passed",
+      "metrics": {
+        "consistency": 0.9299999999999999,
+        "stability": 0.905
+      }
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.173765+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:41.173895+00:00
+
+```json
+{
+  "chamber_id": "test_mode",
+  "results": {
+    "chamber_id": "test_mode",
+    "mode": "test",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:41.173643+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:41.173873+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:41.174685+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "mode": "stress"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.174774+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "low"
+  },
+  "started_at": "2026-01-03T21:32:41.174749+00:00",
+  "outcomes": [
+    {
+      "stress_level": "low",
+      "breaking_point": null,
+      "resilience_score": 0.95,
+      "recommendation": "within_limits"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.174755+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.174876+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "medium"
+  },
+  "started_at": "2026-01-03T21:32:41.174838+00:00",
+  "outcomes": [
+    {
+      "stress_level": "medium",
+      "breaking_point": null,
+      "resilience_score": 0.88,
+      "recommendation": "within_limits"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.174847+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.174977+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "high"
+  },
+  "started_at": "2026-01-03T21:32:41.174952+00:00",
+  "outcomes": [
+    {
+      "stress_level": "high",
+      "breaking_point": null,
+      "resilience_score": 0.75,
+      "recommendation": "within_limits"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.174957+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.175058+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "scenario": {
+    "stress_level": "extreme"
+  },
+  "started_at": "2026-01-03T21:32:41.175035+00:00",
+  "outcomes": [
+    {
+      "stress_level": "extreme",
+      "breaking_point": "at_extreme_stress",
+      "resilience_score": 0.6,
+      "recommendation": "increase_capacity"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.175040+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:41.175136+00:00
+
+```json
+{
+  "chamber_id": "stress_test",
+  "results": {
+    "chamber_id": "stress_test",
+    "mode": "stress",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:41.174650+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:41.175115+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:41.175872+00:00
+
+```json
+{
+  "chamber_id": "paradox_test",
+  "mode": "paradox"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.175944+00:00
+
+```json
+{
+  "chamber_id": "paradox_test",
+  "scenario": {
+    "paradoxes": [
+      "Maximize speed and accuracy",
+      "Simple but comprehensive"
+    ]
+  },
+  "started_at": "2026-01-03T21:32:41.175919+00:00",
+  "outcomes": [
+    {
+      "paradox": "Maximize speed and accuracy",
+      "resolution": "polarity_navigation",
+      "coherence": 0.82,
+      "strategy": "hermetic_polarity"
+    },
+    {
+      "paradox": "Simple but comprehensive",
+      "resolution": "polarity_navigation",
+      "coherence": 0.82,
+      "strategy": "hermetic_polarity"
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.175927+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:41.176020+00:00
+
+```json
+{
+  "chamber_id": "paradox_test",
+  "results": {
+    "chamber_id": "paradox_test",
+    "mode": "paradox",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:41.175845+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:41.176001+00:00"
+    }
+  }
+}
+```
+
+## CHAMBER_CREATED
+**Timestamp:** 2026-01-03T21:32:41.176923+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "mode": "recursive"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.176994+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "scenario": {
+    "recursion_depth": 3
+  },
+  "started_at": "2026-01-03T21:32:41.176970+00:00",
+  "outcomes": [
+    {
+      "recursion_depth": 3,
+      "max_depth_reached": 3,
+      "convergence": true,
+      "final_state": "stable",
+      "iterations_to_converge": 3
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.176976+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.177110+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "scenario": {
+    "recursion_depth": 5
+  },
+  "started_at": "2026-01-03T21:32:41.177073+00:00",
+  "outcomes": [
+    {
+      "recursion_depth": 5,
+      "max_depth_reached": 5,
+      "convergence": true,
+      "final_state": "stable",
+      "iterations_to_converge": 5
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.177084+00:00"
+}
+```
+
+## SIMULATION_COMPLETED
+**Timestamp:** 2026-01-03T21:32:41.177210+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "scenario": {
+    "recursion_depth": 8
+  },
+  "started_at": "2026-01-03T21:32:41.177175+00:00",
+  "outcomes": [
+    {
+      "recursion_depth": 8,
+      "max_depth_reached": 8,
+      "convergence": false,
+      "final_state": "oscillating",
+      "iterations_to_converge": null
+    }
+  ],
+  "completed_at": "2026-01-03T21:32:41.177184+00:00"
+}
+```
+
+## CHAMBER_CLOSED
+**Timestamp:** 2026-01-03T21:32:41.177310+00:00
+
+```json
+{
+  "chamber_id": "recursive_test",
+  "results": {
+    "chamber_id": "recursive_test",
+    "mode": "recursive",
+    "active": false,
+    "state": {
+      "created": "2026-01-03T21:32:41.176887+00:00",
+      "agents": [],
+      "directives": [],
+      "glyphs_emitted": [],
+      "council_votes": [],
+      "reality_drift": 0.0,
+      "closed_at": "2026-01-03T21:32:41.177278+00:00"
+    }
+  }
+}
+```
+
+## COUNCIL_ECHO_GLYPH
+**Timestamp:** 2026-01-03T21:32:41.179009+00:00
+
+```json
+{
+  "deliberation": {
+    "topic": "Test all biases",
+    "timestamp": "2026-01-03T21:32:41.178978+00:00",
+    "baseline": {
+      "conditions": {
+        "practicality": "high",
+        "complexity": "medium",
+        "risk": "low",
+        "opportunity": "high"
+      },
+      "votes": {
+        "Pragmatist": 0.7346451333984475,
+        "Theorist": 0.44280417882916456,
+        "Skeptic": 0.47627392287287956,
+        "Optimist": 1.030687522202437,
+        "Guardian": 1.1248249199896352,
+        "Experimentalist": 0.7040341105918915,
+        "Error Spotter": 0.3501549360675758
+      },
+      "consensus": {
+        "reached": true,
+        "avg_agreement": 0.695,
+        "disagreement_level": 0.233,
+        "participating_agents": 7
+      }
+    }
+  },
+  "timestamp": "2026-01-03T21:32:41.178984+00:00"
+}
+```
+
+## DIRECTIVE_FORECAST_GLYPH
+**Timestamp:** 2026-01-03T21:32:41.179186+00:00
+
+```json
+{
+  "forecast": {
+    "directive_name": "COMPREHENSIVE_TEST",
+    "forecast_time": "2026-01-03T21:32:41.179129+00:00",
+    "impacts": {
+      "memory": "high",
+      "matrix": "high",
+      "council": "high"
+    },
+    "confidence": 1.0,
+    "risks": [
+      {
+        "area": "memory",
+        "risk": "High impact on memory may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "matrix",
+        "risk": "High impact on matrix may cause instability",
+        "severity": "high"
+      },
+      {
+        "area": "council",
+        "risk": "High impact on council may cause instability",
+        "severity": "high"
+      }
+    ],
+    "opportunities": [
+      {
+        "area": "memory",
+        "opportunity": "Potential for memory enhancement",
+        "value": "high"
+      },
+      {
+        "area": "matrix",
+        "opportunity": "Potential for matrix enhancement",
+        "value": "high"
+      },
+      {
+        "area": "council",
+        "opportunity": "Potential for council enhancement",
+        "value": "high"
+      }
+    ],
+    "recommendations": [
+      "Monitor memory closely during implementation",
+      "Monitor matrix closely during implementation",
+      "Monitor council closely during implementation"
+    ]
+  },
+  "timestamp": "2026-01-03T21:32:41.179159+00:00"
+}
+```
