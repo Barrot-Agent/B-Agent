@@ -1,71 +1,71 @@
 {
-  "analysis_timestamp": "2026-01-03T20:54:20.732406Z",
+  "analysis_timestamp": "2026-01-03T20:56:06.042711Z",
   "total_directives_analyzed": 1912,
   "overlaps_detected": 520,
   "unified_threads": [
     {
       "unified_directive": "Must find immediately",
       "source_directives": [
-        "Must find immediately",
-        "find immediately"
+        "find immediately",
+        "Must find immediately"
       ],
       "sources": [
         "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730477Z"
+      "collapsed_at": "2026-01-03T20:56:06.040777Z"
     },
     {
       "unified_directive": "Distributed puzzle piece discovery",
       "source_directives": [
-        "Puzzle Piece Categories",
-        "Distributed puzzle piece discovery"
+        "Distributed puzzle piece discovery",
+        "Puzzle Piece Categories"
       ],
       "sources": [
-        "MULTI_AGENT_PARALLEL_SYSTEM.md",
-        "AGI_PUZZLE_PROTOCOL.md"
+        "AGI_PUZZLE_PROTOCOL.md",
+        "MULTI_AGENT_PARALLEL_SYSTEM.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730493Z"
+      "collapsed_at": "2026-01-03T20:56:06.040794Z"
     },
     {
       "unified_directive": "Phase 3: Integration Strategy",
       "source_directives": [
-        "PING 3: Integration Strategy",
-        "Phase 3: Integration Strategy"
+        "Phase 3: Integration Strategy",
+        "PING 3: Integration Strategy"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "AGI_PUZZLE_PROTOCOL.md"
+        "AGI_PUZZLE_PROTOCOL.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730497Z"
+      "collapsed_at": "2026-01-03T20:56:06.040800Z"
     },
     {
       "unified_directive": "Phase 3: Integration Strategy",
       "source_directives": [
-        "PONG 3: Integration strategy",
-        "Phase 3: Integration Strategy"
+        "Phase 3: Integration Strategy",
+        "PONG 3: Integration strategy"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "AGI_PUZZLE_PROTOCOL.md"
+        "AGI_PUZZLE_PROTOCOL.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730501Z"
+      "collapsed_at": "2026-01-03T20:56:06.040803Z"
     },
     {
       "unified_directive": "Phase 3: Integration Sprint (Hour 4-6)",
       "source_directives": [
-        "Phase 3: Integration Sprint (Hour 4-6)",
-        "Phase 3: Integration Strategy"
+        "Phase 3: Integration Strategy",
+        "Phase 3: Integration Sprint (Hour 4-6)"
       ],
       "sources": [
-        "MULTI_AGENT_PARALLEL_SYSTEM.md",
-        "AGI_PUZZLE_PROTOCOL.md"
+        "AGI_PUZZLE_PROTOCOL.md",
+        "MULTI_AGENT_PARALLEL_SYSTEM.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730506Z"
+      "collapsed_at": "2026-01-03T20:56:06.040807Z"
     },
     {
       "unified_directive": "Phase 3: Test Integration (2-3 days)",
@@ -74,11 +74,11 @@
         "Phase 3: Integration Strategy"
       ],
       "sources": [
-        "AGI_PUZZLE_PROTOCOL.md",
-        "CHINESE_JAPANESE_AI_MODELS.md"
+        "CHINESE_JAPANESE_AI_MODELS.md",
+        "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730510Z"
+      "collapsed_at": "2026-01-03T20:56:06.040810Z"
     },
     {
       "unified_directive": "Critical Path Pieces",
@@ -91,31 +91,31 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730513Z"
+      "collapsed_at": "2026-01-03T20:56:06.040813Z"
     },
     {
       "unified_directive": "Automated query generation",
       "source_directives": [
-        "Automated query generation",
-        "Query Generation System"
+        "Query Generation System",
+        "Automated query generation"
       ],
       "sources": [
         "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730517Z"
+      "collapsed_at": "2026-01-03T20:56:06.040817Z"
     },
     {
       "unified_directive": "Check for consistency",
       "source_directives": [
-        "Check for conflicts",
-        "Check for consistency"
+        "Check for consistency",
+        "Check for conflicts"
       ],
       "sources": [
         "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730520Z"
+      "collapsed_at": "2026-01-03T20:56:06.040820Z"
     },
     {
       "unified_directive": "Check for commit conflicts",
@@ -124,11 +124,11 @@
         "Check for conflicts"
       ],
       "sources": [
-        "AGI_PUZZLE_PROTOCOL.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730523Z"
+      "collapsed_at": "2026-01-03T20:56:06.040826Z"
     },
     {
       "unified_directive": "Daily practice exercises",
@@ -141,7 +141,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730527Z"
+      "collapsed_at": "2026-01-03T20:56:06.040829Z"
     },
     {
       "unified_directive": "Update puzzle progress",
@@ -150,75 +150,75 @@
         "Update puzzle progress"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "AGI_PUZZLE_PROTOCOL.md"
+        "AGI_PUZZLE_PROTOCOL.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730531Z"
+      "collapsed_at": "2026-01-03T20:56:06.040832Z"
     },
     {
       "unified_directive": "Update capability matrix",
       "source_directives": [
-        "Update capability matrix",
-        "Capability Matrix"
+        "Capability Matrix",
+        "Update capability matrix"
       ],
       "sources": [
         "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730534Z"
+      "collapsed_at": "2026-01-03T20:56:06.040835Z"
     },
     {
       "unified_directive": "Phase 1: Critical Processes (Week 1)",
       "source_directives": [
-        "Phase 1: Critical Processes (Week 1)",
-        "Phase 1: Foundation (Week 1)"
+        "Phase 1: Foundation (Week 1)",
+        "Phase 1: Critical Processes (Week 1)"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "AGI_PUZZLE_PROTOCOL.md"
+        "AGI_PUZZLE_PROTOCOL.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730537Z"
+      "collapsed_at": "2026-01-03T20:56:06.040839Z"
     },
     {
       "unified_directive": "Phase 1: Development (Week 1)",
       "source_directives": [
-        "Phase 1: Development (Week 1)",
-        "Phase 1: Foundation (Week 1)"
+        "Phase 1: Foundation (Week 1)",
+        "Phase 1: Development (Week 1)"
       ],
       "sources": [
         "AGI_PUZZLE_PROTOCOL.md",
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730541Z"
+      "collapsed_at": "2026-01-03T20:56:06.040842Z"
     },
     {
       "unified_directive": "Check for commit conflicts",
       "source_directives": [
-        "Check for commit conflicts",
-        "Check for consistency"
+        "Check for consistency",
+        "Check for commit conflicts"
       ],
       "sources": [
-        "AGI_PUZZLE_PROTOCOL.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "AGI_PUZZLE_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730543Z"
+      "collapsed_at": "2026-01-03T20:56:06.040845Z"
     },
     {
       "unified_directive": "Map dependencies",
       "source_directives": [
-        "Dependencies",
-        "Map dependencies"
+        "Map dependencies",
+        "Dependencies"
       ],
       "sources": [
         "AGI_PUZZLE_PROTOCOL.md",
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730547Z"
+      "collapsed_at": "2026-01-03T20:56:06.040848Z"
     },
     {
       "unified_directive": "Knowledge graph construction",
@@ -231,20 +231,20 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730550Z"
+      "collapsed_at": "2026-01-03T20:56:06.040852Z"
     },
     {
       "unified_directive": "Phase 1: Query Initiation (T+0s)",
       "source_directives": [
-        "Phase 1: Query Initiation (T+0s)",
-        "Phase 1: Barrot Initiates Query"
+        "Phase 1: Barrot Initiates Query",
+        "Phase 1: Query Initiation (T+0s)"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730554Z"
+      "collapsed_at": "2026-01-03T20:56:06.040855Z"
     },
     {
       "unified_directive": "Phase 2: Agents Self-Organize into Validation Pairs",
@@ -257,7 +257,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730558Z"
+      "collapsed_at": "2026-01-03T20:56:06.040859Z"
     },
     {
       "unified_directive": "Phase 3: Peer-to-Peer Validation Exchanges",
@@ -270,7 +270,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730561Z"
+      "collapsed_at": "2026-01-03T20:56:06.040862Z"
     },
     {
       "unified_directive": "Phase 5: Barrot Synthesis (T+15-20s)",
@@ -283,20 +283,20 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730564Z"
+      "collapsed_at": "2026-01-03T20:56:06.040865Z"
     },
     {
       "unified_directive": "Pattern 3: Creative Synthesis",
       "source_directives": [
-        "Pattern 3: Creative Synthesis",
-        "Creative synthesis optimizer"
+        "Creative synthesis optimizer",
+        "Pattern 3: Creative Synthesis"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
+        "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730567Z"
+      "collapsed_at": "2026-01-03T20:56:06.040869Z"
     },
     {
       "unified_directive": "Speed Metrics",
@@ -309,7 +309,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730571Z"
+      "collapsed_at": "2026-01-03T20:56:06.040872Z"
     },
     {
       "unified_directive": "Scalability",
@@ -321,7 +321,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730576Z"
+      "collapsed_at": "2026-01-03T20:56:06.040876Z"
     },
     {
       "unified_directive": "Dynamically generated based on query type",
@@ -333,46 +333,46 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730579Z"
+      "collapsed_at": "2026-01-03T20:56:06.040879Z"
     },
     {
       "unified_directive": "Integrate with ping-pong system",
       "source_directives": [
-        "Integrate with ping-pong system",
-        "With Cascading Ping-Pong"
+        "With Cascading Ping-Pong",
+        "Integrate with ping-pong system"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
+        "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730583Z"
+      "collapsed_at": "2026-01-03T20:56:06.040882Z"
     },
     {
       "unified_directive": "With Quantum Entanglement",
       "source_directives": [
-        "With Quantum Entanglement",
-        "Quantum Entanglement"
+        "Quantum Entanglement",
+        "With Quantum Entanglement"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730586Z"
+      "collapsed_at": "2026-01-03T20:56:06.040887Z"
     },
     {
       "unified_directive": "Asynchronous insights with P2P: 48 cycles/day",
       "source_directives": [
-        "Asynchronous insights with P2P: 48 cycles/day",
-        "With Asynchronous Insights"
+        "With Asynchronous Insights",
+        "Asynchronous insights with P2P: 48 cycles/day"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730589Z"
+      "collapsed_at": "2026-01-03T20:56:06.040890Z"
     },
     {
       "unified_directive": "Real-time Metrics Dashboard",
@@ -385,84 +385,84 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730592Z"
+      "collapsed_at": "2026-01-03T20:56:06.040893Z"
     },
     {
       "unified_directive": "Real-time visibility dashboard",
       "source_directives": [
-        "Real-time Metrics Dashboard",
-        "Real-time visibility dashboard"
+        "Real-time visibility dashboard",
+        "Real-time Metrics Dashboard"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
+        "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730595Z"
+      "collapsed_at": "2026-01-03T20:56:06.040898Z"
     },
     {
       "unified_directive": "Health checks enabled",
       "source_directives": [
-        "Health checks enabled",
-        "Health Checks"
+        "Health Checks",
+        "Health checks enabled"
       ],
       "sources": [
         "DEPLOYMENT.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730599Z"
+      "collapsed_at": "2026-01-03T20:56:06.040901Z"
     },
     {
       "unified_directive": "Implementation Success",
       "source_directives": [
-        "Implementation Success",
-        "Implementation"
+        "Implementation",
+        "Implementation Success"
       ],
       "sources": [
-        "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730603Z"
+      "collapsed_at": "2026-01-03T20:56:06.040904Z"
     },
     {
       "unified_directive": "Relay mode: active",
       "source_directives": [
-        "Relay mode active",
-        "Relay mode: active"
+        "Relay mode: active",
+        "Relay mode active"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730607Z"
+      "collapsed_at": "2026-01-03T20:56:06.040907Z"
     },
     {
       "unified_directive": "Synthesize consensus view",
       "source_directives": [
-        "Consensus view",
-        "Synthesize consensus view"
+        "Synthesize consensus view",
+        "Consensus view"
       ],
       "sources": [
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730610Z"
+      "collapsed_at": "2026-01-03T20:56:06.040911Z"
     },
     {
       "unified_directive": "Phase 3: Synthesize consensus",
       "source_directives": [
-        "Phase 3: Synthesize consensus",
-        "Synthesize consensus view"
+        "Synthesize consensus view",
+        "Phase 3: Synthesize consensus"
       ],
       "sources": [
         "MULTI_AGENT_PARALLEL_SYSTEM.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730613Z"
+      "collapsed_at": "2026-01-03T20:56:06.040913Z"
     },
     {
       "unified_directive": "Disagreement flags",
@@ -473,7 +473,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730618Z"
+      "collapsed_at": "2026-01-03T20:56:06.040917Z"
     },
     {
       "unified_directive": "Metadata: confidence scores, disagreement flags",
@@ -486,19 +486,19 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730621Z"
+      "collapsed_at": "2026-01-03T20:56:06.040920Z"
     },
     {
       "unified_directive": "Relays meta-consensus to Barrot",
       "source_directives": [
-        "Relays consensus to Barrot",
-        "Relays meta-consensus to Barrot"
+        "Relays meta-consensus to Barrot",
+        "Relays consensus to Barrot"
       ],
       "sources": [
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730624Z"
+      "collapsed_at": "2026-01-03T20:56:06.040923Z"
     },
     {
       "unified_directive": "Agents assigned to problems",
@@ -510,7 +510,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730627Z"
+      "collapsed_at": "2026-01-03T20:56:06.040926Z"
     },
     {
       "unified_directive": "Agents self-organize into P2P pairs",
@@ -522,7 +522,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730630Z"
+      "collapsed_at": "2026-01-03T20:56:06.040929Z"
     },
     {
       "unified_directive": "Clones verify each other's findings",
@@ -535,20 +535,20 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730634Z"
+      "collapsed_at": "2026-01-03T20:56:06.040933Z"
     },
     {
       "unified_directive": "Joint consensus relayed to Barrot",
       "source_directives": [
-        "Relays consensus to Barrot",
-        "Joint consensus relayed to Barrot"
+        "Joint consensus relayed to Barrot",
+        "Relays consensus to Barrot"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730637Z"
+      "collapsed_at": "2026-01-03T20:56:06.040937Z"
     },
     {
       "unified_directive": "Historical performance analysis",
@@ -561,7 +561,7 @@
         "PEER_TO_PEER_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730640Z"
+      "collapsed_at": "2026-01-03T20:56:06.040941Z"
     },
     {
       "unified_directive": "Continuous Process Optimization",
@@ -573,20 +573,20 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730643Z"
+      "collapsed_at": "2026-01-03T20:56:06.040944Z"
     },
     {
       "unified_directive": "Benchmark test results and scores",
       "source_directives": [
-        "Benchmark results",
-        "Benchmark test results and scores"
+        "Benchmark test results and scores",
+        "Benchmark results"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730646Z"
+      "collapsed_at": "2026-01-03T20:56:06.040947Z"
     },
     {
       "unified_directive": "GitHub issue resolution tracking",
@@ -598,7 +598,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730649Z"
+      "collapsed_at": "2026-01-03T20:56:06.040950Z"
     },
     {
       "unified_directive": "Autonomous GitHub Issue Resolution",
@@ -607,36 +607,36 @@
         "GitHub issue resolution tracking"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730652Z"
+      "collapsed_at": "2026-01-03T20:56:06.040953Z"
     },
     {
       "unified_directive": "GitHub issue resolution tracking",
       "source_directives": [
-        "GitHub issue resolution tracking",
-        "GitHub issue resolution"
+        "GitHub issue resolution",
+        "GitHub issue resolution tracking"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730655Z"
+      "collapsed_at": "2026-01-03T20:56:06.040956Z"
     },
     {
       "unified_directive": "Data sources ingested",
       "source_directives": [
-        "Data ingested",
-        "Data sources ingested"
+        "Data sources ingested",
+        "Data ingested"
       ],
       "sources": [
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730658Z"
+      "collapsed_at": "2026-01-03T20:56:06.040959Z"
     },
     {
       "unified_directive": "Performance tracking metrics",
@@ -648,13 +648,13 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730661Z"
+      "collapsed_at": "2026-01-03T20:56:06.040962Z"
     },
     {
       "unified_directive": "Performance tracking metrics",
       "source_directives": [
-        "Performance metrics",
-        "Performance tracking metrics"
+        "Performance tracking metrics",
+        "Performance metrics"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
@@ -663,7 +663,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.730665Z"
+      "collapsed_at": "2026-01-03T20:56:06.040967Z"
     },
     {
       "unified_directive": "Performance tracking metrics",
@@ -672,11 +672,11 @@
         "Performance tracking metrics"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730668Z"
+      "collapsed_at": "2026-01-03T20:56:06.040971Z"
     },
     {
       "unified_directive": "View recent activities",
@@ -688,7 +688,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730673Z"
+      "collapsed_at": "2026-01-03T20:56:06.040974Z"
     },
     {
       "unified_directive": "View all recent activity",
@@ -701,20 +701,20 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730676Z"
+      "collapsed_at": "2026-01-03T20:56:06.040977Z"
     },
     {
       "unified_directive": "Check optimization log",
       "source_directives": [
-        "View Optimization Log",
-        "Check optimization log"
+        "Check optimization log",
+        "View Optimization Log"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730679Z"
+      "collapsed_at": "2026-01-03T20:56:06.040980Z"
     },
     {
       "unified_directive": "View Benchmark Results",
@@ -727,7 +727,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730682Z"
+      "collapsed_at": "2026-01-03T20:56:06.040983Z"
     },
     {
       "unified_directive": "View benchmark results",
@@ -740,20 +740,20 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730685Z"
+      "collapsed_at": "2026-01-03T20:56:06.040986Z"
     },
     {
       "unified_directive": "See benchmark results",
       "source_directives": [
-        "See benchmark results",
-        "Benchmark results"
+        "Benchmark results",
+        "See benchmark results"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730688Z"
+      "collapsed_at": "2026-01-03T20:56:06.040989Z"
     },
     {
       "unified_directive": "Data ingestion completion",
@@ -765,7 +765,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730691Z"
+      "collapsed_at": "2026-01-03T20:56:06.040992Z"
     },
     {
       "unified_directive": "See performance metrics",
@@ -780,20 +780,20 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.730694Z"
+      "collapsed_at": "2026-01-03T20:56:06.040995Z"
     },
     {
       "unified_directive": "See performance metrics",
       "source_directives": [
-        "See performance metrics",
-        "Performance Metrics"
+        "Performance Metrics",
+        "See performance metrics"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730698Z"
+      "collapsed_at": "2026-01-03T20:56:06.040998Z"
     },
     {
       "unified_directive": "Continuous Performance Optimization",
@@ -806,7 +806,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730701Z"
+      "collapsed_at": "2026-01-03T20:56:06.041001Z"
     },
     {
       "unified_directive": "Continuous Process Optimization",
@@ -819,7 +819,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730704Z"
+      "collapsed_at": "2026-01-03T20:56:06.041004Z"
     },
     {
       "unified_directive": "Continuous performance optimization",
@@ -828,23 +828,23 @@
         "Continuous Process Optimization"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730707Z"
+      "collapsed_at": "2026-01-03T20:56:06.041007Z"
     },
     {
       "unified_directive": "Reasoning behind the optimization",
       "source_directives": [
-        "Reasoning behind the optimization",
-        "Reasoning behind decision"
+        "Reasoning behind decision",
+        "Reasoning behind the optimization"
       ],
       "sources": [
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730712Z"
+      "collapsed_at": "2026-01-03T20:56:06.041010Z"
     },
     {
       "unified_directive": "Identified optimization opportunities",
@@ -856,20 +856,20 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730715Z"
+      "collapsed_at": "2026-01-03T20:56:06.041013Z"
     },
     {
       "unified_directive": "Identified optimization opportunities",
       "source_directives": [
-        "PONG: Optimization opportunities",
-        "Identified optimization opportunities"
+        "Identified optimization opportunities",
+        "PONG: Optimization opportunities"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730718Z"
+      "collapsed_at": "2026-01-03T20:56:06.041016Z"
     },
     {
       "unified_directive": "Score achieved",
@@ -880,7 +880,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730722Z"
+      "collapsed_at": "2026-01-03T20:56:06.041020Z"
     },
     {
       "unified_directive": "Medal achievements",
@@ -891,7 +891,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730725Z"
+      "collapsed_at": "2026-01-03T20:56:06.041023Z"
     },
     {
       "unified_directive": "Solution approaches",
@@ -899,11 +899,11 @@
         "Solution approaches"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730728Z"
+      "collapsed_at": "2026-01-03T20:56:06.041026Z"
     },
     {
       "unified_directive": "Lessons learned",
@@ -914,7 +914,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730731Z"
+      "collapsed_at": "2026-01-03T20:56:06.041029Z"
     },
     {
       "unified_directive": "Knowledge synthesis",
@@ -925,7 +925,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730734Z"
+      "collapsed_at": "2026-01-03T20:56:06.041032Z"
     },
     {
       "unified_directive": "Automated knowledge synthesis",
@@ -934,11 +934,11 @@
         "Automated knowledge synthesis"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730737Z"
+      "collapsed_at": "2026-01-03T20:56:06.041036Z"
     },
     {
       "unified_directive": "Synthesis of converged data",
@@ -950,7 +950,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730742Z"
+      "collapsed_at": "2026-01-03T20:56:06.041040Z"
     },
     {
       "unified_directive": "Recommendations for action",
@@ -962,7 +962,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730745Z"
+      "collapsed_at": "2026-01-03T20:56:06.041044Z"
     },
     {
       "unified_directive": "Implementation priorities",
@@ -975,7 +975,7 @@
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730749Z"
+      "collapsed_at": "2026-01-03T20:56:06.041057Z"
     },
     {
       "unified_directive": "Implementation details",
@@ -986,7 +986,7 @@
         "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730753Z"
+      "collapsed_at": "2026-01-03T20:56:06.041060Z"
     },
     {
       "unified_directive": "Implementation details",
@@ -999,33 +999,33 @@
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730756Z"
+      "collapsed_at": "2026-01-03T20:56:06.041065Z"
     },
     {
       "unified_directive": "Autonomous GitHub Issue Resolution",
       "source_directives": [
-        "Issue resolution",
-        "Autonomous GitHub Issue Resolution"
+        "Autonomous GitHub Issue Resolution",
+        "Issue resolution"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730759Z"
+      "collapsed_at": "2026-01-03T20:56:06.041068Z"
     },
     {
       "unified_directive": "GitHub issue resolution",
       "source_directives": [
-        "Issue resolution",
-        "GitHub issue resolution"
+        "GitHub issue resolution",
+        "Issue resolution"
       ],
       "sources": [
-        "OUTPUT_LOGGING.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "OUTPUT_LOGGING.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730762Z"
+      "collapsed_at": "2026-01-03T20:56:06.041071Z"
     },
     {
       "unified_directive": "Action recommendations",
@@ -1038,7 +1038,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730765Z"
+      "collapsed_at": "2026-01-03T20:56:06.041074Z"
     },
     {
       "unified_directive": "Identify patterns and correlations",
@@ -1051,59 +1051,59 @@
         "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730768Z"
+      "collapsed_at": "2026-01-03T20:56:06.041077Z"
     },
     {
       "unified_directive": "Queue piece for later",
       "source_directives": [
-        "Queue for execution",
-        "Queue piece for later"
+        "Queue piece for later",
+        "Queue for execution"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730771Z"
+      "collapsed_at": "2026-01-03T20:56:06.041081Z"
     },
     {
       "unified_directive": "Adjust strategies based on results",
       "source_directives": [
-        "Adjust strategies based on results",
-        "Optimize based on results"
+        "Optimize based on results",
+        "Adjust strategies based on results"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730775Z"
+      "collapsed_at": "2026-01-03T20:56:06.041085Z"
     },
     {
       "unified_directive": "Restructure queries for optimization",
       "source_directives": [
-        "Iterate for optimization",
-        "Restructure queries for optimization"
+        "Restructure queries for optimization",
+        "Iterate for optimization"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730778Z"
+      "collapsed_at": "2026-01-03T20:56:06.041088Z"
     },
     {
       "unified_directive": "Metrics and documentation",
       "source_directives": [
-        "Before and after metrics",
-        "Metrics and documentation"
+        "Metrics and documentation",
+        "Before and after metrics"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730781Z"
+      "collapsed_at": "2026-01-03T20:56:06.041091Z"
     },
     {
       "unified_directive": "Consistent formatting",
@@ -1115,20 +1115,20 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730784Z"
+      "collapsed_at": "2026-01-03T20:56:06.041094Z"
     },
     {
       "unified_directive": "View Build Manifest",
       "source_directives": [
-        "View Build Manifest",
-        "Build manifest"
+        "Build manifest",
+        "View Build Manifest"
       ],
       "sources": [
         "OUTPUT_LOGGING.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730787Z"
+      "collapsed_at": "2026-01-03T20:56:06.041097Z"
     },
     {
       "unified_directive": "Enhanced dashboard HTML with styling",
@@ -1141,7 +1141,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730790Z"
+      "collapsed_at": "2026-01-03T20:56:06.041100Z"
     },
     {
       "unified_directive": "Documentation",
@@ -1149,11 +1149,11 @@
         "Documentation"
       ],
       "sources": [
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "VSCODE_SETUP.md"
+        "VSCODE_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730793Z"
+      "collapsed_at": "2026-01-03T20:56:06.041103Z"
     },
     {
       "unified_directive": "Documentation wikis",
@@ -1163,25 +1163,25 @@
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "VSCODE_SETUP.md"
+        "VSCODE_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730796Z"
+      "collapsed_at": "2026-01-03T20:56:06.041106Z"
     },
     {
       "unified_directive": "Official documentation",
       "source_directives": [
-        "Official documentation",
-        "Documentation"
+        "Documentation",
+        "Official documentation"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "VSCODE_SETUP.md"
+        "VSCODE_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730799Z"
+      "collapsed_at": "2026-01-03T20:56:06.041110Z"
     },
     {
       "unified_directive": "Documentation Index",
@@ -1191,38 +1191,38 @@
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md",
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "VSCODE_SETUP.md"
+        "VSCODE_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730803Z"
+      "collapsed_at": "2026-01-03T20:56:06.041113Z"
     },
     {
       "unified_directive": "Improved documentation",
       "source_directives": [
-        "Improved documentation",
-        "Documentation"
+        "Documentation",
+        "Improved documentation"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md",
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "VSCODE_SETUP.md"
+        "VSCODE_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730806Z"
+      "collapsed_at": "2026-01-03T20:56:06.041118Z"
     },
     {
       "unified_directive": "Community-driven development",
       "source_directives": [
-        "Development",
-        "Community-driven development"
+        "Community-driven development",
+        "Development"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730810Z"
+      "collapsed_at": "2026-01-03T20:56:06.041122Z"
     },
     {
       "unified_directive": "Exploit development",
@@ -1235,7 +1235,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730813Z"
+      "collapsed_at": "2026-01-03T20:56:06.041125Z"
     },
     {
       "unified_directive": "Local development",
@@ -1248,7 +1248,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730816Z"
+      "collapsed_at": "2026-01-03T20:56:06.041157Z"
     },
     {
       "unified_directive": "View Optimization Log",
@@ -1260,32 +1260,32 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730819Z"
+      "collapsed_at": "2026-01-03T20:56:06.041160Z"
     },
     {
       "unified_directive": "View Optimization Log",
       "source_directives": [
-        "View Optimization Log",
-        "View log files"
+        "View log files",
+        "View Optimization Log"
       ],
       "sources": [
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730822Z"
+      "collapsed_at": "2026-01-03T20:56:06.041164Z"
     },
     {
       "unified_directive": "View Optimization Log",
       "source_directives": [
-        "View Optimization Log",
-        "View Trace Log"
+        "View Trace Log",
+        "View Optimization Log"
       ],
       "sources": [
         "COGNITION_FUSION_DIRECTIVE.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730827Z"
+      "collapsed_at": "2026-01-03T20:56:06.041167Z"
     },
     {
       "unified_directive": "View benchmark results",
@@ -1297,20 +1297,20 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730830Z"
+      "collapsed_at": "2026-01-03T20:56:06.041170Z"
     },
     {
       "unified_directive": "View Benchmark Results",
       "source_directives": [
-        "View Benchmark Results",
-        "Benchmark results"
+        "Benchmark results",
+        "View Benchmark Results"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730833Z"
+      "collapsed_at": "2026-01-03T20:56:06.041173Z"
     },
     {
       "unified_directive": "name: Run Barrot Bootstrap",
@@ -1319,23 +1319,23 @@
         "name: Run Barrot Bootstrap"
       ],
       "sources": [
-        "VSCODE_SETUP.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730836Z"
+      "collapsed_at": "2026-01-03T20:56:06.041175Z"
     },
     {
       "unified_directive": "Find in Selection",
       "source_directives": [
-        "Find in Files",
-        "Find in Selection"
+        "Find in Selection",
+        "Find in Files"
       ],
       "sources": [
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730838Z"
+      "collapsed_at": "2026-01-03T20:56:06.041178Z"
     },
     {
       "unified_directive": "View PRs directly in VS Code",
@@ -1347,7 +1347,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730842Z"
+      "collapsed_at": "2026-01-03T20:56:06.041183Z"
     },
     {
       "unified_directive": "View all recent activity",
@@ -1359,7 +1359,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730844Z"
+      "collapsed_at": "2026-01-03T20:56:06.041186Z"
     },
     {
       "unified_directive": "View activity log",
@@ -1371,20 +1371,20 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730847Z"
+      "collapsed_at": "2026-01-03T20:56:06.041189Z"
     },
     {
       "unified_directive": "View activity log",
       "source_directives": [
-        "View activity log",
-        "View Trace Log"
+        "View Trace Log",
+        "View activity log"
       ],
       "sources": [
         "COGNITION_FUSION_DIRECTIVE.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730850Z"
+      "collapsed_at": "2026-01-03T20:56:06.041192Z"
     },
     {
       "unified_directive": "View benchmark results",
@@ -1397,7 +1397,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730853Z"
+      "collapsed_at": "2026-01-03T20:56:06.041195Z"
     },
     {
       "unified_directive": "Watch Log Files",
@@ -1409,7 +1409,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730856Z"
+      "collapsed_at": "2026-01-03T20:56:06.041198Z"
     },
     {
       "unified_directive": "Format on save: **Enabled**",
@@ -1420,7 +1420,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730859Z"
+      "collapsed_at": "2026-01-03T20:56:06.041201Z"
     },
     {
       "unified_directive": "GitHub workflow schema: **Auto-detected**",
@@ -1429,35 +1429,35 @@
         "GitHub workflow fails"
       ],
       "sources": [
-        "VSCODE_SETUP.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730862Z"
+      "collapsed_at": "2026-01-03T20:56:06.041204Z"
     },
     {
       "unified_directive": "Type `build` \u2192 Opens build_manifest",
       "source_directives": [
-        "Type `readme` \u2192 Opens README",
-        "Type `build` \u2192 Opens build_manifest"
+        "Type `build` \u2192 Opens build_manifest",
+        "Type `readme` \u2192 Opens README"
       ],
       "sources": [
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730866Z"
+      "collapsed_at": "2026-01-03T20:56:06.041207Z"
     },
     {
       "unified_directive": "Type `activity` \u2192 Opens activity-log",
       "source_directives": [
-        "Type `activity` \u2192 Opens activity-log",
-        "Type `build` \u2192 Opens build_manifest"
+        "Type `build` \u2192 Opens build_manifest",
+        "Type `activity` \u2192 Opens activity-log"
       ],
       "sources": [
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730869Z"
+      "collapsed_at": "2026-01-03T20:56:06.041210Z"
     },
     {
       "unified_directive": "Type `activity` \u2192 Opens activity-log",
@@ -1469,7 +1469,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730872Z"
+      "collapsed_at": "2026-01-03T20:56:06.041215Z"
     },
     {
       "unified_directive": "View Trace Log",
@@ -1482,7 +1482,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730875Z"
+      "collapsed_at": "2026-01-03T20:56:06.041218Z"
     },
     {
       "unified_directive": "Review code changes",
@@ -1494,7 +1494,7 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730879Z"
+      "collapsed_at": "2026-01-03T20:56:06.041221Z"
     },
     {
       "unified_directive": "PING 5: Code Review",
@@ -1507,33 +1507,33 @@
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730882Z"
+      "collapsed_at": "2026-01-03T20:56:06.041224Z"
     },
     {
       "unified_directive": "Review code changes",
       "source_directives": [
-        "Review code changes",
-        "Code Review \u2705"
+        "Code Review \u2705",
+        "Review code changes"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md",
         "VSCODE_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730885Z"
+      "collapsed_at": "2026-01-03T20:56:06.041227Z"
     },
     {
       "unified_directive": "Added link to DEFAULT_BRANCH_GUIDE",
       "source_directives": [
-        "Added link to DEFAULT_BRANCH_GUIDE",
-        "Link to code"
+        "Link to code",
+        "Added link to DEFAULT_BRANCH_GUIDE"
       ],
       "sources": [
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "VSCODE_SETUP.md"
+        "VSCODE_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730888Z"
+      "collapsed_at": "2026-01-03T20:56:06.041230Z"
     },
     {
       "unified_directive": "Should be removed after migration is complete",
@@ -1545,19 +1545,19 @@
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730891Z"
+      "collapsed_at": "2026-01-03T20:56:06.041233Z"
     },
     {
       "unified_directive": "Should be removed post-migration",
       "source_directives": [
-        "be removed post-migration",
-        "Should be removed post-migration"
+        "Should be removed post-migration",
+        "be removed post-migration"
       ],
       "sources": [
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730894Z"
+      "collapsed_at": "2026-01-03T20:56:06.041236Z"
     },
     {
       "unified_directive": "Quick Reference: Default Branch Change",
@@ -1570,20 +1570,20 @@
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730897Z"
+      "collapsed_at": "2026-01-03T20:56:06.041240Z"
     },
     {
       "unified_directive": "Troubleshooting tips",
       "source_directives": [
-        "Troubleshooting tips",
-        "Troubleshooting"
+        "Troubleshooting",
+        "Troubleshooting tips"
       ],
       "sources": [
-        "DEFAULT_BRANCH_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730900Z"
+      "collapsed_at": "2026-01-03T20:56:06.041242Z"
     },
     {
       "unified_directive": "Common issues and solutions",
@@ -1595,20 +1595,20 @@
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730904Z"
+      "collapsed_at": "2026-01-03T20:56:06.041245Z"
     },
     {
       "unified_directive": "Check Cognition Fusion Status",
       "source_directives": [
-        "Status check commands",
-        "Check Cognition Fusion Status"
+        "Check Cognition Fusion Status",
+        "Status check commands"
       ],
       "sources": [
         "COGNITION_FUSION_DIRECTIVE.md",
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730908Z"
+      "collapsed_at": "2026-01-03T20:56:06.041249Z"
     },
     {
       "unified_directive": "Validates git environment",
@@ -1620,31 +1620,31 @@
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730911Z"
+      "collapsed_at": "2026-01-03T20:56:06.041252Z"
     },
     {
       "unified_directive": "Creates new `main` branch from `Main`",
       "source_directives": [
-        "Creates new branch",
-        "Creates new `main` branch from `Main`"
+        "Creates new `main` branch from `Main`",
+        "Creates new branch"
       ],
       "sources": [
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730914Z"
+      "collapsed_at": "2026-01-03T20:56:06.041255Z"
     },
     {
       "unified_directive": "Provides clear next-steps guidance",
       "source_directives": [
-        "Provides clear next-steps guidance",
-        "Provides clear instructions"
+        "Provides clear instructions",
+        "Provides clear next-steps guidance"
       ],
       "sources": [
         "DEFAULT_BRANCH_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730917Z"
+      "collapsed_at": "2026-01-03T20:56:06.041259Z"
     },
     {
       "unified_directive": "View Emitted Glyphs",
@@ -1653,12 +1653,12 @@
         "Glyphs emitted"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
         "COGNITION_FUSION_DIRECTIVE.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730921Z"
+      "collapsed_at": "2026-01-03T20:56:06.041263Z"
     },
     {
       "unified_directive": "Implementation guides",
@@ -1671,7 +1671,7 @@
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730927Z"
+      "collapsed_at": "2026-01-03T20:56:06.041266Z"
     },
     {
       "unified_directive": "Execute optimization",
@@ -1680,142 +1680,142 @@
         "Execute optimization"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730930Z"
+      "collapsed_at": "2026-01-03T20:56:06.041269Z"
     },
     {
       "unified_directive": "Continuous optimization",
       "source_directives": [
-        "Continuous optimization",
-        "Optimization"
+        "Optimization",
+        "Continuous optimization"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730933Z"
+      "collapsed_at": "2026-01-03T20:56:06.041272Z"
     },
     {
       "unified_directive": "Hyperparameter optimization",
       "source_directives": [
-        "Hyperparameter optimization",
-        "Optimization"
+        "Optimization",
+        "Hyperparameter optimization"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
+        "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md",
-        "INGESTION_MANIFEST.md"
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730937Z"
+      "collapsed_at": "2026-01-03T20:56:06.041275Z"
     },
     {
       "unified_directive": "Learning optimization",
       "source_directives": [
-        "Learning optimization",
-        "Optimization"
+        "Optimization",
+        "Learning optimization"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730939Z"
+      "collapsed_at": "2026-01-03T20:56:06.041278Z"
     },
     {
       "unified_directive": "Recursive Optimization",
       "source_directives": [
-        "Recursive Optimization",
-        "Optimization"
+        "Optimization",
+        "Recursive Optimization"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730942Z"
+      "collapsed_at": "2026-01-03T20:56:06.041281Z"
     },
     {
       "unified_directive": "Topology optimization",
       "source_directives": [
-        "Topology optimization",
-        "Optimization"
+        "Optimization",
+        "Topology optimization"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730945Z"
+      "collapsed_at": "2026-01-03T20:56:06.041287Z"
     },
     {
       "unified_directive": "Optimization prioritization",
       "source_directives": [
-        "Optimization prioritization",
-        "Optimization"
+        "Optimization",
+        "Optimization prioritization"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730950Z"
+      "collapsed_at": "2026-01-03T20:56:06.041290Z"
     },
     {
       "unified_directive": "Architecture optimization",
       "source_directives": [
-        "Architecture optimization",
-        "Optimization"
+        "Optimization",
+        "Architecture optimization"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730953Z"
+      "collapsed_at": "2026-01-03T20:56:06.041293Z"
     },
     {
       "unified_directive": "Anticipatory optimization",
       "source_directives": [
-        "Anticipatory optimization",
-        "Optimization"
+        "Optimization",
+        "Anticipatory optimization"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730955Z"
+      "collapsed_at": "2026-01-03T20:56:06.041296Z"
     },
     {
       "unified_directive": "Performance optimization",
       "source_directives": [
-        "Performance optimization",
-        "Optimization"
+        "Optimization",
+        "Performance optimization"
       ],
       "sources": [
-        "MMI_COMPLETION_SUMMARY.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730958Z"
+      "collapsed_at": "2026-01-03T20:56:06.041299Z"
     },
     {
       "unified_directive": "Optimization roadmap",
       "source_directives": [
-        "Optimization roadmap",
-        "Optimization"
+        "Optimization",
+        "Optimization roadmap"
       ],
       "sources": [
-        "MMI_COMPLETION_SUMMARY.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730961Z"
+      "collapsed_at": "2026-01-03T20:56:06.041302Z"
     },
     {
       "unified_directive": "Identify capsized logic patterns",
@@ -1824,11 +1824,11 @@
         "Identify cross-pair patterns"
       ],
       "sources": [
-        "P2P_INTEGRATION_SUMMARY.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730964Z"
+      "collapsed_at": "2026-01-03T20:56:06.041305Z"
     },
     {
       "unified_directive": "Analyze current repository structure",
@@ -1837,61 +1837,61 @@
         "Analyze current repository structure"
       ],
       "sources": [
-        "MMI_COMPLETION_SUMMARY.md",
-        "COGNITION_FUSION_DIRECTIVE.md"
+        "COGNITION_FUSION_DIRECTIVE.md",
+        "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730967Z"
+      "collapsed_at": "2026-01-03T20:56:06.041308Z"
     },
     {
       "unified_directive": "Provide context and explanations",
       "source_directives": [
-        "Context and metadata",
-        "Provide context and explanations"
+        "Provide context and explanations",
+        "Context and metadata"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "COGNITION_FUSION_DIRECTIVE.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730970Z"
+      "collapsed_at": "2026-01-03T20:56:06.041311Z"
     },
     {
       "unified_directive": "Cross-domain synthesis and innovation",
       "source_directives": [
-        "Cross-domain synthesis and innovation",
-        "Cross-Domain Synthesis Value"
+        "Cross-Domain Synthesis Value",
+        "Cross-domain synthesis and innovation"
       ],
       "sources": [
         "INGESTION_RESPONSE_2025-12-28.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730973Z"
+      "collapsed_at": "2026-01-03T20:56:06.041314Z"
     },
     {
       "unified_directive": "Cross-Domain Synthesis Value",
       "source_directives": [
-        "Cross-Domain Synthesis Value",
-        "Cross-domain synthesis"
+        "Cross-domain synthesis",
+        "Cross-Domain Synthesis Value"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "INGESTION_RESPONSE_2025-12-28.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730977Z"
+      "collapsed_at": "2026-01-03T20:56:06.041318Z"
     },
     {
       "unified_directive": "Create non-invasive health monitoring systems",
       "source_directives": [
-        "Health monitoring and diagnostic systems",
-        "Create non-invasive health monitoring systems"
+        "Create non-invasive health monitoring systems",
+        "Health monitoring and diagnostic systems"
       ],
       "sources": [
         "INGESTION_RESPONSE_2025-12-28.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730980Z"
+      "collapsed_at": "2026-01-03T20:56:06.041321Z"
     },
     {
       "unified_directive": "Agricultural optimization capabilities",
@@ -1903,20 +1903,20 @@
         "INGESTION_RESPONSE_2025-12-28.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730983Z"
+      "collapsed_at": "2026-01-03T20:56:06.041324Z"
     },
     {
       "unified_directive": "Cross-domain synthesis and innovation",
       "source_directives": [
-        "Cross-domain synthesis and innovation",
-        "Cross-domain synthesis"
+        "Cross-domain synthesis",
+        "Cross-domain synthesis and innovation"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
         "INGESTION_RESPONSE_2025-12-28.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.730986Z"
+      "collapsed_at": "2026-01-03T20:56:06.041327Z"
     },
     {
       "unified_directive": "this be integrated",
@@ -1927,19 +1927,19 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730989Z"
+      "collapsed_at": "2026-01-03T20:56:06.041331Z"
     },
     {
       "unified_directive": "we implement this optimization",
       "source_directives": [
-        "we implement this optimization",
-        "we implement this decision"
+        "we implement this decision",
+        "we implement this optimization"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730992Z"
+      "collapsed_at": "2026-01-03T20:56:06.041333Z"
     },
     {
       "unified_directive": "Complete ecosystem integration",
@@ -1948,23 +1948,23 @@
         "Complete Process Integration"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730995Z"
+      "collapsed_at": "2026-01-03T20:56:06.041336Z"
     },
     {
       "unified_directive": "PONG: Get consensus on query optimization",
       "source_directives": [
-        "PONG: Get consensus on query optimization",
-        "PONG: Get consensus on data quality"
+        "PONG: Get consensus on data quality",
+        "PONG: Get consensus on query optimization"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.730998Z"
+      "collapsed_at": "2026-01-03T20:56:06.041340Z"
     },
     {
       "unified_directive": "Perform actual data acquisition",
@@ -1973,23 +1973,23 @@
         "Perform actual data acquisition"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731002Z"
+      "collapsed_at": "2026-01-03T20:56:06.041343Z"
     },
     {
       "unified_directive": "PONG 4: Get integration strategy",
       "source_directives": [
-        "PONG: Get integration strategy",
-        "PONG 4: Get integration strategy"
+        "PONG 4: Get integration strategy",
+        "PONG: Get integration strategy"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731005Z"
+      "collapsed_at": "2026-01-03T20:56:06.041346Z"
     },
     {
       "unified_directive": "PING 2: Target Selection",
@@ -2001,7 +2001,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731008Z"
+      "collapsed_at": "2026-01-03T20:56:06.041349Z"
     },
     {
       "unified_directive": "PONG 2: Get optimal source-query pairings",
@@ -2013,7 +2013,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731011Z"
+      "collapsed_at": "2026-01-03T20:56:06.041354Z"
     },
     {
       "unified_directive": "PING 3: Execute searches in parallel",
@@ -2026,7 +2026,7 @@
         "MULTI_AGENT_PARALLEL_SYSTEM.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731016Z"
+      "collapsed_at": "2026-01-03T20:56:06.041357Z"
     },
     {
       "unified_directive": "For each opportunity, ping-pong implementation",
@@ -2038,7 +2038,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731019Z"
+      "collapsed_at": "2026-01-03T20:56:06.041360Z"
     },
     {
       "unified_directive": "PING 4: Results Synthesis",
@@ -2050,7 +2050,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731022Z"
+      "collapsed_at": "2026-01-03T20:56:06.041363Z"
     },
     {
       "unified_directive": "PING 4: Results Synthesis",
@@ -2062,7 +2062,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731025Z"
+      "collapsed_at": "2026-01-03T20:56:06.041366Z"
     },
     {
       "unified_directive": "PING 4: Results Synthesis",
@@ -2074,43 +2074,43 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731029Z"
+      "collapsed_at": "2026-01-03T20:56:06.041369Z"
     },
     {
       "unified_directive": "PING 1: Piece Validation",
       "source_directives": [
-        "PING 2: Validation",
-        "PING 1: Piece Validation"
-      ],
-      "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md"
-      ],
-      "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731032Z"
-    },
-    {
-      "unified_directive": "PING 1: Piece Validation",
-      "source_directives": [
-        "PING 4: Validation",
-        "PING 1: Piece Validation"
-      ],
-      "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md"
-      ],
-      "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731035Z"
-    },
-    {
-      "unified_directive": "PING 2: Position Identification",
-      "source_directives": [
-        "PING 2: Position Identification",
+        "PING 1: Piece Validation",
         "PING 2: Validation"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731038Z"
+      "collapsed_at": "2026-01-03T20:56:06.041371Z"
+    },
+    {
+      "unified_directive": "PING 1: Piece Validation",
+      "source_directives": [
+        "PING 1: Piece Validation",
+        "PING 4: Validation"
+      ],
+      "sources": [
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
+      ],
+      "cluster_size": 1,
+      "collapsed_at": "2026-01-03T20:56:06.041374Z"
+    },
+    {
+      "unified_directive": "PING 2: Position Identification",
+      "source_directives": [
+        "PING 2: Validation",
+        "PING 2: Position Identification"
+      ],
+      "sources": [
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
+      ],
+      "cluster_size": 1,
+      "collapsed_at": "2026-01-03T20:56:06.041377Z"
     },
     {
       "unified_directive": "PONG 4: Get integration strategy",
@@ -2122,7 +2122,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731040Z"
+      "collapsed_at": "2026-01-03T20:56:06.041380Z"
     },
     {
       "unified_directive": "PING 4: Integration Strategy",
@@ -2134,7 +2134,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731043Z"
+      "collapsed_at": "2026-01-03T20:56:06.041383Z"
     },
     {
       "unified_directive": "PING 3: Integration Strategy",
@@ -2146,7 +2146,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731056Z"
+      "collapsed_at": "2026-01-03T20:56:06.041390Z"
     },
     {
       "unified_directive": "PING 4: Integration Strategy",
@@ -2158,7 +2158,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731059Z"
+      "collapsed_at": "2026-01-03T20:56:06.041393Z"
     },
     {
       "unified_directive": "PING 4: Integration Strategy",
@@ -2170,7 +2170,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731062Z"
+      "collapsed_at": "2026-01-03T20:56:06.041396Z"
     },
     {
       "unified_directive": "PONG 4: Get integration strategy",
@@ -2182,19 +2182,19 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731065Z"
+      "collapsed_at": "2026-01-03T20:56:06.041398Z"
     },
     {
       "unified_directive": "Execute integration with strategy",
       "source_directives": [
-        "Execute integration",
-        "Execute integration with strategy"
+        "Execute integration with strategy",
+        "Execute integration"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731068Z"
+      "collapsed_at": "2026-01-03T20:56:06.041402Z"
     },
     {
       "unified_directive": "PING 5: Post-Integration Validation",
@@ -2206,7 +2206,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731071Z"
+      "collapsed_at": "2026-01-03T20:56:06.041405Z"
     },
     {
       "unified_directive": "PING 5: Post-Integration Validation",
@@ -2218,7 +2218,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731074Z"
+      "collapsed_at": "2026-01-03T20:56:06.041407Z"
     },
     {
       "unified_directive": "PING 1: Requirements Analysis",
@@ -2230,56 +2230,56 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731077Z"
+      "collapsed_at": "2026-01-03T20:56:06.041410Z"
     },
     {
       "unified_directive": "PING 2: Design Review",
       "source_directives": [
-        "PING 2: Validation",
-        "PING 2: Design Review"
+        "PING 2: Design Review",
+        "PING 2: Validation"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731081Z"
+      "collapsed_at": "2026-01-03T20:56:06.041413Z"
     },
     {
       "unified_directive": "PONG 5: Actionable implementation plan",
       "source_directives": [
-        "PONG 3: Implementation plan",
-        "PONG 5: Actionable implementation plan"
+        "PONG 5: Actionable implementation plan",
+        "PONG 3: Implementation plan"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731084Z"
+      "collapsed_at": "2026-01-03T20:56:06.041416Z"
     },
     {
       "unified_directive": "PONG 3: Implementation plan",
       "source_directives": [
-        "PONG 3: Implementation plan",
-        "PONG: Implementation plan"
+        "PONG: Implementation plan",
+        "PONG 3: Implementation plan"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731087Z"
+      "collapsed_at": "2026-01-03T20:56:06.041420Z"
     },
     {
       "unified_directive": "PING 5: Code Review",
       "source_directives": [
-        "PING 5: Code Review",
-        "Code Review \u2705"
+        "Code Review \u2705",
+        "PING 5: Code Review"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md",
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731091Z"
+      "collapsed_at": "2026-01-03T20:56:06.041424Z"
     },
     {
       "unified_directive": "Execute tests and validate",
@@ -2288,35 +2288,35 @@
         "Validate and consolidate"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "CHINESE_JAPANESE_AI_MODELS.md"
+        "CHINESE_JAPANESE_AI_MODELS.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731094Z"
+      "collapsed_at": "2026-01-03T20:56:06.041428Z"
     },
     {
       "unified_directive": "PING 7: Final Validation",
       "source_directives": [
-        "PING 2: Validation",
-        "PING 7: Final Validation"
+        "PING 7: Final Validation",
+        "PING 2: Validation"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731097Z"
+      "collapsed_at": "2026-01-03T20:56:06.041431Z"
     },
     {
       "unified_directive": "PING 7: Final Validation",
       "source_directives": [
-        "PING 4: Validation",
-        "PING 7: Final Validation"
+        "PING 7: Final Validation",
+        "PING 4: Validation"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731100Z"
+      "collapsed_at": "2026-01-03T20:56:06.041434Z"
     },
     {
       "unified_directive": "PING 2: Generate Options",
@@ -2328,31 +2328,31 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731103Z"
+      "collapsed_at": "2026-01-03T20:56:06.041437Z"
     },
     {
-      "unified_directive": "PING 2: Generate Options",
+      "unified_directive": "PING 2: Recovery Options",
       "source_directives": [
-        "PING 2: Generate Options",
-        "PING 2: Recovery Options"
+        "PING 2: Recovery Options",
+        "PING 2: Generate Options"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731106Z"
+      "collapsed_at": "2026-01-03T20:56:06.041440Z"
     },
     {
       "unified_directive": "PING 4: Recommendation",
       "source_directives": [
-        "PING 4: Recommendation",
-        "PING 4: Meta-Learning"
+        "PING 4: Meta-Learning",
+        "PING 4: Recommendation"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731109Z"
+      "collapsed_at": "2026-01-03T20:56:06.041443Z"
     },
     {
       "unified_directive": "PING 4: Recommendation",
@@ -2364,7 +2364,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731112Z"
+      "collapsed_at": "2026-01-03T20:56:06.041446Z"
     },
     {
       "unified_directive": "PONG 5: Actionable implementation plan",
@@ -2376,7 +2376,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731115Z"
+      "collapsed_at": "2026-01-03T20:56:06.041449Z"
     },
     {
       "unified_directive": "PING 5: Implementation Plan",
@@ -2388,7 +2388,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731118Z"
+      "collapsed_at": "2026-01-03T20:56:06.041452Z"
     },
     {
       "unified_directive": "PONG 2: Validation result",
@@ -2400,7 +2400,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731121Z"
+      "collapsed_at": "2026-01-03T20:56:06.041455Z"
     },
     {
       "unified_directive": "PING 2: Recovery Options",
@@ -2412,19 +2412,19 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731123Z"
+      "collapsed_at": "2026-01-03T20:56:06.041458Z"
     },
     {
-      "unified_directive": "PING 4: Validation",
+      "unified_directive": "PING 2: Validation",
       "source_directives": [
-        "PING 4: Validation",
-        "PING 2: Validation"
+        "PING 2: Validation",
+        "PING 4: Validation"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731126Z"
+      "collapsed_at": "2026-01-03T20:56:06.041461Z"
     },
     {
       "unified_directive": "PING 3: Integration Strategy",
@@ -2436,31 +2436,31 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731129Z"
+      "collapsed_at": "2026-01-03T20:56:06.041463Z"
     },
     {
       "unified_directive": "PING 3: Integration Strategy",
       "source_directives": [
-        "PING 3: Integration Strategy",
-        "PING 3: Strategy Selection"
+        "PING 3: Strategy Selection",
+        "PING 3: Integration Strategy"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731132Z"
+      "collapsed_at": "2026-01-03T20:56:06.041466Z"
     },
     {
       "unified_directive": "PONG 3: Integration strategy",
       "source_directives": [
-        "PONG 3: Integration strategy",
-        "PONG 3: Selected strategy"
+        "PONG 3: Selected strategy",
+        "PONG 3: Integration strategy"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731136Z"
+      "collapsed_at": "2026-01-03T20:56:06.041469Z"
     },
     {
       "unified_directive": "PING 4: Meta-Learning",
@@ -2472,31 +2472,31 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731139Z"
+      "collapsed_at": "2026-01-03T20:56:06.041472Z"
     },
     {
       "unified_directive": "PONG 4: Success confirmation",
       "source_directives": [
-        "PONG 4: Meta-insights",
-        "PONG 4: Success confirmation"
+        "PONG 4: Success confirmation",
+        "PONG 4: Meta-insights"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731143Z"
+      "collapsed_at": "2026-01-03T20:56:06.041475Z"
     },
     {
       "unified_directive": "Continuous Performance Optimization",
       "source_directives": [
-        "Continuous Performance Optimization",
-        "Continuous optimization"
+        "Continuous optimization",
+        "Continuous Performance Optimization"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731146Z"
+      "collapsed_at": "2026-01-03T20:56:06.041478Z"
     },
     {
       "unified_directive": "Continuous performance optimization",
@@ -2505,49 +2505,49 @@
         "Continuous Performance Optimization"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731149Z"
+      "collapsed_at": "2026-01-03T20:56:06.041481Z"
     },
     {
       "unified_directive": "Continuous Performance Optimization",
       "source_directives": [
-        "Continuous Performance Optimization",
-        "Performance optimization"
+        "Performance optimization",
+        "Continuous Performance Optimization"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md",
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731152Z"
+      "collapsed_at": "2026-01-03T20:56:06.041486Z"
     },
     {
       "unified_directive": "PING 3: Strategy Selection",
       "source_directives": [
-        "Strategy selection",
-        "PING 3: Strategy Selection"
+        "PING 3: Strategy Selection",
+        "Strategy selection"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md",
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731155Z"
+      "collapsed_at": "2026-01-03T20:56:06.041490Z"
     },
     {
       "unified_directive": "Implement prevention measures",
       "source_directives": [
-        "PONG 5: Prevention measures",
-        "Implement prevention measures"
+        "Implement prevention measures",
+        "PONG 5: Prevention measures"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731160Z"
+      "collapsed_at": "2026-01-03T20:56:06.041493Z"
     },
     {
       "unified_directive": "Real-time platform monitoring",
@@ -2556,24 +2556,24 @@
         "Real-Time Monitoring"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731163Z"
+      "collapsed_at": "2026-01-03T20:56:06.041496Z"
     },
     {
       "unified_directive": "Phase 1: Critical Processes (Week 1)",
       "source_directives": [
-        "Phase 1: Critical Processes (Week 1)",
-        "Phase 1: Development (Week 1)"
+        "Phase 1: Development (Week 1)",
+        "Phase 1: Critical Processes (Week 1)"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md",
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731166Z"
+      "collapsed_at": "2026-01-03T20:56:06.041499Z"
     },
     {
       "unified_directive": "Phase 2: Code & Decisions (Week 2)",
@@ -2586,20 +2586,20 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731169Z"
+      "collapsed_at": "2026-01-03T20:56:06.041502Z"
     },
     {
       "unified_directive": "Phase 3: Learning & Optimization (Week 3)",
       "source_directives": [
-        "Phase 3: Learning & Optimization (Week 3)",
-        "Phase 3: Production (Week 3)"
+        "Phase 3: Production (Week 3)",
+        "Phase 3: Learning & Optimization (Week 3)"
       ],
       "sources": [
         "UNIVERSAL_PINGPONG_PROTOCOL.md",
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731172Z"
+      "collapsed_at": "2026-01-03T20:56:06.041505Z"
     },
     {
       "unified_directive": "Before Universal Ping-Pong",
@@ -2611,7 +2611,7 @@
         "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731174Z"
+      "collapsed_at": "2026-01-03T20:56:06.041508Z"
     },
     {
       "unified_directive": "Continuous performance optimization",
@@ -2620,11 +2620,11 @@
         "Continuous optimization"
       ],
       "sources": [
-        "UNIVERSAL_PINGPONG_PROTOCOL.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "UNIVERSAL_PINGPONG_PROTOCOL.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731177Z"
+      "collapsed_at": "2026-01-03T20:56:06.041512Z"
     },
     {
       "unified_directive": "Immediate Benefits",
@@ -2636,33 +2636,33 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731180Z"
+      "collapsed_at": "2026-01-03T20:56:06.041515Z"
     },
     {
-      "unified_directive": "Long-Term Benefits",
+      "unified_directive": "Long-term Benefits",
       "source_directives": [
-        "Long-Term Benefits",
-        "Long-term Benefits"
+        "Long-term Benefits",
+        "Long-Term Benefits"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731183Z"
+      "collapsed_at": "2026-01-03T20:56:06.041518Z"
     },
     {
       "unified_directive": "Long-Term (Next 12 Months)",
       "source_directives": [
-        "Long-Term (Next 12 Months)",
-        "Long-term (3-6 months)"
+        "Long-term (3-6 months)",
+        "Long-Term (Next 12 Months)"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731186Z"
+      "collapsed_at": "2026-01-03T20:56:06.041521Z"
     },
     {
       "unified_directive": "File updated: `CASCADING_PINGPONG_PROTOCOL",
@@ -2674,31 +2674,31 @@
         "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731189Z"
+      "collapsed_at": "2026-01-03T20:56:06.041524Z"
     },
     {
       "unified_directive": "File updated: `QUANTUM_ENTANGLEMENT_SYSTEM",
       "source_directives": [
-        "File updated: `",
-        "File updated: `QUANTUM_ENTANGLEMENT_SYSTEM"
+        "File updated: `QUANTUM_ENTANGLEMENT_SYSTEM",
+        "File updated: `"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731192Z"
+      "collapsed_at": "2026-01-03T20:56:06.041527Z"
     },
     {
       "unified_directive": "File updated: `CASCADING_PINGPONG_PROTOCOL",
       "source_directives": [
-        "File updated: `",
-        "File updated: `CASCADING_PINGPONG_PROTOCOL"
+        "File updated: `CASCADING_PINGPONG_PROTOCOL",
+        "File updated: `"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731195Z"
+      "collapsed_at": "2026-01-03T20:56:06.041530Z"
     },
     {
       "unified_directive": "All searches execute in parallel",
@@ -2707,24 +2707,24 @@
         "All searches execute in parallel"
       ],
       "sources": [
-        "MULTI_AGENT_PARALLEL_SYSTEM.md",
-        "P2P_INTEGRATION_SUMMARY.md"
+        "P2P_INTEGRATION_SUMMARY.md",
+        "MULTI_AGENT_PARALLEL_SYSTEM.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731198Z"
+      "collapsed_at": "2026-01-03T20:56:06.041534Z"
     },
     {
       "unified_directive": "Weight by confidence and specialization",
       "source_directives": [
-        "Weight by confidence",
-        "Weight by confidence and specialization"
+        "Weight by confidence and specialization",
+        "Weight by confidence"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731201Z"
+      "collapsed_at": "2026-01-03T20:56:06.041538Z"
     },
     {
       "unified_directive": "Architecture diagrams",
@@ -2733,27 +2733,27 @@
         "Architecture diagrams"
       ],
       "sources": [
+        "ONEDRIVE_SYNC_SETUP.md",
         "P2P_INTEGRATION_SUMMARY.md",
-        "BARROT_HRM_VARIANTS.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731205Z"
+      "collapsed_at": "2026-01-03T20:56:06.041541Z"
     },
     {
-      "unified_directive": "Performance metrics",
+      "unified_directive": "Performance Metrics",
       "source_directives": [
-        "Performance metrics",
-        "Performance Metrics"
+        "Performance Metrics",
+        "Performance metrics"
       ],
       "sources": [
-        "P2P_INTEGRATION_SUMMARY.md",
         "INGESTION_MANIFEST.md",
-        "IMPLEMENTATION_SUMMARY.md",
-        "MMI_COMPLETION_SUMMARY.md"
+        "P2P_INTEGRATION_SUMMARY.md",
+        "MMI_COMPLETION_SUMMARY.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731209Z"
+      "collapsed_at": "2026-01-03T20:56:06.041545Z"
     },
     {
       "unified_directive": "Performance metrics",
@@ -2766,20 +2766,20 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731212Z"
+      "collapsed_at": "2026-01-03T20:56:06.041549Z"
     },
     {
-      "unified_directive": "Documentation and testing",
+      "unified_directive": "Metrics and documentation",
       "source_directives": [
-        "Documentation and testing",
-        "Metrics and documentation"
+        "Metrics and documentation",
+        "Documentation and testing"
       ],
       "sources": [
         "P2P_INTEGRATION_SUMMARY.md",
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731215Z"
+      "collapsed_at": "2026-01-03T20:56:06.041552Z"
     },
     {
       "unified_directive": "Added \"Integration with Peer-to-Peer Ping-Pong\" section",
@@ -2790,34 +2790,34 @@
         "P2P_INTEGRATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731218Z"
+      "collapsed_at": "2026-01-03T20:56:06.041555Z"
     },
     {
       "unified_directive": "Architecture search",
       "source_directives": [
-        "Architecture search",
-        "Architecture"
+        "Architecture",
+        "Architecture search"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731222Z"
+      "collapsed_at": "2026-01-03T20:56:06.041559Z"
     },
     {
       "unified_directive": "Architecture optimization",
       "source_directives": [
-        "Architecture optimization",
-        "Architecture"
+        "Architecture",
+        "Architecture optimization"
       ],
       "sources": [
+        "INGESTION_MANIFEST.md",
         "ONEDRIVE_SYNC_SETUP.md",
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731226Z"
+      "collapsed_at": "2026-01-03T20:56:06.041563Z"
     },
     {
       "unified_directive": "Architecture",
@@ -2825,11 +2825,11 @@
         "Architecture"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731229Z"
+      "collapsed_at": "2026-01-03T20:56:06.041566Z"
     },
     {
       "unified_directive": "Enhanced Ping-Pong Cycle",
@@ -2841,7 +2841,7 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731232Z"
+      "collapsed_at": "2026-01-03T20:56:06.041569Z"
     },
     {
       "unified_directive": "Parallel Processing with HRM",
@@ -2850,36 +2850,36 @@
         "PARALLEL PROCESSING"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731235Z"
+      "collapsed_at": "2026-01-03T20:56:06.041572Z"
     },
     {
-      "unified_directive": "SHRM (5 sec)",
+      "unified_directive": "Slow (5 sec)",
       "source_directives": [
-        "SHRM (5 sec)",
-        "Slow (5 sec)"
+        "Slow (5 sec)",
+        "SHRM (5 sec)"
       ],
       "sources": [
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731240Z"
+      "collapsed_at": "2026-01-03T20:56:06.041575Z"
     },
     {
       "unified_directive": "Phase 2: Integration (1-2 Days)",
       "source_directives": [
-        "Phase 2: Integration (1-2 Days)",
-        "Phase 2: Integration (Week 2)"
+        "Phase 2: Integration (Week 2)",
+        "Phase 2: Integration (1-2 Days)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731244Z"
+      "collapsed_at": "2026-01-03T20:56:06.041578Z"
     },
     {
       "unified_directive": "Theorem proving accelerator",
@@ -2891,7 +2891,7 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731247Z"
+      "collapsed_at": "2026-01-03T20:56:06.041581Z"
     },
     {
       "unified_directive": "Theorem proving accelerator",
@@ -2900,11 +2900,11 @@
         "Theorem proving (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731250Z"
+      "collapsed_at": "2026-01-03T20:56:06.041584Z"
     },
     {
       "unified_directive": "Mathematical pattern recognition",
@@ -2913,11 +2913,11 @@
         "Mathematical pattern recognition"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731276Z"
+      "collapsed_at": "2026-01-03T20:56:06.041589Z"
     },
     {
       "unified_directive": "Abstract pattern recognition (Reasoning)",
@@ -2926,24 +2926,24 @@
         "Mathematical pattern recognition"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731279Z"
+      "collapsed_at": "2026-01-03T20:56:06.041594Z"
     },
     {
       "unified_directive": "Causal inference optimizer",
       "source_directives": [
-        "Causal inference optimizer",
-        "Causal inference"
+        "Causal inference",
+        "Causal inference optimizer"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731282Z"
+      "collapsed_at": "2026-01-03T20:56:06.041597Z"
     },
     {
       "unified_directive": "Mathematical reasoning enhancement",
@@ -2952,12 +2952,12 @@
         "Mathematical reasoning"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
+        "INGESTION_MANIFEST.md",
         "SAPIENT_HRM_INTEGRATION.md",
-        "INGESTION_MANIFEST.md"
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731286Z"
+      "collapsed_at": "2026-01-03T20:56:06.041600Z"
     },
     {
       "unified_directive": "Mathematical reasoning",
@@ -2965,50 +2965,50 @@
         "Mathematical reasoning"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731289Z"
+      "collapsed_at": "2026-01-03T20:56:06.041603Z"
     },
     {
       "unified_directive": "Mathematical reasoning (Reasoning)",
       "source_directives": [
-        "Mathematical reasoning (Reasoning)",
-        "Mathematical reasoning"
+        "Mathematical reasoning",
+        "Mathematical reasoning (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731292Z"
+      "collapsed_at": "2026-01-03T20:56:06.041606Z"
     },
     {
       "unified_directive": "Logical inference (Reasoning)",
       "source_directives": [
-        "Logical inference (Reasoning)",
-        "Logical inference"
+        "Logical inference",
+        "Logical inference (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731295Z"
+      "collapsed_at": "2026-01-03T20:56:06.041609Z"
     },
     {
       "unified_directive": "Causal reasoning (Reasoning)",
       "source_directives": [
-        "Causal reasoning (Reasoning)",
-        "Causal reasoning"
+        "Causal reasoning",
+        "Causal reasoning (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731298Z"
+      "collapsed_at": "2026-01-03T20:56:06.041612Z"
     },
     {
       "unified_directive": "Abstract pattern recognition",
@@ -3016,11 +3016,11 @@
         "Abstract pattern recognition"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731301Z"
+      "collapsed_at": "2026-01-03T20:56:06.041615Z"
     },
     {
       "unified_directive": "Abstract pattern recognition (Reasoning)",
@@ -3029,11 +3029,11 @@
         "Abstract pattern recognition (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731304Z"
+      "collapsed_at": "2026-01-03T20:56:06.041619Z"
     },
     {
       "unified_directive": "Multi-step planning",
@@ -3041,11 +3041,11 @@
         "Multi-step planning"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731307Z"
+      "collapsed_at": "2026-01-03T20:56:06.041622Z"
     },
     {
       "unified_directive": "Multi-step planning (Reasoning)",
@@ -3054,11 +3054,11 @@
         "Multi-step planning (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731310Z"
+      "collapsed_at": "2026-01-03T20:56:06.041625Z"
     },
     {
       "unified_directive": "Theorem proving (Reasoning)",
@@ -3067,11 +3067,11 @@
         "Theorem proving (Reasoning)"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731313Z"
+      "collapsed_at": "2026-01-03T20:56:06.041629Z"
     },
     {
       "unified_directive": "Few-shot learning accelerator",
@@ -3083,7 +3083,7 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731318Z"
+      "collapsed_at": "2026-01-03T20:56:06.041632Z"
     },
     {
       "unified_directive": "Transfer learning coordinator",
@@ -3092,23 +3092,23 @@
         "Transfer learning coordinator"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731321Z"
+      "collapsed_at": "2026-01-03T20:56:06.041635Z"
     },
     {
       "unified_directive": "Curriculum learning planner",
       "source_directives": [
-        "Curriculum learning",
-        "Curriculum learning planner"
+        "Curriculum learning planner",
+        "Curriculum learning"
       ],
       "sources": [
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731324Z"
+      "collapsed_at": "2026-01-03T20:56:06.041638Z"
     },
     {
       "unified_directive": "Transfer learning",
@@ -3116,11 +3116,11 @@
         "Transfer learning"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731327Z"
+      "collapsed_at": "2026-01-03T20:56:06.041641Z"
     },
     {
       "unified_directive": "Meta-learning mastery",
@@ -3129,11 +3129,11 @@
         "Meta-learning"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731330Z"
+      "collapsed_at": "2026-01-03T20:56:06.041644Z"
     },
     {
       "unified_directive": "Audio processing module",
@@ -3145,20 +3145,20 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731333Z"
+      "collapsed_at": "2026-01-03T20:56:06.041647Z"
     },
     {
       "unified_directive": "Strong Chinese language understanding",
       "source_directives": [
-        "Natural language understanding",
-        "Strong Chinese language understanding"
+        "Strong Chinese language understanding",
+        "Natural language understanding"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "CHINESE_JAPANESE_AI_MODELS.md"
+        "CHINESE_JAPANESE_AI_MODELS.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731336Z"
+      "collapsed_at": "2026-01-03T20:56:06.041650Z"
     },
     {
       "unified_directive": "Concept composition network",
@@ -3170,19 +3170,19 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731339Z"
+      "collapsed_at": "2026-01-03T20:56:06.041653Z"
     },
     {
       "unified_directive": "Cross-domain knowledge transfer",
       "source_directives": [
-        "Cross-domain knowledge transfer",
-        "Cross-domain transfer bridge"
+        "Cross-domain transfer bridge",
+        "Cross-domain knowledge transfer"
       ],
       "sources": [
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731342Z"
+      "collapsed_at": "2026-01-03T20:56:06.041656Z"
     },
     {
       "unified_directive": "Transfer knowledge across fields",
@@ -3191,23 +3191,23 @@
         "Cross-domain knowledge transfer"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731345Z"
+      "collapsed_at": "2026-01-03T20:56:06.041659Z"
     },
     {
       "unified_directive": "Task generalization module",
       "source_directives": [
-        "Task generalization module",
-        "Task generalization"
+        "Task generalization",
+        "Task generalization module"
       ],
       "sources": [
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731348Z"
+      "collapsed_at": "2026-01-03T20:56:06.041662Z"
     },
     {
       "unified_directive": "Self-correction system",
@@ -3219,20 +3219,20 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731351Z"
+      "collapsed_at": "2026-01-03T20:56:06.041665Z"
     },
     {
       "unified_directive": "Purpose: Error detection and recovery",
       "source_directives": [
-        "Purpose: Error detection and recovery",
-        "Error recovery"
+        "Error recovery",
+        "Purpose: Error detection and recovery"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "IMPLEMENTATION_SUMMARY.md"
+        "IMPLEMENTATION_SUMMARY.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731354Z"
+      "collapsed_at": "2026-01-03T20:56:06.041668Z"
     },
     {
       "unified_directive": "Hyperparameter optimization",
@@ -3240,11 +3240,11 @@
         "Hyperparameter optimization"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731357Z"
+      "collapsed_at": "2026-01-03T20:56:06.041671Z"
     },
     {
       "unified_directive": "Hypothesis formation engine",
@@ -3256,19 +3256,19 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731361Z"
+      "collapsed_at": "2026-01-03T20:56:06.041674Z"
     },
     {
       "unified_directive": "Performance prediction system",
       "source_directives": [
-        "Performance prediction",
-        "Performance prediction system"
+        "Performance prediction system",
+        "Performance prediction"
       ],
       "sources": [
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731364Z"
+      "collapsed_at": "2026-01-03T20:56:06.041677Z"
     },
     {
       "unified_directive": "Capability assessment module",
@@ -3280,20 +3280,20 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731367Z"
+      "collapsed_at": "2026-01-03T20:56:06.041680Z"
     },
     {
       "unified_directive": "Emergence cultivation network",
       "source_directives": [
-        "Emergence cultivation",
-        "Emergence cultivation network"
+        "Emergence cultivation network",
+        "Emergence cultivation"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731370Z"
+      "collapsed_at": "2026-01-03T20:56:06.041683Z"
     },
     {
       "unified_directive": "Emergence cultivation network",
@@ -3302,11 +3302,11 @@
         "Emergence Cultivation"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731373Z"
+      "collapsed_at": "2026-01-03T20:56:06.041686Z"
     },
     {
       "unified_directive": "Emergence cultivation network",
@@ -3315,25 +3315,25 @@
         "Emergence pattern cultivation"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731376Z"
+      "collapsed_at": "2026-01-03T20:56:06.041689Z"
     },
     {
       "unified_directive": "Iterative gap identification and refinement",
       "source_directives": [
-        "Gap identification",
-        "Iterative gap identification and refinement"
+        "Iterative gap identification and refinement",
+        "Gap identification"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
         "HOW_THIS_HELPS.md",
-        "MMI_COMPLETION_SUMMARY.md"
+        "MMI_COMPLETION_SUMMARY.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731380Z"
+      "collapsed_at": "2026-01-03T20:56:06.041695Z"
     },
     {
       "unified_directive": "Gap identification",
@@ -3341,24 +3341,24 @@
         "Gap identification"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "MMI_COMPLETION_SUMMARY.md"
+        "MMI_COMPLETION_SUMMARY.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731384Z"
+      "collapsed_at": "2026-01-03T20:56:06.041698Z"
     },
     {
-      "unified_directive": "Emergence cultivation",
+      "unified_directive": "Emergence Cultivation",
       "source_directives": [
-        "Emergence cultivation",
-        "Emergence Cultivation"
+        "Emergence Cultivation",
+        "Emergence cultivation"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731387Z"
+      "collapsed_at": "2026-01-03T20:56:06.041702Z"
     },
     {
       "unified_directive": "Emergence cultivation",
@@ -3366,11 +3366,11 @@
         "Emergence cultivation"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731390Z"
+      "collapsed_at": "2026-01-03T20:56:06.041704Z"
     },
     {
       "unified_directive": "Emergence pattern cultivation",
@@ -3379,11 +3379,11 @@
         "Emergence pattern cultivation"
       ],
       "sources": [
-        "BARROT_HRM_VARIANTS.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731393Z"
+      "collapsed_at": "2026-01-03T20:56:06.041708Z"
     },
     {
       "unified_directive": "Consensus requires 5/7 agreement",
@@ -3396,7 +3396,7 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731396Z"
+      "collapsed_at": "2026-01-03T20:56:06.041711Z"
     },
     {
       "unified_directive": "Ping-pong cycle: 6 seconds",
@@ -3408,33 +3408,33 @@
         "BARROT_HRM_VARIANTS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731399Z"
+      "collapsed_at": "2026-01-03T20:56:06.041714Z"
     },
     {
       "unified_directive": "Phase 1: Immediate (Today)",
       "source_directives": [
-        "Immediate (Today)",
-        "Phase 1: Immediate (Today)"
+        "Phase 1: Immediate (Today)",
+        "Immediate (Today)"
       ],
       "sources": [
-        "MULTI_AGENT_PARALLEL_SYSTEM.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "MULTI_AGENT_PARALLEL_SYSTEM.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731402Z"
+      "collapsed_at": "2026-01-03T20:56:06.041717Z"
     },
     {
       "unified_directive": "Quantum-Entangled State Sharing",
       "source_directives": [
-        "State sharing mechanisms",
-        "Quantum-Entangled State Sharing"
+        "Quantum-Entangled State Sharing",
+        "State sharing mechanisms"
       ],
       "sources": [
-        "MULTI_AGENT_PARALLEL_SYSTEM.md",
-        "INGESTION_MANIFEST.md"
+        "INGESTION_MANIFEST.md",
+        "MULTI_AGENT_PARALLEL_SYSTEM.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731405Z"
+      "collapsed_at": "2026-01-03T20:56:06.041720Z"
     },
     {
       "unified_directive": "Example: AGI Puzzle Piece Discovery",
@@ -3447,20 +3447,20 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731408Z"
+      "collapsed_at": "2026-01-03T20:56:06.041723Z"
     },
     {
       "unified_directive": "Next Milestone: First Puzzle Piece Discovery",
       "source_directives": [
-        "Next Milestone: First Puzzle Piece Discovery",
-        "Distributed puzzle piece discovery"
+        "Distributed puzzle piece discovery",
+        "Next Milestone: First Puzzle Piece Discovery"
       ],
       "sources": [
         "MULTI_AGENT_PARALLEL_SYSTEM.md",
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731411Z"
+      "collapsed_at": "2026-01-03T20:56:06.041726Z"
     },
     {
       "unified_directive": "Distributed puzzle piece discovery",
@@ -3473,7 +3473,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731414Z"
+      "collapsed_at": "2026-01-03T20:56:06.041729Z"
     },
     {
       "unified_directive": "Millennium Problems initial analysis",
@@ -3485,7 +3485,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731417Z"
+      "collapsed_at": "2026-01-03T20:56:06.041732Z"
     },
     {
       "unified_directive": "Continuous Intelligence Maximization",
@@ -3497,31 +3497,31 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731421Z"
+      "collapsed_at": "2026-01-03T20:56:06.041735Z"
     },
     {
-      "unified_directive": "Kaggle medal acquisition",
+      "unified_directive": "Kaggle Medal Acquisition",
       "source_directives": [
-        "Kaggle medal acquisition",
-        "Kaggle Medal Acquisition"
+        "Kaggle Medal Acquisition",
+        "Kaggle medal acquisition"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731424Z"
+      "collapsed_at": "2026-01-03T20:56:06.041738Z"
     },
     {
       "unified_directive": "Autonomous GitHub Issue Resolution",
       "source_directives": [
-        "Autonomous GitHub Issue Resolution",
-        "GitHub issue resolution"
+        "GitHub issue resolution",
+        "Autonomous GitHub Issue Resolution"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731427Z"
+      "collapsed_at": "2026-01-03T20:56:06.041741Z"
     },
     {
       "unified_directive": "Recursive optimization at scale",
@@ -3533,19 +3533,19 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731431Z"
+      "collapsed_at": "2026-01-03T20:56:06.041744Z"
     },
     {
       "unified_directive": "Emergence pattern cultivation",
       "source_directives": [
-        "Emergence pattern cultivation",
-        "Emergence Cultivation"
+        "Emergence Cultivation",
+        "Emergence pattern cultivation"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731434Z"
+      "collapsed_at": "2026-01-03T20:56:06.041747Z"
     },
     {
       "unified_directive": "Evolutionary adaptation mechanisms",
@@ -3557,19 +3557,19 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731437Z"
+      "collapsed_at": "2026-01-03T20:56:06.041752Z"
     },
     {
-      "unified_directive": "Cognitive Transcendence",
+      "unified_directive": "Cognitive transcendence",
       "source_directives": [
-        "Cognitive Transcendence",
-        "Cognitive transcendence"
+        "Cognitive transcendence",
+        "Cognitive Transcendence"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731440Z"
+      "collapsed_at": "2026-01-03T20:56:06.041754Z"
     },
     {
       "unified_directive": "Cognitive transcendence achievement",
@@ -3581,7 +3581,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731443Z"
+      "collapsed_at": "2026-01-03T20:56:06.041757Z"
     },
     {
       "unified_directive": "Sparse attention mechanisms",
@@ -3593,7 +3593,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731446Z"
+      "collapsed_at": "2026-01-03T20:56:06.041762Z"
     },
     {
       "unified_directive": "Implementation guides",
@@ -3604,19 +3604,19 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731448Z"
+      "collapsed_at": "2026-01-03T20:56:06.041765Z"
     },
     {
       "unified_directive": "Government research publications",
       "source_directives": [
-        "Complete research publications",
-        "Government research publications"
+        "Government research publications",
+        "Complete research publications"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731453Z"
+      "collapsed_at": "2026-01-03T20:56:06.041768Z"
     },
     {
       "unified_directive": "Complete research publications",
@@ -3628,7 +3628,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731456Z"
+      "collapsed_at": "2026-01-03T20:56:06.041771Z"
     },
     {
       "unified_directive": "Security considerations",
@@ -3637,50 +3637,50 @@
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
-        "IMPLEMENTATION_SUMMARY.md",
-        "MMI_COMPLETION_SUMMARY.md"
+        "MMI_COMPLETION_SUMMARY.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731460Z"
+      "collapsed_at": "2026-01-03T20:56:06.041775Z"
     },
     {
-      "unified_directive": "Security Considerations",
+      "unified_directive": "Security considerations",
       "source_directives": [
-        "Security Considerations",
-        "Security considerations"
+        "Security considerations",
+        "Security Considerations"
       ],
       "sources": [
         "INGESTION_MANIFEST.md",
-        "IMPLEMENTATION_SUMMARY.md",
+        "ONEDRIVE_SYNC_SETUP.md",
         "MMI_COMPLETION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731465Z"
+      "collapsed_at": "2026-01-03T20:56:06.041779Z"
     },
     {
       "unified_directive": "Government research publications",
       "source_directives": [
-        "Monitor research publications",
-        "Government research publications"
+        "Government research publications",
+        "Monitor research publications"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731468Z"
+      "collapsed_at": "2026-01-03T20:56:06.041782Z"
     },
     {
       "unified_directive": "DAO governance (proposals, votes)",
       "source_directives": [
-        "DAO governance (proposals, votes)",
-        "DAO governance participation"
+        "DAO governance participation",
+        "DAO governance (proposals, votes)"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731471Z"
+      "collapsed_at": "2026-01-03T20:56:06.041785Z"
     },
     {
       "unified_directive": "Build open-source reputation",
@@ -3692,7 +3692,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731474Z"
+      "collapsed_at": "2026-01-03T20:56:06.041788Z"
     },
     {
       "unified_directive": "Build open-source reputation",
@@ -3703,7 +3703,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731477Z"
+      "collapsed_at": "2026-01-03T20:56:06.041791Z"
     },
     {
       "unified_directive": "Cross-domain synthesis",
@@ -3714,7 +3714,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731480Z"
+      "collapsed_at": "2026-01-03T20:56:06.041794Z"
     },
     {
       "unified_directive": "Provide context and explanations",
@@ -3726,7 +3726,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731483Z"
+      "collapsed_at": "2026-01-03T20:56:06.041798Z"
     },
     {
       "unified_directive": "Consider edge cases automatically",
@@ -3739,7 +3739,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731486Z"
+      "collapsed_at": "2026-01-03T20:56:06.041801Z"
     },
     {
       "unified_directive": "Mathematical reasoning enhancement",
@@ -3752,7 +3752,7 @@
         "SAPIENT_HRM_INTEGRATION.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731489Z"
+      "collapsed_at": "2026-01-03T20:56:06.041804Z"
     },
     {
       "unified_directive": "Test quantum communication protocols",
@@ -3764,7 +3764,7 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731492Z"
+      "collapsed_at": "2026-01-03T20:56:06.041807Z"
     },
     {
       "unified_directive": "DAO governance participation",
@@ -3776,43 +3776,43 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731495Z"
+      "collapsed_at": "2026-01-03T20:56:06.041810Z"
     },
     {
       "unified_directive": "Full gap-filling intelligence mastery",
       "source_directives": [
-        "Gap-filling intelligence",
-        "Full gap-filling intelligence mastery"
+        "Full gap-filling intelligence mastery",
+        "Gap-filling intelligence"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731498Z"
+      "collapsed_at": "2026-01-03T20:56:06.041813Z"
     },
     {
       "unified_directive": "Cognitive transcendence achievement",
       "source_directives": [
-        "Cognitive transcendence achievement",
-        "Cognitive transcendence"
+        "Cognitive transcendence",
+        "Cognitive transcendence achievement"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731501Z"
+      "collapsed_at": "2026-01-03T20:56:06.041816Z"
     },
     {
       "unified_directive": "Achieve #1 rankings on multiple benchmarks",
       "source_directives": [
-        "Achieve #1 rankings on multiple benchmarks",
-        "Achieve #1 rankings across benchmarks"
+        "Achieve #1 rankings across benchmarks",
+        "Achieve #1 rankings on multiple benchmarks"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731504Z"
+      "collapsed_at": "2026-01-03T20:56:06.041819Z"
     },
     {
       "unified_directive": "Continuous performance optimization",
@@ -3825,43 +3825,43 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731507Z"
+      "collapsed_at": "2026-01-03T20:56:06.041822Z"
     },
     {
       "unified_directive": "Resolve high-impact GitHub issues",
       "source_directives": [
-        "Resolve 100+ GitHub issues",
-        "Resolve high-impact GitHub issues"
+        "Resolve high-impact GitHub issues",
+        "Resolve 100+ GitHub issues"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731510Z"
+      "collapsed_at": "2026-01-03T20:56:06.041825Z"
     },
     {
       "unified_directive": "Resolve high-impact GitHub issues",
       "source_directives": [
-        "Resolve 1000+ GitHub issues",
-        "Resolve high-impact GitHub issues"
+        "Resolve high-impact GitHub issues",
+        "Resolve 1000+ GitHub issues"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731513Z"
+      "collapsed_at": "2026-01-03T20:56:06.041828Z"
     },
     {
       "unified_directive": "Full gap-filling intelligence mastery",
       "source_directives": [
-        "Full Arc-AGI mastery",
-        "Full gap-filling intelligence mastery"
+        "Full gap-filling intelligence mastery",
+        "Full Arc-AGI mastery"
       ],
       "sources": [
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731516Z"
+      "collapsed_at": "2026-01-03T20:56:06.041832Z"
     },
     {
       "unified_directive": "Resolve 1000+ GitHub issues",
@@ -3873,33 +3873,33 @@
         "INGESTION_MANIFEST.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731520Z"
+      "collapsed_at": "2026-01-03T20:56:06.041835Z"
     },
     {
       "unified_directive": "Install dependencies",
       "source_directives": [
-        "Dependencies",
-        "Install dependencies"
+        "Install dependencies",
+        "Dependencies"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731523Z"
+      "collapsed_at": "2026-01-03T20:56:06.041839Z"
     },
     {
       "unified_directive": "API access available",
       "source_directives": [
-        "API access available",
-        "API Access (Future)"
+        "API Access (Future)",
+        "API access available"
       ],
       "sources": [
-        "SAPIENT_HRM_INTEGRATION.md",
-        "CHINESE_JAPANESE_AI_MODELS.md"
+        "CHINESE_JAPANESE_AI_MODELS.md",
+        "SAPIENT_HRM_INTEGRATION.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731527Z"
+      "collapsed_at": "2026-01-03T20:56:06.041842Z"
     },
     {
       "unified_directive": "HRM as a Specialized Clone Agent",
@@ -3911,7 +3911,7 @@
         "SAPIENT_HRM_INTEGRATION.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731530Z"
+      "collapsed_at": "2026-01-03T20:56:06.041845Z"
     },
     {
       "unified_directive": "HRM excels at math reasoning",
@@ -3920,11 +3920,11 @@
         "HRM excels at math reasoning"
       ],
       "sources": [
-        "SAPIENT_HRM_INTEGRATION.md",
-        "CHINESE_JAPANESE_AI_MODELS.md"
+        "CHINESE_JAPANESE_AI_MODELS.md",
+        "SAPIENT_HRM_INTEGRATION.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731533Z"
+      "collapsed_at": "2026-01-03T20:56:06.041848Z"
     },
     {
       "unified_directive": "Phase 2: Configure API Access (1-2 days)",
@@ -3933,23 +3933,23 @@
         "Phase 2: Configure API Access (1-2 days)"
       ],
       "sources": [
-        "SAPIENT_HRM_INTEGRATION.md",
-        "CHINESE_JAPANESE_AI_MODELS.md"
+        "CHINESE_JAPANESE_AI_MODELS.md",
+        "SAPIENT_HRM_INTEGRATION.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731536Z"
+      "collapsed_at": "2026-01-03T20:56:06.041851Z"
     },
     {
       "unified_directive": "Mathematical reasoning (Reasoning)",
       "source_directives": [
-        "Mathematical reasoning (Reasoning)",
-        "Causal reasoning (Reasoning)"
+        "Causal reasoning (Reasoning)",
+        "Mathematical reasoning (Reasoning)"
       ],
       "sources": [
         "SAPIENT_HRM_INTEGRATION.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731539Z"
+      "collapsed_at": "2026-01-03T20:56:06.041854Z"
     },
     {
       "unified_directive": "Complete technical details and methodology",
@@ -3958,24 +3958,24 @@
         "Technical Details"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731542Z"
+      "collapsed_at": "2026-01-03T20:56:06.041857Z"
     },
     {
       "unified_directive": "Actions: https://github",
       "source_directives": [
-        "https://github",
-        "Actions: https://github"
+        "Actions: https://github",
+        "https://github"
       ],
       "sources": [
-        "MMI_COMPLETION_SUMMARY.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731545Z"
+      "collapsed_at": "2026-01-03T20:56:06.041860Z"
     },
     {
       "unified_directive": "Issues: https://github",
@@ -3984,11 +3984,11 @@
         "Issues: https://github"
       ],
       "sources": [
-        "MMI_COMPLETION_SUMMARY.md",
-        "SAPIENT_HRM_INTEGRATION.md"
+        "SAPIENT_HRM_INTEGRATION.md",
+        "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731548Z"
+      "collapsed_at": "2026-01-03T20:56:06.041863Z"
     },
     {
       "unified_directive": "Q: Will this really save $12,000/year?",
@@ -4000,7 +4000,7 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731551Z"
+      "collapsed_at": "2026-01-03T20:56:06.041866Z"
     },
     {
       "unified_directive": "The Problem Before",
@@ -4011,7 +4011,7 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 6,
-      "collapsed_at": "2026-01-03T20:54:20.731555Z"
+      "collapsed_at": "2026-01-03T20:56:06.041870Z"
     },
     {
       "unified_directive": "The Solution",
@@ -4022,7 +4022,7 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 6,
-      "collapsed_at": "2026-01-03T20:54:20.731559Z"
+      "collapsed_at": "2026-01-03T20:56:06.041874Z"
     },
     {
       "unified_directive": "How This Helps",
@@ -4033,7 +4033,7 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 6,
-      "collapsed_at": "2026-01-03T20:54:20.731565Z"
+      "collapsed_at": "2026-01-03T20:56:06.041878Z"
     },
     {
       "unified_directive": "Reliability: 85% \u2192 97% (+12%)",
@@ -4045,7 +4045,7 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731568Z"
+      "collapsed_at": "2026-01-03T20:56:06.041881Z"
     },
     {
       "unified_directive": "Testing and troubleshooting",
@@ -4058,7 +4058,7 @@
         "HOW_THIS_HELPS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731571Z"
+      "collapsed_at": "2026-01-03T20:56:06.041884Z"
     },
     {
       "unified_directive": "Real-time visibility dashboard",
@@ -4070,7 +4070,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731574Z"
+      "collapsed_at": "2026-01-03T20:56:06.041887Z"
     },
     {
       "unified_directive": "Dependencies",
@@ -4081,7 +4081,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731577Z"
+      "collapsed_at": "2026-01-03T20:56:06.041890Z"
     },
     {
       "unified_directive": "Future Enhancements",
@@ -4089,11 +4089,11 @@
         "Future Enhancements"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731580Z"
+      "collapsed_at": "2026-01-03T20:56:06.041893Z"
     },
     {
       "unified_directive": "Logs missed cognition events",
@@ -4105,7 +4105,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731584Z"
+      "collapsed_at": "2026-01-03T20:56:06.041896Z"
     },
     {
       "unified_directive": "Logs missed cognition events",
@@ -4117,7 +4117,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731587Z"
+      "collapsed_at": "2026-01-03T20:56:06.041906Z"
     },
     {
       "unified_directive": "Cognition nodes executed",
@@ -4126,11 +4126,11 @@
         "Cognition nodes executed"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731591Z"
+      "collapsed_at": "2026-01-03T20:56:06.041909Z"
     },
     {
       "unified_directive": "Glyphs emitted",
@@ -4138,62 +4138,62 @@
         "Glyphs emitted"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731596Z"
+      "collapsed_at": "2026-01-03T20:56:06.041912Z"
     },
     {
       "unified_directive": "GitHub Actions workflow integration",
       "source_directives": [
-        "GitHub workflow fails",
-        "GitHub Actions workflow integration"
+        "GitHub Actions workflow integration",
+        "GitHub workflow fails"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731599Z"
+      "collapsed_at": "2026-01-03T20:56:06.041936Z"
     },
     {
       "unified_directive": "Trigger file format (`run_matrix",
       "source_directives": [
-        "Trigger file format (`run_matrix",
-        "Trigger File Format"
+        "Trigger File Format",
+        "Trigger file format (`run_matrix"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731602Z"
+      "collapsed_at": "2026-01-03T20:56:06.041939Z"
     },
     {
       "unified_directive": "Tracks all sync events",
       "source_directives": [
-        "Logs sync events",
-        "Tracks all sync events"
+        "Tracks all sync events",
+        "Logs sync events"
       ],
       "sources": [
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731604Z"
+      "collapsed_at": "2026-01-03T20:56:06.041943Z"
     },
     {
       "unified_directive": "Mobile app trigger support",
       "source_directives": [
-        "OneDrive trigger support",
-        "Mobile app trigger support"
+        "Mobile app trigger support",
+        "OneDrive trigger support"
       ],
       "sources": [
-        "IMPLEMENTATION_SUMMARY.md",
-        "ONEDRIVE_SYNC_SETUP.md"
+        "ONEDRIVE_SYNC_SETUP.md",
+        "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731607Z"
+      "collapsed_at": "2026-01-03T20:56:06.041946Z"
     },
     {
       "unified_directive": "Emitted by: node_diff_detector",
@@ -4205,7 +4205,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731611Z"
+      "collapsed_at": "2026-01-03T20:56:06.041949Z"
     },
     {
       "unified_directive": "Emitted by: node_session_ingestor",
@@ -4217,7 +4217,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731613Z"
+      "collapsed_at": "2026-01-03T20:56:06.041952Z"
     },
     {
       "unified_directive": "Emitted by: node_self_reflect",
@@ -4229,7 +4229,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731616Z"
+      "collapsed_at": "2026-01-03T20:56:06.041954Z"
     },
     {
       "unified_directive": "Emitted by: node_memory_compressor",
@@ -4241,7 +4241,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731619Z"
+      "collapsed_at": "2026-01-03T20:56:06.041957Z"
     },
     {
       "unified_directive": "Emitted by: node_session_ingestor",
@@ -4253,31 +4253,31 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731623Z"
+      "collapsed_at": "2026-01-03T20:56:06.041960Z"
     },
     {
       "unified_directive": "Emitted by: node_diff_detector",
       "source_directives": [
-        "Emitted by: node_diff_detector",
-        "Emitted by: council_vote"
+        "Emitted by: council_vote",
+        "Emitted by: node_diff_detector"
       ],
       "sources": [
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731626Z"
+      "collapsed_at": "2026-01-03T20:56:06.041963Z"
     },
     {
       "unified_directive": "Emitted by: node_memory_compressor",
       "source_directives": [
-        "Emitted by: node_diff_detector",
-        "Emitted by: node_memory_compressor"
+        "Emitted by: node_memory_compressor",
+        "Emitted by: node_diff_detector"
       ],
       "sources": [
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731628Z"
+      "collapsed_at": "2026-01-03T20:56:06.041966Z"
     },
     {
       "unified_directive": "Emitted by: node_session_ingestor",
@@ -4289,7 +4289,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731631Z"
+      "collapsed_at": "2026-01-03T20:56:06.041969Z"
     },
     {
       "unified_directive": "Emitted by: node_memory_compressor",
@@ -4301,7 +4301,7 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731634Z"
+      "collapsed_at": "2026-01-03T20:56:06.041972Z"
     },
     {
       "unified_directive": "Emitted by: node_memory_compressor",
@@ -4313,19 +4313,19 @@
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731637Z"
+      "collapsed_at": "2026-01-03T20:56:06.041975Z"
     },
     {
       "unified_directive": "Intelligent memory management",
       "source_directives": [
-        "Intelligent memory management",
-        "Purpose: Memory management"
+        "Purpose: Memory management",
+        "Intelligent memory management"
       ],
       "sources": [
         "IMPLEMENTATION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731640Z"
+      "collapsed_at": "2026-01-03T20:56:06.041979Z"
     },
     {
       "unified_directive": "Consolidate and translate back",
@@ -4337,55 +4337,55 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731643Z"
+      "collapsed_at": "2026-01-03T20:56:06.041982Z"
     },
     {
       "unified_directive": "Download and configure Japanese models",
       "source_directives": [
-        "Download and configure Chinese models",
-        "Download and configure Japanese models"
+        "Download and configure Japanese models",
+        "Download and configure Chinese models"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731646Z"
+      "collapsed_at": "2026-01-03T20:56:06.041985Z"
     },
     {
-      "unified_directive": "Search in English",
+      "unified_directive": "Search in Chinese",
       "source_directives": [
-        "Search in English",
-        "Search in Chinese"
+        "Search in Chinese",
+        "Search in English"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731649Z"
+      "collapsed_at": "2026-01-03T20:56:06.041988Z"
     },
     {
       "unified_directive": "Search in Japanese",
       "source_directives": [
-        "Search in English",
+        "Search in Japanese",
+        "Search in English"
+      ],
+      "sources": [
+        "CHINESE_JAPANESE_AI_MODELS.md"
+      ],
+      "cluster_size": 1,
+      "collapsed_at": "2026-01-03T20:56:06.041993Z"
+    },
+    {
+      "unified_directive": "Search in Japanese",
+      "source_directives": [
+        "Search in Chinese",
         "Search in Japanese"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731652Z"
-    },
-    {
-      "unified_directive": "Search in Japanese",
-      "source_directives": [
-        "Search in Japanese",
-        "Search in Chinese"
-      ],
-      "sources": [
-        "CHINESE_JAPANESE_AI_MODELS.md"
-      ],
-      "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731656Z"
+      "collapsed_at": "2026-01-03T20:56:06.041996Z"
     },
     {
       "unified_directive": "Hugging Face: `Qwen/Qwen-72B-Chat`",
@@ -4397,7 +4397,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731659Z"
+      "collapsed_at": "2026-01-03T20:56:06.041999Z"
     },
     {
       "unified_directive": "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
@@ -4409,19 +4409,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731662Z"
+      "collapsed_at": "2026-01-03T20:56:06.042002Z"
     },
     {
       "unified_directive": "Hugging Face: `Qwen/Qwen-72B-Chat`",
       "source_directives": [
-        "Hugging Face: `Qwen/Qwen-72B-Chat`",
-        "Hugging Face: `01-ai/Yi-34B`"
+        "Hugging Face: `01-ai/Yi-34B`",
+        "Hugging Face: `Qwen/Qwen-72B-Chat`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731665Z"
+      "collapsed_at": "2026-01-03T20:56:06.042005Z"
     },
     {
       "unified_directive": "Hugging Face: `cyberagent/open-calm-7b`",
@@ -4433,19 +4433,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731679Z"
+      "collapsed_at": "2026-01-03T20:56:06.042008Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
       "source_directives": [
-        "Hugging Face: `Qwen/Qwen-72B-Chat`",
-        "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`"
+        "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
+        "Hugging Face: `Qwen/Qwen-72B-Chat`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731683Z"
+      "collapsed_at": "2026-01-03T20:56:06.042011Z"
     },
     {
       "unified_directive": "Hugging Face: `Qwen/Qwen-72B-Chat`",
@@ -4457,7 +4457,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731686Z"
+      "collapsed_at": "2026-01-03T20:56:06.042014Z"
     },
     {
       "unified_directive": "Hugging Face: `abeja/gpt-neox-japanese-2",
@@ -4469,7 +4469,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731689Z"
+      "collapsed_at": "2026-01-03T20:56:06.042017Z"
     },
     {
       "unified_directive": "Open Source: Yes (Apache 2",
@@ -4481,19 +4481,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731692Z"
+      "collapsed_at": "2026-01-03T20:56:06.042020Z"
     },
     {
       "unified_directive": "Open Source: Yes (MIT License)",
       "source_directives": [
-        "Open Source: Yes (Apache 2",
-        "Open Source: Yes (MIT License)"
+        "Open Source: Yes (MIT License)",
+        "Open Source: Yes (Apache 2"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731695Z"
+      "collapsed_at": "2026-01-03T20:56:06.042024Z"
     },
     {
       "unified_directive": "Code generation (CodeGeeX)",
@@ -4505,7 +4505,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731698Z"
+      "collapsed_at": "2026-01-03T20:56:06.042027Z"
     },
     {
       "unified_directive": "Excellent code generation",
@@ -4517,19 +4517,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731701Z"
+      "collapsed_at": "2026-01-03T20:56:06.042030Z"
     },
     {
       "unified_directive": "Baidu AI Cloud API",
       "source_directives": [
-        "Baidu AI Cloud API",
-        "Tencent Cloud API"
+        "Tencent Cloud API",
+        "Baidu AI Cloud API"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731704Z"
+      "collapsed_at": "2026-01-03T20:56:06.042033Z"
     },
     {
       "unified_directive": "Some models on Hugging Face",
@@ -4540,19 +4540,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731706Z"
+      "collapsed_at": "2026-01-03T20:56:06.042036Z"
     },
     {
       "unified_directive": "Strong Chinese language understanding",
       "source_directives": [
-        "Chinese language expertise",
-        "Strong Chinese language understanding"
+        "Strong Chinese language understanding",
+        "Chinese language expertise"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731709Z"
+      "collapsed_at": "2026-01-03T20:56:06.042039Z"
     },
     {
       "unified_directive": "Strong Chinese language understanding",
@@ -4564,19 +4564,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731712Z"
+      "collapsed_at": "2026-01-03T20:56:06.042042Z"
     },
     {
       "unified_directive": "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
       "source_directives": [
-        "Hugging Face: `THUDM/chatglm3-6b`",
-        "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`"
+        "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
+        "Hugging Face: `THUDM/chatglm3-6b`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731715Z"
+      "collapsed_at": "2026-01-03T20:56:06.042044Z"
     },
     {
       "unified_directive": "Hugging Face: `THUDM/chatglm3-6b`",
@@ -4588,19 +4588,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731718Z"
+      "collapsed_at": "2026-01-03T20:56:06.042054Z"
     },
     {
       "unified_directive": "Hugging Face: `cyberagent/open-calm-7b`",
       "source_directives": [
-        "Hugging Face: `cyberagent/open-calm-7b`",
-        "Hugging Face: `THUDM/chatglm3-6b`"
+        "Hugging Face: `THUDM/chatglm3-6b`",
+        "Hugging Face: `cyberagent/open-calm-7b`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731721Z"
+      "collapsed_at": "2026-01-03T20:56:06.042057Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
@@ -4612,7 +4612,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731724Z"
+      "collapsed_at": "2026-01-03T20:56:06.042060Z"
     },
     {
       "unified_directive": "Hugging Face: `THUDM/chatglm3-6b`",
@@ -4624,7 +4624,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731727Z"
+      "collapsed_at": "2026-01-03T20:56:06.042065Z"
     },
     {
       "unified_directive": "Hugging Face: `abeja/gpt-neox-japanese-2",
@@ -4636,7 +4636,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731730Z"
+      "collapsed_at": "2026-01-03T20:56:06.042067Z"
     },
     {
       "unified_directive": "Some open source variants",
@@ -4648,7 +4648,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731735Z"
+      "collapsed_at": "2026-01-03T20:56:06.042071Z"
     },
     {
       "unified_directive": "GitHub: Open source",
@@ -4659,7 +4659,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731738Z"
+      "collapsed_at": "2026-01-03T20:56:06.042074Z"
     },
     {
       "unified_directive": "Code generation (CodeGeeX)",
@@ -4671,7 +4671,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731741Z"
+      "collapsed_at": "2026-01-03T20:56:06.042077Z"
     },
     {
       "unified_directive": "Chinese language expertise",
@@ -4683,7 +4683,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731744Z"
+      "collapsed_at": "2026-01-03T20:56:06.042080Z"
     },
     {
       "unified_directive": "Large-scale language model",
@@ -4695,19 +4695,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731747Z"
+      "collapsed_at": "2026-01-03T20:56:06.042083Z"
     },
     {
-      "unified_directive": "Large-scale language model",
+      "unified_directive": "Large-scale model training",
       "source_directives": [
-        "Large-scale language model",
-        "Large-scale model training"
+        "Large-scale model training",
+        "Large-scale language model"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731750Z"
+      "collapsed_at": "2026-01-03T20:56:06.042086Z"
     },
     {
       "unified_directive": "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
@@ -4719,19 +4719,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731753Z"
+      "collapsed_at": "2026-01-03T20:56:06.042089Z"
     },
     {
       "unified_directive": "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
       "source_directives": [
-        "Hugging Face: `cyberagent/open-calm-7b`",
-        "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`"
+        "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
+        "Hugging Face: `cyberagent/open-calm-7b`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731756Z"
+      "collapsed_at": "2026-01-03T20:56:06.042092Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
@@ -4743,7 +4743,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731759Z"
+      "collapsed_at": "2026-01-03T20:56:06.042095Z"
     },
     {
       "unified_directive": "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
@@ -4755,7 +4755,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731763Z"
+      "collapsed_at": "2026-01-03T20:56:06.042097Z"
     },
     {
       "unified_directive": "Hugging Face: `deepseek-ai/deepseek-coder-33b-instruct`",
@@ -4767,19 +4767,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731766Z"
+      "collapsed_at": "2026-01-03T20:56:06.042100Z"
     },
     {
       "unified_directive": "Open Source: Yes (MIT License)",
       "source_directives": [
-        "Open Source: Yes",
-        "Open Source: Yes (MIT License)"
+        "Open Source: Yes (MIT License)",
+        "Open Source: Yes"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731769Z"
+      "collapsed_at": "2026-01-03T20:56:06.042104Z"
     },
     {
       "unified_directive": "Open Source: Yes",
@@ -4790,19 +4790,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731773Z"
+      "collapsed_at": "2026-01-03T20:56:06.042107Z"
     },
     {
       "unified_directive": "Hugging Face: `cyberagent/open-calm-7b`",
       "source_directives": [
-        "Hugging Face: `cyberagent/open-calm-7b`",
-        "Hugging Face: `01-ai/Yi-34B`"
+        "Hugging Face: `01-ai/Yi-34B`",
+        "Hugging Face: `cyberagent/open-calm-7b`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731777Z"
+      "collapsed_at": "2026-01-03T20:56:06.042112Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
@@ -4814,31 +4814,31 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731780Z"
+      "collapsed_at": "2026-01-03T20:56:06.042115Z"
     },
     {
       "unified_directive": "Hugging Face: `pfnet/plamo-13b`",
       "source_directives": [
-        "Hugging Face: `pfnet/plamo-13b`",
-        "Hugging Face: `01-ai/Yi-34B`"
+        "Hugging Face: `01-ai/Yi-34B`",
+        "Hugging Face: `pfnet/plamo-13b`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731783Z"
+      "collapsed_at": "2026-01-03T20:56:06.042117Z"
     },
     {
       "unified_directive": "Hugging Face: `abeja/gpt-neox-japanese-2",
       "source_directives": [
-        "Hugging Face: `abeja/gpt-neox-japanese-2",
-        "Hugging Face: `01-ai/Yi-34B`"
+        "Hugging Face: `01-ai/Yi-34B`",
+        "Hugging Face: `abeja/gpt-neox-japanese-2"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731785Z"
+      "collapsed_at": "2026-01-03T20:56:06.042120Z"
     },
     {
       "unified_directive": "Text and voice generation",
@@ -4850,7 +4850,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731788Z"
+      "collapsed_at": "2026-01-03T20:56:06.042123Z"
     },
     {
       "unified_directive": "Native Japanese language",
@@ -4862,19 +4862,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731791Z"
+      "collapsed_at": "2026-01-03T20:56:06.042126Z"
     },
     {
       "unified_directive": "Japanese language specialization",
       "source_directives": [
-        "Japanese language specialization",
-        "Native Japanese language"
+        "Native Japanese language",
+        "Japanese language specialization"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731794Z"
+      "collapsed_at": "2026-01-03T20:56:06.042130Z"
     },
     {
       "unified_directive": "Japanese language generation",
@@ -4886,7 +4886,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731797Z"
+      "collapsed_at": "2026-01-03T20:56:06.042135Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
@@ -4898,7 +4898,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731801Z"
+      "collapsed_at": "2026-01-03T20:56:06.042138Z"
     },
     {
       "unified_directive": "Hugging Face: `cyberagent/open-calm-7b`",
@@ -4910,31 +4910,31 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731804Z"
+      "collapsed_at": "2026-01-03T20:56:06.042140Z"
     },
     {
       "unified_directive": "Hugging Face: `abeja/gpt-neox-japanese-2",
       "source_directives": [
-        "Hugging Face: `cyberagent/open-calm-7b`",
-        "Hugging Face: `abeja/gpt-neox-japanese-2"
+        "Hugging Face: `abeja/gpt-neox-japanese-2",
+        "Hugging Face: `cyberagent/open-calm-7b`"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731807Z"
+      "collapsed_at": "2026-01-03T20:56:06.042143Z"
     },
     {
       "unified_directive": "Japanese language specialization",
       "source_directives": [
-        "Japanese language specialization",
-        "Japanese language model"
+        "Japanese language model",
+        "Japanese language specialization"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731810Z"
+      "collapsed_at": "2026-01-03T20:56:06.042146Z"
     },
     {
       "unified_directive": "Japanese language model",
@@ -4945,19 +4945,19 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731813Z"
+      "collapsed_at": "2026-01-03T20:56:06.042150Z"
     },
     {
       "unified_directive": "Japanese language generation",
       "source_directives": [
-        "Japanese language generation",
-        "Japanese language model"
+        "Japanese language model",
+        "Japanese language generation"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731816Z"
+      "collapsed_at": "2026-01-03T20:56:06.042153Z"
     },
     {
       "unified_directive": "Multiple parameter sizes",
@@ -4969,7 +4969,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731819Z"
+      "collapsed_at": "2026-01-03T20:56:06.042155Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
@@ -4981,7 +4981,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731822Z"
+      "collapsed_at": "2026-01-03T20:56:06.042158Z"
     },
     {
       "unified_directive": "Hugging Face: `stabilityai/japanese-stablelm-base-alpha-7b`",
@@ -4993,7 +4993,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731825Z"
+      "collapsed_at": "2026-01-03T20:56:06.042161Z"
     },
     {
       "unified_directive": "Japanese language specialization",
@@ -5005,7 +5005,7 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731828Z"
+      "collapsed_at": "2026-01-03T20:56:06.042164Z"
     },
     {
       "unified_directive": "Hugging Face: `abeja/gpt-neox-japanese-2",
@@ -5017,31 +5017,31 @@
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731831Z"
+      "collapsed_at": "2026-01-03T20:56:06.042167Z"
     },
     {
       "unified_directive": "Register for Tencent Cloud (Hunyuan access)",
       "source_directives": [
-        "Register for Tencent Cloud (Hunyuan access)",
-        "Register for Baidu AI Cloud (ERNIE access)"
+        "Register for Baidu AI Cloud (ERNIE access)",
+        "Register for Tencent Cloud (Hunyuan access)"
       ],
       "sources": [
         "CHINESE_JAPANESE_AI_MODELS.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731834Z"
+      "collapsed_at": "2026-01-03T20:56:06.042170Z"
     },
     {
       "unified_directive": "auto-detect the configuration",
       "source_directives": [
-        "auto-detect configuration",
-        "auto-detect the configuration"
+        "auto-detect the configuration",
+        "auto-detect configuration"
       ],
       "sources": [
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731837Z"
+      "collapsed_at": "2026-01-03T20:56:06.042173Z"
     },
     {
       "unified_directive": "Install Railway CLI",
@@ -5053,7 +5053,7 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731840Z"
+      "collapsed_at": "2026-01-03T20:56:06.042176Z"
     },
     {
       "unified_directive": "Install Heroku CLI",
@@ -5065,7 +5065,7 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731843Z"
+      "collapsed_at": "2026-01-03T20:56:06.042179Z"
     },
     {
       "unified_directive": "Install Railway CLI",
@@ -5077,19 +5077,19 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731845Z"
+      "collapsed_at": "2026-01-03T20:56:06.042182Z"
     },
     {
       "unified_directive": "Use Vercel/GitHub Pages when:",
       "source_directives": [
-        "Use Vercel/GitHub Pages when:",
-        "Use Heroku when:"
+        "Use Heroku when:",
+        "Use Vercel/GitHub Pages when:"
       ],
       "sources": [
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731848Z"
+      "collapsed_at": "2026-01-03T20:56:06.042185Z"
     },
     {
       "unified_directive": "Use Vercel/GitHub Pages when:",
@@ -5101,7 +5101,7 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731851Z"
+      "collapsed_at": "2026-01-03T20:56:06.042188Z"
     },
     {
       "unified_directive": "Use Vercel/GitHub Pages when:",
@@ -5113,7 +5113,7 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731854Z"
+      "collapsed_at": "2026-01-03T20:56:06.042191Z"
     },
     {
       "unified_directive": "Use Vercel/GitHub Pages when:",
@@ -5125,43 +5125,43 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731857Z"
+      "collapsed_at": "2026-01-03T20:56:06.042194Z"
     },
     {
-      "unified_directive": "Use Render when:",
+      "unified_directive": "Use Heroku when:",
       "source_directives": [
-        "Use Render when:",
-        "Use Heroku when:"
+        "Use Heroku when:",
+        "Use Render when:"
       ],
       "sources": [
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731860Z"
+      "collapsed_at": "2026-01-03T20:56:06.042198Z"
     },
     {
       "unified_directive": "Use Railway when:",
       "source_directives": [
-        "Use Railway when:",
-        "Use Heroku when:"
+        "Use Heroku when:",
+        "Use Railway when:"
       ],
       "sources": [
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731864Z"
+      "collapsed_at": "2026-01-03T20:56:06.042201Z"
     },
     {
-      "unified_directive": "Use Docker when:",
+      "unified_directive": "Use Heroku when:",
       "source_directives": [
-        "Use Docker when:",
-        "Use Heroku when:"
+        "Use Heroku when:",
+        "Use Docker when:"
       ],
       "sources": [
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731867Z"
+      "collapsed_at": "2026-01-03T20:56:06.042204Z"
     },
     {
       "unified_directive": "Use Railway when:",
@@ -5173,7 +5173,7 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731870Z"
+      "collapsed_at": "2026-01-03T20:56:06.042207Z"
     },
     {
       "unified_directive": "Use Render when:",
@@ -5185,19 +5185,19 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731874Z"
+      "collapsed_at": "2026-01-03T20:56:06.042209Z"
     },
     {
       "unified_directive": "Use Railway when:",
       "source_directives": [
-        "Use Docker when:",
-        "Use Railway when:"
+        "Use Railway when:",
+        "Use Docker when:"
       ],
       "sources": [
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731877Z"
+      "collapsed_at": "2026-01-03T20:56:06.042212Z"
     },
     {
       "unified_directive": "Automatic HTTPS",
@@ -5208,7 +5208,7 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731880Z"
+      "collapsed_at": "2026-01-03T20:56:06.042215Z"
     },
     {
       "unified_directive": "Auto-scaling",
@@ -5219,55 +5219,55 @@
         "DEPLOYMENT.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731883Z"
+      "collapsed_at": "2026-01-03T20:56:06.042218Z"
     },
     {
       "unified_directive": "Logic Review \u2705",
       "source_directives": [
-        "Logic Review \u2705",
-        "Code Review \u2705"
+        "Code Review \u2705",
+        "Logic Review \u2705"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731886Z"
+      "collapsed_at": "2026-01-03T20:56:06.042221Z"
     },
     {
       "unified_directive": "Best Practices Established",
       "source_directives": [
-        "Documented best practices",
-        "Best Practices Established"
+        "Best Practices Established",
+        "Documented best practices"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731889Z"
+      "collapsed_at": "2026-01-03T20:56:06.042224Z"
     },
     {
       "unified_directive": "Best Practices Established",
       "source_directives": [
-        "Best practices",
-        "Best Practices Established"
+        "Best Practices Established",
+        "Best practices"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731892Z"
+      "collapsed_at": "2026-01-03T20:56:06.042228Z"
     },
     {
       "unified_directive": "Added proper error handling",
       "source_directives": [
-        "Consistent error handling",
-        "Added proper error handling"
+        "Added proper error handling",
+        "Consistent error handling"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731895Z"
+      "collapsed_at": "2026-01-03T20:56:06.042231Z"
     },
     {
       "unified_directive": "Added proper error handling",
@@ -5279,7 +5279,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731898Z"
+      "collapsed_at": "2026-01-03T20:56:06.042234Z"
     },
     {
       "unified_directive": "Added proper error handling",
@@ -5291,43 +5291,43 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731901Z"
+      "collapsed_at": "2026-01-03T20:56:06.042237Z"
     },
     {
       "unified_directive": "Implemented conditional logic",
       "source_directives": [
-        "Conditional logic verified",
-        "Implemented conditional logic"
+        "Implemented conditional logic",
+        "Conditional logic verified"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731904Z"
+      "collapsed_at": "2026-01-03T20:56:06.042240Z"
     },
     {
       "unified_directive": "All actions updated to latest versions",
       "source_directives": [
-        "All actions updated to latest versions",
-        "Updated all actions to v4"
+        "Updated all actions to v4",
+        "All actions updated to latest versions"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731907Z"
+      "collapsed_at": "2026-01-03T20:56:06.042243Z"
     },
     {
       "unified_directive": "Improved commit conditionals",
       "source_directives": [
-        "Improved commit conditionals",
-        "Improved commit logic"
+        "Improved commit logic",
+        "Improved commit conditionals"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731910Z"
+      "collapsed_at": "2026-01-03T20:56:06.042246Z"
     },
     {
       "unified_directive": "Improved commit conditionals",
@@ -5339,7 +5339,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731913Z"
+      "collapsed_at": "2026-01-03T20:56:06.042249Z"
     },
     {
       "unified_directive": "Consistent error handling",
@@ -5351,7 +5351,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731916Z"
+      "collapsed_at": "2026-01-03T20:56:06.042252Z"
     },
     {
       "unified_directive": "Consistent error handling",
@@ -5363,7 +5363,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731922Z"
+      "collapsed_at": "2026-01-03T20:56:06.042255Z"
     },
     {
       "unified_directive": "Clear progress tracking",
@@ -5375,19 +5375,19 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731925Z"
+      "collapsed_at": "2026-01-03T20:56:06.042258Z"
     },
     {
       "unified_directive": "Documented best practices",
       "source_directives": [
-        "Best practices",
-        "Documented best practices"
+        "Documented best practices",
+        "Best practices"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731928Z"
+      "collapsed_at": "2026-01-03T20:56:06.042262Z"
     },
     {
       "unified_directive": "Provided optimization roadmap",
@@ -5399,7 +5399,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731932Z"
+      "collapsed_at": "2026-01-03T20:56:06.042267Z"
     },
     {
       "unified_directive": "Added explicit `ref: main` checkout",
@@ -5410,7 +5410,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731936Z"
+      "collapsed_at": "2026-01-03T20:56:06.042270Z"
     },
     {
       "unified_directive": "Added directory existence checks",
@@ -5422,7 +5422,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731939Z"
+      "collapsed_at": "2026-01-03T20:56:06.042273Z"
     },
     {
       "unified_directive": "Added directory existence checks",
@@ -5434,7 +5434,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731941Z"
+      "collapsed_at": "2026-01-03T20:56:06.042276Z"
     },
     {
       "unified_directive": "Improved error handling",
@@ -5445,19 +5445,19 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731944Z"
+      "collapsed_at": "2026-01-03T20:56:06.042279Z"
     },
     {
       "unified_directive": "Improved error handling",
       "source_directives": [
-        "Error handling tested",
-        "Improved error handling"
+        "Improved error handling",
+        "Error handling tested"
       ],
       "sources": [
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 2,
-      "collapsed_at": "2026-01-03T20:54:20.731948Z"
+      "collapsed_at": "2026-01-03T20:56:06.042282Z"
     },
     {
       "unified_directive": "Updated to actions@v4",
@@ -5468,7 +5468,7 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 3,
-      "collapsed_at": "2026-01-03T20:54:20.731951Z"
+      "collapsed_at": "2026-01-03T20:56:06.042285Z"
     },
     {
       "unified_directive": "Progress tracking",
@@ -5479,19 +5479,19 @@
         "MMI_COMPLETION_SUMMARY.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731954Z"
+      "collapsed_at": "2026-01-03T20:56:06.042288Z"
     },
     {
       "unified_directive": "Action: Trigger GitHub Workflow",
       "source_directives": [
-        "Action: Trigger GitHub Workflow",
-        "GitHub workflow fails"
+        "GitHub workflow fails",
+        "Action: Trigger GitHub Workflow"
       ],
       "sources": [
         "ONEDRIVE_SYNC_SETUP.md"
       ],
       "cluster_size": 1,
-      "collapsed_at": "2026-01-03T20:54:20.731957Z"
+      "collapsed_at": "2026-01-03T20:56:06.042291Z"
     }
   ],
   "restructured_queries": [
@@ -7371,12 +7371,12 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "PING 2: Generate Options",
+      "original_directive": "PING 2: Recovery Options",
       "key_concepts": [
-        "Generate",
+        "Recovery",
         "Options"
       ],
-      "optimized_query": "Generate Options",
+      "optimized_query": "Recovery Options",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },
@@ -7438,7 +7438,7 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "PING 4: Validation",
+      "original_directive": "PING 2: Validation",
       "key_concepts": [
         "Validation"
       ],
@@ -7622,12 +7622,12 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Long-Term Benefits",
+      "original_directive": "Long-term Benefits",
       "key_concepts": [
-        "Long-Term",
+        "Long-term",
         "Benefits"
       ],
-      "optimized_query": "Long-Term Benefits",
+      "optimized_query": "Long-term Benefits",
       "sources_unified": 2,
       "redundancy_eliminated": 1
     },
@@ -7704,12 +7704,12 @@
       "redundancy_eliminated": 2
     },
     {
-      "original_directive": "Performance metrics",
+      "original_directive": "Performance Metrics",
       "key_concepts": [
         "Performance",
-        "metrics"
+        "Metrics"
       ],
-      "optimized_query": "Performance metrics",
+      "optimized_query": "Performance Metrics",
       "sources_unified": 4,
       "redundancy_eliminated": 3
     },
@@ -7724,12 +7724,12 @@
       "redundancy_eliminated": 3
     },
     {
-      "original_directive": "Documentation and testing",
+      "original_directive": "Metrics and documentation",
       "key_concepts": [
-        "Documentation",
-        "testing"
+        "Metrics",
+        "documentation"
       ],
-      "optimized_query": "Documentation testing",
+      "optimized_query": "Metrics documentation",
       "sources_unified": 2,
       "redundancy_eliminated": 1
     },
@@ -7795,7 +7795,7 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "SHRM (5 sec)",
+      "original_directive": "Slow (5 sec)",
       "key_concepts": [],
       "optimized_query": "",
       "sources_unified": 1,
@@ -8212,12 +8212,12 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Emergence cultivation",
+      "original_directive": "Emergence Cultivation",
       "key_concepts": [
         "Emergence",
-        "cultivation"
+        "Cultivation"
       ],
-      "optimized_query": "Emergence cultivation",
+      "optimized_query": "Emergence Cultivation",
       "sources_unified": 2,
       "redundancy_eliminated": 2
     },
@@ -8341,12 +8341,12 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Kaggle medal acquisition",
+      "original_directive": "Kaggle Medal Acquisition",
       "key_concepts": [
         "Kaggle",
-        "acquisition"
+        "Acquisition"
       ],
-      "optimized_query": "Kaggle acquisition",
+      "optimized_query": "Kaggle Acquisition",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },
@@ -8394,12 +8394,12 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Cognitive Transcendence",
+      "original_directive": "Cognitive transcendence",
       "key_concepts": [
         "Cognitive",
-        "Transcendence"
+        "transcendence"
       ],
-      "optimized_query": "Cognitive Transcendence",
+      "optimized_query": "Cognitive transcendence",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },
@@ -8468,12 +8468,12 @@
       "redundancy_eliminated": 3
     },
     {
-      "original_directive": "Security Considerations",
+      "original_directive": "Security considerations",
       "key_concepts": [
         "Security",
-        "Considerations"
+        "considerations"
       ],
-      "optimized_query": "Security Considerations",
+      "optimized_query": "Security considerations",
       "sources_unified": 4,
       "redundancy_eliminated": 3
     },
@@ -9071,12 +9071,12 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Search in English",
+      "original_directive": "Search in Chinese",
       "key_concepts": [
         "Search",
-        "English"
+        "Chinese"
       ],
-      "optimized_query": "Search English",
+      "optimized_query": "Search Chinese",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },
@@ -9363,12 +9363,12 @@
       "redundancy_eliminated": 2
     },
     {
-      "original_directive": "Large-scale language model",
+      "original_directive": "Large-scale model training",
       "key_concepts": [
         "Large-scale",
-        "language"
+        "training"
       ],
-      "optimized_query": "Large-scale language",
+      "optimized_query": "Large-scale training",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },
@@ -9725,11 +9725,11 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Use Render when:",
+      "original_directive": "Use Heroku when:",
       "key_concepts": [
-        "Render"
+        "Heroku"
       ],
-      "optimized_query": "Render",
+      "optimized_query": "Heroku",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },
@@ -9743,11 +9743,11 @@
       "redundancy_eliminated": 1
     },
     {
-      "original_directive": "Use Docker when:",
+      "original_directive": "Use Heroku when:",
       "key_concepts": [
-        "Docker"
+        "Heroku"
       ],
-      "optimized_query": "Docker",
+      "optimized_query": "Heroku",
       "sources_unified": 1,
       "redundancy_eliminated": 1
     },

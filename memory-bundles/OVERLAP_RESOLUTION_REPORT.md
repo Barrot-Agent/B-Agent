@@ -1,6 +1,6 @@
 # Overlap Resolution Report
 
-**Generated**: 2026-01-03T20:54:20.732406Z
+**Generated**: 2026-01-03T20:56:06.042711Z
 
 ## Summary
 
@@ -23,7 +23,7 @@
 
 **Unified Directive**: Distributed puzzle piece discovery...
 
-**Sources**: MULTI_AGENT_PARALLEL_SYSTEM.md, AGI_PUZZLE_PROTOCOL.md
+**Sources**: AGI_PUZZLE_PROTOCOL.md, MULTI_AGENT_PARALLEL_SYSTEM.md
 
 **Cluster Size**: 1 overlapping directives
 
@@ -31,7 +31,7 @@
 
 **Unified Directive**: Phase 3: Integration Strategy...
 
-**Sources**: UNIVERSAL_PINGPONG_PROTOCOL.md, AGI_PUZZLE_PROTOCOL.md
+**Sources**: AGI_PUZZLE_PROTOCOL.md, UNIVERSAL_PINGPONG_PROTOCOL.md
 
 **Cluster Size**: 1 overlapping directives
 
@@ -39,7 +39,7 @@
 
 **Unified Directive**: Phase 3: Integration Strategy...
 
-**Sources**: UNIVERSAL_PINGPONG_PROTOCOL.md, AGI_PUZZLE_PROTOCOL.md
+**Sources**: AGI_PUZZLE_PROTOCOL.md, UNIVERSAL_PINGPONG_PROTOCOL.md
 
 **Cluster Size**: 1 overlapping directives
 
@@ -47,7 +47,7 @@
 
 **Unified Directive**: Phase 3: Integration Sprint (Hour 4-6)...
 
-**Sources**: MULTI_AGENT_PARALLEL_SYSTEM.md, AGI_PUZZLE_PROTOCOL.md
+**Sources**: AGI_PUZZLE_PROTOCOL.md, MULTI_AGENT_PARALLEL_SYSTEM.md
 
 **Cluster Size**: 1 overlapping directives
 
@@ -55,7 +55,7 @@
 
 **Unified Directive**: Phase 3: Test Integration (2-3 days)...
 
-**Sources**: AGI_PUZZLE_PROTOCOL.md, CHINESE_JAPANESE_AI_MODELS.md
+**Sources**: CHINESE_JAPANESE_AI_MODELS.md, AGI_PUZZLE_PROTOCOL.md
 
 **Cluster Size**: 1 overlapping directives
 
@@ -87,7 +87,7 @@
 
 **Unified Directive**: Check for commit conflicts...
 
-**Sources**: AGI_PUZZLE_PROTOCOL.md, ONEDRIVE_SYNC_SETUP.md
+**Sources**: ONEDRIVE_SYNC_SETUP.md, AGI_PUZZLE_PROTOCOL.md
 
 **Cluster Size**: 1 overlapping directives
 

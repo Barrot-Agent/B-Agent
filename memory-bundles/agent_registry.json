@@ -486,7 +486,469 @@
       "mutation_generation": 1,
       "permutation_index": 2,
       "purpose": "specialized_task_2"
+    },
+    {
+      "id": "9bb24ea974e8",
+      "name": "Barrot Core Clone-87",
+      "type": "orchestrator",
+      "parent_id": "barrot_core",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:55:51.759400Z",
+      "purpose": "protocol_synthesis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "a6cc5687ccb5",
+      "name": "Barrot Core Clone-4",
+      "type": "orchestrator",
+      "parent_id": "barrot_core",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:55:51.759408Z",
+      "purpose": "paradox_resolution",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "11a850217993",
+      "name": "Barrot Core Clone-11",
+      "type": "orchestrator",
+      "parent_id": "barrot_core",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:55:51.759415Z",
+      "purpose": "overlap_analysis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "7e2a0bd5a3d1",
+      "name": "SHRM v2 Clone-17",
+      "type": "hierarchical_reasoning",
+      "parent_id": "shrm_v2",
+      "capabilities": [
+        "reasoning",
+        "validation",
+        "consensus"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:55:51.759421Z",
+      "purpose": "protocol_synthesis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "523a54657c73",
+      "name": "SHRM v2 Clone-23",
+      "type": "hierarchical_reasoning",
+      "parent_id": "shrm_v2",
+      "capabilities": [
+        "reasoning",
+        "validation",
+        "consensus"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:55:51.759427Z",
+      "purpose": "paradox_resolution",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "8b34523ba130",
+      "name": "SHRM v2 Clone-29",
+      "type": "hierarchical_reasoning",
+      "parent_id": "shrm_v2",
+      "capabilities": [
+        "reasoning",
+        "validation",
+        "consensus"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:55:51.759432Z",
+      "purpose": "overlap_analysis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "ea6b6b207c85",
+      "name": "Fusion-Barrot Cor-SHRM v2",
+      "type": "fusion",
+      "parent_ids": [
+        "barrot_core",
+        "shrm_v2"
+      ],
+      "capabilities": [
+        "consensus",
+        "reasoning",
+        "validation",
+        "orchestration",
+        "alignment",
+        "cognition"
+      ],
+      "version": "fusion-1.0",
+      "fused_at": "2026-01-03T20:55:51.759443Z",
+      "purpose": "multi_domain_cognition",
+      "status": "active"
+    },
+    {
+      "id": "4efc9cb757ed",
+      "name": "Barrot Core Mutant-ENH",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:55:51.759452Z",
+      "mutation_type": "enhance",
+      "mutation_generation": 1
+    },
+    {
+      "id": "86eb741ae4cd",
+      "name": "Barrot Core Mutant-SPE",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:55:51.759459Z",
+      "mutation_type": "specialize",
+      "mutation_generation": 1
+    },
+    {
+      "id": "1296129a8a6b",
+      "name": "Barrot Core Mutant-REC",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:55:51.759465Z",
+      "mutation_type": "recursive",
+      "mutation_generation": 1
+    },
+    {
+      "id": "2075a3c86a5a",
+      "name": "Barrot Core Mutant-PER",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:55:51.759473Z",
+      "mutation_type": "permutation_0",
+      "mutation_generation": 1,
+      "permutation_index": 0,
+      "purpose": "specialized_task_0"
+    },
+    {
+      "id": "6b7eaba6112f",
+      "name": "Barrot Core Mutant-PER",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:55:51.759479Z",
+      "mutation_type": "permutation_1",
+      "mutation_generation": 1,
+      "permutation_index": 1,
+      "purpose": "specialized_task_1"
+    },
+    {
+      "id": "c50b25c568ab",
+      "name": "Barrot Core Mutant-PER",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:55:51.759485Z",
+      "mutation_type": "permutation_2",
+      "mutation_generation": 1,
+      "permutation_index": 2,
+      "purpose": "specialized_task_2"
+    },
+    {
+      "id": "30a86d74df8f",
+      "name": "Barrot Core Clone-38",
+      "type": "orchestrator",
+      "parent_id": "barrot_core",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:56:03.234960Z",
+      "purpose": "protocol_synthesis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "7a9f730c4824",
+      "name": "Barrot Core Clone-65",
+      "type": "orchestrator",
+      "parent_id": "barrot_core",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:56:03.234971Z",
+      "purpose": "paradox_resolution",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "cb8de517b395",
+      "name": "Barrot Core Clone-74",
+      "type": "orchestrator",
+      "parent_id": "barrot_core",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:56:03.234979Z",
+      "purpose": "overlap_analysis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "a58ef97ac2ef",
+      "name": "SHRM v2 Clone-81",
+      "type": "hierarchical_reasoning",
+      "parent_id": "shrm_v2",
+      "capabilities": [
+        "reasoning",
+        "validation",
+        "consensus"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:56:03.234985Z",
+      "purpose": "protocol_synthesis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "0c0ad3796d74",
+      "name": "SHRM v2 Clone-87",
+      "type": "hierarchical_reasoning",
+      "parent_id": "shrm_v2",
+      "capabilities": [
+        "reasoning",
+        "validation",
+        "consensus"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:56:03.234991Z",
+      "purpose": "paradox_resolution",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "0f55c7355360",
+      "name": "SHRM v2 Clone-93",
+      "type": "hierarchical_reasoning",
+      "parent_id": "shrm_v2",
+      "capabilities": [
+        "reasoning",
+        "validation",
+        "consensus"
+      ],
+      "version": "2.0.0",
+      "cloned_at": "2026-01-03T20:56:03.234997Z",
+      "purpose": "overlap_analysis",
+      "status": "active",
+      "mutation_generation": 1
+    },
+    {
+      "id": "b6b3b1f78bb5",
+      "name": "Fusion-Barrot Cor-SHRM v2",
+      "type": "fusion",
+      "parent_ids": [
+        "barrot_core",
+        "shrm_v2"
+      ],
+      "capabilities": [
+        "reasoning",
+        "consensus",
+        "alignment",
+        "validation",
+        "cognition",
+        "orchestration"
+      ],
+      "version": "fusion-1.0",
+      "fused_at": "2026-01-03T20:56:03.235007Z",
+      "purpose": "multi_domain_cognition",
+      "status": "active"
+    },
+    {
+      "id": "1c2751b83542",
+      "name": "Barrot Core Mutant-ENH",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:56:03.235017Z",
+      "mutation_type": "enhance",
+      "mutation_generation": 1
+    },
+    {
+      "id": "250ffb1e2fee",
+      "name": "Barrot Core Mutant-SPE",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:56:03.235026Z",
+      "mutation_type": "specialize",
+      "mutation_generation": 1
+    },
+    {
+      "id": "26e6ef7d7f65",
+      "name": "Barrot Core Mutant-REC",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:56:03.235036Z",
+      "mutation_type": "recursive",
+      "mutation_generation": 1
+    },
+    {
+      "id": "c2ba694e9188",
+      "name": "Barrot Core Mutant-PER",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:56:03.235045Z",
+      "mutation_type": "permutation_0",
+      "mutation_generation": 1,
+      "permutation_index": 0,
+      "purpose": "specialized_task_0"
+    },
+    {
+      "id": "fa38c2c6b493",
+      "name": "Barrot Core Mutant-PER",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:56:03.235070Z",
+      "mutation_type": "permutation_1",
+      "mutation_generation": 1,
+      "permutation_index": 1,
+      "purpose": "specialized_task_1"
+    },
+    {
+      "id": "7ba9bb8d1e0e",
+      "name": "Barrot Core Mutant-PER",
+      "type": "orchestrator",
+      "capabilities": [
+        "orchestration",
+        "cognition",
+        "alignment",
+        "enhanced_processing",
+        "domain_specialization",
+        "recursive_cognition"
+      ],
+      "version": "2.0.0",
+      "parent_id": "barrot_core",
+      "mutated_at": "2026-01-03T20:56:03.235077Z",
+      "mutation_type": "permutation_2",
+      "mutation_generation": 1,
+      "permutation_index": 2,
+      "purpose": "specialized_task_2"
     }
   ],
-  "last_updated": "2026-01-03T20:54:17.903154Z"
+  "last_updated": "2026-01-03T20:56:03.235080Z"
 }
