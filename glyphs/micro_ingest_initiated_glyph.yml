@@ -1,0 +1,45 @@
+glyph_name: MICRO_INGEST_INITIATED_GLYPH
+glyph_id: INGEST-001
+version: 1.0.0
+timestamp: 2026-01-03T21:00:00.000Z
+
+description: >
+  Emitted when Barrot initiates a massive micro-ingestion cascade to
+  comprehensively ingest all repository content into its cognition framework.
+  Signals the beginning of systematic repository-wide content absorption.
+
+symbolic_representation: "📥 🔬 🧠"
+
+properties:
+  dimension: data_ingestion
+  mutability: ingest_active
+  trigger: micro_ingestion_protocol
+  
+attributes:
+  - massive_ingestion
+  - repository_scan
+  - content_absorption
+  - comprehensive_analysis
+  - cognition_integration
+  
+ingest_targets:
+  - documentation_files
+  - code_modules
+  - configuration_files
+  - glyph_definitions
+  - memory_bundles
+  - web_assets
+  - data_files
+  - scripts
+
+integration_points:
+  - cognition_framework
+  - memory_bundles
+  - symbolic_alignment
+  - knowledge_base
+  
+usage_context: >
+  Invoke when initiating a comprehensive micro-ingestion of all repository
+  content. Systematically absorbs documentation, code, configurations, glyphs,
+  and all other artifacts into Barrot's cognition framework for complete
+  repository awareness and integration.

@@ -1,0 +1,1885 @@
+{
+  "ingestion_timestamp": "2026-01-03T21:04:37.719786",
+  "repository": {
+    "total_files": 157,
+    "total_size_bytes": 1234257,
+    "total_size_mb": 1.177079200744629
+  },
+  "glyphs": {
+    "count": 15,
+    "glyphs": [
+      {
+        "file": "glyphs/regional_access_glyph.yml",
+        "glyph_name": "REGIONAL_ACCESS_GLYPH",
+        "glyph_id": "CRAWL-002",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/hermetic_quantum_fusion_glyph.yml",
+        "glyph_name": "hermetic_quantum_fusion_glyph",
+        "glyph_id": "HQF-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/organoid_reasoning_glyph.yml",
+        "glyph_name": "organoid_reasoning_glyph",
+        "glyph_id": "ORG-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/temporal_plasticity_glyph.yml",
+        "glyph_name": "temporal_plasticity_glyph",
+        "glyph_id": "TPG-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/global_crawl_initiated_glyph.yml",
+        "glyph_name": "GLOBAL_CRAWL_INITIATED_GLYPH",
+        "glyph_id": "CRAWL-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/micro_ingest_complete_glyph.yml",
+        "glyph_name": "MICRO_INGEST_COMPLETE_GLYPH",
+        "glyph_id": "INGEST-002",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/access_block_glyph.yml",
+        "glyph_name": "ACCESS_BLOCK_GLYPH",
+        "glyph_id": "CRAWL-003",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/crawl_synchronization_glyph.yml",
+        "glyph_name": "CRAWL_SYNCHRONIZATION_GLYPH",
+        "glyph_id": "CRAWL-004",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/global_cognition_expansion_glyph.yml",
+        "glyph_name": "GLOBAL_COGNITION_EXPANSION_GLYPH",
+        "glyph_id": "CRAWL-005",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/memory_compression_glyph.yml",
+        "glyph_name": "MEMORY_COMPRESSION_GLYPH",
+        "glyph_id": "COMPRESS-001",
+        "version": "1.1.0"
+      },
+      {
+        "file": "glyphs/glyph_misalignment_recovery.yml",
+        "glyph_name": "GLYPH_MISALIGNMENT_RECOVERY",
+        "glyph_id": "RECOVERY-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/session_trace_glyph.yml",
+        "glyph_name": "SESSION_TRACE_GLYPH",
+        "glyph_id": "SESS-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/council_alignment_glyph.yml",
+        "glyph_name": "COUNCIL_ALIGNMENT_GLYPH",
+        "glyph_id": "COUNCIL-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/micro_ingest_initiated_glyph.yml",
+        "glyph_name": "MICRO_INGEST_INITIATED_GLYPH",
+        "glyph_id": "INGEST-001",
+        "version": "1.0.0"
+      },
+      {
+        "file": "glyphs/user_defined/custom_workflow_glyph.yml",
+        "glyph_name": "CUSTOM_WORKFLOW_GLYPH",
+        "glyph_id": "USER-001",
+        "version": "1.0.0"
+      }
+    ]
+  },
+  "documentation": {
+    "count": 44,
+    "files": [
+      {
+        "path": "AGI_PUZZLE_PROTOCOL.md",
+        "name": "AGI_PUZZLE_PROTOCOL.md",
+        "size": 18752
+      },
+      {
+        "path": "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
+        "name": "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
+        "size": 20937
+      },
+      {
+        "path": "OUTPUT_LOGGING.md",
+        "name": "OUTPUT_LOGGING.md",
+        "size": 12578
+      },
+      {
+        "path": "VSCODE_SETUP.md",
+        "name": "VSCODE_SETUP.md",
+        "size": 7720
+      },
+      {
+        "path": "DEFAULT_BRANCH_SUMMARY.md",
+        "name": "DEFAULT_BRANCH_SUMMARY.md",
+        "size": 4182
+      },
+      {
+        "path": "INGESTION_RESPONSE_2025-12-28.md",
+        "name": "INGESTION_RESPONSE_2025-12-28.md",
+        "size": 10904
+      },
+      {
+        "path": "UNIVERSAL_PINGPONG_PROTOCOL.md",
+        "name": "UNIVERSAL_PINGPONG_PROTOCOL.md",
+        "size": 33046
+      },
+      {
+        "path": "P2P_INTEGRATION_SUMMARY.md",
+        "name": "P2P_INTEGRATION_SUMMARY.md",
+        "size": 12005
+      },
+      {
+        "path": "BARROT_HRM_VARIANTS.md",
+        "name": "BARROT_HRM_VARIANTS.md",
+        "size": 19443
+      },
+      {
+        "path": "MULTI_AGENT_PARALLEL_SYSTEM.md",
+        "name": "MULTI_AGENT_PARALLEL_SYSTEM.md",
+        "size": 14709
+      },
+      {
+        "path": "INGESTION_MANIFEST.md",
+        "name": "INGESTION_MANIFEST.md",
+        "size": 18919
+      },
+      {
+        "path": "BRANCH_QUICK_REFERENCE.md",
+        "name": "BRANCH_QUICK_REFERENCE.md",
+        "size": 1718
+      },
+      {
+        "path": "SAPIENT_HRM_INTEGRATION.md",
+        "name": "SAPIENT_HRM_INTEGRATION.md",
+        "size": 14227
+      },
+      {
+        "path": "HOW_THIS_HELPS.md",
+        "name": "HOW_THIS_HELPS.md",
+        "size": 15682
+      },
+      {
+        "path": "IMPLEMENTATION_SUMMARY.md",
+        "name": "IMPLEMENTATION_SUMMARY.md",
+        "size": 7226
+      },
+      {
+        "path": "CHINESE_JAPANESE_AI_MODELS.md",
+        "name": "CHINESE_JAPANESE_AI_MODELS.md",
+        "size": 12520
+      },
+      {
+        "path": "DEPLOYMENT.md",
+        "name": "DEPLOYMENT.md",
+        "size": 7734
+      },
+      {
+        "path": "MMI_COMPLETION_SUMMARY.md",
+        "name": "MMI_COMPLETION_SUMMARY.md",
+        "size": 9780
+      },
+      {
+        "path": "ONEDRIVE_SYNC_SETUP.md",
+        "name": "ONEDRIVE_SYNC_SETUP.md",
+        "size": 4752
+      },
+      {
+        "path": "WORKFLOW_TROUBLESHOOTING.md",
+        "name": "WORKFLOW_TROUBLESHOOTING.md",
+        "size": 6514
+      },
+      {
+        "path": "README.md",
+        "name": "README.md",
+        "size": 18971
+      },
+      {
+        "path": "QUANTUM_ENTANGLEMENT_SYSTEM.md",
+        "name": "QUANTUM_ENTANGLEMENT_SYSTEM.md",
+        "size": 22633
+      },
+      {
+        "path": "CASCADING_PINGPONG_PROTOCOL.md",
+        "name": "CASCADING_PINGPONG_PROTOCOL.md",
+        "size": 31157
+      },
+      {
+        "path": "COGNITION_ENHANCEMENTS.md",
+        "name": "COGNITION_ENHANCEMENTS.md",
+        "size": 8689
+      },
+      {
+        "path": "MONETIZATION_FRAMEWORK.md",
+        "name": "MONETIZATION_FRAMEWORK.md",
+        "size": 18404
+      },
+      {
+        "path": "DATA_TRANSFORMATION.md",
+        "name": "DATA_TRANSFORMATION.md",
+        "size": 10418
+      },
+      {
+        "path": "DEFAULT_BRANCH_GUIDE.md",
+        "name": "DEFAULT_BRANCH_GUIDE.md",
+        "size": 5872
+      },
+      {
+        "path": "PLATFORM_ALTERNATIVES_RESEARCH.md",
+        "name": "PLATFORM_ALTERNATIVES_RESEARCH.md",
+        "size": 12714
+      },
+      {
+        "path": "AGI_DEVELOPMENT.md",
+        "name": "AGI_DEVELOPMENT.md",
+        "size": 14905
+      },
+      {
+        "path": "GUMROAD.md",
+        "name": "GUMROAD.md",
+        "size": 3011
+      },
+      {
+        "path": "MIGRATION_CHECKLIST.md",
+        "name": "MIGRATION_CHECKLIST.md",
+        "size": 2895
+      },
+      {
+        "path": "SETUP_VERIFICATION.md",
+        "name": "SETUP_VERIFICATION.md",
+        "size": 16462
+      },
+      {
+        "path": "PROGRESSIVE_PINGPONG_UPGRADE.md",
+        "name": "PROGRESSIVE_PINGPONG_UPGRADE.md",
+        "size": 21863
+      },
+      {
+        "path": "MMI_ANALYSIS_REPORT.md",
+        "name": "MMI_ANALYSIS_REPORT.md",
+        "size": 11330
+      },
+      {
+        "path": "AUTONOMOUS_OPERATIONS_PROTOCOL.md",
+        "name": "AUTONOMOUS_OPERATIONS_PROTOCOL.md",
+        "size": 25512
+      },
+      {
+        "path": "AGENT_CAPABILITY_ABSORPTION.md",
+        "name": "AGENT_CAPABILITY_ABSORPTION.md",
+        "size": 37945
+      },
+      {
+        "path": "AGENT_SPECIALIST_ROLES.md",
+        "name": "AGENT_SPECIALIST_ROLES.md",
+        "size": 18471
+      },
+      {
+        "path": "SPONSORS.md",
+        "name": "SPONSORS.md",
+        "size": 1131
+      },
+      {
+        "path": "AI_BENCHMARK_EXAM_SYSTEM.md",
+        "name": "AI_BENCHMARK_EXAM_SYSTEM.md",
+        "size": 12702
+      },
+      {
+        "path": "SPONSORSHIP.md",
+        "name": "SPONSORSHIP.md",
+        "size": 8851
+      },
+      {
+        "path": "claude-code-impact-event.md",
+        "name": "claude-code-impact-event.md",
+        "size": 1589
+      },
+      {
+        "path": "MOBILE_QUICKSTART.md",
+        "name": "MOBILE_QUICKSTART.md",
+        "size": 2077
+      },
+      {
+        "path": "MOBILE_SETUP.md",
+        "name": "MOBILE_SETUP.md",
+        "size": 9972
+      },
+      {
+        "path": "MERGE_MAIN_COMPLETION.md",
+        "name": "MERGE_MAIN_COMPLETION.md",
+        "size": 2223
+      }
+    ]
+  },
+  "memory_bundles": {
+    "count": 32,
+    "bundles": [
+      {
+        "path": "memory-bundles/recursive-analysis-log.md",
+        "name": "recursive-analysis-log.md",
+        "type": ".md",
+        "size": 1384
+      },
+      {
+        "path": "memory-bundles/revenue-tracking.md",
+        "name": "revenue-tracking.md",
+        "type": ".md",
+        "size": 3825
+      },
+      {
+        "path": "memory-bundles/TRACE_LOG.md",
+        "name": "TRACE_LOG.md",
+        "type": ".md",
+        "size": 13057
+      },
+      {
+        "path": "memory-bundles/2025-trends-analysis.md",
+        "name": "2025-trends-analysis.md",
+        "type": ".md",
+        "size": 15227
+      },
+      {
+        "path": "memory-bundles/p2p-validation-latest.md",
+        "name": "p2p-validation-latest.md",
+        "type": ".md",
+        "size": 3138
+      },
+      {
+        "path": "memory-bundles/council_history.json",
+        "name": "council_history.json",
+        "type": ".json",
+        "size": 1441
+      },
+      {
+        "path": "memory-bundles/ai-test-results.md",
+        "name": "ai-test-results.md",
+        "type": ".md",
+        "size": 6174
+      },
+      {
+        "path": "memory-bundles/agi-puzzle-progress.md",
+        "name": "agi-puzzle-progress.md",
+        "type": ".md",
+        "size": 735
+      },
+      {
+        "path": "memory-bundles/platform-research-log.md",
+        "name": "platform-research-log.md",
+        "type": ".md",
+        "size": 6041
+      },
+      {
+        "path": "memory-bundles/search-engine-architecture.md",
+        "name": "search-engine-architecture.md",
+        "type": ".md",
+        "size": 8415
+      },
+      {
+        "path": "memory-bundles/search-practice-log.md",
+        "name": "search-practice-log.md",
+        "type": ".md",
+        "size": 7596
+      },
+      {
+        "path": "memory-bundles/vantage-point-analysis.md",
+        "name": "vantage-point-analysis.md",
+        "type": ".md",
+        "size": 2617
+      },
+      {
+        "path": "memory-bundles/kaggle-activities.md",
+        "name": "kaggle-activities.md",
+        "type": ".md",
+        "size": 584
+      },
+      {
+        "path": "memory-bundles/global-crawl-log.md",
+        "name": "global-crawl-log.md",
+        "type": ".md",
+        "size": 2510
+      },
+      {
+        "path": "memory-bundles/data-ingestion-log.md",
+        "name": "data-ingestion-log.md",
+        "type": ".md",
+        "size": 3932
+      },
+      {
+        "path": "memory-bundles/learning-progress.md",
+        "name": "learning-progress.md",
+        "type": ".md",
+        "size": 332
+      },
+      {
+        "path": "memory-bundles/glyph_mappings.json",
+        "name": "glyph_mappings.json",
+        "type": ".json",
+        "size": 7622
+      },
+      {
+        "path": "memory-bundles/outcome-relay.md",
+        "name": "outcome-relay.md",
+        "type": ".md",
+        "size": 34564
+      },
+      {
+        "path": "memory-bundles/optimization-log.md",
+        "name": "optimization-log.md",
+        "type": ".md",
+        "size": 2159
+      },
+      {
+        "path": "memory-bundles/performance-metrics.md",
+        "name": "performance-metrics.md",
+        "type": ".md",
+        "size": 702
+      },
+      {
+        "path": "memory-bundles/micro-ingest-log.md",
+        "name": "micro-ingest-log.md",
+        "type": ".md",
+        "size": 261
+      },
+      {
+        "path": "memory-bundles/data-transformation-log.md",
+        "name": "data-transformation-log.md",
+        "type": ".md",
+        "size": 1358
+      },
+      {
+        "path": "memory-bundles/activity-log.md",
+        "name": "activity-log.md",
+        "type": ".md",
+        "size": 2715
+      },
+      {
+        "path": "memory-bundles/workflow-improvements.md",
+        "name": "workflow-improvements.md",
+        "type": ".md",
+        "size": 3294
+      },
+      {
+        "path": "memory-bundles/benchmark-results.md",
+        "name": "benchmark-results.md",
+        "type": ".md",
+        "size": 1253
+      },
+      {
+        "path": "memory-bundles/shrm-v2-config.json",
+        "name": "shrm-v2-config.json",
+        "type": ".json",
+        "size": 1957
+      },
+      {
+        "path": "memory-bundles/onedrive-sync-log.md",
+        "name": "onedrive-sync-log.md",
+        "type": ".md",
+        "size": 602
+      },
+      {
+        "path": "memory-bundles/github-issue-resolutions.md",
+        "name": "github-issue-resolutions.md",
+        "type": ".md",
+        "size": 4696
+      },
+      {
+        "path": "memory-bundles/glyph_insights.json",
+        "name": "glyph_insights.json",
+        "type": ".json",
+        "size": 2616
+      },
+      {
+        "path": "memory-bundles/asynchronous-insights-latest.md",
+        "name": "asynchronous-insights-latest.md",
+        "type": ".md",
+        "size": 1908
+      },
+      {
+        "path": "memory-bundles/build-ledger.json",
+        "name": "build-ledger.json",
+        "type": ".json",
+        "size": 648
+      },
+      {
+        "path": "memory-bundles/resource-discovery-log.md",
+        "name": "resource-discovery-log.md",
+        "type": ".md",
+        "size": 5914
+      }
+    ]
+  },
+  "code_modules": {
+    "count": 11,
+    "modules": [
+      {
+        "path": "matrix/node_global_crawler.py",
+        "name": "node_global_crawler.py",
+        "module": "node_global_crawler",
+        "size": 13754,
+        "is_node": true
+      },
+      {
+        "path": "matrix/glyph_insights.py",
+        "name": "glyph_insights.py",
+        "module": "glyph_insights",
+        "size": 14095,
+        "is_node": false
+      },
+      {
+        "path": "matrix/node_self_reflect.py",
+        "name": "node_self_reflect.py",
+        "module": "node_self_reflect",
+        "size": 5095,
+        "is_node": true
+      },
+      {
+        "path": "matrix/node_diff_detector.py",
+        "name": "node_diff_detector.py",
+        "module": "node_diff_detector",
+        "size": 6125,
+        "is_node": true
+      },
+      {
+        "path": "matrix/glyph_mapper.py",
+        "name": "glyph_mapper.py",
+        "module": "glyph_mapper",
+        "size": 12145,
+        "is_node": false
+      },
+      {
+        "path": "matrix/node_micro_ingest.py",
+        "name": "node_micro_ingest.py",
+        "module": "node_micro_ingest",
+        "size": 15083,
+        "is_node": true
+      },
+      {
+        "path": "matrix/council_vote.py",
+        "name": "council_vote.py",
+        "module": "council_vote",
+        "size": 10733,
+        "is_node": false
+      },
+      {
+        "path": "matrix/test_enhancements.py",
+        "name": "test_enhancements.py",
+        "module": "test_enhancements",
+        "size": 16476,
+        "is_node": false
+      },
+      {
+        "path": "matrix/node_memory_compressor.py",
+        "name": "node_memory_compressor.py",
+        "module": "node_memory_compressor",
+        "size": 12254,
+        "is_node": true
+      },
+      {
+        "path": "matrix/node_session_ingestor.py",
+        "name": "node_session_ingestor.py",
+        "module": "node_session_ingestor",
+        "size": 5721,
+        "is_node": true
+      },
+      {
+        "path": "matrix/barrot_speak.py",
+        "name": "barrot_speak.py",
+        "module": "barrot_speak",
+        "size": 2427,
+        "is_node": false
+      }
+    ],
+    "node_count": 6
+  },
+  "scan_results": {
+    "files_by_category": {
+      "documentation": [
+        {
+          "path": "AGI_PUZZLE_PROTOCOL.md",
+          "size": 18752,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "aff226cd2255bfb05d55fa1959058cef4b955d7c5a611f93e1a7de2a608ccc26",
+          "extension": ".md"
+        },
+        {
+          "path": "PEER_TO_PEER_PINGPONG_PROTOCOL.md",
+          "size": 20937,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "aefe43d9ccf4e29876c861c265e7586b09094061faf343e8ece2e5b12c39442e",
+          "extension": ".md"
+        },
+        {
+          "path": "OUTPUT_LOGGING.md",
+          "size": 12578,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "043fcefb7066fcb5503e3e7a0013fe20dd5e947325cc6c26791c48c6993e4a67",
+          "extension": ".md"
+        },
+        {
+          "path": "VSCODE_SETUP.md",
+          "size": 7720,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "8f6f4bf57a0f889dd28d9c6a008a4f74cfb11ede5f0f790b65e2648197639c7b",
+          "extension": ".md"
+        },
+        {
+          "path": "DEFAULT_BRANCH_SUMMARY.md",
+          "size": 4182,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "32c46267211877962430fd724afe33513541187102db98fee5b5e43a74011156",
+          "extension": ".md"
+        },
+        {
+          "path": "requirements.txt",
+          "size": 161,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "8a416bf86a1dd94efef2d372781729b1d0ffc4e81e391fb907e1a3c091e56989",
+          "extension": ".txt"
+        },
+        {
+          "path": "INGESTION_RESPONSE_2025-12-28.md",
+          "size": 10904,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "78a3619a94c6672f25ea4aee8b91923f3cd438ce45149362fd4cbfcd5095aa02",
+          "extension": ".md"
+        },
+        {
+          "path": "UNIVERSAL_PINGPONG_PROTOCOL.md",
+          "size": 33046,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "2f922023145b2de64a6256a006f44335daadb651d27b10ac6a3e14ff647355a9",
+          "extension": ".md"
+        },
+        {
+          "path": "P2P_INTEGRATION_SUMMARY.md",
+          "size": 12005,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "bb8d4e36d348653e272d5610d28cd99411b7892de800902d1305deebb23a6b86",
+          "extension": ".md"
+        },
+        {
+          "path": "BARROT_HRM_VARIANTS.md",
+          "size": 19443,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "a46749d87d0d4b6758fa97f3c91e8f28770f6b691a4d847f4ebc6d7cadf6be1e",
+          "extension": ".md"
+        },
+        {
+          "path": "MULTI_AGENT_PARALLEL_SYSTEM.md",
+          "size": 14709,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "d64d5afd93a7fd00c99476aa434972707b49334ef2abe019d22c8d82876968c5",
+          "extension": ".md"
+        },
+        {
+          "path": "INGESTION_MANIFEST.md",
+          "size": 18919,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "fefe01f7cbafd0a564447ac445e4b449ad96f88ace4d8104782754b1b6482aa0",
+          "extension": ".md"
+        },
+        {
+          "path": "BRANCH_QUICK_REFERENCE.md",
+          "size": 1718,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "ff9acc238c6186245e5d647f71a2e108a4eba38a6dfe41c14c13d8b750a4b4b8",
+          "extension": ".md"
+        },
+        {
+          "path": "SAPIENT_HRM_INTEGRATION.md",
+          "size": 14227,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "a88ae5c5de5d0511d6ca1516f6aeefb89cf03ba69a46caba422db6bb6acdfd3c",
+          "extension": ".md"
+        },
+        {
+          "path": "HOW_THIS_HELPS.md",
+          "size": 15682,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "2882a2034c19126e0d9ebd8c989e9e61d298978511e3cced6fb141adb2c01e09",
+          "extension": ".md"
+        },
+        {
+          "path": "IMPLEMENTATION_SUMMARY.md",
+          "size": 7226,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "bd36bfcd0a5e02721c6d5d228dbaa4c5d6a65d52c261b562e0ab469a8f582aa1",
+          "extension": ".md"
+        },
+        {
+          "path": "CHINESE_JAPANESE_AI_MODELS.md",
+          "size": 12520,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "e2061f12030f7f833b7bc4f507a9e8a6563940a733d7128b8d893cf7d6e6b945",
+          "extension": ".md"
+        },
+        {
+          "path": "DEPLOYMENT.md",
+          "size": 7734,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "65cd55bb20004917cb18d48d5735b14f35e76d607d4587d1a9282091faa0425b",
+          "extension": ".md"
+        },
+        {
+          "path": "MMI_COMPLETION_SUMMARY.md",
+          "size": 9780,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "d3a66397fb7ce8c168f2ec1d5818369bb7d4e9fd87da5978679d756a3c65381c",
+          "extension": ".md"
+        },
+        {
+          "path": "ONEDRIVE_SYNC_SETUP.md",
+          "size": 4752,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "59bde784e60fff4ebe0c1578eaba892ed3878f443521b98034c323b41e6e1dd3",
+          "extension": ".md"
+        },
+        {
+          "path": "WORKFLOW_TROUBLESHOOTING.md",
+          "size": 6514,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "1ced38eb8945f38bc18a2d361abe60baa91f39d0edc76429503e6e543de8a548",
+          "extension": ".md"
+        },
+        {
+          "path": "README.md",
+          "size": 18971,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "d0b682fb7fc54784f74731cbdd0a164b1c05a5f6c593e0da49aa75cbbe23302f",
+          "extension": ".md"
+        },
+        {
+          "path": "QUANTUM_ENTANGLEMENT_SYSTEM.md",
+          "size": 22633,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "442dafcc74108211449266a95cd70d494390c9ead13769b7bec9ea3a1a2598a1",
+          "extension": ".md"
+        },
+        {
+          "path": "CASCADING_PINGPONG_PROTOCOL.md",
+          "size": 31157,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "60395b9d21231a53f54411f7f4adcac38d0abbc7321657f7986e9564481aa941",
+          "extension": ".md"
+        },
+        {
+          "path": "COGNITION_ENHANCEMENTS.md",
+          "size": 8689,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "190681a74b4387498e3669ad008113d2b6cf4393d6f6c955e9ae7f4ad97a1587",
+          "extension": ".md"
+        },
+        {
+          "path": "MONETIZATION_FRAMEWORK.md",
+          "size": 18404,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "f90d44855b197215139310775c213e6dea40fe24425da05f91b350a82228f5a2",
+          "extension": ".md"
+        },
+        {
+          "path": "DATA_TRANSFORMATION.md",
+          "size": 10418,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "d6962d33ebd6460e099def4b08232e47d653b9f94800df52346f3c666359cd71",
+          "extension": ".md"
+        },
+        {
+          "path": "DEFAULT_BRANCH_GUIDE.md",
+          "size": 5872,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "11d9384b5fde3829fea3b9f53b3783860d57ad271c83d0a4d2c730fa4687ba8b",
+          "extension": ".md"
+        },
+        {
+          "path": "PLATFORM_ALTERNATIVES_RESEARCH.md",
+          "size": 12714,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "7067f82b3a32c685e3c5fd1d1f9033898fdfb8fe3644d2788b7643968ed684c1",
+          "extension": ".md"
+        },
+        {
+          "path": "AGI_DEVELOPMENT.md",
+          "size": 14905,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "db5845086ed241126c30b63fb9895a2b67d4e171690049fd9043270a675461b3",
+          "extension": ".md"
+        },
+        {
+          "path": "GUMROAD.md",
+          "size": 3011,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "f0320107dd2ca224387bf3edc03c520d3d458c280cad53e137699e4b07fc87bf",
+          "extension": ".md"
+        },
+        {
+          "path": "MIGRATION_CHECKLIST.md",
+          "size": 2895,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "30d3a9a6ff9c192005e2f34134f46cd4fef3f9052a80d8a0117e7fe0ebece995",
+          "extension": ".md"
+        },
+        {
+          "path": "SETUP_VERIFICATION.md",
+          "size": 16462,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "74c4654e74aaebdfc7d8d25627b5d947a7580d68fb2b7faa2da1228bc0d7ee27",
+          "extension": ".md"
+        },
+        {
+          "path": "PROGRESSIVE_PINGPONG_UPGRADE.md",
+          "size": 21863,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "c0f8fd79d941e0e3032e72647d7380ae883c6d9d80717ca28e41eaa51068d206",
+          "extension": ".md"
+        },
+        {
+          "path": "MMI_ANALYSIS_REPORT.md",
+          "size": 11330,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "273748f3bfd447d379899b996bda031bac7411832783918e27c4503f6a9d94f5",
+          "extension": ".md"
+        },
+        {
+          "path": "AUTONOMOUS_OPERATIONS_PROTOCOL.md",
+          "size": 25512,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "5c941f223bf7db3b951f0226bbb75a4d0573ce632a5ff2b8b767ef14f86a963f",
+          "extension": ".md"
+        },
+        {
+          "path": "AGENT_CAPABILITY_ABSORPTION.md",
+          "size": 37945,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "4cb6d2c47e0436e8c4483a1ff789584e481c76f287cf6d362f57e85efb4f9778",
+          "extension": ".md"
+        },
+        {
+          "path": "AGENT_SPECIALIST_ROLES.md",
+          "size": 18471,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "e529e1cf5c21244c7780bd94cc22bf20aa2f3fae16792f5dc0145486badfd0ae",
+          "extension": ".md"
+        },
+        {
+          "path": "SPONSORS.md",
+          "size": 1131,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "bb6a75fcebbe5051950b3420f0c309ea2b55b582bf1eec916b2833ba2cd6b5b3",
+          "extension": ".md"
+        },
+        {
+          "path": "AI_BENCHMARK_EXAM_SYSTEM.md",
+          "size": 12702,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "documentation",
+          "hash": "2b44eceba5b8cf7d75a02d20bdb41e79958455873bb5e46fa208d55bc2491508",
+          "extension": ".md"
+        },
+        {
+          "path": "SPONSORSHIP.md",
+          "size": 8851,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "cf0a89970e2fcf02fe87d90c2ff1a9887ca0bdada139a321484062cac0a28013",
+          "extension": ".md"
+        },
+        {
+          "path": "claude-code-impact-event.md",
+          "size": 1589,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "f50aea42d85071c43b1e56d751909193c30b823c0cc9258f88cb1567be84b39b",
+          "extension": ".md"
+        },
+        {
+          "path": "MOBILE_QUICKSTART.md",
+          "size": 2077,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "72c0ce789da42d2e7faffc6d7d16f7e463c23541d008d1cc5851b162fc171a1f",
+          "extension": ".md"
+        },
+        {
+          "path": "MOBILE_SETUP.md",
+          "size": 9972,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "d9eb305263462e2a020dc37d61476b3106bd4db62e160c706e5a8086ea2ac28b",
+          "extension": ".md"
+        },
+        {
+          "path": "MERGE_MAIN_COMPLETION.md",
+          "size": 2223,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "documentation",
+          "hash": "f04d57fbef9b4b86b062e01bca34d348d8ef8106e1f7c26e8913c83f4c2d3827",
+          "extension": ".md"
+        },
+        {
+          "path": "runtime.txt",
+          "size": 13,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "ff3468967edf13c25fc5f4f6653df36e459a385374bf3f09a80be4a9dde90887",
+          "extension": ".txt"
+        },
+        {
+          "path": "matrix/README.md",
+          "size": 6988,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "15491ef51a90dae06730fa3d042558352b4842ca03947302d456cf1007b7a73d",
+          "extension": ".md"
+        },
+        {
+          "path": "spells/omega-ingest.md",
+          "size": 644,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "ce822abbe0cd4834029a76dc5d14e7442c2e7d7b831f9b141bd5de0ea9512ca3",
+          "extension": ".md"
+        },
+        {
+          "path": "spells/keyseer-insight.md",
+          "size": 425,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "49d7f026b0d4529d068d7eb0ce85f4e157f720e22d4e10a461f1131b2bef0bb9",
+          "extension": ".md"
+        },
+        {
+          "path": "SHRM-System/shrm-response-log.md",
+          "size": 166998,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "32d3a8bdcf22752a21df8c7fe38dad2f3be9e487e47ed9b2338cf5f5a3ea1630",
+          "extension": ".md"
+        },
+        {
+          "path": "SHRM-System/HOW-THIS-HELPS.md",
+          "size": 4426,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "ba8d875597625ef1d37ea1e1795f66310c651322081bdf692c27a996779b613c",
+          "extension": ".md"
+        },
+        {
+          "path": "SHRM-System/README.md",
+          "size": 1664,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "documentation",
+          "hash": "c0306c7b80f6df6184aea70573c61777f32f97576736b826f0bcc24945bccffa",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/recursive-analysis-log.md",
+          "size": 1384,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "482afdd34396ac2b00a1a0a8aefcb38d7fee8360624bd681b79277d50de49c7a",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/revenue-tracking.md",
+          "size": 3825,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "227440e93f9f5e50966c288e2085f150c3875939622c0c7ccba901980ff388af",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/TRACE_LOG.md",
+          "size": 13057,
+          "modified": "2026-01-03T21:04:37.678885",
+          "category": "documentation",
+          "hash": "72cfb94b60c4bb41cb8e601490bd90f301a5fdefc64f52e3362276acf46f0b4c",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/2025-trends-analysis.md",
+          "size": 15227,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "b751f0ba933cf3737efbeb1f3862111ed50543eecebcd0f19bddd4d99daa467d",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/p2p-validation-latest.md",
+          "size": 3138,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "7f5add07e851c43e621853d0e3fab75887559dfbf0123b716f922a3081d89871",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/ai-test-results.md",
+          "size": 6174,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "a4b1e6488dd0d630b3c01cdb30dffe23709d81796d4fe75477deaefff39b3a5b",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/agi-puzzle-progress.md",
+          "size": 735,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "48b2c984ba29f51e88ac94e5a9227705d61b0552fbcf15e671174304ab2f17e1",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/platform-research-log.md",
+          "size": 6041,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "c801cb6e676225488bda57dad449604e9f688b27a343b6b34836a3207470fbe6",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/search-engine-architecture.md",
+          "size": 8415,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "a3e7ee934771a9e944135bec05030f29a6e069301bafbc05976a6649fc3a135a",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/search-practice-log.md",
+          "size": 7596,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "0c3d30875773f6957ea7004719307dd79a21d057598f64b272e9b3e84b8eae79",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/vantage-point-analysis.md",
+          "size": 2617,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "f59c66c491aa49e0afec5fe4502ec72fe12034b51d7452ec1321c876ff624479",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/kaggle-activities.md",
+          "size": 584,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "eef4cd12324f514d1496ff8bc75de3c234f9d47980d00ea1011c6a7b7a21b164",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/global-crawl-log.md",
+          "size": 2510,
+          "modified": "2026-01-03T20:57:10.521756",
+          "category": "documentation",
+          "hash": "3d29f26f7fc21c2b96b5ab5f9c942cb1c0b6b5804fb0b64ae6b93ce0513319ed",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/data-ingestion-log.md",
+          "size": 3932,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "5cd5e2d2fbe8b83fb8ad84c79ed438f686f3293975eb36774c122d5f31725243",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/learning-progress.md",
+          "size": 332,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "fa78c387bff706ec66d473382a65f1783ebae4a87f3ed32c9a1742615a794998",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/outcome-relay.md",
+          "size": 34564,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "5d34a03df559f2738ca0f2afaa56fd71f91253ab486f8383f2a7c335c9a6c547",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/optimization-log.md",
+          "size": 2159,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "a43dafab92b0ee0d19ff5d6bc2d1b8a53395a6a48d3d28fd62dd4661bc883c76",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/performance-metrics.md",
+          "size": 702,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "150dddb65fc01dd15e5cd2dd63485f435b02dc49389668d63b9b3c559e08a15f",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/micro-ingest-log.md",
+          "size": 261,
+          "modified": "2026-01-03T21:04:37.678885",
+          "category": "documentation",
+          "hash": "25fe746019f1d5d70396385c39ba81208a201089f0bf829e29a0504391ec6033",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/data-transformation-log.md",
+          "size": 1358,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "dcbca2e080a190697f6ac91164e48fc8b990523e6013acf17668b2b870b5817a",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/activity-log.md",
+          "size": 2715,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "646911438105ba04aa17db58eab0ccd529fbd2c15480f43afdf7015999a79c41",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/workflow-improvements.md",
+          "size": 3294,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "21ac828f7546f3e6d9e143c906f8085042c443a78f09fdb7d7d99e12e0bde0e8",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/benchmark-results.md",
+          "size": 1253,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "a40fda20954eaf2b8bfaf1bf964344001d6a9b42c8506d5ffad1c2fdb9f5b2bc",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/onedrive-sync-log.md",
+          "size": 602,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "a566fb8cdd6a2e155e0f845de5992a223ccf87dbea7539cef19bfa12ade29688",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/github-issue-resolutions.md",
+          "size": 4696,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "051ffb3320749496367b24598c27634764756868106cba920630e69ada3b506a",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/asynchronous-insights-latest.md",
+          "size": 1908,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "documentation",
+          "hash": "9ff1c6aebbe5e7290bb1437c7c8eca7e7b558724ea8c376560f640700497c872",
+          "extension": ".md"
+        },
+        {
+          "path": "memory-bundles/resource-discovery-log.md",
+          "size": 5914,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "documentation",
+          "hash": "c5cc1423f5f490afd335a2bd28bd3268f1f0b70074486c3cf1ae96d5fbda9725",
+          "extension": ".md"
+        },
+        {
+          "path": "gumroad/README.md",
+          "size": 741,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "documentation",
+          "hash": "9a3ceb09212988daf1b7011b1922f920d92371786f9979a1b34efb7df8e45a63",
+          "extension": ".md"
+        }
+      ],
+      "code": [
+        {
+          "path": "barrot_bootstrap.py",
+          "size": 1247,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "code",
+          "hash": "5243545f92ebe9c0164bf862ee3d4bab211bd64693c5964af5cad402af9c71d2",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/node_global_crawler.py",
+          "size": 13754,
+          "modified": "2026-01-03T20:56:41.679561",
+          "category": "code",
+          "hash": "a294cb7e1d0e75fd0d6550e7bb7b70b31aa333bf3649f732a2413d708e5addf6",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/glyph_insights.py",
+          "size": 14095,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "code",
+          "hash": "5b3b54d0ead7e9607c89bc5258893908cfa4eb43b9e33acea2517866e268e35a",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/node_self_reflect.py",
+          "size": 5095,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "code",
+          "hash": "b6f7b8483b828d1362cba5cd45181b4dc373d06e27ab21909cd591988bbced61",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/node_diff_detector.py",
+          "size": 6125,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "code",
+          "hash": "176fde0a80fab62289acdc98e09270bb871739d1f74dd11997e3b4fe70af58a5",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/glyph_mapper.py",
+          "size": 12145,
+          "modified": "2026-01-03T21:04:29.106825",
+          "category": "code",
+          "hash": "1f2129e2a6135dab82015b896448b7fc32f8284e00f4d08e78a08f5e25700d00",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/node_micro_ingest.py",
+          "size": 15083,
+          "modified": "2026-01-03T21:03:50.928556",
+          "category": "code",
+          "hash": "b5c09944c62d2d3d6b2b93ad9edbfbefe45fb727f13c0d172b11853fa8b0c949",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/council_vote.py",
+          "size": 10733,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "code",
+          "hash": "1e904ff874a54650a47e0d8942b17a184b164b7cb0121bb29b824aa8222eb9f8",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/test_enhancements.py",
+          "size": 16476,
+          "modified": "2026-01-03T21:02:39.441045",
+          "category": "code",
+          "hash": "869430bcc16696c1681794843a7e62191e3298de9749e541aebba14cbe29c642",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/node_memory_compressor.py",
+          "size": 12254,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "code",
+          "hash": "0dc139434fa6c6ac4b1550e57b6865496f9de90750686a6d4fb07d7a833bed98",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/node_session_ingestor.py",
+          "size": 5721,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "code",
+          "hash": "228bcaed9199ce028161bab4269face585120845d16562e6eb1f530bbebf65f3",
+          "extension": ".py"
+        },
+        {
+          "path": "matrix/barrot_speak.py",
+          "size": 2427,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "code",
+          "hash": "ee564061924b330dfa4300c92f76a435578c719180869a06fd5989ce62514786",
+          "extension": ".py"
+        }
+      ],
+      "config": [
+        {
+          "path": "barrot_manifest.json",
+          "size": 1042,
+          "modified": "2026-01-03T20:57:10.521756",
+          "category": "config",
+          "hash": "65f20d7c2c94522ea0e3eaec1063f1f9cf3c34b90d7452d305da0c5d33ce4aa9",
+          "extension": ".json"
+        },
+        {
+          "path": "render.yaml",
+          "size": 381,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "dc1731acb5e568602227bad826af1a5b993ad56bb990558ff8c303cc38bc4c2d",
+          "extension": ".yaml"
+        },
+        {
+          "path": "build_manifest.yaml",
+          "size": 231,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "b8d35e2591e74b169105a47518387d30c663e4dde5ce9bc662cb3b40a7e233cd",
+          "extension": ".yaml"
+        },
+        {
+          "path": "fly.toml",
+          "size": 360,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "a98af6dffcfaa02fe119da5da9d85ecd9f9cc0d869b59f7fe3d217010530bed3",
+          "extension": ".toml"
+        },
+        {
+          "path": "railway.toml",
+          "size": 196,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "21d3660746a2670bee51d26b1a9a9d65beee75716ac3d1015197ebbd35beddc9",
+          "extension": ".toml"
+        },
+        {
+          "path": "app.json",
+          "size": 775,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "cc2fd12ee9327565c46e103a9783eba7bcc630b5ae0be8c645df2a87cb82b340",
+          "extension": ".json"
+        },
+        {
+          "path": "package.json",
+          "size": 468,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "5ed65659260c56f39736797eef2ad4d983d6bd516dc3c2082c9a95e8da1994c7",
+          "extension": ".json"
+        },
+        {
+          "path": "vercel.json",
+          "size": 75,
+          "modified": "2026-01-03T20:53:43.648324",
+          "category": "config",
+          "hash": "e4e4739e926b990a397b90792b0605f1d1c1281446f5d1f3bb81149d0d78953e",
+          "extension": ".json"
+        },
+        {
+          "path": "Barrot-Agent/build_manifest.yaml",
+          "size": 814,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "config",
+          "hash": "7578af37d5e4427265ea3c0c81b39bac7793daf0c6153c914785174e7ab084bd",
+          "extension": ".yaml"
+        },
+        {
+          "path": ".vscode/settings.json",
+          "size": 935,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "f4b259c5a8692b39b97f8365b2e394889200d1ca58ad8b6410474eee1d6be528",
+          "extension": ".json"
+        },
+        {
+          "path": ".vscode/tasks.json",
+          "size": 1123,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "65cbdf979a9dbda3c7ee4ffa0d9c6b2a892f3d4a3fc75434350db68535d58afb",
+          "extension": ".json"
+        },
+        {
+          "path": ".vscode/extensions.json",
+          "size": 439,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "7af4b8da461ac5c66e94e41f3f030169f0d63c1f4703082c71e696dadbba08b9",
+          "extension": ".json"
+        },
+        {
+          "path": ".vscode/launch.json",
+          "size": 448,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "27058981c7936a5e206ecd8bccc2279821247ef9998bf7f8038023f6c75b14a6",
+          "extension": ".json"
+        },
+        {
+          "path": ".github/FUNDING.yml",
+          "size": 583,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "1f2155d79af6851907efbde0367fde0c0774584526d3b8b07311f0364ba88614",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/agi-puzzle-discovery.yml",
+          "size": 4263,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "d4849c63e110ca0335cb7e3c6c1fd220c1f8db87566385f3568dc263d0602a54",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/arc-agi-parallel-test.yml",
+          "size": 3648,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "8a53dfa8f618131d5ca55626f6b71381bbba022760320438e186d9e7d3d42845",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/Barrot.Repo.Cleanup.yml",
+          "size": 1051,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "e45829f02ebffd00f444b545d16ab3dc7d54f3a8f3cdde1338b9b7cba06cd8e7",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/barrot-cognition.yml",
+          "size": 4054,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "89b5f12b3d30f40743599cc2f9d9a0737ee730ce41a0e88f807f28d244f5a327",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/Barrot-SHRM-PingPong.yml",
+          "size": 12655,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "443a3cab4da7f7842feb49b65b917149ccdeb0cf38aa5f62c9ee9ed9b86eab9f",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/BBR.yml",
+          "size": 2367,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "da3996a11ca27e3d533f221dbd671343c8b3870f5e3aa11bea99d84d4e847b83",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/barrot-bundles.yml",
+          "size": 769,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "cdad1983ad650ed224ea63dd1f0805229b9e55754ad0bf4593670b28cce2eb50",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/ai-benchmark-testing.yml",
+          "size": 9248,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "0eb4ccde746c33498c5929e6820eaa5e1178b73eece51b61d892faadd4c2e443",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/default-branch-sync.yml",
+          "size": 2336,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "f0484b3e1af3e72b78c89dbca8f90b2107639132df54e7af3648851e3bae6d9a",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/peer-to-peer-validation.yml",
+          "size": 35187,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "4398ec066571bc21929accb767f8bed7541ee9fba79ec9cd0dd24b5685f4f5c0",
+          "extension": ".yml"
+        },
+        {
+          "path": ".github/workflows/asynchronous-insights.yml",
+          "size": 28313,
+          "modified": "2026-01-03T20:53:43.641325",
+          "category": "config",
+          "hash": "2967983ee21208c99d6acbee669045ff3c6bae5540ee2507adb550eb13d77b75",
+          "extension": ".yml"
+        },
+        {
+          "path": "tool_profiles/council_vote.yaml",
+          "size": 973,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "32f103f78aae3a7767a2088c56f7b1c971346a1b84b206e612e652a833c1a42d",
+          "extension": ".yaml"
+        },
+        {
+          "path": "tool_profiles/self_reflect.yaml",
+          "size": 1042,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "6155f45c5d4b37a46dfcb63ef305f525eb2847f07124fd7c82b887ae5dd94c9f",
+          "extension": ".yaml"
+        },
+        {
+          "path": "tool_profiles/diff_detector.yaml",
+          "size": 1045,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "0bf765d68decebeed52c4300e8db8a3306e426eaa9d203aa3818d89e8813da31",
+          "extension": ".yaml"
+        },
+        {
+          "path": "tool_profiles/memory_compressor.yaml",
+          "size": 1085,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "a3739a3c989ce9afe4993fcbfb4de59f5dd2d594249e3b6d47e827511dbb659b",
+          "extension": ".yaml"
+        },
+        {
+          "path": "tool_profiles/session_ingestor.yaml",
+          "size": 1023,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "d4d461642b4cb3c9ce182dda6ccad15c18041cfe145d08b06a674a3db7f5f112",
+          "extension": ".yaml"
+        },
+        {
+          "path": "glyphs/regional_access_glyph.yml",
+          "size": 1196,
+          "modified": "2026-01-03T20:55:44.312191",
+          "category": "config",
+          "hash": "ada09484f3b08317ba3c095dfa6c3ce5761f6e80e45dc7ac2eb57703056184b5",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/hermetic_quantum_fusion_glyph.yml",
+          "size": 1970,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "b693eb455ccc7c33b3990aeb292c6874633c7c61820ab4ecbabb7d08f2fc3b39",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/organoid_reasoning_glyph.yml",
+          "size": 1421,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "93e551cc5896887a683ecbf5ac9b415c497ba4a4867cfa320466f85f0c062a06",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/temporal_plasticity_glyph.yml",
+          "size": 1251,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "4c86bb5159d1e1fcb26274f65cb139987efbe0a287eee5f8e80acbc4044472fd",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/global_crawl_initiated_glyph.yml",
+          "size": 1211,
+          "modified": "2026-01-03T20:55:44.312191",
+          "category": "config",
+          "hash": "d55c3a994f2bebfa1456ef1c703edbfee7a780b4cc51041c2eafc955a9388739",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/micro_ingest_complete_glyph.yml",
+          "size": 1204,
+          "modified": "2026-01-03T21:04:10.739698",
+          "category": "config",
+          "hash": "65f795838542ef95c5ca699e69fdd640079a8cf0ac5c8dcea735b48c173cae4e",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/access_block_glyph.yml",
+          "size": 1189,
+          "modified": "2026-01-03T20:55:44.312191",
+          "category": "config",
+          "hash": "9ff19ee9f069961bddee253546771472f50f2de11e3af97f18929c81a3b15a83",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/crawl_synchronization_glyph.yml",
+          "size": 1321,
+          "modified": "2026-01-03T20:55:44.312191",
+          "category": "config",
+          "hash": "efe5e847dee5624ea0d6bd64e626c6a7de7b07c3a79ebe3bf4b49e03782ed3dd",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/global_cognition_expansion_glyph.yml",
+          "size": 1379,
+          "modified": "2026-01-03T20:55:44.312191",
+          "category": "config",
+          "hash": "ca590df617780d3418858b45d9e909720dbf16a29e46eeec3f1c026a2cd836e3",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/memory_compression_glyph.yml",
+          "size": 1339,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "0e95c9e621f09f01667f85cca5ab2671991257b7ff1dbce9201ef5acb74239a9",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/glyph_misalignment_recovery.yml",
+          "size": 1196,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "e5527492e6b62f38f5a11fdc7d343d25f9a5f044b8c89a0873ce213cd516b88b",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/session_trace_glyph.yml",
+          "size": 845,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "2e395fc4b271c95cb0aba4b8e3837fdf01e13b3883b572af520b8a737ae63dec",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/council_alignment_glyph.yml",
+          "size": 1165,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "7e65d1450d516928f27d4668ce7a203711f5e43847a05b8e308768e69028603a",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/micro_ingest_initiated_glyph.yml",
+          "size": 1191,
+          "modified": "2026-01-03T21:04:10.739698",
+          "category": "config",
+          "hash": "fbf41098517901066ad5e524b40e52e59117aa1e535d8bffb7fc354f17ad46bb",
+          "extension": ".yml"
+        },
+        {
+          "path": "glyphs/user_defined/custom_workflow_glyph.yml",
+          "size": 789,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "config",
+          "hash": "759858e6f9bae4da1b11027c6c18a268bccb8399d7c30b8f7b8a149cee4bf532",
+          "extension": ".yml"
+        },
+        {
+          "path": "SHRM-System/shrm-config.yaml",
+          "size": 584,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "config",
+          "hash": "10def73e1c8100687539a2902526d67c8c1722d3f0d7bf36ddb4f02fd7b57911",
+          "extension": ".yaml"
+        },
+        {
+          "path": "memory-bundles/council_history.json",
+          "size": 1441,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "config",
+          "hash": "cc2b24f15b1450bfa65eab11df83b2e567e179a7c65b451d35d34ad7f99e46ea",
+          "extension": ".json"
+        },
+        {
+          "path": "memory-bundles/glyph_mappings.json",
+          "size": 7622,
+          "modified": "2026-01-03T21:04:37.677885",
+          "category": "config",
+          "hash": "6e5f63e19dc861df311f6055734b7c8d8bc08b3a235fbec0fe309fc210c8e0c8",
+          "extension": ".json"
+        },
+        {
+          "path": "memory-bundles/shrm-v2-config.json",
+          "size": 1957,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "e679b3adbf3936da17be6b200ddedc97f9e49c746fb073956374fe3f29905bb1",
+          "extension": ".json"
+        },
+        {
+          "path": "memory-bundles/glyph_insights.json",
+          "size": 2616,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "config",
+          "hash": "6d8d8c482e06107a161af137f73468f241330aa55e4357c99949f519567a0bb7",
+          "extension": ".json"
+        },
+        {
+          "path": "memory-bundles/build-ledger.json",
+          "size": 648,
+          "modified": "2026-01-03T20:53:43.646324",
+          "category": "config",
+          "hash": "28749907196698752644415a7e060b13f2c19b2ae2eb35f52290140321c433b5",
+          "extension": ".json"
+        },
+        {
+          "path": "memory-bundles/protocols/registry.json",
+          "size": 159,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "5d772313d5296ff5d5209467c3ca588c17db700fd166a832251951516978dc31",
+          "extension": ".json"
+        },
+        {
+          "path": "simulation-stack/shrm-v2-config.yml",
+          "size": 2353,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "config",
+          "hash": "58147af54a4c359f316d2e95e8445d35609a6ccdc1653713b4c3d120c0978329",
+          "extension": ".yml"
+        },
+        {
+          "path": "Barrot-Bundles/v\u039461.0-shrm-v2-evolution.yml",
+          "size": 9953,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "config",
+          "hash": "0e72eaf4a6779144c625c6b9942a36c9c7d7ded68846597389b4c1148e3afcd3",
+          "extension": ".yml"
+        }
+      ],
+      "web": [
+        {
+          "path": "site/index.html",
+          "size": 42155,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "web",
+          "hash": "e4c2cc7e047c40c42fea8bea6596df316c9d4566456ed85799800ced82217cc5",
+          "extension": ".html"
+        },
+        {
+          "path": "site/glyph-dashboard.html",
+          "size": 16849,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "web",
+          "hash": "038c0fbb743be718d1a2a30febee235d6833f3061d576126429ef5413d6907ce",
+          "extension": ".html"
+        }
+      ],
+      "data": [],
+      "glyphs": [],
+      "scripts": [
+        {
+          "path": "migrate-default-branch.sh",
+          "size": 4972,
+          "modified": "2026-01-03T20:53:43.647325",
+          "category": "scripts",
+          "hash": "e17680cae280859d533a8d88c15d0f611e7effe91b430e0b22ba6724066468a1",
+          "extension": ".sh"
+        },
+        {
+          "path": "delete-main-branch.sh",
+          "size": 973,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "scripts",
+          "hash": "03df4f8b3c6366648268b78ee69200fe7a5c9725a8905ad73d59e86c112fc104",
+          "extension": ".sh"
+        },
+        {
+          "path": "barrot.ps1",
+          "size": 290,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "scripts",
+          "hash": "b914d83721e73d75baf5ec85ec0e2e3bc2bfe6bbbb52a3a4c068fb75fbc0b007",
+          "extension": ".ps1"
+        }
+      ],
+      "other": [
+        {
+          "path": "Dockerfile",
+          "size": 479,
+          "modified": "2026-01-03T20:53:43.643324",
+          "category": "other",
+          "hash": "601bf083f6922aeb4239bd9f8e60659f4575e5311ead1f5984db9c3780694b3b",
+          "extension": ""
+        },
+        {
+          "path": "Procfile",
+          "size": 84,
+          "modified": "2026-01-03T20:53:43.644325",
+          "category": "other",
+          "hash": "275ed0e57f887fe06e102af7c72021677ae7a9a1505cc61995e538ca07279d32",
+          "extension": ""
+        },
+        {
+          "path": "Barrot-Bundles/.gitkeep",
+          "size": 1,
+          "modified": "2026-01-03T20:53:43.642324",
+          "category": "other",
+          "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+          "extension": ""
+        },
+        {
+          "path": "gumroad/api/.gitkeep",
+          "size": 59,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "other",
+          "hash": "49d32d665e0b01e7b7c17d31b7fb3c44a209a8c5f2a2b24c61fef6a8b2bc285d",
+          "extension": ""
+        },
+        {
+          "path": "gumroad/products/.gitkeep",
+          "size": 58,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "other",
+          "hash": "5430d8d2d151d939e3d75c57ecbbb41f5595b4ae941c7888421babc15625eb20",
+          "extension": ""
+        },
+        {
+          "path": "gumroad/webhooks/.gitkeep",
+          "size": 55,
+          "modified": "2026-01-03T20:53:43.645324",
+          "category": "other",
+          "hash": "47478636b83e35b7666fcf47c928580a6117af806b38ecbc4418dd112f9a4a78",
+          "extension": ""
+        }
+      ]
+    },
+    "total_files": 157,
+    "total_size": 1234257,
+    "scan_timestamp": "2026-01-03T21:04:37.691579"
+  }
+}

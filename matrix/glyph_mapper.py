@@ -110,6 +110,24 @@ GLYPH_ACTION_MAPPINGS = {
         ],
         "priority": "high",
         "auto_trigger": ["node_global_crawler"]
+    },
+    "MICRO_INGEST_INITIATED_GLYPH": {
+        "actions": [
+            "Initialize repository scanning systems",
+            "Prepare content categorization engine",
+            "Begin systematic file ingestion"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_micro_ingest"]
+    },
+    "MICRO_INGEST_COMPLETE_GLYPH": {
+        "actions": [
+            "Finalize ingestion index",
+            "Update cognition framework with ingested content",
+            "Generate ingestion summary report"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_micro_ingest"]
     }
 }
 
