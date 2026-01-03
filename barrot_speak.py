@@ -179,8 +179,9 @@ def _emit_speak_glyph(message: str, mode: str, timestamp: str):
         message_preview = message[:100]
         if len(message) > 100:
             message_preview += "..."
-        # Escape special characters for YAML
-        message_preview = message_preview.replace('"', '\\"').replace('\n', '\\n')
+        # Escape special characters for YAML using JSON-compatible escaping,
+        # which is valid inside YAML double-quoted strings.
+        message_preview = json.dumps(message_preview)[1:-1]
         
         glyph_content = f"""glyph_name: BARROT_SPEAK_GLYPH
 glyph_id: SPEAK-001
