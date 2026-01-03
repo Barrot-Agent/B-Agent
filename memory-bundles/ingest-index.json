@@ -1,9 +1,9 @@
 {
-  "ingestion_timestamp": "2026-01-03T21:04:37.719786",
+  "ingestion_timestamp": "2026-01-03T21:09:13.019871",
   "repository": {
-    "total_files": 157,
-    "total_size_bytes": 1234257,
-    "total_size_mb": 1.177079200744629
+    "total_files": 159,
+    "total_size_bytes": 1311064,
+    "total_size_mb": 1.2503280639648438
   },
   "glyphs": {
     "count": 15,
@@ -101,7 +101,7 @@
     ]
   },
   "documentation": {
-    "count": 44,
+    "count": 45,
     "files": [
       {
         "path": "AGI_PUZZLE_PROTOCOL.md",
@@ -177,6 +177,11 @@
         "path": "IMPLEMENTATION_SUMMARY.md",
         "name": "IMPLEMENTATION_SUMMARY.md",
         "size": 7226
+      },
+      {
+        "path": "GLOBAL_CRAWLING_IMPLEMENTATION.md",
+        "name": "GLOBAL_CRAWLING_IMPLEMENTATION.md",
+        "size": 9863
       },
       {
         "path": "CHINESE_JAPANESE_AI_MODELS.md",
@@ -326,7 +331,7 @@
     ]
   },
   "memory_bundles": {
-    "count": 32,
+    "count": 33,
     "bundles": [
       {
         "path": "memory-bundles/recursive-analysis-log.md",
@@ -344,7 +349,7 @@
         "path": "memory-bundles/TRACE_LOG.md",
         "name": "TRACE_LOG.md",
         "type": ".md",
-        "size": 13057
+        "size": 13849
       },
       {
         "path": "memory-bundles/2025-trends-analysis.md",
@@ -401,6 +406,12 @@
         "size": 2617
       },
       {
+        "path": "memory-bundles/ingest-index.json",
+        "name": "ingest-index.json",
+        "type": ".json",
+        "size": 63029
+      },
+      {
         "path": "memory-bundles/kaggle-activities.md",
         "name": "kaggle-activities.md",
         "type": ".md",
@@ -428,7 +439,7 @@
         "path": "memory-bundles/glyph_mappings.json",
         "name": "glyph_mappings.json",
         "type": ".json",
-        "size": 7622
+        "size": 8668
       },
       {
         "path": "memory-bundles/outcome-relay.md",
@@ -452,7 +463,7 @@
         "path": "memory-bundles/micro-ingest-log.md",
         "name": "micro-ingest-log.md",
         "type": ".md",
-        "size": 261
+        "size": 554
       },
       {
         "path": "memory-bundles/data-transformation-log.md",
@@ -564,7 +575,7 @@
         "path": "matrix/node_micro_ingest.py",
         "name": "node_micro_ingest.py",
         "module": "node_micro_ingest",
-        "size": 15083,
+        "size": 15692,
         "is_node": true
       },
       {
@@ -734,6 +745,14 @@
           "modified": "2026-01-03T20:53:43.643324",
           "category": "documentation",
           "hash": "bd36bfcd0a5e02721c6d5d228dbaa4c5d6a65d52c261b562e0ab469a8f582aa1",
+          "extension": ".md"
+        },
+        {
+          "path": "GLOBAL_CRAWLING_IMPLEMENTATION.md",
+          "size": 9863,
+          "modified": "2026-01-03T21:06:39.967747",
+          "category": "documentation",
+          "hash": "cde902d732c4edd1b08dbf989243f5352562b050fc3b58f1a19962827736daf4",
           "extension": ".md"
         },
         {
@@ -1042,10 +1061,10 @@
         },
         {
           "path": "memory-bundles/TRACE_LOG.md",
-          "size": 13057,
-          "modified": "2026-01-03T21:04:37.678885",
+          "size": 13849,
+          "modified": "2026-01-03T21:09:12.978835",
           "category": "documentation",
-          "hash": "72cfb94b60c4bb41cb8e601490bd90f301a5fdefc64f52e3362276acf46f0b4c",
+          "hash": "7f654c81bcde256223ac9417ac2225282ba52aadb9c2cd771f75a2c923f39cef",
           "extension": ".md"
         },
         {
@@ -1170,10 +1189,10 @@
         },
         {
           "path": "memory-bundles/micro-ingest-log.md",
-          "size": 261,
-          "modified": "2026-01-03T21:04:37.678885",
+          "size": 554,
+          "modified": "2026-01-03T21:09:12.978835",
           "category": "documentation",
-          "hash": "25fe746019f1d5d70396385c39ba81208a201089f0bf829e29a0504391ec6033",
+          "hash": "08877ae7e5bc7c58f90f53f9475e35c861892915e3d019e7500874641c9803d6",
           "extension": ".md"
         },
         {
@@ -1252,10 +1271,10 @@
       "code": [
         {
           "path": "barrot_bootstrap.py",
-          "size": 1247,
-          "modified": "2026-01-03T20:53:43.645324",
+          "size": 2068,
+          "modified": "2026-01-03T21:05:17.058164",
           "category": "code",
-          "hash": "5243545f92ebe9c0164bf862ee3d4bab211bd64693c5964af5cad402af9c71d2",
+          "hash": "49b4d2de6da964c26f4b838766220e684ff5d6f05b903aec60e2995722eb0503",
           "extension": ".py"
         },
         {
@@ -1300,10 +1319,10 @@
         },
         {
           "path": "matrix/node_micro_ingest.py",
-          "size": 15083,
-          "modified": "2026-01-03T21:03:50.928556",
+          "size": 15692,
+          "modified": "2026-01-03T21:08:56.079710",
           "category": "code",
-          "hash": "b5c09944c62d2d3d6b2b93ad9edbfbefe45fb727f13c0d172b11853fa8b0c949",
+          "hash": "87ec1705d9d585082bc4c8c57106d1be2cf5ea7938d846bba65f251ed17a0512",
           "extension": ".py"
         },
         {
@@ -1350,10 +1369,10 @@
       "config": [
         {
           "path": "barrot_manifest.json",
-          "size": 1042,
-          "modified": "2026-01-03T20:57:10.521756",
+          "size": 1396,
+          "modified": "2026-01-03T21:04:37.721885",
           "category": "config",
-          "hash": "65f20d7c2c94522ea0e3eaec1063f1f9cf3c34b90d7452d305da0c5d33ce4aa9",
+          "hash": "f0388951cde3c28bbcc202c873fc39142723307d088bec5c2f80f85ee344a160",
           "extension": ".json"
         },
         {
@@ -1725,11 +1744,19 @@
           "extension": ".json"
         },
         {
-          "path": "memory-bundles/glyph_mappings.json",
-          "size": 7622,
-          "modified": "2026-01-03T21:04:37.677885",
+          "path": "memory-bundles/ingest-index.json",
+          "size": 63029,
+          "modified": "2026-01-03T21:04:37.720885",
           "category": "config",
-          "hash": "6e5f63e19dc861df311f6055734b7c8d8bc08b3a235fbec0fe309fc210c8e0c8",
+          "hash": "da04ce3688dd4a34c82f11b4448ee8b9bd4f37c313194ad2ccf0a14ac244d3c2",
+          "extension": ".json"
+        },
+        {
+          "path": "memory-bundles/glyph_mappings.json",
+          "size": 8668,
+          "modified": "2026-01-03T21:09:12.978835",
+          "category": "config",
+          "hash": "b766629839e90a034171400fbe828a1a2a654ad1ef3215dcca97eb88b83e6b85",
           "extension": ".json"
         },
         {
@@ -1878,8 +1905,8 @@
         }
       ]
     },
-    "total_files": 157,
-    "total_size": 1234257,
-    "scan_timestamp": "2026-01-03T21:04:37.691579"
+    "total_files": 159,
+    "total_size": 1311064,
+    "scan_timestamp": "2026-01-03T21:09:12.992298"
   }
 }

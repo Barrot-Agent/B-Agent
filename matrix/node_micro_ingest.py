@@ -206,25 +206,40 @@ def ingest_glyphs() -> Dict:
     glyphs_path = REPO_ROOT / "glyphs"
     ingested_glyphs = []
     
+    # Try to import yaml at function level
+    try:
+        import yaml
+        yaml_available = True
+    except ImportError:
+        yaml_available = False
+    
     if glyphs_path.exists():
         for glyph_file in glyphs_path.rglob("*.yml"):
-            try:
-                import yaml
-                with open(glyph_file, 'r') as f:
-                    glyph_data = yaml.safe_load(f)
-                
-                ingested_glyphs.append({
-                    "file": str(glyph_file.relative_to(REPO_ROOT)),
-                    "glyph_name": glyph_data.get("glyph_name", "UNKNOWN"),
-                    "glyph_id": glyph_data.get("glyph_id", "UNKNOWN"),
-                    "version": glyph_data.get("version", "UNKNOWN")
-                })
-            except:
-                # If yaml not available or parse error, just record the file
+            if yaml_available:
+                try:
+                    with open(glyph_file, 'r') as f:
+                        glyph_data = yaml.safe_load(f)
+                    
+                    ingested_glyphs.append({
+                        "file": str(glyph_file.relative_to(REPO_ROOT)),
+                        "glyph_name": glyph_data.get("glyph_name", "UNKNOWN"),
+                        "glyph_id": glyph_data.get("glyph_id", "UNKNOWN"),
+                        "version": glyph_data.get("version", "UNKNOWN")
+                    })
+                except (yaml.YAMLError, Exception) as e:
+                    # If parse error, just record the file
+                    ingested_glyphs.append({
+                        "file": str(glyph_file.relative_to(REPO_ROOT)),
+                        "glyph_name": glyph_file.stem.upper(),
+                        "parse_error": True,
+                        "error_message": str(e)
+                    })
+            else:
+                # YAML not available, record file without parsing
                 ingested_glyphs.append({
                     "file": str(glyph_file.relative_to(REPO_ROOT)),
                     "glyph_name": glyph_file.stem.upper(),
-                    "parse_error": True
+                    "yaml_unavailable": True
                 })
     
     print(f"  ✓ Ingested {len(ingested_glyphs)} glyph definitions")

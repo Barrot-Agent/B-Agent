@@ -497,3 +497,27 @@ The council requires further deliberation due to disagreement.
 3. Generate ingestion summary report
 
 **Context:** {'total_files': 157, 'total_size_mb': 1.18, 'glyphs_ingested': 15, 'ingestion_status': 'complete'}
+
+### Glyph Mapping: MICRO_INGEST_INITIATED_GLYPH
+**Timestamp:** 2026-01-03T21:09:12.978963  
+**Emitter:** node_micro_ingest  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Initialize repository scanning systems
+2. Prepare content categorization engine
+3. Begin systematic file ingestion
+
+**Context:** {'ingest_type': 'massive_repository_scan', 'repo_root': '/home/runner/work/B-Agent/B-Agent'}
+
+### Glyph Mapping: MICRO_INGEST_COMPLETE_GLYPH
+**Timestamp:** 2026-01-03T21:09:13.021487  
+**Emitter:** node_micro_ingest  
+**Priority:** high
+
+**Follow-up Actions:**
+1. Finalize ingestion index
+2. Update cognition framework with ingested content
+3. Generate ingestion summary report
+
+**Context:** {'total_files': 159, 'total_size_mb': 1.25, 'glyphs_ingested': 15, 'ingestion_status': 'complete'}
