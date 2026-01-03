@@ -1,0 +1,50 @@
+node_name: node_continuous_sync_engine
+node_id: COGNITIVE-012
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Maintains a real-time synchronization loop across all Barrot components.
+  Monitors memory-bundles, matrix, tool_profiles, and barrot_manifest.json.
+  Reconciles all new inputs with existing symbolic structures.
+
+capabilities:
+  - real_time_monitoring
+  - change_detection
+  - component_synchronization
+  - reconciliation
+
+input_sources:
+  - memory-bundles/
+  - matrix/
+  - tool_profiles/
+  - barrot_manifest.json
+
+output_artifacts:
+  - memory-bundles/sync_state.json
+  - memory-bundles/continuous_sync_results.json
+  - memory-bundles/TRACE_LOG.md
+
+emits_glyphs:
+  - CONTINUOUS_SYNCHRONIZATION_GLYPH
+
+dependencies:
+  - glyph_mapper
+
+execution_frequency: continuous
+
+priority: critical
+
+parameters:
+  sync_interval_seconds: 300
+  hash_algorithm: sha256
+  max_changes_per_cycle: 100
+
+integration_points:
+  - memory_bundles
+  - matrix
+  - tool_profiles
+  - manifest
+  - change_detection
+  - reconciliation_engine
+  - glyph_system

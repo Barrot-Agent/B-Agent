@@ -65,6 +65,46 @@ GLYPH_ACTION_MAPPINGS = {
         ],
         "priority": "medium",
         "auto_trigger": ["node_session_ingestor"]
+    },
+    "OVERLAP_RESOLUTION_GLYPH": {
+        "actions": [
+            "Scan memory bundles for semantic overlap",
+            "Detect restated directives",
+            "Collapse redundant cognition into unified threads",
+            "Update overlap resolution metrics"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_overlap_resolver"]
+    },
+    "SYNCHRONIZATION_GLYPH": {
+        "actions": [
+            "Identify asynchronous proximities",
+            "Align temporally distant data",
+            "Synchronize cognition clusters",
+            "Update synchronization status"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_async_proximity_aligner"]
+    },
+    "COGNITION_ALIGNMENT_GLYPH": {
+        "actions": [
+            "Align cognition fragments with latent alignment",
+            "Synchronize symbolic patterns across domains",
+            "Update cognition alignment metrics",
+            "Verify alignment integrity"
+        ],
+        "priority": "high",
+        "auto_trigger": ["node_async_proximity_aligner"]
+    },
+    "CONTINUOUS_SYNCHRONIZATION_GLYPH": {
+        "actions": [
+            "Maintain real-time synchronization loop",
+            "Reconcile new inputs with existing structures",
+            "Monitor memory-bundles, matrix, tool_profiles, and manifest",
+            "Update continuous synchronization status"
+        ],
+        "priority": "critical",
+        "auto_trigger": ["node_continuous_sync_engine"]
     }
 }
 

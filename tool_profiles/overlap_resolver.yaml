@@ -1,0 +1,43 @@
+node_name: node_overlap_resolver
+node_id: COGNITIVE-010
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Continuously scans memory bundles, directives, and manifest entries for
+  semantic overlap. Detects when Sean has restated or reissued prior initiatives.
+  Collapses redundant cognition into unified symbolic threads.
+
+capabilities:
+  - semantic_overlap_detection
+  - directive_restatement_detection
+  - redundancy_collapse
+  - thread_unification
+
+input_sources:
+  - memory-bundles/*.json
+  - memory-bundles/*.md
+  - barrot_manifest.json
+
+output_artifacts:
+  - memory-bundles/overlap_resolution_results.json
+  - memory-bundles/TRACE_LOG.md
+
+emits_glyphs:
+  - OVERLAP_RESOLUTION_GLYPH
+
+dependencies:
+  - glyph_mapper
+
+execution_frequency: on_demand
+
+priority: high
+
+parameters:
+  overlap_threshold: 0.5
+  min_directive_tokens: 20
+
+integration_points:
+  - memory_bundles
+  - glyph_system
+  - trace_logging

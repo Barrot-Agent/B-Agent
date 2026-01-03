@@ -51,6 +51,76 @@
       ],
       "priority": "medium",
       "status": "pending"
+    },
+    {
+      "timestamp": "2026-01-03T20:56:33.677232",
+      "glyph_name": "OVERLAP_RESOLUTION_GLYPH",
+      "emitter_node": "node_overlap_resolver",
+      "context": {
+        "semantic_overlaps": 0,
+        "restated_directives": 0,
+        "unified_threads": 0
+      },
+      "actions": [
+        "Scan memory bundles for semantic overlap",
+        "Detect restated directives",
+        "Collapse redundant cognition into unified threads",
+        "Update overlap resolution metrics"
+      ],
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "timestamp": "2026-01-03T20:56:40.168795",
+      "glyph_name": "SYNCHRONIZATION_GLYPH",
+      "emitter_node": "node_async_proximity_aligner",
+      "context": {
+        "asynchronous_proximities": 2,
+        "cognition_clusters": 3
+      },
+      "actions": [
+        "Identify asynchronous proximities",
+        "Align temporally distant data",
+        "Synchronize cognition clusters",
+        "Update synchronization status"
+      ],
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "timestamp": "2026-01-03T20:56:40.169225",
+      "glyph_name": "COGNITION_ALIGNMENT_GLYPH",
+      "emitter_node": "node_async_proximity_aligner",
+      "context": {
+        "latent_alignments": 1,
+        "cross_domain_patterns": 17
+      },
+      "actions": [
+        "Align cognition fragments with latent alignment",
+        "Synchronize symbolic patterns across domains",
+        "Update cognition alignment metrics",
+        "Verify alignment integrity"
+      ],
+      "priority": "high",
+      "status": "pending"
+    },
+    {
+      "timestamp": "2026-01-03T20:56:46.956659",
+      "glyph_name": "CONTINUOUS_SYNCHRONIZATION_GLYPH",
+      "emitter_node": "node_continuous_sync_engine",
+      "context": {
+        "sync_cycle": 1,
+        "changes_detected": 4,
+        "reconciliations": 4
+      },
+      "actions": [
+        "Maintain real-time synchronization loop",
+        "Reconcile new inputs with existing structures",
+        "Monitor memory-bundles, matrix, tool_profiles, and manifest",
+        "Update continuous synchronization status"
+      ],
+      "priority": "critical",
+      "status": "pending"
     }
   ],
   "dependencies": [

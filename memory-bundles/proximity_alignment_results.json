@@ -1,0 +1,391 @@
+{
+  "timestamp": "2026-01-03T20:56:40.168159",
+  "asynchronous_proximities": [
+    {
+      "data1": {
+        "timestamp": "2026-01-03T07:39:36.565959",
+        "source": "glyph_mappings.json",
+        "type": "history_entry"
+      },
+      "data2": {
+        "timestamp": "2026-01-03T20:56:33.677232",
+        "source": "glyph_mappings.json",
+        "type": "history_entry"
+      },
+      "temporal_distance_hours": 13.282530909166667,
+      "semantic_overlap_score": 7,
+      "proximity_type": "asynchronous"
+    },
+    {
+      "data1": {
+        "timestamp": "2026-01-03T07:45:49.156857",
+        "source": "glyph_mappings.json",
+        "type": "history_entry"
+      },
+      "data2": {
+        "timestamp": "2026-01-03T20:56:33.677232",
+        "source": "glyph_mappings.json",
+        "type": "history_entry"
+      },
+      "temporal_distance_hours": 13.1790334375,
+      "semantic_overlap_score": 7,
+      "proximity_type": "asynchronous"
+    }
+  ],
+  "latent_alignments": [
+    {
+      "node": "council_vote",
+      "aligned_targets": [
+        "node_self_reflect",
+        "node_self_reflect"
+      ],
+      "alignment_type": "multi_dependency",
+      "strength": 2
+    }
+  ],
+  "cross_domain_patterns": [
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "council_vote.yaml",
+      "pattern_strength": 9,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "self_reflect.yaml",
+      "pattern_strength": 7,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "diff_detector.yaml",
+      "pattern_strength": 7,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "memory_compressor.yaml",
+      "pattern_strength": 7,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "session_ingestor.yaml",
+      "pattern_strength": 7,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "async_proximity_aligner.yaml",
+      "pattern_strength": 10,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "continuous_sync_engine.yaml",
+      "pattern_strength": 7,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_mappings.json",
+      "file2": "overlap_resolver.yaml",
+      "pattern_strength": 17,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "council_vote.yaml",
+      "pattern_strength": 5,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "self_reflect.yaml",
+      "pattern_strength": 5,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "diff_detector.yaml",
+      "pattern_strength": 5,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "memory_compressor.yaml",
+      "pattern_strength": 5,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "session_ingestor.yaml",
+      "pattern_strength": 5,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "async_proximity_aligner.yaml",
+      "pattern_strength": 7,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "continuous_sync_engine.yaml",
+      "pattern_strength": 11,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "shrm-v2-config.json",
+      "file2": "overlap_resolver.yaml",
+      "pattern_strength": 5,
+      "pattern_type": "cross_domain"
+    },
+    {
+      "domain1": "memory",
+      "domain2": "tools",
+      "file1": "glyph_insights.json",
+      "file2": "council_vote.yaml",
+      "pattern_strength": 4,
+      "pattern_type": "cross_domain"
+    }
+  ],
+  "cognition_clusters": [
+    {
+      "cluster_type": "asynchronous_proximity",
+      "timestamp": "2026-01-03T20:56:40.168112",
+      "members": [
+        {
+          "data1": {
+            "timestamp": "2026-01-03T07:39:36.565959",
+            "source": "glyph_mappings.json",
+            "type": "history_entry"
+          },
+          "data2": {
+            "timestamp": "2026-01-03T20:56:33.677232",
+            "source": "glyph_mappings.json",
+            "type": "history_entry"
+          },
+          "temporal_distance_hours": 13.282530909166667,
+          "semantic_overlap_score": 7,
+          "proximity_type": "asynchronous"
+        },
+        {
+          "data1": {
+            "timestamp": "2026-01-03T07:45:49.156857",
+            "source": "glyph_mappings.json",
+            "type": "history_entry"
+          },
+          "data2": {
+            "timestamp": "2026-01-03T20:56:33.677232",
+            "source": "glyph_mappings.json",
+            "type": "history_entry"
+          },
+          "temporal_distance_hours": 13.1790334375,
+          "semantic_overlap_score": 7,
+          "proximity_type": "asynchronous"
+        }
+      ],
+      "size": 2,
+      "status": "synchronized"
+    },
+    {
+      "cluster_type": "latent_alignment",
+      "timestamp": "2026-01-03T20:56:40.168131",
+      "members": [
+        {
+          "node": "council_vote",
+          "aligned_targets": [
+            "node_self_reflect",
+            "node_self_reflect"
+          ],
+          "alignment_type": "multi_dependency",
+          "strength": 2
+        }
+      ],
+      "size": 1,
+      "status": "synchronized"
+    },
+    {
+      "cluster_type": "cross_domain_pattern",
+      "timestamp": "2026-01-03T20:56:40.168138",
+      "members": [
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "council_vote.yaml",
+          "pattern_strength": 9,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "self_reflect.yaml",
+          "pattern_strength": 7,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "diff_detector.yaml",
+          "pattern_strength": 7,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "memory_compressor.yaml",
+          "pattern_strength": 7,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "session_ingestor.yaml",
+          "pattern_strength": 7,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "async_proximity_aligner.yaml",
+          "pattern_strength": 10,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "continuous_sync_engine.yaml",
+          "pattern_strength": 7,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_mappings.json",
+          "file2": "overlap_resolver.yaml",
+          "pattern_strength": 17,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "council_vote.yaml",
+          "pattern_strength": 5,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "self_reflect.yaml",
+          "pattern_strength": 5,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "diff_detector.yaml",
+          "pattern_strength": 5,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "memory_compressor.yaml",
+          "pattern_strength": 5,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "session_ingestor.yaml",
+          "pattern_strength": 5,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "async_proximity_aligner.yaml",
+          "pattern_strength": 7,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "continuous_sync_engine.yaml",
+          "pattern_strength": 11,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "shrm-v2-config.json",
+          "file2": "overlap_resolver.yaml",
+          "pattern_strength": 5,
+          "pattern_type": "cross_domain"
+        },
+        {
+          "domain1": "memory",
+          "domain2": "tools",
+          "file1": "glyph_insights.json",
+          "file2": "council_vote.yaml",
+          "pattern_strength": 4,
+          "pattern_type": "cross_domain"
+        }
+      ],
+      "size": 17,
+      "status": "synchronized"
+    }
+  ],
+  "summary": {
+    "total_proximities": 2,
+    "total_alignments": 1,
+    "total_patterns": 17,
+    "total_clusters": 3
+  }
+}
