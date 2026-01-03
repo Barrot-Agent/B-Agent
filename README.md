@@ -214,7 +214,7 @@ HRM_Variants (R, L, P, K, A, C, M):
   - Enhance override system efficiency
   - Improve variant-specific capabilities
 
-Western_Giants (ChatGPT, Perplexity, Claude, Gemini, Grok, Watson):
+Western_Giants (ChatGPT, Perplexity, Claude_Sonnet, Gemini, Claude_Opus, Grok, Watson_X):
   - Leverage latest model capabilities
   - Integrate cutting-edge AI techniques
   - Provide multi-perspective validation
