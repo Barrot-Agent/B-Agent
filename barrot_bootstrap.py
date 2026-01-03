@@ -38,4 +38,23 @@ def run_matrix():
         print(f"  → Running {node.name}")
         subprocess.run(["python", str(node)], check=False)
 
+# --- RUN COGNITION FUSION ---
+def run_cognition_fusion():
+    print("\n[BOOTSTRAP] Checking cognition fusion status...")
+    
+    # Check if cognition fusion is enabled
+    fusion_enabled = manifest.get("cognition_fusion", {}).get("cognition_fusion_active", False)
+    
+    if fusion_enabled:
+        print("[BOOTSTRAP] Cognition fusion is ACTIVE")
+        print("[BOOTSTRAP] Executing cognition fusion protocol...")
+        fusion_script = MATRIX_PATH / "cognition_fusion.py"
+        if fusion_script.exists():
+            subprocess.run(["python", str(fusion_script)], check=False)
+        else:
+            print("[BOOTSTRAP] Warning: cognition_fusion.py not found")
+    else:
+        print("[BOOTSTRAP] Cognition fusion is not active")
+
 run_matrix()
+run_cognition_fusion()
