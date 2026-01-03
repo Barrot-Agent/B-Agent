@@ -36,35 +36,48 @@ class AbundanceCognitionIngestor:
     
     def emit_glyph(self, glyph_name, updates=None):
         """Emit a glyph with optional metric updates."""
-        glyph_file = self.glyphs_dir / f"{glyph_name.lower()}.yml"
+        # Convert glyph name to file name (e.g., ABUNDANCE_COGNITION_GLYPH -> abundance_cognition_glyph.yml)
+        glyph_filename = glyph_name.lower().replace('_glyph', '_glyph') + '.yml'
+        glyph_file = self.glyphs_dir / glyph_filename
         
-        if glyph_file.exists():
+        if not glyph_file.exists():
+            print(f"⚠️  Warning: Glyph file not found: {glyph_file}")
+            return
+        
+        try:
             with open(glyph_file, 'r') as f:
                 content = f.read()
             
-            # Update timestamp
+            # Update timestamp - safer approach with error handling
             timestamp = datetime.now(timezone.utc).isoformat()
-            content = content.replace(
-                content.split('timestamp: ')[1].split('\n')[0],
-                timestamp
-            )
+            if 'timestamp: ' in content:
+                lines = content.split('\n')
+                for i, line in enumerate(lines):
+                    if line.startswith('timestamp: '):
+                        lines[i] = f"timestamp: {timestamp}"
+                        break
+                content = '\n'.join(lines)
             
             # Apply specific updates if provided
             if updates:
+                lines = content.split('\n')
                 for key, value in updates.items():
-                    if key in content:
-                        # Simple replacement for metric updates
-                        lines = content.split('\n')
-                        for i, line in enumerate(lines):
-                            if key in line and ':' in line:
-                                lines[i] = f"  {key}: {value}"
-                        content = '\n'.join(lines)
+                    for i, line in enumerate(lines):
+                        # More precise matching: ensure we're in the right section and the key is at line start
+                        if line.strip().startswith(f"{key}:"):
+                            lines[i] = f"  {key}: {value}"
+                            break
+                content = '\n'.join(lines)
             
             with open(glyph_file, 'w') as f:
                 f.write(content)
             
             print(f"✨ Emitted: {glyph_name}")
             self.log_to_trace(f"Emitted glyph: {glyph_name}")
+            
+        except (IOError, IndexError) as e:
+            print(f"⚠️  Error emitting glyph {glyph_name}: {e}")
+            self.log_to_trace(f"Error emitting glyph {glyph_name}: {e}")
     
     def log_to_trace(self, message):
         """Append entry to TRACE_LOG.md."""
@@ -139,21 +152,24 @@ class AbundanceCognitionIngestor:
         """
         print(f"\n🎾 Ping-Pong Cognition Cascade - Iteration {iteration}/{max_iterations}")
         
-        # Simulate 22 agent perspectives
-        agents = [
+        # Load agent configuration from manifest or use defaults
+        agents_config = self.manifest.get("multi_agent_council", {})
+        
+        # Core agents - can be configured in manifest
+        agents = agents_config.get("core_agents", [
             "Pragmatist", "Theorist", "Skeptic", "Optimist", "Guardian",
             "Experimentalist", "Error Spotter", "HRM-L (Learning)", 
             "HRM-R (Reasoning)", "HRM-K (Knowledge)", "HRM-M (Meta)",
             "HRM-A (Adaptive)", "HRM-C (Creative)", "SHRM v2",
             "GPT-4", "Claude", "Gemini", "ChatGLM", "Rinna",
             "DeepSeek Coder", "Qwen", "Baichuan"
-        ]
+        ])
         
-        # Fictional cognition avatars
-        avatars = [
+        # Fictional cognition avatars - can be configured in manifest
+        avatars = agents_config.get("fictional_avatars", [
             "Offensive Strategist", "Defensive Analyst", "Dimensional Navigator",
             "Contradiction Resolver", "Symbolic Clarifier", "Pattern Synthesizer"
-        ]
+        ])
         
         all_perspectives = agents + avatars
         
