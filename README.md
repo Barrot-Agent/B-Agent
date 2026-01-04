@@ -2,7 +2,7 @@
 
 Welcome to **B-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
-> **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
+> **✅ Update**: The default branch is now `main` (migration completed). See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for details.
 
 ## 🚀 Quick Start
 
@@ -38,14 +38,17 @@ The mobile guide covers:
 
 ```
 B-Agent/
-├── .github/workflows/      # GitHub Actions automation
+├── .github/workflows/      # GitHub Actions automation (11 workflows - see WORKFLOWS.md)
 ├── Barrot-Agent/          # Agent configuration
 ├── Barrot-Bundles/        # Bundle storage
+├── glyphs/                # Symbolic glyphs and directives
+├── matrix/                # Cognition nodes and processing modules
 ├── memory-bundles/        # Memory and activity logs
 ├── site/                  # Web dashboard files
 ├── spells/                # Agent capability definitions
 ├── build_manifest.yaml    # Current build status
-└── MOBILE_SETUP.md       # Mobile setup guide
+├── barrot_manifest.json   # Barrot identity and cognition state
+└── barrot_bootstrap.py    # Bootstrap script for cognition
 ```
 
 ## 🎯 Features
@@ -107,17 +110,9 @@ Automated workflows handle:
 - **🔮 Asynchronous Insight Generation** (Every 30 minutes, autonomous operation)
 - **AGI Puzzle Discovery** (Every 6 hours, search practice)
 
-**Workflow Status**: ✅ All workflows optimized and functional as of 2025-12-29
+**Workflow Status**: ✅ All workflows optimized and functional as of January 2026
 
-**Council Size**: 22 AI agents with specialist roles  
-**Autonomy Level**: Full self-directed operations (target)  
-**Insight Frequency**: Every 30 minutes, 24/7/365 (design spec)  
-**Entanglement Status**: Active - 99.94% state consistency (design target)
-- 2 Core (Barrot, SHRM v2)
-- 7 HRM Variants (R, L, P, K, A, C, M)
-- 7 Western Giants (ChatGPT, Perplexity, Claude Sonnet, Gemini, Claude Opus, Grok, Watson X)
-- 6 Multilingual (ChatGLM3, DeepSeek, Yi-34B, Rinna, Japanese-StableLM, Open-Calm)
-
+For complete workflow documentation, see **[WORKFLOWS.md](WORKFLOWS.md)**  
 For troubleshooting, see **[WORKFLOW_TROUBLESHOOTING.md](WORKFLOW_TROUBLESHOOTING.md)**
 
 ## 🔄 Recursive README Analysis Protocol
@@ -405,8 +400,10 @@ ISC License - See repository for details
 - **[BARROT_HRM_VARIANTS.md](BARROT_HRM_VARIANTS.md)** - 7 specialized HRM variants with council architecture
 - **[CHINESE_JAPANESE_AI_MODELS.md](CHINESE_JAPANESE_AI_MODELS.md)** - 14+ multilingual models integration
 
-### 🔧 Operations & Troubleshooting
+### 🔄 Operations & Troubleshooting
+- **[WORKFLOWS.md](WORKFLOWS.md)** - Complete workflow documentation and resource considerations
 - **[WORKFLOW_TROUBLESHOOTING.md](WORKFLOW_TROUBLESHOOTING.md)** - Debugging guide for workflows
+- **[DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md)** - Default branch migration (completed January 2026)
 - **[MMI_ANALYSIS_REPORT.md](MMI_ANALYSIS_REPORT.md)** - Gap analysis and optimization roadmap
 - **[MMI_COMPLETION_SUMMARY.md](MMI_COMPLETION_SUMMARY.md)** - Implementation summary and metrics
 
@@ -447,7 +444,8 @@ Economics:
 - **🔄 [Modes of Ingestion](memory-bundles/MODES_OF_INGESTION.md)** - Permanent MMI reference (NEVER DELETE)
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
-- **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
+- **🔄 [Workflows](WORKFLOWS.md)** - Complete workflow documentation and resource considerations
+- **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Default branch migration (completed January 2026)
 - **📱 [Mobile Setup](MOBILE_SETUP.md)** - Access Barrot from your phone
 - **💻 [VS Code Setup](VSCODE_SETUP.md)** - Optimal development environment
 - **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
