@@ -1,0 +1,45 @@
+glyph_name: VISUAL_AGENT_SIM_GLYPH
+glyph_id: VISUALSIM-001
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Emitted when visual agent simulations are running, testing rendering
+  agents in simulated environments to optimize visual processing,
+  rendering performance, and agent behavior.
+
+symbolic_representation: "🎬 🤖 🎨"
+
+properties:
+  dimension: visual_simulation
+  mutability: simulation
+  trigger: visual_sim_active
+  
+attributes:
+  - visual_agent_testing
+  - rendering_optimization
+  - simulated_environments
+  - performance_evaluation
+  
+simulation_characteristics:
+  environment_complexity: high
+  agent_coordination: tested
+  rendering_quality: evaluated
+  behavior_analysis: comprehensive
+  
+outputs:
+  rendering_performance: measured
+  visual_quality: assessed
+  agent_behavior: analyzed
+  optimization_insights: generated
+  
+integration_points:
+  - barrot_sim/
+  - rendering_systems
+  - visual_agents
+  - performance_optimization
+  
+usage_context: >
+  Invoke when visual agent simulations are active, rendering performance
+  is being tested, or agent behavior in visual environments is being
+  analyzed and optimized.

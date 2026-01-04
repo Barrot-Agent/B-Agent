@@ -1,0 +1,45 @@
+glyph_name: CIVILIZATION_SIM_GLYPH
+glyph_id: CIVSIM-001
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Emitted when civilization simulation is active and running, modeling
+  synthetic society emergence, cultural evolution, and complex social
+  dynamics for AGI social cognition development.
+
+symbolic_representation: "🏛️ 🌍 📈"
+
+properties:
+  dimension: social_simulation
+  mutability: dynamic
+  trigger: simulation_running
+  
+attributes:
+  - society_emergence
+  - cultural_evolution
+  - social_dynamics_modeling
+  - emergent_behavior_analysis
+  
+simulation_characteristics:
+  complexity: high
+  agents: multiple_populations
+  evolution_tracking: continuous
+  emergence_detection: active
+  
+outputs:
+  social_patterns: emerging
+  cultural_evolution: tracked
+  emergent_behaviors: analyzed
+  civilization_dynamics: modeled
+  
+integration_points:
+  - barrot_sim/
+  - social_cognition
+  - emergent_systems
+  - complex_dynamics
+  
+usage_context: >
+  Invoke when civilization simulation is active, tracking societal
+  emergence, analyzing social patterns, or studying complex cultural
+  evolution dynamics.
