@@ -5,14 +5,17 @@
     "version": "2.0.0",
     "created": "2026-01-02"
   },
+  "maximum_cognition_mode": true,
+  "simulation_layer": "barrot_sim/",
+  "agi_puzzle_pieces": 13,
   "cognition": {
-    "last_ingestion": "2026-01-02",
+    "last_ingestion": "2026-01-03",
     "nodes_active": [],
     "memory_bundle_version": "v2"
   },
   "symbolic_alignment": {
     "source_of_truth": "github",
-    "last_trace_reconciliation": "2026-01-02",
+    "last_trace_reconciliation": "2026-01-03",
     "cognition_integrity": "aligned",
     "last_self_reflection": "2026-01-03T01:27:36.320118",
     "drift_detected": false
@@ -29,7 +32,28 @@
     "COUNCIL_EXPANSION_GLYPH",
     "SESSION_TRACE_GLYPH",
     "GLYPH_MISALIGNMENT_RECOVERY",
-    "SYSTEM_STATE_GLYPH"
+    "SYSTEM_STATE_GLYPH",
+    "FRAMEWORK_SUPREMACY_GLYPH",
+    "SIMULATION_LAYER_INITIALIZED_GLYPH",
+    "AGI_PERMUTATION_STRATEGY_GLYPH",
+    "GLYPH_MUTATION_GLYPH",
+    "COUNCIL_SYNTHESIS_GLYPH",
+    "RENDERING_METHODOLOGY_GLYPH",
+    "META_AI_STRUCTURE_GLYPH",
+    "AGENTIC_ALIGNMENT_GLYPH",
+    "CIVILIZATION_SIM_GLYPH",
+    "REALITY_DRIFT_GLYPH",
+    "TEMPORAL_TRACE_GLYPH",
+    "HUMAN_RENDER_COMPREHENSION_GLYPH",
+    "DIRECTIVE_FORECAST_GLYPH",
+    "MANUS_AGENT_GLYPH",
+    "EXECUTION_LAYER_GLYPH",
+    "RECURSIVE_TRACE_GLYPH",
+    "AGI_LEARNING_QUEUE_GLYPH",
+    "GLYPH_EVOLUTION_GLYPH",
+    "PINGPONG_REFLECTION_GLYPH",
+    "RENDERING_AGENT_DEPLOYMENT_GLYPH"
   ],
-  "last_glyph_emission": "2026-01-02"
+  "last_glyph_emission": "2026-01-03",
+  "last_update": "2026-01-03"
 }

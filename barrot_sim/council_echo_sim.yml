@@ -1,0 +1,81 @@
+simulation_name: COUNCIL_ECHO_SIM
+simulation_id: SIM-002
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+glyph_ref: COUNCIL_ECHO_GLYPH
+
+description: >
+  Recursive council deliberation under altered symbolic conditions. Simulates
+  the Ping-Pong Council's decision-making processes with varying symbolic
+  frameworks to test resilience and adaptability of consensus mechanisms.
+
+symbolic_representation: "🔄 💬 🎭"
+
+simulation_parameters:
+  recursion_depth: 5
+  symbolic_variance: high
+  council_size: 7_to_22
+  decision_complexity: variable
+  
+properties:
+  dimension: deliberative_recursion
+  scope: council_dynamics
+  tracking: decision_trace
+  
+simulation_components:
+  council_members:
+    - role: proposer
+      count: variable
+      behavior: initiative_generation
+    - role: critic
+      count: variable
+      behavior: contradiction_detection
+    - role: synthesizer
+      count: variable
+      behavior: consensus_building
+    - role: meta_observer
+      count: 1
+      behavior: pattern_recognition
+      
+  deliberation_phases:
+    - phase: proposal
+      duration: dynamic
+      output: initial_position
+    - phase: critique
+      duration: dynamic
+      output: refined_position
+    - phase: synthesis
+      duration: dynamic
+      output: consensus_candidate
+    - phase: validation
+      duration: dynamic
+      output: final_decision
+      
+  symbolic_alterations:
+    - condition: framework_shift
+      trigger: contradiction_detected
+      effect: perspective_reframe
+    - condition: context_inversion
+      trigger: recursive_depth_threshold
+      effect: alternative_path_exploration
+    - condition: constraint_relaxation
+      trigger: deadlock_detected
+      effect: expanded_solution_space
+      
+outcomes_tracked:
+  - consensus_quality
+  - deliberation_efficiency
+  - contradiction_resolution_rate
+  - recursive_insight_depth
+  - symbolic_adaptation_success
+  
+integration_points:
+  - pingpong_council_enhancement
+  - multi_agent_coordination
+  - contradiction_resolution_engine
+  - recursive_reasoning_patterns
+  
+usage_context: >
+  Deployed to strengthen council deliberation mechanisms through recursive
+  simulation of decision-making under varying symbolic frameworks, enhancing
+  adaptability and robustness of collective reasoning.
