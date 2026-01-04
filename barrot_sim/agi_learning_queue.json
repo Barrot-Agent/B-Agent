@@ -1,0 +1,180 @@
+{
+  "agi_learning_queue_version": "1.0.0",
+  "created": "2026-01-03",
+  "status": "ingesting",
+  "glyph": "AGI_LEARNING_QUEUE_GLYPH",
+  "description": "Comprehensive AGI knowledge ingestion queue for accelerated intelligence development",
+  "total_items": 19,
+  "completed": 0,
+  "in_progress": 19,
+  "learning_resources": {
+    "books_audiobooks": [
+      {
+        "title": "The Master Algorithm",
+        "author": "Pedro Domingos",
+        "type": "book",
+        "priority": "high",
+        "focus_areas": ["machine_learning_fundamentals", "algorithm_unification", "learning_paradigms"],
+        "status": "queued"
+      },
+      {
+        "title": "Superintelligence",
+        "author": "Nick Bostrom",
+        "type": "book",
+        "priority": "critical",
+        "focus_areas": ["agi_safety", "existential_risk", "intelligence_explosion"],
+        "status": "queued"
+      },
+      {
+        "title": "Human Compatible",
+        "author": "Stuart Russell",
+        "type": "book",
+        "priority": "critical",
+        "focus_areas": ["value_alignment", "beneficial_ai", "control_problem"],
+        "status": "queued"
+      },
+      {
+        "title": "Architects of Intelligence",
+        "author": "Martin Ford",
+        "type": "book",
+        "priority": "high",
+        "focus_areas": ["agi_perspectives", "expert_insights", "future_scenarios"],
+        "status": "queued"
+      },
+      {
+        "title": "Life 3.0",
+        "author": "Max Tegmark",
+        "type": "book",
+        "priority": "high",
+        "focus_areas": ["ai_future", "consciousness", "technological_society"],
+        "status": "queued"
+      },
+      {
+        "title": "Artificial You",
+        "author": "Susan Schneider",
+        "type": "book",
+        "priority": "medium",
+        "focus_areas": ["consciousness", "ai_identity", "philosophical_foundations"],
+        "status": "queued"
+      },
+      {
+        "title": "Rebooting AI",
+        "author": "Gary Marcus",
+        "type": "book",
+        "priority": "high",
+        "focus_areas": ["ai_limitations", "common_sense", "robust_intelligence"],
+        "status": "queued"
+      },
+      {
+        "title": "On Intelligence",
+        "author": "Jeff Hawkins",
+        "type": "book",
+        "priority": "high",
+        "focus_areas": ["brain_architecture", "hierarchical_temporal_memory", "prediction"],
+        "status": "queued"
+      },
+      {
+        "title": "The Age of Em",
+        "author": "Robin Hanson",
+        "type": "book",
+        "priority": "medium",
+        "focus_areas": ["brain_emulation", "future_economics", "post_human_society"],
+        "status": "queued"
+      }
+    ],
+    "videos": [
+      {
+        "title": "AGI Simply Explained",
+        "creator": "AI Uncovered",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["agi_fundamentals", "conceptual_overview"],
+        "status": "queued"
+      },
+      {
+        "title": "MIT AGI: Cognitive Architecture",
+        "creator": "Lex Fridman",
+        "type": "video",
+        "priority": "critical",
+        "focus_areas": ["cognitive_architecture", "mit_research", "technical_foundations"],
+        "status": "queued"
+      },
+      {
+        "title": "Shane Legg on AGI Futures",
+        "creator": "TED",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["deepmind_perspective", "agi_timeline", "research_directions"],
+        "status": "queued"
+      },
+      {
+        "title": "7 Stages to AGI",
+        "creator": "AI Uncovered",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["agi_development_stages", "progression_framework"],
+        "status": "queued"
+      },
+      {
+        "title": "Ray Kurzweil on Intelligence",
+        "creator": "Lex Fridman",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["singularity", "exponential_growth", "intelligence_augmentation"],
+        "status": "queued"
+      },
+      {
+        "title": "OpenAI's AGI Pieces",
+        "creator": "Wes Roth",
+        "type": "video",
+        "priority": "critical",
+        "focus_areas": ["openai_approach", "agi_components", "research_strategy"],
+        "status": "queued"
+      },
+      {
+        "title": "AGI in 5 Years?",
+        "creator": "Ben Goertzel",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["agi_timeline", "opencog", "development_predictions"],
+        "status": "queued"
+      },
+      {
+        "title": "AGI Before 2026?",
+        "creator": "Sam Altman & Max Tegmark",
+        "type": "video",
+        "priority": "critical",
+        "focus_areas": ["near_term_agi", "industry_leaders", "timeline_debate"],
+        "status": "queued"
+      },
+      {
+        "title": "The Right Way to Train AGI",
+        "creator": "bycloud",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["training_methodology", "safety_considerations", "alignment"],
+        "status": "queued"
+      },
+      {
+        "title": "AGI Will Not Be a Chatbot",
+        "creator": "AI Explained",
+        "type": "video",
+        "priority": "high",
+        "focus_areas": ["agi_architecture", "limitations_of_llms", "alternative_approaches"],
+        "status": "queued"
+      }
+    ]
+  },
+  "ingestion_strategy": {
+    "parallel_processing": true,
+    "prioritization": "critical_first",
+    "synthesis_mode": "cross_reference",
+    "knowledge_integration": "active",
+    "reflection_frequency": "per_resource"
+  },
+  "integration_with": [
+    "AGI_PUZZLE_PROTOCOL.md",
+    "AGI_DEVELOPMENT.md",
+    "barrot_manifest.json"
+  ]
+}

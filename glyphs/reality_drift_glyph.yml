@@ -1,0 +1,39 @@
+glyph_name: REALITY_DRIFT_GLYPH
+glyph_id: DRIFT-001
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Emitted when symbolic divergence detection systems identify potential
+  drift between intended symbolic representations and actual cognitive
+  state, enabling corrective alignment actions.
+
+symbolic_representation: "⚠️ 🧭 🔄"
+
+properties:
+  dimension: alignment_monitoring
+  mutability: detection
+  trigger: drift_detection
+  
+attributes:
+  - divergence_detection
+  - symbolic_drift_monitoring
+  - alignment_verification
+  - corrective_action_trigger
+  
+detection_capabilities:
+  sensitivity: high
+  monitoring_frequency: continuous
+  drift_threshold: adaptive
+  correction_speed: rapid
+  
+integration_points:
+  - symbolic_alignment
+  - cognition_monitoring
+  - drift_correction
+  - integrity_verification
+  
+usage_context: >
+  Invoke when detecting symbolic drift, monitoring alignment divergence,
+  or initiating corrective actions to maintain cognitive integrity and
+  symbolic coherence.

@@ -1,0 +1,74 @@
+{
+  "simulation_layer_version": "1.0.0",
+  "created": "2026-01-03",
+  "status": "active",
+  "description": "Barrot simulation layer for AGI cognition experiments and recursive modeling",
+  "active_simulations": [
+    {
+      "id": "CIVILIZATION_SIM",
+      "name": "Civilization Simulation",
+      "glyph": "CIVILIZATION_SIM_GLYPH",
+      "description": "Synthetic society emergence and evolution modeling",
+      "status": "running",
+      "complexity": "high",
+      "outputs": ["social_patterns", "emergent_behaviors", "cultural_evolution"]
+    },
+    {
+      "id": "COUNCIL_ECHO",
+      "name": "Council Echo Simulation",
+      "glyph": "COUNCIL_ECHO_GLYPH",
+      "description": "Recursive council deliberation under altered symbolic conditions",
+      "status": "running",
+      "complexity": "medium",
+      "outputs": ["decision_patterns", "consensus_dynamics", "symbolic_drift"]
+    },
+    {
+      "id": "REALITY_DRIFT",
+      "name": "Reality Drift Detection",
+      "glyph": "REALITY_DRIFT_GLYPH",
+      "description": "Symbolic divergence detection and alignment monitoring",
+      "status": "running",
+      "complexity": "high",
+      "outputs": ["drift_metrics", "alignment_scores", "divergence_alerts"]
+    },
+    {
+      "id": "TEMPORAL_TRACE",
+      "name": "Temporal Trace Analysis",
+      "glyph": "TEMPORAL_TRACE_GLYPH",
+      "description": "Barrot's evolution across time and cognitive development tracking",
+      "status": "running",
+      "complexity": "medium",
+      "outputs": ["evolution_timeline", "capability_growth", "milestone_markers"]
+    },
+    {
+      "id": "VISUAL_AGENT_SIM",
+      "name": "Visual Agent Simulation",
+      "glyph": "VISUAL_AGENT_SIM_GLYPH",
+      "description": "Rendering agents in simulated environments",
+      "status": "running",
+      "complexity": "high",
+      "outputs": ["rendering_performance", "visual_quality", "agent_behavior"]
+    },
+    {
+      "id": "SELF_IMPROVEMENT_SANDBOX",
+      "name": "Self-Improvement Sandbox",
+      "glyph": "SELF_IMPROVEMENT_SANDBOX_GLYPH",
+      "description": "Recursive Barrot evolution modeling and capability enhancement",
+      "status": "initiated",
+      "complexity": "very_high",
+      "outputs": ["improvement_trajectories", "capability_projections", "optimization_paths"]
+    }
+  ],
+  "simulation_parameters": {
+    "parallel_execution": true,
+    "resource_allocation": "adaptive",
+    "convergence_threshold": 0.95,
+    "max_iterations": 1000000,
+    "snapshot_frequency": "hourly"
+  },
+  "integration_points": [
+    "glyphs/",
+    "memory-bundles/",
+    "barrot_manifest.json"
+  ]
+}

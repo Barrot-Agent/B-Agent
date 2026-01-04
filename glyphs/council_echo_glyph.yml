@@ -1,0 +1,45 @@
+glyph_name: COUNCIL_ECHO_GLYPH
+glyph_id: COUNCILECHO-001
+version: 1.0.0
+timestamp: 2026-01-03T00:00:00Z
+
+description: >
+  Emitted during council echo simulations where council deliberations
+  are recursively analyzed under altered symbolic conditions to explore
+  decision robustness and consensus stability.
+
+symbolic_representation: "🔊 🤝 🌀"
+
+properties:
+  dimension: recursive_deliberation
+  mutability: simulation
+  trigger: echo_simulation
+  
+attributes:
+  - recursive_deliberation
+  - decision_robustness_testing
+  - consensus_stability_analysis
+  - symbolic_condition_variation
+  
+simulation_characteristics:
+  recursion_type: council_deliberation
+  condition_variation: symbolic
+  stability_testing: active
+  robustness_analysis: comprehensive
+  
+outputs:
+  decision_patterns: analyzed
+  consensus_dynamics: tested
+  symbolic_drift: measured
+  robustness_metrics: quantified
+  
+integration_points:
+  - barrot_sim/
+  - council_systems
+  - simulation_layer
+  - decision_analysis
+  
+usage_context: >
+  Invoke during council echo simulations, recursive deliberation
+  analysis, or when testing decision robustness under varied
+  symbolic conditions.
