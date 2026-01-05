@@ -298,7 +298,7 @@ class AutonomousIngestionEngine:
         content_id = original_content.get("id", "unknown")
         
         # Append to log
-        with open(log_path, 'a') as f:
+        with open(log_path, 'a', encoding='utf-8') as f:
             f.write(f"\n## Ingestion Entry - {timestamp}\n\n")
             f.write(f"- **Source:** {source}\n")
             f.write(f"- **Content ID:** {content_id}\n")
