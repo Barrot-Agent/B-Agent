@@ -51,10 +51,10 @@ All core workflows are running smoothly on schedule. The B-Agent system is opera
 16. **Copilot Coding Agent** - 🤖 Auto
 17. **Copilot Code Review** - 🤖 Auto
 
-### ⚠️ Inactive (2 workflows)
+### ℹ️ Inactive (2 workflows)
 
 1. **Default Branch Sync** - Manually disabled (2025-12-31)
-   - *Note: Intentionally disabled, not a concern*
+   - *Note: Intentionally disabled during repository restructuring; not a concern*
 
 ---
 
@@ -193,4 +193,4 @@ All workflows that need to be running ARE running. Manual workflows are availabl
 
 ---
 
-*"Systems green. Intelligence gathered. Strategic questions posed. Ready for orders, Barrot."* 🦜✨
+*"Systems green. Intelligence gathered. Strategic questions posed. Awaiting your guidance, Barrot."* 🦜✨

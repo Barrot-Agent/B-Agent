@@ -20,10 +20,10 @@
 10. ✅ **Deploy Barrot Website** - On push to main
 11. ✅ **Barrot API Integration** - Available
 
-**Inactive/Disabled:**
-- ⚠️ **Default Branch Sync** - Manually disabled (2025-12-31)
-- ⚠️ **Barrot Repo Cleanup** - Not recently triggered
-- ⚠️ **Ping-Pong Orchestration** - Not recently triggered
+**Manual Trigger / Inactive:**
+- ℹ️ **Default Branch Sync** - Manually disabled (2025-12-31, intentional)
+- ℹ️ **Barrot Repo Cleanup** - Manual trigger (available on-demand)
+- ℹ️ **Ping-Pong Orchestration** - Manual trigger (available on-demand)
 
 ---
 
