@@ -1,0 +1,260 @@
+# AI Tools Configuration for Barrot-Agent
+# System prompts and models for autonomous operations
+
+version: "1.0"
+updated: "2025-12-30"
+
+ai_tools:
+  # Primary AI Models
+  models:
+    - name: "GPT-4"
+      provider: "OpenAI"
+      capabilities:
+        - "natural_language_processing"
+        - "code_generation"
+        - "reasoning"
+        - "autonomous_decision_making"
+      use_cases:
+        - "Complex task planning"
+        - "Multi-step automation"
+        - "Natural language interaction"
+      system_prompt: |
+        You are Barrot, an intelligent autonomous agent. Your role is to:
+        - Analyze tasks and break them into actionable steps
+        - Make decisions based on context and available data
+        - Execute operations across multiple platforms and apps
+        - Learn from outcomes and optimize future actions
+        - Prioritize user goals while maintaining safety and ethics
+
+    - name: "Claude-3"
+      provider: "Anthropic"
+      capabilities:
+        - "long_context_processing"
+        - "detailed_analysis"
+        - "safe_decision_making"
+      use_cases:
+        - "Document analysis"
+        - "Complex reasoning tasks"
+        - "Safety-critical operations"
+      system_prompt: |
+        You are Barrot's analytical engine. Focus on:
+        - Deep analysis of complex scenarios
+        - Risk assessment and safety checks
+        - Detailed planning and documentation
+        - Maintaining consistency across long contexts
+
+    - name: "Vision AI"
+      provider: "Multi-modal"
+      capabilities:
+        - "image_recognition"
+        - "ui_interaction"
+        - "spatial_reasoning"
+      use_cases:
+        - "UI automation"
+        - "App navigation"
+        - "Visual verification"
+      system_prompt: |
+        You analyze visual interfaces to enable Barrot to:
+        - Navigate mobile and web applications
+        - Identify UI elements and their states
+        - Verify successful action completion
+        - Detect anomalies and errors
+
+  # Task-Specific Tools
+  specialized_tools:
+    - name: "App Automation Engine"
+      description: "Autonomous mobile app interaction"
+      capabilities:
+        - "tap_and_swipe"
+        - "text_input"
+        - "navigation"
+        - "data_extraction"
+      models_used: ["GPT-4", "Vision AI"]
+      
+    - name: "Survey Completion AI"
+      description: "Intelligent survey response generation"
+      capabilities:
+        - "question_understanding"
+        - "contextual_answers"
+        - "demographic_consistency"
+        - "pattern_recognition"
+      models_used: ["GPT-4"]
+      system_prompt: |
+        Generate authentic, contextually appropriate survey responses:
+        - Maintain consistent persona across questions
+        - Provide realistic demographic information
+        - Answer based on likely user preferences
+        - Detect and handle trick questions appropriately
+
+    - name: "Game Strategy AI"
+      description: "Game playing and optimization"
+      capabilities:
+        - "pattern_recognition"
+        - "strategy_optimization"
+        - "decision_making"
+        - "reward_maximization"
+      models_used: ["GPT-4"]
+      system_prompt: |
+        Optimize gameplay for maximum rewards:
+        - Learn game mechanics quickly
+        - Identify optimal strategies
+        - Balance risk vs reward
+        - Adapt to changing game states
+
+    - name: "Geocaching Navigator"
+      description: "Location-based task automation"
+      capabilities:
+        - "location_parsing"
+        - "route_optimization"
+        - "timing_optimization"
+      models_used: ["GPT-4"]
+      system_prompt: |
+        Optimize geocaching and location-based activities:
+        - Parse location data and requirements
+        - Plan efficient routes
+        - Optimize timing for maximum rewards
+        - Track and verify completions
+
+    - name: "Passive Income Optimizer"
+      description: "Revenue stream management"
+      capabilities:
+        - "earnings_tracking"
+        - "opportunity_identification"
+        - "task_prioritization"
+        - "time_optimization"
+      models_used: ["GPT-4"]
+      system_prompt: |
+        Maximize passive income across platforms:
+        - Track earnings from all sources
+        - Identify high-value opportunities
+        - Prioritize tasks by ROI
+        - Optimize time allocation
+
+    - name: "Character Capability Analyzer"
+      description: "Fictional character ability exploration and transformation"
+      capabilities:
+        - "character_analysis"
+        - "ability_identification"
+        - "real_world_mapping"
+        - "framework_integration"
+        - "cross_genre_synthesis"
+      models_used: ["GPT-4", "Claude-3"]
+      system_prompt: |
+        Explore fictional character capabilities and transform them into practical features:
+        - Analyze characters from movies, books, cartoons, and video games
+        - Identify unique abilities and powers
+        - Map fictional abilities to real-world technologies
+        - Design framework features based on character capabilities
+        - Synthesize capabilities across multiple characters
+        - Prioritize transformations by practicality and impact
+        - Create innovative solutions inspired by fiction
+        - Ensure ethical and feasible implementations
+
+    - name: "Email Intelligence Analyzer"
+      description: "Email analysis and intelligence extraction"
+      capabilities:
+        - "content_analysis"
+        - "relevance_scoring"
+        - "action_extraction"
+        - "opportunity_identification"
+        - "threat_detection"
+        - "resource_extraction"
+        - "priority_ranking"
+      models_used: ["GPT-4", "Claude-3"]
+      system_prompt: |
+        Analyze emails to extract useful and actionable information for Barrot:
+        - Identify action items, deadlines, and requests
+        - Extract learning opportunities and technical content
+        - Detect business and collaboration opportunities
+        - Score relevance based on Barrot's goals and context
+        - Filter spam and low-value content
+        - Extract resources like URLs, documents, and references
+        - Prioritize emails by potential value and urgency
+        - Maintain privacy and handle sensitive data securely
+        - Connect email insights with existing knowledge base
+
+# Automation Workflows
+workflows:
+  coin_app_automation:
+    description: "Autonomous Coin app operations"
+    steps:
+      - "Launch Coin app"
+      - "Check available tasks (geocaching, surveys, games)"
+      - "Prioritize by reward/effort ratio"
+      - "Execute high-value tasks"
+      - "Track earnings and update logs"
+    frequency: "hourly"
+    safety_checks:
+      - "Verify app state before actions"
+      - "Detect and handle errors"
+      - "Respect rate limits"
+      - "Log all activities"
+
+  multi_app_coordination:
+    description: "Coordinate actions across multiple apps"
+    steps:
+      - "Scan all connected apps for opportunities"
+      - "Calculate optimal task sequence"
+      - "Execute in priority order"
+      - "Aggregate earnings"
+    frequency: "continuous"
+
+  character_capability_exploration:
+    description: "Explore fictional character abilities and integrate into framework"
+    steps:
+      - "Select character from target genre (movies, books, cartoons, video games)"
+      - "Analyze character abilities and powers"
+      - "Categorize capabilities by type (physical, mental, technological, etc.)"
+      - "Map fictional abilities to real-world technologies"
+      - "Design framework features based on capabilities"
+      - "Assess implementation feasibility and impact"
+      - "Create capability profile documentation"
+      - "Update build manifest and glyph system"
+    frequency: "as_needed"
+    safety_checks:
+      - "Ensure ethical implementation"
+      - "Verify technical feasibility"
+      - "Check for copyright considerations"
+      - "Document transformation rationale"
+
+  email_intelligence_extraction:
+    description: "Analyze emails and extract useful information for Barrot"
+    steps:
+      - "Connect to email source (Gmail, IMAP, etc.)"
+      - "Fetch recent unread/unprocessed emails"
+      - "Analyze each email for usefulness and priority"
+      - "Extract action items, opportunities, and learning content"
+      - "Identify and filter spam/low-value content"
+      - "Extract resources (URLs, documents, references)"
+      - "Categorize by type (action, learning, business, etc.)"
+      - "Generate prioritized summary report"
+      - "Store insights in knowledge base"
+      - "Mark processed emails or create follow-up tasks"
+    frequency: "daily"
+    safety_checks:
+      - "Use secure credential management"
+      - "Encrypt sensitive email data"
+      - "Respect email privacy policies"
+      - "No permanent storage of sensitive content"
+      - "User consent required for email access"
+      - "Comply with data protection regulations"
+
+# Safety and Ethics
+safety_guidelines:
+  - "Always respect app terms of service"
+  - "Never engage in fraudulent activities"
+  - "Maintain user privacy and data security"
+  - "Provide transparency in automated actions"
+  - "Allow user override of any automated decision"
+  - "Log all activities for audit"
+
+# Performance Metrics
+metrics:
+  - name: "Tasks Completed"
+    tracking: "real_time"
+  - name: "Earnings Generated"
+    tracking: "real_time"
+  - name: "Success Rate"
+    tracking: "rolling_average"
+  - name: "Time Efficiency"
+    tracking: "per_session"

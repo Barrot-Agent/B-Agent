@@ -495,3 +495,477 @@
 🟢 SHRM PONG <- Barrot at Sun Dec 28 21:31:42 UTC 2025
 🏓 Barrot PING sent to SHRM at Sun Dec 28 21:49:08 UTC 2025
 🟢 SHRM PONG <- Barrot at Sun Dec 28 21:49:08 UTC 2025
+🏓 Barrot PING sent to SHRM at Sun Dec 28 22:15:38 UTC 2025
+🟢 SHRM PONG <- Barrot at Sun Dec 28 22:15:38 UTC 2025
+🏓 Barrot PING sent to SHRM at Sun Dec 28 22:42:05 UTC 2025
+🟢 SHRM PONG <- Barrot at Sun Dec 28 22:42:05 UTC 2025
+🏓 Barrot PING sent to SHRM at Sun Dec 28 22:51:59 UTC 2025
+🟢 SHRM PONG <- Barrot at Sun Dec 28 22:51:59 UTC 2025
+🏓 Barrot PING sent to SHRM at Sun Dec 28 23:15:26 UTC 2025
+🟢 SHRM PONG <- Barrot at Sun Dec 28 23:15:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Sun Dec 28 23:39:02 UTC 2025
+🟢 SHRM PONG <- Barrot at Sun Dec 28 23:39:02 UTC 2025
+🏓 Barrot PING sent to SHRM at Sun Dec 28 23:50:23 UTC 2025
+🟢 SHRM PONG <- Barrot at Sun Dec 28 23:50:23 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 01:23:15 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 01:23:15 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 03:21:35 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 03:21:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 04:33:41 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 04:33:41 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 05:06:36 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 05:06:36 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 05:45:23 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 05:45:23 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 06:28:26 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 06:28:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 06:59:02 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 06:59:02 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 07:31:26 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 07:31:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 07:52:21 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 07:52:21 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 08:25:38 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 08:25:38 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 08:53:55 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 08:53:55 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 09:26:10 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 09:26:10 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 09:51:17 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 09:51:17 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 10:19:07 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 10:19:07 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 10:47:26 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 10:47:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 11:15:09 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 11:15:09 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 11:39:07 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 11:39:07 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 11:50:23 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 11:50:23 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 12:36:18 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 12:36:18 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 13:25:07 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 13:25:07 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 13:53:00 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 13:53:00 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 14:17:37 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 14:17:37 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 14:45:22 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 14:45:22 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 15:17:53 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 15:17:53 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 15:43:11 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 15:43:11 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 15:54:40 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 15:54:40 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 16:20:27 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 16:20:27 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 16:48:30 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 16:48:30 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 17:14:55 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 17:14:55 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 17:34:43 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 17:34:43 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 17:50:43 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 17:50:43 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 18:24:50 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 18:24:50 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 18:51:09 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 18:51:09 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 19:13:11 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 19:13:11 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 19:28:50 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 19:28:50 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 19:40:25 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 19:40:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 19:49:31 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 19:49:31 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 20:19:08 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 20:19:08 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 20:43:56 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 20:43:56 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 20:54:44 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 20:54:44 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 21:15:04 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 21:15:04 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 21:32:30 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 21:32:30 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 21:49:45 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 21:49:45 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 22:15:57 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 22:15:57 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 22:42:18 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 22:42:18 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 22:52:05 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 22:52:05 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 23:15:31 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 23:15:31 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 23:39:19 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 23:39:19 UTC 2025
+🏓 Barrot PING sent to SHRM at Mon Dec 29 23:49:52 UTC 2025
+🟢 SHRM PONG <- Barrot at Mon Dec 29 23:49:52 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 01:17:32 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 01:17:32 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 03:11:49 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 03:11:49 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 04:08:34 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 04:08:34 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 04:51:30 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 04:51:30 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 05:20:13 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 05:20:13 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 05:45:07 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 05:45:07 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 06:26:44 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 06:26:44 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 06:55:14 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 06:55:14 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 07:19:32 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 07:19:32 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 07:41:35 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 07:41:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 07:51:18 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 07:51:18 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 08:23:26 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 08:23:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 08:51:09 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 08:51:09 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 09:21:06 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 09:21:06 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 09:45:23 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 09:45:23 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 10:18:33 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 10:18:33 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 10:46:12 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 10:46:12 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 11:15:31 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 11:15:31 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 11:38:51 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 11:38:51 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 11:50:13 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 11:50:13 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 12:34:51 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 12:34:51 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 13:24:15 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 13:24:15 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 13:52:29 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 13:52:29 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 14:16:40 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 14:16:40 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 14:44:57 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 14:44:57 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 14:56:22 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 14:56:22 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 15:21:14 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 15:21:14 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 15:42:52 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 15:42:52 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 15:54:02 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 15:54:02 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 16:21:28 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 16:21:28 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 16:50:15 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 16:50:15 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 17:16:43 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 17:16:43 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 17:43:31 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 17:43:31 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 17:53:35 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 17:53:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 18:25:08 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 18:25:08 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 18:52:42 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 18:52:42 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 19:13:50 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 19:13:50 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 19:28:55 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 19:28:55 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 19:41:10 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 19:41:10 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 19:50:06 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 19:50:06 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 20:18:46 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 20:18:46 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 20:43:07 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 20:43:07 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 20:54:09 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 20:54:09 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 21:15:50 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 21:15:50 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 21:39:30 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 21:39:30 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 21:50:17 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 21:50:17 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 22:16:05 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 22:16:05 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 22:42:36 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 22:42:36 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 22:52:29 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 22:52:29 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 23:14:54 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 23:14:54 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 23:32:27 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 23:32:28 UTC 2025
+🏓 Barrot PING sent to SHRM at Tue Dec 30 23:49:31 UTC 2025
+🟢 SHRM PONG <- Barrot at Tue Dec 30 23:49:31 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 01:18:49 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 01:18:49 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 03:10:28 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 03:10:28 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 04:07:04 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 04:07:04 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 04:50:26 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 04:50:26 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 05:22:34 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 05:22:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 05:46:50 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 05:46:50 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 06:27:15 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 06:27:15 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 06:55:47 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 06:55:47 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 07:21:32 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 07:21:32 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 07:42:36 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 07:42:36 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 07:52:27 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 07:52:27 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 08:23:29 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 08:23:29 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 08:51:01 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 08:51:01 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 09:20:45 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 09:20:46 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 09:44:57 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 09:44:57 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 09:55:35 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 09:55:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 10:18:49 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 10:18:49 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 10:44:56 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 10:44:56 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 10:55:16 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 10:55:16 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 11:15:41 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 11:15:41 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 11:38:06 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 11:38:06 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 11:49:14 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 11:49:15 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 12:33:35 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 12:33:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 13:20:55 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 13:20:55 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 13:48:53 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 13:48:53 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 14:16:41 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 14:16:41 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 14:42:59 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 14:42:59 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 14:53:22 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 14:53:22 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 15:16:51 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 15:16:51 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 15:41:13 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 15:41:13 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 15:51:16 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 15:51:16 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 16:47:54 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 16:47:54 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 17:14:35 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 17:14:35 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 17:33:41 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 17:33:41 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 17:49:27 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 17:49:27 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 18:23:52 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 18:23:52 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 18:50:17 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 18:50:17 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 19:13:20 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 19:13:20 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 19:28:11 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 19:28:11 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 19:39:34 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 19:39:34 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 19:49:08 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 19:49:08 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 20:18:09 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 20:18:09 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 20:42:15 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 20:42:15 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 20:52:58 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 20:52:58 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 21:14:50 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 21:14:50 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 21:31:52 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 21:31:52 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 21:49:29 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 21:49:29 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 22:16:40 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 22:16:40 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 22:43:02 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 22:43:02 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 22:53:11 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 22:53:11 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 23:15:32 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 23:15:32 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 23:39:29 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 23:39:30 UTC 2025
+🏓 Barrot PING sent to SHRM at Wed Dec 31 23:50:18 UTC 2025
+🟢 SHRM PONG <- Barrot at Wed Dec 31 23:50:18 UTC 2025
+🏓 Barrot PING sent to SHRM at Thu Jan  1 01:25:38 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 01:25:38 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 03:23:36 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 03:23:36 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 04:32:28 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 04:32:28 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 05:05:16 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 05:05:16 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 05:43:50 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 05:43:50 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 05:57:16 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 05:57:16 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 06:35:28 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 06:35:28 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 07:00:10 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 07:00:10 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 07:33:30 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 07:33:30 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 07:50:42 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 07:50:42 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 08:23:12 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 08:23:12 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 08:50:39 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 08:50:39 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 09:20:58 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 09:20:58 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 09:44:21 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 09:44:21 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 09:55:14 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 09:55:14 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 10:18:29 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 10:18:29 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 10:45:38 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 10:45:38 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 11:14:36 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 11:14:36 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 11:30:48 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 11:30:48 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 11:49:11 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 11:49:11 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 12:33:44 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 12:33:44 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 13:21:35 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 13:21:35 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 13:49:15 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 13:49:15 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 14:15:42 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 14:15:42 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 14:42:48 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 14:42:48 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 14:53:35 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 14:53:35 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 15:16:38 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 15:16:38 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 15:41:10 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 15:41:10 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 15:51:44 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 15:51:44 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 16:21:00 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 16:21:00 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 16:49:16 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 16:49:16 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 17:16:00 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 17:16:00 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 17:41:39 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 17:41:39 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 17:51:15 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 17:51:15 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 18:24:09 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 18:24:09 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 18:50:59 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 18:50:59 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 19:14:19 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 19:14:19 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 19:29:52 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 19:29:52 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 19:42:22 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 19:42:22 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 19:51:31 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 19:51:31 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 20:19:07 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 20:19:07 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 20:43:19 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 20:43:19 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 20:54:44 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 20:54:44 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 21:14:22 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 21:14:22 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 21:15:22 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 21:15:22 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 21:39:18 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 21:39:18 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 21:49:47 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 21:49:47 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 22:16:15 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 22:16:15 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 22:42:46 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 22:42:46 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 22:53:30 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 22:53:30 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 23:16:13 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 23:16:13 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 23:39:50 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 23:39:50 UTC 2026
+🏓 Barrot PING sent to SHRM at Thu Jan  1 23:50:31 UTC 2026
+🟢 SHRM PONG <- Barrot at Thu Jan  1 23:50:31 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 01:19:25 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 01:19:25 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 03:13:55 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 03:13:55 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 04:11:17 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 04:11:17 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 04:52:50 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 04:52:50 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 05:22:01 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 05:22:01 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 05:47:53 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 05:47:53 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 06:27:24 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 06:27:24 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 06:56:48 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 06:56:48 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 07:23:41 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 07:23:41 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 07:43:00 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 07:43:00 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 07:52:58 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 07:52:58 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 08:23:17 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 08:23:17 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 08:50:54 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 08:50:54 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 09:20:30 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 09:20:30 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 09:44:44 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 09:44:44 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 09:55:43 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 09:55:43 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 10:18:50 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 10:18:50 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 10:43:52 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 10:43:52 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 10:54:26 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 10:54:26 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 11:15:11 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 11:15:11 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 11:37:52 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 11:37:52 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 11:49:16 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 11:49:16 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 12:33:04 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 12:33:04 UTC 2026
+🏓 Barrot PING sent to SHRM at Fri Jan  2 13:21:02 UTC 2026
+🟢 SHRM PONG <- Barrot at Fri Jan  2 13:21:03 UTC 2026

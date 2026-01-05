@@ -29,6 +29,10 @@
     "BARROT_ENV": {
       "description": "Environment for Barrot-Agent deployment",
       "value": "heroku"
+    },
+    "COIN_APP_EMAIL": {
+      "description": "Email address associated with coin/payment app integration",
+      "value": "amazonprostarelite@gmail.com"
     }
   }
 }

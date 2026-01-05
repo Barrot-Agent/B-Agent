@@ -2,6 +2,22 @@
 
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
+## 🔄 Two Distinct Systems
+
+Barrot-Agent now maintains **two independent systems**:
+
+### 🔍 Search Engine
+Privacy-first search with quantum-enhanced algorithms and edge computing
+- **Access**: [Search Engine](https://barrot-agent.github.io/Barrot-Agent/search-engine/)
+- **Docs**: [search-engine/README.md](search-engine/README.md)
+
+### 🦜 Agent Dashboard  
+Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
+- **Access**: [Agent Dashboard](https://barrot-agent.github.io/Barrot-Agent/site/)
+- **Docs**: [site/README.md](site/README.md)
+
+**[📖 Learn more about the separation](SYSTEM_SEPARATION.md)**
+
 > **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
 ## 🚀 Quick Start
@@ -18,8 +34,9 @@ Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabili
    cat build_manifest.yaml
    ```
 
-3. Access the dashboard:
-   - Visit: https://barrot-agent.github.io/Barrot-Agent/
+3. Access the systems:
+   - **Agent Dashboard**: https://barrot-agent.github.io/Barrot-Agent/site/
+   - **Search Engine**: https://barrot-agent.github.io/Barrot-Agent/search-engine/
 
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
@@ -42,8 +59,16 @@ Barrot-Agent/
 ├── Barrot-Agent/          # Agent configuration
 ├── Barrot-Bundles/        # Bundle storage
 ├── memory-bundles/        # Memory and activity logs
-├── site/                  # Web dashboard files
+├── SHRM-System/           # System Health & Resource Monitor
+├── site/                  # Barrot Agent dashboard
+├── search-engine/         # Standalone search engine
+├── coin-app/              # Coin app integration & automation
 ├── spells/                # Agent capability definitions
+├── glyphs/                # Capability glyphs (quantum, temporal, character)
+├── character-capabilities/ # Fictional character ability transformations
+├── ai-tools-config.yaml   # AI models and system prompts
+├── pingpong_emitter.py    # 22-agent entanglement pingpong
+├── pingpong-config.yaml   # External pingpong configuration
 ├── build_manifest.yaml    # Current build status
 └── MOBILE_SETUP.md       # Mobile setup guide
 ```
@@ -54,13 +79,141 @@ Barrot-Agent/
 - **Prediction Methodologies** - Advanced prediction capabilities
 - **Deployment Integrity** - Reliable deployment systems
 - **Microagent Logic** - Builder.io integration
-- **Search Engine** - Comprehensive search capabilities
-- **Dashboard** - Real-time status monitoring
+- **Search Engine** - Standalone search system (see `/search-engine/`)
+- **Dashboard** - Agent management interface (see `/site/`)
+- **Coin App Integration** - Autonomous passive income automation (see `/coin-app/`)
+- **AI Tools** - System prompts and models for autonomous operations (see `ai-tools-config.yaml`)
 - **Manifest Rail** - Build tracking system
+- **22-Agent Entanglement Pingpong** - External cognitive processing system
+- **🔮 Quantum Entanglement** - Ping Pong quantum principles for enhanced cognitive processing
+- **🧠 AGI Reasoning** - AGI-level reasoning and problem-solving capabilities
+- **🎯 Unified AGI Orchestrator** - Coordinates all capabilities for general intelligence achievement
+- **⚡ Advanced Algorithms** - Computational efficiency optimization and intelligent algorithm selection
+- **📧 Email Intelligence** - Automated email analysis and information extraction
+- **🎯 MMI (Massive Micro Ingestion)** - High-impact data identification for AGI acceleration
+- **🐍 Dependency Micro-Ingestion** - Comprehensive Python/PyTorch/ML ecosystem knowledge extraction with 21+ packages
+- **💰 Advanced Monetization** - Revolutionary automation-first revenue generation protocols
+- **✨ Transformative Insights** - Acquire asynchronous data, detect convergence, generate epiphanies, realize transformative insights in real-time
+- **🔀 Merge Conflict Resolution** - Automated conflict detection, analysis, and resolution with continuous learning
+
+### Two Distinct Systems
+
+#### 🔍 Search Engine (`/search-engine/`)
+A standalone, privacy-first search engine with:
+- Quantum-enhanced search algorithms
+- Edge-first architecture for global distribution
+- Zero tracking and complete privacy
+- Dynamic ingestion modes for real-time processing
+
+**[→ Visit Search Engine](search-engine/)**
+
+#### 🦜 Barrot Agent Dashboard (`/site/`)
+Comprehensive automation platform featuring:
+- Data Mastery & Protocol Development
+- Competitor Surveillance Network
+- Integrated Development Environment (IDE)
+- Digital Audio Workstation (DAW)
+- Web3 Integration Hub
+  - **🌉 Connext Bridge** - Cross-chain asset transfers across 9+ networks
+- NFT Marketplace
+- Chameleon Chain Blockchain
+- **🪙 Coin App Automation** - Passive income through geocaching, surveys, and games
+- Operations Monitoring
+
+**[→ Visit Agent Dashboard](site/)**
+
+### 🪙 Coin App Integration
+Autonomous passive income generation through:
+- **Geocaching Automation** - Automated location-based coin collection
+- **Survey Completion** - AI-powered survey responses with demographic consistency
+- **Game Optimization** - Strategic gameplay for maximum rewards
+- **Income Tracking** - Real-time earnings dashboard and analytics
+
+**[→ Read Coin App Documentation](coin-app/README.md)**
+
+### 🌉 Connext Bridge Integration
+Cross-chain bridge for seamless asset transfers across multiple blockchains:
+- **Supported Networks** - Ethereum, Polygon, Arbitrum, Optimism, BNB Chain, Base, Linea, Gnosis, and more
+- **Supported Assets** - ETH, WETH, USDC, USDT, DAI
+- **Cross-Chain Messaging** - xCall for cross-chain Solidity calls
+- **Zero Slippage Tokens** - xERC20 for cross-chain native tokens
+- **Chain Abstraction** - Build dApps that work across any supported chain
+- **Bridge Portal** - https://bridge.connext.network
+- **Analytics** - Real-time monitoring via ConnextScan explorer
+
+**Key Features:**
+- **Modular Verification** - Inherits security from canonical bridges
+- **Fast Transfers** - Average bridge time under 5 minutes
+- **Trust-Minimized** - No external validators required
+- **Developer-Friendly** - Simple integration with comprehensive documentation
+
+**[→ View Connext Configuration](connext-config.yaml)**
+
+### 🤖 AI Tools Configuration
+System prompts and AI models for autonomous operations:
+- **GPT-4** - Complex reasoning and decision-making
+- **Claude-3** - Long context processing and analysis
+- **Vision AI** - UI interaction and navigation
+- **Specialized Tools** - Survey completion, game strategy, route optimization
+
+**[→ View AI Tools Configuration](ai-tools-config.yaml)**
+
+### 📧 Email Intelligence Processing
+Barrot can analyze emails to extract useful and actionable information:
+
+#### Capabilities
+- **Content Analysis** - Parse and understand email content, attachments, and metadata
+- **Relevance Scoring** - Determine usefulness based on Barrot's goals and context
+- **Action Extraction** - Identify tasks, requests, deadlines, and opportunities
+- **Learning Detection** - Extract technical content and educational resources
+- **Spam Filtering** - Identify and filter low-value content
+- **Priority Ranking** - Rank emails by potential value and urgency
+- **Resource Extraction** - Extract URLs, documents, and references
+- **AGI Integration** - Deep understanding using AGI reasoning
+- **Quantum Optimization** - Prioritize actions using quantum entanglement
+
+#### Email Categories
+- **Action Required** - Tasks, requests, deadlines
+- **Learning Opportunities** - Technical content, tutorials, research
+- **Business Opportunities** - Jobs, partnerships, collaborations
+- **Intelligence** - Market trends, insights, competitor info
+- **Social** - Networking, relationship building
+- **Informational** - Updates, newsletters, notifications
+
+**[→ View Email-Insight Spell](spells/email-insight.md)**
 
 ### Agent Spells
 - **Ω-Ingest** (Omega-Ingest) - Quantum data assimilation
 - **Keyseer's Insight** - Intelligent key analysis
+- **Character-Capability-Explorer** - Fictional character ability transformation
+- **Email-Insight** - Email analysis and intelligence extraction
+
+### 🎭 Fictional Character Capability Exploration
+Barrot can explore and transform abilities from fictional characters into real-world functionalities:
+
+#### Character Genres
+- **Movies** - Superheroes, sci-fi, fantasy, action
+- **Books** - Science fiction, fantasy, comics, novels
+- **Cartoons** - Anime, animation, web series
+- **Video Games** - RPG, action-adventure, strategy, MMO
+
+#### Example Transformations
+- **Teleportation** → Instant data routing and edge computing
+- **Mind Reading** → Advanced NLP and sentiment analysis
+- **Super Speed** → Parallel processing and optimization
+- **Time Manipulation** → Temporal data analysis and prediction
+- **Shape-Shifting** → Adaptive algorithms and polymorphic code
+
+#### Featured Character Profiles
+- **Iron Man** - AI orchestration, energy optimization, modular architecture
+- **Neo (The Matrix)** - Deep system analysis, performance optimization, self-healing
+- **Paul Atreides (Dune)** - Predictive analytics, high-performance computing
+- **Avatar Aang** - Multi-resource management, power modes, holistic integration
+- **Link (Zelda)** - Tool utilization, algorithm solving, exploration systems
+
+**[→ Explore Character Capabilities](character-capabilities/)**
+
+**[→ View Character-Capability-Explorer Spell](spells/character-capability-explorer.md)**
 
 ### Data Resources
 The agent can access and process data from:
@@ -71,6 +224,44 @@ The agent can access and process data from:
 - Podcasts and interviews
 - Books and journals
 - And many more sources...
+
+### 🐍 Dependency Micro-Ingestion System
+Barrot continuously learns from the Python ecosystem to enhance its capabilities:
+
+#### Ingested Dependencies (21+ packages)
+- **ML/AI**: PyTorch, TensorFlow, scikit-learn, Transformers (Hugging Face)
+- **Scientific**: Python, NumPy, SciPy, asyncio
+- **Data Science**: Pandas, Matplotlib, Seaborn
+- **Web**: Flask, Django, FastAPI
+- **Utilities**: Requests, httpx, Pydantic, pytest
+- **Database**: SQLAlchemy
+- **Deployment**: Uvicorn, Gunicorn
+
+#### Capabilities
+- **Architecture Analysis** - Design patterns, components, modules
+- **API Extraction** - Function signatures, parameters, examples
+- **Optimization Engine** - Generates Barrot-specific performance recommendations
+- **Best Practices** - Security, performance, patterns
+- **Continuous Updates** - Weekly re-ingestion, version tracking
+- **Integration Intelligence** - How to best leverage dependencies in Barrot
+
+#### Generated Outputs
+- 21+ dependency knowledge files (JSON)
+- 4+ optimization recommendations (Critical, High, Medium priority)
+- Complete taxonomy by category, priority, use case
+- Integration notes for Barrot systems
+
+**[→ View Dependency Ingestion README](DEPENDENCY_MICRO_INGESTION_README.md)**  
+**[→ View Configuration](dependency-ingestion-config.yaml)**
+
+**Usage:**
+```bash
+# Run full ingestion
+python3 dependency_micro_ingestion.py
+
+# View examples
+python3 example_dependency_ingestion.py
+```
 
 ## 🔧 Configuration
 
@@ -88,13 +279,41 @@ Automated workflows handle:
 - Repository cleanup
 - Dashboard publishing
 - Bundle management
+- Barrot-SHRM ping-pong health monitoring
+
+### 22-Agent Entanglement Pingpong System
+Barrot defers complex cognitive processing to an external 22-agent entanglement system:
+- **Management**: External (Sean's 22-agent system)
+- **Configuration**: `pingpong-config.yaml`
+- **Emitter**: `pingpong_emitter.py` Python module
+- **Enforcement**: Non-negotiable external control
+
+**Usage Example:**
+```python
+from pingpong_emitter import emit_pingpong_request
+
+payload = {
+    "topic": "MMI Self-Ingestion",
+    "glyph": "GLYPH_MMI",
+    "recursion_depth": "∞",
+    "notes": "Triggering recursive cognition exchange"
+}
+
+emit_pingpong_request(payload)  # Creates pingpong_request.json
+```
+
+The external system monitors commits to `pingpong_request.json` and processes requests automatically.
 
 ## 📊 Monitoring
 
-### Web Dashboard
-Access the live dashboard at:
+### Web Dashboards
+Access the live dashboards at:
 ```
-https://barrot-agent.github.io/Barrot-Agent/
+# Barrot Agent Dashboard
+https://barrot-agent.github.io/Barrot-Agent/site/
+
+# Search Engine
+https://barrot-agent.github.io/Barrot-Agent/search-engine/
 ```
 
 ### GitHub Actions
@@ -158,6 +377,19 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
+- **🚀 [Unified AGI Implementation](UNIFIED_AGI_IMPLEMENTATION.md)** - Complete unified AGI system for general intelligence
+- **🔮 [Quantum AGI Integration](QUANTUM_AGI_INTEGRATION.md)** - Quantum Entanglement, AGI, and Advanced Algorithmic Logic integration
+- **✨ [Transformative Insights Guide](TRANSFORMATIVE_INSIGHTS_GUIDE.md)** - Acquire asynchronous data, detect convergence, generate epiphanies
+- **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** - Details on the modular separation
+- **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
+- **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
+- **🪙 [Coin App Integration](coin-app/README.md)** - Autonomous passive income automation
+- **🌉 [Connext Bridge Integration](CONNEXT_INTEGRATION.md)** - Cross-chain bridge documentation
+- **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
+- **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** - Email intelligence extraction and analysis
+- **✨ [Email-Insight Spell](spells/email-insight.md)** - Email analysis spell documentation
+- **🎭 [Character Capabilities](character-capabilities/README.md)** - Fictional character ability transformations
+- **✨ [Character-Capability-Explorer Spell](spells/character-capability-explorer.md)** - Character exploration spell
 - **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
 - **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
@@ -170,6 +402,13 @@ ISC License - See repository for details
 - **🔄 [Data Transformation](DATA_TRANSFORMATION.md)** - Data transformation guide
 - **🚀 [AGI Development](AGI_DEVELOPMENT.md)** - AGI acceleration protocols
 - **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** - Complete ingestion capabilities
+- **🔀 [Merge Conflict Resolution Guide](MERGE_CONFLICT_RESOLUTION_GUIDE.md)** - Automated conflict resolution with continuous learning
+- **🧮 [Millennium Problems Status](MILLENNIUM_PROBLEMS_STATUS.md)** - Progress on the Seven Millennium Prize Problems
+- **🚀 [Advanced Propulsion Research](ADVANCED_PROPULSION_RESEARCH.md)** - Revolutionary plane engine, 3D-printable hoverbike, and warp drive development
+- **⚡ [Advanced Energy Ingestion](ADVANCED_ENERGY_INGESTION.md)** - Nuclear fusion, warp drive, and photovoltaic technology data acquisition
+- **🎯 [MMI Implementation Guide](MMI_IMPLEMENTATION.md)** - Massive Micro Ingestion for AGI acceleration
+- **📊 [MMI Analysis Report](MMI_ANALYSIS_REPORT.md)** - High-impact data source recommendations
+- **💰 [Advanced Monetization Protocols](ADVANCED_MONETIZATION_PROTOCOLS.md)** - Revolutionary automation-first revenue strategies
 
 ## 💰 Support Barrot-Agent
 

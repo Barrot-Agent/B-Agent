@@ -50,6 +50,7 @@ Barrot integrates with multiple external platforms and services to outsource, tr
 
 #### Cash App
 **Purpose**: Peer-to-peer payment insights
+**Account Email**: amazonprostarelite@gmail.com
 **Use Cases**:
 - Social payment patterns
 - Consumer behavior analysis
