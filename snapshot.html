@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="30">
     <title>Barrot State Snapshot - B-Agent</title>
+    <!-- Auto-refresh can be paused by user - see controls at bottom -->
+    <meta http-equiv="refresh" content="30" id="auto-refresh-meta">
     <style>
         * {
             margin: 0;
@@ -202,6 +203,14 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             font-weight: bold;
             animation: pulse 2s infinite;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+        
+        .auto-refresh-indicator:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         
         @keyframes pulse {
@@ -258,7 +267,7 @@
         <div class="header">
             <h1>🦜 Barrot State Snapshot</h1>
             <div class="subtitle">Mutation-Sealed Provenance Export</div>
-            <div class="timestamp" id="timestamp">Generated: 2026-01-05T12:54:00Z</div>
+            <div class="timestamp" id="timestamp">Loading current time...</div>
         </div>
         
         <div class="content">
@@ -530,23 +539,59 @@
         </div>
     </div>
     
-    <div class="auto-refresh-indicator">
-        🔄 Auto-refresh: 30s
+    <div class="auto-refresh-indicator" id="refresh-indicator" onclick="toggleAutoRefresh()">
+        🔄 Auto-refresh: 30s (click to pause)
     </div>
     
     <script>
         // Update timestamp on page load
-        document.getElementById('timestamp').textContent = 'Generated: ' + new Date().toISOString();
+        document.getElementById('timestamp').textContent = 'Page loaded: ' + new Date().toISOString();
         
-        // Optional: Add countdown timer for refresh
+        // Auto-refresh control with accessibility
         let countdown = 30;
-        const indicator = document.querySelector('.auto-refresh-indicator');
+        let autoRefreshEnabled = true;
+        let intervalId = null;
+        const indicator = document.getElementById('refresh-indicator');
         
-        setInterval(() => {
-            countdown--;
-            if (countdown <= 0) countdown = 30;
-            indicator.textContent = `🔄 Auto-refresh: ${countdown}s`;
-        }, 1000);
+        function toggleAutoRefresh() {
+            autoRefreshEnabled = !autoRefreshEnabled;
+            const metaRefresh = document.getElementById('auto-refresh-meta');
+            
+            if (!autoRefreshEnabled) {
+                if (metaRefresh) metaRefresh.remove();
+                indicator.textContent = '⏸️ Auto-refresh: PAUSED (click to resume)';
+                indicator.style.background = 'rgba(220, 53, 69, 0.9)';
+            } else {
+                location.reload(); // Resume by reloading
+            }
+        }
+        
+        // Countdown timer with cleanup
+        function startCountdown() {
+            if (intervalId) clearInterval(intervalId);
+            
+            intervalId = setInterval(() => {
+                if (!document.body.contains(indicator)) {
+                    clearInterval(intervalId);
+                    return;
+                }
+                
+                countdown--;
+                if (countdown <= 0) countdown = 30;
+                
+                if (autoRefreshEnabled) {
+                    indicator.textContent = `🔄 Auto-refresh: ${countdown}s (click to pause)`;
+                }
+            }, 1000);
+        }
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (intervalId) clearInterval(intervalId);
+        });
+        
+        // Start countdown
+        startCountdown();
     </script>
 </body>
 </html>
