@@ -1,0 +1,36 @@
+{
+  "total_content_ingested": 1,
+  "total_volume_mb": 0.09765625,
+  "total_processing_time_seconds": 2.2e-05,
+  "total_sessions": 1,
+  "success_rate": 1.0,
+  "average_processing_time": 2.2e-05,
+  "ingestion_by_source": {
+    "test_source": {
+      "count": 1,
+      "volume_mb": 0.09765625,
+      "success_count": 1,
+      "failure_count": 0
+    }
+  },
+  "ingestion_by_type": {
+    "test_type": {
+      "count": 1,
+      "volume_mb": 0.09765625
+    }
+  },
+  "daily_stats": [
+    {
+      "date": "2026-01-05",
+      "content_count": 1,
+      "volume_mb": 0.09765625,
+      "sources": 1
+    }
+  ],
+  "knowledge_graph_growth": [],
+  "metadata": {
+    "created": "2026-01-05T06:20:33.423663+00:00",
+    "version": "1.0.0",
+    "last_updated": "2026-01-05T06:20:33.423745+00:00"
+  }
+}

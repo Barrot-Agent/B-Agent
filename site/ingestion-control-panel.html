@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrot Ingestion Control Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-bottom: 3px solid #4CAF50;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .control-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .source-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .source-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .source-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .source-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 25px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 17px;
+            width: 17px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(25px);
+        }
+
+        .source-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .priority-critical {
+            background: #f44336;
+        }
+
+        .priority-high {
+            background: #FF9800;
+        }
+
+        .priority-medium {
+            background: #2196F3;
+        }
+
+        .priority-low {
+            background: #9E9E9E;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #da190b;
+        }
+
+        .settings-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .status-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .status-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .status-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .status-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .logs-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .log-entry {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .log-time {
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .source-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚙️ Barrot Ingestion Control Panel</h1>
+            <p>Manage and monitor all 100+ data sources across 15 categories</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('sources')">📁 Sources</button>
+            <button class="tab" onclick="showTab('settings')">⚙️ Settings</button>
+            <button class="tab" onclick="showTab('status')">📊 Status</button>
+            <button class="tab" onclick="showTab('logs')">📝 Logs</button>
+        </div>
+
+        <!-- Sources Tab -->
+        <div id="sources" class="tab-content active">
+            <div class="control-panel">
+                <div class="section-title">Academic & Research Sources</div>
+                <div class="source-grid">
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-name">arXiv</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="source-details">
+                            <div class="detail-row">
+                                <span>Priority:</span>
+                                <span class="priority-badge priority-critical">Critical</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Update:</span>
+                                <span>Hourly</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Items/day:</span>
+                                <span>~500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-name">PubMed</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="source-details">
+                            <div class="detail-row">
+                                <span>Priority:</span>
+                                <span class="priority-badge priority-high">High</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Update:</span>
+                                <span>Daily</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Items/day:</span>
+                                <span>~200</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-name">Nature</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="source-details">
+                            <div class="detail-row">
+                                <span>Priority:</span>
+                                <span class="priority-badge priority-critical">Critical</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Update:</span>
+                                <span>Daily</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Items/day:</span>
+                                <span>~50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">✅ Enable All Academic</button>
+                    <button class="btn btn-secondary">⏸️ Pause All Academic</button>
+                    <button class="btn btn-secondary">🔄 Trigger Immediate Ingestion</button>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div class="section-title">Code Repositories</div>
+                <div class="source-grid">
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-name">GitHub</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="source-details">
+                            <div class="detail-row">
+                                <span>Priority:</span>
+                                <span class="priority-badge priority-critical">Critical</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Update:</span>
+                                <span>Hourly</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Items/day:</span>
+                                <span>~800</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-name">Hugging Face</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="source-details">
+                            <div class="detail-row">
+                                <span>Priority:</span>
+                                <span class="priority-badge priority-critical">Critical</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Update:</span>
+                                <span>Hourly</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Items/day:</span>
+                                <span>~300</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-name">Kaggle</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="source-details">
+                            <div class="detail-row">
+                                <span>Priority:</span>
+                                <span class="priority-badge priority-high">High</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Update:</span>
+                                <span>Daily</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Items/day:</span>
+                                <span>~150</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">✅ Enable All Code Sources</button>
+                    <button class="btn btn-secondary">⏸️ Pause All Code Sources</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+            <div class="control-panel">
+                <div class="section-title">Global Settings</div>
+                <form class="settings-form">
+                    <div class="form-group">
+                        <label>Default Rate Limit (requests/min)</label>
+                        <input type="number" value="10" min="1" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Quality Threshold (%)</label>
+                        <input type="number" value="70" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Storage Tier Hot→Warm (days)</label>
+                        <input type="number" value="30" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Storage Tier Warm→Cold (days)</label>
+                        <input type="number" value="180" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Enable Compression</label>
+                        <select>
+                            <option selected>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Respect robots.txt</label>
+                        <select>
+                            <option selected>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary">💾 Save Settings</button>
+                        <button type="button" class="btn btn-secondary">↺ Reset to Defaults</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Status Tab -->
+        <div id="status" class="tab-content">
+            <div class="control-panel">
+                <div class="section-title">System Status</div>
+                <div class="status-panel">
+                    <div class="status-card">
+                        <div class="status-label">Active Sources</div>
+                        <div class="status-value">98/100</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">Processing Queue</div>
+                        <div class="status-value">127</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">Success Rate (24h)</div>
+                        <div class="status-value">97.3%</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">Avg Response Time</div>
+                        <div class="status-value">1.2s</div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary">🔄 Refresh Status</button>
+                    <button class="btn btn-secondary">📥 Export Report</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs Tab -->
+        <div id="logs" class="tab-content">
+            <div class="control-panel">
+                <div class="section-title">Recent Ingestion Logs</div>
+                <div class="logs-container" id="logsContainer">
+                    <div class="log-entry">
+                        <span class="log-time">[2026-01-05 06:15:42]</span>
+                        <span>INFO: Ingested 15 papers from arXiv (success)</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2026-01-05 06:15:28]</span>
+                        <span>INFO: Processed 8 repositories from GitHub (success)</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2026-01-05 06:15:10]</span>
+                        <span>INFO: Quality filter passed: 23/25 items</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2026-01-05 06:14:55]</span>
+                        <span>INFO: Deduplication: 3 duplicates detected and removed</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2026-01-05 06:14:40]</span>
+                        <span>INFO: Storage optimization: compressed 42 files</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-secondary">🔄 Refresh Logs</button>
+                    <button class="btn btn-secondary">📥 Download Full Logs</button>
+                    <button class="btn btn-danger">🗑️ Clear Logs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tab buttons
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Simulate log updates
+        function addLogEntry() {
+            const logsContainer = document.getElementById('logsContainer');
+            if (!logsContainer) return;
+
+            const now = new Date();
+            const timeStr = now.toISOString().slice(0, 19).replace('T', ' ');
+            
+            const messages = [
+                'Ingested papers from arXiv',
+                'Processed repositories from GitHub',
+                'Quality filter passed',
+                'Deduplication check completed',
+                'Storage optimization running',
+                'Knowledge graph updated',
+                'New sources discovered'
+            ];
+            
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            
+            const newLog = document.createElement('div');
+            newLog.className = 'log-entry';
+            newLog.innerHTML = `
+                <span class="log-time">[${timeStr}]</span>
+                <span>INFO: ${message}</span>
+            `;
+            
+            logsContainer.insertBefore(newLog, logsContainer.firstChild);
+            
+            // Keep only latest 20 logs
+            while (logsContainer.children.length > 20) {
+                logsContainer.removeChild(logsContainer.lastChild);
+            }
+        }
+
+        // Add new log every 10 seconds
+        setInterval(addLogEntry, 10000);
+    </script>
+</body>
+</html>
