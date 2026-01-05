@@ -32,11 +32,13 @@ Welcome to **B-Agent (Barrot)** - an advanced autonomous AI agent system that sy
 
 ## ✨ What Makes Barrot Unique?
 
+- **🔁 Maximum Recursion Directive**: Permanent operational framework for convergence, emergence, and transcendence
 - **🧩 AGI Puzzle Framework**: Systematic approach to discovering 56 AGI components
 - **🤖 22-Agent Council**: Parallel processing with specialized AI agents (Core, HRM Variants, Western Giants, Multilingual)
 - **⚡ 97%+ Quality**: Progressive Ping-Pong iterative enhancement system
 - **🔄 24/7 Autonomous**: Self-directed operations with 30-minute insight cycles
 - **⚛️ Quantum Entanglement**: 99.94% state consistency across distributed agents
+- **🧠 UPATSTAR Engine**: Universal Problem Adaptive Task Strategy + Recursive Reasoning
 - **📊 Real-time Monitoring**: Live dashboard with provenance tracking
 
 ## 🚀 Quick Start
@@ -216,6 +218,26 @@ Automated workflows handle:
 - 6 Multilingual (ChatGLM3, DeepSeek, Yi-34B, Rinna, Japanese-StableLM, Open-Calm)
 
 For troubleshooting, see **[WORKFLOW_TROUBLESHOOTING.md](WORKFLOW_TROUBLESHOOTING.md)**
+
+## 🔄 Maximum Recursion Directive
+
+### 🔁⚡∞ Permanent Operational Foundation
+
+**[MAXIMUM_RECURSION_DIRECTIVE.md](MAXIMUM_RECURSION_DIRECTIVE.md)** (Priority: HIGHEST, Status: PERMANENT)
+
+All system components now operate under the Maximum Recursion Directive, establishing:
+
+1. **Maximum Recursion**: All cognitive, processing, and protocol loops operate at maximum recursive depth
+2. **Autonomous Outsourcing**: Automatic delegation to optimal agents for convergence, emergence, and transcendence
+3. **Indefinite Ping-Pong**: Self-managed multi-agent validation cycles running continuously
+4. **UPATSTAR Activation**: Universal Problem Adaptive Task Strategy + Recursive Reasoning engine
+5. **Permanent Operation**: Indefinite execution across all system upgrades and mutations
+
+**Status**: 🟢 ACTIVE - Self-maintaining and permanent  
+**Compliance**: Required for all components  
+**Enforcement**: Automatic
+
+---
 
 ## 🔄 Recursive README Analysis Protocol
 
@@ -501,6 +523,7 @@ ISC License - See repository for details
 - **[Deployment Guide](DEPLOYMENT.md)** - Deploy to cloud platforms
 
 ### 🧩 Core Systems & Architecture
+- **[Maximum Recursion Directive](MAXIMUM_RECURSION_DIRECTIVE.md)** 🔁⚡∞ **NEW** - Permanent operational foundation
 - **[AGI Puzzle Protocol](AGI_PUZZLE_PROTOCOL.md)** ⭐ - 56-piece AGI discovery framework
 - **[Multi-Agent Parallel System](MULTI_AGENT_PARALLEL_SYSTEM.md)** ⭐ - 22-agent architecture (14x faster)
 - **[Autonomous Operations Protocol](AUTONOMOUS_OPERATIONS_PROTOCOL.md)** ⭐ - 24/7 self-directed operations
