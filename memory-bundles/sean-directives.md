@@ -46,7 +46,8 @@ This document captures high-level strategic directives, architectural decisions,
 **Guidance**:
 - Leverage all available AI agents for maximum quality
 - Western giants: ChatGPT, Claude, Gemini, Perplexity, Grok, Watson X
-- Eastern specialists: ChatGLM3, DeepSeek-Coder, Yi-34B, Japanese models
+- Eastern specialists: ChatGLM3, DeepSeek-Coder, Yi-34B
+- Japanese specialists: Rinna Japanese-GPT, Japanese-StableLM, Open-Calm-7B
 - HRM specialists: 7 cognitive dimension experts
 - Progressive refinement: 4+ cycles until 90%+ consensus
 

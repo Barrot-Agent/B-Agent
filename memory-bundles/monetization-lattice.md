@@ -121,6 +121,8 @@ The Monetization Lattice represents a multi-dimensional framework for value crea
 
 ## Revenue Projections
 
+**Note**: Wide ranges reflect uncertainty typical of early-stage ventures. Lower bounds assume conservative market adoption; upper bounds assume favorable conditions with network effects. Probabilities indicate confidence levels based on 22 AI agent analysis.
+
 ### Short-term (Q1 2026)
 ```yaml
 glyph_licensing: $5K-$50K
