@@ -55,6 +55,7 @@ class BarrotIntegratedSystem:
     def __init__(self):
         self.quantum_system = initialize_quantum_entanglement()
         self.agi_system = agi_engine
+        self.agi_orchestrator = agi_orchestrator
         self.algorithm_optimizer = algorithmic_optimizer
         self.performance_tracker = performance_monitor
         self.transformative_insights = transformative_engine
@@ -476,6 +477,7 @@ class BarrotIntegratedSystem:
                 "transcendence_events": len(self.transformative_insights.transcendence_log),
                 "epiphany_moments": len(self.transformative_insights.epiphany_moments)
             },
+            "agi_orchestrator_status": self.agi_orchestrator.get_agi_capabilities_report(),
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
     
