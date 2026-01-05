@@ -1,0 +1,107 @@
+ingestion_engine:
+  enabled: true
+  mode: continuous
+  version: "1.0.0"
+  
+  sources:
+    youtube:
+      enabled: true
+      topics:
+        - AGI development
+        - AI agents
+        - cognitive architectures
+        - emergence
+        - transcendence
+        - multi-agent systems
+        - reasoning engines
+        - symbolic AI
+        - neural-symbolic integration
+        - world models
+        - meta-learning
+      channels:
+        - Two Minute Papers
+        - Yannic Kilcher
+        - Lex Fridman
+        - AI Explained
+        - Machine Learning Street Talk
+        - Computerphile
+      max_results_per_query: 10
+      
+    arxiv:
+      enabled: true
+      categories:
+        - cs.AI    # Artificial Intelligence
+        - cs.LG    # Machine Learning
+        - cs.MA    # Multiagent Systems
+        - cs.CL    # Computation and Language
+        - cs.NE    # Neural and Evolutionary Computing
+        - cs.RO    # Robotics
+      max_results_per_category: 20
+      update_frequency: daily
+      
+    github:
+      enabled: true
+      topics:
+        - ai-agents
+        - cognitive-architecture
+        - multi-agent-systems
+        - reasoning-engine
+        - symbolic-ai
+        - neural-symbolic
+        - agent-frameworks
+        - llm-agents
+      languages:
+        - Python
+        - JavaScript
+        - TypeScript
+      min_stars: 100
+      max_results: 50
+      
+    web:
+      enabled: true
+      sites:
+        - lesswrong.com
+        - alignment.ai
+        - openai.com/research
+        - deepmind.google/research
+        - anthropic.com/research
+        - ai.meta.com
+      crawl_depth: 2
+      respect_robots_txt: true
+      
+  processing:
+    pipeline: SHRM_v2
+    modules: all_active
+    output_dir: memory-bundles/auto-ingested/
+    batch_size: 10
+    parallel_processing: true
+    
+  triggers:
+    new_puzzle_piece: auto_ingest
+    glyph_emission: expand_search
+    convergence_event: deep_dive
+    low_confidence: request_validation
+    
+  filtering:
+    min_relevance_score: 0.6
+    max_age_days: 90
+    deduplicate: true
+    language: en
+    
+  storage:
+    cache_enabled: true
+    cache_ttl_hours: 168  # 7 days
+    memory_bundle_auto_update: true
+    provenance_tracking: true
+    
+  monitoring:
+    dashboard_enabled: true
+    log_level: info
+    metrics_collection: true
+    alert_on_failure: true
+    
+  rate_limiting:
+    youtube_requests_per_hour: 100
+    arxiv_requests_per_hour: 60
+    github_requests_per_hour: 60
+    web_requests_per_hour: 120
