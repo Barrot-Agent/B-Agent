@@ -38,6 +38,12 @@ pingpong_request.json
 email_analysis_report.json
 agi_capabilities_demo_results.json
 
+# Timestamped ingestion files (regenerated each run)
+millennium_problems_ingested_*.json
+
 # Ingested documentation (large files, don't commit)
 ingested_docs/
 ingestion_logs/
+
+# Dependency micro-ingestion outputs (regenerated on each run)
+ingested_dependencies/

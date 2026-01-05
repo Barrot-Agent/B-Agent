@@ -190,13 +190,56 @@ fictional_character_genres:
     - action_adventure_heroes
     - strategy_commanders
     - mmo_avatars
+  religious_texts:
+    - bible_figures
+    - quran_figures
+    - torah_figures
+    - cross_tradition_figures
+  comics:
+    - superhero_comics
+    - sci_fi_comics
+    - fantasy_comics
+  tv_shows:
+    - drama_series
+    - sci_fi_series
+    - medical_dramas
+  historical:
+    - religious_figures
+    - historical_leaders
+    - innovators
 
 character_capability_profiles:
   - iron_man_tony_stark
   - the_matrix_neo
   - dune_paul_atreides
   - avatar_aang
+  - rick_sanchez
   - zelda_link
+  - naruto_uzumaki
+  - son_goku
+  - kirby
+  - mega_man
+  - sonic_the_hedgehog
+  - moses
+  - king_solomon
+  - jibril_gabriel
+  - king_david
+  - superman
+  - elsa
+  - eleven
+  - walter_white
+  - spongebob_squarepants
+  - dr_strange
+  - lucy
+  - evelyn_salt
+  - doogie_howser
+  - jesus_christ
+  - psylocke
+  - cyclops
+  - storm
+  - professor_x
+  - brainiac
+  - kakashi_hatake
 
 capabilities:
   - quantum_entanglement
@@ -257,6 +300,12 @@ capabilities:
   - multi_platform_doc_crawling
   - documentation_parsing_and_extraction
   - incremental_doc_updates
+  - dynamic_character_figure_search
+  - religious_text_figure_analysis
+  - capability_permutation_engine
+  - capability_augmentation_system
+  - research_initiative_optimization
+  - cross_tradition_wisdom_integration
 
 rail_status:
   ingestion: active

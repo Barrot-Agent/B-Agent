@@ -1,0 +1,124 @@
+[
+  {
+    "pattern_id": "CP001",
+    "name": "Parallel Feature Development",
+    "description": "Two branches modify the same code section independently",
+    "conflict_type": "content",
+    "indicators": [
+      "<<<<<<< HEAD",
+      "=======",
+      ">>>>>>>"
+    ],
+    "file_patterns": [
+      "*.py",
+      "*.js",
+      "*.java",
+      "*.cpp"
+    ],
+    "frequency": "Very High",
+    "auto_resolvable": false
+  },
+  {
+    "pattern_id": "CP002",
+    "name": "Import Statement Conflict",
+    "description": "Different imports added to the same location",
+    "conflict_type": "content",
+    "indicators": [
+      "import",
+      "from",
+      "require"
+    ],
+    "file_patterns": [
+      "*.py",
+      "*.js",
+      "*.ts"
+    ],
+    "frequency": "High",
+    "auto_resolvable": true
+  },
+  {
+    "pattern_id": "CP003",
+    "name": "Configuration Merge",
+    "description": "Configuration files modified in both branches",
+    "conflict_type": "content",
+    "indicators": [
+      "config",
+      "settings",
+      "properties"
+    ],
+    "file_patterns": [
+      "*.json",
+      "*.yaml",
+      "*.yml",
+      "*.toml",
+      "*.ini"
+    ],
+    "frequency": "Medium",
+    "auto_resolvable": true
+  },
+  {
+    "pattern_id": "CP004",
+    "name": "Documentation Conflict",
+    "description": "Documentation updates conflict between branches",
+    "conflict_type": "content",
+    "indicators": [
+      "# ",
+      "## ",
+      "/**",
+      "<!--"
+    ],
+    "file_patterns": [
+      "*.md",
+      "*.rst",
+      "*.txt"
+    ],
+    "frequency": "Medium",
+    "auto_resolvable": true
+  },
+  {
+    "pattern_id": "CP005",
+    "name": "Whitespace Only",
+    "description": "Conflict caused only by whitespace differences",
+    "conflict_type": "whitespace",
+    "indicators": [
+      "spaces",
+      "tabs",
+      "indentation"
+    ],
+    "file_patterns": [
+      "*"
+    ],
+    "frequency": "Low",
+    "auto_resolvable": true
+  },
+  {
+    "pattern_id": "CP006",
+    "name": "File Rename Collision",
+    "description": "Same file renamed differently in each branch",
+    "conflict_type": "rename",
+    "indicators": [
+      "renamed",
+      "moved"
+    ],
+    "file_patterns": [
+      "*"
+    ],
+    "frequency": "Low",
+    "auto_resolvable": false
+  },
+  {
+    "pattern_id": "CP007",
+    "name": "Delete-Modify Conflict",
+    "description": "File deleted in one branch, modified in another",
+    "conflict_type": "delete_modify",
+    "indicators": [
+      "deleted by",
+      "modified by"
+    ],
+    "file_patterns": [
+      "*"
+    ],
+    "frequency": "Medium",
+    "auto_resolvable": false
+  }
+]

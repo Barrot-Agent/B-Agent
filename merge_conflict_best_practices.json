@@ -1,0 +1,141 @@
+[
+  {
+    "practice_id": "BP001",
+    "title": "Keep Feature Branches Short-Lived",
+    "description": "Minimize conflicts by merging feature branches frequently",
+    "category": "Prevention",
+    "impact": "High",
+    "implementation": [
+      "Limit feature branch lifetime to 2-3 days",
+      "Break large features into smaller incremental changes",
+      "Merge to main branch frequently"
+    ],
+    "examples": [
+      "Instead of one large feature branch, create multiple smaller PRs",
+      "Use feature flags to merge incomplete features safely"
+    ],
+    "anti_patterns": [
+      "Long-lived feature branches (weeks or months)",
+      "Waiting until feature is 'perfect' before merging"
+    ]
+  },
+  {
+    "practice_id": "BP002",
+    "title": "Regularly Sync with Main Branch",
+    "description": "Keep feature branches up-to-date with main to reduce conflict size",
+    "category": "Prevention",
+    "impact": "High",
+    "implementation": [
+      "Rebase or merge main into feature branch daily",
+      "Resolve small conflicts incrementally",
+      "Stay aware of changes in main branch"
+    ],
+    "examples": [
+      "git pull --rebase origin main (daily)",
+      "git merge origin/main (for shared branches)"
+    ],
+    "anti_patterns": [
+      "Never syncing until ready to merge",
+      "Ignoring main branch changes"
+    ]
+  },
+  {
+    "practice_id": "BP003",
+    "title": "Use Automated Code Formatters",
+    "description": "Eliminate formatting conflicts with consistent automated formatting",
+    "category": "Prevention",
+    "impact": "Medium",
+    "implementation": [
+      "Configure pre-commit hooks with formatters",
+      "Use tools like Black, Prettier, gofmt",
+      "Enforce formatting in CI/CD"
+    ],
+    "examples": [
+      "pre-commit hook with black for Python",
+      "prettier with husky for JavaScript"
+    ],
+    "anti_patterns": [
+      "Manual formatting leading to inconsistencies",
+      "No formatting standards"
+    ]
+  },
+  {
+    "practice_id": "BP004",
+    "title": "Enable Git Rerere",
+    "description": "Let Git remember how you resolved conflicts previously",
+    "category": "Automation",
+    "impact": "Medium",
+    "implementation": [
+      "git config --global rerere.enabled true",
+      "Train rerere with your resolutions",
+      "Review recorded resolutions periodically"
+    ],
+    "examples": [
+      "Rerere automatically resolves repeated conflicts during rebases"
+    ],
+    "anti_patterns": [
+      "Not using rerere for repetitive conflicts",
+      "Resolving same conflict multiple times manually"
+    ]
+  },
+  {
+    "practice_id": "BP005",
+    "title": "Test After Every Conflict Resolution",
+    "description": "Always verify that resolved conflicts don't break functionality",
+    "category": "Quality Assurance",
+    "impact": "Critical",
+    "implementation": [
+      "Run full test suite after resolution",
+      "Manual testing of affected features",
+      "Code review of conflict resolutions"
+    ],
+    "examples": [
+      "npm test or pytest after resolving conflicts",
+      "Manual QA for user-facing changes"
+    ],
+    "anti_patterns": [
+      "Committing resolved conflicts without testing",
+      "Assuming resolution is correct without verification"
+    ]
+  },
+  {
+    "practice_id": "BP006",
+    "title": "Communicate During Conflict Resolution",
+    "description": "Coordinate with team members when resolving complex conflicts",
+    "category": "Collaboration",
+    "impact": "High",
+    "implementation": [
+      "Consult original code authors",
+      "Discuss resolution approach in team chat",
+      "Document resolution rationale in commit message"
+    ],
+    "examples": [
+      "Tag teammate in PR comment: 'Hey @author, which approach should we use?'",
+      "Detailed commit message explaining why certain approach was chosen"
+    ],
+    "anti_patterns": [
+      "Silently resolving conflicts without consulting others",
+      "Making assumptions about intent"
+    ]
+  },
+  {
+    "practice_id": "BP007",
+    "title": "Learn from Conflicts",
+    "description": "Analyze patterns in conflicts to prevent future occurrences",
+    "category": "Continuous Improvement",
+    "impact": "Medium",
+    "implementation": [
+      "Track which files conflict most often",
+      "Identify structural issues causing conflicts",
+      "Refactor problem areas"
+    ],
+    "examples": [
+      "If config file always conflicts, split into multiple files",
+      "If function conflicts frequently, it may be doing too much"
+    ],
+    "anti_patterns": [
+      "Treating conflicts as normal without analysis",
+      "Not learning from repeated conflict patterns"
+    ]
+  }
+]
