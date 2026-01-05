@@ -1,0 +1,824 @@
+# Barrot-Agent Universal Ingestion Configuration
+# Maximum Ingestion Scope: All Applicable Data
+# Version: 1.0.0
+# Last Updated: 2026-01-05T06:00:00Z
+
+ingestion_metadata:
+  version: "1.0.0"
+  scope: "maximum"
+  total_sources: 100+
+  categories: 15
+  update_frequency: "continuous"
+  
+global_settings:
+  rate_limiting:
+    enabled: true
+    default_requests_per_minute: 10
+    burst_limit: 50
+  ethics:
+    respect_robots_txt: true
+    copyright_compliance: true
+    attribution_tracking: true
+  storage:
+    compression: true
+    tiered_storage: true
+    max_volume_gb: 1000
+  quality:
+    min_relevance_score: 0.7
+    min_authority_score: 0.6
+    enable_deduplication: true
+
+# Category 1: Academic & Research
+academic_research:
+  sources:
+    - name: "arXiv"
+      type: "academic"
+      url: "https://arxiv.org/api"
+      enabled: true
+      priority: critical
+      update_frequency: "hourly"
+      categories: ["cs.AI", "cs.LG", "cs.CL", "cs.CV", "cs.NE"]
+      
+    - name: "PubMed"
+      type: "academic"
+      url: "https://pubmed.ncbi.nlm.nih.gov/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["neuroscience", "cognitive science", "brain research"]
+      
+    - name: "IEEE Xplore"
+      type: "academic"
+      url: "https://ieeexplore.ieee.org/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["artificial intelligence", "machine learning", "neural networks"]
+      
+    - name: "ACM Digital Library"
+      type: "academic"
+      url: "https://dl.acm.org/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["AI", "algorithms", "computing"]
+      
+    - name: "PLOS ONE"
+      type: "academic"
+      url: "https://journals.plos.org/plosone/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["open access", "scientific research"]
+      
+    - name: "bioRxiv"
+      type: "academic"
+      url: "https://www.biorxiv.org/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["biological sciences", "neuroscience"]
+      
+    - name: "SSRN"
+      type: "academic"
+      url: "https://www.ssrn.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["economics", "game theory", "social sciences"]
+      
+    - name: "Nature"
+      type: "academic"
+      url: "https://www.nature.com/"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["high-impact science", "AI research"]
+      
+    - name: "Science"
+      type: "academic"
+      url: "https://www.science.org/"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["multidisciplinary science", "AI"]
+      
+    - name: "Semantic Scholar"
+      type: "academic"
+      url: "https://api.semanticscholar.org/"
+      enabled: true
+      priority: high
+      update_frequency: "hourly"
+      focus: ["AI-powered research", "cross-reference"]
+      
+    - name: "Google Scholar"
+      type: "academic"
+      url: "https://scholar.google.com/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["comprehensive academic search"]
+      
+    - name: "ResearchGate"
+      type: "academic"
+      url: "https://www.researchgate.net/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["preprints", "research papers"]
+      
+    - name: "Academia.edu"
+      type: "academic"
+      url: "https://www.academia.edu/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["academic papers", "repository"]
+
+# Category 2: Video Platforms
+video_platforms:
+  sources:
+    - name: "YouTube"
+      type: "video"
+      url: "https://www.youtube.com/api"
+      enabled: true
+      priority: critical
+      update_frequency: "hourly"
+      channels: ["AI research", "ML tutorials", "conference talks"]
+      
+    - name: "Vimeo"
+      type: "video"
+      url: "https://vimeo.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["educational", "conference videos"]
+      
+    - name: "TED/TEDx"
+      type: "video"
+      url: "https://www.ted.com/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["AI", "cognition", "technology"]
+      
+    - name: "Coursera"
+      type: "video"
+      url: "https://www.coursera.org/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["AI/ML courses"]
+      
+    - name: "edX"
+      type: "video"
+      url: "https://www.edx.org/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["university AI courses"]
+      
+    - name: "Udacity"
+      type: "video"
+      url: "https://www.udacity.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["AI nanodegree"]
+      
+    - name: "MIT OpenCourseWare"
+      type: "video"
+      url: "https://ocw.mit.edu/"
+      enabled: true
+      priority: high
+      update_frequency: "monthly"
+      focus: ["MIT courses", "AI/ML"]
+      
+    - name: "Stanford Online"
+      type: "video"
+      url: "https://online.stanford.edu/"
+      enabled: true
+      priority: high
+      update_frequency: "monthly"
+      focus: ["Stanford AI courses"]
+      
+    - name: "DeepLearning.AI"
+      type: "video"
+      url: "https://www.deeplearning.ai/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["AI education"]
+      
+    - name: "Fast.ai"
+      type: "video"
+      url: "https://www.fast.ai/"
+      enabled: true
+      priority: high
+      update_frequency: "monthly"
+      focus: ["practical deep learning"]
+
+# Category 3: Code Repositories
+code_repositories:
+  sources:
+    - name: "GitHub"
+      type: "code"
+      url: "https://api.github.com/"
+      enabled: true
+      priority: critical
+      update_frequency: "hourly"
+      topics: ["artificial-intelligence", "machine-learning", "deep-learning"]
+      
+    - name: "GitLab"
+      type: "code"
+      url: "https://gitlab.com/api"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      topics: ["AI", "ML"]
+      
+    - name: "Bitbucket"
+      type: "code"
+      url: "https://api.bitbucket.org/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      topics: ["AI projects"]
+      
+    - name: "SourceForge"
+      type: "code"
+      url: "https://sourceforge.net/"
+      enabled: true
+      priority: low
+      update_frequency: "weekly"
+      focus: ["open source projects"]
+      
+    - name: "Hugging Face"
+      type: "code"
+      url: "https://huggingface.co/api"
+      enabled: true
+      priority: critical
+      update_frequency: "hourly"
+      focus: ["models", "datasets", "spaces"]
+      
+    - name: "Papers with Code"
+      type: "code"
+      url: "https://paperswithcode.com/api"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["research + implementation"]
+      
+    - name: "Kaggle"
+      type: "code"
+      url: "https://www.kaggle.com/api"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["datasets", "notebooks", "competitions"]
+      
+    - name: "Google Colab Notebooks"
+      type: "code"
+      url: "https://colab.research.google.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["AI experiments"]
+      
+    - name: "Observable"
+      type: "code"
+      url: "https://observablehq.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["data visualization", "AI notebooks"]
+
+# Category 4: AI/ML Platforms
+ai_ml_platforms:
+  sources:
+    - name: "Hugging Face Hub"
+      type: "platform"
+      url: "https://huggingface.co/"
+      enabled: true
+      priority: critical
+      update_frequency: "hourly"
+      focus: ["models", "datasets", "demos"]
+      
+    - name: "TensorFlow Hub"
+      type: "platform"
+      url: "https://tfhub.dev/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["pre-trained models"]
+      
+    - name: "PyTorch Hub"
+      type: "platform"
+      url: "https://pytorch.org/hub/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["model repository"]
+      
+    - name: "ONNX Model Zoo"
+      type: "platform"
+      url: "https://github.com/onnx/models"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["interoperable AI models"]
+      
+    - name: "Model Zoo"
+      type: "platform"
+      url: "https://modelzoo.co/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["deep learning models"]
+      
+    - name: "OpenAI Documentation"
+      type: "platform"
+      url: "https://platform.openai.com/docs"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["API capabilities"]
+      
+    - name: "Anthropic Documentation"
+      type: "platform"
+      url: "https://docs.anthropic.com/"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["Claude documentation"]
+      
+    - name: "Google AI"
+      type: "platform"
+      url: "https://ai.google/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["research", "tools"]
+
+# Category 5: Blogs & Articles
+blogs_articles:
+  sources:
+    - name: "Medium"
+      type: "blog"
+      url: "https://medium.com/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      tags: ["artificial-intelligence", "machine-learning", "towards-data-science"]
+      
+    - name: "Substack"
+      type: "blog"
+      url: "https://substack.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["AI researcher newsletters"]
+      
+    - name: "Distill.pub"
+      type: "blog"
+      url: "https://distill.pub/"
+      enabled: true
+      priority: high
+      update_frequency: "monthly"
+      focus: ["interactive ML research"]
+      
+    - name: "OpenAI Blog"
+      type: "blog"
+      url: "https://openai.com/blog"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["OpenAI updates"]
+      
+    - name: "DeepMind Blog"
+      type: "blog"
+      url: "https://deepmind.google/blog/"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["DeepMind research"]
+      
+    - name: "Google AI Blog"
+      type: "blog"
+      url: "https://ai.googleblog.com/"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["Google AI updates"]
+      
+    - name: "Meta AI Blog"
+      type: "blog"
+      url: "https://ai.meta.com/blog/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["Meta AI research"]
+      
+    - name: "Anthropic Blog"
+      type: "blog"
+      url: "https://www.anthropic.com/news"
+      enabled: true
+      priority: critical
+      update_frequency: "daily"
+      focus: ["Anthropic updates"]
+      
+    - name: "The Gradient"
+      type: "blog"
+      url: "https://thegradient.pub/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["AI research magazine"]
+      
+    - name: "AI Alignment Forum"
+      type: "blog"
+      url: "https://www.alignmentforum.org/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["alignment research"]
+      
+    - name: "LessWrong"
+      type: "blog"
+      url: "https://www.lesswrong.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["rationality", "AI safety"]
+
+# Category 6: Podcasts & Audio
+podcasts_audio:
+  sources:
+    - name: "Lex Fridman Podcast"
+      type: "podcast"
+      url: "https://lexfridman.com/podcast/"
+      enabled: true
+      priority: critical
+      update_frequency: "weekly"
+      focus: ["AI interviews"]
+      
+    - name: "Machine Learning Street Talk"
+      type: "podcast"
+      url: "https://www.youtube.com/@MachineLearningStreetTalk"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["technical AI discussions"]
+      
+    - name: "TWIML AI Podcast"
+      type: "podcast"
+      url: "https://twimlai.com/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["AI/ML interviews"]
+      
+    - name: "Practical AI"
+      type: "podcast"
+      url: "https://changelog.com/practicalai"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["applied AI"]
+
+# Category 7: Forums & Communities
+forums_communities:
+  sources:
+    - name: "Reddit"
+      type: "forum"
+      url: "https://www.reddit.com/"
+      enabled: true
+      priority: high
+      update_frequency: "hourly"
+      subreddits: ["MachineLearning", "artificial", "agi", "singularity"]
+      
+    - name: "Hacker News"
+      type: "forum"
+      url: "https://news.ycombinator.com/"
+      enabled: true
+      priority: high
+      update_frequency: "hourly"
+      focus: ["tech", "AI discussions"]
+      
+    - name: "Stack Overflow"
+      type: "forum"
+      url: "https://stackoverflow.com/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      tags: ["artificial-intelligence", "machine-learning"]
+      
+    - name: "Cross Validated"
+      type: "forum"
+      url: "https://stats.stackexchange.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["statistical ML Q&A"]
+      
+    - name: "AI Stack Exchange"
+      type: "forum"
+      url: "https://ai.stackexchange.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["AI-specific Q&A"]
+
+# Category 8: Conference Proceedings
+conference_proceedings:
+  sources:
+    - name: "NeurIPS"
+      type: "conference"
+      url: "https://neurips.cc/"
+      enabled: true
+      priority: critical
+      update_frequency: "yearly"
+      focus: ["neural information processing"]
+      
+    - name: "ICML"
+      type: "conference"
+      url: "https://icml.cc/"
+      enabled: true
+      priority: critical
+      update_frequency: "yearly"
+      focus: ["machine learning"]
+      
+    - name: "ICLR"
+      type: "conference"
+      url: "https://iclr.cc/"
+      enabled: true
+      priority: critical
+      update_frequency: "yearly"
+      focus: ["learning representations"]
+      
+    - name: "CVPR"
+      type: "conference"
+      url: "https://cvpr.thecvf.com/"
+      enabled: true
+      priority: high
+      update_frequency: "yearly"
+      focus: ["computer vision"]
+      
+    - name: "EMNLP"
+      type: "conference"
+      url: "https://2024.emnlp.org/"
+      enabled: true
+      priority: high
+      update_frequency: "yearly"
+      focus: ["NLP"]
+      
+    - name: "ACL"
+      type: "conference"
+      url: "https://www.aclweb.org/"
+      enabled: true
+      priority: high
+      update_frequency: "yearly"
+      focus: ["computational linguistics"]
+      
+    - name: "AAAI"
+      type: "conference"
+      url: "https://aaai.org/"
+      enabled: true
+      priority: critical
+      update_frequency: "yearly"
+      focus: ["advancement of AI"]
+      
+    - name: "IJCAI"
+      type: "conference"
+      url: "https://www.ijcai.org/"
+      enabled: true
+      priority: high
+      update_frequency: "yearly"
+      focus: ["international AI"]
+
+# Category 9: Documentation Sites
+documentation_sites:
+  sources:
+    - name: "LangChain Docs"
+      type: "documentation"
+      url: "https://python.langchain.com/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["LLM applications"]
+      
+    - name: "LlamaIndex Docs"
+      type: "documentation"
+      url: "https://docs.llamaindex.ai/"
+      enabled: true
+      priority: high
+      update_frequency: "weekly"
+      focus: ["data framework for LLMs"]
+      
+    - name: "Transformers Docs"
+      type: "documentation"
+      url: "https://huggingface.co/docs/transformers"
+      enabled: true
+      priority: critical
+      update_frequency: "weekly"
+      focus: ["Hugging Face transformers"]
+      
+    - name: "spaCy Docs"
+      type: "documentation"
+      url: "https://spacy.io/docs"
+      enabled: true
+      priority: medium
+      update_frequency: "monthly"
+      focus: ["industrial NLP"]
+
+# Category 10: Books & Textbooks
+books_textbooks:
+  sources:
+    - name: "AI: A Modern Approach"
+      type: "book"
+      enabled: true
+      priority: critical
+      authors: ["Russell", "Norvig"]
+      focus: ["foundational AI"]
+      
+    - name: "Deep Learning"
+      type: "book"
+      enabled: true
+      priority: critical
+      authors: ["Goodfellow", "Bengio", "Courville"]
+      url: "https://www.deeplearningbook.org/"
+      focus: ["deep learning foundations"]
+      
+    - name: "Reinforcement Learning: An Introduction"
+      type: "book"
+      enabled: true
+      priority: high
+      authors: ["Sutton", "Barto"]
+      url: "http://incompleteideas.net/book/the-book.html"
+      focus: ["RL fundamentals"]
+      
+    - name: "Pattern Recognition and Machine Learning"
+      type: "book"
+      enabled: true
+      priority: high
+      authors: ["Bishop"]
+      focus: ["ML theory"]
+
+# Category 11: Patents & Technical Documents
+patents_technical:
+  sources:
+    - name: "Google Patents"
+      type: "patent"
+      url: "https://patents.google.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["AI/ML patents"]
+      
+    - name: "USPTO"
+      type: "patent"
+      url: "https://www.uspto.gov/"
+      enabled: true
+      priority: medium
+      update_frequency: "weekly"
+      focus: ["US patents"]
+      
+    - name: "WIPO"
+      type: "patent"
+      url: "https://www.wipo.int/"
+      enabled: true
+      priority: low
+      update_frequency: "monthly"
+      focus: ["international patents"]
+
+# Category 12: News & Media
+news_media:
+  sources:
+    - name: "MIT Technology Review"
+      type: "news"
+      url: "https://www.technologyreview.com/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["AI coverage"]
+      
+    - name: "Wired AI"
+      type: "news"
+      url: "https://www.wired.com/tag/artificial-intelligence/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["AI news"]
+      
+    - name: "VentureBeat AI"
+      type: "news"
+      url: "https://venturebeat.com/category/ai/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["AI industry"]
+      
+    - name: "TechCrunch AI"
+      type: "news"
+      url: "https://techcrunch.com/category/artificial-intelligence/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["AI startups"]
+
+# Category 13: Datasets
+datasets:
+  sources:
+    - name: "UCI ML Repository"
+      type: "dataset"
+      url: "https://archive.ics.uci.edu/"
+      enabled: true
+      priority: high
+      update_frequency: "monthly"
+      focus: ["classic datasets"]
+      
+    - name: "Kaggle Datasets"
+      type: "dataset"
+      url: "https://www.kaggle.com/datasets"
+      enabled: true
+      priority: critical
+      update_frequency: "weekly"
+      focus: ["competition datasets"]
+      
+    - name: "Google Dataset Search"
+      type: "dataset"
+      url: "https://datasetsearch.research.google.com/"
+      enabled: true
+      priority: high
+      update_frequency: "daily"
+      focus: ["dataset discovery"]
+      
+    - name: "AWS Open Data"
+      type: "dataset"
+      url: "https://registry.opendata.aws/"
+      enabled: true
+      priority: medium
+      update_frequency: "monthly"
+      focus: ["public datasets"]
+      
+    - name: "Common Crawl"
+      type: "dataset"
+      url: "https://commoncrawl.org/"
+      enabled: true
+      priority: medium
+      update_frequency: "monthly"
+      focus: ["web crawl data"]
+
+# Category 14: Visualization & Interactive Tools
+visualization_tools:
+  sources:
+    - name: "Distill.pub visualizations"
+      type: "visualization"
+      url: "https://distill.pub/"
+      enabled: true
+      priority: medium
+      update_frequency: "monthly"
+      focus: ["interactive ML"]
+      
+    - name: "TensorFlow Playground"
+      type: "visualization"
+      url: "https://playground.tensorflow.org/"
+      enabled: true
+      priority: low
+      update_frequency: "yearly"
+      focus: ["neural network visualization"]
+
+# Category 15: Social Media
+social_media:
+  sources:
+    - name: "Twitter/X"
+      type: "social"
+      url: "https://twitter.com/"
+      enabled: true
+      priority: high
+      update_frequency: "hourly"
+      accounts: ["AI researchers", "labs", "announcements"]
+      
+    - name: "LinkedIn"
+      type: "social"
+      url: "https://www.linkedin.com/"
+      enabled: true
+      priority: medium
+      update_frequency: "daily"
+      focus: ["professional AI content"]
+      
+    - name: "Mastodon"
+      type: "social"
+      url: "https://mastodon.social/"
+      enabled: true
+      priority: low
+      update_frequency: "daily"
+      focus: ["decentralized AI community"]
+
+# Ingestion Statistics Target
+targets:
+  total_sources: 100+
+  daily_ingestion_items: 1000+
+  storage_capacity_tb: 1
+  processing: "24/7 continuous"
+  knowledge_graph_nodes: "millions"
