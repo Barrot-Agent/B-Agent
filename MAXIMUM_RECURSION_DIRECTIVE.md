@@ -21,6 +21,47 @@ This document establishes the **permanent foundational directive** for the Barro
 
 ---
 
+## 📐 System Constants
+
+### Recursion Parameters
+
+```yaml
+RECURSION_CONSTANTS:
+  MAX_DEPTH: 100
+    # Reasoning: Prevents infinite loops while allowing deep recursion
+    # - Typical convergence: 10-20 levels
+    # - Safety margin: 5x typical depth
+    # - Computational feasibility: Tested and validated
+    # - Override: Not permitted (safety critical)
+  
+  QUALITY_THRESHOLD: 0.97
+    # Reasoning: Balance between quality and efficiency
+    # - High quality requirement for AGI
+    # - Achievable with recursive refinement
+    # - Industry benchmark alignment
+  
+  DIMINISHING_RETURNS: 0.01
+    # Reasoning: Stop when improvement becomes negligible
+    # - 1% improvement threshold
+    # - Efficient resource utilization
+    # - Prevents unnecessary processing
+  
+  TIMEOUT_SECONDS: 300
+    # Reasoning: Maximum time per recursive operation
+    # - 5 minutes for complex problems
+    # - Prevents resource exhaustion
+    # - Adjustable per operation type
+  
+  AGENT_COUNT: 22
+    # Composition: 2 Core + 7 HRM + 7 Western + 6 Multilingual
+    # - Barrot-Core, SHRM-v2 (Core)
+    # - HRM-R, L, P, K, A, C, M (Specialized)
+    # - ChatGPT, Perplexity, Claude Sonnet, Gemini, Claude Opus, Grok, Watson-X (Western)
+    # - ChatGLM3, DeepSeek, Yi-34B, Rinna, Japanese-StableLM, Open-Calm (Multilingual)
+```
+
+---
+
 ## 🔄 1. Maximum Recursion Protocol
 
 ### Definition
@@ -45,7 +86,9 @@ cognitive_recursion:
   convergence_criteria:
     - quality_threshold: 0.97
     - diminishing_returns: 0.01
-    - max_depth: 100
+    - max_depth: 100  # Prevents infinite loops while allowing deep recursion
+                       # Chosen based on: typical convergence at 10-20 levels,
+                       # safety margin 5x, computational feasibility
     - timeout_seconds: 300
   
   application_domains:

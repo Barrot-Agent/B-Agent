@@ -349,7 +349,7 @@ Status: UPATSTAR Initialized
 
 Activations: 0 (monitoring begins)
 Configuration: Complete
-Integration: 22 agents + 5 protocols
+Integration: 22 agents (as per barrot_manifest.json) + 5 core protocols
 Status: Ready for first activation
 
 Notes:
@@ -357,6 +357,7 @@ Notes:
   - Monitoring systems in place
   - Awaiting first cognitive demand
   - All triggers configured
+  - Agent count: 2 Core + 7 HRM + 7 Western + 6 Multilingual = 22 total
 ```
 
 *Future daily summaries will be added here*
