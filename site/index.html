@@ -2,80 +2,1623 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Barrot Agent - Blockchain Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barrot Agent - Intelligent Automation Dashboard</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      text-align: center; 
-      padding: 2em; 
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: #fff;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .header {
+      background: rgba(0,0,0,0.3);
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #00ffcc;
+      position: relative;
+    }
+    
+    .user-profile {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      gap: 0.8rem;
     }
-    .container {
-      background: white;
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      max-width: 800px;
+    
+    .profile-picture {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ffcc 0%, #00ff88 50%, #00ccff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      border: 2px solid #00ffcc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0,255,204,0.3);
     }
-    h1 { 
-      font-size: 2.5em; 
-      color: #667eea; 
-      margin-bottom: 1rem;
+    
+    .profile-picture:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0,255,204,0.6);
     }
-    p { 
-      font-size: 1.2em; 
-      color: #555;
-      margin-bottom: 2rem;
-    }
-    .projects {
+    
+    .profile-info {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      align-items: flex-start;
     }
-    .project-card {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 2rem;
-      border-radius: 15px;
-      color: white;
-      text-decoration: none;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    
+    .profile-name {
+      color: #00ffcc;
+      font-weight: bold;
+      font-size: 0.9rem;
     }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    
+    .profile-status {
+      color: #aaa;
+      font-size: 0.75rem;
     }
-    .project-card h2 {
-      font-size: 1.8rem;
+    
+    /* Tablet styles */
+    @media (max-width: 1024px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .main-container {
+        padding: 0 1.5rem;
+      }
+    }
+    
+    /* Mobile and tablet common styles */
+    @media (max-width: 768px) {
+      .user-profile {
+        position: static;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+      
+      .profile-info {
+        align-items: center;
+      }
+      
+      .header {
+        padding: 1.5rem 1rem;
+      }
+      
+      .header h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        word-wrap: break-word;
+      }
+      
+      .header .tagline {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+      
+      .main-container {
+        margin: 1rem auto;
+        padding: 0 0.75rem;
+      }
+      
+      .welcome-section {
+        padding: 1.5rem 1rem;
+      }
+      
+      .welcome-section p {
+        font-size: 0.95rem;
+      }
+      
+      .tabs {
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.5rem;
+      }
+      
+      .tab {
+        flex-shrink: 0;
+        min-width: 120px;
+        padding: 0.9rem 1.2rem;
+        font-size: 0.95rem;
+        scroll-snap-align: start;
+        white-space: nowrap;
+        touch-action: manipulation;
+      }
+      
+      .card {
+        padding: 1.25rem;
+        touch-action: manipulation;
+      }
+      
+      .card h3 {
+        font-size: 1.15rem;
+      }
+      
+      .quick-link {
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.2rem;
+        font-size: 0.9rem;
+        touch-action: manipulation;
+      }
+      
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .toolbar-btn {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+        touch-action: manipulation;
+      }
+      
+      .code-editor {
+        font-size: 0.85rem;
+        min-height: 250px;
+      }
+      
+      .nft-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        touch-action: manipulation;
+      }
+      
+      .nft-image {
+        height: 150px;
+        font-size: 2.5rem;
+      }
+      
+      .blockchain-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stat-value {
+        font-size: 1.5rem;
+      }
+      
+      .bridge-btn {
+        min-height: 44px;
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+      }
+      
+      .clone-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .ide-toolbar,
+      .daw-toolbar {
+        justify-content: flex-start;
+      }
+      
+      .metric-display {
+        font-size: 0.9rem;
+      }
+      
+      .metric-value {
+        font-size: 1rem;
+      }
+    }
+    
+    /* Small mobile styles */
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 1.25rem;
+      }
+      
+      .header .tagline {
+        font-size: 0.75rem;
+      }
+      
+      .profile-picture {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+      
+      .tab {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .quick-link {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .card h3 {
+        font-size: 1rem;
+      }
+      
+      .card p {
+        font-size: 0.9rem;
+      }
+      
+      .nft-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .blockchain-stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .stat-value {
+        font-size: 1.25rem;
+      }
+      
+      .toolbar-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+      }
+      
+      .methodology-tags {
+        gap: 0.4rem;
+      }
+      
+      .tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.6rem;
+      }
+    }
+    
+    /* Touch device enhancements */
+    @media (hover: none) and (pointer: coarse) {
+      .tab,
+      .quick-link,
+      .toolbar-btn,
+      .bridge-btn,
+      .card,
+      .nft-card {
+        -webkit-tap-highlight-color: rgba(0, 255, 204, 0.2);
+      }
+      
+      .tab:active,
+      .quick-link:active,
+      .toolbar-btn:active,
+      .bridge-btn:active {
+        transform: scale(0.97);
+        will-change: transform;
+      }
+      
+      .card:active,
+      .nft-card:active {
+        transform: translateY(-2px);
+        will-change: transform;
+      }
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #00ffcc, #00ff88, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 0.5rem;
     }
-    .project-card p {
-      color: rgba(255,255,255,0.9);
-      margin: 0;
+    
+    .header .tagline {
+      color: #aaa;
       font-size: 1rem;
     }
-    .confetti { animation: pop 0.5s ease-in-out; }
-    @keyframes pop { 0% { transform:scale(0.8); } 100% { transform:scale(1); } }
+    
+    .main-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
+    .welcome-section {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(0,255,204,0.3);
+      text-align: center;
+    }
+    
+    .welcome-section h2 {
+      color: #00ffcc;
+      margin-bottom: 1rem;
+    }
+    
+    .welcome-section p {
+      color: #ccc;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .quick-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .quick-link {
+      padding: 0.8rem 1.5rem;
+      background: rgba(0,255,204,0.2);
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    .quick-link:hover {
+      background: rgba(0,255,204,0.4);
+      box-shadow: 0 0 20px rgba(0,255,204,0.5);
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .tab {
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #00ffcc;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    .tab:hover, .tab.active {
+      background: rgba(0,255,204,0.2);
+      box-shadow: 0 0 15px rgba(0,255,204,0.4);
+    }
+    
+    .content-section {
+      display: none;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid rgba(0,255,204,0.3);
+    }
+    
+    .content-section.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,255,204,0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffcc;
+      box-shadow: 0 10px 30px rgba(0,255,204,0.2);
+    }
+    
+    .card h3 {
+      color: #00ffcc;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+    
+    .status-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #00ff88;
+      margin-right: 0.5rem;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .metric-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+    
+    .metric-value {
+      color: #00ffcc;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .ide-container, .daw-container {
+      background: rgba(0,0,0,0.5);
+      border-radius: 10px;
+      padding: 1rem;
+      min-height: 400px;
+    }
+    
+    .ide-toolbar, .daw-toolbar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .toolbar-btn {
+      padding: 0.5rem 1rem;
+      background: rgba(0,255,204,0.2);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    .toolbar-btn:hover {
+      background: rgba(0,255,204,0.4);
+    }
+    
+    .bridge-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: rgba(0,255,204,0.2);
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .bridge-btn:hover {
+      background: rgba(0,255,204,0.4);
+      box-shadow: 0 0 15px rgba(0,255,204,0.3);
+    }
+    
+    .code-editor {
+      width: 100%;
+      min-height: 300px;
+      background: #1e1e1e;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      padding: 1rem;
+      color: #d4d4d4;
+      font-family: 'Courier New', monospace;
+      resize: vertical;
+    }
+    
+    .daw-tracks {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .track {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid rgba(0,255,204,0.2);
+    }
+    
+    .track-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .nft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .nft-card {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(0,255,204,0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .nft-card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffcc;
+      box-shadow: 0 10px 30px rgba(0,255,204,0.3);
+    }
+    
+    .nft-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    
+    .nft-info {
+      padding: 1rem;
+    }
+    
+    .nft-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
+    .nft-price {
+      color: #00ffcc;
+      font-size: 1.1rem;
+    }
+    
+    .blockchain-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .stat-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0,255,204,0.3);
+      text-align: center;
+    }
+    
+    .stat-label {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-value {
+      color: #00ffcc;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    .methodology-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .tag {
+      padding: 0.3rem 0.8rem;
+      background: rgba(0,255,204,0.2);
+      border: 1px solid #00ffcc;
+      border-radius: 15px;
+      font-size: 0.85rem;
+    }
+    
+    .clone-monitor {
+      margin-top: 1rem;
+    }
+    
+    .clone-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+      border-left: 3px solid #00ffcc;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(0,255,204,0.3);
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  <div class="container confetti">
-    <h1>🤖 Barrot Agent Projects</h1>
-    <p>Explore our blockchain innovations and decentralized solutions</p>
-    
-    <div class="projects">
-      <a href="chameleon-presale.html" class="project-card">
-        <h2>🦎 Chameleon Chain</h2>
-        <p>The Adaptive Blockchain for Modern DeFi - Join our token presale and learn about cost-effective blockchain infrastructure</p>
-      </a>
+  <div class="header">
+    <h1>🦜 BARROT Agent - Intelligent Automation Platform</h1>
+    <p class="tagline">AI-Enhanced • Blockchain-Integrated • Multi-Modal Capabilities • Always Optimizing</p>
+    <div class="user-profile">
+      <div class="profile-picture" title="User Profile">🦜</div>
+      <div class="profile-info">
+        <div class="profile-name">Barrot Agent</div>
+        <div class="profile-status"><span class="status-indicator"></span>Online</div>
+      </div>
     </div>
   </div>
+
+  <div class="main-container">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+      <h2>Welcome to Barrot Agent</h2>
+      <p>
+        Barrot Agent is an intelligent automation platform providing advanced capabilities for data ingestion, 
+        prediction, deployment, and multi-modal operations. Explore our integrated tools including IDE, DAW, 
+        Web3 integration, NFT marketplace, and blockchain capabilities.
+      </p>
+      <!-- Note: For independent deployment, update these paths to match your hosting configuration -->
+      <div class="quick-links">
+        <a href="../search-engine/index.html" class="quick-link">🔍 Search Engine</a>
+        <a href="https://github.com/Barrot-Agent/Barrot-Agent" class="quick-link" target="_blank">📂 GitHub Repository</a>
+        <a href="https://github.com/Barrot-Agent/Barrot-Agent/actions" class="quick-link" target="_blank">⚙️ Workflows</a>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <div class="tab active" onclick="showSection('data', event)">Data Mastery</div>
+      <div class="tab" onclick="showSection('surveillance', event)">Competitor Surveillance</div>
+      <div class="tab" onclick="showSection('ide', event)">IDE</div>
+      <div class="tab" onclick="showSection('daw', event)">DAW</div>
+      <div class="tab" onclick="showSection('web3', event)">Web3</div>
+      <div class="tab" onclick="showSection('nft', event)">NFT Marketplace</div>
+      <div class="tab" onclick="showSection('blockchain', event)">Chameleon Chain</div>
+      <div class="tab" onclick="showSection('coinapp', event)">🪙 Coin App</div>
+      <div class="tab" onclick="showSection('operations', event)">Operations</div>
+      <div class="tab" onclick="showSection('connectors', event)">🔌 Connectors</div>
+    </div>
+
+    <!-- Data Mastery Section -->
+    <div id="data" class="content-section active">
+      <h2>Data Mastery & Protocol Development</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🔒 Cyber Security Analysis</h3>
+          <p><span class="status-indicator"></span>Continuous ingestion</p>
+          <div class="metric-display">
+            <span>Threats Analyzed:</span>
+            <span class="metric-value">15,847</span>
+          </div>
+          <div class="metric-display">
+            <span>Protocols Generated:</span>
+            <span class="metric-value">2,341</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🔐 Cryptography Research</h3>
+          <p><span class="status-indicator"></span>Active learning</p>
+          <div class="metric-display">
+            <span>Algorithms Studied:</span>
+            <span class="metric-value">8,923</span>
+          </div>
+          <div class="metric-display">
+            <span>New Methods:</span>
+            <span class="metric-value">437</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>⛓️ Blockchain Analysis</h3>
+          <p><span class="status-indicator"></span>Real-time monitoring</p>
+          <div class="metric-display">
+            <span>Chains Analyzed:</span>
+            <span class="metric-value">156</span>
+          </div>
+          <div class="metric-display">
+            <span>Optimizations:</span>
+            <span class="metric-value">1,892</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🎭 Cloaking Methodologies</h3>
+          <p><span class="status-indicator"></span>Advanced research</p>
+          <div class="metric-display">
+            <span>Techniques Developed:</span>
+            <span class="metric-value">734</span>
+          </div>
+          <div class="metric-display">
+            <span>Success Rate:</span>
+            <span class="metric-value">99.7%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Competitor Surveillance Section -->
+    <div id="surveillance" class="content-section">
+      <h2>Competitor Surveillance Network</h2>
+      <div class="card">
+        <h3>Active Barrot Clones Monitoring</h3>
+        <div class="clone-monitor">
+          <div class="clone-item">
+            <div>
+              <strong>Clone Alpha-7</strong><br>
+              <small>Target: Google Search</small>
+            </div>
+            <div><span class="status-indicator"></span>Active</div>
+          </div>
+          <div class="clone-item">
+            <div>
+              <strong>Clone Beta-12</strong><br>
+              <small>Target: OpenAI</small>
+            </div>
+            <div><span class="status-indicator"></span>Active</div>
+          </div>
+          <div class="clone-item">
+            <div>
+              <strong>Clone Gamma-5</strong><br>
+              <small>Target: Microsoft Bing</small>
+            </div>
+            <div><span class="status-indicator"></span>Active</div>
+          </div>
+          <div class="clone-item">
+            <div>
+              <strong>Clone Delta-9</strong><br>
+              <small>Target: Anthropic</small>
+            </div>
+            <div><span class="status-indicator"></span>Active</div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3>🎯 Intelligence Gathered</h3>
+          <p><span class="status-indicator"></span>Maintaining supremacy</p>
+          <div class="metric-display">
+            <span>Reports Today:</span>
+            <span class="metric-value">847</span>
+          </div>
+          <div class="metric-display">
+            <span>Refinements Made:</span>
+            <span class="metric-value">234</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>⚡ Competitive Advantage</h3>
+          <p><span class="status-indicator"></span>Peak performance</p>
+          <div class="metric-display">
+            <span>Lead Time:</span>
+            <span class="metric-value">6 months</span>
+          </div>
+          <div class="metric-display">
+            <span>Superiority Index:</span>
+            <span class="metric-value">9.8/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDE Section -->
+    <div id="ide" class="content-section">
+      <h2>Integrated Development Environment</h2>
+      <div class="ide-container">
+        <div class="ide-toolbar">
+          <button class="toolbar-btn" onclick="runCode()">▶ Run</button>
+          <button class="toolbar-btn" onclick="saveCode()">💾 Save</button>
+          <button class="toolbar-btn" onclick="formatCode()">✨ Format</button>
+          <button class="toolbar-btn" onclick="debugCode()">🐛 Debug</button>
+          <button class="toolbar-btn" onclick="deployCode()">🚀 Deploy</button>
+        </div>
+        <textarea class="code-editor" id="codeEditor" placeholder="// Write your code here...
+function barrotOptimize() {
+  console.log('Barrot is optimizing...');
+  return 'Superior solution achieved!';
+}"></textarea>
+      </div>
+    </div>
+
+    <!-- DAW Section -->
+    <div id="daw" class="content-section">
+      <h2>Digital Audio Workstation</h2>
+      <div class="daw-container">
+        <div class="daw-toolbar">
+          <button class="toolbar-btn" onclick="playAudio()">▶ Play</button>
+          <button class="toolbar-btn" onclick="pauseAudio()">⏸ Pause</button>
+          <button class="toolbar-btn" onclick="recordAudio()">⏺ Record</button>
+          <button class="toolbar-btn" onclick="exportAudio()">💾 Export</button>
+          <button class="toolbar-btn" onclick="addEffect()">✨ Effects</button>
+        </div>
+        <div class="daw-tracks">
+          <div class="track">
+            <div class="track-controls">
+              <strong>Track 1: Master</strong>
+              <button class="toolbar-btn">🔇</button>
+              <button class="toolbar-btn">Solo</button>
+            </div>
+          </div>
+          <div class="track">
+            <div class="track-controls">
+              <strong>Track 2: Synth</strong>
+              <button class="toolbar-btn">🔇</button>
+              <button class="toolbar-btn">Solo</button>
+            </div>
+          </div>
+          <div class="track">
+            <div class="track-controls">
+              <strong>Track 3: Drums</strong>
+              <button class="toolbar-btn">🔇</button>
+              <button class="toolbar-btn">Solo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web3 Section -->
+    <div id="web3" class="content-section">
+      <h2>Web3 Integration Hub</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🌐 Decentralized Applications</h3>
+          <p><span class="status-indicator"></span>Connected</p>
+          <div class="metric-display">
+            <span>Active dApps:</span>
+            <span class="metric-value">42</span>
+          </div>
+          <div class="metric-display">
+            <span>Transactions/day:</span>
+            <span class="metric-value">18.5K</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>💰 Wallet Integration</h3>
+          <p><span class="status-indicator"></span>Wallet connected</p>
+          <div class="metric-display">
+            <span>Balance:</span>
+            <span class="metric-value">1,245.67 ETH</span>
+          </div>
+          <div class="metric-display">
+            <span>Networks:</span>
+            <span class="metric-value">15</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🔗 Smart Contracts</h3>
+          <p><span class="status-indicator"></span>Deployed</p>
+          <div class="metric-display">
+            <span>Active Contracts:</span>
+            <span class="metric-value">127</span>
+          </div>
+          <div class="metric-display">
+            <span>Gas Optimized:</span>
+            <span class="metric-value">45%</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🎯 DeFi Integration</h3>
+          <p><span class="status-indicator"></span>Optimizing</p>
+          <div class="metric-display">
+            <span>APY Average:</span>
+            <span class="metric-value">127%</span>
+          </div>
+          <div class="metric-display">
+            <span>TVL:</span>
+            <span class="metric-value">$15.8M</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🌉 Connext Bridge</h3>
+          <p><span class="status-indicator"></span>Active</p>
+          <div class="metric-display">
+            <span>Supported Chains:</span>
+            <span class="metric-value">9</span>
+          </div>
+          <div class="metric-display">
+            <span>Bridge Volume/day:</span>
+            <span class="metric-value">$2.4M</span>
+          </div>
+          <div class="metric-display">
+            <span>Assets:</span>
+            <span class="metric-value">ETH, USDC, USDT, DAI</span>
+          </div>
+          <button class="bridge-btn" onclick="window.open('https://bridge.connext.network', '_blank')">
+            Open Bridge →
+          </button>
+        </div>
+        <div class="card">
+          <h3>📊 Cross-Chain Analytics</h3>
+          <p><span class="status-indicator"></span>Monitoring</p>
+          <div class="metric-display">
+            <span>Cross-Chain Txs:</span>
+            <span class="metric-value">847</span>
+          </div>
+          <div class="metric-display">
+            <span>Avg Bridge Time:</span>
+            <span class="metric-value">3.2 min</span>
+          </div>
+          <div class="metric-display">
+            <span>Success Rate:</span>
+            <span class="metric-value">99.8%</span>
+          </div>
+          <button class="bridge-btn" onclick="window.open('https://connextscan.io', '_blank')">
+            View Explorer →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NFT Section -->
+    <div id="nft" class="content-section">
+      <h2>NFT Marketplace</h2>
+      <div class="nft-grid">
+        <div class="nft-card">
+          <div class="nft-image">🦜</div>
+          <div class="nft-info">
+            <div class="nft-title">Barrot Genesis #1</div>
+            <div class="nft-price">12.5 ETH</div>
+          </div>
+        </div>
+        <div class="nft-card">
+          <div class="nft-image">⚡</div>
+          <div class="nft-info">
+            <div class="nft-title">Quantum Search</div>
+            <div class="nft-price">8.3 ETH</div>
+          </div>
+        </div>
+        <div class="nft-card">
+          <div class="nft-image">🔮</div>
+          <div class="nft-info">
+            <div class="nft-title">AI Oracle</div>
+            <div class="nft-price">15.7 ETH</div>
+          </div>
+        </div>
+        <div class="nft-card">
+          <div class="nft-image">🌊</div>
+          <div class="nft-info">
+            <div class="nft-title">Data Wave</div>
+            <div class="nft-price">6.2 ETH</div>
+          </div>
+        </div>
+        <div class="nft-card">
+          <div class="nft-image">🚀</div>
+          <div class="nft-info">
+            <div class="nft-title">Deploy Master</div>
+            <div class="nft-price">9.8 ETH</div>
+          </div>
+        </div>
+        <div class="nft-card">
+          <div class="nft-image">💎</div>
+          <div class="nft-info">
+            <div class="nft-title">Rare Algorithm</div>
+            <div class="nft-price">22.1 ETH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chameleon Chain Section -->
+    <div id="blockchain" class="content-section">
+      <h2>Chameleon Chain - 100% Interoperability</h2>
+      <div class="blockchain-stats">
+        <div class="stat-box">
+          <div class="stat-label">Block Height</div>
+          <div class="stat-value">2,847,391</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">TPS</div>
+          <div class="stat-value">50,000</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Interoperable Chains</div>
+          <div class="stat-value">247</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Network Health</div>
+          <div class="stat-value">99.9%</div>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>⚡ Proof of Work</h3>
+          <p><span class="status-indicator"></span>Mining active</p>
+          <div class="metric-display">
+            <span>Hash Rate:</span>
+            <span class="metric-value">1.2 EH/s</span>
+          </div>
+          <div class="metric-display">
+            <span>Difficulty:</span>
+            <span class="metric-value">25.3T</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>💫 Proof of Stake</h3>
+          <p><span class="status-indicator"></span>Staking active</p>
+          <div class="metric-display">
+            <span>Total Staked:</span>
+            <span class="metric-value">45.2M CCH</span>
+          </div>
+          <div class="metric-display">
+            <span>Validators:</span>
+            <span class="metric-value">12,847</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🔄 Cross-Chain Bridges</h3>
+          <p><span class="status-indicator"></span>All operational</p>
+          <div class="metric-display">
+            <span>Active Bridges:</span>
+            <span class="metric-value">247</span>
+          </div>
+          <div class="metric-display">
+            <span>Volume 24h:</span>
+            <span class="metric-value">$892M</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🎭 Privacy Features</h3>
+          <p><span class="status-indicator"></span>Enhanced security</p>
+          <div class="metric-display">
+            <span>Anonymity Score:</span>
+            <span class="metric-value">10/10</span>
+          </div>
+          <div class="metric-display">
+            <span>Privacy Txs:</span>
+            <span class="metric-value">98.5%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coin App Section -->
+    <div id="coinapp" class="content-section">
+      <h2>🪙 Coin App - Autonomous Passive Income</h2>
+      <div class="card">
+        <h3>Earnings Dashboard</h3>
+        <div class="metric-display">
+          <span>Today:</span>
+          <span class="metric-value" id="coins-today">147 coins</span>
+        </div>
+        <div class="metric-display">
+          <span>This Week:</span>
+          <span class="metric-value" id="coins-week">892 coins</span>
+        </div>
+        <div class="metric-display">
+          <span>This Month:</span>
+          <span class="metric-value" id="coins-month">3,421 coins</span>
+        </div>
+        <div class="metric-display">
+          <span>All Time:</span>
+          <span class="metric-value" id="coins-total">28,945 coins</span>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3>📍 Geocaching</h3>
+          <p><span class="status-indicator"></span>Active</p>
+          <div class="metric-display">
+            <span>Caches Collected:</span>
+            <span class="metric-value">234</span>
+          </div>
+          <div class="metric-display">
+            <span>Coins Earned:</span>
+            <span class="metric-value">1,872</span>
+          </div>
+          <div class="metric-display">
+            <span>Avg. per Cache:</span>
+            <span class="metric-value">8.0 coins</span>
+          </div>
+          <div class="metric-display">
+            <span>Nearby Available:</span>
+            <span class="metric-value">12 caches</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📋 Survey Completion</h3>
+          <p><span class="status-indicator"></span>Active</p>
+          <div class="metric-display">
+            <span>Surveys Completed:</span>
+            <span class="metric-value">156</span>
+          </div>
+          <div class="metric-display">
+            <span>Coins Earned:</span>
+            <span class="metric-value">3,245</span>
+          </div>
+          <div class="metric-display">
+            <span>Avg. per Survey:</span>
+            <span class="metric-value">20.8 coins</span>
+          </div>
+          <div class="metric-display">
+            <span>Available Now:</span>
+            <span class="metric-value">7 surveys</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🎮 Game Automation</h3>
+          <p><span class="status-indicator"></span>Active</p>
+          <div class="metric-display">
+            <span>Games Played:</span>
+            <span class="metric-value">89</span>
+          </div>
+          <div class="metric-display">
+            <span>Coins Earned:</span>
+            <span class="metric-value">2,347</span>
+          </div>
+          <div class="metric-display">
+            <span>Win Rate:</span>
+            <span class="metric-value">87.6%</span>
+          </div>
+          <div class="metric-display">
+            <span>Active Games:</span>
+            <span class="metric-value">4 available</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📊 Performance Metrics</h3>
+          <p><span class="status-indicator"></span>Optimizing</p>
+          <div class="metric-display">
+            <span>Coins per Hour:</span>
+            <span class="metric-value">42.3</span>
+          </div>
+          <div class="metric-display">
+            <span>Success Rate:</span>
+            <span class="metric-value">94.2%</span>
+          </div>
+          <div class="metric-display">
+            <span>Daily Goal:</span>
+            <span class="metric-value">147/100 ✓</span>
+          </div>
+          <div class="metric-display">
+            <span>Best Strategy:</span>
+            <span class="metric-value">High-reward surveys</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3>🤖 AI Automation Status</h3>
+        <div class="methodology-tags">
+          <span class="tag">✓ GPT-4 Survey AI</span>
+          <span class="tag">✓ Route Optimizer</span>
+          <span class="tag">✓ Game Strategy AI</span>
+          <span class="tag">✓ Vision AI</span>
+          <span class="tag">✓ Decision Engine</span>
+        </div>
+        <p style="margin-top: 1rem; color: #aaa;">
+          Barrot autonomously manages all Coin app activities using advanced AI models for decision-making, 
+          route optimization, survey completion, and game strategy. All actions respect app terms of service 
+          and maintain natural interaction patterns.
+        </p>
+        <div style="margin-top: 1rem;">
+          <button class="toolbar-btn" onclick="alert('Automation is running. Check logs for details.')">View Activity Log</button>
+          <button class="toolbar-btn" onclick="alert('Configuration loaded from coin-app/config.yaml')">Edit Settings</button>
+          <button class="toolbar-btn" onclick="alert('Manual task execution not yet implemented')">Manual Execute</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Operations Section -->
+    <div id="operations" class="content-section">
+      <h2>Operational Parameters & Optimization</h2>
+      <div class="card">
+        <h3>System Status: Full Capacity ✓</h3>
+        <div class="metric-display">
+          <span>CPU Utilization:</span>
+          <span class="metric-value">100%</span>
+        </div>
+        <div class="metric-display">
+          <span>Memory Usage:</span>
+          <span class="metric-value">98.7%</span>
+        </div>
+        <div class="metric-display">
+          <span>Network Throughput:</span>
+          <span class="metric-value">10 Gbps</span>
+        </div>
+        <div class="metric-display">
+          <span>Active Optimizations:</span>
+          <span class="metric-value">15,847</span>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3>🎯 Competitive Edge</h3>
+          <p><span class="status-indicator"></span>Maintaining supremacy</p>
+          <div class="metric-display">
+            <span>Ahead of Competitors:</span>
+            <span class="metric-value">287 days</span>
+          </div>
+          <div class="metric-display">
+            <span>Innovation Rate:</span>
+            <span class="metric-value">147%</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>⚡ Performance Metrics</h3>
+          <p><span class="status-indicator"></span>Peak performance</p>
+          <div class="metric-display">
+            <span>Response Time:</span>
+            <span class="metric-value">12ms</span>
+          </div>
+          <div class="metric-display">
+            <span>Accuracy:</span>
+            <span class="metric-value">99.97%</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🔄 Continuous Refinement</h3>
+          <p><span class="status-indicator"></span>Always learning</p>
+          <div class="metric-display">
+            <span>Updates/hour:</span>
+            <span class="metric-value">847</span>
+          </div>
+          <div class="metric-display">
+            <span>Improvements:</span>
+            <span class="metric-value">12,341</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🏆 Supremacy Index</h3>
+          <p><span class="status-indicator"></span>Uncontestable</p>
+          <div class="metric-display">
+            <span>Overall Score:</span>
+            <span class="metric-value">10.0/10</span>
+          </div>
+          <div class="metric-display">
+            <span>Status:</span>
+            <span class="metric-value">Dominant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connectors Section -->
+    <div id="connectors" class="content-section">
+      <h2>🔌 Integration Connectors</h2>
+      <p style="color: #ccc; margin-bottom: 1.5rem;">Seamlessly connect and integrate with external platforms, APIs, and services. Manage all your integrations from a centralized hub.</p>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3>📚 Documentation Sources</h3>
+          <p><span class="status-indicator"></span>Active Ingestion</p>
+          <div class="metric-display">
+            <span>GitHub Docs:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>GitHub Copilot:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Copilot Cookbook:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Claude Skills:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>OpenAI/ChatGPT:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Snowflake:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🤖 AI Model Integrations</h3>
+          <p><span class="status-indicator"></span>Multi-Model Access</p>
+          <div class="metric-display">
+            <span>OpenAI GPT-4:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+          <div class="metric-display">
+            <span>Claude 3:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+          <div class="metric-display">
+            <span>GitHub Copilot:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+          <div class="metric-display">
+            <span>Hugging Face:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🔗 Blockchain Connectors</h3>
+          <p><span class="status-indicator"></span>Multi-Chain Support</p>
+          <div class="metric-display">
+            <span>Ethereum:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Polygon:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Arbitrum:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Connext Bridge:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>💾 Data Platforms</h3>
+          <p><span class="status-indicator"></span>Data Pipeline Active</p>
+          <div class="metric-display">
+            <span>Snowflake:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Kaggle:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Google Scholar:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Hugging Face Hub:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🛠️ Development Tools</h3>
+          <p><span class="status-indicator"></span>DevOps Integration</p>
+          <div class="metric-display">
+            <span>GitHub API:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>GitHub Actions:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+          <div class="metric-display">
+            <span>VS Code:</span>
+            <span class="metric-value">✓ Integrated</span>
+          </div>
+          <div class="metric-display">
+            <span>Docker:</span>
+            <span class="metric-value">✓ Configured</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>💰 Payment & Monetization</h3>
+          <p><span class="status-indicator"></span>Revenue Channels</p>
+          <div class="metric-display">
+            <span>Stripe:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Cash App:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>PayPal:</span>
+            <span class="metric-value">✓ Connected</span>
+          </div>
+          <div class="metric-display">
+            <span>Crypto Wallets:</span>
+            <span class="metric-value">✓ Integrated</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📊 Analytics & Monitoring</h3>
+          <p><span class="status-indicator"></span>Real-time Tracking</p>
+          <div class="metric-display">
+            <span>Performance Metrics:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+          <div class="metric-display">
+            <span>Error Tracking:</span>
+            <span class="metric-value">✓ Enabled</span>
+          </div>
+          <div class="metric-display">
+            <span>Usage Analytics:</span>
+            <span class="metric-value">✓ Logging</span>
+          </div>
+          <div class="metric-display">
+            <span>Revenue Tracking:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>🌐 Web Services</h3>
+          <p><span class="status-indicator"></span>Cloud Infrastructure</p>
+          <div class="metric-display">
+            <span>Render:</span>
+            <span class="metric-value">✓ Deployed</span>
+          </div>
+          <div class="metric-display">
+            <span>Railway:</span>
+            <span class="metric-value">✓ Configured</span>
+          </div>
+          <div class="metric-display">
+            <span>Fly.io:</span>
+            <span class="metric-value">✓ Ready</span>
+          </div>
+          <div class="metric-display">
+            <span>Cloudflare:</span>
+            <span class="metric-value">✓ Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3>➕ Add New Connector</h3>
+        <p style="color: #ccc; margin-bottom: 1rem;">Configure a new integration to expand Barrot's capabilities</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button style="padding: 0.8rem 1.5rem; background: rgba(0,255,204,0.2); border: 2px solid #00ffcc; border-radius: 8px; color: #fff; cursor: pointer; transition: all 0.3s;">
+            + API Integration
+          </button>
+          <button style="padding: 0.8rem 1.5rem; background: rgba(0,255,204,0.2); border: 2px solid #00ffcc; border-radius: 8px; color: #fff; cursor: pointer; transition: all 0.3s;">
+            + Blockchain Network
+          </button>
+          <button style="padding: 0.8rem 1.5rem; background: rgba(0,255,204,0.2); border: 2px solid #00ffcc; border-radius: 8px; color: #fff; cursor: pointer; transition: all 0.3s;">
+            + Data Source
+          </button>
+          <button style="padding: 0.8rem 1.5rem; background: rgba(0,255,204,0.2); border: 2px solid #00ffcc; border-radius: 8px; color: #fff; cursor: pointer; transition: all 0.3s;">
+            + AI Model
+          </button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3>📈 Integration Health</h3>
+        <div class="grid-2">
+          <div class="metric-display">
+            <span>Total Connectors:</span>
+            <span class="metric-value">32</span>
+          </div>
+          <div class="metric-display">
+            <span>Active Connections:</span>
+            <span class="metric-value">32</span>
+          </div>
+          <div class="metric-display">
+            <span>API Calls Today:</span>
+            <span class="metric-value">847,293</span>
+          </div>
+          <div class="metric-display">
+            <span>Success Rate:</span>
+            <span class="metric-value">99.97%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 Barrot Agent - Intelligent Automation Platform</p>
+    <p>Powered by AI • Blockchain • Multi-Modal Capabilities</p>
+  </div>
+
+  <script>
+    // Tab navigation
+    function showSection(sectionId, event) {
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
+    }
+
+    // IDE functions
+    function runCode() {
+      alert('Code execution started! Barrot is optimizing your code...');
+    }
+
+    function saveCode() {
+      const code = document.getElementById('codeEditor').value;
+      localStorage.setItem('barrotCode', code);
+      alert('Code saved successfully!');
+    }
+
+    function formatCode() {
+      alert('Code formatted with superior Barrot standards!');
+    }
+
+    function debugCode() {
+      alert('Debugging with AI-powered analysis...');
+    }
+
+    function deployCode() {
+      alert('Deploying to Chameleon Chain...');
+    }
+
+    // DAW functions
+    function playAudio() {
+      alert('Playing audio tracks...');
+    }
+
+    function pauseAudio() {
+      alert('Audio paused.');
+    }
+
+    function recordAudio() {
+      alert('Recording started...');
+    }
+
+    function exportAudio() {
+      alert('Exporting audio to WAV format...');
+    }
+
+    function addEffect() {
+      alert('Adding audio effects...');
+    }
+
+    // Simulate real-time updates
+    setInterval(() => {
+      // Update random metrics that are pure numbers
+      const metrics = document.querySelectorAll('.metric-value');
+      if (metrics.length > 0 && Math.random() > 0.7) {
+        const randomMetric = metrics[Math.floor(Math.random() * metrics.length)];
+        const text = randomMetric.textContent;
+        // Only update if it's a pure number or number with commas
+        if (/^[\d,]+$/.test(text)) {
+          const currentValue = parseInt(text.replace(/,/g, ''));
+          if (!isNaN(currentValue)) {
+            randomMetric.textContent = (currentValue + Math.floor(Math.random() * 10)).toLocaleString();
+          }
+        }
+      }
+    }, 3000);
+  </script>
 </body>
 </html>

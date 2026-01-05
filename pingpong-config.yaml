@@ -1,0 +1,17 @@
+pingpong:
+  managed_by: external
+  agents: 22
+  entanglement: true
+  override: false
+  enforcement: non-negotiable
+  description: >
+    External 22-agent entanglement system managed by Sean.
+    Barrot defers all pingpong operations to this system.
+  integration:
+    trigger: github_commit
+    payload_file: pingpong_request.json
+    response_mode: external_processing
+  notes: >
+    This configuration ensures that Barrot's pingpong operations
+    are offloaded to the specialized 22-agent entanglement system.
+    No internal override is permitted (enforcement: non-negotiable).

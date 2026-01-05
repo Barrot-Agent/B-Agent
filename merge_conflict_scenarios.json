@@ -1,0 +1,58 @@
+[
+  {
+    "scenario_id": "SC001",
+    "title": "Parallel Feature Branches Merge",
+    "description": "Two feature branches modify the same function independently",
+    "conflict_type": "content",
+    "example_conflict": "\n<<<<<<< HEAD\ndef calculate_total(items):\n    total = sum(item.price for item in items)\n    tax = total * 0.08\n    return total + tax\n=======\ndef calculate_total(items):\n    subtotal = sum(item.price * item.quantity for item in items)\n    return subtotal\n>>>>>>> feature/cart-updates\n                ",
+    "recommended_strategy": "manual_merge",
+    "step_by_step": [
+      "1. Analyze both implementations to understand intent",
+      "2. Determine if both features are needed",
+      "3. Merge changes preserving both functionalities",
+      "4. Test the merged result",
+      "5. Stage and commit the resolution"
+    ],
+    "alternative_approaches": [
+      "Create separate functions for each feature",
+      "Use feature flags to toggle behaviors",
+      "Refactor into a more flexible design"
+    ],
+    "common_pitfalls": [
+      "Blindly accepting one side without analysis",
+      "Merging incompatible logic",
+      "Not testing after resolution"
+    ],
+    "prevention_tips": [
+      "Keep feature branches short-lived",
+      "Regularly sync with main branch",
+      "Use better code organization to minimize conflicts"
+    ]
+  },
+  {
+    "scenario_id": "SC002",
+    "title": "Import Statement Ordering",
+    "description": "Both branches add new imports at the same location",
+    "conflict_type": "content",
+    "example_conflict": "\n<<<<<<< HEAD\nimport os\nimport sys\nimport requests\n=======\nimport os\nimport sys\nimport numpy as np\n>>>>>>> feature/data-analysis\n                ",
+    "recommended_strategy": "auto_merge",
+    "step_by_step": [
+      "1. Accept both imports",
+      "2. Sort them alphabetically",
+      "3. Run code formatter (isort, black, etc.)",
+      "4. Commit the organized imports"
+    ],
+    "alternative_approaches": [
+      "Use automated import sorting tools",
+      "Configure pre-commit hooks for consistent formatting"
+    ],
+    "common_pitfalls": [
+      "Not removing duplicate imports",
+      "Incorrect import order affecting functionality"
+    ],
+    "prevention_tips": [
+      "Use automated formatters with pre-commit hooks",
+      "Establish import ordering conventions"
+    ]
+  }
+]
