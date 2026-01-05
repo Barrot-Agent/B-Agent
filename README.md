@@ -38,7 +38,7 @@ The mobile guide covers:
 
 ```
 B-Agent/
-├── .github/workflows/      # GitHub Actions automation (11 workflows - see WORKFLOWS.md)
+├── .github/workflows/      # GitHub Actions automation (10 workflows - see WORKFLOWS.md)
 ├── Barrot-Agent/          # Agent configuration
 ├── Barrot-Bundles/        # Bundle storage
 ├── glyphs/                # Symbolic glyphs and directives
