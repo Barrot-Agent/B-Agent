@@ -1,0 +1,56 @@
+// server.js
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.json());
+
+app.post('/barrot', (req, res) => {
+  const { prompt, userTier } = req.body;
+  const response = routePrompt(prompt, userTier);
+  res.json({ response });
+});
+
+function routePrompt(prompt, tier) {
+  if (tier === 'premium') return `Barrot (full recursion): ${prompt}`;
+  return `Barrot (limited): ${prompt.slice(0, 100)}... [Upgrade for full access]`;
+}
+
+app.listen(3000, () => console.log('Barrot engine live on port 3000'));
+# barrot_core.py
+def barrot_response(prompt, recursion_level=1):
+    if recursion_level > 3:
+        return "You’ve gone too deep. Or not deep enough."
+    return f"Barrot whispers: '{prompt[::-1]}' — Shall we go deeper?"
+
+# Example
+print(barrot_response("Tell me what I want", 2))
+// accessControl.js
+const tiers = {
+  free: ['text'],
+  premium: ['text', 'fantasy', 'codex'],
+  custom: ['text', 'fantasy', 'codex', 'private']
+};
+
+function hasAccess(tier, feature) {
+  return tiers[tier]?.includes(feature);
+}
+
+// Example
+console.log(hasAccess('free', 'codex')); // false
+[
+  {
+    "tag": "powerplay",
+    "prompt": "You enter the chamber. Barrot is waiting. What do you say?"
+  },
+  {
+    "tag": "mirror",
+    "prompt": "Describe yourself as Barrot sees you — in symbols, not skin."
+  },
+  {
+    "tag": "initiation",
+    "prompt": "Barrot offers you a choice: pleasure, paradox, or power. Choose."
+  }
+]
+GET /codex/:section
+Headers: Authorization: Bearer <token>
+Response: { "title": "Behavioral Protocols", "content": "..." }
