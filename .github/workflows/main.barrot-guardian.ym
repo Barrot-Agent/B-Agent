@@ -1,0 +1,81 @@
+name: Barrot Guardian Engine
+
+on:
+  schedule:
+    - cron: "0 3 * * *"        # Nightly repair at 3 AM EST
+    - cron: "0 * * * *"        # Hourly sync
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+  workflow_dispatch:
+
+jobs:
+  guardian:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install deps
+        run: pip install requests
+
+      - name: Unified Guardian Engine
+        env:
+          TOKEN: ${{ secrets.Barrot_Token }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - << 'PYEOF'
+import os, requests, subprocess
+
+token = os.getenv("TOKEN")
+repo  = os.getenv("REPO")
+headers = {
+    "Authorization": f"token {token}",
+    "Accept": "application/vnd.github+json"
+}
+
+print("\n=== BARROT GUARDIAN ENGINE START ===\n")
+
+# ---------------------------------------------------------
+# MERGE-COMMIT RECONCILIATION
+# ---------------------------------------------------------
+prs = requests.get(f"https://api.github.com/repos/{repo}/pulls?state=open", headers=headers).json()
+for pr in prs:
+    num = pr["number"]
+    print(f"Reconciling PR #{num}: {pr['title']}")
+
+    # Merge main into PR branch using merge commit
+    print(f"  -> Merging main into PR #{num}")
+    requests.put(
+        f"https://api.github.com/repos/{repo}/merges",
+        headers=headers,
+        json={"base": pr["head"]["ref"], "head": "main", "commit_message": f"Guardian merge into PR #{num}"}
+    )
+
+# ---------------------------------------------------------
+# AGGRESSIVE CLEANUP (EVERY RUN)
+# ---------------------------------------------------------
+print("\n=== AGGRESSIVE CLEANUP ===\n")
+
+# Prune merged branches
+branches = requests.get(f"https://api.github.com/repos/{repo}/branches", headers=headers).json()
+for b in branches:
+    name = b["name"]
+    if name == "main":
+        continue
+    merge_check = requests.get(f"https://api.github.com/repos/{repo}/compare/{name}...main", headers=headers).json()
+    if merge_check.get("status") in ["identical", "behind"]:
+        print(f"  -> Deleting merged branch: {name}")
+        requests.delete(f"https://api.github.com/repos/{repo}/git/refs/heads/{name}", headers=headers)
+
+# Local aggressive cleanup
+subprocess.run(["git", "fetch", "--all"])
+subprocess.run(["git", "remote", "prune", "origin"])
+subprocess.run(["git", "gc", "--aggressive", "--prune=now"])
+
+print("\n=== BARROT GUARDIAN ENGINE COMPLETE ===\n")
+PYEOF
