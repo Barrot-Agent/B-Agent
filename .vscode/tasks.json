@@ -1,6 +1,95 @@
 {
   "tasks": [
     {
+      "label": "🤖 Run Full Autonomous System",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/health_check.py"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "🧹 Clean Up PRs",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/pr_cleanup.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🎯 Triage Issues",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/issue_triage.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🧩 Track AGI Puzzles",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/agi_puzzle_tracker.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📦 Sync Memory Bundles",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/memory_bundle_sync.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "📊 Generate Status Report",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/status_report.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🏥 Health Check",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "scripts/autonomous/health_check.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
       "label": "View Logs",
       "type": "shell",
       "command": "cat memory-bundles/activity-log.md | tail -50",

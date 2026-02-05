@@ -2,18 +2,145 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "View Build Manifest",
-      "type": "node",
+      "name": "🤖 Run Autonomous System (Full)",
+      "type": "python",
       "request": "launch",
-      "program": "${workspaceFolder}/build_manifest.yaml",
+      "program": "${workspaceFolder}/scripts/autonomous/health_check.py",
+      "console": "integratedTerminal",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "REPO": "Barrot-Agent/B-Agent"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "🧹 Run PR Cleanup",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/pr_cleanup.py",
+      "console": "integratedTerminal",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "REPO": "Barrot-Agent/B-Agent"
+      }
+    },
+    {
+      "name": "🎯 Run Issue Triage",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/issue_triage.py",
+      "console": "integratedTerminal",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "REPO": "Barrot-Agent/B-Agent"
+      }
+    },
+    {
+      "name": "🧩 Run AGI Puzzle Tracker",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/agi_puzzle_tracker.py",
+      "console": "integratedTerminal",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "REPO": "Barrot-Agent/B-Agent"
+      }
+    },
+    {
+      "name": "🏓 Run Progressive Ping-Pong",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/progressive_pingpong.py",
+      "console": "integratedTerminal",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "OPENAI_API_KEY": "${env:OPENAI_API_KEY}",
+        "PR_NUMBER": "${input:prNumber}",
+        "REPO": "Barrot-Agent/B-Agent"
+      }
+    },
+    {
+      "name": "📦 Run Memory Bundle Sync",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/memory_bundle_sync.py",
       "console": "integratedTerminal"
     },
     {
-      "name": "Run Barrot Dashboard",
+      "name": "📊 Generate Status Report",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/status_report.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "🏥 Run Health Check",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/autonomous/health_check.py",
+      "console": "integratedTerminal",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+        "REPO": "Barrot-Agent/B-Agent"
+      }
+    },
+    {
+      "name": "🐍 Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "🐍 Python: Current File with Args",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "args": "${input:pythonArgs}",
+      "justMyCode": false
+    },
+    {
+      "name": "🧪 Python: Debug Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": [
+        "-v",
+        "-s",
+        "${file}"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "🌐 View Barrot Dashboard",
       "type": "chrome",
       "request": "launch",
       "url": "https://barrot-agent.github.io/B-Agent/",
       "webRoot": "${workspaceFolder}/site"
+    },
+    {
+      "name": "📄 View Build Manifest",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/build_manifest.yaml",
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "prNumber",
+      "type": "promptString",
+      "description": "Enter PR number to analyze",
+      "default": "1"
+    },
+    {
+      "id": "pythonArgs",
+      "type": "promptString",
+      "description": "Enter command line arguments",
+      "default": ""
     }
   ]
 }

@@ -1,17 +1,66 @@
 {
   "recommendations": [
-    "redhat.vscode-yaml",
-    "esbenp.prettier-vscode",
-    "github.vscode-pull-request-github",
+    // GitHub Integration
     "github.copilot",
     "github.copilot-chat",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
     "ms-vscode.github-issues-prs",
     "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker",
-    "davidanson.vscode-markdownlint",
-    "yzhang.markdown-all-in-one",
+    
+    // Python Development
     "ms-python.python",
     "ms-python.vscode-pylance",
-    "ms-vscode.makefile-tools"
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.flake8",
+    "ms-python.pylint",
+    "ms-python.mypy-type-checker",
+    
+    // Markdown & Documentation
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "bierner.markdown-mermaid",
+    "bierner.markdown-preview-github-styles",
+    "shd101wyy.markdown-preview-enhanced",
+    
+    // YAML & JSON
+    "redhat.vscode-yaml",
+    "esbenp.prettier-vscode",
+    "tamasfe.even-better-toml",
+    
+    // Code Quality
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "gruntfuggly.todo-tree",
+    
+    // Productivity
+    "usernamehw.errorlens",
+    "aaron-bond.better-comments",
+    "oderwat.indent-rainbow",
+    "pkief.material-icon-theme",
+    "vscode-icons-team.vscode-icons",
+    
+    // Testing
+    "littlefoxteam.vscode-python-test-adapter",
+    "hbenl.vscode-test-explorer",
+    
+    // Remote Development
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-wsl",
+    
+    // AI & Automation
+    "continue.continue",
+    
+    // Utilities
+    "ms-vscode.makefile-tools",
+    "ms-azuretools.vscode-docker",
+    "formulahendry.code-runner",
+    "christian-kohler.path-intellisense",
+    "visualstudioexptteam.vscodeintellicode"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript-tslint-plugin"
   ]
 }

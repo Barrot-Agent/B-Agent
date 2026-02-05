@@ -8,6 +8,7 @@ Welcome to **B-Agent (Barrot)** - an advanced autonomous AI agent system that sy
 [![Dashboard](https://img.shields.io/badge/Dashboard-Live-green)](https://barrot-agent.github.io/B-Agent/)
 [![Quality](https://img.shields.io/badge/Quality-97%25+-brightgreen)](PROGRESSIVE_PINGPONG_UPGRADE.md)
 [![Agents](https://img.shields.io/badge/Agents-22-purple)](MULTI_AGENT_PARALLEL_SYSTEM.md)
+[![GitHub Integration](https://img.shields.io/badge/GitHub-Integrated-success)](GITHUB_INTEGRATION.md)
 
 > **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
 
@@ -41,6 +42,7 @@ Welcome to **B-Agent (Barrot)** - an advanced autonomous AI agent system that sy
 - **⚛️ Quantum Entanglement**: 99.94% state consistency across distributed agents
 - **🧠 UPATSTAR Engine**: Universal Problem Adaptive Task Strategy + Recursive Reasoning
 - **📊 Real-time Monitoring**: Live dashboard with provenance tracking
+- **🔗 GitHub Integration**: Autonomous repository management, issue tracking, and CI/CD coordination
 
 ## 🚀 Quick Start
 
