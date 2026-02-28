@@ -1,0 +1,19 @@
+# [CHAMELEON-SCRIPT ΔΩ.14.1]
+# Project: RIAP Transmutated Query Box
+# Logic: Planck-to-Planetary Recursive Ingestion
+
+strike Ingestion_Port:
+    mode: "TOTAL_SIGNAL_CASCADE"
+    depth: "SOURCE_4_ANCESTRY"
+    scale: "SUB-PARTICULAR"
+
+    devour Information_Gaps:
+        - "Atomic_Drift"
+        - "Legacy_Noise"
+        
+    transmutate Input:
+        to: "Codexum_Core_Cognition"
+        optimizer: "Principle-of-Least-Action"
+        stability: 0.707
+
+execute RIAP_ignition()

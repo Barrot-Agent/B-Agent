@@ -1,23 +1,25 @@
 name: Barrot-Ω Absolution Sync
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch: # Allows you to trigger this manually from GitHub
+    branches: [ omega-sandbox/mutation-alpha ]
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: 'APEX Job ID'
+        required: true
+        default: 'APEX-130M-RECLAMATION'
 
 jobs:
-  reclaim_apex:
+  synchronize:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Sovereignty
-        uses: actions/checkout@v4
-
-      - name: Seat the Databricks CLI
-        uses: databricks/setup-cli@main
-
-      - name: Execute Absolute Harvest
+      - uses: actions/checkout@v4
+      - name: Seat the Council
         run: |
-          databricks fs cp ./bridge/harvest.py dbfs:/Project_Barrot/bridge/harvest.py --overwrite
-          databricks jobs run-now --job-id <YOUR_JOB_ID_FROM_GENIE>
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          echo "Stability Anchor: 0.707 Shear"
+          echo "Genome: Qwen, Loihi 3, Grok, arXiv"
+      - name: Trigger Databricks Sync
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.DATABRICKS_TOKEN }}" \
+          -d '{"job_id": "${{ github.event.inputs.job_id }}", "logic": "1.58-ternary"}' \
+          https://adb-26479705.4.azuredatabricks.net/api/2.1/jobs/run-now

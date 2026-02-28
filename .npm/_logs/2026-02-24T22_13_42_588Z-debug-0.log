@@ -1,0 +1,44 @@
+0 verbose cli /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@11.10.1
+2 info using node@v25.3.0
+3 silly config load:file:/data/data/com.termux/files/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/data/com.termux/files/home/.npmrc
+5 silly config load:file:/data/data/com.termux/files/usr/etc/npmrc
+6 verbose title npm exec @modelcontextprotocol/server-databricks --host https://adb-26479705.4.azuredatabricks.net --token
+7 verbose argv "exec" "--yes" "--" "@modelcontextprotocol/server-databricks" "--host" "https://adb-26479705.4.azuredatabricks.net" "--token" ""
+8 verbose logfile logs-max:10 dir:/data/data/com.termux/files/home/.npm/_logs/2026-02-24T22_13_42_588Z-
+9 verbose logfile /data/data/com.termux/files/home/.npm/_logs/2026-02-24T22_13_42_588Z-debug-0.log
+10 silly logfile start cleaning logs, removing 1 files
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:1174405120 maxSize:293601280 maxEntrySize:146800640
+13 notice Access token expired or revoked. Please try logging in again.
+14 http fetch GET 404 https://registry.npmjs.org/@modelcontextprotocol%2fserver-databricks 839ms (cache skip)
+15 notice Access token expired or revoked. Please try logging in again.
+16 http fetch GET 404 https://registry.npmjs.org/@modelcontextprotocol%2fserver-databricks 219ms (cache skip)
+17 verbose stack HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/@modelcontextprotocol%2fserver-databricks - Not found
+17 verbose stack     at /data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/npm-registry-fetch/lib/check-response.js:103:15
+17 verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+17 verbose stack     at async RegistryFetcher.packument (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/pacote/lib/registry.js:90:19)
+17 verbose stack     at async RegistryFetcher.manifest (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/pacote/lib/registry.js:128:23)
+17 verbose stack     at async getManifest (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:29:22)
+17 verbose stack     at async missingFromTree (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:69:22)
+17 verbose stack     at async /data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:191:32
+17 verbose stack     at async Promise.all (index 0)
+17 verbose stack     at async exec (/data/data/com.termux/files/usr/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:189:3)
+17 verbose stack     at async Npm.exec (/data/data/com.termux/files/usr/lib/node_modules/npm/lib/npm.js:209:9)
+18 verbose statusCode 404
+19 verbose pkgid @modelcontextprotocol/server-databricks@*
+20 error code E404
+21 error 404 Not Found - GET https://registry.npmjs.org/@modelcontextprotocol%2fserver-databricks - Not found
+22 error 404
+23 error 404  The requested resource '@modelcontextprotocol/server-databricks@*' could not be found or you do not have permission to access it.
+24 error 404
+25 error 404 Note that you can also install from a
+26 error 404 tarball, folder, http url, or git url.
+27 verbose cwd /data/data/com.termux/files/home
+28 verbose os Linux 5.10.233-android12-9-00008-gf5ac1bdc50ed-ab13743812
+29 verbose node v25.3.0
+30 verbose npm  v11.10.1
+31 verbose exit 1
+32 verbose code 1
+33 error A complete log of this run can be found in: /data/data/com.termux/files/home/.npm/_logs/2026-02-24T22_13_42_588Z-debug-0.log
