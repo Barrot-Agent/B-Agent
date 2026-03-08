@@ -1,7 +1,4 @@
-python3 -c "
-import requests,os,base64
-T=os.environ.get('GITHUB_TOKEN','').strip()
-code='''import json,os,requests
+import json,os,requests
 from datetime import datetime
 from pathlib import Path
 M=Path.home()/"barrot"/"memory.json"
@@ -28,10 +25,3 @@ def think(t):
  print("Done. "+str(len(m["knowledge"]))+" entries.")
 print("BARROT v2.0")
 think(input("Learn about: "))
-'''
-encoded=base64.b64encode(code.encode()).decode()
-h={'Authorization':'token '+T,'Content-Type':'application/json'}
-sha=requests.get('https://api.github.com/repos/Barrot-Agent/B-Agent/contents/barrot.py',headers=h).json().get('sha','')
-r=requests.put('https://api.github.com/repos/Barrot-Agent/B-Agent/contents/barrot.py',headers=h,json={'message':'Fix syntax','content':encoded,'sha':sha})
-print(r.status_code)
-"
