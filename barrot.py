@@ -1,4 +1,7 @@
-import json,os,requests
+python3 -c "
+import requests,os,base64
+T=os.environ.get('GITHUB_TOKEN','').strip()
+code='''import json,os,requests
 from datetime import datetime
 from pathlib import Path
 M=Path.home()/"barrot"/"memory.json"
@@ -17,12 +20,18 @@ def think(t):
  m["sessions"]+=1
  for d in range(5):
   L=["Surface","Components","Sources","Deep","Planck"][d]
-  print(f"
-[{L}]")
-  r=ask(f"Analyze {t} at {L} level using Multisynchronous Relativistic Perception.")
+  print("["+L+"]")
+  r=ask("Analyze "+t+" at "+L+" level using Multisynchronous Relativistic Perception.")
   print(r)
   m["knowledge"].append({"timestamp":str(datetime.now()),"topic":t,"depth":L,"insight":r[:300],"session":m["sessions"]})
   sm(m)
- print(f"Done. {len(m['knowledge'])} entries.")
+ print("Done. "+str(len(m["knowledge"]))+" entries.")
 print("BARROT v2.0")
 think(input("Learn about: "))
+'''
+encoded=base64.b64encode(code.encode()).decode()
+h={'Authorization':'token '+T,'Content-Type':'application/json'}
+sha=requests.get('https://api.github.com/repos/Barrot-Agent/B-Agent/contents/barrot.py',headers=h).json().get('sha','')
+r=requests.put('https://api.github.com/repos/Barrot-Agent/B-Agent/contents/barrot.py',headers=h,json={'message':'Fix syntax','content':encoded,'sha':sha})
+print(r.status_code)
+"
