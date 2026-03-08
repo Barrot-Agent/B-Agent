@@ -1,0 +1,10 @@
+bundle:
+  name: project-barrot-sovereign
+
+resources:
+  dashboards:
+    sovereign_health:
+      display_name: "Sovereign Health Dashboard v4.0"
+      file_path: ./sovereign_dashboard.lvdash.json
+      dataset_catalog: hive_metastore
+      dataset_schema: project_barrot

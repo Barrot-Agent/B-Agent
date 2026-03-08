@@ -1,0 +1,35 @@
+name: Barrot Omega Strike
+on: [push]
+jobs:
+  strike:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install kaggle pandas PyYAML
+      - name: Materialize & Strike
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          python3 -c "
+          import os, json, pathlib, yaml
+          k_path = pathlib.Path.home() / '.kaggle'
+          k_path.mkdir(exist_ok=True)
+          with open(k_path / 'kaggle.json', 'w') as f:
+              json.dump({'username': os.environ.get('KAGGLE_USERNAME', ''), 'key': os.environ.get('KAGGLE_KEY', '')}, f)
+          os.chmod(k_path / 'kaggle.json', 0o600)
+          
+          council = {'agents': [{'id': f'agent_{i:03}', 'wing': ['Math-Logic', 'Market', 'Warp', 'Render'][i%4]} for i in range(1, 145)]}
+          p = pathlib.Path('Barrot_Ecosystem_Bundle_v2.1/config/agents.yaml')
+          p.parent.mkdir(parents=True, exist_ok=True)
+          with open(p, 'w') as f:
+              yaml.dump(council, f)
+          "
+          kaggle kernels push -p strike_zone

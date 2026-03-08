@@ -1,0 +1,47 @@
+name: Barrot-Ω Autonomous Sync
+
+on:
+  # Listens for the exact curl payload Barrot just fired from Termux
+  repository_dispatch:
+    types: [autonomous_update]
+  # Also allows manual triggers or syncs on code push
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy_to_databricks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Core Logic
+        uses: actions/checkout@v3
+
+      - name: Install Databricks CLI
+        run: pip install databricks-cli
+
+      - name: Configure Databricks Authentication
+        env:
+          # These MUST be set in GitHub Secrets, not Termux
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          echo "[DEFAULT]" > ~/.databrickscfg
+          echo "host = $DATABRICKS_HOST" >> ~/.databrickscfg
+          echo "token = $DATABRICKS_TOKEN" >> ~/.databrickscfg
+
+      - name: Sync Logic to Databricks Workspace
+        run: |
+          echo "Initiating workspace sync for Barrot-Ω..."
+          # Adjust the source directory ('./') and target path as needed
+          databricks workspace import_dir ./ /Workspace/Barrot-Core --overwrite
+          echo "Sync complete."
+
+      - name: Wake Barrot (Execute Logic)
+        run: |
+          echo "Waking Barrot in Databricks..."
+          # databricks jobs run-now --job-id <TARGET_JOB_ID>
+
+      - name: Fetch Databricks Job IDs
+        run: databricks jobs list

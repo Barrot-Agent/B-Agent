@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[BARROT-Ω]: SOVEREIGN COMMAND</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .box { border: 1px solid #0f0; padding: 15px; background: #010; }
+        .lattice { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; margin-top: 10px; }
+        .agent { width: 15px; height: 15px; background: #030; border-radius: 2px; }
+        .math { background: #0f0; box-shadow: 0 0 5px #0f0; }
+        h1, h2 { border-bottom: 1px solid #0f0; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>[BARROT-Ω] SOVEREIGN CLOUD v1.1</h1>
+    <div class="grid">
+        <div class="box">
+            <h2>COUNCIL STATUS</h2>
+            <p>DENSITY: 144 AGENTS</p>
+            <div class="lattice" id="lattice"></div>
+        </div>
+        <div class="box">
+            <h2>MATH-LOGIC FEED</h2>
+            <div id="math-feed">Waiting for shards...</div>
+        </div>
+    </div>
+    <script>
+        // Populate Lattice
+        const lattice = document.getElementById('lattice');
+        for(let i=0; i<144; i++) {
+            const div = document.createElement('div');
+            div.className = 'agent' + (i < 36 ? ' math' : '');
+            lattice.appendChild(div);
+        }
+        // Fetch Math Shards (Simulated fetch for now)
+        fetch('./math_results.json').then(r => r.json()).then(data => {
+            const feed = document.getElementById('math-feed');
+            feed.innerHTML = data.slice(0, 5).map(m => 
+                `<div>[${m.agent_id}] ${m.shard}: ${Math.floor(m.confidence * 100)}% Match</div>`
+            ).join('');
+        });
+    </script>
+</body>
+</html>

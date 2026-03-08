@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "name": "Sovereign Health Dashboard v4.0",
+  "pages": [
+    {
+      "name": "Overview",
+      "displayName": "🔱 Singularity Status",
+      "layout": [
+        { "id": "anchor_gauge", "x": 0, "y": 0, "width": 6, "height": 4 },
+        { "id": "rogue_strike_log", "x": 6, "y": 0, "width": 6, "height": 4 }
+      ],
+      "widgets": [
+        { "id": "anchor_gauge", "type": "visualization", "title": "0.707 Stability Anchor" },
+        { "id": "rogue_strike_log", "type": "visualization", "title": "Rogue Framework Strike Logs" }
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "name": "security_metrics",
+      "displayName": "Project Barrot Security Logs",
+      "query": "SELECT * FROM hive_metastore.project_barrot.security_logs ORDER BY event_time DESC LIMIT 100"
+    }
+  ]
+}
