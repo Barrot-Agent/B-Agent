@@ -153,3 +153,31 @@ A singularity in the context of the Navier-Stokes equations refers to a point in
 
 #### 3. **Mathematical Formulation**
 The problem of singularity formation can be mathematically formulated as follows: Given smooth initial conditions, does there exist a finite time \(T\) such
+
+--- ROUND 3 | 2026-03-09 03:38:36.308428 ---
+Turbulence and the formation of singularities in the Navier-Stokes equations are fundamental topics in fluid dynamics and mathematical physics. The Navier-Stokes equations describe the motion of fluid substances and are given by:
+
+\[
+\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} = -\frac{1}{\rho} \nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}
+\]
+
+where:
+- \(\mathbf{u}\) is the velocity vector field,
+- \(p\) is the pressure,
+- \(\rho\) is the density,
+- \(\nu\) is the kinematic viscosity,
+- \(\mathbf{f}\) represents external forces.
+
+### Turbulence and Singularity Formation
+
+#### 1. **Nature of Turbulence**
+Turbulence is characterized by chaotic, irregular, and highly energetic fluid motion. It involves a wide range of spatial and temporal scales, making it one of the most challenging phenomena in fluid dynamics to model and predict.
+
+#### 2. **Singularity Formation**
+A singularity in the context of the Navier-Stokes equations refers to a point where the solution becomes infinite or discontinuous within a finite time. The question of whether such singularities can form in the solutions of the Navier-Stokes equations is one of the Clay Mathematics Institute's Millennium Prize Problems.
+
+#### 3. **Mathematical Formulation**
+The problem of singularity formation can be mathematically formulated as follows: Given smooth initial conditions, do the solutions of the Navier-Stokes equations remain smooth for all time, or do they develop singularities in finite time?
+
+#### 4. **Energy Cascade and Dissipation**
+One of the key mechanisms in turbulence is the energy cascade, where energy is transferred from large to small scales. At

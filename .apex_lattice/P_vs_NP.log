@@ -150,3 +150,21 @@ Geometric Complexity Theory (GCT) is an approach to the fundamental problems in 
 The P vs NP problem asks whether every problem whose solution can be quickly verified by a computer can also be quickly solved by a computer. Formally, it asks whether the class P (problems solvable in polynomial time) is equal to the class NP (problems verifiable in polynomial time).
 
 ###
+
+--- ROUND 3 | 2026-03-09 03:38:04.054295 ---
+Geometric Complexity Theory (GCT) is an approach to the fundamental problems of computational complexity theory, particularly the P vs NP problem, that uses techniques from algebraic geometry and representation theory. The P vs NP problem asks whether every problem whose solution can be quickly verified can also be quickly solved. GCT aims to provide a framework for proving lower bounds on the complexity of computational problems, which could ultimately lead to a resolution of the P vs NP question.
+
+### Key Concepts in Geometric Complexity Theory
+
+1. **Algebraic Geometry and Representation Theory**:
+   - **Algebraic Geometry**: This branch of mathematics studies the solutions of polynomial equations. In GCT, it is used to understand the structure of polynomial functions and their symmetries.
+   - **Representation Theory**: This branch studies how algebraic structures (like groups and algebras) act on vector spaces. In GCT, it helps in understanding the symmetries of polynomial functions and their invariants.
+
+2. **Symmetry and Invariance**:
+   - GCT focuses on the symmetries of polynomials and the invariants under these symmetries. The idea is to use the rich structure of these symmetries to prove lower bounds on the complexity of computational problems.
+
+3. **Orbit Closures**:
+   - In GCT, the orbit of a polynomial under the action of a group is the set of all polynomials that can be obtained by applying group elements to the original polynomial. The orbit closure is the set of all polynomials that can be approximated arbitrarily closely by elements of the orbit. Proving that certain orbit closures do not contain other specific polynomials can lead to lower bounds on complexity.
+
+4. **Permanent vs Determinant**:
+   - One of the central problems in GCT is to show that the permanent of a matrix is harder to compute than the determinant. This is a special case of the P vs NP problem. The permanent and determinant are polynomials
