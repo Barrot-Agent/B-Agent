@@ -168,3 +168,21 @@ Geometric Complexity Theory (GCT) is an approach to the fundamental problems of 
 
 4. **Permanent vs Determinant**:
    - One of the central problems in GCT is to show that the permanent of a matrix is harder to compute than the determinant. This is a special case of the P vs NP problem. The permanent and determinant are polynomials
+
+--- ROUND 4 | 2026-03-09 03:52:16.596760 ---
+Geometric Complexity Theory (GCT) is an approach to the P vs NP problem and other fundamental questions in computational complexity theory that leverages tools from algebraic geometry and representation theory. It was introduced by Ketan Mulmuley and Milind Sohoni in the late 1990s and early 2000s. The goal of GCT is to provide a framework for proving lower bounds on the complexity of computational problems, particularly those related to the separation of complexity classes like P and NP.
+
+### Key Concepts in Geometric Complexity Theory
+
+1. **Algebraic Geometry and Representation Theory**:
+   - **Algebraic Geometry**: This branch of mathematics studies the geometric properties of solutions to polynomial equations. In GCT, algebraic varieties and their symmetries play a crucial role.
+   - **Representation Theory**: This area deals with how abstract algebraic structures can be represented concretely using matrices and linear transformations. In GCT, representations of groups are used to understand the structure of computational problems.
+
+2. **Orbit Closures**:
+   - In GCT, the complexity of a problem is often studied through the orbit closures of certain algebraic varieties under the action of a group. For example, the determinant and permanent polynomials are central objects of study, and their orbit closures under the action of the general linear group are analyzed.
+
+3. **Symmetry and Invariants**:
+   - Symmetry plays a crucial role in GCT. By understanding the symmetries of a problem, one can gain insights into its complexity. Invariants, which are quantities that remain unchanged under certain transformations, are also important.
+
+4. **Obstructions**:
+   - A key idea in GCT is the concept of obstructions. An obstruction is a mathematical object that certifies that a given problem cannot be solved efficiently. In the context of P vs NP, an obstruction would show that the permanent polynomial cannot be computed by a polynomial-size arithmetic
