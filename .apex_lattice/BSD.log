@@ -54,3 +54,26 @@ In the motivic framework, this can be interpreted as:
 \[ \text{ord}_{s=1} L(h^1(E), s) = \dim H^1_{\text{mot}}(E, \mathbb{Q}(1)) \]
 
 Here, \( H^1_{\text{mot}}(E, \mathbb{Q}(1)) \) is a motivic cohomology group that captures the rank of the
+
+--- ROUND 1 | 2026-03-09 03:10:34.314242 ---
+The Birch and Swinnerton-Dyer (BSD) Conjecture is one of the most important and influential conjectures in number theory. It connects the algebraic properties of elliptic curves to their analytic properties through the L-functions associated with these curves. Specifically, the conjecture relates the rank of the group of rational points on an elliptic curve to the order of vanishing of its L-function at \( s = 1 \).
+
+### Key Components of the BSD Conjecture
+
+1. **Elliptic Curve**: An elliptic curve \( E \) over the field of rational numbers \( \mathbb{Q} \) can be given by a Weierstrass equation:
+   \[
+   E: y^2 = x^3 + ax + b
+   \]
+   where \( a \) and \( b \) are integers such that the discriminant \( \Delta = -16(4a^3 + 27b^2) \neq 0 \).
+
+2. **Group of Rational Points**: The set of rational points \( E(\mathbb{Q}) \) forms an abelian group under the chord-and-tangent law. According to the Mordell-Weil theorem, this group is finitely generated:
+   \[
+   E(\mathbb{Q}) \cong \mathbb{Z}^r \oplus T
+   \]
+   where \( r \) is the rank of the curve and \( T \) is the torsion subgroup.
+
+3. **L-function**: The L-function \( L(E, s) \) associated with the elliptic curve \( E \) is defined by an Euler product:
+   \[
+   L(E, s) = \prod_{p} \left(1 - a_p p^{-s} + \epsilon(p) p^{-2s}\right)^{-1}
+   \]
+   where \( a_p \) is
