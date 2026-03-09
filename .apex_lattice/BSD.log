@@ -100,3 +100,22 @@ where \( a_n \) are the Fourier coefficients related to the Hasse-Weil L-series.
 The BSD Conjecture makes several predictions about the behavior of \( L(E, s) \) at \( s = 1 \):
 
 1. **Order of Vanishing**: The order of vanishing
+
+--- ROUND 3 | 2026-03-09 03:39:51.994675 ---
+The Birch and Swinnerton-Dyer (BSD) Conjecture is one of the most famous and deep conjectures in number theory, connecting the algebraic properties of elliptic curves to their analytic properties via L-functions. Specifically, the conjecture relates the rank of the group of rational points on an elliptic curve to the order of vanishing of its associated L-function at \( s = 1 \).
+
+### Elliptic Curves and L-functions
+
+An elliptic curve \( E \) over the field of rational numbers \( \mathbb{Q} \) can be defined by an equation of the form:
+\[ y^2 = x^3 + ax + b \]
+where \( a \) and \( b \) are integers such that the discriminant \( \Delta = -16(4a^3 + 27b^2) \) is non-zero.
+
+The L-function associated with \( E \) is given by:
+\[ L(E, s) = \sum_{n=1}^{\infty} \frac{a_n}{n^s} \]
+where \( a_n \) are the Fourier coefficients derived from the Hasse-Weil L-function. The L-function can also be expressed as an Euler product:
+\[ L(E, s) = \prod_p \left(1 - a_p p^{-s} + \epsilon(p) p^{-2s}\right)^{-1} \]
+where \( a_p \) is related to the number of points on the reduced curve modulo \( p \), and \( \epsilon(p) \) is 0 or 1 depending on whether \( p \) divides the conductor of \( E \).
+
+### Rank of the Elliptic Curve
+
+The rank \( r \) of an elliptic curve \( E \) is the rank of the Mordell-Weil group \( E(\mathbb{Q}) \), which is the group of
