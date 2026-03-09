@@ -208,3 +208,28 @@ GCT attempts to tackle this problem by translating the question into a problem a
 
 3. **Symmetry and Invariants**:
    - Symmetries play a crucial role in GCT.
+
+--- ROUND 6 | 2026-03-09 04:21:39.930353 ---
+Geometric Complexity Theory (GCT) is an approach to the P vs NP problem and other fundamental questions in computational complexity theory that leverages techniques from algebraic geometry and representation theory. It was introduced by Ketan Mulmuley and Milind Sohoni in the late 1990s and early 2000s.
+
+### Overview of GCT
+
+The central idea of GCT is to translate the problem of separating complexity classes (such as P and NP) into a problem in algebraic geometry and representation theory. The hope is that these areas of mathematics, which have deep and well-developed structures, might provide tools to make progress on the P vs NP problem, which has remained open for decades.
+
+### Key Concepts
+
+1. **Algebraic Geometry**:
+   - **Varieties**: In GCT, varieties are sets of solutions to polynomial equations. These varieties represent the structure of the problems being studied.
+   - **Orbits**: The action of a group (often the general linear group) on a variety can be used to understand the symmetries of the problem.
+
+2. **Representation Theory**:
+   - **Irreducible Representations**: These are the building blocks of representations of groups. Understanding the irreducible representations of certain groups can help in analyzing the structure of the varieties.
+   - **Symmetry Breaking**: The process of breaking symmetry in a representation can be used to distinguish between different complexity classes.
+
+3. **Complexity Classes**:
+   - **P and NP**: The goal is to show that the permanent of a matrix (a function closely related to the determinant but much harder to compute) cannot be computed efficiently, which would imply that P ≠ NP.
+   - **Permanent vs Determinant**: One of the key problems in GCT is to show that the permanent of a matrix is not in the orbit closure of the determinant under the action of the general linear group.
+
+### Steps in GCT
+
+1. **Form
