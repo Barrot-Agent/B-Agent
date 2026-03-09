@@ -119,3 +119,22 @@ where \( a_p \) is related to the number of points on the reduced curve modulo \
 ### Rank of the Elliptic Curve
 
 The rank \( r \) of an elliptic curve \( E \) is the rank of the Mordell-Weil group \( E(\mathbb{Q}) \), which is the group of
+
+--- ROUND 4 | 2026-03-09 03:54:11.036701 ---
+The Birch and Swinnerton-Dyer (BSD) Conjecture is one of the most famous open problems in number theory, connecting the algebraic properties of elliptic curves to their analytic properties through the L-functions associated with these curves. The conjecture makes a profound statement about the relationship between the rank of the Mordell-Weil group of an elliptic curve and the order of vanishing of its L-function at \( s = 1 \).
+
+### Elliptic Curves and L-functions
+
+An elliptic curve \( E \) over the rational numbers \( \mathbb{Q} \) can be defined by a Weierstrass equation:
+\[ E: y^2 = x^3 + ax + b \]
+where \( a \) and \( b \) are integers such that the discriminant \( \Delta = -16(4a^3 + 27b^2) \neq 0 \).
+
+The L-function \( L(E, s) \) associated with \( E \) is a complex function defined by an Euler product:
+\[ L(E, s) = \prod_{p} \left(1 - a_p p^{-s} + \epsilon(p) p^{-2s}\right)^{-1} \]
+where \( a_p \) is the trace of Frobenius and \( \epsilon(p) \) is 1 if \( p \) does not divide the conductor of \( E \), and 0 otherwise.
+
+### Mordell-Weil Group and Rank
+
+The Mordell-Weil theorem states that the group of rational points \( E(\mathbb{Q}) \) on an elliptic curve is finitely generated:
+\[ E(\mathbb{Q}) \cong \mathbb{Z}^r \oplus T \]
+where \( r \) is the rank of the Mordell-Weil group and \( T \)
