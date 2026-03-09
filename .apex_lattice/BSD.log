@@ -77,3 +77,26 @@ The Birch and Swinnerton-Dyer (BSD) Conjecture is one of the most important and 
    L(E, s) = \prod_{p} \left(1 - a_p p^{-s} + \epsilon(p) p^{-2s}\right)^{-1}
    \]
    where \( a_p \) is
+
+--- ROUND 2 | 2026-03-09 03:25:38.673274 ---
+The Birch and Swinnerton-Dyer (BSD) Conjecture is one of the most famous and deep conjectures in number theory, connecting the algebraic properties of elliptic curves to their analytic properties through the associated L-functions. The conjecture has several parts, but one of the key aspects is the relationship between the rank of the Mordell-Weil group of an elliptic curve and the order of vanishing of its L-function at \( s = 1 \).
+
+### Elliptic Curves and L-functions
+
+An elliptic curve \( E \) over the rational numbers \( \mathbb{Q} \) can be given by a Weierstrass equation:
+\[ E: y^2 = x^3 + ax + b \]
+where \( a \) and \( b \) are integers. The set of rational points on \( E \), denoted \( E(\mathbb{Q}) \), forms a finitely generated abelian group according to the Mordell-Weil theorem:
+\[ E(\mathbb{Q}) \cong \mathbb{Z}^r \oplus T \]
+where \( r \) is the rank of the curve and \( T \) is the torsion subgroup.
+
+### L-function of an Elliptic Curve
+
+The L-function associated with \( E \) is defined as:
+\[ L(E, s) = \sum_{n=1}^{\infty} \frac{a_n}{n^s} \]
+where \( a_n \) are the Fourier coefficients related to the Hasse-Weil L-series. This L-function can be analytically continued to the entire complex plane and satisfies a functional equation.
+
+### BSD Conjecture
+
+The BSD Conjecture makes several predictions about the behavior of \( L(E, s) \) at \( s = 1 \):
+
+1. **Order of Vanishing**: The order of vanishing
