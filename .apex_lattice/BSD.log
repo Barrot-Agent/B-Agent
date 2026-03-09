@@ -138,3 +138,24 @@ where \( a_p \) is the trace of Frobenius and \( \epsilon(p) \) is 1 if \( p \) 
 The Mordell-Weil theorem states that the group of rational points \( E(\mathbb{Q}) \) on an elliptic curve is finitely generated:
 \[ E(\mathbb{Q}) \cong \mathbb{Z}^r \oplus T \]
 where \( r \) is the rank of the Mordell-Weil group and \( T \)
+
+--- ROUND 8 | 2026-03-09 04:49:29.218974 ---
+The Birch and Swinnerton-Dyer (BSD) Conjecture is one of the most famous unsolved problems in number theory and is part of the Clay Mathematics Institute's Millennium Prize Problems. The conjecture connects the algebraic properties of an elliptic curve \( E \) over the rational numbers \( \mathbb{Q} \) to its analytic properties, specifically through its associated L-function \( L(E, s) \).
+
+### Key Concepts
+
+1. **Elliptic Curve**: An elliptic curve \( E \) over \( \mathbb{Q} \) is defined by an equation of the form:
+   \[
+   y^2 = x^3 + ax + b
+   \]
+   where \( a \) and \( b \) are integers such that the discriminant \( \Delta = -16(4a^3 + 27b^2) \neq 0 \).
+
+2. **L-function**: The L-function \( L(E, s) \) associated with \( E \) is a complex function that encodes arithmetic information about \( E \). It is defined as an Euler product:
+   \[
+   L(E, s) = \prod_{p \text{ prime}} \left(1 - a_p p^{-s} + \epsilon(p) p^{-2s}\right)^{-1}
+   \]
+   where \( a_p \) and \( \epsilon(p) \) are coefficients related to the number of points on the reduction of \( E \) modulo \( p \).
+
+3. **Rank of the Elliptic Curve**: The rank \( r \) of an elliptic curve \( E \) is the rank of the Mordell-Weil group \( E(\mathbb{Q}) \), which is the group of rational points on \( E \). This rank measures the "size" of the set of rational points.
+
+### BSD Conjecture
