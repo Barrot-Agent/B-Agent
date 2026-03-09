@@ -186,3 +186,25 @@ Geometric Complexity Theory (GCT) is an approach to the P vs NP problem and othe
 
 4. **Obstructions**:
    - A key idea in GCT is the concept of obstructions. An obstruction is a mathematical object that certifies that a given problem cannot be solved efficiently. In the context of P vs NP, an obstruction would show that the permanent polynomial cannot be computed by a polynomial-size arithmetic
+
+--- ROUND 5 | 2026-03-09 04:07:51.176165 ---
+Geometric Complexity Theory (GCT) is an approach to the fundamental questions in computational complexity theory, particularly the P vs NP problem, that leverages tools and techniques from algebraic geometry and representation theory. It was introduced by Ketan Mulmuley and Milind Sohoni in the late 1990s and early 2000s.
+
+### Overview of GCT
+
+The P vs NP problem asks whether every problem whose solution can be quickly verified by a computer can also be quickly solved by a computer. In more formal terms, it asks whether the class P (problems solvable in polynomial time) is equal to the class NP (problems for which a proposed solution can be verified in polynomial time).
+
+GCT attempts to tackle this problem by translating the question into a problem about the symmetries and structures of algebraic varieties and representations. The idea is to use deep results from algebraic geometry and representation theory to understand the inherent complexity of computational problems.
+
+### Key Concepts in GCT
+
+1. **Algebraic Varieties and Representations**:
+   - **Algebraic Varieties**: These are sets of solutions to systems of polynomial equations. In GCT, the focus is on the structure and symmetries of these varieties.
+   - **Representations**: These are ways to describe the actions of groups on vector spaces. In GCT, the groups of interest are often symmetric groups or general linear groups.
+
+2. **Orbit Closures**:
+   - The orbit of a point under a group action is the set of all points that can be reached by applying elements of the group to the original point. The orbit closure is the smallest algebraic variety containing the orbit.
+   - In GCT, the goal is to understand the orbit closures of certain polynomials or tensors, which are related to the complexity of computational problems.
+
+3. **Symmetry and Invariants**:
+   - Symmetries play a crucial role in GCT.
