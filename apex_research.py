@@ -2,7 +2,7 @@ import requests, os, json, time
 from pathlib import Path
 from datetime import datetime
 
-HF = os.environ.get('HF_TOKEN')
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 lattice = Path.home()/'barrot'/'.apex_lattice'
 
 problems = {
@@ -19,9 +19,9 @@ while True:
     print(f'\n=== APEX RESEARCH ROUND {round_num} — {datetime.now()} ===')
     for name, prompt in problems.items():
         print(f'Researching {name}...')
-        r = requests.post('https://router.huggingface.co/v1/chat/completions',
-            headers={'Authorization':'Bearer '+HF},
-            json={'model':'Qwen/Qwen2.5-72B-Instruct',
+        r = requests.post('https://models.inference.ai.azure.com',
+            headers={'Authorization':'Bearer '+GITHUB},
+            json={'model':'gpt-4o',
                   'messages':[{'role':'user','content':prompt}],
                   'max_tokens':600})
         insight = r.json()['choices'][0]['message']['content']

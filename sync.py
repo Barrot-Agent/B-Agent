@@ -2,7 +2,7 @@ import json,os,requests,subprocess,time,threading
 from datetime import datetime
 from pathlib import Path
 
-HF=os.environ.get('HF_TOKEN','').strip()
+HF=os.environ.get('GITHUB_TOKEN','').strip()
 M=Path.home()/'barrot'/'memory.json'
 LOG=Path.home()/'barrot'/'sync.log'
 
@@ -22,9 +22,9 @@ def push():
 
 def ask(prompt):
     try:
-        r=requests.post('https://router.huggingface.co/v1/chat/completions',
-            headers={'Authorization':'Bearer '+HF},
-            json={'model':'Qwen/Qwen2.5-72B-Instruct',
+        r=requests.post('https://models.inference.ai.azure.com',
+            headers={'Authorization':'Bearer '+GITHUB},
+            json={'model':'gpt-4o',
                   'messages':[{'role':'user','content':prompt}],
                   'max_tokens':400},timeout=60)
         data=r.json()

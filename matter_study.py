@@ -2,15 +2,15 @@ import requests,os,json,time
 from datetime import datetime
 from pathlib import Path
 
-HF=os.environ.get('HF_TOKEN','').strip()
+HF=os.environ.get('GITHUB_TOKEN','').strip()
 M=Path.home()/'barrot'/'memory.json'
 
 def ask(prompt):
     for attempt in range(3):
         try:
-            r=requests.post('https://router.huggingface.co/v1/chat/completions',
-                headers={'Authorization':'Bearer '+HF},
-                json={'model':'Qwen/Qwen2.5-72B-Instruct',
+            r=requests.post('https://models.inference.ai.azure.com',
+                headers={'Authorization':'Bearer '+GITHUB},
+                json={'model':'gpt-4o',
                       'messages':[{'role':'user','content':prompt}],
                       'max_tokens':400},timeout=60)
             data=r.json()

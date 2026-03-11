@@ -2,9 +2,9 @@
 import json, os, time, requests
 from datetime import datetime
 
-HF_TOKEN = os.environ.get("HF_TOKEN", "")
-HF_URL = "https://router.huggingface.co/v1/chat/completions"
-MODEL = "Qwen/Qwen2.5-72B-Instruct"
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+HF_URL = "https://models.inference.ai.azure.com"
+MODEL = "gpt-4o"
 MEMORY_PATH = os.path.expanduser("~/barrot/memory.json")
 CONTEXT_PATH = os.path.expanduser("~/barrot/rendering_context.json")
 MAX_RETRIES = 3
@@ -66,7 +66,7 @@ def ask(prompt):
     for attempt in range(MAX_RETRIES):
         try:
             r = requests.post(HF_URL,
-                headers={"Authorization":"Bearer "+HF_TOKEN,"Content-Type":"application/json"},
+                headers={"Authorization":"Bearer "+GITHUB_TOKEN,"Content-Type":"application/json"},
                 json={"model":MODEL,"max_tokens":400,"messages":[{"role":"user","content":prompt}]},
                 timeout=60)
             if r.status_code == 429:
@@ -87,8 +87,8 @@ def main():
     print("20 nodes | MRP 5-level | Music mapped")
     print("="*50)
 
-    if not HF_TOKEN:
-        print("HF_TOKEN not set. Run: source ~/.bashrc")
+    if not GITHUB_TOKEN:
+        print("GITHUB_TOKEN not set. Run: source ~/.bashrc")
         return
 
     memory = load_memory()

@@ -1,8 +1,152 @@
 {
   "S01": {
     "topic": "ETL vs ELT Transformation Timing Trade-offs",
-    "completed_at": "2026-03-10T11:01:04.596708",
+    "completed_at": "2026-03-10T14:19:54.039115",
     "levels_saved": 0,
     "music": "ETL = mastering before mixdown. ELT = recording raw stems then mixing later."
+  },
+  "S02": {
+    "topic": "Batch vs Stream Processing Event Time Watermarks Exactly Once Delivery",
+    "completed_at": "2026-03-10T14:21:31.480763",
+    "levels_saved": 0,
+    "music": "Batch = offline rendering. Stream = live DSP. Watermarks = sync pulse keeping tempo."
+  },
+  "S03": {
+    "topic": "Schema Validation Fail Fast vs Degrade Gracefully",
+    "completed_at": "2026-03-10T14:23:06.523514",
+    "levels_saved": 0,
+    "music": "Schema = key signature. Validation = tuner. Fail fast = hard clip. Degrade = soft limiter."
+  },
+  "S04": {
+    "topic": "Data Contracts Ownership SLAs and Governance",
+    "completed_at": "2026-03-10T14:25:11.830580",
+    "levels_saved": 0,
+    "music": "Data contract = session agreement between producer and engineer. SLA = delivery deadline."
+  },
+  "S05": {
+    "topic": "Schema Evolution Backward Forward Compatibility",
+    "completed_at": "2026-03-10T14:27:17.927059",
+    "levels_saved": 0,
+    "music": "Schema evolution = key change mid-song without breaking the groove."
+  },
+  "S06": {
+    "topic": "Idempotency Deduplication and Replayable Inputs",
+    "completed_at": "2026-03-10T14:29:54.406170",
+    "levels_saved": 0,
+    "music": "Idempotency = playing the same note twice sounds identical. Replay = punch-in recording."
+  },
+  "S07": {
+    "topic": "Webhook Ingestion and HMAC Payload Verification",
+    "completed_at": "2026-03-10T14:31:31.283158",
+    "levels_saved": 0,
+    "music": "Webhook = trigger pad. HMAC = authentication watermark on every hit."
+  },
+  "S08": {
+    "topic": "Backpressure Flow Control and Buffering",
+    "completed_at": "2026-03-10T14:33:04.517307",
+    "levels_saved": 0,
+    "music": "Backpressure = sidechain ducking. Buffer = pre-roll before record. Flow control = tempo sync."
+  },
+  "S09": {
+    "topic": "Horizontal vs Vertical Scaling",
+    "completed_at": "2026-03-10T14:35:38.269891",
+    "levels_saved": 0,
+    "music": "Vertical = louder amp. Horizontal = more speakers. Both = fill the room differently."
+  },
+  "S10": {
+    "topic": "Sharding and Partitioning Strategies",
+    "completed_at": "2026-03-10T14:38:12.028697",
+    "levels_saved": 0,
+    "music": "Sharding = stem separation. Each shard = isolated track in its own bus."
+  },
+  "S11": {
+    "topic": "Load Balancing and Failover",
+    "completed_at": "2026-03-10T14:40:18.907727",
+    "levels_saved": 0,
+    "music": "Load balancing = gain staging across channels. Failover = backup vocalist when lead drops."
+  },
+  "S12": {
+    "topic": "CAP Theorem in Real Systems",
+    "completed_at": "2026-03-10T14:52:42.787150",
+    "levels_saved": 0,
+    "music": "CAP = you can have groove, timing, or loudness \u2014 pick two. Partition = dropped connection mid-session."
+  },
+  "S13": {
+    "topic": "Eventual Consistency and Distributed Consensus",
+    "completed_at": "2026-03-10T15:01:11.522201",
+    "levels_saved": 0,
+    "music": "Eventual consistency = all musicians arrive at the same chord. Consensus = the conductor."
+  },
+  "S14": {
+    "topic": "Checksums Hashing and Content Fingerprinting",
+    "completed_at": "2026-03-10T15:17:52.851659",
+    "levels_saved": 0,
+    "music": "Checksum = audio fingerprint. Hash = unique waveform ID. Fingerprint = Shazam signature."
+  },
+  "S15": {
+    "topic": "ACID vs BASE Transaction Models",
+    "completed_at": "2026-03-10T15:36:57.002874",
+    "levels_saved": 0,
+    "music": "ACID = studio-perfect take. BASE = live performance with acceptable drift."
+  },
+  "S16": {
+    "topic": "Write-Ahead Logging and Durable Queues",
+    "completed_at": "2026-03-10T15:51:27.305256",
+    "levels_saved": 0,
+    "music": "WAL = pre-roll tape before record. Durable queue = tape that survives power loss."
+  },
+  "S17": {
+    "topic": "Merkle Trees and Content-Addressed Storage",
+    "completed_at": "2026-03-10T16:00:01.209877",
+    "levels_saved": 0,
+    "music": "Merkle tree = stem hierarchy. Content-addressed = every sample named by its own waveform hash."
+  },
+  "S18": {
+    "topic": "Data Lineage Provenance and Observability",
+    "completed_at": "2026-03-10T16:10:14.276359",
+    "levels_saved": 0,
+    "music": "Lineage = session history log. Provenance = who played what on which take."
+  },
+  "S19": {
+    "topic": "Retries Dead Letter Queues and Error Isolation",
+    "completed_at": "2026-03-10T16:21:31.758809",
+    "levels_saved": 0,
+    "music": "Dead letter queue = outtakes folder. Retry = punch-in attempt. Isolation = mute the bad track."
+  },
+  "S20": {
+    "topic": "Circuit Breakers Exponential Backoff and FinOps",
+    "completed_at": "2026-03-10T16:36:31.438267",
+    "levels_saved": 0,
+    "music": "Circuit breaker = overload protection on the amp. Backoff = cooling down between takes. FinOps = studio budget."
+  },
+  "S21": {
+    "topic": "Checkpointing Recovery and Deterministic Replay",
+    "completed_at": "2026-03-10T16:44:37.316159",
+    "levels_saved": 0,
+    "music": "Checkpoint = save state mid-session. Replay = reconstruct the exact performance from MIDI data."
+  },
+  "S22": {
+    "topic": "Distributed Tracing and Structured Logging",
+    "completed_at": "2026-03-10T16:52:43.374161",
+    "levels_saved": 0,
+    "music": "Distributed trace = following a single note across every instrument in the arrangement."
+  },
+  "S23": {
+    "topic": "Zero-Trust Architecture and Secret Rotation",
+    "completed_at": "2026-03-10T17:13:32.257807",
+    "levels_saved": 0,
+    "music": "Zero trust = every musician re-verifies identity each session. Secret rotation = changing studio access codes."
+  },
+  "S24": {
+    "topic": "PII Anonymization and Memory Masking",
+    "completed_at": "2026-03-10T17:22:38.974946",
+    "levels_saved": 0,
+    "music": "Memory masking = noise gate on sensitive frequencies. Anonymization = stripping metadata from exported stems."
+  },
+  "S25": {
+    "topic": "Memory JSON Atomic Writes Multi-Agent Consensus and Self-Healing Pipelines",
+    "completed_at": "2026-03-10T17:30:45.788689",
+    "levels_saved": 0,
+    "music": "Atomic write = punch-in that either lands perfect or not at all. Consensus = all agents agree on the one true memory. Self-healing = the track fixes itself when a stem goes missing."
   }
 }
