@@ -1,3 +1,10 @@
+# DISABLED
+on:
+  workflow_dispatch:
+    inputs:
+      disabled:
+        description: "This workflow is disabled"
+
 name: Barrot-Ω Autonomous Sync
 
 on:

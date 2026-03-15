@@ -1,3 +1,10 @@
+# DISABLED
+on:
+  workflow_dispatch:
+    inputs:
+      disabled:
+        description: "This workflow is disabled"
+
 name: 🏛️ OMEGA-BENCHMARK-STRIKE
 on: [push, pull_request]
 
