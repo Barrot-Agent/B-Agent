@@ -36,5 +36,24 @@ function buildSystemWithBrain() {
   return base + '\n\nBARROT ACTIVE KNOWLEDGE (' + window.BARROT_BRAIN.length + ' entries):\n' + topEntries;
 }
 </script>
+
+<script>
+// Override fetch to inject brain context into every Claude API call
+const _originalFetch = window.fetch;
+window.fetch = async function(url, options) {
+  if (url && url.includes('anthropic') && options && options.body) {
+    try {
+      const body = JSON.parse(options.body);
+      if (body.system && window.BRAIN_CONTEXT) {
+        body.system = body.system + '\n\nBARROT ACTIVE KNOWLEDGE (' + 
+          (window.BARROT_BRAIN ? window.BARROT_BRAIN.length : 787) + 
+          ' entries):\n' + window.BRAIN_CONTEXT;
+        options.body = JSON.stringify(body);
+      }
+    } catch(e) {}
+  }
+  return _originalFetch.apply(this, arguments);
+};
+</script>
 </body>
 </html>
