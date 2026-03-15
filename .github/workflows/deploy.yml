@@ -9,19 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
-
-      - name: Build Site
-        run: |
-          mkdir -p build
-          cp sovereign_site/pages/index.html build/index.html
-          cp brain_loader.js build/brain_loader.js 2>/dev/null || true
-          cp memory.json build/memory.json 2>/dev/null || true
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: .
+          exclude_assets: '.github,*.py,*.sh,*.json,*.csv,*.log,*.yml,*.chi,*.yaml'
           force_orphan: true
