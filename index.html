@@ -41,7 +41,7 @@ function buildSystemWithBrain() {
 // Override fetch to inject brain context into every Claude API call
 const _originalFetch = window.fetch;
 window.fetch = async function(url, options) {
-  if (url && url.includes('anthropic') && options && options.body) {
+  if (url && url.includes('huggingface') || url.includes('router.huggingface') && options && options.body) {
     try {
       const body = JSON.parse(options.body);
       if (body.system && window.BRAIN_CONTEXT) {
