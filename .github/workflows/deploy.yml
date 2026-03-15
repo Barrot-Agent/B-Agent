@@ -1,0 +1,27 @@
+name: Deploy Barrot Site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Site
+        run: |
+          mkdir -p build
+          cp sovereign_site/pages/index.html build/index.html
+          cp brain_loader.js build/brain_loader.js 2>/dev/null || true
+          cp memory.json build/memory.json 2>/dev/null || true
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          force_orphan: true
