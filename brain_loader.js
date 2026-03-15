@@ -1,5 +1,5 @@
-const BRAIN_URL = 'https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/barrot_brain_unified.json';
-const FALLBACK_URL = 'https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/memory.json';
+const BRAIN_URL = 'https://cdn.jsdelivr.net/gh/Barrot-Agent/B-Agent@main/barrot_brain_unified.json';
+const FALLBACK_URL = 'https://cdn.jsdelivr.net/gh/Barrot-Agent/B-Agent@main/memory.json';
 
 async function loadBrain() {
   try {
