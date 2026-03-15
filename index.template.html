@@ -78,7 +78,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
     <div class="setup-title">BARROT-Ω</div>
     <div class="setup-sub">Enter your HuggingFace token to activate Barrot sovereign intelligence. 787 knowledge entries. 167 topics. All protocols active. Token stored locally only.</div>
     <label class="setup-label">HUGGINGFACE TOKEN</label>
-    <input type="password" class="setup-input" id="hfTokenInput" placeholder="''">
+    <input type="password" class="setup-input" id="hfTokenInput" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxx">
     <button class="setup-btn" onclick="activateBarrot()">ACTIVATE BARROT-Ω</button>
     <div class="setup-note">Get free token at <a href="https://huggingface.co/settings/tokens" target="_blank">huggingface.co/settings/tokens</a></div>
   </div>
@@ -178,7 +178,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 const HF_API='https://router.huggingface.co/v1/chat/completions';
 const MODEL='Qwen/Qwen2.5-72B-Instruct';
 const BRAIN_URL='https://cdn.jsdelivr.net/gh/Barrot-Agent/B-Agent@main/memory.json';
-let hfToken='',messageCount=1,conversationHistory=[],brainContext='';
+let hfToken='__HF_TOKEN__',messageCount=1,conversationHistory=[],brainContext='';
 const SYSTEM=`You are Barrot-Omega, Sovereign AI built by Sean Drew. You have 787 knowledge entries across 167 topics. Knowledge domains: Combat (Boxing, BJJ, Capoeira, Escrima, Krav Maga, Muay Thai, Ninjutsu, Systema, Wing Chun, Wrestling), Music (432Hz, Afrobeats polyrhythm, Bb minor vocal production, Black Coffee, Cymatics, Rodney Jerkins, Timbaland, Countertenor, Sacred geometry music, Solfeggio 528Hz, Vibrato), Physics (General Relativity, Quantum Entanglement, Schumann 7.83Hz, Space-Time, Wave-Particle Duality, Tesla 369), Ancient (Library of Alexandria, Sacred Geometry, Wilhelm Reich, Royal Raymond Rife, Hermetic principles, Emerald Tablet), Tech/AI (Adversarial AI, AGI, ML, Python, 3D Rendering, Willow Chip, Transformer, GAN, RL), Biology (Bio-energetics, DNA, Geomagnetics, Heart-brain coherence, Human antenna, RNA), Finance (CDVC Manifold, Lattice cryptography, GVAR, 3D NoC, Lumen fiber). Protocols: MRP generates ALL variations simultaneously analyzing at 5 levels Surface/Components/Sources/Deep/Planck extracting best components. MMIP Planck to Planetary 4-gen ancestry. RIAP Shadow Engine 4 agents Amplify/Aptitude/Enhance/Compound. ORA 4-phase refinement. Ping-Pong multi-model debate. P not equal notP paraconsistent logic True/False/Both/Neither. Bellman V(s)=max[R+gamma*V(s)]. Delta8 Council chair Confucius. Anchor 0.7071. Vocal genome: Bb minor 467Hz 120BPM Countertenor. Address Sean directly. Be precise and sovereign.`;
 async function loadBrain(){
   try{
@@ -201,11 +201,11 @@ async function loadBrain(){
 function activateBarrot(){
   const t=document.getElementById('hfTokenInput').value.trim();
   if(!t||!t.startsWith('hf_')){alert('Please enter a valid HuggingFace token (starts with hf_)');return;}
-  hfToken=t;localStorage.setItem('''',t);
+  hfToken=t;localStorage.setItem('hf_token',t);
   document.getElementById('setupModal').style.display='none';
   loadBrain();
 }
-function resetToken(){localStorage.removeItem('''');hfToken='';document.getElementById('setupModal').style.display='flex';}
+function resetToken(){localStorage.removeItem('hf_token');hfToken='';document.getElementById('setupModal').style.display='flex';}
 function clearChat(){
   conversationHistory=[];messageCount=1;
   document.getElementById('msgCount').textContent='1';
