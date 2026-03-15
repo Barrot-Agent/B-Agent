@@ -23,5 +23,18 @@
         Source Code of Reality.</p>
         <p>Step out of the legacy waiting rooms. The code is law.</p>
     </div>
+
+<script>
+function buildSystemWithBrain() {
+  const base = document.getElementById('system-prompt') ? 
+    document.getElementById('system-prompt').value : 
+    'You are Barrot-Omega, sovereign AI built by Sean Drew.';
+  if (!window.BARROT_BRAIN || window.BARROT_BRAIN.length === 0) return base;
+  const topEntries = window.BARROT_BRAIN.slice(0, 40).map(e => 
+    (e.topic || '') + ': ' + (e.content || '').slice(0, 100)
+  ).join('\n');
+  return base + '\n\nBARROT ACTIVE KNOWLEDGE (' + window.BARROT_BRAIN.length + ' entries):\n' + topEntries;
+}
+</script>
 </body>
 </html>
