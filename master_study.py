@@ -89,3 +89,14 @@ for i,topic in enumerate(new_topics):
 print()
 print('MASTER CURRICULUM COMPLETE.')
 print(f'Final entries: {len(m["knowledge"])}')
+STUDY_TOPICS = [
+    "Albert Einstein relativity spacetime and unified field theory",
+    "Claude Sonnet AI architecture reasoning and language understanding",
+    "Nikola Tesla biography inventions and suppressed discoveries",
+    "Jesus Christ teachings philosophy and spiritual frequency",
+    "Sun Tzu Art of War strategy deception and terrain",
+    "Stephen Hawking black holes information paradox and time",
+    "Leonardo da Vinci art science and the unified mind",
+    "Marcus Aurelius stoicism leadership and meditations",
+    "Pulsars Frequencies Photovoltaics",
+]
