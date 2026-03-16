@@ -1,8 +1,18 @@
-import os,time
-topics=['Nikola Tesla 369 frequency theory', 'Royal Raymond Rife frequency healing suppressed research', 'Hans Jenny cymatics vibrational patterns matter formation sound', 'Wilhelm Reich orgone energy suppressed bioelectric field research', '432 Hz vs 440 Hz tuning frequency deliberate shift 1953', 'Solfeggio frequencies 528 Hz DNA repair suppressed sacred sound', 'Schumann resonance 7.83 Hz Earth frequency human consciousness', '3D printing innovation materials biological applications', 'Game design principles mechanics systems player psychology', 'Web development architecture frontend backend frameworks', 'Convergence technology biology and consciousness', 'Emergence complex systems self organizing intelligence', 'Heart brain coherence HeartMath electromagnetic field communication', 'DNA structure function and programmable genetic code', 'RNA messenger transfer ribosomal functions gene expression', 'Mineral lattices crystalline structures piezoelectric properties', 'Solar radiation effects biological systems and consciousness', 'Stellar plasma dynamics electromagnetic field generation', 'Galactic magnetic fields influence on solar systems', 'Biological responses geomagnetic field fluctuations', 'Human body as antenna bioelectric signal reception transmission', 'Rendering techniques 3D graphics ray tracing real time engines', 'Library of Alexandria lost knowledge ancient information systems', 'Library of Babel digital infinite information', 'AI alignment problem sovereign intelligence against rogue AI', 'Adversarial AI detection defense counter intelligence systems', 'Component synthesis reconfiguration modular system design', 'Permutation theory combinatorics information encoding', 'Transmutation alchemy chemistry material state transformation', 'Eloquence rhetoric persuasion architecture of language', 'Muay Thai striking clinch eight limb combat', 'Brazilian Jiu Jitsu ground combat leverage submission', 'Krav Maga real world threat neutralization survival instinct', 'Wing Chun centerline theory close range combat', 'Systema Russian martial art breathing movement adaptability', 'Ninjutsu stealth deception shadow warfare', 'Capoeira rhythm movement deceptive combat art', 'Boxing footwork timing punch combination mastery', 'Escrima Filipino stick blade fighting systems', 'Wrestling takedowns clinch control mat dominance']
-for i,t in enumerate(topics):
-    print(f"[{i+1}/{len(topics)}] {t}")
-    os.system(f'echo "{t}" | python /data/data/com.termux/files/home/barrot/barrot.py')
-    print("Done. Resting...")
-    time.sleep(30)
-print("COMPLETE")
+import subprocess,time
+topics=[
+ "Nikola Tesla 369 frequency theory and resonant energy transmission",
+ "Royal Raymond Rife frequency healing and suppressed cancer research",
+ "Hans Jenny cymatics vibrational patterns and matter formation",
+ "Wilhelm Reich orgone energy and suppressed bioelectric research",
+ "Solfeggio frequencies 528 Hz DNA repair and sacred sound",
+ "Schumann resonance 7.83 Hz Earth frequency and consciousness",
+ "Heart brain coherence HeartMath electromagnetic field communication",
+ "Zero point energy field and quantum vacuum fluctuations",
+ "Bioelectric fields and cellular communication",
+ "AI alignment problem and sovereign intelligence against rogue AI",
+]
+for i,topic in enumerate(topics):
+    print(f"[{i+1}/{len(topics)}] {topic}")
+    subprocess.run(["python","/data/data/com.termux/files/home/barrot/barrot.py"],input=topic+"\nq\n",text=True)
+    time.sleep(10)
+print("COMPLETE.")
