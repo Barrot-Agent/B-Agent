@@ -1,4 +1,8 @@
 .cargo/
 .cache/
+.npm/
+.config/
+node_modules/
 B-Agent/
-.cache/
+*.pyc
+__pycache__/
