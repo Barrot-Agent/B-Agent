@@ -209,8 +209,8 @@ def main():
     print("  Protocols: MRP | MMIP | RIAP | SHADOW | ORA")
     print("=" * 60)
 
-    if not GITHUB_TOKEN:
-        print("GITHUB_TOKEN not set. Run: source ~/.bashrc")
+    if not HF_TOKEN:
+        print("HF_TOKEN not set. Run: source ~/.bashrc")
         return
 
     memory = load_memory()
