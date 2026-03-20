@@ -99,6 +99,9 @@ def ora_protocol(content):
 
 # ── API ───────────────────────────────────────────────────────────────────────
 def ask(prompt, retries=3):
+    print("[BARROT] API disabled in Termux. All inference runs on HF Space.")
+    return None
+    # DISABLED BELOW — runs on HF Space only
     for attempt in range(retries):
         try:
             r = requests.post(API_URL,
