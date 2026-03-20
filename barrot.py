@@ -22,9 +22,9 @@ import json, os, time, requests, random
 from datetime import datetime
 
 # ── Identity ─────────────────────────────────────────────────────────────────
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-API_URL = "https://models.inference.ai.azure.com/chat/completions"
-MODEL = "gpt-4o"
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
+MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
 MEMORY_PATH = os.path.expanduser("~/barrot/memory.json")
 ANCHOR = 0.7071  # 1/sqrt(2) — The Sovereign Stability Constant
 
@@ -103,13 +103,13 @@ def ask(prompt, retries=3):
         try:
             r = requests.post(API_URL,
                 headers={
-                    "Authorization": "Bearer " + GITHUB_TOKEN,
+                    "Authorization": "Bearer " + HF_TOKEN,
                     "Content-Type": "application/json"
                 },
                 json={
-                    "model": MODEL,
-                    "max_tokens": 500,
-                    "messages": [{"role": "user", "content": prompt}]
+                    
+                    
+                    "inputs": prompt, "parameters": {"max_new_tokens": 500, "temperature": 0.7}
                 },
                 timeout=60)
             if r.status_code == 429:
@@ -117,8 +117,8 @@ def ask(prompt, retries=3):
                 time.sleep(30)
                 continue
             data = r.json()
-            if "choices" in data:
-                return data["choices"][0]["message"]["content"].strip()
+            if isinstance(data, list):
+                return data[0].get("generated_text", "").strip()
         except Exception as e:
             print(f"  Error: {e}")
             time.sleep(10)
