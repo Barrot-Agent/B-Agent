@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 import json
 import requests
@@ -222,3 +223,64 @@ with gr.Blocks() as demo:
             status_btn.click(fn=get_status, outputs=status_output)
 
 demo.launch(server_name="0.0.0.0", server_port=7860, show_error=True)
+=======
+import streamlit as st
+from handler import EndpointHandler
+import json
+from datetime import datetime
+
+st.set_page_config(page_title="🦾 BARROT-Ω", page_icon="🦾", layout="wide")
+
+st.title("🦾 BARROT-Ω: MRP Sovereign Engine")
+st.caption("Multi-Synchronous Relativistic Perception | CircleCI 2026 Fusion")
+
+# Operator tabs
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "🏠 Home", 
+    "🧠 Brain", 
+    "🎥 Media", 
+    "⚙️ Build", 
+    "🧪 Sandbox"
+])
+
+with tab1:  # Home - Status dashboard
+    st.header("System Status")
+    h = EndpointHandler()
+    test_payload = {
+        "inputs": "Status check",
+        "parameters": {"frames": [{"data": "live"}]}
+    }
+    result = h(test_payload)
+    st.json(result)
+
+with tab2:  # Brain - MRP controls
+    st.header("MRP Engine")
+    inputs = st.text_input("MRP Query", "Sovereign convergence")
+    if st.button("Run MRP"):
+        frames = [{"data": f"frame_{i}"} for i in range(3)]
+        payload = {"inputs": inputs, "parameters": {"frames": frames}}
+        result = h(payload)
+        st.json(result)
+
+with tab3:  # Media - Video pipeline
+    st.header("Video Intelligence Pipeline")
+    st.info("Video ingest → extract → cross-reference → MRP sync status")
+
+with tab4:  # Build - Platform controls
+    st.header("Platform Actions")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("🔄 GitHub Sync"): st.success("Synced")
+    with col2:
+        if st.button("📊 Databricks"): st.success("Tables updated") 
+    with col3:
+        if st.button("🚀 HF Deploy"): st.success("Deployed")
+
+with tab5:  # Sandbox - Experiments
+    st.header("Sovereign Sandbox")
+    st.code("""
+    # Raw MRP mutation/permutation testing
+    # Infinite vantage point exploration
+    # Non-canonical / exploratory memory
+    """)
+>>>>>>> a91e110c (BARROT operator console + MRP handler)
