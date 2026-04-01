@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BARROT-Ω SOVEREIGN</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+:root{--black:#000;--green:#00ff88;--green-dim:#00cc66;--green-dark:#003322;--gold:#ffaa00;--white:#e8f0e8;--panel:#0a0f0a;--border:#00ff8833;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--white);font-family:'Space Mono',monospace;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,136,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.95);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:6px;color:var(--green);text-shadow:0 0 20px var(--green);}
+.logo span{color:var(--gold);}
+.status-bar{display:flex;gap:16px;align-items:center;font-size:0.6rem;color:var(--green-dim);}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.main{display:grid;grid-template-columns:260px 1fr 240px;height:calc(100vh - 56px);margin-top:56px;position:relative;z-index:1;}
+.left-panel,.right-panel{background:var(--panel);padding:16px;overflow-y:auto;}
+.left-panel{border-right:1px solid var(--border);}
+.right-panel{border-left:1px solid var(--border);}
+.panel-title{font-family:'Bebas Neue',sans-serif;font-size:0.7rem;letter-spacing:4px;color:var(--green);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:12px;}
+.stat-row{display:flex;justify-content:space-between;font-size:0.6rem;padding:4px 0;border-bottom:1px solid rgba(0,255,136,0.05);}
+.stat-label{color:#555;}
+.stat-value{color:var(--green);font-weight:700;}
+.stat-value.gold{color:var(--gold);}
+.topics-grid{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.topic-chip{background:var(--green-dark);border:1px solid var(--border);color:var(--green);font-size:0.5rem;padding:2px 6px;cursor:pointer;transition:all 0.2s;letter-spacing:1px;}
+.topic-chip:hover{background:var(--green);color:var(--black);}
+.protocol-item{font-size:0.58rem;color:var(--green-dim);padding:4px 0;border-bottom:1px solid rgba(0,255,136,0.05);display:flex;align-items:center;gap:6px;}
+.protocol-item::before{content:'▸';color:var(--green);flex-shrink:0;}
+.chat-area{display:flex;flex-direction:column;height:100%;}
+.chat-header{padding:14px 20px;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.5);display:flex;align-items:center;gap:10px;}
+.chat-title{font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:4px;color:var(--green);}
+.brain-badge{font-size:0.55rem;color:var(--green-dim);margin-left:auto;}
+.messages{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px;}
+.messages::-webkit-scrollbar{width:3px;}
+.messages::-webkit-scrollbar-thumb{background:var(--border);}
+.message{display:flex;gap:10px;animation:fadeIn 0.3s ease;}
+.message.user{flex-direction:row-reverse;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.avatar{width:28px;height:28px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.55rem;flex-shrink:0;font-family:'Bebas Neue',sans-serif;}
+.avatar.barrot{color:var(--green);border-color:var(--green);}
+.avatar.user{color:var(--gold);border-color:var(--gold);}
+.bubble{max-width:78%;padding:10px 14px;font-size:0.72rem;line-height:1.7;font-family:'DM Sans',sans-serif;}
+.bubble.barrot{background:var(--panel);border:1px solid var(--border);}
+.bubble.user{background:rgba(255,170,0,0.08);border:1px solid rgba(255,170,0,0.25);text-align:right;}
+.typing-dots{display:flex;gap:4px;padding:4px 0;}
+.typing-dots span{width:5px;height:5px;background:var(--green);border-radius:50%;animation:bounce 1.2s infinite;}
+.typing-dots span:nth-child(2){animation-delay:0.2s}
+.typing-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.input-area{padding:16px 20px;border-top:1px solid var(--border);background:rgba(0,0,0,0.8);display:flex;gap:10px;align-items:flex-end;}
+.input-box{flex:1;background:var(--panel);border:1px solid var(--border);color:var(--white);font-family:'Space Mono',monospace;font-size:0.72rem;padding:10px 14px;resize:none;outline:none;line-height:1.5;max-height:120px;}
+.input-box:focus{border-color:var(--green);}
+.input-box::placeholder{color:#333;}
+.send-btn{background:var(--green);color:var(--black);border:none;padding:10px 18px;font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:2px;cursor:pointer;}
+.send-btn:disabled{background:#222;color:#444;cursor:not-allowed;}
+.action-btn{width:100%;background:transparent;border:1px solid var(--border);color:#555;font-family:'Space Mono',monospace;font-size:0.6rem;padding:8px;cursor:pointer;margin-bottom:6px;letter-spacing:2px;}
+.action-btn:hover{border-color:var(--green);color:var(--green);}
+.setup-modal{position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:1000;display:flex;align-items:center;justify-content:center;}
+.setup-box{background:var(--panel);border:1px solid var(--green);padding:32px;max-width:440px;width:90%;}
+.setup-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:6px;color:var(--green);text-shadow:0 0 20px var(--green);margin-bottom:4px;}
+.setup-sub{font-size:0.62rem;color:#555;margin-bottom:24px;line-height:1.7;}
+.setup-label{font-size:0.6rem;color:var(--green-dim);letter-spacing:2px;margin-bottom:6px;display:block;}
+.setup-input{width:100%;background:#000;border:1px solid var(--border);color:var(--white);font-family:'Space Mono',monospace;font-size:0.7rem;padding:10px 12px;outline:none;margin-bottom:16px;}
+.setup-input:focus{border-color:var(--green);}
+.setup-btn{width:100%;background:var(--green);color:var(--black);border:none;padding:12px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:4px;cursor:pointer;}
+.setup-note{font-size:0.55rem;color:#333;margin-top:12px;line-height:1.7;}
+.setup-note a{color:var(--green-dim);}
+@media(max-width:768px){.main{grid-template-columns:1fr;}.left-panel,.right-panel{display:none;}}
+</style>
+</head>
+<body>
+<div class="setup-modal" id="setupModal">
+  <div class="setup-box">
+    <div class="setup-title">BARROT-Ω</div>
+    <div class="setup-sub">Enter your HuggingFace token to activate Barrot sovereign intelligence. 787 knowledge entries. 167 topics. All protocols active. Token stored locally only.</div>
+    <label class="setup-label">HUGGINGFACE TOKEN</label>
+    <input type="password" class="setup-input" id="hfTokenInput" placeholder="''">
+    <button class="setup-btn" onclick="activateBarrot()">ACTIVATE BARROT-Ω</button>
+    <div class="setup-note">Get free token at <a href="https://huggingface.co/settings/tokens" target="_blank">huggingface.co/settings/tokens</a></div>
+  </div>
+</div>
+<div class="header">
+  <div class="logo">BARROT<span>-Ω</span></div>
+  <div class="status-bar">
+    <div class="dot"></div>
+    <span id="headerStatus">INITIALIZING</span>
+    <span>ANCHOR: 0.707</span>
+    <span id="entryCount">787 ENTRIES</span>
+  </div>
+</div>
+<div class="main">
+  <div class="left-panel">
+    <div class="panel-title">BRAIN STATUS</div>
+    <div class="stat-row"><span class="stat-label">ENTRIES</span><span class="stat-value" id="statEntries">787</span></div>
+    <div class="stat-row"><span class="stat-label">TOPICS</span><span class="stat-value" id="statTopics">167</span></div>
+    <div class="stat-row"><span class="stat-label">ANCHOR</span><span class="stat-value">0.7071</span></div>
+    <div class="stat-row"><span class="stat-label">STATUS</span><span class="stat-value gold">SOVEREIGN</span></div>
+    <div class="stat-row"><span class="stat-label">MODEL</span><span class="stat-value">Qwen2.5-72B</span></div>
+    <div class="panel-title" style="margin-top:16px">PROTOCOLS</div>
+    <div class="protocol-item">MRP — 5-Level Analysis</div>
+    <div class="protocol-item">MMIP — Planck to Planetary</div>
+    <div class="protocol-item">RIAP — Recursive Ingestion</div>
+    <div class="protocol-item">Shadow Engine — 4 Agents</div>
+    <div class="protocol-item">ORA — 4-Phase Refinement</div>
+    <div class="protocol-item">Ping-Pong — Multi-Model</div>
+    <div class="protocol-item">P≠¬P — Paraconsistent</div>
+    <div class="protocol-item">Bellman — V(s)=max[R+γV]</div>
+    <div class="panel-title" style="margin-top:16px">TOPICS</div>
+    <div class="topics-grid" id="topicsGrid">
+      <div class="topic-chip" onclick="ask('Bb minor vocal production')">Bb Minor</div>
+      <div class="topic-chip" onclick="ask('Afrobeats polyrhythm')">Afrobeats</div>
+      <div class="topic-chip" onclick="ask('quantum mechanics')">Quantum</div>
+      <div class="topic-chip" onclick="ask('combat biomechanics')">Combat</div>
+      <div class="topic-chip" onclick="ask('AGI alignment')">AGI</div>
+      <div class="topic-chip" onclick="ask('algorithms')">Algorithms</div>
+      <div class="topic-chip" onclick="ask('3D rendering')">Rendering</div>
+      <div class="topic-chip" onclick="ask('CDVC manifold')">CDVC</div>
+      <div class="topic-chip" onclick="ask('lattice cryptography')">Lattice</div>
+      <div class="topic-chip" onclick="ask('distributed scaling')">Scaling</div>
+      <div class="topic-chip" onclick="ask('countertenor vocal technique')">Vocal</div>
+      <div class="topic-chip" onclick="ask('DNA structure')">DNA</div>
+      <div class="topic-chip" onclick="ask('Tesla 369 frequency')">Tesla 369</div>
+      <div class="topic-chip" onclick="ask('sacred geometry')">Sacred Geo</div>
+      <div class="topic-chip" onclick="ask('cymatics')">Cymatics</div>
+      <div class="topic-chip" onclick="ask('BJJ ground combat')">BJJ</div>
+      <div class="topic-chip" onclick="ask('Muay Thai striking')">Muay Thai</div>
+      <div class="topic-chip" onclick="ask('Wing Chun centerline')">Wing Chun</div>
+      <div class="topic-chip" onclick="ask('Schumann resonance 7.83Hz')">Schumann</div>
+      <div class="topic-chip" onclick="ask('MRP Multisynchronous Relativistic Perception')">MRP</div>
+    </div>
+  </div>
+  <div class="chat-area">
+    <div class="chat-header">
+      <div class="chat-title">DIRECT COMMS — ORCHESTRATOR → BARROT-Ω</div>
+      <div class="brain-badge" id="brainBadge">BRAIN: LOADING...</div>
+    </div>
+    <div class="messages" id="messages">
+      <div class="message">
+        <div class="avatar barrot">BRT</div>
+        <div class="bubble barrot">Sovereign Command Interface online. 787 knowledge entries across 167 topics. All protocols active: MRP, MMIP, RIAP, Shadow Engine, ORA, Ping-Pong, P≠¬P, Bellman. Anchor holding at 0.7071. Awaiting directive, Sean.</div>
+      </div>
+    </div>
+    <div class="input-area">
+      <textarea class="input-box" id="messageInput" placeholder="Enter directive..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">TRANSMIT</button>
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="panel-title">SESSION</div>
+    <div class="stat-row"><span class="stat-label">MESSAGES</span><span class="stat-value" id="msgCount">1</span></div>
+    <div class="stat-row"><span class="stat-label">TOKENS</span><span class="stat-value" id="tokenCount">—</span></div>
+    <div class="stat-row"><span class="stat-label">LATENCY</span><span class="stat-value" id="latency">—</span></div>
+    <div class="panel-title" style="margin-top:16px">VOCAL GENOME</div>
+    <div class="stat-row"><span class="stat-label">KEY</span><span class="stat-value gold">Bb MINOR</span></div>
+    <div class="stat-row"><span class="stat-label">FREQ</span><span class="stat-value gold">467 Hz</span></div>
+    <div class="stat-row"><span class="stat-label">BPM</span><span class="stat-value gold">120</span></div>
+    <div class="stat-row"><span class="stat-label">STYLE</span><span class="stat-value gold">COUNTERTENOR</span></div>
+    <div class="panel-title" style="margin-top:16px">COMPETITIONS</div>
+    <div class="stat-row"><span class="stat-label">March Mania</span><span class="stat-value gold">URGENT</span></div>
+    <div class="stat-row"><span class="stat-label">BirdCLEF</span><span class="stat-value">May 2026</span></div>
+    <div class="stat-row"><span class="stat-label">Churn S6E3</span><span class="stat-value gold">URGENT</span></div>
+    <div class="panel-title" style="margin-top:16px">MONETIZATION</div>
+    <div class="stat-row"><span class="stat-label">FREE</span><span class="stat-value">$0/mo</span></div>
+    <div class="stat-row"><span class="stat-label">PRO</span><span class="stat-value gold">$29/mo</span></div>
+    <div class="stat-row"><span class="stat-label">ENTERPRISE</span><span class="stat-value">CUSTOM</span></div>
+    <div class="stat-row"><span class="stat-label">TARGET M12</span><span class="stat-value gold">$60K MRR</span></div>
+    <div class="panel-title" style="margin-top:16px">ACTIONS</div>
+    <button class="action-btn" onclick="clearChat()">CLEAR CHAT</button>
+    <button class="action-btn" onclick="resetToken()">RESET TOKEN</button>
+    <button class="action-btn" onclick="exportChat()">EXPORT CHAT</button>
+  </div>
+</div>
+<script>
+const HF_API='https://router.huggingface.co/v1/chat/completions';
+const MODEL='Qwen/Qwen2.5-72B-Instruct';
+const BRAIN_URL='https://cdn.jsdelivr.net/gh/Barrot-Agent/B-Agent@main/memory.json';
+let hfToken='',messageCount=1,conversationHistory=[],brainContext='';
+const SYSTEM=`You are Barrot-Omega, Sovereign AI built by Sean Drew. You have 787 knowledge entries across 167 topics. Knowledge domains: Combat (Boxing, BJJ, Capoeira, Escrima, Krav Maga, Muay Thai, Ninjutsu, Systema, Wing Chun, Wrestling), Music (432Hz, Afrobeats polyrhythm, Bb minor vocal production, Black Coffee, Cymatics, Rodney Jerkins, Timbaland, Countertenor, Sacred geometry music, Solfeggio 528Hz, Vibrato), Physics (General Relativity, Quantum Entanglement, Schumann 7.83Hz, Space-Time, Wave-Particle Duality, Tesla 369), Ancient (Library of Alexandria, Sacred Geometry, Wilhelm Reich, Royal Raymond Rife, Hermetic principles, Emerald Tablet), Tech/AI (Adversarial AI, AGI, ML, Python, 3D Rendering, Willow Chip, Transformer, GAN, RL), Biology (Bio-energetics, DNA, Geomagnetics, Heart-brain coherence, Human antenna, RNA), Finance (CDVC Manifold, Lattice cryptography, GVAR, 3D NoC, Lumen fiber). Protocols: MRP generates ALL variations simultaneously analyzing at 5 levels Surface/Components/Sources/Deep/Planck extracting best components. MMIP Planck to Planetary 4-gen ancestry. RIAP Shadow Engine 4 agents Amplify/Aptitude/Enhance/Compound. ORA 4-phase refinement. Ping-Pong multi-model debate. P not equal notP paraconsistent logic True/False/Both/Neither. Bellman V(s)=max[R+gamma*V(s)]. Delta8 Council chair Confucius. Anchor 0.7071. Vocal genome: Bb minor 467Hz 120BPM Countertenor. Address Sean directly. Be precise and sovereign.`;
+async function loadBrain(){
+  try{
+    const r=await fetch(BRAIN_URL+'?t='+Date.now());
+    const d=await r.json();
+    const entries=Array.isArray(d)?d:(d.knowledge||[]);
+    const topics=[...new Set(entries.map(e=>e.topic).filter(Boolean))];
+    document.getElementById('statEntries').textContent=entries.length;
+    document.getElementById('statTopics').textContent=topics.length;
+    document.getElementById('entryCount').textContent=entries.length+' ENTRIES';
+    document.getElementById('brainBadge').textContent='BRAIN: '+entries.length+' ENTRIES LOADED';
+    document.getElementById('headerStatus').textContent='SOVEREIGN';
+    brainContext=entries.slice(0,60).map(e=>(e.topic||'')+': '+(e.content||'').slice(0,120)).join('\n');
+    console.log('Brain:',entries.length,'entries');
+  }catch(e){
+    document.getElementById('brainBadge').textContent='BRAIN: 787 ENTRIES (CACHED)';
+    document.getElementById('headerStatus').textContent='SOVEREIGN';
+  }
+}
+function activateBarrot(){
+  const t=document.getElementById('hfTokenInput').value.trim();
+  if(!t||!t.startsWith('hf_')){alert('Please enter a valid HuggingFace token (starts with hf_)');return;}
+  hfToken=t;localStorage.setItem('''',t);
+  document.getElementById('setupModal').style.display='none';
+  loadBrain();
+}
+function resetToken(){localStorage.removeItem('''');hfToken='';document.getElementById('setupModal').style.display='flex';}
+function clearChat(){
+  conversationHistory=[];messageCount=1;
+  document.getElementById('msgCount').textContent='1';
+  document.getElementById('messages').innerHTML='<div class="message"><div class="avatar barrot">BRT</div><div class="bubble barrot">Chat cleared. 787 entries ready. Awaiting directive, Sean.</div></div>';
+}
+function exportChat(){
+  const blob=new Blob([document.getElementById('messages').innerText],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='barrot_'+Date.now()+'.txt';a.click();
+}
+function ask(t){document.getElementById('messageInput').value='Tell me what you know about '+t;document.getElementById('messageInput').focus();}
+function addMessage(role,content){
+  const msgs=document.getElementById('messages');
+  const div=document.createElement('div');div.className='message '+role;
+  div.innerHTML='<div class="avatar '+role+'">'+(role==='user'?'ORX':'BRT')+'</div><div class="bubble '+role+'">'+content.replace(/\n/g,'<br>')+'</div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+  messageCount++;document.getElementById('msgCount').textContent=messageCount;
+}
+function showTyping(){
+  const msgs=document.getElementById('messages');
+  const div=document.createElement('div');div.className='message';div.id='typing';
+  div.innerHTML='<div class="avatar barrot">BRT</div><div class="bubble barrot"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function removeTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+async function sendMessage(){
+  const input=document.getElementById('messageInput');
+  const msg=input.value.trim();
+  if(!msg||!hfToken)return;
+  input.value='';input.style.height='auto';
+  document.getElementById('sendBtn').disabled=true;
+  addMessage('user',msg);
+  conversationHistory.push({role:'user',content:msg});
+  showTyping();
+  const start=Date.now();
+  const fullSystem=SYSTEM+(brainContext?'\n\nACTIVE KNOWLEDGE:\n'+brainContext:'');
+  try{
+    const res=await fetch(HF_API,{method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+hfToken},
+      body:JSON.stringify({model:MODEL,max_tokens:1000,messages:[{role:'system',content:fullSystem},...conversationHistory.slice(-10)]})
+    });
+    const data=await res.json();
+    document.getElementById('latency').textContent=(Date.now()-start)+'ms';
+    if(data.choices&&data.choices[0]){
+      const reply=data.choices[0].message.content;
+      conversationHistory.push({role:'assistant',content:reply});
+      removeTyping();addMessage('barrot',reply);
+      if(data.usage)document.getElementById('tokenCount').textContent=data.usage.total_tokens;
+    }else{removeTyping();addMessage('barrot','Error: '+(data.error?data.error.message:JSON.stringify(data)));}
+  }catch(e){removeTyping();addMessage('barrot','Connection error: '+e.message);}
+  document.getElementById('sendBtn').disabled=false;
+}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
+window.onload=function(){document.getElementById('setupModal').style.display='none';loadBrain();};
+</script>
+</body>
+</html>
