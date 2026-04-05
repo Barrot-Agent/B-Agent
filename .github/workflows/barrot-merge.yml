@@ -1,5 +1,4 @@
 name: Barrot Superior Merge
-
 on:
   workflow_dispatch:
     inputs:
@@ -7,43 +6,28 @@ on:
         description: Merged model name
         required: true
         default: barrot-superior-v1
-
 jobs:
   merge:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
     steps:
       - uses: actions/checkout@v5
-
-      - name: Validate secret
-        run: |
-          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" && exit 1)
-
       - name: Install deps
         run: |
           python3 -m pip install --upgrade pip
           pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
-
-      - name: HF whoami
-        run: |
-          hf auth whoami || hf auth login --token "$HF_TOKEN"
-
-      - name: Merge
+      - name: Merge with env token
+        env:
+          HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
-            --copy-tokenizer --out-shard-size 2B --trust-remote-code
-
-      - name: Verify files
-        run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
-
-      - name: Create repo if missing
-        run: |
-          hf repo create Barrot-Agent/${{ github.event.inputs.model_name }} --type model -y || true
-
+            --copy-tokenizer --out-shard-size 2B --trust-remote-code --quiet
+      - name: Verify
+        run: ls -lah output/${{ github.event.inputs.model_name }}
       - name: Upload
+        env:
+          HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+          huggingface-cli upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} .
