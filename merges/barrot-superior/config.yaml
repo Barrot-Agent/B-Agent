@@ -1,12 +1,10 @@
 models:
   - model: google/gemma-4-E2B-it
     parameters:
-      weight: 0.6
-  - model: Qwen/Qwen2-VL-2B-Instruct
+      weight: 0.7
+  - model: google/gemma-4-mini-it
     parameters:
-      weight: 0.4
+      weight: 0.3
 merge_method: linear
 dtype: bfloat16
 tokenizer_source: google/gemma-4-E2B-it
-parameters:
-  normalize: true
