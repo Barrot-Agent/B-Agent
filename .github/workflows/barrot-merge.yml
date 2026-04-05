@@ -6,31 +6,24 @@ on:
         description: 'Merged model name'
         required: true
         default: 'barrot-superior-v1'
-
 jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install dependencies
+      - name: Install
         run: |
           python -m pip install --upgrade pip
           pip install -U mergekit "huggingface_hub[cli]"
-
-      - name: Run merge
+      - name: Merge
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
             --copy-tokenizer --allow-crimes --out-shard-size 1B --lazy-unpickle
-
-      - name: Verify output
+      - name: Verify
         run: ls -lah output/${{ github.event.inputs.model_name }}
-
-      - name: Upload merged model
+      - name: Upload
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} \
-            output/${{ github.event.inputs.model_name }} .
+        run: hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} .
