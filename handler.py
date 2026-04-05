@@ -5,8 +5,6 @@ from datetime import datetime
 class EndpointHandler:
     def __init__(self):
         self.timestamp = datetime.utcnow().isoformat()
-        self.status = "online"
-
         self.gemma_model = None
         self.gemma_tokenizer = None
         self.gemma_id = os.getenv("BARROT_GEMMA_MODEL", "google/gemma-4-E2B-it")
@@ -54,7 +52,7 @@ class EndpointHandler:
         with torch.no_grad():
             outputs = self.gemma_model.generate(
                 inputs,
-                max_new_tokens=160,
+                max_new_tokens=120,
                 do_sample=True,
                 temperature=0.7,
                 top_p=0.9
@@ -65,29 +63,22 @@ class EndpointHandler:
             "backend": "gemma4",
             "model": self.gemma_id,
             "response": text,
-            "timestamp": self.timestamp,
-            "status": "gemma_live"
+            "status": "gemma_live",
+            "timestamp": self.timestamp
         }
 
     def _run_qwen(self, prompt):
         import torch
         self._ensure_qwen()
-
-        conversation = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": prompt}
-                ],
-            }
-        ]
-
+        conversation = [{
+            "role": "user",
+            "content": [{"type": "text", "text": prompt}]
+        }]
         text_prompt = self.qwen_processor.apply_chat_template(
             conversation,
             tokenize=False,
             add_generation_prompt=True
         )
-
         inputs = self.qwen_processor(
             text=[text_prompt],
             padding=True,
@@ -95,10 +86,11 @@ class EndpointHandler:
         ).to(self.qwen_model.device)
 
         with torch.no_grad():
-            generated_ids = self.qwen_model.generate(**inputs, max_new_tokens=160)
+            generated_ids = self.qwen_model.generate(**inputs, max_new_tokens=120)
 
         trimmed = [
-            out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
+            out_ids[len(in_ids):]
+            for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
         ]
         output_text = self.qwen_processor.batch_decode(
             trimmed,
@@ -110,8 +102,8 @@ class EndpointHandler:
             "backend": "qwen_vl",
             "model": self.qwen_id,
             "response": output_text,
-            "timestamp": self.timestamp,
-            "status": "qwen_live"
+            "status": "qwen_live",
+            "timestamp": self.timestamp
         }
 
     def __call__(self, payload):
@@ -128,14 +120,14 @@ class EndpointHandler:
                 "backend": "mrp",
                 "model": "barrot_mrp",
                 "response": f"MRP Engine: {inputs}",
-                "timestamp": self.timestamp,
-                "status": "mrp_online"
+                "status": "mrp_online",
+                "timestamp": self.timestamp
             }
         except Exception as e:
             return {
                 "backend": backend,
                 "response": f"{backend} failure: {type(e).__name__}: {e}",
                 "trace": traceback.format_exc(limit=2),
-                "timestamp": self.timestamp,
-                "status": "backend_error"
+                "status": "backend_error",
+                "timestamp": self.timestamp
             }
