@@ -1,0 +1,35 @@
+name: Barrot Ops
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show repo state
+        run: |
+          pwd
+          ls -la
+          test -f app.py && echo "app.py present" || echo "app.py missing"
+          test -f requirements.txt && echo "requirements.txt present" || echo "requirements.txt missing"
+
+      - name: Python smoke test
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Python
+        run: |
+          python --version
+          python - <<'PY'
+          import os
+          print("Barrot workflow alive")
+          print("files:", sorted(os.listdir("."))[:20])
+          PY
