@@ -1,0 +1,23 @@
+name: Barrot Superior Merge
+on:
+  workflow_dispatch:
+    inputs:
+      model_name:
+        description: 'Merged model name'
+        required: true
+        default: 'barrot-superior-v1'
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MergeKit
+        run: pip install -U mergekit huggingface_hub
+      - name: Login to HF
+        run: echo "${{ secrets.HF_TOKEN }}" | huggingface-cli login --token-stdin
+      - name: Run merge
+        run: |
+          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
+            --copy-tokenizer --allow-crimes --out-shard-size 1B --lazy-unpickle
+      - name: Upload merged model
+        run: huggingface-cli upload Barrot-Agent/output/${{ github.event.inputs.model_name }} Barrot-Agent/${{ github.event.inputs.model_name }}
