@@ -6,28 +6,46 @@ on:
         description: Merged model name
         required: true
         default: barrot-superior-v1
+
 jobs:
   merge:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    env:
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
     steps:
       - uses: actions/checkout@v5
+
       - name: Install deps
         run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
           python3 -m pip install --upgrade pip
           pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
-      - name: Merge with env token
+
+      - name: Configure git auth for HF
         env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config --global credential.helper store
+          printf "https://__token__:%s@huggingface.co
+" "$HF_TOKEN" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
+
+      - name: Merge
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
-            --copy-tokenizer --out-shard-size 2B --trust-remote-code --quiet
+            --copy-tokenizer --out-shard-size 2B --trust-remote-code
+
       - name: Verify
-        run: ls -lah output/${{ github.event.inputs.model_name }}
+        run: |
+          ls -lah output/${{ github.event.inputs.model_name }}
+
       - name: Upload
         env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          huggingface-cli upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} .
+          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
