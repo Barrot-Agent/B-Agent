@@ -1,40 +1,49 @@
 name: Barrot Superior Merge
+
 on:
   workflow_dispatch:
     inputs:
       model_name:
-        description: 'Merged model name'
+        description: Merged model name
         required: true
-        default: 'barrot-superior-v1'
+        default: barrot-superior-v1
+
 jobs:
   merge:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Validate secret
+        run: |
+          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" && exit 1)
+
       - name: Install deps
         run: |
-          sudo apt update -y
-          sudo apt install -y git-lfs
           python3 -m pip install --upgrade pip
-          pip install -U mergekit==1.4.0 "huggingface_hub[cli]" transformers>=4.45.0 torch safetensors
-      - name: Login HF
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
+
+      - name: HF whoami
         run: |
-          huggingface-cli login --token $HF_TOKEN --add-to-git-credential
+          hf auth whoami || hf auth login --token "$HF_TOKEN"
+
       - name: Merge
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git lfs install
           mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
-            --copy-tokenizer --allow-crimes --out-shard-size 5B --lazy-unpickle --trust-remote-code --quiet
-      - name: Verify
-        run: ls -lah output/${{ github.event.inputs.model_name }}/*
-      - name: Upload HF
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+            --copy-tokenizer --out-shard-size 2B --trust-remote-code
+
+      - name: Verify files
         run: |
-          cd output/${{ github.event.inputs.model_name }}
-          huggingface-cli upload Barrot-Agent/${{ github.event.inputs.model_name }} . --repo-type model
+          ls -lah output/${{ github.event.inputs.model_name }}
+
+      - name: Create repo if missing
+        run: |
+          hf repo create Barrot-Agent/${{ github.event.inputs.model_name }} --type model -y || true
+
+      - name: Upload
+        run: |
+          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
