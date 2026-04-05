@@ -26,7 +26,10 @@ with tab2:
 
     if st.button("Execute"):
         with st.spinner(f"Running {backend}..."):
-            st.json(h({
+            st.json({
+                "inputs": query,
+                "parameters": {"backend": backend}
+            } if False else h({
                 "inputs": query,
                 "parameters": {"backend": backend}
             }))
