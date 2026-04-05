@@ -5,80 +5,28 @@ try:
     from handler import EndpointHandler
 except Exception as e:
     EndpointHandler = None
-    handler_import_error = str(e)
-else:
-    handler_import_error = None
+    handler_error = str(e)
 
 st.set_page_config(page_title="BARROT-Ω", page_icon="🦾", layout="wide")
 
-@st.cache_resource
-def get_handler():
-    if EndpointHandler is None:
-        raise RuntimeError(handler_import_error)
-    return EndpointHandler()
+st.title("🦾 BARROT-Ω")
+st.caption("Multi-Synchronous Relativistic Perception")
 
-st.title("🦾 BARROT-Ω: MRP Sovereign Engine")
-st.caption("Multi-Synchronous Relativistic Perception | Streamlit Control Surface")
-
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "🏠 Home",
-    "🧠 Brain",
-    "🎥 Media",
-    "⚙️ Build",
-    "🧪 Sandbox"
-])
-
-with tab1:
-    st.header("System Status")
-    st.write("Timestamp:", datetime.utcnow().isoformat() + "Z")
-    if EndpointHandler is None:
-        st.error(f"EndpointHandler import failed: {handler_import_error}")
-    else:
-        st.success("Barrot handler ready")
-        st.info("Gemma loads only when requested.")
-
-with tab2:
-    st.header("MRP Engine")
-    query = st.text_input("MRP Query", "Sovereign convergence")
-    use_gemma = st.toggle("Use Gemma 4 backend", value=True)
-
-    if st.button("Run MRP"):
-        if EndpointHandler is None:
-            st.error(f"EndpointHandler import failed: {handler_import_error}")
-        else:
-            try:
-                h = get_handler()
-                frames = [{"data": f"frame_{i}"} for i in range(3)]
-                payload = {
-                    "inputs": query,
-                    "parameters": {
-                        "frames": frames,
-                        "backend": "gemma4" if use_gemma else "mrp"
-                    }
-                }
-                with st.spinner("Running Barrot..."):
-                    result = h(payload)
-                st.json(result)
-            except Exception as e:
-                st.error(f"MRP execution failed: {e}")
-
-with tab3:
-    st.header("Video Intelligence Pipeline")
-    st.info("Video ingest → extract → cross-reference → MRP sync status")
-
-with tab4:
-    st.header("Platform Actions")
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("🔄 GitHub Sync"):
-            st.success("Synced")
-    with col2:
-        if st.button("📊 Databricks"):
-            st.success("Tables updated")
-    with col3:
-        if st.button("🚀 HF Deploy"):
-            st.success("Deployed")
-
-with tab5:
-    st.header("Sovereign Sandbox")
-    st.text_area("Notes", "BARROT sandbox online.", height=180)
+if EndpointHandler is None:
+    st.error(f"Handler failed to load: {handler_error}")
+else:
+    h = EndpointHandler()
+    
+    tab1, tab2 = st.tabs(["Status", "MRP"])
+    
+    with tab1:
+        st.header("System Status")
+        result = h({"inputs": "status"})
+        st.json(result)
+    
+    with tab2:
+        st.header("MRP Engine")
+        query = st.text_input("Query", "sovereign status")
+        if st.button("Execute"):
+            result = h({"inputs": query, "parameters": {"backend": "gemma4"}})
+            st.json(result)
