@@ -54,11 +54,12 @@ class EndpointHandler:
         with torch.no_grad():
             outputs = self.gemma_model.generate(
                 inputs,
-                max_new_tokens=192,
+                max_new_tokens=160,
                 do_sample=True,
                 temperature=0.7,
                 top_p=0.9
             )
+
         text = self.gemma_tokenizer.decode(outputs[0], skip_special_tokens=True)
         return {
             "backend": "gemma4",
@@ -71,6 +72,7 @@ class EndpointHandler:
     def _run_qwen(self, prompt):
         import torch
         self._ensure_qwen()
+
         conversation = [
             {
                 "role": "user",
@@ -79,10 +81,13 @@ class EndpointHandler:
                 ],
             }
         ]
+
         text_prompt = self.qwen_processor.apply_chat_template(
             conversation,
+            tokenize=False,
             add_generation_prompt=True
         )
+
         inputs = self.qwen_processor(
             text=[text_prompt],
             padding=True,
@@ -90,9 +95,13 @@ class EndpointHandler:
         ).to(self.qwen_model.device)
 
         with torch.no_grad():
-            generated_ids = self.qwen_model.generate(**inputs, max_new_tokens=192)
+            generated_ids = self.qwen_model.generate(**inputs, max_new_tokens=160)
+
+        trimmed = [
+            out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
+        ]
         output_text = self.qwen_processor.batch_decode(
-            generated_ids,
+            trimmed,
             skip_special_tokens=True,
             clean_up_tokenization_spaces=False
         )[0]
@@ -108,18 +117,17 @@ class EndpointHandler:
     def __call__(self, payload):
         inputs = payload.get("inputs", "no input")
         params = payload.get("parameters", {})
-        backend = params.get("backend", "gemma4")
+        backend = params.get("backend", "mrp")
 
         try:
-            if backend == "qwen_vl":
-                return self._run_qwen(inputs)
             if backend == "gemma4":
                 return self._run_gemma(inputs)
+            if backend == "qwen_vl":
+                return self._run_qwen(inputs)
             return {
                 "backend": "mrp",
                 "model": "barrot_mrp",
                 "response": f"MRP Engine: {inputs}",
-                "frames": params.get("frames", []),
                 "timestamp": self.timestamp,
                 "status": "mrp_online"
             }
