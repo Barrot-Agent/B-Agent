@@ -49,7 +49,7 @@ with tab2:
             try:
                 h = EndpointHandler()
                 frames = [{"data": f"frame_{i}"} for i in range(3)]
-                payload = {"inputs": query, "parameters": {"frames": frames}}
+                payload = {"inputs": query, "parameters": {"frames": frames, "backend": "gemma4"}}
                 result = h(payload)
                 st.json(result)
             except Exception as e:
