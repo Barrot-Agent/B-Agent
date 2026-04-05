@@ -16,12 +16,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -U "huggingface_hub[cli]" mergekit
-
-      - name: Login to HF
-        run: echo "${{ secrets.HF_TOKEN }}" | hf login --token-stdin
+          pip install -U mergekit "huggingface_hub[cli]"
 
       - name: Run merge
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
             --copy-tokenizer --allow-crimes --out-shard-size 1B --lazy-unpickle
@@ -30,6 +29,8 @@ jobs:
         run: ls -lah output/${{ github.event.inputs.model_name }}
 
       - name: Upload merged model
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           hf upload Barrot-Agent/${{ github.event.inputs.model_name }} \
             output/${{ github.event.inputs.model_name }} .
