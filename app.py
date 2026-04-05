@@ -11,6 +11,12 @@ else:
 
 st.set_page_config(page_title="BARROT-Ω", page_icon="🦾", layout="wide")
 
+@st.cache_resource
+def get_handler():
+    if EndpointHandler is None:
+        raise RuntimeError(handler_import_error)
+    return EndpointHandler()
+
 st.title("🦾 BARROT-Ω: MRP Sovereign Engine")
 st.caption("Multi-Synchronous Relativistic Perception | Streamlit Control Surface")
 
@@ -28,29 +34,30 @@ with tab1:
     if EndpointHandler is None:
         st.error(f"EndpointHandler import failed: {handler_import_error}")
     else:
-        try:
-            h = EndpointHandler()
-            payload = {
-                "inputs": "Status check",
-                "parameters": {"frames": [{"data": "live"}]}
-            }
-            result = h(payload)
-            st.json(result)
-        except Exception as e:
-            st.error(f"Status check failed: {e}")
+        st.success("Barrot handler ready")
+        st.info("Gemma loads only when requested.")
 
 with tab2:
     st.header("MRP Engine")
     query = st.text_input("MRP Query", "Sovereign convergence")
+    use_gemma = st.toggle("Use Gemma 4 backend", value=True)
+
     if st.button("Run MRP"):
         if EndpointHandler is None:
             st.error(f"EndpointHandler import failed: {handler_import_error}")
         else:
             try:
-                h = EndpointHandler()
+                h = get_handler()
                 frames = [{"data": f"frame_{i}"} for i in range(3)]
-                payload = {"inputs": query, "parameters": {"frames": frames, "backend": "gemma4"}}
-                result = h(payload)
+                payload = {
+                    "inputs": query,
+                    "parameters": {
+                        "frames": frames,
+                        "backend": "gemma4" if use_gemma else "mrp"
+                    }
+                }
+                with st.spinner("Running Barrot..."):
+                    result = h(payload)
                 st.json(result)
             except Exception as e:
                 st.error(f"MRP execution failed: {e}")
