@@ -1,5 +1,8 @@
 bundle:
   name: barrot-b-agent
+  version: 1.0.0
+  git:
+    enabled: false
 
 targets:
   dev:
