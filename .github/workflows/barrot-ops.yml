@@ -1,35 +1,31 @@
-name: Barrot Ops
+name: Barrot Operations Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  sanity:
+  sync-platforms:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Show repo state
+      - name: Deploy HF Space
         run: |
-          pwd
-          ls -la
-          test -f app.py && echo "app.py present" || echo "app.py missing"
-          test -f requirements.txt && echo "requirements.txt present" || echo "requirements.txt missing"
+          git remote add hf https://Scribedpengenius:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/Scribedpengenius/barrot-omega || true
+          git push hf main --force
 
-      - name: Python smoke test
-        uses: actions/setup-python@v5
+      - name: Run Databricks Job
+        uses: databricks/run-notebook@v1
         with:
-          python-version: "3.12"
+          local-notebook-path: src/barrot_databricks_job.py
+          databricks-host: ${{ secrets.DATABRICKS_HOST }}
+          databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
 
-      - name: Validate Python
+      - name: Kaggle Data Refresh
         run: |
-          python --version
-          python - <<'PY'
-          import os
-          print("Barrot workflow alive")
-          print("files:", sorted(os.listdir("."))[:20])
-          PY
+          pip install kaggle
+          echo '${{ secrets.KAGGLE_JSON }}' > kaggle.json
+          chmod 600 kaggle.json
+          kaggle datasets download scribedpengenius/barrot-kaggle-featured --unzip
