@@ -1,7 +1,0 @@
-models:
-  - model: google/gemma-2-2b-it
-    parameters:
-      weight: 1.0
-merge_method: passthrough
-dtype: bfloat16
-tokenizer_source: google/gemma-2-2b-it
