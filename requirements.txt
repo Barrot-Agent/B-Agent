@@ -3,3 +3,12 @@ transformers
 streamlit
 accelerate
 bitsandbytes
+
+# Deployment dependencies
+huggingface_hub>=0.20.0
+databricks-sdk>=0.20.0
+kaggle>=1.6.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+requests>=2.31.0
+PyYAML>=6.0
