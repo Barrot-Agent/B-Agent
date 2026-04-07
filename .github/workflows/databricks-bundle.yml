@@ -5,6 +5,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   validate-deploy-run:
     runs-on: ubuntu-latest
@@ -23,7 +26,18 @@ jobs:
           git branch -a
           git rev-parse HEAD
 
+      - name: Check for databricks.yml
+        id: check_bundle
+        run: |
+          if [ -f "${{ github.workspace }}/databricks.yml" ]; then
+            echo "bundle_exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::databricks.yml not found in repository root; skipping bundle steps"
+            echo "bundle_exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Validate bundle
+        if: steps.check_bundle.outputs.bundle_exists == 'true'
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
@@ -33,6 +47,7 @@ jobs:
           databricks bundle validate --target dev
 
       - name: Deploy bundle
+        if: steps.check_bundle.outputs.bundle_exists == 'true'
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
@@ -42,6 +57,7 @@ jobs:
           databricks bundle deploy --target dev
 
       - name: Run job
+        if: steps.check_bundle.outputs.bundle_exists == 'true'
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
