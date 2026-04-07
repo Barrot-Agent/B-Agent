@@ -25,6 +25,8 @@ jobs:
     name: APEX Lattice Analysis & Report Generation
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -84,6 +86,8 @@ jobs:
     name: Hover Bike Revolution Design Generation
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -150,6 +154,8 @@ jobs:
     needs: [apex-lattice-analysis, hover-bike-design]
     runs-on: ubuntu-latest
     if: always()
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout repository
