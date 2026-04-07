@@ -96,7 +96,7 @@ def format_episode(episode: dict, fmt: OutputFormat = "text") -> str:
     ----------
     episode : dict
         An episode dict from episodes.EPISODES.
-    fmt : str
+    fmt : OutputFormat
         Output format; 'text' or 'markdown'.
 
     Returns
@@ -144,7 +144,7 @@ def format_series_overview(fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    fmt : str
+    fmt : OutputFormat
         Output format; 'text' or 'markdown'.
 
     Returns
@@ -232,7 +232,7 @@ def generate_episode(number: int, fmt: OutputFormat = "text") -> str:
     ----------
     number : int
         Episode number (1-based).
-    fmt : str
+    fmt : OutputFormat
         Output format; 'text' or 'markdown'.
 
     Returns
@@ -256,7 +256,7 @@ def generate_act(act_number: int, fmt: OutputFormat = "text") -> str:
     ----------
     act_number : int
         Act number (1, 2, or 3).
-    fmt : str
+    fmt : OutputFormat
         Output format; 'text' or 'markdown'.
 
     Returns
@@ -277,7 +277,7 @@ def generate_full_series(fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    fmt : str
+    fmt : OutputFormat
         Output format; 'text' or 'markdown'.
 
     Returns
