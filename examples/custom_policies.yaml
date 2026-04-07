@@ -1,0 +1,197 @@
+# Custom Policy Examples for B-Agent OpenShell
+# Copy and adapt these templates for your own agents.
+
+# ---------------------------------------------------------------------------
+# Research Agent — web access + code execution, no credentials
+# ---------------------------------------------------------------------------
+version: "1.0"
+policy_name: research_agent_policy
+description: "Policy for research agents that browse the web and run code"
+extends: default_policy
+enforcement_mode: strict
+
+allowed_binaries:
+  - python3
+  - git
+
+network_rules:
+  allow_domains:
+    - arxiv.org
+    - scholar.google.com
+    - pubmed.ncbi.nlm.nih.gov
+    - github.com
+    - pypi.org
+  deny_all_other: true
+
+filesystem_permissions:
+  - path: /app
+    access: read_write
+  - path: /data
+    access: read_only
+
+api_restrictions:
+  - method: web_search
+    allow_from:
+      - research_agent
+    log_level: info
+  - method: execute_code
+    allow_from:
+      - research_agent
+    log_level: info
+  - method: read_files
+    allow_from:
+      - research_agent
+    log_level: debug
+
+resource_limits:
+  max_memory_mb: 2048
+  max_cpu_percent: 70
+  execution_timeout_seconds: 600
+
+---
+# ---------------------------------------------------------------------------
+# Deployment Agent — credentials + containers + git (no web browsing)
+# ---------------------------------------------------------------------------
+version: "1.0"
+policy_name: deployment_agent_policy
+description: "Policy for deployment agents that manage infrastructure"
+extends: default_policy
+enforcement_mode: strict
+
+allowed_binaries:
+  - git
+  - docker
+  - kubectl
+  - helm
+  - bash
+
+network_rules:
+  allow_domains:
+    - api.github.com
+    - registry-1.docker.io
+    - ghcr.io
+    - k8s.io
+  deny_all_other: true
+
+filesystem_permissions:
+  - path: /app
+    access: read_write
+  - path: /var/run/docker.sock
+    access: read_write
+  - path: /root/.kube
+    access: read_only
+
+api_restrictions:
+  - method: access_credentials
+    allow_from:
+      - deployment_agent
+    log_level: critical
+  - method: docker_operations
+    allow_from:
+      - deployment_agent
+    log_level: info
+  - method: kubernetes_operations
+    allow_from:
+      - deployment_agent
+    log_level: info
+  - method: git_operations
+    allow_from:
+      - deployment_agent
+    log_level: info
+
+resource_limits:
+  max_memory_mb: 1024
+  execution_timeout_seconds: 900
+
+---
+# ---------------------------------------------------------------------------
+# Data Science Agent — heavy compute, HuggingFace + Kaggle access
+# ---------------------------------------------------------------------------
+version: "1.0"
+policy_name: data_science_agent_policy
+description: "Policy for data science agents with GPU access"
+extends: default_policy
+enforcement_mode: strict
+
+allowed_binaries:
+  - python3
+  - pip
+  - jupyter
+
+network_rules:
+  allow_domains:
+    - huggingface.co
+    - kaggle.com
+    - datasets.huggingface.co
+    - pypi.org
+  deny_all_other: true
+
+filesystem_permissions:
+  - path: /app
+    access: read_write
+  - path: /data
+    access: read_write
+  - path: /models
+    access: read_write
+  - path: /var/log
+    access: append
+
+api_restrictions:
+  - method: execute_inference
+    allow_from:
+      - data_science_agent
+    log_level: info
+  - method: network_request
+    allow_from:
+      - data_science_agent
+    log_level: info
+  - method: execute_code
+    allow_from:
+      - data_science_agent
+    log_level: info
+
+resource_limits:
+  max_memory_mb: 16384
+  max_cpu_percent: 95
+  execution_timeout_seconds: 3600
+
+---
+# ---------------------------------------------------------------------------
+# Minimal read-only audit agent
+# ---------------------------------------------------------------------------
+version: "1.0"
+policy_name: audit_agent_policy
+description: "Minimal policy for audit/compliance monitoring agents"
+enforcement_mode: strict
+
+allowed_binaries:
+  - python3
+
+network_rules:
+  allow_domains: []
+  deny_all_other: true
+
+filesystem_permissions:
+  - path: /var/log
+    access: read_only
+  - path: /audit
+    access: read_write
+
+api_restrictions:
+  - method: read_logs
+    allow_from:
+      - audit_agent
+    log_level: debug
+  - method: generate_reports
+    allow_from:
+      - audit_agent
+    log_level: info
+  - method: read_audit_trails
+    allow_from:
+      - audit_agent
+    log_level: debug
+
+resource_limits:
+  max_memory_mb: 512
+  max_cpu_percent: 20
+  execution_timeout_seconds: 120

@@ -1,0 +1,71 @@
+# OpenShell Default Security Policy - Deny-by-default model
+version: "1.0"
+policy_name: default_policy
+description: "Base deny-by-default security policy for B-Agent"
+enforcement_mode: strict
+
+# Binary execution permissions (whitelist)
+allowed_binaries:
+  - git
+  - python3
+  - npm
+  - docker
+  - curl
+  - pip
+  - bash
+  - sh
+
+# Network isolation rules
+network_rules:
+  allow_domains:
+    - huggingface.co
+    - databricks.com
+    - kaggle.com
+    - api.github.com
+    - pypi.org
+  deny_all_other: true
+
+# Filesystem access control
+filesystem_permissions:
+  - path: /app
+    access: read_write
+  - path: /data
+    access: read_only
+  - path: /var/log
+    access: append
+  - path: /tmp
+    access: read_write
+  - path: /home
+    access: read_only
+
+# API/Method call restrictions
+api_restrictions:
+  - method: execute_code
+    allow_from:
+      - inference_agent
+      - research_agent
+    log_level: info
+  - method: access_credentials
+    allow_from:
+      - deployment_agent
+    log_level: critical
+  - method: network_request
+    allow_from:
+      - inference_agent
+      - deployment_agent
+    log_level: info
+
+# Resource limits
+resource_limits:
+  max_cpu_percent: 80
+  max_memory_mb: 4096
+  max_file_descriptors: 1024
+  max_processes: 50
+  execution_timeout_seconds: 300
+
+# Audit settings
+audit:
+  enabled: true
+  log_all_actions: true
+  log_violations: true
+  retention_days: 90

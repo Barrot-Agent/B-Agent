@@ -1,0 +1,40 @@
+# OpenShell Runtime Configuration
+version: "1.0"
+environment: production
+
+runtime:
+  default_policy: default_policy
+  policy_directory: openshell/policies
+  hot_reload: true
+  hot_reload_interval_seconds: 60
+  enforcement_mode: strict
+
+sandbox:
+  enabled: true
+  isolation_level: process
+  seccomp_profile: default
+  network_isolation: true
+
+inference:
+  routing_config: openshell/policies/inference_routes.yaml
+  privacy_mode: strict
+  local_gpu_priority: true
+  anonymize_remote_requests: true
+
+audit:
+  enabled: true
+  log_directory: /var/log/barrot
+  audit_directory: /audit
+  log_level: INFO
+  structured_logging: true
+  retention_days: 90
+
+monitoring:
+  enabled: true
+  health_check_interval: 30
+  metrics_enabled: true
+
+security:
+  deny_by_default: true
+  log_all_violations: true
+  block_on_violation: true

@@ -1,0 +1,67 @@
+# Private Inference Routing Configuration
+version: "1.0"
+policy_name: inference_routes
+description: "Inference endpoint routing for privacy-first model execution"
+
+# Default routing preference
+defaults:
+  primary_endpoint: local_nvidia_gpu
+  fallback_endpoint: huggingface_api
+  privacy_mode: strict
+  anonymize_on_fallback: true
+
+# Inference endpoints
+endpoints:
+  local_nvidia_gpu:
+    type: local
+    description: "Local NVIDIA GPU inference (privacy-first)"
+    url: "http://localhost:8000"
+    supported_models:
+      - granite-vision
+      - llama3
+      - mistral
+    health_check_interval_seconds: 30
+    timeout_seconds: 120
+    priority: 1
+
+  huggingface_api:
+    type: remote
+    description: "Hugging Face Inference API (fallback)"
+    url: "https://api-inference.huggingface.co"
+    requires_token: true
+    token_env_var: HF_TOKEN
+    data_anonymization: true
+    priority: 2
+
+  databricks_api:
+    type: remote
+    description: "Databricks Model Serving"
+    url_env_var: DATABRICKS_HOST
+    requires_token: true
+    token_env_var: DATABRICKS_TOKEN
+    data_anonymization: true
+    priority: 3
+
+# Per-model routing rules
+model_routes:
+  - model_pattern: "granite*"
+    preferred_endpoint: local_nvidia_gpu
+    fallback_endpoint: huggingface_api
+  - model_pattern: "llm"
+    preferred_endpoint: databricks_api
+    fallback_endpoint: huggingface_api
+  - model_pattern: "vision*"
+    preferred_endpoint: local_nvidia_gpu
+    fallback_endpoint: huggingface_api
+
+# Privacy rules
+privacy_rules:
+  - rule: strip_pii
+    enabled: true
+    apply_to: all_remote_endpoints
+  - rule: no_credential_leakage
+    enabled: true
+    apply_to: all_endpoints
+  - rule: audit_all_remote_requests
+    enabled: true
+    apply_to: all_remote_endpoints

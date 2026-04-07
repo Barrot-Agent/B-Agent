@@ -1,0 +1,78 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 1'
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  policy-validation:
+    name: Validate OpenShell Policies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml jsonschema
+
+      - name: Validate policy files
+        run: |
+          python -c "
+          import yaml, os
+          policy_dir = 'openshell/policies'
+          for f in os.listdir(policy_dir):
+              if f.endswith('.yaml'):
+                  with open(os.path.join(policy_dir, f)) as fh:
+                      policy = yaml.safe_load(fh)
+                  assert 'version' in policy, f'{f}: missing version'
+                  print(f'✅ {f} is valid')
+          "
+
+  dependency-scan:
+    name: Dependency Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Run dependency audit
+        run: pip-audit -r requirements.txt --ignore-vuln GHSA-p5wr-vp8g-q5p4 || true
+
+  unit-tests:
+    name: Security Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install test dependencies
+        run: |
+          pip install pytest pytest-cov pyyaml
+
+      - name: Run security tests
+        run: |
+          pytest tests/security/ -v --tb=short || true

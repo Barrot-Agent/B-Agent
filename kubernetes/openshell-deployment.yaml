@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: b-agent-openshell
+  namespace: barrot
+  labels:
+    app: b-agent
+    component: openshell
+    version: "1.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: b-agent
+      component: openshell
+  template:
+    metadata:
+      labels:
+        app: b-agent
+        component: openshell
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: b-agent
+          image: barrot-agent/b-agent:latest
+          ports:
+            - containerPort: 8501
+          env:
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: barrot-secrets
+                  key: hf-token
+            - name: DATABRICKS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: barrot-secrets
+                  key: databricks-host
+                  optional: true
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
+          volumeMounts:
+            - name: policy-config
+              mountPath: /app/openshell/policies
+              readOnly: true
+            - name: audit-logs
+              mountPath: /audit
+            - name: app-logs
+              mountPath: /var/log/barrot
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 5
+      volumes:
+        - name: policy-config
+          configMap:
+            name: openshell-policies
+        - name: audit-logs
+          persistentVolumeClaim:
+            claimName: audit-logs-pvc
+        - name: app-logs
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: b-agent-service
+  namespace: barrot
+spec:
+  selector:
+    app: b-agent
+    component: openshell
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audit-logs-pvc
+  namespace: barrot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

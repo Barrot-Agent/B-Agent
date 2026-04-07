@@ -1,0 +1,56 @@
+# Agent-specific security policies
+version: "1.0"
+policy_name: agent_policies
+description: "Per-agent security restrictions for B-Agent"
+extends: default_policy
+
+agents:
+  inference_agent:
+    description: "AI model inference agent"
+    allowed_actions:
+      - execute_inference
+      - read_model_files
+      - network_request
+    additional_network_domains:
+      - api.openai.com
+      - api.anthropic.com
+    resource_limits:
+      max_memory_mb: 8192
+      max_cpu_percent: 90
+
+  research_agent:
+    description: "Research and data gathering agent"
+    allowed_actions:
+      - web_search
+      - read_files
+      - execute_code
+    additional_network_domains:
+      - arxiv.org
+      - scholar.google.com
+      - pubmed.ncbi.nlm.nih.gov
+    resource_limits:
+      max_memory_mb: 2048
+      execution_timeout_seconds: 600
+
+  deployment_agent:
+    description: "Deployment and infrastructure agent"
+    allowed_actions:
+      - access_credentials
+      - docker_operations
+      - kubernetes_operations
+      - git_operations
+    resource_limits:
+      max_memory_mb: 1024
+      execution_timeout_seconds: 900
+
+  audit_agent:
+    description: "Audit and compliance monitoring agent"
+    allowed_actions:
+      - read_logs
+      - generate_reports
+      - read_audit_trails
+    filesystem_permissions:
+      - path: /var/log
+        access: read_only
+      - path: /audit
+        access: read_write
