@@ -166,10 +166,17 @@ class ForensicsAnalyzer:
         mean_rate = statistics.mean(baseline_rates) if baseline_rates else 0
         std_rate = statistics.stdev(baseline_rates) if len(baseline_rates) > 1 else 0
 
+        # Flag rates exceeding mean + 2σ (95th-percentile threshold) in the
+        # analysis window that also represent at least a 1.5× increase vs
+        # baseline (guards against false positives on very low baselines).
+        _SIGMA_THRESHOLD = 2
+        _MINIMUM_RATE_MULTIPLIER = 1.5
+
         for agent_id, action_type in all_keys:
             b_rate = b_counts.get((agent_id, action_type), 0) / b_dur * 3600
             a_rate = a_counts.get((agent_id, action_type), 0) / a_dur * 3600
-            if a_rate > mean_rate + 2 * std_rate and a_rate > b_rate * 1.5:
+            if (a_rate > mean_rate + _SIGMA_THRESHOLD * std_rate
+                    and a_rate > b_rate * _MINIMUM_RATE_MULTIPLIER):
                 anomalies.append(
                     {
                         "agent_id": agent_id,

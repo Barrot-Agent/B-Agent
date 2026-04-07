@@ -8,7 +8,7 @@ import sys
 import textwrap
 import threading
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 
 class ExecutionTimeoutError(Exception):
@@ -174,7 +174,7 @@ class SandboxExecutor:
     # Internal
     # ------------------------------------------------------------------
 
-    def _make_preexec(self):  # type: ignore[return]
+    def _make_preexec(self) -> "Callable[[], None]":
         """Return a callable that applies resource limits in the child process."""
         limits = dict(self._limits)
 

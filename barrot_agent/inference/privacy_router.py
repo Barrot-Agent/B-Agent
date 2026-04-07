@@ -89,7 +89,7 @@ class PrivacyRouter:
             "model_name": model_name,
         }
 
-    def get_endpoint_for_model(self, model_name: str) -> tuple:
+    def get_endpoint_for_model(self, model_name: str) -> "tuple[str, Dict[str, Any]]":
         """Determine the best endpoint for *model_name*.
 
         Priority: per-model rule → default primary → default fallback.

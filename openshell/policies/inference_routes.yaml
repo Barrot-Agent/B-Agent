@@ -47,7 +47,7 @@ model_routes:
   - model_pattern: "granite*"
     preferred_endpoint: local_nvidia_gpu
     fallback_endpoint: huggingface_api
-  - model_pattern: "llm"
+  - model_pattern: "llm*"
     preferred_endpoint: databricks_api
     fallback_endpoint: huggingface_api
   - model_pattern: "vision*"

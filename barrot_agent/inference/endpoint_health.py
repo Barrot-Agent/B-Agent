@@ -125,7 +125,9 @@ class EndpointHealthMonitor:
             endpoint_name: Registered endpoint identifier.
         """
         with self._lock:
-            return dict(self._statuses[endpoint_name]) if endpoint_name in self._statuses else None
+            if endpoint_name not in self._statuses:
+                return None
+            return dict(self._statuses[endpoint_name])
 
     def get_all_health_statuses(self) -> Dict[str, Dict[str, Any]]:
         """Return a snapshot of all known endpoint statuses."""
