@@ -2,8 +2,7 @@
 Character definitions and development arcs for the Stupid Sindy series.
 """
 
-from dataclasses import dataclass, field
-from typing import List
+from dataclasses import dataclass
 
 
 @dataclass
@@ -11,8 +10,8 @@ class Character:
     name: str
     title: str
     description: str
-    traits: List[str]
-    catchphrases: List[str]
+    traits: list[str]
+    catchphrases: list[str]
     arc_note: str
 
 

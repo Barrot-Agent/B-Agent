@@ -94,12 +94,15 @@ def format_episode(episode: dict, fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    episode : dict   An episode dict from episodes.EPISODES.
-    fmt     : str    'text' or 'markdown'.
+    episode : dict
+        An episode dict from episodes.EPISODES.
+    fmt : str
+        Output format; 'text' or 'markdown'.
 
     Returns
     -------
-    str   The formatted script.
+    str
+        The formatted script.
     """
     act_label = ACT_TITLES.get(episode["act"], f"ACT {episode['act']}")
 
@@ -141,11 +144,13 @@ def format_series_overview(fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    fmt : str   'text' or 'markdown'.
+    fmt : str
+        Output format; 'text' or 'markdown'.
 
     Returns
     -------
-    str   The formatted overview.
+    str
+        The formatted overview.
     """
     if fmt == "markdown":
         lines = [
@@ -225,16 +230,20 @@ def generate_episode(number: int, fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    number : int   Episode number (1-based).
-    fmt    : str   'text' or 'markdown'.
+    number : int
+        Episode number (1-based).
+    fmt : str
+        Output format; 'text' or 'markdown'.
 
     Returns
     -------
-    str   The formatted script.
+    str
+        The formatted script.
 
     Raises
     ------
-    ValueError   If the episode number does not exist.
+    ValueError
+        If the episode number does not exist.
     """
     return format_episode(get_episode(number), fmt=fmt)
 
@@ -245,12 +254,15 @@ def generate_act(act_number: int, fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    act_number : int   Act number (1, 2, or 3).
-    fmt        : str   'text' or 'markdown'.
+    act_number : int
+        Act number (1, 2, or 3).
+    fmt : str
+        Output format; 'text' or 'markdown'.
 
     Returns
     -------
-    str   All episode scripts in the act, concatenated.
+    str
+        All episode scripts in the act, concatenated.
     """
     episodes = get_act(act_number)
     if not episodes:
@@ -265,11 +277,13 @@ def generate_full_series(fmt: OutputFormat = "text") -> str:
 
     Parameters
     ----------
-    fmt : str   'text' or 'markdown'.
+    fmt : str
+        Output format; 'text' or 'markdown'.
 
     Returns
     -------
-    str   The complete series document.
+    str
+        The complete series document.
     """
     separator = "\n\n" + ("=" * 72) + "\n\n"
     parts = [format_series_overview(fmt=fmt)]

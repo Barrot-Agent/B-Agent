@@ -22,6 +22,7 @@ from .generator import (
     generate_act,
     generate_full_series,
     format_series_overview,
+    ACT_TITLES,
 )
 from .episodes import EPISODES, episode_count
 
@@ -32,13 +33,13 @@ def _list_episodes() -> str:
         "-" * 50,
     ]
     current_act = None
-    act_labels = {1: "ACT 1: Comedy Skits (Ep 1-8)",
-                  2: "ACT 2: The Vibe Code Discovery (Ep 9-10)",
-                  3: "ACT 3: The Transformation & Invasion (Ep 11+)"}
+    ep_ranges = {1: "Ep 1-8", 2: "Ep 9-10", 3: "Ep 11+"}
     for ep in EPISODES:
         if ep["act"] != current_act:
             current_act = ep["act"]
-            lines.append(f"\n  {act_labels.get(current_act, f'Act {current_act}')}")
+            act_label = ACT_TITLES.get(current_act, f"ACT {current_act}")
+            ep_range = ep_ranges.get(current_act, "")
+            lines.append(f"\n  {act_label} ({ep_range})")
         lines.append(f"    {ep['number']:>2}. {ep['title']:<38} [{ep['tone']}]")
     lines.append(f"\nTotal: {episode_count()} episodes")
     return "\n".join(lines)
