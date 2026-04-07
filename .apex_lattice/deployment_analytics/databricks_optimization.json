@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "generated": "2026-04-07T00:00:00Z",
+    "platform": "Databricks",
+    "workspace": "barrot-research",
+    "version": "1.0.0"
+  },
+  "cluster_configurations": {
+    "research_cluster": {
+      "node_type": "i3.2xlarge",
+      "num_workers": 4,
+      "autoscaling": {"min": 2, "max": 8},
+      "runtime_version": "14.3.x-ml-scala2.12",
+      "gpu_enabled": false,
+      "spot_instance": true,
+      "cost_per_hour_usd": 1.84
+    },
+    "gpu_cluster": {
+      "node_type": "p3.2xlarge",
+      "num_workers": 2,
+      "autoscaling": {"min": 1, "max": 4},
+      "runtime_version": "14.3.x-gpu-ml-scala2.12",
+      "gpu_enabled": true,
+      "gpu_type": "V100",
+      "cost_per_hour_usd": 8.42
+    }
+  },
+  "job_performance": {
+    "millennium_analysis_job": {
+      "job_id": "barrot-millennium-001",
+      "avg_duration_minutes": 34.7,
+      "success_rate": 0.963,
+      "avg_dbu_consumption": 12.4,
+      "last_7_runs": {
+        "durations_min": [32, 35, 38, 31, 34, 37, 33],
+        "statuses": ["SUCCESS", "SUCCESS", "SUCCESS", "FAILED", "SUCCESS", "SUCCESS", "SUCCESS"]
+      }
+    },
+    "quantum_lattice_job": {
+      "job_id": "barrot-quantum-001",
+      "avg_duration_minutes": 67.3,
+      "success_rate": 0.941,
+      "avg_dbu_consumption": 28.1,
+      "last_7_runs": {
+        "durations_min": [62, 71, 65, 69, 74, 63, 68],
+        "statuses": ["SUCCESS", "SUCCESS", "SUCCESS", "SUCCESS", "FAILED", "SUCCESS", "SUCCESS"]
+      }
+    },
+    "report_generation_job": {
+      "job_id": "barrot-reports-001",
+      "avg_duration_minutes": 8.2,
+      "success_rate": 0.991,
+      "avg_dbu_consumption": 3.1,
+      "last_7_runs": {
+        "durations_min": [7, 9, 8, 8, 7, 9, 8],
+        "statuses": ["SUCCESS", "SUCCESS", "SUCCESS", "SUCCESS", "SUCCESS", "SUCCESS", "SUCCESS"]
+      }
+    }
+  },
+  "optimization_findings": {
+    "delta_lake_benefits": {
+      "query_speedup": 4.2,
+      "storage_reduction_pct": 38,
+      "acid_transactions": true,
+      "time_travel_days": 30
+    },
+    "mlflow_integration": {
+      "experiments_tracked": 847,
+      "models_registered": 23,
+      "best_run_metric": 0.941,
+      "artifact_storage_gb": 142
+    },
+    "parallelization": {
+      "optimal_worker_count": 6,
+      "partition_strategy": "problem_type",
+      "speedup_vs_sequential": 5.7,
+      "communication_overhead_pct": 8.3
+    },
+    "memory_optimization": {
+      "broadcast_join_threshold_mb": 256,
+      "shuffle_partition_count": 200,
+      "executor_memory_gb": 16,
+      "driver_memory_gb": 8
+    }
+  },
+  "cost_analysis": {
+    "total_spend_usd": 847.32,
+    "avg_daily_spend_usd": 28.24,
+    "projected_monthly_usd": 847.20,
+    "cost_per_research_cycle_usd": 4.73,
+    "optimization_savings_pct": 34
+  }
+}

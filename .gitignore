@@ -1,0 +1,36 @@
+# Node.js
+.npm/
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Generated report files (keep static docs, ignore timestamped outputs)
+.apex_lattice/reports/findings_report_*.md
+.apex_lattice/reports/findings_report_*.json
+.apex_lattice/reports/findings_report_*.html
+.apex_lattice/reports/quantum_engine_results_*.json
+.apex_lattice/reports/dashboard_*.txt
+.apex_lattice/reports/dashboard_*.html
+.apex_lattice/deployment_analytics/hf_analysis_*.json
+.apex_lattice/deployment_analytics/databricks_analysis_*.json
+.apex_lattice/deployment_analytics/cross_platform_synthesis_*.json
+.apex_lattice/kaggle_findings/transfer_matrix.json
+.apex_lattice/kaggle_findings/problem_synergies.json
+.apex_lattice/kaggle_findings/hybrid_model_specs.json
+.apex_lattice/sync_audit.log
+
+# Kaggle credentials (must not be committed)
+kaggle.json
+
+# OS
+.DS_Store
+Thumbs.db

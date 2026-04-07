@@ -1,0 +1,106 @@
+name: Upgrade Apex Lattice Sandbox
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at 00:00 UTC
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Analysis mode'
+        required: false
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - analyze
+          - report
+          - quantum
+
+jobs:
+  upgrade-apex-lattice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy
+
+      - name: Run Kaggle findings integration
+        run: |
+          python kaggle_findings_integration.py --export-dir .apex_lattice/kaggle_findings
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+
+      - name: Run deployment insights analysis
+        run: |
+          python deployment_insights_analyzer.py --platform all --report
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      - name: Run quantum lattice engine
+        run: |
+          python quantum_lattice_engine.py --problem all
+
+      - name: Sync findings from all platforms
+        run: |
+          python sync_findings.py --source all
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      - name: Run enhanced sandbox orchestration
+        run: |
+          python sandbox_enhanced.py --mode ${{ github.event.inputs.mode || 'full' }}
+
+      - name: Generate findings report (all formats)
+        run: |
+          python generate_findings_report.py --format all --output .apex_lattice/reports
+
+      - name: Generate dashboard
+        run: |
+          python dashboard_generator.py --format all --output .apex_lattice/reports
+
+      - name: Commit updated findings to repository
+        run: |
+          git config --global user.name "barrot-apex-bot"
+          git config --global user.email "barrot-apex-bot@users.noreply.github.com"
+          git add .apex_lattice/
+          # Only commit if there are staged changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: apex lattice daily upgrade $(date -u +%Y-%m-%d)"
+            git push origin HEAD
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload report artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: apex-lattice-reports-${{ github.run_number }}
+          path: |
+            .apex_lattice/reports/
+          retention-days: 30
