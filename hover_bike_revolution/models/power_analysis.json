@@ -1,0 +1,19 @@
+{
+  "battery": {
+    "capacity_wh": 480.0,
+    "cycle_life": 800
+  },
+  "solar": {
+    "peak_power_w": 110.0,
+    "daily_yield_wh": 440.0
+  },
+  "kinetic_recovery": {
+    "per_stop_wh": 1.687885802469136,
+    "efficiency_pct": 70.0
+  },
+  "range_estimates": {
+    "30kmh_km": 36.0,
+    "40kmh_km": 35.72093023255814,
+    "50kmh_km": 34.285714285714285
+  }
+}

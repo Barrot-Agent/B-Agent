@@ -1,0 +1,26 @@
+{
+  "sync_started": "2026-04-07T04:18:33.453002",
+  "platforms": {
+    "kaggle": {
+      "platform": "kaggle",
+      "synced_at": "2026-04-07T04:18:33.453092",
+      "auth": "NO_CREDENTIALS",
+      "note": "Set KAGGLE_USERNAME and KAGGLE_KEY to enable live sync"
+    },
+    "huggingface": {
+      "platform": "huggingface",
+      "synced_at": "2026-04-07T04:18:33.453449",
+      "auth": "NO_CREDENTIALS",
+      "note": "Set HF_TOKEN to enable live sync"
+    },
+    "databricks": {
+      "platform": "databricks",
+      "synced_at": "2026-04-07T04:18:33.453803",
+      "auth": "NO_CREDENTIALS",
+      "note": "Set DATABRICKS_HOST and DATABRICKS_TOKEN for live sync"
+    }
+  },
+  "sync_completed": "2026-04-07T04:18:33.454071",
+  "platforms_synced": 0,
+  "total_platforms": 3
+}

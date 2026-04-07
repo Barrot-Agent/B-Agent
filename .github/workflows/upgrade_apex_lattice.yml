@@ -1,0 +1,173 @@
+name: APEX Lattice Upgrade & Hover Bike Revolution
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - '.apex_lattice/**'
+      - 'sandbox_enhanced.py'
+      - 'quantum_lattice_engine.py'
+      - 'generate_findings_report.py'
+      - 'sync_findings.py'
+      - 'hover_bike_revolution/**'
+  workflow_dispatch:
+    inputs:
+      run_mode:
+        description: 'Run mode (full / quick / hover_only)'
+        required: false
+        default: 'full'
+
+jobs:
+  apex-lattice-analysis:
+    name: APEX Lattice Analysis & Report Generation
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests || true
+          # Optional platform deps (fail gracefully if secrets not configured)
+          pip install kaggle huggingface_hub || true
+
+      - name: Run Quantum Lattice Engine
+        run: |
+          python quantum_lattice_engine.py
+        continue-on-error: false
+
+      - name: Run Full Sandbox Analysis
+        run: |
+          python sandbox_enhanced.py
+        continue-on-error: false
+
+      - name: Generate Findings Report
+        run: |
+          python generate_findings_report.py
+        continue-on-error: false
+
+      - name: Sync Platform Findings
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          python sync_findings.py
+        continue-on-error: true
+
+      - name: Commit updated reports to repository
+        run: |
+          git config --global user.email "barrot-apex@noreply.github.com"
+          git config --global user.name "Barrot APEX Lattice"
+          git add .apex_lattice/reports/ .apex_lattice/kaggle_findings/ \
+                  .apex_lattice/deployment_analytics/ \
+                  .apex_lattice/quantum_engine/ \
+                  .apex_lattice/sync_report.json || true
+          git diff --staged --quiet || \
+            git commit -m "auto: APEX Lattice daily report $(date +%Y-%m-%d)"
+          git push origin HEAD || true
+
+  hover-bike-design:
+    name: Hover Bike Revolution Design Generation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate hover bike design package
+        run: |
+          cd hover_bike_revolution
+          python src/hover_bike_generator.py
+        continue-on-error: false
+
+      - name: Run magnetic system analysis
+        run: |
+          cd hover_bike_revolution
+          python src/magnetic_system_designer.py
+        continue-on-error: false
+
+      - name: Run propulsion simulation
+        run: |
+          cd hover_bike_revolution
+          python src/propulsion_simulator.py
+        continue-on-error: false
+
+      - name: Run power management analysis
+        run: |
+          cd hover_bike_revolution
+          python src/power_management_system.py
+        continue-on-error: false
+
+      - name: Run control firmware simulation
+        run: |
+          cd hover_bike_revolution
+          python src/control_firmware.py
+        continue-on-error: false
+
+      - name: Generate 3D print preparation report
+        run: |
+          cd hover_bike_revolution
+          python src/3d_print_preparation.py
+        continue-on-error: false
+
+      - name: Generate assembly guide
+        run: |
+          cd hover_bike_revolution
+          python src/assembly_guide_generator.py
+        continue-on-error: false
+
+      - name: Commit updated design outputs
+        run: |
+          git config --global user.email "barrot-apex@noreply.github.com"
+          git config --global user.name "Barrot APEX Lattice"
+          git add hover_bike_revolution/models/ hover_bike_revolution/docs/ || true
+          git diff --staged --quiet || \
+            git commit -m "auto: hover bike design update $(date +%Y-%m-%d)"
+          git push origin HEAD || true
+
+  summary:
+    name: Generate Unified Summary
+    needs: [apex-lattice-analysis, hover-bike-design]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print workflow summary
+        run: |
+          echo "## 🚀 BARROT APEX LATTICE — WORKFLOW SUMMARY" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| APEX Lattice Analysis | ${{ needs.apex-lattice-analysis.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Hover Bike Design | ${{ needs.hover-bike-design.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run date:** $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Research Domains Active" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ 7 Millennium Prize Problems" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Fusion Energy & Warp Drive Physics" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Disease Eradication (Biological Complexity)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Hover Bike Revolution Design System" >> $GITHUB_STEP_SUMMARY

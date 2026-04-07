@@ -1,0 +1,119 @@
+{
+  "jobs": [
+    {
+      "filename": "frame_assembly.stl",
+      "component": "Main Aerodynamic Frame",
+      "material": "CF-PLA",
+      "time_h": 48,
+      "weight_g": 2800,
+      "notes": "Split into 4 sections; bolt together with M8 titanium inserts. Use gyroid infill pattern for optimal strength/weight.",
+      "material_mass_kg": 1.344,
+      "material_cost_usd": 60.48
+    },
+    {
+      "filename": "magnet_housing.stl",
+      "component": "Halbach Array Magnet Housing (\u00d74)",
+      "material": "PETG",
+      "time_h": 6,
+      "weight_g": 340,
+      "notes": "Critical tolerances at magnet pockets (\u00b10.1mm). Print slowly. PETG resists magnetic heat.",
+      "material_mass_kg": 0.271,
+      "material_cost_usd": 7.6
+    },
+    {
+      "filename": "motor_stator.stl",
+      "component": "Linear Motor Stator Housing (\u00d72)",
+      "material": "ABS",
+      "time_h": 8,
+      "weight_g": 290,
+      "notes": "ABS needed for high-temp tolerance near motor. Print in enclosure to prevent warping.",
+      "material_mass_kg": 0.209,
+      "material_cost_usd": 5.22
+    },
+    {
+      "filename": "battery_enclosure.stl",
+      "component": "Battery + BMS Enclosure",
+      "material": "CF-PLA",
+      "time_h": 12,
+      "weight_g": 480,
+      "notes": "100% perimeter walls (6 walls) for waterproofing. Insert rubber gasket in lid groove.",
+      "material_mass_kg": 0.24,
+      "material_cost_usd": 10.79
+    },
+    {
+      "filename": "control_pod.stl",
+      "component": "Handlebar Control Pod",
+      "material": "PLA",
+      "time_h": 4,
+      "weight_g": 145,
+      "notes": "Ergonomic design; smooth outer surface (0.1mm ironing). Fit-test display cutout before final assembly.",
+      "material_mass_kg": 0.051,
+      "material_cost_usd": 1.12
+    },
+    {
+      "filename": "wheel_hub.stl",
+      "component": "Motor Wheel Hub Adapter (\u00d72)",
+      "material": "CF-PLA",
+      "time_h": 5,
+      "weight_g": 210,
+      "notes": "High mechanical stress component. Add M6 steel inserts at motor bolt pattern. Verify concentricity <0.2mm before install.",
+      "material_mass_kg": 0.147,
+      "material_cost_usd": 6.63
+    },
+    {
+      "filename": "sensor_mount.stl",
+      "component": "Ultrasonic + Hall Sensor Mounts",
+      "material": "PLA",
+      "time_h": 2,
+      "weight_g": 56,
+      "notes": "8 units total (4 ultrasonic + 4 Hall sensor). Snap-fit design, no hardware needed.",
+      "material_mass_kg": 0.022,
+      "material_cost_usd": 0.49
+    },
+    {
+      "filename": "coil_former.stl",
+      "component": "Electromagnet Coil Former (\u00d74)",
+      "material": "Nylon",
+      "time_h": 3,
+      "weight_g": 99,
+      "notes": "Nylon for heat tolerance during coil winding. Wind 250 turns of 22AWG magnet wire after printing.",
+      "material_mass_kg": 0.05,
+      "material_cost_usd": 2.73
+    }
+  ],
+  "summary": {
+    "total_print_time_hours": 88,
+    "total_weight_g": 4420,
+    "total_filament_cost_usd": 95.06,
+    "material_breakdown_g": {
+      "CF-PLA": 3490,
+      "PETG": 340,
+      "ABS": 290,
+      "PLA": 201,
+      "Nylon": 99
+    },
+    "job_count": 8
+  },
+  "printer_requirements": {
+    "build_volume_mm": "300\u00d7300\u00d7300 minimum (frame splits into sections)",
+    "materials": [
+      "PLA",
+      "CF-PLA",
+      "ABS",
+      "PETG",
+      "Nylon",
+      "TPU"
+    ],
+    "enclosure": "Required for ABS and Nylon",
+    "min_nozzle_size_mm": 0.4,
+    "hardened_nozzle": "Required for CF-PLA (abrasive)",
+    "bed_leveling": "Auto bed leveling strongly recommended",
+    "part_cooling": "Required for PLA/PETG; disabled for ABS",
+    "recommended_printers": [
+      "Bambu Lab X1-Carbon (best CF-PLA performance)",
+      "Prusa MK4 + Enclosure Kit",
+      "Creality K1 Max (large bed, fast)",
+      "Voron 2.4 (DIY, open material system)"
+    ]
+  }
+}

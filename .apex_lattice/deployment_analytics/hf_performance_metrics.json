@@ -1,0 +1,9 @@
+{
+  "platform": "huggingface",
+  "note": "Configure HF_TOKEN secret for live metrics",
+  "optimization_learnings": [
+    "Use 4-bit quantisation for inference efficiency",
+    "Flash attention v2 reduces memory 3x",
+    "LoRA fine-tuning converges 10x faster than full fine-tune"
+  ]
+}

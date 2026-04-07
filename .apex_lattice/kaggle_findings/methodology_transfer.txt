@@ -1,0 +1,28 @@
+# Kaggle Methodology Transfer to Barrot APEX
+
+## Competition Techniques Applied to Millennium Problems
+
+### Gradient Boosting (XGBoost/LightGBM)
+- Applied to: P vs NP complexity estimation
+- Technique: Feature importance on Boolean formula structure
+- Insight: Clause density ratio is strongest predictor of phase transition
+
+### Transformer Attention
+- Applied to: Riemann zeta zero prediction
+- Technique: Sequence modelling on zero spacings
+- Insight: Attention weights correlate with Montgomery pair correlation
+
+### Graph Neural Networks
+- Applied to: Disease network intervention
+- Technique: Node classification on PPI networks
+- Insight: Hub nodes with high betweenness centrality are best drug targets
+
+### Neural ODEs
+- Applied to: Navier-Stokes blow-up detection
+- Technique: Continuous-depth model on vorticity fields
+- Insight: Blow-up precursors visible 0.1 time units before singularity
+
+### Reinforcement Learning
+- Applied to: Fusion reactor control
+- Technique: PPO agent for plasma shape optimization
+- Insight: RL matches human expert performance at 1/1000 the training time

@@ -1,0 +1,69 @@
+{
+  "hub_motor": {
+    "rated_power_w": 500.0,
+    "efficiency": 0.87,
+    "no_load_rpm": 2400.0
+  },
+  "linear_motor": {
+    "thrust_at_20a_n": 4.34293768432253,
+    "efficiency": 0.88
+  },
+  "em_pulse": {
+    "stored_energy_j": 1152.0,
+    "avg_thrust_n": 9.047786842338604e-05
+  },
+  "cruise_analysis": [
+    {
+      "speed_kmh": 10,
+      "drag_force_n": 1.0,
+      "propulsion_power_w": 17.2,
+      "levitation_power_w": 80.0,
+      "total_power_w": 97.2,
+      "efficiency_pct": 87.4
+    },
+    {
+      "speed_kmh": 20,
+      "drag_force_n": 4.0,
+      "propulsion_power_w": 53.3,
+      "levitation_power_w": 80.0,
+      "total_power_w": 133.3,
+      "efficiency_pct": 87.4
+    },
+    {
+      "speed_kmh": 30,
+      "drag_force_n": 8.9,
+      "propulsion_power_w": 127.3,
+      "levitation_power_w": 80.0,
+      "total_power_w": 207.3,
+      "efficiency_pct": 87.4
+    },
+    {
+      "speed_kmh": 40,
+      "drag_force_n": 15.9,
+      "propulsion_power_w": 258.0,
+      "levitation_power_w": 80.0,
+      "total_power_w": 338.0,
+      "efficiency_pct": 87.4
+    },
+    {
+      "speed_kmh": 50,
+      "drag_force_n": 24.8,
+      "propulsion_power_w": 464.5,
+      "levitation_power_w": 80.0,
+      "total_power_w": 544.5,
+      "efficiency_pct": 87.4
+    },
+    {
+      "speed_kmh": 55,
+      "drag_force_n": 30.0,
+      "propulsion_power_w": 602.0,
+      "levitation_power_w": 80.0,
+      "total_power_w": 682.0,
+      "efficiency_pct": 87.4
+    }
+  ],
+  "acceleration": {
+    "time_0_to_50_kmh_s": 34.7,
+    "energy_used_wh": 5.377
+  }
+}

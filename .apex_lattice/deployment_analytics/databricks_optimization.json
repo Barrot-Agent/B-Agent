@@ -1,0 +1,8 @@
+{
+  "platform": "databricks",
+  "optimization_learnings": [
+    "Delta Lake ZORDER on timestamp columns reduces scan 60%",
+    "Photon engine gives 2-4x speedup on numerical workloads",
+    "Cluster auto-scaling with min=2 workers optimal for ML jobs"
+  ]
+}

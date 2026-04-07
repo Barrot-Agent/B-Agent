@@ -1,0 +1,533 @@
+{
+  "title": "Barrot Revolution Hover Bike - Complete Assembly Guide",
+  "version": "1.0",
+  "total_steps": 18,
+  "total_time_minutes": 1030,
+  "phases": [
+    "Power System",
+    "Control System",
+    "Testing",
+    "Frame Assembly",
+    "Magnetic System",
+    "Propulsion"
+  ],
+  "steps": [
+    {
+      "number": 1,
+      "phase": "Frame Assembly",
+      "title": "Print and post-process frame sections",
+      "description": "Print all 4 frame sections using CF-PLA at 0.2mm layer height, 40% gyroid infill. Remove supports carefully with flush cutters. Sand joining surfaces to 400 grit.",
+      "parts": [
+        "frame_assembly.stl (\u00d74 sections)",
+        "CF-PLA filament (\u00d73 spools)"
+      ],
+      "tools": [
+        "3D printer",
+        "flush cutters",
+        "sandpaper 200/400 grit"
+      ],
+      "time_min": 180,
+      "safety": [
+        "Wear gloves - CF-PLA splinters are sharp"
+      ],
+      "tips": [
+        "Print sections vertically for better layer adhesion on stress points"
+      ]
+    },
+    {
+      "number": 2,
+      "phase": "Frame Assembly",
+      "title": "Install titanium heat-set inserts",
+      "description": "Using soldering iron at 200\u00b0C, press M8 titanium inserts into all mounting holes. Inserts should be flush or 0.2mm below surface.",
+      "parts": [
+        "Titanium M8 insert kit",
+        "Frame sections"
+      ],
+      "tools": [
+        "Soldering iron (200\u00b0C)",
+        "Insert driver bit"
+      ],
+      "time_min": 30,
+      "safety": [
+        "Hot inserts can cause burns - use heat-resistant gloves"
+      ],
+      "tips": [
+        "Heat insert until just flush, then remove iron. Don't over-push."
+      ]
+    },
+    {
+      "number": 3,
+      "phase": "Frame Assembly",
+      "title": "Join frame sections",
+      "description": "Align front and rear frame halves. Apply structural epoxy (JB Weld) to joint faces. Bolt together with M8\u00d750mm titanium bolts, torque to 15 N\u00b7m.",
+      "parts": [
+        "Main frame sections \u00d74",
+        "M8\u00d750 titanium bolts \u00d716",
+        "JB Weld structural epoxy"
+      ],
+      "tools": [
+        "M8 hex key",
+        "torque wrench",
+        "clamps"
+      ],
+      "time_min": 45,
+      "safety": [
+        "Allow epoxy to cure 24h before applying loads"
+      ],
+      "tips": [
+        "Check alignment with spirit level before epoxy sets"
+      ]
+    },
+    {
+      "number": 4,
+      "phase": "Magnetic System",
+      "title": "Print and inspect magnet housings",
+      "description": "Print 4 magnet housings in PETG at 0.15mm, 80% infill. Verify all magnet pockets are within \u00b10.1mm tolerance using digital calipers.",
+      "parts": [
+        "magnet_housing.stl \u00d74",
+        "PETG filament"
+      ],
+      "tools": [
+        "3D printer",
+        "digital calipers"
+      ],
+      "time_min": 90,
+      "safety": [
+        "PETG can warp - use enclosed printer or draft shield"
+      ],
+      "tips": [
+        "Print orientation: pockets facing up to avoid support in critical areas"
+      ]
+    },
+    {
+      "number": 5,
+      "phase": "Magnetic System",
+      "title": "Assemble Halbach arrays",
+      "description": "Insert N52 neodymium magnets into housings following Halbach configuration: rotate each magnet 90\u00b0 clockwise from previous. Sequence: [N\u2191] [N\u2192] [N\u2193] [N\u2190] repeat. Lock with non-magnetic stainless screws.",
+      "parts": [
+        "N52 magnets (\u00d764 total, 16 per housing)",
+        "M3\u00d76 SS screws \u00d732"
+      ],
+      "tools": [
+        "plastic mallet",
+        "M3 screwdriver",
+        "magnet safety gloves"
+      ],
+      "time_min": 60,
+      "safety": [
+        "DANGER: Neodymium magnets can cause severe pinch injuries",
+        "Keep magnets away from electronics and credit cards",
+        "Never place two Halbach arrays face-to-face without fixtures"
+      ],
+      "tips": [
+        "Mark each magnet orientation before inserting",
+        "Use plastic tweezers near sensor boards"
+      ]
+    },
+    {
+      "number": 6,
+      "phase": "Magnetic System",
+      "title": "Mount arrays to frame",
+      "description": "Bolt 4 magnet arrays to underside of frame at marked positions (FL, FR, RL, RR). Arrays should be co-planar within \u00b11mm. Shim if needed.",
+      "parts": [
+        "Assembled magnet housings \u00d74",
+        "M8\u00d720 bolts \u00d716",
+        "aluminium shims"
+      ],
+      "tools": [
+        "M8 hex key",
+        "feeler gauge",
+        "straight edge 500mm"
+      ],
+      "time_min": 45,
+      "safety": [
+        "Check array-to-ground clearance: minimum 5mm above ground surface"
+      ],
+      "tips": [
+        "Use feeler gauge to verify co-planarity before final tighten"
+      ]
+    },
+    {
+      "number": 7,
+      "phase": "Power System",
+      "title": "Install battery enclosure",
+      "description": "Mount 3D-printed battery enclosure to frame centre (lowest point for CoG). Install rubber vibration isolators at 4 mounting points.",
+      "parts": [
+        "battery_enclosure.stl",
+        "vibration isolators \u00d74",
+        "M6 bolts \u00d78"
+      ],
+      "tools": [
+        "M6 hex key",
+        "drill for pilot holes if needed"
+      ],
+      "time_min": 20,
+      "safety": [
+        "Ensure enclosure drains are pointed down (if included)"
+      ],
+      "tips": [
+        "Low CoG improves stability - keep battery as low as possible"
+      ]
+    },
+    {
+      "number": 8,
+      "phase": "Power System",
+      "title": "Wire power system",
+      "description": "Install battery \u2192 BMS \u2192 main bus bar wiring. Use 10AWG silicone wire for main power runs. All positive wires: red. All ground: black. Install 40A main fuse within 15cm of battery positive terminal.",
+      "parts": [
+        "LiPo 48V 10Ah battery",
+        "13S BMS",
+        "40A fuse",
+        "Anderson connectors",
+        "10AWG silicone wire"
+      ],
+      "tools": [
+        "wire stripper",
+        "crimping tool",
+        "multimeter"
+      ],
+      "time_min": 90,
+      "safety": [
+        "CRITICAL: Verify polarity before connecting battery",
+        "Install fuse BEFORE any other connections",
+        "LiPo batteries can cause fire if shorted"
+      ],
+      "tips": [
+        "Pre-tin all wire ends before crimping",
+        "Use heat shrink on all exposed connections"
+      ]
+    },
+    {
+      "number": 9,
+      "phase": "Power System",
+      "title": "Install solar panel and DC-DC converter",
+      "description": "Mount thin-film solar panel to top of frame. Connect to 48V charge controller input. Install DC-DC 48V\u219212V converter for electronics power rail.",
+      "parts": [
+        "Solar panel 100W",
+        "MPPT charge controller",
+        "DC-DC converter",
+        "mounting tape + cable ties"
+      ],
+      "tools": [
+        "screwdriver",
+        "multimeter"
+      ],
+      "time_min": 30,
+      "safety": [
+        "Verify solar polarity before connecting to charge controller"
+      ],
+      "tips": [
+        "Route solar cables away from moving parts"
+      ]
+    },
+    {
+      "number": 10,
+      "phase": "Power System",
+      "title": "Install supercapacitor bank",
+      "description": "Mount supercapacitor bank near motor controllers (minimise wire length). Connect in parallel with main battery bus via balancing circuit.",
+      "parts": [
+        "Supercapacitor bank 16V 100F",
+        "balancing board"
+      ],
+      "tools": [
+        "screwdriver",
+        "soldering iron"
+      ],
+      "time_min": 20,
+      "safety": [
+        "Supercapacitors hold charge - discharge before working on circuit"
+      ],
+      "tips": [
+        "Keep supercap wires <30cm for minimum inductance"
+      ]
+    },
+    {
+      "number": 11,
+      "phase": "Propulsion",
+      "title": "Install hub motors",
+      "description": "Press hub motors into 3D-printed wheel hub adapters. Bolt adapter to wheel with M6\u00d720 bolts at 6-point pattern. Torque to 10 N\u00b7m. Check for <0.3mm runout.",
+      "parts": [
+        "Hub motors \u00d72",
+        "wheel_hub.stl \u00d72",
+        "M6\u00d720 bolts \u00d712"
+      ],
+      "tools": [
+        "M6 hex key",
+        "torque wrench",
+        "dial indicator for runout"
+      ],
+      "time_min": 45,
+      "safety": [
+        "Support motor weight during installation - don't stress cable exit"
+      ],
+      "tips": [
+        "Apply Loctite 243 to hub adapter bolts"
+      ]
+    },
+    {
+      "number": 12,
+      "phase": "Propulsion",
+      "title": "Wire motor controllers (ESC)",
+      "description": "Connect each motor phase to ESC (any order - adjust in firmware). Connect ESC power to main bus. Connect ESC signal to Raspberry Pi GPIO.",
+      "parts": [
+        "ESC \u00d72",
+        "3-phase motor cable \u00d72"
+      ],
+      "tools": [
+        "soldering iron",
+        "heat shrink",
+        "multimeter"
+      ],
+      "time_min": 45,
+      "safety": [
+        "Phase current can exceed 60A at peak - verify all connections are crimped"
+      ],
+      "tips": [
+        "Test each ESC in isolation before connecting both"
+      ]
+    },
+    {
+      "number": 13,
+      "phase": "Control System",
+      "title": "Mount Raspberry Pi and sensors",
+      "description": "Install Raspberry Pi in control pod with standoffs. Mount IMU (MPU-6050) at Centre of Gravity of frame. Mount 4 ultrasonic sensors at corners (pointing down). Mount Hall effect sensors adjacent to each magnet array.",
+      "parts": [
+        "Raspberry Pi 4",
+        "MPU-6050 \u00d72",
+        "HC-SR04 \u00d74",
+        "A1302 Hall sensors \u00d78",
+        "control_pod.stl"
+      ],
+      "tools": [
+        "M2.5 screwdriver",
+        "hot glue gun"
+      ],
+      "time_min": 60,
+      "safety": [
+        "IMU must be rigidly mounted - vibration will corrupt readings",
+        "Keep IMU away from magnets (>100mm)"
+      ],
+      "tips": [
+        "Level the RPi board before securing to ensure IMU alignment"
+      ]
+    },
+    {
+      "number": 14,
+      "phase": "Control System",
+      "title": "Flash and configure firmware",
+      "description": "Install Raspberry Pi OS Lite. Copy control_firmware.py to /home/pi/. Install dependencies: pip install RPi.GPIO smbus. Configure I2C in raspi-config. Flash Arduino coprocessor with sensor_fusion.ino.",
+      "parts": [
+        "SD card with RPi OS",
+        "SSH access or keyboard/display"
+      ],
+      "tools": [
+        "computer with SSH client",
+        "USB-serial adapter for Arduino"
+      ],
+      "time_min": 90,
+      "safety": [
+        "Test firmware on bench BEFORE mounting on vehicle"
+      ],
+      "tips": [
+        "Enable I2C and SPI in raspi-config before trying sensor libraries"
+      ]
+    },
+    {
+      "number": 15,
+      "phase": "Control System",
+      "title": "Calibrate sensors",
+      "description": "Run IMU calibration: place bike on flat surface, run calibration script 60s. Zero ultrasonic sensors at known height (use 15mm block). Calibrate Hall sensors with no-load (record zero-current offset).",
+      "parts": [
+        "15mm calibration block"
+      ],
+      "tools": [
+        "SSH terminal",
+        "digital level"
+      ],
+      "time_min": 30,
+      "safety": [
+        "Calibrate with NO magnets energised for Hall sensor zero"
+      ],
+      "tips": [
+        "Save calibration values to /etc/barrot/calibration.json"
+      ]
+    },
+    {
+      "number": 16,
+      "phase": "Testing",
+      "title": "Static levitation test",
+      "description": "With bike unloaded (no rider), power on control system. Enable levitation at low power. Verify stable hover at 10-20mm. Check all 4 corner heights are equal (\u00b12mm).",
+      "parts": [
+        "All assembled components"
+      ],
+      "tools": [
+        "safety glasses",
+        "metre rule"
+      ],
+      "time_min": 30,
+      "safety": [
+        "Keep hands clear of magnet arrays during first power-on",
+        "Have emergency stop ready (main fuse pull)"
+      ],
+      "tips": [
+        "Start at 20% coil power, increase gradually"
+      ]
+    },
+    {
+      "number": 17,
+      "phase": "Testing",
+      "title": "Load testing (incremental)",
+      "description": "Add weight in 10kg increments (use sandbags). Verify system holds height and remains stable at each increment. Record current draw and height at each load step.",
+      "parts": [
+        "Sandbags 10kg each",
+        "current clamp meter"
+      ],
+      "tools": [
+        "current clamp meter",
+        "notebook for data"
+      ],
+      "time_min": 60,
+      "safety": [
+        "Do not exceed 90kg during initial testing",
+        "Stop test if height drops below 8mm"
+      ],
+      "tips": [
+        "Log all data - useful for PID tuning"
+      ]
+    },
+    {
+      "number": 18,
+      "phase": "Testing",
+      "title": "Dynamic stability and propulsion test",
+      "description": "With rider at low speed (5 km/h), verify attitude control maintains stability. Gradually increase to 20 km/h. Check for oscillations or twitchiness.",
+      "parts": [
+        "Full assembled hover bike",
+        "safety gear: helmet + pads"
+      ],
+      "tools": [
+        "open flat surface 50m minimum"
+      ],
+      "time_min": 60,
+      "safety": [
+        "WEAR FULL PROTECTIVE GEAR for first ride test",
+        "Have a safety observer present",
+        "Test near walls/barriers for safety",
+        "Emergency: lean forward to stop \u2192 regenerative braking engages"
+      ],
+      "tips": [
+        "Small test area first - avoid open roads until fully validated"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "tool": "3D Printer (300mm+ bed)",
+      "essential": true,
+      "note": "Enclosed for ABS/Nylon; hardened nozzle for CF-PLA"
+    },
+    {
+      "tool": "Digital Calipers (0.01mm)",
+      "essential": true,
+      "note": "Critical for magnet housing tolerance check"
+    },
+    {
+      "tool": "Multimeter (true RMS)",
+      "essential": true,
+      "note": "For all electrical testing"
+    },
+    {
+      "tool": "Soldering Iron (adjustable temp)",
+      "essential": true,
+      "note": "For heat inserts and wire work"
+    },
+    {
+      "tool": "Crimping Tool (10AWG)",
+      "essential": true,
+      "note": "Anderson connector assembly"
+    },
+    {
+      "tool": "Torque Wrench (5-30 N\u00b7m)",
+      "essential": true,
+      "note": "Critical for structural bolts"
+    },
+    {
+      "tool": "Hex Key Set (M2.5-M8)",
+      "essential": true,
+      "note": ""
+    },
+    {
+      "tool": "Heat Gun",
+      "essential": true,
+      "note": "Heat shrink and frame post-processing"
+    },
+    {
+      "tool": "Current Clamp Meter (60A+)",
+      "essential": true,
+      "note": "Safety: verify current draw"
+    },
+    {
+      "tool": "SSH-capable Computer",
+      "essential": true,
+      "note": "Firmware programming"
+    },
+    {
+      "tool": "Dial Indicator",
+      "essential": false,
+      "note": "Motor hub runout verification (<0.3mm)"
+    },
+    {
+      "tool": "Oscilloscope",
+      "essential": false,
+      "note": "Advanced sensor debugging"
+    },
+    {
+      "tool": "3D Printer Enclosure",
+      "essential": false,
+      "note": "Required for ABS components"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "symptom": "Hover height oscillates / hunting",
+      "cause": "PID gains too aggressive (Kp too high)",
+      "solution": "Reduce Kp by 20%. Increase Kd slightly. Check IMU is rigidly mounted."
+    },
+    {
+      "symptom": "System fails to lift at target height",
+      "cause": "Halbach arrays not co-planar OR magnet orientation wrong",
+      "solution": "Re-verify array mounting with straight edge. Check Halbach sequence: each magnet 90\u00b0 from previous."
+    },
+    {
+      "symptom": "Motor runs hot (>70\u00b0C after 10 min)",
+      "cause": "ESC current limit too high OR poor motor cooling",
+      "solution": "Reduce ESC current limit by 10A. Verify motor can spin freely (no mechanical friction)."
+    },
+    {
+      "symptom": "Battery drains in <10km",
+      "cause": "Levitation taking excessive power OR battery health degraded",
+      "solution": "Log coil currents - if >60% continuously, re-tune height PID. Check battery voltage under load."
+    },
+    {
+      "symptom": "IMU drift causing tilt over time",
+      "cause": "Gyroscope drift (normal) - alpha value too high",
+      "solution": "Reduce complementary filter alpha from 0.98 to 0.95. Recalibrate IMU on level surface."
+    },
+    {
+      "symptom": "Hall sensors reading incorrectly",
+      "cause": "Sensor too close to permanent magnets",
+      "solution": "Move Hall sensors to side of Halbach array, not underneath. Minimum 15mm from magnet face."
+    }
+  ],
+  "safety_procedures": [
+    "MAGNETS: Always handle N52 neodymium magnets with gloves. Keep >300mm from pacemakers.",
+    "BATTERY: Never short LiPo terminals. Store at 50% SOC if unused >1 week.",
+    "ELECTRICAL: Always disconnect battery before working on circuits.",
+    "FIRMWARE: Test all code on bench before installing in vehicle.",
+    "RIDING: Wear helmet and full protective gear at all times.",
+    "SPEED: Do not exceed 20 km/h until >5 hours of ride time logged.",
+    "SURFACE: Only operate on smooth flat surfaces (concrete/asphalt).",
+    "OBSERVER: Never ride without a safety observer present.",
+    "EMERGENCY: Emergency stop = cut main fuse. Location: battery enclosure left side.",
+    "FIRE: Keep Class D / CO2 extinguisher nearby during first power tests."
+  ]
+}
