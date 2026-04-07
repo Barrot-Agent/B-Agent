@@ -194,8 +194,7 @@ class PointCloudSystem:
             point_classes=20,
             density_per_m3=actual_points / 10_000.0,
             bounding_box={"min": (-50.0, -1.0, -50.0), "max": (50.0, 20.0, 50.0)},
-            has_rgb=dataset in (PointCloudDataset.SCANNET, PointCloudDataset.MATTERPORT3D
-                                if False else PointCloudDataset.SCANNET),
+            has_rgb=dataset in (PointCloudDataset.SCANNET, PointCloudDataset.S3DIS),
             has_intensity=dataset in (PointCloudDataset.KITTI, PointCloudDataset.NUSCENES),
             has_semantic_labels=True,
         )
