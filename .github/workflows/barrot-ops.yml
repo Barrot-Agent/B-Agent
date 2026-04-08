@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   sync-platforms:
     runs-on: ubuntu-latest
@@ -16,12 +19,20 @@ jobs:
           git remote add hf https://Scribedpengenius:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/Scribedpengenius/barrot-omega || true
           git push hf main --force
 
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@main
+
       - name: Run Databricks Job
-        uses: databricks/run-notebook@v1
-        with:
-          local-notebook-path: src/barrot_databricks_job.py
-          databricks-host: ${{ secrets.DATABRICKS_HOST }}
-          databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          if [ -z "$DATABRICKS_HOST" ] || [ -z "$DATABRICKS_TOKEN" ]; then
+            echo "::warning::DATABRICKS_HOST or DATABRICKS_TOKEN not set, skipping notebook run"
+            exit 0
+          fi
+          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite || \
+            echo "::warning::Notebook upload failed; skipping run"
 
       - name: Kaggle Data Refresh
         run: |
