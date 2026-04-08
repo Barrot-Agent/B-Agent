@@ -50,6 +50,11 @@ from mcp_orchestrator import (  # noqa: E402
     MCPOrchestrator,
     OrchestratorConfig,
     OrchestratorStep,
+)
+from barrot_agent import (  # noqa: E402
+    SmartAgent,
+    AgentEventType,
+)
 from apex_lattice import (  # noqa: E402
     CycleManager,
     AuditTrail,
@@ -91,17 +96,18 @@ def page_home() -> None:
         else:
             st.warning(f"⚠️ PyTorch unavailable: {torch_err}")
     with col2:
-        st.info("Navigate to **Stupid Sindy Video Studio** in the sidebar to generate episodes.")
+        st.info("Navigate to **🤖 Smart Agent** in the sidebar to give Barrot a goal.")
 
     st.divider()
     st.markdown(
         """
 ### About Barrot Agent
 Barrot is a self-improving agent infrastructure that combines:
-- **Language understanding** via the Chi language server
-- **Distributed inference** for large model serving
+- **Autonomous task execution** via the Smart Agent (plan → act → observe loop)
+- **Multi-agent collaboration** via the AI Directive Platform
 - **Sandbox analysis** via the Apex Lattice cascade system
 - **Creative video production** via the Stupid Sindy pipeline
+- **Distributed inference** and MCP workflow integration
 
 Select a page in the sidebar to get started.
         """
@@ -1049,11 +1055,187 @@ def page_directive_platform() -> None:
 
 
 # ===========================================================================
+# Page: Smart Agent
+# ===========================================================================
+
+_SMART_AGENT_EVENT_EMOJI: dict[AgentEventType, str] = {
+    AgentEventType.GOAL:        "🎯",
+    AgentEventType.THINKING:    "🧠",
+    AgentEventType.PLAN:        "📋",
+    AgentEventType.ACTION:      "⚡",
+    AgentEventType.TOOL_RESULT: "🔧",
+    AgentEventType.OBSERVATION: "👁",
+    AgentEventType.ANSWER:      "✅",
+    AgentEventType.ERROR:       "❌",
+}
+
+_SMART_AGENT_EVENT_COLOUR: dict[AgentEventType, str] = {
+    AgentEventType.GOAL:        "blue",
+    AgentEventType.THINKING:    "violet",
+    AgentEventType.PLAN:        "orange",
+    AgentEventType.ACTION:      "blue",
+    AgentEventType.TOOL_RESULT: "gray",
+    AgentEventType.OBSERVATION: "green",
+    AgentEventType.ANSWER:      "green",
+    AgentEventType.ERROR:       "red",
+}
+
+
+@st.cache_resource(show_spinner=False)
+def get_smart_agent() -> SmartAgent:
+    return SmartAgent()
+
+
+def page_smart_agent() -> None:
+    st.title("🤖 Smart Agent")
+    st.markdown(
+        "Give Barrot a goal and watch it **autonomously plan, act, and reason** its way "
+        "to an answer — breaking work down step-by-step and using built-in tools."
+    )
+
+    # -----------------------------------------------------------------------
+    # Sidebar: quick reference
+    # -----------------------------------------------------------------------
+    with st.sidebar:
+        st.header("💡 Example Goals")
+        example_goals = [
+            "Research the latest advances in AI agents",
+            "Explain how transformer attention mechanisms work",
+            "Analyse the architecture of multi-agent systems",
+            "Build a data processing pipeline for time-series forecasting",
+            "Learn about reinforcement learning from human feedback",
+            "Investigate the safety challenges in large language models",
+        ]
+        selected_example = st.selectbox(
+            "Load an example",
+            options=["(type your own below)"] + example_goals,
+            key="sa_example",
+        )
+        st.divider()
+        st.markdown("**How it works**")
+        st.markdown(
+            "1. 🧠 **Plan** — infer intent and build a step-by-step plan\n"
+            "2. ⚡ **Act** — execute each step with a built-in tool\n"
+            "3. 👁 **Observe** — reflect on each result\n"
+            "4. ✅ **Answer** — consolidate everything into a final response"
+        )
+        st.divider()
+        st.markdown("**Available tools**")
+        for tool, desc in [
+            ("`search`",    "Query the knowledge base"),
+            ("`analyze`",   "Deep structural analysis"),
+            ("`reason`",    "Structured reasoning chain"),
+            ("`code`",      "Generate code scaffolds"),
+            ("`summarize`", "Condense findings"),
+        ]:
+            st.markdown(f"- {tool} — {desc}")
+
+    # -----------------------------------------------------------------------
+    # Goal input
+    # -----------------------------------------------------------------------
+    default_goal = (
+        selected_example
+        if selected_example != "(type your own below)"
+        else ""
+    )
+    goal = st.text_area(
+        "Enter your goal",
+        value=default_goal,
+        placeholder="e.g. Research the latest advances in AI agents",
+        height=80,
+        key="sa_goal_input",
+    )
+
+    run_col, clear_col = st.columns([3, 1])
+    with run_col:
+        run_btn = st.button(
+            "🚀 Run Smart Agent",
+            type="primary",
+            use_container_width=True,
+            disabled=not goal.strip(),
+        )
+    with clear_col:
+        clear_btn = st.button("🗑 Clear", use_container_width=True)
+    if clear_btn:
+        st.session_state.pop("sa_goal_input", None)
+        st.rerun()
+
+    # -----------------------------------------------------------------------
+    # Agent execution
+    # -----------------------------------------------------------------------
+    if run_btn and goal.strip():
+        agent = get_smart_agent()
+
+        st.divider()
+        st.subheader("🔄 Live Execution")
+
+        # Count expected events to drive progress bar
+        # goal + 4 thinking + plan + N*(action+tool_result+observation) + answer
+        # N is at most 4 steps; use 18 as a reasonable upper bound
+        _EST_TOTAL = 18
+        progress = st.progress(0.0, text="Starting…")
+        event_count = 0
+
+        execution_container = st.container()
+
+        with execution_container:
+            for event in agent.run(goal.strip()):
+                event_count += 1
+                progress.progress(
+                    min(event_count / _EST_TOTAL, 0.95),
+                    text=f"{_SMART_AGENT_EVENT_EMOJI.get(event.type, '•')} "
+                         f"{event.type.value.replace('_', ' ').title()}…",
+                )
+
+                emoji = _SMART_AGENT_EVENT_EMOJI.get(event.type, "•")
+                colour = _SMART_AGENT_EVENT_COLOUR.get(event.type, "gray")
+                label = event.type.value.replace("_", " ").title()
+
+                if event.type == AgentEventType.GOAL:
+                    st.info(f"{emoji} {event.content}")
+
+                elif event.type == AgentEventType.THINKING:
+                    st.markdown(f":{colour}[{emoji} *{event.content}*]")
+
+                elif event.type == AgentEventType.PLAN:
+                    with st.expander(f"{emoji} Execution Plan", expanded=True):
+                        st.markdown(event.content)
+
+                elif event.type == AgentEventType.ACTION:
+                    with st.container(border=True):
+                        st.markdown(f":{colour}[{emoji} **{label}**]")
+                        st.markdown(event.content)
+
+                elif event.type == AgentEventType.TOOL_RESULT:
+                    with st.expander(f"{emoji} Tool Output", expanded=False):
+                        st.markdown(event.content)
+
+                elif event.type == AgentEventType.OBSERVATION:
+                    st.markdown(f":{colour}[{emoji} {event.content}]")
+
+                elif event.type == AgentEventType.ANSWER:
+                    progress.progress(1.0, text="✅ Complete!")
+                    st.divider()
+                    st.subheader("✅ Final Answer")
+                    st.markdown(event.content)
+                    st.balloons()
+
+                elif event.type == AgentEventType.ERROR:
+                    progress.progress(1.0, text="❌ Error")
+                    st.error(f"{emoji} {event.content}")
+                    break
+
+        if event_count > 0 and not run_btn:
+            progress.progress(1.0, text="Done")
+
+
+# ===========================================================================
 # Navigation
 # ===========================================================================
 
 PAGES = {
     "🏠 Home": page_home,
+    "🤖 Smart Agent": page_smart_agent,
     "🎬 Stupid Sindy Video Studio": page_sindy_studio,
     "🔗 MCP Workflow": page_mcp_workflow,
     "🔬 Apex Lattice Analysis": page_apex_lattice,
