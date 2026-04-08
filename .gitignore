@@ -1,3 +1,38 @@
+# Credentials & secrets
+kaggle.json
+.env
+*.env
+*.pem
+*.key
+
+# Databricks
+.databricks/
+.databrickscfg
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+.npm/
+
+# Output & cache
+output/
+*.log
+*.tmp
+*.csv
+*.parquet
+
+# OS
+.DS_Store
+Thumbs.db
 __pycache__/
 *.py[cod]
 *.pyo
@@ -9,3 +44,16 @@ build/
 sindy_videos/
 .apex_lattice/findings/
 .apex_lattice/audit_logs/
+.apex_lattice/recommendations/
+.apex_lattice/sandbox/
+.directive_platform/
+hover_bike_revolution/hover_bike_spec.json
+hover_bike_revolution/component_geometry.json
+hover_bike_revolution/assembly_guide.md
+hover_bike_revolution/bill_of_materials.md
+hover_bike_revolution/docs/parts_list.md
+hover_bike_revolution/docs/tools_list.md
+hover_bike_revolution/docs/troubleshooting.md
+hover_bike_revolution/docs/safety_guide.md
+hover_bike_revolution/docs/bom.json
+hover_bike_revolution/docs/bom.md
