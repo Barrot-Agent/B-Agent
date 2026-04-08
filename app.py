@@ -482,8 +482,6 @@ def page_mcp_workflow() -> None:
                     st.error(f"Pipeline error: {event.error}")
                     break
 
-            if not run_btn:
-                pass  # Already rendered above
         else:
             st.info(
                 "Configure credentials in the sidebar, select an episode, "

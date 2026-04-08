@@ -302,6 +302,7 @@ class MCPOrchestrator:
 
         if self.config.use_databricks and self._get_db().is_configured():
             # --- Databricks path ---
+            from mcp_databricks import JobRunState  # noqa: F811
             yield OrchestratorEvent(
                 step=OrchestratorStep.DATABRICKS_SUBMIT,
                 message="Submitting rendering job to Databricks cluster…",
@@ -329,7 +330,7 @@ class MCPOrchestrator:
                     poll_interval=self.config.databricks_poll_interval,
                     timeout=self.config.databricks_timeout,
                 )
-                if final_state.job_state.value == "complete":
+                if final_state.job_state == JobRunState.COMPLETE:
                     yield OrchestratorEvent(
                         step=OrchestratorStep.DATABRICKS_WAIT,
                         message=f"Databricks run {run_id} completed successfully",
