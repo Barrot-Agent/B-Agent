@@ -1,6 +1,6 @@
 # Merge Queue Workflow
 
-The `merge-queue.yml` workflow provides a **sequential, label-gated merge queue** for `Barrot-Agent/B-Agent`.  
+The `merge-queue.yml` workflow provides a **sequential, label-gated merge queue** for this repository.  
 It is manually triggered and processes open pull requests one at a time: updating the PR branch with `Main`, waiting for required checks, and then merging.
 
 ---
@@ -121,7 +121,7 @@ When a PR cannot be processed, the workflow:
 1. Posts a comment on the PR explaining the reason (e.g., conflicts, failing checks, changes requested).
 2. Applies the `merge-queue:blocked` label to the PR.
 
-The label is created automatically (colour: red/`#d93f0b`) on the first run if it does not exist.
+The label is created automatically (color: red/`#d93f0b`) on the first run if it does not exist.
 
 ### Reasons a PR may be skipped
 
