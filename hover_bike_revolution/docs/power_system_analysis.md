@@ -36,8 +36,8 @@ At 30 km/h cruise, total power draw:
 | Lighting | 10 |
 | **Total** | **370** |
 
-Range at 30 km/h: 1,000 Wh / 370 W × 30 km/h = **81 km** (theoretical)  
-Practical range (80 % DoD, efficiency losses): ~**26 km**
+Range at 30 km/h: 1,000 Wh / 370 W × 30 km/h = **81 km** (theoretical, 100 % DoD)  
+Practical range (80 % DoD): 1,000 × 0.8 / 370 × 30 = **~65 km** at steady cruise. Mixed riding with frequent acceleration raises average power significantly, reducing practical range to **25–30 km** in real-world use.
 
 ## Charge Management
 

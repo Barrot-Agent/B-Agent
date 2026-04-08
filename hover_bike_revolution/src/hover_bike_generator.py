@@ -392,7 +392,7 @@ ASSEMBLY_STEPS: list[dict[str, Any]] = [
         "title": "Install battery pack & BMS",
         "description": (
             "Mount the LiFePO4 cell pack inside the battery enclosure. "
-            "Connect cells in 13S4P configuration to achieve 48 V nominal. "
+            "Connect cells in 15S4P configuration to achieve 48 V nominal (15 × 3.2 V = 48 V). "
             "Wire BMS according to Daly datasheet. Verify cell voltage balance."
         ),
         "tools": ["Spot welder / nickel strip", "Multimeter", "BMS programmer cable"],

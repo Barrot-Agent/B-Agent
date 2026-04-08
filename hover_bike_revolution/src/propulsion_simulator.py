@@ -199,15 +199,20 @@ class EMPulseDrive:
         omega = 1.0 / math.sqrt(self.coil_inductance_h * self.capacitance_f)
         return self.charge_voltage_v / (self.coil_resistance_ohm + omega * self.coil_inductance_h)
 
+    # Effective magnetic coupling travel distance for pulse force estimate (m)
+    _EFFECTIVE_TRAVEL_M: float = 0.10   # 10 cm — typical magnet interaction range
+
     @property
     def peak_force_n(self) -> float:
         """
         Peak thrust force per pulse (N) — simplified impulse approximation.
         Actual force depends on field geometry; this is an order-of-magnitude estimate.
+        The effective travel distance (10 cm) represents the axial range over which
+        the magnetic field does useful work during a pulse discharge.
         """
         energy_to_thrust = self.stored_energy_j * self.magnetic_coupling_factor
         pulse_duration_s = 1.0 / (2 * self.pulse_frequency_hz)
-        return energy_to_thrust / (pulse_duration_s * 0.1)   # 10 cm effective travel
+        return energy_to_thrust / (pulse_duration_s * self._EFFECTIVE_TRAVEL_M)
 
     @property
     def average_thrust_n(self) -> float:

@@ -16,7 +16,7 @@ def pid_stability_sweep(
     simulation_duration_s: float = 2.0,
 ) -> list[dict[str, Any]]:
     """
-    Sweep Kp/Kd combinations and report settling time and overshoot.
+    Sweep Kp/Kd combinations and report settling time and undershoot percentage.
 
     Uses a simplified first-order model: dz/dt = f(gap, cmd).
     """
@@ -28,14 +28,14 @@ def pid_stability_sweep(
         for j in range(steps):
             kp = kp_range[0] + i * kp_step
             kd = kd_range[0] + j * kd_step
-            settling, overshoot = _first_order_pid_sim(kp, kd, simulation_duration_s)
+            settling, undershoot_pct = _first_order_pid_sim(kp, kd, simulation_duration_s)
             results.append(
                 {
                     "kp": round(kp, 3),
                     "kd": round(kd, 3),
                     "settling_s": round(settling, 3),
-                    "overshoot_pct": round(overshoot, 1),
-                    "stable": overshoot < 30.0 and settling < simulation_duration_s,
+                    "undershoot_pct": round(undershoot_pct, 1),
+                    "stable": undershoot_pct < 30.0 and settling < simulation_duration_s,
                 }
             )
     return results
@@ -73,11 +73,11 @@ def _first_order_pid_sim(kp: float, kd: float, duration_s: float) -> tuple[float
             break
         prev_err = err
 
-    # Overshoot = undershoot below target as percentage of step size
-    step_size = 0.20 - target  # = 0.05 m
-    undershoot = max(0.0, target - min_gap)
-    overshoot = (undershoot / step_size) * 100 if step_size > 0 else 0.0
-    return settled_at, overshoot
+    # Undershoot = how far the gap dropped below target as % of initial step size
+    step_size = 0.20 - target  # = 0.05 m (initial offset from target)
+    undershoot_m = max(0.0, target - min_gap)
+    undershoot_pct = (undershoot_m / step_size) * 100 if step_size > 0 else 0.0
+    return settled_at, undershoot_pct
 
 
 if __name__ == "__main__":

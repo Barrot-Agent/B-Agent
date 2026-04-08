@@ -51,7 +51,7 @@ float measureGap(uint8_t trigPin, uint8_t echoPin) {
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  long duration = pulseIn(echoPin, HIGH, 25000UL);  // 25 ms timeout
+  long duration = pulseIn(echoPin, HIGH, 25000UL);  // 25 ms timeout → ~4.3 m max range
   if (duration == 0) return -1.0f;
   return (duration * 0.0343f) / 2.0f;  // mm
 }
