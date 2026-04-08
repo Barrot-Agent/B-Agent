@@ -1,0 +1,14 @@
+{
+  "agent_id": "analyst-agent",
+  "name": "AnalystAgent",
+  "description": "Performs deep structural analysis on data and findings. Identifies patterns, anomalies, and convergence points. Partners closely with CorroborationAgent to validate conclusions.",
+  "capabilities": [
+    "analyze",
+    "pattern_detection",
+    "convergence",
+    "data_analysis"
+  ],
+  "status": "idle",
+  "current_directive_id": null,
+  "created_at": 1775637720.8791065
+}

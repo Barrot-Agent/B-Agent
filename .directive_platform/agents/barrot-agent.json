@@ -1,0 +1,15 @@
+{
+  "agent_id": "barrot-agent",
+  "name": "BarrotAgent",
+  "description": "The primary orchestration agent. Coordinates tasks across the platform, performs high-level reasoning, and routes work to specialist agents.",
+  "capabilities": [
+    "learn",
+    "analyze",
+    "refine",
+    "cooperate",
+    "project"
+  ],
+  "status": "idle",
+  "current_directive_id": null,
+  "created_at": 1775637720.8771198
+}
