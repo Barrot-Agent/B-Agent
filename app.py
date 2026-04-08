@@ -43,6 +43,12 @@ from sindy_video_pipeline import (  # noqa: E402
     SindyVideoPipeline,
     RenderStatus,
 )
+from apex_lattice import (  # noqa: E402
+    CycleManager,
+    AuditTrail,
+    FindingGenerator,
+    RecommendationEngine,
+)
 
 # ---------------------------------------------------------------------------
 # Shared pipeline (cached across reruns)
@@ -325,12 +331,155 @@ def page_sindy_studio() -> None:
 
 
 # ===========================================================================
+# Page: Apex Lattice Analysis Pipeline
+# ===========================================================================
+
+_SEVERITY_COLOUR = {
+    "critical": "red",
+    "high": "orange",
+    "medium": "orange",
+    "low": "blue",
+    "info": "gray",
+}
+
+
+@st.cache_resource(show_spinner=False)
+def get_cycle_manager() -> CycleManager:
+    return CycleManager()
+
+
+def page_apex_lattice() -> None:
+    manager = get_cycle_manager()
+
+    st.title("🔬 Apex Lattice — Sandbox Analysis Pipeline")
+    st.markdown(
+        "Processes data from the `.apex_lattice/` sandbox, identifies "
+        "infrastructure improvement opportunities, and generates structured proposals."
+    )
+
+    # -----------------------------------------------------------------------
+    # Sidebar controls
+    # -----------------------------------------------------------------------
+    with st.sidebar:
+        st.header("🔬 Analysis Controls")
+        run_btn = st.button("▶ Run Analysis Cycle", use_container_width=True, type="primary")
+        st.divider()
+        st.markdown("**Scheduler**")
+        interval = st.number_input("Interval (seconds)", min_value=60, value=3600, step=60)
+        col_start, col_stop = st.columns(2)
+        with col_start:
+            sched_start = st.button("▶ Start", use_container_width=True)
+        with col_stop:
+            sched_stop = st.button("⏹ Stop", use_container_width=True)
+
+        if sched_start:
+            manager.start_scheduler(float(interval))
+            st.success("Scheduler started.")
+        if sched_stop:
+            manager.stop_scheduler()
+            st.info("Scheduler stopped.")
+
+        st.divider()
+        scheduler_running = manager.is_scheduler_running()
+        st.markdown(
+            f"**Scheduler:** {'🟢 Running' if scheduler_running else '⚫ Stopped'}"
+        )
+
+    # -----------------------------------------------------------------------
+    # Run cycle
+    # -----------------------------------------------------------------------
+    if run_btn:
+        with st.spinner("Running analysis cycle…"):
+            result = manager.run_cycle()
+        if result.error:
+            st.error(f"Cycle failed: {result.error}")
+        else:
+            st.success(
+                f"✅ Cycle `{result.cycle_id}` complete in "
+                f"{result.duration_seconds:.2f}s — "
+                f"{len(result.artefacts)} artefacts, "
+                f"{result.findings_count} findings, "
+                f"{result.recommendations_count} recommendations."
+            )
+            if result.pr_document:
+                st.info(f"PR document written to `{result.pr_document}`")
+        st.rerun()
+
+    # -----------------------------------------------------------------------
+    # Tabs
+    # -----------------------------------------------------------------------
+    tab_findings, tab_recs, tab_audit = st.tabs(
+        ["🔍 Findings", "💡 Recommendations", "📋 Audit Log"]
+    )
+
+    apex_dir = manager.apex_dir
+
+    with tab_findings:
+        st.subheader("Findings")
+        gen = FindingGenerator(apex_dir / "findings")
+        findings = gen.load_all()
+        if not findings:
+            st.info("No findings yet. Click **▶ Run Analysis Cycle** to generate them.")
+        else:
+            st.markdown(f"**{len(findings)} finding(s) on record.**")
+            for f in findings:
+                colour = _SEVERITY_COLOUR.get(f.severity, "gray")
+                with st.container(border=True):
+                    st.markdown(
+                        f":{colour}[**{f.severity.upper()}**] "
+                        f"`{f.category}` — **{f.title}**"
+                    )
+                    st.caption(f.description)
+
+    with tab_recs:
+        st.subheader("Recommendations")
+        engine = RecommendationEngine(apex_dir / "recommendations")
+        recs = engine.load_all()
+        if not recs:
+            st.info("No recommendations yet. Click **▶ Run Analysis Cycle** to generate them.")
+        else:
+            st.markdown(f"**{len(recs)} recommendation(s) on record.**")
+            for rec in recs:
+                colour = _SEVERITY_COLOUR.get(rec.priority, "gray")
+                with st.expander(
+                    f":{colour}[{rec.priority.upper()}] {rec.title}",
+                    expanded=False,
+                ):
+                    st.markdown(f"**Rationale:** {rec.rationale}")
+                    st.markdown("**Action Items:**")
+                    for item in rec.action_items:
+                        st.markdown(f"- {item}")
+
+    with tab_audit:
+        st.subheader("Audit Log")
+        trail = AuditTrail(apex_dir / "audit_logs")
+        events = trail.tail(50)
+        if not events:
+            st.info("No audit events yet.")
+        else:
+            import json as _json
+            rows = []
+            for ev in reversed(events):
+                ts = ev.get("ts", 0)
+                ts_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ts))
+                rows.append(
+                    {
+                        "Timestamp": ts_str,
+                        "Event": ev.get("event", ""),
+                        "Data": _json.dumps(ev.get("data", {})),
+                    }
+                )
+            st.dataframe(rows, use_container_width=True)
+
+
+# ===========================================================================
 # Navigation
 # ===========================================================================
 
 PAGES = {
     "🏠 Home": page_home,
     "🎬 Stupid Sindy Video Studio": page_sindy_studio,
+    "🔬 Apex Lattice Analysis": page_apex_lattice,
 }
 
 
