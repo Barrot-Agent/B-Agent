@@ -1,0 +1,100 @@
+name: Barrot Auto-Merge PRs
+
+on:
+  schedule:
+    # Run every 30 minutes to continuously merge new PRs
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    name: Merge all open pull requests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge open PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set +e
+          echo "=== Barrot Auto-Merge: starting pass ==="
+
+          # Collect ALL open PR numbers using paginated REST API
+          ALL_PRS=$(gh api "repos/$REPO/pulls?state=open&per_page=100" \
+            --paginate \
+            --jq '.[].number' \
+            2>/dev/null || true)
+
+          if [ -z "$ALL_PRS" ]; then
+            echo "No open pull requests found."
+            exit 0
+          fi
+
+          MERGED=0
+          SKIPPED=0
+          FAILED=0
+
+          for PR in $ALL_PRS; do
+            echo ""
+            echo "--- PR #$PR ---"
+
+            # Fetch PR details
+            PR_INFO=$(gh pr view "$PR" \
+              --repo "$REPO" \
+              --json title,mergeable,state \
+              2>/dev/null)
+
+            STATE=$(echo "$PR_INFO" | jq -r '.state // ""')
+            TITLE=$(echo "$PR_INFO" | jq -r '.title // ""')
+            MERGEABLE=$(echo "$PR_INFO" | jq -r '.mergeable // ""')
+
+            if [ "$STATE" != "OPEN" ]; then
+              echo "  PR #$PR is not open (state=$STATE). Skipping."
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            echo "  Title     : $TITLE"
+            echo "  Mergeable : $MERGEABLE"
+
+            # Try merge commit first, then squash, then rebase as fallbacks
+            RESULT=""
+            for STRATEGY in merge squash rebase; do
+              echo "  Attempting --$STRATEGY…"
+              OUTPUT=$(gh pr merge "$PR" \
+                --repo "$REPO" \
+                --"$STRATEGY" \
+                2>&1)
+              EXIT=$?
+              echo "  $OUTPUT"
+              if [ $EXIT -eq 0 ]; then
+                RESULT="ok"
+                break
+              fi
+              # Treat "already merged" as success
+              if echo "$OUTPUT" | grep -qi "already merged"; then
+                RESULT="ok"
+                break
+              fi
+            done
+
+            if [ "$RESULT" = "ok" ]; then
+              echo "  ✅ PR #$PR merged."
+              MERGED=$((MERGED + 1))
+            else
+              echo "  ⚠️  PR #$PR could not be merged now (will retry next cycle)."
+              FAILED=$((FAILED + 1))
+            fi
+          done
+
+          echo ""
+          echo "=== Pass complete: merged=$MERGED  skipped=$SKIPPED  failed=$FAILED ==="
