@@ -83,6 +83,21 @@ _DEFAULT_AGENTS: list[dict[str, Any]] = [
         ),
         "capabilities": ["project", "planning", "coordination", "task_decomposition", "cooperate"],
     },
+    {
+        "agent_id": "smart-agent",
+        "name": "SmartAgent",
+        "description": (
+            "Autonomous plan-act-observe agent. Given any goal, it decomposes "
+            "the work into concrete steps, invokes the appropriate built-in "
+            "tool for each step (search, analyze, reason, code, summarize), "
+            "reflects on intermediate results, and converges on a final answer. "
+            "The core of Barrot's autonomous execution capability."
+        ),
+        "capabilities": [
+            "autonomous_planning", "tool_use", "search", "analyze", "reason",
+            "code", "summarize", "learn", "refine", "project",
+        ],
+    },
 ]
 
 
