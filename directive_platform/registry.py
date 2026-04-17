@@ -300,8 +300,10 @@ class AgentRegistry:
     def _seed_defaults(self) -> None:
         """Register any built-in agents that are not yet in the registry.
 
-        This is idempotent: existing agents are left untouched so that
-        runtime status changes are preserved across restarts.
+        This is idempotent: only agents whose JSON file is absent are created,
+        so existing agent records (including runtime status changes) are never
+        overwritten. New default agents added to _DEFAULT_AGENTS will
+        automatically appear in the registry on the next application start.
         """
         existing_ids = {fp.stem for fp in self._dir.glob("*.json")}
         for data in _DEFAULT_AGENTS:

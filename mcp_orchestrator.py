@@ -47,7 +47,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class OrchestratorConfig:
-    """Credentials and settings for all three MCP services."""
+    """Credentials and settings for all four MCP services."""
     # Hugging Face
     hf_token: Optional[str] = None
 
@@ -62,11 +62,17 @@ class OrchestratorConfig:
     github_repo: str = "B-Agent"
     github_branch: str = "Main"
 
+    # Kaggle
+    kaggle_username: Optional[str] = None
+    kaggle_key: Optional[str] = None
+    kaggle_max_competitions: int = 3
+
     # Pipeline behaviour
     download_models: bool = True
     use_databricks: bool = True
     commit_to_github: bool = True
     trigger_cicd: bool = True
+    run_kaggle: bool = True
     databricks_poll_interval: int = 15    # seconds
     databricks_timeout: int = 3600        # seconds
 
@@ -82,6 +88,8 @@ class OrchestratorConfig:
             github_owner=os.environ.get("GITHUB_OWNER", "Barrot-Agent"),
             github_repo=os.environ.get("GITHUB_REPO", "B-Agent"),
             github_branch=os.environ.get("GITHUB_BRANCH", "Main"),
+            kaggle_username=os.environ.get("KAGGLE_USERNAME"),
+            kaggle_key=os.environ.get("KAGGLE_KEY"),
         )
 
 
@@ -92,6 +100,7 @@ class OrchestratorConfig:
 class OrchestratorStep(str, Enum):
     INIT = "init"
     HF_MODELS = "hf_models"
+    KAGGLE_DATASET = "kaggle_dataset"
     SCRIPT_GEN = "script_gen"
     DATABRICKS_SUBMIT = "databricks_submit"
     DATABRICKS_WAIT = "databricks_wait"
@@ -153,6 +162,7 @@ class MCPOrchestrator:
         self._hf: Optional[Any] = None
         self._db: Optional[Any] = None
         self._gh: Optional[Any] = None
+        self._kg: Optional[Any] = None
 
     # ------------------------------------------------------------------
     # Lazy client initialisation
@@ -185,6 +195,15 @@ class MCPOrchestrator:
             )
         return self._gh
 
+    def _get_kg(self):
+        if self._kg is None:
+            from mcp_kaggle import KaggleMCP
+            self._kg = KaggleMCP(
+                username=self.config.kaggle_username,
+                key=self.config.kaggle_key,
+            )
+        return self._kg
+
     # ------------------------------------------------------------------
     # Config validation
     # ------------------------------------------------------------------
@@ -198,6 +217,7 @@ class MCPOrchestrator:
             "huggingface": bool(self.config.hf_token),
             "databricks": bool(self.config.databricks_host and self.config.databricks_token),
             "github": bool(self.config.github_token),
+            "kaggle": bool(self.config.kaggle_username and self.config.kaggle_key),
         }
 
     # ------------------------------------------------------------------
@@ -264,7 +284,62 @@ class MCPOrchestrator:
             )
 
         # ------------------------------------------------------------------
-        # Step 2 – Local script generation
+        # Step 2 – Kaggle dataset acquisition
+        # ------------------------------------------------------------------
+        if self.config.run_kaggle:
+            yield OrchestratorEvent(
+                step=OrchestratorStep.KAGGLE_DATASET,
+                message="Fetching Kaggle competition datasets…",
+                progress=0.17,
+            )
+            try:
+                kg = self._get_kg()
+                if kg.is_configured():
+                    kaggle_results: Dict[str, str] = {}
+                    for kg_event in kg.run_competitions(
+                        max_competitions=self.config.kaggle_max_competitions
+                    ):
+                        kaggle_results[kg_event.competition] = kg_event.status
+                        logger.info(
+                            "Kaggle [%s] %s: %s",
+                            kg_event.competition,
+                            kg_event.status,
+                            kg_event.message,
+                        )
+                    completed = sum(1 for s in kaggle_results.values() if s == "complete")
+                    skipped = sum(1 for s in kaggle_results.values() if s == "skipped")
+                    yield OrchestratorEvent(
+                        step=OrchestratorStep.KAGGLE_DATASET,
+                        message=(
+                            f"Kaggle: {completed} submitted, {skipped} skipped "
+                            f"across {len(kaggle_results)} competition(s)"
+                        ),
+                        progress=0.19,
+                        details=kaggle_results,
+                    )
+                else:
+                    yield OrchestratorEvent(
+                        step=OrchestratorStep.KAGGLE_DATASET,
+                        message="Kaggle credentials not configured – step skipped",
+                        progress=0.19,
+                    )
+            except Exception as exc:
+                logger.warning("Kaggle step failed (non-fatal): %s", exc)
+                yield OrchestratorEvent(
+                    step=OrchestratorStep.KAGGLE_DATASET,
+                    message="Kaggle step skipped (non-fatal error)",
+                    progress=0.19,
+                    details={"error": str(exc)},
+                )
+        else:
+            yield OrchestratorEvent(
+                step=OrchestratorStep.KAGGLE_DATASET,
+                message="Kaggle integration disabled by config",
+                progress=0.19,
+            )
+
+        # ------------------------------------------------------------------
+        # Step 3 – Local script generation
         # ------------------------------------------------------------------
         yield OrchestratorEvent(
             step=OrchestratorStep.SCRIPT_GEN,
@@ -385,7 +460,7 @@ class MCPOrchestrator:
                     "runtime_minutes": ep_meta.runtime_minutes,
                     "characters": ep_meta.characters,
                     "scene_count": len(ep_meta.scenes),
-                    "video_path": f"sindy_videos/ep{episode_number:02d}.mp4",
+                    "video_path": f"sindy_videos/episode_{episode_number:02d}.mp4",
                     "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                     "orchestrator": "mcp",
                 }
@@ -492,7 +567,7 @@ class MCPOrchestrator:
         downloaded after the run).  Falls back to local render if absent.
         """
         ep_str = f"{episode_number:02d}"
-        candidate = Path("sindy_videos") / f"ep{ep_str}.mp4"
+        candidate = Path("sindy_videos") / f"episode_{ep_str}.mp4"
         if candidate.exists():
             return str(candidate)
         # Nothing found – run locally as fallback

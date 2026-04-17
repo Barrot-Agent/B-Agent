@@ -357,6 +357,7 @@ def page_sindy_studio() -> None:
 _MCP_STEP_EMOJI = {
     OrchestratorStep.INIT:               "🚀",
     OrchestratorStep.HF_MODELS:          "🤗",
+    OrchestratorStep.KAGGLE_DATASET:     "🏆",
     OrchestratorStep.SCRIPT_GEN:         "📝",
     OrchestratorStep.DATABRICKS_SUBMIT:  "☁️",
     OrchestratorStep.DATABRICKS_WAIT:    "⏳",
@@ -374,10 +375,13 @@ def _mcp_config_from_ui(
     db_token: str,
     db_cluster: str,
     gh_token: str,
+    kaggle_username: str,
+    kaggle_key: str,
     download_models: bool,
     use_databricks: bool,
     commit_to_github: bool,
     trigger_cicd: bool,
+    run_kaggle: bool,
 ) -> OrchestratorConfig:
     return OrchestratorConfig(
         hf_token=hf_token or None,
@@ -385,17 +389,20 @@ def _mcp_config_from_ui(
         databricks_token=db_token or None,
         databricks_cluster_id=db_cluster or None,
         github_token=gh_token or None,
+        kaggle_username=kaggle_username or None,
+        kaggle_key=kaggle_key or None,
         download_models=download_models,
         use_databricks=use_databricks,
         commit_to_github=commit_to_github,
         trigger_cicd=trigger_cicd,
+        run_kaggle=run_kaggle,
     )
 
 
 def page_mcp_workflow() -> None:
     st.title("🔗 MCP Workflow")
     st.markdown(
-        "Integrate Hugging Face, Databricks, and GitHub MCP services into the "
+        "Integrate Hugging Face, Databricks, Kaggle, and GitHub MCP services into the "
         "Stupid Sindy video generation pipeline."
     )
 
@@ -439,12 +446,26 @@ def page_mcp_workflow() -> None:
                 help="GitHub PAT with repo + workflow scopes",
             )
 
+        with st.expander("🏆 Kaggle", expanded=False):
+            kaggle_username = st.text_input(
+                "Username",
+                key="mcp_kaggle_username",
+                help="Kaggle account username",
+            )
+            kaggle_key = st.text_input(
+                "API Key",
+                type="password",
+                key="mcp_kaggle_key",
+                help="Kaggle API key from kaggle.com/account",
+            )
+
         st.divider()
         st.markdown("**Pipeline Options**")
         download_models = st.toggle("Download HF Models", value=True, key="mcp_dl_models")
         use_databricks = st.toggle("Use Databricks Compute", value=True, key="mcp_use_db")
         commit_to_github = st.toggle("Commit to GitHub", value=True, key="mcp_commit_gh")
         trigger_cicd = st.toggle("Trigger CI/CD", value=True, key="mcp_trigger_cicd")
+        run_kaggle = st.toggle("Run Kaggle Competitions", value=True, key="mcp_run_kaggle")
 
         st.divider()
         mcp_ep = st.selectbox(
@@ -473,10 +494,13 @@ def page_mcp_workflow() -> None:
                 db_token=st.session_state.get("mcp_db_token", ""),
                 db_cluster=st.session_state.get("mcp_db_cluster", ""),
                 gh_token=st.session_state.get("mcp_gh_token", ""),
+                kaggle_username=st.session_state.get("mcp_kaggle_username", ""),
+                kaggle_key=st.session_state.get("mcp_kaggle_key", ""),
                 download_models=st.session_state.get("mcp_dl_models", True),
                 use_databricks=st.session_state.get("mcp_use_db", True),
                 commit_to_github=st.session_state.get("mcp_commit_gh", True),
                 trigger_cicd=st.session_state.get("mcp_trigger_cicd", True),
+                run_kaggle=st.session_state.get("mcp_run_kaggle", True),
             )
             orch = MCPOrchestrator(cfg)
 
@@ -516,10 +540,12 @@ def page_mcp_workflow() -> None:
             databricks_host=st.session_state.get("mcp_db_host") or None,
             databricks_token=st.session_state.get("mcp_db_token") or None,
             github_token=st.session_state.get("mcp_gh_token") or None,
+            kaggle_username=st.session_state.get("mcp_kaggle_username") or None,
+            kaggle_key=st.session_state.get("mcp_kaggle_key") or None,
         )
         check_results = MCPOrchestrator(cfg_check).validate_config()
 
-        col_hf, col_db, col_gh = st.columns(3)
+        col_hf, col_db, col_gh, col_kg = st.columns(4)
         with col_hf:
             with st.container(border=True):
                 st.markdown("### 🤗 Hugging Face")
@@ -547,10 +573,20 @@ def page_mcp_workflow() -> None:
                     st.warning("Token missing")
                 st.caption("Used for auto-commit + CI/CD")
 
+        with col_kg:
+            with st.container(border=True):
+                st.markdown("### 🏆 Kaggle")
+                if check_results["kaggle"]:
+                    st.success("Username + Key configured")
+                else:
+                    st.warning("Credentials missing")
+                st.caption("Used for competition datasets")
+
         st.divider()
         st.markdown(
             "ℹ️ You can also set credentials via environment variables: "
-            "`HF_TOKEN`, `DATABRICKS_HOST`, `DATABRICKS_TOKEN`, `GITHUB_TOKEN`."
+            "`HF_TOKEN`, `DATABRICKS_HOST`, `DATABRICKS_TOKEN`, `GITHUB_TOKEN`, "
+            "`KAGGLE_USERNAME`, `KAGGLE_KEY`."
         )
 
     # == Tab 3: Run history ==
@@ -1271,7 +1307,7 @@ def page_research() -> None:
             ]
             if not filtered_sources:
                 continue
-            with st.expander(f"📂 {category} ({len(filtered_sources)})", expanded=not search_q):
+            with st.expander(f"📂 {category} ({len(filtered_sources)})", expanded=False):
                 for src in filtered_sources:
                     col_s1, col_s2 = st.columns([2, 3])
                     with col_s1:
