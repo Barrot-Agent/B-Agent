@@ -3,7 +3,7 @@ name: Databricks Bundle Deploy
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ Main ]
 
 permissions:
   contents: read

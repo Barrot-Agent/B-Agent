@@ -40,6 +40,7 @@ jobs:
           python -m py_compile mcp_huggingface.py
           python -m py_compile mcp_databricks.py
           python -m py_compile mcp_github.py
+          python -m py_compile mcp_kaggle.py
           python -m py_compile mcp_orchestrator.py
           echo "All MCP modules passed syntax check."
 
@@ -48,6 +49,7 @@ jobs:
           python -c "from mcp_huggingface import HuggingFaceMCP; print('HuggingFaceMCP OK')"
           python -c "from mcp_databricks import DatabricksMCP; print('DatabricksMCP OK')"
           python -c "from mcp_github import GitHubMCP; print('GitHubMCP OK')"
+          python -c "from mcp_kaggle import KaggleMCP; print('KaggleMCP OK')"
           python -c "
           from mcp_orchestrator import MCPOrchestrator, OrchestratorConfig
           cfg = OrchestratorConfig(download_models=False, use_databricks=False, commit_to_github=False, trigger_cicd=False)
