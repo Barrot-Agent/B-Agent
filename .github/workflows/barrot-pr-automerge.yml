@@ -27,6 +27,16 @@ jobs:
         run: |
           set +e
           echo "=== Barrot Auto-Merge: starting pass ==="
+          BLOCKED_LABEL="automerge:blocked"
+
+          # Ensure blocked label exists (best effort)
+          gh api "repos/$REPO/labels/$BLOCKED_LABEL" --silent >/dev/null 2>&1 || \
+            gh api "repos/$REPO/labels" \
+              --method POST \
+              --field name="$BLOCKED_LABEL" \
+              --field color="d93f0b" \
+              --field description="PR is blocked from auto-merge (conflicts/checks/review required)" \
+              --silent >/dev/null 2>&1 || true
 
           # Collect ALL open PR numbers using paginated REST API
           ALL_PRS=$(gh api "repos/$REPO/pulls?state=open&per_page=100" \
@@ -50,12 +60,14 @@ jobs:
             # Fetch PR details
             PR_INFO=$(gh pr view "$PR" \
               --repo "$REPO" \
-              --json title,mergeable,state \
+              --json title,mergeable,mergeStateStatus,state,headRefOid \
               2>/dev/null)
 
             STATE=$(echo "$PR_INFO" | jq -r '.state // ""')
             TITLE=$(echo "$PR_INFO" | jq -r '.title // ""')
             MERGEABLE=$(echo "$PR_INFO" | jq -r '.mergeable // ""')
+            MERGE_STATE=$(echo "$PR_INFO" | jq -r '.mergeStateStatus // ""')
+            HEAD_SHA=$(echo "$PR_INFO" | jq -r '.headRefOid // ""')
 
             if [ "$STATE" != "OPEN" ]; then
               echo "  PR #$PR is not open (state=$STATE). Skipping."
@@ -65,6 +77,33 @@ jobs:
 
             echo "  Title     : $TITLE"
             echo "  Mergeable : $MERGEABLE"
+            echo "  State     : $MERGE_STATE"
+
+            if [ "$MERGEABLE" = "CONFLICTING" ] || [ "$MERGE_STATE" = "DIRTY" ]; then
+              echo "  ⚠️  Merge conflict detected; cannot auto-resolve."
+              gh pr edit "$PR" --repo "$REPO" --add-label "$BLOCKED_LABEL" >/dev/null 2>&1 || true
+              gh pr comment "$PR" --repo "$REPO" --body "⚠️ Auto-merge skipped: this PR has conflicts with the base branch and needs manual conflict resolution." >/dev/null 2>&1 || true
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            # Update branch via official GitHub API before merge attempt (best effort)
+            if [ -n "$HEAD_SHA" ]; then
+              UPDATE_OUTPUT=$(gh api \
+                --method PUT \
+                "repos/$REPO/pulls/$PR/update-branch" \
+                --field expected_head_sha="$HEAD_SHA" 2>&1)
+              UPDATE_EXIT=$?
+              if [ $UPDATE_EXIT -eq 0 ]; then
+                echo "  ✅ Branch updated against base branch."
+              else
+                if echo "$UPDATE_OUTPUT" | grep -qi "not modified\|already up to date\|update is not needed\|expected_head_sha"; then
+                  echo "  ℹ️  Branch update not required."
+                else
+                  echo "  ⚠️  Branch update failed: $UPDATE_OUTPUT"
+                fi
+              fi
+            fi
 
             # Try merge commit first, then squash, then rebase as fallbacks
             RESULT=""
@@ -88,9 +127,11 @@ jobs:
             done
 
             if [ "$RESULT" = "ok" ]; then
+              gh pr edit "$PR" --repo "$REPO" --remove-label "$BLOCKED_LABEL" >/dev/null 2>&1 || true
               echo "  ✅ PR #$PR merged."
               MERGED=$((MERGED + 1))
             else
+              gh pr edit "$PR" --repo "$REPO" --add-label "$BLOCKED_LABEL" >/dev/null 2>&1 || true
               echo "  ⚠️  PR #$PR could not be merged now (will retry next cycle)."
               FAILED=$((FAILED + 1))
             fi
