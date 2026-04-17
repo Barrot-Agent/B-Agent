@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chameleon Chain - Presale & Token Launch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        section {
+            background: white;
+            margin: 20px 0;
+            padding: 60px 0;
+            border-radius: 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .presale-info {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .presale-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tokenomics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .token-allocation {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .roadmap {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .roadmap-quarter {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 100px;
+        }
+
+        .cost-analysis {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .cost-table th,
+        .cost-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cost-table th {
+            background: #667eea;
+            color: white;
+        }
+
+        .cost-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .resource-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .resource-link:hover {
+            background: #764ba2;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">🦎 Chameleon Chain</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#presale">Presale</a></li>
+                    <li><a href="#tokenomics">Tokenomics</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>🦎 Chameleon Chain</h1>
+            <p>The Adaptive Blockchain for Modern DeFi</p>
+            <a href="#presale" class="cta-button">Join Presale Now</a>
+        </div>
+    </div>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Chameleon Chain</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
+                Chameleon Chain is a next-generation blockchain platform designed to adapt to the evolving needs of decentralized finance. 
+                Like its namesake, it seamlessly adjusts to different environments, providing optimal performance, security, and scalability.
+            </p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>⚡ Lightning Fast</h3>
+                    <p>Process up to 100,000 transactions per second with sub-second finality, ensuring smooth user experiences.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Enterprise Security</h3>
+                    <p>Military-grade encryption and multi-layer security protocols protect your assets and transactions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌍 Cross-Chain Compatible</h3>
+                    <p>Seamlessly interact with Ethereum, Binance Smart Chain, and other major blockchain networks.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>♻️ Eco-Friendly</h3>
+                    <p>Proof-of-Stake consensus mechanism uses 99.9% less energy than traditional blockchains.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💰 Low Fees</h3>
+                    <p>Transaction fees as low as $0.001, making DeFi accessible to everyone worldwide.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔧 Developer Friendly</h3>
+                    <p>EVM-compatible with comprehensive SDKs and tools for rapid dApp development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="presale">
+        <div class="container">
+            <h2>Token Presale</h2>
+            
+            <div class="presale-info">
+                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Join Our Exclusive Presale</h3>
+                
+                <div class="presale-stats">
+                    <div class="stat">
+                        <h3>1 CHAM</h3>
+                        <p>= $0.10 USD</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100M</h3>
+                        <p>Total Presale Supply</p>
+                    </div>
+                    <div class="stat">
+                        <h3>$10M</h3>
+                        <p>Hard Cap</p>
+                    </div>
+                    <div class="stat">
+                        <h3>$2M</h3>
+                        <p>Soft Cap</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="cta-button">Connect Wallet to Participate</a>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 1rem;">Presale Phases:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;">✅ Phase 1: $0.08/CHAM - 25M tokens (COMPLETED)</li>
+                        <li style="padding: 0.5rem 0;">🔥 Phase 2: $0.10/CHAM - 25M tokens (ACTIVE)</li>
+                        <li style="padding: 0.5rem 0;">⏳ Phase 3: $0.12/CHAM - 25M tokens (Upcoming)</li>
+                        <li style="padding: 0.5rem 0;">⏳ Phase 4: $0.15/CHAM - 25M tokens (Upcoming)</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="margin-bottom: 1rem;">Presale Benefits:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;">🎁 Early bird bonus: Up to 30% extra tokens</li>
+                        <li style="padding: 0.5rem 0;">🔓 Vesting schedule: 25% unlock at TGE, rest over 6 months</li>
+                        <li style="padding: 0.5rem 0;">🎯 Guaranteed allocation for presale participants</li>
+                        <li style="padding: 0.5rem 0;">🚀 Exclusive access to governance features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokenomics">
+        <div class="container">
+            <h2>Tokenomics</h2>
+            
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
+                <strong>Total Supply:</strong> 1,000,000,000 CHAM tokens<br>
+                <strong>Token Standard:</strong> ERC-20 (Ethereum Compatible)<br>
+                <strong>Contract Address:</strong> To be announced after deployment
+            </p>
+
+            <div class="tokenomics">
+                <div class="token-allocation">
+                    <h3>🎯 Presale (10%)</h3>
+                    <p>100M tokens allocated for early investors with vesting schedule</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>💎 Public Sale (15%)</h3>
+                    <p>150M tokens for public distribution via DEX/CEX listings</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>🏗️ Development (20%)</h3>
+                    <p>200M tokens for platform development, locked for 2 years</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>🤝 Team (15%)</h3>
+                    <p>150M tokens for core team, vested over 4 years</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>🎁 Marketing (10%)</h3>
+                    <p>100M tokens for marketing and community growth</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>🌊 Liquidity (15%)</h3>
+                    <p>150M tokens for DEX liquidity pools</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>🏦 Ecosystem (10%)</h3>
+                    <p>100M tokens for partnerships and ecosystem development</p>
+                </div>
+                <div class="token-allocation">
+                    <h3>🎖️ Staking Rewards (5%)</h3>
+                    <p>50M tokens for staking incentives over 5 years</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <div class="container">
+            <h2>Roadmap</h2>
+            
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-quarter">Q1 2026</div>
+                    <div>
+                        <h3>Foundation & Launch</h3>
+                        <ul>
+                            <li>Complete presale phases</li>
+                            <li>Deploy ERC-20 token contract</li>
+                            <li>Launch testnet with validator nodes</li>
+                            <li>Release whitepaper and technical documentation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-quarter">Q2 2026</div>
+                    <div>
+                        <h3>Mainnet Beta</h3>
+                        <ul>
+                            <li>Launch Chameleon Chain mainnet beta</li>
+                            <li>Deploy cross-chain bridge infrastructure</li>
+                            <li>List CHAM on major DEXs (Uniswap, PancakeSwap)</li>
+                            <li>Begin validator onboarding program</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-quarter">Q3 2026</div>
+                    <div>
+                        <h3>Ecosystem Growth</h3>
+                        <ul>
+                            <li>Launch developer grants program ($5M fund)</li>
+                            <li>Release SDK and developer tools</li>
+                            <li>First 10 dApps deployed on Chameleon Chain</li>
+                            <li>CEX listings (Tier 1 exchanges)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-quarter">Q4 2026</div>
+                    <div>
+                        <h3>Full Production</h3>
+                        <ul>
+                            <li>Mainnet v1.0 with full features</li>
+                            <li>Launch governance DAO</li>
+                            <li>NFT marketplace integration</li>
+                            <li>Reach 100+ validators and 50+ dApps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cost-analysis">
+        <div class="container">
+            <h2>Blockchain Infrastructure Cost Analysis</h2>
+            
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                Our comprehensive cost analysis ensures optimal resource allocation and long-term sustainability.
+            </p>
+
+            <div class="cost-analysis">
+                <h3>Deployment Options Comparison</h3>
+                
+                <table class="cost-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Initial Cost</th>
+                            <th>Monthly Cost</th>
+                            <th>Annual Cost</th>
+                            <th>Pros</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ethereum Mainnet</strong></td>
+                            <td>$50,000</td>
+                            <td>$15,000</td>
+                            <td>$230,000</td>
+                            <td>Maximum security, established ecosystem</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Layer 2 (Optimism/Arbitrum)</strong></td>
+                            <td>$25,000</td>
+                            <td>$5,000</td>
+                            <td>$85,000</td>
+                            <td>Lower fees, Ethereum security</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Polygon PoS</strong></td>
+                            <td>$15,000</td>
+                            <td>$3,000</td>
+                            <td>$51,000</td>
+                            <td>Very low fees, fast finality</td>
+                        </tr>
+                        <tr style="background: #e7f3ff;">
+                            <td><strong>Custom Sidechain (RECOMMENDED)</strong></td>
+                            <td>$20,000</td>
+                            <td>$4,000</td>
+                            <td>$68,000</td>
+                            <td>Full control, customizable, scalable</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Substrate/Cosmos SDK</strong></td>
+                            <td>$30,000</td>
+                            <td>$6,000</td>
+                            <td>$102,000</td>
+                            <td>Interoperability, modular architecture</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin-top: 3rem;">Recommended Solution: Custom Sidechain</h3>
+                
+                <div style="margin-top: 1rem;">
+                    <h4>Detailed Cost Breakdown (Year 1)</h4>
+                    <ul style="margin-top: 1rem;">
+                        <li><strong>Infrastructure Setup:</strong> $20,000
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>Smart contract development & audit: $12,000</li>
+                                <li>Node deployment & configuration: $5,000</li>
+                                <li>Bridge contract development: $3,000</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 1rem;"><strong>Monthly Operations:</strong> $4,000
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>Validator nodes hosting (5 nodes): $2,000</li>
+                                <li>RPC endpoints & infrastructure: $1,000</li>
+                                <li>Monitoring & security tools: $500</li>
+                                <li>DevOps & maintenance: $500</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 1rem;"><strong>Security & Compliance:</strong> $8,000
+                            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                                <li>Initial security audit: $5,000</li>
+                                <li>Bug bounty program: $2,000</li>
+                                <li>Ongoing security monitoring: $1,000</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 1rem;"><strong>Total Year 1:</strong> $76,000</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 3rem;">Cost Optimization Strategies</h3>
+                
+                <div class="features" style="margin-top: 2rem;">
+                    <div class="feature-card">
+                        <h3>🎯 Phased Deployment</h3>
+                        <p>Start with testnet, gradually scale validator nodes as network grows. Saves 40% in Year 1.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>☁️ Cloud Optimization</h3>
+                        <p>Use reserved instances and auto-scaling. Reduces hosting costs by 35%.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🤝 Validator Partnership</h3>
+                        <p>Partner with existing validators to reduce infrastructure burden. Saves $24,000 annually.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 Open Source Tools</h3>
+                        <p>Leverage Ethereum-compatible tools and frameworks. Reduces development costs by 50%.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Efficient Consensus</h3>
+                        <p>Proof-of-Stake reduces operational costs by 90% vs Proof-of-Work.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔐 Shared Security</h3>
+                        <p>Bridge to Ethereum for additional security without full mainnet costs.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white;">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Projected ROI Timeline</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0;">📅 <strong>Month 6:</strong> Break-even on infrastructure costs through transaction fees</li>
+                        <li style="padding: 0.5rem 0;">📅 <strong>Month 12:</strong> 150% ROI with 1000+ daily active users</li>
+                        <li style="padding: 0.5rem 0;">📅 <strong>Month 18:</strong> 300% ROI with ecosystem growth and partnerships</li>
+                        <li style="padding: 0.5rem 0;">📅 <strong>Month 24:</strong> Self-sustaining network with positive cash flow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources">
+        <div class="container">
+            <h2>Resources & Documentation</h2>
+            
+            <div class="resources">
+                <a href="#" class="resource-link">📄 Whitepaper</a>
+                <a href="#" class="resource-link">📚 Technical Documentation</a>
+                <a href="#" class="resource-link">💻 Developer Guide</a>
+                <a href="#" class="resource-link">🔍 Smart Contract (Etherscan)</a>
+                <a href="#" class="resource-link">📊 Tokenomics PDF</a>
+                <a href="#" class="resource-link">🛡️ Security Audit Report</a>
+                <a href="#" class="resource-link">📈 Cost Analysis Document</a>
+                <a href="#" class="resource-link">🎥 Video Tutorials</a>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <h3 style="margin-bottom: 1rem;">Contract Information</h3>
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                    <p><strong>Token Name:</strong> Chameleon Token</p>
+                    <p><strong>Symbol:</strong> CHAM</p>
+                    <p><strong>Decimals:</strong> 18</p>
+                    <p><strong>Standard:</strong> ERC-20</p>
+                    <p><strong>Network:</strong> Ethereum Mainnet / Polygon (Bridge)</p>
+                    <p style="margin-top: 1rem;"><em>Contract address will be published after security audit and deployment</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Chameleon Chain. All rights reserved.</p>
+            <p style="margin-top: 1rem;">⚠️ <em>Cryptocurrency investments carry risk. Please do your own research before investing.</em></p>
+            
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Telegram</a>
+                <a href="#">Discord</a>
+                <a href="#">Medium</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
