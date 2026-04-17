@@ -98,6 +98,124 @@ _DEFAULT_AGENTS: list[dict[str, Any]] = [
             "code", "summarize", "learn", "refine", "project",
         ],
     },
+    # ------------------------------------------------------------------
+    # Extended HRM Council (Tier 2.5) — 8 specialist agents added in
+    # response to the complementary-integrity gap analysis (issue #174).
+    # ------------------------------------------------------------------
+    {
+        "agent_id": "hrm-t",
+        "name": "HRM-T (Temporal)",
+        "description": (
+            "Temporal Logic & Causal Chain Analysis specialist. "
+            "Reasons across time, constructs causal chains, and builds "
+            "predictive models from time-series data. "
+            "Complements AnalystAgent and CorroborationAgent by adding the "
+            "time dimension to structural analysis."
+        ),
+        "capabilities": [
+            "temporal_reasoning", "causal_inference", "time_series_analysis",
+            "predictive_modeling", "analyze",
+        ],
+    },
+    {
+        "agent_id": "hrm-x",
+        "name": "HRM-X (Adversarial)",
+        "description": (
+            "Red Team Validation & Weakness Detection specialist. "
+            "Stress-tests outputs, challenges assumptions, surfaces edge cases, "
+            "and identifies blind spots in plans and conclusions. "
+            "Essential for hardening any directive result before delivery."
+        ),
+        "capabilities": [
+            "adversarial_testing", "red_teaming", "assumption_challenging",
+            "edge_case_detection", "robustness_validation", "cross_corroborate",
+        ],
+    },
+    {
+        "agent_id": "hrm-e",
+        "name": "HRM-E (Emotional)",
+        "description": (
+            "Emotional Intelligence & Empathy Modeling specialist. "
+            "Models affective states, evaluates emotional resonance, and ensures "
+            "outputs are calibrated for human understanding and reception. "
+            "Bridges analytical output with human-centred communication."
+        ),
+        "capabilities": [
+            "emotional_intelligence", "empathy_modeling", "affective_computing",
+            "human_resonance", "communication_calibration",
+        ],
+    },
+    {
+        "agent_id": "hrm-phi",
+        "name": "HRM-Phi (Ethics)",
+        "description": (
+            "Ethical Framework Analysis & Value Alignment specialist. "
+            "Applies consequentialist, deontological, and virtue-based lenses "
+            "to evaluate outputs for moral soundness and AI-safety alignment. "
+            "Acts as the platform's primary ethics arbiter."
+        ),
+        "capabilities": [
+            "ethical_reasoning", "value_alignment", "ai_safety", "moral_analysis",
+            "multi_framework_ethics", "analyze",
+        ],
+    },
+    {
+        "agent_id": "hrm-sigma",
+        "name": "HRM-Sigma (Systems)",
+        "description": (
+            "Holistic Systems Analysis & Emergence Detection specialist. "
+            "Maps feedback loops, identifies emergent behaviours, and models "
+            "complex adaptive systems. Prevents reductionist blind spots by "
+            "maintaining a whole-system perspective throughout every directive."
+        ),
+        "capabilities": [
+            "systems_thinking", "emergence_detection", "feedback_loop_analysis",
+            "complexity_modeling", "holistic_analysis", "analyze",
+        ],
+    },
+    {
+        "agent_id": "hrm-omega",
+        "name": "HRM-Omega (Embodiment)",
+        "description": (
+            "Physical World Integration & Embodied Reasoning specialist. "
+            "Reasons about physical constraints, spatial relationships, and "
+            "robotics-relevant considerations. Bridges digital plans with "
+            "real-world feasibility and embodied-cognition principles."
+        ),
+        "capabilities": [
+            "embodied_reasoning", "spatial_intelligence", "physical_constraints",
+            "robotics_awareness", "sensorimotor_modeling",
+        ],
+    },
+    {
+        "agent_id": "hrm-q",
+        "name": "HRM-Q (Quantum)",
+        "description": (
+            "Quantum Logic & Superposition Reasoning specialist. "
+            "Handles non-binary decisions, probabilistic superpositions, and "
+            "uncertainty quantification beyond classical Boolean logic. "
+            "Augments every directive with quantum-inspired uncertainty handling."
+        ),
+        "capabilities": [
+            "quantum_reasoning", "superposition_logic", "uncertainty_quantification",
+            "non_classical_inference", "probabilistic_modeling", "reason",
+        ],
+    },
+    {
+        "agent_id": "wisdom-i",
+        "name": "Wisdom-I (Indigenous)",
+        "description": (
+            "Indigenous Knowledge Integration & Ancient Wisdom specialist. "
+            "Incorporates Ubuntu, Sankofa, Seven-Generations thinking, "
+            "Dreamtime cosmology, Pachamama ecology, and other global indigenous "
+            "traditions. Ensures outputs honour long-term, nature-based, and "
+            "culturally diverse perspectives."
+        ),
+        "capabilities": [
+            "indigenous_knowledge", "holistic_worldview", "intergenerational_reasoning",
+            "nature_based_intelligence", "cultural_diversity", "wisdom_synthesis",
+        ],
+    },
 ]
 
 
@@ -180,10 +298,15 @@ class AgentRegistry:
         dest.write_text(json.dumps(agent.to_dict(), indent=2), encoding="utf-8")
 
     def _seed_defaults(self) -> None:
-        """Register built-in agents if the registry is empty."""
-        if any(self._dir.glob("*.json")):
-            return
+        """Register any built-in agents that are not yet in the registry.
+
+        This is idempotent: existing agents are left untouched so that
+        runtime status changes are preserved across restarts.
+        """
+        existing_ids = {fp.stem for fp in self._dir.glob("*.json")}
         for data in _DEFAULT_AGENTS:
+            if data["agent_id"] in existing_ids:
+                continue
             agent = Agent(
                 agent_id=data["agent_id"],
                 name=data["name"],

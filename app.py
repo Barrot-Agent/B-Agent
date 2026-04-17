@@ -1055,8 +1055,319 @@ def page_directive_platform() -> None:
 
 
 # ===========================================================================
-# Page: Smart Agent
+# Page: Research
 # ===========================================================================
+
+# Curated research source registry (subset of issue #178 sources)
+_RESEARCH_SOURCES: dict[str, list[dict[str, str]]] = {
+    "Academic & Preprints": [
+        {"name": "arXiv", "url": "https://arxiv.org", "focus": "CS, Physics, Math, AI/ML preprints"},
+        {"name": "bioRxiv", "url": "https://biorxiv.org", "focus": "Biology preprints"},
+        {"name": "PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov", "focus": "Biomedical literature"},
+        {"name": "Papers With Code", "url": "https://paperswithcode.com", "focus": "ML papers + implementations"},
+        {"name": "Semantic Scholar", "url": "https://semanticscholar.org", "focus": "AI-powered research search"},
+    ],
+    "AI Labs & Blogs": [
+        {"name": "OpenAI Blog", "url": "https://openai.com/blog", "focus": "GPT, alignment, safety"},
+        {"name": "DeepMind Research", "url": "https://deepmind.google/research", "focus": "RL, AlphaFold, Gemini"},
+        {"name": "Anthropic Research", "url": "https://anthropic.com/research", "focus": "Constitutional AI, safety"},
+        {"name": "Meta AI Research", "url": "https://ai.meta.com/research", "focus": "LLaMA, FAIR research"},
+        {"name": "Google AI Blog", "url": "https://ai.googleblog.com", "focus": "Google AI/ML advances"},
+    ],
+    "Datasets & Benchmarks": [
+        {"name": "Hugging Face", "url": "https://huggingface.co", "focus": "Models, datasets, spaces"},
+        {"name": "Kaggle", "url": "https://kaggle.com", "focus": "Competitions and datasets"},
+        {"name": "UCI ML Repository", "url": "https://archive.ics.uci.edu", "focus": "Classic ML datasets"},
+        {"name": "Google Dataset Search", "url": "https://datasetsearch.research.google.com", "focus": "Dataset discovery"},
+        {"name": "ARC-AGI", "url": "https://arcprize.org", "focus": "AGI evaluation benchmark"},
+    ],
+    "Knowledge & Encyclopaedias": [
+        {"name": "Wikipedia", "url": "https://en.wikipedia.org", "focus": "General encyclopaedia"},
+        {"name": "Wikidata", "url": "https://wikidata.org", "focus": "Structured knowledge graph"},
+        {"name": "Stanford Encyclopaedia of Philosophy", "url": "https://plato.stanford.edu", "focus": "Philosophy & ethics"},
+        {"name": "ConceptNet", "url": "https://conceptnet.io", "focus": "Commonsense knowledge graph"},
+        {"name": "Wolfram Alpha", "url": "https://wolframalpha.com", "focus": "Computational knowledge"},
+    ],
+    "News & Current Events": [
+        {"name": "MIT Technology Review", "url": "https://technologyreview.com", "focus": "Emerging tech"},
+        {"name": "Quanta Magazine", "url": "https://quantamagazine.org", "focus": "Math & science journalism"},
+        {"name": "The Gradient", "url": "https://thegradient.pub", "focus": "ML research analysis"},
+        {"name": "Import AI (Jack Clark)", "url": "https://importai.substack.com", "focus": "Weekly AI newsletter"},
+        {"name": "Ars Technica", "url": "https://arstechnica.com", "focus": "Tech & science news"},
+    ],
+    "Code & Open-Source": [
+        {"name": "GitHub", "url": "https://github.com", "focus": "Source code and projects"},
+        {"name": "PyPI", "url": "https://pypi.org", "focus": "Python packages"},
+        {"name": "TensorFlow Hub", "url": "https://tfhub.dev", "focus": "Pre-trained TF models"},
+        {"name": "Weights & Biases", "url": "https://wandb.ai", "focus": "ML experiment tracking"},
+        {"name": "Lightning AI", "url": "https://lightning.ai", "focus": "PyTorch Lightning & training"},
+    ],
+}
+
+# Research methodologies practiced on the platform
+_METHODOLOGIES: list[dict[str, str]] = [
+    {
+        "name": "Plan → Act → Observe (PAO) Loop",
+        "description": (
+            "The SmartAgent decomposes any goal into a typed plan, executes each "
+            "step with a built-in tool, reflects on intermediate results, and "
+            "converges on a consolidated answer. Enables autonomous, transparent "
+            "task execution without an external LLM."
+        ),
+        "agent": "SmartAgent",
+    },
+    {
+        "name": "Progressive Ping-Pong Protocol",
+        "description": (
+            "Multi-agent cascade where each specialist agent passes enriched "
+            "findings to the next, building progressively deeper insight. "
+            "Designed to leverage complementary capabilities across the council."
+        ),
+        "agent": "All council agents",
+    },
+    {
+        "name": "Adversarial Stress-Testing (Red Team)",
+        "description": (
+            "HRM-X systematically challenges every conclusion by probing "
+            "assumptions, injecting edge cases, and attempting to falsify "
+            "results before they are accepted into the knowledge base."
+        ),
+        "agent": "HRM-X (Adversarial)",
+    },
+    {
+        "name": "Temporal Causal Chain Analysis",
+        "description": (
+            "HRM-T traces causes backward through time and projects forward "
+            "using predictive models, adding the time dimension to any "
+            "structural analysis already performed by AnalystAgent."
+        ),
+        "agent": "HRM-T (Temporal)",
+    },
+    {
+        "name": "Multi-Framework Ethics Review",
+        "description": (
+            "HRM-Phi applies consequentialist, deontological, and virtue-ethics "
+            "lenses in parallel to evaluate every major conclusion, surfacing "
+            "value misalignments before final delivery."
+        ),
+        "agent": "HRM-Phi (Ethics)",
+    },
+    {
+        "name": "Emergence & Feedback Loop Mapping",
+        "description": (
+            "HRM-Sigma builds causal-loop diagrams of the system under analysis, "
+            "identifies reinforcing and balancing feedback loops, and flags "
+            "emergent properties that reductionist analysis would miss."
+        ),
+        "agent": "HRM-Sigma (Systems)",
+    },
+    {
+        "name": "Cross-Source Corroboration",
+        "description": (
+            "CorroborationAgent and HRM-X cross-reference claims across "
+            "independent sources to detect contradictions, surface consensus, "
+            "and assign confidence scores to each piece of knowledge."
+        ),
+        "agent": "CorroborationAgent + HRM-X",
+    },
+    {
+        "name": "Indigenous Wisdom Integration",
+        "description": (
+            "Wisdom-I enriches conclusions with long-term, nature-based, and "
+            "culturally diverse perspectives drawn from global indigenous "
+            "traditions, ensuring outputs resonate beyond Western frameworks."
+        ),
+        "agent": "Wisdom-I (Indigenous)",
+    },
+]
+
+
+def page_research() -> None:
+    st.title("📚 Research Section")
+    st.markdown(
+        "A living knowledge hub tracking discoveries, methodologies, ingestion "
+        "sources, and the full agent council. Updated as the platform evolves."
+    )
+
+    tab_disc, tab_meth, tab_sources, tab_agents, tab_reasoning = st.tabs([
+        "💡 Discoveries",
+        "⚙️ Methodologies",
+        "📡 Ingestion Sources",
+        "🤖 Agent Council",
+        "🧠 Reasoning Chains",
+    ])
+
+    # =========== Discoveries ================================================
+    with tab_disc:
+        st.subheader("Recent Discoveries & Breakthroughs")
+        st.markdown(
+            "Discoveries are generated when directives complete and agents "
+            "surface novel insights. Run a directive on the **🤝 AI Directive "
+            "Platform** page to populate this section."
+        )
+
+        # Load completed directive results as proxy discoveries
+        platform = get_directive_platform()
+        completed = [
+            d for d in platform.directives.list_all()
+            if d.status == "completed" and d.results
+        ]
+
+        if not completed:
+            st.info(
+                "No discoveries recorded yet. "
+                "Complete a directive to generate findings."
+            )
+        else:
+            st.markdown(f"**{len(completed)} directive(s) with results:**")
+            for d in completed:
+                with st.expander(f"💡 {d.title}", expanded=False):
+                    st.markdown(f"**Type:** {d.directive_type}")
+                    st.markdown(f"**Author:** {d.human_author}")
+                    for r in d.results:
+                        sid = r.get("session_id", "?")
+                        agents = ", ".join(r.get("agents", []))
+                        msgs = r.get("messages", 0)
+                        st.markdown(
+                            f"Session `{sid}` — agents: {agents} — {msgs} messages"
+                        )
+
+    # =========== Methodologies ==============================================
+    with tab_meth:
+        st.subheader("Research Methodologies")
+        st.markdown(
+            "Core processes and protocols employed by Barrot's agent council "
+            "to generate reliable, multi-perspective research outputs."
+        )
+        for i, meth in enumerate(_METHODOLOGIES):
+            with st.container(border=True):
+                col_m1, col_m2 = st.columns([3, 1])
+                with col_m1:
+                    st.markdown(f"**{meth['name']}**")
+                    st.markdown(meth["description"])
+                with col_m2:
+                    st.caption(f"Agent: {meth['agent']}")
+
+    # =========== Ingestion Sources ==========================================
+    with tab_sources:
+        st.subheader("Ingestion Source Registry")
+        st.markdown(
+            "Curated list of high-quality sources used for knowledge ingestion, "
+            "organized by category. Continuously expanded as gaps are detected."
+        )
+
+        search_q = st.text_input(
+            "Filter sources",
+            placeholder="e.g. AI, datasets, philosophy…",
+            key="research_src_filter",
+        )
+
+        for category, sources in _RESEARCH_SOURCES.items():
+            filtered_sources = [
+                s for s in sources
+                if not search_q or search_q.lower() in (
+                    s["name"] + " " + s["focus"]
+                ).lower()
+            ]
+            if not filtered_sources:
+                continue
+            with st.expander(f"📂 {category} ({len(filtered_sources)})", expanded=not search_q):
+                for src in filtered_sources:
+                    col_s1, col_s2 = st.columns([2, 3])
+                    with col_s1:
+                        st.markdown(f"**[{src['name']}]({src['url']})**")
+                    with col_s2:
+                        st.caption(src["focus"])
+
+    # =========== Agent Council ==============================================
+    with tab_agents:
+        st.subheader("Agent Council Profiles")
+        st.markdown(
+            "All agents registered on the Directive Platform, grouped by tier. "
+            "Click **🤝 AI Directive Platform** to assign directives."
+        )
+
+        platform = get_directive_platform()
+        agents = platform.registry.list_all()
+
+        # Group by rough tier using known prefixes / IDs
+        tiers: dict[str, list] = {
+            "Core": [],
+            "HRM Council": [],
+            "Extended HRM (Tier 2.5)": [],
+            "Cultural & Wisdom": [],
+            "Autonomous": [],
+        }
+        for ag in agents:
+            aid = ag.agent_id
+            if aid in ("barrot-agent", "project-agent"):
+                tiers["Core"].append(ag)
+            elif aid in ("learner-agent", "analyst-agent", "refinement-agent", "corroboration-agent"):
+                tiers["HRM Council"].append(ag)
+            elif aid.startswith("hrm-"):
+                tiers["Extended HRM (Tier 2.5)"].append(ag)
+            elif aid.startswith("wisdom-"):
+                tiers["Cultural & Wisdom"].append(ag)
+            else:
+                tiers["Autonomous"].append(ag)
+
+        for tier_name, tier_agents in tiers.items():
+            if not tier_agents:
+                continue
+            st.markdown(f"#### {tier_name}")
+            cols = st.columns(2)
+            for idx, ag in enumerate(tier_agents):
+                with cols[idx % 2]:
+                    with st.container(border=True):
+                        status_colour = {
+                            "idle": "green",
+                            "active": "blue",
+                            "unavailable": "gray",
+                        }.get(ag.status, "gray")
+                        st.markdown(
+                            f"**{ag.name}** "
+                            f":{status_colour}[● {ag.status.upper()}]"
+                        )
+                        st.caption(ag.description[:160] + ("…" if len(ag.description) > 160 else ""))
+                        caps = " &nbsp;".join(f"`{c}`" for c in ag.capabilities[:4])
+                        st.markdown(caps, unsafe_allow_html=True)
+
+    # =========== Reasoning Chains ===========================================
+    with tab_reasoning:
+        st.subheader("Transparent Reasoning Chains")
+        st.markdown(
+            "Reasoning chains are produced by the **🤖 Smart Agent** during "
+            "plan-act-observe execution. Run the Smart Agent on a goal to "
+            "generate transparent step-by-step reasoning here."
+        )
+        st.info(
+            "Tip: Run the Smart Agent from the **🤖 Smart Agent** page, then "
+            "return here to review the reasoning structure for each goal."
+        )
+
+        # Display reasoning guide
+        with st.expander("📖 How Reasoning Chains Work", expanded=True):
+            st.markdown(
+                """
+**Step 1 — THINKING:** The agent analyses the goal, identifies constraints,
+and decides on a strategy before committing to a plan.
+
+**Step 2 — PLAN:** A typed sequence of `PlanStep` objects is produced, each
+specifying the tool to invoke and the expected output.
+
+**Step 3 — ACTION + TOOL RESULT:** Each step calls a built-in tool
+(`search`, `analyze`, `reason`, `code`, or `summarize`) and records the raw output.
+
+**Step 4 — OBSERVATION:** After each tool call the agent reflects on the
+result, adjusting its understanding before proceeding to the next step.
+
+**Step 5 — ANSWER:** All observations are consolidated into a final,
+coherent response that directly addresses the original goal.
+                """
+            )
+
+
+
 
 _SMART_AGENT_EVENT_EMOJI: dict[AgentEventType, str] = {
     AgentEventType.GOAL:        "🎯",
@@ -1236,6 +1547,7 @@ def page_smart_agent() -> None:
 PAGES = {
     "🏠 Home": page_home,
     "🤖 Smart Agent": page_smart_agent,
+    "📚 Research": page_research,
     "🎬 Stupid Sindy Video Studio": page_sindy_studio,
     "🔗 MCP Workflow": page_mcp_workflow,
     "🔬 Apex Lattice Analysis": page_apex_lattice,
