@@ -3,6 +3,37 @@ name: Merge Queue
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: >
+          Processing mode:
+          'label' (default) – only PRs carrying the specified label;
+          'all'             – every open PR in the repository (risky, see docs/merge-queue.md)
+        required: false
+        default: label
+        type: choice
+        options:
+          - label
+          - all
+      label:
+        description: "Label to filter PRs (only used when mode=label)"
+        required: false
+        default: merge-queue
+      max_prs:
+        description: "Maximum number of PRs to process in one run (0 = unlimited)"
+        required: false
+        default: "0"
+      dry_run:
+        description: "Dry run – report what would happen without making any changes"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      merge_method:
+        description: "Merge method to use when merging PRs"
+        required: false
+        default: squash
       label:
         description: 'Only process PRs carrying this label'
         required: false
@@ -41,6 +72,178 @@ jobs:
   merge-queue:
     name: Process merge queue
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Process PRs
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          REPO: ${{ github.repository }}
+          MODE: ${{ inputs.mode }}
+          LABEL: ${{ inputs.label }}
+          MAX_PRS: ${{ inputs.max_prs }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          MERGE_METHOD: ${{ inputs.merge_method }}
+        run: |
+          set -euo pipefail
+
+          echo "=== Merge Queue ==="
+          echo "  mode         : $MODE"
+          echo "  label        : ${LABEL:-<none>} (only used when mode=label)"
+          echo "  max_prs      : $MAX_PRS (0 = unlimited)"
+          echo "  dry_run      : $DRY_RUN"
+          echo "  merge_method : $MERGE_METHOD"
+          echo ""
+
+          # ── Collect open PRs ────────────────────────────────────────────────
+          if [ "$MODE" = "all" ]; then
+            echo "⚠️  mode=all: processing EVERY open PR. See docs/merge-queue.md for risks."
+            RAW_PRS=$(gh api "repos/$REPO/pulls?state=open&per_page=100" \
+              --paginate \
+              --jq '[.[].number] | sort | .[]' 2>/dev/null || true)
+          else
+            # label mode (default)
+            if [ -z "$LABEL" ]; then
+              echo "ERROR: label must not be empty when mode=label"
+              exit 1
+            fi
+            echo "Fetching PRs with label \"$LABEL\"…"
+            RAW_PRS=$(gh api "repos/$REPO/issues?state=open&labels=$(jq -rn --arg l "$LABEL" '$l|@uri')&per_page=100" \
+              --paginate \
+              --jq '[.[] | select(.pull_request != null) | .number] | sort | .[]' 2>/dev/null || true)
+          fi
+
+          if [ -z "$RAW_PRS" ]; then
+            echo "No matching open PRs found. Nothing to do."
+            exit 0
+          fi
+
+          # Build array and apply max_prs cap
+          mapfile -t PR_LIST <<< "$RAW_PRS"
+          TOTAL=${#PR_LIST[@]}
+          echo "Found $TOTAL PR(s) to consider."
+
+          if [ "$MAX_PRS" -gt 0 ] && [ "$TOTAL" -gt "$MAX_PRS" ]; then
+            echo "Capping to first $MAX_PRS PR(s) (max_prs=$MAX_PRS)."
+            PR_LIST=("${PR_LIST[@]:0:$MAX_PRS}")
+          fi
+
+          # ── Process each PR ─────────────────────────────────────────────────
+          MERGED=0
+          SKIPPED=0
+
+          for PR in "${PR_LIST[@]}"; do
+            echo ""
+            echo "──────────────────────────────────────────"
+            echo "PR #$PR"
+
+            PR_INFO=$(gh pr view "$PR" \
+              --repo "$REPO" \
+              --json title,mergeable,mergeStateStatus,state,headRefName,baseRefName \
+              2>/dev/null || true)
+
+            if [ -z "$PR_INFO" ]; then
+              echo "  Could not fetch PR info. Skipping."
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            TITLE=$(echo "$PR_INFO" | jq -r '.title // ""')
+            STATE=$(echo "$PR_INFO" | jq -r '.state // ""')
+            MERGEABLE=$(echo "$PR_INFO" | jq -r '.mergeable // ""')
+            MERGE_STATE=$(echo "$PR_INFO" | jq -r '.mergeStateStatus // ""')
+            HEAD_REF=$(echo "$PR_INFO" | jq -r '.headRefName // ""')
+            BASE_REF=$(echo "$PR_INFO" | jq -r '.baseRefName // ""')
+
+            echo "  Title            : $TITLE"
+            echo "  State            : $STATE"
+            echo "  Mergeable        : $MERGEABLE"
+            echo "  Merge state      : $MERGE_STATE"
+            echo "  Head → Base      : $HEAD_REF → $BASE_REF"
+
+            if [ "$STATE" != "OPEN" ]; then
+              echo "  ⏭  Not open. Skipping."
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            # Update branch (merge base into PR branch) when behind or unknown
+            if [ "$MERGE_STATE" = "BEHIND" ] || [ "$MERGE_STATE" = "UNKNOWN" ] || [ "$MERGEABLE" = "UNKNOWN" ]; then
+              echo "  🔄 Branch is behind or state unknown – updating branch…"
+              if [ "$DRY_RUN" = "true" ]; then
+                echo "  [dry-run] Would update branch for PR #$PR"
+              else
+                UPDATE_OUTPUT=$(gh api \
+                  --method PUT \
+                  "repos/$REPO/pulls/$PR/update-branch" \
+                  --field expected_head_sha="$(gh api "repos/$REPO/pulls/$PR" --jq '.head.sha')" \
+                  2>&1 || true)
+                echo "  Update result: $UPDATE_OUTPUT"
+                # Give GitHub a moment to recompute mergeability after the branch update
+                sleep 5
+                PR_INFO=$(gh pr view "$PR" \
+                  --repo "$REPO" \
+                  --json title,mergeable,mergeStateStatus,state \
+                  2>/dev/null || true)
+                MERGEABLE=$(echo "$PR_INFO" | jq -r '.mergeable // ""')
+                MERGE_STATE=$(echo "$PR_INFO" | jq -r '.mergeStateStatus // ""')
+                echo "  Refreshed – mergeable=$MERGEABLE  merge_state=$MERGE_STATE"
+              fi
+            fi
+
+            # Decide whether to merge
+            CAN_MERGE=false
+            if [ "$MERGEABLE" = "MERGEABLE" ] && [ "$MERGE_STATE" = "CLEAN" ]; then
+              CAN_MERGE=true
+            fi
+
+            if [ "$CAN_MERGE" = "false" ]; then
+              REASON="mergeable=$MERGEABLE merge_state=$MERGE_STATE"
+              echo "  ⏭  Not ready to merge ($REASON). Skipping."
+              if [ "$DRY_RUN" = "false" ]; then
+                gh pr comment "$PR" \
+                  --repo "$REPO" \
+                  --body "⏭ **Merge queue**: skipped this PR in the current run. Status: \`$REASON\`. It will be retried in the next run." \
+                  2>/dev/null || true
+              fi
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            echo "  ✅ Ready to merge."
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "  [dry-run] Would merge PR #$PR using --$MERGE_METHOD"
+              MERGED=$((MERGED + 1))
+            else
+              MERGE_OUTPUT=$(gh pr merge "$PR" \
+                --repo "$REPO" \
+                --"$MERGE_METHOD" \
+                --delete-branch \
+                2>&1 || true)
+              echo "  $MERGE_OUTPUT"
+              if echo "$MERGE_OUTPUT" | grep -qi "merged\|already merged"; then
+                echo "  ✅ PR #$PR merged."
+                MERGED=$((MERGED + 1))
+              else
+                echo "  ⚠️  Merge attempt failed. Skipping."
+                gh pr comment "$PR" \
+                  --repo "$REPO" \
+                  --body "⚠️ **Merge queue**: merge attempt failed. Output: \`$MERGE_OUTPUT\`" \
+                  2>/dev/null || true
+                SKIPPED=$((SKIPPED + 1))
+              fi
+            fi
+          done
+
+          echo ""
+          echo "=== Run complete: merged=$MERGED  skipped=$SKIPPED ==="
+
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "(dry-run mode – no actual changes were made)"
+          fi
     env:
       GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
       REPO: ${{ github.repository }}
