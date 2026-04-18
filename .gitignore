@@ -1,3 +1,17 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Distribution / packaging
+.eggs/
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
 # Credentials & secrets
 kaggle.json
 .env
@@ -21,6 +35,21 @@ env/
 .pytest_cache/
 
 # Node / JS
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy / type stubs
+.mypy_cache/
+.dmypy.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+# Node
 node_modules/
 .npm/
 npm-debug.log*
@@ -57,6 +86,7 @@ sindy_videos/
 .apex_lattice/audit_logs/
 .apex_lattice/recommendations/
 .apex_lattice/sandbox/
+.directive_platform/
 hover_bike_revolution/hover_bike_spec.json
 hover_bike_revolution/component_geometry.json
 hover_bike_revolution/assembly_guide.md
