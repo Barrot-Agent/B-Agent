@@ -377,38 +377,54 @@ ISC License - See repository for details
 
 ## 📚 Documentation
 
-- **🚀 [Unified AGI Implementation](UNIFIED_AGI_IMPLEMENTATION.md)** - Complete unified AGI system for general intelligence
-- **🔮 [Quantum AGI Integration](QUANTUM_AGI_INTEGRATION.md)** - Quantum Entanglement, AGI, and Advanced Algorithmic Logic integration
-- **✨ [Transformative Insights Guide](TRANSFORMATIVE_INSIGHTS_GUIDE.md)** - Acquire asynchronous data, detect convergence, generate epiphanies
-- **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** - Details on the modular separation
+> **Data Unification (2026-06-17):** All root-level markdown docs have been consolidated
+> into the `docs/` directory. The originals remain at the root as legacy references.
+
+### Consolidated Docs (`docs/`)
+
+| File | Contents |
+|------|----------|
+| [docs/ingestion.md](docs/ingestion.md) | Ingestion manifest, data transformation, micro-ingestion systems |
+| [docs/agi.md](docs/agi.md) | AGI architecture, implementation summaries, quantum AGI |
+| [docs/millennium_problems.md](docs/millennium_problems.md) | Millennium Problems research, status, transformative insights |
+| [docs/character_capabilities.md](docs/character_capabilities.md) | Character capability system, Chameleon chain, dynamic search |
+| [docs/email.md](docs/email.md) | Email processing, feature summary, quickstart |
+| [docs/monetization.md](docs/monetization.md) | MMI, monetization protocols, COIN app, Connext bridge |
+| [docs/research.md](docs/research.md) | Advanced propulsion & energy research |
+| [docs/system.md](docs/system.md) | System architecture, merge conflict guide, ops |
+| [docs/STEP5_BARROT_INITIATIVE.md](docs/STEP5_BARROT_INITIATIVE.md) | Data unification initiative — Step 5 self-directed work |
+
+### Data Layer (`data/`)
+
+| File | Contents |
+|------|----------|
+| [data/registry.py](data/registry.py) | Central data registry — typed loaders with caching |
+| [data/schemas.py](data/schemas.py) | Canonical TypedDict schemas for all data domains |
+| [data/merge_conflict_unified.json](data/merge_conflict_unified.json) | Unified merge-conflict knowledge base |
+| [data/millennium_problems_unified.json](data/millennium_problems_unified.json) | All 7 Millennium Problems with metadata |
+| [data/mmi_monetization_unified.json](data/mmi_monetization_unified.json) | MMI recommendations, protocols, council weights |
+| [data/character_capabilities_unified.json](data/character_capabilities_unified.json) | Character database + discovered capabilities |
+
+### Legacy Root-Level Docs
+
+- **🔮 [Quantum AGI Integration](QUANTUM_AGI_INTEGRATION.md)** — see [docs/agi.md](docs/agi.md)
+- **✨ [Transformative Insights Guide](TRANSFORMATIVE_INSIGHTS_GUIDE.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
+- **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** — see [docs/system.md](docs/system.md)
 - **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
 - **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
-- **🪙 [Coin App Integration](coin-app/README.md)** - Autonomous passive income automation
-- **🌉 [Connext Bridge Integration](CONNEXT_INTEGRATION.md)** - Cross-chain bridge documentation
+- **🪙 [Coin App Integration](coin-app/README.md)** — see [docs/monetization.md](docs/monetization.md)
+- **🌉 [Connext Bridge Integration](CONNEXT_INTEGRATION.md)** — see [docs/monetization.md](docs/monetization.md)
 - **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
-- **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** - Email intelligence extraction and analysis
-- **✨ [Email-Insight Spell](spells/email-insight.md)** - Email analysis spell documentation
-- **🎭 [Character Capabilities](character-capabilities/README.md)** - Fictional character ability transformations
-- **✨ [Character-Capability-Explorer Spell](spells/character-capability-explorer.md)** - Character exploration spell
-- **🔬 [Platform Alternatives Research](PLATFORM_ALTERNATIVES_RESEARCH.md)** - Research free platforms for revolutionary search engine
+- **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** — see [docs/email.md](docs/email.md)
+- **🎭 [Character Capabilities](character-capabilities/README.md)** — see [docs/character_capabilities.md](docs/character_capabilities.md)
 - **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
-- **🔄 [Default Branch Guide](DEFAULT_BRANCH_GUIDE.md)** - Migrating to `main` branch
 - **📱 [Mobile Setup](MOBILE_SETUP.md)** - Access Barrot from your phone
-- **💻 [VS Code Setup](VSCODE_SETUP.md)** - Optimal development environment
 - **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
-- **🎖️ [Sponsors](SPONSORS.md)** - Our amazing sponsors
-- **💸 [Monetization Framework](MONETIZATION_FRAMEWORK.md)** - Autonomous revenue generation (12+ streams)
-- **📊 [Output Logging](OUTPUT_LOGGING.md)** - Comprehensive logging framework
-- **🔄 [Data Transformation](DATA_TRANSFORMATION.md)** - Data transformation guide
-- **🚀 [AGI Development](AGI_DEVELOPMENT.md)** - AGI acceleration protocols
-- **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** - Complete ingestion capabilities
-- **🔀 [Merge Conflict Resolution Guide](MERGE_CONFLICT_RESOLUTION_GUIDE.md)** - Automated conflict resolution with continuous learning
-- **🧮 [Millennium Problems Status](MILLENNIUM_PROBLEMS_STATUS.md)** - Progress on the Seven Millennium Prize Problems
-- **🚀 [Advanced Propulsion Research](ADVANCED_PROPULSION_RESEARCH.md)** - Revolutionary plane engine, 3D-printable hoverbike, and warp drive development
-- **⚡ [Advanced Energy Ingestion](ADVANCED_ENERGY_INGESTION.md)** - Nuclear fusion, warp drive, and photovoltaic technology data acquisition
-- **🎯 [MMI Implementation Guide](MMI_IMPLEMENTATION.md)** - Massive Micro Ingestion for AGI acceleration
-- **📊 [MMI Analysis Report](MMI_ANALYSIS_REPORT.md)** - High-impact data source recommendations
-- **💰 [Advanced Monetization Protocols](ADVANCED_MONETIZATION_PROTOCOLS.md)** - Revolutionary automation-first revenue strategies
+- **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** — see [docs/ingestion.md](docs/ingestion.md)
+- **🔀 [Merge Conflict Resolution Guide](MERGE_CONFLICT_RESOLUTION_GUIDE.md)** — see [docs/system.md](docs/system.md)
+- **🧮 [Millennium Problems Status](MILLENNIUM_PROBLEMS_STATUS.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
+- **🚀 [Advanced Propulsion Research](ADVANCED_PROPULSION_RESEARCH.md)** — see [docs/research.md](docs/research.md)
+- **🎯 [MMI Implementation Guide](MMI_IMPLEMENTATION.md)** — see [docs/monetization.md](docs/monetization.md)
 
 ## 💰 Support Barrot-Agent
 

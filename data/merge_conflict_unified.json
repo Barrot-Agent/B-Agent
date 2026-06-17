@@ -1,0 +1,603 @@
+{
+  "patterns": [
+    {
+      "pattern_id": "CP001",
+      "name": "Parallel Feature Development",
+      "description": "Two branches modify the same code section independently",
+      "conflict_type": "content",
+      "indicators": [
+        "<<<<<<< HEAD",
+        "=======",
+        ">>>>>>>"
+      ],
+      "file_patterns": [
+        "*.py",
+        "*.js",
+        "*.java",
+        "*.cpp"
+      ],
+      "frequency": "Very High",
+      "auto_resolvable": false
+    },
+    {
+      "pattern_id": "CP002",
+      "name": "Import Statement Conflict",
+      "description": "Different imports added to the same location",
+      "conflict_type": "content",
+      "indicators": [
+        "import",
+        "from",
+        "require"
+      ],
+      "file_patterns": [
+        "*.py",
+        "*.js",
+        "*.ts"
+      ],
+      "frequency": "High",
+      "auto_resolvable": true
+    },
+    {
+      "pattern_id": "CP003",
+      "name": "Configuration Merge",
+      "description": "Configuration files modified in both branches",
+      "conflict_type": "content",
+      "indicators": [
+        "config",
+        "settings",
+        "properties"
+      ],
+      "file_patterns": [
+        "*.json",
+        "*.yaml",
+        "*.yml",
+        "*.toml",
+        "*.ini"
+      ],
+      "frequency": "Medium",
+      "auto_resolvable": true
+    },
+    {
+      "pattern_id": "CP004",
+      "name": "Documentation Conflict",
+      "description": "Documentation updates conflict between branches",
+      "conflict_type": "content",
+      "indicators": [
+        "# ",
+        "## ",
+        "/**",
+        "<!--"
+      ],
+      "file_patterns": [
+        "*.md",
+        "*.rst",
+        "*.txt"
+      ],
+      "frequency": "Medium",
+      "auto_resolvable": true
+    },
+    {
+      "pattern_id": "CP005",
+      "name": "Whitespace Only",
+      "description": "Conflict caused only by whitespace differences",
+      "conflict_type": "whitespace",
+      "indicators": [
+        "spaces",
+        "tabs",
+        "indentation"
+      ],
+      "file_patterns": [
+        "*"
+      ],
+      "frequency": "Low",
+      "auto_resolvable": true
+    },
+    {
+      "pattern_id": "CP006",
+      "name": "File Rename Collision",
+      "description": "Same file renamed differently in each branch",
+      "conflict_type": "rename",
+      "indicators": [
+        "renamed",
+        "moved"
+      ],
+      "file_patterns": [
+        "*"
+      ],
+      "frequency": "Low",
+      "auto_resolvable": false
+    },
+    {
+      "pattern_id": "CP007",
+      "name": "Delete-Modify Conflict",
+      "description": "File deleted in one branch, modified in another",
+      "conflict_type": "delete_modify",
+      "indicators": [
+        "deleted by",
+        "modified by"
+      ],
+      "file_patterns": [
+        "*"
+      ],
+      "frequency": "Medium",
+      "auto_resolvable": false
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "SC001",
+      "title": "Parallel Feature Branches Merge",
+      "description": "Two feature branches modify the same function independently",
+      "conflict_type": "content",
+      "example_conflict": "\n<<<<<<< HEAD\ndef calculate_total(items):\n    total = sum(item.price for item in items)\n    tax = total * 0.08\n    return total + tax\n=======\ndef calculate_total(items):\n    subtotal = sum(item.price * item.quantity for item in items)\n    return subtotal\n>>>>>>> feature/cart-updates\n                ",
+      "recommended_strategy": "manual_merge",
+      "step_by_step": [
+        "1. Analyze both implementations to understand intent",
+        "2. Determine if both features are needed",
+        "3. Merge changes preserving both functionalities",
+        "4. Test the merged result",
+        "5. Stage and commit the resolution"
+      ],
+      "alternative_approaches": [
+        "Create separate functions for each feature",
+        "Use feature flags to toggle behaviors",
+        "Refactor into a more flexible design"
+      ],
+      "common_pitfalls": [
+        "Blindly accepting one side without analysis",
+        "Merging incompatible logic",
+        "Not testing after resolution"
+      ],
+      "prevention_tips": [
+        "Keep feature branches short-lived",
+        "Regularly sync with main branch",
+        "Use better code organization to minimize conflicts"
+      ]
+    },
+    {
+      "scenario_id": "SC002",
+      "title": "Import Statement Ordering",
+      "description": "Both branches add new imports at the same location",
+      "conflict_type": "content",
+      "example_conflict": "\n<<<<<<< HEAD\nimport os\nimport sys\nimport requests\n=======\nimport os\nimport sys\nimport numpy as np\n>>>>>>> feature/data-analysis\n                ",
+      "recommended_strategy": "auto_merge",
+      "step_by_step": [
+        "1. Accept both imports",
+        "2. Sort them alphabetically",
+        "3. Run code formatter (isort, black, etc.)",
+        "4. Commit the organized imports"
+      ],
+      "alternative_approaches": [
+        "Use automated import sorting tools",
+        "Configure pre-commit hooks for consistent formatting"
+      ],
+      "common_pitfalls": [
+        "Not removing duplicate imports",
+        "Incorrect import order affecting functionality"
+      ],
+      "prevention_tips": [
+        "Use automated formatters with pre-commit hooks",
+        "Establish import ordering conventions"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "tool_name": "Git Rerere",
+      "category": "Built-in Git",
+      "description": "Reuse Recorded Resolution - automatically applies previously recorded conflict resolutions",
+      "use_cases": [
+        "Repetitive conflicts during rebases",
+        "Long-lived feature branches",
+        "Recurring merge patterns"
+      ],
+      "installation": "Built into Git, enable with: git config --global rerere.enabled true",
+      "basic_usage": "Automatically activated when enabled, records and replays resolutions",
+      "advanced_features": [
+        "Manual rerere training",
+        "Rerere diff viewing",
+        "Resolution database management"
+      ],
+      "integration_notes": "Enable globally for all repositories or per-repository"
+    },
+    {
+      "tool_name": "Meld",
+      "category": "Visual Merge Tool",
+      "description": "Visual diff and merge tool with three-way merge support",
+      "use_cases": [
+        "Complex merge conflicts",
+        "Visual comparison needed",
+        "Side-by-side conflict resolution"
+      ],
+      "installation": "apt-get install meld (Linux) or brew install meld (macOS)",
+      "basic_usage": "git mergetool --tool=meld",
+      "advanced_features": [
+        "Three-way merge view",
+        "Syntax highlighting",
+        "Directory comparison"
+      ],
+      "integration_notes": "Configure as default merge tool in Git config"
+    },
+    {
+      "tool_name": "KDiff3",
+      "category": "Visual Merge Tool",
+      "description": "Advanced merge tool with automatic conflict resolution",
+      "use_cases": [
+        "Three-way merges",
+        "Automatic merge attempts",
+        "Complex directory merges"
+      ],
+      "installation": "apt-get install kdiff3 or brew install kdiff3",
+      "basic_usage": "git mergetool --tool=kdiff3",
+      "advanced_features": [
+        "Automatic merge mode",
+        "Configurable merge logic",
+        "Directory comparison"
+      ],
+      "integration_notes": "Excellent for automated resolution attempts"
+    },
+    {
+      "tool_name": "VS Code Merge Editor",
+      "category": "IDE Integration",
+      "description": "Built-in merge conflict resolution in VS Code",
+      "use_cases": [
+        "In-editor conflict resolution",
+        "Quick conflict handling",
+        "Inline conflict markers"
+      ],
+      "installation": "Built into VS Code",
+      "basic_usage": "Open conflicted file, click 'Accept' buttons or edit manually",
+      "advanced_features": [
+        "Three-way merge view",
+        "Side-by-side comparison",
+        "IntelliSense during resolution"
+      ],
+      "integration_notes": "Seamlessly integrated with Git in VS Code"
+    },
+    {
+      "tool_name": "Semantic Merge",
+      "category": "Language-Aware",
+      "description": "Language-aware merge tool that understands code structure",
+      "use_cases": [
+        "Refactoring merges",
+        "Large-scale code reorganization",
+        "Syntax-aware merging"
+      ],
+      "installation": "Commercial tool from Plastic SCM",
+      "basic_usage": "Configure as Git merge driver",
+      "advanced_features": [
+        "Understands code structure",
+        "Smart refactoring merges",
+        "Language-specific rules"
+      ],
+      "integration_notes": "Premium solution for complex codebases"
+    }
+  ],
+  "best_practices": [
+    {
+      "practice_id": "BP001",
+      "title": "Keep Feature Branches Short-Lived",
+      "description": "Minimize conflicts by merging feature branches frequently",
+      "category": "Prevention",
+      "impact": "High",
+      "implementation": [
+        "Limit feature branch lifetime to 2-3 days",
+        "Break large features into smaller incremental changes",
+        "Merge to main branch frequently"
+      ],
+      "examples": [
+        "Instead of one large feature branch, create multiple smaller PRs",
+        "Use feature flags to merge incomplete features safely"
+      ],
+      "anti_patterns": [
+        "Long-lived feature branches (weeks or months)",
+        "Waiting until feature is 'perfect' before merging"
+      ]
+    },
+    {
+      "practice_id": "BP002",
+      "title": "Regularly Sync with Main Branch",
+      "description": "Keep feature branches up-to-date with main to reduce conflict size",
+      "category": "Prevention",
+      "impact": "High",
+      "implementation": [
+        "Rebase or merge main into feature branch daily",
+        "Resolve small conflicts incrementally",
+        "Stay aware of changes in main branch"
+      ],
+      "examples": [
+        "git pull --rebase origin main (daily)",
+        "git merge origin/main (for shared branches)"
+      ],
+      "anti_patterns": [
+        "Never syncing until ready to merge",
+        "Ignoring main branch changes"
+      ]
+    },
+    {
+      "practice_id": "BP003",
+      "title": "Use Automated Code Formatters",
+      "description": "Eliminate formatting conflicts with consistent automated formatting",
+      "category": "Prevention",
+      "impact": "Medium",
+      "implementation": [
+        "Configure pre-commit hooks with formatters",
+        "Use tools like Black, Prettier, gofmt",
+        "Enforce formatting in CI/CD"
+      ],
+      "examples": [
+        "pre-commit hook with black for Python",
+        "prettier with husky for JavaScript"
+      ],
+      "anti_patterns": [
+        "Manual formatting leading to inconsistencies",
+        "No formatting standards"
+      ]
+    },
+    {
+      "practice_id": "BP004",
+      "title": "Enable Git Rerere",
+      "description": "Let Git remember how you resolved conflicts previously",
+      "category": "Automation",
+      "impact": "Medium",
+      "implementation": [
+        "git config --global rerere.enabled true",
+        "Train rerere with your resolutions",
+        "Review recorded resolutions periodically"
+      ],
+      "examples": [
+        "Rerere automatically resolves repeated conflicts during rebases"
+      ],
+      "anti_patterns": [
+        "Not using rerere for repetitive conflicts",
+        "Resolving same conflict multiple times manually"
+      ]
+    },
+    {
+      "practice_id": "BP005",
+      "title": "Test After Every Conflict Resolution",
+      "description": "Always verify that resolved conflicts don't break functionality",
+      "category": "Quality Assurance",
+      "impact": "Critical",
+      "implementation": [
+        "Run full test suite after resolution",
+        "Manual testing of affected features",
+        "Code review of conflict resolutions"
+      ],
+      "examples": [
+        "npm test or pytest after resolving conflicts",
+        "Manual QA for user-facing changes"
+      ],
+      "anti_patterns": [
+        "Committing resolved conflicts without testing",
+        "Assuming resolution is correct without verification"
+      ]
+    },
+    {
+      "practice_id": "BP006",
+      "title": "Communicate During Conflict Resolution",
+      "description": "Coordinate with team members when resolving complex conflicts",
+      "category": "Collaboration",
+      "impact": "High",
+      "implementation": [
+        "Consult original code authors",
+        "Discuss resolution approach in team chat",
+        "Document resolution rationale in commit message"
+      ],
+      "examples": [
+        "Tag teammate in PR comment: 'Hey @author, which approach should we use?'",
+        "Detailed commit message explaining why certain approach was chosen"
+      ],
+      "anti_patterns": [
+        "Silently resolving conflicts without consulting others",
+        "Making assumptions about intent"
+      ]
+    },
+    {
+      "practice_id": "BP007",
+      "title": "Learn from Conflicts",
+      "description": "Analyze patterns in conflicts to prevent future occurrences",
+      "category": "Continuous Improvement",
+      "impact": "Medium",
+      "implementation": [
+        "Track which files conflict most often",
+        "Identify structural issues causing conflicts",
+        "Refactor problem areas"
+      ],
+      "examples": [
+        "If config file always conflicts, split into multiple files",
+        "If function conflicts frequently, it may be doing too much"
+      ],
+      "anti_patterns": [
+        "Treating conflicts as normal without analysis",
+        "Not learning from repeated conflict patterns"
+      ]
+    }
+  ],
+  "learning_outcomes": [
+    {
+      "outcome_id": "LO-PR123-1",
+      "timestamp": "2026-01-02T13:11:15.831607",
+      "conflict_type": "content",
+      "strategy_used": "auto_merge",
+      "success": true,
+      "time_to_resolve": 5.0,
+      "manual_intervention_required": false,
+      "lessons_learned": [
+        "Successfully resolved src/config.py",
+        "Strategy: Rerere (Reuse Recorded Resolution) was effective"
+      ],
+      "improvements_suggested": [
+        "Keep using automated resolution"
+      ]
+    },
+    {
+      "outcome_id": "LO-PR123-2",
+      "timestamp": "2026-01-02T13:11:15.831625",
+      "conflict_type": "content",
+      "strategy_used": "auto_merge",
+      "success": true,
+      "time_to_resolve": 5.0,
+      "manual_intervention_required": false,
+      "lessons_learned": [
+        "Successfully resolved src/auth.py",
+        "Strategy: Rerere (Reuse Recorded Resolution) was effective"
+      ],
+      "improvements_suggested": [
+        "Keep using automated resolution"
+      ]
+    }
+  ],
+  "resolution_techniques": [
+    {
+      "technique_id": "RT001",
+      "name": "Accept Both Changes with Manual Review",
+      "description": "Merge both changes and manually review for correctness",
+      "applicable_types": [
+        "content"
+      ],
+      "strategy": "accept_both",
+      "commands": [
+        "# Manual editing required",
+        "git add <file>",
+        "git commit -m 'Resolved conflict by merging both changes'"
+      ],
+      "prerequisites": [
+        "Understanding of code context",
+        "Review capability"
+      ],
+      "success_rate": 0.85,
+      "risk_level": "Medium",
+      "automation_level": "Semi-Automated"
+    },
+    {
+      "technique_id": "RT002",
+      "name": "Whitespace Normalization",
+      "description": "Automatically resolve whitespace-only conflicts",
+      "applicable_types": [
+        "whitespace"
+      ],
+      "strategy": "auto_merge",
+      "commands": [
+        "git merge -Xignore-space-change <branch>",
+        "git merge -Xignore-all-space <branch>"
+      ],
+      "prerequisites": [
+        "Git 2.0+"
+      ],
+      "success_rate": 0.98,
+      "risk_level": "Low",
+      "automation_level": "Fully Automated"
+    },
+    {
+      "technique_id": "RT003",
+      "name": "Three-Way Merge with Common Ancestor",
+      "description": "Use common ancestor to intelligently merge changes",
+      "applicable_types": [
+        "content"
+      ],
+      "strategy": "three_way_merge",
+      "commands": [
+        "git merge-base <branch1> <branch2>",
+        "git merge-file <current> <base> <incoming>"
+      ],
+      "prerequisites": [
+        "Access to merge base"
+      ],
+      "success_rate": 0.75,
+      "risk_level": "Medium",
+      "automation_level": "Semi-Automated"
+    },
+    {
+      "technique_id": "RT004",
+      "name": "Import Statement Smart Merge",
+      "description": "Intelligently merge import statements alphabetically",
+      "applicable_types": [
+        "content"
+      ],
+      "strategy": "auto_merge",
+      "commands": [
+        "# Python: Sort imports with isort",
+        "isort <file>",
+        "# JavaScript: Sort with eslint",
+        "eslint --fix <file>"
+      ],
+      "prerequisites": [
+        "Code formatters installed"
+      ],
+      "success_rate": 0.95,
+      "risk_level": "Low",
+      "automation_level": "Fully Automated"
+    },
+    {
+      "technique_id": "RT005",
+      "name": "Configuration Key Merge",
+      "description": "Merge configuration files by key, keeping all unique keys",
+      "applicable_types": [
+        "content"
+      ],
+      "strategy": "semantic_merge",
+      "commands": [
+        "# Use specialized config merge tools",
+        "# JSON: jq for merging",
+        "# YAML: yq for merging"
+      ],
+      "prerequisites": [
+        "Config-aware merge tools"
+      ],
+      "success_rate": 0.9,
+      "risk_level": "Low",
+      "automation_level": "Fully Automated"
+    },
+    {
+      "technique_id": "RT006",
+      "name": "Recursive Strategy with Patience",
+      "description": "Use patience diff algorithm for better merge results",
+      "applicable_types": [
+        "content"
+      ],
+      "strategy": "recursive",
+      "commands": [
+        "git merge -s recursive -X patience <branch>",
+        "git merge -s recursive -X diff-algorithm=patience <branch>"
+      ],
+      "prerequisites": [
+        "Git 1.7.10+"
+      ],
+      "success_rate": 0.8,
+      "risk_level": "Low",
+      "automation_level": "Automated"
+    },
+    {
+      "technique_id": "RT007",
+      "name": "Rerere (Reuse Recorded Resolution)",
+      "description": "Automatically apply previously recorded conflict resolutions",
+      "applicable_types": [
+        "content"
+      ],
+      "strategy": "auto_merge",
+      "commands": [
+        "git config --global rerere.enabled true",
+        "# Git will automatically reuse resolutions"
+      ],
+      "prerequisites": [
+        "Git rerere enabled"
+      ],
+      "success_rate": 0.99,
+      "risk_level": "Very Low",
+      "automation_level": "Fully Automated"
+    }
+  ],
+  "knowledge_summary": {
+    "last_updated": "2026-01-02T13:11:15.833229",
+    "total_patterns": 7,
+    "total_techniques": 7,
+    "total_scenarios": 2,
+    "total_tools": 5,
+    "total_best_practices": 7,
+    "total_learning_outcomes": 2,
+    "strategy_success_rates": {
+      "auto_merge": 1.0
+    }
+  }
+}
