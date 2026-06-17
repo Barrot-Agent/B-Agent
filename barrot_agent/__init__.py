@@ -7,6 +7,10 @@ SmartAgent
     Autonomous plan-act-observe agent with built-in tools.
 AgentEvent, AgentEventType, PlanStep, ToolCall, ToolResult
     Supporting data models for the agent loop.
+DatasetManager, AssetLoader, DatasetAnalytics
+    3D dataset absorption and rendering utilities.
+data_registry
+    Central data access layer for all canonical JSON datasets.
 """
 
 from .smart_agent import (
@@ -18,6 +22,24 @@ from .smart_agent import (
     SmartAgent,
 )
 
+__version__ = "2.0.0"
+__author__ = "Barrot-Agent"
+
+try:
+    from barrot_agent.rendering import DatasetManager, AssetLoader, DatasetAnalytics
+    _rendering_available = True
+except Exception:
+    _rendering_available = False
+
+# Expose the central data registry so callers can do:
+#   from barrot_agent import data_registry
+#   data_registry.load_millennium_problems()
+try:
+    from data import registry as data_registry
+    _registry_available = True
+except Exception:
+    _registry_available = False
+
 __all__ = [
     "AgentEvent",
     "AgentEventType",
@@ -25,20 +47,8 @@ __all__ = [
     "ToolCall",
     "ToolResult",
     "SmartAgent",
-Barrot Agent — AI-powered assistant with real-time 3D rendering capability.
-
-This package provides the core agent logic as well as the comprehensive
-dataset absorption system that enables Barrot to load, process, and render
-assets from 40+ major global 3D datasets.
-"""
-
-__version__ = "2.0.0"
-__author__ = "Barrot-Agent"
-
-from barrot_agent.rendering import DatasetManager, AssetLoader, DatasetAnalytics
-
-__all__ = [
-    "DatasetManager",
-    "AssetLoader",
-    "DatasetAnalytics",
+    "data_registry",
 ]
+
+if _rendering_available:
+    __all__ += ["DatasetManager", "AssetLoader", "DatasetAnalytics"]
