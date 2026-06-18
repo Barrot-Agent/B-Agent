@@ -1,0 +1,9 @@
+{
+  "name": "B-Agent-Runtime",
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "rust-lang.rust-analyzer"]
+    }
+  }
+}
