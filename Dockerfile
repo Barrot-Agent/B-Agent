@@ -1,21 +1,17 @@
-FROM mcr.microsoft.com/devcontainers/python:3.13
+FROM python:3.11-slim
 
-# Install system dependencies for animation and computation
-RUN apt-get update && apt-get install -y \
-    rustc \
-    cargo \
-    ffmpeg \
-    libssl-dev \
-    pkg-config \
-    && rm -rf /var/lib/apt/lists/*
+# Install system dependencies and git
+RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
-# Install AI and processing libraries
-RUN pip install --no-cache-dir \
-    huggingface_hub \
-    hf-xet \
-    pyyaml \
-    numpy \
-    opencv-python
+# Install uv for ultra-fast, lightweight package execution
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+ENV PATH="/root/.local/bin/:${PATH}"
 
-# Set working directory to the workspace
-WORKDIR /workspaces/B-Agent
+# Setup workspace
+WORKDIR /workspace
+RUN git clone https://github.com/SeanDrew-LeadTechArchitect/B-Agent.git /workspace/B-Agent
+
+# Expose the Model Context Protocol standard standard-input/standard-output port
+ENTRYPOINT ["uvx", "mcp-server-git", "--repository", "/workspace/B-Agent"]
+
