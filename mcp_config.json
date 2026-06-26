@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "barrot-core-repository": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "/workspace/B-Agent"
+      ],
+      "env": {
+        "XRP_ENV": "production",
+        "STABILITY_ANCHOR": "0.707"
+      }
+    }
+  }
+}
