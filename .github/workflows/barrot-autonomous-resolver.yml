@@ -12,7 +12,7 @@ on:
 permissions:
   contents: read
   issues: write
-  pull-requests: read
+  pull-requests: write
 
 jobs:
   resolve:
@@ -117,6 +117,37 @@ jobs:
                 2>/dev/null && echo "  ✅ Issue #$ISSUE_NUM assigned." \
                             || echo "  ⚠️  Could not assign issue #$ISSUE_NUM."
             done <<< "$UNASSIGNED"
+          fi
+
+          echo "=== Barrot Autonomous Resolver cycle complete ==="
+
+      # -----------------------------------------------------------------------
+      # 3. Open PRs not yet assigned to Copilot → assign them
+      # -----------------------------------------------------------------------
+      - name: Assign unassigned pull requests to Copilot
+        run: |
+          set +e
+          echo "=== Scanning for open pull requests with no assignees ==="
+
+          UNASSIGNED_PRS=$(gh pr list \
+            --repo "$REPO" \
+            --state open \
+            --limit 100 \
+            --json number,title,assignees \
+            --jq '.[] | select(.assignees | length == 0) | .number' \
+            2>/dev/null || true)
+
+          if [ -z "$UNASSIGNED_PRS" ]; then
+            echo "No unassigned open pull requests found."
+          else
+            while IFS= read -r PR_NUM; do
+              echo "  Assigning PR #$PR_NUM to Copilot…"
+              gh pr edit "$PR_NUM" \
+                --repo "$REPO" \
+                --add-assignee "Copilot" \
+                2>/dev/null && echo "  ✅ PR #$PR_NUM assigned." \
+                            || echo "  ⚠️  Could not assign PR #$PR_NUM."
+            done <<< "$UNASSIGNED_PRS"
           fi
 
           echo "=== Barrot Autonomous Resolver cycle complete ==="
