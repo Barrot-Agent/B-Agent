@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment files
+.env
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+=======
 # Python bytecode
 __pycache__/
 *.py[cod]
@@ -67,10 +91,13 @@ output/
 *.cache
 *.csv
 *.parquet
+>>>>>>> origin/main
 
 # OS
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
+=======
 
 # IDE files
 .vscode/
@@ -113,3 +140,4 @@ ingestion_logs/
 # Dependency micro-ingestion outputs (regenerated on each run)
 ingested_dependencies/
 .env
+>>>>>>> origin/main
