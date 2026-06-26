@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Apex Lattice CLI entry point.
 
@@ -97,3 +98,11 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+=======
+"""Entry point so the package can be invoked with `python -m apex_lattice`."""
+
+import sys
+from .cli import main
+
+sys.exit(main())
+>>>>>>> origin/main

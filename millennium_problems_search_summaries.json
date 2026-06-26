@@ -1,0 +1,44 @@
+{
+  "riemann_hypothesis": {
+    "quick_summary": "All non-trivial zeros of the Riemann zeta function have real part equal to 1/2.",
+    "ai_relevance": "Medium - Pattern recognition in zeros distribution",
+    "status": "Open (most famous unsolved problem in mathematics)",
+    "barrot_stage": "Framework ingestion complete",
+    "computational_approach": "Numerical analysis, pattern detection with ML, statistical analysis of zeros",
+    "key_insight": "Billions of zeros computed, all satisfy hypothesis - neural networks could search for patterns",
+    "search_tags": [
+      "prime-numbers",
+      "number-theory",
+      "zeta-function",
+      "pattern-recognition",
+      "cryptography"
+    ]
+  },
+  "p_vs_np": {
+    "quick_summary": "Does P = NP? In other words, can every problem whose solution can be quickly verified by a computer also be quickly solved by a computer?",
+    "ai_relevance": "**VERY HIGH** - Central to computational complexity and algorithm design",
+    "status": "Open",
+    "impact": "Central to computational complexity and algorithm design",
+    "ml_connection": "Many ML optimization problems are NP-hard",
+    "search_tags": [
+      "complexity-theory",
+      "optimization",
+      "np-complete",
+      "algorithm-design"
+    ]
+  },
+  "navier_stokes": {
+    "quick_summary": "Prove that solutions to the Navier-Stokes equations (describing fluid flow) always exist and remain smooth, or find a counterexample.",
+    "ai_relevance": "**HIGH** - Direct applications in physics-informed neural networks",
+    "status": "Open",
+    "practical_use": "Physics-informed neural networks (PINNs) for fluid simulation",
+    "research_area": "Turbulence analysis and chaotic systems",
+    "search_tags": [
+      "fluid-dynamics",
+      "PINNs",
+      "pde",
+      "simulation",
+      "turbulence"
+    ]
+  }
+}

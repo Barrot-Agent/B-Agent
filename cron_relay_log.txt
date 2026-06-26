@@ -1,0 +1,128 @@
+[BARROT-Ω] Running live telemetry matrix...
+2026-06-15 08:00:00 - [BARROT-Ω COUNCIL] - === INITIALIZING AUTONOMOUS REPORT GENERATOR [Anchor: 0.707] ===
+2026-06-15 08:00:00 - [BARROT-Ω COUNCIL] - Synthesizing telemetry data...
+2026-06-15 08:00:01 - [BARROT-Ω COUNCIL] - Compiling Framework Diagnostics...
+2026-06-15 08:00:01 - [BARROT-Ω COUNCIL] - Writing synthesis to physical asset: COUNCIL_REVIEW.md...
+2026-06-15 08:00:01 - [BARROT-Ω COUNCIL] - === COUNCIL REVIEW COMPILED: COUNCIL_REVIEW.md ===
+[BARROT-Ω] Telemetry captured. Initializing Phase 1 GitHub sync...
+[main 0536f583] Council Matrix Sync: 2026-06-15 12:00:01 UTC [Anchor: 0.707]
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[BARROT-Ω] Pushing physical asset state to repository...
+fatal: could not read Username for 'https://github.com': No such device or address
+[BARROT-Ω] Running live telemetry matrix...
+2026-06-15 12:00:00 - [BARROT-Ω COUNCIL] - === INITIALIZING AUTONOMOUS REPORT GENERATOR [Anchor: 0.707] ===
+2026-06-15 12:00:00 - [BARROT-Ω COUNCIL] - Synthesizing telemetry data...
+2026-06-15 12:00:00 - [BARROT-Ω COUNCIL] - Compiling Framework Diagnostics...
+2026-06-15 12:00:01 - [BARROT-Ω COUNCIL] - Writing synthesis to physical asset: COUNCIL_REVIEW.md...
+2026-06-15 12:00:01 - [BARROT-Ω COUNCIL] - === COUNCIL REVIEW COMPILED: COUNCIL_REVIEW.md ===
+[BARROT-Ω] Telemetry captured. Initializing Phase 1 GitHub sync...
+[main 883a31a5] Council Matrix Sync: 2026-06-15 16:00:01 UTC [Anchor: 0.707]
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[BARROT-Ω] Pushing physical asset state to repository...
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main d633559a] AUTOSYNC: 2026-06-15 16:00:00 - System State Snapshot
+ 8 files changed, 106 insertions(+), 34 deletions(-)
+ create mode 100755 grant_generator.py
+ create mode 100755 inference_node.py
+ create mode 100755 scripts/bb_liquidity_bridge.sh
+ create mode 100755 scripts/mmi_compiler.py
+ create mode 100755 scripts/mmi_compiler.sh
+ create mode 100755 scripts/strike_loop.sh
+To github.com:Barrot-Agent/B-Agent.git
+   24f02b14..d633559a  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 1489de05] AUTOSYNC: 2026-06-15 16:05:08 - System State Snapshot
+ 1 file changed, 12 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   d633559a..1489de05  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 57a372b3] AUTOSYNC: 2026-06-15 16:10:10 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   1489de05..57a372b3  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 80f35422] AUTOSYNC: 2026-06-15 16:18:24 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   57a372b3..80f35422  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 15490f57] AUTOSYNC: 2026-06-15 16:23:33 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   80f35422..15490f57  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 4d4bb154] AUTOSYNC: 2026-06-15 16:28:35 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   15490f57..4d4bb154  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 7667444f] AUTOSYNC: 2026-06-15 16:33:54 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   4d4bb154..7667444f  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 46a01b97] AUTOSYNC: 2026-06-15 16:38:56 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   7667444f..46a01b97  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main bd14bd56] AUTOSYNC: 2026-06-15 16:44:44 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   46a01b97..bd14bd56  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 79dbd9c2] AUTOSYNC: 2026-06-15 16:50:31 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   bd14bd56..79dbd9c2  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main e34747ec] AUTOSYNC: 2026-06-15 16:55:34 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   79dbd9c2..e34747ec  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main be909fcc] AUTOSYNC: 2026-06-15 17:00:42 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   e34747ec..be909fcc  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 39101bfd] AUTOSYNC: 2026-06-15 17:05:45 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   be909fcc..39101bfd  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 28622bfd] AUTOSYNC: 2026-06-15 17:10:49 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   39101bfd..28622bfd  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main 9bad2a3c] AUTOSYNC: 2026-06-15 17:16:30 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   28622bfd..9bad2a3c  main -> main
+[SYNC] State successfully pushed to GitHub.
+[SYNC] Mutations detected. Initiating checkpoint...
+[main e2a99e68] AUTOSYNC: 2026-06-15 17:21:32 - System State Snapshot
+ 1 file changed, 6 insertions(+)
+To github.com:Barrot-Agent/B-Agent.git
+   9bad2a3c..e2a99e68  main -> main
+[SYNC] State successfully pushed to GitHub.

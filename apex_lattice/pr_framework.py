@@ -1,16 +1,27 @@
 """
+<<<<<<< HEAD
 PR Implementation Framework.
 
 Generates well-documented pull request bodies from a list of
 Recommendation objects.  When a GitHub token is available the framework
 will open real PRs via the GitHub REST API; otherwise it writes the PR
 document to .apex_lattice/findings/ for manual review.
+=======
+PRFramework — generates pull-request bodies from recommendations.
+
+In a live environment this module would call the GitHub API to open
+a real PR.  For portability the default implementation writes a
+Markdown document to ``.apex_lattice/recommendations/`` and returns
+the path.  Call ``open_github_pr()`` when the GITHUB_TOKEN environment
+variable is set.
+>>>>>>> origin/main
 """
 
 from __future__ import annotations
 
 import json
 import os
+<<<<<<< HEAD
 import uuid
 from dataclasses import asdict
 from datetime import datetime, timezone
@@ -143,3 +154,167 @@ class PRFramework:
         path = self._findings_dir / filename
         with path.open("w", encoding="utf-8") as fh:
             json.dump(pr_doc, fh, indent=2, default=str)
+=======
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any
+
+from .recommendations import Recommendation
+
+_DEFAULT_PR_DIR = Path(".apex_lattice") / "recommendations"
+
+
+class PRFramework:
+    """Creates pull-request artefacts from recommendations."""
+
+    def __init__(
+        self,
+        pr_dir: Path | str | None = None,
+        github_token: str | None = None,
+        repo: str | None = None,
+    ) -> None:
+        self._dir = Path(pr_dir) if pr_dir else _DEFAULT_PR_DIR
+        self._dir.mkdir(parents=True, exist_ok=True)
+        self._token = github_token or os.getenv("GITHUB_TOKEN", "")
+        self._repo = repo or os.getenv("GITHUB_REPOSITORY", "")
+
+    # ------------------------------------------------------------------
+    # Public API
+    # ------------------------------------------------------------------
+
+    def create_pr_document(
+        self,
+        recs: list[Recommendation],
+        title: str | None = None,
+        branch: str | None = None,
+    ) -> Path:
+        """
+        Write a Markdown PR document summarising all recommendations.
+        Returns the path to the file.
+        """
+        ts = int(time.time())
+        safe_title = (title or "apex-lattice-improvements").lower().replace(" ", "-")
+        filename = f"pr-{ts}-{safe_title}.md"
+        dest = self._dir / filename
+
+        body = self._build_pr_body(recs, title=title, branch=branch)
+        dest.write_text(body, encoding="utf-8")
+        return dest
+
+    def open_github_pr(
+        self,
+        recs: list[Recommendation],
+        *,
+        title: str | None = None,
+        head_branch: str = "apex-lattice/improvements",
+        base_branch: str = "Main",
+    ) -> dict[str, Any]:
+        """
+        Open a real GitHub pull request via the REST API.
+
+        Requires GITHUB_TOKEN and GITHUB_REPOSITORY env vars (or values
+        passed to the constructor).  Returns the parsed API response.
+        Raises ``RuntimeError`` if credentials are missing or the API
+        call fails.
+        """
+        if not self._token:
+            raise RuntimeError(
+                "GITHUB_TOKEN is not set.  "
+                "Pass github_token= to PRFramework or set the environment variable."
+            )
+        if not self._repo:
+            raise RuntimeError(
+                "GITHUB_REPOSITORY is not set (expected 'owner/repo' format).  "
+                "Pass repo= to PRFramework or set the environment variable."
+            )
+
+        pr_title = title or "Apex Lattice: Infrastructure Improvement Proposals"
+        body = self._build_pr_body(recs, title=pr_title, branch=head_branch)
+
+        payload = json.dumps(
+            {
+                "title": pr_title,
+                "head": head_branch,
+                "base": base_branch,
+                "body": body,
+                "draft": False,
+            }
+        ).encode()
+
+        url = f"https://api.github.com/repos/{self._repo}/pulls"
+        req = urllib.request.Request(
+            url,
+            data=payload,
+            headers={
+                "Authorization": f"Bearer {self._token}",
+                "Accept": "application/vnd.github+json",
+                "Content-Type": "application/json",
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+            method="POST",
+        )
+
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read().decode())
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode(errors="replace")
+            raise RuntimeError(
+                f"GitHub API returned {exc.code}: {detail}"
+            ) from exc
+
+    # ------------------------------------------------------------------
+    # Private
+    # ------------------------------------------------------------------
+
+    def _build_pr_body(
+        self,
+        recs: list[Recommendation],
+        *,
+        title: str | None,
+        branch: str | None,
+    ) -> str:
+        lines = [
+            f"# {title or 'Apex Lattice: Infrastructure Improvement Proposals'}",
+            "",
+            "> *Auto-generated by the Apex Lattice sandbox analysis pipeline.*",
+            "",
+            "## Summary",
+            "",
+            f"This PR contains **{len(recs)} improvement proposal(s)** generated by "
+            "the Apex Lattice cascade analysis system.  Each proposal is derived from "
+            "findings produced by six specialised analyzers that inspected the "
+            "`.apex_lattice` sandbox artefacts.",
+            "",
+        ]
+
+        if branch:
+            lines += [f"**Branch:** `{branch}`", ""]
+
+        lines += [
+            "## Proposals",
+            "",
+        ]
+
+        for i, rec in enumerate(recs, 1):
+            lines.append(f"### {i}. {rec.title}")
+            lines.append("")
+            lines.append(f"**Priority:** `{rec.priority}`  ")
+            lines.append(f"**Category:** `{rec.category}`")
+            lines.append("")
+            lines.append(rec.rationale)
+            lines.append("")
+            lines.append("**Action Items:**")
+            for item in rec.action_items:
+                lines.append(f"- {item}")
+            lines.append("")
+
+        lines += [
+            "---",
+            "",
+            "*Review each proposal and merge or close as appropriate.*",
+        ]
+        return "\n".join(lines)
+>>>>>>> origin/main
