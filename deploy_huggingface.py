@@ -17,7 +17,7 @@ import os
 import sys
 from pathlib import Path
 
-from huggingface_hub import HfApi, Repository, create_repo, upload_folder
+from huggingface_hub import HfApi, create_repo, upload_folder
 from huggingface_hub.utils import RepositoryNotFoundError
 
 logging.basicConfig(
