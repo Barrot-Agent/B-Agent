@@ -1,0 +1,32 @@
+name: Barrot-Ω Hourly Telemetry Archive
+on:
+  schedule:
+    - cron: "0 * * * *"   # every hour
+  workflow_dispatch:        # manual trigger
+
+jobs:
+  telemetry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install requests websockets
+
+      - name: Run XRP Telemetry Matrix
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python xrp_telemetry_matrix.py
+
+      - name: Commit council review
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Ω"
+          git add COUNCIL_REVIEW.md
+          git diff --staged --quiet || git commit -m "⚡ Barrot-Ω: hourly telemetry archive"
+          git push
