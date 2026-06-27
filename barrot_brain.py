@@ -75,8 +75,10 @@ class BarrotBrain:
     """
     GITHUB_ENDPOINT = "https://models.inference.ai.azure.com/chat/completions"
     GROQ_ENDPOINT   = "https://api.groq.com/openai/v1/chat/completions"
+    FIREWORKS_ENDPOINT = "https://api.fireworks.ai/inference/v1/chat/completions"
+    FIREWORKS_MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
     GITHUB_MODEL    = "gpt-4o"
-    GROQ_MODEL      = "llama-3.1-70b-versatile"
+    GROQ_MODEL      = "llama-3.3-70b-versatile"
 
     def __init__(self):
         self.auth     = GitHubAppAuth()
@@ -120,7 +122,13 @@ class BarrotBrain:
                     timeout=20)
                 return r.json()["choices"][0]["message"]["content"]
             except Exception as e:
-                return f"[BARROT] Both backends failed: {e}"
+                fw_key = os.getenv("FIREWORKS_API_KEY","")
+        if fw_key:
+            try:
+                r = requests.post(self.FIREWORKS_ENDPOINT, headers={"Authorization":f"Bearer {fw_key}","Content-Type":"application/json"}, json={"model":self.FIREWORKS_MODEL,"messages":messages,"max_tokens":1024}, timeout=20)
+                return r.json()["choices"][0]["message"]["content"]
+            except: pass
+        return f"[BARROT] All backends failed: {e}"
 
         return "[BARROT] No inference backend. Set GITHUB_APP credentials or GROQ_API_KEY."
 
