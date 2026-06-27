@@ -229,13 +229,19 @@ def save_reports(analysis_results: dict | None = None):
 
     # Daily summary (plain text)
     summary = json_report["data"].get("summary", {})
+    average_progress = summary.get("average_millennium_progress_pct", 0)
+    if isinstance(average_progress, (int, float)):
+        average_progress_text = f"{average_progress:.1f}%"
+    else:
+        average_progress_text = str(average_progress)
+
     txt_lines = [
         "BARROT APEX LATTICE — DAILY SUMMARY",
         "=" * 40,
         f"Date: {date_str}",
         f"Problems analyzed: {summary.get('problems_analyzed', 0)}",
         f"Extended domains:  {summary.get('extended_domains_analyzed', 0)}",
-        f"Avg MP progress:   {summary.get('average_millennium_progress_pct', 0):.1f}%",
+        f"Avg MP progress:   {average_progress_text}",
         f"Cross-domain links:{summary.get('cross_domain_connections', 0)}",
         f"Novel insights:    {summary.get('novel_insights_generated', 0)}",
         "=" * 40,
