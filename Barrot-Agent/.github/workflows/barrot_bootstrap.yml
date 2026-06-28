@@ -1,0 +1,33 @@
+name: Barrot ENV Bootstrap
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write ENV
+        run: |
+          cat > barrot.env << EOF
+export HF_TOKEN=${{ secrets.HF_TOKEN }}
+export DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}
+export DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}
+export DATABRICKS_WAREHOUSE_ID=c85b8f4fea8cd527
+export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
+export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
+export GITLAB_TOKEN=${{ secrets.GITLAB_TOKEN }}
+export GH_TOKEN=${{ secrets.GH_TOKEN }}
+export GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
+export CHATGPT_TOKEN=${{ secrets.CHATGPT_TOKEN }}
+export GEMINI_TOKEN=${{ secrets.GEMINI_TOKEN }}
+export ZAPIER_WEBHOOK=${{ secrets.ZAPIER_WEBHOOK }}
+export DATABRICKS_CLIENT_ID=${{ secrets.DATABRICKS_CLIENT_ID }}
+export ANCHOR=0.707106781186548
+EOF
+      - name: Upload ENV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: barrot-env
+          path: barrot.env
+          retention-days: 1
