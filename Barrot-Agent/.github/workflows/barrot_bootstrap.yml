@@ -1,31 +1,38 @@
 name: Barrot ENV Bootstrap
-
 on:
   workflow_dispatch:
-
 jobs:
   bootstrap:
     runs-on: ubuntu-latest
     steps:
       - name: Write ENV
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GH_TOKEN_VAL: ${{ secrets.GH_TOKEN }}
+          CHATGPT_TOKEN: ${{ secrets.CHATGPT_TOKEN }}
+          GEMINI_TOKEN: ${{ secrets.GEMINI_TOKEN }}
+          ZAPIER_WEBHOOK: ${{ secrets.ZAPIER_WEBHOOK }}
+          DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
         run: |
-          cat > barrot.env << EOF
-export HF_TOKEN=${{ secrets.HF_TOKEN }}
-export DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}
-export DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}
-export DATABRICKS_WAREHOUSE_ID=c85b8f4fea8cd527
-export KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}
-export KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}
-export GITLAB_TOKEN=${{ secrets.GITLAB_TOKEN }}
-export GH_TOKEN=${{ secrets.GH_TOKEN }}
-export GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
-export CHATGPT_TOKEN=${{ secrets.CHATGPT_TOKEN }}
-export GEMINI_TOKEN=${{ secrets.GEMINI_TOKEN }}
-export ZAPIER_WEBHOOK=${{ secrets.ZAPIER_WEBHOOK }}
-export DATABRICKS_CLIENT_ID=${{ secrets.DATABRICKS_CLIENT_ID }}
-export ANCHOR=0.707106781186548
-EOF
-      - name: Upload ENV artifact
+          printf "export HF_TOKEN=%s\n" "$HF_TOKEN" > barrot.env
+          printf "export DATABRICKS_HOST=%s\n" "$DATABRICKS_HOST" >> barrot.env
+          printf "export DATABRICKS_TOKEN=%s\n" "$DATABRICKS_TOKEN" >> barrot.env
+          printf "export DATABRICKS_WAREHOUSE_ID=c85b8f4fea8cd527\n" >> barrot.env
+          printf "export KAGGLE_USERNAME=%s\n" "$KAGGLE_USERNAME" >> barrot.env
+          printf "export KAGGLE_KEY=%s\n" "$KAGGLE_KEY" >> barrot.env
+          printf "export GITLAB_TOKEN=%s\n" "$GITLAB_TOKEN" >> barrot.env
+          printf "export GH_TOKEN=%s\n" "$GH_TOKEN_VAL" >> barrot.env
+          printf "export CHATGPT_TOKEN=%s\n" "$CHATGPT_TOKEN" >> barrot.env
+          printf "export GEMINI_TOKEN=%s\n" "$GEMINI_TOKEN" >> barrot.env
+          printf "export ZAPIER_WEBHOOK=%s\n" "$ZAPIER_WEBHOOK" >> barrot.env
+          printf "export DATABRICKS_CLIENT_ID=%s\n" "$DATABRICKS_CLIENT_ID" >> barrot.env
+          printf "export ANCHOR=0.707106781186548\n" >> barrot.env
+      - name: Upload ENV
         uses: actions/upload-artifact@v4
         with:
           name: barrot-env
