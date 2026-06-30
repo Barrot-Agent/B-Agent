@@ -1,0 +1,4 @@
+git checkout -b chore/add-barrot-auto-pr-workflow
+git add .github/workflows/barrot-auto-pr.yml
+git commit -m "ci: add barrot auto-pr workflow trigger"
+git push -u origin chore/add-barrot-auto-pr-workflow
