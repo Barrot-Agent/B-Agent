@@ -25,6 +25,9 @@ jobs:
               params = {"access_token": token}
               if page_key: params["page_key"] = page_key
               r = requests.get("https://api.gumroad.com/v2/sales", params=params, timeout=20)
+              if r.status_code != 200:
+                  print(f"Sales API not yet available (HTTP {r.status_code}) — likely pending first sale/payout setup. Exiting clean.")
+                  break
               data = r.json()
               for sale in data.get("sales", []):
                   if "opvxi" in (sale.get("product_permalink") or "") or "XRP Signal" in (sale.get("product_name") or ""):
