@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barrot-Omega Signals - Subscribers</title>
+<style>
+body { font-family: monospace; background: #0a0a0f; color: #00ffcc; padding: 20px; max-width: 700px; margin: 0 auto; }
+h1 { text-align: center; }
+input { background: #0d0d1a; border: 1px solid #00ffcc; color: #00ffcc; padding: 12px; width: 100%; box-sizing: border-box; margin: 10px 0; }
+button { background: #00ffcc; color: #0a0a0f; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; width: 100%; }
+#signal { display: none; background: #0d0d1a; border: 1px solid #00ffcc; padding: 20px; margin-top: 20px; }
+.buy { color: #00ff88; font-size: 2em; font-weight: bold; }
+.sell { color: #ff4444; font-size: 2em; font-weight: bold; }
+.null { color: #ffcc00; font-size: 2em; font-weight: bold; }
+#err { color: #ff4444; display: none; margin-top: 10px; }
+.note { color: #00ffcc88; font-size: 0.85em; }
+</style>
+</head>
+<body>
+<h1>&#9889; Subscriber Signals</h1>
+<p class="note">Enter the email you used to subscribe on Gumroad.</p>
+<input type="email" id="email" placeholder="you@email.com">
+<button onclick="verify()">Unlock Signals</button>
+<p id="err">Email not found in active subscribers. Use your Gumroad purchase email, or subscribe at the link below.</p>
+<div id="signal">
+  <h2>Current MRP Signal</h2>
+  <div id="dir" class="null">LOADING</div>
+  <p id="price"></p>
+  <p id="ts" class="note"></p>
+</div>
+<p class="note" style="text-align:center;margin-top:30px;"><a href="https://prostarelite.gumroad.com/l/opvxi" style="color:#00ffcc;">Not a subscriber? Join for $9.99/mo</a></p>
+<p class="note" style="text-align:center;">Not financial advice. Trading involves risk of loss.</p>
+<script>
+async function verify() {
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  if (!email) return;
+  try {
+    const r = await fetch('subscribers.json?cb=' + Date.now());
+    const subs = await r.json();
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(email)); const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join(''); if (subs.emails && subs.emails.includes(hash)) {
+      document.getElementById('err').style.display = 'none';
+      const s = await fetch('../xrp_signal_latest.json?cb=' + Date.now());
+      const sig = await s.json();
+      const d = document.getElementById('dir');
+      d.textContent = sig.mrp_signal || 'NULL';
+      d.className = (sig.mrp_signal || 'null').toLowerCase();
+      document.getElementById('price').textContent = 'XRP: $' + (sig.price || sig.xrp_price || '—');
+      document.getElementById('ts').textContent = 'Generated: ' + (sig.timestamp || '—');
+      document.getElementById('signal').style.display = 'block';
+    } else {
+      document.getElementById('err').style.display = 'block';
+    }
+  } catch(e) {
+    document.getElementById('err').textContent = 'Error loading data. Try again shortly.';
+    document.getElementById('err').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
