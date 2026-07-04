@@ -10,59 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
-      - run: pip install requests PyYAML
-      - name: Barrot Autonomous Deployment
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      - name: Telemetry report (write access restricted to report file only)
         run: |
-          python3 << 'SCRIPT'
-          import os, json, requests, datetime
+          python3 - << 'SCRIPT'
+          import datetime
           from pathlib import Path
-          
-          ANCHOR = 0.707106781186548
-          GROQ_KEY = os.getenv("GROQ_API_KEY", "")
-          
-          print("BARROT AUTONOMOUS SELF-DEPLOYMENT")
-          print(f"UTC: {datetime.datetime.utcnow().isoformat()}Z")
-          
-          # Generate landing page
-          html = """<!DOCTYPE html>
-          <html>
-          <head>
-            <title>XRP Signal Service - Barrot-Ω</title>
-            <style>
-              body { font-family: monospace; background: #0a0a0f; color: #00ffcc; padding: 20px; }
-              h1 { text-align: center; }
-              .tier { background: #0d0d1a; border: 1px solid #00ffcc; padding: 20px; margin: 20px 0; }
-              button { background: #00ffcc; color: #0a0a0f; padding: 10px; cursor: pointer; }
-            </style>
-          </head>
-          <body>
-            <h1>XRP Signal Service</h1>
-            <div class="tier">
-              <h2>Pro - $9.99/month</h2>
-              <p>Live MRP signals with order book + sentiment analysis</p>
-              <button>Subscribe Now</button>
-            </div>
-          </body>
-          </html>"""
-          
-          Path("web").mkdir(exist_ok=True)
-          Path("web/landing.html").write_text(html)
-          
-          print("[DEPLOYMENT] Landing page created")
-          
           report = f"""# BARROT AUTONOMOUS DEPLOYMENT
           **Timestamp:** {datetime.datetime.utcnow().isoformat()}Z
-          **Status:** ✅ OPERATIONAL
-          - Landing Page: LIVE
-          - Payment Integration: CONFIGURED
-          - Dashboard: READY
+          **Status:** OPERATIONAL
+          - Mode: telemetry-only
+          - Policy: web/, core/, hf_space/ are human-managed. Workflow generation of product pages revoked 2026-07-04 after landing-page clobber incident.
           """
-          
           Path("AUTONOMOUS_DEPLOYMENT_REPORT.md").write_text(report)
           print(report)
           SCRIPT
@@ -70,5 +28,5 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add -A
-          git diff --staged --quiet || (git commit -m "chore: Barrot autonomous self-deployment" && git push origin main)
+          git add AUTONOMOUS_DEPLOYMENT_REPORT.md
+          git diff --staged --quiet || (git commit -m "chore: Barrot telemetry report" && git push origin main)
