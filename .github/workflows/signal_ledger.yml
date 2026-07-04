@@ -1,0 +1,33 @@
+name: Barrot Signal Ledger
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependencies
+        run: pip install numpy requests
+      - name: Emit signal
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python3 scripts/emit_signal.py
+      - name: Commit ledger (scoped, race-safe)
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add data/signal_ledger.jsonl web/latest_signal.json
+          git diff --staged --quiet && exit 0
+          git commit -m "ledger: hourly signal emission"
+          for i in 1 2 3; do git push origin main && exit 0 || git pull --rebase origin main; done
+          exit 1
