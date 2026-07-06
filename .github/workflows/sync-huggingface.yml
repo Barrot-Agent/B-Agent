@@ -34,3 +34,25 @@ jobs:
           )
           print("DEPLOYED")
           SCRIPT
+      - name: Propagate secrets to Space (GitHub secrets = source of truth)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          python3 - << 'SCRIPT'
+          from huggingface_hub import HfApi
+          import os
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          repo = "Scribedpengenius/Barrot-Omega"
+          for key in ("GROQ_API_KEY", "DATABRICKS_TOKEN"):
+              val = os.environ.get(key, "")
+              if val:
+                  api.add_space_secret(repo, key, val)
+                  print("secret set:", key)
+              else:
+                  print("skipped (not in GitHub secrets):", key)
+          api.add_space_variable(repo, "DATABRICKS_HOST", "dbc-82d64fee-1c2e.cloud.databricks.com")
+          api.add_space_variable(repo, "DATABRICKS_WAREHOUSE_ID", "c85b8f4fea8cd527")
+          print("variables set")
+          SCRIPT
