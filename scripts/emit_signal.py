@@ -52,11 +52,25 @@ def get_sentiment():
     if not key:
         return 0, 0.0, "", "sentiment: no GROQ_API_KEY"
     try:
-        r = requests.get("https://cryptonews.com/news/xrp-news/feed/", timeout=10,
-                         headers={"User-Agent": "BarrotOmega/1.0"})
-        titles = re.findall(r"<title><!\[CDATA\[(.*?)\]\]></title>", r.text)[:5]
+        feeds = [
+            "https://cointelegraph.com/rss/tag/xrp",
+            "https://cryptonews.com/news/xrp-news/feed/",
+        ]
+        titles = []
+        for url in feeds:
+            try:
+                fr = requests.get(url, timeout=10,
+                                  headers={"User-Agent": "Mozilla/5.0 (compatible; BarrotOmega/1.1)"})
+                found = re.findall(r"<title>(?:<!\[CDATA\[)?\s*(.*?)\s*(?:\]\]>)?</title>",
+                                   fr.text, re.S)
+                cleaned = [t.strip() for t in found[1:] if t.strip()][:5]
+                if cleaned:
+                    titles = cleaned
+                    break
+            except Exception:
+                continue
         if not titles:
-            return 0, 0.0, "", "sentiment: no headlines"
+            return 0, 0.0, "", "sentiment: no headlines (all feeds)"
         prompt = ('Return ONLY JSON {"score":<-1.0 to 1.0>,"reasoning":"<one sentence>"}. '
                   "Headlines:\n" + "\n".join(f"- {t}" for t in titles))
         resp = requests.post("https://api.groq.com/openai/v1/chat/completions",
