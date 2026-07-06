@@ -1,7 +1,7 @@
 {
-  "ts": "2026-07-06T11:49:23+00:00",
+  "ts": "2026-07-06T13:39:46+00:00",
   "asset": "XRP/USD",
-  "price": 1.14,
+  "price": 1.11,
   "state": 0,
   "label": "NULL",
   "raw_state": 0,
@@ -11,8 +11,8 @@
   "absolution": false,
   "sources": {
     "orderbook": {
-      "signal": 1,
-      "imbalance": 0.12
+      "signal": -1,
+      "imbalance": -0.1011
     },
     "sentiment": {
       "signal": 0,
