@@ -45,14 +45,23 @@ jobs:
           import os
           api = HfApi(token=os.environ["HF_TOKEN"])
           repo = "Scribedpengenius/Barrot-Omega"
-          for key in ("GROQ_API_KEY", "DATABRICKS_TOKEN"):
-              val = os.environ.get(key, "")
+          # resolve name collisions: variables and secrets must not share names
+          for name in ("DATABRICKS_HOST", "DATABRICKS_WAREHOUSE_ID", "GROQ_API_KEY", "DATABRICKS_TOKEN"):
+              try:
+                  api.delete_space_variable(repo, name)
+                  print("removed colliding variable:", name)
+              except Exception:
+                  pass
+          vals = {
+              "GROQ_API_KEY": os.environ.get("GROQ_API_KEY", ""),
+              "DATABRICKS_TOKEN": os.environ.get("DATABRICKS_TOKEN", ""),
+              "DATABRICKS_HOST": "dbc-82d64fee-1c2e.cloud.databricks.com",
+              "DATABRICKS_WAREHOUSE_ID": "c85b8f4fea8cd527",
+          }
+          for key, val in vals.items():
               if val:
                   api.add_space_secret(repo, key, val)
                   print("secret set:", key)
               else:
-                  print("skipped (not in GitHub secrets):", key)
-          api.add_space_variable(repo, "DATABRICKS_HOST", "dbc-82d64fee-1c2e.cloud.databricks.com")
-          api.add_space_variable(repo, "DATABRICKS_WAREHOUSE_ID", "c85b8f4fea8cd527")
-          print("variables set")
+                  print("skipped (missing):", key)
           SCRIPT
