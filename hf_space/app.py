@@ -45,7 +45,7 @@ except ImportError:
 # ══════════════════════════════════════════════════════════════════
 ANCHOR          = 0.707106781186548
 GITHUB_API      = "https://api.github.com"
-GITHUB_MODEL    = "gpt-4o"          # swap to Meta-Llama-3.1-70B-Instruct etc.
+GITHUB_MODEL = "google/gemma-3-12b-it"          # swap to Meta-Llama-3.1-70B-Instruct etc.
 MODELS_ENDPOINT = "https://models.inference.ai.azure.com"   # GitHub Models endpoint
 
 # ══════════════════════════════════════════════════════════════════
