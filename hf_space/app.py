@@ -48,6 +48,10 @@ GITHUB_API      = "https://api.github.com"
 GITHUB_MODEL = "google/gemma-3-12b-it"          # swap to Meta-Llama-3.1-70B-Instruct etc.
 MODELS_ENDPOINT = "https://models.inference.ai.azure.com"   # GitHub Models endpoint
 
+# Auto defaults (no manual setup required)
+os.environ.setdefault("GITHUB_MODEL", "google/gemma-3-12b-it")
+os.environ.setdefault("MODEL_PROVIDER", "github")
+
 # ══════════════════════════════════════════════════════════════════
 # GITHUB APP AUTH — JWT → Installation Token
 # ══════════════════════════════════════════════════════════════════
@@ -203,7 +207,7 @@ CAPABILITIES:
             elif self.groq_key:
                 return self._call_groq_fallback(messages)
             else:
-                return "[BARROT] No inference backend available. Set GITHUB_APP credentials or GROQ_API_KEY."
+                return "[BARROT] Waiting for backend credentials. GitHub Models is primary; Groq is fallback. Once secret sync completes, inference starts automatically."
         except Exception as e:
             return f"[BARROT] Inference error: {e}"
 
@@ -355,7 +359,7 @@ def main():
     # ════════════════════════════════════════════════════════════
     with tab1:
         st.markdown("### 💬 Speak to Barrot")
-        backend = "GitHub Models ✅" if auth.ready else ("Groq Fallback ⚡" if os.getenv("GROQ_API_KEY") else "❌ No backend")
+        backend = "GitHub Models ✅" if auth.ready else ("Groq Fallback ⚡" if (os.getenv("GROQ_API_KEY","").strip()) else "Auto-waiting for credentials ⏳")
         st.caption(f"Brain backend: {backend}")
 
         # Render history
