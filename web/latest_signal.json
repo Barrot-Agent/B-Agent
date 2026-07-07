@@ -1,5 +1,5 @@
 {
-  "ts": "2026-07-06T23:45:32+00:00",
+  "ts": "2026-07-07T01:06:31+00:00",
   "asset": "XRP/USD",
   "price": 1.15,
   "state": 0,
@@ -12,7 +12,7 @@
   "sources": {
     "orderbook": {
       "signal": 0,
-      "imbalance": -0.0477
+      "imbalance": 0.0344
     },
     "sentiment": {
       "signal": 0,
@@ -25,7 +25,7 @@
   },
   "anchor": 0.707106781186548,
   "degraded": [
-    "sentiment: 'choices'"
+    "sentiment: no GROQ_API_KEY"
   ],
   "ledger_url": "https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/data/signal_ledger.jsonl"
 }
