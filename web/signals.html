@@ -40,12 +40,12 @@ async function verify() {
     const subs = await r.json();
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(email)); const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join(''); if (subs.emails && subs.emails.includes(hash)) {
       document.getElementById('err').style.display = 'none';
-      const s = await fetch('../xrp_signal_latest.json?cb=' + Date.now());
+      const s = await fetch('latest_signal.json?cb=' + Date.now());
       const sig = await s.json();
       const d = document.getElementById('dir');
-      d.textContent = sig.mrp_signal || 'NULL';
-      d.className = (sig.mrp_signal || 'null').toLowerCase();
-      document.getElementById('price').textContent = 'XRP: $' + (sig.price || sig.xrp_price || '—');
+      const _m={'1':'BUY','0':'NULL','-1':'SELL'}; const _dir=_m[String(sig.score)]||'NULL'; d.textContent=_dir;
+      d.className=_dir.toLowerCase();
+      document.getElementById('price').textContent = sig.signal_text || '—';
       document.getElementById('ts').textContent = 'Generated: ' + (sig.timestamp || '—');
       document.getElementById('signal').style.display = 'block';
     } else {
