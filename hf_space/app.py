@@ -161,8 +161,8 @@ CAPABILITIES:
             timeout=30
         )
         data = r.json()
-print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
-return data["choices"][0]["message"]["content"]
+        print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
+        return data["choices"][0]["message"]["content"]
 
     def _call_groq_fallback(self, messages: list) -> str:
         r = requests.post(
@@ -172,8 +172,8 @@ return data["choices"][0]["message"]["content"]
             timeout=20
         )
         data = r.json()
-print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
-return data["choices"][0]["message"]["content"]
+        print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
+        return data["choices"][0]["message"]["content"]
 
     def think(self, user_message: str, history: list[dict] = None) -> str:
         """Core inference. History = list of {role, content} dicts."""
