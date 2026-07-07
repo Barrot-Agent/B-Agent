@@ -262,8 +262,8 @@ def get_sentiment_signal():
                                    "messages":[{"role":"user","content":prompt}],
                                    "temperature":0.1}, timeout=10)
         data = resp.json()
-print("=== SENTIMENT GROQ RAW ===", json.dumps(data, indent=2))
-parsed = json.loads(data["choices"][0]["message"]["content"].strip())
+        print("=== SENTIMENT GROQ RAW ===", json.dumps(data, indent=2))
+        parsed = json.loads(data["choices"][0]["message"]["content"].strip())
         score  = float(parsed.get("score",0))
         apex   = score * ANCHOR
         sig    = 1 if apex > 0.2 else (-1 if apex < -0.2 else 0)
