@@ -1,31 +1,8 @@
 {
-  "ts": "2026-07-07T02:09:47+00:00",
-  "asset": "XRP/USD",
-  "price": 1.14,
-  "state": 0,
-  "label": "NULL",
-  "raw_state": 0,
-  "confidence": 0.317,
-  "agreement": 0.333,
-  "convergence": 0.952,
-  "absolution": false,
-  "sources": {
-    "orderbook": {
-      "signal": 1,
-      "imbalance": 0.1542
-    },
-    "sentiment": {
-      "signal": 0,
-      "apex12": 0.0,
-      "reasoning": ""
-    },
-    "onchain": {
-      "signal": 0
-    }
-  },
-  "anchor": 0.707106781186548,
-  "degraded": [
-    "sentiment: no GROQ_API_KEY"
-  ],
-  "ledger_url": "https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/data/signal_ledger.jsonl"
+  "timestamp": "2026-07-07T03:37:38.447164+00:00",
+  "signal_text": "market sideways; low conviction",
+  "score": 0,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:missing GROQ_API_KEY)",
+  "generated_at_unix": 1783395458
 }
