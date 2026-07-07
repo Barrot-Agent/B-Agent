@@ -160,7 +160,9 @@ CAPABILITIES:
             json=payload,
             timeout=30
         )
-        return r.json()["choices"][0]["message"]["content"]
+        data = r.json()
+print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
+return data["choices"][0]["message"]["content"]
 
     def _call_groq_fallback(self, messages: list) -> str:
         r = requests.post(
@@ -169,7 +171,9 @@ CAPABILITIES:
             json={"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024},
             timeout=20
         )
-        return r.json()["choices"][0]["message"]["content"]
+        data = r.json()
+print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
+return data["choices"][0]["message"]["content"]
 
     def think(self, user_message: str, history: list[dict] = None) -> str:
         """Core inference. History = list of {role, content} dicts."""
@@ -242,7 +246,9 @@ def get_sentiment_signal():
                              json={"model":"llama-3.3-70b-versatile",
                                    "messages":[{"role":"user","content":prompt}],
                                    "temperature":0.1}, timeout=10)
-        parsed = json.loads(resp.json()["choices"][0]["message"]["content"].strip())
+        data = resp.json()
+print("=== SENTIMENT GROQ RAW ===", json.dumps(data, indent=2))
+parsed = json.loads(data["choices"][0]["message"]["content"].strip())
         score  = float(parsed.get("score",0))
         apex   = score * ANCHOR
         sig    = 1 if apex > 0.2 else (-1 if apex < -0.2 else 0)
