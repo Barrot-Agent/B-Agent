@@ -164,7 +164,22 @@ CAPABILITIES:
         print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
         return data["choices"][0]["message"]["content"]
 
+
     def _call_groq_fallback(self, messages: list) -> str:
+        r = requests.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers={"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
+            json={"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024},
+            timeout=20
+        )
+        data = r.json()
+        print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
+        try:
+            return data["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError) as e:
+            print("Groq parse error:", e)
+            return str(data)[:500]
+
         r = requests.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers={"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
