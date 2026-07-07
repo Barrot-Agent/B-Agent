@@ -147,69 +147,60 @@ CAPABILITIES:
         self.auth  = auth
         self.groq_key = os.getenv("GROQ_API_KEY", "")
 
+    def _post_chat(self, url, headers, payload, timeout, tag):
+        """Shared chat-completions POST that surfaces real upstream errors."""
+        r = requests.post(url, headers=headers, json=payload, timeout=timeout)
+        try:
+            data = r.json()
+        except Exception:
+            raise RuntimeError(f"{tag} non-JSON (HTTP {r.status_code}): {r.text[:200]}")
+        print(f"=== {tag} RAW ===", json.dumps(data, indent=2)[:1200])
+        if "choices" in data:
+            return data["choices"][0]["message"]["content"]
+        err = data.get("error")
+        msg = err.get("message", err) if isinstance(err, dict) else (err or data)
+        raise RuntimeError(f"{tag} error (HTTP {r.status_code}): {msg}")
+
     def _call_github_models(self, messages: list, model: str = GITHUB_MODEL) -> str:
         token = self.auth.get_installation_token()
-        payload = {
-            "model":    model,
-            "messages": messages,
-            "max_tokens": 1024,
-            "temperature": 0.7
-        }
-        r = requests.post(
+        return self._post_chat(
             f"{MODELS_ENDPOINT}/chat/completions",
-            headers={
-                "Authorization": f"Bearer {token}",
-                "Content-Type":  "application/json"
-            },
-            json=payload,
-            timeout=30
+            {"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            {"model": model, "messages": messages, "max_tokens": 1024, "temperature": 0.7},
+            30, "GitHub Models",
         )
-        data = r.json()
-        print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
-        return data["choices"][0]["message"]["content"]
-
 
     def _call_groq_fallback(self, messages: list) -> str:
-        r = requests.post(
+        return self._post_chat(
             "https://api.groq.com/openai/v1/chat/completions",
-            headers={"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
-            json={"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024},
-            timeout=20
+            {"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
+            {"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024},
+            20, "Groq",
         )
-        data = r.json()
-        print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
-        try:
-            return data["choices"][0]["message"]["content"]
-        except (KeyError, IndexError, TypeError) as e:
-            print("Groq parse error:", e)
-            return str(data)[:500]
-
-        r = requests.post(
-            "https://api.groq.com/openai/v1/chat/completions",
-            headers={"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
-            json={"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024},
-            timeout=20
-        )
-        data = r.json()
-        print("=== GROQ FALLBACK RAW ===", json.dumps(data, indent=2))
-        return data["choices"][0]["message"]["content"]
 
     def think(self, user_message: str, history: list[dict] = None) -> str:
-        """Core inference. History = list of {role, content} dicts."""
+        """Core inference with a real cascade: GitHub Models -> Groq."""
         messages = [{"role": "system", "content": self.SYSTEM_PROMPT}]
         if history:
             messages.extend(history)
         messages.append({"role": "user", "content": user_message})
 
-        try:
-            if self.auth.ready:
+        errors = []
+        if self.auth.ready:
+            try:
                 return self._call_github_models(messages)
-            elif self.groq_key:
+            except Exception as e:
+                errors.append(str(e))
+        if self.groq_key:
+            try:
                 return self._call_groq_fallback(messages)
-            else:
-                return "[BARROT] Waiting for backend credentials. GitHub Models is primary; Groq is fallback. Once secret sync completes, inference starts automatically."
-        except Exception as e:
-            return f"[BARROT] Inference error: {e}"
+            except Exception as e:
+                errors.append(str(e))
+        if not errors:
+            return ("[BARROT] Waiting for backend credentials. GitHub Models is primary; "
+                    "Groq is fallback. Once secret sync completes, inference starts automatically.")
+        return "[BARROT] All brain tiers failed → " + " | ".join(errors)
+
 
 
 # ══════════════════════════════════════════════════════════════════
