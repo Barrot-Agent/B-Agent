@@ -1,0 +1,381 @@
+# Dependency Micro-Ingestion Configuration
+# Configuration for Python, PyTorch, and popular dependencies ingestion
+
+ingestion_config:
+  version: "1.0"
+  last_updated: "2026-01-02"
+  
+  # Global ingestion settings
+  settings:
+    rate_limit: 1.0              # Seconds between requests
+    max_retries: 3                # Maximum retry attempts
+    timeout: 10                   # Request timeout in seconds
+    update_frequency: "weekly"    # How often to re-ingest (daily/weekly/monthly)
+    auto_update: true             # Enable automatic updates
+    parallel_ingestion: false     # Process packages in parallel (future feature)
+  
+  # Output configuration
+  output:
+    directory: "ingested_dependencies"
+    format: "json"
+    include_metadata: true
+    include_architecture: true
+    include_api: true
+    include_optimizations: true
+    generate_taxonomy: true
+  
+  # Analysis configuration
+  analysis:
+    extract_architecture: true    # Analyze package architecture
+    extract_api: true              # Extract API endpoints
+    extract_patterns: true         # Identify common patterns
+    generate_optimizations: true   # Generate Barrot-specific optimizations
+    track_updates: true            # Track package updates
+    security_scan: true            # Scan for security considerations
+  
+  # Package definitions
+  packages:
+    
+    # Core Python
+    python:
+      enabled: true
+      category: "core_python"
+      priority: "critical"
+      description: "Python standard library and language features"
+      sources:
+        - "https://docs.python.org/3/"
+        - "https://docs.python.org/3/library/"
+        - "https://docs.python.org/3/reference/"
+      repository: "https://github.com/python/cpython"
+      focus_areas:
+        - "Standard library modules"
+        - "Language syntax and semantics"
+        - "Built-in functions and types"
+        - "Concurrency (asyncio, threading, multiprocessing)"
+        - "Type hints and annotations"
+    
+    # Machine Learning Frameworks
+    pytorch:
+      enabled: true
+      category: "ml_framework"
+      priority: "critical"
+      description: "Dynamic neural network framework"
+      sources:
+        - "https://pytorch.org/docs/stable/"
+        - "https://pytorch.org/tutorials/"
+        - "https://pytorch.org/docs/stable/torch.html"
+        - "https://pytorch.org/docs/stable/nn.html"
+      repository: "https://github.com/pytorch/pytorch"
+      focus_areas:
+        - "Tensor operations"
+        - "Neural network modules (torch.nn)"
+        - "Optimization algorithms (torch.optim)"
+        - "Automatic differentiation (torch.autograd)"
+        - "CUDA and GPU acceleration"
+        - "Distributed training"
+        - "TorchScript and model deployment"
+    
+    tensorflow:
+      enabled: true
+      category: "ml_framework"
+      priority: "high"
+      description: "End-to-end ML platform"
+      sources:
+        - "https://www.tensorflow.org/api_docs/python/tf"
+        - "https://www.tensorflow.org/guide"
+      repository: "https://github.com/tensorflow/tensorflow"
+      focus_areas:
+        - "Keras high-level API"
+        - "TensorFlow 2.x eager execution"
+        - "Model deployment (TF Lite, TF.js, TF Serving)"
+        - "Distributed training strategies"
+    
+    scikit-learn:
+      enabled: true
+      category: "ml_framework"
+      priority: "high"
+      description: "Machine learning algorithms and tools"
+      sources:
+        - "https://scikit-learn.org/stable/documentation.html"
+        - "https://scikit-learn.org/stable/modules/classes.html"
+      repository: "https://github.com/scikit-learn/scikit-learn"
+      focus_areas:
+        - "Classification algorithms"
+        - "Regression algorithms"
+        - "Clustering"
+        - "Dimensionality reduction"
+        - "Model selection and evaluation"
+        - "Preprocessing and feature engineering"
+    
+    # Scientific Computing
+    numpy:
+      enabled: true
+      category: "scientific"
+      priority: "critical"
+      description: "Numerical computing with arrays"
+      sources:
+        - "https://numpy.org/doc/stable/"
+        - "https://numpy.org/doc/stable/reference/"
+      repository: "https://github.com/numpy/numpy"
+      focus_areas:
+        - "N-dimensional arrays (ndarray)"
+        - "Linear algebra (numpy.linalg)"
+        - "Random number generation"
+        - "Fourier transforms"
+        - "Broadcasting and vectorization"
+    
+    scipy:
+      enabled: true
+      category: "scientific"
+      priority: "high"
+      description: "Scientific computing and technical computing"
+      sources:
+        - "https://docs.scipy.org/doc/scipy/"
+      repository: "https://github.com/scipy/scipy"
+      focus_areas:
+        - "Optimization"
+        - "Signal processing"
+        - "Statistics"
+        - "Integration"
+        - "Interpolation"
+    
+    # Data Science
+    pandas:
+      enabled: true
+      category: "data_science"
+      priority: "high"
+      description: "Data structures and analysis tools"
+      sources:
+        - "https://pandas.pydata.org/docs/"
+        - "https://pandas.pydata.org/docs/reference/"
+      repository: "https://github.com/pandas-dev/pandas"
+      focus_areas:
+        - "DataFrame and Series"
+        - "Data cleaning and transformation"
+        - "GroupBy operations"
+        - "Time series functionality"
+        - "I/O operations (CSV, JSON, SQL, etc.)"
+    
+    # Visualization
+    matplotlib:
+      enabled: true
+      category: "visualization"
+      priority: "medium"
+      description: "Plotting and visualization"
+      sources:
+        - "https://matplotlib.org/stable/contents.html"
+        - "https://matplotlib.org/stable/api/index.html"
+      repository: "https://github.com/matplotlib/matplotlib"
+      focus_areas:
+        - "2D plotting"
+        - "Figure and axes management"
+        - "Customization and styling"
+    
+    seaborn:
+      enabled: true
+      category: "visualization"
+      priority: "medium"
+      description: "Statistical data visualization"
+      sources:
+        - "https://seaborn.pydata.org/"
+      repository: "https://github.com/mwaskom/seaborn"
+      focus_areas:
+        - "Statistical plots"
+        - "Theme management"
+        - "Integration with pandas"
+    
+    # Web Frameworks
+    flask:
+      enabled: true
+      category: "web_framework"
+      priority: "medium"
+      description: "Lightweight web framework"
+      sources:
+        - "https://flask.palletsprojects.com/"
+      repository: "https://github.com/pallets/flask"
+      focus_areas:
+        - "Routing and views"
+        - "Request/response handling"
+        - "Templating with Jinja2"
+        - "Extensions ecosystem"
+    
+    django:
+      enabled: true
+      category: "web_framework"
+      priority: "medium"
+      description: "Full-featured web framework"
+      sources:
+        - "https://docs.djangoproject.com/"
+      repository: "https://github.com/django/django"
+      focus_areas:
+        - "ORM and database abstraction"
+        - "URL routing"
+        - "Template system"
+        - "Admin interface"
+        - "Authentication and authorization"
+    
+    fastapi:
+      enabled: true
+      category: "web_framework"
+      priority: "high"
+      description: "Modern, fast web framework for APIs"
+      sources:
+        - "https://fastapi.tiangolo.com/"
+      repository: "https://github.com/tiangolo/fastapi"
+      focus_areas:
+        - "Async support"
+        - "Automatic API documentation"
+        - "Type hints and validation (Pydantic)"
+        - "Performance optimization"
+    
+    # Utilities
+    requests:
+      enabled: true
+      category: "utility"
+      priority: "high"
+      description: "HTTP library for Python"
+      sources:
+        - "https://requests.readthedocs.io/en/latest/"
+      repository: "https://github.com/psf/requests"
+      focus_areas:
+        - "HTTP requests (GET, POST, etc.)"
+        - "Session management"
+        - "Authentication"
+        - "Response handling"
+    
+    httpx:
+      enabled: true
+      category: "utility"
+      priority: "medium"
+      description: "Async HTTP client"
+      sources:
+        - "https://www.python-httpx.org/"
+      repository: "https://github.com/encode/httpx"
+      focus_areas:
+        - "Async/await support"
+        - "HTTP/2 support"
+        - "Request/response streaming"
+    
+    # Async Programming
+    asyncio:
+      enabled: true
+      category: "core_python"
+      priority: "high"
+      description: "Asynchronous I/O"
+      sources:
+        - "https://docs.python.org/3/library/asyncio.html"
+      repository: "https://github.com/python/cpython"
+      focus_areas:
+        - "Event loop"
+        - "Coroutines and tasks"
+        - "Async context managers"
+        - "Concurrent programming patterns"
+    
+    # Testing
+    pytest:
+      enabled: true
+      category: "testing"
+      priority: "high"
+      description: "Testing framework"
+      sources:
+        - "https://docs.pytest.org/"
+      repository: "https://github.com/pytest-dev/pytest"
+      focus_areas:
+        - "Test discovery and execution"
+        - "Fixtures"
+        - "Parametrization"
+        - "Plugin ecosystem"
+    
+    # Data Validation
+    pydantic:
+      enabled: true
+      category: "utility"
+      priority: "high"
+      description: "Data validation using type hints"
+      sources:
+        - "https://docs.pydantic.dev/"
+      repository: "https://github.com/pydantic/pydantic"
+      focus_areas:
+        - "Data models with validation"
+        - "JSON serialization"
+        - "Type coercion"
+        - "Settings management"
+    
+    # Database
+    sqlalchemy:
+      enabled: true
+      category: "database"
+      priority: "medium"
+      description: "SQL toolkit and ORM"
+      sources:
+        - "https://docs.sqlalchemy.org/"
+      repository: "https://github.com/sqlalchemy/sqlalchemy"
+      focus_areas:
+        - "ORM patterns"
+        - "Query building"
+        - "Connection pooling"
+        - "Database migrations (Alembic)"
+    
+    # NLP and Transformers
+    transformers:
+      enabled: true
+      category: "ml_framework"
+      priority: "critical"
+      description: "State-of-the-art NLP models"
+      sources:
+        - "https://huggingface.co/docs/transformers/"
+      repository: "https://github.com/huggingface/transformers"
+      focus_areas:
+        - "Pre-trained models (BERT, GPT, etc.)"
+        - "Tokenization"
+        - "Fine-tuning"
+        - "Model deployment"
+        - "Pipeline API"
+    
+    # Deployment and Production
+    uvicorn:
+      enabled: true
+      category: "deployment"
+      priority: "medium"
+      description: "ASGI server"
+      sources:
+        - "https://www.uvicorn.org/"
+      repository: "https://github.com/encode/uvicorn"
+      focus_areas:
+        - "ASGI application serving"
+        - "WebSocket support"
+        - "Performance optimization"
+    
+    gunicorn:
+      enabled: true
+      category: "deployment"
+      priority: "medium"
+      description: "WSGI HTTP server"
+      sources:
+        - "https://docs.gunicorn.org/"
+      repository: "https://github.com/benoitc/gunicorn"
+      focus_areas:
+        - "Process management"
+        - "Worker types"
+        - "Configuration"
+
+  # Continuous update configuration
+  continuous_update:
+    enabled: true
+    schedule: "weekly"
+    check_versions: true
+    track_breaking_changes: true
+    notify_on_updates: true
+    auto_ingest_new_versions: true
+  
+  # Optimization generation
+  optimization_generation:
+    enabled: true
+    target_system: "Barrot-Agent"
+    focus_areas:
+      - "Performance improvements"
+      - "Memory optimization"
+      - "Architecture enhancements"
+      - "Integration opportunities"
+      - "Security hardening"
+    priority_threshold: "medium"  # Only generate medium+ priority optimizations

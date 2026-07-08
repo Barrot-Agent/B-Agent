@@ -1,0 +1,182 @@
+# Coin App Automation Configuration
+# Settings for autonomous Barrot-Agent operation
+
+version: "1.0"
+updated: "2025-12-30"
+
+# Coin App Settings
+coin_app:
+  enabled: true
+  
+  # Authentication (configure with your credentials)
+  credentials:
+    user_id: ""  # Your Coin app user ID
+    api_token: ""  # Your API token (if available)
+  
+  # Feature preferences
+  preferences:
+    auto_geocaching: true
+    auto_surveys: true
+    auto_games: true
+    min_reward_threshold: 10  # Minimum coins to pursue an activity
+  
+  # Safety limits
+  safety:
+    max_daily_activities: 50
+    max_consecutive_errors: 3
+    cooldown_after_error_minutes: 15
+    respect_quiet_hours: true
+    quiet_hours_start: "22:00"
+    quiet_hours_end: "07:00"
+
+# Automation Settings
+automation:
+  # How often to check for new opportunities
+  frequency: "hourly"  # Options: hourly, 30min, 15min
+  
+  # Time limits
+  max_daily_time: 120  # Maximum minutes per day
+  max_session_length: 30  # Maximum minutes per session
+  
+  # Priority order (highest to lowest)
+  priority_order:
+    - "high_reward_surveys"      # Surveys with 20+ coins
+    - "nearby_geocaches"          # Geocaches within 5km
+    - "limited_time_games"        # Time-limited opportunities
+    - "standard_surveys"          # Regular surveys
+    - "distant_geocaches"         # Geocaches beyond 5km
+    - "regular_games"             # Standard games
+
+# Activity-Specific Settings
+geocaching:
+  enabled: true
+  max_travel_distance_km: 10  # Don't pursue geocaches beyond this distance
+  route_optimization: true     # Optimize multi-cache routes
+  min_coins_per_km: 2          # Minimum coins per kilometer traveled
+  preferred_times:             # Best times for geocaching
+    - "morning"                # 06:00-10:00
+    - "afternoon"              # 14:00-18:00
+
+surveys:
+  enabled: true
+  min_coins_per_survey: 5      # Minimum reward to attempt
+  max_survey_length_minutes: 15
+  demographic_consistency: true  # Maintain consistent profile
+  quality_threshold: "high"      # Response quality level
+  
+  # AI model for survey completion
+  ai_model: "GPT-4"
+  response_strategy: "authentic"  # authentic, optimized, or balanced
+
+games:
+  enabled: true
+  min_coins_per_game: 15
+  max_game_time_minutes: 10
+  learning_enabled: true         # Learn and improve strategies
+  risk_tolerance: "medium"       # low, medium, high
+  
+  # AI model for game strategy
+  ai_model: "GPT-4"
+  strategy_update_frequency: "daily"
+
+# Earnings and Tracking
+earnings:
+  track_by_activity_type: true
+  track_by_time_of_day: true
+  generate_daily_report: true
+  export_format: "json"  # json, csv, or both
+  
+  # Goals
+  daily_goal: 100      # Coins per day
+  weekly_goal: 700     # Coins per week
+  monthly_goal: 3000   # Coins per month
+
+# Performance Optimization
+optimization:
+  # Automatically adjust priorities based on performance
+  adaptive_priorities: true
+  
+  # Learning rate for strategy updates
+  learning_rate: 0.1
+  
+  # Minimum sample size before adjusting strategies
+  min_samples_for_learning: 10
+  
+  # Performance metrics to optimize
+  optimize_for: "coins_per_minute"  # Options: coins_per_minute, total_coins, completion_rate
+
+# AI Integration
+ai_integration:
+  # Reference to main AI tools configuration
+  config_file: "../ai-tools-config.yaml"
+  
+  # Models to use for different tasks
+  models:
+    survey_completion: "GPT-4"
+    game_strategy: "GPT-4"
+    route_optimization: "Claude-3"
+    decision_making: "GPT-4"
+    ui_interaction: "Vision AI"
+
+# Logging and Debugging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "coin_app_automation.log"
+  activity_log: "coin_app_activity.json"
+  
+  # What to log
+  log_opportunities: true
+  log_decisions: true
+  log_earnings: true
+  log_errors: true
+  
+  # Screenshots for debugging
+  screenshot_on_error: false
+  screenshot_on_completion: false
+
+# Notifications
+notifications:
+  enabled: false
+  
+  # When to notify
+  notify_on_error: true
+  notify_on_milestone: true  # e.g., daily goal reached
+  notify_on_high_reward: true  # e.g., 50+ coin opportunity
+  
+  # Notification methods
+  methods:
+    - "log"  # Always log
+    # - "email"  # Uncomment and configure
+    # - "webhook"  # Uncomment and configure
+
+# Integration with Barrot Dashboard
+dashboard:
+  enabled: true
+  update_frequency: "5min"
+  
+  # Metrics to display
+  metrics:
+    - "total_coins_today"
+    - "total_coins_week"
+    - "opportunities_available"
+    - "completion_rate"
+    - "coins_per_hour"
+    - "active_strategy"
+
+# Safety and Ethics
+safety_ethics:
+  # Respect app terms of service
+  respect_tos: true
+  
+  # Natural timing to avoid detection
+  randomize_timing: true
+  min_action_delay_seconds: 2
+  max_action_delay_seconds: 8
+  
+  # Rate limiting
+  respect_rate_limits: true
+  max_requests_per_minute: 10
+  
+  # User control
+  allow_manual_override: true
+  emergency_stop_enabled: true

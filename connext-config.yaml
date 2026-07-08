@@ -1,0 +1,89 @@
+# Connext Protocol Configuration
+# Cross-chain bridge integration for seamless asset transfers
+
+name: "Connext Protocol Integration"
+version: "1.0.0"
+enabled: true
+
+# Connext Bridge Portal
+bridge_url: "https://bridge.connext.network"
+explorer_url: "https://connextscan.io"
+docs_url: "https://docs.connext.network"
+
+# Supported Networks
+supported_chains:
+  - name: "Ethereum Mainnet"
+    chain_id: 1
+    type: "L1"
+    
+  - name: "Polygon"
+    chain_id: 137
+    type: "L1"
+    
+  - name: "Arbitrum One"
+    chain_id: 42161
+    type: "L2"
+    
+  - name: "Optimism"
+    chain_id: 10
+    type: "L2"
+    
+  - name: "BNB Chain"
+    chain_id: 56
+    type: "L1"
+    
+  - name: "Gnosis Chain"
+    chain_id: 100
+    type: "L1"
+    
+  - name: "Base"
+    chain_id: 8453
+    type: "L2"
+    
+  - name: "Linea"
+    chain_id: 59144
+    type: "L2"
+
+# Supported Assets
+supported_assets:
+  - symbol: "ETH"
+    name: "Ethereum"
+    type: "native"
+    
+  - symbol: "WETH"
+    name: "Wrapped Ethereum"
+    type: "ERC20"
+    
+  - symbol: "USDC"
+    name: "USD Coin"
+    type: "ERC20"
+    
+  - symbol: "USDT"
+    name: "Tether USD"
+    type: "ERC20"
+    
+  - symbol: "DAI"
+    name: "Dai Stablecoin"
+    type: "ERC20"
+
+# Features
+features:
+  xcall: true                    # Cross-chain Solidity calls
+  xerc20: true                   # Cross-chain native tokens with zero slippage
+  chain_abstraction: true        # Chain-agnostic dApp development
+  xairdrop: true                 # Cross-chain token distribution
+  modular_verification: true     # Pluggable verification mechanisms
+
+# Integration Status
+status:
+  bridge_portal: "active"
+  analytics: "active"
+  developer_tools: "active"
+  monitoring: "active"
+
+# Analytics & Monitoring
+analytics:
+  explorer: "https://connextscan.io"
+  transaction_tracking: true
+  liquidity_monitoring: true
+  network_activity: true
