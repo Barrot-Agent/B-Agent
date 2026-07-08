@@ -1,8 +1,10 @@
 name: Barrot Signal Ledger
 
-# Scheduled write-back was removed intentionally. This workflow now emits a
-# reviewable snapshot artifact via manual dispatch so ledger updates are
-# inspected before any repository mutation happens.
+# Scheduled write-back was removed intentionally. Manual flow:
+# 1. Dispatch this workflow to generate fresh ledger artifacts.
+# 2. Download and review the uploaded snapshot artifact.
+# 3. Commit only the accepted `data/signal_ledger.jsonl` / `web/latest_signal.json`
+#    changes in a normal reviewed pull request.
 
 on:
   workflow_dispatch:
@@ -32,4 +34,12 @@ jobs:
             data/signal_ledger.jsonl
             web/latest_signal.json
       - name: Document manual follow-up
-        run: echo "Ledger artifacts are emitted for review only; commit any accepted updates manually." >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          {
+            echo "Ledger artifacts are emitted for review only."
+            echo ""
+            echo "Manual follow-up:"
+            echo "1. Download the artifact from this run."
+            echo "2. Review the generated JSONL/JSON files."
+            echo "3. Commit accepted changes through a reviewed pull request."
+          } >> "$GITHUB_STEP_SUMMARY"

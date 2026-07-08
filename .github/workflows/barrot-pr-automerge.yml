@@ -26,5 +26,27 @@ jobs:
             echo "::error::No PR number provided"
             exit 1
           fi
-          gh pr view "$PR" --repo "$REPO" --json state,mergeable,title
+          PR_INFO=$(gh pr view "$PR" --repo "$REPO" --json state,mergeable,reviewDecision,statusCheckRollup,title)
+          echo "$PR_INFO"
+          STATE=$(echo "$PR_INFO" | jq -r '.state')
+          MERGEABLE=$(echo "$PR_INFO" | jq -r '.mergeable')
+          REVIEW_DECISION=$(echo "$PR_INFO" | jq -r '.reviewDecision')
+          BLOCKING_CHECKS=$(echo "$PR_INFO" | jq '[.statusCheckRollup[]? | select((.conclusion // "") != "" and (.conclusion | IN("SUCCESS", "NEUTRAL", "SKIPPED") | not))] | length')
+          PENDING_CHECKS=$(echo "$PR_INFO" | jq '[.statusCheckRollup[]? | select((.conclusion // "") == "")] | length')
+          if [ "$STATE" != "OPEN" ]; then
+            echo "::error::PR #$PR is not open"
+            exit 1
+          fi
+          if [ "$MERGEABLE" != "MERGEABLE" ]; then
+            echo "::error::PR #$PR is not mergeable ($MERGEABLE)"
+            exit 1
+          fi
+          if [ "$REVIEW_DECISION" != "APPROVED" ]; then
+            echo "::error::PR #$PR is not approved ($REVIEW_DECISION)"
+            exit 1
+          fi
+          if [ "$BLOCKING_CHECKS" -ne 0 ] || [ "$PENDING_CHECKS" -ne 0 ]; then
+            echo "::error::PR #$PR has failing or pending checks"
+            exit 1
+          fi
           gh pr merge "$PR" --repo "$REPO" --auto --squash --delete-branch
