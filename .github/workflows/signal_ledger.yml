@@ -31,3 +31,5 @@ jobs:
           path: |
             data/signal_ledger.jsonl
             web/latest_signal.json
+      - name: Document manual follow-up
+        run: echo "Ledger artifacts are emitted for review only; commit any accepted updates manually." >> "$GITHUB_STEP_SUMMARY"
