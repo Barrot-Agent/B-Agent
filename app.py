@@ -1,0 +1,52 @@
+from __future__ import annotations
+
+import streamlit as st
+
+from barrot_agent.config import get_config
+from barrot_agent.core import BAgent
+from barrot_agent.models import ModelManager
+from barrot_agent.smart_agent import AgentEventType, SmartAgent
+
+
+st.set_page_config(page_title="B-Agent", page_icon="🦜", layout="wide")
+
+config = get_config()
+agent = BAgent(config=config)
+model_manager = ModelManager(config=config.model)
+smart_agent = SmartAgent()
+
+st.title("B-Agent")
+st.caption("Repository-local demo for the restored Barrot agent package.")
+
+left, right = st.columns([2, 1])
+
+with left:
+    st.subheader("SmartAgent demo")
+    goal = st.text_area(
+        "Goal",
+        value="Summarize the repository's current purpose and capabilities.",
+        height=140,
+    )
+
+    if st.button("Run SmartAgent", type="primary"):
+        events = list(smart_agent.run(goal))
+        final = next((event for event in reversed(events) if event.type == AgentEventType.ANSWER), None)
+        if final is not None:
+            st.markdown(final.content)
+        else:
+            error = next((event for event in reversed(events) if event.type == AgentEventType.ERROR), None)
+            st.error(error.content if error is not None else "No terminal event produced.")
+
+with right:
+    st.subheader("Runtime")
+    st.json(
+        {
+            "app_version": agent.get_version(),
+            "environment": str(config.environment),
+            "debug": agent.is_debug(),
+            "model_id": agent.get_model_id(),
+            "model_loaded": model_manager.is_loaded,
+        }
+    )
+    st.subheader("Granite metadata")
+    st.json(model_manager.get_metadata())

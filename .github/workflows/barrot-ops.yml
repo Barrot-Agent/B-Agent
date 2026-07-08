@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: barrot-ops-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   sync-platforms:
     runs-on: ubuntu-latest
@@ -15,9 +19,15 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Deploy HF Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add hf https://Scribedpengenius:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/Scribedpengenius/barrot-omega || true
-          git push hf main --force
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::warning::HF_TOKEN not set, skipping HF Space deploy"
+            exit 0
+          fi
+          git remote add hf https://Scribedpengenius:${HF_TOKEN}@huggingface.co/spaces/Scribedpengenius/barrot-omega || true
+          git push hf HEAD:main
 
       - name: Setup Databricks CLI
         uses: databricks/setup-cli@main
@@ -35,8 +45,16 @@ jobs:
             echo "::warning::Notebook upload failed; skipping run"
 
       - name: Kaggle Data Refresh
+        env:
+          KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
         run: |
+          if [ -z "$KAGGLE_JSON" ]; then
+            echo "::warning::KAGGLE_JSON not set, skipping Kaggle refresh"
+            exit 0
+          fi
           pip install kaggle
-          echo '${{ secrets.KAGGLE_JSON }}' > kaggle.json
-          chmod 600 kaggle.json
+          export KAGGLE_CONFIG_DIR="$RUNNER_TEMP/.kaggle"
+          mkdir -p "$KAGGLE_CONFIG_DIR"
+          printf '%s' "$KAGGLE_JSON" > "$KAGGLE_CONFIG_DIR/kaggle.json"
+          chmod 600 "$KAGGLE_CONFIG_DIR/kaggle.json"
           kaggle datasets download scribedpengenius/barrot-kaggle-featured --unzip

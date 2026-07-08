@@ -1,17 +1,29 @@
-FROM python:3.11-slim
+FROM python:3.10-slim AS base
 
-# Install system dependencies and git
-RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 
-# Install uv for ultra-fast, lightweight package execution
-ADD https://astral.sh/uv/install.sh /uv-installer.sh
-RUN sh /uv-installer.sh && rm /uv-installer.sh
-ENV PATH="/root/.local/bin/:${PATH}"
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
 
-# Setup workspace
-WORKDIR /workspace
-RUN git clone https://github.com/SeanDrew-LeadTechArchitect/B-Agent.git /workspace/B-Agent
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Expose the Model Context Protocol standard standard-input/standard-output port
-ENTRYPOINT ["uvx", "mcp-server-git", "--repository", "/workspace/B-Agent"]
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
+FROM base AS production
+
+COPY barrot_agent/ barrot_agent/
+COPY data/ data/
+COPY app.py .
+
+RUN useradd --create-home --shell /bin/bash appuser
+USER appuser
+
+EXPOSE 8501
+
+HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')" || exit 1
+
+CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.port=8501"]

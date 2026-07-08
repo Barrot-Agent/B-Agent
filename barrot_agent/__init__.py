@@ -24,6 +24,7 @@ from .smart_agent import (
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
+__license__ = "Apache-2.0"
 
 try:
     from barrot_agent.rendering import DatasetManager, AssetLoader, DatasetAnalytics

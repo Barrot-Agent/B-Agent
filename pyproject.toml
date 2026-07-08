@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "b-agent"
+version = "0.1.0"
+description = "B-Agent: Barrot Agent with IBM Granite 4.0-3B Vision"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.40.0",
+    "streamlit>=1.35.0",
+    "accelerate>=0.30.0",
+    "bitsandbytes>=0.43.0",
+    "safetensors>=0.4.3",
+    "pillow>=10.3.0",
+    "requests>=2.32.0",
+    "python-dotenv>=1.0.1",
+    "pydantic>=2.7.1",
+    "pydantic-settings>=2.3.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+
+[tool.coverage.run]
+source = ["barrot_agent"]
+omit = ["tests/*", "**/__init__.py", "barrot_agent/rendering/*", "barrot_agent/smart_agent.py"]
+
+[tool.coverage.report]
+fail_under = 70
+show_missing = true

@@ -1,5 +1,9 @@
 # 🦜 Barrot-Agent
 
+[![CI](https://github.com/Barrot-Agent/B-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Barrot-Agent/B-Agent/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+
 Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
 
 ## 🔄 Two Distinct Systems
@@ -25,8 +29,8 @@ Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
 ### 💻 Desktop/Server Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Barrot-Agent/Barrot-Agent.git
-   cd Barrot-Agent
+   git clone https://github.com/Barrot-Agent/B-Agent.git
+   cd B-Agent
    ```
 
 2. View the current build manifest:
@@ -37,6 +41,26 @@ Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
 3. Access the systems:
    - **Agent Dashboard**: https://barrot-agent.github.io/Barrot-Agent/site/
    - **Search Engine**: https://barrot-agent.github.io/Barrot-Agent/search-engine/
+
+### 🐍 Python Package & Local Tooling
+
+This repository now also ships a typed Python package under [`barrot_agent/`](barrot_agent/) with:
+- configuration and logging primitives
+- a lightweight `BAgent` application wrapper
+- Granite model metadata and inference helpers
+- a Streamlit demo entrypoint in [`app.py`](app.py)
+
+Development quickstart:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+pytest
+streamlit run app.py
+```
+
+Canonical JSON assets live in [`data/`](data/) and should be accessed through [`data/registry.py`](data/registry.py), not ad-hoc file loads.
 
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
