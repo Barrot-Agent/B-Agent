@@ -2,7 +2,7 @@
 Tests for barrot_agent.core module.
 """
 
-from barrot_agent.config import AppConfig, Environment
+from barrot_agent.config import AppConfig
 from barrot_agent.core import BAgent
 
 

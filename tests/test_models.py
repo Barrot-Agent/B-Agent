@@ -2,8 +2,6 @@
 Tests for barrot_agent.models module.
 """
 
-import pytest
-
 from barrot_agent.config import ModelConfig
 from barrot_agent.models import GRANITE_METADATA, ModelManager
 

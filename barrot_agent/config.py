@@ -4,9 +4,7 @@ Configuration management for B-Agent using Pydantic.
 
 from __future__ import annotations
 
-import os
 from enum import Enum
-from pathlib import Path
 from typing import Optional
 
 from pydantic import Field
@@ -21,6 +19,8 @@ class Environment(str, Enum):
 
 class ModelConfig(BaseSettings):
     """IBM Granite model configuration."""
+
+    model_config = SettingsConfigDict(protected_namespaces=())
 
     model_id: str = Field(
         default="ibm-granite/granite-4.0-3b-vision",

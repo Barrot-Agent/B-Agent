@@ -2,8 +2,6 @@
 Tests for barrot_agent.config module.
 """
 
-import os
-
 import pytest
 
 from barrot_agent.config import AppConfig, Environment, ModelConfig, get_config

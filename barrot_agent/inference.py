@@ -4,8 +4,7 @@ Inference pipeline for B-Agent (IBM Granite 4.0-3B Vision).
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 from barrot_agent.logger import get_logger
 from barrot_agent.models import ModelManager

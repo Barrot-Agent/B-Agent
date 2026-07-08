@@ -6,8 +6,6 @@ import logging
 import os
 import tempfile
 
-import pytest
-
 from barrot_agent.logger import JSONFormatter, get_logger, setup_logging
 
 
