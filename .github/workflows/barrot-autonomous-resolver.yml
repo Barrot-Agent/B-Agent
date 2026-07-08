@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # -----------------------------------------------------------------------
       # 1. Failing workflows → open a tracked issue assigned to Copilot
