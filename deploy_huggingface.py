@@ -31,8 +31,8 @@ log = logging.getLogger(__name__)
 # Configuration
 # ---------------------------------------------------------------------------
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
-REPO_ID = os.environ.get("HF_REPO_ID", "Barrot-Agent/B-Agent")
-REPO_TYPE = os.environ.get("HF_REPO_TYPE", "model")
+REPO_ID = os.environ.get("HF_REPO_ID", "Scribedpengenius/barrot-omega")
+REPO_TYPE = os.environ.get("HF_REPO_TYPE", "space")
 LOCAL_DIR = Path(__file__).parent
 
 # Files / patterns to exclude from the upload
