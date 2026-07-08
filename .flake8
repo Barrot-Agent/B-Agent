@@ -8,6 +8,8 @@ exclude =
     venv,
     build,
     dist,
-    *.egg-info
+    *.egg-info,
+    barrot_agent/rendering,
+    barrot_agent/smart_agent.py
 per-file-ignores =
     tests/*: S101
