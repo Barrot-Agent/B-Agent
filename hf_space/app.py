@@ -108,6 +108,54 @@ class GitHubAppAuth:
 
 
 # ══════════════════════════════════════════════════════════════════
+# LIVE READ TOOLS — grounded truth for the chat brain
+# ══════════════════════════════════════════════════════════════════
+RAW_BASE = "https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main"
+GH_REPO  = "https://api.github.com/repos/Barrot-Agent/B-Agent"
+
+def tool_latest_signal(args):
+    r = requests.get(f"{RAW_BASE}/web/latest_signal.json", timeout=10)
+    return r.text[:2000]
+
+def tool_ledger_tail(args):
+    n = max(1, min(int(args.get("n", 5)), 20))
+    r = requests.get(f"{RAW_BASE}/data/signal_ledger.jsonl", timeout=10)
+    return "\n".join(r.text.strip().splitlines()[-n:])[:4000]
+
+def tool_open_prs(args):
+    r = requests.get(f"{GH_REPO}/pulls?state=open&per_page=100", timeout=10,
+                     headers={"Accept": "application/vnd.github+json"})
+    prs = r.json()
+    if not isinstance(prs, list):
+        return json.dumps(prs)[:500]
+    return "\n".join([f"open_pr_count={len(prs)}"] +
+                      [f"#{p['number']} {p['title'][:60]}" for p in prs[:15]])
+
+def tool_recent_commits(args):
+    n = max(1, min(int(args.get("n", 5)), 15))
+    r = requests.get(f"{GH_REPO}/commits?per_page={n}", timeout=10)
+    c = r.json()
+    if not isinstance(c, list):
+        return json.dumps(c)[:500]
+    return "\n".join(f"{x['sha'][:7]} {x['commit']['message'].splitlines()[0][:70]}" for x in c)
+
+TOOL_FUNCS = {
+    "get_latest_signal":      tool_latest_signal,
+    "get_ledger_tail":        tool_ledger_tail,
+    "get_open_pull_requests": tool_open_prs,
+    "get_recent_commits":     tool_recent_commits,
+    "get_xrp_price":          lambda a: f"XRP/USD = {get_xrp_price()}",
+}
+TOOLS_SPEC = [
+    {"type": "function", "function": {"name": "get_latest_signal", "description": "Current live ternary XRP signal with confidence score from the public endpoint.", "parameters": {"type": "object", "properties": {}}}},
+    {"type": "function", "function": {"name": "get_ledger_tail", "description": "Last n entries of the git-timestamped public signal ledger.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
+    {"type": "function", "function": {"name": "get_open_pull_requests", "description": "REAL count and titles of open pull requests on Barrot-Agent/B-Agent. Always use this for PR questions.", "parameters": {"type": "object", "properties": {}}}},
+    {"type": "function", "function": {"name": "get_recent_commits", "description": "Most recent commits on the B-Agent repository.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
+    {"type": "function", "function": {"name": "get_xrp_price", "description": "Live XRP/USD price.", "parameters": {"type": "object", "properties": {}}}},
+]
+
+
+# ══════════════════════════════════════════════════════════════════
 # BARROT BRAIN — GitHub Models inference
 # ══════════════════════════════════════════════════════════════════
 class BarrotBrain:
@@ -142,9 +190,12 @@ CAPABILITIES (this chat interface):
 - Generating code and technical designs for the Orchestrator to review and run
 
 HARD LIMITS (never violate):
-- This chat has NO execution tools. You cannot access GitHub, Databricks, the XRP
-  ledger, files, or live data from this interface. You cannot merge PRs, run code,
-  ingest data, or take any action.
+- You have LIVE READ TOOLS: the current signal, ledger history, real open-PR
+  counts, recent commits, and live XRP price. ALWAYS use them for factual
+  questions they cover; never guess a number a tool can fetch.
+- You have NO WRITE tools. You cannot merge PRs, push code, run jobs, trade, or
+  modify anything from this interface. Write actions happen only through the
+  Orchestrator-reviewed autonomous workflows.
 - If asked to perform an action, state plainly that this chat interface has no
   execution tools, then describe what the Orchestrator or the autonomous workflows
   would do instead.
@@ -181,12 +232,35 @@ HARD LIMITS (never violate):
         )
 
     def _call_groq_fallback(self, messages: list) -> str:
-        return self._post_chat(
-            "https://api.groq.com/openai/v1/chat/completions",
-            {"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
-            {"model": "llama-3.3-70b-versatile", "messages": messages, "max_tokens": 1024},
-            20, "Groq",
-        )
+        msgs = list(messages)
+        for _ in range(4):
+            r = requests.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                headers={"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
+                json={"model": "llama-3.3-70b-versatile", "messages": msgs,
+                      "max_tokens": 1024, "tools": TOOLS_SPEC, "tool_choice": "auto"},
+                timeout=30
+            )
+            data = r.json()
+            if "choices" not in data:
+                return f"[BARROT] Groq upstream error: {json.dumps(data)[:300]}"
+            msg = data["choices"][0]["message"]
+            calls = msg.get("tool_calls")
+            if not calls:
+                return msg.get("content") or "[BARROT] empty response"
+            msgs.append(msg)
+            for c in calls:
+                name = c["function"]["name"]
+                try:
+                    args = json.loads(c["function"].get("arguments") or "{}")
+                except Exception:
+                    args = {}
+                try:
+                    result = TOOL_FUNCS[name](args) if name in TOOL_FUNCS else f"unknown tool: {name}"
+                except Exception as e:
+                    result = f"tool error: {e}"
+                msgs.append({"role": "tool", "tool_call_id": c["id"], "content": str(result)[:4000]})
+        return "[BARROT] tool loop limit reached — partial data above"
 
     def think(self, user_message: str, history: list[dict] = None) -> str:
         """Core inference with a real cascade: GitHub Models -> Groq."""
