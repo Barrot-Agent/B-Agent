@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T09:48:54.249290+00:00",
+  "generated_at": "2026-07-08T19:59:53.756197+00:00",
   "data_dir": "/home/runner/work/B-Agent/B-Agent/data",
   "assets": {
     "merge_conflict": {
@@ -49,9 +49,9 @@
     },
     "pingpong_request": {
       "path": "/home/runner/work/B-Agent/B-Agent/data/pingpong_request.json",
-      "exists": true,
-      "size_bytes": 541,
-      "cached": true,
+      "exists": false,
+      "size_bytes": null,
+      "cached": false,
       "schema_issues": [],
       "record_count": null,
       "error": null
@@ -68,9 +68,9 @@
   },
   "summary": {
     "total_assets": 7,
-    "present": 7,
-    "missing": 0,
+    "present": 6,
+    "missing": 1,
     "schema_issues_total": 0,
-    "healthy": true
+    "healthy": false
   }
 }
