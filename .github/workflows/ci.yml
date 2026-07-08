@@ -13,6 +13,8 @@ jobs:
   lint:
     name: Code Quality
     runs-on: ubuntu-latest
+    env:
+      ROOT_PYTHON_TARGETS: app.py emit_pingpong.py pingpong_emitter.py
     steps:
       - uses: actions/checkout@v4
 
@@ -34,17 +36,19 @@ jobs:
           pip install black flake8 isort mypy pydantic pydantic-settings python-dotenv
 
       - name: Check formatting (black)
-        run: black --check --diff barrot_agent tests app.py emit_pingpong.py pingpong_emitter.py
+        run: black --check --diff $(find barrot_agent tests -type f -name '*.py' | sort) $ROOT_PYTHON_TARGETS
 
       - name: Check imports (isort)
-        run: isort --check-only --diff barrot_agent tests app.py emit_pingpong.py pingpong_emitter.py
+        run: isort --check-only --diff $(find barrot_agent tests -type f -name '*.py' | sort) $ROOT_PYTHON_TARGETS
 
       - name: Lint (flake8)
-        run: flake8 barrot_agent tests app.py emit_pingpong.py pingpong_emitter.py
+        run: flake8 $(find barrot_agent tests -type f -name '*.py' | sort) $ROOT_PYTHON_TARGETS
 
   test:
     name: Tests
     runs-on: ubuntu-latest
+    env:
+      ROOT_PYTHON_TARGETS: app.py emit_pingpong.py pingpong_emitter.py
     strategy:
       matrix:
         python-version: ["3.10", "3.11"]
@@ -69,7 +73,7 @@ jobs:
           pip install pytest pytest-cov pydantic pydantic-settings python-dotenv
 
       - name: Compile Python sources
-        run: python -m compileall barrot_agent data app.py emit_pingpong.py pingpong_emitter.py
+        run: python -m compileall barrot_agent data $ROOT_PYTHON_TARGETS
 
       - name: Run tests
         run: |

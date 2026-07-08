@@ -1,5 +1,9 @@
 name: Barrot Signal Ledger
 
+# Scheduled write-back was removed intentionally. This workflow now emits a
+# reviewable snapshot artifact via manual dispatch so ledger updates are
+# inspected before any repository mutation happens.
+
 on:
   workflow_dispatch:
 
