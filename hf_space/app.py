@@ -124,7 +124,7 @@ def tool_ledger_tail(args):
 
 def tool_open_prs(args):
     r = requests.get(f"{GH_REPO}/pulls?state=open&per_page=100", timeout=10,
-                     headers={"Accept": "application/vnd.github+json"})
+                     headers=_gh_headers())
     prs = r.json()
     if not isinstance(prs, list):
         return json.dumps(prs)[:500]
@@ -133,7 +133,7 @@ def tool_open_prs(args):
 
 def tool_recent_commits(args):
     n = max(1, min(int(args.get("n", 5)), 15))
-    r = requests.get(f"{GH_REPO}/commits?per_page={n}", timeout=10)
+    r = requests.get(f"{GH_REPO}/commits?per_page={n}", timeout=10, headers=_gh_headers())
     c = r.json()
     if not isinstance(c, list):
         return json.dumps(c)[:500]
@@ -153,6 +153,93 @@ TOOLS_SPEC = [
     {"type": "function", "function": {"name": "get_recent_commits", "description": "Most recent commits on the B-Agent repository.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
     {"type": "function", "function": {"name": "get_xrp_price", "description": "Live XRP/USD price.", "parameters": {"type": "object", "properties": {}}}},
 ]
+
+# ══════════════════════════════════════════════════════════════════
+# BRAIN PROVIDERS — configure with env vars, never edit code
+#   BRAIN_PRIMARY : groq | github | gemini      (default: groq)
+#   BRAIN_MODEL   : optional model id override
+# ══════════════════════════════════════════════════════════════════
+def _gh_headers():
+    h = {"Accept": "application/vnd.github+json"}
+    tok = os.getenv("GH_API_TOKEN", "")
+    if tok:
+        h["Authorization"] = f"Bearer {tok}"
+    return h
+
+PROVIDERS = {
+    "groq": {
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "key_env": "GROQ_API_KEY",
+        "model": "llama-3.3-70b-versatile",
+        "tools": True,
+    },
+    "github": {
+        "url": "https://models.github.ai/inference/chat/completions",
+        "key_env": "GH_MODELS_TOKEN",
+        "model": "openai/gpt-4.1-mini",
+        "tools": True,
+    },
+    "gemini": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+        "key_env": "GEMINI_API_KEY",
+        "model": "gemini-2.0-flash",
+        "tools": True,
+    },
+}
+
+def _brain_order():
+    primary = os.getenv("BRAIN_PRIMARY", "groq").strip().lower()
+    order = [primary] + [k for k in ("groq", "github", "gemini") if k != primary]
+    return [k for k in order if k in PROVIDERS]
+
+def barrot_tool_chat(provider, messages, max_rounds=3):
+    """Tool loop. Final round drops tools so the model MUST answer in text."""
+    cfg = PROVIDERS[provider]
+    key = os.getenv(cfg["key_env"], "")
+    if not key:
+        raise RuntimeError(f"{provider}: {cfg['key_env']} not set")
+    model = os.getenv("BRAIN_MODEL", "").strip() or cfg["model"]
+    msgs = list(messages)
+    gathered = []
+
+    for rnd in range(max_rounds):
+        payload = {"model": model, "messages": msgs, "max_tokens": 1024}
+        if cfg["tools"] and rnd < max_rounds - 1:
+            payload["tools"] = TOOLS_SPEC
+            payload["tool_choice"] = "auto"
+        r = requests.post(cfg["url"],
+                          headers={"Authorization": f"Bearer {key}",
+                                   "Content-Type": "application/json"},
+                          json=payload, timeout=30)
+        try:
+            data = r.json()
+        except Exception:
+            raise RuntimeError(f"{provider} non-JSON (HTTP {r.status_code}): {r.text[:160]}")
+        if "choices" not in data:
+            err = data.get("error", data)
+            msg = err.get("message", err) if isinstance(err, dict) else err
+            raise RuntimeError(f"{provider} (HTTP {r.status_code}): {str(msg)[:200]}")
+
+        m = data["choices"][0]["message"]
+        calls = m.get("tool_calls")
+        if not calls:
+            return m.get("content") or f"[BARROT] {provider}: empty response"
+        msgs.append(m)
+        for c in calls:
+            name = c["function"]["name"]
+            try:
+                args = json.loads(c["function"].get("arguments") or "{}")
+            except Exception:
+                args = {}
+            try:
+                result = TOOL_FUNCS[name](args) if name in TOOL_FUNCS else f"unknown tool: {name}"
+            except Exception as e:
+                result = f"tool error: {e}"
+            gathered.append(f"{name} -> {str(result)[:300]}")
+            msgs.append({"role": "tool", "tool_call_id": c["id"], "content": str(result)[:4000]})
+
+    return "[BARROT] Tool data (no summary formed):\n" + "\n".join(gathered[-3:])
+
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -222,70 +309,24 @@ HARD LIMITS (never violate):
         msg = err.get("message", err) if isinstance(err, dict) else (err or data)
         raise RuntimeError(f"{tag} error (HTTP {r.status_code}): {msg}")
 
-    def _call_github_models(self, messages: list, model: str = GITHUB_MODEL) -> str:
-        token = self.auth.get_installation_token()
-        return self._post_chat(
-            f"{MODELS_ENDPOINT}/chat/completions",
-            {"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-            {"model": model, "messages": messages, "max_tokens": 1024, "temperature": 0.7},
-            30, "GitHub Models",
-        )
-
+    def _call_github_models(self, messages: list, model: str = None) -> str:
+        return barrot_tool_chat("github", messages)
     def _call_groq_fallback(self, messages: list) -> str:
-        msgs = list(messages)
-        for _ in range(4):
-            r = requests.post(
-                "https://api.groq.com/openai/v1/chat/completions",
-                headers={"Authorization": f"Bearer {self.groq_key}", "Content-Type": "application/json"},
-                json={"model": "llama-3.3-70b-versatile", "messages": msgs,
-                      "max_tokens": 1024, "tools": TOOLS_SPEC, "tool_choice": "auto"},
-                timeout=30
-            )
-            data = r.json()
-            if "choices" not in data:
-                return f"[BARROT] Groq upstream error: {json.dumps(data)[:300]}"
-            msg = data["choices"][0]["message"]
-            calls = msg.get("tool_calls")
-            if not calls:
-                return msg.get("content") or "[BARROT] empty response"
-            msgs.append(msg)
-            for c in calls:
-                name = c["function"]["name"]
-                try:
-                    args = json.loads(c["function"].get("arguments") or "{}")
-                except Exception:
-                    args = {}
-                try:
-                    result = TOOL_FUNCS[name](args) if name in TOOL_FUNCS else f"unknown tool: {name}"
-                except Exception as e:
-                    result = f"tool error: {e}"
-                msgs.append({"role": "tool", "tool_call_id": c["id"], "content": str(result)[:4000]})
-        return "[BARROT] tool loop limit reached — partial data above"
-
-    def think(self, user_message: str, history: list[dict] = None) -> str:
-        """Core inference with a real cascade: GitHub Models -> Groq."""
+        return barrot_tool_chat("groq", messages)
+    def think(self, user_message: str, history: list = None) -> str:
+        """Inference across providers in BRAIN_PRIMARY order. Tools included."""
         messages = [{"role": "system", "content": self.SYSTEM_PROMPT}]
         if history:
             messages.extend(history)
         messages.append({"role": "user", "content": user_message})
 
         errors = []
-        if self.auth.ready:
+        for provider in _brain_order():
             try:
-                return self._call_github_models(messages)
+                return barrot_tool_chat(provider, messages)
             except Exception as e:
-                errors.append(str(e))
-        if self.groq_key:
-            try:
-                return self._call_groq_fallback(messages)
-            except Exception as e:
-                errors.append(str(e))
-        if not errors:
-            return ("[BARROT] Waiting for backend credentials. GitHub Models is primary; "
-                    "Groq is fallback. Once secret sync completes, inference starts automatically.")
-        return "[BARROT] All brain tiers failed → " + " | ".join(errors)
-
-
+                errors.append(f"{provider}: {e}")
+        return "[BARROT] All brain tiers failed -> " + " | ".join(errors)
 
 # ══════════════════════════════════════════════════════════════════
 # XRP SIGNAL ENGINE (from bridge v1.0)
