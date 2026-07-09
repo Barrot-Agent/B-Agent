@@ -1,7 +1,7 @@
 name: Barrot Autonomous Resolver
 
 # Continuously monitors failing workflows and open GitHub issues,
-# then assigns each one to the Copilot coding agent for autonomous fixing.
+# then routes each one toward autonomous fixing.
 # Resulting PRs are picked up and merged by the Barrot Auto-Merge PRs workflow.
 
 on:
@@ -16,18 +16,19 @@ permissions:
 
 jobs:
   resolve:
-    name: Assign failures to Copilot
+    name: Route failures for autonomous fixing
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       REPO: ${{ github.repository }}
+      AUTO_ASSIGNEE: ${{ vars.COPILOT_ASSIGNEE }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v7
 
       # -----------------------------------------------------------------------
-      # 1. Failing workflows → open a tracked issue assigned to Copilot
+      # 1. Failing workflows → open a tracked issue
       # -----------------------------------------------------------------------
       - name: Open issues for failing workflows
         run: |
@@ -79,23 +80,32 @@ jobs:
               BODY=$(printf '## Failing workflow: `%s`\n\nThe workflow `%s` has been failing. Please investigate the root cause, apply a fix, and open a pull request.\n\n**Most recent failed run:** %s\n\n---\n_This issue was opened automatically by the Barrot Autonomous Resolver._' \
                 "$WF_NAME" "$WF_NAME" "${RUN_URL:-_(URL unavailable)_}")
 
+              ASSIGNEE_ARGS=()
+              if [ -n "$AUTO_ASSIGNEE" ]; then
+                ASSIGNEE_ARGS+=(--assignee "$AUTO_ASSIGNEE")
+              fi
+
               gh issue create \
                 --repo "$REPO" \
                 --title "$TITLE" \
                 --body "$BODY" \
-                --assignee "Copilot" \
-                2>/dev/null && echo "  ✅ Issue created and assigned to Copilot." \
-                            || echo "  ⚠️  Issue creation failed (token may lack Copilot assignment permission)."
+                "${ASSIGNEE_ARGS[@]}" \
+                2>/dev/null && echo "  ✅ Issue created." \
+                            || echo "  ⚠️  Issue creation failed."
 
             done <<< "$FAILED_WORKFLOWS"
           fi
 
       # -----------------------------------------------------------------------
-      # 2. Open issues not yet assigned to Copilot → assign them
+      # 2. Optionally assign unassigned issues when a valid assignee is configured
       # -----------------------------------------------------------------------
-      - name: Assign unassigned issues to Copilot
+      - name: Assign unassigned issues
         run: |
           set +e
+          if [ -z "$AUTO_ASSIGNEE" ]; then
+            echo "No COPILOT_ASSIGNEE repository variable configured; skipping issue assignment."
+            exit 0
+          fi
           echo "=== Scanning for open issues with no assignees ==="
 
           UNASSIGNED=$(gh issue list \
@@ -110,10 +120,10 @@ jobs:
             echo "No unassigned open issues found."
           else
             while IFS= read -r ISSUE_NUM; do
-              echo "  Assigning issue #$ISSUE_NUM to Copilot…"
+              echo "  Assigning issue #$ISSUE_NUM to $AUTO_ASSIGNEE…"
               gh issue edit "$ISSUE_NUM" \
                 --repo "$REPO" \
-                --add-assignee "Copilot" \
+                --add-assignee "$AUTO_ASSIGNEE" \
                 2>/dev/null && echo "  ✅ Issue #$ISSUE_NUM assigned." \
                             || echo "  ⚠️  Could not assign issue #$ISSUE_NUM."
             done <<< "$UNASSIGNED"
@@ -122,11 +132,15 @@ jobs:
           echo "=== Barrot Autonomous Resolver cycle complete ==="
 
       # -----------------------------------------------------------------------
-      # 3. Open PRs not yet assigned to Copilot → assign them
+      # 3. Optionally assign unassigned pull requests when a valid assignee is configured
       # -----------------------------------------------------------------------
-      - name: Assign unassigned pull requests to Copilot
+      - name: Assign unassigned pull requests
         run: |
           set +e
+          if [ -z "$AUTO_ASSIGNEE" ]; then
+            echo "No COPILOT_ASSIGNEE repository variable configured; skipping pull request assignment."
+            exit 0
+          fi
           echo "=== Scanning for open pull requests with no assignees ==="
 
           UNASSIGNED_PRS=$(gh pr list \
@@ -141,10 +155,10 @@ jobs:
             echo "No unassigned open pull requests found."
           else
             while IFS= read -r PR_NUM; do
-              echo "  Assigning PR #$PR_NUM to Copilot…"
+              echo "  Assigning PR #$PR_NUM to $AUTO_ASSIGNEE…"
               gh pr edit "$PR_NUM" \
                 --repo "$REPO" \
-                --add-assignee "Copilot" \
+                --add-assignee "$AUTO_ASSIGNEE" \
                 2>/dev/null && echo "  ✅ PR #$PR_NUM assigned." \
                             || echo "  ⚠️  Could not assign PR #$PR_NUM."
             done <<< "$UNASSIGNED_PRS"
