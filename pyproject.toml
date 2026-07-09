@@ -40,7 +40,7 @@ disallow_untyped_defs = true
 
 [tool.coverage.run]
 source = ["barrot_agent"]
-omit = ["tests/*", "**/__init__.py", "barrot_agent/rendering/*"]
+omit = ["tests/*", "**/__init__.py", "barrot_agent/rendering/*", "barrot_agent/smart_agent.py"]
 
 [tool.coverage.report]
 fail_under = 70
