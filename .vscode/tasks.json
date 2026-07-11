@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "label": "View Logs",
+      "type": "shell",
+      "command": "cat memory-bundles/activity-log.md | tail -50",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "View Optimization Log",
+      "type": "shell",
+      "command": "cat memory-bundles/optimization-log.md | tail -50",
+      "problemMatcher": []
+    },
+    {
+      "label": "View Benchmark Results",
+      "type": "shell",
+      "command": "cat memory-bundles/benchmark-results.md",
+      "problemMatcher": []
+    },
+    {
+      "label": "View All Logs Summary",
+      "type": "shell",
+      "command": "echo '=== Recent Activity ===' && cat memory-bundles/activity-log.md | tail -20 && echo '\n=== Optimizations ===' && cat memory-bundles/optimization-log.md | tail -10",
+      "problemMatcher": []
+    },
+    {
+      "label": "Open Dashboard",
+      "type": "shell",
+      "command": "xdg-open https://barrot-agent.github.io/Barrot-Agent/ || open https://barrot-agent.github.io/Barrot-Agent/",
+      "problemMatcher": []
+    }
+  ],
+  "version": "2.0.0"
+}

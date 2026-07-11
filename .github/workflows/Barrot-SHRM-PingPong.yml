@@ -1,0 +1,47 @@
+name: Barrot-SHRM Ping-Pong
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"  # Run every 15 minutes
+
+permissions:
+  contents: write
+
+jobs:
+  barrot-ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Barrot Ping
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          echo "🏓 Barrot PING sent to SHRM at $TIMESTAMP" >> memory-bundles/outcome-relay.md
+          echo "🔵 Barrot PING -> SHRM at $TIMESTAMP" >> SHRM-System/shrm-response-log.md
+          
+      - name: SHRM Pong Response
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          echo "🏓 SHRM PONG received from Barrot at $TIMESTAMP" >> SHRM-System/shrm-response-log.md
+          echo "🟢 SHRM PONG <- Barrot at $TIMESTAMP" >> memory-bundles/outcome-relay.md
+          
+          # Update SHRM health status
+          sed -i "s/last_pong: .*/last_pong: $TIMESTAMP/" SHRM-System/shrm-config.yaml
+          
+      - name: Update Build Ledger
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          echo "{\"ledger\": \"Ping-Pong at $TIMESTAMP\"}" > memory-bundles/build-ledger.json
+
+      - name: Commit Changes
+        run: |
+          TIMESTAMP=$(date -u +"%a %b %e %H:%M:%S UTC %Y")
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@systems.local"
+          git add memory-bundles/outcome-relay.md
+          git add SHRM-System/
+          git add memory-bundles/build-ledger.json
+          git commit -m "🏓 Barrot-SHRM Ping-Pong cycle executed at $TIMESTAMP" || echo "No changes to commit"
+          git push

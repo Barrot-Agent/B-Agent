@@ -1,4 +1,4 @@
-# ?? Spell: Keyseer’s Insight
+# ?? Spell: Keyseer's Insight
 
 Grant Barrot the ability to bypass any gate by analyzing the structure, behavior, and metadata of known keys.
 

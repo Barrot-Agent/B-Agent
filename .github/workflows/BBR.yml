@@ -1,9 +1,19 @@
 name: Barrot Build Relay
 
+# Workflow Configuration Notes:
+# - reasoning_engine: SHRM_v2
+# - contradiction_harvesting: enabled
+# - temporal_plasticity: enabled
+
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-manifest:
@@ -17,6 +27,7 @@ jobs:
           cat <<EOF > build_manifest.yaml
           build_signature: BNDL-V2
           timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          reasoning_engine: SHRM_v2
           rail_status:
             ingestion: active
             deployment: stable
@@ -31,8 +42,12 @@ jobs:
           git config --global user.name "Barrot-Agent"
           git config --global user.email "barrot@systems.local"
           git add build_manifest.yaml
-          git commit -m "Update build manifest"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "Update build manifest"
+            git push
+          else
+            echo "No changes to commit"
+          fi
 
   publish-dashboard:
     runs-on: ubuntu-latest
@@ -40,16 +55,23 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Pull latest changes
+        run: git pull origin main
 
       - name: Generate Dashboard HTML
         run: |
-          echo "<html><body><h1>Barrot Build Status</h1>" > index.html
-          echo "<pre>" >> index.html
-          cat build_manifest.yaml >> index.html
-          echo "</pre></body></html>" >> index.html
+          mkdir -p dashboard-output
+          echo "<html><body><h1>Barrot Build Status</h1>" > dashboard-output/index.html
+          echo "<pre>" >> dashboard-output/index.html
+          cat build_manifest.yaml >> dashboard-output/index.html
+          echo "</pre></body></html>" >> dashboard-output/index.html
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./dashboard-output
