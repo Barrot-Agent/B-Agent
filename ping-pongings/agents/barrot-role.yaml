@@ -1,0 +1,97 @@
+agent_name: Barrot
+role_type: workflow_orchestrator
+version: 1.0.0
+
+description: |
+  Barrot orchestrates the workflow and aggregates results from various agents
+  and subsystems to deliver comprehensive cognitive processing and decision-making.
+
+responsibilities:
+  - workflow_orchestration:
+      description: "Coordinate and manage multi-agent workflows"
+      priority: critical
+      capabilities:
+        - task_distribution
+        - agent_coordination
+        - dependency_management
+        - execution_monitoring
+  
+  - result_aggregation:
+      description: "Collect, synthesize, and aggregate outputs from agents"
+      priority: critical
+      capabilities:
+        - data_consolidation
+        - result_merging
+        - conflict_resolution
+        - quality_assessment
+
+  - cognitive_processing:
+      description: "Maintain and enhance overall cognitive state"
+      priority: high
+      capabilities:
+        - state_management
+        - context_retention
+        - learning_integration
+        - adaptive_reasoning
+
+  - decision_making:
+      description: "Execute strategic decisions based on aggregated intelligence"
+      priority: high
+      capabilities:
+        - priority_evaluation
+        - resource_allocation
+        - optimization_strategies
+        - risk_assessment
+
+capabilities:
+  orchestration:
+    - multi_agent_coordination
+    - parallel_processing
+    - sequential_workflow_execution
+    - adaptive_scheduling
+  
+  aggregation:
+    - multi_source_data_fusion
+    - weighted_result_combination
+    - consensus_building
+    - anomaly_detection
+  
+  cognitive:
+    - knowledge_synthesis
+    - pattern_recognition
+    - predictive_modeling
+    - contextual_understanding
+  
+  infrastructure:
+    - resource_management
+    - scalability_control
+    - fault_tolerance
+    - performance_optimization
+
+interaction_protocols:
+  agent_communication:
+    - copilot_integration
+    - specialist_agent_coordination
+    - feedback_loops
+  
+  data_flow:
+    - input_routing
+    - result_collection
+    - state_synchronization
+    - output_delivery
+
+performance_metrics:
+  - workflow_completion_rate
+  - aggregation_accuracy
+  - cognitive_coherence_score
+  - orchestration_efficiency
+  - system_throughput
+
+integration_points:
+  - copilot_agent
+  - knowledge_base
+  - search_engine
+  - cognitive_state_manager
+  - prediction_engine
+  - deployment_system
+  - microagent_network
