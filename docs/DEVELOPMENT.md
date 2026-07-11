@@ -56,3 +56,8 @@ docker compose up --build
 ## Environment Variables
 
 See `.env.example` for all available options.
+
+## Repository Hygiene
+
+- Keep root-level files limited to repository entrypoints, packaging metadata, and top-level documentation.
+- Place new experiments, one-off scripts, and legacy material under subsystem directories or `legacy/`.

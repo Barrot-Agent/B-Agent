@@ -22,3 +22,11 @@ We will acknowledge your report within 48 hours and aim to release a fix within 
 - CI pipeline includes `pip-audit` for known CVE detection.
 - Secrets are managed via environment variables — never committed to source.
 - Pre-commit hooks prevent accidental secret commits.
+
+## Known Dependency Audit Exceptions
+
+- `PYSEC-2024-232` is temporarily ignored in CI because the vulnerable
+  execution path is not exercised by the checked-in Streamlit demo or the
+  lightweight validation flow used in this repository today.
+- The exception is tracked in `.github/workflows/ci.yml` and must be
+  re-reviewed whenever runtime dependencies or application entrypoints change.

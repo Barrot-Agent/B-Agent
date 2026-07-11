@@ -16,6 +16,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 FROM base AS production
 
 COPY barrot_agent/ barrot_agent/
+COPY data/ data/
 COPY app.py .
 
 RUN useradd --create-home --shell /bin/bash appuser

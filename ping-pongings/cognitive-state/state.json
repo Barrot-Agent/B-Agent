@@ -1,0 +1,100 @@
+{
+  "cognitive_state_version": "1.0.0",
+  "last_updated": "2025-12-20T23:09:05.623Z",
+  "state_id": "cognitive-state-001",
+  
+  "overall_metrics": {
+    "cognitive_coherence_index": 0.85,
+    "knowledge_base_size": 0,
+    "processing_efficiency": 0.0,
+    "learning_rate": 0.0,
+    "system_health": "initializing"
+  },
+  
+  "agent_states": {
+    "copilot": {
+      "status": "ready",
+      "tasks_processed": 0,
+      "success_rate": 0.0,
+      "average_processing_time_ms": 0,
+      "enhancement_quality_score": 0.0,
+      "learning_progress": {
+        "linguistic_patterns_learned": 0,
+        "structural_optimizations": 0,
+        "context_awareness_level": 0.0
+      }
+    },
+    "barrot": {
+      "status": "ready",
+      "workflows_orchestrated": 0,
+      "success_rate": 0.0,
+      "average_orchestration_time_ms": 0,
+      "aggregation_accuracy": 0.0,
+      "learning_progress": {
+        "coordination_patterns_learned": 0,
+        "optimization_strategies": 0,
+        "decision_quality_score": 0.0
+      }
+    }
+  },
+  
+  "ping_pong_cycles": {
+    "total_cycles": 0,
+    "successful_cycles": 0,
+    "failed_cycles": 0,
+    "average_cycle_time_ms": 0,
+    "cycle_types": {
+      "single_cycle": 0,
+      "multi_cycle": 0,
+      "recursive_cycle": 0
+    }
+  },
+  
+  "knowledge_state": {
+    "total_knowledge_items": 0,
+    "verified_knowledge": 0,
+    "pending_verification": 0,
+    "knowledge_domains": [],
+    "recent_additions": [],
+    "knowledge_quality_score": 0.0
+  },
+  
+  "search_optimization": {
+    "indexed_content_count": 0,
+    "seo_score": 0.0,
+    "search_performance": {
+      "average_query_time_ms": 0,
+      "relevance_score": 0.0,
+      "user_satisfaction": 0.0
+    },
+    "metadata_richness": 0.0
+  },
+  
+  "system_performance": {
+    "uptime_percentage": 0.0,
+    "resource_utilization": {
+      "cpu_usage": 0.0,
+      "memory_usage": 0.0,
+      "storage_usage": 0.0
+    },
+    "error_rate": 0.0,
+    "throughput": {
+      "requests_per_minute": 0,
+      "data_processed_mb": 0
+    }
+  },
+  
+  "learning_state": {
+    "total_learning_iterations": 0,
+    "patterns_recognized": [],
+    "optimizations_applied": [],
+    "adaptive_improvements": [],
+    "learning_velocity": 0.0
+  },
+  
+  "alerts": [],
+  
+  "recent_activities": [],
+  
+  "optimization_recommendations": []
+}
