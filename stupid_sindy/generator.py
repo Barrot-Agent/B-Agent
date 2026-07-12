@@ -43,6 +43,7 @@ ACT_DESCRIPTIONS = {
 
 # ── Formatters ────────────────────────────────────────────────────────────────
 
+
 def _format_beat_text(beat: dict) -> str:
     """Format a single beat as plain text."""
     if beat["type"] == "dialogue":
@@ -114,9 +115,7 @@ def format_episode(episode: dict, fmt: OutputFormat = "text") -> str:
             f"**Logline:** {episode['logline']}\n\n"
             f"---\n"
         )
-        scenes_text = "\n---\n\n".join(
-            _format_scene_markdown(s) for s in episode["scenes"]
-        )
+        scenes_text = "\n---\n\n".join(_format_scene_markdown(s) for s in episode["scenes"])
         return header + "\n" + scenes_text
 
     else:  # plain text
@@ -132,9 +131,7 @@ def format_episode(episode: dict, fmt: OutputFormat = "text") -> str:
             f"LOGLINE: {episode['logline']}\n"
             f"{divider}\n"
         )
-        scenes_text = ("\n" + thin + "\n\n").join(
-            _format_scene_text(s) for s in episode["scenes"]
-        )
+        scenes_text = ("\n" + thin + "\n\n").join(_format_scene_text(s) for s in episode["scenes"])
         return header + "\n" + scenes_text
 
 
@@ -169,9 +166,7 @@ def format_series_overview(fmt: OutputFormat = "text") -> str:
             lines.append("")
             act_eps = get_act(act_num)
             for ep in act_eps:
-                lines.append(
-                    f"- **Episode {ep['number']}: {ep['title']}** — {ep['logline']}"
-                )
+                lines.append(f"- **Episode {ep['number']}: {ep['title']}** — {ep['logline']}")
             lines.append("")
         lines.append("---")
         lines.append("")
@@ -210,9 +205,7 @@ def format_series_overview(fmt: OutputFormat = "text") -> str:
             lines.append(ACT_DESCRIPTIONS[act_num])
             lines.append("")
             for ep in get_act(act_num):
-                lines.append(
-                    f"  Ep {ep['number']:>2}: {ep['title']:<35}  {ep['tone']}"
-                )
+                lines.append(f"  Ep {ep['number']:>2}: {ep['title']:<35}  {ep['tone']}")
             lines.append("")
         lines.append(thin)
         lines.append("MAIN CHARACTERS")

@@ -28,6 +28,7 @@ __license__ = "Apache-2.0"
 
 try:
     from barrot_agent.rendering import DatasetManager, AssetLoader, DatasetAnalytics
+
     _rendering_available = True
 except Exception:
     _rendering_available = False
@@ -37,6 +38,7 @@ except Exception:
 #   data_registry.load_millennium_problems()
 try:
     from data import registry as data_registry
+
     _registry_available = True
 except Exception:
     _registry_available = False

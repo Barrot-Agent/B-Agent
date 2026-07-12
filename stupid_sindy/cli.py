@@ -52,13 +52,15 @@ def main(argv: list[str] | None = None) -> int:
     )
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
-        "--episode", "-e",
+        "--episode",
+        "-e",
         type=int,
         metavar="N",
         help="Generate script for episode N",
     )
     group.add_argument(
-        "--act", "-a",
+        "--act",
+        "-a",
         type=int,
         metavar="N",
         help="Generate all scripts for act N (1, 2, or 3)",
@@ -69,17 +71,20 @@ def main(argv: list[str] | None = None) -> int:
         help="Generate the complete series",
     )
     group.add_argument(
-        "--list", "-l",
+        "--list",
+        "-l",
         action="store_true",
         help="List all episodes",
     )
     parser.add_argument(
-        "--md", "--markdown",
+        "--md",
+        "--markdown",
         action="store_true",
         help="Output in Markdown format instead of plain text",
     )
     parser.add_argument(
-        "--out", "-o",
+        "--out",
+        "-o",
         type=str,
         metavar="FILE",
         help="Write output to FILE instead of stdout",

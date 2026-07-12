@@ -92,5 +92,6 @@ def sourcing_report() -> dict[str, Any]:
 
 if __name__ == "__main__":
     import json
+
     report = sourcing_report()
     print(json.dumps(report, indent=2))

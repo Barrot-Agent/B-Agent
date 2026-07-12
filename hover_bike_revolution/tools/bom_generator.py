@@ -13,6 +13,7 @@ from typing import Any
 
 # Re-use parts list from assembly guide
 import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from assembly_guide_generator import PARTS_LIST
 

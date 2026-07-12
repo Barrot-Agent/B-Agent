@@ -39,9 +39,7 @@ class PerformanceAnalyzer:
             results.append(
                 {
                     "category": self.category,
-                    "title": (
-                        f"Performance signals found in '{artefact.get('id', '?')}'"
-                    ),
+                    "title": (f"Performance signals found in '{artefact.get('id', '?')}'"),
                     "description": (
                         f"Matched {len(hits)} performance-related term(s): "
                         f"{', '.join(hits[:5])}. "

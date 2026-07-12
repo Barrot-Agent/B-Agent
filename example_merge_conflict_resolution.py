@@ -14,7 +14,7 @@ from merge_conflict_micro_ingestion import (
     MergeConflictMicroIngestion,
     LearningOutcome,
     ConflictType,
-    ResolutionStrategy
+    ResolutionStrategy,
 )
 from datetime import datetime
 
@@ -24,22 +24,22 @@ def example_basic_usage():
     print("=" * 70)
     print("Example 1: Basic Usage - Initialize and Export Knowledge Base")
     print("=" * 70)
-    
+
     # Initialize the system
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     print(f"\n✅ Knowledge Base Initialized:")
     print(f"   - {len(mcmi.conflict_patterns)} Conflict Patterns")
     print(f"   - {len(mcmi.resolution_techniques)} Resolution Techniques")
     print(f"   - {len(mcmi.conflict_scenarios)} Scenarios")
     print(f"   - {len(mcmi.tools)} Tools")
     print(f"   - {len(mcmi.best_practices)} Best Practices")
-    
+
     # Export to JSON
     exports = mcmi.export_to_json()
     print(f"\n📤 Exported {len(exports)} JSON files")
-    
+
     return mcmi
 
 
@@ -48,10 +48,10 @@ def example_conflict_analysis():
     print("\n" + "=" * 70)
     print("Example 2: Conflict Analysis")
     print("=" * 70)
-    
+
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     # Example conflicts
     conflicts = [
         {
@@ -65,7 +65,7 @@ def calculate(a, b):
 def calculate(a, b):
     return a * b
 >>>>>>> feature/multiply
-            """
+            """,
         },
         {
             "name": "Import Conflict",
@@ -80,7 +80,7 @@ import os
 import sys
 import numpy as np
 >>>>>>> feature/analysis
-            """
+            """,
         },
         {
             "name": "Config Conflict",
@@ -95,20 +95,20 @@ database:
   host: db.example.com
   port: 5432
 >>>>>>> feature/cloud-db
-            """
-        }
+            """,
+        },
     ]
-    
+
     for conflict in conflicts:
         print(f"\n🔍 Analyzing: {conflict['name']} in {conflict['file']}")
-        analysis = mcmi.analyze_conflict(conflict['content'], conflict['file'])
-        
+        analysis = mcmi.analyze_conflict(conflict["content"], conflict["file"])
+
         print(f"   Conflict Type: {analysis['conflict_type']}")
         print(f"   Auto-Resolvable: {analysis['auto_resolvable']}")
         print(f"   Risk Level: {analysis['risk_assessment']}")
-        
-        if analysis['recommended_technique']:
-            tech = analysis['recommended_technique']
+
+        if analysis["recommended_technique"]:
+            tech = analysis["recommended_technique"]
             print(f"   Recommended: {tech['name']}")
             print(f"   Success Rate: {tech['success_rate'] * 100:.1f}%")
             print(f"   Automation: {tech['automation_level']}")
@@ -119,20 +119,20 @@ def example_get_recommendations():
     print("\n" + "=" * 70)
     print("Example 3: Get Recommendations by Conflict Type")
     print("=" * 70)
-    
+
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     conflict_types = [
         ConflictType.CONTENT.value,
         ConflictType.WHITESPACE.value,
-        ConflictType.RENAME.value
+        ConflictType.RENAME.value,
     ]
-    
+
     for conflict_type in conflict_types:
         print(f"\n📋 Recommendations for {conflict_type.upper()} conflicts:")
         technique = mcmi.get_recommended_strategy(conflict_type, "example.py")
-        
+
         if technique:
             print(f"   Technique: {technique.name}")
             print(f"   Description: {technique.description}")
@@ -148,10 +148,10 @@ def example_record_learning():
     print("\n" + "=" * 70)
     print("Example 4: Record Learning Outcomes")
     print("=" * 70)
-    
+
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     # Simulate resolving several conflicts
     outcomes = [
         LearningOutcome(
@@ -164,11 +164,9 @@ def example_record_learning():
             manual_intervention_required=False,
             lessons_learned=[
                 "Import conflicts can be safely auto-merged",
-                "Sorting imports prevents future conflicts"
+                "Sorting imports prevents future conflicts",
             ],
-            improvements_suggested=[
-                "Add pre-commit hook for import sorting"
-            ]
+            improvements_suggested=["Add pre-commit hook for import sorting"],
         ),
         LearningOutcome(
             outcome_id="LO002",
@@ -180,12 +178,12 @@ def example_record_learning():
             manual_intervention_required=True,
             lessons_learned=[
                 "Complex logic conflicts require understanding both implementations",
-                "Testing is critical after manual merge"
+                "Testing is critical after manual merge",
             ],
             improvements_suggested=[
                 "Better code organization to minimize overlapping changes",
-                "More frequent syncing with main branch"
-            ]
+                "More frequent syncing with main branch",
+            ],
         ),
         LearningOutcome(
             outcome_id="LO003",
@@ -195,15 +193,11 @@ def example_record_learning():
             success=True,
             time_to_resolve=5.0,
             manual_intervention_required=False,
-            lessons_learned=[
-                "Whitespace conflicts trivially resolved with ignore flags"
-            ],
-            improvements_suggested=[
-                "Enforce consistent formatting with pre-commit hooks"
-            ]
-        )
+            lessons_learned=["Whitespace conflicts trivially resolved with ignore flags"],
+            improvements_suggested=["Enforce consistent formatting with pre-commit hooks"],
+        ),
     ]
-    
+
     for outcome in outcomes:
         mcmi.record_learning_outcome(outcome)
         print(f"\n✅ Recorded: {outcome.outcome_id}")
@@ -212,9 +206,9 @@ def example_record_learning():
         print(f"   Success: {outcome.success}")
         print(f"   Time: {outcome.time_to_resolve:.1f}s")
         print(f"   Manual Required: {outcome.manual_intervention_required}")
-    
+
     print(f"\n📊 Total outcomes recorded: {len(mcmi.learning_outcomes)}")
-    
+
     # Show success rates
     print("\n📈 Strategy Success Rates:")
     for strategy, outcomes in mcmi.strategy_success_rates.items():
@@ -228,16 +222,16 @@ def example_best_practices_review():
     print("\n" + "=" * 70)
     print("Example 5: Review Best Practices")
     print("=" * 70)
-    
+
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     categories = {}
     for practice in mcmi.best_practices:
         if practice.category not in categories:
             categories[practice.category] = []
         categories[practice.category].append(practice)
-    
+
     for category, practices in categories.items():
         print(f"\n📚 {category.upper()} Practices:")
         for practice in practices:
@@ -251,16 +245,16 @@ def example_tools_catalog():
     print("\n" + "=" * 70)
     print("Example 6: Available Tools Catalog")
     print("=" * 70)
-    
+
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     categories = {}
     for tool in mcmi.tools:
         if tool.category not in categories:
             categories[tool.category] = []
         categories[tool.category].append(tool)
-    
+
     for category, tools in categories.items():
         print(f"\n🔧 {category}:")
         for tool in tools:
@@ -274,10 +268,10 @@ def example_continuous_improvement():
     print("\n" + "=" * 70)
     print("Example 7: Continuous Improvement Loop")
     print("=" * 70)
-    
+
     mcmi = MergeConflictMicroIngestion()
     mcmi.initialize_knowledge_base()
-    
+
     print("\n🔄 Continuous Improvement Process:")
     print("\n1. Detect Conflict")
     print("   ↓")
@@ -294,7 +288,7 @@ def example_continuous_improvement():
     print("7. Improve Future Recommendations")
     print("   ↓")
     print("8. Prevent Future Conflicts")
-    
+
     print("\n💡 System Features:")
     features = [
         "Automated conflict pattern detection",
@@ -304,12 +298,12 @@ def example_continuous_improvement():
         "Tool integration guidance",
         "Risk assessment for each resolution",
         "Automated vs manual decision making",
-        "Prevention-focused insights"
+        "Prevention-focused insights",
     ]
-    
+
     for feature in features:
         print(f"   ✓ {feature}")
-    
+
     print("\n🎯 Integration with Barrot-Agent:")
     integrations = [
         "Automatically detects conflicts in GitHub PRs",
@@ -318,9 +312,9 @@ def example_continuous_improvement():
         "Continuously improves resolution accuracy",
         "Tracks metrics for system performance",
         "Exports knowledge for version control",
-        "Provides transparency in resolution decisions"
+        "Provides transparency in resolution decisions",
     ]
-    
+
     for integration in integrations:
         print(f"   ✓ {integration}")
 
@@ -331,7 +325,7 @@ def main():
     print("🦜 MERGE CONFLICT MICRO-INGESTION SYSTEM")
     print("    Comprehensive Examples and Usage Patterns")
     print("=" * 70)
-    
+
     # Run examples
     example_basic_usage()
     example_conflict_analysis()
@@ -340,7 +334,7 @@ def main():
     example_best_practices_review()
     example_tools_catalog()
     example_continuous_improvement()
-    
+
     print("\n" + "=" * 70)
     print("✨ Examples Complete!")
     print("=" * 70)

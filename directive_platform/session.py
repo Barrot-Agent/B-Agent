@@ -55,15 +55,11 @@ class SessionManager:
         if not path.exists():
             return None
         try:
-            return CollaborationSession.from_dict(
-                json.loads(path.read_text(encoding="utf-8"))
-            )
+            return CollaborationSession.from_dict(json.loads(path.read_text(encoding="utf-8")))
         except (json.JSONDecodeError, KeyError):
             return None
 
-    def list_sessions(
-        self, directive_id: str | None = None
-    ) -> list[CollaborationSession]:
+    def list_sessions(self, directive_id: str | None = None) -> list[CollaborationSession]:
         """
         Return all sessions, optionally filtered by *directive_id*.
         Sorted newest-first.
@@ -71,9 +67,7 @@ class SessionManager:
         sessions: list[CollaborationSession] = []
         for fp in self._dir.glob("*.json"):
             try:
-                s = CollaborationSession.from_dict(
-                    json.loads(fp.read_text(encoding="utf-8"))
-                )
+                s = CollaborationSession.from_dict(json.loads(fp.read_text(encoding="utf-8")))
                 if directive_id is None or s.directive_id == directive_id:
                     sessions.append(s)
             except (json.JSONDecodeError, KeyError):

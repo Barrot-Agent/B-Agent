@@ -12,59 +12,245 @@ import time
 from pathlib import Path
 from typing import Any
 
-
 # ---------------------------------------------------------------------------
 # Parts list
 # ---------------------------------------------------------------------------
 
 PARTS_LIST: list[dict[str, Any]] = [
     # Magnets & levitation
-    {"part": "N52 Neodymium magnets 50×25×10 mm", "qty": 64, "unit_cost_usd": 5.00, "supplier": "K&J Magnetics / eBay", "category": "maglev"},
-    {"part": "AH3503 Hall effect sensors", "qty": 12, "unit_cost_usd": 1.20, "supplier": "Mouser / LCSC", "category": "maglev"},
-    {"part": "Correction coil wire (0.8 mm, 10 m)", "qty": 4, "unit_cost_usd": 8.00, "supplier": "Amazon / local", "category": "maglev"},
-    {"part": "Epoxy adhesive (JB Weld)", "qty": 2, "unit_cost_usd": 12.00, "supplier": "Hardware store", "category": "maglev"},
-
+    {
+        "part": "N52 Neodymium magnets 50×25×10 mm",
+        "qty": 64,
+        "unit_cost_usd": 5.00,
+        "supplier": "K&J Magnetics / eBay",
+        "category": "maglev",
+    },
+    {
+        "part": "AH3503 Hall effect sensors",
+        "qty": 12,
+        "unit_cost_usd": 1.20,
+        "supplier": "Mouser / LCSC",
+        "category": "maglev",
+    },
+    {
+        "part": "Correction coil wire (0.8 mm, 10 m)",
+        "qty": 4,
+        "unit_cost_usd": 8.00,
+        "supplier": "Amazon / local",
+        "category": "maglev",
+    },
+    {
+        "part": "Epoxy adhesive (JB Weld)",
+        "qty": 2,
+        "unit_cost_usd": 12.00,
+        "supplier": "Hardware store",
+        "category": "maglev",
+    },
     # Motors & propulsion
-    {"part": "BLDC hub motor 750 W, 48 V", "qty": 2, "unit_cost_usd": 220.00, "supplier": "QSMotor / AliExpress", "category": "propulsion"},
-    {"part": "VESC 75/300 ESC", "qty": 2, "unit_cost_usd": 100.00, "supplier": "Trampa Boards / Flipsky", "category": "propulsion"},
-    {"part": "Motor phase wire 8 AWG (3 m)", "qty": 4, "unit_cost_usd": 6.00, "supplier": "Amazon", "category": "propulsion"},
-
+    {
+        "part": "BLDC hub motor 750 W, 48 V",
+        "qty": 2,
+        "unit_cost_usd": 220.00,
+        "supplier": "QSMotor / AliExpress",
+        "category": "propulsion",
+    },
+    {
+        "part": "VESC 75/300 ESC",
+        "qty": 2,
+        "unit_cost_usd": 100.00,
+        "supplier": "Trampa Boards / Flipsky",
+        "category": "propulsion",
+    },
+    {
+        "part": "Motor phase wire 8 AWG (3 m)",
+        "qty": 4,
+        "unit_cost_usd": 6.00,
+        "supplier": "Amazon",
+        "category": "propulsion",
+    },
     # Battery & power
-    {"part": "LiFePO4 prismatic cell 3.2 V 20 Ah", "qty": 60, "unit_cost_usd": 8.00, "supplier": "CALB / EVE / AliExpress", "category": "power"},
-    {"part": "Daly Smart BMS 48 V 100 A", "qty": 1, "unit_cost_usd": 55.00, "supplier": "AliExpress / Daly", "category": "power"},
-    {"part": "MPPT solar charge controller 40 A", "qty": 1, "unit_cost_usd": 35.00, "supplier": "Victron / Renogy", "category": "power"},
-    {"part": "Thin-film CIGS solar module 150 Wp", "qty": 1, "unit_cost_usd": 120.00, "supplier": "GlobalSolar / Amazon", "category": "power"},
-    {"part": "XT90 anti-spark connectors", "qty": 4, "unit_cost_usd": 4.00, "supplier": "Hobbyking / Amazon", "category": "power"},
-    {"part": "8 AWG silicone wire (10 m)", "qty": 1, "unit_cost_usd": 18.00, "supplier": "Amazon", "category": "power"},
-    {"part": "100 A fuse + holder", "qty": 2, "unit_cost_usd": 8.00, "supplier": "Amazon", "category": "power"},
-
+    {
+        "part": "LiFePO4 prismatic cell 3.2 V 20 Ah",
+        "qty": 60,
+        "unit_cost_usd": 8.00,
+        "supplier": "CALB / EVE / AliExpress",
+        "category": "power",
+    },
+    {
+        "part": "Daly Smart BMS 48 V 100 A",
+        "qty": 1,
+        "unit_cost_usd": 55.00,
+        "supplier": "AliExpress / Daly",
+        "category": "power",
+    },
+    {
+        "part": "MPPT solar charge controller 40 A",
+        "qty": 1,
+        "unit_cost_usd": 35.00,
+        "supplier": "Victron / Renogy",
+        "category": "power",
+    },
+    {
+        "part": "Thin-film CIGS solar module 150 Wp",
+        "qty": 1,
+        "unit_cost_usd": 120.00,
+        "supplier": "GlobalSolar / Amazon",
+        "category": "power",
+    },
+    {
+        "part": "XT90 anti-spark connectors",
+        "qty": 4,
+        "unit_cost_usd": 4.00,
+        "supplier": "Hobbyking / Amazon",
+        "category": "power",
+    },
+    {
+        "part": "8 AWG silicone wire (10 m)",
+        "qty": 1,
+        "unit_cost_usd": 18.00,
+        "supplier": "Amazon",
+        "category": "power",
+    },
+    {
+        "part": "100 A fuse + holder",
+        "qty": 2,
+        "unit_cost_usd": 8.00,
+        "supplier": "Amazon",
+        "category": "power",
+    },
     # Control electronics
-    {"part": "Raspberry Pi 4B (4 GB)", "qty": 1, "unit_cost_usd": 55.00, "supplier": "Adafruit / RS Components", "category": "control"},
-    {"part": "MPU-9250 IMU breakout", "qty": 2, "unit_cost_usd": 8.00, "supplier": "Adafruit / SparkFun", "category": "control"},
-    {"part": "BMP388 barometer breakout", "qty": 1, "unit_cost_usd": 7.00, "supplier": "Adafruit", "category": "control"},
-    {"part": "HC-SR04 ultrasonic sensor", "qty": 4, "unit_cost_usd": 2.50, "supplier": "Amazon", "category": "control"},
-    {"part": "5 V 10 A DC-DC buck converter", "qty": 1, "unit_cost_usd": 12.00, "supplier": "Amazon", "category": "control"},
-    {"part": "Emergency cut-off switch 100 A", "qty": 1, "unit_cost_usd": 15.00, "supplier": "Amazon", "category": "control"},
-    {"part": "MicroSD card 32 GB", "qty": 1, "unit_cost_usd": 8.00, "supplier": "Amazon", "category": "control"},
-
+    {
+        "part": "Raspberry Pi 4B (4 GB)",
+        "qty": 1,
+        "unit_cost_usd": 55.00,
+        "supplier": "Adafruit / RS Components",
+        "category": "control",
+    },
+    {
+        "part": "MPU-9250 IMU breakout",
+        "qty": 2,
+        "unit_cost_usd": 8.00,
+        "supplier": "Adafruit / SparkFun",
+        "category": "control",
+    },
+    {
+        "part": "BMP388 barometer breakout",
+        "qty": 1,
+        "unit_cost_usd": 7.00,
+        "supplier": "Adafruit",
+        "category": "control",
+    },
+    {
+        "part": "HC-SR04 ultrasonic sensor",
+        "qty": 4,
+        "unit_cost_usd": 2.50,
+        "supplier": "Amazon",
+        "category": "control",
+    },
+    {
+        "part": "5 V 10 A DC-DC buck converter",
+        "qty": 1,
+        "unit_cost_usd": 12.00,
+        "supplier": "Amazon",
+        "category": "control",
+    },
+    {
+        "part": "Emergency cut-off switch 100 A",
+        "qty": 1,
+        "unit_cost_usd": 15.00,
+        "supplier": "Amazon",
+        "category": "control",
+    },
+    {
+        "part": "MicroSD card 32 GB",
+        "qty": 1,
+        "unit_cost_usd": 8.00,
+        "supplier": "Amazon",
+        "category": "control",
+    },
     # Mechanical hardware
-    {"part": "M8 titanium heat-set inserts (pack 50)", "qty": 2, "unit_cost_usd": 22.00, "supplier": "Amazon / McMaster-Carr", "category": "hardware"},
-    {"part": "M8 stainless hex bolts + nuts (pack 50)", "qty": 1, "unit_cost_usd": 18.00, "supplier": "Amazon", "category": "hardware"},
-    {"part": "M4 / M6 bolt assortment", "qty": 1, "unit_cost_usd": 14.00, "supplier": "Amazon", "category": "hardware"},
-    {"part": "Foam vibration isolation pads", "qty": 1, "unit_cost_usd": 12.00, "supplier": "Amazon", "category": "hardware"},
-    {"part": "Pneumatic tyres 16×2 (pair)", "qty": 1, "unit_cost_usd": 30.00, "supplier": "Amazon / bike shop", "category": "hardware"},
-
+    {
+        "part": "M8 titanium heat-set inserts (pack 50)",
+        "qty": 2,
+        "unit_cost_usd": 22.00,
+        "supplier": "Amazon / McMaster-Carr",
+        "category": "hardware",
+    },
+    {
+        "part": "M8 stainless hex bolts + nuts (pack 50)",
+        "qty": 1,
+        "unit_cost_usd": 18.00,
+        "supplier": "Amazon",
+        "category": "hardware",
+    },
+    {
+        "part": "M4 / M6 bolt assortment",
+        "qty": 1,
+        "unit_cost_usd": 14.00,
+        "supplier": "Amazon",
+        "category": "hardware",
+    },
+    {
+        "part": "Foam vibration isolation pads",
+        "qty": 1,
+        "unit_cost_usd": 12.00,
+        "supplier": "Amazon",
+        "category": "hardware",
+    },
+    {
+        "part": "Pneumatic tyres 16×2 (pair)",
+        "qty": 1,
+        "unit_cost_usd": 30.00,
+        "supplier": "Amazon / bike shop",
+        "category": "hardware",
+    },
     # Filament (CF-PLA, PETG, ABS-CF, PA12, TPU)
-    {"part": "CF-PLA 1.75 mm 1 kg spool", "qty": 4, "unit_cost_usd": 45.00, "supplier": "eSUN / PolyMaker", "category": "filament"},
-    {"part": "PETG 1.75 mm 1 kg spool", "qty": 2, "unit_cost_usd": 22.00, "supplier": "eSUN / Hatchbox", "category": "filament"},
-    {"part": "ABS-CF 1.75 mm 1 kg spool", "qty": 1, "unit_cost_usd": 40.00, "supplier": "PolyMaker", "category": "filament"},
-    {"part": "TPU-95A 1.75 mm 0.8 kg spool", "qty": 1, "unit_cost_usd": 28.00, "supplier": "NinjaFlex / Sainsmart", "category": "filament"},
-    {"part": "Nylon PA12 SLS printing service (magnet housings)", "qty": 1, "unit_cost_usd": 75.00, "supplier": "Shapeways / local bureau", "category": "filament"},
+    {
+        "part": "CF-PLA 1.75 mm 1 kg spool",
+        "qty": 4,
+        "unit_cost_usd": 45.00,
+        "supplier": "eSUN / PolyMaker",
+        "category": "filament",
+    },
+    {
+        "part": "PETG 1.75 mm 1 kg spool",
+        "qty": 2,
+        "unit_cost_usd": 22.00,
+        "supplier": "eSUN / Hatchbox",
+        "category": "filament",
+    },
+    {
+        "part": "ABS-CF 1.75 mm 1 kg spool",
+        "qty": 1,
+        "unit_cost_usd": 40.00,
+        "supplier": "PolyMaker",
+        "category": "filament",
+    },
+    {
+        "part": "TPU-95A 1.75 mm 0.8 kg spool",
+        "qty": 1,
+        "unit_cost_usd": 28.00,
+        "supplier": "NinjaFlex / Sainsmart",
+        "category": "filament",
+    },
+    {
+        "part": "Nylon PA12 SLS printing service (magnet housings)",
+        "qty": 1,
+        "unit_cost_usd": 75.00,
+        "supplier": "Shapeways / local bureau",
+        "category": "filament",
+    },
 ]
 
 TOOLS_REQUIRED: list[dict[str, str]] = [
-    {"tool": "FDM 3D printer (≥ 300×300 mm bed)", "notes": "Creality Ender 5 Plus, Bambu Lab X1C, or similar"},
-    {"tool": "Soldering iron with heat-set tip", "notes": "Hakko FX-888D or equivalent, set to 200 °C for PLA inserts"},
+    {
+        "tool": "FDM 3D printer (≥ 300×300 mm bed)",
+        "notes": "Creality Ender 5 Plus, Bambu Lab X1C, or similar",
+    },
+    {
+        "tool": "Soldering iron with heat-set tip",
+        "notes": "Hakko FX-888D or equivalent, set to 200 °C for PLA inserts",
+    },
     {"tool": "Multimeter (digital)", "notes": "For voltage and continuity checks"},
     {"tool": "Gaussmeter / hall probe", "notes": "Verify magnet polarity and field strength"},
     {"tool": "Torque wrench 5–50 Nm", "notes": "For wheel bolts and structural fasteners"},
@@ -125,6 +311,7 @@ TROUBLESHOOTING_GUIDE: list[dict[str, str]] = [
 # ---------------------------------------------------------------------------
 # Guide generator
 # ---------------------------------------------------------------------------
+
 
 class AssemblyGuideGenerator:
     """

@@ -9,6 +9,7 @@ ensure consistent field names and schema shapes.
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
+
 try:
     from typing import TypedDict
 except ImportError:
@@ -18,6 +19,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Merge-Conflict Domain
 # ---------------------------------------------------------------------------
+
 
 class MergeConflictPattern(TypedDict):
     pattern_id: str
@@ -111,6 +113,7 @@ class MergeConflictUnified(TypedDict):
 # Millennium Problems Domain
 # ---------------------------------------------------------------------------
 
+
 class MillenniumProblem(TypedDict):
     number: int
     name: str
@@ -143,6 +146,7 @@ class MillenniumProblemsUnified(TypedDict):
 # ---------------------------------------------------------------------------
 # MMI / Monetization Domain
 # ---------------------------------------------------------------------------
+
 
 class MMIRecommendations(TypedDict):
     timestamp: str
@@ -181,6 +185,7 @@ class MMIMonetizationUnified(TypedDict):
 # Character / Capabilities Domain
 # ---------------------------------------------------------------------------
 
+
 class CharacterCapabilitiesUnified(TypedDict):
     character_database: Dict[str, Any]
     discovered_capabilities: Dict[str, Any]
@@ -190,6 +195,7 @@ class CharacterCapabilitiesUnified(TypedDict):
 # ---------------------------------------------------------------------------
 # Integration / Pingpong
 # ---------------------------------------------------------------------------
+
 
 class PingpongRequest(TypedDict):
     timestamp: str

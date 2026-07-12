@@ -89,10 +89,11 @@ class SandboxPipeline:
             result = instance.analyze()
             result.setdefault("analyzer", analyzer_name)
             result.setdefault("cycle_id", self.cycle_id)
-            result.setdefault(
-                "analyzed_at", datetime.now(timezone.utc).isoformat()
+            result.setdefault("analyzed_at", datetime.now(timezone.utc).isoformat())
+            self.audit.log(
+                "analyzer_complete",
+                {"analyzer": analyzer_name, "finding_count": len(result.get("findings", []))},
             )
-            self.audit.log("analyzer_complete", {"analyzer": analyzer_name, "finding_count": len(result.get("findings", []))})
             return result
         except Exception as exc:  # noqa: BLE001
             self.audit.log("analyzer_error", {"analyzer": analyzer_name, "error": str(exc)})

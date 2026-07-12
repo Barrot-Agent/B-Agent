@@ -238,8 +238,7 @@ class DirectivePlatform:
 
         self.directives.update_status(directive_id, DirectiveStatus.ACTIVE)
         agents = [
-            a for aid in directive.assigned_agent_ids
-            if (a := self.registry.get(aid)) is not None
+            a for aid in directive.assigned_agent_ids if (a := self.registry.get(aid)) is not None
         ]
         participant_ids = ["human"] + [a.agent_id for a in agents]
         session = self.sessions.create_session(directive_id, participant_ids)
@@ -247,21 +246,21 @@ class DirectivePlatform:
         try:
             # Mark agents as active
             for agent in agents:
-                self.registry.update_status(
-                    agent.agent_id, AgentStatus.ACTIVE, directive_id
-                )
+                self.registry.update_status(agent.agent_id, AgentStatus.ACTIVE, directive_id)
 
             # Human opening message
-            self._post(session, Message(
-                session_id=session.session_id,
-                sender_id="human",
-                sender_name=directive.human_author,
-                content=(
-                    f"**Directive issued:** {directive.title}\n\n"
-                    f"{directive.description}"
+            self._post(
+                session,
+                Message(
+                    session_id=session.session_id,
+                    sender_id="human",
+                    sender_name=directive.human_author,
+                    content=(
+                        f"**Directive issued:** {directive.title}\n\n" f"{directive.description}"
+                    ),
+                    message_type=MessageType.DIRECTIVE,
                 ),
-                message_type=MessageType.DIRECTIVE,
-            ))
+            )
 
             # Each agent contributes
             for i, agent in enumerate(agents):
@@ -270,23 +269,29 @@ class DirectivePlatform:
                     time.sleep(0)  # yield to event loop if called from async context
 
             # Closing summary (posted as the platform / system)
-            self._post(session, Message(
-                session_id=session.session_id,
-                sender_id="platform",
-                sender_name="Platform",
-                content=_CLOSING.get(
-                    directive.directive_type,
-                    "All assigned agents have completed their contributions.",
+            self._post(
+                session,
+                Message(
+                    session_id=session.session_id,
+                    sender_id="platform",
+                    sender_name="Platform",
+                    content=_CLOSING.get(
+                        directive.directive_type,
+                        "All assigned agents have completed their contributions.",
+                    ),
+                    message_type=MessageType.RESULT,
                 ),
-                message_type=MessageType.RESULT,
-            ))
+            )
 
             # Record result on the directive
-            self.directives.add_result(directive_id, {
-                "session_id": session.session_id,
-                "agents": [a.agent_id for a in agents],
-                "messages": len(session.messages),
-            })
+            self.directives.add_result(
+                directive_id,
+                {
+                    "session_id": session.session_id,
+                    "agents": [a.agent_id for a in agents],
+                    "messages": len(session.messages),
+                },
+            )
             self.directives.update_status(directive_id, DirectiveStatus.COMPLETED)
             self.sessions.close_session(session.session_id, "completed")
 
@@ -318,26 +323,20 @@ class DirectivePlatform:
 
         self.directives.update_status(directive_id, DirectiveStatus.ACTIVE)
         agents = [
-            a for aid in directive.assigned_agent_ids
-            if (a := self.registry.get(aid)) is not None
+            a for aid in directive.assigned_agent_ids if (a := self.registry.get(aid)) is not None
         ]
         participant_ids = ["human"] + [a.agent_id for a in agents]
         session = self.sessions.create_session(directive_id, participant_ids)
 
         try:
             for agent in agents:
-                self.registry.update_status(
-                    agent.agent_id, AgentStatus.ACTIVE, directive_id
-                )
+                self.registry.update_status(agent.agent_id, AgentStatus.ACTIVE, directive_id)
 
             opening = Message(
                 session_id=session.session_id,
                 sender_id="human",
                 sender_name=directive.human_author,
-                content=(
-                    f"**Directive issued:** {directive.title}\n\n"
-                    f"{directive.description}"
-                ),
+                content=(f"**Directive issued:** {directive.title}\n\n" f"{directive.description}"),
                 message_type=MessageType.DIRECTIVE,
             )
             self._post(session, opening)
@@ -361,11 +360,14 @@ class DirectivePlatform:
             self._post(session, closing)
             yield closing, session
 
-            self.directives.add_result(directive_id, {
-                "session_id": session.session_id,
-                "agents": [a.agent_id for a in agents],
-                "messages": len(session.messages),
-            })
+            self.directives.add_result(
+                directive_id,
+                {
+                    "session_id": session.session_id,
+                    "agents": [a.agent_id for a in agents],
+                    "messages": len(session.messages),
+                },
+            )
             self.directives.update_status(directive_id, DirectiveStatus.COMPLETED)
             self.sessions.close_session(session.session_id, "completed")
 
@@ -400,27 +402,34 @@ class DirectivePlatform:
 
         # Opening acknowledgement
         opening_text = _OPENING.get(dtype, "Acknowledged. Beginning work on directive.")
-        messages.append(Message(
-            session_id=session.session_id,
-            sender_id=agent.agent_id,
-            sender_name=agent.name,
-            content=opening_text,
-            message_type=MessageType.RESPONSE,
-        ))
-
-        # Insights (one per applicable template)
-        templates = _INSIGHTS.get(dtype, [
-            "Processed {n} data points relevant to the directive.",
-        ])
-        for idx, template in enumerate(templates):
-            n = 3 + (idx * 2) + agent_index
-            messages.append(Message(
+        messages.append(
+            Message(
                 session_id=session.session_id,
                 sender_id=agent.agent_id,
                 sender_name=agent.name,
-                content=template.format(n=n),
-                message_type=MessageType.INSIGHT,
-            ))
+                content=opening_text,
+                message_type=MessageType.RESPONSE,
+            )
+        )
+
+        # Insights (one per applicable template)
+        templates = _INSIGHTS.get(
+            dtype,
+            [
+                "Processed {n} data points relevant to the directive.",
+            ],
+        )
+        for idx, template in enumerate(templates):
+            n = 3 + (idx * 2) + agent_index
+            messages.append(
+                Message(
+                    session_id=session.session_id,
+                    sender_id=agent.agent_id,
+                    sender_name=agent.name,
+                    content=template.format(n=n),
+                    message_type=MessageType.INSIGHT,
+                )
+            )
 
         # Handoff (if not the last agent)
         if agent_index < total_agents - 1:
@@ -428,24 +437,28 @@ class DirectivePlatform:
                 dtype,
                 "Contribution complete. Handing off to the next agent.",
             )
-            messages.append(Message(
-                session_id=session.session_id,
-                sender_id=agent.agent_id,
-                sender_name=agent.name,
-                content=handoff_text,
-                message_type=MessageType.HANDOFF,
-            ))
+            messages.append(
+                Message(
+                    session_id=session.session_id,
+                    sender_id=agent.agent_id,
+                    sender_name=agent.name,
+                    content=handoff_text,
+                    message_type=MessageType.HANDOFF,
+                )
+            )
         else:
-            messages.append(Message(
-                session_id=session.session_id,
-                sender_id=agent.agent_id,
-                sender_name=agent.name,
-                content=(
-                    "My contribution to this directive is complete. "
-                    "Results are committed to the session log."
-                ),
-                message_type=MessageType.RESULT,
-            ))
+            messages.append(
+                Message(
+                    session_id=session.session_id,
+                    sender_id=agent.agent_id,
+                    sender_name=agent.name,
+                    content=(
+                        "My contribution to this directive is complete. "
+                        "Results are committed to the session log."
+                    ),
+                    message_type=MessageType.RESULT,
+                )
+            )
 
         return messages
 

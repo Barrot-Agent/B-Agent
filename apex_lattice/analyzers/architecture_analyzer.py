@@ -38,7 +38,10 @@ class Analyzer(BaseAnalyzer):
                 continue
             # skip hidden dirs and virtual envs
             parts = d.parts
-            if any(p.startswith(".") or p in ("__pycache__", "node_modules", "venv", ".venv") for p in parts):
+            if any(
+                p.startswith(".") or p in ("__pycache__", "node_modules", "venv", ".venv")
+                for p in parts
+            ):
                 continue
             py_files = list(d.glob("*.py"))
             if py_files and not (d / "__init__.py").exists():
@@ -60,11 +63,16 @@ class Analyzer(BaseAnalyzer):
     def _check_config_management(self) -> list[dict[str, Any]]:
         """Suggest config management if no .env / config file is present."""
         results = []
-        config_indicators = [".env", ".env.example", "config.py", "config.yaml",
-                              "config.toml", "settings.py", "settings.toml"]
-        found = any(
-            (self.repo_root / name).exists() for name in config_indicators
-        )
+        config_indicators = [
+            ".env",
+            ".env.example",
+            "config.py",
+            "config.yaml",
+            "config.toml",
+            "settings.py",
+            "settings.toml",
+        ]
+        found = any((self.repo_root / name).exists() for name in config_indicators)
         if not found:
             results.append(
                 self._make_finding(

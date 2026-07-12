@@ -27,7 +27,9 @@ class DatasetUsageRecord:
 
     @property
     def average_quality(self) -> float:
-        return sum(self.quality_ratings) / len(self.quality_ratings) if self.quality_ratings else 0.0
+        return (
+            sum(self.quality_ratings) / len(self.quality_ratings) if self.quality_ratings else 0.0
+        )
 
 
 @dataclass
@@ -138,10 +140,7 @@ class DatasetAnalytics:
             else:
                 quality_buckets["<3"] += 1
 
-        avg_quality = (
-            sum(ds.quality_score for ds in datasets) / len(datasets)
-            if datasets else 0.0
-        )
+        avg_quality = sum(ds.quality_score for ds in datasets) / len(datasets) if datasets else 0.0
 
         uptime = (datetime.datetime.utcnow() - self._start_time).total_seconds() / 3600
 
@@ -216,21 +215,96 @@ class DatasetAnalytics:
         lines.append("\n---\n")
         lines.append("## Integrated Modules (15 Total)\n")
         modules = [
-            ("Module 01", "Dataset Manager & Registry",        "✅ OPERATIONAL", "Central registry for all 40+ datasets — auto-discovery, versioning, licence tracking"),
-            ("Module 02", "3D Asset Loader & Optimizer",       "✅ OPERATIONAL", "OBJ, glTF, FBX, PLY, STL, USD, ABC — GPU optimisation, LOD selection, cloud streaming"),
-            ("Module 03", "Material System Integration",       "✅ OPERATIONAL", "PBR import from ambientCG, Poly Haven, Substance 3D, CGBookcase (17 000+ materials)"),
-            ("Module 04", "Scene Database Integration",        "✅ OPERATIONAL", "ScanNet (1 513 scenes), Matterport3D (90 houses), S3DIS, RealEstate10K, DTU MVS"),
-            ("Module 05", "Point Cloud & LiDAR System",        "✅ OPERATIONAL", "ScanNet, Semantic3D, KITTI, NuScenes, S3DIS — real-time GPU rendering, voxelisation"),
-            ("Module 06", "Neural Radiance Field Integration", "✅ OPERATIONAL", "Synthetic NeRF, LLFF, Tanks & Temples, RealEstate10K, DTU — 60 FPS inference"),
-            ("Module 07", "World-Scale 3D Mapping",            "✅ OPERATIONAL", "Google Earth, OSM+Open3D, NYC (1M buildings), Berlin, Cesium 3D Tiles — global streaming"),
-            ("Module 08", "Photogrammetry Pipeline",           "✅ OPERATIONAL", "COLMAP/OpenMVS/ODM — calibration → sparse → dense → mesh → texture → LOD"),
-            ("Module 09", "Intelligent Dataset Caching",       "✅ OPERATIONAL", "GPU/CPU/SSD/Cloud multi-tier LRU cache with smart pre-fetching"),
-            ("Module 10", "Real-Time Dataset Indexing",        "✅ OPERATIONAL", "Sub-10ms queries across all 40+ datasets — full-text, faceted, similarity search"),
-            ("Module 11", "Format Converter",                  "✅ OPERATIONAL", "OBJ ↔ glTF ↔ FBX ↔ PLY ↔ STL ↔ USD ↔ ABC — PBR-preserving batch conversion"),
-            ("Module 12", "Streaming & Loading Optimisation",  "✅ OPERATIONAL", "Chunked LOD streaming, bandwidth-adaptive quality, background pre-fetch"),
-            ("Module 13", "Quality Metrics & Validation",      "✅ OPERATIONAL", "Geometry, texture, material, and performance validation — actionable reports"),
-            ("Module 14", "Rendering Engine Integration",      "✅ OPERATIONAL", "Vulkan/Metal/DX12/WebGPU — 60–120 FPS, 4K, real-time GI/shadows/reflections"),
-            ("Module 15", "Analytics Dashboard",               "✅ OPERATIONAL", "Real-time statistics, usage tracking, quality graphs — this report"),
+            (
+                "Module 01",
+                "Dataset Manager & Registry",
+                "✅ OPERATIONAL",
+                "Central registry for all 40+ datasets — auto-discovery, versioning, licence tracking",
+            ),
+            (
+                "Module 02",
+                "3D Asset Loader & Optimizer",
+                "✅ OPERATIONAL",
+                "OBJ, glTF, FBX, PLY, STL, USD, ABC — GPU optimisation, LOD selection, cloud streaming",
+            ),
+            (
+                "Module 03",
+                "Material System Integration",
+                "✅ OPERATIONAL",
+                "PBR import from ambientCG, Poly Haven, Substance 3D, CGBookcase (17 000+ materials)",
+            ),
+            (
+                "Module 04",
+                "Scene Database Integration",
+                "✅ OPERATIONAL",
+                "ScanNet (1 513 scenes), Matterport3D (90 houses), S3DIS, RealEstate10K, DTU MVS",
+            ),
+            (
+                "Module 05",
+                "Point Cloud & LiDAR System",
+                "✅ OPERATIONAL",
+                "ScanNet, Semantic3D, KITTI, NuScenes, S3DIS — real-time GPU rendering, voxelisation",
+            ),
+            (
+                "Module 06",
+                "Neural Radiance Field Integration",
+                "✅ OPERATIONAL",
+                "Synthetic NeRF, LLFF, Tanks & Temples, RealEstate10K, DTU — 60 FPS inference",
+            ),
+            (
+                "Module 07",
+                "World-Scale 3D Mapping",
+                "✅ OPERATIONAL",
+                "Google Earth, OSM+Open3D, NYC (1M buildings), Berlin, Cesium 3D Tiles — global streaming",
+            ),
+            (
+                "Module 08",
+                "Photogrammetry Pipeline",
+                "✅ OPERATIONAL",
+                "COLMAP/OpenMVS/ODM — calibration → sparse → dense → mesh → texture → LOD",
+            ),
+            (
+                "Module 09",
+                "Intelligent Dataset Caching",
+                "✅ OPERATIONAL",
+                "GPU/CPU/SSD/Cloud multi-tier LRU cache with smart pre-fetching",
+            ),
+            (
+                "Module 10",
+                "Real-Time Dataset Indexing",
+                "✅ OPERATIONAL",
+                "Sub-10ms queries across all 40+ datasets — full-text, faceted, similarity search",
+            ),
+            (
+                "Module 11",
+                "Format Converter",
+                "✅ OPERATIONAL",
+                "OBJ ↔ glTF ↔ FBX ↔ PLY ↔ STL ↔ USD ↔ ABC — PBR-preserving batch conversion",
+            ),
+            (
+                "Module 12",
+                "Streaming & Loading Optimisation",
+                "✅ OPERATIONAL",
+                "Chunked LOD streaming, bandwidth-adaptive quality, background pre-fetch",
+            ),
+            (
+                "Module 13",
+                "Quality Metrics & Validation",
+                "✅ OPERATIONAL",
+                "Geometry, texture, material, and performance validation — actionable reports",
+            ),
+            (
+                "Module 14",
+                "Rendering Engine Integration",
+                "✅ OPERATIONAL",
+                "Vulkan/Metal/DX12/WebGPU — 60–120 FPS, 4K, real-time GI/shadows/reflections",
+            ),
+            (
+                "Module 15",
+                "Analytics Dashboard",
+                "✅ OPERATIONAL",
+                "Real-time statistics, usage tracking, quality graphs — this report",
+            ),
         ]
         lines.append("| # | Module | Status | Description |")
         lines.append("|---|--------|--------|-------------|")
@@ -278,7 +352,9 @@ class DatasetAnalytics:
         lines.append("## Category Asset Distribution\n")
         lines.append("| Category | Assets |")
         lines.append("|----------|--------|")
-        for cat, count in sorted(summary.category_breakdown.items(), key=lambda x: x[1], reverse=True):
+        for cat, count in sorted(
+            summary.category_breakdown.items(), key=lambda x: x[1], reverse=True
+        ):
             lines.append(f"| {cat.replace('_', ' ').title()} | {count:,} |")
 
         lines.append("\n---\n")

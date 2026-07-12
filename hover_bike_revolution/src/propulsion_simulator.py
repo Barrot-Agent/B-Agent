@@ -12,7 +12,6 @@ import math
 from dataclasses import dataclass, field
 from typing import Any
 
-
 GRAVITY = 9.81  # m/s²
 AIR_DENSITY = 1.225  # kg/m³ (sea level, 15 °C)
 
@@ -20,6 +19,7 @@ AIR_DENSITY = 1.225  # kg/m³ (sea level, 15 °C)
 # ---------------------------------------------------------------------------
 # BLDC Hub Motor model
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class BLDCMotor:
@@ -156,6 +156,7 @@ class BLDCMotor:
 # Electromagnetic pulse drive
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class EMPulseDrive:
     """
@@ -181,7 +182,7 @@ class EMPulseDrive:
         Pulse repetition frequency (Hz).
     """
 
-    capacitance_f: float = 0.1        # 100 mF supercapacitor
+    capacitance_f: float = 0.1  # 100 mF supercapacitor
     charge_voltage_v: float = 48.0
     coil_inductance_h: float = 0.005  # 5 mH
     coil_resistance_ohm: float = 0.5
@@ -200,7 +201,7 @@ class EMPulseDrive:
         return self.charge_voltage_v / (self.coil_resistance_ohm + omega * self.coil_inductance_h)
 
     # Effective magnetic coupling travel distance for pulse force estimate (m)
-    _EFFECTIVE_TRAVEL_M: float = 0.10   # 10 cm — typical magnet interaction range
+    _EFFECTIVE_TRAVEL_M: float = 0.10  # 10 cm — typical magnet interaction range
 
     @property
     def peak_force_n(self) -> float:
@@ -229,6 +230,7 @@ class EMPulseDrive:
 # ---------------------------------------------------------------------------
 # Ion thruster auxiliary model (optional / experimental)
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class IonThruster:
@@ -283,6 +285,7 @@ class IonThruster:
 # Multi-propulsion system analyser
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class PropulsionSystem:
     """
@@ -291,7 +294,7 @@ class PropulsionSystem:
 
     bldc: BLDCMotor = field(default_factory=BLDCMotor)
     em_pulse: EMPulseDrive = field(default_factory=EMPulseDrive)
-    ion: IonThruster | None = None   # optional experimental system
+    ion: IonThruster | None = None  # optional experimental system
     total_mass_kg: float = 120.0
     drag_coefficient: float = 0.35
     frontal_area_m2: float = 0.60
@@ -331,9 +334,7 @@ class PropulsionSystem:
                 "peak_power_w": self.bldc.peak_power_w,
                 "rated_torque_nm": self.bldc.rated_torque_nm,
                 "total_rated_power_w": self.bldc.total_rated_power_w,
-                "0_to_30kmh_s": self.bldc.time_to_speed(
-                    30 / 3.6, self.total_mass_kg
-                ),
+                "0_to_30kmh_s": self.bldc.time_to_speed(30 / 3.6, self.total_mass_kg),
                 "regen_at_30kmh_w": self.bldc.regenerative_power_w(30 / 3.6),
             },
             "em_pulse_drive": {

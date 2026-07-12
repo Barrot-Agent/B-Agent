@@ -15,20 +15,21 @@ import time
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
-
 # ---------------------------------------------------------------------------
 # Sensor models
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class IMUReading:
     """Inertial measurement unit data packet."""
-    roll_rad: float = 0.0       # rotation around X-axis
-    pitch_rad: float = 0.0      # rotation around Y-axis
-    yaw_rad: float = 0.0        # rotation around Z-axis
+
+    roll_rad: float = 0.0  # rotation around X-axis
+    pitch_rad: float = 0.0  # rotation around Y-axis
+    yaw_rad: float = 0.0  # rotation around Z-axis
     accel_x_ms2: float = 0.0
     accel_y_ms2: float = 0.0
-    accel_z_ms2: float = 9.81   # gravity in z-up body frame
+    accel_z_ms2: float = 9.81  # gravity in z-up body frame
     gyro_x_rads: float = 0.0
     gyro_y_rads: float = 0.0
     gyro_z_rads: float = 0.0
@@ -38,6 +39,7 @@ class IMUReading:
 @dataclass
 class AltitudeSensors:
     """Altitude measurement from barometer + ultrasonic sensors."""
+
     baro_altitude_m: float = 0.0
     ultrasonic_front_m: float = 0.15
     ultrasonic_rear_m: float = 0.15
@@ -69,6 +71,7 @@ class AltitudeSensors:
 # ---------------------------------------------------------------------------
 # PID controller
 # ---------------------------------------------------------------------------
+
 
 class PIDController:
     """
@@ -147,6 +150,7 @@ class PIDController:
 # Sensor fusion (complementary filter)
 # ---------------------------------------------------------------------------
 
+
 class ComplementaryFilter:
     """
     Simple complementary filter for attitude estimation.
@@ -186,13 +190,15 @@ class ComplementaryFilter:
 # Stabilisation controller
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class StabilisationConfig:
     """Tunable parameters for the stabilisation controller."""
-    target_gap_m: float = 0.15       # desired hover height (m)
+
+    target_gap_m: float = 0.15  # desired hover height (m)
     max_gap_m: float = 0.30
     min_gap_m: float = 0.05
-    max_roll_rad: float = 0.35       # ~20 degrees
+    max_roll_rad: float = 0.35  # ~20 degrees
     max_pitch_rad: float = 0.35
     update_rate_hz: float = 200.0
 
@@ -405,8 +411,8 @@ class StabilisationController:
             gap_cmd, roll_cmd, pitch_cmd = cmds
 
             # Simple plant model: commands partially correct state
-            gap += gap_cmd * 0.001    # 1 mm per unit command
-            roll -= roll_cmd * 0.01   # 10 mrad per unit command
+            gap += gap_cmd * 0.001  # 1 mm per unit command
+            roll -= roll_cmd * 0.01  # 10 mrad per unit command
             pitch -= pitch_cmd * 0.01
 
             records.append(
@@ -491,7 +497,7 @@ if __name__ == "__main__":
 
     def bump(t: float) -> tuple[float, float, float]:
         """Simulate a small bump at t=1 s."""
-        if 1.000 <= t < 1.005:   # single 5 ms impulse
+        if 1.000 <= t < 1.005:  # single 5 ms impulse
             return (-0.005, 0.008, 0.005)
         return (0.0, 0.0, 0.0)
 

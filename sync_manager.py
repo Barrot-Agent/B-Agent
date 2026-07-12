@@ -44,6 +44,7 @@ log.addHandler(_file_handler)
 # Audit trail
 # ---------------------------------------------------------------------------
 
+
 class AuditTrail:
     """Append-only JSONL audit log."""
 
@@ -67,6 +68,7 @@ AUDIT = AuditTrail(AUDIT_LOG)
 # ---------------------------------------------------------------------------
 # Deployment runners
 # ---------------------------------------------------------------------------
+
 
 def _run_module(module_name: str, label: str) -> bool:
     """
@@ -110,6 +112,7 @@ def run_kaggle() -> bool:
 # Validation helpers
 # ---------------------------------------------------------------------------
 
+
 def _check_credential(name: str) -> bool:
     present = bool(os.environ.get(name, "").strip())
     if not present:
@@ -134,14 +137,15 @@ def validate_credentials(run_hf: bool, run_db: bool, run_kg: bool) -> dict[str, 
 # Argument parsing & main
 # ---------------------------------------------------------------------------
 
+
 def _parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="B-Agent multi-platform sync manager"
-    )
+    parser = argparse.ArgumentParser(description="B-Agent multi-platform sync manager")
     parser.add_argument("--hf", action="store_true", help="Deploy to Hugging Face")
     parser.add_argument("--databricks", action="store_true", help="Deploy to Databricks")
     parser.add_argument("--kaggle", action="store_true", help="Run Kaggle automation")
-    parser.add_argument("--all", dest="all_", action="store_true", help="Run all deployers (default)")
+    parser.add_argument(
+        "--all", dest="all_", action="store_true", help="Run all deployers (default)"
+    )
     return parser.parse_args()
 
 

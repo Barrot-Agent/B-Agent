@@ -13,12 +13,18 @@ import sys
 # Attempt to load legacy architecture
 try:
     import agi_orchestrator
+
     LEGACY_ACTIVE = True
 except ImportError:
     LEGACY_ACTIVE = False
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - [BARROT-Ω BRIDGE] - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - [BARROT-Ω BRIDGE] - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 logger = logging.getLogger(__name__)
+
 
 def apply_council_weights():
     state_file = "council_weights.json"
@@ -30,14 +36,19 @@ def apply_council_weights():
         state = json.load(f)
 
     logger.info(f"Ingesting state from {state['timestamp']}...")
-    logger.info(f"Applying {state['target_asset']} Multiplier: {state['orchestrator_weight_multiplier']}x")
+    logger.info(
+        f"Applying {state['target_asset']} Multiplier: {state['orchestrator_weight_multiplier']}x"
+    )
 
     if LEGACY_ACTIVE:
         logger.info("Hooking into agi_orchestrator.py to update Council agent parameters...")
         # Placeholder for physical execution: agi_orchestrator.update_weights(state)
         logger.info("AGI Orchestrator parameters dynamically updated.")
     else:
-        logger.warning("agi_orchestrator.py not structured as an importable module in local path. Simulating parameter injection.")
+        logger.warning(
+            "agi_orchestrator.py not structured as an importable module in local path. Simulating parameter injection."
+        )
+
 
 if __name__ == "__main__":
     apply_council_weights()

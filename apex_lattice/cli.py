@@ -26,12 +26,14 @@ def main(argv: list[str] | None = None) -> int:
     )
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
-        "--cycle", "-c",
+        "--cycle",
+        "-c",
         action="store_true",
         help="Run a single analysis cycle (default action)",
     )
     group.add_argument(
-        "--schedule", "-s",
+        "--schedule",
+        "-s",
         type=float,
         metavar="SECONDS",
         help="Run recurring cycles at the given interval (seconds)",
@@ -47,7 +49,8 @@ def main(argv: list[str] | None = None) -> int:
         help="List all persisted findings",
     )
     group.add_argument(
-        "--recs", "--recommendations",
+        "--recs",
+        "--recommendations",
         action="store_true",
         dest="recs",
         help="List all persisted recommendations",
@@ -79,6 +82,7 @@ def main(argv: list[str] | None = None) -> int:
 # ---------------------------------------------------------------------------
 # Commands
 # ---------------------------------------------------------------------------
+
 
 def _cmd_cycle(apex_dir: Path) -> int:
     from .cycle import CycleManager

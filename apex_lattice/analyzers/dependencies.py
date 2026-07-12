@@ -34,9 +34,7 @@ class DependencyAnalyzer:
         return [
             {
                 "category": self.category,
-                "title": (
-                    f"Dependency signals in '{artefact.get('id', '?')}'"
-                ),
+                "title": (f"Dependency signals in '{artefact.get('id', '?')}'"),
                 "description": (
                     f"Detected {len(hits)} dependency-related term(s): "
                     f"{', '.join(hits[:5])}. "

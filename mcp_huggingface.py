@@ -53,6 +53,7 @@ SINDY_MODELS: List[str] = [
 # Status types
 # ---------------------------------------------------------------------------
 
+
 class DownloadStatus(str, Enum):
     NOT_CACHED = "not_cached"
     DOWNLOADING = "downloading"
@@ -64,7 +65,7 @@ class DownloadStatus(str, Enum):
 class ModelDownloadState:
     model_id: str
     status: DownloadStatus = DownloadStatus.NOT_CACHED
-    progress: float = 0.0          # 0.0 – 1.0
+    progress: float = 0.0  # 0.0 – 1.0
     local_path: Optional[str] = None
     error_message: Optional[str] = None
     started_at: Optional[float] = None
@@ -92,6 +93,7 @@ class HFModelInfo:
 # Client
 # ---------------------------------------------------------------------------
 
+
 class HuggingFaceMCP:
     """MCP client for Hugging Face model management."""
 
@@ -114,11 +116,11 @@ class HuggingFaceMCP:
         """Lazily import huggingface_hub; returns None when unavailable."""
         try:
             import huggingface_hub as hub  # noqa: F401
+
             return hub
         except ImportError:
             logger.warning(
-                "huggingface_hub is not installed. "
-                "Install it with: pip install huggingface_hub"
+                "huggingface_hub is not installed. " "Install it with: pip install huggingface_hub"
             )
             return None
 
@@ -211,7 +213,10 @@ class HuggingFaceMCP:
             except Exception as exc:
                 logger.warning(
                     "Download attempt %d/%d for %s failed: %s",
-                    attempt, _MAX_RETRIES, model_id, exc,
+                    attempt,
+                    _MAX_RETRIES,
+                    model_id,
+                    exc,
                 )
                 if attempt < _MAX_RETRIES:
                     time.sleep(_RETRY_DELAY * attempt)

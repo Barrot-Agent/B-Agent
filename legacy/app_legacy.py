@@ -23,10 +23,12 @@ st.set_page_config(
 # Lazy torch import (avoids blocking the whole app on startup)
 # ---------------------------------------------------------------------------
 
+
 @st.cache_resource(show_spinner=False)
 def _load_torch():
     try:
         import torch  # noqa: F401
+
         return True, None
     except ImportError as exc:
         return False, str(exc)
@@ -73,6 +75,7 @@ from directive_platform import (  # noqa: E402
 # Shared pipeline (cached across reruns)
 # ---------------------------------------------------------------------------
 
+
 @st.cache_resource(show_spinner=False)
 def get_pipeline() -> SindyVideoPipeline:
     return SindyVideoPipeline()
@@ -81,6 +84,7 @@ def get_pipeline() -> SindyVideoPipeline:
 # ===========================================================================
 # Page: Home
 # ===========================================================================
+
 
 def page_home() -> None:
     st.title("🤖 Barrot Agent")
@@ -99,8 +103,7 @@ def page_home() -> None:
         st.info("Navigate to **🤖 Smart Agent** in the sidebar to give Barrot a goal.")
 
     st.divider()
-    st.markdown(
-        """
+    st.markdown("""
 ### About Barrot Agent
 Barrot is a self-improving agent infrastructure that combines:
 - **Autonomous task execution** via the Smart Agent (plan → act → observe loop)
@@ -110,8 +113,7 @@ Barrot is a self-improving agent infrastructure that combines:
 - **Distributed inference** and MCP workflow integration
 
 Select a page in the sidebar to get started.
-        """
-    )
+        """)
 
 
 # ===========================================================================
@@ -119,17 +121,17 @@ Select a page in the sidebar to get started.
 # ===========================================================================
 
 _STATUS_EMOJI = {
-    RenderStatus.QUEUED:    "⏳",
+    RenderStatus.QUEUED: "⏳",
     RenderStatus.RENDERING: "🎬",
-    RenderStatus.COMPLETE:  "✅",
-    RenderStatus.ERROR:     "❌",
+    RenderStatus.COMPLETE: "✅",
+    RenderStatus.ERROR: "❌",
 }
 
 _STATUS_COLOUR = {
-    RenderStatus.QUEUED:    "orange",
+    RenderStatus.QUEUED: "orange",
     RenderStatus.RENDERING: "blue",
-    RenderStatus.COMPLETE:  "green",
-    RenderStatus.ERROR:     "red",
+    RenderStatus.COMPLETE: "green",
+    RenderStatus.ERROR: "red",
 }
 
 
@@ -251,16 +253,13 @@ def page_sindy_studio() -> None:
                         text=f"🎬 Rendering scene {scene_est}/{len(ep.scenes)} … {pct}%",
                     )
                     status_text.markdown(
-                        f"**Status:** :blue[{update.status.value.title()}] "
-                        f"| Progress: {pct}%"
+                        f"**Status:** :blue[{update.status.value.title()}] " f"| Progress: {pct}%"
                     )
                 elif update.status == RenderStatus.COMPLETE:
                     progress_bar.progress(1.0, text="✅ Render complete!")
                     status_text.markdown("**Status:** :green[Complete]")
                 elif update.status == RenderStatus.ERROR:
-                    status_text.markdown(
-                        f"**Status:** :red[Error] – {update.error_message}"
-                    )
+                    status_text.markdown(f"**Status:** :red[Error] – {update.error_message}")
                     break
 
             st.rerun()
@@ -318,7 +317,7 @@ def page_sindy_studio() -> None:
                 with st.container(border=True):
                     st.markdown(f"### {char.name}")
                     st.markdown(char.description)
-                    st.markdown(f"*Catchphrase:* **\"{char.catchphrase}\"**")
+                    st.markdown(f'*Catchphrase:* **"{char.catchphrase}"**')
 
     # -----------------------------------------------------------------------
     # Batch generate handler (runs outside tabs so it can own the screen)
@@ -355,16 +354,16 @@ def page_sindy_studio() -> None:
 # ===========================================================================
 
 _MCP_STEP_EMOJI = {
-    OrchestratorStep.INIT:               "🚀",
-    OrchestratorStep.HF_MODELS:          "🤗",
-    OrchestratorStep.SCRIPT_GEN:         "📝",
-    OrchestratorStep.DATABRICKS_SUBMIT:  "☁️",
-    OrchestratorStep.DATABRICKS_WAIT:    "⏳",
-    OrchestratorStep.LOCAL_RENDER:       "🎬",
-    OrchestratorStep.GITHUB_COMMIT:      "📤",
-    OrchestratorStep.CICD_TRIGGER:       "⚙️",
-    OrchestratorStep.COMPLETE:           "✅",
-    OrchestratorStep.ERROR:              "❌",
+    OrchestratorStep.INIT: "🚀",
+    OrchestratorStep.HF_MODELS: "🤗",
+    OrchestratorStep.SCRIPT_GEN: "📝",
+    OrchestratorStep.DATABRICKS_SUBMIT: "☁️",
+    OrchestratorStep.DATABRICKS_WAIT: "⏳",
+    OrchestratorStep.LOCAL_RENDER: "🎬",
+    OrchestratorStep.GITHUB_COMMIT: "📤",
+    OrchestratorStep.CICD_TRIGGER: "⚙️",
+    OrchestratorStep.COMPLETE: "✅",
+    OrchestratorStep.ERROR: "❌",
 }
 
 
@@ -558,9 +557,10 @@ def page_mcp_workflow() -> None:
         st.subheader("MCP Run History (this session)")
         # Show a placeholder – history is per-orchestrator instance
         st.info(
-            "Run history is tracked per session.  "
-            "Start a workflow above to see entries here."
+            "Run history is tracked per session.  " "Start a workflow above to see entries here."
         )
+
+
 # Page: Apex Lattice Analysis Pipeline
 # ===========================================================================
 
@@ -611,9 +611,7 @@ def page_apex_lattice() -> None:
 
         st.divider()
         scheduler_running = manager.is_scheduler_running()
-        st.markdown(
-            f"**Scheduler:** {'🟢 Running' if scheduler_running else '⚫ Stopped'}"
-        )
+        st.markdown(f"**Scheduler:** {'🟢 Running' if scheduler_running else '⚫ Stopped'}")
 
     # -----------------------------------------------------------------------
     # Run cycle
@@ -656,8 +654,7 @@ def page_apex_lattice() -> None:
                 colour = _SEVERITY_COLOUR.get(f.severity, "gray")
                 with st.container(border=True):
                     st.markdown(
-                        f":{colour}[**{f.severity.upper()}**] "
-                        f"`{f.category}` — **{f.title}**"
+                        f":{colour}[**{f.severity.upper()}**] " f"`{f.category}` — **{f.title}**"
                     )
                     st.caption(f.description)
 
@@ -688,6 +685,7 @@ def page_apex_lattice() -> None:
             st.info("No audit events yet.")
         else:
             import json as _json
+
             rows = []
             for ev in reversed(events):
                 ts = ev.get("ts", 0)
@@ -707,28 +705,28 @@ def page_apex_lattice() -> None:
 # ===========================================================================
 
 _DTYPE_COLOUR: dict[str, str] = {
-    DirectiveType.LEARN:            "blue",
-    DirectiveType.REFINE:           "orange",
-    DirectiveType.ANALYZE:          "violet",
-    DirectiveType.COOPERATE:        "green",
+    DirectiveType.LEARN: "blue",
+    DirectiveType.REFINE: "orange",
+    DirectiveType.ANALYZE: "violet",
+    DirectiveType.COOPERATE: "green",
     DirectiveType.CROSS_CORROBORATE: "red",
-    DirectiveType.PROJECT:          "gray",
+    DirectiveType.PROJECT: "gray",
 }
 
 _DSTATUS_COLOUR: dict[str, str] = {
-    DirectiveStatus.PENDING:   "orange",
-    DirectiveStatus.ACTIVE:    "blue",
+    DirectiveStatus.PENDING: "orange",
+    DirectiveStatus.ACTIVE: "blue",
     DirectiveStatus.COMPLETED: "green",
-    DirectiveStatus.FAILED:    "red",
+    DirectiveStatus.FAILED: "red",
 }
 
 _MTYPE_EMOJI: dict[str, str] = {
     MessageType.DIRECTIVE: "📋",
-    MessageType.RESPONSE:  "💬",
-    MessageType.QUERY:     "❓",
-    MessageType.INSIGHT:   "💡",
-    MessageType.RESULT:    "✅",
-    MessageType.HANDOFF:   "🔀",
+    MessageType.RESPONSE: "💬",
+    MessageType.QUERY: "❓",
+    MessageType.INSIGHT: "💡",
+    MessageType.RESULT: "✅",
+    MessageType.HANDOFF: "🔀",
 }
 
 
@@ -789,8 +787,7 @@ def page_directive_platform() -> None:
     with tab_new:
         st.subheader("Issue a New Directive")
         st.markdown(
-            "Fill in the form below to assign a collaborative task to one or "
-            "more AI agents."
+            "Fill in the form below to assign a collaborative task to one or " "more AI agents."
         )
 
         col_form, col_help = st.columns([2, 1])
@@ -825,7 +822,9 @@ def page_directive_platform() -> None:
             )
 
             available_agents = platform.registry.list_all()
-            agent_options = {a.agent_id: f"{a.name} — {', '.join(a.capabilities[:3])}" for a in available_agents}
+            agent_options = {
+                a.agent_id: f"{a.name} — {', '.join(a.capabilities[:3])}" for a in available_agents
+            }
             selected_agent_ids = st.multiselect(
                 "Assign agents",
                 options=list(agent_options.keys()),
@@ -870,7 +869,8 @@ def page_directive_platform() -> None:
             progress_bar = st.progress(0.0, text="Starting…")
 
             assigned_agents = [
-                a for aid in directive.assigned_agent_ids
+                a
+                for aid in directive.assigned_agent_ids
                 if (a := platform.registry.get(aid)) is not None
             ]
             # Estimate total messages: 1 opening + (1+insights+1) per agent + 1 closing
@@ -911,9 +911,7 @@ def page_directive_platform() -> None:
         directives = platform.directives.list_all()
 
         if not directives:
-            st.info(
-                "No directives yet. Go to **➕ New Directive** to issue the first one."
-            )
+            st.info("No directives yet. Go to **➕ New Directive** to issue the first one.")
         else:
             # Filter controls
             col_f1, col_f2 = st.columns(2)
@@ -921,7 +919,9 @@ def page_directive_platform() -> None:
                 filter_status = st.selectbox(
                     "Filter by status",
                     options=["all"] + DirectiveStatus.ALL,
-                    format_func=lambda s: "All statuses" if s == "all" else DirectiveStatus.label(s),
+                    format_func=lambda s: (
+                        "All statuses" if s == "all" else DirectiveStatus.label(s)
+                    ),
                     key="dp_filter_status",
                 )
             with col_f2:
@@ -933,7 +933,8 @@ def page_directive_platform() -> None:
                 )
 
             filtered = [
-                d for d in directives
+                d
+                for d in directives
                 if (filter_status == "all" or d.status == filter_status)
                 and (filter_type == "all" or d.directive_type == filter_type)
             ]
@@ -946,10 +947,13 @@ def page_directive_platform() -> None:
                         st.markdown(f"**{d.title}** `{d.directive_id}`")
                         st.markdown(_directive_badge(d.directive_type, d.status))
                         if d.description and d.description != d.title:
-                            st.caption(d.description[:200] + ("…" if len(d.description) > 200 else ""))
+                            st.caption(
+                                d.description[:200] + ("…" if len(d.description) > 200 else "")
+                            )
                     with col_d2:
                         st.caption(f"By: {d.human_author}")
                         import datetime as _dt
+
                         ts = _dt.datetime.fromtimestamp(d.created_at).strftime("%Y-%m-%d %H:%M")
                         st.caption(f"Created: {ts}")
                         if d.results:
@@ -962,9 +966,7 @@ def page_directive_platform() -> None:
                                 sid = r.get("session_id", "?")
                                 agents = ", ".join(r.get("agents", []))
                                 msgs = r.get("messages", 0)
-                                st.markdown(
-                                    f"Session `{sid}` — {agents} — {msgs} messages"
-                                )
+                                st.markdown(f"Session `{sid}` — {agents} — {msgs} messages")
 
     # =========== Tab: Agents ================================================
     with tab_agents:
@@ -989,9 +991,7 @@ def page_directive_platform() -> None:
                             f":{status_colour}[{AgentStatus.label(agent.status)}]"
                         )
                         st.markdown(agent.description)
-                        caps = " &nbsp;".join(
-                            f"`{c}`" for c in agent.capabilities
-                        )
+                        caps = " &nbsp;".join(f"`{c}`" for c in agent.capabilities)
                         st.markdown(f"**Capabilities:** {caps}", unsafe_allow_html=True)
                         if agent.current_directive_id:
                             st.caption(f"Working on directive: {agent.current_directive_id}")
@@ -1024,9 +1024,7 @@ def page_directive_platform() -> None:
                 with col_s2:
                     st.metric("Participants", len(session.participant_ids))
                 with col_s3:
-                    duration = (
-                        (session.ended_at or time.time()) - session.started_at
-                    )
+                    duration = (session.ended_at or time.time()) - session.started_at
                     st.metric("Duration", f"{duration:.1f}s")
 
                 if directive:
@@ -1059,25 +1057,25 @@ def page_directive_platform() -> None:
 # ===========================================================================
 
 _SMART_AGENT_EVENT_EMOJI: dict[AgentEventType, str] = {
-    AgentEventType.GOAL:        "🎯",
-    AgentEventType.THINKING:    "🧠",
-    AgentEventType.PLAN:        "📋",
-    AgentEventType.ACTION:      "⚡",
+    AgentEventType.GOAL: "🎯",
+    AgentEventType.THINKING: "🧠",
+    AgentEventType.PLAN: "📋",
+    AgentEventType.ACTION: "⚡",
     AgentEventType.TOOL_RESULT: "🔧",
     AgentEventType.OBSERVATION: "👁",
-    AgentEventType.ANSWER:      "✅",
-    AgentEventType.ERROR:       "❌",
+    AgentEventType.ANSWER: "✅",
+    AgentEventType.ERROR: "❌",
 }
 
 _SMART_AGENT_EVENT_COLOUR: dict[AgentEventType, str] = {
-    AgentEventType.GOAL:        "blue",
-    AgentEventType.THINKING:    "violet",
-    AgentEventType.PLAN:        "orange",
-    AgentEventType.ACTION:      "blue",
+    AgentEventType.GOAL: "blue",
+    AgentEventType.THINKING: "violet",
+    AgentEventType.PLAN: "orange",
+    AgentEventType.ACTION: "blue",
     AgentEventType.TOOL_RESULT: "gray",
     AgentEventType.OBSERVATION: "green",
-    AgentEventType.ANSWER:      "green",
-    AgentEventType.ERROR:       "red",
+    AgentEventType.ANSWER: "green",
+    AgentEventType.ERROR: "red",
 }
 
 
@@ -1122,10 +1120,10 @@ def page_smart_agent() -> None:
         st.divider()
         st.markdown("**Available tools**")
         for tool, desc in [
-            ("`search`",    "Query the knowledge base"),
-            ("`analyze`",   "Deep structural analysis"),
-            ("`reason`",    "Structured reasoning chain"),
-            ("`code`",      "Generate code scaffolds"),
+            ("`search`", "Query the knowledge base"),
+            ("`analyze`", "Deep structural analysis"),
+            ("`reason`", "Structured reasoning chain"),
+            ("`code`", "Generate code scaffolds"),
             ("`summarize`", "Condense findings"),
         ]:
             st.markdown(f"- {tool} — {desc}")
@@ -1133,11 +1131,7 @@ def page_smart_agent() -> None:
     # -----------------------------------------------------------------------
     # Goal input
     # -----------------------------------------------------------------------
-    default_goal = (
-        selected_example
-        if selected_example != "(type your own below)"
-        else ""
-    )
+    default_goal = selected_example if selected_example != "(type your own below)" else ""
     goal = st.text_area(
         "Enter your goal",
         value=default_goal,
@@ -1184,7 +1178,7 @@ def page_smart_agent() -> None:
                 progress.progress(
                     min(event_count / _EST_TOTAL, 0.95),
                     text=f"{_SMART_AGENT_EVENT_EMOJI.get(event.type, '•')} "
-                         f"{event.type.value.replace('_', ' ').title()}…",
+                    f"{event.type.value.replace('_', ' ').title()}…",
                 )
 
                 emoji = _SMART_AGENT_EVENT_EMOJI.get(event.type, "•")

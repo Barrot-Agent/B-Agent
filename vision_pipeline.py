@@ -219,6 +219,7 @@ class GraniteVisionPipeline:
 # Helpers
 # ------------------------------------------------------------------
 
+
 def _load_images(images):
     """Accept file paths, URLs, or PIL Image objects and return a list of PIL Images."""
     from PIL import Image

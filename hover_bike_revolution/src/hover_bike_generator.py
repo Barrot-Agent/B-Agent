@@ -18,23 +18,24 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Any
 
-
 # ---------------------------------------------------------------------------
 # Data models
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class FrameSpec:
     """Structural frame dimensions and material properties."""
-    wheelbase_mm: float = 1_100.0          # distance between axle centres
+
+    wheelbase_mm: float = 1_100.0  # distance between axle centres
     overall_length_mm: float = 1_600.0
     overall_width_mm: float = 600.0
-    overall_height_mm: float = 350.0       # excluding rider
-    wall_thickness_mm: float = 3.0         # FDM shell thickness
-    infill_percent: float = 40.0           # recommended infill
+    overall_height_mm: float = 350.0  # excluding rider
+    wall_thickness_mm: float = 3.0  # FDM shell thickness
+    infill_percent: float = 40.0  # recommended infill
     primary_material: str = "Carbon-fibre-reinforced PLA"
     stress_point_inserts: str = "M8 titanium heat-set inserts"
-    target_mass_kg: float = 6.5            # frame only, without drivetrain
+    target_mass_kg: float = 6.5  # frame only, without drivetrain
     safety_factor: float = 3.0
 
     def volume_estimate_cm3(self) -> float:
@@ -55,12 +56,13 @@ class FrameSpec:
 @dataclass
 class MaglevSpec:
     """Magnetic levitation system parameters."""
+
     hover_height_min_mm: float = 100.0
     hover_height_max_mm: float = 300.0
     nominal_hover_height_mm: float = 150.0
-    total_rider_mass_kg: float = 100.0     # bike + rider
+    total_rider_mass_kg: float = 100.0  # bike + rider
     gravity_ms2: float = 9.81
-    halbach_array_poles: int = 8           # per side
+    halbach_array_poles: int = 8  # per side
     magnet_grade: str = "N52"
     magnet_dimensions_mm: tuple[float, float, float] = (50.0, 25.0, 10.0)  # L×W×H
     magnets_per_array: int = 16
@@ -85,6 +87,7 @@ class MaglevSpec:
 @dataclass
 class PropulsionSpec:
     """Hub-motor propulsion system parameters."""
+
     motor_type: str = "BLDC hub motor"
     rated_power_w: float = 750.0
     peak_power_w: float = 1_500.0
@@ -112,12 +115,13 @@ class PropulsionSpec:
 @dataclass
 class PowerSpec:
     """Energy storage and power management parameters."""
+
     battery_chemistry: str = "LiFePO4 (lithium iron phosphate)"
     capacity_wh: float = 1_000.0
     nominal_voltage_v: float = 48.0
     max_discharge_rate_c: float = 3.0
-    solar_panel_watt_peak: float = 150.0   # thin-film, roof/canopy
-    kinetic_recovery_w: float = 80.0       # regenerative braking estimate
+    solar_panel_watt_peak: float = 150.0  # thin-film, roof/canopy
+    kinetic_recovery_w: float = 80.0  # regenerative braking estimate
     bms_model: str = "Daly Smart BMS 48V"
     charge_time_hours: float = 3.0
 
@@ -140,10 +144,11 @@ class PowerSpec:
 @dataclass
 class ControlSpec:
     """Flight/stabilisation controller parameters."""
+
     controller: str = "Raspberry Pi 4B"
     imu_model: str = "MPU-9250 (9-DOF)"
     barometer_model: str = "BMP388"
-    ultrasonic_sensors: int = 4            # ground clearance
+    ultrasonic_sensors: int = 4  # ground clearance
     update_rate_hz: float = 200.0
     pid_kp: float = 1.2
     pid_ki: float = 0.05
@@ -155,6 +160,7 @@ class ControlSpec:
 @dataclass
 class HoverBikeSpec:
     """Complete hover bike specification."""
+
     name: str = "Barrot HoverBike MK-I"
     version: str = "1.0.0"
     frame: FrameSpec = field(default_factory=FrameSpec)
@@ -170,10 +176,10 @@ class HoverBikeSpec:
     def total_mass_kg(self) -> float:
         return (
             self.frame.target_mass_kg
-            + 2.0   # maglev array housing
-            + 8.0   # two hub motors + wheels
+            + 2.0  # maglev array housing
+            + 8.0  # two hub motors + wheels
             + (self.power.capacity_wh / 100)  # ~10 kg for 1000 Wh LiFePO4
-            + 1.5   # control electronics
+            + 1.5  # control electronics
         )
 
     @property
@@ -248,9 +254,14 @@ class HoverBikeSpec:
 # Component geometry helpers (simplified bounding-box representations)
 # ---------------------------------------------------------------------------
 
+
 def _box_vertices(
-    cx: float, cy: float, cz: float,
-    lx: float, ly: float, lz: float,
+    cx: float,
+    cy: float,
+    cz: float,
+    lx: float,
+    ly: float,
+    lz: float,
 ) -> list[list[float]]:
     """Return the 8 corner vertices of an axis-aligned box."""
     hx, hy, hz = lx / 2, ly / 2, lz / 2
@@ -278,8 +289,12 @@ def generate_component_geometry(spec: HoverBikeSpec) -> dict[str, Any]:
             "type": "box",
             "material": f.primary_material,
             "vertices": _box_vertices(
-                0, 0, 0,
-                f.overall_length_mm, f.overall_width_mm, f.overall_height_mm,
+                0,
+                0,
+                0,
+                f.overall_length_mm,
+                f.overall_width_mm,
+                f.overall_height_mm,
             ),
             "wall_thickness_mm": f.wall_thickness_mm,
             "infill_percent": f.infill_percent,
@@ -289,8 +304,12 @@ def generate_component_geometry(spec: HoverBikeSpec) -> dict[str, Any]:
             "type": "box",
             "material": "Nylon PA12 (SLS)",
             "vertices": _box_vertices(
-                f.wheelbase_mm / 2, 0, -(f.overall_height_mm / 2 + 40),
-                300.0, f.overall_width_mm - 20, 40.0,
+                f.wheelbase_mm / 2,
+                0,
+                -(f.overall_height_mm / 2 + 40),
+                300.0,
+                f.overall_width_mm - 20,
+                40.0,
             ),
             "embedded_parts": "16× N52 neodymium magnets",
         },
@@ -298,8 +317,12 @@ def generate_component_geometry(spec: HoverBikeSpec) -> dict[str, Any]:
             "type": "box",
             "material": "Nylon PA12 (SLS)",
             "vertices": _box_vertices(
-                -(f.wheelbase_mm / 2), 0, -(f.overall_height_mm / 2 + 40),
-                300.0, f.overall_width_mm - 20, 40.0,
+                -(f.wheelbase_mm / 2),
+                0,
+                -(f.overall_height_mm / 2 + 40),
+                300.0,
+                f.overall_width_mm - 20,
+                40.0,
             ),
             "embedded_parts": "16× N52 neodymium magnets",
         },
@@ -329,8 +352,12 @@ def generate_component_geometry(spec: HoverBikeSpec) -> dict[str, Any]:
             "type": "box",
             "material": "PETG",
             "vertices": _box_vertices(
-                f.overall_length_mm / 2 - 100, 0, f.overall_height_mm / 2,
-                200.0, 150.0, 80.0,
+                f.overall_length_mm / 2 - 100,
+                0,
+                f.overall_height_mm / 2,
+                200.0,
+                150.0,
+                80.0,
             ),
             "embedded_parts": "Raspberry Pi 4B, IMU, barometer, telemetry",
         },
@@ -487,6 +514,7 @@ ASSEMBLY_STEPS: list[dict[str, Any]] = [
 # Generator entry point
 # ---------------------------------------------------------------------------
 
+
 class HoverBikeGenerator:
     """
     Orchestrates the generation of all hover bike design artefacts.
@@ -554,7 +582,11 @@ class HoverBikeGenerator:
         return path
 
     def _write_bom(self) -> Path:
-        rows = ["# Bill of Materials\n\n", "| Component | Est. Cost (USD) |\n", "|-----------|----------------:|\n"]
+        rows = [
+            "# Bill of Materials\n\n",
+            "| Component | Est. Cost (USD) |\n",
+            "|-----------|----------------:|\n",
+        ]
         total = 0.0
         for item, cost in self.spec.manufacturing_cost_usd.items():
             rows.append(f"| {item} | ${cost:,.2f} |\n")

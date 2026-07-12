@@ -71,7 +71,12 @@ _DEFAULT_AGENTS: list[dict[str, Any]] = [
             "detect contradictions, and surface consensus views. "
             "Essential for directives involving uncertain or disputed information."
         ),
-        "capabilities": ["cross_corroborate", "fact_checking", "data_validation", "source_analysis"],
+        "capabilities": [
+            "cross_corroborate",
+            "fact_checking",
+            "data_validation",
+            "source_analysis",
+        ],
     },
     {
         "agent_id": "project-agent",
@@ -94,8 +99,16 @@ _DEFAULT_AGENTS: list[dict[str, Any]] = [
             "The core of Barrot's autonomous execution capability."
         ),
         "capabilities": [
-            "autonomous_planning", "tool_use", "search", "analyze", "reason",
-            "code", "summarize", "learn", "refine", "project",
+            "autonomous_planning",
+            "tool_use",
+            "search",
+            "analyze",
+            "reason",
+            "code",
+            "summarize",
+            "learn",
+            "refine",
+            "project",
         ],
     },
 ]

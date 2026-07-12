@@ -172,7 +172,13 @@ class PhotogrammetryPipeline:
         try:
             p = Path(images_path)
             if p.is_dir():
-                return len([f for f in p.iterdir() if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".tif")])
+                return len(
+                    [
+                        f
+                        for f in p.iterdir()
+                        if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".tif")
+                    ]
+                )
         except Exception:
             pass
         return 50  # default stub count

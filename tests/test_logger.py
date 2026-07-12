@@ -23,6 +23,7 @@ class TestJSONFormatter:
         )
         output = formatter.format(record)
         import json
+
         data = json.loads(output)
         assert data["message"] == "hello world"
         assert data["level"] == "INFO"
@@ -34,6 +35,7 @@ class TestJSONFormatter:
             raise ValueError("test error")
         except ValueError:
             import sys
+
             exc_info = sys.exc_info()
             record = logging.LogRecord(
                 name="test",
@@ -46,6 +48,7 @@ class TestJSONFormatter:
             )
             output = formatter.format(record)
             import json
+
             data = json.loads(output)
             assert "exception" in data
 

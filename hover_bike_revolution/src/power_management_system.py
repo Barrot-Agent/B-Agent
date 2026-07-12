@@ -11,10 +11,10 @@ import math
 from dataclasses import dataclass, field
 from typing import Any
 
-
 # ---------------------------------------------------------------------------
 # Battery model (LiFePO4)
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class BatteryPack:
@@ -49,11 +49,11 @@ class BatteryPack:
     nominal_voltage_v: float = 48.0
     max_charge_rate_c: float = 0.5
     max_discharge_rate_c: float = 3.0
-    internal_resistance_mohm: float = 8.0   # per cell
-    series_cells: int = 15               # 15S ≈ 48 V nominal
+    internal_resistance_mohm: float = 8.0  # per cell
+    series_cells: int = 15  # 15S ≈ 48 V nominal
     parallel_cells: int = 4
     cell_nominal_v: float = 3.2
-    cell_capacity_ah: float = 20.0       # 20 Ah LiFePO4 prismatic
+    cell_capacity_ah: float = 20.0  # 20 Ah LiFePO4 prismatic
     cycle_life: int = 3_000
 
     @property
@@ -116,6 +116,7 @@ class BatteryPack:
 # Solar integration
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class SolarPanel:
     """
@@ -136,7 +137,7 @@ class SolarPanel:
     """
 
     peak_power_wp: float = 150.0
-    panel_area_m2: float = 0.32       # ~0.8 × 0.4 m canopy
+    panel_area_m2: float = 0.32  # ~0.8 × 0.4 m canopy
     efficiency_percent: float = 10.5  # thin-film CIGS ≈ 10–13 %
     temperature_coefficient_pct_per_c: float = -0.30
     mppt_efficiency_percent: float = 96.0
@@ -186,6 +187,7 @@ class SolarPanel:
 # Kinetic energy recovery
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class KineticRecovery:
     """
@@ -193,7 +195,7 @@ class KineticRecovery:
     """
 
     motor_efficiency_percent: float = 88.0
-    regen_fraction: float = 0.70   # fraction of braking energy captured
+    regen_fraction: float = 0.70  # fraction of braking energy captured
 
     def energy_from_braking(
         self,
@@ -239,6 +241,7 @@ class KineticRecovery:
 # Power distribution controller
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class PowerManagementSystem:
     """
@@ -251,7 +254,7 @@ class PowerManagementSystem:
     regen: KineticRecovery = field(default_factory=KineticRecovery)
 
     # Loads
-    maglev_idle_w: float = 75.0         # active stabilisation
+    maglev_idle_w: float = 75.0  # active stabilisation
     propulsion_cruise_w: float = 270.0  # motors at cruise
     control_electronics_w: float = 15.0
     lighting_w: float = 10.0
@@ -298,7 +301,7 @@ class PowerManagementSystem:
     def simulate_ride(
         self,
         duration_h: float = 2.0,
-        dt_h: float = 1 / 60,   # 1-minute steps
+        dt_h: float = 1 / 60,  # 1-minute steps
         initial_soc: float = 1.0,
         daytime: bool = False,
         braking_events_per_h: int = 15,
@@ -315,7 +318,8 @@ class PowerManagementSystem:
 
         for step in range(int(duration_h / dt_h)):
             regen_w = (
-                self.regen.energy_from_braking(mass_kg, avg_speed_ms) / dt_h
+                self.regen.energy_from_braking(mass_kg, avg_speed_ms)
+                / dt_h
                 * (braking_events_per_h * dt_h)
             )
             soc, _ = self.simulation_step(soc, dt_h, irrad, regen_w)
@@ -344,9 +348,7 @@ class PowerManagementSystem:
                 "max_discharge_a": self.battery.max_discharge_current_a,
                 "pack_mass_kg": self.battery.pack_mass_kg,
                 "cycle_life": self.battery.cycle_life,
-                "range_km_cruise": self.battery.range_estimate_km(
-                    self.total_load_w(), 30.0
-                ),
+                "range_km_cruise": self.battery.range_estimate_km(self.total_load_w(), 30.0),
             },
             "solar": {
                 "peak_power_wp": self.solar.peak_power_wp,

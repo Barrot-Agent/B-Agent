@@ -30,13 +30,13 @@ _DATA_DIR = Path(__file__).parent.resolve()
 
 # Canonical file map  {logical_name: relative_path_from_DATA_DIR}
 _FILE_MAP: Dict[str, str] = {
-    "merge_conflict":          "merge_conflict_unified.json",
-    "millennium_problems":     "millennium_problems_unified.json",
-    "mmi_monetization":        "mmi_monetization_unified.json",
-    "character_capabilities":  "character_capabilities_unified.json",
-    "integration_report":      "integration_report.json",
-    "pingpong_request":        "pingpong_request.json",
-    "pingpong_request_example":"pingpong_request_example.json",
+    "merge_conflict": "merge_conflict_unified.json",
+    "millennium_problems": "millennium_problems_unified.json",
+    "mmi_monetization": "mmi_monetization_unified.json",
+    "character_capabilities": "character_capabilities_unified.json",
+    "integration_report": "integration_report.json",
+    "pingpong_request": "pingpong_request.json",
+    "pingpong_request_example": "pingpong_request_example.json",
 }
 
 # ---------------------------------------------------------------------------
@@ -50,8 +50,7 @@ def _load(name: str, force_reload: bool = False) -> Any:
     """Internal loader with caching."""
     if name not in _FILE_MAP:
         raise KeyError(
-            f"Unknown data asset '{name}'. "
-            f"Available assets: {sorted(_FILE_MAP.keys())}"
+            f"Unknown data asset '{name}'. " f"Available assets: {sorted(_FILE_MAP.keys())}"
         )
     if name in _CACHE and not force_reload:
         return _CACHE[name]
@@ -79,6 +78,7 @@ def clear_cache(name: Optional[str] = None) -> None:
 # ---------------------------------------------------------------------------
 # Typed loader functions
 # ---------------------------------------------------------------------------
+
 
 def load_merge_conflict_data(force_reload: bool = False) -> Dict[str, Any]:
     """Return the unified merge-conflict knowledge base.
@@ -118,9 +118,7 @@ def load_integration_report(force_reload: bool = False) -> Dict[str, Any]:
     return _load("integration_report", force_reload)
 
 
-def load_pingpong_request(
-    example: bool = False, force_reload: bool = False
-) -> Dict[str, Any]:
+def load_pingpong_request(example: bool = False, force_reload: bool = False) -> Dict[str, Any]:
     """Return a pingpong request object.
 
     Args:
@@ -134,6 +132,7 @@ def load_pingpong_request(
 # ---------------------------------------------------------------------------
 # Convenience: list / health-check
 # ---------------------------------------------------------------------------
+
 
 def list_assets() -> Dict[str, Dict[str, Any]]:
     """Return availability information for every registered data asset."""

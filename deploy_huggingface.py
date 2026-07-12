@@ -103,6 +103,7 @@ Apache 2.0
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def _validate_token() -> None:
     if not HF_TOKEN:
         log.error("HF_TOKEN environment variable is not set.")
@@ -172,6 +173,7 @@ def _tag_release(api: HfApi) -> None:
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     _validate_token()

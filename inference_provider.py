@@ -28,6 +28,7 @@ def _get_pipeline() -> GraniteVisionPipeline:
 # Public inference API
 # ---------------------------------------------------------------------------
 
+
 def infer(
     prompt: str,
     images: Optional[Union[str, List[str]]] = None,
@@ -115,6 +116,7 @@ def extract_features(
 # ---------------------------------------------------------------------------
 # Metadata helpers
 # ---------------------------------------------------------------------------
+
 
 def get_model_info() -> dict:
     """Return the full model card metadata dict."""

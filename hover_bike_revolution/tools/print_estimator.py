@@ -7,6 +7,7 @@ from __future__ import annotations
 from typing import Any
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 # Import via importlib because filename starts with a digit
@@ -40,5 +41,6 @@ def estimate_prints() -> dict[str, Any]:
 
 if __name__ == "__main__":
     import json
+
     result = estimate_prints()
     print(json.dumps(result, indent=2))

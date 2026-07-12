@@ -10,7 +10,6 @@ from __future__ import annotations
 import math
 from typing import Any
 
-
 MU_0 = 4 * math.pi * 1e-7  # vacuum permeability (H/m)
 
 
@@ -96,7 +95,15 @@ def generate_field_map(
         for x in xs:
             bx, bz = halbach_field_z(x, z, b_remanence, wavelength_m, magnet_height_m)
             b = field_magnitude(bx, bz)
-            rows.append({"x_m": round(x, 4), "z_m": round(z, 4), "Bx_T": round(bx, 6), "Bz_T": round(bz, 6), "B_T": round(b, 6)})
+            rows.append(
+                {
+                    "x_m": round(x, 4),
+                    "z_m": round(z, 4),
+                    "Bx_T": round(bx, 6),
+                    "Bz_T": round(bz, 6),
+                    "B_T": round(b, 6),
+                }
+            )
 
     return {
         "grid_points": len(rows),
@@ -111,14 +118,13 @@ def generate_field_map(
         },
         "data": rows,
         "peak_field_t": max(r["B_T"] for r in rows),
-        "field_at_150mm_t": next(
-            (r["B_T"] for r in rows if abs(r["z_m"] - 0.15) < 0.01), None
-        ),
+        "field_at_150mm_t": next((r["B_T"] for r in rows if abs(r["z_m"] - 0.15) < 0.01), None),
     }
 
 
 if __name__ == "__main__":
     import json
+
     result = generate_field_map()
     print(f"Grid: {result['grid_points']} points")
     print(f"Peak field: {result['peak_field_t']:.4f} T")

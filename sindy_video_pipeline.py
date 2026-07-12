@@ -48,6 +48,7 @@ CARDS_PER_SCENE = 3  # title card, description card, dialogue card
 # Status enum
 # ---------------------------------------------------------------------------
 
+
 class RenderStatus(str, Enum):
     QUEUED = "queued"
     RENDERING = "rendering"
@@ -59,11 +60,12 @@ class RenderStatus(str, Enum):
 # Episode state
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class EpisodeState:
     episode_number: int
     status: RenderStatus = RenderStatus.QUEUED
-    progress: float = 0.0          # 0.0 – 1.0
+    progress: float = 0.0  # 0.0 – 1.0
     video_path: Optional[str] = None
     error_message: Optional[str] = None
     started_at: Optional[float] = None
@@ -84,6 +86,7 @@ class EpisodeState:
 # ---------------------------------------------------------------------------
 # Minimal PNG writer (pure-stdlib, no Pillow required for fallback)
 # ---------------------------------------------------------------------------
+
 
 def _make_png_bytes(width: int, height: int, bg: tuple, lines: List[str]) -> bytes:
     """
@@ -174,6 +177,7 @@ def _make_png_bytes_pillow(width: int, height: int, bg: tuple, lines: List[str])
 # Actually we write a proper MP4 using only stdlib byte manipulation.
 # ---------------------------------------------------------------------------
 
+
 def _write_minimal_mp4(frames_png: List[bytes], fps: int, out_path: Path) -> None:
     """
     Write a valid MP4 file containing the given PNG frames as an MJPEG
@@ -196,9 +200,14 @@ def _write_mp4_pillow(frames_png: List[bytes], fps: int, out_path: Path) -> None
         import imageio  # type: ignore
         from PIL import Image  # type: ignore
 
-        with imageio.get_writer(str(out_path), fps=fps, format="mp4", codec="libx264",
-                                 ffmpeg_log_level="quiet",
-                                 output_params=["-pix_fmt", "yuv420p"]) as writer:
+        with imageio.get_writer(
+            str(out_path),
+            fps=fps,
+            format="mp4",
+            codec="libx264",
+            ffmpeg_log_level="quiet",
+            output_params=["-pix_fmt", "yuv420p"],
+        ) as writer:
             for png in frames_png:
                 img = Image.open(io.BytesIO(png)).convert("RGB")
                 writer.append_data(__import__("numpy").array(img))
@@ -209,6 +218,7 @@ def _write_mp4_pillow(frames_png: List[bytes], fps: int, out_path: Path) -> None
     # Manual Motion-JPEG in MP4 (ISO base media file format)
     try:
         from PIL import Image  # type: ignore
+
         jpegs: List[bytes] = []
         for png in frames_png:
             img = Image.open(io.BytesIO(png)).convert("RGB")
@@ -260,39 +270,36 @@ def _pack_mjpeg_mp4(jpegs: List[bytes], fps: int, out_path: Path) -> None:
 
     # stsd – sample description (MJPEG / jpeg)
     jpeg_entry = (
-        b"\x00" * 6 +                  # reserved
-        struct.pack(">H", 1) +          # data reference index
-        b"\x00" * 16 +                  # pre-defined + reserved
-        struct.pack(">HH", FRAME_W, FRAME_H) +
-        struct.pack(">HH", 72, 0) +     # horiz res 72 dpi
-        struct.pack(">HH", 72, 0) +     # vert res 72 dpi
-        struct.pack(">I", 0) +          # data size
-        struct.pack(">H", 1) +          # frame count
-        b"\x00" * 32 +                  # compressor name (pascal string, 32 bytes)
-        struct.pack(">H", 0x0018) +     # depth
-        struct.pack(">h", -1)           # pre-defined
+        b"\x00" * 6  # reserved
+        + struct.pack(">H", 1)  # data reference index
+        + b"\x00" * 16  # pre-defined + reserved
+        + struct.pack(">HH", FRAME_W, FRAME_H)
+        + struct.pack(">HH", 72, 0)  # horiz res 72 dpi
+        + struct.pack(">HH", 72, 0)  # vert res 72 dpi
+        + struct.pack(">I", 0)  # data size
+        + struct.pack(">H", 1)  # frame count
+        + b"\x00" * 32  # compressor name (pascal string, 32 bytes)
+        + struct.pack(">H", 0x0018)  # depth
+        + struct.pack(">h", -1)  # pre-defined
     )
     stsd = full_box(b"stsd", 0, 0, struct.pack(">I", 1) + box(b"jpeg", jpeg_entry))
 
     # stts – time-to-sample (all samples have duration 1)
-    stts = full_box(b"stts", 0, 0,
-                    struct.pack(">I", 1) +
-                    struct.pack(">II", n, 1))
+    stts = full_box(b"stts", 0, 0, struct.pack(">I", 1) + struct.pack(">II", n, 1))
 
     # stsc – sample-to-chunk (1 chunk containing all samples)
-    stsc = full_box(b"stsc", 0, 0,
-                    struct.pack(">I", 1) +
-                    struct.pack(">III", 1, n, 1))
+    stsc = full_box(b"stsc", 0, 0, struct.pack(">I", 1) + struct.pack(">III", 1, n, 1))
 
     # stsz – sample sizes
-    stsz = full_box(b"stsz", 0, 0,
-                    struct.pack(">II", 0, n) +
-                    b"".join(struct.pack(">I", s) for s in sample_sizes))
+    stsz = full_box(
+        b"stsz",
+        0,
+        0,
+        struct.pack(">II", 0, n) + b"".join(struct.pack(">I", s) for s in sample_sizes),
+    )
 
     # stco – chunk offsets (single chunk)
-    stco = full_box(b"stco", 0, 0,
-                    struct.pack(">I", 1) +
-                    struct.pack(">I", chunk_offset))
+    stco = full_box(b"stco", 0, 0, struct.pack(">I", 1) + struct.pack(">I", chunk_offset))
 
     stbl = box(b"stbl", stsd + stts + stsc + stsz + stco)
 
@@ -307,60 +314,64 @@ def _pack_mjpeg_mp4(jpegs: List[bytes], fps: int, out_path: Path) -> None:
     minf = box(b"minf", vmhd + dinf + stbl)
 
     # mdhd
-    mdhd = full_box(b"mdhd", 0, 0,
-                    struct.pack(">IIIII",
-                                0,            # creation time
-                                0,            # modification time
-                                timescale,
-                                n,            # duration
-                                0) +          # language + pre-defined
-                    struct.pack(">H", 0))     # pre-defined
+    mdhd = full_box(
+        b"mdhd",
+        0,
+        0,
+        struct.pack(
+            ">IIIII", 0, 0, timescale, n, 0  # creation time  # modification time  # duration
+        )  # language + pre-defined
+        + struct.pack(">H", 0),
+    )  # pre-defined
 
     # hdlr
-    hdlr = full_box(b"hdlr", 0, 0,
-                    struct.pack(">I", 0) +
-                    b"vide" +
-                    struct.pack(">III", 0, 0, 0) +
-                    b"VideoHandler\x00")
+    hdlr = full_box(
+        b"hdlr",
+        0,
+        0,
+        struct.pack(">I", 0) + b"vide" + struct.pack(">III", 0, 0, 0) + b"VideoHandler\x00",
+    )
 
     mdia = box(b"mdia", mdhd + hdlr + minf)
 
     # tkhd
-    tkhd = full_box(b"tkhd", 0, 3,
-                    struct.pack(">IIIIHHI",
-                                0, 0,        # creation, modification
-                                1,           # track id
-                                0,           # reserved
-                                n,           # duration (in movie timescale)
-                                0,           # reserved x2
-                                0) +
-                    struct.pack(">hh", 0, 0) +  # layer, alt group
-                    struct.pack(">HH", 0, 0) +  # volume, reserved
-                    # unity matrix
-                    struct.pack(">iiiiiiiii",
-                                0x00010000, 0, 0,
-                                0, 0x00010000, 0,
-                                0, 0, 0x40000000) +
-                    struct.pack(">II", FRAME_W << 16, FRAME_H << 16))
+    tkhd = full_box(
+        b"tkhd",
+        0,
+        3,
+        struct.pack(
+            ">IIIIHHI",
+            0,
+            0,  # creation, modification
+            1,  # track id
+            0,  # reserved
+            n,  # duration (in movie timescale)
+            0,  # reserved x2
+            0,
+        )
+        + struct.pack(">hh", 0, 0)  # layer, alt group
+        + struct.pack(">HH", 0, 0)  # volume, reserved
+        +
+        # unity matrix
+        struct.pack(">iiiiiiiii", 0x00010000, 0, 0, 0, 0x00010000, 0, 0, 0, 0x40000000)
+        + struct.pack(">II", FRAME_W << 16, FRAME_H << 16),
+    )
 
     trak = box(b"trak", tkhd + mdia)
 
     # mvhd
-    mvhd = full_box(b"mvhd", 0, 0,
-                    struct.pack(">IIIII",
-                                0, 0,
-                                timescale,
-                                n,
-                                0x00010000) +   # rate
-                    struct.pack(">H", 0x0100) + # volume
-                    struct.pack(">H", 0) +
-                    struct.pack(">II", 0, 0) +
-                    struct.pack(">iiiiiiiii",
-                                0x00010000, 0, 0,
-                                0, 0x00010000, 0,
-                                0, 0, 0x40000000) +
-                    struct.pack(">IIIIIIII", 0, 0, 0, 0, 0, 0, 0, 0) +
-                    struct.pack(">I", 2))  # next track id
+    mvhd = full_box(
+        b"mvhd",
+        0,
+        0,
+        struct.pack(">IIIII", 0, 0, timescale, n, 0x00010000)  # rate
+        + struct.pack(">H", 0x0100)  # volume
+        + struct.pack(">H", 0)
+        + struct.pack(">II", 0, 0)
+        + struct.pack(">iiiiiiiii", 0x00010000, 0, 0, 0, 0x00010000, 0, 0, 0, 0x40000000)
+        + struct.pack(">IIIIIIII", 0, 0, 0, 0, 0, 0, 0, 0)
+        + struct.pack(">I", 2),
+    )  # next track id
 
     moov = box(b"moov", mvhd + trak)
 
@@ -379,10 +390,10 @@ def _write_mp4_placeholder(out_path: Path) -> None:
 # ---------------------------------------------------------------------------
 
 PALETTE = {
-    "title":    (15, 20, 40),
-    "scene":    (20, 15, 40),
+    "title": (15, 20, 40),
+    "scene": (20, 15, 40),
     "dialogue": (10, 30, 25),
-    "closing":  (40, 10, 15),
+    "closing": (40, 10, 15),
 }
 
 
@@ -433,6 +444,7 @@ def _build_frames(episode: Episode) -> List[bytes]:
 # Pipeline
 # ---------------------------------------------------------------------------
 
+
 class SindyVideoPipeline:
     """
     Manages rendering state for all 15 episodes.
@@ -479,9 +491,7 @@ class SindyVideoPipeline:
         self._save_state()
         return ep_state
 
-    def render_episode(
-        self, episode_number: int
-    ) -> Generator[EpisodeState, None, None]:
+    def render_episode(self, episode_number: int) -> Generator[EpisodeState, None, None]:
         """
         Generator that renders an episode and yields state updates.
 
@@ -570,6 +580,7 @@ class SindyVideoPipeline:
 # Per-scene frame helpers (split out for incremental progress)
 # ---------------------------------------------------------------------------
 
+
 def _build_title_frames(episode: Episode) -> List[bytes]:
     lines = [
         "STUPID SINDY",
@@ -597,8 +608,7 @@ def _build_frames_for_scene(episode: Episode, scene_index: int) -> List[bytes]:
         scene.description,
     ]
     frames.extend(
-        _make_png_bytes(FRAME_W, FRAME_H, PALETTE["scene"], scene_lines)
-        for _ in range(2)
+        _make_png_bytes(FRAME_W, FRAME_H, PALETTE["scene"], scene_lines) for _ in range(2)
     )
 
     for beat in scene.dialogue[:3]:

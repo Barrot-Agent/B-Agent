@@ -30,29 +30,31 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Iterator
 
-
 # ---------------------------------------------------------------------------
 # Event types
 # ---------------------------------------------------------------------------
 
+
 class AgentEventType(str, Enum):
-    GOAL        = "goal"        # Agent received the goal
-    THINKING    = "thinking"    # Agent is reasoning / planning
-    PLAN        = "plan"        # Full plan produced
-    ACTION      = "action"      # Starting a step / tool call
-    TOOL_RESULT = "tool_result" # Result of a tool call
-    OBSERVATION = "observation" # Agent reflects on the result
-    ANSWER      = "answer"      # Final consolidated answer
-    ERROR       = "error"       # Unrecoverable error
+    GOAL = "goal"  # Agent received the goal
+    THINKING = "thinking"  # Agent is reasoning / planning
+    PLAN = "plan"  # Full plan produced
+    ACTION = "action"  # Starting a step / tool call
+    TOOL_RESULT = "tool_result"  # Result of a tool call
+    OBSERVATION = "observation"  # Agent reflects on the result
+    ANSWER = "answer"  # Final consolidated answer
+    ERROR = "error"  # Unrecoverable error
 
 
 # ---------------------------------------------------------------------------
 # Data models
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class PlanStep:
     """A single step in the agent's execution plan."""
+
     step_number: int
     title: str
     description: str
@@ -72,6 +74,7 @@ class PlanStep:
 @dataclass
 class ToolCall:
     """A single invocation of a built-in tool."""
+
     tool_name: str
     args: dict[str, Any]
     call_id: str = field(default_factory=lambda: str(uuid.uuid4())[:8])
@@ -80,6 +83,7 @@ class ToolCall:
 @dataclass
 class ToolResult:
     """Output of a :class:`ToolCall`."""
+
     call_id: str
     tool_name: str
     success: bool
@@ -90,6 +94,7 @@ class ToolResult:
 @dataclass
 class AgentEvent:
     """A single event emitted by the agent loop."""
+
     type: AgentEventType
     content: str
     data: dict[str, Any] = field(default_factory=dict)
@@ -103,6 +108,7 @@ class AgentEvent:
 # ---------------------------------------------------------------------------
 # Built-in tool library
 # ---------------------------------------------------------------------------
+
 
 class _BuiltinTools:
     """
@@ -132,9 +138,9 @@ class _BuiltinTools:
         """
         call_id = str(uuid.uuid4())[:8]
         depth_map = {
-            "quick":    (2, 2, 1),
+            "quick": (2, 2, 1),
             "standard": (3, 3, 2),
-            "deep":     (5, 5, 3),
+            "deep": (5, 5, 3),
         }
         n_concepts, n_patterns, n_gaps = depth_map.get(depth, (3, 3, 2))
 
@@ -142,14 +148,25 @@ class _BuiltinTools:
         h = int(hashlib.md5(topic.encode()).hexdigest(), 16)
 
         concept_adjectives = [
-            "foundational", "emergent", "cross-domain", "high-leverage",
-            "underexplored", "well-established", "contested", "pivotal",
+            "foundational",
+            "emergent",
+            "cross-domain",
+            "high-leverage",
+            "underexplored",
+            "well-established",
+            "contested",
+            "pivotal",
         ]
         pattern_types = [
-            "recursive self-improvement loops", "multi-agent cooperation dynamics",
-            "goal-gradient alignment issues", "capability generalisation gaps",
-            "feedback latency effects", "adversarial brittleness", "data scarcity bottlenecks",
-            "emergent tool-use behaviours", "reasoning chain fragmentation",
+            "recursive self-improvement loops",
+            "multi-agent cooperation dynamics",
+            "goal-gradient alignment issues",
+            "capability generalisation gaps",
+            "feedback latency effects",
+            "adversarial brittleness",
+            "data scarcity bottlenecks",
+            "emergent tool-use behaviours",
+            "reasoning chain fragmentation",
         ]
         gap_types = [
             "standardised evaluation benchmarks",
@@ -161,8 +178,7 @@ class _BuiltinTools:
         ]
 
         concepts = [
-            concept_adjectives[(h >> (i * 3)) % len(concept_adjectives)]
-            for i in range(n_concepts)
+            concept_adjectives[(h >> (i * 3)) % len(concept_adjectives)] for i in range(n_concepts)
         ]
         patterns = [pattern_types[(h >> (i * 5)) % len(pattern_types)] for i in range(n_patterns)]
         gaps = [gap_types[(h >> (i * 7)) % len(gap_types)] for i in range(n_gaps)]
@@ -192,8 +208,13 @@ class _BuiltinTools:
             tool_name="analyze",
             success=True,
             output="\n".join(lines),
-            metadata={"topic": topic, "depth": depth,
-                       "concepts": n_concepts, "patterns": n_patterns, "gaps": n_gaps},
+            metadata={
+                "topic": topic,
+                "depth": depth,
+                "concepts": n_concepts,
+                "patterns": n_patterns,
+                "gaps": n_gaps,
+            },
         )
 
     # ------------------------------------------------------------------
@@ -216,10 +237,14 @@ class _BuiltinTools:
         h = int(hashlib.md5(query.encode()).hexdigest(), 16)
 
         source_names = [
-            "ArXiv preprint server", "GitHub trending repositories",
-            "Semantic Scholar research index", "HuggingFace model hub",
-            "Google Scholar citation graph", "OpenReview peer-review platform",
-            "Papers With Code benchmark leaderboards", "DeepMind technical blog",
+            "ArXiv preprint server",
+            "GitHub trending repositories",
+            "Semantic Scholar research index",
+            "HuggingFace model hub",
+            "Google Scholar citation graph",
+            "OpenReview peer-review platform",
+            "Papers With Code benchmark leaderboards",
+            "DeepMind technical blog",
         ]
         finding_templates = [
             "Recent work demonstrates significant improvements in {query_summary} "
@@ -235,7 +260,7 @@ class _BuiltinTools:
         ]
 
         query_summary = " ".join(query.split()[:5])
-        lines = [f"**Search results for:** \"{query}\"", ""]
+        lines = [f'**Search results for:** "{query}"', ""]
         for i in range(min(max_results, 5)):
             src = source_names[(h >> (i * 4)) % len(source_names)]
             finding = finding_templates[(h >> (i * 6)) % len(finding_templates)].format(
@@ -285,7 +310,7 @@ class _BuiltinTools:
             "The primary objective is achievable with moderate effort and available resources.",
             "Key uncertainties have been identified and mitigation strategies are viable.",
         ]
-        step_subset = reasoning_steps[:(3 + h % 3)]
+        step_subset = reasoning_steps[: (3 + h % 3)]
         conclusion = conclusions[h % len(conclusions)]
 
         lines = [
@@ -407,7 +432,8 @@ class _BuiltinTools:
                 "**Executive Summary:**\n\n"
                 + f"This analysis covered {len(sentences)} key statements. "
                 + "The most critical finding is: "
-                + (top[0] if top else "no significant findings.") + "."
+                + (top[0] if top else "no significant findings.")
+                + "."
             )
         else:  # bullet
             bullets = "\n".join(f"- {s}." for s in top) if top else "- No significant findings."
@@ -429,52 +455,80 @@ class _BuiltinTools:
 _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
     # ---- research / learn ----
     "research": [
-        {"title": "Search for existing work",   "tool": "search",   "tool_args": {"max_results": 3}},
-        {"title": "Analyse core concepts",       "tool": "analyze",  "tool_args": {"depth": "standard"}},
-        {"title": "Reason about implications",   "tool": "reason",   "tool_args": {}},
-        {"title": "Summarise findings",          "tool": "summarize","tool_args": {"style": "bullet"}},
+        {"title": "Search for existing work", "tool": "search", "tool_args": {"max_results": 3}},
+        {"title": "Analyse core concepts", "tool": "analyze", "tool_args": {"depth": "standard"}},
+        {"title": "Reason about implications", "tool": "reason", "tool_args": {}},
+        {"title": "Summarise findings", "tool": "summarize", "tool_args": {"style": "bullet"}},
     ],
     "learn": [
-        {"title": "Search for learning resources","tool": "search",  "tool_args": {"max_results": 3}},
-        {"title": "Deep-analyse the subject",    "tool": "analyze",  "tool_args": {"depth": "deep"}},
-        {"title": "Reason about key takeaways",  "tool": "reason",   "tool_args": {}},
-        {"title": "Produce learning summary",    "tool": "summarize","tool_args": {"style": "paragraph"}},
+        {
+            "title": "Search for learning resources",
+            "tool": "search",
+            "tool_args": {"max_results": 3},
+        },
+        {"title": "Deep-analyse the subject", "tool": "analyze", "tool_args": {"depth": "deep"}},
+        {"title": "Reason about key takeaways", "tool": "reason", "tool_args": {}},
+        {
+            "title": "Produce learning summary",
+            "tool": "summarize",
+            "tool_args": {"style": "paragraph"},
+        },
     ],
     # ---- build / code ----
     "build": [
-        {"title": "Analyse requirements",        "tool": "analyze",  "tool_args": {"depth": "standard"}},
-        {"title": "Reason about architecture",   "tool": "reason",   "tool_args": {}},
-        {"title": "Generate code scaffold",      "tool": "code",     "tool_args": {"language": "python"}},
-        {"title": "Summarise implementation",    "tool": "summarize","tool_args": {"style": "bullet"}},
+        {"title": "Analyse requirements", "tool": "analyze", "tool_args": {"depth": "standard"}},
+        {"title": "Reason about architecture", "tool": "reason", "tool_args": {}},
+        {"title": "Generate code scaffold", "tool": "code", "tool_args": {"language": "python"}},
+        {
+            "title": "Summarise implementation",
+            "tool": "summarize",
+            "tool_args": {"style": "bullet"},
+        },
     ],
     "code": [
-        {"title": "Analyse coding task",         "tool": "analyze",  "tool_args": {"depth": "quick"}},
-        {"title": "Generate implementation",     "tool": "code",     "tool_args": {"language": "python"}},
-        {"title": "Summarise code produced",     "tool": "summarize","tool_args": {"style": "executive"}},
+        {"title": "Analyse coding task", "tool": "analyze", "tool_args": {"depth": "quick"}},
+        {"title": "Generate implementation", "tool": "code", "tool_args": {"language": "python"}},
+        {
+            "title": "Summarise code produced",
+            "tool": "summarize",
+            "tool_args": {"style": "executive"},
+        },
     ],
     # ---- analyse / investigate ----
     "analyse": [
-        {"title": "Search for background data",  "tool": "search",   "tool_args": {"max_results": 3}},
-        {"title": "Deep-analyse subject",        "tool": "analyze",  "tool_args": {"depth": "deep"}},
-        {"title": "Cross-validate findings",     "tool": "reason",   "tool_args": {}},
-        {"title": "Synthesise conclusions",      "tool": "summarize","tool_args": {"style": "executive"}},
+        {"title": "Search for background data", "tool": "search", "tool_args": {"max_results": 3}},
+        {"title": "Deep-analyse subject", "tool": "analyze", "tool_args": {"depth": "deep"}},
+        {"title": "Cross-validate findings", "tool": "reason", "tool_args": {}},
+        {
+            "title": "Synthesise conclusions",
+            "tool": "summarize",
+            "tool_args": {"style": "executive"},
+        },
     ],
     # ---- explain ----
     "explain": [
-        {"title": "Search for reference material","tool": "search",  "tool_args": {"max_results": 3}},
-        {"title": "Analyse key concepts",        "tool": "analyze",  "tool_args": {"depth": "standard"}},
-        {"title": "Reason about best explanation","tool": "reason",  "tool_args": {}},
-        {"title": "Produce clear summary",       "tool": "summarize","tool_args": {"style": "paragraph"}},
+        {
+            "title": "Search for reference material",
+            "tool": "search",
+            "tool_args": {"max_results": 3},
+        },
+        {"title": "Analyse key concepts", "tool": "analyze", "tool_args": {"depth": "standard"}},
+        {"title": "Reason about best explanation", "tool": "reason", "tool_args": {}},
+        {
+            "title": "Produce clear summary",
+            "tool": "summarize",
+            "tool_args": {"style": "paragraph"},
+        },
     ],
 }
 
 _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
     (["research", "find", "discover", "explore", "investigate", "look up"], "research"),
-    (["learn", "understand", "study", "read about", "teach me"],             "learn"),
-    (["build", "create", "make", "implement", "develop", "write a"],         "build"),
-    (["code", "program", "script", "function", "class", "algorithm"],        "code"),
-    (["analyse", "analyze", "examine", "evaluate", "assess", "review"],      "analyse"),
-    (["explain", "describe", "what is", "how does", "define", "tell me"],    "explain"),
+    (["learn", "understand", "study", "read about", "teach me"], "learn"),
+    (["build", "create", "make", "implement", "develop", "write a"], "build"),
+    (["code", "program", "script", "function", "class", "algorithm"], "code"),
+    (["analyse", "analyze", "examine", "evaluate", "assess", "review"], "analyse"),
+    (["explain", "describe", "what is", "how does", "define", "tell me"], "explain"),
 ]
 
 _DEFAULT_PLAN_KEY = "research"
@@ -510,13 +564,15 @@ def _build_plan(goal: str) -> list[PlanStep]:
         elif tpl["tool"] == "summarize":
             args.setdefault("content", goal)  # will be replaced at runtime with accumulated output
 
-        steps.append(PlanStep(
-            step_number=i,
-            title=tpl["title"],
-            description=f"Use the '{tpl['tool']}' tool to {tpl['title'].lower()} for: {goal}",
-            tool=tpl["tool"],
-            tool_args=args,
-        ))
+        steps.append(
+            PlanStep(
+                step_number=i,
+                title=tpl["title"],
+                description=f"Use the '{tpl['tool']}' tool to {tpl['title'].lower()} for: {goal}",
+                tool=tpl["tool"],
+                tool_args=args,
+            )
+        )
 
     return steps
 
@@ -561,10 +617,10 @@ class SmartAgent:
         self.name = name
         self._tools = _BuiltinTools()
         self._tool_dispatch: dict[str, Any] = {
-            "analyze":   self._tools.analyze,
-            "search":    self._tools.search,
-            "reason":    self._tools.reason,
-            "code":      self._tools.code,
+            "analyze": self._tools.analyze,
+            "search": self._tools.search,
+            "reason": self._tools.reason,
+            "code": self._tools.code,
             "summarize": self._tools.summarize,
         }
 
@@ -670,9 +726,7 @@ class SmartAgent:
     # Protected hooks — override in subclasses to inject real LLM calls
     # ------------------------------------------------------------------
 
-    def _call_tool(
-        self, step: PlanStep, accumulated: list[str]
-    ) -> ToolResult:
+    def _call_tool(self, step: PlanStep, accumulated: list[str]) -> ToolResult:
         """Execute the tool specified by *step* and return a :class:`ToolResult`."""
         tool_fn = self._tool_dispatch.get(step.tool)
         if tool_fn is None:
@@ -698,9 +752,7 @@ class SmartAgent:
                 output=str(exc),
             )
 
-    def _consolidate(
-        self, goal: str, plan: list[PlanStep], outputs: list[str]
-    ) -> str:
+    def _consolidate(self, goal: str, plan: list[PlanStep], outputs: list[str]) -> str:
         """Build the final answer from accumulated tool outputs."""
         lines = [
             f"## ✅ Task Complete",
@@ -726,7 +778,5 @@ class SmartAgent:
     def _format_plan(plan: list[PlanStep]) -> str:
         lines = ["**Execution plan:**", ""]
         for step in plan:
-            lines.append(
-                f"{step.step_number}. **{step.title}** — tool: `{step.tool}`"
-            )
+            lines.append(f"{step.step_number}. **{step.title}** — tool: `{step.tool}`")
         return "\n".join(lines)

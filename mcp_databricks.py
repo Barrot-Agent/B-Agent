@@ -52,6 +52,7 @@ _SUCCESS_RESULT = "SUCCESS"
 # Status types
 # ---------------------------------------------------------------------------
 
+
 class JobRunState(str, Enum):
     PENDING = "pending"
     RUNNING = "running"
@@ -92,6 +93,7 @@ class RenderJobState:
 # ---------------------------------------------------------------------------
 # Client
 # ---------------------------------------------------------------------------
+
 
 class DatabricksMCP:
     """MCP client for Databricks compute integration."""
@@ -281,8 +283,8 @@ class DatabricksMCP:
             if state.is_terminal:
                 state.completed_at = time.time()
                 if state.job_state == JobRunState.FAILED:
-                    state.error_message = (
-                        data.get("state", {}).get("state_message", "Unknown error")
+                    state.error_message = data.get("state", {}).get(
+                        "state_message", "Unknown error"
                     )
         except Exception as exc:
             logger.error("poll_run(%d) failed: %s", run_id, exc)
@@ -326,9 +328,7 @@ class DatabricksMCP:
             return False
         try:
             self._post("/jobs/runs/cancel", {"run_id": run_id})
-            state = next(
-                (s for s in self._job_states.values() if s.run_id == run_id), None
-            )
+            state = next((s for s in self._job_states.values() if s.run_id == run_id), None)
             if state:
                 state.job_state = JobRunState.CANCELLED
                 state.completed_at = time.time()

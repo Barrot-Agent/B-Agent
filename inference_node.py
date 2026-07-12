@@ -5,10 +5,14 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 
-@app.route('/reasoning', methods=['POST'])
+
+@app.route("/reasoning", methods=["POST"])
 def handle_request():
     # Placeholder for X402 Payment verification and Council logic
-    return jsonify({"status": "SUCCESS", "message": "Reasoning Delivered", "payment_status": "X402_LOCKED"})
+    return jsonify(
+        {"status": "SUCCESS", "message": "Reasoning Delivered", "payment_status": "X402_LOCKED"}
+    )
+
 
 if __name__ == "__main__":
     app.run(port=8080)

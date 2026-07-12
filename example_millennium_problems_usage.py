@@ -15,7 +15,7 @@ from typing import List, Dict, Any
 
 def load_json(filename: str) -> Any:
     """Load JSON file"""
-    with open(filename, 'r', encoding='utf-8') as f:
+    with open(filename, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -24,19 +24,19 @@ def example_1_overview_analysis():
     print("=" * 80)
     print("EXAMPLE 1: Problems Overview Analysis")
     print("=" * 80)
-    
-    overview = load_json('millennium_problems_overview.json')
-    
+
+    overview = load_json("millennium_problems_overview.json")
+
     print(f"\nTotal Problems: {len(overview)}")
     print("\n📊 Status Distribution:")
-    open_problems = [p for p in overview if p['status'] == 'Open']
-    solved_problems = [p for p in overview if 'SOLVED' in p['status']]
+    open_problems = [p for p in overview if p["status"] == "Open"]
+    solved_problems = [p for p in overview if "SOLVED" in p["status"]]
     print(f"  - Open: {len(open_problems)}")
     print(f"  - Solved: {len(solved_problems)}")
-    
+
     print("\n🎯 AI Applicability Distribution:")
-    for level in ['High', 'Medium', 'Low', 'N/A']:
-        problems = [p for p in overview if level in p['ai_applicability']]
+    for level in ["High", "Medium", "Low", "N/A"]:
+        problems = [p for p in overview if level in p["ai_applicability"]]
         if problems:
             print(f"  - {level}: {len(problems)}")
             for p in problems:
@@ -48,27 +48,27 @@ def example_2_search_by_tag():
     print("\n" + "=" * 80)
     print("EXAMPLE 2: Search by Tag")
     print("=" * 80)
-    
-    summaries = load_json('millennium_problems_search_summaries.json')
-    
+
+    summaries = load_json("millennium_problems_search_summaries.json")
+
     def find_by_tag(tag: str) -> List[tuple]:
         results = []
         for problem, data in summaries.items():
-            if tag in data.get('search_tags', []):
+            if tag in data.get("search_tags", []):
                 results.append((problem, data))
         return results
-    
+
     # Search for cryptography-related problems
     print("\n🔍 Problems related to 'cryptography':")
-    crypto = find_by_tag('cryptography')
+    crypto = find_by_tag("cryptography")
     for name, data in crypto:
         print(f"  • {name.replace('_', ' ').title()}")
         print(f"    - AI Relevance: {data.get('ai_relevance', 'N/A')}")
         print(f"    - Tags: {', '.join(data.get('search_tags', []))}")
-    
+
     # Search for optimization-related problems
     print("\n🔍 Problems related to 'optimization':")
-    opt = find_by_tag('optimization')
+    opt = find_by_tag("optimization")
     for name, data in opt:
         print(f"  • {name.replace('_', ' ').title()}")
         print(f"    - Impact: {data.get('impact', 'N/A')}")
@@ -79,15 +79,15 @@ def example_3_priority_based_filtering():
     print("\n" + "=" * 80)
     print("EXAMPLE 3: Priority-Based Resource Allocation")
     print("=" * 80)
-    
+
     # Load complete ingestion to get priorities
     # Since we excluded timestamped files, we'll work with the static files
-    taxonomy = load_json('millennium_problems_taxonomy.json')
-    overview = load_json('millennium_problems_overview.json')
-    
+    taxonomy = load_json("millennium_problems_taxonomy.json")
+    overview = load_json("millennium_problems_overview.json")
+
     print("\n🎯 High-Priority Problems (Focus First):")
     # Use AI applicability as proxy since priorities are in main file
-    high_ai = [p for p in overview if p['ai_applicability'] == 'High']
+    high_ai = [p for p in overview if p["ai_applicability"] == "High"]
     for p in high_ai:
         print(f"  • {p['name']}")
         print(f"    - Status: {p['status']}")
@@ -99,11 +99,11 @@ def example_4_domain_navigation():
     print("\n" + "=" * 80)
     print("EXAMPLE 4: Mathematical Domain Navigation")
     print("=" * 80)
-    
-    taxonomy = load_json('millennium_problems_taxonomy.json')
-    
+
+    taxonomy = load_json("millennium_problems_taxonomy.json")
+
     print("\n📚 Problems by Mathematical Domain:")
-    domains = taxonomy['by_mathematical_domain']
+    domains = taxonomy["by_mathematical_domain"]
     for domain, problems in domains.items():
         if problems:
             print(f"\n  {domain.replace('_', ' ').title()}:")
@@ -116,23 +116,23 @@ def example_5_detailed_problem_access():
     print("\n" + "=" * 80)
     print("EXAMPLE 5: Detailed Problem Information")
     print("=" * 80)
-    
+
     # Load P vs NP details
-    pvsnp = load_json('millennium_problem_1_p_vs_np_problem.json')
-    
+    pvsnp = load_json("millennium_problem_1_p_vs_np_problem.json")
+
     print("\n🔬 P vs NP Problem - Detailed Analysis:")
     print(f"\nProblem Statement:")
     print(f"  {pvsnp['problem_statement']}")
-    
+
     print(f"\nOfficial Status: {pvsnp['official_status']}")
     print(f"AI/ML Relevance: {pvsnp['ai_ml_relevance']}")
-    
+
     print(f"\nWhy It Matters for AI ({len(pvsnp['why_matters_for_ai'])} reasons):")
-    for i, reason in enumerate(pvsnp['why_matters_for_ai'], 1):
+    for i, reason in enumerate(pvsnp["why_matters_for_ai"], 1):
         print(f"  {i}. {reason}")
-    
+
     print(f"\nBarrot's Approach ({len(pvsnp['barrot_approach'])} steps):")
-    for i, step in enumerate(pvsnp['barrot_approach'], 1):
+    for i, step in enumerate(pvsnp["barrot_approach"], 1):
         print(f"  {i}. {step}")
 
 
@@ -141,9 +141,9 @@ def example_6_pandas_ready():
     print("\n" + "=" * 80)
     print("EXAMPLE 6: Pandas DataFrame Creation")
     print("=" * 80)
-    
-    overview = load_json('millennium_problems_overview.json')
-    
+
+    overview = load_json("millennium_problems_overview.json")
+
     print("\n📊 Creating Pandas-Ready Structure:")
     print("```python")
     print("import pandas as pd")
@@ -159,7 +159,7 @@ def example_6_pandas_ready():
     print("high_ai = df[df['ai_applicability'] == 'High']")
     print("print(f'\\nHigh AI Applicability Problems: {len(high_ai)}')")
     print("```")
-    
+
     print("\n📋 Data Preview (first 3 rows):")
     for i, problem in enumerate(overview[:3], 1):
         print(f"\n  Row {i}:")
@@ -174,39 +174,39 @@ def example_7_batch_query():
     print("\n" + "=" * 80)
     print("EXAMPLE 7: Batch Query for ML Pipeline")
     print("=" * 80)
-    
+
     # Load all problem detail files
     problem_files = [
-        'millennium_problem_1_p_vs_np_problem.json',
-        'millennium_problem_2_hodge_conjecture.json',
-        'millennium_problem_3_riemann_hypothesis.json',
-        'millennium_problem_4_yang-mills_existence_and_mass_gap.json',
-        'millennium_problem_5_navier-stokes_existence_and_smoothness.json',
-        'millennium_problem_6_birch_and_swinnerton-dyer_conjecture.json',
-        'millennium_problem_7_poincaré_conjecture_✅.json'
+        "millennium_problem_1_p_vs_np_problem.json",
+        "millennium_problem_2_hodge_conjecture.json",
+        "millennium_problem_3_riemann_hypothesis.json",
+        "millennium_problem_4_yang-mills_existence_and_mass_gap.json",
+        "millennium_problem_5_navier-stokes_existence_and_smoothness.json",
+        "millennium_problem_6_birch_and_swinnerton-dyer_conjecture.json",
+        "millennium_problem_7_poincaré_conjecture_✅.json",
     ]
-    
+
     all_problems = []
     for f in problem_files:
         try:
             all_problems.append(load_json(f))
         except FileNotFoundError:
             pass
-    
+
     print(f"\n🔄 Loaded {len(all_problems)} problem details")
-    
+
     # Extract all "why it matters" reasons
     all_reasons = []
     for p in all_problems:
-        all_reasons.extend(p['why_matters_for_ai'])
-    
+        all_reasons.extend(p["why_matters_for_ai"])
+
     print(f"\n💡 Total 'Why It Matters for AI' insights: {len(all_reasons)}")
     print("\nSample insights:")
     for reason in all_reasons[:5]:
         print(f"  • {reason}")
-    
+
     # Count total action items
-    total_actions = sum(len(p['next_steps']) for p in all_problems)
+    total_actions = sum(len(p["next_steps"]) for p in all_problems)
     print(f"\n📝 Total next action items across all problems: {total_actions}")
 
 
@@ -216,7 +216,7 @@ def main():
     print("🧮 MILLENNIUM PROBLEMS MICRO-INGESTION")
     print("   Example Usage Demonstrations")
     print("=" * 80)
-    
+
     try:
         example_1_overview_analysis()
         example_2_search_by_tag()
@@ -225,7 +225,7 @@ def main():
         example_5_detailed_problem_access()
         example_6_pandas_ready()
         example_7_batch_query()
-        
+
         print("\n" + "=" * 80)
         print("✅ ALL EXAMPLES COMPLETED SUCCESSFULLY")
         print("=" * 80)
@@ -237,12 +237,12 @@ def main():
         print("  • API generation")
         print("  • Knowledge graph construction")
         print()
-        
+
     except Exception as e:
         print(f"\n❌ Error: {e}")
         print("\nMake sure you've run millennium_problems_micro_ingestion.py first!")
         return 1
-    
+
     return 0
 
 

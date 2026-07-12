@@ -50,7 +50,7 @@ class AssetMetadata:
 
     @property
     def memory_mb(self) -> float:
-        return self.memory_bytes / (1024 ** 2)
+        return self.memory_bytes / (1024**2)
 
     def summary(self) -> str:
         return (
@@ -243,7 +243,12 @@ class AssetLoader:
             metadata=metadata,
             mesh_data={"format": fmt.value, "lod": lod, "source": source},
             materials=[{"type": "pbr", "index": 0}],
-            textures=[{"type": "albedo"}, {"type": "normal"}, {"type": "roughness"}, {"type": "ao"}],
+            textures=[
+                {"type": "albedo"},
+                {"type": "normal"},
+                {"type": "roughness"},
+                {"type": "ao"},
+            ],
         )
 
     def _evict_if_needed(self) -> None:

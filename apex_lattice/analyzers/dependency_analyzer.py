@@ -15,7 +15,7 @@ from typing import Any
 
 from apex_lattice.analyzers.base import BaseAnalyzer
 
-_UNPINNED_RE = re.compile(r"^([A-Za-z0-9_.\-]+)\s*$")           # bare name
+_UNPINNED_RE = re.compile(r"^([A-Za-z0-9_.\-]+)\s*$")  # bare name
 _LOOSE_GTE_RE = re.compile(r"^([A-Za-z0-9_.\-]+)\s*>=\s*[\d.]+\s*$")  # >= only, no upper bound
 
 # Heuristic list of packages with known severe CVEs in older ranges

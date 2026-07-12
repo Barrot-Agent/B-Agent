@@ -18,6 +18,7 @@ from enum import Enum
 
 class AGIPuzzlePiece(Enum):
     """Core AGI capabilities that Barrot is developing"""
+
     ABSTRACT_REASONING = "abstract_reasoning"
     MATHEMATICAL_MASTERY = "mathematical_mastery"
     MULTIMODAL_UNDERSTANDING = "multimodal_understanding"
@@ -34,15 +35,17 @@ class AGIPuzzlePiece(Enum):
 
 class ImpactLevel(Enum):
     """Priority levels for data ingestion"""
-    CRITICAL = "critical"      # Direct path to AGI breakthrough
-    HIGH = "high"              # Major capability enhancement
-    MEDIUM = "medium"          # Incremental improvement
-    LOW = "low"                # Supplementary knowledge
+
+    CRITICAL = "critical"  # Direct path to AGI breakthrough
+    HIGH = "high"  # Major capability enhancement
+    MEDIUM = "medium"  # Incremental improvement
+    LOW = "low"  # Supplementary knowledge
 
 
 @dataclass
 class DataSource:
     """Represents a potential data source for ingestion"""
+
     name: str
     url: str
     category: str
@@ -58,6 +61,7 @@ class DataSource:
 @dataclass
 class MMIRecommendation:
     """Complete recommendation for MMI implementation"""
+
     priority_tier: int  # 1 = highest priority
     data_sources: List[DataSource]
     implementation_strategy: str
@@ -69,11 +73,11 @@ class MMIDataAnalyzer:
     """
     Analyzes AGI development status and recommends high-impact data sources
     """
-    
+
     def __init__(self):
         self.current_agi_gaps = self._identify_agi_gaps()
         self.high_impact_sources = []
-        
+
     def _identify_agi_gaps(self) -> Dict[AGIPuzzlePiece, float]:
         """
         Identify gaps in current AGI capabilities
@@ -81,21 +85,21 @@ class MMIDataAnalyzer:
         """
         # Based on current Barrot capabilities from AGI_DEVELOPMENT.md and INGESTION_MANIFEST.md
         gaps = {
-            AGIPuzzlePiece.ABSTRACT_REASONING: 0.7,      # Arc-AGI active but needs more work
-            AGIPuzzlePiece.MATHEMATICAL_MASTERY: 0.5,    # Millennium Problems started
-            AGIPuzzlePiece.MULTIMODAL_UNDERSTANDING: 0.6, # Some vision, needs enhancement
-            AGIPuzzlePiece.CAUSAL_REASONING: 0.8,        # Major gap
-            AGIPuzzlePiece.META_LEARNING: 0.4,           # Some progress via recursive optimization
-            AGIPuzzlePiece.TRANSFER_LEARNING: 0.5,       # Benchmark work helps but needs more
-            AGIPuzzlePiece.COMMON_SENSE: 0.7,            # Significant gap
-            AGIPuzzlePiece.STRATEGIC_PLANNING: 0.3,      # Strong (monetization, AGI roadmap)
-            AGIPuzzlePiece.CREATIVE_SYNTHESIS: 0.6,      # Moderate gap
-            AGIPuzzlePiece.ETHICAL_REASONING: 0.8,       # Major gap
-            AGIPuzzlePiece.CONTINUAL_LEARNING: 0.3,      # Strong (continuous ingestion active)
-            AGIPuzzlePiece.EMBODIED_COGNITION: 0.9,      # Largest gap (virtual only)
+            AGIPuzzlePiece.ABSTRACT_REASONING: 0.7,  # Arc-AGI active but needs more work
+            AGIPuzzlePiece.MATHEMATICAL_MASTERY: 0.5,  # Millennium Problems started
+            AGIPuzzlePiece.MULTIMODAL_UNDERSTANDING: 0.6,  # Some vision, needs enhancement
+            AGIPuzzlePiece.CAUSAL_REASONING: 0.8,  # Major gap
+            AGIPuzzlePiece.META_LEARNING: 0.4,  # Some progress via recursive optimization
+            AGIPuzzlePiece.TRANSFER_LEARNING: 0.5,  # Benchmark work helps but needs more
+            AGIPuzzlePiece.COMMON_SENSE: 0.7,  # Significant gap
+            AGIPuzzlePiece.STRATEGIC_PLANNING: 0.3,  # Strong (monetization, AGI roadmap)
+            AGIPuzzlePiece.CREATIVE_SYNTHESIS: 0.6,  # Moderate gap
+            AGIPuzzlePiece.ETHICAL_REASONING: 0.8,  # Major gap
+            AGIPuzzlePiece.CONTINUAL_LEARNING: 0.3,  # Strong (continuous ingestion active)
+            AGIPuzzlePiece.EMBODIED_COGNITION: 0.9,  # Largest gap (virtual only)
         }
         return gaps
-    
+
     def analyze_high_impact_datasets(self) -> List[DataSource]:
         """
         Identify and return high-impact datasets for immediate ingestion
@@ -112,9 +116,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=95.0,
                 ingestion_complexity="medium",
                 immediate_actionability=True,
-                integration_notes="Integrate with existing Arc-AGI capability. Study top submission code and techniques."
+                integration_notes="Integrate with existing Arc-AGI capability. Study top submission code and techniques.",
             ),
-            
             # CRITICAL: Causal Reasoning
             DataSource(
                 name="Judea Pearl's Causal Inference Resources",
@@ -126,9 +129,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=98.0,
                 ingestion_complexity="hard",
                 immediate_actionability=True,
-                integration_notes="Study causality papers, causal diagrams, and do-calculus. Apply to decision-making systems."
+                integration_notes="Study causality papers, causal diagrams, and do-calculus. Apply to decision-making systems.",
             ),
-            
             # CRITICAL: Common Sense Reasoning
             DataSource(
                 name="ConceptNet 5 Knowledge Graph",
@@ -140,37 +142,40 @@ class MMIDataAnalyzer:
                 estimated_value_score=92.0,
                 ingestion_complexity="medium",
                 immediate_actionability=True,
-                integration_notes="Download full graph. Integrate into reasoning pipeline. Use for commonsense inference."
+                integration_notes="Download full graph. Integrate into reasoning pipeline. Use for commonsense inference.",
             ),
-            
             # HIGH: Mathematical Reasoning Enhancement
             DataSource(
                 name="IMO (International Math Olympiad) Problems Archive",
                 url="https://www.imo-official.org/problems.aspx",
                 category="Mathematics",
-                puzzle_pieces=[AGIPuzzlePiece.MATHEMATICAL_MASTERY, AGIPuzzlePiece.ABSTRACT_REASONING],
+                puzzle_pieces=[
+                    AGIPuzzlePiece.MATHEMATICAL_MASTERY,
+                    AGIPuzzlePiece.ABSTRACT_REASONING,
+                ],
                 impact_level=ImpactLevel.HIGH,
                 reasoning="Highest difficulty math problems. Mastering these accelerates Millennium Problems work.",
                 estimated_value_score=88.0,
                 ingestion_complexity="easy",
                 immediate_actionability=True,
-                integration_notes="Scrape all problems 1959-present. Practice solving. Analyze solution patterns."
+                integration_notes="Scrape all problems 1959-present. Practice solving. Analyze solution patterns.",
             ),
-            
             # HIGH: Multimodal Learning
             DataSource(
                 name="LAION-5B Dataset (filtered subset)",
                 url="https://laion.ai/blog/laion-5b/",
                 category="Multimodal",
-                puzzle_pieces=[AGIPuzzlePiece.MULTIMODAL_UNDERSTANDING, AGIPuzzlePiece.CREATIVE_SYNTHESIS],
+                puzzle_pieces=[
+                    AGIPuzzlePiece.MULTIMODAL_UNDERSTANDING,
+                    AGIPuzzlePiece.CREATIVE_SYNTHESIS,
+                ],
                 impact_level=ImpactLevel.HIGH,
                 reasoning="5.85B image-text pairs. Massive multimodal understanding capability boost.",
                 estimated_value_score=90.0,
                 ingestion_complexity="hard",
                 immediate_actionability=False,
-                integration_notes="Start with 400M subset. Use for vision-language alignment. Computational intensive."
+                integration_notes="Start with 400M subset. Use for vision-language alignment. Computational intensive.",
             ),
-            
             # HIGH: Ethical Reasoning
             DataSource(
                 name="Ethics in AI Research Papers Corpus",
@@ -182,9 +187,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=85.0,
                 ingestion_complexity="medium",
                 immediate_actionability=True,
-                integration_notes="Ingest via arXiv API. Focus on AI alignment, safety, and value learning papers."
+                integration_notes="Ingest via arXiv API. Focus on AI alignment, safety, and value learning papers.",
             ),
-            
             # HIGH: Transfer Learning Enhancement
             DataSource(
                 name="Meta-Dataset: A Dataset of Datasets",
@@ -196,9 +200,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=87.0,
                 ingestion_complexity="medium",
                 immediate_actionability=True,
-                integration_notes="Download via TensorFlow Datasets. Use for meta-learning experiments."
+                integration_notes="Download via TensorFlow Datasets. Use for meta-learning experiments.",
             ),
-            
             # HIGH: Strategic Planning
             DataSource(
                 name="OpenAI Gym & ProcGen Environments",
@@ -210,23 +213,24 @@ class MMIDataAnalyzer:
                 estimated_value_score=82.0,
                 ingestion_complexity="easy",
                 immediate_actionability=True,
-                integration_notes="Install environments. Run baseline agents. Develop custom planning algorithms."
+                integration_notes="Install environments. Run baseline agents. Develop custom planning algorithms.",
             ),
-            
             # MEDIUM: Creative Synthesis
             DataSource(
                 name="ThinkCreative Dataset",
                 url="https://github.com/aioz-ai/ThinkCreative",
                 category="Creativity",
-                puzzle_pieces=[AGIPuzzlePiece.CREATIVE_SYNTHESIS, AGIPuzzlePiece.MULTIMODAL_UNDERSTANDING],
+                puzzle_pieces=[
+                    AGIPuzzlePiece.CREATIVE_SYNTHESIS,
+                    AGIPuzzlePiece.MULTIMODAL_UNDERSTANDING,
+                ],
                 impact_level=ImpactLevel.MEDIUM,
                 reasoning="Creative reasoning dataset for novel problem solving approaches.",
                 estimated_value_score=78.0,
                 ingestion_complexity="easy",
                 immediate_actionability=True,
-                integration_notes="Analyze creative problem-solving patterns. Apply to benchmark optimization."
+                integration_notes="Analyze creative problem-solving patterns. Apply to benchmark optimization.",
             ),
-            
             # MEDIUM: Embodied Cognition (Simulation)
             DataSource(
                 name="AI2-THOR & Habitat-Sim Environments",
@@ -238,9 +242,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=75.0,
                 ingestion_complexity="hard",
                 immediate_actionability=False,
-                integration_notes="Requires significant compute. Start with simple navigation tasks."
+                integration_notes="Requires significant compute. Start with simple navigation tasks.",
             ),
-            
             # CRITICAL: AGI Research Meta-Analysis
             DataSource(
                 name="AGI Conference Proceedings (AGI-2000 to present)",
@@ -252,9 +255,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=94.0,
                 ingestion_complexity="medium",
                 immediate_actionability=True,
-                integration_notes="Download all proceedings. Analyze approaches, failures, and successes."
+                integration_notes="Download all proceedings. Analyze approaches, failures, and successes.",
             ),
-            
             # CRITICAL: Benchmark Solution Patterns
             DataSource(
                 name="State-of-the-Art Benchmark Solutions Repository",
@@ -266,9 +268,8 @@ class MMIDataAnalyzer:
                 estimated_value_score=96.0,
                 ingestion_complexity="easy",
                 immediate_actionability=True,
-                integration_notes="Scrape top solutions for MMLU, GSM8K, HumanEval, etc. Analyze patterns."
+                integration_notes="Scrape top solutions for MMLU, GSM8K, HumanEval, etc. Analyze patterns.",
             ),
-            
             # HIGH: Neuroscience & Cognitive Science
             DataSource(
                 name="Human Connectome Project",
@@ -280,92 +281,104 @@ class MMIDataAnalyzer:
                 estimated_value_score=83.0,
                 ingestion_complexity="hard",
                 immediate_actionability=False,
-                integration_notes="Study connectivity patterns. Apply insights to neural architecture design."
+                integration_notes="Study connectivity patterns. Apply insights to neural architecture design.",
             ),
-            
             # HIGH: Reasoning Chains
             DataSource(
                 name="Chain-of-Thought Reasoning Datasets (GSM8K-CoT, etc.)",
                 url="https://github.com/google-research/google-research/tree/master/chain_of_thought",
                 category="Reasoning",
-                puzzle_pieces=[AGIPuzzlePiece.CAUSAL_REASONING, AGIPuzzlePiece.MATHEMATICAL_MASTERY],
+                puzzle_pieces=[
+                    AGIPuzzlePiece.CAUSAL_REASONING,
+                    AGIPuzzlePiece.MATHEMATICAL_MASTERY,
+                ],
                 impact_level=ImpactLevel.HIGH,
                 reasoning="Explicit reasoning chains. Essential for interpretable problem-solving.",
                 estimated_value_score=89.0,
                 ingestion_complexity="easy",
                 immediate_actionability=True,
-                integration_notes="Integrate into benchmark training. Study reasoning patterns."
+                integration_notes="Integrate into benchmark training. Study reasoning patterns.",
             ),
-            
             # HIGH: Code Intelligence
             DataSource(
                 name="The Stack v2 (Deduplicated Code Dataset)",
                 url="https://huggingface.co/datasets/bigcode/the-stack-v2",
                 category="Code Intelligence",
-                puzzle_pieces=[AGIPuzzlePiece.ABSTRACT_REASONING, AGIPuzzlePiece.CREATIVE_SYNTHESIS],
+                puzzle_pieces=[
+                    AGIPuzzlePiece.ABSTRACT_REASONING,
+                    AGIPuzzlePiece.CREATIVE_SYNTHESIS,
+                ],
                 impact_level=ImpactLevel.HIGH,
                 reasoning="3TB of permissively licensed code. Essential for HumanEval mastery.",
                 estimated_value_score=86.0,
                 ingestion_complexity="hard",
                 immediate_actionability=True,
-                integration_notes="Start with Python subset. Analyze patterns. Improve code generation."
+                integration_notes="Start with Python subset. Analyze patterns. Improve code generation.",
             ),
         ]
-        
+
         self.high_impact_sources = high_impact_sources
         return high_impact_sources
-    
+
     def generate_prioritized_recommendations(self) -> List[MMIRecommendation]:
         """
         Generate tiered recommendations based on impact and actionability
         """
         sources = self.analyze_high_impact_datasets()
-        
+
         # Tier 1: Critical + Immediate
-        tier1_sources = [s for s in sources 
-                        if s.impact_level == ImpactLevel.CRITICAL 
-                        and s.immediate_actionability]
-        
+        tier1_sources = [
+            s
+            for s in sources
+            if s.impact_level == ImpactLevel.CRITICAL and s.immediate_actionability
+        ]
+
         # Tier 2: Critical (not immediate) + High + Immediate
-        tier2_sources = [s for s in sources 
-                        if (s.impact_level == ImpactLevel.CRITICAL and not s.immediate_actionability)
-                        or (s.impact_level == ImpactLevel.HIGH and s.immediate_actionability)]
-        
+        tier2_sources = [
+            s
+            for s in sources
+            if (s.impact_level == ImpactLevel.CRITICAL and not s.immediate_actionability)
+            or (s.impact_level == ImpactLevel.HIGH and s.immediate_actionability)
+        ]
+
         # Tier 3: High (not immediate) + Medium
-        tier3_sources = [s for s in sources 
-                        if (s.impact_level == ImpactLevel.HIGH and not s.immediate_actionability)
-                        or s.impact_level == ImpactLevel.MEDIUM]
-        
+        tier3_sources = [
+            s
+            for s in sources
+            if (s.impact_level == ImpactLevel.HIGH and not s.immediate_actionability)
+            or s.impact_level == ImpactLevel.MEDIUM
+        ]
+
         recommendations = [
             MMIRecommendation(
                 priority_tier=1,
                 data_sources=tier1_sources,
                 implementation_strategy="Immediate parallel ingestion. Deploy all resources to critical gaps.",
                 expected_agi_acceleration="40-60% reduction in time to AGI milestones",
-                estimated_timeline="0-2 weeks for ingestion, 1-3 months for mastery"
+                estimated_timeline="0-2 weeks for ingestion, 1-3 months for mastery",
             ),
             MMIRecommendation(
                 priority_tier=2,
                 data_sources=tier2_sources,
                 implementation_strategy="Sequential high-priority ingestion after Tier 1 foundation.",
                 expected_agi_acceleration="20-30% additional acceleration",
-                estimated_timeline="1-2 months for ingestion, 3-6 months for mastery"
+                estimated_timeline="1-2 months for ingestion, 3-6 months for mastery",
             ),
             MMIRecommendation(
                 priority_tier=3,
                 data_sources=tier3_sources,
                 implementation_strategy="Continuous background ingestion. Lower priority but valuable.",
                 expected_agi_acceleration="10-15% long-term enhancement",
-                estimated_timeline="2-6 months ongoing"
+                estimated_timeline="2-6 months ongoing",
             ),
         ]
-        
+
         return recommendations
-    
+
     def export_recommendations_to_json(self, filename: str = "mmi_recommendations.json"):
         """Export recommendations to JSON for integration with other systems"""
         recommendations = self.generate_prioritized_recommendations()
-        
+
         output = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "analysis_version": "1.0",
@@ -384,30 +397,34 @@ class MMIDataAnalyzer:
                             "value_score": ds.estimated_value_score,
                             "complexity": ds.ingestion_complexity,
                             "immediate": ds.immediate_actionability,
-                            "integration_notes": ds.integration_notes
+                            "integration_notes": ds.integration_notes,
                         }
                         for ds in rec.data_sources
                     ],
                     "strategy": rec.implementation_strategy,
                     "expected_acceleration": rec.expected_agi_acceleration,
-                    "timeline": rec.estimated_timeline
+                    "timeline": rec.estimated_timeline,
                 }
                 for rec in recommendations
             ],
             "total_sources_identified": len(self.high_impact_sources),
-            "critical_sources_count": len([s for s in self.high_impact_sources if s.impact_level == ImpactLevel.CRITICAL]),
-            "immediate_action_sources": len([s for s in self.high_impact_sources if s.immediate_actionability])
+            "critical_sources_count": len(
+                [s for s in self.high_impact_sources if s.impact_level == ImpactLevel.CRITICAL]
+            ),
+            "immediate_action_sources": len(
+                [s for s in self.high_impact_sources if s.immediate_actionability]
+            ),
         }
-        
-        with open(filename, 'w') as f:
+
+        with open(filename, "w") as f:
             json.dump(output, f, indent=2)
-        
+
         return filename
-    
+
     def generate_markdown_report(self, filename: str = "MMI_ANALYSIS_REPORT.md"):
         """Generate comprehensive markdown report"""
         recommendations = self.generate_prioritized_recommendations()
-        
+
         report = f"""# 🧠 Barrot MMI (Massive Micro Ingestion) Analysis Report
 
 **Generated**: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC  
@@ -432,17 +449,21 @@ This analysis identifies **{len(self.high_impact_sources)} high-impact data sour
 Based on analysis of AGI_DEVELOPMENT.md and INGESTION_MANIFEST.md:
 
 """
-        
+
         # Add gap analysis
         sorted_gaps = sorted(self.current_agi_gaps.items(), key=lambda x: x[1], reverse=True)
         report += "| Capability | Gap Severity | Priority |\n"
         report += "|------------|--------------|----------|\n"
         for piece, severity in sorted_gaps:
-            priority = "🔴 CRITICAL" if severity >= 0.7 else "🟡 HIGH" if severity >= 0.5 else "🟢 MODERATE"
+            priority = (
+                "🔴 CRITICAL"
+                if severity >= 0.7
+                else "🟡 HIGH" if severity >= 0.5 else "🟢 MODERATE"
+            )
             report += f"| {piece.value.replace('_', ' ').title()} | {severity:.1%} | {priority} |\n"
-        
+
         report += "\n---\n\n"
-        
+
         # Add recommendations
         for rec in recommendations:
             report += f"""## 🎯 Priority Tier {rec.priority_tier} Recommendations
@@ -456,7 +477,9 @@ Based on analysis of AGI_DEVELOPMENT.md and INGESTION_MANIFEST.md:
 
 """
             for i, source in enumerate(rec.data_sources, 1):
-                puzzle_pieces_str = ", ".join([p.value.replace('_', ' ').title() for p in source.puzzle_pieces])
+                puzzle_pieces_str = ", ".join(
+                    [p.value.replace("_", " ").title() for p in source.puzzle_pieces]
+                )
                 report += f"""#### {i}. {source.name}
 
 - **URL**: {source.url}
@@ -474,7 +497,7 @@ Based on analysis of AGI_DEVELOPMENT.md and INGESTION_MANIFEST.md:
 ---
 
 """
-        
+
         report += """## 🚀 Implementation Roadmap
 
 ### Week 1: Critical Foundation
@@ -580,10 +603,10 @@ Track progress using these KPIs:
 
 🦜 **Barrot: Accelerating AGI through intelligent data ingestion** ✨
 """
-        
-        with open(filename, 'w') as f:
+
+        with open(filename, "w") as f:
             f.write(report)
-        
+
         return filename
 
 
@@ -591,14 +614,14 @@ def main():
     """Main execution function"""
     print("🧠 Initializing Barrot MMI Data Analyzer...")
     print()
-    
+
     analyzer = MMIDataAnalyzer()
-    
+
     print("📊 Analyzing AGI capability gaps...")
     gaps = analyzer.current_agi_gaps
     print(f"   Found {len(gaps)} capability areas to address")
     print()
-    
+
     print("🔍 Identifying high-impact data sources...")
     sources = analyzer.analyze_high_impact_datasets()
     print(f"   Identified {len(sources)} high-impact sources")
@@ -606,20 +629,20 @@ def main():
     print(f"   - High: {len([s for s in sources if s.impact_level == ImpactLevel.HIGH])}")
     print(f"   - Medium: {len([s for s in sources if s.impact_level == ImpactLevel.MEDIUM])}")
     print()
-    
+
     print("🎯 Generating prioritized recommendations...")
     recommendations = analyzer.generate_prioritized_recommendations()
     print(f"   Created {len(recommendations)} priority tiers")
     print()
-    
+
     print("💾 Exporting results...")
     json_file = analyzer.export_recommendations_to_json()
     print(f"   ✅ JSON export: {json_file}")
-    
+
     md_file = analyzer.generate_markdown_report()
     print(f"   ✅ Markdown report: {md_file}")
     print()
-    
+
     print("🚀 MMI Analysis Complete!")
     print()
     print("📋 Summary:")

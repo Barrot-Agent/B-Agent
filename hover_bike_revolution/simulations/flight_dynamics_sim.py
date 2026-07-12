@@ -11,14 +11,14 @@ import math
 from dataclasses import dataclass, field
 from typing import Any
 
-
-GRAVITY = 9.81   # m/s²
+GRAVITY = 9.81  # m/s²
 AIR_DENSITY = 1.225  # kg/m³
 
 
 @dataclass
 class BikeState:
     """Full 6-DOF rigid body state."""
+
     # Position (m)
     x: float = 0.0
     y: float = 0.0
@@ -60,6 +60,7 @@ class BikeState:
 @dataclass
 class BikeParameters:
     """Physical parameters of the hover bike."""
+
     mass_kg: float = 120.0
     drag_coefficient: float = 0.35
     frontal_area_m2: float = 0.6
@@ -67,8 +68,8 @@ class BikeParameters:
     moment_of_inertia_y: float = 40.0
     moment_of_inertia_z: float = 15.0
     wheelbase_m: float = 1.1
-    magnetic_spring_k: float = 5_000.0   # N/m (vertical magnetic spring stiffness)
-    magnetic_damping_c: float = 200.0    # N·s/m
+    magnetic_spring_k: float = 5_000.0  # N/m (vertical magnetic spring stiffness)
+    magnetic_damping_c: float = 200.0  # N·s/m
 
 
 def simulate_flight(

@@ -45,13 +45,13 @@ def _first_order_pid_sim(kp: float, kd: float, duration_s: float) -> tuple[float
     """Simple PD controller on a 1-D spring-mass system (no Ki for brevity)."""
     dt = 0.005
     target = 0.15
-    gap = 0.20   # start 5 cm above target
+    gap = 0.20  # start 5 cm above target
     v = 0.0
     mass = 120.0
     k_spring = 5_000.0
     settling_threshold = 0.002  # 2 mm
 
-    min_gap = gap   # track minimum gap to measure undershoot below target
+    min_gap = gap  # track minimum gap to measure undershoot below target
     settled_at = duration_s  # default: not settled
     steps = int(duration_s / dt)
     prev_err = gap - target

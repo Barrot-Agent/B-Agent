@@ -13,7 +13,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-
 # ---------------------------------------------------------------------------
 # Print settings per material
 # ---------------------------------------------------------------------------
@@ -25,7 +24,7 @@ MATERIAL_PROFILES: dict[str, dict[str, Any]] = {
         "bed_temp_c": 60,
         "print_speed_mm_s": 45,
         "cooling_pct": 30,
-        "nozzle_diameter_mm": 0.6,   # hardened steel required
+        "nozzle_diameter_mm": 0.6,  # hardened steel required
         "recommended_infill_pct": 40,
         "recommended_infill_pattern": "gyroid",
         "layer_height_mm": 0.2,
@@ -96,18 +95,20 @@ MATERIAL_PROFILES: dict[str, dict[str, Any]] = {
 # Component print specifications
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ComponentPrintSpec:
     """Print specification for a single 3D-printed component."""
+
     name: str
     material: str
     volume_cm3: float
     dimensions_mm: tuple[float, float, float]
     infill_pct: float | None = None
     layer_height_mm: float | None = None
-    orientation: str = "flat"          # flat | upright | angled
+    orientation: str = "flat"  # flat | upright | angled
     support_required: bool = False
-    support_type: str = "none"         # none | normal | tree | dissolvable
+    support_type: str = "none"  # none | normal | tree | dissolvable
     copies: int = 1
     post_processing: list[str] | None = None
 
@@ -146,8 +147,10 @@ class ComponentPrintSpec:
             "material": self.material,
             "volume_cm3": self.volume_cm3,
             "dimensions_mm": list(self.dimensions_mm),
-            "infill_pct": self.infill_pct or MATERIAL_PROFILES.get(self.material, {}).get("recommended_infill_pct"),
-            "layer_height_mm": self.layer_height_mm or MATERIAL_PROFILES.get(self.material, {}).get("layer_height_mm"),
+            "infill_pct": self.infill_pct
+            or MATERIAL_PROFILES.get(self.material, {}).get("recommended_infill_pct"),
+            "layer_height_mm": self.layer_height_mm
+            or MATERIAL_PROFILES.get(self.material, {}).get("layer_height_mm"),
             "orientation": self.orientation,
             "support_required": self.support_required,
             "support_type": self.support_type,
@@ -302,6 +305,7 @@ HOVER_BIKE_COMPONENTS: list[ComponentPrintSpec] = [
 # Print preparation report generator
 # ---------------------------------------------------------------------------
 
+
 class PrintPreparation:
     """
     Generates a complete print preparation report for the hover bike.
@@ -345,8 +349,7 @@ class PrintPreparation:
         }
         filament = self.total_filament_g()
         return {
-            mat: round(grams / 1000 * costs.get(mat, 30.0), 2)
-            for mat, grams in filament.items()
+            mat: round(grams / 1000 * costs.get(mat, 30.0), 2) for mat, grams in filament.items()
         }
 
     def full_report(self) -> dict[str, Any]:

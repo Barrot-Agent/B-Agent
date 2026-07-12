@@ -45,9 +45,11 @@ logger = logging.getLogger(__name__)
 # Configuration
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class OrchestratorConfig:
     """Credentials and settings for all three MCP services."""
+
     # Hugging Face
     hf_token: Optional[str] = None
 
@@ -67,8 +69,8 @@ class OrchestratorConfig:
     use_databricks: bool = True
     commit_to_github: bool = True
     trigger_cicd: bool = True
-    databricks_poll_interval: int = 15    # seconds
-    databricks_timeout: int = 3600        # seconds
+    databricks_poll_interval: int = 15  # seconds
+    databricks_timeout: int = 3600  # seconds
 
     @classmethod
     def from_env(cls) -> "OrchestratorConfig":
@@ -89,6 +91,7 @@ class OrchestratorConfig:
 # Progress events
 # ---------------------------------------------------------------------------
 
+
 class OrchestratorStep(str, Enum):
     INIT = "init"
     HF_MODELS = "hf_models"
@@ -106,7 +109,7 @@ class OrchestratorStep(str, Enum):
 class OrchestratorEvent:
     step: OrchestratorStep
     message: str
-    progress: float = 0.0          # 0.0 – 1.0 overall pipeline progress
+    progress: float = 0.0  # 0.0 – 1.0 overall pipeline progress
     details: Optional[Dict[str, Any]] = None
     error: Optional[str] = None
 
@@ -122,6 +125,7 @@ class OrchestratorEvent:
 # ---------------------------------------------------------------------------
 # Session state
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class EpisodeRunRecord:
@@ -144,6 +148,7 @@ class EpisodeRunRecord:
 # Orchestrator
 # ---------------------------------------------------------------------------
 
+
 class MCPOrchestrator:
     """Unified MCP workflow orchestrator for the Stupid Sindy pipeline."""
 
@@ -161,12 +166,14 @@ class MCPOrchestrator:
     def _get_hf(self):
         if self._hf is None:
             from mcp_huggingface import HuggingFaceMCP
+
             self._hf = HuggingFaceMCP(token=self.config.hf_token)
         return self._hf
 
     def _get_db(self):
         if self._db is None:
             from mcp_databricks import DatabricksMCP
+
             self._db = DatabricksMCP(
                 host=self.config.databricks_host,
                 token=self.config.databricks_token,
@@ -177,6 +184,7 @@ class MCPOrchestrator:
     def _get_gh(self):
         if self._gh is None:
             from mcp_github import GitHubMCP
+
             self._gh = GitHubMCP(
                 token=self.config.github_token,
                 owner=self.config.github_owner,
@@ -273,6 +281,7 @@ class MCPOrchestrator:
         )
         try:
             from stupid_sindy_series_generator import get_episode
+
             ep = get_episode(episode_number)
             script_text = ep.full_script()
             yield OrchestratorEvent(
@@ -303,6 +312,7 @@ class MCPOrchestrator:
         if self.config.use_databricks and self._get_db().is_configured():
             # --- Databricks path ---
             from mcp_databricks import JobRunState  # noqa: F811
+
             yield OrchestratorEvent(
                 step=OrchestratorStep.DATABRICKS_SUBMIT,
                 message="Submitting rendering job to Databricks cluster…",
@@ -377,6 +387,7 @@ class MCPOrchestrator:
             # Build metadata payload
             try:
                 from stupid_sindy_series_generator import get_episode as _get_ep
+
                 ep_meta = _get_ep(episode_number)
                 metadata: Dict[str, Any] = {
                     "episode_number": episode_number,
@@ -473,6 +484,7 @@ class MCPOrchestrator:
         """Run the local SindyVideoPipeline and return the video path, or None."""
         try:
             from sindy_video_pipeline import SindyVideoPipeline, RenderStatus
+
             pipeline = SindyVideoPipeline()
             if pipeline.get_state(episode_number) is None:
                 pipeline.queue_episode(episode_number)

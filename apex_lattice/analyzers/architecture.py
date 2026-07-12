@@ -37,9 +37,7 @@ class ArchitectureAnalyzer:
         return [
             {
                 "category": self.category,
-                "title": (
-                    f"Architectural signals in '{artefact.get('id', '?')}'"
-                ),
+                "title": (f"Architectural signals in '{artefact.get('id', '?')}'"),
                 "description": (
                     f"Identified {len(hits)} architecture-related term(s): "
                     f"{', '.join(hits[:5])}. "

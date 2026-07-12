@@ -40,9 +40,7 @@ class SecurityAnalyzer:
         return [
             {
                 "category": self.category,
-                "title": (
-                    f"Security considerations present in '{artefact.get('id', '?')}'"
-                ),
+                "title": (f"Security considerations present in '{artefact.get('id', '?')}'"),
                 "description": (
                     f"Found {len(hits)} security-related term(s): "
                     f"{', '.join(hits[:5])}. "

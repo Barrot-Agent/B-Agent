@@ -59,6 +59,7 @@ MAX_UNIQUE_VALUES_FOR_CLASSIFICATION = 20
 # Kaggle API helpers
 # ---------------------------------------------------------------------------
 
+
 def _build_api() -> KaggleApiExtended:
     """
     Initialise the Kaggle API client.
@@ -69,6 +70,7 @@ def _build_api() -> KaggleApiExtended:
     if username and key:
         # Write credentials to the expected location so the SDK picks them up
         import json
+
         kaggle_dir = Path.home() / ".kaggle"
         kaggle_dir.mkdir(exist_ok=True)
         cfg_file = kaggle_dir / "kaggle.json"
@@ -158,7 +160,9 @@ def _train_and_predict(comp_dir: Path) -> Optional[Path]:
     X_train = train_df[feature_cols].select_dtypes(include="number").fillna(0)
     y_train = train_df[target_col]
 
-    is_classification = y_train.dtype == object or y_train.nunique() < MAX_UNIQUE_VALUES_FOR_CLASSIFICATION
+    is_classification = (
+        y_train.dtype == object or y_train.nunique() < MAX_UNIQUE_VALUES_FOR_CLASSIFICATION
+    )
     if is_classification:
         le = LabelEncoder()
         y_enc = le.fit_transform(y_train.astype(str))
@@ -204,6 +208,7 @@ def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     api = _build_api()

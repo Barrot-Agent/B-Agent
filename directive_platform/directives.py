@@ -47,8 +47,7 @@ class DirectiveManager:
         """Create and persist a new directive in *pending* status."""
         if directive_type not in DirectiveType.ALL:
             raise ValueError(
-                f"Unknown directive_type {directive_type!r}. "
-                f"Valid values: {DirectiveType.ALL}"
+                f"Unknown directive_type {directive_type!r}. " f"Valid values: {DirectiveType.ALL}"
             )
         directive = Directive(
             title=title,
@@ -76,9 +75,7 @@ class DirectiveManager:
         directives: list[Directive] = []
         for fp in self._dir.glob("*.json"):
             try:
-                directives.append(
-                    Directive.from_dict(json.loads(fp.read_text(encoding="utf-8")))
-                )
+                directives.append(Directive.from_dict(json.loads(fp.read_text(encoding="utf-8"))))
             except (json.JSONDecodeError, KeyError):
                 pass
         return sorted(directives, key=lambda d: d.created_at, reverse=True)

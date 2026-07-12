@@ -43,8 +43,7 @@ class Analyzer(BaseAnalyzer):
                     self._make_finding(
                         title="TODO/FIXME marker found",
                         description=(
-                            f"Address unresolved marker in `{rel}` line {i}: "
-                            f"`{line.strip()}`"
+                            f"Address unresolved marker in `{rel}` line {i}: " f"`{line.strip()}`"
                         ),
                         severity="low",
                         evidence=[f"{rel}:{i}: {line.strip()}"],

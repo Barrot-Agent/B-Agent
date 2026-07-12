@@ -152,7 +152,11 @@ class NeRFIntegration:
         """
         ds = NeRFDataset(dataset) if isinstance(dataset, str) else dataset
         m = NeRFMode(mode) if isinstance(mode, str) else mode
-        backend = InferenceBackend(inference_backend) if isinstance(inference_backend, str) else inference_backend
+        backend = (
+            InferenceBackend(inference_backend)
+            if isinstance(inference_backend, str)
+            else inference_backend
+        )
 
         cache_key = f"{ds.value}/{scene}/{m.value}/{backend.value}"
         if cache_key in self._cache:
@@ -170,10 +174,16 @@ class NeRFIntegration:
         """
         return [
             CameraPose(
-                tx=float(i), ty=0.0, tz=float(-i),
-                rx=0.0, ry=float(i * 5), rz=0.0,
-                focal_x=555.0, focal_y=555.0,
-                width=800, height=600,
+                tx=float(i),
+                ty=0.0,
+                tz=float(-i),
+                rx=0.0,
+                ry=float(i * 5),
+                rz=0.0,
+                focal_x=555.0,
+                focal_y=555.0,
+                width=800,
+                height=600,
             )
             for i, _ in enumerate(image_paths)
         ]
@@ -211,10 +221,16 @@ class NeRFIntegration:
 
         poses = [
             CameraPose(
-                tx=float(i), ty=0.2, tz=float(-i * 0.5),
-                rx=0.0, ry=float(i * 10), rz=0.0,
-                focal_x=555.0, focal_y=555.0,
-                width=800, height=600,
+                tx=float(i),
+                ty=0.2,
+                tz=float(-i * 0.5),
+                rx=0.0,
+                ry=float(i * 10),
+                rz=0.0,
+                focal_x=555.0,
+                focal_y=555.0,
+                width=800,
+                height=600,
             )
             for i in range(min(img_count, 5))
         ]

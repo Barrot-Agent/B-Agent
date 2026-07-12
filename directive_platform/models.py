@@ -11,13 +11,14 @@ import time
 import uuid
 from typing import Any
 
-
 # ---------------------------------------------------------------------------
 # Enumerations (plain string constants — no enum dependency)
 # ---------------------------------------------------------------------------
 
+
 class DirectiveType:
     """Categories of work a directive can represent."""
+
     LEARN = "learn"
     REFINE = "refine"
     ANALYZE = "analyze"
@@ -43,6 +44,7 @@ class DirectiveType:
 
 class DirectiveStatus:
     """Lifecycle stages of a directive."""
+
     PENDING = "pending"
     ACTIVE = "active"
     COMPLETED = "completed"
@@ -64,6 +66,7 @@ class DirectiveStatus:
 
 class AgentStatus:
     """Operating states of an agent."""
+
     IDLE = "idle"
     ACTIVE = "active"
     UNAVAILABLE = "unavailable"
@@ -83,6 +86,7 @@ class AgentStatus:
 
 class MessageType:
     """Roles that a message can play inside a collaboration session."""
+
     DIRECTIVE = "directive"
     RESPONSE = "response"
     QUERY = "query"
@@ -96,6 +100,7 @@ class MessageType:
 # ---------------------------------------------------------------------------
 # Agent
 # ---------------------------------------------------------------------------
+
 
 class Agent:
     """
@@ -170,6 +175,7 @@ class Agent:
 # ---------------------------------------------------------------------------
 # Directive
 # ---------------------------------------------------------------------------
+
 
 class Directive:
     """
@@ -265,6 +271,7 @@ class Directive:
 # Message
 # ---------------------------------------------------------------------------
 
+
 class Message:
     """
     A single message within a :class:`CollaborationSession`.
@@ -335,6 +342,7 @@ class Message:
 # ---------------------------------------------------------------------------
 # CollaborationSession
 # ---------------------------------------------------------------------------
+
 
 class CollaborationSession:
     """

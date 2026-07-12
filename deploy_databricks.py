@@ -49,14 +49,23 @@ LOCAL_DIR = Path(__file__).parent
 
 UPLOAD_EXTENSIONS = {".py", ".ipynb", ".yml", ".yaml", ".txt", ".md", ".json"}
 SKIP_DIRS = {
-    ".git", ".github", ".config", ".npm", ".termux",
-    "__pycache__", "venv", ".venv", "node_modules", "output",
+    ".git",
+    ".github",
+    ".config",
+    ".npm",
+    ".termux",
+    "__pycache__",
+    "venv",
+    ".venv",
+    "node_modules",
+    "output",
 }
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _build_client() -> WorkspaceClient:
     """Return a WorkspaceClient, preferring env-var auth over cfg file."""
@@ -93,6 +102,7 @@ def _upload_files(client: WorkspaceClient) -> int:
 
         content = local_file.read_bytes()
         import base64
+
         b64 = base64.b64encode(content).decode()
 
         try:
@@ -185,6 +195,7 @@ def _run_job(client: WorkspaceClient, job_id: int) -> None:
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     if not (DATABRICKS_HOST or os.path.exists(Path.home() / ".databrickscfg")):

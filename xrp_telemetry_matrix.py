@@ -12,32 +12,33 @@ import sys
 import os
 from datetime import datetime, timezone
 
+
 class CouncilReportNode:
     def __init__(self, stability_anchor: float = 0.707):
         self.asset = "XRP"
         self.stability_anchor = stability_anchor
         self.report_path = "COUNCIL_REVIEW.md"
-        
+
         logging.basicConfig(
-            level=logging.INFO, 
-            format='%(asctime)s - [BARROT-Ω COUNCIL] - %(message)s',
-            datefmt='%Y-%m-%d %H:%M:%S'
+            level=logging.INFO,
+            format="%(asctime)s - [BARROT-Ω COUNCIL] - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
         )
         self.logger = logging.getLogger(__name__)
 
     async def generate_report(self):
         self.logger.info("Synthesizing telemetry data...")
         await asyncio.sleep(0.5)
-        
+
         sentiment_score = 0.94
         market_price = 1.185
         shear_variance = 0.233
-        
+
         self.logger.info("Compiling Framework Diagnostics...")
         await asyncio.sleep(0.5)
-        
+
         self.logger.info(f"Writing synthesis to physical asset: {self.report_path}...")
-        
+
         report_content = f"""# BARROT-Ω COUNCIL REVIEW
 **Date/Time:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC
 **Architect:** Sean
@@ -64,12 +65,15 @@ class CouncilReportNode:
 """
         with open(self.report_path, "w") as f:
             f.write(report_content)
-            
+
         self.logger.info(f"=== COUNCIL REVIEW COMPILED: {self.report_path} ===")
 
     async def process_telemetry(self):
-        self.logger.info(f"=== INITIALIZING AUTONOMOUS REPORT GENERATOR [Anchor: {self.stability_anchor}] ===")
+        self.logger.info(
+            f"=== INITIALIZING AUTONOMOUS REPORT GENERATOR [Anchor: {self.stability_anchor}] ==="
+        )
         await self.generate_report()
+
 
 if __name__ == "__main__":
     node = CouncilReportNode()

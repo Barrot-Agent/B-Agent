@@ -36,16 +36,23 @@ if str(_REPO_ROOT) not in sys.path:
 
 from data.registry import list_assets, _load, _DATA_DIR  # noqa: E402
 
-
 # ---------------------------------------------------------------------------
 # Schema spot-check helpers
 # ---------------------------------------------------------------------------
 
+
 def _check_merge_conflict(data: Dict[str, Any]) -> List[str]:
     """Return list of issues found in merge_conflict data."""
     issues: List[str] = []
-    for key in ("patterns", "scenarios", "tools", "best_practices",
-                "resolution_techniques", "learning_outcomes", "knowledge_summary"):
+    for key in (
+        "patterns",
+        "scenarios",
+        "tools",
+        "best_practices",
+        "resolution_techniques",
+        "learning_outcomes",
+        "knowledge_summary",
+    ):
         if key not in data:
             issues.append(f"Missing top-level key: '{key}'")
     patterns = data.get("patterns", [])
@@ -102,6 +109,7 @@ _SCHEMA_CHECKS = {
 # ---------------------------------------------------------------------------
 # Topology builder
 # ---------------------------------------------------------------------------
+
 
 def get_topology() -> Dict[str, Any]:
     """Return a full topology dict describing the current data layer state."""
@@ -161,6 +169,7 @@ def get_topology() -> Dict[str, Any]:
 # Pretty-print report
 # ---------------------------------------------------------------------------
 
+
 def run_health_check(verbose: bool = True) -> bool:
     """Run the full health check; return True if everything is healthy."""
     topology = get_topology()
@@ -176,13 +185,9 @@ def run_health_check(verbose: bool = True) -> bool:
 
         for name, asset in topology["assets"].items():
             status_icon = "✓" if asset["exists"] else "✗"
-            size_str = (
-                f"{asset['size_bytes']:,} bytes" if asset["size_bytes"] else "N/A"
-            )
+            size_str = f"{asset['size_bytes']:,} bytes" if asset["size_bytes"] else "N/A"
             count_str = (
-                f"  records={asset['record_count']}"
-                if asset["record_count"] is not None
-                else ""
+                f"  records={asset['record_count']}" if asset["record_count"] is not None else ""
             )
             print(f"  [{status_icon}] {name:<30} {size_str:<20}{count_str}")
             if asset["schema_issues"]:
@@ -192,8 +197,10 @@ def run_health_check(verbose: bool = True) -> bool:
                 print(f"         ✗  Error: {asset['error']}")
 
         print()
-        print(f"  Summary: {summary['present']}/{summary['total_assets']} assets present  "
-              f"|  {summary['schema_issues_total']} schema issues")
+        print(
+            f"  Summary: {summary['present']}/{summary['total_assets']} assets present  "
+            f"|  {summary['schema_issues_total']} schema issues"
+        )
         healthy_label = "✓ HEALTHY" if summary["healthy"] else "✗ NEEDS ATTENTION"
         print(f"  Status : {healthy_label}")
         print(f"{'='*60}\n")

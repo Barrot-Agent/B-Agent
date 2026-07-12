@@ -47,7 +47,9 @@ class Analyzer(BaseAnalyzer):
         for node in ast.walk(tree):
             if not isinstance(node, ast.AsyncFunctionDef):
                 continue
-            func_src_lines = source.splitlines()[node.lineno - 1 : getattr(node, "end_lineno", node.lineno)]
+            func_src_lines = source.splitlines()[
+                node.lineno - 1 : getattr(node, "end_lineno", node.lineno)
+            ]
             func_src = "\n".join(func_src_lines)
             for match in _REQUESTS_SYNC_RE.finditer(func_src):
                 lineno = node.lineno + func_src[: match.start()].count("\n")

@@ -58,7 +58,9 @@ class RenderConfig:
             (1920, 1080): "1080p",
             (1280, 720): "720p",
         }
-        return labels.get((self.resolution_w, self.resolution_h), f"{self.resolution_w}×{self.resolution_h}")
+        return labels.get(
+            (self.resolution_w, self.resolution_h), f"{self.resolution_w}×{self.resolution_h}"
+        )
 
 
 @dataclass
@@ -132,8 +134,28 @@ class DatasetRenderer:
         RenderQuality.LOW: ["depth", "base_colour"],
         RenderQuality.MEDIUM: ["depth", "base_colour", "shadows", "ao"],
         RenderQuality.HIGH: ["depth", "base_colour", "shadows", "ao", "reflections", "bloom"],
-        RenderQuality.ULTRA: ["depth", "base_colour", "shadows", "ao", "reflections", "bloom", "gi", "taa"],
-        RenderQuality.CINEMATIC: ["depth", "base_colour", "shadows", "ao", "reflections", "bloom", "gi", "taa", "dof", "motion_blur"],
+        RenderQuality.ULTRA: [
+            "depth",
+            "base_colour",
+            "shadows",
+            "ao",
+            "reflections",
+            "bloom",
+            "gi",
+            "taa",
+        ],
+        RenderQuality.CINEMATIC: [
+            "depth",
+            "base_colour",
+            "shadows",
+            "ao",
+            "reflections",
+            "bloom",
+            "gi",
+            "taa",
+            "dof",
+            "motion_blur",
+        ],
     }
 
     def __init__(self, render_api: RenderAPI = RenderAPI.VULKAN) -> None:
@@ -192,8 +214,10 @@ class DatasetRenderer:
         """Render and return a single frame for an active session."""
         q = session.config.quality
         base_ms = {
-            RenderQuality.LOW: 2.0, RenderQuality.MEDIUM: 5.0,
-            RenderQuality.HIGH: 8.3, RenderQuality.ULTRA: 11.0,
+            RenderQuality.LOW: 2.0,
+            RenderQuality.MEDIUM: 5.0,
+            RenderQuality.HIGH: 8.3,
+            RenderQuality.ULTRA: 11.0,
             RenderQuality.CINEMATIC: 33.0,
         }.get(q, 8.3)
 
@@ -207,7 +231,7 @@ class DatasetRenderer:
             fps=round(fps, 1),
             draw_calls=max(1, w * h // 500_000),
             triangle_count=500_000,
-            gpu_memory_mb=float(w * h * 4 // (1024 ** 2) + 512),
+            gpu_memory_mb=float(w * h * 4 // (1024**2) + 512),
             resolution=session.config.resolution_label(),
             passes=passes,
         )

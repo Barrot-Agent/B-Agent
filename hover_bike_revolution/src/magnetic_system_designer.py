@@ -17,18 +17,18 @@ import math
 from dataclasses import dataclass, field
 from typing import Any
 
-
 # ---------------------------------------------------------------------------
 # Physical constants
 # ---------------------------------------------------------------------------
 
-MU_0 = 4 * math.pi * 1e-7   # vacuum permeability (H/m)
-GRAVITY = 9.81               # m/s²
+MU_0 = 4 * math.pi * 1e-7  # vacuum permeability (H/m)
+GRAVITY = 9.81  # m/s²
 
 
 # ---------------------------------------------------------------------------
 # Halbach array geometry
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class HalbachArray:
@@ -62,7 +62,7 @@ class HalbachArray:
     magnet_height_mm: float = 10.0
     n_poles: int = 4
     n_periods: int = 4
-    remanence_t: float = 1.45   # N52
+    remanence_t: float = 1.45  # N52
 
     # ------------------------------------------------------------------
     # Derived geometry
@@ -154,9 +154,9 @@ class HalbachArray:
 
         # Lift pressure (N/m²)
         B_gap = B0 * math.exp(-k * gap_m)
-        lift_pressure = (B_gap**2 / (2 * MU_0)) * (velocity_ms / v_c) / (
-            1 + (velocity_ms / v_c) ** 2
-        ) ** 0.5
+        lift_pressure = (
+            (B_gap**2 / (2 * MU_0)) * (velocity_ms / v_c) / (1 + (velocity_ms / v_c) ** 2) ** 0.5
+        )
 
         return lift_pressure
 
@@ -172,9 +172,9 @@ class HalbachArray:
         k = 2 * math.pi / self.spatial_wavelength_m
         v_c = (track_resistivity_ohm_m * k) / MU_0
         B_gap = B0 * math.exp(-k * gap_m)
-        drag_pressure = (B_gap**2 / (2 * MU_0)) * (v_c / velocity_ms) / (
-            1 + (v_c / velocity_ms) ** 2
-        ) ** 0.5
+        drag_pressure = (
+            (B_gap**2 / (2 * MU_0)) * (v_c / velocity_ms) / (1 + (v_c / velocity_ms) ** 2) ** 0.5
+        )
         return drag_pressure
 
     def lift_to_drag_ratio(
@@ -192,6 +192,7 @@ class HalbachArray:
 # ---------------------------------------------------------------------------
 # Active stabilisation model
 # ---------------------------------------------------------------------------
+
 
 @dataclass
 class ActiveStabilisation:
@@ -217,7 +218,7 @@ class ActiveStabilisation:
     coil_resistance_ohm: float = 2.5
     supply_voltage_v: float = 24.0
     n_coils: int = 8
-    hall_sensor_resolution_mt: float = 1.0   # AH3503 ≈ 1.3 mT resolution
+    hall_sensor_resolution_mt: float = 1.0  # AH3503 ≈ 1.3 mT resolution
 
     @property
     def max_correction_current_a(self) -> float:
@@ -255,14 +256,12 @@ class ActiveStabilisation:
         gap1 = nominal_gap_m
         gap2 = nominal_gap_m + dz
 
-        area_m2 = (
-            array.total_length_mm / 1000 * array.magnet_width_mm / 1000
-        )
+        area_m2 = array.total_length_mm / 1000 * array.magnet_width_mm / 1000
 
         # Numerical derivative of lift pressure w.r.t. gap
         lp1 = array.lift_force_per_unit_area_n_m2(gap1, 10.0) * area_m2
         lp2 = array.lift_force_per_unit_area_n_m2(gap2, 10.0) * area_m2
-        k_spring = abs((lp2 - lp1) / dz)   # N/m
+        k_spring = abs((lp2 - lp1) / dz)  # N/m
 
         if k_spring == 0:
             return float("inf")
@@ -273,6 +272,7 @@ class ActiveStabilisation:
 # System designer
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class MagneticSystemDesigner:
     """
@@ -280,9 +280,9 @@ class MagneticSystemDesigner:
     hover bike's target mass and operating conditions.
     """
 
-    target_mass_kg: float = 120.0          # bike + rider
+    target_mass_kg: float = 120.0  # bike + rider
     target_gap_mm: float = 150.0
-    min_speed_levitate_ms: float = 5.0     # minimum speed for passive lift
+    min_speed_levitate_ms: float = 5.0  # minimum speed for passive lift
     array: HalbachArray = field(default_factory=HalbachArray)
     stabiliser: ActiveStabilisation = field(default_factory=ActiveStabilisation)
 

@@ -224,9 +224,7 @@ class DatasetIndexing:
             if spec.season and entry.season and spec.season.lower() != entry.season.lower():
                 continue
             if spec.full_text:
-                haystack = (
-                    entry.key + " " + entry.category + " " + " ".join(entry.tags)
-                ).lower()
+                haystack = (entry.key + " " + entry.category + " " + " ".join(entry.tags)).lower()
                 if spec.full_text.lower() not in haystack:
                     continue
             results.append(SearchResult(entry=entry, score=entry.quality_score))

@@ -13,7 +13,7 @@ def example_single_email_analysis():
     print("=" * 70)
     print("Example 1: Single Email Analysis")
     print("=" * 70)
-    
+
     # Example email with technical content and action items
     email = {
         "id": "email_001",
@@ -39,11 +39,11 @@ def example_single_email_analysis():
         Best regards
         """,
         "date": datetime.now(timezone.utc).isoformat(),
-        "attachments": ["fastml_comparison.pdf"]
+        "attachments": ["fastml_comparison.pdf"],
     }
-    
+
     result = analyze_email(email)
-    
+
     print(f"Subject: {result['subject']}")
     print(f"Sender: {result['sender']}")
     print(f"Priority: {result['priority']}")
@@ -51,17 +51,17 @@ def example_single_email_analysis():
     print(f"Is Useful: {result['is_useful']}")
     print(f"Categories: {', '.join(result['categories'])}")
     print(f"\nRecommendation: {result['recommendation']}")
-    
-    if result['action_items']:
+
+    if result["action_items"]:
         print(f"\nAction Items ({len(result['action_items'])}):")
-        for i, item in enumerate(result['action_items'], 1):
+        for i, item in enumerate(result["action_items"], 1):
             print(f"  {i}. {item['description']}")
-    
-    if result['resources']:
+
+    if result["resources"]:
         print(f"\nResources Found ({len(result['resources'])}):")
-        for resource in result['resources']:
+        for resource in result["resources"]:
             print(f"  - {resource['type']}: {resource['url']}")
-    
+
     print()
 
 
@@ -70,7 +70,7 @@ def example_batch_email_analysis():
     print("=" * 70)
     print("Example 2: Batch Email Analysis")
     print("=" * 70)
-    
+
     emails = [
         {
             "id": "email_001",
@@ -78,7 +78,7 @@ def example_batch_email_analysis():
             "sender": "ops@company.com",
             "body": "The production server needs immediate attention. Please respond ASAP.",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": []
+            "attachments": [],
         },
         {
             "id": "email_002",
@@ -86,7 +86,7 @@ def example_batch_email_analysis():
             "sender": "newsletter@techblog.com",
             "body": "Check out the latest trends in AI and machine learning...",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": []
+            "attachments": [],
         },
         {
             "id": "email_003",
@@ -94,7 +94,7 @@ def example_batch_email_analysis():
             "sender": "recruiter@bigtech.com",
             "body": "We have an exciting opportunity for a Senior Engineer role. Great benefits and competitive salary.",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": []
+            "attachments": [],
         },
         {
             "id": "email_004",
@@ -102,7 +102,7 @@ def example_batch_email_analysis():
             "sender": "marketing@spam.com",
             "body": "Act now! Free money! Click here! Unsubscribe at bottom.",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": []
+            "attachments": [],
         },
         {
             "id": "email_005",
@@ -110,12 +110,12 @@ def example_batch_email_analysis():
             "sender": "education@learning.com",
             "body": "Learn advanced Python patterns and best practices. Full tutorial at https://learning.com/python",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": ["python_tutorial.pdf"]
-        }
+            "attachments": ["python_tutorial.pdf"],
+        },
     ]
-    
+
     result = analyze_emails(emails)
-    
+
     print(f"Total Emails: {result['total_emails']}")
     print(f"Useful Emails: {result['useful_emails']}")
     print(f"Not Useful: {result['not_useful_emails']}")
@@ -123,19 +123,19 @@ def example_batch_email_analysis():
     print(f"Medium Priority: {result['medium_priority_count']}")
     print(f"Total Action Items: {result['total_action_items']}")
     print(f"Total Opportunities: {result['total_opportunities']}")
-    
+
     print(f"\nSummary: {result['summary']}")
-    
-    if result['high_priority_emails']:
+
+    if result["high_priority_emails"]:
         print(f"\nHigh Priority Emails:")
-        for email in result['high_priority_emails']:
+        for email in result["high_priority_emails"]:
             print(f"  - {email['subject']} (from {email['sender']})")
-    
-    if result['opportunities']:
+
+    if result["opportunities"]:
         print(f"\nOpportunities Found:")
-        for opp in result['opportunities']:
+        for opp in result["opportunities"]:
             print(f"  - {opp['type']}: {opp['subject']}")
-    
+
     print()
 
 
@@ -144,7 +144,7 @@ def example_learning_content_extraction():
     print("=" * 70)
     print("Example 3: Learning Content Extraction")
     print("=" * 70)
-    
+
     email = {
         "id": "email_learning",
         "subject": "New course on Quantum Computing",
@@ -165,26 +165,26 @@ def example_learning_content_extraction():
         Documentation available at https://docs.quantum.edu/
         """,
         "date": datetime.now(timezone.utc).isoformat(),
-        "attachments": ["quantum_syllabus.pdf", "lecture_notes.pdf"]
+        "attachments": ["quantum_syllabus.pdf", "lecture_notes.pdf"],
     }
-    
+
     result = analyze_email(email)
-    
+
     print(f"Subject: {result['subject']}")
     print(f"Categories: {', '.join(result['categories'])}")
-    
-    if result['learning_content']:
+
+    if result["learning_content"]:
         print(f"\nLearning Content ({len(result['learning_content'])} items):")
-        for content in result['learning_content']:
+        for content in result["learning_content"]:
             print(f"  - Type: {content['type']}")
             print(f"    Source: {content['source']}")
             print(f"    Relevance: {content['relevance']}")
-    
-    if result['resources']:
+
+    if result["resources"]:
         print(f"\nEducational Resources:")
-        for resource in result['resources']:
+        for resource in result["resources"]:
             print(f"  - {resource['type']}: {resource['url']}")
-    
+
     print()
 
 
@@ -193,7 +193,7 @@ def example_opportunity_detection():
     print("=" * 70)
     print("Example 4: Opportunity Detection")
     print("=" * 70)
-    
+
     email = {
         "id": "email_opportunity",
         "subject": "Partnership proposal for AI collaboration",
@@ -214,22 +214,22 @@ def example_opportunity_detection():
         Would you be interested in discussing this opportunity further?
         """,
         "date": datetime.now(timezone.utc).isoformat(),
-        "attachments": ["partnership_proposal.pdf"]
+        "attachments": ["partnership_proposal.pdf"],
     }
-    
+
     result = analyze_email(email)
-    
+
     print(f"Subject: {result['subject']}")
     print(f"Priority: {result['priority']}")
     print(f"Usefulness Score: {result['usefulness_score']}")
-    
-    if result['opportunities']:
+
+    if result["opportunities"]:
         print(f"\nOpportunities Detected ({len(result['opportunities'])}):")
-        for opp in result['opportunities']:
+        for opp in result["opportunities"]:
             print(f"  - Type: {opp['type']}")
             print(f"    Subject: {opp['subject']}")
             print(f"    Potential: {opp['potential']}")
-    
+
     print(f"\nRecommendation: {result['recommendation']}")
     print()
 
@@ -239,7 +239,7 @@ def example_spam_detection():
     print("=" * 70)
     print("Example 5: Spam Detection")
     print("=" * 70)
-    
+
     emails = [
         {
             "id": "spam_001",
@@ -247,7 +247,7 @@ def example_spam_detection():
             "sender": "noreply@spam.com",
             "body": "Congratulations! You won! Click here! Act now! Limited time! Free money! Unsubscribe.",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": []
+            "attachments": [],
         },
         {
             "id": "legit_001",
@@ -255,14 +255,14 @@ def example_spam_detection():
             "sender": "manager@company.com",
             "body": "Hi team, let's meet tomorrow at 2pm to discuss the project status. Please confirm attendance.",
             "date": datetime.now(timezone.utc).isoformat(),
-            "attachments": []
-        }
+            "attachments": [],
+        },
     ]
-    
+
     for email in emails:
         result = analyze_email(email)
-        is_spam = 'spam' in result['categories']
-        
+        is_spam = "spam" in result["categories"]
+
         print(f"Subject: {result['subject']}")
         print(f"Categories: {', '.join(result['categories'])}")
         print(f"Is Spam: {is_spam}")
@@ -275,28 +275,28 @@ def example_export_analysis_report():
     print("=" * 70)
     print("Example 6: Export Analysis Report")
     print("=" * 70)
-    
+
     # Analyze some emails first
     emails = [
         {
             "subject": "Test email 1",
             "sender": "test1@example.com",
             "body": "This is a test email with some content.",
-            "date": datetime.now(timezone.utc).isoformat()
+            "date": datetime.now(timezone.utc).isoformat(),
         },
         {
             "subject": "Test email 2 - Urgent action needed",
             "sender": "test2@example.com",
             "body": "Please respond to this urgent request by tomorrow.",
-            "date": datetime.now(timezone.utc).isoformat()
-        }
+            "date": datetime.now(timezone.utc).isoformat(),
+        },
     ]
-    
+
     analyze_emails(emails)
-    
+
     # Export report
     report = email_analyzer.export_analysis_report("email_analysis_report.json")
-    
+
     print(f"Analysis report exported!")
     print(f"Total emails analyzed: {report['email_analyzer_report']['total_emails_analyzed']}")
     print(f"Report file: email_analysis_report.json")
@@ -310,14 +310,14 @@ def run_all_examples():
     print("Email Analyzer for Barrot-Agent - Demonstration")
     print("*" * 70)
     print("\n")
-    
+
     example_single_email_analysis()
     example_batch_email_analysis()
     example_learning_content_extraction()
     example_opportunity_detection()
     example_spam_detection()
     example_export_analysis_report()
-    
+
     print("*" * 70)
     print("All Examples Complete!")
     print("*" * 70)

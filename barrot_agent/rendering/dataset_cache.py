@@ -53,11 +53,11 @@ class CacheConfig:
 
     @property
     def gpu_bytes(self) -> int:
-        return int(self.gpu_memory_gb * 1024 ** 3)
+        return int(self.gpu_memory_gb * 1024**3)
 
     @property
     def cpu_bytes(self) -> int:
-        return int(self.cpu_memory_gb * 1024 ** 3)
+        return int(self.cpu_memory_gb * 1024**3)
 
 
 @dataclass
@@ -128,7 +128,9 @@ class DatasetCache:
         eviction_policy: str | EvictionPolicy = EvictionPolicy.LRU,
     ) -> "DatasetCache":
         """Configure cache tiers and policy (fluent interface)."""
-        policy = EvictionPolicy(eviction_policy) if isinstance(eviction_policy, str) else eviction_policy
+        policy = (
+            EvictionPolicy(eviction_policy) if isinstance(eviction_policy, str) else eviction_policy
+        )
         self._config = CacheConfig(
             gpu_memory_gb=gpu_memory_gb,
             cpu_memory_gb=cpu_memory_gb,

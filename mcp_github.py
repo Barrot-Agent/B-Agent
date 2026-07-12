@@ -51,6 +51,7 @@ _DEFAULT_BRANCH = "Main"
 # Data types
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class CommitResult:
     success: bool
@@ -79,6 +80,7 @@ class CommitRecord:
 # ---------------------------------------------------------------------------
 # Client
 # ---------------------------------------------------------------------------
+
 
 class GitHubMCP:
     """MCP client for GitHub auto-commit and CI/CD trigger operations."""
@@ -282,9 +284,7 @@ class GitHubMCP:
         repo_path = f"sindy_videos/ep{ep_str}_metadata.json"
         commit_msg = f"chore(sindy): add metadata for episode {episode_number} [skip ci]"
 
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".json", delete=False
-        ) as tmp:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as tmp:
             json.dump(metadata, tmp, indent=2)
             tmp_path = tmp.name
 

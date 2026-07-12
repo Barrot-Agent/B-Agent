@@ -7,7 +7,6 @@ from barrot_agent.core import BAgent
 from barrot_agent.models import ModelManager
 from barrot_agent.smart_agent import AgentEventType, SmartAgent
 
-
 st.set_page_config(page_title="B-Agent", page_icon="🦜", layout="wide")
 
 config = get_config()
@@ -30,11 +29,15 @@ with left:
 
     if st.button("Run SmartAgent", type="primary"):
         events = list(smart_agent.run(goal))
-        final = next((event for event in reversed(events) if event.type == AgentEventType.ANSWER), None)
+        final = next(
+            (event for event in reversed(events) if event.type == AgentEventType.ANSWER), None
+        )
         if final is not None:
             st.markdown(final.content)
         else:
-            error = next((event for event in reversed(events) if event.type == AgentEventType.ERROR), None)
+            error = next(
+                (event for event in reversed(events) if event.type == AgentEventType.ERROR), None
+            )
             st.error(error.content if error is not None else "No terminal event produced.")
 
 with right:

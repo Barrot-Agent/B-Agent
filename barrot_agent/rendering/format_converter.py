@@ -86,13 +86,23 @@ class FormatConverter:
 
     # Conversion capability matrix: (input_fmt, output_fmt) → complexity
     _COMPLEXITY: dict[tuple[str, str], int] = {
-        ("obj", "gltf"): 1, ("obj", "glb"): 1, ("obj", "usd"): 2,
-        ("fbx", "gltf"): 2, ("fbx", "glb"): 2, ("fbx", "obj"): 2,
-        ("gltf", "glb"): 1, ("gltf", "usd"): 2, ("gltf", "obj"): 1,
-        ("glb", "gltf"): 1, ("glb", "usd"): 2,
-        ("ply", "obj"): 1, ("ply", "gltf"): 2,
-        ("stl", "obj"): 1, ("stl", "gltf"): 2,
-        ("usd", "gltf"): 2, ("usd", "glb"): 2,
+        ("obj", "gltf"): 1,
+        ("obj", "glb"): 1,
+        ("obj", "usd"): 2,
+        ("fbx", "gltf"): 2,
+        ("fbx", "glb"): 2,
+        ("fbx", "obj"): 2,
+        ("gltf", "glb"): 1,
+        ("gltf", "usd"): 2,
+        ("gltf", "obj"): 1,
+        ("glb", "gltf"): 1,
+        ("glb", "usd"): 2,
+        ("ply", "obj"): 1,
+        ("ply", "gltf"): 2,
+        ("stl", "obj"): 1,
+        ("stl", "gltf"): 2,
+        ("usd", "gltf"): 2,
+        ("usd", "glb"): 2,
     }
 
     def __init__(self, output_dir: str = "/tmp/barrot_converted") -> None:
@@ -137,6 +147,7 @@ class FormatConverter:
             Optional decimation target triangle count.
         """
         import time
+
         t0 = time.perf_counter()
 
         out_fmt = Format3D(output_format) if isinstance(output_format, str) else output_format
@@ -152,7 +163,9 @@ class FormatConverter:
         texture_factor = 0.6 if compress_textures else 1.0
         output_size = int(input_size * texture_factor * (output_tris / max(input_tris, 1)))
 
-        elapsed_ms = (time.perf_counter() - t0) * 1000 + self._estimate_processing_ms(in_fmt, out_fmt)
+        elapsed_ms = (time.perf_counter() - t0) * 1000 + self._estimate_processing_ms(
+            in_fmt, out_fmt
+        )
 
         return ConversionResult(
             input_path=input_file,
@@ -193,10 +206,18 @@ class FormatConverter:
 
     def _detect_format(self, path: str) -> Format3D:
         ext_map = {
-            ".obj": Format3D.OBJ, ".gltf": Format3D.GLTF, ".glb": Format3D.GLB,
-            ".fbx": Format3D.FBX, ".ply": Format3D.PLY, ".stl": Format3D.STL,
-            ".usd": Format3D.USD, ".usda": Format3D.USDA, ".usdc": Format3D.USDC,
-            ".abc": Format3D.ABC, ".dae": Format3D.DAE, ".x3d": Format3D.X3D,
+            ".obj": Format3D.OBJ,
+            ".gltf": Format3D.GLTF,
+            ".glb": Format3D.GLB,
+            ".fbx": Format3D.FBX,
+            ".ply": Format3D.PLY,
+            ".stl": Format3D.STL,
+            ".usd": Format3D.USD,
+            ".usda": Format3D.USDA,
+            ".usdc": Format3D.USDC,
+            ".abc": Format3D.ABC,
+            ".dae": Format3D.DAE,
+            ".x3d": Format3D.X3D,
         }
         _, ext = os.path.splitext(path.lower())
         return ext_map.get(ext, Format3D.OBJ)

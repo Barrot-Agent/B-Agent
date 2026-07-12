@@ -37,9 +37,7 @@ class CapabilityAnalyzer:
         return [
             {
                 "category": self.category,
-                "title": (
-                    f"Capability opportunities in '{artefact.get('id', '?')}'"
-                ),
+                "title": (f"Capability opportunities in '{artefact.get('id', '?')}'"),
                 "description": (
                     f"Found {len(hits)} capability-expansion signal(s): "
                     f"{', '.join(hits[:5])}. "

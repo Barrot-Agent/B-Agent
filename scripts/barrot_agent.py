@@ -5,61 +5,80 @@ Triggered by an issue labeled 'barrot-task'. Reads the task, works in a
 branch, opens ONE pull request. Never pushes to main. The gated-merge
 workflow + your 'approved' label decide what lands.
 """
+
 import os, subprocess, json, urllib.request, urllib.error, sys
 
-REPO   = os.environ["REPO"]
-TASK   = os.environ.get("TASK_BODY", "")
-TITLE  = os.environ.get("TASK_TITLE", "Barrot task")
-ISSUE  = os.environ.get("ISSUE_NUMBER", "")
+REPO = os.environ["REPO"]
+TASK = os.environ.get("TASK_BODY", "")
+TITLE = os.environ.get("TASK_TITLE", "Barrot task")
+ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
-KEY    = os.environ.get("GROQ_API_KEY", "")
-MODEL  = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+KEY = os.environ.get("GROQ_API_KEY", "")
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+
 
 def run(cmd, check=True, quiet=False):
     print("+", cmd)
     r = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     if not quiet:
-        if r.stdout.strip(): print(r.stdout[:3000])
-        if r.stderr.strip(): print(r.stderr[:3000])
+        if r.stdout.strip():
+            print(r.stdout[:3000])
+        if r.stderr.strip():
+            print(r.stderr[:3000])
     if check and r.returncode != 0:
         sys.exit(f"command failed: {cmd}\n{r.stderr[:1000]}")
     return r.stdout
 
+
 NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
+
 
 def repo_inventory(max_files=400):
     files = run("git ls-files", check=False, quiet=True).splitlines()
     files = [f for f in files if not any(f.startswith(p) for p in NOISE_PREFIXES)]
     tree = []
     for f in files[:max_files]:
-        try: sz = os.path.getsize(f)
-        except OSError: sz = 0
+        try:
+            sz = os.path.getsize(f)
+        except OSError:
+            sz = 0
         tree.append(f"{f} ({sz}b)")
     extra = len(files) - max_files
     if extra > 0:
         tree.append(f"... ({extra} more files omitted)")
     return "\n".join(tree)
 
+
 def ask_brain(system, user):
-    body = json.dumps({
-        "model": MODEL,
-        "messages": [{"role":"system","content":system},{"role":"user","content":user}],
-        "max_tokens": 4096, "temperature": 0.2,
-    }).encode()
+    body = json.dumps(
+        {
+            "model": MODEL,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+            "max_tokens": 4096,
+            "temperature": 0.2,
+        }
+    ).encode()
     req = urllib.request.Request(
         "https://api.groq.com/openai/v1/chat/completions",
         data=body,
-        headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json",
-                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"})
+        headers={
+            "Authorization": f"Bearer {KEY}",
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+        },
+    )
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             return json.load(resp)["choices"][0]["message"]["content"]
     except urllib.error.HTTPError as e:
         body = ""
-        try: body = e.read().decode("utf-8", errors="replace")
-        except Exception: pass
+        try:
+            body = e.read().decode("utf-8", errors="replace")
+        except Exception:
+            pass
         print(f"[ask_brain] Groq HTTP {e.code}: {body[:600]}")
         sys.exit(f"Groq API error {e.code}: {body[:400]}")
+
 
 SYSTEM = """You are Barrot-Ω operating as an autonomous repository engineer on your own repo.
 You output ONLY a JSON array of shell commands (git mv, mkdir -p, rm, sed) that perform the
@@ -67,25 +86,29 @@ requested task. No prose, no markdown fences, no explanation. Each command must 
 scoped. Never use 'git add -A'. Never touch .git/. Never delete files under core/, hf_space/,
 web/, or scripts/emit_signal.py. Output format: ["cmd1","cmd2",...]"""
 
+
 def main():
     run("git config user.email 'barrot@barrot-agent.com'")
     run("git config user.name 'Barrot-Agent'")
     run(f"git checkout -b {BRANCH}")
 
     inv = repo_inventory()
-    prompt = f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}\n\nOutput the JSON command array."
+    prompt = (
+        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}\n\nOutput the JSON command array."
+    )
     raw = ask_brain(SYSTEM, prompt).strip()
 
     a, b = raw.find("["), raw.rfind("]")
     if a == -1 or b == -1:
         sys.exit(f"brain did not return a command array:\n{raw[:800]}")
-    blob = raw[a:b+1]
+    blob = raw[a : b + 1]
     try:
         cmds = json.loads(blob)
     except json.JSONDecodeError:
         import re
+
         # escape stray backslashes that aren't valid JSON escapes
-        fixed = re.sub(r'\\(?![\\/"bfnrtu])', r'\\\\', blob)
+        fixed = re.sub(r'\\(?![\\/"bfnrtu])', r"\\\\", blob)
         try:
             cmds = json.loads(fixed)
         except json.JSONDecodeError as e:
@@ -97,7 +120,8 @@ def main():
     for c in cmds:
         low = c.lower()
         if any(x in low for x in BANNED) or any(p in low for p in PROTECTED_DEL):
-            print("REJECTED unsafe command:", c); continue
+            print("REJECTED unsafe command:", c)
+            continue
         safe.append(c)
     if not safe:
         sys.exit("no safe commands produced")
@@ -111,13 +135,19 @@ def main():
         sys.exit("no changes produced")
 
     summary = "\\n".join(f"- {c}" for c in safe)
-    run('git commit -m "Barrot autonomous task: ' + TITLE.replace('"',"'") + '"')
+    run('git commit -m "Barrot autonomous task: ' + TITLE.replace('"', "'") + '"')
     run(f"git push origin {BRANCH}")
 
-    pr_body = (f"Autonomous execution of #{ISSUE} by Barrot.\\n\\nCommands run:\\n{summary}\\n\\n"
-               f"Review the diff; apply the approved label to merge protected or large changes.")
-    run(f'gh pr create --repo {REPO} --title "Barrot: {TITLE}" --body "{pr_body}" --head {BRANCH} --base main', check=False)
+    pr_body = (
+        f"Autonomous execution of #{ISSUE} by Barrot.\\n\\nCommands run:\\n{summary}\\n\\n"
+        f"Review the diff; apply the approved label to merge protected or large changes."
+    )
+    run(
+        f'gh pr create --repo {REPO} --title "Barrot: {TITLE}" --body "{pr_body}" --head {BRANCH} --base main',
+        check=False,
+    )
     print("DONE — PR opened, awaiting gate + review.")
+
 
 if __name__ == "__main__":
     main()

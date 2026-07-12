@@ -36,6 +36,7 @@ from typing import Optional
 # ── HRM hierarchical resolver (ships alongside app.py on the Space) ──
 try:
     from hrm_ternary import hrm_resolve
+
     HRM_AVAILABLE = True
 except ImportError:
     HRM_AVAILABLE = False
@@ -43,14 +44,15 @@ except ImportError:
 # ══════════════════════════════════════════════════════════════════
 # CONSTANTS
 # ══════════════════════════════════════════════════════════════════
-ANCHOR          = 0.707106781186548
-GITHUB_API      = "https://api.github.com"
-GITHUB_MODEL = "google/gemma-3-12b-it"          # swap to Meta-Llama-3.1-70B-Instruct etc.
-MODELS_ENDPOINT = "https://models.inference.ai.azure.com"   # GitHub Models endpoint
+ANCHOR = 0.707106781186548
+GITHUB_API = "https://api.github.com"
+GITHUB_MODEL = "google/gemma-3-12b-it"  # swap to Meta-Llama-3.1-70B-Instruct etc.
+MODELS_ENDPOINT = "https://models.inference.ai.azure.com"  # GitHub Models endpoint
 
 # Auto defaults (no manual setup required)
 os.environ.setdefault("GITHUB_MODEL", "google/gemma-3-12b-it")
 os.environ.setdefault("MODEL_PROVIDER", "github")
+
 
 # ══════════════════════════════════════════════════════════════════
 # GITHUB APP AUTH — JWT → Installation Token
@@ -60,20 +62,17 @@ class GitHubAppAuth:
     Generates a short-lived installation token from GitHub App credentials.
     This is what lets Barrot act as himself, not as your personal account.
     """
+
     def __init__(self):
-        self.app_id          = os.getenv("GITHUB_APP_ID", "")
-        self.private_key     = os.getenv("GITHUB_APP_PRIVATE_KEY", "").replace("\\n", "\n")
+        self.app_id = os.getenv("GITHUB_APP_ID", "")
+        self.private_key = os.getenv("GITHUB_APP_PRIVATE_KEY", "").replace("\\n", "\n")
         self.installation_id = os.getenv("GITHUB_INSTALLATION_ID", "")
-        self._token          = None
-        self._token_expires  = 0
+        self._token = None
+        self._token_expires = 0
 
     def _generate_jwt(self) -> str:
         now = int(time.time())
-        payload = {
-            "iat": now - 60,
-            "exp": now + 540,   # 9 min (max 10)
-            "iss": self.app_id
-        }
+        payload = {"iat": now - 60, "exp": now + 540, "iss": self.app_id}  # 9 min (max 10)
         return jwt.encode(payload, self.private_key, algorithm="RS256")
 
     def get_installation_token(self) -> str:
@@ -84,18 +83,16 @@ class GitHubAppAuth:
         j = self._generate_jwt()
         r = requests.post(
             f"{GITHUB_API}/app/installations/{self.installation_id}/access_tokens",
-            headers={
-                "Authorization": f"Bearer {j}",
-                "Accept": "application/vnd.github+json"
-            },
-            timeout=10
+            headers={"Authorization": f"Bearer {j}", "Accept": "application/vnd.github+json"},
+            timeout=10,
         )
         data = r.json()
-        self._token         = data.get("token", "")
-        expires_at          = data.get("expires_at", "")
+        self._token = data.get("token", "")
+        expires_at = data.get("expires_at", "")
         # parse expiry
         try:
             from datetime import timezone
+
             dt = datetime.datetime.fromisoformat(expires_at.replace("Z", "+00:00"))
             self._token_expires = dt.timestamp()
         except:
@@ -111,25 +108,29 @@ class GitHubAppAuth:
 # LIVE READ TOOLS — grounded truth for the chat brain
 # ══════════════════════════════════════════════════════════════════
 RAW_BASE = "https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main"
-GH_REPO  = "https://api.github.com/repos/Barrot-Agent/B-Agent"
+GH_REPO = "https://api.github.com/repos/Barrot-Agent/B-Agent"
+
 
 def tool_latest_signal(args):
     r = requests.get(f"{RAW_BASE}/web/latest_signal.json", timeout=10)
     return r.text[:2000]
+
 
 def tool_ledger_tail(args):
     n = max(1, min(int(args.get("n", 5)), 20))
     r = requests.get(f"{RAW_BASE}/data/signal_ledger.jsonl", timeout=10)
     return "\n".join(r.text.strip().splitlines()[-n:])[:4000]
 
+
 def tool_open_prs(args):
-    r = requests.get(f"{GH_REPO}/pulls?state=open&per_page=100", timeout=10,
-                     headers=_gh_headers())
+    r = requests.get(f"{GH_REPO}/pulls?state=open&per_page=100", timeout=10, headers=_gh_headers())
     prs = r.json()
     if not isinstance(prs, list):
         return json.dumps(prs)[:500]
-    return "\n".join([f"open_pr_count={len(prs)}"] +
-                      [f"#{p['number']} {p['title'][:60]}" for p in prs[:15]])
+    return "\n".join(
+        [f"open_pr_count={len(prs)}"] + [f"#{p['number']} {p['title'][:60]}" for p in prs[:15]]
+    )
+
 
 def tool_recent_commits(args):
     n = max(1, min(int(args.get("n", 5)), 15))
@@ -139,20 +140,57 @@ def tool_recent_commits(args):
         return json.dumps(c)[:500]
     return "\n".join(f"{x['sha'][:7]} {x['commit']['message'].splitlines()[0][:70]}" for x in c)
 
+
 TOOL_FUNCS = {
-    "get_latest_signal":      tool_latest_signal,
-    "get_ledger_tail":        tool_ledger_tail,
+    "get_latest_signal": tool_latest_signal,
+    "get_ledger_tail": tool_ledger_tail,
     "get_open_pull_requests": tool_open_prs,
-    "get_recent_commits":     tool_recent_commits,
-    "get_xrp_price":          lambda a: f"XRP/USD = {get_xrp_price()}",
+    "get_recent_commits": tool_recent_commits,
+    "get_xrp_price": lambda a: f"XRP/USD = {get_xrp_price()}",
 }
 TOOLS_SPEC = [
-    {"type": "function", "function": {"name": "get_latest_signal", "description": "Current live ternary XRP signal with confidence score from the public endpoint.", "parameters": {"type": "object", "properties": {}}}},
-    {"type": "function", "function": {"name": "get_ledger_tail", "description": "Last n entries of the git-timestamped public signal ledger.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
-    {"type": "function", "function": {"name": "get_open_pull_requests", "description": "REAL count and titles of open pull requests on Barrot-Agent/B-Agent. Always use this for PR questions.", "parameters": {"type": "object", "properties": {}}}},
-    {"type": "function", "function": {"name": "get_recent_commits", "description": "Most recent commits on the B-Agent repository.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
-    {"type": "function", "function": {"name": "get_xrp_price", "description": "Live XRP/USD price.", "parameters": {"type": "object", "properties": {}}}},
+    {
+        "type": "function",
+        "function": {
+            "name": "get_latest_signal",
+            "description": "Current live ternary XRP signal with confidence score from the public endpoint.",
+            "parameters": {"type": "object", "properties": {}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_ledger_tail",
+            "description": "Last n entries of the git-timestamped public signal ledger.",
+            "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_open_pull_requests",
+            "description": "REAL count and titles of open pull requests on Barrot-Agent/B-Agent. Always use this for PR questions.",
+            "parameters": {"type": "object", "properties": {}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_recent_commits",
+            "description": "Most recent commits on the B-Agent repository.",
+            "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_xrp_price",
+            "description": "Live XRP/USD price.",
+            "parameters": {"type": "object", "properties": {}},
+        },
+    },
 ]
+
 
 # ══════════════════════════════════════════════════════════════════
 # BRAIN PROVIDERS — configure with env vars, never edit code
@@ -165,6 +203,7 @@ def _gh_headers():
     if tok:
         h["Authorization"] = f"Bearer {tok}"
     return h
+
 
 PROVIDERS = {
     "groq": {
@@ -187,10 +226,12 @@ PROVIDERS = {
     },
 }
 
+
 def _brain_order():
     primary = os.getenv("BRAIN_PRIMARY", "groq").strip().lower()
     order = [primary] + [k for k in ("groq", "github", "gemini") if k != primary]
     return [k for k in order if k in PROVIDERS]
+
 
 def barrot_tool_chat(provider, messages, max_rounds=3):
     """Tool loop. Final round drops tools so the model MUST answer in text."""
@@ -207,10 +248,12 @@ def barrot_tool_chat(provider, messages, max_rounds=3):
         if cfg["tools"] and rnd < max_rounds - 1:
             payload["tools"] = TOOLS_SPEC
             payload["tool_choice"] = "auto"
-        r = requests.post(cfg["url"],
-                          headers={"Authorization": f"Bearer {key}",
-                                   "Content-Type": "application/json"},
-                          json=payload, timeout=30)
+        r = requests.post(
+            cfg["url"],
+            headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+            json=payload,
+            timeout=30,
+        )
         try:
             data = r.json()
         except Exception:
@@ -239,7 +282,6 @@ def barrot_tool_chat(provider, messages, max_rounds=3):
             msgs.append({"role": "tool", "tool_call_id": c["id"], "content": str(result)[:4000]})
 
     return "[BARROT] Tool data (no summary formed):\n" + "\n".join(gathered[-3:])
-
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -292,7 +334,7 @@ HARD LIMITS (never violate):
   the Orchestrator: real capabilities need no embellishment."""
 
     def __init__(self, auth: GitHubAppAuth):
-        self.auth  = auth
+        self.auth = auth
         self.groq_key = os.getenv("GROQ_API_KEY", "")
 
     def _post_chat(self, url, headers, payload, timeout, tag):
@@ -311,8 +353,10 @@ HARD LIMITS (never violate):
 
     def _call_github_models(self, messages: list, model: str = None) -> str:
         return barrot_tool_chat("github", messages)
+
     def _call_groq_fallback(self, messages: list) -> str:
         return barrot_tool_chat("groq", messages)
+
     def think(self, user_message: str, history: list = None) -> str:
         """Inference across providers in BRAIN_PRIMARY order. Tools included."""
         messages = [{"role": "system", "content": self.SYSTEM_PROMPT}]
@@ -328,66 +372,97 @@ HARD LIMITS (never violate):
                 errors.append(f"{provider}: {e}")
         return "[BARROT] All brain tiers failed -> " + " | ".join(errors)
 
+
 # ══════════════════════════════════════════════════════════════════
 # XRP SIGNAL ENGINE (from bridge v1.0)
 # ══════════════════════════════════════════════════════════════════
 class Ternary:
-    SELL = -1; NULL = 0; BUY = 1
+    SELL = -1
+    NULL = 0
+    BUY = 1
+
     @staticmethod
-    def resolve(*s): v=sum(s); n=len(s) or 1; return 1 if v>ANCHOR*n else (-1 if v<-ANCHOR*n else 0)
+    def resolve(*s):
+        v = sum(s)
+        n = len(s) or 1
+        return 1 if v > ANCHOR * n else (-1 if v < -ANCHOR * n else 0)
+
     @staticmethod
-    def label(t): return {1:"BUY",0:"NULL",-1:"SELL"}[t]
+    def label(t):
+        return {1: "BUY", 0: "NULL", -1: "SELL"}[t]
+
     @staticmethod
-    def color(t): return {1:"🟢",0:"🟡",-1:"🔴"}[t]
+    def color(t):
+        return {1: "🟢", 0: "🟡", -1: "🔴"}[t]
+
 
 def get_orderbook_signal():
     try:
-        r = requests.get("https://api.kraken.com/0/public/Depth",
-                         params={"pair":"XRPUSD","count":20}, timeout=6)
+        r = requests.get(
+            "https://api.kraken.com/0/public/Depth",
+            params={"pair": "XRPUSD", "count": 20},
+            timeout=6,
+        )
         j = r.json()
-        book = {} if j.get("error") else next(iter(j.get("result",{}).values()), {})
-        bid  = sum(float(b[1]) for b in book.get("bids",[]))
-        ask  = sum(float(a[1]) for a in book.get("asks",[]))
-        tot  = bid + ask or 1
-        imb  = (bid - ask) / tot
-        sig  = 1 if imb > ANCHOR*0.1 else (-1 if imb < -ANCHOR*0.1 else 0)
-        return sig, round(imb, 4), round(bid,2), round(ask,2)
+        book = {} if j.get("error") else next(iter(j.get("result", {}).values()), {})
+        bid = sum(float(b[1]) for b in book.get("bids", []))
+        ask = sum(float(a[1]) for a in book.get("asks", []))
+        tot = bid + ask or 1
+        imb = (bid - ask) / tot
+        sig = 1 if imb > ANCHOR * 0.1 else (-1 if imb < -ANCHOR * 0.1 else 0)
+        return sig, round(imb, 4), round(bid, 2), round(ask, 2)
     except Exception as e:
         return 0, 0.0, 0.0, 0.0
 
+
 def get_xrp_price():
     try:
-        r = requests.get("https://api.coingecko.com/api/v3/simple/price",
-                         params={"ids":"ripple","vs_currencies":"usd"}, timeout=6)
-        return float(r.json().get("ripple",{}).get("usd", 0))
+        r = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price",
+            params={"ids": "ripple", "vs_currencies": "usd"},
+            timeout=6,
+        )
+        return float(r.json().get("ripple", {}).get("usd", 0))
     except:
         return 0.0
 
+
 def get_sentiment_signal():
-    groq_key = os.getenv("GROQ_API_KEY","")
+    groq_key = os.getenv("GROQ_API_KEY", "")
     if not groq_key:
         return 0, 0.0, "No GROQ key"
     try:
-        r = requests.get("https://cryptonews.com/news/xrp-news/feed/", timeout=6,
-                         headers={"User-Agent":"BarrotOmega/1.0"})
+        r = requests.get(
+            "https://cryptonews.com/news/xrp-news/feed/",
+            timeout=6,
+            headers={"User-Agent": "BarrotOmega/1.0"},
+        )
         import re
+
         titles = re.findall(r"<title><!\[CDATA\[(.*?)\]\]></title>", r.text)[:5]
         if not titles:
             return 0, 0.0, "No headlines"
-        prompt = ('Return ONLY JSON {"score":<-1.0 to 1.0>,"reasoning":"<one sentence>"}. '
-                  'Headlines:\n' + "\n".join(f"- {t}" for t in titles))
-        resp = requests.post("https://api.groq.com/openai/v1/chat/completions",
-                             headers={"Authorization":f"Bearer {groq_key}","Content-Type":"application/json"},
-                             json={"model":"llama-3.3-70b-versatile",
-                                   "messages":[{"role":"user","content":prompt}],
-                                   "temperature":0.1}, timeout=10)
+        prompt = (
+            'Return ONLY JSON {"score":<-1.0 to 1.0>,"reasoning":"<one sentence>"}. '
+            "Headlines:\n" + "\n".join(f"- {t}" for t in titles)
+        )
+        resp = requests.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
+            json={
+                "model": "llama-3.3-70b-versatile",
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.1,
+            },
+            timeout=10,
+        )
         data = resp.json()
         print("=== SENTIMENT GROQ RAW ===", json.dumps(data, indent=2))
         parsed = json.loads(data["choices"][0]["message"]["content"].strip())
-        score  = float(parsed.get("score",0))
-        apex   = score * ANCHOR
-        sig    = 1 if apex > 0.2 else (-1 if apex < -0.2 else 0)
-        return sig, round(apex,4), parsed.get("reasoning","")
+        score = float(parsed.get("score", 0))
+        apex = score * ANCHOR
+        sig = 1 if apex > 0.2 else (-1 if apex < -0.2 else 0)
+        return sig, round(apex, 4), parsed.get("reasoning", "")
     except Exception as e:
         return 0, 0.0, str(e)
 
@@ -396,20 +471,23 @@ def get_sentiment_signal():
 # DELTA LAKE — signal history fetch
 # ══════════════════════════════════════════════════════════════════
 def fetch_signal_history(limit: int = 20) -> list[dict]:
-    token = os.getenv("DATABRICKS_TOKEN","")
-    host  = os.getenv("DATABRICKS_HOST","dbc-82d64fee-1c2e.cloud.databricks.com")
-    wh_id = os.getenv("DATABRICKS_WAREHOUSE_ID","c85b8f4fea8cd527")
+    token = os.getenv("DATABRICKS_TOKEN", "")
+    host = os.getenv("DATABRICKS_HOST", "dbc-82d64fee-1c2e.cloud.databricks.com")
+    wh_id = os.getenv("DATABRICKS_WAREHOUSE_ID", "c85b8f4fea8cd527")
     if not token:
         return []
     sql = f"SELECT timestamp, mrp_label, ob_signal, oc_signal, sent_signal FROM barrot_omega.xrp_liquidity_signals ORDER BY timestamp DESC LIMIT {limit}"
     try:
-        r = requests.post(f"https://{host}/api/2.0/sql/statements",
-                          headers={"Authorization":f"Bearer {token}","Content-Type":"application/json"},
-                          json={"statement":sql,"warehouse_id":wh_id,"wait_timeout":"10s"}, timeout=15)
+        r = requests.post(
+            f"https://{host}/api/2.0/sql/statements",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json={"statement": sql, "warehouse_id": wh_id, "wait_timeout": "10s"},
+            timeout=15,
+        )
         result = r.json()
-        cols   = [c["name"] for c in result.get("manifest",{}).get("schema",{}).get("columns",[])]
-        rows   = result.get("result",{}).get("data_array",[])
-        return [dict(zip(cols,row)) for row in rows]
+        cols = [c["name"] for c in result.get("manifest", {}).get("schema", {}).get("columns", [])]
+        rows = result.get("result", {}).get("data_array", [])
+        return [dict(zip(cols, row)) for row in rows]
     except:
         return []
 
@@ -422,11 +500,12 @@ def main():
         page_title="BARROT-Ω Sovereign Command",
         page_icon="⚡",
         layout="wide",
-        initial_sidebar_state="collapsed"
+        initial_sidebar_state="collapsed",
     )
 
     # ── CSS ──────────────────────────────────────────────────────
-    st.markdown("""
+    st.markdown(
+        """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700&display=swap');
     html, body, [class*="css"] { background: #0a0a0f; color: #e0e0e0; font-family: 'Share Tech Mono', monospace; }
@@ -443,90 +522,116 @@ def main():
     .chat-barrot { background: #0a1a0a; border-left: 3px solid #00ff88; padding: 10px; margin: 8px 0; border-radius: 4px; }
     .anchor-badge { color: #00ffcc88; font-size: 0.8em; }
     </style>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     # ── Header ───────────────────────────────────────────────────
-    st.markdown("""
+    st.markdown(
+        """
     <div style='text-align:center; padding: 20px 0 10px 0;'>
         <h1 style='font-size:2.2em; margin:0;'>⚡ BARROT-Ω</h1>
         <p style='color:#00ffcc88; margin:4px 0;'>SOVEREIGN COMMAND INTERFACE · v7.0</p>
         <p class='anchor-badge'>Stability Anchor: 0.707 · Ternary Logic {-1, 0, +1} · GitHub App Brain</p>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     # ── Init session state ────────────────────────────────────────
     if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []   # list of {role, content}
+        st.session_state.chat_history = []  # list of {role, content}
     if "auth" not in st.session_state:
-        st.session_state.auth  = GitHubAppAuth()
+        st.session_state.auth = GitHubAppAuth()
         st.session_state.brain = BarrotBrain(st.session_state.auth)
 
-    auth  = st.session_state.auth
+    auth = st.session_state.auth
     brain = st.session_state.brain
 
     # ── Tabs ─────────────────────────────────────────────────────
-    tab1, tab2, tab3, tab4, tab5 = st.tabs([
-        "💬 Chat", "📡 XRP Signals", "🧠 Brain", "🔌 API", "📊 Analytics"
-    ])
-
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(
+        ["💬 Chat", "📡 XRP Signals", "🧠 Brain", "🔌 API", "📊 Analytics"]
+    )
 
     # ════════════════════════════════════════════════════════════
     # TAB 1 — LIVE CHAT
     # ════════════════════════════════════════════════════════════
     with tab1:
         st.markdown("### 💬 Speak to Barrot")
-        backend = "GitHub Models ✅" if auth.ready else ("Groq Fallback ⚡" if (os.getenv("GROQ_API_KEY","").strip()) else "Auto-waiting for credentials ⏳")
+        backend = (
+            "GitHub Models ✅"
+            if auth.ready
+            else (
+                "Groq Fallback ⚡"
+                if (os.getenv("GROQ_API_KEY", "").strip())
+                else "Auto-waiting for credentials ⏳"
+            )
+        )
         st.caption(f"Brain backend: {backend}")
 
         # Render history
         for msg in st.session_state.chat_history:
             if msg["role"] == "user":
-                st.markdown(f"<div class='chat-user'>🧠 <b>ORCHESTRATOR</b><br>{msg['content']}</div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<div class='chat-user'>🧠 <b>ORCHESTRATOR</b><br>{msg['content']}</div>",
+                    unsafe_allow_html=True,
+                )
             else:
-                st.markdown(f"<div class='chat-barrot'>⚡ <b>BARROT-Ω</b><br>{msg['content']}</div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<div class='chat-barrot'>⚡ <b>BARROT-Ω</b><br>{msg['content']}</div>",
+                    unsafe_allow_html=True,
+                )
 
         # Input
-        col1, col2 = st.columns([5,1])
+        col1, col2 = st.columns([5, 1])
         with col1:
-            user_input = st.text_input("Message", placeholder="Speak to Barrot...", key="chat_input", label_visibility="collapsed")
+            user_input = st.text_input(
+                "Message",
+                placeholder="Speak to Barrot...",
+                key="chat_input",
+                label_visibility="collapsed",
+            )
         with col2:
             send = st.button("SEND ⚡")
 
         if send and user_input.strip():
-            st.session_state.chat_history.append({"role":"user","content":user_input})
+            st.session_state.chat_history.append({"role": "user", "content": user_input})
             with st.spinner("Barrot thinking..."):
                 # Pass history minus last user message
                 history_ctx = st.session_state.chat_history[:-1]
-                response    = brain.think(user_input, history_ctx)
-            st.session_state.chat_history.append({"role":"assistant","content":response})
+                response = brain.think(user_input, history_ctx)
+            st.session_state.chat_history.append({"role": "assistant", "content": response})
             st.rerun()
 
         if st.button("🗑️ Clear Chat"):
             st.session_state.chat_history = []
             st.rerun()
 
-
     # ════════════════════════════════════════════════════════════
     # TAB 2 — XRP SIGNALS
     # ════════════════════════════════════════════════════════════
     with tab2:
         st.markdown("### 📡 XRP Liquidity Signal Dashboard")
-        st.caption("MRP: Multi-Synchronous Relativistic Perception · Apex-12 Filter · Ternary Collapse")
+        st.caption(
+            "MRP: Multi-Synchronous Relativistic Perception · Apex-12 Filter · Ternary Collapse"
+        )
 
         if st.button("⚡ RUN MRP PERCEPTION"):
             with st.spinner("Running MRP perception cycle..."):
-                price           = get_xrp_price()
+                price = get_xrp_price()
                 ob_sig, imb, bid, ask = get_orderbook_signal()
                 sent_sig, apex, reasoning = get_sentiment_signal()
-                oc_sig          = 0   # onchain requires async; show as neutral
+                oc_sig = 0  # onchain requires async; show as neutral
                 if HRM_AVAILABLE:
-                    hrm      = hrm_resolve({"orderbook": ob_sig, "onchain": oc_sig, "sentiment": sent_sig})
-                    mrp      = hrm.state
-                    conf     = hrm.confidence
+                    hrm = hrm_resolve(
+                        {"orderbook": ob_sig, "onchain": oc_sig, "sentiment": sent_sig}
+                    )
+                    mrp = hrm.state
+                    conf = hrm.confidence
                     absolved = hrm.absolution_fired
                 else:
-                    mrp      = Ternary.resolve(ob_sig, oc_sig, sent_sig)
-                    conf     = None
+                    mrp = Ternary.resolve(ob_sig, oc_sig, sent_sig)
+                    conf = None
                     absolved = False
                     if ob_sig == oc_sig == sent_sig == Ternary.SELL:
                         mrp, absolved = Ternary.NULL, True
@@ -534,39 +639,63 @@ def main():
             # Display
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.markdown(f"<div class='metric-card'><div style='color:#00ffcc88'>XRP PRICE</div><div style='font-size:1.8em;color:#00ffcc'>${price:.4f}</div></div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>XRP PRICE</div><div style='font-size:1.8em;color:#00ffcc'>${price:.4f}</div></div>",
+                    unsafe_allow_html=True,
+                )
             with col2:
-                lbl = Ternary.label(ob_sig); ico = Ternary.color(ob_sig)
-                st.markdown(f"<div class='metric-card'><div style='color:#00ffcc88'>ORDER BOOK</div><div class='signal-{'buy' if ob_sig==1 else 'sell' if ob_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>imbal={imb}</div></div>", unsafe_allow_html=True)
+                lbl = Ternary.label(ob_sig)
+                ico = Ternary.color(ob_sig)
+                st.markdown(
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>ORDER BOOK</div><div class='signal-{'buy' if ob_sig==1 else 'sell' if ob_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>imbal={imb}</div></div>",
+                    unsafe_allow_html=True,
+                )
             with col3:
-                lbl = Ternary.label(sent_sig); ico = Ternary.color(sent_sig)
-                st.markdown(f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>apex12={apex}</div></div>", unsafe_allow_html=True)
+                lbl = Ternary.label(sent_sig)
+                ico = Ternary.color(sent_sig)
+                st.markdown(
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>apex12={apex}</div></div>",
+                    unsafe_allow_html=True,
+                )
             with col4:
-                lbl = Ternary.label(mrp); ico = Ternary.color(mrp)
-                st.markdown(f"<div class='metric-card'><div style='color:#00ffcc88'>MRP OUTPUT</div><div class='signal-{'buy' if mrp==1 else 'sell' if mrp==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>", unsafe_allow_html=True)
+                lbl = Ternary.label(mrp)
+                ico = Ternary.color(mrp)
+                st.markdown(
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>MRP OUTPUT</div><div class='signal-{'buy' if mrp==1 else 'sell' if mrp==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>",
+                    unsafe_allow_html=True,
+                )
 
             if absolved:
                 st.warning("⚡ SOVEREIGN ABSOLUTION ENGAGED — Unanimous SELL overridden to NULL")
             if reasoning:
                 st.caption(f"Sentiment reasoning: {reasoning}")
 
-            st.caption(f"Perception timestamp: {datetime.datetime.utcnow().isoformat()}Z · Anchor: {ANCHOR}")
-
+            st.caption(
+                f"Perception timestamp: {datetime.datetime.utcnow().isoformat()}Z · Anchor: {ANCHOR}"
+            )
 
     # ════════════════════════════════════════════════════════════
     # TAB 3 — BRAIN QUERY
     # ════════════════════════════════════════════════════════════
     with tab3:
         st.markdown("### 🧠 Barrot Brain Query")
-        st.caption("Direct query to Barrot's knowledge base. No chat history — pure knowledge retrieval.")
+        st.caption(
+            "Direct query to Barrot's knowledge base. No chat history — pure knowledge retrieval."
+        )
 
-        query = st.text_area("Query the brain:", placeholder="What is the current state of the XRP bridge? Explain RIAP. Describe the ternary logic model.", height=100)
+        query = st.text_area(
+            "Query the brain:",
+            placeholder="What is the current state of the XRP bridge? Explain RIAP. Describe the ternary logic model.",
+            height=100,
+        )
         if st.button("🧠 QUERY BRAIN"):
             if query.strip():
                 with st.spinner("Querying brain..."):
                     result = brain.think(f"[BRAIN QUERY — no chat context, pure knowledge] {query}")
-                st.markdown(f"<div class='chat-barrot'>⚡ <b>BARROT-Ω</b><br>{result}</div>", unsafe_allow_html=True)
-
+                st.markdown(
+                    f"<div class='chat-barrot'>⚡ <b>BARROT-Ω</b><br>{result}</div>",
+                    unsafe_allow_html=True,
+                )
 
     # ════════════════════════════════════════════════════════════
     # TAB 4 — API DOCS + TESTER
@@ -626,8 +755,13 @@ curl https://scribedpengenius-barrot-omega.hf.space/signal
         if st.button("🔌 TEST API CALL"):
             with st.spinner("Calling brain..."):
                 resp = brain.think(test_msg)
-            st.json({"response": resp, "anchor": ANCHOR, "session_id": hashlib.md5(str(time.time()).encode()).hexdigest()[:8]})
-
+            st.json(
+                {
+                    "response": resp,
+                    "anchor": ANCHOR,
+                    "session_id": hashlib.md5(str(time.time()).encode()).hexdigest()[:8],
+                }
+            )
 
     # ════════════════════════════════════════════════════════════
     # TAB 5 — ANALYTICS
@@ -642,15 +776,17 @@ curl https://scribedpengenius-barrot-omega.hf.space/signal
 
             if rows:
                 st.dataframe(rows, use_container_width=True)
-                buys  = sum(1 for r in rows if r.get("mrp_label") == "BUY")
+                buys = sum(1 for r in rows if r.get("mrp_label") == "BUY")
                 sells = sum(1 for r in rows if r.get("mrp_label") == "SELL")
                 nulls = sum(1 for r in rows if r.get("mrp_label") == "NULL")
-                c1,c2,c3 = st.columns(3)
-                c1.metric("🟢 BUY",  buys)
+                c1, c2, c3 = st.columns(3)
+                c1.metric("🟢 BUY", buys)
                 c2.metric("🔴 SELL", sells)
                 c3.metric("🟡 NULL", nulls)
             else:
-                st.info("No signal history yet — run a perception cycle from the XRP tab first, or check your Databricks token.")
+                st.info(
+                    "No signal history yet — run a perception cycle from the XRP tab first, or check your Databricks token."
+                )
 
 
 if __name__ == "__main__":

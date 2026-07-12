@@ -8,9 +8,9 @@ from typing import Any
 
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from assembly_guide_generator import PARTS_LIST
-
 
 PRINT_COSTS_PER_KG_USD: dict[str, float] = {
     "CF-PLA": 45.0,
@@ -71,5 +71,6 @@ def calculate_total_cost(
 
 if __name__ == "__main__":
     import json
+
     result = calculate_total_cost()
     print(json.dumps(result, indent=2))

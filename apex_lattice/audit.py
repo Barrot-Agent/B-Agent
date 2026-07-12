@@ -29,13 +29,12 @@ class AuditTrail:
 
         if base_dir is not None:
             self.cycle_id = str(cycle_id_or_log_dir or f"cycle_{now_stamp}")
-            log_dir = (base_dir / _DEFAULT_LOG_DIR)
+            log_dir = base_dir / _DEFAULT_LOG_DIR
             log_filename = f"{now_stamp}_{self.cycle_id}_audit.log"
         elif isinstance(cycle_id_or_log_dir, Path):
             log_dir = cycle_id_or_log_dir
-        elif (
-            isinstance(cycle_id_or_log_dir, str)
-            and (os.sep in cycle_id_or_log_dir or "/" in cycle_id_or_log_dir)
+        elif isinstance(cycle_id_or_log_dir, str) and (
+            os.sep in cycle_id_or_log_dir or "/" in cycle_id_or_log_dir
         ):
             log_dir = Path(cycle_id_or_log_dir)
         elif isinstance(cycle_id_or_log_dir, str) and cycle_id_or_log_dir:

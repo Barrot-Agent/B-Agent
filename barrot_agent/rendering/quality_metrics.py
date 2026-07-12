@@ -43,19 +43,23 @@ class GeometryReport:
     def issues(self) -> list[ValidationIssue]:
         result = []
         if self.degenerate_triangles > 0:
-            result.append(ValidationIssue(
-                code="GEO_001",
-                severity=Severity.WARNING,
-                message=f"{self.degenerate_triangles} degenerate triangles detected",
-                suggestion="Run mesh cleanup to remove zero-area faces",
-            ))
+            result.append(
+                ValidationIssue(
+                    code="GEO_001",
+                    severity=Severity.WARNING,
+                    message=f"{self.degenerate_triangles} degenerate triangles detected",
+                    suggestion="Run mesh cleanup to remove zero-area faces",
+                )
+            )
         if self.non_manifold_edges > 0:
-            result.append(ValidationIssue(
-                code="GEO_002",
-                severity=Severity.ERROR,
-                message=f"{self.non_manifold_edges} non-manifold edges",
-                suggestion="Repair manifold topology before export",
-            ))
+            result.append(
+                ValidationIssue(
+                    code="GEO_002",
+                    severity=Severity.ERROR,
+                    message=f"{self.non_manifold_edges} non-manifold edges",
+                    suggestion="Repair manifold topology before export",
+                )
+            )
         return result
 
 
@@ -73,12 +77,14 @@ class TextureReport:
     def issues(self) -> list[ValidationIssue]:
         result = []
         if self.mip_levels == 0:
-            result.append(ValidationIssue(
-                code="TEX_001",
-                severity=Severity.WARNING,
-                message="No mip-maps generated",
-                suggestion="Generate full mip chain to improve real-time performance",
-            ))
+            result.append(
+                ValidationIssue(
+                    code="TEX_001",
+                    severity=Severity.WARNING,
+                    message="No mip-maps generated",
+                    suggestion="Generate full mip chain to improve real-time performance",
+                )
+            )
         return result
 
 
@@ -96,12 +102,14 @@ class MaterialReport:
     def issues(self) -> list[ValidationIssue]:
         result = []
         if not self.is_pbr:
-            result.append(ValidationIssue(
-                code="MAT_001",
-                severity=Severity.WARNING,
-                message="Non-PBR material detected",
-                suggestion="Convert to metallic-roughness PBR workflow",
-            ))
+            result.append(
+                ValidationIssue(
+                    code="MAT_001",
+                    severity=Severity.WARNING,
+                    message="Non-PBR material detected",
+                    suggestion="Convert to metallic-roughness PBR workflow",
+                )
+            )
         return result
 
 
@@ -120,22 +128,26 @@ class PerformanceReport:
     def issues(self) -> list[ValidationIssue]:
         result = []
         if self.estimated_fps_60hz < self.target_fps:
-            result.append(ValidationIssue(
-                code="PERF_001",
-                severity=Severity.WARNING,
-                message=(
-                    f"Estimated {self.estimated_fps_60hz:.0f} FPS below "
-                    f"target {self.target_fps:.0f} FPS"
-                ),
-                suggestion="Reduce triangle count or apply LOD",
-            ))
+            result.append(
+                ValidationIssue(
+                    code="PERF_001",
+                    severity=Severity.WARNING,
+                    message=(
+                        f"Estimated {self.estimated_fps_60hz:.0f} FPS below "
+                        f"target {self.target_fps:.0f} FPS"
+                    ),
+                    suggestion="Reduce triangle count or apply LOD",
+                )
+            )
         if self.draw_calls > 100:
-            result.append(ValidationIssue(
-                code="PERF_002",
-                severity=Severity.WARNING,
-                message=f"High draw call count: {self.draw_calls}",
-                suggestion="Merge meshes or use instancing",
-            ))
+            result.append(
+                ValidationIssue(
+                    code="PERF_002",
+                    severity=Severity.WARNING,
+                    message=f"High draw call count: {self.draw_calls}",
+                    suggestion="Merge meshes or use instancing",
+                )
+            )
         return result
 
 
@@ -222,8 +234,16 @@ class QualityMetrics:
         texture_resolution:
             Texture atlas resolution (``"1k"`` – ``"8k"``).
         """
-        geo = self._check_geometry(triangle_count) if check_geometry else self._empty_geo(triangle_count)
-        tex = self._check_textures(texture_count, texture_resolution) if check_textures else self._empty_tex(texture_count, texture_resolution)
+        geo = (
+            self._check_geometry(triangle_count)
+            if check_geometry
+            else self._empty_geo(triangle_count)
+        )
+        tex = (
+            self._check_textures(texture_count, texture_resolution)
+            if check_textures
+            else self._empty_tex(texture_count, texture_resolution)
+        )
         mat = self._check_materials(is_pbr) if check_materials else self._empty_mat()
         perf = self._check_performance(triangle_count, texture_count, performance_target_fps)
 
@@ -272,10 +292,14 @@ class QualityMetrics:
 
     def _empty_geo(self, tris: int) -> GeometryReport:
         return GeometryReport(
-            triangle_count=tris, vertex_count=int(tris * 0.6),
-            degenerate_triangles=0, non_manifold_edges=0,
-            open_boundaries=0, uv_overlap_ratio=0.0,
-            is_watertight=True, score=5.0,
+            triangle_count=tris,
+            vertex_count=int(tris * 0.6),
+            degenerate_triangles=0,
+            non_manifold_edges=0,
+            open_boundaries=0,
+            uv_overlap_ratio=0.0,
+            is_watertight=True,
+            score=5.0,
         )
 
     def _check_textures(self, count: int, resolution: str) -> TextureReport:
@@ -314,7 +338,7 @@ class QualityMetrics:
         target_fps: float,
     ) -> PerformanceReport:
         tris_per_ms = 5_000_000.0
-        geo_mem = tris * 48 / 1024 ** 2
+        geo_mem = tris * 48 / 1024**2
         tex_mem = tex_count * 8.0
         estimated_fps = min(240.0, tris_per_ms / max(tris / 16.0, 1.0))
         is_rt = estimated_fps >= target_fps

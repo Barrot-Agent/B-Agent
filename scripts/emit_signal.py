@@ -23,12 +23,7 @@ def _post_json(url: str, headers: dict, payload: dict, timeout: float = TIMEOUT)
 
 def _extract_text(resp_json: dict) -> str:
     try:
-        return (
-            resp_json.get("choices", [{}])[0]
-            .get("message", {})
-            .get("content", "")
-            .strip()
-        )
+        return resp_json.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
     except Exception:
         return ""
 

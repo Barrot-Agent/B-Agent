@@ -43,12 +43,14 @@ class GeoRegion:
     @property
     def lon_min(self) -> float:
         import math
+
         deg_per_km = 1.0 / (111.0 * math.cos(math.radians(self.latitude)))
         return self.longitude - self.radius_km * deg_per_km
 
     @property
     def lon_max(self) -> float:
         import math
+
         deg_per_km = 1.0 / (111.0 * math.cos(math.radians(self.latitude)))
         return self.longitude + self.radius_km * deg_per_km
 
@@ -212,7 +214,8 @@ class WorldMapping:
         stream_mode: bool,
     ) -> WorldRegion:
         import math
-        area_km2 = math.pi * radius_km ** 2
+
+        area_km2 = math.pi * radius_km**2
         density = self._BUILDING_DENSITY.get(source.value, 500.0)
         building_count = int(area_km2 * density)
         tris_per_building = {0: 50, 1: 200, 2: 1_000, 3: 5_000, 4: 20_000}.get(lod, 1_000)

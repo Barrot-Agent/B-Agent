@@ -142,7 +142,9 @@ class SceneDatabase:
         if cache_key in self._cache:
             return self._cache[cache_key]
 
-        scene = self._build_scene(ds, scene_id, include_physics, semantic_labels, generate_lightmaps)
+        scene = self._build_scene(
+            ds, scene_id, include_physics, semantic_labels, generate_lightmaps
+        )
         self._cache[cache_key] = scene
         return scene
 
@@ -170,7 +172,9 @@ class SceneDatabase:
         semantic_labels: bool,
         generate_lightmaps: bool,
     ) -> LoadedScene:
-        stats = self._DATASET_STATS.get(dataset.value, {"avg_objects": 30, "avg_triangles": 1_000_000})
+        stats = self._DATASET_STATS.get(
+            dataset.value, {"avg_objects": 30, "avg_triangles": 1_000_000}
+        )
         obj_count = stats["avg_objects"]
         tri_count = stats["avg_triangles"]
 

@@ -8,6 +8,7 @@ Demonstrates single-image Q&A, multi-turn chat, and feature extraction.
 # Example 1 – Simple image description
 # ---------------------------------------------------------------------------
 
+
 def example_describe_image():
     from inference_provider import infer
 
@@ -22,6 +23,7 @@ def example_describe_image():
 # ---------------------------------------------------------------------------
 # Example 2 – Visual question answering
 # ---------------------------------------------------------------------------
+
 
 def example_visual_qa():
     from inference_provider import infer
@@ -38,6 +40,7 @@ def example_visual_qa():
 # ---------------------------------------------------------------------------
 # Example 3 – Multi-turn chat with an image
 # ---------------------------------------------------------------------------
+
 
 def example_multi_turn_chat():
     from inference_provider import chat
@@ -58,9 +61,7 @@ def example_multi_turn_chat():
 
     # Follow-up turn (no image needed for subsequent messages)
     conversation.append({"role": "assistant", "content": reply})
-    conversation.append(
-        {"role": "user", "content": "Can you describe the colours you see?"}
-    )
+    conversation.append({"role": "user", "content": "Can you describe the colours you see?"})
 
     reply2 = chat(conversation=conversation)
     print("=== Turn 2 ===")
@@ -70,6 +71,7 @@ def example_multi_turn_chat():
 # ---------------------------------------------------------------------------
 # Example 4 – Feature extraction
 # ---------------------------------------------------------------------------
+
 
 def example_feature_extraction():
     from inference_provider import extract_features
@@ -87,6 +89,7 @@ def example_feature_extraction():
 # Example 5 – Image from URL
 # ---------------------------------------------------------------------------
 
+
 def example_image_from_url():
     from inference_provider import infer
 
@@ -102,6 +105,7 @@ def example_image_from_url():
 # ---------------------------------------------------------------------------
 # Example 6 – Model metadata
 # ---------------------------------------------------------------------------
+
 
 def example_model_info():
     from inference_provider import get_model_info, list_capabilities

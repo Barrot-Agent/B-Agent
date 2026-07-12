@@ -118,11 +118,11 @@ class StreamingLoader:
     """
 
     _BANDWIDTH_PROFILES: dict[str, float] = {
-        "auto": 50.0 * 1024 ** 2,
-        "slow": 1.0 * 1024 ** 2,
-        "medium": 10.0 * 1024 ** 2,
-        "fast": 100.0 * 1024 ** 2,
-        "gigabit": 125.0 * 1024 ** 2,
+        "auto": 50.0 * 1024**2,
+        "slow": 1.0 * 1024**2,
+        "medium": 10.0 * 1024**2,
+        "fast": 100.0 * 1024**2,
+        "gigabit": 125.0 * 1024**2,
     }
 
     def __init__(self) -> None:
@@ -165,7 +165,7 @@ class StreamingLoader:
         stream_id = f"stream_{self._stream_counter:04d}"
 
         bw = self._resolve_bandwidth(network_bandwidth)
-        estimated_bytes = int(region_size ** 2 * 1_024)
+        estimated_bytes = int(region_size**2 * 1_024)
 
         stats = StreamStats(
             bytes_total=estimated_bytes,
@@ -186,7 +186,9 @@ class StreamingLoader:
         self._streams[stream_id] = handle
         return handle
 
-    def next_chunk(self, handle: StreamHandle, chunk_size_bytes: int = 65_536) -> StreamChunk | None:
+    def next_chunk(
+        self, handle: StreamHandle, chunk_size_bytes: int = 65_536
+    ) -> StreamChunk | None:
         """
         Fetch the next chunk for an active stream.
 
