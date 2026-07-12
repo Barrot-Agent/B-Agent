@@ -15,23 +15,29 @@ BRANCH = os.environ.get("BRANCH", "barrot/task")
 KEY    = os.environ.get("GROQ_API_KEY", "")
 MODEL  = os.environ.get("BRAIN_MODEL", "llama-3.3-70b-versatile")
 
-def run(cmd, check=True):
+def run(cmd, check=True, quiet=False):
     print("+", cmd)
     r = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    if r.stdout.strip(): print(r.stdout)
-    if r.stderr.strip(): print(r.stderr)
+    if not quiet:
+        if r.stdout.strip(): print(r.stdout[:3000])
+        if r.stderr.strip(): print(r.stderr[:3000])
     if check and r.returncode != 0:
-        sys.exit(f"command failed: {cmd}")
+        sys.exit(f"command failed: {cmd}\n{r.stderr[:1000]}")
     return r.stdout
 
-def repo_inventory():
-    files = run("git ls-files", check=False).splitlines()
+NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
+
+def repo_inventory(max_files=400):
+    files = run("git ls-files", check=False, quiet=True).splitlines()
+    files = [f for f in files if not any(f.startswith(p) for p in NOISE_PREFIXES)]
     tree = []
-    for f in files:
-        if f.startswith(".git"): continue
+    for f in files[:max_files]:
         try: sz = os.path.getsize(f)
         except OSError: sz = 0
         tree.append(f"{f} ({sz}b)")
+    extra = len(files) - max_files
+    if extra > 0:
+        tree.append(f"... ({extra} more files omitted)")
     return "\n".join(tree)
 
 def ask_brain(system, user):
