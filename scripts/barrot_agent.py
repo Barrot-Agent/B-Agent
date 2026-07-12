@@ -49,7 +49,8 @@ def ask_brain(system, user):
     req = urllib.request.Request(
         "https://api.groq.com/openai/v1/chat/completions",
         data=body,
-        headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
+        headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json",
+                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"})
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             return json.load(resp)["choices"][0]["message"]["content"]
