@@ -78,8 +78,18 @@ def main():
 
     a, b = raw.find("["), raw.rfind("]")
     if a == -1 or b == -1:
-        sys.exit(f"brain did not return a command array:\n{raw[:500]}")
-    cmds = json.loads(raw[a:b+1])
+        sys.exit(f"brain did not return a command array:\n{raw[:800]}")
+    blob = raw[a:b+1]
+    try:
+        cmds = json.loads(blob)
+    except json.JSONDecodeError:
+        import re
+        # escape stray backslashes that aren't valid JSON escapes
+        fixed = re.sub(r'\\(?![\\/"bfnrtu])', r'\\\\', blob)
+        try:
+            cmds = json.loads(fixed)
+        except json.JSONDecodeError as e:
+            sys.exit(f"could not parse command array ({e}):\n{blob[:800]}")
 
     BANNED = ["git add -a", "git push", "rm -rf", ".git/", "git reset --hard", "git checkout main"]
     PROTECTED_DEL = ["rm core/", "rm hf_space/", "rm web/", "rm scripts/emit_signal.py"]
