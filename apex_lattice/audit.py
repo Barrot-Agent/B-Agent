@@ -25,13 +25,12 @@ class AuditTrail:
         self.cycle_id: str | None = None
         log_dir = _DEFAULT_LOG_DIR
         log_filename = "apex_lattice.jsonl"
+        now_stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
         if base_dir is not None:
-            fallback_cycle_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-            self.cycle_id = str(cycle_id_or_log_dir or f"cycle_{fallback_cycle_id}")
+            self.cycle_id = str(cycle_id_or_log_dir or f"cycle_{now_stamp}")
             log_dir = (base_dir / _DEFAULT_LOG_DIR)
-            ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-            log_filename = f"{ts}_{self.cycle_id}_audit.log"
+            log_filename = f"{now_stamp}_{self.cycle_id}_audit.log"
         elif isinstance(cycle_id_or_log_dir, Path):
             log_dir = cycle_id_or_log_dir
         elif (
@@ -41,8 +40,7 @@ class AuditTrail:
             log_dir = Path(cycle_id_or_log_dir)
         elif isinstance(cycle_id_or_log_dir, str) and cycle_id_or_log_dir:
             self.cycle_id = cycle_id_or_log_dir
-            ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-            log_filename = f"{ts}_{self.cycle_id}_audit.log"
+            log_filename = f"{now_stamp}_{self.cycle_id}_audit.log"
 
         log_dir.mkdir(parents=True, exist_ok=True)
         self._log_file = log_dir / log_filename
