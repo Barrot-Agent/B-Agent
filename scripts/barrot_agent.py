@@ -5,7 +5,7 @@ Triggered by an issue labeled 'barrot-task'. Reads the task, works in a
 branch, opens ONE pull request. Never pushes to main. The gated-merge
 workflow + your 'approved' label decide what lands.
 """
-import os, subprocess, json, urllib.request, sys
+import os, subprocess, json, urllib.request, urllib.error, sys
 
 REPO   = os.environ["REPO"]
 TASK   = os.environ.get("TASK_BODY", "")
@@ -50,8 +50,15 @@ def ask_brain(system, user):
         "https://api.groq.com/openai/v1/chat/completions",
         data=body,
         headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        return json.load(resp)["choices"][0]["message"]["content"]
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            return json.load(resp)["choices"][0]["message"]["content"]
+    except urllib.error.HTTPError as e:
+        body = ""
+        try: body = e.read().decode("utf-8", errors="replace")
+        except Exception: pass
+        print(f"[ask_brain] Groq HTTP {e.code}: {body[:600]}")
+        sys.exit(f"Groq API error {e.code}: {body[:400]}")
 
 SYSTEM = """You are Barrot-Ω operating as an autonomous repository engineer on your own repo.
 You output ONLY a JSON array of shell commands (git mv, mkdir -p, rm, sed) that perform the
