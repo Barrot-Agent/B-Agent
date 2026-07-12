@@ -27,7 +27,8 @@ class AuditTrail:
         log_filename = "apex_lattice.jsonl"
 
         if base_dir is not None:
-            self.cycle_id = str(cycle_id_or_log_dir or f"cycle_{int(time.time())}")
+            fallback_cycle_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            self.cycle_id = str(cycle_id_or_log_dir or f"cycle_{fallback_cycle_id}")
             log_dir = (base_dir / _DEFAULT_LOG_DIR)
             ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
             log_filename = f"{ts}_{self.cycle_id}_audit.log"
@@ -70,19 +71,22 @@ class AuditTrail:
             if not line:
                 continue
             try:
-                event = json.loads(line)
-                if "data" in event and "details" not in event:
-                    event["details"] = event["data"]
-                if "details" in event and "data" not in event:
-                    event["data"] = event["details"]
-                events.append(event)
+                events.append(json.loads(line))
             except json.JSONDecodeError:
                 continue
         return events
 
     def read_entries(self) -> list[dict[str, Any]]:
         """Compatibility alias for callers expecting read_entries()."""
-        return self.read_all()
+        entries: list[dict[str, Any]] = []
+        for event in self.read_all():
+            e = dict(event)
+            if "data" in e and "details" not in e:
+                e["details"] = e["data"]
+            if "details" in e and "data" not in e:
+                e["data"] = e["details"]
+            entries.append(e)
+        return entries
 
     def tail(self, n: int = 20) -> list[dict[str, Any]]:
         """Return the last *n* events."""
