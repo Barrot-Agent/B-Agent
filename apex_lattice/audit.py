@@ -23,53 +23,40 @@ class AuditTrail:
         base_dir: Path | None = None,
     ) -> None:
         self.cycle_id: str | None = None
-        log_dir: Path
+        log_dir = _DEFAULT_LOG_DIR
+        log_filename = "apex_lattice.jsonl"
 
         if base_dir is not None:
             self.cycle_id = str(cycle_id_or_log_dir or f"cycle_{int(time.time())}")
             log_dir = (base_dir / _DEFAULT_LOG_DIR)
-            log_dir.mkdir(parents=True, exist_ok=True)
             ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-            self._log_file = log_dir / f"{ts}_{self.cycle_id}_audit.log"
-            return
-
-        if isinstance(cycle_id_or_log_dir, Path):
+            log_filename = f"{ts}_{self.cycle_id}_audit.log"
+        elif isinstance(cycle_id_or_log_dir, Path):
             log_dir = cycle_id_or_log_dir
-            log_dir.mkdir(parents=True, exist_ok=True)
-            self._log_file = log_dir / "apex_lattice.jsonl"
-            return
-
-        if (
+        elif (
             isinstance(cycle_id_or_log_dir, str)
             and (os.sep in cycle_id_or_log_dir or "/" in cycle_id_or_log_dir)
         ):
             log_dir = Path(cycle_id_or_log_dir)
-            log_dir.mkdir(parents=True, exist_ok=True)
-            self._log_file = log_dir / "apex_lattice.jsonl"
-            return
-
-        log_dir = _DEFAULT_LOG_DIR
-        log_dir.mkdir(parents=True, exist_ok=True)
-
-        if isinstance(cycle_id_or_log_dir, str) and cycle_id_or_log_dir:
+        elif isinstance(cycle_id_or_log_dir, str) and cycle_id_or_log_dir:
             self.cycle_id = cycle_id_or_log_dir
             ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-            self._log_file = log_dir / f"{ts}_{self.cycle_id}_audit.log"
-        else:
-            self._log_file = log_dir / "apex_lattice.jsonl"
+            log_filename = f"{ts}_{self.cycle_id}_audit.log"
+
+        log_dir.mkdir(parents=True, exist_ok=True)
+        self._log_file = log_dir / log_filename
 
     def log(self, event: str, data: dict[str, Any] | None = None) -> None:
         """Append a structured event to the audit log.
 
-        Keeps both ``data`` and ``details`` keys for compatibility with
-        existing callers/readers during merge-reconciliation.
+        Logged payloads use ``data``; ``read_all()`` exposes a compatibility
+        alias for legacy ``details`` consumers.
         """
         entry: dict[str, Any] = {"ts": time.time(), "event": event}
         if self.cycle_id:
             entry["cycle_id"] = self.cycle_id
         if data:
             entry["data"] = data
-            entry["details"] = data
         with self._log_file.open("a", encoding="utf-8") as fh:
             fh.write(json.dumps(entry, default=str) + "\n")
 
@@ -83,7 +70,12 @@ class AuditTrail:
             if not line:
                 continue
             try:
-                events.append(json.loads(line))
+                event = json.loads(line)
+                if "data" in event and "details" not in event:
+                    event["details"] = event["data"]
+                if "details" in event and "data" not in event:
+                    event["data"] = event["details"]
+                events.append(event)
             except json.JSONDecodeError:
                 continue
         return events
