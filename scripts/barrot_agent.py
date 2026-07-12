@@ -13,7 +13,7 @@ TITLE  = os.environ.get("TASK_TITLE", "Barrot task")
 ISSUE  = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 KEY    = os.environ.get("GROQ_API_KEY", "")
-MODEL  = os.environ.get("BRAIN_MODEL", "llama-3.3-70b-versatile")
+MODEL  = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
 
 def run(cmd, check=True, quiet=False):
     print("+", cmd)
