@@ -59,7 +59,11 @@ class AuditTrail:
             self._log_file = log_dir / "apex_lattice.jsonl"
 
     def log(self, event: str, data: dict[str, Any] | None = None) -> None:
-        """Append a structured event to the audit log."""
+        """Append a structured event to the audit log.
+
+        Keeps both ``data`` and ``details`` keys for compatibility with
+        existing callers/readers during merge-reconciliation.
+        """
         entry: dict[str, Any] = {"ts": time.time(), "event": event}
         if self.cycle_id:
             entry["cycle_id"] = self.cycle_id
