@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-"""Analyzers sub-package for Apex Lattice."""
-
-from apex_lattice.analyzers.base import BaseAnalyzer
-
-__all__ = ["BaseAnalyzer"]
-=======
 """
 Analyzers sub-package for Apex Lattice.
 
 Each analyzer exposes a single ``analyze(artefact)`` method that
 returns a list of raw finding dicts (without ``finding_id`` /
-``artefact_id`` — those are added by FindingGenerator).
+``artefact_id`` -- those are added by FindingGenerator).
 """
 
 from __future__ import annotations
@@ -40,4 +33,3 @@ __all__ = [
     "CapabilityAnalyzer",
     "ALL_ANALYZERS",
 ]
->>>>>>> origin/main
