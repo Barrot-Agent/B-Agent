@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 """Analyzers sub-package for Apex Lattice."""
 
 from apex_lattice.analyzers.base import BaseAnalyzer
 
 __all__ = ["BaseAnalyzer"]
-=======
 """
 Analyzers sub-package for Apex Lattice.
 
@@ -40,4 +38,3 @@ __all__ = [
     "CapabilityAnalyzer",
     "ALL_ANALYZERS",
 ]
->>>>>>> origin/main

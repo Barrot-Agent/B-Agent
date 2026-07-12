@@ -1,12 +1,10 @@
 """
-<<<<<<< HEAD
 PR Implementation Framework.
 
 Generates well-documented pull request bodies from a list of
 Recommendation objects.  When a GitHub token is available the framework
 will open real PRs via the GitHub REST API; otherwise it writes the PR
 document to .apex_lattice/findings/ for manual review.
-=======
 PRFramework — generates pull-request bodies from recommendations.
 
 In a live environment this module would call the GitHub API to open
@@ -14,14 +12,12 @@ a real PR.  For portability the default implementation writes a
 Markdown document to ``.apex_lattice/recommendations/`` and returns
 the path.  Call ``open_github_pr()`` when the GITHUB_TOKEN environment
 variable is set.
->>>>>>> origin/main
 """
 
 from __future__ import annotations
 
 import json
 import os
-<<<<<<< HEAD
 import uuid
 from dataclasses import asdict
 from datetime import datetime, timezone
@@ -114,9 +110,7 @@ class PRFramework:
         try:
             import urllib.request
 
-            branch_name = (
-                f"apex-lattice/{self.cycle_id}/{rec.category}"
-            ).lower().replace(" ", "-")
+            branch_name = (f"apex-lattice/{self.cycle_id}/{rec.category}").lower().replace(" ", "-")
 
             payload = json.dumps(
                 {
@@ -154,7 +148,8 @@ class PRFramework:
         path = self._findings_dir / filename
         with path.open("w", encoding="utf-8") as fh:
             json.dump(pr_doc, fh, indent=2, default=str)
-=======
+
+
 import time
 import urllib.error
 import urllib.request
@@ -261,9 +256,7 @@ class PRFramework:
                 return json.loads(resp.read().decode())
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode(errors="replace")
-            raise RuntimeError(
-                f"GitHub API returned {exc.code}: {detail}"
-            ) from exc
+            raise RuntimeError(f"GitHub API returned {exc.code}: {detail}") from exc
 
     # ------------------------------------------------------------------
     # Private
@@ -317,4 +310,3 @@ class PRFramework:
             "*Review each proposal and merge or close as appropriate.*",
         ]
         return "\n".join(lines)
->>>>>>> origin/main

@@ -1,21 +1,17 @@
 """
-<<<<<<< HEAD
 Finding Generation.
 
 Transforms raw analyzer results into structured Finding objects and
 persists them to .apex_lattice/findings/<timestamp>_<type>_finding.json.
-=======
 FindingGenerator — analyses sandbox artefacts and produces structured findings.
 
 Findings are persisted under ``.apex_lattice/findings/`` as individual
 JSON files.
->>>>>>> origin/main
 """
 
 from __future__ import annotations
 
 import json
-<<<<<<< HEAD
 import uuid
 from datetime import datetime, timezone
 from dataclasses import asdict, dataclass, field
@@ -33,11 +29,11 @@ class Finding:
 
     id: str
     cycle_id: str
-    category: str          # e.g. "code", "security", "performance", …
+    category: str  # e.g. "code", "security", "performance", …
     title: str
     description: str
-    severity: str          # "critical" | "high" | "medium" | "low" | "info"
-    evidence: list[str]    # Supporting evidence snippets
+    severity: str  # "critical" | "high" | "medium" | "low" | "info"
+    evidence: list[str]  # Supporting evidence snippets
     tags: list[str]
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     raw_data: dict[str, Any] = field(default_factory=dict)
@@ -98,7 +94,8 @@ class FindingGenerator:
                 data = json.load(fh)
             findings.append(Finding(**data))
         return findings
-=======
+
+
 import time
 import uuid
 from pathlib import Path
@@ -210,4 +207,3 @@ class FindingGenerator:
     def _persist(self, finding: Finding) -> None:
         dest = self._dir / f"{finding.finding_id}.json"
         dest.write_text(json.dumps(finding.to_dict(), indent=2), encoding="utf-8")
->>>>>>> origin/main

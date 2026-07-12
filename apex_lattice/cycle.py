@@ -1,5 +1,4 @@
 """
-<<<<<<< HEAD
 Cycle Manager.
 
 Orchestrates single-shot and scheduled recurring analysis cycles.
@@ -12,19 +11,16 @@ Usage:
 
     # Scheduled (blocking, interval in seconds)
     mgr.run_scheduled(interval=3600)
-=======
 CycleManager — orchestrates a single analysis cycle or scheduled recurring
 analysis cycles.
 
 A cycle is the full pipeline:
     SandboxPipeline → FindingGenerator → RecommendationEngine → PRFramework
     + AuditTrail logging at every step.
->>>>>>> origin/main
 """
 
 from __future__ import annotations
 
-<<<<<<< HEAD
 import time
 import uuid
 from datetime import datetime, timezone
@@ -101,9 +97,7 @@ class CycleManager:
         return summary
 
     # ------------------------------------------------------------------
-    def run_scheduled(
-        self, interval: float = 3600, max_cycles: int | None = None
-    ) -> None:
+    def run_scheduled(self, interval: float = 3600, max_cycles: int | None = None) -> None:
         """Run analysis cycles on a fixed interval.
 
         Args:
@@ -127,7 +121,8 @@ class CycleManager:
             if max_cycles and cycles_run >= max_cycles:
                 break
             time.sleep(interval)
-=======
+
+
 import threading
 import time
 from pathlib import Path
@@ -316,4 +311,3 @@ class CycleManager:
         while not self._stop_event.is_set():
             self.run_cycle()
             self._stop_event.wait(interval)
->>>>>>> origin/main

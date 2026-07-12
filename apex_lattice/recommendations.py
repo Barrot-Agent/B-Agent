@@ -1,5 +1,4 @@
 """
-<<<<<<< HEAD
 Recommendation Engine.
 
 Takes a list of Finding objects and produces structured Recommendation
@@ -7,18 +6,15 @@ objects with rationale, proposed actions and priority ordering.
 
 Recommendations are persisted to
 .apex_lattice/recommendations/<timestamp>_recommendation.json.
-=======
 RecommendationEngine — turns findings into structured improvement proposals.
 
 Recommendations are grouped by category, ranked by severity, and persisted
 under ``.apex_lattice/recommendations/`` as JSON.
->>>>>>> origin/main
 """
 
 from __future__ import annotations
 
 import json
-<<<<<<< HEAD
 import uuid
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -49,10 +45,10 @@ class Recommendation:
     title: str
     rationale: str
     proposed_actions: list[str]
-    priority: int            # 1 (highest) – 5 (lowest)
+    priority: int  # 1 (highest) – 5 (lowest)
     category: str
     related_finding_ids: list[str]
-    estimated_effort: str    # "low" | "medium" | "high"
+    estimated_effort: str  # "low" | "medium" | "high"
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     metadata: dict[str, Any] = field(default_factory=dict)
 
@@ -70,7 +66,8 @@ class RecommendationEngine:
     # ------------------------------------------------------------------
     def generate(self, findings: list[Finding]) -> list[Recommendation]:
         """Group related findings and produce recommendations."""
-=======
+
+
 import time
 import uuid
 from pathlib import Path
@@ -174,13 +171,11 @@ class RecommendationEngine:
         Convert a list of findings into a deduplicated, ranked list of
         recommendations (one per category).
         """
->>>>>>> origin/main
         # Group by category
         by_category: dict[str, list[Finding]] = {}
         for f in findings:
             by_category.setdefault(f.category, []).append(f)
 
-<<<<<<< HEAD
         recommendations: list[Recommendation] = []
         for category, cat_findings in by_category.items():
             rec = self._build_recommendation(category, cat_findings)
@@ -196,13 +191,9 @@ class RecommendationEngine:
         return recommendations
 
     # ------------------------------------------------------------------
-    def _build_recommendation(
-        self, category: str, findings: list[Finding]
-    ) -> Recommendation:
+    def _build_recommendation(self, category: str, findings: list[Finding]) -> Recommendation:
         # Determine overall priority from the most severe finding
-        min_priority = min(
-            _SEVERITY_PRIORITY.get(f.severity, 5) for f in findings
-        )
+        min_priority = min(_SEVERITY_PRIORITY.get(f.severity, 5) for f in findings)
 
         actions = self._derive_actions(category, findings)
         effort = self._estimate_effort(findings)
@@ -262,7 +253,6 @@ class RecommendationEngine:
         with path.open("w", encoding="utf-8") as fh:
             json.dump(asdict(rec), fh, indent=2, default=str)
         self.audit.log("recommendation_persisted", {"file": filename})
-=======
         recs: list[Recommendation] = []
         for category, cat_findings in by_category.items():
             rec = self._build_recommendation(category, cat_findings)
@@ -278,11 +268,7 @@ class RecommendationEngine:
         recs: list[Recommendation] = []
         for fp in sorted(self._dir.glob("*.json")):
             try:
-                recs.append(
-                    Recommendation.from_dict(
-                        json.loads(fp.read_text(encoding="utf-8"))
-                    )
-                )
+                recs.append(Recommendation.from_dict(json.loads(fp.read_text(encoding="utf-8"))))
             except (json.JSONDecodeError, KeyError):
                 pass
         return recs
@@ -335,16 +321,10 @@ class RecommendationEngine:
         ],
     }
 
-    def _build_recommendation(
-        self, category: str, findings: list[Finding]
-    ) -> Recommendation:
+    def _build_recommendation(self, category: str, findings: list[Finding]) -> Recommendation:
         # Highest severity in the group drives the priority
-        max_rank = max(
-            (_SEVERITY_RANK.get(f.severity, 0) for f in findings), default=1
-        )
-        priority = next(
-            (s for s, r in _SEVERITY_RANK.items() if r == max_rank), "info"
-        )
+        max_rank = max((_SEVERITY_RANK.get(f.severity, 0) for f in findings), default=1)
+        priority = next((s for s, r in _SEVERITY_RANK.items() if r == max_rank), "info")
 
         artefact_ids = list({f.artefact_id for f in findings})
         artefact_summary = ", ".join(artefact_ids[:3])
@@ -376,4 +356,3 @@ class RecommendationEngine:
     def _persist(self, rec: Recommendation) -> None:
         dest = self._dir / f"{rec.rec_id}.json"
         dest.write_text(json.dumps(rec.to_dict(), indent=2), encoding="utf-8")
->>>>>>> origin/main
