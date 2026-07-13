@@ -224,12 +224,18 @@ PROVIDERS = {
         "model": "gemini-2.0-flash",
         "tools": True,
     },
+    "selfhosted": {
+        "url": "https://scribedpengenius-barrot-brain-selfhosted.hf.space/v1/chat/completions",
+        "key_env": "BRAIN_SHARED_SECRET",
+        "model": "ourbox35b",
+        "tools": False,
+    },
 }
 
 
 def _brain_order():
     primary = os.getenv("BRAIN_PRIMARY", "groq").strip().lower()
-    order = [primary] + [k for k in ("groq", "github", "gemini") if k != primary]
+    order = [primary] + [k for k in ("groq", "github", "gemini", "selfhosted") if k != primary]
     return [k for k in order if k in PROVIDERS]
 
 
