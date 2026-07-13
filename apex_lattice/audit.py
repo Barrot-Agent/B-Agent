@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-_DEFAULT_LOG_DIR = Path(".apex_lattice") / "audit_logs"
+_DEFAULT_LOG_DIR = Path("apex_lattice") / "audit_logs"
 
 
 class AuditTrail:
