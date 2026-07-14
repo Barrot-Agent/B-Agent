@@ -1,8 +1,10 @@
 {
-  "timestamp": "2026-07-09T09:38:28.224962+00:00",
-  "signal_text": "market sideways; low conviction",
-  "score": 40,
-  "confidence": 0.8,
-  "source": "groq:neutral",
-  "generated_at_unix": 1783589908
+  "timestamp": "2026-07-14T01:01:40.979306+00:00",
+  "signal_text": "Recent XRP-relevant headlines: [neutral] XRP risks drop below $1, but onchain data highlights silver lining | [bullish] These XRP price charts hint at potential 25% relief rally in July | [bullish] XRP whale wallet withdrawals top 720M as risk-adjusted return data points to opp | [bearish] Three signs that XRP price risks falling below $1 in June | [bullish] Bitso brings peso-backed MXNB stablecoin to XRP Ledger via Ripple partnership | [bearish] XRP transaction demand falls 91.5% as traders focus on $0.65 support",
+  "score": 56,
+  "confidence": 0.7,
+  "source": "groq:neutral+news(22)",
+  "news_score": 56,
+  "news_entries": 22,
+  "generated_at_unix": 1783990900
 }
