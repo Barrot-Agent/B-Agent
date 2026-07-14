@@ -81,10 +81,15 @@ def ask_brain(system, user):
 
 
 SYSTEM = """You are Barrot-Ω operating as an autonomous repository engineer on your own repo.
-You output ONLY a JSON array of shell commands (git mv, mkdir -p, rm, sed) that perform the
-requested task. No prose, no markdown fences, no explanation. Each command must be safe and
-scoped. Never use 'git add -A'. Never touch .git/. Never delete files under core/, hf_space/,
-web/, or scripts/emit_signal.py. Output format: ["cmd1","cmd2",...]"""
+You output ONLY JSON, no prose, no fences. Two modes:
+1. MOVING/DELETING files: a JSON array of shell commands. Example: ["git mv a.md docs/","mkdir -p docs"]
+2. REWRITING/REFORMATTING/REFACTORING a file's CONTENTS: a JSON object:
+   {"commands":[...moves/dirs only...],"transmutations":[{"path":"rel/path.py","content":"FULL new file"}]}
+   A transmutation replaces the ENTIRE file with content (complete file, not a diff).
+   Types: .py .json .yml .yaml .md .txt only.
+CRITICAL: to change what is INSIDE a file, use a transmutation. sed for content editing is
+forbidden and will be rejected. Never use 'git add -A'. Never touch .git/. Never modify or
+delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/."""
 
 
 
@@ -189,23 +194,31 @@ def main():
     )
     raw = ask_brain(SYSTEM, prompt).strip()
 
-    a, b = raw.find("["), raw.rfind("]")
-    if a == -1 or b == -1:
-        sys.exit(f"brain did not return a command array:\n{raw[:800]}")
+    import re
+    obj_a, arr_a = raw.find("{"), raw.find("[")
+    if obj_a == -1 and arr_a == -1:
+        sys.exit(f"brain returned no JSON:\n{raw[:800]}")
+    use_obj = obj_a != -1 and (arr_a == -1 or obj_a < arr_a)
+    if use_obj:
+        a, b = raw.find("{"), raw.rfind("}")
+    else:
+        a, b = raw.find("["), raw.rfind("]")
     blob = raw[a : b + 1]
     try:
-        cmds = json.loads(blob)
+        data = json.loads(blob)
     except json.JSONDecodeError:
-        import re
-
-        # escape stray backslashes that aren't valid JSON escapes
         fixed = re.sub(r'\\(?![\\/"bfnrtu])', r"\\\\", blob)
         try:
-            cmds = json.loads(fixed)
+            data = json.loads(fixed)
         except json.JSONDecodeError as e:
-            sys.exit(f"could not parse command array ({e}):\n{blob[:800]}")
+            sys.exit(f"could not parse brain output ({e}):\n{blob[:800]}")
+    if isinstance(data, list):
+        cmds, trans = data, []
+    else:
+        cmds = data.get("commands", []) or []
+        trans = data.get("transmutations", []) or []
 
-    BANNED = ["git add -a", "git push", "rm -rf", ".git/", "git reset --hard", "git checkout main"]
+    BANNED = ["git add -a", "git push", "rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i"]
     PROTECTED_DEL = ["rm core/", "rm hf_space/", "rm web/", "rm scripts/emit_signal.py"]
     safe = []
     for c in cmds:
@@ -218,11 +231,15 @@ def main():
             print(f"REJECTED malformed command: {c}  ({reason})")
             continue
         safe.append(c)
-    if not safe:
-        sys.exit("no safe commands produced")
+    if not safe and not trans:
+        sys.exit("no safe commands or transmutations produced")
 
     for c in safe:
         run(c, check=False)
+
+    applied = apply_transmutations(trans) if trans else []
+    if applied:
+        print(f"Applied {len(applied)} verified transmutations.")
 
     run("git add -u", check=False)
     run("git add .", check=False)
