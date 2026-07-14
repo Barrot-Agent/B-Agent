@@ -522,6 +522,7 @@
     const searchWriteStatus = document.getElementById('searchWriteStatus');
     const searchWorkspaceKey = 'barrotSearchWorkspace';
     const sharedWorkspaceKey = 'barrotWorkspace';
+    const legacyWorkspaceKey = 'barrotCode';
     let currentProgress = 0;
     
     searchInput.addEventListener('input', function() {
@@ -555,37 +556,60 @@
     }
 
     function setSearchWorkspaceStatus(message) {
-      searchWriteStatus.textContent = message;
+      if (searchWriteStatus) {
+        searchWriteStatus.textContent = message;
+      }
+    }
+
+    function migrateSharedWorkspace() {
+      const legacyWorkspace = localStorage.getItem(legacyWorkspaceKey);
+      if (legacyWorkspace && !localStorage.getItem(sharedWorkspaceKey)) {
+        localStorage.setItem(sharedWorkspaceKey, legacyWorkspace);
+      }
     }
 
     function saveSearchWorkspace() {
+      if (!searchWritePad) {
+        return;
+      }
       localStorage.setItem(searchWorkspaceKey, searchWritePad.value);
       localStorage.setItem(sharedWorkspaceKey, searchWritePad.value);
-      localStorage.setItem('barrotCode', searchWritePad.value);
       setSearchWorkspaceStatus('Draft saved locally and entangled with the dashboard workspace.');
     }
 
     function syncSearchWorkspaceToDashboard() {
+      if (!searchWritePad) {
+        return;
+      }
       localStorage.setItem(sharedWorkspaceKey, searchWritePad.value);
-      localStorage.setItem('barrotCode', searchWritePad.value);
       setSearchWorkspaceStatus('Dashboard IDE workspace updated from the search engine.');
     }
 
     function clearSearchWorkspace() {
+      if (!searchWritePad) {
+        return;
+      }
       searchWritePad.value = '';
       localStorage.removeItem(searchWorkspaceKey);
       setSearchWorkspaceStatus('Search draft cleared. Dashboard workspace remains untouched until resynced.');
     }
 
-    const storedSearchWorkspace = localStorage.getItem(searchWorkspaceKey) || localStorage.getItem(sharedWorkspaceKey);
-    if (storedSearchWorkspace) {
+    migrateSharedWorkspace();
+
+    const storedSearchWorkspace =
+      localStorage.getItem(searchWorkspaceKey) ||
+      localStorage.getItem(sharedWorkspaceKey) ||
+      localStorage.getItem(legacyWorkspaceKey);
+    if (storedSearchWorkspace && searchWritePad) {
       searchWritePad.value = storedSearchWorkspace;
       setSearchWorkspaceStatus('Stored draft restored. Full write access is active.');
     }
 
-    searchWritePad.addEventListener('input', () => {
-      setSearchWorkspaceStatus('Draft updated locally. Save or sync when ready.');
-    });
+    if (searchWritePad) {
+      searchWritePad.addEventListener('input', () => {
+        setSearchWorkspaceStatus('Draft updated locally. Save or sync when ready.');
+      });
+    }
   </script>
 </body>
 </html>

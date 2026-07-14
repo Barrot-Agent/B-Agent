@@ -1627,7 +1627,16 @@ function barrotOptimize() {
     const dashboardWriteStatus = document.getElementById('dashboardWriteStatus');
 
     function setDashboardWriteStatus(message) {
-      dashboardWriteStatus.textContent = message;
+      if (dashboardWriteStatus) {
+        dashboardWriteStatus.textContent = message;
+      }
+    }
+
+    function migrateLegacyWorkspace() {
+      const legacyWorkspace = localStorage.getItem(legacyWorkspaceKey);
+      if (legacyWorkspace && !localStorage.getItem(sharedWorkspaceKey)) {
+        localStorage.setItem(sharedWorkspaceKey, legacyWorkspace);
+      }
     }
 
     function showSection(sectionId, event, updateHash = true) {
@@ -1653,14 +1662,19 @@ function barrotOptimize() {
     }
 
     function saveCode() {
+      if (!codeEditor) {
+        return;
+      }
       const code = codeEditor.value;
       localStorage.setItem(sharedWorkspaceKey, code);
-      localStorage.setItem(legacyWorkspaceKey, code);
       setDashboardWriteStatus('Workspace saved locally and mirrored to the search engine.');
       alert('Code saved successfully!');
     }
 
     function loadSharedWorkspace() {
+      if (!codeEditor) {
+        return;
+      }
       const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey) || localStorage.getItem(legacyWorkspaceKey);
       if (sharedWorkspace) {
         codeEditor.value = sharedWorkspace;
@@ -1682,15 +1696,19 @@ function barrotOptimize() {
       alert('Deploying to Chameleon Chain...');
     }
 
+    migrateLegacyWorkspace();
+
     const storedWorkspace = localStorage.getItem(sharedWorkspaceKey) || localStorage.getItem(legacyWorkspaceKey);
-    if (storedWorkspace) {
+    if (storedWorkspace && codeEditor) {
       codeEditor.value = storedWorkspace;
       setDashboardWriteStatus('Stored workspace restored. Full write access remains active.');
     }
 
-    codeEditor.addEventListener('input', () => {
-      setDashboardWriteStatus('Workspace updated locally. Save to persist across the dashboard and search engine.');
-    });
+    if (codeEditor) {
+      codeEditor.addEventListener('input', () => {
+        setDashboardWriteStatus('Workspace updated locally. Save to persist across the dashboard and search engine.');
+      });
+    }
 
     const initialSectionId = window.location.hash.slice(1);
     if (initialSectionId && document.getElementById(initialSectionId)) {
