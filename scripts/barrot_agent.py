@@ -127,6 +127,57 @@ def validate_command(cmd):
     return True, "ok"
 
 
+
+def verify_content(path, content):
+    """Verify rewritten content is well-formed for its type. Returns (ok, reason).
+    Fails closed: unknown types are not allowed to be rewritten."""
+    import ast as _ast, json as _json, os as _os
+    ext = _os.path.splitext(path)[1].lower()
+    if ext == ".py":
+        try: _ast.parse(content)
+        except SyntaxError as e: return False, f"python syntax error line {e.lineno}: {e.msg}"
+        return True, "ok"
+    if ext == ".json":
+        try: _json.loads(content)
+        except Exception as e: return False, f"json parse error: {e}"
+        return True, "ok"
+    if ext in (".yml", ".yaml"):
+        try:
+            import yaml; yaml.safe_load(content)
+        except Exception as e: return False, f"yaml parse error: {e}"
+        return True, "ok"
+    if ext in (".md", ".txt"):
+        return True, "ok"  # plain text: nothing to break
+    return False, f"no verifier for '{ext}' — rewrite not allowed"
+
+
+PROTECTED_WRITE = ("core/", "hf_space/", "web/", "scripts/emit_signal.py", ".github/workflows/")
+
+def apply_transmutations(transmutations):
+    """Each item: {\"path\": str, \"content\": str}. Verify BEFORE writing.
+    Returns list of applied paths. Never writes unverified or protected content."""
+    import os as _os
+    applied = []
+    for t in transmutations:
+        path = t.get("path", ""); content = t.get("content", "")
+        if not path or content is None:
+            print(f"REJECTED transmute: missing path/content"); continue
+        if any(path.startswith(pp) for pp in PROTECTED_WRITE):
+            print(f"REJECTED transmute (protected path): {path}"); continue
+        if ".." in path or path.startswith("/"):
+            print(f"REJECTED transmute (unsafe path): {path}"); continue
+        ok, reason = verify_content(path, content)
+        if not ok:
+            print(f"REJECTED transmute ({reason}): {path}"); continue
+        d = _os.path.dirname(path)
+        if d: _os.makedirs(d, exist_ok=True)
+        with open(path, "w") as f:
+            f.write(content)
+        applied.append(path)
+        print(f"transmuted: {path}")
+    return applied
+
+
 def main():
     run("git config user.email 'barrot@barrot-agent.com'")
     run("git config user.name 'Barrot-Agent'")
