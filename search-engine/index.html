@@ -260,6 +260,7 @@
     .card h3 {
       color: #00ffcc;
       margin-bottom: 1rem;
+      font-size: 1.3rem;
     }
 
     .section-intro {
@@ -561,7 +562,7 @@
       }
     }
 
-    function migrateSharedWorkspace() {
+    function migrateLegacyToSharedWorkspace() {
       const legacyWorkspace = localStorage.getItem(legacyWorkspaceKey);
       if (legacyWorkspace && !localStorage.getItem(sharedWorkspaceKey)) {
         localStorage.setItem(sharedWorkspaceKey, legacyWorkspace);
@@ -591,10 +592,10 @@
       }
       searchWritePad.value = '';
       localStorage.removeItem(searchWorkspaceKey);
-      setSearchWorkspaceStatus('Search draft cleared. Dashboard workspace remains untouched until resynced.');
+      setSearchWorkspaceStatus('Search-only draft cleared. The shared dashboard workspace stays available until you overwrite or clear it separately.');
     }
 
-    migrateSharedWorkspace();
+    migrateLegacyToSharedWorkspace();
 
     const storedSearchWorkspace =
       localStorage.getItem(searchWorkspaceKey) ||

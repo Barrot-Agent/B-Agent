@@ -1647,7 +1647,9 @@ function barrotOptimize() {
         tab.classList.remove('active');
       });
       document.getElementById(sectionId).classList.add('active');
-      const activeTab = event?.currentTarget || document.querySelector(`.tab[data-section="${sectionId}"]`);
+      const activeTab =
+        event?.currentTarget ||
+        Array.from(document.querySelectorAll('.tab')).find(tab => tab.dataset.section === sectionId);
       if (activeTab) {
         activeTab.classList.add('active');
       }
