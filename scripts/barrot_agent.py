@@ -158,6 +158,22 @@ def verify_content(path, content):
 
 PROTECTED_WRITE = ("core/", "hf_space/", "web/", "scripts/emit_signal.py", ".github/workflows/")
 
+def preservation_check(old_content, new_content, min_retain=0.5):
+    """Reject a rewrite that destroyed most original content."""
+    def toks(s):
+        return set(w for w in s.split() if len(w) > 3)
+    old_t = toks(old_content)
+    if not old_t:
+        return True, "original trivial"
+    retained = len(old_t & toks(new_content)) / len(old_t)
+    len_ratio = len(new_content) / max(len(old_content), 1)
+    if retained < min_retain:
+        return False, f"content-loss: only {retained:.0%} of original words retained"
+    if len_ratio < 0.3:
+        return False, f"content-loss: shrank to {len_ratio:.0%} of size"
+    return True, f"preserved {retained:.0%}"
+
+
 def apply_transmutations(transmutations):
     """Each item: {\"path\": str, \"content\": str}. Verify BEFORE writing.
     Returns list of applied paths. Never writes unverified or protected content."""
@@ -174,6 +190,12 @@ def apply_transmutations(transmutations):
         ok, reason = verify_content(path, content)
         if not ok:
             print(f"REJECTED transmute ({reason}): {path}"); continue
+        if os.path.exists(path):
+            with open(path) as _f:
+                _old = _f.read()
+            pok, preason = preservation_check(_old, content)
+            if not pok:
+                print(f"REJECTED transmute ({preason}): {path}"); continue
         d = _os.path.dirname(path)
         if d: _os.makedirs(d, exist_ok=True)
         with open(path, "w") as f:
@@ -189,8 +211,24 @@ def main():
     run(f"git checkout -b {BRANCH}")
 
     inv = repo_inventory()
+    import re as _re
+    named = _re.findall(r'[\w./-]+\.(?:py|json|ya?ml|md|txt)', f"{TITLE}\n{TASK}")
+    file_ctx = ""
+    for fp in list(dict.fromkeys(named))[:5]:
+        if os.path.exists(fp):
+            try:
+                with open(fp) as _f:
+                    file_ctx += f"\n=== CURRENT CONTENT OF {fp} ===\n{_f.read()}\n=== END {fp} ===\n"
+            except Exception:
+                pass
+    note = ""
+    if file_ctx:
+        note = ("\n\nIMPORTANT: for any file shown above, if reformatting/editing it you MUST return "
+                "the FULL file preserving ALL existing information — change only what the task asks. "
+                "Do NOT invent new content or drop existing sections.")
     prompt = (
-        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}\n\nOutput the JSON command array."
+        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}{file_ctx}{note}"
+        f"\n\nOutput JSON (array for moves, or object with transmutations for rewrites)."
     )
     raw = ask_brain(SYSTEM, prompt).strip()
 
