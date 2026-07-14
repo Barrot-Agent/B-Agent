@@ -87,6 +87,46 @@ scoped. Never use 'git add -A'. Never touch .git/. Never delete files under core
 web/, or scripts/emit_signal.py. Output format: ["cmd1","cmd2",...]"""
 
 
+
+def validate_command(cmd):
+    """Reject malformed/unsafe commands before execution. Returns (ok, reason)."""
+    import shlex, re, os
+    stripped = cmd.strip()
+    if not stripped:
+        return False, "empty command"
+    try:
+        parts = shlex.split(stripped)
+    except ValueError as e:
+        return False, f"unparseable shell syntax: {e}"
+    if not parts:
+        return False, "no tokens"
+    verb = parts[0]
+    ALLOWED = {"git", "mkdir", "rm", "sed", "mv", "cp", "touch"}
+    if verb not in ALLOWED:
+        return False, f"disallowed command '{verb}'"
+    if verb == "sed":
+        script = None
+        for x in parts[1:]:
+            if x.startswith("-"):
+                continue
+            script = x; break
+        if script and script.startswith("s"):
+            delim = script[1] if len(script) > 1 else ""
+            if not delim or delim.isalnum():
+                return False, f"malformed sed: bad delimiter in {script!r}"
+            body = script[2:]
+            count = len(re.findall(r'(?<!\\)' + re.escape(delim), body))
+            if count != 2:
+                return False, f"malformed sed: expected 2 delimiters, found {count}"
+            segs = re.split(r'(?<!\\)' + re.escape(delim), body)
+            if segs and segs[0] == "":
+                return False, "malformed sed: empty search pattern"
+    if verb == "git" and len(parts) >= 4 and parts[1] == "mv":
+        if not os.path.exists(parts[2]):
+            return False, f"git mv source does not exist: {parts[2]}"
+    return True, "ok"
+
+
 def main():
     run("git config user.email 'barrot@barrot-agent.com'")
     run("git config user.name 'Barrot-Agent'")
@@ -121,6 +161,10 @@ def main():
         low = c.lower()
         if any(x in low for x in BANNED) or any(p in low for p in PROTECTED_DEL):
             print("REJECTED unsafe command:", c)
+            continue
+        ok, reason = validate_command(c)
+        if not ok:
+            print(f"REJECTED malformed command: {c}  ({reason})")
             continue
         safe.append(c)
     if not safe:
