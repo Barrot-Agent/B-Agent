@@ -117,7 +117,9 @@ def tool_latest_signal(args):
 
 
 def tool_ledger_tail(args):
-    n = max(1, min(int(args.get("n", 5)), 20))
+    try: n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError): n = 5
+    n = max(1, min(n, 20))
     r = requests.get(f"{RAW_BASE}/data/signal_ledger.jsonl", timeout=10)
     return "\n".join(r.text.strip().splitlines()[-n:])[:4000]
 
@@ -133,7 +135,9 @@ def tool_open_prs(args):
 
 
 def tool_recent_commits(args):
-    n = max(1, min(int(args.get("n", 5)), 15))
+    try: n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError): n = 5
+    n = max(1, min(n, 15))
     r = requests.get(f"{GH_REPO}/commits?per_page={n}", timeout=10, headers=_gh_headers())
     c = r.json()
     if not isinstance(c, list):
