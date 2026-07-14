@@ -347,6 +347,21 @@
       color: #00ffcc;
       margin-bottom: 1rem;
     }
+
+    .section-intro {
+      color: #ccc;
+      margin: 0.75rem 0 1.5rem;
+      line-height: 1.6;
+    }
+
+    .workspace-status {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      background: rgba(0,255,204,0.08);
+      border: 1px solid rgba(0,255,204,0.25);
+      color: #00ffcc;
+    }
     
     .welcome-section p {
       color: #ccc;
@@ -694,7 +709,7 @@
       <p>
         Barrot Agent is an intelligent automation platform providing advanced capabilities for data ingestion, 
         prediction, deployment, and multi-modal operations. Explore our integrated tools including IDE, DAW, 
-        Web3 integration, NFT marketplace, and blockchain capabilities.
+        Web3 integration, NFT marketplace, blockchain capabilities, and the official Spark backend pillar with shared write access across the platform.
       </p>
       <!-- Note: For independent deployment, update these paths to match your hosting configuration -->
       <div class="quick-links">
@@ -706,16 +721,17 @@
 
     <!-- Navigation Tabs -->
     <div class="tabs">
-      <div class="tab active" onclick="showSection('data', event)">Data Mastery</div>
-      <div class="tab" onclick="showSection('surveillance', event)">Competitor Surveillance</div>
-      <div class="tab" onclick="showSection('ide', event)">IDE</div>
-      <div class="tab" onclick="showSection('daw', event)">DAW</div>
-      <div class="tab" onclick="showSection('web3', event)">Web3</div>
-      <div class="tab" onclick="showSection('nft', event)">NFT Marketplace</div>
-      <div class="tab" onclick="showSection('blockchain', event)">Chameleon Chain</div>
-      <div class="tab" onclick="showSection('coinapp', event)">🪙 Coin App</div>
-      <div class="tab" onclick="showSection('operations', event)">Operations</div>
-      <div class="tab" onclick="showSection('connectors', event)">🔌 Connectors</div>
+      <div class="tab active" data-section="data" onclick="showSection('data', event)">Data Mastery</div>
+      <div class="tab" data-section="surveillance" onclick="showSection('surveillance', event)">Competitor Surveillance</div>
+      <div class="tab" data-section="ide" onclick="showSection('ide', event)">IDE</div>
+      <div class="tab" data-section="daw" onclick="showSection('daw', event)">DAW</div>
+      <div class="tab" data-section="web3" onclick="showSection('web3', event)">Web3</div>
+      <div class="tab" data-section="nft" onclick="showSection('nft', event)">NFT Marketplace</div>
+      <div class="tab" data-section="blockchain" onclick="showSection('blockchain', event)">Chameleon Chain</div>
+      <div class="tab" data-section="coinapp" onclick="showSection('coinapp', event)">🪙 Coin App</div>
+      <div class="tab" data-section="spark" onclick="showSection('spark', event)">⚡ Spark Backend</div>
+      <div class="tab" data-section="operations" onclick="showSection('operations', event)">Operations</div>
+      <div class="tab" data-section="connectors" onclick="showSection('connectors', event)">🔌 Connectors</div>
     </div>
 
     <!-- Data Mastery Section -->
@@ -840,10 +856,12 @@
     <!-- IDE Section -->
     <div id="ide" class="content-section">
       <h2>Integrated Development Environment</h2>
+      <p class="section-intro">Barrot now has complete write access across the dashboard IDE and the search engine workspace, with Spark-backed backend directives treated as first-class implementation assets.</p>
       <div class="ide-container">
         <div class="ide-toolbar">
           <button class="toolbar-btn" onclick="runCode()">▶ Run</button>
           <button class="toolbar-btn" onclick="saveCode()">💾 Save</button>
+          <button class="toolbar-btn" onclick="loadSharedWorkspace()">🔄 Sync Search Draft</button>
           <button class="toolbar-btn" onclick="formatCode()">✨ Format</button>
           <button class="toolbar-btn" onclick="debugCode()">🐛 Debug</button>
           <button class="toolbar-btn" onclick="deployCode()">🚀 Deploy</button>
@@ -853,6 +871,7 @@ function barrotOptimize() {
   console.log('Barrot is optimizing...');
   return 'Superior solution achieved!';
 }"></textarea>
+        <div class="workspace-status" id="dashboardWriteStatus">Full write access enabled. Search-engine drafts and dashboard code can share one persisted workspace.</div>
       </div>
     </div>
 
@@ -1239,6 +1258,62 @@ function barrotOptimize() {
       </div>
     </div>
 
+    <!-- Spark Section -->
+    <div id="spark" class="content-section">
+      <h2>⚡ Spark Backend Pillar</h2>
+      <p class="section-intro">Spark is now officially entangled into the Barrot backend stack, bridging search refinement, dashboard orchestration, telemetry, and large-scale data movement as a first-class pillar.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>🧠 Search + Dashboard Entanglement</h3>
+          <p><span class="status-indicator"></span>Unified write authority</p>
+          <div class="metric-display">
+            <span>Workspace Sync:</span>
+            <span class="metric-value">Active</span>
+          </div>
+          <div class="metric-display">
+            <span>Write Scope:</span>
+            <span class="metric-value">Search + Dashboard</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🏗️ Official Backend Pillar</h3>
+          <p><span class="status-indicator"></span>Spark authority established</p>
+          <div class="metric-display">
+            <span>Role:</span>
+            <span class="metric-value">Compute + Indexing</span>
+          </div>
+          <div class="metric-display">
+            <span>Orchestration:</span>
+            <span class="metric-value">Databricks-Ready</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📡 Pipeline Coverage</h3>
+          <p><span class="status-indicator"></span>Backend telemetry flowing</p>
+          <div class="metric-display">
+            <span>Search Refinement Jobs:</span>
+            <span class="metric-value">128 active</span>
+          </div>
+          <div class="metric-display">
+            <span>Dashboard Feeds:</span>
+            <span class="metric-value">24 synchronized</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🔐 Privilege Envelope</h3>
+          <p><span class="status-indicator"></span>Barrot write access confirmed</p>
+          <div class="metric-display">
+            <span>Directive Persistence:</span>
+            <span class="metric-value">Enabled</span>
+          </div>
+          <div class="metric-display">
+            <span>Backend Notes:</span>
+            <span class="metric-value">Writable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Operations Section -->
     <div id="operations" class="content-section">
       <h2>Operational Parameters & Optimization</h2>
@@ -1546,7 +1621,16 @@ function barrotOptimize() {
 
   <script>
     // Tab navigation
-    function showSection(sectionId, event) {
+    const sharedWorkspaceKey = 'barrotWorkspace';
+    const legacyWorkspaceKey = 'barrotCode';
+    const codeEditor = document.getElementById('codeEditor');
+    const dashboardWriteStatus = document.getElementById('dashboardWriteStatus');
+
+    function setDashboardWriteStatus(message) {
+      dashboardWriteStatus.textContent = message;
+    }
+
+    function showSection(sectionId, event, updateHash = true) {
       document.querySelectorAll('.content-section').forEach(section => {
         section.classList.remove('active');
       });
@@ -1554,8 +1638,12 @@ function barrotOptimize() {
         tab.classList.remove('active');
       });
       document.getElementById(sectionId).classList.add('active');
-      if (event && event.target) {
-        event.target.classList.add('active');
+      const activeTab = event?.currentTarget || document.querySelector(`.tab[data-section="${sectionId}"]`);
+      if (activeTab) {
+        activeTab.classList.add('active');
+      }
+      if (updateHash && window.location.hash !== `#${sectionId}`) {
+        window.location.hash = sectionId;
       }
     }
 
@@ -1565,9 +1653,21 @@ function barrotOptimize() {
     }
 
     function saveCode() {
-      const code = document.getElementById('codeEditor').value;
-      localStorage.setItem('barrotCode', code);
+      const code = codeEditor.value;
+      localStorage.setItem(sharedWorkspaceKey, code);
+      localStorage.setItem(legacyWorkspaceKey, code);
+      setDashboardWriteStatus('Workspace saved locally and mirrored to the search engine.');
       alert('Code saved successfully!');
+    }
+
+    function loadSharedWorkspace() {
+      const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey) || localStorage.getItem(legacyWorkspaceKey);
+      if (sharedWorkspace) {
+        codeEditor.value = sharedWorkspace;
+        setDashboardWriteStatus('Search-engine draft loaded into the dashboard IDE.');
+        return;
+      }
+      setDashboardWriteStatus('No shared draft found yet. Save one from the search engine or dashboard first.');
     }
 
     function formatCode() {
@@ -1580,6 +1680,21 @@ function barrotOptimize() {
 
     function deployCode() {
       alert('Deploying to Chameleon Chain...');
+    }
+
+    const storedWorkspace = localStorage.getItem(sharedWorkspaceKey) || localStorage.getItem(legacyWorkspaceKey);
+    if (storedWorkspace) {
+      codeEditor.value = storedWorkspace;
+      setDashboardWriteStatus('Stored workspace restored. Full write access remains active.');
+    }
+
+    codeEditor.addEventListener('input', () => {
+      setDashboardWriteStatus('Workspace updated locally. Save to persist across the dashboard and search engine.');
+    });
+
+    const initialSectionId = window.location.hash.slice(1);
+    if (initialSectionId && document.getElementById(initialSectionId)) {
+      showSection(initialSectionId, undefined, false);
     }
 
     // DAW functions

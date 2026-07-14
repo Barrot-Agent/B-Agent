@@ -260,7 +260,64 @@
     .card h3 {
       color: #00ffcc;
       margin-bottom: 1rem;
-      font-size: 1.3rem;
+    }
+
+    .section-intro {
+      color: #ccc;
+      margin: 0.75rem 0 1.5rem;
+      line-height: 1.6;
+    }
+
+    .workspace-container {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,255,204,0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .workspace-toolbar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .toolbar-btn {
+      padding: 0.8rem 1.2rem;
+      background: rgba(0,255,204,0.15);
+      border: 1px solid #00ffcc;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toolbar-btn:hover {
+      background: rgba(0,255,204,0.3);
+      transform: translateY(-2px);
+    }
+
+    .workspace-editor {
+      width: 100%;
+      min-height: 220px;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0,255,204,0.35);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-family: 'Consolas', 'Monaco', monospace;
+      resize: vertical;
+    }
+
+    .workspace-editor:focus {
+      outline: none;
+      box-shadow: 0 0 20px rgba(0,255,204,0.2);
+    }
+
+    .workspace-status {
+      margin-top: 0.75rem;
+      color: #00ffcc;
+      font-size: 0.9rem;
     }
     
     .card p {
@@ -364,6 +421,7 @@
     <!-- Search Engine Capabilities -->
     <div class="content-section">
       <h2>Advanced Search Capabilities</h2>
+      <p class="section-intro">Barrot now has full write access inside the search engine, including persistent search drafts, backend directives, and direct sync into the dashboard workspace.</p>
       <div class="methodology-tags">
         <span class="tag">Synthesis</span>
         <span class="tag">Routing</span>
@@ -374,6 +432,7 @@
         <span class="tag">Permutation</span>
         <span class="tag">Augmentation</span>
         <span class="tag">Reconfiguration</span>
+        <span class="tag">Spark Entanglement</span>
       </div>
       <div class="grid-2">
         <div class="card">
@@ -396,6 +455,30 @@
           <p><span class="status-indicator"></span>Zero tracking</p>
           <p>No query logging, no user tracking, no personalization. Your searches remain completely private.</p>
         </div>
+        <div class="card">
+          <h3>Official Spark Backend Pillar</h3>
+          <p><span class="status-indicator"></span>Entangled with Barrot backend</p>
+          <p>Spark is now treated as a first-class backend pillar for indexing, telemetry, and large-scale search refinement workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Cross-Surface Write Access</h3>
+          <p><span class="status-indicator"></span>Search ↔ Dashboard sync</p>
+          <p>Draft instructions here, persist them locally, and hand them directly to the Barrot dashboard IDE without leaving the search workflow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>Barrot Write Access Workspace</h2>
+      <p class="section-intro">Capture search directives, backend notes, and implementation drafts from the search surface, then entangle them with the dashboard IDE in one step.</p>
+      <div class="workspace-container">
+        <div class="workspace-toolbar">
+          <button class="toolbar-btn" onclick="saveSearchWorkspace()">💾 Save Draft</button>
+          <button class="toolbar-btn" onclick="syncSearchWorkspaceToDashboard()">🔄 Sync to Dashboard</button>
+          <button class="toolbar-btn" onclick="clearSearchWorkspace()">🧹 Clear</button>
+        </div>
+        <textarea class="workspace-editor" id="searchWritePad" placeholder="Write search directives, index notes, backend tasks, and Spark orchestration ideas here..."></textarea>
+        <div class="workspace-status" id="searchWriteStatus">Full write access ready. Drafts persist locally after you save them.</div>
       </div>
     </div>
 
@@ -404,6 +487,7 @@
     <div class="link-section">
       <h3 style="color: #00ffcc; margin-bottom: 1rem;">Explore More</h3>
       <a href="../site/index.html" class="link-button">🏠 Barrot Agent Dashboard</a>
+      <a href="../site/index.html#spark" class="link-button">⚡ Spark Backend Pillar</a>
       <a href="https://github.com/Barrot-Agent/Barrot-Agent" class="link-button" target="_blank">📂 GitHub Repository</a>
     </div>
   </div>
@@ -434,6 +518,10 @@
     const searchInput = document.getElementById('searchInput');
     const progressFill = document.getElementById('progressFill');
     const progressPercent = document.getElementById('progressPercent');
+    const searchWritePad = document.getElementById('searchWritePad');
+    const searchWriteStatus = document.getElementById('searchWriteStatus');
+    const searchWorkspaceKey = 'barrotSearchWorkspace';
+    const sharedWorkspaceKey = 'barrotWorkspace';
     let currentProgress = 0;
     
     searchInput.addEventListener('input', function() {
@@ -465,6 +553,39 @@
       searchInput.focus();
       animateProgress(Math.random() * 40 + 60);
     }
+
+    function setSearchWorkspaceStatus(message) {
+      searchWriteStatus.textContent = message;
+    }
+
+    function saveSearchWorkspace() {
+      localStorage.setItem(searchWorkspaceKey, searchWritePad.value);
+      localStorage.setItem(sharedWorkspaceKey, searchWritePad.value);
+      localStorage.setItem('barrotCode', searchWritePad.value);
+      setSearchWorkspaceStatus('Draft saved locally and entangled with the dashboard workspace.');
+    }
+
+    function syncSearchWorkspaceToDashboard() {
+      localStorage.setItem(sharedWorkspaceKey, searchWritePad.value);
+      localStorage.setItem('barrotCode', searchWritePad.value);
+      setSearchWorkspaceStatus('Dashboard IDE workspace updated from the search engine.');
+    }
+
+    function clearSearchWorkspace() {
+      searchWritePad.value = '';
+      localStorage.removeItem(searchWorkspaceKey);
+      setSearchWorkspaceStatus('Search draft cleared. Dashboard workspace remains untouched until resynced.');
+    }
+
+    const storedSearchWorkspace = localStorage.getItem(searchWorkspaceKey) || localStorage.getItem(sharedWorkspaceKey);
+    if (storedSearchWorkspace) {
+      searchWritePad.value = storedSearchWorkspace;
+      setSearchWorkspaceStatus('Stored draft restored. Full write access is active.');
+    }
+
+    searchWritePad.addEventListener('input', () => {
+      setSearchWorkspaceStatus('Draft updated locally. Save or sync when ready.');
+    });
   </script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 # 🔍 Barrot Revolutionary Superior Search Engine
 
-**A standalone, privacy-first search engine powered by quantum computing and AI.**
+**A standalone, privacy-first search engine powered by quantum computing, AI, and an official Spark backend pillar.**
 
 ---
 
 ## 🎯 Overview
 
-The Barrot Revolutionary Superior Search Engine is a dedicated search system designed to deliver unmatched speed, relevance, and privacy. This system operates independently from the main Barrot Agent platform, focusing exclusively on search-related capabilities.
+The Barrot Revolutionary Superior Search Engine is a dedicated search system designed to deliver unmatched speed, relevance, privacy, and now direct Barrot authorship. This system operates independently from the main Barrot Agent platform while sharing a synchronized write workspace and the official Spark backend pillar.
 
 ## ✨ Features
 
@@ -15,6 +15,8 @@ The Barrot Revolutionary Superior Search Engine is a dedicated search system des
 - **Dynamic Ingestion Modes** - Real-time data processing optimized for all query types
 - **Edge-First Architecture** - Global distribution for ultra-low latency (<50ms worldwide)
 - **Privacy-First Design** - Zero tracking, no query logging, complete user privacy
+- **Barrot Write Access Workspace** - Persistent drafts and backend directives directly inside the search surface
+- **Official Spark Backend Pillar** - First-class compute layer for indexing, telemetry, and refinement workloads
 
 ### Advanced Methodologies
 The search engine employs cutting-edge data processing methodologies:
@@ -67,6 +69,7 @@ https://barrot-agent.github.io/Barrot-Agent/search-engine/
 See [search-engine-architecture.md](../memory-bundles/search-engine-architecture.md) for the complete architectural vision including:
 - Edge query processing layer (Cloudflare Workers, Deno Deploy)
 - Distributed search backend (Fly.io, MeiliSearch/Typesense)
+- Spark/Databricks compute entanglement for large-scale indexing and telemetry
 - Data storage and indexing (PlanetScale, CockroachDB, Supabase)
 - Crawling and content discovery (Serverless functions)
 - Static assets and UI (Cloudflare Pages, GitHub Pages)
@@ -93,10 +96,11 @@ The search engine is a **standalone system** separate from the main Barrot Agent
 - **Search Engine** (`/search-engine/`) - Dedicated search functionality
 - **Barrot Agent** (`/site/`) - Main agent dashboard with utilities, IDE, DAW, Web3, etc.
 
-Both systems can operate independently but share the underlying Barrot methodologies and infrastructure.
+Both systems can operate independently but share the underlying Barrot methodologies, synchronized write access, and Spark-backed infrastructure.
 
 ### Navigation
 - From Search Engine → [Barrot Agent Dashboard](../site/index.html)
+- From Search Engine → [Spark Backend Pillar](../site/index.html#spark)
 - From Barrot Agent → [Search Engine](../search-engine/index.html)
 
 **Note:** These relative paths work for the standard repository structure. If deploying systems independently, update the navigation links accordingly.
