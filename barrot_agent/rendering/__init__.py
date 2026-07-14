@@ -23,21 +23,21 @@ dataset_renderer       Real-time rendering engine integration
 dataset_analytics      Live statistics dashboard & build report
 """
 
-from barrot_agent.rendering.dataset_manager import DatasetManager, DatasetRecord
 from barrot_agent.rendering.asset_loader import AssetLoader, LoadedAsset
-from barrot_agent.rendering.material_integration import MaterialIntegration, PBRMaterial
-from barrot_agent.rendering.scene_database import SceneDatabase, LoadedScene
-from barrot_agent.rendering.point_cloud_system import PointCloudSystem, LoadedPointCloud
-from barrot_agent.rendering.nerf_integration import NeRFIntegration, NeRFScene
-from barrot_agent.rendering.world_mapping import WorldMapping, WorldRegion
-from barrot_agent.rendering.photogrammetry_pipeline import PhotogrammetryPipeline, ProcessedModel
-from barrot_agent.rendering.dataset_cache import DatasetCache, CacheConfig
+from barrot_agent.rendering.dataset_analytics import AnalyticsSummary, DatasetAnalytics
+from barrot_agent.rendering.dataset_cache import CacheConfig, DatasetCache
 from barrot_agent.rendering.dataset_indexing import DatasetIndexing, SearchResult
-from barrot_agent.rendering.format_converter import FormatConverter, ConversionResult
-from barrot_agent.rendering.streaming_loader import StreamingLoader, StreamHandle
+from barrot_agent.rendering.dataset_manager import DatasetManager, DatasetRecord
+from barrot_agent.rendering.dataset_renderer import DatasetRenderer, RenderFrame, RenderSession
+from barrot_agent.rendering.format_converter import ConversionResult, FormatConverter
+from barrot_agent.rendering.material_integration import MaterialIntegration, PBRMaterial
+from barrot_agent.rendering.nerf_integration import NeRFIntegration, NeRFScene
+from barrot_agent.rendering.photogrammetry_pipeline import PhotogrammetryPipeline, ProcessedModel
+from barrot_agent.rendering.point_cloud_system import LoadedPointCloud, PointCloudSystem
 from barrot_agent.rendering.quality_metrics import QualityMetrics, ValidationReport
-from barrot_agent.rendering.dataset_renderer import DatasetRenderer, RenderSession, RenderFrame
-from barrot_agent.rendering.dataset_analytics import DatasetAnalytics, AnalyticsSummary
+from barrot_agent.rendering.scene_database import LoadedScene, SceneDatabase
+from barrot_agent.rendering.streaming_loader import StreamHandle, StreamingLoader
+from barrot_agent.rendering.world_mapping import WorldMapping, WorldRegion
 
 __all__ = [
     # Module 1
