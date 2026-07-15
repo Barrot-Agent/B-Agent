@@ -221,13 +221,36 @@ def main():
                     file_ctx += f"\n=== CURRENT CONTENT OF {fp} ===\n{_f.read()}\n=== END {fp} ===\n"
             except Exception:
                 pass
+    # Inject REAL GitHub data when the task is about PRs or issues
+    gh_ctx = ""
+    tl = f"{TITLE} {TASK}".lower()
+    if "pull request" in tl or " pr " in tl or "prs" in tl:
+        out = run('gh pr list --repo ' + REPO + ' --state open --limit 100 '
+                  '--json number,title,author,headRefName,additions,deletions,mergeable '
+                  '-q \'.[] | "#\\(.number) | \\(.author.login) | \\(.headRefName) | '
+                  '+\\(.additions)/-\\(.deletions) | \\(.mergeable) | \\(.title)"\'',
+                  check=False, quiet=True)
+        if out.strip():
+            gh_ctx += f"\n=== REAL OPEN PULL REQUESTS (use ONLY these, never invent) ===\n{out[:12000]}\n=== END PRS ===\n"
+    if "issue" in tl:
+        out = run('gh issue list --repo ' + REPO + ' --state open --limit 100 '
+                  '--json number,title,author -q \'.[] | "#\\(.number) | \\(.author.login) | \\(.title)"\'',
+                  check=False, quiet=True)
+        if out.strip():
+            gh_ctx += f"\n=== REAL OPEN ISSUES (use ONLY these, never invent) ===\n{out[:8000]}\n=== END ISSUES ===\n"
+
     note = ""
     if file_ctx:
         note = ("\n\nIMPORTANT: for any file shown above, if reformatting/editing it you MUST return "
                 "the FULL file preserving ALL existing information — change only what the task asks. "
                 "Do NOT invent new content or drop existing sections.")
+    if gh_ctx:
+        note += ("\n\nCRITICAL: the pull requests / issues listed above are the ONLY real ones. "
+                 "Use their actual numbers, authors, and titles verbatim. NEVER invent placeholder "
+                 "entries (no 'user1', no 'Fix typo', no '...' rows). If you cannot assess one, say so "
+                 "for that specific real PR. Every row you write must correspond to a real entry above.")
     prompt = (
-        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}{file_ctx}{note}"
+        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}{file_ctx}{gh_ctx}{note}"
         f"\n\nOutput JSON (array for moves, or object with transmutations for rewrites)."
     )
     raw = ask_brain(SYSTEM, prompt).strip()
