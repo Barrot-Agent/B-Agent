@@ -145,14 +145,42 @@ def tool_recent_commits(args):
     return "\n".join(f"{x['sha'][:7]} {x['commit']['message'].splitlines()[0][:70]}" for x in c)
 
 
+def tool_knowledge(args):
+    """Recent distilled knowledge entries from the real knowledge base."""
+    try:
+        n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError):
+        n = 5
+    n = max(1, min(n, 15))
+    r = requests.get(f"{RAW_BASE}/ping-pongings/knowledge-base/log.jsonl", timeout=10)
+    lines = [l for l in r.text.strip().splitlines() if l.strip()]
+    out = []
+    for l in reversed(lines):
+        try:
+            e = json.loads(l)
+        except Exception:
+            continue
+        d = e.get("distill")
+        if not d:
+            continue
+        out.append(f"[{d.get('sentiment')}|rel {d.get('xrp_relevance')}] {e.get('title','')[:90]} :: {d.get('one_line','')[:120]}")
+        if len(out) >= n:
+            break
+    if not out:
+        return "knowledge base has no distilled entries yet"
+    return f"{len(lines)} total entries. Most recent distilled:\n" + "\n".join(out)
+
+
 TOOL_FUNCS = {
     "get_latest_signal": tool_latest_signal,
     "get_ledger_tail": tool_ledger_tail,
     "get_open_pull_requests": tool_open_prs,
     "get_recent_commits": tool_recent_commits,
     "get_xrp_price": lambda a: f"XRP/USD = {get_xrp_price()}",
+    "get_knowledge": tool_knowledge,
 }
 TOOLS_SPEC = [
+    {"type": "function", "function": {"name": "get_knowledge", "description": "Barrot's REAL persistent knowledge base: recent distilled XRP news with sentiment, relevance, and why it matters. Use this for any question about what Barrot has learned, remembers, or knows about the market.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
     {
         "type": "function",
         "function": {
