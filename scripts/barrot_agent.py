@@ -226,8 +226,8 @@ def main():
     tl = f"{TITLE} {TASK}".lower()
     if "pull request" in tl or " pr " in tl or "prs" in tl:
         out = run('gh pr list --repo ' + REPO + ' --state open --limit 100 '
-                  '--json number,title,mergeable '
-                  '-q \'.[] | "#\\(.number) | \\(.mergeable) | \\(.title)"\''
+                  '--json number,title,mergeable,additions,deletions '
+                  '-q \'.[] | "#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | \\(.title)"\''
                   , check=False, quiet=True)
         if out.strip():
             gh_ctx += f"\n=== REAL OPEN PULL REQUESTS (use ONLY these, never invent) ===\n{out[:12000]}\n=== END PRS ===\n"
