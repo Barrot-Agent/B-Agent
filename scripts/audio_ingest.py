@@ -30,9 +30,36 @@ def fetch_audio(url, out_base):
     if os.path.exists(f"{out_base}.title"):
         title = open(f"{out_base}.title").read().strip() or url
     mb = os.path.getsize(path) / 1e6
-    if mb > MAX_MB:
-        raise RuntimeError(f"audio {mb:.1f}MB exceeds {MAX_MB}MB whisper limit")
     return path, title, mb
+
+def transcribe_chunked(path):
+    """Split into 10-min chunks so any length fits the whisper size limit."""
+    import glob
+    d = os.path.dirname(path) or "."
+    stem = os.path.join(d, "chunk_" + os.path.basename(path).replace(".mp3", ""))
+    code, out, err = run(f'ffmpeg -hide_banner -loglevel error -i "{path}" '
+                         f'-f segment -segment_time 600 -c copy "{stem}_%03d.mp3"')
+    chunks = sorted(glob.glob(f"{stem}_*.mp3"))
+    if not chunks:
+        chunks = [path]
+    texts = []
+    for i, c in enumerate(chunks):
+        cmb = os.path.getsize(c) / 1e6
+        if cmb > MAX_MB:
+            print(f"  chunk {i+1} {cmb:.1f}MB too large, skipped")
+            continue
+        try:
+            texts.append(transcribe(c))
+            print(f"  chunk {i+1}/{len(chunks)} ({cmb:.1f}MB) transcribed")
+        except Exception as e:
+            print(f"  chunk {i+1} failed: {str(e)[:100]}")
+        finally:
+            if c != path and os.path.exists(c):
+                os.remove(c)
+    if not texts:
+        raise RuntimeError("all chunks failed to transcribe")
+    return " ".join(texts)
+
 
 def transcribe(path):
     code, out, err = run(
@@ -101,7 +128,7 @@ def main():
         try:
             path, title, mb = fetch_audio(url, base)
             print(f"fetched {mb:.1f}MB: {title[:70]}")
-            text = transcribe(path)
+            text = transcribe_chunked(path)
             print(f"transcribed {len(text)} chars")
             append_entry(url, title, text, mb)
             done += 1
