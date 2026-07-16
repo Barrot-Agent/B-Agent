@@ -14,7 +14,7 @@ jobs:
     name: Conflict Marker Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Check for unresolved merge conflict markers
         run: |
           FOUND=$(git ls-files --exclude-standard -- '*.py' '*.yml' '*.yaml' '*.toml' '*.sh' \
