@@ -35,7 +35,6 @@ _FILE_MAP: Dict[str, str] = {
     "mmi_monetization": "mmi_monetization_unified.json",
     "character_capabilities": "character_capabilities_unified.json",
     "integration_report": "integration_report.json",
-    "pingpong_request": "pingpong_request.json",
     "pingpong_request_example": "pingpong_request_example.json",
 }
 
@@ -125,8 +124,7 @@ def load_pingpong_request(example: bool = False, force_reload: bool = False) -> 
         example: If True, return the example/template request instead of the
                  live one.
     """
-    key = "pingpong_request_example" if example else "pingpong_request"
-    return _load(key, force_reload)
+    return _load("pingpong_request_example", force_reload)
 
 
 # ---------------------------------------------------------------------------
