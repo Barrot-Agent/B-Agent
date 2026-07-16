@@ -21,10 +21,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install yt-dlp + ffmpeg
+      - name: Install yt-dlp + ffmpeg + deno
         run: |
           pip install -q yt-dlp
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          curl -fsSL https://deno.land/install.sh | sh -s -- -y
+          echo "$HOME/.deno/bin" >> $GITHUB_PATH
       - name: Ingest audio
         run: python3 scripts/audio_ingest.py
       - name: Distill new entries
