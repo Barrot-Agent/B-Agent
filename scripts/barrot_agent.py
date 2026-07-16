@@ -92,10 +92,10 @@ forbidden and will be rejected. Never use 'git add -A'. Never touch .git/. Never
 delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/."""
 
 
-
 def validate_command(cmd):
     """Reject malformed/unsafe commands before execution. Returns (ok, reason)."""
     import shlex, re, os
+
     stripped = cmd.strip()
     if not stripped:
         return False, "empty command"
@@ -114,16 +114,17 @@ def validate_command(cmd):
         for x in parts[1:]:
             if x.startswith("-"):
                 continue
-            script = x; break
+            script = x
+            break
         if script and script.startswith("s"):
             delim = script[1] if len(script) > 1 else ""
             if not delim or delim.isalnum():
                 return False, f"malformed sed: bad delimiter in {script!r}"
             body = script[2:]
-            count = len(re.findall(r'(?<!\\)' + re.escape(delim), body))
+            count = len(re.findall(r"(?<!\\)" + re.escape(delim), body))
             if count != 2:
                 return False, f"malformed sed: expected 2 delimiters, found {count}"
-            segs = re.split(r'(?<!\\)' + re.escape(delim), body)
+            segs = re.split(r"(?<!\\)" + re.escape(delim), body)
             if segs and segs[0] == "":
                 return False, "malformed sed: empty search pattern"
     if verb == "git" and len(parts) >= 4 and parts[1] == "mv":
@@ -132,24 +133,31 @@ def validate_command(cmd):
     return True, "ok"
 
 
-
 def verify_content(path, content):
     """Verify rewritten content is well-formed for its type. Returns (ok, reason).
     Fails closed: unknown types are not allowed to be rewritten."""
     import ast as _ast, json as _json, os as _os
+
     ext = _os.path.splitext(path)[1].lower()
     if ext == ".py":
-        try: _ast.parse(content)
-        except SyntaxError as e: return False, f"python syntax error line {e.lineno}: {e.msg}"
+        try:
+            _ast.parse(content)
+        except SyntaxError as e:
+            return False, f"python syntax error line {e.lineno}: {e.msg}"
         return True, "ok"
     if ext == ".json":
-        try: _json.loads(content)
-        except Exception as e: return False, f"json parse error: {e}"
+        try:
+            _json.loads(content)
+        except Exception as e:
+            return False, f"json parse error: {e}"
         return True, "ok"
     if ext in (".yml", ".yaml"):
         try:
-            import yaml; yaml.safe_load(content)
-        except Exception as e: return False, f"yaml parse error: {e}"
+            import yaml
+
+            yaml.safe_load(content)
+        except Exception as e:
+            return False, f"yaml parse error: {e}"
         return True, "ok"
     if ext in (".md", ".txt"):
         return True, "ok"  # plain text: nothing to break
@@ -158,10 +166,13 @@ def verify_content(path, content):
 
 PROTECTED_WRITE = ("core/", "hf_space/", "web/", "scripts/emit_signal.py", ".github/workflows/")
 
+
 def preservation_check(old_content, new_content, min_retain=0.5):
     """Reject a rewrite that destroyed most original content."""
+
     def toks(s):
         return set(w for w in s.split() if len(w) > 3)
+
     old_t = toks(old_content)
     if not old_t:
         return True, "original trivial"
@@ -178,26 +189,34 @@ def apply_transmutations(transmutations):
     """Each item: {\"path\": str, \"content\": str}. Verify BEFORE writing.
     Returns list of applied paths. Never writes unverified or protected content."""
     import os as _os
+
     applied = []
     for t in transmutations:
-        path = t.get("path", ""); content = t.get("content", "")
+        path = t.get("path", "")
+        content = t.get("content", "")
         if not path or content is None:
-            print(f"REJECTED transmute: missing path/content"); continue
+            print(f"REJECTED transmute: missing path/content")
+            continue
         if any(path.startswith(pp) for pp in PROTECTED_WRITE):
-            print(f"REJECTED transmute (protected path): {path}"); continue
+            print(f"REJECTED transmute (protected path): {path}")
+            continue
         if ".." in path or path.startswith("/"):
-            print(f"REJECTED transmute (unsafe path): {path}"); continue
+            print(f"REJECTED transmute (unsafe path): {path}")
+            continue
         ok, reason = verify_content(path, content)
         if not ok:
-            print(f"REJECTED transmute ({reason}): {path}"); continue
+            print(f"REJECTED transmute ({reason}): {path}")
+            continue
         if os.path.exists(path):
             with open(path) as _f:
                 _old = _f.read()
             pok, preason = preservation_check(_old, content)
             if not pok:
-                print(f"REJECTED transmute ({preason}): {path}"); continue
+                print(f"REJECTED transmute ({preason}): {path}")
+                continue
         d = _os.path.dirname(path)
-        if d: _os.makedirs(d, exist_ok=True)
+        if d:
+            _os.makedirs(d, exist_ok=True)
         with open(path, "w") as f:
             f.write(content)
         applied.append(path)
@@ -212,42 +231,55 @@ def main():
 
     inv = repo_inventory()
     import re as _re
-    named = _re.findall(r'[\w./-]+\.(?:py|json|ya?ml|md|txt)', f"{TITLE}\n{TASK}")
+
+    named = _re.findall(r"[\w./-]+\.(?:py|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
     file_ctx = ""
     for fp in list(dict.fromkeys(named))[:5]:
         if os.path.exists(fp):
             try:
                 with open(fp) as _f:
-                    file_ctx += f"\n=== CURRENT CONTENT OF {fp} ===\n{_f.read()}\n=== END {fp} ===\n"
+                    file_ctx += (
+                        f"\n=== CURRENT CONTENT OF {fp} ===\n{_f.read()}\n=== END {fp} ===\n"
+                    )
             except Exception:
                 pass
     # Inject REAL GitHub data when the task is about PRs or issues
     gh_ctx = ""
     tl = f"{TITLE} {TASK}".lower()
     if "pull request" in tl or " pr " in tl or "prs" in tl:
-        out = run('gh pr list --repo ' + REPO + ' --state open --limit 100 '
-                  '--json number,title,mergeable,additions,deletions '
-                  '-q \'.[] | "#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | \\(.title)"\''
-                  , check=False, quiet=True)
+        out = run(
+            "gh pr list --repo " + REPO + " --state open --limit 100 "
+            "--json number,title,mergeable,additions,deletions "
+            "-q '.[] | \"#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | \\(.title)\"'",
+            check=False,
+            quiet=True,
+        )
         if out.strip():
             gh_ctx += f"\n=== REAL OPEN PULL REQUESTS (use ONLY these, never invent) ===\n{out[:12000]}\n=== END PRS ===\n"
     if "issue" in tl:
-        out = run('gh issue list --repo ' + REPO + ' --state open --limit 100 '
-                  '--json number,title,author -q \'.[] | "#\\(.number) | \\(.author.login) | \\(.title)"\'',
-                  check=False, quiet=True)
+        out = run(
+            "gh issue list --repo " + REPO + " --state open --limit 100 "
+            "--json number,title,author -q '.[] | \"#\\(.number) | \\(.author.login) | \\(.title)\"'",
+            check=False,
+            quiet=True,
+        )
         if out.strip():
             gh_ctx += f"\n=== REAL OPEN ISSUES (use ONLY these, never invent) ===\n{out[:8000]}\n=== END ISSUES ===\n"
 
     note = ""
     if file_ctx:
-        note = ("\n\nIMPORTANT: for any file shown above, if reformatting/editing it you MUST return "
-                "the FULL file preserving ALL existing information — change only what the task asks. "
-                "Do NOT invent new content or drop existing sections.")
+        note = (
+            "\n\nIMPORTANT: for any file shown above, if reformatting/editing it you MUST return "
+            "the FULL file preserving ALL existing information — change only what the task asks. "
+            "Do NOT invent new content or drop existing sections."
+        )
     if gh_ctx:
-        note += ("\n\nCRITICAL: the pull requests / issues listed above are the ONLY real ones. "
-                 "Use their actual numbers, authors, and titles verbatim. NEVER invent placeholder "
-                 "entries (no 'user1', no 'Fix typo', no '...' rows). If you cannot assess one, say so "
-                 "for that specific real PR. Every row you write must correspond to a real entry above.")
+        note += (
+            "\n\nCRITICAL: the pull requests / issues listed above are the ONLY real ones. "
+            "Use their actual numbers, authors, and titles verbatim. NEVER invent placeholder "
+            "entries (no 'user1', no 'Fix typo', no '...' rows). If you cannot assess one, say so "
+            "for that specific real PR. Every row you write must correspond to a real entry above."
+        )
     prompt = (
         f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}{file_ctx}{gh_ctx}{note}"
         f"\n\nOutput JSON (array for moves, or object with transmutations for rewrites)."
@@ -255,6 +287,7 @@ def main():
     raw = ask_brain(SYSTEM, prompt).strip()
 
     import re
+
     obj_a, arr_a = raw.find("{"), raw.find("[")
     if obj_a == -1 and arr_a == -1:
         sys.exit(f"brain returned no JSON:\n{raw[:800]}")
@@ -278,7 +311,15 @@ def main():
         cmds = data.get("commands", []) or []
         trans = data.get("transmutations", []) or []
 
-    BANNED = ["git add -a", "git push", "rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i"]
+    BANNED = [
+        "git add -a",
+        "git push",
+        "rm -rf",
+        ".git/",
+        "git reset --hard",
+        "git checkout main",
+        "sed -i",
+    ]
     PROTECTED_DEL = ["rm core/", "rm hf_space/", "rm web/", "rm scripts/emit_signal.py"]
     safe = []
     for c in cmds:

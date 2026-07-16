@@ -5,6 +5,7 @@ yt-dlp pulls audio -> Groq whisper-large-v3 transcribes -> entry appended to the
 knowledge base -> existing knowledge_distill.py distills it like any other source.
 Honest: a failed fetch or transcription is reported, never invented.
 """
+
 import json, os, subprocess, sys, uuid
 from datetime import datetime, timezone
 
@@ -13,15 +14,19 @@ KB = "ping-pongings/knowledge-base/log.jsonl"
 CFG = "ping-pongings/knowledge-base/config.json"
 MAX_MB = 24
 
+
 def run(cmd):
     r = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     return r.returncode, r.stdout, r.stderr
 
+
 def fetch_audio(url, out_base):
-    cmd = (f'yt-dlp -x --audio-format mp3 --audio-quality 9 '
-           f'--postprocessor-args "-ac 1 -ar 16000 -b:a 48k" '
-           f'-o "{out_base}.%(ext)s" --no-playlist '
-           f'--print-to-file "%(title)s" "{out_base}.title" "{url}"')
+    cmd = (
+        f"yt-dlp -x --audio-format mp3 --audio-quality 9 "
+        f'--postprocessor-args "-ac 1 -ar 16000 -b:a 48k" '
+        f'-o "{out_base}.%(ext)s" --no-playlist '
+        f'--print-to-file "%(title)s" "{out_base}.title" "{url}"'
+    )
     code, out, err = run(cmd)
     path = f"{out_base}.mp3"
     if code != 0 or not os.path.exists(path):
@@ -32,13 +37,17 @@ def fetch_audio(url, out_base):
     mb = os.path.getsize(path) / 1e6
     return path, title, mb
 
+
 def transcribe_chunked(path):
     """Split into 10-min chunks so any length fits the whisper size limit."""
     import glob
+
     d = os.path.dirname(path) or "."
     stem = os.path.join(d, "chunk_" + os.path.basename(path).replace(".mp3", ""))
-    code, out, err = run(f'ffmpeg -hide_banner -loglevel error -i "{path}" '
-                         f'-f segment -segment_time 600 -c copy "{stem}_%03d.mp3"')
+    code, out, err = run(
+        f'ffmpeg -hide_banner -loglevel error -i "{path}" '
+        f'-f segment -segment_time 600 -c copy "{stem}_%03d.mp3"'
+    )
     chunks = sorted(glob.glob(f"{stem}_*.mp3"))
     if not chunks:
         chunks = [path]
@@ -63,9 +72,10 @@ def transcribe_chunked(path):
 
 def transcribe(path):
     code, out, err = run(
-        f'curl -s -X POST https://api.groq.com/openai/v1/audio/transcriptions '
+        f"curl -s -X POST https://api.groq.com/openai/v1/audio/transcriptions "
         f'-H "Authorization: Bearer {KEY}" '
-        f'-F "file=@{path}" -F "model=whisper-large-v3" -F "response_format=json"')
+        f'-F "file=@{path}" -F "model=whisper-large-v3" -F "response_format=json"'
+    )
     if code != 0:
         raise RuntimeError(f"curl failed: {err[:200]}")
     try:
@@ -75,6 +85,7 @@ def transcribe(path):
     if "text" not in data:
         raise RuntimeError(f"whisper error: {json.dumps(data)[:300]}")
     return data["text"].strip()
+
 
 def already_have(url):
     if not os.path.exists(KB):
@@ -87,6 +98,7 @@ def already_have(url):
             except Exception:
                 pass
     return False
+
 
 def append_entry(url, title, text, mb):
     os.makedirs(os.path.dirname(KB), exist_ok=True)
@@ -105,13 +117,16 @@ def append_entry(url, title, text, mb):
     if os.path.exists(CFG):
         try:
             cfg = json.load(open(CFG))
-            src = cfg.setdefault("sources", {}).setdefault("video_audio", {"enabled": True, "entries_ingested": 0})
+            src = cfg.setdefault("sources", {}).setdefault(
+                "video_audio", {"enabled": True, "entries_ingested": 0}
+            )
             src["entries_ingested"] = src.get("entries_ingested", 0) + 1
             cfg["last_updated"] = datetime.now(timezone.utc).isoformat()
             json.dump(cfg, open(CFG, "w"), indent=2)
         except Exception as e:
             print(f"config update skipped: {e}")
     return entry
+
 
 def main():
     urls = [u.strip() for u in os.environ.get("AUDIO_URLS", "").split(",") if u.strip()]
@@ -141,6 +156,7 @@ def main():
                 if os.path.exists(p):
                     os.remove(p)
     print(f"\n{done}/{len(urls)} audio sources ingested.")
+
 
 if __name__ == "__main__":
     main()

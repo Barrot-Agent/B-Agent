@@ -114,34 +114,43 @@ def analyze_signal(signal_text: str):
     return 0, 0.0, f"sentiment unavailable ({last_err})"
 
 
-
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
     from datetime import timedelta
+
     if not os.path.exists(path):
         return None, 0, []
     cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
-    num = den = 0.0; used = 0; heads = []
+    num = den = 0.0
+    used = 0
+    heads = []
     with open(path) as f:
         for line in f:
-            try: e = json.loads(line)
-            except Exception: continue
-            if not e.get("distilled"): continue
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue
+            if not e.get("distilled"):
+                continue
             d = e.get("distill", {})
             w = float(d.get("xrp_relevance", 0) or 0)
-            if w <= 0: continue
+            if w <= 0:
+                continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at","").replace("Z","+00:00"))
-                if ts < cutoff: continue
+                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
+                if ts < cutoff:
+                    continue
             except Exception:
                 pass
-            s = {"bullish":1.0,"neutral":0.0,"bearish":-1.0}.get(d.get("sentiment"),0.0)
-            num += s*w; den += w; used += 1
+            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
+            num += s * w
+            den += w
+            used += 1
             if w >= 0.5 and len(heads) < 6:
                 heads.append(f"[{d.get('sentiment')}] {e.get('title','')[:80]}")
     if den == 0:
         return None, 0, []
-    return int(round((num/den + 1) * 50)), used, heads
+    return int(round((num / den + 1) * 50)), used, heads
 
 
 def main():

@@ -117,8 +117,10 @@ def tool_latest_signal(args):
 
 
 def tool_ledger_tail(args):
-    try: n = int(args.get("n", 5) or 5)
-    except (TypeError, ValueError): n = 5
+    try:
+        n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError):
+        n = 5
     n = max(1, min(n, 20))
     r = requests.get(f"{RAW_BASE}/data/signal_ledger.jsonl", timeout=10)
     return "\n".join(r.text.strip().splitlines()[-n:])[:4000]
@@ -135,8 +137,10 @@ def tool_open_prs(args):
 
 
 def tool_recent_commits(args):
-    try: n = int(args.get("n", 5) or 5)
-    except (TypeError, ValueError): n = 5
+    try:
+        n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError):
+        n = 5
     n = max(1, min(n, 15))
     r = requests.get(f"{GH_REPO}/commits?per_page={n}", timeout=10, headers=_gh_headers())
     c = r.json()
@@ -163,7 +167,9 @@ def tool_knowledge(args):
         d = e.get("distill")
         if not d:
             continue
-        out.append(f"[{d.get('sentiment')}|rel {d.get('xrp_relevance')}] {e.get('title','')[:90]} :: {d.get('one_line','')[:120]}")
+        out.append(
+            f"[{d.get('sentiment')}|rel {d.get('xrp_relevance')}] {e.get('title','')[:90]} :: {d.get('one_line','')[:120]}"
+        )
         if len(out) >= n:
             break
     if not out:
@@ -180,7 +186,14 @@ TOOL_FUNCS = {
     "get_knowledge": tool_knowledge,
 }
 TOOLS_SPEC = [
-    {"type": "function", "function": {"name": "get_knowledge", "description": "Barrot's REAL persistent knowledge base: recent distilled XRP news with sentiment, relevance, and why it matters. Use this for any question about what Barrot has learned, remembers, or knows about the market.", "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}}}},
+    {
+        "type": "function",
+        "function": {
+            "name": "get_knowledge",
+            "description": "Barrot's REAL persistent knowledge base: recent distilled XRP news with sentiment, relevance, and why it matters. Use this for any question about what Barrot has learned, remembers, or knows about the market.",
+            "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
+        },
+    },
     {
         "type": "function",
         "function": {
