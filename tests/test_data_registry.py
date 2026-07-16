@@ -10,4 +10,3 @@ class TestDataRegistry:
         payload = registry.load_pingpong_request(example=True, force_reload=True)
         assert payload["origin"] == "barrot"
         assert payload["directive"] == "offload_pingpong"
-
