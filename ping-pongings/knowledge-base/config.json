@@ -1,6 +1,6 @@
 {
   "knowledge_base_version": "1.0.0",
-  "last_updated": "2026-07-16T12:50:38.400557+00:00",
+  "last_updated": "2026-07-16T14:28:25.761802+00:00",
   "configuration": {
     "auto_augmentation": true,
     "verification_required": true,
@@ -102,6 +102,10 @@
       "priority": "critical",
       "entries_ingested": 0,
       "description": "Knowledge discovered during ping-pong processing"
+    },
+    "video_audio": {
+      "enabled": true,
+      "entries_ingested": 1
     }
   },
   "conflict_resolution": {
