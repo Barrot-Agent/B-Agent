@@ -26,5 +26,6 @@ def emit_pingpong_request(payload: dict):
     with open(_PINGPONG_REQUEST_PATH, "w") as f:
         json.dump(request, f, indent=2)
     print(
-        f"Ping-Pong request emitted at {_PINGPONG_REQUEST_PATH}. Commit to GitHub to trigger external system."
+        f"Ping-Pong request emitted at {_PINGPONG_REQUEST_PATH}. "
+        "Commit to GitHub to trigger external system."
     )
