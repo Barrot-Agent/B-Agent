@@ -201,8 +201,8 @@ class DatasetAnalytics:
 
         lines.append("\n---\n")
         lines.append("## System Metrics\n")
-        lines.append(f"| Metric | Value |")
-        lines.append(f"|--------|-------|")
+        lines.append("| Metric | Value |")
+        lines.append("|--------|-------|")
         lines.append(f"| Total Assets Registered | **{m.total_assets_loaded:,}+** |")
         lines.append(f"| Registered Datasets | **{m.registered_datasets}** |")
         lines.append(f"| Total Raw Data Size | **{m.total_memory_used_gb:,.0f} GB** |")
@@ -319,7 +319,7 @@ class DatasetAnalytics:
             "materials": "Tier 4 — Material Libraries",
             "scenes": "Tier 2 — Large-Scale 3D Scene Databases",
             "point_clouds": "Tier 2 — Point Cloud Databases",
-            "nerf": "Tier 3 — Neural Radiance Field Datasets",
+            "ner": "Tier 3 — Neural Radiance Field Datasets",
             "world_mapping": "Tier 5 — World-Scale 3D Mapping",
             "cad_models": "Tier 6 — Automotive & Products",
             "scans": "Tier 6 — High-Quality Object Scans",
