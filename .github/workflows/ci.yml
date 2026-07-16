@@ -10,6 +10,23 @@ permissions:
   contents: read
 
 jobs:
+  conflict-markers:
+    name: Conflict Marker Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for unresolved merge conflict markers
+        run: |
+          FOUND=$(git ls-files --exclude-standard -- '*.py' '*.yml' '*.yaml' '*.toml' '*.sh' \
+            | grep -v 'merge_conflict' \
+            | xargs --no-run-if-empty grep -l -e '^<<<<<<< ' -e '^>>>>>>> ' 2>/dev/null || true)
+          if [ -n "$FOUND" ]; then
+            echo "ERROR: unresolved merge conflict markers found in:" >&2
+            echo "$FOUND" >&2
+            exit 1
+          fi
+          echo "OK: no conflict markers."
+
   lint:
     name: Code Quality
     runs-on: ubuntu-latest
