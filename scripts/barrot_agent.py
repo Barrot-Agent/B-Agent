@@ -232,7 +232,7 @@ def main():
     inv = repo_inventory()
     import re as _re
 
-    named = _re.findall(r"[\w./-]+\.(?:py|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
+    named = _re.findall(r"[\w./-]+\.(?:py|jsonl|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
     file_ctx = ""
     for fp in list(dict.fromkeys(named))[:5]:
         if os.path.exists(fp):
