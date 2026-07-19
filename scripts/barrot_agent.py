@@ -7,6 +7,8 @@ workflow + your 'approved' label decide what lands.
 """
 
 import os, subprocess, json, urllib.request, urllib.error, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from sandbox import verify_result
 
 REPO = os.environ["REPO"]
 TASK = os.environ.get("TASK_BODY", "")
@@ -361,6 +363,15 @@ def main():
     run("git add .", check=False)
     if not run("git status --porcelain", check=False).strip():
         sys.exit("no changes produced")
+
+    # SANDBOX SAFETY: verify the resulting working tree before committing.
+    # A broken result blocks the PR instead of shipping it.
+    sb_ok, sb_report = verify_result(".")
+    print(f"[sandbox] verification: {'PASS' if sb_ok else 'FAIL'}")
+    if sb_report and sb_report != "clean":
+        print(f"[sandbox] {sb_report}")
+    if not sb_ok:
+        sys.exit("SANDBOX BLOCKED: task produced broken files; no PR opened.")
 
     summary = "\\n".join(f"- {c}" for c in safe)
     run('git commit -m "Barrot autonomous task: ' + TITLE.replace('"', "'") + '"')
