@@ -262,12 +262,12 @@ def main():
     if pr_nums:
         seen = []
         for _n in dict.fromkeys(pr_nums):
-            if len(seen) >= 12:
+            if len(seen) >= 4:
                 break
             d = run(f"gh pr diff {_n} --repo {REPO}", check=False, quiet=True)
             if d.strip():
                 # cap each diff so many fit; names/paths/first lines carry the signal
-                seen.append(f"--- PR #{_n} DIFF ---\n{d[:3500]}")
+                seen.append(f"--- PR #{_n} DIFF ---\n{d[:1800]}")
         if seen:
             gh_ctx += ("\n=== REAL PR DIFFS (actual file changes — judge ONLY from these, "
                        "never from the title) ===\n" + "\n\n".join(seen) + "\n=== END DIFFS ===\n")
