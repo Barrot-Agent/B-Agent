@@ -15,3 +15,15 @@
 * Working code or docs: GitHub Actions workflow for building the Barrot Build Relay with added validation and Python setup
 * Touches core/ hf_space/ scripts/ .github/: .github/
 * Verdict: KEEP
+
+### PR #127
+* Files changed: .gitignore, BARROT_SPEAK.md
+* Working code or docs: Added barrot speak function implementation with communication interface for Barrot to express thoughts and insights
+* Touches core/ hf_space/ scripts/ .github/: No
+* Verdict: KEEP
+
+### PR #69
+* Files changed: .github/workflows/BBR.yml
+* Working code or docs: GitHub Actions workflow for building the Barrot Build Relay with added validation and Python setup
+* Touches core/ hf_space/ scripts/ .github/: .github/
+* Verdict: KEEP
