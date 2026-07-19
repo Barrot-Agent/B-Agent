@@ -256,6 +256,21 @@ def main():
         )
         if out.strip():
             gh_ctx += f"\n=== REAL OPEN PULL REQUESTS (use ONLY these, never invent) ===\n{out[:12000]}\n=== END PRS ===\n"
+    # If the task names specific PR numbers, fetch their REAL diffs (not just titles)
+    import re as _re2
+    pr_nums = _re2.findall(r"#(\d+)", f"{TITLE} {TASK}")
+    if pr_nums:
+        seen = []
+        for _n in dict.fromkeys(pr_nums):
+            if len(seen) >= 12:
+                break
+            d = run(f"gh pr diff {_n} --repo {REPO}", check=False, quiet=True)
+            if d.strip():
+                # cap each diff so many fit; names/paths/first lines carry the signal
+                seen.append(f"--- PR #{_n} DIFF ---\n{d[:3500]}")
+        if seen:
+            gh_ctx += ("\n=== REAL PR DIFFS (actual file changes — judge ONLY from these, "
+                       "never from the title) ===\n" + "\n\n".join(seen) + "\n=== END DIFFS ===\n")
     if "issue" in tl:
         out = run(
             "gh issue list --repo " + REPO + " --state open --limit 100 "
