@@ -267,7 +267,7 @@ def main():
             d = run(f"gh pr diff {_n} --repo {REPO}", check=False, quiet=True)
             if d.strip():
                 # cap each diff so many fit; names/paths/first lines carry the signal
-                seen.append(f"--- PR #{_n} DIFF ---\n{d[:1800]}")
+                seen.append(f"--- PR #{_n} DIFF ---\n{d[:1200]}")
         if seen:
             gh_ctx += ("\n=== REAL PR DIFFS (actual file changes — judge ONLY from these, "
                        "never from the title) ===\n" + "\n\n".join(seen) + "\n=== END DIFFS ===\n")
