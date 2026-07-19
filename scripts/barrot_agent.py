@@ -296,7 +296,7 @@ def main():
             "for that specific real PR. Every row you write must correspond to a real entry above."
         )
     prompt = (
-        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}{file_ctx}{gh_ctx}{note}"
+        f"TASK:\n{TITLE}\n{TASK}\n\n" + ("" if "REAL PR DIFFS" in gh_ctx else f"CURRENT REPO FILES:\n{inv}") + f"{file_ctx}{gh_ctx}{note}"
         f"\n\nOutput JSON (array for moves, or object with transmutations for rewrites)."
     )
     raw = ask_brain(SYSTEM, prompt).strip()
