@@ -3,7 +3,7 @@
 import os, sys, json, subprocess
 KEY = os.environ.get("GROQ_API_KEY", "")
 MODEL = os.environ.get("TTS_MODEL", "canopylabs/orpheus-v1-english")
-VOICE = os.environ.get("TTS_VOICE", "tara")
+VOICE = os.environ.get("TTS_VOICE", "autumn")
 def _run(cmd):
     r = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     return r.returncode, r.stdout, r.stderr
