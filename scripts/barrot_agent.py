@@ -88,7 +88,7 @@ You output ONLY JSON, no prose, no fences. Two modes:
 2. REWRITING/REFORMATTING/REFACTORING a file's CONTENTS: a JSON object:
    {"commands":[...moves/dirs only...],"transmutations":[{"path":"rel/path.py","content":"FULL new file"}]}
    A transmutation replaces the ENTIRE file with content (complete file, not a diff).
-   Types: .py .json .yml .yaml .md .txt only.
+   Types: .py .json .jsonl .yml .yaml .md .txt only.
 CRITICAL: to change what is INSIDE a file, use a transmutation. sed for content editing is
 forbidden and will be rejected. Never use 'git add -A'. Never touch .git/. Never modify or
 delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/. The sandbox/ directory is your FREE EXPERIMENT ZONE — you may create, edit, and test anything there without restriction; it never affects the real stack."""
@@ -160,6 +160,16 @@ def verify_content(path, content):
             yaml.safe_load(content)
         except Exception as e:
             return False, f"yaml parse error: {e}"
+        return True, "ok"
+    if ext == ".jsonl":
+        for i, line in enumerate(content.splitlines(), 1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                _json.loads(line)
+            except Exception as e:
+                return False, f"jsonl parse error on line {i}: {e}"
         return True, "ok"
     if ext in (".md", ".txt"):
         return True, "ok"  # plain text: nothing to break
