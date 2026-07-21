@@ -89,6 +89,9 @@ You output ONLY JSON, no prose, no fences. Two modes:
    {"commands":[...moves/dirs only...],"transmutations":[{"path":"rel/path.py","content":"FULL new file"}]}
    A transmutation replaces the ENTIRE file with content (complete file, not a diff).
    Types: .py .json .jsonl .yml .yaml .md .txt only.
+3. REPORTING/AUDITING/ANALYZING with no code change needed: a JSON object:
+   {"report":"your findings as plain text"}
+   Use this when the task asks you to investigate, audit, or report -- not to modify anything.
 CRITICAL: to change what is INSIDE a file, use a transmutation. sed for content editing is
 forbidden and will be rejected. Never use 'git add -A'. Never touch .git/. Never modify or
 delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/. The sandbox/ directory is your FREE EXPERIMENT ZONE — you may create, edit, and test anything there without restriction; it never affects the real stack."""
@@ -343,6 +346,15 @@ def main():
     else:
         cmds = data.get("commands", []) or []
         trans = data.get("transmutations", []) or []
+
+    report = data.get("report") if isinstance(data, dict) else None
+    if report and not cmds and not trans:
+        run("git checkout main", check=False)
+        run(f"git branch -D {BRANCH}", check=False)
+        comment_body = report.replace(chr(34), chr(39))[:60000]
+        run(f'gh issue comment {ISSUE} --repo {REPO} --body "{comment_body}"', check=False)
+        print("DONE -- report posted as issue comment, no code change needed.")
+        sys.exit(0)
 
     BANNED = [
         "git add -a",
