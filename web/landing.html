@@ -252,5 +252,59 @@ footer strong{color:var(--text)}
 })();
 </script>
 
+<script>
+(function() {
+  function isWebMCPSupported() {
+    return typeof navigator !== "undefined" && "modelContext" in navigator;
+  }
+
+  // Graceful degradation: if this browser doesn't support WebMCP yet
+  // (only Chrome origin-trial builds do, as of mid-2026), do nothing.
+  // The page's existing HTML/JSON already works fine for everyone else.
+  if (!isWebMCPSupported()) return;
+
+  navigator.modelContext.registerTool({
+    name: "getLatestXRPSignal",
+    description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
+    inputSchema: { type: "object", properties: {} },
+    execute: async function() {
+      var res = await fetch("latest_signal.json");
+      if (!res.ok) return { error: "signal_unavailable" };
+      return await res.json();
+    }
+  });
+
+  navigator.modelContext.registerTool({
+    name: "getResearchBasis",
+    description: "Get the peer-reviewed academic citations backing Barrot's XRP signal methodology, covering cross-border settlement efficiency and sentiment-prediction research.",
+    inputSchema: { type: "object", properties: {} },
+    execute: async function() {
+      return {
+        settlement_efficiency: [
+          "Research on Payment Settlement Mode in Cross-border Business Trade Based on Blockchain Technology (10.21203/rs.3.rs-735280/v1)",
+          "Liquidity connectedness in cryptocurrency market (10.1186/s40854-021-00308-3)"
+        ],
+        sentiment_prediction: [
+          "What Makes Cryptocurrencies Special? Investor Sentiment and Return Predictability During the Bubble (10.2139/ssrn.3398423)",
+          "The predictive power of public Twitter sentiment for forecasting cryptocurrency prices (10.1016/j.intfin.2020.101188)",
+          "The impact of investor greed and fear on cryptocurrency returns (10.1108/rbf-08-2023-0224)"
+        ],
+        disclaimer: "For informational purposes only, not financial advice."
+      };
+    }
+  });
+
+  navigator.modelContext.registerTool({
+    name: "subscribeToXRPSignals",
+    description: "Open the checkout page to subscribe to Barrot's XRP signal service.",
+    inputSchema: { type: "object", properties: {} },
+    execute: async function() {
+      window.open("https://prostarelite.gumroad.com/l/opvxi", "_blank");
+      return { opened: true, url: "https://prostarelite.gumroad.com/l/opvxi" };
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
