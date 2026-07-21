@@ -125,15 +125,7 @@ def _get_or_create_cluster_spec() -> dict:
     """Return a cluster spec dict.  Uses an existing cluster if configured."""
     if CLUSTER_ID:
         return {"existing_cluster_id": CLUSTER_ID}
-    return {
-        "new_cluster": ClusterSpec(
-            spark_version="14.3.x-scala2.12",
-            node_type_id="Standard_DS3_v2",
-            num_workers=0,
-            spark_conf={"spark.databricks.cluster.profile": "singleNode"},
-            custom_tags={"ResourceClass": "SingleNode"},
-        )
-    }
+    return {}
 
 
 def _deploy_job(client: WorkspaceClient) -> int:
