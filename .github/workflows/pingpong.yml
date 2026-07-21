@@ -1,11 +1,13 @@
 name: Ping-Pong Chain
 
 on:
+  schedule:
+    - cron: '30 */12 * * *'
   workflow_dispatch:
     inputs:
       task:
         description: Task for the refinement chain
-        required: true
+        required: false
 
 permissions:
   contents: write
@@ -15,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      PINGPONG_TASK: ${{ inputs.task }}
+      PINGPONG_TASK: ${{ inputs.task || 'Analyze the current state of XRP cross-border payment adoption and summarize the most significant recent development, grounded only in verifiable facts.' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
