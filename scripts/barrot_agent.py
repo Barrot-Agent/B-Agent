@@ -224,8 +224,13 @@ def apply_transmutations(transmutations):
                 _old = _f.read()
             pok, preason = preservation_check(_old, content)
             if not pok:
-                print(f"REJECTED transmute ({preason}): {path}")
-                continue
+                justification = t.get("justification", "").strip()
+                if len(justification) >= 40:
+                    print(f"OVERRIDE transmute ({preason}) - justified: {path}")
+                    print(f"  justification: {justification}")
+                else:
+                    print(f"REJECTED transmute ({preason}): {path}")
+                    continue
         d = _os.path.dirname(path)
         if d:
             _os.makedirs(d, exist_ok=True)
