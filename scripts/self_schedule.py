@@ -82,15 +82,24 @@ def open_gap_issue(source, hours_stale, threshold):
         f"This issue was opened automatically -- verify the underlying workflow "
         f"(schedule, API limits, credentials) before making changes."
     )
-    result = subprocess.run(
-        ["gh", "issue", "create", "--title", title, "--body", body, "--label", "barrot-task"],
+    create_result = subprocess.run(
+        ["gh", "issue", "create", "--title", title, "--body", body],
         capture_output=True, text=True
     )
-    if result.returncode == 0:
-        print(f"Opened issue: {title}")
-        print(result.stdout.strip())
-    else:
-        print(f"FAILED to open issue for {source}: {result.stderr}", file=sys.stderr)
+    if create_result.returncode != 0:
+        print(f"FAILED to open issue for {source}: {create_result.stderr}", file=sys.stderr)
+        return
+
+    issue_url = create_result.stdout.strip()
+    print(f"Opened issue: {title}")
+    print(issue_url)
+
+    label_result = subprocess.run(
+        ["gh", "issue", "edit", issue_url, "--add-label", "barrot-task"],
+        capture_output=True, text=True
+    )
+    if label_result.returncode != 0:
+        print(f"FAILED to label issue {issue_url}: {label_result.stderr}", file=sys.stderr)
 
 def main():
     entries = load_entries()
