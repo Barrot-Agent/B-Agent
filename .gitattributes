@@ -7,3 +7,4 @@
 *.safetensors filter=lfs diff=lfs merge=lfs -text
 *.parquet filter=lfs diff=lfs merge=lfs -text
 *.arrow filter=lfs diff=lfs merge=lfs -text
+ping-pongings/knowledge-base/log.jsonl merge=union

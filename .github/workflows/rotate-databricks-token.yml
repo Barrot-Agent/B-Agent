@@ -17,9 +17,9 @@ jobs:
       - uses: actions/checkout@v7
       - name: Set new secret
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: gh secret set DATABRICKS_TOKEN --body "${{ inputs.new_token }}"
       - name: Verify by re-running deploy
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: gh workflow run "Deploy to Databricks"

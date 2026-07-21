@@ -14,8 +14,19 @@ def speak(text, out_path="barrot_voice.wav"):
     _, out, _ = _run(f'curl -s -X POST https://api.groq.com/openai/v1/audio/speech -H "Authorization: Bearer {KEY}" -H "Content-Type: application/json" -d \'{payload}\' -o {out_path} -w \'%{{http_code}}\'')
     http = out.strip()[-3:]
     if http != "200":
-        body = open(out_path).read()[:300] if os.path.exists(out_path) else ""
-        raise RuntimeError(f"TTS HTTP {http}: {body}")
+        body = open(out_path).read()[:500] if os.path.exists(out_path) else ""
+        try:
+            err = json.loads(body).get("error", {})
+            if err.get("code") == "model_terms_required":
+                model_slug = MODEL.replace("/", "%2F")
+                raise RuntimeError(
+                    f"Model '{MODEL}' requires terms acceptance.\n"
+                    f"ACTION REQUIRED: Have the Groq org admin accept terms at "
+                    f"https://console.groq.com/playground?model={model_slug}"
+                )
+        except (json.JSONDecodeError, AttributeError):
+            pass
+        raise RuntimeError(f"TTS HTTP {http}: {body[:300]}")
     size = os.path.getsize(out_path) if os.path.exists(out_path) else 0
     if size < 100:
         raise RuntimeError(f"audio too small ({size}b)")

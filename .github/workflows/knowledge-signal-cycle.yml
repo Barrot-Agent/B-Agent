@@ -32,4 +32,4 @@ jobs:
           git config user.name "Barrot-Agent"
           git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json web/latest_signal.json
           git diff --cached --quiet || git commit -m "Auto cycle: ingest + distill + blended signal [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          git push || (git pull --rebase origin main && git push)
