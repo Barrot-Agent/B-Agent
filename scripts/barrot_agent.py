@@ -251,8 +251,9 @@ def main():
     if "pull request" in tl or " pr " in tl or "prs" in tl:
         out = run(
             "gh pr list --repo " + REPO + " --state open --limit 100 "
-            "--json number,title,mergeable,additions,deletions "
-            "-q '.[] | \"#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | \\(.title)\"'",
+            "--json number,title,mergeable,additions,deletions,author "
+            "-q '.[] | \"#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | "
+            "@\\(.author.login) | \\(.title)\"'",
             check=False,
             quiet=True,
         )
