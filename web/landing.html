@@ -201,18 +201,21 @@ footer strong{color:var(--text)}
 <script>
 (function() {
   function isWebMCPSupported() {
-    return typeof navigator !== "undefined" && "modelContext" in navigator;
+    return (typeof document !== "undefined" && "modelContext" in document) || (typeof navigator !== "undefined" && "modelContext" in navigator);
   }
 
   // Graceful degradation: if this browser doesn't support WebMCP yet
   // (only Chrome origin-trial builds do, as of mid-2026), do nothing.
   // The page's existing HTML/JSON already works fine for everyone else.
   if (!isWebMCPSupported()) return;
+  var mcp = (typeof document !== "undefined" && document.modelContext) || navigator.modelContext;
 
-  navigator.modelContext.registerTool({
+  mcp.registerTool({
     name: "getLatestXRPSignal",
+    title: "Latest XRP Signal",
     description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
     inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
     execute: async function() {
       var res = await fetch("latest_signal.json");
       if (!res.ok) return { error: "signal_unavailable" };
@@ -220,10 +223,12 @@ footer strong{color:var(--text)}
     }
   });
 
-  navigator.modelContext.registerTool({
+  mcp.registerTool({
     name: "getResearchBasis",
+    title: "Research Basis",
     description: "Get the peer-reviewed academic citations backing Barrot's XRP signal methodology, covering cross-border settlement efficiency and sentiment-prediction research.",
     inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
     execute: async function() {
       return {
         settlement_efficiency: [
@@ -240,13 +245,26 @@ footer strong{color:var(--text)}
     }
   });
 
-  navigator.modelContext.registerTool({
+  mcp.registerTool({
     name: "subscribeToXRPSignals",
+    title: "Subscribe to XRP Signals",
     description: "Open the checkout page to subscribe to Barrot's XRP signal service.",
     inputSchema: { type: "object", properties: {} },
     execute: async function() {
       window.open("https://prostarelite.gumroad.com/l/opvxi", "_blank");
       return { opened: true, url: "https://prostarelite.gumroad.com/l/opvxi" };
+    }
+  });
+  mcp.registerTool({
+    name: "getSignalAccuracy",
+    title: "Signal Accuracy Record",
+    description: "Get the tracked accuracy record: how often past XRP signals were directionally correct against real price movement.",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
+    execute: async function() {
+      var res = await fetch("signal_accuracy.json");
+      if (!res.ok) return { error: "accuracy_unavailable" };
+      return await res.json();
     }
   });
 })();
