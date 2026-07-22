@@ -179,6 +179,19 @@ def main():
     os.makedirs("web", exist_ok=True)
     with open("web/latest_signal.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
+    try:
+        _pr = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price",
+            params={"ids": "ripple", "vs_currencies": "usd"},
+            timeout=6,
+        )
+        price_now = float(_pr.json().get("ripple", {}).get("usd", 0))
+    except Exception:
+        price_now = 0.0
+    hist_entry = dict(out)
+    hist_entry["price_at_emission"] = price_now
+    with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
+        print(json.dumps(hist_entry), file=hf)
 
     print(json.dumps(out))
 
