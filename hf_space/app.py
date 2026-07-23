@@ -12,7 +12,7 @@ PILLARS:    GitHub · Databricks · HuggingFace · Termux
 
 TABS:
   [1] 💬 Chat        — Live chat with Barrot via GitHub Models
-  [2] 📡 XRP Signals — Live MRP perception dashboard
+  [2] 📡 XRP Signals — Live ternary signal dashboard
   [3] 🧠 Brain       — Query Barrot knowledge base
   [4] 🔌 API         — Public endpoint docs + live tester
   [5] 📊 Analytics   — Delta Lake signal history
@@ -522,7 +522,7 @@ def fetch_signal_history(limit: int = 20) -> list[dict]:
     wh_id = os.getenv("DATABRICKS_WAREHOUSE_ID", "c85b8f4fea8cd527")
     if not token:
         return []
-    sql = f"SELECT timestamp, mrp_label, ob_signal, oc_signal, sent_signal FROM barrot_omega.xrp_liquidity_signals ORDER BY timestamp DESC LIMIT {limit}"
+    sql = f"SELECT timestamp, mrp_label AS signal_label, ob_signal, oc_signal, sent_signal FROM barrot_omega.xrp_liquidity_signals ORDER BY timestamp DESC LIMIT {limit}"
     try:
         r = requests.post(
             f"https://{host}/api/2.0/sql/statements",
@@ -659,11 +659,11 @@ def main():
     with tab2:
         st.markdown("### 📡 XRP Liquidity Signal Dashboard")
         st.caption(
-            "MRP: Multi-Synchronous Relativistic Perception · Apex-12 Filter · Ternary Collapse"
+            "Blended ternary signal from order book, sentiment, and on-chain inputs"
         )
 
-        if st.button("⚡ RUN MRP PERCEPTION"):
-            with st.spinner("Running MRP perception cycle..."):
+        if st.button("⚡ RUN SIGNAL CHECK"):
+            with st.spinner("Computing signal..."):
                 price = get_xrp_price()
                 ob_sig, imb, bid, ask = get_orderbook_signal()
                 sent_sig, apex, reasoning = get_sentiment_signal()
@@ -672,15 +672,15 @@ def main():
                     hrm = hrm_resolve(
                         {"orderbook": ob_sig, "onchain": oc_sig, "sentiment": sent_sig}
                     )
-                    mrp = hrm.state
+                    ternary_signal = hrm.state
                     conf = hrm.confidence
                     absolved = hrm.absolution_fired
                 else:
-                    mrp = Ternary.resolve(ob_sig, oc_sig, sent_sig)
+                    ternary_signal = Ternary.resolve(ob_sig, oc_sig, sent_sig)
                     conf = None
                     absolved = False
                     if ob_sig == oc_sig == sent_sig == Ternary.SELL:
-                        mrp, absolved = Ternary.NULL, True
+                        ternary_signal, absolved = Ternary.NULL, True
 
             # Display
             col1, col2, col3, col4 = st.columns(4)
@@ -700,19 +700,19 @@ def main():
                 lbl = Ternary.label(sent_sig)
                 ico = Ternary.color(sent_sig)
                 st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>apex12={apex}</div></div>",
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={apex}</div></div>",
                     unsafe_allow_html=True,
                 )
             with col4:
-                lbl = Ternary.label(mrp)
-                ico = Ternary.color(mrp)
+                lbl = Ternary.label(ternary_signal)
+                ico = Ternary.color(ternary_signal)
                 st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>MRP OUTPUT</div><div class='signal-{'buy' if mrp==1 else 'sell' if mrp==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>",
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>BLENDED SIGNAL</div><div class='signal-{'buy' if ternary_signal==1 else 'sell' if ternary_signal==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>",
                     unsafe_allow_html=True,
                 )
 
             if absolved:
-                st.warning("⚡ SOVEREIGN ABSOLUTION ENGAGED — Unanimous SELL overridden to NULL")
+                st.warning("⚡ Override engaged — unanimous SELL downgraded to NULL")
             if reasoning:
                 st.caption(f"Sentiment reasoning: {reasoning}")
 
@@ -731,7 +731,7 @@ def main():
 
         query = st.text_area(
             "Query the brain:",
-            placeholder="What is the current state of the XRP bridge? Explain RIAP. Describe the ternary logic model.",
+            placeholder="What is the current state of the XRP bridge? Describe the ternary logic model.",
             height=100,
         )
         if st.button("🧠 QUERY BRAIN"):
@@ -758,13 +758,13 @@ Query Barrot's brain directly.
 ```bash
 curl -X POST https://scribedpengenius-barrot-omega.hf.space/query \\
   -H "Content-Type: application/json" \\
-  -d '{"message": "What is the MRP protocol?"}'
+  -d '{"message": "What is your ternary signal architecture?"}'
 ```
 
 **Response:**
 ```json
 {
-  "response": "MRP — Multi-Synchronous Relativistic Perception — is...",
+  "response": "Barrot blends order-book, sentiment, and on-chain signals into a single ternary output...",
   "anchor": 0.707,
   "session_id": "a3f9b2c1"
 }
@@ -772,7 +772,7 @@ curl -X POST https://scribedpengenius-barrot-omega.hf.space/query \\
 
 ---
 #### `GET /signal`
-Get current XRP MRP signal.
+Get current XRP ternary signal.
 
 ```bash
 curl https://scribedpengenius-barrot-omega.hf.space/signal
@@ -781,7 +781,7 @@ curl https://scribedpengenius-barrot-omega.hf.space/signal
 **Response:**
 ```json
 {
-  "mrp_output": "BUY",
+  "signal_output": "BUY",
   "ob_signal": 1,
   "sent_signal": 1,
   "price": 0.5231,
@@ -822,9 +822,9 @@ curl https://scribedpengenius-barrot-omega.hf.space/signal
 
             if rows:
                 st.dataframe(rows, use_container_width=True)
-                buys = sum(1 for r in rows if r.get("mrp_label") == "BUY")
-                sells = sum(1 for r in rows if r.get("mrp_label") == "SELL")
-                nulls = sum(1 for r in rows if r.get("mrp_label") == "NULL")
+                buys = sum(1 for r in rows if r.get("signal_label") == "BUY")
+                sells = sum(1 for r in rows if r.get("signal_label") == "SELL")
+                nulls = sum(1 for r in rows if r.get("signal_label") == "NULL")
                 c1, c2, c3 = st.columns(3)
                 c1.metric("🟢 BUY", buys)
                 c2.metric("🔴 SELL", sells)

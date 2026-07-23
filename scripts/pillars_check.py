@@ -50,11 +50,13 @@ def check_deploy_sync():
     return "Barrot-\u03a9" in content, "checked main branch hf_space/app.py"
 
 def check_system_prompt_fiction():
+    """Scans the ENTIRE deployed hf_space/app.py, not just SYSTEM_PROMPT -- fiction
+    vocabulary in UI labels, API docs, or variable names is the same problem as
+    fiction in the chat prompt: it's real users/callers being told something false."""
     r = requests.get("https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/hf_space/app.py", timeout=15)
-    m = re.search(r'SYSTEM_PROMPT = f?"""(.*?)"""', r.text, re.S)
-    prompt = m.group(1) if m else ""
-    hits = [t for t in FICTION_TERMS if t.lower() in prompt.lower()]
-    return len(hits) == 0, ("clean" if not hits else f"fiction terms present: {hits}")
+    text = r.text
+    hits = [t for t in FICTION_TERMS if t.lower() in text.lower()]
+    return len(hits) == 0, ("clean" if not hits else f"fiction terms present in hf_space/app.py: {hits}")
 
 CHECKS = [
     ("github_app", check_github),
