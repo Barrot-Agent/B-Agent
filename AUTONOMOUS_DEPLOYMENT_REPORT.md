@@ -1,5 +1,5 @@
 # BARROT AUTONOMOUS DEPLOYMENT
-**Timestamp:** 2026-07-23T00:22:55.087372Z
+**Timestamp:** 2026-07-23T06:47:32.778300Z
 **Status:** OPERATIONAL
 - Mode: telemetry-only
 - Policy: web/, core/, hf_space/ are human-managed. Workflow generation of product pages revoked 2026-07-04 after landing-page clobber incident.
