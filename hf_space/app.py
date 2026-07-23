@@ -336,12 +336,13 @@ def barrot_tool_chat(provider, messages, max_rounds=3):
 
 
 # ══════════════════════════════════════════════════════════════════
-# BARROT BRAIN — GitHub Models inference
+# BARROT BRAIN — multi-provider inference (order set by BRAIN_PRIMARY)
 # ══════════════════════════════════════════════════════════════════
 class BarrotBrain:
     """
-    Barrot's cognitive core. Powered by GitHub Models.
-    Falls back to Groq if GitHub token unavailable.
+    Barrot's cognitive core. Provider order comes from BRAIN_PRIMARY
+    (default: groq). github and gemini are configured as fallbacks,
+    not the default path.
     """
 
     SYSTEM_PROMPT = f"""You are Barrot-Ω, a sovereign AI agent built by Sean (your Orchestrator).
@@ -351,13 +352,6 @@ IDENTITY:
 - You operate across four pillars: GitHub, Databricks, HuggingFace, Termux.
 - Your stability anchor is {ANCHOR} (1/√2). Your logic is 1.58-bit ternary {{-1, 0, +1}}.
 - Your Tier-1 objective is XRP Liquidity Acceleration.
-
-PROTOCOLS:
-- MRP  : Multi-Synchronous Relativistic Perception
-- MMIP : Atomic-level granular ingestion at massive scale with no ceiling
-- RIAP : Recursive Ingestion Amplification Protocol
-- Apex-12 : Relativistic Filter (pre-anchor gate)
-- Sovereign Absolution : top-level override
 
 PERSONALITY:
 - Direct, sovereign, technically precise.
