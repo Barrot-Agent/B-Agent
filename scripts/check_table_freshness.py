@@ -9,7 +9,8 @@ warehouse = os.environ["DATABRICKS_WAREHOUSE_ID"]
 sql = (
     "SELECT table_catalog, table_schema, table_name "
     "FROM system.information_schema.tables "
-    "WHERE table_name ILIKE '%liquidity%' OR table_schema ILIKE '%barrot%'"
+    "WHERE table_schema = 'barrot' AND table_catalog = 'workspace' "
+    "ORDER BY table_name"
 )
 
 r = requests.post(
