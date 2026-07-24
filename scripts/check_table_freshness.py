@@ -22,4 +22,5 @@ r = requests.post(
 r.raise_for_status()
 data = r.json()
 print("HTTP", r.status_code)
-print(data.get("result", {}).get("data_array"))
+import json
+print(json.dumps(data, indent=2))
