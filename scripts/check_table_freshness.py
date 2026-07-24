@@ -8,26 +8,32 @@ warehouse = os.environ["DATABRICKS_WAREHOUSE_ID"]
 
 import json
 
-# describe columns first
-r = requests.post(
-    f"https://{host}/api/2.0/sql/statements",
-    headers={"Authorization": f"Bearer {token}"},
-    json={"warehouse_id": warehouse, "statement": "DESCRIBE workspace.barrot.brain", "wait_timeout": "20s"},
-    timeout=30,
-)
-d = r.json()
-print("=== brain columns ===")
-for row in d.get("result", {}).get("data_array", []):
-    print(row)
+def run(sql, label):
+    r = requests.post(
+        f"https://{host}/api/2.0/sql/statements",
+        headers={"Authorization": f"Bearer {token}"},
+        json={"warehouse_id": warehouse, "statement": sql, "wait_timeout": "20s"},
+        timeout=30,
+    )
+    d = r.json()
+    print(f"=== {label} ===")
+    for row in d.get("result", {}).get("data_array", []):
+        print(row)
+    print()
 
-r = requests.post(
-    f"https://{host}/api/2.0/sql/statements",
-    headers={"Authorization": f"Bearer {token}"},
-    json={"warehouse_id": warehouse, "statement": "SELECT * FROM workspace.barrot.brain LIMIT 5", "wait_timeout": "20s"},
-    timeout=30,
+run(
+    "SELECT topic, COUNT(*) AS n FROM workspace.barrot.brain GROUP BY topic ORDER BY n DESC LIMIT 20",
+    "top 20 topics by frequency",
 )
-d = r.json()
-print("=== brain sample rows ===")
-print(json.dumps(d.get("result", {}).get("data_array", []), indent=2))
-print("=== brain sample column order ===")
-print([c["name"] for c in d.get("manifest", {}).get("schema", {}).get("columns", [])])
+run(
+    "SELECT MIN(timestamp), MAX(timestamp), COUNT(DISTINCT session) AS distinct_sessions FROM workspace.barrot.brain",
+    "date range and session count",
+)
+run(
+    "SELECT COUNT(*) FROM workspace.barrot.brain WHERE insight LIKE '%error%' OR insight LIKE '%Rate limit%'",
+    "rows that look like error/failure noise",
+)
+run(
+    "SELECT timestamp, topic, insight, session FROM workspace.barrot.brain WHERE insight NOT LIKE '%error%' AND insight NOT LIKE '%Rate limit%' ORDER BY RAND() LIMIT 8",
+    "random sample of non-error rows",
+)
