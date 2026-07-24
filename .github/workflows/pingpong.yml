@@ -20,7 +20,7 @@ jobs:
       PINGPONG_TASK: ${{ inputs.task || 'Analyze the current state of XRP cross-border payment adoption and summarize the most significant recent development, grounded only in verifiable facts.' }}
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
       - run: python3 scripts/pingpong.py
