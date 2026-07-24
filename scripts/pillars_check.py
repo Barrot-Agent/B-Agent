@@ -55,7 +55,11 @@ def check_system_prompt_fiction():
     fiction in the chat prompt: it's real users/callers being told something false."""
     r = requests.get("https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/hf_space/app.py", timeout=15)
     text = r.text
-    hits = [t for t in FICTION_TERMS if t.lower() in text.lower()]
+    KNOWN_SAFE = ["mrp_label AS signal_label"]  # real DB column, aliased not renamed
+    scan_text = text
+    for safe in KNOWN_SAFE:
+        scan_text = scan_text.replace(safe, "")
+    hits = [t for t in FICTION_TERMS if t.lower() in scan_text.lower()]
     return len(hits) == 0, ("clean" if not hits else f"fiction terms present in hf_space/app.py: {hits}")
 
 CHECKS = [
