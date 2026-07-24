@@ -8,12 +8,26 @@ warehouse = os.environ["DATABRICKS_WAREHOUSE_ID"]
 
 import json
 
-sql = "SELECT COUNT(*) AS row_count FROM workspace.barrot.brain"
+# describe columns first
 r = requests.post(
     f"https://{host}/api/2.0/sql/statements",
     headers={"Authorization": f"Bearer {token}"},
-    json={"warehouse_id": warehouse, "statement": sql, "wait_timeout": "20s"},
+    json={"warehouse_id": warehouse, "statement": "DESCRIBE workspace.barrot.brain", "wait_timeout": "20s"},
     timeout=30,
 )
-print("HTTP", r.status_code)
-print(json.dumps(r.json(), indent=2))
+d = r.json()
+print("=== brain columns ===")
+for row in d.get("result", {}).get("data_array", []):
+    print(row)
+
+r = requests.post(
+    f"https://{host}/api/2.0/sql/statements",
+    headers={"Authorization": f"Bearer {token}"},
+    json={"warehouse_id": warehouse, "statement": "SELECT * FROM workspace.barrot.brain LIMIT 5", "wait_timeout": "20s"},
+    timeout=30,
+)
+d = r.json()
+print("=== brain sample rows ===")
+print(json.dumps(d.get("result", {}).get("data_array", []), indent=2))
+print("=== brain sample column order ===")
+print([c["name"] for c in d.get("manifest", {}).get("schema", {}).get("columns", [])])
