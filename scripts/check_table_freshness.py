@@ -7,10 +7,9 @@ token = os.environ["DATABRICKS_TOKEN"]
 warehouse = os.environ["DATABRICKS_WAREHOUSE_ID"]
 
 sql = (
-    "SELECT COUNT(*) AS total_rows, "
-    "MAX(timestamp) AS latest_row, "
-    "SUM(CASE WHEN timestamp > current_timestamp() - INTERVAL 24 HOURS THEN 1 ELSE 0 END) AS rows_last_24h "
-    "FROM barrot_omega.xrp_liquidity_signals"
+    "SELECT table_catalog, table_schema, table_name "
+    "FROM system.information_schema.tables "
+    "WHERE table_name ILIKE '%liquidity%' OR table_schema ILIKE '%barrot%'"
 )
 
 r = requests.post(
