@@ -34,6 +34,8 @@ _DEFAULT_ANALYZERS = [
     "apex_lattice.analyzers.architecture_analyzer",
     "apex_lattice.analyzers.capability_analyzer",
     "apex_lattice.analyzers.reverse_engineering_analyzer",
+    "apex_lattice.analyzers.test_quality_analyzer",
+    "apex_lattice.analyzers.scope_creep_analyzer",
 ]
 
 _ANALYZER_TAGS: dict[str, set[str]] = {
@@ -46,6 +48,8 @@ _ANALYZER_TAGS: dict[str, set[str]] = {
     "apex_lattice.analyzers.reverse_engineering_analyzer": {
         "reverse", "reverse-engineer", "reverse_engineer", "decompose", "how does", "inputs", "outputs",
     },
+    "apex_lattice.analyzers.test_quality_analyzer": {"test", "tests", "testing", "coverage", "assertion"},
+    "apex_lattice.analyzers.scope_creep_analyzer": {"scope", "commit", "commits", "diff", "creep", "review"},
 }
 
 
