@@ -115,6 +115,8 @@ def extract_code(raw):
         parts = raw.split("```")
         for part in parts:
             body = part[6:] if part.startswith("python") else part
+            if not body.strip():
+                continue
             try:
                 ast.parse(body)
                 return body
@@ -157,10 +159,11 @@ def run_task_in_subprocess(code, test_code, timeout=10):
 
     out = (result.stdout or "").strip()
     err = (result.stderr or "").strip()
-    if out == "PASS":
-        return True, "PASS"
-    if out.startswith("FAIL:"):
-        return False, out
+    last_line = out.splitlines()[-1] if out else ""
+    if last_line == "PASS":
+        return True, "PASS" if out == "PASS" else f"PASS (extra stdout: {out[:150]})"
+    if last_line.startswith("FAIL:"):
+        return False, last_line
     return False, f"no clean PASS/FAIL output. stdout={out[:200]} stderr={err[:200]}"
 
 
