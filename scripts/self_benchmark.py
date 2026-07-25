@@ -172,6 +172,8 @@ def main():
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     results = []
     for task in TASKS:
+        raw = ""
+        code = ""
         try:
             raw = ask(task["prompt"])
             code = extract_code(raw)
@@ -183,6 +185,8 @@ def main():
                 "task": task["name"],
                 "passed": passed,
                 "detail": detail[:300],
+                "raw_response_preview": None if passed else raw[:500],
+                "extracted_code_preview": None if passed else code[:500],
             }
         )
         print(f"  [{'PASS' if passed else 'FAIL'}] {task['name']}: {detail[:100]}")
