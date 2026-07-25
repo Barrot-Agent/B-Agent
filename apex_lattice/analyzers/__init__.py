@@ -1,40 +1,11 @@
-"""Analyzers sub-package for Apex Lattice."""
+"""Analyzers sub-package for Apex Lattice.
+
+Each analyzer module exposes an Analyzer class (subclassing BaseAnalyzer)
+with an analyze() method returning a dict containing at least a
+'findings' list. Analyzers are loaded dynamically by module path via
+apex_lattice.sandbox.SandboxPipeline / select_analyzers.
+"""
 
 from apex_lattice.analyzers.base import BaseAnalyzer
 
 __all__ = ["BaseAnalyzer"]
-"""
-Analyzers sub-package for Apex Lattice.
-
-Each analyzer exposes a single ``analyze(artefact)`` method that
-returns a list of raw finding dicts (without ``finding_id`` /
-``artefact_id`` — those are added by FindingGenerator).
-"""
-
-from __future__ import annotations
-
-from .code_patterns import CodePatternAnalyzer
-from .performance import PerformanceAnalyzer
-from .security import SecurityAnalyzer
-from .dependencies import DependencyAnalyzer
-from .architecture import ArchitectureAnalyzer
-from .capabilities import CapabilityAnalyzer
-
-ALL_ANALYZERS = [
-    CodePatternAnalyzer(),
-    PerformanceAnalyzer(),
-    SecurityAnalyzer(),
-    DependencyAnalyzer(),
-    ArchitectureAnalyzer(),
-    CapabilityAnalyzer(),
-]
-
-__all__ = [
-    "CodePatternAnalyzer",
-    "PerformanceAnalyzer",
-    "SecurityAnalyzer",
-    "DependencyAnalyzer",
-    "ArchitectureAnalyzer",
-    "CapabilityAnalyzer",
-    "ALL_ANALYZERS",
-]
