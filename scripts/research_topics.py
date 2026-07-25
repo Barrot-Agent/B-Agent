@@ -4,15 +4,21 @@ BARROT-Ω TOPIC RESEARCH — real, honest research on the curriculum topic list
 recovered from the (unusable, 300-char-truncated) workspace.barrot.brain table.
 Separate from the XRP-signal knowledge-base/log.jsonl on purpose: these are not
 news items, have no URL, and don't fit the sentiment/catalyst/xrp_relevance
-schema. Idempotent: skips topics already present in the output file, so if the
-Groq daily token cap is hit partway through, a re-run just continues.
+schema. Idempotent: skips topics already present in the output file.
+
+Paces requests to stay under Groq's per-minute rate limit (a prior version
+hit that limit after 30 requests in 24s and wrongly treated it as the daily
+token cap being exhausted). On a real 429, distinguishes: if Groq's error
+body says per-minute/RPM, backs off and retries; if it says per-day/TPD,
+stops the run cleanly for a later re-trigger.
 """
-import json, os, sys, time, urllib.request
+import json, os, sys, time, urllib.request, urllib.error
 
 TOPICS_PATH = "brain_corpus/topics.txt"
 OUT_PATH = "ping-pongings/knowledge-base/topics_log.jsonl"
 KEY = os.environ.get("GROQ_API_KEY", "")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+MIN_INTERVAL = 2.5  # seconds between requests -- keeps us under typical 30 RPM caps
 
 
 def ask(prompt):
@@ -47,6 +53,36 @@ def build_prompt(topic):
     )
 
 
+class DailyCapHit(Exception):
+    pass
+
+
+def ask_with_backoff(prompt):
+    """Returns text, or raises DailyCapHit if Groq's error says per-day/token-quota."""
+    attempts = 0
+    while True:
+        try:
+            return ask(prompt)
+        except urllib.error.HTTPError as e:
+            body_txt = ""
+            try:
+                body_txt = e.read().decode("utf-8", "ignore")
+            except Exception:
+                pass
+            if e.code != 429:
+                raise
+            lower = body_txt.lower()
+            if "per day" in lower or "tpd" in lower or "daily" in lower:
+                raise DailyCapHit(body_txt)
+            attempts += 1
+            if attempts > 5:
+                raise DailyCapHit(f"gave up after 5 retries: {body_txt}")
+            retry_after = e.headers.get("Retry-After")
+            wait = float(retry_after) if retry_after else min(10 * attempts, 60)
+            print(f"    rate limited (per-minute), backing off {wait:.0f}s (attempt {attempts})")
+            time.sleep(wait)
+
+
 def main():
     if not KEY:
         sys.exit("GROQ_API_KEY not set")
@@ -71,10 +107,15 @@ def main():
     print(f"{len(done_topics)} already researched, {len(todo)} remaining")
 
     completed_this_run = 0
+    last_call = 0.0
     with open(OUT_PATH, "a") as out:
         for topic in todo:
+            elapsed = time.time() - last_call
+            if elapsed < MIN_INTERVAL:
+                time.sleep(MIN_INTERVAL - elapsed)
             try:
-                text = ask(build_prompt(topic))
+                last_call = time.time()
+                text = ask_with_backoff(build_prompt(topic))
                 rec = {
                     "topic": topic,
                     "analysis": text.strip(),
@@ -86,13 +127,12 @@ def main():
                 out.flush()
                 completed_this_run += 1
                 print(f"  done: {topic[:70]}")
+            except DailyCapHit as ex:
+                print(f"Daily token cap hit after {completed_this_run} topics this run. "
+                      f"{len(todo) - completed_this_run} remain -- re-run later, "
+                      f"already-done topics will be skipped automatically. ({ex})")
+                break
             except Exception as ex:
-                msg = str(ex)
-                if "429" in msg:
-                    print(f"Groq daily cap hit after {completed_this_run} topics this run. "
-                          f"{len(todo) - completed_this_run} remain -- re-run tomorrow, "
-                          f"already-done topics will be skipped automatically.")
-                    break
                 print(f"  skip ({ex}): {topic[:60]}")
 
     print(f"Completed {completed_this_run} this run. "
