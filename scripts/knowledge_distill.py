@@ -2,7 +2,7 @@
 """
 BARROT-Ω KNOWLEDGE DISTILL — turns raw ingested headlines into signal-relevant
 insight. Reads log.jsonl entries not yet distilled, sends each through Groq to
-extract sentiment/catalyst/relevance, writes the distilled fields back.
+extract sentiment/catalyst/relevance/entities, writes the distilled fields back.
 Honest: if the brain fails on an entry, that entry is left undistilled, not faked.
 """
 
@@ -41,7 +41,9 @@ def build_prompt(e):
         f"Headline: {e['title']}\nSummary: {e.get('summary','')}\n\n"
         'Reply with JSON ONLY, no prose: {"sentiment": one of '
         '[bullish,bearish,neutral], "catalyst": short phrase or null, '
-        '"xrp_relevance": number 0.0-1.0, "one_line": one sentence on why '
+        '"xrp_relevance": number 0.0-1.0, "entities": array of up to 5 '
+        "key named entities mentioned (people, organizations, tickers, "
+        'protocols - not generic words), "one_line": one sentence on why '
         "it matters for an XRP trading signal}"
     )
 
@@ -54,6 +56,10 @@ def parse(raw):
     if d.get("sentiment") not in ("bullish", "bearish", "neutral"):
         raise ValueError("bad sentiment")
     d["xrp_relevance"] = max(0.0, min(float(d.get("xrp_relevance", 0)), 1.0))
+    entities = d.get("entities", [])
+    if not isinstance(entities, list):
+        entities = []
+    d["entities"] = [str(x).strip() for x in entities if str(x).strip()][:5]
     return d
 
 
@@ -77,7 +83,8 @@ def main():
             e["distill"] = d
             e["distilled"] = True
             done += 1
-            print(f"  [{d['sentiment']}] {e['title'][:60]}")
+            ents = ", ".join(d["entities"]) or "none"
+            print(f"  [{d['sentiment']}] {e['title'][:60]} | entities: {ents}")
         except Exception as ex:
             print(f"  skip (brain/parse fail): {e['title'][:50]} — {ex}")
 
