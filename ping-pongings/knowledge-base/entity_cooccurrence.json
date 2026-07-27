@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 223,
-    "btc_entries": 28
+    "btc_entries": 31
   },
-  "unique_pairs_found": 31,
+  "unique_pairs_found": 34,
   "pairs": [
     {
       "entity_a": "Bitcoin",
@@ -31,6 +31,21 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
+          "asset": "BTC"
+        },
+        {
+          "title": "Rate path still divides investors: Five things to know in Bitcoin this week",
           "asset": "BTC"
         }
       ]
@@ -167,17 +182,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin mining pool Poolin files for Chapter 11 bankruptcy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
           "asset": "BTC"
         }
       ]
@@ -354,6 +358,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MSTR",
+      "entity_b": "STRC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MSTR",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
           "asset": "BTC"
         }
       ]

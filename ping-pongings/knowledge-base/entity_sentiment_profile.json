@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 223,
-    "btc_entries": 28
+    "btc_entries": 31
   },
-  "unique_entities_profiled": 30,
+  "unique_entities_profiled": 33,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 17,
-      "bullish": 7,
-      "neutral": 5,
+      "total_mentions": 19,
+      "bullish": 8,
+      "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.118,
+      "net_sentiment_score": 0.158,
       "assets_seen_in": [
         "BTC"
       ],
@@ -114,6 +114,21 @@
       "example_headlines": [
         "Bitcoin mining pool Poolin files for Chapter 11 bankruptcy",
         "Poolin Files Chapter 11 As Bitcoin Miner Moves Toward $52M Asset Sale"
+      ]
+    },
+    {
+      "entity": "US",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
+        "Rate path still divides investors: Five things to know in Bitcoin this week"
       ]
     },
     {
@@ -227,20 +242,6 @@
       ],
       "example_headlines": [
         "A quantum roadmap would push Bitcoin much higher: Charles Edwards"
-      ]
-    },
-    {
-      "entity": "US",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows"
       ]
     },
     {
@@ -437,6 +438,48 @@
       ],
       "example_headlines": [
         "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "Strategy",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
+      ]
+    },
+    {
+      "entity": "MSTR",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
+      ]
+    },
+    {
+      "entity": "STRC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
       ]
     }
   ]
