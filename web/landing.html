@@ -334,6 +334,21 @@ footer strong{color:var(--text)}
       return await res.json();
     }
   });
+  mcp.registerTool({
+    name: "getWebMCPTrendDigest",
+    title: "WebMCP Trend Digest",
+    description: "Get a ranked digest of candidate future WebMCP tool ideas, surfaced from real public developer discourse (news, announcements) about WebMCP and agentic browsing - not invented predictions.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getWebMCPTrendDigest');
+      var res = await fetch("webmcp_trend_summary.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
 })();
 </script>
 
