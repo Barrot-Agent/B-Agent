@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 221,
-    "btc_entries": 24
+    "btc_entries": 26
   },
-  "unique_entities_profiled": 27,
+  "unique_entities_profiled": 28,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 15,
+      "total_mentions": 16,
       "bullish": 6,
-      "neutral": 4,
+      "neutral": 5,
       "bearish": 5,
-      "net_sentiment_score": 0.067,
+      "net_sentiment_score": 0.062,
       "assets_seen_in": [
         "BTC"
       ],
@@ -54,6 +54,22 @@
       ]
     },
     {
+      "entity": "Fortune",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 3,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -69,18 +85,18 @@
       ]
     },
     {
-      "entity": "Fortune",
+      "entity": "Bitcoin Foundation",
       "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 2,
-      "bearish": 0,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
       "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
       "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune"
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
       ]
     },
     {
@@ -193,20 +209,6 @@
       ],
       "example_headlines": [
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
       ]
     },
     {
@@ -389,6 +391,20 @@
       ],
       "example_headlines": [
         "Hester Peirce Warns Crypto Vaults And Lending Strategies May Still Trigger Securities Rules"
+      ]
+    },
+    {
+      "entity": "Tesla",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
       ]
     }
   ]

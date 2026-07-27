@@ -1,10 +1,25 @@
 {
   "generated_from": {
     "xrp_entries": 221,
-    "btc_entries": 24
+    "btc_entries": 26
   },
-  "unique_pairs_found": 26,
+  "unique_pairs_found": 27,
   "pairs": [
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
@@ -16,21 +31,6 @@
         },
         {
           "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -295,6 +295,17 @@
       "example_headlines": [
         {
           "title": "FATF Says Crypto Travel Rule Adoption Is Rising, But Enforcement Still Lags",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Tesla",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
