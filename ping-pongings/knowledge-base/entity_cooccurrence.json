@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 224,
-    "btc_entries": 34
+    "btc_entries": 35
   },
   "unique_pairs_found": 36,
   "pairs": [
@@ -76,6 +76,21 @@
         },
         {
           "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Morningstar",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
+          "asset": "BTC"
+        },
+        {
+          "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
           "asset": "BTC"
         }
       ]
@@ -406,17 +421,6 @@
       "example_headlines": [
         {
           "title": "$KULR Technology (KULR.US)$ $Bitcoin (BTC.CC)$ - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Morningstar",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
           "asset": "BTC"
         }
       ]
