@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 224,
-    "btc_entries": 35
+    "btc_entries": 36
   },
-  "unique_entities_profiled": 35,
+  "unique_entities_profiled": 37,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 23,
-      "bullish": 9,
+      "total_mentions": 24,
+      "bullish": 10,
       "neutral": 7,
       "bearish": 7,
-      "net_sentiment_score": 0.087,
+      "net_sentiment_score": 0.125,
       "assets_seen_in": [
         "BTC"
       ],
@@ -52,6 +52,23 @@
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
         "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "XRP",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
       ]
     },
     {
@@ -104,21 +121,6 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold"
-      ]
-    },
-    {
-      "entity": "XRP",
       "total_mentions": 2,
       "bullish": 0,
       "neutral": 0,
@@ -512,6 +514,34 @@
       ],
       "example_headlines": [
         "$KULR Technology (KULR.US)$ $Bitcoin (BTC.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "Ethereum",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
+      ]
+    },
+    {
+      "entity": "Dogecoin",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
       ]
     }
   ]
