@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 223,
+    "xrp_entries": 224,
     "btc_entries": 34
   },
   "unique_pairs_found": 36,
@@ -32,6 +32,21 @@
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
+          "asset": "XRP"
         }
       ]
     },
@@ -78,17 +93,6 @@
     },
     {
       "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
