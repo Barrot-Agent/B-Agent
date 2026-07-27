@@ -289,6 +289,51 @@ footer strong{color:var(--text)}
       return await res.json();
     }
   });
+  mcp.registerTool({
+    name: "getEntityCooccurrence",
+    title: "Entity Co-occurrence",
+    description: "Get pairs of named entities that frequently appear together in the same XRP/BTC news items, with example headlines.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getEntityCooccurrence');
+      var res = await fetch("entity_cooccurrence.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getSentimentShift",
+    title: "Sentiment Shift Detector",
+    description: "Get the 24h vs prior-24h sentiment shift for XRP and BTC, flagged if the shift is significant.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getSentimentShift');
+      var res = await fetch("sentiment_shift.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getEntitySentimentProfile",
+    title: "Entity Sentiment Profile",
+    description: "Get the aggregated sentiment profile (bullish/bearish/neutral counts, net score) for named entities seen across XRP/BTC news.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getEntitySentimentProfile');
+      var res = await fetch("entity_sentiment_profile.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
 })();
 </script>
 
