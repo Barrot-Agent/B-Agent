@@ -1,0 +1,39 @@
+name: Write Lyrics
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Theme for the lyrics (leave blank for Barrot to choose)'
+        required: false
+        default: ''
+      style:
+        description: 'Instrumental style to fit, if writing to an existing track (optional)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  write_lyrics:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+      LYRICS_THEME: ${{ github.event.inputs.theme }}
+      LYRICS_STYLE: ${{ github.event.inputs.style }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Write lyrics
+        run: python3 scripts/write_lyrics.py
+      - name: Commit lyrics + log
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add music/
+          git diff --cached --quiet || git commit -m "New lyrics written [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
