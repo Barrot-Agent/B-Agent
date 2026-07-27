@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: pip install requests
+      - run: pip install requests vaderSentiment
       - name: Ingest fresh news
         run: python3 scripts/knowledge_ingest.py
       - name: Distill new entries

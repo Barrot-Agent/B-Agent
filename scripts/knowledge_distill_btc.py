@@ -3,10 +3,20 @@
 BARROT-Ω KNOWLEDGE DISTILL (BTC) — turns raw ingested headlines into
 signal-relevant insight. Reads log_btc.jsonl entries not yet distilled,
 sends each through Groq to extract sentiment/catalyst/relevance/entities.
+Also runs a free VADER lexicon cross-check (crypto-augmented) against the
+same text and flags agreement/disagreement with the Groq read - a secondary
+signal, never a replacement; if VADER fails for any reason, distillation
+proceeds using Groq alone.
 Honest: if the brain fails on an entry, that entry is left undistilled.
 """
 
 import json, os, sys, urllib.request
+
+try:
+    from vader_check import vader_check, agrees_with
+    _VADER_OK = True
+except Exception:
+    _VADER_OK = False
 
 KB_DIR = "ping-pongings/knowledge-base"
 LOG_PATH = os.path.join(KB_DIR, "log_btc.jsonl")
@@ -63,6 +73,19 @@ def parse(raw):
     return d
 
 
+def add_vader_check(d, text):
+    if not _VADER_OK:
+        return d
+    try:
+        v = vader_check(text)
+        d["vader_sentiment"] = v["vader_sentiment"]
+        d["vader_compound"] = v["vader_compound"]
+        d["vader_agrees"] = agrees_with(d["sentiment"], v)
+    except Exception:
+        pass
+    return d
+
+
 def main():
     if not KEY:
         sys.exit("GROQ_API_KEY not set")
@@ -80,11 +103,17 @@ def main():
     for e in todo:
         try:
             d = parse(ask(build_prompt(e)))
+            text = f"{e['title']} {e.get('summary','')}"
+            d = add_vader_check(d, text)
             e["distill"] = d
             e["distilled"] = True
             done += 1
             ents = ", ".join(d["entities"]) or "none"
-            print(f"  [{d['sentiment']}] {e['title'][:60]} | entities: {ents}")
+            vtag = ""
+            if "vader_sentiment" in d:
+                mark = "agree" if d["vader_agrees"] else "DISAGREE"
+                vtag = f" | vader: {d['vader_sentiment']} ({mark})"
+            print(f"  [{d['sentiment']}] {e['title'][:60]} | entities: {ents}{vtag}")
         except Exception as ex:
             print(f"  skip (brain/parse fail): {e['title'][:50]} — {ex}")
 
