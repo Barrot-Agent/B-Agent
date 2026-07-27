@@ -36,6 +36,7 @@ def groq_ask(prompt):
         headers={
             "Authorization": f"Bearer {GROQ_KEY}",
             "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
