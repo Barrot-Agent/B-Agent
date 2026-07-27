@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 223,
-    "btc_entries": 31
+    "btc_entries": 33
   },
-  "unique_entities_profiled": 33,
+  "unique_entities_profiled": 34,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 19,
-      "bullish": 8,
-      "neutral": 6,
+      "total_mentions": 21,
+      "bullish": 9,
+      "neutral": 7,
       "bearish": 5,
-      "net_sentiment_score": 0.158,
+      "net_sentiment_score": 0.19,
       "assets_seen_in": [
         "BTC"
       ],
@@ -71,6 +71,22 @@
       ]
     },
     {
+      "entity": "US",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
+        "Rate path still divides investors: Five things to know in Bitcoin this week",
+        "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 3,
       "bullish": 0,
@@ -114,21 +130,6 @@
       "example_headlines": [
         "Bitcoin mining pool Poolin files for Chapter 11 bankruptcy",
         "Poolin Files Chapter 11 As Bitcoin Miner Moves Toward $52M Asset Sale"
-      ]
-    },
-    {
-      "entity": "US",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
-        "Rate path still divides investors: Five things to know in Bitcoin this week"
       ]
     },
     {
@@ -480,6 +481,20 @@
       ],
       "example_headlines": [
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
+      ]
+    },
+    {
+      "entity": "KULR Technology",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "$KULR Technology (KULR.US)$ $Bitcoin (BTC.CC)$ - Moomoo"
       ]
     }
   ]
