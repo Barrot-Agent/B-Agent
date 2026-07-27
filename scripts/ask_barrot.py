@@ -16,7 +16,7 @@ SYSTEM = (
     "honestly and specifically about your own project. Do not be vague "
     "or grandiose."
 )
-QUESTION = (
+DEFAULT_QUESTION = (
     "Sean just asked a version of this question to another AI: what "
     "should he be asking you to do with you, in order to get the most "
     "real value, accomplishment, and alignment with your best self? "
@@ -29,12 +29,13 @@ def main():
     if not key:
         print("no GROQ_API_KEY, exiting")
         return
+    question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {
         "model": DEFAULT_GROQ_MODEL,
         "messages": [
             {"role": "system", "content": SYSTEM},
-            {"role": "user", "content": QUESTION},
+            {"role": "user", "content": question},
         ],
         "temperature": 0.5,
     }
