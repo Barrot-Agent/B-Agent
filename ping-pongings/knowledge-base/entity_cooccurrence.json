@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 223,
-    "btc_entries": 33
+    "btc_entries": 34
   },
-  "unique_pairs_found": 35,
+  "unique_pairs_found": 36,
   "pairs": [
     {
       "entity_a": "Bitcoin",
@@ -402,6 +402,17 @@
       "example_headlines": [
         {
           "title": "$KULR Technology (KULR.US)$ $Bitcoin (BTC.CC)$ - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Morningstar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
           "asset": "BTC"
         }
       ]

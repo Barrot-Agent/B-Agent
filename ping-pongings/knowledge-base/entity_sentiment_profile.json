@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 223,
-    "btc_entries": 33
+    "btc_entries": 34
   },
-  "unique_entities_profiled": 34,
+  "unique_entities_profiled": 35,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 21,
+      "total_mentions": 22,
       "bullish": 9,
       "neutral": 7,
-      "bearish": 5,
-      "net_sentiment_score": 0.19,
+      "bearish": 6,
+      "net_sentiment_score": 0.136,
       "assets_seen_in": [
         "BTC"
       ],
@@ -495,6 +495,20 @@
       ],
       "example_headlines": [
         "$KULR Technology (KULR.US)$ $Bitcoin (BTC.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "Morningstar",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
       ]
     }
   ]
