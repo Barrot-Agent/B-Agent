@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 221,
-    "btc_entries": 26
+    "btc_entries": 28
   },
   "unique_entities_profiled": 28,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 16,
-      "bullish": 6,
+      "total_mentions": 17,
+      "bullish": 7,
       "neutral": 5,
       "bearish": 5,
-      "net_sentiment_score": 0.062,
+      "net_sentiment_score": 0.118,
       "assets_seen_in": [
         "BTC"
       ],
@@ -54,6 +54,22 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation",
+        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 3,
       "bullish": 0,
@@ -67,6 +83,21 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
+      "entity": "Galaxy",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
+        "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com"
       ]
     },
     {
@@ -85,18 +116,18 @@
       ]
     },
     {
-      "entity": "Bitcoin Foundation",
+      "entity": "VanEck",
       "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
+      "bullish": 0,
+      "neutral": 1,
       "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": -0.5,
       "assets_seen_in": [
         "BTC"
       ],
       "example_headlines": [
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
-        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
+        "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
+        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
       ]
     },
     {
@@ -125,20 +156,6 @@
       ],
       "example_headlines": [
         "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
-      ]
-    },
-    {
-      "entity": "Galaxy",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy"
       ]
     },
     {
@@ -223,20 +240,6 @@
       ],
       "example_headlines": [
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To"
-      ]
-    },
-    {
-      "entity": "VanEck",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck"
       ]
     },
     {

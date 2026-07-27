@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 221,
-    "btc_entries": 26
+    "btc_entries": 28
   },
-  "unique_pairs_found": 27,
+  "unique_pairs_found": 28,
   "pairs": [
     {
       "entity_a": "Bitcoin",
@@ -16,6 +16,21 @@
         },
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
           "asset": "BTC"
         }
       ]
@@ -64,17 +79,6 @@
       "example_headlines": [
         {
           "title": "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Galaxy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
           "asset": "BTC"
         }
       ]
@@ -306,6 +310,17 @@
       "example_headlines": [
         {
           "title": "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
