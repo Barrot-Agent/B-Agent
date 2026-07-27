@@ -274,6 +274,21 @@ footer strong{color:var(--text)}
       return await res.json();
     }
   });
+  mcp.registerTool({
+    name: "getLatestBTCSignal",
+    title: "Latest BTC Signal",
+    description: "Fetch Barrot's latest Bitcoin market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getLatestBTCSignal');
+      var res = await fetch("latest_signal_btc.json");
+      if (!res.ok) return { error: "signal_unavailable" };
+      return await res.json();
+    }
+  });
 })();
 </script>
 
