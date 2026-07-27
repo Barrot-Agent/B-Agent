@@ -29,6 +29,11 @@ jobs:
       - name: Post as issue
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_TITLE: ${{ github.event.inputs.question && format('Barrot answers - {0}', github.event.inputs.question) || 'Barrot self-assessment' }}
         run: |
-          gh issue create --title "$ISSUE_TITLE" --body-file barrot_answer.md
+          Q="${ASK_BARROT_QUESTION}"
+          if [ -n "$Q" ]; then
+            TITLE="Barrot answers - ${Q:0:230}"
+          else
+            TITLE="Barrot self-assessment"
+          fi
+          gh issue create --title "$TITLE" --body-file barrot_answer.md
