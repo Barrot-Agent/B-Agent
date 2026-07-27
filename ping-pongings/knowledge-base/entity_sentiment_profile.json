@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 221,
+    "xrp_entries": 223,
     "btc_entries": 28
   },
-  "unique_entities_profiled": 28,
+  "unique_entities_profiled": 30,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -19,6 +19,23 @@
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
         "A quantum roadmap would push Bitcoin much higher: Charles Edwards"
+      ]
+    },
+    {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
       ]
     },
     {
@@ -51,22 +68,6 @@
         "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
         "BitMEX hit with 623 BTC lawsuit on day it announces shutdown",
         "BitMEX Faces Proposed Class Action Seeking Return Of 622 BTC"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
-        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation",
-        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
       ]
     },
     {
@@ -128,6 +129,34 @@
       "example_headlines": [
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "Ripple",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F"
+      ]
+    },
+    {
+      "entity": "XRP",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F"
       ]
     },
     {
