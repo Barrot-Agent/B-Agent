@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 42
+    "btc_entries": 43
   },
-  "unique_pairs_found": 60,
+  "unique_pairs_found": 63,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -717,6 +717,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "US dollar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Markets eye Bank of Japan meeting on Friday as yen repeats 40-year US dollar lows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bank of Japan",
+      "entity_b": "yen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Markets eye Bank of Japan meeting on Friday as yen repeats 40-year US dollar lows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US dollar",
+      "entity_b": "yen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Markets eye Bank of Japan meeting on Friday as yen repeats 40-year US dollar lows",
           "asset": "BTC"
         }
       ]
