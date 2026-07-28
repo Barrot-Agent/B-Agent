@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 45
+    "btc_entries": 46
   },
-  "unique_entities_profiled": 49,
+  "unique_entities_profiled": 50,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 30,
+      "total_mentions": 31,
       "bullish": 10,
       "neutral": 10,
-      "bearish": 10,
-      "net_sentiment_score": 0.0,
+      "bearish": 11,
+      "net_sentiment_score": -0.032,
       "assets_seen_in": [
         "BTC"
       ],
@@ -720,6 +720,20 @@
       ],
       "example_headlines": [
         "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
+      ]
+    },
+    {
+      "entity": "Fed",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
       ]
     }
   ]

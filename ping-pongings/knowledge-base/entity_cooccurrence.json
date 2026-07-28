@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 45
+    "btc_entries": 46
   },
-  "unique_pairs_found": 64,
+  "unique_pairs_found": 65,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -761,6 +761,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Fed",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance",
           "asset": "BTC"
         }
       ]
