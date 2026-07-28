@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 44
+    "btc_entries": 45
   },
-  "unique_pairs_found": 63,
+  "unique_pairs_found": 64,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -750,6 +750,17 @@
       "example_headlines": [
         {
           "title": "Markets eye Bank of Japan meeting on Friday as yen repeats 40-year US dollar lows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street",
           "asset": "BTC"
         }
       ]
