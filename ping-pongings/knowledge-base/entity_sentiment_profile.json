@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 226,
-    "btc_entries": 38
+    "btc_entries": 39
   },
-  "unique_entities_profiled": 42,
+  "unique_entities_profiled": 43,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 25,
+      "total_mentions": 26,
       "bullish": 10,
-      "neutral": 7,
+      "neutral": 8,
       "bearish": 8,
-      "net_sentiment_score": 0.08,
+      "net_sentiment_score": 0.077,
       "assets_seen_in": [
         "BTC"
       ],
@@ -19,6 +19,23 @@
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
         "A quantum roadmap would push Bitcoin much higher: Charles Edwards"
+      ]
+    },
+    {
+      "entity": "XRP",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
       ]
     },
     {
@@ -68,23 +85,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "XRP",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
       ]
     },
     {
@@ -223,6 +223,36 @@
       "example_headlines": [
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
         "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar"
+      ]
+    },
+    {
+      "entity": "Ethereum",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
+      "entity": "Dogecoin",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -548,34 +578,6 @@
       ]
     },
     {
-      "entity": "Ethereum",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
-      ]
-    },
-    {
-      "entity": "Dogecoin",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
-      ]
-    },
-    {
       "entity": "India",
       "total_mentions": 1,
       "bullish": 0,
@@ -615,6 +617,20 @@
       ],
       "example_headlines": [
         "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
+      ]
+    },
+    {
+      "entity": "SEC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     }
   ]
