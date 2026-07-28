@@ -349,6 +349,36 @@ footer strong{color:var(--text)}
       return await res.json();
     }
   });
+  mcp.registerTool({
+    name: "getBarrotBenchmark",
+    title: "Barrot Self-Benchmark History",
+    description: "Get Barrot's real, machine-graded coding-task benchmark history (generated code executed against real assertions, not self-reported). Includes every run, including failures. Measures coding-benchmark performance, not trading signal accuracy - see getSignalAccuracy for that.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getBarrotBenchmark');
+      var res = await fetch("benchmark_summary.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getBarrotAudit",
+    title: "Barrot Self-Audit Summary",
+    description: "Get the latest real static-analysis audit of Barrot's own codebase (apex_lattice), run weekly. Counts of real findings/recommendations only, not full detail. No PRs are opened by this process.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getBarrotAudit');
+      var res = await fetch("apex_audit_summary.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
 })();
 </script>
 
