@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 226,
-    "btc_entries": 36
+    "btc_entries": 38
   },
-  "unique_pairs_found": 45,
+  "unique_pairs_found": 50,
   "pairs": [
     {
       "entity_a": "Bitcoin",
@@ -76,6 +76,21 @@
         },
         {
           "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -289,17 +304,6 @@
       "example_headlines": [
         {
           "title": "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -520,6 +524,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "BitChat",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "India",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitChat",
+      "entity_b": "India",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]

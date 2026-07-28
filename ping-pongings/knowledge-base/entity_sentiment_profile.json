@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 226,
-    "btc_entries": 36
+    "btc_entries": 38
   },
-  "unique_entities_profiled": 39,
+  "unique_entities_profiled": 42,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 24,
+      "total_mentions": 25,
       "bullish": 10,
       "neutral": 7,
-      "bearish": 7,
-      "net_sentiment_score": 0.125,
+      "bearish": 8,
+      "net_sentiment_score": 0.08,
       "assets_seen_in": [
         "BTC"
       ],
@@ -151,6 +151,21 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -178,6 +193,21 @@
       "example_headlines": [
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "CoinDesk",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
       ]
     },
     {
@@ -252,20 +282,6 @@
       ]
     },
     {
-      "entity": "Binance",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds"
-      ]
-    },
-    {
       "entity": "US Fed",
       "total_mentions": 1,
       "bullish": 0,
@@ -323,20 +339,6 @@
     },
     {
       "entity": "ETH",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -571,6 +573,48 @@
       ],
       "example_headlines": [
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
+      ]
+    },
+    {
+      "entity": "India",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
+      ]
+    },
+    {
+      "entity": "BitChat",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
+      ]
+    },
+    {
+      "entity": "Nansen",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
       ]
     }
   ]
