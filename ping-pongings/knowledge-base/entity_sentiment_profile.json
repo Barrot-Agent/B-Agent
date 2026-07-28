@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 228,
-    "btc_entries": 40
+    "xrp_entries": 229,
+    "btc_entries": 42
   },
-  "unique_entities_profiled": 44,
+  "unique_entities_profiled": 45,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 26,
+      "total_mentions": 28,
       "bullish": 10,
-      "neutral": 8,
-      "bearish": 8,
-      "net_sentiment_score": 0.077,
+      "neutral": 9,
+      "bearish": 9,
+      "net_sentiment_score": 0.036,
       "assets_seen_in": [
         "BTC"
       ],
@@ -88,6 +88,23 @@
       ]
     },
     {
+      "entity": "Yahoo Finance",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+        "Is It Too Late to Buy Bitcoin? - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 3,
       "bullish": 0,
@@ -133,22 +150,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance"
       ]
     },
     {
@@ -648,6 +649,20 @@
       ],
       "example_headlines": [
         "Bitcoin Critic Peter Schiff Tells Bulls to Buy BTC, Not MSTR - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "TradingView",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst"
       ]
     }
   ]

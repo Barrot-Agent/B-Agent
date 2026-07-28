@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 228,
-    "btc_entries": 40
+    "xrp_entries": 229,
+    "btc_entries": 42
   },
-  "unique_pairs_found": 59,
+  "unique_pairs_found": 60,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -76,6 +76,21 @@
         },
         {
           "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -367,17 +382,6 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -702,6 +706,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin Critic Peter Schiff Tells Bulls to Buy BTC, Not MSTR - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst",
           "asset": "BTC"
         }
       ]
