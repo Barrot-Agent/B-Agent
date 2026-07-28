@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 43
+    "btc_entries": 44
   },
   "unique_pairs_found": 63,
   "pairs": [
@@ -46,6 +46,21 @@
         },
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Morningstar",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
+          "asset": "BTC"
+        },
+        {
+          "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
           "asset": "BTC"
         }
       ]
@@ -106,21 +121,6 @@
         },
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Morningstar",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
-          "asset": "BTC"
-        },
-        {
-          "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
           "asset": "BTC"
         }
       ]

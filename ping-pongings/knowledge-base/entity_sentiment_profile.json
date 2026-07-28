@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 43
+    "btc_entries": 44
   },
   "unique_entities_profiled": 48,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 28,
+      "total_mentions": 29,
       "bullish": 10,
-      "neutral": 9,
+      "neutral": 10,
       "bearish": 9,
-      "net_sentiment_score": 0.036,
+      "net_sentiment_score": 0.034,
       "assets_seen_in": [
         "BTC"
       ],
@@ -153,6 +153,22 @@
       ]
     },
     {
+      "entity": "Morningstar",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
+        "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
+        "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
+      ]
+    },
+    {
       "entity": "Galaxy",
       "total_mentions": 2,
       "bullish": 2,
@@ -240,21 +256,6 @@
       "example_headlines": [
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Bitcoin Critic Peter Schiff Tells Bulls to Buy BTC, Not MSTR - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Morningstar",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
-        "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar"
       ]
     },
     {
