@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 46
+    "btc_entries": 47
   },
-  "unique_entities_profiled": 50,
+  "unique_entities_profiled": 51,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 31,
-      "bullish": 10,
+      "total_mentions": 32,
+      "bullish": 11,
       "neutral": 10,
       "bearish": 11,
-      "net_sentiment_score": -0.032,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -734,6 +734,20 @@
       ],
       "example_headlines": [
         "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "BTC-USD",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha"
       ]
     }
   ]
