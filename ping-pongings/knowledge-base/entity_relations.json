@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 18,
+  "total_classified": 27,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -163,6 +163,87 @@
       "relation_type": "complementary",
       "justification": "The headline pairs Ripple (XRP.CC) with Moomoo, suggesting Moomoo offers or features Ripple, indicating a complementary relationship.",
       "classified_at": "2026-07-29T17:35:00Z"
+    },
+    {
+      "pair_key": "Ripple|XRP.CC",
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline lists Ripple and its ticker XRP.CC together, indicating they refer to the same asset in the same news item.",
+      "classified_at": "2026-07-29T18:24:56Z"
+    },
+    {
+      "pair_key": "Ripple|Yahoo Finance",
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline is a Yahoo Finance article that discusses Ripple's XRP, indicating they appear together in the same news piece.",
+      "classified_at": "2026-07-29T18:24:57Z"
+    },
+    {
+      "pair_key": "XRP|Yahoo Finance",
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline is a Yahoo Finance article discussing XRP, indicating a complementary informational relationship.",
+      "classified_at": "2026-07-29T18:24:58Z"
+    },
+    {
+      "pair_key": "Fed|Ripple",
+      "entity_a": "Fed",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline ties the Fed's decision directly to Ripple's price prediction, implying the Fed influences Ripple's market movement.",
+      "classified_at": "2026-07-29T18:24:58Z"
+    },
+    {
+      "pair_key": "Fed|XRP",
+      "entity_a": "Fed",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline ties the Fed decision directly to Ripple (XRP) price prediction, implying the Fed's actions affect XRP's price.",
+      "classified_at": "2026-07-29T18:24:59Z"
+    },
+    {
+      "pair_key": "BitMEX|Fidelity",
+      "entity_a": "BitMEX",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headline only discusses BitMEX shutting amid a lawsuit and does not mention Fidelity, leaving their relationship unclear.",
+      "classified_at": "2026-07-29T18:24:59Z"
+    },
+    {
+      "pair_key": "BitMEX|Goldman Sachs",
+      "entity_a": "BitMEX",
+      "entity_b": "Goldman Sachs",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline only discusses BitMEX shutting amid a lawsuit and does not provide any information linking it to Goldman Sachs.",
+      "classified_at": "2026-07-29T18:25:00Z"
+    },
+    {
+      "pair_key": "Fidelity|Goldman Sachs",
+      "entity_a": "Fidelity",
+      "entity_b": "Goldman Sachs",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headline does not contain any information linking Fidelity and Goldman Sachs, so their relationship cannot be determined from it.",
+      "classified_at": "2026-07-29T18:25:01Z"
+    },
+    {
+      "pair_key": "Binance|Bitcoin",
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headline mentions Bitcoin but does not reference Binance, so no clear relationship can be inferred.",
+      "classified_at": "2026-07-29T18:25:02Z"
     }
   ]
 }
