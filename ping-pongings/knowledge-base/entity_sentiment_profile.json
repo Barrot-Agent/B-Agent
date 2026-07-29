@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 233,
-    "btc_entries": 52
+    "btc_entries": 53
   },
-  "unique_entities_profiled": 56,
+  "unique_entities_profiled": 58,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -153,6 +153,22 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
       "entity": "Morningstar",
       "total_mentions": 3,
       "bullish": 0,
@@ -242,21 +258,6 @@
       "example_headlines": [
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
       ]
     },
     {
@@ -820,6 +821,34 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K"
+      ]
+    },
+    {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Federal Reserve (Fed)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
       ]
     }
   ]
