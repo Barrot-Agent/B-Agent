@@ -45,7 +45,7 @@ def ask(prompt):
         {
             "model": MODEL,
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 200,
+            "max_tokens": 600,
             "temperature": 0.1,
         }
     ).encode()
