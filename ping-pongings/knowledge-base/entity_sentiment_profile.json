@@ -1,15 +1,15 @@
 {
   "generated_from": {
     "xrp_entries": 230,
-    "btc_entries": 51
+    "btc_entries": 52
   },
   "unique_entities_profiled": 56,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 36,
+      "total_mentions": 37,
       "bullish": 13,
-      "neutral": 10,
+      "neutral": 11,
       "bearish": 13,
       "net_sentiment_score": 0.0,
       "assets_seen_in": [
@@ -88,6 +88,22 @@
       ]
     },
     {
+      "entity": "Fortune",
+      "total_mentions": 4,
+      "bullish": 0,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
       "entity": "Yahoo Finance",
       "total_mentions": 3,
       "bullish": 1,
@@ -134,22 +150,6 @@
         "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
         "Rate path still divides investors: Five things to know in Bitcoin this week",
         "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
-      ]
-    },
-    {
-      "entity": "Fortune",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 3,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune",
-        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
