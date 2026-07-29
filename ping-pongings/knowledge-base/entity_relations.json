@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 6,
+  "total_classified": 7,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -55,6 +55,15 @@
       "relation_type": "same_event",
       "justification": "Both headlines mention Ethereum and XRP together as part of the same market movement linked to a crypto bill and SEC commentary.",
       "classified_at": "2026-07-29T14:16:06Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|Ripple",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "competitive",
+      "justification": "The headline contrasts Ripple's underperformance with the broader crypto market, implying a competitive comparison involving Bitcoin Foundation.",
+      "classified_at": "2026-07-29T17:27:22Z"
     }
   ]
 }
