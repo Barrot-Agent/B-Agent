@@ -1,0 +1,60 @@
+{
+  "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
+  "total_classified": 6,
+  "relations": [
+    {
+      "pair_key": "Ripple|XRP",
+      "entity_a": "Ripple",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "relation_type": "causal",
+      "justification": "Both headlines link Ripple's actions or performance directly to XRP's market behavior, implying Ripple causes changes in XRP.",
+      "classified_at": "2026-07-29T14:15:57Z"
+    },
+    {
+      "pair_key": "Bitcoin|Morningstar",
+      "entity_a": "Bitcoin",
+      "entity_b": "Morningstar",
+      "cooccurrence_count": 3,
+      "relation_type": "complementary",
+      "justification": "Both headlines show Morningstar publishing analysis or predictions about Bitcoin's price movements.",
+      "classified_at": "2026-07-29T14:15:59Z"
+    },
+    {
+      "pair_key": "BTC|Bitcoin",
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines discuss Bitcoin's price movements while simultaneously referencing BTC, indicating they refer to the same market event.",
+      "classified_at": "2026-07-29T14:16:01Z"
+    },
+    {
+      "pair_key": "Bitcoin|CoinDesk",
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines mention Bitcoin price movements and attribute the reporting to CoinDesk, indicating co-occurrence without a clear causal or other specific relationship.",
+      "classified_at": "2026-07-29T14:16:02Z"
+    },
+    {
+      "pair_key": "Bitcoin|XRP",
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Bitcoin and XRP together as part of the same market movement linked to a crypto bill.",
+      "classified_at": "2026-07-29T14:16:04Z"
+    },
+    {
+      "pair_key": "Ethereum|XRP",
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines mention Ethereum and XRP together as part of the same market movement linked to a crypto bill and SEC commentary.",
+      "classified_at": "2026-07-29T14:16:06Z"
+    }
+  ]
+}
