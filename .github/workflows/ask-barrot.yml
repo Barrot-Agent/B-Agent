@@ -20,6 +20,8 @@ jobs:
       ASK_BARROT_QUESTION: ${{ github.event.inputs.question }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 30
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"

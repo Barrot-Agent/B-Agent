@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import subprocess
 import time
 import requests
 
@@ -112,6 +113,28 @@ def load_signal_snapshot():
     return "\n\nYour real, current signal data:\n" + "\n".join(lines)
 
 
+def load_recent_commits(n=10):
+    """Real recent commit history via git log. Requires the checkout step
+    to use fetch-depth > 1 (default GitHub Actions checkout is shallow,
+    depth 1 - would make this show almost nothing without that fix)."""
+    try:
+        result = subprocess.run(
+            ["git", "log", f"-{n}", "--pretty=format:%h|%ad|%s", "--date=short"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if result.returncode != 0 or not result.stdout.strip():
+            return ""
+        lines = ["\n\nYour real recent code revision history (most recent first):"]
+        for line in result.stdout.strip().split("\n"):
+            parts = line.split("|", 2)
+            if len(parts) == 3:
+                sha, date, msg = parts
+                lines.append(f"- [{date}] {sha}: {msg[:120]}")
+        return "\n".join(lines)
+    except Exception:
+        return ""
+
+
 def append_memory(question, answer):
     os.makedirs(os.path.dirname(MEMORY_PATH), exist_ok=True)
     entry = {
@@ -131,7 +154,7 @@ def main():
     question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
 
     memory_entries = load_recent_memory()
-    system = SYSTEM_BASE + format_memory_block(memory_entries) + load_signal_snapshot()
+    system = SYSTEM_BASE + format_memory_block(memory_entries) + load_signal_snapshot() + load_recent_commits()
 
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {
