@@ -28,7 +28,7 @@ CHAIN = [
     ),
 ]
 FINAL = (
-    "llama-3.3-70b-versatile",
+    "openai/gpt-oss-120b",
     "BARROT",
     "You are Barrot-Omega. You receive the refined outcome LAST. Deliver the final answer and state plainly any remaining uncertainty. Never invent capabilities.",
 )

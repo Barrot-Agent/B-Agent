@@ -254,7 +254,7 @@ PROVIDERS = {
     "groq": {
         "url": "https://api.groq.com/openai/v1/chat/completions",
         "key_env": "GROQ_API_KEY",
-        "model": "llama-3.3-70b-versatile",
+        "model": "openai/gpt-oss-120b",
         "tools": True,
     },
     "github": {
@@ -496,7 +496,7 @@ def get_sentiment_signal():
             "https://api.groq.com/openai/v1/chat/completions",
             headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
             json={
-                "model": "llama-3.3-70b-versatile",
+                "model": "openai/gpt-oss-120b",
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.1,
             },

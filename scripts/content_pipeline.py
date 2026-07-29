@@ -7,7 +7,7 @@ from pathlib import Path
 import requests
 
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
-DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 TIMEOUT = float(os.getenv("CONTENT_HTTP_TIMEOUT", "60"))
 KB_PATH = Path("ping-pongings/knowledge-base/log.jsonl")
 OUT_DIR = Path("content")

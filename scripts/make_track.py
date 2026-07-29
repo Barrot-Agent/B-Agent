@@ -22,7 +22,7 @@ import urllib.request
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 MUSICGPT_KEY = os.environ.get("MUSICGPT_API_KEY", "")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 THEME = os.environ.get("TRACK_THEME", "").strip() or "reflective, driving forward, cautious optimism"
 
 MUSIC_DIR = "music"

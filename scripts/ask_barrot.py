@@ -6,7 +6,7 @@ import time
 import requests
 
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
-DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 TIMEOUT = float(os.getenv("ASK_HTTP_TIMEOUT", "60"))
 
 MEMORY_PATH = "ping-pongings/knowledge-base/barrot_memory.jsonl"

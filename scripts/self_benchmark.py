@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 KB_DIR = "ping-pongings/knowledge-base"
 LOG_PATH = os.path.join(KB_DIR, "benchmark_log.jsonl")
 KEY = os.environ.get("GROQ_API_KEY", "")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 
 TASKS = [
     {

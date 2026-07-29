@@ -17,7 +17,7 @@ import json, os, sys, time, urllib.request, urllib.error
 TOPICS_PATH = "brain_corpus/topics.txt"
 OUT_PATH = "ping-pongings/knowledge-base/topics_log.jsonl"
 KEY = os.environ.get("GROQ_API_KEY", "")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 MIN_INTERVAL = 2.5  # seconds between requests -- keeps us under typical 30 RPM caps
 
 

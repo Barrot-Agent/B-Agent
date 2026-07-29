@@ -10,7 +10,7 @@ GITHUB_MODELS_ENDPOINT = "https://models.github.ai/inference/chat/completions"
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 
 DEFAULT_GITHUB_MODEL = os.getenv("GITHUB_MODEL", "openai/gpt-4.1-mini")
-DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 TIMEOUT = float(os.getenv("SIGNAL_HTTP_TIMEOUT", "20"))
 

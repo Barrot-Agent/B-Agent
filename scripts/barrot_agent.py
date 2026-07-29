@@ -16,7 +16,7 @@ TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 KEY = os.environ.get("GROQ_API_KEY", "")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 
 
 def run(cmd, check=True, quiet=False):
