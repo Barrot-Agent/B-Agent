@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 234,
+    "xrp_entries": 235,
     "btc_entries": 54
   },
-  "unique_entities_profiled": 58,
+  "unique_entities_profiled": 61,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -23,11 +23,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 8,
-      "bullish": 2,
+      "total_mentions": 9,
+      "bullish": 3,
       "neutral": 4,
       "bearish": 2,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.111,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -40,11 +40,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 7,
-      "bullish": 1,
+      "total_mentions": 8,
+      "bullish": 2,
       "neutral": 4,
       "bearish": 2,
-      "net_sentiment_score": -0.143,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "XRP"
       ],
@@ -331,6 +331,48 @@
       ],
       "example_headlines": [
         "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "Aviva",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga"
+      ]
+    },
+    {
+      "entity": "tokenized fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga"
       ]
     },
     {
