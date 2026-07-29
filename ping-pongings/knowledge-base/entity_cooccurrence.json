@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 229,
-    "btc_entries": 48
+    "xrp_entries": 230,
+    "btc_entries": 49
   },
-  "unique_pairs_found": 67,
+  "unique_pairs_found": 68,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -794,6 +794,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "FOREX.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com",
           "asset": "BTC"
         }
       ]

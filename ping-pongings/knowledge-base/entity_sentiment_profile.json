@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 229,
-    "btc_entries": 48
+    "xrp_entries": 230,
+    "btc_entries": 49
   },
-  "unique_entities_profiled": 52,
+  "unique_entities_profiled": 53,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 33,
+      "total_mentions": 34,
       "bullish": 12,
       "neutral": 10,
-      "bearish": 11,
-      "net_sentiment_score": 0.03,
+      "bearish": 12,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -762,6 +762,20 @@
       ],
       "example_headlines": [
         "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC"
+      ]
+    },
+    {
+      "entity": "FOREX.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com"
       ]
     }
   ]
