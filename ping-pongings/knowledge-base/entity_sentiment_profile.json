@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 47
+    "btc_entries": 48
   },
-  "unique_entities_profiled": 51,
+  "unique_entities_profiled": 52,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 32,
-      "bullish": 11,
+      "total_mentions": 33,
+      "bullish": 12,
       "neutral": 10,
       "bearish": 11,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.03,
       "assets_seen_in": [
         "BTC"
       ],
@@ -748,6 +748,20 @@
       ],
       "example_headlines": [
         "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha"
+      ]
+    },
+    {
+      "entity": "CNBC",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC"
       ]
     }
   ]

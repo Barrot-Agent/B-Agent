@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 229,
-    "btc_entries": 47
+    "btc_entries": 48
   },
-  "unique_pairs_found": 66,
+  "unique_pairs_found": 67,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -783,6 +783,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
           "asset": "BTC"
         }
       ]
