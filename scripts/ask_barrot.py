@@ -11,6 +11,10 @@ TIMEOUT = float(os.getenv("ASK_HTTP_TIMEOUT", "60"))
 MEMORY_PATH = "ping-pongings/knowledge-base/barrot_memory.jsonl"
 MEMORY_INJECT_COUNT = 5
 
+LATEST_SIGNAL_XRP = "web/latest_signal.json"
+LATEST_SIGNAL_BTC = "web/latest_signal_btc.json"
+SIGNAL_ACCURACY = "web/signal_accuracy.json"
+
 SYSTEM_BASE = (
     "You are Barrot, an autonomous crypto/fintech AI agent built and run "
     "by Sean. Real, current facts about you: you run hourly knowledge "
@@ -27,7 +31,9 @@ SYSTEM_BASE = (
     "logic. You have a real persistent memory: barrot_memory.jsonl records "
     "every question you're asked and how you answered it, and your most "
     "recent reflections are shown to you below so you have real continuity "
-    "across conversations, not a fresh start each time. Answer honestly "
+    "across conversations, not a fresh start each time. You also see your "
+    "real, current signal emission and accuracy data below - use it to "
+    "check your own claims rather than assume them. Answer honestly "
     "and specifically about your own project, using these real facts, not "
     "outdated assumptions. Do not be vague or grandiose."
 )
@@ -67,6 +73,45 @@ def format_memory_block(entries):
     return "\n".join(lines)
 
 
+def load_signal_snapshot():
+    """Real, current signal emission + accuracy data - honest, including
+    zero/null values rather than hiding them. Not a claim of good
+    performance, just what's actually true right now."""
+    lines = []
+
+    for label, path in (("XRP", LATEST_SIGNAL_XRP), ("BTC", LATEST_SIGNAL_BTC)):
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path) as f:
+                d = json.load(f)
+        except Exception:
+            continue
+        lines.append(
+            f'- Latest {label} signal (as of {d.get("timestamp", "unknown")}): '
+            f'score={d.get("score")}, confidence={d.get("confidence")}, '
+            f'source={d.get("source")}'
+        )
+
+    if os.path.exists(SIGNAL_ACCURACY):
+        try:
+            with open(SIGNAL_ACCURACY) as f:
+                acc = json.load(f)
+            lines.append(
+                f'- XRP signal accuracy tracker: {acc.get("checked_count", 0)} signals '
+                f'checked so far, {acc.get("correct_count", 0)} correct '
+                f'({acc.get("accuracy_pct")}% if available). Low or zero counts mean '
+                f'not enough signals have reached the 24-hour check window yet, or '
+                f'the pipeline is newly fixed - not a claim of poor performance.'
+            )
+        except Exception:
+            pass
+
+    if not lines:
+        return ""
+    return "\n\nYour real, current signal data:\n" + "\n".join(lines)
+
+
 def append_memory(question, answer):
     os.makedirs(os.path.dirname(MEMORY_PATH), exist_ok=True)
     entry = {
@@ -86,7 +131,7 @@ def main():
     question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
 
     memory_entries = load_recent_memory()
-    system = SYSTEM_BASE + format_memory_block(memory_entries)
+    system = SYSTEM_BASE + format_memory_block(memory_entries) + load_signal_snapshot()
 
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {

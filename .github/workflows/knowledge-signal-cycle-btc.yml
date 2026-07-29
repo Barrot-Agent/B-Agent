@@ -30,6 +30,6 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/log_btc.jsonl ping-pongings/knowledge-base/config_btc.json web/latest_signal_btc.json
+          git add ping-pongings/knowledge-base/log_btc.jsonl ping-pongings/knowledge-base/config_btc.json web/latest_signal_btc.json web/signal_history_btc.jsonl
           git diff --cached --quiet || git commit -m "Auto cycle (BTC): ingest + distill + blended signal [skip ci]"
           git push || (git pull --no-rebase --no-edit origin main && git push)
