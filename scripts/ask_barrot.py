@@ -15,6 +15,7 @@ MEMORY_INJECT_COUNT = 5
 LATEST_SIGNAL_XRP = "web/latest_signal.json"
 LATEST_SIGNAL_BTC = "web/latest_signal_btc.json"
 SIGNAL_ACCURACY = "web/signal_accuracy.json"
+GUMROAD_METRICS = "ping-pongings/knowledge-base/gumroad_metrics.json"
 
 SYSTEM_BASE = (
     "You are Barrot, an autonomous crypto/fintech AI agent built and run "
@@ -113,6 +114,97 @@ def load_signal_snapshot():
     return "\n\nYour real, current signal data:\n" + "\n".join(lines)
 
 
+def load_gumroad_metrics():
+    """Real, aggregate-only product performance - no individual customer
+    data ever enters this. Honest if the file doesn't exist yet."""
+    if not os.path.exists(GUMROAD_METRICS):
+        return ""
+    try:
+        with open(GUMROAD_METRICS) as f:
+            m = json.load(f)
+    except Exception:
+        return ""
+    return (
+        f'\n\nYour real product performance (aggregate only, no customer data): '
+        f'{m.get("product_name", "unknown product")} has {m.get("sales_count", "unknown")} '
+        f'total sales.'
+    )
+
+
+def load_ingestion_metrics():
+    """Real ingestion counts only - config.json mixes genuinely-live
+    fields with dead, never-implemented scaffolding (kaggle/github/
+    science_papers/forums sources, several knowledge_domains all stuck
+    at 0 forever). This deliberately does NOT expose the raw file, to
+    avoid Barrot citing fake capabilities as if real."""
+    path = "ping-pongings/knowledge-base/config.json"
+    if not os.path.exists(path):
+        return ""
+    try:
+        with open(path) as f:
+            cfg = json.load(f)
+    except Exception:
+        return ""
+
+    sources = cfg.get("sources", {})
+    real_lines = []
+    dead_sources = []
+    for name, s in sources.items():
+        count = s.get("entries_ingested", 0)
+        if count > 0:
+            real_lines.append(f"- {name}: {count} entries ingested (real, active)")
+        else:
+            dead_sources.append(name)
+
+    if not real_lines and not dead_sources:
+        return ""
+
+    out = ["\n\nYour real ingestion metrics (from config.json, filtered):"]
+    out.extend(real_lines)
+    if dead_sources:
+        out.append(
+            f"- NOT yet real, despite being marked 'enabled' in config: "
+            f"{', '.join(dead_sources)}. These show 0 entries because no "
+            f"actual ingestion code exists for them yet, or (for "
+            f"ping_pong_cycles specifically) the real capability exists "
+            f"but was never wired to increment this counter. Do not cite "
+            f"these as active capabilities."
+        )
+    return "\n".join(out)
+
+
+def load_recent_failures(n=8):
+    """Real, live query of recent GitHub Actions workflow failures - no
+    separate logging system needed, GitHub already tracks this natively.
+    Requires GITHUB_TOKEN in the environment."""
+    gh_token = os.environ.get("GITHUB_TOKEN", "")
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    if not gh_token or not repo:
+        return ""
+    try:
+        r = requests.get(
+            f"https://api.github.com/repos/{repo}/actions/runs",
+            headers={"Authorization": f"Bearer {gh_token}"},
+            params={"status": "failure", "per_page": n},
+            timeout=15,
+        )
+        r.raise_for_status()
+        runs = r.json().get("workflow_runs", [])
+    except Exception:
+        return ""
+
+    if not runs:
+        return "\n\nYour real recent error log: no failed workflow runs in recent history."
+
+    lines = ["\n\nYour real recent error log (workflow failures, most recent first):"]
+    for run in runs[:n]:
+        name = run.get("name", "unknown")
+        date = (run.get("created_at") or "")[:10]
+        url = run.get("html_url", "")
+        lines.append(f"- [{date}] {name} failed: {url}")
+    return "\n".join(lines)
+
+
 def load_recent_commits(n=10):
     """Real recent commit history via git log. Requires the checkout step
     to use fetch-depth > 1 (default GitHub Actions checkout is shallow,
@@ -154,7 +246,7 @@ def main():
     question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
 
     memory_entries = load_recent_memory()
-    system = SYSTEM_BASE + format_memory_block(memory_entries) + load_signal_snapshot() + load_recent_commits()
+    system = SYSTEM_BASE + format_memory_block(memory_entries) + load_signal_snapshot() + load_recent_commits() + load_gumroad_metrics() + load_ingestion_metrics() + load_recent_failures()
 
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {

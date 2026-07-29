@@ -27,6 +27,8 @@ jobs:
           python-version: "3.11"
       - run: pip install requests
       - name: Ask Barrot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/ask_barrot.py
       - name: Post as issue
         env:
