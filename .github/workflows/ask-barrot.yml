@@ -9,7 +9,7 @@ on:
         default: ''
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 jobs:
@@ -37,3 +37,10 @@ jobs:
             TITLE="Barrot self-assessment"
           fi
           gh issue create --title "$TITLE" --body-file barrot_answer.md
+      - name: Commit memory
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/barrot_memory.jsonl
+          git diff --cached --quiet || git commit -m "Barrot memory: new reflection recorded [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
