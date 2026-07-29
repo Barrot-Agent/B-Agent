@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 230,
-    "btc_entries": 49
+    "btc_entries": 50
   },
-  "unique_pairs_found": 68,
+  "unique_pairs_found": 71,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -805,6 +805,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Zhibao",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "Zhibao",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
           "asset": "BTC"
         }
       ]
