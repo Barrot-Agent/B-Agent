@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 7,
+  "total_classified": 18,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -64,6 +64,105 @@
       "relation_type": "competitive",
       "justification": "The headline contrasts Ripple's underperformance with the broader crypto market, implying a competitive comparison involving Bitcoin Foundation.",
       "classified_at": "2026-07-29T17:27:22Z"
+    },
+    {
+      "pair_key": "Bitcoin|Fortune",
+      "entity_a": "Bitcoin",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 4,
+      "relation_type": "same_event",
+      "justification": "Both headlines are Fortune-published listings of Bitcoin's price for specific dates, indicating they refer to the same event.",
+      "classified_at": "2026-07-29T17:34:53Z"
+    },
+    {
+      "pair_key": "Bitcoin|US",
+      "entity_a": "Bitcoin",
+      "entity_b": "US",
+      "cooccurrence_count": 3,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines discuss Bitcoin activity and investor considerations without explicitly linking Bitcoin to a specific US action or policy, making the relationship unclear.",
+      "classified_at": "2026-07-29T17:34:54Z"
+    },
+    {
+      "pair_key": "Bitcoin|Galaxy",
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines show Galaxy as the source reporting on Bitcoin-related events, without indicating a direct causal, regulatory, competitive, complementary, or same-event link.",
+      "classified_at": "2026-07-29T17:34:54Z"
+    },
+    {
+      "pair_key": "Bitcoin|Yahoo Finance",
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines are Yahoo Finance articles that focus on Bitcoin, indicating they appear together in the same news context.",
+      "classified_at": "2026-07-29T17:34:55Z"
+    },
+    {
+      "pair_key": "Bitcoin|Dogecoin",
+      "entity_a": "Bitcoin",
+      "entity_b": "Dogecoin",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Bitcoin and Dogecoin together as rising or falling in the same news context, indicating they are mentioned as part of the same event.",
+      "classified_at": "2026-07-29T17:34:56Z"
+    },
+    {
+      "pair_key": "Bitcoin|Ethereum",
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Bitcoin and Ethereum together as assets that rise or fall in response to the same crypto bill developments.",
+      "classified_at": "2026-07-29T17:34:57Z"
+    },
+    {
+      "pair_key": "Dogecoin|Ethereum",
+      "entity_a": "Dogecoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Dogecoin and Ethereum together as part of the same market movement linked to a crypto bill.",
+      "classified_at": "2026-07-29T17:34:57Z"
+    },
+    {
+      "pair_key": "Dogecoin|XRP",
+      "entity_a": "Dogecoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list XRP and Dogecoin together as part of the same market movement related to a crypto bill.",
+      "classified_at": "2026-07-29T17:34:58Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|XRP",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline discusses XRP underperformance and is attributed to Bitcoin Foundation, indicating both entities appear together in the same news article.",
+      "classified_at": "2026-07-29T17:34:59Z"
+    },
+    {
+      "pair_key": "Moomoo|Ripple",
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both \"Moomoo\" and \"Ripple\" are mentioned together in the headline \"$Ripple (XRP.CC)$ - Moomoo\".",
+      "classified_at": "2026-07-29T17:34:59Z"
+    },
+    {
+      "pair_key": "Moomoo|XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline pairs Ripple (XRP.CC) with Moomoo, suggesting Moomoo offers or features Ripple, indicating a complementary relationship.",
+      "classified_at": "2026-07-29T17:35:00Z"
     }
   ]
 }
