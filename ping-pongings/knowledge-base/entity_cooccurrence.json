@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 230,
-    "btc_entries": 50
+    "btc_entries": 51
   },
-  "unique_pairs_found": 71,
+  "unique_pairs_found": 72,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -838,6 +838,17 @@
       "example_headlines": [
         {
           "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
           "asset": "BTC"
         }
       ]

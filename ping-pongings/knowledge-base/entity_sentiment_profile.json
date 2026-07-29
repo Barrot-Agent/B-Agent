@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 230,
-    "btc_entries": 50
+    "btc_entries": 51
   },
-  "unique_entities_profiled": 55,
+  "unique_entities_profiled": 56,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 35,
+      "total_mentions": 36,
       "bullish": 13,
       "neutral": 10,
-      "bearish": 12,
-      "net_sentiment_score": 0.029,
+      "bearish": 13,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -804,6 +804,20 @@
       ],
       "example_headlines": [
         "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K"
       ]
     }
   ]
