@@ -119,7 +119,8 @@ def main():
     done = 0
     for pair in batch:
         try:
-            parsed = parse(ask(build_prompt(pair)))
+            raw = ask(build_prompt(pair))
+            parsed = parse(raw)
             existing[pair_key(pair)] = {
                 "pair_key": pair_key(pair),
                 "entity_a": pair["entity_a"],
@@ -133,6 +134,10 @@ def main():
             print(f"  [{parsed['relation_type']}] {pair['entity_a']} <-> {pair['entity_b']}")
         except Exception as ex:
             print(f"  skip ({pair['entity_a']} <-> {pair['entity_b']}): {ex}")
+            try:
+                print(f"    raw response was: {raw[:200]!r}")
+            except NameError:
+                print(f"    (failed before a response was received)")
 
     out = {
         "note": (
