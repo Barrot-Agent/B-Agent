@@ -96,6 +96,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 2,
@@ -302,17 +317,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [

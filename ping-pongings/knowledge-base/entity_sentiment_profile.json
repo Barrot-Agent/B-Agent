@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 11,
-      "bullish": 5,
+      "total_mentions": 12,
+      "bullish": 6,
       "neutral": 4,
       "bearish": 2,
-      "net_sentiment_score": 0.273,
+      "net_sentiment_score": 0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Yahoo Finance",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 4,
       "bullish": 0,
@@ -102,23 +119,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-        "Is It Too Late to Buy Bitcoin? - Yahoo Finance"
       ]
     },
     {
