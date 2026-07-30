@@ -85,7 +85,7 @@ def ask_groq(prompt):
     body = json.dumps({
         "model": MODEL,
         "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 600,
+        "max_tokens": 1500,
         "temperature": 0.0,
     }).encode()
     req = urllib.request.Request(
