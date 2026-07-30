@@ -63,6 +63,8 @@ def fetch_source():
         SOURCE_URL,
         headers={
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -115,14 +117,8 @@ def main():
     print(f"Fetching real source: {SOURCE_URL}")
     raw_html = fetch_source()
     full_text = strip_html(raw_html)
-    print(f"Full untruncated stripped text: {len(full_text)} chars")
-    roth_idx = full_text.find("Roth IRA")
-    print(f"'Roth IRA' first appears at char offset: {roth_idx}")
-    if roth_idx != -1:
-        print(f"Context around it: {full_text[roth_idx:roth_idx+400]!r}")
+    print(f"Fetched {len(full_text)} chars of real page text (Roth section {'found' if 'Roth IRA' in full_text else 'not found'} in this fetch)")
     page_text = full_text[:16000]
-
-    print(f"Using first {len(page_text)} chars for extraction")
 
     print("Extracting figures via Groq, grounded strictly in fetched text...")
     prompt = EXTRACTION_PROMPT_TEMPLATE.format(page_text=page_text)
