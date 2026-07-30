@@ -409,6 +409,21 @@ footer strong{color:var(--text)}
       return await res.json();
     }
   });
+  mcp.registerTool({
+    name: "getFinancialLiteracyData",
+    title: "Financial Literacy Reference Data",
+    description: "Get real, current IRS retirement account contribution limits (401k, IRA, SIMPLE, catch-up amounts) - automatically refreshed monthly from the IRS's own official evergreen COLA reference page, not static or training-data figures. Includes a raw source excerpt for verification and the source URL.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getFinancialLiteracyData');
+      var res = await fetch("financial_data.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
 })();
 </script>
 
