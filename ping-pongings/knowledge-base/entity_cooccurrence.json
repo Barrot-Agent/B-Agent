@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 239,
-    "btc_entries": 57
+    "btc_entries": 59
   },
-  "unique_pairs_found": 116,
+  "unique_pairs_found": 119,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1345,6 +1345,39 @@
       "example_headlines": [
         {
           "title": "Chinese newspaper warns of Bitcoin extortion scam using its name",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Treasury Hyperscale",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Bitcoin Treasury Hyperscale",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
