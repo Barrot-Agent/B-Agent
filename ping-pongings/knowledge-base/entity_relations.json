@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 27,
+  "total_classified": 42,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -244,6 +244,141 @@
       "relation_type": "correlated_unclear",
       "justification": "The provided headline mentions Bitcoin but does not reference Binance, so no clear relationship can be inferred.",
       "classified_at": "2026-07-29T18:25:02Z"
+    },
+    {
+      "pair_key": "Ripple|XRP Ledger",
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "Both headlines show Ripple actively collaborating with the XRP Ledger\u2014launching a tokenized fund on it and backing a ledger amendment\u2014indicating a mutually supportive relationship.",
+      "classified_at": "2026-07-30T01:39:30Z"
+    },
+    {
+      "pair_key": "XRP|XRP Ledger",
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "relation_type": "causal",
+      "justification": "Both headlines tie developments on the XRP Ledger (a tokenized fund launch and a ledger amendment) to implications or effects for XRP, indicating that ledger actions influence XRP.",
+      "classified_at": "2026-07-30T01:39:33Z"
+    },
+    {
+      "pair_key": "Aviva|Ripple",
+      "entity_a": "Aviva",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline says Ripple and Aviva are jointly launching a tokenized fund, indicating a collaborative partnership.",
+      "classified_at": "2026-07-30T01:39:36Z"
+    },
+    {
+      "pair_key": "Aviva|XRP",
+      "entity_a": "Aviva",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports that Ripple and Aviva jointly launch a tokenized fund on the XRP Ledger, indicating they are involved in the same event.",
+      "classified_at": "2026-07-30T01:39:38Z"
+    },
+    {
+      "pair_key": "Aviva|XRP Ledger",
+      "entity_a": "Aviva",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline states that Aviva and Ripple are jointly launching a tokenized fund on the XRP Ledger, indicating a collaborative partnership.",
+      "classified_at": "2026-07-30T01:39:41Z"
+    },
+    {
+      "pair_key": "Aviva|tokenized fund",
+      "entity_a": "Aviva",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline states that Ripple and Aviva jointly launch the first tokenized fund on the XRP Ledger, indicating they are part of the same event.",
+      "classified_at": "2026-07-30T01:39:44Z"
+    },
+    {
+      "pair_key": "Ripple|tokenized fund",
+      "entity_a": "Ripple",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline states that Ripple and Aviva jointly launch a tokenized fund on the XRP Ledger, indicating a collaborative, complementary relationship.",
+      "classified_at": "2026-07-30T01:39:47Z"
+    },
+    {
+      "pair_key": "XRP|tokenized fund",
+      "entity_a": "XRP",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports that a tokenized fund is being launched on the XRP Ledger, indicating both entities are involved in the same event.",
+      "classified_at": "2026-07-30T01:39:49Z"
+    },
+    {
+      "pair_key": "XRP Ledger|tokenized fund",
+      "entity_a": "XRP Ledger",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline states that a tokenized fund is being launched on the XRP Ledger, indicating they are part of the same event.",
+      "classified_at": "2026-07-30T01:39:52Z"
+    },
+    {
+      "pair_key": "Ripple|XRP Ledger Fix Amendment",
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger Fix Amendment",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline says the amendment is Ripple\u2011backed and goes live, implying Ripple\u2019s support caused its implementation.",
+      "classified_at": "2026-07-30T01:39:55Z"
+    },
+    {
+      "pair_key": "XRP|XRP Ledger Fix Amendment",
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger Fix Amendment",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports the XRP Ledger Fix Amendment going live, directly linking the amendment to the XRP ecosystem in the same news event.",
+      "classified_at": "2026-07-30T01:39:57Z"
+    },
+    {
+      "pair_key": "XRP Ledger|XRP Ledger Fix Amendment",
+      "entity_a": "XRP Ledger",
+      "entity_b": "XRP Ledger Fix Amendment",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports the XRP Ledger Fix Amendment going live, indicating both terms refer to the same event concerning the XRP Ledger.",
+      "classified_at": "2026-07-30T01:40:00Z"
+    },
+    {
+      "pair_key": "Binance|US Fed",
+      "entity_a": "Binance",
+      "entity_b": "US Fed",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline links Fed rate\u2011hike odds to Bitcoin price movements, but does not mention Binance, making any direct relationship between Binance and the US Fed unclear.",
+      "classified_at": "2026-07-30T01:40:03Z"
+    },
+    {
+      "pair_key": "Bitcoin|US Fed",
+      "entity_a": "Bitcoin",
+      "entity_b": "US Fed",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline links Bitcoin's price drop to surging US bond yields that boost Fed rate\u2011hike odds, indicating a causal effect.",
+      "classified_at": "2026-07-30T01:40:05Z"
+    },
+    {
+      "pair_key": "Bitcoin|Charles Edwards",
+      "entity_a": "Bitcoin",
+      "entity_b": "Charles Edwards",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline directly ties Charles Edwards' statement to Bitcoin, indicating they are mentioned together within the same news item.",
+      "classified_at": "2026-07-30T01:40:08Z"
     }
   ]
 }
