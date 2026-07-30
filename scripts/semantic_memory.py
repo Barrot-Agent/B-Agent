@@ -33,24 +33,36 @@ KB_DIR = "ping-pongings/knowledge-base"
 MEMORY_STORE = os.path.join(KB_DIR, "semantic_memory.jsonl")
 NEWS_LOG = os.path.join(KB_DIR, "log.jsonl")
 
-KEY = os.environ.get("GROQ_API_KEY", "")
-EMBED_MODEL = "nomic-embed-text-v1_5"
+KEY = os.environ.get("HF_TOKEN", "")
+EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBED_URL = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{EMBED_MODEL}"
 MAX_NEW_PER_RUN = int(os.environ.get("EMBED_PER_RUN", "20"))
 
 
 def embed(text):
-    body = json.dumps({"input": text[:2000], "model": EMBED_MODEL}).encode()
+    """Real HF Serverless Inference API feature-extraction endpoint -
+    NOT Groq (confirmed via a real 404 that Groq has no embeddings API).
+    First live call not yet verified - this endpoint is documented as
+    official HF infrastructure but flagged by HF's own docs as
+    potentially in flux; expect one possible fix cycle same as every
+    other first-run integration."""
+    body = json.dumps({"inputs": text[:2000]}).encode()
     req = urllib.request.Request(
-        "https://api.groq.com/openai/v1/embeddings",
+        EMBED_URL,
         data=body,
         headers={
             "Authorization": f"Bearer {KEY}",
             "Content-Type": "application/json",
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)["data"][0]["embedding"]
+        result = json.load(r)
+        if isinstance(result[0], list):
+            if isinstance(result[0][0], list):
+                import numpy as _np
+                return _np.mean(result[0], axis=0).tolist()
+            return result[0]
+        return result
 
 
 def load_store():
