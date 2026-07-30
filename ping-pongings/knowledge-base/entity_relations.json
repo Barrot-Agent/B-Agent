@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 72,
+  "total_classified": 87,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -649,6 +649,141 @@
       "relation_type": "causal",
       "justification": "The headline shows Peter Schiff advising investors to buy BTC, indicating his statements influence actions related to BTC.",
       "classified_at": "2026-07-30T03:01:02Z"
+    },
+    {
+      "pair_key": "MSTR|Peter Schiff",
+      "entity_a": "MSTR",
+      "entity_b": "Peter Schiff",
+      "cooccurrence_count": 1,
+      "relation_type": "competitive",
+      "justification": "The headline shows Peter Schiff urging investors to buy Bitcoin instead of MSTR, indicating a competitive stance between the two.",
+      "classified_at": "2026-07-30T04:32:38Z"
+    },
+    {
+      "pair_key": "Bitcoin|TradingView",
+      "entity_a": "Bitcoin",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions Bitcoin but does not reference TradingView, so the relationship cannot be determined from the provided text.",
+      "classified_at": "2026-07-30T04:32:40Z"
+    },
+    {
+      "pair_key": "Bank of Japan|US dollar",
+      "entity_a": "Bank of Japan",
+      "entity_b": "US dollar",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline ties the Bank of Japan meeting to the yen's 40\u2011year low against the US dollar, indicating a relationship but not explicitly stating causation.",
+      "classified_at": "2026-07-30T04:32:43Z"
+    },
+    {
+      "pair_key": "Bank of Japan|yen",
+      "entity_a": "Bank of Japan",
+      "entity_b": "yen",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline links the Bank of Japan meeting and the yen's low value without stating a direct causal or regulatory connection.",
+      "classified_at": "2026-07-30T04:32:46Z"
+    },
+    {
+      "pair_key": "US dollar|yen",
+      "entity_a": "US dollar",
+      "entity_b": "yen",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline ties the yen's 40\u2011year low directly to the US dollar, indicating a correlation between the two currencies without stating a clear causal or regulatory link.",
+      "classified_at": "2026-07-30T04:32:49Z"
+    },
+    {
+      "pair_key": "Bitcoin|Wall Street",
+      "entity_a": "Bitcoin",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline links Bitcoin's price drop and a chip-stock crash that spreads to Wall Street, indicating they are part of the same market event.",
+      "classified_at": "2026-07-30T04:32:51Z"
+    },
+    {
+      "pair_key": "Bitcoin|Fed",
+      "entity_a": "Bitcoin",
+      "entity_b": "Fed",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline ties Bitcoin's price decline directly to the upcoming Fed decision, indicating the Fed's action influences Bitcoin.",
+      "classified_at": "2026-07-30T04:32:54Z"
+    },
+    {
+      "pair_key": "BTC-USD|Bitcoin",
+      "entity_a": "BTC-USD",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline discusses Bitcoin's price path and explicitly references the BTC-USD ticker, indicating they refer to the same price movement.",
+      "classified_at": "2026-07-30T04:32:56Z"
+    },
+    {
+      "pair_key": "Bitcoin|CNBC",
+      "entity_a": "Bitcoin",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows CNBC publishing a report about Bitcoin, indicating a complementary relationship where CNBC provides coverage of Bitcoin.",
+      "classified_at": "2026-07-30T04:32:59Z"
+    },
+    {
+      "pair_key": "Bitcoin|FOREX.com",
+      "entity_a": "Bitcoin",
+      "entity_b": "FOREX.com",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows FOREX.com publishing an analysis of Bitcoin's price, indicating a complementary informational relationship.",
+      "classified_at": "2026-07-30T04:33:01Z"
+    },
+    {
+      "pair_key": "Bitcoin|Nasdaq",
+      "entity_a": "Bitcoin",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline describes a Nasdaq-listed company seeking to hold Bitcoin in its treasury, indicating Bitcoin is used as a complementary asset for a Nasdaq entity.",
+      "classified_at": "2026-07-30T04:33:04Z"
+    },
+    {
+      "pair_key": "Bitcoin|Zhibao",
+      "entity_a": "Bitcoin",
+      "entity_b": "Zhibao",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows Zhibao intends to hold Bitcoin in its treasury and sell stock to acquire BTC, indicating a complementary use of Bitcoin by Zhibao.",
+      "classified_at": "2026-07-30T04:33:07Z"
+    },
+    {
+      "pair_key": "Nasdaq|Zhibao",
+      "entity_a": "Nasdaq",
+      "entity_b": "Zhibao",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline links Zhibao to Nasdaq by noting it is a Nasdaq\u2011listed company, indicating they are mentioned together in the same news event.",
+      "classified_at": "2026-07-30T04:33:09Z"
+    },
+    {
+      "pair_key": "Bitcoin|US spot Bitcoin ETFs",
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline links Bitcoin ETFs' outflow streak with Bitcoin failing to hold $65K, indicating a correlation without explicit causal direction.",
+      "classified_at": "2026-07-30T04:33:12Z"
+    },
+    {
+      "pair_key": "Bitcoin (BTC)|CoinDesk",
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports Bitcoin's price bounce and is published by CoinDesk, indicating they are part of the same news event.",
+      "classified_at": "2026-07-30T04:33:15Z"
     }
   ]
 }
