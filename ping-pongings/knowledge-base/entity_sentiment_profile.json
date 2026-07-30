@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 236,
-    "btc_entries": 54
+    "xrp_entries": 237,
+    "btc_entries": 55
   },
-  "unique_entities_profiled": 62,
+  "unique_entities_profiled": 65,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 37,
+      "total_mentions": 38,
       "bullish": 13,
       "neutral": 11,
-      "bearish": 13,
-      "net_sentiment_score": 0.0,
+      "bearish": 14,
+      "net_sentiment_score": -0.026,
       "assets_seen_in": [
         "BTC"
       ],
@@ -906,6 +906,48 @@
       ],
       "example_headlines": [
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
+      "entity": "US Treasury",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
+      ]
+    },
+    {
+      "entity": "HormuzSafe",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
+      ]
+    },
+    {
+      "entity": "Islamic Revolutionary Guard Corps",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
       ]
     }
   ]

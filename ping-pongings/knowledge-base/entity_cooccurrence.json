@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 236,
-    "btc_entries": 54
+    "xrp_entries": 237,
+    "btc_entries": 55
   },
-  "unique_pairs_found": 89,
+  "unique_pairs_found": 95,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1044,6 +1044,72 @@
       "example_headlines": [
         {
           "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "HormuzSafe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Islamic Revolutionary Guard Corps",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "HormuzSafe",
+      "entity_b": "Islamic Revolutionary Guard Corps",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "HormuzSafe",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Islamic Revolutionary Guard Corps",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
           "asset": "BTC"
         }
       ]
