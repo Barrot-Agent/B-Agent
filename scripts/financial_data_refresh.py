@@ -114,7 +114,7 @@ def main():
 
     print(f"Fetching real source: {SOURCE_URL}")
     raw_html = fetch_source()
-    page_text = strip_html(raw_html)[:8000]
+    page_text = strip_html(raw_html)[:16000]
 
     print(f"Fetched {len(page_text)} chars of real page text")
     print(f"First 300 chars: {page_text[:300]!r}")
