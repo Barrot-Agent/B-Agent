@@ -3,15 +3,15 @@
     "xrp_entries": 241,
     "btc_entries": 59
   },
-  "unique_entities_profiled": 78,
+  "unique_entities_profiled": 81,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 41,
-      "bullish": 15,
+      "total_mentions": 42,
+      "bullish": 16,
       "neutral": 11,
       "bearish": 15,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.024,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -214,6 +214,22 @@
       "example_headlines": [
         "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com"
+      ]
+    },
+    {
+      "entity": "Federal Reserve",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -449,20 +465,6 @@
     },
     {
       "entity": "Clarity Act",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -1117,6 +1119,48 @@
       ],
       "example_headlines": [
         "Chinese newspaper warns of Bitcoin extortion scam using its name"
+      ]
+    },
+    {
+      "entity": "South Korea",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
+      "entity": "PCE inflation",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
+      "entity": "US stocks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
