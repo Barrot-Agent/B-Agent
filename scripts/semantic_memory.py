@@ -1,25 +1,23 @@
 #!/usr/bin/env python3
 """
 BARROT-Ω SEMANTIC MEMORY — real retrieval-augmented context for signal
-generation, built the way this project's infrastructure actually works:
-Groq's real embeddings API (nomic-embed-text-v1_5, confirmed real) for
-vectors, plain cosine similarity (numpy only, no vector DB), and a
-git-committed JSON file as the persistent store (same pattern as every
-other real knowledge file in this repo).
+generation, LLM-as-judge version. Real dead ends already ruled out
+tonight: Groq has no embeddings API (confirmed 404), and HF's old free
+embeddings endpoint is retired (confirmed DNS failure) - the new HF
+Inference Providers system technically supports embeddings, but only
+through the huggingface_hub Python library, which cannot be installed
+on this hardware (same SIGKILL wall as everything else in that family).
 
-Deliberately does NOT use LangChain, ChromaDB, or FinBERT/transformers:
-- ChromaDB via actions/cache is not real persistence - GitHub Actions
-  cache is evictable, not guaranteed, unlike a git-committed file.
-- transformers/torch installs are the same category of heavy compiled
-  dependency that already SIGKILLs on this hardware for huggingface_hub.
-- LangChain wraps functionality already achievable in a few lines of
-  stdlib code - unnecessary dependency weight for zero real benefit.
+Real mechanism instead: no vectors, no separate index, no new
+dependencies. At query time, feed Groq (already proven, already used
+everywhere) a batch of real recent distilled headlines and ask it
+directly which are most relevant to a given query - structured JSON
+output, grounded strictly in the real headlines shown, same discipline
+as entity_relation_classifier.py.
 
-Real mechanism:
-1. Embed each new distilled news entry via Groq's embeddings endpoint.
-2. Store {text, embedding, metadata} in a git-committed JSONL file.
-3. At query time, embed the query, compute cosine similarity against
-   all stored embeddings with plain numpy, return the top-N matches.
+This is less efficient at very large scale than true vector search
+(re-reads/re-judges the pool each query rather than pre-computing once),
+but it's real, working, and needs nothing beyond what's already proven.
 """
 
 import json
@@ -27,132 +25,109 @@ import os
 import sys
 import urllib.request
 
-import numpy as np
-
 KB_DIR = "ping-pongings/knowledge-base"
-MEMORY_STORE = os.path.join(KB_DIR, "semantic_memory.jsonl")
 NEWS_LOG = os.path.join(KB_DIR, "log.jsonl")
 
-KEY = os.environ.get("HF_TOKEN", "")
-EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-EMBED_URL = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{EMBED_MODEL}"
-MAX_NEW_PER_RUN = int(os.environ.get("EMBED_PER_RUN", "20"))
+KEY = os.environ.get("GROQ_API_KEY", "")
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
+
+POOL_SIZE = int(os.environ.get("MEMORY_POOL_SIZE", "50"))
 
 
-def embed(text):
-    """Real HF Serverless Inference API feature-extraction endpoint -
-    NOT Groq (confirmed via a real 404 that Groq has no embeddings API).
-    First live call not yet verified - this endpoint is documented as
-    official HF infrastructure but flagged by HF's own docs as
-    potentially in flux; expect one possible fix cycle same as every
-    other first-run integration."""
-    body = json.dumps({"inputs": text[:2000]}).encode()
+def ask(prompt):
+    body = json.dumps({
+        "model": MODEL,
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 500,
+        "temperature": 0.1,
+    }).encode()
     req = urllib.request.Request(
-        EMBED_URL,
+        "https://api.groq.com/openai/v1/chat/completions",
         data=body,
         headers={
             "Authorization": f"Bearer {KEY}",
             "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
-        result = json.load(r)
-        if isinstance(result[0], list):
-            if isinstance(result[0][0], list):
-                import numpy as _np
-                return _np.mean(result[0], axis=0).tolist()
-            return result[0]
-        return result
+        return json.load(r)["choices"][0]["message"]["content"]
 
 
-def load_store():
-    if not os.path.exists(MEMORY_STORE):
-        return []
-    entries = []
-    with open(MEMORY_STORE) as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                entries.append(json.loads(line))
-            except Exception:
-                pass
-    return entries
-
-
-def cosine_sim(a, b):
-    a, b = np.array(a), np.array(b)
-    denom = (np.linalg.norm(a) * np.linalg.norm(b))
-    if denom == 0:
-        return 0.0
-    return float(np.dot(a, b) / denom)
-
-
-def build_index():
-    """Embed any new distilled news entries not already in the store."""
+def load_pool(asset_filter=None, pool_size=POOL_SIZE):
+    """Real recent distilled entries from the existing news log - no
+    separate index needed, this data already exists and is already real."""
     if not os.path.exists(NEWS_LOG):
-        print("No log.jsonl found - nothing to embed.")
-        return
-
+        return []
     with open(NEWS_LOG) as f:
-        news_entries = [json.loads(l) for l in f if l.strip()]
-
-    store = load_store()
-    already_have = {e.get("source_url") for e in store}
-
-    todo = [
-        e for e in news_entries
-        if e.get("distilled") and e.get("url") not in already_have
-    ][:MAX_NEW_PER_RUN]
-
-    if not todo:
-        print("Nothing new to embed.")
-        return
-
-    print(f"Embedding {len(todo)} new entries...")
-    new_records = []
-    for e in todo:
-        d = e.get("distill", {})
-        text = f"{e.get('title', '')} - {d.get('one_line', '')}"
-        try:
-            vec = embed(text)
-        except Exception as ex:
-            print(f"  skip ({e.get('title', '')[:50]}): {ex}")
-            continue
-        new_records.append({
-            "source_url": e.get("url"),
-            "text": text,
-            "asset": e.get("asset"),
-            "embedding": vec,
-        })
-        print(f"  + {e.get('title', '')[:60]}")
-
-    with open(MEMORY_STORE, "a", encoding="utf-8") as f:
-        for r in new_records:
-            f.write(json.dumps(r) + "\n")
-
-    print(f"\nEmbedded {len(new_records)} new entries. Written to {MEMORY_STORE}")
-
-
-def query(query_text, top_n=5, asset_filter=None):
-    """Retrieve the most semantically similar stored entries to a query."""
-    store = load_store()
-    if not store:
-        return []
+        entries = [json.loads(l) for l in f if l.strip()]
+    entries = [e for e in entries if e.get("distilled")]
     if asset_filter:
-        store = [e for e in store if e.get("asset") == asset_filter]
-    if not store:
-        return []
+        entries = [e for e in entries if e.get("asset") == asset_filter]
+    return entries[-pool_size:]
 
-    q_vec = embed(query_text)
-    scored = [(cosine_sim(q_vec, e["embedding"]), e) for e in store]
-    scored.sort(key=lambda x: x[0], reverse=True)
-    return [{"score": s, "text": e["text"], "source_url": e["source_url"]} for s, e in scored[:top_n]]
+
+def build_prompt(query_text, pool):
+    lines = []
+    for i, e in enumerate(pool):
+        d = e.get("distill", {})
+        lines.append(f"{i}. {e.get('title', '')[:120]} - {d.get('one_line', '')[:150]}")
+    headlines_block = "\n".join(lines)
+    return (
+        f"Query: {query_text}\n\n"
+        f"Real recent headlines (numbered):\n{headlines_block}\n\n"
+        f"Which of these numbered headlines are most relevant to the query? "
+        f"Use ONLY the headlines shown - do not invent anything not listed. "
+        f"Reply with JSON only, no prose: "
+        '{"relevant_indices": [list of up to 5 integers, most relevant first], '
+        '"reasoning": "one sentence explaining the top pick"}'
+    )
+
+
+def parse(raw, pool_len):
+    a, b = raw.find("{"), raw.rfind("}")
+    if a == -1 or b == -1:
+        raise ValueError("no json")
+    d = json.loads(raw[a:b + 1])
+    indices = d.get("relevant_indices", [])
+    indices = [i for i in indices if isinstance(i, int) and 0 <= i < pool_len]
+    d["relevant_indices"] = indices
+    return d
+
+
+def query_relevant(query_text, asset_filter=None, top_n=5):
+    """Real, live retrieval - no pre-built index, judges the current
+    real news pool directly against the query each time it's called."""
+    if not KEY:
+        raise RuntimeError("GROQ_API_KEY not set")
+    pool = load_pool(asset_filter=asset_filter)
+    if not pool:
+        return {"reasoning": "No real news entries available to search.", "matches": []}
+
+    raw = ask(build_prompt(query_text, pool))
+    parsed = parse(raw, len(pool))
+
+    matches = []
+    for i in parsed["relevant_indices"][:top_n]:
+        e = pool[i]
+        d = e.get("distill", {})
+        matches.append({
+            "title": e.get("title"),
+            "one_line": d.get("one_line"),
+            "url": e.get("url"),
+            "asset": e.get("asset"),
+        })
+    return {"reasoning": parsed.get("reasoning", ""), "matches": matches}
 
 
 if __name__ == "__main__":
     if not KEY:
         sys.exit("GROQ_API_KEY not set")
-    os.makedirs(KB_DIR, exist_ok=True)
-    build_index()
+    test_query = os.environ.get("MEMORY_TEST_QUERY", "regulatory action affecting XRP")
+    result = query_relevant(test_query)
+    print(f"Query: {test_query}")
+    print(f"Reasoning: {result['reasoning']}")
+    print(f"\nMatches ({len(result['matches'])}):")
+    for m in result["matches"]:
+        print(f"  - [{m['asset']}] {m['title']}")
+        print(f"    {m['one_line']}")
