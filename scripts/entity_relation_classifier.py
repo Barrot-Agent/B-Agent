@@ -118,6 +118,7 @@ def main():
 
     done = 0
     for pair in batch:
+        time.sleep(2)
         try:
             raw = ask(build_prompt(pair))
             parsed = parse(raw)
