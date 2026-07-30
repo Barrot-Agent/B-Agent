@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 87,
+  "total_classified": 89,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -784,6 +784,24 @@
       "relation_type": "same_event",
       "justification": "The headline reports Bitcoin's price bounce and is published by CoinDesk, indicating they are part of the same news event.",
       "classified_at": "2026-07-30T04:33:15Z"
+    },
+    {
+      "pair_key": "Bitcoin (BTC)|Federal Reserve (Fed)",
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Federal Reserve (Fed)",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline states Bitcoin's real move waits on the Fed, indicating Bitcoin's price movement depends on Fed actions.",
+      "classified_at": "2026-07-30T04:42:45Z"
+    },
+    {
+      "pair_key": "CoinDesk|Federal Reserve (Fed)",
+      "entity_a": "CoinDesk",
+      "entity_b": "Federal Reserve (Fed)",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline shows CoinDesk reporting on Bitcoin's price movement that depends on the Fed, indicating they are mentioned together without a clear direct relationship.",
+      "classified_at": "2026-07-30T04:42:48Z"
     }
   ]
 }
