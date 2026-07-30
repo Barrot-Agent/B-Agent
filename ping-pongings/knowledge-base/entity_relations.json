@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 57,
+  "total_classified": 72,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -514,6 +514,141 @@
       "relation_type": "same_event",
       "justification": "Both entities appear together in a single headline describing VanEck's comment on a Bitcoin treasury retreat, indicating they are part of the same news event.",
       "classified_at": "2026-07-30T02:58:39Z"
+    },
+    {
+      "pair_key": "MSTR|STRC",
+      "entity_a": "MSTR",
+      "entity_b": "STRC",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports a single strategy simultaneously selling MSTR shares and buying $25M of STRC preferred stock, indicating both actions occur in the same event.",
+      "classified_at": "2026-07-30T03:00:25Z"
+    },
+    {
+      "pair_key": "MSTR|Strategy",
+      "entity_a": "MSTR",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline describes Strategy selling MSTR shares, indicating both entities are involved in the same transaction event.",
+      "classified_at": "2026-07-30T03:00:27Z"
+    },
+    {
+      "pair_key": "STRC|Strategy",
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline describes Strategy buying back $25M in STRC preferred stock, indicating both entities are involved in the same transaction.",
+      "classified_at": "2026-07-30T03:00:30Z"
+    },
+    {
+      "pair_key": "Bitcoin|KULR Technology",
+      "entity_a": "Bitcoin",
+      "entity_b": "KULR Technology",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline lists both KULR Technology and Bitcoin together, indicating they are mentioned within the same news item.",
+      "classified_at": "2026-07-30T03:00:32Z"
+    },
+    {
+      "pair_key": "Binance|BitChat",
+      "entity_a": "Binance",
+      "entity_b": "BitChat",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "Both Binance and BitChat are mentioned together in the headline, but the headline provides no explicit causal, regulatory, competitive, complementary, or same-event link between them.",
+      "classified_at": "2026-07-30T03:00:35Z"
+    },
+    {
+      "pair_key": "Binance|India",
+      "entity_a": "Binance",
+      "entity_b": "India",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions Binance phishing its staff and India censoring BitChat code in separate clauses, showing co-occurrence without a clear causal, regulatory, competitive, complementary, or same-event link.",
+      "classified_at": "2026-07-30T03:00:37Z"
+    },
+    {
+      "pair_key": "BitChat|India",
+      "entity_a": "BitChat",
+      "entity_b": "India",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline states that India censors BitChat code, indicating a regulatory action by India toward BitChat.",
+      "classified_at": "2026-07-30T03:00:41Z"
+    },
+    {
+      "pair_key": "Bitcoin|Nansen",
+      "entity_a": "Bitcoin",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions a Nansen analyst commenting on Bitcoin's price, indicating a correlation without specifying a direct causal, regulatory, competitive, or complementary link.",
+      "classified_at": "2026-07-30T03:00:44Z"
+    },
+    {
+      "pair_key": "CoinDesk|Nansen",
+      "entity_a": "CoinDesk",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows CoinDesk publishing a statement from a Nansen analyst, indicating they complement each other as source and analyst.",
+      "classified_at": "2026-07-30T03:00:47Z"
+    },
+    {
+      "pair_key": "Bitcoin|SEC",
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties Bitcoin's price decline to the SEC Chair's actions on a crypto bill, indicating a regulatory influence.",
+      "classified_at": "2026-07-30T03:00:49Z"
+    },
+    {
+      "pair_key": "Dogecoin|SEC",
+      "entity_a": "Dogecoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties Dogecoin's price drop to the SEC Chair's activity on a crypto bill, indicating a regulatory connection.",
+      "classified_at": "2026-07-30T03:00:52Z"
+    },
+    {
+      "pair_key": "Ethereum|SEC",
+      "entity_a": "Ethereum",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties Ethereum's price drop to the SEC Chair's activity on a crypto bill, indicating a regulatory influence.",
+      "classified_at": "2026-07-30T03:00:54Z"
+    },
+    {
+      "pair_key": "SEC|XRP",
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline mentions XRP price falling and the SEC Chair discussing a crypto bill, indicating both appear in the same news event.",
+      "classified_at": "2026-07-30T03:00:57Z"
+    },
+    {
+      "pair_key": "BTC|MSTR",
+      "entity_a": "BTC",
+      "entity_b": "MSTR",
+      "cooccurrence_count": 1,
+      "relation_type": "competitive",
+      "justification": "The headline advises buying BTC rather than MSTR, presenting them as alternative choices.",
+      "classified_at": "2026-07-30T03:00:59Z"
+    },
+    {
+      "pair_key": "BTC|Peter Schiff",
+      "entity_a": "BTC",
+      "entity_b": "Peter Schiff",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline shows Peter Schiff advising investors to buy BTC, indicating his statements influence actions related to BTC.",
+      "classified_at": "2026-07-30T03:01:02Z"
     }
   ]
 }
