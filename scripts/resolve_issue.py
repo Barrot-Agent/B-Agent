@@ -153,7 +153,29 @@ def resolve(issue_number):
         print(f"Diagnostic comment posted to issue #{issue_number}. Left open for review.")
 
 
+def resolve_all_open():
+    """Real batch mode: scan every open issue, attempt to resolve any
+    that match the [Auto] Workflow failing pattern. Skips (does not
+    touch) anything that doesn't match - same safe, honest behavior
+    as the single-issue path."""
+    raw = gh("issue", "list", "--state", "open", "--limit", "200",
+              "--json", "number,title")
+    issues = json.loads(raw)
+    candidates = [i for i in issues if extract_workflow_name(i["title"])]
+    print(f"Found {len(issues)} open issues, {len(candidates)} match "
+          f"the [Auto] Workflow failing pattern.")
+    for issue in candidates:
+        try:
+            resolve(issue["number"])
+        except Exception as e:
+            print(f"  Real error resolving #{issue['number']}: {e}")
+        print()
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        sys.exit("Usage: python3 resolve_issue.py <issue_number>")
-    resolve(int(sys.argv[1]))
+        sys.exit("Usage: python3 resolve_issue.py <issue_number>|--all")
+    if sys.argv[1] == "--all":
+        resolve_all_open()
+    else:
+        resolve(int(sys.argv[1]))
