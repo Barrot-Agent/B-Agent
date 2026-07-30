@@ -238,6 +238,42 @@ def append_memory(question, answer):
         f.write(json.dumps(entry) + "\n")
 
 
+INFRASTRUCTURE_CONSTRAINTS = (
+    "\n\nYour real, hard infrastructure constraints - ground every "
+    "proposal in these, they are not negotiable:\n"
+    "- Runtime is ONLY: Termux on an Android phone (ARM64, no root, no "
+    "GPU), and GitHub Actions runners (ephemeral - nothing persists "
+    "between runs except what's explicitly git-committed and pushed; "
+    "actions/cache is NOT reliable persistent storage, don't propose "
+    "relying on it for a database or vector store).\n"
+    "- No GPU anywhere in your own pipeline. The only GPU access that "
+    "exists is free external Hugging Face ZeroGPU Spaces, called via "
+    "raw HTTP - not something your own scripts run on directly.\n"
+    "- huggingface_hub and anything that depends on it (gradio_client, "
+    "many ML framework installs) CANNOT be pip installed on the phone - "
+    "compiling a transitive dependency SIGKILLs from OOM. Avoid "
+    "proposing local ML framework installs (transformers, torch, "
+    "sentence-transformers) - assume they will hit the same wall unless "
+    "explicitly proven otherwise.\n"
+    "- No training or fine-tuning infrastructure exists. Any capability "
+    "must come from calling an existing API, not training a model.\n"
+    "- Real, confirmed-working external APIs you can propose using: Groq "
+    "(chat completions AND embeddings via nomic-embed-text-v1_5), "
+    "GitHub's own API, Gumroad (aggregate product metrics only, never "
+    "individual customer data), free HF ZeroGPU Spaces (image "
+    "generation via raw HTTP), NIH RePORTER / ClinicalTrials.gov / "
+    "openFDA (free public government data, no key needed).\n"
+    "- Scite: only trial-tier access exists and even that currently "
+    "requires a Pro subscription upgrade - do not propose Scite data "
+    "pulls unless told access has changed.\n"
+    "- Prefer plain Python stdlib (urllib, json) over heavy frameworks "
+    "(LangChain, ChromaDB, etc.) - minimal dependencies are what "
+    "actually install reliably on this hardware; a framework wrapping "
+    "something already achievable with a few lines of stdlib code is "
+    "unnecessary complexity, not a real improvement."
+)
+
+
 def main():
     key = os.getenv("GROQ_API_KEY", "")
     if not key:
@@ -246,7 +282,7 @@ def main():
     question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
 
     memory_entries = load_recent_memory()
-    system = SYSTEM_BASE + format_memory_block(memory_entries) + load_signal_snapshot() + load_recent_commits() + load_gumroad_metrics() + load_ingestion_metrics() + load_recent_failures()
+    system = SYSTEM_BASE + INFRASTRUCTURE_CONSTRAINTS + format_memory_block(memory_entries) + load_signal_snapshot() + load_recent_commits() + load_gumroad_metrics() + load_ingestion_metrics() + load_recent_failures()
 
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {
