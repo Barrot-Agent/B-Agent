@@ -1,33 +1,34 @@
 {
   "generated_from": {
     "xrp_entries": 237,
-    "btc_entries": 55
+    "btc_entries": 56
   },
-  "unique_entities_profiled": 65,
+  "unique_entities_profiled": 72,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 38,
-      "bullish": 13,
+      "total_mentions": 40,
+      "bullish": 15,
       "neutral": 11,
       "bearish": 14,
-      "net_sentiment_score": -0.026,
+      "net_sentiment_score": 0.025,
       "assets_seen_in": [
-        "BTC"
+        "BTC",
+        "XRP"
       ],
       "example_headlines": [
+        "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "A quantum roadmap would push Bitcoin much higher: Charles Edwards"
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds"
       ]
     },
     {
       "entity": "XRP",
-      "total_mentions": 10,
-      "bullish": 4,
+      "total_mentions": 11,
+      "bullish": 5,
       "neutral": 4,
       "bearish": 2,
-      "net_sentiment_score": 0.2,
+      "net_sentiment_score": 0.273,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -388,6 +389,48 @@
       ],
       "example_headlines": [
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com"
+      ]
+    },
+    {
+      "entity": "Gumi",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japanese game developer launches Bitcoin, altcoin fund with SBI"
+      ]
+    },
+    {
+      "entity": "SBI Holdings",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japanese game developer launches Bitcoin, altcoin fund with SBI"
+      ]
+    },
+    {
+      "entity": "altcoin",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japanese game developer launches Bitcoin, altcoin fund with SBI"
       ]
     },
     {
@@ -948,6 +991,62 @@
       ],
       "example_headlines": [
         "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
+      ]
+    },
+    {
+      "entity": "Ether",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETF",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "Bitcoin ETF",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "ETF inflows",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
       ]
     }
   ]

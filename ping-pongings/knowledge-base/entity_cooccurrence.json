@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 237,
-    "btc_entries": 55
+    "btc_entries": 56
   },
-  "unique_pairs_found": 95,
+  "unique_pairs_found": 114,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -31,6 +31,21 @@
         },
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
           "asset": "BTC"
         }
       ]
@@ -173,21 +188,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -450,6 +450,105 @@
       "example_headlines": [
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gumi",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "SBI Holdings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "altcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gumi",
+      "entity_b": "SBI Holdings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gumi",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gumi",
+      "entity_b": "altcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SBI Holdings",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SBI Holdings",
+      "entity_b": "altcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "altcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
           "asset": "XRP"
         }
       ]
@@ -1110,6 +1209,116 @@
       "example_headlines": [
         {
           "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF inflows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "ETF inflows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF inflows",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF inflows",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
         }
       ]
