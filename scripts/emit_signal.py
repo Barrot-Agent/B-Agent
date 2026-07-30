@@ -82,6 +82,19 @@ def _call_groq(signal_text: str):
     if not key:
         raise RuntimeError("missing GROQ_API_KEY")
 
+    # Opt-in real chain-of-thought + self-consistency classifier
+    # (Wei et al. 2022, Wang et al. 2023) - uses 3x Groq calls per
+    # classification instead of 1x, so this is gated behind an env var
+    # rather than silently tripling token usage on the live pipeline.
+    # Set USE_SELF_CONSISTENCY=1 to enable.
+    if os.getenv("USE_SELF_CONSISTENCY", "") == "1":
+        try:
+            from groq_chain import classify_with_self_consistency
+            result = classify_with_self_consistency(signal_text)
+            return result["score"], result["confidence"], f"groq_sc:{result['label']}"
+        except Exception:
+            pass  # fall through to the original single-shot call below
+
     payload = {
         "model": DEFAULT_GROQ_MODEL,
         "messages": _build_messages(signal_text),
