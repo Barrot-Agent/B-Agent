@@ -379,6 +379,21 @@ footer strong{color:var(--text)}
       return await res.json();
     }
   });
+  mcp.registerTool({
+    name: "getWebMCPMonetizationSignals",
+    title: "WebMCP Monetization Signals",
+    description: "Get real GitHub and npm market-validation signals for candidate future WebMCP tools - existing similar open-source projects and their real traction (stars, forks, package popularity), not just discourse volume. Helps assess whether a candidate tool idea already has real-world validation before building it.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getWebMCPMonetizationSignals');
+      var res = await fetch("webmcp_monetization_signals.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
 })();
 </script>
 
