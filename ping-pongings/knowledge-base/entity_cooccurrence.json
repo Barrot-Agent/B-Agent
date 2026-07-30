@@ -3,7 +3,7 @@
     "xrp_entries": 237,
     "btc_entries": 57
   },
-  "unique_pairs_found": 114,
+  "unique_pairs_found": 116,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -66,6 +66,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Morningstar",
       "cooccurrence_count": 3,
@@ -121,21 +136,6 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -1319,6 +1319,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "China Business Journal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chinese newspaper warns of Bitcoin extortion scam using its name",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "China Business Journal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chinese newspaper warns of Bitcoin extortion scam using its name",
           "asset": "BTC"
         }
       ]

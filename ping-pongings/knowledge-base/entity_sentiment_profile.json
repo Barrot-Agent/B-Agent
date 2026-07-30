@@ -3,15 +3,15 @@
     "xrp_entries": 237,
     "btc_entries": 57
   },
-  "unique_entities_profiled": 72,
+  "unique_entities_profiled": 73,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 40,
+      "total_mentions": 41,
       "bullish": 15,
       "neutral": 11,
-      "bearish": 14,
-      "net_sentiment_score": 0.025,
+      "bearish": 15,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 5,
+      "total_mentions": 6,
       "bullish": 3,
       "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.2,
+      "bearish": 3,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -1047,6 +1047,20 @@
       ],
       "example_headlines": [
         "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "China Business Journal",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Chinese newspaper warns of Bitcoin extortion scam using its name"
       ]
     }
   ]
