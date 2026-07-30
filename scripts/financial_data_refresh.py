@@ -116,9 +116,13 @@ def main():
     raw_html = fetch_source()
     page_text = strip_html(raw_html)[:8000]
 
+    print(f"Fetched {len(page_text)} chars of real page text")
+    print(f"First 300 chars: {page_text[:300]!r}")
+
     print("Extracting figures via Groq, grounded strictly in fetched text...")
     prompt = EXTRACTION_PROMPT_TEMPLATE.format(page_text=page_text)
     raw_response = ask_groq(prompt)
+    print(f"Raw Groq response ({len(raw_response)} chars): {raw_response[:500]!r}")
     figures = parse_json_response(raw_response)
 
     out = {
