@@ -114,10 +114,15 @@ def main():
 
     print(f"Fetching real source: {SOURCE_URL}")
     raw_html = fetch_source()
-    page_text = strip_html(raw_html)[:16000]
+    full_text = strip_html(raw_html)
+    print(f"Full untruncated stripped text: {len(full_text)} chars")
+    roth_idx = full_text.find("Roth IRA")
+    print(f"'Roth IRA' first appears at char offset: {roth_idx}")
+    if roth_idx != -1:
+        print(f"Context around it: {full_text[roth_idx:roth_idx+400]!r}")
+    page_text = full_text[:16000]
 
-    print(f"Fetched {len(page_text)} chars of real page text")
-    print(f"First 300 chars: {page_text[:300]!r}")
+    print(f"Using first {len(page_text)} chars for extraction")
 
     print("Extracting figures via Groq, grounded strictly in fetched text...")
     prompt = EXTRACTION_PROMPT_TEMPLATE.format(page_text=page_text)
