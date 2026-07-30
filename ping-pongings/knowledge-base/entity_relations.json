@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 42,
+  "total_classified": 57,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -379,6 +379,141 @@
       "relation_type": "same_event",
       "justification": "The headline directly ties Charles Edwards' statement to Bitcoin, indicating they are mentioned together within the same news item.",
       "classified_at": "2026-07-30T01:40:08Z"
+    },
+    {
+      "pair_key": "Bitcoin|Poolin",
+      "entity_a": "Bitcoin",
+      "entity_b": "Poolin",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports a single event\u2014the bankruptcy filing of the Bitcoin mining pool Poolin\u2014linking both Bitcoin and Poolin together.",
+      "classified_at": "2026-07-30T02:58:03Z"
+    },
+    {
+      "pair_key": "BTC|Yahoo Finance",
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline is a Yahoo Finance article that discusses BTC price prediction, showing they appear together in the same news piece.",
+      "classified_at": "2026-07-30T02:58:05Z"
+    },
+    {
+      "pair_key": "Bitcoin|Bitcoin Foundation",
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline ties Bitcoin's bear market outlook directly to the Bitcoin Foundation, indicating they are part of the same discussion/event.",
+      "classified_at": "2026-07-30T02:58:08Z"
+    },
+    {
+      "pair_key": "BTC|bitcoin",
+      "entity_a": "BTC",
+      "entity_b": "bitcoin",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline mentions bitcoin (BTC) price together, indicating they refer to the same asset.",
+      "classified_at": "2026-07-30T02:58:10Z"
+    },
+    {
+      "pair_key": "Bitcoin|VanEck",
+      "entity_a": "Bitcoin",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline describes VanEck conducting a Bitcoin ChainCheck, indicating both entities are involved in the same event.",
+      "classified_at": "2026-07-30T02:58:13Z"
+    },
+    {
+      "pair_key": "Bitcoin|ETH",
+      "entity_a": "Bitcoin",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both Bitcoin and ETH are mentioned together in a single market headline describing Bitcoin's price retake and ETH's outperformance.",
+      "classified_at": "2026-07-30T02:58:15Z"
+    },
+    {
+      "pair_key": "CoinDesk|ETH",
+      "entity_a": "CoinDesk",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both appear together in a headline reporting that ETH outperformed in the same market event covered by CoinDesk.",
+      "classified_at": "2026-07-30T02:58:18Z"
+    },
+    {
+      "pair_key": "BTC|BitMEX",
+      "entity_a": "BTC",
+      "entity_b": "BitMEX",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline reports a class action lawsuit involving BitMEX and the return of 622 BTC, indicating a legal/regulatory relationship between the two.",
+      "classified_at": "2026-07-30T02:58:21Z"
+    },
+    {
+      "pair_key": "CLARITY Act|Crypto Market",
+      "entity_a": "CLARITY Act",
+      "entity_b": "Crypto Market",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties the CLARITY Act delay to the ongoing fight over crypto market structure, indicating a regulatory link between the Act and the crypto market.",
+      "classified_at": "2026-07-30T02:58:23Z"
+    },
+    {
+      "pair_key": "CEO|Robinhood",
+      "entity_a": "CEO",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline ties the Robinhood CEO directly to a hack involving Robinhood, indicating they are part of the same incident.",
+      "classified_at": "2026-07-30T02:58:26Z"
+    },
+    {
+      "pair_key": "CFTC|Kraken",
+      "entity_a": "CFTC",
+      "entity_b": "Kraken",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline states Kraken is bringing CFTC\u2011regulated perpetual futures, indicating a regulatory relationship.",
+      "classified_at": "2026-07-30T02:58:29Z"
+    },
+    {
+      "pair_key": "Bitcoin|Elliptic",
+      "entity_a": "Bitcoin",
+      "entity_b": "Elliptic",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows Elliptic providing a report that analyzes Bitcoin ATM scam activity, indicating a complementary analytical relationship.",
+      "classified_at": "2026-07-30T02:58:31Z"
+    },
+    {
+      "pair_key": "Bitcoin|FATF",
+      "entity_a": "Bitcoin",
+      "entity_b": "FATF",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions FATF and crypto travel rule adoption but does not reference Bitcoin, making the relationship between Bitcoin and FATF unclear.",
+      "classified_at": "2026-07-30T02:58:34Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|Tesla",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Tesla",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both entities appear together in a single headline reporting Tesla's Bitcoin holdings and associated paper loss, indicating they are part of the same news event.",
+      "classified_at": "2026-07-30T02:58:37Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|VanEck",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both entities appear together in a single headline describing VanEck's comment on a Bitcoin treasury retreat, indicating they are part of the same news event.",
+      "classified_at": "2026-07-30T02:58:39Z"
     }
   ]
 }
