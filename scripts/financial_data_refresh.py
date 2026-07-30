@@ -143,9 +143,12 @@ def main():
     os.makedirs(KB_DIR, exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
+    os.makedirs("web", exist_ok=True)
+    with open("web/financial_data.json", "w", encoding="utf-8") as f:
+        json.dump(out, f, indent=2)
 
     print(f"\nExtracted figures: {json.dumps(figures, indent=2)}")
-    print(f"\nWritten to {OUT_PATH}")
+    print(f"\nWritten to {OUT_PATH} and web/financial_data.json")
 
 
 if __name__ == "__main__":

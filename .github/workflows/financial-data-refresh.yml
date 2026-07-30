@@ -25,6 +25,6 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/financial_data.json
+          git add ping-pongings/knowledge-base/financial_data.json web/financial_data.json
           git diff --cached --quiet || git commit -m "Financial data refresh cycle [skip ci]"
           git push || (git pull --no-rebase --no-edit origin main && git push)
