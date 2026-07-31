@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 244,
-    "btc_entries": 64
+    "xrp_entries": 246,
+    "btc_entries": 68
   },
-  "unique_pairs_found": 159,
+  "unique_pairs_found": 178,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -31,6 +31,36 @@
         },
         {
           "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -47,21 +77,6 @@
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -96,7 +111,7 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -105,7 +120,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -122,6 +137,21 @@
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -171,16 +201,16 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
           "asset": "BTC"
         },
         {
-          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -276,6 +306,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -326,17 +371,6 @@
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -749,6 +783,61 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BitMEX",
       "entity_b": "Fidelity",
       "cooccurrence_count": 1,
@@ -777,17 +866,6 @@
       "example_headlines": [
         {
           "title": "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
           "asset": "BTC"
         }
       ]
@@ -1641,17 +1719,6 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "Bitcoin Treasury Hyperscale",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -1822,6 +1889,160 @@
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "RWA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "RWA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "RWA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "RWA",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]

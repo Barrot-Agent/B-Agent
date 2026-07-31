@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 244,
-    "btc_entries": 64
+    "xrp_entries": 246,
+    "btc_entries": 68
   },
-  "unique_entities_profiled": 88,
+  "unique_entities_profiled": 96,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 45,
-      "bullish": 18,
+      "total_mentions": 47,
+      "bullish": 19,
       "neutral": 11,
-      "bearish": 16,
-      "net_sentiment_score": 0.044,
+      "bearish": 17,
+      "net_sentiment_score": 0.043,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 15,
-      "bullish": 6,
+      "total_mentions": 17,
+      "bullish": 8,
       "neutral": 4,
       "bearish": 5,
-      "net_sentiment_score": 0.067,
+      "net_sentiment_score": 0.176,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 11,
-      "bullish": 3,
+      "total_mentions": 13,
+      "bullish": 5,
       "neutral": 4,
       "bearish": 4,
-      "net_sentiment_score": -0.091,
+      "net_sentiment_score": 0.077,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 10,
+      "total_mentions": 12,
       "bullish": 5,
       "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": 0.0,
+      "bearish": 7,
+      "net_sentiment_score": -0.167,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 6,
-      "bullish": 3,
+      "total_mentions": 8,
+      "bullish": 4,
       "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
+      "bearish": 2,
+      "net_sentiment_score": 0.25,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -90,11 +90,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 5,
+      "total_mentions": 6,
       "bullish": 1,
       "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -0.6,
+      "bearish": 5,
+      "net_sentiment_score": -0.667,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -135,6 +135,22 @@
         "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
         "BitMEX hit with 623 BTC lawsuit on day it announces shutdown",
         "BitMEX Faces Proposed Class Action Seeking Return Of 622 BTC"
+      ]
+    },
+    {
+      "entity": "Binance",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
@@ -248,21 +264,6 @@
       ]
     },
     {
-      "entity": "Binance",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
-      ]
-    },
-    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -350,6 +351,21 @@
       "example_headlines": [
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
         "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
       ]
     },
     {
@@ -532,6 +548,34 @@
       ],
       "example_headlines": [
         "Why XRP remains pressured despite Ripple Mint launch - FXStreet"
+      ]
+    },
+    {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Analyst",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance"
       ]
     },
     {
@@ -997,20 +1041,6 @@
       ]
     },
     {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K"
-      ]
-    },
-    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 1,
       "bullish": 1,
@@ -1274,6 +1304,90 @@
       ],
       "example_headlines": [
         "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
+      ]
+    },
+    {
+      "entity": "BlackRock",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
+      "entity": "IBIT",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
+      "entity": "Hyperliquid",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "RWA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "tokenized equities",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "Coldcard",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     }
   ]
