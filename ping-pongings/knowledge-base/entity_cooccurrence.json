@@ -1,7 +1,7 @@
 {
   "generated_from": {
-    "xrp_entries": 250,
-    "btc_entries": 73
+    "xrp_entries": 251,
+    "btc_entries": 74
   },
   "unique_pairs_found": 186,
   "pairs": [
@@ -182,6 +182,96 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Borrow",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Granite Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Borrow",
+      "entity_b": "Granite Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Borrow",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Granite Protocol",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
         }
       ]
     },
@@ -2047,72 +2137,6 @@
       "example_headlines": [
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Borrow",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Granite Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Stacks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Borrow",
-      "entity_b": "Granite Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Borrow",
-      "entity_b": "Stacks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Granite Protocol",
-      "entity_b": "Stacks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
           "asset": "BTC"
         }
       ]

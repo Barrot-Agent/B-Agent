@@ -1,25 +1,25 @@
 {
   "generated_from": {
-    "xrp_entries": 250,
-    "btc_entries": 73
+    "xrp_entries": 251,
+    "btc_entries": 74
   },
   "unique_entities_profiled": 100,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 49,
+      "total_mentions": 50,
       "bullish": 20,
-      "neutral": 11,
+      "neutral": 12,
       "bearish": 18,
-      "net_sentiment_score": 0.041,
+      "net_sentiment_score": 0.04,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds"
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy"
       ]
     },
     {
@@ -246,6 +246,54 @@
       "example_headlines": [
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
+      "entity": "Granite Protocol",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
+      ]
+    },
+    {
+      "entity": "Borrow",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
+      ]
+    },
+    {
+      "entity": "Stacks",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
       ]
     },
     {
@@ -1389,48 +1437,6 @@
       ],
       "example_headlines": [
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Granite Protocol",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
-      ]
-    },
-    {
-      "entity": "Borrow",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
-      ]
-    },
-    {
-      "entity": "Stacks",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
       ]
     },
     {
