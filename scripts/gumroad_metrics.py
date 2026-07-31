@@ -40,11 +40,18 @@ def main():
     if not data.get("success"):
         sys.exit(f"Gumroad API error: {data.get('message')}")
 
+    def real_permalink(p):
+        # custom_permalink is only set for vanity slugs; auto-generated
+        # slugs like "opvxi" live only in short_url/landing_url instead -
+        # confirmed via real Gumroad response, custom_permalink was null.
+        url = p.get("short_url") or p.get("landing_url") or ""
+        return p.get("custom_permalink") or url.rstrip("/").rsplit("/", 1)[-1]
+
     products = data.get("products", [])
-    target = next((p for p in products if p.get("custom_permalink") == PRODUCT_PERMALINK), None)
+    target = next((p for p in products if real_permalink(p) == PRODUCT_PERMALINK), None)
     if not target:
         print(f"Product with permalink '{PRODUCT_PERMALINK}' not found. "
-              f"Real permalinks available: {[p.get('custom_permalink') for p in products]}")
+              f"Real permalinks available: {[real_permalink(p) for p in products]}")
         target = products[0] if products else {}
 
     print("=== RAW real product response (verify field names against this) ===")
@@ -62,7 +69,7 @@ def main():
             "scope), not GET /sales."
         ),
         "product_name": target.get("name"),
-        "permalink": target.get("custom_permalink"),
+        "permalink": real_permalink(target) if target else None,
         "sales_count": target.get("sales_count"),
         "price_cents": target.get("price"),
         "currency": target.get("currency"),
