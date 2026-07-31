@@ -1,7 +1,7 @@
 {
   "generated_from": {
-    "xrp_entries": 255,
-    "btc_entries": 77
+    "xrp_entries": 256,
+    "btc_entries": 78
   },
   "unique_entities_profiled": 105,
   "entities": [
@@ -106,6 +106,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 4,
       "bullish": 0,
@@ -119,23 +136,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -311,6 +311,70 @@
       "example_headlines": [
         "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
         "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
+      ]
+    },
+    {
+      "entity": "Uniswap",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
+      "entity": "UNI",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
+      "entity": "V4",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
+      "entity": "protocol fee switch",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
       ]
     },
     {
@@ -655,62 +719,6 @@
       ],
       "example_headlines": [
         "Ripple (XRP) News and Price Update: July 27 - CryptoPotato"
-      ]
-    },
-    {
-      "entity": "Uniswap",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
-      ]
-    },
-    {
-      "entity": "UNI",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
-      ]
-    },
-    {
-      "entity": "V4",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
-      ]
-    },
-    {
-      "entity": "protocol fee switch",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
       ]
     },
     {
