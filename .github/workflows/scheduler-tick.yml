@@ -1,0 +1,35 @@
+name: Scheduler Tick
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 30
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run scheduler tick
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/scheduler.py tick
+
+      - name: Commit queue updates
+        run: |
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@barrot-agent.com"
+          git add ping-pongings/knowledge-base/schedule_queue.jsonl
+          git diff --cached --quiet || git commit -m "Scheduler tick [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
