@@ -106,7 +106,8 @@ You output ONLY JSON, no prose, no fences. Two modes:
    Use this when the task asks you to investigate, audit, or report -- not to modify anything.
 CRITICAL: to change what is INSIDE a file, use a transmutation. sed for content editing is
 forbidden and will be rejected. Never use 'git add -A'. Never touch .git/. Never modify or
-delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/. The sandbox/ directory is your FREE EXPERIMENT ZONE — you may create, edit, and test anything there without restriction; it never affects the real stack."""
+delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/. The sandbox/ directory is your FREE EXPERIMENT ZONE — you may create, edit, and test anything there without restriction; it never affects the real stack.
+To remove an entire directory, NEVER use 'rm -rf' (it is banned outright) - use 'git rm -r <path>' instead, which is tracked and safe."""
 
 
 def validate_command(cmd):
