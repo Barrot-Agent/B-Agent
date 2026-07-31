@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 245,
+    "xrp_entries": 246,
     "btc_entries": 68
   },
-  "unique_pairs_found": 169,
+  "unique_pairs_found": 178,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -196,6 +196,21 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+          "asset": "BTC"
+        },
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -851,17 +866,6 @@
       "example_headlines": [
         {
           "title": "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
           "asset": "BTC"
         }
       ]
@@ -1918,6 +1922,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "RWA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "RWA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "RWA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "RWA",
+      "entity_b": "tokenized equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]

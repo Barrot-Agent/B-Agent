@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 245,
+    "xrp_entries": 246,
     "btc_entries": 68
   },
-  "unique_entities_profiled": 93,
+  "unique_entities_profiled": 96,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 46,
-      "bullish": 18,
+      "total_mentions": 47,
+      "bullish": 19,
       "neutral": 11,
       "bearish": 17,
-      "net_sentiment_score": 0.022,
+      "net_sentiment_score": 0.043,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -138,6 +138,22 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 3,
       "bullish": 1,
@@ -245,21 +261,6 @@
       "example_headlines": [
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
       ]
     },
     {
@@ -1331,6 +1332,48 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
+      "entity": "Hyperliquid",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "RWA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "tokenized equities",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
