@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 243,
-    "btc_entries": 62
+    "xrp_entries": 244,
+    "btc_entries": 64
   },
-  "unique_entities_profiled": 86,
+  "unique_entities_profiled": 88,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 44,
+      "total_mentions": 45,
       "bullish": 18,
       "neutral": 11,
-      "bearish": 15,
-      "net_sentiment_score": 0.068,
+      "bearish": 16,
+      "net_sentiment_score": 0.044,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 5,
       "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": 0.111,
+      "bearish": 5,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -1246,6 +1246,34 @@
       ],
       "example_headlines": [
         "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury"
+      ]
+    },
+    {
+      "entity": "Bitcoin Treasury Strategy",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
+      ]
+    },
+    {
+      "entity": "Bitcoin Magazine",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
       ]
     }
   ]

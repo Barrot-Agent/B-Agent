@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 243,
-    "btc_entries": 62
+    "xrp_entries": 244,
+    "btc_entries": 64
   },
-  "unique_pairs_found": 154,
+  "unique_pairs_found": 159,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 5,
+      "cooccurrence_count": 6,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -1767,6 +1767,61 @@
       "example_headlines": [
         {
           "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Magazine",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Treasury Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Magazine",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Treasury Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Magazine",
+      "entity_b": "Bitcoin Treasury Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
           "asset": "BTC"
         }
       ]
