@@ -3,7 +3,7 @@
     "xrp_entries": 245,
     "btc_entries": 66
   },
-  "unique_entities_profiled": 90,
+  "unique_entities_profiled": 92,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -350,6 +350,21 @@
       "example_headlines": [
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
         "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
       ]
     },
     {
@@ -1025,20 +1040,6 @@
       ]
     },
     {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K"
-      ]
-    },
-    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 1,
       "bullish": 1,
@@ -1302,6 +1303,34 @@
       ],
       "example_headlines": [
         "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
+      ]
+    },
+    {
+      "entity": "BlackRock",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
+      "entity": "IBIT",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
       ]
     }
   ]

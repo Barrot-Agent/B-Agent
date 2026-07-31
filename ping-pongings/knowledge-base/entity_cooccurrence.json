@@ -3,7 +3,7 @@
     "xrp_entries": 245,
     "btc_entries": 66
   },
-  "unique_pairs_found": 164,
+  "unique_pairs_found": 167,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1881,6 +1881,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
           "asset": "BTC"
         }
       ]
