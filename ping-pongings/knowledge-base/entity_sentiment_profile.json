@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 256,
-    "btc_entries": 78
+    "xrp_entries": 258,
+    "btc_entries": 80
   },
-  "unique_entities_profiled": 105,
+  "unique_entities_profiled": 111,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 50,
+      "total_mentions": 51,
       "bullish": 20,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 18,
-      "net_sentiment_score": 0.04,
+      "net_sentiment_score": 0.039,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 18,
-      "bullish": 8,
+      "total_mentions": 19,
+      "bullish": 9,
       "neutral": 5,
       "bearish": 5,
-      "net_sentiment_score": 0.167,
+      "net_sentiment_score": 0.211,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 14,
-      "bullish": 5,
+      "total_mentions": 15,
+      "bullish": 6,
       "neutral": 5,
       "bearish": 4,
-      "net_sentiment_score": 0.071,
+      "net_sentiment_score": 0.133,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 12,
+      "total_mentions": 13,
       "bullish": 5,
-      "neutral": 0,
+      "neutral": 1,
       "bearish": 7,
-      "net_sentiment_score": -0.167,
+      "net_sentiment_score": -0.154,
       "assets_seen_in": [
         "BTC"
       ],
@@ -107,11 +107,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 4,
+      "total_mentions": 5,
       "bullish": 2,
-      "neutral": 2,
+      "neutral": 3,
       "bearish": 0,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.4,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -124,9 +124,9 @@
     },
     {
       "entity": "Fortune",
-      "total_mentions": 4,
+      "total_mentions": 5,
       "bullish": 0,
-      "neutral": 4,
+      "neutral": 5,
       "bearish": 0,
       "net_sentiment_score": 0.0,
       "assets_seen_in": [
@@ -375,6 +375,22 @@
       "example_headlines": [
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
+      "entity": "SEC",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -722,6 +738,34 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "The Motley Fool",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -1013,20 +1057,6 @@
       ],
       "example_headlines": [
         "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -1531,6 +1561,62 @@
       ],
       "example_headlines": [
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound"
+      ]
+    },
+    {
+      "entity": "Stablecoin",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "Mainnet",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "EIP-1559",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "Ethereum Foundation",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
       ]
     }
   ]
