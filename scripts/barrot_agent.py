@@ -363,8 +363,10 @@ def main():
     if report and not cmds and not trans:
         run("git checkout main", check=False)
         run(f"git branch -D {BRANCH}", check=False)
-        comment_body = report.replace(chr(34), chr(39))[:60000]
-        run(f'gh issue comment {ISSUE} --repo {REPO} --body "{comment_body}"', check=False)
+        comment_body = report[:60000]
+        with open("/tmp/barrot_comment_body.md", "w", encoding="utf-8") as _f:
+            _f.write(comment_body)
+        run(f"gh issue comment {ISSUE} --repo {REPO} --body-file /tmp/barrot_comment_body.md", check=False)
         print("DONE -- report posted as issue comment, no code change needed.")
         sys.exit(0)
 
@@ -421,8 +423,11 @@ def main():
         f"Autonomous execution of #{ISSUE} by Barrot.\\n\\nCommands run:\\n{summary}\\n\\n"
         f"Review the diff; apply the approved label to merge protected or large changes."
     )
+    with open("/tmp/barrot_pr_body.md", "w", encoding="utf-8") as _f:
+        _f.write(pr_body)
+    safe_title = TITLE.replace(chr(34), chr(39)).replace(chr(96), chr(39)).replace("$", "")
     run(
-        f'gh pr create --repo {REPO} --title "Barrot: {TITLE}" --body "{pr_body}" --head {BRANCH} --base main',
+        f'gh pr create --repo {REPO} --title "Barrot: {safe_title}" --body-file /tmp/barrot_pr_body.md --head {BRANCH} --base main',
         check=False,
     )
     print("DONE — PR opened, awaiting gate + review.")
