@@ -50,7 +50,7 @@ jobs:
             [ "$PENDING" -gt 0 ] && REASONS="$REASONS\n- CI still running ($PENDING)"
 
             DIFF=$(gh pr diff "$PR" --repo "$REPO" 2>/dev/null | grep '^+' || true)
-            HITS=$(echo "$DIFF" | grep -EiO "$BANNED" | sort -u | tr '\n' ' ')
+            HITS=$(echo "$DIFF" | grep -Eio "$BANNED" | sort -u | tr '\n' ' ')
             [ -n "$HITS" ] && { REASONS="$REASONS\n- Fiction vocabulary in diff: $HITS"; TIER="HIGH"; }
 
             TOUCHED=$(echo "$FILES" | grep -E "$PROTECTED" | tr '\n' ' ')
