@@ -265,6 +265,52 @@ def main():
     inv = repo_inventory(task_text=f"{TITLE} {TASK}")
     import re as _re
 
+    # Real, honest directory-scope content injection: if the task names a
+    # real top-level directory, show as much REAL file content as fits in
+    # the token budget (smallest files first), and explicitly list any
+    # omitted files so the model never invents their internals.
+    dir_ctx = ""
+    _all_files = run("git ls-files", check=False, quiet=True).splitlines()
+    _top_dirs = sorted({f.split("/")[0] for f in _all_files if "/" in f})
+    _tt = f"{TITLE} {TASK}".lower()
+    _scope_dir = None
+    for _d in _top_dirs:
+        if f"{_d.lower()}/" in _tt:
+            _scope_dir = _d
+            break
+    if _scope_dir:
+        _scoped_files = [f for f in _all_files if f.startswith(_scope_dir + "/")]
+        _sized = []
+        for f in _scoped_files:
+            try:
+                _sized.append((os.path.getsize(f), f))
+            except OSError:
+                continue
+        _sized.sort()
+        _budget = 5000
+        _shown, _omitted = [], []
+        for _sz, _f in _sized:
+            if _sz <= _budget:
+                _shown.append(_f)
+                _budget -= _sz
+            else:
+                _omitted.append(_f)
+        chunks = ["\n\nREAL FULL CONTENT of files in the scoped directory (only these - do NOT describe or invent internals of any other file):"]
+        for _f in _shown:
+            try:
+                with open(_f) as _fh:
+                    chunks.append(f"\n=== {_f} ===\n{_fh.read()}")
+            except Exception:
+                pass
+        if _omitted:
+            chunks.append(
+                "\n\nThe following files exist but their content was NOT shown to you "
+                "(too large for this pass): " + ", ".join(_omitted) +
+                ". Do not describe their internals, function names, or claim to find "
+                "issues inside them - name-only, size-only knowledge, nothing more."
+            )
+        dir_ctx = "\n".join(chunks)
+
     named = _re.findall(r"[\w./-]+\.(?:py|jsonl|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
     file_ctx = ""
     for fp in list(dict.fromkeys(named))[:5]:
@@ -330,7 +376,7 @@ def main():
             "for that specific real PR. Every row you write must correspond to a real entry above."
         )
     prompt = (
-        f"TASK:\n{TITLE}\n{TASK}\n\n" + ("" if "REAL PR DIFFS" in gh_ctx else f"CURRENT REPO FILES:\n{inv}") + f"{file_ctx}{gh_ctx}{note}"
+        f"TASK:\n{TITLE}\n{TASK}\n\n" + ("" if "REAL PR DIFFS" in gh_ctx else f"CURRENT REPO FILES:\n{inv}") + f"{file_ctx}{dir_ctx}{gh_ctx}{note}"
         f"\n\nOutput JSON (array for moves, or object with transmutations for rewrites)."
     )
     raw = ask_brain(SYSTEM, prompt).strip()
