@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 241,
-    "btc_entries": 60
+    "xrp_entries": 242,
+    "btc_entries": 62
   },
-  "unique_entities_profiled": 81,
+  "unique_entities_profiled": 84,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 42,
-      "bullish": 16,
+      "total_mentions": 44,
+      "bullish": 18,
       "neutral": 11,
       "bearish": 15,
-      "net_sentiment_score": 0.024,
+      "net_sentiment_score": 0.068,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 7,
-      "bullish": 3,
+      "total_mentions": 9,
+      "bullish": 5,
       "neutral": 0,
       "bearish": 4,
-      "net_sentiment_score": -0.143,
+      "net_sentiment_score": 0.111,
       "assets_seen_in": [
         "BTC"
       ],
@@ -69,6 +69,23 @@
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
         "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Yahoo Finance",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -86,23 +103,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
         "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.2,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -290,6 +290,21 @@
       "example_headlines": [
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "Strategy",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy Announces Second Quarter 2026 Financial Results - Strategy"
       ]
     },
     {
@@ -713,20 +728,6 @@
       ],
       "example_headlines": [
         "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
       ]
     },
     {
@@ -1175,6 +1176,48 @@
       ],
       "example_headlines": [
         "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "3iQ",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury"
+      ]
+    },
+    {
+      "entity": "Gelephu Mindfulness City",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury"
+      ]
+    },
+    {
+      "entity": "Bhutan",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury"
       ]
     }
   ]

@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 241,
-    "btc_entries": 60
+    "xrp_entries": 242,
+    "btc_entries": 62
   },
-  "unique_pairs_found": 140,
+  "unique_pairs_found": 149,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -17,6 +17,21 @@
         {
           "title": "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "asset": "BTC"
         }
       ]
     },
@@ -81,8 +96,8 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin",
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -90,7 +105,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -156,7 +171,7 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -165,7 +180,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -762,17 +777,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin mining pool Poolin files for Chapter 11 bankruptcy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -1609,6 +1613,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "3iQ",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "3iQ",
+      "entity_b": "Bhutan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "3iQ",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "3iQ",
+      "entity_b": "Gelephu Mindfulness City",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bhutan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Gelephu Mindfulness City",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bhutan",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bhutan",
+      "entity_b": "Gelephu Mindfulness City",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gelephu Mindfulness City",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
           "asset": "BTC"
         }
       ]
