@@ -35,17 +35,29 @@ def run(cmd, check=True, quiet=False):
 NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
 
 
-def repo_inventory(max_files=400):
+def repo_inventory(max_files=120, task_text=""):
     files = run("git ls-files", check=False, quiet=True).splitlines()
     files = [f for f in files if not any(f.startswith(p) for p in NOISE_PREFIXES)]
+    top_dirs = sorted({f.split("/")[0] for f in files if "/" in f})
+    tt = task_text.lower()
+    scope = None
+    for d in top_dirs:
+        if f"{d.lower()}/" in tt:
+            scope = d
+            break
+    if scope:
+        scoped = [f for f in files if f.startswith(scope + "/")]
+        if scoped:
+            files = scoped
+    cap = len(files) if scope else max_files
     tree = []
-    for f in files[:max_files]:
+    for f in files[:cap]:
         try:
             sz = os.path.getsize(f)
         except OSError:
             sz = 0
         tree.append(f"{f} ({sz}b)")
-    extra = len(files) - max_files
+    extra = len(files) - cap
     if extra > 0:
         tree.append(f"... ({extra} more files omitted)")
     return "\n".join(tree)
@@ -249,7 +261,7 @@ def main():
     run("git config user.name 'Barrot-Agent'")
     run(f"git checkout -b {BRANCH}")
 
-    inv = repo_inventory()
+    inv = repo_inventory(task_text=f"{TITLE} {TASK}")
     import re as _re
 
     named = _re.findall(r"[\w./-]+\.(?:py|jsonl|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
