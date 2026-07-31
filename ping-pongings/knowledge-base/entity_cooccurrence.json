@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 248,
-    "btc_entries": 72
+    "xrp_entries": 250,
+    "btc_entries": 73
   },
-  "unique_pairs_found": 184,
+  "unique_pairs_found": 186,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -301,6 +301,21 @@
         },
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
         }
       ]
@@ -1641,17 +1656,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Federal Reserve",
       "entity_b": "PCE inflation",
       "cooccurrence_count": 1,
@@ -2109,6 +2113,28 @@
       "example_headlines": [
         {
           "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asia markets",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asia markets",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
         }
       ]
