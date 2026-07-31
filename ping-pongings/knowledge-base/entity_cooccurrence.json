@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 244,
+    "xrp_entries": 245,
     "btc_entries": 64
   },
-  "unique_pairs_found": 159,
+  "unique_pairs_found": 164,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -36,6 +36,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 4,
@@ -47,21 +62,6 @@
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -122,6 +122,21 @@
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -326,17 +341,6 @@
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -744,6 +748,61 @@
       "example_headlines": [
         {
           "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
