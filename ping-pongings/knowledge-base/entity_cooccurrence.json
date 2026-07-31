@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 245,
-    "btc_entries": 64
+    "btc_entries": 66
   },
   "unique_pairs_found": 164,
   "pairs": [
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -47,6 +47,21 @@
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "asset": "BTC"
         }
       ]
     },
@@ -96,7 +111,7 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -105,7 +120,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -181,21 +196,6 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
         }
       ]
