@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 246,
-    "btc_entries": 68
+    "xrp_entries": 247,
+    "btc_entries": 70
   },
-  "unique_pairs_found": 178,
+  "unique_pairs_found": 184,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2043,6 +2043,72 @@
       "example_headlines": [
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Borrow",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Granite Protocol",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Borrow",
+      "entity_b": "Granite Protocol",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Borrow",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Granite Protocol",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
           "asset": "BTC"
         }
       ]

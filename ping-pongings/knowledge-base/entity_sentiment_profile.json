@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 246,
-    "btc_entries": 68
+    "xrp_entries": 247,
+    "btc_entries": 70
   },
-  "unique_entities_profiled": 96,
+  "unique_entities_profiled": 99,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 47,
-      "bullish": 19,
+      "total_mentions": 48,
+      "bullish": 20,
       "neutral": 11,
       "bearish": 17,
-      "net_sentiment_score": 0.043,
+      "net_sentiment_score": 0.062,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1388,6 +1388,48 @@
       ],
       "example_headlines": [
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "Granite Protocol",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
+      ]
+    },
+    {
+      "entity": "Borrow",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
+      ]
+    },
+    {
+      "entity": "Stacks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
       ]
     }
   ]
