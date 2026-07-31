@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 245,
-    "btc_entries": 67
+    "btc_entries": 68
   },
-  "unique_entities_profiled": 92,
+  "unique_entities_profiled": 93,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 11,
+      "total_mentions": 12,
       "bullish": 5,
       "neutral": 0,
-      "bearish": 6,
-      "net_sentiment_score": -0.091,
+      "bearish": 7,
+      "net_sentiment_score": -0.167,
       "assets_seen_in": [
         "BTC"
       ],
@@ -90,11 +90,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 5,
+      "total_mentions": 6,
       "bullish": 1,
       "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -0.6,
+      "bearish": 5,
+      "net_sentiment_score": -0.667,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1331,6 +1331,20 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
+      "entity": "Coldcard",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     }
   ]
