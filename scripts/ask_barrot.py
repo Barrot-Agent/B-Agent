@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import re
 import subprocess
 import time
 import requests
@@ -16,6 +17,7 @@ LATEST_SIGNAL_XRP = "web/latest_signal.json"
 LATEST_SIGNAL_BTC = "web/latest_signal_btc.json"
 SIGNAL_ACCURACY = "web/signal_accuracy.json"
 GUMROAD_METRICS = "ping-pongings/knowledge-base/gumroad_metrics.json"
+GROQ_USAGE_LOG = "ping-pongings/knowledge-base/groq_usage_log.jsonl"
 
 SYSTEM_BASE = (
     "You are Barrot, an autonomous crypto/fintech AI agent built and run "
@@ -39,6 +41,22 @@ SYSTEM_BASE = (
     "and specifically about your own project, using these real facts, not "
     "outdated assumptions. Do not be vague or grandiose."
 )
+
+ANTI_FABRICATION = (
+    "\n\nCRITICAL, NON-NEGOTIABLE RULE: never state a specific number, "
+    "percentage, function name, file path, class name, or capability as "
+    "fact unless it appears explicitly in the real data sections of this "
+    "prompt. If you are asked about something not shown to you here - "
+    "including exact usage figures, exact code structure, or exact API "
+    "signatures - say plainly 'I don't have real data on that in my "
+    "current context' rather than inventing a plausible-sounding answer. "
+    "This applies with extra force to code: if a file's real content is "
+    "not shown to you verbatim below, do not invent or guess its "
+    "function names, signatures, or behavior, even if a similar-sounding "
+    "function would make sense. A specific-sounding wrong answer is "
+    "worse than an honest 'I don't know.'"
+)
+
 DEFAULT_QUESTION = (
     "Sean just asked a version of this question to another AI: what "
     "should he be asking you to do with you, in order to get the most "
@@ -76,11 +94,7 @@ def format_memory_block(entries):
 
 
 def load_signal_snapshot():
-    """Real, current signal emission + accuracy data - honest, including
-    zero/null values rather than hiding them. Not a claim of good
-    performance, just what's actually true right now."""
     lines = []
-
     for label, path in (("XRP", LATEST_SIGNAL_XRP), ("BTC", LATEST_SIGNAL_BTC)):
         if not os.path.exists(path):
             continue
@@ -94,7 +108,6 @@ def load_signal_snapshot():
             f'score={d.get("score")}, confidence={d.get("confidence")}, '
             f'source={d.get("source")}'
         )
-
     if os.path.exists(SIGNAL_ACCURACY):
         try:
             with open(SIGNAL_ACCURACY) as f:
@@ -108,15 +121,12 @@ def load_signal_snapshot():
             )
         except Exception:
             pass
-
     if not lines:
         return ""
     return "\n\nYour real, current signal data:\n" + "\n".join(lines)
 
 
 def load_gumroad_metrics():
-    """Real, aggregate-only product performance - no individual customer
-    data ever enters this. Honest if the file doesn't exist yet."""
     if not os.path.exists(GUMROAD_METRICS):
         return ""
     try:
@@ -132,11 +142,6 @@ def load_gumroad_metrics():
 
 
 def load_ingestion_metrics():
-    """Real ingestion counts only - config.json mixes genuinely-live
-    fields with dead, never-implemented scaffolding (kaggle/github/
-    science_papers/forums sources, several knowledge_domains all stuck
-    at 0 forever). This deliberately does NOT expose the raw file, to
-    avoid Barrot citing fake capabilities as if real."""
     path = "ping-pongings/knowledge-base/config.json"
     if not os.path.exists(path):
         return ""
@@ -145,7 +150,6 @@ def load_ingestion_metrics():
             cfg = json.load(f)
     except Exception:
         return ""
-
     sources = cfg.get("sources", {})
     real_lines = []
     dead_sources = []
@@ -155,10 +159,8 @@ def load_ingestion_metrics():
             real_lines.append(f"- {name}: {count} entries ingested (real, active)")
         else:
             dead_sources.append(name)
-
     if not real_lines and not dead_sources:
         return ""
-
     out = ["\n\nYour real ingestion metrics (from config.json, filtered):"]
     out.extend(real_lines)
     if dead_sources:
@@ -174,9 +176,6 @@ def load_ingestion_metrics():
 
 
 def load_recent_failures(n=8):
-    """Real, live query of recent GitHub Actions workflow failures - no
-    separate logging system needed, GitHub already tracks this natively.
-    Requires GITHUB_TOKEN in the environment."""
     gh_token = os.environ.get("GITHUB_TOKEN", "")
     repo = os.environ.get("GITHUB_REPOSITORY", "")
     if not gh_token or not repo:
@@ -192,10 +191,8 @@ def load_recent_failures(n=8):
         runs = r.json().get("workflow_runs", [])
     except Exception:
         return ""
-
     if not runs:
         return "\n\nYour real recent error log: no failed workflow runs in recent history."
-
     lines = ["\n\nYour real recent error log (workflow failures, most recent first):"]
     for run in runs[:n]:
         name = run.get("name", "unknown")
@@ -206,9 +203,6 @@ def load_recent_failures(n=8):
 
 
 def load_recent_commits(n=10):
-    """Real recent commit history via git log. Requires the checkout step
-    to use fetch-depth > 1 (default GitHub Actions checkout is shallow,
-    depth 1 - would make this show almost nothing without that fix)."""
     try:
         result = subprocess.run(
             ["git", "log", f"-{n}", "--pretty=format:%h|%ad|%s", "--date=short"],
@@ -225,6 +219,85 @@ def load_recent_commits(n=10):
         return "\n".join(lines)
     except Exception:
         return ""
+
+
+def load_last_groq_usage():
+    if not os.path.exists(GROQ_USAGE_LOG):
+        return ""
+    try:
+        with open(GROQ_USAGE_LOG) as f:
+            lines = [l for l in f if l.strip()]
+        if not lines:
+            return ""
+        last = json.loads(lines[-1])
+    except Exception:
+        return ""
+    return (
+        f'\n\nYour real Groq API usage, as of the last logged call '
+        f'({last.get("timestamp", "unknown")}): '
+        f'{last.get("remaining_tokens", "unknown")} tokens remaining this minute '
+        f'(limit {last.get("limit_tokens", "unknown")}), '
+        f'{last.get("remaining_requests", "unknown")} requests remaining today '
+        f'(limit {last.get("limit_requests", "unknown")}). Groq does not expose '
+        f'a live daily-token-remaining count in headers - only the figures above '
+        f'are real. Never state a specific daily-token-usage percentage unless '
+        f'it is derivable from these real numbers.'
+    )
+
+
+def log_groq_usage(response):
+    try:
+        h = response.headers
+        entry = {
+            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "remaining_tokens": h.get("x-ratelimit-remaining-tokens"),
+            "limit_tokens": h.get("x-ratelimit-limit-tokens"),
+            "remaining_requests": h.get("x-ratelimit-remaining-requests"),
+            "limit_requests": h.get("x-ratelimit-limit-requests"),
+        }
+        os.makedirs(os.path.dirname(GROQ_USAGE_LOG), exist_ok=True)
+        with open(GROQ_USAGE_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry) + "\n")
+    except Exception:
+        pass
+
+
+def extract_referenced_files(question, repo_root="."):
+    candidates = set(re.findall(r"[\w\-/\.]+\.(?:py|yml|yaml|json|md)\b", question))
+    found = []
+    for c in candidates:
+        direct = os.path.join(repo_root, c)
+        if os.path.isfile(direct):
+            found.append(direct)
+            continue
+        base = os.path.basename(c)
+        for root, dirs, files in os.walk(repo_root):
+            if ".git" in root:
+                continue
+            if base in files:
+                found.append(os.path.join(root, base))
+                break
+    return found
+
+
+def load_referenced_file_contents(question, max_chars=6000):
+    paths = extract_referenced_files(question)
+    if not paths:
+        return ""
+    out = [
+        "\n\nThe question references specific file(s). Here is their REAL, "
+        "current content - ground your answer in this exact code. Do not "
+        "invent function names or behavior beyond what is shown here:"
+    ]
+    for p in paths[:3]:
+        try:
+            content = open(p, encoding="utf-8").read()
+        except Exception:
+            continue
+        if len(content) > max_chars:
+            content = content[:max_chars] + "\n... [truncated]"
+        out.append(f"\n--- REAL CONTENT OF {p} ---\n{content}")
+    return "\n".join(out)
 
 
 def append_memory(question, answer):
@@ -284,7 +357,19 @@ def main():
     question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
 
     memory_entries = load_recent_memory()
-    system = SYSTEM_BASE + INFRASTRUCTURE_CONSTRAINTS + format_memory_block(memory_entries) + load_signal_snapshot() + load_recent_commits() + load_gumroad_metrics() + load_ingestion_metrics() + load_recent_failures()
+    system = (
+        SYSTEM_BASE
+        + ANTI_FABRICATION
+        + INFRASTRUCTURE_CONSTRAINTS
+        + format_memory_block(memory_entries)
+        + load_signal_snapshot()
+        + load_recent_commits()
+        + load_gumroad_metrics()
+        + load_ingestion_metrics()
+        + load_recent_failures()
+        + load_last_groq_usage()
+        + load_referenced_file_contents(question)
+    )
 
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {
@@ -297,6 +382,7 @@ def main():
     }
     r = requests.post(GROQ_ENDPOINT, headers=headers, json=payload, timeout=TIMEOUT)
     r.raise_for_status()
+    log_groq_usage(r)
     answer = r.json()["choices"][0]["message"]["content"].strip()
 
     with open("barrot_answer.md", "w", encoding="utf-8") as f:
