@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 260,
+    "xrp_entries": 261,
     "btc_entries": 81
   },
-  "unique_pairs_found": 235,
+  "unique_pairs_found": 243,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 15,
+      "cooccurrence_count": 16,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -181,6 +181,21 @@
         },
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SBI Holdings",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
           "asset": "XRP"
         }
       ]
@@ -860,17 +875,6 @@
     },
     {
       "entity_a": "SBI Holdings",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SBI Holdings",
       "entity_b": "altcoin",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -1426,6 +1430,94 @@
       "example_headlines": [
         {
           "title": "XRP Price Prediction: Bullish Momentum Forms As Ripple Taps New Platforms - dmarketforces.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "SBI Holdings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "SBI Ripple Asia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SBI Holdings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SBI Ripple Asia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SBI Holdings",
+      "entity_b": "SBI Ripple Asia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SBI Ripple Asia",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
           "asset": "XRP"
         }
       ]
