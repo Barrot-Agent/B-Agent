@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 267,
-    "btc_entries": 83
+    "btc_entries": 84
   },
-  "unique_pairs_found": 281,
+  "unique_pairs_found": 283,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -421,6 +421,21 @@
         },
         {
           "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ENS DAO",
+      "entity_b": "ENS Labs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
+          "asset": "XRP"
+        },
+        {
+          "title": "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
           "asset": "BTC"
         }
       ]
@@ -1505,6 +1520,28 @@
       "example_headlines": [
         {
           "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ENS DAO",
+      "entity_b": "Ethereum Name Service",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ENS Labs",
+      "entity_b": "Ethereum Name Service",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
           "asset": "XRP"
         }
       ]
@@ -3254,17 +3291,6 @@
       "example_headlines": [
         {
           "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ENS DAO",
-      "entity_b": "ENS Labs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
           "asset": "BTC"
         }
       ]
