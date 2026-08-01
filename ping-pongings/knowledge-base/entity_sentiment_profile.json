@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 258,
-    "btc_entries": 80
+    "xrp_entries": 260,
+    "btc_entries": 81
   },
-  "unique_entities_profiled": 120,
+  "unique_entities_profiled": 121,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 51,
+      "total_mentions": 52,
       "bullish": 20,
-      "neutral": 13,
+      "neutral": 14,
       "bearish": 18,
-      "net_sentiment_score": 0.039,
+      "net_sentiment_score": 0.038,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 19,
-      "bullish": 9,
+      "total_mentions": 20,
+      "bullish": 10,
       "neutral": 5,
       "bearish": 5,
-      "net_sentiment_score": 0.211,
+      "net_sentiment_score": 0.25,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 15,
-      "bullish": 6,
+      "total_mentions": 16,
+      "bullish": 7,
       "neutral": 5,
       "bearish": 4,
-      "net_sentiment_score": 0.133,
+      "net_sentiment_score": 0.188,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 13,
+      "total_mentions": 14,
       "bullish": 5,
-      "neutral": 1,
+      "neutral": 2,
       "bearish": 7,
-      "net_sentiment_score": -0.154,
+      "net_sentiment_score": -0.143,
       "assets_seen_in": [
         "BTC"
       ],
@@ -106,6 +106,22 @@
       ]
     },
     {
+      "entity": "Fortune",
+      "total_mentions": 6,
+      "bullish": 0,
+      "neutral": 6,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
       "entity": "Ethereum",
       "total_mentions": 5,
       "bullish": 2,
@@ -120,22 +136,6 @@
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
         "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
-      ]
-    },
-    {
-      "entity": "Fortune",
-      "total_mentions": 5,
-      "bullish": 0,
-      "neutral": 5,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune",
-        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
@@ -889,6 +889,20 @@
       ],
       "example_headlines": [
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "dmarketforces.com",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction: Bullish Momentum Forms As Ripple Taps New Platforms - dmarketforces.com"
       ]
     },
     {

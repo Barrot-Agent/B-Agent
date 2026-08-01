@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 258,
-    "btc_entries": 80
+    "xrp_entries": 260,
+    "btc_entries": 81
   },
-  "unique_pairs_found": 233,
+  "unique_pairs_found": 235,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 14,
+      "cooccurrence_count": 15,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 8,
+      "cooccurrence_count": 9,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
-      "cooccurrence_count": 5,
+      "cooccurrence_count": 6,
       "example_headlines": [
         {
           "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
@@ -586,6 +586,21 @@
         },
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -1389,6 +1404,28 @@
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "dmarketforces.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: Bullish Momentum Forms As Ripple Taps New Platforms - dmarketforces.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "dmarketforces.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: Bullish Momentum Forms As Ripple Taps New Platforms - dmarketforces.com",
           "asset": "XRP"
         }
       ]
@@ -2709,17 +2746,6 @@
       "example_headlines": [
         {
           "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
