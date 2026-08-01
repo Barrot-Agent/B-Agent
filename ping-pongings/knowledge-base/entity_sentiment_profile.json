@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 266,
+    "xrp_entries": 267,
     "btc_entries": 83
   },
-  "unique_entities_profiled": 133,
+  "unique_entities_profiled": 134,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 24,
-      "bullish": 13,
+      "total_mentions": 25,
+      "bullish": 14,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.333,
+      "net_sentiment_score": 0.36,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 20,
-      "bullish": 10,
+      "total_mentions": 21,
+      "bullish": 11,
       "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.3,
+      "net_sentiment_score": 0.333,
       "assets_seen_in": [
         "XRP"
       ],
@@ -169,6 +169,22 @@
         "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+      ]
+    },
+    {
+      "entity": "SBI Holdings",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+        "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
       ]
     },
     {
@@ -296,21 +312,6 @@
       "example_headlines": [
         "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
         "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "SBI Holdings",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
       ]
     },
     {
@@ -1038,6 +1039,20 @@
       ],
       "example_headlines": [
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com"
+      ]
+    },
+    {
+      "entity": "MarketForces Africa",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
       ]
     },
     {
