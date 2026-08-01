@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 261,
-    "btc_entries": 81
+    "xrp_entries": 265,
+    "btc_entries": 83
   },
-  "unique_pairs_found": 244,
+  "unique_pairs_found": 272,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 16,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -81,6 +81,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -141,6 +171,51 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 2,
@@ -151,36 +226,6 @@
         },
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -197,6 +242,21 @@
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "BTC"
         }
       ]
     },
@@ -286,6 +346,81 @@
         },
         {
           "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cerebras Systems",
+      "entity_b": "CleanCore Solutions",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cerebras Systems",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CleanCore Solutions",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
           "asset": "BTC"
         }
       ]
@@ -436,6 +571,96 @@
         },
         {
           "title": "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute credits",
+      "entity_b": "NEAR",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute credits",
+      "entity_b": "NEAR AI",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute credits",
+      "entity_b": "NEAR Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NEAR",
+      "entity_b": "NEAR AI",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NEAR",
+      "entity_b": "NEAR Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NEAR AI",
+      "entity_b": "NEAR Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
           "asset": "BTC"
         }
       ]
@@ -638,39 +863,6 @@
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -1127,23 +1319,100 @@
       ]
     },
     {
-      "entity_a": "CryptoPotato",
-      "entity_b": "Ripple",
+      "entity_a": "Bitcoin",
+      "entity_b": "firmware",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
           "asset": "XRP"
         }
       ]
     },
     {
-      "entity_a": "CryptoPotato",
-      "entity_b": "XRP",
+      "entity_a": "Bitcoin",
+      "entity_b": "hardware wallet",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "seed generation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "firmware",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "hardware wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "seed generation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "firmware",
+      "entity_b": "hardware wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "firmware",
+      "entity_b": "seed generation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "hardware wallet",
+      "entity_b": "seed generation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
           "asset": "XRP"
         }
       ]
@@ -1194,40 +1463,7 @@
     },
     {
       "entity_a": "Cerebras Systems",
-      "entity_b": "CleanCore Solutions",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cerebras Systems",
-      "entity_b": "Dogecoin Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cerebras Systems",
       "entity_b": "colocation",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CleanCore Solutions",
-      "entity_b": "Dogecoin Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -1254,72 +1490,6 @@
       "example_headlines": [
         {
           "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute credits",
-      "entity_b": "NEAR",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute credits",
-      "entity_b": "NEAR AI",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute credits",
-      "entity_b": "NEAR Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "NEAR",
-      "entity_b": "NEAR AI",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "NEAR",
-      "entity_b": "NEAR Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "NEAR AI",
-      "entity_b": "NEAR Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
           "asset": "XRP"
         }
       ]
@@ -1518,6 +1688,138 @@
       "example_headlines": [
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "analyst",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "analyst",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "analyst",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "analyst",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
           "asset": "XRP"
         }
       ]
@@ -2711,17 +3013,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Coldcard",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Asia markets",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
@@ -2849,6 +3140,83 @@
       "example_headlines": [
         {
           "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "Cerebras Systems",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "CleanCore Solutions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "DOGE",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cerebras Systems",
+      "entity_b": "DOGE",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CleanCore Solutions",
+      "entity_b": "DOGE",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "DOGE",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
           "asset": "BTC"
         }
       ]

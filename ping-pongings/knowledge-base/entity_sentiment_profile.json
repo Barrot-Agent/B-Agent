@@ -1,34 +1,34 @@
 {
   "generated_from": {
-    "xrp_entries": 261,
-    "btc_entries": 81
+    "xrp_entries": 265,
+    "btc_entries": 83
   },
-  "unique_entities_profiled": 123,
+  "unique_entities_profiled": 130,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 53,
+      "total_mentions": 54,
       "bullish": 20,
       "neutral": 14,
-      "bearish": 19,
-      "net_sentiment_score": 0.019,
+      "bearish": 20,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
-        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy"
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
       ]
     },
     {
       "entity": "XRP",
-      "total_mentions": 21,
-      "bullish": 11,
-      "neutral": 5,
+      "total_mentions": 24,
+      "bullish": 13,
+      "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.286,
+      "net_sentiment_score": 0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 17,
-      "bullish": 8,
-      "neutral": 5,
+      "total_mentions": 20,
+      "bullish": 10,
+      "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.235,
+      "net_sentiment_score": 0.3,
       "assets_seen_in": [
         "XRP"
       ],
@@ -139,6 +139,56 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Coldcard",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 3,
       "bullish": 0,
@@ -187,22 +237,6 @@
       ]
     },
     {
-      "entity": "CoinDesk",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
-      ]
-    },
-    {
       "entity": "Morningstar",
       "total_mentions": 3,
       "bullish": 0,
@@ -219,6 +253,36 @@
       ]
     },
     {
+      "entity": "XRP.CC",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "Moomoo",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "Fed",
       "total_mentions": 2,
       "bullish": 0,
@@ -232,21 +296,6 @@
       "example_headlines": [
         "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
         "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com"
       ]
     },
     {
@@ -329,6 +378,69 @@
       ]
     },
     {
+      "entity": "CryptoPotato",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com"
+      ]
+    },
+    {
+      "entity": "CleanCore Solutions",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "Cerebras Systems",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "Dogecoin Treasury",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
       "entity": "Uniswap",
       "total_mentions": 2,
       "bullish": 1,
@@ -390,6 +502,70 @@
       "example_headlines": [
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
+      "entity": "NEAR",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits",
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
+      "entity": "NEAR Protocol",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits",
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
+      "entity": "NEAR AI",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits",
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
+      "entity": "AI compute credits",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits",
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
       ]
     },
     {
@@ -526,49 +702,6 @@
       "example_headlines": [
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -740,59 +873,45 @@
       ]
     },
     {
-      "entity": "CryptoPotato",
+      "entity": "hardware wallet",
       "total_mentions": 1,
       "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato"
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
       ]
     },
     {
-      "entity": "CleanCore Solutions",
+      "entity": "firmware",
       "total_mentions": 1,
       "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
       ]
     },
     {
-      "entity": "Cerebras Systems",
+      "entity": "seed generation",
       "total_mentions": 1,
       "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
-      ]
-    },
-    {
-      "entity": "Dogecoin Treasury",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
       ]
     },
     {
@@ -821,62 +940,6 @@
       ],
       "example_headlines": [
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
-      ]
-    },
-    {
-      "entity": "NEAR",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "NEAR Adds Staking-Based Payments For AI Compute Credits"
-      ]
-    },
-    {
-      "entity": "NEAR Protocol",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "NEAR Adds Staking-Based Payments For AI Compute Credits"
-      ]
-    },
-    {
-      "entity": "NEAR AI",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "NEAR Adds Staking-Based Payments For AI Compute Credits"
-      ]
-    },
-    {
-      "entity": "AI compute credits",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "NEAR Adds Staking-Based Payments For AI Compute Credits"
       ]
     },
     {
@@ -947,6 +1010,34 @@
       ],
       "example_headlines": [
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
+      ]
+    },
+    {
+      "entity": "institutional investors",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com"
+      ]
+    },
+    {
+      "entity": "analyst",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com"
       ]
     },
     {
@@ -1787,6 +1878,34 @@
       ],
       "example_headlines": [
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "DOGE",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "AI infrastructure",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
       ]
     }
   ]
