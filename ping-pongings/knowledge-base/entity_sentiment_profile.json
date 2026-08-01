@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 265,
+    "xrp_entries": 266,
     "btc_entries": 83
   },
-  "unique_entities_profiled": 130,
+  "unique_entities_profiled": 133,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -106,6 +106,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 6,
       "bullish": 0,
@@ -119,23 +136,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 3,
-      "bearish": 0,
-      "net_sentiment_score": 0.4,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -1906,6 +1906,48 @@
       ],
       "example_headlines": [
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "ENS Labs",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
+      ]
+    },
+    {
+      "entity": "ENS DAO",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
+      ]
+    },
+    {
+      "entity": "ENS token",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
       ]
     }
   ]
