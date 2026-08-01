@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 258,
-    "btc_entries": 80
+    "xrp_entries": 261,
+    "btc_entries": 81
   },
-  "unique_entities_profiled": 111,
+  "unique_entities_profiled": 123,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 51,
+      "total_mentions": 53,
       "bullish": 20,
-      "neutral": 13,
-      "bearish": 18,
-      "net_sentiment_score": 0.039,
+      "neutral": 14,
+      "bearish": 19,
+      "net_sentiment_score": 0.019,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 19,
-      "bullish": 9,
+      "total_mentions": 21,
+      "bullish": 11,
       "neutral": 5,
       "bearish": 5,
-      "net_sentiment_score": 0.211,
+      "net_sentiment_score": 0.286,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 15,
-      "bullish": 6,
+      "total_mentions": 17,
+      "bullish": 8,
       "neutral": 5,
       "bearish": 4,
-      "net_sentiment_score": 0.133,
+      "net_sentiment_score": 0.235,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 13,
+      "total_mentions": 14,
       "bullish": 5,
-      "neutral": 1,
+      "neutral": 2,
       "bearish": 7,
-      "net_sentiment_score": -0.154,
+      "net_sentiment_score": -0.143,
       "assets_seen_in": [
         "BTC"
       ],
@@ -106,6 +106,22 @@
       ]
     },
     {
+      "entity": "Fortune",
+      "total_mentions": 6,
+      "bullish": 0,
+      "neutral": 6,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
       "entity": "Ethereum",
       "total_mentions": 5,
       "bullish": 2,
@@ -120,22 +136,6 @@
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
         "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
-      ]
-    },
-    {
-      "entity": "Fortune",
-      "total_mentions": 5,
-      "bullish": 0,
-      "neutral": 5,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune",
-        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
@@ -247,6 +247,21 @@
       "example_headlines": [
         "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com"
+      ]
+    },
+    {
+      "entity": "SBI Holdings",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
       ]
     },
     {
@@ -514,6 +529,21 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 1,
       "bullish": 0,
@@ -585,20 +615,6 @@
     },
     {
       "entity": "Gumi",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Japanese game developer launches Bitcoin, altcoin fund with SBI"
-      ]
-    },
-    {
-      "entity": "SBI Holdings",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -738,6 +754,132 @@
       ]
     },
     {
+      "entity": "CleanCore Solutions",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "Cerebras Systems",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "Dogecoin Treasury",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "AI",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "colocation",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "NEAR",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
+      "entity": "NEAR Protocol",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
+      "entity": "NEAR AI",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
+      "entity": "AI compute credits",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "NEAR Adds Staking-Based Payments For AI Compute Credits"
+      ]
+    },
+    {
       "entity": "Ripple Labs",
       "total_mentions": 1,
       "bullish": 1,
@@ -763,6 +905,48 @@
       ],
       "example_headlines": [
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "dmarketforces.com",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction: Bullish Momentum Forms As Ripple Taps New Platforms - dmarketforces.com"
+      ]
+    },
+    {
+      "entity": "Japan",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
+      ]
+    },
+    {
+      "entity": "SBI Ripple Asia",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
       ]
     },
     {
@@ -1533,20 +1717,6 @@
       ],
       "example_headlines": [
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {
