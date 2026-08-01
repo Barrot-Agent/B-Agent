@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 261,
+    "xrp_entries": 262,
     "btc_entries": 81
   },
-  "unique_pairs_found": 244,
+  "unique_pairs_found": 251,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -286,6 +286,51 @@
         },
         {
           "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cerebras Systems",
+      "entity_b": "CleanCore Solutions",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cerebras Systems",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CleanCore Solutions",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
           "asset": "BTC"
         }
       ]
@@ -1194,40 +1239,7 @@
     },
     {
       "entity_a": "Cerebras Systems",
-      "entity_b": "CleanCore Solutions",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cerebras Systems",
-      "entity_b": "Dogecoin Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cerebras Systems",
       "entity_b": "colocation",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CleanCore Solutions",
-      "entity_b": "Dogecoin Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -2849,6 +2861,83 @@
       "example_headlines": [
         {
           "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "Cerebras Systems",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "CleanCore Solutions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "DOGE",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI infrastructure",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cerebras Systems",
+      "entity_b": "DOGE",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CleanCore Solutions",
+      "entity_b": "DOGE",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "DOGE",
+      "entity_b": "Dogecoin Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
           "asset": "BTC"
         }
       ]
