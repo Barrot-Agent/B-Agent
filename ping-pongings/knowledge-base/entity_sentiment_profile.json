@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 52,
+      "total_mentions": 53,
       "bullish": 20,
       "neutral": 14,
-      "bearish": 18,
-      "net_sentiment_score": 0.038,
+      "bearish": 19,
+      "net_sentiment_score": 0.019,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -526,6 +526,21 @@
       "example_headlines": [
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound"
+      ]
+    },
+    {
+      "entity": "Coldcard",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
       ]
     },
     {
@@ -1702,20 +1717,6 @@
       ],
       "example_headlines": [
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {

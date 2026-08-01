@@ -3,7 +3,7 @@
     "xrp_entries": 261,
     "btc_entries": 81
   },
-  "unique_pairs_found": 243,
+  "unique_pairs_found": 244,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2706,6 +2706,17 @@
       "example_headlines": [
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
           "asset": "BTC"
         }
       ]
