@@ -1,0 +1,26 @@
+name: Generate Signal Summary
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 * * * *'  # 15 minutes after each signal cycle (which runs at :00)
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Generate audio summary
+        run: python3 scripts/signal_summary.py
+      - name: Commit summary + audio
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add web/latest_signal_summary.json web/generated_audio/
+          git diff --cached --quiet || git commit -m "Signal summary: text + audio [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
