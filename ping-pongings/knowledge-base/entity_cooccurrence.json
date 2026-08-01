@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 266,
+    "xrp_entries": 267,
     "btc_entries": 83
   },
-  "unique_pairs_found": 278,
+  "unique_pairs_found": 281,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 19,
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -126,6 +126,21 @@
       ]
     },
     {
+      "entity_a": "SBI Holdings",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US",
       "cooccurrence_count": 3,
@@ -226,21 +241,6 @@
         },
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SBI Holdings",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
           "asset": "XRP"
         }
       ]
@@ -677,6 +677,21 @@
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SBI Holdings",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "asset": "XRP"
         }
       ]
     },
@@ -1650,17 +1665,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "SBI Holdings",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "SBI Ripple Asia",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -1820,6 +1824,39 @@
       "example_headlines": [
         {
           "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MarketForces Africa",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MarketForces Africa",
+      "entity_b": "SBI Holdings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MarketForces Africa",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
           "asset": "XRP"
         }
       ]
