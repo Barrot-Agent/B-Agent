@@ -1,14 +1,14 @@
 {
   "generated_from": {
     "xrp_entries": 264,
-    "btc_entries": 82
+    "btc_entries": 83
   },
-  "unique_pairs_found": 254,
+  "unique_pairs_found": 256,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 17,
+      "cooccurrence_count": 18,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -167,6 +167,51 @@
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -486,6 +531,96 @@
       ]
     },
     {
+      "entity_a": "AI compute credits",
+      "entity_b": "NEAR",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute credits",
+      "entity_b": "NEAR AI",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute credits",
+      "entity_b": "NEAR Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NEAR",
+      "entity_b": "NEAR AI",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NEAR",
+      "entity_b": "NEAR Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NEAR AI",
+      "entity_b": "NEAR Protocol",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "SEC",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -683,39 +818,6 @@
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -1271,72 +1373,6 @@
       ]
     },
     {
-      "entity_a": "AI compute credits",
-      "entity_b": "NEAR",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute credits",
-      "entity_b": "NEAR AI",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute credits",
-      "entity_b": "NEAR Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "NEAR",
-      "entity_b": "NEAR AI",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "NEAR",
-      "entity_b": "NEAR Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "NEAR AI",
-      "entity_b": "NEAR Protocol",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 1,
@@ -1530,6 +1566,28 @@
       "example_headlines": [
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
