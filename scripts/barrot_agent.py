@@ -313,15 +313,34 @@ def main():
 
     named = _re.findall(r"[\w./-]+\.(?:py|jsonl|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
     file_ctx = ""
+    _file_budget = 6000  # chars, shared across all named files - same discipline as dir_ctx
+    _file_omitted = []
     for fp in list(dict.fromkeys(named))[:5]:
         if os.path.exists(fp):
             try:
+                _fsz = os.path.getsize(fp)
+                if _fsz > _file_budget:
+                    _file_omitted.append(f"{fp} ({_fsz}b)")
+                    continue
                 with open(fp) as _f:
-                    file_ctx += (
-                        f"\n=== CURRENT CONTENT OF {fp} ===\n{_f.read()}\n=== END {fp} ===\n"
-                    )
+                    _content = _f.read()
+                if len(_content) > _file_budget:
+                    _file_omitted.append(f"{fp} ({_fsz}b)")
+                    continue
+                file_ctx += (
+                    f"\n=== CURRENT CONTENT OF {fp} ===\n{_content}\n=== END {fp} ===\n"
+                )
+                _file_budget -= len(_content)
             except Exception:
                 pass
+    if _file_omitted:
+        file_ctx += (
+            "\n\nThe following named files exist but were too large to include in full "
+            "for this pass (real sizes shown): " + ", ".join(_file_omitted) +
+            ". Do not describe or invent their internal contents - name/size only. "
+            "If the task is pure deletion, this is sufficient; deletion does not require "
+            "reading the file's contents."
+        )
     # Inject REAL GitHub data when the task is about PRs or issues
     gh_ctx = ""
     tl = f"{TITLE} {TASK}".lower()
