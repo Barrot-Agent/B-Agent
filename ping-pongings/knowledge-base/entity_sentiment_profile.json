@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 268,
-    "btc_entries": 84
+    "xrp_entries": 269,
+    "btc_entries": 85
   },
-  "unique_entities_profiled": 142,
+  "unique_entities_profiled": 143,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 25,
-      "bullish": 14,
+      "total_mentions": 26,
+      "bullish": 15,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.36,
+      "net_sentiment_score": 0.385,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 21,
-      "bullish": 11,
+      "total_mentions": 22,
+      "bullish": 12,
       "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.333,
+      "net_sentiment_score": 0.364,
       "assets_seen_in": [
         "XRP"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 8,
-      "bullish": 4,
+      "total_mentions": 9,
+      "bullish": 5,
       "neutral": 2,
       "bearish": 2,
-      "net_sentiment_score": 0.25,
+      "net_sentiment_score": 0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -202,6 +202,23 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "SEC",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -631,22 +648,6 @@
       "example_headlines": [
         "NEAR Adds Staking-Based Payments For AI Compute Credits",
         "NEAR Adds Staking-Based Payments For AI Compute Credits"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -1159,6 +1160,20 @@
       ],
       "example_headlines": [
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "cryptocurrency market",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance"
       ]
     },
     {

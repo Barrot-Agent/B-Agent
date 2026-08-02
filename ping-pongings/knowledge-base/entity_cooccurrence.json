@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 268,
-    "btc_entries": 84
+    "xrp_entries": 269,
+    "btc_entries": 85
   },
-  "unique_pairs_found": 298,
+  "unique_pairs_found": 303,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -53,7 +53,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 4,
+      "cooccurrence_count": 5,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -77,6 +77,21 @@
         {
           "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -152,6 +167,21 @@
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -256,21 +286,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -741,8 +756,8 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -750,8 +765,8 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
-          "asset": "BTC"
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -1681,17 +1696,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -2016,6 +2020,61 @@
       "example_headlines": [
         {
           "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "cryptocurrency market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "cryptocurrency market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "cryptocurrency market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Yahoo Finance",
+      "entity_b": "cryptocurrency market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
