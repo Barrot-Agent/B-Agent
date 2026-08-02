@@ -66,8 +66,13 @@ def main():
     if not summary:
         sys.exit("Summary generation failed; nothing written.")
     spoken = chat("Compress to ONE spoken sentence under 130 characters, "
-                  "plain words, no markdown:\n\n" + summary, 120)
-    line = f"{spoken or summary[:120]} {DISCLAIMER}"[:TTS_LIMIT]
+                  "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
+    spoken = " ".join(spoken.replace("*", "").split())
+    if not spoken:
+        spoken = str(signal.get("signal_text", "Signal updated."))
+    if len(spoken) > 130 or not spoken.endswith((".", "!", "?")):
+        spoken = spoken[:127].rsplit(" ", 1)[0].rstrip(",;:") + "."
+    line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
     print(f"[tts] input ({len(line)} chars): {line}")
     audio, tts_err = speak(line)
     SUMMARY_FILE.write_text(json.dumps({
