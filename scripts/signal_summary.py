@@ -52,6 +52,20 @@ def speak(text):
     print(f"[tts] OK: {len(raw)} bytes -> {AUDIO_FILE}")
     return str(AUDIO_FILE.relative_to(ROOT)), None
 
+def fallback_line(signal):
+    """Deterministic spoken line from real signal fields only."""
+    score = signal.get("score")
+    conf = signal.get("confidence")
+    n = signal.get("news_entries")
+    bits = ["XRP signal update."]
+    if score is not None:
+        bits.append(f"Score {score}.")
+    if conf is not None:
+        bits.append(f"Confidence {conf}.")
+    if n is not None:
+        bits.append(f"Based on {n} news entries.")
+    return " ".join(bits)
+
 def main():
     if not KEY:
         sys.exit("GROQ_API_KEY not set")
@@ -67,11 +81,11 @@ def main():
         sys.exit("Summary generation failed; nothing written.")
     spoken = chat("Compress to ONE spoken sentence under 130 characters, "
                   "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
+    print(f"[compress] raw: {spoken!r}")
     spoken = " ".join(spoken.replace("*", "").split())
-    if not spoken:
-        spoken = str(signal.get("signal_text", "Signal updated."))
-    if len(spoken) > 130 or not spoken.endswith((".", "!", "?")):
-        spoken = spoken[:127].rsplit(" ", 1)[0].rstrip(",;:") + "."
+    if not spoken or len(spoken) > 140:
+        spoken = fallback_line(signal)
+        print(f"[compress] using deterministic fallback: {spoken}")
     line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
     print(f"[tts] input ({len(line)} chars): {line}")
     audio, tts_err = speak(line)
