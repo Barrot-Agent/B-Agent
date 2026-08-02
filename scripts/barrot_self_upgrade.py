@@ -1,35 +1,39 @@
 #!/usr/bin/env python3
-"""Barrot self-upgrade: identify capability gaps, generate new modules, test, commit."""
-import os, json, subprocess, urllib.request, sys
+"""Barrot self-upgrade: identify capability gaps, generate a module, verify it,
+open a PR. Never pushes to main -- barrot-gated-merge.yml tiers the result."""
+import os, json, subprocess, urllib.request, sys, re
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
-REPO_ROOT = Path(__file__).parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 
-BANNED_TERMS = ["rm -rf", ".git/", "git reset --hard", "sed -i", "quantum_entanglement", "free_energy"]
+BANNED_TERMS = [
+    "rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i",
+    "git push", "subprocess.run([\"git\"", "os.system",
+    "quantum harmonization", "free energy", "Willowchip", "Aethel",
+    "Planck-scale", "bio-computing", "144-agent council",
+]
 
 def load_audit():
-    """Load the latest capability audit."""
-    audit_file = REPO_ROOT / "barrot_capability_audit.json"
-    if audit_file.exists():
-        with open(audit_file) as f:
-            return json.load(f)
-    return None
+    f = REPO_ROOT / "barrot_capability_audit.json"
+    if not f.exists():
+        return None
+    with open(f) as fh:
+        return json.load(fh)
 
 def call_groq(prompt):
     body = json.dumps({
         "model": "openai/gpt-oss-120b",
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 2000,
-        "temperature": 0.5,
+        "temperature": 0.4,
     }).encode()
     req = urllib.request.Request(
-        "https://api.groq.com/openai/v1/chat/completions",
-        data=body,
-        headers={"Authorization": f"Bearer {GROQ_KEY}", "Content-Type": "application/json"}
-    )
+        "https://api.groq.com/openai/v1/chat/completions", data=body,
+        headers={"Authorization": f"Bearer {GROQ_KEY}",
+                 "Content-Type": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             return json.load(resp)["choices"][0]["message"]["content"]
@@ -37,89 +41,97 @@ def call_groq(prompt):
         print(f"Groq error: {e}")
         return ""
 
+def strip_fences(text):
+    m = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
+    return m.group(1) if m else text
+
 def generate_capability(gap_id, gap_name):
-    """Generate code for a missing capability."""
-    prompt = f"""Barrot identified a capability gap: {gap_name} (ID: {gap_id})
+    prompt = f"""Implement this capability as a standalone Python script: {gap_name} (gap ID {gap_id})
 
-Generate a complete, working Python script that implements this capability.
-Requirements:
-1. Use urllib for HTTP (no external libs except json/os/sys)
-2. Call Groq openai/gpt-oss-120b for analysis
-3. Output JSON results to a file
-4. Include error handling
-5. DO NOT include: rm commands, git reset, sed -i, or any destructive operations
-6. DO NOT reference non-existent hardware or APIs
+HARD CONSTRAINTS:
+- stdlib only (os, sys, json, urllib.request, pathlib, datetime, subprocess for read-only checks)
+- Call Groq model openai/gpt-oss-120b via urllib for any analysis
+- Read GROQ_API_KEY from env; exit non-zero if unset
+- Write results to a JSON file; never mutate existing repo files
+- NO git commands, NO os.system, NO shell mutation, NO rm
+- If real input data is unavailable, write an explicit null/unavailable field.
+  NEVER generate placeholder, simulated, or randomized values as if they were results.
+- Do not reference hardware, APIs, or database tables you cannot verify exist
 
-Output ONLY valid Python code, no explanation. Start with shebang."""
-    
-    code = call_groq(prompt)
-    
-    # Verify no banned terms
+Output ONLY the Python source, starting with the shebang."""
+    code = strip_fences(call_groq(prompt)).strip()
+    if not code.startswith("#!"):
+        print("REJECTED: output does not look like a script")
+        return None
     for term in BANNED_TERMS:
         if term in code:
-            print(f"REJECTED: banned term '{term}' found in generated code")
+            print(f"REJECTED: banned term {term!r} in generated code")
             return None
-    
+    for fake in ("random.uniform", "random.random", "random.randint"):
+        if fake in code:
+            print(f"REJECTED: {fake} -- fabricated-data pattern")
+            return None
     return code
 
-def test_capability(code):
-    """Syntax-check the generated capability."""
-    test_file = "/tmp/barrot_capability_test.py"
-    with open(test_file, "w") as f:
-        f.write(code)
-    
-    result = subprocess.run(
-        ["python3", "-m", "py_compile", test_file],
-        capture_output=True
-    )
-    
-    if result.returncode == 0:
-        print(f"✓ Syntax OK")
-        return True
-    else:
-        print(f"✗ Syntax error: {result.stderr.decode()}")
+def verify_syntax(code):
+    tmp = REPO_ROOT / ".selfupgrade_candidate.py"
+    tmp.write_text(code)
+    r = subprocess.run([sys.executable, "-m", "py_compile", str(tmp)],
+                       capture_output=True)
+    tmp.unlink(missing_ok=True)
+    if r.returncode != 0:
+        print(f"REJECTED: syntax error\n{r.stderr.decode()[:400]}")
         return False
+    print("Syntax OK")
+    return True
 
-def commit_capability(capability_name, code):
-    """Commit new capability to main."""
-    script_path = SCRIPTS_DIR / f"{capability_name.lower().replace(' ', '_')}.py"
-    
-    with open(script_path, "w") as f:
-        f.write(code)
-    
-    subprocess.run(["git", "add", str(script_path)], cwd=REPO_ROOT, check=False)
-    subprocess.run(
-        ["git", "commit", "-m", f"Self-upgrade: {capability_name}"],
-        cwd=REPO_ROOT,
-        check=False
-    )
-    subprocess.run(["git", "push"], cwd=REPO_ROOT, check=False)
-    
-    print(f"✓ Committed: {script_path}")
+def git(*args, check=False):
+    return subprocess.run(["git", *args], cwd=REPO_ROOT,
+                          capture_output=True, text=True, check=check)
+
+def open_capability_pr(gap_name, code):
+    slug = re.sub(r"[^a-z0-9]+", "_", gap_name.lower()).strip("_")[:40]
+    target = SCRIPTS_DIR / f"{slug}.py"
+    if target.exists():
+        print(f"ABORT: {target.name} already exists -- refusing to overwrite")
+        return False
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+    branch = f"selfupgrade/{slug}-{stamp}"
+    git("checkout", "-b", branch)
+    target.write_text(code)
+    git("add", str(target.relative_to(REPO_ROOT)))
+    git("commit", "-m", f"Self-upgrade candidate: {gap_name}")
+    push = git("push", "-u", "origin", branch)
+    if push.returncode != 0:
+        print(f"Push failed: {push.stderr[:300]}")
+        return False
+    body = (f"Autonomous self-upgrade candidate for gap: **{gap_name}**\n\n"
+            "Generated by scripts/barrot_self_upgrade.py. Passed banned-term, "
+            "fabricated-data, and syntax checks only. NOT executed. "
+            "Requires human review before merge; barrot-gated-merge.yml will "
+            "tier this like any other PR.")
+    bf = REPO_ROOT / ".selfupgrade_pr_body.md"
+    bf.write_text(body)
+    pr = subprocess.run(
+        ["gh", "pr", "create", "--title", f"Self-upgrade: {gap_name}",
+         "--body-file", str(bf), "--base", "main", "--head", branch],
+        cwd=REPO_ROOT, capture_output=True, text=True)
+    bf.unlink(missing_ok=True)
+    print(pr.stdout or pr.stderr)
+    git("checkout", "main")
+    return pr.returncode == 0
 
 def self_upgrade():
-    """Full self-upgrade cycle."""
     audit = load_audit()
     if not audit or not audit.get("gaps"):
         print("No capability gaps found")
         return
-    
-    top_gap = audit["gaps"][0]
-    gap_id, gap_name = top_gap["id"], top_gap["name"]
-    
-    print(f"Upgrading: {gap_name} (ID: {gap_id})")
-    
-    code = generate_capability(gap_id, gap_name)
-    if not code:
-        print("Failed to generate capability")
+    gap = audit["gaps"][0]
+    print(f"Upgrading: {gap['name']} (id {gap['id']})")
+    code = generate_capability(gap["id"], gap["name"])
+    if not code or not verify_syntax(code):
         return
-    
-    if not test_capability(code):
-        print("Capability failed syntax check")
-        return
-    
-    commit_capability(gap_name, code)
-    print(f"✓ Self-upgrade complete: {gap_name}")
+    open_capability_pr(gap["name"], code)
 
 if __name__ == "__main__":
     if not GROQ_KEY:

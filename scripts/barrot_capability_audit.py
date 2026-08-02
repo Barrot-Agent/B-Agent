@@ -34,7 +34,7 @@ def get_current_capabilities():
         capabilities[script.name] = {
             "path": str(script),
             "size": script.stat().st_size,
-            "has_workflow": (WORKFLOWS_DIR / f"*{script.stem}*.yml").exists()
+            "has_workflow": any(WORKFLOWS_DIR.glob(f"*{script.stem}*.yml"))
         }
     return capabilities
 
