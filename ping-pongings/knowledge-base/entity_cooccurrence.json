@@ -3,7 +3,7 @@
     "xrp_entries": 268,
     "btc_entries": 84
   },
-  "unique_pairs_found": 293,
+  "unique_pairs_found": 298,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -181,6 +181,21 @@
         },
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -781,21 +796,6 @@
         },
         {
           "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -3468,6 +3468,61 @@
       "example_headlines": [
         {
           "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "July",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "July",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "July",
+      "entity_b": "equities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
           "asset": "BTC"
         }
       ]

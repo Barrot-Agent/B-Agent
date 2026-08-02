@@ -3,15 +3,15 @@
     "xrp_entries": 268,
     "btc_entries": 84
   },
-  "unique_entities_profiled": 140,
+  "unique_entities_profiled": 142,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 55,
+      "total_mentions": 56,
       "bullish": 20,
       "neutral": 14,
-      "bearish": 21,
-      "net_sentiment_score": -0.018,
+      "bearish": 22,
+      "net_sentiment_score": -0.036,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -139,6 +139,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 4,
       "bullish": 0,
@@ -153,23 +170,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
       ]
     },
     {
@@ -2055,6 +2055,34 @@
       ],
       "example_headlines": [
         "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis"
+      ]
+    },
+    {
+      "entity": "equities",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin slides on the final day of July while equities boom - CoinDesk"
+      ]
+    },
+    {
+      "entity": "July",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin slides on the final day of July while equities boom - CoinDesk"
       ]
     }
   ]
