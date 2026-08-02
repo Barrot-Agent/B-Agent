@@ -33,7 +33,8 @@ def chat(prompt, max_tokens=400):
     raw, err = post("https://api.groq.com/openai/v1/chat/completions",
                     {"model": "openai/gpt-oss-120b",
                      "messages": [{"role": "user", "content": prompt}],
-                     "max_tokens": max_tokens, "temperature": 0.4}, 60)
+                     "max_tokens": max_tokens, "temperature": 0.4,
+                     "reasoning_effort": "low"}, 60)
     if err:
         print(f"[chat] FAILED: {err}")
         return ""
