@@ -1,65 +1,75 @@
 #!/usr/bin/env python3
-"""Signal summary + Groq TTS probe. Prints real errors, never fakes output."""
-import os, json, urllib.request, urllib.error
+"""Signal summary + Groq Orpheus TTS. Real keys only, real errors surfaced."""
+import json, os, sys, urllib.request, urllib.error
+from pathlib import Path
 
-GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
-SIG_PATH = "web/latest_signal.json"
-OUT_JSON = "web/latest_signal_summary.json"
-OUT_WAV  = "web/latest_signal_summary.wav"
-DISCLAIMER = ("Not financial advice. Automated output for informational "
-              "purposes only. Do your own research.")
+ROOT = Path(__file__).resolve().parents[1]
+SIGNAL_FILE = ROOT / "web" / "latest_signal.json"
+SUMMARY_FILE = ROOT / "web" / "latest_signal_summary.json"
+AUDIO_DIR = ROOT / "web" / "generated_audio"
+AUDIO_FILE = AUDIO_DIR / "latest_signal_summary.wav"
+KEY = os.environ.get("GROQ_API_KEY", "")
+DISCLAIMER = "Not financial advice. Informational only. Do your own research."
+TTS_LIMIT = 200
 
-def groq_chat(prompt):
-    body = json.dumps({
-        "model": "openai/gpt-oss-120b",
-        "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 400, "temperature": 0.4,
-    }).encode()
+def post(url, payload, timeout):
     req = urllib.request.Request(
-        "https://api.groq.com/openai/v1/chat/completions", data=body,
-        headers={"Authorization": f"Bearer {GROQ_KEY}",
-                 "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)["choices"][0]["message"]["content"]
-
-def groq_tts(text, model, voice):
-    body = json.dumps({"model": model, "input": text,
-                       "voice": voice, "response_format": "wav"}).encode()
-    req = urllib.request.Request(
-        "https://api.groq.com/openai/v1/audio/speech", data=body,
-        headers={"Authorization": f"Bearer {GROQ_KEY}",
+        url, data=json.dumps(payload).encode(),
+        headers={"Authorization": f"Bearer {KEY}",
                  "Content-Type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=90) as r:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
             return r.read(), None
     except urllib.error.HTTPError as e:
-        return None, f"HTTP {e.code}: {e.read().decode('utf-8','replace')[:400]}"
+        return None, f"HTTP {e.code}: {e.read().decode('utf-8','replace')[:500]}"
     except Exception as e:
-        return None, str(e)
+        return None, f"{type(e).__name__}: {e}"
+
+def chat(prompt, max_tokens=400):
+    raw, err = post("https://api.groq.com/openai/v1/chat/completions",
+                    {"model": "openai/gpt-oss-120b",
+                     "messages": [{"role": "user", "content": prompt}],
+                     "max_tokens": max_tokens, "temperature": 0.4}, 60)
+    if err:
+        print(f"[chat] FAILED: {err}")
+        return ""
+    return json.loads(raw)["choices"][0]["message"]["content"].strip()
+
+def speak(text):
+    AUDIO_DIR.mkdir(parents=True, exist_ok=True)
+    raw, err = post("https://api.groq.com/openai/v1/audio/speech",
+                    {"model": "canopylabs/orpheus-v1-english",
+                     "input": text[:TTS_LIMIT], "voice": "autumn",
+                     "response_format": "wav"}, 90)
+    if err:
+        print(f"[tts] FAILED (no audio written): {err}")
+        return None, err
+    AUDIO_FILE.write_bytes(raw)
+    print(f"[tts] OK: {len(raw)} bytes -> {AUDIO_FILE}")
+    return str(AUDIO_FILE.relative_to(ROOT)), None
 
 def main():
-    if not GROQ_KEY:
-        raise SystemExit("GROQ_API_KEY not set")
-    with open(SIG_PATH) as f:
-        signal = json.load(f)
-    print("REAL SIGNAL KEYS:", list(signal.keys()))
-    summary = groq_chat(
-        "Write a 2-sentence plain-English summary of this trading signal, "
-        "then 3 short bullets. Use ONLY the values shown. Invent nothing.\n\n"
-        + json.dumps(signal, indent=2))
-    audio, err = groq_tts(
-        summary + " " + DISCLAIMER,
-        os.environ.get("TTS_MODEL", "canopylabs/orpheus-v1-english"),
-        os.environ.get("TTS_VOICE", "autumn"))
-    if audio:
-        with open(OUT_WAV, "wb") as f: f.write(audio)
-        print(f"TTS OK: {len(audio)} bytes -> {OUT_WAV}")
-    else:
-        print(f"TTS FAILED (no audio written): {err}")
-    with open(OUT_JSON, "w") as f:
-        json.dump({"summary": summary, "disclaimer": DISCLAIMER,
-                   "audio": OUT_WAV if audio else None,
-                   "tts_error": err, "signal": signal}, f, indent=2)
+    if not KEY:
+        sys.exit("GROQ_API_KEY not set")
+    if not SIGNAL_FILE.is_file():
+        sys.exit(f"{SIGNAL_FILE} not found")
+    signal = json.loads(SIGNAL_FILE.read_text())
+    print("SIGNAL KEYS:", list(signal.keys()))
+    base = ("Summarize this XRP signal in 2 sentences, then 3 short bullets. "
+            "Use ONLY the values shown. Invent nothing.\n\n"
+            + json.dumps(signal, indent=2))
+    summary = chat(base)
+    if not summary:
+        sys.exit("Summary generation failed; nothing written.")
+    spoken = chat("Compress to ONE spoken sentence under 130 characters, "
+                  "plain words, no markdown:\n\n" + summary, 120)
+    line = f"{spoken or summary[:120]} {DISCLAIMER}"[:TTS_LIMIT]
+    print(f"[tts] input ({len(line)} chars): {line}")
+    audio, tts_err = speak(line)
+    SUMMARY_FILE.write_text(json.dumps({
+        "summary": summary, "spoken_line": line, "disclaimer": DISCLAIMER,
+        "audio": audio, "tts_error": tts_err,
+        "source_signal": signal}, indent=2))
     print("Summary written")
 
 if __name__ == "__main__":
