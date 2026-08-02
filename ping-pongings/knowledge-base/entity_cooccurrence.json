@@ -3,7 +3,7 @@
     "xrp_entries": 267,
     "btc_entries": 84
   },
-  "unique_pairs_found": 283,
+  "unique_pairs_found": 290,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -346,6 +346,51 @@
         },
         {
           "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Mainnet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Stablecoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Mainnet",
+      "entity_b": "Stablecoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
           "asset": "BTC"
         }
       ]
@@ -1443,6 +1488,83 @@
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Mainnet",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Mainnet",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoin",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoin",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDC",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
           "asset": "XRP"
         }
       ]
@@ -3164,28 +3286,6 @@
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "Mainnet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "Stablecoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Ethereum Foundation",
       "entity_b": "Mainnet",
       "cooccurrence_count": 1,
@@ -3198,17 +3298,6 @@
     },
     {
       "entity_a": "Ethereum Foundation",
-      "entity_b": "Stablecoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Mainnet",
       "entity_b": "Stablecoin",
       "cooccurrence_count": 1,
       "example_headlines": [
