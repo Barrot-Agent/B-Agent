@@ -3,7 +3,7 @@
     "xrp_entries": 270,
     "btc_entries": 87
   },
-  "unique_pairs_found": 303,
+  "unique_pairs_found": 305,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -376,6 +376,21 @@
         },
         {
           "title": "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Lite Strategy",
+      "entity_b": "Litecoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
+          "asset": "XRP"
+        },
+        {
+          "title": "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
           "asset": "BTC"
         }
       ]
@@ -1503,6 +1518,28 @@
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Covered Calls",
+      "entity_b": "Lite Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Covered Calls",
+      "entity_b": "Litecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
           "asset": "XRP"
         }
       ]
@@ -3362,17 +3399,6 @@
       "example_headlines": [
         {
           "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Lite Strategy",
-      "entity_b": "Litecoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
           "asset": "BTC"
         }
       ]

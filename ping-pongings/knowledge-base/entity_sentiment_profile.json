@@ -3,7 +3,7 @@
     "xrp_entries": 270,
     "btc_entries": 87
   },
-  "unique_entities_profiled": 143,
+  "unique_entities_profiled": 144,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -393,6 +393,38 @@
       "example_headlines": [
         "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks",
         "Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks"
+      ]
+    },
+    {
+      "entity": "Lite Strategy",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
+      ]
+    },
+    {
+      "entity": "Litecoin",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
       ]
     },
     {
@@ -978,6 +1010,20 @@
       ],
       "example_headlines": [
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
+      ]
+    },
+    {
+      "entity": "Covered Calls",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
       ]
     },
     {
@@ -1986,34 +2032,6 @@
       ],
       "example_headlines": [
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
-      ]
-    },
-    {
-      "entity": "Lite Strategy",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
-      ]
-    },
-    {
-      "entity": "Litecoin",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
       ]
     },
     {
