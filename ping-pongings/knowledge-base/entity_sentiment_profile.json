@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 267,
-    "btc_entries": 83
+    "btc_entries": 84
   },
-  "unique_entities_profiled": 134,
+  "unique_entities_profiled": 137,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 7,
+      "bullish": 2,
+      "neutral": 5,
+      "bearish": 0,
+      "net_sentiment_score": 0.286,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 6,
       "bullish": 1,
@@ -103,23 +120,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
         "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 6,
-      "bullish": 2,
-      "neutral": 4,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -379,6 +379,38 @@
       ]
     },
     {
+      "entity": "Mainnet",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "Stablecoin",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 2,
       "bullish": 1,
@@ -439,6 +471,38 @@
       "example_headlines": [
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "ENS Labs",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
+      ]
+    },
+    {
+      "entity": "ENS DAO",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
       ]
     },
     {
@@ -916,6 +980,34 @@
       ]
     },
     {
+      "entity": "USDT",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "USDC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
       "entity": "AI",
       "total_mentions": 1,
       "bullish": 0,
@@ -941,6 +1033,20 @@
       ],
       "example_headlines": [
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "Ethereum Name Service",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
       ]
     },
     {
@@ -1840,34 +1946,6 @@
       ]
     },
     {
-      "entity": "Stablecoin",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
-      ]
-    },
-    {
-      "entity": "Mainnet",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
-      ]
-    },
-    {
       "entity": "EIP-1559",
       "total_mentions": 1,
       "bullish": 0,
@@ -1921,34 +1999,6 @@
       ],
       "example_headlines": [
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
-      ]
-    },
-    {
-      "entity": "ENS Labs",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
-      ]
-    },
-    {
-      "entity": "ENS DAO",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
       ]
     },
     {
