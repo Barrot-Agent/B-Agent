@@ -16,7 +16,11 @@ def post(url, payload, timeout):
     req = urllib.request.Request(
         url, data=json.dumps(payload).encode(),
         headers={"Authorization": f"Bearer {KEY}",
-                 "Content-Type": "application/json"})
+                 "Content-Type": "application/json",
+                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) "
+                               "AppleWebKit/537.36 (KHTML, like Gecko) "
+                               "Chrome/126.0.0.0 Safari/537.36",
+                 "Accept": "*/*"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return r.read(), None
