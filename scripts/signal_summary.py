@@ -38,7 +38,14 @@ def chat(prompt, max_tokens=400):
     if err:
         print(f"[chat] FAILED: {err}")
         return ""
-    return json.loads(raw)["choices"][0]["message"]["content"].strip()
+    msg = json.loads(raw)["choices"][0]["message"]
+    out = (msg.get("content") or "").strip()
+    if not out:
+        print(f"[chat] content empty; message keys: {list(msg.keys())}")
+        out = (msg.get("reasoning") or "").strip()
+        if out:
+            print("[chat] recovered from reasoning field")
+    return out
 
 def speak(text):
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
