@@ -1,0 +1,31 @@
+name: Barrot Self-Upgrade
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly, Sunday midnight
+
+jobs:
+  audit_and_upgrade:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      
+      - name: Barrot capability audit
+        run: python3 scripts/barrot_capability_audit.py
+      
+      - name: Barrot self-upgrade (if gaps exist)
+        run: python3 scripts/barrot_self_upgrade.py
+      
+      - name: Commit audit results
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add barrot_capability_audit.json
+          git diff --cached --quiet || git commit -m "Weekly capability audit: self-assessment complete [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
