@@ -3,15 +3,15 @@
     "xrp_entries": 268,
     "btc_entries": 84
   },
-  "unique_entities_profiled": 137,
+  "unique_entities_profiled": 140,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 54,
+      "total_mentions": 55,
       "bullish": 20,
       "neutral": 14,
-      "bearish": 20,
-      "net_sentiment_score": 0.0,
+      "bearish": 21,
+      "net_sentiment_score": -0.018,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -139,6 +139,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 4,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
+      ]
+    },
+    {
       "entity": "CoinDesk",
       "total_mentions": 4,
       "bullish": 3,
@@ -185,23 +202,6 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
       ]
     },
     {
@@ -1974,6 +1974,34 @@
       ]
     },
     {
+      "entity": "Lite Strategy",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
+      ]
+    },
+    {
+      "entity": "Litecoin",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
+      ]
+    },
+    {
       "entity": "DOGE",
       "total_mentions": 1,
       "bullish": 1,
@@ -2013,6 +2041,20 @@
       ],
       "example_headlines": [
         "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
+      ]
+    },
+    {
+      "entity": "Galaxy Research",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis"
       ]
     }
   ]

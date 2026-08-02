@@ -3,7 +3,7 @@
     "xrp_entries": 268,
     "btc_entries": 84
   },
-  "unique_pairs_found": 290,
+  "unique_pairs_found": 293,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -142,6 +142,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "US",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -242,21 +257,6 @@
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Coldcard",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-          "asset": "BTC"
         }
       ]
     },
@@ -3308,6 +3308,17 @@
       ]
     },
     {
+      "entity_a": "Lite Strategy",
+      "entity_b": "Litecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "AI infrastructure",
       "entity_b": "Cerebras Systems",
       "cooccurrence_count": 1,
@@ -3435,6 +3446,28 @@
       "example_headlines": [
         {
           "title": "ENS Labs Scales Back Treasury Proposal After Delegate Pushback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy Research",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Galaxy Research",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
           "asset": "BTC"
         }
       ]
