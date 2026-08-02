@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-02T16:53:10.324409+00:00",
-  "signal_text": "Recent BTC-relevant headlines: [bullish] Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years | [bearish] Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - | [bullish] Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury | [bullish] Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance | [bearish] Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magaz | [bullish] Bitcoin ETFs post $233M inflows, pushing week back into the green",
-  "score": 58,
-  "confidence": 0.85,
-  "source": "groq:bullish+news(23)",
+  "timestamp": "2026-08-02T17:54:01.660852+00:00",
+  "signal_text": "Recent BTC-relevant headlines: [bullish] Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury | [bullish] Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance | [bearish] Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magaz | [bullish] Bitcoin ETFs post $233M inflows, pushing week back into the green | [bearish] Bitcoin Price Forecast: BTC Risks Strong Drop Below $60K After Double Top - Yaho | [bullish] RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+  "score": 24,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(21)",
   "news_score": 47,
-  "news_entries": 23,
-  "generated_at_unix": 1785689590
+  "news_entries": 21,
+  "generated_at_unix": 1785693241
 }
