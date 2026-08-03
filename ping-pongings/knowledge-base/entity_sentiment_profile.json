@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 277,
-    "btc_entries": 96
+    "btc_entries": 97
   },
-  "unique_entities_profiled": 167,
+  "unique_entities_profiled": 171,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 62,
-      "bullish": 21,
+      "total_mentions": 63,
+      "bullish": 22,
       "neutral": 15,
       "bearish": 26,
-      "net_sentiment_score": -0.081,
+      "net_sentiment_score": -0.063,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 17,
-      "bullish": 5,
+      "total_mentions": 18,
+      "bullish": 6,
       "neutral": 3,
       "bearish": 9,
-      "net_sentiment_score": -0.235,
+      "net_sentiment_score": -0.167,
       "assets_seen_in": [
         "BTC"
       ],
@@ -222,6 +222,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 3,
       "bullish": 2,
@@ -345,22 +362,6 @@
       "example_headlines": [
         "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
         "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -866,6 +867,21 @@
       "example_headlines": [
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Bitcoin Critic Peter Schiff Tells Bulls to Buy BTC, Not MSTR - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "STRC",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy leaves preferred STRC dividend at 12% as price still below par"
       ]
     },
     {
@@ -1639,20 +1655,6 @@
       ],
       "example_headlines": [
         "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "STRC",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
       ]
     },
     {
@@ -2451,6 +2453,62 @@
       ],
       "example_headlines": [
         "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
+      ]
+    },
+    {
+      "entity": "10x Research",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
+      "entity": "U.S. Treasury",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
+      "entity": "American Bitcoin",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
+      ]
+    },
+    {
+      "entity": "Donald Trump",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
       ]
     }
   ]

@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 277,
-    "btc_entries": 96
+    "btc_entries": 97
   },
-  "unique_pairs_found": 368,
+  "unique_pairs_found": 376,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -991,6 +991,21 @@
         },
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
           "asset": "BTC"
         }
       ]
@@ -3293,17 +3308,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "PCE inflation",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -4321,6 +4325,94 @@
       "example_headlines": [
         {
           "title": "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "10x Research",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "10x Research",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "10x Research",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "American Bitcoin",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "American Bitcoin",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
           "asset": "BTC"
         }
       ]
