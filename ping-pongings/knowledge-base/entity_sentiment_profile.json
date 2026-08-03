@@ -1,7 +1,7 @@
 {
   "generated_from": {
-    "xrp_entries": 275,
-    "btc_entries": 93
+    "xrp_entries": 277,
+    "btc_entries": 96
   },
   "unique_entities_profiled": 167,
   "entities": [
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 29,
-      "bullish": 18,
+      "total_mentions": 30,
+      "bullish": 19,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.448,
+      "net_sentiment_score": 0.467,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 26,
-      "bullish": 16,
+      "total_mentions": 27,
+      "bullish": 17,
       "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.462,
+      "net_sentiment_score": 0.481,
       "assets_seen_in": [
         "XRP"
       ],
@@ -219,6 +219,22 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "CryptoPotato",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+        "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
       ]
     },
     {
@@ -552,21 +568,6 @@
       "example_headlines": [
         "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
-      ]
-    },
-    {
-      "entity": "CryptoPotato",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com"
       ]
     },
     {
