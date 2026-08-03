@@ -3,7 +3,7 @@
     "xrp_entries": 279,
     "btc_entries": 100
   },
-  "unique_entities_profiled": 171,
+  "unique_entities_profiled": 173,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 30,
-      "bullish": 19,
+      "total_mentions": 31,
+      "bullish": 20,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.467,
+      "net_sentiment_score": 0.484,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 27,
-      "bullish": 17,
+      "total_mentions": 28,
+      "bullish": 18,
       "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.481,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "XRP"
       ],
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 8,
+      "bullish": 3,
+      "neutral": 5,
+      "bearish": 0,
+      "net_sentiment_score": 0.375,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 7,
       "bullish": 1,
@@ -103,23 +120,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
         "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 7,
-      "bullish": 2,
-      "neutral": 5,
-      "bearish": 0,
-      "net_sentiment_score": 0.286,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
       ]
     },
     {
@@ -1431,6 +1431,34 @@
       ],
       "example_headlines": [
         "Ripple invests in Zilo and Licuido to assist tokenized capital markets push"
+      ]
+    },
+    {
+      "entity": "RLUSD",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
+      ]
+    },
+    {
+      "entity": "Decrypt",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
       ]
     },
     {

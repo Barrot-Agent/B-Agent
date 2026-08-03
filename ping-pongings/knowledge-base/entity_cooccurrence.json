@@ -3,12 +3,12 @@
     "xrp_entries": 279,
     "btc_entries": 100
   },
-  "unique_pairs_found": 376,
+  "unique_pairs_found": 384,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 26,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -227,6 +227,21 @@
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "asset": "BTC"
         }
       ]
     },
@@ -967,21 +982,6 @@
     },
     {
       "entity_a": "Dogecoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2543,6 +2543,94 @@
       "example_headlines": [
         {
           "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Decrypt",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Decrypt",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Decrypt",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Decrypt",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
           "asset": "XRP"
         }
       ]
