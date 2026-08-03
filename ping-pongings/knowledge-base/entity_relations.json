@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 89,
+  "total_classified": 104,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -802,6 +802,141 @@
       "relation_type": "correlated_unclear",
       "justification": "The headline shows CoinDesk reporting on Bitcoin's price movement that depends on the Fed, indicating they are mentioned together without a clear direct relationship.",
       "classified_at": "2026-07-30T04:42:48Z"
+    },
+    {
+      "pair_key": "Bitcoin|Coldcard",
+      "entity_a": "Bitcoin",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 5,
+      "relation_type": "causal",
+      "justification": "Both headlines describe Coldcard issuing security notices or warnings that directly affect Bitcoin wallet risk or loss, indicating Coldcard actions cause impacts on Bitcoin wallets.",
+      "classified_at": "2026-08-03T11:02:36Z"
+    },
+    {
+      "pair_key": "SBI Holdings|XRP",
+      "entity_a": "SBI Holdings",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "relation_type": "complementary",
+      "justification": "SBI values its Ripple stake, indicating an investment relationship with the XRP ecosystem.",
+      "classified_at": "2026-08-03T11:02:38Z"
+    },
+    {
+      "pair_key": "Ripple|SEC",
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 3,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines discuss buying XRP but do not mention the SEC, so the relationship between Ripple and the SEC cannot be determined from them.",
+      "classified_at": "2026-08-03T11:02:41Z"
+    },
+    {
+      "pair_key": "BTC|Bitcoin Foundation",
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 3,
+      "relation_type": "complementary",
+      "justification": "Both headlines are Bitcoin Foundation articles reporting on separate BTC-related issues, showing the foundation complements Bitcoin by providing coverage of its events.",
+      "classified_at": "2026-08-03T11:02:44Z"
+    },
+    {
+      "pair_key": "Bitcoin|Borrow",
+      "entity_a": "Bitcoin",
+      "entity_b": "Borrow",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines mention Bitcoin but do not contain any information about Borrow, so the relationship cannot be determined from them.",
+      "classified_at": "2026-08-03T11:02:47Z"
+    },
+    {
+      "pair_key": "Bitcoin|Granite Protocol",
+      "entity_a": "Bitcoin",
+      "entity_b": "Granite Protocol",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "The headline ties Granite Protocol's listing to Bitcoin DeFi activity, indicating they are part of the same ecosystem.",
+      "classified_at": "2026-08-03T11:02:49Z"
+    },
+    {
+      "pair_key": "Bitcoin|Stacks",
+      "entity_a": "Bitcoin",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "The headline states that Bitcoin DeFi is building on Stacks, indicating a complementary relationship.",
+      "classified_at": "2026-08-03T11:02:52Z"
+    },
+    {
+      "pair_key": "Borrow|Granite Protocol",
+      "entity_a": "Borrow",
+      "entity_b": "Granite Protocol",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines mention Granite Protocol but do not reference Borrow, so no clear relationship can be inferred.",
+      "classified_at": "2026-08-03T11:02:54Z"
+    },
+    {
+      "pair_key": "Borrow|Stacks",
+      "entity_a": "Borrow",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines mention Stacks but do not reference Borrow, so no clear relationship can be inferred.",
+      "classified_at": "2026-08-03T11:02:57Z"
+    },
+    {
+      "pair_key": "Granite Protocol|Stacks",
+      "entity_a": "Granite Protocol",
+      "entity_b": "Stacks",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "The headline states that Granite Protocol's listing shows Bitcoin DeFi is still building on Stacks, indicating that Granite Protocol operates within or supports the Stacks ecosystem.",
+      "classified_at": "2026-08-03T11:03:00Z"
+    },
+    {
+      "pair_key": "Lite Strategy|Litecoin",
+      "entity_a": "Lite Strategy",
+      "entity_b": "Litecoin",
+      "cooccurrence_count": 2,
+      "relation_type": "causal",
+      "justification": "The headline says Lite Strategy funds a buyback with Litecoin sales, indicating Litecoin sales cause the funding action.",
+      "classified_at": "2026-08-03T11:03:03Z"
+    },
+    {
+      "pair_key": "Ethereum|Mainnet",
+      "entity_a": "Ethereum",
+      "entity_b": "Mainnet",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "The headline discusses Ethereum's 11\u2011year milestone alongside cooler Mainnet fees, indicating both are addressed within the same news event.",
+      "classified_at": "2026-08-03T11:03:05Z"
+    },
+    {
+      "pair_key": "Ethereum|Stablecoin",
+      "entity_a": "Ethereum",
+      "entity_b": "Stablecoin",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "The headline ties Ethereum's milestone to its $148B stablecoin base, implying stablecoins operate on Ethereum and thus complement its ecosystem.",
+      "classified_at": "2026-08-03T11:03:08Z"
+    },
+    {
+      "pair_key": "Mainnet|Stablecoin",
+      "entity_a": "Mainnet",
+      "entity_b": "Stablecoin",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions a large stablecoin base and cooler mainnet fees together, but does not specify a direct causal, regulatory, competitive, complementary, or same-event relationship.",
+      "classified_at": "2026-08-03T11:03:10Z"
+    },
+    {
+      "pair_key": "JPYC|Kansai Electric Power",
+      "entity_a": "JPYC",
+      "entity_b": "Kansai Electric Power",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "The headline indicates Kansai Electric's rewards app is enabling JPYC stablecoin conversion, showing they work together to provide a complementary service.",
+      "classified_at": "2026-08-03T11:03:13Z"
     }
   ]
 }
