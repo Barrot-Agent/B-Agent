@@ -1,5 +1,5 @@
 {
-  "generated_from": "10 candidate ideas from webmcp_trend_summary.json",
+  "generated_from": "15 candidate ideas from webmcp_trend_summary.json",
   "enriched_candidates": [
     {
       "candidate_tool_idea": "Stateless WebMCP Client",
@@ -20,10 +20,10 @@
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
           },
           {
-            "name": "@mcp-b/webmcp-types",
-            "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
+            "name": "@mcp-b/react-webmcp",
+            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot with Zod validation",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+            "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
           }
         ]
       },
@@ -42,13 +42,13 @@
           },
           {
             "name": "Sfedfcv/redesigned-pancake",
-            "stars": 251,
+            "stars": 254,
             "forks": 0,
             "url": "https://github.com/Sfedfcv/redesigned-pancake"
           },
           {
             "name": "jettbrains/-L-",
-            "stars": 151,
+            "stars": 152,
             "forks": 46,
             "url": "https://github.com/jettbrains/-L-"
           }
@@ -83,20 +83,20 @@
         "github": [
           {
             "name": "microsoft/azuredatastudio",
-            "stars": 7689,
-            "forks": 993,
+            "stars": 7688,
+            "forks": 994,
             "url": "https://github.com/microsoft/azuredatastudio"
           },
           {
             "name": "GameServerManagers/LinuxGSM",
-            "stars": 4873,
+            "stars": 4875,
             "forks": 863,
             "url": "https://github.com/GameServerManagers/LinuxGSM"
           },
           {
             "name": "vitodeploy/vito",
-            "stars": 3179,
-            "forks": 410,
+            "stars": 3180,
+            "forks": 411,
             "url": "https://github.com/vitodeploy/vito"
           }
         ],
@@ -130,8 +130,8 @@
         "github": [
           {
             "name": "nanobrowser/nanobrowser",
-            "stars": 13510,
-            "forks": 1418,
+            "stars": 13516,
+            "forks": 1421,
             "url": "https://github.com/nanobrowser/nanobrowser"
           },
           {
@@ -177,7 +177,7 @@
         "github": [
           {
             "name": "RobotecAI/rai",
-            "stars": 559,
+            "stars": 564,
             "forks": 73,
             "url": "https://github.com/RobotecAI/rai"
           },
@@ -202,16 +202,16 @@
             "url": "https://www.npmjs.com/package/@twilio/voice-sdk"
           },
           {
-            "name": "@openai/agents",
-            "description": "The OpenAI Agents SDK is a lightweight yet powerful framework for building multi-agent workflows.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@openai/agents"
-          },
-          {
             "name": "@discordjs/voice",
             "description": "Implementation of the Discord Voice API for Node.js",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@discordjs/voice"
+          },
+          {
+            "name": "react-voice-visualizer",
+            "description": "React library for audio recording and visualization using Web Audio API",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/react-voice-visualizer"
           }
         ]
       },
@@ -243,16 +243,16 @@
         ],
         "npm": [
           {
-            "name": "@mastra/core",
-            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mastra/core"
-          },
-          {
             "name": "@vercel/detect-agent",
             "description": "Detect if code is running in an AI agent or automated development environment",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@vercel/detect-agent"
+          },
+          {
+            "name": "@mastra/core",
+            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mastra/core"
           },
           {
             "name": "@agentclientprotocol/sdk",
@@ -296,16 +296,16 @@
             "url": "https://www.npmjs.com/package/p-queue"
           },
           {
-            "name": "agenda",
-            "description": "Light weight job scheduler for Node.js",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/agenda"
-          },
-          {
             "name": "node-schedule",
             "description": "A cron-like and not-cron-like job scheduler for Node.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/node-schedule"
+          },
+          {
+            "name": "agenda",
+            "description": "Light weight job scheduler for Node.js",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/agenda"
           }
         ]
       },
@@ -318,7 +318,7 @@
         "github": [
           {
             "name": "diegorafs/Chrome-DevTools-MCP",
-            "stars": 36,
+            "stars": 37,
             "forks": 5,
             "url": "https://github.com/diegorafs/Chrome-DevTools-MCP"
           },
@@ -365,21 +365,21 @@
         "github": [
           {
             "name": "jettbrains/-L-",
-            "stars": 151,
+            "stars": 152,
             "forks": 46,
             "url": "https://github.com/jettbrains/-L-"
+          },
+          {
+            "name": "VAIXLNS/VAIXLNS",
+            "stars": 2,
+            "forks": 0,
+            "url": "https://github.com/VAIXLNS/VAIXLNS"
           },
           {
             "name": "jacksonjp0311-gif/Agentic-Fractal-Swarm-AGNT-Plugin",
             "stars": 1,
             "forks": 0,
             "url": "https://github.com/jacksonjp0311-gif/Agentic-Fractal-Swarm-AGNT-Plugin"
-          },
-          {
-            "name": "marioisbeck/quillAgent",
-            "stars": 1,
-            "forks": 0,
-            "url": "https://github.com/marioisbeck/quillAgent"
           }
         ],
         "npm": [
@@ -390,16 +390,16 @@
             "url": "https://www.npmjs.com/package/agentic-flow"
           },
           {
-            "name": "@raishin/vanguard-frontier-agentic",
-            "description": "Cloud and zero-trust agentic workflow marketplace for skills, agents, rules, MCP references, and compliance-aware architecture.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@raishin/vanguard-frontier-agentic"
-          },
-          {
             "name": "@svayam-opensource/prj",
             "description": "Governed Agentic Development Framework CLI (prj). A bash CLI wrapped for npm; operates on a governance workspace resolved via $ADF_WORKSPACE or the nearest org-config.yaml. Runtime prerequisites (not npm deps): bash, git, gh, yq, python3 (use Git Bash on ",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@svayam-opensource/prj"
+          },
+          {
+            "name": "@playwright/mcp",
+            "description": "Playwright Tools for MCP",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@playwright/mcp"
           }
         ]
       },
@@ -418,13 +418,13 @@
           },
           {
             "name": "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
-            "stars": 296,
-            "forks": 89,
+            "stars": 297,
+            "forks": 91,
             "url": "https://github.com/chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020"
           },
           {
             "name": "jettbrains/-L-",
-            "stars": 151,
+            "stars": 152,
             "forks": 46,
             "url": "https://github.com/jettbrains/-L-"
           }
@@ -447,6 +447,165 @@
             "description": "Schema validation for the mutation server protocol (MSP).",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/mutation-server-protocol"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "WebMCP integration layer for AI agents",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@mastra/core",
+            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mastra/core"
+          },
+          {
+            "name": "@mcp-b/webmcp-ts-sdk",
+            "description": "Browser-adapted MCP TypeScript SDK - Dynamic tool registration for W3C Web Model Context API and AI agent integration",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
+          },
+          {
+            "name": "@mcp-b/react-webmcp",
+            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot with Zod validation",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "MCP exposure scanner",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "SyedAnas01/mcp-safeguard",
+            "stars": 5,
+            "forks": 4,
+            "url": "https://github.com/SyedAnas01/mcp-safeguard"
+          },
+          {
+            "name": "adudley78/mcp-audit",
+            "stars": 2,
+            "forks": 1,
+            "url": "https://github.com/adudley78/mcp-audit"
+          },
+          {
+            "name": "34t34f3/defi-yield-scanner-mcp",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/34t34f3/defi-yield-scanner-mcp"
+          }
+        ],
+        "npm": [
+          {
+            "name": "jsonc-parser",
+            "description": "Scanner and parser for JSON with comments.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/jsonc-parser"
+          },
+          {
+            "name": "sonarqube-scanner",
+            "description": "SonarQube/SonarCloud Scanner for the JavaScript world",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/sonarqube-scanner"
+          },
+          {
+            "name": "@yudiel/react-qr-scanner",
+            "description": "A library to scan QR codes in React.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@yudiel/react-qr-scanner"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "MCP-enabled context retrieval tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@playwright/mcp",
+            "description": "Playwright Tools for MCP",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@playwright/mcp"
+          },
+          {
+            "name": "chrome-devtools-mcp",
+            "description": "MCP server for Chrome DevTools",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/chrome-devtools-mcp"
+          },
+          {
+            "name": "@21st-dev/magic",
+            "description": "Magic MCP is now the 21st MCP. This package is a compatibility proxy kept for old configs - new setups should use `npx @21st-dev/cli@latest init`. Setup: https://21st.dev/mcp",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@21st-dev/magic"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "WebMCP integration connector for AI agents",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@mcp-b/webmcp-ts-sdk",
+            "description": "Browser-adapted MCP TypeScript SDK - Dynamic tool registration for W3C Web Model Context API and AI agent integration",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
+          },
+          {
+            "name": "@mcp-b/react-webmcp",
+            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot with Zod validation",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
+          },
+          {
+            "name": "@mcp-b/global",
+            "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/global"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Human\u2011Verified Knowledge Injection Tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "llm-wiki-governance",
+            "description": "Governance for AI-written project docs: verify, catch drift, keep them code-grounded, enforce in CI. OKF-compatible, zero-dependency.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/llm-wiki-governance"
+          },
+          {
+            "name": "human-signals",
+            "description": "Human-friendly process signals",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/human-signals"
+          },
+          {
+            "name": "@einride/csp-evaluator-cli",
+            "description": "A command line tool to validate Content-Security-Policy rules",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@einride/csp-evaluator-cli"
           }
         ]
       },
