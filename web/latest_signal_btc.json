@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-03T09:51:53.158009+00:00",
-  "signal_text": "Recent BTC-relevant headlines: [bearish] Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin F | [bullish] Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks | [bearish] Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus | [bearish] Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound | [neutral] Current price of Bitcoin for July 31, 2026 - Fortune | [neutral] Current price of Bitcoin for July 30, 2026 - Fortune",
-  "score": 48,
-  "confidence": 0.86,
-  "source": "groq:bearish+news(20)",
-  "news_score": 28,
+  "timestamp": "2026-08-03T11:44:19.691432+00:00",
+  "signal_text": "Recent BTC-relevant headlines: [bullish] Granite Protocol Listing Shows Bitcoin DeFi Is Still Building On Stacks | [bearish] Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus | [bearish] Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound | [neutral] Current price of Bitcoin for July 31, 2026 - Fortune | [neutral] Current price of Bitcoin for July 30, 2026 - Fortune | [bearish] Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+  "score": 18,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(20)",
+  "news_score": 35,
   "news_entries": 20,
-  "generated_at_unix": 1785750713
+  "generated_at_unix": 1785757459
 }
