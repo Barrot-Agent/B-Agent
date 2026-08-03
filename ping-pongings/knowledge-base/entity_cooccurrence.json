@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 274,
-    "btc_entries": 92
+    "xrp_entries": 275,
+    "btc_entries": 93
   },
-  "unique_pairs_found": 360,
+  "unique_pairs_found": 368,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 23,
+      "cooccurrence_count": 24,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -2478,6 +2478,61 @@
       ]
     },
     {
+      "entity_a": "Licuido",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Licuido",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Licuido",
+      "entity_b": "Zilo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Zilo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "Zilo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BitMEX",
       "entity_b": "Fidelity",
       "cooccurrence_count": 1,
@@ -4233,6 +4288,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "US Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
           "asset": "BTC"
         }
       ]
