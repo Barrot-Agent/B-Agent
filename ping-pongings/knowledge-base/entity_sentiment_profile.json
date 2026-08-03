@@ -3,15 +3,15 @@
     "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_entities_profiled": 157,
+  "unique_entities_profiled": 158,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 58,
+      "total_mentions": 60,
       "bullish": 20,
-      "neutral": 14,
-      "bearish": 24,
-      "net_sentiment_score": -0.069,
+      "neutral": 15,
+      "bearish": 25,
+      "net_sentiment_score": -0.083,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 16,
+      "total_mentions": 17,
       "bullish": 5,
-      "neutral": 2,
+      "neutral": 3,
       "bearish": 9,
-      "net_sentiment_score": -0.25,
+      "net_sentiment_score": -0.235,
       "assets_seen_in": [
         "BTC"
       ],
@@ -345,6 +345,22 @@
       "example_headlines": [
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St."
       ]
     },
     {
@@ -986,20 +1002,6 @@
       ],
       "example_headlines": [
         "Why XRP remains pressured despite Ripple Mint launch - FXStreet"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St."
       ]
     },
     {
@@ -2302,6 +2304,20 @@
       ],
       "example_headlines": [
         "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
+      ]
+    },
+    {
+      "entity": "Yahoo! Finance Canada",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin May Finally Crash Below $60K As August Curse Kicks In - Yahoo! Finance Canada"
       ]
     }
   ]

@@ -3,7 +3,7 @@
     "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_pairs_found": 343,
+  "unique_pairs_found": 346,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -4034,6 +4034,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin Capitulation Has Barely Started, Analyst Says - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo! Finance Canada",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin May Finally Crash Below $60K As August Curse Kicks In - Yahoo! Finance Canada",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
           "asset": "BTC"
         }
       ]
