@@ -1,12 +1,12 @@
 # 🦜 Barrot Agent Dashboard
 
-**Intelligent Automation Platform with Multi-Modal Capabilities**
+**Intelligent Automation Platform with Multi-Modal Capabilities, shared write access, and an official Spark backend pillar**
 
 ---
 
 ## 🎯 Overview
 
-The Barrot Agent Dashboard is the main interface for the Barrot intelligent automation system. This platform provides a comprehensive suite of tools and capabilities for data mastery, development, audio production, blockchain integration, and more.
+The Barrot Agent Dashboard is the main interface for the Barrot intelligent automation system. This platform provides a comprehensive suite of tools and capabilities for data mastery, development, audio production, blockchain integration, synchronized Barrot write access, and Spark-backed backend orchestration.
 
 ## ✨ Features
 
@@ -28,6 +28,7 @@ The Barrot Agent Dashboard is the main interface for the Barrot intelligent auto
 - **Run & Debug** - Execute and troubleshoot code
 - **Code Formatting** - Auto-format with Barrot standards
 - **Deployment** - Deploy to Chameleon Chain and other platforms
+- **Shared Workspace Sync** - Pull search-engine drafts into the dashboard and persist them locally
 
 #### 🎵 Digital Audio Workstation (DAW)
 - **Multi-Track Recording** - Professional audio production capabilities
@@ -52,6 +53,12 @@ The Barrot Agent Dashboard is the main interface for the Barrot intelligent auto
 - **Transaction Processing** - High-speed transaction handling
 - **Network Monitoring** - Real-time network statistics
 - **Consensus Mechanism** - Advanced consensus protocols
+
+#### ⚡ Spark Backend Pillar
+- **Official Compute Layer** - Treat Spark as a first-class backend pillar
+- **Search Refinement Pipelines** - Support indexing, telemetry, and search optimization jobs
+- **Dashboard Orchestration** - Feed backend jobs and analytics into the agent dashboard
+- **Databricks Alignment** - Keep Spark execution aligned with Barrot backend workflows
 
 #### 📈 Operations Dashboard
 - **Performance Metrics** - Real-time monitoring of all systems
@@ -103,17 +110,19 @@ The dashboard uses a tab-based navigation system:
 - Web3
 - NFT Marketplace
 - Chameleon Chain
+- Spark Backend
 - Operations
 
 ## 🔄 Relationship with Search Engine
 
 The Barrot Agent Dashboard is a **separate system** from the Search Engine:
 
-- **Barrot Agent Dashboard** (`/site/`) - This comprehensive platform with utilities and tools
-- **Search Engine** (`/search-engine/`) - Dedicated search functionality
+- **Barrot Agent Dashboard** (`/site/`) - This comprehensive platform with utilities, tools, and backend orchestration
+- **Search Engine** (`/search-engine/`) - Dedicated search functionality with a synchronized write workspace
 
 Navigate between systems:
 - From Dashboard → [Search Engine](../search-engine/index.html)
+- From Dashboard → [Spark Backend Pillar](./index.html#spark)
 
 **Note:** This relative path works for the standard repository structure. If deploying systems independently, update the navigation links accordingly.
 
