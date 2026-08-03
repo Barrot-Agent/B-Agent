@@ -1,10 +1,12 @@
 {
   "generated_from": {
-    "total_entries": 10,
-    "distilled_entries": 10
+    "total_entries": 19,
+    "distilled_entries": 15
   },
   "claim_type_breakdown": {
-    "product_announcement": 10
+    "product_announcement": 13,
+    "opinion_or_hype": 1,
+    "proposed_spec_change": 1
   },
   "ranked_candidate_tool_ideas": [
     {
@@ -124,6 +126,66 @@
           "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNc0d1Q2hlaTVaVV82THNreGlkam5RbnRXdzZESGh5eVJfT1BITDY2N1RQNVJnanNqSU81dWRTbTVBM2Rfa1NpZ0dtMzRYNXlMY2txN09hVlBBWG5ZY0NjeXJqcXNfUkM3N2RNaHcxYVQyRmdldTdPWm9LejNDZG9oT2VETkQ?oc=5",
           "claim_type": "product_announcement",
           "concrete_claim": "Model Context Protocol has received a major upgrade for scaling"
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "WebMCP integration layer for AI agents",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Google Gets It Right: Introducing WebMCP, the New Standard for AI-Agent Website Interactions - quasa",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNblJZYVlUSVh5VTg2TEVCRE5FYUhvSmotb3I4M1VpMU1GbDZsUTJPamdTWVhHeXlVejhfbHhUMmMwb1hJTmlTWWI2VzZBakU4MGUweTFualZsV01KNmxUZU5IME82STAyaUs2TU1jVVBRYzFBVUROQ3MwbVRmZWVvS0pXd25WRFpFdThLVWxiV3F1NW9paGVaaXVqM2UtVFhZUHJjRTB3dy1xTS1WWWxSRVotSQ?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Google announced WebMCP as a new standard for AI-agent website interactions."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "MCP exposure scanner",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "The Security Risks Hiding Behind Exposed MCP Servers - wiz.io",
+          "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5yUk16dFd3TVpIVTE4NFVva3U3ZURDbGxyYjgtSk5vWC1HOWNIVWF6dUFwRkhCN25lQ1BqMG5VeVZ4b0pJblBsZ0FIOWJFQzg5bTlZZHVrcjdnSzlVbGlCWVZvVE5tSXFjMjFhQTE2WWo0MTJz?oc=5",
+          "claim_type": "opinion_or_hype",
+          "concrete_claim": "Exposed MCP servers pose significant security risks."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "MCP-enabled context retrieval tool",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Terms of engagement: Model context protocol - Research Live",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQUDFPeDNVVFRyWUlLdEVBakkwd25EWC11ek93YTkzbjRMd1hvcHY4OEdMSWpPdzhWNGZFRTN1NFV6ZmhhR2Q5WmxTdHZwei1pZmFjd016V01HdUNWMHZ0ZVJuMnVzLTJjZXlvSVk3UWF0dlNtbzZlQjZ2Y3FYOC1FQVJrVFdrSTJhZ0dONVhYd0J5N2gwcGpVdUJKTVRmS3g3Zmc?oc=5",
+          "claim_type": "proposed_spec_change",
+          "concrete_claim": "The article proposes a Model Context Protocol (MCP) that standardizes how AI agents can request and receive structured context from websites via a defined API."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "WebMCP integration connector for AI agents",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Model Context Protocol releases major update to AI interaction technology - SC Media",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONER3Sm9KT3BaMTFmUDZkY1dER2cyNjNkREl3MG9jWVBLamVhcjJhZDM5bExQbkJFMWJOMFhWUGRJVFp4SjdPcVYza1ByTTZLaWtDUmkwcWNUMzVfaEMtYmI0N0xYM0pQVXNkM3RrLVVuNWtLb0Jna1ZCNjZlZk1vblBGZmhYZWZmb1ZvbW5lTUx3QmJpWHgyeG1HTmw2WXB2VEVlWnlR?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Model Context Protocol has released a major update to its AI interaction technology."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "Human\u2011Verified Knowledge Injection Tool",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Industrial Info Resources Launches IIR Envoy MCP, Bringing Human-Verified Industrial Intelligence Di",
+          "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxNZmFuWWo4OUw4OHFDMkhQMkpheElGZ3E2Nzc2U2F4TTFDdzVOTFctNVJmTnpsVjFSU0M1MW03SG9idDVxMjZwcDRIcDlpVnI2aGRzb2NQbkVmMzBUWWFNLU9TMW94bDRQZHVlWDVNdnBKUmhRZE4xRU1HQzlXdlh1emJURWEwTjFid2t2azBZbEFxdlVmNlNnaTUwVXBSclJwYmVHbmVQN3JjN01NdkJqdmlsNHNFZXZyNjlQOWxMelZURjY1cWpGVWtTRjlpSHdIbGQtRGFqUEw0NUJrMEdBekhHaWp3R0xLSm5TN3FsNFdWbkg4cWtod3pub3NZVXNRLUNNcVREd2RsQy16TjJQdnZGblBTbmFidXFpeXM1OFhTYmdEeVNTTg?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Industrial Info Resources launched IIR Envoy MCP, a tool that injects human\u2011verified industrial intelligence directly into AI via a Model Context Protocol."
         }
       ]
     }
