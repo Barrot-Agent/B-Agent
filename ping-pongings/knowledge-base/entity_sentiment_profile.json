@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 271,
+    "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_entities_profiled": 146,
+  "unique_entities_profiled": 155,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 56,
+      "total_mentions": 57,
       "bullish": 20,
       "neutral": 14,
-      "bearish": 22,
-      "net_sentiment_score": -0.036,
+      "bearish": 23,
+      "net_sentiment_score": -0.053,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 27,
-      "bullish": 16,
+      "total_mentions": 28,
+      "bullish": 17,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.407,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 23,
-      "bullish": 13,
+      "total_mentions": 24,
+      "bullish": 14,
       "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.391,
+      "net_sentiment_score": 0.417,
       "assets_seen_in": [
         "XRP"
       ],
@@ -139,6 +139,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 5,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "CoinDesk",
       "total_mentions": 5,
       "bullish": 3,
@@ -153,23 +170,6 @@
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
         "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
         "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 4,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus"
       ]
     },
     {
@@ -457,6 +457,21 @@
       "example_headlines": [
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "Japan",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
       ]
     },
     {
@@ -1070,6 +1085,62 @@
       ]
     },
     {
+      "entity": "Kansai Electric Power",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
+      ]
+    },
+    {
+      "entity": "JPYC",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
+      ]
+    },
+    {
+      "entity": "Polygon",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
+      ]
+    },
+    {
+      "entity": "Kansai Electric Rewards",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
+      ]
+    },
+    {
       "entity": "AI",
       "total_mentions": 1,
       "bullish": 0,
@@ -1154,20 +1225,6 @@
       ]
     },
     {
-      "entity": "Japan",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
-      ]
-    },
-    {
       "entity": "SBI Ripple Asia",
       "total_mentions": 1,
       "bullish": 1,
@@ -1249,6 +1306,34 @@
       ],
       "example_headlines": [
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "TheStreet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com"
+      ]
+    },
+    {
+      "entity": "Crypto analyst",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com"
       ]
     },
     {
@@ -1921,6 +2006,48 @@
       ],
       "example_headlines": [
         "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury"
+      ]
+    },
+    {
+      "entity": "Coinkite",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain"
+      ]
+    },
+    {
+      "entity": "Mk3",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain"
+      ]
+    },
+    {
+      "entity": "$38M wallet",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain"
       ]
     },
     {

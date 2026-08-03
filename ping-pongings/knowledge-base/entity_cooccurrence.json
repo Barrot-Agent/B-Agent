@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 271,
+    "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_pairs_found": 312,
+  "unique_pairs_found": 336,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 22,
+      "cooccurrence_count": 23,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -62,6 +62,21 @@
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
         }
       ]
     },
@@ -152,21 +167,6 @@
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Coldcard",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-          "asset": "BTC"
         }
       ]
     },
@@ -1652,6 +1652,116 @@
       ]
     },
     {
+      "entity_a": "JPYC",
+      "entity_b": "Japan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "JPYC",
+      "entity_b": "Kansai Electric Power",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "JPYC",
+      "entity_b": "Kansai Electric Rewards",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "JPYC",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "Kansai Electric Power",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "Kansai Electric Rewards",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kansai Electric Power",
+      "entity_b": "Kansai Electric Rewards",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kansai Electric Power",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kansai Electric Rewards",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "AI",
       "entity_b": "Cerebras Systems",
       "cooccurrence_count": 1,
@@ -2197,6 +2307,61 @@
       "example_headlines": [
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto analyst",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto analyst",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto analyst",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TheStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
           "asset": "XRP"
         }
       ]
@@ -3176,6 +3341,105 @@
       "example_headlines": [
         {
           "title": "Bhutan\u2019s Gelephu taps 3iQ to manage part of Bitcoin treasury",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "$38M wallet",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "$38M wallet",
+      "entity_b": "Coinkite",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "$38M wallet",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "$38M wallet",
+      "entity_b": "Mk3",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Coinkite",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Mk3",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinkite",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinkite",
+      "entity_b": "Mk3",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Mk3",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
           "asset": "BTC"
         }
       ]
