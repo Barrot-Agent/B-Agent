@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-03T22:53:34.231306+00:00",
+  "timestamp": "2026-08-03T23:55:16.693364+00:00",
   "signal_text": "Recent BTC-relevant headlines: [neutral] Current price of Bitcoin for July 30, 2026 - Fortune | [bearish] Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis | [bearish] Bitcoin slides on the final day of July while equities boom - CoinDesk | [bearish] Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant | [bearish] Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC | [bearish] Bitcoin Capitulation Has Barely Started, Analyst Says - Bitcoin Foundation",
-  "score": 18,
-  "confidence": 0.0,
-  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(12)",
+  "score": 28,
+  "confidence": 0.95,
+  "source": "groq:bearish+news(12)",
   "news_score": 36,
   "news_entries": 12,
-  "generated_at_unix": 1785797614
+  "generated_at_unix": 1785801316
 }
