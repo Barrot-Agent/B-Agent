@@ -18,7 +18,7 @@ jobs:
       MAX_FILES: 25
       MAX_LINES: 1500
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Evaluate and merge
         run: |
@@ -42,6 +42,7 @@ jobs:
             echo "  files=$NFILES lines=$NLINES approved=${APPROVED:+yes}"
 
             REASONS=""
+            TIER="LOW"
 
             FAILED=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select(.conclusion=="FAILURE" or .conclusion=="CANCELLED" or .conclusion=="TIMED_OUT")] | length')
             PENDING=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select(.status=="IN_PROGRESS" or .status=="QUEUED")] | length')
@@ -49,29 +50,41 @@ jobs:
             [ "$PENDING" -gt 0 ] && REASONS="$REASONS\n- CI still running ($PENDING)"
 
             DIFF=$(gh pr diff "$PR" --repo "$REPO" 2>/dev/null | grep '^+' || true)
-            HITS=$(echo "$DIFF" | grep -EiO "$BANNED" | sort -u | tr '\n' ' ')
-            [ -n "$HITS" ] && REASONS="$REASONS\n- Fiction vocabulary in diff: $HITS"
+            HITS=$(echo "$DIFF" | grep -Eio "$BANNED" | sort -u | tr '\n' ' ')
+            [ -n "$HITS" ] && { REASONS="$REASONS\n- Fiction vocabulary in diff: $HITS"; TIER="HIGH"; }
 
             TOUCHED=$(echo "$FILES" | grep -E "$PROTECTED" | tr '\n' ' ')
-            if [ -n "$TOUCHED" ] && [ -z "$APPROVED" ]; then
-              REASONS="$REASONS\n- Touches protected paths (needs 'approved' label): $TOUCHED"
+            if [ -n "$TOUCHED" ]; then
+              PROTECTED_DELETIONS=$(echo "$INFO" | jq -r --arg re "$PROTECTED" '[.files[] | select(.path | test($re)) | select(.deletions > 0)] | length')
+              if [ "$PROTECTED_DELETIONS" -gt 0 ]; then
+                TIER="HIGH"
+                if [ -z "$APPROVED" ]; then
+                  REASONS="$REASONS\n- HIGH RISK: modifies/deletes existing lines in protected paths (needs 'approved' label): $TOUCHED"
+                fi
+              else
+                TIER="MEDIUM"
+                echo "  Protected paths touched but PURE ADDITIONS ONLY (no deletions) -> tier MEDIUM, no approval required: $TOUCHED"
+              fi
             fi
 
             if [ -z "$APPROVED" ]; then
-              [ "$NFILES" -gt "$MAX_FILES" ] && REASONS="$REASONS\n- Too many files ($NFILES > $MAX_FILES); needs 'approved' label"
-              [ "$NLINES" -gt "$MAX_LINES" ] && REASONS="$REASONS\n- Too many lines ($NLINES > $MAX_LINES); needs 'approved' label"
+              [ "$NFILES" -gt "$MAX_FILES" ] && { REASONS="$REASONS\n- Too many files ($NFILES > $MAX_FILES); needs 'approved' label"; TIER="HIGH"; }
+              [ "$NLINES" -gt "$MAX_LINES" ] && { REASONS="$REASONS\n- Too many lines ($NLINES > $MAX_LINES); needs 'approved' label"; TIER="HIGH"; }
             fi
+
+            echo "  Risk tier: $TIER"
 
             if [ -n "$REASONS" ]; then
               echo "  BLOCKED:$(printf "$REASONS")"
               MARKER="<!-- barrot-gated-merge -->"
               HAS=$(gh pr view "$PR" --repo "$REPO" --json comments --jq "[.comments[] | select(.body | contains(\"$MARKER\"))] | length")
               if [ "$HAS" = "0" ]; then
-                gh pr comment "$PR" --repo "$REPO" --body "$(printf "%s\n**Barrot Gated Merge — held back**\n%s\n\n_Apply the \`approved\` label to override path/size gates. CI and content gates cannot be overridden._" "$MARKER" "$(printf "$REASONS")")" >/dev/null 2>&1
+                gh pr comment "$PR" --repo "$REPO" --body "$(printf "%s\n**Barrot Gated Merge — held back (tier: %s)**\n%s\n\n_Apply the \`approved\` label to override path/size gates. CI and content gates cannot be overridden._" "$MARKER" "$TIER" "$(printf "$REASONS")")" >/dev/null 2>&1
               fi
               continue
             fi
 
-            echo "  All gates passed. Merging."
+            echo "  All gates passed (tier: $TIER). Merging."
             gh pr merge "$PR" --repo "$REPO" --squash 2>&1 || echo "  merge failed (will retry next cycle)"
           done
+

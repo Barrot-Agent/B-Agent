@@ -1,0 +1,23 @@
+name: Research Topics
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/research_topics.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      - run: |
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@barrot-agent.com"
+          git add ping-pongings/knowledge-base/topics_log.jsonl
+          git commit -m "Topic research batch" || echo "nothing to commit"
+          git pull --rebase origin main
+          git push

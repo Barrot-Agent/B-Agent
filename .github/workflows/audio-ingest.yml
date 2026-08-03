@@ -1,0 +1,40 @@
+name: Audio Ingest
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: Comma-separated video/podcast URLs
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      AUDIO_URLS: ${{ inputs.urls }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Install yt-dlp + ffmpeg + deno
+        run: |
+          pip install -q yt-dlp
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          curl -fsSL https://deno.land/install.sh | sh -s -- -y
+          echo "$HOME/.deno/bin" >> $GITHUB_PATH
+      - name: Ingest audio
+        run: python3 scripts/audio_ingest.py
+      - name: Distill new entries
+        run: python3 scripts/knowledge_distill.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json
+          git diff --cached --quiet || git commit -m "Audio ingestion cycle [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

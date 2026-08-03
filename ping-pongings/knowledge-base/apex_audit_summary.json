@@ -1,0 +1,20 @@
+{
+  "note": "Real static-analysis audit of this repo's own codebase, run by Barrot's apex_lattice pipeline. No PRs are opened by this process - findings_count/recommendations_count are counts only, not the full detail.",
+  "latest_cycle": {
+    "cycle_id": "cycle_fc62463a",
+    "completed_at": "2026-07-28T11:28:02.546480+00:00",
+    "analyzers_run": [
+      "apex_lattice.analyzers.code_analyzer",
+      "apex_lattice.analyzers.performance_analyzer",
+      "apex_lattice.analyzers.security_analyzer",
+      "apex_lattice.analyzers.dependency_analyzer",
+      "apex_lattice.analyzers.architecture_analyzer",
+      "apex_lattice.analyzers.capability_analyzer",
+      "apex_lattice.analyzers.reverse_engineering_analyzer",
+      "apex_lattice.analyzers.test_quality_analyzer",
+      "apex_lattice.analyzers.scope_creep_analyzer"
+    ],
+    "findings_count": 2192,
+    "recommendations_count": 9
+  }
+}

@@ -72,6 +72,7 @@ footer strong{color:var(--text)}
   .state:hover .val{transform:translateY(-3px)}
 }
 </style>
+  <script src="webmcp_monetization.js"></script>
 </head>
 <body>
 <header>
@@ -160,5 +161,252 @@ footer strong{color:var(--text)}
     © 2026 Barrot-Ω · <a href="article.html" style="color:var(--dim)">Read the XRP analysis</a>
   </div>
 </footer>
-</body>
-</html>
+<section id="research-basis">
+  <h2>Research Basis</h2>
+  <p>
+    This service isn't built on hunches. The two ideas behind it — that cross-border
+    settlement efficiency matters, and that news/sentiment signals carry real predictive
+    information — are both active areas of peer-reviewed academic research.
+  </p>
+
+  <h3>Settlement efficiency</h3>
+  <p>
+    Academic case studies comparing blockchain-based settlement models (including Ripple's)
+    against traditional cross-border payment rails have found measurably lower time and
+    capital costs, alongside greater transparency, versus legacy correspondent banking.
+    Network-topology research has independently studied the structure of real Ripple
+    transaction data. Separately, liquidity research places XRP in a distinct liquidity
+    cluster alongside Bitcoin and Litecoin, identifying it as a leading contributor to
+    short-run liquidity dynamics in that group.
+  </p>
+
+  <h3>Sentiment and news-driven signals</h3>
+  <p>
+    Published research on cryptocurrency sentiment has consistently found real predictive
+    power for future returns — with one key condition: it only works when sentiment is
+    measured with a domain-specific methodology, not generic scoring. Studies analyzing
+    Twitter sentiment across major cryptocurrencies (XRP included) found genuine predictive
+    power for several of them. The Crypto Fear and Greed Index has separately been shown to
+    Granger-predict returns for major coins, with a stable long-term relationship between
+    sentiment and price.
+  </p>
+
+  <p class="disclaimer">
+    This section summarizes published academic findings for informational purposes and does
+    not constitute financial advice. Cryptocurrency markets are volatile and speculative.
+    Signals derived from sentiment or research context are one input among many and carry no
+    guarantee of future performance.
+  </p>
+</section>
+
+<script>
+(function() {
+  function isWebMCPSupported() {
+    return (typeof document !== "undefined" && "modelContext" in document) || (typeof navigator !== "undefined" && "modelContext" in navigator);
+  }
+
+  // Graceful degradation: if this browser doesn't support WebMCP yet
+  // (only Chrome origin-trial builds do, as of mid-2026), do nothing.
+  // The page's existing HTML/JSON already works fine for everyone else.
+  if (!isWebMCPSupported()) return;
+  var mcp = (typeof document !== "undefined" && document.modelContext) || navigator.modelContext;
+
+  mcp.registerTool({
+    name: "getLatestXRPSignal",
+    title: "Latest XRP Signal",
+    description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getLatestXRPSignal');
+      var res = await fetch("latest_signal.json");
+      if (!res.ok) return { error: "signal_unavailable" };
+      return await res.json();
+    }
+  });
+
+  mcp.registerTool({
+    name: "getResearchBasis",
+    title: "Research Basis",
+    description: "Get the peer-reviewed academic citations backing Barrot's XRP signal methodology, covering cross-border settlement efficiency and sentiment-prediction research.",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
+    execute: async function() {
+      return {
+        settlement_efficiency: [
+          "Research on Payment Settlement Mode in Cross-border Business Trade Based on Blockchain Technology (10.21203/rs.3.rs-735280/v1)",
+          "Liquidity connectedness in cryptocurrency market (10.1186/s40854-021-00308-3)"
+        ],
+        sentiment_prediction: [
+          "What Makes Cryptocurrencies Special? Investor Sentiment and Return Predictability During the Bubble (10.2139/ssrn.3398423)",
+          "The predictive power of public Twitter sentiment for forecasting cryptocurrency prices (10.1016/j.intfin.2020.101188)",
+          "The impact of investor greed and fear on cryptocurrency returns (10.1108/rbf-08-2023-0224)"
+        ],
+        disclaimer: "For informational purposes only, not financial advice."
+      };
+    }
+  });
+
+  mcp.registerTool({
+    name: "subscribeToXRPSignals",
+    title: "Subscribe to XRP Signals",
+    description: "Open the checkout page to subscribe to Barrot's XRP signal service.",
+    inputSchema: { type: "object", properties: {} },
+    execute: async function() {
+      window.open("https://prostarelite.gumroad.com/l/opvxi", "_blank");
+      return { opened: true, url: "https://prostarelite.gumroad.com/l/opvxi" };
+    }
+  });
+  mcp.registerTool({
+    name: "getSignalAccuracy",
+    title: "Signal Accuracy Record",
+    description: "Get the tracked accuracy record: how often past XRP signals were directionally correct against real price movement.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getSignalAccuracy');
+      var res = await fetch("signal_accuracy.json");
+      if (!res.ok) return { error: "accuracy_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getLatestBTCSignal",
+    title: "Latest BTC Signal",
+    description: "Fetch Barrot's latest Bitcoin market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getLatestBTCSignal');
+      var res = await fetch("latest_signal_btc.json");
+      if (!res.ok) return { error: "signal_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getEntityCooccurrence",
+    title: "Entity Co-occurrence",
+    description: "Get pairs of named entities that frequently appear together in the same XRP/BTC news items, with example headlines.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getEntityCooccurrence');
+      var res = await fetch("entity_cooccurrence.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getSentimentShift",
+    title: "Sentiment Shift Detector",
+    description: "Get the 24h vs prior-24h sentiment shift for XRP and BTC, flagged if the shift is significant.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getSentimentShift');
+      var res = await fetch("sentiment_shift.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getEntitySentimentProfile",
+    title: "Entity Sentiment Profile",
+    description: "Get the aggregated sentiment profile (bullish/bearish/neutral counts, net score) for named entities seen across XRP/BTC news.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getEntitySentimentProfile');
+      var res = await fetch("entity_sentiment_profile.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getWebMCPTrendDigest",
+    title: "WebMCP Trend Digest",
+    description: "Get a ranked digest of candidate future WebMCP tool ideas, surfaced from real public developer discourse (news, announcements) about WebMCP and agentic browsing - not invented predictions.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getWebMCPTrendDigest');
+      var res = await fetch("webmcp_trend_summary.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getBarrotBenchmark",
+    title: "Barrot Self-Benchmark History",
+    description: "Get Barrot's real, machine-graded coding-task benchmark history (generated code executed against real assertions, not self-reported). Includes every run, including failures. Measures coding-benchmark performance, not trading signal accuracy - see getSignalAccuracy for that.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getBarrotBenchmark');
+      var res = await fetch("benchmark_summary.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getBarrotAudit",
+    title: "Barrot Self-Audit Summary",
+    description: "Get the latest real static-analysis audit of Barrot's own codebase (apex_lattice), run weekly. Counts of real findings/recommendations only, not full detail. No PRs are opened by this process.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getBarrotAudit');
+      var res = await fetch("apex_audit_summary.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getWebMCPMonetizationSignals",
+    title: "WebMCP Monetization Signals",
+    description: "Get real GitHub and npm market-validation signals for candidate future WebMCP tools - existing similar open-source projects and their real traction (stars, forks, package popularity), not just discourse volume. Helps assess whether a candidate tool idea already has real-world validation before building it.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getWebMCPMonetizationSignals');
+      var res = await fetch("webmcp_monetization_signals.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  mcp.registerTool({
+    name: "getFinancialLiteracyData",
+    title: "Financial Literacy Reference Data",
+    description: "Get real, current IRS retirement account contribution limits (401k, IRA, SIMPLE, catch-up amounts) - automatically refreshed monthly from the IRS's own official evergreen COLA reference page, not static or training-data figures. Includes a raw source excerpt for verification and the source URL.",
+    inputSchema: { type: "object", properties: {
+        license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
+    annotations: { readOnlyHint: true },
+    execute: async function(args) {
+      const __lic = await window.__webmcpMonetization.verifyGumroadLicense(args.license_key);
+      if (!__lic.valid) return window.__webmcpMonetization.paywallResponse('getFinancialLiteracyData');
+      var res = await fetch("financial_data.json");
+      if (!res.ok) return { error: "data_unavailable" };
+      return await res.json();
+    }
+  });
+  

@@ -7,6 +7,8 @@ workflow + your 'approved' label decide what lands.
 """
 
 import os, subprocess, json, urllib.request, urllib.error, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from sandbox import verify_result
 
 REPO = os.environ["REPO"]
 TASK = os.environ.get("TASK_BODY", "")
@@ -14,7 +16,7 @@ TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 KEY = os.environ.get("GROQ_API_KEY", "")
-MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "llama-3.3-70b-versatile"
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 
 
 def run(cmd, check=True, quiet=False):
@@ -33,17 +35,29 @@ def run(cmd, check=True, quiet=False):
 NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
 
 
-def repo_inventory(max_files=400):
+def repo_inventory(max_files=120, task_text=""):
     files = run("git ls-files", check=False, quiet=True).splitlines()
     files = [f for f in files if not any(f.startswith(p) for p in NOISE_PREFIXES)]
+    top_dirs = sorted({f.split("/")[0] for f in files if "/" in f})
+    tt = task_text.lower()
+    scope = None
+    for d in top_dirs:
+        if f"{d.lower()}/" in tt:
+            scope = d
+            break
+    if scope:
+        scoped = [f for f in files if f.startswith(scope + "/")]
+        if scoped:
+            files = scoped
+    cap = len(files) if scope else max_files
     tree = []
-    for f in files[:max_files]:
+    for f in files[:cap]:
         try:
             sz = os.path.getsize(f)
         except OSError:
             sz = 0
         tree.append(f"{f} ({sz}b)")
-    extra = len(files) - max_files
+    extra = len(files) - cap
     if extra > 0:
         tree.append(f"... ({extra} more files omitted)")
     return "\n".join(tree)
@@ -86,16 +100,20 @@ You output ONLY JSON, no prose, no fences. Two modes:
 2. REWRITING/REFORMATTING/REFACTORING a file's CONTENTS: a JSON object:
    {"commands":[...moves/dirs only...],"transmutations":[{"path":"rel/path.py","content":"FULL new file"}]}
    A transmutation replaces the ENTIRE file with content (complete file, not a diff).
-   Types: .py .json .yml .yaml .md .txt only.
+   Types: .py .json .jsonl .yml .yaml .md .txt only.
+3. REPORTING/AUDITING/ANALYZING with no code change needed: a JSON object:
+   {"report":"your findings as plain text"}
+   Use this when the task asks you to investigate, audit, or report -- not to modify anything.
 CRITICAL: to change what is INSIDE a file, use a transmutation. sed for content editing is
 forbidden and will be rejected. Never use 'git add -A'. Never touch .git/. Never modify or
-delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/."""
-
+delete files under core/, hf_space/, web/, scripts/emit_signal.py, or .github/workflows/. The sandbox/ directory is your FREE EXPERIMENT ZONE — you may create, edit, and test anything there without restriction; it never affects the real stack.
+To remove an entire directory, NEVER use 'rm -rf' (it is banned outright) - use 'git rm -r <path>' instead, which is tracked and safe."""
 
 
 def validate_command(cmd):
     """Reject malformed/unsafe commands before execution. Returns (ok, reason)."""
     import shlex, re, os
+
     stripped = cmd.strip()
     if not stripped:
         return False, "empty command"
@@ -114,16 +132,17 @@ def validate_command(cmd):
         for x in parts[1:]:
             if x.startswith("-"):
                 continue
-            script = x; break
+            script = x
+            break
         if script and script.startswith("s"):
             delim = script[1] if len(script) > 1 else ""
             if not delim or delim.isalnum():
                 return False, f"malformed sed: bad delimiter in {script!r}"
             body = script[2:]
-            count = len(re.findall(r'(?<!\\)' + re.escape(delim), body))
+            count = len(re.findall(r"(?<!\\)" + re.escape(delim), body))
             if count != 2:
                 return False, f"malformed sed: expected 2 delimiters, found {count}"
-            segs = re.split(r'(?<!\\)' + re.escape(delim), body)
+            segs = re.split(r"(?<!\\)" + re.escape(delim), body)
             if segs and segs[0] == "":
                 return False, "malformed sed: empty search pattern"
     if verb == "git" and len(parts) >= 4 and parts[1] == "mv":
@@ -132,24 +151,41 @@ def validate_command(cmd):
     return True, "ok"
 
 
-
 def verify_content(path, content):
     """Verify rewritten content is well-formed for its type. Returns (ok, reason).
     Fails closed: unknown types are not allowed to be rewritten."""
     import ast as _ast, json as _json, os as _os
+
     ext = _os.path.splitext(path)[1].lower()
     if ext == ".py":
-        try: _ast.parse(content)
-        except SyntaxError as e: return False, f"python syntax error line {e.lineno}: {e.msg}"
+        try:
+            _ast.parse(content)
+        except SyntaxError as e:
+            return False, f"python syntax error line {e.lineno}: {e.msg}"
         return True, "ok"
     if ext == ".json":
-        try: _json.loads(content)
-        except Exception as e: return False, f"json parse error: {e}"
+        try:
+            _json.loads(content)
+        except Exception as e:
+            return False, f"json parse error: {e}"
         return True, "ok"
     if ext in (".yml", ".yaml"):
         try:
-            import yaml; yaml.safe_load(content)
-        except Exception as e: return False, f"yaml parse error: {e}"
+            import yaml
+
+            yaml.safe_load(content)
+        except Exception as e:
+            return False, f"yaml parse error: {e}"
+        return True, "ok"
+    if ext == ".jsonl":
+        for i, line in enumerate(content.splitlines(), 1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                _json.loads(line)
+            except Exception as e:
+                return False, f"jsonl parse error on line {i}: {e}"
         return True, "ok"
     if ext in (".md", ".txt"):
         return True, "ok"  # plain text: nothing to break
@@ -158,10 +194,13 @@ def verify_content(path, content):
 
 PROTECTED_WRITE = ("core/", "hf_space/", "web/", "scripts/emit_signal.py", ".github/workflows/")
 
+
 def preservation_check(old_content, new_content, min_retain=0.5):
     """Reject a rewrite that destroyed most original content."""
+
     def toks(s):
         return set(w for w in s.split() if len(w) > 3)
+
     old_t = toks(old_content)
     if not old_t:
         return True, "original trivial"
@@ -178,26 +217,39 @@ def apply_transmutations(transmutations):
     """Each item: {\"path\": str, \"content\": str}. Verify BEFORE writing.
     Returns list of applied paths. Never writes unverified or protected content."""
     import os as _os
+
     applied = []
     for t in transmutations:
-        path = t.get("path", ""); content = t.get("content", "")
+        path = t.get("path", "")
+        content = t.get("content", "")
         if not path or content is None:
-            print(f"REJECTED transmute: missing path/content"); continue
+            print(f"REJECTED transmute: missing path/content")
+            continue
         if any(path.startswith(pp) for pp in PROTECTED_WRITE):
-            print(f"REJECTED transmute (protected path): {path}"); continue
+            print(f"REJECTED transmute (protected path): {path}")
+            continue
         if ".." in path or path.startswith("/"):
-            print(f"REJECTED transmute (unsafe path): {path}"); continue
+            print(f"REJECTED transmute (unsafe path): {path}")
+            continue
         ok, reason = verify_content(path, content)
         if not ok:
-            print(f"REJECTED transmute ({reason}): {path}"); continue
+            print(f"REJECTED transmute ({reason}): {path}")
+            continue
         if os.path.exists(path):
             with open(path) as _f:
                 _old = _f.read()
             pok, preason = preservation_check(_old, content)
             if not pok:
-                print(f"REJECTED transmute ({preason}): {path}"); continue
+                justification = t.get("justification", "").strip()
+                if len(justification) >= 40:
+                    print(f"OVERRIDE transmute ({preason}) - justified: {path}")
+                    print(f"  justification: {justification}")
+                else:
+                    print(f"REJECTED transmute ({preason}): {path}")
+                    continue
         d = _os.path.dirname(path)
-        if d: _os.makedirs(d, exist_ok=True)
+        if d:
+            _os.makedirs(d, exist_ok=True)
         with open(path, "w") as f:
             f.write(content)
         applied.append(path)
@@ -210,29 +262,146 @@ def main():
     run("git config user.name 'Barrot-Agent'")
     run(f"git checkout -b {BRANCH}")
 
-    inv = repo_inventory()
+    inv = repo_inventory(task_text=f"{TITLE} {TASK}")
     import re as _re
-    named = _re.findall(r'[\w./-]+\.(?:py|json|ya?ml|md|txt)', f"{TITLE}\n{TASK}")
+
+    # Real, honest directory-scope content injection: if the task names a
+    # real top-level directory, show as much REAL file content as fits in
+    # the token budget (smallest files first), and explicitly list any
+    # omitted files so the model never invents their internals.
+    dir_ctx = ""
+    _all_files = run("git ls-files", check=False, quiet=True).splitlines()
+    _top_dirs = sorted({f.split("/")[0] for f in _all_files if "/" in f})
+    _tt = f"{TITLE} {TASK}".lower()
+    _scope_dir = None
+    for _d in _top_dirs:
+        if f"{_d.lower()}/" in _tt:
+            _scope_dir = _d
+            break
+    if _scope_dir:
+        _scoped_files = [f for f in _all_files if f.startswith(_scope_dir + "/")]
+        _sized = []
+        for f in _scoped_files:
+            try:
+                _sized.append((os.path.getsize(f), f))
+            except OSError:
+                continue
+        _sized.sort()
+        _budget = 5000
+        _shown, _omitted = [], []
+        for _sz, _f in _sized:
+            if _sz <= _budget:
+                _shown.append(_f)
+                _budget -= _sz
+            else:
+                _omitted.append(_f)
+        chunks = ["\n\nREAL FULL CONTENT of files in the scoped directory (only these - do NOT describe or invent internals of any other file):"]
+        for _f in _shown:
+            try:
+                with open(_f) as _fh:
+                    chunks.append(f"\n=== {_f} ===\n{_fh.read()}")
+            except Exception:
+                pass
+        if _omitted:
+            chunks.append(
+                "\n\nThe following files exist but their content was NOT shown to you "
+                "(too large for this pass): " + ", ".join(_omitted) +
+                ". Do not describe their internals, function names, or claim to find "
+                "issues inside them - name-only, size-only knowledge, nothing more."
+            )
+        dir_ctx = "\n".join(chunks)
+
+    named = _re.findall(r"[\w./-]+\.(?:py|jsonl|json|ya?ml|md|txt)", f"{TITLE}\n{TASK}")
     file_ctx = ""
+    _file_budget = 6000  # chars, shared across all named files - same discipline as dir_ctx
+    _file_omitted = []
     for fp in list(dict.fromkeys(named))[:5]:
         if os.path.exists(fp):
             try:
+                _fsz = os.path.getsize(fp)
+                if _fsz > _file_budget:
+                    _file_omitted.append(f"{fp} ({_fsz}b)")
+                    continue
                 with open(fp) as _f:
-                    file_ctx += f"\n=== CURRENT CONTENT OF {fp} ===\n{_f.read()}\n=== END {fp} ===\n"
+                    _content = _f.read()
+                if len(_content) > _file_budget:
+                    _file_omitted.append(f"{fp} ({_fsz}b)")
+                    continue
+                file_ctx += (
+                    f"\n=== CURRENT CONTENT OF {fp} ===\n{_content}\n=== END {fp} ===\n"
+                )
+                _file_budget -= len(_content)
             except Exception:
                 pass
+    if _file_omitted:
+        file_ctx += (
+            "\n\nThe following named files exist but were too large to include in full "
+            "for this pass (real sizes shown): " + ", ".join(_file_omitted) +
+            ". Do not describe or invent their internal contents - name/size only. "
+            "If the task is pure deletion, this is sufficient; deletion does not require "
+            "reading the file's contents."
+        )
+    # Inject REAL GitHub data when the task is about PRs or issues
+    gh_ctx = ""
+    tl = f"{TITLE} {TASK}".lower()
+    if "pull request" in tl or " pr " in tl or "prs" in tl:
+        out = run(
+            "gh pr list --repo " + REPO + " --state open --limit 100 "
+            "--json number,title,mergeable,additions,deletions,author "
+            "-q '.[] | \"#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | "
+            "@\\(.author.login) | \\(.title)\"'",
+            check=False,
+            quiet=True,
+        )
+        if out.strip():
+            gh_ctx += f"\n=== REAL OPEN PULL REQUESTS (use ONLY these, never invent) ===\n{out[:12000]}\n=== END PRS ===\n"
+    # If the task names specific PR numbers, fetch their REAL diffs (not just titles)
+    import re as _re2
+    pr_nums = _re2.findall(r"#(\d+)", f"{TITLE} {TASK}")
+    if pr_nums:
+        seen = []
+        for _n in dict.fromkeys(pr_nums):
+            if len(seen) >= 4:
+                break
+            d = run(f"gh pr diff {_n} --repo {REPO}", check=False, quiet=True)
+            if d.strip():
+                # cap each diff so many fit; names/paths/first lines carry the signal
+                seen.append(f"--- PR #{_n} DIFF ---\n{d[:1200]}")
+        if seen:
+            gh_ctx += ("\n=== REAL PR DIFFS (actual file changes — judge ONLY from these, "
+                       "never from the title) ===\n" + "\n\n".join(seen) + "\n=== END DIFFS ===\n")
+    if "issue" in tl:
+        out = run(
+            "gh issue list --repo " + REPO + " --state open --limit 100 "
+            "--json number,title,author -q '.[] | \"#\\(.number) | \\(.author.login) | \\(.title)\"'",
+            check=False,
+            quiet=True,
+        )
+        if out.strip():
+            gh_ctx += f"\n=== REAL OPEN ISSUES (use ONLY these, never invent) ===\n{out[:8000]}\n=== END ISSUES ===\n"
+
     note = ""
     if file_ctx:
-        note = ("\n\nIMPORTANT: for any file shown above, if reformatting/editing it you MUST return "
-                "the FULL file preserving ALL existing information — change only what the task asks. "
-                "Do NOT invent new content or drop existing sections.")
+        note = (
+            "\n\nIMPORTANT: for any file shown above, if reformatting/editing it you MUST return "
+            "the FULL file preserving ALL existing information — change only what the task asks. "
+            "Do NOT invent new content or drop existing sections."
+        )
+    if gh_ctx:
+        note += (
+            "\n\nCRITICAL: the pull requests / issues listed above are the ONLY real ones. "
+            "Use their actual numbers, authors, and titles verbatim. NEVER invent placeholder "
+            "entries (no 'user1', no 'Fix typo', no '...' rows). If you cannot assess one, say so "
+            "for that specific real PR. Every row you write must correspond to a real entry above."
+        )
     prompt = (
-        f"TASK:\n{TITLE}\n{TASK}\n\nCURRENT REPO FILES:\n{inv}{file_ctx}{note}"
+        f"TASK:\n{TITLE}\n{TASK}\n\n" + ("" if "REAL PR DIFFS" in gh_ctx else f"CURRENT REPO FILES:\n{inv}") + f"{file_ctx}{dir_ctx}{gh_ctx}{note}"
         f"\n\nOutput JSON (array for moves, or object with transmutations for rewrites)."
     )
     raw = ask_brain(SYSTEM, prompt).strip()
 
     import re
+
     obj_a, arr_a = raw.find("{"), raw.find("[")
     if obj_a == -1 and arr_a == -1:
         sys.exit(f"brain returned no JSON:\n{raw[:800]}")
@@ -256,7 +425,26 @@ def main():
         cmds = data.get("commands", []) or []
         trans = data.get("transmutations", []) or []
 
-    BANNED = ["git add -a", "git push", "rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i"]
+    report = data.get("report") if isinstance(data, dict) else None
+    if report and not cmds and not trans:
+        run("git checkout main", check=False)
+        run(f"git branch -D {BRANCH}", check=False)
+        comment_body = report[:60000]
+        with open("/tmp/barrot_comment_body.md", "w", encoding="utf-8") as _f:
+            _f.write(comment_body)
+        run(f"gh issue comment {ISSUE} --repo {REPO} --body-file /tmp/barrot_comment_body.md", check=False)
+        print("DONE -- report posted as issue comment, no code change needed.")
+        sys.exit(0)
+
+    BANNED = [
+        "git add -a",
+        "git push",
+        "rm -rf",
+        ".git/",
+        "git reset --hard",
+        "git checkout main",
+        "sed -i",
+    ]
     PROTECTED_DEL = ["rm core/", "rm hf_space/", "rm web/", "rm scripts/emit_signal.py"]
     safe = []
     for c in cmds:
@@ -284,6 +472,15 @@ def main():
     if not run("git status --porcelain", check=False).strip():
         sys.exit("no changes produced")
 
+    # SANDBOX SAFETY: verify the resulting working tree before committing.
+    # A broken result blocks the PR instead of shipping it.
+    sb_ok, sb_report = verify_result(".")
+    print(f"[sandbox] verification: {'PASS' if sb_ok else 'FAIL'}")
+    if sb_report and sb_report != "clean":
+        print(f"[sandbox] {sb_report}")
+    if not sb_ok:
+        sys.exit("SANDBOX BLOCKED: task produced broken files; no PR opened.")
+
     summary = "\\n".join(f"- {c}" for c in safe)
     run('git commit -m "Barrot autonomous task: ' + TITLE.replace('"', "'") + '"')
     run(f"git push origin {BRANCH}")
@@ -292,8 +489,11 @@ def main():
         f"Autonomous execution of #{ISSUE} by Barrot.\\n\\nCommands run:\\n{summary}\\n\\n"
         f"Review the diff; apply the approved label to merge protected or large changes."
     )
+    with open("/tmp/barrot_pr_body.md", "w", encoding="utf-8") as _f:
+        _f.write(pr_body)
+    safe_title = TITLE.replace(chr(34), chr(39)).replace(chr(96), chr(39)).replace("$", "")
     run(
-        f'gh pr create --repo {REPO} --title "Barrot: {TITLE}" --body "{pr_body}" --head {BRANCH} --base main',
+        f'gh pr create --repo {REPO} --title "Barrot: {safe_title}" --body-file /tmp/barrot_pr_body.md --head {BRANCH} --base main',
         check=False,
     )
     print("DONE — PR opened, awaiting gate + review.")

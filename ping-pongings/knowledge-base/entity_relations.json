@@ -1,0 +1,807 @@
+{
+  "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
+  "total_classified": 89,
+  "relations": [
+    {
+      "pair_key": "Ripple|XRP",
+      "entity_a": "Ripple",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "relation_type": "causal",
+      "justification": "Both headlines link Ripple's actions or performance directly to XRP's market behavior, implying Ripple causes changes in XRP.",
+      "classified_at": "2026-07-29T14:15:57Z"
+    },
+    {
+      "pair_key": "Bitcoin|Morningstar",
+      "entity_a": "Bitcoin",
+      "entity_b": "Morningstar",
+      "cooccurrence_count": 3,
+      "relation_type": "complementary",
+      "justification": "Both headlines show Morningstar publishing analysis or predictions about Bitcoin's price movements.",
+      "classified_at": "2026-07-29T14:15:59Z"
+    },
+    {
+      "pair_key": "BTC|Bitcoin",
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines discuss Bitcoin's price movements while simultaneously referencing BTC, indicating they refer to the same market event.",
+      "classified_at": "2026-07-29T14:16:01Z"
+    },
+    {
+      "pair_key": "Bitcoin|CoinDesk",
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines mention Bitcoin price movements and attribute the reporting to CoinDesk, indicating co-occurrence without a clear causal or other specific relationship.",
+      "classified_at": "2026-07-29T14:16:02Z"
+    },
+    {
+      "pair_key": "Bitcoin|XRP",
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Bitcoin and XRP together as part of the same market movement linked to a crypto bill.",
+      "classified_at": "2026-07-29T14:16:04Z"
+    },
+    {
+      "pair_key": "Ethereum|XRP",
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines mention Ethereum and XRP together as part of the same market movement linked to a crypto bill and SEC commentary.",
+      "classified_at": "2026-07-29T14:16:06Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|Ripple",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "competitive",
+      "justification": "The headline contrasts Ripple's underperformance with the broader crypto market, implying a competitive comparison involving Bitcoin Foundation.",
+      "classified_at": "2026-07-29T17:27:22Z"
+    },
+    {
+      "pair_key": "Bitcoin|Fortune",
+      "entity_a": "Bitcoin",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 4,
+      "relation_type": "same_event",
+      "justification": "Both headlines are Fortune-published listings of Bitcoin's price for specific dates, indicating they refer to the same event.",
+      "classified_at": "2026-07-29T17:34:53Z"
+    },
+    {
+      "pair_key": "Bitcoin|US",
+      "entity_a": "Bitcoin",
+      "entity_b": "US",
+      "cooccurrence_count": 3,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines discuss Bitcoin activity and investor considerations without explicitly linking Bitcoin to a specific US action or policy, making the relationship unclear.",
+      "classified_at": "2026-07-29T17:34:54Z"
+    },
+    {
+      "pair_key": "Bitcoin|Galaxy",
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy",
+      "cooccurrence_count": 2,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines show Galaxy as the source reporting on Bitcoin-related events, without indicating a direct causal, regulatory, competitive, complementary, or same-event link.",
+      "classified_at": "2026-07-29T17:34:54Z"
+    },
+    {
+      "pair_key": "Bitcoin|Yahoo Finance",
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines are Yahoo Finance articles that focus on Bitcoin, indicating they appear together in the same news context.",
+      "classified_at": "2026-07-29T17:34:55Z"
+    },
+    {
+      "pair_key": "Bitcoin|Dogecoin",
+      "entity_a": "Bitcoin",
+      "entity_b": "Dogecoin",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Bitcoin and Dogecoin together as rising or falling in the same news context, indicating they are mentioned as part of the same event.",
+      "classified_at": "2026-07-29T17:34:56Z"
+    },
+    {
+      "pair_key": "Bitcoin|Ethereum",
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Bitcoin and Ethereum together as assets that rise or fall in response to the same crypto bill developments.",
+      "classified_at": "2026-07-29T17:34:57Z"
+    },
+    {
+      "pair_key": "Dogecoin|Ethereum",
+      "entity_a": "Dogecoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list Dogecoin and Ethereum together as part of the same market movement linked to a crypto bill.",
+      "classified_at": "2026-07-29T17:34:57Z"
+    },
+    {
+      "pair_key": "Dogecoin|XRP",
+      "entity_a": "Dogecoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "relation_type": "same_event",
+      "justification": "Both headlines list XRP and Dogecoin together as part of the same market movement related to a crypto bill.",
+      "classified_at": "2026-07-29T17:34:58Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|XRP",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline discusses XRP underperformance and is attributed to Bitcoin Foundation, indicating both entities appear together in the same news article.",
+      "classified_at": "2026-07-29T17:34:59Z"
+    },
+    {
+      "pair_key": "Moomoo|Ripple",
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both \"Moomoo\" and \"Ripple\" are mentioned together in the headline \"$Ripple (XRP.CC)$ - Moomoo\".",
+      "classified_at": "2026-07-29T17:34:59Z"
+    },
+    {
+      "pair_key": "Moomoo|XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline pairs Ripple (XRP.CC) with Moomoo, suggesting Moomoo offers or features Ripple, indicating a complementary relationship.",
+      "classified_at": "2026-07-29T17:35:00Z"
+    },
+    {
+      "pair_key": "Ripple|XRP.CC",
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline lists Ripple and its ticker XRP.CC together, indicating they refer to the same asset in the same news item.",
+      "classified_at": "2026-07-29T18:24:56Z"
+    },
+    {
+      "pair_key": "Ripple|Yahoo Finance",
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline is a Yahoo Finance article that discusses Ripple's XRP, indicating they appear together in the same news piece.",
+      "classified_at": "2026-07-29T18:24:57Z"
+    },
+    {
+      "pair_key": "XRP|Yahoo Finance",
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline is a Yahoo Finance article discussing XRP, indicating a complementary informational relationship.",
+      "classified_at": "2026-07-29T18:24:58Z"
+    },
+    {
+      "pair_key": "Fed|Ripple",
+      "entity_a": "Fed",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline ties the Fed's decision directly to Ripple's price prediction, implying the Fed influences Ripple's market movement.",
+      "classified_at": "2026-07-29T18:24:58Z"
+    },
+    {
+      "pair_key": "Fed|XRP",
+      "entity_a": "Fed",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline ties the Fed decision directly to Ripple (XRP) price prediction, implying the Fed's actions affect XRP's price.",
+      "classified_at": "2026-07-29T18:24:59Z"
+    },
+    {
+      "pair_key": "BitMEX|Fidelity",
+      "entity_a": "BitMEX",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headline only discusses BitMEX shutting amid a lawsuit and does not mention Fidelity, leaving their relationship unclear.",
+      "classified_at": "2026-07-29T18:24:59Z"
+    },
+    {
+      "pair_key": "BitMEX|Goldman Sachs",
+      "entity_a": "BitMEX",
+      "entity_b": "Goldman Sachs",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline only discusses BitMEX shutting amid a lawsuit and does not provide any information linking it to Goldman Sachs.",
+      "classified_at": "2026-07-29T18:25:00Z"
+    },
+    {
+      "pair_key": "Fidelity|Goldman Sachs",
+      "entity_a": "Fidelity",
+      "entity_b": "Goldman Sachs",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headline does not contain any information linking Fidelity and Goldman Sachs, so their relationship cannot be determined from it.",
+      "classified_at": "2026-07-29T18:25:01Z"
+    },
+    {
+      "pair_key": "Binance|Bitcoin",
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headline mentions Bitcoin but does not reference Binance, so no clear relationship can be inferred.",
+      "classified_at": "2026-07-29T18:25:02Z"
+    },
+    {
+      "pair_key": "Ripple|XRP Ledger",
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "relation_type": "complementary",
+      "justification": "Both headlines show Ripple actively collaborating with the XRP Ledger\u2014launching a tokenized fund on it and backing a ledger amendment\u2014indicating a mutually supportive relationship.",
+      "classified_at": "2026-07-30T01:39:30Z"
+    },
+    {
+      "pair_key": "XRP|XRP Ledger",
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "relation_type": "causal",
+      "justification": "Both headlines tie developments on the XRP Ledger (a tokenized fund launch and a ledger amendment) to implications or effects for XRP, indicating that ledger actions influence XRP.",
+      "classified_at": "2026-07-30T01:39:33Z"
+    },
+    {
+      "pair_key": "Aviva|Ripple",
+      "entity_a": "Aviva",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline says Ripple and Aviva are jointly launching a tokenized fund, indicating a collaborative partnership.",
+      "classified_at": "2026-07-30T01:39:36Z"
+    },
+    {
+      "pair_key": "Aviva|XRP",
+      "entity_a": "Aviva",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports that Ripple and Aviva jointly launch a tokenized fund on the XRP Ledger, indicating they are involved in the same event.",
+      "classified_at": "2026-07-30T01:39:38Z"
+    },
+    {
+      "pair_key": "Aviva|XRP Ledger",
+      "entity_a": "Aviva",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline states that Aviva and Ripple are jointly launching a tokenized fund on the XRP Ledger, indicating a collaborative partnership.",
+      "classified_at": "2026-07-30T01:39:41Z"
+    },
+    {
+      "pair_key": "Aviva|tokenized fund",
+      "entity_a": "Aviva",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline states that Ripple and Aviva jointly launch the first tokenized fund on the XRP Ledger, indicating they are part of the same event.",
+      "classified_at": "2026-07-30T01:39:44Z"
+    },
+    {
+      "pair_key": "Ripple|tokenized fund",
+      "entity_a": "Ripple",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline states that Ripple and Aviva jointly launch a tokenized fund on the XRP Ledger, indicating a collaborative, complementary relationship.",
+      "classified_at": "2026-07-30T01:39:47Z"
+    },
+    {
+      "pair_key": "XRP|tokenized fund",
+      "entity_a": "XRP",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports that a tokenized fund is being launched on the XRP Ledger, indicating both entities are involved in the same event.",
+      "classified_at": "2026-07-30T01:39:49Z"
+    },
+    {
+      "pair_key": "XRP Ledger|tokenized fund",
+      "entity_a": "XRP Ledger",
+      "entity_b": "tokenized fund",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline states that a tokenized fund is being launched on the XRP Ledger, indicating they are part of the same event.",
+      "classified_at": "2026-07-30T01:39:52Z"
+    },
+    {
+      "pair_key": "Ripple|XRP Ledger Fix Amendment",
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger Fix Amendment",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline says the amendment is Ripple\u2011backed and goes live, implying Ripple\u2019s support caused its implementation.",
+      "classified_at": "2026-07-30T01:39:55Z"
+    },
+    {
+      "pair_key": "XRP|XRP Ledger Fix Amendment",
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger Fix Amendment",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports the XRP Ledger Fix Amendment going live, directly linking the amendment to the XRP ecosystem in the same news event.",
+      "classified_at": "2026-07-30T01:39:57Z"
+    },
+    {
+      "pair_key": "XRP Ledger|XRP Ledger Fix Amendment",
+      "entity_a": "XRP Ledger",
+      "entity_b": "XRP Ledger Fix Amendment",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports the XRP Ledger Fix Amendment going live, indicating both terms refer to the same event concerning the XRP Ledger.",
+      "classified_at": "2026-07-30T01:40:00Z"
+    },
+    {
+      "pair_key": "Binance|US Fed",
+      "entity_a": "Binance",
+      "entity_b": "US Fed",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline links Fed rate\u2011hike odds to Bitcoin price movements, but does not mention Binance, making any direct relationship between Binance and the US Fed unclear.",
+      "classified_at": "2026-07-30T01:40:03Z"
+    },
+    {
+      "pair_key": "Bitcoin|US Fed",
+      "entity_a": "Bitcoin",
+      "entity_b": "US Fed",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline links Bitcoin's price drop to surging US bond yields that boost Fed rate\u2011hike odds, indicating a causal effect.",
+      "classified_at": "2026-07-30T01:40:05Z"
+    },
+    {
+      "pair_key": "Bitcoin|Charles Edwards",
+      "entity_a": "Bitcoin",
+      "entity_b": "Charles Edwards",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline directly ties Charles Edwards' statement to Bitcoin, indicating they are mentioned together within the same news item.",
+      "classified_at": "2026-07-30T01:40:08Z"
+    },
+    {
+      "pair_key": "Bitcoin|Poolin",
+      "entity_a": "Bitcoin",
+      "entity_b": "Poolin",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports a single event\u2014the bankruptcy filing of the Bitcoin mining pool Poolin\u2014linking both Bitcoin and Poolin together.",
+      "classified_at": "2026-07-30T02:58:03Z"
+    },
+    {
+      "pair_key": "BTC|Yahoo Finance",
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline is a Yahoo Finance article that discusses BTC price prediction, showing they appear together in the same news piece.",
+      "classified_at": "2026-07-30T02:58:05Z"
+    },
+    {
+      "pair_key": "Bitcoin|Bitcoin Foundation",
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline ties Bitcoin's bear market outlook directly to the Bitcoin Foundation, indicating they are part of the same discussion/event.",
+      "classified_at": "2026-07-30T02:58:08Z"
+    },
+    {
+      "pair_key": "BTC|bitcoin",
+      "entity_a": "BTC",
+      "entity_b": "bitcoin",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline mentions bitcoin (BTC) price together, indicating they refer to the same asset.",
+      "classified_at": "2026-07-30T02:58:10Z"
+    },
+    {
+      "pair_key": "Bitcoin|VanEck",
+      "entity_a": "Bitcoin",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline describes VanEck conducting a Bitcoin ChainCheck, indicating both entities are involved in the same event.",
+      "classified_at": "2026-07-30T02:58:13Z"
+    },
+    {
+      "pair_key": "Bitcoin|ETH",
+      "entity_a": "Bitcoin",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both Bitcoin and ETH are mentioned together in a single market headline describing Bitcoin's price retake and ETH's outperformance.",
+      "classified_at": "2026-07-30T02:58:15Z"
+    },
+    {
+      "pair_key": "CoinDesk|ETH",
+      "entity_a": "CoinDesk",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both appear together in a headline reporting that ETH outperformed in the same market event covered by CoinDesk.",
+      "classified_at": "2026-07-30T02:58:18Z"
+    },
+    {
+      "pair_key": "BTC|BitMEX",
+      "entity_a": "BTC",
+      "entity_b": "BitMEX",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline reports a class action lawsuit involving BitMEX and the return of 622 BTC, indicating a legal/regulatory relationship between the two.",
+      "classified_at": "2026-07-30T02:58:21Z"
+    },
+    {
+      "pair_key": "CLARITY Act|Crypto Market",
+      "entity_a": "CLARITY Act",
+      "entity_b": "Crypto Market",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties the CLARITY Act delay to the ongoing fight over crypto market structure, indicating a regulatory link between the Act and the crypto market.",
+      "classified_at": "2026-07-30T02:58:23Z"
+    },
+    {
+      "pair_key": "CEO|Robinhood",
+      "entity_a": "CEO",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline ties the Robinhood CEO directly to a hack involving Robinhood, indicating they are part of the same incident.",
+      "classified_at": "2026-07-30T02:58:26Z"
+    },
+    {
+      "pair_key": "CFTC|Kraken",
+      "entity_a": "CFTC",
+      "entity_b": "Kraken",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline states Kraken is bringing CFTC\u2011regulated perpetual futures, indicating a regulatory relationship.",
+      "classified_at": "2026-07-30T02:58:29Z"
+    },
+    {
+      "pair_key": "Bitcoin|Elliptic",
+      "entity_a": "Bitcoin",
+      "entity_b": "Elliptic",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows Elliptic providing a report that analyzes Bitcoin ATM scam activity, indicating a complementary analytical relationship.",
+      "classified_at": "2026-07-30T02:58:31Z"
+    },
+    {
+      "pair_key": "Bitcoin|FATF",
+      "entity_a": "Bitcoin",
+      "entity_b": "FATF",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions FATF and crypto travel rule adoption but does not reference Bitcoin, making the relationship between Bitcoin and FATF unclear.",
+      "classified_at": "2026-07-30T02:58:34Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|Tesla",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Tesla",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both entities appear together in a single headline reporting Tesla's Bitcoin holdings and associated paper loss, indicating they are part of the same news event.",
+      "classified_at": "2026-07-30T02:58:37Z"
+    },
+    {
+      "pair_key": "Bitcoin Foundation|VanEck",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "Both entities appear together in a single headline describing VanEck's comment on a Bitcoin treasury retreat, indicating they are part of the same news event.",
+      "classified_at": "2026-07-30T02:58:39Z"
+    },
+    {
+      "pair_key": "MSTR|STRC",
+      "entity_a": "MSTR",
+      "entity_b": "STRC",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports a single strategy simultaneously selling MSTR shares and buying $25M of STRC preferred stock, indicating both actions occur in the same event.",
+      "classified_at": "2026-07-30T03:00:25Z"
+    },
+    {
+      "pair_key": "MSTR|Strategy",
+      "entity_a": "MSTR",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline describes Strategy selling MSTR shares, indicating both entities are involved in the same transaction event.",
+      "classified_at": "2026-07-30T03:00:27Z"
+    },
+    {
+      "pair_key": "STRC|Strategy",
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline describes Strategy buying back $25M in STRC preferred stock, indicating both entities are involved in the same transaction.",
+      "classified_at": "2026-07-30T03:00:30Z"
+    },
+    {
+      "pair_key": "Bitcoin|KULR Technology",
+      "entity_a": "Bitcoin",
+      "entity_b": "KULR Technology",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline lists both KULR Technology and Bitcoin together, indicating they are mentioned within the same news item.",
+      "classified_at": "2026-07-30T03:00:32Z"
+    },
+    {
+      "pair_key": "Binance|BitChat",
+      "entity_a": "Binance",
+      "entity_b": "BitChat",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "Both Binance and BitChat are mentioned together in the headline, but the headline provides no explicit causal, regulatory, competitive, complementary, or same-event link between them.",
+      "classified_at": "2026-07-30T03:00:35Z"
+    },
+    {
+      "pair_key": "Binance|India",
+      "entity_a": "Binance",
+      "entity_b": "India",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions Binance phishing its staff and India censoring BitChat code in separate clauses, showing co-occurrence without a clear causal, regulatory, competitive, complementary, or same-event link.",
+      "classified_at": "2026-07-30T03:00:37Z"
+    },
+    {
+      "pair_key": "BitChat|India",
+      "entity_a": "BitChat",
+      "entity_b": "India",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline states that India censors BitChat code, indicating a regulatory action by India toward BitChat.",
+      "classified_at": "2026-07-30T03:00:41Z"
+    },
+    {
+      "pair_key": "Bitcoin|Nansen",
+      "entity_a": "Bitcoin",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions a Nansen analyst commenting on Bitcoin's price, indicating a correlation without specifying a direct causal, regulatory, competitive, or complementary link.",
+      "classified_at": "2026-07-30T03:00:44Z"
+    },
+    {
+      "pair_key": "CoinDesk|Nansen",
+      "entity_a": "CoinDesk",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows CoinDesk publishing a statement from a Nansen analyst, indicating they complement each other as source and analyst.",
+      "classified_at": "2026-07-30T03:00:47Z"
+    },
+    {
+      "pair_key": "Bitcoin|SEC",
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties Bitcoin's price decline to the SEC Chair's actions on a crypto bill, indicating a regulatory influence.",
+      "classified_at": "2026-07-30T03:00:49Z"
+    },
+    {
+      "pair_key": "Dogecoin|SEC",
+      "entity_a": "Dogecoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties Dogecoin's price drop to the SEC Chair's activity on a crypto bill, indicating a regulatory connection.",
+      "classified_at": "2026-07-30T03:00:52Z"
+    },
+    {
+      "pair_key": "Ethereum|SEC",
+      "entity_a": "Ethereum",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "relation_type": "regulatory",
+      "justification": "The headline ties Ethereum's price drop to the SEC Chair's activity on a crypto bill, indicating a regulatory influence.",
+      "classified_at": "2026-07-30T03:00:54Z"
+    },
+    {
+      "pair_key": "SEC|XRP",
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline mentions XRP price falling and the SEC Chair discussing a crypto bill, indicating both appear in the same news event.",
+      "classified_at": "2026-07-30T03:00:57Z"
+    },
+    {
+      "pair_key": "BTC|MSTR",
+      "entity_a": "BTC",
+      "entity_b": "MSTR",
+      "cooccurrence_count": 1,
+      "relation_type": "competitive",
+      "justification": "The headline advises buying BTC rather than MSTR, presenting them as alternative choices.",
+      "classified_at": "2026-07-30T03:00:59Z"
+    },
+    {
+      "pair_key": "BTC|Peter Schiff",
+      "entity_a": "BTC",
+      "entity_b": "Peter Schiff",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline shows Peter Schiff advising investors to buy BTC, indicating his statements influence actions related to BTC.",
+      "classified_at": "2026-07-30T03:01:02Z"
+    },
+    {
+      "pair_key": "MSTR|Peter Schiff",
+      "entity_a": "MSTR",
+      "entity_b": "Peter Schiff",
+      "cooccurrence_count": 1,
+      "relation_type": "competitive",
+      "justification": "The headline shows Peter Schiff urging investors to buy Bitcoin instead of MSTR, indicating a competitive stance between the two.",
+      "classified_at": "2026-07-30T04:32:38Z"
+    },
+    {
+      "pair_key": "Bitcoin|TradingView",
+      "entity_a": "Bitcoin",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline mentions Bitcoin but does not reference TradingView, so the relationship cannot be determined from the provided text.",
+      "classified_at": "2026-07-30T04:32:40Z"
+    },
+    {
+      "pair_key": "Bank of Japan|US dollar",
+      "entity_a": "Bank of Japan",
+      "entity_b": "US dollar",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline ties the Bank of Japan meeting to the yen's 40\u2011year low against the US dollar, indicating a relationship but not explicitly stating causation.",
+      "classified_at": "2026-07-30T04:32:43Z"
+    },
+    {
+      "pair_key": "Bank of Japan|yen",
+      "entity_a": "Bank of Japan",
+      "entity_b": "yen",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline links the Bank of Japan meeting and the yen's low value without stating a direct causal or regulatory connection.",
+      "classified_at": "2026-07-30T04:32:46Z"
+    },
+    {
+      "pair_key": "US dollar|yen",
+      "entity_a": "US dollar",
+      "entity_b": "yen",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline ties the yen's 40\u2011year low directly to the US dollar, indicating a correlation between the two currencies without stating a clear causal or regulatory link.",
+      "classified_at": "2026-07-30T04:32:49Z"
+    },
+    {
+      "pair_key": "Bitcoin|Wall Street",
+      "entity_a": "Bitcoin",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline links Bitcoin's price drop and a chip-stock crash that spreads to Wall Street, indicating they are part of the same market event.",
+      "classified_at": "2026-07-30T04:32:51Z"
+    },
+    {
+      "pair_key": "Bitcoin|Fed",
+      "entity_a": "Bitcoin",
+      "entity_b": "Fed",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline ties Bitcoin's price decline directly to the upcoming Fed decision, indicating the Fed's action influences Bitcoin.",
+      "classified_at": "2026-07-30T04:32:54Z"
+    },
+    {
+      "pair_key": "BTC-USD|Bitcoin",
+      "entity_a": "BTC-USD",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline discusses Bitcoin's price path and explicitly references the BTC-USD ticker, indicating they refer to the same price movement.",
+      "classified_at": "2026-07-30T04:32:56Z"
+    },
+    {
+      "pair_key": "Bitcoin|CNBC",
+      "entity_a": "Bitcoin",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows CNBC publishing a report about Bitcoin, indicating a complementary relationship where CNBC provides coverage of Bitcoin.",
+      "classified_at": "2026-07-30T04:32:59Z"
+    },
+    {
+      "pair_key": "Bitcoin|FOREX.com",
+      "entity_a": "Bitcoin",
+      "entity_b": "FOREX.com",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows FOREX.com publishing an analysis of Bitcoin's price, indicating a complementary informational relationship.",
+      "classified_at": "2026-07-30T04:33:01Z"
+    },
+    {
+      "pair_key": "Bitcoin|Nasdaq",
+      "entity_a": "Bitcoin",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline describes a Nasdaq-listed company seeking to hold Bitcoin in its treasury, indicating Bitcoin is used as a complementary asset for a Nasdaq entity.",
+      "classified_at": "2026-07-30T04:33:04Z"
+    },
+    {
+      "pair_key": "Bitcoin|Zhibao",
+      "entity_a": "Bitcoin",
+      "entity_b": "Zhibao",
+      "cooccurrence_count": 1,
+      "relation_type": "complementary",
+      "justification": "The headline shows Zhibao intends to hold Bitcoin in its treasury and sell stock to acquire BTC, indicating a complementary use of Bitcoin by Zhibao.",
+      "classified_at": "2026-07-30T04:33:07Z"
+    },
+    {
+      "pair_key": "Nasdaq|Zhibao",
+      "entity_a": "Nasdaq",
+      "entity_b": "Zhibao",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline links Zhibao to Nasdaq by noting it is a Nasdaq\u2011listed company, indicating they are mentioned together in the same news event.",
+      "classified_at": "2026-07-30T04:33:09Z"
+    },
+    {
+      "pair_key": "Bitcoin|US spot Bitcoin ETFs",
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline links Bitcoin ETFs' outflow streak with Bitcoin failing to hold $65K, indicating a correlation without explicit causal direction.",
+      "classified_at": "2026-07-30T04:33:12Z"
+    },
+    {
+      "pair_key": "Bitcoin (BTC)|CoinDesk",
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 1,
+      "relation_type": "same_event",
+      "justification": "The headline reports Bitcoin's price bounce and is published by CoinDesk, indicating they are part of the same news event.",
+      "classified_at": "2026-07-30T04:33:15Z"
+    },
+    {
+      "pair_key": "Bitcoin (BTC)|Federal Reserve (Fed)",
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Federal Reserve (Fed)",
+      "cooccurrence_count": 1,
+      "relation_type": "causal",
+      "justification": "The headline states Bitcoin's real move waits on the Fed, indicating Bitcoin's price movement depends on Fed actions.",
+      "classified_at": "2026-07-30T04:42:45Z"
+    },
+    {
+      "pair_key": "CoinDesk|Federal Reserve (Fed)",
+      "entity_a": "CoinDesk",
+      "entity_b": "Federal Reserve (Fed)",
+      "cooccurrence_count": 1,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline shows CoinDesk reporting on Bitcoin's price movement that depends on the Fed, indicating they are mentioned together without a clear direct relationship.",
+      "classified_at": "2026-07-30T04:42:48Z"
+    }
+  ]
+}

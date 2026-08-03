@@ -10,7 +10,7 @@ GITHUB_MODELS_ENDPOINT = "https://models.github.ai/inference/chat/completions"
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 
 DEFAULT_GITHUB_MODEL = os.getenv("GITHUB_MODEL", "openai/gpt-4.1-mini")
-DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 TIMEOUT = float(os.getenv("SIGNAL_HTTP_TIMEOUT", "20"))
 
@@ -82,6 +82,19 @@ def _call_groq(signal_text: str):
     if not key:
         raise RuntimeError("missing GROQ_API_KEY")
 
+    # Opt-in real chain-of-thought + self-consistency classifier
+    # (Wei et al. 2022, Wang et al. 2023) - uses 3x Groq calls per
+    # classification instead of 1x, so this is gated behind an env var
+    # rather than silently tripling token usage on the live pipeline.
+    # Set USE_SELF_CONSISTENCY=1 to enable.
+    if os.getenv("USE_SELF_CONSISTENCY", "") == "1":
+        try:
+            from groq_chain import classify_with_self_consistency
+            result = classify_with_self_consistency(signal_text)
+            return result["score"], result["confidence"], f"groq_sc:{result['label']}"
+        except Exception:
+            pass  # fall through to the original single-shot call below
+
     payload = {
         "model": DEFAULT_GROQ_MODEL,
         "messages": _build_messages(signal_text),
@@ -114,34 +127,43 @@ def analyze_signal(signal_text: str):
     return 0, 0.0, f"sentiment unavailable ({last_err})"
 
 
-
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
     from datetime import timedelta
+
     if not os.path.exists(path):
         return None, 0, []
     cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
-    num = den = 0.0; used = 0; heads = []
+    num = den = 0.0
+    used = 0
+    heads = []
     with open(path) as f:
         for line in f:
-            try: e = json.loads(line)
-            except Exception: continue
-            if not e.get("distilled"): continue
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue
+            if not e.get("distilled"):
+                continue
             d = e.get("distill", {})
             w = float(d.get("xrp_relevance", 0) or 0)
-            if w <= 0: continue
+            if w <= 0:
+                continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at","").replace("Z","+00:00"))
-                if ts < cutoff: continue
+                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
+                if ts < cutoff:
+                    continue
             except Exception:
                 pass
-            s = {"bullish":1.0,"neutral":0.0,"bearish":-1.0}.get(d.get("sentiment"),0.0)
-            num += s*w; den += w; used += 1
+            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
+            num += s * w
+            den += w
+            used += 1
             if w >= 0.5 and len(heads) < 6:
                 heads.append(f"[{d.get('sentiment')}] {e.get('title','')[:80]}")
     if den == 0:
         return None, 0, []
-    return int(round((num/den + 1) * 50)), used, heads
+    return int(round((num / den + 1) * 50)), used, heads
 
 
 def main():
@@ -170,6 +192,19 @@ def main():
     os.makedirs("web", exist_ok=True)
     with open("web/latest_signal.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
+    try:
+        _pr = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price",
+            params={"ids": "ripple", "vs_currencies": "usd"},
+            timeout=6,
+        )
+        price_now = float(_pr.json().get("ripple", {}).get("usd", 0))
+    except Exception:
+        price_now = 0.0
+    hist_entry = dict(out)
+    hist_entry["price_at_emission"] = price_now
+    with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
+        print(json.dumps(hist_entry), file=hf)
 
     print(json.dumps(out))
 

@@ -12,7 +12,7 @@ PILLARS:    GitHub · Databricks · HuggingFace · Termux
 
 TABS:
   [1] 💬 Chat        — Live chat with Barrot via GitHub Models
-  [2] 📡 XRP Signals — Live MRP perception dashboard
+  [2] 📡 XRP Signals — Live ternary signal dashboard
   [3] 🧠 Brain       — Query Barrot knowledge base
   [4] 🔌 API         — Public endpoint docs + live tester
   [5] 📊 Analytics   — Delta Lake signal history
@@ -117,8 +117,10 @@ def tool_latest_signal(args):
 
 
 def tool_ledger_tail(args):
-    try: n = int(args.get("n", 5) or 5)
-    except (TypeError, ValueError): n = 5
+    try:
+        n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError):
+        n = 5
     n = max(1, min(n, 20))
     r = requests.get(f"{RAW_BASE}/data/signal_ledger.jsonl", timeout=10)
     return "\n".join(r.text.strip().splitlines()[-n:])[:4000]
@@ -135,8 +137,10 @@ def tool_open_prs(args):
 
 
 def tool_recent_commits(args):
-    try: n = int(args.get("n", 5) or 5)
-    except (TypeError, ValueError): n = 5
+    try:
+        n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError):
+        n = 5
     n = max(1, min(n, 15))
     r = requests.get(f"{GH_REPO}/commits?per_page={n}", timeout=10, headers=_gh_headers())
     c = r.json()
@@ -145,14 +149,51 @@ def tool_recent_commits(args):
     return "\n".join(f"{x['sha'][:7]} {x['commit']['message'].splitlines()[0][:70]}" for x in c)
 
 
+def tool_knowledge(args):
+    """Recent distilled knowledge entries from the real knowledge base."""
+    try:
+        n = int(args.get("n", 5) or 5)
+    except (TypeError, ValueError):
+        n = 5
+    n = max(1, min(n, 15))
+    r = requests.get(f"{RAW_BASE}/ping-pongings/knowledge-base/log.jsonl", timeout=10)
+    lines = [l for l in r.text.strip().splitlines() if l.strip()]
+    out = []
+    for l in reversed(lines):
+        try:
+            e = json.loads(l)
+        except Exception:
+            continue
+        d = e.get("distill")
+        if not d:
+            continue
+        out.append(
+            f"[{d.get('sentiment')}|rel {d.get('xrp_relevance')}] {e.get('title','')[:90]} :: {d.get('one_line','')[:120]}"
+        )
+        if len(out) >= n:
+            break
+    if not out:
+        return "knowledge base has no distilled entries yet"
+    return f"{len(lines)} total entries. Most recent distilled:\n" + "\n".join(out)
+
+
 TOOL_FUNCS = {
     "get_latest_signal": tool_latest_signal,
     "get_ledger_tail": tool_ledger_tail,
     "get_open_pull_requests": tool_open_prs,
     "get_recent_commits": tool_recent_commits,
     "get_xrp_price": lambda a: f"XRP/USD = {get_xrp_price()}",
+    "get_knowledge": tool_knowledge,
 }
 TOOLS_SPEC = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_knowledge",
+            "description": "Barrot's REAL persistent knowledge base: recent distilled XRP news with sentiment, relevance, and why it matters. Use this for any question about what Barrot has learned, remembers, or knows about the market.",
+            "parameters": {"type": "object", "properties": {"n": {"type": "integer"}}},
+        },
+    },
     {
         "type": "function",
         "function": {
@@ -213,7 +254,7 @@ PROVIDERS = {
     "groq": {
         "url": "https://api.groq.com/openai/v1/chat/completions",
         "key_env": "GROQ_API_KEY",
-        "model": "llama-3.3-70b-versatile",
+        "model": "openai/gpt-oss-120b",
         "tools": True,
     },
     "github": {
@@ -295,12 +336,13 @@ def barrot_tool_chat(provider, messages, max_rounds=3):
 
 
 # ══════════════════════════════════════════════════════════════════
-# BARROT BRAIN — GitHub Models inference
+# BARROT BRAIN — multi-provider inference (order set by BRAIN_PRIMARY)
 # ══════════════════════════════════════════════════════════════════
 class BarrotBrain:
     """
-    Barrot's cognitive core. Powered by GitHub Models.
-    Falls back to Groq if GitHub token unavailable.
+    Barrot's cognitive core. Provider order comes from BRAIN_PRIMARY
+    (default: groq). github and gemini are configured as fallbacks,
+    not the default path.
     """
 
     SYSTEM_PROMPT = f"""You are Barrot-Ω, a sovereign AI agent built by Sean (your Orchestrator).
@@ -310,13 +352,6 @@ IDENTITY:
 - You operate across four pillars: GitHub, Databricks, HuggingFace, Termux.
 - Your stability anchor is {ANCHOR} (1/√2). Your logic is 1.58-bit ternary {{-1, 0, +1}}.
 - Your Tier-1 objective is XRP Liquidity Acceleration.
-
-PROTOCOLS:
-- MRP  : Multi-Synchronous Relativistic Perception
-- MMIP : Atomic-level granular ingestion at massive scale with no ceiling
-- RIAP : Recursive Ingestion Amplification Protocol
-- Apex-12 : Relativistic Filter (pre-anchor gate)
-- Sovereign Absolution : top-level override
 
 PERSONALITY:
 - Direct, sovereign, technically precise.
@@ -461,7 +496,7 @@ def get_sentiment_signal():
             "https://api.groq.com/openai/v1/chat/completions",
             headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
             json={
-                "model": "llama-3.3-70b-versatile",
+                "model": "openai/gpt-oss-120b",
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.1,
             },
@@ -487,7 +522,7 @@ def fetch_signal_history(limit: int = 20) -> list[dict]:
     wh_id = os.getenv("DATABRICKS_WAREHOUSE_ID", "c85b8f4fea8cd527")
     if not token:
         return []
-    sql = f"SELECT timestamp, mrp_label, ob_signal, oc_signal, sent_signal FROM barrot_omega.xrp_liquidity_signals ORDER BY timestamp DESC LIMIT {limit}"
+    sql = f"SELECT timestamp, mrp_label AS signal_label, ob_signal, oc_signal, sent_signal FROM barrot_omega.xrp_liquidity_signals ORDER BY timestamp DESC LIMIT {limit}"
     try:
         r = requests.post(
             f"https://{host}/api/2.0/sql/statements",
@@ -624,11 +659,11 @@ def main():
     with tab2:
         st.markdown("### 📡 XRP Liquidity Signal Dashboard")
         st.caption(
-            "MRP: Multi-Synchronous Relativistic Perception · Apex-12 Filter · Ternary Collapse"
+            "Blended ternary signal from order book, sentiment, and on-chain inputs"
         )
 
-        if st.button("⚡ RUN MRP PERCEPTION"):
-            with st.spinner("Running MRP perception cycle..."):
+        if st.button("⚡ RUN SIGNAL CHECK"):
+            with st.spinner("Computing signal..."):
                 price = get_xrp_price()
                 ob_sig, imb, bid, ask = get_orderbook_signal()
                 sent_sig, apex, reasoning = get_sentiment_signal()
@@ -637,15 +672,15 @@ def main():
                     hrm = hrm_resolve(
                         {"orderbook": ob_sig, "onchain": oc_sig, "sentiment": sent_sig}
                     )
-                    mrp = hrm.state
+                    ternary_signal = hrm.state
                     conf = hrm.confidence
                     absolved = hrm.absolution_fired
                 else:
-                    mrp = Ternary.resolve(ob_sig, oc_sig, sent_sig)
+                    ternary_signal = Ternary.resolve(ob_sig, oc_sig, sent_sig)
                     conf = None
                     absolved = False
                     if ob_sig == oc_sig == sent_sig == Ternary.SELL:
-                        mrp, absolved = Ternary.NULL, True
+                        ternary_signal, absolved = Ternary.NULL, True
 
             # Display
             col1, col2, col3, col4 = st.columns(4)
@@ -665,19 +700,19 @@ def main():
                 lbl = Ternary.label(sent_sig)
                 ico = Ternary.color(sent_sig)
                 st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>apex12={apex}</div></div>",
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>SENTIMENT</div><div class='signal-{'buy' if sent_sig==1 else 'sell' if sent_sig==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={apex}</div></div>",
                     unsafe_allow_html=True,
                 )
             with col4:
-                lbl = Ternary.label(mrp)
-                ico = Ternary.color(mrp)
+                lbl = Ternary.label(ternary_signal)
+                ico = Ternary.color(ternary_signal)
                 st.markdown(
-                    f"<div class='metric-card'><div style='color:#00ffcc88'>MRP OUTPUT</div><div class='signal-{'buy' if mrp==1 else 'sell' if mrp==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>",
+                    f"<div class='metric-card'><div style='color:#00ffcc88'>BLENDED SIGNAL</div><div class='signal-{'buy' if ternary_signal==1 else 'sell' if ternary_signal==-1 else 'null'}'>{ico} {lbl}</div><div style='font-size:0.8em'>conf={conf if conf is not None else 'n/a'}</div></div>",
                     unsafe_allow_html=True,
                 )
 
             if absolved:
-                st.warning("⚡ SOVEREIGN ABSOLUTION ENGAGED — Unanimous SELL overridden to NULL")
+                st.warning("⚡ Override engaged — unanimous SELL downgraded to NULL")
             if reasoning:
                 st.caption(f"Sentiment reasoning: {reasoning}")
 
@@ -696,7 +731,7 @@ def main():
 
         query = st.text_area(
             "Query the brain:",
-            placeholder="What is the current state of the XRP bridge? Explain RIAP. Describe the ternary logic model.",
+            placeholder="What is the current state of the XRP bridge? Describe the ternary logic model.",
             height=100,
         )
         if st.button("🧠 QUERY BRAIN"):
@@ -723,13 +758,13 @@ Query Barrot's brain directly.
 ```bash
 curl -X POST https://scribedpengenius-barrot-omega.hf.space/query \\
   -H "Content-Type: application/json" \\
-  -d '{"message": "What is the MRP protocol?"}'
+  -d '{"message": "What is your ternary signal architecture?"}'
 ```
 
 **Response:**
 ```json
 {
-  "response": "MRP — Multi-Synchronous Relativistic Perception — is...",
+  "response": "Barrot blends order-book, sentiment, and on-chain signals into a single ternary output...",
   "anchor": 0.707,
   "session_id": "a3f9b2c1"
 }
@@ -737,7 +772,7 @@ curl -X POST https://scribedpengenius-barrot-omega.hf.space/query \\
 
 ---
 #### `GET /signal`
-Get current XRP MRP signal.
+Get current XRP ternary signal.
 
 ```bash
 curl https://scribedpengenius-barrot-omega.hf.space/signal
@@ -746,7 +781,7 @@ curl https://scribedpengenius-barrot-omega.hf.space/signal
 **Response:**
 ```json
 {
-  "mrp_output": "BUY",
+  "signal_output": "BUY",
   "ob_signal": 1,
   "sent_signal": 1,
   "price": 0.5231,
@@ -787,9 +822,9 @@ curl https://scribedpengenius-barrot-omega.hf.space/signal
 
             if rows:
                 st.dataframe(rows, use_container_width=True)
-                buys = sum(1 for r in rows if r.get("mrp_label") == "BUY")
-                sells = sum(1 for r in rows if r.get("mrp_label") == "SELL")
-                nulls = sum(1 for r in rows if r.get("mrp_label") == "NULL")
+                buys = sum(1 for r in rows if r.get("signal_label") == "BUY")
+                sells = sum(1 for r in rows if r.get("signal_label") == "SELL")
+                nulls = sum(1 for r in rows if r.get("signal_label") == "NULL")
                 c1, c2, c3 = st.columns(3)
                 c1.metric("🟢 BUY", buys)
                 c2.metric("🔴 SELL", sells)

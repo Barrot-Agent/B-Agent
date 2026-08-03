@@ -29,6 +29,7 @@ from pathlib import Path
 from databricks.sdk import WorkspaceClient
 from databricks.sdk.service import jobs as sdk_jobs
 from databricks.sdk.service.workspace import ImportFormat, Language
+from databricks.sdk.service.compute import Environment
 
 logging.basicConfig(
     level=logging.INFO,
@@ -124,21 +125,19 @@ def _get_or_create_cluster_spec() -> dict:
     """Return a cluster spec dict.  Uses an existing cluster if configured."""
     if CLUSTER_ID:
         return {"existing_cluster_id": CLUSTER_ID}
-    return {
-        "new_cluster": {
-            "spark_version": "14.3.x-scala2.12",
-            "node_type_id": "Standard_DS3_v2",
-            "num_workers": 0,
-            "spark_conf": {"spark.databricks.cluster.profile": "singleNode"},
-            "custom_tags": {"ResourceClass": "SingleNode"},
-        }
-    }
+    return {}
 
 
 def _deploy_job(client: WorkspaceClient) -> int:
     """Create or update the Databricks job; return the job ID."""
     notebook_path = f"{WS_PATH}/app.py"
     cluster_spec = _get_or_create_cluster_spec()
+    environments = [
+        sdk_jobs.JobEnvironment(
+            environment_key="Default",
+            spec=Environment(client="1"),
+        )
+    ]
 
     task = sdk_jobs.Task(
         task_key="barrot-main",
@@ -147,6 +146,7 @@ def _deploy_job(client: WorkspaceClient) -> int:
             python_file=f"dbfs:{notebook_path}",
         ),
         **cluster_spec,
+        environment_key="Default",
     )
 
     # Check whether job already exists
@@ -168,6 +168,7 @@ def _deploy_job(client: WorkspaceClient) -> int:
                     pause_status=sdk_jobs.PauseStatus.UNPAUSED,
                 ),
                 max_concurrent_runs=1,
+                environments=environments,
             ),
         )
         return existing_id
@@ -182,6 +183,7 @@ def _deploy_job(client: WorkspaceClient) -> int:
                 pause_status=sdk_jobs.PauseStatus.UNPAUSED,
             ),
             max_concurrent_runs=1,
+            environments=environments,
         )
         return response.job_id
 

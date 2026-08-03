@@ -1,0 +1,456 @@
+{
+  "generated_from": "10 candidate ideas from webmcp_trend_summary.json",
+  "enriched_candidates": [
+    {
+      "candidate_tool_idea": "Stateless WebMCP Client",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@symbiotejs/symbiote",
+            "description": "Symbiote.js - zero-dependency close-to-platform frontend library to build super-powered web components",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@symbiotejs/symbiote"
+          },
+          {
+            "name": "@mcp-b/webmcp-polyfill",
+            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
+          },
+          {
+            "name": "@mcp-b/webmcp-types",
+            "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Model Context Protocol security tools",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "cyproxio/mcp-for-security",
+            "stars": 627,
+            "forks": 100,
+            "url": "https://github.com/cyproxio/mcp-for-security"
+          },
+          {
+            "name": "Sfedfcv/redesigned-pancake",
+            "stars": 251,
+            "forks": 0,
+            "url": "https://github.com/Sfedfcv/redesigned-pancake"
+          },
+          {
+            "name": "jettbrains/-L-",
+            "stars": 151,
+            "forks": 46,
+            "url": "https://github.com/jettbrains/-L-"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@ai-sdk/mcp",
+            "description": "The **Model Context Protocol (MCP) client** for the [AI SDK](https://ai-sdk.dev/docs) lets you connect to MCP servers and use their tools with AI SDK functions like `generateText` and `streamText`.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@ai-sdk/mcp"
+          },
+          {
+            "name": "@mcp-ui/client",
+            "description": "mcp-ui Client SDK",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-ui/client"
+          },
+          {
+            "name": "@salesforce/mcp-provider-lwc-experts",
+            "description": "(For Interal Use Only) Provided MCP Tools for code analysis and improvement of LWC components",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@salesforce/mcp-provider-lwc-experts"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Server Management Tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "microsoft/azuredatastudio",
+            "stars": 7689,
+            "forks": 993,
+            "url": "https://github.com/microsoft/azuredatastudio"
+          },
+          {
+            "name": "GameServerManagers/LinuxGSM",
+            "stars": 4873,
+            "forks": 863,
+            "url": "https://github.com/GameServerManagers/LinuxGSM"
+          },
+          {
+            "name": "vitodeploy/vito",
+            "stars": 3179,
+            "forks": 410,
+            "url": "https://github.com/vitodeploy/vito"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@sunwu51/mcp-center",
+            "description": "MCP Server management tool that aggregates multiple MCP servers",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@sunwu51/mcp-center"
+          },
+          {
+            "name": "ace-step-ui-cli",
+            "description": "ACE-Step UI CLI \u2014 Server management tool",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/ace-step-ui-cli"
+          },
+          {
+            "name": "derbados",
+            "description": "A server management tool for lazy people.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/derbados"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI-powered browser extension",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "nanobrowser/nanobrowser",
+            "stars": 13510,
+            "forks": 1418,
+            "url": "https://github.com/nanobrowser/nanobrowser"
+          },
+          {
+            "name": "kklt92/awesome-ai-extensions",
+            "stars": 527,
+            "forks": 3,
+            "url": "https://github.com/kklt92/awesome-ai-extensions"
+          },
+          {
+            "name": "snailfrying/flowers",
+            "stars": 180,
+            "forks": 9,
+            "url": "https://github.com/snailfrying/flowers"
+          }
+        ],
+        "npm": [
+          {
+            "name": "neon-init",
+            "description": "Initialize Neon projects",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/neon-init"
+          },
+          {
+            "name": "playwright",
+            "description": "A high-level API to automate web browsers",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/playwright"
+          },
+          {
+            "name": "@playwright/test",
+            "description": "A high-level API to automate web browsers",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@playwright/test"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "voice interaction tools",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "RobotecAI/rai",
+            "stars": 559,
+            "forks": 73,
+            "url": "https://github.com/RobotecAI/rai"
+          },
+          {
+            "name": "Genesis1231/Eva01",
+            "stars": 139,
+            "forks": 9,
+            "url": "https://github.com/Genesis1231/Eva01"
+          },
+          {
+            "name": "aws-samples/sample-sonic-cdk-agent",
+            "stars": 66,
+            "forks": 29,
+            "url": "https://github.com/aws-samples/sample-sonic-cdk-agent"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@twilio/voice-sdk",
+            "description": "Twilio's JavaScript Voice SDK",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@twilio/voice-sdk"
+          },
+          {
+            "name": "@openai/agents",
+            "description": "The OpenAI Agents SDK is a lightweight yet powerful framework for building multi-agent workflows.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@openai/agents"
+          },
+          {
+            "name": "@discordjs/voice",
+            "description": "Implementation of the Discord Voice API for Node.js",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@discordjs/voice"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI Agent Protocol Standardization Tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "aliyun/alibabacloud-dataworks-mcp-server",
+            "stars": 49,
+            "forks": 16,
+            "url": "https://github.com/aliyun/alibabacloud-dataworks-mcp-server"
+          },
+          {
+            "name": "ironystock/agentic-obs",
+            "stars": 21,
+            "forks": 5,
+            "url": "https://github.com/ironystock/agentic-obs"
+          },
+          {
+            "name": "sarthak1095/Redefining-QA-Multi-Agent-AI-Automation-Using-MCP-Protocol",
+            "stars": 16,
+            "forks": 13,
+            "url": "https://github.com/sarthak1095/Redefining-QA-Multi-Agent-AI-Automation-Using-MCP-Protocol"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@mastra/core",
+            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mastra/core"
+          },
+          {
+            "name": "@vercel/detect-agent",
+            "description": "Detect if code is running in an AI agent or automated development environment",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@vercel/detect-agent"
+          },
+          {
+            "name": "@agentclientprotocol/sdk",
+            "description": "The Agent Client Protocol (ACP) is a protocol that standardizes communication between *code editors* (interactive programs for viewing and editing source code) and *coding agents* (programs that use generative AI to autonomously modify code).",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@agentclientprotocol/sdk"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI-powered job scheduling tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "nycsav/notion-career-agent",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/nycsav/notion-career-agent"
+          },
+          {
+            "name": "getappweaver/job",
+            "stars": 0,
+            "forks": 0,
+            "url": "https://github.com/getappweaver/job"
+          },
+          {
+            "name": "braek5414/Job-Talk",
+            "stars": 0,
+            "forks": 0,
+            "url": "https://github.com/braek5414/Job-Talk"
+          }
+        ],
+        "npm": [
+          {
+            "name": "p-queue",
+            "description": "Promise queue with concurrency control",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/p-queue"
+          },
+          {
+            "name": "agenda",
+            "description": "Light weight job scheduler for Node.js",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/agenda"
+          },
+          {
+            "name": "node-schedule",
+            "description": "A cron-like and not-cron-like job scheduler for Node.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/node-schedule"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI-powered browser debugging tools",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "diegorafs/Chrome-DevTools-MCP",
+            "stars": 36,
+            "forks": 5,
+            "url": "https://github.com/diegorafs/Chrome-DevTools-MCP"
+          },
+          {
+            "name": "vinodbavage31/Auto_job_applier_linkedIn",
+            "stars": 8,
+            "forks": 0,
+            "url": "https://github.com/vinodbavage31/Auto_job_applier_linkedIn"
+          },
+          {
+            "name": "Ladyunicorn560/ai-web-debug",
+            "stars": 0,
+            "forks": 0,
+            "url": "https://github.com/Ladyunicorn560/ai-web-debug"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@ironbee-ai/devtools",
+            "description": "MCP Server and CLI for IronBee DevTools",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@ironbee-ai/devtools"
+          },
+          {
+            "name": "@earendil-works/pi-ai",
+            "description": "Unified LLM API with automatic model discovery and provider configuration",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@earendil-works/pi-ai"
+          },
+          {
+            "name": "browser-devtools-mcp",
+            "description": "[DEPRECATED] This package has been renamed. Please use @ironbee-ai/devtools instead.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/browser-devtools-mcp"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Agentic Web Governance Tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "jettbrains/-L-",
+            "stars": 151,
+            "forks": 46,
+            "url": "https://github.com/jettbrains/-L-"
+          },
+          {
+            "name": "jacksonjp0311-gif/Agentic-Fractal-Swarm-AGNT-Plugin",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/jacksonjp0311-gif/Agentic-Fractal-Swarm-AGNT-Plugin"
+          },
+          {
+            "name": "marioisbeck/quillAgent",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/marioisbeck/quillAgent"
+          }
+        ],
+        "npm": [
+          {
+            "name": "agentic-flow",
+            "description": "The agentic meta-harness \u2014 freeze the model, evolve the harness. An open runtime that routes each query to the cost-optimal model, evolves its own harness (planner/context/reviewer/retry/tool/memory/score policy) and autonomously repairs code, then orches",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/agentic-flow"
+          },
+          {
+            "name": "@raishin/vanguard-frontier-agentic",
+            "description": "Cloud and zero-trust agentic workflow marketplace for skills, agents, rules, MCP references, and compliance-aware architecture.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@raishin/vanguard-frontier-agentic"
+          },
+          {
+            "name": "@svayam-opensource/prj",
+            "description": "Governed Agentic Development Framework CLI (prj). A bash CLI wrapped for npm; operates on a governance workspace resolved via $ADF_WORKSPACE or the nearest org-config.yaml. Runtime prerequisites (not npm deps): bash, git, gh, yq, python3 (use Git Bash on ",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@svayam-opensource/prj"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "scaling protocol tools",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "opgginc/laravel-mcp-server",
+            "stars": 330,
+            "forks": 0,
+            "url": "https://github.com/opgginc/laravel-mcp-server"
+          },
+          {
+            "name": "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
+            "stars": 296,
+            "forks": 89,
+            "url": "https://github.com/chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020"
+          },
+          {
+            "name": "jettbrains/-L-",
+            "stars": 151,
+            "forks": 46,
+            "url": "https://github.com/jettbrains/-L-"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@aws-sdk/client-application-auto-scaling",
+            "description": "AWS SDK for JavaScript Application Auto Scaling Client for Node.js, Browser and React Native",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@aws-sdk/client-application-auto-scaling"
+          },
+          {
+            "name": "@aws-sdk/client-auto-scaling",
+            "description": "AWS SDK for JavaScript Auto Scaling Client for Node.js, Browser and React Native",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@aws-sdk/client-auto-scaling"
+          },
+          {
+            "name": "mutation-server-protocol",
+            "description": "Schema validation for the mutation server protocol (MSP).",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/mutation-server-protocol"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    }
+  ]
+}

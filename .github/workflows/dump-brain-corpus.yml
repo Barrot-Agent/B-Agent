@@ -1,0 +1,25 @@
+name: Dump Brain Corpus
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - run: python scripts/dump_brain_corpus.py
+        env:
+          DATABRICKS_HOST: dbc-82d64fee-1c2e.cloud.databricks.com
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_WAREHOUSE_ID: c85b8f4fea8cd527
+      - run: |
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@barrot-agent.com"
+          git add brain_corpus/
+          git commit -m "Dump full brain corpus for review" || echo "nothing to commit"
+          git push
