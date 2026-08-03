@@ -1,17 +1,17 @@
 {
-  "summary": "The signal, generated at **2026\u201108\u201103T18:54:55.061956+00:00**, rates XRP with a bullish strength of **89** and a confidence of **0.92**. It is based on **27** bullish news entries, giving the overall news score **93**.  \n\n- Score: 89  \n- Confidence: 0.92  \n- News score: 93 (from 27 entries)",
-  "spoken_line": "XRP is very bullish with a strength of 89, confidence 0.92, and a news score of 93 from 27 reports. Not financial advice. Informational only. Do your own research.",
+  "summary": "The signal, generated at\u202f2026\u201108\u201103\u202f19:52:48\u202fUTC, carries a bullish bias with a score of\u202f89 and a confidence of\u202f0.95. It is based on 26 bullish news entries, giving the overall news score\u202f93.\n\n- Timestamp: 2026\u201108\u201103T19:52:48.354995+00:00  \n- Signal score: 89 (confidence\u202f0.95)  \n- News data: 26 entries, news_score\u202f93 (all bullish)",
+  "spoken_line": "XRP signal update. Score 89. Confidence 0.95. Based on 26 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-08-03T18:54:55.061956+00:00",
+    "timestamp": "2026-08-03T19:52:48.354995+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 89,
-    "confidence": 0.92,
-    "source": "groq:bullish+news(27)",
+    "confidence": 0.95,
+    "source": "groq:bullish+news(26)",
     "news_score": 93,
-    "news_entries": 27,
-    "generated_at_unix": 1785783295
+    "news_entries": 26,
+    "generated_at_unix": 1785786768
   }
 }
