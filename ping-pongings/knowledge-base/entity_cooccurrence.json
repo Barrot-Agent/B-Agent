@@ -3,7 +3,7 @@
     "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_pairs_found": 336,
+  "unique_pairs_found": 343,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 9,
+      "cooccurrence_count": 10,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -241,6 +241,21 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -946,21 +961,6 @@
         },
         {
           "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -3957,6 +3957,83 @@
       "example_headlines": [
         {
           "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Crypto.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto.com",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Capitulation Has Barely Started, Analyst Says - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Analyst",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Capitulation Has Barely Started, Analyst Says - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]

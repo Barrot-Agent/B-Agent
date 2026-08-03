@@ -3,15 +3,15 @@
     "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_entities_profiled": 155,
+  "unique_entities_profiled": 157,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 57,
+      "total_mentions": 58,
       "bullish": 20,
       "neutral": 14,
-      "bearish": 23,
-      "net_sentiment_score": -0.053,
+      "bearish": 24,
+      "net_sentiment_score": -0.069,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 14,
+      "total_mentions": 16,
       "bullish": 5,
       "neutral": 2,
-      "bearish": 7,
-      "net_sentiment_score": -0.143,
+      "bearish": 9,
+      "net_sentiment_score": -0.25,
       "assets_seen_in": [
         "BTC"
       ],
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 7,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 6,
+      "net_sentiment_score": -0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Ethereum",
       "total_mentions": 7,
       "bullish": 2,
@@ -103,23 +120,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' "
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 6,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": -0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
-        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
       ]
     },
     {
@@ -345,6 +345,22 @@
       "example_headlines": [
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
+      "entity": "Analyst",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+        "Bitcoin Capitulation Has Barely Started, Analyst Says - Bitcoin Foundation"
       ]
     },
     {
@@ -984,20 +1000,6 @@
       ],
       "example_headlines": [
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Analyst",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance"
       ]
     },
     {
@@ -2272,6 +2274,34 @@
       ],
       "example_headlines": [
         "Bitcoin slides on the final day of July while equities boom - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Trump Media",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
+      ]
+    },
+    {
+      "entity": "Crypto.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
       ]
     }
   ]
