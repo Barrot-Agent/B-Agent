@@ -3,15 +3,15 @@
     "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_entities_profiled": 158,
+  "unique_entities_profiled": 160,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 60,
+      "total_mentions": 61,
       "bullish": 20,
       "neutral": 15,
-      "bearish": 25,
-      "net_sentiment_score": -0.083,
+      "bearish": 26,
+      "net_sentiment_score": -0.098,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -123,6 +123,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 6,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 6,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 6,
       "bullish": 0,
@@ -136,23 +153,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 5,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {
@@ -2276,6 +2276,34 @@
       ],
       "example_headlines": [
         "Bitcoin slides on the final day of July while equities boom - CoinDesk"
+      ]
+    },
+    {
+      "entity": "CryptoQuant",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant"
+      ]
+    },
+    {
+      "entity": "FTX",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant"
       ]
     },
     {

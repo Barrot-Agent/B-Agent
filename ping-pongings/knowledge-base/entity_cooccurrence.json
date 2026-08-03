@@ -3,7 +3,7 @@
     "xrp_entries": 273,
     "btc_entries": 91
   },
-  "unique_pairs_found": 346,
+  "unique_pairs_found": 351,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -68,7 +68,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 4,
+      "cooccurrence_count": 5,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -3957,6 +3957,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin slides on the final day of July while equities boom - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
           "asset": "BTC"
         }
       ]

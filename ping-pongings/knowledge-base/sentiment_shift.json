@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-08-03T04:03:09.577577+00:00",
+  "generated_at": "2026-08-03T05:58:08.562807+00:00",
   "shift_threshold": 15,
   "assets": {
     "XRP": {
       "recent_24h_score": 100,
       "recent_24h_entries": 3,
-      "prior_24h_score": 88,
-      "prior_24h_entries": 4,
-      "shift": 12,
+      "prior_24h_score": 100,
+      "prior_24h_entries": 3,
+      "shift": 0,
       "significant_shift": false
     },
     "BTC": {
-      "recent_24h_score": 12,
-      "recent_24h_entries": 4,
+      "recent_24h_score": 10,
+      "recent_24h_entries": 5,
       "prior_24h_score": 0,
       "prior_24h_entries": 2,
-      "shift": 12,
+      "shift": 10,
       "significant_shift": false
     }
   }
