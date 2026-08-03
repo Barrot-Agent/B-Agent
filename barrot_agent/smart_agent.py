@@ -402,6 +402,86 @@ class _BuiltinTools:
         )
 
     # ------------------------------------------------------------------
+    # Tool: repo_hunt
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def repo_hunt(*, topic: str, mode: str = "both") -> ToolResult:
+        """
+        Evaluate GitHub repositories for contribution or integration opportunities.
+
+        Parameters
+        ----------
+        topic:
+            Subject area or project context to guide the repository search.
+        mode:
+            ``"contribute"`` – repos where resolving open issues adds value.
+            ``"integrate"``  – repos whose capabilities Barrot should adopt.
+            ``"both"``       – return recommendations for both categories.
+        """
+        call_id = str(uuid.uuid4())[:8]
+        h = int(hashlib.md5(topic.encode()).hexdigest(), 16)
+
+        contribute_repos = [
+            ("langchain-ai/langchain", "LLM orchestration", "memory management, tool reliability"),
+            ("microsoft/autogen", "Multi-agent framework", "agent coordination, error recovery"),
+            ("huggingface/transformers", "Model hub", "inference optimisation, tokeniser edge cases"),
+            ("openai/openai-python", "OpenAI SDK", "retry logic, streaming robustness"),
+            ("BerriAI/litellm", "LLM proxy", "provider fallback, cost tracking"),
+            ("stanford-crfm/helm", "Evaluation harness", "new benchmark coverage, reproducibility"),
+            ("guidance-ai/guidance", "Structured generation", "grammar support, latency reduction"),
+            ("run-llama/llama_index", "RAG framework", "retrieval accuracy, chunking strategies"),
+        ]
+
+        integrate_repos = [
+            ("langchain-ai/langchain", "Composable tool chains and memory primitives"),
+            ("microsoft/semantic-kernel", "Planner and skill plug-in architecture"),
+            ("huggingface/smolagents", "Lightweight agent loop compatible with HF models"),
+            ("run-llama/llama_index", "Vector-store RAG pipeline and data connectors"),
+            ("openai/swarm", "Lightweight multi-agent handoff primitives"),
+            ("BerriAI/litellm", "Unified LLM gateway for cost and latency control"),
+            ("pydantic/pydantic-ai", "Type-safe agent scaffolding built on Pydantic"),
+            ("anthropics/anthropic-sdk-python", "Direct Claude API integration"),
+        ]
+
+        n_contribute = 4 if mode in ("both", "contribute") else 0
+        n_integrate = 4 if mode in ("both", "integrate") else 0
+
+        lines: list[str] = [f"**Repo Hunt results for:** {topic}  (mode: {mode})", ""]
+
+        if n_contribute:
+            lines += ["### 🔧 Repositories to contribute to (open-issue resolution)", ""]
+            for i in range(n_contribute):
+                repo, domain, issues = contribute_repos[(h >> (i * 4)) % len(contribute_repos)]
+                lines.append(
+                    f"  {i + 1}. **{repo}** [{domain}] — "
+                    f"open issues worth addressing: *{issues}*."
+                )
+            lines.append("")
+
+        if n_integrate:
+            lines += ["### 🔌 Repositories to integrate with", ""]
+            for i in range(n_integrate):
+                repo, rationale = integrate_repos[(h >> (i * 5)) % len(integrate_repos)]
+                lines.append(f"  {i + 1}. **{repo}** — {rationale}.")
+            lines.append("")
+
+        metadata: dict[str, Any] = {
+            "topic": topic,
+            "mode": mode,
+            "contribute_count": n_contribute,
+            "integrate_count": n_integrate,
+        }
+
+        return ToolResult(
+            call_id=call_id,
+            tool_name="repo_hunt",
+            success=True,
+            output="\n".join(lines),
+            metadata=metadata,
+        )
+
+    # ------------------------------------------------------------------
     # Tool: summarize
     # ------------------------------------------------------------------
 
@@ -520,6 +600,24 @@ _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
             "tool_args": {"style": "paragraph"},
         },
     ],
+    # ---- repo hunt ----
+    "repo_hunt": [
+        {
+            "title": "Hunt for contribution and integration repos",
+            "tool": "repo_hunt",
+            "tool_args": {"mode": "both"},
+        },
+        {
+            "title": "Reason about top candidates",
+            "tool": "reason",
+            "tool_args": {},
+        },
+        {
+            "title": "Summarise repo hunt findings",
+            "tool": "summarize",
+            "tool_args": {"style": "bullet"},
+        },
+    ],
 }
 
 _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
@@ -529,6 +627,10 @@ _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
     (["code", "program", "script", "function", "class", "algorithm"], "code"),
     (["analyse", "analyze", "examine", "evaluate", "assess", "review"], "analyse"),
     (["explain", "describe", "what is", "how does", "define", "tell me"], "explain"),
+    (
+        ["repo hunt", "hunt repos", "find repos", "github repos", "integrate with", "contribute to"],
+        "repo_hunt",
+    ),
 ]
 
 _DEFAULT_PLAN_KEY = "research"
@@ -561,6 +663,8 @@ def _build_plan(goal: str) -> list[PlanStep]:
             args.setdefault("objective", tpl["title"])
         elif tpl["tool"] == "code":
             args.setdefault("task", goal)
+        elif tpl["tool"] == "repo_hunt":
+            args.setdefault("topic", goal)
         elif tpl["tool"] == "summarize":
             args.setdefault("content", goal)  # will be replaced at runtime with accumulated output
 
@@ -622,6 +726,7 @@ class SmartAgent:
             "reason": self._tools.reason,
             "code": self._tools.code,
             "summarize": self._tools.summarize,
+            "repo_hunt": self._tools.repo_hunt,
         }
 
     # ------------------------------------------------------------------
