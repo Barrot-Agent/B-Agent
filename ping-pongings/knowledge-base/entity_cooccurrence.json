@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 273,
-    "btc_entries": 91
+    "xrp_entries": 274,
+    "btc_entries": 92
   },
-  "unique_pairs_found": 351,
+  "unique_pairs_found": 360,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -166,6 +166,21 @@
         },
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -451,6 +466,51 @@
         },
         {
           "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "JPYC",
+      "entity_b": "Kansai Electric Power",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        },
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "JPYC",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        },
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kansai Electric Power",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+          "asset": "XRP"
+        },
+        {
+          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
           "asset": "BTC"
         }
       ]
@@ -782,21 +842,6 @@
         {
           "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -1664,29 +1709,7 @@
     },
     {
       "entity_a": "JPYC",
-      "entity_b": "Kansai Electric Power",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "JPYC",
       "entity_b": "Kansai Electric Rewards",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "JPYC",
-      "entity_b": "Polygon",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -1731,17 +1754,6 @@
     {
       "entity_a": "Kansai Electric Power",
       "entity_b": "Kansai Electric Rewards",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Kansai Electric Power",
-      "entity_b": "Polygon",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -2362,6 +2374,105 @@
       "example_headlines": [
         {
           "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinGape",
+      "entity_b": "Evernorth",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinGape",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinGape",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinGape",
+      "entity_b": "XRP Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "XRP Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
           "asset": "XRP"
         }
       ]

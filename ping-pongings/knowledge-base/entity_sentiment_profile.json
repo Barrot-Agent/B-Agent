@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 273,
-    "btc_entries": 91
+    "xrp_entries": 274,
+    "btc_entries": 92
   },
-  "unique_entities_profiled": 160,
+  "unique_entities_profiled": 163,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 24,
-      "bullish": 14,
+      "total_mentions": 25,
+      "bullish": 15,
       "neutral": 6,
       "bearish": 4,
-      "net_sentiment_score": 0.417,
+      "net_sentiment_score": 0.44,
       "assets_seen_in": [
         "XRP"
       ],
@@ -173,6 +173,23 @@
       ]
     },
     {
+      "entity": "SEC",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
       "entity": "XRP Ledger",
       "total_mentions": 3,
       "bullish": 3,
@@ -202,23 +219,6 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -489,6 +489,54 @@
       "example_headlines": [
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
+      ]
+    },
+    {
+      "entity": "Kansai Electric Power",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
+      ]
+    },
+    {
+      "entity": "JPYC",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
+      ]
+    },
+    {
+      "entity": "Polygon",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
       ]
     },
     {
@@ -1089,48 +1137,6 @@
       ]
     },
     {
-      "entity": "Kansai Electric Power",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
-      ]
-    },
-    {
-      "entity": "JPYC",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
-      ]
-    },
-    {
-      "entity": "Polygon",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
-      ]
-    },
-    {
       "entity": "Kansai Electric Rewards",
       "total_mentions": 1,
       "bullish": 1,
@@ -1338,6 +1344,48 @@
       ],
       "example_headlines": [
         "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com"
+      ]
+    },
+    {
+      "entity": "XRP Treasury",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
+      "entity": "Evernorth",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
+      "entity": "CoinGape",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
       ]
     },
     {
