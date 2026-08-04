@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 280,
-    "btc_entries": 105
+    "xrp_entries": 281,
+    "btc_entries": 106
   },
-  "unique_entities_profiled": 179,
+  "unique_entities_profiled": 181,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 67,
+      "total_mentions": 68,
       "bullish": 23,
       "neutral": 15,
-      "bearish": 29,
-      "net_sentiment_score": -0.09,
+      "bearish": 30,
+      "net_sentiment_score": -0.103,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 10,
+      "total_mentions": 11,
       "bullish": 5,
       "neutral": 2,
-      "bearish": 3,
-      "net_sentiment_score": 0.2,
+      "bearish": 4,
+      "net_sentiment_score": 0.091,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2594,6 +2594,34 @@
       ],
       "example_headlines": [
         "Hashdex to shut smallest Bitcoin ETF after more than two years"
+      ]
+    },
+    {
+      "entity": "Trump Media & Technology Group (DJT)",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Truth Social",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance"
       ]
     },
     {
