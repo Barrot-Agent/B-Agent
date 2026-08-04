@@ -3,7 +3,7 @@
     "xrp_entries": 279,
     "btc_entries": 101
   },
-  "unique_entities_profiled": 173,
+  "unique_entities_profiled": 175,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 31,
+      "total_mentions": 32,
       "bullish": 20,
       "neutral": 6,
-      "bearish": 5,
-      "net_sentiment_score": 0.484,
+      "bearish": 6,
+      "net_sentiment_score": 0.438,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 28,
+      "total_mentions": 29,
       "bullish": 18,
       "neutral": 6,
-      "bearish": 4,
-      "net_sentiment_score": 0.5,
+      "bearish": 5,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "XRP"
       ],
@@ -1431,6 +1431,34 @@
       ],
       "example_headlines": [
         "Ripple invests in Zilo and Licuido to assist tokenized capital markets push"
+      ]
+    },
+    {
+      "entity": "SBI",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com"
+      ]
+    },
+    {
+      "entity": "CCN.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com"
       ]
     },
     {

@@ -3,12 +3,12 @@
     "xrp_entries": 279,
     "btc_entries": 101
   },
-  "unique_pairs_found": 384,
+  "unique_pairs_found": 389,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 26,
+      "cooccurrence_count": 27,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -2543,6 +2543,61 @@
       "example_headlines": [
         {
           "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "SBI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SBI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SBI",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
           "asset": "XRP"
         }
       ]
