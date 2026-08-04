@@ -3,7 +3,7 @@
     "xrp_entries": 283,
     "btc_entries": 114
   },
-  "unique_pairs_found": 409,
+  "unique_pairs_found": 418,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -951,6 +951,21 @@
       ]
     },
     {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
+        },
+        {
+          "title": "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Dogecoin",
       "cooccurrence_count": 2,
@@ -1026,6 +1041,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 2,
@@ -1081,6 +1111,36 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy Research",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Galaxy Research",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
           "asset": "BTC"
         }
       ]
@@ -2967,17 +3027,6 @@
       ]
     },
     {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "KULR Technology",
       "cooccurrence_count": 1,
@@ -3237,17 +3286,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -4211,28 +4249,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Galaxy Research",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coldcard",
-      "entity_b": "Galaxy Research",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "July",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -4788,6 +4804,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI sector",
+      "entity_b": "Bitcoin (BTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI sector",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI sector",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI sector",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
           "asset": "BTC"
         }
       ]

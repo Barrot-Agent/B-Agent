@@ -3,15 +3,15 @@
     "xrp_entries": 283,
     "btc_entries": 114
   },
-  "unique_entities_profiled": 181,
+  "unique_entities_profiled": 182,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 68,
+      "total_mentions": 69,
       "bullish": 23,
       "neutral": 15,
-      "bearish": 30,
-      "net_sentiment_score": -0.103,
+      "bearish": 31,
+      "net_sentiment_score": -0.116,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 9,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 8,
+      "net_sentiment_score": -0.778,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 8,
       "bullish": 2,
@@ -123,29 +140,12 @@
       ]
     },
     {
-      "entity": "Coldcard",
-      "total_mentions": 7,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 7,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "CoinDesk",
-      "total_mentions": 6,
-      "bullish": 4,
+      "total_mentions": 7,
+      "bullish": 5,
       "neutral": 0,
       "bearish": 2,
-      "net_sentiment_score": 0.333,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -170,6 +170,23 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
+      "entity": "Federal Reserve",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -219,23 +236,6 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -303,6 +303,22 @@
       ]
     },
     {
+      "entity": "Strategy",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy Announces Second Quarter 2026 Financial Results - Strategy",
+        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
+      ]
+    },
+    {
       "entity": "MSTR",
       "total_mentions": 3,
       "bullish": 2,
@@ -316,6 +332,22 @@
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Bitcoin Critic Peter Schiff Tells Bulls to Buy BTC, Not MSTR - Bitcoin Foundation",
         "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av"
+      ]
+    },
+    {
+      "entity": "STRC",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy leaves preferred STRC dividend at 12% as price still below par",
+        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
       ]
     },
     {
@@ -856,36 +888,6 @@
       ]
     },
     {
-      "entity": "Strategy",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy Announces Second Quarter 2026 Financial Results - Strategy"
-      ]
-    },
-    {
-      "entity": "STRC",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
       "entity": "Dogecoin",
       "total_mentions": 2,
       "bullish": 1,
@@ -916,6 +918,21 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk"
+      ]
+    },
+    {
       "entity": "US stocks",
       "total_mentions": 2,
       "bullish": 1,
@@ -928,6 +945,21 @@
       "example_headlines": [
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound"
+      ]
+    },
+    {
+      "entity": "Galaxy Research",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+        "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy"
       ]
     },
     {
@@ -1925,20 +1957,6 @@
       ]
     },
     {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
-      ]
-    },
-    {
       "entity": "Federal Reserve (Fed)",
       "total_mentions": 1,
       "bullish": 1,
@@ -2373,20 +2391,6 @@
       ]
     },
     {
-      "entity": "Galaxy Research",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis"
-      ]
-    },
-    {
       "entity": "equities",
       "total_mentions": 1,
       "bullish": 0,
@@ -2650,6 +2654,20 @@
       ],
       "example_headlines": [
         "\u2018Attacks Are Ongoing\u2019\u2014Urgent Warning Issued After Sudden Spread Of Massive Bitcoin Attack Sparks Pri"
+      ]
+    },
+    {
+      "entity": "AI sector",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk"
       ]
     }
   ]
