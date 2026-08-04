@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 283,
-    "btc_entries": 110
+    "btc_entries": 112
   },
   "unique_entities_profiled": 181,
   "entities": [
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 32,
-      "bullish": 20,
+      "total_mentions": 33,
+      "bullish": 21,
       "neutral": 6,
       "bearish": 6,
-      "net_sentiment_score": 0.438,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 8,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 6,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Ethereum",
       "total_mentions": 8,
       "bullish": 3,
@@ -103,23 +120,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 7,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 6,
-      "net_sentiment_score": -0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
-        "Tesla Holds 11,509 BTC on Balance Sheet, Posts $112 Million Paper Loss - Bitcoin Foundation"
       ]
     },
     {
