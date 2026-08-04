@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 280,
-    "btc_entries": 101
+    "btc_entries": 103
   },
-  "unique_entities_profiled": 175,
+  "unique_entities_profiled": 177,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 63,
+      "total_mentions": 64,
       "bullish": 22,
       "neutral": 15,
-      "bearish": 26,
-      "net_sentiment_score": -0.063,
+      "bearish": 27,
+      "net_sentiment_score": -0.078,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 18,
+      "total_mentions": 19,
       "bullish": 6,
       "neutral": 3,
-      "bearish": 9,
-      "net_sentiment_score": -0.167,
+      "bearish": 10,
+      "net_sentiment_score": -0.211,
       "assets_seen_in": [
         "BTC"
       ],
@@ -2565,6 +2565,34 @@
       ],
       "example_headlines": [
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
+      ]
+    },
+    {
+      "entity": "Hashdex",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hashdex to shut smallest Bitcoin ETF after more than two years"
+      ]
+    },
+    {
+      "entity": "ETF",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hashdex to shut smallest Bitcoin ETF after more than two years"
       ]
     }
   ]

@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 280,
-    "btc_entries": 101
+    "btc_entries": 103
   },
-  "unique_pairs_found": 389,
+  "unique_pairs_found": 394,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 11,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -4556,6 +4556,61 @@
       "example_headlines": [
         {
           "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Hashdex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Hashdex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Hashdex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
           "asset": "BTC"
         }
       ]
