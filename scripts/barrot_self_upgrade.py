@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """Barrot self-upgrade: identify capability gaps, generate a module, verify it,
 open a PR. Never pushes to main -- barrot-gated-merge.yml tiers the result."""
