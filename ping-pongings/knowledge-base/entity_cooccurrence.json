@@ -3,7 +3,7 @@
     "xrp_entries": 280,
     "btc_entries": 105
   },
-  "unique_pairs_found": 402,
+  "unique_pairs_found": 404,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 14,
+      "cooccurrence_count": 15,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -4696,6 +4696,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Forbes",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Attacks Are Ongoing\u2019\u2014Urgent Warning Issued After Sudden Spread Of Massive Bitcoin Attack Sparks Pri",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Forbes",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Attacks Are Ongoing\u2019\u2014Urgent Warning Issued After Sudden Spread Of Massive Bitcoin Attack Sparks Pri",
           "asset": "BTC"
         }
       ]
