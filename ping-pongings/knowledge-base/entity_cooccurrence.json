@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 287,
-    "btc_entries": 121
+    "btc_entries": 122
   },
-  "unique_pairs_found": 473,
+  "unique_pairs_found": 480,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 18,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -52,6 +52,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 7,
       "example_headlines": [
@@ -61,21 +76,6 @@
         },
         {
           "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -126,6 +126,36 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 5,
@@ -141,32 +171,32 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 5,
       "example_headlines": [
         {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
         },
         {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
         }
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "XRP",
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         },
         {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
+          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "asset": "BTC"
         }
       ]
     },
@@ -181,21 +211,6 @@
         },
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -292,7 +307,7 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
+      "entity_b": "CryptoQuant",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -300,7 +315,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
           "asset": "BTC"
         }
       ]
@@ -346,6 +361,36 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -1011,8 +1056,8 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "CryptoQuant",
+      "entity_a": "CryptoQuant",
+      "entity_b": "Ethereum",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -1020,7 +1065,22 @@
           "asset": "XRP"
         },
         {
-          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "BTC"
         }
       ]
@@ -1206,7 +1266,7 @@
       ]
     },
     {
-      "entity_a": "BTC",
+      "entity_a": "Bitcoin Foundation",
       "entity_b": "Coldcard",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -1215,22 +1275,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
           "asset": "BTC"
         }
       ]
@@ -2931,28 +2976,6 @@
       ]
     },
     {
-      "entity_a": "CryptoQuant",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoQuant",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "Ripple's stablecoin",
       "cooccurrence_count": 1,
@@ -4191,17 +4214,6 @@
       "example_headlines": [
         {
           "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Coldcard",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -5544,6 +5556,83 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ledger",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
           "asset": "BTC"
         }
       ]

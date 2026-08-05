@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 287,
-    "btc_entries": 121
+    "btc_entries": 122
   },
-  "unique_entities_profiled": 196,
+  "unique_entities_profiled": 198,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 79,
-      "bullish": 29,
-      "neutral": 15,
+      "total_mentions": 81,
+      "bullish": 30,
+      "neutral": 16,
       "bearish": 35,
-      "net_sentiment_score": -0.076,
+      "net_sentiment_score": -0.062,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 36,
-      "bullish": 24,
+      "total_mentions": 37,
+      "bullish": 25,
       "neutral": 6,
       "bearish": 6,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.514,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 25,
+      "total_mentions": 27,
       "bullish": 9,
-      "neutral": 3,
-      "bearish": 13,
-      "net_sentiment_score": -0.16,
+      "neutral": 4,
+      "bearish": 14,
+      "net_sentiment_score": -0.185,
       "assets_seen_in": [
         "BTC"
       ],
@@ -69,6 +69,23 @@
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
         "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Coldcard",
+      "total_mentions": 13,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 11,
+      "net_sentiment_score": -0.692,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {
@@ -89,29 +106,12 @@
       ]
     },
     {
-      "entity": "Coldcard",
-      "total_mentions": 12,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 10,
-      "net_sentiment_score": -0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 3,
       "neutral": 0,
-      "bearish": 6,
-      "net_sentiment_score": -0.333,
+      "bearish": 7,
+      "net_sentiment_score": -0.4,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -124,11 +124,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 9,
-      "bullish": 4,
+      "total_mentions": 10,
+      "bullish": 5,
       "neutral": 5,
       "bearish": 0,
-      "net_sentiment_score": 0.444,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -137,6 +137,22 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
+      ]
+    },
+    {
+      "entity": "Fortune",
+      "total_mentions": 8,
+      "bullish": 0,
+      "neutral": 7,
+      "bearish": 1,
+      "net_sentiment_score": -0.125,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
@@ -154,22 +170,6 @@
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
         "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
         "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Fortune",
-      "total_mentions": 7,
-      "bullish": 0,
-      "neutral": 6,
-      "bearish": 1,
-      "net_sentiment_score": -0.143,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune",
-        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
@@ -269,6 +269,23 @@
         "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
+      ]
+    },
+    {
+      "entity": "CryptoQuant",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
       ]
     },
     {
@@ -968,22 +985,6 @@
       "example_headlines": [
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
-      ]
-    },
-    {
-      "entity": "CryptoQuant",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant"
       ]
     },
     {
@@ -2881,6 +2882,34 @@
       ],
       "example_headlines": [
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "Ledger",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Do the Coldcard attacks mean all hardware wallets are now insecure?"
+      ]
+    },
+    {
+      "entity": "Trezor",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Do the Coldcard attacks mean all hardware wallets are now insecure?"
       ]
     }
   ]
