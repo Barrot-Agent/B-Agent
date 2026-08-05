@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 287,
+    "xrp_entries": 288,
     "btc_entries": 122
   },
   "unique_entities_profiled": 205,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 37,
+      "total_mentions": 38,
       "bullish": 25,
-      "neutral": 6,
+      "neutral": 7,
       "bearish": 6,
-      "net_sentiment_score": 0.514,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 31,
+      "total_mentions": 32,
       "bullish": 20,
-      "neutral": 6,
+      "neutral": 7,
       "bearish": 5,
-      "net_sentiment_score": 0.484,
+      "net_sentiment_score": 0.469,
       "assets_seen_in": [
         "XRP"
       ],
@@ -72,6 +72,23 @@
       ]
     },
     {
+      "entity": "Yahoo Finance",
+      "total_mentions": 13,
+      "bullish": 6,
+      "neutral": 3,
+      "bearish": 4,
+      "net_sentiment_score": 0.154,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 13,
       "bullish": 2,
@@ -86,23 +103,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance",
-      "total_mentions": 12,
-      "bullish": 6,
-      "neutral": 2,
-      "bearish": 4,
-      "net_sentiment_score": 0.167,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -943,6 +943,21 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "MarketForces Africa",
       "total_mentions": 2,
       "bullish": 2,
@@ -1358,20 +1373,6 @@
       ],
       "example_headlines": [
         "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool"
       ]
     },
     {
