@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 115
+    "btc_entries": 116
   },
-  "unique_pairs_found": 432,
+  "unique_pairs_found": 444,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 8,
+      "cooccurrence_count": 9,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -4536,6 +4536,105 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Clarity Act",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Hodler\u2019s Digest",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "Hodler\u2019s Digest",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Hodler\u2019s Digest",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Coinbase",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5069,6 +5168,39 @@
       "example_headlines": [
         {
           "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Michael Terpin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Transform Ventures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Michael Terpin",
+      "entity_b": "Transform Ventures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin",
           "asset": "BTC"
         }
       ]
