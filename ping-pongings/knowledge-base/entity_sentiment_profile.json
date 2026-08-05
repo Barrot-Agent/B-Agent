@@ -3,15 +3,15 @@
     "xrp_entries": 287,
     "btc_entries": 122
   },
-  "unique_entities_profiled": 198,
+  "unique_entities_profiled": 205,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 81,
-      "bullish": 30,
+      "total_mentions": 82,
+      "bullish": 31,
       "neutral": 16,
       "bearish": 35,
-      "net_sentiment_score": -0.062,
+      "net_sentiment_score": -0.049,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -767,6 +767,22 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
+      ]
+    },
+    {
       "entity": "ENS Labs",
       "total_mentions": 2,
       "bullish": 0,
@@ -1314,20 +1330,6 @@
       ],
       "example_headlines": [
         "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
       ]
     },
     {
@@ -2759,6 +2761,76 @@
       ]
     },
     {
+      "entity": "Malaysia Blockchain Week",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Malaysia Blockchain Week\u2019s OnlyFans scandal, lonely heart scammed for $3.3M: Asia Express"
+      ]
+    },
+    {
+      "entity": "OnlyFans",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Malaysia Blockchain Week\u2019s OnlyFans scandal, lonely heart scammed for $3.3M: Asia Express"
+      ]
+    },
+    {
+      "entity": "Hong Kong",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Malaysia Blockchain Week\u2019s OnlyFans scandal, lonely heart scammed for $3.3M: Asia Express"
+      ]
+    },
+    {
+      "entity": "Malaysian authorities",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Malaysia Blockchain Week\u2019s OnlyFans scandal, lonely heart scammed for $3.3M: Asia Express"
+      ]
+    },
+    {
+      "entity": "crypto conference",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Malaysia Blockchain Week\u2019s OnlyFans scandal, lonely heart scammed for $3.3M: Asia Express"
+      ]
+    },
+    {
       "entity": "AI sector",
       "total_mentions": 1,
       "bullish": 1,
@@ -2882,6 +2954,34 @@
       ],
       "example_headlines": [
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "Arthur Hayes",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
+      ]
+    },
+    {
+      "entity": "Big Tech",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
       ]
     },
     {
