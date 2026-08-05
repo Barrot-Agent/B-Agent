@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 114
+    "btc_entries": 115
   },
-  "unique_entities_profiled": 182,
+  "unique_entities_profiled": 185,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 69,
+      "total_mentions": 71,
       "bullish": 23,
       "neutral": 15,
-      "bearish": 31,
-      "net_sentiment_score": -0.116,
+      "bearish": 33,
+      "net_sentiment_score": -0.141,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 33,
-      "bullish": 21,
+      "total_mentions": 34,
+      "bullish": 22,
       "neutral": 6,
       "bearish": 6,
-      "net_sentiment_score": 0.455,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 29,
-      "bullish": 18,
+      "total_mentions": 30,
+      "bullish": 19,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.448,
+      "net_sentiment_score": 0.467,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 22,
+      "total_mentions": 23,
       "bullish": 7,
       "neutral": 3,
-      "bearish": 12,
-      "net_sentiment_score": -0.227,
+      "bearish": 13,
+      "net_sentiment_score": -0.261,
       "assets_seen_in": [
         "BTC"
       ],
@@ -90,11 +90,11 @@
     },
     {
       "entity": "Coldcard",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 1,
       "neutral": 0,
-      "bearish": 8,
-      "net_sentiment_score": -0.778,
+      "bearish": 9,
+      "net_sentiment_score": -0.8,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -158,11 +158,11 @@
     },
     {
       "entity": "Fortune",
-      "total_mentions": 6,
+      "total_mentions": 7,
       "bullish": 0,
       "neutral": 6,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
+      "bearish": 1,
+      "net_sentiment_score": -0.143,
       "assets_seen_in": [
         "BTC"
       ],
@@ -170,6 +170,22 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -204,22 +220,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -843,6 +843,21 @@
       ]
     },
     {
+      "entity": "Licuido",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+        "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Galaxy",
       "total_mentions": 2,
       "bullish": 2,
@@ -900,6 +915,21 @@
       "example_headlines": [
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
         "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
+      "entity": "CNBC",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
       ]
     },
     {
@@ -1453,20 +1483,6 @@
       ]
     },
     {
-      "entity": "Licuido",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple invests in Zilo and Licuido to assist tokenized capital markets push"
-      ]
-    },
-    {
       "entity": "SBI",
       "total_mentions": 1,
       "bullish": 0,
@@ -1520,6 +1536,20 @@
       ],
       "example_headlines": [
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
+      ]
+    },
+    {
+      "entity": "ZILO",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St."
       ]
     },
     {
@@ -1898,20 +1928,6 @@
       ],
       "example_headlines": [
         "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha"
-      ]
-    },
-    {
-      "entity": "CNBC",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC"
       ]
     },
     {
@@ -2668,6 +2684,34 @@
       ],
       "example_headlines": [
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Jim Cramer",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
+      ]
+    },
+    {
+      "entity": "Quantum computing",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
       ]
     }
   ]

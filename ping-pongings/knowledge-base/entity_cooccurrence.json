@@ -1,14 +1,14 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 114
+    "btc_entries": 115
   },
-  "unique_pairs_found": 418,
+  "unique_pairs_found": 432,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 27,
+      "cooccurrence_count": 28,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 15,
+      "cooccurrence_count": 16,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -46,6 +46,21 @@
         },
         {
           "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -66,21 +81,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 5,
@@ -91,6 +91,36 @@
         },
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -136,36 +166,6 @@
         },
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -921,6 +921,36 @@
       ]
     },
     {
+      "entity_a": "Licuido",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Licuido",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Galaxy",
       "cooccurrence_count": 2,
@@ -1036,6 +1066,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
           "asset": "BTC"
         }
       ]
@@ -2588,28 +2633,6 @@
     },
     {
       "entity_a": "Licuido",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Licuido",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Licuido",
       "entity_b": "Zilo",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -2780,6 +2803,61 @@
       "example_headlines": [
         {
           "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Licuido",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Licuido",
+      "entity_b": "ZILO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "ZILO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "ZILO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP Ledger",
+      "entity_b": "ZILO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -3220,17 +3298,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CNBC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
           "asset": "BTC"
         }
       ]
@@ -4903,6 +4970,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin owners rocked by $116 million hack: What we know about the Coldcard exploit - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Jim Cramer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Jim Cramer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CNBC",
+      "entity_b": "Jim Cramer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CNBC",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Jim Cramer",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
           "asset": "BTC"
         }
       ]
