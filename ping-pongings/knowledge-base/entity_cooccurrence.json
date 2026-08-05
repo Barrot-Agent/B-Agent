@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 284,
-    "btc_entries": 119
+    "xrp_entries": 287,
+    "btc_entries": 121
   },
-  "unique_pairs_found": 454,
+  "unique_pairs_found": 473,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 28,
+      "cooccurrence_count": 29,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 9,
+      "cooccurrence_count": 10,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -96,6 +96,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 5,
@@ -111,31 +141,31 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
           "asset": "XRP"
         },
         {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
           "asset": "XRP"
         },
         {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -182,21 +212,6 @@
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
         }
       ]
     },
@@ -276,16 +291,31 @@
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "XRP",
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         },
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
           "asset": "BTC"
         }
       ]
@@ -921,6 +951,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TheStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Licuido",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -952,15 +1012,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Galaxy",
+      "entity_b": "CryptoQuant",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
-          "asset": "BTC"
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
         },
         {
-          "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
           "asset": "BTC"
         }
       ]
@@ -1013,21 +1073,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Dogecoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -1096,6 +1141,21 @@
         },
         {
           "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -1201,6 +1261,21 @@
         },
         {
           "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -2526,28 +2601,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "TheStreet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TheStreet",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinGape",
       "entity_b": "Evernorth",
       "cooccurrence_count": 1,
@@ -2873,6 +2926,83 @@
       "example_headlines": [
         {
           "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple's stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple's stablecoin",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple's stablecoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple's stablecoin",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TheStreet",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
           "asset": "XRP"
         }
       ]
@@ -3346,17 +3476,6 @@
       "example_headlines": [
         {
           "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
           "asset": "BTC"
         }
       ]
@@ -4375,17 +4494,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "CryptoQuant",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "FTX",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -4759,6 +4867,72 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Japan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan",
+      "entity_b": "Yen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "Yen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "ETF",
       "cooccurrence_count": 1,
@@ -4772,17 +4946,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "Hashdex",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -5315,6 +5478,72 @@
       "example_headlines": [
         {
           "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Galaxy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Galaxy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Galaxy",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]

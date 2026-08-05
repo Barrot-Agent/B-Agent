@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 284,
-    "btc_entries": 119
+    "xrp_entries": 287,
+    "btc_entries": 121
   },
-  "unique_entities_profiled": 193,
+  "unique_entities_profiled": 196,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 76,
-      "bullish": 27,
+      "total_mentions": 79,
+      "bullish": 29,
       "neutral": 15,
-      "bearish": 34,
-      "net_sentiment_score": -0.092,
+      "bearish": 35,
+      "net_sentiment_score": -0.076,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 34,
-      "bullish": 22,
+      "total_mentions": 36,
+      "bullish": 24,
       "neutral": 6,
       "bearish": 6,
-      "net_sentiment_score": 0.471,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 30,
-      "bullish": 19,
+      "total_mentions": 31,
+      "bullish": 20,
       "neutral": 6,
       "bearish": 5,
-      "net_sentiment_score": 0.467,
+      "net_sentiment_score": 0.484,
       "assets_seen_in": [
         "XRP"
       ],
@@ -90,11 +90,11 @@
     },
     {
       "entity": "Coldcard",
-      "total_mentions": 11,
-      "bullish": 1,
+      "total_mentions": 12,
+      "bullish": 2,
       "neutral": 0,
       "bearish": 10,
-      "net_sentiment_score": -0.818,
+      "net_sentiment_score": -0.667,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -124,11 +124,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 8,
-      "bullish": 3,
+      "total_mentions": 9,
+      "bullish": 4,
       "neutral": 5,
       "bearish": 0,
-      "net_sentiment_score": 0.375,
+      "net_sentiment_score": 0.444,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -174,8 +174,8 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 4,
-      "bullish": 4,
+      "total_mentions": 5,
+      "bullish": 5,
       "neutral": 0,
       "bearish": 0,
       "net_sentiment_score": 1.0,
@@ -239,6 +239,23 @@
       ]
     },
     {
+      "entity": "Japan",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+        "US hints at more yen intervention: Five things to know in Bitcoin this week"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 3,
       "bullish": 2,
@@ -268,6 +285,22 @@
         "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
         "BitMEX hit with 623 BTC lawsuit on day it announces shutdown",
         "BitMEX Faces Proposed Class Action Seeking Return Of 622 BTC"
+      ]
+    },
+    {
+      "entity": "Galaxy",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
+        "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -364,6 +397,22 @@
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
         "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -653,21 +702,6 @@
       ]
     },
     {
-      "entity": "Japan",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
-        "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News"
-      ]
-    },
-    {
       "entity": "CleanCore Solutions",
       "total_mentions": 2,
       "bullish": 1,
@@ -891,6 +925,21 @@
       ]
     },
     {
+      "entity": "TheStreet",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+        "XRP holders can now borrow Ripple's stablecoin - thestreet.com"
+      ]
+    },
+    {
       "entity": "Licuido",
       "total_mentions": 2,
       "bullish": 2,
@@ -922,18 +971,19 @@
       ]
     },
     {
-      "entity": "Galaxy",
+      "entity": "CryptoQuant",
       "total_mentions": 2,
-      "bullish": 2,
+      "bullish": 1,
       "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
-        "BTC"
+        "BTC",
+        "XRP"
       ],
       "example_headlines": [
-        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
-        "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com"
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant"
       ]
     },
     {
@@ -997,21 +1047,6 @@
       ]
     },
     {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
-      ]
-    },
-    {
       "entity": "US stocks",
       "total_mentions": 2,
       "bullish": 1,
@@ -1039,6 +1074,21 @@
       "example_headlines": [
         "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
         "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy"
+      ]
+    },
+    {
+      "entity": "ETF",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -1434,20 +1484,6 @@
       ]
     },
     {
-      "entity": "TheStreet",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com"
-      ]
-    },
-    {
       "entity": "Crypto analyst",
       "total_mentions": 1,
       "bullish": 1,
@@ -1571,6 +1607,20 @@
       ],
       "example_headlines": [
         "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Ripple's stablecoin",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP holders can now borrow Ripple's stablecoin - thestreet.com"
       ]
     },
     {
@@ -2456,20 +2506,6 @@
       ]
     },
     {
-      "entity": "CryptoQuant",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant"
-      ]
-    },
-    {
       "entity": "FTX",
       "total_mentions": 1,
       "bullish": 0,
@@ -2624,7 +2660,7 @@
       ]
     },
     {
-      "entity": "Hashdex",
+      "entity": "United States",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -2634,11 +2670,25 @@
         "BTC"
       ],
       "example_headlines": [
-        "Hashdex to shut smallest Bitcoin ETF after more than two years"
+        "US hints at more yen intervention: Five things to know in Bitcoin this week"
       ]
     },
     {
-      "entity": "ETF",
+      "entity": "Yen",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US hints at more yen intervention: Five things to know in Bitcoin this week"
+      ]
+    },
+    {
+      "entity": "Hashdex",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
