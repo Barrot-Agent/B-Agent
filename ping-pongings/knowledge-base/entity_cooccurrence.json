@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 116
+    "btc_entries": 117
   },
-  "unique_pairs_found": 444,
+  "unique_pairs_found": 448,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 16,
+      "cooccurrence_count": 18,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -52,6 +52,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 7,
       "example_headlines": [
@@ -61,21 +76,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -92,6 +92,21 @@
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
+          "asset": "BTC"
         }
       ]
     },
@@ -126,21 +141,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 4,
@@ -151,6 +151,21 @@
         },
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -301,21 +316,6 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -976,6 +976,21 @@
         },
         {
           "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
           "asset": "BTC"
         }
       ]
@@ -2935,17 +2950,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin mining pool Poolin files for Chapter 11 bankruptcy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -5201,6 +5205,50 @@
       "example_headlines": [
         {
           "title": "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "American Bitcoin",
+      "entity_b": "PR Newswire",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strait of Hormuz",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "Strait of Hormuz",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
           "asset": "BTC"
         }
       ]

@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 116
+    "btc_entries": 117
   },
-  "unique_entities_profiled": 189,
+  "unique_entities_profiled": 192,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 72,
-      "bullish": 23,
+      "total_mentions": 75,
+      "bullish": 26,
       "neutral": 15,
       "bearish": 34,
-      "net_sentiment_score": -0.153,
+      "net_sentiment_score": -0.107,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 23,
-      "bullish": 7,
+      "total_mentions": 25,
+      "bullish": 9,
       "neutral": 3,
       "bearish": 13,
-      "net_sentiment_score": -0.261,
+      "net_sentiment_score": -0.16,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 11,
-      "bullish": 5,
+      "total_mentions": 12,
+      "bullish": 6,
       "neutral": 2,
       "bearish": 4,
-      "net_sentiment_score": 0.091,
+      "net_sentiment_score": 0.167,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -107,11 +107,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 8,
-      "bullish": 2,
+      "total_mentions": 9,
+      "bullish": 3,
       "neutral": 0,
       "bearish": 6,
-      "net_sentiment_score": -0.5,
+      "net_sentiment_score": -0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1007,6 +1007,21 @@
       "example_headlines": [
         "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
         "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy"
+      ]
+    },
+    {
+      "entity": "American Bitcoin",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+        "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire"
       ]
     },
     {
@@ -2592,20 +2607,6 @@
       ]
     },
     {
-      "entity": "American Bitcoin",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
-      ]
-    },
-    {
       "entity": "Donald Trump",
       "total_mentions": 1,
       "bullish": 1,
@@ -2771,6 +2772,48 @@
       ],
       "example_headlines": [
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
+      "entity": "PR Newswire",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire"
+      ]
+    },
+    {
+      "entity": "S&P 500",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record"
+      ]
+    },
+    {
+      "entity": "Strait of Hormuz",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record"
       ]
     }
   ]
