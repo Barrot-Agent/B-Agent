@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 117
+    "btc_entries": 119
   },
-  "unique_pairs_found": 448,
+  "unique_pairs_found": 454,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -5249,6 +5249,72 @@
       "example_headlines": [
         {
           "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "American Bitcoin",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "American Bitcoin",
+      "entity_b": "Decrypt",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "American Bitcoin",
+      "entity_b": "Trump family",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Decrypt",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Trump family",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Decrypt",
+      "entity_b": "Trump family",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
           "asset": "BTC"
         }
       ]

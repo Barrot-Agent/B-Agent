@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 284,
-    "btc_entries": 117
+    "btc_entries": 119
   },
-  "unique_entities_profiled": 192,
+  "unique_entities_profiled": 193,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 75,
-      "bullish": 26,
+      "total_mentions": 76,
+      "bullish": 27,
       "neutral": 15,
       "bearish": 34,
-      "net_sentiment_score": -0.107,
+      "net_sentiment_score": -0.092,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -380,6 +380,22 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
+      "entity": "American Bitcoin",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+        "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
+        "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
       ]
     },
     {
@@ -890,6 +906,22 @@
       ]
     },
     {
+      "entity": "Decrypt",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
       "entity": "Galaxy",
       "total_mentions": 2,
       "bullish": 2,
@@ -1007,21 +1039,6 @@
       "example_headlines": [
         "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
         "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy"
-      ]
-    },
-    {
-      "entity": "American Bitcoin",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-        "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire"
       ]
     },
     {
@@ -1530,20 +1547,6 @@
     },
     {
       "entity": "RLUSD",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
-      ]
-    },
-    {
-      "entity": "Decrypt",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -2814,6 +2817,20 @@
       ],
       "example_headlines": [
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record"
+      ]
+    },
+    {
+      "entity": "Trump family",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
       ]
     }
   ]
