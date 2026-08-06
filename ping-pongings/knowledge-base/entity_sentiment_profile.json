@@ -3,15 +3,15 @@
     "xrp_entries": 291,
     "btc_entries": 127
   },
-  "unique_entities_profiled": 213,
+  "unique_entities_profiled": 216,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 88,
+      "total_mentions": 89,
       "bullish": 34,
       "neutral": 16,
-      "bearish": 38,
-      "net_sentiment_score": -0.045,
+      "bearish": 39,
+      "net_sentiment_score": -0.056,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1168,6 +1168,21 @@
       "example_headlines": [
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
+      ]
+    },
+    {
+      "entity": "Michael Saylor",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+        "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis"
       ]
     },
     {
@@ -2754,20 +2769,6 @@
       ]
     },
     {
-      "entity": "Michael Saylor",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av"
-      ]
-    },
-    {
       "entity": "Forbes",
       "total_mentions": 1,
       "bullish": 0,
@@ -3129,6 +3130,48 @@
       ],
       "example_headlines": [
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
+      "entity": "MicroStrategy",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis"
+      ]
+    },
+    {
+      "entity": "Attorney General",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis"
+      ]
+    },
+    {
+      "entity": "Corporate Treasury Model",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis"
       ]
     }
   ]

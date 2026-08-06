@@ -3,7 +3,7 @@
     "xrp_entries": 291,
     "btc_entries": 127
   },
-  "unique_pairs_found": 525,
+  "unique_pairs_found": 534,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1396,6 +1396,21 @@
         },
         {
           "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Michael Saylor",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
           "asset": "BTC"
         }
       ]
@@ -5156,17 +5171,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Michael Saylor",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "MSTR",
       "cooccurrence_count": 1,
@@ -6152,6 +6156,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Attorney General",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Attorney General",
+      "entity_b": "Corporate Treasury Model",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Attorney General",
+      "entity_b": "Michael Saylor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Attorney General",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Corporate Treasury Model",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Corporate Treasury Model",
+      "entity_b": "Michael Saylor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Corporate Treasury Model",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Michael Saylor",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
           "asset": "BTC"
         }
       ]
