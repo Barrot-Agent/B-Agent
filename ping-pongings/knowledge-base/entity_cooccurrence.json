@@ -3,7 +3,7 @@
     "xrp_entries": 288,
     "btc_entries": 122
   },
-  "unique_pairs_found": 497,
+  "unique_pairs_found": 508,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 19,
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -156,6 +156,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 5,
@@ -197,21 +212,6 @@
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
         }
       ]
     },
@@ -361,6 +361,21 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
         }
       ]
@@ -1146,6 +1161,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETH",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "STRC",
       "entity_b": "Strategy",
       "cooccurrence_count": 2,
@@ -1281,21 +1311,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "Coldcard",
       "cooccurrence_count": 2,
@@ -1351,6 +1366,21 @@
         },
         {
           "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        },
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
           "asset": "BTC"
         }
       ]
@@ -3149,17 +3179,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "ETH",
       "cooccurrence_count": 1,
@@ -4469,6 +4488,39 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "July",
       "cooccurrence_count": 1,
@@ -5526,17 +5578,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "S&P 500",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Strait of Hormuz",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5828,6 +5869,94 @@
       "example_headlines": [
         {
           "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "China",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gold",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "China",
+      "entity_b": "Gold",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "China",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "China",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gold",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gold",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
           "asset": "BTC"
         }
       ]

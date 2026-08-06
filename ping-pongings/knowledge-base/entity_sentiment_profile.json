@@ -3,15 +3,15 @@
     "xrp_entries": 288,
     "btc_entries": 122
   },
-  "unique_entities_profiled": 205,
+  "unique_entities_profiled": 207,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 82,
-      "bullish": 31,
+      "total_mentions": 84,
+      "bullish": 32,
       "neutral": 16,
-      "bearish": 35,
-      "net_sentiment_score": -0.049,
+      "bearish": 36,
+      "net_sentiment_score": -0.048,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 27,
-      "bullish": 9,
+      "total_mentions": 28,
+      "bullish": 10,
       "neutral": 4,
       "bearish": 14,
-      "net_sentiment_score": -0.185,
+      "net_sentiment_score": -0.143,
       "assets_seen_in": [
         "BTC"
       ],
@@ -106,6 +106,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 11,
+      "bullish": 6,
+      "neutral": 5,
+      "bearish": 0,
+      "net_sentiment_score": 0.545,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 10,
       "bullish": 3,
@@ -120,23 +137,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 10,
-      "bullish": 5,
-      "neutral": 5,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
       ]
     },
     {
@@ -446,6 +446,22 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
+      "entity": "US stocks",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -1049,6 +1065,21 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
+      ]
+    },
+    {
       "entity": "Dogecoin",
       "total_mentions": 2,
       "bullish": 1,
@@ -1079,21 +1110,6 @@
       ]
     },
     {
-      "entity": "US stocks",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound"
-      ]
-    },
-    {
       "entity": "Galaxy Research",
       "total_mentions": 2,
       "bullish": 0,
@@ -1121,6 +1137,21 @@
       "example_headlines": [
         "Hashdex to shut smallest Bitcoin ETF after more than two years",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
+      "entity": "S&P 500",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -1695,20 +1726,6 @@
       ],
       "example_headlines": [
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -2916,20 +2933,6 @@
       ]
     },
     {
-      "entity": "S&P 500",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record"
-      ]
-    },
-    {
       "entity": "Strait of Hormuz",
       "total_mentions": 1,
       "bullish": 1,
@@ -3011,6 +3014,34 @@
       ],
       "example_headlines": [
         "Do the Coldcard attacks mean all hardware wallets are now insecure?"
+      ]
+    },
+    {
+      "entity": "China",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
+      "entity": "Gold",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     }
   ]
