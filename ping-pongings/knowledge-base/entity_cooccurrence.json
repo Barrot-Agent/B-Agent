@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 290,
-    "btc_entries": 125
+    "xrp_entries": 291,
+    "btc_entries": 127
   },
-  "unique_pairs_found": 519,
+  "unique_pairs_found": 525,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 21,
+      "cooccurrence_count": 22,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -406,6 +406,21 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -1372,15 +1387,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "ETF",
+      "entity_b": "FTX",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
           "asset": "BTC"
         }
       ]
@@ -4580,17 +4595,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "FTX",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Coldcard",
       "entity_b": "CryptoQuant",
       "cooccurrence_count": 1,
@@ -5735,6 +5739,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Glassnode",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Glassnode",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "FTX",
+      "entity_b": "Glassnode",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Coldcard",
       "entity_b": "ETF",
       "cooccurrence_count": 1,
@@ -6060,6 +6108,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US-listed Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "US-listed Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
           "asset": "BTC"
         }
       ]

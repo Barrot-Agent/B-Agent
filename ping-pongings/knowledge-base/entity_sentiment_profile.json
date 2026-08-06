@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 290,
-    "btc_entries": 125
+    "xrp_entries": 291,
+    "btc_entries": 127
   },
-  "unique_entities_profiled": 211,
+  "unique_entities_profiled": 213,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 86,
-      "bullish": 33,
+      "total_mentions": 88,
+      "bullish": 34,
       "neutral": 16,
-      "bearish": 37,
-      "net_sentiment_score": -0.047,
+      "bearish": 38,
+      "net_sentiment_score": -0.045,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 29,
+      "total_mentions": 30,
       "bullish": 10,
       "neutral": 4,
-      "bearish": 15,
-      "net_sentiment_score": -0.172,
+      "bearish": 16,
+      "net_sentiment_score": -0.2,
       "assets_seen_in": [
         "BTC"
       ],
@@ -478,6 +478,22 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "ETF",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M"
       ]
     },
     {
@@ -1140,18 +1156,18 @@
       ]
     },
     {
-      "entity": "ETF",
+      "entity": "FTX",
       "total_mentions": 2,
-      "bullish": 1,
+      "bullish": 0,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
       "assets_seen_in": [
         "BTC"
       ],
       "example_headlines": [
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
       ]
     },
     {
@@ -2528,20 +2544,6 @@
       ]
     },
     {
-      "entity": "FTX",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant"
-      ]
-    },
-    {
       "entity": "Trump Media",
       "total_mentions": 1,
       "bullish": 0,
@@ -2990,6 +2992,20 @@
       ]
     },
     {
+      "entity": "Glassnode",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
+      ]
+    },
+    {
       "entity": "Ledger",
       "total_mentions": 1,
       "bullish": 0,
@@ -3085,6 +3101,20 @@
       ],
       "example_headlines": [
         "Bitcoin Red Team reports 5K findings in sweeping security audit"
+      ]
+    },
+    {
+      "entity": "US-listed Bitcoin ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M"
       ]
     },
     {
