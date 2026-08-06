@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 290,
-    "btc_entries": 124
+    "btc_entries": 125
   },
-  "unique_entities_profiled": 207,
+  "unique_entities_profiled": 211,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 84,
-      "bullish": 32,
+      "total_mentions": 86,
+      "bullish": 33,
       "neutral": 16,
-      "bearish": 36,
-      "net_sentiment_score": -0.048,
+      "bearish": 37,
+      "net_sentiment_score": -0.047,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 28,
+      "total_mentions": 29,
       "bullish": 10,
       "neutral": 4,
-      "bearish": 14,
-      "net_sentiment_score": -0.143,
+      "bearish": 15,
+      "net_sentiment_score": -0.172,
       "assets_seen_in": [
         "BTC"
       ],
@@ -1110,6 +1110,21 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+        "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
       "entity": "Galaxy Research",
       "total_mentions": 2,
       "bullish": 0,
@@ -2038,20 +2053,6 @@
     },
     {
       "entity": "Zhibao",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -3042,6 +3043,62 @@
       ],
       "example_headlines": [
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
+      "entity": "Calle",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Red Team reports 5K findings in sweeping security audit"
+      ]
+    },
+    {
+      "entity": "Bitcoin Red Team",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Red Team reports 5K findings in sweeping security audit"
+      ]
+    },
+    {
+      "entity": "security audit",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Red Team reports 5K findings in sweeping security audit"
+      ]
+    },
+    {
+      "entity": "PowerCompute",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
       ]
     }
   ]

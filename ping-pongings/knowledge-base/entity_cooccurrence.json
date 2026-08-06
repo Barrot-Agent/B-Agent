@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 290,
-    "btc_entries": 124
+    "btc_entries": 125
   },
-  "unique_pairs_found": 508,
+  "unique_pairs_found": 519,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -1261,6 +1261,21 @@
         },
         {
           "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
           "asset": "BTC"
         }
       ]
@@ -3504,17 +3519,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Nasdaq",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
           "asset": "BTC"
         }
       ]
@@ -5957,6 +5961,127 @@
       "example_headlines": [
         {
           "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Red Team",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Calle",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "security audit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Red Team",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Calle",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "security audit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Red Team",
+      "entity_b": "Calle",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Red Team",
+      "entity_b": "security audit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Calle",
+      "entity_b": "security audit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Red Team reports 5K findings in sweeping security audit",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "PowerCompute",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "PowerCompute",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
           "asset": "BTC"
         }
       ]
