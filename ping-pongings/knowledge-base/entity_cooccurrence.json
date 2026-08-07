@@ -3,7 +3,7 @@
     "xrp_entries": 297,
     "btc_entries": 139
   },
-  "unique_pairs_found": 587,
+  "unique_pairs_found": 590,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -5947,6 +5947,39 @@
       "example_headlines": [
         {
           "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto Weekly Digest",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Weekly Digest",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
           "asset": "BTC"
         }
       ]

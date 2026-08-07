@@ -3,15 +3,15 @@
     "xrp_entries": 297,
     "btc_entries": 139
   },
-  "unique_entities_profiled": 232,
+  "unique_entities_profiled": 233,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 98,
-      "bullish": 38,
+      "total_mentions": 99,
+      "bullish": 39,
       "neutral": 17,
       "bearish": 43,
-      "net_sentiment_score": -0.051,
+      "net_sentiment_score": -0.04,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -285,6 +285,23 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
+      "entity": "Moomoo",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo"
       ]
     },
     {
@@ -576,21 +593,6 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -3018,6 +3020,20 @@
       ],
       "example_headlines": [
         "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
+      ]
+    },
+    {
+      "entity": "Crypto Weekly Digest",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo"
       ]
     },
     {
