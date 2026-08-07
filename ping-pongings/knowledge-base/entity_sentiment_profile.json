@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 295,
-    "btc_entries": 134
+    "xrp_entries": 296,
+    "btc_entries": 137
   },
-  "unique_entities_profiled": 227,
+  "unique_entities_profiled": 230,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 92,
-      "bullish": 35,
+      "total_mentions": 94,
+      "bullish": 36,
       "neutral": 16,
-      "bearish": 41,
-      "net_sentiment_score": -0.065,
+      "bearish": 42,
+      "net_sentiment_score": -0.064,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -72,6 +72,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 14,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 11,
+      "net_sentiment_score": -0.571,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Yahoo Finance",
       "total_mentions": 13,
       "bullish": 6,
@@ -86,23 +103,6 @@
         "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
         "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 13,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 11,
-      "net_sentiment_score": -0.692,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {
@@ -237,6 +237,22 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Hashdex to shut smallest Bitcoin ETF after more than two years",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
+      "entity": "STRC",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy leaves preferred STRC dividend at 12% as price still below par",
+        "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases"
       ]
     },
     {
@@ -467,22 +483,6 @@
       ]
     },
     {
-      "entity": "STRC",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy leaves preferred STRC dividend at 12% as price still below par",
-        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
-      ]
-    },
-    {
       "entity": "Morningstar",
       "total_mentions": 3,
       "bullish": 0,
@@ -528,6 +528,22 @@
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
+      "entity": "Michael Saylor",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+        "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+        "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis"
       ]
     },
     {
@@ -1204,21 +1220,6 @@
       "example_headlines": [
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
-      ]
-    },
-    {
-      "entity": "Michael Saylor",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
-        "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis"
       ]
     },
     {
@@ -3334,6 +3335,48 @@
       ],
       "example_headlines": [
         "Bitcoin\u2019s (BTC) low price volatility doesn\u2019t necessarily mean low risk: Crypto Daily - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Dice entropy",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoiners turn to dice throws as self-custody setups are re-evaluated"
+      ]
+    },
+    {
+      "entity": "Self\u2011custody",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoiners turn to dice throws as self-custody setups are re-evaluated"
+      ]
+    },
+    {
+      "entity": "Hardware wallet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoiners turn to dice throws as self-custody setups are re-evaluated"
       ]
     }
   ]

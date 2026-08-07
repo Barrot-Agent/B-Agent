@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 295,
-    "btc_entries": 134
+    "xrp_entries": 296,
+    "btc_entries": 137
   },
-  "unique_pairs_found": 567,
+  "unique_pairs_found": 578,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -451,6 +451,21 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Michael Saylor",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
           "asset": "BTC"
         }
       ]
@@ -1456,21 +1471,6 @@
         },
         {
           "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Michael Saylor",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
           "asset": "BTC"
         }
       ]
@@ -5209,6 +5209,28 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "STRC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Michael Saylor",
+      "entity_b": "STRC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "American Bitcoin",
       "entity_b": "BTC",
       "cooccurrence_count": 1,
@@ -6634,6 +6656,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin\u2019s (BTC) low price volatility doesn\u2019t necessarily mean low risk: Crypto Daily - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Dice entropy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Hardware wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Self\u2011custody",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Dice entropy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Hardware wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Self\u2011custody",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Dice entropy",
+      "entity_b": "Hardware wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Dice entropy",
+      "entity_b": "Self\u2011custody",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hardware wallet",
+      "entity_b": "Self\u2011custody",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
           "asset": "BTC"
         }
       ]
