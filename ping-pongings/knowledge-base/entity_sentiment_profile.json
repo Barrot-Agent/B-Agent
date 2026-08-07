@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 296,
+    "xrp_entries": 297,
     "btc_entries": 138
   },
-  "unique_entities_profiled": 230,
+  "unique_entities_profiled": 232,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 96,
-      "bullish": 36,
+      "total_mentions": 97,
+      "bullish": 37,
       "neutral": 17,
       "bearish": 43,
-      "net_sentiment_score": -0.073,
+      "net_sentiment_score": -0.062,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 41,
-      "bullish": 27,
+      "total_mentions": 42,
+      "bullish": 28,
       "neutral": 7,
       "bearish": 7,
-      "net_sentiment_score": 0.488,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 34,
-      "bullish": 22,
+      "total_mentions": 35,
+      "bullish": 23,
       "neutral": 7,
       "bearish": 5,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.514,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 32,
+      "total_mentions": 33,
       "bullish": 11,
       "neutral": 5,
-      "bearish": 16,
-      "net_sentiment_score": -0.156,
+      "bearish": 17,
+      "net_sentiment_score": -0.182,
       "assets_seen_in": [
         "BTC"
       ],
@@ -141,11 +141,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 6,
       "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": 0.333,
+      "bearish": 4,
+      "net_sentiment_score": 0.2,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -189,6 +189,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
       "entity": "SEC",
       "total_mentions": 5,
       "bullish": 4,
@@ -203,23 +220,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -269,6 +269,22 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
+      "entity": "XRP.CC",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
@@ -560,21 +576,6 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -1223,6 +1224,36 @@
       ]
     },
     {
+      "entity": "Trump Media",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Donald Trump",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
+      ]
+    },
+    {
       "entity": "S&P 500",
       "total_mentions": 2,
       "bullish": 1,
@@ -1839,6 +1870,20 @@
       ],
       "example_headlines": [
         "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com"
+      ]
+    },
+    {
+      "entity": "moomoo",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
@@ -2668,20 +2713,6 @@
       ]
     },
     {
-      "entity": "Trump Media",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
-      ]
-    },
-    {
       "entity": "Crypto.com",
       "total_mentions": 1,
       "bullish": 0,
@@ -2791,20 +2822,6 @@
       ],
       "example_headlines": [
         "Bitcoin may find bear market bottom in August: 10x Research"
-      ]
-    },
-    {
-      "entity": "Donald Trump",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
       ]
     },
     {
@@ -3379,6 +3396,20 @@
       ],
       "example_headlines": [
         "Bitcoiners turn to dice throws as self-custody setups are re-evaluated"
+      ]
+    },
+    {
+      "entity": "US nonfarm payrolls",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price tags $65.3K August high as low US jobs numbers cool Fed rate bets"
       ]
     }
   ]

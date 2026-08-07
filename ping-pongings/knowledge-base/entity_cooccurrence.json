@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 296,
+    "xrp_entries": 297,
     "btc_entries": 138
   },
-  "unique_pairs_found": 578,
+  "unique_pairs_found": 586,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 32,
+      "cooccurrence_count": 33,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -291,6 +291,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "SBI Holdings",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -427,6 +442,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "US stocks",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -471,6 +501,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -502,21 +547,6 @@
     },
     {
       "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -1086,6 +1116,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "MarketForces Africa",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -1371,21 +1416,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin may find bear market bottom in August: 10x Research",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "Coldcard",
       "cooccurrence_count": 2,
@@ -1462,15 +1492,30 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "CoinDesk",
+      "entity_b": "Trump Media",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -2526,17 +2571,6 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -3456,6 +3490,39 @@
       "example_headlines": [
         {
           "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP.CC",
+      "entity_b": "moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -4968,17 +5035,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Crypto.com",
       "cooccurrence_count": 1,
@@ -5298,12 +5354,34 @@
       ]
     },
     {
-      "entity_a": "BTC",
+      "entity_a": "CoinDesk",
       "entity_b": "Donald Trump",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -6767,6 +6845,28 @@
       "example_headlines": [
         {
           "title": "Bitcoiners turn to dice throws as self-custody setups are re-evaluated",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US nonfarm payrolls",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price tags $65.3K August high as low US jobs numbers cool Fed rate bets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "US nonfarm payrolls",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price tags $65.3K August high as low US jobs numbers cool Fed rate bets",
           "asset": "BTC"
         }
       ]
