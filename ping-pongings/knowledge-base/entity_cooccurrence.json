@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 294,
+    "xrp_entries": 295,
     "btc_entries": 132
   },
-  "unique_pairs_found": 561,
+  "unique_pairs_found": 562,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -306,6 +306,21 @@
       ]
     },
     {
+      "entity_a": "MarketForces Africa",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "CryptoQuant",
       "cooccurrence_count": 3,
@@ -496,6 +511,21 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
           "asset": "XRP"
         }
       ]
@@ -1043,21 +1073,6 @@
     {
       "entity_a": "MarketForces Africa",
       "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "MarketForces Africa",
-      "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -1720,17 +1735,6 @@
     {
       "entity_a": "Clarity Act",
       "entity_b": "U.S. Senate",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Clarity Act",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -3341,6 +3345,17 @@
       "example_headlines": [
         {
           "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "MarketForces Africa",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
           "asset": "XRP"
         }
       ]

@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 294,
+    "xrp_entries": 295,
     "btc_entries": 132
   },
   "unique_entities_profiled": 225,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 40,
+      "total_mentions": 41,
       "bullish": 27,
       "neutral": 7,
-      "bearish": 6,
-      "net_sentiment_score": 0.525,
+      "bearish": 7,
+      "net_sentiment_score": 0.488,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -255,6 +255,23 @@
       ]
     },
     {
+      "entity": "Clarity Act",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
+        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
+      ]
+    },
+    {
       "entity": "Japan",
       "total_mentions": 3,
       "bullish": 2,
@@ -285,6 +302,22 @@
         "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
+      ]
+    },
+    {
+      "entity": "MarketForces Africa",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+        "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
       ]
     },
     {
@@ -556,22 +589,6 @@
       "example_headlines": [
         "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
         "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Clarity Act",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
       ]
     },
     {
@@ -1003,21 +1020,6 @@
       "example_headlines": [
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "MarketForces Africa",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa"
       ]
     },
     {
