@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 297,
-    "btc_entries": 138
+    "btc_entries": 139
   },
   "unique_entities_profiled": 232,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 97,
-      "bullish": 37,
+      "total_mentions": 98,
+      "bullish": 38,
       "neutral": 17,
       "bearish": 43,
-      "net_sentiment_score": -0.062,
+      "net_sentiment_score": -0.051,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 33,
-      "bullish": 11,
+      "total_mentions": 34,
+      "bullish": 12,
       "neutral": 5,
       "bearish": 17,
-      "net_sentiment_score": -0.182,
+      "net_sentiment_score": -0.147,
       "assets_seen_in": [
         "BTC"
       ],
@@ -106,6 +106,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 11,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 7,
+      "net_sentiment_score": -0.273,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Ethereum",
       "total_mentions": 11,
       "bullish": 6,
@@ -120,23 +137,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 10,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 7,
-      "net_sentiment_score": -0.4,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
       ]
     },
     {
@@ -224,11 +224,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 4,
-      "bullish": 3,
+      "total_mentions": 5,
+      "bullish": 4,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.6,
       "assets_seen_in": [
         "BTC",
         "XRP"
