@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 293,
-    "btc_entries": 131
+    "xrp_entries": 294,
+    "btc_entries": 132
   },
-  "unique_pairs_found": 558,
+  "unique_pairs_found": 561,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1206,6 +1206,21 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "ETH",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "STRC",
       "entity_b": "Strategy",
       "cooccurrence_count": 2,
@@ -1356,6 +1371,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Galaxy Research",
       "cooccurrence_count": 2,
@@ -1396,6 +1426,21 @@
         },
         {
           "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -3400,17 +3445,6 @@
       ]
     },
     {
-      "entity_a": "CoinDesk",
-      "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "BitMEX",
       "cooccurrence_count": 1,
@@ -4699,17 +4733,6 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "Ethereum",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5309,17 +5332,6 @@
       "example_headlines": [
         {
           "title": "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
           "asset": "BTC"
         }
       ]
@@ -6497,6 +6509,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin price coils under $65K as US PMI data brings new \u2018stagflation\u2019 warning",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "Crypto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]

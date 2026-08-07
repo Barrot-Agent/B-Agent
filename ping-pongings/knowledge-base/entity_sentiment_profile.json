@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 293,
-    "btc_entries": 131
+    "xrp_entries": 294,
+    "btc_entries": 132
   },
-  "unique_entities_profiled": 223,
+  "unique_entities_profiled": 225,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 90,
+      "total_mentions": 91,
       "bullish": 34,
       "neutral": 16,
-      "bearish": 40,
-      "net_sentiment_score": -0.067,
+      "bearish": 41,
+      "net_sentiment_score": -0.077,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 30,
-      "bullish": 10,
+      "total_mentions": 31,
+      "bullish": 11,
       "neutral": 4,
       "bearish": 16,
-      "net_sentiment_score": -0.2,
+      "net_sentiment_score": -0.161,
       "assets_seen_in": [
         "BTC"
       ],
@@ -141,11 +141,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 8,
-      "bullish": 5,
+      "total_mentions": 9,
+      "bullish": 6,
       "neutral": 0,
       "bearish": 3,
-      "net_sentiment_score": 0.25,
+      "net_sentiment_score": 0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -366,6 +366,22 @@
         "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
         "Rate path still divides investors: Five things to know in Bitcoin this week",
         "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
+      ]
+    },
+    {
+      "entity": "ETH",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+        "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk"
       ]
     },
     {
@@ -1110,21 +1126,6 @@
       "example_headlines": [
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
       ]
     },
     {
@@ -3260,6 +3261,34 @@
       ],
       "example_headlines": [
         "Bitcoin price coils under $65K as US PMI data brings new \u2018stagflation\u2019 warning"
+      ]
+    },
+    {
+      "entity": "Bloomberg",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "Crypto",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
       ]
     },
     {
