@@ -3,7 +3,7 @@
     "xrp_entries": 295,
     "btc_entries": 134
   },
-  "unique_pairs_found": 562,
+  "unique_pairs_found": 567,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -247,6 +247,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -436,21 +451,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -3169,6 +3169,61 @@
       "example_headlines": [
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US-listed",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "US-listed",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "US-listed",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
           "asset": "XRP"
         }
       ]

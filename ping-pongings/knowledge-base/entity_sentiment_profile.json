@@ -3,15 +3,15 @@
     "xrp_entries": 295,
     "btc_entries": 134
   },
-  "unique_entities_profiled": 225,
+  "unique_entities_profiled": 227,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 91,
-      "bullish": 34,
+      "total_mentions": 92,
+      "bullish": 35,
       "neutral": 16,
       "bearish": 41,
-      "net_sentiment_score": -0.077,
+      "net_sentiment_score": -0.065,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -220,6 +220,23 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
+      "entity": "ETF",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -527,22 +544,6 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M"
       ]
     },
     {
@@ -1737,6 +1738,34 @@
       ],
       "example_headlines": [
         "XRP holders can now borrow Ripple's stablecoin - thestreet.com"
+      ]
+    },
+    {
+      "entity": "Bitcoin ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M"
+      ]
+    },
+    {
+      "entity": "US-listed",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M"
       ]
     },
     {
