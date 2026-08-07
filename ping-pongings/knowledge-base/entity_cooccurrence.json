@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 22,
+      "cooccurrence_count": 23,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
-      "cooccurrence_count": 8,
+      "cooccurrence_count": 9,
       "example_headlines": [
         {
           "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
@@ -276,6 +276,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "SBI Holdings",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -436,21 +451,6 @@
         },
         {
           "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -1486,6 +1486,51 @@
         },
         {
           "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        },
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        },
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "Crypto",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        },
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -6601,39 +6646,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin price coils under $65K as US PMI data brings new \u2018stagflation\u2019 warning",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bloomberg",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Crypto",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bloomberg",
-      "entity_b": "Crypto",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
