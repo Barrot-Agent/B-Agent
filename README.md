@@ -4,7 +4,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
-Welcome to **Barrot-Agent** - an intelligent agent system with advanced capabilities for data ingestion, prediction, and deployment.
+Welcome to **Barrot-Agent** — a Python-based agent platform that combines data ingestion, reasoning, automation, and static web surfaces. The repository also contains the supporting CI/CD configuration used to validate and publish those components.
 
 ## 🔄 Two Distinct Systems
 
@@ -22,7 +22,14 @@ Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
 
 **[📖 Learn more about the separation](SYSTEM_SEPARATION.md)**
 
-> **📌 Note**: We are transitioning from `Main` to `main` as the default branch. See [DEFAULT_BRANCH_GUIDE.md](DEFAULT_BRANCH_GUIDE.md) for migration instructions.
+## 🧭 Delivery pillars
+
+Barrot-Agent uses both GitHub and GitLab as first-class delivery surfaces:
+
+- **GitHub** is the source repository and the primary automation plane. GitHub Actions runs linting, tests, dependency checks, scheduled ingestion, and publishing workflows.
+- **GitLab** is the anchored secondary CI/CD plane. The root [`.gitlab-ci.yml`](.gitlab-ci.yml) defines GitLab Pages publishing and the Kaggle pipeline for the `main` branch.
+
+Credentials stay outside the repository. GitHub Actions may receive a `GITLAB_TOKEN` through GitHub repository or organization secrets when a workflow needs GitLab API access; the token is never documented, committed, or printed. A GitHub secret is not automatically available to GitLab runners, so GitLab jobs must use GitLab CI/CD variables when they need credentials.
 
 ## 🚀 Quick Start
 
@@ -33,9 +40,11 @@ Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
    cd B-Agent
    ```
 
-2. View the current build manifest:
+2. Install the development dependencies:
    ```bash
-   cat build_manifest.yaml
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements-dev.txt
    ```
 
 3. Access the systems:
@@ -44,7 +53,7 @@ Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
 
 ### 🐍 Python Package & Local Tooling
 
-This repository now also ships a typed Python package under [`barrot_agent/`](barrot_agent/) with:
+This repository ships a typed Python package under [`barrot_agent/`](barrot_agent/) with:
 - configuration and logging primitives
 - a lightweight `BAgent` application wrapper
 - Granite model metadata and inference helpers
@@ -62,39 +71,23 @@ streamlit run app.py
 
 Canonical JSON assets live in [`data/`](data/) and should be accessed through [`data/registry.py`](data/registry.py), not ad-hoc file loads.
 
-### 📱 Mobile Setup
-Want to access Barrot-Agent from your phone? 
-
-**[📱 See Mobile Setup Guide](MOBILE_SETUP.md)**
-
-The mobile guide covers:
-- 🌐 Web dashboard access
-- 📱 GitHub Mobile app usage
-- 🔧 Terminal setup for Android (Termux)
-- 🔧 Terminal setup for iOS (iSH)
-- 🔐 Authentication configuration
-- 📊 Monitoring and workflows
-
-## 📁 Repository Structure
+### 📁 Repository Structure
 
 ```
-Barrot-Agent/
+B-Agent/
 ├── .github/workflows/      # GitHub Actions automation
-├── Barrot-Agent/          # Agent configuration
-├── Barrot-Bundles/        # Bundle storage
+├── .gitlab-ci.yml         # GitLab Pages and Kaggle CI/CD
+├── barrot_agent/          # Typed Python package
+├── data/                  # Canonical data assets and typed loaders
+├── docs/                  # Consolidated project documentation
 ├── memory-bundles/        # Memory and activity logs
-├── SHRM-System/           # System Health & Resource Monitor
-├── site/                  # Barrot Agent dashboard
+├── scripts/               # Scheduled and operational tooling
+├── site/                  # Agent dashboard static site
 ├── search-engine/         # Standalone search engine
-├── coin-app/              # Coin app integration & automation
-├── spells/                # Agent capability definitions
-├── glyphs/                # Capability glyphs (quantum, temporal, character)
-├── character-capabilities/ # Fictional character ability transformations
-├── ai-tools-config.yaml   # AI models and system prompts
-├── pingpong_emitter.py    # 22-agent entanglement pingpong
-├── pingpong-config.yaml   # External pingpong configuration
-├── build_manifest.yaml    # Current build status
-└── MOBILE_SETUP.md       # Mobile setup guide
+├── tests/                 # Python test suite
+├── app.py                # Streamlit entrypoint
+├── requirements*.txt     # Runtime and development dependencies
+└── Makefile              # Local install, lint, test, and Docker commands
 ```
 
 ## 🎯 Features
@@ -298,12 +291,11 @@ The `build_manifest.yaml` file tracks:
 - Provenance hash
 
 ### Workflows
-Automated workflows handle:
-- Build manifest updates
-- Repository cleanup
-- Dashboard publishing
-- Bundle management
-- Barrot-SHRM ping-pong health monitoring
+GitHub Actions and GitLab CI handle the repository's automation:
+- Python linting, compilation, tests, and dependency auditing
+- Dashboard and search-engine publishing
+- Scheduled ingestion, signal processing, and operational jobs
+- GitLab Pages publishing and the Kaggle pipeline defined in `.gitlab-ci.yml`
 
 ### 22-Agent Entanglement Pingpong System
 Barrot defers complex cognitive processing to an external 22-agent entanglement system:
@@ -343,14 +335,11 @@ https://barrot-agent.github.io/Barrot-Agent/search-engine/
 ### GitHub Actions
 Monitor workflow runs:
 ```
-https://github.com/Barrot-Agent/Barrot-Agent/actions
+https://github.com/Barrot-Agent/B-Agent/actions
 ```
 
-### Build Status
-Check current build status:
-```bash
-cat build_manifest.yaml
-```
+### GitLab CI
+The GitLab pipeline is defined in [`.gitlab-ci.yml`](.gitlab-ci.yml). Its `pages` job publishes the root static entrypoint on `main`, while `omega_reinstantiation` prepares the Kaggle credentials and dependencies when the corresponding CI variables are present.
 
 View recent activity:
 ```bash
@@ -359,20 +348,7 @@ cat memory-bundles/outcome-relay.md | tail -20
 
 ## 🚀 Deployment
 
-Barrot-Agent can be deployed to multiple cloud platforms:
-
-- **GitHub Pages** (Current): https://barrot-agent.github.io/Barrot-Agent/
-- **Heroku**: One-click deployment with `app.json`
-- **Render**: Static site deployment with `render.yaml`
-- **Railway**: Docker-based deployment with `railway.json`
-- **Fly.io**: Global edge deployment with `fly.toml`
-- **Docker**: Self-hosted container deployment
-
-**[📖 See Full Deployment Guide](DEPLOYMENT.md)**
-
-### Quick Deploy
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Barrot-Agent/Barrot-Agent)
+The repository currently supports static publishing through GitHub Pages and GitLab Pages, plus local or self-hosted execution with Docker. The deployable static surfaces are the dashboard in [`site/`](site/) and search engine in [`search-engine/`](search-engine/).
 
 ### Docker
 
@@ -395,9 +371,9 @@ ISC License - See repository for details
 
 ## 🔗 Links
 
-- **Repository**: https://github.com/Barrot-Agent/Barrot-Agent
-- **Dashboard**: https://barrot-agent.github.io/Barrot-Agent/
-- **Issues**: https://github.com/Barrot-Agent/Barrot-Agent/issues
+- **Repository**: https://github.com/Barrot-Agent/B-Agent
+- **Dashboard**: https://barrot-agent.github.io/B-Agent/site/
+- **Issues**: https://github.com/Barrot-Agent/B-Agent/issues
 
 ## 📚 Documentation
 
@@ -441,8 +417,6 @@ ISC License - See repository for details
 - **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
 - **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** — see [docs/email.md](docs/email.md)
 - **🎭 [Character Capabilities](character-capabilities/README.md)** — see [docs/character_capabilities.md](docs/character_capabilities.md)
-- **🚀 [Deployment Guide](DEPLOYMENT.md)** - Deploy to Heroku, Render, Railway, Fly.io, or Docker
-- **📱 [Mobile Setup](MOBILE_SETUP.md)** - Access Barrot from your phone
 - **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
 - **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** — see [docs/ingestion.md](docs/ingestion.md)
 - **🔀 [Merge Conflict Resolution Guide](MERGE_CONFLICT_RESOLUTION_GUIDE.md)** — see [docs/system.md](docs/system.md)
