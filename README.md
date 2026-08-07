@@ -12,15 +12,15 @@ Barrot-Agent now maintains **two independent systems**:
 
 ### 🔍 Search Engine
 Privacy-first search with quantum-enhanced algorithms and edge computing
-- **Access**: [Search Engine](https://barrot-agent.github.io/Barrot-Agent/search-engine/)
+- **Access**: [Search Engine](https://barrot-agent.github.io/B-Agent/search-engine/)
 - **Docs**: [search-engine/README.md](search-engine/README.md)
 
 ### 🦜 Agent Dashboard  
 Comprehensive automation platform with IDE, DAW, Web3, NFT, and more
-- **Access**: [Agent Dashboard](https://barrot-agent.github.io/Barrot-Agent/site/)
+- **Access**: [Agent Dashboard](https://barrot-agent.github.io/B-Agent/site/)
 - **Docs**: [site/README.md](site/README.md)
 
-**[📖 Learn more about the separation](SYSTEM_SEPARATION.md)**
+**[📖 Learn more about the separation](docs/system.md)**
 
 ## 🧭 Delivery pillars
 
@@ -48,8 +48,8 @@ Credentials stay outside the repository. GitHub Actions may receive a `GITLAB_TO
    ```
 
 3. Access the systems:
-   - **Agent Dashboard**: https://barrot-agent.github.io/Barrot-Agent/site/
-   - **Search Engine**: https://barrot-agent.github.io/Barrot-Agent/search-engine/
+   - **Agent Dashboard**: https://barrot-agent.github.io/B-Agent/site/
+   - **Search Engine**: https://barrot-agent.github.io/B-Agent/search-engine/
 
 ### 🐍 Python Package & Local Tooling
 
@@ -228,7 +228,7 @@ Barrot can explore and transform abilities from fictional characters into real-w
 - **Avatar Aang** - Multi-resource management, power modes, holistic integration
 - **Link (Zelda)** - Tool utilization, algorithm solving, exploration systems
 
-**[→ Explore Character Capabilities](character-capabilities/)**
+**[→ Explore Character Capabilities](docs/character_capabilities.md)**
 
 **[→ View Character-Capability-Explorer Spell](spells/character-capability-explorer.md)**
 
@@ -268,7 +268,7 @@ Barrot continuously learns from the Python ecosystem to enhance its capabilities
 - Complete taxonomy by category, priority, use case
 - Integration notes for Barrot systems
 
-**[→ View Dependency Ingestion README](DEPENDENCY_MICRO_INGESTION_README.md)**  
+**[→ View Dependency Ingestion README](docs/DEPENDENCY_MICRO_INGESTION_README.md)**
 **[→ View Configuration](dependency-ingestion-config.yaml)**
 
 **Usage:**
@@ -280,15 +280,9 @@ python3 dependency_micro_ingestion.py
 python3 example_dependency_ingestion.py
 ```
 
-## 🔧 Configuration
+## 🔧 Configuration and operations
 
-### Build Manifest
-The `build_manifest.yaml` file tracks:
-- Build signature and timestamp
-- Active modules
-- Rail status (ingestion, deployment, microagent, etc.)
-- Resource connections
-- Provenance hash
+Runtime settings are documented in [`.env.example`](.env.example). Local development commands are centralized in the [`Makefile`](Makefile), while CI configuration lives in `.github/workflows/` and `.gitlab-ci.yml`.
 
 ### Workflows
 GitHub Actions and GitLab CI handle the repository's automation:
@@ -326,10 +320,10 @@ The external system monitors commits to `pingpong_request.json` and processes re
 Access the live dashboards at:
 ```
 # Barrot Agent Dashboard
-https://barrot-agent.github.io/Barrot-Agent/site/
+https://barrot-agent.github.io/B-Agent/site/
 
 # Search Engine
-https://barrot-agent.github.io/Barrot-Agent/search-engine/
+https://barrot-agent.github.io/B-Agent/search-engine/
 ```
 
 ### GitHub Actions
@@ -339,7 +333,7 @@ https://github.com/Barrot-Agent/B-Agent/actions
 ```
 
 ### GitLab CI
-The GitLab pipeline is defined in [`.gitlab-ci.yml`](.gitlab-ci.yml). Its `pages` job publishes the root static entrypoint on `main`, while `omega_reinstantiation` prepares the Kaggle credentials and dependencies when the corresponding CI variables are present.
+The GitLab pipeline is defined in [`.gitlab-ci.yml`](.gitlab-ci.yml). Its `pages` job is configured to publish a root `index.html` (and optionally `brain_loader.js`) on `main`; those source files must be present for the job to publish successfully. `omega_reinstantiation` prepares the Kaggle credentials and dependencies when the corresponding CI variables are present.
 
 View recent activity:
 ```bash
@@ -405,40 +399,15 @@ ISC License - See repository for details
 | [data/mmi_monetization_unified.json](data/mmi_monetization_unified.json) | MMI recommendations, protocols, council weights |
 | [data/character_capabilities_unified.json](data/character_capabilities_unified.json) | Character database + discovered capabilities |
 
-### Legacy Root-Level Docs
+### Related documentation
 
-- **🔮 [Quantum AGI Integration](QUANTUM_AGI_INTEGRATION.md)** — see [docs/agi.md](docs/agi.md)
-- **✨ [Transformative Insights Guide](TRANSFORMATIVE_INSIGHTS_GUIDE.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
-- **🔄 [System Separation Architecture](SYSTEM_SEPARATION.md)** — see [docs/system.md](docs/system.md)
-- **🔍 [Search Engine Docs](search-engine/README.md)** - Search engine documentation
-- **🦜 [Agent Dashboard Docs](site/README.md)** - Dashboard documentation
-- **🪙 [Coin App Integration](coin-app/README.md)** — see [docs/monetization.md](docs/monetization.md)
-- **🌉 [Connext Bridge Integration](CONNEXT_INTEGRATION.md)** — see [docs/monetization.md](docs/monetization.md)
-- **🤖 [AI Tools Configuration](ai-tools-config.yaml)** - System prompts and AI models
-- **📧 [Email Processing Guide](EMAIL_PROCESSING_GUIDE.md)** — see [docs/email.md](docs/email.md)
-- **🎭 [Character Capabilities](character-capabilities/README.md)** — see [docs/character_capabilities.md](docs/character_capabilities.md)
-- **💰 [Sponsorship](SPONSORSHIP.md)** - Support Barrot-Agent development
-- **📥 [Ingestion Manifest](INGESTION_MANIFEST.md)** — see [docs/ingestion.md](docs/ingestion.md)
-- **🔀 [Merge Conflict Resolution Guide](MERGE_CONFLICT_RESOLUTION_GUIDE.md)** — see [docs/system.md](docs/system.md)
-- **🧮 [Millennium Problems Status](MILLENNIUM_PROBLEMS_STATUS.md)** — see [docs/millennium_problems.md](docs/millennium_problems.md)
-- **🚀 [Advanced Propulsion Research](ADVANCED_PROPULSION_RESEARCH.md)** — see [docs/research.md](docs/research.md)
-- **🎯 [MMI Implementation Guide](MMI_IMPLEMENTATION.md)** — see [docs/monetization.md](docs/monetization.md)
-
-## 💰 Support Barrot-Agent
-
-Love Barrot-Agent? Consider becoming a sponsor!
-
-[![Sponsor](https://img.shields.io/badge/Sponsor-💰-pink)](SPONSORSHIP.md)
-
-Your sponsorship helps us:
-- 🔬 Accelerate AGI research
-- 🏆 Dominate AI benchmarks
-- 🤖 Develop autonomous capabilities
-- 📊 Improve transparency and logging
-- 🌍 Grow the open-source community
-
-**[View Sponsorship Tiers](SPONSORSHIP.md)**
-
----
+- [System architecture and operations](docs/system.md)
+- [AGI architecture](docs/agi.md)
+- [Ingestion systems](docs/ingestion.md)
+- [Email processing](docs/email.md)
+- [Monetization and integrations](docs/monetization.md)
+- [Research](docs/research.md)
+- [Search engine](search-engine/README.md)
+- [Agent dashboard](site/README.md)
 
 **Barrot-Agent** - Intelligent automation and data processing at your fingertips 🦜✨
