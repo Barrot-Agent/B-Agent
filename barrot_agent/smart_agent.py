@@ -425,7 +425,11 @@ class _BuiltinTools:
         contribute_repos = [
             ("langchain-ai/langchain", "LLM orchestration", "memory management, tool reliability"),
             ("microsoft/autogen", "Multi-agent framework", "agent coordination, error recovery"),
-            ("huggingface/transformers", "Model hub", "inference optimisation, tokeniser edge cases"),
+            (
+                "huggingface/transformers",
+                "Model hub",
+                "inference optimisation, tokeniser edge cases",
+            ),
             ("openai/openai-python", "OpenAI SDK", "retry logic, streaming robustness"),
             ("BerriAI/litellm", "LLM proxy", "provider fallback, cost tracking"),
             ("stanford-crfm/helm", "Evaluation harness", "new benchmark coverage, reproducibility"),
@@ -628,7 +632,14 @@ _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
     (["analyse", "analyze", "examine", "evaluate", "assess", "review"], "analyse"),
     (["explain", "describe", "what is", "how does", "define", "tell me"], "explain"),
     (
-        ["repo hunt", "hunt repos", "find repos", "github repos", "integrate with", "contribute to"],
+        [
+            "repo hunt",
+            "hunt repos",
+            "find repos",
+            "github repos",
+            "integrate with",
+            "contribute to",
+        ],
         "repo_hunt",
     ),
 ]
