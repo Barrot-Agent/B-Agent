@@ -3,7 +3,7 @@
     "xrp_entries": 303,
     "btc_entries": 143
   },
-  "unique_pairs_found": 627,
+  "unique_pairs_found": 636,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -81,6 +81,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 6,
@@ -107,21 +122,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-          "asset": "BTC"
         }
       ]
     },
@@ -1726,6 +1726,21 @@
         },
         {
           "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "USD",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
           "asset": "BTC"
         }
       ]
@@ -5120,6 +5135,17 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end July in the green despite late-month selling",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "July",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -6945,6 +6971,94 @@
       ]
     },
     {
+      "entity_a": "64K",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "64K",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "64K",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "64K",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Binance",
       "cooccurrence_count": 1,
@@ -7310,17 +7424,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "CoinMarketCap",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "USD",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

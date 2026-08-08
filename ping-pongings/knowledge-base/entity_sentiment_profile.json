@@ -3,15 +3,15 @@
     "xrp_entries": 303,
     "btc_entries": 143
   },
-  "unique_entities_profiled": 243,
+  "unique_entities_profiled": 245,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 104,
-      "bullish": 41,
+      "total_mentions": 105,
+      "bullish": 42,
       "neutral": 18,
       "bearish": 45,
-      "net_sentiment_score": -0.038,
+      "net_sentiment_score": -0.029,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 37,
+      "total_mentions": 38,
       "bullish": 14,
       "neutral": 6,
-      "bearish": 17,
-      "net_sentiment_score": -0.081,
+      "bearish": 18,
+      "net_sentiment_score": -0.105,
       "assets_seen_in": [
         "BTC"
       ],
@@ -106,6 +106,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 12,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 8,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "CoinDesk",
       "total_mentions": 12,
       "bullish": 7,
@@ -120,23 +137,6 @@
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
         "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 11,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 7,
-      "net_sentiment_score": -0.273,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-        "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
       ]
     },
     {
@@ -609,6 +609,22 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "S&P 500",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
       ]
     },
     {
@@ -1303,21 +1319,6 @@
       ]
     },
     {
-      "entity": "S&P 500",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
-      ]
-    },
-    {
       "entity": "Bloomberg",
       "total_mentions": 2,
       "bullish": 0,
@@ -1345,6 +1346,21 @@
       "example_headlines": [
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "USD",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
       ]
     },
     {
@@ -2720,6 +2736,20 @@
       ]
     },
     {
+      "entity": "Spot Bitcoin ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs end July in the green despite late-month selling"
+      ]
+    },
+    {
       "entity": "equities",
       "total_mentions": 1,
       "bullish": 0,
@@ -3406,6 +3436,20 @@
       ]
     },
     {
+      "entity": "64K",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+      ]
+    },
+    {
       "entity": "Binance Futures",
       "total_mentions": 1,
       "bullish": 1,
@@ -3547,20 +3591,6 @@
     },
     {
       "entity": "CoinMarketCap",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
-      ]
-    },
-    {
-      "entity": "USD",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 1,
