@@ -3,7 +3,7 @@
     "xrp_entries": 302,
     "btc_entries": 140
   },
-  "unique_pairs_found": 611,
+  "unique_pairs_found": 618,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -96,6 +96,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 6,
@@ -127,21 +142,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 5,
       "example_headlines": [
@@ -1186,6 +1186,36 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
           "asset": "XRP"
         }
       ]
@@ -2650,28 +2680,6 @@
       ]
     },
     {
-      "entity_a": "CoinDesk",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CryptoPotato",
       "entity_b": "analyst",
       "cooccurrence_count": 1,
@@ -3602,6 +3610,83 @@
       "example_headlines": [
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized assets",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized assets",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized assets",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
           "asset": "XRP"
         }
       ]

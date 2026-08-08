@@ -3,7 +3,7 @@
     "xrp_entries": 302,
     "btc_entries": 140
   },
-  "unique_entities_profiled": 239,
+  "unique_entities_profiled": 240,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 45,
-      "bullish": 28,
+      "total_mentions": 46,
+      "bullish": 29,
       "neutral": 10,
       "bearish": 7,
-      "net_sentiment_score": 0.467,
+      "net_sentiment_score": 0.478,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -141,19 +141,19 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 10,
-      "bullish": 6,
+      "total_mentions": 11,
+      "bullish": 7,
       "neutral": 0,
       "bearish": 4,
-      "net_sentiment_score": 0.2,
+      "net_sentiment_score": 0.273,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -170,6 +170,22 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 6,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -203,22 +219,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -1137,6 +1137,22 @@
       ]
     },
     {
+      "entity": "Wall Street",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -1905,6 +1921,20 @@
       ]
     },
     {
+      "entity": "Tokenized assets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -2210,20 +2240,6 @@
       ],
       "example_headlines": [
         "Markets eye Bank of Japan meeting on Friday as yen repeats 40-year US dollar lows"
-      ]
-    },
-    {
-      "entity": "Wall Street",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
       ]
     },
     {
