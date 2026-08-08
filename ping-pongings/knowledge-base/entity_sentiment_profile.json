@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 304,
-    "btc_entries": 144
+    "xrp_entries": 305,
+    "btc_entries": 145
   },
-  "unique_entities_profiled": 245,
+  "unique_entities_profiled": 246,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 47,
-      "bullish": 30,
+      "total_mentions": 48,
+      "bullish": 31,
       "neutral": 10,
       "bearish": 7,
-      "net_sentiment_score": 0.489,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 39,
-      "bullish": 24,
+      "total_mentions": 40,
+      "bullish": 25,
       "neutral": 10,
       "bearish": 5,
-      "net_sentiment_score": 0.487,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "XRP"
       ],
@@ -72,6 +72,23 @@
       ]
     },
     {
+      "entity": "Yahoo Finance",
+      "total_mentions": 15,
+      "bullish": 7,
+      "neutral": 3,
+      "bearish": 5,
+      "net_sentiment_score": 0.133,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 15,
       "bullish": 3,
@@ -86,23 +103,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance",
-      "total_mentions": 14,
-      "bullish": 6,
-      "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": 0.071,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -173,6 +173,23 @@
       ]
     },
     {
+      "entity": "SEC",
+      "total_mentions": 8,
+      "bullish": 6,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
       "entity": "XRP Ledger",
       "total_mentions": 7,
       "bullish": 7,
@@ -186,23 +203,6 @@
         "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 7,
-      "bullish": 5,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
       ]
     },
     {
@@ -1963,6 +1963,20 @@
       ],
       "example_headlines": [
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com"
+      ]
+    },
+    {
+      "entity": "2027",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance"
       ]
     },
     {
