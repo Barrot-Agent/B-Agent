@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 303,
-    "btc_entries": 142
+    "btc_entries": 143
   },
-  "unique_entities_profiled": 240,
+  "unique_entities_profiled": 243,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 102,
-      "bullish": 40,
-      "neutral": 17,
+      "total_mentions": 104,
+      "bullish": 41,
+      "neutral": 18,
       "bearish": 45,
-      "net_sentiment_score": -0.049,
+      "net_sentiment_score": -0.038,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 35,
-      "bullish": 13,
-      "neutral": 5,
+      "total_mentions": 37,
+      "bullish": 14,
+      "neutral": 6,
       "bearish": 17,
-      "net_sentiment_score": -0.114,
+      "net_sentiment_score": -0.081,
       "assets_seen_in": [
         "BTC"
       ],
@@ -1198,6 +1198,21 @@
       ]
     },
     {
+      "entity": "Nansen",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+        "Bitcoin will never fall below $60K again: Nansen founder"
+      ]
+    },
+    {
       "entity": "CNBC",
       "total_mentions": 2,
       "bullish": 1,
@@ -2156,20 +2171,6 @@
       ],
       "example_headlines": [
         "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
-      ]
-    },
-    {
-      "entity": "Nansen",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
       ]
     },
     {
@@ -3528,6 +3529,48 @@
       ],
       "example_headlines": [
         "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi"
+      ]
+    },
+    {
+      "entity": "Alex Svanevik",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin will never fall below $60K again: Nansen founder"
+      ]
+    },
+    {
+      "entity": "CoinMarketCap",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
+      ]
+    },
+    {
+      "entity": "USD",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
       ]
     }
   ]

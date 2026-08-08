@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 303,
-    "btc_entries": 142
+    "btc_entries": 143
   },
-  "unique_pairs_found": 618,
+  "unique_pairs_found": 627,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 27,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -1456,6 +1456,21 @@
         },
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
           "asset": "BTC"
         }
       ]
@@ -3955,17 +3970,6 @@
       "example_headlines": [
         {
           "title": "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Nansen",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -7255,6 +7259,105 @@
       "example_headlines": [
         {
           "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alex Svanevik",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alex Svanevik",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alex Svanevik",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CoinMarketCap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinMarketCap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinMarketCap",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
           "asset": "BTC"
         }
       ]
