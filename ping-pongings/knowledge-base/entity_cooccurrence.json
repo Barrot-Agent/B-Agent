@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 303,
-    "btc_entries": 143
+    "btc_entries": 144
   },
   "unique_pairs_found": 636,
   "pairs": [
@@ -526,6 +526,21 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -1516,21 +1531,6 @@
         },
         {
           "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]

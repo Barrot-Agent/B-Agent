@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 303,
-    "btc_entries": 143
+    "btc_entries": 144
   },
   "unique_entities_profiled": 245,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 105,
-      "bullish": 42,
+      "total_mentions": 106,
+      "bullish": 43,
       "neutral": 18,
       "bearish": 45,
-      "net_sentiment_score": -0.029,
+      "net_sentiment_score": -0.019,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -305,6 +305,22 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 4,
       "bullish": 2,
@@ -545,22 +561,6 @@
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
         "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
