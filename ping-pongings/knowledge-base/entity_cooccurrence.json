@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 300,
+    "xrp_entries": 302,
     "btc_entries": 140
   },
-  "unique_pairs_found": 601,
+  "unique_pairs_found": 611,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 35,
+      "cooccurrence_count": 36,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,7 +68,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -171,6 +171,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 5,
@@ -241,36 +271,6 @@
         },
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -391,6 +391,36 @@
         },
         {
           "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1116,23 +1146,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
+      "entity_b": "SEC",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -1140,7 +1155,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1277,6 +1292,51 @@
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
         }
       ]
     },
@@ -2448,17 +2508,6 @@
     },
     {
       "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -3371,39 +3420,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. District Court",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "European Union",
       "cooccurrence_count": 1,
@@ -3575,6 +3591,17 @@
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -7040,6 +7067,105 @@
       "example_headlines": [
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Zeppelin analogy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "Zeppelin analogy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Yahoo Finance",
+      "entity_b": "Zeppelin analogy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Yahoo Finance",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Zeppelin analogy",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
           "asset": "BTC"
         }
       ]
