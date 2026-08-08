@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 303,
-    "btc_entries": 141
+    "btc_entries": 142
   },
   "unique_entities_profiled": 240,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 101,
+      "total_mentions": 102,
       "bullish": 40,
       "neutral": 17,
-      "bearish": 44,
-      "net_sentiment_score": -0.04,
+      "bearish": 45,
+      "net_sentiment_score": -0.049,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -72,6 +72,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 15,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 12,
+      "net_sentiment_score": -0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Yahoo Finance",
       "total_mentions": 14,
       "bullish": 6,
@@ -89,20 +106,20 @@
       ]
     },
     {
-      "entity": "Coldcard",
-      "total_mentions": 14,
-      "bullish": 3,
+      "entity": "CoinDesk",
+      "total_mentions": 12,
+      "bullish": 7,
       "neutral": 0,
-      "bearish": 11,
-      "net_sentiment_score": -0.571,
+      "bearish": 5,
+      "net_sentiment_score": 0.167,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -137,23 +154,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 11,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": 0.273,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
