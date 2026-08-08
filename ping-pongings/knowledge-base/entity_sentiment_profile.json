@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 299,
+    "xrp_entries": 300,
     "btc_entries": 140
   },
-  "unique_entities_profiled": 234,
+  "unique_entities_profiled": 236,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 99,
-      "bullish": 39,
+      "total_mentions": 100,
+      "bullish": 40,
       "neutral": 17,
       "bearish": 43,
-      "net_sentiment_score": -0.04,
+      "net_sentiment_score": -0.03,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 43,
+      "total_mentions": 44,
       "bullish": 28,
-      "neutral": 8,
+      "neutral": 9,
       "bearish": 7,
-      "net_sentiment_score": 0.488,
+      "net_sentiment_score": 0.477,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 36,
+      "total_mentions": 37,
       "bullish": 23,
-      "neutral": 8,
+      "neutral": 9,
       "bearish": 5,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 34,
-      "bullish": 12,
+      "total_mentions": 35,
+      "bullish": 13,
       "neutral": 5,
       "bearish": 17,
-      "net_sentiment_score": -0.147,
+      "net_sentiment_score": -0.114,
       "assets_seen_in": [
         "BTC"
       ],
@@ -173,6 +173,22 @@
       ]
     },
     {
+      "entity": "XRP.CC",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.2,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
       "entity": "XRP Ledger",
       "total_mentions": 5,
       "bullish": 5,
@@ -240,19 +256,36 @@
       ]
     },
     {
-      "entity": "XRP.CC",
+      "entity": "Moomoo",
       "total_mentions": 4,
       "bullish": 1,
       "neutral": 3,
       "bearish": 0,
       "net_sentiment_score": 0.25,
       "assets_seen_in": [
+        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "Binance",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
@@ -285,23 +318,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo"
       ]
     },
     {
@@ -433,22 +449,6 @@
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
@@ -3384,6 +3384,34 @@
       ],
       "example_headlines": [
         "Bitcoin\u2019s (BTC) low price volatility doesn\u2019t necessarily mean low risk: Crypto Daily - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Binance Futures",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
+      ]
+    },
+    {
+      "entity": "Spot market",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
       ]
     },
     {

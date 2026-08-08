@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 299,
+    "xrp_entries": 300,
     "btc_entries": 140
   },
-  "unique_pairs_found": 593,
+  "unique_pairs_found": 601,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 34,
+      "cooccurrence_count": 35,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 24,
+      "cooccurrence_count": 25,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -107,6 +107,21 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -217,21 +232,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -276,6 +276,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 4,
@@ -302,6 +317,36 @@
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -351,21 +396,6 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "MarketForces Africa",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -406,6 +436,21 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+          "asset": "BTC"
+        },
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -556,36 +601,6 @@
         },
         {
           "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -1146,6 +1161,21 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "MarketForces Africa",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -1246,21 +1276,6 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-          "asset": "BTC"
-        },
-        {
-          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -2570,17 +2585,6 @@
       "example_headlines": [
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -6816,6 +6820,94 @@
       "example_headlines": [
         {
           "title": "Bitcoin\u2019s (BTC) low price volatility doesn\u2019t necessarily mean low risk: Crypto Daily - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Binance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Binance Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Binance Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
           "asset": "BTC"
         }
       ]
