@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 297,
+    "xrp_entries": 299,
     "btc_entries": 140
   },
-  "unique_pairs_found": 590,
+  "unique_pairs_found": 593,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 33,
+      "cooccurrence_count": 34,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -217,6 +217,21 @@
     },
     {
       "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -291,21 +306,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "SBI Holdings",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -346,6 +346,21 @@
         },
         {
           "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -1126,21 +1141,6 @@
         },
         {
           "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -3534,6 +3534,39 @@
     {
       "entity_a": "XRP.CC",
       "entity_b": "moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP.CC",
+      "entity_b": "moomoo.com",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

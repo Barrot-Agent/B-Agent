@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 297,
+    "xrp_entries": 299,
     "btc_entries": 140
   },
-  "unique_entities_profiled": 233,
+  "unique_entities_profiled": 234,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 42,
+      "total_mentions": 43,
       "bullish": 28,
-      "neutral": 7,
+      "neutral": 8,
       "bearish": 7,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.488,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 35,
+      "total_mentions": 36,
       "bullish": 23,
-      "neutral": 7,
+      "neutral": 8,
       "bearish": 5,
-      "net_sentiment_score": 0.514,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "XRP"
       ],
@@ -240,6 +240,22 @@
       ]
     },
     {
+      "entity": "XRP.CC",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 3,
+      "bearish": 0,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
       "entity": "STRC",
       "total_mentions": 4,
       "bullish": 1,
@@ -269,22 +285,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
@@ -1881,6 +1881,20 @@
       "neutral": 0,
       "bearish": 0,
       "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
+      "entity": "moomoo.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "XRP"
       ],
