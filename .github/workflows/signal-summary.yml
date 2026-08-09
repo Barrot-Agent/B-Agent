@@ -1,8 +1,14 @@
 name: Generate Signal Summary
 on:
   workflow_dispatch:
+  # Fire immediately after the Knowledge Signal Cycle finishes writing latest_signal.json
+  workflow_run:
+    workflows: ["Knowledge Signal Cycle"]
+    types: [completed]
+    branches: [main]
+  # Fallback cron: runs at :25 (after knowledge-signal-cycle at :18)
   schedule:
-    - cron: '15 * * * *'
+    - cron: '25 * * * *'
 jobs:
   summary:
     runs-on: ubuntu-latest
