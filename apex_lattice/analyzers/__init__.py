@@ -5,7 +5,8 @@ with an analyze() method returning a dict containing at least a
 'findings' list. Analyzers are loaded dynamically by module path via
 apex_lattice.sandbox.SandboxPipeline / select_analyzers. Concrete classes are
 also available through lazy, descriptive aliases for callers that want a
-stable package-level API.
+stable package-level API. The aliases are listed in ``__all__`` and resolved
+on demand through PEP 562 module attribute lookup.
 """
 
 from __future__ import annotations

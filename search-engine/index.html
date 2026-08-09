@@ -603,6 +603,7 @@
 
     const searchWorkspace = localStorage.getItem(searchWorkspaceKey);
     const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey);
+    // Prefer this surface's draft, then use the shared dashboard draft.
     const storedSearchWorkspace = searchWorkspace !== null ? searchWorkspace : sharedWorkspace;
     if (storedSearchWorkspace !== null && searchWritePad) {
       searchWritePad.value = storedSearchWorkspace;
