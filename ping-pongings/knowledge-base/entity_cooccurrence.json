@@ -3,7 +3,7 @@
     "xrp_entries": 311,
     "btc_entries": 150
   },
-  "unique_pairs_found": 677,
+  "unique_pairs_found": 687,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 27,
+      "cooccurrence_count": 28,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -397,6 +397,21 @@
     },
     {
       "entity_a": "BTC",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
       "entity_b": "Fortune",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -631,21 +646,6 @@
         },
         {
           "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Coldcard",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -1846,6 +1846,21 @@
         },
         {
           "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Decrypt",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt",
           "asset": "BTC"
         }
       ]
@@ -6577,17 +6592,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Decrypt",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Trump family",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -7957,6 +7961,116 @@
       "example_headlines": [
         {
           "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CLARITY",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "galaxy.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "galaxy.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "galaxy.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "galaxy.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Decrypt",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt",
           "asset": "BTC"
         }
       ]
