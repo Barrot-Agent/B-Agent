@@ -27,10 +27,11 @@ def query_databricks(query):
             with urllib.request.urlopen(req, timeout=60) as resp:
                 return json.load(resp)
         except Exception as e:
-            if attempt == 2:
-                print(f"Databricks error: {e}")
-            else:
+            if attempt < 2:
+                print(f"Databricks attempt {attempt + 1} failed: {e}; retrying.")
                 time.sleep(2**attempt)
+            else:
+                print(f"Databricks error: {e}")
     return None
 
 def call_groq(prompt):
