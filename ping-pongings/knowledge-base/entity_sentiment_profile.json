@@ -3,15 +3,15 @@
     "xrp_entries": 311,
     "btc_entries": 149
   },
-  "unique_entities_profiled": 255,
+  "unique_entities_profiled": 258,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 109,
+      "total_mentions": 110,
       "bullish": 43,
-      "neutral": 18,
+      "neutral": 19,
       "bearish": 48,
-      "net_sentiment_score": -0.046,
+      "net_sentiment_score": -0.045,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -222,6 +222,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 6,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "Moomoo",
       "total_mentions": 5,
       "bullish": 1,
@@ -236,23 +253,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -2374,6 +2374,48 @@
       ],
       "example_headlines": [
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Iran",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
+      ]
+    },
+    {
+      "entity": "Oil prices",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
+      ]
+    },
+    {
+      "entity": "FOMC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
       ]
     },
     {
