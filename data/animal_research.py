@@ -147,7 +147,9 @@ def cross_reference(records: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
         for finding in _as_list(record.get("findings")):
             key = (
                 ",".join(sorted(_as_list(record.get("species")))),
-                re.sub(r"\b(?:not|no|avoid)\b", "", finding.lower()).strip(),
+                " ".join(
+                    re.sub(r"\b(?:not|no|avoid)\b", "", finding.lower()).split()
+                ),
             )
             polarity = "negative" if re.search(r"\bnot\b|\bno\b|\bavoid", finding.lower()) else "positive"
             claims[key][polarity].append(rid)
