@@ -38,4 +38,5 @@ def __getattr__(name: str) -> type[BaseAnalyzer]:
     analyzer = getattr(module, "Analyzer")
     if not issubclass(analyzer, BaseAnalyzer):
         raise TypeError(f"{module_name}.Analyzer must subclass BaseAnalyzer")
+    globals()[name] = analyzer
     return analyzer
