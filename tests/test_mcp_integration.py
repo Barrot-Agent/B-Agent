@@ -434,7 +434,7 @@ def test_scheduler_respects_max_runs():
 
 def test_scheduler_stops_after_max_runs():
     config = SchedulerConfig(max_runs=1, interval_seconds=0, dry_run=True)
-    sched = MCPScheduler(config=SchedulerConfig(max_runs=1, interval_seconds=0, dry_run=True), pipeline=lambda: {})
+    sched = MCPScheduler(config=config, pipeline=lambda: {})
     sched.run_once()
     assert sched.run_once() is None
 

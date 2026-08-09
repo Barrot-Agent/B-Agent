@@ -233,7 +233,7 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
         p = Path(self._allowed_root) / path
         p = p.resolve()
         allowed = Path(self._allowed_root).resolve()
-        if not str(p).startswith(str(allowed)):
+        if not p.is_relative_to(allowed):
             raise PermissionError(f"Path '{p}' is outside allowed root '{allowed}'.")
         return {"content": p.read_text(encoding="utf-8")}
 
@@ -242,7 +242,7 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
         p = Path(self._allowed_root) / path
         p = p.resolve()
         allowed = Path(self._allowed_root).resolve()
-        if not str(p).startswith(str(allowed)):
+        if not p.is_relative_to(allowed):
             raise PermissionError(f"Path '{p}' is outside allowed root '{allowed}'.")
         return {"entries": [e.name for e in p.iterdir()]}
 
@@ -253,7 +253,7 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
         base = Path(self._allowed_root) / root
         base = base.resolve()
         allowed = Path(self._allowed_root).resolve()
-        if not str(base).startswith(str(allowed)):
+        if not base.is_relative_to(allowed):
             raise PermissionError(f"Search root '{base}' is outside allowed root '{allowed}'.")
         matches = [str(p.relative_to(allowed)) for p in base.rglob(pattern)]
         return {"matches": matches}

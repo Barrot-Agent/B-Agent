@@ -72,6 +72,7 @@ _SECRET_PATTERNS = [
 _FORBIDDEN_PERMISSIONS = [
     "os.chmod",
     "subprocess.Popen",
+    "from subprocess import",
     "eval(",
     "exec(",
     "__import__(",
