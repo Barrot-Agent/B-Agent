@@ -1,6 +1,12 @@
 name: WebMCP Monetization Enrichment
 
 on:
+  # Fire immediately after WebMCP Trend Digest produces fresh candidate ideas
+  workflow_run:
+    workflows: ["WebMCP Trend Digest"]
+    types: [completed]
+    branches: [main]
+  # Fallback cron in case the upstream run is skipped
   schedule:
     - cron: '30 7 * * 1'
   workflow_dispatch:

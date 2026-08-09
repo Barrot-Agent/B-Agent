@@ -12,6 +12,24 @@
         "STABILITY_ANCHOR": "0.707"
       }
     },
+    "barrot-memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/workspace/B-Agent/ping-pongings/knowledge-base/barrot_memory.jsonl"
+      }
+    },
+    "barrot-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/workspace/B-Agent"
+      ]
+    },
     "github": {
       "command": "uvx",
       "args": ["mcp-server-github"],
