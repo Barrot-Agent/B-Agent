@@ -3,7 +3,7 @@
     "xrp_entries": 311,
     "btc_entries": 150
   },
-  "unique_pairs_found": 676,
+  "unique_pairs_found": 677,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -97,6 +97,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 9,
       "example_headlines": [
@@ -122,21 +137,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -182,6 +182,21 @@
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
         }
       ]
     },
@@ -286,21 +301,6 @@
         },
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
           "asset": "BTC"
         }
       ]
@@ -7957,6 +7957,17 @@
       "example_headlines": [
         {
           "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: Key Resistance Breakout Possible as ETF Inflows Spike - Yahoo Finance",
           "asset": "BTC"
         }
       ]

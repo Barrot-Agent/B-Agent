@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 110,
-      "bullish": 43,
+      "total_mentions": 111,
+      "bullish": 44,
       "neutral": 19,
       "bearish": 48,
-      "net_sentiment_score": -0.045,
+      "net_sentiment_score": -0.036,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 15,
-      "bullish": 7,
+      "total_mentions": 16,
+      "bullish": 8,
       "neutral": 3,
       "bearish": 5,
-      "net_sentiment_score": 0.133,
+      "net_sentiment_score": 0.188,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -239,6 +239,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "Moomoo",
       "total_mentions": 5,
       "bullish": 1,
@@ -269,23 +286,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
