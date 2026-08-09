@@ -43,6 +43,6 @@ def __getattr__(name: str) -> type[BaseAnalyzer]:
             f"analyzer module {module.__name__!r} does not define Analyzer"
         ) from exc
     if not issubclass(analyzer, BaseAnalyzer):
-        raise TypeError(f"{module_name}.Analyzer must subclass BaseAnalyzer")
+        raise AttributeError(f"{module_name}.Analyzer must subclass BaseAnalyzer")
     globals()[name] = analyzer
     return analyzer
