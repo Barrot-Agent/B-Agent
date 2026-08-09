@@ -103,7 +103,12 @@ def normalize_record(raw: Mapping[str, Any]) -> Dict[str, Any]:
 def grade_evidence(record: Mapping[str, Any]) -> str:
     """Conservative grade; it never upgrades a record based on interpretation."""
     design = str(record.get("study_design", "")).lower()
-    reproducibility = str(record.get("reproducibility", {}).get("status", "")).lower()
+    reproducibility_data = record.get("reproducibility", {})
+    reproducibility = (
+        str(reproducibility_data.get("status", "")).lower()
+        if isinstance(reproducibility_data, Mapping)
+        else ""
+    )
     if reproducibility in {"replicated", "independently_replicated"} and "controlled" in design:
         return "A"
     if reproducibility in {"replicated", "independently_replicated"}:
@@ -140,7 +145,10 @@ def cross_reference(records: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
             for value in _as_list(record.get(field)):
                 facets[field][value].append(rid)
         for finding in _as_list(record.get("findings")):
-            key = (",".join(sorted(_as_list(record.get("species")))), re.sub(r"\bnot\b", "", finding.lower()).strip())
+            key = (
+                ",".join(sorted(_as_list(record.get("species")))),
+                re.sub(r"\b(?:not|no|avoid)\b", "", finding.lower()).strip(),
+            )
             polarity = "negative" if re.search(r"\bnot\b|\bno\b|\bavoid", finding.lower()) else "positive"
             claims[key][polarity].append(rid)
     contradictions = [
