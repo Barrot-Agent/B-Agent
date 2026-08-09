@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 309,
-    "btc_entries": 148
+    "xrp_entries": 311,
+    "btc_entries": 149
   },
-  "unique_entities_profiled": 254,
+  "unique_entities_profiled": 255,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 51,
-      "bullish": 33,
+      "total_mentions": 52,
+      "bullish": 34,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.51,
+      "net_sentiment_score": 0.519,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 43,
-      "bullish": 27,
+      "total_mentions": 44,
+      "bullish": 28,
       "neutral": 11,
       "bearish": 5,
-      "net_sentiment_score": 0.512,
+      "net_sentiment_score": 0.523,
       "assets_seen_in": [
         "XRP"
       ],
@@ -1152,6 +1152,36 @@
       ]
     },
     {
+      "entity": "European Union",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple"
+      ]
+    },
+    {
+      "entity": "MiCA",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple"
+      ]
+    },
+    {
       "entity": "CLARITY Act",
       "total_mentions": 2,
       "bullish": 1,
@@ -1927,34 +1957,6 @@
       ]
     },
     {
-      "entity": "European Union",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com"
-      ]
-    },
-    {
-      "entity": "MiCA",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com"
-      ]
-    },
-    {
       "entity": "moomoo",
       "total_mentions": 1,
       "bullish": 1,
@@ -2008,6 +2010,20 @@
       ],
       "example_headlines": [
         "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "European Commission",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "What Ripple CASP authorisation means under MiCA - Ripple"
       ]
     },
     {
