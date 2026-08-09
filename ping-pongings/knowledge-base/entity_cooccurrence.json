@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 299,
-    "btc_entries": 140
+    "xrp_entries": 311,
+    "btc_entries": 149
   },
-  "unique_pairs_found": 593,
+  "unique_pairs_found": 667,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 34,
+      "cooccurrence_count": 42,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 24,
+      "cooccurrence_count": 27,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 11,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -47,6 +47,51 @@
         {
           "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -66,9 +111,24 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -83,7 +143,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -98,7 +158,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
@@ -112,30 +172,30 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 5,
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 6,
       "example_headlines": [
         {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         },
         {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
           "asset": "XRP"
         },
         {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -151,6 +211,51 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -216,7 +321,37 @@
       ]
     },
     {
-      "entity_a": "Ripple",
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -231,22 +366,7 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
+      "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -255,38 +375,8 @@
           "asset": "XRP"
         },
         {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-          "asset": "BTC"
         }
       ]
     },
@@ -351,8 +441,8 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -360,7 +450,7 @@
           "asset": "XRP"
         },
         {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -396,6 +486,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Galaxy",
       "cooccurrence_count": 3,
@@ -406,6 +511,21 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+          "asset": "BTC"
+        },
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -451,6 +571,21 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -556,36 +691,6 @@
         },
         {
           "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -1102,7 +1207,7 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
+      "entity_b": "The Motley Fool",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -1110,13 +1215,28 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
           "asset": "XRP"
         }
       ]
     },
     {
-      "entity_a": "Ripple Labs",
+      "entity_a": "SEC",
+      "entity_b": "The Motley Fool",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "The Motley Fool",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -1125,7 +1245,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
           "asset": "XRP"
         }
       ]
@@ -1146,6 +1266,36 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "MarketForces Africa",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -1156,6 +1306,21 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1251,17 +1416,137 @@
       ]
     },
     {
-      "entity_a": "Binance",
-      "entity_b": "Bitcoin",
+      "entity_a": "Ripple",
+      "entity_b": "U.S. District Court",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-          "asset": "BTC"
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
         },
         {
-          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
-          "asset": "BTC"
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Union",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Union",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Union",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiCA",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiCA",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Will XRP Ever Hit a New All-Time High? - 247wallst.com",
+          "asset": "XRP"
         }
       ]
     },
@@ -1356,6 +1641,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "MSTR",
       "cooccurrence_count": 2,
@@ -1396,21 +1696,6 @@
         },
         {
           "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -1536,6 +1821,21 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard fallout shows up onchain as 210,000 bitcoin leaves old wallets - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "S&P 500",
       "cooccurrence_count": 2,
@@ -1591,6 +1891,66 @@
         },
         {
           "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "USD",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "miners",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "miners",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
           "asset": "BTC"
         }
       ]
@@ -2421,52 +2781,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
       "entity_b": "The Motley Fool",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "The Motley Fool",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -2575,41 +2891,8 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "XRP Ledger",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -2709,17 +2992,6 @@
     {
       "entity_a": "Ripple",
       "entity_b": "cryptocurrency market",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -3367,39 +3639,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. District Court",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "European Union",
       "cooccurrence_count": 1,
@@ -3434,61 +3673,6 @@
     },
     {
       "entity_a": "CLARITY Act",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Union",
-      "entity_b": "MiCA",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Union",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Union",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "MiCA",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "MiCA",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -3571,6 +3755,193 @@
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized assets",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized assets",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized assets",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2027",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2027",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2027",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2027",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "The Motley Fool",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "European Union",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
           "asset": "XRP"
         }
       ]
@@ -3824,17 +4195,6 @@
       "example_headlines": [
         {
           "title": "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Nansen",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -4985,6 +5345,17 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end July in the green despite late-month selling",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "July",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5844,17 +6215,6 @@
     {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "Federal Reserve",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "Coldcard",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -6821,6 +7181,182 @@
       ]
     },
     {
+      "entity_a": "64K",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "64K",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "64K",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "64K",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Binance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Binance Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Binance Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Spot market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Dice entropy",
       "cooccurrence_count": 1,
@@ -6948,6 +7484,380 @@
       "example_headlines": [
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Zeppelin analogy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "Zeppelin analogy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Yahoo Finance",
+      "entity_b": "Zeppelin analogy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Yahoo Finance",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Zeppelin analogy",
+      "entity_b": "historian",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alex Svanevik",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alex Svanevik",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alex Svanevik",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Nansen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin will never fall below $60K again: Nansen founder",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CoinMarketCap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinMarketCap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinMarketCap",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin Core",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "hard-fork",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Core",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "hard-fork",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Core",
+      "entity_b": "hard-fork",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Core",
+      "entity_b": "miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "hard-fork",
+      "entity_b": "miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "BTCPay Server Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "Citadel21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server Foundation",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server Foundation",
+      "entity_b": "Citadel21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server Foundation",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Citadel21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citadel21",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
           "asset": "BTC"
         }
       ]

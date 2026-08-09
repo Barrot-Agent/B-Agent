@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 299,
-    "btc_entries": 140
+    "xrp_entries": 311,
+    "btc_entries": 149
   },
-  "unique_entities_profiled": 234,
+  "unique_entities_profiled": 255,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 99,
-      "bullish": 39,
-      "neutral": 17,
-      "bearish": 43,
-      "net_sentiment_score": -0.04,
+      "total_mentions": 109,
+      "bullish": 43,
+      "neutral": 18,
+      "bearish": 48,
+      "net_sentiment_score": -0.046,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 43,
-      "bullish": 28,
-      "neutral": 8,
+      "total_mentions": 52,
+      "bullish": 34,
+      "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.488,
+      "net_sentiment_score": 0.519,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 36,
-      "bullish": 23,
-      "neutral": 8,
+      "total_mentions": 44,
+      "bullish": 28,
+      "neutral": 11,
       "bearish": 5,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.523,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 34,
-      "bullish": 12,
-      "neutral": 5,
-      "bearish": 17,
-      "net_sentiment_score": -0.147,
+      "total_mentions": 38,
+      "bullish": 14,
+      "neutral": 6,
+      "bearish": 18,
+      "net_sentiment_score": -0.105,
       "assets_seen_in": [
         "BTC"
       ],
@@ -72,29 +72,12 @@
       ]
     },
     {
-      "entity": "Coldcard",
-      "total_mentions": 14,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 11,
-      "net_sentiment_score": -0.571,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "Yahoo Finance",
-      "total_mentions": 13,
-      "bullish": 6,
+      "total_mentions": 15,
+      "bullish": 7,
       "neutral": 3,
-      "bearish": 4,
-      "net_sentiment_score": 0.154,
+      "bearish": 5,
+      "net_sentiment_score": 0.133,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -106,12 +89,29 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 15,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 12,
+      "net_sentiment_score": -0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 11,
+      "total_mentions": 12,
       "bullish": 4,
       "neutral": 0,
-      "bearish": 7,
-      "net_sentiment_score": -0.273,
+      "bearish": 8,
+      "net_sentiment_score": -0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -120,6 +120,23 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "CoinDesk",
+      "total_mentions": 12,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": 0.167,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -140,20 +157,36 @@
       ]
     },
     {
-      "entity": "CoinDesk",
+      "entity": "SEC",
       "total_mentions": 10,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": 0.2,
+      "bullish": 8,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.8,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 9,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -173,19 +206,36 @@
       ]
     },
     {
-      "entity": "XRP Ledger",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
+      "entity": "XRP.CC",
+      "total_mentions": 6,
+      "bullish": 1,
+      "neutral": 5,
       "bearish": 0,
-      "net_sentiment_score": 1.0,
+      "net_sentiment_score": 0.167,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
+      "entity": "Moomoo",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -206,20 +256,19 @@
       ]
     },
     {
-      "entity": "SEC",
+      "entity": "Ripple Labs",
       "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 1,
+      "bullish": 3,
+      "neutral": 2,
       "bearish": 0,
-      "net_sentiment_score": 0.8,
+      "net_sentiment_score": 0.6,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -240,19 +289,19 @@
       ]
     },
     {
-      "entity": "XRP.CC",
+      "entity": "Binance",
       "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 3,
-      "bearish": 0,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
       "net_sentiment_score": 0.25,
       "assets_seen_in": [
-        "XRP"
+        "BTC"
       ],
       "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
@@ -272,6 +321,22 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 4,
       "bullish": 2,
@@ -285,23 +350,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo"
       ]
     },
     {
@@ -436,22 +484,6 @@
       ]
     },
     {
-      "entity": "Binance",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
-      ]
-    },
-    {
       "entity": "US",
       "total_mentions": 3,
       "bullish": 1,
@@ -532,22 +564,6 @@
       ]
     },
     {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
       "entity": "US stocks",
       "total_mentions": 3,
       "bullish": 1,
@@ -593,6 +609,22 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "S&P 500",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
       ]
     },
     {
@@ -1028,18 +1060,18 @@
       ]
     },
     {
-      "entity": "Ripple Labs",
+      "entity": "The Motley Fool",
       "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
+      "bullish": 2,
+      "neutral": 0,
       "bearish": 0,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance"
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M"
       ]
     },
     {
@@ -1105,6 +1137,51 @@
       ]
     },
     {
+      "entity": "U.S. District Court",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "European Union",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple"
+      ]
+    },
+    {
+      "entity": "MiCA",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple"
+      ]
+    },
+    {
       "entity": "CLARITY Act",
       "total_mentions": 2,
       "bullish": 1,
@@ -1118,6 +1195,22 @@
       "example_headlines": [
         "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
         "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
+      ]
+    },
+    {
+      "entity": "Wall Street",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
       ]
     },
     {
@@ -1163,6 +1256,21 @@
       "example_headlines": [
         "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
         "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
+      "entity": "Nansen",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+        "Bitcoin will never fall below $60K again: Nansen founder"
       ]
     },
     {
@@ -1256,21 +1364,6 @@
       ]
     },
     {
-      "entity": "S&P 500",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
-      ]
-    },
-    {
       "entity": "Bloomberg",
       "total_mentions": 2,
       "bullish": 0,
@@ -1298,6 +1391,51 @@
       "example_headlines": [
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "USD",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
+      ]
+    },
+    {
+      "entity": "BIP-110",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
+      ]
+    },
+    {
+      "entity": "miners",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
       ]
     },
     {
@@ -1550,20 +1688,6 @@
       ],
       "example_headlines": [
         "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool"
       ]
     },
     {
@@ -1833,48 +1957,6 @@
       ]
     },
     {
-      "entity": "U.S. District Court",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga"
-      ]
-    },
-    {
-      "entity": "European Union",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com"
-      ]
-    },
-    {
-      "entity": "MiCA",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com"
-      ]
-    },
-    {
       "entity": "moomoo",
       "total_mentions": 1,
       "bullish": 1,
@@ -1900,6 +1982,48 @@
       ],
       "example_headlines": [
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
+      "entity": "Tokenized assets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com"
+      ]
+    },
+    {
+      "entity": "2027",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "European Commission",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "What Ripple CASP authorisation means under MiCA - Ripple"
       ]
     },
     {
@@ -2127,20 +2251,6 @@
       ]
     },
     {
-      "entity": "Nansen",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk"
-      ]
-    },
-    {
       "entity": "Peter Schiff",
       "total_mentions": 1,
       "bullish": 1,
@@ -2208,20 +2318,6 @@
       ],
       "example_headlines": [
         "Markets eye Bank of Japan meeting on Friday as yen repeats 40-year US dollar lows"
-      ]
-    },
-    {
-      "entity": "Wall Street",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
       ]
     },
     {
@@ -2698,6 +2794,20 @@
       ],
       "example_headlines": [
         "ENS Labs Scales Back Treasury Proposal After Delegate Pushback"
+      ]
+    },
+    {
+      "entity": "Spot Bitcoin ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs end July in the green despite late-month selling"
       ]
     },
     {
@@ -3387,6 +3497,48 @@
       ]
     },
     {
+      "entity": "64K",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+      ]
+    },
+    {
+      "entity": "Binance Futures",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
+      ]
+    },
+    {
+      "entity": "Spot market",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
+      ]
+    },
+    {
       "entity": "Dice entropy",
       "total_mentions": 1,
       "bullish": 1,
@@ -3440,6 +3592,160 @@
       ],
       "example_headlines": [
         "Bitcoin price tags $65.3K August high as low US jobs numbers cool Fed rate bets"
+      ]
+    },
+    {
+      "entity": "Satoshi Nakamoto",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi"
+      ]
+    },
+    {
+      "entity": "Zeppelin analogy",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi"
+      ]
+    },
+    {
+      "entity": "historian",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi"
+      ]
+    },
+    {
+      "entity": "Alex Svanevik",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin will never fall below $60K again: Nansen founder"
+      ]
+    },
+    {
+      "entity": "CoinMarketCap",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
+      ]
+    },
+    {
+      "entity": "Bitcoin Core",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
+      ]
+    },
+    {
+      "entity": "hard-fork",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
+      ]
+    },
+    {
+      "entity": "BTCPay",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay restricts remote Lightning access after attackers steal funds"
+      ]
+    },
+    {
+      "entity": "Lightning Network",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay restricts remote Lightning access after attackers steal funds"
+      ]
+    },
+    {
+      "entity": "Citadel21",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay restricts remote Lightning access after attackers steal funds"
+      ]
+    },
+    {
+      "entity": "BTCPay Server Foundation",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay restricts remote Lightning access after attackers steal funds"
       ]
     }
   ]
