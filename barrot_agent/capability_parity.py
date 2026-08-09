@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Protocol
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Protocol
 
 
 class CapabilityStatus(str, Enum):
