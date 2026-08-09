@@ -3,15 +3,15 @@
     "xrp_entries": 307,
     "btc_entries": 145
   },
-  "unique_entities_profiled": 246,
+  "unique_entities_profiled": 250,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 106,
+      "total_mentions": 107,
       "bullish": 43,
       "neutral": 18,
-      "bearish": 45,
-      "net_sentiment_score": -0.019,
+      "bearish": 46,
+      "net_sentiment_score": -0.028,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3616,6 +3616,62 @@
       ],
       "example_headlines": [
         "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
+      ]
+    },
+    {
+      "entity": "BIP-110",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
+      ]
+    },
+    {
+      "entity": "Bitcoin Core",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
+      ]
+    },
+    {
+      "entity": "miners",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
+      ]
+    },
+    {
+      "entity": "hard-fork",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
       ]
     }
   ]
