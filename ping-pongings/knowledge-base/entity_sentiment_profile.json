@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 311,
-    "btc_entries": 149
+    "btc_entries": 150
   },
-  "unique_entities_profiled": 255,
+  "unique_entities_profiled": 260,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 109,
-      "bullish": 43,
-      "neutral": 18,
+      "total_mentions": 112,
+      "bullish": 44,
+      "neutral": 20,
       "bearish": 48,
-      "net_sentiment_score": -0.046,
+      "net_sentiment_score": -0.036,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 38,
+      "total_mentions": 40,
       "bullish": 14,
-      "neutral": 6,
+      "neutral": 8,
       "bearish": 18,
-      "net_sentiment_score": -0.105,
+      "net_sentiment_score": -0.1,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 15,
-      "bullish": 7,
+      "total_mentions": 16,
+      "bullish": 8,
       "neutral": 3,
       "bearish": 5,
-      "net_sentiment_score": 0.133,
+      "net_sentiment_score": 0.188,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -90,11 +90,11 @@
     },
     {
       "entity": "Coldcard",
-      "total_mentions": 15,
+      "total_mentions": 16,
       "bullish": 3,
-      "neutral": 0,
+      "neutral": 1,
       "bearish": 12,
-      "net_sentiment_score": -0.6,
+      "net_sentiment_score": -0.562,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -222,6 +222,40 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 6,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
+      "entity": "ETF",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "Moomoo",
       "total_mentions": 5,
       "bullish": 1,
@@ -236,23 +270,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -272,23 +289,6 @@
       ]
     },
     {
-      "entity": "ETF",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
       "entity": "Binance",
       "total_mentions": 4,
       "bullish": 2,
@@ -302,6 +302,22 @@
         "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
         "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "Strategy",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 3,
+      "bearish": 0,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy Announces Second Quarter 2026 Financial Results - Strategy",
+        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
       ]
     },
     {
@@ -435,6 +451,23 @@
       ]
     },
     {
+      "entity": "Decrypt",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
+        "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
+      ]
+    },
+    {
       "entity": "CryptoQuant",
       "total_mentions": 3,
       "bullish": 2,
@@ -513,22 +546,6 @@
         "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
         "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
         "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy Announces Second Quarter 2026 Financial Results - Strategy",
-        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
       ]
     },
     {
@@ -1102,22 +1119,6 @@
       "example_headlines": [
         "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
         "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Decrypt",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-        "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
       ]
     },
     {
@@ -2374,6 +2375,48 @@
       ],
       "example_headlines": [
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Iran",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
+      ]
+    },
+    {
+      "entity": "Oil prices",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
+      ]
+    },
+    {
+      "entity": "FOMC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
       ]
     },
     {
@@ -3746,6 +3789,34 @@
       ],
       "example_headlines": [
         "BTCPay restricts remote Lightning access after attackers steal funds"
+      ]
+    },
+    {
+      "entity": "CLARITY",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com"
+      ]
+    },
+    {
+      "entity": "galaxy.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com"
       ]
     }
   ]
