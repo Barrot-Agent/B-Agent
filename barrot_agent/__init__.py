@@ -21,6 +21,17 @@ from .smart_agent import (
     ToolCall,
     ToolResult,
 )
+from .capability_parity import (
+    BenchmarkResult,
+    BenchmarkTask,
+    Capability,
+    CapabilityMatrix,
+    CapabilityStatus,
+    DEFAULT_BENCHMARKS,
+    DEFAULT_CAPABILITY_MATRIX,
+    StrategyRouter,
+    evaluate_benchmark,
+)
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
@@ -50,6 +61,15 @@ __all__ = [
     "ToolCall",
     "ToolResult",
     "SmartAgent",
+    "BenchmarkResult",
+    "BenchmarkTask",
+    "Capability",
+    "CapabilityMatrix",
+    "CapabilityStatus",
+    "DEFAULT_BENCHMARKS",
+    "DEFAULT_CAPABILITY_MATRIX",
+    "StrategyRouter",
+    "evaluate_benchmark",
     "data_registry",
 ]
 
