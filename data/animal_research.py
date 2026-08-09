@@ -113,7 +113,9 @@ def grade_evidence(record: Mapping[str, Any]) -> str:
         return "A"
     if reproducibility in {"replicated", "independently_replicated"}:
         return "B"
-    if "controlled" in design or record.get("sample_size", 0) not in (0, None):
+    sample_size = record.get("sample_size")
+    has_sample_size = isinstance(sample_size, int) and not isinstance(sample_size, bool) and sample_size > 0
+    if "controlled" in design or has_sample_size:
         return "C"
     return "D"
 
@@ -268,7 +270,11 @@ def fetch_trusted_source(
         payload = response.read()
     try:
         data = json.loads(payload)
-        items = data.get("items", data.get("records", data)) if isinstance(data, Mapping) else data
+        if isinstance(data, Mapping):
+            items = data.get("items", data.get("records"))
+            items = items if items is not None else [data]
+        else:
+            items = data
         return [dict(item) for item in items if isinstance(item, Mapping)]
     except (json.JSONDecodeError, TypeError):
         try:
