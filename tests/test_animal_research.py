@@ -4,6 +4,8 @@ from data.animal_research import (
     merge_versions,
     normalize_record,
     search_records,
+    normalize_language_profile,
+    translate_to_animal,
 )
 
 
@@ -46,3 +48,25 @@ def test_review_gate_and_local_search():
     queue.approve(record["record_id"], "researcher")
     assert len(queue.publishable()) == 1
     assert search_records("dolphin whistles", queue.publishable())
+
+
+def test_language_profile_only_translates_reviewed_mappings():
+    profile = normalize_language_profile(
+        {
+            "species": ["dolphin"],
+            "modality": ["whistle"],
+            "provenance": {"source_url": "https://doi.org/language"},
+            "evidence_record_ids": ["record-1"],
+            "status": "approved",
+            "mappings": [
+                {
+                    "human_text": "come here",
+                    "animal_signal": "whistle-42",
+                    "confidence": "low",
+                    "status": "approved",
+                }
+            ],
+        }
+    )
+    assert translate_to_animal("Come here", profile["language_id"], [profile])["signal"] == "whistle-42"
+    assert not translate_to_animal("unknown phrase", profile["language_id"], [profile])["translated"]

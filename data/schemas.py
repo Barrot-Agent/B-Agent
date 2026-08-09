@@ -209,6 +209,7 @@ class AnimalResearchRecord(TypedDict):
 class AnimalResearchRegistry(TypedDict):
     records: List[AnimalResearchRecord]
     contradictions: List[Dict[str, Any]]
+    languages: List[Dict[str, Any]]
     _meta: Dict[str, Any]
 
 

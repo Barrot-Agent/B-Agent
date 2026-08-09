@@ -124,12 +124,64 @@ def merge_versions(records: Iterable[Mapping[str, Any]]) -> List[Dict[str, Any]]
     for raw in records:
         item = normalize_record(raw)
         current = latest.get(item["record_id"])
-        if current is None or (item["version"], item["updated_at"]) >= (
-            current["version"],
-            current["updated_at"],
+        if current is None or item["version"] > current["version"] or (
+            item["version"] == current["version"]
+            and str(item["updated_at"]) >= str(current["updated_at"])
         ):
             latest[item["record_id"]] = item
     return sorted(latest.values(), key=lambda item: item["record_id"])
+
+
+def normalize_language_profile(raw: Mapping[str, Any]) -> Dict[str, Any]:
+    """Normalize a species communication profile without asserting sentience."""
+    species = sorted(set(_as_list(raw.get("species"))))
+    modality = sorted(set(_as_list(raw.get("modality"))))
+    if not species or not modality or not raw.get("provenance", {}).get("source_url"):
+        raise ValueError("language profiles require species, modality, and provenance.source_url")
+    identity = "|".join((species[0].lower(), ",".join(modality), str(raw["provenance"]["source_url"])))
+    return {
+        "language_id": hashlib.sha256(identity.encode("utf-8")).hexdigest()[:20],
+        "species": species,
+        "modality": modality,
+        "signal_inventory": _as_list(raw.get("signal_inventory")),
+        "documented_meanings": _as_list(raw.get("documented_meanings")),
+        "mappings": [dict(mapping) for mapping in raw.get("mappings", [])],
+        "uncertainty": _as_list(raw.get("uncertainty")),
+        "provenance": dict(raw["provenance"]),
+        "evidence_record_ids": _as_list(raw.get("evidence_record_ids")),
+        "status": str(raw.get("status", "draft")),
+        "updated_at": str(raw.get("updated_at", _now())),
+    }
+
+
+def translate_to_animal(
+    text: str, language_id: str, profiles: Sequence[Mapping[str, Any]]
+) -> Dict[str, Any]:
+    """Return only an explicitly reviewed mapping; never invent a signal."""
+    normalized = " ".join(text.lower().split())
+    for profile in profiles:
+        if profile.get("language_id") != language_id:
+            continue
+        for mapping in profile.get("mappings", []):
+            if (
+                profile.get("status") == "approved"
+                and mapping.get("status") == "approved"
+                and " ".join(str(mapping.get("human_text", "")).lower().split()) == normalized
+            ):
+                return {
+                    "language_id": language_id,
+                    "signal": mapping.get("animal_signal"),
+                    "confidence": mapping.get("confidence", "unknown"),
+                    "evidence_record_ids": profile.get("evidence_record_ids", []),
+                    "translated": True,
+                }
+    return {
+        "language_id": language_id,
+        "signal": None,
+        "confidence": "unsupported",
+        "translated": False,
+        "reason": "No reviewed mapping exists for this phrase.",
+    }
 
 
 def cross_reference(records: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
@@ -155,7 +207,11 @@ def cross_reference(records: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
                     ).split()
                 ),
             )
-            polarity = "negative" if re.search(r"\bnot\b|\bno\b|\bavoid", finding.lower()) else "positive"
+            polarity = (
+                "negative"
+                if re.search(r"\b(?:do|does|did)\s+not\b|\b(?:not|no|avoid)\b", finding.lower())
+                else "positive"
+            )
             claims[key][polarity].append(rid)
     contradictions = [
         {"claim": key[1], "records": dict(polarities)}
@@ -215,7 +271,10 @@ def fetch_trusted_source(
         items = data.get("items", data.get("records", data)) if isinstance(data, Mapping) else data
         return [dict(item) for item in items if isinstance(item, Mapping)]
     except (json.JSONDecodeError, TypeError):
-        root = ET.fromstring(payload)
+        try:
+            root = ET.fromstring(payload)
+        except ET.ParseError as exc:
+            raise ValueError("trusted source returned neither JSON nor valid RSS/XML") from exc
         return [
             {"title": item.findtext("title", ""), "url": item.findtext("link", "")}
             for item in root.iter("item")
