@@ -1,17 +1,17 @@
 {
-  "summary": "The XRP signal, generated on\u202f2026\u201108\u201108\u202fat\u202f23:44:58\u202fUTC, carries a bullish bias with a score of\u202f84 and a confidence of\u202f0.9. It is based on\u202f23\u202frecent XRP\u2011related headlines, giving the news component a score of\u202f82.\n\n- Timestamp:\u202f2026\u201108\u201108T23:44:58.665640+00:00  \n- Overall signal score:\u202f84 (confidence\u202f0.9)  \n- News data:\u202f23 entries, news_score\u202f82.",
-  "spoken_line": "XRP signal update. Score 84. Confidence 0.9. Based on 23 news entries. Not financial advice. Informational only. Do your own research.",
+  "summary": "The signal, generated at **2026\u201108\u201109T02:28:55.527293Z**, gives XRP a **bullish** outlook with a **score of 84** and **confidence of 0.92**. It is based on **23 bullish news entries**, yielding a **news_score of 82**.  \n\n- Timestamp: 2026\u201108\u201109T02:28:55.527293+00:00  \n- Overall score/confidence: 84 / 0.92  \n- Source details: 23 bullish headlines, news_score 82.",
+  "spoken_line": "The XRP signal at 02:28 UTC says bullish with a score of 84 and confidence 0.92 from 23 bullish news items. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-08-08T23:44:58.665640+00:00",
+    "timestamp": "2026-08-09T02:28:55.527293+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 84,
-    "confidence": 0.9,
+    "confidence": 0.92,
     "source": "groq:bullish+news(23)",
     "news_score": 82,
     "news_entries": 23,
-    "generated_at_unix": 1786232698
+    "generated_at_unix": 1786242535
   }
 }
