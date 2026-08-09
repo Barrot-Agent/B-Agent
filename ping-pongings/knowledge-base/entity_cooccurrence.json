@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 307,
-    "btc_entries": 145
+    "xrp_entries": 308,
+    "btc_entries": 146
   },
-  "unique_pairs_found": 653,
+  "unique_pairs_found": 663,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 39,
+      "cooccurrence_count": 40,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -173,7 +173,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP.CC",
-      "cooccurrence_count": 5,
+      "cooccurrence_count": 6,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -211,6 +211,21 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -291,6 +306,36 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 4,
@@ -321,21 +366,6 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Fortune",
       "cooccurrence_count": 4,
@@ -347,36 +377,6 @@
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
         }
       ]
     },
@@ -436,6 +436,21 @@
         },
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -1231,21 +1246,6 @@
         },
         {
           "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -7668,6 +7668,116 @@
       "example_headlines": [
         {
           "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "BTCPay Server Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "Citadel21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server Foundation",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server Foundation",
+      "entity_b": "Citadel21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server Foundation",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Citadel21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citadel21",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
           "asset": "BTC"
         }
       ]
