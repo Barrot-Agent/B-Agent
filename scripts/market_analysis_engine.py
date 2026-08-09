@@ -22,12 +22,13 @@ def query_databricks(query):
             "Content-Type": "application/json"
         }
     )
-    for attempt in range(3):
+    max_attempts = 3
+    for attempt in range(max_attempts):
         try:
             with urllib.request.urlopen(req, timeout=60) as resp:
                 return json.load(resp)
         except Exception as e:
-            if attempt < 2:
+            if attempt < max_attempts - 1:
                 print(f"Databricks attempt {attempt + 1} failed: {e}; retrying.")
                 time.sleep(2**attempt)
             else:
