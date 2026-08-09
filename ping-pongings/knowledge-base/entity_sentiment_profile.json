@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 308,
-    "btc_entries": 147
+    "xrp_entries": 309,
+    "btc_entries": 148
   },
   "unique_entities_profiled": 254,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 108,
+      "total_mentions": 109,
       "bullish": 43,
       "neutral": 18,
-      "bearish": 47,
-      "net_sentiment_score": -0.037,
+      "bearish": 48,
+      "net_sentiment_score": -0.046,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 50,
-      "bullish": 32,
+      "total_mentions": 51,
+      "bullish": 33,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.51,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 42,
-      "bullish": 26,
+      "total_mentions": 43,
+      "bullish": 27,
       "neutral": 11,
       "bearish": 5,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.512,
       "assets_seen_in": [
         "XRP"
       ],
@@ -158,11 +158,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 9,
-      "bullish": 7,
+      "total_mentions": 10,
+      "bullish": 8,
       "neutral": 2,
       "bearish": 0,
-      "net_sentiment_score": 0.778,
+      "net_sentiment_score": 0.8,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -171,6 +171,22 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 9,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -187,22 +203,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 8,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -256,6 +256,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 5,
       "bullish": 4,
@@ -270,22 +286,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Hashdex to shut smallest Bitcoin ETF after more than two years",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -1376,6 +1376,36 @@
       "example_headlines": [
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
         "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
+      ]
+    },
+    {
+      "entity": "BIP-110",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
+      ]
+    },
+    {
+      "entity": "miners",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
       ]
     },
     {
@@ -3619,35 +3649,7 @@
       ]
     },
     {
-      "entity": "BIP-110",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
-      ]
-    },
-    {
       "entity": "Bitcoin Core",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
-      ]
-    },
-    {
-      "entity": "miners",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,

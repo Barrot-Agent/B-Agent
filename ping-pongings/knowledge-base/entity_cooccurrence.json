@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 308,
-    "btc_entries": 147
+    "xrp_entries": 309,
+    "btc_entries": 148
   },
   "unique_pairs_found": 663,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 40,
+      "cooccurrence_count": 41,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -51,6 +51,51 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 9,
@@ -66,7 +111,7 @@
       ]
     },
     {
-      "entity_a": "XRP",
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 8,
       "example_headlines": [
@@ -76,36 +121,6 @@
         },
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -136,21 +151,6 @@
         },
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -211,6 +211,36 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -336,23 +366,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
+      "entity_b": "SEC",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
@@ -360,7 +375,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -426,21 +441,6 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -482,6 +482,21 @@
         {
           "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
         }
       ]
     },
@@ -1446,7 +1461,7 @@
       ]
     },
     {
-      "entity_a": "SEC",
+      "entity_a": "Ripple Labs",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -1455,7 +1470,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "title": "XRP Price Prediction: Will XRP Ever Hit a New All-Time High? - 247wallst.com",
           "asset": "XRP"
         }
       ]
@@ -1816,6 +1831,51 @@
         },
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "miners",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "miners",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
           "asset": "BTC"
         }
       ]
@@ -3763,17 +3823,6 @@
       "example_headlines": [
         {
           "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
           "asset": "XRP"
         }
       ]
@@ -7564,17 +7613,6 @@
     },
     {
       "entity_a": "BIP-110",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
       "entity_b": "Bitcoin Core",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -7587,17 +7625,6 @@
     {
       "entity_a": "BIP-110",
       "entity_b": "hard-fork",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
-      "entity_b": "miners",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7620,17 +7647,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "hard-fork",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "miners",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
