@@ -24,6 +24,8 @@ import json
 import os
 import sys
 import urllib.request
+from data.animal_research import search_records
+from data.registry import load_animal_research
 
 KB_DIR = "ping-pongings/knowledge-base"
 NEWS_LOG = os.path.join(KB_DIR, "log.jsonl")
@@ -118,6 +120,13 @@ def query_relevant(query_text, asset_filter=None, top_n=5):
             "asset": e.get("asset"),
         })
     return {"reasoning": parsed.get("reasoning", ""), "matches": matches}
+
+
+def query_animal_research(query_text, top_n=5):
+    """Retrieve reviewed animal-research records without requiring an LLM key."""
+    registry = load_animal_research()
+    records = [record for record in registry.get("records", []) if record.get("status") == "approved"]
+    return search_records(query_text, records, limit=top_n)
 
 
 if __name__ == "__main__":

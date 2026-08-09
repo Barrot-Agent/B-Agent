@@ -182,6 +182,37 @@ class MMIMonetizationUnified(TypedDict):
 
 
 # ---------------------------------------------------------------------------
+# Animal Communication Research Domain
+# ---------------------------------------------------------------------------
+
+
+class AnimalResearchRecord(TypedDict):
+    """Provenance-preserving record for an animal communication study."""
+
+    record_id: str
+    title: str
+    species: List[str]
+    study_context: str
+    communication_method: List[str]
+    observations: List[str]
+    findings: List[str]
+    uncertainty: List[str]
+    provenance: Dict[str, Any]
+    ethics_approval: Dict[str, Any]
+    reproducibility: Dict[str, Any]
+    evidence_grade: str
+    status: str
+    version: int
+    updated_at: str
+
+
+class AnimalResearchRegistry(TypedDict):
+    records: List[AnimalResearchRecord]
+    contradictions: List[Dict[str, Any]]
+    _meta: Dict[str, Any]
+
+
+# ---------------------------------------------------------------------------
 # Character / Capabilities Domain
 # ---------------------------------------------------------------------------
 
