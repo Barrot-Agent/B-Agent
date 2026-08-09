@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Market analysis: pull data from Databricks, analyze via Groq, generate trading recommendations."""
-import os, json, urllib.request, sys
+import json
+import os
+import sys
+import time
+import urllib.request
 from datetime import datetime
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
@@ -18,12 +22,16 @@ def query_databricks(query):
             "Content-Type": "application/json"
         }
     )
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.load(resp)
-    except Exception as e:
-        print(f"Databricks error: {e}")
-        return None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                return json.load(resp)
+        except Exception as e:
+            if attempt == 2:
+                print(f"Databricks error: {e}")
+            else:
+                time.sleep(2**attempt)
+    return None
 
 def call_groq(prompt):
     body = json.dumps({
