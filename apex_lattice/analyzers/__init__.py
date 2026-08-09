@@ -36,7 +36,12 @@ def __getattr__(name: str) -> type[BaseAnalyzer]:
     if module_name is None:
         raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
     module = importlib.import_module(f"{__name__}.{module_name}")
-    analyzer = getattr(module, "Analyzer")
+    try:
+        analyzer = getattr(module, "Analyzer")
+    except AttributeError as exc:
+        raise AttributeError(
+            f"analyzer module {module.__name__!r} does not define Analyzer"
+        ) from exc
     if not issubclass(analyzer, BaseAnalyzer):
         raise TypeError(f"{module_name}.Analyzer must subclass BaseAnalyzer")
     globals()[name] = analyzer
