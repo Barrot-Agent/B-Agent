@@ -479,7 +479,7 @@
           <button class="toolbar-btn" onclick="clearSearchWorkspace()">🧹 Clear</button>
         </div>
         <textarea class="workspace-editor" id="searchWritePad" placeholder="Write search directives, index notes, backend tasks, and Spark orchestration ideas here..."></textarea>
-        <div class="workspace-status" id="searchWriteStatus">Full write access ready. Drafts persist locally after you save them.</div>
+        <div class="workspace-status" id="searchWriteStatus" role="status" aria-live="polite">Full write access ready. Drafts persist locally after you save them.</div>
       </div>
     </div>
 
@@ -564,8 +564,12 @@
 
     function migrateLegacyToSharedWorkspace() {
       const legacyWorkspace = localStorage.getItem(legacyWorkspaceKey);
-      if (legacyWorkspace && !localStorage.getItem(sharedWorkspaceKey)) {
+      const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey);
+      if (sharedWorkspace === null && legacyWorkspace !== null) {
         localStorage.setItem(sharedWorkspaceKey, legacyWorkspace);
+      }
+      if (legacyWorkspace !== null) {
+        localStorage.removeItem(legacyWorkspaceKey);
       }
     }
 
@@ -597,11 +601,10 @@
 
     migrateLegacyToSharedWorkspace();
 
-    const storedSearchWorkspace =
-      localStorage.getItem(searchWorkspaceKey) ||
-      localStorage.getItem(sharedWorkspaceKey) ||
-      localStorage.getItem(legacyWorkspaceKey);
-    if (storedSearchWorkspace && searchWritePad) {
+    const searchWorkspace = localStorage.getItem(searchWorkspaceKey);
+    const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey);
+    const storedSearchWorkspace = searchWorkspace !== null ? searchWorkspace : sharedWorkspace;
+    if (storedSearchWorkspace !== null && searchWritePad) {
       searchWritePad.value = storedSearchWorkspace;
       setSearchWorkspaceStatus('Stored draft restored. Full write access is active.');
     }

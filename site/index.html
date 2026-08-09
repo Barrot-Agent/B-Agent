@@ -871,7 +871,7 @@ function barrotOptimize() {
   console.log('Barrot is optimizing...');
   return 'Superior solution achieved!';
 }"></textarea>
-        <div class="workspace-status" id="dashboardWriteStatus">Ready. Load a shared draft or start writing in the dashboard.</div>
+        <div class="workspace-status" id="dashboardWriteStatus" role="status" aria-live="polite">Ready. Load a shared draft or start writing in the dashboard.</div>
       </div>
     </div>
 
@@ -1637,8 +1637,11 @@ function barrotOptimize() {
     function migrateLegacyWorkspace() {
       const legacyWorkspace = localStorage.getItem(legacyWorkspaceKey);
       const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey);
-      if (legacyWorkspace && !sharedWorkspace) {
+      if (sharedWorkspace === null && legacyWorkspace !== null) {
         localStorage.setItem(sharedWorkspaceKey, legacyWorkspace);
+      }
+      if (legacyWorkspace !== null) {
+        localStorage.removeItem(legacyWorkspaceKey);
       }
     }
 
@@ -1680,8 +1683,8 @@ function barrotOptimize() {
       if (!codeEditor) {
         return;
       }
-      const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey) || localStorage.getItem(legacyWorkspaceKey);
-      if (sharedWorkspace) {
+      const sharedWorkspace = localStorage.getItem(sharedWorkspaceKey);
+      if (sharedWorkspace !== null) {
         codeEditor.value = sharedWorkspace;
         setDashboardWriteStatus('Search-engine draft loaded into the dashboard IDE.');
         return;
@@ -1703,8 +1706,8 @@ function barrotOptimize() {
 
     migrateLegacyWorkspace();
 
-    const storedWorkspace = localStorage.getItem(sharedWorkspaceKey) || localStorage.getItem(legacyWorkspaceKey);
-    if (storedWorkspace && codeEditor) {
+    const storedWorkspace = localStorage.getItem(sharedWorkspaceKey);
+    if (storedWorkspace !== null && codeEditor) {
       codeEditor.value = storedWorkspace;
       setDashboardWriteStatus('Stored workspace restored. Full write access remains active.');
     }
@@ -1715,10 +1718,15 @@ function barrotOptimize() {
       });
     }
 
-    const initialSectionId = window.location.hash.slice(1);
-    if (initialSectionId && document.getElementById(initialSectionId)) {
-      showSection(initialSectionId, undefined, false);
+    function showSectionFromHash() {
+      const sectionId = window.location.hash.slice(1);
+      if (sections.some(section => section.id === sectionId)) {
+        showSection(sectionId, undefined, false);
+      }
     }
+
+    showSectionFromHash();
+    window.addEventListener('hashchange', showSectionFromHash);
 
     // DAW functions
     function playAudio() {

@@ -38,19 +38,21 @@ The search engine employs cutting-edge data processing methodologies:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Barrot-Agent/Barrot-Agent.git
-   cd Barrot-Agent/search-engine
+   cd Barrot-Agent
    ```
 
-2. Open `index.html` in your browser:
+2. Serve the repository root so the search engine and dashboard share one origin:
    ```bash
    # Using Python
-   python -m http.server 8000
+   python -m http.server 8000 --directory .
    
    # Using Node.js
    npx serve
    ```
 
-3. Navigate to `http://localhost:8000`
+3. Navigate to `http://localhost:8000/search-engine/`. Serving the two
+   directories separately creates different origins and prevents their
+   `localStorage` workspaces from synchronizing.
 
 #### Production
 Access the deployed search engine at:

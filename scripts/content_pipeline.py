@@ -17,7 +17,7 @@ def _call_groq(messages):
     key = os.getenv("GROQ_API_KEY", "")
     if not key:
         return ""
-    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+    headers = {"Authorization": f"******", "Content-Type": "application/json"}
     payload = {"model": DEFAULT_GROQ_MODEL, "messages": messages, "temperature": 0.6}
     try:
         r = requests.post(GROQ_ENDPOINT, headers=headers, json=payload, timeout=TIMEOUT)
