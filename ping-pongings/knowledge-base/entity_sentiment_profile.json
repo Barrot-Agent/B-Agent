@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 316,
-    "btc_entries": 159
+    "btc_entries": 160
   },
   "unique_entities_profiled": 269,
   "entities": [
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 43,
-      "bullish": 16,
+      "total_mentions": 44,
+      "bullish": 17,
       "neutral": 8,
       "bearish": 19,
-      "net_sentiment_score": -0.07,
+      "net_sentiment_score": -0.045,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 16,
-      "bullish": 8,
+      "total_mentions": 17,
+      "bullish": 9,
       "neutral": 3,
       "bearish": 5,
-      "net_sentiment_score": 0.188,
+      "net_sentiment_score": 0.235,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -337,6 +337,22 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+        "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 4,
       "bullish": 3,
@@ -547,22 +563,6 @@
         "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
         "Rate path still divides investors: Five things to know in Bitcoin this week",
         "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-        "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk"
       ]
     },
     {
