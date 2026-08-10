@@ -3,15 +3,15 @@
     "xrp_entries": 312,
     "btc_entries": 153
   },
-  "unique_entities_profiled": 262,
+  "unique_entities_profiled": 263,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 112,
-      "bullish": 44,
+      "total_mentions": 113,
+      "bullish": 45,
       "neutral": 20,
       "bearish": 48,
-      "net_sentiment_score": -0.036,
+      "net_sentiment_score": -0.027,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 40,
-      "bullish": 14,
+      "total_mentions": 41,
+      "bullish": 15,
       "neutral": 8,
       "bearish": 18,
-      "net_sentiment_score": -0.1,
+      "net_sentiment_score": -0.073,
       "assets_seen_in": [
         "BTC"
       ],
@@ -106,6 +106,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 13,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": 0.231,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 12,
       "bullish": 4,
@@ -120,23 +137,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 12,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": 0.167,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -206,6 +206,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 6,
       "bullish": 1,
@@ -253,23 +270,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -3818,6 +3818,20 @@
       ],
       "example_headlines": [
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com"
+      ]
+    },
+    {
+      "entity": "Spot Bitcoin ETF",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk"
       ]
     },
     {
