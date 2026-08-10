@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 314,
+    "xrp_entries": 316,
     "btc_entries": 159
   },
   "unique_entities_profiled": 268,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 53,
+      "total_mentions": 54,
       "bullish": 35,
-      "neutral": 11,
+      "neutral": 12,
       "bearish": 7,
-      "net_sentiment_score": 0.528,
+      "net_sentiment_score": 0.519,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 45,
+      "total_mentions": 46,
       "bullish": 29,
-      "neutral": 11,
+      "neutral": 12,
       "bearish": 5,
-      "net_sentiment_score": 0.533,
+      "net_sentiment_score": 0.522,
       "assets_seen_in": [
         "XRP"
       ],
@@ -206,6 +206,23 @@
       ]
     },
     {
+      "entity": "Moomoo",
+      "total_mentions": 7,
+      "bullish": 2,
+      "neutral": 5,
+      "bearish": 0,
+      "net_sentiment_score": 0.286,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 7,
       "bullish": 5,
@@ -253,23 +270,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 6,
-      "bullish": 2,
-      "neutral": 4,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
