@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 42,
+      "total_mentions": 43,
       "bullish": 16,
       "neutral": 8,
-      "bearish": 18,
-      "net_sentiment_score": -0.048,
+      "bearish": 19,
+      "net_sentiment_score": -0.07,
       "assets_seen_in": [
         "BTC"
       ],
@@ -289,6 +289,38 @@
       ]
     },
     {
+      "entity": "Strategy",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy Announces Second Quarter 2026 Financial Results - Strategy",
+        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
+      ]
+    },
+    {
+      "entity": "STRC",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 2,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy leaves preferred STRC dividend at 12% as price still below par",
+        "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases"
+      ]
+    },
+    {
       "entity": "Binance",
       "total_mentions": 4,
       "bullish": 2,
@@ -302,38 +334,6 @@
         "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
         "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 3,
-      "bearish": 0,
-      "net_sentiment_score": 0.25,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy Announces Second Quarter 2026 Financial Results - Strategy",
-        "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low"
-      ]
-    },
-    {
-      "entity": "STRC",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy leaves preferred STRC dividend at 12% as price still below par",
-        "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases"
       ]
     },
     {

@@ -3,7 +3,7 @@
     "xrp_entries": 314,
     "btc_entries": 159
   },
-  "unique_pairs_found": 714,
+  "unique_pairs_found": 715,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -601,6 +601,21 @@
         },
         {
           "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
+        },
+        {
+          "title": "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low",
           "asset": "BTC"
         }
       ]
@@ -1641,21 +1656,6 @@
       ]
     },
     {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-          "asset": "BTC"
-        },
-        {
-          "title": "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Dogecoin",
       "cooccurrence_count": 2,
@@ -2011,6 +2011,21 @@
         },
         {
           "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        },
+        {
+          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
         }
       ]
@@ -8045,17 +8060,6 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "galaxy.com",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -8391,6 +8395,17 @@
       "example_headlines": [
         {
           "title": "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "STRC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
         }
       ]
