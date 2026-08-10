@@ -1,12 +1,12 @@
 {
   "generated_from": {
-    "total_entries": 19,
-    "distilled_entries": 15
+    "total_entries": 28,
+    "distilled_entries": 23
   },
   "claim_type_breakdown": {
-    "product_announcement": 13,
-    "opinion_or_hype": 1,
-    "proposed_spec_change": 1
+    "product_announcement": 19,
+    "opinion_or_hype": 2,
+    "proposed_spec_change": 2
   },
   "ranked_candidate_tool_ideas": [
     {
@@ -186,6 +186,90 @@
           "url": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxNZmFuWWo4OUw4OHFDMkhQMkpheElGZ3E2Nzc2U2F4TTFDdzVOTFctNVJmTnpsVjFSU0M1MW03SG9idDVxMjZwcDRIcDlpVnI2aGRzb2NQbkVmMzBUWWFNLU9TMW94bDRQZHVlWDVNdnBKUmhRZE4xRU1HQzlXdlh1emJURWEwTjFid2t2azBZbEFxdlVmNlNnaTUwVXBSclJwYmVHbmVQN3JjN01NdkJqdmlsNHNFZXZyNjlQOWxMelZURjY1cWpGVWtTRjlpSHdIbGQtRGFqUEw0NUJrMEdBekhHaWp3R0xLSm5TN3FsNFdWbkg4cWtod3pub3NZVXNRLUNNcVREd2RsQy16TjJQdnZGblBTbmFidXFpeXM1OFhTYmdEeVNTTg?oc=5",
           "claim_type": "product_announcement",
           "concrete_claim": "Industrial Info Resources launched IIR Envoy MCP, a tool that injects human\u2011verified industrial intelligence directly into AI via a Model Context Protocol."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "Stateless MCP gateway",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "With a stateless makeover, new MCP spec targets enterprise scale - Ars Technica",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQRFE2MGVGclktVHNJNk5mX1daT0d0OWNYc05qbTJEal9QV2pJa0xvUXEydGlVZzFsdVo0NzlBd1hUV1lablo4M1NtTnQwVXNjQWp1LUN4UU1pWW1hbDZfNVg0S1dTV1NBYXJ2QV9TYTBiVVBVYTZzNUZmcjlRckFXNjYwM25yOE00ZHhpaHIxYkJMbzNHV1JhV0l6NWxlMXBR?oc=5",
+          "claim_type": "proposed_spec_change",
+          "concrete_claim": "The new MCP specification has been redesigned to be stateless and is aimed at supporting enterprise\u2011scale deployments."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "AI\u2011driven customer support chatbot integration tool",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "First Internet Bank Integrates ChatGPT and Claude for Rea\u2026 - FF News",
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQM1BDdUFpSl9VZ0tqM1hNcEJnRHU1aVRucDVNdFF5QUlGY180UGZyUDVySDlqRXc0REMwUFJjRkpuVnZqbGxRM3dhdTZ6ekdzbmFsMDJHUUVSMnM1UndnOUszTkpDTDFBTHZSMHE2dzFKVGl5dTg0c1dJRTk3ZHByXzcwUVFURmgzbGliMjBDNGNzSVlyOXZTalZlY0ZjY01ncmFxX2UtNmVfdXA0cWc?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "First Internet Bank has integrated ChatGPT and Claude into its platform to provide real\u2011time AI\u2011driven assistance for customers."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "MCP-powered trading assistant",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Interactive Brokers Announces Ai Integration Built on Model Context Protocol Standard - marketscreen",
+          "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxONUhJMFVnZU9PWWFUekhkUXRXSlpLRFdaOFkxeXBxcEp2UWxvRFpFVUttc0VnZnpSdEhSTmx3M3BiTEQyNngwSG1rRXBLTnkzRUNURnZCa0tIU3puOFJFdEoxSlpvOWhyYUZvSjFwbExoX3dJeS1hVGtLbzA1N0ZQODIzbHA1YVY2TzVEOW1OWTk3VWp0Q3ZZZUpnb2JydlBqaGhHdEplTjBHLXRYNjEteTJuYkhGa3pZNGFBVUdYX2tEa1FNZlhvWk1VanlwM1VvV3ZhOQ?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Interactive Brokers announced an AI integration that is built on the Model Context Protocol (MCP) standard."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "AI Connector for hosting management",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "JetHost Launches AI Connector, Bringing AI-Native Hosting Management to ChatGPT, Claude, Cursor, and",
+          "url": "https://news.google.com/rss/articles/CBMirwJBVV95cUxNVVd5UHIxY1pPZ0NBRlhIcmlHWlF3R2xCUWZ0V0czRjliTVI3ZE02YzVqeXdoNnRJczVuRTZrN2g1VEdWbURtNGN0RjhyN3JSQzRNUWxLSkNuWDZqazVmYlV2N0I0ZmYxZkljbGk1M0dqUG0wdENNMFY3MHd5bng5X3pRZzRGbU1zREdrTVpya1hTc2tjOENXZm5ER0tuSWhLS283WWJCRUVUQ0g0eUxMYWtxNG52SXhoTGtCWk5mM1NET2xxTUNnZnplSnFzTWE2VFhhV2hDT0dsVzN5MkRIRDROR3RaWWxFeG03dzdCWHNzT1BXUEh1MHpjVm04bHR2UXhpVGY4WEZfeUNic1NJczZqb1k1V1BGZ0hoYkRwa2lJQjg2SlZKa1RlWF9YdG8?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "JetHost has launched an AI Connector that enables AI-native hosting management via ChatGPT, Claude, Cursor, and other MCP-compatible AI assistants."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "WebMCP adapter layer",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Give any website a WebMCP interface - Cloudflare Blog",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1BeDFWWGtHMFRKbTc3V2lQYVlTN2o5UHVEMldDZTBmQ0ZtdVhyc3BPMXBwLXAyY1QzaFdsR3pycHRYZ0pBblBHYWR0cw?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Cloudflare announces a feature that lets any website expose a WebMCP interface for AI agents to interact with it."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "WebMCP compliance validator",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "WebMCP Explained: How Developers Can Prepare Websites for AI Agents - SitePoint",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPb2tDbEZYUkdmNFd4T3dBV2YyN2V0bS1raE4zcUM1SDFEeEp1SHBsRWpvRkhMMlhueTRRYmV1MjVEMWVxcHB1MElMeEFFcWQ4em52UkZuRG04dFNITlFPV1JZdUdwQUloeFpEYmhVMkVBekJOaFlXS0QxVXBZbmo2YVpRRU5WNnJsMm1QS25xMzA0NDlXa3M0VA?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "WebMCP is introduced as a new protocol that enables developers to make their websites compatible with AI agents."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "Map API Access Tool",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Developers Get 1 Billion Free MapQuest Transactions for AI Agents - Stock Titan",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQdU55bVU5YlpOM1Qwa2o0TTNrWkROc0Y3dGZfcUVsOTNLcXVOVG0xTUJOdUk4QW9nVy11eXVVYnFMWE16R19LYVlfbmUzYzBJU1RFZENmX0ktd0FJQzlJSTdYc2FpVzJBLUxhQ09ZaWFFYXNGek5JRVlGSDRMeDl0WjNfanRNNG1MN3c5S1Q0TEFlNmNORnRJNGlDUEVmUGxObEthMllxVE9NSmQ2YzRhMEpScEFjV2Y5VjY4Ng?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "MapQuest is giving developers 1\u202fbillion free API transactions to be used by AI agents."
         }
       ]
     }
