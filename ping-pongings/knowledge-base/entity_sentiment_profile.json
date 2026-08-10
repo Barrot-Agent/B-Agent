@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 312,
-    "btc_entries": 153
+    "btc_entries": 155
   },
-  "unique_entities_profiled": 263,
+  "unique_entities_profiled": 265,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 113,
-      "bullish": 45,
+      "total_mentions": 114,
+      "bullish": 46,
       "neutral": 20,
       "bearish": 48,
-      "net_sentiment_score": -0.027,
+      "net_sentiment_score": -0.018,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3860,6 +3860,34 @@
       ],
       "example_headlines": [
         "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
+      ]
+    },
+    {
+      "entity": "H100",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal"
+      ]
+    },
+    {
+      "entity": "Sweden",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal"
       ]
     }
   ]
