@@ -274,6 +274,17 @@ def test_approval_always_deny():
     assert decision.approved is False
 
 
+def test_approval_always_allow():
+    gate = MCPApprovalGate(mode="always_allow")
+    req = ApprovalRequest(
+        action_type=ActionType.REGISTRY_PROMOTE,
+        server_id="test",
+        description="Promote test",
+    )
+    decision = gate.request_approval(req)
+    assert decision.approved is True
+
+
 def test_approval_env_token_invalid(monkeypatch):
     monkeypatch.setenv("MCP_APPROVAL_SECRET", "mysecret")
     monkeypatch.setenv("MCP_APPROVAL_TOKEN", "wrongtoken")

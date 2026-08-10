@@ -78,6 +78,9 @@ class MCPApprovalGate:
 
     Modes
     -----
+    always_allow
+        Automatically approves all requests. Suitable only for explicit
+        local full-auto runs.
     interactive
         Prompts the user on stdin/stdout.  Suitable for local development.
     env_token
@@ -119,6 +122,13 @@ class MCPApprovalGate:
 
         if self._mode == "interactive" and self._interactive:
             decision = self._interactive_prompt(req)
+        elif self._mode == "always_allow":
+            decision = ApprovalDecision(
+                request_id=req.request_id,
+                approved=True,
+                decided_by="system-auto",
+                reason="Approval gate is in 'always_allow' mode.",
+            )
         elif self._mode == "env_token":
             decision = self._env_token_check(req)
         else:
