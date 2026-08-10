@@ -3,7 +3,7 @@
     "xrp_entries": 316,
     "btc_entries": 159
   },
-  "unique_entities_profiled": 268,
+  "unique_entities_profiled": 269,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 54,
+      "total_mentions": 55,
       "bullish": 35,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 7,
-      "net_sentiment_score": 0.519,
+      "net_sentiment_score": 0.509,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2086,6 +2086,20 @@
       ],
       "example_headlines": [
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "The Desert Sun",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Understanding Trading Pairs and XRP in Today\u2019s Market - The Desert Sun"
       ]
     },
     {
