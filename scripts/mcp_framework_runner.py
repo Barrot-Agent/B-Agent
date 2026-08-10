@@ -49,7 +49,7 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--repo-root",
         default=str(REPO_ROOT),
-        help="Repository root used by sandbox checks (default: current directory).",
+        help="Repository root used by sandbox checks (default: inferred repo root).",
     )
     parser.add_argument(
         "--registry-path",
