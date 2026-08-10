@@ -3,7 +3,7 @@
     "xrp_entries": 312,
     "btc_entries": 153
   },
-  "unique_pairs_found": 687,
+  "unique_pairs_found": 693,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -8082,6 +8082,72 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Forecast: Key Resistance Breakout Possible as ETF Inflows Spike - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Spot Bitcoin ETF (BTC.CC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "iShares Bitcoin Trust (IBIT.US)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "Spot Bitcoin ETF (BTC.CC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "iShares Bitcoin Trust (IBIT.US)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Spot Bitcoin ETF (BTC.CC)",
+      "entity_b": "iShares Bitcoin Trust (IBIT.US)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
           "asset": "BTC"
         }
       ]

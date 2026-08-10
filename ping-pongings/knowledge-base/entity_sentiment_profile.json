@@ -3,7 +3,7 @@
     "xrp_entries": 312,
     "btc_entries": 153
   },
-  "unique_entities_profiled": 260,
+  "unique_entities_profiled": 262,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -222,6 +222,23 @@
       ]
     },
     {
+      "entity": "Moomoo",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 6,
       "bullish": 4,
@@ -253,23 +270,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Hashdex to shut smallest Bitcoin ETF after more than two years",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 5,
-      "bullish": 1,
-      "neutral": 4,
-      "bearish": 0,
-      "net_sentiment_score": 0.2,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -1302,6 +1302,21 @@
       "example_headlines": [
         "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
+      "entity": "BlackRock",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
       ]
     },
     {
@@ -2686,20 +2701,6 @@
       ]
     },
     {
-      "entity": "BlackRock",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
-      ]
-    },
-    {
       "entity": "IBIT",
       "total_mentions": 1,
       "bullish": 1,
@@ -3817,6 +3818,34 @@
       ],
       "example_headlines": [
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com"
+      ]
+    },
+    {
+      "entity": "iShares Bitcoin Trust (IBIT.US)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
+      ]
+    },
+    {
+      "entity": "Spot Bitcoin ETF (BTC.CC)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
       ]
     }
   ]
