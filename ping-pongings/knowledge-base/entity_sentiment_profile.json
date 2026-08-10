@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 316,
-    "btc_entries": 160
+    "btc_entries": 161
   },
-  "unique_entities_profiled": 269,
+  "unique_entities_profiled": 270,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 117,
+      "total_mentions": 118,
       "bullish": 48,
       "neutral": 20,
-      "bearish": 49,
-      "net_sentiment_score": -0.009,
+      "bearish": 50,
+      "net_sentiment_score": -0.017,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -385,6 +385,22 @@
       ]
     },
     {
+      "entity": "US stocks",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
       "entity": "SBI Holdings",
       "total_mentions": 3,
       "bullish": 3,
@@ -595,22 +611,6 @@
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
         "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
-      ]
-    },
-    {
-      "entity": "US stocks",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -1322,6 +1322,21 @@
       ]
     },
     {
+      "entity": "Iran",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
       "entity": "BlackRock",
       "total_mentions": 2,
       "bullish": 2,
@@ -1409,6 +1424,21 @@
       "example_headlines": [
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Strait of Hormuz",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
       ]
     },
     {
@@ -2453,20 +2483,6 @@
       ]
     },
     {
-      "entity": "Iran",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
-      ]
-    },
-    {
       "entity": "Oil prices",
       "total_mentions": 1,
       "bullish": 0,
@@ -3293,20 +3309,6 @@
       ]
     },
     {
-      "entity": "Strait of Hormuz",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record"
-      ]
-    },
-    {
       "entity": "Trump family",
       "total_mentions": 1,
       "bullish": 1,
@@ -3948,6 +3950,20 @@
       ],
       "example_headlines": [
         "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2"
+      ]
+    },
+    {
+      "entity": "Oil",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
       ]
     }
   ]
