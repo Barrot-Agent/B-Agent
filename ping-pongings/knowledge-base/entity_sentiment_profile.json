@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 312,
+    "xrp_entries": 313,
     "btc_entries": 155
   },
-  "unique_entities_profiled": 265,
+  "unique_entities_profiled": 266,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 52,
-      "bullish": 34,
+      "total_mentions": 53,
+      "bullish": 35,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.519,
+      "net_sentiment_score": 0.528,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 44,
-      "bullish": 28,
+      "total_mentions": 45,
+      "bullish": 29,
       "neutral": 11,
       "bearish": 5,
-      "net_sentiment_score": 0.523,
+      "net_sentiment_score": 0.533,
       "assets_seen_in": [
         "XRP"
       ],
@@ -157,6 +157,22 @@
       ]
     },
     {
+      "entity": "XRP Ledger",
+      "total_mentions": 10,
+      "bullish": 10,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+      ]
+    },
+    {
       "entity": "SEC",
       "total_mentions": 10,
       "bullish": 8,
@@ -171,22 +187,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 9,
-      "bullish": 9,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -399,6 +399,23 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
+      ]
+    },
+    {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St."
       ]
     },
     {
@@ -658,22 +675,6 @@
       "example_headlines": [
         "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
         "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St."
       ]
     },
     {
@@ -2040,6 +2041,20 @@
       ],
       "example_headlines": [
         "What Ripple CASP authorisation means under MiCA - Ripple"
+      ]
+    },
+    {
+      "entity": "Staking",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St."
       ]
     },
     {

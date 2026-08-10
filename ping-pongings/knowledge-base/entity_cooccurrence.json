@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 312,
+    "xrp_entries": 313,
     "btc_entries": 155
   },
-  "unique_pairs_found": 701,
+  "unique_pairs_found": 706,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 42,
+      "cooccurrence_count": 43,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -52,6 +52,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 9,
       "example_headlines": [
@@ -122,21 +137,6 @@
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
         }
       ]
     },
@@ -721,6 +721,36 @@
         },
         {
           "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -2367,28 +2397,6 @@
       ]
     },
     {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Analyst",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -3957,6 +3965,61 @@
       "example_headlines": [
         {
           "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Staking",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Staking",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Staking",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Staking",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
