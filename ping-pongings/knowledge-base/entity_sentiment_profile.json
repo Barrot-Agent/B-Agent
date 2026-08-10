@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 313,
-    "btc_entries": 156
+    "xrp_entries": 314,
+    "btc_entries": 158
   },
-  "unique_entities_profiled": 266,
+  "unique_entities_profiled": 267,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 114,
-      "bullish": 46,
+      "total_mentions": 115,
+      "bullish": 47,
       "neutral": 20,
       "bearish": 48,
-      "net_sentiment_score": -0.018,
+      "net_sentiment_score": -0.009,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -206,6 +206,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 7,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.571,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 7,
       "bullish": 6,
@@ -253,23 +270,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 6,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -3903,6 +3903,20 @@
       ],
       "example_headlines": [
         "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal"
+      ]
+    },
+    {
+      "entity": "CPI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week"
       ]
     }
   ]

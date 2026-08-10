@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 313,
-    "btc_entries": 156
+    "xrp_entries": 314,
+    "btc_entries": 158
   },
-  "unique_pairs_found": 706,
+  "unique_pairs_found": 708,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -336,6 +336,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
       "cooccurrence_count": 4,
@@ -377,21 +392,6 @@
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
         }
       ]
     },
@@ -8299,6 +8299,28 @@
       "example_headlines": [
         {
           "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CPI",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week",
           "asset": "BTC"
         }
       ]
