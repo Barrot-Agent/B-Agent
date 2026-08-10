@@ -3,14 +3,14 @@
     "xrp_entries": 314,
     "btc_entries": 158
   },
-  "unique_entities_profiled": 267,
+  "unique_entities_profiled": 268,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 115,
-      "bullish": 47,
+      "total_mentions": 117,
+      "bullish": 48,
       "neutral": 20,
-      "bearish": 48,
+      "bearish": 49,
       "net_sentiment_score": -0.009,
       "assets_seen_in": [
         "BTC",
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 41,
-      "bullish": 15,
+      "total_mentions": 42,
+      "bullish": 16,
       "neutral": 8,
       "bearish": 18,
-      "net_sentiment_score": -0.073,
+      "net_sentiment_score": -0.048,
       "assets_seen_in": [
         "BTC"
       ],
@@ -659,6 +659,22 @@
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+      ]
+    },
+    {
+      "entity": "BIP-110",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
       ]
     },
     {
@@ -1366,6 +1382,21 @@
       ]
     },
     {
+      "entity": "Senate",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
+      ]
+    },
+    {
       "entity": "Donald Trump",
       "total_mentions": 2,
       "bullish": 1,
@@ -1426,7 +1457,7 @@
       ]
     },
     {
-      "entity": "BIP-110",
+      "entity": "miners",
       "total_mentions": 2,
       "bullish": 0,
       "neutral": 0,
@@ -1441,18 +1472,18 @@
       ]
     },
     {
-      "entity": "miners",
+      "entity": "CLARITY",
       "total_mentions": 2,
       "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
       "assets_seen_in": [
         "BTC"
       ],
       "example_headlines": [
-        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-        "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
+        "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
       ]
     },
     {
@@ -2926,20 +2957,6 @@
       ]
     },
     {
-      "entity": "Senate",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
-      ]
-    },
-    {
       "entity": "Hodler\u2019s Digest",
       "total_mentions": 1,
       "bullish": 0,
@@ -3808,20 +3825,6 @@
       ]
     },
     {
-      "entity": "CLARITY",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com"
-      ]
-    },
-    {
       "entity": "galaxy.com",
       "total_mentions": 1,
       "bullish": 0,
@@ -3917,6 +3920,20 @@
       ],
       "example_headlines": [
         "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week"
+      ]
+    },
+    {
+      "entity": "Bitdeer",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2"
       ]
     }
   ]

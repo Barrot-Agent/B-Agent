@@ -3,7 +3,7 @@
     "xrp_entries": 314,
     "btc_entries": 158
   },
-  "unique_pairs_found": 708,
+  "unique_pairs_found": 714,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 29,
+      "cooccurrence_count": 30,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -691,6 +691,21 @@
         },
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
           "asset": "BTC"
         }
       ]
@@ -1836,6 +1851,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Senate",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Donald Trump",
       "cooccurrence_count": 2,
@@ -1951,21 +1981,6 @@
         },
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        },
-        {
-          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
           "asset": "BTC"
         }
       ]
@@ -5741,17 +5756,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Senate",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Clarity Act",
       "entity_b": "Coldcard",
       "cooccurrence_count": 1,
@@ -8150,6 +8154,50 @@
       ]
     },
     {
+      "entity_a": "BIP-110",
+      "entity_b": "CLARITY",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CLARITY",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Spot Bitcoin ETF",
       "cooccurrence_count": 1,
@@ -8321,6 +8369,28 @@
       "example_headlines": [
         {
           "title": "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitdeer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitdeer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2",
           "asset": "BTC"
         }
       ]
