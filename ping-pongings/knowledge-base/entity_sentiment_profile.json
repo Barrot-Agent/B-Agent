@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 316,
+    "xrp_entries": 317,
     "btc_entries": 161
   },
-  "unique_entities_profiled": 270,
+  "unique_entities_profiled": 271,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 55,
-      "bullish": 35,
+      "total_mentions": 56,
+      "bullish": 36,
       "neutral": 13,
       "bearish": 7,
-      "net_sentiment_score": 0.509,
+      "net_sentiment_score": 0.518,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 46,
-      "bullish": 29,
+      "total_mentions": 47,
+      "bullish": 30,
       "neutral": 12,
       "bearish": 5,
-      "net_sentiment_score": 0.522,
+      "net_sentiment_score": 0.532,
       "assets_seen_in": [
         "XRP"
       ],
@@ -2130,6 +2130,20 @@
       ],
       "example_headlines": [
         "Understanding Trading Pairs and XRP in Today\u2019s Market - The Desert Sun"
+      ]
+    },
+    {
+      "entity": "Investing.com",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Is Worth $50B and XRP Trades at 2018 Prices - Investing.com"
       ]
     },
     {
