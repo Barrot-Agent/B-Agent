@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 319,
-    "btc_entries": 163
+    "btc_entries": 164
   },
-  "unique_entities_profiled": 271,
+  "unique_entities_profiled": 275,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 118,
+      "total_mentions": 120,
       "bullish": 48,
       "neutral": 20,
-      "bearish": 50,
-      "net_sentiment_score": -0.017,
+      "bearish": 52,
+      "net_sentiment_score": -0.033,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -614,6 +614,22 @@
       ]
     },
     {
+      "entity": "Trump Media",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
       "entity": "Michael Saylor",
       "total_mentions": 3,
       "bullish": 1,
@@ -643,6 +659,22 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "Donald Trump",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
       ]
     },
     {
@@ -1382,21 +1414,6 @@
       ]
     },
     {
-      "entity": "Trump Media",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
-      ]
-    },
-    {
       "entity": "Senate",
       "total_mentions": 2,
       "bullish": 0,
@@ -1412,18 +1429,18 @@
       ]
     },
     {
-      "entity": "Donald Trump",
+      "entity": "Truth Social",
       "total_mentions": 2,
-      "bullish": 1,
+      "bullish": 0,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
       "assets_seen_in": [
         "BTC"
       ],
       "example_headlines": [
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
+        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
       ]
     },
     {
@@ -3127,20 +3144,6 @@
       ]
     },
     {
-      "entity": "Truth Social",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance"
-      ]
-    },
-    {
       "entity": "Forbes",
       "total_mentions": 1,
       "bullish": 0,
@@ -3978,6 +3981,62 @@
       ],
       "example_headlines": [
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
+      "entity": "TMTG",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
+      "entity": "Luke Dashjr",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Luke Dashjr removed as Bitcoin Improvement Proposal editor"
+      ]
+    },
+    {
+      "entity": "BIP 110",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Luke Dashjr removed as Bitcoin Improvement Proposal editor"
+      ]
+    },
+    {
+      "entity": "Bitcoin Improvement Proposal",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Luke Dashjr removed as Bitcoin Improvement Proposal editor"
       ]
     }
   ]
