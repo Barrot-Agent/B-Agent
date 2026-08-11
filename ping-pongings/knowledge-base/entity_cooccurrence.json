@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 325,
-    "btc_entries": 172
+    "btc_entries": 174
   },
-  "unique_pairs_found": 763,
+  "unique_pairs_found": 764,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -8978,6 +8978,17 @@
       "example_headlines": [
         {
           "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Empery Digital",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
           "asset": "BTC"
         }
       ]

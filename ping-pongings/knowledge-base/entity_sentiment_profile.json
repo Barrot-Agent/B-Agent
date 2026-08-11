@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 325,
-    "btc_entries": 172
+    "btc_entries": 174
   },
-  "unique_entities_profiled": 283,
+  "unique_entities_profiled": 284,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 44,
+      "total_mentions": 45,
       "bullish": 17,
       "neutral": 8,
-      "bearish": 19,
-      "net_sentiment_score": -0.045,
+      "bearish": 20,
+      "net_sentiment_score": -0.067,
       "assets_seen_in": [
         "BTC"
       ],
@@ -4155,6 +4155,20 @@
       ],
       "example_headlines": [
         "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
+      ]
+    },
+    {
+      "entity": "Empery Digital",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
       ]
     }
   ]
