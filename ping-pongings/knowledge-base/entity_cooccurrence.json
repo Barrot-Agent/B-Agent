@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 327,
+    "xrp_entries": 329,
     "btc_entries": 176
   },
-  "unique_pairs_found": 766,
+  "unique_pairs_found": 786,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 46,
+      "cooccurrence_count": 47,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -53,7 +53,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -68,7 +68,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 9,
+      "cooccurrence_count": 10,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -216,6 +216,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 6,
@@ -286,21 +301,6 @@
         },
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -381,6 +381,21 @@
       ]
     },
     {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 5,
@@ -421,6 +436,36 @@
         },
         {
           "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
           "asset": "BTC"
         }
       ]
@@ -486,17 +531,17 @@
       ]
     },
     {
-      "entity_a": "BIP-110",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 4,
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
         },
         {
-          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
-          "asset": "BTC"
+          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "asset": "XRP"
         }
       ]
     },
@@ -576,6 +621,81 @@
       ]
     },
     {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin Core",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Core",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Improvement Proposal",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Improvement Proposal",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Galaxy",
       "cooccurrence_count": 3,
@@ -631,21 +751,6 @@
         },
         {
           "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-          "asset": "BTC"
-        },
-        {
-          "title": "Strategy\u2019s STRC retakes $90 after 24% rebound from June closing low",
           "asset": "BTC"
         }
       ]
@@ -742,7 +847,7 @@
     },
     {
       "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -750,7 +855,7 @@
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -1641,6 +1746,126 @@
       ]
     },
     {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin Improvement Proposal",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Core",
+      "entity_b": "Bitcoin Improvement Proposal",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Core",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "XRP"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine Immersion Technologies",
+      "entity_b": "ETH",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine Immersion Technologies",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "STRC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USD",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETH",
       "cooccurrence_count": 2,
@@ -1801,21 +2026,6 @@
         },
         {
           "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        },
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "BTC"
         }
       ]
@@ -2077,21 +2287,6 @@
     },
     {
       "entity_a": "BIP-110",
-      "entity_b": "Bitcoin Core",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        },
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
       "entity_b": "miners",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2101,21 +2296,6 @@
         },
         {
           "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Core",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        },
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
           "asset": "BTC"
         }
       ]
@@ -2162,62 +2342,6 @@
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Improvement Proposal",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        },
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Luke Dashjr",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        },
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Improvement Proposal",
-      "entity_b": "Luke Dashjr",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        },
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
         }
       ]
     },
@@ -4268,6 +4392,226 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "Q2 2026",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "SharpLink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "liquid staking token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Q2 2026",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "SharpLink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "liquid staking token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q2 2026",
+      "entity_b": "SharpLink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q2 2026",
+      "entity_b": "liquid staking token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SharpLink",
+      "entity_b": "liquid staking token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "USD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP Ledger",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BitMEX",
       "entity_b": "Fidelity",
       "cooccurrence_count": 1,
@@ -6100,17 +6444,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin may find bear market bottom in August: 10x Research",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "STRC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
           "asset": "BTC"
         }
       ]
@@ -7986,17 +8319,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "USD",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinMarketCap",
       "entity_b": "USD",
       "cooccurrence_count": 1,
@@ -8943,78 +9265,12 @@
       ]
     },
     {
-      "entity_a": "BIP-110",
-      "entity_b": "Bitcoin Improvement Proposal",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
-      "entity_b": "Luke Dashjr",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Core",
-      "entity_b": "Bitcoin Improvement Proposal",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Core",
-      "entity_b": "Luke Dashjr",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Empery Digital",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BitMine Immersion Technologies",
-      "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BitMine Immersion Technologies",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "BTC"
         }
       ]
