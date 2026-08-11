@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 322,
-    "btc_entries": 168
+    "btc_entries": 170
   },
-  "unique_pairs_found": 745,
+  "unique_pairs_found": 754,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -412,6 +412,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "US stocks",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -466,6 +481,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
           "asset": "BTC"
         }
       ]
@@ -527,21 +557,6 @@
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CryptoQuant",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-          "asset": "BTC"
         }
       ]
     },
@@ -721,21 +736,6 @@
         },
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        },
-        {
-          "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
           "asset": "BTC"
         }
       ]
@@ -2062,6 +2062,21 @@
     },
     {
       "entity_a": "BIP-110",
+      "entity_b": "Bitcoin Core",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
       "entity_b": "miners",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2071,6 +2086,21 @@
         },
         {
           "title": "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Core",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+          "asset": "BTC"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
           "asset": "BTC"
         }
       ]
@@ -2101,6 +2131,51 @@
         },
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Improvement Proposal",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Improvement Proposal",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        },
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
           "asset": "BTC"
         }
       ]
@@ -7915,29 +7990,7 @@
     },
     {
       "entity_a": "BIP-110",
-      "entity_b": "Bitcoin Core",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BIP-110",
       "entity_b": "hard-fork",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Core",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -8662,39 +8715,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Improvement Proposal",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Luke Dashjr",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Improvement Proposal",
-      "entity_b": "Luke Dashjr",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Anthropic",
       "entity_b": "Riot Platforms",
       "cooccurrence_count": 1,
@@ -8756,6 +8776,105 @@
       "example_headlines": [
         {
           "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tether",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin Improvement Proposal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP-110",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Core",
+      "entity_b": "Bitcoin Improvement Proposal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Core",
+      "entity_b": "Luke Dashjr",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
           "asset": "BTC"
         }
       ]

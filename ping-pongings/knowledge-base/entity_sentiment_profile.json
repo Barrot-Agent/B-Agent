@@ -1,16 +1,16 @@
 {
   "generated_from": {
     "xrp_entries": 322,
-    "btc_entries": 168
+    "btc_entries": 170
   },
-  "unique_entities_profiled": 279,
+  "unique_entities_profiled": 280,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 121,
-      "bullish": 48,
+      "total_mentions": 123,
+      "bullish": 49,
       "neutral": 20,
-      "bearish": 53,
+      "bearish": 54,
       "net_sentiment_score": -0.041,
       "assets_seen_in": [
         "BTC",
@@ -321,6 +321,23 @@
       ]
     },
     {
+      "entity": "CryptoQuant",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
+      ]
+    },
+    {
       "entity": "Binance",
       "total_mentions": 4,
       "bullish": 2,
@@ -398,6 +415,22 @@
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
+      "entity": "BIP-110",
+      "total_mentions": 4,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
+        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
       ]
     },
     {
@@ -514,23 +547,6 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
         "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
-      ]
-    },
-    {
-      "entity": "CryptoQuant",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-        "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
       ]
     },
     {
@@ -694,22 +710,6 @@
       ]
     },
     {
-      "entity": "BIP-110",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-        "BIP-110 Bitcoin branch stalls after two blocks as gap widens",
-        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
-      ]
-    },
-    {
       "entity": "Fed",
       "total_mentions": 2,
       "bullish": 0,
@@ -819,6 +819,22 @@
       "example_headlines": [
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
+      ]
+    },
+    {
+      "entity": "USDT",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
       ]
     },
     {
@@ -1504,6 +1520,21 @@
       ]
     },
     {
+      "entity": "Bitcoin Core",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
+        "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy"
+      ]
+    },
+    {
       "entity": "miners",
       "total_mentions": 2,
       "bullish": 0,
@@ -1531,6 +1562,36 @@
       "example_headlines": [
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
         "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
+      ]
+    },
+    {
+      "entity": "Luke Dashjr",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+        "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy"
+      ]
+    },
+    {
+      "entity": "Bitcoin Improvement Proposal",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+        "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy"
       ]
     },
     {
@@ -1713,20 +1774,6 @@
       ],
       "example_headlines": [
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
       ]
     },
     {
@@ -3774,20 +3821,6 @@
       ]
     },
     {
-      "entity": "Bitcoin Core",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%"
-      ]
-    },
-    {
       "entity": "hard-fork",
       "total_mentions": 1,
       "bullish": 0,
@@ -3998,35 +4031,7 @@
       ]
     },
     {
-      "entity": "Luke Dashjr",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Luke Dashjr removed as Bitcoin Improvement Proposal editor"
-      ]
-    },
-    {
       "entity": "BIP 110",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Luke Dashjr removed as Bitcoin Improvement Proposal editor"
-      ]
-    },
-    {
-      "entity": "Bitcoin Improvement Proposal",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -4093,6 +4098,20 @@
       ],
       "example_headlines": [
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
+      ]
+    },
+    {
+      "entity": "Tether",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
       ]
     }
   ]
