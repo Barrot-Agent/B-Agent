@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 318,
+    "xrp_entries": 319,
     "btc_entries": 162
   },
   "unique_pairs_found": 726,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 45,
+      "cooccurrence_count": 46,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -141,6 +141,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 7,
@@ -186,8 +201,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
       "cooccurrence_count": 6,
       "example_headlines": [
         {
@@ -196,6 +211,21 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -232,7 +262,7 @@
     },
     {
       "entity_a": "Moomoo",
-      "entity_b": "Ripple",
+      "entity_b": "XRP.CC",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -306,8 +336,8 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -315,7 +345,7 @@
           "asset": "XRP"
         },
         {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -366,21 +396,6 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 4,
@@ -391,21 +406,6 @@
         },
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
