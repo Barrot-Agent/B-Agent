@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 329,
+    "xrp_entries": 331,
     "btc_entries": 180
   },
-  "unique_pairs_found": 796,
+  "unique_pairs_found": 799,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -4637,6 +4637,39 @@
       "example_headlines": [
         {
           "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "MiFID",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "United Kingdom",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiFID",
+      "entity_b": "United Kingdom",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
           "asset": "XRP"
         }
       ]
