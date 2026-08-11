@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 323,
-    "btc_entries": 170
+    "btc_entries": 172
   },
-  "unique_entities_profiled": 280,
+  "unique_entities_profiled": 283,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 123,
+      "total_mentions": 124,
       "bullish": 49,
       "neutral": 20,
-      "bearish": 54,
-      "net_sentiment_score": -0.041,
+      "bearish": 55,
+      "net_sentiment_score": -0.048,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1547,6 +1547,21 @@
       "example_headlines": [
         "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
         "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
+      ]
+    },
+    {
+      "entity": "Lightning Network",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay restricts remote Lightning access after attackers steal funds",
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
       ]
     },
     {
@@ -3849,20 +3864,6 @@
       ]
     },
     {
-      "entity": "Lightning Network",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTCPay restricts remote Lightning access after attackers steal funds"
-      ]
-    },
-    {
       "entity": "Citadel21",
       "total_mentions": 1,
       "bullish": 0,
@@ -4112,6 +4113,48 @@
       ],
       "example_headlines": [
         "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
+      ]
+    },
+    {
+      "entity": "BTCPay Server",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
+      ]
+    },
+    {
+      "entity": "LND",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
+      ]
+    },
+    {
+      "entity": "Lightning wallets",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
       ]
     }
   ]
