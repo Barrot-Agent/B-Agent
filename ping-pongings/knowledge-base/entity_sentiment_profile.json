@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 327,
-    "btc_entries": 174
+    "btc_entries": 176
   },
-  "unique_entities_profiled": 284,
+  "unique_entities_profiled": 286,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -141,11 +141,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 11,
-      "bullish": 6,
+      "total_mentions": 12,
+      "bullish": 7,
       "neutral": 5,
       "bearish": 0,
-      "net_sentiment_score": 0.545,
+      "net_sentiment_score": 0.583,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -289,6 +289,22 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+        "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk"
+      ]
+    },
+    {
       "entity": "Strategy",
       "total_mentions": 5,
       "bullish": 1,
@@ -351,22 +367,6 @@
         "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
         "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-        "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk"
       ]
     },
     {
@@ -4158,6 +4158,20 @@
       ]
     },
     {
+      "entity": "Wintermute",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026"
+      ]
+    },
+    {
       "entity": "Empery Digital",
       "total_mentions": 1,
       "bullish": 0,
@@ -4169,6 +4183,20 @@
       ],
       "example_headlines": [
         "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
+      "entity": "BitMine Immersion Technologies",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BitMine Pushes Ethereum Treasury Past 5.8M ETH"
       ]
     }
   ]

@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 327,
-    "btc_entries": 174
+    "btc_entries": 176
   },
-  "unique_pairs_found": 764,
+  "unique_pairs_found": 766,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1801,6 +1801,21 @@
         },
         {
           "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "BTC"
         }
       ]
@@ -5727,17 +5742,6 @@
       ]
     },
     {
-      "entity_a": "ETH",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Spot Bitcoin ETFs",
       "cooccurrence_count": 1,
@@ -8989,6 +8993,28 @@
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine Immersion Technologies",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine Immersion Technologies",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "BTC"
         }
       ]
