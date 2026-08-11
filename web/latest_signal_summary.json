@@ -1,17 +1,17 @@
 {
-  "summary": "The signal, generated at\u202f2026\u201108\u201111\u202f17:12:43\u202fUTC, rates XRP sentiment as bullish with a news score of\u202f86 based on\u202f22\u202fheadlines. Confidence in this assessment is high at\u202f0.95.\n\n- Score:\u202f86\u202f| Confidence:\u202f0.95  \n- Source:\u202fgroq:bullish+news(22)\u202f| News entries:\u202f22  \n- Headlines:\u202fneutral analysis of consensus protocol; bullish pieces on message dissemination, edge multicast routing, Pub/Sub, consensus crash testing, and causal AI for XRPL/GossipSub.",
-  "spoken_line": "XRP signal update. Score 86. Confidence 0.95. Based on 22 news entries. Not financial advice. Informational only. Do your own research.",
+  "summary": "The XRP signal shows a strong bullish tilt, with a news\u2011score of\u202f86 derived from 22 recent headlines. Confidence in this assessment is high at\u202f0.95.  \n\n- Timestamp:\u202f2026\u201108\u201111\u202f18:07:00\u202fUTC  \n- Overall score:\u202f86 (news_score\u202f86, news_entries\u202f22)  \n- Sentiment:\u202fpredominantly bullish (5 bullish vs 1 neutral headline)",
+  "spoken_line": "XRP is strongly bullish with a news score of 86 from 22 headlines and high confidence of ninety five percent. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-08-11T17:12:43.525374+00:00",
+    "timestamp": "2026-08-11T18:07:00.497098+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 86,
     "confidence": 0.95,
     "source": "groq:bullish+news(22)",
     "news_score": 86,
     "news_entries": 22,
-    "generated_at_unix": 1786468363
+    "generated_at_unix": 1786471620
   }
 }
