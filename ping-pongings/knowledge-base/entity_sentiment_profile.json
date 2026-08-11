@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 318,
+    "xrp_entries": 319,
     "btc_entries": 162
   },
   "unique_entities_profiled": 271,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 56,
+      "total_mentions": 57,
       "bullish": 36,
-      "neutral": 13,
+      "neutral": 14,
       "bearish": 7,
-      "net_sentiment_score": 0.518,
+      "net_sentiment_score": 0.509,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 47,
+      "total_mentions": 48,
       "bullish": 30,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 5,
-      "net_sentiment_score": 0.532,
+      "net_sentiment_score": 0.521,
       "assets_seen_in": [
         "XRP"
       ],
@@ -207,11 +207,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 7,
+      "total_mentions": 8,
       "bullish": 2,
-      "neutral": 5,
+      "neutral": 6,
       "bearish": 0,
-      "net_sentiment_score": 0.286,
+      "net_sentiment_score": 0.25,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -220,6 +220,22 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "XRP.CC",
+      "total_mentions": 7,
+      "bullish": 1,
+      "neutral": 6,
+      "bearish": 0,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
@@ -254,22 +270,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Hashdex to shut smallest Bitcoin ETF after more than two years",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 6,
-      "bullish": 1,
-      "neutral": 5,
-      "bearish": 0,
-      "net_sentiment_score": 0.167,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
