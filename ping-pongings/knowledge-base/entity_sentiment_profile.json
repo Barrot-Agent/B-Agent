@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 329,
+    "xrp_entries": 331,
     "btc_entries": 180
   },
-  "unique_entities_profiled": 292,
+  "unique_entities_profiled": 294,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1400,6 +1400,22 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2327,6 +2343,34 @@
       ]
     },
     {
+      "entity": "United Kingdom",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients"
+      ]
+    },
+    {
+      "entity": "MiFID",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -3192,20 +3236,6 @@
       ],
       "example_headlines": [
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
       ]
     },
     {
