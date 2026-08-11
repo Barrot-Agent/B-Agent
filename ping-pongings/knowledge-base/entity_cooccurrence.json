@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 329,
-    "btc_entries": 176
+    "btc_entries": 180
   },
-  "unique_pairs_found": 786,
+  "unique_pairs_found": 796,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 30,
+      "cooccurrence_count": 31,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -186,6 +186,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 7,
@@ -256,21 +271,6 @@
         },
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -841,6 +841,36 @@
         },
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        },
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
           "asset": "BTC"
         }
       ]
@@ -2227,21 +2257,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Bloomberg",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-          "asset": "BTC"
-        },
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Crypto",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2316,7 +2331,22 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "BTCPay",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        },
+        {
+          "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
       "entity_b": "Lightning Network",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2325,7 +2355,7 @@
           "asset": "BTC"
         },
         {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -8397,29 +8427,7 @@
     },
     {
       "entity_a": "BTCPay",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCPay",
       "entity_b": "Citadel21",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCPay",
-      "entity_b": "Lightning Network",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -8787,6 +8795,94 @@
       "example_headlines": [
         {
           "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Hack",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Hack",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Fund",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Fund",
+      "entity_b": "Hack",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "Hack",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -9271,6 +9367,28 @@
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
           "asset": "BTC"
         }
       ]

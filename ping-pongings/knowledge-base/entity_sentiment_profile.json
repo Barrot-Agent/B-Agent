@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 329,
-    "btc_entries": 176
+    "btc_entries": 180
   },
-  "unique_entities_profiled": 290,
+  "unique_entities_profiled": 292,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 126,
-      "bullish": 50,
+      "total_mentions": 128,
+      "bullish": 51,
       "neutral": 20,
-      "bearish": 56,
-      "net_sentiment_score": -0.048,
+      "bearish": 57,
+      "net_sentiment_score": -0.047,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 45,
-      "bullish": 17,
+      "total_mentions": 46,
+      "bullish": 18,
       "neutral": 8,
       "bearish": 20,
-      "net_sentiment_score": -0.067,
+      "net_sentiment_score": -0.043,
       "assets_seen_in": [
         "BTC"
       ],
@@ -123,6 +123,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 14,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 6,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 13,
       "bullish": 5,
@@ -137,23 +154,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 13,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": 0.231,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -779,6 +779,38 @@
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+      ]
+    },
+    {
+      "entity": "Bloomberg",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+        "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "Lightning Network",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTCPay restricts remote Lightning access after attackers steal funds",
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+        "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk"
       ]
     },
     {
@@ -1563,21 +1595,6 @@
       ]
     },
     {
-      "entity": "Bloomberg",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
       "entity": "Crypto",
       "total_mentions": 2,
       "bullish": 0,
@@ -1608,7 +1625,7 @@
       ]
     },
     {
-      "entity": "Lightning Network",
+      "entity": "BTCPay",
       "total_mentions": 2,
       "bullish": 0,
       "neutral": 0,
@@ -1619,7 +1636,7 @@
       ],
       "example_headlines": [
         "BTCPay restricts remote Lightning access after attackers steal funds",
-        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
+        "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk"
       ]
     },
     {
@@ -3934,20 +3951,6 @@
       ]
     },
     {
-      "entity": "BTCPay",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTCPay restricts remote Lightning access after attackers steal funds"
-      ]
-    },
-    {
       "entity": "Citadel21",
       "total_mentions": 1,
       "bullish": 0,
@@ -4057,6 +4060,34 @@
       ],
       "example_headlines": [
         "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal"
+      ]
+    },
+    {
+      "entity": "Bitcoin Fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "Hack",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com"
       ]
     },
     {
