@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 331,
-    "btc_entries": 180
+    "btc_entries": 181
   },
-  "unique_pairs_found": 799,
+  "unique_pairs_found": 801,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1836,6 +1836,51 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "SharpLink",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "liquid staking token",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SharpLink",
+      "entity_b": "liquid staking token",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BitMine Immersion Technologies",
       "entity_b": "ETH",
       "cooccurrence_count": 2,
@@ -2041,6 +2086,21 @@
         },
         {
           "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        },
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
           "asset": "BTC"
         }
       ]
@@ -4466,28 +4526,6 @@
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "SharpLink",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "liquid staking token",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Q2 2026",
       "entity_b": "SharpLink",
       "cooccurrence_count": 1,
@@ -4500,17 +4538,6 @@
     },
     {
       "entity_a": "Q2 2026",
-      "entity_b": "liquid staking token",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SharpLink",
       "entity_b": "liquid staking token",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5770,17 +5797,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
           "asset": "BTC"
         }
       ]
@@ -9422,6 +9438,28 @@
       "example_headlines": [
         {
           "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "iShares Bitcoin Trust",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "iShares Bitcoin Trust",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
           "asset": "BTC"
         }
       ]

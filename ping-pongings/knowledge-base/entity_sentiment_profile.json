@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 331,
-    "btc_entries": 180
+    "btc_entries": 181
   },
-  "unique_entities_profiled": 294,
+  "unique_entities_profiled": 295,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -107,11 +107,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 14,
+      "total_mentions": 15,
       "bullish": 8,
       "neutral": 5,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
+      "bearish": 2,
+      "net_sentiment_score": 0.4,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -699,6 +699,22 @@
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
         "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
+      ]
+    },
+    {
+      "entity": "BlackRock",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR",
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
       ]
     },
     {
@@ -1384,6 +1400,38 @@
       ]
     },
     {
+      "entity": "SharpLink",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results"
+      ]
+    },
+    {
+      "entity": "liquid staking token",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results"
+      ]
+    },
+    {
       "entity": "BitMine Immersion Technologies",
       "total_mentions": 2,
       "bullish": 2,
@@ -1521,7 +1569,7 @@
       ]
     },
     {
-      "entity": "BlackRock",
+      "entity": "IBIT",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -1532,7 +1580,7 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
       ]
     },
     {
@@ -2287,34 +2335,6 @@
       ]
     },
     {
-      "entity": "SharpLink",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results"
-      ]
-    },
-    {
-      "entity": "liquid staking token",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results"
-      ]
-    },
-    {
       "entity": "Q2 2026",
       "total_mentions": 1,
       "bullish": 0,
@@ -3012,20 +3032,6 @@
       ],
       "example_headlines": [
         "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
-      ]
-    },
-    {
-      "entity": "IBIT",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
       ]
     },
     {
@@ -4328,6 +4334,20 @@
       ],
       "example_headlines": [
         "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
+      "entity": "iShares Bitcoin Trust",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
       ]
     }
   ]
