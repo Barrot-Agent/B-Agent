@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-05T12:25:08.725009+00:00",
-  "signal_text": "Recent BTC-relevant headlines: [bearish] Bitcoin May Finally Crash Below $60K As August Curse Kicks In - Yahoo! Finance C | [neutral] Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St. | [bearish] Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s | [bullish] Bitcoin hits $62K while Coinbase premium hits 77-day negative streak | [bullish] Bitcoin may find bear market bottom in August: 10x Research | [bullish] Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-  "score": 24,
-  "confidence": 0.0,
-  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(23)",
-  "news_score": 48,
-  "news_entries": 23,
-  "generated_at_unix": 1785932708
+  "timestamp": "2026-08-11T06:30:04.664588+00:00",
+  "signal_text": "Recent BTC-relevant headlines: [bearish] Coldcard fallout shows up onchain as 210,000 bitcoin leaves old wallets - CoinDe | [bullish] Bitcoin will never fall below $60K again: Nansen founder | [neutral] Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap | [bullish] US spot Bitcoin ETFs post best week since April with $1B inflows | [bearish] Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3% | [bearish] BTCPay restricts remote Lightning access after attackers steal funds",
+  "score": 62,
+  "confidence": 0.85,
+  "source": "groq:bearish+news(21)",
+  "news_score": 54,
+  "news_entries": 21,
+  "generated_at_unix": 1786429804
 }
