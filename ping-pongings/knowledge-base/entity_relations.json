@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 104,
+  "total_classified": 119,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -937,6 +937,141 @@
       "relation_type": "complementary",
       "justification": "The headline indicates Kansai Electric's rewards app is enabling JPYC stablecoin conversion, showing they work together to provide a complementary service.",
       "classified_at": "2026-08-03T11:03:13Z"
+    },
+    {
+      "pair_key": "Bitcoin|ETF",
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 7,
+      "relation_type": "complementary",
+      "justification": "Both headlines discuss Bitcoin ETFs, showing ETFs serve as investment products that are directly linked to Bitcoin.",
+      "classified_at": "2026-08-10T10:27:13Z"
+    },
+    {
+      "pair_key": "Ripple|Ripple Labs",
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 5,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines discuss XRP (Ripple) but do not mention Ripple Labs, so the relationship cannot be determined from the given text.",
+      "classified_at": "2026-08-10T10:27:16Z"
+    },
+    {
+      "pair_key": "Ripple Labs|XRP",
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines mention XRP together with Ripple, indicating a connection but do not specify a causal, regulatory, competitive, complementary, or same-event relationship.",
+      "classified_at": "2026-08-10T10:27:19Z"
+    },
+    {
+      "pair_key": "XRP|XRP.CC",
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 5,
+      "relation_type": "same_event",
+      "justification": "Both headlines present \"Ripple (XRP.CC)\" indicating the two identifiers refer to the same asset in the same mention.",
+      "classified_at": "2026-08-10T10:27:21Z"
+    },
+    {
+      "pair_key": "Ripple Labs|SEC",
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 4,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines discuss XRP and Ripple without mentioning the SEC, so no specific relationship can be inferred.",
+      "classified_at": "2026-08-10T10:27:24Z"
+    },
+    {
+      "pair_key": "Bitcoin|Federal Reserve",
+      "entity_a": "Bitcoin",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 4,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines link Bitcoin price or stability to Fed-related events (FOMC meeting and PCE inflation) without explicitly stating a direct causal or regulatory relationship.",
+      "classified_at": "2026-08-10T10:27:27Z"
+    },
+    {
+      "pair_key": "BTC|Coldcard",
+      "entity_a": "BTC",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 4,
+      "relation_type": "causal",
+      "justification": "Both headlines describe a Coldcard bug or hack as directly affecting BTC (risking BTC seeds and potentially driving BTC price down).",
+      "classified_at": "2026-08-10T10:27:29Z"
+    },
+    {
+      "pair_key": "BTC|Fortune",
+      "entity_a": "BTC",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 4,
+      "relation_type": "same_event",
+      "justification": "Both headlines are price listings of Bitcoin published by Fortune, showing they appear together within the same reporting context.",
+      "classified_at": "2026-08-10T10:27:32Z"
+    },
+    {
+      "pair_key": "BTC|CoinDesk",
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 4,
+      "relation_type": "same_event",
+      "justification": "Both headlines discuss BTC-related news and are presented as coverage by CoinDesk, indicating they refer to the same type of event.",
+      "classified_at": "2026-08-10T10:27:35Z"
+    },
+    {
+      "pair_key": "CryptoPotato|Ripple",
+      "entity_a": "CryptoPotato",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "relation_type": "same_event",
+      "justification": "Both headlines are CryptoPotato articles that report on Ripple-related news.",
+      "classified_at": "2026-08-10T10:27:37Z"
+    },
+    {
+      "pair_key": "CryptoPotato|XRP",
+      "entity_a": "CryptoPotato",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "relation_type": "complementary",
+      "justification": "Both headlines are CryptoPotato articles that provide news and analysis about XRP, indicating a complementary relationship where CryptoPotato supplies information about the cryptocurrency.",
+      "classified_at": "2026-08-10T10:27:40Z"
+    },
+    {
+      "pair_key": "Moomoo|XRP",
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines only list Ripple (XRP.CC) and Moomoo together without indicating any specific causal, regulatory, competitive, complementary, or event-based connection.",
+      "classified_at": "2026-08-10T10:27:43Z"
+    },
+    {
+      "pair_key": "MarketForces Africa|XRP",
+      "entity_a": "MarketForces Africa",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "relation_type": "same_event",
+      "justification": "Both headlines discuss XRP and end with '- MarketForces Africa', indicating MarketForces Africa is the source publishing the XRP news.",
+      "classified_at": "2026-08-10T10:27:46Z"
+    },
+    {
+      "pair_key": "Bitcoin|CryptoQuant",
+      "entity_a": "Bitcoin",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 3,
+      "relation_type": "complementary",
+      "justification": "Both headlines show CryptoQuant reporting on Bitcoin-related market events, indicating CryptoQuant provides analysis that complements Bitcoin activity.",
+      "classified_at": "2026-08-10T10:27:49Z"
+    },
+    {
+      "pair_key": "SEC|XRP Ledger",
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines mention only a price prediction for XRP and do not contain any information about the SEC or the XRP Ledger, making the relationship unclear.",
+      "classified_at": "2026-08-10T10:27:52Z"
     }
   ]
 }
