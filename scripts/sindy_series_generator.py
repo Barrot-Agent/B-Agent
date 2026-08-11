@@ -21,7 +21,8 @@ def parse_script_response(response):
         return None
     candidate = response.strip()
     if candidate.startswith("```"):
-        candidate = candidate.split("\n", 1)[1].rsplit("```", 1)[0].strip()
+        lines = candidate.splitlines()
+        candidate = "\n".join(lines[1:]).rsplit("```", 1)[0].strip()
     try:
         return json.loads(candidate)
     except json.JSONDecodeError:

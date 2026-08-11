@@ -14,6 +14,12 @@ def test_parse_script_response_accepts_markdown_json():
     }
 
 
+def test_parse_script_response_accepts_plain_code_fence():
+    assert MODULE.parse_script_response('```\n{"title": "Pilot"}\n```') == {
+        "title": "Pilot"
+    }
+
+
 def test_parse_script_response_extracts_json_from_model_prose():
     assert MODULE.parse_script_response('Here is the script:\n{"title": "Pilot"}') == {
         "title": "Pilot"
