@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 334,
-    "btc_entries": 186
+    "xrp_entries": 335,
+    "btc_entries": 187
   },
-  "unique_entities_profiled": 307,
+  "unique_entities_profiled": 310,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 135,
-      "bullish": 57,
+      "total_mentions": 136,
+      "bullish": 58,
       "neutral": 21,
       "bearish": 57,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.007,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 48,
-      "bullish": 20,
+      "total_mentions": 49,
+      "bullish": 21,
       "neutral": 8,
       "bearish": 20,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.02,
       "assets_seen_in": [
         "BTC"
       ],
@@ -4541,6 +4541,48 @@
       ],
       "example_headlines": [
         "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance "
+      ]
+    },
+    {
+      "entity": "El Salvador",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "El Salvador\u2019s Bitcoin experiment turns 5: \u2018It was for us, not them\u2019"
+      ]
+    },
+    {
+      "entity": "Nayib Bukele",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "El Salvador\u2019s Bitcoin experiment turns 5: \u2018It was for us, not them\u2019"
+      ]
+    },
+    {
+      "entity": "Chivo Wallet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "El Salvador\u2019s Bitcoin experiment turns 5: \u2018It was for us, not them\u2019"
       ]
     }
   ]
