@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 333,
+    "xrp_entries": 334,
     "btc_entries": 186
   },
-  "unique_entities_profiled": 306,
+  "unique_entities_profiled": 307,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 61,
+      "total_mentions": 62,
       "bullish": 39,
       "neutral": 15,
-      "bearish": 7,
-      "net_sentiment_score": 0.525,
+      "bearish": 8,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2553,6 +2553,20 @@
       ],
       "example_headlines": [
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "yellow.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Tests $1 Support As $0.60 Crash Risk Deepens - yellow.com"
       ]
     },
     {
