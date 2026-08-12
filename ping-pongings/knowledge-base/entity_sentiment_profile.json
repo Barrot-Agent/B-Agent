@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 333,
-    "btc_entries": 182
+    "btc_entries": 183
   },
-  "unique_entities_profiled": 302,
+  "unique_entities_profiled": 305,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 133,
-      "bullish": 55,
+      "total_mentions": 135,
+      "bullish": 57,
       "neutral": 21,
       "bearish": 57,
-      "net_sentiment_score": -0.015,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 46,
-      "bullish": 18,
+      "total_mentions": 47,
+      "bullish": 19,
       "neutral": 8,
       "bearish": 20,
-      "net_sentiment_score": -0.043,
+      "net_sentiment_score": -0.021,
       "assets_seen_in": [
         "BTC"
       ],
@@ -69,6 +69,23 @@
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
         "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Yahoo Finance",
+      "total_mentions": 18,
+      "bullish": 10,
+      "neutral": 3,
+      "bearish": 5,
+      "net_sentiment_score": 0.278,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -86,23 +103,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance",
-      "total_mentions": 17,
-      "bullish": 9,
-      "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": 0.235,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-        "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -686,6 +686,40 @@
         "Coinbase Expands Derivatives Trading To UK Professional Clients",
         "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
         "Coinbase Expands Derivatives Trading To UK Professional Clients"
+      ]
+    },
+    {
+      "entity": "Riot Platforms",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "Anthropic",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
       ]
     },
     {
@@ -1562,7 +1596,7 @@
       ]
     },
     {
-      "entity": "Riot Platforms",
+      "entity": "AI compute",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -1574,11 +1608,11 @@
       ],
       "example_headlines": [
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
       ]
     },
     {
-      "entity": "Anthropic",
+      "entity": "RIOT",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -1590,7 +1624,7 @@
       ],
       "example_headlines": [
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
       ]
     },
     {
@@ -1786,6 +1820,21 @@
       "example_headlines": [
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
+      "entity": "Bitcoin Red Team",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Red Team reports 5K findings in sweeping security audit",
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express"
       ]
     },
     {
@@ -2504,34 +2553,6 @@
       ],
       "example_headlines": [
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "AI compute",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "RIOT",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
       ]
     },
     {
@@ -3781,20 +3802,6 @@
       ]
     },
     {
-      "entity": "Bitcoin Red Team",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Red Team reports 5K findings in sweeping security audit"
-      ]
-    },
-    {
       "entity": "security audit",
       "total_mentions": 1,
       "bullish": 0,
@@ -4296,6 +4303,48 @@
       ],
       "example_headlines": [
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
+      "entity": "Thailand",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express"
+      ]
+    },
+    {
+      "entity": "OpenAI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express"
+      ]
+    },
+    {
+      "entity": "Asia Express",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express"
       ]
     },
     {

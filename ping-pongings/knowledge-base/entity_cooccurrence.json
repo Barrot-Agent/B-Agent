@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 333,
-    "btc_entries": 182
+    "btc_entries": 183
   },
-  "unique_pairs_found": 837,
+  "unique_pairs_found": 843,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 31,
+      "cooccurrence_count": 32,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -81,6 +81,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "SEC",
       "cooccurrence_count": 9,
@@ -107,21 +122,6 @@
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -181,6 +181,21 @@
         },
         {
           "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -271,21 +286,6 @@
         },
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -766,6 +766,21 @@
         },
         {
           "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
           "asset": "BTC"
         }
       ]
@@ -2076,7 +2091,52 @@
       ]
     },
     {
-      "entity_a": "Anthropic",
+      "entity_a": "AI compute",
+      "entity_b": "Anthropic",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "RIOT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
       "entity_b": "Riot Platforms",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2085,7 +2145,82 @@
           "asset": "XRP"
         },
         {
-          "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "RIOT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "RIOT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "RIOT",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
           "asset": "BTC"
         }
       ]
@@ -4939,105 +5074,6 @@
       "example_headlines": [
         {
           "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute",
-      "entity_b": "Anthropic",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute",
-      "entity_b": "RIOT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI compute",
-      "entity_b": "Riot Platforms",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Anthropic",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Anthropic",
-      "entity_b": "RIOT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "RIOT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Riot Platforms",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RIOT",
-      "entity_b": "Riot Platforms",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
           "asset": "XRP"
         }
       ]
@@ -9449,6 +9485,72 @@
       "example_headlines": [
         {
           "title": "Bitcoin and ethereum prices today, Monday, August 10, 2026: BTC breaking past $65,000 yet again - Ya",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asia Express",
+      "entity_b": "Bitcoin Red Team",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asia Express",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asia Express",
+      "entity_b": "Thailand",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Red Team",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Red Team",
+      "entity_b": "Thailand",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenAI",
+      "entity_b": "Thailand",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
           "asset": "BTC"
         }
       ]
