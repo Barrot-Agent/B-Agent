@@ -3,7 +3,7 @@
     "xrp_entries": 331,
     "btc_entries": 182
   },
-  "unique_pairs_found": 810,
+  "unique_pairs_found": 819,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1981,6 +1981,21 @@
         },
         {
           "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        },
+        {
+          "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
           "asset": "BTC"
         }
       ]
@@ -4709,6 +4724,105 @@
       "example_headlines": [
         {
           "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "Anthropic",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "RIOT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "RIOT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "RIOT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RIOT",
+      "entity_b": "Riot Platforms",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
           "asset": "XRP"
         }
       ]
@@ -9197,17 +9311,6 @@
       "example_headlines": [
         {
           "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Anthropic",
-      "entity_b": "Riot Platforms",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
           "asset": "BTC"
         }
       ]
