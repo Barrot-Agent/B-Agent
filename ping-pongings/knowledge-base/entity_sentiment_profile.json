@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 333,
-    "btc_entries": 183
+    "btc_entries": 186
   },
-  "unique_entities_profiled": 305,
+  "unique_entities_profiled": 306,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 47,
-      "bullish": 19,
+      "total_mentions": 48,
+      "bullish": 20,
       "neutral": 8,
       "bearish": 20,
-      "net_sentiment_score": -0.021,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -4513,6 +4513,20 @@
       ],
       "example_headlines": [
         "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial"
+      ]
+    },
+    {
+      "entity": "Yahoo Finance UK",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance "
       ]
     }
   ]

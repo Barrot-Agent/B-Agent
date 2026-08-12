@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 333,
-    "btc_entries": 183
+    "btc_entries": 186
   },
-  "unique_pairs_found": 843,
+  "unique_pairs_found": 844,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -10002,6 +10002,17 @@
       "example_headlines": [
         {
           "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
           "asset": "BTC"
         }
       ]
