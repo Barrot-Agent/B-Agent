@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 333,
+    "xrp_entries": 334,
     "btc_entries": 186
   },
-  "unique_pairs_found": 844,
+  "unique_pairs_found": 845,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -5074,6 +5074,17 @@
       "example_headlines": [
         {
           "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "yellow.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Tests $1 Support As $0.60 Crash Risk Deepens - yellow.com",
           "asset": "XRP"
         }
       ]
