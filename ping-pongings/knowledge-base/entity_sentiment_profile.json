@@ -3,7 +3,7 @@
     "xrp_entries": 336,
     "btc_entries": 188
   },
-  "unique_entities_profiled": 315,
+  "unique_entities_profiled": 316,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 62,
+      "total_mentions": 63,
       "bullish": 39,
-      "neutral": 15,
+      "neutral": 16,
       "bearish": 8,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.492,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -37,6 +37,22 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
         "How Much XRP (Ripple) Is Enough to Retire? - AOL.com"
+      ]
+    },
+    {
+      "entity": "Ripple",
+      "total_mentions": 51,
+      "bullish": 31,
+      "neutral": 15,
+      "bearish": 5,
+      "net_sentiment_score": 0.51,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
+        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -53,22 +69,6 @@
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
         "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Ripple",
-      "total_mentions": 50,
-      "bullish": 31,
-      "neutral": 14,
-      "bearish": 5,
-      "net_sentiment_score": 0.52,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -1630,6 +1630,22 @@
       ]
     },
     {
+      "entity": "TradingView",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+        "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2587,6 +2603,20 @@
       ]
     },
     {
+      "entity": "UK Treasury",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -2822,20 +2852,6 @@
       ],
       "example_headlines": [
         "Bitcoin Critic Peter Schiff Tells Bulls to Buy BTC, Not MSTR - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "TradingView",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst"
       ]
     },
     {
