@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 332,
+    "xrp_entries": 333,
     "btc_entries": 182
   },
-  "unique_pairs_found": 819,
+  "unique_pairs_found": 832,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 47,
+      "cooccurrence_count": 48,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -411,6 +411,36 @@
       ]
     },
     {
+      "entity_a": "CryptoPotato",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 4,
@@ -561,36 +591,6 @@
       ]
     },
     {
-      "entity_a": "CryptoPotato",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoPotato",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "MarketForces Africa",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -691,6 +691,21 @@
         },
         {
           "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
           "asset": "BTC"
         }
       ]
@@ -1941,6 +1956,36 @@
       ]
     },
     {
+      "entity_a": "BlackRock",
+      "entity_b": "iShares Bitcoin Trust",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "iShares Bitcoin Trust",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Coinbase",
       "entity_b": "MiFID",
       "cooccurrence_count": 2,
@@ -2146,21 +2191,6 @@
         },
         {
           "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-          "asset": "BTC"
-        },
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
           "asset": "BTC"
         }
       ]
@@ -4542,6 +4572,72 @@
       ]
     },
     {
+      "entity_a": "Institutional investors",
+      "entity_b": "Spot OTC market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Institutional investors",
+      "entity_b": "Wintermute",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Institutional investors",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Spot OTC market",
+      "entity_b": "Wintermute",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Spot OTC market",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wintermute",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETH",
       "entity_b": "Q2 2026",
       "cooccurrence_count": 1,
@@ -4724,6 +4820,83 @@
       "example_headlines": [
         {
           "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "iShares Bitcoin Trust",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "iShares Bitcoin Trust",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
           "asset": "XRP"
         }
       ]
@@ -9553,28 +9726,6 @@
       "example_headlines": [
         {
           "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "iShares Bitcoin Trust",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "IBIT",
-      "entity_b": "iShares Bitcoin Trust",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
           "asset": "BTC"
         }
       ]
