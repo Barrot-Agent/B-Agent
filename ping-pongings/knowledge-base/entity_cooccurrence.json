@@ -3,7 +3,7 @@
     "xrp_entries": 335,
     "btc_entries": 188
   },
-  "unique_pairs_found": 854,
+  "unique_pairs_found": 864,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -9881,6 +9881,116 @@
       "example_headlines": [
         {
           "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "GLD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "US",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "XAU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CPI",
+      "entity_b": "GLD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CPI",
+      "entity_b": "US",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CPI",
+      "entity_b": "XAU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "GLD",
+      "entity_b": "US",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "GLD",
+      "entity_b": "XAU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US",
+      "entity_b": "XAU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin drops to one-week low as retail buys gold at highest prices since June",
           "asset": "BTC"
         }
       ]
