@@ -3,7 +3,7 @@
     "xrp_entries": 335,
     "btc_entries": 188
   },
-  "unique_pairs_found": 864,
+  "unique_pairs_found": 876,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 33,
+      "cooccurrence_count": 34,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -291,6 +291,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 5,
@@ -406,21 +421,6 @@
         },
         {
           "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
           "asset": "BTC"
         }
       ]
@@ -2332,6 +2332,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Fed",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "CNBC",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2596,6 +2611,21 @@
         },
         {
           "title": "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
           "asset": "BTC"
         }
       ]
@@ -5464,17 +5494,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fed",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC-USD",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
@@ -7644,17 +7663,6 @@
     {
       "entity_a": "AI",
       "entity_b": "Big Tech",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI",
-      "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -10128,6 +10136,50 @@
       ]
     },
     {
+      "entity_a": "AI",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Bitcoin miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance UK",
       "cooccurrence_count": 1,
@@ -10233,6 +10285,94 @@
       "example_headlines": [
         {
           "title": "El Salvador\u2019s Bitcoin experiment turns 5: \u2018It was for us, not them\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "September Fed rate pause",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US CPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "September Fed rate pause",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fed",
+      "entity_b": "US CPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "September Fed rate pause",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "US CPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "September Fed rate pause",
+      "entity_b": "US CPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
           "asset": "BTC"
         }
       ]

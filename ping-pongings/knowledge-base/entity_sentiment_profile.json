@@ -3,14 +3,14 @@
     "xrp_entries": 335,
     "btc_entries": 188
   },
-  "unique_entities_profiled": 312,
+  "unique_entities_profiled": 315,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 136,
-      "bullish": 58,
+      "total_mentions": 138,
+      "bullish": 59,
       "neutral": 21,
-      "bearish": 57,
+      "bearish": 58,
       "net_sentiment_score": 0.007,
       "assets_seen_in": [
         "BTC",
@@ -40,6 +40,22 @@
       ]
     },
     {
+      "entity": "BTC",
+      "total_mentions": 51,
+      "bullish": 21,
+      "neutral": 8,
+      "bearish": 22,
+      "net_sentiment_score": -0.02,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+        "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
+        "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Ripple",
       "total_mentions": 50,
       "bullish": 31,
@@ -53,22 +69,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "Ripple prepares for what could be a $1.1 billion XRP dump in August - Finbold",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "BTC",
-      "total_mentions": 50,
-      "bullish": 21,
-      "neutral": 8,
-      "bearish": 21,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-        "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
-        "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
       ]
     },
     {
@@ -223,6 +223,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 8,
+      "bullish": 6,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.625,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 7,
       "bullish": 1,
@@ -236,23 +253,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 7,
-      "bullish": 5,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.571,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -520,6 +520,23 @@
       ]
     },
     {
+      "entity": "Fed",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
+        "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance",
+        "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%"
+      ]
+    },
+    {
       "entity": "SBI Holdings",
       "total_mentions": 3,
       "bullish": 3,
@@ -584,6 +601,23 @@
         "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "US hints at more yen intervention: Five things to know in Bitcoin this week"
+      ]
+    },
+    {
+      "entity": "AI",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
+        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
       ]
     },
     {
@@ -899,22 +933,6 @@
       ]
     },
     {
-      "entity": "Fed",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) price prediction: Fed decision and ETF flows - Capital.com",
-        "Bitcoin falls to $63,000 as Fed decision looms, Clarity Act hopes fade - Yahoo Finance"
-      ]
-    },
-    {
       "entity": "Analyst",
       "total_mentions": 2,
       "bullish": 1,
@@ -1152,22 +1170,6 @@
       "example_headlines": [
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
       ]
     },
     {
@@ -4559,6 +4561,20 @@
       ]
     },
     {
+      "entity": "Bitcoin miners",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
+      ]
+    },
+    {
       "entity": "Yahoo Finance UK",
       "total_mentions": 1,
       "bullish": 1,
@@ -4612,6 +4628,34 @@
       ],
       "example_headlines": [
         "El Salvador\u2019s Bitcoin experiment turns 5: \u2018It was for us, not them\u2019"
+      ]
+    },
+    {
+      "entity": "US CPI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%"
+      ]
+    },
+    {
+      "entity": "September Fed rate pause",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%"
       ]
     }
   ]
