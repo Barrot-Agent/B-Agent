@@ -3,7 +3,7 @@
     "xrp_entries": 333,
     "btc_entries": 182
   },
-  "unique_pairs_found": 832,
+  "unique_pairs_found": 837,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
-      "cooccurrence_count": 13,
+      "cooccurrence_count": 14,
       "example_headlines": [
         {
           "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
@@ -396,6 +396,21 @@
       ]
     },
     {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 5,
@@ -486,16 +501,16 @@
       ]
     },
     {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
         },
         {
-          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -556,6 +571,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        },
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -696,6 +726,36 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "STRC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USD",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BlackRock",
       "entity_b": "IBIT",
       "cooccurrence_count": 3,
@@ -786,21 +846,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 3,
@@ -856,21 +901,6 @@
         },
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bloomberg",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-          "asset": "BTC"
-        },
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -1927,7 +1957,7 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "STRC",
+      "entity_b": "Strategy",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -1935,13 +1965,13 @@
           "asset": "XRP"
         },
         {
-          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
           "asset": "BTC"
         }
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "STRC",
       "entity_b": "USD",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -1950,7 +1980,22 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "USD",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
           "asset": "BTC"
         }
       ]
@@ -2196,6 +2241,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF inflows",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "Coldcard",
       "cooccurrence_count": 2,
@@ -2401,6 +2461,21 @@
         },
         {
           "title": "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
           "asset": "BTC"
         }
       ]
@@ -4704,41 +4779,8 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "USD",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "STRC",
       "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Strategy",
-      "entity_b": "USD",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -5608,17 +5650,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Bitcoin ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF inflows",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7685,17 +7716,6 @@
       ]
     },
     {
-      "entity_a": "Coldcard",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "ETF",
       "entity_b": "Galaxy",
       "cooccurrence_count": 1,
@@ -8131,6 +8151,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "ETF inflows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "ETF inflows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF inflows",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
           "asset": "BTC"
         }
       ]

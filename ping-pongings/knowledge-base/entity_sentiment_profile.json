@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 131,
-      "bullish": 53,
+      "total_mentions": 133,
+      "bullish": 55,
       "neutral": 21,
       "bearish": 57,
-      "net_sentiment_score": -0.031,
+      "net_sentiment_score": -0.015,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -72,6 +72,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 18,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 13,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "Yahoo Finance",
       "total_mentions": 17,
       "bullish": 9,
@@ -86,23 +103,6 @@
         "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
         "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 17,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 13,
-      "net_sentiment_score": -0.588,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {
@@ -291,11 +291,11 @@
     },
     {
       "entity": "Strategy",
-      "total_mentions": 6,
-      "bullish": 2,
+      "total_mentions": 7,
+      "bullish": 3,
       "neutral": 3,
       "bearish": 1,
-      "net_sentiment_score": 0.167,
+      "net_sentiment_score": 0.286,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -308,11 +308,11 @@
     },
     {
       "entity": "STRC",
-      "total_mentions": 6,
-      "bullish": 2,
+      "total_mentions": 7,
+      "bullish": 3,
       "neutral": 2,
       "bearish": 2,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.143,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -357,6 +357,22 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 4,
       "bullish": 2,
@@ -387,6 +403,23 @@
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
+      ]
+    },
+    {
+      "entity": "USD",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
+        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
       ]
     },
     {
@@ -423,22 +456,6 @@
       ]
     },
     {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 4,
       "bullish": 2,
@@ -468,6 +485,22 @@
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
+      "entity": "Bloomberg",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
       ]
     },
     {
@@ -619,23 +652,6 @@
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
         "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy"
-      ]
-    },
-    {
-      "entity": "USD",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
-        "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
       ]
     },
     {
@@ -830,22 +846,6 @@
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
-      ]
-    },
-    {
-      "entity": "Bloomberg",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-        "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com"
       ]
     },
     {
@@ -1696,6 +1696,21 @@
       "example_headlines": [
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
+      "entity": "ETF inflows",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows return as Ether funds slip into outflows",
+        "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst"
       ]
     },
     {
@@ -2969,20 +2984,6 @@
     },
     {
       "entity": "Bitcoin ETF",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
-      ]
-    },
-    {
-      "entity": "ETF inflows",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
