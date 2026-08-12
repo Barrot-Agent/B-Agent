@@ -3,15 +3,15 @@
     "xrp_entries": 331,
     "btc_entries": 182
   },
-  "unique_entities_profiled": 298,
+  "unique_entities_profiled": 300,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 129,
-      "bullish": 51,
+      "total_mentions": 130,
+      "bullish": 52,
       "neutral": 21,
       "bearish": 57,
-      "net_sentiment_score": -0.047,
+      "net_sentiment_score": -0.038,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1497,6 +1497,38 @@
       ]
     },
     {
+      "entity": "Riot Platforms",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
+      ]
+    },
+    {
+      "entity": "Anthropic",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2393,6 +2425,34 @@
       ],
       "example_headlines": [
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
+      ]
+    },
+    {
+      "entity": "AI compute",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "RIOT",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
       ]
     },
     {
@@ -4199,34 +4259,6 @@
       ],
       "example_headlines": [
         "Luke Dashjr removed as Bitcoin Improvement Proposal editor"
-      ]
-    },
-    {
-      "entity": "Anthropic",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
-      ]
-    },
-    {
-      "entity": "Riot Platforms",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
       ]
     },
     {
