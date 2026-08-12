@@ -1,15 +1,15 @@
 {
   "generated_from": {
     "xrp_entries": 331,
-    "btc_entries": 181
+    "btc_entries": 182
   },
-  "unique_entities_profiled": 295,
+  "unique_entities_profiled": 298,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 128,
+      "total_mentions": 129,
       "bullish": 51,
-      "neutral": 20,
+      "neutral": 21,
       "bearish": 57,
       "net_sentiment_score": -0.047,
       "assets_seen_in": [
@@ -107,11 +107,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 15,
+      "total_mentions": 16,
       "bullish": 8,
-      "neutral": 5,
+      "neutral": 6,
       "bearish": 2,
-      "net_sentiment_score": 0.4,
+      "net_sentiment_score": 0.375,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -619,6 +619,23 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
         "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap"
+      ]
+    },
+    {
+      "entity": "Coinbase",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
+        "Coinbase Expands Derivatives Trading To UK Professional Clients"
       ]
     },
     {
@@ -1448,7 +1465,7 @@
       ]
     },
     {
-      "entity": "Coinbase",
+      "entity": "United Kingdom",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -1460,7 +1477,23 @@
       ],
       "example_headlines": [
         "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
+        "Coinbase Expands Derivatives Trading To UK Professional Clients"
+      ]
+    },
+    {
+      "entity": "MiFID",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "Coinbase Expands Derivatives Trading To UK Professional Clients"
       ]
     },
     {
@@ -2360,34 +2393,6 @@
       ],
       "example_headlines": [
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "United Kingdom",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients"
-      ]
-    },
-    {
-      "entity": "MiFID",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients"
       ]
     },
     {
@@ -4348,6 +4353,48 @@
       ],
       "example_headlines": [
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
+      ]
+    },
+    {
+      "entity": "Circle Internet Financial",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial"
+      ]
+    },
+    {
+      "entity": "Wrapped Bitcoin (WBTC)",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial"
+      ]
+    },
+    {
+      "entity": "WBTC token",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial"
       ]
     }
   ]

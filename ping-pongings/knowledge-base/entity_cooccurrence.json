@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 331,
-    "btc_entries": 181
+    "btc_entries": 182
   },
-  "unique_pairs_found": 801,
+  "unique_pairs_found": 810,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -261,6 +261,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 6,
@@ -362,21 +377,6 @@
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
         }
       ]
     },
@@ -1936,6 +1936,51 @@
         },
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "MiFID",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "United Kingdom",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiFID",
+      "entity_b": "United Kingdom",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
           "asset": "BTC"
         }
       ]
@@ -4664,39 +4709,6 @@
       "example_headlines": [
         {
           "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "MiFID",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "United Kingdom",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "MiFID",
-      "entity_b": "United Kingdom",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase Expands Derivatives Trading To UK Professional Clients",
           "asset": "XRP"
         }
       ]
@@ -9460,6 +9472,105 @@
       "example_headlines": [
         {
           "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Circle Internet Financial",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "WBTC token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Wrapped Bitcoin (WBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle Internet Financial",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle Internet Financial",
+      "entity_b": "WBTC token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle Internet Financial",
+      "entity_b": "Wrapped Bitcoin (WBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "WBTC token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Wrapped Bitcoin (WBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "WBTC token",
+      "entity_b": "Wrapped Bitcoin (WBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
           "asset": "BTC"
         }
       ]
