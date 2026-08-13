@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 339,
-    "btc_entries": 193
+    "xrp_entries": 340,
+    "btc_entries": 194
   },
-  "unique_pairs_found": 895,
+  "unique_pairs_found": 898,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -10598,6 +10598,39 @@
       "example_headlines": [
         {
           "title": "Why Strategy Is Selling Bitcoin and How Much It Has Sold So Far - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Ethereum (ETH)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum (ETH)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
           "asset": "BTC"
         }
       ]
