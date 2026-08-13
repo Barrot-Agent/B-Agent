@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 337,
-    "btc_entries": 190
+    "btc_entries": 191
   },
-  "unique_pairs_found": 886,
+  "unique_pairs_found": 887,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -51,6 +51,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 11,
@@ -62,21 +77,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -751,6 +751,21 @@
         },
         {
           "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
           "asset": "BTC"
         }
       ]
@@ -1966,21 +1981,6 @@
         },
         {
           "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
           "asset": "BTC"
         }
       ]
@@ -10495,6 +10495,17 @@
       "example_headlines": [
         {
           "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Strategy Is Selling Bitcoin and How Much It Has Sold So Far - Yahoo Finance",
           "asset": "BTC"
         }
       ]
