@@ -379,3 +379,17 @@ ingestion_config:
       - "Integration opportunities"
       - "Security hardening"
     priority_threshold: "medium"  # Only generate medium+ priority optimizations
+
+  # Research domain extensions
+  research_domains:
+    longevity_research:
+      enabled: true
+      category: "research"
+      priority: "high"
+      description: "Aging reversal and epigenetic reprogramming signals"
+      source_config: "longevity-ingestion-config.yaml"
+      focus_areas:
+        - "Yamanaka factors"
+        - "Epigenetic clocks (Horvath, Hannum)"
+        - "NAD+ and mitochondrial function"
+        - "Trial efficacy and safety tracking"
