@@ -1,16 +1,16 @@
 {
   "generated_from": {
-    "xrp_entries": 337,
-    "btc_entries": 190
+    "xrp_entries": 343,
+    "btc_entries": 196
   },
-  "unique_entities_profiled": 317,
+  "unique_entities_profiled": 323,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 139,
-      "bullish": 60,
+      "total_mentions": 143,
+      "bullish": 62,
       "neutral": 21,
-      "bearish": 58,
+      "bearish": 60,
       "net_sentiment_score": 0.014,
       "assets_seen_in": [
         "BTC",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 63,
-      "bullish": 39,
-      "neutral": 16,
-      "bearish": 8,
-      "net_sentiment_score": 0.492,
+      "total_mentions": 68,
+      "bullish": 41,
+      "neutral": 18,
+      "bearish": 9,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 51,
-      "bullish": 31,
-      "neutral": 15,
-      "bearish": 5,
-      "net_sentiment_score": 0.51,
+      "total_mentions": 56,
+      "bullish": 33,
+      "neutral": 17,
+      "bearish": 6,
+      "net_sentiment_score": 0.482,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 51,
-      "bullish": 21,
+      "total_mentions": 52,
+      "bullish": 22,
       "neutral": 8,
       "bearish": 22,
-      "net_sentiment_score": -0.02,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 19,
+      "total_mentions": 21,
       "bullish": 11,
       "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": 0.316,
+      "bearish": 7,
+      "net_sentiment_score": 0.19,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -157,6 +157,23 @@
       ]
     },
     {
+      "entity": "SEC",
+      "total_mentions": 12,
+      "bullish": 10,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.833,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
       "entity": "XRP Ledger",
       "total_mentions": 11,
       "bullish": 11,
@@ -173,20 +190,20 @@
       ]
     },
     {
-      "entity": "SEC",
-      "total_mentions": 11,
-      "bullish": 9,
-      "neutral": 2,
+      "entity": "Moomoo",
+      "total_mentions": 10,
+      "bullish": 2,
+      "neutral": 8,
       "bearish": 0,
-      "net_sentiment_score": 0.818,
+      "net_sentiment_score": 0.2,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -206,20 +223,19 @@
       ]
     },
     {
-      "entity": "Moomoo",
+      "entity": "XRP.CC",
       "total_mentions": 8,
-      "bullish": 2,
-      "neutral": 6,
+      "bullish": 1,
+      "neutral": 7,
       "bearish": 0,
-      "net_sentiment_score": 0.25,
+      "net_sentiment_score": 0.125,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
@@ -240,19 +256,20 @@
       ]
     },
     {
-      "entity": "XRP.CC",
-      "total_mentions": 7,
-      "bullish": 1,
-      "neutral": 6,
-      "bearish": 0,
-      "net_sentiment_score": 0.143,
+      "entity": "Strategy",
+      "total_mentions": 8,
+      "bullish": 3,
+      "neutral": 3,
+      "bearish": 2,
+      "net_sentiment_score": 0.125,
       "assets_seen_in": [
+        "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+        "Strategy Announces Second Quarter 2026 Financial Results - Strategy"
       ]
     },
     {
@@ -287,23 +304,6 @@
         "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
         "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
         "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 7,
-      "bullish": 3,
-      "neutral": 3,
-      "bearish": 1,
-      "net_sentiment_score": 0.286,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy Announces Second Quarter 2026 Financial Results - Strategy"
       ]
     },
     {
@@ -357,6 +357,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.4,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 5,
       "bullish": 4,
@@ -373,6 +390,38 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
+      "entity": "US stocks",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 4,
       "bullish": 2,
@@ -386,6 +435,23 @@
         "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
+      ]
+    },
+    {
+      "entity": "AI",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
+        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
       ]
     },
     {
@@ -440,22 +506,6 @@
       ]
     },
     {
-      "entity": "Binance",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.25,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
-      ]
-    },
-    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -472,23 +522,7 @@
       ]
     },
     {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "US stocks",
+      "entity": "Trump Media",
       "total_mentions": 4,
       "bullish": 1,
       "neutral": 0,
@@ -498,9 +532,9 @@
         "BTC"
       ],
       "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
       ]
     },
     {
@@ -604,20 +638,19 @@
       ]
     },
     {
-      "entity": "AI",
+      "entity": "The Motley Fool",
       "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
-        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -634,6 +667,22 @@
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "TheStreet",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+        "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+        "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
       ]
     },
     {
@@ -837,22 +886,6 @@
       ]
     },
     {
-      "entity": "Trump Media",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
-      ]
-    },
-    {
       "entity": "Michael Saylor",
       "total_mentions": 3,
       "bullish": 1,
@@ -898,6 +931,22 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
+      "entity": "Truth Social",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+        "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
       ]
     },
     {
@@ -1333,21 +1382,6 @@
       ]
     },
     {
-      "entity": "The Motley Fool",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M"
-      ]
-    },
-    {
       "entity": "institutional investors",
       "total_mentions": 2,
       "bullish": 2,
@@ -1363,7 +1397,7 @@
       ]
     },
     {
-      "entity": "TheStreet",
+      "entity": "CoinGape",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -1373,8 +1407,8 @@
         "XRP"
       ],
       "example_headlines": [
-        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-        "XRP holders can now borrow Ripple's stablecoin - thestreet.com"
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape"
       ]
     },
     {
@@ -1811,21 +1845,6 @@
       ]
     },
     {
-      "entity": "Truth Social",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
-      ]
-    },
-    {
       "entity": "Strait of Hormuz",
       "total_mentions": 2,
       "bullish": 1,
@@ -1943,6 +1962,21 @@
       "example_headlines": [
         "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week",
         "Bitcoin drops to one-week low as retail buys gold at highest prices since June"
+      ]
+    },
+    {
+      "entity": "TMTG",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+        "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
       ]
     },
     {
@@ -2310,20 +2344,6 @@
       ]
     },
     {
-      "entity": "CoinGape",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
       "entity": "Zilo",
       "total_mentions": 1,
       "bullish": 1,
@@ -2629,6 +2649,20 @@
       ],
       "example_headlines": [
         "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView"
+      ]
+    },
+    {
+      "entity": "Crypto market",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -4382,20 +4416,6 @@
       ]
     },
     {
-      "entity": "TMTG",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
-      ]
-    },
-    {
       "entity": "BIP 110",
       "total_mentions": 1,
       "bullish": 0,
@@ -4687,6 +4707,76 @@
       ],
       "example_headlines": [
         "Where Will Bitcoin Be in 2030? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Ethereum (ETH)",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo"
+      ]
+    },
+    {
+      "entity": "US PPI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data"
+      ]
+    },
+    {
+      "entity": "July PPI inflation data",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data"
+      ]
+    },
+    {
+      "entity": "HPC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows"
+      ]
+    },
+    {
+      "entity": "public Bitcoin miners",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows"
       ]
     }
   ]
