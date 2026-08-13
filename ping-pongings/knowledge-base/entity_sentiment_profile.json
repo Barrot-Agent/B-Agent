@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 341,
+    "xrp_entries": 342,
     "btc_entries": 195
   },
   "unique_entities_profiled": 321,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 65,
+      "total_mentions": 66,
       "bullish": 41,
-      "neutral": 16,
+      "neutral": 17,
       "bearish": 8,
-      "net_sentiment_score": 0.508,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 53,
+      "total_mentions": 54,
       "bullish": 33,
-      "neutral": 15,
+      "neutral": 16,
       "bearish": 5,
-      "net_sentiment_score": 0.528,
+      "net_sentiment_score": 0.519,
       "assets_seen_in": [
         "XRP"
       ],
@@ -190,6 +190,23 @@
       ]
     },
     {
+      "entity": "Moomoo",
+      "total_mentions": 9,
+      "bullish": 2,
+      "neutral": 7,
+      "bearish": 0,
+      "net_sentiment_score": 0.222,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 9,
       "bullish": 0,
@@ -206,20 +223,19 @@
       ]
     },
     {
-      "entity": "Moomoo",
+      "entity": "XRP.CC",
       "total_mentions": 8,
-      "bullish": 2,
-      "neutral": 6,
+      "bullish": 1,
+      "neutral": 7,
       "bearish": 0,
-      "net_sentiment_score": 0.25,
+      "net_sentiment_score": 0.125,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
@@ -254,22 +270,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy Announces Second Quarter 2026 Financial Results - Strategy"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 7,
-      "bullish": 1,
-      "neutral": 6,
-      "bearish": 0,
-      "net_sentiment_score": 0.143,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
