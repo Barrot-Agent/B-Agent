@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 337,
+    "xrp_entries": 338,
     "btc_entries": 191
   },
   "unique_entities_profiled": 317,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 63,
-      "bullish": 39,
+      "total_mentions": 64,
+      "bullish": 40,
       "neutral": 16,
       "bearish": 8,
-      "net_sentiment_score": 0.492,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 51,
-      "bullish": 31,
+      "total_mentions": 52,
+      "bullish": 32,
       "neutral": 15,
       "bearish": 5,
-      "net_sentiment_score": 0.51,
+      "net_sentiment_score": 0.519,
       "assets_seen_in": [
         "XRP"
       ],
@@ -357,6 +357,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.4,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 5,
       "bullish": 4,
@@ -437,22 +454,6 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.25,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express",
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
@@ -1378,6 +1379,21 @@
       ]
     },
     {
+      "entity": "CoinGape",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape"
+      ]
+    },
+    {
       "entity": "Licuido",
       "total_mentions": 2,
       "bullish": 2,
@@ -2297,20 +2313,6 @@
     },
     {
       "entity": "Evernorth",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "CoinGape",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
