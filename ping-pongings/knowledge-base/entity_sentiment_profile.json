@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 337,
-    "btc_entries": 188
+    "btc_entries": 190
   },
-  "unique_entities_profiled": 316,
+  "unique_entities_profiled": 317,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 138,
-      "bullish": 59,
+      "total_mentions": 139,
+      "bullish": 60,
       "neutral": 21,
       "bearish": 58,
-      "net_sentiment_score": 0.007,
+      "net_sentiment_score": 0.014,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 18,
-      "bullish": 10,
+      "total_mentions": 19,
+      "bullish": 11,
       "neutral": 3,
       "bearish": 5,
-      "net_sentiment_score": 0.278,
+      "net_sentiment_score": 0.316,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -174,11 +174,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 10,
-      "bullish": 8,
+      "total_mentions": 11,
+      "bullish": 9,
       "neutral": 2,
       "bearish": 0,
-      "net_sentiment_score": 0.8,
+      "net_sentiment_score": 0.818,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1868,6 +1868,21 @@
       "example_headlines": [
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "Satoshi Nakamoto",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+        "Where Will Bitcoin Be in 2030? - Yahoo Finance"
       ]
     },
     {
@@ -4087,20 +4102,6 @@
       ]
     },
     {
-      "entity": "Satoshi Nakamoto",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi"
-      ]
-    },
-    {
       "entity": "Zeppelin analogy",
       "total_mentions": 1,
       "bullish": 0,
@@ -4672,6 +4673,20 @@
       ],
       "example_headlines": [
         "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%"
+      ]
+    },
+    {
+      "entity": "Crypto ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Where Will Bitcoin Be in 2030? - Yahoo Finance"
       ]
     }
   ]

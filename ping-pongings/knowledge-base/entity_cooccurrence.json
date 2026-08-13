@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 337,
-    "btc_entries": 188
+    "btc_entries": 190
   },
-  "unique_pairs_found": 881,
+  "unique_pairs_found": 886,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -66,6 +66,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 10,
@@ -77,21 +92,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
-        },
-        {
-          "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -631,6 +631,21 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1596,21 +1611,6 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "TheStreet",
       "cooccurrence_count": 2,
@@ -2316,6 +2316,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
+          "asset": "BTC"
+        },
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "MSTR",
       "cooccurrence_count": 2,
@@ -2686,6 +2701,36 @@
         },
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        },
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Satoshi Nakamoto",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        },
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -5434,17 +5479,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
           "asset": "BTC"
         }
       ]
@@ -8718,17 +8752,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Satoshi Nakamoto",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Zeppelin analogy",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -8741,17 +8764,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "historian",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Satoshi Nakamoto",
-      "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -10428,6 +10440,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto ETFs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto ETFs",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto ETFs",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
