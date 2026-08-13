@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 341,
-    "btc_entries": 194
+    "btc_entries": 195
   },
-  "unique_pairs_found": 898,
+  "unique_pairs_found": 903,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -426,6 +426,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "CryptoPotato",
       "entity_b": "Ripple",
       "cooccurrence_count": 4,
@@ -511,21 +526,6 @@
         },
         {
           "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
         }
       ]
@@ -10631,6 +10631,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "July PPI inflation data",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US PPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "July PPI inflation data",
+      "entity_b": "US PPI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "July PPI inflation data",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US PPI",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data",
           "asset": "BTC"
         }
       ]

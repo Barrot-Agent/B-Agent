@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 341,
-    "btc_entries": 194
+    "btc_entries": 195
   },
-  "unique_entities_profiled": 319,
+  "unique_entities_profiled": 321,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 140,
-      "bullish": 60,
+      "total_mentions": 141,
+      "bullish": 61,
       "neutral": 21,
       "bearish": 59,
-      "net_sentiment_score": 0.007,
+      "net_sentiment_score": 0.014,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -406,6 +406,22 @@
       ]
     },
     {
+      "entity": "US stocks",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 4,
       "bullish": 2,
@@ -486,22 +502,6 @@
         "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
         "Rate path still divides investors: Five things to know in Bitcoin this week",
         "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
-      ]
-    },
-    {
-      "entity": "US stocks",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -4718,6 +4718,34 @@
       ],
       "example_headlines": [
         "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo"
+      ]
+    },
+    {
+      "entity": "US PPI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data"
+      ]
+    },
+    {
+      "entity": "July PPI inflation data",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data"
       ]
     }
   ]
