@@ -3,15 +3,15 @@
     "xrp_entries": 343,
     "btc_entries": 196
   },
-  "unique_entities_profiled": 321,
+  "unique_entities_profiled": 323,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 142,
+      "total_mentions": 143,
       "bullish": 62,
       "neutral": 21,
-      "bearish": 59,
-      "net_sentiment_score": 0.021,
+      "bearish": 60,
+      "net_sentiment_score": 0.014,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -438,6 +438,23 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
+        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
+      ]
+    },
+    {
       "entity": "CryptoQuant",
       "total_mentions": 4,
       "bullish": 3,
@@ -618,23 +635,6 @@
         "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "US hints at more yen intervention: Five things to know in Bitcoin this week"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
-        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
       ]
     },
     {
@@ -4749,6 +4749,34 @@
       ],
       "example_headlines": [
         "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data"
+      ]
+    },
+    {
+      "entity": "HPC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows"
+      ]
+    },
+    {
+      "entity": "public Bitcoin miners",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows"
       ]
     }
   ]

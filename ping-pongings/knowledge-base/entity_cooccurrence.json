@@ -3,7 +3,7 @@
     "xrp_entries": 343,
     "btc_entries": 196
   },
-  "unique_pairs_found": 905,
+  "unique_pairs_found": 910,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1066,6 +1066,21 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
           "asset": "BTC"
         }
       ]
@@ -2641,21 +2656,6 @@
         },
         {
           "title": "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "AI",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
           "asset": "BTC"
         }
       ]
@@ -10724,6 +10724,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin keeps traders guessing near $64K as stocks gain on cool US PPI data",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "HPC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "public Bitcoin miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "HPC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "public Bitcoin miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "HPC",
+      "entity_b": "public Bitcoin miners",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
           "asset": "BTC"
         }
       ]
