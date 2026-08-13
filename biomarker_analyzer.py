@@ -5,9 +5,17 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from statistics import mean
 from typing import Any, DefaultDict, Dict, Iterable, List, Sequence, Tuple
+
+
+def _parse_timestamp(value: str) -> datetime:
+    normalized = value.replace("Z", "+00:00")
+    parsed = datetime.fromisoformat(normalized)
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed
 
 
 @dataclass
@@ -26,7 +34,7 @@ class BiomarkerTracker:
 
     def record(self, biomarker: str, timestamp: str, value: float) -> None:
         self._series[biomarker].append(BiomarkerPoint(timestamp=timestamp, value=float(value)))
-        self._series[biomarker].sort(key=lambda item: item.timestamp)
+        self._series[biomarker].sort(key=lambda item: _parse_timestamp(item.timestamp))
 
     def trajectory(self, biomarker: str) -> List[BiomarkerPoint]:
         return list(self._series.get(biomarker, []))
@@ -92,12 +100,19 @@ class TrialProgressMonitor:
             grouped[row["treatment_arm"]].append(row["baseline"] - row["followup"])
         return {arm: round(mean(values), 3) for arm, values in grouped.items() if values}
 
-    def estimate_time_to_reversal(self, target_years: float = 10.0) -> Dict[str, float]:
+    def estimate_time_to_reversal(
+        self, target_reversal_years: float = 10.0, outcome_interval_years: float = 1.0
+    ) -> Dict[str, float]:
+        """Estimate years required to reach a reversal target.
+
+        Assumes each recorded outcome represents a constant treatment interval.
+        """
         estimates: Dict[str, float] = {}
         for arm, annual_reversal in self.reversal_by_arm().items():
             if annual_reversal <= 0:
                 continue
-            estimates[arm] = round(target_years / annual_reversal, 2)
+            intervals_needed = target_reversal_years / annual_reversal
+            estimates[arm] = round(intervals_needed * outcome_interval_years, 2)
         return estimates
 
 
@@ -120,9 +135,7 @@ class BiomarkerVisualizer:
         biomarkers = sorted(series.keys())
         timestamps = sorted(
             {point.timestamp for points in series.values() for point in points},
-            key=lambda ts: datetime.fromisoformat(ts.replace("Z", "+00:00"))
-            if "T" in ts
-            else datetime.fromisoformat(f"{ts}T00:00:00"),
+            key=_parse_timestamp,
         )
 
         matrix: List[List[float]] = []

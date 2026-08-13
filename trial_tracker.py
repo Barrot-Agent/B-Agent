@@ -3,10 +3,10 @@
 
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass, field
 from statistics import mean
-from typing import Any, DefaultDict, Dict, Iterable, List
-from collections import defaultdict
+from typing import Any, Dict, List
 
 
 @dataclass
@@ -51,7 +51,7 @@ class ParticipantCohort:
         ]
 
     def compare_treatment_arms(self) -> Dict[str, float]:
-        grouped: DefaultDict[str, List[float]] = defaultdict(list)
+        grouped: defaultdict[str, List[float]] = defaultdict(list)
         for row in self.outcomes:
             grouped[row["treatment_arm"]].append(row["age_reversal"])
         return {arm: round(mean(values), 3) for arm, values in grouped.items() if values}
@@ -95,7 +95,7 @@ class SafetyMonitor:
         return round(max(0.0, 1.0 - penalty / max(len(self._events), 1)), 3)
 
     def events_by_arm(self) -> Dict[str, int]:
-        counts: DefaultDict[str, int] = defaultdict(int)
+        counts: defaultdict[str, int] = defaultdict(int)
         for event in self._events:
             counts[event["treatment_arm"]] += 1
         return dict(counts)

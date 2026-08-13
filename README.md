@@ -436,9 +436,18 @@ ISC License - See repository for details
 ### Longevity Integration Quick Usage
 
 ```bash
-python longevity_micro_ingestion.py
-python trial_tracker.py
-python epigenetic_reprogramming_engine.py
+python -m pytest tests/test_longevity_modules.py --no-cov
+
+python - <<'PY'
+from longevity_micro_ingestion import LongevityMicroIngestion
+payload = LongevityMicroIngestion().build_unified_payload(
+    paper_text="Transient Oct4/Sox2/Klf4/c-Myc expression improved NAD+ and epigenetic clocks.",
+    trial_records=[],
+    methylation_samples=[],
+    biomarker_measurements={}
+)
+print(payload["research_domain"], payload["omega_ingest"]["compatibility"])
+PY
 ```
 
 ### Legacy Root-Level Docs

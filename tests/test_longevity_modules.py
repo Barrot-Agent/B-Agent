@@ -41,6 +41,9 @@ def test_longevity_ingestion_builds_unified_payload() -> None:
 
     assert payload["research_domain"] == "longevity"
     assert payload["aging_mechanisms"]
+    assert payload["epigenetic_pattern_matrices"]
+    assert payload["_meta"]["schema_version"] == "1.0"
+    assert "epigenetic_pattern_matrix" not in payload
     assert payload["omega_ingest"]["compatibility"] == "omega_ingest_v1"
     assert payload["mmi_breakthroughs"]
 
@@ -56,7 +59,21 @@ def test_biomarker_tracker_and_monitor_predictive_outputs() -> None:
     monitor.add_outcome("OSK", 60, 55)
     monitor.add_outcome("OSK", 62, 57)
     assert monitor.reversal_by_arm()["OSK"] == 5.0
-    assert monitor.estimate_time_to_reversal(target_years=10.0)["OSK"] == 2.0
+    assert monitor.estimate_time_to_reversal(target_reversal_years=10.0)["OSK"] == 2.0
+
+
+def test_age_biomarker_trend_directionality() -> None:
+    ingestion = LongevityMicroIngestion()
+    age_timeline = ingestion.track_biomarker_progression(
+        participant_id="P-9",
+        biomarker="epigenetic_age_horvath",
+        measurements=[
+            {"timestamp": "2026-01-01", "value": 60.0},
+            {"timestamp": "2026-04-01", "value": 57.0},
+        ],
+        higher_is_better=False,
+    )
+    assert age_timeline["trend"] == "improving"
 
 
 def test_aging_clock_and_visualizer_outputs() -> None:

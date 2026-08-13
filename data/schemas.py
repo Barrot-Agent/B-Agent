@@ -264,6 +264,7 @@ class LongevityUnified(TypedDict):
     trial_outcomes: List[TrialOutcome]
     epigenetic_pattern_matrices: List[EpigeneticPatternMatrix]
     biomarker_timelines: List[BiomarkerTimeline]
+    omega_ingest: Dict[str, Any]
     mmi_breakthroughs: List[Dict[str, Any]]
     _meta: Dict[str, Any]
 
