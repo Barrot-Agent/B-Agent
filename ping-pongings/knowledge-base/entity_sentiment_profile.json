@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 141,
-      "bullish": 61,
+      "total_mentions": 142,
+      "bullish": 62,
       "neutral": 21,
       "bearish": 59,
-      "net_sentiment_score": 0.014,
+      "net_sentiment_score": 0.021,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 51,
-      "bullish": 21,
+      "total_mentions": 52,
+      "bullish": 22,
       "neutral": 8,
       "bearish": 22,
-      "net_sentiment_score": -0.02,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -505,6 +505,22 @@
       ]
     },
     {
+      "entity": "Trump Media",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
       "entity": "Bloomberg",
       "total_mentions": 4,
       "bullish": 2,
@@ -854,22 +870,6 @@
       ]
     },
     {
-      "entity": "Trump Media",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
-      ]
-    },
-    {
       "entity": "Michael Saylor",
       "total_mentions": 3,
       "bullish": 1,
@@ -915,6 +915,22 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
+      "entity": "Truth Social",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+        "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
       ]
     },
     {
@@ -1828,21 +1844,6 @@
       ]
     },
     {
-      "entity": "Truth Social",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
-      ]
-    },
-    {
       "entity": "Strait of Hormuz",
       "total_mentions": 2,
       "bullish": 1,
@@ -1960,6 +1961,21 @@
       "example_headlines": [
         "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week",
         "Bitcoin drops to one-week low as retail buys gold at highest prices since June"
+      ]
+    },
+    {
+      "entity": "TMTG",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+        "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
       ]
     },
     {
@@ -4396,20 +4412,6 @@
       ],
       "example_headlines": [
         "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express"
-      ]
-    },
-    {
-      "entity": "TMTG",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
       ]
     },
     {

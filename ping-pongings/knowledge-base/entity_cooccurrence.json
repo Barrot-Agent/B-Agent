@@ -3,7 +3,7 @@
     "xrp_entries": 342,
     "btc_entries": 196
   },
-  "unique_pairs_found": 903,
+  "unique_pairs_found": 905,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 34,
+      "cooccurrence_count": 35,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -966,6 +966,36 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Michael Saylor",
       "cooccurrence_count": 3,
@@ -991,6 +1021,21 @@
         },
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Truth Social",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
         }
       ]
@@ -2496,36 +2541,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-          "asset": "BTC"
-        },
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-          "asset": "BTC"
-        },
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Senate",
       "cooccurrence_count": 2,
@@ -2562,21 +2577,6 @@
       "example_headlines": [
         {
           "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Truth Social",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
           "asset": "BTC"
         },
         {
@@ -2821,6 +2821,66 @@
         },
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "TMTG",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "TMTG",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "TMTG",
+      "entity_b": "Truth Social",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Trump Media",
+      "entity_b": "Truth Social",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
           "asset": "BTC"
         }
       ]
@@ -9745,17 +9805,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "TMTG",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Donald Trump",
       "entity_b": "TMTG",
       "cooccurrence_count": 1,
@@ -9768,39 +9817,6 @@
     },
     {
       "entity_a": "Donald Trump",
-      "entity_b": "Truth Social",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "TMTG",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "TMTG",
-      "entity_b": "Truth Social",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Trump Media",
       "entity_b": "Truth Social",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -10598,6 +10614,28 @@
       "example_headlines": [
         {
           "title": "Why Strategy Is Selling Bitcoin and How Much It Has Sold So Far - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "TMTG",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Truth Social",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
           "asset": "BTC"
         }
       ]
