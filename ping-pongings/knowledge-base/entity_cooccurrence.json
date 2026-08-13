@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 342,
+    "xrp_entries": 343,
     "btc_entries": 196
   },
   "unique_pairs_found": 905,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 53,
+      "cooccurrence_count": 54,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -691,6 +691,36 @@
         },
         {
           "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TheStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
           "asset": "XRP"
         }
       ]
@@ -1666,36 +1696,6 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "TheStreet",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TheStreet",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
           "asset": "XRP"
         }
       ]

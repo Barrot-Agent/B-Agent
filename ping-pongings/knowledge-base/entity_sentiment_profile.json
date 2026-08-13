@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 342,
+    "xrp_entries": 343,
     "btc_entries": 196
   },
   "unique_entities_profiled": 321,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 67,
+      "total_mentions": 68,
       "bullish": 41,
       "neutral": 18,
-      "bearish": 8,
-      "net_sentiment_score": 0.493,
+      "bearish": 9,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 55,
+      "total_mentions": 56,
       "bullish": 33,
       "neutral": 17,
-      "bearish": 5,
-      "net_sentiment_score": 0.509,
+      "bearish": 6,
+      "net_sentiment_score": 0.482,
       "assets_seen_in": [
         "XRP"
       ],
@@ -667,6 +667,22 @@
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "TheStreet",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+        "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+        "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
       ]
     },
     {
@@ -1378,21 +1394,6 @@
       "example_headlines": [
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
-      ]
-    },
-    {
-      "entity": "TheStreet",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-        "XRP holders can now borrow Ripple's stablecoin - thestreet.com"
       ]
     },
     {
