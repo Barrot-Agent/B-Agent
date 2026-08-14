@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 344,
-    "btc_entries": 196
+    "xrp_entries": 345,
+    "btc_entries": 197
   },
-  "unique_pairs_found": 913,
+  "unique_pairs_found": 914,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -10812,6 +10812,17 @@
       "example_headlines": [
         {
           "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for August 13, 2026 - Fortune",
           "asset": "BTC"
         }
       ]

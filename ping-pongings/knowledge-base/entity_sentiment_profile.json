@@ -1,7 +1,7 @@
 {
   "generated_from": {
-    "xrp_entries": 344,
-    "btc_entries": 196
+    "xrp_entries": 345,
+    "btc_entries": 197
   },
   "unique_entities_profiled": 324,
   "entities": [
@@ -208,11 +208,11 @@
     },
     {
       "entity": "Fortune",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 0,
-      "neutral": 8,
+      "neutral": 9,
       "bearish": 1,
-      "net_sentiment_score": -0.111,
+      "net_sentiment_score": -0.1,
       "assets_seen_in": [
         "BTC"
       ],
@@ -324,6 +324,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": -0.167,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "Ripple Labs",
       "total_mentions": 5,
       "bullish": 3,
@@ -387,22 +403,6 @@
         "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.2,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
