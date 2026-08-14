@@ -27,15 +27,14 @@ _DEFAULT_LOG_PATH = Path("barrot_agent") / "mcp_provenance.jsonl"
 # Record types
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ProvenanceRecord:
     """Immutable audit record for one MCP integration event."""
 
     event_type: str  # "integration" | "rejection" | "rollback" | "discovery"
     server_id: str
-    timestamp: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     license: str = "unknown"
     test_results: Dict[str, Any] = field(default_factory=dict)
     rejected_alternatives: List[str] = field(default_factory=list)
@@ -50,6 +49,7 @@ class ProvenanceRecord:
 # ---------------------------------------------------------------------------
 # Recorder
 # ---------------------------------------------------------------------------
+
 
 class MCPProvenanceRecorder:
     """
@@ -161,10 +161,7 @@ class MCPProvenanceRecorder:
 
     def get_last_rollback_ref(self, server_id: str) -> Optional[str]:
         """Return the most recent rollback reference for *server_id*, or None."""
-        recs = [
-            r for r in self.read_for_server(server_id)
-            if r.event_type == "rollback"
-        ]
+        recs = [r for r in self.read_for_server(server_id) if r.event_type == "rollback"]
         if not recs:
             return None
         return recs[-1].rollback_info.get("ref")

@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 # Domain types
 # ---------------------------------------------------------------------------
 
+
 class Phase(str, Enum):
     PROPOSAL = "proposal"
     CRITIQUE = "critique"
@@ -47,9 +48,7 @@ class MCPProposal:
     risks: List[str] = field(default_factory=list)
     mitigations: List[str] = field(default_factory=list)
     proposal_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    created_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 @dataclass
@@ -57,9 +56,7 @@ class PingPongMessage:
     """A single message in a ping-pong exchange."""
 
     message_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    timestamp: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     phase: Phase = Phase.PROPOSAL
     sender: str = "proposer"
     receiver: str = "critic"
@@ -119,9 +116,7 @@ def _default_proposer(proposal: MCPProposal) -> Dict[str, Any]:
     }
 
 
-def _default_critic(
-    proposal: MCPProposal, proposer_payload: Dict[str, Any]
-) -> Dict[str, Any]:
+def _default_critic(proposal: MCPProposal, proposer_payload: Dict[str, Any]) -> Dict[str, Any]:
     """
     Default critic: apply simple heuristic rules.
 
@@ -148,13 +143,12 @@ def _default_critic(
     return {"verdict": verdict, "issues": issues}
 
 
-def _default_refiner(
-    proposal: MCPProposal, critique: Dict[str, Any]
-) -> MCPProposal:
+def _default_refiner(proposal: MCPProposal, critique: Dict[str, Any]) -> MCPProposal:
     """Default refiner: add generic mitigations for each reported issue."""
     issues = critique.get("issues", [])
     extra_mitigations = [f"Addressed: {issue}" for issue in issues]
     from dataclasses import replace
+
     return replace(
         proposal,
         mitigations=proposal.mitigations + extra_mitigations,
@@ -164,6 +158,7 @@ def _default_refiner(
 # ---------------------------------------------------------------------------
 # Ping-Pong engine
 # ---------------------------------------------------------------------------
+
 
 class MCPPingPong:
     """
@@ -276,8 +271,6 @@ class MCPPingPong:
 
         return record
 
-    def run_batch(
-        self, proposals: List[MCPProposal]
-    ) -> List[ExchangeRecord]:
+    def run_batch(self, proposals: List[MCPProposal]) -> List[ExchangeRecord]:
         """Run ping-pong for every proposal in *proposals*."""
         return [self.run(p) for p in proposals]

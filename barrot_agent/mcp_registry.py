@@ -31,6 +31,7 @@ _DEFAULT_REGISTRY_PATH = Path("barrot_agent") / "mcp_registry.json"
 # Registry entry
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class RegistryEntry:
     """A validated and approved MCP server entry in the framework registry."""
@@ -44,9 +45,7 @@ class RegistryEntry:
     score: float
     approved_by: str
     provenance_event_id: Optional[str] = None
-    registered_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    registered_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     active: bool = True
     notes: str = ""
 
@@ -54,6 +53,7 @@ class RegistryEntry:
 # ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
+
 
 class MCPRegistry:
     """

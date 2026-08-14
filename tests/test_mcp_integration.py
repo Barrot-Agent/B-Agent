@@ -29,7 +29,6 @@ from barrot_agent.mcp_targets import (
     get_targets_by_priority,
 )
 
-
 # ---------------------------------------------------------------------------
 # Step 1 – Targets
 # ---------------------------------------------------------------------------
@@ -459,7 +458,9 @@ def test_integration_pipeline_dry_run():
     fake_inv = _make_inventory("barrot-core-repository")
     fake_inv.tool_categories = ["version_control", "ci_cd"]
 
-    with patch.object(mi._discovery, "discover_all", return_value={"barrot-core-repository": fake_inv}):
+    with patch.object(
+        mi._discovery, "discover_all", return_value={"barrot-core-repository": fake_inv}
+    ):
         stats = mi.run_pipeline()
 
     assert "discovered" in stats

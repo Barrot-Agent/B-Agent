@@ -34,29 +34,29 @@ logger = logging.getLogger(__name__)
 # Scheduler configuration
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class SchedulerConfig:
     """Configuration for the MCP discovery scheduler."""
 
-    interval_seconds: int = 3600          # How often to run discovery
-    max_runs: int = 24                    # Hard cap on autonomous runs
-    max_new_integrations_per_run: int = 2 # Budget per run
+    interval_seconds: int = 3600  # How often to run discovery
+    max_runs: int = 24  # Hard cap on autonomous runs
+    max_new_integrations_per_run: int = 2  # Budget per run
     min_score_for_proposal: float = 50.0  # Only propose high-quality components
-    dry_run: bool = True                  # True = no side-effects (safe default)
+    dry_run: bool = True  # True = no side-effects (safe default)
 
 
 # ---------------------------------------------------------------------------
 # Run record
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class SchedulerRunRecord:
     """Summary of a single scheduler pass."""
 
     run_number: int
-    started_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    started_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     finished_at: str = ""
     servers_discovered: int = 0
     proposals_created: int = 0

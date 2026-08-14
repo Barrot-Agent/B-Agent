@@ -29,6 +29,7 @@ logger = logging.getLogger(__name__)
 # Domain types
 # ---------------------------------------------------------------------------
 
+
 class ActionType(str, Enum):
     INSTALL = "install"
     REPO_WRITE = "repo_write"
@@ -45,14 +46,8 @@ class ApprovalRequest:
     server_id: str
     description: str
     requested_by: str = "barrot-agent"
-    request_id: str = field(
-        default_factory=lambda: hashlib.sha256(
-            os.urandom(16)
-        ).hexdigest()[:16]
-    )
-    created_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    request_id: str = field(default_factory=lambda: hashlib.sha256(os.urandom(16)).hexdigest()[:16])
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 @dataclass
@@ -63,14 +58,13 @@ class ApprovalDecision:
     approved: bool
     decided_by: str
     reason: str = ""
-    decided_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    decided_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 # ---------------------------------------------------------------------------
 # Approval gate
 # ---------------------------------------------------------------------------
+
 
 class MCPApprovalGate:
     """

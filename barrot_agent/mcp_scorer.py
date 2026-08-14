@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 # Score result
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ComponentScore:
     """Scoring breakdown for a single MCP server inventory."""
@@ -83,6 +84,7 @@ class ComponentScore:
 # Scorer
 # ---------------------------------------------------------------------------
 
+
 class MCPScorer:
     """
     Score a :class:`~barrot_agent.mcp_discovery.ServerInventory` against
@@ -114,15 +116,11 @@ class MCPScorer:
         )
         return cs
 
-    def score_all(
-        self, inventories: Dict[str, ServerInventory]
-    ) -> Dict[str, ComponentScore]:
+    def score_all(self, inventories: Dict[str, ServerInventory]) -> Dict[str, ComponentScore]:
         """Score every inventory in the mapping and return results keyed by server_id."""
         return {sid: self.score(inv) for sid, inv in inventories.items()}
 
-    def rank(
-        self, scores: Dict[str, ComponentScore]
-    ) -> List[ComponentScore]:
+    def rank(self, scores: Dict[str, ComponentScore]) -> List[ComponentScore]:
         """Return scores sorted descending by total (best first)."""
         return sorted(scores.values(), key=lambda s: s.total, reverse=True)
 
@@ -130,9 +128,7 @@ class MCPScorer:
     # Dimension scorers
     # ------------------------------------------------------------------
 
-    def _score_usefulness(
-        self, inv: ServerInventory, targets: List[CapabilityTarget]
-    ) -> float:
+    def _score_usefulness(self, inv: ServerInventory, targets: List[CapabilityTarget]) -> float:
         """
         Measure overlap between the server's tool categories and the
         categories required by at least one capability target.
