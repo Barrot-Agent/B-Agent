@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 349,
+    "xrp_entries": 350,
     "btc_entries": 208
   },
   "unique_pairs_found": 958,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 56,
+      "cooccurrence_count": 57,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -681,6 +681,36 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 3,
@@ -1186,36 +1216,6 @@
         },
         {
           "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
