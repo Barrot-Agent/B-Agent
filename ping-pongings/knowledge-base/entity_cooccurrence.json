@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 349,
-    "btc_entries": 202
+    "btc_entries": 205
   },
-  "unique_pairs_found": 948,
+  "unique_pairs_found": 956,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -186,6 +186,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 8,
@@ -257,21 +272,6 @@
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
         }
       ]
     },
@@ -526,6 +526,21 @@
         },
         {
           "title": "Strategy CEO says company will resume Bitcoin accumulation this year",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
           "asset": "BTC"
         }
       ]
@@ -876,21 +891,6 @@
       ]
     },
     {
-      "entity_a": "BlackRock",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Anthropic",
       "entity_b": "Riot Platforms",
       "cooccurrence_count": 3,
@@ -901,6 +901,21 @@
         },
         {
           "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
         }
       ]
@@ -2181,6 +2196,36 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BlackRock",
       "entity_b": "iShares Bitcoin Trust",
       "cooccurrence_count": 2,
@@ -2407,7 +2452,7 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Ether",
+      "entity_b": "Ether ETF",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -2415,7 +2460,22 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
           "asset": "BTC"
         }
       ]
@@ -2431,6 +2491,21 @@
         },
         {
           "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
           "asset": "BTC"
         }
       ]
@@ -5325,28 +5400,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "BlackRock",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "iShares Bitcoin Trust",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5577,28 +5630,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "JPMorgan",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin ETF",
       "entity_b": "Ether ETF",
       "cooccurrence_count": 1,
@@ -5623,17 +5654,6 @@
     {
       "entity_a": "Ether",
       "entity_b": "Ether ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ether",
-      "entity_b": "JPMorgan",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -11237,6 +11257,94 @@
       "example_headlines": [
         {
           "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETF",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETF",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
           "asset": "BTC"
         }
       ]

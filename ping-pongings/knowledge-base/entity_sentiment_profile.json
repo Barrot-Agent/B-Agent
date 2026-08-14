@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 349,
-    "btc_entries": 202
+    "btc_entries": 205
   },
-  "unique_entities_profiled": 331,
+  "unique_entities_profiled": 332,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 150,
-      "bullish": 65,
+      "total_mentions": 152,
+      "bullish": 67,
       "neutral": 24,
       "bearish": 61,
-      "net_sentiment_score": 0.027,
+      "net_sentiment_score": 0.039,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -274,11 +274,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 7,
-      "bullish": 6,
+      "total_mentions": 8,
+      "bullish": 7,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.714,
+      "net_sentiment_score": 0.75,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -407,6 +407,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 5,
       "bullish": 4,
@@ -489,7 +506,7 @@
       ]
     },
     {
-      "entity": "BlackRock",
+      "entity": "IBIT",
       "total_mentions": 4,
       "bullish": 4,
       "neutral": 0,
@@ -502,7 +519,7 @@
       "example_headlines": [
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
       ]
     },
     {
@@ -754,23 +771,6 @@
       ]
     },
     {
-      "entity": "IBIT",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
-      ]
-    },
-    {
       "entity": "Coinbase",
       "total_mentions": 3,
       "bullish": 3,
@@ -819,6 +819,23 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "Ether",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows",
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
       ]
     },
     {
@@ -1726,7 +1743,7 @@
       ]
     },
     {
-      "entity": "Ether",
+      "entity": "JPMorgan",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -1738,7 +1755,7 @@
       ],
       "example_headlines": [
         "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
       ]
     },
     {
@@ -1755,6 +1772,22 @@
       "example_headlines": [
         "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
         "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "Ether ETF",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2"
       ]
     },
     {
@@ -2772,34 +2805,6 @@
       ],
       "example_headlines": [
         "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes"
-      ]
-    },
-    {
-      "entity": "JPMorgan",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
-      ]
-    },
-    {
-      "entity": "Ether ETF",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
       ]
     },
     {
@@ -4900,6 +4905,20 @@
       ],
       "example_headlines": [
         "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
+      ]
+    },
+    {
+      "entity": "Morgan Stanley",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2"
       ]
     }
   ]
