@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 347,
+    "xrp_entries": 349,
     "btc_entries": 202
   },
-  "unique_pairs_found": 932,
+  "unique_pairs_found": 948,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 55,
+      "cooccurrence_count": 56,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -2386,6 +2386,51 @@
         },
         {
           "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "Ether",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
         }
       ]
@@ -5532,6 +5577,182 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETF",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoins",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoins",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tether",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BitMEX",
       "entity_b": "Fidelity",
       "cooccurrence_count": 1,
@@ -6116,28 +6337,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETF",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -6150,17 +6349,6 @@
     {
       "entity_a": "Bitcoin ETF",
       "entity_b": "ETF inflows",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin ETF",
-      "entity_b": "Ether",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

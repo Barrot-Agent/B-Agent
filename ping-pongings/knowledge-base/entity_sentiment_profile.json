@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 347,
+    "xrp_entries": 349,
     "btc_entries": 202
   },
-  "unique_entities_profiled": 327,
+  "unique_entities_profiled": 331,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 149,
-      "bullish": 64,
+      "total_mentions": 150,
+      "bullish": 65,
       "neutral": 24,
       "bearish": 61,
-      "net_sentiment_score": 0.02,
+      "net_sentiment_score": 0.027,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 71,
+      "total_mentions": 72,
       "bullish": 42,
       "neutral": 19,
-      "bearish": 10,
-      "net_sentiment_score": 0.451,
+      "bearish": 11,
+      "net_sentiment_score": 0.431,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 57,
+      "total_mentions": 58,
       "bullish": 33,
       "neutral": 18,
-      "bearish": 6,
-      "net_sentiment_score": 0.474,
+      "bearish": 7,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "XRP"
       ],
@@ -1726,6 +1726,54 @@
       ]
     },
     {
+      "entity": "Ether",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "Bitcoin ETF",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "Tether",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2727,6 +2775,62 @@
       ]
     },
     {
+      "entity": "JPMorgan",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
+      ]
+    },
+    {
+      "entity": "Ether ETF",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
+      ]
+    },
+    {
+      "entity": "Stablecoins",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Circle",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -3119,35 +3223,7 @@
       ]
     },
     {
-      "entity": "Ether",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
-      ]
-    },
-    {
       "entity": "US spot Bitcoin ETF",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
-      ]
-    },
-    {
-      "entity": "Bitcoin ETF",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -4488,20 +4564,6 @@
       ],
       "example_headlines": [
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
-      ]
-    },
-    {
-      "entity": "Tether",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
       ]
     },
     {
