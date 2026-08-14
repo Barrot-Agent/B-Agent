@@ -3,7 +3,7 @@
     "xrp_entries": 350,
     "btc_entries": 209
   },
-  "unique_pairs_found": 958,
+  "unique_pairs_found": 965,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2101,6 +2101,51 @@
         },
         {
           "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "LND",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "LND",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
           "asset": "BTC"
         }
       ]
@@ -5174,6 +5219,83 @@
       "example_headlines": [
         {
           "title": "Ripple Is Worth $50B and XRP Trades at 2018 Prices - Investing.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "LND",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "LND",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Lightning Network",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Lightning Network",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
           "asset": "XRP"
         }
       ]
@@ -10328,28 +10450,6 @@
     },
     {
       "entity_a": "BTCPay Server",
-      "entity_b": "LND",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCPay Server",
-      "entity_b": "Lightning Network",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCPay Server",
       "entity_b": "Lightning wallets",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -10373,17 +10473,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Lightning wallets",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "LND",
-      "entity_b": "Lightning Network",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

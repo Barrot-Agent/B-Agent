@@ -3,7 +3,7 @@
     "xrp_entries": 350,
     "btc_entries": 209
   },
-  "unique_entities_profiled": 333,
+  "unique_entities_profiled": 334,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 73,
+      "total_mentions": 74,
       "bullish": 43,
       "neutral": 19,
-      "bearish": 11,
-      "net_sentiment_score": 0.438,
+      "bearish": 12,
+      "net_sentiment_score": 0.419,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -506,6 +506,23 @@
       ]
     },
     {
+      "entity": "Lightning Network",
+      "total_mentions": 4,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+        "BTCPay restricts remote Lightning access after attackers steal funds",
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
+      ]
+    },
+    {
       "entity": "USD",
       "total_mentions": 4,
       "bullish": 2,
@@ -980,22 +997,6 @@
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
-      ]
-    },
-    {
-      "entity": "Lightning Network",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTCPay restricts remote Lightning access after attackers steal funds",
-        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-        "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk"
       ]
     },
     {
@@ -1564,6 +1565,38 @@
       "example_headlines": [
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
         "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
+      ]
+    },
+    {
+      "entity": "BTCPay Server",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
+      ]
+    },
+    {
+      "entity": "LND",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
       ]
     },
     {
@@ -2707,6 +2740,20 @@
       ],
       "example_headlines": [
         "Ripple Is Worth $50B and XRP Trades at 2018 Prices - Investing.com"
+      ]
+    },
+    {
+      "entity": "merchant wallets",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
       ]
     },
     {
@@ -4569,34 +4616,6 @@
       ],
       "example_headlines": [
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
-      ]
-    },
-    {
-      "entity": "BTCPay Server",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
-      ]
-    },
-    {
-      "entity": "LND",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
       ]
     },
     {
