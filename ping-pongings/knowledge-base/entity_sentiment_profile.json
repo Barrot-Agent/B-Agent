@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 343,
+    "xrp_entries": 344,
     "btc_entries": 196
   },
-  "unique_entities_profiled": 323,
+  "unique_entities_profiled": 324,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 68,
+      "total_mentions": 69,
       "bullish": 41,
       "neutral": 18,
-      "bearish": 9,
-      "net_sentiment_score": 0.471,
+      "bearish": 10,
+      "net_sentiment_score": 0.449,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1680,6 +1680,22 @@
       ]
     },
     {
+      "entity": "Forbes",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+        "\u2018Attacks Are Ongoing\u2019\u2014Urgent Warning Issued After Sudden Spread Of Massive Bitcoin Attack Sparks Pri"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2666,6 +2682,20 @@
       ]
     },
     {
+      "entity": "Standard Chartered",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -3587,20 +3617,6 @@
       ],
       "example_headlines": [
         "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Forbes",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "\u2018Attacks Are Ongoing\u2019\u2014Urgent Warning Issued After Sudden Spread Of Massive Bitcoin Attack Sparks Pri"
       ]
     },
     {

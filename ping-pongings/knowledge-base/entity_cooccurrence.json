@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 343,
+    "xrp_entries": 344,
     "btc_entries": 196
   },
-  "unique_pairs_found": 910,
+  "unique_pairs_found": 913,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -5367,6 +5367,39 @@
       "example_headlines": [
         {
           "title": "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Forbes",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Forbes",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Standard Chartered",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
           "asset": "XRP"
         }
       ]
