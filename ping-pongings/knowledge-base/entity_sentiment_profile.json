@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 346,
-    "btc_entries": 198
+    "btc_entries": 200
   },
-  "unique_entities_profiled": 326,
+  "unique_entities_profiled": 327,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 145,
+      "total_mentions": 147,
       "bullish": 64,
-      "neutral": 21,
-      "bearish": 60,
-      "net_sentiment_score": 0.028,
+      "neutral": 22,
+      "bearish": 61,
+      "net_sentiment_score": 0.02,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 54,
+      "total_mentions": 56,
       "bullish": 23,
-      "neutral": 9,
-      "bearish": 22,
-      "net_sentiment_score": 0.019,
+      "neutral": 10,
+      "bearish": 23,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC"
       ],
@@ -174,6 +174,23 @@
       ]
     },
     {
+      "entity": "Moomoo",
+      "total_mentions": 11,
+      "bullish": 2,
+      "neutral": 9,
+      "bearish": 0,
+      "net_sentiment_score": 0.182,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "XRP Ledger",
       "total_mentions": 11,
       "bullish": 11,
@@ -187,23 +204,6 @@
         "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 10,
-      "bullish": 2,
-      "neutral": 8,
-      "bearish": 0,
-      "net_sentiment_score": 0.2,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -324,6 +324,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.167,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 6,
       "bullish": 2,
@@ -356,6 +373,23 @@
       ]
     },
     {
+      "entity": "CryptoQuant",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+        "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
+      ]
+    },
+    {
       "entity": "BIP-110",
       "total_mentions": 5,
       "bullish": 0,
@@ -370,23 +404,6 @@
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
         "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
         "BIP-110 Bitcoin branch stalls after two blocks as gap widens"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.4,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
       ]
     },
     {
@@ -452,23 +469,6 @@
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
         "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
-      ]
-    },
-    {
-      "entity": "CryptoQuant",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-        "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
       ]
     },
     {
@@ -4824,6 +4824,20 @@
       ],
       "example_headlines": [
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
+      "entity": "futures",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
       ]
     }
   ]

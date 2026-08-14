@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 346,
-    "btc_entries": 198
+    "btc_entries": 200
   },
-  "unique_pairs_found": 925,
+  "unique_pairs_found": 932,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 36,
+      "cooccurrence_count": 38,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -396,6 +396,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 5,
@@ -486,21 +501,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "CryptoQuant",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
       "cooccurrence_count": 4,
@@ -526,6 +526,21 @@
         },
         {
           "title": "Strategy CEO says company will resume Bitcoin accumulation this year",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+          "asset": "BTC"
+        },
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -901,21 +916,6 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-          "asset": "BTC"
-        },
-        {
-          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -2692,6 +2692,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "S&P 500",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2791,6 +2806,21 @@
         },
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Binance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
           "asset": "BTC"
         }
       ]
@@ -7874,17 +7904,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Crypto Weekly Digest",
       "entity_b": "Moomoo",
       "cooccurrence_count": 1,
@@ -8793,17 +8812,6 @@
       "example_headlines": [
         {
           "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Binance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
           "asset": "BTC"
         }
       ]
@@ -10960,6 +10968,83 @@
       "example_headlines": [
         {
           "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
