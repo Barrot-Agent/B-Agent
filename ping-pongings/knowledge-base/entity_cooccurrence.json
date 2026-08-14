@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 35,
+      "cooccurrence_count": 36,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -517,6 +517,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy CEO says company will resume Bitcoin accumulation this year",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -832,21 +847,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "USD",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1096,6 +1096,21 @@
         },
         {
           "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        },
+        {
+          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
         }
       ]
@@ -2821,21 +2836,6 @@
         },
         {
           "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
-          "asset": "BTC"
-        },
-        {
-          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
         }
       ]
