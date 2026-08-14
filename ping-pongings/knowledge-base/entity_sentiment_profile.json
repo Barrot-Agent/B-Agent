@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 349,
-    "btc_entries": 205
+    "btc_entries": 206
   },
-  "unique_entities_profiled": 332,
+  "unique_entities_profiled": 333,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 152,
+      "total_mentions": 154,
       "bullish": 67,
-      "neutral": 24,
-      "bearish": 61,
-      "net_sentiment_score": 0.039,
+      "neutral": 25,
+      "bearish": 62,
+      "net_sentiment_score": 0.032,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,9 +57,9 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 57,
+      "total_mentions": 58,
       "bullish": 23,
-      "neutral": 11,
+      "neutral": 12,
       "bearish": 23,
       "net_sentiment_score": 0.0,
       "assets_seen_in": [
@@ -158,11 +158,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 12,
+      "total_mentions": 13,
       "bullish": 2,
-      "neutral": 10,
+      "neutral": 11,
       "bearish": 0,
-      "net_sentiment_score": 0.167,
+      "net_sentiment_score": 0.154,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -357,6 +357,22 @@
       ]
     },
     {
+      "entity": "US stocks",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
       "entity": "Ripple Labs",
       "total_mentions": 5,
       "bullish": 3,
@@ -437,22 +453,6 @@
         "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "US stocks",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.2,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -4905,6 +4905,20 @@
       ],
       "example_headlines": [
         "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
+      ]
+    },
+    {
+      "entity": "US inflation",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price drops to $62.5K as trader warns weekly close may spark more losses"
       ]
     },
     {

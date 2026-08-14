@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 349,
-    "btc_entries": 205
+    "btc_entries": 206
   },
-  "unique_pairs_found": 956,
+  "unique_pairs_found": 958,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 39,
+      "cooccurrence_count": 40,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -351,6 +351,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 5,
@@ -436,21 +451,6 @@
         },
         {
           "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
         }
       ]
@@ -616,6 +616,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -1086,21 +1101,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "AI",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 3,
@@ -1141,6 +1141,21 @@
         },
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -3091,21 +3106,6 @@
         },
         {
           "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -11257,6 +11257,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US inflation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price drops to $62.5K as trader warns weekly close may spark more losses",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US inflation",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price drops to $62.5K as trader warns weekly close may spark more losses",
           "asset": "BTC"
         }
       ]
