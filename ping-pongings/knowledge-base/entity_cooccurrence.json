@@ -3,7 +3,7 @@
     "xrp_entries": 345,
     "btc_entries": 197
   },
-  "unique_pairs_found": 914,
+  "unique_pairs_found": 920,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -186,6 +186,36 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -291,32 +321,17 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 6,
       "example_headlines": [
         {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         },
         {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
         }
       ]
     },
@@ -376,21 +391,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "XRP",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -1652,6 +1652,21 @@
         {
           "title": "NEAR Adds Staking-Based Payments For AI Compute Credits",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto market",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - ",
+          "asset": "XRP"
         }
       ]
     },
@@ -3689,6 +3704,72 @@
       ]
     },
     {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "Crypto market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto market",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "dmarketforces.com",
       "cooccurrence_count": 1,
@@ -5352,17 +5433,6 @@
     {
       "entity_a": "Crypto market",
       "entity_b": "The Motley Fool",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - ",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Crypto market",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
