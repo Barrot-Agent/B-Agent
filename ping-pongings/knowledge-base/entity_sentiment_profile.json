@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 346,
-    "btc_entries": 197
+    "btc_entries": 198
   },
-  "unique_entities_profiled": 325,
+  "unique_entities_profiled": 326,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -57,9 +57,9 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 53,
+      "total_mentions": 54,
       "bullish": 23,
-      "neutral": 8,
+      "neutral": 9,
       "bearish": 22,
       "net_sentiment_score": 0.019,
       "assets_seen_in": [
@@ -123,6 +123,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 14,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 8,
+      "net_sentiment_score": -0.214,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "CoinDesk",
       "total_mentions": 14,
       "bullish": 8,
@@ -137,23 +154,6 @@
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
         "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 13,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 8,
-      "net_sentiment_score": -0.231,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
       ]
     },
     {
@@ -1756,6 +1756,21 @@
       ]
     },
     {
+      "entity": "CEO",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
       "entity": "Dogecoin",
       "total_mentions": 2,
       "bullish": 1,
@@ -2797,20 +2812,6 @@
     },
     {
       "entity": "Robinhood",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names"
-      ]
-    },
-    {
-      "entity": "CEO",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -4809,6 +4810,20 @@
       ],
       "example_headlines": [
         "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows"
+      ]
+    },
+    {
+      "entity": "Metaplanet",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     }
   ]
