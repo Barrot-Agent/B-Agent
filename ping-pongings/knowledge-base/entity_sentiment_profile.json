@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 349,
+    "xrp_entries": 350,
     "btc_entries": 208
   },
   "unique_entities_profiled": 333,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 72,
-      "bullish": 42,
+      "total_mentions": 73,
+      "bullish": 43,
       "neutral": 19,
       "bearish": 11,
-      "net_sentiment_score": 0.431,
+      "net_sentiment_score": 0.438,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 58,
-      "bullish": 33,
+      "total_mentions": 59,
+      "bullish": 34,
       "neutral": 18,
       "bearish": 7,
-      "net_sentiment_score": 0.448,
+      "net_sentiment_score": 0.458,
       "assets_seen_in": [
         "XRP"
       ],
@@ -456,6 +456,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 4,
       "bullish": 2,
@@ -618,23 +635,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St."
       ]
     },
     {
