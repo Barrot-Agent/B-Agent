@@ -33,7 +33,9 @@ class BiomarkerTracker:
         self._series: DefaultDict[str, List[BiomarkerPoint]] = defaultdict(list)
 
     def record(self, biomarker: str, timestamp: str, value: float) -> None:
-        self._series[biomarker].append(BiomarkerPoint(timestamp=timestamp, value=float(value)))
+        point = BiomarkerPoint(timestamp=timestamp, value=float(value))
+        _parse_timestamp(point.timestamp)
+        self._series[biomarker].append(point)
         self._series[biomarker].sort(key=lambda item: _parse_timestamp(item.timestamp))
 
     def trajectory(self, biomarker: str) -> List[BiomarkerPoint]:
