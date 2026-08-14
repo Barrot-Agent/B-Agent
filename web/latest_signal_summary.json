@@ -1,17 +1,17 @@
 {
-  "summary": "The signal, generated at\u202f2026\u201108\u201114\u202f17:11:23\u202fUTC, gives XRP a bullish rating with a score of\u202f76 and a confidence of\u202f0.95. It is based on 32 recent XRP\u2011related headlines, yielding a news_score of\u202f66.\n\n- Timestamp:\u202f2026\u201108\u201114T17:11:23.573510+00:00  \n- Score / Confidence:\u202f76\u202f/\u202f0.95  \n- News data:\u202f32 entries, news_score\u202f66.",
-  "spoken_line": "XRP gets a bullish rating of 76 with 0.95 confidence, based on 32 headlines and a news score of 66. Not financial advice. Informational only. Do your own research.",
+  "summary": "The XRP signal, generated at\u202f2026\u201108\u201114\u202f18:06:40\u202fUTC (Unix\u202f1786730800), carries a bullish bias with a composite score of\u202f76 and a confidence of\u202f0.96, based on 31 news items (news_score\u202f67) from the source\u202fgroq:bullish+news(31). The headline list includes one neutral analysis and six bullish pieces covering consensus, message dissemination, routing, Pub/Sub, crash testing, and causal AI for the XRP Ledger.\n\n- Timestamp:\u202f2026\u201108\u201114T18:06:40.058444+00:00 (Unix\u202f1786730800)  \n- Score\u202f76, confidence\u202f0.96, news_score\u202f67, news_entries\u202f31  \n- Headlines: 1 neutral analysis + 6 bullish items on XRPL consensus, dissemination, routing, crash testing, and AI configuration.",
+  "spoken_line": "XRP signal at 18:06 UTC shows a bullish bias, score 76, confidence 0.96, based on 31 news items with six bullish pieces. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
-  "audio": "web/generated_audio/latest_signal_summary.wav",
-  "tts_error": null,
+  "audio": null,
+  "tts_error": "HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `canopylabs/orpheus-v1-english` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 3600, Used 3466, Requested 184. Please try again in 20m0s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
   "source_signal": {
-    "timestamp": "2026-08-14T17:11:23.573510+00:00",
+    "timestamp": "2026-08-14T18:06:40.058444+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 76,
-    "confidence": 0.95,
-    "source": "groq:bullish+news(32)",
-    "news_score": 66,
-    "news_entries": 32,
-    "generated_at_unix": 1786727483
+    "confidence": 0.96,
+    "source": "groq:bullish+news(31)",
+    "news_score": 67,
+    "news_entries": 31,
+    "generated_at_unix": 1786730800
   }
 }
