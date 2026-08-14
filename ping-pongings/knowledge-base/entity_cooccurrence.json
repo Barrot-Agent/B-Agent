@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 345,
+    "xrp_entries": 346,
     "btc_entries": 197
   },
   "unique_pairs_found": 920,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 54,
+      "cooccurrence_count": 55,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -126,6 +126,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 9,
@@ -156,7 +171,7 @@
       ]
     },
     {
-      "entity_a": "Ripple",
+      "entity_a": "XRP",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 8,
       "example_headlines": [
@@ -165,7 +180,7 @@
           "asset": "XRP"
         },
         {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -226,21 +241,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -1936,6 +1936,51 @@
         },
         {
           "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP.CC",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -4685,39 +4730,6 @@
     {
       "entity_a": "XRP.CC",
       "entity_b": "moomoo",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "moomoo.com",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "moomoo.com",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP.CC",
-      "entity_b": "moomoo.com",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
