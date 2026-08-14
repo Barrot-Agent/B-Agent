@@ -1,15 +1,15 @@
 {
   "generated_from": {
-    "xrp_entries": 346,
-    "btc_entries": 200
+    "xrp_entries": 347,
+    "btc_entries": 202
   },
   "unique_entities_profiled": 327,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 147,
+      "total_mentions": 149,
       "bullish": 64,
-      "neutral": 22,
+      "neutral": 24,
       "bearish": 61,
       "net_sentiment_score": 0.02,
       "assets_seen_in": [
@@ -57,9 +57,9 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 56,
+      "total_mentions": 57,
       "bullish": 23,
-      "neutral": 10,
+      "neutral": 11,
       "bearish": 23,
       "net_sentiment_score": 0.0,
       "assets_seen_in": [
@@ -157,6 +157,23 @@
       ]
     },
     {
+      "entity": "Moomoo",
+      "total_mentions": 12,
+      "bullish": 2,
+      "neutral": 10,
+      "bearish": 0,
+      "net_sentiment_score": 0.167,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "SEC",
       "total_mentions": 12,
       "bullish": 10,
@@ -171,23 +188,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 11,
-      "bullish": 2,
-      "neutral": 9,
-      "bearish": 0,
-      "net_sentiment_score": 0.182,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -208,11 +208,11 @@
     },
     {
       "entity": "Fortune",
-      "total_mentions": 10,
+      "total_mentions": 11,
       "bullish": 0,
-      "neutral": 9,
+      "neutral": 10,
       "bearish": 1,
-      "net_sentiment_score": -0.1,
+      "net_sentiment_score": -0.091,
       "assets_seen_in": [
         "BTC"
       ],
