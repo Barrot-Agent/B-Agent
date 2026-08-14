@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-14T17:30:59.047162+00:00",
-  "signal_text": "Recent BTC-relevant headlines: [bearish] Bitcoin drops to one-week low as retail buys gold at highest prices since June | [bearish] Luke Dashjr Removed As BIP Editor After BIP-110 Controversy | [bullish] Strategy CEO says company will resume Bitcoin accumulation this year | [bullish] Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026 | [bearish] Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks | [bearish] BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes -",
-  "score": 44,
-  "confidence": 0.67,
-  "source": "groq:bearish+news(34)",
-  "news_score": 56,
-  "news_entries": 34,
-  "generated_at_unix": 1786728659
+  "timestamp": "2026-08-14T18:28:09.728137+00:00",
+  "signal_text": "Recent BTC-relevant headlines: [bullish] Strategy CEO says company will resume Bitcoin accumulation this year | [bullish] Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026 | [bearish] Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks | [bearish] BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - | [bullish] Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute | [bullish] BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+  "score": 30,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(32)",
+  "news_score": 59,
+  "news_entries": 32,
+  "generated_at_unix": 1786732089
 }
