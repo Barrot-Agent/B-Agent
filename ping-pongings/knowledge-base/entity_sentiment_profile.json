@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 355,
+    "xrp_entries": 358,
     "btc_entries": 215
   },
   "unique_entities_profiled": 338,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 77,
-      "bullish": 45,
+      "total_mentions": 79,
+      "bullish": 46,
       "neutral": 20,
-      "bearish": 12,
-      "net_sentiment_score": 0.429,
+      "bearish": 13,
+      "net_sentiment_score": 0.418,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 62,
-      "bullish": 36,
+      "total_mentions": 64,
+      "bullish": 37,
       "neutral": 19,
-      "bearish": 7,
-      "net_sentiment_score": 0.468,
+      "bearish": 8,
+      "net_sentiment_score": 0.453,
       "assets_seen_in": [
         "XRP"
       ],
@@ -192,8 +192,8 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 11,
-      "bullish": 11,
+      "total_mentions": 12,
+      "bullish": 12,
       "neutral": 0,
       "bearish": 0,
       "net_sentiment_score": 1.0,
@@ -506,6 +506,22 @@
       ]
     },
     {
+      "entity": "MarketForces Africa",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+        "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
+      ]
+    },
+    {
       "entity": "Lightning Network",
       "total_mentions": 4,
       "bullish": 0,
@@ -738,22 +754,6 @@
       ]
     },
     {
-      "entity": "MarketForces Africa",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-        "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
-      ]
-    },
-    {
       "entity": "TheStreet",
       "total_mentions": 3,
       "bullish": 2,
@@ -886,6 +886,23 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "TradingView",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+        "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst"
       ]
     },
     {
@@ -1775,22 +1792,6 @@
       "example_headlines": [
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "TradingView",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-        "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst"
       ]
     },
     {
