@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 354,
+    "xrp_entries": 355,
     "btc_entries": 215
   },
   "unique_entities_profiled": 338,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 76,
-      "bullish": 44,
+      "total_mentions": 77,
+      "bullish": 45,
       "neutral": 20,
       "bearish": 12,
-      "net_sentiment_score": 0.421,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 61,
-      "bullish": 35,
+      "total_mentions": 62,
+      "bullish": 36,
       "neutral": 19,
       "bearish": 7,
-      "net_sentiment_score": 0.459,
+      "net_sentiment_score": 0.468,
       "assets_seen_in": [
         "XRP"
       ],
@@ -141,11 +141,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 14,
-      "bullish": 5,
+      "total_mentions": 15,
+      "bullish": 6,
       "neutral": 1,
       "bearish": 8,
-      "net_sentiment_score": -0.214,
+      "net_sentiment_score": -0.133,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -175,11 +175,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 12,
-      "bullish": 10,
+      "total_mentions": 13,
+      "bullish": 11,
       "neutral": 2,
       "bearish": 0,
-      "net_sentiment_score": 0.833,
+      "net_sentiment_score": 0.846,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -719,6 +719,22 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
         "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
+      "entity": "institutional investors",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda"
       ]
     },
     {
@@ -1430,21 +1446,6 @@
       "example_headlines": [
         "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
         "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
-      ]
-    },
-    {
-      "entity": "institutional investors",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
       ]
     },
     {
