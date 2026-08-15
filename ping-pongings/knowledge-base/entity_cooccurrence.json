@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 351,
+    "xrp_entries": 352,
     "btc_entries": 209
   },
-  "unique_pairs_found": 965,
+  "unique_pairs_found": 977,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -156,6 +156,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
       "cooccurrence_count": 8,
@@ -286,21 +301,6 @@
         },
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -541,6 +541,21 @@
         },
         {
           "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
         }
       ]
@@ -946,21 +961,6 @@
         },
         {
           "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
         }
       ]
@@ -3151,6 +3151,21 @@
         },
         {
           "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USDT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        },
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -10394,17 +10409,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "USDT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CryptoQuant",
       "entity_b": "Tether",
       "cooccurrence_count": 1,
@@ -11456,6 +11460,138 @@
       "example_headlines": [
         {
           "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "crypto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "software stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "crypto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "software stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "crypto",
+      "entity_b": "software stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Russia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Russia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Russia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Russia",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
           "asset": "BTC"
         }
       ]

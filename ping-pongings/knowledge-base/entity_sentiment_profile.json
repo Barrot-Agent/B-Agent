@@ -1,16 +1,16 @@
 {
   "generated_from": {
-    "xrp_entries": 351,
+    "xrp_entries": 352,
     "btc_entries": 209
   },
-  "unique_entities_profiled": 334,
+  "unique_entities_profiled": 337,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 154,
-      "bullish": 67,
+      "total_mentions": 156,
+      "bullish": 68,
       "neutral": 25,
-      "bearish": 62,
+      "bearish": 63,
       "net_sentiment_score": 0.032,
       "assets_seen_in": [
         "BTC",
@@ -123,6 +123,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 16,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 7,
+      "net_sentiment_score": 0.125,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 14,
       "bullish": 5,
@@ -137,23 +154,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 14,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 6,
-      "net_sentiment_score": 0.143,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -557,6 +557,23 @@
       ]
     },
     {
+      "entity": "Ether",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows",
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -652,6 +669,23 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
+      ]
+    },
+    {
+      "entity": "USDT",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+        "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk"
       ]
     },
     {
@@ -836,23 +870,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "Ether",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows",
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
       ]
     },
     {
@@ -1093,22 +1110,6 @@
       "example_headlines": [
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
       ]
     },
     {
@@ -4952,6 +4953,48 @@
       ],
       "example_headlines": [
         "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2"
+      ]
+    },
+    {
+      "entity": "software stocks",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk"
+      ]
+    },
+    {
+      "entity": "crypto",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Russia",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk"
       ]
     }
   ]
