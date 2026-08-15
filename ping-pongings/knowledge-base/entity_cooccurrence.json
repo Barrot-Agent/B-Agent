@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 355,
+    "xrp_entries": 358,
     "btc_entries": 215
   },
-  "unique_pairs_found": 988,
+  "unique_pairs_found": 989,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 60,
+      "cooccurrence_count": 62,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,6 +68,21 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
       "cooccurrence_count": 11,
       "example_headlines": [
         {
@@ -106,21 +121,6 @@
         },
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -516,6 +516,21 @@
       ]
     },
     {
+      "entity_a": "MarketForces Africa",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
       "cooccurrence_count": 4,
@@ -787,7 +802,7 @@
     },
     {
       "entity_a": "MarketForces Africa",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -1806,21 +1821,6 @@
       ]
     },
     {
-      "entity_a": "MarketForces Africa",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinGape",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -2537,6 +2537,36 @@
         {
           "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
         }
       ]
     },
@@ -5615,17 +5645,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "TradingView",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "UK Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5638,17 +5657,6 @@
     {
       "entity_a": "TradingView",
       "entity_b": "UK Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TradingView",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -6038,6 +6046,17 @@
       "example_headlines": [
         {
           "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
         }
       ]
