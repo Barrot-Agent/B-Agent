@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 352,
+    "xrp_entries": 353,
     "btc_entries": 209
   },
-  "unique_entities_profiled": 337,
+  "unique_entities_profiled": 338,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 75,
-      "bullish": 43,
+      "total_mentions": 76,
+      "bullish": 44,
       "neutral": 20,
       "bearish": 12,
-      "net_sentiment_score": 0.413,
+      "net_sentiment_score": 0.421,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 60,
-      "bullish": 34,
+      "total_mentions": 61,
+      "bullish": 35,
       "neutral": 19,
       "bearish": 7,
-      "net_sentiment_score": 0.45,
+      "net_sentiment_score": 0.459,
       "assets_seen_in": [
         "XRP"
       ],
@@ -873,6 +873,23 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+        "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 3,
       "bullish": 0,
@@ -1431,6 +1448,21 @@
       ]
     },
     {
+      "entity": "Evernorth",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie"
+      ]
+    },
+    {
       "entity": "CoinGape",
       "total_mentions": 2,
       "bullish": 2,
@@ -1928,21 +1960,6 @@
       "example_headlines": [
         "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
         "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
-        "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
       ]
     },
     {
@@ -2520,20 +2537,6 @@
       ]
     },
     {
-      "entity": "Evernorth",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
       "entity": "Zilo",
       "total_mentions": 1,
       "bullish": 1,
@@ -2881,6 +2884,20 @@
       ],
       "example_headlines": [
         "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "$1B",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie"
       ]
     },
     {
