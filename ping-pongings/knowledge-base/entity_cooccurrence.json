@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 354,
+    "xrp_entries": 355,
     "btc_entries": 215
   },
-  "unique_pairs_found": 985,
+  "unique_pairs_found": 988,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 59,
+      "cooccurrence_count": 60,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -82,23 +82,8 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -113,7 +98,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -121,6 +106,21 @@
         },
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -456,6 +456,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CryptoPotato",
       "entity_b": "Ripple",
       "cooccurrence_count": 4,
@@ -667,7 +682,7 @@
     },
     {
       "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -675,7 +690,7 @@
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -1187,21 +1202,6 @@
         {
           "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
         }
       ]
     },
@@ -1771,6 +1771,36 @@
         },
         {
           "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
           "asset": "XRP"
         }
       ]
@@ -4198,30 +4228,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "XRP",
       "entity_b": "analyst",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "institutional investors",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -5997,6 +6005,39 @@
       "example_headlines": [
         {
           "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
           "asset": "XRP"
         }
       ]
