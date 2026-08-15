@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-15T08:56:44.411376+00:00",
+  "timestamp": "2026-08-15T09:51:04.575510+00:00",
   "signal_text": "Recent BTC-relevant headlines: [bearish] Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low | [bullish] Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatil | [bullish] El Salvador\u2019s Bitcoin experiment turns 5: \u2018It was for us, not them\u2019 | [bullish] Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60% | [bullish] Where Will Bitcoin Be in 2030? - Yahoo Finance | [bearish] Why Strategy Is Selling Bitcoin and How Much It Has Sold So Far - Yahoo Finance",
-  "score": 64,
-  "confidence": 0.85,
-  "source": "groq:bullish+news(23)",
+  "score": 28,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(23)",
   "news_score": 57,
   "news_entries": 23,
-  "generated_at_unix": 1786784204
+  "generated_at_unix": 1786787464
 }
