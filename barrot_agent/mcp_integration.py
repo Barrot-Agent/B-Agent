@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from barrot_agent.mcp_adapters import build_adapter
+from barrot_agent.reconfiguration import ReconfigurationReport, build_reconfiguration_report
 from barrot_agent.mcp_approval import ActionType, ApprovalRequest, MCPApprovalGate
 from barrot_agent.mcp_discovery import MCPDiscovery, ServerInventory
 from barrot_agent.mcp_pingpong import MCPPingPong, MCPProposal, Phase
@@ -305,3 +306,24 @@ class MCPIntegration:
     def provenance(self) -> MCPProvenanceRecorder:
         """Direct access to the provenance recorder."""
         return self._provenance
+
+    # ------------------------------------------------------------------
+    # Reconfiguration report
+    # ------------------------------------------------------------------
+
+    def build_reconfiguration_report(self) -> ReconfigurationReport:
+        """
+        Produce a :class:`~barrot_agent.reconfiguration.ReconfigurationReport`
+        that audits the current infrastructure state against declared capability
+        targets and proposes servers for promotion.
+
+        The report is always read-only; it describes what *would* change.
+        Call :meth:`run_pipeline` to effect changes (subject to the configured
+        approval gate).
+        """
+        report = build_reconfiguration_report(
+            dry_run=self._cfg.dry_run,
+            registry_path=self._cfg.registry_path,
+        )
+        # Annotate with the most recent pipeline stats if available via provenance
+        return report
