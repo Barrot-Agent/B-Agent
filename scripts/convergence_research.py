@@ -90,7 +90,8 @@ def rank_repository(source: dict[str, Any], snapshot: dict[str, Any], internal: 
         [source.get("domain", ""), source.get("full_name", ""), snapshot.get("description", "")]
         + source.get("keywords", [])
     ).lower()
-    matches = sorted({word for word in source.get("keywords", []) if word.lower() in internal})
+    search_text = internal + " " + text
+    matches = sorted({word for word in source.get("keywords", []) if word.lower() in search_text})
     score = min(100, len(matches) * 12 + min(30, int(snapshot.get("stars", 0)) // 10000))
     if snapshot.get("archived"):
         score = max(0, score - 40)
@@ -209,7 +210,13 @@ def main() -> int:
         except (OSError, urllib.error.URLError, json.JSONDecodeError) as exc:
             failures.append({"source": source["full_name"], "error": str(exc)[:300]})
 
-    problems = validate_math_status(load_json(ROOT / "data" / "millennium_problems_unified.json"))
+    try:
+        problems = validate_math_status(
+            load_json(ROOT / "data" / "millennium_problems_unified.json")
+        )
+    except OSError as exc:
+        problems = []
+        failures.append({"source": "millennium_problems_unified.json", "error": str(exc)[:300]})
     claims = source_claims()
     report = {
         "generated_at": now(),
