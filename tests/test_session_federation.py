@@ -85,3 +85,25 @@ def test_import_rejects_missing_and_oversized_sources(tmp_path):
     source.write_bytes(b"x" * (5 * 1024 * 1024 + 1))
     with pytest.raises(ValueError, match="5 MiB"):
         manager.import_transcript(source)
+
+
+def test_repository_merge_discovers_only_conversation_transcripts(tmp_path):
+    transcript = tmp_path / "copilot-session.md"
+    transcript.write_text(
+        "User: Build a unified context.\nCopilot: I will preserve each source session.",
+        encoding="utf-8",
+    )
+    (tmp_path / "generated.md").write_text(
+        "Copilot coordinates workflows and stores useful knowledge.",
+        encoding="utf-8",
+    )
+
+    manager = SessionManager(tmp_path / "sessions")
+    assert manager.discover_transcripts(tmp_path) == [transcript]
+
+    merged = manager.merge_repository_sessions(tmp_path)
+
+    assert len(merged.messages) == 2
+    assert merged.source_session_ids
+    assert all(message.source_kind == "copilot" for message in merged.messages)
+    assert manager.get_latest_report().session_ids != [merged.session_id]

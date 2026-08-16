@@ -345,6 +345,74 @@ class SessionManager:
         self._persist(merged)
         return merged
 
+    def discover_transcripts(
+        self,
+        repository_dir: Path | str,
+        *,
+        extensions: tuple[str, ...] = (".json", ".jsonl", ".md", ".txt"),
+    ) -> list[Path]:
+        """Find likely human/agent conversation transcripts in a repository.
+
+        Discovery is deliberately conservative: generated documentation and
+        arbitrary repository text are ignored unless a file contains at least
+        two recognizable conversation roles or a structured ``messages`` list.
+        """
+        root = Path(repository_dir).resolve()
+        if not root.is_dir():
+            raise NotADirectoryError(root)
+        excluded = {".git", ".directive_platform", ".venv", "node_modules", "__pycache__"}
+        candidates: list[Path] = []
+        for path in root.rglob("*"):
+            if not path.is_file() or path.suffix.casefold() not in {
+                extension.casefold() for extension in extensions
+            }:
+                continue
+            if excluded.intersection(path.relative_to(root).parts):
+                continue
+            try:
+                if path.stat().st_size > 5 * 1024 * 1024:
+                    continue
+                text = path.read_text(encoding="utf-8")
+            except (OSError, UnicodeDecodeError):
+                continue
+            if self._looks_like_transcript(path, text):
+                candidates.append(path)
+        return sorted(candidates)
+
+    def merge_repository_sessions(
+        self,
+        repository_dir: Path | str,
+        *,
+        source_kind: str = "copilot",
+        directive_id: str = "repository",
+        participant_ids: list[str] | None = None,
+    ) -> CollaborationSession:
+        """Import and merge all recognizable Copilot/user transcripts in a repo.
+
+        The imported source sessions and their provenance are retained.  The
+        latest unified report is also generated from the source sessions,
+        while the returned merged session provides one chronological context.
+        """
+        paths = self.discover_transcripts(repository_dir)
+        if not paths:
+            raise ValueError(f"No conversation transcripts found in {Path(repository_dir)!s}.")
+        imported = [
+            self.import_transcript(
+                path,
+                source_kind=source_kind,
+                directive_id=directive_id,
+                participant_ids=participant_ids,
+            )
+            for path in paths
+        ]
+        merged = self.merge_sessions(
+            [session.session_id for session in imported],
+            directive_id=directive_id,
+            participant_ids=participant_ids,
+        )
+        self.unify_sessions([session.session_id for session in imported])
+        return merged
+
     # ------------------------------------------------------------------
     # Private helpers
     # ------------------------------------------------------------------
@@ -400,6 +468,29 @@ class SessionManager:
             return float(value)
         except (TypeError, ValueError):
             return None
+
+    @staticmethod
+    def _looks_like_transcript(path: Path, text: str) -> bool:
+        """Return whether *text* has a recognizable two-party conversation shape."""
+        if path.suffix.casefold() in {".json", ".jsonl"}:
+            try:
+                payload: Any
+                if path.suffix.casefold() == ".json":
+                    payload = json.loads(text)
+                    if isinstance(payload, dict):
+                        payload = payload.get("messages", [])
+                else:
+                    payload = [
+                        json.loads(line) for line in text.splitlines() if line.strip()
+                    ]
+                if isinstance(payload, list) and len(payload) >= 2:
+                    return all(isinstance(item, dict) and item.get("content") for item in payload)
+            except (json.JSONDecodeError, TypeError):
+                return False
+        role_pattern = re.compile(
+            r"(?im)^\s*(?:user|human|copilot|assistant|barrot)\s*:"
+        )
+        return len(set(match.group(0).strip().casefold() for match in role_pattern.finditer(text))) >= 2
 
     @classmethod
     def _read_transcript(cls, path: Path) -> list[dict[str, Any]]:
