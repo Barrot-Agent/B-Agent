@@ -34,6 +34,7 @@ import requests
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = os.environ.get("GITHUB_REPOSITORY", "Barrot-Agent/B-Agent")
+AUTO_CLOSE_LABELS = {"autogen", "digest", "noise"}
 
 
 def gh(*args):
@@ -44,7 +45,7 @@ def gh(*args):
 
 
 def get_issue(issue_number):
-    raw = gh("issue", "view", str(issue_number), "--json", "title,body,number,state")
+    raw = gh("issue", "view", str(issue_number), "--json", "title,body,number,state,labels")
     return json.loads(raw)
 
 
@@ -101,6 +102,13 @@ def resolve(issue_number):
 
     if issue["state"] != "OPEN":
         print("Issue is already closed - nothing to do.")
+        return
+    labels = {label["name"].lower() for label in issue.get("labels", [])}
+    if not labels & AUTO_CLOSE_LABELS:
+        print(
+            "Issue has no auto-close policy label "
+            f"({', '.join(sorted(AUTO_CLOSE_LABELS))}); leaving untouched."
+        )
         return
 
     workflow_name = extract_workflow_name(issue["title"])

@@ -1,0 +1,40 @@
+name: Dependency PR Auto-Merge
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  check_suite:
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Queue dependency PRs after required checks pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          prs=$(gh pr list --repo "$REPO" --state open --limit 100 \
+            --label dependencies --json number,author --jq \
+            '.[] | select(.author.login == "dependabot[bot]") | .number')
+          for pr in $prs; do
+            info=$(gh pr view "$pr" --repo "$REPO" --json mergeable,statusCheckRollup)
+            mergeable=$(jq -r '.mergeable' <<<"$info")
+            total=$(jq '[.statusCheckRollup[]?] | length' <<<"$info")
+            failed=$(jq '[.statusCheckRollup[]? | select(.conclusion != "SUCCESS")] | length' <<<"$info")
+            if [ "$mergeable" = "MERGEABLE" ] && [ "$total" -gt 0 ] && [ "$failed" -eq 0 ]; then
+              gh pr merge "$pr" --repo "$REPO" --squash --auto --delete-branch
+              echo "Enabled required-check auto-merge for dependency PR #$pr."
+            else
+              echo "PR #$pr is not ready (mergeable=$mergeable checks=$total failed=$failed)."
+            fi
+          done

@@ -1,0 +1,48 @@
+name: Stale Issues
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+      STALE_DAYS: ${{ vars.STALE_DAYS || 30 }}
+    steps:
+      - name: Warn and close inactive issues
+        shell: bash
+        run: |
+          set -euo pipefail
+          now=$(date +%s)
+          warning_days=$(( STALE_DAYS > 7 ? STALE_DAYS - 7 : 1 ))
+          gh issue list --repo "$REPO" --state open --limit 200 \
+            --json number,title,updatedAt,labels | jq -c '.[]' |
+          while read -r issue; do
+            number=$(jq -r '.number' <<<"$issue")
+            updated=$(jq -r '.updatedAt' <<<"$issue")
+            labels=$(jq -r '[.labels[].name | ascii_downcase] | join(",")' <<<"$issue")
+            case ",$labels," in
+              *,pinned,*|*,keep-open,*|*,no-stale,*) continue ;;
+            esac
+            updated_epoch=$(date -d "$updated" +%s)
+            age_days=$(( (now - updated_epoch) / 86400 ))
+            if [ "$age_days" -ge "$STALE_DAYS" ]; then
+              gh issue close "$number" --repo "$REPO" \
+                --comment "Closing after ${age_days} days without activity (stale policy: ${STALE_DAYS} days). Reopen if this is still relevant."
+            elif [ "$age_days" -ge "$warning_days" ]; then
+              marker="<!-- barrot-stale-warning -->"
+              comments=$(gh issue view "$number" --repo "$REPO" --json comments \
+                --jq "[.comments[].body | select(contains(\"$marker\"))] | length")
+              if [ "$comments" = "0" ]; then
+                gh issue comment "$number" --repo "$REPO" --body \
+                  "$marker"$'\n'"This issue has been inactive for ${age_days} days and will close after ${STALE_DAYS} days of inactivity. Comment or update it to keep it open."
+              fi
+            fi
+          done

@@ -85,13 +85,20 @@ jobs:
                 ASSIGNEE_ARGS+=(--assignee "$AUTO_ASSIGNEE")
               fi
 
-              gh issue create \
+              CREATED_URL=$(gh issue create \
                 --repo "$REPO" \
                 --title "$TITLE" \
                 --body "$BODY" \
-                "${ASSIGNEE_ARGS[@]}" \
-                2>/dev/null && echo "  ✅ Issue created." \
-                            || echo "  ⚠️  Issue creation failed."
+                "${ASSIGNEE_ARGS[@]}" 2>/dev/null || true)
+              if [ -n "$CREATED_URL" ]; then
+                CREATED_NUMBER="${CREATED_URL##*/}"
+                gh issue edit "$CREATED_NUMBER" --repo "$REPO" \
+                  --add-label "$LABEL" --add-label autogen \
+                  2>/dev/null || true
+                echo "  ✅ Issue created and labeled."
+              else
+                echo "  ⚠️  Issue creation failed."
+              fi
 
             done <<< "$FAILED_WORKFLOWS"
           fi
