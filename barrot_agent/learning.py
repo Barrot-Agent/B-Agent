@@ -83,6 +83,7 @@ class ExperienceLedger:
         return records
 
     def recent(self, limit: int = 20) -> list[Experience]:
+        """Return recent records; currently validates the complete ledger first."""
         if limit < 0:
             raise ValueError("limit must not be negative")
         return self.read()[-limit:] if limit else []
