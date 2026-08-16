@@ -528,6 +528,8 @@ class UnifiedReport:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "UnifiedReport":
+        if "report_id" not in data or "version" not in data:
+            raise KeyError("UnifiedReport requires report_id and version")
         return cls(**{key: data[key] for key in (
             "report_id", "version", "generated_at", "session_ids",
             "executive_summary", "knowledge_model", "agreements", "conflicts",

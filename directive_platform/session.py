@@ -121,6 +121,7 @@ class SessionManager:
         if session is None:
             raise ValueError(f"Session {session_id!r} not found.")
         analysis = SessionAnalysis(session_id=session.session_id, directive_id=session.directive_id)
+        marker_ids: dict[str, set[str]] = {field: set() for field in SessionAnalysis._FIELDS}
         buckets = {
             "directive": "objectives", "query": "objectives", "insight": "decisions",
             "response": "actions", "result": "outputs", "handoff": "dependencies",
@@ -150,8 +151,9 @@ class SessionManager:
             getattr(analysis, bucket).append(evidence)
             lowered = content.casefold()
             for marker, marker_bucket in markers.items():
-                if marker in lowered and evidence not in getattr(analysis, marker_bucket):
+                if marker in lowered and message.message_id not in marker_ids[marker_bucket]:
                     getattr(analysis, marker_bucket).append(dict(evidence))
+                    marker_ids[marker_bucket].add(message.message_id)
             analysis.normalized_terms[content.casefold()] = content
         self._persist_analysis(analysis)
         return analysis
@@ -251,7 +253,10 @@ class SessionManager:
             raise FileNotFoundError(path)
         size = path.stat().st_size
         if size > 5 * 1024 * 1024:
-            raise ValueError(f"Transcript exceeds the 5 MiB import limit ({size} bytes).")
+            raise ValueError(
+                f"Transcript exceeds the 5 MiB import limit "
+                f"({size} bytes, {size / (1024 * 1024):.2f} MiB)."
+            )
 
         records = self._read_transcript(path)
         session = CollaborationSession(
@@ -358,10 +363,11 @@ class SessionManager:
         latest = self._reports_dir / "unified.json"
         if latest.exists():
             try:
-                old_report = UnifiedReport.from_dict(json.loads(latest.read_text(encoding="utf-8")))
+                latest_text = latest.read_text(encoding="utf-8")
+                old_report = UnifiedReport.from_dict(json.loads(latest_text))
                 previous = history / f"v{old_report.version}.json"
                 if not previous.exists():
-                    previous.write_text(latest.read_text(encoding="utf-8"), encoding="utf-8")
+                    previous.write_text(latest_text, encoding="utf-8")
             except (json.JSONDecodeError, KeyError, TypeError):
                 pass
         (self._reports_dir / "unified.json").write_text(
