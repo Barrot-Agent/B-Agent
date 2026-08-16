@@ -38,7 +38,7 @@ class GitHubActivityExporter:
         self,
         endpoint: str,
         page: int,
-        extra_params: Dict[str, str] | None = None,
+        extra_params: Dict[str, Any] | None = None,
     ) -> List[Dict[str, Any]]:
         params = {"page": page, "per_page": 100}
         if extra_params:
@@ -57,7 +57,7 @@ class GitHubActivityExporter:
     def _all_pages(
         self,
         endpoint: str,
-        extra_params: Dict[str, str] | None = None,
+        extra_params: Dict[str, Any] | None = None,
     ) -> Iterable[Dict[str, Any]]:
         page = 1
         while True:

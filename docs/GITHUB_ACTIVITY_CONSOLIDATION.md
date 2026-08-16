@@ -17,6 +17,8 @@ python scripts/consolidate_github_activity.py \
 
 The token is optional for public repositories, but authenticated requests have
 higher GitHub API rate limits. A read-only token is sufficient.
+Very large repositories may still require multiple runs because GitHub can
+apply secondary rate limits to high-volume API access.
 
 The export includes commits, issues, pull requests, issue comments, pull-request
 reviews, and pull-request review comments. It is safe to regenerate because it
