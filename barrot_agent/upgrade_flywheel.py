@@ -286,7 +286,7 @@ class UpgradeFlywheel:
         import tempfile
 
         if platform_dir is None:
-            self._tmp_dir = tempfile.mkdtemp(prefix="flywheel_platform_")
+            self._tmp_dir: str | None = tempfile.mkdtemp(prefix="flywheel_platform_")
             self._platform_dir = Path(self._tmp_dir)
         else:
             self._tmp_dir = None
@@ -294,6 +294,16 @@ class UpgradeFlywheel:
 
         self._dry_run = dry_run
         self._agent_ids: list[str] = agent_ids or []
+
+    def __del__(self) -> None:
+        """Clean up the temporary platform directory, if one was created."""
+        if self._tmp_dir is not None:
+            import shutil
+
+            try:
+                shutil.rmtree(self._tmp_dir, ignore_errors=True)
+            except Exception:  # noqa: BLE001
+                pass
 
     # ------------------------------------------------------------------
     # Primary entry point
@@ -500,7 +510,7 @@ class UpgradeFlywheel:
             pass
         coverage_after = 1.0 - (len(reconfig.gaps) / total)
         checks.append(
-            f"{'✅' if coverage_after >= 0.0 else '❌'} "
+            f"{'✅' if coverage_after > 0.0 else '❌'} "
             f"Post-cycle capability coverage: {coverage_after:.1%}"
         )
 

@@ -22,9 +22,13 @@ from .smart_agent import (
     ToolResult,
 )
 from .upgrade_flywheel import (
+    ActionResult,
     FlywheelCycleResult,
     FlywheelReport,
+    ObservationResult,
+    ReasoningResult,
     UpgradeFlywheel,
+    VerificationResult,
 )
 
 __version__ = "2.0.0"
@@ -55,9 +59,13 @@ __all__ = [
     "ToolCall",
     "ToolResult",
     "SmartAgent",
+    "ActionResult",
     "FlywheelCycleResult",
     "FlywheelReport",
+    "ObservationResult",
+    "ReasoningResult",
     "UpgradeFlywheel",
+    "VerificationResult",
     "data_registry",
 ]
 

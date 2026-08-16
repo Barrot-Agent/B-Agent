@@ -125,7 +125,13 @@ class TestUpgradeFlywheelSmoke:
         fw = UpgradeFlywheel()
         report = fw.run(max_cycles=1)
 
-        assert report.cycles[0].verification.passed is True
+        verification = report.cycles[0].verification
+        assert isinstance(verification.passed, bool)
+        # Each check line must start with ✅ or ❌
+        for check in verification.checks:
+            assert check.startswith("✅") or check.startswith("❌")
+        # coverage_after is always in [0.0, 1.0]
+        assert 0.0 <= verification.coverage_after <= 1.0
 
     def test_max_cycles_zero_raises(self) -> None:
         fw = UpgradeFlywheel()
