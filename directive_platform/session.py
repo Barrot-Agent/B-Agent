@@ -17,7 +17,7 @@ from typing import Any, Iterable
 from .models import CollaborationSession, Message, SessionAnalysis, UnifiedReport
 
 _DEFAULT_SESSIONS_DIR = Path(".directive_platform") / "sessions"
-_TRANSCRIPT_ROLES = ("user", "human", "copilot", "assistant", "barrot")
+_TRANSCRIPT_ROLES = ("user", "human", "copilot", "assistant")
 
 
 class SessionManager:
@@ -312,11 +312,11 @@ class SessionManager:
             participant_ids=participant_ids
             if participant_ids is not None
             else sorted({pid for s in source_sessions for pid in s.participant_ids}),
-            source_session_ids=[
+            source_session_ids=list(dict.fromkeys(
                 source_id
                 for source in source_sessions
                 for source_id in (source.source_session_ids or [source.session_id])
-            ],
+            )),
         )
         seen: set[tuple[str, str, float | None]] = set()
         candidates = []
