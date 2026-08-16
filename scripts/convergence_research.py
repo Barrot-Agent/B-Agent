@@ -60,12 +60,15 @@ def repo_text() -> str:
 
 
 def github_snapshot(full_name: str, token: str = "") -> dict[str, Any]:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "B-Agent-convergence-research",
+    }
+    if token:
+        headers["Authorization"] = "Bearer " + token
     request = urllib.request.Request(
         f"https://api.github.com/repos/{full_name}",
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "B-Agent-convergence-research",
-        },
+        headers=headers,
     )
     with urllib.request.urlopen(request, timeout=20) as response:
         data = json.load(response)
