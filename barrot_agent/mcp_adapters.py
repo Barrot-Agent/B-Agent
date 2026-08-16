@@ -282,20 +282,6 @@ class LongevityMCPAdapter(BaseMCPAdapter):
         return self._service.supported_tools()
 
     def call_tool(self, tool_name: str, **kwargs: Any) -> AdapterResult:
-        if tool_name in {"apply_protocol", "write_dataset", "store_participant"}:
-            return AdapterResult(
-                success=False,
-                error="Write operation blocked: human approval required.",
-                tool_name=tool_name,
-                server_id=self.server_id,
-            )
-        if not self.validate_tool(tool_name):
-            return AdapterResult(
-                success=False,
-                error=f"Unknown tool '{tool_name}'.",
-                tool_name=tool_name,
-                server_id=self.server_id,
-            )
         return self._wrap_call(
             tool_name,
             lambda **call_kwargs: self._service.call_tool(tool_name, **call_kwargs),
