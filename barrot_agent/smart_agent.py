@@ -635,7 +635,7 @@ class _BuiltinTools:
 
         # ---- apply: invoke the MCP integration pipeline (dry_run=True) ----
         try:
-            from barrot_agent.mcp_integration import MCPIntegration, IntegrationConfig
+            from barrot_agent.mcp_integration import IntegrationConfig, MCPIntegration
 
             cfg = IntegrationConfig(dry_run=True)
             integration = MCPIntegration(cfg)
