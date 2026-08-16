@@ -17,6 +17,8 @@ from .mcp_targets import CAPABILITY_TARGETS
 from .reconfiguration import build_reconfiguration_report
 from .smart_agent import SmartAgent
 
+_CONVERGENCE_COVERAGE_THRESHOLD = 0.999999
+
 
 @dataclass
 class ObservationResult:
@@ -107,13 +109,22 @@ class UpgradeFlywheel:
         self._agent_ids = agent_ids or ["barrot-agent", "smart-agent", "refinement-agent"]
         self._platform = DirectivePlatform(platform_dir=self._platform_dir)
         self._smart_agent = SmartAgent()
+        self._closed = False
 
-    def __del__(self) -> None:
+    def __enter__(self) -> "UpgradeFlywheel":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        self.close()
+
+    def close(self) -> None:
+        if self._closed:
+            return
+        self._closed = True
         if self._tmp_dir is not None:
-            try:
-                shutil.rmtree(self._tmp_dir, ignore_errors=True)
-            except Exception:
-                pass
+            shutil.rmtree(self._tmp_dir, ignore_errors=True)
+        self._platform = None
+        self._smart_agent = None
 
     def run(self, max_cycles: int = 3) -> FlywheelReport:
         report = FlywheelReport(goal=self._goal, max_cycles=max_cycles)
@@ -127,7 +138,10 @@ class UpgradeFlywheel:
             cycle.ended_at = time.time()
             report.cycles.append(cycle)
 
-            if cycle.observation.capability_gaps == 0 and cycle.verification.coverage_after >= 1.0:
+            if (
+                cycle.observation.capability_gaps == 0
+                and cycle.verification.coverage_after >= _CONVERGENCE_COVERAGE_THRESHOLD
+            ):
                 report.converged = True
                 break
 
@@ -136,7 +150,7 @@ class UpgradeFlywheel:
     def _observe(self) -> ObservationResult:
         events = list(self._smart_agent.run(self._goal))
         infra = build_reconfiguration_report(
-            dry_run=True,
+            dry_run=self._dry_run,
             registry_path=self._platform_dir / "mcp_registry.json",
         )
         return ObservationResult(
@@ -196,11 +210,11 @@ class UpgradeFlywheel:
 
     def _verify(self, observation: ObservationResult, action: ActionResult) -> VerificationResult:
         infra = build_reconfiguration_report(
-            dry_run=True,
+            dry_run=self._dry_run,
             registry_path=self._platform_dir / "mcp_registry.json",
         )
         total_targets = max(1, len(CAPABILITY_TARGETS))
-        coverage_after = (total_targets - len(infra.gaps)) / total_targets
+        coverage_after = max(0.0, min(1.0, (total_targets - len(infra.gaps)) / total_targets))
         checks = [
             f"{'✅' if observation.smart_agent_events > 0 else '❌'} SmartAgent emitted events.",
             f"{'✅' if len(action.applied_improvements) > 0 else '❌'} Improvements were selected.",
