@@ -315,7 +315,6 @@ class SessionManager:
         candidates = []
         for source in source_sessions:
             for message in source.messages:
-                source_id = message.source_session_id or source.session_id
                 key = (message.sender_id, message.content, message.timestamp)
                 if key in seen:
                     continue

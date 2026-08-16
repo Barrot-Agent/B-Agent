@@ -33,6 +33,24 @@ Create a new chronological, de-duplicated session from existing session IDs.
 Source sessions remain unchanged, and merged messages retain their origin in
 `source_session_id` and `source_kind`.
 
+### `analyze_session(session_id)`
+
+Extract structured objectives, decisions, actions, outputs, dependencies,
+assumptions, conflicts, and unresolved items with message-level provenance.
+
+### `unify_sessions(session_ids=None)`
+
+Corroborate selected sessions (or all sessions), preserve disagreements, and
+persist a versioned unified report with evidence and recommendations.
+
+### `get_latest_report()`
+
+Return the latest persisted unified report, or `None` when no report exists.
+
+### `list_reports()`
+
+Return the latest report and retained historical report versions in order.
+
 ---
 
 ## barrot_agent.models.ModelManager
