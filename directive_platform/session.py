@@ -8,8 +8,8 @@ JSON files under ``.directive_platform/sessions/``.
 
 from __future__ import annotations
 
-import json
 import hashlib
+import json
 import re
 import time
 from pathlib import Path
@@ -418,7 +418,7 @@ class SessionManager:
                 continue
             try:
                 text = path.read_text(encoding="utf-8")
-                records = self._read_transcript(path)
+                records = self._read_transcript(path, text=text)
             except (OSError, UnicodeDecodeError, ValueError, json.JSONDecodeError) as exc:
                 excluded.append({"path": relative, "reason": f"malformed: {exc}"})
                 continue
@@ -505,7 +505,7 @@ class SessionManager:
         while the returned merged session provides one chronological context.
         """
         inventory = self.inventory_repository_sessions(repository_dir)
-        paths = [Path(repository_dir) / item["path"] for item in inventory["included"]]
+        paths = [Path(inventory["repository"]) / item["path"] for item in inventory["included"]]
         if not paths:
             raise ValueError(f"No conversation transcripts found in {Path(repository_dir)!s}.")
         imported = [
@@ -602,13 +602,13 @@ class SessionManager:
             except (json.JSONDecodeError, TypeError):
                 return False
         role_pattern = re.compile(
-            rf"(?im)^\s*(?:{'|'.join(_TRANSCRIPT_ROLES)})\s*:"
+            rf"(?im)^\s*(?:{'|'.join(re.escape(role) for role in _TRANSCRIPT_ROLES)})\s*:"
         )
         return len(set(match.group(0).strip().casefold() for match in role_pattern.finditer(text))) >= 2
 
     @classmethod
-    def _read_transcript(cls, path: Path) -> list[dict[str, Any]]:
-        text = path.read_text(encoding="utf-8")
+    def _read_transcript(cls, path: Path, *, text: str | None = None) -> list[dict[str, Any]]:
+        text = text if text is not None else path.read_text(encoding="utf-8")
         if path.suffix.lower() == ".json":
             payload = json.loads(text)
             if isinstance(payload, dict):
@@ -636,7 +636,7 @@ class SessionManager:
             return records
 
         records = []
-        pattern = re.compile(r"^\s*(?P<sender>[^:\n]{1,40}?)\s*:\s*(?P<content>.+?)\s*$")
+        pattern = re.compile(r"^\s*(?P<sender>[^:\n]{1,40}?)\s*:\s*(?P<content>.+)\s*$")
         for line in text.splitlines():
             match = pattern.match(line)
             if match:
