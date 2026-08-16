@@ -62,6 +62,9 @@ streamlit run app.py
 
 Canonical JSON assets live in [`data/`](data/) and should be accessed through [`data/registry.py`](data/registry.py), not ad-hoc file loads.
 
+To consolidate repository-visible GitHub activity into one provenance-aware
+document, see [`docs/GITHUB_ACTIVITY_CONSOLIDATION.md`](docs/GITHUB_ACTIVITY_CONSOLIDATION.md).
+
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
 
