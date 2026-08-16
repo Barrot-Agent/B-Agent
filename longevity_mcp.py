@@ -52,6 +52,8 @@ class LongevityMCPServer:
         "generate_mmi_payload",
     )
     _WRITE_TOOLS = {"apply_protocol", "write_dataset", "store_participant"}
+    _PII_FIELDS = {"name", "email", "phone", "address", "contact", "dob", "ssn", "ip_address"}
+    _BASE_CONFIDENCE = 0.35
 
     def __init__(
         self,
@@ -115,7 +117,7 @@ class LongevityMCPServer:
         biomarker_measurements: Optional[Dict[str, List[Dict[str, Any]]]] = None,
         source_citations: Optional[Iterable[str]] = None,
     ) -> Dict[str, Any]:
-        safe_trials = self._safe_records(trial_records)
+        safe_trials, dropped = self._filter_records(trial_records)
         payload = self._ingestion.build_unified_payload(
             paper_text,
             safe_trials,
@@ -127,13 +129,14 @@ class LongevityMCPServer:
             source_citations=list(source_citations or self._source_citations),
             cohort_size=len(safe_trials),
             confidence=self._confidence(payload),
+            filtered_records=dropped,
         )
 
     def _generate_mmi_payload(self, **kwargs: Any) -> Dict[str, Any]:
         return self._ingest_research(**kwargs)
 
     def _compare_treatment_arms(self, trial_records: Iterable[Mapping[str, Any]]) -> Dict[str, Any]:
-        records = self._safe_records(trial_records)
+        records, dropped = self._filter_records(trial_records)
         cohort = ParticipantCohort(phase_number=0, total_participants=len(records))
         for row in records:
             baseline = float(row.get("baseline_epigenetic_age", 0))
@@ -147,6 +150,7 @@ class LongevityMCPServer:
         return self._envelope(
             data={"by_arm": cohort.compare_treatment_arms()},
             cohort_size=len(records),
+            filtered_records=dropped,
         )
 
     def _track_biomarker(
@@ -172,7 +176,7 @@ class LongevityMCPServer:
         trial_records: Iterable[Mapping[str, Any]] = (),
         safety_events: Iterable[Mapping[str, Any]] = (),
     ) -> Dict[str, Any]:
-        records = self._safe_records(trial_records)
+        records, dropped = self._filter_records(trial_records)
         cohort = ParticipantCohort(phase_number=0, total_participants=len(records))
         for row in records:
             cohort.add_participant_outcome(
@@ -193,11 +197,19 @@ class LongevityMCPServer:
         return self._envelope(
             data={"efficacy_probability": EfficacyAnalyzer(cohort).estimate_success_probability(), "discoveries": discoveries},
             cohort_size=len(records),
+            filtered_records=dropped,
             safety_warnings=["Signals are research outputs, not clinical guidance."],
         )
 
     def _safe_records(self, records: Iterable[Mapping[str, Any]]) -> List[Dict[str, Any]]:
-        return [self._redact(dict(row)) for row in records if self._consented(row)]
+        return self._filter_records(records)[0]
+
+    def _filter_records(
+        self, records: Iterable[Mapping[str, Any]]
+    ) -> tuple[List[Dict[str, Any]], int]:
+        rows = list(records)
+        safe = [self._redact(dict(row)) for row in rows if self._consented(row)]
+        return safe, len(rows) - len(safe)
 
     @staticmethod
     def _consented(record: Mapping[str, Any]) -> bool:
@@ -211,7 +223,7 @@ class LongevityMCPServer:
         if isinstance(value, dict):
             result = {}
             for key, item in value.items():
-                if key.lower() in {"name", "email", "phone", "address", "contact"}:
+                if key.lower() in self._PII_FIELDS:
                     continue
                 if key == "participant_id":
                     result[key] = self._pseudonymize(str(item))
@@ -234,7 +246,8 @@ class LongevityMCPServer:
     def _confidence(payload: Mapping[str, Any]) -> float:
         mechanisms = len(payload.get("aging_mechanisms", []))
         outcomes = len(payload.get("trial_outcomes", []))
-        return round(min(1.0, 0.35 + mechanisms * 0.1 + outcomes * 0.05), 2)
+        # Conservative heuristic: mechanisms provide stronger evidence than rows.
+        return round(min(1.0, LongevityMCPServer._BASE_CONFIDENCE + mechanisms * 0.1 + outcomes * 0.05), 2)
 
     def _envelope(
         self,
@@ -243,6 +256,7 @@ class LongevityMCPServer:
         source_citations: Optional[Iterable[str]] = None,
         confidence: float = 0.5,
         cohort_size: int = 0,
+        filtered_records: int = 0,
         safety_warnings: Optional[Iterable[str]] = None,
     ) -> Dict[str, Any]:
         return {
@@ -252,6 +266,7 @@ class LongevityMCPServer:
                 "confidence": confidence,
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "cohort_size": cohort_size,
+                "filtered_records": filtered_records,
                 "safety_warnings": list(safety_warnings or []),
                 "read_only": True,
             },
