@@ -22,6 +22,15 @@ from longevity_micro_ingestion import LongevityMicroIngestion
 from trial_tracker import DiscoveryExtractor, EfficacyAnalyzer, ParticipantCohort, SafetyMonitor
 
 
+def _load_ingestion_config() -> Dict[str, Any]:
+    """Return the config text without exposing a caller-controlled path."""
+    path = Path(__file__).with_name("longevity-ingestion-config.yaml")
+    try:
+        return {"raw": path.read_text(encoding="utf-8")}
+    except FileNotFoundError:
+        return {"raw": "", "error": "ingestion configuration unavailable"}
+
+
 class LongevityMCPServer:
     """In-process, read-only MCP server for longevity research analysis."""
 
@@ -31,11 +40,7 @@ class LongevityMCPServer:
         "longevity_unified": load_longevity_unified,
         "biomarker_tracking": load_biomarker_tracking,
         "reprogramming_protocols": load_reprogramming_protocols,
-        "ingestion_config": lambda: {
-            "raw": (Path(__file__).with_name("longevity-ingestion-config.yaml")).read_text(
-                encoding="utf-8"
-            )
-        },
+        "ingestion_config": _load_ingestion_config,
     }
     _TOOLS = (
         "search_papers",
@@ -46,6 +51,7 @@ class LongevityMCPServer:
         "detect_signals",
         "generate_mmi_payload",
     )
+    _WRITE_TOOLS = {"apply_protocol", "write_dataset", "store_participant"}
 
     def __init__(
         self,
@@ -76,7 +82,7 @@ class LongevityMCPServer:
         return list(self._TOOLS)
 
     def call_tool(self, tool_name: str, **kwargs: Any) -> Dict[str, Any]:
-        if tool_name in {"apply_protocol", "write_dataset", "store_participant"}:
+        if tool_name in self._WRITE_TOOLS:
             raise PermissionError("Longevity MCP is read-only; human approval is required.")
         if tool_name not in self._TOOLS:
             raise ValueError(f"Unknown longevity tool: {tool_name}")
