@@ -62,6 +62,20 @@ streamlit run app.py
 
 Canonical JSON assets live in [`data/`](data/) and should be accessed through [`data/registry.py`](data/registry.py), not ad-hoc file loads.
 
+### 🔄 Upgrade Flywheel
+
+The `UpgradeFlywheel` orchestrates iterative **Observe → Reason → Act → Verify**
+cycles across `SmartAgent`, `DirectivePlatform`, and infrastructure
+reconfiguration reporting.
+
+```python
+from barrot_agent import UpgradeFlywheel
+
+flywheel = UpgradeFlywheel(dry_run=True)
+report = flywheel.run(max_cycles=2)
+print(report.cycles[0].summary())
+```
+
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
 
@@ -120,6 +134,7 @@ Barrot-Agent/
 - **💰 Advanced Monetization** - Revolutionary automation-first revenue generation protocols
 - **✨ Transformative Insights** - Acquire asynchronous data, detect convergence, generate epiphanies, realize transformative insights in real-time
 - **🔀 Merge Conflict Resolution** - Automated conflict detection, analysis, and resolution with continuous learning
+- **🔄 Upgrade Flywheel** - Iterative Observe → Reason → Act → Verify refinement orchestration
 
 ### Two Distinct Systems
 
