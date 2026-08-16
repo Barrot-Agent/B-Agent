@@ -7,7 +7,7 @@ from __future__ import annotations
 import json
 import tempfile
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -287,7 +287,6 @@ def test_approval_env_token_invalid(monkeypatch):
 
 
 def test_approval_env_token_valid(monkeypatch):
-    import hashlib
     import hmac
 
     secret = "testsecret"
