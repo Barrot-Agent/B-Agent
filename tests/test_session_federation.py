@@ -107,3 +107,48 @@ def test_repository_merge_discovers_only_conversation_transcripts(tmp_path):
     assert merged.source_session_ids
     assert all(message.source_kind == "copilot" for message in merged.messages)
     assert manager.get_latest_report().session_ids != [merged.session_id]
+
+
+def test_inventory_reports_scope_validation_duplicates_and_session_metadata(tmp_path):
+    transcript = tmp_path / "session.json"
+    transcript.write_text(
+        json.dumps({
+            "session_id": "session-1",
+            "directive_id": "build",
+            "status": "completed",
+            "started_at": 10,
+            "ended_at": 20,
+            "messages": [
+                {"sender_id": "human", "content": "Plan"},
+                {"sender_id": "copilot", "content": "Done"},
+            ],
+        }),
+        encoding="utf-8",
+    )
+    (tmp_path / "duplicate.json").write_text(transcript.read_text(encoding="utf-8"), encoding="utf-8")
+    (tmp_path / "notes.md").write_text("ordinary project notes", encoding="utf-8")
+    (tmp_path / ".git").mkdir()
+    (tmp_path / ".git" / "hidden.md").write_text("User: no\nCopilot: no", encoding="utf-8")
+
+    inventory = SessionManager(tmp_path / "sessions").inventory_repository_sessions(tmp_path)
+
+    assert inventory["included"][0]["source_session_id"] == "session-1"
+    assert inventory["included"][0]["participants"] == ["copilot", "human"]
+    reasons = {item["reason"] for item in inventory["excluded"]}
+    assert {"duplicate", "unrelated", "excluded_path"} <= reasons
+
+
+def test_repository_merge_publishes_reviewable_audit_without_deleting_sources(tmp_path):
+    transcript = tmp_path / "copilot.md"
+    transcript.write_text("User: Plan\nCopilot: Decision: proceed", encoding="utf-8")
+    manager = SessionManager(tmp_path / "sessions")
+
+    merged = manager.merge_repository_sessions(tmp_path)
+    audit_path = tmp_path / "reports" / "session-audit.json"
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+
+    assert audit["approval_required"] is True
+    assert audit["approved"] is False
+    assert audit["merged_session_id"] == merged.session_id
+    assert audit["report_version"] == 1
+    assert transcript.exists()

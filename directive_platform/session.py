@@ -9,6 +9,7 @@ JSON files under ``.directive_platform/sessions/``.
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import time
 from pathlib import Path
@@ -379,6 +380,116 @@ class SessionManager:
                 candidates.append(path)
         return sorted(candidates)
 
+    def inventory_repository_sessions(
+        self,
+        repository_dir: Path | str,
+        *,
+        extensions: tuple[str, ...] = (".json", ".jsonl", ".md", ".txt"),
+        max_bytes: int = 5 * 1024 * 1024,
+    ) -> dict[str, Any]:
+        """Create a read-only inventory of candidate session transcripts.
+
+        The inventory is intentionally separate from importing: malformed,
+        oversized, duplicate, and unrelated files are reported and never
+        modified.  Callers can review this result before invoking a merge.
+        """
+        root = Path(repository_dir).resolve()
+        if not root.is_dir():
+            raise NotADirectoryError(root)
+        excluded_parts = {".git", ".directive_platform", ".venv", "node_modules", "__pycache__"}
+        allowed = {extension.casefold() for extension in extensions}
+        included: list[dict[str, Any]] = []
+        excluded: list[dict[str, Any]] = []
+        fingerprints: dict[str, str] = {}
+        for path in sorted(root.rglob("*")):
+            relative = str(path.relative_to(root))
+            if not path.is_file() or path.suffix.casefold() not in allowed:
+                continue
+            if excluded_parts.intersection(path.relative_to(root).parts):
+                excluded.append({"path": relative, "reason": "excluded_path"})
+                continue
+            try:
+                size = path.stat().st_size
+            except OSError as exc:
+                excluded.append({"path": relative, "reason": f"stat_error: {exc}"})
+                continue
+            if size > max_bytes:
+                excluded.append({"path": relative, "reason": "oversized"})
+                continue
+            try:
+                text = path.read_text(encoding="utf-8")
+                records = self._read_transcript(path)
+            except (OSError, UnicodeDecodeError, ValueError, json.JSONDecodeError) as exc:
+                excluded.append({"path": relative, "reason": f"malformed: {exc}"})
+                continue
+            if not self._looks_like_transcript(path, text):
+                excluded.append({"path": relative, "reason": "unrelated"})
+                continue
+            fingerprint = hashlib.sha256(text.encode("utf-8")).hexdigest()
+            if fingerprint in fingerprints:
+                excluded.append({
+                    "path": relative,
+                    "reason": "duplicate",
+                    "duplicate_of": fingerprints[fingerprint],
+                })
+                continue
+            fingerprints[fingerprint] = relative
+            payload = {}
+            if path.suffix.casefold() == ".json":
+                try:
+                    payload = json.loads(text)
+                except json.JSONDecodeError:
+                    payload = {}
+            source_session_id = (
+                payload.get("session_id", path.stem)
+                if isinstance(payload, dict) else path.stem
+            )
+            participants = sorted({
+                str(record.get("sender_id") or record.get("sender_name") or "external")
+                for record in records
+            })
+            included.append({
+                "path": relative,
+                "source_session_id": str(source_session_id),
+                "format": path.suffix.casefold().lstrip("."),
+                "size_bytes": size,
+                "message_count": len(records),
+                "participants": participants,
+                "directive_id": str(payload.get("directive_id", "repository"))
+                if isinstance(payload, dict) else "repository",
+                "status": str(payload.get("status", "unknown"))
+                if isinstance(payload, dict) else "unknown",
+                "started_at": payload.get("started_at") if isinstance(payload, dict) else None,
+                "ended_at": payload.get("ended_at") if isinstance(payload, dict) else None,
+            })
+        return {
+            "repository": str(root),
+            "extensions": sorted(allowed),
+            "max_bytes": max_bytes,
+            "included": included,
+            "excluded": excluded,
+            "approval_required": True,
+            "approved": False,
+        }
+
+    def write_session_audit(
+        self,
+        inventory: dict[str, Any],
+        *,
+        report: UnifiedReport | None = None,
+        merged_session: CollaborationSession | None = None,
+        destination: Path | str | None = None,
+    ) -> Path:
+        """Persist an auditable inventory and optional merge outcome."""
+        audit = dict(inventory)
+        audit["report_path"] = str(self._reports_dir / "unified.json") if report else None
+        audit["merged_session_id"] = merged_session.session_id if merged_session else None
+        audit["report_version"] = report.version if report else None
+        destination_path = Path(destination) if destination else self._reports_dir / "session-audit.json"
+        destination_path.parent.mkdir(parents=True, exist_ok=True)
+        destination_path.write_text(json.dumps(audit, indent=2), encoding="utf-8")
+        return destination_path
+
     def merge_repository_sessions(
         self,
         repository_dir: Path | str,
@@ -393,7 +504,8 @@ class SessionManager:
         latest unified report is also generated from the source sessions,
         while the returned merged session provides one chronological context.
         """
-        paths = self.discover_transcripts(repository_dir)
+        inventory = self.inventory_repository_sessions(repository_dir)
+        paths = [Path(repository_dir) / item["path"] for item in inventory["included"]]
         if not paths:
             raise ValueError(f"No conversation transcripts found in {Path(repository_dir)!s}.")
         imported = [
@@ -410,7 +522,8 @@ class SessionManager:
             directive_id=directive_id,
             participant_ids=participant_ids,
         )
-        self.unify_sessions([session.session_id for session in imported])
+        report = self.unify_sessions([session.session_id for session in imported])
+        self.write_session_audit(inventory, report=report, merged_session=merged)
         return merged
 
     # ------------------------------------------------------------------
