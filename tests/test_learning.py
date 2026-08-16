@@ -40,6 +40,7 @@ def test_summary_and_comparison_require_scored_evidence(tmp_path):
     assert comparison["score_delta"] == pytest.approx(0.3)
     assert comparison["eligible"] is True
     assert ledger.compare(baseline, [Experience("task", True)], 0)["eligible"] is False
+    assert ledger.compare([], candidate, 0)["eligible"] is False
 
 
 def test_rejects_invalid_scores_and_corrupt_records(tmp_path):
