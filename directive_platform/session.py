@@ -12,7 +12,7 @@ import json
 import re
 import time
 from pathlib import Path
-from typing import Iterable, Any
+from typing import Any, Iterable
 
 from .models import CollaborationSession, Message
 
@@ -138,6 +138,7 @@ class SessionManager:
         session = CollaborationSession(
             directive_id=directive_id,
             participant_ids=participant_ids or [],
+            source_session_ids=[path.stem],
         )
         for record in records:
             content = str(record.get("content", "")).strip()
@@ -186,6 +187,11 @@ class SessionManager:
             participant_ids=participant_ids
             if participant_ids is not None
             else sorted({pid for s in source_sessions for pid in s.participant_ids}),
+            source_session_ids=[
+                source_id
+                for source in source_sessions
+                for source_id in (source.source_session_ids or [source.session_id])
+            ],
         )
         seen: set[tuple[str, str, str, float]] = set()
         candidates = []
@@ -253,9 +259,7 @@ class SessionManager:
             return records
 
         records = []
-        pattern = re.compile(
-            r"^\s*(?P<sender>[A-Za-z][\w -]{0,39})\s*:\s*(?P<content>.+?)\s*$"
-        )
+        pattern = re.compile(r"^\s*(?P<sender>[^:\d\n][^:\n]{0,39})\s*:\s*(?P<content>.+?)\s*$")
         for line in text.splitlines():
             match = pattern.match(line)
             if match:

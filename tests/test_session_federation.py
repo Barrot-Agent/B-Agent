@@ -31,6 +31,7 @@ def test_import_json_transcript_preserves_provenance(tmp_path):
     ]
     assert all(message.source_kind == "copilot" for message in session.messages)
     assert all(message.source_session_id == "copilot" for message in session.messages)
+    assert session.source_session_ids == ["copilot"]
 
 
 def test_merge_sessions_is_ordered_deduplicated_and_non_destructive(tmp_path):
@@ -71,6 +72,7 @@ def test_merge_sessions_is_ordered_deduplicated_and_non_destructive(tmp_path):
     assert [message.content for message in merged.messages] == ["same", "later"]
     assert merged.messages[0].source_session_id == first.session_id
     assert merged.messages[1].source_session_id == second.session_id
+    assert merged.source_session_ids == [first.session_id, second.session_id]
     assert len(manager.get_session(first.session_id).messages) == 1
 
 

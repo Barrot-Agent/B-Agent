@@ -385,6 +385,7 @@ class CollaborationSession:
         status: str = "active",
         started_at: float | None = None,
         ended_at: float | None = None,
+        source_session_ids: list[str] | None = None,
     ) -> None:
         self.session_id = session_id or str(uuid.uuid4())[:8]
         self.directive_id = directive_id
@@ -393,6 +394,7 @@ class CollaborationSession:
         self.status = status
         self.started_at = started_at or time.time()
         self.ended_at = ended_at
+        self.source_session_ids = source_session_ids or []
 
     # ------------------------------------------------------------------
 
@@ -405,6 +407,7 @@ class CollaborationSession:
             "status": self.status,
             "started_at": self.started_at,
             "ended_at": self.ended_at,
+            "source_session_ids": self.source_session_ids,
         }
 
     @classmethod
@@ -418,6 +421,7 @@ class CollaborationSession:
             status=data.get("status", "active"),
             started_at=data.get("started_at"),
             ended_at=data.get("ended_at"),
+            source_session_ids=data.get("source_session_ids", []),
         )
 
     def __repr__(self) -> str:
