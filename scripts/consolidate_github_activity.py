@@ -34,10 +34,18 @@ class GitHubActivityExporter:
         if token:
             self.session.headers["Authorization"] = "Bearer " + self.token
 
-    def _get_page(self, endpoint: str, page: int) -> List[Dict[str, Any]]:
+    def _get_page(
+        self,
+        endpoint: str,
+        page: int,
+        extra_params: Dict[str, str] | None = None,
+    ) -> List[Dict[str, Any]]:
+        params = {"page": page, "per_page": 100}
+        if extra_params:
+            params.update(extra_params)
         response = self.session.get(
             f"{API_ROOT}/repos/{self.repository}/{endpoint}",
-            params={"page": page, "per_page": 100},
+            params=params,
             timeout=TIMEOUT,
         )
         response.raise_for_status()
@@ -46,10 +54,14 @@ class GitHubActivityExporter:
             raise RuntimeError(f"GitHub returned an unexpected response for {endpoint}")
         return data
 
-    def _all_pages(self, endpoint: str) -> Iterable[Dict[str, Any]]:
+    def _all_pages(
+        self,
+        endpoint: str,
+        extra_params: Dict[str, str] | None = None,
+    ) -> Iterable[Dict[str, Any]]:
         page = 1
         while True:
-            records = self._get_page(endpoint, page)
+            records = self._get_page(endpoint, page, extra_params)
             yield from records
             if len(records) < 100:
                 return
@@ -104,7 +116,7 @@ class GitHubActivityExporter:
             )
 
         pulls: List[Dict[str, Any]] = []
-        for pull in self._all_pages("pulls?state=all"):
+        for pull in self._all_pages("pulls", {"state": "all"}):
             pulls.append(pull)
             records.append(
                 self._record(
@@ -119,7 +131,7 @@ class GitHubActivityExporter:
                 )
             )
 
-        for issue in self._all_pages("issues?state=all"):
+        for issue in self._all_pages("issues", {"state": "all"}):
             if issue.get("pull_request"):
                 continue
             records.append(
