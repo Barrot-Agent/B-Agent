@@ -41,6 +41,7 @@ from barrot_agent.mcp_sandbox import MCPSandbox
 from barrot_agent.mcp_scheduler import MCPScheduler, SchedulerConfig
 from barrot_agent.mcp_scorer import MCPScorer
 from barrot_agent.mcp_targets import CAPABILITY_TARGETS, COMPATIBILITY_REQUIREMENTS
+from barrot_agent.knowledge_graph_builder import run_background as _start_kg_builder
 
 logger = logging.getLogger(__name__)
 
@@ -133,6 +134,11 @@ class MCPIntegration:
             "sandbox_passed": 0,
             "promoted": 0,
         }
+
+        # ---- Background: Knowledge Graph ----
+        # Start building the capability-gap knowledge graph in a daemon thread
+        # so it progresses concurrently while the rest of the pipeline runs.
+        _start_kg_builder()
 
         # ---- Step 2: Discovery ----
         logger.info("Pipeline: starting discovery")
