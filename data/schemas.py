@@ -13,11 +13,7 @@ from typing import Any, Dict, List, Optional
 try:
     from typing import NotRequired, TypedDict
 except ImportError:
-    try:
-        from typing_extensions import NotRequired, TypedDict  # Python < 3.11
-    except ImportError:
-        from typing_extensions import TypedDict  # type: ignore[assignment]
-        NotRequired = Optional  # type: ignore[misc,assignment]
+    from typing_extensions import NotRequired, TypedDict  # Python < 3.11
 
 
 # ---------------------------------------------------------------------------

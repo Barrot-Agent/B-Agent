@@ -852,7 +852,6 @@ class DependencyMicroIngestion:
             if not (isinstance(domain_cfg, dict) and domain_cfg.get("enabled")):
                 continue
             print(f"\n🔬 Dispatching research domain: {domain_name}")
-            source_config = domain_cfg.get("source_config", "")
             if domain_name == "longevity_research":
                 try:
                     from longevity_micro_ingestion import LongevityMicroIngestion
