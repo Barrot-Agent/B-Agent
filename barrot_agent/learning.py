@@ -83,7 +83,7 @@ class ExperienceLedger:
         return records
 
     def recent(self, limit: int = 20) -> list[Experience]:
-        """Return recent records; currently validates the complete ledger first."""
+        """Return recent records after validating the complete ledger (O(n) read)."""
         if limit < 0:
             raise ValueError("limit must not be negative")
         return self.read()[-limit:] if limit else []
@@ -112,8 +112,10 @@ class ExperienceLedger:
         """
 
         minimum_delta = float(minimum_delta)
-        if not math.isfinite(minimum_delta) or minimum_delta < 0:
-            raise ValueError("minimum_delta must be a finite, non-negative number")
+        if not math.isfinite(minimum_delta):
+            raise ValueError("minimum_delta must be finite")
+        if minimum_delta < 0:
+            raise ValueError("minimum_delta must be non-negative")
         baseline_summary = self.summarize(baseline)
         candidate_summary = self.summarize(candidate)
         baseline_score = baseline_summary["mean_score"]
