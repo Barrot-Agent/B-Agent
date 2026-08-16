@@ -145,7 +145,8 @@ class SessionManager:
                 "confidence": "high" if message.source_kind is None else "medium",
                 "message_id": message.message_id,
             }
-            bucket = buckets.get(message.message_type, "outputs")
+            message_type = getattr(message.message_type, "value", message.message_type)
+            bucket = buckets.get(str(message_type).casefold(), "outputs")
             getattr(analysis, bucket).append(evidence)
             lowered = content.casefold()
             for marker, marker_bucket in markers.items():
@@ -322,7 +323,7 @@ class SessionManager:
                 candidates.append((message.timestamp, source.session_id, message))
 
         for _, source_session_id, message in sorted(
-            candidates, key=lambda item: (item[0], item[1], item[2].message_id)
+            candidates, key=lambda item: (item[0] if item[0] is not None else 0.0, item[1], item[2].message_id)
         ):
             merged.messages.append(
                 Message(
@@ -354,11 +355,15 @@ class SessionManager:
     def _persist_report(self, report: UnifiedReport) -> None:
         history = self._reports_dir / "history"
         history.mkdir(parents=True, exist_ok=True)
-        if report.version > 1:
-            previous = history / f"v{report.version - 1}.json"
-            latest = self._reports_dir / "unified.json"
-            if latest.exists() and not previous.exists():
-                previous.write_text(latest.read_text(encoding="utf-8"), encoding="utf-8")
+        latest = self._reports_dir / "unified.json"
+        if latest.exists():
+            try:
+                old_report = UnifiedReport.from_dict(json.loads(latest.read_text(encoding="utf-8")))
+                previous = history / f"v{old_report.version}.json"
+                if not previous.exists():
+                    previous.write_text(latest.read_text(encoding="utf-8"), encoding="utf-8")
+            except (json.JSONDecodeError, KeyError, TypeError):
+                pass
         (self._reports_dir / "unified.json").write_text(
             json.dumps(report.to_dict(), indent=2), encoding="utf-8"
         )
