@@ -45,7 +45,8 @@ omit = [
     "**/__init__.py",
     "barrot_agent/rendering/*",
     "barrot_agent/smart_agent.py",
-    # subpackages migrated from root — coverage tracked separately
+    # subpackages migrated from root level where they were previously not measured;
+    # no pre-existing tests existed for these modules before this restructuring.
     "barrot_agent/agi/*",
     "barrot_agent/ingestion/*",
     "barrot_agent/analysis/*",

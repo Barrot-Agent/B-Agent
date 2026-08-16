@@ -311,15 +311,20 @@ class EmailAnalyzer:
         urls = re.findall(url_pattern, body)
 
         for url in urls[:10]:  # Limit to 10 URLs
-            # Categorize URL
+            # Categorize URL by checking the netloc to avoid substring spoofing
+            try:
+                from urllib.parse import urlparse
+                netloc = urlparse(url).netloc.lower()
+            except Exception:
+                netloc = ""
             url_type = "general"
-            if "github.com" in url:
+            if netloc == "github.com" or netloc.endswith(".github.com"):
                 url_type = "code_repository"
             elif any(domain in url for domain in ["docs.", "documentation", "/docs/"]):
                 url_type = "documentation"
-            elif any(domain in url for domain in ["youtube.com", "vimeo.com"]):
+            elif netloc in ("youtube.com", "www.youtube.com", "vimeo.com", "www.vimeo.com"):
                 url_type = "video"
-            elif any(domain in url for domain in ["arxiv.org", "scholar.google"]):
+            elif netloc in ("arxiv.org", "www.arxiv.org") or netloc.endswith(".scholar.google.com"):
                 url_type = "research"
 
             resources.append({"url": url, "type": url_type})
