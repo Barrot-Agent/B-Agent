@@ -68,16 +68,12 @@ with left:
                 status.update(label="Reconfiguration failed.", state="error")
             else:
                 status.update(label="Reconfiguration complete.", state="complete")
-        final = next(
-            (e for e in reversed(events) if e.type == AgentEventType.ANSWER), None
-        )
+        final = next((e for e in reversed(events) if e.type == AgentEventType.ANSWER), None)
         if final is not None:
             st.subheader("📊 Reconfiguration Report")
             st.markdown(final.content)
         else:
-            error = next(
-                (e for e in reversed(events) if e.type == AgentEventType.ERROR), None
-            )
+            error = next((e for e in reversed(events) if e.type == AgentEventType.ERROR), None)
             st.error(error.content if error is not None else "No terminal event produced.")
 
     if run_clicked:
