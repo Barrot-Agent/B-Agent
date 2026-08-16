@@ -21,6 +21,7 @@ from .smart_agent import (
     ToolCall,
     ToolResult,
 )
+from .learning import Experience, ExperienceLedger
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
@@ -50,6 +51,8 @@ __all__ = [
     "ToolCall",
     "ToolResult",
     "SmartAgent",
+    "Experience",
+    "ExperienceLedger",
     "data_registry",
 ]
 
