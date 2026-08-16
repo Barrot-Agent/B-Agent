@@ -19,6 +19,20 @@ def gh(*args):
 
 def main():
     cutoff = datetime.now(timezone.utc) - timedelta(days=7)
+    existing = gh(
+        "issue",
+        "list",
+        "--repo",
+        REPO,
+        "--state",
+        "open",
+        "--search",
+        f'"{TITLE}" in:title',
+        "--json",
+        "number",
+    )
+    if json.loads(existing):
+        return
     runs = json.loads(
         gh(
             "run",
@@ -40,7 +54,9 @@ def main():
             grouped[run["workflowName"]].append(run)
 
     lines = ["## Weekly workflow failure summary", "", "Failures observed in the latest Actions window:"]
-    if len(runs) == 100:
+    if len(runs) == 100 and runs and datetime.fromisoformat(
+        runs[-1]["createdAt"].replace("Z", "+00:00")
+    ) >= cutoff:
         lines.append("- _The 100-run API limit was reached; this report may be incomplete._")
     if not grouped:
         lines.append("- None.")
@@ -71,9 +87,6 @@ def main():
     lines.extend(f"- `{name}`: {count} run(s)" for name, count in causes.most_common())
     lines.append("\n_This report is generated weekly; inspect linked runs before applying fixes._")
     body = "\n".join(lines)
-    existing = gh("issue", "list", "--repo", REPO, "--state", "open", "--search", f'"{TITLE}" in:title', "--json", "number")
-    if json.loads(existing):
-        return
     url = gh("issue", "create", "--repo", REPO, "--title", TITLE, "--body", body).strip()
     number = url.rsplit("/", 1)[-1]
     subprocess.run(["gh", "issue", "edit", number, "--repo", REPO, "--add-label", "digest", "--add-label", "autogen"], check=False)

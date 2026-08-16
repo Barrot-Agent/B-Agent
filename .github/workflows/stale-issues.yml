@@ -31,7 +31,7 @@ jobs:
             case ",$labels," in
               *,pinned,*|*,keep-open,*|*,no-stale,*) continue ;;
             esac
-            updated_epoch=$(date -d "$updated" +%s)
+            updated_epoch=$(date -d "${updated%Z}+00:00" +%s)
             age_days=$(( (now - updated_epoch) / 86400 ))
             if [ "$age_days" -ge "$STALE_DAYS" ]; then
               gh issue close "$number" --repo "$REPO" \
