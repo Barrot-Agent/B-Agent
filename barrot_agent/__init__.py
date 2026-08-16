@@ -21,6 +21,16 @@ from .smart_agent import (
     ToolCall,
     ToolResult,
 )
+from .millennium_reasoning import (
+    CapabilityTargets,
+    ClaimAssessment,
+    FindingImpactReport,
+    FormalArtifact,
+    GovernanceDecision,
+    HypothesisExperiment,
+    KnowledgeAsset,
+    MillenniumReasoningEngine,
+)
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
@@ -51,6 +61,14 @@ __all__ = [
     "ToolResult",
     "SmartAgent",
     "data_registry",
+    "CapabilityTargets",
+    "KnowledgeAsset",
+    "FormalArtifact",
+    "HypothesisExperiment",
+    "ClaimAssessment",
+    "FindingImpactReport",
+    "GovernanceDecision",
+    "MillenniumReasoningEngine",
 ]
 
 if _rendering_available:

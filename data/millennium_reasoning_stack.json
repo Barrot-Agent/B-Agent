@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-08-16",
+  "capability_targets_template": {
+    "formal_proof_success_rate": 0.35,
+    "conjecture_generation_quality": 0.7,
+    "citation_reliability": 0.95,
+    "cross_domain_transfer_score": 0.6,
+    "assist_discovery_target": 0.75,
+    "machine_checkable_target": 0.4
+  },
+  "trusted_sources": [
+    {
+      "asset_id": "clay_millennium_index",
+      "title": "Clay Mathematics Institute - Millennium Problems",
+      "source_url": "https://www.claymath.org/millennium-problems/",
+      "source_class": "paper",
+      "peer_reviewed": false,
+      "published_on": "2000-05-24",
+      "confidence": 0.98,
+      "tags": ["millennium-problems", "official-status", "reference"],
+      "citation": "Clay Mathematics Institute official Millennium Problems page",
+      "metadata": {
+        "authority": "official",
+        "license": "public-web"
+      }
+    },
+    {
+      "asset_id": "mathlib_repository",
+      "title": "Mathlib formal mathematics library",
+      "source_url": "https://github.com/leanprover-community/mathlib4",
+      "source_class": "formal_proof",
+      "peer_reviewed": true,
+      "published_on": "2021-01-01",
+      "confidence": 0.93,
+      "tags": ["formal-proof", "lean", "verification"],
+      "citation": "Lean community formal mathematics library",
+      "metadata": {
+        "artifact_type": "proof-library",
+        "verifier": "Lean"
+      }
+    },
+    {
+      "asset_id": "arxiv_math_feed",
+      "title": "arXiv Mathematics categories feed",
+      "source_url": "https://arxiv.org/archive/math",
+      "source_class": "paper",
+      "peer_reviewed": false,
+      "published_on": "2007-01-01",
+      "confidence": 0.8,
+      "tags": ["arxiv", "preprint", "research"],
+      "citation": "arXiv math archive index",
+      "metadata": {
+        "authority": "preprint"
+      }
+    },
+    {
+      "asset_id": "lfunctions_lmfdb",
+      "title": "LMFDB datasets for L-functions and modular forms",
+      "source_url": "https://www.lmfdb.org/",
+      "source_class": "computational_replication",
+      "peer_reviewed": true,
+      "published_on": "2013-01-01",
+      "confidence": 0.9,
+      "tags": ["number-theory", "datasets", "computation", "riemann"],
+      "citation": "LMFDB collaborative mathematical database",
+      "metadata": {
+        "artifact_type": "dataset"
+      }
+    }
+  ],
+  "domain_mapping_templates": [
+    {
+      "domain": "cryptography",
+      "tags": ["number-theory", "complexity", "p-vs-np", "riemann"],
+      "datasets": ["lfunctions_lmfdb", "millennium_problems_unified"]
+    },
+    {
+      "domain": "optimization",
+      "tags": ["complexity", "np-hard", "algorithm-design"],
+      "datasets": ["millennium_problems_unified"]
+    },
+    {
+      "domain": "pde_simulation",
+      "tags": ["navier-stokes", "pde", "fluid-dynamics", "numerics"],
+      "datasets": ["millennium_problems_unified", "longevity_unified"]
+    },
+    {
+      "domain": "formal_verification",
+      "tags": ["formal-proof", "lean", "coq", "machine-checkable"],
+      "datasets": ["mathlib_repository"]
+    }
+  ]
+}

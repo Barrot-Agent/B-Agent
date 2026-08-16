@@ -39,6 +39,7 @@ _FILE_MAP: Dict[str, str] = {
     "reprogramming_protocols": "reprogramming_protocols.json",
     "integration_report": "integration_report.json",
     "pingpong_request_example": "pingpong_request_example.json",
+    "millennium_reasoning_stack": "millennium_reasoning_stack.json",
 }
 
 # ---------------------------------------------------------------------------
@@ -133,6 +134,11 @@ def load_reprogramming_protocols(force_reload: bool = False) -> Dict[str, Any]:
 def load_integration_report(force_reload: bool = False) -> Dict[str, Any]:
     """Return the latest system integration report."""
     return _load("integration_report", force_reload)
+
+
+def load_millennium_reasoning_stack(force_reload: bool = False) -> Dict[str, Any]:
+    """Return trusted sources and templates for Millennium reasoning orchestration."""
+    return _load("millennium_reasoning_stack", force_reload)
 
 
 def load_pingpong_request(example: bool = False, force_reload: bool = False) -> Dict[str, Any]:

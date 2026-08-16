@@ -19,3 +19,8 @@ class TestDataRegistry:
         assert longevity["research_domain"] == "longevity"
         assert biomarker["dataset_name"] == "longevity_biomarker_tracking"
         assert protocols["protocol_library"][0]["protocol_id"] == "transient-oskm-baseline"
+
+    def test_millennium_reasoning_stack_is_available(self) -> None:
+        stack = registry.load_millennium_reasoning_stack(force_reload=True)
+        assert stack["version"] == "1.0.0"
+        assert len(stack["trusted_sources"]) >= 1
