@@ -30,8 +30,8 @@ def test_import_json_transcript_preserves_provenance(tmp_path):
         "I found the endpoint.",
     ]
     assert all(message.source_kind == "copilot" for message in session.messages)
-    assert all(message.source_session_id == "copilot" for message in session.messages)
-    assert session.source_session_ids == ["copilot"]
+    assert all(message.source_session_id == "copilot-1" for message in session.messages)
+    assert session.source_session_ids == ["copilot-1"]
 
 
 def test_merge_sessions_is_ordered_deduplicated_and_non_destructive(tmp_path):

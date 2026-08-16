@@ -131,14 +131,14 @@ class SessionManager:
         path = Path(source)
         if not path.is_file():
             raise FileNotFoundError(path)
-        if path.stat().st_size > 5 * 1024 * 1024:
-            raise ValueError("Transcript exceeds the 5 MiB import limit.")
+        size = path.stat().st_size
+        if size > 5 * 1024 * 1024:
+            raise ValueError(f"Transcript exceeds the 5 MiB import limit ({size} bytes).")
 
         records = self._read_transcript(path)
         session = CollaborationSession(
             directive_id=directive_id,
             participant_ids=participant_ids or [],
-            source_session_ids=[path.stem],
         )
         for record in records:
             content = str(record.get("content", "")).strip()
@@ -152,12 +152,13 @@ class SessionManager:
                     content=content,
                     message_type=str(record.get("message_type", "response")),
                     timestamp=self._timestamp(record.get("timestamp")),
-                    source_session_id=str(
-                        record.get("source_session_id") or path.stem
-                    ),
+                    source_session_id=str(record.get("source_session_id") or path.stem),
                     source_kind=source_kind,
                 )
             )
+        session.source_session_ids = sorted(
+            {message.source_session_id for message in session.messages if message.source_session_id}
+        ) or [path.stem]
         self._persist(session)
         return session
 
@@ -193,12 +194,12 @@ class SessionManager:
                 for source_id in (source.source_session_ids or [source.session_id])
             ],
         )
-        seen: set[tuple[str, str, str, float]] = set()
+        seen: set[tuple[str, str, float | None]] = set()
         candidates = []
         for source in source_sessions:
             for message in source.messages:
                 source_id = message.source_session_id or source.session_id
-                key = (source_id, message.sender_id, message.content, message.timestamp)
+                key = (message.sender_id, message.content, message.timestamp)
                 if key in seen:
                     continue
                 seen.add(key)
@@ -245,7 +246,12 @@ class SessionManager:
         if path.suffix.lower() == ".json":
             payload = json.loads(text)
             if isinstance(payload, dict):
+                source_session_id = payload.get("session_id") or path.stem
                 payload = payload.get("messages", [payload])
+                if isinstance(payload, list):
+                    for item in payload:
+                        if isinstance(item, dict):
+                            item.setdefault("source_session_id", source_session_id)
             if not isinstance(payload, list):
                 raise ValueError("JSON transcript must contain a message list.")
             return [item for item in payload if isinstance(item, dict)]
@@ -259,7 +265,7 @@ class SessionManager:
             return records
 
         records = []
-        pattern = re.compile(r"^\s*(?P<sender>[^:\d\n][^:\n]{0,39})\s*:\s*(?P<content>.+?)\s*$")
+        pattern = re.compile(r"^\s*(?P<sender>[^:\n]{1,40}?)\s*:\s*(?P<content>.+?)\s*$")
         for line in text.splitlines():
             match = pattern.match(line)
             if match:
