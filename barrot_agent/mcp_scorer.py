@@ -9,7 +9,7 @@ breakdown per dimension.
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 from barrot_agent.mcp_discovery import ServerInventory

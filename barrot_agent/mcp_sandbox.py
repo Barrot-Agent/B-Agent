@@ -11,14 +11,13 @@ directory and reports pass/fail for each check.
 from __future__ import annotations
 
 import logging
-import os
 import re
 import subprocess
 import sys
 import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 

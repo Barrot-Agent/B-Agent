@@ -8,7 +8,7 @@ requirements.  All definitions are *data-only* (no network calls here).
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 # ---------------------------------------------------------------------------
 # Capability targets

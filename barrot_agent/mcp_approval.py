@@ -20,7 +20,7 @@ import os
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Dict, List, Optional
+from typing import List
 
 logger = logging.getLogger(__name__)
 
