@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 358,
+    "xrp_entries": 359,
     "btc_entries": 215
   },
-  "unique_entities_profiled": 338,
+  "unique_entities_profiled": 340,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 79,
-      "bullish": 46,
+      "total_mentions": 81,
+      "bullish": 48,
       "neutral": 20,
       "bearish": 13,
-      "net_sentiment_score": 0.418,
+      "net_sentiment_score": 0.432,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 64,
-      "bullish": 37,
+      "total_mentions": 66,
+      "bullish": 39,
       "neutral": 19,
       "bearish": 8,
-      "net_sentiment_score": 0.453,
+      "net_sentiment_score": 0.47,
       "assets_seen_in": [
         "XRP"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 23,
-      "bullish": 12,
+      "total_mentions": 24,
+      "bullish": 13,
       "neutral": 4,
       "bearish": 7,
-      "net_sentiment_score": 0.217,
+      "net_sentiment_score": 0.25,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -573,6 +573,23 @@
       ]
     },
     {
+      "entity": "TradingView",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
+      ]
+    },
+    {
       "entity": "Ether",
       "total_mentions": 4,
       "bullish": 4,
@@ -886,23 +903,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "TradingView",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-        "Bitcoin Faces Rising Sell Pressure As Climbing Treasury Yields Keep BTC In \u2018Wait\u2019 Mode, Says Analyst"
       ]
     },
     {
@@ -2900,6 +2900,34 @@
       ],
       "example_headlines": [
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie"
+      ]
+    },
+    {
+      "entity": "Wyoming",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
+      ]
+    },
+    {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
       ]
     },
     {
