@@ -361,11 +361,10 @@ class SessionManager:
         if not root.is_dir():
             raise NotADirectoryError(root)
         excluded = {".git", ".directive_platform", ".venv", "node_modules", "__pycache__"}
+        allowed_extensions = {extension.casefold() for extension in extensions}
         candidates: list[Path] = []
         for path in root.rglob("*"):
-            if not path.is_file() or path.suffix.casefold() not in {
-                extension.casefold() for extension in extensions
-            }:
+            if not path.is_file() or path.suffix.casefold() not in allowed_extensions:
                 continue
             if excluded.intersection(path.relative_to(root).parts):
                 continue
@@ -485,6 +484,7 @@ class SessionManager:
                     ]
                 if isinstance(payload, list) and len(payload) >= 2:
                     return all(isinstance(item, dict) and item.get("content") for item in payload)
+                return False
             except (json.JSONDecodeError, TypeError):
                 return False
         role_pattern = re.compile(
