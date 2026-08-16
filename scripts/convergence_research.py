@@ -214,7 +214,7 @@ def main() -> int:
         problems = validate_math_status(
             load_json(ROOT / "data" / "millennium_problems_unified.json")
         )
-    except OSError as exc:
+    except (OSError, json.JSONDecodeError) as exc:
         problems = []
         failures.append({"source": "millennium_problems_unified.json", "error": str(exc)[:300]})
     claims = source_claims()
