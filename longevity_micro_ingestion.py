@@ -100,7 +100,7 @@ class LongevityMicroIngestion:
         """Build an epigenetic matrix for dashboard and analytics consumers."""
         samples = list(methylation_samples)
         if not samples:
-            return {"markers": [], "matrix": [], "marker_averages": {}}
+            return {"markers": [], "matrix": [], "marker_averages": {}, "sample_count": 0}
 
         markers = sorted({marker for sample in samples for marker in sample.keys()})
         matrix: List[List[float]] = []

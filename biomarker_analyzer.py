@@ -66,7 +66,9 @@ class AgingClockCalculator:
         weighted_sum = 0.0
         weight_total = 0.0
         for marker, weight in self.DEFAULT_WEIGHTS.items():
-            value = float(methylation_data.get(marker, 0.0))
+            if marker not in methylation_data:
+                continue
+            value = float(methylation_data[marker])
             weighted_sum += value * weight
             weight_total += weight
 

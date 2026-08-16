@@ -32,14 +32,16 @@ class FactorInteractionMatrix:
     """Models synergy between reprogramming factors."""
 
     def __init__(self, pairwise_scores: Dict[str, float] | None = None) -> None:
-        self.pairwise_scores = pairwise_scores or {
-            "Oct4|Sox2": 0.35,
-            "Oct4|Klf4": 0.22,
-            "Sox2|Klf4": 0.25,
-            "Klf4|c-Myc": 0.18,
-            "Oct4|c-Myc": 0.12,
-            "Sox2|c-Myc": 0.14,
-        }
+        if pairwise_scores is None:
+            pairwise_scores = {
+                "Oct4|Sox2": 0.35,
+                "Oct4|Klf4": 0.22,
+                "Sox2|Klf4": 0.25,
+                "Klf4|c-Myc": 0.18,
+                "Oct4|c-Myc": 0.12,
+                "Sox2|c-Myc": 0.14,
+            }
+        self.pairwise_scores = pairwise_scores
 
     def synergy(self, factors: Sequence[str]) -> float:
         total = 0.0

@@ -11,9 +11,13 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 try:
-    from typing import TypedDict
+    from typing import NotRequired, TypedDict
 except ImportError:
-    from typing_extensions import TypedDict  # Python < 3.8
+    try:
+        from typing_extensions import NotRequired, TypedDict  # Python < 3.11
+    except ImportError:
+        from typing_extensions import TypedDict  # type: ignore[assignment]
+        NotRequired = Optional  # type: ignore[misc,assignment]
 
 
 # ---------------------------------------------------------------------------
@@ -203,7 +207,7 @@ class PingpongRequest(TypedDict):
     origin: str
     directive: str
     notes: Optional[str]
-    topic: Optional[str]
+    topic: NotRequired[str]
 
 
 # ---------------------------------------------------------------------------

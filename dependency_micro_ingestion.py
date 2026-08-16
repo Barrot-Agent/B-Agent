@@ -215,6 +215,7 @@ class DependencyMicroIngestion:
                             "packages": ing_config.get("packages", {}),
                             "ingestion": ing_config.get("settings", {}),
                             "analysis": ing_config.get("analysis", {}),
+                            "research_domains": ing_config.get("research_domains", {}),
                         }
         except ImportError:
             pass  # PyYAML not available, use defaults
@@ -315,6 +316,7 @@ class DependencyMicroIngestion:
                 "generate_optimizations": True,
                 "track_updates": True,
             },
+            "research_domains": {},
         }
 
     def ingest_package(self, package_name: str, package_config: Dict[str, Any]) -> bool:
@@ -809,6 +811,9 @@ class DependencyMicroIngestion:
             else:
                 failure_count += 1
 
+        # Dispatch any enabled research domains
+        self._dispatch_research_domains()
+
         end_time = datetime.now(timezone.utc)
         duration = (end_time - start_time).total_seconds()
 
@@ -839,6 +844,36 @@ class DependencyMicroIngestion:
         print(f"   Optimizations generated: {len(self.optimizations)}")
 
         return summary
+
+    def _dispatch_research_domains(self) -> None:
+        """Invoke sub-ingestion pipelines for enabled research domains."""
+        domains: Dict[str, Any] = self.config.get("research_domains", {})
+        for domain_name, domain_cfg in domains.items():
+            if not (isinstance(domain_cfg, dict) and domain_cfg.get("enabled")):
+                continue
+            print(f"\n🔬 Dispatching research domain: {domain_name}")
+            source_config = domain_cfg.get("source_config", "")
+            if domain_name == "longevity_research":
+                try:
+                    from longevity_micro_ingestion import LongevityMicroIngestion
+
+                    ingestion = LongevityMicroIngestion()
+                    payload = ingestion.build_unified_payload(
+                        paper_text="",
+                        trial_records=[],
+                        methylation_samples=[],
+                        biomarker_measurements={},
+                    )
+                    output_path = os.path.join(
+                        self.output_dir, f"research_{domain_name}_payload.json"
+                    )
+                    with open(output_path, "w", encoding="utf-8") as f:
+                        json.dump(payload, f, indent=2, ensure_ascii=False)
+                    print(f"  💾 Research domain payload saved to {output_path}")
+                except Exception as exc:
+                    print(f"  ⚠️  Failed to dispatch {domain_name}: {exc}")
+            else:
+                print(f"  ⚠️  No dispatch handler for research domain '{domain_name}'")
 
     def _save_summary(self, summary: Dict[str, Any]):
         """Save ingestion summary"""
