@@ -22,7 +22,7 @@ jobs:
           set -euo pipefail
           now=$(date +%s)
           warning_days=$(( STALE_DAYS > 7 ? STALE_DAYS - 7 : 1 ))
-          gh issue list --repo "$REPO" --state open --limit 200 \
+          gh issue list --repo "$REPO" --state open --limit 10000 \
             --json number,title,updatedAt,labels | jq -c '.[]' |
           while read -r issue; do
             number=$(jq -r '.number' <<<"$issue")
@@ -31,7 +31,7 @@ jobs:
             case ",$labels," in
               *,pinned,*|*,keep-open,*|*,no-stale,*) continue ;;
             esac
-            updated_epoch=$(date -d "${updated%Z}+00:00" +%s)
+            updated_epoch=$(date -d "$updated" +%s)
             age_days=$(( (now - updated_epoch) / 86400 ))
             if [ "$age_days" -ge "$STALE_DAYS" ]; then
               gh issue close "$number" --repo "$REPO" \

@@ -17,6 +17,10 @@ def gh(*args):
     return result.stdout
 
 
+def parse_timestamp(value):
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
 def main():
     cutoff = datetime.now(timezone.utc) - timedelta(days=7)
     existing = gh(
@@ -49,14 +53,13 @@ def main():
     )
     grouped = defaultdict(list)
     for run in runs:
-        created_at = datetime.fromisoformat(run["createdAt"].replace("Z", "+00:00"))
+        created_at = parse_timestamp(run["createdAt"])
         if created_at >= cutoff:
             grouped[run["workflowName"]].append(run)
 
     lines = ["## Weekly workflow failure summary", "", "Failures observed in the latest Actions window:"]
-    if len(runs) == 100 and runs and datetime.fromisoformat(
-        runs[-1]["createdAt"].replace("Z", "+00:00")
-    ) >= cutoff:
+    oldest_run = min(runs, key=lambda run: parse_timestamp(run["createdAt"]), default=None)
+    if len(runs) == 100 and oldest_run and parse_timestamp(oldest_run["createdAt"]) >= cutoff:
         lines.append("- _The 100-run API limit was reached; this report may be incomplete._")
     if not grouped:
         lines.append("- None.")
