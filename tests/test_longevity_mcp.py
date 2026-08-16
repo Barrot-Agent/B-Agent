@@ -13,7 +13,7 @@ def test_resources_are_scoped_and_metadata_is_complete():
     assert metadata["read_only"] is True
     assert metadata["timestamp"]
     assert metadata["source_citations"]
-    assert "participants" not in str(result["data"])
+    assert "real-person" not in str(result["data"])
 
 
 def test_ingestion_is_deidentified_and_not_persisted():
