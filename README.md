@@ -116,6 +116,7 @@ Barrot-Agent/
 - **📧 Email Intelligence** - Automated email analysis and information extraction
 - **🎯 MMI (Massive Micro Ingestion)** - High-impact data identification for AGI acceleration
 - **🐍 Dependency Micro-Ingestion** - Comprehensive Python/PyTorch/ML ecosystem knowledge extraction with 21+ packages
+- **🧬 Longevity Research Integration** - Aging mechanism ingestion, biomarker analytics, trial tracking, and reprogramming protocol optimization
 - **💰 Advanced Monetization** - Revolutionary automation-first revenue generation protocols
 - **✨ Transformative Insights** - Acquire asynchronous data, detect convergence, generate epiphanies, realize transformative insights in real-time
 - **🔀 Merge Conflict Resolution** - Automated conflict detection, analysis, and resolution with continuous learning
@@ -428,6 +429,26 @@ ISC License - See repository for details
 | [data/millennium_problems_unified.json](data/millennium_problems_unified.json) | All 7 Millennium Problems with metadata |
 | [data/mmi_monetization_unified.json](data/mmi_monetization_unified.json) | MMI recommendations, protocols, council weights |
 | [data/character_capabilities_unified.json](data/character_capabilities_unified.json) | Character database + discovered capabilities |
+| [data/longevity_unified.json](data/longevity_unified.json) | Longevity research knowledge base template |
+| [data/biomarker_tracking.json](data/biomarker_tracking.json) | Biomarker timeline and trial tracking template |
+| [data/reprogramming_protocols.json](data/reprogramming_protocols.json) | Epigenetic reprogramming protocol library template |
+
+### Longevity Integration Quick Usage
+
+```bash
+python -m pytest tests/test_longevity_modules.py --no-cov
+
+python - <<'PY'
+from longevity_micro_ingestion import LongevityMicroIngestion
+payload = LongevityMicroIngestion().build_unified_payload(
+    paper_text="Transient Oct4/Sox2/Klf4/c-Myc expression improved NAD+ and epigenetic clocks.",
+    trial_records=[],
+    methylation_samples=[],
+    biomarker_measurements={}
+)
+print(payload["research_domain"], payload["omega_ingest"]["compatibility"])
+PY
+```
 
 ### Legacy Root-Level Docs
 

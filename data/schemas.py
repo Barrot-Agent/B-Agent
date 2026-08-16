@@ -11,9 +11,9 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 try:
-    from typing import TypedDict
+    from typing import NotRequired, TypedDict
 except ImportError:
-    from typing_extensions import TypedDict  # Python < 3.8
+    from typing_extensions import NotRequired, TypedDict  # Python < 3.11
 
 
 # ---------------------------------------------------------------------------
@@ -203,6 +203,70 @@ class PingpongRequest(TypedDict):
     origin: str
     directive: str
     notes: Optional[str]
+    topic: NotRequired[str]
+
+
+# ---------------------------------------------------------------------------
+# Longevity Domain
+# ---------------------------------------------------------------------------
+
+
+class AgingMechanism(TypedDict):
+    mechanism: str
+    evidence: str
+    confidence: float
+    tags: List[str]
+
+
+class TrialOutcome(TypedDict):
+    participant_id: str
+    treatment_arm: str
+    baseline_epigenetic_age: float
+    followup_epigenetic_age: float
+    nad_level_change_pct: float
+    adverse_events: List[str]
+
+
+class EpigeneticPatternMatrix(TypedDict):
+    markers: List[str]
+    matrix: List[List[float]]
+    marker_averages: Dict[str, float]
+    sample_count: int
+
+
+class BiomarkerTimelineEntry(TypedDict):
+    timestamp: str
+    value: float
+    source: str
+
+
+class BiomarkerTimeline(TypedDict):
+    participant_id: str
+    biomarker: str
+    timeline: List[BiomarkerTimelineEntry]
+    trend: str
+
+
+class ReprogrammingProtocolTemplate(TypedDict):
+    protocol_id: str
+    factors: List[str]
+    expression_mode: str
+    on_days: int
+    off_days: int
+    cycles: int
+    target_cell_types: List[str]
+    safety_notes: List[str]
+
+
+class LongevityUnified(TypedDict):
+    research_domain: str
+    aging_mechanisms: List[AgingMechanism]
+    trial_outcomes: List[TrialOutcome]
+    epigenetic_pattern_matrices: List[EpigeneticPatternMatrix]
+    biomarker_timelines: List[BiomarkerTimeline]
+    omega_ingest: Dict[str, Any]
+    mmi_breakthroughs: List[Dict[str, Any]]
+    _meta: Dict[str, Any]
 
 
 # ---------------------------------------------------------------------------

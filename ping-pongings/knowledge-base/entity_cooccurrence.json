@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 343,
-    "btc_entries": 196
+    "xrp_entries": 361,
+    "btc_entries": 216
   },
-  "unique_pairs_found": 910,
+  "unique_pairs_found": 1008,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 54,
+      "cooccurrence_count": 65,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 35,
+      "cooccurrence_count": 41,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 12,
+      "cooccurrence_count": 14,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -67,6 +67,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 11,
       "example_headlines": [
@@ -82,23 +97,8 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -113,7 +113,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -126,9 +126,24 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
-      "cooccurrence_count": 9,
+      "cooccurrence_count": 10,
       "example_headlines": [
         {
           "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
@@ -137,6 +152,36 @@
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -157,45 +202,15 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -203,7 +218,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP.CC",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -218,7 +233,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
@@ -233,7 +248,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -246,24 +261,9 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 7,
+      "cooccurrence_count": 8,
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
@@ -272,6 +272,51 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -291,32 +336,17 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 6,
       "example_headlines": [
         {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         },
         {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-          "asset": "BTC"
         }
       ]
     },
@@ -336,17 +366,17 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 5,
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 6,
       "example_headlines": [
         {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
         },
         {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+          "asset": "BTC"
         }
       ]
     },
@@ -381,17 +411,17 @@
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "XRP",
+      "entity_a": "Bitcoin",
+      "entity_b": "CryptoQuant",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         },
         {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
+          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+          "asset": "BTC"
         }
       ]
     },
@@ -426,17 +456,17 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 5,
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
         },
         {
-          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-          "asset": "BTC"
+          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "asset": "XRP"
         }
       ]
     },
@@ -486,17 +516,17 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "CryptoQuant",
+      "entity_a": "MarketForces Africa",
+      "entity_b": "XRP",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
           "asset": "XRP"
         },
         {
-          "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-          "asset": "BTC"
+          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
         }
       ]
     },
@@ -512,6 +542,66 @@
         {
           "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy CEO says company will resume Bitcoin accumulation this year",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
+          "asset": "BTC"
+        },
+        {
+          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
+          "asset": "BTC"
         }
       ]
     },
@@ -561,6 +651,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 4,
@@ -571,6 +676,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -592,7 +712,7 @@
     },
     {
       "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -600,7 +720,7 @@
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -616,6 +736,36 @@
         },
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -667,7 +817,7 @@
     },
     {
       "entity_a": "MarketForces Africa",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -832,21 +982,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "USD",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -856,21 +991,6 @@
         },
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
           "asset": "BTC"
         }
       ]
@@ -891,6 +1011,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Galaxy",
       "cooccurrence_count": 3,
@@ -901,21 +1051,6 @@
         },
         {
           "title": "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-          "asset": "BTC"
-        },
-        {
-          "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
           "asset": "BTC"
         }
       ]
@@ -1012,21 +1147,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-          "asset": "BTC"
-        },
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Michael Saylor",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1036,6 +1156,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
         }
       ]
@@ -1101,17 +1236,32 @@
       ]
     },
     {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
         },
         {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
+          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
         }
       ]
     },
@@ -1126,36 +1276,6 @@
         },
         {
           "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1656,6 +1776,21 @@
       ]
     },
     {
+      "entity_a": "Crypto market",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "SBI Holdings",
       "cooccurrence_count": 2,
@@ -1701,16 +1836,31 @@
       ]
     },
     {
-      "entity_a": "MarketForces Africa",
-      "entity_b": "Ripple",
+      "entity_a": "Ripple",
+      "entity_b": "institutional investors",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
           "asset": "XRP"
         },
         {
-          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
           "asset": "XRP"
         }
       ]
@@ -1726,6 +1876,21 @@
         },
         {
           "title": "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
           "asset": "XRP"
         }
       ]
@@ -1911,6 +2076,51 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP.CC",
+      "entity_b": "moomoo.com",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 2,
@@ -1981,6 +2191,51 @@
         },
         {
           "title": "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "LND",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "LND",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
           "asset": "BTC"
         }
       ]
@@ -2086,6 +2341,36 @@
         },
         {
           "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
           "asset": "BTC"
         }
       ]
@@ -2296,6 +2581,81 @@
         },
         {
           "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "Ether",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
           "asset": "BTC"
         }
       ]
@@ -2586,7 +2946,22 @@
       ]
     },
     {
-      "entity_a": "Donald Trump",
+      "entity_a": "CoinDesk",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
       "entity_b": "Trump Media",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2595,7 +2970,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -2721,6 +3096,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Binance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Satoshi Nakamoto",
       "cooccurrence_count": 2,
@@ -2811,16 +3201,16 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Strategy",
+      "entity_a": "Bitcoin",
+      "entity_b": "Donald Trump",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
         },
         {
-          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -2881,6 +3271,36 @@
         },
         {
           "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USDT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
+        },
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -3689,6 +4109,72 @@
       ]
     },
     {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "Crypto market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin rotation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto market",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto market",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "dmarketforces.com",
       "cooccurrence_count": 1,
@@ -3832,30 +4318,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "XRP",
       "entity_b": "analyst",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "institutional investors",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -4065,17 +4529,6 @@
     {
       "entity_a": "CoinGape",
       "entity_b": "XRP Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Evernorth",
-      "entity_b": "Ripple",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -4613,39 +5066,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "moomoo.com",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "moomoo.com",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP.CC",
-      "entity_b": "moomoo.com",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
       "entity_b": "U.S. District Court",
       "cooccurrence_count": 1,
@@ -4921,6 +5341,83 @@
       ]
     },
     {
+      "entity_a": "BTCPay Server",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCPay Server",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "LND",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "LND",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Lightning Network",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Lightning Network",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "merchant wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Institutional investors",
       "entity_b": "Spot OTC market",
       "cooccurrence_count": 1,
@@ -5142,28 +5639,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "BlackRock",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "iShares Bitcoin Trust",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5230,17 +5705,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "TradingView",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "UK Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5253,17 +5717,6 @@
     {
       "entity_a": "TradingView",
       "entity_b": "UK Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TradingView",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -5361,12 +5814,386 @@
       ]
     },
     {
-      "entity_a": "Crypto market",
+      "entity_a": "Forbes",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Forbes",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - ",
+          "title": "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Standard Chartered",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETF",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoins",
+      "entity_b": "Tether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoins",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tether",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$1B",
+      "entity_b": "Evernorth",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$1B",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$1B",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$1B",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Wyoming",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Wyoming",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "Wyoming",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wyoming",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
           "asset": "XRP"
         }
       ]
@@ -5956,28 +6783,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETF",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -5990,17 +6795,6 @@
     {
       "entity_a": "Bitcoin ETF",
       "entity_b": "ETF inflows",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin ETF",
-      "entity_b": "Ether",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7198,28 +7992,6 @@
       ]
     },
     {
-      "entity_a": "CoinDesk",
-      "entity_b": "Donald Trump",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Japan",
       "cooccurrence_count": 1,
@@ -7750,17 +8522,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Crypto Weekly Digest",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -8678,17 +9439,6 @@
       "example_headlines": [
         {
           "title": "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Binance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
           "asset": "BTC"
         }
       ]
@@ -9794,17 +10544,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Donald Trump",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Donald Trump",
       "entity_b": "TMTG",
       "cooccurrence_count": 1,
@@ -9926,17 +10665,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "USDT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CryptoQuant",
       "entity_b": "Tether",
       "cooccurrence_count": 1,
@@ -9982,28 +10710,6 @@
     },
     {
       "entity_a": "BTCPay Server",
-      "entity_b": "LND",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCPay Server",
-      "entity_b": "Lightning Network",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCPay Server",
       "entity_b": "Lightning wallets",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -10027,17 +10733,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Lightning wallets",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "LND",
-      "entity_b": "Lightning Network",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -10652,17 +11347,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Ethereum (ETH)",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
@@ -10779,6 +11463,512 @@
       "example_headlines": [
         {
           "title": "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for August 13, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CEO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "CEO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CEO",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "CryptoQuant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoQuant",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US inflation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price drops to $62.5K as trader warns weekly close may spark more losses",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US inflation",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price drops to $62.5K as trader warns weekly close may spark more losses",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETF",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETF",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBIT",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "JPMorgan",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "crypto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "software stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "crypto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "software stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "crypto",
+      "entity_b": "software stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Software stocks break away from bitcoin: What the rare divergence means for crypto - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Russia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Russia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Russia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Russia",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gemini AI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Google",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gemini AI",
+      "entity_b": "Google",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gemini AI",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Google",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance Singapore",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Yahoo Finance Singapore",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "DJT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "DJT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "DJT",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "DJT",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
           "asset": "BTC"
         }
       ]
