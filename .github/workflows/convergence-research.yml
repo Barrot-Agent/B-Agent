@@ -1,0 +1,41 @@
+name: Convergence Research
+
+on:
+  schedule:
+    - cron: "30 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      approved:
+        description: "Explicitly authorize report generation (does not authorize adoption)"
+        required: true
+        default: "true"
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Run bounded read-only convergence research
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.approved }}" != "true" ]; then
+            echo "Explicit approval was not provided; no report generated."
+            exit 0
+          fi
+          python3 scripts/convergence_research.py
+      - name: Commit review reports
+        run: |
+          git config user.name "Barrot-Agent"
+          git config user.email "barrot@barrot-agent.com"
+          git add ping-pongings/knowledge-base/convergence_reports.jsonl \
+            ping-pongings/knowledge-base/convergence_audit.jsonl
+          git diff --cached --quiet || git commit -m "Convergence research report [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

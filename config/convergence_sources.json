@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "refresh_days": 7,
+  "max_github_repositories": 12,
+  "github_repositories": [
+    {
+      "full_name": "huggingface/transformers",
+      "domain": "inference",
+      "integration_targets": ["barrot_agent/inference.py", "requirements.txt"],
+      "keywords": ["inference", "transformers", "model", "nlp"],
+      "license": "Apache-2.0"
+    },
+    {
+      "full_name": "vllm-project/vllm",
+      "domain": "inference",
+      "integration_targets": ["barrot_agent/inference.py", "self_hosted_brain"],
+      "keywords": ["inference", "serving", "throughput", "llm"],
+      "license": "Apache-2.0"
+    },
+    {
+      "full_name": "qdrant/qdrant",
+      "domain": "memory",
+      "integration_targets": ["data/registry.py", "ping-pongings/knowledge-base"],
+      "keywords": ["vector", "retrieval", "memory", "search"],
+      "license": "Apache-2.0"
+    },
+    {
+      "full_name": "openai/evals",
+      "domain": "evaluation",
+      "integration_targets": ["scripts/self_benchmark.py", "tests"],
+      "keywords": ["evaluation", "benchmark", "agent", "testing"],
+      "license": "MIT"
+    },
+    {
+      "full_name": "leanprover-community/mathlib4",
+      "domain": "formal-mathematics",
+      "integration_targets": ["millennium_problems_unified.json", "apex_lattice"],
+      "keywords": ["theorem", "proof", "mathematics", "formalization"],
+      "license": "Apache-2.0"
+    }
+  ],
+  "mathematics_sources": [
+    {
+      "name": "Clay Mathematics Institute",
+      "url": "https://www.claymath.org/millennium-problems/",
+      "domain": "millennium-problems",
+      "keywords": ["millennium", "conjecture", "proof", "problem"],
+      "authority": "primary"
+    },
+    {
+      "name": "arXiv mathematics RSS",
+      "url": "https://rss.arxiv.org/rss/math",
+      "domain": "recent-mathematics",
+      "keywords": ["theorem", "conjecture", "proof", "mathematics"],
+      "authority": "publisher-index"
+    }
+  ]
+}
