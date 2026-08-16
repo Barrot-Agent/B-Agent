@@ -3,14 +3,14 @@
     "xrp_entries": 360,
     "btc_entries": 215
   },
-  "unique_entities_profiled": 341,
+  "unique_entities_profiled": 344,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 157,
-      "bullish": 69,
+      "total_mentions": 159,
+      "bullish": 70,
       "neutral": 25,
-      "bearish": 63,
+      "bearish": 64,
       "net_sentiment_score": 0.038,
       "assets_seen_in": [
         "BTC",
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 25,
-      "bullish": 13,
+      "total_mentions": 26,
+      "bullish": 14,
       "neutral": 4,
       "bearish": 8,
-      "net_sentiment_score": 0.2,
+      "net_sentiment_score": 0.231,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -124,11 +124,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 16,
+      "total_mentions": 17,
       "bullish": 9,
       "neutral": 0,
-      "bearish": 7,
-      "net_sentiment_score": 0.125,
+      "bearish": 8,
+      "net_sentiment_score": 0.059,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -456,6 +456,22 @@
       ]
     },
     {
+      "entity": "Trump Media",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -0.6,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
       "entity": "24/7 Wall St.",
       "total_mentions": 4,
       "bullish": 3,
@@ -623,7 +639,7 @@
       ]
     },
     {
-      "entity": "Trump Media",
+      "entity": "Donald Trump",
       "total_mentions": 4,
       "bullish": 1,
       "neutral": 0,
@@ -633,7 +649,7 @@
         "BTC"
       ],
       "example_headlines": [
-        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
       ]
@@ -1016,22 +1032,6 @@
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "American Bitcoin Reports Second Quarter 2026 Results - PR Newswire",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
-      ]
-    },
-    {
-      "entity": "Donald Trump",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
       ]
     },
     {
@@ -5045,6 +5045,34 @@
       ]
     },
     {
+      "entity": "Google",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com"
+      ]
+    },
+    {
+      "entity": "Gemini AI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com"
+      ]
+    },
+    {
       "entity": "Yahoo Finance Singapore",
       "total_mentions": 1,
       "bullish": 1,
@@ -5056,6 +5084,20 @@
       ],
       "example_headlines": [
         "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin"
+      ]
+    },
+    {
+      "entity": "DJT",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk"
       ]
     }
   ]

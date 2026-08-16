@@ -3,7 +3,7 @@
     "xrp_entries": 360,
     "btc_entries": 215
   },
-  "unique_pairs_found": 999,
+  "unique_pairs_found": 1008,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 13,
+      "cooccurrence_count": 14,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -141,6 +141,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 9,
@@ -167,21 +182,6 @@
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
-          "asset": "BTC"
         }
       ]
     },
@@ -646,6 +646,21 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
         }
       ]
@@ -1132,21 +1147,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
-          "asset": "BTC"
-        },
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Michael Saylor",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1156,6 +1156,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
         }
       ]
@@ -2931,7 +2946,22 @@
       ]
     },
     {
-      "entity_a": "Donald Trump",
+      "entity_a": "CoinDesk",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
       "entity_b": "Trump Media",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -2940,7 +2970,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -3166,6 +3196,21 @@
         },
         {
           "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -7947,28 +7992,6 @@
       ]
     },
     {
-      "entity_a": "CoinDesk",
-      "entity_b": "Donald Trump",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "Trump Media",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Japan",
       "cooccurrence_count": 1,
@@ -10521,17 +10544,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Donald Trump",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Donald Trump",
       "entity_b": "TMTG",
       "cooccurrence_count": 1,
@@ -11830,6 +11842,61 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gemini AI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Google",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gemini AI",
+      "entity_b": "Google",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gemini AI",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Google",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 1,
@@ -11858,6 +11925,50 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "DJT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "DJT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "DJT",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "DJT",
+      "entity_b": "Trump Media",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
           "asset": "BTC"
         }
       ]
