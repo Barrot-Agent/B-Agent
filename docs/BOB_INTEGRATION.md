@@ -25,7 +25,7 @@ Example:
 ```python
 from barrot_agent.learning import Experience, ExperienceLedger
 
-ledger = ExperienceLedger("ping-pongings/knowledge-base/experiences.jsonl")
+ledger = ExperienceLedger("knowledge-base/experiences.jsonl")
 experience = ledger.record(Experience("memory retrieval", True, score=0.9))
 print(ledger.summarize([experience]))
 ```

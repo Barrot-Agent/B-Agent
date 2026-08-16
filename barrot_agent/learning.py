@@ -123,6 +123,7 @@ class ExperienceLedger:
             "eligible": (
                 score_delta is not None
                 and score_delta >= minimum_delta
+                and baseline_summary["count"] > 0
                 and candidate_summary["count"] > 0
             ),
         }
