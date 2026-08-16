@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 from longevity_mcp import LongevityMCPServer
 
 
@@ -42,24 +44,15 @@ def test_ingestion_is_deidentified_and_not_persisted():
 
 def test_consent_and_writes_are_blocked():
     server = LongevityMCPServer()
-    try:
+    with pytest.raises(PermissionError):
         server.call_tool(
             "track_biomarker",
             participant_id="p1",
             biomarker="nad_plus",
             measurements=[],
         )
-    except PermissionError:
-        pass
-    else:
-        raise AssertionError("tracking without consent must be rejected")
-
-    try:
+    with pytest.raises(PermissionError):
         server.call_tool("write_dataset")
-    except PermissionError:
-        pass
-    else:
-        raise AssertionError("write tools must require approval")
 
 
 def test_signal_detection_includes_safety_warning():

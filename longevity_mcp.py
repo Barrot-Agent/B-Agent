@@ -42,7 +42,8 @@ class LongevityMCPServer:
         "reprogramming_protocols": load_reprogramming_protocols,
         "ingestion_config": _load_ingestion_config,
     }
-    _TOOLS = (
+    _TOOLS = frozenset(
+        {
         "search_papers",
         "search_trials",
         "ingest_research",
@@ -50,6 +51,7 @@ class LongevityMCPServer:
         "track_biomarker",
         "detect_signals",
         "generate_mmi_payload",
+        }
     )
     _WRITE_TOOLS = {"apply_protocol", "write_dataset", "store_participant"}
     _PII_FIELDS = {"name", "email", "phone", "address", "contact", "dob", "ssn", "ip_address"}
@@ -251,7 +253,7 @@ class LongevityMCPServer:
         *,
         data: Any,
         source_citations: Optional[Iterable[str]] = None,
-        confidence: float = 0.5,
+        confidence: float = _BASE_CONFIDENCE,
         cohort_size: int = 0,
         filtered_records: int = 0,
         safety_warnings: Optional[Iterable[str]] = None,
