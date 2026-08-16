@@ -31,7 +31,7 @@ jobs:
     name: Code Quality
     runs-on: ubuntu-latest
     env:
-      ROOT_PYTHON_TARGETS: app.py emit_pingpong.py pingpong_emitter.py
+      ROOT_PYTHON_TARGETS: app.py pingpong_emitter.py
     steps:
       - uses: actions/checkout@v7
 
@@ -65,7 +65,7 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     env:
-      ROOT_PYTHON_TARGETS: app.py emit_pingpong.py pingpong_emitter.py
+      ROOT_PYTHON_TARGETS: app.py pingpong_emitter.py
     strategy:
       matrix:
         python-version: ["3.10", "3.11"]
