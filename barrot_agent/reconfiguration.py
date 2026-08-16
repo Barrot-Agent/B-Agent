@@ -131,7 +131,8 @@ class ReconfigurationReport:
             "",
             f"**Estimated capability coverage gain:** "
             f"{self.estimated_coverage_gain * 100:.1f}%",
-            f"**Human approvals required to apply:** {self.required_human_approvals}",
+            f"**Human approvals required to apply:** {self.required_human_approvals}"
+            + (" *(not yet triggered — dry_run=True)*" if self.dry_run else ""),
         ]
 
         if self.pipeline_stats:
@@ -250,8 +251,10 @@ def build_reconfiguration_report(
     still_uncovered = initially_uncovered - len(newly_covered_targets & {g.target_id for g in gaps})
     coverage_gain = (initially_uncovered - max(0, still_uncovered)) / max(1, n_targets)
 
-    # ---- Human approvals: 1 per proposal (safety requirement) ----
-    required_approvals = len(proposals) if not dry_run else 0
+    # ---- Human approvals: 1 per proposal is always required (safety requirement).
+    # Report the full count regardless of dry_run; dry_run only means the
+    # approvals haven't been triggered yet, not that they can be skipped.
+    required_approvals = len(proposals)
 
     logger.info(
         "Reconfiguration report: gaps=%d proposals=%d coverage_gain=%.2f",

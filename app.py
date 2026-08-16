@@ -63,7 +63,11 @@ with left:
                     st.write(f"🔎 {event.content}")
                 elif event.type in (AgentEventType.ANSWER, AgentEventType.ERROR):
                     break
-            status.update(label="Reconfiguration complete.", state="complete")
+            final_event_is_error = events and events[-1].type == AgentEventType.ERROR
+            if final_event_is_error:
+                status.update(label="Reconfiguration failed.", state="error")
+            else:
+                status.update(label="Reconfiguration complete.", state="complete")
         final = next(
             (e for e in reversed(events) if e.type == AgentEventType.ANSWER), None
         )
