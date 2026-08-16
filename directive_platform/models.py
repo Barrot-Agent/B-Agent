@@ -304,6 +304,8 @@ class Message:
         content: str,
         message_type: str = MessageType.RESPONSE,
         timestamp: float | None = None,
+        source_session_id: str | None = None,
+        source_kind: str | None = None,
     ) -> None:
         self.message_id = message_id or str(uuid.uuid4())[:8]
         self.session_id = session_id
@@ -312,6 +314,10 @@ class Message:
         self.content = content
         self.message_type = message_type
         self.timestamp = timestamp or time.time()
+        # These fields let federated sessions retain where imported context
+        # came from without changing the original session record.
+        self.source_session_id = source_session_id
+        self.source_kind = source_kind
 
     # ------------------------------------------------------------------
 
@@ -324,6 +330,8 @@ class Message:
             "content": self.content,
             "message_type": self.message_type,
             "timestamp": self.timestamp,
+            "source_session_id": self.source_session_id,
+            "source_kind": self.source_kind,
         }
 
     @classmethod
@@ -336,6 +344,8 @@ class Message:
             content=data["content"],
             message_type=data.get("message_type", MessageType.RESPONSE),
             timestamp=data.get("timestamp"),
+            source_session_id=data.get("source_session_id"),
+            source_kind=data.get("source_kind"),
         )
 
 

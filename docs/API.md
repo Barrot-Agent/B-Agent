@@ -18,6 +18,23 @@ Returns whether debug mode is enabled.
 
 ---
 
+## directive_platform.SessionManager
+
+### `import_transcript(source, source_kind="external", directive_id="imported")`
+
+Import an explicitly selected local JSON, JSONL, Markdown, or text transcript
+into a new persisted session. Imports are bounded to 5 MiB and retain source
+provenance on every message; no network access or repository-wide scanning is
+performed.
+
+### `merge_sessions(session_ids, directive_id=None, participant_ids=None)`
+
+Create a new chronological, de-duplicated session from existing session IDs.
+Source sessions remain unchanged, and merged messages retain their origin in
+`source_session_id` and `source_kind`.
+
+---
+
 ## barrot_agent.models.ModelManager
 
 Manages IBM Granite model lifecycle.
