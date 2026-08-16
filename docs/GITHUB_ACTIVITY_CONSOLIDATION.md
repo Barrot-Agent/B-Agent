@@ -27,3 +27,20 @@ replaces only the specified output file.
 GitHub's repository API exposes project activity, not private agent conversation
 transcripts. Those transcripts can only be included if the agent platform
 publishes them as repository-visible artifacts or provides a separate export.
+
+## Local agent session bundles
+
+Directive-platform sessions use the same Git-backed workflow:
+
+```bash
+python -m scripts.export_agent_sessions --output /tmp/agent-sessions.json
+python -m scripts.import_agent_sessions \
+  --input /tmp/agent-sessions.json --merge
+```
+
+Sessions remain individual JSON files under `.directive_platform/sessions/`.
+Imports deduplicate session and message IDs and write a merge report to
+`.directive_platform/session-merge-report.json`. Conflicting message content is
+reported and the existing content is preserved. The dashboard's **Session Hub**
+can preview and download a browser-local bundle, but does not replace the
+Git-backed store.

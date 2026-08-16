@@ -732,6 +732,29 @@
       <div class="tab" data-section="spark" onclick="showSection('spark', event)">⚡ Spark Backend</div>
       <div class="tab" data-section="operations" onclick="showSection('operations', event)">Operations</div>
       <div class="tab" data-section="connectors" onclick="showSection('connectors', event)">🔌 Connectors</div>
+      <div class="tab" data-section="sessions" onclick="showSection('sessions', event)">🧩 Session Hub</div>
+    </div>
+
+    <!-- Local Agent Session Hub -->
+    <div id="sessions" class="content-section">
+      <h2>🧩 Local Agent Session Hub</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Bundle actions</h3>
+          <p>Preview and merge portable session bundles without making the dashboard the source of truth.</p>
+          <input id="session-bundle-input" type="file" accept="application/json">
+          <button class="toolbar-btn" type="button" onclick="previewSessionBundle()">Preview merge</button>
+          <button class="toolbar-btn" type="button" onclick="downloadSessionBundle()">Download local bundle</button>
+          <button class="toolbar-btn" type="button" onclick="mergeSessionBundle()">Apply merge</button>
+          <pre id="session-bundle-report" aria-live="polite"></pre>
+        </div>
+        <div class="card">
+          <h3>Termux</h3>
+          <pre>python -m scripts.export_agent_sessions --output /tmp/agent-sessions.json
+python -m scripts.import_agent_sessions \
+  --input /tmp/agent-sessions.json --merge</pre>
+        </div>
+      </div>
     </div>
 
     <!-- Data Mastery Section -->
@@ -1739,6 +1762,67 @@ function barrotOptimize() {
 
     function addEffect() {
       alert('Adding audio effects...');
+    }
+
+    const sessionBundleKey = 'barrot-agent-session-bundle';
+
+    function sessionReport(message) {
+      document.getElementById('session-bundle-report').textContent = message;
+    }
+
+    function readSessionBundle() {
+      const input = document.getElementById('session-bundle-input');
+      if (!input.files.length) {
+        sessionReport('Choose a JSON bundle first.');
+        return Promise.resolve(null);
+      }
+      return input.files[0].text().then(text => JSON.parse(text));
+    }
+
+    function previewSessionBundle() {
+      readSessionBundle().then(bundle => {
+        if (!bundle) return;
+        const sessions = Array.isArray(bundle.sessions) ? bundle.sessions : [];
+        const current = JSON.parse(localStorage.getItem(sessionBundleKey) || '{"sessions":[]}');
+        const known = new Set((current.sessions || []).map(session => session.session_id));
+        const newCount = sessions.filter(session => !known.has(session.session_id)).length;
+        sessionReport(`Preview: ${sessions.length} incoming session(s), ${newCount} new, `
+          + `${sessions.length - newCount} duplicate(s). Conflicting message IDs are preserved in the report.`);
+      }).catch(error => sessionReport(`Invalid bundle: ${error.message}`));
+    }
+
+    function mergeSessionBundle() {
+      readSessionBundle().then(bundle => {
+        if (!bundle) return;
+        const current = JSON.parse(localStorage.getItem(sessionBundleKey) || '{"sessions":[]}');
+        const sessions = new Map((current.sessions || []).map(session => [session.session_id, session]));
+        (bundle.sessions || []).forEach(incoming => {
+          const existing = sessions.get(incoming.session_id);
+          if (!existing) {
+            sessions.set(incoming.session_id, incoming);
+            return;
+          }
+          const messages = new Map((existing.messages || []).map(message => [message.message_id, message]));
+          (incoming.messages || []).forEach(message => {
+            if (!messages.has(message.message_id)) messages.set(message.message_id, message);
+          });
+          existing.messages = Array.from(messages.values()).sort((a, b) => a.timestamp - b.timestamp);
+        });
+        const merged = { version: 1, exported_at: Date.now() / 1000, sessions: Array.from(sessions.values()) };
+        localStorage.setItem(sessionBundleKey, JSON.stringify(merged));
+        sessionReport(`Merged ${bundle.sessions.length} session(s) locally. Use Download to save the bundle.`);
+      }).catch(error => sessionReport(`Unable to merge bundle: ${error.message}`));
+    }
+
+    function downloadSessionBundle() {
+      const bundle = JSON.parse(localStorage.getItem(sessionBundleKey) || '{"version":1,"sessions":[]}');
+      bundle.exported_at = Date.now() / 1000;
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(new Blob([JSON.stringify(bundle, null, 2)], {type: 'application/json'}));
+      link.download = 'agent-sessions.json';
+      link.click();
+      URL.revokeObjectURL(link.href);
+      sessionReport(`Downloaded ${bundle.sessions.length} session(s).`);
     }
 
     // Simulate real-time updates

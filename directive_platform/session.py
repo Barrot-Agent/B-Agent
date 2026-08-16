@@ -9,6 +9,8 @@ JSON files under ``.directive_platform/sessions/``.
 from __future__ import annotations
 
 import json
+import os
+import subprocess
 import time
 from pathlib import Path
 
@@ -39,12 +41,19 @@ class SessionManager:
         self,
         directive_id: str,
         participant_ids: list[str],
+        *,
+        repository: str | None = None,
+        branch: str | None = None,
+        agent: str | None = None,
     ) -> CollaborationSession:
         """Start a new collaboration session for *directive_id*."""
         session = CollaborationSession(
             directive_id=directive_id,
             participant_ids=participant_ids,
             status="active",
+            repository=repository or self._git_value("remote.origin.url"),
+            branch=branch or self._git_value("--branch"),
+            agent=agent or os.environ.get("BARROT_AGENT"),
         )
         self._persist(session)
         return session
@@ -118,3 +127,14 @@ class SessionManager:
     def _persist(self, session: CollaborationSession) -> None:
         dest = self._dir / f"{session.session_id}.json"
         dest.write_text(json.dumps(session.to_dict(), indent=2), encoding="utf-8")
+
+    @staticmethod
+    def _git_value(value: str) -> str | None:
+        command = ["git", "branch", "--show-current"] if value == "--branch" else [
+            "git", "config", "--get", value
+        ]
+        try:
+            result = subprocess.run(command, capture_output=True, text=True, check=False)
+        except OSError:
+            return None
+        return result.stdout.strip() or None

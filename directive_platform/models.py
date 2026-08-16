@@ -375,6 +375,10 @@ class CollaborationSession:
         status: str = "active",
         started_at: float | None = None,
         ended_at: float | None = None,
+        repository: str | None = None,
+        branch: str | None = None,
+        agent: str | None = None,
+        source_session_id: str | None = None,
     ) -> None:
         self.session_id = session_id or str(uuid.uuid4())[:8]
         self.directive_id = directive_id
@@ -383,6 +387,10 @@ class CollaborationSession:
         self.status = status
         self.started_at = started_at or time.time()
         self.ended_at = ended_at
+        self.repository = repository
+        self.branch = branch
+        self.agent = agent
+        self.source_session_id = source_session_id or self.session_id
 
     # ------------------------------------------------------------------
 
@@ -395,6 +403,10 @@ class CollaborationSession:
             "status": self.status,
             "started_at": self.started_at,
             "ended_at": self.ended_at,
+            "repository": self.repository,
+            "branch": self.branch,
+            "agent": self.agent,
+            "source_session_id": self.source_session_id,
         }
 
     @classmethod
@@ -408,6 +420,10 @@ class CollaborationSession:
             status=data.get("status", "active"),
             started_at=data.get("started_at"),
             ended_at=data.get("ended_at"),
+            repository=data.get("repository"),
+            branch=data.get("branch"),
+            agent=data.get("agent"),
+            source_session_id=data.get("source_session_id", data["session_id"]),
         )
 
     def __repr__(self) -> str:
