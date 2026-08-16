@@ -6,6 +6,7 @@ import os
 import re
 import subprocess
 from collections import Counter, defaultdict
+from datetime import datetime, timedelta, timezone
 
 REPO = os.environ.get("GITHUB_REPOSITORY", "Barrot-Agent/B-Agent")
 TITLE = "Weekly workflow failure summary"
@@ -17,6 +18,7 @@ def gh(*args):
 
 
 def main():
+    cutoff = datetime.now(timezone.utc) - timedelta(days=7)
     runs = json.loads(
         gh(
             "run",
@@ -33,7 +35,8 @@ def main():
     )
     grouped = defaultdict(list)
     for run in runs:
-        if run["createdAt"] >= "":  # retain the API's ISO timestamps for sorting
+        created_at = datetime.fromisoformat(run["createdAt"].replace("Z", "+00:00"))
+        if created_at >= cutoff:
             grouped[run["workflowName"]].append(run)
 
     lines = ["## Weekly workflow failure summary", "", "Failures observed in the latest Actions window:"]
