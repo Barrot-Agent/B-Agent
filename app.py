@@ -27,7 +27,57 @@ with left:
         height=140,
     )
 
-    if st.button("Run SmartAgent", type="primary"):
+    btn_run, btn_reconfig = st.columns([1, 1])
+
+    with btn_run:
+        run_clicked = st.button("Run SmartAgent", type="primary")
+
+    with btn_reconfig:
+        reconfig_clicked = st.button(
+            "🔧 Reconfigure Infrastructure",
+            help=(
+                "Run the SmartAgent reconfiguration loop: audit capability gaps, "
+                "reason about improvements, and produce a structured reconfiguration plan."
+            ),
+        )
+
+    if reconfig_clicked:
+        reconfig_goal = (
+            "Reconfigure Barrot's infrastructure to maximize capability coverage and minimize risk"
+        )
+        st.info(f"**Reconfiguration goal:** {reconfig_goal}")
+        with st.status("Running infrastructure reconfiguration…", expanded=True) as status:
+            events = []
+            for event in smart_agent.run(reconfig_goal):
+                events.append(event)
+                if event.type == AgentEventType.THINKING:
+                    st.write(f"💭 {event.content}")
+                elif event.type == AgentEventType.PLAN:
+                    st.write(f"📋 {event.content}")
+                elif event.type == AgentEventType.ACTION:
+                    st.write(f"⚡ {event.content}")
+                elif event.type == AgentEventType.OBSERVATION:
+                    st.write(f"🔎 {event.content}")
+                elif event.type in (AgentEventType.ANSWER, AgentEventType.ERROR):
+                    break
+            final_event_is_error = events and events[-1].type == AgentEventType.ERROR
+            if final_event_is_error:
+                status.update(label="Reconfiguration failed.", state="error")
+            else:
+                status.update(label="Reconfiguration complete.", state="complete")
+        final = next(
+            (e for e in reversed(events) if e.type == AgentEventType.ANSWER), None
+        )
+        if final is not None:
+            st.subheader("📊 Reconfiguration Report")
+            st.markdown(final.content)
+        else:
+            error = next(
+                (e for e in reversed(events) if e.type == AgentEventType.ERROR), None
+            )
+            st.error(error.content if error is not None else "No terminal event produced.")
+
+    if run_clicked:
         events = list(smart_agent.run(goal))
         final = next(
             (event for event in reversed(events) if event.type == AgentEventType.ANSWER), None

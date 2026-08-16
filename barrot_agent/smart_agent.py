@@ -22,6 +22,7 @@ Usage
 from __future__ import annotations
 
 import hashlib
+import logging
 import re
 import textwrap
 import time
@@ -29,6 +30,8 @@ import uuid
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Iterator
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Event types
@@ -531,10 +534,154 @@ class _BuiltinTools:
             metadata={"style": style, "sentences_extracted": len(top)},
         )
 
+    # ------------------------------------------------------------------
+    # Tool: reconfigure_infra
+    # ------------------------------------------------------------------
 
-# ---------------------------------------------------------------------------
-# Planning engine
-# ---------------------------------------------------------------------------
+    @staticmethod
+    def reconfigure_infra(*, target: str = "barrot", mode: str = "audit") -> ToolResult:
+        """
+        Inspect and reconfigure Barrot's infrastructure using live state.
+
+        Parameters
+        ----------
+        target:
+            Label describing what is being reconfigured (informational).
+        mode:
+            ``"audit"``  – Read-only gap analysis against declared capability
+                           targets and the live MCP registry.
+            ``"plan"``   – Produce a structured :class:`ReconfigurationReport`
+                           with server promotion proposals.
+            ``"apply"``  – Invoke the MCP integration pipeline in dry-run mode
+                           and return its stats.  Writes are still blocked by
+                           the default ``MCPApprovalGate(mode="always_deny")``.
+        """
+        call_id = str(uuid.uuid4())[:8]
+
+        try:
+            from barrot_agent.reconfiguration import build_reconfiguration_report
+        except ImportError as exc:
+            return ToolResult(
+                call_id=call_id,
+                tool_name="reconfigure_infra",
+                success=False,
+                output=f"Failed to import reconfiguration module: {exc}",
+            )
+
+        mode = mode.lower().strip()
+        if mode not in ("audit", "plan", "apply"):
+            return ToolResult(
+                call_id=call_id,
+                tool_name="reconfigure_infra",
+                success=False,
+                output=(
+                    f"Unknown mode {mode!r}. "
+                    "Choose one of: 'audit', 'plan', 'apply'."
+                ),
+            )
+
+        logger.debug("reconfigure_infra: target=%s mode=%s", target, mode)
+
+        # ---- audit / plan: build report from live registry ----
+        if mode in ("audit", "plan"):
+            try:
+                report = build_reconfiguration_report(dry_run=True)
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("reconfigure_infra audit error: %s", exc)
+                return ToolResult(
+                    call_id=call_id,
+                    tool_name="reconfigure_infra",
+                    success=False,
+                    output=f"Error during infrastructure audit: {exc}",
+                )
+
+            summary = "\n".join(report.summary_lines())
+
+            if mode == "audit":
+                output = (
+                    f"## 🔍 Infrastructure Audit — `{target}`\n\n"
+                    + summary
+                )
+                metadata: dict[str, Any] = {
+                    "mode": "audit",
+                    "target": target,
+                    "gaps": len(report.gaps),
+                    "proposals": len(report.proposals),
+                    "dry_run": report.dry_run,
+                }
+            else:  # plan
+                output = (
+                    f"## 🗺️ Reconfiguration Plan — `{target}`\n\n"
+                    + summary
+                    + "\n\n"
+                    + "**Next steps:**\n"
+                    + "  1. Review each proposed server in the list above.\n"
+                    + "  2. Set `MCPApprovalGate(mode='interactive')` and "
+                    + "`IntegrationConfig(dry_run=False)` to apply.\n"
+                    + "  3. Re-run with `mode='apply'` to invoke the pipeline.\n"
+                )
+                metadata = {
+                    "mode": "plan",
+                    "target": target,
+                    "gaps": len(report.gaps),
+                    "proposals": len(report.proposals),
+                    "estimated_coverage_gain": report.estimated_coverage_gain,
+                    "required_human_approvals": report.required_human_approvals,
+                    "dry_run": report.dry_run,
+                    "report": report.to_dict(),
+                }
+
+            return ToolResult(
+                call_id=call_id,
+                tool_name="reconfigure_infra",
+                success=True,
+                output=output,
+                metadata=metadata,
+            )
+
+        # ---- apply: invoke the MCP integration pipeline (dry_run=True) ----
+        try:
+            from barrot_agent.mcp_integration import MCPIntegration, IntegrationConfig
+
+            cfg = IntegrationConfig(dry_run=True)
+            integration = MCPIntegration(cfg)
+            stats = integration.run_pipeline()
+
+            output = (
+                f"## ⚙️ Infrastructure Pipeline Run — `{target}` (dry_run=True)\n\n"
+                "The MCP integration pipeline completed in dry-run mode.\n"
+                "No production state was modified — human approval is required "
+                "before any server can be promoted.\n\n"
+                "**Pipeline stats:**\n"
+                + "\n".join(f"  • {k}: {v}" for k, v in stats.items())
+            )
+
+            report = build_reconfiguration_report(dry_run=True)
+            output += (
+                "\n\n**Post-run infrastructure state:**\n"
+                + "\n".join(report.summary_lines())
+            )
+
+            return ToolResult(
+                call_id=call_id,
+                tool_name="reconfigure_infra",
+                success=True,
+                output=output,
+                metadata={
+                    "mode": "apply",
+                    "target": target,
+                    "dry_run": True,
+                    "pipeline_stats": stats,
+                },
+            )
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("reconfigure_infra apply error: %s", exc)
+            return ToolResult(
+                call_id=call_id,
+                tool_name="reconfigure_infra",
+                success=False,
+                output=f"Pipeline error during apply: {exc}",
+            )
 
 _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
     # ---- research / learn ----
@@ -622,6 +769,34 @@ _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
             "tool_args": {"style": "bullet"},
         },
     ],
+    # ---- reconfigure / infrastructure ----
+    "reconfigure": [
+        {
+            "title": "Deep-audit current infrastructure state",
+            "tool": "analyze",
+            "tool_args": {"depth": "deep"},
+        },
+        {
+            "title": "Identify capability gaps and coverage",
+            "tool": "reconfigure_infra",
+            "tool_args": {"mode": "audit"},
+        },
+        {
+            "title": "Reason about optimal reconfiguration changes",
+            "tool": "reason",
+            "tool_args": {},
+        },
+        {
+            "title": "Produce structured reconfiguration plan",
+            "tool": "reconfigure_infra",
+            "tool_args": {"mode": "plan"},
+        },
+        {
+            "title": "Produce executive reconfiguration report",
+            "tool": "summarize",
+            "tool_args": {"style": "executive"},
+        },
+    ],
 }
 
 _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
@@ -641,6 +816,19 @@ _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
             "contribute to",
         ],
         "repo_hunt",
+    ),
+    (
+        [
+            "reconfigure",
+            "infrastructure",
+            "self-modify",
+            "upgrade",
+            "restructure",
+            "reconfig",
+            "rebuild infra",
+            "optimize infrastructure",
+        ],
+        "reconfigure",
     ),
 ]
 
@@ -676,6 +864,8 @@ def _build_plan(goal: str) -> list[PlanStep]:
             args.setdefault("task", goal)
         elif tpl["tool"] == "repo_hunt":
             args.setdefault("topic", goal)
+        elif tpl["tool"] == "reconfigure_infra":
+            args.setdefault("target", goal)
         elif tpl["tool"] == "summarize":
             args.setdefault("content", goal)  # will be replaced at runtime with accumulated output
 
@@ -738,6 +928,7 @@ class SmartAgent:
             "code": self._tools.code,
             "summarize": self._tools.summarize,
             "repo_hunt": self._tools.repo_hunt,
+            "reconfigure_infra": self._tools.reconfigure_infra,
         }
 
     # ------------------------------------------------------------------
