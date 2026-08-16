@@ -1826,7 +1826,7 @@ function barrotOptimize() {
       link.href = URL.createObjectURL(new Blob([JSON.stringify(bundle, null, 2)], {type: 'application/json'}));
       link.download = 'agent-sessions.json';
       link.click();
-      URL.revokeObjectURL(link.href);
+      setTimeout(() => URL.revokeObjectURL(link.href), 100);
       sessionReport(`Downloaded ${bundle.sessions.length} session(s).`);
     }
 

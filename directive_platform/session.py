@@ -51,8 +51,8 @@ class SessionManager:
             directive_id=directive_id,
             participant_ids=participant_ids,
             status="active",
-            repository=repository or self._git_value("remote.origin.url"),
-            branch=branch or self._git_value("--branch"),
+            repository=repository or self._git_config("remote.origin.url"),
+            branch=branch or self._git_current_branch(),
             agent=agent or os.environ.get("BARROT_AGENT"),
         )
         self._persist(session)
@@ -129,10 +129,15 @@ class SessionManager:
         dest.write_text(json.dumps(session.to_dict(), indent=2), encoding="utf-8")
 
     @staticmethod
-    def _git_value(value: str) -> str | None:
-        command = ["git", "branch", "--show-current"] if value == "--branch" else [
-            "git", "config", "--get", value
-        ]
+    def _git_current_branch() -> str | None:
+        return SessionManager._run_git(["git", "branch", "--show-current"])
+
+    @staticmethod
+    def _git_config(key: str) -> str | None:
+        return SessionManager._run_git(["git", "config", "--get", key])
+
+    @staticmethod
+    def _run_git(command: list[str]) -> str | None:
         try:
             result = subprocess.run(command, capture_output=True, text=True, check=False)
         except OSError:
