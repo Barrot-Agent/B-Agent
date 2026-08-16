@@ -264,6 +264,19 @@ class MCPDiscovery:
         "database": [
             {"name": "sql_query", "description": "Execute a read-only SQL query"},
         ],
+        "longevity_research": [
+            {"name": "search_papers", "description": "Search cited longevity research records"},
+            {"name": "search_trials", "description": "Search cited clinical-trial updates"},
+            {"name": "ingest_research", "description": "Normalize research in memory without persistence"},
+            {"name": "generate_mmi_payload", "description": "Generate a provenance-rich MMI payload"},
+        ],
+        "biomarker_analysis": [
+            {"name": "track_biomarker", "description": "Analyze a consented biomarker trajectory"},
+        ],
+        "trial_analysis": [
+            {"name": "compare_treatment_arms", "description": "Compare de-identified treatment arms"},
+            {"name": "detect_signals", "description": "Detect efficacy and safety research signals"},
+        ],
     }
 
     def _infer_tools(self, spec: MCPServerSpec) -> List[ToolSchema]:

@@ -84,6 +84,13 @@ CAPABILITY_TARGETS: List[CapabilityTarget] = [
         description="Optimise compute and budget allocation across workloads.",
         required_tool_categories=["resource_management", "optimisation"],
     ),
+    CapabilityTarget(
+        id="cap-009",
+        name="Longevity research intelligence",
+        priority="high",
+        description="Safely ingest, analyze, and cite aging research, trials, and biomarkers.",
+        required_tool_categories=["longevity_research", "biomarker_analysis", "trial_analysis"],
+    ),
 ]
 
 
@@ -169,6 +176,14 @@ SUPPORTED_MCP_SERVERS: List[MCPServerSpec] = [
         license="MIT",
         requires_auth=True,
         env_vars=["POSTGRES_URL"],
+    ),
+    MCPServerSpec(
+        name="barrot-longevity-mcp",
+        server_id="longevity-research",
+        description="Read-only longevity research, trial, and biomarker analysis.",
+        tool_categories=["longevity_research", "biomarker_analysis", "trial_analysis"],
+        homepage="https://github.com/Barrot-Agent/B-Agent",
+        license="Apache-2.0",
     ),
 ]
 

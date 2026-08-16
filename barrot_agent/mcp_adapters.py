@@ -269,6 +269,36 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
         return {"matches": matches}
 
 
+class LongevityMCPAdapter(BaseMCPAdapter):
+    """Adapter for the local, read-only longevity MCP service."""
+
+    def __init__(self, inventory: ServerInventory, **kwargs: Any) -> None:
+        super().__init__(inventory)
+        from longevity_mcp import LongevityMCPServer
+
+        self._service = LongevityMCPServer(**kwargs)
+
+    def supported_tools(self) -> List[str]:
+        return self._service.supported_tools()
+
+    def call_tool(self, tool_name: str, **kwargs: Any) -> AdapterResult:
+        if not self.validate_tool(tool_name):
+            return AdapterResult(
+                success=False,
+                error=f"Unknown tool '{tool_name}'.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        return self._wrap_call(
+            tool_name,
+            lambda **call_kwargs: self._service.call_tool(tool_name, **call_kwargs),
+            **kwargs,
+        )
+
+    def read_resource(self, resource: str) -> Dict[str, Any]:
+        return self._service.read_resource(resource)
+
+
 # ---------------------------------------------------------------------------
 # Adapter registry
 # ---------------------------------------------------------------------------
@@ -276,6 +306,7 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
 _ADAPTER_CLASSES: Dict[str, type] = {
     "barrot-core-repository": GitMCPAdapter,
     "filesystem": FilesystemMCPAdapter,
+    "longevity-research": LongevityMCPAdapter,
 }
 
 
