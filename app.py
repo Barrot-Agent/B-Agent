@@ -56,9 +56,6 @@ with left:
                     st.write(f"📋 {event.content}")
                 elif event.type == AgentEventType.ACTION:
                     st.write(f"⚡ {event.content}")
-                elif event.type == AgentEventType.TOOL_RESULT:
-                    with st.expander("Tool result", expanded=False):
-                        st.markdown(event.content)
                 elif event.type == AgentEventType.OBSERVATION:
                     st.write(f"🔎 {event.content}")
                 elif event.type in (AgentEventType.ANSWER, AgentEventType.ERROR):
