@@ -49,6 +49,7 @@ logger = logging.getLogger(__name__)
 # Integration configuration
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class IntegrationConfig:
     """Top-level configuration for the MCP integration pipeline."""
@@ -85,6 +86,7 @@ class IntegrationConfig:
 # Integration pipeline
 # ---------------------------------------------------------------------------
 
+
 class MCPIntegration:
     """
     Orchestrates the full MCP integration lifecycle for Barrot.
@@ -106,12 +108,8 @@ class MCPIntegration:
             mode=self._cfg.approval_mode,
             interactive=self._cfg.interactive_approval,
         )
-        self._provenance = MCPProvenanceRecorder(
-            log_path=self._cfg.provenance_path
-        )
-        self._registry = MCPRegistry(
-            registry_path=self._cfg.registry_path
-        )
+        self._provenance = MCPProvenanceRecorder(log_path=self._cfg.provenance_path)
+        self._registry = MCPRegistry(registry_path=self._cfg.registry_path)
 
     # ------------------------------------------------------------------
     # Main pipeline
@@ -181,9 +179,7 @@ class MCPIntegration:
                 server_id=sid,
                 description=inv.description,
                 score=score_val,
-                adapter_class=(
-                    adapter.__class__.__name__ if adapter else "NoAdapter"
-                ),
+                adapter_class=(adapter.__class__.__name__ if adapter else "NoAdapter"),
                 rationale=(
                     f"Score={score_val:.1f}/{component_score.grade}; "
                     f"categories={inv.tool_categories}"
@@ -192,9 +188,7 @@ class MCPIntegration:
                     f"risk_level={inv.security.risk_level}",
                     f"cves={inv.security.known_cves}",
                 ],
-                mitigations=(
-                    ["Adapter layer isolates upstream"] if adapter else []
-                ),
+                mitigations=(["Adapter layer isolates upstream"] if adapter else []),
             )
             exchange = self._pingpong.run(proposal)
             stats["proposals"] += 1
@@ -230,9 +224,7 @@ class MCPIntegration:
             approval_req = ApprovalRequest(
                 action_type=ActionType.REGISTRY_PROMOTE,
                 server_id=sid,
-                description=(
-                    f"Promote {sid} (score={score_val:.1f}) into the framework registry."
-                ),
+                description=(f"Promote {sid} (score={score_val:.1f}) into the framework registry."),
             )
             decision = self._approval.request_approval(approval_req)
 
@@ -264,9 +256,7 @@ class MCPIntegration:
                     name=inv.name,
                     version=inv.version,
                     license=inv.license,
-                    adapter_class=(
-                        adapter.__class__.__name__ if adapter else "NoAdapter"
-                    ),
+                    adapter_class=(adapter.__class__.__name__ if adapter else "NoAdapter"),
                     tool_categories=inv.tool_categories,
                     score=score_val,
                     approved_by=decision.decided_by,
@@ -289,9 +279,7 @@ class MCPIntegration:
     # Step 10: Scheduler
     # ------------------------------------------------------------------
 
-    def build_scheduler(
-        self, config: Optional[SchedulerConfig] = None
-    ) -> MCPScheduler:
+    def build_scheduler(self, config: Optional[SchedulerConfig] = None) -> MCPScheduler:
         """
         Build a bounded scheduler that calls :meth:`run_pipeline` on each tick.
 

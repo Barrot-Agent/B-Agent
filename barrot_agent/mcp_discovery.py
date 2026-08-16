@@ -29,6 +29,7 @@ logger = logging.getLogger(__name__)
 # Discovery data structures
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ToolSchema:
     """JSON-schema representation of a single MCP tool."""
@@ -46,9 +47,7 @@ class SecurityPosture:
     requires_auth: bool
     exposed_env_vars: List[str]
     known_cves: List[str] = field(default_factory=list)
-    last_scanned: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    last_scanned: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     risk_level: str = "unknown"  # "low" | "medium" | "high" | "critical"
 
 
@@ -66,9 +65,7 @@ class ServerInventory:
     tools: List[ToolSchema]
     dependencies: List[str]
     security: SecurityPosture
-    discovered_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    discovered_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     schema_hash: str = ""
 
     def __post_init__(self) -> None:
@@ -83,6 +80,7 @@ class ServerInventory:
 # ---------------------------------------------------------------------------
 # Discovery engine
 # ---------------------------------------------------------------------------
+
 
 class MCPDiscovery:
     """
@@ -137,10 +135,7 @@ class MCPDiscovery:
                 "license": inv.license,
                 "homepage": inv.homepage,
                 "tool_categories": inv.tool_categories,
-                "tools": [
-                    {"name": t.name, "description": t.description}
-                    for t in inv.tools
-                ],
+                "tools": [{"name": t.name, "description": t.description} for t in inv.tools],
                 "dependencies": inv.dependencies,
                 "security": {
                     "requires_auth": inv.security.requires_auth,
@@ -220,9 +215,7 @@ class MCPDiscovery:
             pass
         return []
 
-    def _assess_security(
-        self, spec: MCPServerSpec, deps: List[str]
-    ) -> SecurityPosture:
+    def _assess_security(self, spec: MCPServerSpec, deps: List[str]) -> SecurityPosture:
         """Derive a static security posture from spec metadata."""
         risk = "low"
         if spec.requires_auth:
@@ -230,8 +223,7 @@ class MCPDiscovery:
         if len(deps) > 15:
             risk = "medium"
         if any(
-            kw in spec.description.lower()
-            for kw in ("write", "exec", "shell", "run", "deploy")
+            kw in spec.description.lower() for kw in ("write", "exec", "shell", "run", "deploy")
         ):
             risk = "high"
         return SecurityPosture(

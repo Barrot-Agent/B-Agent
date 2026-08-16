@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 # Check result types
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class CheckResult:
     """Result of a single sandbox validation check."""
@@ -64,9 +65,9 @@ class SandboxReport:
 _SECRET_PATTERNS = [
     re.compile(r"(?i)(api_key|apikey|secret|password|token)\s*=\s*['\"][^'\"]{8,}"),
     re.compile(r"(?i)Bearer\s+[A-Za-z0-9\-_]{20,}"),
-    re.compile(r"(?i)ghp_[A-Za-z0-9]{36}"),        # GitHub PAT
-    re.compile(r"(?i)sk-[A-Za-z0-9]{32,}"),         # OpenAI key
-    re.compile(r"(?i)AKIA[0-9A-Z]{16}"),             # AWS Access Key ID
+    re.compile(r"(?i)ghp_[A-Za-z0-9]{36}"),  # GitHub PAT
+    re.compile(r"(?i)sk-[A-Za-z0-9]{32,}"),  # OpenAI key
+    re.compile(r"(?i)AKIA[0-9A-Z]{16}"),  # AWS Access Key ID
 ]
 
 _FORBIDDEN_PERMISSIONS = [
@@ -82,6 +83,7 @@ _FORBIDDEN_PERMISSIONS = [
 # ---------------------------------------------------------------------------
 # Sandbox runner
 # ---------------------------------------------------------------------------
+
 
 class MCPSandbox:
     """
@@ -167,9 +169,7 @@ class MCPSandbox:
         findings: List[str] = []
 
         if len(deps) > self._max_deps:
-            findings.append(
-                f"Dependency count {len(deps)} exceeds limit {self._max_deps}."
-            )
+            findings.append(f"Dependency count {len(deps)} exceeds limit {self._max_deps}.")
 
         forbidden_found = [d for d in deps if d.lower() in self.FORBIDDEN_DEPS]
         if forbidden_found:
@@ -202,9 +202,7 @@ class MCPSandbox:
         for fname, content in files.items():
             for pattern in _FORBIDDEN_PERMISSIONS:
                 if pattern in content:
-                    findings.append(
-                        f"Forbidden call '{pattern}' found in '{fname}'."
-                    )
+                    findings.append(f"Forbidden call '{pattern}' found in '{fname}'.")
 
         return CheckResult(
             check_name="permission_check",
@@ -213,9 +211,7 @@ class MCPSandbox:
             findings=findings,
         )
 
-    def _check_regression(
-        self, sandbox_path: Path, proposed_files: Dict[str, str]
-    ) -> CheckResult:
+    def _check_regression(self, sandbox_path: Path, proposed_files: Dict[str, str]) -> CheckResult:
         """
         Write proposed files into the sandbox directory and run
         ``python -m compileall`` as a lightweight regression proxy.
@@ -248,9 +244,7 @@ class MCPSandbox:
                 timeout=60,
             )
             if result.returncode != 0:
-                findings.append(
-                    f"Compile errors:\n{result.stderr or result.stdout}"
-                )
+                findings.append(f"Compile errors:\n{result.stderr or result.stdout}")
         except Exception as exc:  # noqa: BLE001
             findings.append(f"Regression check error: {exc}")
 

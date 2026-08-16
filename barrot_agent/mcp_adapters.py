@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 # Adapter base
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class AdapterResult:
     """Unified return type for every adapted tool call."""
@@ -48,9 +49,7 @@ class BaseMCPAdapter(ABC):
 
     def __init__(self, inventory: ServerInventory) -> None:
         self._inventory = inventory
-        self._tool_map: Dict[str, ToolSchema] = {
-            t.name: t for t in inventory.tools
-        }
+        self._tool_map: Dict[str, ToolSchema] = {t.name: t for t in inventory.tools}
 
     @property
     def server_id(self) -> str:
@@ -107,6 +106,7 @@ class BaseMCPAdapter(ABC):
 # Git server adapter
 # ---------------------------------------------------------------------------
 
+
 class GitMCPAdapter(BaseMCPAdapter):
     """
     Adapter for ``mcp-server-git``.
@@ -151,29 +151,34 @@ class GitMCPAdapter(BaseMCPAdapter):
 
     def _impl_git_status(self, repo_path: str = ".") -> Dict[str, Any]:
         import subprocess
+
         r = subprocess.run(
             ["git", "-C", repo_path, "status", "--porcelain"],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         return {"output": r.stdout, "returncode": r.returncode}
 
-    def _impl_git_log(
-        self, repo_path: str = ".", n: int = 10
-    ) -> Dict[str, Any]:
+    def _impl_git_log(self, repo_path: str = ".", n: int = 10) -> Dict[str, Any]:
         import subprocess
+
         r = subprocess.run(
             ["git", "-C", repo_path, "log", f"-{n}", "--oneline"],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         return {"output": r.stdout, "returncode": r.returncode}
 
-    def _impl_git_diff(
-        self, repo_path: str = ".", ref: str = "HEAD"
-    ) -> Dict[str, Any]:
+    def _impl_git_diff(self, repo_path: str = ".", ref: str = "HEAD") -> Dict[str, Any]:
         import subprocess
+
         r = subprocess.run(
             ["git", "-C", repo_path, "diff", ref],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         return {"output": r.stdout, "returncode": r.returncode}
 
@@ -181,9 +186,12 @@ class GitMCPAdapter(BaseMCPAdapter):
         self, repo_path: str = ".", file_path: str = "", ref: str = "HEAD"
     ) -> Dict[str, Any]:
         import subprocess
+
         r = subprocess.run(
             ["git", "-C", repo_path, "show", f"{ref}:{file_path}"],
-            capture_output=True, text=True, timeout=15,
+            capture_output=True,
+            text=True,
+            timeout=15,
         )
         return {"output": r.stdout, "returncode": r.returncode}
 
@@ -191,6 +199,7 @@ class GitMCPAdapter(BaseMCPAdapter):
 # ---------------------------------------------------------------------------
 # Filesystem adapter (read-only)
 # ---------------------------------------------------------------------------
+
 
 class FilesystemMCPAdapter(BaseMCPAdapter):
     """
@@ -230,6 +239,7 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
 
     def _impl_read_file(self, path: str) -> Dict[str, Any]:
         from pathlib import Path
+
         p = Path(self._allowed_root) / path
         p = p.resolve()
         allowed = Path(self._allowed_root).resolve()
@@ -239,6 +249,7 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
 
     def _impl_list_directory(self, path: str = ".") -> Dict[str, Any]:
         from pathlib import Path
+
         p = Path(self._allowed_root) / path
         p = p.resolve()
         allowed = Path(self._allowed_root).resolve()
@@ -246,10 +257,9 @@ class FilesystemMCPAdapter(BaseMCPAdapter):
             raise PermissionError(f"Path '{p}' is outside allowed root '{allowed}'.")
         return {"entries": [e.name for e in p.iterdir()]}
 
-    def _impl_search_files(
-        self, pattern: str, root: str = "."
-    ) -> Dict[str, Any]:
+    def _impl_search_files(self, pattern: str, root: str = ".") -> Dict[str, Any]:
         from pathlib import Path
+
         base = Path(self._allowed_root) / root
         base = base.resolve()
         allowed = Path(self._allowed_root).resolve()
@@ -269,17 +279,13 @@ _ADAPTER_CLASSES: Dict[str, type] = {
 }
 
 
-def build_adapter(
-    inventory: ServerInventory, **kwargs: Any
-) -> Optional[BaseMCPAdapter]:
+def build_adapter(inventory: ServerInventory, **kwargs: Any) -> Optional[BaseMCPAdapter]:
     """
     Factory function: return the appropriate adapter for *inventory*, or
     ``None`` if no adapter is registered for that server.
     """
     cls = _ADAPTER_CLASSES.get(inventory.server_id)
     if cls is None:
-        logger.debug(
-            "No adapter registered for server_id=%s", inventory.server_id
-        )
+        logger.debug("No adapter registered for server_id=%s", inventory.server_id)
         return None
     return cls(inventory, **kwargs)

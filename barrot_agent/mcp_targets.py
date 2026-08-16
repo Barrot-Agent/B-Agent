@@ -10,10 +10,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
-
 # ---------------------------------------------------------------------------
 # Capability targets
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class CapabilityTarget:
@@ -90,6 +90,7 @@ CAPABILITY_TARGETS: List[CapabilityTarget] = [
 # ---------------------------------------------------------------------------
 # Supported MCP server catalogue
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class MCPServerSpec:
@@ -175,6 +176,7 @@ SUPPORTED_MCP_SERVERS: List[MCPServerSpec] = [
 # ---------------------------------------------------------------------------
 # Compatibility requirements
 # ---------------------------------------------------------------------------
+
 
 @dataclass(frozen=True)
 class CompatibilityRequirements:

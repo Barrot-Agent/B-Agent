@@ -19,8 +19,8 @@ from barrot_agent.mcp_pingpong import MCPPingPong, MCPProposal, Phase
 from barrot_agent.mcp_provenance import MCPProvenanceRecorder
 from barrot_agent.mcp_registry import MCPRegistry, RegistryEntry
 from barrot_agent.mcp_sandbox import MCPSandbox
-from barrot_agent.mcp_scorer import MCPScorer
 from barrot_agent.mcp_scheduler import MCPScheduler, SchedulerConfig
+from barrot_agent.mcp_scorer import MCPScorer
 from barrot_agent.mcp_targets import (
     CAPABILITY_TARGETS,
     COMPATIBILITY_REQUIREMENTS,
@@ -28,7 +28,6 @@ from barrot_agent.mcp_targets import (
     get_server_by_id,
     get_targets_by_priority,
 )
-
 
 # ---------------------------------------------------------------------------
 # Step 1 – Targets
@@ -459,7 +458,9 @@ def test_integration_pipeline_dry_run():
     fake_inv = _make_inventory("barrot-core-repository")
     fake_inv.tool_categories = ["version_control", "ci_cd"]
 
-    with patch.object(mi._discovery, "discover_all", return_value={"barrot-core-repository": fake_inv}):
+    with patch.object(
+        mi._discovery, "discover_all", return_value={"barrot-core-repository": fake_inv}
+    ):
         stats = mi.run_pipeline()
 
     assert "discovered" in stats
