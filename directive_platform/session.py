@@ -17,6 +17,7 @@ from typing import Any, Iterable
 from .models import CollaborationSession, Message, SessionAnalysis, UnifiedReport
 
 _DEFAULT_SESSIONS_DIR = Path(".directive_platform") / "sessions"
+_TRANSCRIPT_ROLES = ("user", "human", "copilot", "assistant", "barrot")
 
 
 class SessionManager:
@@ -488,7 +489,7 @@ class SessionManager:
             except (json.JSONDecodeError, TypeError):
                 return False
         role_pattern = re.compile(
-            r"(?im)^\s*(?:user|human|copilot|assistant|barrot)\s*:"
+            rf"(?im)^\s*(?:{'|'.join(_TRANSCRIPT_ROLES)})\s*:"
         )
         return len(set(match.group(0).strip().casefold() for match in role_pattern.finditer(text))) >= 2
 
@@ -509,9 +510,14 @@ class SessionManager:
             return [item for item in payload if isinstance(item, dict)]
         if path.suffix.lower() == ".jsonl":
             records = []
-            for line in text.splitlines():
+            for line_number, line in enumerate(text.splitlines(), start=1):
                 if line.strip():
-                    item = json.loads(line)
+                    try:
+                        item = json.loads(line)
+                    except json.JSONDecodeError as exc:
+                        raise ValueError(
+                            f"Invalid JSONL transcript at line {line_number}."
+                        ) from exc
                     if isinstance(item, dict):
                         records.append(item)
             return records
