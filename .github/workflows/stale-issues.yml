@@ -26,7 +26,6 @@ jobs:
             --json number,title,updatedAt,labels | jq -c '.[]' |
           while read -r issue; do
             number=$(jq -r '.number' <<<"$issue")
-            updated=$(jq -r '.updatedAt' <<<"$issue")
             labels=$(jq -r '[.labels[].name | ascii_downcase] | join(",")' <<<"$issue")
             case ",$labels," in
               *,pinned,*|*,keep-open,*|*,no-stale,*) continue ;;
