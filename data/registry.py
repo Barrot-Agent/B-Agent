@@ -34,6 +34,9 @@ _FILE_MAP: Dict[str, str] = {
     "millennium_problems": "millennium_problems_unified.json",
     "mmi_monetization": "mmi_monetization_unified.json",
     "character_capabilities": "character_capabilities_unified.json",
+    "longevity_unified": "longevity_unified.json",
+    "biomarker_tracking": "biomarker_tracking.json",
+    "reprogramming_protocols": "reprogramming_protocols.json",
     "integration_report": "integration_report.json",
     "pingpong_request_example": "pingpong_request_example.json",
 }
@@ -110,6 +113,21 @@ def load_character_capabilities(force_reload: bool = False) -> Dict[str, Any]:
     Keys: character_database, discovered_capabilities, _meta.
     """
     return _load("character_capabilities", force_reload)
+
+
+def load_longevity_unified(force_reload: bool = False) -> Dict[str, Any]:
+    """Return the unified longevity research dataset."""
+    return _load("longevity_unified", force_reload)
+
+
+def load_biomarker_tracking(force_reload: bool = False) -> Dict[str, Any]:
+    """Return biomarker tracking templates and trial datasets."""
+    return _load("biomarker_tracking", force_reload)
+
+
+def load_reprogramming_protocols(force_reload: bool = False) -> Dict[str, Any]:
+    """Return epigenetic reprogramming protocol templates."""
+    return _load("reprogramming_protocols", force_reload)
 
 
 def load_integration_report(force_reload: bool = False) -> Dict[str, Any]:
