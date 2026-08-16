@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-16T18:57:24.650930+00:00",
+  "timestamp": "2026-08-16T19:47:46.060316+00:00",
   "signal_text": "Recent BTC-relevant headlines: [neutral] Current price of Bitcoin for August 13, 2026 - Fortune | [neutral] Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold | [bearish] Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019 | [neutral] Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo | [neutral] Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo | [neutral] Current price of Bitcoin for August 14, 2026 - Fortune",
-  "score": 52,
-  "confidence": 0.95,
-  "source": "groq:neutral+news(17)",
+  "score": 27,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(17)",
   "news_score": 54,
   "news_entries": 17,
-  "generated_at_unix": 1786906644
+  "generated_at_unix": 1786909666
 }
