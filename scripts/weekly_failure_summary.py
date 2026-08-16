@@ -58,8 +58,12 @@ def main():
             grouped[run["workflowName"]].append(run)
 
     lines = ["## Weekly workflow failure summary", "", "Failures observed in the latest Actions window:"]
-    oldest_run = min(runs, key=lambda run: parse_timestamp(run["createdAt"]), default=None)
-    if len(runs) == 100 and oldest_run and parse_timestamp(oldest_run["createdAt"]) >= cutoff:
+    cutoff_run = None
+    if len(runs) >= 100:
+        cutoff_run = sorted(
+            runs, key=lambda run: parse_timestamp(run["createdAt"]), reverse=True
+        )[99]
+    if cutoff_run and parse_timestamp(cutoff_run["createdAt"]) >= cutoff:
         lines.append("- _The 100-run API limit was reached; this report may be incomplete._")
     if not grouped:
         lines.append("- None.")
