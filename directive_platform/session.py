@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 from typing import Any, Iterable
 
-from .models import CollaborationSession, Message
+from .models import CollaborationSession, Message, SessionAnalysis, UnifiedReport
 
 _DEFAULT_SESSIONS_DIR = Path(".directive_platform") / "sessions"
 
@@ -32,6 +32,8 @@ class SessionManager:
     def __init__(self, sessions_dir: Path | str | None = None) -> None:
         self._dir = Path(sessions_dir) if sessions_dir else _DEFAULT_SESSIONS_DIR
         self._dir.mkdir(parents=True, exist_ok=True)
+        self._reports_dir = self._dir.parent / "reports"
+        self._reports_dir.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------
     # Public API
@@ -112,6 +114,121 @@ class SessionManager:
             path.unlink()
             return True
         return False
+
+    def analyze_session(self, session_id: str) -> SessionAnalysis:
+        """Extract structured, provenance-linked findings from a session."""
+        session = self.get_session(session_id)
+        if session is None:
+            raise ValueError(f"Session {session_id!r} not found.")
+        analysis = SessionAnalysis(session_id=session.session_id, directive_id=session.directive_id)
+        buckets = {
+            "directive": "objectives", "query": "objectives", "insight": "decisions",
+            "response": "actions", "result": "outputs", "handoff": "dependencies",
+        }
+        markers = {
+            "decision": "decisions", "decided": "decisions",
+            "assume": "assumptions", "assumption": "assumptions",
+            "depend": "dependencies", "requires": "dependencies",
+            "conflict": "conflicts", "contradict": "conflicts", "disagree": "conflicts",
+            "unresolved": "unresolved_items", "open question": "unresolved_items",
+            "todo": "actions",
+        }
+        for message in session.messages:
+            content = " ".join(message.content.split())
+            if not content:
+                continue
+            evidence = {
+                "claim": content,
+                "source_session_id": message.source_session_id or session.session_id,
+                "timestamp": message.timestamp,
+                "author": message.sender_name,
+                "confidence": "high" if message.source_kind is None else "medium",
+                "message_id": message.message_id,
+            }
+            bucket = buckets.get(message.message_type, "outputs")
+            getattr(analysis, bucket).append(evidence)
+            lowered = content.casefold()
+            for marker, marker_bucket in markers.items():
+                if marker in lowered and evidence not in getattr(analysis, marker_bucket):
+                    getattr(analysis, marker_bucket).append(dict(evidence))
+            analysis.normalized_terms[content.casefold()] = content
+        self._persist_analysis(analysis)
+        return analysis
+
+    def unify_sessions(self, session_ids: Iterable[str] | None = None) -> UnifiedReport:
+        """Corroborate sessions into a versioned report without hiding conflicts."""
+        ids = list(session_ids) if session_ids is not None else [
+            session.session_id for session in self.list_sessions()
+        ]
+        analyses = [self.analyze_session(session_id) for session_id in ids]
+        evidence: list[dict[str, Any]] = []
+        for analysis in analyses:
+            for field in SessionAnalysis._FIELDS:
+                evidence.extend(getattr(analysis, field))
+
+        grouped: dict[str, list[dict[str, Any]]] = {}
+        for item in evidence:
+            grouped.setdefault(item["claim"].casefold(), []).append(item)
+        agreements = [
+            {"claim": items[0]["claim"], "evidence": items}
+            for items in grouped.values() if len(items) > 1
+        ]
+        conflicts = [
+            item for analysis in analyses for item in analysis.conflicts
+        ]
+        dependencies = [
+            item for analysis in analyses for item in analysis.dependencies
+        ]
+        gaps = [
+            item for analysis in analyses for item in analysis.unresolved_items
+        ]
+        previous = self.get_latest_report()
+        version = previous.version + 1 if previous else 1
+        changes = self._report_changes(previous, agreements, conflicts, gaps)
+        report = UnifiedReport(
+            version=version, session_ids=ids,
+            executive_summary=(
+                f"Synthesized {len(analyses)} session(s), preserving "
+                f"{len(evidence)} provenance-linked findings."
+            ),
+            knowledge_model={
+                "sessions": ids,
+                "facts": len(evidence),
+                "confirmed_agreements": len(agreements),
+                "unresolved_questions": len(gaps),
+            },
+            agreements=agreements, conflicts=conflicts, dependencies=dependencies,
+            gaps_and_risks=gaps,
+            recommendations=[
+                {"action": "Review unresolved items and conflicts", "evidence_count": len(gaps) + len(conflicts)}
+            ] if gaps or conflicts else [],
+            evidence_index=evidence,
+            changes=changes,
+            analyses=[analysis.to_dict() for analysis in analyses],
+        )
+        self._persist_report(report)
+        return report
+
+    def get_latest_report(self) -> UnifiedReport | None:
+        path = self._reports_dir / "unified.json"
+        if not path.exists():
+            return None
+        try:
+            return UnifiedReport.from_dict(json.loads(path.read_text(encoding="utf-8")))
+        except (json.JSONDecodeError, KeyError, TypeError):
+            return None
+
+    def list_reports(self) -> list[UnifiedReport]:
+        reports = []
+        for path in (self._reports_dir / "history").glob("*.json"):
+            try:
+                reports.append(UnifiedReport.from_dict(json.loads(path.read_text(encoding="utf-8"))))
+            except (json.JSONDecodeError, KeyError, TypeError):
+                continue
+        latest = self.get_latest_report()
+        if latest:
+            reports.append(latest)
+        return sorted(reports, key=lambda report: report.version)
 
     def import_transcript(
         self,
@@ -230,6 +347,40 @@ class SessionManager:
     def _persist(self, session: CollaborationSession) -> None:
         dest = self._dir / f"{session.session_id}.json"
         dest.write_text(json.dumps(session.to_dict(), indent=2), encoding="utf-8")
+
+    def _persist_analysis(self, analysis: SessionAnalysis) -> None:
+        dest = self._reports_dir / f"{analysis.session_id}.json"
+        dest.write_text(json.dumps(analysis.to_dict(), indent=2), encoding="utf-8")
+
+    def _persist_report(self, report: UnifiedReport) -> None:
+        history = self._reports_dir / "history"
+        history.mkdir(parents=True, exist_ok=True)
+        if report.version > 1:
+            previous = history / f"v{report.version - 1}.json"
+            latest = self._reports_dir / "unified.json"
+            if latest.exists() and not previous.exists():
+                previous.write_text(latest.read_text(encoding="utf-8"), encoding="utf-8")
+        (self._reports_dir / "unified.json").write_text(
+            json.dumps(report.to_dict(), indent=2), encoding="utf-8"
+        )
+
+    @staticmethod
+    def _report_changes(
+        previous: UnifiedReport | None,
+        agreements: list[dict[str, Any]],
+        conflicts: list[dict[str, Any]],
+        gaps: list[dict[str, Any]],
+    ) -> list[str]:
+        if previous is None:
+            return ["Initial synthesis created."]
+        changes = []
+        if len(agreements) != len(previous.agreements):
+            changes.append(f"Agreements changed from {len(previous.agreements)} to {len(agreements)}.")
+        if len(conflicts) != len(previous.conflicts):
+            changes.append(f"Conflicts changed from {len(previous.conflicts)} to {len(conflicts)}.")
+        if len(gaps) != len(previous.gaps_and_risks):
+            changes.append(f"Unresolved items changed from {len(previous.gaps_and_risks)} to {len(gaps)}.")
+        return changes or ["No material finding-count changes."]
 
     @staticmethod
     def _timestamp(value: Any) -> float | None:

@@ -430,3 +430,107 @@ class CollaborationSession:
             f"directive={self.directive_id!r}, "
             f"messages={len(self.messages)}, status={self.status!r})"
         )
+
+
+# ---------------------------------------------------------------------------
+# Session analysis and unified reports
+# ---------------------------------------------------------------------------
+
+
+class SessionAnalysis:
+    """Structured findings extracted from one session, with message provenance."""
+
+    _FIELDS = (
+        "objectives", "decisions", "actions", "outputs", "dependencies",
+        "assumptions", "conflicts", "unresolved_items",
+    )
+
+    def __init__(
+        self, *, session_id: str, directive_id: str,
+        objectives: list[dict[str, Any]] | None = None,
+        decisions: list[dict[str, Any]] | None = None,
+        actions: list[dict[str, Any]] | None = None,
+        outputs: list[dict[str, Any]] | None = None,
+        dependencies: list[dict[str, Any]] | None = None,
+        assumptions: list[dict[str, Any]] | None = None,
+        conflicts: list[dict[str, Any]] | None = None,
+        unresolved_items: list[dict[str, Any]] | None = None,
+        normalized_terms: dict[str, str] | None = None,
+    ) -> None:
+        self.session_id = session_id
+        self.directive_id = directive_id
+        values = {
+            "objectives": objectives, "decisions": decisions, "actions": actions,
+            "outputs": outputs, "dependencies": dependencies,
+            "assumptions": assumptions, "conflicts": conflicts,
+            "unresolved_items": unresolved_items,
+        }
+        for field in self._FIELDS:
+            setattr(self, field, list(values[field] or []))
+        self.normalized_terms = dict(normalized_terms or {})
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "session_id": self.session_id,
+            "directive_id": self.directive_id,
+            **{field: getattr(self, field) for field in self._FIELDS},
+            "normalized_terms": self.normalized_terms,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "SessionAnalysis":
+        return cls(
+            session_id=data["session_id"],
+            directive_id=data.get("directive_id", ""),
+            **{field: data.get(field, []) for field in cls._FIELDS},
+            normalized_terms=data.get("normalized_terms", {}),
+        )
+
+
+class UnifiedReport:
+    """Versioned, provenance-preserving synthesis of one or more sessions."""
+
+    def __init__(
+        self, *, report_id: str = "unified", version: int = 1,
+        generated_at: float | None = None, session_ids: list[str] | None = None,
+        executive_summary: str = "", knowledge_model: dict[str, Any] | None = None,
+        agreements: list[dict[str, Any]] | None = None,
+        conflicts: list[dict[str, Any]] | None = None,
+        dependencies: list[dict[str, Any]] | None = None,
+        gaps_and_risks: list[dict[str, Any]] | None = None,
+        recommendations: list[dict[str, Any]] | None = None,
+        evidence_index: list[dict[str, Any]] | None = None,
+        changes: list[str] | None = None,
+        analyses: list[dict[str, Any]] | None = None,
+    ) -> None:
+        self.report_id = report_id
+        self.version = version
+        self.generated_at = generated_at or time.time()
+        self.session_ids = list(session_ids or [])
+        self.executive_summary = executive_summary
+        self.knowledge_model = dict(knowledge_model or {})
+        self.agreements = list(agreements or [])
+        self.conflicts = list(conflicts or [])
+        self.dependencies = list(dependencies or [])
+        self.gaps_and_risks = list(gaps_and_risks or [])
+        self.recommendations = list(recommendations or [])
+        self.evidence_index = list(evidence_index or [])
+        self.changes = list(changes or [])
+        self.analyses = list(analyses or [])
+
+    def to_dict(self) -> dict[str, Any]:
+        return {key: getattr(self, key) for key in (
+            "report_id", "version", "generated_at", "session_ids",
+            "executive_summary", "knowledge_model", "agreements", "conflicts",
+            "dependencies", "gaps_and_risks", "recommendations",
+            "evidence_index", "changes", "analyses",
+        )}
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "UnifiedReport":
+        return cls(**{key: data[key] for key in (
+            "report_id", "version", "generated_at", "session_ids",
+            "executive_summary", "knowledge_model", "agreements", "conflicts",
+            "dependencies", "gaps_and_risks", "recommendations",
+            "evidence_index", "changes", "analyses",
+        ) if key in data})

@@ -34,6 +34,8 @@ from .models import (
     Directive,
     Message,
     CollaborationSession,
+    SessionAnalysis,
+    UnifiedReport,
 )
 from .registry import AgentRegistry
 from .directives import DirectiveManager
@@ -51,6 +53,8 @@ __all__ = [
     "Directive",
     "Message",
     "CollaborationSession",
+    "SessionAnalysis",
+    "UnifiedReport",
     # Managers
     "AgentRegistry",
     "DirectiveManager",
