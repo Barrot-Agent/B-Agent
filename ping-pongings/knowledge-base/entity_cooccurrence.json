@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 358,
+    "xrp_entries": 359,
     "btc_entries": 215
   },
-  "unique_pairs_found": 989,
+  "unique_pairs_found": 996,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 62,
+      "cooccurrence_count": 64,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -156,6 +156,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 9,
@@ -181,21 +196,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -261,6 +261,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -316,21 +331,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -992,6 +992,36 @@
         {
           "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
         }
       ]
     },
@@ -2537,36 +2567,6 @@
         {
           "title": "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "TradingView",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TradingView",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
         }
       ]
     },
@@ -6057,6 +6057,83 @@
       "example_headlines": [
         {
           "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Wyoming",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Wyoming",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "Wyoming",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wyoming",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
           "asset": "XRP"
         }
       ]
