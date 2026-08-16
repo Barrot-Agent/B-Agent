@@ -76,10 +76,10 @@ class LongevityMCPServer:
         return list(self._TOOLS)
 
     def call_tool(self, tool_name: str, **kwargs: Any) -> Dict[str, Any]:
-        if tool_name not in self._TOOLS:
-            raise ValueError(f"Unknown longevity tool: {tool_name}")
         if tool_name in {"apply_protocol", "write_dataset", "store_participant"}:
             raise PermissionError("Longevity MCP is read-only; human approval is required.")
+        if tool_name not in self._TOOLS:
+            raise ValueError(f"Unknown longevity tool: {tool_name}")
         handler = getattr(self, f"_{tool_name}")
         return handler(**kwargs)
 
@@ -128,10 +128,13 @@ class LongevityMCPServer:
         records = self._safe_records(trial_records)
         cohort = ParticipantCohort(phase_number=0, total_participants=len(records))
         for row in records:
+            baseline = float(row.get("baseline_epigenetic_age", 0))
+            followup = float(row.get("followup_epigenetic_age", 0))
+            age_reversal = float(row.get("age_reversal", baseline - followup))
             cohort.add_participant_outcome(
                 row.get("participant_id", "unknown"),
                 str(row.get("treatment_arm", "unassigned")),
-                float(row.get("age_reversal", float(row.get("baseline_epigenetic_age", 0)) - float(row.get("followup_epigenetic_age", 0)))),
+                age_reversal,
             )
         return self._envelope(
             data={"by_arm": cohort.compare_treatment_arms()},

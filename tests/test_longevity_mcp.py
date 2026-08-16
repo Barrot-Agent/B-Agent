@@ -56,10 +56,10 @@ def test_consent_and_writes_are_blocked():
 
     try:
         server.call_tool("write_dataset")
-    except ValueError:
+    except PermissionError:
         pass
     else:
-        raise AssertionError("unknown write tools must not be exposed")
+        raise AssertionError("write tools must require approval")
 
 
 def test_signal_detection_includes_safety_warning():
