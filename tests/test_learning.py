@@ -51,3 +51,19 @@ def test_rejects_invalid_scores_and_corrupt_records(tmp_path):
     path.write_text(json.dumps({"task": "", "success": True}) + "\n", encoding="utf-8")
     with pytest.raises(ValueError, match="invalid experience at line 1"):
         ExperienceLedger(path).read()
+
+
+def test_accepts_forward_compatible_extra_fields(tmp_path):
+    path = tmp_path / "experiences.jsonl"
+    path.write_text(
+        json.dumps({"task": "task", "success": True, "future_field": "ignored"}) + "\n",
+        encoding="utf-8",
+    )
+
+    assert ExperienceLedger(path).read()[0].task == "task"
+
+
+def test_rejects_non_finite_comparison_threshold(tmp_path):
+    ledger = ExperienceLedger(tmp_path / "experiences.jsonl")
+    with pytest.raises(ValueError, match="finite"):
+        ledger.compare([Experience("task", True, 0.5)], [Experience("task", True, 0.5)], float("nan"))

@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import math
 import uuid
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, fields
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
@@ -72,7 +72,12 @@ class ExperienceLedger:
                     continue
                 try:
                     data = json.loads(line)
-                    records.append(Experience(**data))
+                    if not isinstance(data, dict):
+                        raise TypeError("experience must be an object")
+                    known_fields = {item.name for item in fields(Experience)}
+                    records.append(Experience(**{
+                        key: value for key, value in data.items() if key in known_fields
+                    }))
                 except (TypeError, ValueError, json.JSONDecodeError) as exc:
                     raise ValueError(f"invalid experience at line {line_number}") from exc
         return records
@@ -105,8 +110,9 @@ class ExperienceLedger:
         never treated as passing results.
         """
 
-        if minimum_delta < 0:
-            raise ValueError("minimum_delta must not be negative")
+        minimum_delta = float(minimum_delta)
+        if not math.isfinite(minimum_delta) or minimum_delta < 0:
+            raise ValueError("minimum_delta must be a finite, non-negative number")
         baseline_summary = self.summarize(baseline)
         candidate_summary = self.summarize(candidate)
         baseline_score = baseline_summary["mean_score"]
