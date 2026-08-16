@@ -14,6 +14,8 @@ def gh(*args):
 
 
 def main():
+    if not PR:
+        return
     info = json.loads(gh("pr", "view", PR, "--repo", REPO, "--json", "title,labels,statusCheckRollup"))
     if any(label["name"] == "do-not-autopatch" for label in info["labels"]):
         return

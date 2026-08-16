@@ -40,6 +40,8 @@ def main():
             grouped[run["workflowName"]].append(run)
 
     lines = ["## Weekly workflow failure summary", "", "Failures observed in the latest Actions window:"]
+    if len(runs) == 100:
+        lines.append("- _The 100-run API limit was reached; this report may be incomplete._")
     if not grouped:
         lines.append("- None.")
     else:

@@ -30,7 +30,7 @@ jobs:
             info=$(gh pr view "$pr" --repo "$REPO" --json mergeable,statusCheckRollup)
             mergeable=$(jq -r '.mergeable' <<<"$info")
             total=$(jq '[.statusCheckRollup[]?] | length' <<<"$info")
-            failed=$(jq '[.statusCheckRollup[]? | select(.conclusion != "SUCCESS")] | length' <<<"$info")
+            failed=$(jq '[.statusCheckRollup[]? | select(.conclusion != null and .conclusion != "SUCCESS")] | length' <<<"$info")
             if [ "$mergeable" = "MERGEABLE" ] && [ "$total" -gt 0 ] && [ "$failed" -eq 0 ]; then
               gh pr merge "$pr" --repo "$REPO" --squash --auto --delete-branch
               echo "Enabled required-check auto-merge for dependency PR #$pr."
