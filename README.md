@@ -78,23 +78,36 @@ The mobile guide covers:
 ## 📁 Repository Structure
 
 ```
-Barrot-Agent/
-├── .github/workflows/      # GitHub Actions automation
-├── Barrot-Agent/          # Agent configuration
-├── Barrot-Bundles/        # Bundle storage
-├── memory-bundles/        # Memory and activity logs
-├── SHRM-System/           # System Health & Resource Monitor
-├── site/                  # Barrot Agent dashboard
-├── search-engine/         # Standalone search engine
-├── coin-app/              # Coin app integration & automation
-├── spells/                # Agent capability definitions
-├── glyphs/                # Capability glyphs (quantum, temporal, character)
-├── character-capabilities/ # Fictional character ability transformations
-├── ai-tools-config.yaml   # AI models and system prompts
-├── pingpong_emitter.py    # 22-agent entanglement pingpong
-├── pingpong-config.yaml   # External pingpong configuration
-├── build_manifest.yaml    # Current build status
-└── MOBILE_SETUP.md       # Mobile setup guide
+B-Agent/
+├── barrot_agent/               # 🐍 Core Python package
+│   ├── agi/                    #   AGI reasoning, quantum entanglement, algorithms
+│   ├── analysis/               #   Email, vision, signal, character analysis
+│   ├── ingestion/              #   Data harvesting and knowledge ingestion
+│   ├── monetization/           #   Revenue strategies, grants, MMI compiler
+│   ├── orchestration/          #   MCP coordination, sync, service bridges
+│   ├── rendering/              #   3D dataset absorption and rendering
+│   ├── mcp_*.py                #   MCP integration framework (10-step pipeline)
+│   ├── smart_agent.py          #   Autonomous plan-act-observe agent
+│   ├── core.py                 #   BAgent application class
+│   ├── config.py               #   Pydantic configuration
+│   └── logger.py               #   Structured logging
+├── apex_lattice/               # 🔬 Static code analysis framework
+│   └── analyzers/              #   Architecture, security, performance analyzers
+├── directive_platform/         # 🎯 Directive & session management platform
+├── data/                       # 📦 Canonical JSON datasets & data registry
+├── examples/                   # 📖 Usage examples for all modules
+├── scripts/                    # 🔧 Operational and utility scripts
+├── tests/                      # ✅ Test suite
+├── ping-pongings/              # 🏓 22-agent entanglement system state
+│   ├── knowledge-base/         #   Accumulated knowledge and memory
+│   ├── agents/                 #   Agent role definitions
+│   └── protocols/              #   Communication protocols
+├── site/                       # 🌐 Barrot Agent dashboard (static site)
+├── search-engine/              # 🔍 Standalone privacy-first search engine
+├── self_hosted_brain/          # 🧠 Self-hosted model server
+├── app.py                      # Streamlit demo entrypoint
+├── pingpong_emitter.py         # Ping-pong request emitter
+└── pyproject.toml              # Package metadata & tooling config
 ```
 
 ## 🎯 Features
