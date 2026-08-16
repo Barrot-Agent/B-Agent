@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 359,
+    "xrp_entries": 360,
     "btc_entries": 215
   },
-  "unique_pairs_found": 996,
+  "unique_pairs_found": 999,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -3241,6 +3241,21 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -11320,17 +11335,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Ethereum (ETH)",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
@@ -11821,6 +11825,39 @@
       "example_headlines": [
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance Singapore",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Yahoo Finance Singapore",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin",
           "asset": "BTC"
         }
       ]

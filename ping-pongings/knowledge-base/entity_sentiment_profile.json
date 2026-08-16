@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 359,
+    "xrp_entries": 360,
     "btc_entries": 215
   },
-  "unique_entities_profiled": 340,
+  "unique_entities_profiled": 341,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 59,
-      "bullish": 24,
+      "total_mentions": 60,
+      "bullish": 25,
       "neutral": 12,
       "bearish": 23,
-      "net_sentiment_score": 0.017,
+      "net_sentiment_score": 0.033,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 24,
+      "total_mentions": 25,
       "bullish": 13,
       "neutral": 4,
-      "bearish": 7,
-      "net_sentiment_score": 0.25,
+      "bearish": 8,
+      "net_sentiment_score": 0.2,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -239,6 +239,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "Strategy",
       "total_mentions": 9,
       "bullish": 4,
@@ -253,23 +270,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy Announces Second Quarter 2026 Financial Results - Strategy"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 8,
-      "bullish": 6,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.625,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -324,6 +324,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 7,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 4,
+      "net_sentiment_score": -0.286,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "Binance",
       "total_mentions": 6,
       "bullish": 3,
@@ -338,22 +354,6 @@
         "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
         "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
         "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 6,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": -0.167,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -5042,6 +5042,20 @@
       ],
       "example_headlines": [
         "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Yahoo Finance Singapore",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance Sin"
       ]
     }
   ]
