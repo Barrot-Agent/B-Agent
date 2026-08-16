@@ -26,8 +26,8 @@ Example:
 from barrot_agent.learning import Experience, ExperienceLedger
 
 ledger = ExperienceLedger("ping-pongings/knowledge-base/experiences.jsonl")
-ledger.record(Experience("memory retrieval", True, score=0.9))
-print(ledger.summarize())
+experience = ledger.record(Experience("memory retrieval", True, score=0.9))
+print(ledger.summarize([experience]))
 ```
 
 This provides the missing measurement layer for Barrot's self-learning

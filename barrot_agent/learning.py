@@ -85,12 +85,11 @@ class ExperienceLedger:
     def summarize(self, experiences: Iterable[Experience] | None = None) -> dict[str, Any]:
         records = list(self.read() if experiences is None else experiences)
         scored = [item.score for item in records if item.score is not None]
+        successes = sum(item.success for item in records)
         return {
             "count": len(records),
-            "successes": sum(item.success for item in records),
-            "success_rate": (
-                sum(item.success for item in records) / len(records) if records else 0.0
-            ),
+            "successes": successes,
+            "success_rate": successes / len(records) if records else 0.0,
             "mean_score": sum(scored) / len(scored) if scored else None,
         }
 
