@@ -84,10 +84,10 @@ class LongevityMCPServer:
         return list(self._TOOLS)
 
     def call_tool(self, tool_name: str, **kwargs: Any) -> Dict[str, Any]:
+        if tool_name not in self._TOOLS and tool_name not in self._WRITE_TOOLS:
+            raise ValueError(f"Unknown longevity tool: {tool_name}")
         if tool_name in self._WRITE_TOOLS:
             raise PermissionError("Longevity MCP is read-only; human approval is required.")
-        if tool_name not in self._TOOLS:
-            raise ValueError(f"Unknown longevity tool: {tool_name}")
         handler = getattr(self, f"_{tool_name}", None)
         if handler is None:
             raise ValueError(f"Tool handler is not implemented: {tool_name}")
@@ -201,9 +201,6 @@ class LongevityMCPServer:
             safety_warnings=["Signals are research outputs, not clinical guidance."],
         )
 
-    def _safe_records(self, records: Iterable[Mapping[str, Any]]) -> List[Dict[str, Any]]:
-        return self._filter_records(records)[0]
-
     def _filter_records(
         self, records: Iterable[Mapping[str, Any]]
     ) -> tuple[List[Dict[str, Any]], int]:
@@ -217,7 +214,7 @@ class LongevityMCPServer:
 
     @staticmethod
     def _pseudonymize(value: str) -> str:
-        return "participant-" + hashlib.sha256(value.encode("utf-8")).hexdigest()[:12]
+        return "participant-" + hashlib.sha256(value.encode("utf-8")).hexdigest()[:32]
 
     def _redact(self, value: Any) -> Any:
         if isinstance(value, dict):
