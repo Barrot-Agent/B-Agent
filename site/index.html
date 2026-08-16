@@ -1806,7 +1806,12 @@ function barrotOptimize() {
           (incoming.messages || []).forEach(message => {
             if (!messages.has(message.message_id)) messages.set(message.message_id, message);
           });
-          existing.messages = Array.from(messages.values()).sort((a, b) => a.timestamp - b.timestamp);
+          existing.messages = Array.from(messages.values()).sort((a, b) => {
+            const left = new Date(a.timestamp).getTime();
+            const right = new Date(b.timestamp).getTime();
+            return (Number.isNaN(left) ? Number(a.timestamp) : left)
+              - (Number.isNaN(right) ? Number(b.timestamp) : right);
+          });
         });
         const merged = { version: 1, exported_at: Date.now() / 1000, sessions: Array.from(sessions.values()) };
         localStorage.setItem(sessionBundleKey, JSON.stringify(merged));
