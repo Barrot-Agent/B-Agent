@@ -271,7 +271,10 @@ class MCPDiscovery:
             {"name": "generate_mmi_payload", "description": "Generate a provenance-rich MMI payload"},
         ],
         "biomarker_analysis": [
-            {"name": "track_biomarker", "description": "Analyze a consented biomarker trajectory"},
+            {
+                "name": "track_biomarker",
+                "description": "Analyze a biomarker trajectory; explicit participant consent required",
+            },
         ],
         "trial_analysis": [
             {"name": "compare_treatment_arms", "description": "Compare de-identified treatment arms"},

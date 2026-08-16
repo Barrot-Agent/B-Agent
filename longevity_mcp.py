@@ -103,12 +103,11 @@ class LongevityMCPServer:
 
     def _search_records(self, query: str, records: Iterable[Mapping[str, Any]], kind: str) -> Dict[str, Any]:
         terms = query.lower().split()
-        matches = [
-            self._redact(dict(record))
-            for record in records
-            if all(term in json.dumps(record, default=str).lower() for term in terms)
-            and self._consented(record)
-        ]
+        matches = []
+        for record in records:
+            serialized = json.dumps(record, default=str).lower()
+            if self._consented(record) and all(term in serialized for term in terms):
+                matches.append(self._redact(dict(record)))
         return self._envelope(data={"kind": kind, "results": matches}, cohort_size=len(matches))
 
     def _ingest_research(
@@ -253,7 +252,7 @@ class LongevityMCPServer:
         *,
         data: Any,
         source_citations: Optional[Iterable[str]] = None,
-        confidence: float = _BASE_CONFIDENCE,
+        confidence: Optional[float] = None,
         cohort_size: int = 0,
         filtered_records: int = 0,
         safety_warnings: Optional[Iterable[str]] = None,
@@ -262,7 +261,7 @@ class LongevityMCPServer:
             "data": data,
             "metadata": {
                 "source_citations": list(source_citations or self._source_citations),
-                "confidence": confidence,
+                "confidence": self._BASE_CONFIDENCE if confidence is None else confidence,
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "cohort_size": cohort_size,
                 "filtered_records": filtered_records,
