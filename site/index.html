@@ -1815,7 +1815,7 @@ function barrotOptimize() {
         });
         const merged = { version: 1, exported_at: Date.now() / 1000, sessions: Array.from(sessions.values()) };
         localStorage.setItem(sessionBundleKey, JSON.stringify(merged));
-        sessionReport(`Merged ${bundle.sessions.length} session(s) locally. Use Download to save the bundle.`);
+        sessionReport(`Merged ${(bundle.sessions || []).length} session(s) locally. Use Download to save the bundle.`);
       }).catch(error => sessionReport(`Unable to merge bundle: ${error.message}`));
     }
 
