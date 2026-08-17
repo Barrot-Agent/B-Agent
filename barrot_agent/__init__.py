@@ -36,6 +36,15 @@ from .smart_agent import (
     ToolCall,
     ToolResult,
 )
+from .upgrade_flywheel import (
+    ActionResult,
+    FlywheelCycleResult,
+    FlywheelReport,
+    ObservationResult,
+    ReasoningResult,
+    UpgradeFlywheel,
+    VerificationResult,
+)
 
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
@@ -65,6 +74,13 @@ __all__ = [
     "ToolCall",
     "ToolResult",
     "SmartAgent",
+    "ActionResult",
+    "FlywheelCycleResult",
+    "FlywheelReport",
+    "ObservationResult",
+    "ReasoningResult",
+    "UpgradeFlywheel",
+    "VerificationResult",
     "data_registry",
 ]
 

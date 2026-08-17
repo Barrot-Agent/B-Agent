@@ -62,6 +62,69 @@ streamlit run app.py
 
 Canonical JSON assets live in [`data/`](data/) and should be accessed through [`data/registry.py`](data/registry.py), not ad-hoc file loads.
 
+### 🔄 Upgrade Flywheel
+
+The **UpgradeFlywheel** is the system-wide self-improvement orchestrator that
+unifies all major B-Agent components into a single iterative refinement loop.
+On each cycle it executes Barrot's signature four-phase process:
+
+| Phase | What happens |
+|-------|-------------|
+| **Observe** | `SmartAgent` analyses the live system state; `build_reconfiguration_report` snapshots infrastructure coverage gaps. |
+| **Reason** | Observations are synthesised into a ranked list of improvements; a `DirectivePlatform` REFINE directive is optionally opened so every registered agent contributes insights. |
+| **Act** | Improvements are applied (or described in dry-run mode) and logged as a structured `ActionResult`. |
+| **Verify** | A second infrastructure snapshot confirms coverage trends; all checks are recorded in a `VerificationResult`. |
+
+Cycles repeat until either all capability gaps are closed (convergence) or
+`max_cycles` is reached.  The full run history is returned as a
+`FlywheelReport` with per-cycle summaries and JSON serialisation.
+
+**Minimal usage:**
+
+```python
+from barrot_agent import UpgradeFlywheel
+
+flywheel = UpgradeFlywheel()          # dry_run=True by default
+report = flywheel.run(max_cycles=3)
+print(report.summary())
+```
+
+**With DirectivePlatform agent sessions:**
+
+```python
+from directive_platform import DirectivePlatform, Agent
+from barrot_agent import UpgradeFlywheel
+
+# Register a refinement agent once
+dp = DirectivePlatform(platform_dir=".directive_platform")
+dp.registry.register(Agent(
+    agent_id="refine-1",
+    name="Refinement Agent",
+    description="Drives iterative improvement cycles",
+    capabilities=["refine", "analyze"],
+))
+
+flywheel = UpgradeFlywheel(
+    platform_dir=".directive_platform",
+    agent_ids=["refine-1"],
+)
+report = flywheel.run(max_cycles=5)
+for cycle in report.cycles:
+    print(cycle.summary())
+```
+
+**Key exports** (all available from `barrot_agent`):
+
+| Symbol | Description |
+|--------|-------------|
+| `UpgradeFlywheel` | Main orchestrator class |
+| `FlywheelReport` | Aggregated report across all cycles |
+| `FlywheelCycleResult` | Per-cycle record (all four phases) |
+| `ObservationResult` | Observe-phase data |
+| `ReasoningResult` | Reason-phase improvements + directive IDs |
+| `ActionResult` | Act-phase log |
+| `VerificationResult` | Verify-phase checks + coverage metric |
+
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
 
@@ -133,6 +196,7 @@ B-Agent/
 - **💰 Advanced Monetization** - Revolutionary automation-first revenue generation protocols
 - **✨ Transformative Insights** - Acquire asynchronous data, detect convergence, generate epiphanies, realize transformative insights in real-time
 - **🔀 Merge Conflict Resolution** - Automated conflict detection, analysis, and resolution with continuous learning
+- **🔄 Upgrade Flywheel** - Iterative Observe → Reason → Act → Verify orchestrator that unifies all components into a self-improving refinement loop
 
 ### Two Distinct Systems
 
