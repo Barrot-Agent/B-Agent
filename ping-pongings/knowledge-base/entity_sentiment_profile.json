@@ -3,15 +3,15 @@
     "xrp_entries": 364,
     "btc_entries": 220
   },
-  "unique_entities_profiled": 350,
+  "unique_entities_profiled": 352,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 160,
+      "total_mentions": 161,
       "bullish": 71,
-      "neutral": 25,
+      "neutral": 26,
       "bearish": 64,
-      "net_sentiment_score": 0.044,
+      "net_sentiment_score": 0.043,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,9 +57,9 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 62,
+      "total_mentions": 63,
       "bullish": 26,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 24,
       "net_sentiment_score": 0.032,
       "assets_seen_in": [
@@ -423,6 +423,23 @@
       ]
     },
     {
+      "entity": "Lightning Network",
+      "total_mentions": 5,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 4,
+      "net_sentiment_score": -0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
+        "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+        "BTCPay restricts remote Lightning access after attackers steal funds"
+      ]
+    },
+    {
       "entity": "BlackRock",
       "total_mentions": 5,
       "bullish": 5,
@@ -535,23 +552,6 @@
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
-      ]
-    },
-    {
-      "entity": "Lightning Network",
-      "total_mentions": 4,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-        "BTCPay restricts remote Lightning access after attackers steal funds",
-        "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain"
       ]
     },
     {
@@ -4195,6 +4195,34 @@
       ],
       "example_headlines": [
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
+      "entity": "Zeus Wallet",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Zeus Wallet taken offline after cyberattack, says no customer funds at risk"
+      ]
+    },
+    {
+      "entity": "Evan Kaloudis",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Zeus Wallet taken offline after cyberattack, says no customer funds at risk"
       ]
     },
     {
