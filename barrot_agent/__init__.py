@@ -1,8 +1,23 @@
 """
 Barrot Agent — core AI agent package.
 
-Exports
--------
+Package layout
+--------------
+barrot_agent/
+├── agi/            AGI reasoning, quantum entanglement, and algorithmic intelligence.
+├── analysis/       Analytics, signal analysis, vision, and character intelligence.
+├── ingestion/      Data harvesting, knowledge ingestion, and micro-ingestion pipelines.
+├── monetization/   Revenue strategies, grant generation, and MMI compiler.
+├── orchestration/  MCP coordination, service bridges, and pipeline sync.
+├── rendering/      3D dataset absorption and rendering utilities.
+├── mcp_*.py        10-step MCP integration framework.
+├── smart_agent.py  Autonomous plan-act-observe agent loop.
+├── core.py         BAgent application class.
+├── config.py       Pydantic-based configuration.
+└── logger.py       Structured logging helpers.
+
+Primary exports
+---------------
 SmartAgent
     Autonomous plan-act-observe agent with built-in tools.
 AgentEvent, AgentEventType, PlanStep, ToolCall, ToolResult
