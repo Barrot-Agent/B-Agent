@@ -391,11 +391,11 @@ def get_role_context(role_name: str) -> Dict[str, Any]:
         "role": role.name,
         "description": role.description,
         "system_prompt_context": role.system_prompt_context,
-        "knowledge_domains": role.knowledge_domains,
+        "knowledge_domains": list(role.knowledge_domains),
         "reasoning_posture": role.reasoning_posture,
-        "output_formats": role.output_formats,
-        "tool_preferences": role.tool_preferences,
-        "synthesis_links": role.synthesis_links,
+        "output_formats": list(role.output_formats),
+        "tool_preferences": list(role.tool_preferences),
+        "synthesis_links": list(role.synthesis_links),
     }
 
 

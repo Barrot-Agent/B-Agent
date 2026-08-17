@@ -56,8 +56,8 @@ class TestFlywheelDataModels:
 
 class TestUpgradeFlywheel:
     def test_run_returns_report_with_cycles(self) -> None:
-        fw = UpgradeFlywheel()
-        report = fw.run(max_cycles=1)
+        with UpgradeFlywheel() as fw:
+            report = fw.run(max_cycles=1)
 
         assert isinstance(report, FlywheelReport)
         assert len(report.cycles) == 1
@@ -65,8 +65,8 @@ class TestUpgradeFlywheel:
         assert report.cycles[0].observation.goal_used
 
     def test_verification_passed_shape(self) -> None:
-        fw = UpgradeFlywheel()
-        report = fw.run(max_cycles=1)
+        with UpgradeFlywheel() as fw:
+            report = fw.run(max_cycles=1)
 
         verification = report.cycles[0].verification
         assert isinstance(verification.passed, bool)

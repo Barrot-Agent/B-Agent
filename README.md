@@ -71,9 +71,9 @@ reconfiguration reporting.
 ```python
 from barrot_agent import UpgradeFlywheel
 
-flywheel = UpgradeFlywheel(dry_run=True)
-report = flywheel.run(max_cycles=2)
-print(report.cycles[0].summary())
+with UpgradeFlywheel(dry_run=True) as flywheel:
+    report = flywheel.run(max_cycles=2)
+    print(report.cycles[0].summary())
 ```
 
 ### 📱 Mobile Setup

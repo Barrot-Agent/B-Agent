@@ -12,8 +12,10 @@ millennium_problems_micro_ingestion.py.
 from __future__ import annotations
 
 import json
+import hashlib
 import logging
 import os
+import re
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -433,17 +435,37 @@ class BarrotPolymathIngestion:
     def __init__(
         self,
         brain_corpus_dir: Path = _BRAIN_CORPUS_DIR,
-        topics_file: Path = _TOPICS_FILE,
+        topics_file: Optional[Path] = None,
     ) -> None:
         self.brain_corpus_dir = brain_corpus_dir
-        self.topics_file = topics_file
+        # Default topics_file relative to the chosen corpus dir so that
+        # callers overriding brain_corpus_dir get an isolated topics file.
+        self.topics_file = topics_file if topics_file is not None else brain_corpus_dir / "topics.txt"
         self.brain_corpus_dir.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------
+    @staticmethod
+    def _safe_slug(text: str) -> str:
+        """Return a filesystem-safe slug with no path separators."""
+        return re.sub(r"[^a-z0-9_]+", "_", text.lower()).strip("_")
+
+    # ------------------------------------------------------------------
     def _entry_filename(self, entry_dict: Dict[str, Any]) -> Path:
-        domain = entry_dict["domain"].lower().replace(" ", "_")
-        subdomain = entry_dict["subdomain"].lower().replace(" ", "_")[:40]
-        return self.brain_corpus_dir / f"polymath_{domain}_{subdomain}.json"
+        domain_slug = self._safe_slug(entry_dict["domain"])
+        subdomain_slug = self._safe_slug(entry_dict["subdomain"])
+        # Stable 8-hex suffix prevents collisions when two names share the
+        # same first N normalised characters.
+        key = f"{entry_dict['domain']}:{entry_dict['subdomain']}"
+        suffix = hashlib.sha256(key.encode()).hexdigest()[:8]
+        filename = f"polymath_{domain_slug}_{subdomain_slug}_{suffix}.json"
+        dest = (self.brain_corpus_dir / filename).resolve()
+        # Guard: ensure the resolved path stays within brain_corpus_dir.
+        if not str(dest).startswith(str(self.brain_corpus_dir.resolve())):
+            raise ValueError(
+                f"Resolved output path {dest!r} escapes brain_corpus_dir "
+                f"{self.brain_corpus_dir!r}."
+            )
+        return dest
 
     # ------------------------------------------------------------------
     def ingest_entry(self, entry_dict: Dict[str, Any]) -> Path:

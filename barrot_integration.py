@@ -69,7 +69,7 @@ class BarrotIntegratedSystem:
         reasoning posture that Barrot applies until the role is cleared.
 
         Args:
-            role_name: Name of the role (e.g. "Architect", "Physician", "Linguist")
+            role_name: Name of the role (e.g. "Architect", "Doctor", "Linguist")
 
         Returns:
             The loaded role context dict, or an error dict if not found.
@@ -111,6 +111,7 @@ class BarrotIntegratedSystem:
             return role_activation
 
         role_ctx = self._active_role_context or {}
+        previous_role_context = None  # set_specialist_role already overwrote it
 
         # Build domain-aware context by merging caller context with role knowledge
         enriched_context: Dict[str, Any] = {
@@ -124,13 +125,15 @@ class BarrotIntegratedSystem:
             "synthesis_links": role_ctx.get("synthesis_links", []),
         }
 
-        result = self.process_complex_task(task, enriched_context)
-        result["specialist_role"] = role_ctx.get("role")
-        result["reasoning_posture"] = role_ctx.get("reasoning_posture")
-        result["knowledge_domains_active"] = role_ctx.get("knowledge_domains", [])
+        try:
+            result = self.process_complex_task(task, enriched_context)
+            result["specialist_role"] = role_ctx.get("role")
+            result["reasoning_posture"] = role_ctx.get("reasoning_posture")
+            result["knowledge_domains_active"] = role_ctx.get("knowledge_domains", [])
+        finally:
+            # Always restore prior role state (None = Universal Polymath mode)
+            self._active_role_context = previous_role_context
 
-        # Restore Universal Polymath mode after single-shot specialist call
-        self.clear_specialist_role()
         return result
 
     def process_complex_task(
@@ -142,8 +145,14 @@ class BarrotIntegratedSystem:
         """
         start_time = datetime.now(timezone.utc)
 
+        # Merge any active specialist-role context so that the AGI pipeline
+        # sees role-specific knowledge domains and reasoning posture.
+        effective_context: Optional[Dict[str, Any]] = context
+        if self._active_role_context:
+            effective_context = {**(self._active_role_context), **(context or {})}
+
         # Step 1: Use AGI reasoning to analyze the task
-        agi_analysis = solve_with_agi(task, context)
+        agi_analysis = solve_with_agi(task, effective_context)
 
         # Step 2: Create quantum entangled decision space for optimization
         decision_id = f"task_{hash(task)}"

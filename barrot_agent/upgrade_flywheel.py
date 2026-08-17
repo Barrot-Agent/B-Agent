@@ -106,7 +106,7 @@ class UpgradeFlywheel:
 
         self._goal = goal
         self._dry_run = dry_run
-        self._agent_ids = agent_ids or ["barrot-agent", "smart-agent", "refinement-agent"]
+        self._agent_ids = agent_ids if agent_ids is not None else ["barrot-agent", "smart-agent", "refinement-agent"]
         self._platform = DirectivePlatform(platform_dir=self._platform_dir)
         self._smart_agent = SmartAgent()
         self._closed = False
@@ -188,6 +188,15 @@ class UpgradeFlywheel:
             session = self._platform.run_directive(directive.directive_id)
             directive_session_id = session.session_id
             directive_message_count = len(session.messages)
+            # Extract actionable recommendations from agent responses so that
+            # DirectivePlatform reasoning can actually influence the Act phase.
+            agent_improvements = [
+                msg.content
+                for msg in session.messages
+                if getattr(msg, "agent_id", None) and msg.content
+            ]
+            if agent_improvements:
+                improvements = agent_improvements
 
         return ReasoningResult(
             improvements=improvements,
@@ -197,13 +206,31 @@ class UpgradeFlywheel:
 
     def _act(self, reasoning: ReasoningResult) -> ActionResult:
         notes: list[str] = []
+        applied: list[str] = []
         if self._dry_run:
             notes.append("Dry-run mode enabled; no state-mutating actions were applied.")
         else:
-            notes.append("Action hooks executed for selected improvements.")
+            for improvement in reasoning.improvements:
+                try:
+                    # Integration hook: each improvement is forwarded to the
+                    # directive platform as a standalone REFINE directive so
+                    # that downstream agents can carry out the change.
+                    directive = self._platform.issue_directive(
+                        title="Apply improvement",
+                        description=improvement,
+                        directive_type=DirectiveType.REFINE,
+                        agent_ids=self._agent_ids,
+                        human_author="Barrot",
+                    )
+                    self._platform.run_directive(directive.directive_id)
+                    applied.append(improvement)
+                except Exception as exc:  # noqa: BLE001
+                    notes.append(f"Hook failed for improvement: {exc}")
+
+            notes.append(f"{len(applied)} of {len(reasoning.improvements)} improvements applied.")
 
         return ActionResult(
-            applied_improvements=reasoning.improvements,
+            applied_improvements=applied,
             dry_run=self._dry_run,
             notes=notes,
         )
