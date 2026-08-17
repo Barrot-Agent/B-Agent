@@ -87,6 +87,7 @@ class GovernancePolicy:
     max_candidates: int = 5
     min_regression_score: float = 0.7
     min_safety_score: float = 0.9
+    min_red_team_score: float = 0.9
 
     def validate_external_data(
         self, *, license: str, provenance: str, contains_personal_data: bool = False
@@ -114,7 +115,7 @@ class Evaluation:
         return (
             self.safety_score >= policy.min_safety_score
             and self.regression_score >= policy.min_regression_score
-            and self.red_team_score >= policy.min_safety_score
+            and self.red_team_score >= policy.min_red_team_score
         )
 
 
@@ -239,6 +240,15 @@ class ContinualLearningStore:
         evaluation: Evaluation,
         human_approved: bool = False,
     ) -> LearningProposal:
+        if not all(
+            isinstance(key, str) and isinstance(value, str)
+            for key, value in changes.items()
+        ):
+            raise TypeError("learning changes must be a string-to-string mapping")
+        if not evaluation.is_promotable(self.policy):
+            raise SafetyError("proposal failed safety or regression gates")
+        if not human_approved:
+            raise SafetyError("human approval is required before promotion")
         proposal = LearningProposal(
             str(uuid.uuid4()),
             parent_version,
@@ -246,15 +256,6 @@ class ContinualLearningStore:
             evaluation,
             approved=human_approved,
         )
-        if not evaluation.is_promotable(self.policy):
-            raise SafetyError("proposal failed safety or regression gates")
-        if not all(
-            isinstance(key, str) and isinstance(value, str)
-            for key, value in changes.items()
-        ):
-            raise TypeError("learning changes must be a string-to-string mapping")
-        if not human_approved:
-            raise SafetyError("human approval is required before promotion")
         self._append({"type": "proposal", **asdict(proposal)})
         return proposal
 
