@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 363,
-    "btc_entries": 217
+    "xrp_entries": 364,
+    "btc_entries": 219
   },
-  "unique_entities_profiled": 344,
+  "unique_entities_profiled": 350,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 159,
-      "bullish": 70,
+      "total_mentions": 160,
+      "bullish": 71,
       "neutral": 25,
       "bearish": 64,
-      "net_sentiment_score": 0.038,
+      "net_sentiment_score": 0.044,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 60,
-      "bullish": 25,
+      "total_mentions": 62,
+      "bullish": 26,
       "neutral": 12,
-      "bearish": 23,
-      "net_sentiment_score": 0.033,
+      "bearish": 24,
+      "net_sentiment_score": 0.032,
       "assets_seen_in": [
         "BTC"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 28,
+      "total_mentions": 29,
       "bullish": 16,
-      "neutral": 4,
+      "neutral": 5,
       "bearish": 8,
-      "net_sentiment_score": 0.286,
+      "net_sentiment_score": 0.276,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -141,11 +141,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 15,
+      "total_mentions": 16,
       "bullish": 6,
       "neutral": 1,
-      "bearish": 8,
-      "net_sentiment_score": -0.133,
+      "bearish": 9,
+      "net_sentiment_score": -0.188,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -290,6 +290,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 8,
+      "bullish": 2,
+      "neutral": 2,
+      "bearish": 4,
+      "net_sentiment_score": -0.25,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "ETH",
       "total_mentions": 7,
       "bullish": 6,
@@ -321,22 +337,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 7,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 4,
-      "net_sentiment_score": -0.286,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -586,6 +586,23 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
+      ]
+    },
+    {
+      "entity": "Anthropic",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
       ]
     },
     {
@@ -905,23 +922,6 @@
       ]
     },
     {
-      "entity": "Anthropic",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
-        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
       "entity": "Nasdaq",
       "total_mentions": 3,
       "bullish": 3,
@@ -1064,6 +1064,22 @@
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+      ]
+    },
+    {
+      "entity": "CLARITY",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
       ]
     },
     {
@@ -2040,6 +2056,36 @@
       ]
     },
     {
+      "entity": "Hodler\u2019s Digest",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "United States",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US hints at more yen intervention: Five things to know in Bitcoin this week",
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
+      ]
+    },
+    {
       "entity": "Strait of Hormuz",
       "total_mentions": 2,
       "bullish": 1,
@@ -2052,6 +2098,21 @@
       "example_headlines": [
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
+      "entity": "Trezor",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
       ]
     },
     {
@@ -2130,21 +2191,6 @@
       ]
     },
     {
-      "entity": "CLARITY",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
-        "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9"
-      ]
-    },
-    {
       "entity": "CPI",
       "total_mentions": 2,
       "bullish": 1,
@@ -2160,6 +2206,21 @@
       ]
     },
     {
+      "entity": "OpenAI",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+        "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "TMTG",
       "total_mentions": 2,
       "bullish": 1,
@@ -2172,6 +2233,21 @@
       "example_headlines": [
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
         "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
+      ]
+    },
+    {
+      "entity": "Metaplanet",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -3701,20 +3777,6 @@
       ]
     },
     {
-      "entity": "Hodler\u2019s Digest",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
-      ]
-    },
-    {
       "entity": "US Bitcoin ETF",
       "total_mentions": 1,
       "bullish": 1,
@@ -3754,20 +3816,6 @@
       ],
       "example_headlines": [
         "Bitcoin may find bear market bottom in August: 10x Research"
-      ]
-    },
-    {
-      "entity": "United States",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "US hints at more yen intervention: Five things to know in Bitcoin this week"
       ]
     },
     {
@@ -4038,20 +4086,6 @@
     },
     {
       "entity": "Ledger",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Do the Coldcard attacks mean all hardware wallets are now insecure?"
-      ]
-    },
-    {
-      "entity": "Trezor",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -4597,20 +4631,6 @@
       ]
     },
     {
-      "entity": "OpenAI",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express"
-      ]
-    },
-    {
       "entity": "Asia Express",
       "total_mentions": 1,
       "bullish": 1,
@@ -4863,6 +4883,20 @@
       ]
     },
     {
+      "entity": "Simon Gerovich",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer"
+      ]
+    },
+    {
       "entity": "Crypto ETFs",
       "total_mentions": 1,
       "bullish": 1,
@@ -4944,20 +4978,6 @@
       ],
       "example_headlines": [
         "Public Bitcoin miners cut hashrate 13.4% as AI infrastructure revenue grows"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -5098,6 +5118,76 @@
       ],
       "example_headlines": [
         "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Google DeepMind",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Altcoins",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
+      ]
+    },
+    {
+      "entity": "2026",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
+      ]
+    },
+    {
+      "entity": "SafePal",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "White House",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
       ]
     }
   ]

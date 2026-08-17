@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 363,
-    "btc_entries": 217
+    "xrp_entries": 364,
+    "btc_entries": 219
   },
-  "unique_pairs_found": 1008,
+  "unique_pairs_found": 1040,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 41,
+      "cooccurrence_count": 42,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -201,6 +201,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
       "cooccurrence_count": 8,
@@ -256,21 +271,6 @@
         },
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -1246,6 +1246,21 @@
         },
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -3291,16 +3306,16 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Yahoo Finance",
+      "entity_a": "BTC",
+      "entity_b": "Metaplanet",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
           "asset": "BTC"
         }
       ]
@@ -11248,6 +11263,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Simon Gerovich",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Simon Gerovich",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Simon Gerovich",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Crypto ETFs",
       "cooccurrence_count": 1,
@@ -11481,17 +11540,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "CEO",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Metaplanet",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -11969,6 +12017,314 @@
       "example_headlines": [
         {
           "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Bitcoin (BTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Google DeepMind",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Google DeepMind",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Google DeepMind",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Google DeepMind",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenAI",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "Altcoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoins",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoins",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoins",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Hodler\u2019s Digest",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "SafePal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "SafePal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SafePal",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SafePal",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Trezor",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
           "asset": "BTC"
         }
       ]
