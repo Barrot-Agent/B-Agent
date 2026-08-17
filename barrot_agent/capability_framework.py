@@ -71,7 +71,7 @@ class RouteDecision:
 
 
 class SafetyError(ValueError):
-    """Raised when a proposed update fails a promotion gate."""
+    """Raised when a governed operation violates a safety or promotion gate."""
 
 
 @dataclass(frozen=True)
@@ -215,7 +215,7 @@ def evaluate_benchmark(
 class LearningProposal:
     proposal_id: str
     parent_version: str
-    changes: Mapping[str, str]
+    changes: dict[str, str]
     evaluation: Evaluation
     approved: bool = False
     created_at: float = field(default_factory=time.time)
