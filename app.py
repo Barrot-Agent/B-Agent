@@ -1,105 +1,66 @@
-from __future__ import annotations
-
+#!/usr/bin/env python3
+import json
+from pathlib import Path
 import streamlit as st
+from barrot_core import BarrotOmega
 
-from barrot_agent.config import get_config
-from barrot_agent.core import BAgent
-from barrot_agent.models import ModelManager
-from barrot_agent.smart_agent import AgentEventType, SmartAgent
+st.set_page_config(page_title="Barrot-Omega", layout="wide")
 
-st.set_page_config(page_title="B-Agent", page_icon="🦜", layout="wide")
+if "health" in dict(st.query_params):
+    st.write("OK")
+    st.stop()
 
-config = get_config()
-agent = BAgent(config=config)
-model_manager = ModelManager(config=config.model)
-smart_agent = SmartAgent()
+if "agent" not in st.session_state:
+    st.session_state.agent = BarrotOmega()
+agent = st.session_state.agent
 
-st.title("B-Agent")
-st.caption("Repository-local demo for the restored Barrot agent package.")
+def read_jsonl_tail(path: Path, limit=20):
+    if not path.exists(): return []
+    out = []
+    for raw in path.read_text(encoding="utf-8").splitlines()[-limit:]:
+        raw = raw.strip()
+        if raw:
+            try: out.append(json.loads(raw))
+            except: out.append({"raw": raw})
+    return out
 
-left, right = st.columns([2, 1])
+st.title("🦾 Barrot-Omega")
+c1,c2,c3=st.columns(3)
+with c1: 
+    if st.button("Reconcile"): 
+        agent.reconcile()
+        st.success("Reconciled")
+with c2:
+    if st.button("Reload"): st.rerun()
+with c3:
+    st.metric("Status", agent.state.get("status", "unknown"))
+    
+tab1,tab2,tab3=st.tabs(["Directives","State","Logs"])
 
-with left:
-    st.subheader("SmartAgent demo")
-    goal = st.text_area(
-        "Goal",
-        value="Summarize the repository's current purpose and capabilities.",
-        height=140,
-    )
+with tab1:
+    directive=st.text_area("Directive",height=180)
+    if st.button("Ingest",type="primary"):
+        agent.ingest_directive(directive)
+        agent.reconcile()
+        st.success("Ingested")
+    
+    recent=read_jsonl_tail(agent.paths.directives_file,15)
+    if recent:
+        for item in reversed(recent): st.json(item)
 
-    btn_run, btn_reconfig = st.columns([1, 1])
+with tab2:
+    st.json(agent.state)
+    files=f"""root: {agent.paths.root}
+state_file: {agent.paths.state_file}
+directives_file: {agent.paths.directives_file}
+refine_log: {agent.paths.refine_log}
+live_file: {agent.paths.live_file}
+summary_file: {agent.paths.summary_file}"""
+    st.code(files)
 
-    with btn_run:
-        run_clicked = st.button("Run SmartAgent", type="primary")
-
-    with btn_reconfig:
-        reconfig_clicked = st.button(
-            "🔧 Reconfigure Infrastructure",
-            help=(
-                "Run the SmartAgent reconfiguration loop: audit capability gaps, "
-                "reason about improvements, and produce a structured reconfiguration plan."
-            ),
-        )
-
-    if reconfig_clicked:
-        reconfig_goal = (
-            "Reconfigure Barrot's infrastructure to maximize capability coverage and minimize risk"
-        )
-        st.info(f"**Reconfiguration goal:** {reconfig_goal}")
-        with st.status("Running infrastructure reconfiguration…", expanded=True) as status:
-            events = []
-            for event in smart_agent.run(reconfig_goal):
-                events.append(event)
-                if event.type == AgentEventType.THINKING:
-                    st.write(f"💭 {event.content}")
-                elif event.type == AgentEventType.PLAN:
-                    st.write(f"📋 {event.content}")
-                elif event.type == AgentEventType.ACTION:
-                    st.write(f"⚡ {event.content}")
-                elif event.type == AgentEventType.OBSERVATION:
-                    st.write(f"🔎 {event.content}")
-                elif event.type in (AgentEventType.ANSWER, AgentEventType.ERROR):
-                    break
-            final_event_is_error = events and events[-1].type == AgentEventType.ERROR
-            if final_event_is_error:
-                status.update(label="Reconfiguration failed.", state="error")
-            else:
-                status.update(label="Reconfiguration complete.", state="complete")
-        final = next(
-            (e for e in reversed(events) if e.type == AgentEventType.ANSWER), None
-        )
-        if final is not None:
-            st.subheader("📊 Reconfiguration Report")
-            st.markdown(final.content)
-        else:
-            error = next(
-                (e for e in reversed(events) if e.type == AgentEventType.ERROR), None
-            )
-            st.error(error.content if error is not None else "No terminal event produced.")
-
-    if run_clicked:
-        events = list(smart_agent.run(goal))
-        final = next(
-            (event for event in reversed(events) if event.type == AgentEventType.ANSWER), None
-        )
-        if final is not None:
-            st.markdown(final.content)
-        else:
-            error = next(
-                (event for event in reversed(events) if event.type == AgentEventType.ERROR), None
-            )
-            st.error(error.content if error is not None else "No terminal event produced.")
-
-with right:
-    st.subheader("Runtime")
-    st.json(
-        {
-            "app_version": agent.get_version(),
-            "environment": str(config.environment),
-            "debug": agent.is_debug(),
-            "model_id": agent.get_model_id(),
-            "model_loaded": model_manager.is_loaded,
-        }
-    )
-    st.subheader("Granite metadata")
-    st.json(model_manager.get_metadata())
+with tab3:
+    logs=read_jsonl_tail(agent.paths.refine_log,25)
+    if logs:
+        for item in reversed(logs): st.json(item)
+    else:
+        st.info("No logs")
