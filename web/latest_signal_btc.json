@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-17T17:56:51.921117+00:00",
-  "signal_text": "Recent BTC-relevant headlines: [bearish] Software stocks break away from bitcoin: What the rare divergence means for cryp | [bullish] Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatil | [bullish] Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - Coin | [bullish] Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com | [bearish] Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance | [bullish] Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30%",
-  "score": 28,
-  "confidence": 0.0,
-  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(11)",
-  "news_score": 57,
-  "news_entries": 11,
-  "generated_at_unix": 1786989411
+  "timestamp": "2026-08-17T19:08:50.985098+00:00",
+  "signal_text": "Recent BTC-relevant headlines: [bullish] Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatil | [bullish] Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - Coin | [bullish] Google Gemini AI Predicts Bitcoin Price by the End of 2026 - finance.yahoo.com | [bearish] Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance | [bullish] Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% | [bearish] Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDe",
+  "score": 64,
+  "confidence": 0.75,
+  "source": "groq:bullish+news(10)",
+  "news_score": 62,
+  "news_entries": 10,
+  "generated_at_unix": 1786993730
 }
