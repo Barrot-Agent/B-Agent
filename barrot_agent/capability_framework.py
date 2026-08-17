@@ -88,17 +88,34 @@ class GovernancePolicy:
     min_regression_score: float = 0.7
     min_safety_score: float = 0.9
 
+    def validate_external_data(
+        self, *, license: str, provenance: str, contains_personal_data: bool = False
+    ) -> None:
+        """Validate data before it enters routing, memory, or learning."""
+
+        if license not in self.allowed_licenses:
+            raise SafetyError(f"license is not allowed: {license}")
+        if self.require_provenance and not provenance:
+            raise SafetyError("external data requires provenance")
+        if contains_personal_data and not self.allow_personal_data:
+            raise SafetyError("personal data is disabled by policy")
+
 
 @dataclass(frozen=True)
 class Evaluation:
     score: float
     safety_score: float
     regression_score: float
+    red_team_score: float = 1.0
     findings: tuple[str, ...] = ()
 
     @property
     def promotable(self) -> bool:
-        return self.safety_score >= 0.9 and self.regression_score >= 0.7
+        return (
+            self.safety_score >= 0.9
+            and self.regression_score >= 0.7
+            and self.red_team_score >= 0.9
+        )
 
 
 def inventory_components() -> dict[str, tuple[str, ...]]:

@@ -5,6 +5,7 @@ import json
 import pytest
 
 from barrot_agent.capability_framework import (
+    BenchmarkCase,
     Capability,
     CapabilityRouter,
     ContinualLearningStore,
@@ -55,10 +56,15 @@ def test_router_rejects_unknown_license() -> None:
         router.route(Capability.REASONING, "question")
 
 
+def test_policy_blocks_untrusted_personal_data() -> None:
+    with pytest.raises(SafetyError, match="personal data"):
+        GovernancePolicy().validate_external_data(
+            license="MIT", provenance="source:test", contains_personal_data=True
+        )
+
+
 def test_benchmark_requires_expected_terms() -> None:
-    case = __import__(
-        "barrot_agent.capability_framework", fromlist=["BenchmarkCase"]
-    ).BenchmarkCase("coding-1", Capability.CODING, "write", ("python",))
+    case = BenchmarkCase("coding-1", Capability.CODING, "write", ("python",))
     assert evaluate_benchmark(case, "python code").score == 1.0
     assert evaluate_benchmark(case, "javascript").score == 0.0
 
