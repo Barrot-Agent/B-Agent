@@ -109,8 +109,7 @@ class Evaluation:
     red_team_score: float = 1.0
     findings: tuple[str, ...] = ()
 
-    @property
-    def promotable(self, policy: GovernancePolicy | None = None) -> bool:
+    def is_promotable(self, policy: GovernancePolicy | None = None) -> bool:
         policy = policy or GovernancePolicy()
         return (
             self.safety_score >= policy.min_safety_score
@@ -224,8 +223,9 @@ class LearningProposal:
 class ContinualLearningStore:
     """Append-only feedback store with explicit promotion and rollback."""
 
-    def __init__(self, path: Path | str) -> None:
+    def __init__(self, path: Path | str, policy: GovernancePolicy | None = None) -> None:
         self.path = Path(path)
+        self.policy = policy or GovernancePolicy()
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
     def record_feedback(self, *, task: str, reward: float, notes: str = "") -> None:
@@ -246,7 +246,7 @@ class ContinualLearningStore:
             evaluation,
             approved=human_approved,
         )
-        if not evaluation.promotable(self.policy):
+        if not evaluation.is_promotable(self.policy):
             raise SafetyError("proposal failed safety or regression gates")
         if not all(
             isinstance(key, str) and isinstance(value, str)
