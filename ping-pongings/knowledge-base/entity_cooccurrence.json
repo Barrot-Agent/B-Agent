@@ -3,7 +3,7 @@
     "xrp_entries": 364,
     "btc_entries": 219
   },
-  "unique_pairs_found": 1040,
+  "unique_pairs_found": 1042,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2986,6 +2986,21 @@
         },
         {
           "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
           "asset": "BTC"
         }
       ]
@@ -8403,17 +8418,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 1,
@@ -12325,6 +12329,28 @@
       "example_headlines": [
         {
           "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Yahoo Finance UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
           "asset": "BTC"
         }
       ]

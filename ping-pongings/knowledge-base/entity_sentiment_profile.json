@@ -223,6 +223,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 10,
+      "bullish": 8,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.7,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 9,
       "bullish": 1,
@@ -236,23 +253,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 9,
-      "bullish": 7,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -273,6 +273,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 9,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 4,
+      "net_sentiment_score": -0.111,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 8,
       "bullish": 7,
@@ -287,22 +303,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Hashdex to shut smallest Bitcoin ETF after more than two years",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 8,
-      "bullish": 2,
-      "neutral": 2,
-      "bearish": 4,
-      "net_sentiment_score": -0.25,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -2233,6 +2233,21 @@
       "example_headlines": [
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
         "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
+      ]
+    },
+    {
+      "entity": "Yahoo Finance UK",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
+        "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK"
       ]
     },
     {
@@ -4796,20 +4811,6 @@
       ],
       "example_headlines": [
         "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
-      ]
-    },
-    {
-      "entity": "Yahoo Finance UK",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance "
       ]
     },
     {
