@@ -277,6 +277,7 @@ _POLYMATH_CATALOGUE: List[Dict[str, Any]] = [
             "Cosmology: CMB, inflation, dark matter/energy, baryogenesis",
             "Electrogravitic propulsion: Buhler vacuum-chamber thrust, TT Brown legacy",
             "Zero-point energy: quantum vacuum fluctuations, Casimir effect",
+            "Consciousness as bridge: observer-driven collapse, quantum mind, GR-QM unification via awareness",
         ],
         "synthesis_links": ["Mathematics", "Chemistry", "Engineering", "Cosmology"],
         "specialist_roles": ["Physicist", "Engineer", "Mathematician", "Universal Polymath"],
