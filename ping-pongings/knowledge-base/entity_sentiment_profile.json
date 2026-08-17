@@ -3,7 +3,7 @@
     "xrp_entries": 368,
     "btc_entries": 226
   },
-  "unique_entities_profiled": 353,
+  "unique_entities_profiled": 354,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 84,
-      "bullish": 50,
+      "total_mentions": 85,
+      "bullish": 51,
       "neutral": 20,
       "bearish": 14,
-      "net_sentiment_score": 0.429,
+      "net_sentiment_score": 0.435,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 29,
-      "bullish": 16,
+      "total_mentions": 30,
+      "bullish": 17,
       "neutral": 5,
       "bearish": 8,
-      "net_sentiment_score": 0.276,
+      "net_sentiment_score": 0.3,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3019,6 +3019,20 @@
       ],
       "example_headlines": [
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
+      ]
+    },
+    {
+      "entity": "Crypto Influencer",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - Yahoo Finance"
       ]
     },
     {
