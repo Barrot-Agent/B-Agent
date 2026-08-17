@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 366,
+    "xrp_entries": 368,
     "btc_entries": 226
   },
-  "unique_entities_profiled": 352,
+  "unique_entities_profiled": 353,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 83,
+      "total_mentions": 84,
       "bullish": 50,
       "neutral": 20,
-      "bearish": 13,
-      "net_sentiment_score": 0.446,
+      "bearish": 14,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3019,6 +3019,20 @@
       ],
       "example_headlines": [
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
+      ]
+    },
+    {
+      "entity": "Yellow.com",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Tests $1 Support As $0.60 Crash Risk Deepens - Yellow.com"
       ]
     },
     {
