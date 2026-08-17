@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 364,
+    "xrp_entries": 365,
     "btc_entries": 221
   },
   "unique_entities_profiled": 352,
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 68,
+      "total_mentions": 69,
       "bullish": 41,
-      "neutral": 19,
+      "neutral": 20,
       "bearish": 8,
-      "net_sentiment_score": 0.485,
+      "net_sentiment_score": 0.478,
       "assets_seen_in": [
         "XRP"
       ],
@@ -158,11 +158,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 13,
+      "total_mentions": 14,
       "bullish": 2,
-      "neutral": 11,
+      "neutral": 12,
       "bearish": 0,
-      "net_sentiment_score": 0.154,
+      "net_sentiment_score": 0.143,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -223,6 +223,22 @@
       ]
     },
     {
+      "entity": "XRP.CC",
+      "total_mentions": 10,
+      "bullish": 1,
+      "neutral": 9,
+      "bearish": 0,
+      "net_sentiment_score": 0.1,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 10,
       "bullish": 8,
@@ -237,22 +253,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 9,
-      "bullish": 1,
-      "neutral": 8,
-      "bearish": 0,
-      "net_sentiment_score": 0.111,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
