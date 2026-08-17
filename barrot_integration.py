@@ -30,6 +30,15 @@ from transformative_insights import (
 # Import AGI Orchestrator for unified intelligence
 from agi_orchestrator import agi_orchestrator, achieve_agi_with_unified_system
 
+# Import Specialist Role Engine for universal polymath capability
+from specialist_role_engine import (
+    load_specialist_role,
+    get_role_context,
+    list_roles,
+    register_custom_role,
+    SpecialistRole,
+)
+
 
 class BarrotIntegratedSystem:
     """
@@ -47,8 +56,82 @@ class BarrotIntegratedSystem:
         self.transformative_insights = transformative_engine
         # Add AGI Orchestrator for unified intelligence
         self.agi_orchestrator = agi_orchestrator
+        # Specialist Role Engine — universal polymath capability
+        self._active_role_context: Optional[Dict[str, Any]] = None
         self.integration_active = True
         self.initialization_time = datetime.now(timezone.utc).isoformat()
+
+    def set_specialist_role(self, role_name: str) -> Dict[str, Any]:
+        """
+        Activate a specialist role for subsequent task processing.
+
+        The role shapes the system prompt context, knowledge domains, and
+        reasoning posture that Barrot applies until the role is cleared.
+
+        Args:
+            role_name: Name of the role (e.g. "Architect", "Physician", "Linguist")
+
+        Returns:
+            The loaded role context dict, or an error dict if not found.
+        """
+        context = get_role_context(role_name)
+        if not context:
+            return {
+                "status": "error",
+                "message": f"Role '{role_name}' not found.",
+                "available_roles": list_roles(),
+            }
+        self._active_role_context = context
+        return {"status": "activated", "role": context}
+
+    def clear_specialist_role(self) -> None:
+        """Deactivate the current specialist role and return to Universal Polymath mode."""
+        self._active_role_context = None
+
+    def process_as_specialist(
+        self,
+        role_name: str,
+        task: str,
+        context: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Activate *role_name*, route the task through domain-aware knowledge
+        retrieval, and process it with the integrated AGI pipeline.
+
+        Args:
+            role_name: Specialist role to adopt (e.g. "Physicist", "Lawyer")
+            task: The task or question to process
+            context: Optional additional context
+
+        Returns:
+            Full processing result augmented with role metadata.
+        """
+        role_activation = self.set_specialist_role(role_name)
+        if role_activation.get("status") == "error":
+            return role_activation
+
+        role_ctx = self._active_role_context or {}
+
+        # Build domain-aware context by merging caller context with role knowledge
+        enriched_context: Dict[str, Any] = {
+            **(context or {}),
+            "specialist_role": role_ctx.get("role"),
+            "role_description": role_ctx.get("description"),
+            "system_prompt_context": role_ctx.get("system_prompt_context"),
+            "knowledge_domains": role_ctx.get("knowledge_domains", []),
+            "reasoning_posture": role_ctx.get("reasoning_posture"),
+            "output_formats": role_ctx.get("output_formats", []),
+            "synthesis_links": role_ctx.get("synthesis_links", []),
+        }
+
+        result = self.process_complex_task(task, enriched_context)
+        result["specialist_role"] = role_ctx.get("role")
+        result["reasoning_posture"] = role_ctx.get("reasoning_posture")
+        result["knowledge_domains_active"] = role_ctx.get("knowledge_domains", [])
+
+        # Restore Universal Polymath mode after single-shot specialist call
+        self.clear_specialist_role()
+        return result
 
     def process_complex_task(
         self, task: str, context: Optional[Dict[str, Any]] = None

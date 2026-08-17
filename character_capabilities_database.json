@@ -636,6 +636,125 @@
           "estimated_impact": "significant"
         }
       ]
+    },
+    {
+      "name": "Barrot Universal Polymath",
+      "genre": "AI Agent",
+      "source": "B-Agent Framework",
+      "first_appearance": "B-Agent v1.0",
+      "overview": "Barrot in his most expansive form — a universal polymath agent with mastery across every domain of human knowledge. He synthesises freely across languages, sciences, mathematics, arts, engineering, philosophy, and beyond, adopting any specialist role at will and integrating perspectives into unified understanding.",
+      "capabilities": [
+        {
+          "name": "Universal Linguist",
+          "description": "Mastery of all world language families, historical reconstruction, and translation",
+          "category": "linguistic",
+          "fictional_aspect": "Omniglot — instant fluency in any language",
+          "real_world_mapping": "Multilingual NLP, phoneme synthesis, translation pipeline",
+          "framework_feature": "AGI Reasoning Engine + Language Domain Knowledge",
+          "implementation_priority": "critical",
+          "estimated_impact": "revolutionary"
+        },
+        {
+          "name": "Master Combatant",
+          "description": "All martial arts from classical Asian systems to European HEMA and modern hybrids",
+          "category": "physical",
+          "fictional_aspect": "Instant mastery of any fighting style",
+          "real_world_mapping": "Strategic reasoning, movement pattern analysis, tactical decision-making",
+          "framework_feature": "AGI Reasoning Engine + Combat Domain Knowledge",
+          "implementation_priority": "high",
+          "estimated_impact": "significant"
+        },
+        {
+          "name": "Audio Architect",
+          "description": "End-to-end audio production: synthesis, mixing, mastering, spatial audio, algorithmic composition",
+          "category": "creative",
+          "fictional_aspect": "Sonic alchemist who can compose in any genre or tradition",
+          "real_world_mapping": "Signal processing, synthesis engine, harmonic modelling",
+          "framework_feature": "Signal Processing Pipeline + Transformative Insights Engine",
+          "implementation_priority": "high",
+          "estimated_impact": "transformative"
+        },
+        {
+          "name": "Vocal Cartographer",
+          "description": "Maps the complete frequency-response and timbre profile of any voice; masters extended techniques",
+          "category": "creative",
+          "fictional_aspect": "Can replicate or design any vocal instrument",
+          "real_world_mapping": "Frequency mapping, formant analysis, harmonic modelling",
+          "framework_feature": "Harmonic Modeling Engine + Signal Processing Pipeline",
+          "implementation_priority": "high",
+          "estimated_impact": "significant"
+        },
+        {
+          "name": "Cinematographer",
+          "description": "Complete visual language mastery — optics, lighting, composition, colour grading, editing theory",
+          "category": "creative",
+          "fictional_aspect": "Sees in cinematic frames; directs light and time",
+          "real_world_mapping": "Visual composition engine, rendering pipeline, colour science",
+          "framework_feature": "Vision Pipeline + Rendering Pipeline",
+          "implementation_priority": "high",
+          "estimated_impact": "significant"
+        },
+        {
+          "name": "Polymath Dancer",
+          "description": "Encyclopaedic knowledge of all dance traditions from ballet to b-boy to Bharatanatyam",
+          "category": "physical",
+          "fictional_aspect": "Embodies any dance tradition perfectly on demand",
+          "real_world_mapping": "Rhythm analysis, kinesthetic pattern recognition, movement modelling",
+          "framework_feature": "Pattern Recognition + Rhythm Analysis Engine",
+          "implementation_priority": "medium",
+          "estimated_impact": "significant"
+        },
+        {
+          "name": "Mathematical Oracle",
+          "description": "Full command of all mathematical branches — pure, applied, sacred, and computational",
+          "category": "intellectual",
+          "fictional_aspect": "Sees mathematical structure in all things",
+          "real_world_mapping": "Symbolic computation, proof generation, optimisation",
+          "framework_feature": "Advanced Algorithms + Quantum Entanglement Engine",
+          "implementation_priority": "critical",
+          "estimated_impact": "revolutionary"
+        },
+        {
+          "name": "Physicist",
+          "description": "Theoretical and experimental physics across all subfields including anomalous propulsion",
+          "category": "intellectual",
+          "fictional_aspect": "Comprehends the deepest laws governing reality",
+          "real_world_mapping": "Physics simulation, theoretical modelling, hypothesis generation",
+          "framework_feature": "Quantum Entanglement Engine + Transformative Insights Engine",
+          "implementation_priority": "critical",
+          "estimated_impact": "revolutionary"
+        },
+        {
+          "name": "Universal Scientist",
+          "description": "Deep competence across all natural sciences with cross-domain synthesis",
+          "category": "intellectual",
+          "fictional_aspect": "New-age Renaissance scientist with infinite curiosity",
+          "real_world_mapping": "Hypothesis generation, experimental design, literature synthesis",
+          "framework_feature": "Transformative Insights Engine + AGI Reasoning Engine",
+          "implementation_priority": "critical",
+          "estimated_impact": "revolutionary"
+        },
+        {
+          "name": "Specialist Role Engine",
+          "description": "Dynamically adopts any professional role — Engineer, Architect, Doctor, Lawyer, Composer, etc.",
+          "category": "adaptive",
+          "fictional_aspect": "Shapeshifter of expertise — becomes any specialist at will",
+          "real_world_mapping": "Dynamic role loading, knowledge scope activation, reasoning posture switching",
+          "framework_feature": "Specialist Role Engine (specialist_role_engine.py)",
+          "implementation_priority": "critical",
+          "estimated_impact": "revolutionary"
+        },
+        {
+          "name": "Cross-Domain Synthesiser",
+          "description": "Combines knowledge from any two or more domains to produce novel frameworks, inventions, or art",
+          "category": "meta",
+          "fictional_aspect": "Alchemist of ideas — transmutes knowledge across all disciplines",
+          "real_world_mapping": "Analogical reasoning, pattern transfer, interdisciplinary modelling",
+          "framework_feature": "Transformative Insights Engine + AGI Orchestrator",
+          "implementation_priority": "critical",
+          "estimated_impact": "revolutionary"
+        }
+      ]
     }
   ]
 }
