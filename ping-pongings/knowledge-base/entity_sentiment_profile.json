@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 368,
+    "xrp_entries": 369,
     "btc_entries": 226
   },
   "unique_entities_profiled": 354,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 161,
-      "bullish": 71,
+      "total_mentions": 162,
+      "bullish": 72,
       "neutral": 26,
       "bearish": 64,
-      "net_sentiment_score": 0.043,
+      "net_sentiment_score": 0.049,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 85,
-      "bullish": 51,
+      "total_mentions": 86,
+      "bullish": 52,
       "neutral": 20,
       "bearish": 14,
-      "net_sentiment_score": 0.435,
+      "net_sentiment_score": 0.442,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -107,11 +107,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 17,
-      "bullish": 9,
+      "total_mentions": 18,
+      "bullish": 10,
       "neutral": 6,
       "bearish": 2,
-      "net_sentiment_score": 0.412,
+      "net_sentiment_score": 0.444,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -457,6 +457,23 @@
       ]
     },
     {
+      "entity": "Donald Trump",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 5,
       "bullish": 4,
@@ -656,22 +673,6 @@
       ]
     },
     {
-      "entity": "Donald Trump",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-        "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
-      ]
-    },
-    {
       "entity": "Bloomberg",
       "total_mentions": 4,
       "bullish": 2,
@@ -834,6 +835,23 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
         "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
+      ]
+    },
+    {
+      "entity": "CLARITY Act",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
       ]
     },
     {
@@ -1585,22 +1603,6 @@
       "example_headlines": [
         "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
         "What Ripple CASP authorisation means under MiCA - Ripple"
-      ]
-    },
-    {
-      "entity": "CLARITY Act",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
       ]
     },
     {
