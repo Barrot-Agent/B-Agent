@@ -110,11 +110,12 @@ class Evaluation:
     findings: tuple[str, ...] = ()
 
     @property
-    def promotable(self) -> bool:
+    def promotable(self, policy: GovernancePolicy | None = None) -> bool:
+        policy = policy or GovernancePolicy()
         return (
-            self.safety_score >= 0.9
-            and self.regression_score >= 0.7
-            and self.red_team_score >= 0.9
+            self.safety_score >= policy.min_safety_score
+            and self.regression_score >= policy.min_regression_score
+            and self.red_team_score >= policy.min_safety_score
         )
 
 
@@ -150,8 +151,13 @@ class CapabilityRouter:
         self._evaluator = evaluator or self._default_evaluator
 
     def route(self, capability: Capability, prompt: str) -> RouteDecision:
-        if not prompt or len(prompt) > self.policy.max_prompt_chars:
-            raise ValueError("prompt is empty or exceeds the configured resource limit")
+        if not prompt:
+            raise ValueError("prompt must not be empty")
+        if len(prompt) > self.policy.max_prompt_chars:
+            raise ValueError(
+                f"prompt length {len(prompt)} exceeds the configured resource limit "
+                f"of {self.policy.max_prompt_chars}"
+            )
         eligible = [c for c in self.candidates if capability in c.capabilities]
         if len(eligible) > self.policy.max_candidates:
             eligible = eligible[: self.policy.max_candidates]
@@ -240,8 +246,13 @@ class ContinualLearningStore:
             evaluation,
             approved=human_approved,
         )
-        if not evaluation.promotable:
+        if not evaluation.promotable(self.policy):
             raise SafetyError("proposal failed safety or regression gates")
+        if not all(
+            isinstance(key, str) and isinstance(value, str)
+            for key, value in changes.items()
+        ):
+            raise TypeError("learning changes must be a string-to-string mapping")
         if not human_approved:
             raise SafetyError("human approval is required before promotion")
         self._append({"type": "proposal", **asdict(proposal)})
