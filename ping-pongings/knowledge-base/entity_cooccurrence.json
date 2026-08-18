@@ -3,7 +3,7 @@
     "xrp_entries": 378,
     "btc_entries": 240
   },
-  "unique_pairs_found": 1102,
+  "unique_pairs_found": 1103,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -351,6 +351,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 6,
@@ -381,23 +396,23 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
           "asset": "XRP"
         }
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -467,21 +482,6 @@
         {
           "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-          "asset": "XRP"
         }
       ]
     },
@@ -6707,6 +6707,17 @@
       "example_headlines": [
         {
           "title": "XRP\u2019s $1 Support Hangs By a Thread. Where Does XRP Go? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces a New Test as On-Chain Data Reveals a Major Shift in the Market - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]

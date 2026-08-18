@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 92,
+      "total_mentions": 93,
       "bullish": 55,
       "neutral": 21,
-      "bearish": 16,
-      "net_sentiment_score": 0.424,
+      "bearish": 17,
+      "net_sentiment_score": 0.409,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -141,11 +141,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 16,
+      "total_mentions": 17,
       "bullish": 6,
       "neutral": 1,
-      "bearish": 9,
-      "net_sentiment_score": -0.188,
+      "bearish": 10,
+      "net_sentiment_score": -0.235,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -340,6 +340,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Binance",
       "total_mentions": 6,
       "bullish": 3,
@@ -387,22 +403,6 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
