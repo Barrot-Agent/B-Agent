@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T04:26:04.972725+00:00",
+  "generated_at": null,
   "evidence_count": 0,
   "source_counts": {},
   "corroborated_claims": [],
@@ -10,9 +10,8 @@
     "feeds": "Public RSS/Atom endpoints; Reddit is treated as low-confidence evidence."
   },
   "limitations": [
+    "No explicit 50-item XRP study list was found in the public Chameleon-Chain repository.",
     "RSS summaries are leads and may omit context.",
-    "Reddit entries are low-confidence user-generated observations.",
     "Claim matching is lexical, not a substitute for expert fact checking."
-  ],
-  "new_entries_this_run": 0
+  ]
 }

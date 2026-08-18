@@ -22,6 +22,7 @@ from pathlib import Path
 KB_DIR = Path(os.getenv("BARROT_KB_DIR", "ping-pongings/knowledge-base"))
 LOG_PATH = KB_DIR / "xrp_research_log.jsonl"
 SUMMARY_PATH = KB_DIR / "xrp_research_summary.json"
+WEB_SUMMARY_PATH = Path(os.getenv("BARROT_WEB_DIR", "web")) / "xrp_research_summary.json"
 RATE_LIMIT_SECONDS = float(os.getenv("XRP_RESEARCH_INTERVAL", "1.0"))
 MAX_PER_FEED = int(os.getenv("XRP_RESEARCH_MAX_PER_FEED", "20"))
 
@@ -141,6 +142,11 @@ def summarize(entries):
                           for source in sorted({e["source"] for e in entries})},
         "corroborated_claims": corroborated,
         "uncorroborated_or_conflicting_claims": conflicts,
+        "provenance": {
+            "curriculum": "data/xrp_study_curriculum.json",
+            "pipeline": "scripts/xrp_research_pipeline.py",
+            "feeds": "Public RSS/Atom endpoints; Reddit is treated as low-confidence evidence.",
+        },
         "limitations": [
             "RSS summaries are leads and may omit context.",
             "Reddit entries are low-confidence user-generated observations.",
@@ -177,7 +183,10 @@ def main():
                 output.write(json.dumps(entry, ensure_ascii=False) + "\n")
     summary = summarize(load_entries())
     summary["new_entries_this_run"] = len(new_entries)
-    SUMMARY_PATH.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    rendered = json.dumps(summary, indent=2) + "\n"
+    SUMMARY_PATH.write_text(rendered, encoding="utf-8")
+    WEB_SUMMARY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    WEB_SUMMARY_PATH.write_text(rendered, encoding="utf-8")
     print(f"Ingested {len(new_entries)} new entries; summary written to {SUMMARY_PATH}")
 
 
