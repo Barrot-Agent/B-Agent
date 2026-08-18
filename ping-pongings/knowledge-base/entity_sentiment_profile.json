@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 375,
+    "xrp_entries": 376,
     "btc_entries": 237
   },
   "unique_entities_profiled": 364,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 90,
+      "total_mentions": 91,
       "bullish": 55,
       "neutral": 21,
-      "bearish": 14,
-      "net_sentiment_score": 0.456,
+      "bearish": 15,
+      "net_sentiment_score": 0.44,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 73,
+      "total_mentions": 74,
       "bullish": 44,
       "neutral": 21,
-      "bearish": 8,
-      "net_sentiment_score": 0.493,
+      "bearish": 9,
+      "net_sentiment_score": 0.473,
       "assets_seen_in": [
         "XRP"
       ],
@@ -175,11 +175,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 13,
+      "total_mentions": 14,
       "bullish": 11,
       "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.846,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -192,11 +192,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 12,
+      "total_mentions": 13,
       "bullish": 12,
       "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
+      "bearish": 1,
+      "net_sentiment_score": 0.846,
       "assets_seen_in": [
         "XRP"
       ],
@@ -1936,6 +1936,22 @@
       "example_headlines": [
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
         "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview."
+      ]
+    },
+    {
+      "entity": "2026",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Is $3 Still Realistic for XRP in 2026? - 247wallst.com",
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
       ]
     },
     {
@@ -5297,20 +5313,6 @@
     },
     {
       "entity": "Altcoins",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
-      ]
-    },
-    {
-      "entity": "2026",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
