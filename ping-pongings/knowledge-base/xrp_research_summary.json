@@ -1,0 +1,17 @@
+{
+  "generated_at": null,
+  "evidence_count": 0,
+  "source_counts": {},
+  "corroborated_claims": [],
+  "uncorroborated_or_conflicting_claims": [],
+  "provenance": {
+    "curriculum": "data/xrp_study_curriculum.json",
+    "pipeline": "scripts/xrp_research_pipeline.py",
+    "feeds": "Public RSS/Atom endpoints; Reddit is treated as low-confidence evidence."
+  },
+  "limitations": [
+    "No explicit 50-item XRP study list was found in the public Chameleon-Chain repository.",
+    "RSS summaries are leads and may omit context.",
+    "Claim matching is lexical, not a substitute for expert fact checking."
+  ]
+}

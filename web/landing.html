@@ -250,6 +250,19 @@ footer strong{color:var(--text)}
   });
 
   mcp.registerTool({
+    name: "getXRPResearchEvidence",
+    title: "XRP Research Evidence",
+    description: "Get provenance-aware XRP research coverage, source counts, and lexical corroboration status. Reddit observations are explicitly low confidence and this is not financial advice.",
+    inputSchema: { type: "object", properties: {} },
+    annotations: { readOnlyHint: true },
+    execute: async function() {
+      var res = await fetch("xrp_research_summary.json");
+      if (!res.ok) return { error: "research_evidence_unavailable" };
+      return await res.json();
+    }
+  });
+
+  mcp.registerTool({
     name: "subscribeToXRPSignals",
     title: "Subscribe to XRP Signals",
     description: "Open the checkout page to subscribe to Barrot's XRP signal service.",
