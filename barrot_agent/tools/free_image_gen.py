@@ -36,19 +36,23 @@ SPACE_BASE = "https://black-forest-labs-flux-1-dev.hf.space"
 API_NAME = "infer"
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 
-PROMPT = os.environ.get("IMAGE_PROMPT", "").strip() or "a simple test image, red circle on white background"
+PROMPT = (
+    os.environ.get("IMAGE_PROMPT", "").strip()
+    or "a simple test image, red circle on white background"
+)
 OUT_DIR = "generated_images"
 
 
-def call_gradio(prompt, seed=0, randomize_seed=True, width=1024, height=1024,
-                 guidance_scale=3.5, steps=28):
+def call_gradio(
+    prompt, seed=0, randomize_seed=True, width=1024, height=1024, guidance_scale=3.5, steps=28
+):
     headers = {"Content-Type": "application/json"}
     if HF_TOKEN:
         headers["Authorization"] = f"Bearer {HF_TOKEN}"
 
-    body = json.dumps({
-        "data": [prompt, seed, randomize_seed, width, height, guidance_scale, steps]
-    }).encode()
+    body = json.dumps(
+        {"data": [prompt, seed, randomize_seed, width, height, guidance_scale, steps]}
+    ).encode()
 
     req = urllib.request.Request(
         f"{SPACE_BASE}/gradio_api/call/{API_NAME}", data=body, headers=headers, method="POST"
@@ -71,11 +75,11 @@ def call_gradio(prompt, seed=0, randomize_seed=True, width=1024, height=1024,
         for raw_line in r:
             line = raw_line.decode("utf-8", errors="ignore").strip()
             if line.startswith("event:"):
-                current_event = line[len("event:"):].strip()
+                current_event = line[len("event:") :].strip()
                 continue
             if not line.startswith("data:"):
                 continue
-            payload = line[len("data:"):].strip()
+            payload = line[len("data:") :].strip()
             if payload in ("", "[DONE]", "null"):
                 continue
             try:
@@ -90,14 +94,18 @@ def call_gradio(prompt, seed=0, randomize_seed=True, width=1024, height=1024,
                 break
 
     if not last_data:
-        raise RuntimeError("No 'complete' event received from SSE stream - generation may have failed or timed out")
+        raise RuntimeError(
+            "No 'complete' event received from SSE stream - generation may have failed or timed out"
+        )
     return last_data
 
 
 def main():
     if not HF_TOKEN:
-        print("Warning: HF_TOKEN not set - proceeding unauthenticated, "
-              "may fail if the model requires accepting its license first.")
+        print(
+            "Warning: HF_TOKEN not set - proceeding unauthenticated, "
+            "may fail if the model requires accepting its license first."
+        )
 
     os.makedirs(OUT_DIR, exist_ok=True)
     print(f"Prompt: {PROMPT}")

@@ -4,8 +4,13 @@ BARROT-Ω · BRAIN MODULE · v1.0
 GitHub Models inference backend with Groq fallback.
 Import this anywhere in the repo: from barrot_brain import BarrotBrain
 """
-import os, time, jwt, requests
+
+import os
+import time
 from pathlib import Path
+
+import jwt
+import requests
 
 ANCHOR = 0.707106781186548
 
@@ -27,13 +32,14 @@ PERSONALITY:
 - You do not hedge. You do not over-explain. You execute.
 """
 
+
 class GitHubAppAuth:
     def __init__(self):
-        self.app_id          = os.getenv("GITHUB_APP_ID", "")
-        self.private_key     = os.getenv("GITHUB_APP_PRIVATE_KEY", "").replace("\\n", "\n")
+        self.app_id = os.getenv("GITHUB_APP_ID", "")
+        self.private_key = os.getenv("GITHUB_APP_PRIVATE_KEY", "").replace("\\n", "\n")
         self.installation_id = os.getenv("GITHUB_INSTALLATION_ID", "")
-        self._token          = None
-        self._token_expires  = 0
+        self._token = None
+        self._token_expires = 0
 
     def _generate_jwt(self) -> str:
         now = int(time.time())
@@ -46,15 +52,15 @@ class GitHubAppAuth:
         j = self._generate_jwt()
         r = requests.post(
             f"https://api.github.com/app/installations/{self.installation_id}/access_tokens",
-            headers={"Authorization": f"Bearer {j}",
-                     "Accept": "application/vnd.github+json"},
-            timeout=10)
-        data            = r.json()
-        self._token     = data.get("token", "")
+            headers={"Authorization": f"Bearer {j}", "Accept": "application/vnd.github+json"},
+            timeout=10,
+        )
+        data = r.json()
+        self._token = data.get("token", "")
         try:
             from datetime import datetime, timezone
-            dt = datetime.fromisoformat(
-                data.get("expires_at","").replace("Z","+00:00"))
+
+            dt = datetime.fromisoformat(data.get("expires_at", "").replace("Z", "+00:00"))
             self._token_expires = dt.timestamp()
         except:
             self._token_expires = time.time() + 3300
@@ -73,21 +79,20 @@ class BarrotBrain:
         brain = BarrotBrain()
         response = brain.think("What is the current XRP signal?")
     """
+
     GITHUB_ENDPOINT = "https://models.inference.ai.azure.com/chat/completions"
-    GROQ_ENDPOINT   = "https://api.groq.com/openai/v1/chat/completions"
+    GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
     FIREWORKS_ENDPOINT = "https://api.fireworks.ai/inference/v1/chat/completions"
     FIREWORKS_MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
-    GITHUB_MODEL    = "gpt-4o"
-    GROQ_MODEL      = "llama-3.3-70b-versatile"
+    GITHUB_MODEL = "gpt-4o"
+    GROQ_MODEL = "llama-3.3-70b-versatile"
 
     def __init__(self):
-        self.auth     = GitHubAppAuth()
+        self.auth = GitHubAppAuth()
         self.groq_key = os.getenv("GROQ_API_KEY", "")
 
-    def think(self, message: str, history: list = None,
-              system: str = None) -> str:
-        messages = [{"role": "system",
-                     "content": system or SYSTEM_PROMPT}]
+    def think(self, message: str, history: list = None, system: str = None) -> str:
+        messages = [{"role": "system", "content": system or SYSTEM_PROMPT}]
         if history:
             messages.extend(history)
         messages.append({"role": "user", "content": message})
@@ -98,13 +103,18 @@ class BarrotBrain:
                 token = self.auth.get_token()
                 r = requests.post(
                     self.GITHUB_ENDPOINT,
-                    headers={"Authorization": f"Bearer {token}",
-                             "Content-Type": "application/json"},
-                    json={"model": self.GITHUB_MODEL,
-                          "messages": messages,
-                          "max_tokens": 1024,
-                          "temperature": 0.7},
-                    timeout=30)
+                    headers={
+                        "Authorization": f"Bearer {token}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": self.GITHUB_MODEL,
+                        "messages": messages,
+                        "max_tokens": 1024,
+                        "temperature": 0.7,
+                    },
+                    timeout=30,
+                )
                 return r.json()["choices"][0]["message"]["content"]
             except Exception as e:
                 pass  # fall through to Groq
@@ -114,26 +124,38 @@ class BarrotBrain:
             try:
                 r = requests.post(
                     self.GROQ_ENDPOINT,
-                    headers={"Authorization": f"Bearer {self.groq_key}",
-                             "Content-Type": "application/json"},
-                    json={"model": self.GROQ_MODEL,
-                          "messages": messages,
-                          "max_tokens": 1024},
-                    timeout=20)
+                    headers={
+                        "Authorization": f"Bearer {self.groq_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 1024},
+                    timeout=20,
+                )
                 return r.json()["choices"][0]["message"]["content"]
             except Exception as e:
-                fw_key = os.getenv("FIREWORKS_API_KEY","")
+                fw_key = os.getenv("FIREWORKS_API_KEY", "")
         if fw_key:
             try:
-                r = requests.post(self.FIREWORKS_ENDPOINT, headers={"Authorization":f"Bearer {fw_key}","Content-Type":"application/json"}, json={"model":self.FIREWORKS_MODEL,"messages":messages,"max_tokens":1024}, timeout=20)
+                r = requests.post(
+                    self.FIREWORKS_ENDPOINT,
+                    headers={
+                        "Authorization": f"Bearer {fw_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={"model": self.FIREWORKS_MODEL, "messages": messages, "max_tokens": 1024},
+                    timeout=20,
+                )
                 return r.json()["choices"][0]["message"]["content"]
-            except: pass
+            except:
+                pass
         return f"[BARROT] All backends failed: {e}"
 
         return "[BARROT] No inference backend. Set GITHUB_APP credentials or GROQ_API_KEY."
 
     @property
     def backend(self) -> str:
-        if self.auth.ready:   return "GitHub Models"
-        if self.groq_key:     return "Groq Llama 3.1 70B"
+        if self.auth.ready:
+            return "GitHub Models"
+        if self.groq_key:
+            return "Groq Llama 3.1 70B"
         return "None"

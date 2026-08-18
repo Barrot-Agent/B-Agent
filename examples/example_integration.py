@@ -4,11 +4,11 @@ Quantum Entanglement, AGI, and Advanced Algorithmic Logic capabilities
 """
 
 from barrot_integration import (
+    agi_solve,
+    barrot_system,
     initialize_barrot_system,
     process_with_barrot,
     quantum_process,
-    agi_solve,
-    barrot_system,
 )
 
 

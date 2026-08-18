@@ -15,8 +15,13 @@ agi_orchestrator
     Unified AGI orchestrator that coordinates all intelligence modules.
 """
 
-from .advanced_algorithms import AlgorithmicOptimizer, algorithmic_optimizer, optimize_algorithm, performance_monitor
-from .agi_reasoning import AGIEngine, agi_engine, solve_with_agi, ReasoningChain
+from .advanced_algorithms import (
+    AlgorithmicOptimizer,
+    algorithmic_optimizer,
+    optimize_algorithm,
+    performance_monitor,
+)
+from .agi_reasoning import AGIEngine, ReasoningChain, agi_engine, solve_with_agi
 
 __all__ = [
     "AlgorithmicOptimizer",

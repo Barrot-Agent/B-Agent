@@ -4,15 +4,15 @@ with open("scripts/barrot_agent.py") as f:
 if "OVERRIDE transmute" in content:
     print("ALREADY PATCHED -- skipping, no changes made")
 else:
-    old = '''        if os.path.exists(path):
+    old = """        if os.path.exists(path):
             with open(path) as _f:
                 _old = _f.read()
             pok, preason = preservation_check(_old, content)
             if not pok:
                 print(f"REJECTED transmute ({preason}): {path}")
-                continue'''
+                continue"""
 
-    new = '''        if os.path.exists(path):
+    new = """        if os.path.exists(path):
             with open(path) as _f:
                 _old = _f.read()
             pok, preason = preservation_check(_old, content)
@@ -23,7 +23,7 @@ else:
                     print(f"  justification: {justification}")
                 else:
                     print(f"REJECTED transmute ({preason}): {path}")
-                    continue'''
+                    continue"""
 
     count = content.count(old)
     print(f"Match count: {count}")

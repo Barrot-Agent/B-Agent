@@ -36,7 +36,7 @@ import time
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Dict, Generator, List, Optional, Any
+from typing import Any, Dict, Generator, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -483,7 +483,7 @@ class MCPOrchestrator:
     def _local_render(self, episode_number: int) -> Optional[str]:
         """Run the local SindyVideoPipeline and return the video path, or None."""
         try:
-            from sindy_video_pipeline import SindyVideoPipeline, RenderStatus
+            from sindy_video_pipeline import RenderStatus, SindyVideoPipeline
 
             pipeline = SindyVideoPipeline()
             if pipeline.get_state(episode_number) is None:

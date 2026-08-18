@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import os
 import datetime
+import os
 
 # MemPalace Constants
 PALACE_ROOT = os.path.expanduser("~/B-Agent/MemPalace")

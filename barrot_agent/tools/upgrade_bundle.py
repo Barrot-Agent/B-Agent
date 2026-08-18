@@ -401,7 +401,7 @@ class Ternary:
 # ══════════════════════════════════════════════════════════════════
 # FILE 4 — GitHub Actions cron for hourly telemetry archiving
 # ══════════════════════════════════════════════════════════════════
-GITHUB_ACTION = '''name: Barrot-Ω Hourly Telemetry Archive
+GITHUB_ACTION = """name: Barrot-Ω Hourly Telemetry Archive
 on:
   schedule:
     - cron: "0 * * * *"   # every hour
@@ -433,7 +433,8 @@ jobs:
           git add COUNCIL_REVIEW.md
           git diff --staged --quiet || git commit -m "⚡ Barrot-Ω: hourly telemetry archive"
           git push
-'''
+"""
+
 
 # ══════════════════════════════════════════════════════════════════
 # WRITER
@@ -443,26 +444,31 @@ def write_file(path: Path, content: str, label: str):
     path.write_text(content, encoding="utf-8")
     print(f"  ✅ Written: {path.relative_to(Path.home())} [{label}]")
 
+
 def main():
     print("═" * 60)
     print("  BARROT-Ω UPGRADE BUNDLE · Writing files...")
     print("═" * 60)
 
-    write_file(BARROT_HOME / "xrp_telemetry_matrix.py",
-               XRP_TELEMETRY,
-               "REAL signals replacing fake hardcoded values")
+    write_file(
+        BARROT_HOME / "xrp_telemetry_matrix.py",
+        XRP_TELEMETRY,
+        "REAL signals replacing fake hardcoded values",
+    )
 
-    write_file(BARROT_HOME / "barrot_brain.py",
-               BARROT_BRAIN,
-               "GitHub Models brain + Groq fallback")
+    write_file(BARROT_HOME / "barrot_brain.py", BARROT_BRAIN, "GitHub Models brain + Groq fallback")
 
-    write_file(BARROT_HOME / "barrot_agent" / "ternary.py",
-               TERNARY_MODULE,
-               "Ternary logic for SmartAgent loop")
+    write_file(
+        BARROT_HOME / "barrot_agent" / "ternary.py",
+        TERNARY_MODULE,
+        "Ternary logic for SmartAgent loop",
+    )
 
-    write_file(BARROT_HOME / ".github" / "workflows" / "telemetry.yml",
-               GITHUB_ACTION,
-               "Hourly telemetry archive via GitHub Actions")
+    write_file(
+        BARROT_HOME / ".github" / "workflows" / "telemetry.yml",
+        GITHUB_ACTION,
+        "Hourly telemetry archive via GitHub Actions",
+    )
 
     print()
     print("═" * 60)
@@ -473,13 +479,18 @@ def main():
     print("     python3 ~/barrot/xrp_telemetry_matrix.py")
     print()
     print("  2. Test brain:")
-    print("     python3 -c \"from barrot_brain import BarrotBrain; b=BarrotBrain(); print(b.backend); print(b.think('Who are you?'))\"")
+    print(
+        "     python3 -c \"from barrot_brain import BarrotBrain; b=BarrotBrain(); print(b.backend); print(b.think('Who are you?'))\""
+    )
     print()
     print("  3. Commit everything:")
-    print("     cd ~/barrot && git add -A && git commit -m 'v7.1: real telemetry + brain + ternary' && git push origin main")
+    print(
+        "     cd ~/barrot && git add -A && git commit -m 'v7.1: real telemetry + brain + ternary' && git push origin main"
+    )
     print()
     print(f"  Stability Anchor: {ANCHOR}")
     print("═" * 60)
+
 
 if __name__ == "__main__":
     main()

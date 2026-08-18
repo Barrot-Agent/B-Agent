@@ -18,7 +18,7 @@ from granite_model_config import (
 def _load_model_and_processor(model_id: str = MODEL_ID):
     """Load the Granite vision model and processor."""
     import torch
-    from transformers import AutoProcessor, AutoModelForVision2Seq
+    from transformers import AutoModelForVision2Seq, AutoProcessor
 
     processor = AutoProcessor.from_pretrained(
         model_id,
@@ -222,8 +222,8 @@ class GraniteVisionPipeline:
 
 def _load_images(images):
     """Accept file paths, URLs, or PIL Image objects and return a list of PIL Images."""
-    from PIL import Image
     import requests
+    from PIL import Image
 
     if not isinstance(images, list):
         images = [images]

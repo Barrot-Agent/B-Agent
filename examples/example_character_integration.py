@@ -6,10 +6,11 @@ transform them into practical implementations, and optimize them for research go
 """
 
 import json
+
 from character_figure_search import (
-    CharacterFigureDatabase,
-    CapabilityTransformer,
     CapabilityPermutator,
+    CapabilityTransformer,
+    CharacterFigureDatabase,
 )
 
 

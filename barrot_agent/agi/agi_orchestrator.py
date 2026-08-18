@@ -14,24 +14,25 @@ Key Capabilities:
 """
 
 import json
-from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, field, asdict
-from enum import Enum
 from collections import defaultdict
+from dataclasses import asdict, dataclass, field
+from datetime import datetime, timezone
+from enum import Enum
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+from advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
+from agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
 
 # Import all core AGI modules
 from quantum_entanglement import (
-    quantum_coordinator,
     create_entangled_decision_space,
+    quantum_coordinator,
     quantum_optimize,
 )
-from agi_reasoning import agi_engine, solve_with_agi, ReasoningChain
-from advanced_algorithms import algorithmic_optimizer, performance_monitor, optimize_algorithm
 from transformative_insights import (
-    transformative_engine,
     acquire_transformative_data,
     discover_transformative_insights,
+    transformative_engine,
 )
 
 

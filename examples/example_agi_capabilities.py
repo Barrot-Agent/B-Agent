@@ -9,11 +9,12 @@ Demonstrates the comprehensive AGI capabilities including:
 
 import json
 from datetime import datetime
+
 from barrot_integration import (
+    agi_orchestrator,
     learn_from_vast_dataset,
     make_ethical_decision,
     solve_complex_cross_domain_task,
-    agi_orchestrator,
 )
 
 

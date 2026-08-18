@@ -11,8 +11,8 @@ millennium_problems_micro_ingestion.py.
 
 from __future__ import annotations
 
-import json
 import hashlib
+import json
 import logging
 import os
 import re
@@ -33,17 +33,18 @@ _TOPICS_FILE = _BRAIN_CORPUS_DIR / "topics.txt"
 # Data model
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class PolymathEntry:
     """A structured knowledge bundle for a single polymath topic."""
 
-    domain: str                          # top-level domain (e.g. "Mathematics")
-    subdomain: str                       # specific topic
-    description: str                     # rich description of the topic
-    key_concepts: List[str]              # bullet-level knowledge nodes
-    synthesis_links: List[str]           # domains this topic connects to
-    specialist_roles: List[str]          # roles that rely on this topic
-    frameworks: List[str]                # Barrot framework features that leverage it
+    domain: str  # top-level domain (e.g. "Mathematics")
+    subdomain: str  # specific topic
+    description: str  # rich description of the topic
+    key_concepts: List[str]  # bullet-level knowledge nodes
+    synthesis_links: List[str]  # domains this topic connects to
+    specialist_roles: List[str]  # roles that rely on this topic
+    frameworks: List[str]  # Barrot framework features that leverage it
     ingested_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
@@ -420,7 +421,11 @@ _POLYMATH_CATALOGUE: List[Dict[str, Any]] = [
         ],
         "synthesis_links": ["ALL"],
         "specialist_roles": ["Universal Polymath"],
-        "frameworks": ["Transformative Insights Engine", "AGI Orchestrator", "Quantum Entanglement Engine"],
+        "frameworks": [
+            "Transformative Insights Engine",
+            "AGI Orchestrator",
+            "Quantum Entanglement Engine",
+        ],
     },
 ]
 
@@ -428,6 +433,7 @@ _POLYMATH_CATALOGUE: List[Dict[str, Any]] = [
 # ---------------------------------------------------------------------------
 # Ingestion logic
 # ---------------------------------------------------------------------------
+
 
 class BarrotPolymathIngestion:
     """Ingests polymath knowledge bundles into the brain corpus."""
@@ -440,7 +446,9 @@ class BarrotPolymathIngestion:
         self.brain_corpus_dir = brain_corpus_dir
         # Default topics_file relative to the chosen corpus dir so that
         # callers overriding brain_corpus_dir get an isolated topics file.
-        self.topics_file = topics_file if topics_file is not None else brain_corpus_dir / "topics.txt"
+        self.topics_file = (
+            topics_file if topics_file is not None else brain_corpus_dir / "topics.txt"
+        )
         self.brain_corpus_dir.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------
@@ -482,7 +490,9 @@ class BarrotPolymathIngestion:
         """Append *topic_line* to topics.txt if not already present."""
         existing: set[str] = set()
         if self.topics_file.exists():
-            existing = {ln.strip() for ln in self.topics_file.read_text(encoding="utf-8").splitlines()}
+            existing = {
+                ln.strip() for ln in self.topics_file.read_text(encoding="utf-8").splitlines()
+            }
         if topic_line.strip() not in existing:
             with open(self.topics_file, "a", encoding="utf-8") as fh:
                 fh.write(topic_line.strip() + "\n")
@@ -531,6 +541,7 @@ class BarrotPolymathIngestion:
 # ---------------------------------------------------------------------------
 # Convenience accessor
 # ---------------------------------------------------------------------------
+
 
 def run_polymath_ingestion() -> Dict[str, Any]:
     """Top-level convenience function — run the full polymath ingestion."""

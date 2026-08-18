@@ -8,27 +8,28 @@ Enhanced with AGI Orchestrator for unified intelligence
 
 import json
 from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
+from advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
+
+# Import AGI Orchestrator for unified intelligence
+from agi_orchestrator import achieve_agi_with_unified_system, agi_orchestrator
+from agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
+from email_analyzer import analyze_email, analyze_emails, email_analyzer
 
 # Import core modules
 from quantum_entanglement import (
-    quantum_coordinator,
-    initialize_quantum_entanglement,
     create_entangled_decision_space,
+    initialize_quantum_entanglement,
+    quantum_coordinator,
     quantum_optimize,
 )
-from agi_reasoning import agi_engine, solve_with_agi, ReasoningChain
-from advanced_algorithms import algorithmic_optimizer, performance_monitor, optimize_algorithm
-from email_analyzer import email_analyzer, analyze_email, analyze_emails
 from transformative_insights import (
-    transformative_engine,
+    TransformativeInsightsEngine,
     acquire_transformative_data,
     discover_transformative_insights,
-    TransformativeInsightsEngine,
+    transformative_engine,
 )
-
-# Import AGI Orchestrator for unified intelligence
-from agi_orchestrator import agi_orchestrator, achieve_agi_with_unified_system
 
 
 class BarrotIntegratedSystem:

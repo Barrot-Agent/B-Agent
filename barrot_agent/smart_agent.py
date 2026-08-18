@@ -574,10 +574,7 @@ class _BuiltinTools:
                 call_id=call_id,
                 tool_name="reconfigure_infra",
                 success=False,
-                output=(
-                    f"Unknown mode {mode!r}. "
-                    "Choose one of: 'audit', 'plan', 'apply'."
-                ),
+                output=(f"Unknown mode {mode!r}. " "Choose one of: 'audit', 'plan', 'apply'."),
             )
 
         logger.debug("reconfigure_infra: target=%s mode=%s", target, mode)
@@ -598,10 +595,7 @@ class _BuiltinTools:
             summary = "\n".join(report.summary_lines())
 
             if mode == "audit":
-                output = (
-                    f"## 🔍 Infrastructure Audit — `{target}`\n\n"
-                    + summary
-                )
+                output = f"## 🔍 Infrastructure Audit — `{target}`\n\n" + summary
                 metadata: dict[str, Any] = {
                     "mode": "audit",
                     "target": target,
@@ -641,7 +635,7 @@ class _BuiltinTools:
 
         # ---- apply: invoke the MCP integration pipeline (dry_run=True) ----
         try:
-            from barrot_agent.mcp_integration import MCPIntegration, IntegrationConfig
+            from barrot_agent.mcp_integration import IntegrationConfig, MCPIntegration
 
             cfg = IntegrationConfig(dry_run=True)
             integration = MCPIntegration(cfg)
@@ -652,15 +646,11 @@ class _BuiltinTools:
                 "The MCP integration pipeline completed in dry-run mode.\n"
                 "No production state was modified — human approval is required "
                 "before any server can be promoted.\n\n"
-                "**Pipeline stats:**\n"
-                + "\n".join(f"  • {k}: {v}" for k, v in stats.items())
+                "**Pipeline stats:**\n" + "\n".join(f"  • {k}: {v}" for k, v in stats.items())
             )
 
             report = build_reconfiguration_report(dry_run=True)
-            output += (
-                "\n\n**Post-run infrastructure state:**\n"
-                + "\n".join(report.summary_lines())
-            )
+            output += "\n\n**Post-run infrastructure state:**\n" + "\n".join(report.summary_lines())
 
             return ToolResult(
                 call_id=call_id,
@@ -682,6 +672,7 @@ class _BuiltinTools:
                 success=False,
                 output=f"Pipeline error during apply: {exc}",
             )
+
 
 _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
     # ---- research / learn ----

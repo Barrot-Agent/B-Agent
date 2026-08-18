@@ -9,9 +9,9 @@ with Barrot's infrastructure.
 
 import json
 import re
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
+from typing import Any, Dict, List, Optional
 
 
 @dataclass

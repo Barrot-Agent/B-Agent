@@ -29,7 +29,9 @@ class ParticipantCohort:
     total_participants: int
     outcomes: List[Dict[str, Any]] = field(default_factory=list)
 
-    def add_participant_outcome(self, participant_id: str, treatment_arm: str, age_reversal: float) -> None:
+    def add_participant_outcome(
+        self, participant_id: str, treatment_arm: str, age_reversal: float
+    ) -> None:
         self.outcomes.append(
             {
                 "participant_id": participant_id,
@@ -77,7 +79,9 @@ class SafetyMonitor:
     def __init__(self) -> None:
         self._events: List[Dict[str, Any]] = []
 
-    def log_adverse_event(self, participant_id: str, treatment_arm: str, severity: str, description: str) -> None:
+    def log_adverse_event(
+        self, participant_id: str, treatment_arm: str, severity: str, description: str
+    ) -> None:
         self._events.append(
             {
                 "participant_id": participant_id,

@@ -3,9 +3,10 @@ Example usage of Email Analyzer for Barrot-Agent
 Demonstrates how to analyze emails and extract useful information
 """
 
-from email_analyzer import analyze_email, analyze_emails, email_analyzer
-from datetime import datetime, timezone
 import json
+from datetime import datetime, timezone
+
+from email_analyzer import analyze_email, analyze_emails, email_analyzer
 
 
 def example_single_email_analysis():
