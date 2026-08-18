@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 371,
+    "xrp_entries": 372,
     "btc_entries": 233
   },
-  "unique_entities_profiled": 359,
+  "unique_entities_profiled": 362,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 87,
-      "bullish": 52,
+      "total_mentions": 88,
+      "bullish": 53,
       "neutral": 21,
       "bearish": 14,
-      "net_sentiment_score": 0.437,
+      "net_sentiment_score": 0.443,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 70,
-      "bullish": 41,
+      "total_mentions": 71,
+      "bullish": 42,
       "neutral": 21,
       "bearish": 8,
-      "net_sentiment_score": 0.471,
+      "net_sentiment_score": 0.479,
       "assets_seen_in": [
         "XRP"
       ],
@@ -3079,6 +3079,48 @@
       ],
       "example_headlines": [
         "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Jeonbuk Bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect"
+      ]
+    },
+    {
+      "entity": "Korea",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect"
+      ]
+    },
+    {
+      "entity": "cross\u2011border payments",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect"
       ]
     },
     {
