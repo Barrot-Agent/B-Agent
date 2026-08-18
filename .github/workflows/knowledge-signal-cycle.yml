@@ -32,6 +32,6 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json ping-pongings/knowledge-base/xrp_research_log.jsonl ping-pongings/knowledge-base/xrp_research_summary.json web/xrp_research_summary.json web/latest_signal.json web/signal_history.jsonl
+          git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json ping-pongings/knowledge-base/xrp_research* web/xrp_research_summary.json web/latest_signal.json web/signal_history.jsonl
           git diff --cached --quiet || git commit -m "Auto cycle: ingest + distill + blended signal [skip ci]"
           git push || (git pull --no-rebase --no-edit origin main && git push)

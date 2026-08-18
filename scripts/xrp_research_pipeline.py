@@ -47,6 +47,10 @@ FEEDS = {
 }
 
 QUALITY_BY_SOURCE = {"official": 1.0, "academic": 0.9, "regulator": 0.95, "news": 0.7, "reddit": 0.35}
+CLAIM_STOPWORDS = {
+    "about", "after", "also", "been", "could", "from", "have", "into",
+    "more", "over", "than", "that", "this", "when", "will", "with",
+}
 
 
 def fetch(url):
@@ -74,11 +78,10 @@ def parse_feed(raw, feed_name, feed_url, source, quality):
         for child in item:
             fields[child.tag.rsplit("}", 1)[-1]] = _text(child.text)
         link = fields.get("link", "")
-        if not link:
-            for child in item:
-                if child.tag.rsplit("}", 1)[-1] == "link":
-                    link = child.attrib.get("href", "")
-                    break
+        for child in item:
+            if child.tag.rsplit("}", 1)[-1] == "link" and child.attrib.get("href"):
+                link = child.attrib["href"]
+                break
         title = fields.get("title", "")
         summary = fields.get("description") or fields.get("summary", "")
         if title and link:
@@ -97,8 +100,9 @@ def claim_key(entry):
     # Titles are more stable across syndicated copies than descriptions, which
     # frequently contain source-specific boilerplate or tracking text.
     words = re.findall(r"[a-z0-9]{4,}", entry["title"].lower())
-    ignored = {"about", "after", "could", "from", "have", "into", "that", "this", "with"}
-    return hashlib.sha256(" ".join(word for word in words if word not in ignored).encode()).hexdigest()[:16]
+    return hashlib.sha256(
+        " ".join(word for word in words if word not in CLAIM_STOPWORDS).encode()
+    ).hexdigest()[:16]
 
 
 def load_seen():
