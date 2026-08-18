@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 375,
-    "btc_entries": 237
+    "xrp_entries": 376,
+    "btc_entries": 240
   },
-  "unique_pairs_found": 1093,
+  "unique_pairs_found": 1097,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 70,
+      "cooccurrence_count": 71,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -67,6 +67,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 12,
       "example_headlines": [
@@ -81,7 +96,7 @@
       ]
     },
     {
-      "entity_a": "XRP",
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 12,
       "example_headlines": [
@@ -97,23 +112,8 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 11,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -128,7 +128,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 11,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -546,6 +546,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
       "cooccurrence_count": 4,
@@ -946,21 +961,6 @@
         },
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
           "asset": "XRP"
         }
       ]
@@ -6608,6 +6608,50 @@
       "example_headlines": [
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is $3 Still Realistic for XRP in 2026? - 247wallst.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is $3 Still Realistic for XRP in 2026? - 247wallst.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is $3 Still Realistic for XRP in 2026? - 247wallst.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is $3 Still Realistic for XRP in 2026? - 247wallst.com",
           "asset": "XRP"
         }
       ]
