@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 369,
-    "btc_entries": 228
+    "xrp_entries": 370,
+    "btc_entries": 229
   },
-  "unique_entities_profiled": 354,
+  "unique_entities_profiled": 357,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 162,
+      "total_mentions": 165,
       "bullish": 72,
       "neutral": 26,
-      "bearish": 64,
-      "net_sentiment_score": 0.049,
+      "bearish": 67,
+      "net_sentiment_score": 0.03,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 63,
+      "total_mentions": 66,
       "bullish": 26,
       "neutral": 13,
-      "bearish": 24,
-      "net_sentiment_score": 0.032,
+      "bearish": 27,
+      "net_sentiment_score": -0.015,
       "assets_seen_in": [
         "BTC"
       ],
@@ -256,6 +256,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.556,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "Strategy",
       "total_mentions": 9,
       "bullish": 4,
@@ -286,23 +303,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 8,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -506,6 +506,22 @@
       ]
     },
     {
+      "entity": "Bloomberg",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
+      ]
+    },
+    {
       "entity": "24/7 Wall St.",
       "total_mentions": 4,
       "bullish": 3,
@@ -670,22 +686,6 @@
         "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
         "Rate path still divides investors: Five things to know in Bitcoin this week",
         "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
-      ]
-    },
-    {
-      "entity": "Bloomberg",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
       ]
     },
     {
@@ -5247,6 +5247,48 @@
       ],
       "example_headlines": [
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "CME Group",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Futures",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Crypto investors",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com"
       ]
     }
   ]
