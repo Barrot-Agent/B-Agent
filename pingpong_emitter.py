@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 _PINGPONG_REQUEST_PATH = Path(__file__).resolve().parent / "data" / "pingpong_request.json"
-_SUPPORTED_TOPICS = {"general", "aging_research", "longevity_breakthroughs", "product_catalog"}
+_SUPPORTED_TOPICS = {"general", "aging_research", "longevity_breakthroughs"}
 
 
 def emit_pingpong_request(
@@ -37,37 +37,6 @@ def emit_pingpong_request(
     print(
         f"Ping-Pong request emitted at {_PINGPONG_REQUEST_PATH}. "
         "Commit to GitHub to trigger external system."
-    )
-
-
-def emit_product_catalog_pingpong_request(
-    catalog: Dict[str, Any],
-    agents: Optional[List[str]] = None,
-) -> None:
-    """Emit a pingpong request to co-create and refine a product catalog.
-
-    IBM Bob, Barrot, and Co-Pilot each contribute: Co-Pilot handles copy and
-    SEO, IBM Bob validates pricing and surfaces competitor gaps, and Barrot
-    orchestrates the loop and issues final launch approval.
-
-    Args:
-        catalog: Dictionary representation of the product catalog payload.
-        agents:  List of participating agent names (defaults to the standard
-                 triple: IBM Bob, Barrot, Co-Pilot).
-    """
-    enriched_payload = dict(catalog)
-    enriched_payload["co_creators"] = agents or ["IBM Bob", "Barrot", "Co-Pilot"]
-    enriched_payload["session_ref"] = (
-        "ping-pongings/sessions/product-catalog-530.json"
-    )
-    emit_pingpong_request(
-        enriched_payload,
-        topic="product_catalog",
-        notes=(
-            "Product catalog co-creation loop: Co-Pilot (copy & SEO) → "
-            "Barrot (orchestration) → IBM Bob (pricing & analytics) → "
-            "Barrot (final approval)."
-        ),
     )
 
 
