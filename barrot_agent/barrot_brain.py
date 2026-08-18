@@ -132,8 +132,11 @@ class BarrotBrain:
                     timeout=20,
                 )
                 return r.json()["choices"][0]["message"]["content"]
-            except Exception as e:
-                fw_key = os.getenv("FIREWORKS_API_KEY", "")
+            except Exception:
+                pass  # fall through to Fireworks
+
+        # Fireworks fallback
+        fw_key = os.getenv("FIREWORKS_API_KEY", "")
         if fw_key:
             try:
                 r = requests.post(
@@ -148,9 +151,8 @@ class BarrotBrain:
                 return r.json()["choices"][0]["message"]["content"]
             except:
                 pass
-        return f"[BARROT] All backends failed: {e}"
+        return "[BARROT] All backends failed."
 
-        return "[BARROT] No inference backend. Set GITHUB_APP credentials or GROQ_API_KEY."
 
     @property
     def backend(self) -> str:
