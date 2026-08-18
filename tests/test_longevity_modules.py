@@ -4,15 +4,15 @@ from __future__ import annotations
 
 import json
 
-from barrot_agent.ingestion.biomarker_analyzer import (
+from biomarker_analyzer import (
     AgingClockCalculator,
     BiomarkerTracker,
     BiomarkerVisualizer,
     TrialProgressMonitor,
 )
-from barrot_agent.analysis.epigenetic_reprogramming_engine import EpigeneticReprogrammingEngine
-from barrot_agent.ingestion.longevity_micro_ingestion import LongevityMicroIngestion
-from barrot_agent.monetization.trial_tracker import DiscoveryExtractor, EfficacyAnalyzer, ParticipantCohort, SafetyMonitor
+from epigenetic_reprogramming_engine import EpigeneticReprogrammingEngine
+from longevity_micro_ingestion import LongevityMicroIngestion
+from trial_tracker import DiscoveryExtractor, EfficacyAnalyzer, ParticipantCohort, SafetyMonitor
 
 
 def test_longevity_ingestion_builds_unified_payload() -> None:

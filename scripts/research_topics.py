@@ -90,7 +90,7 @@ def main():
         sys.exit(f"missing {TOPICS_PATH}")
 
     with open(TOPICS_PATH) as f:
-        topics = [l.strip() for l in f if l.strip()]
+        topics = [l.strip() for l in f if l.strip() and not l.lstrip().startswith("#")]
 
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     done_topics = set()
