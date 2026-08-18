@@ -3,7 +3,7 @@
     "xrp_entries": 375,
     "btc_entries": 237
   },
-  "unique_entities_profiled": 362,
+  "unique_entities_profiled": 364,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 89,
-      "bullish": 54,
+      "total_mentions": 90,
+      "bullish": 55,
       "neutral": 21,
       "bearish": 14,
-      "net_sentiment_score": 0.449,
+      "net_sentiment_score": 0.456,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 72,
-      "bullish": 43,
+      "total_mentions": 73,
+      "bullish": 44,
       "neutral": 21,
       "bearish": 8,
-      "net_sentiment_score": 0.486,
+      "net_sentiment_score": 0.493,
       "assets_seen_in": [
         "XRP"
       ],
@@ -3123,6 +3123,34 @@
       ],
       "example_headlines": [
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect"
+      ]
+    },
+    {
+      "entity": "Korean regional bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga"
+      ]
+    },
+    {
+      "entity": "Benzinga",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga"
       ]
     },
     {
