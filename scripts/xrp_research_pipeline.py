@@ -94,7 +94,9 @@ def parse_feed(raw, feed_name, feed_url, source, quality):
 
 
 def claim_key(entry):
-    words = re.findall(r"[a-z0-9]{4,}", f"{entry['title']} {entry['summary']}".lower())
+    # Titles are more stable across syndicated copies than descriptions, which
+    # frequently contain source-specific boilerplate or tracking text.
+    words = re.findall(r"[a-z0-9]{4,}", entry["title"].lower())
     ignored = {"about", "after", "could", "from", "have", "into", "that", "this", "with"}
     return hashlib.sha256(" ".join(sorted(set(words) - ignored)).encode()).hexdigest()[:16]
 
@@ -104,7 +106,9 @@ def load_seen():
     if LOG_PATH.exists():
         for line in LOG_PATH.read_text(encoding="utf-8").splitlines():
             try:
-                seen.add(json.loads(line).get("url"))
+                url = json.loads(line).get("url")
+                if isinstance(url, str) and url:
+                    seen.add(url)
             except json.JSONDecodeError:
                 continue
     return seen
