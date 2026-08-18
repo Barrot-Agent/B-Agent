@@ -98,7 +98,7 @@ def claim_key(entry):
     # frequently contain source-specific boilerplate or tracking text.
     words = re.findall(r"[a-z0-9]{4,}", entry["title"].lower())
     ignored = {"about", "after", "could", "from", "have", "into", "that", "this", "with"}
-    return hashlib.sha256(" ".join(sorted(set(words) - ignored)).encode()).hexdigest()[:16]
+    return hashlib.sha256(" ".join(word for word in words if word not in ignored).encode()).hexdigest()[:16]
 
 
 def load_seen():
@@ -132,20 +132,22 @@ def summarize(entries):
     for entry in entries:
         claims[entry["claim_key"]].append(entry)
     corroborated = []
-    conflicts = []
+    single_source_repeats = []
     for key, records in claims.items():
         sources = sorted({record["source"] for record in records})
         if len(sources) > 1:
             corroborated.append({"claim_key": key, "source_count": len(sources), "sources": sources})
         if len(records) > 1 and len(sources) == 1:
-            conflicts.append({"claim_key": key, "status": "single-source", "sources": sources})
+            single_source_repeats.append(
+                {"claim_key": key, "status": "single-source-repeated", "sources": sources}
+            )
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "evidence_count": len(entries),
         "source_counts": {source: sum(e["source"] == source for e in entries)
                           for source in sorted({e["source"] for e in entries})},
         "corroborated_claims": corroborated,
-        "uncorroborated_or_conflicting_claims": conflicts,
+        "single_source_repeated_claims": single_source_repeats,
         "provenance": {
             "curriculum": "data/xrp_study_curriculum.json",
             "pipeline": "scripts/xrp_research_pipeline.py",
