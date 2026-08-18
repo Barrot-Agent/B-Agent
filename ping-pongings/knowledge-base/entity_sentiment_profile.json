@@ -3,7 +3,7 @@
     "xrp_entries": 371,
     "btc_entries": 231
   },
-  "unique_entities_profiled": 358,
+  "unique_entities_profiled": 359,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 86,
+      "total_mentions": 87,
       "bullish": 52,
-      "neutral": 20,
+      "neutral": 21,
       "bearish": 14,
-      "net_sentiment_score": 0.442,
+      "net_sentiment_score": 0.437,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 69,
+      "total_mentions": 70,
       "bullish": 41,
-      "neutral": 20,
+      "neutral": 21,
       "bearish": 8,
-      "net_sentiment_score": 0.478,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "XRP"
       ],
@@ -124,11 +124,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 17,
+      "total_mentions": 18,
       "bullish": 9,
-      "neutral": 0,
+      "neutral": 1,
       "bearish": 8,
-      "net_sentiment_score": 0.059,
+      "net_sentiment_score": 0.056,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -136,7 +136,7 @@
       "example_headlines": [
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
       ]
     },
     {
@@ -1893,6 +1893,22 @@
       ]
     },
     {
+      "entity": "South Korea",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -3052,6 +3068,20 @@
       ]
     },
     {
+      "entity": "regional bank",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -3469,20 +3499,6 @@
       ],
       "example_headlines": [
         "Chinese newspaper warns of Bitcoin extortion scam using its name"
-      ]
-    },
-    {
-      "entity": "South Korea",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
