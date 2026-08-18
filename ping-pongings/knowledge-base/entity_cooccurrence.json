@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 361,
-    "btc_entries": 216
+    "xrp_entries": 371,
+    "btc_entries": 231
   },
-  "unique_pairs_found": 1008,
+  "unique_pairs_found": 1070,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 65,
+      "cooccurrence_count": 66,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 41,
+      "cooccurrence_count": 47,
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
@@ -62,6 +62,21 @@
         {
           "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -126,16 +141,16 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
+      "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
       "cooccurrence_count": 10,
       "example_headlines": [
         {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -171,24 +186,9 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
-      "cooccurrence_count": 8,
+      "cooccurrence_count": 9,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -203,7 +203,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 8,
+      "cooccurrence_count": 9,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -211,6 +211,66 @@
         },
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -231,21 +291,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 8,
@@ -261,69 +306,9 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -338,7 +323,7 @@
     {
       "entity_a": "Ethereum",
       "entity_b": "XRP",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
@@ -346,6 +331,21 @@
         },
         {
           "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -451,6 +451,21 @@
         },
         {
           "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bloomberg",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        },
+        {
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -681,6 +696,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETF",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Moomoo",
       "cooccurrence_count": 4,
@@ -697,15 +727,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Bloomberg",
+      "entity_b": "Lightning Network",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
           "asset": "BTC"
         },
         {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
           "asset": "BTC"
         }
       ]
@@ -1042,6 +1072,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Galaxy",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1176,21 +1221,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "ETF",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Truth Social",
       "cooccurrence_count": 3,
@@ -1221,21 +1251,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Lightning Network",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "BTCPay restricts remote Lightning access after attackers steal funds",
-          "asset": "BTC"
-        },
-        {
-          "title": "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Strategy",
       "cooccurrence_count": 3,
@@ -1246,6 +1261,21 @@
         },
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -1996,6 +2026,21 @@
         },
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
           "asset": "XRP"
         }
       ]
@@ -2976,6 +3021,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "CoinDesk",
       "entity_b": "Coldcard",
       "cooccurrence_count": 2,
@@ -3201,16 +3261,16 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Donald Trump",
+      "entity_a": "BTC",
+      "entity_b": "Bloomberg",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
           "asset": "BTC"
         },
         {
-          "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -3291,16 +3351,16 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Yahoo Finance",
+      "entity_a": "BTC",
+      "entity_b": "Metaplanet",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
+          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
           "asset": "BTC"
         }
       ]
@@ -5011,17 +5071,6 @@
       ]
     },
     {
-      "entity_a": "CLARITY Act",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Clarity Act",
       "entity_b": "MarketForces Africa",
       "cooccurrence_count": 1,
@@ -6194,6 +6243,94 @@
       "example_headlines": [
         {
           "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Influencer",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Influencer",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "Yellow.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Tests $1 Support As $0.60 Crash Risk Deepens - Yellow.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CLARITY Act",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
           "asset": "XRP"
         }
       ]
@@ -8388,17 +8525,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 1,
@@ -9109,6 +9235,94 @@
       "example_headlines": [
         {
           "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Evan Kaloudis",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Zeus Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Evan Kaloudis",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Zeus Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evan Kaloudis",
+      "entity_b": "Lightning Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evan Kaloudis",
+      "entity_b": "Zeus Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Lightning Network",
+      "entity_b": "Zeus Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
           "asset": "BTC"
         }
       ]
@@ -10259,17 +10473,6 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "Bloomberg",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "Hack",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -11248,6 +11451,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Simon Gerovich",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Simon Gerovich",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Simon Gerovich",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Crypto ETFs",
       "cooccurrence_count": 1,
@@ -11481,17 +11728,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "CEO",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Metaplanet",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -11969,6 +12205,468 @@
       "example_headlines": [
         {
           "title": "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Markus Thielen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin to $1M by 2030 is \u2018mathematically impossible\u2019 says Markus Thielen",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Markus Thielen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin to $1M by 2030 is \u2018mathematically impossible\u2019 says Markus Thielen",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Bitcoin (BTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Google DeepMind",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Google DeepMind",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Google DeepMind",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Google DeepMind",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenAI",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "Altcoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2026",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoins",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoins",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoins",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Hodler\u2019s Digest",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "SafePal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "SafePal",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hodler\u2019s Digest",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SafePal",
+      "entity_b": "Trezor",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SafePal",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Trezor",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Yahoo Finance UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CME Group",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CME Group",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME Group",
+      "entity_b": "Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Crypto investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "Crypto investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto investors",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
           "asset": "BTC"
         }
       ]

@@ -1,10 +1,10 @@
 {
   "generated_from": {
-    "total_entries": 28,
-    "distilled_entries": 23
+    "total_entries": 34,
+    "distilled_entries": 25
   },
   "claim_type_breakdown": {
-    "product_announcement": 19,
+    "product_announcement": 21,
     "opinion_or_hype": 2,
     "proposed_spec_change": 2
   },
@@ -270,6 +270,30 @@
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQdU55bVU5YlpOM1Qwa2o0TTNrWkROc0Y3dGZfcUVsOTNLcXVOVG0xTUJOdUk4QW9nVy11eXVVYnFMWE16R19LYVlfbmUzYzBJU1RFZENmX0ktd0FJQzlJSTdYc2FpVzJBLUxhQ09ZaWFFYXNGek5JRVlGSDRMeDl0WjNfanRNNG1MN3c5S1Q0TEFlNmNORnRJNGlDUEVmUGxObEthMllxVE9NSmQ2YzRhMEpScEFjV2Y5VjY4Ng?oc=5",
           "claim_type": "product_announcement",
           "concrete_claim": "MapQuest is giving developers 1\u202fbillion free API transactions to be used by AI agents."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "WebMCP-enabled Angular component builder",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Google Releases Angular v22 with Stable Signal Forms, OnPush by Default and Experimental WebMCP - in",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBvVFRvQUQ3dG1RMVJ0M0g5dW10UGhqMUxKV0lWWGRfSm84c1VHWWNBd2hOclRwb3lSZm1wNW1SOTVhWjJpUGp5YXpzMTRXd0doSWFWOENIMTJ0N0dSb0d4OWtjM0hfTjg?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Google released Angular v22, which includes stable signal forms, makes OnPush change detection the default, and adds an experimental WebMCP feature."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "AI-powered platform integration bridge",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Revizto adds platform connections with AI MCP integration - Architosh",
+          "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQX3EtMmQxcF9IVUZ0Wm1Qam9OZ09zOWZ4dzFDT0Fsb3lRd0RVdjNwMm9hYnNtY3NsY1oyXzJvaFZxZC11UU5fai1rZkc1Q0FjWGhpMjlLbXBXaWk1M2poSjVSYXRGZUpGT2preTRRYnJwc1VtYUFLREFyRFdiTWluNDVUdEx0b2w0WjFiWWdRV3NxZw?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Revizto announced that it now supports platform connections through an AI MCP integration."
         }
       ]
     }

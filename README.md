@@ -64,17 +64,66 @@ Canonical JSON assets live in [`data/`](data/) and should be accessed through [`
 
 ### 🔄 Upgrade Flywheel
 
-The `UpgradeFlywheel` orchestrates iterative **Observe → Reason → Act → Verify**
-cycles across `SmartAgent`, `DirectivePlatform`, and infrastructure
-reconfiguration reporting.
+The **UpgradeFlywheel** is the system-wide self-improvement orchestrator that
+unifies all major B-Agent components into a single iterative refinement loop.
+On each cycle it executes Barrot's signature four-phase process:
+
+| Phase | What happens |
+|-------|-------------|
+| **Observe** | `SmartAgent` analyses the live system state; `build_reconfiguration_report` snapshots infrastructure coverage gaps. |
+| **Reason** | Observations are synthesised into a ranked list of improvements; a `DirectivePlatform` REFINE directive is optionally opened so every registered agent contributes insights. |
+| **Act** | Improvements are applied (or described in dry-run mode) and logged as a structured `ActionResult`. |
+| **Verify** | A second infrastructure snapshot confirms coverage trends; all checks are recorded in a `VerificationResult`. |
+
+Cycles repeat until either all capability gaps are closed (convergence) or
+`max_cycles` is reached.  The full run history is returned as a
+`FlywheelReport` with per-cycle summaries and JSON serialisation.
+
+**Minimal usage:**
 
 ```python
 from barrot_agent import UpgradeFlywheel
 
-with UpgradeFlywheel(dry_run=True) as flywheel:
-    report = flywheel.run(max_cycles=2)
-    print(report.cycles[0].summary())
+flywheel = UpgradeFlywheel()          # dry_run=True by default
+report = flywheel.run(max_cycles=3)
+print(report.summary())
 ```
+
+**With DirectivePlatform agent sessions:**
+
+```python
+from directive_platform import DirectivePlatform, Agent
+from barrot_agent import UpgradeFlywheel
+
+# Register a refinement agent once
+dp = DirectivePlatform(platform_dir=".directive_platform")
+dp.registry.register(Agent(
+    agent_id="refine-1",
+    name="Refinement Agent",
+    description="Drives iterative improvement cycles",
+    capabilities=["refine", "analyze"],
+))
+
+flywheel = UpgradeFlywheel(
+    platform_dir=".directive_platform",
+    agent_ids=["refine-1"],
+)
+report = flywheel.run(max_cycles=5)
+for cycle in report.cycles:
+    print(cycle.summary())
+```
+
+**Key exports** (all available from `barrot_agent`):
+
+| Symbol | Description |
+|--------|-------------|
+| `UpgradeFlywheel` | Main orchestrator class |
+| `FlywheelReport` | Aggregated report across all cycles |
+| `FlywheelCycleResult` | Per-cycle record (all four phases) |
+| `ObservationResult` | Observe-phase data |
+| `ReasoningResult` | Reason-phase improvements + directive IDs |
+| `ActionResult` | Act-phase log |
+| `VerificationResult` | Verify-phase checks + coverage metric |
 
 ### 📱 Mobile Setup
 Want to access Barrot-Agent from your phone? 
@@ -92,23 +141,36 @@ The mobile guide covers:
 ## 📁 Repository Structure
 
 ```
-Barrot-Agent/
-├── .github/workflows/      # GitHub Actions automation
-├── Barrot-Agent/          # Agent configuration
-├── Barrot-Bundles/        # Bundle storage
-├── memory-bundles/        # Memory and activity logs
-├── SHRM-System/           # System Health & Resource Monitor
-├── site/                  # Barrot Agent dashboard
-├── search-engine/         # Standalone search engine
-├── coin-app/              # Coin app integration & automation
-├── spells/                # Agent capability definitions
-├── glyphs/                # Capability glyphs (quantum, temporal, character)
-├── character-capabilities/ # Fictional character ability transformations
-├── ai-tools-config.yaml   # AI models and system prompts
-├── pingpong_emitter.py    # 22-agent entanglement pingpong
-├── pingpong-config.yaml   # External pingpong configuration
-├── build_manifest.yaml    # Current build status
-└── MOBILE_SETUP.md       # Mobile setup guide
+B-Agent/
+├── barrot_agent/               # 🐍 Core Python package
+│   ├── agi/                    #   AGI reasoning, quantum entanglement, algorithms
+│   ├── analysis/               #   Email, vision, signal, character analysis
+│   ├── ingestion/              #   Data harvesting and knowledge ingestion
+│   ├── monetization/           #   Revenue strategies, grants, MMI compiler
+│   ├── orchestration/          #   MCP coordination, sync, service bridges
+│   ├── rendering/              #   3D dataset absorption and rendering
+│   ├── mcp_*.py                #   MCP integration framework (10-step pipeline)
+│   ├── smart_agent.py          #   Autonomous plan-act-observe agent
+│   ├── core.py                 #   BAgent application class
+│   ├── config.py               #   Pydantic configuration
+│   └── logger.py               #   Structured logging
+├── apex_lattice/               # 🔬 Static code analysis framework
+│   └── analyzers/              #   Architecture, security, performance analyzers
+├── directive_platform/         # 🎯 Directive & session management platform
+├── data/                       # 📦 Canonical JSON datasets & data registry
+├── examples/                   # 📖 Usage examples for all modules
+├── scripts/                    # 🔧 Operational and utility scripts
+├── tests/                      # ✅ Test suite
+├── ping-pongings/              # 🏓 22-agent entanglement system state
+│   ├── knowledge-base/         #   Accumulated knowledge and memory
+│   ├── agents/                 #   Agent role definitions
+│   └── protocols/              #   Communication protocols
+├── site/                       # 🌐 Barrot Agent dashboard (static site)
+├── search-engine/              # 🔍 Standalone privacy-first search engine
+├── self_hosted_brain/          # 🧠 Self-hosted model server
+├── app.py                      # Streamlit demo entrypoint
+├── pingpong_emitter.py         # Ping-pong request emitter
+└── pyproject.toml              # Package metadata & tooling config
 ```
 
 ## 🎯 Features
@@ -134,7 +196,7 @@ Barrot-Agent/
 - **💰 Advanced Monetization** - Revolutionary automation-first revenue generation protocols
 - **✨ Transformative Insights** - Acquire asynchronous data, detect convergence, generate epiphanies, realize transformative insights in real-time
 - **🔀 Merge Conflict Resolution** - Automated conflict detection, analysis, and resolution with continuous learning
-- **🔄 Upgrade Flywheel** - Iterative Observe → Reason → Act → Verify refinement orchestration
+- **🔄 Upgrade Flywheel** - Iterative Observe → Reason → Act → Verify orchestrator that unifies all components into a self-improving refinement loop
 
 ### Two Distinct Systems
 

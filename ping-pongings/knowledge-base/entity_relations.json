@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 119,
+  "total_classified": 121,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1072,6 +1072,24 @@
       "relation_type": "correlated_unclear",
       "justification": "The provided headlines mention only a price prediction for XRP and do not contain any information about the SEC or the XRP Ledger, making the relationship unclear.",
       "classified_at": "2026-08-10T10:27:52Z"
+    },
+    {
+      "pair_key": "Bitcoin|US stocks",
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 6,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines tie Bitcoin price movements to US stock performance (e.g., Bitcoin sinks as US stocks fail) without indicating a clear causal or regulatory link.",
+      "classified_at": "2026-08-17T10:21:29Z"
+    },
+    {
+      "pair_key": "BIP-110|Bitcoin",
+      "entity_a": "BIP-110",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 5,
+      "relation_type": "regulatory",
+      "justification": "Both headlines tie BIP-110 directly to Bitcoin, indicating BIP-110 is a Bitcoin improvement proposal that influences Bitcoin's protocol and governance.",
+      "classified_at": "2026-08-17T10:21:32Z"
     }
   ]
 }
