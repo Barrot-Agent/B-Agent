@@ -3,15 +3,15 @@
     "xrp_entries": 370,
     "btc_entries": 229
   },
-  "unique_entities_profiled": 357,
+  "unique_entities_profiled": 358,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 165,
+      "total_mentions": 166,
       "bullish": 72,
       "neutral": 26,
-      "bearish": 67,
-      "net_sentiment_score": 0.03,
+      "bearish": 68,
+      "net_sentiment_score": 0.024,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,11 +57,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 66,
+      "total_mentions": 67,
       "bullish": 26,
       "neutral": 13,
-      "bearish": 27,
-      "net_sentiment_score": -0.015,
+      "bearish": 28,
+      "net_sentiment_score": -0.03,
       "assets_seen_in": [
         "BTC"
       ],
@@ -5177,6 +5177,20 @@
       ],
       "example_headlines": [
         "Trump Media\u2019s bitcoin holdings shrink as crypto losses hit $361 million - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Markus Thielen",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin to $1M by 2030 is \u2018mathematically impossible\u2019 says Markus Thielen"
       ]
     },
     {
