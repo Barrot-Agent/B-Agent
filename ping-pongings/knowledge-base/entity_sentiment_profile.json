@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 381,
+    "xrp_entries": 382,
     "btc_entries": 244
   },
   "unique_entities_profiled": 365,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 94,
+      "total_mentions": 95,
       "bullish": 55,
       "neutral": 22,
-      "bearish": 17,
-      "net_sentiment_score": 0.404,
+      "bearish": 18,
+      "net_sentiment_score": 0.389,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 76,
+      "total_mentions": 77,
       "bullish": 44,
       "neutral": 22,
-      "bearish": 10,
-      "net_sentiment_score": 0.447,
+      "bearish": 11,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "XRP"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 30,
+      "total_mentions": 31,
       "bullish": 17,
       "neutral": 5,
-      "bearish": 8,
-      "net_sentiment_score": 0.3,
+      "bearish": 9,
+      "net_sentiment_score": 0.258,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1893,6 +1893,21 @@
       ]
     },
     {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 2,
       "bullish": 1,
@@ -3059,20 +3074,6 @@
     },
     {
       "entity": "Wyoming",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
-      ]
-    },
-    {
-      "entity": "Brad Garlinghouse",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,

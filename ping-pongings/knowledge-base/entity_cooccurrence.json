@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 381,
+    "xrp_entries": 382,
     "btc_entries": 244
   },
-  "unique_pairs_found": 1107,
+  "unique_pairs_found": 1108,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 73,
+      "cooccurrence_count": 74,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -97,6 +97,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 13,
       "example_headlines": [
@@ -106,21 +121,6 @@
         },
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -151,6 +151,21 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -196,21 +211,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -2717,6 +2717,36 @@
         {
           "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
         }
       ]
     },
@@ -6251,17 +6281,6 @@
     },
     {
       "entity_a": "Brad Garlinghouse",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
       "entity_b": "TradingView",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -6274,17 +6293,6 @@
     {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "Wyoming",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -6762,6 +6770,17 @@
       "example_headlines": [
         {
           "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
           "asset": "XRP"
         }
       ]
