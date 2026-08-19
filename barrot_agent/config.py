@@ -36,6 +36,47 @@ class ModelConfig(BaseSettings):
     trust_remote_code: bool = Field(default=True, description="Trust remote code for custom models")
 
 
+class KimiConfig(BaseSettings):
+    """Kimi 3 model configuration for recursive feedback loops."""
+
+    model_config = SettingsConfigDict(protected_namespaces=())
+
+    api_key: Optional[str] = Field(default=None, description="Kimi API key")
+    api_base: str = Field(
+        default="https://api.moonshot.cn/v1",
+        description="Kimi API base URL",
+    )
+    model_name: str = Field(default="moonshot-v1-128k", description="Kimi model name")
+    max_tokens: int = Field(default=4096, description="Maximum tokens to generate")
+    temperature: float = Field(default=0.7, ge=0.0, le=2.0, description="Sampling temperature")
+    enabled: bool = Field(default=False, description="Enable Kimi integration")
+
+
+class FeedbackLoopConfig(BaseSettings):
+    """Recursive feedback loop configuration."""
+
+    model_config = SettingsConfigDict(protected_namespaces=())
+
+    max_iterations: int = Field(
+        default=100, description="Maximum feedback loop iterations"
+    )
+    convergence_threshold: float = Field(
+        default=0.95, description="Convergence threshold for improvement metrics"
+    )
+    improvement_window: int = Field(
+        default=5, description="Window for tracking improvement trends"
+    )
+    enable_auto_refinement: bool = Field(
+        default=True, description="Enable automatic infrastructure refinement"
+    )
+    refinement_interval: int = Field(
+        default=10, description="Run refinement every N iterations"
+    )
+    feedback_history_limit: int = Field(
+        default=1000, description="Maximum feedback history entries to retain"
+    )
+
+
 class AppConfig(BaseSettings):
     """Main application configuration."""
 
@@ -69,6 +110,12 @@ class AppConfig(BaseSettings):
 
     # Model
     model: ModelConfig = Field(default_factory=ModelConfig)
+
+    # Kimi 3 Integration
+    kimi: KimiConfig = Field(default_factory=KimiConfig)
+
+    # Feedback Loop
+    feedback_loop: FeedbackLoopConfig = Field(default_factory=FeedbackLoopConfig)
 
 
 def get_config() -> AppConfig:

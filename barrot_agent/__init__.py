@@ -11,8 +11,18 @@ DatasetManager, AssetLoader, DatasetAnalytics
     3D dataset absorption and rendering utilities.
 data_registry
     Central data access layer for all canonical JSON datasets.
+KimiClient
+    Kimi 3 model integration for paradigm-shifting feedback.
+RecursiveFeedbackLoop
+    Self-improving recursive feedback loop orchestrator.
 """
 
+from .kimi_integration import KimiClient
+from .recursive_feedback import (
+    FeedbackIteration,
+    RecursiveFeedbackLoop,
+    RecursiveFeedbackReport,
+)
 from .smart_agent import (
     AgentEvent,
     AgentEventType,
@@ -66,6 +76,10 @@ __all__ = [
     "ReasoningResult",
     "UpgradeFlywheel",
     "VerificationResult",
+    "KimiClient",
+    "RecursiveFeedbackLoop",
+    "RecursiveFeedbackReport",
+    "FeedbackIteration",
     "data_registry",
 ]
 
