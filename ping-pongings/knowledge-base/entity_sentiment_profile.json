@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 383,
+    "xrp_entries": 384,
     "btc_entries": 251
   },
-  "unique_entities_profiled": 366,
+  "unique_entities_profiled": 367,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 96,
-      "bullish": 56,
+      "total_mentions": 97,
+      "bullish": 57,
       "neutral": 22,
       "bearish": 18,
-      "net_sentiment_score": 0.396,
+      "net_sentiment_score": 0.402,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 78,
-      "bullish": 45,
+      "total_mentions": 79,
+      "bullish": 46,
       "neutral": 22,
       "bearish": 11,
-      "net_sentiment_score": 0.436,
+      "net_sentiment_score": 0.443,
       "assets_seen_in": [
         "XRP"
       ],
@@ -3197,6 +3197,20 @@
       ],
       "example_headlines": [
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "CryptoSlate",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp"
       ]
     },
     {
