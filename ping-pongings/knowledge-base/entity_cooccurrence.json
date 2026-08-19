@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 378,
+    "xrp_entries": 379,
     "btc_entries": 240
   },
-  "unique_pairs_found": 1103,
+  "unique_pairs_found": 1107,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 72,
+      "cooccurrence_count": 73,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -51,6 +51,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 14,
@@ -76,36 +106,6 @@
         },
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -321,6 +321,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -351,8 +366,8 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
       "cooccurrence_count": 6,
       "example_headlines": [
         {
@@ -411,8 +426,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -420,7 +435,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -541,21 +556,6 @@
         },
         {
           "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -6718,6 +6718,50 @@
       "example_headlines": [
         {
           "title": "XRP Faces a New Test as On-Chain Data Reveals a Major Shift in the Market - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]

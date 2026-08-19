@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 378,
+    "xrp_entries": 379,
     "btc_entries": 240
   },
   "unique_entities_profiled": 365,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 93,
+      "total_mentions": 94,
       "bullish": 55,
-      "neutral": 21,
+      "neutral": 22,
       "bearish": 17,
-      "net_sentiment_score": 0.409,
+      "net_sentiment_score": 0.404,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 75,
+      "total_mentions": 76,
       "bullish": 44,
-      "neutral": 21,
+      "neutral": 22,
       "bearish": 10,
-      "net_sentiment_score": 0.453,
+      "net_sentiment_score": 0.447,
       "assets_seen_in": [
         "XRP"
       ],
@@ -158,11 +158,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 15,
+      "total_mentions": 16,
       "bullish": 11,
-      "neutral": 2,
+      "neutral": 3,
       "bearish": 2,
-      "net_sentiment_score": 0.6,
+      "net_sentiment_score": 0.562,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -306,6 +306,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 7,
+      "bullish": 3,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.286,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "ETH",
       "total_mentions": 7,
       "bullish": 6,
@@ -337,22 +353,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -639,6 +639,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
+      ]
+    },
+    {
       "entity": "Anthropic",
       "total_mentions": 4,
       "bullish": 3,
@@ -903,23 +920,6 @@
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
         "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
-        "Coinbase Expands Derivatives Trading To UK Professional Clients"
       ]
     },
     {
