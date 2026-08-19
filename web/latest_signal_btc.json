@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-19T19:42:22.471285+00:00",
+  "timestamp": "2026-08-19T20:44:44.640473+00:00",
   "signal_text": "Recent BTC-relevant headlines: [bullish] Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% | [bearish] Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - | [bearish] BTC price loses 200-week trend line as 2022 repeats: Five things to know in Bitc | [bearish] Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
-  "score": 22,
-  "confidence": 0.92,
-  "source": "groq:bearish+news(5)",
+  "score": 11,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(5)",
   "news_score": 22,
   "news_entries": 5,
-  "generated_at_unix": 1787168542
+  "generated_at_unix": 1787172284
 }
