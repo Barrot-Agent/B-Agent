@@ -4,13 +4,13 @@ Documentation Ingestion System for Barrot-Agent
 Ingests documentation from GitHub, Copilot, ChatGPT/OpenAI, and Snowflake
 """
 
-import os
 import json
+import os
 import time
 from datetime import datetime
-from urllib.request import urlopen, Request
-from urllib.error import URLError, HTTPError
 from html.parser import HTMLParser
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 try:
     import yaml

@@ -7,10 +7,11 @@ Monetization Engine together for comprehensive AGI development
 and revenue generation.
 """
 
-from mmi_data_analyzer import MMIDataAnalyzer, AGIPuzzlePiece
-from monetization_engine import MonetizationEngine
 import json
 from datetime import datetime, timezone
+
+from mmi_data_analyzer import AGIPuzzlePiece, MMIDataAnalyzer
+from monetization_engine import MonetizationEngine
 
 
 def example_mmi_analysis():

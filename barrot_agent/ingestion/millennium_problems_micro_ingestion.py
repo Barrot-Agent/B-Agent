@@ -13,9 +13,9 @@ Designed for Barrot.Agent's knowledge base enhancement.
 
 import json
 import re
+from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass, asdict
+from typing import Any, Dict, List, Optional
 
 
 @dataclass

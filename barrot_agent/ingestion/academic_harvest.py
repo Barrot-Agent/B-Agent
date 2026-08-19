@@ -1,6 +1,176 @@
-import json, os
+import json
+import os
 
-PAPERS = [{"title": "Research on Payment Settlement Mode in Cross-border Business Trade Based on Blockchain Technology", "doi": "10.21203/rs.3.rs-735280/v1", "year": 2021, "url": "https://doi.org/10.21203/rs.3.rs-735280/v1", "abstract": "Case study of Ripple payment settlement mode in cross-border trade: smaller time/capital costs, greater transparency and security versus traditional settlement."}, {"title": "Stochastic Dynamics of Ripple XRP for Cross-Border Settlement Optimization", "doi": "10.48550/arxiv.2507.11553", "year": 2025, "url": "https://doi.org/10.48550/arxiv.2507.11553", "abstract": "Recent 2025 stochastic modeling of XRP dynamics specifically for cross-border settlement optimization."}, {"title": "Blockchain Technologies and Remittances: From Financial Inclusion to Correspondent Banking", "doi": "10.3389/fbloc.2019.00014", "year": 2019, "url": "https://doi.org/10.3389/fbloc.2019.00014", "abstract": "Examines blockchain remittance rails including Ripple as alternative to correspondent banking for financial inclusion."}, {"title": "Steps towards an ecology of money infrastructures: materiality and cultures of Ripple", "doi": "10.1080/17530350.2020.1711532", "year": 2020, "url": "https://doi.org/10.1080/17530350.2020.1711532", "abstract": "Study of Ripple's infrastructure and institutional culture within global money-movement systems."}, {"title": "Mind Your Credit: Assessing the Health of the Ripple Credit Network", "doi": "10.1145/3178876.3186099", "year": 2018, "url": "https://doi.org/10.1145/3178876.3186099", "abstract": "Network analysis assessing structural health/risk of the Ripple credit/trustline network."}, {"title": "Towards a Truly Decentralized Blockchain Framework for Remittance", "doi": "10.3390/jrfm16040240", "year": 2023, "url": "https://doi.org/10.3390/jrfm16040240", "abstract": "Proposes decentralized blockchain remittance framework, benchmarking against existing rails including Ripple."}, {"title": "Topology analysis of the Ripple transaction network", "doi": "10.1002/nem.2253", "year": 2023, "url": "https://doi.org/10.1002/nem.2253", "abstract": "Network-topology study of real Ripple transaction data."}, {"title": "Cross-Border Central Bank Digital Currencies, Bank Runs and Capital Flows Volatility", "doi": "10.5089/9798400209185.001", "year": 2022, "url": "https://www.elibrary.imf.org/downloadpdf/journals/001/2022/083/001.2022.issue-083-en.xml", "abstract": "IMF working paper modeling how cross-border CBDC availability affects bank-run risk and capital-flow volatility."}, {"title": "Wholesale Central Bank Digital Currencies in Asia: Current Status and Motivation", "doi": "10.1109/mc.2023.3333160", "year": 2024, "url": "https://doi.org/10.1109/mc.2023.3333160", "abstract": "Covers m-CBDC Bridge project enabling multi-CBDC cross-border fund transfers among Asian central banks."}, {"title": "Central Bank Digital Currency: Progress And Further Considerations", "doi": "10.5089/9798400293252.007", "year": 2024, "url": "https://www.elibrary.imf.org/downloadpdf/view/journals/007/2024/052/007.2024.issue-052-en.pdf", "abstract": "IMF policy paper on CBDC cross-border payment design, positioning versus fast payment systems."}, {"title": "Can Central Bank Digital Currencies Promote the Internationalization of Currencies?", "doi": "10.1111/eufm.70039", "year": 2025, "url": "https://doi.org/10.1111/eufm.70039", "abstract": "Multinational empirical study (2000-2023) finding CBDC advancement significantly promotes currency internationalization."}, {"title": "A global perspective on central bank digital currency", "doi": "10.1080/17538963.2020.1870279", "year": 2021, "url": "https://doi.org/10.1080/17538963.2020.1870279", "abstract": "Broad global survey of CBDC design and cross-border implications, 176 citing publications."}, {"title": "Price Discovery in Cryptocurrency Markets", "doi": "10.1257/pandp.20191020", "year": 2019, "url": "https://researchonline.lse.ac.uk/id/eprint/100410/1/PriceDiscovery.pdf", "abstract": "Studies which exchanges drive Bitcoin price formation; segmentation vs integration effects on price discovery."}, {"title": "Convergence in cryptocurrency prices? The role of market microstructure", "doi": "10.1016/j.frl.2020.101685", "year": 2021, "url": "http://hdl.handle.net/10545/624981", "abstract": "Finds market microstructure behavior drives price convergence across eight major cryptocurrencies."}, {"title": "The Economics of Liquid Staking Derivatives: Basis Determinants and Price Discovery", "doi": "10.1002/fut.22556", "year": 2024, "url": "https://doi.org/10.1002/fut.22556", "abstract": "Liquid staking tokens found to contribute significantly and increasingly to price discovery of underlying cryptocurrencies."}, {"title": "Price Delay and Market Efficiency of Cryptocurrencies during COVID-19", "doi": "10.3390/jrfm17050193", "year": 2024, "url": "https://doi.org/10.3390/jrfm17050193", "abstract": "Higher liquidity and lower volatility correlate with stronger cryptocurrency market efficiency and faster price-delay correction."}, {"title": "Liquidity connectedness in cryptocurrency market", "doi": "10.1186/s40854-021-00308-3", "year": 2022, "url": "https://doi.org/10.1186/s40854-021-00308-3", "abstract": "BTC, LTC, and XRP form a distinct liquidity cluster; XRP is a leading contributor to short-run liquidity shocks."}, {"title": "Investor attention and cryptocurrency market liquidity: a double-edged sword", "doi": "10.1007/s10479-022-04915-w", "year": 2022, "url": "https://doi.org/10.1007/s10479-022-04915-w", "abstract": "Static investor attention improves liquidity over following months; abnormal attention spikes degrade it."}, {"title": "What Makes Cryptocurrencies Special? Investor Sentiment and Return Predictability During the Bubble", "doi": "10.2139/ssrn.3398423", "year": 2019, "url": "https://doi.org/10.2139/ssrn.3398423", "abstract": "Sentiment predicts crypto returns when measured with a domain-specific lexicon; effect is bubble-regime conditional."}, {"title": "The predictive power of public Twitter sentiment for forecasting cryptocurrency prices", "doi": "10.1016/j.intfin.2020.101188", "year": 2020, "url": "https://www.research.ed.ac.uk/files/138685006/INTFIN_2018_414_R2.pdf", "abstract": "Covers XRP among 9 major cryptocurrencies; Twitter sentiment shows predictive power for BTC, BCH, LTC returns."}, {"title": "Price Movement Prediction of Cryptocurrencies Using Sentiment Analysis and Machine Learning", "doi": "10.3390/e21060589", "year": 2019, "url": "https://doi.org/10.3390/e21060589", "abstract": "NN/SVM/RF models on Bitcoin, Ethereum, Ripple, Litecoin social + market data; NN outperforms other models."}, {"title": "The impact of investor greed and fear on cryptocurrency returns", "doi": "10.1108/rbf-08-2023-0224", "year": 2024, "url": "https://doi.org/10.1108/rbf-08-2023-0224", "abstract": "Fear and Greed Index Granger-predicts BTC and ETH returns; stable long-term cointegration identified."}, {"title": "Cryptocurrency Price Prediction Model Based on Sentiment Analysis and Social Influence", "doi": "10.1109/access.2023.3342688", "year": 2023, "url": "https://doi.org/10.1109/access.2023.3342688", "abstract": "Influence-weighted sentiment scores outperform other models specifically in predicting Bitcoin and Ripple prices."}, {"title": "Does Twitter Happiness Sentiment predict cryptocurrency?", "doi": "10.1111/irfi.12339", "year": 2020, "url": "https://doi.org/10.1111/irfi.12339", "abstract": "Significant nonlinear relationship between Twitter Happiness Sentiment and returns across six major cryptocurrencies."}]
+PAPERS = [
+    {
+        "title": "Research on Payment Settlement Mode in Cross-border Business Trade Based on Blockchain Technology",
+        "doi": "10.21203/rs.3.rs-735280/v1",
+        "year": 2021,
+        "url": "https://doi.org/10.21203/rs.3.rs-735280/v1",
+        "abstract": "Case study of Ripple payment settlement mode in cross-border trade: smaller time/capital costs, greater transparency and security versus traditional settlement.",
+    },
+    {
+        "title": "Stochastic Dynamics of Ripple XRP for Cross-Border Settlement Optimization",
+        "doi": "10.48550/arxiv.2507.11553",
+        "year": 2025,
+        "url": "https://doi.org/10.48550/arxiv.2507.11553",
+        "abstract": "Recent 2025 stochastic modeling of XRP dynamics specifically for cross-border settlement optimization.",
+    },
+    {
+        "title": "Blockchain Technologies and Remittances: From Financial Inclusion to Correspondent Banking",
+        "doi": "10.3389/fbloc.2019.00014",
+        "year": 2019,
+        "url": "https://doi.org/10.3389/fbloc.2019.00014",
+        "abstract": "Examines blockchain remittance rails including Ripple as alternative to correspondent banking for financial inclusion.",
+    },
+    {
+        "title": "Steps towards an ecology of money infrastructures: materiality and cultures of Ripple",
+        "doi": "10.1080/17530350.2020.1711532",
+        "year": 2020,
+        "url": "https://doi.org/10.1080/17530350.2020.1711532",
+        "abstract": "Study of Ripple's infrastructure and institutional culture within global money-movement systems.",
+    },
+    {
+        "title": "Mind Your Credit: Assessing the Health of the Ripple Credit Network",
+        "doi": "10.1145/3178876.3186099",
+        "year": 2018,
+        "url": "https://doi.org/10.1145/3178876.3186099",
+        "abstract": "Network analysis assessing structural health/risk of the Ripple credit/trustline network.",
+    },
+    {
+        "title": "Towards a Truly Decentralized Blockchain Framework for Remittance",
+        "doi": "10.3390/jrfm16040240",
+        "year": 2023,
+        "url": "https://doi.org/10.3390/jrfm16040240",
+        "abstract": "Proposes decentralized blockchain remittance framework, benchmarking against existing rails including Ripple.",
+    },
+    {
+        "title": "Topology analysis of the Ripple transaction network",
+        "doi": "10.1002/nem.2253",
+        "year": 2023,
+        "url": "https://doi.org/10.1002/nem.2253",
+        "abstract": "Network-topology study of real Ripple transaction data.",
+    },
+    {
+        "title": "Cross-Border Central Bank Digital Currencies, Bank Runs and Capital Flows Volatility",
+        "doi": "10.5089/9798400209185.001",
+        "year": 2022,
+        "url": "https://www.elibrary.imf.org/downloadpdf/journals/001/2022/083/001.2022.issue-083-en.xml",
+        "abstract": "IMF working paper modeling how cross-border CBDC availability affects bank-run risk and capital-flow volatility.",
+    },
+    {
+        "title": "Wholesale Central Bank Digital Currencies in Asia: Current Status and Motivation",
+        "doi": "10.1109/mc.2023.3333160",
+        "year": 2024,
+        "url": "https://doi.org/10.1109/mc.2023.3333160",
+        "abstract": "Covers m-CBDC Bridge project enabling multi-CBDC cross-border fund transfers among Asian central banks.",
+    },
+    {
+        "title": "Central Bank Digital Currency: Progress And Further Considerations",
+        "doi": "10.5089/9798400293252.007",
+        "year": 2024,
+        "url": "https://www.elibrary.imf.org/downloadpdf/view/journals/007/2024/052/007.2024.issue-052-en.pdf",
+        "abstract": "IMF policy paper on CBDC cross-border payment design, positioning versus fast payment systems.",
+    },
+    {
+        "title": "Can Central Bank Digital Currencies Promote the Internationalization of Currencies?",
+        "doi": "10.1111/eufm.70039",
+        "year": 2025,
+        "url": "https://doi.org/10.1111/eufm.70039",
+        "abstract": "Multinational empirical study (2000-2023) finding CBDC advancement significantly promotes currency internationalization.",
+    },
+    {
+        "title": "A global perspective on central bank digital currency",
+        "doi": "10.1080/17538963.2020.1870279",
+        "year": 2021,
+        "url": "https://doi.org/10.1080/17538963.2020.1870279",
+        "abstract": "Broad global survey of CBDC design and cross-border implications, 176 citing publications.",
+    },
+    {
+        "title": "Price Discovery in Cryptocurrency Markets",
+        "doi": "10.1257/pandp.20191020",
+        "year": 2019,
+        "url": "https://researchonline.lse.ac.uk/id/eprint/100410/1/PriceDiscovery.pdf",
+        "abstract": "Studies which exchanges drive Bitcoin price formation; segmentation vs integration effects on price discovery.",
+    },
+    {
+        "title": "Convergence in cryptocurrency prices? The role of market microstructure",
+        "doi": "10.1016/j.frl.2020.101685",
+        "year": 2021,
+        "url": "http://hdl.handle.net/10545/624981",
+        "abstract": "Finds market microstructure behavior drives price convergence across eight major cryptocurrencies.",
+    },
+    {
+        "title": "The Economics of Liquid Staking Derivatives: Basis Determinants and Price Discovery",
+        "doi": "10.1002/fut.22556",
+        "year": 2024,
+        "url": "https://doi.org/10.1002/fut.22556",
+        "abstract": "Liquid staking tokens found to contribute significantly and increasingly to price discovery of underlying cryptocurrencies.",
+    },
+    {
+        "title": "Price Delay and Market Efficiency of Cryptocurrencies during COVID-19",
+        "doi": "10.3390/jrfm17050193",
+        "year": 2024,
+        "url": "https://doi.org/10.3390/jrfm17050193",
+        "abstract": "Higher liquidity and lower volatility correlate with stronger cryptocurrency market efficiency and faster price-delay correction.",
+    },
+    {
+        "title": "Liquidity connectedness in cryptocurrency market",
+        "doi": "10.1186/s40854-021-00308-3",
+        "year": 2022,
+        "url": "https://doi.org/10.1186/s40854-021-00308-3",
+        "abstract": "BTC, LTC, and XRP form a distinct liquidity cluster; XRP is a leading contributor to short-run liquidity shocks.",
+    },
+    {
+        "title": "Investor attention and cryptocurrency market liquidity: a double-edged sword",
+        "doi": "10.1007/s10479-022-04915-w",
+        "year": 2022,
+        "url": "https://doi.org/10.1007/s10479-022-04915-w",
+        "abstract": "Static investor attention improves liquidity over following months; abnormal attention spikes degrade it.",
+    },
+    {
+        "title": "What Makes Cryptocurrencies Special? Investor Sentiment and Return Predictability During the Bubble",
+        "doi": "10.2139/ssrn.3398423",
+        "year": 2019,
+        "url": "https://doi.org/10.2139/ssrn.3398423",
+        "abstract": "Sentiment predicts crypto returns when measured with a domain-specific lexicon; effect is bubble-regime conditional.",
+    },
+    {
+        "title": "The predictive power of public Twitter sentiment for forecasting cryptocurrency prices",
+        "doi": "10.1016/j.intfin.2020.101188",
+        "year": 2020,
+        "url": "https://www.research.ed.ac.uk/files/138685006/INTFIN_2018_414_R2.pdf",
+        "abstract": "Covers XRP among 9 major cryptocurrencies; Twitter sentiment shows predictive power for BTC, BCH, LTC returns.",
+    },
+    {
+        "title": "Price Movement Prediction of Cryptocurrencies Using Sentiment Analysis and Machine Learning",
+        "doi": "10.3390/e21060589",
+        "year": 2019,
+        "url": "https://doi.org/10.3390/e21060589",
+        "abstract": "NN/SVM/RF models on Bitcoin, Ethereum, Ripple, Litecoin social + market data; NN outperforms other models.",
+    },
+    {
+        "title": "The impact of investor greed and fear on cryptocurrency returns",
+        "doi": "10.1108/rbf-08-2023-0224",
+        "year": 2024,
+        "url": "https://doi.org/10.1108/rbf-08-2023-0224",
+        "abstract": "Fear and Greed Index Granger-predicts BTC and ETH returns; stable long-term cointegration identified.",
+    },
+    {
+        "title": "Cryptocurrency Price Prediction Model Based on Sentiment Analysis and Social Influence",
+        "doi": "10.1109/access.2023.3342688",
+        "year": 2023,
+        "url": "https://doi.org/10.1109/access.2023.3342688",
+        "abstract": "Influence-weighted sentiment scores outperform other models specifically in predicting Bitcoin and Ripple prices.",
+    },
+    {
+        "title": "Does Twitter Happiness Sentiment predict cryptocurrency?",
+        "doi": "10.1111/irfi.12339",
+        "year": 2020,
+        "url": "https://doi.org/10.1111/irfi.12339",
+        "abstract": "Significant nonlinear relationship between Twitter Happiness Sentiment and returns across six major cryptocurrencies.",
+    },
+]
 
 LOG = "ping-pongings/knowledge-base/log.jsonl"
 template_keys = {}
@@ -15,12 +185,15 @@ if os.path.exists(LOG):
     with open(LOG) as f:
         for l in f:
             l = l.strip()
-            if not l: continue
+            if not l:
+                continue
             try:
                 e = json.loads(l)
                 u = e.get("url") or e.get("doi") or ""
-                if u: existing_urls.add(u)
-            except: pass
+                if u:
+                    existing_urls.add(u)
+            except:
+                pass
 
 added = 0
 with open(LOG, "a") as f:

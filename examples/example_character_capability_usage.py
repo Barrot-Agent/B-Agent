@@ -6,15 +6,15 @@ Demonstrates how Barrot can dynamically search for and analyze character capabil
 
 import json
 import traceback
+
 from character_capability_analyzer import (
-    CharacterCapabilityAnalyzer,
-    Character,
     Capability,
-    CharacterGenre,
     CapabilityCategory,
+    Character,
+    CharacterCapabilityAnalyzer,
+    CharacterGenre,
     create_character_database,
 )
-import json
 
 
 def example_1_basic_analysis():

@@ -11,10 +11,10 @@ typical performance for similar services. Actual results may vary.
 """
 
 import json
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Optional
-from dataclasses import dataclass, asdict
 from enum import Enum
+from typing import Any, Dict, List, Optional
 
 
 class RevenueStreamType(Enum):

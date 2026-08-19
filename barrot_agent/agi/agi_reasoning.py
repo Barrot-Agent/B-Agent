@@ -6,8 +6,9 @@ Enhanced with quantum entanglement principles
 
 import json
 from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Tuple
-from barrot_agent.agi.quantum_entanglement import quantum_coordinator, create_entangled_decision_space
+from typing import Any, Dict, List, Optional, Tuple
+
+from quantum_entanglement import create_entangled_decision_space, quantum_coordinator
 
 
 class ReasoningChain:

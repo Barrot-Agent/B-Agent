@@ -10,7 +10,7 @@ Demonstrates how to work with the micro-ingested JSON data for various use cases
 """
 
 import json
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 
 def load_json(filename: str) -> Any:

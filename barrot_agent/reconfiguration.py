@@ -19,7 +19,7 @@ tool.
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field, asdict
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
@@ -81,9 +81,7 @@ class ReconfigurationReport:
         Raw stats dict returned by the most recent pipeline run, if any.
     """
 
-    timestamp: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     dry_run: bool = True
     gaps: List[CapabilityGap] = field(default_factory=list)
     proposals: List[ServerProposal] = field(default_factory=list)
@@ -195,11 +193,7 @@ def build_reconfiguration_report(
     # ---- Find capability gaps ----
     gaps: List[CapabilityGap] = []
     for target in CAPABILITY_TARGETS:
-        missing = [
-            cat
-            for cat in target.required_tool_categories
-            if cat not in covered_categories
-        ]
+        missing = [cat for cat in target.required_tool_categories if cat not in covered_categories]
         if missing:
             gaps.append(
                 CapabilityGap(
@@ -212,9 +206,7 @@ def build_reconfiguration_report(
             )
 
     # ---- Build proposals for unregistered servers that fill gaps ----
-    gap_categories: set[str] = {
-        cat for gap in gaps for cat in gap.required_tool_categories
-    }
+    gap_categories: set[str] = {cat for gap in gaps for cat in gap.required_tool_categories}
     proposals: List[ServerProposal] = []
     for srv in SUPPORTED_MCP_SERVERS:
         if registry.is_registered(srv.server_id):

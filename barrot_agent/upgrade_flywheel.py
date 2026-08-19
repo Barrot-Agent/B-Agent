@@ -106,7 +106,11 @@ class UpgradeFlywheel:
 
         self._goal = goal
         self._dry_run = dry_run
-        self._agent_ids = agent_ids if agent_ids is not None else ["barrot-agent", "smart-agent", "refinement-agent"]
+        self._agent_ids = (
+            agent_ids
+            if agent_ids is not None
+            else ["barrot-agent", "smart-agent", "refinement-agent"]
+        )
         self._platform = DirectivePlatform(platform_dir=self._platform_dir)
         self._smart_agent = SmartAgent()
         self._closed = False

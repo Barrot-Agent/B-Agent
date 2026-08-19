@@ -9,10 +9,11 @@ to enhance Barrot's knowledge and generate optimizations.
 import json
 import os
 from datetime import datetime
+
 from dependency_micro_ingestion import (
     DependencyMicroIngestion,
-    PackageCategory,
     OptimizationLevel,
+    PackageCategory,
 )
 
 

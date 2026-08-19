@@ -11,22 +11,23 @@ This module enables Barrot to:
 Integrates with existing Barrot modules: quantum_entanglement, agi_reasoning, advanced_algorithms
 """
 
-import json
 import hashlib
-from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Tuple, Set
-from dataclasses import dataclass, asdict, field
-from enum import Enum
+import json
 from collections import defaultdict
+from dataclasses import asdict, dataclass, field
+from datetime import datetime, timezone
+from enum import Enum
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+from advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
+from agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
 
 # Import existing Barrot modules
 from quantum_entanglement import (
-    quantum_coordinator,
     create_entangled_decision_space,
+    quantum_coordinator,
     quantum_optimize,
 )
-from agi_reasoning import agi_engine, solve_with_agi, ReasoningChain
-from advanced_algorithms import algorithmic_optimizer, performance_monitor, optimize_algorithm
 
 
 class InsightType(Enum):

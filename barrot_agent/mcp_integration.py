@@ -32,7 +32,6 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from barrot_agent.mcp_adapters import build_adapter
-from barrot_agent.reconfiguration import ReconfigurationReport, build_reconfiguration_report
 from barrot_agent.mcp_approval import ActionType, ApprovalRequest, MCPApprovalGate
 from barrot_agent.mcp_discovery import MCPDiscovery, ServerInventory
 from barrot_agent.mcp_pingpong import MCPPingPong, MCPProposal, Phase
@@ -42,6 +41,7 @@ from barrot_agent.mcp_sandbox import MCPSandbox
 from barrot_agent.mcp_scheduler import MCPScheduler, SchedulerConfig
 from barrot_agent.mcp_scorer import MCPScorer
 from barrot_agent.mcp_targets import CAPABILITY_TARGETS, COMPATIBILITY_REQUIREMENTS
+from barrot_agent.reconfiguration import ReconfigurationReport, build_reconfiguration_report
 
 logger = logging.getLogger(__name__)
 

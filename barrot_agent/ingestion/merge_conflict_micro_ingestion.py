@@ -16,11 +16,11 @@ Key Features:
 
 import json
 import re
+from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Dict, List, Any, Optional, Set
-from dataclasses import dataclass, asdict
 from enum import Enum
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Set
 
 
 class ConflictType(Enum):

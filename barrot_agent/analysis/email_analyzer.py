@@ -6,8 +6,8 @@ Analyzes emails and extracts useful, actionable information
 import json
 import re
 from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional
 from enum import Enum
+from typing import Any, Dict, List, Optional
 
 
 class EmailPriority(Enum):
@@ -314,6 +314,7 @@ class EmailAnalyzer:
             # Categorize URL by checking the netloc to avoid substring spoofing
             try:
                 from urllib.parse import urlparse
+
                 netloc = urlparse(url).netloc.lower()
             except Exception:
                 netloc = ""

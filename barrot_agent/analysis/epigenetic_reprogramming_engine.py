@@ -53,7 +53,9 @@ class FactorInteractionMatrix:
 class SafetyAnalyzer:
     """Predicts protocol risk and identifies mitigation suggestions."""
 
-    def assess(self, protocol: ReprogrammingProtocol, factors: Dict[str, YamanakaFactorModel]) -> Dict[str, float | str | bool]:
+    def assess(
+        self, protocol: ReprogrammingProtocol, factors: Dict[str, YamanakaFactorModel]
+    ) -> Dict[str, float | str | bool]:
         risk = sum(factors[name].risk for name in protocol.factors if name in factors)
         exposure = protocol.on_days * protocol.cycles
         composite = risk * (1 + exposure / 100.0)

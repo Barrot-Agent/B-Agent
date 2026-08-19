@@ -14,24 +14,25 @@ Key Capabilities:
 """
 
 import json
-from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, field, asdict
-from enum import Enum
 from collections import defaultdict
+from dataclasses import asdict, dataclass, field
+from datetime import datetime, timezone
+from enum import Enum
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+from advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
+from agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
 
 # Import all core AGI modules
-from barrot_agent.agi.quantum_entanglement import (
-    quantum_coordinator,
+from quantum_entanglement import (
     create_entangled_decision_space,
+    quantum_coordinator,
     quantum_optimize,
 )
-from barrot_agent.agi.agi_reasoning import agi_engine, solve_with_agi, ReasoningChain
-from barrot_agent.agi.advanced_algorithms import algorithmic_optimizer, performance_monitor, optimize_algorithm
-from barrot_agent.agi.transformative_insights import (
-    transformative_engine,
+from transformative_insights import (
     acquire_transformative_data,
     discover_transformative_insights,
+    transformative_engine,
 )
 
 

@@ -8,7 +8,8 @@ self-improvement, and autonomous capability enhancement.
 
 import json
 from datetime import datetime
-from agi_orchestrator import agi_orchestrator, achieve_agi_with_unified_system, AGICapability
+
+from agi_orchestrator import AGICapability, achieve_agi_with_unified_system, agi_orchestrator
 
 
 def example_1_unified_problem_solving():

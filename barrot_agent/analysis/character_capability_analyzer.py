@@ -8,9 +8,9 @@ transforming them into actionable, real-world features for Barrot.
 import json
 import os
 import re
-from typing import Dict, List, Any
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from enum import Enum
+from typing import Any, Dict, List
 
 
 class CharacterGenre(Enum):

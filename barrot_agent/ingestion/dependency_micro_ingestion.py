@@ -13,17 +13,17 @@ Barrot's understanding and capabilities. Includes:
 Designed to be fully automated and continuously evolving.
 """
 
+import hashlib
 import json
 import os
 import re
-import hashlib
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Set, Tuple
-from dataclasses import dataclass, asdict, field
 from enum import Enum
-from urllib.request import urlopen, Request
-from urllib.error import URLError, HTTPError
 from html.parser import HTMLParser
+from typing import Any, Dict, List, Optional, Set, Tuple
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 # Configuration constants
 MAX_DOC_CONTENT_SIZE = 5000  # Maximum characters to extract per documentation source

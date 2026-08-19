@@ -8,10 +8,11 @@ into actionable insights through convergence, evolution, transcendence, and epip
 
 import json
 from datetime import datetime
+
 from barrot_integration import (
     barrot_system,
-    transform_data_to_insights,
     discover_continuous_insights,
+    transform_data_to_insights,
 )
 
 

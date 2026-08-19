@@ -10,13 +10,14 @@ Demonstrates how to use the merge conflict resolution system to:
 5. Export knowledge to JSON
 """
 
+from datetime import datetime
+
 from merge_conflict_micro_ingestion import (
-    MergeConflictMicroIngestion,
-    LearningOutcome,
     ConflictType,
+    LearningOutcome,
+    MergeConflictMicroIngestion,
     ResolutionStrategy,
 )
-from datetime import datetime
 
 
 def example_basic_usage():
