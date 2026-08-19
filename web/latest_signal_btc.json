@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-19T02:53:06.063151+00:00",
+  "timestamp": "2026-08-19T03:50:50.881324+00:00",
   "signal_text": "Recent BTC-relevant headlines: [neutral] Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance | [bullish] Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% | [bearish] Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - | [bearish] BTC price loses 200-week trend line as 2022 repeats: Five things to know in Bitc | [bearish] Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
-  "score": 23,
-  "confidence": 0.85,
-  "source": "groq:bearish+news(7)",
+  "score": 13,
+  "confidence": 0.0,
+  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(7)",
   "news_score": 26,
   "news_entries": 7,
-  "generated_at_unix": 1787107986
+  "generated_at_unix": 1787111450
 }
