@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 378,
-    "btc_entries": 240
+    "xrp_entries": 383,
+    "btc_entries": 249
   },
-  "unique_entities_profiled": 365,
+  "unique_entities_profiled": 366,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 92,
-      "bullish": 55,
-      "neutral": 21,
-      "bearish": 16,
-      "net_sentiment_score": 0.424,
+      "total_mentions": 96,
+      "bullish": 56,
+      "neutral": 22,
+      "bearish": 18,
+      "net_sentiment_score": 0.396,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 75,
-      "bullish": 44,
-      "neutral": 21,
-      "bearish": 10,
-      "net_sentiment_score": 0.453,
+      "total_mentions": 78,
+      "bullish": 45,
+      "neutral": 22,
+      "bearish": 11,
+      "net_sentiment_score": 0.436,
       "assets_seen_in": [
         "XRP"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 30,
-      "bullish": 17,
+      "total_mentions": 32,
+      "bullish": 18,
       "neutral": 5,
-      "bearish": 8,
-      "net_sentiment_score": 0.3,
+      "bearish": 9,
+      "net_sentiment_score": 0.281,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -141,11 +141,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 16,
+      "total_mentions": 17,
       "bullish": 6,
       "neutral": 1,
-      "bearish": 9,
-      "net_sentiment_score": -0.188,
+      "bearish": 10,
+      "net_sentiment_score": -0.235,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -158,11 +158,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 15,
+      "total_mentions": 16,
       "bullish": 11,
-      "neutral": 2,
+      "neutral": 3,
       "bearish": 2,
-      "net_sentiment_score": 0.6,
+      "net_sentiment_score": 0.562,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -306,6 +306,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 7,
+      "bullish": 3,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.286,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "ETH",
       "total_mentions": 7,
       "bullish": 6,
@@ -387,22 +403,6 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -636,6 +636,23 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
+      ]
+    },
+    {
+      "entity": "Coinbase",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
       ]
     },
     {
@@ -906,23 +923,6 @@
       ]
     },
     {
-      "entity": "Coinbase",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak",
-        "Coinbase Expands Derivatives Trading To UK Professional Clients"
-      ]
-    },
-    {
       "entity": "Riot Platforms",
       "total_mentions": 3,
       "bullish": 3,
@@ -954,6 +954,22 @@
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
         "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
+      "entity": "Korea",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
+        "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
       ]
     },
     {
@@ -1893,6 +1909,21 @@
       ]
     },
     {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 2,
       "bullish": 1,
@@ -1910,21 +1941,6 @@
     },
     {
       "entity": "Jeonbuk Bank",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
-        "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview."
-      ]
-    },
-    {
-      "entity": "Korea",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -3072,20 +3088,6 @@
       ]
     },
     {
-      "entity": "Brad Garlinghouse",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
-      ]
-    },
-    {
       "entity": "Crypto Influencer",
       "total_mentions": 1,
       "bullish": 1,
@@ -3181,6 +3183,20 @@
       ],
       "example_headlines": [
         "XRP\u2019s $1 Support Hangs By a Thread. Where Does XRP Go? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Regional Bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
       ]
     },
     {
