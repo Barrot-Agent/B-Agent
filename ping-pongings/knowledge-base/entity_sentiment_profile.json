@@ -3,7 +3,7 @@
     "xrp_entries": 383,
     "btc_entries": 249
   },
-  "unique_entities_profiled": 365,
+  "unique_entities_profiled": 366,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 95,
-      "bullish": 55,
+      "total_mentions": 96,
+      "bullish": 56,
       "neutral": 22,
       "bearish": 18,
-      "net_sentiment_score": 0.389,
+      "net_sentiment_score": 0.396,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 77,
-      "bullish": 44,
+      "total_mentions": 78,
+      "bullish": 45,
       "neutral": 22,
       "bearish": 11,
-      "net_sentiment_score": 0.429,
+      "net_sentiment_score": 0.436,
       "assets_seen_in": [
         "XRP"
       ],
@@ -73,11 +73,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 31,
-      "bullish": 17,
+      "total_mentions": 32,
+      "bullish": 18,
       "neutral": 5,
       "bearish": 9,
-      "net_sentiment_score": 0.258,
+      "net_sentiment_score": 0.281,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -954,6 +954,22 @@
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
         "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
+      "entity": "Korea",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
+        "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
       ]
     },
     {
@@ -1925,21 +1941,6 @@
     },
     {
       "entity": "Jeonbuk Bank",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
-        "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview."
-      ]
-    },
-    {
-      "entity": "Korea",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -3182,6 +3183,20 @@
       ],
       "example_headlines": [
         "XRP\u2019s $1 Support Hangs By a Thread. Where Does XRP Go? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Regional Bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
       ]
     },
     {

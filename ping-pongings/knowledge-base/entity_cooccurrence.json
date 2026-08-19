@@ -3,12 +3,12 @@
     "xrp_entries": 383,
     "btc_entries": 249
   },
-  "unique_pairs_found": 1108,
+  "unique_pairs_found": 1113,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 74,
+      "cooccurrence_count": 75,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -32,6 +32,21 @@
         {
           "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -97,21 +112,6 @@
     },
     {
       "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 13,
       "example_headlines": [
@@ -142,6 +142,21 @@
     },
     {
       "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 10,
       "example_headlines": [
@@ -151,21 +166,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1097,6 +1097,36 @@
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
         }
       ]
     },
@@ -2782,36 +2812,6 @@
     },
     {
       "entity_a": "Jeonbuk Bank",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Korea",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Korea",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -6781,6 +6781,61 @@
       "example_headlines": [
         {
           "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea",
+      "entity_b": "Regional Bank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Regional Bank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Regional Bank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Regional Bank",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
