@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 388,
+    "xrp_entries": 389,
     "btc_entries": 255
   },
-  "unique_entities_profiled": 368,
+  "unique_entities_profiled": 371,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -89,6 +89,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 19,
+      "bullish": 10,
+      "neutral": 7,
+      "bearish": 2,
+      "net_sentiment_score": 0.421,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 18,
       "bullish": 4,
@@ -103,23 +120,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 18,
-      "bullish": 10,
-      "neutral": 6,
-      "bearish": 2,
-      "net_sentiment_score": 0.444,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
       ]
     },
     {
@@ -3226,6 +3226,48 @@
       ],
       "example_headlines": [
         "Why Is XRP (Ripple) Up Today? - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "GnosisDAO",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Gnosis Chain",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Rollup",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
       ]
     },
     {
