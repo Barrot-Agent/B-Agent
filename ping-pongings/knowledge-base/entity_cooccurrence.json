@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 398,
+    "xrp_entries": 400,
     "btc_entries": 272
   },
-  "unique_pairs_found": 1147,
+  "unique_pairs_found": 1155,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -187,6 +187,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 10,
       "example_headlines": [
@@ -242,21 +257,6 @@
         {
           "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
         }
       ]
     },
@@ -7221,6 +7221,94 @@
       "example_headlines": [
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Grayscale",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Grayscale",
+      "entity_b": "crypto regulation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Grayscale",
+      "entity_b": "token fundraising",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "crypto regulation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "token fundraising",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "crypto regulation",
+      "entity_b": "token fundraising",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
           "asset": "XRP"
         }
       ]

@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 398,
+    "xrp_entries": 400,
     "btc_entries": 272
   },
-  "unique_entities_profiled": 375,
+  "unique_entities_profiled": 378,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 167,
-      "bullish": 73,
+      "total_mentions": 168,
+      "bullish": 74,
       "neutral": 26,
       "bearish": 68,
-      "net_sentiment_score": 0.03,
+      "net_sentiment_score": 0.036,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -107,6 +107,23 @@
       ]
     },
     {
+      "entity": "SEC",
+      "total_mentions": 19,
+      "bullish": 14,
+      "neutral": 3,
+      "bearish": 2,
+      "net_sentiment_score": 0.632,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 18,
       "bullish": 4,
@@ -121,23 +138,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 18,
-      "bullish": 13,
-      "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.611,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
       ]
     },
     {
@@ -257,6 +257,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 10,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years"
+      ]
+    },
+    {
       "entity": "Ripple Labs",
       "total_mentions": 9,
       "bullish": 5,
@@ -270,23 +287,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 9,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.556,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -1736,6 +1736,21 @@
       ]
     },
     {
+      "entity": "Institutional investors",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns"
+      ]
+    },
+    {
       "entity": "SharpLink",
       "total_mentions": 2,
       "bullish": 0,
@@ -3002,20 +3017,6 @@
       ]
     },
     {
-      "entity": "Institutional investors",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026"
-      ]
-    },
-    {
       "entity": "Spot OTC market",
       "total_mentions": 1,
       "bullish": 1,
@@ -3321,6 +3322,48 @@
       ],
       "example_headlines": [
         "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
+      "entity": "Grayscale",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
+      ]
+    },
+    {
+      "entity": "token fundraising",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
+      ]
+    },
+    {
+      "entity": "crypto regulation",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
       ]
     },
     {
