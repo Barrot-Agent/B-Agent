@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 402,
+    "xrp_entries": 403,
     "btc_entries": 276
   },
   "unique_entities_profiled": 380,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 106,
-      "bullish": 64,
+      "total_mentions": 107,
+      "bullish": 65,
       "neutral": 23,
       "bearish": 19,
-      "net_sentiment_score": 0.425,
+      "net_sentiment_score": 0.43,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -108,11 +108,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 19,
-      "bullish": 14,
+      "total_mentions": 20,
+      "bullish": 15,
       "neutral": 3,
       "bearish": 2,
-      "net_sentiment_score": 0.632,
+      "net_sentiment_score": 0.65,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -257,6 +257,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 10,
+      "bullish": 6,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 10,
       "bullish": 8,
@@ -271,22 +287,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
         "Hashdex to shut smallest Bitcoin ETF after more than two years"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 9,
-      "bullish": 5,
-      "neutral": 3,
-      "bearish": 1,
-      "net_sentiment_score": 0.444,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -774,6 +774,22 @@
       ]
     },
     {
+      "entity": "FXStreet",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "USDT",
       "total_mentions": 3,
       "bullish": 2,
@@ -870,6 +886,22 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
         "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
+      ]
+    },
+    {
+      "entity": "U.S. District Court",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -1149,21 +1181,6 @@
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
         "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
-      "entity": "FXStreet",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
       ]
     },
     {
@@ -1624,21 +1641,6 @@
       "example_headlines": [
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Kraken Brings CFTC-Regulated Perpetual Futures To US Traders"
-      ]
-    },
-    {
-      "entity": "U.S. District Court",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
