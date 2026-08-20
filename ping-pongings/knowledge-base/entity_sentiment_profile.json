@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 391,
+    "xrp_entries": 394,
     "btc_entries": 260
   },
-  "unique_entities_profiled": 373,
+  "unique_entities_profiled": 375,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 101,
-      "bullish": 61,
+      "total_mentions": 103,
+      "bullish": 63,
       "neutral": 22,
       "bearish": 18,
-      "net_sentiment_score": 0.426,
+      "net_sentiment_score": 0.437,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 81,
-      "bullish": 48,
+      "total_mentions": 83,
+      "bullish": 50,
       "neutral": 22,
       "bearish": 11,
-      "net_sentiment_score": 0.457,
+      "net_sentiment_score": 0.47,
       "assets_seen_in": [
         "XRP"
       ],
@@ -124,6 +124,23 @@
       ]
     },
     {
+      "entity": "SEC",
+      "total_mentions": 18,
+      "bullish": 13,
+      "neutral": 3,
+      "bearish": 2,
+      "net_sentiment_score": 0.611,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
       "entity": "CoinDesk",
       "total_mentions": 18,
       "bullish": 9,
@@ -155,23 +172,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 17,
-      "bullish": 12,
-      "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.588,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
       ]
     },
     {
@@ -257,6 +257,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 9,
+      "bullish": 5,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.444,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 9,
       "bullish": 7,
@@ -304,22 +320,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 8,
-      "bullish": 4,
-      "neutral": 3,
-      "bearish": 1,
-      "net_sentiment_score": 0.375,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -491,6 +491,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 5,
       "bullish": 3,
@@ -606,6 +623,23 @@
       ]
     },
     {
+      "entity": "CLARITY Act",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "USD",
       "total_mentions": 4,
       "bullish": 2,
@@ -637,23 +671,6 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Bitcoin hits $62K while Coinbase premium hits 77-day negative streak"
       ]
     },
     {
@@ -853,23 +870,6 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
         "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
-      ]
-    },
-    {
-      "entity": "CLARITY Act",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-        "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
       ]
     },
     {
@@ -3293,6 +3293,34 @@
       ],
       "example_headlines": [
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal"
+      ]
+    },
+    {
+      "entity": "US District Court",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "Howard Lutnick",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
