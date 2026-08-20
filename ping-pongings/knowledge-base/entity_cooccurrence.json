@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 391,
+    "xrp_entries": 394,
     "btc_entries": 260
   },
-  "unique_pairs_found": 1138,
+  "unique_pairs_found": 1147,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 78,
+      "cooccurrence_count": 80,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 15,
+      "cooccurrence_count": 16,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 15,
+      "cooccurrence_count": 16,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -216,6 +216,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
       "cooccurrence_count": 9,
@@ -261,8 +276,8 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
       "cooccurrence_count": 8,
       "example_headlines": [
         {
@@ -336,8 +351,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
       "cooccurrence_count": 7,
       "example_headlines": [
         {
@@ -345,7 +360,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -376,21 +391,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -961,6 +961,21 @@
         },
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
           "asset": "XRP"
         }
       ]
@@ -2092,7 +2107,7 @@
     },
     {
       "entity_a": "CLARITY Act",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -2100,7 +2115,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
         }
       ]
@@ -2851,6 +2866,36 @@
         },
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
         }
       ]
@@ -5289,17 +5334,6 @@
       ]
     },
     {
-      "entity_a": "CLARITY Act",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Clarity Act",
       "entity_b": "MarketForces Africa",
       "cooccurrence_count": 1,
@@ -6841,17 +6875,6 @@
     },
     {
       "entity_a": "Coinbase",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -6864,17 +6887,6 @@
     {
       "entity_a": "Coinbase",
       "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7110,6 +7122,105 @@
       "example_headlines": [
         {
           "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "US District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "US District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "US District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US District Court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "Howard Lutnick",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Howard Lutnick",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Howard Lutnick",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Howard Lutnick",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
         }
       ]
