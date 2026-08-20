@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 397,
+    "xrp_entries": 398,
     "btc_entries": 269
   },
   "unique_pairs_found": 1147,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 80,
+      "cooccurrence_count": 81,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -142,6 +142,21 @@
     },
     {
       "entity_a": "Ripple",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 11,
       "example_headlines": [
@@ -156,8 +171,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
       "cooccurrence_count": 10,
       "example_headlines": [
         {
@@ -201,21 +216,6 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP",
       "cooccurrence_count": 9,
@@ -226,6 +226,21 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -257,6 +272,21 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -306,8 +336,8 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
       "cooccurrence_count": 8,
       "example_headlines": [
         {
@@ -315,7 +345,7 @@
           "asset": "XRP"
         },
         {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -332,21 +362,6 @@
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
         }
       ]
     },
@@ -376,21 +391,6 @@
         },
         {
           "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]

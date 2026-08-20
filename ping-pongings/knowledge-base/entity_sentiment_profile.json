@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 397,
+    "xrp_entries": 398,
     "btc_entries": 269
   },
   "unique_entities_profiled": 375,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 166,
-      "bullish": 72,
+      "total_mentions": 167,
+      "bullish": 73,
       "neutral": 26,
       "bearish": 68,
-      "net_sentiment_score": 0.024,
+      "net_sentiment_score": 0.03,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 103,
+      "total_mentions": 104,
       "bullish": 63,
-      "neutral": 22,
+      "neutral": 23,
       "bearish": 18,
-      "net_sentiment_score": 0.437,
+      "net_sentiment_score": 0.433,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 83,
+      "total_mentions": 84,
       "bullish": 50,
-      "neutral": 22,
+      "neutral": 23,
       "bearish": 11,
-      "net_sentiment_score": 0.47,
+      "net_sentiment_score": 0.464,
       "assets_seen_in": [
         "XRP"
       ],
@@ -176,11 +176,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 14,
+      "total_mentions": 15,
       "bullish": 2,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 0,
-      "net_sentiment_score": 0.143,
+      "net_sentiment_score": 0.133,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -208,6 +208,22 @@
       ]
     },
     {
+      "entity": "XRP.CC",
+      "total_mentions": 11,
+      "bullish": 1,
+      "neutral": 10,
+      "bearish": 0,
+      "net_sentiment_score": 0.091,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 11,
       "bullish": 0,
@@ -221,22 +237,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "XRP.CC",
-      "total_mentions": 10,
-      "bullish": 1,
-      "neutral": 9,
-      "bearish": 0,
-      "net_sentiment_score": 0.1,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
       ]
     },
     {
