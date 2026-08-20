@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 389,
-    "btc_entries": 255
+    "btc_entries": 257
   },
-  "unique_entities_profiled": 371,
+  "unique_entities_profiled": 372,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -90,11 +90,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 19,
+      "total_mentions": 20,
       "bullish": 10,
-      "neutral": 7,
+      "neutral": 8,
       "bearish": 2,
-      "net_sentiment_score": 0.421,
+      "net_sentiment_score": 0.4,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1986,6 +1986,54 @@
       ]
     },
     {
+      "entity": "GnosisDAO",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Gnosis Chain",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Rollup",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -3226,48 +3274,6 @@
       ],
       "example_headlines": [
         "Why Is XRP (Ripple) Up Today? - The Motley Fool"
-      ]
-    },
-    {
-      "entity": "GnosisDAO",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
-      ]
-    },
-    {
-      "entity": "Gnosis Chain",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
-      ]
-    },
-    {
-      "entity": "Rollup",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
       ]
     },
     {
@@ -5494,6 +5500,20 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "GNO",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
       ]
     }
   ]
