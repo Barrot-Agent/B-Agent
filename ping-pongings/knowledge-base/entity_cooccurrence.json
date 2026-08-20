@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 389,
+    "xrp_entries": 390,
     "btc_entries": 257
   },
-  "unique_pairs_found": 1130,
+  "unique_pairs_found": 1138,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1127,6 +1127,21 @@
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
         }
       ]
     },
@@ -2931,6 +2946,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "United States",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETH",
       "cooccurrence_count": 2,
@@ -3571,21 +3601,6 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Metaplanet",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        },
-        {
-          "title": "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio",
           "asset": "BTC"
         }
       ]
@@ -7007,6 +7022,94 @@
       "example_headlines": [
         {
           "title": "Why Is XRP (Ripple) Up Today? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Superplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Superplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superplanet",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superplanet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "XRP"
         }
       ]
@@ -13074,17 +13177,6 @@
     },
     {
       "entity_a": "Altcoins",
-      "entity_b": "United States",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "United States",
       "cooccurrence_count": 1,
       "example_headlines": [
