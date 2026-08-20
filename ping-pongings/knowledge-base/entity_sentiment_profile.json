@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 389,
+    "xrp_entries": 390,
     "btc_entries": 257
   },
-  "unique_entities_profiled": 372,
+  "unique_entities_profiled": 373,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 100,
-      "bullish": 60,
+      "total_mentions": 101,
+      "bullish": 61,
       "neutral": 22,
       "bearish": 18,
-      "net_sentiment_score": 0.42,
+      "net_sentiment_score": 0.426,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,18 +57,19 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 67,
-      "bullish": 26,
+      "total_mentions": 68,
+      "bullish": 27,
       "neutral": 13,
       "bearish": 28,
-      "net_sentiment_score": -0.03,
+      "net_sentiment_score": -0.015,
       "assets_seen_in": [
-        "BTC"
+        "BTC",
+        "XRP"
       ],
       "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-        "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To",
-        "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance"
+        "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To"
       ]
     },
     {
@@ -970,6 +971,40 @@
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
         "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Metaplanet",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
+      "entity": "United States",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "US hints at more yen intervention: Five things to know in Bitcoin this week",
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
       ]
     },
     {
@@ -2214,21 +2249,6 @@
       ]
     },
     {
-      "entity": "United States",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "US hints at more yen intervention: Five things to know in Bitcoin this week",
-        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
-      ]
-    },
-    {
       "entity": "Strait of Hormuz",
       "total_mentions": 2,
       "bullish": 1,
@@ -2391,21 +2411,6 @@
       "example_headlines": [
         "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
         "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -3274,6 +3279,20 @@
       ],
       "example_headlines": [
         "Why Is XRP (Ripple) Up Today? - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "Superplanet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal"
       ]
     },
     {
