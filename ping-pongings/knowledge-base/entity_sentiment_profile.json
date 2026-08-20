@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 387,
+    "xrp_entries": 388,
     "btc_entries": 254
   },
-  "unique_entities_profiled": 367,
+  "unique_entities_profiled": 368,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 99,
-      "bullish": 59,
+      "total_mentions": 100,
+      "bullish": 60,
       "neutral": 22,
       "bearish": 18,
-      "net_sentiment_score": 0.414,
+      "net_sentiment_score": 0.42,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 80,
-      "bullish": 47,
+      "total_mentions": 81,
+      "bullish": 48,
       "neutral": 22,
       "bearish": 11,
-      "net_sentiment_score": 0.45,
+      "net_sentiment_score": 0.457,
       "assets_seen_in": [
         "XRP"
       ],
@@ -158,11 +158,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 16,
-      "bullish": 11,
+      "total_mentions": 17,
+      "bullish": 12,
       "neutral": 3,
       "bearish": 2,
-      "net_sentiment_score": 0.562,
+      "net_sentiment_score": 0.588,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -307,11 +307,11 @@
     },
     {
       "entity": "Ripple Labs",
-      "total_mentions": 7,
-      "bullish": 3,
+      "total_mentions": 8,
+      "bullish": 4,
       "neutral": 3,
       "bearish": 1,
-      "net_sentiment_score": 0.286,
+      "net_sentiment_score": 0.375,
       "assets_seen_in": [
         "XRP"
       ],
@@ -3212,6 +3212,20 @@
       ],
       "example_headlines": [
         "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp"
+      ]
+    },
+    {
+      "entity": "U.S. courts",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP (Ripple) Up Today? - The Motley Fool"
       ]
     },
     {
