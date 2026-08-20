@@ -79,6 +79,47 @@ Cycles repeat until either all capability gaps are closed (convergence) or
 `max_cycles` is reached.  The full run history is returned as a
 `FlywheelReport` with per-cycle summaries and JSON serialisation.
 
+### 🧠 Session Insight Aggregation
+
+The **SessionInsightAggregator** collects and analyzes insights from all GitHub agent sessions:
+
+| Feature | What it does |
+|---------|-------------|
+| **Full Scope Extraction** | Captures task descriptions, outcomes, and insights from every GitHub Copilot session |
+| **Dynamic Cross-Analysis** | Discovers patterns, recurring tasks, and domain connections across all sessions |
+| **Indefinite Synchronization** | Continuously processes knowledge base data across 10+ domains (XRP, AGI, workflows, etc.) |
+| **Actionable Recommendations** | Generates automation suggestions and improvement priorities based on aggregated insights |
+
+The system runs automatically every 6 hours and after major workflows, storing
+all data in SQLite for fast queries and generating comprehensive reports in
+`ping-pongings/knowledge-base/session_insight_report.json`.
+
+**Minimal usage:**
+
+```python
+from barrot_agent import SessionInsightAggregator
+
+# Initialize aggregator
+aggregator = SessionInsightAggregator()
+
+# Synchronize knowledge bases
+sync_results = aggregator.synchronize_knowledge_bases()
+print(f"Synchronized {sync_results['domains_synchronized']} domains")
+
+# Perform cross-analysis
+analysis = aggregator.cross_analyze_sessions()
+print(f"Analyzed {analysis.analyzed_sessions} sessions")
+print(analysis.synthesis)
+
+# Generate comprehensive report
+report = aggregator.generate_insight_report()
+print(f"Total insights: {report['total_insights']}")
+```
+
+See [SESSION_INSIGHT_AGGREGATION.md](docs/SESSION_INSIGHT_AGGREGATION.md) for complete documentation.
+
+### 🔄 Upgrade Flywheel Usage
+
 **Minimal usage:**
 
 ```python
