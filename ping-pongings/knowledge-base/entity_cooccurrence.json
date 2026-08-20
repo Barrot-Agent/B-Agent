@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 402,
+    "xrp_entries": 403,
     "btc_entries": 276
   },
-  "unique_pairs_found": 1170,
+  "unique_pairs_found": 1173,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -36,9 +36,9 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 16,
+      "entity_a": "SEC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 17,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -51,8 +51,8 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
       "cooccurrence_count": 16,
       "example_headlines": [
         {
@@ -186,6 +186,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
       "cooccurrence_count": 10,
@@ -227,21 +242,6 @@
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -321,6 +321,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 8,
@@ -377,21 +392,6 @@
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
         }
       ]
     },
@@ -846,6 +846,21 @@
       ]
     },
     {
+      "entity_a": "FXStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 3,
@@ -961,6 +976,36 @@
         },
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1388,21 +1433,6 @@
     {
       "entity_a": "FXStreet",
       "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "FXStreet",
-      "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -2106,36 +2136,6 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. District Court",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -2266,6 +2266,21 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Why is XRP rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
@@ -5386,17 +5401,6 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "Tokenized assets",
       "cooccurrence_count": 1,
@@ -7482,6 +7486,39 @@
       "example_headlines": [
         {
           "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why is XRP rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
