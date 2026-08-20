@@ -1,0 +1,65 @@
+name: Session Insight Aggregation
+
+on:
+  # Run after any major workflow completes
+  workflow_run:
+    workflows: 
+      - "Knowledge Signal Cycle"
+      - "Cross Analysis"
+      - "Barrot Autonomous Resolver"
+      - "Barrot Self Upgrade"
+    types: [completed]
+    branches: [main]
+  # Regular schedule for continuous aggregation
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  aggregate-insights:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0  # Full history for comprehensive analysis
+          
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Run Session Insight Aggregation
+        run: |
+          python3 -m barrot_agent.session_insight_aggregator
+          
+      - name: Generate insight statistics
+        run: |
+          python3 -c "
+          from barrot_agent.session_insight_aggregator import SessionInsightAggregator
+          import json
+          
+          agg = SessionInsightAggregator()
+          report = agg.generate_insight_report('ping-pongings/knowledge-base/session_insight_report.json')
+          
+          print('=== SESSION INSIGHT AGGREGATION COMPLETE ===')
+          print(f'Total Sessions Analyzed: {report[\"total_sessions\"]}')
+          print(f'Total Insights Extracted: {report[\"total_insights\"]}')
+          print(f'Domains Covered: {len(report[\"domains\"])}')
+          print(f'\\nTop Recommendations:')
+          for i, rec in enumerate(report['recommendations'][:3], 1):
+              print(f'{i}. {rec}')
+          "
+          
+      - name: Commit aggregated insights
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add data/session_insights.db ping-pongings/knowledge-base/session_insight_report.json
+          git diff --cached --quiet || git commit -m "🧠 Session insight aggregation [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

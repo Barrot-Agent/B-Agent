@@ -15,6 +15,8 @@ KimiClient
     Kimi 3 model integration for paradigm-shifting feedback.
 RecursiveFeedbackLoop
     Self-improving recursive feedback loop orchestrator.
+SessionInsightAggregator
+    Aggregates insights from all GitHub agent sessions with cross-analysis.
 """
 
 from .kimi_integration import KimiClient
@@ -22,6 +24,12 @@ from .recursive_feedback import (
     FeedbackIteration,
     RecursiveFeedbackLoop,
     RecursiveFeedbackReport,
+)
+from .session_insight_aggregator import (
+    CrossAnalysisResult,
+    SessionInsight,
+    SessionInsightAggregator,
+    SessionInsightDatabase,
 )
 from .smart_agent import (
     AgentEvent,
@@ -80,6 +88,10 @@ __all__ = [
     "RecursiveFeedbackLoop",
     "RecursiveFeedbackReport",
     "FeedbackIteration",
+    "SessionInsightAggregator",
+    "SessionInsightDatabase",
+    "SessionInsight",
+    "CrossAnalysisResult",
     "data_registry",
 ]
 
