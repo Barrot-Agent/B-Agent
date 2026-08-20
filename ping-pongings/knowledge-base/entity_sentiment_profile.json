@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 403,
-    "btc_entries": 276
+    "btc_entries": 277
   },
   "unique_entities_profiled": 380,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 168,
-      "bullish": 74,
+      "total_mentions": 169,
+      "bullish": 75,
       "neutral": 26,
       "bearish": 68,
-      "net_sentiment_score": 0.036,
+      "net_sentiment_score": 0.041,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2222,6 +2222,21 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
+      ]
+    },
+    {
       "entity": "ETF inflows",
       "total_mentions": 2,
       "bullish": 2,
@@ -3761,20 +3776,6 @@
       ],
       "example_headlines": [
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
-      ]
-    },
-    {
-      "entity": "US Treasury",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
       ]
     },
     {

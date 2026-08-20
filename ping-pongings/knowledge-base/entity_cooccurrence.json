@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 403,
-    "btc_entries": 276
+    "btc_entries": 277
   },
   "unique_pairs_found": 1173,
   "pairs": [
@@ -3226,6 +3226,21 @@
         },
         {
           "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        },
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
           "asset": "BTC"
         }
       ]
@@ -8054,17 +8069,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Islamic Revolutionary Guard Corps",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
