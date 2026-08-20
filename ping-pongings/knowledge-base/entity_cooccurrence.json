@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 385,
+    "xrp_entries": 387,
     "btc_entries": 253
   },
-  "unique_pairs_found": 1115,
+  "unique_pairs_found": 1116,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 76,
+      "cooccurrence_count": 77,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -426,6 +426,51 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 5,
@@ -511,51 +556,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoPotato",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoPotato",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
           "asset": "XRP"
         }
       ]
@@ -2776,6 +2776,21 @@
         },
         {
           "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Influencer",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -6336,17 +6351,6 @@
     },
     {
       "entity_a": "Crypto Influencer",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Crypto Influencer",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -6858,6 +6862,17 @@
       "example_headlines": [
         {
           "title": "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Crypto Influencer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
