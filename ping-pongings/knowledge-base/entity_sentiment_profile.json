@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 400,
+    "xrp_entries": 402,
     "btc_entries": 273
   },
-  "unique_entities_profiled": 378,
+  "unique_entities_profiled": 380,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 104,
-      "bullish": 63,
+      "total_mentions": 106,
+      "bullish": 64,
       "neutral": 23,
-      "bearish": 18,
-      "net_sentiment_score": 0.433,
+      "bearish": 19,
+      "net_sentiment_score": 0.425,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 84,
-      "bullish": 50,
+      "total_mentions": 85,
+      "bullish": 51,
       "neutral": 23,
       "bearish": 11,
-      "net_sentiment_score": 0.464,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "XRP"
       ],
@@ -91,11 +91,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 20,
-      "bullish": 10,
+      "total_mentions": 22,
+      "bullish": 11,
       "neutral": 8,
-      "bearish": 2,
-      "net_sentiment_score": 0.4,
+      "bearish": 3,
+      "net_sentiment_score": 0.364,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -290,6 +290,23 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.556,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
+      ]
+    },
+    {
       "entity": "Strategy",
       "total_mentions": 9,
       "bullish": 4,
@@ -320,23 +337,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-        "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk"
       ]
     },
     {
@@ -525,6 +525,23 @@
       ]
     },
     {
+      "entity": "Ether",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
       "entity": "Donald Trump",
       "total_mentions": 5,
       "bullish": 2,
@@ -688,23 +705,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "Ether",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows",
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
       ]
     },
     {
@@ -1149,6 +1149,21 @@
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
         "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "FXStreet",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
       ]
     },
     {
@@ -2084,6 +2099,22 @@
       ]
     },
     {
+      "entity": "Hyperliquid",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2528,20 +2559,6 @@
     },
     {
       "entity": "Ripple Mint",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet"
-      ]
-    },
-    {
-      "entity": "FXStreet",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -3367,6 +3384,34 @@
       ]
     },
     {
+      "entity": "Stellar",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
+      ]
+    },
+    {
+      "entity": "XLM",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -3924,20 +3969,6 @@
       ],
       "example_headlines": [
         "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
-      ]
-    },
-    {
-      "entity": "Hyperliquid",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {

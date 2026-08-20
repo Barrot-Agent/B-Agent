@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 400,
+    "xrp_entries": 402,
     "btc_entries": 273
   },
-  "unique_pairs_found": 1155,
+  "unique_pairs_found": 1170,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 81,
+      "cooccurrence_count": 82,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -336,6 +336,21 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 8,
@@ -381,16 +396,16 @@
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 6,
       "example_headlines": [
         {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
           "asset": "XRP"
         },
         {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "XRP"
         }
       ]
@@ -586,21 +601,6 @@
         },
         {
           "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        },
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "XRP"
         }
       ]
@@ -1381,6 +1381,36 @@
         },
         {
           "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
@@ -3982,29 +4012,7 @@
     },
     {
       "entity_a": "FXStreet",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "FXStreet",
       "entity_b": "Ripple Mint",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "FXStreet",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7226,6 +7234,94 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Institutional investors",
       "cooccurrence_count": 1,
@@ -7309,6 +7405,83 @@
       "example_headlines": [
         {
           "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "Stellar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "XLM",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Stellar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XLM",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stellar",
+      "entity_b": "XLM",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stellar",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XLM",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
