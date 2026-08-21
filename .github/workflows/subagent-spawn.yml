@@ -1,0 +1,29 @@
+name: Sub-Agent Spawn (thread pool tier)
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Complex task to decompose and spawn subagents for"
+        required: true
+        default: "Analyze the last 30 days of signal accuracy and recommend threshold changes"
+
+jobs:
+  spawn:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      SPAWN_TASK: ${{ github.event.inputs.task }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: python3 scripts/subagent_spawner.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add subagent_run_*.json
+          git diff --cached --quiet || git commit -m "Sub-agent spawn run [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

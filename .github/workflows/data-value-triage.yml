@@ -1,0 +1,34 @@
+name: Data Value Triage
+
+on:
+  workflow_dispatch:
+    inputs:
+      triage_input:
+        description: "JSON array of {id, text} items"
+        required: true
+        default: '[]'
+      active_goals:
+        description: "Comma-separated active goals"
+        required: false
+        default: "XRP signals,capability gaps"
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      TRIAGE_INPUT: ${{ github.event.inputs.triage_input }}
+      ACTIVE_GOALS: ${{ github.event.inputs.active_goals }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: python3 scripts/data_value_triage.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add triage_results_*.json ping-pongings/knowledge-base/seen_content_hashes.json
+          git diff --cached --quiet || git commit -m "Data value triage run [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
