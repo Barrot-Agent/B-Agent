@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 418,
+    "xrp_entries": 419,
     "btc_entries": 295
   },
-  "unique_entities_profiled": 389,
+  "unique_entities_profiled": 391,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -224,6 +224,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 11,
+      "bullish": 8,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.545,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 11,
       "bullish": 0,
@@ -270,23 +287,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years"
       ]
     },
     {
@@ -3571,6 +3571,34 @@
       ],
       "example_headlines": [
         "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
+      "entity": "Canary",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
+      "entity": "TRX",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {

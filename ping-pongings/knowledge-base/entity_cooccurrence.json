@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 418,
+    "xrp_entries": 419,
     "btc_entries": 295
   },
-  "unique_pairs_found": 1204,
+  "unique_pairs_found": 1207,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -7925,6 +7925,39 @@
       "example_headlines": [
         {
           "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Canary",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Canary",
+      "entity_b": "TRX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "TRX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
           "asset": "XRP"
         }
       ]
