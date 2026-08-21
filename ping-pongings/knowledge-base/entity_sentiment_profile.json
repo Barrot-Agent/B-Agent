@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 404,
+    "xrp_entries": 405,
     "btc_entries": 278
   },
   "unique_entities_profiled": 380,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 107,
-      "bullish": 65,
+      "total_mentions": 108,
+      "bullish": 66,
       "neutral": 23,
       "bearish": 19,
-      "net_sentiment_score": 0.43,
+      "net_sentiment_score": 0.435,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 85,
-      "bullish": 51,
+      "total_mentions": 86,
+      "bullish": 52,
       "neutral": 23,
       "bearish": 11,
-      "net_sentiment_score": 0.471,
+      "net_sentiment_score": 0.477,
       "assets_seen_in": [
         "XRP"
       ],
@@ -124,6 +124,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 19,
+      "bullish": 10,
+      "neutral": 1,
+      "bearish": 8,
+      "net_sentiment_score": 0.105,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 18,
       "bullish": 4,
@@ -138,23 +155,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 18,
-      "bullish": 9,
-      "neutral": 1,
-      "bearish": 8,
-      "net_sentiment_score": 0.056,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
       ]
     },
     {
