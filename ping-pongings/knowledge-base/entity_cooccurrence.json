@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 405,
-    "btc_entries": 279
+    "btc_entries": 280
   },
-  "unique_pairs_found": 1173,
+  "unique_pairs_found": 1174,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -3051,6 +3051,21 @@
       ]
     },
     {
+      "entity_a": "Metaplanet",
+      "entity_b": "Superplanet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETH",
       "cooccurrence_count": 2,
@@ -3706,6 +3721,21 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        },
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "BTC"
         }
       ]
@@ -7079,17 +7109,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Metaplanet",
-      "entity_b": "Superplanet",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -12655,17 +12674,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Metaplanet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Simon Gerovich",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -13892,6 +13900,17 @@
       "example_headlines": [
         {
           "title": "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Superplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "BTC"
         }
       ]

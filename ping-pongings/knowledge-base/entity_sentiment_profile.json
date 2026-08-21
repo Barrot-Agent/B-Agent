@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 405,
-    "btc_entries": 279
+    "btc_entries": 280
   },
   "unique_entities_profiled": 380,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 170,
-      "bullish": 76,
+      "total_mentions": 171,
+      "bullish": 77,
       "neutral": 26,
       "bearish": 68,
-      "net_sentiment_score": 0.047,
+      "net_sentiment_score": 0.053,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -708,6 +708,23 @@
       ]
     },
     {
+      "entity": "Metaplanet",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1003,23 +1020,6 @@
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
         "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -2098,6 +2098,22 @@
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Superplanet",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal"
       ]
     },
     {
@@ -3314,20 +3330,6 @@
       ],
       "example_headlines": [
         "Why Is XRP (Ripple) Up Today? - The Motley Fool"
-      ]
-    },
-    {
-      "entity": "Superplanet",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal"
       ]
     },
     {
