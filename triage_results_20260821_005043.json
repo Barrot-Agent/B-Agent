@@ -1,0 +1,31 @@
+[
+  {
+    "admit": true,
+    "composite_score": 0.89,
+    "novelty": 1.0,
+    "relevance": 0.9,
+    "density": 0.8,
+    "justifying_quote": "regulatory clarity could accelerate institutional adoption",
+    "hash": "e1957435ff3879d6",
+    "source_id": "t1"
+  },
+  {
+    "admit": false,
+    "reason": "exact_duplicate",
+    "hash": "e1957435ff3879d6",
+    "novelty": 0.0,
+    "relevance": null,
+    "density": null,
+    "source_id": "t2"
+  },
+  {
+    "admit": false,
+    "composite_score": 0.2,
+    "novelty": 1.0,
+    "relevance": 0.0,
+    "density": 0.0,
+    "justifying_quote": "SCORING_FAILED",
+    "hash": "9ac66dfb23e682b5",
+    "source_id": "t3"
+  }
+]
