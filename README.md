@@ -62,6 +62,104 @@ streamlit run app.py
 
 Canonical JSON assets live in [`data/`](data/) and should be accessed through [`data/registry.py`](data/registry.py), not ad-hoc file loads.
 
+---
+
+## 🤖 GPT Actions & MCP Server Integration
+
+B-Agent exposes its GitHub capabilities through two AI-friendly interfaces:
+
+| Interface | Transport | Use with |
+|-----------|-----------|----------|
+| **GPT Actions HTTP API** | HTTP/JSON REST | Custom GPT, OpenAI Actions |
+| **MCP Server** | stdio JSON-RPC | GitHub Copilot Chat, any MCP client |
+
+Both interfaces share the same service layer (`barrot_agent/github_service.py`).
+
+### Required environment variables
+
+Copy `.env.example` to `.env` and fill in:
+
+```bash
+# GitHub PAT with repo/issues read+write scope
+GITHUB_TOKEN=ghp_...
+
+# Optional defaults (used when owner/repo are omitted from requests)
+GITHUB_DEFAULT_OWNER=Barrot-Agent
+GITHUB_DEFAULT_REPO=B-Agent
+```
+
+### Running locally
+
+**GPT Actions HTTP server** (default port 8502):
+
+```bash
+python scripts/run_gpt_api.py
+# OpenAPI schema: http://localhost:8502/openapi.json
+# Health check:   http://localhost:8502/health
+```
+
+**MCP stdio server**:
+
+```bash
+python scripts/run_mcp_server.py
+```
+
+### Connecting to a Custom GPT
+
+1. Run the GPT Actions server and make it publicly reachable (e.g. via ngrok).
+2. In the ChatGPT UI → *My GPTs* → *Create* → *Actions* → *Import from URL*, enter:
+   ```
+   https://<your-host>/openapi.json
+   ```
+3. The GPT will automatically discover `listIssues`, `getIssue`, `createIssue`, and `addComment`.
+
+### Connecting to GitHub Copilot Chat (MCP)
+
+Add the following to your VS Code `settings.json` (or `.vscode/mcp.json`):
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "b-agent-github": {
+        "type": "stdio",
+        "command": "python",
+        "args": ["scripts/run_mcp_server.py"],
+        "cwd": "/path/to/B-Agent",
+        "env": {
+          "GITHUB_TOKEN": "${env:GITHUB_TOKEN}",
+          "GITHUB_DEFAULT_OWNER": "Barrot-Agent",
+          "GITHUB_DEFAULT_REPO": "B-Agent"
+        }
+      }
+    }
+  }
+}
+```
+
+Copilot Chat will then offer the following tools:
+
+| Tool | Description |
+|------|-------------|
+| `github_list_issues` | List repository issues |
+| `github_get_issue` | Get a single issue by number |
+| `github_create_issue` | Create a new issue |
+| `github_add_comment` | Add a comment to an issue |
+
+### Available endpoints (GPT Actions)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/issues` | List issues (`owner`, `repo`, `state`, `page`, `per_page`) |
+| `GET` | `/issues/{number}` | Get one issue |
+| `POST` | `/issues` | Create issue (`owner`, `repo`, `title`, `body`, `labels`) |
+| `POST` | `/issues/{number}/comments` | Add comment (`owner`, `repo`, `body`) |
+| `GET` | `/openapi.json` | OpenAPI 3.1 schema |
+| `GET` | `/health` | Health check |
+
+---
+
+
 ### 🔄 Upgrade Flywheel
 
 The **UpgradeFlywheel** is the system-wide self-improvement orchestrator that

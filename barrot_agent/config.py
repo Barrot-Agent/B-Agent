@@ -103,6 +103,22 @@ class AppConfig(BaseSettings):
     hf_token: Optional[str] = Field(default=None, description="Hugging Face API token")
     hf_cache_dir: Optional[str] = Field(default=None, description="Hugging Face cache directory")
 
+    # GitHub integration (GPT Actions & MCP server)
+    github_token: Optional[str] = Field(
+        default=None,
+        description="GitHub personal access token for API access",
+    )
+    github_default_owner: Optional[str] = Field(
+        default=None,
+        description="Default repository owner (org or user)",
+    )
+    github_default_repo: Optional[str] = Field(
+        default=None,
+        description="Default repository name",
+    )
+    gpt_api_host: str = Field(default="0.0.0.0", description="GPT Actions API host")
+    gpt_api_port: int = Field(default=8502, description="GPT Actions API port")
+
     # Logging
     log_level: str = Field(default="INFO", description="Logging level")
     log_file: Optional[str] = Field(default=None, description="Log file path")
