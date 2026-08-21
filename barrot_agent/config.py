@@ -116,7 +116,7 @@ class AppConfig(BaseSettings):
         default=None,
         description="Default repository name",
     )
-    gpt_api_host: str = Field(default="0.0.0.0", description="GPT Actions API host")
+    gpt_api_host: str = Field(default="127.0.0.1", description="GPT Actions API host")
     gpt_api_port: int = Field(default=8502, description="GPT Actions API port")
 
     # Logging

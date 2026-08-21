@@ -25,12 +25,14 @@ from barrot_agent.github_service import make_service
 def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
     """Return a request handler class bound to the given configuration."""
 
-    token = config.github_token or ""
     default_owner = config.github_default_owner or ""
     default_repo = config.github_default_repo or ""
+    # Build the service once; reuse it for every request in this process.
+    svc = make_service(config.github_token or "")
 
     class _Handler(BaseHTTPRequestHandler):
-        log_message = lambda self, fmt, *args: None  # silence access log unless DEBUG
+        def log_message(self, fmt: str, *args: Any) -> None:  # noqa: D102
+            pass  # silence access log
 
         def _send_json(self, status: int, payload: Any) -> None:
             body = json.dumps(payload).encode()
@@ -78,7 +80,6 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
                     self._send_json(400, {"error": "owner and repo are required"})
                     return
                 try:
-                    svc = make_service(token)
                     result = svc.list_issues(
                         owner=owner,
                         repo=repo,
@@ -101,7 +102,6 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
                         self._send_json(400, {"error": "owner and repo are required"})
                         return
                     try:
-                        svc = make_service(token)
                         result = svc.get_issue(owner, repo, int(parts[2]))
                         self._send_json(200, result)
                     except Exception as exc:  # noqa: BLE001
@@ -126,7 +126,6 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
                     self._send_json(400, {"error": "owner, repo and title are required"})
                     return
                 try:
-                    svc = make_service(token)
                     result = svc.create_issue(owner, repo, title, issue_body, labels)
                     self._send_json(201, result)
                 except Exception as exc:  # noqa: BLE001
@@ -144,7 +143,6 @@ def _build_app(config: AppConfig) -> type[BaseHTTPRequestHandler]:
                         self._send_json(400, {"error": "owner, repo and body are required"})
                         return
                     try:
-                        svc = make_service(token)
                         result = svc.add_comment(owner, repo, int(parts[2]), comment_body)
                         self._send_json(201, result)
                     except Exception as exc:  # noqa: BLE001

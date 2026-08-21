@@ -108,15 +108,11 @@ TOOLS: list[dict[str, Any]] = [
 def _call_tool(
     name: str,
     arguments: dict[str, Any],
-    config: AppConfig,
+    svc: Any,
+    default_owner: str,
+    default_repo: str,
 ) -> Any:
     """Execute a tool and return a JSON-serialisable result."""
-    token = config.github_token or ""
-    default_owner = config.github_default_owner or ""
-    default_repo = config.github_default_repo or ""
-
-    svc = make_service(token)
-
     owner = arguments.get("owner") or default_owner
     repo = arguments.get("repo") or default_repo
 
@@ -185,6 +181,11 @@ def run_server(config: AppConfig | None = None, *, _input=None, _output=None) ->
     inp = _input or sys.stdin
     out_write = _output or _write
 
+    # Build service once for the lifetime of the server process.
+    svc = make_service(cfg.github_token or "")
+    default_owner = cfg.github_default_owner or ""
+    default_repo = cfg.github_default_repo or ""
+
     server_info = {
         "name": "b-agent-github",
         "version": "1.0.0",
@@ -228,7 +229,7 @@ def run_server(config: AppConfig | None = None, *, _input=None, _output=None) ->
             tool_name = params.get("name", "")
             arguments: dict[str, Any] = params.get("arguments") or {}
             try:
-                result = _call_tool(tool_name, arguments, cfg)
+                result = _call_tool(tool_name, arguments, svc, default_owner, default_repo)
                 out_write(
                     _ok(
                         req_id,
