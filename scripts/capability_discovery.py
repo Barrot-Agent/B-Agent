@@ -4,7 +4,7 @@ search for tools/libraries/APIs that could close it, evaluate each against
 this project's real, repeatedly-confirmed hardware constraints. Extends the
 anti-fabrication discipline already in frontier_gap_analysis.py from
 research findings to tooling. Applies to primary brain AND ping-pong chain."""
-import os, json, urllib.request, urllib.parse
+import os, json, urllib.request, urllib.error, urllib.parse
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -18,7 +18,7 @@ KNOWN_HARD_WALLS = [
     "requires a paid tier with no free quota and no budget approved",
 ]
 
-def call_groq(prompt, max_tokens=1200):
+def call_groq(prompt, max_tokens=1200, tag=""):
     body = json.dumps({
         "model": "openai/gpt-oss-120b",
         "messages": [{"role": "user", "content": prompt}],
@@ -33,10 +33,16 @@ def call_groq(prompt, max_tokens=1200):
                  "Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
-            return json.load(resp)["choices"][0]["message"]["content"]
+            raw = resp.read().decode()
+            content = json.loads(raw)["choices"][0]["message"]["content"]
+            return content, raw
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode()[:500]
+        print(f"[{tag}] HTTP {e.code}: {err_body}", flush=True)
+        return "", f"HTTP {e.code}: {err_body}"
     except Exception as e:
-        print(f"Groq error: {e}")
-        return ""
+        print(f"[{tag}] Groq error: {e}", flush=True)
+        return "", str(e)
 
 def search_pypi(query):
     url = f"https://pypi.org/pypi/{urllib.parse.quote(query)}/json"
@@ -47,6 +53,25 @@ def search_pypi(query):
             return {"exists": True, "summary": data.get("info", {}).get("summary", "")}
     except Exception:
         return {"exists": False, "summary": None}
+
+def extract_json(text):
+    if "```" in text:
+        parts = text.split("```")
+        for p in parts:
+            p = p.strip()
+            if p.startswith("json"):
+                p = p[4:].strip()
+            if p.startswith("{"):
+                text = p
+                break
+    start = text.find('{')
+    end = text.rfind('}') + 1
+    if start == -1 or end <= start:
+        return None
+    try:
+        return json.loads(text[start:end])
+    except Exception:
+        return None
 
 def evaluate_candidate(candidate_name, candidate_description, consumer="primary_brain"):
     walls_str = "\n".join(f"- {w}" for w in KNOWN_HARD_WALLS)
@@ -61,13 +86,12 @@ Evaluate: does this candidate hit any wall above? Cite the wall verbatim if one 
 If none apply, say so explicitly. Give a real implementation sketch IF viable.
 
 Output ONLY JSON: {{"viable": true/false, "wall_hit": "verbatim wall text or null", "implementation_sketch": "...", "consumer_fit": "primary_brain|ping_pong_chain|both"}}"""
-    response = call_groq(prompt)
-    try:
-        start = response.find('{')
-        end = response.rfind('}') + 1
-        return json.loads(response[start:end])
-    except Exception:
-        return {"viable": False, "wall_hit": "PARSE_FAILURE", "implementation_sketch": "", "consumer_fit": "unknown"}
+    content, raw = call_groq(prompt, tag=f"evaluate:{candidate_name}")
+    parsed = extract_json(content) if content else None
+    if parsed is None:
+        return {"viable": False, "wall_hit": "PARSE_FAILURE", "implementation_sketch": "",
+                "consumer_fit": "unknown", "raw_response_excerpt": raw[:300]}
+    return parsed
 
 def discover_for_gap(gap_name):
     prompt = f"""Capability gap: {gap_name}
@@ -77,13 +101,11 @@ Only name things you can describe a specific, checkable mechanism for (a real en
 Do not invent plausible-sounding names.
 
 Output ONLY JSON: {{"candidates": [{{"name": "...", "description": "...", "type": "pypi_package|free_api|github_repo"}}]}}"""
-    response = call_groq(prompt, max_tokens=800)
-    try:
-        start = response.find('{')
-        end = response.rfind('}') + 1
-        candidates = json.loads(response[start:end]).get("candidates", [])
-    except Exception:
-        candidates = []
+    content, raw = call_groq(prompt, max_tokens=800, tag="discover")
+    parsed = extract_json(content) if content else None
+    candidates = parsed.get("candidates", []) if parsed else []
+    if not candidates:
+        print(f"[discover] No candidates parsed. Raw response excerpt: {raw[:300]}", flush=True)
 
     results = []
     for c in candidates:
@@ -102,7 +124,7 @@ Implementation sketch: {viable_candidate['evaluation'].get('implementation_sketc
 
 Write a 4-6 sentence usage doc: what it does, when to reach for it, one concrete example call, one real limitation.
 Plain text, no headers."""
-    doc = call_groq(prompt, max_tokens=300)
+    doc, _ = call_groq(prompt, max_tokens=300, tag="usage_doc")
     kb_dir = Path("ping-pongings/knowledge-base")
     kb_dir.mkdir(parents=True, exist_ok=True)
     entry = {

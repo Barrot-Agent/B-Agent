@@ -4,14 +4,14 @@ run them as REAL concurrent Groq calls (concurrent.futures -- genuine
 parallel network I/O within one process). No new API keys needed --
 parallelism comes from concurrency against the existing GROQ_API_KEY.
 For true OS-level parallelism see subagent-matrix.yml (real separate runners)."""
-import os, json, urllib.request, concurrent.futures
+import os, json, urllib.request, urllib.error, concurrent.futures
 from pathlib import Path
 from datetime import datetime, timezone
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 MAX_PARALLEL = int(os.environ.get("MAX_PARALLEL_SUBAGENTS", "4"))
 
-def call_groq(prompt, max_tokens=1200):
+def call_groq(prompt, max_tokens=1200, tag=""):
     body = json.dumps({
         "model": "openai/gpt-oss-120b",
         "messages": [{"role": "user", "content": prompt}],
@@ -26,9 +26,34 @@ def call_groq(prompt, max_tokens=1200):
                  "Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
-            return json.load(resp)["choices"][0]["message"]["content"]
+            raw = resp.read().decode()
+            return json.loads(raw)["choices"][0]["message"]["content"], raw
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode()[:500]
+        print(f"[{tag}] HTTP {e.code}: {err_body}", flush=True)
+        return f"SUBAGENT_ERROR: HTTP {e.code}", err_body
     except Exception as e:
-        return f"SUBAGENT_ERROR: {e}"
+        print(f"[{tag}] Groq error: {e}", flush=True)
+        return f"SUBAGENT_ERROR: {e}", str(e)
+
+def extract_json(text):
+    if "```" in text:
+        parts = text.split("```")
+        for p in parts:
+            p = p.strip()
+            if p.startswith("json"):
+                p = p[4:].strip()
+            if p.startswith("{"):
+                text = p
+                break
+    start = text.find('{')
+    end = text.rfind('}') + 1
+    if start == -1 or end <= start:
+        return None
+    try:
+        return json.loads(text[start:end])
+    except Exception:
+        return None
 
 def decompose_task(task_description):
     prompt = f"""Complex task: {task_description}
@@ -38,16 +63,16 @@ no subtask may depend on another subtask's output. If the task is
 inherently sequential, say so explicitly instead of forcing a fake decomposition.
 
 Output ONLY JSON: {{"parallelizable": true/false, "reason_if_not": "...", "subtasks": [{{"id": "...", "prompt": "..."}}]}}"""
-    response = call_groq(prompt, max_tokens=800)
-    try:
-        start = response.find('{')
-        end = response.rfind('}') + 1
-        return json.loads(response[start:end])
-    except Exception:
-        return {"parallelizable": False, "reason_if_not": "DECOMPOSITION_PARSE_FAILED", "subtasks": []}
+    content, raw = call_groq(prompt, max_tokens=800, tag="decompose")
+    parsed = extract_json(content) if content and not content.startswith("SUBAGENT_ERROR") else None
+    if parsed is None:
+        return {"parallelizable": False,
+                "reason_if_not": f"DECOMPOSITION_PARSE_FAILED (raw: {raw[:200]})",
+                "subtasks": []}
+    return parsed
 
 def run_subtask(subtask):
-    result = call_groq(subtask["prompt"])
+    result, _ = call_groq(subtask["prompt"], tag=f"subtask:{subtask['id']}")
     return {"id": subtask["id"], "prompt": subtask["prompt"], "result": result}
 
 def spawn_and_run(task_description):
@@ -82,7 +107,7 @@ Subagent results:
 {results_text}{failure_note}
 
 Synthesize these into one coherent answer to the original task. If subtasks conflict, note the conflict rather than silently picking one."""
-    synthesis = call_groq(prompt, max_tokens=1500)
+    synthesis, _ = call_groq(prompt, max_tokens=1500, tag="synthesis")
     spawn_result["synthesis"] = synthesis
     return spawn_result
 

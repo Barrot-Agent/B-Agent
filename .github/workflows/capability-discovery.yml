@@ -24,6 +24,7 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add capability_discovery_*.json ping-pongings/knowledge-base/capability_usage_docs.jsonl
+          git add capability_discovery_*.json
+          [ -f ping-pongings/knowledge-base/capability_usage_docs.jsonl ] && git add ping-pongings/knowledge-base/capability_usage_docs.jsonl
           git diff --cached --quiet || git commit -m "Capability discovery run [skip ci]"
           git push || (git pull --no-rebase --no-edit origin main && git push)

@@ -3,7 +3,7 @@
 before it consumes prompt budget. Real mechanism, not a renamed label --
 directly extends the existing file_ctx/dir_ctx budgeting discipline
 (barrot_agent.py) to the ingestion side instead of just the injection side."""
-import os, json, urllib.request, hashlib
+import os, json, urllib.request, urllib.error, hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -11,7 +11,7 @@ GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 KB_DIR = Path("ping-pongings/knowledge-base")
 SEEN_HASHES_FILE = KB_DIR / "seen_content_hashes.json"
 
-def call_groq(prompt, max_tokens=400):
+def call_groq(prompt, max_tokens=400, tag=""):
     body = json.dumps({
         "model": "openai/gpt-oss-120b",
         "messages": [{"role": "user", "content": prompt}],
@@ -26,10 +26,15 @@ def call_groq(prompt, max_tokens=400):
                  "Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.load(resp)["choices"][0]["message"]["content"]
+            raw = resp.read().decode()
+            return json.loads(raw)["choices"][0]["message"]["content"], raw
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode()[:500]
+        print(f"[{tag}] HTTP {e.code}: {err_body}", flush=True)
+        return "", f"HTTP {e.code}: {err_body}"
     except Exception as e:
-        print(f"Groq error: {e}")
-        return ""
+        print(f"[{tag}] Groq error: {e}", flush=True)
+        return "", str(e)
 
 def load_seen_hashes():
     if SEEN_HASHES_FILE.exists():
@@ -47,6 +52,25 @@ def novelty_score(text, seen_hashes):
     h = content_hash(text)
     return (1.0, h) if h not in seen_hashes else (0.0, h)
 
+def extract_json(text):
+    if "```" in text:
+        parts = text.split("```")
+        for p in parts:
+            p = p.strip()
+            if p.startswith("json"):
+                p = p[4:].strip()
+            if p.startswith("{"):
+                text = p
+                break
+    start = text.find('{')
+    end = text.rfind('}') + 1
+    if start == -1 or end <= start:
+        return None
+    try:
+        return json.loads(text[start:end])
+    except Exception:
+        return None
+
 def relevance_and_density(text, active_goals):
     goals_str = ", ".join(active_goals) if active_goals else "general capability building"
     prompt = f"""Active goals: {goals_str}
@@ -60,14 +84,11 @@ Score this content 0.0-1.0 on:
 
 You MUST quote the specific phrase (under 15 words) that justifies your relevance score, or say "no relevant content found" if none exists.
 Output ONLY JSON: {{"relevance": 0.0, "density": 0.0, "justifying_quote": "..."}}"""
-    response = call_groq(prompt)
-    try:
-        start = response.find('{')
-        end = response.rfind('}') + 1
-        result = json.loads(response[start:end])
-        return result.get("relevance", 0.0), result.get("density", 0.0), result.get("justifying_quote", "")
-    except Exception:
-        return 0.0, 0.0, "SCORING_FAILED"
+    content, raw = call_groq(prompt, tag="relevance")
+    parsed = extract_json(content) if content else None
+    if parsed is None:
+        return 0.0, 0.0, f"SCORING_FAILED (raw: {raw[:150]})"
+    return parsed.get("relevance", 0.0), parsed.get("density", 0.0), parsed.get("justifying_quote", "")
 
 def triage(text, active_goals=None, seen_hashes=None):
     if seen_hashes is None:
@@ -79,11 +100,14 @@ def triage(text, active_goals=None, seen_hashes=None):
     relevance, density, quote = relevance_and_density(text, active_goals or [])
     composite = (novelty * 0.2) + (relevance * 0.5) + (density * 0.3)
     admit = composite >= 0.4
+    call_failed = quote.startswith("SCORING_FAILED")
     seen_hashes.add(h)
     return {
-        "admit": admit, "composite_score": round(composite, 3),
+        "admit": admit if not call_failed else False,
+        "composite_score": round(composite, 3),
         "novelty": novelty, "relevance": relevance, "density": density,
         "justifying_quote": quote, "hash": h,
+        "call_failed": call_failed,
     }
 
 def triage_batch(items, active_goals=None):
@@ -96,7 +120,8 @@ def triage_batch(items, active_goals=None):
         results.append(r)
     save_seen_hashes(seen_hashes)
     admitted = sum(1 for r in results if r["admit"])
-    print(f"Triage: {admitted}/{len(results)} admitted")
+    failed = sum(1 for r in results if r.get("call_failed"))
+    print(f"Triage: {admitted}/{len(results)} admitted, {failed} call failures")
     return results
 
 if __name__ == "__main__":
