@@ -1,17 +1,17 @@
 {
-  "summary": "The XRP signal, timestamped\u202f2026\u201108\u201121\u202f19:26:57\u202fUTC, shows a mixed\u2011neutral headline but a strong bullish tilt across six listed topics, yielding a net sentiment score of\u202f39\u202fwith a confidence of\u202f0.0. The accompanying news metrics indicate\u202f78\u202fnews\u2011score points from\u202f40\u202fnews entries.  \n\n- Score:\u202f39; Confidence:\u202f0.0  \n- News\u202fScore:\u202f78; News\u202fEntries:\u202f40  \n- Headlines: 1\u202fneutral, 5\u202fbullish (Consensus Protocol, Message Dissemination, Edge Multicast Routing, Pub/Sub Dissemination, Consensus Crash Testing, Causal AI)",
+  "summary": "The signal reports a mixed sentiment with a overall score of\u202f39 and a high news activity score of\u202f78 from 40 recent XRP\u2011related headlines. Confidence is listed as\u202f0.0, and the source notes a failure to retrieve sentiment data from GitHub and Groq APIs.\n\n- Timestamp:\u202f2026\u201108\u201121T20:26:44.005245+00:00  \n- Sentiment breakdown:\u202f1 neutral headline, 5 bullish headlines  \n- Generated at Unix time\u202f1787344004 with 40 news entries contributing to the news score.",
   "spoken_line": "XRP signal update. Score 39. Confidence 0.0. Based on 40 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-08-21T19:26:57.313584+00:00",
+    "timestamp": "2026-08-21T20:26:44.005245+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 39,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(40)",
     "news_score": 78,
     "news_entries": 40,
-    "generated_at_unix": 1787340417
+    "generated_at_unix": 1787344004
   }
 }
