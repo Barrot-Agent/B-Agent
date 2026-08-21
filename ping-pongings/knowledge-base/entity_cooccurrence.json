@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 404,
+    "xrp_entries": 405,
     "btc_entries": 278
   },
   "unique_pairs_found": 1173,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 82,
+      "cooccurrence_count": 83,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -576,6 +576,21 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "MarketForces Africa",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -907,7 +922,7 @@
     },
     {
       "entity_a": "CoinDesk",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -915,7 +930,7 @@
           "asset": "XRP"
         },
         {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
           "asset": "XRP"
         }
       ]
@@ -1966,21 +1981,6 @@
         },
         {
           "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
           "asset": "XRP"
         }
       ]
