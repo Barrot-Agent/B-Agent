@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 413,
+    "xrp_entries": 416,
     "btc_entries": 289
   },
-  "unique_entities_profiled": 385,
+  "unique_entities_profiled": 388,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 172,
-      "bullish": 77,
+      "total_mentions": 173,
+      "bullish": 78,
       "neutral": 27,
       "bearish": 68,
-      "net_sentiment_score": 0.052,
+      "net_sentiment_score": 0.058,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 110,
+      "total_mentions": 111,
       "bullish": 68,
-      "neutral": 23,
+      "neutral": 24,
       "bearish": 19,
-      "net_sentiment_score": 0.445,
+      "net_sentiment_score": 0.441,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -91,11 +91,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 22,
+      "total_mentions": 23,
       "bullish": 11,
-      "neutral": 8,
+      "neutral": 9,
       "bearish": 3,
-      "net_sentiment_score": 0.364,
+      "net_sentiment_score": 0.348,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -291,11 +291,11 @@
     },
     {
       "entity": "ETH",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 7,
-      "neutral": 0,
+      "neutral": 1,
       "bearish": 2,
-      "net_sentiment_score": 0.556,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -708,6 +708,23 @@
       ]
     },
     {
+      "entity": "South Korea",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
       "entity": "Metaplanet",
       "total_mentions": 4,
       "bullish": 3,
@@ -1004,23 +1021,6 @@
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
         "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
-      ]
-    },
-    {
-      "entity": "South Korea",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -3515,6 +3515,48 @@
       ],
       "example_headlines": [
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Upbit",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
+      "entity": "BTCS",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
+      "entity": "Aave",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
       ]
     },
     {
