@@ -15,15 +15,19 @@ OPENAI_KEY = os.environ.get("OPENAI_API_KEY") or os.environ.get("CHATGPT_TOKEN",
 OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-BANNED_TERMS = ["rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i",
-    "git push", "os.system", "quantum harmonization", "free energy", "Willowchip",
-    "Aethel", "144-agent council", "22-agent"]
+BANNED_TERMS = [
+    "rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i",
+    "git push", "os.system", "quantum harmonization", "free energy",
+    "Willowchip", "Aethel", "144-agent council", "22-agent",
+]
 FABRICATED_DATA_PATTERNS = ["random.uniform", "random.random", "random.randint"]
 
 
 def discover_openai_model(api_key):
-    req = urllib.request.Request("https://api.openai.com/v1/models",
-        headers={"Authorization": f"Bearer {api_key}"})
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/models",
+        headers={"Authorization": f"Bearer {api_key}"},
+    )
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = json.load(resp)
@@ -32,7 +36,10 @@ def discover_openai_model(api_key):
         return None
     ids = [m["id"] for m in data.get("data", [])]
     excluded = ("embedding", "whisper", "tts", "moderation", "dall-e", "davinci-002", "babbage")
-    candidates = sorted([i for i in ids if i.startswith("gpt-") and not any(x in i for x in excluded)], reverse=True)
+    candidates = sorted(
+        [i for i in ids if i.startswith("gpt-") and not any(x in i for x in excluded)],
+        reverse=True,
+    )
     if candidates:
         print(f"[model_discovery] Selected {candidates[0]} from {len(candidates)} candidates")
         return candidates[0]
@@ -44,11 +51,22 @@ if not OPENAI_MODEL and OPENAI_KEY:
 
 
 def call_groq(prompt, max_tokens=2000, tag=""):
-    body = json.dumps({"model": "openai/gpt-oss-120b", "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": max_tokens, "temperature": 0.3}).encode()
-    req = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=body,
-        headers={"Authorization": f"Bearer {GROQ_KEY}", "Content-Type": "application/json",
-                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36", "Accept": "application/json"})
+    body = json.dumps({
+        "model": "openai/gpt-oss-120b",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": max_tokens,
+        "temperature": 0.3,
+    }).encode()
+    req = urllib.request.Request(
+        "https://api.groq.com/openai/v1/chat/completions",
+        data=body,
+        headers={
+            "Authorization": f"Bearer {GROQ_KEY}",
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+            "Accept": "application/json",
+        },
+    )
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             raw = resp.read().decode()
@@ -65,10 +83,20 @@ def call_groq(prompt, max_tokens=2000, tag=""):
 def call_openai(prompt, max_tokens=2000, tag=""):
     if not OPENAI_KEY or not OPENAI_MODEL:
         return "", "OPENAI_KEY or OPENAI_MODEL not available"
-    body = json.dumps({"model": OPENAI_MODEL, "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": max_tokens, "temperature": 0.3}).encode()
-    req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=body,
-        headers={"Authorization": f"Bearer {OPENAI_KEY}", "Content-Type": "application/json"})
+    body = json.dumps({
+        "model": OPENAI_MODEL,
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": max_tokens,
+        "temperature": 0.3,
+    }).encode()
+    req = urllib.request.Request(
+        "https://api.openai.com/v1/chat/completions",
+        data=body,
+        headers={
+            "Authorization": f"Bearer {OPENAI_KEY}",
+            "Content-Type": "application/json",
+        },
+    )
     try:
         with urllib.request.urlopen(req, timeout=90) as resp:
             raw = resp.read().decode()
@@ -91,10 +119,10 @@ def extract_json(text):
             if p.startswith("{") or p.startswith("["):
                 text = p
                 break
-    start = min([i for i in (text.find('{'), text.find('[')) if i != -1], default=-1)
+    start = min([i for i in (text.find("{"), text.find("[")) if i != -1], default=-1)
     if start == -1:
         return None
-    end = max(text.rfind('}'), text.rfind(']')) + 1
+    end = max(text.rfind("}"), text.rfind("]")) + 1
     try:
         return json.loads(text[start:end])
     except Exception:
@@ -165,15 +193,20 @@ def check_banned(code):
 
 
 def open_pr_for_assignment(assignment, goal):
-    worker, scope, task = assignment["worker"], assignment["scope"], assignment["task"]
+    worker = assignment["worker"]
+    scope = assignment["scope"]
+    task = assignment["task"]
 
     if worker == "ibm_bob":
         tickets_dir = REPO_ROOT / "tasks" / "ibm_bob"
         tickets_dir.mkdir(parents=True, exist_ok=True)
         stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
         ticket = tickets_dir / f"refactor_ticket_{stamp}.md"
-        ticket.write_text(f"# IBM Bob Refactor Ticket\n\n## Goal\n{goal}\n\n## Assigned scope\n"
-            + "\n".join(f"- {s}" for s in scope) + f"\n\n## Task\n{task}\n\n## Status\nNOT auto-dispatched.\n")
+        ticket.write_text(
+            f"# IBM Bob Refactor Ticket\n\n## Goal\n{goal}\n\n## Assigned scope\n"
+            + "\n".join(f"- {s}" for s in scope)
+            + f"\n\n## Task\n{task}\n\n## Status\nNOT auto-dispatched.\n"
+        )
         print(f"[ibm_bob] Ticket written: {ticket}")
         return {"worker": "ibm_bob", "method": "ticket", "path": str(ticket)}
 
@@ -188,14 +221,20 @@ No random.uniform/random/randint to fabricate data.
 
 Format: first line = exact relative file path, blank line, then full file content."""
 
-    content, raw = call_openai(prompt, tag=f"gpt:{task[:30]}") if worker == "gpt" else call_groq(prompt, tag=f"barrot:{task[:30]}")
+    if worker == "gpt":
+        content, raw = call_openai(prompt, tag=f"gpt:{task[:30]}")
+    else:
+        content, raw = call_groq(prompt, tag=f"barrot:{task[:30]}")
+
     if not content:
         return {"worker": worker, "method": "pr", "ok": False, "error": raw[:200]}
 
     lines = content.strip().split("\n", 1)
     if len(lines) < 2:
         return {"worker": worker, "method": "pr", "ok": False, "error": "malformed response"}
-    file_path_str, file_content = lines[0].strip().lstrip("#").strip(), lines[1].strip()
+
+    file_path_str = lines[0].strip().lstrip("#").strip()
+    file_content = lines[1].strip()
 
     if not any(file_path_str.startswith(s.rstrip("/")) for s in scope):
         print(f"[{worker}] REJECTED: {file_path_str} outside scope {scope}")
@@ -210,56 +249,89 @@ Format: first line = exact relative file path, blank line, then full file conten
     if target.suffix == ".py":
         tmp = REPO_ROOT / ".allocator_candidate.py"
         tmp.write_text(file_content)
-        r = subprocess.run([sys.executable, "-m", "py_compile", str(tmp)], capture_output=True)
+        r = subprocess.run(
+            [sys.executable, "-m", "py_compile", str(tmp)],
+            capture_output=True,
+        )
         tmp.unlink(missing_ok=True)
         if r.returncode != 0:
-            return {"worker": worker, "method": "pr", "ok": False, "error": "syntax error"}
+            return {
+                "worker": worker,
+                "method": "pr",
+                "ok": False,
+                "error": f"syntax error: {r.stderr.decode()[:200]}",
+            }
 
-    slug = re.sub(r"[^a-z0-9]+", "_", task.lower()).strip("_")[:40]
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-    branch = f"allocator/{worker}/{slug}-{stamp}"
-    git("checkout", "main")
-    git("pull", "--no-rebase", "--no-edit", "origin", "main")
+    branch = f"allocator/{worker}-{stamp}"
     git("checkout", "-b", branch)
+
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(file_content)
     git("add", str(target.relative_to(REPO_ROOT)))
-    git("commit", "-m", f"[{worker}] {task}")
+    git("commit", "-m", f"[{worker}] {task[:60]}")
+
     push = git("push", "-u", "origin", branch)
     if push.returncode != 0:
+        print(f"[{worker}] Push failed: {push.stderr[:300]}")
         git("checkout", "main")
         return {"worker": worker, "method": "pr", "ok": False, "error": "push failed"}
 
-    body = (f"Auto-allocated refactor task for worker **{worker}**\n\n**Goal:** {goal}\n"
-            f"**Scope:** {', '.join(scope)}\n**Task:** {task}\n\nBanned-term/fabrication-checked, "
-            f"syntax-checked. NOT executed/tested. barrot-gated-merge.yml tiers this like any other PR.")
+    body = (
+        f"Allocator assignment for **{worker}**\n\n"
+        f"**Goal:** {goal}\n\n"
+        f"**Task:** {task}\n\n"
+        f"**Scope:** {', '.join(scope)}\n\n"
+        "Generated by scripts/barrot_task_allocator.py. Requires human review."
+    )
     bf = REPO_ROOT / ".allocator_pr_body.md"
     bf.write_text(body)
-    pr = subprocess.run(["gh", "pr", "create", "--title", f"[{worker}] {task[:60]}",
-         "--body-file", str(bf), "--base", "main", "--head", branch], cwd=REPO_ROOT, capture_output=True, text=True)
+    pr = subprocess.run(
+        [
+            "gh", "pr", "create",
+            "--title", f"[{worker}] {task[:50]}",
+            "--body-file", str(bf),
+            "--base", "main",
+            "--head", branch,
+        ],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+    )
     bf.unlink(missing_ok=True)
     print(pr.stdout or pr.stderr)
     git("checkout", "main")
-    return {"worker": worker, "method": "pr", "ok": pr.returncode == 0, "branch": branch}
+    return {
+        "worker": worker,
+        "method": "pr",
+        "ok": pr.returncode == 0,
+        "branch": branch,
+        "file": file_path_str,
+    }
 
 
 def main():
     if not GROQ_KEY:
-        print("GROQ_API_KEY not set")
-        sys.exit(1)
-    goal = os.environ.get("REFACTOR_GOAL", "")
+        sys.exit("GROQ_API_KEY not set")
+    goal = os.environ.get("ALLOCATOR_GOAL", "").strip()
     if not goal:
-        print("REFACTOR_GOAL not set")
+        goal = "Improve code organization and remove dead paths without changing external behavior"
+        print(f"No ALLOCATOR_GOAL set — using default: {goal}")
+
+    print(f"Goal: {goal}\n")
+    plan = allocate_tasks(goal)
+    if not plan or not plan.get("assignments"):
+        print("No valid assignments produced")
         sys.exit(1)
-    allocation = allocate_tasks(goal)
-    if not allocation or not allocation.get("assignments"):
-        print("No valid non-overlapping allocation produced")
-        sys.exit(1)
-    print(json.dumps(allocation, indent=2))
-    results = [open_pr_for_assignment(a, goal) for a in allocation["assignments"]]
-    out = REPO_ROOT / f"allocation_run_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
-    out.write_text(json.dumps({"goal": goal, "allocation": allocation, "results": results}, indent=2))
-    print(f"Saved: {out}")
+
+    print(json.dumps(plan, indent=2))
+    results = []
+    for a in plan["assignments"]:
+        print(f"\n--- Processing {a['worker']} ---")
+        results.append(open_pr_for_assignment(a, goal))
+
+    print("\n=== RESULTS ===")
+    print(json.dumps(results, indent=2))
 
 
 if __name__ == "__main__":
