@@ -31,4 +31,20 @@ jobs:
           git config user.name "Barrot-Agent"
           git add triage_results_*.json ping-pongings/knowledge-base/seen_content_hashes.json
           git diff --cached --quiet || git commit -m "Data value triage run [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          push_with_retry() {
+            local max_attempts=5
+            local attempt=1
+            while [ $attempt -le $max_attempts ]; do
+              if git push; then
+                echo "Pushed on attempt $attempt"
+                return 0
+              fi
+              echo "Push attempt $attempt failed, pulling and retrying..."
+              sleep $(( (RANDOM % 5) + attempt ))
+              git pull --no-rebase --no-edit origin main
+              attempt=$(( attempt + 1 ))
+            done
+            echo "FAILED to push after $max_attempts attempts -- data committed locally but not on main"
+            return 1
+          }
+          push_with_retry
