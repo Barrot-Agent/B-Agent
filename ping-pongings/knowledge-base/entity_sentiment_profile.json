@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 405,
+    "xrp_entries": 407,
     "btc_entries": 280
   },
-  "unique_entities_profiled": 382,
+  "unique_entities_profiled": 385,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 108,
-      "bullish": 66,
+      "total_mentions": 110,
+      "bullish": 68,
       "neutral": 23,
       "bearish": 19,
-      "net_sentiment_score": 0.435,
+      "net_sentiment_score": 0.445,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 86,
-      "bullish": 52,
+      "total_mentions": 88,
+      "bullish": 54,
       "neutral": 23,
       "bearish": 11,
-      "net_sentiment_score": 0.477,
+      "net_sentiment_score": 0.489,
       "assets_seen_in": [
         "XRP"
       ],
@@ -108,11 +108,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 20,
-      "bullish": 15,
+      "total_mentions": 21,
+      "bullish": 16,
       "neutral": 3,
       "bearish": 2,
-      "net_sentiment_score": 0.65,
+      "net_sentiment_score": 0.667,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -193,11 +193,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 13,
-      "bullish": 12,
+      "total_mentions": 14,
+      "bullish": 13,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.846,
+      "net_sentiment_score": 0.857,
       "assets_seen_in": [
         "XRP"
       ],
@@ -1004,6 +1004,23 @@
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
         "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
         "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
+      ]
+    },
+    {
+      "entity": "South Korea",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -2019,22 +2036,6 @@
       "example_headlines": [
         "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - Yahoo Finance",
         "Crypto Influencer Predicts XRP Will Hit $5 by October Despite Trading at $1 - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "South Korea",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -3472,6 +3473,48 @@
       ],
       "example_headlines": [
         "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
+      ]
+    },
+    {
+      "entity": "RippleNet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Korea's first regional bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "XRP (ticker)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
       ]
     },
     {
