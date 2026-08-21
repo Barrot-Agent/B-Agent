@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 416,
+    "xrp_entries": 417,
     "btc_entries": 290
   },
-  "unique_entities_profiled": 388,
+  "unique_entities_profiled": 389,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 173,
-      "bullish": 78,
+      "total_mentions": 174,
+      "bullish": 79,
       "neutral": 27,
       "bearish": 68,
-      "net_sentiment_score": 0.058,
+      "net_sentiment_score": 0.063,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -91,11 +91,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 23,
-      "bullish": 11,
+      "total_mentions": 24,
+      "bullish": 12,
       "neutral": 9,
       "bearish": 3,
-      "net_sentiment_score": 0.348,
+      "net_sentiment_score": 0.375,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3529,6 +3529,20 @@
       ],
       "example_headlines": [
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
+      "entity": "ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
       ]
     },
     {

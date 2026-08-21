@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 416,
+    "xrp_entries": 417,
     "btc_entries": 290
   },
-  "unique_pairs_found": 1202,
+  "unique_pairs_found": 1204,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -246,6 +246,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 9,
@@ -346,21 +361,6 @@
         },
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -7826,6 +7826,28 @@
       "example_headlines": [
         {
           "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
           "asset": "XRP"
         }
       ]
