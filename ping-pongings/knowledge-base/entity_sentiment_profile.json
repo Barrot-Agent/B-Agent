@@ -3,15 +3,15 @@
     "xrp_entries": 405,
     "btc_entries": 280
   },
-  "unique_entities_profiled": 380,
+  "unique_entities_profiled": 382,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 171,
+      "total_mentions": 172,
       "bullish": 77,
-      "neutral": 26,
+      "neutral": 27,
       "bearish": 68,
-      "net_sentiment_score": 0.053,
+      "net_sentiment_score": 0.052,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -57,9 +57,9 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 69,
+      "total_mentions": 70,
       "bullish": 28,
-      "neutral": 13,
+      "neutral": 14,
       "bearish": 28,
       "net_sentiment_score": 0.0,
       "assets_seen_in": [
@@ -67,9 +67,9 @@
         "XRP"
       ],
       "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Bitcoin Short Squeeze Puts Record Liquidation Claim Back In Focus",
-        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance"
+        "Bitcoin Short Squeeze Puts Record Liquidation Claim Back In Focus"
       ]
     },
     {
@@ -1800,6 +1800,22 @@
       ]
     },
     {
+      "entity": "Empery Digital",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
       "entity": "BitMine Immersion Technologies",
       "total_mentions": 2,
       "bullish": 2,
@@ -3092,6 +3108,34 @@
       ],
       "example_headlines": [
         "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results"
+      ]
+    },
+    {
+      "entity": "share buybacks",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
+      "entity": "debt repayment",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
       ]
     },
     {
@@ -5136,20 +5180,6 @@
       ],
       "example_headlines": [
         "Bitcoin drops to one-week low as retail buys gold at highest prices since June"
-      ]
-    },
-    {
-      "entity": "Empery Digital",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
       ]
     },
     {
