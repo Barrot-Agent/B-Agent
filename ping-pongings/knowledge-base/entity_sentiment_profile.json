@@ -3,7 +3,7 @@
     "xrp_entries": 423,
     "btc_entries": 297
   },
-  "unique_entities_profiled": 391,
+  "unique_entities_profiled": 395,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 111,
-      "bullish": 68,
+      "total_mentions": 113,
+      "bullish": 70,
       "neutral": 24,
       "bearish": 19,
-      "net_sentiment_score": 0.441,
+      "net_sentiment_score": 0.451,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 88,
-      "bullish": 54,
+      "total_mentions": 89,
+      "bullish": 55,
       "neutral": 23,
       "bearish": 11,
-      "net_sentiment_score": 0.489,
+      "net_sentiment_score": 0.494,
       "assets_seen_in": [
         "XRP"
       ],
@@ -108,11 +108,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 21,
+      "total_mentions": 22,
       "bullish": 16,
       "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.667,
+      "bearish": 3,
+      "net_sentiment_score": 0.591,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2150,6 +2150,38 @@
       ]
     },
     {
+      "entity": "CME Group",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group",
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "futures",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group",
+        "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -3599,6 +3631,62 @@
       ],
       "example_headlines": [
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
+      "entity": "Federal Register",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "CME",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group"
+      ]
+    },
+    {
+      "entity": "cryptocurrency",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group"
+      ]
+    },
+    {
+      "entity": "LiteFinance",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Forecast & Predictions for 2026, 2027, 2028\u20132030 and Beyond - LiteFinance"
       ]
     },
     {
@@ -5534,20 +5622,6 @@
       ]
     },
     {
-      "entity": "futures",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
-      ]
-    },
-    {
       "entity": "US inflation",
       "total_mentions": 1,
       "bullish": 0,
@@ -5741,20 +5815,6 @@
       ],
       "example_headlines": [
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
-      "entity": "CME Group",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {
