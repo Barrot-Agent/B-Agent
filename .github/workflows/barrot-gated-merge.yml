@@ -4,10 +4,13 @@ on:
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
   pull-requests: write
+  statuses: write
 
 jobs:
   gated-merge:
@@ -17,29 +20,36 @@ jobs:
       REPO: ${{ github.repository }}
       MAX_FILES: 25
       MAX_LINES: 1500
+      FAST_MODE: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      SINGLE_PR: ${{ github.event.pull_request.number }}
     steps:
       - uses: actions/checkout@v7
 
-      - name: Evaluate and merge
+      - name: Evaluate, report status, and merge (scheduled/dispatch only)
         run: |
           set +e
           PROTECTED='^(hf_space/|core/|web/|scripts/emit_signal.py|\.github/workflows/)'
           BANNED='130\.8M|144-agent|Willowchip|Aethel|Planck-scale|Loihi|quantum harmonization|free energy'
 
-          PRS=$(gh api "repos/$REPO/pulls?state=open&per_page=100" --paginate --jq '.[].number')
-          [ -z "$PRS" ] && { echo "No open PRs."; exit 0; }
+          if [ "$FAST_MODE" = "true" ]; then
+            PRS="$SINGLE_PR"
+          else
+            PRS=$(gh api "repos/$REPO/pulls?state=open&per_page=100" --paginate --jq '.[].number')
+          fi
+          [ -z "$PRS" ] && { echo "No PRs to evaluate."; exit 0; }
 
           for PR in $PRS; do
             echo ""
             echo "===== PR #$PR ====="
-            INFO=$(gh pr view "$PR" --repo "$REPO" --json title,labels,files,additions,deletions,statusCheckRollup)
+            INFO=$(gh pr view "$PR" --repo "$REPO" --json title,labels,files,additions,deletions,statusCheckRollup,headRefOid)
             TITLE=$(echo "$INFO" | jq -r '.title')
+            SHA=$(echo "$INFO" | jq -r '.headRefOid')
             APPROVED=$(echo "$INFO" | jq -r '[.labels[].name] | index("approved") // empty')
             FILES=$(echo "$INFO" | jq -r '.files[].path')
             NFILES=$(echo "$FILES" | wc -l)
             NLINES=$(echo "$INFO" | jq -r '.additions + .deletions')
             echo "  $TITLE"
-            echo "  files=$NFILES lines=$NLINES approved=${APPROVED:+yes}"
+            echo "  sha=$SHA files=$NFILES lines=$NLINES approved=${APPROVED:+yes}"
 
             REASONS=""
             TIER="LOW"
@@ -74,8 +84,13 @@ jobs:
 
             echo "  Risk tier: $TIER"
 
+            RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+
             if [ -n "$REASONS" ]; then
               echo "  BLOCKED:$(printf "$REASONS")"
+              DESC=$(printf "$REASONS" | head -1 | sed 's/^- //' | cut -c1-140)
+              gh api "repos/$REPO/statuses/$SHA" -f state=failure -f context=barrot-gated-merge \
+                -f description="Blocked (tier $TIER): $DESC" -f target_url="$RUN_URL" >/dev/null 2>&1
               MARKER="<!-- barrot-gated-merge -->"
               HAS=$(gh pr view "$PR" --repo "$REPO" --json comments --jq "[.comments[] | select(.body | contains(\"$MARKER\"))] | length")
               if [ "$HAS" = "0" ]; then
@@ -84,7 +99,15 @@ jobs:
               continue
             fi
 
-            echo "  All gates passed (tier: $TIER). Merging."
+            echo "  All gates passed (tier: $TIER)."
+            gh api "repos/$REPO/statuses/$SHA" -f state=success -f context=barrot-gated-merge \
+              -f description="All gates passed (tier $TIER)" -f target_url="$RUN_URL" >/dev/null 2>&1
+
+            if [ "$FAST_MODE" = "true" ]; then
+              echo "  Fast-mode (PR event): status reported, merge deferred to next scheduled pass."
+              continue
+            fi
+
+            echo "  Merging."
             gh pr merge "$PR" --repo "$REPO" --squash 2>&1 || echo "  merge failed (will retry next cycle)"
           done
-
