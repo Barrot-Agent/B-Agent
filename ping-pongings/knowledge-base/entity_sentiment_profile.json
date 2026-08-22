@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 405,
-    "btc_entries": 278
+    "xrp_entries": 423,
+    "btc_entries": 297
   },
-  "unique_entities_profiled": 380,
+  "unique_entities_profiled": 395,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 169,
-      "bullish": 75,
-      "neutral": 26,
+      "total_mentions": 174,
+      "bullish": 79,
+      "neutral": 27,
       "bearish": 68,
-      "net_sentiment_score": 0.041,
+      "net_sentiment_score": 0.063,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 108,
-      "bullish": 66,
-      "neutral": 23,
+      "total_mentions": 114,
+      "bullish": 71,
+      "neutral": 24,
       "bearish": 19,
-      "net_sentiment_score": 0.435,
+      "net_sentiment_score": 0.456,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 86,
-      "bullish": 52,
+      "total_mentions": 90,
+      "bullish": 56,
       "neutral": 23,
       "bearish": 11,
-      "net_sentiment_score": 0.477,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "XRP"
       ],
@@ -57,19 +57,19 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 68,
-      "bullish": 27,
-      "neutral": 13,
+      "total_mentions": 70,
+      "bullish": 28,
+      "neutral": 14,
       "bearish": 28,
-      "net_sentiment_score": -0.015,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-        "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To"
+        "Bitcoin Short Squeeze Puts Record Liquidation Claim Back In Focus"
       ]
     },
     {
@@ -91,11 +91,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 22,
-      "bullish": 11,
-      "neutral": 8,
+      "total_mentions": 24,
+      "bullish": 12,
+      "neutral": 9,
       "bearish": 3,
-      "net_sentiment_score": 0.364,
+      "net_sentiment_score": 0.375,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -108,11 +108,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 20,
-      "bullish": 15,
+      "total_mentions": 23,
+      "bullish": 17,
       "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.65,
+      "bearish": 3,
+      "net_sentiment_score": 0.609,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -193,11 +193,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 13,
-      "bullish": 12,
+      "total_mentions": 14,
+      "bullish": 13,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.846,
+      "net_sentiment_score": 0.857,
       "assets_seen_in": [
         "XRP"
       ],
@@ -221,6 +221,23 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
+      ]
+    },
+    {
+      "entity": "ETF",
+      "total_mentions": 11,
+      "bullish": 8,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.545,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {
@@ -273,29 +290,12 @@
       ]
     },
     {
-      "entity": "ETF",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years"
-      ]
-    },
-    {
       "entity": "ETH",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 7,
-      "neutral": 0,
+      "neutral": 1,
       "bearish": 2,
-      "net_sentiment_score": 0.556,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -624,6 +624,22 @@
       ]
     },
     {
+      "entity": "The Motley Fool",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
       "entity": "MarketForces Africa",
       "total_mentions": 4,
       "bullish": 2,
@@ -637,6 +653,22 @@
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "U.S. District Court",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -705,6 +737,40 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "South Korea",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
+      "entity": "Metaplanet",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -824,22 +890,6 @@
       ]
     },
     {
-      "entity": "The Motley Fool",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
-      ]
-    },
-    {
       "entity": "institutional investors",
       "total_mentions": 3,
       "bullish": 3,
@@ -886,22 +936,6 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
         "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
-      ]
-    },
-    {
-      "entity": "U.S. District Court",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -1003,23 +1037,6 @@
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
         "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -1800,6 +1817,22 @@
       ]
     },
     {
+      "entity": "Empery Digital",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
       "entity": "BitMine Immersion Technologies",
       "total_mentions": 2,
       "bullish": 2,
@@ -2006,22 +2039,6 @@
       ]
     },
     {
-      "entity": "South Korea",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
-      ]
-    },
-    {
       "entity": "Jeonbuk Bank",
       "total_mentions": 2,
       "bullish": 2,
@@ -2101,6 +2118,22 @@
       ]
     },
     {
+      "entity": "Superplanet",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal"
+      ]
+    },
+    {
       "entity": "Hyperliquid",
       "total_mentions": 2,
       "bullish": 1,
@@ -2114,6 +2147,38 @@
       "example_headlines": [
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "CME Group",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group",
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "futures",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group",
+        "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
       ]
     },
     {
@@ -3079,6 +3144,34 @@
       ]
     },
     {
+      "entity": "share buybacks",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
+      "entity": "debt repayment",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
+      ]
+    },
+    {
       "entity": "XRPL",
       "total_mentions": 1,
       "bullish": 1,
@@ -3317,20 +3410,6 @@
       ]
     },
     {
-      "entity": "Superplanet",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal"
-      ]
-    },
-    {
       "entity": "US District Court",
       "total_mentions": 1,
       "bullish": 1,
@@ -3426,6 +3505,188 @@
       ],
       "example_headlines": [
         "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
+      ]
+    },
+    {
+      "entity": "RippleNet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Korea's first regional bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "XRP (ticker)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Upbit",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
+      "entity": "ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
+      ]
+    },
+    {
+      "entity": "BTCS",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
+      "entity": "Aave",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
+      "entity": "Canary",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
+      "entity": "TRX",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
+      "entity": "Federal Register",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "CME",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group"
+      ]
+    },
+    {
+      "entity": "cryptocurrency",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group"
+      ]
+    },
+    {
+      "entity": "LiteFinance",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Forecast & Predictions for 2026, 2027, 2028\u20132030 and Beyond - LiteFinance"
       ]
     },
     {
@@ -5137,20 +5398,6 @@
       ]
     },
     {
-      "entity": "Empery Digital",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks"
-      ]
-    },
-    {
       "entity": "Circle Internet Financial",
       "total_mentions": 1,
       "bullish": 0,
@@ -5375,20 +5622,6 @@
       ]
     },
     {
-      "entity": "futures",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
-      ]
-    },
-    {
       "entity": "US inflation",
       "total_mentions": 1,
       "bullish": 0,
@@ -5582,20 +5815,6 @@
       ],
       "example_headlines": [
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
-      "entity": "CME Group",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {

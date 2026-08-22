@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 405,
-    "btc_entries": 278
+    "xrp_entries": 423,
+    "btc_entries": 297
   },
-  "unique_pairs_found": 1173,
+  "unique_pairs_found": 1221,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 83,
+      "cooccurrence_count": 87,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,22 +23,22 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 47,
+      "cooccurrence_count": 49,
       "example_headlines": [
         {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
         },
         {
-          "title": "Bitcoin Reclaims $65,000 as BTC ETF Inflows Return: Is the Worst Over? - Yahoo Finance",
-          "asset": "BTC"
+          "title": "Bitcoin Short Squeeze Puts Record Liquidation Claim Back In Focus",
+          "asset": "XRP"
         }
       ]
     },
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 17,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 16,
+      "cooccurrence_count": 18,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -76,6 +76,21 @@
         },
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -111,24 +126,9 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 12,
+      "cooccurrence_count": 13,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -246,6 +246,36 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 9,
@@ -336,36 +366,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "XRP",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 8,
@@ -398,7 +398,7 @@
     {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
@@ -516,6 +516,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 5,
@@ -576,6 +591,51 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "The Motley Fool",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "The Motley Fool",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "The Motley Fool",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CoinDesk",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -607,15 +667,30 @@
     },
     {
       "entity_a": "SEC",
-      "entity_b": "XRP Ledger",
+      "entity_b": "U.S. District Court",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
           "asset": "XRP"
         },
         {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -876,51 +951,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "The Motley Fool",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "Ripple",
       "cooccurrence_count": 3,
@@ -996,23 +1026,8 @@
       ]
     },
     {
-      "entity_a": "SEC",
+      "entity_a": "Ripple",
       "entity_b": "U.S. District Court",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. District Court",
-      "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -2121,21 +2136,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -2446,6 +2446,21 @@
         },
         {
           "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Empery Digital",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
           "asset": "BTC"
         }
       ]
@@ -2871,6 +2886,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "South Korea",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "South Korea",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Jeonbuk Bank",
       "entity_b": "Korea",
       "cooccurrence_count": 2,
@@ -3046,6 +3091,51 @@
         },
         {
           "title": "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Superplanet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "South Korea",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
           "asset": "BTC"
         }
       ]
@@ -3706,6 +3796,21 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        },
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "BTC"
         }
       ]
@@ -5889,6 +5994,94 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "debt repayment",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "share buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Empery Digital",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "debt repayment",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "share buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Empery Digital",
+      "entity_b": "debt repayment",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Empery Digital",
+      "entity_b": "share buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "debt repayment",
+      "entity_b": "share buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "STRC",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
@@ -6616,29 +6809,7 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "South Korea",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "regional bank",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "South Korea",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7089,17 +7260,6 @@
     },
     {
       "entity_a": "Metaplanet",
-      "entity_b": "Superplanet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Metaplanet",
       "entity_b": "United States",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -7266,17 +7426,6 @@
     {
       "entity_a": "ETH",
       "entity_b": "Hyperliquid",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -7534,6 +7683,435 @@
       "example_headlines": [
         {
           "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "RippleNet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RippleNet",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RippleNet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RippleNet",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea's first regional bank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea's first regional bank",
+      "entity_b": "South Korea",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea's first regional bank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korea's first regional bank",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "South Korea",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Upbit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "South Korea",
+      "entity_b": "Upbit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "BTCS",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "The Motley Fool",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Is XRP (Ripple) Up 24.9% Today? - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Canary",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Canary",
+      "entity_b": "TRX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "TRX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Register",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME",
+      "entity_b": "CME Group",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME",
+      "entity_b": "cryptocurrency",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME Group",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME Group",
+      "entity_b": "cryptocurrency",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME Group",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "cryptocurrency",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "cryptocurrency",
+      "entity_b": "futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "LiteFinance",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Forecast & Predictions for 2026, 2027, 2028\u20132030 and Beyond - LiteFinance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "LiteFinance",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Forecast & Predictions for 2026, 2027, 2028\u20132030 and Beyond - LiteFinance",
           "asset": "XRP"
         }
       ]
@@ -8201,17 +8779,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "PCE inflation",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "South Korea",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -12269,17 +12836,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Empery Digital",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTCPay",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 1,
@@ -12645,17 +13201,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "Simon Gerovich",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Metaplanet",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -13892,6 +14437,17 @@
       "example_headlines": [
         {
           "title": "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Superplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "BTC"
         }
       ]

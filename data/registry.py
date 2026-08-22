@@ -38,7 +38,6 @@ _FILE_MAP: Dict[str, str] = {
     "biomarker_tracking": "biomarker_tracking.json",
     "reprogramming_protocols": "reprogramming_protocols.json",
     "integration_report": "integration_report.json",
-    "pingpong_request_example": "pingpong_request_example.json",
 }
 
 # ---------------------------------------------------------------------------
@@ -133,16 +132,6 @@ def load_reprogramming_protocols(force_reload: bool = False) -> Dict[str, Any]:
 def load_integration_report(force_reload: bool = False) -> Dict[str, Any]:
     """Return the latest system integration report."""
     return _load("integration_report", force_reload)
-
-
-def load_pingpong_request(example: bool = False, force_reload: bool = False) -> Dict[str, Any]:
-    """Return a pingpong request object.
-
-    Args:
-        example: If True, return the example/template request instead of the
-                 live one.
-    """
-    return _load("pingpong_request_example", force_reload)
 
 
 # ---------------------------------------------------------------------------
