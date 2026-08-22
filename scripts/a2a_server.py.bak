@@ -8,7 +8,7 @@ JSON-RPC endpoint at / — accepts message/send calls.
 import json
 import os
 import sys
-import requests
+import urllib.request
 import uuid
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
@@ -52,18 +52,14 @@ def call_groq(text):
         "max_tokens": 1024,
         "temperature": 0.3,
     }).encode()
+    req = urllib.request.Request(
+        "https://api.groq.com/openai/v1/chat/completions",
+        data=body,
+        headers={"Authorization": f"Bearer {GROQ_KEY}", "Content-Type": "application/json"}
+    )
     try:
-        resp = requests.post(
-            "https://api.groq.com/openai/v1/chat/completions",
-            data=body,
-            headers={
-                "Authorization": f"Bearer {GROQ_KEY}",
-                "Content-Type": "application/json",
-            },
-            timeout=60,
-        )
-        resp.raise_for_status()
-        return resp.json()["choices"][0]["message"]["content"]
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return json.load(resp)["choices"][0]["message"]["content"]
     except Exception as e:
         raise RuntimeError(f"Groq error: {e}")
 
