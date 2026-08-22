@@ -36,6 +36,25 @@ class ModelConfig(BaseSettings):
     trust_remote_code: bool = Field(default=True, description="Trust remote code for custom models")
 
 
+class OpenAIConfig(BaseSettings):
+    """OpenAI / ChatGPT connector configuration."""
+
+    model_config = SettingsConfigDict(
+        protected_namespaces=(),
+        env_prefix="OPENAI_",
+    )
+
+    api_key: Optional[str] = Field(default=None, description="OpenAI API key (OPENAI_API_KEY)")
+    base_url: str = Field(
+        default="https://api.openai.com/v1",
+        description="OpenAI-compatible API base URL (OPENAI_BASE_URL)",
+    )
+    model: str = Field(default="gpt-4o", description="Model identifier (OPENAI_MODEL)")
+    timeout: int = Field(default=60, description="Request timeout seconds (OPENAI_TIMEOUT)")
+    max_retries: int = Field(default=3, description="Max retry attempts (OPENAI_MAX_RETRIES)")
+    enabled: bool = Field(default=False, description="Enable ChatGPT connector")
+
+
 class KimiConfig(BaseSettings):
     """Kimi 3 model configuration for recursive feedback loops."""
 
@@ -113,6 +132,9 @@ class AppConfig(BaseSettings):
 
     # Kimi 3 Integration
     kimi: KimiConfig = Field(default_factory=KimiConfig)
+
+    # OpenAI / ChatGPT Integration
+    openai: OpenAIConfig = Field(default_factory=OpenAIConfig)
 
     # Feedback Loop
     feedback_loop: FeedbackLoopConfig = Field(default_factory=FeedbackLoopConfig)
