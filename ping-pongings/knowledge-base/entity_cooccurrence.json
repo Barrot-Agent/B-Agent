@@ -3,7 +3,7 @@
     "xrp_entries": 423,
     "btc_entries": 298
   },
-  "unique_pairs_found": 1221,
+  "unique_pairs_found": 1230,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -7853,6 +7853,72 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "Hayden Adams",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "US crypto builders",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Uniswap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hayden Adams",
+      "entity_b": "US crypto builders",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hayden Adams",
+      "entity_b": "Uniswap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US crypto builders",
+      "entity_b": "Uniswap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Aave",
       "entity_b": "BTCS",
       "cooccurrence_count": 1,
@@ -7980,6 +8046,39 @@
       "example_headlines": [
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Federal Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "US Court of Appeals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Court",
+      "entity_b": "US Court of Appeals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
           "asset": "XRP"
         }
       ]

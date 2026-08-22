@@ -3,7 +3,7 @@
     "xrp_entries": 423,
     "btc_entries": 298
   },
-  "unique_entities_profiled": 395,
+  "unique_entities_profiled": 399,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -357,6 +357,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 7,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 2,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds"
+      ]
+    },
+    {
       "entity": "24/7 Wall St.",
       "total_mentions": 6,
       "bullish": 4,
@@ -371,23 +388,6 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.167,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds",
-        "Binance phishs its own staff monthly, India censors BitChat code: Asia Express"
       ]
     },
     {
@@ -890,6 +890,23 @@
       ]
     },
     {
+      "entity": "Uniswap",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 3,
       "bullish": 3,
@@ -936,6 +953,23 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt",
         "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt"
+      ]
+    },
+    {
+      "entity": "CFTC",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "Kraken Brings CFTC-Regulated Perpetual Futures To US Traders"
       ]
     },
     {
@@ -1457,22 +1491,6 @@
       ]
     },
     {
-      "entity": "Uniswap",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
-      ]
-    },
-    {
       "entity": "UNI",
       "total_mentions": 2,
       "bullish": 1,
@@ -1642,22 +1660,6 @@
       "example_headlines": [
         "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
         "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Kraken Brings CFTC-Regulated Perpetual Futures To US Traders"
       ]
     },
     {
@@ -3578,6 +3580,34 @@
       ]
     },
     {
+      "entity": "Hayden Adams",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas"
+      ]
+    },
+    {
+      "entity": "US crypto builders",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas"
+      ]
+    },
+    {
       "entity": "BTCS",
       "total_mentions": 1,
       "bullish": 0,
@@ -3645,6 +3675,34 @@
       ],
       "example_headlines": [
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "US Court of Appeals",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules"
+      ]
+    },
+    {
+      "entity": "Federal Court",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules"
       ]
     },
     {
