@@ -1,3 +1,5 @@
+import { RIEMANN_RESEARCH_CORPUS } from "./riemann_research_corpus.js";
+
 // Barrot-Ω A2A (Agent-to-Agent) Worker
 // Scoped v1 MVP of the A2A protocol (spec v1.0.1):
 //   - Agent Card at /.well-known/agent-card.json
@@ -24,6 +26,14 @@ const AGENT_CARD = {
     credentials: "X-Barrot-Auth header, shared secret"
   },
   skills: [
+    {
+      id: "riemann-research",
+      name: "Read-only Riemann Hypothesis research corpus",
+      description: "Retrieve validated structured research metadata. Publications and computational evidence are never represented as mathematical proof.",
+      tags: ["research", "mathematics", "number-theory", "riemann", "read-only"],
+      examples: ["Retrieve the latest Riemann research corpus.", "Summarize computational evidence separately from published claims."]
+    },
+
     {
       id: "general-query",
       name: "General grounded query",
@@ -119,6 +129,25 @@ export default {
     }
 
     const { id = null, method, params = {} } = payload || {};
+
+    if (method === "research/riemann") {
+      const requestedLimit = Number(params.limit || 25);
+      const limit = Math.max(1, Math.min(
+        Number.isFinite(requestedLimit) ? requestedLimit : 25,
+        100
+      ));
+
+      const records = RIEMANN_RESEARCH_CORPUS.records.slice(0, limit);
+
+      return jsonRpcResult(id, {
+        capability: "riemann-research",
+        read_only: true,
+        domain: RIEMANN_RESEARCH_CORPUS.domain,
+        evidence_policy: RIEMANN_RESEARCH_CORPUS.evidence_policy,
+        statistics: RIEMANN_RESEARCH_CORPUS.statistics,
+        records,
+      });
+    }
 
     if (method === "message/send") {
       const text = extractText(params.message);

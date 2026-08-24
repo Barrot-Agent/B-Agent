@@ -47,25 +47,33 @@ def utcnow() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 def classify_evidence(title: str, summary: str) -> str:
+    """Classify evidence conservatively without treating claims as proof."""
     text = f"{title} {summary}".lower()
 
+    # Explicit computational evidence takes precedence.
     if any(x in text for x in (
-        "counterexample", "numerical verification", "computed zero",
-        "computational verification", "zeros up to"
+        "numerical verification",
+        "computed zero",
+        "computational verification",
+        "zeros up to",
     )):
         return "computational_evidence"
 
+    # A counterexample is evidence/claim territory, never automatically proof.
+    if "counterexample" in text:
+        return "published_claim"
+
+    # Proof/disproof language describes a published claim until independently verified.
+    if any(x in text for x in ("proof", "prove", "disproof")):
+        return "published_claim"
+
+    # Only classify as conjectural when no stronger claim is present.
     if any(x in text for x in (
         "conjecture", "hypothesis", "heuristic", "speculation"
     )):
         return "conjecture_or_hypothesis"
 
-    if any(x in text for x in (
-        "proof", "prove", "disproof", "counterexample"
-    )):
-        return "published_claim"
-
-    return "published_claim"
+    return "barrot_research_lead"
 
 def clean(value: str) -> str:
     return re.sub(r"\s+", " ", value or "").strip()
