@@ -132,19 +132,73 @@ export default {
 
     if (method === "research/riemann") {
       const requestedLimit = Number(params.limit || 25);
-      const limit = Math.max(1, Math.min(
-        Number.isFinite(requestedLimit) ? requestedLimit : 25,
-        100
-      ));
+      const limit = Math.max(
+        1,
+        Math.min(Number.isFinite(requestedLimit) ? requestedLimit : 25, 100)
+      );
 
-      const records = RIEMANN_RESEARCH_CORPUS.records.slice(0, limit);
+      const allowedClasses = new Set(
+        RIEMANN_RESEARCH_CORPUS.evidence_policy.classes || []
+      );
+
+      let evidenceClasses = params.evidence_classes || [];
+      if (!Array.isArray(evidenceClasses)) {
+        evidenceClasses = [evidenceClasses];
+      }
+
+      evidenceClasses = evidenceClasses
+        .filter(value => typeof value === "string")
+        .filter(value => allowedClasses.has(value));
+
+      let records = RIEMANN_RESEARCH_CORPUS.records || [];
+
+      if (evidenceClasses.length) {
+        records = records.filter(record =>
+          evidenceClasses.includes(record.evidence_class)
+        );
+      }
+
+      const query = typeof params.query === "string"
+        ? params.query.trim().toLowerCase()
+        : "";
+
+      if (query) {
+        records = records.filter(record => {
+          const searchable = [
+            record.title,
+            record.summary,
+            ...(record.authors || []),
+            record.source,
+          ].join(" ").toLowerCase();
+
+          return searchable.includes(query);
+        });
+      }
+
+      records = records.slice(0, limit);
+
+      const byEvidenceClass = {};
+      for (const record of records) {
+        const kind = record.evidence_class || "barrot_research_lead";
+        byEvidenceClass[kind] = (byEvidenceClass[kind] || 0) + 1;
+      }
 
       return jsonRpcResult(id, {
         capability: "riemann-research",
         read_only: true,
         domain: RIEMANN_RESEARCH_CORPUS.domain,
         evidence_policy: RIEMANN_RESEARCH_CORPUS.evidence_policy,
-        statistics: RIEMANN_RESEARCH_CORPUS.statistics,
+        query: query || null,
+        evidence_classes: evidenceClasses,
+        result_statistics: {
+          returned_records: records.length,
+          by_evidence_class: byEvidenceClass,
+        },
+        grounding: {
+          source: "Barrot read-only Riemann research corpus",
+          mathematical_truth_assessment: false,
+          rule: "Returned records are research metadata. Publication claims, computational evidence, and corpus summaries do not establish mathematical proof."
+        },
         records,
       });
     }
