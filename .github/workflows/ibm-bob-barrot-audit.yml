@@ -19,7 +19,7 @@ jobs:
       - name: Install IBM Bob Shell
         timeout-minutes: 5
         run: |
-          curl -fsSL https://bob.ibm.com/download/bobshell.sh | bash
+          curl -fsSL https://bob.ibm.com/download/bobshell.sh | bash -s -- --pm npm
           bob --version
 
       - name: Audit Barrot
