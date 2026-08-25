@@ -27,7 +27,6 @@ jobs:
         run: |
           bob run \
             --mode ask \
-            --auth-method api-key \
             --accept-license \
             --disable-mcp \
             --disable-tool-groups edit,execute \
