@@ -1,7 +1,6 @@
-name: IBM Bob — Barrot Architecture Audit
+name: IBM Bob Barrot Architecture Audit
 
-on:
-  workflow_dispatch:
+on: [workflow_dispatch]
 
 permissions:
   contents: read
@@ -10,31 +9,23 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     env:
-      BOB_API_KEY: ${{ secrets.IBM_BOB_API_KEY }}
+      IBM_BOB_API_KEY: ${{ secrets.IBM_BOB_API_KEY }}
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
 
       - name: Install IBM Bob Shell
         run: |
           curl -fsSL https://bob.ibm.com/download/bobshell.sh | bash
           bob --version
 
-      - name: Audit Barrot architecture
+      - name: Audit Barrot
         run: |
-          bob run \
-            --mode ask \
-            --disable-mcp \
-            --disable-tool-groups edit,execute \
-            --max-turns 20 \
-            --accept-license \
-            "Perform a comprehensive READ-ONLY architecture and engineering audit of this B-Agent repository. Do not modify files or execute commands. Analyze agent orchestration, A2A communication, memory and persistence, security boundaries, testing, failure recovery, deployment readiness, scalability, and unnecessary complexity.
-
-Identify the strongest parts, critical weaknesses, missing capabilities, and the highest-value improvements ranked by impact versus effort. Cite relevant files and components where possible. Preserve working systems and prefer simple, reliable architecture over novelty. End with a phased implementation roadmap. This is analysis only; do not implement changes." \
-            > IBM_BOB_BARROT_AUDIT.md
+          bob run --mode ask --accept-license \
+          "Perform a read-only architecture and engineering audit of this repository. Do not modify files. Analyze agent orchestration, A2A communication, memory, persistence, security, testing, failure recovery, deployment readiness, scalability, and unnecessary complexity. Identify strengths, critical weaknesses, missing capabilities, and improvements ranked by impact versus effort. Cite relevant files where possible and end with a phased implementation roadmap." \
+          > IBM_BOB_BARROT_AUDIT.md
 
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: ibm-bob-barrot-audit
           path: IBM_BOB_BARROT_AUDIT.md
