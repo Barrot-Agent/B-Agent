@@ -3,15 +3,15 @@
     "xrp_entries": 434,
     "btc_entries": 316
   },
-  "unique_entities_profiled": 401,
+  "unique_entities_profiled": 403,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 176,
-      "bullish": 80,
+      "total_mentions": 177,
+      "bullish": 81,
       "neutral": 27,
       "bearish": 69,
-      "net_sentiment_score": 0.062,
+      "net_sentiment_score": 0.068,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 117,
-      "bullish": 72,
+      "total_mentions": 118,
+      "bullish": 73,
       "neutral": 25,
       "bearish": 20,
-      "net_sentiment_score": 0.444,
+      "net_sentiment_score": 0.449,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1088,6 +1088,23 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "US hints at more yen intervention: Five things to know in Bitcoin this week",
         "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
+      ]
+    },
+    {
+      "entity": "US Treasury",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
       ]
     },
     {
@@ -2321,21 +2338,6 @@
       ]
     },
     {
-      "entity": "US Treasury",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
-      ]
-    },
-    {
       "entity": "ETF inflows",
       "total_mentions": 2,
       "bullish": 2,
@@ -3469,6 +3471,34 @@
       ],
       "example_headlines": [
         "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
+      "entity": "Treasury Department",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
+      ]
+    },
+    {
+      "entity": "Macro Liquidity",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
       ]
     },
     {

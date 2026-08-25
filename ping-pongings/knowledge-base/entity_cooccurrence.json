@@ -3,7 +3,7 @@
     "xrp_entries": 434,
     "btc_entries": 316
   },
-  "unique_pairs_found": 1242,
+  "unique_pairs_found": 1250,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -291,6 +291,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 9,
@@ -347,21 +362,6 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
         }
       ]
     },
@@ -1246,6 +1246,21 @@
         },
         {
           "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        },
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
           "asset": "BTC"
         }
       ]
@@ -3391,21 +3406,6 @@
         },
         {
           "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US Treasury",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-          "asset": "BTC"
-        },
-        {
-          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
           "asset": "BTC"
         }
       ]
@@ -7461,6 +7461,94 @@
       "example_headlines": [
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Macro Liquidity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Treasury Department",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Macro Liquidity",
+      "entity_b": "Treasury Department",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Macro Liquidity",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Macro Liquidity",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury Department",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury Department",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Treasury",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
           "asset": "XRP"
         }
       ]
