@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 423,
+    "xrp_entries": 433,
     "btc_entries": 298
   },
-  "unique_entities_profiled": 399,
+  "unique_entities_profiled": 401,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 174,
-      "bullish": 79,
+      "total_mentions": 176,
+      "bullish": 80,
       "neutral": 27,
-      "bearish": 68,
-      "net_sentiment_score": 0.063,
+      "bearish": 69,
+      "net_sentiment_score": 0.062,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -91,11 +91,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 24,
-      "bullish": 12,
+      "total_mentions": 25,
+      "bullish": 13,
       "neutral": 9,
       "bearish": 3,
-      "net_sentiment_score": 0.375,
+      "net_sentiment_score": 0.4,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -108,11 +108,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 23,
-      "bullish": 17,
+      "total_mentions": 24,
+      "bullish": 18,
       "neutral": 3,
       "bearish": 3,
-      "net_sentiment_score": 0.609,
+      "net_sentiment_score": 0.625,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -208,6 +208,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 12,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.583,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 11,
       "bullish": 1,
@@ -221,23 +238,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 11,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.545,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {
@@ -2152,6 +2152,38 @@
       ]
     },
     {
+      "entity": "Hashdex",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years"
+      ]
+    },
+    {
+      "entity": "Spot Bitcoin ETF",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
+        "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk"
+      ]
+    },
+    {
       "entity": "CME Group",
       "total_mentions": 2,
       "bullish": 1,
@@ -3636,6 +3668,20 @@
       ]
     },
     {
+      "entity": "Cboe",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "Canary",
       "total_mentions": 1,
       "bullish": 0,
@@ -3661,6 +3707,20 @@
       ],
       "example_headlines": [
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
+      "entity": "DEFI",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives"
       ]
     },
     {
@@ -4532,20 +4592,6 @@
       ]
     },
     {
-      "entity": "Hashdex",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Hashdex to shut smallest Bitcoin ETF after more than two years"
-      ]
-    },
-    {
       "entity": "Trump Media & Technology Group (DJT)",
       "total_mentions": 1,
       "bullish": 0,
@@ -5215,20 +5261,6 @@
       ],
       "example_headlines": [
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com"
-      ]
-    },
-    {
-      "entity": "Spot Bitcoin ETF",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk"
       ]
     },
     {
