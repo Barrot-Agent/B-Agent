@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 438,
-    "btc_entries": 324
+    "btc_entries": 325
   },
-  "unique_entities_profiled": 409,
+  "unique_entities_profiled": 411,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -108,11 +108,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 24,
+      "total_mentions": 25,
       "bullish": 18,
       "neutral": 3,
-      "bearish": 3,
-      "net_sentiment_score": 0.625,
+      "bearish": 4,
+      "net_sentiment_score": 0.56,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2201,6 +2201,22 @@
       ]
     },
     {
+      "entity": "Federal Register",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
       "entity": "CME Group",
       "total_mentions": 2,
       "bullish": 1,
@@ -3767,20 +3783,6 @@
       ],
       "example_headlines": [
         "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives"
-      ]
-    },
-    {
-      "entity": "Federal Register",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
       ]
     },
     {
@@ -6063,6 +6065,34 @@
       ],
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "Reg Crypto",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
       ]
     }
   ]
