@@ -1,17 +1,17 @@
 {
-  "summary": "The XRP signal shows a strong bullish bias, with a score of **80** and a confidence level of **0.95**. It is based on **16** recent XRP\u2011related news items, giving the news component a score of **75**.  \n\n- Timestamp: 2026\u201108\u201125T21:27:19.732212+00:00  \n- Source: groq:bullish+news(16)  \n- News entries analyzed: 16 (overall news_score\u202f=\u202f75)",
-  "spoken_line": "XRP signal update. Score 80. Confidence 0.95. Based on 16 news entries. Not financial advice. Informational only. Do your own research.",
+  "summary": "The signal reports a mixed\u2011neutral to bullish tone across recent XRP\u2011ledger research headlines, with a overall sentiment score of\u202f38 and a news\u2011impact score of\u202f75 based on 16 news entries. Confidence is listed as\u202f0.0, and the source notes a failure to retrieve sentiment data from GitHub and Groq APIs.\n\n- Timestamp:\u202f2026\u201108\u201125\u202f22:27:00\u202fUTC  \n- Score:\u202f38; News score:\u202f75; News entries:\u202f16  \n- Sentiment source: unavailable (GitHub/Groq token errors)",
+  "spoken_line": "XRP signal update. Score 38. Confidence 0.0. Based on 16 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-08-25T21:27:19.732212+00:00",
+    "timestamp": "2026-08-25T22:27:00.438463+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
-    "score": 80,
-    "confidence": 0.95,
-    "source": "groq:bullish+news(16)",
+    "score": 38,
+    "confidence": 0.0,
+    "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(16)",
     "news_score": 75,
     "news_entries": 16,
-    "generated_at_unix": 1787693239
+    "generated_at_unix": 1787696820
   }
 }
