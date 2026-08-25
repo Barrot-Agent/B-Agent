@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 434,
+    "xrp_entries": 435,
     "btc_entries": 318
   },
-  "unique_pairs_found": 1250,
+  "unique_pairs_found": 1253,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -8484,6 +8484,39 @@
       "example_headlines": [
         {
           "title": "XRP Erases Its Most Bearish Signal\u2014And the Ripple-Linked Coin Is Flying - Decrypt",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "GENIUS Act",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "GENIUS Act",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Treasury",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
           "asset": "XRP"
         }
       ]

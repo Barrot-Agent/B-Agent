@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 434,
+    "xrp_entries": 435,
     "btc_entries": 318
   },
-  "unique_entities_profiled": 403,
+  "unique_entities_profiled": 405,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -2233,6 +2233,22 @@
       ]
     },
     {
+      "entity": "U.S. Treasury",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -3838,6 +3854,34 @@
       ]
     },
     {
+      "entity": "GENIUS Act",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act"
+      ]
+    },
+    {
+      "entity": "stablecoin",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -4581,20 +4625,6 @@
     },
     {
       "entity": "10x Research",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin may find bear market bottom in August: 10x Research"
-      ]
-    },
-    {
-      "entity": "U.S. Treasury",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
