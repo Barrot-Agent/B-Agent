@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 439,
+    "xrp_entries": 440,
     "btc_entries": 329
   },
-  "unique_entities_profiled": 416,
+  "unique_entities_profiled": 418,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -757,6 +757,23 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 4,
       "bullish": 3,
@@ -1038,23 +1055,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
-        "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%"
       ]
     },
     {
@@ -2166,6 +2166,21 @@
       "example_headlines": [
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "TRX",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
       ]
     },
     {
@@ -3758,20 +3773,6 @@
       ]
     },
     {
-      "entity": "TRX",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
-      ]
-    },
-    {
       "entity": "DEFI",
       "total_mentions": 1,
       "bullish": 0,
@@ -3937,6 +3938,34 @@
       ],
       "example_headlines": [
         "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
+      ]
+    },
+    {
+      "entity": "Tron Inc.",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
+      ]
+    },
+    {
+      "entity": "Corporate Crypto",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
       ]
     },
     {
