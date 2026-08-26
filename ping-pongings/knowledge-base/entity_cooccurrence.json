@@ -3,12 +3,12 @@
     "xrp_entries": 439,
     "btc_entries": 329
   },
-  "unique_pairs_found": 1278,
+  "unique_pairs_found": 1281,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 90,
+      "cooccurrence_count": 91,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -67,6 +67,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 15,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 15,
       "example_headlines": [
@@ -76,21 +91,6 @@
         },
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -156,6 +156,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
       "cooccurrence_count": 11,
@@ -166,21 +181,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -8631,6 +8631,39 @@
       "example_headlines": [
         {
           "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
           "asset": "XRP"
         }
       ]

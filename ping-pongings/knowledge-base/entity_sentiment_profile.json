@@ -3,7 +3,7 @@
     "xrp_entries": 439,
     "btc_entries": 329
   },
-  "unique_entities_profiled": 415,
+  "unique_entities_profiled": 416,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 119,
-      "bullish": 74,
+      "total_mentions": 120,
+      "bullish": 75,
       "neutral": 25,
       "bearish": 20,
-      "net_sentiment_score": 0.454,
+      "net_sentiment_score": 0.458,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 93,
-      "bullish": 57,
+      "total_mentions": 94,
+      "bullish": 58,
       "neutral": 24,
       "bearish": 12,
-      "net_sentiment_score": 0.484,
+      "net_sentiment_score": 0.489,
       "assets_seen_in": [
         "XRP"
       ],
@@ -74,11 +74,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 32,
-      "bullish": 18,
+      "total_mentions": 33,
+      "bullish": 19,
       "neutral": 5,
       "bearish": 9,
-      "net_sentiment_score": 0.281,
+      "net_sentiment_score": 0.303,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3937,6 +3937,20 @@
       ],
       "example_headlines": [
         "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
+      ]
+    },
+    {
+      "entity": "Buyback",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance"
       ]
     },
     {
