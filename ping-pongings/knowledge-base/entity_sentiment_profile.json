@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 179,
-      "bullish": 83,
+      "total_mentions": 180,
+      "bullish": 84,
       "neutral": 27,
       "bearish": 69,
-      "net_sentiment_score": 0.078,
+      "net_sentiment_score": 0.083,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -91,11 +91,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 25,
-      "bullish": 13,
+      "total_mentions": 26,
+      "bullish": 14,
       "neutral": 9,
       "bearish": 3,
-      "net_sentiment_score": 0.4,
+      "net_sentiment_score": 0.423,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -208,6 +208,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 13,
+      "bullish": 10,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.615,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 12,
       "bullish": 1,
@@ -221,23 +238,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 12,
-      "bullish": 9,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.583,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
       ]
     },
     {
