@@ -3,12 +3,12 @@
     "xrp_entries": 442,
     "btc_entries": 333
   },
-  "unique_pairs_found": 1291,
+  "unique_pairs_found": 1310,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 92,
+      "cooccurrence_count": 95,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -141,9 +141,24 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP.CC",
-      "cooccurrence_count": 12,
+      "cooccurrence_count": 13,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -201,21 +216,6 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 11,
@@ -231,6 +231,51 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 10,
@@ -241,21 +286,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -287,21 +317,6 @@
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
         }
       ]
     },
@@ -346,21 +361,6 @@
         },
         {
           "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -512,6 +512,21 @@
         {
           "title": "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
         }
       ]
     },
@@ -706,21 +721,6 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -991,6 +991,36 @@
         },
         {
           "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
           "asset": "XRP"
         }
       ]
@@ -1276,6 +1306,21 @@
         },
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "SEC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
           "asset": "XRP"
         }
       ]
@@ -2101,36 +2146,6 @@
         },
         {
           "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
           "asset": "XRP"
         }
       ]
@@ -3066,16 +3081,31 @@
       ]
     },
     {
-      "entity_a": "Coinbase",
-      "entity_b": "SEC",
+      "entity_a": "CryptoSlate",
+      "entity_b": "Ripple",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "title": "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp",
           "asset": "XRP"
         },
         {
-          "title": "What Will It Take for XRP to Break Through $2? - 24/7 Wall St.",
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoSlate",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
           "asset": "XRP"
         }
       ]
@@ -7311,28 +7341,6 @@
       ]
     },
     {
-      "entity_a": "CryptoSlate",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoSlate",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple just scored two major institutional wins but XRP traders are bracing for a bigger move - Cryp",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Crypto Influencer",
       "cooccurrence_count": 1,
@@ -8026,6 +8034,72 @@
       ]
     },
     {
+      "entity_a": "EIP-7702",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "EIP-7702",
+      "entity_b": "Phishing Research",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "EIP-7702",
+      "entity_b": "Wallet Delegation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Phishing Research",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Wallet Delegation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Phishing Research",
+      "entity_b": "Wallet Delegation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETFs",
       "cooccurrence_count": 1,
@@ -8521,6 +8595,94 @@
       ]
     },
     {
+      "entity_a": "Coinbase",
+      "entity_b": "Investor Class Action",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "U.S. Federal Judge",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Investor Class Action",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Investor Class Action",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Investor Class Action",
+      "entity_b": "U.S. Federal Judge",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Federal Judge",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. District Court",
+      "entity_b": "U.S. Federal Judge",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "GENIUS Act",
       "entity_b": "U.S. Treasury",
       "cooccurrence_count": 1,
@@ -8758,6 +8920,61 @@
       "example_headlines": [
         {
           "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoSlate",
+      "entity_b": "credit line",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoSlate",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "credit line",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "credit line",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "credit line",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
           "asset": "XRP"
         }
       ]
