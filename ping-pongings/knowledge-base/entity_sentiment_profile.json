@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 440,
-    "btc_entries": 330
+    "btc_entries": 331
   },
   "unique_entities_profiled": 418,
   "entities": [
@@ -41,12 +41,13 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 94,
-      "bullish": 58,
+      "total_mentions": 95,
+      "bullish": 59,
       "neutral": 24,
       "bearish": 12,
-      "net_sentiment_score": 0.489,
+      "net_sentiment_score": 0.495,
       "assets_seen_in": [
+        "BTC",
         "XRP"
       ],
       "example_headlines": [
@@ -57,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 71,
-      "bullish": 29,
+      "total_mentions": 72,
+      "bullish": 30,
       "neutral": 14,
       "bearish": 28,
-      "net_sentiment_score": 0.014,
+      "net_sentiment_score": 0.028,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -391,6 +392,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.833,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 6,
       "bullish": 3,
@@ -457,6 +475,23 @@
       ]
     },
     {
+      "entity": "CLARITY Act",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "BIP-110",
       "total_mentions": 5,
       "bullish": 0,
@@ -505,23 +540,6 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -686,23 +704,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "CLARITY Act",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -2154,6 +2155,22 @@
       ]
     },
     {
+      "entity": "Howard Lutnick",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "Hyperliquid",
       "total_mentions": 2,
       "bullish": 1,
@@ -3505,20 +3522,6 @@
       ],
       "example_headlines": [
         "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool"
-      ]
-    },
-    {
-      "entity": "Howard Lutnick",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {

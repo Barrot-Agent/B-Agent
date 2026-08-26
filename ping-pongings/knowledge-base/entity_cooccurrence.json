@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 440,
-    "btc_entries": 330
+    "btc_entries": 331
   },
-  "unique_pairs_found": 1287,
+  "unique_pairs_found": 1291,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1057,6 +1057,21 @@
     },
     {
       "entity_a": "CLARITY Act",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1246,6 +1261,21 @@
         },
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
         }
       ]
@@ -2211,21 +2241,6 @@
       ]
     },
     {
-      "entity_a": "CLARITY Act",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "European Union",
       "entity_b": "MiCA",
       "cooccurrence_count": 2,
@@ -3022,21 +3037,6 @@
     },
     {
       "entity_a": "Coinbase",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -3166,6 +3166,66 @@
         },
         {
           "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "Howard Lutnick",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Howard Lutnick",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Howard Lutnick",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "BTC"
         }
       ]
@@ -7436,50 +7496,6 @@
       "example_headlines": [
         {
           "title": "Where Will XRP (Ripple) Be in 5 Years? - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CLARITY Act",
-      "entity_b": "Coinbase",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CLARITY Act",
-      "entity_b": "Howard Lutnick",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "Howard Lutnick",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Howard Lutnick",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
         }
       ]
@@ -15147,6 +15163,50 @@
       "example_headlines": [
         {
           "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CLARITY Act",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Howard Lutnick",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "BTC"
         }
       ]
