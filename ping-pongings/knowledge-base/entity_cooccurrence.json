@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 440,
+    "xrp_entries": 441,
     "btc_entries": 331
   },
   "unique_pairs_found": 1291,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 91,
+      "cooccurrence_count": 92,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 19,
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 18,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -171,6 +171,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
       "cooccurrence_count": 12,
@@ -201,21 +216,6 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 11,
@@ -226,6 +226,21 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -306,8 +321,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
       "cooccurrence_count": 9,
       "example_headlines": [
         {
@@ -315,7 +330,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -362,21 +377,6 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
         }
       ]
     },
@@ -767,6 +767,21 @@
         {
           "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
         }
       ]
     },
@@ -1267,7 +1282,7 @@
     },
     {
       "entity_a": "Coinbase",
-      "entity_b": "Ripple",
+      "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -3037,7 +3052,7 @@
     },
     {
       "entity_a": "Coinbase",
-      "entity_b": "XRP",
+      "entity_b": "Ripple Labs",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -3045,7 +3060,22 @@
           "asset": "XRP"
         },
         {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "title": "What Will It Take for XRP to Break Through $2? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Will It Take for XRP to Break Through $2? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -7210,28 +7240,6 @@
       "example_headlines": [
         {
           "title": "XRP Faces a New Test as On-Chain Data Reveals a Major Shift in the Market - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
