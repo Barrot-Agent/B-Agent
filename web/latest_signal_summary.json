@@ -1,17 +1,17 @@
 {
-  "summary": "The signal reports a neutral analysis of the XRP Ledger Consensus Protocol and several bullish technical papers on message dissemination, routing, and consensus testing, yielding an overall sentiment score of\u202f40. News coverage is strong, with 19 entries and a news score of\u202f79, though confidence in the sentiment rating is\u202f0.0.  \n\n- Timestamp:\u202f2026\u201108\u201126\u202f09:29:26.908322\u202fUTC  \n- Sentiment breakdown:\u202f1 neutral, 5 bullish items  \n- Source note: sentiment unavailable due to missing GitHub/Groq tokens.",
+  "summary": "The XRP signal shows a moderate overall score of **40** with a high news sentiment score of **79** based on **19** news entries. Confidence is reported as **0.0**, and the source indicates sentiment data was unavailable due to token errors.\n\n- Timestamp: 2026\u201108\u201126T10:28:10.437087+00:00  \n- Signal text lists one neutral and six bullish XRP\u2011related headlines.  \n- Generated at Unix time **1787740090**.",
   "spoken_line": "XRP signal update. Score 40. Confidence 0.0. Based on 19 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-08-26T09:29:26.908322+00:00",
+    "timestamp": "2026-08-26T10:28:10.437087+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 40,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(19)",
     "news_score": 79,
     "news_entries": 19,
-    "generated_at_unix": 1787736566
+    "generated_at_unix": 1787740090
   }
 }
