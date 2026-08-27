@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 449,
-    "btc_entries": 343
+    "btc_entries": 346
   },
   "unique_pairs_found": 1354,
   "pairs": [
@@ -1441,6 +1441,21 @@
         },
         {
           "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "South Korea",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
           "asset": "BTC"
         }
       ]
@@ -3457,7 +3472,7 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "South Korea",
+      "entity_b": "Upbit",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -3465,7 +3480,22 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "South Korea",
+      "entity_b": "Upbit",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "XRP"
+        },
+        {
+          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
           "asset": "BTC"
         }
       ]
@@ -8218,28 +8248,6 @@
       "example_headlines": [
         {
           "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Upbit",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "South Korea",
-      "entity_b": "Upbit",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
           "asset": "XRP"
         }
       ]

@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 449,
-    "btc_entries": 343
+    "btc_entries": 346
   },
-  "unique_entities_profiled": 433,
+  "unique_entities_profiled": 434,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 195,
-      "bullish": 94,
+      "total_mentions": 196,
+      "bullish": 95,
       "neutral": 29,
       "bearish": 72,
-      "net_sentiment_score": 0.113,
+      "net_sentiment_score": 0.117,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -643,6 +643,23 @@
       ]
     },
     {
+      "entity": "South Korea",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
       "entity": "United States",
       "total_mentions": 5,
       "bullish": 3,
@@ -838,23 +855,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "South Korea",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-        "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
-        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
       ]
     },
     {
@@ -2279,6 +2279,22 @@
       "example_headlines": [
         "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
         "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
+      ]
+    },
+    {
+      "entity": "Upbit",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
       ]
     },
     {
@@ -3715,20 +3731,6 @@
       ],
       "example_headlines": [
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Upbit",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
       ]
     },
     {
@@ -6319,6 +6321,20 @@
       ],
       "example_headlines": [
         "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph"
+      ]
+    },
+    {
+      "entity": "BitBox",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BitBox patches \u2018severe\u2019 wallet flaws that could put funds at risk"
       ]
     },
     {
