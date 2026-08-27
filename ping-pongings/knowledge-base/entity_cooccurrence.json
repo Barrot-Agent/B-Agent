@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 449,
+    "xrp_entries": 450,
     "btc_entries": 346
   },
-  "unique_pairs_found": 1354,
+  "unique_pairs_found": 1357,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 98,
+      "cooccurrence_count": 99,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -456,6 +456,36 @@
       ]
     },
     {
+      "entity_a": "CryptoPotato",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Strategy",
       "cooccurrence_count": 6,
@@ -481,36 +511,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoPotato",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoPotato",
-      "entity_b": "XRP",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
           "asset": "XRP"
         }
       ]
@@ -846,6 +846,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "MarketForces Africa",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -1051,36 +1081,6 @@
         },
         {
           "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda",
           "asset": "XRP"
         }
       ]
@@ -2286,6 +2286,21 @@
       ]
     },
     {
+      "entity_a": "CryptoPotato",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CoinGape",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -2536,6 +2551,21 @@
         },
         {
           "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
         }
       ]
@@ -5283,17 +5313,6 @@
       ]
     },
     {
-      "entity_a": "CryptoPotato",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "analyst",
       "cooccurrence_count": 1,
@@ -6033,17 +6052,6 @@
     {
       "entity_a": "Tokenized assets",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Wall Street",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -9271,6 +9279,39 @@
       "example_headlines": [
         {
           "title": "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
         }
       ]
