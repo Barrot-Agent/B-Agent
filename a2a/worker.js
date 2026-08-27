@@ -281,7 +281,8 @@ export default {
       try {
         reply = await callGroq(env, text);
       } catch (e) {
-        console.error("Groq upstream failure:", e?.message || e);\n        return jsonRpcError(id, -32000, "Upstream inference temporarily unavailable");
+        console.error("Groq upstream failure:", e?.message || e);
+        return jsonRpcError(id, -32000, "Upstream inference temporarily unavailable");
       }
       const taskId = crypto.randomUUID();
       const task = {
