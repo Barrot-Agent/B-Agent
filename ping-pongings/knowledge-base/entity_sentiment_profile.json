@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 446,
-    "btc_entries": 337
+    "btc_entries": 342
   },
   "unique_entities_profiled": 430,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 189,
-      "bullish": 89,
+      "total_mentions": 192,
+      "bullish": 92,
       "neutral": 28,
       "bearish": 72,
-      "net_sentiment_score": 0.09,
+      "net_sentiment_score": 0.104,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -442,6 +442,39 @@
       ]
     },
     {
+      "entity": "Ether",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 5,
       "bullish": 3,
@@ -559,23 +592,6 @@
       ]
     },
     {
-      "entity": "Ether",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
-      ]
-    },
-    {
       "entity": "Donald Trump",
       "total_mentions": 5,
       "bullish": 2,
@@ -610,19 +626,20 @@
       ]
     },
     {
-      "entity": "US spot Bitcoin ETFs",
+      "entity": "United States",
       "total_mentions": 5,
-      "bullish": 4,
+      "bullish": 3,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
+      "bearish": 2,
+      "net_sentiment_score": 0.2,
       "assets_seen_in": [
-        "BTC"
+        "BTC",
+        "XRP"
       ],
       "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "US hints at more yen intervention: Five things to know in Bitcoin this week",
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
       ]
     },
     {
@@ -639,6 +656,22 @@
         "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC",
         "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss"
+      ]
+    },
+    {
+      "entity": "S&P 500",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
       ]
     },
     {
@@ -858,19 +891,19 @@
       ]
     },
     {
-      "entity": "S&P 500",
+      "entity": "Iran",
       "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.5,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.25,
       "assets_seen_in": [
         "BTC"
       ],
       "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
-        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+        "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
       ]
     },
     {
@@ -1108,23 +1141,6 @@
       ]
     },
     {
-      "entity": "United States",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "US hints at more yen intervention: Five things to know in Bitcoin this week",
-        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
-      ]
-    },
-    {
       "entity": "US Treasury",
       "total_mentions": 3,
       "bullish": 2,
@@ -1251,6 +1267,22 @@
         "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
         "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
+      ]
+    },
+    {
+      "entity": "Strait of Hormuz",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+        "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric"
       ]
     },
     {
@@ -2419,21 +2451,6 @@
       ]
     },
     {
-      "entity": "Iran",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
-      ]
-    },
-    {
       "entity": "ETF inflows",
       "total_mentions": 2,
       "bullish": 2,
@@ -2509,21 +2526,6 @@
       ]
     },
     {
-      "entity": "Strait of Hormuz",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
-      ]
-    },
-    {
       "entity": "Trezor",
       "total_mentions": 2,
       "bullish": 0,
@@ -2536,6 +2538,21 @@
       "example_headlines": [
         "Do the Coldcard attacks mean all hardware wallets are now insecure?",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "Gold",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+        "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
       ]
     },
     {
@@ -2626,6 +2643,21 @@
       "example_headlines": [
         "Markets flip for Fed rate-hike pause into CPI: Five things to know in Bitcoin this week",
         "Bitcoin drops to one-week low as retail buys gold at highest prices since June"
+      ]
+    },
+    {
+      "entity": "Oil",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+        "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
       ]
     },
     {
@@ -5110,20 +5142,6 @@
       ]
     },
     {
-      "entity": "Gold",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
-      ]
-    },
-    {
       "entity": "Calle",
       "total_mentions": 1,
       "bullish": 0,
@@ -5611,20 +5629,6 @@
       ],
       "example_headlines": [
         "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2"
-      ]
-    },
-    {
-      "entity": "Oil",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
       ]
     },
     {

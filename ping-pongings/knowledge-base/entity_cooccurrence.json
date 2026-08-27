@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 446,
-    "btc_entries": 337
+    "btc_entries": 342
   },
-  "unique_pairs_found": 1332,
+  "unique_pairs_found": 1341,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -621,6 +621,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Strategy",
       "cooccurrence_count": 5,
@@ -631,6 +646,21 @@
         },
         {
           "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -816,21 +846,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Coinbase",
       "entity_b": "Ripple",
       "cooccurrence_count": 4,
@@ -877,15 +892,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
+      "entity_b": "Iran",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
           "asset": "BTC"
         }
       ]
@@ -931,6 +946,21 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        },
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
           "asset": "BTC"
         }
       ]
@@ -1522,6 +1552,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "United States",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Truth Social",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1537,7 +1582,7 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "S&P 500",
+      "entity_b": "Strait of Hormuz",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -1545,7 +1590,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
           "asset": "BTC"
         }
       ]
@@ -3607,21 +3652,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Iran",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "ETF inflows",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -3831,7 +3861,7 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "S&P 500",
       "entity_b": "Strait of Hormuz",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -3840,7 +3870,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
           "asset": "BTC"
         }
       ]
@@ -3871,6 +3901,21 @@
         },
         {
           "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gold",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
           "asset": "BTC"
         }
       ]
@@ -4057,6 +4102,51 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Oil",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "Oil",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "Strait of Hormuz",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "TMTG",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -4126,6 +4216,21 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "United States",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
           "asset": "BTC"
         }
       ]
@@ -10787,17 +10892,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "United States",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Yen",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -11347,17 +11441,6 @@
       ]
     },
     {
-      "entity_a": "S&P 500",
-      "entity_b": "Strait of Hormuz",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "American Bitcoin",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
@@ -11646,17 +11729,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "China",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Gold",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -13201,39 +13273,6 @@
       "example_headlines": [
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Oil",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Iran",
-      "entity_b": "Oil",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Iran",
-      "entity_b": "Strait of Hormuz",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
           "asset": "BTC"
         }
       ]
@@ -15417,6 +15456,50 @@
       ]
     },
     {
+      "entity_a": "Gold",
+      "entity_b": "Iran",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gold",
+      "entity_b": "Oil",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gold",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Oil",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Bitcoin (BTC)",
       "cooccurrence_count": 1,
@@ -15560,6 +15643,39 @@
       ]
     },
     {
+      "entity_a": "Iran",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strait of Hormuz",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ChainCheck",
       "cooccurrence_count": 1,
@@ -15577,6 +15693,17 @@
       "example_headlines": [
         {
           "title": "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs draw $517M in largest one-day inflow since early May",
           "asset": "BTC"
         }
       ]
