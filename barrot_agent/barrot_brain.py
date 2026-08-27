@@ -123,22 +123,35 @@ class BarrotBrain:
             except Exception as e:
                 logger.warning("GitHub Models backend failed, falling back to Groq: %s", e)
 
-        # Groq fallback
+        # Groq fallback with rate-limit retry
         if self.groq_key:
-            try:
-                r = requests.post(
-                    self.GROQ_ENDPOINT,
-                    headers={
-                        "Authorization": f"Bearer {self.groq_key}",
-                        "Content-Type": "application/json",
-                    },
-                    json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 1024},
-                    timeout=20,
-                )
-                r.raise_for_status()
-                return r.json()["choices"][0]["message"]["content"]
-            except Exception as e:
-                logger.warning("Groq backend failed, falling back to Fireworks: %s", e)
+            import random
+            for attempt in range(6):
+                try:
+                    r = requests.post(
+                        self.GROQ_ENDPOINT,
+                        headers={
+                            "Authorization": f"Bearer {self.groq_key}",
+                            "Content-Type": "application/json",
+                        },
+                        json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 1024},
+                        timeout=20,
+                    )
+                    if r.status_code == 429 and attempt < 5:
+                        wait = min(60, 2 ** attempt) + random.uniform(0, 1)
+                        logger.warning("Groq rate-limited; retrying in %.1fs", wait)
+                        time.sleep(wait)
+                        continue
+                    r.raise_for_status()
+                    return r.json()["choices"][0]["message"]["content"]
+                except requests.RequestException as e:
+                    if attempt == 5:
+                        logger.warning("Groq backend failed, falling back to Fireworks: %s", e)
+                        break
+                    wait = min(60, 2 ** attempt) + random.uniform(0, 1)
+                    logger.warning("Groq request failed; retrying in %.1fs: %s", wait, e)
+                    time.sleep(wait)
+            # fall through to Fireworks
 
         # Fireworks fallback
         fw_key = os.getenv("FIREWORKS_API_KEY", "")
