@@ -1,48 +1,5 @@
 import { RIEMANN_RESEARCH_CORPUS } from "./riemann_research_corpus.js";
 
-const MAX_REQUEST_BYTES = 64 * 1024;
-const RATE_WINDOW_MS = 60_000;
-const RATE_LIMIT = 30;
-const clients = new Map();
-
-function clientAllowed(request) {
-  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  const now = Date.now();
-  const entry = clients.get(ip);
-
-  if (!entry || now - entry.started >= RATE_WINDOW_MS) {
-    clients.set(ip, { started: now, count: 1 });
-    return true;
-  }
-
-  entry.count += 1;
-  return entry.count <= RATE_LIMIT;
-}
-
-async function fetchWithRetry(url, options, attempts = 3) {
-  let lastError;
-
-  for (let attempt = 0; attempt < attempts; attempt++) {
-    try {
-      const response = await fetch(url, options);
-      if (response.ok || (response.status >= 400 &&
-          response.status < 500 && response.status !== 429)) {
-        return response;
-      }
-      lastError = new Error(`HTTP ${response.status}`);
-    } catch (error) {
-      lastError = error;
-    }
-
-    if (attempt < attempts - 1) {
-      const delay = 250 * (2 ** attempt) + Math.floor(Math.random() * 150);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-  }
-
-  throw lastError || new Error("Upstream request failed");
-}
-
 // Barrot-Ω A2A (Agent-to-Agent) Worker
 // Scoped v1 MVP of the A2A protocol (spec v1.0.1):
 //   - Agent Card at /.well-known/agent-card.json
@@ -111,7 +68,7 @@ async function callGroq(env, text) {
     max_tokens: 1024,
     temperature: 0.3
   };
-  const resp = await fetchWithRetry("https://api.groq.com/openai/v1/chat/completions", {
+  const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${env.GROQ_API_KEY}`,
@@ -164,26 +121,9 @@ export default {
       return jsonRpcError(null, -32001, "Unauthorized: missing or invalid X-Barrot-Auth header");
     }
 
-    if (!clientAllowed(request)) {
-      return new Response(JSON.stringify({
-        jsonrpc: "2.0",
-        id: null,
-        error: { code: -32029, message: "Rate limit exceeded" }
-      }), { status: 429, headers: { "content-type": "application/json" } });
-    }
-
-    const contentLength = Number(request.headers.get("content-length") || 0);
-    if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
-      return new Response("Request too large", { status: 413 });
-    }
-
     let payload;
     try {
-      const rawBody = await request.text();
-      if (rawBody.length > MAX_REQUEST_BYTES) {
-        return new Response("Request too large", { status: 413 });
-      }
-      payload = JSON.parse(rawBody);
+      payload = await request.json();
     } catch (e) {
       return jsonRpcError(null, -32700, "Parse error: invalid JSON");
     }
@@ -272,7 +212,7 @@ export default {
       try {
         reply = await callGroq(env, text);
       } catch (e) {
-        console.error("Groq upstream failure:", e?.message || e);\n        return jsonRpcError(id, -32000, "Upstream inference temporarily unavailable");
+        return jsonRpcError(id, -32000, `Upstream error: ${e.message}`);
       }
       const taskId = crypto.randomUUID();
       const task = {
