@@ -17,7 +17,7 @@ from .mcp_targets import CAPABILITY_TARGETS
 from .reconfiguration import build_reconfiguration_report
 from .smart_agent import SmartAgent
 
-_CONVERGENCE_COVERAGE_THRESHOLD = 0.999999
+_CONVERGENCE_COVERAGE_THRESHOLD = 0.95  # was 0.999999 -- functionally unreachable; aligned with FeedbackLoopConfig.convergence_threshold
 
 
 @dataclass

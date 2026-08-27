@@ -1,3 +1,6 @@
+import logging
+
+logger = logging.getLogger(__name__)
 #!/usr/bin/env python3
 """
 BARROT-Ω · BRAIN MODULE · v1.0
@@ -115,9 +118,10 @@ class BarrotBrain:
                     },
                     timeout=30,
                 )
+                r.raise_for_status()
                 return r.json()["choices"][0]["message"]["content"]
             except Exception as e:
-                pass  # fall through to Groq
+                logger.warning("GitHub Models backend failed, falling back to Groq: %s", e)
 
         # Groq fallback
         if self.groq_key:
@@ -131,9 +135,10 @@ class BarrotBrain:
                     json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 1024},
                     timeout=20,
                 )
+                r.raise_for_status()
                 return r.json()["choices"][0]["message"]["content"]
-            except Exception:
-                pass  # fall through to Fireworks
+            except Exception as e:
+                logger.warning("Groq backend failed, falling back to Fireworks: %s", e)
 
         # Fireworks fallback
         fw_key = os.getenv("FIREWORKS_API_KEY", "")
@@ -148,9 +153,11 @@ class BarrotBrain:
                     json={"model": self.FIREWORKS_MODEL, "messages": messages, "max_tokens": 1024},
                     timeout=20,
                 )
+                r.raise_for_status()
                 return r.json()["choices"][0]["message"]["content"]
-            except:
-                pass
+            except Exception as e:
+                logger.error("Fireworks backend failed: %s", e)
+        logger.error("All backends failed for this request.")
         return "[BARROT] All backends failed."
 
 

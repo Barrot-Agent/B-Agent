@@ -159,8 +159,17 @@ export default {
       return new Response("Not found", { status: 404 });
     }
 
+    function constantTimeEqual(a, b) {
+      if (a.length !== b.length) return false;
+      let mismatch = 0;
+      for (let i = 0; i < a.length; i++) {
+        mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i);
+      }
+      return mismatch === 0;
+    }
+
     const auth = request.headers.get("x-barrot-auth") || "";
-    if (!env.BRAIN_SHARED_SECRET || auth !== env.BRAIN_SHARED_SECRET) {
+    if (!env.BRAIN_SHARED_SECRET || !constantTimeEqual(auth, env.BRAIN_SHARED_SECRET)) {
       return jsonRpcError(null, -32001, "Unauthorized: missing or invalid X-Barrot-Auth header");
     }
 
