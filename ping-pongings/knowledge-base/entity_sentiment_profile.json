@@ -3,15 +3,15 @@
     "xrp_entries": 443,
     "btc_entries": 336
   },
-  "unique_entities_profiled": 425,
+  "unique_entities_profiled": 430,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 182,
-      "bullish": 85,
-      "neutral": 27,
-      "bearish": 70,
-      "net_sentiment_score": 0.082,
+      "total_mentions": 187,
+      "bullish": 87,
+      "neutral": 28,
+      "bearish": 72,
+      "net_sentiment_score": 0.08,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 73,
-      "bullish": 31,
+      "total_mentions": 75,
+      "bullish": 32,
       "neutral": 14,
-      "bearish": 28,
-      "net_sentiment_score": 0.041,
+      "bearish": 29,
+      "net_sentiment_score": 0.04,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 27,
-      "bullish": 14,
+      "total_mentions": 28,
+      "bullish": 15,
       "neutral": 9,
       "bearish": 4,
-      "net_sentiment_score": 0.37,
+      "net_sentiment_score": 0.393,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -126,11 +126,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 19,
-      "bullish": 10,
+      "total_mentions": 20,
+      "bullish": 11,
       "neutral": 1,
       "bearish": 8,
-      "net_sentiment_score": 0.105,
+      "net_sentiment_score": 0.15,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 18,
+      "total_mentions": 19,
       "bullish": 2,
       "neutral": 16,
-      "bearish": 0,
-      "net_sentiment_score": 0.111,
+      "bearish": 1,
+      "net_sentiment_score": 0.053,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -209,6 +209,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 14,
+      "bullish": 10,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 13,
       "bullish": 1,
@@ -222,23 +239,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 13,
-      "bullish": 10,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.615,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
       ]
     },
     {
@@ -275,6 +275,40 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 11,
+      "bullish": 8,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.545,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
+      ]
+    },
+    {
+      "entity": "Strategy",
+      "total_mentions": 11,
+      "bullish": 6,
+      "neutral": 3,
+      "bearish": 2,
+      "net_sentiment_score": 0.364,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+        "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 11,
       "bullish": 0,
@@ -288,40 +322,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 10,
-      "bullish": 7,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 10,
-      "bullish": 5,
-      "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.3,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-        "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
       ]
     },
     {
@@ -341,6 +341,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 8,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": 0.125,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Coinbase",
       "total_mentions": 8,
       "bullish": 6,
@@ -355,23 +372,6 @@
         "Coinbase Expands Derivatives Trading To UK Professional Clients",
         "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
         "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 7,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.286,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -593,6 +593,23 @@
       ]
     },
     {
+      "entity": "Metaplanet",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 5,
       "bullish": 4,
@@ -805,23 +822,6 @@
         "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -1155,6 +1155,22 @@
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
+      "entity": "VanEck",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
+        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation",
+        "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck"
       ]
     },
     {
@@ -2328,21 +2344,6 @@
       ]
     },
     {
-      "entity": "VanEck",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
-        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "CEO",
       "total_mentions": 2,
       "bullish": 0,
@@ -2385,6 +2386,21 @@
       "example_headlines": [
         "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
         "Bitcoin will never fall below $60K again: Nansen founder"
+      ]
+    },
+    {
+      "entity": "BTC-USD",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
+        "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph"
       ]
     },
     {
@@ -4338,20 +4354,6 @@
       ]
     },
     {
-      "entity": "BTC-USD",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha"
-      ]
-    },
-    {
       "entity": "FOREX.com",
       "total_mentions": 1,
       "bullish": 0,
@@ -6256,6 +6258,62 @@
       ]
     },
     {
+      "entity": "BTC ETFs",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "BTC.CC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo"
+      ]
+    },
+    {
+      "entity": "Seeking Alpha",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph"
+      ]
+    },
+    {
+      "entity": "ChainCheck",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck"
+      ]
+    },
+    {
       "entity": "GNO",
       "total_mentions": 1,
       "bullish": 0,
@@ -6267,6 +6325,20 @@
       ],
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Crypto exchanges",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges"
       ]
     },
     {

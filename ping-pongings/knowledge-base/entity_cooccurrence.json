@@ -3,7 +3,7 @@
     "xrp_entries": 443,
     "btc_entries": 336
   },
-  "unique_pairs_found": 1316,
+  "unique_pairs_found": 1332,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 51,
+      "cooccurrence_count": 53,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -171,6 +171,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 12,
@@ -196,21 +211,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
           "asset": "XRP"
         }
       ]
@@ -261,6 +261,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 10,
@@ -301,21 +316,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -381,6 +381,21 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 8,
@@ -392,21 +407,6 @@
         {
           "title": "Prediction: Bitcoin Will Be Worth $2.5 Trillion in 3 Years - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        },
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "XRP"
         }
       ]
     },
@@ -437,6 +437,21 @@
         {
           "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
         }
       ]
     },
@@ -561,21 +576,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "STRC",
       "entity_b": "Strategy",
       "cooccurrence_count": 5,
@@ -617,6 +617,66 @@
         {
           "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "ETF",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
         }
       ]
     },
@@ -787,15 +847,15 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "Strategy",
+      "entity_b": "Metaplanet",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "XRP"
         },
         {
-          "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
           "asset": "BTC"
         }
       ]
@@ -871,51 +931,6 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETF",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -1341,21 +1356,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Metaplanet",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "US Treasury",
       "cooccurrence_count": 3,
@@ -1561,6 +1561,21 @@
         },
         {
           "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -3412,6 +3427,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
+          "asset": "BTC"
+        },
+        {
+          "title": "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "ETH",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -3526,6 +3556,21 @@
         },
         {
           "title": "Bitcoin eyes $63K as US CPI relief sends September Fed rate pause odds to 60%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC-USD",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
           "asset": "BTC"
         }
       ]
@@ -3661,6 +3706,36 @@
         },
         {
           "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "BTC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
+          "asset": "BTC"
+        },
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
+          "asset": "BTC"
+        },
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
           "asset": "BTC"
         }
       ]
@@ -4051,21 +4126,6 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Metaplanet",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        },
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "BTC"
         }
       ]
@@ -9098,17 +9158,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "VanEck",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "BitMEX",
       "cooccurrence_count": 1,
@@ -9357,17 +9406,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC-USD",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
           "asset": "BTC"
         }
       ]
@@ -10523,28 +10561,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin May Finally Crash Below $60K As August Curse Kicks In - Yahoo! Finance Canada",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "BTC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
           "asset": "BTC"
         }
       ]
@@ -15412,6 +15428,160 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "BTC ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "BTC ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC ETFs",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC ETFs",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Will Bitcoin Drop Below $60K as BTC ETFs See Biggest Outflow in 6 Weeks? - 24/7 Wall St.",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC-USD",
+      "entity_b": "Seeking Alpha",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Seeking Alpha",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ChainCheck",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ChainCheck",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "GNO",
       "cooccurrence_count": 1,
@@ -15506,6 +15676,28 @@
       "example_headlines": [
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto exchanges",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto exchanges",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges",
           "asset": "BTC"
         }
       ]
