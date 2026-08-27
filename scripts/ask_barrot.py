@@ -3,6 +3,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
 import requests
 
@@ -40,6 +41,15 @@ SYSTEM_BASE = (
     "check your own claims rather than assume them. Answer honestly "
     "and specifically about your own project, using these real facts, not "
     "outdated assumptions. Do not be vague or grandiose."
+)
+
+
+CURRENT_QUESTION_PRIORITY = (
+    "\n\nCURRENT QUESTION PRIORITY: Answer the current user question directly "
+    "before anything else. The current question overrides recent memory, previous "
+    "answers, default tasks, and background context. Memory is reference material "
+    "only and must never cause you to continue or repeat an earlier task. Follow "
+    "explicit length and format instructions in the current question exactly."
 )
 
 ANTI_FABRICATION = (
@@ -354,11 +364,16 @@ def main():
     if not key:
         print("no GROQ_API_KEY, exiting")
         return
-    question = os.getenv("ASK_BARROT_QUESTION", "").strip() or DEFAULT_QUESTION
+    question = (
+        " ".join(sys.argv[1:]).strip()
+        or os.getenv("ASK_BARROT_QUESTION", "").strip()
+        or DEFAULT_QUESTION
+    )
 
     memory_entries = load_recent_memory()
     system = (
         SYSTEM_BASE
+        + CURRENT_QUESTION_PRIORITY
         + ANTI_FABRICATION
         + INFRASTRUCTURE_CONSTRAINTS
         + format_memory_block(memory_entries)
@@ -376,14 +391,33 @@ def main():
         "model": DEFAULT_GROQ_MODEL,
         "messages": [
             {"role": "system", "content": system},
-            {"role": "user", "content": question},
+            {"role": "user", "content":
+                "BACKEND IDENTITY: The API endpoint used by this script is api.groq.com, "
+                "therefore the inference backend is Groq. A model name containing OpenAI, "
+                "such as openai/gpt-oss-120b, does not mean OpenAI is the API backend. "
+                "Report Groq as the backend when this script is using the Groq endpoint.\n\n"
+                "CURRENT QUESTION — ANSWER ONLY THIS QUESTION. Do not answer any "
+                "previous question from memory or background context. Follow all "
+                "exact format, sentence-count, and length instructions exactly.\n\n"
+                + question},
         ],
         "temperature": 0.5,
     }
-    r = requests.post(GROQ_ENDPOINT, headers=headers, json=payload, timeout=TIMEOUT)
-    r.raise_for_status()
+    r = None
+    for attempt in range(6):
+        r = requests.post(GROQ_ENDPOINT, headers=headers, json=payload, timeout=TIMEOUT)
+        if r.status_code == 429 and attempt < 5:
+            wait = min(60, 2 ** attempt)
+            print(f"Groq rate-limited. Retrying in {wait}s...")
+            time.sleep(wait)
+            continue
+        r.raise_for_status()
+        break
     log_groq_usage(r)
-    answer = r.json()["choices"][0]["message"]["content"].strip()
+    response_data = r.json()
+    answer = response_data["choices"][0]["message"]["content"].strip()
+    actual_model = response_data.get("model", DEFAULT_GROQ_MODEL)
+    print(f"[BARROT BACKEND: Groq | MODEL: {actual_model}]")
 
     with open("barrot_answer.md", "w", encoding="utf-8") as f:
         f.write(answer)
