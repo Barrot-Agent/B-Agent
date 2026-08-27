@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 442,
-    "btc_entries": 335
+    "xrp_entries": 443,
+    "btc_entries": 336
   },
-  "unique_entities_profiled": 424,
+  "unique_entities_profiled": 425,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 181,
+      "total_mentions": 182,
       "bullish": 85,
       "neutral": 27,
-      "bearish": 69,
-      "net_sentiment_score": 0.088,
+      "bearish": 70,
+      "net_sentiment_score": 0.082,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -258,6 +258,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 11,
+      "bullish": 8,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.545,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 11,
       "bullish": 0,
@@ -271,23 +288,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.7,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -326,11 +326,11 @@
     },
     {
       "entity": "Bitcoin (BTC)",
-      "total_mentions": 9,
+      "total_mentions": 10,
       "bullish": 3,
       "neutral": 2,
-      "bearish": 4,
-      "net_sentiment_score": -0.111,
+      "bearish": 5,
+      "net_sentiment_score": -0.2,
       "assets_seen_in": [
         "BTC"
       ],
@@ -355,6 +355,23 @@
         "Coinbase Expands Derivatives Trading To UK Professional Clients",
         "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
         "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.286,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -392,20 +409,19 @@
       ]
     },
     {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 6,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
+      "entity": "US stocks",
+      "total_mentions": 7,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": -0.429,
       "assets_seen_in": [
-        "BTC",
-        "XRP"
+        "BTC"
       ],
       "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -423,22 +439,6 @@
         "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
         "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
-      ]
-    },
-    {
-      "entity": "US stocks",
-      "total_mentions": 6,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -858,6 +858,22 @@
       ]
     },
     {
+      "entity": "S&P 500",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
+      ]
+    },
+    {
       "entity": "Fed",
       "total_mentions": 3,
       "bullish": 1,
@@ -1219,22 +1235,6 @@
         "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
         "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
-      ]
-    },
-    {
-      "entity": "S&P 500",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
-        "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
       ]
     },
     {
@@ -6239,6 +6239,20 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com"
+      ]
+    },
+    {
+      "entity": "US Dollar",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance"
       ]
     },
     {

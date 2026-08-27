@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 442,
-    "btc_entries": 335
+    "xrp_entries": 443,
+    "btc_entries": 336
   },
-  "unique_pairs_found": 1310,
+  "unique_pairs_found": 1316,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -413,7 +413,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
@@ -428,7 +428,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "US stocks",
-      "cooccurrence_count": 6,
+      "cooccurrence_count": 7,
       "example_headlines": [
         {
           "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
@@ -1531,6 +1531,21 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        },
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
           "asset": "BTC"
         }
       ]
@@ -3576,6 +3591,21 @@
       ]
     },
     {
+      "entity_a": "Federal Reserve",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "Coldcard",
       "cooccurrence_count": 2,
@@ -3727,21 +3757,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "S&P 500",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-          "asset": "BTC"
-        },
-        {
-          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Strait of Hormuz",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -3781,6 +3796,21 @@
         },
         {
           "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
+          "asset": "BTC"
+        },
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -9662,17 +9692,6 @@
       ]
     },
     {
-      "entity_a": "Federal Reserve",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "PCE inflation",
       "entity_b": "South Korea",
       "cooccurrence_count": 1,
@@ -11676,17 +11695,6 @@
     },
     {
       "entity_a": "Gold",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "S&P 500",
       "entity_b": "US stocks",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -15333,6 +15341,72 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Dollar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "S&P 500",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "US Dollar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P 500",
+      "entity_b": "US Dollar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Dollar",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Bitcoin (BTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - 24/7 Wall St.",
           "asset": "BTC"
         }
       ]
