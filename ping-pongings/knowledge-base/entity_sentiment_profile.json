@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 448,
-    "btc_entries": 342
+    "btc_entries": 343
   },
-  "unique_entities_profiled": 431,
+  "unique_entities_profiled": 433,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 192,
-      "bullish": 92,
-      "neutral": 28,
+      "total_mentions": 195,
+      "bullish": 94,
+      "neutral": 29,
       "bearish": 72,
-      "net_sentiment_score": 0.104,
+      "net_sentiment_score": 0.113,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 76,
+      "total_mentions": 77,
       "bullish": 33,
-      "neutral": 14,
+      "neutral": 15,
       "bearish": 29,
-      "net_sentiment_score": 0.053,
+      "net_sentiment_score": 0.052,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 27,
-      "bullish": 19,
+      "total_mentions": 28,
+      "bullish": 20,
       "neutral": 4,
       "bearish": 4,
-      "net_sentiment_score": 0.556,
+      "net_sentiment_score": 0.571,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -126,11 +126,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 21,
-      "bullish": 12,
+      "total_mentions": 22,
+      "bullish": 13,
       "neutral": 1,
       "bearish": 8,
-      "net_sentiment_score": 0.19,
+      "net_sentiment_score": 0.227,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -258,6 +258,22 @@
       ]
     },
     {
+      "entity": "Fortune",
+      "total_mentions": 12,
+      "bullish": 0,
+      "neutral": 11,
+      "bearish": 1,
+      "net_sentiment_score": -0.083,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 11,
       "bullish": 8,
@@ -306,22 +322,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
-      ]
-    },
-    {
-      "entity": "Fortune",
-      "total_mentions": 11,
-      "bullish": 0,
-      "neutral": 10,
-      "bearish": 1,
-      "net_sentiment_score": -0.091,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune",
-        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
@@ -459,6 +459,23 @@
       ]
     },
     {
+      "entity": "Metaplanet",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.833,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 6,
       "bullish": 5,
@@ -592,6 +609,23 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt"
+      ]
+    },
+    {
       "entity": "Donald Trump",
       "total_mentions": 5,
       "bullish": 2,
@@ -606,23 +640,6 @@
         "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
         "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -821,23 +838,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt"
       ]
     },
     {
@@ -2266,6 +2266,22 @@
       ]
     },
     {
+      "entity": "Grayscale",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
+      ]
+    },
+    {
       "entity": "TRX",
       "total_mentions": 2,
       "bullish": 1,
@@ -3601,20 +3617,6 @@
       ],
       "example_headlines": [
         "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
-      ]
-    },
-    {
-      "entity": "Grayscale",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
       ]
     },
     {
@@ -6317,6 +6319,34 @@
       ],
       "example_headlines": [
         "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph"
+      ]
+    },
+    {
+      "entity": "Super League Enterprise",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play"
+      ]
+    },
+    {
+      "entity": "Citi",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Citi plans to launch bitcoin custody for institutional clients later this year - CoinDesk"
       ]
     },
     {

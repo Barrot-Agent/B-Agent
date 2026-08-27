@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 448,
-    "btc_entries": 342
+    "btc_entries": 343
   },
-  "unique_pairs_found": 1348,
+  "unique_pairs_found": 1354,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 54,
+      "cooccurrence_count": 55,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -216,6 +216,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 11,
@@ -277,15 +292,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
+      "entity_b": "Fortune",
       "cooccurrence_count": 11,
       "example_headlines": [
         {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -302,21 +317,6 @@
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
         }
       ]
     },
@@ -682,6 +682,21 @@
     },
     {
       "entity_a": "BTC",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 5,
       "example_headlines": [
@@ -951,21 +966,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 31, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Trump Media",
       "cooccurrence_count": 4,
@@ -1006,6 +1006,21 @@
         },
         {
           "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -1506,6 +1521,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 3,
@@ -1636,21 +1666,6 @@
         },
         {
           "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Metaplanet",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -3426,6 +3441,21 @@
       ]
     },
     {
+      "entity_a": "Grayscale",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "XRP"
+        },
+        {
+          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "South Korea",
       "cooccurrence_count": 2,
@@ -3676,21 +3706,6 @@
         },
         {
           "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Nasdaq",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
           "asset": "BTC"
         }
       ]
@@ -7917,17 +7932,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Grayscale",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
           "asset": "XRP"
         }
       ]
@@ -15760,6 +15764,72 @@
       "example_headlines": [
         {
           "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Super League Enterprise",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Metaplanet",
+      "entity_b": "Super League Enterprise",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "Super League Enterprise",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Citi",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi plans to launch bitcoin custody for institutional clients later this year - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citi",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi plans to launch bitcoin custody for institutional clients later this year - CoinDesk",
           "asset": "BTC"
         }
       ]
