@@ -1,0 +1,30 @@
+name: Financial Data Refresh
+
+on:
+  schedule:
+    - cron: '0 8 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Refresh financial data
+        run: python3 scripts/financial_data_refresh.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/financial_data.json web/financial_data.json
+          git diff --cached --quiet || git commit -m "Financial data refresh cycle [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

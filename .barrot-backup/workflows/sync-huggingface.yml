@@ -1,0 +1,67 @@
+name: Sync to Hugging Face
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "hf_space/**"
+      - ".github/workflows/sync-huggingface.yml"
+  workflow_dispatch:
+
+jobs:
+  sync-hf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install huggingface_hub
+      - name: Deploy hf_space/ as the entire Space (clean mirror)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python3 - << 'SCRIPT'
+          from huggingface_hub import HfApi
+          import os
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          api.upload_folder(
+              folder_path="hf_space",
+              repo_id="Scribedpengenius/Barrot-Omega",
+              repo_type="space",
+              delete_patterns=["*"],
+              commit_message="Deploy v7 from B-Agent hf_space/ (clean mirror)",
+          )
+          print("DEPLOYED")
+          SCRIPT
+      - name: Propagate secrets to Space (GitHub secrets = source of truth)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          python3 - << 'SCRIPT'
+          from huggingface_hub import HfApi
+          import os
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          repo = "Scribedpengenius/Barrot-Omega"
+          # resolve name collisions: variables and secrets must not share names
+          for name in ("DATABRICKS_HOST", "DATABRICKS_WAREHOUSE_ID", "GROQ_API_KEY", "DATABRICKS_TOKEN"):
+              try:
+                  api.delete_space_variable(repo, name)
+                  print("removed colliding variable:", name)
+              except Exception:
+                  pass
+          vals = {
+              "GROQ_API_KEY": os.environ.get("GROQ_API_KEY", ""),
+              "DATABRICKS_TOKEN": os.environ.get("DATABRICKS_TOKEN", ""),
+              "DATABRICKS_HOST": "dbc-82d64fee-1c2e.cloud.databricks.com",
+              "DATABRICKS_WAREHOUSE_ID": "c85b8f4fea8cd527",
+          }
+          for key, val in vals.items():
+              if val:
+                  api.add_space_secret(repo, key, val)
+                  print("secret set:", key)
+              else:
+                  print("skipped (missing):", key)
+          SCRIPT

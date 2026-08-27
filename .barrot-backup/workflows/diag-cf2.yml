@@ -1,0 +1,18 @@
+name: Diagnose Cloudflare Token 2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secret length and hex-dump for hidden characters
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          echo "expected real account ID length: 32 (this one: 8917ce635682d12eb3e63db1a1736f89)"
+          echo "your secret's actual length: ${#CLOUDFLARE_ACCOUNT_ID}"
+          echo "hex dump of first and last 5 chars (reveals hidden whitespace/newlines without exposing the ID):"
+          echo -n "$CLOUDFLARE_ACCOUNT_ID" | head -c 5 | xxd
+          echo -n "$CLOUDFLARE_ACCOUNT_ID" | tail -c 5 | xxd

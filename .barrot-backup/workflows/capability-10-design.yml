@@ -1,0 +1,35 @@
+name: Capability 10 - Autonomous Design
+
+on:
+  workflow_dispatch:
+    inputs:
+      requirements:
+        description: "System requirements (JSON)"
+        required: true
+        default: '{"goal":"data pipeline","scale":"1M events/sec"}'
+      constraints:
+        description: "Constraints (JSON)"
+        required: true
+        default: '{"budget":"$50K","team":"2 engineers","timeline":"3 months"}'
+
+jobs:
+  design:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      REQUIREMENTS: ${{ github.event.inputs.requirements }}
+      CONSTRAINTS: ${{ github.event.inputs.constraints }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Design system
+        run: python3 scripts/autonomous_design_engine.py
+      - name: Commit design
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add autonomous_design_*.json
+          git diff --cached --quiet || git commit -m "Autonomous design: system architecture complete [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

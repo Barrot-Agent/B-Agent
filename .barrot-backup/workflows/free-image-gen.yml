@@ -1,0 +1,33 @@
+name: Free Image Generation
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: 'Image prompt'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_PROMPT: ${{ github.event.inputs.prompt }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Generate image (free, ZeroGPU)
+        run: python3 free_image_gen.py
+      - name: Commit image
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add generated_images/
+          git diff --cached --quiet || git commit -m "New free-generated image [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

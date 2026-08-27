@@ -1,0 +1,34 @@
+# DISABLED
+on:
+  workflow_dispatch:
+    inputs:
+      disabled:
+        description: "This workflow is disabled"
+
+name: Omega Strike Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Kaggle credentials
+        run: |
+          echo "${{ secrets.KAGGLE_USERNAME }}" > kaggle.json
+          echo "${{ secrets.KAGGLE_KEY }}" >> kaggle.json
+          mkdir -p ~/.kaggle
+          mv kaggle.json ~/.kaggle/
+          chmod 600 ~/.kaggle/kaggle.json
+
+      - name: Run Kaggle competition entry script
+        run: |
+          # Add your command to run your Kaggle script here
+          python competition_entry.py

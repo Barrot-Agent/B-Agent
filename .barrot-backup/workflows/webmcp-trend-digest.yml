@@ -1,0 +1,34 @@
+name: WebMCP Trend Digest
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Ingest WebMCP discourse
+        run: python3 scripts/webmcp_trend_ingest.py
+      - name: Distill new entries
+        run: python3 scripts/webmcp_trend_distill.py
+      - name: Summarize into ranked digest
+        run: python3 scripts/webmcp_trend_summary.py
+      - name: Commit trend log + summary
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/webmcp_trend_log.jsonl ping-pongings/knowledge-base/webmcp_trend_summary.json web/webmcp_trend_summary.json
+          git diff --cached --quiet || git commit -m "WebMCP trend digest: ingest + distill + summary [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

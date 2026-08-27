@@ -1,0 +1,25 @@
+name: Barrot Speak
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: What Barrot should say
+        required: true
+permissions:
+  contents: write
+jobs:
+  speak:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      SPEAK_TEXT: ${{ inputs.text }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: python3 scripts/speak.py
+      - uses: actions/upload-artifact@v7
+        with:
+          name: barrot-voice
+          path: barrot_voice.wav

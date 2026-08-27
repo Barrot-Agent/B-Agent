@@ -1,0 +1,37 @@
+name: Cross Analysis
+
+on:
+  # Fire immediately after the Knowledge Signal Cycle produces fresh log.jsonl data
+  workflow_run:
+    workflows: ["Knowledge Signal Cycle"]
+    types: [completed]
+    branches: [main]
+  # Fallback cron kept as safety net
+  schedule:
+    - cron: '50 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Entity co-occurrence
+        run: python3 scripts/entity_cooccurrence.py
+      - name: Sentiment shift detector
+        run: python3 scripts/sentiment_shift.py
+      - name: Entity sentiment profiler
+        run: python3 scripts/entity_sentiment_profile.py
+      - name: Commit outputs
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/entity_cooccurrence.json ping-pongings/knowledge-base/sentiment_shift.json ping-pongings/knowledge-base/entity_sentiment_profile.json
+          git diff --cached --quiet || git commit -m "Cross-analysis refresh [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

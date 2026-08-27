@@ -1,0 +1,30 @@
+name: Capability 9 - Data Contradiction Resolver
+
+on:
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: "JSON dataset to resolve"
+        required: true
+        default: '[]'
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      TEST_DATA: ${{ github.event.inputs.dataset }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Resolve contradictions
+        run: python3 scripts/data_contradiction_resolver.py
+      - name: Commit results
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add resolved_dataset_*.json
+          git diff --cached --quiet || git commit -m "Data contradiction resolution complete [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
