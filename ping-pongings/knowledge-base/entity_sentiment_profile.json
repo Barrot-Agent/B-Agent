@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 446,
+    "xrp_entries": 448,
     "btc_entries": 342
   },
-  "unique_entities_profiled": 430,
+  "unique_entities_profiled": 431,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 124,
-      "bullish": 77,
+      "total_mentions": 127,
+      "bullish": 79,
       "neutral": 27,
-      "bearish": 20,
-      "net_sentiment_score": 0.46,
+      "bearish": 21,
+      "net_sentiment_score": 0.457,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 100,
-      "bullish": 61,
+      "total_mentions": 103,
+      "bullish": 63,
       "neutral": 27,
-      "bearish": 12,
-      "net_sentiment_score": 0.49,
+      "bearish": 13,
+      "net_sentiment_score": 0.485,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 34,
+      "total_mentions": 35,
       "bullish": 20,
       "neutral": 5,
-      "bearish": 9,
-      "net_sentiment_score": 0.324,
+      "bearish": 10,
+      "net_sentiment_score": 0.286,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -125,6 +125,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 21,
+      "bullish": 12,
+      "neutral": 1,
+      "bearish": 8,
+      "net_sentiment_score": 0.19,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+      ]
+    },
+    {
       "entity": "Moomoo",
       "total_mentions": 20,
       "bullish": 2,
@@ -142,20 +159,20 @@
       ]
     },
     {
-      "entity": "CoinDesk",
-      "total_mentions": 20,
-      "bullish": 11,
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 18,
+      "bullish": 7,
       "neutral": 1,
-      "bearish": 8,
-      "net_sentiment_score": 0.15,
+      "bearish": 10,
+      "net_sentiment_score": -0.167,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
       ]
     },
     {
@@ -176,29 +193,12 @@
       ]
     },
     {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 17,
-      "bullish": 6,
-      "neutral": 1,
-      "bearish": 10,
-      "net_sentiment_score": -0.235,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "XRP Ledger",
-      "total_mentions": 15,
-      "bullish": 14,
+      "total_mentions": 16,
+      "bullish": 15,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.867,
+      "net_sentiment_score": 0.875,
       "assets_seen_in": [
         "XRP"
       ],
@@ -1037,6 +1037,22 @@
         "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
         "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
         "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
+      ]
+    },
+    {
+      "entity": "RLUSD",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -3098,20 +3114,6 @@
       ]
     },
     {
-      "entity": "RLUSD",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt"
-      ]
-    },
-    {
       "entity": "ZILO",
       "total_mentions": 1,
       "bullish": 1,
@@ -4117,6 +4119,20 @@
       ],
       "example_headlines": [
         "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate"
+      ]
+    },
+    {
+      "entity": "RLUSD credit fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
