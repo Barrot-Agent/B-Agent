@@ -57,21 +57,15 @@ class FeedbackLoopConfig(BaseSettings):
 
     model_config = SettingsConfigDict(protected_namespaces=())
 
-    max_iterations: int = Field(
-        default=100, description="Maximum feedback loop iterations"
-    )
+    max_iterations: int = Field(default=100, description="Maximum feedback loop iterations")
     convergence_threshold: float = Field(
         default=0.95, description="Convergence threshold for improvement metrics"
     )
-    improvement_window: int = Field(
-        default=5, description="Window for tracking improvement trends"
-    )
+    improvement_window: int = Field(default=5, description="Window for tracking improvement trends")
     enable_auto_refinement: bool = Field(
         default=True, description="Enable automatic infrastructure refinement"
     )
-    refinement_interval: int = Field(
-        default=10, description="Run refinement every N iterations"
-    )
+    refinement_interval: int = Field(default=10, description="Run refinement every N iterations")
     feedback_history_limit: int = Field(
         default=1000, description="Maximum feedback history entries to retain"
     )

@@ -81,7 +81,9 @@ class KimiClient:
             "temperature": temperature or self.config.temperature,
         }
 
-        logger.debug("Kimi API request | model=%s prompt_len=%d", self.config.model_name, len(prompt))
+        logger.debug(
+            "Kimi API request | model=%s prompt_len=%d", self.config.model_name, len(prompt)
+        )
 
         try:
             response = self._session.post(

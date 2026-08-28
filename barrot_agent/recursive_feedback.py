@@ -101,9 +101,7 @@ class RecursiveFeedbackLoop:
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
         # Improvement tracking
-        self._improvement_history: Deque[float] = deque(
-            maxlen=self.config.improvement_window
-        )
+        self._improvement_history: Deque[float] = deque(maxlen=self.config.improvement_window)
         self._feedback_history: Deque[Dict[str, Any]] = deque(
             maxlen=self.config.feedback_history_limit
         )
@@ -263,10 +261,7 @@ class RecursiveFeedbackLoop:
         infra_changes = {}
 
         # Run infrastructure refinement if enabled and interval reached
-        if (
-            self.config.enable_auto_refinement
-            and iteration % self.config.refinement_interval == 0
-        ):
+        if self.config.enable_auto_refinement and iteration % self.config.refinement_interval == 0:
             logger.info("Running infrastructure refinement")
             try:
                 flywheel = UpgradeFlywheel(dry_run=True, goal="Apply feedback insights")
@@ -275,11 +270,11 @@ class RecursiveFeedbackLoop:
                 infra_changes = {
                     "cycles": len(report.cycles),
                     "converged": report.converged,
-                    "improvements": sum(
-                        len(c.reasoning.improvements) for c in report.cycles
-                    ),
+                    "improvements": sum(len(c.reasoning.improvements) for c in report.cycles),
                 }
-                applied.append(f"Infrastructure refinement: {infra_changes['improvements']} improvements")
+                applied.append(
+                    f"Infrastructure refinement: {infra_changes['improvements']} improvements"
+                )
 
             except Exception as e:
                 logger.error("Infrastructure refinement failed: %s", e)
@@ -431,9 +426,7 @@ class RecursiveFeedbackLoop:
                 report.total_iterations = iteration
                 report.final_convergence = convergence_metric
                 report.total_improvements += len(applied_improvements)
-                report.paradigm_shifts_discovered += len(
-                    kimi_feedback.get("paradigm_shifts", [])
-                )
+                report.paradigm_shifts_discovered += len(kimi_feedback.get("paradigm_shifts", []))
                 if infra_changes and "improvements" in infra_changes:
                     report.infrastructure_refinements += infra_changes["improvements"]
 

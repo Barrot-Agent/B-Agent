@@ -4,28 +4,21 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+
 def load_module(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
-harvest = load_module(
-    "riemann_harvest",
-    ROOT / "barrot_agent/ingestion" / "riemann_harvest.py"
-)
 
-assert harvest.classify_evidence(
-    "Numerical verification of zeros", ""
-) == "computational_evidence"
+harvest = load_module("riemann_harvest", ROOT / "barrot_agent/ingestion" / "riemann_harvest.py")
 
-assert harvest.classify_evidence(
-    "A new conjecture", ""
-) == "conjecture_or_hypothesis"
+assert harvest.classify_evidence("Numerical verification of zeros", "") == "computational_evidence"
 
-assert harvest.classify_evidence(
-    "Proof of the Riemann Hypothesis", ""
-) == "published_claim"
+assert harvest.classify_evidence("A new conjecture", "") == "conjecture_or_hypothesis"
+
+assert harvest.classify_evidence("Proof of the Riemann Hypothesis", "") == "published_claim"
 
 corpus_file = ROOT / "a2a" / "riemann_research_corpus.js"
 assert corpus_file.exists(), "A2A corpus was not generated"
