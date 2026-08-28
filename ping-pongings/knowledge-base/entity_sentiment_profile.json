@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 455,
+    "xrp_entries": 456,
     "btc_entries": 348
   },
   "unique_entities_profiled": 437,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 131,
-      "bullish": 81,
+      "total_mentions": 132,
+      "bullish": 82,
       "neutral": 28,
       "bearish": 22,
-      "net_sentiment_score": 0.45,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 106,
-      "bullish": 64,
+      "total_mentions": 107,
+      "bullish": 65,
       "neutral": 28,
       "bearish": 14,
-      "net_sentiment_score": 0.472,
+      "net_sentiment_score": 0.477,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -194,11 +194,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 16,
-      "bullish": 15,
+      "total_mentions": 17,
+      "bullish": 16,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.875,
+      "net_sentiment_score": 0.882,
       "assets_seen_in": [
         "XRP"
       ],
@@ -342,11 +342,11 @@
     },
     {
       "entity": "24/7 Wall St.",
-      "total_mentions": 8,
-      "bullish": 4,
+      "total_mentions": 9,
+      "bullish": 5,
       "neutral": 1,
       "bearish": 3,
-      "net_sentiment_score": 0.125,
+      "net_sentiment_score": 0.222,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -791,6 +791,22 @@
       ]
     },
     {
+      "entity": "RLUSD",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
+      ]
+    },
+    {
       "entity": "Decrypt",
       "total_mentions": 4,
       "bullish": 3,
@@ -1038,22 +1054,6 @@
         "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
         "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
         "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
-      ]
-    },
-    {
-      "entity": "RLUSD",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {

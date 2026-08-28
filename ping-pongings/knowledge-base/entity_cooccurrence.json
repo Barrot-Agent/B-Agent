@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 455,
+    "xrp_entries": 456,
     "btc_entries": 348
   },
-  "unique_pairs_found": 1373,
+  "unique_pairs_found": 1374,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 101,
+      "cooccurrence_count": 102,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -67,6 +67,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 17,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 16,
       "example_headlines": [
@@ -81,7 +96,7 @@
       ]
     },
     {
-      "entity_a": "XRP",
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 16,
       "example_headlines": [
@@ -106,21 +121,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 15,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -456,6 +456,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CryptoPotato",
       "entity_b": "Ripple",
       "cooccurrence_count": 6,
@@ -532,7 +547,7 @@
     },
     {
       "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -786,21 +801,6 @@
       ]
     },
     {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 4,
@@ -886,6 +886,36 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -1141,36 +1171,6 @@
         },
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RLUSD",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RLUSD",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -2571,6 +2571,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin Improvement Proposal",
       "cooccurrence_count": 2,
@@ -3661,6 +3676,21 @@
         },
         {
           "title": "Micro XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -6248,17 +6278,6 @@
     {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Staking",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP Ledger",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -9249,17 +9268,6 @@
       ]
     },
     {
-      "entity_a": "RLUSD",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "RLUSD",
       "cooccurrence_count": 1,
@@ -9365,6 +9373,17 @@
       "example_headlines": [
         {
           "title": "Micro XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
