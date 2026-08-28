@@ -1,40 +1,24 @@
 stages:
-  - deploy
-  - omega_strike
+  - test
+  - diagnose
 
-# GITLAB PAGES — deploys Barrot site
-pages:
-  stage: deploy
-  script:
-    - mkdir -p public
-    - cp index.html public/index.html
-    - cp brain_loader.js public/brain_loader.js 2>/dev/null || true
-  artifacts:
-    paths:
-      - public
-  only:
-    - main
+default:
+  image: python:3.11
 
-# KAGGLE STRIKE — existing competition pipeline
-omega_reinstantiation:
-  stage: omega_strike
-  image: python:3.10-slim
+before_script:
+  - python -m pip install --upgrade pip
+  - pip install -e ".[dev]" || pip install pytest pytest-cov
+
+test:
+  stage: test
   script:
-    - pip install kaggle pandas PyYAML
-    - |
-      python3 -c "
-      import os, json, pathlib, yaml
-      K_USER = os.environ.get('KAGGLE_USERNAME', 'MISSING').strip()
-      K_KEY = os.environ.get('KAGGLE_KEY', 'MISSING').strip()
-      if 'MISSING' in [K_USER, K_KEY]:
-          print('>>> [CRITICAL]: CREDENTIALS NOT FOUND IN VAULT.')
-          exit(0)
-      k_path = pathlib.Path.home() / '.kaggle'
-      k_path.mkdir(exist_ok=True)
-      with open(k_path / 'kaggle.json', 'w') as f:
-          json.dump({'username': K_USER, 'key': K_KEY}, f)
-      (k_path / 'kaggle.json').chmod(0o600)
-      print('>>> Kaggle credentials set')
-      "
-  only:
-    - main
+    - pytest -q --disable-warnings --maxfail=5
+
+workflow_diagnosis:
+  stage: diagnose
+  script:
+    - echo "=== Python syntax check ==="
+    - python -m compileall -q barrot_agent scripts
+    - echo "=== Repository status ==="
+    - git status --short
+  allow_failure: true
