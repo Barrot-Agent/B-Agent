@@ -15,7 +15,6 @@ import pytest
 from barrot_agent.github_client import GitHubAPIError, GitHubClient
 from barrot_agent.github_service import GitHubService, make_service
 
-
 # ---------------------------------------------------------------------------
 # GitHubClient unit tests
 # ---------------------------------------------------------------------------
@@ -202,9 +201,7 @@ class TestMCPServer:
         assert result["isError"] is True
 
     def test_unknown_method_returns_error(self) -> None:
-        resp = self._run(
-            [{"jsonrpc": "2.0", "id": 5, "method": "foo/bar", "params": {}}]
-        )
+        resp = self._run([{"jsonrpc": "2.0", "id": 5, "method": "foo/bar", "params": {}}])
         assert "error" in resp[0]
         assert resp[0]["error"]["code"] == -32601
 

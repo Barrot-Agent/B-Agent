@@ -32,10 +32,7 @@ class GitHubService:
         page: int = 1,
     ) -> list[dict[str, Any]]:
         """Return a list of issues for a repository."""
-        path = (
-            f"/repos/{owner}/{repo}/issues"
-            f"?state={state}&per_page={per_page}&page={page}"
-        )
+        path = f"/repos/{owner}/{repo}/issues" f"?state={state}&per_page={per_page}&page={page}"
         return self._client.get(path)  # type: ignore[return-value]
 
     def get_issue(self, owner: str, repo: str, issue_number: int) -> dict[str, Any]:

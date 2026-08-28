@@ -7,8 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/research/riemann_hypothesis_harvest.json"
 
 subprocess.run(
-    [sys.executable,
-     str(ROOT / "barrot_agent/ingestion/corroborate_riemann_research.py")],
+    [sys.executable, str(ROOT / "barrot_agent/ingestion/corroborate_riemann_research.py")],
     check=True,
 )
 

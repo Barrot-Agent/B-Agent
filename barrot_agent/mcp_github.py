@@ -234,9 +234,7 @@ def run_server(config: AppConfig | None = None, *, _input=None, _output=None) ->
                     _ok(
                         req_id,
                         {
-                            "content": [
-                                {"type": "text", "text": json.dumps(result, indent=2)}
-                            ],
+                            "content": [{"type": "text", "text": json.dumps(result, indent=2)}],
                             "isError": False,
                         },
                     )

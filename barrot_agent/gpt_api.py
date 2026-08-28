@@ -170,8 +170,16 @@ _OPENAPI_SCHEMA: dict[str, Any] = {
                 "parameters": [
                     {"name": "owner", "in": "query", "schema": {"type": "string"}},
                     {"name": "repo", "in": "query", "schema": {"type": "string"}},
-                    {"name": "state", "in": "query", "schema": {"type": "string", "default": "open"}},
-                    {"name": "per_page", "in": "query", "schema": {"type": "integer", "default": 30}},
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "schema": {"type": "string", "default": "open"},
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "schema": {"type": "integer", "default": 30},
+                    },
                     {"name": "page", "in": "query", "schema": {"type": "integer", "default": 1}},
                 ],
                 "responses": {"200": {"description": "List of issues"}},
@@ -205,7 +213,12 @@ _OPENAPI_SCHEMA: dict[str, Any] = {
                 "operationId": "getIssue",
                 "summary": "Get a single issue by number",
                 "parameters": [
-                    {"name": "number", "in": "path", "required": True, "schema": {"type": "integer"}},
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "required": True,
+                        "schema": {"type": "integer"},
+                    },
                     {"name": "owner", "in": "query", "schema": {"type": "string"}},
                     {"name": "repo", "in": "query", "schema": {"type": "string"}},
                 ],
@@ -217,7 +230,12 @@ _OPENAPI_SCHEMA: dict[str, Any] = {
                 "operationId": "addComment",
                 "summary": "Add a comment to an issue",
                 "parameters": [
-                    {"name": "number", "in": "path", "required": True, "schema": {"type": "integer"}}
+                    {
+                        "name": "number",
+                        "in": "path",
+                        "required": True,
+                        "schema": {"type": "integer"},
+                    }
                 ],
                 "requestBody": {
                     "required": True,

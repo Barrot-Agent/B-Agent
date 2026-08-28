@@ -6,3 +6,4 @@ from data import registry
 
 
 class TestDataRegistry:
+    pass

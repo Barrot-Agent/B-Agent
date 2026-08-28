@@ -31,7 +31,7 @@ jobs:
           chmod 600 ~/.netrc
           trap 'rm -f ~/.netrc' EXIT
           git remote add hf https://huggingface.co/spaces/Scribedpengenius/barrot-omega || true
-          git push hf origin/main:main
+          git push hf origin/main:main --force
 
       - name: Setup Databricks CLI
         uses: databricks/setup-cli@main
