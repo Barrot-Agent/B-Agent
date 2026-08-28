@@ -34,9 +34,7 @@ class TestKimiClient:
         client = KimiClient(config)
 
         mock_response = Mock()
-        mock_response.json.return_value = {
-            "choices": [{"message": {"content": "Test response"}}]
-        }
+        mock_response.json.return_value = {"choices": [{"message": {"content": "Test response"}}]}
         mock_post.return_value = mock_response
 
         result = client.generate("Test prompt")

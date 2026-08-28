@@ -23,6 +23,6 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add market_analysis_*.json
+          git add market_analysis_*.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Market analysis: automated recommendation generation [skip ci]"
           git push || (git pull --no-rebase --no-edit origin main && git push)

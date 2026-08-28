@@ -23,6 +23,7 @@ ALLOWED_CLASSES = {
     "barrot_research_lead",
 }
 
+
 def main():
     payload = {
         "domain": "Riemann Hypothesis",
@@ -44,25 +45,25 @@ def main():
         try:
             source = json.loads(SOURCE.read_text(encoding="utf-8"))
             for record in source.get("records", []):
-                evidence_class = record.get(
-                    "evidence_class", "barrot_research_lead"
-                )
+                evidence_class = record.get("evidence_class", "barrot_research_lead")
                 if evidence_class not in ALLOWED_CLASSES:
                     evidence_class = "barrot_research_lead"
 
-                payload["records"].append({
-                    "id": record.get("id", ""),
-                    "title": record.get("title", ""),
-                    "authors": record.get("authors", []),
-                    "published": record.get("published", ""),
-                    "source": record.get("source", ""),
-                    "url": record.get("url", ""),
-                    "summary": record.get("summary", ""),
-                    "evidence_class": evidence_class,
-                    "verification_status": record.get(
-                        "verification_status", "unverified_candidate"
-                    ),
-                })
+                payload["records"].append(
+                    {
+                        "id": record.get("id", ""),
+                        "title": record.get("title", ""),
+                        "authors": record.get("authors", []),
+                        "published": record.get("published", ""),
+                        "source": record.get("source", ""),
+                        "url": record.get("url", ""),
+                        "summary": record.get("summary", ""),
+                        "evidence_class": evidence_class,
+                        "verification_status": record.get(
+                            "verification_status", "unverified_candidate"
+                        ),
+                    }
+                )
         except Exception as exc:
             payload["build_error"] = type(exc).__name__
 
@@ -74,10 +75,7 @@ def main():
     payload["statistics"] = {
         "total_records": len(payload["records"]),
         "by_evidence_class": {
-            kind: sum(
-                1 for record in payload["records"]
-                if record["evidence_class"] == kind
-            )
+            kind: sum(1 for record in payload["records"] if record["evidence_class"] == kind)
             for kind in sorted(ALLOWED_CLASSES)
         },
     }
@@ -90,9 +88,8 @@ def main():
         encoding="utf-8",
     )
 
-    print(
-        f"A2A corpus built: {payload['statistics']['total_records']} records"
-    )
+    print(f"A2A corpus built: {payload['statistics']['total_records']} records")
+
 
 if __name__ == "__main__":
     main()

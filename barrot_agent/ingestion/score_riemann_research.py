@@ -14,18 +14,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
 
+
 def utcnow():
     return datetime.now(timezone.utc).isoformat()
 
+
 def quality_score(record):
     score = 0
-    if record.get("title"): score += 20
-    if record.get("authors"): score += 20
-    if record.get("published"): score += 15
-    if record.get("url"): score += 20
-    if record.get("summary"): score += 15
-    if record.get("source"): score += 10
+    if record.get("title"):
+        score += 20
+    if record.get("authors"):
+        score += 20
+    if record.get("published"):
+        score += 15
+    if record.get("url"):
+        score += 20
+    if record.get("summary"):
+        score += 15
+    if record.get("source"):
+        score += 10
     return score
+
 
 def main():
     data = json.loads(SOURCE.read_text(encoding="utf-8"))
@@ -56,6 +65,7 @@ def main():
         encoding="utf-8",
     )
     print(f"Quality gate checked {len(records)} records.")
+
 
 if __name__ == "__main__":
     main()

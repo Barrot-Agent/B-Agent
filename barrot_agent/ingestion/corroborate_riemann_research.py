@@ -16,11 +16,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
 
+
 def utcnow():
     return datetime.now(timezone.utc).isoformat()
 
+
 def normalize_title(title):
     return re.sub(r"[^a-z0-9]+", " ", (title or "").lower()).strip()
+
 
 def main():
     data = json.loads(SOURCE.read_text(encoding="utf-8"))
@@ -41,9 +44,7 @@ def main():
                 "distinct_sources": sources,
                 "source_count": len(sources),
                 "status": (
-                    "metadata_corroborated"
-                    if len(sources) > 1
-                    else "single_source_metadata"
+                    "metadata_corroborated" if len(sources) > 1 else "single_source_metadata"
                 ),
                 "mathematical_verification": False,
                 "rule": (
@@ -68,6 +69,7 @@ def main():
     )
 
     print(f"Corroboration checked for {len(records)} records.")
+
 
 if __name__ == "__main__":
     main()

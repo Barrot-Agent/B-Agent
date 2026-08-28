@@ -51,7 +51,7 @@ def analyze_market():
     data = query_databricks(query)
     if not data:
         print("Failed to fetch Databricks data")
-        return
+        sys.exit(1)
     
     analysis_prompt = f"""Market data (last 30 days):
 {json.dumps(data, indent=2)[:1500]}

@@ -126,6 +126,7 @@ class BarrotBrain:
         # Groq fallback with rate-limit retry
         if self.groq_key:
             import random
+
             for attempt in range(6):
                 try:
                     r = requests.post(
@@ -138,7 +139,7 @@ class BarrotBrain:
                         timeout=20,
                     )
                     if r.status_code == 429 and attempt < 5:
-                        wait = min(60, 2 ** attempt) + random.uniform(0, 1)
+                        wait = min(60, 2**attempt) + random.uniform(0, 1)
                         logger.warning("Groq rate-limited; retrying in %.1fs", wait)
                         time.sleep(wait)
                         continue
@@ -148,7 +149,7 @@ class BarrotBrain:
                     if attempt == 5:
                         logger.warning("Groq backend failed, falling back to Fireworks: %s", e)
                         break
-                    wait = min(60, 2 ** attempt) + random.uniform(0, 1)
+                    wait = min(60, 2**attempt) + random.uniform(0, 1)
                     logger.warning("Groq request failed; retrying in %.1fs: %s", wait, e)
                     time.sleep(wait)
             # fall through to Fireworks
@@ -172,7 +173,6 @@ class BarrotBrain:
                 logger.error("Fireworks backend failed: %s", e)
         logger.error("All backends failed for this request.")
         return "[BARROT] All backends failed."
-
 
     @property
     def backend(self) -> str:
