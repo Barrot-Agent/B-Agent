@@ -3,7 +3,7 @@
     "xrp_entries": 451,
     "btc_entries": 347
   },
-  "unique_pairs_found": 1357,
+  "unique_pairs_found": 1371,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -217,6 +217,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 12,
       "example_headlines": [
@@ -241,21 +256,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -501,6 +501,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "XRP",
       "cooccurrence_count": 5,
@@ -661,21 +676,6 @@
         },
         {
           "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -2841,6 +2841,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BlackRock",
       "entity_b": "iShares Bitcoin Trust",
       "cooccurrence_count": 2,
@@ -3526,6 +3541,36 @@
         },
         {
           "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
           "asset": "BTC"
         }
       ]
@@ -4336,6 +4381,21 @@
         },
         {
           "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle Internet Financial",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+          "asset": "BTC"
+        },
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
           "asset": "BTC"
         }
       ]
@@ -6644,17 +6704,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "institutional investors",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "BlackRock",
       "entity_b": "institutional investors",
       "cooccurrence_count": 1,
@@ -8322,28 +8371,6 @@
       "example_headlines": [
         {
           "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETFs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETFs",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
           "asset": "XRP"
         }
       ]
@@ -13927,17 +13954,6 @@
     },
     {
       "entity_a": "Circle Internet Financial",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Circle Internet Financial",
       "entity_b": "WBTC token",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -15906,6 +15922,138 @@
       ]
     },
     {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Circle Internet Financial",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Wrapped BTC (wBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle Internet Financial",
+      "entity_b": "Institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle Internet Financial",
+      "entity_b": "Wrapped BTC (wBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Wrapped BTC (wBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Institutional investors",
+      "entity_b": "Wrapped BTC (wBTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "Ether ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs add $189M as August net inflows approach $1B",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs add $189M as August net inflows approach $1B",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether ETFs",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs add $189M as August net inflows approach $1B",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ether",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 1,
@@ -16033,6 +16181,28 @@
       "example_headlines": [
         {
           "title": "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "institutional investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
           "asset": "BTC"
         }
       ]

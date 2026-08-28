@@ -3,15 +3,15 @@
     "xrp_entries": 451,
     "btc_entries": 347
   },
-  "unique_entities_profiled": 434,
+  "unique_entities_profiled": 436,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 196,
-      "bullish": 95,
+      "total_mentions": 198,
+      "bullish": 97,
       "neutral": 29,
       "bearish": 72,
-      "net_sentiment_score": 0.117,
+      "net_sentiment_score": 0.126,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 28,
-      "bullish": 15,
-      "neutral": 9,
+      "total_mentions": 30,
+      "bullish": 16,
+      "neutral": 10,
       "bearish": 4,
-      "net_sentiment_score": 0.393,
+      "net_sentiment_score": 0.4,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -326,11 +326,11 @@
     },
     {
       "entity": "Bitcoin (BTC)",
-      "total_mentions": 10,
+      "total_mentions": 11,
       "bullish": 3,
-      "neutral": 2,
+      "neutral": 3,
       "bearish": 5,
-      "net_sentiment_score": -0.2,
+      "net_sentiment_score": -0.182,
       "assets_seen_in": [
         "BTC"
       ],
@@ -409,6 +409,22 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
+      ]
+    },
+    {
       "entity": "US stocks",
       "total_mentions": 7,
       "bullish": 2,
@@ -438,6 +454,23 @@
         "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
+      ]
+    },
+    {
+      "entity": "institutional investors",
+      "total_mentions": 6,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda"
       ]
     },
     {
@@ -489,38 +522,6 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "institutional investors",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda"
       ]
     },
     {
@@ -1138,6 +1139,23 @@
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy",
         "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
         "Luke Dashjr Removed As BIP Editor After BIP-110 Controversy"
+      ]
+    },
+    {
+      "entity": "Institutional investors",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial"
       ]
     },
     {
@@ -1763,6 +1781,22 @@
       ]
     },
     {
+      "entity": "Bitcoin ETFs",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETFs add $189M as August net inflows approach $1B"
+      ]
+    },
+    {
       "entity": "European Union",
       "total_mentions": 2,
       "bullish": 2,
@@ -1853,21 +1887,6 @@
       "example_headlines": [
         "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
         "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026"
-      ]
-    },
-    {
-      "entity": "Institutional investors",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns"
       ]
     },
     {
@@ -2299,6 +2318,22 @@
       ]
     },
     {
+      "entity": "ETFs",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
+      ]
+    },
+    {
       "entity": "TRX",
       "total_mentions": 2,
       "bullish": 1,
@@ -2497,6 +2532,21 @@
       "example_headlines": [
         "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
         "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETF",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows return as Ether funds slip into outflows",
+        "Bitcoin ETFs add $189M as August net inflows approach $1B"
       ]
     },
     {
@@ -2737,6 +2787,21 @@
       "example_headlines": [
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
         "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
+      ]
+    },
+    {
+      "entity": "Circle Internet Financial",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial",
+        "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial"
       ]
     },
     {
@@ -3172,20 +3237,6 @@
       ],
       "example_headlines": [
         "XRP holders can now borrow Ripple's stablecoin - thestreet.com"
-      ]
-    },
-    {
-      "entity": "Bitcoin ETFs",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M"
       ]
     },
     {
@@ -3774,20 +3825,6 @@
       ],
       "example_headlines": [
         "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research"
-      ]
-    },
-    {
-      "entity": "ETFs",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
       ]
     },
     {
@@ -4502,20 +4539,6 @@
       ],
       "example_headlines": [
         "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETF",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
       ]
     },
     {
@@ -5765,20 +5788,6 @@
       ]
     },
     {
-      "entity": "Circle Internet Financial",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Why Wrapped Bitcoin Neutrality Matters for Markets - Circle Internet Financial"
-      ]
-    },
-    {
       "entity": "Wrapped Bitcoin (WBTC)",
       "total_mentions": 1,
       "bullish": 0,
@@ -6378,6 +6387,34 @@
       ],
       "example_headlines": [
         "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck"
+      ]
+    },
+    {
+      "entity": "Wrapped BTC (wBTC)",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial"
+      ]
+    },
+    {
+      "entity": "Ether ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs add $189M as August net inflows approach $1B"
       ]
     },
     {
