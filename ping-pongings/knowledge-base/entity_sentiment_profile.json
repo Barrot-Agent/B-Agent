@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 208,
-      "bullish": 103,
+      "total_mentions": 209,
+      "bullish": 104,
       "neutral": 31,
       "bearish": 74,
-      "net_sentiment_score": 0.139,
+      "net_sentiment_score": 0.144,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -424,6 +424,23 @@
       ]
     },
     {
+      "entity": "The Motley Fool",
+      "total_mentions": 7,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
       "entity": "STRC",
       "total_mentions": 7,
       "bullish": 3,
@@ -454,22 +471,6 @@
         "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 6,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {

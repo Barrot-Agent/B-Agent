@@ -3756,6 +3756,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "The Motley Fool",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Why Is Bitcoin Up Today? - The Motley Fool",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -9512,17 +9527,6 @@
       "example_headlines": [
         {
           "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - The Motley Fool",
           "asset": "XRP"
         }
       ]
