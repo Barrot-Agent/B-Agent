@@ -3,15 +3,15 @@
     "xrp_entries": 461,
     "btc_entries": 353
   },
-  "unique_entities_profiled": 438,
+  "unique_entities_profiled": 439,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 206,
-      "bullish": 101,
+      "total_mentions": 208,
+      "bullish": 103,
       "neutral": 31,
       "bearish": 74,
-      "net_sentiment_score": 0.131,
+      "net_sentiment_score": 0.139,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 79,
-      "bullish": 35,
+      "total_mentions": 80,
+      "bullish": 36,
       "neutral": 15,
       "bearish": 29,
-      "net_sentiment_score": 0.076,
+      "net_sentiment_score": 0.087,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 36,
-      "bullish": 21,
+      "total_mentions": 37,
+      "bullish": 22,
       "neutral": 5,
       "bearish": 10,
-      "net_sentiment_score": 0.306,
+      "net_sentiment_score": 0.324,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 21,
-      "bullish": 2,
+      "total_mentions": 22,
+      "bullish": 3,
       "neutral": 18,
       "bearish": 1,
-      "net_sentiment_score": 0.048,
+      "net_sentiment_score": 0.091,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2848,6 +2848,21 @@
       "example_headlines": [
         "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
         "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK"
+      ]
+    },
+    {
+      "entity": "BTC.CC",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+        "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo"
       ]
     },
     {
@@ -6337,20 +6352,6 @@
       ]
     },
     {
-      "entity": "BTC.CC",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo"
-      ]
-    },
-    {
       "entity": "Seeking Alpha",
       "total_mentions": 1,
       "bullish": 1,
@@ -6446,6 +6447,20 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs add $189M as August net inflows approach $1B"
+      ]
+    },
+    {
+      "entity": "Benjamin Cowen",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Benjamin Cowen Says Bitcoin 69-73 Days From Bottom, But Does BTC Still Follow Cycles? - Yahoo Financ"
       ]
     },
     {

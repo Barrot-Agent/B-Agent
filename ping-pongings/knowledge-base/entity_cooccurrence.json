@@ -3,7 +3,7 @@
     "xrp_entries": 461,
     "btc_entries": 353
   },
-  "unique_pairs_found": 1380,
+  "unique_pairs_found": 1383,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 57,
+      "cooccurrence_count": 58,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -96,6 +96,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 17,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 16,
@@ -107,21 +122,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 16,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -321,6 +321,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 10,
@@ -332,21 +347,6 @@
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -591,6 +591,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Ripple",
       "cooccurrence_count": 5,
@@ -781,21 +796,6 @@
         },
         {
           "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -4576,6 +4576,36 @@
         },
         {
           "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -15900,28 +15930,6 @@
       ]
     },
     {
-      "entity_a": "BTC.CC",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC.CC",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC-USD",
       "entity_b": "Seeking Alpha",
       "cooccurrence_count": 1,
@@ -16203,6 +16211,39 @@
       "example_headlines": [
         {
           "title": "Bitcoin price hits 11-week high as US Treasury doubles debt buyback size",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Benjamin Cowen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Benjamin Cowen Says Bitcoin 69-73 Days From Bottom, But Does BTC Still Follow Cycles? - Yahoo Financ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benjamin Cowen",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Benjamin Cowen Says Bitcoin 69-73 Days From Bottom, But Does BTC Still Follow Cycles? - Yahoo Financ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benjamin Cowen",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Benjamin Cowen Says Bitcoin 69-73 Days From Bottom, But Does BTC Still Follow Cycles? - Yahoo Financ",
           "asset": "BTC"
         }
       ]
