@@ -23,6 +23,11 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-          git add market_analysis_*.json
-          git diff --cached --quiet || git commit -m "Market analysis: automated recommendation generation [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          files=(market_analysis_*.json)
+          if [ -e "${files[0]}" ]; then
+            git add "${files[@]}"
+            git diff --cached --quiet || git commit -m "Market analysis: automated recommendation generation [skip ci]"
+            git push || (git pull --no-rebase --no-edit origin main && git push)
+          else
+            echo "No market analysis output files were generated; nothing to commit."
+          fi
