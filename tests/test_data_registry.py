@@ -1,8 +1,7 @@
-"""
-Smoke tests for the canonical data registry.
-"""
+"""Smoke tests for the canonical data registry."""
 
 from data import registry
 
 
-class TestDataRegistry:
+def test_registry_imports():
+    assert registry is not None
