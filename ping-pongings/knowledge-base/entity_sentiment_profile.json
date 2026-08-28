@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 456,
+    "xrp_entries": 457,
     "btc_entries": 350
   },
   "unique_entities_profiled": 437,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 199,
-      "bullish": 97,
+      "total_mentions": 200,
+      "bullish": 98,
       "neutral": 29,
       "bearish": 73,
-      "net_sentiment_score": 0.121,
+      "net_sentiment_score": 0.125,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 132,
-      "bullish": 82,
+      "total_mentions": 134,
+      "bullish": 83,
       "neutral": 28,
-      "bearish": 22,
-      "net_sentiment_score": 0.455,
+      "bearish": 23,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 107,
-      "bullish": 65,
+      "total_mentions": 109,
+      "bullish": 66,
       "neutral": 28,
-      "bearish": 14,
-      "net_sentiment_score": 0.477,
+      "bearish": 15,
+      "net_sentiment_score": 0.468,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -375,6 +375,39 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 8,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
+      ]
+    },
+    {
+      "entity": "CryptoPotato",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+        "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
+      ]
+    },
+    {
       "entity": "STRC",
       "total_mentions": 7,
       "bullish": 3,
@@ -389,23 +422,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 7,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 2,
-      "net_sentiment_score": 0.143,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
-        "Bitcoin falls under $64K as surging US bond yields boost Fed rate-hike odds"
       ]
     },
     {
@@ -438,22 +454,6 @@
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
-      ]
-    },
-    {
-      "entity": "CryptoPotato",
-      "total_mentions": 6,
-      "bullish": 4,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-        "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
       ]
     },
     {
@@ -522,6 +522,22 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
+      "entity": "The Motley Fool",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -756,22 +772,6 @@
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
         "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
