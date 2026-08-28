@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 458,
+    "xrp_entries": 461,
     "btc_entries": 353
   },
-  "unique_entities_profiled": 437,
+  "unique_entities_profiled": 438,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 202,
-      "bullish": 99,
+      "total_mentions": 203,
+      "bullish": 100,
       "neutral": 30,
       "bearish": 73,
-      "net_sentiment_score": 0.129,
+      "net_sentiment_score": 0.133,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 134,
-      "bullish": 83,
+      "total_mentions": 137,
+      "bullish": 85,
       "neutral": 28,
-      "bearish": 23,
-      "net_sentiment_score": 0.448,
+      "bearish": 24,
+      "net_sentiment_score": 0.445,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 109,
-      "bullish": 66,
+      "total_mentions": 112,
+      "bullish": 68,
       "neutral": 28,
-      "bearish": 15,
-      "net_sentiment_score": 0.468,
+      "bearish": 16,
+      "net_sentiment_score": 0.464,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 78,
-      "bullish": 34,
+      "total_mentions": 79,
+      "bullish": 35,
       "neutral": 15,
       "bearish": 29,
-      "net_sentiment_score": 0.064,
+      "net_sentiment_score": 0.076,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 35,
-      "bullish": 20,
+      "total_mentions": 36,
+      "bullish": 21,
       "neutral": 5,
       "bearish": 10,
-      "net_sentiment_score": 0.286,
+      "net_sentiment_score": 0.306,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -457,6 +457,22 @@
       ]
     },
     {
+      "entity": "The Motley Fool",
+      "total_mentions": 6,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -522,22 +538,6 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -4190,6 +4190,20 @@
       ],
       "example_headlines": [
         "Micro XRP Futures - CME Group"
+      ]
+    },
+    {
+      "entity": "Finbold",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple set to dump 1 billion XRP on September 1, 2026 - Finbold"
       ]
     },
     {
