@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 203,
-      "bullish": 100,
-      "neutral": 30,
-      "bearish": 73,
-      "net_sentiment_score": 0.133,
+      "total_mentions": 206,
+      "bullish": 101,
+      "neutral": 31,
+      "bearish": 74,
+      "net_sentiment_score": 0.131,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -243,11 +243,11 @@
     },
     {
       "entity": "Fortune",
-      "total_mentions": 13,
+      "total_mentions": 14,
       "bullish": 0,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 1,
-      "net_sentiment_score": -0.077,
+      "net_sentiment_score": -0.071,
       "assets_seen_in": [
         "BTC"
       ],
@@ -392,6 +392,22 @@
       ]
     },
     {
+      "entity": "US stocks",
+      "total_mentions": 8,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": -0.25,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 7,
       "bullish": 4,
@@ -438,22 +454,6 @@
         "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "US stocks",
-      "total_mentions": 7,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": -0.429,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -875,6 +875,23 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+        "Bitcoin price hits 11-week high as US Treasury doubles debt buyback size"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 4,
       "bullish": 0,
@@ -1189,23 +1206,6 @@
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
         "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "US Treasury",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
       ]
     },
     {
@@ -2728,6 +2728,36 @@
       "example_headlines": [
         "BTCPay restricts remote Lightning access after attackers steal funds",
         "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk"
+      ]
+    },
+    {
+      "entity": "H100",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+        "Sweden\u2019s H100 reports $26M H1 loss driven by falling Bitcoin value"
+      ]
+    },
+    {
+      "entity": "Sweden",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+        "Sweden\u2019s H100 reports $26M H1 loss driven by falling Bitcoin value"
       ]
     },
     {
@@ -5632,34 +5662,6 @@
       ],
       "example_headlines": [
         "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
-      ]
-    },
-    {
-      "entity": "H100",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal"
-      ]
-    },
-    {
-      "entity": "Sweden",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal"
       ]
     },
     {

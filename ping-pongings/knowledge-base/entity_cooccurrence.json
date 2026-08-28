@@ -3,7 +3,7 @@
     "xrp_entries": 461,
     "btc_entries": 353
   },
-  "unique_pairs_found": 1379,
+  "unique_pairs_found": 1380,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -202,6 +202,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Fortune",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
+          "asset": "BTC"
+        },
+        {
+          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 13,
       "example_headlines": [
@@ -257,21 +272,6 @@
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
         }
       ]
     },
@@ -411,6 +411,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "CryptoPotato",
       "entity_b": "Ripple",
       "cooccurrence_count": 7,
@@ -451,21 +466,6 @@
         },
         {
           "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
         }
       ]
@@ -981,6 +981,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        },
+        {
+          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Binance",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -1427,21 +1442,6 @@
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US Treasury",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-          "asset": "XRP"
-        },
-        {
-          "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-          "asset": "BTC"
         }
       ]
     },
@@ -4366,6 +4366,51 @@
         },
         {
           "title": "BTC news: Bitcoin\u2019s exploit week worsens as BTCPay flaw drains Lightning nodes - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "H100",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+          "asset": "BTC"
+        },
+        {
+          "title": "Sweden\u2019s H100 reports $26M H1 loss driven by falling Bitcoin value",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Sweden",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+          "asset": "BTC"
+        },
+        {
+          "title": "Sweden\u2019s H100 reports $26M H1 loss driven by falling Bitcoin value",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "H100",
+      "entity_b": "Sweden",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
+          "asset": "BTC"
+        },
+        {
+          "title": "Sweden\u2019s H100 reports $26M H1 loss driven by falling Bitcoin value",
           "asset": "BTC"
         }
       ]
@@ -13413,39 +13458,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "H100",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Sweden",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "H100",
-      "entity_b": "Sweden",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "H100 becomes Europe\u2019s No. 2 Bitcoin treasury after 2,455 BTC deal",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Fund",
       "cooccurrence_count": 1,
@@ -16180,6 +16192,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs add $189M as August net inflows approach $1B",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Treasury",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price hits 11-week high as US Treasury doubles debt buyback size",
           "asset": "BTC"
         }
       ]
