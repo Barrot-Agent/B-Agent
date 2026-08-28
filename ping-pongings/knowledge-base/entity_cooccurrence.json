@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 451,
+    "xrp_entries": 454,
     "btc_entries": 347
   },
-  "unique_pairs_found": 1371,
+  "unique_pairs_found": 1373,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 99,
+      "cooccurrence_count": 100,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -96,6 +96,21 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 15,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 15,
@@ -122,21 +137,6 @@
         {
           "title": "Is It Too Late to Buy Bitcoin? - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
         }
       ]
     },
@@ -231,6 +231,21 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 12,
@@ -248,21 +263,6 @@
     {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
       "cooccurrence_count": 11,
       "example_headlines": [
         {
@@ -3647,6 +3647,21 @@
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME Group",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Futures - CME Group",
+          "asset": "XRP"
+        },
+        {
+          "title": "Micro XRP Futures - CME Group",
+          "asset": "XRP"
         }
       ]
     },
@@ -8740,17 +8755,6 @@
     },
     {
       "entity_a": "CME Group",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Futures - CME Group",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CME Group",
       "entity_b": "cryptocurrency",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -9339,6 +9343,28 @@
       "example_headlines": [
         {
           "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CME Group",
+      "entity_b": "Micro XRP Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Micro XRP Futures - CME Group",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Micro XRP Futures",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Micro XRP Futures - CME Group",
           "asset": "XRP"
         }
       ]
