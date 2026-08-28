@@ -1,7 +1,7 @@
 {
   "generated_from": {
-    "xrp_entries": 457,
-    "btc_entries": 350
+    "xrp_entries": 458,
+    "btc_entries": 353
   },
   "unique_pairs_found": 1377,
   "pairs": [
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 55,
+      "cooccurrence_count": 56,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -201,6 +201,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP",
       "cooccurrence_count": 12,
@@ -247,15 +262,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
+      "entity_b": "Fortune",
       "cooccurrence_count": 12,
       "example_headlines": [
         {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
         }
       ]
@@ -287,21 +302,6 @@
         {
           "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Fortune",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Current price of Bitcoin for July 24, 2026 - Fortune",
-          "asset": "BTC"
-        },
-        {
-          "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
         }
       ]
     },
@@ -546,6 +546,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Ripple",
       "cooccurrence_count": 5,
@@ -751,21 +766,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
           "asset": "BTC"
         }
       ]

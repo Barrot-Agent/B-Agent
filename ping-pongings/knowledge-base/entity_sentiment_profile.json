@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 457,
-    "btc_entries": 350
+    "xrp_entries": 458,
+    "btc_entries": 353
   },
   "unique_entities_profiled": 437,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 200,
-      "bullish": 98,
-      "neutral": 29,
+      "total_mentions": 202,
+      "bullish": 99,
+      "neutral": 30,
       "bearish": 73,
-      "net_sentiment_score": 0.125,
+      "net_sentiment_score": 0.129,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 77,
-      "bullish": 33,
+      "total_mentions": 78,
+      "bullish": 34,
       "neutral": 15,
       "bearish": 29,
-      "net_sentiment_score": 0.052,
+      "net_sentiment_score": 0.064,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -126,11 +126,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 23,
-      "bullish": 13,
+      "total_mentions": 24,
+      "bullish": 14,
       "neutral": 1,
       "bearish": 9,
-      "net_sentiment_score": 0.174,
+      "net_sentiment_score": 0.208,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -242,6 +242,22 @@
       ]
     },
     {
+      "entity": "Fortune",
+      "total_mentions": 13,
+      "bullish": 0,
+      "neutral": 12,
+      "bearish": 1,
+      "net_sentiment_score": -0.077,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Current price of Bitcoin for July 24, 2026 - Fortune",
+        "Current price of Bitcoin for July 23, 2026 - Fortune",
+        "Current price of Bitcoin for July 22, 2026 - Fortune"
+      ]
+    },
+    {
       "entity": "Ripple Labs",
       "total_mentions": 12,
       "bullish": 8,
@@ -255,22 +271,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Fortune",
-      "total_mentions": 12,
-      "bullish": 0,
-      "neutral": 11,
-      "bearish": 1,
-      "net_sentiment_score": -0.083,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Current price of Bitcoin for July 24, 2026 - Fortune",
-        "Current price of Bitcoin for July 23, 2026 - Fortune",
-        "Current price of Bitcoin for July 22, 2026 - Fortune"
       ]
     },
     {
