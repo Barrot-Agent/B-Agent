@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 451,
+    "xrp_entries": 454,
     "btc_entries": 347
   },
-  "unique_entities_profiled": 436,
+  "unique_entities_profiled": 437,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 128,
-      "bullish": 80,
-      "neutral": 27,
+      "total_mentions": 130,
+      "bullish": 81,
+      "neutral": 28,
       "bearish": 21,
-      "net_sentiment_score": 0.461,
+      "net_sentiment_score": 0.462,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 104,
+      "total_mentions": 105,
       "bullish": 64,
-      "neutral": 27,
+      "neutral": 28,
       "bearish": 13,
-      "net_sentiment_score": 0.49,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 20,
+      "total_mentions": 21,
       "bullish": 2,
-      "neutral": 17,
+      "neutral": 18,
       "bearish": 1,
-      "net_sentiment_score": 0.05,
+      "net_sentiment_score": 0.048,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1206,6 +1206,23 @@
         "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
         "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
         "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders"
+      ]
+    },
+    {
+      "entity": "CME Group",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Futures - CME Group",
+        "Micro XRP Futures - CME Group",
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {
@@ -2394,22 +2411,6 @@
       "example_headlines": [
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
-      ]
-    },
-    {
-      "entity": "CME Group",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Futures - CME Group",
-        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {
@@ -4175,6 +4176,20 @@
       ],
       "example_headlines": [
         "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Micro XRP Futures",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Micro XRP Futures - CME Group"
       ]
     },
     {
