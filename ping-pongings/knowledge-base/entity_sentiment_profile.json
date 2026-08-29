@@ -3,7 +3,7 @@
     "xrp_entries": 465,
     "btc_entries": 356
   },
-  "unique_entities_profiled": 443,
+  "unique_entities_profiled": 445,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -576,6 +576,23 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": -0.4,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
+      ]
+    },
+    {
       "entity": "CryptoQuant",
       "total_mentions": 5,
       "bullish": 3,
@@ -772,23 +789,6 @@
         "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": -0.25,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes",
-        "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
       ]
     },
     {
@@ -1224,6 +1224,23 @@
         "XRP Futures - CME Group",
         "Micro XRP Futures - CME Group",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Dogecoin",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -2464,6 +2481,22 @@
       ]
     },
     {
+      "entity": "DOGE",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2491,21 +2524,6 @@
       "example_headlines": [
         "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
-      ]
-    },
-    {
-      "entity": "Dogecoin",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
       ]
     },
     {
@@ -4157,6 +4175,34 @@
       ]
     },
     {
+      "entity": "CleanCore",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
+      ]
+    },
+    {
+      "entity": "CORE",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
+      ]
+    },
+    {
       "entity": "Tron Inc.",
       "total_mentions": 1,
       "bullish": 1,
@@ -4882,20 +4928,6 @@
       ],
       "example_headlines": [
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees"
-      ]
-    },
-    {
-      "entity": "DOGE",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
       ]
     },
     {
