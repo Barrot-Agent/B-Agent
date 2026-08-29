@@ -1,9 +1,9 @@
 {
-  "summary": "The XRP signal, generated at\u202f2026\u201108\u201129\u202f19:20:15\u202fUTC, carries a bullish bias with a score of\u202f79 and a confidence of\u202f0.95. It is based on\u202f29\u202fnews entries, yielding a news_score of\u202f73.  \n\n- Source: **groq:bullish+news(29)**  \n- Signal type: **bullish** (5 of 6 headlines are bullish)  \n- Key metrics: **score\u202f79**, **confidence\u202f0.95**, **news_score\u202f73**, **news_entries\u202f29**",
-  "spoken_line": "The XRP signal is bullish with a score of 79, confidence 0.95, based on 29 news items and a news score of 73. Not financial advice. Informational only. Do your own research.",
+  "summary": "The XRP signal, generated at\u202f2026\u201108\u201129\u202f19:20:15\u202fUTC, carries a bullish bias with a score of\u202f79 and a confidence of\u202f0.95. It is based on\u202f29\u202fnews entries that together yield a news_score of\u202f73.  \n\n- Source:\u202fgroq:bullish+news(29)  \n- Timestamp:\u202f2026\u201108\u201129T19:20:15.120889+00:00  \n- Overall sentiment:\u202fpredominantly bullish (4 bullish headlines, 1 neutral).",
+  "spoken_line": "XRP signal update. Score 79. Confidence 0.95. Based on 29 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
-  "audio": null,
-  "tts_error": "HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `canopylabs/orpheus-v1-english` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 3600, Used 3462, Requested 173. Please try again in 14m0s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+  "audio": "web/generated_audio/latest_signal_summary.wav",
+  "tts_error": null,
   "source_signal": {
     "timestamp": "2026-08-29T19:20:15.120889+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
