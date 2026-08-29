@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 466,
-    "btc_entries": 357
+    "btc_entries": 358
   },
-  "unique_pairs_found": 1416,
+  "unique_pairs_found": 1418,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -516,6 +516,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "XRP",
       "cooccurrence_count": 6,
@@ -616,21 +631,6 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -14020,6 +14020,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin and ethereum prices today, Monday, August 10, 2026: BTC breaking past $65,000 yet again - Ya",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US BTC ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "US BTC ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott",
           "asset": "BTC"
         }
       ]

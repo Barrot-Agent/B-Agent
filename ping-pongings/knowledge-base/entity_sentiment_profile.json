@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 466,
-    "btc_entries": 357
+    "btc_entries": 358
   },
-  "unique_entities_profiled": 446,
+  "unique_entities_profiled": 447,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 212,
-      "bullish": 105,
+      "total_mentions": 213,
+      "bullish": 106,
       "neutral": 32,
       "bearish": 75,
-      "net_sentiment_score": 0.142,
+      "net_sentiment_score": 0.146,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 22,
-      "bullish": 3,
+      "total_mentions": 23,
+      "bullish": 4,
       "neutral": 18,
       "bearish": 1,
-      "net_sentiment_score": 0.091,
+      "net_sentiment_score": 0.13,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -5811,6 +5811,20 @@
       ],
       "example_headlines": [
         "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2"
+      ]
+    },
+    {
+      "entity": "US BTC ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott"
       ]
     },
     {
