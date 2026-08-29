@@ -1,0 +1,35 @@
+[
+  {
+    "id": "eb641e0936ac8f2c97bd032aae0c4de3b7ecb11fe2d6dad4918839b7f1224ec4",
+    "operation": "event:claim_submitted",
+    "outcome": {
+      "payload": {
+        "claim": "Independent evidence improves reasoning integrity"
+      },
+      "source": "integration_test",
+      "created_at": "2026-08-29T07:46:44.496915+00:00"
+    },
+    "sources": [
+      "integration_test"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-08-29T07:46:44.497669+00:00"
+  },
+  {
+    "id": "b9f0331f5222a024c0585ca916e806f2978d7b2a5c3f88759c756ab04cf41fd3",
+    "operation": "corroboration",
+    "outcome": {
+      "claim_id": "eeaad3ac41f70cf0901b0b0259c95f58740d46421395362619f865cf5f820f14",
+      "supporting_records": [],
+      "conflicting_records": [],
+      "evidence_count": 0,
+      "corroborated_confidence": 0.5,
+      "status": "insufficient_evidence"
+    },
+    "sources": [
+      "integration_test"
+    ],
+    "confidence": 0.5,
+    "recorded_at": "2026-08-29T07:46:44.498926+00:00"
+  }
+]

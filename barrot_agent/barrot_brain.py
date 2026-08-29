@@ -15,6 +15,10 @@ from pathlib import Path
 import jwt
 import requests
 
+from barrot_agent.evolution.cognitive_integrity import CognitiveIntegrityLoop
+from barrot_agent.evolution.event_bus import CognitiveEvent, CognitiveEventBus
+from barrot_agent.evolution.reactive_observers import ReactiveCorroborationObserver
+
 ANCHOR = 0.707106781186548
 
 SYSTEM_PROMPT = """You are Barrot-Ω, a sovereign AI agent built by Sean (your Orchestrator).
@@ -93,6 +97,58 @@ class BarrotBrain:
     def __init__(self):
         self.auth = GitHubAppAuth()
         self.groq_key = os.getenv("GROQ_API_KEY", "")
+        self.integrity = CognitiveIntegrityLoop()
+        self.event_bus = CognitiveEventBus()
+        self.reactive_observer = ReactiveCorroborationObserver()
+        self.reactive_observer.register(self.event_bus)
+
+    def _record_reasoning(
+        self,
+        backend: str,
+        prompt: str,
+        response: str,
+    ) -> str:
+        """Record compact inference metadata without altering the response."""
+        try:
+            import hashlib
+
+            response_hash = hashlib.sha256(response.encode("utf-8")).hexdigest()
+
+            self.integrity.record_outcome(
+                operation="inference",
+                outcome={
+                    "backend": backend,
+                    "prompt_hash": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+                    "response_hash": response_hash,
+                    "claim": response[:500],
+                    "response_length": len(response),
+                },
+                sources=[backend],
+                confidence=0.7,
+            )
+        except Exception as error:
+            logger.warning("Integrity recording failed: %s", error)
+
+        try:
+            self.event_bus.publish(
+                CognitiveEvent(
+                    event_type="inference_completed",
+                    payload={
+                        "backend": backend,
+                        "prompt_hash": __import__("hashlib")
+                        .sha256(prompt.encode("utf-8"))
+                        .hexdigest(),
+                        "response_hash": __import__("hashlib")
+                        .sha256(response.encode("utf-8"))
+                        .hexdigest(),
+                    },
+                    source="barrot_brain",
+                )
+            )
+        except Exception as error:
+            logger.warning("Event publishing failed: %s", error)
+
+        return response
 
     def think(self, message: str, history: list = None, system: str = None) -> str:
         messages = [{"role": "system", "content": system or SYSTEM_PROMPT}]
@@ -119,7 +175,9 @@ class BarrotBrain:
                     timeout=30,
                 )
                 r.raise_for_status()
-                return r.json()["choices"][0]["message"]["content"]
+                return self._record_reasoning(
+                    "github", message, r.json()["choices"][0]["message"]["content"]
+                )
             except Exception as e:
                 logger.warning("GitHub Models backend failed, falling back to Groq: %s", e)
 
@@ -144,7 +202,9 @@ class BarrotBrain:
                         time.sleep(wait)
                         continue
                     r.raise_for_status()
-                    return r.json()["choices"][0]["message"]["content"]
+                    return self._record_reasoning(
+                        "groq", message, r.json()["choices"][0]["message"]["content"]
+                    )
                 except requests.RequestException as e:
                     if attempt == 5:
                         logger.warning("Groq backend failed, falling back to Fireworks: %s", e)
@@ -168,7 +228,9 @@ class BarrotBrain:
                     timeout=20,
                 )
                 r.raise_for_status()
-                return r.json()["choices"][0]["message"]["content"]
+                return self._record_reasoning(
+                    "fireworks", message, r.json()["choices"][0]["message"]["content"]
+                )
             except Exception as e:
                 logger.error("Fireworks backend failed: %s", e)
         logger.error("All backends failed for this request.")
