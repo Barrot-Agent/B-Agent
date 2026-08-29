@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 210,
+      "total_mentions": 211,
       "bullish": 105,
-      "neutral": 31,
+      "neutral": 32,
       "bearish": 74,
-      "net_sentiment_score": 0.148,
+      "net_sentiment_score": 0.147,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 140,
+      "total_mentions": 141,
       "bullish": 88,
-      "neutral": 28,
+      "neutral": 29,
       "bearish": 24,
-      "net_sentiment_score": 0.457,
+      "net_sentiment_score": 0.454,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 80,
+      "total_mentions": 81,
       "bullish": 36,
-      "neutral": 15,
+      "neutral": 16,
       "bearish": 29,
-      "net_sentiment_score": 0.087,
+      "net_sentiment_score": 0.086,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -209,6 +209,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 15,
+      "bullish": 10,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.467,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 14,
       "bullish": 1,
@@ -222,23 +239,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 14,
-      "bullish": 10,
-      "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
       ]
     },
     {
@@ -1224,6 +1224,23 @@
         "XRP Futures - CME Group",
         "Micro XRP Futures - CME Group",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "US spot Bitcoin ETF",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows",
+        "Bitcoin ETFs add $189M as August net inflows approach $1B"
       ]
     },
     {
@@ -2534,21 +2551,6 @@
       "example_headlines": [
         "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
         "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETF",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows return as Ether funds slip into outflows",
-        "Bitcoin ETFs add $189M as August net inflows approach $1B"
       ]
     },
     {

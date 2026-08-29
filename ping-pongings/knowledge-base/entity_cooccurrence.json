@@ -3,7 +3,7 @@
     "xrp_entries": 465,
     "btc_entries": 355
   },
-  "unique_pairs_found": 1398,
+  "unique_pairs_found": 1402,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 58,
+      "cooccurrence_count": 59,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -188,7 +188,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
-      "cooccurrence_count": 13,
+      "cooccurrence_count": 14,
       "example_headlines": [
         {
           "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
@@ -227,6 +227,21 @@
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
         }
       ]
     },
@@ -286,21 +301,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -576,6 +576,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETF",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 6,
@@ -796,21 +811,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETF",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Whales Snap Up $1.2 Billion Worth of BTC as ETF Inflows Surge Toward Four-Month High - bitco",
           "asset": "BTC"
         }
       ]
@@ -1471,6 +1471,21 @@
         },
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
           "asset": "XRP"
         }
       ]
@@ -3501,21 +3516,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Metaplanet",
       "entity_b": "Superplanet",
       "cooccurrence_count": 2,
@@ -3767,6 +3767,21 @@
         {
           "title": "Micro XRP Futures - CME Group",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
         }
       ]
     },
@@ -9412,6 +9427,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US spot Bitcoin ETF",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "RLUSD",
       "cooccurrence_count": 1,
@@ -10243,17 +10302,6 @@
       "example_headlines": [
         {
           "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
           "asset": "BTC"
         }
       ]
