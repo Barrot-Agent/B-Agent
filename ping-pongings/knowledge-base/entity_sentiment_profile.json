@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 461,
+    "xrp_entries": 462,
     "btc_entries": 353
   },
-  "unique_entities_profiled": 439,
+  "unique_entities_profiled": 440,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 209,
-      "bullish": 104,
+      "total_mentions": 210,
+      "bullish": 105,
       "neutral": 31,
       "bearish": 74,
-      "net_sentiment_score": 0.144,
+      "net_sentiment_score": 0.148,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -126,11 +126,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 24,
-      "bullish": 14,
+      "total_mentions": 25,
+      "bullish": 15,
       "neutral": 1,
       "bearish": 9,
-      "net_sentiment_score": 0.208,
+      "net_sentiment_score": 0.24,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -274,6 +274,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 12,
+      "bullish": 4,
+      "neutral": 3,
+      "bearish": 5,
+      "net_sentiment_score": -0.083,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 11,
       "bullish": 8,
@@ -325,22 +341,6 @@
       ]
     },
     {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 11,
-      "bullish": 3,
-      "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": -0.182,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
       "entity": "24/7 Wall St.",
       "total_mentions": 10,
       "bullish": 6,
@@ -355,6 +355,22 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "US stocks",
+      "total_mentions": 9,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": -0.111,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -389,22 +405,6 @@
         "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
         "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
         "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
-      ]
-    },
-    {
-      "entity": "US stocks",
-      "total_mentions": 8,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": -0.25,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-        "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-        "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
       ]
     },
     {
@@ -539,6 +539,23 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
+      ]
+    },
+    {
+      "entity": "United States",
+      "total_mentions": 6,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "US hints at more yen intervention: Five things to know in Bitcoin this week",
+        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
       ]
     },
     {
@@ -694,20 +711,19 @@
       ]
     },
     {
-      "entity": "United States",
+      "entity": "Iran",
       "total_mentions": 5,
       "bullish": 3,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.4,
       "assets_seen_in": [
-        "BTC",
-        "XRP"
+        "BTC"
       ],
       "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "US hints at more yen intervention: Five things to know in Bitcoin this week",
-        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+        "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
       ]
     },
     {
@@ -923,22 +939,6 @@
         "Bitcoin ETFs snap 7-day inflow streak with $225M in outflows",
         "Rate path still divides investors: Five things to know in Bitcoin this week",
         "Bitcoin price eyes $66K as US stocks rise on Iran-strike pause"
-      ]
-    },
-    {
-      "entity": "Iran",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.25,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-        "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
       ]
     },
     {
@@ -6476,6 +6476,20 @@
       ],
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "golden cross",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin's jump above $71,000 sets up bullish golden cross pattern - CoinDesk"
       ]
     },
     {

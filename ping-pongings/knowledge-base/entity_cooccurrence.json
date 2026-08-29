@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 461,
+    "xrp_entries": 462,
     "btc_entries": 353
   },
-  "unique_pairs_found": 1383,
+  "unique_pairs_found": 1386,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -381,6 +381,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 9,
@@ -407,21 +422,6 @@
         {
           "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-          "asset": "BTC"
         }
       ]
     },
@@ -771,6 +771,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Iran",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Fortune",
       "cooccurrence_count": 5,
@@ -1011,16 +1026,16 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Iran",
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "CoinDesk",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
-          "title": "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+          "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -1051,6 +1066,21 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "United States",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
           "asset": "BTC"
         }
       ]
@@ -1551,21 +1581,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "ETH",
       "cooccurrence_count": 3,
@@ -1621,21 +1636,6 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "United States",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "US hints at more yen intervention: Five things to know in Bitcoin this week",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
           "asset": "BTC"
         }
       ]
@@ -1711,6 +1711,21 @@
         },
         {
           "title": "Bitcoin(BTC) Stock Price Today | Quotes & News - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "United States",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
           "asset": "BTC"
         }
       ]
@@ -4491,6 +4506,21 @@
       ]
     },
     {
+      "entity_a": "Iran",
+      "entity_b": "US stocks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin price reaches $72.5K as US issues \u2018Economic D-Day\u2019 threat to Iran",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "TMTG",
       "cooccurrence_count": 2,
@@ -4576,21 +4606,6 @@
         },
         {
           "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Iran",
-      "entity_b": "United States",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
           "asset": "BTC"
         }
       ]
@@ -13624,17 +13639,6 @@
       ]
     },
     {
-      "entity_a": "Iran",
-      "entity_b": "US stocks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Oil",
       "entity_b": "Strait of Hormuz",
       "cooccurrence_count": 1,
@@ -16347,6 +16351,39 @@
       "example_headlines": [
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US stocks",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price reaches $72.5K as US issues \u2018Economic D-Day\u2019 threat to Iran",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "golden cross",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin's jump above $71,000 sets up bullish golden cross pattern - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "golden cross",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin's jump above $71,000 sets up bullish golden cross pattern - CoinDesk",
           "asset": "BTC"
         }
       ]
