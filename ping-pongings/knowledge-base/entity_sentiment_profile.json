@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 462,
+    "xrp_entries": 463,
     "btc_entries": 353
   },
-  "unique_entities_profiled": 440,
+  "unique_entities_profiled": 441,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 138,
-      "bullish": 86,
+      "total_mentions": 139,
+      "bullish": 87,
       "neutral": 28,
       "bearish": 24,
-      "net_sentiment_score": 0.449,
+      "net_sentiment_score": 0.453,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 112,
-      "bullish": 68,
+      "total_mentions": 113,
+      "bullish": 69,
       "neutral": 28,
       "bearish": 16,
-      "net_sentiment_score": 0.464,
+      "net_sentiment_score": 0.469,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -126,11 +126,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 25,
-      "bullish": 15,
+      "total_mentions": 26,
+      "bullish": 16,
       "neutral": 1,
       "bearish": 9,
-      "net_sentiment_score": 0.24,
+      "net_sentiment_score": 0.269,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -525,6 +525,23 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 6,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
+      ]
+    },
+    {
       "entity": "Metaplanet",
       "total_mentions": 6,
       "bullish": 5,
@@ -657,23 +674,6 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Bitcoin ETFs post $233M inflows, pushing week back into the green",
         "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-        "Nasdaq-Listed Zhibao Wants a Bitcoin Treasury, Plans to Sell $220M in Stock for BTC - Decrypt"
       ]
     },
     {
@@ -4250,6 +4250,20 @@
       ],
       "example_headlines": [
         "Ripple set to dump 1 billion XRP on September 1, 2026 - Finbold"
+      ]
+    },
+    {
+      "entity": "XRP Treasury Company",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
       ]
     },
     {
