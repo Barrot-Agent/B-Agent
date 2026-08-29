@@ -3,15 +3,15 @@
     "xrp_entries": 466,
     "btc_entries": 357
   },
-  "unique_entities_profiled": 445,
+  "unique_entities_profiled": 446,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 211,
+      "total_mentions": 212,
       "bullish": 105,
       "neutral": 32,
-      "bearish": 74,
-      "net_sentiment_score": 0.147,
+      "bearish": 75,
+      "net_sentiment_score": 0.142,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 81,
+      "total_mentions": 82,
       "bullish": 36,
       "neutral": 16,
-      "bearish": 29,
-      "net_sentiment_score": 0.086,
+      "bearish": 30,
+      "net_sentiment_score": 0.073,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -408,6 +408,23 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 8,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 7,
       "bullish": 4,
@@ -455,22 +472,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -4340,6 +4341,20 @@
       ],
       "example_headlines": [
         "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk"
+      ]
+    },
+    {
+      "entity": "ARK 21Shares",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K"
       ]
     },
     {

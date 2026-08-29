@@ -3,7 +3,7 @@
     "xrp_entries": 466,
     "btc_entries": 357
   },
-  "unique_pairs_found": 1412,
+  "unique_pairs_found": 1416,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 59,
+      "cooccurrence_count": 60,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -487,6 +487,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 7,
       "example_headlines": [
@@ -586,21 +601,6 @@
         },
         {
           "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -9873,6 +9873,50 @@
       "example_headlines": [
         {
           "title": "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK 21Shares",
+      "entity_b": "BTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK 21Shares",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK 21Shares",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
           "asset": "XRP"
         }
       ]
