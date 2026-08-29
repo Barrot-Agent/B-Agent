@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 463,
+    "xrp_entries": 464,
     "btc_entries": 354
   },
-  "unique_entities_profiled": 441,
+  "unique_entities_profiled": 443,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 139,
-      "bullish": 87,
+      "total_mentions": 140,
+      "bullish": 88,
       "neutral": 28,
       "bearish": 24,
-      "net_sentiment_score": 0.453,
+      "net_sentiment_score": 0.457,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 113,
-      "bullish": 69,
+      "total_mentions": 114,
+      "bullish": 70,
       "neutral": 28,
       "bearish": 16,
-      "net_sentiment_score": 0.469,
+      "net_sentiment_score": 0.474,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -176,6 +176,22 @@
       ]
     },
     {
+      "entity": "XRP Ledger",
+      "total_mentions": 18,
+      "bullish": 17,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.889,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 18,
       "bullish": 4,
@@ -190,22 +206,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 17,
-      "bullish": 16,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.882,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -4264,6 +4264,34 @@
       ],
       "example_headlines": [
         "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Quantum computers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Q-Day",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk"
       ]
     },
     {
