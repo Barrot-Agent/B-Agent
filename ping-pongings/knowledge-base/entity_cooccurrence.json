@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 467,
+    "xrp_entries": 468,
     "btc_entries": 358
   },
   "unique_pairs_found": 1418,
@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 109,
+      "cooccurrence_count": 110,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -128,7 +128,7 @@
     {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
-      "cooccurrence_count": 15,
+      "cooccurrence_count": 16,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -143,7 +143,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP.CC",
-      "cooccurrence_count": 14,
+      "cooccurrence_count": 15,
       "example_headlines": [
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
@@ -201,6 +201,21 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 13,
@@ -227,6 +242,21 @@
         {
           "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
         }
       ]
     },
@@ -276,8 +306,8 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
       "cooccurrence_count": 12,
       "example_headlines": [
         {
@@ -285,7 +315,7 @@
           "asset": "XRP"
         },
         {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -302,36 +332,6 @@
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
-          "asset": "XRP"
         }
       ]
     },
