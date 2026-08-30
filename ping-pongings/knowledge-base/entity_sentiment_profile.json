@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 470,
+    "xrp_entries": 471,
     "btc_entries": 363
   },
-  "unique_entities_profiled": 447,
+  "unique_entities_profiled": 448,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 143,
-      "bullish": 89,
+      "total_mentions": 144,
+      "bullish": 90,
       "neutral": 30,
       "bearish": 24,
-      "net_sentiment_score": 0.455,
+      "net_sentiment_score": 0.458,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 116,
-      "bullish": 71,
+      "total_mentions": 117,
+      "bullish": 72,
       "neutral": 29,
       "bearish": 16,
-      "net_sentiment_score": 0.474,
+      "net_sentiment_score": 0.479,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 28,
-      "bullish": 20,
+      "total_mentions": 29,
+      "bullish": 21,
       "neutral": 4,
       "bearish": 4,
-      "net_sentiment_score": 0.571,
+      "net_sentiment_score": 0.586,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -842,6 +842,23 @@
       ]
     },
     {
+      "entity": "Wall Street",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "USD",
       "total_mentions": 4,
       "bullish": 2,
@@ -1090,23 +1107,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
         "Kraken Brings CFTC-Regulated Perpetual Futures To US Traders"
-      ]
-    },
-    {
-      "entity": "Wall Street",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-        "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
       ]
     },
     {
@@ -4357,6 +4357,20 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K"
+      ]
+    },
+    {
+      "entity": "Equities",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
       ]
     },
     {

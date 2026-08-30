@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 470,
+    "xrp_entries": 471,
     "btc_entries": 363
   },
-  "unique_pairs_found": 1421,
+  "unique_pairs_found": 1426,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 111,
+      "cooccurrence_count": 112,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 19,
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -1261,6 +1261,21 @@
         },
         {
           "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
         }
       ]
@@ -2586,21 +2601,6 @@
       ]
     },
     {
-      "entity_a": "Wall Street",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 2,
@@ -3826,6 +3826,21 @@
         },
         {
           "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -9696,17 +9711,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Wall Street",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Wall Street",
       "entity_b": "institutional investors",
       "cooccurrence_count": 1,
@@ -9966,6 +9970,61 @@
       "example_headlines": [
         {
           "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
