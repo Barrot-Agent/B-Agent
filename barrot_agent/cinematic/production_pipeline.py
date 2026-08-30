@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import asdict
+from pathlib import Path
 from typing import Any
+import json
 
 from .project_manager import ProjectManager, CinematicProject
 from .story_bible import StoryBible
@@ -16,8 +18,8 @@ class ProductionPipeline:
     """
     Unified interface for a Barrot cinematic production.
 
-    This is the subsystem integration point for future LLM, image, video,
-    voice, music, and editing adapters.
+    This is the subsystem integration point for LLM, image, video, voice,
+    music, editing, rendering, and future production adapters.
     """
 
     def __init__(self, project_root: str = "data/cinematic_projects") -> None:
@@ -53,7 +55,11 @@ class ProductionPipeline:
                 f"{c.established_value!r} -> {c.proposed_value!r}"
                 for c in conflicts
             )
-            raise ValueError(f"Continuity conflict in Scene {scene.number}: {details}")
+            # Remove the scene because it was never accepted into production.
+            self.scenes.scenes.remove(scene)
+            raise ValueError(
+                f"Continuity conflict in Scene {scene.number}: {details}"
+            )
 
         for assertion in scene.continuity_assertions:
             self.continuity.record(
@@ -80,20 +86,45 @@ class ProductionPipeline:
         }
 
     def export_plan(self) -> dict[str, Any]:
+        """Return a portable, tool-neutral production plan."""
         return {
             "project": self.project.to_dict() if self.project else None,
             "story_bible": self.story.facts(),
             "characters": [
-                {
-                    "name": character.name,
-                    "attributes": character.attributes,
-                    "relationships": character.relationships,
-                    "history": character.history,
-                }
+                asdict(character)
                 for character in self.characters.all_characters()
             ],
-            "scenes": [asdict(scene) for scene in self.scenes.timeline()],
-            "shots": [asdict(shot) for shot in self.shots.shots],
+            "scenes": [
+                asdict(scene)
+                for scene in self.scenes.timeline()
+            ],
+            "shots": [
+                asdict(shot)
+                for shot in self.shots.shots
+            ],
+            "assets": [
+                asdict(asset)
+                for asset in self.assets.find()
+            ],
             "continuity_ledger": self.continuity.ledger(),
-            "assets": [asdict(asset) for asset in self.assets.assets.values()],
+            "status": self.production_status(),
         }
+
+    def save_plan(self, path: str | Path | None = None) -> Path:
+        """Persist the complete production state as JSON."""
+        if path is None:
+            if not self.project:
+                raise RuntimeError("Start a project before saving a production plan.")
+            path = (
+                self.projects.project_path(self.project.name)
+                / "output"
+                / "production_plan.json"
+            )
+
+        destination = Path(path)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(
+            json.dumps(self.export_plan(), indent=2, ensure_ascii=False, default=str),
+            encoding="utf-8",
+        )
+        return destination
