@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-08-30T14:38:38.879049+00:00",
+  "timestamp": "2026-08-30T15:38:49.715765+00:00",
   "signal_text": "Recent BTC-relevant headlines: [neutral] Current price of Bitcoin for August 26, 2026 - Fortune",
-  "score": 25,
-  "confidence": 0.0,
-  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(1)",
+  "score": 50,
+  "confidence": 0.95,
+  "source": "groq:neutral+news(1)",
   "news_score": 50,
   "news_entries": 1,
-  "generated_at_unix": 1788100718
+  "generated_at_unix": 1788104329
 }
