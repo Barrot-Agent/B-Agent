@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 469,
+    "xrp_entries": 470,
     "btc_entries": 363
   },
   "unique_entities_profiled": 447,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 142,
-      "bullish": 88,
+      "total_mentions": 143,
+      "bullish": 89,
       "neutral": 30,
       "bearish": 24,
-      "net_sentiment_score": 0.451,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 115,
-      "bullish": 70,
+      "total_mentions": 116,
+      "bullish": 71,
       "neutral": 29,
       "bearish": 16,
-      "net_sentiment_score": 0.47,
+      "net_sentiment_score": 0.474,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 24,
-      "bullish": 4,
+      "total_mentions": 25,
+      "bullish": 5,
       "neutral": 19,
       "bearish": 1,
-      "net_sentiment_score": 0.125,
+      "net_sentiment_score": 0.16,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2007,6 +2007,21 @@
       ]
     },
     {
+      "entity": "XRPL",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M"
+      ]
+    },
+    {
       "entity": "iShares Bitcoin Trust",
       "total_mentions": 2,
       "bullish": 2,
@@ -2495,6 +2510,21 @@
       "example_headlines": [
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "Q-Day",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
+        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M"
       ]
     },
     {
@@ -3490,20 +3520,6 @@
       ]
     },
     {
-      "entity": "XRPL",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "yellow.com",
       "total_mentions": 1,
       "bullish": 0,
@@ -4317,20 +4333,6 @@
     },
     {
       "entity": "Quantum computers",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Q-Day",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
