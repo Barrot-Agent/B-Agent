@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 60,
+      "cooccurrence_count": 61,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -81,6 +81,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 18,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 17,
@@ -107,21 +122,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 17,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -291,6 +291,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 11,
@@ -317,21 +332,6 @@
         {
           "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
