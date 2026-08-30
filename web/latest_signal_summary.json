@@ -1,17 +1,17 @@
 {
-  "summary": "The signal, generated at\u202f2026\u201108\u201130\u202f18:27:15\u202fUTC, rates XRP sentiment at a strong **80** with a **0.95** confidence level, based on **25** bullish\u2011leaning news items that together yield a **news_score of 75**. The headlines focus on technical improvements to the XRP Ledger\u2019s consensus, message dissemination, routing, and decentralization testing.\n\n- Neutral analysis of the XRP Ledger Consensus Protocol.  \n- Bullish papers on message dissemination, probabilistic edge multicast routing, Pub/Sub dissemination, consensus crash testing, and causal AI for XRPL/GossipSub.  \n- Overall bullish tilt reflected in 25 news entries driving the high score.",
-  "spoken_line": "XRP signal update. Score 80. Confidence 0.95. Based on 25 news entries. Not financial advice. Informational only. Do your own research.",
+  "summary": "The signal, generated at\u202f2026\u201108\u201130\u202f19:20:23\u202fUTC (Unix\u202f1788117623), carries a bullish bias with a score of\u202f80 and a confidence of\u202f0.95, based on 25 news items that together yield a news_score of\u202f75. It was sourced from\u202fgroq:bullish+news(25).  \n\n- Headlines are classified as neutral for \u201cAnalysis of the XRP Ledger Consensus Protocol\u201d and bullish for the remaining six topics.  \n- The overall sentiment is bullish, reflected in both the high signal score (80) and the strong confidence level (0.95).  \n- The signal aggregates 25 relevant news entries, contributing to the news_score of\u202f75.",
+  "spoken_line": "A bullish signal scored 80 with 0.95 confidence from 25 news items, giving a news score of 75. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
-  "audio": "web/generated_audio/latest_signal_summary.wav",
-  "tts_error": null,
+  "audio": null,
+  "tts_error": "HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `canopylabs/orpheus-v1-english` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 3600, Used 3447, Requested 158. Please try again in 2m0s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
   "source_signal": {
-    "timestamp": "2026-08-30T18:27:15.907111+00:00",
+    "timestamp": "2026-08-30T19:20:23.645200+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 80,
     "confidence": 0.95,
     "source": "groq:bullish+news(25)",
     "news_score": 75,
     "news_entries": 25,
-    "generated_at_unix": 1788114435
+    "generated_at_unix": 1788117623
   }
 }
