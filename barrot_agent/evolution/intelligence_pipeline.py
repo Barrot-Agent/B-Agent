@@ -190,6 +190,20 @@ class IntelligencePipeline:
             transport_success=True,
             provenance=["IntelligencePipeline.acquire"],
         )
+        if not trust_verification["authoritative"]:
+            return {
+                "new_items": 0,
+                "total_items": len(self.load_corpus()),
+                "priority_research": [],
+                "trust": {
+                    "authoritative": False,
+                    "state_verified": trust_verification["verification"]["passed"],
+                    "confidence": trust_verification["confidence"],
+                    "syndromes": trust_verification["syndromes"],
+                    "certificate": trust_verification["certificate"],
+                },
+            }
+
         result = self.synthesize(acquired)
         result["trust"] = {
             "authoritative": trust_verification["authoritative"],
