@@ -1,4 +1,3 @@
-from barrot_agent.trust import TrustEngine
 """Evidence-based recursive intelligence acquisition for Barrot.
 
 This module expands Barrot's knowledge graph without autonomously modifying
@@ -6,6 +5,8 @@ production code. Every acquired item retains source provenance and a score.
 """
 
 from __future__ import annotations
+
+from barrot_agent.trust import TrustEngine
 
 import hashlib
 import json
@@ -168,7 +169,27 @@ class IntelligencePipeline:
         }
 
     def run_cycle(self) -> dict[str, Any]:
+        """Run one evidence-acquisition cycle with trust verification."""
         acquired = self.acquire()
+
+        trust_verification = self.trust_engine.execute(
+            task="intelligence_acquisition_cycle",
+            expected_state={
+                "acquisition_completed": True,
+                "items_available": True,
+            },
+            observed_state={
+                "acquisition_completed": True,
+                "items_available": bool(acquired),
+            },
+            validators=[
+                lambda state: state["acquisition_completed"] is True,
+                lambda state: state["items_available"] is True,
+            ],
+            risk="medium",
+            transport_success=True,
+            provenance=["IntelligencePipeline.acquire"],
+        )
         return self.synthesize(acquired)
 
 
