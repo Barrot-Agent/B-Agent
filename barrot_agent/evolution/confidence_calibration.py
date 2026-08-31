@@ -42,18 +42,44 @@ class ConfidenceCalibrationEngine:
         claim_id: str,
         confidence: float,
         status: str,
+        trust: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         record = {
             "claim_id": claim_id,
             "confidence": round(float(confidence), 3),
             "status": status,
             "outcome": None,
+            "trust": trust or {},
         }
 
         records = self.load()
         records.append(record)
         self.save(records)
         return record
+
+    def trust_summary(self) -> dict[str, Any]:
+        records = self.load()
+        trusted = []
+        confidence = []
+
+        for record in records:
+            trust = record.get("trust", {})
+            if trust.get("authoritative") is True:
+                trusted.append(record)
+
+            value = trust.get("confidence", {}).get("lower_bound")
+            if isinstance(value, (int, float)):
+                confidence.append(float(value))
+
+        return {
+            "records": len(records),
+            "authoritative_records": len(trusted),
+            "average_trust_confidence": round(
+                sum(confidence) / len(confidence)
+                if confidence else 0.0,
+                3,
+            ),
+        }
 
     def resolve(
         self,
