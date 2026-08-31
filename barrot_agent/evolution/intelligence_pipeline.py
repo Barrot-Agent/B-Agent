@@ -96,7 +96,7 @@ class IntelligencePipeline:
 
         return json.loads(CORPUS_FILE.read_text())
 
-    def synthesize(self, items: list[dict[str, Any]]) -> dict[str, Any]:
+    def synthesize(self, items: list[dict[str, Any]], trust_verification: dict[str, Any] | None = None) -> dict[str, Any]:
         corpus = self.load_corpus()
         known_hashes = {item.get("content_hash") for item in corpus}
 
@@ -134,13 +134,14 @@ class IntelligencePipeline:
             )
 
             for evidence in evidence_records:
-                evidence["trust"] = {
-                    "authoritative": trust_verification["authoritative"],
-                    "state_verified": trust_verification["verification"]["passed"],
-                    "confidence": trust_verification["confidence"],
-                    "syndromes": trust_verification["syndromes"],
-                    "certificate": trust_verification["certificate"],
-                }
+                if trust_verification is not None:
+                    evidence["trust"] = {
+                        "authoritative": trust_verification["authoritative"],
+                        "state_verified": trust_verification["verification"]["passed"],
+                        "confidence": trust_verification["confidence"],
+                        "syndromes": trust_verification["syndromes"],
+                        "certificate": trust_verification["certificate"],
+                    }
 
                 stored = self.evidence_store.add(evidence)
 
@@ -212,7 +213,7 @@ class IntelligencePipeline:
                 },
             }
 
-        result = self.synthesize(acquired)
+        result = self.synthesize(acquired, trust_verification)
         result["trust"] = {
             "authoritative": trust_verification["authoritative"],
             "state_verified": trust_verification["verification"]["passed"],
