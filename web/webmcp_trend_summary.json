@@ -1,10 +1,10 @@
 {
   "generated_from": {
-    "total_entries": 34,
-    "distilled_entries": 25
+    "total_entries": 49,
+    "distilled_entries": 27
   },
   "claim_type_breakdown": {
-    "product_announcement": 21,
+    "product_announcement": 23,
     "opinion_or_hype": 2,
     "proposed_spec_change": 2
   },
@@ -294,6 +294,30 @@
           "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQX3EtMmQxcF9IVUZ0Wm1Qam9OZ09zOWZ4dzFDT0Fsb3lRd0RVdjNwMm9hYnNtY3NsY1oyXzJvaFZxZC11UU5fai1rZkc1Q0FjWGhpMjlLbXBXaWk1M2poSjVSYXRGZUpGT2preTRRYnJwc1VtYUFLREFyRFdiTWluNDVUdEx0b2w0WjFiWWdRV3NxZw?oc=5",
           "claim_type": "product_announcement",
           "concrete_claim": "Revizto announced that it now supports platform connections through an AI MCP integration."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "Live Auction Inspection Tool",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Prebid.js gains DevTools MCP module letting AI agents read live auctions - PPC Land",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQb19zdlNmeTlCTHdSM1FKSUJpTDN1eG8tRHBnbHNrUmVLWVljOGJHaWpsWkRjd0VROGFnTlBPVnl0ajhURkJjZ0puSmU5RS1EdFpHYzZUUnBjcV9qMVBJRVIzb3N2VmpWdzRZRkxXT0RUSGRCYTFwNGc0LXZmRk1hRUZTa2VlY1g5U2hVazRVWTdfTlg5?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Prebid.js now includes a DevTools MCP module that enables AI agents to read live auction data."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "Data Migration Assistant",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "ChatGPT Atlas Shuts Down Aug. 9: What Users Must Save Before Migrating - TechRepublic",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPNXp2bDZFMlVHNGVIODZibzVKRHpJMDJZTVZPZ2VzYUlSSmhlTmVXcVRid2xMbm5JRmJheTIyZ09EdGtzNEJ6Q0txdmZJbXlaMENMUWdvSnRRUUdFeGs1VnNUTmJDUjFNRVpaWkNsekZFeWExYVNkVy1TNGJXTUlZVg?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "OpenAI will shut down ChatGPT Atlas on August\u202f9, and users must export and save their data before migrating to another service."
         }
       ]
     }
