@@ -4326,6 +4326,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Glassnode",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin speculators keep BTC price \u2018pinned\u2019 below $68.7K: Glassnode",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Coldcard",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 2,
@@ -12397,17 +12412,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "FTX",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Glassnode",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

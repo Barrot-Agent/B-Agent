@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 84,
+      "total_mentions": 85,
       "bullish": 37,
       "neutral": 17,
-      "bearish": 30,
-      "net_sentiment_score": 0.083,
+      "bearish": 31,
+      "net_sentiment_score": 0.071,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2675,6 +2675,21 @@
       "example_headlines": [
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "Glassnode",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+        "Bitcoin speculators keep BTC price \u2018pinned\u2019 below $68.7K: Glassnode"
       ]
     },
     {
@@ -5323,20 +5338,6 @@
       ],
       "example_headlines": [
         "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
-      ]
-    },
-    {
-      "entity": "Glassnode",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
       ]
     },
     {
