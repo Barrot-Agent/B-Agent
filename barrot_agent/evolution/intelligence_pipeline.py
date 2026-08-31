@@ -19,6 +19,7 @@ import requests
 from barrot_agent.evolution.event_bus import CognitiveEvent, CognitiveEventBus
 from barrot_agent.evolution.evidence_normalization import EvidenceNormalizationEngine
 from barrot_agent.evolution.evidence_store import EvidenceStore
+from barrot_agent.evolution.repository_awareness import RepositoryAwarenessEngine
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT / "data" / "evolution"
@@ -42,6 +43,7 @@ class IntelligencePipeline:
         self.event_bus = event_bus or CognitiveEventBus()
         self.normalizer = EvidenceNormalizationEngine()
         self.evidence_store = EvidenceStore()
+        self.repository_awareness = RepositoryAwarenessEngine()
 
     def acquire(self) -> list[dict[str, Any]]:
         items = []
@@ -179,6 +181,7 @@ class IntelligencePipeline:
 
     def run_cycle(self) -> dict[str, Any]:
         """Run one evidence-acquisition cycle with trust verification."""
+        repository_snapshot = self.repository_awareness.snapshot()
         acquired = self.acquire()
 
         trust_verification = self.trust_engine.execute(
@@ -214,6 +217,7 @@ class IntelligencePipeline:
             }
 
         result = self.synthesize(acquired, trust_verification)
+        result["repository_awareness"] = repository_snapshot
         result["trust"] = {
             "authoritative": trust_verification["authoritative"],
             "state_verified": trust_verification["verification"]["passed"],

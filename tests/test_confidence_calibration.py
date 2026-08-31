@@ -1,40 +1,64 @@
-def test_calibration_records_and_resolves(tmp_path, monkeypatch):
+
+def test_calibration_records_trust_metadata(tmp_path, monkeypatch):
     import barrot_agent.evolution.confidence_calibration as module
 
-    monkeypatch.setattr(module, "DATA_DIR", tmp_path)
     monkeypatch.setattr(
         module,
         "CALIBRATION_FILE",
-        tmp_path / "calibration.json",
+        tmp_path / "confidence.json",
+    )
+    monkeypatch.setattr(
+        module,
+        "DATA_DIR",
+        tmp_path,
     )
 
     engine = module.ConfidenceCalibrationEngine()
 
-    engine.record("claim-001", 0.8, "supported")
+    trust = {
+        "records_evaluated": 2,
+        "authoritative_records": 2,
+        "unverified_records": 0,
+        "average_trust_confidence": 0.91,
+    }
 
-    assert engine.resolve("claim-001", True) is True
+    record = engine.record(
+        claim_id="claim-1",
+        confidence=0.88,
+        status="corroborated",
+        trust=trust,
+    )
 
-    summary = engine.summary()
-
-    assert summary["records"] == 1
-    assert summary["resolved"] == 1
-    assert summary["accuracy"] == 1.0
+    assert record["trust"]["authoritative_records"] == 2
+    assert engine.trust_summary()["authoritative_records"] == 1
+    assert engine.trust_summary()["average_trust_confidence"] == 0.91
 
 
-def test_calibration_does_not_invent_outcomes(tmp_path, monkeypatch):
+def test_calibration_accepts_aggregate_trust_summary(tmp_path, monkeypatch):
     import barrot_agent.evolution.confidence_calibration as module
 
-    monkeypatch.setattr(module, "DATA_DIR", tmp_path)
     monkeypatch.setattr(
         module,
         "CALIBRATION_FILE",
-        tmp_path / "calibration.json",
+        tmp_path / "confidence.json",
     )
 
     engine = module.ConfidenceCalibrationEngine()
-    engine.record("claim-001", 0.8, "supported")
 
-    summary = engine.summary()
+    trust = {
+        "records_evaluated": 2,
+        "authoritative_records": 2,
+        "unverified_records": 0,
+        "average_trust_confidence": 0.91,
+    }
 
-    assert summary["resolved"] == 0
-    assert summary["accuracy"] is None
+    record = engine.record(
+        claim_id="aggregate-trust-1",
+        confidence=0.88,
+        status="corroborated",
+        trust=trust,
+    )
+
+    assert record["trust"]["authoritative_records"] == 2
+    assert engine.trust_summary()["authoritative_records"] == 1
+    assert engine.trust_summary()["average_trust_confidence"] == 0.91

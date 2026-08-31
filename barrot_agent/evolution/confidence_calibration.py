@@ -59,24 +59,41 @@ class ConfidenceCalibrationEngine:
 
     def trust_summary(self) -> dict[str, Any]:
         records = self.load()
-        trusted = []
-        confidence = []
+
+        authoritative = 0
+        confidence_values: list[float] = []
 
         for record in records:
-            trust = record.get("trust", {})
-            if trust.get("authoritative") is True:
-                trusted.append(record)
+            trust = record.get("trust") or {}
 
-            value = trust.get("confidence", {}).get("lower_bound")
+            # A record can carry either:
+            #   authoritative=True
+            # or an aggregate trust summary.
+            if trust.get("authoritative") is True:
+                authoritative += 1
+            elif (
+                isinstance(trust.get("authoritative_records"), int)
+                and trust.get("authoritative_records", 0) > 0
+            ):
+                authoritative += 1
+
+            value = trust.get("average_trust_confidence")
             if isinstance(value, (int, float)):
-                confidence.append(float(value))
+                confidence_values.append(float(value))
+
+            nested = trust.get("confidence")
+            if isinstance(nested, dict):
+                value = nested.get("lower_bound")
+                if isinstance(value, (int, float)):
+                    confidence_values.append(float(value))
 
         return {
             "records": len(records),
-            "authoritative_records": len(trusted),
+            "authoritative_records": authoritative,
             "average_trust_confidence": round(
-                sum(confidence) / len(confidence)
-                if confidence else 0.0,
+                sum(confidence_values) / len(confidence_values)
+                if confidence_values
+                else 0.0,
                 3,
             ),
         }
