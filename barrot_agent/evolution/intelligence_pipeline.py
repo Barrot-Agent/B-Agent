@@ -1,3 +1,4 @@
+from barrot_agent.trust import TrustEngine
 """Evidence-based recursive intelligence acquisition for Barrot.
 
 This module expands Barrot's knowledge graph without autonomously modifying
@@ -32,6 +33,7 @@ SOURCES = [
 
 
 class IntelligencePipeline:
+    trust_engine = TrustEngine()
     """Acquire, preserve, score, and recursively prioritize knowledge."""
 
     def __init__(self, event_bus: CognitiveEventBus | None = None) -> None:
