@@ -10,21 +10,21 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-from advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
+from barrot_agent.agi.advanced_algorithms import algorithmic_optimizer, optimize_algorithm, performance_monitor
 
 # Import AGI Orchestrator for unified intelligence
-from agi_orchestrator import achieve_agi_with_unified_system, agi_orchestrator
-from agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
-from email_analyzer import analyze_email, analyze_emails, email_analyzer
+from barrot_agent.agi.agi_orchestrator import achieve_agi_with_unified_system, agi_orchestrator
+from barrot_agent.agi.agi_reasoning import ReasoningChain, agi_engine, solve_with_agi
+from barrot_agent.analysis.email_analyzer import analyze_email, analyze_emails, email_analyzer
 
 # Import core modules
-from quantum_entanglement import (
+from barrot_agent.agi.quantum_entanglement import (
     create_entangled_decision_space,
     initialize_quantum_entanglement,
     quantum_coordinator,
     quantum_optimize,
 )
-from transformative_insights import (
+from barrot_agent.agi.transformative_insights import (
     TransformativeInsightsEngine,
     acquire_transformative_data,
     discover_transformative_insights,

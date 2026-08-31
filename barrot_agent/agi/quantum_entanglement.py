@@ -7,7 +7,7 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-from emit_pingpong import emit_pingpong_request
+from .pingpong_emitter import emit_pingpong_request
 
 
 class QuantumState:

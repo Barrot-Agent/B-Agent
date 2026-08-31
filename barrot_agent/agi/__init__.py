@@ -21,14 +21,14 @@ from .advanced_algorithms import (
     optimize_algorithm,
     performance_monitor,
 )
-from .agi_reasoning import AGIEngine, ReasoningChain, agi_engine, solve_with_agi
+from .agi_reasoning import AGIReasoningEngine, ReasoningChain, agi_engine, solve_with_agi
 
 __all__ = [
     "AlgorithmicOptimizer",
     "algorithmic_optimizer",
     "optimize_algorithm",
     "performance_monitor",
-    "AGIEngine",
+    "AGIReasoningEngine",
     "agi_engine",
     "solve_with_agi",
     "ReasoningChain",

@@ -8,7 +8,7 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
-from quantum_entanglement import create_entangled_decision_space, quantum_coordinator
+from .quantum_entanglement import create_entangled_decision_space, quantum_coordinator
 
 
 class ReasoningChain:
