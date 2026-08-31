@@ -190,7 +190,15 @@ class IntelligencePipeline:
             transport_success=True,
             provenance=["IntelligencePipeline.acquire"],
         )
-        return self.synthesize(acquired)
+        result = self.synthesize(acquired)
+        result["trust"] = {
+            "authoritative": trust_verification["authoritative"],
+            "state_verified": trust_verification["verification"]["passed"],
+            "confidence": trust_verification["confidence"],
+            "syndromes": trust_verification["syndromes"],
+            "certificate": trust_verification["certificate"],
+        }
+        return result
 
 
 if __name__ == "__main__":
