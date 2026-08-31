@@ -1,9 +1,9 @@
 {
-  "summary": "The XRP signal, generated at\u202f2026\u201108\u201131\u202f12:38:09\u202fUTC, has a bullish news score of\u202f84 based on\u202f21\u202fheadlines, with a confidence level of\u202f0.95. All listed articles are either neutral or bullish, indicating strong positive sentiment for the XRP Ledger.\n\n- Score:\u202f84 | Confidence:\u202f0.95 | News entries:\u202f21  \n- Headlines: 1 neutral analysis, 5 bullish technical papers (message dissemination, multicast routing, Pub/Sub, consensus crash testing, causal AI)  \n- Source:\u202fgroq:bullish+news(21) (generated at Unix\u202f1788179889)",
-  "spoken_line": "XRP news score is 84 with 0.95 confidence from 21 headlines, all neutral or bullish, showing strong positive sentiment. Not financial advice. Informational only. Do your own research.",
+  "summary": "The signal, generated at\u202f2026\u201108\u201131\u202f12:38:09\u202fUTC, rates XRP sentiment as bullish with a news score of\u202f84 based on\u202f21\u202frelevant headlines. Confidence in this assessment is high at\u202f0.95.\n\n- Timestamp:\u202f2026\u201108\u201131T12:38:09.813107+00:00  \n- Score / News score:\u202f84 (from 21 news entries)  \n- Confidence:\u202f0.95 (source:\u202fgroq:bullish+news(21))",
+  "spoken_line": "XRP sentiment is bullish with a news score of 84 from 21 headlines, confidence high at ninety\u2011five percent. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
-  "audio": "web/generated_audio/latest_signal_summary.wav",
-  "tts_error": null,
+  "audio": null,
+  "tts_error": "HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `canopylabs/orpheus-v1-english` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 3600, Used 3491, Requested 171. Please try again in 24m48s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
   "source_signal": {
     "timestamp": "2026-08-31T12:38:09.813107+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
