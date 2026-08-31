@@ -134,6 +134,14 @@ class IntelligencePipeline:
             )
 
             for evidence in evidence_records:
+                evidence["trust"] = {
+                    "authoritative": trust_verification["authoritative"],
+                    "state_verified": trust_verification["verification"]["passed"],
+                    "confidence": trust_verification["confidence"],
+                    "syndromes": trust_verification["syndromes"],
+                    "certificate": trust_verification["certificate"],
+                }
+
                 stored = self.evidence_store.add(evidence)
 
                 # Publish only newly stored evidence. Duplicate evidence is
