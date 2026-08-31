@@ -57,3 +57,47 @@ def test_research_flows_through_evidence_store_and_claim_event(tmp_path, monkeyp
     assert len(claims) == 2
     assert pipeline.evidence_store.summary()["records"] == 2
     assert all(claim["candidate"] is True for claim in claims)
+
+
+def test_intelligence_pipeline_trust_gate_blocks_unverified_synthesis(monkeypatch):
+    pipeline = IntelligencePipeline()
+
+    acquired = [{
+        "source": "test",
+        "source_url": "https://example.com",
+        "type": "research",
+        "content_hash": "test-hash",
+        "retrieved_at": "2026-08-31T00:00:00+00:00",
+        "content": "test evidence",
+    }]
+
+    monkeypatch.setattr(pipeline, "acquire", lambda: acquired)
+
+    class FailedTrust:
+        def execute(self, **kwargs):
+            return {
+                "authoritative": False,
+                "verification": {"passed": False},
+                "confidence": {"lower_bound": 0.0},
+                "syndromes": [{
+                    "code": "STATE_MISMATCH",
+                    "severity": "significant",
+                }],
+                "certificate": {
+                    "certificate_type": "BVC-1",
+                },
+            }
+
+    pipeline.trust_engine = FailedTrust()
+
+    def synthesis_must_not_run(items):
+        raise AssertionError("Unverified evidence reached synthesis")
+
+    monkeypatch.setattr(pipeline, "synthesize", synthesis_must_not_run)
+
+    result = pipeline.run_cycle()
+
+    assert result["new_items"] == 0
+    assert result["trust"]["authoritative"] is False
+    assert result["trust"]["state_verified"] is False
+    assert result["trust"]["certificate"]["certificate_type"] == "BVC-1"
