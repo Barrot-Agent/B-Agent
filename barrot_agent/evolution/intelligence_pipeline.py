@@ -182,6 +182,7 @@ class IntelligencePipeline:
     def run_cycle(self) -> dict[str, Any]:
         """Run one evidence-acquisition cycle with trust verification."""
         repository_snapshot = self.repository_awareness.snapshot()
+        repository_snapshot = self.repository_awareness.snapshot()
         acquired = self.acquire()
 
         trust_verification = self.trust_engine.execute(
