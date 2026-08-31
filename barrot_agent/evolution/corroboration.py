@@ -111,6 +111,7 @@ class CrossCorroborationEngine:
             claim_id=claim_id,
             confidence=confidence,
             status=lifecycle["status"],
+            trust=trust_summary,
         )
 
         self.integrity.record_outcome(
