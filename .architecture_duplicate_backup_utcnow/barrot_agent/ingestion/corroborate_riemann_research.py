@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-Barrot Ω — Riemann Research Corroboration Layer
 
 Groups harvested research by normalized titles and tracks source diversity.
 Corroboration is metadata-level evidence only and never establishes a

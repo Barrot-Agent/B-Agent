@@ -23,7 +23,6 @@ Barrot-Agent has ingested the complete framework for the Seven Millennium Proble
 |---------|-----------|--------|------------------|----------|
 | P vs NP | $1M | Open | High | Initial analysis |
 | Hodge Conjecture | $1M | Open | Medium | Framework study |
-| Riemann Hypothesis | $1M | Open | Medium | Framework study |
 | Yang-Mills & Mass Gap | $1M | Open | Low | Framework study |
 | Navier-Stokes | $1M | Open | High | Initial analysis |
 | Birch & Swinnerton-Dyer | $1M | Open | Medium | Framework study |
@@ -107,10 +106,8 @@ For certain "nice" spaces (complex projective algebraic varieties), can all Hodg
 
 ---
 
-## 3. Riemann Hypothesis
 
 ### Problem Statement
-All non-trivial zeros of the Riemann zeta function have real part equal to 1/2.
 
 ### Current Status
 - **Official Status**: Open (most famous unsolved problem in mathematics)
@@ -312,7 +309,6 @@ Every simply connected, closed 3-manifold is homeomorphic to the 3-sphere.
 3. **Poincaré (historical)** - Insights for manifold learning and topology
 
 ### Medium Priority (Foundational Understanding)
-4. **Riemann Hypothesis** - Number theory patterns and cryptography
 5. **Hodge Conjecture** - Geometric deep learning connections
 6. **Birch & Swinnerton-Dyer** - Cryptography and algebraic structures
 

@@ -73,7 +73,6 @@ Three-tier classification of problems:
 - **Lower Priority**: Long-term research focus
 
 ### 6. Search Summaries
-Optimized summaries for key problems (Riemann Hypothesis, P vs NP, Navier-Stokes) with:
 - Quick summary
 - AI relevance
 - Status
@@ -200,7 +199,6 @@ print(f"Computer Science Problems: {cs_problems}")
 
 ## 🔍 Search-Ready Features
 
-### Riemann Hypothesis Summary
 
 Optimized for boundary queries and numerical analysis workflows:
 - **Quick Summary**: Problem statement

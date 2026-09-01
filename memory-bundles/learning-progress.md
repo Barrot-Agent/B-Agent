@@ -16,7 +16,6 @@
 #### Topics Covered
 - P vs NP Problem - Computational complexity fundamentals
 - Hodge Conjecture - Algebraic geometry and topology
-- Riemann Hypothesis - Analytic number theory
 - Yang-Mills & Mass Gap - Quantum field theory
 - Navier-Stokes - Fluid dynamics and PDEs
 - Birch & Swinnerton-Dyer - Elliptic curves and L-functions

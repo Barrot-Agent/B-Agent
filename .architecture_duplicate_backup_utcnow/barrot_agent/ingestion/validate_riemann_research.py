@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-Barrot Ω — Conservative Riemann Research Validation
 
 Adds cross-record consistency and source provenance signals without
 promoting publications or computational results to established proof.
@@ -59,7 +58,6 @@ def main():
 
     SOURCE.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"Validated {len(records)} Riemann research records.")
 
 
 if __name__ == "__main__":

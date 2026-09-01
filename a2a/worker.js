@@ -1,4 +1,3 @@
-import { RIEMANN_RESEARCH_CORPUS } from "./riemann_research_corpus.js";
 
 const MAX_REQUEST_BYTES = 64 * 1024;
 const RATE_WINDOW_MS = 60_000;
@@ -71,10 +70,8 @@ const AGENT_CARD = {
   skills: [
     {
       id: "riemann-research",
-      name: "Read-only Riemann Hypothesis research corpus",
       description: "Retrieve validated structured research metadata. Publications and computational evidence are never represented as mathematical proof.",
       tags: ["research", "mathematics", "number-theory", "riemann", "read-only"],
-      examples: ["Retrieve the latest Riemann research corpus.", "Summarize computational evidence separately from published claims."]
     },
 
     {
@@ -264,7 +261,6 @@ export default {
           by_evidence_class: byEvidenceClass,
         },
         grounding: {
-          source: "Barrot read-only Riemann research corpus",
           mathematical_truth_assessment: false,
           rule: "Returned records are research metadata. Publication claims, computational evidence, and corpus summaries do not establish mathematical proof."
         },

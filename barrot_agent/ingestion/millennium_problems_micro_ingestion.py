@@ -413,8 +413,6 @@ class MillenniumProblemsMicroIngestion:
         """Generate search-ready summaries for key sections"""
         summaries = {}
 
-        # Riemann Hypothesis summary for pandas workflows
-        riemann = next((p for p in self.problem_details if "Riemann" in p.name), None)
         if riemann:
             summaries["riemann_hypothesis"] = {
                 "quick_summary": f"{riemann.problem_statement}",
@@ -502,7 +500,6 @@ class MillenniumProblemsMicroIngestion:
         domain_mapping = {
             "P vs NP": "computer_science",
             "Hodge Conjecture": "geometry_topology",
-            "Riemann Hypothesis": "number_theory",
             "Yang-Mills & Mass Gap": "quantum_physics",
             "Navier-Stokes": "analysis_pde",
             "Birch & Swinnerton-Dyer": "number_theory",

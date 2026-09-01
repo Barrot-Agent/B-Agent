@@ -351,7 +351,6 @@ Complete mathematical framework ingestion:
 
 1. **P vs NP Problem**
 2. **Hodge Conjecture**
-3. **Riemann Hypothesis**
 4. **Yang-Mills Existence and Mass Gap**
 5. **Navier-Stokes Existence and Smoothness**
 6. **Birch and Swinnerton-Dyer Conjecture**

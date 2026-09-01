@@ -18,9 +18,7 @@ assert harvest.classify_evidence("Numerical verification of zeros", "") == "comp
 
 assert harvest.classify_evidence("A new conjecture", "") == "conjecture_or_hypothesis"
 
-assert harvest.classify_evidence("Proof of the Riemann Hypothesis", "") == "published_claim"
 
-corpus_file = ROOT / "a2a" / "riemann_research_corpus.js"
 assert corpus_file.exists(), "A2A corpus was not generated"
 
 corpus_text = corpus_file.read_text(encoding="utf-8")

@@ -277,10 +277,8 @@ _register(
         name="Mathematician",
         description="Pure and applied mathematician across all branches",
         knowledge_domains=[
-            "Number theory primes Riemann zeta function modular arithmetic",
             "Abstract algebra groups rings fields Galois theory",
             "Topology metric spaces compactness connectedness manifolds",
-            "Differential geometry Riemannian manifolds curvature geodesics",
             "Category theory functors natural transformations adjunction",
             "Proof theory sequent calculus natural deduction cut elimination",
             "Fractal mathematics Mandelbrot set Julia sets dimension",

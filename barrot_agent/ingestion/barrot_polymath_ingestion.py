@@ -233,10 +233,8 @@ _POLYMATH_CATALOGUE: List[Dict[str, Any]] = [
             "geometry, topology, and stochastic analysis."
         ),
         "key_concepts": [
-            "Number theory: primes, Riemann hypothesis, modular forms, elliptic curves",
             "Abstract algebra: groups, rings, fields, modules, Galois theory",
             "Topology: metric spaces, compactness, manifolds, homology, homotopy",
-            "Differential geometry: Riemannian metrics, curvature, geodesics, Lie groups",
             "Algebraic geometry: varieties, schemes, sheaves, cohomology",
             "Category theory: functors, adjunctions, limits, toposes",
             "Proof theory: sequent calculus, cut elimination, proof complexity",
@@ -245,7 +243,6 @@ _POLYMATH_CATALOGUE: List[Dict[str, Any]] = [
             "Probability: measure-theoretic, martingales, large deviations",
             "Stochastic processes: Markov chains, Brownian motion, Itô calculus",
             "Numerical analysis: stability, convergence, finite element methods",
-            "Complex analysis: Cauchy theorem, residues, Riemann surfaces",
             "Functional analysis: Banach/Hilbert spaces, spectral theory, distributions",
             "Sacred geometry: Platonic solids, golden ratio, Metatron's Cube",
             "Fractal mathematics: Mandelbrot/Julia sets, Hausdorff dimension, IFS",

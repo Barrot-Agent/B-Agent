@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-Build a read-only Riemann research corpus for Barrot's A2A Worker.
 
 Only structured harvested records are exported. This builder never promotes
 a publication or computational result to mathematical proof status.
@@ -13,7 +12,6 @@ from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
-OUTPUT = ROOT / "a2a" / "riemann_research_corpus.js"
 
 ALLOWED_CLASSES = {
     "established_result",
@@ -26,7 +24,6 @@ ALLOWED_CLASSES = {
 
 def main():
     payload = {
-        "domain": "Riemann Hypothesis",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "read_only": True,
         "evidence_policy": {

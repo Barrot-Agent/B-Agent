@@ -16,7 +16,6 @@ Typical usage
 -------------
     platform = DirectivePlatform()
     directive = platform.issue_directive(
-        title="Learn about Riemann Hypothesis",
         description="Summarise current progress and open sub-problems.",
         directive_type=DirectiveType.LEARN,
         agent_ids=["learner-agent", "analyst-agent"],

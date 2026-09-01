@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-Barrot Ω — Riemann Research Quality Gate
 
 Assigns metadata-quality signals without determining mathematical truth.
 No score can upgrade a claim to an established mathematical result.

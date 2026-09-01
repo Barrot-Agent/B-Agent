@@ -373,7 +373,6 @@ Complete mathematical framework ingestion:
 
 1. **P vs NP Problem**
 2. **Hodge Conjecture**
-3. **Riemann Hypothesis**
 4. **Yang-Mills Existence and Mass Gap**
 5. **Navier-Stokes Existence and Smoothness**
 6. **Birch and Swinnerton-Dyer Conjecture**
@@ -2233,7 +2232,6 @@ Three-tier classification of problems:
 - **Lower Priority**: Long-term research focus
 
 ### 6. Search Summaries
-Optimized summaries for key problems (Riemann Hypothesis, P vs NP, Navier-Stokes) with:
 - Quick summary
 - AI relevance
 - Status
@@ -2360,7 +2358,6 @@ print(f"Computer Science Problems: {cs_problems}")
 
 ## 🔍 Search-Ready Features
 
-### Riemann Hypothesis Summary
 
 Optimized for boundary queries and numerical analysis workflows:
 - **Quick Summary**: Problem statement
@@ -2677,12 +2674,9 @@ Each file contains:
 - Next steps (4+ action items)
 - Progress status
 
-**Example - Riemann Hypothesis:**
 ```json
 {
   "number": 3,
-  "name": "Riemann Hypothesis",
-  "problem_statement": "All non-trivial zeros of the Riemann zeta function have real part equal to 1/2.",
   "official_status": "Open (most famous unsolved problem in mathematics)",
   "ai_ml_relevance": "Medium - Pattern recognition in zeros distribution",
   "why_matters_for_ai": [
@@ -2706,7 +2700,6 @@ Each file contains:
 
 Optimized for search and ML workflows with **3 high-priority problems**:
 
-**Riemann Hypothesis** (for pandas/boundary queries):
 - Quick summary
 - AI relevance
 - Computational approach: "Numerical analysis, pattern detection with ML, statistical analysis of zeros"
@@ -2730,7 +2723,6 @@ Multi-dimensional classification system:
 
 **By AI Applicability:**
 - High (2): P vs NP, Navier-Stokes
-- Medium (3): Hodge Conjecture, Riemann Hypothesis, Birch & Swinnerton-Dyer
 - Low (2): Yang-Mills & Mass Gap, Poincaré Conjecture
 
 **By Status:**
@@ -2739,14 +2731,12 @@ Multi-dimensional classification system:
 
 **By Mathematical Domain:**
 - Computer Science (1): P vs NP
-- Number Theory (2): Riemann Hypothesis, Birch & Swinnerton-Dyer
 - Geometry/Topology (2): Hodge Conjecture, Poincaré Conjecture
 - Analysis/PDE (1): Navier-Stokes
 - Quantum Physics (1): Yang-Mills & Mass Gap
 
 **By Barrot Priority:**
 - High (3): P vs NP, Navier-Stokes, Poincaré (historical)
-- Medium (3): Riemann Hypothesis, Hodge Conjecture, Birch & Swinnerton-Dyer
 - Lower (1): Yang-Mills
 
 ---
@@ -2820,7 +2810,6 @@ high_ai = df[df['ai_applicability'] == 'High']
 
 ### 3. Number Theory & Cryptography
 
-**Riemann Hypothesis:**
 - Prime number distribution
 - Cryptographic foundations
 - Pattern recognition in zeros
@@ -2920,7 +2909,6 @@ high_ai = df[df['ai_applicability'] == 'High']
 - Navier-Stokes: Direct applications in physics-informed neural networks
 
 **Medium AI Applicability (3 problems):**
-- Riemann Hypothesis: Pattern recognition and cryptography
 - Hodge Conjecture: Geometric deep learning connections
 - Birch & Swinnerton-Dyer: Cryptography and algebraic structures
 
@@ -2938,7 +2926,6 @@ high_ai = df[df['ai_applicability'] == 'High']
 3. Poincaré for topological insights (historical study)
 
 **Foundational Work (Medium Priority):**
-1. Riemann Hypothesis for number theory and cryptography
 2. Hodge Conjecture for geometric deep learning
 3. Birch & Swinnerton-Dyer for algebraic structures
 
@@ -2949,7 +2936,6 @@ high_ai = df[df['ai_applicability'] == 'High']
 
 **Computer Science ∩ Number Theory:**
 - P vs NP complexity affects cryptographic hardness
-- Riemann Hypothesis impacts algorithmic number theory
 
 **Topology ∩ Machine Learning:**
 - Poincaré insights apply to manifold learning

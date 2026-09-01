@@ -3,10 +3,8 @@ from pathlib import Path
 path = Path("a2a/worker.js")
 text = path.read_text()
 
-anchor = 'import { RIEMANN_RESEARCH_CORPUS } from "./riemann_research_corpus.js";'
 
 security_code = r'''
-import { RIEMANN_RESEARCH_CORPUS } from "./riemann_research_corpus.js";
 
 const MAX_REQUEST_BYTES = 64 * 1024;
 const RATE_WINDOW_MS = 60_000;

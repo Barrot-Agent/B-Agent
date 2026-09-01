@@ -24,7 +24,6 @@ def test_atom_parser():
     xml = """<entry>
       <id>http://arxiv.org/abs/1234</id>
       <published>2026-01-01T00:00:00Z</published>
-      <title>Riemann Hypothesis Research</title>
       <summary>A conjecture concerning zeros.</summary>
       <author><name>Researcher</name></author>
     </entry>"""

@@ -391,7 +391,6 @@ that outputs contain the right emoji sections, but not that they reflect reality
                                                                                                                         
 ### 4.11 🟡 Scope Explosion / Accumulated Debt                                                                          
                                                                                                                         
-The repository contains: millennium problem JSON files, Riemann Hypothesis research corpus, a hover bike research folder
 (hover_bike_revolution/ (hover_bike_revolution/)), longevity biomarker ingestion, AGI transcendence status tracking, a  
 Kaggle competitions automation pipeline, XRP liquidity acceleration, QUANTUM_AGI_INTEGRATION.md, and a Gumroad          
 monetization engine — none of which are imported by or connected to the core agent platform. These bloat the cognitive  

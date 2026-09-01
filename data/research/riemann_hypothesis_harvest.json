@@ -1,11 +1,8 @@
 {
-  "domain": "Riemann Hypothesis",
   "schema_version": "1.0",
   "records": [
     {
       "id": "http://arxiv.org/abs/2608.19160v1",
-      "title": "Second-Level Concavity of the Riemann $Ξ$ Kernel",
-      "summary": "Let $Φ$ be the classical Jacobi-theta kernel in the Fourier representation of the Riemann $Ξ$-function, set $s(t)=Φ(\\sqrt t)$, and define the first Laguerre expression $f(t)=s'(t)^2-s(t)s''(t)$. Csordas and Dimitrov (2000) conjectured that $\\log f$ is strictly concave on $(0,\\infty)$; Csordas (2015) later restated the assertion as Open Problem~4.14. We prove the conjecture by two complementary methods, sharing only a local certificate near the modular fixed point. The first proof is a direct theta-series argument: a directed-rounding Taylor certificate near $t=0$ is joined to a dominant-first-summand estimate with rigorous theta-tail bounds. The second proof uses Jacobi's nonlinear third-order differential equation for $θ_3$ to obtain a three-dimensional autonomous phase space, a sharp elliptic monotonicity theorem, and an exact quartic reduction of the target inequality. The quartic boundary is a polynomial shear of the quadratic cone $XY=Z^2$. A directed interval certificate proves that every possible cone contact on the only remaining compact interval points strictly into the desired region; beyond that interval a pointwise monotonicity theorem closes the argument. The finite certificates and exact symbolic checks are supplied as reproducible scripts. The result implies the associated double Turán inequalities through the theorem of Csordas--Dimitrov, but no assertion of the Riemann Hypothesis is made.",
       "authors": [
         "Michel Planat",
         "Patrick Solé"
@@ -30,7 +27,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199352+00:00",
+        "checked_at": "2026-09-01T05:42:45.570150+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -51,7 +48,6 @@
     {
       "id": "http://arxiv.org/abs/2608.19047v1",
       "title": "Eureka: Task-Conditioned Meta-Agent Orchestration for Scientific Discovery",
-      "summary": "We present Eureka, a task-conditioned Meta-Agent architecture that compiles long-horizon tasks into dynamic obligation graphs with explicit acceptance semantics. During execution, Eureka forms Macro-Agents with specialized state, memory, operators, tools, verifiers, and local topology via receding-horizon planning, architecture promotion, and minimal-sufficient compilation. When bottlenecks recur, cost-benefit-gated evolution updates the local architecture under constraints. Theoretically, we establish results on regret, planning invalidation, amortization, subtree interfaces, serializability, and verification. Experimentally, Eureka completes 170/170 recursive tasks and generates 3,948 certificates with no false acceptances. Active context compresses median input from 9,490 to 4,005 tokens; incremental processing avoids 65.38% recomputation across 12,000 tasks; 16,000 concurrent executions serialize consistently. The same Meta-Agent instantiates a Theory-Discovery Agent and a Math/Conjecture Agent. The former yields structural results in quantum-process and spacetime theory. The latter identifies bottlenecks in Riemann Hypothesis research and advances a positivity certificate for Suzuki's localized Weil quadratic form to 0 &lt; a &lt;= 69/200 = 0.345, reaching ~99.55% of (log 2)/2. These results suggest that scientific-agent capability depends not only on the base model but on whether an architecture can be formed to match the task's cognitive structure.",
       "authors": [
         "Alizer Wong",
         "Heng Cui",
@@ -83,7 +79,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199392+00:00",
+        "checked_at": "2026-09-01T05:42:45.570182+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -104,7 +100,6 @@
     {
       "id": "http://arxiv.org/abs/2608.16034v1",
       "title": "Simple and distinct zeros in a prime-modulus Dirichlet family at mesoscopic shrinking height",
-      "summary": "Fix $0&lt;α&lt;1$. Let $q$ tend to infinity through odd primes, put $Q=\\log q$, and set $I=(Q^{-α},2Q^{-α}]$. Averaging without weights over the $q-2$ nonprincipal characters modulo $q$, let $\\mathcal N_q$ be the number of nontrivial zeros in $I$, counted with multiplicity; let $\\mathcal N^s_{0,q}$ and $\\mathcal N^*_{0,q}$ count, respectively, simple and distinct critical-line zero points; and let $\\mathcal N_{d,q}$ count all distinct zero points, without a location restriction. We prove unconditionally that \\[ \\mathcal N_q=\\frac{q(\\log q)^{1-α}}{2π}\\{1+o_α(1)\\}, \\] \\[ \\liminf_{q\\to\\infty}\\frac{\\mathcal N^s_{0,q}}{\\mathcal N_q} \\ge C_{\\mathrm{MT}},\\qquad \\liminf_{q\\to\\infty}\\frac{\\mathcal N^*_{0,q}}{\\mathcal N_q} \\ge C_{\\mathrm{MT}},\\qquad \\liminf_{q\\to\\infty}\\frac{\\mathcal N_{d,q}}{\\mathcal N_q} \\ge C_d, \\] where \\[ C_{\\mathrm{MT}}=\\frac32-\\frac1{\\sqrt2}\\cot\\left(\\frac1{\\sqrt2}\\right) =0.672500703679\\ldots, \\qquad C_d=\\frac{1+C_{\\mathrm{MT}}}{2}=0.836250351839\\ldots . \\] The physical height tends to zero, whereas $I$ contains $\\asymp(\\log q)^{1-α}$ local mean spacings. The proof combines small-height counting and zero-density deletion with a finite smooth Gabor compression of Weil's Hermitian form. First and second matrix moments, together with an inertia-based rank--trace inequality, yield the three counting bounds. No form of the generalized Riemann hypothesis is assumed.",
       "authors": [
         "Zhixu Hua",
         "Xiufan Yang"
@@ -129,7 +124,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199404+00:00",
+        "checked_at": "2026-09-01T05:42:45.570191+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -150,7 +145,6 @@
     {
       "id": "http://arxiv.org/abs/2608.15773v1",
       "title": "Large values of quadratic character sums",
-      "summary": "In this paper, we investigate large values of quadratic Dirichlet character sums. We prove new Omega results for both short and long quadratic character sums under the assumption of the Generalized Riemann Hypothesis (GRH), which improve the previous results.",
       "authors": [
         "Zikang Dong",
         "Ruihua Wang",
@@ -178,7 +172,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199412+00:00",
+        "checked_at": "2026-09-01T05:42:45.570198+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -199,7 +193,6 @@
     {
       "id": "http://arxiv.org/abs/2608.15063v2",
       "title": "Bounding The Number of Zeros Near the Central Point in Families of Cuspidal Newforms",
-      "summary": "We study low-lying zeros in families of even holomorphic cuspidal newforms of fixed weight and prime level, with particular emphasis on the number of forms having a zero in a prescribed normalized window about the central point and on the distribution of the number of such zeros among the forms. We quantify the number of forms having at least one zero in the window and study the distribution of the number of zeros in that window among the forms. Assuming the Generalized Riemann Hypothesis, we obtain new lower bounds for the number of forms having a low-lying zero. We first prove that, along an infinite sequence of prime levels $N$, the number of such forms is $\\gg N^{7/8}\\log N$. We then use higher centered moments and an appropriate test function to show that a positive proportion of the family has a zero in a prescribed window. Finally, we obtain polynomial upper-tail bounds for the number of zeros occurring there and show that a positive proportion of forms have a bounded, nonzero number of low-lying zeros.",
       "authors": [
         "Lucas Chen",
         "Christopher Housholder",
@@ -227,7 +220,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199419+00:00",
+        "checked_at": "2026-09-01T05:42:45.570204+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -248,7 +241,6 @@
     {
       "id": "http://arxiv.org/abs/2608.13637v2",
       "title": "More than two thirds of the zeta zeros are simple and on the critical line",
-      "summary": "We prove unconditionally that at least two thirds of the nontrivial zeros of the Riemann zeta function, counted with multiplicity, are simple and lie on the critical line, and that at least five sixths are distinct; the previous unconditional records are $\\frac{5}{12}$ and $0.6603$. With the Montgomery--Taylor window the constants become $0.6725$ and $0.8362$. The argument makes Montgomery's 1973 deduction unconditional: the Riemann hypothesis, classically needed to read the zero side as a positive sum over real ordinates, is replaced by a rank-trace inequality applied to a finite compression of Weil's Hermitian form, with Sylvester's law of inertia handling off-line pairs. The analytic inputs are those of Aryan and of Baluyot, Goldston, Suriajaya and Turnage-Butterbaugh. The results extend to primitive Dirichlet $L$-functions and are formally verified in Lean 4.",
       "authors": [
         "Levent Alpöge",
         "Ralph Furman"
@@ -273,7 +265,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199426+00:00",
+        "checked_at": "2026-09-01T05:42:45.570210+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -294,7 +286,6 @@
     {
       "id": "http://arxiv.org/abs/2608.12709v2",
       "title": "Uniform bounds on prime levels of abelian division fields of elliptic curves over number fields without rationally defined CM",
-      "summary": "Enrique González-Jiménez and Álvaro Lozano-Robledo proved that there exists a uniform bound on the levels $n$ for which the $n$-division field $\\mathbb{Q}\\left(E\\left[n\\right]\\right) / \\mathbb{Q}$ of an elliptic curve $E/\\mathbb{Q}$ defined over $\\mathbb{Q}$ is abelian. Assuming GRH (Generalized Riemann Hypothesis), Allen and Genao partially generalized this result by restricting to prime levels while allowing arbitrary number fields without rationally defined CM. In this paper, we remove the GRH assumption and prove that the property established by Allen and Genao is in fact equivalent to the absence of rationally defined CM.",
       "authors": [
         "Hansol Kim"
       ],
@@ -318,7 +309,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199434+00:00",
+        "checked_at": "2026-09-01T05:42:45.570216+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -338,8 +329,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2608.11520v1",
-      "title": "Contour Hankel dynamics and indicator fields for the Riemann $Ξ$-function",
-      "summary": "We develop a moving-contour Hankel framework for encoding local zero configurations of the Riemann $Ξ$-function. Weighted contour integrals of the logarithmic derivative $Ξ'/Ξ$, expressed in a holomorphic coordinate associated with the contour, are identified with the power moments of a finite atomic measure supported at the coordinate images of the enclosed zeros. This representation yields exact zero-free and rank criteria and, for conjugation-compatible contour-coordinate pairs, an inertia formula: once the matrix order is at least the number of distinct coordinate nodes, the negative index equals the number of distinct nonreal conjugate pairs. Consequently, the Riemann hypothesis admits a local finite-dimensional Hankel-positivity formulation, although establishing this positivity independently of the zero set remains unresolved. As the contour moves, the Hankel matrix evolves by a continuous congruence flow between zero crossings and undergoes finite-rank jumps at crossing events. An isolated zero produces a signed rank-one jump, whereas a nonreal conjugate pair produces a rank-two indefinite event in a real-axis circular scan that meets the pair. Removing the continuous coordinate drift yields a piecewise-constant matrix process from which crossing coordinates, multiplicities, and zero locations can be recovered. Numerical experiments validate the contour quadrature, indicator fields, continuous flow, crossing signatures, and recovery procedure.",
       "authors": [
         "Zhiliang Deng",
         "Xiaomei Yang",
@@ -365,7 +354,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199441+00:00",
+        "checked_at": "2026-09-01T05:42:45.570222+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -385,8 +374,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2608.08682v1",
-      "title": "A new hyperbolicity wedge and a joint semicircle limit for Jensen polynomials of Riemann's $ξ$-function",
-      "summary": "Let \\[ ξ\\!\\left(\\frac12+z\\right) =\\sum_{n\\geq 0}\\frac{γ(n)}{n!}z^{2n}, \\qquad J^{d,n}(X) =\\sum_{j=0}^{d}\\binom djγ(n+j)X^j . \\] The Riemann hypothesis is equivalent to the hyperbolicity of $J^{d,n}$ for every $d,n\\geq0$. We prove that there is an absolute constant $K&gt;0$ such that \\[ n^3\\log^2(n+2)\\geq Kd^5 \\quad\\Longrightarrow\\quad J^{d,n}\\ \\text{is hyperbolic}. \\] Along every sequence with $n,d\\to\\infty$ in this region, the empirical measure of the naturally centered and scaled zeros also converges to Wigner's semicircle law. This gives a simultaneous degree--derivative version of the global semicircle consequence of the fixed-degree Hermite limit of Griffin, Ono, Rolen, and Zagier.",
       "authors": [
         "Jonathan Holland"
       ],
@@ -410,7 +397,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199447+00:00",
+        "checked_at": "2026-09-01T05:42:45.570228+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -430,8 +417,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2608.07399v1",
-      "title": "Siegel zeros and small gaps between zeros of the Riemann zeta function",
-      "summary": "On assuming the Riemann Hypothesis, we show that Siegel zeros imply the existence of gaps between the zeros of the Riemann zeta function less than 1/2 the normalised length. Specifically, we show that an infinite family of Siegel zeros implies $\\liminf_{n\\to\\infty}(γ_{n+1}-γ_n)\\log(γ_n)/2π&lt; 0.4733$ on RH. This refutes the existence of certain strong alternative hypotheses under these assumptions. Our arguments incorporate long Dirichlet polynomials of length $T^{17/14-\\varepsilon}$ into the Montgomery--Odlyzko method.",
       "authors": [
         "Andriy Bondarenko",
         "Winston Heap"
@@ -456,7 +441,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199454+00:00",
+        "checked_at": "2026-09-01T05:42:45.570234+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -477,7 +462,6 @@
     {
       "id": "http://arxiv.org/abs/2608.06286v1",
       "title": "Average analytic rank for the $L$-functions of the elliptic curves $y^2=x^3-dx$",
-      "summary": "We study the average analytic rank in the family of $L$-functions $L(s, E_d)$ associated with the elliptic curves $E_d : y^2=x^3-dx$, as $d$ varies over fourth-power-free odd integers. Since this is a family of curves with complex multiplication, we have $L(s, E_d)=L(s - \\frac12, ξ_d)$, where $ξ_d$ is a Hecke character over $\\mathbb{Z}[i]$. Assuming the Generalized Riemann Hypothesis, we compute the one-level density of the low-lying zeros of this family for test functions whose Fourier transform is supported in $(-\\frac35, \\frac35)$. As a consequence, we obtain the upper bound $\\frac{13}{6}$ for the average analytic rank $r(E_d)$ over the family. Under the additional assumption of a conjecture on the distribution of quartic Gauss sums at prime elements (a quartic analogue of Patterson's conjecture for cubic Gauss sums), we extend the admissible support to $(-1, 1)$ and improve the upper bound for the average analytic rank to $\\frac32$. Both results imply that a positive proportion of twists satisfy $r(E_d) =1$, while the second also yields a positive proportion of twists with $r(E_d)=0$.",
       "authors": [
         "Chantal David",
         "Lucile Devin",
@@ -504,7 +488,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199461+00:00",
+        "checked_at": "2026-09-01T05:42:45.570239+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -525,7 +509,6 @@
     {
       "id": "http://arxiv.org/abs/2608.05961v1",
       "title": "Bounds for moments of twisted quadratic characters of prime modulus",
-      "summary": "We study, under the Generalized Riemann Hypothesis (GRH), the moments of sums of Fourier coefficients of a fixed holomorphic Hecke eigenform twisted by the quadratic character $χ_{8p}$, where $p$ ranges over odd primes. We establish the correct order of magnitude for the unsmoothed $m$-th moment for all real $m\\geq 4$, and a sharp upper bound of order $XY^{m/2}\\,\\, (\\log X)^{m(m-3)/2}\\,\\,$ for the smoothed $m$-th moment for all integers $m\\geq 4$. A matching lower bound for all even integers $m\\geq 4$ shows that this bound is optimal.",
       "authors": [
         "Peng Gao",
         "Yuetong Zhao"
@@ -550,7 +533,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199469+00:00",
+        "checked_at": "2026-09-01T05:42:45.570246+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -571,7 +554,6 @@
     {
       "id": "http://arxiv.org/abs/2607.28931v1",
       "title": "The Fine-Structure Hierarchy of Prime Biases and the Universal Dominance of $-1 \\pmod N$",
-      "summary": "We investigate the deterministic hierarchy of prime distribution biases in arithmetic progressions modulo $N$ using a regularized spectral approach. Classical studies on Chebyshev's bias attribute prime races primarily to the accumulation of prime squares $p^2 \\equiv 1 \\pmod N$, which creates a systematic deficit in quadratic residue classes. However, this classical mechanism fails to explain or distinguish any bias among residue classes sharing identical quadratic residue status (e.g., $3, 5, 7 \\pmod 8$). To overcome the long-standing analytical obstacles of jump discontinuities and non-convergent boundary fluctuations inherent in classical Perron-type step-function truncations, we introduce a smooth $C^\\infty$ Gaussian mollifier into Weil's explicit formula for Dirichlet $L$-functions. By defining the spectrally normalized individual mollified sums $\\widetilde S_T(x, a)$ and adopting the virtual character $χ_{1,a}(x) := \\mathbf{1}_{\\{x \\equiv 1 \\pmod N\\}} - \\mathbf{1}_{\\{x \\equiv a \\pmod N\\}}$, the principal character component $χ_0$ cancels identically since $1 - \\overline{χ_0}(a) = 0$. This automatic algebraic elimination erases both the universal logarithmic growth $\\log x$ and the background noise $\\log L(1, χ^2)$. Under the Deep Riemann Hypothesis (DRH), we uncover a hitherto undetected \\textbf{fine-structure bias} (or \\emph{secondary bias}) strictly governed by the special values $\\log L(1, χ)$. We prove that $\\widetilde S_T(x, χ_{1,a}) := \\widetilde S_T(x, 1) - \\widetilde S_T(x, a) = C_N \\cdot \\log L(1, χ_{1,a}) + \\mathcal{O}((\\log x)/\\sqrt x)$ as $x \\to \\infty$, where $C_N &gt; 0$ depends solely on $N$. Consequently, we establish a deterministic multi-way ranking (such as $7 &gt; 3 &gt; 5 &gt; 1 \\pmod 8$) that completely transcends the classical quadratic residue framework.",
       "authors": [
         "Shin-ya Koyama"
       ],
@@ -595,7 +577,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199476+00:00",
+        "checked_at": "2026-09-01T05:42:45.570252+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -615,8 +597,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2607.26114v1",
-      "title": "Euler's $\\ell$-totients and Riemann hypothesis",
-      "summary": "This paper develops a new analytic framework for investigating the Riemann hypothesis. For each fixed integer $\\ell \\ge 1$, define Euler's $\\ell$-totient function $\\varphi_\\ell$ by \\[ \\varphi_\\ell(n):=n\\prod_{\\substack{p\\ \\mathrm{prime}\\\\ v_p(n)\\ge \\ell}}\\left(1-\\frac{1}{p}\\right), \\] and its summatory function by \\[ Φ_\\ell(x):=\\sum_{n\\le x}\\varphi_\\ell(n). \\] An analytic study of the generalized Euler $\\ell$-totient function $\\varphi_\\ell(n)$ is carried out, including its Euler product representation, meromorphic continuation, and pole structure. For each $\\ell$, necessary and sufficient criteria for the Riemann hypothesis are established in terms of the asymptotic behavior of $Φ_\\ell(x)$.",
       "authors": [
         "Ahmed Gaber"
       ],
@@ -640,7 +620,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199482+00:00",
+        "checked_at": "2026-09-01T05:42:45.570258+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -660,8 +640,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2607.25002v2",
-      "title": "How Random Is the Möbius Function? Smoothing, Probability, and the Riemann Hypothesis",
-      "summary": "This article is primarily expository, but it also contains several new observations and reformulations concerning the Möbius function, probabilistic models, dynamical systems, and the Riemann hypothesis. Its starting question is classical: in what sense can the Möbius function be said to behave randomly? We begin with Denjoy's random-walk heuristic and place it in the context of later work on random multiplicative functions, short intervals, and Möbius pseudorandomness. We then develop two smoothing forms of the classical Mertens criterion for the Riemann hypothesis. The first uses the discrete Laplace transform \\[ Φ(t)=\\sum_{n\\geq1}μ(n)e^{-nt} \\] and identifies RH with the condition \\[ Φ\\in L^p(0,\\infty) \\qquad\\text{for every }1\\leq p&lt;2. \\] The second uses normalized Möbius Fourier polynomials and local moments on arcs of length comparable with \\(1/N\\). The paper also revisits the author's earlier criterion for RH in terms of discrete measures, as presented in Broughan's account of analytic equivalents of RH. Denjoy's heuristic is made precise in a simple independent coefficient model, and this model is carefully distinguished from the modern theory of random multiplicative functions. The resulting coefficient space also gives a measure--category contrast: the relevant \\(L^p\\)-property has full measure but is topologically meagre. A further point of the paper is dynamical: the multiplicative semigroup of positive integers acts naturally on the coefficient space, and the Möbius sequence is a distinguished arithmetic point for this action. The aim throughout is explanatory, while keeping these new observations visible: to show how arithmetic, probability, Fourier analysis, Mellin transforms, and dynamics fit together, and to indicate what modern results add to the older random-walk picture.",
       "authors": [
         "Alberto Verjovsky"
       ],
@@ -685,7 +663,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199489+00:00",
+        "checked_at": "2026-09-01T05:42:45.570263+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -706,7 +684,6 @@
     {
       "id": "http://arxiv.org/abs/2607.23150v1",
       "title": "On the role of higher roots in prime ideal races",
-      "summary": "Let $L/K$ be a Galois extension of number fields, and let $C_1, C_2$ be conjugacy classes of $\\mathrm{Gal}(L/K)$. By introducing algebraic parameters related to $C_1$ and $C_2$, we provide a conditional characterization for Chebyshev's bias logarithmic density $δ_{L/K}(C_1,C_2)$ to lie in the interval $(1/2, 1)$, meaning that the prime ideal race is biased. Unlike existing examples in the literature, where the bias comes from a difference in the number of square roots, the order of vanishing of Artin $L$-functions at $s=1/2$, or a combination of both, we use this criterion to construct Galois extensions where neither of these aspects plays a role. In our constructions, the bias arises entirely from a difference in the number of $2p$-th roots for an odd prime $p$. We prove that the minimal Galois group order required for this phenomenon is $96$ for $p=3$ and $320$ for $p=5$, where in both cases the group structure is a direct product of two generalized quaternion groups. Furthermore, we provide generalized constructions for all odd primes. Finally, these same algebraic parameters enable us to prove that an estimate established by Aoki and Koyama under the Deep Riemann Hypothesis holds unconditionally in certain cases.",
       "authors": [
         "Mounir Hayani"
       ],
@@ -730,7 +707,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199496+00:00",
+        "checked_at": "2026-09-01T05:42:45.570269+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -751,7 +728,6 @@
     {
       "id": "http://arxiv.org/abs/2607.21532v1",
       "title": "Simultaneous non-vanishing of Dirichlet $L$--functions, II: Weighted central limit theorem",
-      "summary": "Under the Generalized Riemann Hypothesis, we prove a weighted central limit theorem for the joint distribution of four Dirichlet $L$--functions at the central point, twisted by the family of primitive characters to a large prime modulus. As an application, we show that a positive proportion of the characters in the family yield four central values that are simultaneously large, and a positive proportion yield values that are simultaneously nonzero and small.",
       "authors": [
         "Hung M. Bui",
         "Alexandra Florea",
@@ -777,7 +753,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199503+00:00",
+        "checked_at": "2026-09-01T05:42:45.570275+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -798,7 +774,6 @@
     {
       "id": "http://arxiv.org/abs/2607.21259v1",
       "title": "On the Fractional Parts of Polynomials Modulo $p$",
-      "summary": "We study a half-interval distribution problem for polynomial residues modulo an odd prime $p$: how often the fractional part of $\\varphi(x)/p$ lies in the upper half of the unit interval as $x$ ranges over $1\\leq x&lt; p/2$. Using finite Fourier expansions together with the Weil bound, we prove an asymptotic formula $\\#\\left\\{1\\leq x&lt; p/2:\\left\\{{\\varphi(x)}/{p}\\right\\}&gt;\\frac12\\right\\} =\\frac{p}{4}+O_\\varphi(\\sqrt p\\log^2 p). $ We then show that the error term can be improved to $O_\\varphi(\\sqrt p\\log p)$ for arbitrary quadratic polynomials and for polynomials satisfying suitable reflection symmetries. For even monomials $\\varphi(x)=x^m$, we further obtain the bound $O_m(\\sqrt p\\log\\log p)$ under the Generalized Riemann Hypothesis. Finally, in the case $m=2$, we prove an unconditional matching lower bound, showing that the factor $\\log\\log p$ is best possible in this setting.",
       "authors": [
         "Xuejun Guo",
         "Chen Lin",
@@ -824,7 +799,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199510+00:00",
+        "checked_at": "2026-09-01T05:42:45.570281+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -845,7 +820,6 @@
     {
       "id": "http://arxiv.org/abs/2607.24830v2",
       "title": "A Numerical Realization of Suzuki's Weil-Quadratic-Form Operator: The Archimedean Spectral Law, its Universality, and an Operator Form of Weil's Positivity Criterion",
-      "summary": "This paper presents the first numerical realization of Suzuki's Weil-Quadratic-Form operator, a candidate for the Hilbert--Pólya program linking spectral positivity to the Riemann Hypothesis (RH). Suzuki's 2026 construction was purely theoretical; here, the operator is instantiated via P1 finite-element discretization and Richardson extrapolation. Key results include: (R1) In the prime-free regime, the spectrum follows a closed Archimedean law $A_k(a) = \\log(1/a) + \\log(k-2) + B_0 + O(a)$, with $B_0 = \\log q - 2\\log 2$, confirmed to 30-digit precision. (R2) A Mellin double-pole argument proves the head coefficient $B(ν)$ and shows $B_0$ depends only on the conductor $q$, independent of the Archimedean parameter. (R2b) The degree $d$ of an L-function appears directly as the logarithmic slope of the spectrum. (R3) Total spectral intensity follows the prime number theorem, $S(a) \\sim (2a)^3/6$. (R4) Nontrivial zeros are not eigenvalues but occur in the explicit-formula error term of the prime symbol. (R5) The best-match line $σ^*(a)$ descends toward the critical line. (R6) Weil's positivity criterion is realized in operator form: bounded residual growth corresponds to all zeros on the line, while an injected off-line zero causes exponential blow-up. (R7) The lowest eigenvalue $λ_1(a)$ is strictly positive, decays superexponentially, and passes smoothly through the first prime threshold. (R8) The characteristic function $W(a,0;z)$ is computed for the first time, with all zeros confirmed real. (R9) Indirect traces of GUE statistics appear in the moment structure, even where direct detection is blocked. The authors emphasize that this work does not prove RH. All results are Archimedean and universal, with significance lying in the faithful numerical realization of classical identities rather than new arithmetic.",
       "authors": [
         "Taebong Kim",
         "Youngsik Hong",
@@ -874,7 +848,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199517+00:00",
+        "checked_at": "2026-09-01T05:42:45.570286+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -895,7 +869,6 @@
     {
       "id": "http://arxiv.org/abs/2607.20853v1",
       "title": "Murmurations of quadratic Hecke $L$-functions of the Gaussian field",
-      "summary": "In this paper, we evaluate the murmuration density for the family of quadratic Hecke $L$-functions of the Gaussian field under the generalized Riemann hypothesis.",
       "authors": [
         "Peng Gao",
         "Liangyi Zhao"
@@ -920,7 +893,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199524+00:00",
+        "checked_at": "2026-09-01T05:42:45.570292+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -941,7 +914,6 @@
     {
       "id": "http://arxiv.org/abs/2607.17731v1",
       "title": "Jacob's ladders and new $ζ$-functionals and corresponding $ζ$-equivalents of the Fermat-Wiles theory based on sums of elementary $ζ$-pulses",
-      "summary": "In this paper we obtain some sum-variants of our first $ζ$-equivalent of the Fermat-Wiles theorem. For example, on the Riemann hypothesis, we give a new type of $ζ$-equivalent based on a sum of isolated rectangle-shaped signals (pulses).",
       "authors": [
         "Jan Moser"
       ],
@@ -965,7 +937,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199531+00:00",
+        "checked_at": "2026-09-01T05:42:45.570297+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -985,8 +957,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2607.16795v1",
-      "title": "An explicit uniform cubic wedge for consecutive Toeplitz minors of the Riemann xi coefficients",
-      "summary": "Let (a_k) be the positive coefficient sequence of the normalized Riemann xi-function, and let D_{r,k} denote its consecutive Toeplitz minors. The Riemann Hypothesis is equivalent to (a_k) being a Polya frequency sequence of infinite order, and hence to nonnegativity of all Toeplitz minors. We prove that D_{r,k} &gt; 0 for every r &gt;= 2 and k &gt;= 10^18 r^3. This gives an explicit cubic tail scale uniform in r, in contrast with Katkova's fixed-order asymptotic positivity. The proof does not use numerically verified zeros of the Riemann zeta-function. It combines a certified complex saddle-point analysis of the moment transform, an exact q-Pascal dilation semigroup controlling every degree simultaneously, and a weighted Banach-algebra majorant for the nonlinear remainder, closed by an inertia-preservation argument. All analytic constants are certified with directed rounding in Arb ball arithmetic, and all algebraic identities are verified in exact rational arithmetic. The ancillary files reproduce every certificate. The result concerns only the tail regime k much larger than r^3 and makes no progress on the Riemann Hypothesis, which concerns the complementary region.",
       "authors": [
         "Wojciech Michalowski"
       ],
@@ -1010,7 +980,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199538+00:00",
+        "checked_at": "2026-09-01T05:42:45.570303+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -1030,8 +1000,6 @@
     },
     {
       "id": "http://arxiv.org/abs/2607.14515v1",
-      "title": "Beyond the Riemann Hypothesis bounds: A pair-correlation approach to the least prime in arithmetic progression and the smallest quadratic non-residue",
-      "summary": "The Generalized Riemann Hypothesis (GRH) has long defined the expected bounds for the smallest prime in an arithmetic progression and the least quadratic non-residue. However, this hypothesis primarily addresses the horizontal location of non-trivial zeros. In this paper, we show that incorporating the vertical spacing--or pair-correlation--of these zeros allows us to surpass these classical bounds. By combining these two zero-distribution perspectives, we establish sharper estimates for both problems under GRH and specific pair-correlation hypotheses, thereby providing a new link between pair-correlation phenomena for Dirichlet L-functions and these two classical problems.",
       "authors": [
         "Neelam Kandhil",
         "Alessandro Languasco",
@@ -1057,7 +1025,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199544+00:00",
+        "checked_at": "2026-09-01T05:42:45.570308+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -1078,7 +1046,6 @@
     {
       "id": "http://arxiv.org/abs/2607.12381v1",
       "title": "Local statistics and average rank of genus $g$ hyperelliptic curves with a Weierstrass point",
-      "summary": "In this paper, we determine the probability that a genus $g$ hyperelliptic curve with a Weierstrass point over a number field has good reduction at a given prime of residue characteristic $&gt;2g+1$. We also obtain analogous probability formulas for several other reduction types, including cases with positive toric or unipotent rank. As an application, assuming the Hasse--Weil conjecture and the generalized Riemann hypothesis, we derive an explicit upper bound for the average analytic rank of genus $g$ hyperelliptic curves with a Weierstrass point.",
       "authors": [
         "Keunyoung Jeong",
         "Junyeong Park"
@@ -1103,7 +1070,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199551+00:00",
+        "checked_at": "2026-09-01T05:42:45.570314+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -1124,7 +1091,6 @@
     {
       "id": "http://arxiv.org/abs/2607.09110v1",
       "title": "Averages of diagonal Elliott-Halberstam problem twisted by Möbius function with Sobolev and Hölder-Zygmund weights",
-      "summary": "Recalling that the so-called Elliott-Halberstam conjecture twisted by the Möbius function $μ(n)$ claims that \\[ \\sum_{q\\leq N^θ}\\max_{y\\leq N}\\max_{(a,q)=1}\\left|\\sum_{\\underset{\\scriptstyle n\\equiv a\\,\\mod\\,q}{n\\leq y}}Λ(n)μ\\left(N-n\\right)-\\frac{1}{\\varphi\\left(q\\right)}\\sum_{n\\leq y}Λ(n)μ\\left(N-n\\right)\\right|\\ll\\frac{N}{\\log\\left(N\\right)^{A}} \\] for every $A&gt;0$, where $0&lt;θ&lt;1$ is fixed, and also recalling that the validity of this conjecture, in combination with the validity of the classical Elliott-Halberstam for suitable $θ$, proves the binary Goldbach conjecture, in this paper we study weighted average variants of this problem. We will show that, under Generalized Riemann Hypothesis, a weak version of the Gonek-Hejhal conjecture and working with weights belonging to the Sobolev space $W^{2,1}$ or in the Hölder-Zygmund spaces $\\mathcal{C}^δ$ for suitable range of $δ$, the bound of the average is consistent with the bound of the ``diagonal versions'' of this conjecture (that is, taking $y=N$ and taking $n\\equiv N\\mod q)$. In particular, in the case of weights in Sobolev space, the consistent upper bound holds for the whole $0&lt;θ&lt;1$ and, in the case of weights in the Hölder-Zygmund class $\\mathcal{C}^δ$, for $θ$ that depends on the choice of $δ$ but still not below the $1/2-2\\varepsilon$ threshold.",
       "authors": [
         "Marco Cantarini"
       ],
@@ -1148,7 +1114,7 @@
         "corroboration_status": "source_metadata_only"
       },
       "corroboration": {
-        "checked_at": "2026-09-01T05:36:14.199559+00:00",
+        "checked_at": "2026-09-01T05:42:45.570319+00:00",
         "matching_metadata_records": 1,
         "distinct_sources": [
           "arXiv"
@@ -1209,7 +1175,7 @@
     "level": "metadata_only",
     "mathematical_verification": false,
     "rule": "Independent expert mathematical verification is required before any claim may be represented as established.",
-    "last_checked_at": "2026-09-01T05:36:14.199566+00:00"
+    "last_checked_at": "2026-09-01T05:42:45.570325+00:00"
   },
   "quality_gate_policy": {
     "purpose": "metadata_quality_only",

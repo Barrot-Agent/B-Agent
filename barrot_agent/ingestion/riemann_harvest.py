@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """
-Barrot Ω — Riemann Hypothesis Research Harvesting
 
 Harvests candidate research metadata from public scholarly feeds, normalizes
 evidence, and persists append-safe structured findings.
 
-This subsystem does NOT claim to prove the Riemann Hypothesis. Computational
 evidence, conjectures, claims, and established results remain explicitly
 separated.
 """
@@ -23,10 +21,8 @@ from typing import Any, Dict, List
 ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
 
-QUERY = '"Riemann Hypothesis" OR "Riemann zeta function"'
 ARXIV_URL = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode(
     {
-        "search_query": 'all:"Riemann Hypothesis"',
         "start": 0,
         "max_results": 25,
         "sortBy": "submittedDate",
@@ -124,7 +120,6 @@ def parse_arxiv_atom(xml: str) -> List[Dict[str, Any]]:
 
 def harvest_arxiv() -> List[Dict[str, Any]]:
     request = urllib.request.Request(
-        ARXIV_URL, headers={"User-Agent": "Barrot-Omega-Riemann-Research/1.0"}
     )
     with urllib.request.urlopen(request, timeout=20) as response:
         return parse_arxiv_atom(response.read().decode("utf-8", errors="replace"))
@@ -138,7 +133,6 @@ def load_existing() -> Dict[str, Any]:
             pass
 
     return {
-        "domain": "Riemann Hypothesis",
         "schema_version": "1.0",
         "records": [],
     }
