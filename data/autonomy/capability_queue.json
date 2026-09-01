@@ -64,5 +64,12 @@
     "metadata": {
       "phase": "autonomy"
     }
+  },
+  {
+    "id": "object_semantic_detection",
+    "name": "Object semantic detection",
+    "description": "Detect and represent visual objects for Code-as-World.",
+    "priority": 70,
+    "status": "implemented"
   }
 ]
