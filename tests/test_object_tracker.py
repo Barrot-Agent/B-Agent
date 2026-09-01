@@ -46,5 +46,5 @@ def test_track_objects_across_frames(tmp_path) -> None:
     track = result.tracks[0]
 
     assert len(track.points) == 2
-    assert track.points[0].track_id if hasattr(track.points[0], "track_id") else True
+    assert track.track_id == "track_1"
     assert track.points[1].velocity_x == 0.1
