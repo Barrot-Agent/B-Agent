@@ -1,0 +1,68 @@
+[
+  {
+    "id": "code_as_world_foundation",
+    "name": "Code-as-World foundation: video-to-structured-world pipeline",
+    "status": "implemented",
+    "priority": 10,
+    "created_at": "2026-09-01T03:12:39.296146+00:00",
+    "updated_at": "2026-09-01T03:13:47.992794+00:00",
+    "metadata": {
+      "phase": "foundation"
+    }
+  },
+  {
+    "id": "video_observation",
+    "name": "Video observation and scene extraction",
+    "status": "implemented",
+    "priority": 20,
+    "created_at": "2026-09-01T03:12:39.296176+00:00",
+    "updated_at": "2026-09-01T03:16:05.478772+00:00",
+    "metadata": {
+      "phase": "perception"
+    }
+  },
+  {
+    "id": "world_representation",
+    "name": "Structured physical world representation",
+    "status": "implemented",
+    "priority": 30,
+    "created_at": "2026-09-01T03:12:39.296184+00:00",
+    "updated_at": "2026-09-01T03:17:09.711547+00:00",
+    "metadata": {
+      "phase": "representation"
+    }
+  },
+  {
+    "id": "physics_program_generation",
+    "name": "Executable MuJoCo physics program generation",
+    "status": "implemented",
+    "priority": 40,
+    "created_at": "2026-09-01T03:12:39.296191+00:00",
+    "updated_at": "2026-09-01T03:18:48.839348+00:00",
+    "metadata": {
+      "phase": "simulation"
+    }
+  },
+  {
+    "id": "simulation_validation",
+    "name": "Simulation comparison and validation loop",
+    "status": "implemented",
+    "priority": 50,
+    "created_at": "2026-09-01T03:12:39.296197+00:00",
+    "updated_at": "2026-09-01T03:19:31.939705+00:00",
+    "metadata": {
+      "phase": "validation"
+    }
+  },
+  {
+    "id": "autonomous_refinement",
+    "name": "Autonomous iterative world refinement",
+    "status": "implemented",
+    "priority": 60,
+    "created_at": "2026-09-01T03:12:39.296204+00:00",
+    "updated_at": "2026-09-01T03:21:50.279344+00:00",
+    "metadata": {
+      "phase": "autonomy"
+    }
+  }
+]

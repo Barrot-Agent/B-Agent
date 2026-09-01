@@ -56,3 +56,22 @@ def test_certificate_is_hashed():
 
     assert certificate["certificate_hash"]
     assert len(certificate["certificate_hash"]) == 64
+
+
+def test_failed_state_never_becomes_authoritative():
+    from barrot_agent.trust import TrustEngine
+
+    engine = TrustEngine()
+
+    result = engine.execute(
+        task="failed-operation",
+        expected_state={"status": "complete"},
+        observed_state={"status": "failed"},
+        validators=[lambda value: value["status"] == "complete"],
+        risk="high",
+        transport_success=True,
+    )
+
+    assert result["authoritative"] is False
+    assert result["verification"]["passed"] is False
+    assert result["confidence"]["lower_bound"] == 0.0
