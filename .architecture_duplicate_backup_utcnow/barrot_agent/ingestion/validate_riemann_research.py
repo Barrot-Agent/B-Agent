@@ -7,7 +7,6 @@ promoting publications or computational results to established proof.
 """
 
 from __future__ import annotations
-from barrot_agent.utils.time import utcnow
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -16,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
 
 
+def utcnow():
+    return datetime.now(timezone.utc).isoformat()
 
 
 def main():
@@ -28,7 +29,7 @@ def main():
 
         record["validation"] = {
             "validated_by": "barrot_conservative_validation",
-            "validated_at": utcnow().isoformat(),
+            "validated_at": utcnow(),
             "source_present": bool(source),
             "metadata_complete": bool(record.get("title") and record.get("url")),
             "independent_mathematical_verification": False,
@@ -45,7 +46,7 @@ def main():
             "Automated validation checks metadata and provenance only. "
             "Mathematical truth requires independent expert verification."
         ),
-        "validated_at": utcnow().isoformat(),
+        "validated_at": utcnow(),
     }
 
     data["statistics"]["validation"] = {

@@ -1,0 +1,41 @@
+{
+  "schema": "BARROT-REPO-AWARENESS-1",
+  "generated_at": "2026-09-01T05:36:15.311938+00:00",
+  "repository": "/data/data/com.termux/files/usr/tmp/pytest-of-u0_a511/pytest-94/test_self_model_self_audit0",
+  "git": {
+    "branch": "",
+    "head": "",
+    "status": ""
+  },
+  "statistics": {
+    "python_files": 1,
+    "test_files": 0,
+    "trust_related_files": 1,
+    "integration_files": 0
+  },
+  "architecture": {
+    "trust_layer": [
+      "trust.py"
+    ],
+    "integration_layer": [],
+    "test_layer": []
+  },
+  "files": [
+    {
+      "path": "trust.py",
+      "status": "indexed",
+      "hash": "015cd9289e6b91bf88ea38763036e1e1b5bd2d6aad10c59da97492a27d203fb7",
+      "line_count": 2,
+      "classes": [
+        {
+          "name": "TrustEngine",
+          "line": 1,
+          "bases": [],
+          "methods": []
+        }
+      ],
+      "functions": [],
+      "imports": []
+    }
+  ]
+}

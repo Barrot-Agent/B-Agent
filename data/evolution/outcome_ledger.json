@@ -31,5 +31,36 @@
     ],
     "confidence": 0.5,
     "recorded_at": "2026-08-29T07:46:44.498926+00:00"
+  },
+  {
+    "id": "fb6c74ce4ea53037441e7f1407cefbe3a5560456c46c14e5f9f644c20dcf19b8",
+    "operation": "corroboration",
+    "outcome": {
+      "claim_id": "bcb12248be6a94802e00f1014877363ef7fb69547c43b8bae70c3e57be0d59b2",
+      "supporting_records": [
+        "claim-1"
+      ],
+      "conflicting_records": [],
+      "independent_supporting_sources": 1,
+      "independent_conflicting_sources": 0,
+      "support_quality": 0.875,
+      "conflict_quality": 0.0,
+      "evidence_count": 1,
+      "corroborated_confidence": 0.6,
+      "trust": {
+        "records_evaluated": 1,
+        "authoritative_records": 1,
+        "unverified_records": 0,
+        "average_trust_confidence": 0.9
+      },
+      "trust_adjusted_confidence": 0.585,
+      "status": "corroborated",
+      "lifecycle_status": "candidate"
+    },
+    "sources": [
+      "internal_corroboration"
+    ],
+    "confidence": 0.6,
+    "recorded_at": "2026-08-31T15:52:03.555538+00:00"
   }
 ]

@@ -7,7 +7,6 @@ No score can upgrade a claim to an established mathematical result.
 """
 
 from __future__ import annotations
-from barrot_agent.utils.time import utcnow
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -16,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
 
 
+def utcnow():
+    return datetime.now(timezone.utc).isoformat()
 
 
 def quality_score(record):
@@ -42,7 +43,7 @@ def main():
     for record in records:
         score = quality_score(record)
         record["quality_gate"] = {
-            "checked_at": utcnow().isoformat(),
+            "checked_at": utcnow(),
             "metadata_quality_score": score,
             "status": "metadata_complete" if score >= 80 else "metadata_partial",
             "mathematical_truth_assessment": False,
@@ -56,7 +57,7 @@ def main():
         "purpose": "metadata_quality_only",
         "mathematical_verification": False,
         "records_checked": len(records),
-        "checked_at": utcnow().isoformat(),
+        "checked_at": utcnow(),
     }
 
     SOURCE.write_text(

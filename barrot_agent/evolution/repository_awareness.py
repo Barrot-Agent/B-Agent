@@ -242,29 +242,39 @@ class RepositoryAwarenessEngine:
         return self.build()
 
     def find_component(self, name: str) -> list[dict[str, Any]]:
-        manifest = self.load()
-        matches = []
+        """Find exact classes and functions in the live repository."""
+        results: list[dict[str, Any]] = []
 
-        for file in manifest.get("files", []):
-            for cls in file.get("classes", []):
-                if cls["name"] == name:
-                    matches.append({
-                        "path": file["path"],
-                        "type": "class",
-                        "name": name,
-                        "line": cls["line"],
-                    })
+        for path in self._python_files():
+            try:
+                source = path.read_text(encoding="utf-8")
+                tree = ast.parse(source, filename=str(path))
+            except (OSError, UnicodeDecodeError, SyntaxError):
+                continue
 
-            for function in file.get("functions", []):
-                if function["name"] == name:
-                    matches.append({
-                        "path": file["path"],
-                        "type": "function",
-                        "name": name,
-                        "line": function["line"],
-                    })
+            for node in ast.walk(tree):
+                if isinstance(node, ast.ClassDef):
+                    node_type = "class"
+                elif isinstance(
+                    node,
+                    (ast.FunctionDef, ast.AsyncFunctionDef),
+                ):
+                    node_type = "function"
+                else:
+                    continue
 
-        return matches
+                if node.name != name:
+                    continue
+
+                results.append({
+                    "path": str(path.relative_to(self.root)),
+                    "type": node_type,
+                    "name": node.name,
+                    "line": node.lineno,
+                })
+
+        return results
+
 
     def dependencies_for(self, path: str) -> list[str]:
         manifest = self.load()

@@ -45,6 +45,50 @@ class CrossCorroborationEngine:
         normalized_claim = self.claim_integrity.normalize(claim)
         excluded_sources = set(sources or [])
 
+        # Aggregate trust metadata from the evidence participating in
+        # corroboration. Trust remains a separate signal from agreement.
+        trust_records = [
+            evidence.get("trust", {})
+            for evidence in self.evidence_store.load()
+            if evidence.get("source", "") not in excluded_sources
+        ]
+
+        authoritative_records = sum(
+            1
+            for trust in trust_records
+            if trust.get("authoritative") is True
+        )
+
+        trust_confidences = []
+        for trust in trust_records:
+            confidence_data = trust.get("confidence", {})
+            if isinstance(confidence_data, dict):
+                value = confidence_data.get("lower_bound")
+                if isinstance(value, (int, float)):
+                    trust_confidences.append(float(value))
+
+            value = trust.get("average_trust_confidence")
+            if isinstance(value, (int, float)):
+                trust_confidences.append(float(value))
+
+        average_trust_confidence = (
+            sum(trust_confidences) / len(trust_confidences)
+            if trust_confidences
+            else 0.0
+        )
+
+        trust_summary = {
+            "records_evaluated": len(trust_records),
+            "authoritative_records": authoritative_records,
+            "unverified_records": (
+                len(trust_records) - authoritative_records
+            ),
+            "average_trust_confidence": round(
+                average_trust_confidence,
+                3,
+            ),
+        }
+
         supporting_records: list[dict[str, Any]] = []
         conflicting_records: list[dict[str, Any]] = []
 
@@ -79,6 +123,28 @@ class CrossCorroborationEngine:
         confidence -= min(0.4, len(conflicting) * 0.15)
         confidence = max(0.05, min(0.95, confidence))
 
+        authoritative_ratio = (
+            trust_summary["authoritative_records"]
+            / trust_summary["records_evaluated"]
+            if trust_summary["records_evaluated"]
+            else 0.0
+        )
+
+        trust_confidence = trust_summary["average_trust_confidence"]
+
+        trust_adjusted_confidence = round(
+            max(
+                0.05,
+                min(
+                    0.95,
+                    confidence
+                    * (0.75 + 0.25 * authoritative_ratio)
+                    * (0.75 + 0.25 * trust_confidence),
+                ),
+            ),
+            3,
+        )
+
         lifecycle = self.lifecycle.determine(
             supporting_sources=len(supporting),
             conflicting_sources=len(conflicting),
@@ -97,6 +163,8 @@ class CrossCorroborationEngine:
             "conflict_quality": round(conflict_weight, 3),
             "evidence_count": len(supporting) + len(conflicting),
             "corroborated_confidence": round(confidence, 3),
+            "trust": trust_summary,
+            "trust_adjusted_confidence": trust_adjusted_confidence,
             # Backward-compatible evidence status.
             "status": (
                 "corroborated"

@@ -1,0 +1,694 @@
+==================================================
+BARROT CORE AUTONOMY AUDIT
+==================================================
+
+DATE:
+Tue Sep  1 01:24:27 EDT 2026
+
+BRANCH:
+cinematic-clean
+
+HEAD:
+1ef6442cc test: strengthen object tracker identity assertion
+
+==================================================
+1. REMOVE PYTHON CACHE ARTIFACTS FROM SOURCE TREE
+==================================================
+barrot_agent/autonomy/workflows/__pycache__
+barrot_agent/autonomy/__pycache__
+barrot_agent/autonomy/code_as_world/__pycache__
+
+CACHE FILES:
+barrot_agent/autonomy/workflows/__pycache__/__init__.cpython-313.pyc
+barrot_agent/autonomy/__pycache__/bootstrap_capabilities.cpython-313.pyc
+barrot_agent/autonomy/__pycache__/capability_queue.cpython-313.pyc
+barrot_agent/autonomy/__pycache__/__init__.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_mujoco_generator.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/models.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/video_observer.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_observer.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/__init__.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/scene_extractor.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_scene_extractor.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/world_models.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/world_builder.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_world_builder.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/mujoco_generator.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/mujoco_validator.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/simulation_validator.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_simulation_validator.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/autonomous_refiner.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_autonomous_refiner.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/pipeline.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_pipeline.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/object_detector.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_object_detector.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/object_tracker.cpython-313.pyc
+barrot_agent/autonomy/code_as_world/__pycache__/run_object_tracker.cpython-313.pyc
+
+==================================================
+2. CORE AUTONOMY SOURCE FILES
+==================================================
+
+----- barrot_agent/autonomy/__init__.py -----
+
+----- barrot_agent/autonomy/bootstrap_capabilities.py -----
+"""Bootstrap the next autonomous Barrot capability sequence."""
+
+from barrot_agent.autonomy.capability_queue import (
+    Capability,
+    CapabilityQueue,
+)
+
+
+def main() -> None:
+    queue = CapabilityQueue()
+
+    capabilities = [
+        Capability(
+            id="code_as_world_foundation",
+            name=(
+                "Code-as-World foundation: "
+                "video-to-structured-world pipeline"
+            ),
+            priority=10,
+            metadata={
+                "phase": "foundation",
+            },
+        ),
+        Capability(
+            id="video_observation",
+            name=(
+                "Video observation and scene extraction"
+            ),
+            priority=20,
+            metadata={
+                "phase": "perception",
+            },
+        ),
+        Capability(
+            id="world_representation",
+            name=(
+                "Structured physical world representation"
+            ),
+            priority=30,
+            metadata={
+                "phase": "representation",
+            },
+        ),
+        Capability(
+            id="physics_program_generation",
+            name=(
+                "Executable MuJoCo physics program generation"
+            ),
+            priority=40,
+            metadata={
+                "phase": "simulation",
+            },
+        ),
+        Capability(
+            id="simulation_validation",
+            name=(
+                "Simulation comparison and validation loop"
+            ),
+            priority=50,
+            metadata={
+                "phase": "validation",
+            },
+        ),
+        Capability(
+            id="autonomous_refinement",
+            name=(
+                "Autonomous iterative world refinement"
+            ),
+            priority=60,
+            metadata={
+                "phase": "autonomy",
+            },
+        ),
+    ]
+
+    for capability in capabilities:
+        queue.add(capability)
+        print(
+            f"QUEUED: "
+            f"{capability.priority} "
+            f"{capability.id}"
+        )
+
+    next_item = queue.next()
+
+    print()
+    print("=== NEXT CAPABILITY ===")
+
+    if next_item is None:
+        print("NONE")
+        return
+
+    print(next_item.id)
+    print(next_item.name)
+
+
+if __name__ == "__main__":
+    main()
+
+----- barrot_agent/autonomy/capability_queue.py -----
+"""Sequential autonomous capability queue for Barrot."""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+import json
+
+
+QUEUE_PATH = Path("data/autonomy/capability_queue.json")
+
+
+def utcnow() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+@dataclass
+class Capability:
+    id: str
+    name: str
+    status: str = "pending"
+    priority: int = 0
+    created_at: str = ""
+    updated_at: str = ""
+    metadata: dict[str, Any] | None = None
+
+    def __post_init__(self) -> None:
+        now = utcnow()
+
+        if not self.created_at:
+            self.created_at = now
+
+        if not self.updated_at:
+            self.updated_at = now
+
+        if self.metadata is None:
+            self.metadata = {}
+
+
+class CapabilityQueue:
+    """Persistent sequential capability queue."""
+
+    def __init__(
+        self,
+        path: Path = QUEUE_PATH,
+    ) -> None:
+        self.path = path
+        self.path.parent.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+    def load(self) -> list[Capability]:
+        if not self.path.exists():
+            return []
+
+        raw = json.loads(
+            self.path.read_text(
+                encoding="utf-8",
+            )
+        )
+
+        return [
+            Capability(**item)
+            for item in raw
+        ]
+
+    def save(
+        self,
+        capabilities: list[Capability],
+    ) -> None:
+        payload = [
+            asdict(item)
+            for item in capabilities
+        ]
+
+        self.path.write_text(
+            json.dumps(
+                payload,
+                indent=2,
+                ensure_ascii=False,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+    def add(
+        self,
+        capability: Capability,
+    ) -> None:
+        items = self.load()
+
+        if any(
+            item.id == capability.id
+            for item in items
+        ):
+            return
+
+        items.append(capability)
+
+        items.sort(
+            key=lambda item: (
+                item.priority,
+                item.created_at,
+            )
+        )
+
+        self.save(items)
+
+    def next(self) -> Capability | None:
+        for item in self.load():
+            if item.status == "pending":
+                return item
+
+        return None
+
+    def update_status(
+        self,
+        capability_id: str,
+        status: str,
+    ) -> Capability:
+        items = self.load()
+
+        for item in items:
+            if item.id == capability_id:
+                item.status = status
+                item.updated_at = utcnow()
+
+                self.save(items)
+
+                return item
+
+        raise KeyError(
+            f"Capability not found: {capability_id}"
+        )
+
+----- barrot_agent/evolution/self_consistency.py -----
+"""
+Barrot Self-Consistency Engine.
+
+Repository-native structural validation for Barrot.
+Observational only: never modifies production code.
+"""
+
+from __future__ import annotations
+
+from collections import defaultdict
+from pathlib import Path
+from typing import Any
+
+from barrot_agent.evolution.self_model import BarrotSelfModel
+
+
+class SelfConsistencyEngine:
+    """Validate Barrot's live repository model."""
+
+    SCHEMA = "BARROT-SELF-CONSISTENCY-1"
+
+    def __init__(
+        self,
+        model: BarrotSelfModel | None = None,
+    ) -> None:
+        self.model = model or BarrotSelfModel()
+
+    def inspect(self) -> dict[str, Any]:
+        """Run deterministic repository consistency checks."""
+
+        awareness = self.model.awareness.refresh()
+        files = awareness.get("files", [])
+
+        issues: list[dict[str, Any]] = []
+
+        self._check_duplicates(
+            files,
+            issues,
+            self.model.awareness.root,
+        )
+        self._check_unparseable(files, issues)
+        self._check_internal_dependencies(files, issues)
+
+        duplicate_count = sum(
+            1
+            for issue in issues
+            if issue["type"] == "duplicate_component"
+        )
+
+        unparseable_count = sum(
+            1
+            for issue in issues
+            if issue["type"] == "unparseable_file"
+        )
+
+        dependency_count = sum(
+            1
+            for issue in issues
+            if issue["type"]
+            == "missing_internal_dependency"
+        )
+
+        indexed_files = sum(
+            1
+            for item in files
+            if item.get("status") == "indexed"
+        )
+
+        return {
+            "schema": self.SCHEMA,
+            "repository": str(
+                self.model.awareness.root
+            ),
+            "issues": issues,
+            "issue_count": len(issues),
+            "structurally_consistent": not issues,
+            "statistics": {
+                "files": len(files),
+                "indexed_files": indexed_files,
+                "duplicate_components": duplicate_count,
+                "unparseable_files": unparseable_count,
+                "missing_internal_dependencies": (
+                    dependency_count
+                ),
+                "total_issues": len(issues),
+            },
+            "checks": {
+                "duplicate_components": True,
+                "unparseable_files": True,
+                "internal_dependencies": True,
+            },
+        }
+
+    @staticmethod
+    def _check_duplicates(
+        files: list[dict[str, Any]],
+        issues: list[dict[str, Any]],
+        repository_root: Any,
+    ) -> None:
+        """
+        Detect materially duplicated top-level implementations.
+
+        A same-named symbol is not inherently a contradiction.
+        A duplicate is reported when the same class/function name
+        has the same normalized AST implementation in different files.
+        """
+
+        import ast
+        import hashlib
+
+        locations: dict[
+            tuple[str, str, str],
+            list[dict[str, Any]],
+        ] = defaultdict(list)
+
+        ignored_roots = {
+            "tests",
+            "scripts",
+            ".architecture_duplicate_backup",
+            ".git",
+            ".pytest_cache",
+            "__pycache__",
+            ".venv",
+            "venv",
+        }
+
+        repository_root = Path(repository_root)
+
+        for item in files:
+            if item.get("status") != "indexed":
+                continue
+
+            path = item.get("path", "")
+            parts = Path(path).parts
+
+            if parts and parts[0] in ignored_roots:
+                continue
+
+            root = repository_root / path
+
+            try:
+                source = root.read_text(
+                    encoding="utf-8"
+                )
+                tree = ast.parse(
+                    source,
+                    filename=path,
+                )
+            except (
+                OSError,
+                UnicodeDecodeError,
+                SyntaxError,
+            ):
+                continue
+
+            for node in tree.body:
+                if isinstance(node, ast.ClassDef):
+                    component_type = "class"
+                elif isinstance(
+                    node,
+                    (ast.FunctionDef, ast.AsyncFunctionDef),
+                ):
+                    component_type = "function"
+                else:
+                    continue
+
+                name = node.name
+
+                normalized = ast.dump(
+                    node,
+                    annotate_fields=True,
+                    include_attributes=False,
+                )
+
+                fingerprint = hashlib.sha256(
+                    normalized.encode("utf-8")
+                ).hexdigest()
+
+                locations[
+                    (
+                        component_type,
+                        name,
+                        fingerprint,
+                    )
+                ].append({
+                    "path": path,
+                    "line": node.lineno,
+                    "scope": "module",
+                })
+
+        for (
+            component,
+            matches,
+        ) in locations.items():
+
+            component_type, name, fingerprint = (
+                component
+            )
+
+            unique_paths = {
+                match["path"]
+                for match in matches
+            }
+
+            if len(unique_paths) <= 1:
+                continue
+
+            issues.append({
+                "type": "duplicate_component",
+                "component_type": component_type,
+                "name": name,
+                "fingerprint": fingerprint,
+                "locations": matches,
+            })
+
+    @staticmethod
+    def _check_unparseable(
+        files: list[dict[str, Any]],
+        issues: list[dict[str, Any]],
+    ) -> None:
+        for item in files:
+            if item.get("status") != "unparseable":
+                continue
+
+            issues.append({
+                "type": "unparseable_file",
+                "path": item.get("path"),
+                "reason": item.get("reason"),
+            })
+
+    @staticmethod
+    def _check_internal_dependencies(
+        files: list[dict[str, Any]],
+        issues: list[dict[str, Any]],
+    ) -> None:
+        known_modules: set[str] = set()
+
+        for item in files:
+            path = item.get("path", "")
+
+            if not path.endswith(".py"):
+                continue
+
+            module = path[:-3].replace(
+                "/",
+                ".",
+            )
+
+            if module.endswith(
+                ".__init__"
+            ):
+                module = module[:-9]
+
+            known_modules.add(module)
+
+        for item in files:
+            if item.get("status") != "indexed":
+                continue
+
+            source = item.get(
+                "path",
+                "",
+            )
+
+            for dependency in item.get(
+                "imports",
+                [],
+            ):
+                if not dependency.startswith(
+                    "barrot_agent"
+                ):
+                    continue
+
+                if SelfConsistencyEngine._module_exists(
+                    dependency,
+                    known_modules,
+                ):
+                    continue
+
+                issues.append({
+                    "type": (
+                        "missing_internal_dependency"
+                    ),
+                    "source": source,
+                    "dependency": dependency,
+                })
+
+    @staticmethod
+    def _module_exists(
+        dependency: str,
+        known_modules: set[str],
+    ) -> bool:
+        if dependency in known_modules:
+            return True
+
+        for module in known_modules:
+            if module.startswith(
+                dependency + "."
+            ):
+                return True
+
+            if dependency.startswith(
+                module + "."
+            ):
+                return True
+
+        return False
+
+----- barrot_agent/utils/time.py -----
+"""Canonical time utilities for Barrot."""
+
+from __future__ import annotations
+
+from datetime import datetime, timezone
+
+
+def utcnow() -> datetime:
+    """Return the current timezone-aware UTC datetime."""
+    return datetime.now(timezone.utc)
+
+==================================================
+3. WORKFLOW SOURCE FILES ONLY
+==================================================
+barrot_agent/autonomy/workflows/__init__.py
+
+==================================================
+4. COMPILE CHECK
+==================================================
+COMPILE EXIT CODE: 0
+
+==================================================
+5. IMPORT CHECK
+==================================================
+OK: barrot_agent.autonomy
+OK: barrot_agent.autonomy.bootstrap_capabilities
+OK: barrot_agent.autonomy.capability_queue
+OK: barrot_agent.evolution.self_consistency
+OK: barrot_agent.utils.time
+
+IMPORT STATUS: PASSED
+IMPORT EXIT CODE: 0
+
+==================================================
+6. CAPABILITY QUEUE FUNCTIONAL TEST
+==================================================
+CAPABILITY QUEUE TEST: PASSED
+QUEUE TEST EXIT CODE: 0
+
+==================================================
+7. SELF-CONSISTENCY ENGINE IMPORT + CONSTRUCTION
+==================================================
+SCHEMA: BARROT-SELF-CONSISTENCY-1
+MODEL: BarrotSelfModel
+SELF-CONSISTENCY CONSTRUCTION: PASSED
+SELF-CONSISTENCY EXIT CODE: 0
+
+==================================================
+8. RELEVANT TEST DISCOVERY
+==================================================
+tests/test_confidence_calibration.py
+tests/test_corroboration.py
+tests/test_corroboration_events.py
+tests/test_evidence_corroboration.py
+tests/test_repository_awareness.py
+tests/test_riemann_corroboration_smoke.py
+tests/test_self_consistency.py
+tests/test_self_model.py
+tests/test_source_independent_corroboration.py
+tests/test_weighted_corroboration.py
+
+==================================================
+9. GIT STATUS
+==================================================
+ M barrot_agent/evolution/confidence_calibration.py
+ M barrot_agent/evolution/corroboration.py
+ M barrot_agent/evolution/repository_awareness.py
+ M barrot_agent/evolution/self_model.py
+ M barrot_agent/ingestion/corroborate_riemann_research.py
+ M barrot_agent/ingestion/score_riemann_research.py
+ M barrot_agent/ingestion/validate_riemann_research.py
+ M barrot_agent/mcp_provenance.jsonl
+ M barrot_agent/tools/trial_tracker.py
+ M data/evolution/confidence_calibration.json
+ M data/evolution/outcome_ledger.json
+ M data/research/riemann_hypothesis_harvest.json
+ M hf_space/hrm_ternary.py
+ M tools/mem_palace.py
+ M utils/score_to_signal.py
+?? .agents/
+?? .architecture_duplicate_backup/
+?? .architecture_duplicate_backup_utcnow/
+?? barrot_agent/autonomy/__init__.py
+?? barrot_agent/autonomy/bootstrap_capabilities.py
+?? barrot_agent/autonomy/capability_queue.py
+?? barrot_agent/autonomy/workflows/
+?? barrot_agent/evolution/self_consistency.py
+?? barrot_agent/utils/
+?? data/autonomy/audits/
+?? data/evolution/repository_awareness.json
+?? feedback_loops/

@@ -8,7 +8,6 @@ mathematical theorem or proof.
 """
 
 from __future__ import annotations
-from barrot_agent.utils.time import utcnow
 import json
 import re
 from datetime import datetime, timezone
@@ -18,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data" / "research" / "riemann_hypothesis_harvest.json"
 
 
+def utcnow():
+    return datetime.now(timezone.utc).isoformat()
 
 
 def normalize_title(title):
@@ -38,7 +39,7 @@ def main():
         sources = sorted({r.get("source", "") for r in matches if r.get("source")})
         for record in matches:
             record["corroboration"] = {
-                "checked_at": utcnow().isoformat(),
+                "checked_at": utcnow(),
                 "matching_metadata_records": len(matches),
                 "distinct_sources": sources,
                 "source_count": len(sources),
@@ -59,7 +60,7 @@ def main():
             "Independent expert mathematical verification is required "
             "before any claim may be represented as established."
         ),
-        "last_checked_at": utcnow().isoformat(),
+        "last_checked_at": utcnow(),
     }
 
     SOURCE.write_text(
