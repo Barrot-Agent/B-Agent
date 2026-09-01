@@ -3,7 +3,7 @@
     "xrp_entries": 483,
     "btc_entries": 383
   },
-  "unique_pairs_found": 1432,
+  "unique_pairs_found": 1441,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2462,6 +2462,21 @@
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
         }
       ]
     },
@@ -6349,17 +6364,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "European Union",
       "cooccurrence_count": 1,
@@ -10106,6 +10110,105 @@
       "example_headlines": [
         {
           "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Caroline Ellison",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Gary Wang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Caroline Ellison",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Caroline Ellison",
+      "entity_b": "Gary Wang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Caroline Ellison",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FTX",
+      "entity_b": "Gary Wang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FTX",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gary Wang",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
           "asset": "XRP"
         }
       ]

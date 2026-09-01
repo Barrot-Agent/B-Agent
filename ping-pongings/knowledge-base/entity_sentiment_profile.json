@@ -3,7 +3,7 @@
     "xrp_entries": 483,
     "btc_entries": 383
   },
-  "unique_entities_profiled": 451,
+  "unique_entities_profiled": 453,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 144,
+      "total_mentions": 145,
       "bullish": 90,
       "neutral": 30,
-      "bearish": 24,
-      "net_sentiment_score": 0.458,
+      "bearish": 25,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -842,6 +842,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans"
+      ]
+    },
+    {
       "entity": "Wall Street",
       "total_mentions": 4,
       "bullish": 3,
@@ -1093,23 +1110,6 @@
       ]
     },
     {
-      "entity": "CFTC",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "Kraken Brings CFTC-Regulated Perpetual Futures To US Traders"
-      ]
-    },
-    {
       "entity": "Luke Dashjr",
       "total_mentions": 3,
       "bullish": 0,
@@ -1259,6 +1259,23 @@
         "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
         "Bitcoin ETF inflows return as Ether funds slip into outflows",
         "Bitcoin ETFs add $189M as August net inflows approach $1B"
+      ]
+    },
+    {
+      "entity": "FTX",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
       ]
     },
     {
@@ -2630,21 +2647,6 @@
       "example_headlines": [
         "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
         "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy"
-      ]
-    },
-    {
-      "entity": "FTX",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
       ]
     },
     {
@@ -4428,6 +4430,34 @@
       ],
       "example_headlines": [
         "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus"
+      ]
+    },
+    {
+      "entity": "Caroline Ellison",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans"
+      ]
+    },
+    {
+      "entity": "Gary Wang",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans"
       ]
     },
     {
