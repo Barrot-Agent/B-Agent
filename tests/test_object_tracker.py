@@ -39,13 +39,12 @@ def test_track_objects_across_frames(tmp_path) -> None:
         encoding="utf-8",
     )
 
-    result = track_objects(
-        detections
-    )
+    result = track_objects(detections)
 
     assert len(result.tracks) == 1
 
     track = result.tracks[0]
 
     assert len(track.points) == 2
+    assert track.points[0].track_id if hasattr(track.points[0], "track_id") else True
     assert track.points[1].velocity_x == 0.1

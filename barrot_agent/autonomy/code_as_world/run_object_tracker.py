@@ -45,9 +45,7 @@ def main() -> None:
     )
 
     print("OBJECT TRACKING COMPLETE")
-    print(
-        f"TRACKS: {len(result.tracks)}"
-    )
+    print(f"TRACKS: {len(result.tracks)}")
     print(f"MANIFEST: {output}")
 
 

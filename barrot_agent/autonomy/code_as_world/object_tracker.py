@@ -28,9 +28,7 @@ class TrackPoint:
 class ObjectTrack:
     track_id: str
     label: str
-    points: list[TrackPoint] = field(
-        default_factory=list,
-    )
+    points: list[TrackPoint] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -46,9 +44,7 @@ class ObjectTrack:
 @dataclass
 class TrackingResult:
     source_path: str
-    tracks: list[ObjectTrack] = field(
-        default_factory=list,
-    )
+    tracks: list[ObjectTrack] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -76,14 +72,10 @@ def track_objects(
 ) -> TrackingResult:
     """Connect detections across frames into temporal tracks."""
 
-    path = Path(
-        detections_path
-    ).expanduser().resolve()
+    path = Path(detections_path).expanduser().resolve()
 
     raw = json.loads(
-        path.read_text(
-            encoding="utf-8",
-        )
+        path.read_text(encoding="utf-8")
     )
 
     detections = sorted(
@@ -105,23 +97,17 @@ def track_objects(
             )
         )
 
-        best_track: ObjectTrack | None = None
-        best_distance: float | None = None
+        best_track = None
+        best_distance = None
 
         for track in tracks:
-            if track.label != label:
-                continue
-
-            if not track.points:
+            if track.label != label or not track.points:
                 continue
 
             last = track.points[-1]
 
             if int(
-                detection.get(
-                    "frame_index",
-                    0,
-                )
+                detection.get("frame_index", 0)
             ) <= last.frame_index:
                 continue
 
@@ -142,10 +128,7 @@ def track_objects(
 
         point = TrackPoint(
             frame_index=int(
-                detection.get(
-                    "frame_index",
-                    0,
-                )
+                detection.get("frame_index", 0)
             ),
             timestamp_seconds=float(
                 detection.get(
@@ -153,29 +136,13 @@ def track_objects(
                     0.0,
                 )
             ),
-            x=float(
-                detection.get(
-                    "x",
-                    0.0,
-                )
-            ),
-            y=float(
-                detection.get(
-                    "y",
-                    0.0,
-                )
-            ),
+            x=float(detection.get("x", 0.0)),
+            y=float(detection.get("y", 0.0)),
             width=float(
-                detection.get(
-                    "width",
-                    1.0,
-                )
+                detection.get("width", 1.0)
             ),
             height=float(
-                detection.get(
-                    "height",
-                    1.0,
-                )
+                detection.get("height", 1.0)
             ),
         )
 
@@ -187,9 +154,8 @@ def track_objects(
                 label=label,
             )
 
-            tracks.append(
-                best_track
-            )
+            tracks.append(best_track)
+
         elif best_track.points:
             previous = best_track.points[-1]
 
@@ -207,16 +173,11 @@ def track_objects(
                     point.y - previous.y
                 ) / delta_time
 
-        best_track.points.append(
-            point
-        )
+        best_track.points.append(point)
 
     return TrackingResult(
         source_path=str(
-            raw.get(
-                "source_path",
-                "",
-            )
+            raw.get("source_path", "")
         ),
         tracks=tracks,
     )
