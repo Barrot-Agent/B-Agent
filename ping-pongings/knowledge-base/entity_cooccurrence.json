@@ -3,12 +3,12 @@
     "xrp_entries": 512,
     "btc_entries": 429
   },
-  "unique_pairs_found": 1468,
+  "unique_pairs_found": 1473,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 114,
+      "cooccurrence_count": 115,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -1397,6 +1397,36 @@
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
         }
       ]
     },
@@ -2871,36 +2901,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRPL",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        },
-        {
-          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRPL",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        },
-        {
-          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "BlackRock",
       "cooccurrence_count": 2,
@@ -3406,6 +3406,36 @@
         },
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
           "asset": "XRP"
         }
       ]
@@ -7710,28 +7740,6 @@
       ]
     },
     {
-      "entity_a": "Benzinga",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Benzinga",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Korean regional bank",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -10411,6 +10419,61 @@
       "example_headlines": [
         {
           "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "Quantum threat",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum threat",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum threat",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum threat",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
           "asset": "XRP"
         }
       ]

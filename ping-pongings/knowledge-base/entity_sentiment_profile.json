@@ -3,7 +3,7 @@
     "xrp_entries": 512,
     "btc_entries": 429
   },
-  "unique_entities_profiled": 461,
+  "unique_entities_profiled": 462,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 147,
+      "total_mentions": 148,
       "bullish": 91,
-      "neutral": 30,
+      "neutral": 31,
       "bearish": 26,
-      "net_sentiment_score": 0.442,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 119,
+      "total_mentions": 120,
       "bullish": 73,
-      "neutral": 29,
+      "neutral": 30,
       "bearish": 17,
-      "net_sentiment_score": 0.471,
+      "net_sentiment_score": 0.467,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1178,6 +1178,22 @@
       ]
     },
     {
+      "entity": "XRPL",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
+      ]
+    },
+    {
       "entity": "Riot Platforms",
       "total_mentions": 3,
       "bullish": 3,
@@ -2040,21 +2056,6 @@
       ]
     },
     {
-      "entity": "XRPL",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M"
-      ]
-    },
-    {
       "entity": "iShares Bitcoin Trust",
       "total_mentions": 2,
       "bullish": 2,
@@ -2257,6 +2258,21 @@
       "example_headlines": [
         "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
         "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview."
+      ]
+    },
+    {
+      "entity": "Benzinga",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
       ]
     },
     {
@@ -3740,20 +3756,6 @@
       ]
     },
     {
-      "entity": "Benzinga",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga"
-      ]
-    },
-    {
       "entity": "XRP/USD",
       "total_mentions": 1,
       "bullish": 0,
@@ -4577,6 +4579,20 @@
       ],
       "example_headlines": [
         "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz"
+      ]
+    },
+    {
+      "entity": "Quantum threat",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
       ]
     },
     {
