@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 512,
-    "btc_entries": 427
+    "btc_entries": 428
   },
-  "unique_entities_profiled": 458,
+  "unique_entities_profiled": 461,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 216,
-      "bullish": 107,
+      "total_mentions": 217,
+      "bullish": 108,
       "neutral": 34,
       "bearish": 75,
-      "net_sentiment_score": 0.148,
+      "net_sentiment_score": 0.152,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1420,6 +1420,22 @@
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
         "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "OpenAI",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+        "Crypto companies urge AI firms to give Bitcoin developers early access",
+        "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
       ]
     },
     {
@@ -2905,21 +2921,6 @@
       "example_headlines": [
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
         "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
-      ]
-    },
-    {
-      "entity": "OpenAI",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
-        "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
       ]
     },
     {
@@ -6172,6 +6173,48 @@
       ],
       "example_headlines": [
         "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low"
+      ]
+    },
+    {
+      "entity": "Bitcoin Policy Institute",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto companies urge AI firms to give Bitcoin developers early access"
+      ]
+    },
+    {
+      "entity": "AI firms",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto companies urge AI firms to give Bitcoin developers early access"
+      ]
+    },
+    {
+      "entity": "Bitcoin developers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto companies urge AI firms to give Bitcoin developers early access"
       ]
     },
     {
