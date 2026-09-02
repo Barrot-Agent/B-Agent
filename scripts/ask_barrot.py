@@ -389,6 +389,7 @@ def main():
     headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
     payload = {
         "model": DEFAULT_GROQ_MODEL,
+        "max_tokens": 2000,
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content":
