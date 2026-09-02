@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 469,
-    "btc_entries": 361
+    "xrp_entries": 513,
+    "btc_entries": 429
   },
-  "unique_entities_profiled": 447,
+  "unique_entities_profiled": 462,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 214,
-      "bullish": 106,
-      "neutral": 33,
+      "total_mentions": 218,
+      "bullish": 109,
+      "neutral": 34,
       "bearish": 75,
-      "net_sentiment_score": 0.145,
+      "net_sentiment_score": 0.156,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 142,
-      "bullish": 88,
-      "neutral": 30,
-      "bearish": 24,
-      "net_sentiment_score": 0.451,
+      "total_mentions": 148,
+      "bullish": 91,
+      "neutral": 31,
+      "bearish": 26,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 115,
-      "bullish": 70,
-      "neutral": 29,
-      "bearish": 16,
-      "net_sentiment_score": 0.47,
+      "total_mentions": 120,
+      "bullish": 73,
+      "neutral": 30,
+      "bearish": 17,
+      "net_sentiment_score": 0.467,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 83,
-      "bullish": 36,
+      "total_mentions": 86,
+      "bullish": 38,
       "neutral": 17,
-      "bearish": 30,
-      "net_sentiment_score": 0.072,
+      "bearish": 31,
+      "net_sentiment_score": 0.081,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 28,
-      "bullish": 20,
+      "total_mentions": 30,
+      "bullish": 21,
       "neutral": 4,
-      "bearish": 4,
-      "net_sentiment_score": 0.571,
+      "bearish": 5,
+      "net_sentiment_score": 0.533,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 24,
-      "bullish": 4,
+      "total_mentions": 25,
+      "bullish": 5,
       "neutral": 19,
       "bearish": 1,
-      "net_sentiment_score": 0.125,
+      "net_sentiment_score": 0.16,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -156,6 +156,22 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
+      "entity": "XRP Ledger",
+      "total_mentions": 19,
+      "bullish": 18,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.895,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -173,22 +189,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 18,
-      "bullish": 17,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.889,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -611,6 +611,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "U.S. District Court",
       "total_mentions": 5,
       "bullish": 3,
@@ -839,6 +856,23 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "XRP Erases Its Most Bearish Signal\u2014And the Ripple-Linked Coin Is Flying - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
+      ]
+    },
+    {
+      "entity": "Wall Street",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
       ]
     },
     {
@@ -1076,40 +1110,6 @@
       ]
     },
     {
-      "entity": "CFTC",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "Kraken Brings CFTC-Regulated Perpetual Futures To US Traders"
-      ]
-    },
-    {
-      "entity": "Wall Street",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-        "Bitcoin lows pierce $63K as Asia chip-stock crash spreads to Wall Street"
-      ]
-    },
-    {
       "entity": "Luke Dashjr",
       "total_mentions": 3,
       "bullish": 0,
@@ -1175,6 +1175,22 @@
         "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
         "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
         "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial"
+      ]
+    },
+    {
+      "entity": "XRPL",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
       ]
     },
     {
@@ -1259,6 +1275,23 @@
         "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
         "Bitcoin ETF inflows return as Ether funds slip into outflows",
         "Bitcoin ETFs add $189M as August net inflows approach $1B"
+      ]
+    },
+    {
+      "entity": "FTX",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
       ]
     },
     {
@@ -1403,6 +1436,22 @@
         "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
         "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "OpenAI",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
+        "Crypto companies urge AI firms to give Bitcoin developers early access",
+        "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
       ]
     },
     {
@@ -2212,6 +2261,21 @@
       ]
     },
     {
+      "entity": "Benzinga",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
+      ]
+    },
+    {
       "entity": "2026",
       "total_mentions": 2,
       "bullish": 0,
@@ -2498,6 +2562,69 @@
       ]
     },
     {
+      "entity": "Q-Day",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
+        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M"
+      ]
+    },
+    {
+      "entity": "White House",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "Quantum computing",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -2603,21 +2730,6 @@
       ]
     },
     {
-      "entity": "FTX",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
-        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
-      ]
-    },
-    {
       "entity": "Senate",
       "total_mentions": 2,
       "bullish": 0,
@@ -2645,6 +2757,21 @@
       "example_headlines": [
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
+      ]
+    },
+    {
+      "entity": "Glassnode",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+        "Bitcoin speculators keep BTC price \u2018pinned\u2019 below $68.7K: Glassnode"
       ]
     },
     {
@@ -2810,21 +2937,6 @@
       "example_headlines": [
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
         "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
-      ]
-    },
-    {
-      "entity": "OpenAI",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
-        "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
       ]
     },
     {
@@ -3490,20 +3602,6 @@
       ]
     },
     {
-      "entity": "XRPL",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
       "entity": "yellow.com",
       "total_mentions": 1,
       "bullish": 0,
@@ -3645,20 +3743,6 @@
     },
     {
       "entity": "Korean regional bank",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga"
-      ]
-    },
-    {
-      "entity": "Benzinga",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -4330,20 +4414,6 @@
       ]
     },
     {
-      "entity": "Q-Day",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk"
-      ]
-    },
-    {
       "entity": "ARK 21Shares",
       "total_mentions": 1,
       "bullish": 0,
@@ -4355,6 +4425,174 @@
       ],
       "example_headlines": [
         "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K"
+      ]
+    },
+    {
+      "entity": "Equities",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Dan Loeb",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus"
+      ]
+    },
+    {
+      "entity": "Third Point",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus"
+      ]
+    },
+    {
+      "entity": "Core Scientific",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus"
+      ]
+    },
+    {
+      "entity": "Gabriel Perez",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
+      "entity": "Event contracts",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
+      "entity": "Caroline Ellison",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans"
+      ]
+    },
+    {
+      "entity": "Gary Wang",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans"
+      ]
+    },
+    {
+      "entity": "investment advisers",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings"
+      ]
+    },
+    {
+      "entity": "CryptoRank",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto"
+      ]
+    },
+    {
+      "entity": "Altcoin Buzz",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz"
+      ]
+    },
+    {
+      "entity": "Quantum threat",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
       ]
     },
     {
@@ -5198,20 +5436,6 @@
       ]
     },
     {
-      "entity": "Quantum computing",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
-      ]
-    },
-    {
       "entity": "Crypto Weekly Digest",
       "total_mentions": 1,
       "bullish": 1,
@@ -5307,20 +5531,6 @@
       ],
       "example_headlines": [
         "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
-      ]
-    },
-    {
-      "entity": "Glassnode",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
       ]
     },
     {
@@ -5982,6 +6192,48 @@
       ]
     },
     {
+      "entity": "Bitcoin Policy Institute",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto companies urge AI firms to give Bitcoin developers early access"
+      ]
+    },
+    {
+      "entity": "AI firms",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto companies urge AI firms to give Bitcoin developers early access"
+      ]
+    },
+    {
+      "entity": "Bitcoin developers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Crypto companies urge AI firms to give Bitcoin developers early access"
+      ]
+    },
+    {
       "entity": "El Salvador",
       "total_mentions": 1,
       "bullish": 1,
@@ -6388,20 +6640,6 @@
       ]
     },
     {
-      "entity": "White House",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
       "entity": "Futures",
       "total_mentions": 1,
       "bullish": 0,
@@ -6609,20 +6847,6 @@
       ],
       "example_headlines": [
         "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges"
-      ]
-    },
-    {
-      "entity": "U.S. Securities and Exchange Commission",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
       ]
     },
     {

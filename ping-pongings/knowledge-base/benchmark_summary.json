@@ -1,10 +1,10 @@
 {
   "note": "Machine-graded coding tasks only - generated code executed against real assertions, not self-reported. This measures coding-benchmark performance, not trading signal accuracy (see getSignalAccuracy for that). All runs shown, including any failures.",
-  "total_runs": 7,
-  "aggregate_pass_rate": 0.571,
+  "total_runs": 8,
+  "aggregate_pass_rate": 0.625,
   "latest_run": {
-    "run_id": "20260810T083710Z",
-    "run_at": "2026-08-10T08:37:12.399266+00:00",
+    "run_id": "20260817T084638Z",
+    "run_at": "2026-08-17T08:46:39.594052+00:00",
     "tasks_passed": 3,
     "tasks_total": 3
   },
@@ -48,6 +48,12 @@
     {
       "run_id": "20260810T083710Z",
       "run_at": "2026-08-10T08:37:12.399266+00:00",
+      "tasks_passed": 3,
+      "tasks_total": 3
+    },
+    {
+      "run_id": "20260817T084638Z",
+      "run_at": "2026-08-17T08:46:39.594052+00:00",
       "tasks_passed": 3,
       "tasks_total": 3
     }

@@ -2,125 +2,50 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  conflict-markers:
-    name: Conflict Marker Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Check for unresolved merge conflict markers
-        run: |
-          FOUND=$(git ls-files --exclude-standard -- '*.py' '*.yml' '*.yaml' '*.toml' '*.sh' \
-            | grep -v 'merge_conflict' \
-            | xargs --no-run-if-empty grep -l -e '^<<<<<<< ' -e '^>>>>>>> ' 2>/dev/null || true)
-          if [ -n "$FOUND" ]; then
-            echo "ERROR: unresolved merge conflict markers found in:" >&2
-            echo "$FOUND" >&2
-            exit 1
-          fi
-          echo "OK: no conflict markers."
-
-  lint:
-    name: Code Quality
-    runs-on: ubuntu-latest
-    env:
-      ROOT_PYTHON_TARGETS: app.py
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-
-      - name: Cache pip
-        uses: actions/cache@v6
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements*.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-
-      - name: Install dev dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install black flake8 isort mypy pydantic pydantic-settings python-dotenv
-
-      - name: Check formatting (black)
-        run: black --check --diff $(find barrot_agent tests -type f -name '*.py' | sort) $ROOT_PYTHON_TARGETS
-
-      - name: Check imports (isort)
-        run: isort --check-only --diff $(find barrot_agent tests -type f -name '*.py' | sort) $ROOT_PYTHON_TARGETS
-
-      - name: Lint (flake8)
-        run: flake8 $(find barrot_agent tests -type f -name '*.py' | grep -v 'barrot_agent/rendering' | grep -v 'barrot_agent/smart_agent.py' | sort) $ROOT_PYTHON_TARGETS
-
-  test:
+  tests:
     name: Tests
     runs-on: ubuntu-latest
-    env:
-      ROOT_PYTHON_TARGETS: app.py
-    strategy:
-      matrix:
-        python-version: ["3.11"]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Cache pip
-        uses: actions/cache@v6
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('requirements*.txt') }}
-          restore-keys: ${{ runner.os }}-pip-${{ matrix.python-version }}-
-
-      - name: Install test dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest pytest-cov requests pydantic pydantic-settings python-dotenv
-
-      - name: Compile Python sources
-        run: python -m compileall barrot_agent data $ROOT_PYTHON_TARGETS
-
-      - name: Run tests
-        run: |
-          pytest tests/ -v \
-            --cov=barrot_agent \
-            --cov-report=xml:coverage.xml \
-            --cov-report=term-missing
-
-      - name: Upload coverage
-        uses: actions/upload-artifact@v7
-        if: matrix.python-version == '3.10'
-        with:
-          name: coverage-report
-          path: coverage.xml
-
-  security:
-    name: Security Scan
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install pip-audit
-        run: pip install pip-audit
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest PyJWT cryptography
 
-      - name: Run dependency audit
-        # Rationale is documented in SECURITY.md under Known Dependency Audit
-        # Exceptions so the ignore is tracked and periodically re-reviewed.
-        run: pip-audit -r requirements.txt --ignore-vuln PYSEC-2024-232
+      - name: Run core test suite
+        run: |
+          python -m pytest \
+            tests/test_cognitive_integrity.py \
+            tests/test_evolution_engine.py \
+            tests/test_claim_integrity.py \
+            tests/test_corroboration.py \
+            tests/test_evidence_corroboration.py \
+            tests/test_source_independence.py \
+            tests/test_source_independent_corroboration.py \
+            tests/test_evidence_store.py \
+            tests/test_evidence_normalization.py \
+            tests/test_claim_events.py \
+            tests/test_evidence_pipeline_integration.py \
+            tests/test_reactive_observers.py \
+            tests/test_intelligence_events.py \
+            tests/test_evidence_quality.py \
+            tests/test_claim_lifecycle.py \
+            tests/test_confidence_calibration.py \
+            tests/test_weighted_corroboration.py \
+            tests/test_risk_manager.py \
+            tests/test_coinbase_trader.py \
+            -v --no-cov

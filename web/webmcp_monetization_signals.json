@@ -1,5 +1,5 @@
 {
-  "generated_from": "24 candidate ideas from webmcp_trend_summary.json",
+  "generated_from": "26 candidate ideas from webmcp_trend_summary.json",
   "enriched_candidates": [
     {
       "candidate_tool_idea": "Stateless WebMCP Client",
@@ -14,16 +14,16 @@
             "url": "https://www.npmjs.com/package/@symbiotejs/symbiote"
           },
           {
-            "name": "@mcp-b/webmcp-polyfill",
-            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
-          },
-          {
             "name": "@mcp-b/react-webmcp",
-            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot with Zod validation",
+            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
+          },
+          {
+            "name": "@mcp-b/global",
+            "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/global"
           }
         ]
       },
@@ -36,19 +36,19 @@
         "github": [
           {
             "name": "cyproxio/mcp-for-security",
-            "stars": 629,
-            "forks": 101,
+            "stars": 633,
+            "forks": 100,
             "url": "https://github.com/cyproxio/mcp-for-security"
           },
           {
             "name": "Sfedfcv/redesigned-pancake",
-            "stars": 256,
+            "stars": 261,
             "forks": 0,
             "url": "https://github.com/Sfedfcv/redesigned-pancake"
           },
           {
             "name": "jettbrains/-L-",
-            "stars": 153,
+            "stars": 159,
             "forks": 47,
             "url": "https://github.com/jettbrains/-L-"
           }
@@ -83,20 +83,20 @@
         "github": [
           {
             "name": "microsoft/azuredatastudio",
-            "stars": 7687,
-            "forks": 996,
+            "stars": 7685,
+            "forks": 998,
             "url": "https://github.com/microsoft/azuredatastudio"
           },
           {
             "name": "GameServerManagers/LinuxGSM",
-            "stars": 4889,
-            "forks": 864,
+            "stars": 4896,
+            "forks": 863,
             "url": "https://github.com/GameServerManagers/LinuxGSM"
           },
           {
             "name": "vitodeploy/vito",
-            "stars": 3186,
-            "forks": 413,
+            "stars": 3218,
+            "forks": 414,
             "url": "https://github.com/vitodeploy/vito"
           }
         ],
@@ -130,14 +130,14 @@
         "github": [
           {
             "name": "nanobrowser/nanobrowser",
-            "stars": 13565,
-            "forks": 1431,
+            "stars": 13704,
+            "forks": 1451,
             "url": "https://github.com/nanobrowser/nanobrowser"
           },
           {
             "name": "kklt92/awesome-ai-extensions",
-            "stars": 527,
-            "forks": 4,
+            "stars": 529,
+            "forks": 6,
             "url": "https://github.com/kklt92/awesome-ai-extensions"
           },
           {
@@ -149,16 +149,16 @@
         ],
         "npm": [
           {
-            "name": "neon-init",
-            "description": "Initialize Neon projects",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/neon-init"
-          },
-          {
             "name": "playwright",
             "description": "A high-level API to automate web browsers",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/playwright"
+          },
+          {
+            "name": "neon-init",
+            "description": "Initialize Neon projects",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/neon-init"
           },
           {
             "name": "@playwright/test",
@@ -177,13 +177,13 @@
         "github": [
           {
             "name": "RobotecAI/rai",
-            "stars": 568,
-            "forks": 74,
+            "stars": 576,
+            "forks": 75,
             "url": "https://github.com/RobotecAI/rai"
           },
           {
             "name": "Genesis1231/Eva01",
-            "stars": 139,
+            "stars": 142,
             "forks": 9,
             "url": "https://github.com/Genesis1231/Eva01"
           },
@@ -225,12 +225,12 @@
           {
             "name": "aliyun/alibabacloud-dataworks-mcp-server",
             "stars": 50,
-            "forks": 16,
+            "forks": 17,
             "url": "https://github.com/aliyun/alibabacloud-dataworks-mcp-server"
           },
           {
             "name": "ironystock/agentic-obs",
-            "stars": 25,
+            "stars": 29,
             "forks": 6,
             "url": "https://github.com/ironystock/agentic-obs"
           },
@@ -255,10 +255,10 @@
             "url": "https://www.npmjs.com/package/@azure/ai-projects"
           },
           {
-            "name": "@mastra/core",
-            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "name": "@agentclientprotocol/sdk",
+            "description": "The Agent Client Protocol (ACP) is a protocol that standardizes communication between *code editors* (interactive programs for viewing and editing source code) and *coding agents* (programs that use generative AI to autonomously modify code).",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mastra/core"
+            "url": "https://www.npmjs.com/package/@agentclientprotocol/sdk"
           }
         ]
       },
@@ -296,16 +296,16 @@
             "url": "https://www.npmjs.com/package/p-queue"
           },
           {
-            "name": "agenda",
-            "description": "Light weight job scheduler for Node.js",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/agenda"
-          },
-          {
             "name": "node-schedule",
             "description": "A cron-like and not-cron-like job scheduler for Node.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/node-schedule"
+          },
+          {
+            "name": "agenda",
+            "description": "Light weight job scheduler for Node.js",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/agenda"
           }
         ]
       },
@@ -337,16 +337,16 @@
         ],
         "npm": [
           {
-            "name": "@earendil-works/pi-ai",
-            "description": "Unified LLM API with automatic model discovery and provider configuration",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@earendil-works/pi-ai"
-          },
-          {
             "name": "@ironbee-ai/devtools",
             "description": "MCP Server and CLI for IronBee DevTools",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@ironbee-ai/devtools"
+          },
+          {
+            "name": "@earendil-works/pi-ai",
+            "description": "Unified LLM API with automatic model discovery and provider configuration",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@earendil-works/pi-ai"
           },
           {
             "name": "browser-devtools-mcp",
@@ -365,7 +365,7 @@
         "github": [
           {
             "name": "jettbrains/-L-",
-            "stars": 153,
+            "stars": 159,
             "forks": 47,
             "url": "https://github.com/jettbrains/-L-"
           },
@@ -384,22 +384,22 @@
         ],
         "npm": [
           {
+            "name": "nestjs-agentic",
+            "description": "NestJS-native framework for building enterprise-grade, governance-backed AI agents.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/nestjs-agentic"
+          },
+          {
             "name": "agentic-flow",
             "description": "The agentic meta-harness \u2014 freeze the model, evolve the harness. An open runtime that routes each query to the cost-optimal model, evolves its own harness (planner/context/reviewer/retry/tool/memory/score policy) and autonomously repairs code, then orches",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/agentic-flow"
           },
           {
-            "name": "@playwright/mcp",
-            "description": "Playwright Tools for MCP",
+            "name": "@nestjs-agentic/core",
+            "description": "NestJS-native primitives for building production AI agents.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@playwright/mcp"
-          },
-          {
-            "name": "@raishin/vanguard-frontier-agentic",
-            "description": "Cloud and zero-trust agentic workflow marketplace for skills, agents, rules, MCP references, and compliance-aware architecture.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@raishin/vanguard-frontier-agentic"
+            "url": "https://www.npmjs.com/package/@nestjs-agentic/core"
           }
         ]
       },
@@ -412,19 +412,19 @@
         "github": [
           {
             "name": "opgginc/laravel-mcp-server",
-            "stars": 330,
+            "stars": 331,
             "forks": 0,
             "url": "https://github.com/opgginc/laravel-mcp-server"
           },
           {
             "name": "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
-            "stars": 300,
-            "forks": 91,
+            "stars": 307,
+            "forks": 92,
             "url": "https://github.com/chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020"
           },
           {
             "name": "jettbrains/-L-",
-            "stars": 153,
+            "stars": 159,
             "forks": 47,
             "url": "https://github.com/jettbrains/-L-"
           }
@@ -437,16 +437,16 @@
             "url": "https://www.npmjs.com/package/@aws-sdk/client-application-auto-scaling"
           },
           {
-            "name": "@aws-sdk/client-auto-scaling",
-            "description": "AWS SDK for JavaScript Auto Scaling Client for Node.js, Browser and React Native",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@aws-sdk/client-auto-scaling"
-          },
-          {
             "name": "mutation-server-protocol",
             "description": "Schema validation for the mutation server protocol (MSP).",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/mutation-server-protocol"
+          },
+          {
+            "name": "@aws-sdk/client-auto-scaling",
+            "description": "AWS SDK for JavaScript Auto Scaling Client for Node.js, Browser and React Native",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@aws-sdk/client-auto-scaling"
           }
         ]
       },
@@ -466,15 +466,15 @@
           },
           {
             "name": "@mcp-b/react-webmcp",
-            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot with Zod validation",
+            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
           },
           {
-            "name": "@mcp-b/webmcp-ts-sdk",
-            "description": "Browser-adapted MCP TypeScript SDK - Dynamic tool registration for W3C Web Model Context API and AI agent integration",
+            "name": "@mcp-b/global",
+            "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
+            "url": "https://www.npmjs.com/package/@mcp-b/global"
           }
         ]
       },
@@ -518,10 +518,10 @@
             "url": "https://www.npmjs.com/package/sonarqube-scanner"
           },
           {
-            "name": "qr-scanner",
-            "description": "A javascript QR scanner library",
+            "name": "@yudiel/react-qr-scanner",
+            "description": "A library to scan QR codes in React.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/qr-scanner"
+            "url": "https://www.npmjs.com/package/@yudiel/react-qr-scanner"
           }
         ]
       },
@@ -563,21 +563,21 @@
         "npm": [
           {
             "name": "@mcp-b/react-webmcp",
-            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot with Zod validation",
+            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
-          },
-          {
-            "name": "@mcp-b/webmcp-ts-sdk",
-            "description": "Browser-adapted MCP TypeScript SDK - Dynamic tool registration for W3C Web Model Context API and AI agent integration",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
           },
           {
             "name": "@mcp-b/global",
             "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/global"
+          },
+          {
+            "name": "@mastra/core",
+            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mastra/core"
           }
         ]
       },
@@ -590,6 +590,12 @@
         "github": [],
         "npm": [
           {
+            "name": "@deepseek-ai/dsh-tool-goal",
+            "description": "Model-facing same-session goal tools with execution-time authority checks",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-tool-goal"
+          },
+          {
             "name": "llm-wiki-governance",
             "description": "Governance for AI-written project docs: verify, catch drift, keep them code-grounded, enforce in CI. OKF-compatible, zero-dependency.",
             "popularity_score": 1,
@@ -600,12 +606,6 @@
             "description": "Human-friendly process signals",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/human-signals"
-          },
-          {
-            "name": "@einride/csp-evaluator-cli",
-            "description": "A command line tool to validate Content-Security-Policy rules",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@einride/csp-evaluator-cli"
           }
         ]
       },
@@ -618,7 +618,7 @@
         "github": [
           {
             "name": "jakub-k-slys/substack-gateway-oss",
-            "stars": 21,
+            "stars": 24,
             "forks": 6,
             "url": "https://github.com/jakub-k-slys/substack-gateway-oss"
           },
@@ -629,10 +629,10 @@
             "url": "https://github.com/klappy/translation-helps-mcp"
           },
           {
-            "name": "achappey/aihappey-chat",
-            "stars": 4,
+            "name": "FlerAlex/gemini_proxy",
+            "stars": 3,
             "forks": 0,
-            "url": "https://github.com/achappey/aihappey-chat"
+            "url": "https://github.com/FlerAlex/gemini_proxy"
           }
         ],
         "npm": [
@@ -643,16 +643,16 @@
             "url": "https://www.npmjs.com/package/convex-mcp-gateway"
           },
           {
+            "name": "@posthog/mcp",
+            "description": "PostHog SDK for Model Context Protocol (MCP) servers \u2014 tracks tool usage, intent, and identity",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@posthog/mcp"
+          },
+          {
             "name": "@modelcontextprotocol/sdk",
             "description": "Model Context Protocol implementation for TypeScript",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk"
-          },
-          {
-            "name": "fastmcp",
-            "description": "A TypeScript framework for building MCP servers.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/fastmcp"
           }
         ]
       },
@@ -671,16 +671,16 @@
             "url": "https://www.npmjs.com/package/react-native-appsflyer"
           },
           {
-            "name": "@mastra/core",
-            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "name": "@filigran/chatbot",
+            "description": "Filigran chat panel \u2014 React + Tailwind standalone chatbot component",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mastra/core"
+            "url": "https://www.npmjs.com/package/@filigran/chatbot"
           },
           {
-            "name": "@vercel/detect-agent",
-            "description": "Detect if code is running in an AI agent or automated development environment",
+            "name": "senangwebs-chatbot",
+            "description": "Lightweight JavaScript library with OpenRouter API integration for AI-powered conversations.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@vercel/detect-agent"
+            "url": "https://www.npmjs.com/package/senangwebs-chatbot"
           }
         ]
       },
@@ -706,16 +706,16 @@
             "url": "https://www.npmjs.com/package/neon-init"
           },
           {
+            "name": "assistant-stream",
+            "description": "Streaming utilities for AI assistants",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/assistant-stream"
+          },
+          {
             "name": "@assistant-ui/react",
             "description": "Open-source TypeScript/React library for building production-grade AI chat experiences",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@assistant-ui/react"
-          },
-          {
-            "name": "@assistant-ui/store",
-            "description": "Tap-based state management for @assistant-ui",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@assistant-ui/store"
           }
         ]
       },
@@ -727,21 +727,21 @@
       "monetization_signals": {
         "github": [
           {
+            "name": "OptimNow/cloud-finops-skills",
+            "stars": 49,
+            "forks": 15,
+            "url": "https://github.com/OptimNow/cloud-finops-skills"
+          },
+          {
             "name": "vimalgandhi/Docker-Commands-Help-Tips",
             "stars": 19,
-            "forks": 8,
+            "forks": 9,
             "url": "https://github.com/vimalgandhi/Docker-Commands-Help-Tips"
           },
           {
-            "name": "marostcs/konzole",
-            "stars": 18,
-            "forks": 0,
-            "url": "https://github.com/marostcs/konzole"
-          },
-          {
             "name": "awesomemotive/wpvibe-ai-mcp",
-            "stars": 17,
-            "forks": 5,
+            "stars": 18,
+            "forks": 6,
             "url": "https://github.com/awesomemotive/wpvibe-ai-mcp"
           }
         ],
@@ -759,10 +759,10 @@
             "url": "https://www.npmjs.com/package/@google-cloud/cloud-sql-connector"
           },
           {
-            "name": "mariadb",
-            "description": "fast mariadb or mysql connector.",
+            "name": "@ledgerhq/device-management-kit-devtools-core",
+            "description": "Core library for DMK developer tools. Contains:",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/mariadb"
+            "url": "https://www.npmjs.com/package/@ledgerhq/device-management-kit-devtools-core"
           }
         ]
       },
@@ -783,21 +783,21 @@
         "npm": [
           {
             "name": "@mcp-b/webmcp-ts-sdk",
-            "description": "Browser-adapted MCP TypeScript SDK - Dynamic tool registration for W3C Web Model Context API and AI agent integration",
+            "description": "Thin WebMCP-to-MCP v2 browser adapter with native Chrome tool mirroring",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
           },
           {
-            "name": "@mcp-b/webmcp-polyfill",
-            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
+            "name": "parse5-htmlparser2-tree-adapter",
+            "description": "htmlparser2 tree adapter for parse5.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
+            "url": "https://www.npmjs.com/package/parse5-htmlparser2-tree-adapter"
           },
           {
-            "name": "@mcp-b/webmcp-types",
-            "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
+            "name": "@agent-surface/webmcp",
+            "description": "[Experimental] WebMCP (navigator.modelContext) transport adapter for agent-surface",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+            "url": "https://www.npmjs.com/package/@agent-surface/webmcp"
           }
         ]
       },
@@ -822,10 +822,10 @@
             "url": "https://www.npmjs.com/package/@babel/helper-validator-identifier"
           },
           {
-            "name": "fast-xml-parser",
-            "description": "Validate XML, Parse XML, Build XML without C/C++ based libraries",
+            "name": "@babel/helper-validator-option",
+            "description": "Validate plugin/preset options",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/fast-xml-parser"
+            "url": "https://www.npmjs.com/package/@babel/helper-validator-option"
           }
         ]
       },
@@ -838,8 +838,8 @@
         "github": [
           {
             "name": "omkarcloud/google-maps-scraper",
-            "stars": 3099,
-            "forks": 463,
+            "stars": 3259,
+            "forks": 474,
             "url": "https://github.com/omkarcloud/google-maps-scraper"
           },
           {
@@ -850,8 +850,8 @@
           },
           {
             "name": "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
-            "stars": 300,
-            "forks": 91,
+            "stars": 307,
+            "forks": 92,
             "url": "https://github.com/chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020"
           }
         ],
@@ -891,16 +891,16 @@
             "url": "https://www.npmjs.com/package/@angular-devkit/build-webpack"
           },
           {
-            "name": "@mcp-b/webmcp-polyfill",
-            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
-          },
-          {
             "name": "@syncfusion/ej2-angular-querybuilder",
             "description": "Essential JS 2 QueryBuilder for Angular",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@syncfusion/ej2-angular-querybuilder"
+          },
+          {
+            "name": "@angular-eslint/builder",
+            "description": "Angular CLI builder for ESLint",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@angular-eslint/builder"
           }
         ]
       },
@@ -948,6 +948,81 @@
             "description": "Automate browser actions, extract data, and perform assertions using AI. It offers JavaScript SDK, Chrome extension, and support for scripting in YAML. See https://midscenejs.com/ for details.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@midscene/web"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Live Auction Inspection Tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@deepseek-ai/dsh-tool-cordis",
+            "description": "Self-referential cordis toolset: inspect the live runtime, mount and dispose model-written plugins",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-tool-cordis"
+          },
+          {
+            "name": "@deepseek-ai/dsh-tool-subagent-report",
+            "description": "Child-scoped report tool over ctx.subagents continuations",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-tool-subagent-report"
+          },
+          {
+            "name": "@deepseek-ai/dsh-client-ui-trajectory",
+            "description": "Trajectory event ledger with an interactive timing overview: pure-consumer plugin registering into the conversation ViewMap (no service)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-client-ui-trajectory"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Data Migration Assistant",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "Sfedfcv/redesigned-pancake",
+            "stars": 261,
+            "forks": 0,
+            "url": "https://github.com/Sfedfcv/redesigned-pancake"
+          },
+          {
+            "name": "ukogan/claude-migration-assistant",
+            "stars": 59,
+            "forks": 10,
+            "url": "https://github.com/ukogan/claude-migration-assistant"
+          },
+          {
+            "name": "descope/descope-cognito-migration",
+            "stars": 38,
+            "forks": 2,
+            "url": "https://github.com/descope/descope-cognito-migration"
+          }
+        ],
+        "npm": [
+          {
+            "name": "@storybook/addon-mdx-gfm",
+            "description": "GitHub Flavored Markdown in Storybook",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@storybook/addon-mdx-gfm"
+          },
+          {
+            "name": "@assistant-ui/tap",
+            "description": "Reactive state management inspired by React hooks",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@assistant-ui/tap"
+          },
+          {
+            "name": "assistant-stream",
+            "description": "Streaming utilities for AI assistants",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/assistant-stream"
           }
         ]
       },

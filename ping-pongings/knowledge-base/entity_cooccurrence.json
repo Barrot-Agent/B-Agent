@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 469,
-    "btc_entries": 361
+    "xrp_entries": 513,
+    "btc_entries": 429
   },
-  "unique_pairs_found": 1418,
+  "unique_pairs_found": 1473,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 110,
+      "cooccurrence_count": 115,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 61,
+      "cooccurrence_count": 63,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 19,
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -67,6 +67,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 19,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 18,
       "example_headlines": [
@@ -96,6 +111,21 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 17,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 17,
@@ -106,36 +136,6 @@
         },
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 17,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 16,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -186,6 +186,21 @@
       ]
     },
     {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
       "cooccurrence_count": 14,
@@ -196,21 +211,6 @@
         },
         {
           "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -1266,6 +1266,21 @@
       ]
     },
     {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 3,
@@ -1382,6 +1397,36 @@
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
         }
       ]
     },
@@ -2451,6 +2496,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "European Union",
       "entity_b": "MiCA",
       "cooccurrence_count": 2,
@@ -2581,21 +2641,6 @@
         },
         {
           "title": "Why is XRP rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Wall Street",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
         }
       ]
@@ -3366,6 +3411,36 @@
       ]
     },
     {
+      "entity_a": "Benzinga",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Coinbase",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 2,
@@ -3801,6 +3876,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -3841,6 +3931,51 @@
         },
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q-Day",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q-Day",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
           "asset": "BTC"
         }
       ]
@@ -4246,6 +4381,21 @@
         },
         {
           "title": "Bitcoin Wallet Dormant Since 2011 Moves Millions in BTC - Decrypt",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Glassnode",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin speculators keep BTC price \u2018pinned\u2019 below $68.7K: Glassnode",
           "asset": "BTC"
         }
       ]
@@ -6259,17 +6409,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "European Union",
       "cooccurrence_count": 1,
@@ -6909,28 +7048,6 @@
     },
     {
       "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRPL",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRPL",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
       "entity_b": "XRPL",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -7614,28 +7731,6 @@
     {
       "entity_a": "Benzinga",
       "entity_b": "Korean regional bank",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Benzinga",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Benzinga",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -9658,17 +9753,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Wall Street",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Wall Street",
       "entity_b": "institutional investors",
       "cooccurrence_count": 1,
@@ -9813,28 +9897,6 @@
     },
     {
       "entity_a": "Q-Day",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Q-Day",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Q-Day",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -9917,6 +9979,501 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "Q-Day",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q-Day",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Core Scientific",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Dan Loeb",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Core Scientific",
+      "entity_b": "Dan Loeb",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Core Scientific",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Dan Loeb",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Event contracts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Gabriel Perez",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Event contracts",
+      "entity_b": "Gabriel Perez",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Event contracts",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gabriel Perez",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Caroline Ellison",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Gary Wang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Caroline Ellison",
+      "entity_b": "FTX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Caroline Ellison",
+      "entity_b": "Gary Wang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Caroline Ellison",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FTX",
+      "entity_b": "Gary Wang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FTX",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gary Wang",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "investment advisers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "investment advisers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "Quantum threat",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Benzinga",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum threat",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum threat",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum threat",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
           "asset": "XRP"
         }
       ]
@@ -12298,17 +12855,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Glassnode",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Glassnode",
       "cooccurrence_count": 1,
@@ -14597,6 +15143,116 @@
       ]
     },
     {
+      "entity_a": "AI firms",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI firms",
+      "entity_b": "Bitcoin Policy Institute",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI firms",
+      "entity_b": "Bitcoin developers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI firms",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Policy Institute",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin developers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Policy Institute",
+      "entity_b": "Bitcoin developers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Policy Institute",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin developers",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Crypto companies urge AI firms to give Bitcoin developers early access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance UK",
       "cooccurrence_count": 1,
@@ -16831,17 +17487,6 @@
     },
     {
       "entity_a": "Reg Crypto",
-      "entity_b": "U.S. Securities and Exchange Commission",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
       "entity_b": "U.S. Securities and Exchange Commission",
       "cooccurrence_count": 1,
       "example_headlines": [

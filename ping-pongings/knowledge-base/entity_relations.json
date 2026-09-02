@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 121,
+  "total_classified": 124,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1090,6 +1090,33 @@
       "relation_type": "regulatory",
       "justification": "Both headlines tie BIP-110 directly to Bitcoin, indicating BIP-110 is a Bitcoin improvement proposal that influences Bitcoin's protocol and governance.",
       "classified_at": "2026-08-17T10:21:32Z"
+    },
+    {
+      "pair_key": "ETH|Ethereum",
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 8,
+      "relation_type": "same_event",
+      "justification": "Both headlines discuss financial metrics of the Ethereum network, using ETH as the unit, indicating they refer to the same underlying asset in the same context.",
+      "classified_at": "2026-08-31T10:04:18Z"
+    },
+    {
+      "pair_key": "24/7 Wall St.|XRP",
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "relation_type": "same_event",
+      "justification": "Both headlines are articles published by 24/7 Wall St. that discuss XRP topics, showing they appear together in the same news pieces.",
+      "classified_at": "2026-08-31T10:04:21Z"
+    },
+    {
+      "pair_key": "CoinDesk|XRP",
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "relation_type": "complementary",
+      "justification": "Both headlines are news articles about XRP Ledger published by CoinDesk, showing that CoinDesk provides coverage that complements the XRP ecosystem.",
+      "classified_at": "2026-08-31T10:04:24Z"
     }
   ]
 }
