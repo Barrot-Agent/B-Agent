@@ -3,7 +3,7 @@
     "xrp_entries": 503,
     "btc_entries": 412
   },
-  "unique_entities_profiled": 453,
+  "unique_entities_profiled": 456,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 145,
-      "bullish": 90,
+      "total_mentions": 147,
+      "bullish": 91,
       "neutral": 30,
-      "bearish": 25,
-      "net_sentiment_score": 0.448,
+      "bearish": 26,
+      "net_sentiment_score": 0.442,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 117,
-      "bullish": 72,
+      "total_mentions": 119,
+      "bullish": 73,
       "neutral": 29,
-      "bearish": 16,
-      "net_sentiment_score": 0.479,
+      "bearish": 17,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 29,
+      "total_mentions": 30,
       "bullish": 21,
       "neutral": 4,
-      "bearish": 4,
-      "net_sentiment_score": 0.586,
+      "bearish": 5,
+      "net_sentiment_score": 0.533,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -159,6 +159,22 @@
       ]
     },
     {
+      "entity": "XRP Ledger",
+      "total_mentions": 19,
+      "bullish": 18,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.895,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 18,
       "bullish": 7,
@@ -173,22 +189,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 18,
-      "bullish": 17,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.889,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -2545,6 +2545,38 @@
       ]
     },
     {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "Quantum computing",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -4461,6 +4493,48 @@
       ]
     },
     {
+      "entity": "investment advisers",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings"
+      ]
+    },
+    {
+      "entity": "CryptoRank",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto"
+      ]
+    },
+    {
+      "entity": "Altcoin Buzz",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -5288,20 +5362,6 @@
     },
     {
       "entity": "Jim Cramer",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
-      ]
-    },
-    {
-      "entity": "Quantum computing",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -6698,20 +6758,6 @@
       ],
       "example_headlines": [
         "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges"
-      ]
-    },
-    {
-      "entity": "U.S. Securities and Exchange Commission",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
       ]
     },
     {
