@@ -3,12 +3,12 @@
     "xrp_entries": 503,
     "btc_entries": 412
   },
-  "unique_pairs_found": 1441,
+  "unique_pairs_found": 1452,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 112,
+      "cooccurrence_count": 114,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,6 +68,21 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
+      "cooccurrence_count": 19,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
       "cooccurrence_count": 18,
       "example_headlines": [
         {
@@ -121,21 +136,6 @@
         },
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 17,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -3932,6 +3932,21 @@
         {
           "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "BTC"
         }
       ]
     },
@@ -10209,6 +10224,127 @@
       "example_headlines": [
         {
           "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "investment advisers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "investment advisers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Altcoin Buzz",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
           "asset": "XRP"
         }
       ]
@@ -17112,17 +17248,6 @@
     },
     {
       "entity_a": "Reg Crypto",
-      "entity_b": "U.S. Securities and Exchange Commission",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
       "entity_b": "U.S. Securities and Exchange Commission",
       "cooccurrence_count": 1,
       "example_headlines": [
