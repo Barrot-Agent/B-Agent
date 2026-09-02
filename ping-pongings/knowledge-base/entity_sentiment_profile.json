@@ -3,7 +3,7 @@
     "xrp_entries": 513,
     "btc_entries": 429
   },
-  "unique_entities_profiled": 462,
+  "unique_entities_profiled": 465,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -258,6 +258,23 @@
       ]
     },
     {
+      "entity": "Federal Reserve",
+      "total_mentions": 12,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.583,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
+      ]
+    },
+    {
       "entity": "Ripple Labs",
       "total_mentions": 12,
       "bullish": 8,
@@ -287,23 +304,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "Federal Reserve",
-      "total_mentions": 11,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.545,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
       ]
     },
     {
@@ -6861,6 +6861,48 @@
       ],
       "example_headlines": [
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "CBDC",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits"
+      ]
+    },
+    {
+      "entity": "tokenized deposits",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits"
+      ]
+    },
+    {
+      "entity": "commercial banks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits"
       ]
     }
   ]

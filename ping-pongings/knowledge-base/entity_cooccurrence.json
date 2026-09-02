@@ -3,7 +3,7 @@
     "xrp_entries": 513,
     "btc_entries": 429
   },
-  "unique_pairs_found": 1473,
+  "unique_pairs_found": 1479,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -17492,6 +17492,72 @@
       "example_headlines": [
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CBDC",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CBDC",
+      "entity_b": "commercial banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CBDC",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "commercial banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "commercial banks",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
           "asset": "BTC"
         }
       ]
