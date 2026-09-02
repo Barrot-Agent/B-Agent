@@ -3,7 +3,7 @@
     "xrp_entries": 513,
     "btc_entries": 429
   },
-  "unique_entities_profiled": 465,
+  "unique_entities_profiled": 468,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 148,
+      "total_mentions": 149,
       "bullish": 91,
       "neutral": 31,
-      "bearish": 26,
-      "net_sentiment_score": 0.439,
+      "bearish": 27,
+      "net_sentiment_score": 0.43,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -492,6 +492,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 6,
       "bullish": 3,
@@ -608,23 +625,6 @@
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.2,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
       ]
     },
     {
@@ -4509,6 +4509,48 @@
       ],
       "example_headlines": [
         "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
+      "entity": "Polymarket",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case"
+      ]
+    },
+    {
+      "entity": "U.S. federal court",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case"
+      ]
+    },
+    {
+      "entity": "crypto derivatives",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case"
       ]
     },
     {

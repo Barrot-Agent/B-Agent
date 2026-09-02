@@ -3,7 +3,7 @@
     "xrp_entries": 513,
     "btc_entries": 429
   },
-  "unique_pairs_found": 1479,
+  "unique_pairs_found": 1488,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1216,6 +1216,21 @@
         },
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
           "asset": "XRP"
         }
       ]
@@ -2492,21 +2507,6 @@
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
-          "asset": "XRP"
         }
       ]
     },
@@ -10199,6 +10199,105 @@
       "example_headlines": [
         {
           "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Polymarket",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "U.S. federal court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "crypto derivatives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polymarket",
+      "entity_b": "U.S. federal court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polymarket",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polymarket",
+      "entity_b": "crypto derivatives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. federal court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. federal court",
+      "entity_b": "crypto derivatives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "crypto derivatives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
           "asset": "XRP"
         }
       ]
