@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 515,
+    "xrp_entries": 516,
     "btc_entries": 431
   },
-  "unique_entities_profiled": 471,
+  "unique_entities_profiled": 472,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 218,
-      "bullish": 109,
+      "total_mentions": 219,
+      "bullish": 110,
       "neutral": 34,
       "bearish": 75,
-      "net_sentiment_score": 0.156,
+      "net_sentiment_score": 0.16,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 155,
-      "bullish": 95,
+      "total_mentions": 158,
+      "bullish": 97,
       "neutral": 31,
-      "bearish": 29,
-      "net_sentiment_score": 0.426,
+      "bearish": 30,
+      "net_sentiment_score": 0.424,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 125,
-      "bullish": 77,
+      "total_mentions": 127,
+      "bullish": 78,
       "neutral": 30,
-      "bearish": 18,
-      "net_sentiment_score": 0.472,
+      "bearish": 19,
+      "net_sentiment_score": 0.465,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -91,6 +91,23 @@
       ]
     },
     {
+      "entity": "SEC",
+      "total_mentions": 31,
+      "bullish": 21,
+      "neutral": 4,
+      "bearish": 6,
+      "net_sentiment_score": 0.484,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
+      ]
+    },
+    {
       "entity": "Ethereum",
       "total_mentions": 30,
       "bullish": 16,
@@ -105,23 +122,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
-      ]
-    },
-    {
-      "entity": "SEC",
-      "total_mentions": 30,
-      "bullish": 21,
-      "neutral": 4,
-      "bearish": 5,
-      "net_sentiment_score": 0.533,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
       ]
     },
     {
@@ -160,11 +160,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 20,
+      "total_mentions": 21,
       "bullish": 19,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.9,
+      "bearish": 2,
+      "net_sentiment_score": 0.81,
       "assets_seen_in": [
         "XRP"
       ],
@@ -358,6 +358,23 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETFs",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.556,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+        "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K"
+      ]
+    },
+    {
       "entity": "US stocks",
       "total_mentions": 9,
       "bullish": 4,
@@ -405,23 +422,6 @@
         "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
         "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
         "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETFs",
-      "total_mentions": 8,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
-        "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
       ]
     },
     {
@@ -492,6 +492,23 @@
       ]
     },
     {
+      "entity": "Ether",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
+      ]
+    },
+    {
       "entity": "AI",
       "total_mentions": 6,
       "bullish": 2,
@@ -540,23 +557,6 @@
         "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
         "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
-      ]
-    },
-    {
-      "entity": "Ether",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
       ]
     },
     {
@@ -843,6 +843,22 @@
       ]
     },
     {
+      "entity": "TheStreet",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+        "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+        "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
+      ]
+    },
+    {
       "entity": "RLUSD",
       "total_mentions": 4,
       "bullish": 4,
@@ -1110,19 +1126,19 @@
       ]
     },
     {
-      "entity": "TheStreet",
+      "entity": "CoinGape",
       "total_mentions": 3,
-      "bullish": 2,
+      "bullish": 3,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-        "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-        "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Just In: Ripple Re-Locks 700 Million XRP Back Into Escrow - CoinGape"
       ]
     },
     {
@@ -1308,6 +1324,23 @@
         "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
+      ]
+    },
+    {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
       ]
     },
     {
@@ -1866,21 +1899,6 @@
       "example_headlines": [
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie"
-      ]
-    },
-    {
-      "entity": "CoinGape",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape"
       ]
     },
     {
@@ -2609,19 +2627,18 @@
       ]
     },
     {
-      "entity": "U.S. Securities and Exchange Commission",
+      "entity": "investment advisers",
       "total_mentions": 2,
       "bullish": 0,
       "neutral": 0,
       "bearish": 2,
       "net_sentiment_score": -1.0,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+        "SEC Charges 38 Entities Over False Investment Adviser Filings"
       ]
     },
     {
@@ -4584,20 +4601,6 @@
       ]
     },
     {
-      "entity": "investment advisers",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "SEC Charges 38 Entities Over False Investment Adviser Filings"
-      ]
-    },
-    {
       "entity": "CryptoRank",
       "total_mentions": 1,
       "bullish": 0,
@@ -4679,6 +4682,20 @@
       ],
       "example_headlines": [
         "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
+      ]
+    },
+    {
+      "entity": "August 2026",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
       ]
     },
     {

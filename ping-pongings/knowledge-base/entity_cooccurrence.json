@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 515,
+    "xrp_entries": 516,
     "btc_entries": 431
   },
-  "unique_pairs_found": 1502,
+  "unique_pairs_found": 1508,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 120,
+      "cooccurrence_count": 122,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 21,
+      "cooccurrence_count": 22,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -68,7 +68,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -76,6 +76,21 @@
         },
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 20,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -91,21 +106,6 @@
         },
         {
           "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 19,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
         }
       ]
@@ -216,6 +216,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP",
       "cooccurrence_count": 13,
@@ -271,21 +286,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -426,6 +426,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -497,21 +512,6 @@
         {
           "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs extend outflow streak as BTC fails to hold $65K",
-          "asset": "BTC"
         }
       ]
     },
@@ -591,6 +591,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Strategy",
       "cooccurrence_count": 6,
@@ -601,6 +616,21 @@
         },
         {
           "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
         }
       ]
@@ -696,21 +726,6 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 5,
@@ -767,21 +782,6 @@
         {
           "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
         }
       ]
     },
@@ -901,6 +901,36 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TheStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
           "asset": "XRP"
         }
       ]
@@ -1251,31 +1281,16 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "TheStreet",
+      "entity_a": "CoinGape",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
           "asset": "XRP"
         },
         {
-          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TheStreet",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "title": "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
           "asset": "XRP"
         }
       ]
@@ -2451,21 +2466,6 @@
       ]
     },
     {
-      "entity_a": "CoinGape",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
-          "asset": "XRP"
-        },
-        {
-          "title": "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Evernorth",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -2567,6 +2567,21 @@
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "TheStreet",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - thestreet.com",
+          "asset": "XRP"
         }
       ]
     },
@@ -3246,6 +3261,21 @@
       ]
     },
     {
+      "entity_a": "CoinGape",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+          "asset": "XRP"
+        },
+        {
+          "title": "Just In: Ripple Re-Locks 700 Million XRP Back Into Escrow - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Bitcoin ETF",
       "cooccurrence_count": 2,
@@ -3711,6 +3741,21 @@
       ]
     },
     {
+      "entity_a": "Ether",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Grayscale",
       "entity_b": "SEC",
       "cooccurrence_count": 2,
@@ -4036,6 +4081,36 @@
         },
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "investment advisers",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs draw $517M in largest one-day inflow since early May",
           "asset": "BTC"
         }
       ]
@@ -6359,17 +6434,6 @@
       ]
     },
     {
-      "entity_a": "TheStreet",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Bitcoin ETFs",
       "cooccurrence_count": 1,
@@ -7208,17 +7272,6 @@
     {
       "entity_a": "Binance",
       "entity_b": "CoinGape",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinGape",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -8308,17 +8361,6 @@
     {
       "entity_a": "Ether",
       "entity_b": "Hyperliquid",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ether",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -10429,17 +10471,6 @@
       ]
     },
     {
-      "entity_a": "U.S. Securities and Exchange Commission",
-      "entity_b": "investment advisers",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CryptoRank",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -10743,6 +10774,72 @@
       "example_headlines": [
         {
           "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "TheStreet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - thestreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 2026",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 2026",
+      "entity_b": "Ether",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 2026",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 2026",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US spot Bitcoin ETFs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
         }
       ]
@@ -17541,17 +17638,6 @@
       "example_headlines": [
         {
           "title": "Benjamin Cowen Says Bitcoin 69-73 Days From Bottom, But Does BTC Still Follow Cycles? - Yahoo Financ",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ether",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs draw $517M in largest one-day inflow since early May",
           "asset": "BTC"
         }
       ]
