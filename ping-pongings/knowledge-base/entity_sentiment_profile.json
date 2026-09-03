@@ -3,7 +3,7 @@
     "xrp_entries": 516,
     "btc_entries": 433
   },
-  "unique_entities_profiled": 474,
+  "unique_entities_profiled": 475,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -91,6 +91,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 31,
+      "bullish": 17,
+      "neutral": 10,
+      "bearish": 4,
+      "net_sentiment_score": 0.419,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
+      ]
+    },
+    {
       "entity": "SEC",
       "total_mentions": 31,
       "bullish": 21,
@@ -105,23 +122,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 30,
-      "bullish": 16,
-      "neutral": 10,
-      "bearish": 4,
-      "net_sentiment_score": 0.4,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
       ]
     },
     {
@@ -291,6 +291,23 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 12,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.583,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 12,
       "bullish": 4,
@@ -304,23 +321,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 11,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.545,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
       ]
     },
     {
@@ -4627,6 +4627,20 @@
       ],
       "example_headlines": [
         "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz"
+      ]
+    },
+    {
+      "entity": "BitMine",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move"
       ]
     },
     {

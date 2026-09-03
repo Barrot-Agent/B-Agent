@@ -3,7 +3,7 @@
     "xrp_entries": 516,
     "btc_entries": 433
   },
-  "unique_pairs_found": 1513,
+  "unique_pairs_found": 1515,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -381,6 +381,21 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US stocks",
       "cooccurrence_count": 9,
@@ -407,21 +422,6 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        },
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "XRP"
         }
       ]
     },
@@ -10565,6 +10565,28 @@
       "example_headlines": [
         {
           "title": "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move",
           "asset": "XRP"
         }
       ]
