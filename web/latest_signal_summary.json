@@ -1,17 +1,17 @@
 {
-  "summary": "The XRP signal, generated at\u202f2026\u201109\u201103\u202f01:40:46\u202fUTC, carries a modest overall score of\u202f35 with a confidence of\u202f0.0 and a news\u2011derived score of\u202f70 based on\u202f22\u202fnews entries. The headline sentiment is mixed, showing one neutral analysis and five bullish items related to consensus, messaging, routing, and AI on the XRP Ledger.\n\n- Timestamp:\u202f2026\u201109\u201103T01:40:46.839868+00:00  \n- Overall score\u202f35, confidence\u202f0.0, news score\u202f70 (22 news entries)  \n- Headlines: 1 neutral analysis, 5 bullish pieces on XRP Ledger consensus, dissemination, routing, crash testing, and causal AI.",
-  "spoken_line": "XRP signal update. Score 35. Confidence 0.0. Based on 22 news entries. Not financial advice. Informational only. Do your own research.",
+  "summary": "The XRP signal, generated at Unix time\u202f1788405995 (2026\u201109\u201103\u202f03:26:35\u202fUTC), carries a sentiment score of\u202f35 with a confidence of\u202f0.0 and is based on 25 news items giving a news score of\u202f70. The source notes that sentiment data is unavailable due to missing GitHub tokens and a rate\u2011limit error from the Groq API.  \n\n- Headlines are split between one neutral analysis and five bullish technical papers on consensus, message dissemination, routing, crash testing, and causal AI for the XRPL.  \n- Overall sentiment leans bullish despite the neutral entry, reflected in the high news score (70) versus the modest overall score (35).  \n- The signal\u2019s confidence is zero, indicating the model could not assess reliability of the sentiment classification.",
+  "spoken_line": "XRP signal shows bullish tilt with a 35 score and 70 news points but zero confidence due to missing tokens and API limit. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-09-03T01:40:46.839868+00:00",
+    "timestamp": "2026-09-03T03:26:35.309105+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 35,
     "confidence": 0.0,
-    "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(22)",
+    "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(25)",
     "news_score": 70,
-    "news_entries": 22,
-    "generated_at_unix": 1788399646
+    "news_entries": 25,
+    "generated_at_unix": 1788405995
   }
 }
