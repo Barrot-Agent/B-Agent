@@ -3,7 +3,7 @@
     "xrp_entries": 513,
     "btc_entries": 430
   },
-  "unique_entities_profiled": 468,
+  "unique_entities_profiled": 470,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 149,
-      "bullish": 91,
+      "total_mentions": 152,
+      "bullish": 93,
       "neutral": 31,
-      "bearish": 27,
-      "net_sentiment_score": 0.43,
+      "bearish": 28,
+      "net_sentiment_score": 0.428,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 120,
-      "bullish": 73,
+      "total_mentions": 122,
+      "bullish": 75,
       "neutral": 30,
       "bearish": 17,
-      "net_sentiment_score": 0.467,
+      "net_sentiment_score": 0.475,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -160,11 +160,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 19,
-      "bullish": 18,
+      "total_mentions": 20,
+      "bullish": 19,
       "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.895,
+      "net_sentiment_score": 0.9,
       "assets_seen_in": [
         "XRP"
       ],
@@ -176,11 +176,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 18,
-      "bullish": 7,
+      "total_mentions": 19,
+      "bullish": 8,
       "neutral": 1,
       "bearish": 10,
-      "net_sentiment_score": -0.167,
+      "net_sentiment_score": -0.105,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -458,6 +458,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 7,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": -0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "STRC",
       "total_mentions": 7,
       "bullish": 3,
@@ -475,6 +492,23 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": -0.167,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -489,23 +523,6 @@
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda"
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 6,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
       ]
     },
     {
@@ -591,23 +608,6 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "US hints at more yen intervention: Five things to know in Bitcoin this week",
         "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 5,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": -0.4,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "AI credit bubble could fuel Bitcoin \u2018crack-up boom\u2019 past $1M: Hayes"
       ]
     },
     {
@@ -893,6 +893,22 @@
       ]
     },
     {
+      "entity": "XRPL",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
+      ]
+    },
+    {
       "entity": "IBIT",
       "total_mentions": 4,
       "bullish": 4,
@@ -1175,22 +1191,6 @@
         "Wintermute Says Institutions Drove 72% Of Its Spot OTC Volume In H1 2026",
         "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
         "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial"
-      ]
-    },
-    {
-      "entity": "XRPL",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-        "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
-        "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
       ]
     },
     {
@@ -4635,6 +4635,34 @@
       ],
       "example_headlines": [
         "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga"
+      ]
+    },
+    {
+      "entity": "Event Contract",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
+      ]
+    },
+    {
+      "entity": "Prediction Markets",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
       ]
     },
     {

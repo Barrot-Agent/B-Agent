@@ -3,12 +3,12 @@
     "xrp_entries": 513,
     "btc_entries": 430
   },
-  "unique_pairs_found": 1488,
+  "unique_pairs_found": 1497,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 115,
+      "cooccurrence_count": 117,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -51,6 +51,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 20,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "SEC",
       "cooccurrence_count": 20,
@@ -66,24 +81,9 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 19,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 18,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -426,6 +426,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -531,21 +546,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 6,
@@ -632,6 +632,21 @@
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
         }
       ]
     },
@@ -831,21 +846,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "SEC",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 4,
@@ -936,6 +936,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "U.S. District Court",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -946,6 +961,36 @@
         },
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRPL",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
           "asset": "XRP"
         }
       ]
@@ -1221,21 +1266,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "U.S. District Court",
       "cooccurrence_count": 3,
@@ -1416,8 +1446,8 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRPL",
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP Ledger",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -1425,22 +1455,7 @@
           "asset": "XRP"
         },
         {
-          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRPL",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        },
-        {
-          "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -2882,21 +2897,6 @@
         {
           "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
         }
       ]
     },
@@ -10573,6 +10573,105 @@
       "example_headlines": [
         {
           "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Event Contract",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Prediction Markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Event Contract",
+      "entity_b": "Prediction Markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Event Contract",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Prediction Markets",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
