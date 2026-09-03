@@ -3,7 +3,7 @@
     "xrp_entries": 516,
     "btc_entries": 433
   },
-  "unique_pairs_found": 1508,
+  "unique_pairs_found": 1513,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1876,6 +1876,21 @@
         },
         {
           "title": "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
           "asset": "BTC"
         }
       ]
@@ -4943,21 +4958,6 @@
     {
       "entity_a": "BTC.CC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC.CC",
-      "entity_b": "Moomoo",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -17418,6 +17418,61 @@
       "example_headlines": [
         {
           "title": "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "STRC.US",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Strategy Inc",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "STRC.US",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "Strategy Inc",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC.US",
+      "entity_b": "Strategy Inc",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
           "asset": "BTC"
         }
       ]

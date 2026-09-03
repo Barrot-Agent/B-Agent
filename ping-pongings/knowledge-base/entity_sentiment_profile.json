@@ -3,7 +3,7 @@
     "xrp_entries": 516,
     "btc_entries": 433
   },
-  "unique_entities_profiled": 472,
+  "unique_entities_profiled": 474,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -125,6 +125,23 @@
       ]
     },
     {
+      "entity": "Moomoo",
+      "total_mentions": 26,
+      "bullish": 5,
+      "neutral": 19,
+      "bearish": 2,
+      "net_sentiment_score": 0.115,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo",
+        "$Ripple (XRP.CC)$ - Moomoo"
+      ]
+    },
+    {
       "entity": "CoinDesk",
       "total_mentions": 26,
       "bullish": 16,
@@ -139,23 +156,6 @@
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
         "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Moomoo",
-      "total_mentions": 25,
-      "bullish": 5,
-      "neutral": 19,
-      "bearish": 1,
-      "net_sentiment_score": 0.16,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo",
-        "$Ripple (XRP.CC)$ - Moomoo"
       ]
     },
     {
@@ -1501,6 +1501,22 @@
         "Thailand\u2019s 0% crypto tax. Bitcoin Red Team forced to use Chinese AI: Asia Express",
         "Crypto companies urge AI firms to give Bitcoin developers early access",
         "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "BTC.CC",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+        "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+        "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo"
       ]
     },
     {
@@ -3015,21 +3031,6 @@
       "example_headlines": [
         "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
         "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK"
-      ]
-    },
-    {
-      "entity": "BTC.CC",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
-        "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo"
       ]
     },
     {
@@ -6838,6 +6839,34 @@
       ],
       "example_headlines": [
         "Metaplanet expands Bitcoin treasury strategy to US with 2,100-BTC Nasdaq play"
+      ]
+    },
+    {
+      "entity": "STRC.US",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to "
+      ]
+    },
+    {
+      "entity": "Strategy Inc",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to "
       ]
     },
     {
