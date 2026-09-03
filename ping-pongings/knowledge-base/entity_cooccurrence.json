@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 514,
+    "xrp_entries": 515,
     "btc_entries": 431
   },
-  "unique_pairs_found": 1497,
+  "unique_pairs_found": 1502,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 117,
+      "cooccurrence_count": 120,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -81,6 +81,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 19,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 19,
@@ -126,16 +141,16 @@
       ]
     },
     {
-      "entity_a": "XRP",
+      "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 17,
+      "cooccurrence_count": 16,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -151,21 +166,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -211,6 +211,21 @@
         },
         {
           "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -276,21 +291,6 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 12,
@@ -338,7 +338,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
-      "cooccurrence_count": 10,
+      "cooccurrence_count": 11,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -966,6 +966,21 @@
       ]
     },
     {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRPL",
       "cooccurrence_count": 4,
@@ -1311,21 +1326,6 @@
       ]
     },
     {
-      "entity_a": "Wall Street",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 3,
@@ -1476,6 +1476,36 @@
       ]
     },
     {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Donald Trump",
       "cooccurrence_count": 3,
@@ -1592,6 +1622,21 @@
         {
           "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
         }
       ]
     },
@@ -2526,6 +2571,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "European Union",
       "entity_b": "MiCA",
       "cooccurrence_count": 2,
@@ -3291,36 +3351,6 @@
       ]
     },
     {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Crypto Influencer",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -3876,21 +3906,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Wall Street",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -3961,6 +3976,51 @@
         },
         {
           "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -6305,17 +6365,6 @@
       "example_headlines": [
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -10018,40 +10067,7 @@
     },
     {
       "entity_a": "Equities",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Equities",
       "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Equities",
-      "entity_b": "Wall Street",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Equities",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -10672,6 +10688,61 @@
       "example_headlines": [
         {
           "title": "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Coinpedia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinpedia",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinpedia",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Equities",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wall Street",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
           "asset": "XRP"
         }
       ]

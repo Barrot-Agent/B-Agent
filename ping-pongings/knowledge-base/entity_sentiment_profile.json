@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 514,
+    "xrp_entries": 515,
     "btc_entries": 431
   },
-  "unique_entities_profiled": 470,
+  "unique_entities_profiled": 471,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 152,
-      "bullish": 93,
+      "total_mentions": 155,
+      "bullish": 95,
       "neutral": 31,
-      "bearish": 28,
-      "net_sentiment_score": 0.428,
+      "bearish": 29,
+      "net_sentiment_score": 0.426,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 122,
-      "bullish": 75,
+      "total_mentions": 125,
+      "bullish": 77,
       "neutral": 30,
-      "bearish": 17,
-      "net_sentiment_score": 0.475,
+      "bearish": 18,
+      "net_sentiment_score": 0.472,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 38,
-      "bullish": 22,
+      "total_mentions": 40,
+      "bullish": 23,
       "neutral": 6,
-      "bearish": 10,
-      "net_sentiment_score": 0.316,
+      "bearish": 11,
+      "net_sentiment_score": 0.3,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -258,6 +258,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 13,
+      "bullish": 8,
+      "neutral": 3,
+      "bearish": 2,
+      "net_sentiment_score": 0.462,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 12,
       "bullish": 9,
@@ -272,22 +288,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 12,
-      "bullish": 8,
-      "neutral": 3,
-      "bearish": 1,
-      "net_sentiment_score": 0.583,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -661,6 +661,23 @@
       ]
     },
     {
+      "entity": "Wall Street",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "BIP-110",
       "total_mentions": 5,
       "bullish": 0,
@@ -856,23 +873,6 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "XRP Erases Its Most Bearish Signal\u2014And the Ripple-Linked Coin Is Flying - Decrypt",
         "Trump Family\u2019s American Bitcoin Tops 8,000 BTC After Record Mining Quarter - Decrypt"
-      ]
-    },
-    {
-      "entity": "Wall Street",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
       ]
     },
     {
@@ -1208,6 +1208,22 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
       ]
     },
     {
@@ -2216,21 +2232,6 @@
       ]
     },
     {
-      "entity": "Brad Garlinghouse",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho"
-      ]
-    },
-    {
       "entity": "Crypto Influencer",
       "total_mentions": 2,
       "bullish": 2,
@@ -2574,6 +2575,21 @@
       "example_headlines": [
         "XRP analysis: Ripple is preparing XRP Ledger for quantum computers before \u2018Q-Day\u2019 arrives - CoinDesk",
         "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M"
+      ]
+    },
+    {
+      "entity": "Equities",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance"
       ]
     },
     {
@@ -4428,20 +4444,6 @@
       ]
     },
     {
-      "entity": "Equities",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
-      ]
-    },
-    {
       "entity": "Dan Loeb",
       "total_mentions": 1,
       "bullish": 0,
@@ -4663,6 +4665,20 @@
       ],
       "example_headlines": [
         "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
+      ]
+    },
+    {
+      "entity": "Coinpedia",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
       ]
     },
     {
