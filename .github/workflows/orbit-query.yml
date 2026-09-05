@@ -1,0 +1,34 @@
+name: Barrot Orbit Query
+
+on:
+  workflow_dispatch:
+    inputs:
+      description:
+        description: "What this query is checking"
+        required: false
+        default: "schema check"
+      query_json:
+        description: "Real Orbit DSL query JSON (leave blank for schema check)"
+        required: false
+        default: ""
+
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    env:
+      GITLAB_ORBIT_TOKEN: ${{ secrets.GITLAB_ORBIT_TOKEN }}
+      ORBIT_QUERY_DESCRIPTION: ${{ github.event.inputs.description }}
+      ORBIT_QUERY_JSON: ${{ github.event.inputs.query_json }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: python3 scripts/barrot_orbit_client.py
+      - name: Commit query log
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/orbit_query_log.jsonl
+          git diff --cached --quiet || git commit -m "Orbit query [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
