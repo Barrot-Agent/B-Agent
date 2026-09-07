@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-06T03:06:50.256478+00:00",
+  "local_path": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+  "repository_name": "Barrot-Agent",
+  "git_repository_root": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+  "current_branch": "main",
+  "remotes": {
+    "hf": [
+      "https://huggingface.co/spaces/Scribedpengenius/barrot-omega"
+    ],
+    "origin": [
+      "https://Barrot-Agent:REDACTED_GITHUB_OAUTH_TOKEN@github.com/Barrot-Agent/B-Agent.git"
+    ]
+  },
+  "working_tree_dirty": true,
+  "push_policy": {
+    "require_validation": true,
+    "push_all_configured_remotes": true,
+    "verify_remote_after_push": true
+  }
+}

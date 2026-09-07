@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 BARROT ORBIT CLIENT -- real GitLab Orbit (Knowledge Graph) MCP client.
-Calls the real, documented endpoint: POST https://gitlab.com/api/v4/mcp_orbit
+Calls the real, documented endpoint: POST https://gitlab.com/api/v4/orbit/mcp
 JSON-RPC 2.0, two real tools: query_graph, get_graph_schema.
 Auth: Personal Access Token with read_api scope (Bearer header).
 Read-only -- cannot write to GitLab.
@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ORBIT_TOKEN = os.environ.get("GITLAB_ORBIT_TOKEN", "")
-ORBIT_URL = "https://gitlab.com/api/v4/mcp_orbit"
+ORBIT_URL = "https://gitlab.com/api/v4/orbit/mcp"
 
 OUT_FILE = Path("ping-pongings/knowledge-base/orbit_query_log.jsonl")
 
