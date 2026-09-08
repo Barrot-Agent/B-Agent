@@ -22,6 +22,7 @@ ALLOWED_ACTIONS = {
     "SEARCH_TEXT",
     "RUN_TESTS",
     "WRITE_FILE",
+    "APPLY_PATCH",
     "GIT_STATUS",
 }
 

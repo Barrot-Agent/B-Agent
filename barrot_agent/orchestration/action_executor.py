@@ -88,6 +88,37 @@ class BarrotActionExecutor:
                     output=f"Wrote {path}",
                 )
 
+            if action.type == "APPLY_PATCH":
+                path = action.args["path"]
+                old_text = action.args["old"]
+                new_text = action.args["new"]
+
+                if not isinstance(old_text, str) or not isinstance(new_text, str):
+                    raise ExecutionError(
+                        "APPLY_PATCH old and new values must be strings"
+                    )
+
+                current = self.executor.read_file(path)
+
+                if old_text not in current:
+                    raise ExecutionError(
+                        f"Patch target was not found in {path}"
+                    )
+
+                if current.count(old_text) != 1:
+                    raise ExecutionError(
+                        f"Patch target must occur exactly once in {path}"
+                    )
+
+                updated = current.replace(old_text, new_text, 1)
+                self.executor.write_file(path, updated)
+
+                return ActionResult(
+                    action=action.type,
+                    success=True,
+                    output=f"Patched {path}",
+                )
+
             if action.type == "GIT_STATUS":
                 result = self.executor.run("git status --short")
 
