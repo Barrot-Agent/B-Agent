@@ -18,6 +18,35 @@ class VerifiedLearningStore:
     ):
         self.path = Path(path)
 
+
+    def read_all(self) -> list[dict]:
+        """Read all persisted verified learning records."""
+
+        if not self.path.exists():
+            return []
+
+        records: list[dict] = []
+
+        with self.path.open(
+            "r",
+            encoding="utf-8",
+        ) as handle:
+            for line in handle:
+                line = line.strip()
+
+                if not line:
+                    continue
+
+                try:
+                    payload = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+
+                if isinstance(payload, dict):
+                    records.append(payload)
+
+        return records
+
     def append(self, record: LearningRecord) -> bool:
         """Persist an accepted learning record."""
 
