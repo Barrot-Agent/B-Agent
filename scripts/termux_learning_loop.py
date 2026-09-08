@@ -75,7 +75,8 @@ future tasks should be written (e.g. "always check X exists before Y",
 
 Output ONLY JSON: {{"lessons": ["concrete lesson 1", "concrete lesson 2", ...]}}"""
     response = call_groq(prompt)
-    if not response:
+    if not isinstance(response, str) or not response.strip():
+        print("Inference returned no usable content.")
         return None
     try:
         start = response.find('{')
