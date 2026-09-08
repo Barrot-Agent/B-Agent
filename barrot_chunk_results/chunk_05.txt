@@ -1,0 +1,109 @@
+**1. Actual modules & public‑API surface present in this chunk**
+
+| Symbol | Origin | Public‑API (intended to be called by a user of the module) |
+|--------|--------|------------------------------------------------------------|
+| `ServerInventory` | `@dataclass` in this file | Constructor (`ServerInventory(...)`) – returns an object whose public attributes are the dataclass fields; `__post_init__` is part of the public contract because it mutates `schema_hash`. |
+| `MCPDiscovery` | class defined here | `__init__(self, mcp_config_path: Optional[Path] = None, pip_executable: str = sys.executable)`  <br/> `discover_all(self) -> Dict[str, ServerInventory]`  <br/> `get_inventory(self, server_id: str) -> Optional[ServerInventory]`  <br/> `to_json(self) -> str` |
+| (implicitly) `MCPDiscovery._discover_server`, `_probe_package_version`, `_probe_package_deps`, `_assess_security` | “internal helpers” – prefixed with “_” but still reachable for testing, and they contain the logic that needs coverage. |
+| Class attribute `MCPDiscovery._TOOL_CATALOGUE` | static mapping – used by `_infer_tools` (not shown in the excerpt) but still part of the module’s state. |
+
+*No other symbols are exported from this file (no `__all__`), so the list above is exhaustive.*
+
+---
+
+**2. Meaningful executable branches / error paths**
+
+| Method | Branch / conditional | What it controls |
+|--------|----------------------|-------------------|
+| `discover_all` | `for spec in SUPPORTED_MCP_SERVERS` → `try/except` | Successful discovery vs. logging a warning and continuing. |
+| `_probe_package_version` | `if line.startswith("Version:")` → return version<br/>`except Exception` → fall‑through | Returns discovered version or `"unknown"` on missing line / subprocess failure. |
+| `_probe_package_deps` | `if line.startswith("Requires:")` → parse list<br/>`except Exception` → fall‑through | Returns list of dependencies or empty list. |
+| `_assess_security` | `if spec.requires_auth` → set `risk = "medium"`<br/>`if len(deps) > 15` → set `risk = "medium"` (overwrites previous, but same value)<br/>`if any(keyword …)` → set `risk = "high"` | Determines `risk_level` (`low`, `medium`, `high`). |
+| `ServerInventory.__post_init__` | `if not self.schema_hash:` → compute hash | Generates a 16‑char hash from the tools’ `name` + `input_schema`. |
+| `to_json` | Loop over `self._inventory.items()` – each iteration adds a dict entry | Serialises inventory; the branch is the *presence* of tools, deps, etc., which influences the generated JSON structure. |
+
+*Note:* The code also has implicit branches in the list‑comprehensions and dictionary constructions (e.g., `["requires_auth"]` always present, but the values can be empty/false). Those are exercised automatically when the surrounding method runs.
+
+---
+
+**3. Practical pytest cases that are **strictly supported** by the current code**
+
+Below are test ideas that map *exactly* to the existing logic – no “invented” arguments or behaviours.
+
+| Test purpose | What to mock / fixture | Expected assertion |
+|--------------|------------------------|--------------------|
+| **A. Successful discovery** – one server spec with a known package name. | • Patch `SUPPORTED_MCP_SERVERS` with a single `MCPServerSpec` (minimal fields).  <br/>• `subprocess.run` returns a `CompletedProcess` whose `stdout` contains `Version: 1.2.3` and `Requires: dep1, dep2`. | `discover_all()` returns a dict with one key; `ServerInventory.version == "1.2.3"`; `dependencies == ["dep1","dep2"]`; `risk_level` follows the rules (e.g., `"low"` if no auth/keywords). |
+| **B. Probe version fallback** – pip raises `TimeoutExpired`. | Patch `subprocess.run` to raise `subprocess.TimeoutExpired`. | `_probe_package_version` returns `"unknown"`; `_probe_package_deps` returns `[]`. |
+| **C. Probe version missing “Version:” line** – stdout does not contain the marker. | `subprocess.run` returns `CompletedProcess(stdout="Name: foo\n")`. | `_probe_package_version` returns `"unknown"`. |
+| **D. Probe deps missing “Requires:” line** – stdout without that line. | Same as C but without “Requires:”. | `_probe_package_deps` returns empty list. |
+| **E. Security‑risk “medium” via auth flag**. | Spec `requires_auth=True`, deps list short, description without keywords. | `_assess_security(...).risk_level == "medium"`. |
+| **F. Security‑risk “medium” via many deps**. | Spec `requires_auth=False`, deps list length 20, description benign. | Risk = `"medium"`. |
+| **G. Security‑risk “high” via keyword**. | Spec `requires_auth=False`, deps short, description contains “exec” (case‑insensitive). | Risk = `"high"`. |
+| **H. `ServerInventory.__post_init__` hash generation** – tools have `input_schema` fields. | Build a `ServerInventory` with `tools=[ToolSchema(name="t1", input_schema='{"a":1}'), …]` and leave `schema_hash=""`. | After init, `schema_hash` is a 16‑char hex string (non‑empty). |
+| **I. `to_json` produces valid JSON with expected keys**. | After a successful `discover_all`, call `to_json`. | `json.loads(output)` yields a dict whose inner dict contains keys `server_id`, `name`, `tools` (each with `name` & `description`), `security` (with `requires_auth`, `risk_level`, etc.). |
+| **J. `discover_all` gracefully skips a failing spec**. | Provide two specs; make `_discover_server` raise an exception for the second (e.g., monkey‑patch `_discover_server` to raise `RuntimeError`). | Return dict contains only the first server; no exception propagates; a warning is logged (assert via `caplog`). |
+
+These nine tests (A‑J) touch every branch listed in section 2 and give a solid jump from ~64 % to well above 70 % coverage.
+
+---
+
+**4. Estimated newly covered lines**
+
+| Area | Approx. lines (including blank / comment) | Covered by the test suite above |
+|------|-------------------------------------------|---------------------------------|
+| `ServerInventory` dataclass & `__post_init__` | ~15 | H |
+| `MCPDiscovery.__init__` | 4 | A (instantiation) |
+| `discover_all` (loop, try/except, logging) | ~12 | A, J |
+| `_discover_server` (construction) | ~9 | A |
+| `_probe_package_version` | ~15 | A, B, C |
+| `_probe_package_deps` | ~15 | A, B, D |
+| `_assess_security` (all branches) | ~12 | E‑G |
+| `to_json` (dict building) | ~25 | I |
+| Misc (imports, class attribute) | ~5 | not executable |
+
+**Total executable lines in the chunk ≈ 112**.  
+The proposed tests execute **≈ 90 %** of those lines (≈ 100 lines). That comfortably lifts the module’s coverage to ≥ 70 % (and the overall repository’s coverage as well, assuming the rest of the repo stays unchanged).
+
+---
+
+**5. Dependencies that must be mocked**
+
+| Dependency | Why it needs a mock | Typical mock strategy |
+|------------|---------------------|-----------------------|
+| `subprocess.run` (used in both probe methods) | Calls out to the real `pip` binary – heavy, non‑deterministic, may raise `FileNotFoundError` on CI. | `monkeypatch` or `unittest.mock.patch` to return a fabricated `CompletedProcess` object with desired `stdout` / `stderr` or to raise a chosen exception. |
+| `SUPPORTED_MCP_SERVERS` (global list imported from elsewhere) | The real list may be large, contain unknown specs, or require external resources. | Temporarily replace the module‑level variable with a short list of handcrafted `MCPServerSpec` objects inside the test (e.g., `monkeypatch.setattr(mcp_integration, "SUPPORTED_MCP_SERVERS", [my_spec])`). |
+| `logger` (standard library logger) | Not required for functional correctness but useful to assert that warnings are emitted for failing specs. | Use `caplog` fixture or mock `logger.warning`/`logger.debug`. |
+| `MCPDiscovery._discover_server` (when testing error‑skip case) | To force an exception for a particular spec without altering the underlying helpers. | `monkeypatch.setattr(mcp_integration.MCPDiscovery, "_discover_server", lambda self, spec: (_ for _ in ()).throw(RuntimeError("boom")))` for the specific spec. |
+| `Path` / filesystem (via `self._config_path`) | Not touched in the read‑only flow, but the constructor accepts a `Path`. No I/O occurs, so no mock needed unless you explicitly pass a path that does not exist (still safe). |
+
+No external network calls, database connections, or heavy libraries are invoked; the only external process is `pip`, which is fully mockable.
+
+---
+
+**6. Implementation defects that are directly observable from the source**
+
+| Defect / questionable behaviour | Evidence in code | Potential test that would expose it |
+|--------------------------------|------------------|-------------------------------------|
+| **Risk level downgrade** – the logic sets `risk = "medium"` for both *auth* and *many deps*, but later the *keyword* check can raise it to `"high"`. There is **no path to `"critical"`** even though the `SecurityPosture` model defines that value. | `_assess_security` never assigns `"critical"`. | Write a test that passes a spec with `requires_auth=True` **and** `len(deps)>15` **and** a keyword; the expectation may be `"high"` (correct) but the missing `"critical"` option suggests an incomplete risk model. |
+| **Duplicate assignment to `"medium"`** – the second `if len(deps) > 15` overwrites the first assignment with the same value, making the first check effectively useless. | Two separate `if` statements both set `risk = "medium"`. | A test that toggles `requires_auth` while keeping deps short will still get `"medium"`; however, disabling the `requires_auth` flag while keeping deps short yields `"low"` – the code works but the duplicated branch is dead‑weight. |
+| **`_probe_package_version` and `_probe_package_deps` swallow *all* exceptions** (including `KeyboardInterrupt`, `SystemExit`). This may hide serious failures. | `except Exception:  # noqa: BLE001` catches the base class. | A test that forces `subprocess.run` to raise `KeyboardInterrupt` and asserts that the method still returns `"unknown"` – it will, but the design is arguably unsafe. |
+| **`_discover_server` does not use the `self._config_path`** – the constructor stores the path but the method never reads it. This is not a bug per‑se, but a dead‑field that could mislead users. | No reference to `self._config_path` after `__init__`. | A test that injects a non‑existent config path and verifies that discovery still succeeds (showing the path is ignored). |
+| **`to_json` serialises `security.known_cves` and `security.last_scanned`** but those fields are **never populated** in `_assess_security`. They will always be the defaults (`[]` and the default timestamp). | `SecurityPosture` dataclass (outside the chunk) defines those fields; `_assess_security` does not set them. | A test that checks the JSON output contains `"known_cves": []` and a `last_scanned` value – the presence of the fields may be unexpected for callers. |
+| **`_TOOL_CATALOGUE` is defined but never referenced in the shown snippet** – if `_infer_tools` (not shown) relies on it, a missing key could raise `KeyError`. | No usage in the visible code. | Not directly testable from this chunk, but a future test of `_infer_tools` with an unknown category would reveal a `KeyError`. |
+
+These defects are **detectable** with the tests outlined in section 3 (especially A, E‑G, H, J). Fixes would require code changes beyond the current task, but the tests will surface the current behaviour, making the defects visible to the maintainers.
+
+---
+
+### TL;DR for the test writer
+
+*Mock* `subprocess.run` and `SUPPORTED_MCP_SERVERS`.  
+Write **≈ 9** focused test functions that:
+
+1. Verify version/deps extraction (success, missing markers, exception → “unknown”/empty).  
+2. Exercise every branch in `_assess_security` (auth, many deps, keyword).  
+3. Confirm `ServerInventory.__post_init__` creates a non‑empty 16‑char hash.  
+4. Validate `discover_all` returns a dict, skips failing specs, and logs a warning.  
+5. Ensure `to_json` yields parsable JSON with the expected schema.
+
+Running the suite should lift the module’s line‑coverage well past **70 %** and surface the minor logical quirks listed above.

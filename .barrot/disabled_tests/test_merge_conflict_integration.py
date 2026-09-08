@@ -14,7 +14,7 @@ Demonstrates the complete integration workflow:
 import json
 from datetime import datetime
 
-from merge_conflict_micro_ingestion import (
+from barrot_agent.ingestion.merge_conflict_micro_ingestion import (
     ConflictType,
     LearningOutcome,
     MergeConflictMicroIngestion,

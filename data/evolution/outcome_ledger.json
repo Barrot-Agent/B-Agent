@@ -31,5 +31,957 @@
     ],
     "confidence": 0.5,
     "recorded_at": "2026-08-29T07:46:44.498926+00:00"
+  },
+  {
+    "id": "b7f1f1987ea20a78eb37f27ba7894add406f2a5422ce84e6d57f267b6c0899bd",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "0c9d737b40740a48c6357d6f6e6bac5acbf809dfe75f74d454cca41457ffc0f7",
+      "response_hash": "2bcf904521ebef06c2181b9239db286d38d81b3dedb48f87900be6ddb6ec50bf",
+      "claim": "BARROT ONLINE",
+      "response_length": 13
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:24:09.292966+00:00"
+  },
+  {
+    "id": "77877aad26ece49e43c6fce8b656a895feb67448ff512d6223aa11ace0f7e3fd",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "0c9d737b40740a48c6357d6f6e6bac5acbf809dfe75f74d454cca41457ffc0f7",
+        "response_hash": "2bcf904521ebef06c2181b9239db286d38d81b3dedb48f87900be6ddb6ec50bf"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:24:09.293861+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:24:09.294407+00:00"
+  },
+  {
+    "id": "928a644e3903bb2620bd4a0dcdf1dab2e86373e7f73cb64006e02a8811012d65",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "8eba29e46531ca61dfb0d4cc242189f08e917d88f6fceb1b982a2feb6684f7f4",
+      "response_hash": "2bcf904521ebef06c2181b9239db286d38d81b3dedb48f87900be6ddb6ec50bf",
+      "claim": "BARROT ONLINE",
+      "response_length": 13
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:25:08.651520+00:00"
+  },
+  {
+    "id": "bb2f3460600cc1ee780ade9c22d7d29c8d5c9fc4cd772d68c16043b5f5a934e2",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "8eba29e46531ca61dfb0d4cc242189f08e917d88f6fceb1b982a2feb6684f7f4",
+        "response_hash": "2bcf904521ebef06c2181b9239db286d38d81b3dedb48f87900be6ddb6ec50bf"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:25:08.652084+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:25:08.652448+00:00"
+  },
+  {
+    "id": "899bbf6c5c8d6cfe03fabf57667c78a35f17f864d49b5a5d659daa3ab919b461",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "73efdb59d07b5c0a653bb688996cc026280dbf5e061a09bedd3391e42cc80dd4",
+      "response_hash": "42c824ec5978e79599e3421edc3b69b397d9f94b11df8eb56d80eabe1b321e5c",
+      "claim": "I need a view of the current repository in order to give you a concrete, data‑driven plan. Please provide (or let me list) the following:\n\n1. **`git status` output** – to see any uncommitted changes or untracked files.  \n2. **All pytest/coverage configuration files** – e.g., `pytest.ini`, `setup.cfg`, `pyproject.toml`, `tox.ini`, `.coveragerc`, any `conftest.py` that manipulates collection.  \n3. **A directory tree (depth 2–3)** of the source package(s) and the existing test suite so I can identi",
+      "response_length": 1127
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:25:58.134098+00:00"
+  },
+  {
+    "id": "8baf0fa9ef15fa066717dd9a90e7610cde7f76de7c255d1ad037e573e18d2c83",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "73efdb59d07b5c0a653bb688996cc026280dbf5e061a09bedd3391e42cc80dd4",
+        "response_hash": "42c824ec5978e79599e3421edc3b69b397d9f94b11df8eb56d80eabe1b321e5c"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:25:58.134757+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:25:58.135254+00:00"
+  },
+  {
+    "id": "c343ab8741a11eca33f85f22cfb1fa23360bd2330cc3cda111a01731672db81e",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "cc63bbde350aa6fcc26f5b28388e1053df897cd4e87491e900dbee520ac18aa6",
+      "response_hash": "d4947ba98ac9bdecf523f836f14d13dd65bee16e1cb8ba4a0386149985816d6e",
+      "claim": "**1. CONFIGURATION FINDINGS**  \n\n| Item | Observation | Action |\n|------|-------------|--------|\n| `coverage.run.omit` | Several core packages (e.g., `barrot_agent/smart_agent.py`, `barrot_agent/rendering/*`) are deliberately omitted, so they cannot contribute to the 70 % target. | Accept – they are excluded by design. |\n| `fail_under = 70` | The current miss‑count (1232 / 3466 ≈ 64 %) fails the threshold. | We must reduce the *missed statements* to ≤ 1039. |\n| Syntax warnings | `upgrade_bundle.",
+      "response_length": 12420
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:28:42.801494+00:00"
+  },
+  {
+    "id": "399522ab3453da937a52aefac4e3413855b1b52d65c0458b73b55d33317c4eaf",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "cc63bbde350aa6fcc26f5b28388e1053df897cd4e87491e900dbee520ac18aa6",
+        "response_hash": "d4947ba98ac9bdecf523f836f14d13dd65bee16e1cb8ba4a0386149985816d6e"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:28:42.802764+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:28:42.803355+00:00"
+  },
+  {
+    "id": "86c6a2c2c2a3857dbd88cbb71b435a8c74a75dd653143bb41ef24527c2f57532",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "4d3befc1d4c744be994b062279fe7300c1c14647a04e03af141c6167bd13bfd2",
+      "response_hash": "f1e894d59350d3ac9a6f78df4735d9b885621529d8ad926c05e862be1fd15bab",
+      "claim": "**Barrot‑Agent – Chunk 1 (files ternary.py, file_drop_tool.py, repo_command_tool.py, repo_inspect_tool.py, drop_router.py)**  \n\nBelow is a *pure‑code* analysis that obeys the “no‑invented‑API” rule.  \nAll suggestions are based on the statements that actually appear in the sources you supplied.\n\n---\n\n## 1. Modules & Their **public** APIs  \n\n| Module | Public objects (import‑able from the package) | Brief description |\n|--------|-----------------------------------------------|-------------------|\n",
+      "response_length": 10094
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:31:53.126837+00:00"
+  },
+  {
+    "id": "d8aef86d8580bdd9e755b947ece49161fe0d6b5c81ea0c5efac9edd6e189774c",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "4d3befc1d4c744be994b062279fe7300c1c14647a04e03af141c6167bd13bfd2",
+        "response_hash": "f1e894d59350d3ac9a6f78df4735d9b885621529d8ad926c05e862be1fd15bab"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:31:53.127925+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:31:53.128373+00:00"
+  },
+  {
+    "id": "159e99f156d010482f7e9e7e51f87f192a000fd3262a0061813218d4218b9a8c",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "bac7e5164032f45f58387aeb0b4baf1aa5e7f761f473d412c06c8e13db586417",
+      "response_hash": "fb951c70bf2da6d41f7bbef747b13ef4a7d36ced34569ac18ecb8ff680fc4707",
+      "claim": "**1️⃣  Public API per module (what *actually* exists in the source)**  \n\n| Module | Public objects (classes, functions, constants) that can be imported from `barrot_agent.<module>` |\n|--------|---------------------------------------------------------------------------------------------------|\n| `barrot_agent.tools.trial_tracker` | `TrialMetadata` – dataclass<br>`ParticipantCohort` – class with methods `add_participant_outcome`, `calculate_mean_age_reversal`, `identify_responders`, `compare_treat",
+      "response_length": 12647
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:32:10.573267+00:00"
+  },
+  {
+    "id": "fff84e4a8a814dcdf4e806f11a896c1fd0114a459fbf774460f73537439ff436",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "bac7e5164032f45f58387aeb0b4baf1aa5e7f761f473d412c06c8e13db586417",
+        "response_hash": "fb951c70bf2da6d41f7bbef747b13ef4a7d36ced34569ac18ecb8ff680fc4707"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:32:10.573984+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:32:10.574410+00:00"
+  },
+  {
+    "id": "acdeda7250ff486dc0e866eae06d14848f636799de29c6694d56021ea67436f6",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "c8b9dded3a4a85fc3aaf2ca13a45ab3029a158442fbda700f8a2176baab5d5d0",
+      "response_hash": "336c711da4f57e97fcd980b606ae08fadcbe0d8c461f6f440b9278bcfe367803",
+      "claim": "**1️⃣  Modules in this chunk and their *actual* public API**\n\n| Module (file) | Public symbols that are meant to be used by callers (i.e. not prefixed with “_”) |\n|---------------|-----------------------------------------------------------------------------------|\n| **`barrot_agent.mcp_discovery`** | • **`ServerInventory`** – dataclass (fields are part of the public contract). <br>• **`MCPDiscovery`** – constructor `__init__(mcp_config_path: Optional[Path] = None, pip_executable: str = sys.execu",
+      "response_length": 13012
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:32:54.911736+00:00"
+  },
+  {
+    "id": "787ff0d83602c74390ffcfc6bcee05b9dc9f110ca6c2e4128f0b58779a97f5b7",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "c8b9dded3a4a85fc3aaf2ca13a45ab3029a158442fbda700f8a2176baab5d5d0",
+        "response_hash": "336c711da4f57e97fcd980b606ae08fadcbe0d8c461f6f440b9278bcfe367803"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:32:54.912767+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:32:54.914089+00:00"
+  },
+  {
+    "id": "b56fc1893573c14e32180346ca0fa75f9c9c0dd924683979b5d4d67bf6b12245",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "24108bda847f92e73e1a34edb513024ad13641ce8367e1ac1d681e9cc950329d",
+      "response_hash": "c449032073f6695db9a31df57a9d183580be7d2e16999a66be56919bc253e173",
+      "claim": "**Chunk 6 – Focused Coverage Action Plan**\n\nBelow is a strict, code‑grounded analysis of the six‑line snippet you supplied. No invented symbols, classes, or APIs are introduced – only what can be observed from the literal source.\n\n---\n\n## 1️⃣ Modules & Their **Actual Public APIs** (as seen in this chunk)\n\n| Module (file) | Public objects that can be imported / exercised | Remarks |\n|---------------|-----------------------------------------------|---------|\n| *unknown* (the file that contains the",
+      "response_length": 8529
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:33:35.615146+00:00"
+  },
+  {
+    "id": "7853cc7e4f89247d19e83938b569ed8b7eb84a5aba2d24473b33e36c24fb6362",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "24108bda847f92e73e1a34edb513024ad13641ce8367e1ac1d681e9cc950329d",
+        "response_hash": "c449032073f6695db9a31df57a9d183580be7d2e16999a66be56919bc253e173"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:33:35.615854+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:33:35.616303+00:00"
+  },
+  {
+    "id": "710ea10799f2d65f33d57b7e49569802f98195af6aa6d700c26f3973b3cc15ae",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "03ba69ed2f735f371c848bed9503775483316f5fe22879437cd5c14a16f48166",
+      "response_hash": "b8cdc03ba33facf841fda0d5ce3ada5ffcbf1b71f2877f4204db433d4e05fd0a",
+      "claim": "**1. Actual modules & public API surface (as present in this chunk)**  \n\n| Module (import path) | Public symbols (classes, constants, functions) |\n|----------------------|-----------------------------------------------|\n| `barrot_agent.ternary` | `ANCHOR` (float), `Ternary` (class) – static methods `resolve`, `label`, `color`, `gate`, `confidence` |\n| `barrot_agent.tools.file_drop_tool` | `FileDropTool` (class) – methods `__init__`, `execute`, `describe` |\n| `barrot_agent.tools.repo_command_tool",
+      "response_length": 11350
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:35:10.279323+00:00"
+  },
+  {
+    "id": "356b5204b1a5a2a46e5d0d8d76256ea844afb71aa836642cc5d2d59c502ac0e0",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "03ba69ed2f735f371c848bed9503775483316f5fe22879437cd5c14a16f48166",
+        "response_hash": "b8cdc03ba33facf841fda0d5ce3ada5ffcbf1b71f2877f4204db433d4e05fd0a"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:35:10.281695+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:35:10.282989+00:00"
+  },
+  {
+    "id": "133aa849e1a36a32bec3889d479f0ad6526af9e6115e6be69ebbdfc9c8d5109b",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "4e2ecb5c17ffa2d89db62a76c5cfb1159b539341496014e7053069b859b6a00b",
+      "response_hash": "13001bbaa4ad619c9dcd62c221b44dae56aaf64ade7762bd8919e013f7963260",
+      "claim": "**1. Actual modules & their public API (as present in this chunk)**  \n\n| Module (file) | Public classes / dataclasses | Public methods / functions that are meant to be called from outside the file |\n|---------------|-----------------------------|-----------------------------------------------------------------------------|\n| `barrot_agent/tools/trial_tracker.py` | `TrialMetadata` (dataclass – fields only) <br> `ParticipantCohort` (dataclass) | `ParticipantCohort.add_participant_outcome` <br> `Pa",
+      "response_length": 13073
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:35:44.357242+00:00"
+  },
+  {
+    "id": "738edb18ba58038d4976a9c6f6be9948c4fc541096183bd87aab9a18f4749412",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "4e2ecb5c17ffa2d89db62a76c5cfb1159b539341496014e7053069b859b6a00b",
+        "response_hash": "13001bbaa4ad619c9dcd62c221b44dae56aaf64ade7762bd8919e013f7963260"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:35:44.358170+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:35:44.358763+00:00"
+  },
+  {
+    "id": "3727724e615a1102f78037a9a65183f410237c728f8fb5972090b5596e224341",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "fec39ae05d630e649b4053182a26c5f599914908cf82a6dc01a375b228ada8a7",
+      "response_hash": "1c2c3eeeb1e96a224ea95cbb2c00f92ee2b78d9205759ef81fbb0e6d41aac353",
+      "claim": "**1. Actual modules & public‑API surface in this chunk**\n\n| File (module) | Public symbols (importable) | Short description |\n|---------------|-----------------------------|-------------------|\n| **`<script‑file>`** (the “stand‑alone” runner) | `call_gradio(prompt, seed=0, randomize_seed=True, width=1024, height=1024, guidance_scale=3.5, steps=28)`  <br> `main()` (executed only when `__name__ == \"__main__\"` – can be called directly in tests) | Helper that talks to the remote Gradio endpoint, par",
+      "response_length": 12001
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:37:03.539377+00:00"
+  },
+  {
+    "id": "be1c7bff72581d1ce0d88ccd371a431c4fa1c72230e7612eb78c7cd18223ade6",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "fec39ae05d630e649b4053182a26c5f599914908cf82a6dc01a375b228ada8a7",
+        "response_hash": "1c2c3eeeb1e96a224ea95cbb2c00f92ee2b78d9205759ef81fbb0e6d41aac353"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:37:03.541518+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:37:03.542523+00:00"
+  },
+  {
+    "id": "2c09c47b9bf1795d0842de52e5e5d87398c356f4dbb8a5997cb7883281f239d1",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "c28aaa3c8c0b41c8b18a016231a7170660d2b39f411e2411d106d4368b32131f",
+      "response_hash": "8f534cfb0575fd86aaaab948fe0252bb0a62dd5dd09afb3458ab8894f448d7bb",
+      "claim": "**Barrot‑Agent – Chunk 4 (MCP adapters & start of discovery)**  \n\nBelow is a *strict* analysis of the code that actually appears in the snippet you supplied.  \nNo APIs, classes, arguments or behaviours are invented – only what the source defines.\n\n---\n\n## 1. Actual modules & public APIs present in the snippet  \n\n| Module (file)                | Public objects (the ones that a consumer can import) |\n|------------------------------|------------------------------------------------------|\n| `barrot_",
+      "response_length": 13369
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:37:37.229082+00:00"
+  },
+  {
+    "id": "7253e615c4e6a0c3922f4d921bc0bc781ae3372be1d34c9ca6ed70d24f463f17",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "c28aaa3c8c0b41c8b18a016231a7170660d2b39f411e2411d106d4368b32131f",
+        "response_hash": "8f534cfb0575fd86aaaab948fe0252bb0a62dd5dd09afb3458ab8894f448d7bb"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:37:37.231551+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:37:37.232988+00:00"
+  },
+  {
+    "id": "eae544a2b74e560b48895c6cdca5c6e65bd99dea4fcc17ed6dd9b7533550055a",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "f6620799a0fd13458c8bb2fb5846e4e9a7f248fd4a6758e9a27a9ca143feec0c",
+      "response_hash": "dcbaa278f802350bf41a88028c579765b0b321ef26ad53a3d3bc6e8d1d1cd5ff",
+      "claim": "**1. Actual modules & public‑API surface present in this chunk**\n\n| Symbol | Origin | Public‑API (intended to be called by a user of the module) |\n|--------|--------|------------------------------------------------------------|\n| `ServerInventory` | `@dataclass` in this file | Constructor (`ServerInventory(...)`) – returns an object whose public attributes are the dataclass fields; `__post_init__` is part of the public contract because it mutates `schema_hash`. |\n| `MCPDiscovery` | class defined",
+      "response_length": 12036
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:38:13.538048+00:00"
+  },
+  {
+    "id": "9b721217f3392ee9b1557ef3b7ac613572a0e414f172b505f00f862627bdfd92",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "f6620799a0fd13458c8bb2fb5846e4e9a7f248fd4a6758e9a27a9ca143feec0c",
+        "response_hash": "dcbaa278f802350bf41a88028c579765b0b321ef26ad53a3d3bc6e8d1d1cd5ff"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:38:13.540006+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:38:13.541430+00:00"
+  },
+  {
+    "id": "e40266a1f365e23e40f26e559640ad1965e4b31b526941b4760f1b221d55413c",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "5d0cf1912f8b08ce8528faa781909b19bbad70cc30fbc484718a428adf00301a",
+      "response_hash": "c52bc04beabba6d50292aa195c002bb1d7f66da99df9d99433a63776aac623ec",
+      "claim": "**1.  Actual modules and public APIs in this chunk**\n\n| Module (file) | Public symbols defined here (i.e. import‑able) |\n|---------------|------------------------------------------------|\n| `barrot_agent.mcp_integration` | `IntegrationConfig` – dataclass configuration object  <br> `MCPIntegration` – class that owns the whole pipeline, exposing the public method `run_pipeline(self) → Dict[str, int]` |\n| (no other symbols are exported – `__all__` is not defined, so everything that is not name‑mang",
+      "response_length": 14858
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:38:57.511917+00:00"
+  },
+  {
+    "id": "dcfd01aedee33aa6f7d8ceaeb8db050e2aa95eae4bcee08cc5ee59968725dedc",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "5d0cf1912f8b08ce8528faa781909b19bbad70cc30fbc484718a428adf00301a",
+        "response_hash": "c52bc04beabba6d50292aa195c002bb1d7f66da99df9d99433a63776aac623ec"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:38:57.515695+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:38:57.517389+00:00"
+  },
+  {
+    "id": "300b2cbf6472cbae3b4547b5205dcea8b7e8e43ffd9af72855c3da1aece7512b",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "71146d4e307a7bf8b5abb9eb18fab9a67a7db70f7e7e1f6dd104ff1492b1fdfb",
+      "response_hash": "e8a6fcaad16980f0434af8b2c566bcc93b79a6571a6c67ae129f6dd860f0e1d3",
+      "claim": "**1. Actual modules & public API surface (as defined in this chunk)**  \n\n| Module (file)                              | Public objects (import‑able) | Public call‑sites (methods / functions) |\n|--------------------------------------------|------------------------------|----------------------------------------|\n| `barrot_agent.evolution.evidence_quality`  | `EvidenceQualityEngine`      | `EvidenceQualityEngine.score(evidence)`, `EvidenceQualityEngine._recency_score(value)` (static, can be called ",
+      "response_length": 12183
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:39:48.943941+00:00"
+  },
+  {
+    "id": "7212e1c840d74f374d71f97f7e055a7f0b83afedd647dd50b5737117e6b24248",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "71146d4e307a7bf8b5abb9eb18fab9a67a7db70f7e7e1f6dd104ff1492b1fdfb",
+        "response_hash": "e8a6fcaad16980f0434af8b2c566bcc93b79a6571a6c67ae129f6dd860f0e1d3"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-07T23:39:48.946505+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-07T23:39:48.948078+00:00"
+  },
+  {
+    "id": "bfc53e7670b1ee3546b8777fbcce0b97aecf2deb3b25555e0e538637317a068d",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "49871a98c655a750c89791556c36d9b854a14ccd8535d5283dd3a2b877ebba2e",
+      "response_hash": "21d15a474896822d3d5e218a19f06fc8c954101b052e746c49367405d4df72ea",
+      "claim": "**Verified module paths & public API surface**\n\n| Module import path | Exported symbols |\n|--------------------|------------------|\n| `barrot_agent.ternary` | `ANCHOR` (float), `Ternary` (class) – static methods `resolve`, `gate`, `confidence`, `label`, `color` |\n| `barrot_agent.tools.file_drop_tool` | `FileDropTool` (class) – `__init__`, `execute`, `describe` |\n| `barrot_agent.tools.repo_command_tool` | `RepoCommandTool` (class) – `__init__`, `execute` |\n| `barrot_agent.tools.repo_inspect_tool`",
+      "response_length": 7184
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T00:39:21.998469+00:00"
+  },
+  {
+    "id": "c2a34205c662974a1b5fefd8a25d3f6f3b5c9f539a30bbf50c5b1251e9cac422",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "49871a98c655a750c89791556c36d9b854a14ccd8535d5283dd3a2b877ebba2e",
+        "response_hash": "21d15a474896822d3d5e218a19f06fc8c954101b052e746c49367405d4df72ea"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T00:39:22.000126+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T00:39:22.001146+00:00"
+  },
+  {
+    "id": "fd0743431d87529e905cf986158bb38d40da9fb49fd5870d4f94a8eb9cfa8a84",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "61e452cf22af53260fd024d5fc4a37ef3dba7f72447921de608219f342a5164e",
+      "response_hash": "6f1d293a2a12bd5f3146f571890e11b7fb8acf429a003d4cefba1786d66b24db",
+      "claim": "**Verified module paths & public API (exactly as listed in the supplied analysis)**  \n\n| Module path | Public symbols | Public call‑sites |\n|-------------|----------------|-------------------|\n| `barrot_agent/tools/trial_tracker.py` | `TrialMetadata` (dataclass – fields only) <br> `ParticipantCohort` (dataclass) <br> `EfficacyAnalyzer` (class) <br> `SafetyMonitor` (class) <br> `DiscoveryExtractor` (class) | `ParticipantCohort.add_participant_outcome` <br> `ParticipantCohort.calculate_mean_age_re",
+      "response_length": 10966
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T00:39:28.780308+00:00"
+  },
+  {
+    "id": "62d2968a3f227b3203e99b9f24c90244fd10aa2aa4534363f43f9324a0e14898",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "61e452cf22af53260fd024d5fc4a37ef3dba7f72447921de608219f342a5164e",
+        "response_hash": "6f1d293a2a12bd5f3146f571890e11b7fb8acf429a003d4cefba1786d66b24db"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T00:39:28.781261+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T00:39:28.781914+00:00"
+  },
+  {
+    "id": "a6dc9ba868dd1db86e9cd0d54c6770a1dcd9e82d0b54c7f3d6af902f5e234337",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "7bff0f4baa0b28df08303cb0610aab4ba5d5f2490651347f4c0fe5a1db055da6",
+      "response_hash": "89899c7e75a9b720d43abf6500c16a8d586fb726760f38b0e786b09df19b9361",
+      "claim": "**1. Verified module paths & public‑API symbols**\n\n| Module (as importable path) | Public symbol(s) exercised | Brief role |\n|------------------------------|----------------------------|------------|\n| `participant_cohort.ParticipantCohort.identify_responders` | method `identify_responders` | Returns list of responder ids using default threshold = 5 |\n| `participant_cohort.ParticipantCohort.compare_treatment_arms` | method `compare_treatment_arms` | Returns dict of arm → mean outcome |\n| `effica",
+      "response_length": 12360
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T00:40:12.627022+00:00"
+  },
+  {
+    "id": "b4b832e20e64e9fe3f17772f9d33e32b4bb98c6ecfcd09e92bc1f519d13ac4c1",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "7bff0f4baa0b28df08303cb0610aab4ba5d5f2490651347f4c0fe5a1db055da6",
+        "response_hash": "89899c7e75a9b720d43abf6500c16a8d586fb726760f38b0e786b09df19b9361"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T00:40:12.628426+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T00:40:12.629419+00:00"
+  },
+  {
+    "id": "d52bf9ce554a004c2aeae3e4b9bc46c8b96b9b87135dbb03d1e42086833a21a1",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "5b0fb3b4c0b28cca45df5fbe963a5e873524489ce7d890065ef2104f8dda555f",
+      "response_hash": "fb3360807e3dddfb2c75a917cf0243b89e5e51a16cdad177e5f8038f8fffe916",
+      "claim": "**1. Verified high‑impact modules**  \n(Modules that contain non‑trivial logic, branch decisions, or I/O and therefore merit coverage focus.)\n\n| Module import path | Public API used in the analysis |\n|--------------------|---------------------------------|\n| `barrot_agent.ternary` | `ANCHOR`, `Ternary` (static methods `resolve`, `gate`, `confidence`, `label`, `color`) |\n| `barrot_agent.tools.repo_command_tool` | `RepoCommandTool.execute` |\n| `barrot_agent.tools.repo_inspect_tool` | `RepoInspectTo",
+      "response_length": 8733
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:36:20.928736+00:00"
+  },
+  {
+    "id": "889b65ca70e1e5b58d3db4f5fcba5f6dc266e52d8ed7fef6856c2e8978b7bb5c",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "5b0fb3b4c0b28cca45df5fbe963a5e873524489ce7d890065ef2104f8dda555f",
+        "response_hash": "fb3360807e3dddfb2c75a917cf0243b89e5e51a16cdad177e5f8038f8fffe916"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:36:20.931723+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:36:20.933720+00:00"
+  },
+  {
+    "id": "6e3b4b582183c483eaf229b927a2ee27833116ac60fdd422980726edef90497b",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "36eab9a1699e2acdc1aca896b7b5e1d71c9a2ec021f256dfaafde72fc98ea200",
+      "response_hash": "94fcda111fcbfda76f251789093a1b03ec358c47de5fa341b3aedbd924bf9e5e",
+      "claim": "**1. Verified high‑impact modules (exact paths & public API)**  \n\n| Module (exact file path) | Public symbols that are exercised in the supplied analysis |\n|--------------------------|-------------------------------------------------------------|\n| `barrot_agent/tools/trial_tracker.py` | `TrialMetadata` (dataclass – fields only) <br> `ParticipantCohort` – `add_participant_outcome`, `calculate_mean_age_reversal`, `identify_responders`, `compare_treatment_arms` <br> `EfficacyAnalyzer` – `estimate_",
+      "response_length": 13896
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:36:31.516012+00:00"
+  },
+  {
+    "id": "04e3881f4f066396b7dd1d1aec3c48b5c522329eb5434c7c88adee7d6eb8fec8",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "36eab9a1699e2acdc1aca896b7b5e1d71c9a2ec021f256dfaafde72fc98ea200",
+        "response_hash": "94fcda111fcbfda76f251789093a1b03ec358c47de5fa341b3aedbd924bf9e5e"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:36:31.517230+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:36:31.517978+00:00"
+  },
+  {
+    "id": "e6658931e98d5b184512c9cc11ca7c4b6605dbab8247d7e8baf22f98a02b2dad",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "a5d86c71cf768cee29262e3f144d3b10031b25eac17d4b1b5c1be607dcfe75d3",
+      "response_hash": "9619c1ff5944b4e916e945a0446bbcd87ec1bb3605353ffc3120e7de0103acc3",
+      "claim": "**1. Verified high‑impact modules (exact import paths & public symbols)**  \n\n| Module path (as‑imported) | Public API used in the supplied analysis | Reason it is “high‑impact” (tested ≥ 90 % of its logical branches) |\n|--------------------------|------------------------------------------|-------------------------------------------------------------------|\n| `participant_cohort.ParticipantCohort` | `calculate_mean_age_reversal`, `identify_responders`, `compare_treatment_arms` | All three methods",
+      "response_length": 14442
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:37:11.003594+00:00"
+  },
+  {
+    "id": "c0c35d827a672c1c6d11842f965f6b12107b8208241ec1dbcbe355d6f6d65702",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "a5d86c71cf768cee29262e3f144d3b10031b25eac17d4b1b5c1be607dcfe75d3",
+        "response_hash": "9619c1ff5944b4e916e945a0446bbcd87ec1bb3605353ffc3120e7de0103acc3"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:37:11.009405+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:37:11.011415+00:00"
+  },
+  {
+    "id": "3dbdcda630a71ab4a93299b0bd970885d9531286ee2438f8537494dcbb7fa793",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "ebd496730ca94ca57915405205bd259a459d14ed3153e9be47362d5413e05042",
+      "response_hash": "a1c48cfc5ac31393a4e9684931bb6570c93a694d529a9a606df82fa3fa5b7276",
+      "claim": "**1. Verified high‑impact modules** *(exact import paths & public APIs that the supplied analysis touches)*  \n\n| Module (file) | Public objects referenced by the tests / analysis |\n|---------------|---------------------------------------------------|\n| `script` (the CLI entry point that contains `call_gradio` and `main`) | Functions: `call_gradio`, `main` |\n| `barrot_agent/models.py` | Class `ModelManager` – methods `__init__`, `is_loaded` (property), `get_metadata`, `load`, `unload` |\n| `barrot",
+      "response_length": 13198
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:37:54.869294+00:00"
+  },
+  {
+    "id": "d028b01eea33f2659ddb4e97a53cb75a24829316a6213638ebbef8af38fa08b8",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "ebd496730ca94ca57915405205bd259a459d14ed3153e9be47362d5413e05042",
+        "response_hash": "a1c48cfc5ac31393a4e9684931bb6570c93a694d529a9a606df82fa3fa5b7276"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:37:54.872081+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:37:54.874071+00:00"
+  },
+  {
+    "id": "c00b426348c0754147b9a5d027ba90d72432a7893a0636f749401573b20aca1d",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "1a21a9213b73447b7519efa8c452ebc8d22c7239f0788ffc53af9a621d8cfa71",
+      "response_hash": "c0b74edb1a594636e86c2d8689843f9c3353b29ad6d93601d898e156f0c93a9b",
+      "claim": "**1. Verified high‑impact modules (exact import paths)**  \n\n| Module path | Public API(s) exercised in the supplied chunk |\n|-------------|----------------------------------------------|\n| `barrot_agent.mcp_adapters.BaseMCPAdapter` | `_wrap_call`, `validate_tool`, `server_id` property |\n| `barrot_agent.mcp_adapters.GitMCPAdapter` | `call_tool`, `_WRITE_TOOLS`, dynamic `_impl_*` lookup |\n| `barrot_agent.mcp_adapters.FilesystemMCPAdapter` | `call_tool`, `_impl_read_file`, `_impl_list_directory` |\n",
+      "response_length": 10734
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:38:31.680187+00:00"
+  },
+  {
+    "id": "4fbe9e9791359da1267bd7e4b10b4b607f1f307bd7fc7ae8a08c153348570353",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "1a21a9213b73447b7519efa8c452ebc8d22c7239f0788ffc53af9a621d8cfa71",
+        "response_hash": "c0b74edb1a594636e86c2d8689843f9c3353b29ad6d93601d898e156f0c93a9b"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:38:31.683223+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:38:31.685252+00:00"
+  },
+  {
+    "id": "0ecde479c6e12ac8ce0265e5ae78a5ee31bbbefa9b825e1468611adc643ae62d",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "f4768f88a25f6598e835fc6a912d9a1f53e41d8399eb5c8ef1965e847d79c6b6",
+      "response_hash": "696a375c031316958a1ecb89312eb94ea7658984a0077c3551a71b9f46fb2011",
+      "claim": "**1. Verified high‑impact modules (exact import paths & public‑API)**  \n\n| Module path (as used in the source) | Public symbols that are *exposed* by the chunk | Why they are high‑impact |\n|-------------------------------------|-----------------------------------------------|--------------------------|\n| `mcp_integration` *(the file that contains the excerpt – `chunk_05.txt`)* | `ServerInventory` – dataclass, `__post_init__` mutates `schema_hash` <br/>`MCPDiscovery` – `__init__`, `discover_all`,",
+      "response_length": 10172
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:42:41.491753+00:00"
+  },
+  {
+    "id": "30f37f7e951b107860759ada2a917c35deb556e367c65c57128bb477c43501c8",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "f4768f88a25f6598e835fc6a912d9a1f53e41d8399eb5c8ef1965e847d79c6b6",
+        "response_hash": "696a375c031316958a1ecb89312eb94ea7658984a0077c3551a71b9f46fb2011"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:42:41.496701+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:42:41.498959+00:00"
+  },
+  {
+    "id": "2a9cc09734e0f79603233196cb4e51121e2a1cff4b76e2abca708562f55aa340",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "28dfa216cb9dd184971cdb9ccf8759e426d42756fca1abb9fcaaec8ecbb6e773",
+      "response_hash": "da719c3d17fd06b87f0d5c44896348149e21a75ed717ee61495b718e38634d51",
+      "claim": "**SYNTHESIS – source‑code‑coverage analysis (evidence‑only)**  \n\nBelow you will find a compact, evidence‑driven map of the *only* modules, APIs, branches and defects that appear in the two supplied chunks.  No API has been invented and no path has been guessed – everything is taken verbatim from the analysis text.\n\n---\n\n## 1. Verified high‑impact modules (public surface)\n\n| Module (file) | Public symbols that can be imported / called (exact names) |\n|---------------|-----------------------------",
+      "response_length": 13548
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:44:51.059293+00:00"
+  },
+  {
+    "id": "dbd239c4f56a4c3da75093c48d3a64f99b415339ddc900a43f4a32dc0349f325",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "28dfa216cb9dd184971cdb9ccf8759e426d42756fca1abb9fcaaec8ecbb6e773",
+        "response_hash": "da719c3d17fd06b87f0d5c44896348149e21a75ed717ee61495b718e38634d51"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:44:51.064216+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:44:51.066213+00:00"
+  },
+  {
+    "id": "952533a3d2f4a174bea83462950aa4069584baafb5fea1a135d0fcd02fe24c5b",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "3032d2d7a36446ac190ec1784408b8169c93d08d512e3f2c649b1fbe8d138a3b",
+      "response_hash": "d97c04e99c5d88440f6203686220b9fac9ed593c7bc959e7618b09f1cc466b19",
+      "claim": "**Synthesis – evidence‑based coverage matrix for the supplied chunks**  \n\n_All items below are taken **directly** from the analysis you supplied. No API, branch, or defect has been invented or assumed._  \n\n---  \n\n## 1. Verified high‑impact modules  \n\n| Module (exact import path) | Public objects exercised by the tests | Reason it is high‑impact (branch‑dense, state‑changing) |\n|----------------------------|----------------------------------------|-------------------------------------------------",
+      "response_length": 13047
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:46:59.883564+00:00"
+  },
+  {
+    "id": "f49b4fd6e1ba731d0e50ae5621773552783ece456ed1e033384f293b27e33e2a",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "3032d2d7a36446ac190ec1784408b8169c93d08d512e3f2c649b1fbe8d138a3b",
+        "response_hash": "d97c04e99c5d88440f6203686220b9fac9ed593c7bc959e7618b09f1cc466b19"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:46:59.888335+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:46:59.890953+00:00"
+  },
+  {
+    "id": "d678b8f4079e59db92f8c7f0db0f6f642f5df0a89b1507e92e53aed560b17dd9",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "7eb8f8353d9d40bbb71991903ea2a9c178474938f76e2bb4b3c6a865979d1e9e",
+      "response_hash": "7d417cb9a9de04f23588ecc4b345a23259aab9feb88ef84b33120c77b087885e",
+      "claim": "**Verified high‑impact modules (exact paths & API names)**  \n\n| Module (file) | Public API / class | Decision‑point functions / methods |\n|---------------|-------------------|-----------------------------------|\n| `evidence_quality.py` | `class EvidenceQualityEngine` | `_recency_score`, `score` (implicit – uses provenance & completeness logic) |\n| `evolution_engine.py` | `class EvolutionEngine` | `load_corpus`, `ingest`, `synthesize`, `improvement_targets` |\n\nThese are the only modules that cont",
+      "response_length": 11018
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:49:08.907273+00:00"
+  },
+  {
+    "id": "fc5dabe0038bc360ee8892632be9ff2b956c523cb070e36d25c4044cc2a772be",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "7eb8f8353d9d40bbb71991903ea2a9c178474938f76e2bb4b3c6a865979d1e9e",
+        "response_hash": "7d417cb9a9de04f23588ecc4b345a23259aab9feb88ef84b33120c77b087885e"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:49:08.909115+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:49:08.910347+00:00"
+  },
+  {
+    "id": "c31969f25ebacf98b9aee204ddcbcdaf1cf43fb02169f9faaf0170da259ebf26",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "e744e1bcf899f10b0b9d4075bb09846f86f97dc288bd5209cd8b96cb515e689b",
+      "response_hash": "569e1173efdecf130feebf688d4587b61836147b85d19047bd42308deb28eeb7",
+      "claim": "**Verified high‑impact modules (exact paths)**  \n\n| Impact | Module path | Primary API(s) exercised |\n|--------|-------------|--------------------------|\n| ✅ High | `evidence_quality_engine.py` | `EvidenceQualityEngine.process()` (returns dict with keys `status`, `id`, `confidence`, `domains`, …) |\n| ✅ High | `evolution_engine.py`       | `EvolutionEngine.run()` (returns dict with keys `status`, `id`, `confidence`, `domains`, …) |\n\n*These two modules are the only ones explicitly referenced in th",
+      "response_length": 4557
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:51:12.982820+00:00"
+  },
+  {
+    "id": "63b76e35604cd66b5e886e79a8f9c6619b976e6ea00b7d65d3667cf3b3b16be2",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "e744e1bcf899f10b0b9d4075bb09846f86f97dc288bd5209cd8b96cb515e689b",
+        "response_hash": "569e1173efdecf130feebf688d4587b61836147b85d19047bd42308deb28eeb7"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T03:51:12.984456+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T03:51:12.985745+00:00"
   }
 ]

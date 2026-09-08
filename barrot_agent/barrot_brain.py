@@ -92,7 +92,7 @@ class BarrotBrain:
     FIREWORKS_ENDPOINT = "https://api.fireworks.ai/inference/v1/chat/completions"
     FIREWORKS_MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
     GITHUB_MODEL = "gpt-4o"
-    GROQ_MODEL = "llama-3.3-70b-versatile"
+    GROQ_MODEL = "openai/gpt-oss-120b"
 
     def __init__(self):
         self.auth = GitHubAppAuth()
@@ -193,7 +193,7 @@ class BarrotBrain:
                             "Authorization": f"Bearer {self.groq_key}",
                             "Content-Type": "application/json",
                         },
-                        json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 1024},
+                        json={"model": self.GROQ_MODEL, "messages": messages, "max_tokens": 4096},
                         timeout=20,
                     )
                     if r.status_code == 429 and attempt < 5:
@@ -241,5 +241,24 @@ class BarrotBrain:
         if self.auth.ready:
             return "GitHub Models"
         if self.groq_key:
-            return "Groq Llama 3.1 70B"
+            return f"Groq {self.GROQ_MODEL}"
         return "None"
+
+
+def main() -> int:
+    """Run BarrotBrain as a command-line agent."""
+    import sys
+
+    prompt = " ".join(sys.argv[1:]).strip()
+
+    if not prompt:
+        print("Usage: python -m barrot_agent.barrot_brain \"<instruction>\"")
+        return 2
+
+    brain = BarrotBrain()
+    print(brain.think(prompt))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

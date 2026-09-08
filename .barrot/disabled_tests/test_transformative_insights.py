@@ -7,7 +7,7 @@ Validates core functionality and integration
 import sys
 from datetime import datetime
 
-from barrot_integration import barrot_system, transform_data_to_insights
+from barrot_agent.orchestration.barrot_integration import barrot_system, transform_data_to_insights
 from transformative_insights import (
     InsightType,
     TransformationStage,

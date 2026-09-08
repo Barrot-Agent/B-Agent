@@ -19,12 +19,14 @@ from barrot_agent.evolution.confidence_calibration import (
 from barrot_agent.evolution.evidence_quality import EvidenceQualityEngine
 from barrot_agent.evolution.evidence_store import EvidenceStore
 from barrot_agent.evolution.source_independence import SourceIndependenceEngine
+from barrot_agent.evolution.event_bus import CognitiveEvent
 
 
 class CrossCorroborationEngine:
     """Evidence comparison layer for maintaining reasoning integrity."""
 
-    def __init__(self) -> None:
+    def __init__(self, event_bus=None) -> None:
+        self.event_bus = event_bus
         self.integrity = CognitiveIntegrityLoop()
         self.evidence_store = EvidenceStore()
         self.claim_integrity = ClaimIntegrityEngine()
@@ -117,6 +119,16 @@ class CrossCorroborationEngine:
             sources=sources or ["internal_corroboration"],
             confidence=confidence,
         )
+
+        if self.event_bus is not None:
+            event_type = f"claim_{result['status']}"
+            self.event_bus.publish(
+                CognitiveEvent(
+                    event_type=event_type,
+                    payload=result,
+                    source="cross_corroboration",
+                )
+            )
 
         return result
 

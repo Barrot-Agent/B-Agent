@@ -30,6 +30,9 @@ import uuid
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Iterator
+from barrot_agent.tools.repo_inspect_tool import RepoInspectTool
+from barrot_agent.tools.file_drop_tool import FileDropTool
+from barrot_agent.tools.repo_command_tool import RepoCommandTool
 
 logger = logging.getLogger(__name__)
 
@@ -675,6 +678,42 @@ class _BuiltinTools:
 
 
 _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
+    "repo_execute": [
+        {
+            "title": "Inspect current repository",
+            "tool": "repo_inspect",
+            "tool_args": {
+                "target": ".",
+                "include_content": True,
+            },
+        },
+        {
+            "title": "Execute repository objective",
+            "tool": "repo_command",
+            "tool_args": {
+                "command": "",
+            },
+        },
+    ],
+    # ---- local repository inspection ----
+    "repo_inspect": [
+        {
+            "title": "Inspect local repository",
+            "tool": "repo_inspect",
+            "tool_args": {
+                "target": ".",
+                "include_content": True,
+            },
+        },
+    ],
+    # ---- deterministic file operations ----
+    "file_drop": [
+        {
+            "title": "Drop requested file",
+            "tool": "file_drop",
+            "tool_args": {},
+        },
+    ],
     # ---- research / learn ----
     "research": [
         {"title": "Search for existing work", "tool": "search", "tool_args": {"max_results": 3}},
@@ -791,6 +830,46 @@ _PLAN_TEMPLATES: dict[str, list[dict[str, Any]]] = {
 }
 
 _KEYWORD_INTENT_MAP: list[tuple[list[str], str]] = [
+    (
+        [
+            "modify repository",
+            "change repository",
+            "fix repository",
+            "update repository",
+            "repair repository",
+            "implement repository",
+            "execute repository",
+            "commit changes",
+            "push changes",
+            "deploy repository",
+            "take over repository",
+            "take over",
+        ],
+        "repo_execute",
+    ),
+    (
+        [
+            "inspect repository",
+            "inspect repo",
+            "review repository",
+            "review repo",
+            "audit repository",
+            "audit repo",
+            "current repository",
+            "local repository",
+        ],
+        "repo_inspect",
+    ),
+    (
+        [
+            "drop file",
+            "move file",
+            "move this file",
+            "put file",
+            "put this file",
+        ],
+        "file_drop",
+    ),
     (["research", "find", "discover", "explore", "investigate", "look up"], "research"),
     (["learn", "understand", "study", "read about", "teach me"], "learn"),
     (["build", "create", "make", "implement", "develop", "write a"], "build"),
@@ -855,8 +934,49 @@ def _build_plan(goal: str) -> list[PlanStep]:
             args.setdefault("task", goal)
         elif tpl["tool"] == "repo_hunt":
             args.setdefault("topic", goal)
+        elif tpl["tool"] == "repo_inspect":
+            args.setdefault("target", ".")
+
+        elif tpl["tool"] == "repo_command":
+            import re
+
+            match = re.search(
+                r"(?:run|execute|command)\s*:\s*(.+)$",
+                goal,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+
+            if match:
+                args["command"] = match.group(1).strip()
+            else:
+                args["command"] = (
+                    "git status --short && "
+                    "git diff --check && "
+                    "python -m pytest -q"
+                )
+
         elif tpl["tool"] == "reconfigure_infra":
             args.setdefault("target", goal)
+        elif tpl["tool"] == "file_drop":
+            # Required command format:
+            # "move file <source> to <destination>"
+            # "drop file <source> to <destination>"
+            import re
+
+            match = re.search(
+                r"(?:drop|move|put)\s+(?:this\s+)?file\s+(.+?)\s+(?:to|into)\s+(.+)$",
+                goal,
+                flags=re.IGNORECASE,
+            )
+
+            if not match:
+                raise ValueError(
+                    "File-drop goals must use: "
+                    "'move file <source> to <destination>'"
+                )
+
+            args["source"] = match.group(1).strip().strip('"').strip("'")
+            args["destination"] = match.group(2).strip().strip('"').strip("'")
         elif tpl["tool"] == "summarize":
             args.setdefault("content", goal)  # will be replaced at runtime with accumulated output
 
@@ -912,6 +1032,9 @@ class SmartAgent:
     def __init__(self, name: str = "BarrotSmartAgent") -> None:
         self.name = name
         self._tools = _BuiltinTools()
+        self._file_drop_tool = FileDropTool(".")
+        self._repo_inspect_tool = RepoInspectTool(".")
+        self._repo_command_tool = RepoCommandTool(".")
         self._tool_dispatch: dict[str, Any] = {
             "analyze": self._tools.analyze,
             "search": self._tools.search,
@@ -920,6 +1043,9 @@ class SmartAgent:
             "summarize": self._tools.summarize,
             "repo_hunt": self._tools.repo_hunt,
             "reconfigure_infra": self._tools.reconfigure_infra,
+            "file_drop": self._file_drop_tool.execute,
+            "repo_inspect": self._repo_inspect_tool.execute,
+            "repo_command": self._repo_command_tool.execute,
         }
 
     # ------------------------------------------------------------------
@@ -1041,7 +1167,24 @@ class SmartAgent:
             args["content"] = "\n\n".join(accumulated)
 
         try:
-            return tool_fn(**args)
+            raw_result = tool_fn(**args)
+
+            # Normalize dictionary-based external tools into ToolResult.
+            if isinstance(raw_result, dict):
+                return ToolResult(
+                    call_id=str(uuid.uuid4()),
+                    tool_name=step.tool,
+                    success=bool(raw_result.get("success", False)),
+                    output=str(
+                        raw_result.get(
+                            "message",
+                            raw_result,
+                        )
+                    ),
+                    metadata=dict(raw_result),
+                )
+
+            return raw_result
         except Exception as exc:  # noqa: BLE001
             return ToolResult(
                 call_id=str(uuid.uuid4())[:8],

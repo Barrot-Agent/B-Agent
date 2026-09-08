@@ -1,0 +1,1789 @@
+
+============================================================
+FILE: barrot_agent/ternary.py
+============================================================
+#!/usr/bin/env python3
+"""
+BARROT-Ω · TERNARY LOGIC MODULE
+1.58-bit ternary {-1, 0, +1} for the SmartAgent loop.
+Import: from barrot_agent.ternary import Ternary, ANCHOR
+"""
+
+ANCHOR = 0.707106781186548  # 1/√2 — canonical stability constant
+
+
+class Ternary:
+    """
+    Ternary logic engine. Absorbs contradiction via NULL state.
+    Never crashes — contradiction → NULL, not exception.
+    """
+
+    REJECT = DRIFT = SELL = -1
+    NULL = HOLD = WAIT = 0
+    ACCEPT = VALID = BUY = 1
+
+    @staticmethod
+    def resolve(*signals: float) -> int:
+        """Collapse signal vector to ternary output."""
+        s = sum(signals)
+        n = len(signals) or 1
+        if s > ANCHOR * n:
+            return Ternary.VALID
+        elif s < -ANCHOR * n:
+            return Ternary.DRIFT
+        else:
+            return Ternary.NULL
+
+    @staticmethod
+    def label(t: int) -> str:
+        return {1: "VALID", 0: "NULL", -1: "DRIFT"}[t]
+
+    @staticmethod
+    def color(t: int) -> str:
+        return {1: "🟢", 0: "🟡", -1: "🔴"}[t]
+
+    @staticmethod
+    def gate(value: float, threshold: float = ANCHOR) -> int:
+        """Single-value ternary gate against threshold."""
+        if value > threshold:
+            return Ternary.VALID
+        elif value < -threshold:
+            return Ternary.DRIFT
+        else:
+            return Ternary.NULL
+
+    @staticmethod
+    def confidence(*signals: int) -> float:
+        """
+        How many signals agree with the majority?
+        Returns float 0.0–1.0. Must exceed ANCHOR to execute.
+        """
+        if not signals:
+            return 0.0
+        majority = max(set(signals), key=signals.count)
+        return sum(1 for s in signals if s == majority) / len(signals)
+
+============================================================
+FILE: barrot_agent/tools/file_drop_tool.py
+============================================================
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+
+from barrot_agent.tools.drop_router import DropRouter
+
+
+class FileDropTool:
+    """
+    Barrot tool interface for deterministic repository-local file drops.
+
+    This wrapper converts a Barrot task/tool request into a verified
+    DropRouter operation.
+    """
+
+    name = "file_drop"
+
+    def __init__(self, repository_root: str | Path):
+        self.repository_root = Path(repository_root).resolve()
+        self.router = DropRouter(self.repository_root)
+
+    def execute(
+        self,
+        source: str,
+        destination: str,
+        overwrite: bool = False,
+    ) -> dict[str, Any]:
+
+        result = self.router.drop(
+            source=source,
+            destination=destination,
+            overwrite=overwrite,
+        )
+
+        return {
+            "success": result.success,
+            "tool": self.name,
+            "action": result.action,
+            "source": result.source,
+            "destination": result.destination,
+            "message": result.message,
+            "checksum": result.checksum,
+        }
+
+    def describe(self) -> dict[str, Any]:
+        return {
+            "name": self.name,
+            "description": (
+                "Moves a file into an approved repository-local destination "
+                "and verifies the completed drop with SHA-256."
+            ),
+            "parameters": {
+                "source": {
+                    "type": "string",
+                    "required": True,
+                },
+                "destination": {
+                    "type": "string",
+                    "required": True,
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "required": False,
+                    "default": False,
+                },
+            },
+        }
+
+============================================================
+FILE: barrot_agent/tools/repo_command_tool.py
+============================================================
+from __future__ import annotations
+
+import subprocess
+from pathlib import Path
+from typing import Any
+
+
+class RepoCommandTool:
+    """
+    Execute approved repository commands from the repository root.
+    """
+
+    def __init__(self, repo_root: str | Path = ".") -> None:
+        self.repo_root = Path(repo_root).resolve()
+
+    def execute(
+        self,
+        command: str,
+        timeout: int = 120,
+    ) -> dict[str, Any]:
+        result = subprocess.run(
+            command,
+            shell=True,
+            cwd=self.repo_root,
+            text=True,
+            capture_output=True,
+            timeout=timeout,
+        )
+
+        output = "\n".join(
+            part for part in [
+                result.stdout.strip(),
+                result.stderr.strip(),
+            ]
+            if part
+        )
+
+        return {
+            "success": result.returncode == 0,
+            "tool": "repo_command",
+            "command": command,
+            "returncode": result.returncode,
+            "message": output or "Command completed successfully.",
+        }
+
+============================================================
+FILE: barrot_agent/tools/repo_inspect_tool.py
+============================================================
+from __future__ import annotations
+
+import hashlib
+import os
+from pathlib import Path
+
+
+class RepoInspectTool:
+    """Inspect the local Barrot repository using the real filesystem."""
+
+    def __init__(self, root: str = ".") -> None:
+        self.root = Path(root).resolve()
+
+    def execute(
+        self,
+        target: str = ".",
+        max_files: int = 250,
+        include_content: bool = True,
+    ) -> dict:
+        requested = (self.root / target).resolve()
+
+        if not requested.exists():
+            return {
+                "success": False,
+                "message": f"Target does not exist: {target}",
+            }
+
+        try:
+            requested.relative_to(self.root)
+        except ValueError:
+            return {
+                "success": False,
+                "message": "Target escapes repository root.",
+            }
+
+        files = []
+
+        if requested.is_file():
+            candidates = [requested]
+        else:
+            candidates = [
+                p
+                for p in requested.rglob("*")
+                if p.is_file()
+                and ".git" not in p.parts
+                and "__pycache__" not in p.parts
+                and ".pytest_cache" not in p.parts
+            ]
+
+        candidates = sorted(candidates)[:max_files]
+
+        for file_path in candidates:
+            relative = file_path.relative_to(self.root)
+            info = {
+                "path": str(relative),
+                "bytes": file_path.stat().st_size,
+            }
+
+            if include_content:
+                try:
+                    content = file_path.read_text(errors="replace")
+                    info["sha256"] = hashlib.sha256(
+                        content.encode()
+                    ).hexdigest()
+                    info["content"] = content[:12000]
+                except Exception as exc:
+                    info["content_error"] = str(exc)
+
+            files.append(info)
+
+        return {
+            "success": True,
+            "tool": "repo_inspect",
+            "root": str(self.root),
+            "target": str(requested.relative_to(self.root)),
+            "files_inspected": len(files),
+            "files": files,
+            "message": (
+                f"Repository inspection completed. "
+                f"Inspected {len(files)} file(s)."
+            ),
+        }
+
+============================================================
+FILE: barrot_agent/tools/drop_router.py
+============================================================
+from __future__ import annotations
+
+import os
+import shutil
+import hashlib
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Optional
+
+
+@dataclass
+class DropResult:
+    success: bool
+    source: str
+    destination: Optional[str]
+    action: str
+    message: str
+    checksum: Optional[str] = None
+
+
+class DropRouter:
+    """Deterministic repository-local file drop system."""
+
+    def __init__(self, repository_root: str | Path):
+        self.repository_root = Path(repository_root).resolve()
+
+    def _inside_repository(self, path: Path) -> bool:
+        try:
+            path.resolve().relative_to(self.repository_root)
+            return True
+        except ValueError:
+            return False
+
+    def _checksum(self, path: Path) -> str:
+        digest = hashlib.sha256()
+        with path.open("rb") as file:
+            for chunk in iter(lambda: file.read(1024 * 1024), b""):
+                digest.update(chunk)
+        return digest.hexdigest()
+
+    def _safe_destination(self, destination: str | Path) -> Path:
+        destination_path = Path(destination)
+
+        if not destination_path.is_absolute():
+            destination_path = self.repository_root / destination_path
+
+        destination_path = destination_path.resolve()
+
+        if not self._inside_repository(destination_path):
+            raise ValueError(
+                f"Destination escapes repository root: {destination_path}"
+            )
+
+        return destination_path
+
+    def drop(
+        self,
+        source: str | Path,
+        destination: str | Path,
+        overwrite: bool = False,
+    ) -> DropResult:
+
+        source_path = Path(source).expanduser().resolve()
+
+        if not source_path.exists():
+            return DropResult(
+                False, str(source_path), None, "none",
+                "Source does not exist."
+            )
+
+        if not source_path.is_file():
+            return DropResult(
+                False, str(source_path), None, "none",
+                "Source is not a file."
+            )
+
+        try:
+            destination_path = self._safe_destination(destination)
+        except ValueError as error:
+            return DropResult(
+                False, str(source_path), None, "none", str(error)
+            )
+
+        if destination_path.suffix == "":
+            destination_path.mkdir(parents=True, exist_ok=True)
+            destination_path = destination_path / source_path.name
+        else:
+            destination_path.parent.mkdir(parents=True, exist_ok=True)
+
+        if destination_path.exists() and not overwrite:
+            return DropResult(
+                False,
+                str(source_path),
+                str(destination_path),
+                "none",
+                "Destination already exists. Overwrite disabled.",
+            )
+
+        source_checksum = self._checksum(source_path)
+
+        try:
+            if source_path.stat().st_dev == destination_path.parent.stat().st_dev:
+                os.replace(source_path, destination_path)
+                action = "move"
+            else:
+                shutil.copy2(source_path, destination_path)
+
+                if self._checksum(destination_path) != source_checksum:
+                    destination_path.unlink(missing_ok=True)
+                    return DropResult(
+                        False,
+                        str(source_path),
+                        str(destination_path),
+                        "copy",
+                        "Checksum verification failed.",
+                    )
+
+                source_path.unlink()
+                action = "copy-verify-delete"
+
+        except Exception as error:
+            return DropResult(
+                False,
+                str(source_path),
+                str(destination_path),
+                "none",
+                str(error),
+            )
+
+        if not destination_path.exists():
+            return DropResult(
+                False,
+                str(source_path),
+                str(destination_path),
+                action,
+                "Destination verification failed.",
+            )
+
+        final_checksum = self._checksum(destination_path)
+
+        if final_checksum != source_checksum:
+            return DropResult(
+                False,
+                str(source_path),
+                str(destination_path),
+                action,
+                "Final checksum verification failed.",
+            )
+
+        return DropResult(
+            True,
+            str(source_path),
+            str(destination_path),
+            action,
+            "Drop completed and verified.",
+            final_checksum,
+        )
+
+============================================================
+FILE: barrot_agent/tools/trial_tracker.py
+============================================================
+#!/usr/bin/env python3
+"""Longevity trial tracking and discovery extraction."""
+
+from __future__ import annotations
+
+from collections import defaultdict
+from dataclasses import dataclass, field
+from statistics import mean
+from typing import Any, Dict, List
+
+
+@dataclass
+class TrialMetadata:
+    """Trial-level metadata and timeline fields."""
+
+    trial_id: str
+    sponsor: str
+    phase: str
+    status: str
+    start_date: str
+    expected_end_date: str
+
+
+@dataclass
+class ParticipantCohort:
+    """Cohort-level trial analysis container."""
+
+    phase_number: int
+    total_participants: int
+    outcomes: List[Dict[str, Any]] = field(default_factory=list)
+
+    def add_participant_outcome(
+        self, participant_id: str, treatment_arm: str, age_reversal: float
+    ) -> None:
+        self.outcomes.append(
+            {
+                "participant_id": participant_id,
+                "treatment_arm": treatment_arm,
+                "age_reversal": float(age_reversal),
+            }
+        )
+
+    def calculate_mean_age_reversal(self) -> float:
+        if not self.outcomes:
+            return 0.0
+        return round(mean(row["age_reversal"] for row in self.outcomes), 3)
+
+    def identify_responders(self, threshold_years: float = 5.0) -> List[str]:
+        return [
+            row["participant_id"]
+            for row in self.outcomes
+            if row.get("age_reversal", 0.0) >= threshold_years
+        ]
+
+    def compare_treatment_arms(self) -> Dict[str, float]:
+        grouped: defaultdict[str, List[float]] = defaultdict(list)
+        for row in self.outcomes:
+            grouped[row["treatment_arm"]].append(row["age_reversal"])
+        return {arm: round(mean(values), 3) for arm, values in grouped.items() if values}
+
+
+class EfficacyAnalyzer:
+    """Predicts trial efficacy and success probabilities."""
+
+    def __init__(self, cohort: ParticipantCohort) -> None:
+        self.cohort = cohort
+
+    def estimate_success_probability(self, efficacy_threshold: float = 3.0) -> float:
+        outcomes = self.cohort.outcomes
+        if not outcomes:
+            return 0.0
+        responders = [row for row in outcomes if row["age_reversal"] >= efficacy_threshold]
+        return round(len(responders) / len(outcomes), 3)
+
+
+class SafetyMonitor:
+    """Tracks and summarizes adverse events by treatment arm."""
+
+    def __init__(self) -> None:
+        self._events: List[Dict[str, Any]] = []
+
+    def log_adverse_event(
+        self, participant_id: str, treatment_arm: str, severity: str, description: str
+    ) -> None:
+        self._events.append(
+            {
+                "participant_id": participant_id,
+                "treatment_arm": treatment_arm,
+                "severity": severity,
+                "description": description,
+            }
+        )
+
+    def calculate_safety_score(self) -> float:
+        if not self._events:
+            return 1.0
+        severity_weights = {"mild": 0.1, "moderate": 0.3, "severe": 0.6}
+        penalty = sum(severity_weights.get(event["severity"], 0.2) for event in self._events)
+        return round(max(0.0, 1.0 - penalty / max(len(self._events), 1)), 3)
+
+    def events_by_arm(self) -> Dict[str, int]:
+        counts: defaultdict[str, int] = defaultdict(int)
+        for event in self._events:
+            counts[event["treatment_arm"]] += 1
+        return dict(counts)
+
+
+class DiscoveryExtractor:
+    """Extracts high-impact findings and prepares MMI hooks."""
+
+    def __init__(self, cohort: ParticipantCohort, safety_monitor: SafetyMonitor) -> None:
+        self.cohort = cohort
+        self.safety_monitor = safety_monitor
+
+    def surface_high_impact_discoveries(self) -> List[Dict[str, Any]]:
+        discoveries: List[Dict[str, Any]] = []
+        arm_comparison = self.cohort.compare_treatment_arms()
+
+        for arm, value in arm_comparison.items():
+            if value >= 4.0:
+                discoveries.append(
+                    {
+                        "type": "efficacy_breakthrough",
+                        "treatment_arm": arm,
+                        "mean_age_reversal": value,
+                    }
+                )
+
+        if self.safety_monitor.calculate_safety_score() >= 0.8:
+            discoveries.append(
+                {
+                    "type": "safety_signal",
+                    "summary": "Strong safety profile with limited severe adverse events",
+                }
+            )
+        return discoveries
+
+    def to_mmi_payload(self) -> Dict[str, Any]:
+        return {
+            "topic": "longevity_breakthroughs",
+            "discoveries": self.surface_high_impact_discoveries(),
+            "source": "trial_tracker",
+        }
+
+============================================================
+FILE: barrot_agent/tools/free_image_gen.py
+============================================================
+#!/usr/bin/env python3
+"""
+BARROT-Ω FREE IMAGE GENERATION — via Hugging Face's ZeroGPU-backed
+black-forest-labs/FLUX.1-dev Space. Genuinely free, no API key beyond
+your normal HF token, no per-generation cost - the tradeoff is a shared
+GPU queue (may wait) and a daily GPU-time cap.
+
+Deliberately avoids the `gradio_client` library - it pulls in
+`huggingface_hub`, which cannot be pip installed on this hardware
+(compiling a transitive dependency SIGKILLs from OOM). This talks to the
+Space's underlying Gradio HTTP API directly with plain urllib instead -
+zero heavy dependencies, matches every other script in this project.
+
+Gradio's queue API (used for GPU-backed / generator functions):
+  1. POST /call/<api_name>  {"data": [...]}  -> {"event_id": "..."}
+  2. GET  /call/<api_name>/<event_id>  -> Server-Sent Events stream,
+     one "event: complete" (or similar) message per yield from the
+     underlying function. FLUX.1-dev's `infer()` yields multiple times
+     (intermediate previews during diffusion) - the LAST event is the
+     final, full-quality image.
+
+api_name is inferred as "infer" from the function name in app.py
+(confirmed by reading the Space's real source), since no explicit
+api_name was set - Gradio's documented default naming behavior. Verify
+via the printed response in this script's first real run; if it 404s,
+the actual api_name will need confirming another way.
+"""
+
+import json
+import os
+import sys
+import time
+import urllib.request
+
+SPACE_BASE = "https://black-forest-labs-flux-1-dev.hf.space"
+API_NAME = "infer"
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+
+PROMPT = (
+    os.environ.get("IMAGE_PROMPT", "").strip()
+    or "a simple test image, red circle on white background"
+)
+OUT_DIR = "generated_images"
+
+
+def call_gradio(
+    prompt, seed=0, randomize_seed=True, width=1024, height=1024, guidance_scale=3.5, steps=28
+):
+    headers = {"Content-Type": "application/json"}
+    if HF_TOKEN:
+        headers["Authorization"] = f"Bearer {HF_TOKEN}"
+
+    body = json.dumps(
+        {"data": [prompt, seed, randomize_seed, width, height, guidance_scale, steps]}
+    ).encode()
+
+    req = urllib.request.Request(
+        f"{SPACE_BASE}/gradio_api/call/{API_NAME}", data=body, headers=headers, method="POST"
+    )
+    with urllib.request.urlopen(req, timeout=30) as r:
+        submit_resp = json.load(r)
+    event_id = submit_resp.get("event_id")
+    if not event_id:
+        raise RuntimeError(f"No event_id in submit response: {submit_resp}")
+    print(f"Submitted. event_id={event_id}")
+
+    # Poll the SSE stream for results - take the LAST complete event
+    result_req = urllib.request.Request(
+        f"{SPACE_BASE}/gradio_api/call/{API_NAME}/{event_id}",
+        headers={"Authorization": headers.get("Authorization", "")} if HF_TOKEN else {},
+    )
+    last_data = None
+    current_event = None
+    with urllib.request.urlopen(result_req, timeout=180) as r:
+        for raw_line in r:
+            line = raw_line.decode("utf-8", errors="ignore").strip()
+            if line.startswith("event:"):
+                current_event = line[len("event:") :].strip()
+                continue
+            if not line.startswith("data:"):
+                continue
+            payload = line[len("data:") :].strip()
+            if payload in ("", "[DONE]", "null"):
+                continue
+            try:
+                parsed = json.loads(payload)
+            except json.JSONDecodeError:
+                continue
+            if current_event == "generating":
+                print("  ...intermediate preview received")
+            elif current_event == "complete":
+                print("  final image received")
+                last_data = parsed
+                break
+
+    if not last_data:
+        raise RuntimeError(
+            "No 'complete' event received from SSE stream - generation may have failed or timed out"
+        )
+    return last_data
+
+
+def main():
+    if not HF_TOKEN:
+        print(
+            "Warning: HF_TOKEN not set - proceeding unauthenticated, "
+            "may fail if the model requires accepting its license first."
+        )
+
+    os.makedirs(OUT_DIR, exist_ok=True)
+    print(f"Prompt: {PROMPT}")
+
+    result = call_gradio(PROMPT)
+    image_info, seed_used = result[0], result[1]
+    image_url = image_info["url"]
+    print(f"Image URL: {image_url}")
+    print(f"Seed used: {seed_used}")
+
+    ts = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    dest = os.path.join(OUT_DIR, f"image_{ts}.webp")
+    req = urllib.request.Request(image_url)
+    with urllib.request.urlopen(req, timeout=60) as r:
+        with open(dest, "wb") as f:
+            f.write(r.read())
+    print(f"Downloaded to {dest}")
+
+
+if __name__ == "__main__":
+    main()
+
+============================================================
+FILE: barrot_agent/models.py
+============================================================
+"""
+Model management for B-Agent (IBM Granite 4.0-3B Vision).
+"""
+
+from __future__ import annotations
+
+from typing import Any, Optional
+
+from barrot_agent.config import ModelConfig
+from barrot_agent.logger import get_logger
+
+logger = get_logger(__name__)
+
+# IBM Granite 4.0-3B Vision model metadata
+GRANITE_METADATA = {
+    "model_id": "ibm-granite/granite-4.0-3b-vision",
+    "parameters": "4B",
+    "tensor_type": "BF16",
+    "license": "Apache-2.0",
+    "downloads_last_month": 5724,
+    "likes": 82,
+    "tags": [
+        "image-text-to-text",
+        "transformers",
+        "safetensors",
+        "english",
+        "granite4_vision",
+        "feature-extraction",
+        "conversational",
+        "custom_code",
+    ],
+    "arxiv_papers": [
+        "2603.27064",
+        "2404.19205",
+        "2412.07626",
+        "2512.10888",
+        "2208.00385",
+        "2502.09927",
+        "2406.04334",
+    ],
+}
+
+
+class ModelManager:
+    """Manages model loading and lifecycle for B-Agent."""
+
+    def __init__(self, config: ModelConfig | None = None) -> None:
+        self.config = config or ModelConfig()
+        self._model: Optional[Any] = None
+        self._processor: Optional[Any] = None
+        logger.info("ModelManager initialized for model=%s", self.config.model_id)
+
+    @property
+    def is_loaded(self) -> bool:
+        """Return whether the model is currently loaded."""
+        return self._model is not None
+
+    def get_metadata(self) -> dict:
+        """Return model metadata."""
+        return GRANITE_METADATA.copy()
+
+    def load(self) -> None:
+        """Load the model and processor from Hugging Face."""
+        try:
+            import torch
+            from transformers import AutoModelForVision2Seq, AutoProcessor
+
+            logger.info("Loading model %s ...", self.config.model_id)
+
+            load_kwargs: dict[str, Any] = {
+                "trust_remote_code": self.config.trust_remote_code,
+            }
+
+            if self.config.load_in_8bit:
+                load_kwargs["load_in_8bit"] = True
+            elif self.config.load_in_4bit:
+                load_kwargs["load_in_4bit"] = True
+            elif self.config.tensor_type == "bf16":
+                load_kwargs["torch_dtype"] = torch.bfloat16
+
+            if self.config.device != "auto":
+                load_kwargs["device_map"] = self.config.device
+            else:
+                load_kwargs["device_map"] = "auto"
+
+            self._processor = AutoProcessor.from_pretrained(
+                self.config.model_id,
+                trust_remote_code=self.config.trust_remote_code,
+                revision=self.config.model_revision,
+            )
+            self._model = AutoModelForVision2Seq.from_pretrained(
+                self.config.model_id,
+                revision=self.config.model_revision,
+                **load_kwargs,
+            )
+            logger.info("Model loaded successfully.")
+        except ImportError as exc:
+            logger.error("Required library not available: %s", exc)
+            raise
+        except Exception as exc:
+            logger.error("Failed to load model: %s", exc)
+            raise
+
+    def unload(self) -> None:
+        """Unload the model to free memory."""
+        if self._model is not None:
+            del self._model
+            self._model = None
+        if self._processor is not None:
+            del self._processor
+            self._processor = None
+        logger.info("Model unloaded.")
+
+============================================================
+FILE: barrot_agent/mcp_adapters.py
+============================================================
+"""
+MCP Adapters – Step 4
+======================
+Adapts selected MCP server components for use inside Barrot's framework
+*without* modifying upstream code directly.
+
+Each adapter wraps a server's tool list behind a stable, versioned
+interface.  If the upstream tool schema changes the adapter is updated
+here, isolating the rest of Barrot from upstream churn.
+"""
+
+from __future__ import annotations
+
+import logging
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Any, Callable, Dict, List, Optional
+
+from barrot_agent.mcp_discovery import ServerInventory, ToolSchema
+
+logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# Adapter base
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class AdapterResult:
+    """Unified return type for every adapted tool call."""
+
+    success: bool
+    data: Any = None
+    error: Optional[str] = None
+    tool_name: str = ""
+    server_id: str = ""
+
+
+class BaseMCPAdapter(ABC):
+    """
+    Abstract base for all MCP server adapters.
+
+    Subclasses MUST implement :meth:`supported_tools` and
+    :meth:`call_tool`.  They MUST NOT modify upstream server code.
+    """
+
+    adapter_version: str = "1.0.0"
+
+    def __init__(self, inventory: ServerInventory) -> None:
+        self._inventory = inventory
+        self._tool_map: Dict[str, ToolSchema] = {t.name: t for t in inventory.tools}
+
+    @property
+    def server_id(self) -> str:
+        return self._inventory.server_id
+
+    @abstractmethod
+    def supported_tools(self) -> List[str]:
+        """Return the list of tool names this adapter exposes."""
+
+    @abstractmethod
+    def call_tool(self, tool_name: str, **kwargs: Any) -> AdapterResult:
+        """
+        Call *tool_name* with the given keyword arguments.
+
+        Adapters translate between Barrot's internal calling convention and
+        whatever the upstream tool expects.  They never modify upstream code.
+        """
+
+    def validate_tool(self, tool_name: str) -> bool:
+        """Return True if *tool_name* is supported by this adapter."""
+        return tool_name in self.supported_tools()
+
+    def _wrap_call(
+        self,
+        tool_name: str,
+        fn: Callable[..., Any],
+        **kwargs: Any,
+    ) -> AdapterResult:
+        """Execute *fn* and wrap the result in :class:`AdapterResult`."""
+        try:
+            result = fn(**kwargs)
+            return AdapterResult(
+                success=True,
+                data=result,
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        except Exception as exc:  # noqa: BLE001
+            logger.warning(
+                "Adapter call failed: server=%s tool=%s error=%s",
+                self.server_id,
+                tool_name,
+                exc,
+            )
+            return AdapterResult(
+                success=False,
+                error=str(exc),
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+
+
+# ---------------------------------------------------------------------------
+# Git server adapter
+# ---------------------------------------------------------------------------
+
+
+class GitMCPAdapter(BaseMCPAdapter):
+    """
+    Adapter for ``mcp-server-git``.
+
+    Provides a stable interface to git read operations.  Write operations
+    (commit, push) are blocked at the adapter layer and always require
+    human approval via :mod:`barrot_agent.mcp_approval`.
+    """
+
+    _WRITE_TOOLS = {"git_commit", "git_push", "git_create_branch"}
+
+    def supported_tools(self) -> List[str]:
+        return ["git_status", "git_log", "git_diff", "git_read_file"]
+
+    def call_tool(self, tool_name: str, **kwargs: Any) -> AdapterResult:
+        if tool_name in self._WRITE_TOOLS:
+            return AdapterResult(
+                success=False,
+                error=f"Write tool '{tool_name}' blocked: human approval required.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        if not self.validate_tool(tool_name):
+            return AdapterResult(
+                success=False,
+                error=f"Unknown tool '{tool_name}' for adapter {self.server_id}.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        # Delegate to internal implementation
+        impl = getattr(self, f"_impl_{tool_name}", None)
+        if impl is None:
+            return AdapterResult(
+                success=False,
+                error=f"No implementation for '{tool_name}' in {self.__class__.__name__}.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        return self._wrap_call(tool_name, impl, **kwargs)
+
+    # ---- Implementations --------------------------------------------------
+
+    def _impl_git_status(self, repo_path: str = ".") -> Dict[str, Any]:
+        import subprocess
+
+        r = subprocess.run(
+            ["git", "-C", repo_path, "status", "--porcelain"],
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        return {"output": r.stdout, "returncode": r.returncode}
+
+    def _impl_git_log(self, repo_path: str = ".", n: int = 10) -> Dict[str, Any]:
+        import subprocess
+
+        r = subprocess.run(
+            ["git", "-C", repo_path, "log", f"-{n}", "--oneline"],
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        return {"output": r.stdout, "returncode": r.returncode}
+
+    def _impl_git_diff(self, repo_path: str = ".", ref: str = "HEAD") -> Dict[str, Any]:
+        import subprocess
+
+        r = subprocess.run(
+            ["git", "-C", repo_path, "diff", ref],
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        return {"output": r.stdout, "returncode": r.returncode}
+
+    def _impl_git_read_file(
+        self, repo_path: str = ".", file_path: str = "", ref: str = "HEAD"
+    ) -> Dict[str, Any]:
+        import subprocess
+
+        r = subprocess.run(
+            ["git", "-C", repo_path, "show", f"{ref}:{file_path}"],
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        return {"output": r.stdout, "returncode": r.returncode}
+
+
+# ---------------------------------------------------------------------------
+# Filesystem adapter (read-only)
+# ---------------------------------------------------------------------------
+
+
+class FilesystemMCPAdapter(BaseMCPAdapter):
+    """
+    Adapter for ``mcp-server-filesystem``.
+
+    Restricted to read-only operations within an allowed root path.
+    """
+
+    def __init__(
+        self,
+        inventory: ServerInventory,
+        allowed_root: str = ".",
+    ) -> None:
+        super().__init__(inventory)
+        self._allowed_root = allowed_root
+
+    def supported_tools(self) -> List[str]:
+        return ["read_file", "list_directory", "search_files"]
+
+    def call_tool(self, tool_name: str, **kwargs: Any) -> AdapterResult:
+        if not self.validate_tool(tool_name):
+            return AdapterResult(
+                success=False,
+                error=f"Unknown tool '{tool_name}'.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        impl = getattr(self, f"_impl_{tool_name}", None)
+        if impl is None:
+            return AdapterResult(
+                success=False,
+                error=f"No implementation for '{tool_name}'.",
+                tool_name=tool_name,
+                server_id=self.server_id,
+            )
+        return self._wrap_call(tool_name, impl, **kwargs)
+
+    def _impl_read_file(self, path: str) -> Dict[str, Any]:
+        from pathlib import Path
+
+        p = Path(self._allowed_root) / path
+        p = p.resolve()
+        allowed = Path(self._allowed_root).resolve()
+        if not p.is_relative_to(allowed):
+            raise PermissionError(f"Path '{p}' is outside allowed root '{allowed}'.")
+        return {"content": p.read_text(encoding="utf-8")}
+
+    def _impl_list_directory(self, path: str = ".") -> Dict[str, Any]:
+        from pathlib import Path
+
+        p = Path(self._allowed_root) / path
+        p = p.resolve()
+        allowed = Path(self._allowed_root).resolve()
+        if not p.is_relative_to(allowed):
+            raise PermissionError(f"Path '{p}' is outside allowed root '{allowed}'.")
+        return {"entries": [e.name for e in p.iterdir()]}
+
+    def _impl_search_files(self, pattern: str, root: str = ".") -> Dict[str, Any]:
+
+============================================================
+FILE: barrot_agent/mcp_discovery.py
+============================================================
+"""
+MCP Discovery Layer – Step 2
+=============================
+Read-only inventory of available MCP tools, their schemas, versions,
+licenses, dependencies, and security posture.
+
+All operations here are *read-only* and produce plain data structures.
+No upstream code is modified and no writes are performed.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import logging
+import subprocess
+import sys
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+from barrot_agent.mcp_targets import SUPPORTED_MCP_SERVERS, MCPServerSpec
+
+logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# Discovery data structures
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class ToolSchema:
+    """JSON-schema representation of a single MCP tool."""
+
+    name: str
+    description: str
+    input_schema: Dict[str, Any] = field(default_factory=dict)
+    output_schema: Dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class SecurityPosture:
+    """Security assessment derived from static analysis of a server spec."""
+
+    requires_auth: bool
+    exposed_env_vars: List[str]
+    known_cves: List[str] = field(default_factory=list)
+    last_scanned: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    risk_level: str = "unknown"  # "low" | "medium" | "high" | "critical"
+
+
+@dataclass
+class ServerInventory:
+    """Full inventory record for one discovered MCP server."""
+
+    server_id: str
+    name: str
+    description: str
+    version: str
+    license: str
+    homepage: str
+    tool_categories: List[str]
+    tools: List[ToolSchema]
+    dependencies: List[str]
+    security: SecurityPosture
+    discovered_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    schema_hash: str = ""
+
+    def __post_init__(self) -> None:
+        if not self.schema_hash:
+            raw = json.dumps(
+                [{"name": t.name, "schema": t.input_schema} for t in self.tools],
+                sort_keys=True,
+            )
+            self.schema_hash = hashlib.sha256(raw.encode()).hexdigest()[:16]
+
+
+# ---------------------------------------------------------------------------
+# Discovery engine
+# ---------------------------------------------------------------------------
+
+
+class MCPDiscovery:
+    """
+    Read-only MCP discovery layer.
+
+    Iterates over :data:`SUPPORTED_MCP_SERVERS` and builds an in-memory
+    inventory without making any modifications to the file-system,
+    repositories, or running services.
+    """
+
+    def __init__(
+        self,
+        mcp_config_path: Optional[Path] = None,
+        pip_executable: str = sys.executable,
+    ) -> None:
+        self._config_path = mcp_config_path or Path("mcp_config.json")
+        self._pip_exec = pip_executable
+        self._inventory: Dict[str, ServerInventory] = {}
+
+    # ------------------------------------------------------------------
+    # Public API
+    # ------------------------------------------------------------------
+
+    def discover_all(self) -> Dict[str, ServerInventory]:
+        """
+        Run discovery against all entries in SUPPORTED_MCP_SERVERS.
+
+        Returns a mapping of ``server_id -> ServerInventory``.
+        """
+        logger.info("MCP discovery: scanning %d server specs", len(SUPPORTED_MCP_SERVERS))
+        for spec in SUPPORTED_MCP_SERVERS:
+            try:
+                inv = self._discover_server(spec)
+                self._inventory[spec.server_id] = inv
+                logger.debug("Discovered: %s (%d tools)", spec.server_id, len(inv.tools))
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("Discovery failed for %s: %s", spec.server_id, exc)
+        return dict(self._inventory)
+
+    def get_inventory(self, server_id: str) -> Optional[ServerInventory]:
+        """Return the cached inventory record for a server, or None."""
+        return self._inventory.get(server_id)
+
+    def to_json(self) -> str:
+        """Serialise the full inventory to a JSON string (read-only export)."""
+        output: Dict[str, Any] = {}
+        for sid, inv in self._inventory.items():
+            output[sid] = {
+                "server_id": inv.server_id,
+                "name": inv.name,
+                "version": inv.version,
+                "license": inv.license,
+                "homepage": inv.homepage,
+                "tool_categories": inv.tool_categories,
+                "tools": [{"name": t.name, "description": t.description} for t in inv.tools],
+                "dependencies": inv.dependencies,
+                "security": {
+                    "requires_auth": inv.security.requires_auth,
+                    "exposed_env_vars": inv.security.exposed_env_vars,
+                    "known_cves": inv.security.known_cves,
+                    "risk_level": inv.security.risk_level,
+                    "last_scanned": inv.security.last_scanned,
+                },
+                "schema_hash": inv.schema_hash,
+                "discovered_at": inv.discovered_at,
+            }
+        return json.dumps(output, indent=2)
+
+    # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
+
+    def _discover_server(self, spec: MCPServerSpec) -> ServerInventory:
+        """Build an inventory record from static spec data + optional live probe."""
+        version = self._probe_package_version(spec.name)
+        deps = self._probe_package_deps(spec.name)
+        security = self._assess_security(spec, deps)
+        tools = self._infer_tools(spec)
+        return ServerInventory(
+            server_id=spec.server_id,
+            name=spec.name,
+            description=spec.description,
+            version=version,
+            license=spec.license,
+            homepage=spec.homepage,
+            tool_categories=list(spec.tool_categories),
+            tools=tools,
+            dependencies=deps,
+            security=security,
+        )
+
+    def _probe_package_version(self, package_name: str) -> str:
+        """
+        Ask pip for the installed version of *package_name*.
+
+        Returns ``"unknown"`` if the package is not installed or pip
+        cannot be reached – this is a read-only probe and never installs
+        anything.
+        """
+        try:
+            result = subprocess.run(
+                [self._pip_exec, "-m", "pip", "show", package_name],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+            for line in result.stdout.splitlines():
+                if line.startswith("Version:"):
+                    return line.split(":", 1)[1].strip()
+        except Exception:  # noqa: BLE001
+            pass
+        return "unknown"
+
+    def _probe_package_deps(self, package_name: str) -> List[str]:
+        """
+        Return the list of declared Requires for *package_name* from pip.
+
+        Read-only; never installs anything.
+        """
+        try:
+            result = subprocess.run(
+                [self._pip_exec, "-m", "pip", "show", package_name],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+            for line in result.stdout.splitlines():
+                if line.startswith("Requires:"):
+                    raw = line.split(":", 1)[1].strip()
+                    return [d.strip() for d in raw.split(",") if d.strip()]
+        except Exception:  # noqa: BLE001
+            pass
+        return []
+
+    def _assess_security(self, spec: MCPServerSpec, deps: List[str]) -> SecurityPosture:
+        """Derive a static security posture from spec metadata."""
+        risk = "low"
+        if spec.requires_auth:
+            risk = "medium"
+        if len(deps) > 15:
+            risk = "medium"
+        if any(
+            kw in spec.description.lower() for kw in ("write", "exec", "shell", "run", "deploy")
+        ):
+            risk = "high"
+        return SecurityPosture(
+            requires_auth=spec.requires_auth,
+            exposed_env_vars=list(spec.env_vars),
+            risk_level=risk,
+        )
+
+    # Static tool inference from well-known server categories
+    _TOOL_CATALOGUE: Dict[str, List[Dict[str, str]]] = {
+        "version_control": [
+            {"name": "git_status", "description": "Show working-tree status"},
+            {"name": "git_log", "description": "Show commit history"},
+            {"name": "git_diff", "description": "Show changes between commits"},
+            {"name": "git_read_file", "description": "Read a file at a given ref"},
+        ],
+        "ci_cd": [
+            {"name": "list_workflows", "description": "List GitHub Actions workflows"},
+            {"name": "get_workflow_run", "description": "Get a specific workflow run"},
+            {"name": "list_pull_requests", "description": "List pull requests"},
+        ],
+        "file_management": [
+            {"name": "read_file", "description": "Read a file from the filesystem"},
+            {"name": "list_directory", "description": "List a directory"},
+            {"name": "search_files", "description": "Search for files by pattern"},
+        ],
+        "web_access": [
+            {"name": "fetch_url", "description": "Fetch a URL and return its content"},
+        ],
+        "web_search": [
+            {"name": "brave_web_search", "description": "Search the web via Brave"},
+            {"name": "brave_news_search", "description": "Search news via Brave"},
+        ],
+        "knowledge_graph": [
+
+============================================================
+FILE: barrot_agent/mcp_integration.py
+============================================================
+"""
+MCP Integration – Main Entry Point
+====================================
+Wires together all 10 steps of the MCP integration framework:
+
+    Step 1  mcp_targets    – Capability targets, servers, compatibility
+    Step 2  mcp_discovery  – Read-only inventory (tools, schemas, security)
+    Step 3  mcp_scorer     – Score for usefulness, maturity, risk, etc.
+    Step 4  mcp_adapters   – Adapt without modifying upstream code
+    Step 5  mcp_pingpong   – Proposal exchange, critique, refinement
+    Step 6  mcp_sandbox    – Isolated dependency/secret/regression checks
+    Step 7  mcp_approval   – Human approval gate
+    Step 8  mcp_provenance – Immutable audit trail
+    Step 9  mcp_registry   – Promote only validated components
+    Step 10 mcp_scheduler  – Bounded scheduled re-discovery
+
+Usage
+-----
+    from barrot_agent.mcp_integration import MCPIntegration, IntegrationConfig
+
+    cfg = IntegrationConfig(dry_run=True)
+    mi = MCPIntegration(cfg)
+    stats = mi.run_pipeline()
+    print(stats)
+"""
+
+from __future__ import annotations
+
+import logging
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+from barrot_agent.mcp_adapters import build_adapter
+from barrot_agent.mcp_approval import ActionType, ApprovalRequest, MCPApprovalGate
+from barrot_agent.mcp_discovery import MCPDiscovery, ServerInventory
+from barrot_agent.mcp_pingpong import MCPPingPong, MCPProposal, Phase
+from barrot_agent.mcp_provenance import MCPProvenanceRecorder
+from barrot_agent.mcp_registry import MCPRegistry, RegistryEntry
+from barrot_agent.mcp_sandbox import MCPSandbox
+from barrot_agent.mcp_scheduler import MCPScheduler, SchedulerConfig
+from barrot_agent.mcp_scorer import MCPScorer
+from barrot_agent.mcp_targets import CAPABILITY_TARGETS, COMPATIBILITY_REQUIREMENTS
+from barrot_agent.reconfiguration import ReconfigurationReport, build_reconfiguration_report
+
+logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# Integration configuration
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class IntegrationConfig:
+    """Top-level configuration for the MCP integration pipeline."""
+
+    dry_run: bool = True
+    """When True the pipeline discovers and scores but does not write anything."""
+
+    approval_mode: str = "always_deny"
+    """Passed to :class:`~barrot_agent.mcp_approval.MCPApprovalGate`."""
+
+    interactive_approval: bool = False
+    """Enable interactive stdin/stdout prompts for approval."""
+
+    min_score: float = 50.0
+    """Minimum component score to generate a ping-pong proposal."""
+
+    pingpong_max_cycles: int = 3
+    """Maximum refinement cycles per proposal."""
+
+    repo_root: Path = field(default_factory=lambda: Path("."))
+    """Root of the repository for sandbox and adapter operations."""
+
+    registry_path: Optional[Path] = None
+    """Override path for the framework registry JSON file."""
+
+    provenance_path: Optional[Path] = None
+    """Override path for the provenance JSONL file."""
+
+    scheduler: SchedulerConfig = field(default_factory=SchedulerConfig)
+    """Scheduler settings for repeated discovery runs."""
+
+
+# ---------------------------------------------------------------------------
+# Integration pipeline
+# ---------------------------------------------------------------------------
+
+
+class MCPIntegration:
+    """
+    Orchestrates the full MCP integration lifecycle for Barrot.
+
+    All 10 steps are executed in sequence.  The pipeline is safe to run
+    at any time; no production state is modified unless ``dry_run=False``
+    *and* human approval is explicitly granted.
+    """
+
+    def __init__(self, config: Optional[IntegrationConfig] = None) -> None:
+        self._cfg = config or IntegrationConfig()
+
+        # Instantiate sub-systems
+        self._discovery = MCPDiscovery()
+        self._scorer = MCPScorer()
+        self._pingpong = MCPPingPong(max_cycles=self._cfg.pingpong_max_cycles)
+        self._sandbox = MCPSandbox(repo_root=self._cfg.repo_root)
+        self._approval = MCPApprovalGate(
+            mode=self._cfg.approval_mode,
+            interactive=self._cfg.interactive_approval,
+        )
+        self._provenance = MCPProvenanceRecorder(log_path=self._cfg.provenance_path)
+        self._registry = MCPRegistry(registry_path=self._cfg.registry_path)
+
+    # ------------------------------------------------------------------
+    # Main pipeline
+    # ------------------------------------------------------------------
+
+    def run_pipeline(self) -> Dict[str, int]:
+        """
+        Execute one full discovery → evaluation → integration pass.
+
+        Returns a stats dict with keys:
+            ``discovered``, ``proposals``, ``accepted``,
+            ``rejected``, ``sandbox_passed``, ``promoted``.
+        """
+        stats: Dict[str, int] = {
+            "discovered": 0,
+            "proposals": 0,
+            "accepted": 0,
+            "rejected": 0,
+            "sandbox_passed": 0,
+            "promoted": 0,
+        }
+
+        # ---- Step 2: Discovery ----
+        logger.info("Pipeline: starting discovery")
+        inventories = self._discovery.discover_all()
+        stats["discovered"] = len(inventories)
+        logger.info("Pipeline: discovered %d servers", stats["discovered"])
+
+        # Record discovery events in provenance
+        for sid, inv in inventories.items():
+            self._provenance.record_discovery(
+                server_id=sid,
+                schema_hash=inv.schema_hash,
+                tool_count=len(inv.tools),
+            )
+
+        # ---- Step 3: Scoring ----
+        logger.info("Pipeline: scoring components")
+        scores = self._scorer.score_all(inventories)
+        ranked = self._scorer.rank(scores)
+
+        # ---- Steps 4-9: Per-component integration ----
+        for component_score in ranked:
+            sid = component_score.server_id
+            inv = inventories[sid]
+            score_val = component_score.total
+
+            if score_val < self._cfg.min_score:
+                logger.info(
+                    "Pipeline: skipping %s (score=%.1f < min=%.1f)",
+                    sid,
+                    score_val,
+                    self._cfg.min_score,
+                )
+                self._provenance.record_rejection(
+                    server_id=sid,
+                    reason=f"Score {score_val:.1f} below threshold {self._cfg.min_score}.",
+                )
+                stats["rejected"] += 1
+                continue
+
+            # ---- Step 4: Build adapter ----
+            adapter = build_adapter(inv)
+
+            # ---- Step 5: Ping-pong proposal exchange ----
+            proposal = MCPProposal(
+                server_id=sid,
+                description=inv.description,
+                score=score_val,
+                adapter_class=(adapter.__class__.__name__ if adapter else "NoAdapter"),
+                rationale=(
+                    f"Score={score_val:.1f}/{component_score.grade}; "
+                    f"categories={inv.tool_categories}"
+                ),
+                risks=[
+                    f"risk_level={inv.security.risk_level}",
+                    f"cves={inv.security.known_cves}",
+                ],
+                mitigations=(["Adapter layer isolates upstream"] if adapter else []),
+            )
+            exchange = self._pingpong.run(proposal)
+            stats["proposals"] += 1
+
+            if exchange.final_phase != Phase.ACCEPTANCE:
+                self._provenance.record_rejection(
+                    server_id=sid,
+                    reason=f"Ping-pong phase={exchange.final_phase.value}",
+                )
+                stats["rejected"] += 1
+                continue
+
+            stats["accepted"] += 1
+
+            # ---- Step 6: Sandbox ----
+            if not self._cfg.dry_run:
+                sb_report = self._sandbox.run(
+                    server_id=sid,
+                    proposed_files={},
+                    declared_deps=inv.dependencies,
+                )
+                if not sb_report.passed:
+                    failed = [c.check_name for c in sb_report.failed_checks]
+                    self._provenance.record_rejection(
+                        server_id=sid,
+                        reason=f"Sandbox checks failed: {failed}",
+                    )
+                    stats["rejected"] += 1
+                    continue
+                stats["sandbox_passed"] += 1
+
+            # ---- Step 7: Human approval ----
+            approval_req = ApprovalRequest(
+                action_type=ActionType.REGISTRY_PROMOTE,
+                server_id=sid,
+                description=(f"Promote {sid} (score={score_val:.1f}) into the framework registry."),
+            )
+            decision = self._approval.request_approval(approval_req)
+
+            if not decision.approved:
+                self._provenance.record_rejection(
+                    server_id=sid,
+                    reason=f"Approval denied: {decision.reason}",
+                )
+                stats["rejected"] += 1
+                continue
+
+            # ---- Step 8: Record provenance ----
+            prov_rec = self._provenance.record_integration(
+                server_id=sid,
+                license=inv.license,
+                test_results={"sandbox": "passed" if not self._cfg.dry_run else "skipped"},
+                metadata={
+                    "score": score_val,
+                    "grade": component_score.grade,
+                    "exchange_id": exchange.exchange_id,
+                    "approved_by": decision.decided_by,
+                },
+            )
+
+            # ---- Step 9: Promote into registry ----
+            if not self._cfg.dry_run:
+                entry = RegistryEntry(
+                    server_id=sid,
+                    name=inv.name,
+                    version=inv.version,
+                    license=inv.license,
+                    adapter_class=(adapter.__class__.__name__ if adapter else "NoAdapter"),
+
+============================================================
+FILE: barrot_agent/evolution/evidence_quality.py
+============================================================
+"""
+Barrot Evidence Quality Engine.
+
+Scores evidence using transparent, auditable factors. A quality score is not
+a declaration of truth; it estimates how suitable a record is for reasoning.
+"""
+
+from __future__ import annotations
+
+from datetime import datetime, timezone
+from typing import Any
+
+
+class EvidenceQualityEngine:
+    """Evaluate evidence quality without treating source reputation as truth."""
+
+    def score(self, evidence: dict[str, Any]) -> dict[str, Any]:
+        factors: dict[str, float] = {}
+
+        # Provenance: identifiable source and URL make evidence auditable.
+        source = str(evidence.get("source", "")).strip()
+        source_url = str(evidence.get("source_url", "")).strip()
+        factors["provenance"] = 1.0 if source and source_url else 0.7 if source else 0.3
+
+        # Completeness: essential fields required for inspection.
+        required = ("claim_id", "claim", "source")
+        present = sum(bool(evidence.get(field)) for field in required)
+        factors["completeness"] = present / len(required)
+
+        # Recency: evidence without a timestamp is usable but less informative.
+        retrieved_at = evidence.get("retrieved_at")
+        factors["recency"] = self._recency_score(retrieved_at)
+
+        score = (
+            factors["provenance"] * 0.40
+            + factors["completeness"] * 0.35
+            + factors["recency"] * 0.25
+        )
+
+        return {
+            "quality_score": round(score, 3),
+            "factors": factors,
+        }
+
+    @staticmethod
+    def _recency_score(value: Any) -> float:
+        if not value:
+            return 0.5
+
+        try:
+            timestamp = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+            if timestamp.tzinfo is None:
+                timestamp = timestamp.replace(tzinfo=timezone.utc)
+
+            age_days = max(
+                0,
+                (datetime.now(timezone.utc) - timestamp).days,
+            )
+
+            if age_days <= 30:
+                return 1.0
+            if age_days <= 180:
+                return 0.8
+            if age_days <= 365:
+                return 0.6
+            return 0.4
+        except (TypeError, ValueError):
+            return 0.5
+
+============================================================
+FILE: barrot_agent/evolution/evolution_engine.py
+============================================================
+"""
+Barrot Evolution Engine.
+
+Pipeline:
+    Acquire -> Validate -> Score -> Synthesize -> Evaluate -> Propose
+
+The engine never silently rewrites production code. Improvements become
+structured proposals that can be tested before adoption.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT / "data" / "evolution"
+CORPUS_FILE = DATA_DIR / "knowledge_corpus.json"
+
+
+class EvolutionEngine:
+    """Build and improve Barrot's structured knowledge corpus."""
+
+    def __init__(self) -> None:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    def load_corpus(self) -> list[dict[str, Any]]:
+        if not CORPUS_FILE.exists():
+            return []
+        return json.loads(CORPUS_FILE.read_text(encoding="utf-8"))
+
+    def ingest(
+        self,
+        source: str,
+        content: str,
+        domain: str,
+        confidence: float = 0.5,
+    ) -> dict[str, Any]:
+        """Add validated knowledge with provenance and deduplication."""
+        digest = hashlib.sha256(content.encode()).hexdigest()
+        corpus = self.load_corpus()
+
+        if any(item["id"] == digest for item in corpus):
+            return {"status": "duplicate", "id": digest}
+
+        item = {
+            "id": digest,
+            "source": source,
+            "domain": domain,
+            "content": content,
+            "confidence": max(0.0, min(1.0, confidence)),
+            "ingested_at": datetime.now(timezone.utc).isoformat(),
+        }
+
+        corpus.append(item)
+        CORPUS_FILE.write_text(
+            json.dumps(corpus, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        return {"status": "ingested", "id": digest}
+
+    def synthesize(self) -> dict[str, Any]:
+        """Produce a high-level map of accumulated knowledge."""
+        corpus = self.load_corpus()
+        domains: dict[str, int] = {}
+
+        for item in corpus:
+            domain = item.get("domain", "general")
+            domains[domain] = domains.get(domain, 0) + 1
+
+        return {
+            "knowledge_items": len(corpus),
+            "domains": domains,
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+        }
+
+    def improvement_targets(self) -> list[dict[str, str]]:
+        """Identify capability gaps without autonomously modifying code."""
+        corpus = self.load_corpus()
+        domains = {item.get("domain") for item in corpus}
+
+        priorities = [
+            ("agent_orchestration", "Multi-agent planning and delegation"),
+            ("software_engineering", "Code analysis, testing, and repair"),
+            ("reasoning", "Verification and evidence-based reasoning"),
+            ("security", "Credential isolation and safe tool execution"),
+        ]
+
+        return [
+            {"domain": domain, "goal": goal} for domain, goal in priorities if domain not in domains
+        ]

@@ -5,7 +5,7 @@ Test the full Barrot email intelligence integration
 import json
 from datetime import datetime, timezone
 
-from barrot_integration import barrot_system, process_emails
+from barrot_agent.orchestration.barrot_integration import barrot_system, process_emails
 
 
 def test_email_intelligence():
