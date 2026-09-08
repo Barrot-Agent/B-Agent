@@ -6,6 +6,7 @@ from .autonomous_actions import AutonomousActionResult, BarrotActionLoop
 from .outcome_evaluator import EvaluationResult, OutcomeEvaluator
 from .repair_loop import BarrotRepairLoop, RepairResult
 from .learning_filter import LearningFilter, LearningRecord
+from .verified_learning_store import VerifiedLearningStore
 
 __all__ = [
     "Action",
@@ -21,4 +22,5 @@ __all__ = [
     "RepairResult",
     "LearningFilter",
     "LearningRecord",
+    "VerifiedLearningStore",
 ]
