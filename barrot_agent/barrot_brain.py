@@ -237,7 +237,7 @@ class BarrotBrain:
         return "[BARROT] All backends failed."
 
     @property
-    def backend(self) -> str:
+    def backend_name(self) -> str:
         if self.auth.ready:
             return "GitHub Models"
         if self.groq_key:

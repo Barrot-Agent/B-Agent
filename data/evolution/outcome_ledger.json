@@ -983,5 +983,57 @@
     ],
     "confidence": 0.7,
     "recorded_at": "2026-09-08T03:51:12.985745+00:00"
+  },
+  {
+    "id": "52cff352e28ac0144380bdfb58146e14351f08e88c024dd5ae7458732f0c1d5e",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "40657d2d9212d260ee31df7e3d72de7e2c22bb55f7a26387afe0d5f8bf11733f",
+      "response_hash": "a6ff19eb2c2011600d1383c3db73d78620c63b9a794ce4df4d25e07f9add6397",
+      "claim": "BARROT_BACKEND_OK",
+      "response_length": 17
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T04:22:21.584047+00:00"
+  },
+  {
+    "id": "de9f0b42f9cab365a9983b66b68b1e288947cebc7ef5cd157036fe76801097d9",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "40657d2d9212d260ee31df7e3d72de7e2c22bb55f7a26387afe0d5f8bf11733f",
+        "response_hash": "a6ff19eb2c2011600d1383c3db73d78620c63b9a794ce4df4d25e07f9add6397"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T04:22:21.587210+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T04:22:21.589368+00:00"
+  },
+  {
+    "id": "89c27c98288ee8d7dffaeb52e0000b5aad996c7f2dc8e93f08dd6a6919df4c4f",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "40657d2d9212d260ee31df7e3d72de7e2c22bb55f7a26387afe0d5f8bf11733f",
+        "response_hash": "a6ff19eb2c2011600d1383c3db73d78620c63b9a794ce4df4d25e07f9add6397"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T04:23:11.178908+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T04:23:11.180639+00:00"
   }
 ]
