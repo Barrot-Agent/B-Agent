@@ -52,12 +52,9 @@ class BarrotActionExecutor:
                     f"grep -RIn --exclude-dir=.git -- {query!r} {path!r}"
                 )
 
-                # grep exit code 1 means no matches, not executor failure.
-                success = result.returncode in (0, 1)
-
                 return ActionResult(
                     action=action.type,
-                    success=success,
+                    success=result.returncode in (0, 1),
                     output=result.stdout,
                     error=result.stderr,
                 )
@@ -78,7 +75,9 @@ class BarrotActionExecutor:
                 content = action.args["content"]
 
                 if not isinstance(content, str):
-                    raise ExecutionError("WRITE_FILE content must be a string")
+                    raise ExecutionError(
+                        "WRITE_FILE content must be a string"
+                    )
 
                 self.executor.write_file(path, content)
 
@@ -90,27 +89,36 @@ class BarrotActionExecutor:
 
             if action.type == "APPLY_PATCH":
                 path = action.args["path"]
-                old_text = action.args["old"]
-                new_text = action.args["new"]
+                expected = action.args["expected"]
+                replacement = action.args["replacement"]
 
-                if not isinstance(old_text, str) or not isinstance(new_text, str):
+                if not all(
+                    isinstance(value, str)
+                    for value in (path, expected, replacement)
+                ):
                     raise ExecutionError(
-                        "APPLY_PATCH old and new values must be strings"
+                        "APPLY_PATCH path, expected, and replacement "
+                        "must be strings"
                     )
 
-                current = self.executor.read_file(path)
+                original = self.executor.read_file(path)
 
-                if old_text not in current:
+                if expected not in original:
                     raise ExecutionError(
-                        f"Patch target was not found in {path}"
+                        f"Expected text not found in {path}"
                     )
 
-                if current.count(old_text) != 1:
+                if original.count(expected) != 1:
                     raise ExecutionError(
-                        f"Patch target must occur exactly once in {path}"
+                        f"Expected text is not unique in {path}"
                     )
 
-                updated = current.replace(old_text, new_text, 1)
+                updated = original.replace(
+                    expected,
+                    replacement,
+                    1,
+                )
+
                 self.executor.write_file(path, updated)
 
                 return ActionResult(
@@ -129,7 +137,9 @@ class BarrotActionExecutor:
                     error=result.stderr,
                 )
 
-            raise ExecutionError(f"Action not implemented: {action.type}")
+            raise ExecutionError(
+                f"Action not implemented: {action.type}"
+            )
 
         except Exception as exc:
             return ActionResult(
