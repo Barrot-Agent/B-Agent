@@ -9,6 +9,8 @@ from .actions import parse_actions
 from .action_executor import BarrotActionExecutor
 from .verifier import BarrotVerifier
 from .outcome_evaluator import OutcomeEvaluator
+from .learning_filter import LearningFilter
+from .verified_learning_store import VerifiedLearningStore
 
 
 @dataclass
@@ -32,6 +34,8 @@ class BarrotActionLoop:
         self.verifier = BarrotVerifier(self.actions.executor)
         self.max_attempts = max_attempts
         self.outcome_evaluator = OutcomeEvaluator()
+        self.learning_filter = LearningFilter()
+        self.learning_store = VerifiedLearningStore()
 
     @staticmethod
     def _parse_json(response: str) -> dict:
@@ -173,6 +177,24 @@ Action rules:
             }
 
             if outcome.success:
+                learning = self.learning_filter.filter(
+                    goal=goal,
+                    results=record["results"],
+                    verification_success=verification.success,
+                )
+
+                stored = False
+
+                if learning.accepted:
+                    stored = self.learning_store.append(learning)
+
+                record["learning"] = {
+                    "accepted": learning.accepted,
+                    "stored": stored,
+                    "lesson": learning.lesson,
+                    "reason": learning.reason,
+                }
+
                 return AutonomousActionResult(
                     success=True,
                     attempts=attempt,
