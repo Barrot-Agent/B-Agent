@@ -1035,5 +1035,39 @@
     ],
     "confidence": 0.7,
     "recorded_at": "2026-09-08T04:23:11.180639+00:00"
+  },
+  {
+    "id": "0eab305009f29675bcd883cd243bba99631e85aef621ac71a4e5e176f1eb909f",
+    "operation": "inference",
+    "outcome": {
+      "backend": "groq",
+      "prompt_hash": "4401bb89941615d12444944662713357b0fedabee4b951c69c72adca7d957777",
+      "response_hash": "5ad2b82aea38307fa470a5036da0b059c142bce10c270c0642f2fec35598fab5",
+      "claim": "BARROT_CORE_OK",
+      "response_length": 14
+    },
+    "sources": [
+      "groq"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T05:08:15.536608+00:00"
+  },
+  {
+    "id": "91cbecb0d94f72164cb73babb89d60897455d7a81a3b75c1ea4d8205312a6a0a",
+    "operation": "event:inference_completed",
+    "outcome": {
+      "payload": {
+        "backend": "groq",
+        "prompt_hash": "4401bb89941615d12444944662713357b0fedabee4b951c69c72adca7d957777",
+        "response_hash": "5ad2b82aea38307fa470a5036da0b059c142bce10c270c0642f2fec35598fab5"
+      },
+      "source": "barrot_brain",
+      "created_at": "2026-09-08T05:08:15.538590+00:00"
+    },
+    "sources": [
+      "barrot_brain"
+    ],
+    "confidence": 0.7,
+    "recorded_at": "2026-09-08T05:08:15.539918+00:00"
   }
 ]
