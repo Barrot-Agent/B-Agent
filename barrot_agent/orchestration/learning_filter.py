@@ -14,7 +14,7 @@ class LearningRecord:
 
 
 class LearningFilter:
-    """Accept only verified outcomes as reusable Barrot knowledge."""
+    """Accept only verified, non-trivial autonomous outcomes."""
 
     def filter(
         self,
@@ -53,13 +53,59 @@ class LearningFilter:
             for result in results
         ]
 
+        # LIST_FILES alone is useful for navigation but is not deep learning.
+        deep_actions = {
+            "READ_FILE",
+            "SEARCH_TEXT",
+            "RUN_TESTS",
+        }
+
+        if not any(action in deep_actions for action in actions):
+            return LearningRecord(
+                accepted=False,
+                lesson="",
+                reason=(
+                    "No deep inspection action succeeded. "
+                    "Require READ_FILE, SEARCH_TEXT, or RUN_TESTS."
+                ),
+            )
+
+        findings: list[str] = []
+
+        for result in results:
+            action = str(result.get("action", "UNKNOWN"))
+            output = str(result.get("output", "")).strip()
+
+            if not output:
+                continue
+
+            compact = " ".join(output.split())
+
+            if len(compact) > 500:
+                compact = compact[:500] + "..."
+
+            findings.append(
+                f"{action}: {compact}"
+            )
+
+        if not findings:
+            return LearningRecord(
+                accepted=False,
+                lesson="",
+                reason="Deep actions succeeded but produced no reusable findings.",
+            )
+
         lesson = (
-            f"Verified goal: {goal.strip()} "
-            f"Successful actions: {', '.join(actions)}."
+            f"Goal: {goal.strip()}\n"
+            f"Verified findings:\n"
+            + "\n".join(
+                f"- {finding}"
+                for finding in findings
+            )
         )
 
         return LearningRecord(
             accepted=True,
             lesson=lesson,
-            reason="Actions and verification succeeded.",
+            reason="Deep inspection actions and verification succeeded.",
         )

@@ -24,6 +24,7 @@ ALLOWED_ACTIONS = {
     "WRITE_FILE",
     "APPLY_PATCH",
     "GIT_STATUS",
+    "TERMUX_DROP",
 }
 
 

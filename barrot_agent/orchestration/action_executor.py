@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .actions import Action
 from .executor import BarrotExecutor, ExecutionError
+from barrot_agent.termux import TermuxBridge
 
 
 @dataclass
@@ -22,6 +23,11 @@ class BarrotActionExecutor:
 
     def __init__(self, workspace: str | Path = "."):
         self.executor = BarrotExecutor(workspace)
+        self.termux = TermuxBridge(
+            allowed_roots=(
+                str(Path(workspace).expanduser().resolve()),
+            ),
+        )
 
     def execute(self, action: Action) -> ActionResult:
         try:
@@ -135,6 +141,32 @@ class BarrotActionExecutor:
                     success=result.success,
                     output=result.stdout,
                     error=result.stderr,
+                )
+
+            if action.type == "TERMUX_DROP":
+                path = action.args["path"]
+                content = action.args["content"]
+
+                if not isinstance(path, str):
+                    raise ExecutionError(
+                        "TERMUX_DROP path must be a string"
+                    )
+
+                if not isinstance(content, str):
+                    raise ExecutionError(
+                        "TERMUX_DROP content must be a string"
+                    )
+
+                drop = self.termux.drop_text(
+                    path=path,
+                    content=content,
+                )
+
+                return ActionResult(
+                    action=action.type,
+                    success=drop.success,
+                    output=drop.path if drop.success else "",
+                    error="" if drop.success else drop.reason,
                 )
 
             raise ExecutionError(

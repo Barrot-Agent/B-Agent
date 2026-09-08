@@ -11,6 +11,7 @@ from .verifier import BarrotVerifier
 from .outcome_evaluator import OutcomeEvaluator
 from .learning_filter import LearningFilter
 from .verified_learning_store import VerifiedLearningStore
+from .learning_curriculum import LearningCurriculum
 
 
 @dataclass
@@ -36,6 +37,10 @@ class BarrotActionLoop:
         self.outcome_evaluator = OutcomeEvaluator()
         self.learning_filter = LearningFilter()
         self.learning_store = VerifiedLearningStore()
+        self.learning_curriculum = LearningCurriculum(
+            workspace=workspace,
+            learning_store=self.learning_store,
+        )
 
     @staticmethod
     def _parse_json(response: str) -> dict:
@@ -101,6 +106,7 @@ Allowed action types only:
 - WRITE_FILE
 - APPLY_PATCH
 - GIT_STATUS
+- TERMUX_DROP
 
 Action rules:
 
@@ -111,6 +117,7 @@ Action rules:
 - Do not restore Orbit.
 - Prefer inspection before modification.
 - Keep changes minimal.
+- TERMUX_DROP may write only inside the configured Termux workspace.
 - Use APPLY_PATCH for small edits.
 - Run verification after modification.
 - If the previous attempt failed, inspect the failure and correct it.
@@ -234,3 +241,12 @@ Action rules:
             attempts=self.max_attempts,
             history=history,
         )
+
+    def run_next_learning_goal(
+        self,
+    ) -> AutonomousActionResult:
+        """Select and execute the next progressive learning goal."""
+
+        goal = self.learning_curriculum.next_goal()
+
+        return self.run(goal)
