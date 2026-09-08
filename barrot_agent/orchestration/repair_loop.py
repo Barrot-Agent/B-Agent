@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 from .actions import parse_actions
 from .action_executor import BarrotActionExecutor
+from .outcome_evaluator import OutcomeEvaluator
 
 
 @dataclass
@@ -28,6 +29,7 @@ class BarrotRepairLoop:
         self.brain = brain
         self.actions = BarrotActionExecutor(workspace)
         self.max_attempts = max_attempts
+        self.outcome_evaluator = OutcomeEvaluator()
 
     @staticmethod
     def _parse_json(text: str) -> dict:
@@ -187,15 +189,16 @@ Rules:
                 "stderr": verification.stderr[-4000:],
             }
 
-            actions_ok = (
-                len(record["results"]) > 0
-                and all(
-                    item["success"]
-                    for item in record["results"]
-                )
+            outcome = self.outcome_evaluator.evaluate(
+                results=record["results"],
+                verification_success=verification.success,
             )
+            record["outcome"] = {
+                "success": outcome.success,
+                "reason": outcome.reason,
+            }
 
-            if actions_ok and verification.success:
+            if outcome.success:
                 return RepairResult(
                     success=True,
                     attempts=attempt,

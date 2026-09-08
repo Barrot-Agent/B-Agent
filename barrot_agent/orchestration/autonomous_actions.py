@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from .actions import parse_actions
 from .action_executor import BarrotActionExecutor
 from .verifier import BarrotVerifier
+from .outcome_evaluator import OutcomeEvaluator
 
 
 @dataclass
@@ -30,6 +31,7 @@ class BarrotActionLoop:
         self.actions = BarrotActionExecutor(workspace)
         self.verifier = BarrotVerifier(self.actions.executor)
         self.max_attempts = max_attempts
+        self.outcome_evaluator = OutcomeEvaluator()
 
     @staticmethod
     def _parse_json(response: str) -> dict:
@@ -161,15 +163,16 @@ Action rules:
 
             record["verification"] = verification.checks
 
-            actions_ok = (
-                len(record["results"]) > 0
-                and all(
-                    item["success"]
-                    for item in record["results"]
-                )
+            outcome = self.outcome_evaluator.evaluate(
+                results=record["results"],
+                verification_success=verification.success,
             )
+            record["outcome"] = {
+                "success": outcome.success,
+                "reason": outcome.reason,
+            }
 
-            if actions_ok and verification.success:
+            if outcome.success:
                 return AutonomousActionResult(
                     success=True,
                     attempts=attempt,
