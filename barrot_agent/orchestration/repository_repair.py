@@ -12,7 +12,7 @@ import uuid
 from dataclasses import asdict, dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, ClassVar
 
 
 class RepairState(str, Enum):
@@ -189,55 +189,52 @@ class RepairCycleEvidence:
     changeset_fingerprint: str = ""
     failure: FailureEvidence | None = None
 
-    _ALLOWED_TRANSITIONS: dict[RepairState, set[RepairState]] = field(
-        default_factory=lambda: {
-            RepairState.IDLE: {RepairState.AUDITING},
-            RepairState.AUDITING: {RepairState.ANALYZING, RepairState.FAILED},
-            RepairState.ANALYZING: {
-                RepairState.REPAIR_PLANNING,
-                RepairState.NO_REPAIR_REQUIRED,
-                RepairState.FAILED,
-            },
-            RepairState.REPAIR_PLANNING: {
-                RepairState.PATCHING,
-                RepairState.NO_REPAIR_REQUIRED,
-                RepairState.FAILED,
-            },
-            RepairState.PATCHING: {
-                RepairState.LOCAL_VALIDATION,
-                RepairState.PATCH_FAILED,
-                RepairState.ROLLED_BACK,
-                RepairState.FAILED,
-            },
-            RepairState.LOCAL_VALIDATION: {
-                RepairState.COMMITTING,
-                RepairState.ROLLED_BACK,
-                RepairState.FAILED,
-            },
-            RepairState.COMMITTING: {
-                RepairState.REMOTE_VERIFICATION,
-                RepairState.FAILED,
-            },
-            RepairState.REMOTE_VERIFICATION: {
-                RepairState.POST_REPAIR_VALIDATION,
-                RepairState.FAILED,
-            },
-            RepairState.POST_REPAIR_VALIDATION: {
-                RepairState.SYNCING,
-                RepairState.FAILED,
-            },
-            RepairState.SYNCING: {
-                RepairState.COMPLETE,
-                RepairState.FAILED,
-            },
-            RepairState.COMPLETE: set(),
-            RepairState.NO_REPAIR_REQUIRED: set(),
-            RepairState.PATCH_FAILED: set(),
-            RepairState.FAILED: set(),
-            RepairState.ROLLED_BACK: set(),
+    _ALLOWED_TRANSITIONS: ClassVar[dict[RepairState, set[RepairState]]] = {
+        RepairState.IDLE: {RepairState.AUDITING},
+        RepairState.AUDITING: {RepairState.ANALYZING, RepairState.FAILED},
+        RepairState.ANALYZING: {
+            RepairState.REPAIR_PLANNING,
+            RepairState.NO_REPAIR_REQUIRED,
+            RepairState.FAILED,
         },
-        repr=False,
-    )
+        RepairState.REPAIR_PLANNING: {
+            RepairState.PATCHING,
+            RepairState.NO_REPAIR_REQUIRED,
+            RepairState.FAILED,
+        },
+        RepairState.PATCHING: {
+            RepairState.LOCAL_VALIDATION,
+            RepairState.PATCH_FAILED,
+            RepairState.ROLLED_BACK,
+            RepairState.FAILED,
+        },
+        RepairState.LOCAL_VALIDATION: {
+            RepairState.COMMITTING,
+            RepairState.ROLLED_BACK,
+            RepairState.FAILED,
+        },
+        RepairState.COMMITTING: {
+            RepairState.REMOTE_VERIFICATION,
+            RepairState.FAILED,
+        },
+        RepairState.REMOTE_VERIFICATION: {
+            RepairState.POST_REPAIR_VALIDATION,
+            RepairState.FAILED,
+        },
+        RepairState.POST_REPAIR_VALIDATION: {
+            RepairState.SYNCING,
+            RepairState.FAILED,
+        },
+        RepairState.SYNCING: {
+            RepairState.COMPLETE,
+            RepairState.FAILED,
+        },
+        RepairState.COMPLETE: set(),
+        RepairState.NO_REPAIR_REQUIRED: set(),
+        RepairState.PATCH_FAILED: set(),
+        RepairState.FAILED: set(),
+        RepairState.ROLLED_BACK: set(),
+    }
 
     def transition(self, state: RepairState) -> None:
         current = RepairState(self.current_state)
