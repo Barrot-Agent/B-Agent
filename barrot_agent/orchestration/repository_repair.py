@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 import os
-import shlex
 import subprocess
+import time
 import uuid
 from dataclasses import asdict, dataclass, field
 from enum import Enum
@@ -26,18 +27,88 @@ class RepairState(str, Enum):
     POST_REPAIR_VALIDATION = "POST_REPAIR_VALIDATION"
     SYNCING = "SYNCING"
     COMPLETE = "COMPLETE"
+    NO_REPAIR_REQUIRED = "NO_REPAIR_REQUIRED"
     PATCH_FAILED = "PATCH_FAILED"
     FAILED = "FAILED"
     ROLLED_BACK = "ROLLED_BACK"
 
 
+class ModelFailureCode(str, Enum):
+    RATE_LIMITED = "LLM_RATE_LIMITED"
+    TOOL_CONFLICT = "LLM_TOOL_CONFLICT"
+    INVALID_JSON = "LLM_INVALID_JSON"
+    TIMEOUT = "LLM_TIMEOUT"
+    UNAVAILABLE = "LLM_UNAVAILABLE"
+
+
+@dataclass(frozen=True)
+class StructuredCommand:
+    program: str
+    args: list[str] = field(default_factory=list)
+    timeout: int = 120
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "StructuredCommand":
+        if not isinstance(data, dict):
+            raise ValueError("Command must be an object.")
+        program = data.get("program")
+        args = data.get("args", [])
+        timeout = data.get("timeout", 120)
+        if not isinstance(program, str) or not program.strip():
+            raise ValueError("Command program must be a non-empty string.")
+        if not isinstance(args, list) or not all(isinstance(item, str) for item in args):
+            raise ValueError("Command args must be a list of strings.")
+        if not isinstance(timeout, int) or timeout <= 0 or timeout > 600:
+            raise ValueError("Command timeout must be an integer between 1 and 600.")
+        return cls(
+            program=program.strip(),
+            args=[item for item in args],
+            timeout=timeout,
+        )
+
+    def argv(self) -> list[str]:
+        return [self.program, *self.args]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"program": self.program, "args": list(self.args), "timeout": self.timeout}
+
+    def display(self) -> str:
+        return " ".join(self.argv())
+
+
+@dataclass(frozen=True)
+class PatchOperation:
+    type: str
+    path: str
+    old: str
+    new: str
+    reason: str
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "PatchOperation":
+        if not isinstance(data, dict):
+            raise ValueError("Patch operation must be an object.")
+        required = ("type", "path", "old", "new", "reason")
+        if any(key not in data for key in required):
+            raise ValueError("Patch operation is missing required fields.")
+        values = {key: data[key] for key in required}
+        if not all(isinstance(value, str) for value in values.values()):
+            raise ValueError("Patch operation fields must all be strings.")
+        return cls(**values)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
 @dataclass
 class CommandEvidence:
-    command: str
+    command: dict[str, Any]
     success: bool
-    returncode: int
+    returncode: int | None
     stdout: str = ""
     stderr: str = ""
+    error: str = ""
+    timed_out: bool = False
 
 
 @dataclass
@@ -53,8 +124,13 @@ class ValidationEvidence:
 @dataclass
 class CommitEvidence:
     created: bool = False
+    exists: bool = False
     sha: str = ""
+    branch: str = ""
     message: str = ""
+    changed_paths: list[str] = field(default_factory=list)
+    command: dict[str, Any] = field(default_factory=dict)
+    timestamp: float | None = None
     remote_verified: bool = False
 
 
@@ -67,13 +143,16 @@ class RemoteSyncEvidence:
     verified: bool = False
     branch: str = ""
     sha: str = ""
+    push: dict[str, Any] = field(default_factory=dict)
+    verification: dict[str, Any] = field(default_factory=dict)
     reason: str = ""
 
 
 @dataclass
 class FailureEvidence:
     state: str
-    message: str
+    code: str = ""
+    message: str = ""
     rollback_attempted: bool = False
     rollback_succeeded: bool = False
 
@@ -86,42 +165,111 @@ class RepairCycleEvidence:
     state_history: list[str] = field(default_factory=lambda: [RepairState.IDLE.value])
     audit_completed: bool = False
     issue_identified: bool = False
+    issue_reproduced: bool = False
     repair_plan_created: bool = False
     changeset_created: bool = False
     changes_applied: bool = False
     local_validation_passed: bool = False
+    repair_verified: bool = False
+    remote_sync_verified: bool = False
     post_repair_validation_passed: bool = False
     resolution_verified: bool = False
+    synchronization_recorded: bool = False
     report_only: bool = False
     report: str = ""
     issue: dict[str, Any] = field(default_factory=dict)
     repair_plan: dict[str, Any] = field(default_factory=dict)
+    changeset: dict[str, Any] = field(default_factory=dict)
     changes: list[dict[str, Any]] = field(default_factory=list)
     validation: dict[str, Any] = field(default_factory=dict)
     commit: CommitEvidence = field(default_factory=CommitEvidence)
     sync: list[RemoteSyncEvidence] = field(default_factory=list)
+    issue_fingerprint: str = ""
+    plan_fingerprint: str = ""
+    changeset_fingerprint: str = ""
     failure: FailureEvidence | None = None
 
+    _ALLOWED_TRANSITIONS: dict[RepairState, set[RepairState]] = field(
+        default_factory=lambda: {
+            RepairState.IDLE: {RepairState.AUDITING},
+            RepairState.AUDITING: {RepairState.ANALYZING, RepairState.FAILED},
+            RepairState.ANALYZING: {
+                RepairState.REPAIR_PLANNING,
+                RepairState.NO_REPAIR_REQUIRED,
+                RepairState.FAILED,
+            },
+            RepairState.REPAIR_PLANNING: {
+                RepairState.PATCHING,
+                RepairState.NO_REPAIR_REQUIRED,
+                RepairState.FAILED,
+            },
+            RepairState.PATCHING: {
+                RepairState.LOCAL_VALIDATION,
+                RepairState.PATCH_FAILED,
+                RepairState.ROLLED_BACK,
+                RepairState.FAILED,
+            },
+            RepairState.LOCAL_VALIDATION: {
+                RepairState.COMMITTING,
+                RepairState.ROLLED_BACK,
+                RepairState.FAILED,
+            },
+            RepairState.COMMITTING: {
+                RepairState.REMOTE_VERIFICATION,
+                RepairState.FAILED,
+            },
+            RepairState.REMOTE_VERIFICATION: {
+                RepairState.POST_REPAIR_VALIDATION,
+                RepairState.FAILED,
+            },
+            RepairState.POST_REPAIR_VALIDATION: {
+                RepairState.SYNCING,
+                RepairState.FAILED,
+            },
+            RepairState.SYNCING: {
+                RepairState.COMPLETE,
+                RepairState.FAILED,
+            },
+            RepairState.COMPLETE: set(),
+            RepairState.NO_REPAIR_REQUIRED: set(),
+            RepairState.PATCH_FAILED: set(),
+            RepairState.FAILED: set(),
+            RepairState.ROLLED_BACK: set(),
+        },
+        repr=False,
+    )
+
     def transition(self, state: RepairState) -> None:
+        current = RepairState(self.current_state)
+        allowed = self._ALLOWED_TRANSITIONS[current]
+        if state not in allowed:
+            raise RepairError(f"Invalid repair state transition: {current.value} -> {state.value}")
         self.current_state = state.value
         self.state_history.append(state.value)
 
     def can_complete(self) -> bool:
-        applicable = [item for item in self.sync if item.applicable]
-        sync_ok = all(item.verified for item in applicable)
+        if self.current_state != RepairState.SYNCING.value:
+            return False
+        origin_sync = next((item for item in self.sync if item.remote == "origin"), None)
+        if origin_sync is None or not origin_sync.verified:
+            return False
+        applicable_sync = [item for item in self.sync if item.applicable]
         return all(
             [
                 self.audit_completed,
                 self.issue_identified,
+                self.issue_reproduced,
                 self.repair_plan_created,
                 self.changeset_created,
                 self.changes_applied,
                 self.local_validation_passed,
                 self.commit.created,
+                self.commit.exists,
                 self.commit.remote_verified,
                 self.post_repair_validation_passed,
                 self.resolution_verified,
-                sync_ok,
+                self.synchronization_recorded,
+                all(item.verified for item in applicable_sync),
             ]
         )
 
@@ -132,10 +280,10 @@ class RepairCycleEvidence:
 @dataclass
 class RepairDirective:
     mode: str
-    issue: dict[str, Any]
-    repair_plan: dict[str, Any]
-    changeset: dict[str, Any]
     report: str = ""
+    issue: dict[str, Any] = field(default_factory=dict)
+    repair_plan: dict[str, Any] = field(default_factory=dict)
+    changeset: dict[str, Any] = field(default_factory=dict)
     raw: dict[str, Any] = field(default_factory=dict)
 
 
@@ -143,8 +291,21 @@ class RepairError(RuntimeError):
     """Raised when the repair controller cannot advance safely."""
 
 
+class ModelFailure(RepairError):
+    """Raised when the model response or provider cannot be used safely."""
+
+    def __init__(self, code: ModelFailureCode, message: str):
+        super().__init__(message)
+        self.code = code
+
+
+def _fingerprint(value: Any) -> str:
+    data = json.dumps(value, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+
 class AuditEngine:
-    """Wrap the repository-grounded audit context for the repair controller."""
+    """Builds the grounded prompt context used by the planner."""
 
     def build_prompt(
         self,
@@ -164,14 +325,12 @@ class AuditEngine:
         )
         if previous_failure:
             prompt += f"\n\nPREVIOUS FAILURE:\n{previous_failure}\n"
-        prompt += (
-            "\n\nReturn JSON only using the deterministic repair schema."
-        )
+        prompt += "\n\nReturn JSON only using the deterministic repair schema."
         return prompt
 
 
 class RepairPlanner:
-    """Ask the configured Barrot brain for either an audit report or a repair plan."""
+    """Requests a bounded repair plan from the configured model."""
 
     SYSTEM = """You are Barrot acting as a deterministic repository repair planner.
 
@@ -179,26 +338,34 @@ Return JSON only. No prose. No markdown fences.
 
 Schema:
 {
-  "mode": "report" | "repair",
+  "mode": "repair" | "report" | "no_repair_required",
   "report": "required when mode=report",
   "issue": {
     "summary": "one concrete repository issue",
     "evidence": ["repository-grounded facts only"],
-    "validation_commands": ["repo-local command proving the issue"],
-    "files": ["relative/path.py"]
+    "files": ["relative/path.py"],
+    "reproduction_commands": [
+      {"program": "python", "args": ["-m", "pytest", "-q", "tests/test_x.py", "--no-cov"]}
+    ],
+    "validation_commands": [
+      {"program": "python", "args": ["-m", "pytest", "-q", "tests/test_x.py", "--no-cov"]}
+    ],
+    "resolution_commands": [
+      {"program": "python", "args": ["-m", "pytest", "-q", "tests/test_x.py", "--no-cov"]}
+    ]
   },
   "repair_plan": {
-    "summary": "minimal repair plan",
-    "reason": "why this repair resolves the issue",
-    "resolution_checks": ["specific proof after repair"]
+    "summary": "minimal plan",
+    "reason": "why this fixes the issue"
   },
   "changeset": {
-    "commands": ["mkdir -p docs"],
-    "transmutations": [
+    "operations": [
       {
+        "type": "replace",
         "path": "relative/path.py",
-        "content": "full file content",
-        "justification": "optional override justification"
+        "old": "exact existing text",
+        "new": "replacement text",
+        "reason": "why this fixes the reproduced issue"
       }
     ],
     "expected_files": ["relative/path.py"],
@@ -207,18 +374,28 @@ Schema:
 }
 
 Rules:
+- Use mode=no_repair_required when the repository is already healthy for the requested issue.
 - Use mode=report when the task is audit-only or cannot be repaired deterministically.
 - For mode=repair, identify exactly one concrete issue.
-- validation_commands must be repository-local and must fail before repair and pass after repair.
-- List every file expected to change in changeset.expected_files.
-- Use transmutations for file content changes.
-- Do not include git add, git commit, git push, git checkout, git reset, sed -i, or rm -rf.
+- reproduction_commands must fail before repair when the issue exists.
+- validation_commands must pass after repair.
+- resolution_commands must specifically re-test the original failure condition.
+- Use only operation type "replace".
+- Every replace operation must use the exact current text for "old".
 - Keep changes minimal and repository-grounded.
 - Never claim the repair succeeded.
 """
 
-    def __init__(self, brain: Any):
+    def __init__(
+        self,
+        brain: Any,
+        *,
+        max_attempts: int = 3,
+        backoff_seconds: float = 0.1,
+    ):
         self.brain = brain
+        self.max_attempts = max_attempts
+        self.backoff_seconds = backoff_seconds
 
     @staticmethod
     def _extract_json(raw: str) -> dict[str, Any]:
@@ -233,41 +410,116 @@ Rules:
         start = text.find("{")
         end = text.rfind("}")
         if start < 0 or end < start:
-            raise RepairError("Planner returned no JSON object.")
-        return json.loads(text[start : end + 1])
+            raise ModelFailure(ModelFailureCode.INVALID_JSON, "Planner returned no JSON object.")
+        try:
+            return json.loads(text[start : end + 1])
+        except json.JSONDecodeError as exc:
+            raise ModelFailure(ModelFailureCode.INVALID_JSON, str(exc)) from exc
+
+    @staticmethod
+    def _normalize_exception(exc: Exception) -> ModelFailure:
+        if isinstance(exc, ModelFailure):
+            return exc
+        message = str(exc)
+        lowered = message.lower()
+        if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
+            return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
+        if "tool_choice" in lowered or "tool conflict" in lowered:
+            return ModelFailure(ModelFailureCode.TOOL_CONFLICT, message)
+        if isinstance(exc, TimeoutError) or "timeout" in lowered:
+            return ModelFailure(ModelFailureCode.TIMEOUT, message)
+        return ModelFailure(ModelFailureCode.UNAVAILABLE, message)
 
     def generate(self, prompt: str) -> RepairDirective:
-        raw = self.brain.think(prompt, system=self.SYSTEM)
-        payload = self._extract_json(raw)
+        last_failure: ModelFailure | None = None
+        for attempt in range(1, self.max_attempts + 1):
+            try:
+                raw = self.brain.think(prompt, system=self.SYSTEM)
+                payload = self._extract_json(raw)
+                mode = str(payload.get("mode", "")).strip().lower()
+                if mode not in {"repair", "report", "no_repair_required"}:
+                    raise ModelFailure(
+                        ModelFailureCode.INVALID_JSON,
+                        "Planner mode must be repair, report, or no_repair_required.",
+                    )
+                return RepairDirective(
+                    mode=mode,
+                    report=str(payload.get("report", "")).strip(),
+                    issue=payload.get("issue") or {},
+                    repair_plan=payload.get("repair_plan") or {},
+                    changeset=payload.get("changeset") or {},
+                    raw=payload,
+                )
+            except Exception as exc:  # noqa: BLE001
+                last_failure = self._normalize_exception(exc)
+                if last_failure.code in {
+                    ModelFailureCode.RATE_LIMITED,
+                    ModelFailureCode.TIMEOUT,
+                } and attempt < self.max_attempts:
+                    time.sleep(self.backoff_seconds * attempt)
+                    continue
+                raise last_failure
+        assert last_failure is not None
+        raise last_failure
 
-        if payload.get("report") and not payload.get("mode"):
-            return RepairDirective(
-                mode="report",
-                issue={},
-                repair_plan={},
-                changeset={},
-                report=str(payload.get("report", "")).strip(),
-                raw=payload,
+
+class StructuredCommandExecutor:
+    """Runs only explicitly allowed repository-local commands."""
+
+    ALLOWED_PROGRAMS = {"python", "python3", "pytest"}
+
+    def __init__(self, workspace: str | Path):
+        self.workspace = Path(workspace).resolve()
+
+    @staticmethod
+    def _is_path_traversal(argument: str) -> bool:
+        return argument == ".." or argument.startswith("../") or "/../" in argument or argument.startswith("/")
+
+    def validate(self, command: StructuredCommand) -> None:
+        program = os.path.basename(command.program)
+        if program not in self.ALLOWED_PROGRAMS:
+            raise RepairError(f"Unsupported executable: {command.program}")
+        previous = ""
+        for argument in command.args:
+            if "\x00" in argument:
+                raise RepairError("Command arguments must not contain NUL bytes.")
+            if previous not in {"-c", "-m"} and self._is_path_traversal(argument):
+                raise RepairError(f"Command argument escapes workspace: {argument}")
+            previous = argument
+
+    def run(self, command: StructuredCommand) -> CommandEvidence:
+        self.validate(command)
+        try:
+            completed = subprocess.run(
+                command.argv(),
+                cwd=self.workspace,
+                capture_output=True,
+                text=True,
+                timeout=command.timeout,
+                check=False,
             )
-
-        mode = str(payload.get("mode", "")).strip().lower()
-        if mode not in {"report", "repair"}:
-            raise RepairError("Planner mode must be 'report' or 'repair'.")
-
-        return RepairDirective(
-            mode=mode,
-            issue=payload.get("issue") or {},
-            repair_plan=payload.get("repair_plan") or {},
-            changeset=payload.get("changeset") or {},
-            report=str(payload.get("report", "")).strip(),
-            raw=payload,
+        except subprocess.TimeoutExpired as exc:
+            return CommandEvidence(
+                command=command.to_dict(),
+                success=False,
+                returncode=None,
+                stdout=(exc.stdout or "")[-4000:],
+                stderr=(exc.stderr or "")[-4000:],
+                error=f"Command timed out after {command.timeout}s",
+                timed_out=True,
+            )
+        return CommandEvidence(
+            command=command.to_dict(),
+            success=completed.returncode == 0,
+            returncode=completed.returncode,
+            stdout=completed.stdout[-4000:],
+            stderr=completed.stderr[-4000:],
         )
 
 
 class PatchExecutor:
-    """Apply guarded repository mutations and verify affected paths."""
+    """Applies exact, guarded in-repository patch operations."""
 
-    ALLOWED_COMMANDS = {"git", "mkdir", "mv", "cp", "touch"}
     PROTECTED_WRITE = (
         "core/",
         "hf_space/",
@@ -275,139 +527,44 @@ class PatchExecutor:
         "scripts/emit_signal.py",
         ".github/workflows/",
     )
-    BLOCKED_SUBSTRINGS = (
-        "git push",
-        "git add",
-        "git commit",
-        "git checkout",
-        "git reset",
-        "git rebase",
-        "rm -rf",
-        ".git/",
-        "sed -i",
-    )
+    ALLOWED_EXTENSIONS = {".py", ".json", ".jsonl", ".yml", ".yaml", ".md", ".txt", ".toml"}
 
     def __init__(self, workspace: str | Path):
         self.workspace = Path(workspace).resolve()
 
-    def _run(self, command: str) -> CommandEvidence:
-        result = subprocess.run(
-            command,
-            shell=True,
-            cwd=self.workspace,
-            capture_output=True,
-            text=True,
-        )
-        return CommandEvidence(
-            command=command,
-            success=result.returncode == 0,
-            returncode=result.returncode,
-            stdout=result.stdout[-4000:],
-            stderr=result.stderr[-4000:],
-        )
-
-    def _resolve_file(self, relative_path: str) -> Path:
+    def _resolve_path(self, relative_path: str) -> Path:
+        if not relative_path or Path(relative_path).is_absolute():
+            raise RepairError(f"Invalid patch path: {relative_path}")
         target = (self.workspace / relative_path).resolve()
-        if self.workspace not in target.parents and target != self.workspace:
-            raise RepairError(f"Path escapes workspace: {relative_path}")
+        if self.workspace not in target.parents:
+            raise RepairError(f"Patch path escapes workspace: {relative_path}")
         return target
 
-    def _validate_command(self, command: str) -> None:
-        stripped = command.strip()
-        if not stripped:
-            raise RepairError("Empty command is not allowed.")
-        lowered = stripped.lower()
-        if any(token in lowered for token in self.BLOCKED_SUBSTRINGS):
-            raise RepairError(f"Blocked command: {command}")
-        try:
-            parts = shlex.split(stripped)
-        except ValueError as exc:
-            raise RepairError(f"Invalid command syntax: {exc}") from exc
-        if not parts:
-            raise RepairError("Command produced no tokens.")
-        if parts[0] not in self.ALLOWED_COMMANDS:
-            raise RepairError(f"Disallowed command verb: {parts[0]}")
-        if parts[0] == "git":
-            if len(parts) < 2 or parts[1] not in {"mv", "rm"}:
-                raise RepairError(f"Only git mv and git rm are allowed: {command}")
-
     def _verify_content(self, path: str, content: str) -> None:
-        ext = Path(path).suffix.lower()
-        if ext == ".py":
+        suffix = Path(path).suffix.lower()
+        if suffix not in self.ALLOWED_EXTENSIONS:
+            raise RepairError(f"Unsupported file type for patching: {suffix}")
+        if suffix == ".py":
             ast.parse(content)
-            return
-        if ext == ".json":
+        elif suffix == ".json":
             json.loads(content)
-            return
-        if ext == ".jsonl":
+        elif suffix == ".jsonl":
             for line in content.splitlines():
                 line = line.strip()
                 if line:
                     json.loads(line)
-            return
-        if ext in {".md", ".txt", ".yml", ".yaml"}:
-            return
-        raise RepairError(f"Rewrite not allowed for extension: {ext}")
-
-    def _preservation_check(self, old_content: str, new_content: str, min_retain: float = 0.5) -> None:
-        old_tokens = {word for word in old_content.split() if len(word) > 3}
-        if not old_tokens:
-            return
-        new_tokens = {word for word in new_content.split() if len(word) > 3}
-        retained = len(old_tokens & new_tokens) / len(old_tokens)
-        size_ratio = len(new_content) / max(len(old_content), 1)
-        if retained < min_retain:
-            raise RepairError(f"Rewrite rejected: only {retained:.0%} content retained.")
-        if size_ratio < 0.3:
-            raise RepairError(f"Rewrite rejected: file shrank to {size_ratio:.0%}.")
-
-    def _command_paths(self, command: str) -> list[str]:
-        parts = shlex.split(command)
-        paths: list[str] = []
-        if not parts:
-            return paths
-        verb = parts[0]
-        if verb == "mkdir":
-            return paths
-        if verb == "touch":
-            return [part for part in parts[1:] if not part.startswith("-")]
-        if verb in {"mv", "cp"} and len(parts) >= 3:
-            return [parts[-2], parts[-1]]
-        if verb == "git" and len(parts) >= 3:
-            op = parts[1]
-            if op == "mv" and len(parts) >= 4:
-                return [parts[2], parts[3]]
-            if op == "rm":
-                return [part for part in parts[2:] if not part.startswith("-")]
-        return paths
-
-    def collect_snapshot_paths(self, changeset: dict[str, Any]) -> list[str]:
-        paths: list[str] = []
-        for path in changeset.get("expected_files", []) or []:
-            if isinstance(path, str) and path and path not in paths:
-                paths.append(path)
-        for item in changeset.get("transmutations", []) or []:
-            path = item.get("path")
-            if isinstance(path, str) and path and path not in paths:
-                paths.append(path)
-        for command in changeset.get("commands", []) or []:
-            if isinstance(command, str):
-                for path in self._command_paths(command):
-                    if path and path not in paths:
-                        paths.append(path)
-        return paths
 
     def snapshot(self, paths: list[str]) -> dict[str, str | None]:
         snapshots: dict[str, str | None] = {}
         for path in paths:
-            target = self._resolve_file(path)
+            target = self._resolve_path(path)
             snapshots[path] = target.read_text(encoding="utf-8") if target.exists() else None
         return snapshots
 
     def rollback(self, snapshots: dict[str, str | None]) -> bool:
         try:
             for path, original in snapshots.items():
-                target = self._resolve_file(path)
+                target = self._resolve_path(path)
                 if original is None:
                     if target.exists():
                         target.unlink()
@@ -419,60 +576,41 @@ class PatchExecutor:
             return False
 
     def apply(self, changeset: dict[str, Any]) -> tuple[list[dict[str, Any]], list[str]]:
-        commands = changeset.get("commands", []) or []
-        transmutations = changeset.get("transmutations", []) or []
-        expected_files = changeset.get("expected_files", []) or []
-        if not isinstance(commands, list) or not isinstance(transmutations, list):
-            raise RepairError("Changeset commands/transmutations must be lists.")
-        if not isinstance(expected_files, list) or not expected_files:
-            raise RepairError("Changeset must declare non-empty expected_files.")
+        raw_operations = changeset.get("operations")
+        raw_expected = changeset.get("expected_files")
+        if not isinstance(raw_operations, list) or not raw_operations:
+            raise RepairError("Changeset must contain a non-empty operations list.")
+        if not isinstance(raw_expected, list) or not raw_expected:
+            raise RepairError("Changeset must contain a non-empty expected_files list.")
 
+        operations = [PatchOperation.from_dict(item) for item in raw_operations]
+        expected_files = [str(item) for item in raw_expected if isinstance(item, str) and item]
         evidence: list[dict[str, Any]] = []
 
-        for command in commands:
-            if not isinstance(command, str):
-                raise RepairError("Changeset command must be a string.")
-            self._validate_command(command)
-            result = self._run(command)
+        for operation in operations:
+            if operation.type != "replace":
+                raise RepairError(f"Unsupported patch operation type: {operation.type}")
+            if any(operation.path.startswith(prefix) for prefix in self.PROTECTED_WRITE):
+                raise RepairError(f"Protected path cannot be modified: {operation.path}")
+            target = self._resolve_path(operation.path)
+            current = target.read_text(encoding="utf-8") if target.exists() else ""
+            occurrences = current.count(operation.old)
+            if occurrences == 0:
+                raise RepairError(f"Patch precondition failed; old text not found in {operation.path}")
+            if occurrences > 1:
+                raise RepairError(f"Patch precondition ambiguous in {operation.path}")
+            updated = current.replace(operation.old, operation.new, 1)
+            if updated == current:
+                raise RepairError(f"Patch produced no change in {operation.path}")
+            self._verify_content(operation.path, updated)
+            target.write_text(updated, encoding="utf-8")
             evidence.append(
                 {
-                    "type": "command",
-                    "command": result.command,
-                    "success": result.success,
-                    "returncode": result.returncode,
-                    "stdout": result.stdout,
-                    "stderr": result.stderr,
-                }
-            )
-            if not result.success:
-                raise RepairError(f"Command failed: {command}\n{result.stderr}")
-
-        for item in transmutations:
-            path = item.get("path", "")
-            content = item.get("content")
-            justification = str(item.get("justification", "")).strip()
-            if not isinstance(path, str) or not path:
-                raise RepairError("Transmutation path is required.")
-            if not isinstance(content, str):
-                raise RepairError(f"Transmutation content must be a string: {path}")
-            if any(path.startswith(prefix) for prefix in self.PROTECTED_WRITE):
-                raise RepairError(f"Protected path cannot be rewritten: {path}")
-            target = self._resolve_file(path)
-            self._verify_content(path, content)
-            if target.exists():
-                old_content = target.read_text(encoding="utf-8")
-                try:
-                    self._preservation_check(old_content, content)
-                except RepairError:
-                    if len(justification) < 40:
-                        raise
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(content, encoding="utf-8")
-            evidence.append(
-                {
-                    "type": "transmutation",
-                    "path": path,
-                    "success": True,
+                    "type": "replace",
+                    "path": operation.path,
+                    "reason": operation.reason,
+                    "old_hash": hashlib.sha256(operation.old.encode("utf-8")).hexdigest(),
+                    "new_hash": hashlib.sha256(operation.new.encode("utf-8")).hexdigest(),
                 }
             )
 
@@ -483,23 +621,23 @@ class PatchExecutor:
             text=True,
             check=False,
         )
-        changed_files = []
-        for line in changed.stdout.splitlines():
-            if not line.strip():
-                continue
-            changed_files.append(line[3:].strip())
+        changed_files = sorted(
+            line[3:].strip()
+            for line in changed.stdout.splitlines()
+            if line.strip()
+        )
         if not changed_files:
-            raise RepairError("Changeset produced no repository changes.")
-        unexpected = sorted(set(changed_files) - set(expected_files))
-        if unexpected:
+            raise RepairError("Changeset produced no repository mutation.")
+        if sorted(expected_files) != changed_files:
             raise RepairError(
-                "Unexpected repository mutations detected: " + ", ".join(unexpected)
+                "Changed files do not match expected_files: "
+                f"expected={sorted(expected_files)} actual={changed_files}"
             )
         return evidence, changed_files
 
 
 class Validator:
-    """Run issue-specific and repository-wide validation."""
+    """Separates reproduction, general validation, and resolution verification."""
 
     def __init__(
         self,
@@ -507,55 +645,63 @@ class Validator:
         *,
         workspace_verifier: Callable[[str], tuple[bool, str]] | None = None,
     ):
+        self.command_executor = StructuredCommandExecutor(workspace)
         self.workspace = Path(workspace).resolve()
         self.workspace_verifier = workspace_verifier
 
-    def _run(self, command: str) -> CommandEvidence:
-        result = subprocess.run(
-            command,
-            shell=True,
-            cwd=self.workspace,
-            capture_output=True,
-            text=True,
-        )
-        return CommandEvidence(
-            command=command,
-            success=result.returncode == 0,
-            returncode=result.returncode,
-            stdout=result.stdout[-4000:],
-            stderr=result.stderr[-4000:],
-        )
+    @staticmethod
+    def _parse_commands(raw: Any) -> list[StructuredCommand]:
+        if not isinstance(raw, list) or not raw:
+            raise RepairError("Validation command list must be non-empty.")
+        return [StructuredCommand.from_dict(item) for item in raw]
 
-    def reproduce_issue(self, commands: list[str]) -> ValidationEvidence:
+    def reproduce_issue(self, raw_commands: Any) -> ValidationEvidence:
+        commands = self._parse_commands(raw_commands)
         evidence = ValidationEvidence()
         for command in commands:
-            result = self._run(command)
+            result = self.command_executor.run(command)
             evidence.commands.append(result)
-        evidence.issue_reproduced = any(not result.success for result in evidence.commands)
+        evidence.issue_reproduced = any(not item.success for item in evidence.commands)
         evidence.passed = evidence.issue_reproduced
         return evidence
 
-    def validate_repair(self, commands: list[str]) -> ValidationEvidence:
+    def validate_changes(self, raw_commands: Any) -> ValidationEvidence:
+        commands = self._parse_commands(raw_commands)
         evidence = ValidationEvidence()
         for command in commands:
-            result = self._run(command)
+            result = self.command_executor.run(command)
             evidence.commands.append(result)
-        compile_result = self._run("python -m compileall -q barrot_agent scripts")
+        compile_result = self.command_executor.run(
+            StructuredCommand(
+                program="python",
+                args=["-m", "compileall", "-q", "barrot_agent", "scripts"],
+                timeout=120,
+            )
+        )
         evidence.compile_check = compile_result
         if self.workspace_verifier is not None:
             ok, report = self.workspace_verifier(str(self.workspace))
             evidence.workspace_check_passed = ok
             evidence.workspace_check_report = report
         evidence.passed = (
-            all(result.success for result in evidence.commands)
+            all(item.success for item in evidence.commands)
             and compile_result.success
             and (evidence.workspace_check_passed is not False)
         )
         return evidence
 
+    def verify_resolution(self, raw_commands: Any) -> ValidationEvidence:
+        commands = self._parse_commands(raw_commands)
+        evidence = ValidationEvidence()
+        for command in commands:
+            result = self.command_executor.run(command)
+            evidence.commands.append(result)
+        evidence.passed = all(item.success for item in evidence.commands)
+        return evidence
+
 
 class GitGateway:
-    """Create commits and publish them through explicit git operations."""
+    """Deterministic git operations with evidence capture."""
 
     def __init__(self, workspace: str | Path):
         self.workspace = Path(workspace).resolve()
@@ -572,84 +718,120 @@ class GitGateway:
     def configured_remotes(self) -> list[str]:
         result = self._run("remote")
         if result.returncode != 0:
-            return []
+            raise RepairError(result.stderr.strip() or "git remote failed")
         return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 
-    def commit(self, message: str) -> CommitEvidence:
+    def current_branch(self) -> str:
+        result = self._run("branch", "--show-current")
+        if result.returncode != 0:
+            raise RepairError(result.stderr.strip() or "git branch --show-current failed")
+        return result.stdout.strip()
+
+    def commit(self, message: str, expected_paths: list[str]) -> CommitEvidence:
         sanitized = " ".join(str(message).split()).strip()[:120] or "Barrot autonomous repair"
-        add = self._run("add", "-A")
+        add = self._run("add", "--", *expected_paths)
         if add.returncode != 0:
             raise RepairError(add.stderr.strip() or "git add failed")
 
-        status = self._run("status", "--porcelain")
-        if status.returncode != 0:
-            raise RepairError(status.stderr.strip() or "git status failed")
-        if not status.stdout.strip():
-            raise RepairError("No repository changes available to commit.")
+        staged = self._run("diff", "--cached", "--name-only")
+        if staged.returncode != 0:
+            raise RepairError(staged.stderr.strip() or "git diff --cached failed")
+        changed_paths = sorted(line.strip() for line in staged.stdout.splitlines() if line.strip())
+        if changed_paths != sorted(expected_paths):
+            raise RepairError(
+                "Staged files do not match expected paths: "
+                f"expected={sorted(expected_paths)} actual={changed_paths}"
+            )
 
         commit = self._run("commit", "-m", sanitized)
         if commit.returncode != 0:
             raise RepairError(commit.stderr.strip() or "git commit failed")
 
-        sha = self._run("rev-parse", "HEAD")
-        if sha.returncode != 0:
-            raise RepairError(sha.stderr.strip() or "Unable to read commit SHA.")
+        sha_result = self._run("rev-parse", "HEAD")
+        if sha_result.returncode != 0:
+            raise RepairError(sha_result.stderr.strip() or "git rev-parse failed")
+        sha = sha_result.stdout.strip()
+
+        exists = self._run("cat-file", "-e", f"{sha}^{{commit}}")
+        branch = self.current_branch()
 
         return CommitEvidence(
             created=True,
-            sha=sha.stdout.strip(),
+            exists=exists.returncode == 0,
+            sha=sha,
+            branch=branch,
             message=sanitized,
+            changed_paths=changed_paths,
+            command={
+                "program": "git",
+                "args": ["commit", "-m", sanitized],
+                "stdout": commit.stdout[-4000:],
+                "stderr": commit.stderr[-4000:],
+                "returncode": commit.returncode,
+            },
+            timestamp=time.time(),
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
         result = self._run("push", remote, f"HEAD:{branch}")
         return CommandEvidence(
-            command=f"git push {remote} HEAD:{branch}",
+            command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
             success=result.returncode == 0,
             returncode=result.returncode,
             stdout=result.stdout[-4000:],
             stderr=result.stderr[-4000:],
         )
 
-    def remote_head(self, remote: str, branch: str) -> str:
+    def remote_head(self, remote: str, branch: str) -> CommandEvidence:
         result = self._run("ls-remote", remote, f"refs/heads/{branch}")
-        if result.returncode != 0:
-            raise RepairError(result.stderr.strip() or f"git ls-remote {remote} failed")
-        line = result.stdout.strip().splitlines()
-        if not line:
-            return ""
-        return line[0].split()[0].strip()
+        stdout = result.stdout[-4000:]
+        sha = ""
+        lines = stdout.strip().splitlines()
+        if lines:
+            sha = lines[0].split()[0].strip()
+        return CommandEvidence(
+            command={"program": "git", "args": ["ls-remote", remote, f"refs/heads/{branch}"]},
+            success=result.returncode == 0 and bool(sha),
+            returncode=result.returncode,
+            stdout=sha,
+            stderr=result.stderr[-4000:],
+        )
 
 
 class RemoteVerifier:
-    """Verify that pushed commits are visible on configured remotes."""
+    """Pushes and independently verifies branch head SHAs."""
 
     def __init__(self, git_gateway: GitGateway):
         self.git_gateway = git_gateway
 
     def push_and_verify(self, remote: str, branch: str, sha: str) -> RemoteSyncEvidence:
+        push = self.git_gateway.push(remote, branch)
         evidence = RemoteSyncEvidence(
             remote=remote,
             applicable=True,
             attempted=True,
+            pushed=push.success,
             branch=branch,
             sha=sha,
+            push=asdict(push),
         )
-        pushed = self.git_gateway.push(remote, branch)
-        evidence.pushed = pushed.success
-        if not pushed.success:
-            evidence.reason = pushed.stderr or pushed.stdout or "push failed"
+        if not push.success:
+            evidence.reason = push.stderr or push.stdout or "push failed"
             return evidence
-        remote_sha = self.git_gateway.remote_head(remote, branch)
-        evidence.verified = bool(remote_sha and remote_sha == sha)
+
+        verification = self.git_gateway.remote_head(remote, branch)
+        evidence.verification = asdict(verification)
+        evidence.verified = verification.success and verification.stdout.strip() == sha
         evidence.reason = (
-            f"remote head {remote_sha}" if remote_sha else "remote branch not visible after push"
+            f"remote head {verification.stdout.strip()}"
+            if verification.stdout.strip()
+            else "remote branch not visible after push"
         )
         return evidence
 
 
-class RepairController:
-    """Enforce a deterministic audit -> repair -> verification lifecycle."""
+class RepositoryRepairController:
+    """Authoritative repair lifecycle for the live Barrot entrypoint."""
 
     def __init__(
         self,
@@ -657,11 +839,11 @@ class RepairController:
         brain: Any,
         workspace: str | Path,
         workspace_verifier: Callable[[str], tuple[bool, str]] | None = None,
-        max_attempts: int = 1,
+        planner_attempts: int = 3,
     ):
         self.workspace = Path(workspace).resolve()
         self.audit_engine = AuditEngine()
-        self.repair_planner = RepairPlanner(brain)
+        self.repair_planner = RepairPlanner(brain, max_attempts=planner_attempts)
         self.patch_executor = PatchExecutor(self.workspace)
         self.validator = Validator(
             self.workspace,
@@ -669,34 +851,33 @@ class RepairController:
         )
         self.git_gateway = GitGateway(self.workspace)
         self.remote_verifier = RemoteVerifier(self.git_gateway)
-        self.max_attempts = max_attempts
 
     @staticmethod
     def _new_cycle_id() -> str:
         return uuid.uuid4().hex[:12]
 
     @staticmethod
-    def _as_dict(value: ValidationEvidence) -> dict[str, Any]:
-        return asdict(value)
-
-    def _fail(
-        self,
-        cycle: RepairCycleEvidence,
-        *,
-        state: RepairState,
-        message: str,
-        rollback_attempted: bool = False,
-        rollback_succeeded: bool = False,
-        rolled_back: bool = False,
-    ) -> RepairCycleEvidence:
+    def _failure(cycle: RepairCycleEvidence, state: RepairState, code: str, message: str) -> RepairCycleEvidence:
         cycle.transition(state)
         cycle.failure = FailureEvidence(
             state=state.value,
+            code=code,
             message=message,
-            rollback_attempted=rollback_attempted,
+        )
+        cycle.status = "failed"
+        return cycle
+
+    @staticmethod
+    def _rolled_back(cycle: RepairCycleEvidence, state: RepairState, message: str, rollback_succeeded: bool) -> RepairCycleEvidence:
+        cycle.transition(state)
+        cycle.failure = FailureEvidence(
+            state=state.value,
+            code=state.value,
+            message=message,
+            rollback_attempted=True,
             rollback_succeeded=rollback_succeeded,
         )
-        cycle.status = "rolled_back" if rolled_back else "failed"
+        cycle.status = "rolled_back" if rollback_succeeded else "failed"
         return cycle
 
     def run(
@@ -711,7 +892,6 @@ class RepairController:
     ) -> RepairCycleEvidence:
         cycle = RepairCycleEvidence(cycle_id=self._new_cycle_id())
         cycle.transition(RepairState.AUDITING)
-
         prompt = self.audit_engine.build_prompt(
             task_title=task_title,
             task_body=task_body,
@@ -720,170 +900,205 @@ class RepairController:
         cycle.audit_completed = True
 
         cycle.transition(RepairState.ANALYZING)
-        directive = self.repair_planner.generate(prompt)
+        try:
+            directive = self.repair_planner.generate(prompt)
+        except ModelFailure as exc:
+            return self._failure(cycle, RepairState.FAILED, exc.code.value, str(exc))
+
         if directive.mode == "report":
             cycle.report_only = True
             cycle.report = directive.report
-            cycle.status = "report_only"
+            cycle.transition(RepairState.NO_REPAIR_REQUIRED)
+            cycle.status = "no_repair_required"
             return cycle
 
-        issue_summary = str(directive.issue.get("summary", "")).strip()
-        validation_commands = directive.issue.get("validation_commands") or []
-        if not issue_summary or not isinstance(validation_commands, list) or not validation_commands:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message="Planner did not identify a concrete issue with validation commands.",
-            )
+        if directive.mode == "no_repair_required":
+            cycle.report = directive.report
+            cycle.transition(RepairState.NO_REPAIR_REQUIRED)
+            cycle.status = "no_repair_required"
+            return cycle
+
+        issue = directive.issue
+        repair_plan = directive.repair_plan
+        changeset = directive.changeset
+
+        if not issue or not isinstance(issue, dict):
+            return self._failure(cycle, RepairState.FAILED, "ISSUE_MISSING", "Planner did not identify a concrete issue.")
+
+        reproduction_commands = issue.get("reproduction_commands")
+        validation_commands = issue.get("validation_commands") or issue.get("resolution_commands") or reproduction_commands
+        resolution_commands = issue.get("resolution_commands") or reproduction_commands
+        summary = str(issue.get("summary", "")).strip()
+        files = issue.get("files") or []
+        if not summary or not isinstance(files, list) or not files:
+            return self._failure(cycle, RepairState.FAILED, "ISSUE_INVALID", "Issue summary/files are required.")
 
         cycle.issue = {
             "number": issue_number,
             "repository": repo,
             "branch": branch,
-            **directive.issue,
+            **issue,
         }
+        cycle.issue_fingerprint = _fingerprint(
+            {
+                "summary": summary,
+                "files": files,
+                "reproduction_commands": reproduction_commands,
+            }
+        )
         cycle.issue_identified = True
 
-        cycle.transition(RepairState.REPAIR_PLANNING)
-        if not directive.repair_plan:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message="Planner did not provide a repair plan.",
-            )
-        cycle.repair_plan = directive.repair_plan
-        cycle.repair_plan_created = True
+        try:
+            pre_repair = self.validator.reproduce_issue(reproduction_commands)
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(cycle, RepairState.FAILED, "REPRODUCE_ERROR", str(exc))
 
-        changeset = directive.changeset or {}
-        commands = changeset.get("commands") or []
-        transmutations = changeset.get("transmutations") or []
-        expected_files = changeset.get("expected_files") or []
-        if not (commands or transmutations) or not expected_files:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message="Planner did not provide a deterministic changeset.",
-            )
+        cycle.validation["issue_reproduction"] = asdict(pre_repair)
+        cycle.issue_reproduced = pre_repair.issue_reproduced
+        if not pre_repair.issue_reproduced:
+            cycle.report = directive.report or "Issue condition no longer reproduces."
+            cycle.transition(RepairState.NO_REPAIR_REQUIRED)
+            cycle.status = "no_repair_required"
+            return cycle
+
+        cycle.transition(RepairState.REPAIR_PLANNING)
+        if not repair_plan or not isinstance(repair_plan, dict):
+            return self._failure(cycle, RepairState.FAILED, "PLAN_MISSING", "Planner did not provide a repair plan.")
+        if not changeset or not isinstance(changeset, dict):
+            return self._failure(cycle, RepairState.FAILED, "CHANGESET_MISSING", "Planner did not provide a changeset.")
+
+        cycle.repair_plan = repair_plan
+        cycle.plan_fingerprint = _fingerprint(repair_plan)
+        cycle.repair_plan_created = True
+        cycle.changeset = changeset
+        cycle.changeset_fingerprint = _fingerprint(changeset)
         cycle.changeset_created = True
 
-        pre_validation = self.validator.reproduce_issue(validation_commands)
-        cycle.validation["pre_repair"] = self._as_dict(pre_validation)
-        if not pre_validation.issue_reproduced:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message="Original issue could not be reproduced locally.",
-            )
-
-        snapshot_paths = self.patch_executor.collect_snapshot_paths(changeset)
-        snapshots = self.patch_executor.snapshot(snapshot_paths)
+        snapshot_paths = sorted(
+            {
+                *[item for item in (changeset.get("expected_files") or []) if isinstance(item, str)],
+                *[item for item in files if isinstance(item, str)],
+            }
+        )
+        try:
+            snapshots = self.patch_executor.snapshot(snapshot_paths)
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(cycle, RepairState.FAILED, "SNAPSHOT_FAILED", str(exc))
 
         cycle.transition(RepairState.PATCHING)
         try:
-            changes, changed_files = self.patch_executor.apply(changeset)
-            cycle.changes = changes
+            cycle.changes, changed_files = self.patch_executor.apply(changeset)
             cycle.changes_applied = bool(changed_files)
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001
             rollback_ok = self.patch_executor.rollback(snapshots)
-            return self._fail(
-                cycle,
-                state=RepairState.PATCH_FAILED if not rollback_ok else RepairState.ROLLED_BACK,
-                message=str(exc),
-                rollback_attempted=True,
-                rollback_succeeded=rollback_ok,
-                rolled_back=rollback_ok,
-            )
+            if rollback_ok:
+                return self._rolled_back(cycle, RepairState.ROLLED_BACK, str(exc), True)
+            return self._failure(cycle, RepairState.PATCH_FAILED, "PATCH_FAILED", str(exc))
 
         cycle.transition(RepairState.LOCAL_VALIDATION)
-        local_validation = self.validator.validate_repair(validation_commands)
-        cycle.validation["local"] = self._as_dict(local_validation)
+        try:
+            local_validation = self.validator.validate_changes(validation_commands)
+        except Exception as exc:  # noqa: BLE001
+            rollback_ok = self.patch_executor.rollback(snapshots)
+            if rollback_ok:
+                return self._rolled_back(cycle, RepairState.ROLLED_BACK, str(exc), True)
+            return self._failure(cycle, RepairState.FAILED, "VALIDATION_ERROR", str(exc))
+        cycle.validation["local_validation"] = asdict(local_validation)
+        cycle.local_validation_passed = local_validation.passed
         if not local_validation.passed:
             rollback_ok = self.patch_executor.rollback(snapshots)
-            return self._fail(
+            if rollback_ok:
+                return self._rolled_back(
+                    cycle,
+                    RepairState.ROLLED_BACK,
+                    "Local validation failed after patch application.",
+                    True,
+                )
+            return self._failure(
                 cycle,
-                state=RepairState.ROLLED_BACK if rollback_ok else RepairState.FAILED,
-                message="Local validation failed after applying the changeset.",
-                rollback_attempted=True,
-                rollback_succeeded=rollback_ok,
-                rolled_back=rollback_ok,
+                RepairState.FAILED,
+                "VALIDATION_FAILED",
+                "Local validation failed and rollback did not complete.",
             )
-        cycle.local_validation_passed = True
 
         cycle.transition(RepairState.COMMITTING)
+        expected_files = [str(item) for item in changeset.get("expected_files", []) if isinstance(item, str)]
         try:
             cycle.commit = self.git_gateway.commit(
-                str(changeset.get("commit_message", "")).strip()
+                str(changeset.get("commit_message", "")).strip(),
+                expected_files,
             )
-        except Exception as exc:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message=str(exc),
-            )
-
-        remotes = self.git_gateway.configured_remotes()
-        if "origin" not in remotes:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message="Required remote 'origin' is not configured.",
-            )
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(cycle, RepairState.FAILED, "COMMIT_FAILED", str(exc))
+        if not cycle.commit.exists:
+            return self._failure(cycle, RepairState.FAILED, "COMMIT_MISSING", "Commit SHA does not exist locally.")
 
         cycle.transition(RepairState.REMOTE_VERIFICATION)
-        origin_result = self.remote_verifier.push_and_verify(
-            "origin",
-            branch,
-            cycle.commit.sha,
-        )
-        cycle.sync.append(origin_result)
-        cycle.commit.remote_verified = origin_result.verified
-        if not origin_result.verified:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message=f"Origin remote verification failed: {origin_result.reason}",
-            )
+        try:
+            remotes = self.git_gateway.configured_remotes()
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(cycle, RepairState.FAILED, "REMOTE_LIST_FAILED", str(exc))
+
+        if "origin" not in remotes:
+            return self._failure(cycle, RepairState.FAILED, "ORIGIN_MISSING", "Required remote 'origin' is not configured.")
+
+        origin_sync = self.remote_verifier.push_and_verify("origin", branch, cycle.commit.sha)
+        cycle.sync.append(origin_sync)
+        cycle.commit.remote_verified = origin_sync.verified
 
         cycle.transition(RepairState.POST_REPAIR_VALIDATION)
-        post_validation = self.validator.validate_repair(validation_commands)
-        cycle.validation["post_repair"] = self._as_dict(post_validation)
-        cycle.post_repair_validation_passed = post_validation.passed
-        cycle.resolution_verified = pre_validation.issue_reproduced and post_validation.passed
-        if not cycle.post_repair_validation_passed or not cycle.resolution_verified:
-            return self._fail(
-                cycle,
-                state=RepairState.FAILED,
-                message="Post-repair validation did not confirm resolution.",
-            )
+        try:
+            resolution = self.validator.verify_resolution(resolution_commands)
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(cycle, RepairState.FAILED, "RESOLUTION_ERROR", str(exc))
+        cycle.validation["post_repair_verification"] = asdict(resolution)
+        cycle.post_repair_validation_passed = resolution.passed
+        cycle.resolution_verified = resolution.passed
+        cycle.repair_verified = cycle.local_validation_passed and cycle.resolution_verified
 
         cycle.transition(RepairState.SYNCING)
-        for remote in ("gitlab",):
-            if remote not in remotes:
+        for remote in remotes:
+            if remote == "origin":
+                continue
+            if remote != "gitlab":
                 cycle.sync.append(
                     RemoteSyncEvidence(
                         remote=remote,
                         applicable=False,
                         branch=branch,
                         sha=cycle.commit.sha,
-                        reason="Remote not configured.",
+                        reason="Remote sync not applicable.",
                     )
                 )
                 continue
+            cycle.sync.append(self.remote_verifier.push_and_verify(remote, branch, cycle.commit.sha))
+
+        if not any(item.remote == "gitlab" for item in cycle.sync):
             cycle.sync.append(
-                self.remote_verifier.push_and_verify(
-                    remote,
-                    branch,
-                    cycle.commit.sha,
+                RemoteSyncEvidence(
+                    remote="gitlab",
+                    applicable=False,
+                    branch=branch,
+                    sha=cycle.commit.sha,
+                    reason="GitLab remote not configured.",
                 )
             )
 
+        cycle.synchronization_recorded = True
+        applicable_sync = [item for item in cycle.sync if item.applicable]
+        cycle.remote_sync_verified = all(item.verified for item in applicable_sync)
+
         if not cycle.can_complete():
-            return self._fail(
+            return self._failure(
                 cycle,
-                state=RepairState.FAILED,
-                message="Completion contract not satisfied.",
+                RepairState.FAILED,
+                "COMPLETION_GATE_BLOCKED",
+                "Completion gate rejected the repair evidence.",
             )
 
         cycle.transition(RepairState.COMPLETE)
         cycle.status = "complete"
         return cycle
+
+
+RepairController = RepositoryRepairController

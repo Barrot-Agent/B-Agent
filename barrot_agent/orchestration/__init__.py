@@ -14,6 +14,11 @@ from .validated_publisher import (
     ValidatedPublisher,
     PublishResult,
 )
+from .repository_repair import (
+    RepositoryRepairController,
+    RepairController,
+    RepairState,
+)
 
 __all__ = [
     "LearningFilter",
@@ -22,4 +27,7 @@ __all__ = [
     "LearningCurriculum",
     "ValidatedPublisher",
     "PublishResult",
+    "RepositoryRepairController",
+    "RepairController",
+    "RepairState",
 ]
