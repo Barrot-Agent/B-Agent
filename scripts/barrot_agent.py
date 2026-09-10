@@ -224,7 +224,7 @@ def _send_groq_request(
         GROQ_ENDPOINT,
         data=body,
         headers={
-            "Authorization": f"******",
+            "Authorization": "Bearer " + GROQ_KEY,
             "Content-Type": "application/json",
             "User-Agent": "Barrot-Agent/1.0",
         },
@@ -556,21 +556,35 @@ def post_issue_comment(message: str) -> None:
         print(result.stderr[:3000], file=sys.stderr)
 
 
-def create_pull_request(cycle: dict[str, object]) -> None:
+def _cycle_dict(cycle: Any) -> dict[str, Any]:
+    if isinstance(cycle, dict):
+        return cycle
+    if hasattr(cycle, "to_dict"):
+        return cycle.to_dict()
+    raise TypeError("cycle must be a dict or provide to_dict()")
+
+
+def create_pull_request(cycle: dict[str, object] | Any) -> None:
+    cycle_data = _cycle_dict(cycle)
     safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
+    head_branch = (
+        str(cycle_data.get("commit", {}).get("branch", "")).strip()
+        or str(cycle_data.get("issue", {}).get("branch", "")).strip()
+        or BRANCH
+    )
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",
-        f"- cycle_id: {cycle.get('cycle_id')}",
-        f"- status: {cycle.get('status')}",
-        f"- issue: {cycle.get('issue', {}).get('summary', '')}",
-        f"- commit_sha: {cycle.get('commit', {}).get('sha', '')}",
-        f"- remote_verified: {cycle.get('commit', {}).get('remote_verified', False)}",
+        f"- cycle_id: {cycle_data.get('cycle_id')}",
+        f"- status: {cycle_data.get('status')}",
+        f"- issue: {cycle_data.get('issue', {}).get('summary', '')}",
+        f"- commit_sha: {cycle_data.get('commit', {}).get('sha', '')}",
+        f"- remote_verified: {cycle_data.get('commit', {}).get('remote_verified', False)}",
         "",
         "Validation:",
-        f"- issue_reproduced: {cycle.get('issue_reproduced')}",
-        f"- local_validation_passed: {cycle.get('local_validation_passed')}",
-        f"- resolution_verified: {cycle.get('resolution_verified')}",
+        f"- issue_reproduced: {cycle_data.get('issue_reproduced')}",
+        f"- local_validation_passed: {cycle_data.get('local_validation_passed')}",
+        f"- resolution_verified: {cycle_data.get('resolution_verified')}",
     ]
     pr_path = Path("/tmp/barrot_pr_body.md")
     pr_path.write_text("\n".join(body), encoding="utf-8")
@@ -585,7 +599,7 @@ def create_pull_request(cycle: dict[str, object]) -> None:
             "--body-file",
             str(pr_path),
             "--head",
-            BRANCH,
+            head_branch,
             "--base",
             "main",
         ]
@@ -598,37 +612,38 @@ def create_pull_request(cycle: dict[str, object]) -> None:
         print(result.stderr[:3000])
 
 
-def write_collaboration_record(cycle: dict[str, object]) -> Path:
+def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
+    cycle_data = _cycle_dict(cycle)
     record_dir = ROOT / ".barrot" / "collaboration_records"
     record_dir.mkdir(parents=True, exist_ok=True)
     record = {
         "work_bundle": "autonomous_repository_repair",
-        "cycle_id": cycle.get("cycle_id"),
-        "actions_performed": cycle.get("state_history", []),
-        "files_changed": cycle.get("commit", {}).get("changed_paths", []),
-        "tests": cycle.get("validation", {}),
+        "cycle_id": cycle_data.get("cycle_id"),
+        "actions_performed": cycle_data.get("state_history", []),
+        "files_changed": cycle_data.get("commit", {}).get("changed_paths", []),
+        "tests": cycle_data.get("validation", {}),
         "results": {
-            "status": cycle.get("status"),
-            "repair_verified": cycle.get("repair_verified"),
-            "remote_sync_verified": cycle.get("remote_sync_verified"),
-            "resolution_verified": cycle.get("resolution_verified"),
+            "status": cycle_data.get("status"),
+            "repair_verified": cycle_data.get("repair_verified"),
+            "remote_sync_verified": cycle_data.get("remote_sync_verified"),
+            "resolution_verified": cycle_data.get("resolution_verified"),
         },
-        "failures": cycle.get("failure"),
+        "failures": cycle_data.get("failure"),
         "evidence": {
-            "issue": cycle.get("issue", {}),
-            "repair_plan": cycle.get("repair_plan", {}),
-            "changes": cycle.get("changes", []),
-            "commit": cycle.get("commit", {}),
-            "sync": cycle.get("sync", []),
+            "issue": cycle_data.get("issue", {}),
+            "repair_plan": cycle_data.get("repair_plan", {}),
+            "changes": cycle_data.get("changes", []),
+            "commit": cycle_data.get("commit", {}),
+            "sync": cycle_data.get("sync", []),
         },
-        "commits": [cycle.get("commit", {})] if cycle.get("commit", {}).get("sha") else [],
-        "remote_verification": cycle.get("sync", []),
-        "final_state": cycle.get("current_state"),
-        "remaining_blockers": cycle.get("failure"),
+        "commits": [cycle_data.get("commit", {})] if cycle_data.get("commit", {}).get("sha") else [],
+        "remote_verification": cycle_data.get("sync", []),
+        "final_state": cycle_data.get("current_state"),
+        "remaining_blockers": cycle_data.get("failure"),
     }
     latest = record_dir / "latest_repository_repair.json"
     latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
-    cycle_id = str(cycle.get("cycle_id") or "unknown")
+    cycle_id = str(cycle_data.get("cycle_id") or "unknown")
     per_cycle = record_dir / f"{cycle_id}.json"
     per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
     return latest
@@ -660,6 +675,8 @@ def main() -> None:
     write_collaboration_record(cycle.to_dict())
 
     if cycle.status == "no_repair_required":
+        if cycle.report_only:
+            return
         message = cycle.report or "No deterministic repository repair was required."
         post_issue_comment(message)
         return

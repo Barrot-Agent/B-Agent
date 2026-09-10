@@ -14,14 +14,6 @@ except ModuleNotFoundError:  # pragma: no cover - exercised indirectly in tests
     class RESTClient:  # type: ignore[override]
         def __init__(self, *args: Any, **kwargs: Any) -> None:
             del args, kwargs
-
-        def get_product(self, product_id: str) -> dict[str, str]:
-            return {"product_id": product_id, "status": "unavailable"}
-
-        def market_order_buy(self, **kwargs: Any) -> dict[str, Any]:
-            raise RuntimeError("coinbase package is not installed")
-
-        def market_order_sell(self, **kwargs: Any) -> dict[str, Any]:
             raise RuntimeError("coinbase package is not installed")
 
 from barrot_agent.trading.risk_manager import RiskManager

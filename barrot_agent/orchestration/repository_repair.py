@@ -656,6 +656,7 @@ class PatchExecutor:
         operations = [PatchOperation.from_dict(item) for item in raw_operations]
         expected_files = [str(item) for item in raw_expected if isinstance(item, str) and item]
         evidence: list[dict[str, Any]] = []
+        pending_writes: list[tuple[Path, str]] = []
 
         for operation in operations:
             if operation.type != "replace":
@@ -673,7 +674,7 @@ class PatchExecutor:
             if updated == current:
                 raise RepairError(f"Patch produced no change in {operation.path}")
             self._verify_content(operation.path, updated)
-            target.write_text(updated, encoding="utf-8")
+            pending_writes.append((target, updated))
             evidence.append(
                 {
                     "type": "replace",
@@ -683,6 +684,9 @@ class PatchExecutor:
                     "new_hash": hashlib.sha256(operation.new.encode("utf-8")).hexdigest(),
                 }
             )
+
+        for target, updated in pending_writes:
+            target.write_text(updated, encoding="utf-8")
 
         changed = subprocess.run(
             ["git", "status", "--porcelain"],
@@ -735,17 +739,38 @@ class Validator:
         evidence.passed = evidence.issue_reproduced
         return evidence
 
-    def validate_changes(self, raw_commands: Any) -> ValidationEvidence:
+    def _compile_targets(self, changed_paths: list[str] | None = None) -> list[str]:
+        targets: list[str] = []
+        for path in changed_paths or []:
+            target = self.workspace / path
+            if target.exists() and target.suffix == ".py":
+                targets.append(path)
+        if targets:
+            return targets
+        for default_target in ("barrot_agent", "scripts"):
+            if (self.workspace / default_target).exists():
+                targets.append(default_target)
+        return targets
+
+    def validate_changes(self, raw_commands: Any, *, changed_paths: list[str] | None = None) -> ValidationEvidence:
         commands = self._parse_commands(raw_commands)
         evidence = ValidationEvidence()
         for command in commands:
             result = self.command_executor.run(command)
             evidence.commands.append(result)
-        compile_result = self.command_executor.run(
-            StructuredCommand(
-                program="python",
-                args=["-m", "compileall", "-q", "barrot_agent", "scripts"],
-                timeout=120,
+        compile_targets = self._compile_targets(changed_paths)
+        compile_result = (
+            self.command_executor.run(
+                StructuredCommand(
+                    program="python",
+                    args=["-m", "compileall", "-q", *compile_targets],
+                    timeout=120,
+                )
+            )
+            if compile_targets
+            else CommandEvidence(
+                command={"program": "python", "args": [], "timeout": 120},
+                success=True,
             )
         )
         evidence.compile_check = compile_result
@@ -1143,7 +1168,9 @@ class RepositoryRepairController:
         cycle.changeset_fingerprint = _fingerprint(changeset)
         cycle.changeset_created = True
         if (
-            latest.get("issue_fingerprint") == cycle.issue_fingerprint
+            latest.get("status") in {"failed", "rolled_back", "blocked"}
+            and latest.get("current_state") != RepairState.COMPLETE.value
+            and latest.get("issue_fingerprint") == cycle.issue_fingerprint
             and latest.get("plan_fingerprint") == cycle.plan_fingerprint
             and latest.get("changeset_fingerprint") == cycle.changeset_fingerprint
             and cycle.attempt_number > self.max_unchanged_attempts
@@ -1201,7 +1228,10 @@ class RepositoryRepairController:
         cycle.transition(RepairState.LOCAL_VALIDATION)
         self._persist(cycle)
         try:
-            local_validation = self.validator.validate_changes(validation_commands)
+            local_validation = self.validator.validate_changes(
+                validation_commands,
+                changed_paths=changed_files,
+            )
         except Exception as exc:  # noqa: BLE001
             rollback_ok = self.patch_executor.rollback(snapshots)
             if rollback_ok:
@@ -1262,6 +1292,30 @@ class RepositoryRepairController:
                 "COMMIT_MISSING",
                 "Commit SHA does not exist locally.",
                 failed_operation="git_commit",
+            )
+        self._persist(cycle)
+
+        try:
+            pre_remote_resolution = self.validator.verify_resolution(resolution_commands)
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "RESOLUTION_ERROR",
+                str(exc),
+                failed_operation="verify_resolution",
+            )
+        cycle.validation["pre_remote_resolution"] = asdict(pre_remote_resolution)
+        if not pre_remote_resolution.passed:
+            cycle.post_repair_validation_passed = False
+            cycle.resolution_verified = False
+            cycle.repair_verified = False
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "RESOLUTION_FAILED",
+                "Post-repair verification did not resolve the original defect.",
+                failed_operation="verify_resolution",
             )
         self._persist(cycle)
 
