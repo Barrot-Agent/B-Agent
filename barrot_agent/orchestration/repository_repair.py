@@ -6,6 +6,7 @@ import ast
 import hashlib
 import json
 import os
+import re
 import subprocess
 import time
 import uuid
@@ -363,6 +364,486 @@ class DurableCycleStore:
             return json.loads(self.index_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             return None
+
+
+@dataclass
+class ProjectIdentity:
+    path_with_namespace: str
+    namespace_path: str
+    namespace_kind: str = "unknown"
+    id: int | None = None
+    namespace_id: int | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+    @staticmethod
+    def _normalize_int(value: Any, field_name: str, *, allow_missing: bool = True) -> int | None:
+        if value in {None, ""}:
+            if allow_missing:
+                return None
+            raise RepairError(f"{field_name} is required.")
+        if isinstance(value, bool):
+            raise RepairError(f"{field_name} must be an integer.")
+        try:
+            normalized = int(value)
+        except (TypeError, ValueError) as exc:
+            raise RepairError(f"{field_name} must be an integer.") from exc
+        if normalized <= 0:
+            raise RepairError(f"{field_name} must be greater than zero.")
+        return normalized
+
+    @classmethod
+    def from_seed(cls, repo: str) -> "ProjectIdentity":
+        path = str(repo).strip()
+        if not path:
+            raise RepairError("Repository path must be non-empty.")
+        namespace = path.split("/", 1)[0].strip()
+        if not namespace:
+            raise RepairError("Repository namespace must be non-empty.")
+        return cls(
+            path_with_namespace=path,
+            namespace_path=namespace,
+            namespace_kind="unknown",
+        )
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ProjectIdentity":
+        if not isinstance(data, dict):
+            raise RepairError("Project identity must be an object.")
+        path = str(data.get("path_with_namespace", "")).strip()
+        namespace = str(data.get("namespace_path", "")).strip()
+        namespace_kind = str(data.get("namespace_kind", "unknown") or "unknown").strip()
+        if not path:
+            raise RepairError("Project identity path_with_namespace must be non-empty.")
+        if not namespace:
+            raise RepairError("Project identity namespace_path must be non-empty.")
+        if not namespace_kind:
+            raise RepairError("Project identity namespace_kind must be non-empty.")
+        return cls(
+            id=cls._normalize_int(data.get("id"), "id"),
+            path_with_namespace=path,
+            namespace_id=cls._normalize_int(data.get("namespace_id"), "namespace_id"),
+            namespace_path=namespace,
+            namespace_kind=namespace_kind,
+        )
+
+    @classmethod
+    def from_observation(
+        cls,
+        data: dict[str, Any],
+        *,
+        previous: "ProjectIdentity | None" = None,
+    ) -> "ProjectIdentity":
+        if not isinstance(data, dict):
+            raise RepairError("Observed project state must be an object.")
+        path = str(data.get("path_with_namespace", data.get("path", ""))).strip()
+        namespace = str(data.get("namespace_path", data.get("namespace", ""))).strip()
+        namespace_kind = str(data.get("namespace_kind", "")).strip()
+        if not path:
+            raise RepairError("Observed project path_with_namespace/path is empty.")
+        if not namespace:
+            raise RepairError("Observed project namespace_path/namespace is empty.")
+        if not namespace_kind:
+            namespace_kind = previous.namespace_kind if previous is not None else "unknown"
+        return cls(
+            id=cls._normalize_int(
+                data.get("id", previous.id if previous is not None else None),
+                "id",
+            ),
+            path_with_namespace=path,
+            namespace_id=cls._normalize_int(
+                data.get("namespace_id", previous.namespace_id if previous is not None else None),
+                "namespace_id",
+            ),
+            namespace_path=namespace,
+            namespace_kind=namespace_kind,
+        )
+
+
+@dataclass
+class OrchestrationAttemptEvidence:
+    attempt_number: int
+    operation: str
+    input_state: dict[str, Any]
+    observed_state: dict[str, Any]
+    progress_occurred: bool
+    result: str
+    retry_decision: str
+    next_state: str
+    failure_classification: str = ""
+    submitted: bool = False
+    timestamp: float = field(default_factory=time.time)
+
+
+@dataclass
+class SyncOperationEvidence:
+    work_id: str
+    operation: str
+    status: str = "pending"
+    attempt_count: int = 0
+    last_valid_project: dict[str, Any] = field(default_factory=dict)
+    current_invalid_response: dict[str, Any] = field(default_factory=dict)
+    retry_history: list[OrchestrationAttemptEvidence] = field(default_factory=list)
+    last_successful_operation: str = ""
+    required_external_action: str = ""
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class WorkItemEvidence:
+    work_id: str
+    status: str = "pending"
+    current_state: str = "RECEIVED"
+    project_identity: dict[str, Any] = field(default_factory=dict)
+    attempt_count: int = 0
+    retry_history: list[dict[str, Any]] = field(default_factory=list)
+    last_successful_operation: str = ""
+    repair_cycle: dict[str, Any] = field(default_factory=dict)
+    sync_operation: dict[str, Any] = field(default_factory=dict)
+    queue_advanced: bool = False
+    evidence: list[dict[str, Any]] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+class DurableWorkStore:
+    """Persists work-queue state across interruptions."""
+
+    def __init__(self, workspace: str | Path):
+        self.workspace = Path(workspace).resolve()
+        self.base_dir = self.workspace / ".git" / "barrot_repair" / "work_queue"
+        self.base_dir.mkdir(parents=True, exist_ok=True)
+
+    def path_for(self, work_id: str) -> Path:
+        safe_work_id = re.sub(r"[^A-Za-z0-9_.-]+", "_", work_id).strip("_") or "work"
+        return self.base_dir / f"{safe_work_id}.json"
+
+    def write(self, work_item: WorkItemEvidence) -> Path:
+        path = self.path_for(work_item.work_id)
+        path.write_text(json.dumps(work_item.to_dict(), indent=2, sort_keys=True), encoding="utf-8")
+        return path
+
+    def load(self, work_id: str) -> dict[str, Any] | None:
+        path = self.path_for(work_id)
+        if not path.exists():
+            return None
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return None
+
+
+class SyncController:
+    """Progress-aware external-state monitor with bounded retry and state preservation."""
+
+    def __init__(
+        self,
+        *,
+        max_attempts: int = 3,
+        backoff_seconds: float = 300.0,
+        sleep_fn: Callable[[float], None] | None = None,
+    ):
+        self.max_attempts = max_attempts
+        self.backoff_seconds = backoff_seconds
+        self.sleep_fn = sleep_fn or time.sleep
+
+    @staticmethod
+    def _state_token(observed_state: dict[str, Any], identity: ProjectIdentity) -> str:
+        normalized = {
+            "identity": identity.to_dict(),
+            "status": observed_state.get("status"),
+            "result": observed_state.get("result"),
+            "operation_state": observed_state.get("operation_state"),
+            "transfer_completed": observed_state.get("transfer_completed"),
+        }
+        return _fingerprint(normalized)
+
+    def run(
+        self,
+        *,
+        work_id: str,
+        operation: str,
+        project_identity: dict[str, Any] | ProjectIdentity,
+        submit_operation: Callable[[dict[str, Any]], dict[str, Any] | None],
+        observe_state: Callable[[], dict[str, Any]],
+        is_complete: Callable[[dict[str, Any], dict[str, Any]], bool],
+        on_update: Callable[[SyncOperationEvidence], None] | None = None,
+    ) -> SyncOperationEvidence:
+        seed_state = dict(project_identity) if isinstance(project_identity, dict) else project_identity.to_dict()
+        last_valid = (
+            project_identity
+            if isinstance(project_identity, ProjectIdentity)
+            else ProjectIdentity.from_dict(project_identity)
+        )
+        evidence = SyncOperationEvidence(
+            work_id=work_id,
+            operation=operation,
+            status="running",
+            last_valid_project=last_valid.to_dict(),
+        )
+        last_token = self._state_token(seed_state, last_valid)
+
+        for attempt in range(1, self.max_attempts + 1):
+            submitted = attempt == 1
+            if submitted:
+                submit_result = submit_operation(last_valid.to_dict()) or {}
+            else:
+                submit_result = {"skipped": True, "reason": "unchanged state; observe-only retry"}
+
+            observed_state = observe_state() or {}
+            evidence.attempt_count = attempt
+            failure_classification = ""
+            progress_occurred = False
+            next_state = "WAITING"
+            result = "observed"
+
+            try:
+                validated = ProjectIdentity.from_observation(observed_state, previous=last_valid)
+            except RepairError as exc:
+                failure_classification = "INVALID_PROJECT_IDENTITY"
+                evidence.status = RepairState.BLOCKED.value
+                evidence.current_invalid_response = dict(observed_state)
+                evidence.required_external_action = (
+                    "Investigate the external project response and provide a valid non-empty "
+                    "path/namespace before resuming."
+                )
+                next_state = RepairState.BLOCKED.value
+                result = "blocked"
+                evidence.retry_history.append(
+                    OrchestrationAttemptEvidence(
+                        attempt_number=attempt,
+                        operation=operation,
+                        input_state=last_valid.to_dict(),
+                        observed_state={
+                            "submit_result": submit_result,
+                            "observation": observed_state,
+                        },
+                        progress_occurred=False,
+                        result=result,
+                        failure_classification=failure_classification,
+                        retry_decision="stop",
+                        next_state=next_state,
+                        submitted=submitted,
+                    )
+                )
+                if on_update is not None:
+                    on_update(evidence)
+                return evidence
+
+            current_token = self._state_token(observed_state, validated)
+            progress_occurred = current_token != last_token
+            last_valid = validated
+            evidence.last_valid_project = validated.to_dict()
+
+            if is_complete(observed_state, validated.to_dict()):
+                evidence.status = RepairState.COMPLETE.value
+                evidence.last_successful_operation = operation
+                next_state = RepairState.COMPLETE.value
+                result = "complete"
+                retry_decision = "stop"
+                evidence.retry_history.append(
+                    OrchestrationAttemptEvidence(
+                        attempt_number=attempt,
+                        operation=operation,
+                        input_state=evidence.last_valid_project,
+                        observed_state={
+                            "submit_result": submit_result,
+                            "observation": observed_state,
+                        },
+                        progress_occurred=True,
+                        result=result,
+                        retry_decision=retry_decision,
+                        next_state=next_state,
+                        submitted=submitted,
+                    )
+                )
+                if on_update is not None:
+                    on_update(evidence)
+                return evidence
+
+            if attempt >= self.max_attempts:
+                evidence.status = RepairState.BLOCKED.value
+                evidence.required_external_action = (
+                    "Observed state did not reach completion before retry exhaustion; "
+                    "inspect the external system and resume from the last valid project identity."
+                )
+                next_state = RepairState.BLOCKED.value
+                result = "retry_exhausted"
+                retry_decision = "stop"
+                failure_classification = ModelFailureCode.RETRY_EXHAUSTED.value
+            else:
+                retry_decision = "backoff_observe_only"
+                result = "submitted" if submitted else "unchanged"
+
+            evidence.retry_history.append(
+                OrchestrationAttemptEvidence(
+                    attempt_number=attempt,
+                    operation=operation,
+                    input_state=last_valid.to_dict(),
+                    observed_state={
+                        "submit_result": submit_result,
+                        "observation": observed_state,
+                    },
+                    progress_occurred=progress_occurred,
+                    result=result,
+                    failure_classification=failure_classification,
+                    retry_decision=retry_decision,
+                    next_state=next_state,
+                    submitted=submitted,
+                )
+            )
+            if on_update is not None:
+                on_update(evidence)
+            if evidence.status == RepairState.BLOCKED.value:
+                return evidence
+            last_token = current_token
+            self.sleep_fn(self.backoff_seconds * attempt)
+
+        return evidence
+
+
+class WorkQueueController:
+    """Durable work receiver that gates queue advancement on verified repair outcomes."""
+
+    def __init__(
+        self,
+        *,
+        repair_controller: "RepositoryRepairController",
+        sync_controller: SyncController | None = None,
+        work_store: DurableWorkStore | None = None,
+    ):
+        self.repair_controller = repair_controller
+        self.sync_controller = sync_controller or SyncController()
+        self.work_store = work_store or DurableWorkStore(repair_controller.workspace)
+
+    def _persist(self, work_item: WorkItemEvidence) -> None:
+        self.work_store.write(work_item)
+
+    def _load_or_initialize(
+        self,
+        *,
+        work_id: str,
+        project_identity: dict[str, Any] | ProjectIdentity,
+    ) -> WorkItemEvidence:
+        loaded = self.work_store.load(work_id)
+        if loaded:
+            work_item = WorkItemEvidence(**loaded)
+            work_item.attempt_count += 1
+            return work_item
+        identity = (
+            project_identity
+            if isinstance(project_identity, ProjectIdentity)
+            else ProjectIdentity.from_dict(project_identity)
+        )
+        return WorkItemEvidence(
+            work_id=work_id,
+            project_identity=identity.to_dict(),
+            attempt_count=1,
+        )
+
+    def _sync_update(self, work_item: WorkItemEvidence, sync: SyncOperationEvidence) -> None:
+        work_item.sync_operation = sync.to_dict()
+        work_item.project_identity = sync.last_valid_project or work_item.project_identity
+        work_item.retry_history = [asdict(item) for item in sync.retry_history]
+        self._persist(work_item)
+
+    @staticmethod
+    def _validated_project_identity(candidate: Any) -> dict[str, Any] | None:
+        if not isinstance(candidate, dict):
+            return None
+        try:
+            return ProjectIdentity.from_dict(candidate).to_dict()
+        except RepairError:
+            return None
+
+    def run(
+        self,
+        *,
+        work_id: str,
+        project_identity: dict[str, Any] | ProjectIdentity,
+        task_title: str,
+        task_body: str,
+        issue_number: str,
+        repo: str,
+        branch: str,
+        audit_context: dict[str, str],
+        advance_operation: str = "repair_queue_advance",
+        external_sync_plan: dict[str, Any] | None = None,
+    ) -> WorkItemEvidence:
+        work_item = self._load_or_initialize(
+            work_id=work_id,
+            project_identity=project_identity,
+        )
+        work_item.current_state = "REPAIRING"
+        self._persist(work_item)
+
+        cycle = self.repair_controller.run(
+            task_title=task_title,
+            task_body=task_body,
+            issue_number=issue_number,
+            repo=repo,
+            branch=branch,
+            audit_context=audit_context,
+        )
+        work_item.repair_cycle = cycle.to_dict()
+        work_item.evidence.append(
+            {
+                "operation": "repository_repair",
+                "result": cycle.status,
+                "state": cycle.current_state,
+                "cycle_id": cycle.cycle_id,
+            }
+        )
+        validated_identity = self._validated_project_identity(cycle.project_identity)
+        if validated_identity:
+            work_item.project_identity = validated_identity
+        if cycle.status != "complete":
+            work_item.status = "blocked"
+            work_item.current_state = RepairState.BLOCKED.value
+            work_item.queue_advanced = False
+            work_item.retry_history.append(
+                {
+                    "operation": "repository_repair",
+                    "result": cycle.status,
+                    "next_state": RepairState.BLOCKED.value,
+                }
+            )
+            self._persist(work_item)
+            return work_item
+
+        work_item.last_successful_operation = "repository_repair"
+        if external_sync_plan is not None:
+            work_item.current_state = "ADVANCING"
+            self._persist(work_item)
+            sync = self.sync_controller.run(
+                work_id=work_id,
+                operation=advance_operation,
+                project_identity=work_item.project_identity,
+                submit_operation=external_sync_plan["submit_operation"],
+                observe_state=external_sync_plan["observe_state"],
+                is_complete=external_sync_plan["is_complete"],
+                on_update=lambda evidence: self._sync_update(work_item, evidence),
+            )
+            work_item.sync_operation = sync.to_dict()
+            work_item.project_identity = sync.last_valid_project or work_item.project_identity
+            work_item.retry_history = [asdict(item) for item in sync.retry_history]
+            if sync.status != RepairState.COMPLETE.value:
+                work_item.status = "blocked"
+                work_item.current_state = RepairState.BLOCKED.value
+                work_item.queue_advanced = False
+                self._persist(work_item)
+                return work_item
+            work_item.last_successful_operation = sync.last_successful_operation or advance_operation
+
+        work_item.status = "complete"
+        work_item.current_state = RepairState.COMPLETE.value
+        work_item.queue_advanced = True
+        self._persist(work_item)
+        return work_item
 
 
 class AuditEngine:

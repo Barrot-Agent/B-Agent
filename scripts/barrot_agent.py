@@ -20,7 +20,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sandbox import verify_result
 
 from barrot_agent.orchestration.repository_repair import (
+    ProjectIdentity,
     RepositoryRepairController,
+    WorkQueueController,
 )
 
 
@@ -564,8 +566,28 @@ def _cycle_dict(cycle: Any) -> dict[str, Any]:
     raise TypeError("cycle must be a dict or provide to_dict()")
 
 
+def build_project_identity(repo: str) -> dict[str, Any]:
+    return ProjectIdentity.from_seed(repo).to_dict()
+
+
+def _work_dict(payload: dict[str, object] | Any) -> dict[str, Any]:
+    if isinstance(payload, dict):
+        return payload
+    if hasattr(payload, "to_dict"):
+        return payload.to_dict()
+    raise TypeError("payload must be a dict or provide to_dict()")
+
+
+def _extract_cycle_data(payload: dict[str, object] | Any) -> dict[str, Any]:
+    payload_dict = _work_dict(payload)
+    repair_cycle = payload_dict.get("repair_cycle")
+    if isinstance(repair_cycle, dict) and repair_cycle:
+        return repair_cycle
+    return _cycle_dict(payload_dict)
+
+
 def create_pull_request(cycle: dict[str, object] | Any) -> None:
-    cycle_data = _cycle_dict(cycle)
+    cycle_data = _extract_cycle_data(cycle)
     safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
     head_branch = (
         str(cycle_data.get("commit", {}).get("branch", "")).strip()
@@ -613,7 +635,8 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
 
 
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
-    cycle_data = _cycle_dict(cycle)
+    payload = _work_dict(cycle)
+    cycle_data = _extract_cycle_data(payload)
     record_dir = ROOT / ".barrot" / "collaboration_records"
     record_dir.mkdir(parents=True, exist_ok=True)
     record = {
@@ -627,6 +650,8 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
             "repair_verified": cycle_data.get("repair_verified"),
             "remote_sync_verified": cycle_data.get("remote_sync_verified"),
             "resolution_verified": cycle_data.get("resolution_verified"),
+            "queue_status": payload.get("status"),
+            "queue_advanced": payload.get("queue_advanced"),
         },
         "failures": cycle_data.get("failure"),
         "evidence": {
@@ -635,11 +660,49 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
             "changes": cycle_data.get("changes", []),
             "commit": cycle_data.get("commit", {}),
             "sync": cycle_data.get("sync", []),
+            "project_identity": payload.get("project_identity", {}),
+            "work_queue": {
+                "work_id": payload.get("work_id"),
+                "current_state": payload.get("current_state"),
+                "retry_history": payload.get("retry_history", []),
+                "sync_operation": payload.get("sync_operation", {}),
+            },
         },
         "commits": [cycle_data.get("commit", {})] if cycle_data.get("commit", {}).get("sha") else [],
         "remote_verification": cycle_data.get("sync", []),
-        "final_state": cycle_data.get("current_state"),
-        "remaining_blockers": cycle_data.get("failure"),
+        "final_state": payload.get("current_state", cycle_data.get("current_state")),
+        "remaining_blockers": payload.get("sync_operation", {}) or cycle_data.get("failure"),
+        "source_materials": {
+            "night_watcher_failure": {
+                "summary": "Repeated unchanged transfer checks ended with empty path/namespace and required safe blocking without overwriting the last valid project identity.",
+                "requirements": [
+                    "preserve last valid project identity",
+                    "reject empty path/namespace observations",
+                    "bound retries and backoff",
+                    "persist retry history and required external action",
+                ],
+            },
+            "copilot_analysis": {
+                "source": ".barrot/collaboration_records/autonomous_takeover_ready.json",
+                "summary": "Existing Barrot repair takeover already required evidence-gated completion, durable cycle persistence, and tool-conflict-safe repair planning.",
+            },
+            "barrot_requirements": {
+                "source": "barrot_agent/orchestration/repository_repair.py",
+                "summary": "The authoritative repair controller requires reproduction, guarded patching, validation, commit evidence, remote verification, and completion gating.",
+            },
+            "cross_correlation": {
+                "agreements": [
+                    "state changes require evidence",
+                    "failures must block false completion",
+                    "durable persistence and safe resume are required",
+                ],
+                "missing_capabilities_filled": [
+                    "durable project identity preservation",
+                    "progress-aware external retry handling",
+                    "queue advancement gating on verified repair success",
+                ],
+            },
+        },
     }
     latest = record_dir / "latest_repository_repair.json"
     latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
@@ -661,7 +724,10 @@ def main() -> None:
         workspace=ROOT,
         workspace_verifier=verify_result,
     )
-    cycle = controller.run(
+    queue = WorkQueueController(repair_controller=controller)
+    work = queue.run(
+        work_id=f"{ISSUE or 'manual'}:{BRANCH}",
+        project_identity=build_project_identity(REPO),
         task_title=TITLE,
         task_body=TASK,
         issue_number=ISSUE,
@@ -669,19 +735,20 @@ def main() -> None:
         branch=BRANCH,
         audit_context=build_audit_context(TITLE, TASK),
     )
+    cycle = work.repair_cycle
 
-    rendered = json.dumps(cycle.to_dict(), indent=2)
+    rendered = json.dumps(work.to_dict(), indent=2)
     print(rendered)
-    write_collaboration_record(cycle.to_dict())
+    write_collaboration_record(work)
 
-    if cycle.status == "no_repair_required":
-        if cycle.report_only:
+    if cycle.get("status") == "no_repair_required":
+        if cycle.get("report_only"):
             return
-        message = cycle.report or "No deterministic repository repair was required."
+        message = cycle.get("report") or "No deterministic repository repair was required."
         post_issue_comment(message)
         return
 
-    if cycle.status != "complete":
+    if cycle.get("status") != "complete" or not work.queue_advanced:
         post_issue_comment(
             "Barrot repair failed safely.\n\n```json\n"
             + rendered[:55000]
@@ -689,7 +756,7 @@ def main() -> None:
         )
         raise SystemExit(1)
 
-    create_pull_request(cycle.to_dict())
+    create_pull_request(work)
 
 
 if __name__ == "__main__":

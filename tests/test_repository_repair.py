@@ -9,11 +9,14 @@ import pytest
 
 from barrot_agent.orchestration.repository_repair import (
     FailureEvidence,
+    ProjectIdentity,
     RemoteSyncEvidence,
     RepairCycleEvidence,
     RepairError,
     RepairState,
     RepositoryRepairController,
+    SyncController,
+    WorkQueueController,
 )
 
 
@@ -581,3 +584,268 @@ def test_repeated_identical_failed_plan_hits_retry_exhaustion(tmp_path: Path) ->
     assert second.current_state == RepairState.BLOCKED.value
     assert second.failure is not None
     assert second.failure.code == "LLM_RETRY_EXHAUSTED"
+
+
+def test_valid_project_identity_is_preserved_across_sync_attempts(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    observed = iter(
+        [
+            {
+                "id": 77830382,
+                "path_with_namespace": "Barrot-Agent/B-Agent",
+                "namespace_id": 122592030,
+                "namespace_path": "Barrot-Agent",
+                "namespace_kind": "user",
+                "transfer_completed": False,
+            },
+            {
+                "id": 77830382,
+                "path_with_namespace": "Barrot-Agent/B-Agent",
+                "namespace_id": 122592030,
+                "namespace_path": "Barrot-Agent",
+                "namespace_kind": "user",
+                "transfer_completed": True,
+            },
+        ]
+    )
+    sleeps: list[float] = []
+    sync = SyncController(max_attempts=3, backoff_seconds=2, sleep_fn=sleeps.append)
+
+    result = sync.run(
+        work_id="night-watch-1",
+        operation="transfer_project",
+        project_identity={
+            "id": 77830382,
+            "path_with_namespace": "Barrot-Agent/B-Agent",
+            "namespace_id": 122592030,
+            "namespace_path": "Barrot-Agent",
+            "namespace_kind": "user",
+        },
+        submit_operation=lambda identity: {"submitted": identity["path_with_namespace"]},
+        observe_state=lambda: next(observed),
+        is_complete=lambda state, _: bool(state.get("transfer_completed")),
+    )
+
+    assert result.status == RepairState.COMPLETE.value
+    assert result.last_valid_project["path_with_namespace"] == "Barrot-Agent/B-Agent"
+    assert result.last_valid_project["namespace_path"] == "Barrot-Agent"
+    assert sleeps == [2]
+
+
+def test_empty_namespace_cannot_overwrite_last_valid_project_identity(tmp_path: Path) -> None:
+    init_repo(tmp_path)
+    sync = SyncController(max_attempts=3, backoff_seconds=1, sleep_fn=lambda _: None)
+
+    result = sync.run(
+        work_id="night-watch-2",
+        operation="transfer_project",
+        project_identity={
+            "id": 77830382,
+            "path_with_namespace": "Barrot-Agent/B-Agent",
+            "namespace_id": 122592030,
+            "namespace_path": "Barrot-Agent",
+            "namespace_kind": "user",
+        },
+        submit_operation=lambda identity: {"submitted": identity["path_with_namespace"]},
+        observe_state=lambda: {"path": "Barrot-Agent/B-Agent", "namespace": ""},
+        is_complete=lambda state, _: bool(state.get("transfer_completed")),
+    )
+
+    assert result.status == RepairState.BLOCKED.value
+    assert result.last_valid_project["namespace_path"] == "Barrot-Agent"
+    assert result.current_invalid_response["namespace"] == ""
+
+
+def test_empty_path_cannot_overwrite_last_valid_project_identity(tmp_path: Path) -> None:
+    init_repo(tmp_path)
+    sync = SyncController(max_attempts=3, backoff_seconds=1, sleep_fn=lambda _: None)
+
+    result = sync.run(
+        work_id="night-watch-3",
+        operation="transfer_project",
+        project_identity={
+            "id": 77830382,
+            "path_with_namespace": "Barrot-Agent/B-Agent",
+            "namespace_id": 122592030,
+            "namespace_path": "Barrot-Agent",
+            "namespace_kind": "user",
+        },
+        submit_operation=lambda identity: {"submitted": identity["path_with_namespace"]},
+        observe_state=lambda: {"path": "", "namespace": "Barrot-Agent"},
+        is_complete=lambda state, _: bool(state.get("transfer_completed")),
+    )
+
+    assert result.status == RepairState.BLOCKED.value
+    assert result.last_valid_project["path_with_namespace"] == "Barrot-Agent/B-Agent"
+    assert result.current_invalid_response["path"] == ""
+
+
+def test_unchanged_state_is_detected_and_resubmission_is_bounded(tmp_path: Path) -> None:
+    init_repo(tmp_path)
+    observations = [
+        {
+            "id": 77830382,
+            "path_with_namespace": "Barrot-Agent/B-Agent",
+            "namespace_id": 122592030,
+            "namespace_path": "Barrot-Agent",
+            "namespace_kind": "user",
+            "transfer_completed": False,
+        }
+    ]
+    submits: list[dict[str, object]] = []
+    sleeps: list[float] = []
+    sync = SyncController(max_attempts=3, backoff_seconds=5, sleep_fn=sleeps.append)
+
+    result = sync.run(
+        work_id="night-watch-4",
+        operation="transfer_project",
+        project_identity=observations[0],
+        submit_operation=lambda identity: submits.append(identity) or {"submitted": True},
+        observe_state=lambda: dict(observations[0]),
+        is_complete=lambda state, _: bool(state.get("transfer_completed")),
+    )
+
+    assert result.status == RepairState.BLOCKED.value
+    assert len(submits) == 1
+    assert submits[0]["path_with_namespace"] == "Barrot-Agent/B-Agent"
+    assert [item.progress_occurred for item in result.retry_history] == [False, False, False]
+    assert sleeps == [5, 10]
+    assert result.retry_history[-1].failure_classification == "LLM_RETRY_EXHAUSTED"
+
+
+def test_durable_state_survives_interruption_and_resume_uses_last_valid_state(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    controller = make_controller(workspace, FakeBrain(json.dumps({"mode": "no_repair_required", "report": "healthy"})))
+    queue = WorkQueueController(repair_controller=controller)
+    identity = {
+        "id": 77830382,
+        "path_with_namespace": "Barrot-Agent/B-Agent",
+        "namespace_id": 122592030,
+        "namespace_path": "Barrot-Agent",
+        "namespace_kind": "user",
+    }
+    first = queue.run(
+        work_id="resume-case",
+        project_identity=identity,
+        task_title="Repair target",
+        task_body="Check target",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
+    queue_again = WorkQueueController(
+        repair_controller=make_controller(workspace, FakeBrain(json.dumps({"mode": "no_repair_required", "report": "healthy"})))
+    )
+    second = queue_again.run(
+        work_id="resume-case",
+        project_identity=ProjectIdentity.from_seed("Barrot-Agent/B-Agent").to_dict(),
+        task_title="Repair target",
+        task_body="Check target",
+        issue_number="123",
+        repo="",
+        branch="",
+        audit_context={"inventory": path},
+    )
+
+    persisted = workspace / ".git" / "barrot_repair" / "work_queue" / "resume-case.json"
+    assert persisted.exists()
+    assert first.project_identity["path_with_namespace"] == "Barrot-Agent/B-Agent"
+    assert second.project_identity["path_with_namespace"] == "Barrot-Agent/B-Agent"
+    assert second.attempt_count == 2
+
+
+def test_queue_cannot_advance_after_failed_repair(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    queue = WorkQueueController(
+        repair_controller=make_controller(workspace, FakeBrain("{not-json")),
+        sync_controller=SyncController(max_attempts=1, sleep_fn=lambda _: None),
+    )
+
+    work = queue.run(
+        work_id="failed-repair-work",
+        project_identity=ProjectIdentity.from_seed("Barrot-Agent/B-Agent").to_dict(),
+        task_title="Repair target",
+        task_body="Fix target",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
+
+    assert work.status == "blocked"
+    assert work.queue_advanced is False
+    assert work.current_state == RepairState.BLOCKED.value
+
+
+def test_successful_repair_can_advance_queue(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    queue = WorkQueueController(
+        repair_controller=make_controller(workspace, FakeBrain(repair_payload(path))),
+        sync_controller=SyncController(max_attempts=1, sleep_fn=lambda _: None),
+    )
+
+    work = queue.run(
+        work_id="successful-repair-work",
+        project_identity=ProjectIdentity.from_seed("Barrot-Agent/B-Agent").to_dict(),
+        task_title="Repair target",
+        task_body="Fix target",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
+
+    assert work.status == "complete"
+    assert work.queue_advanced is True
+
+
+def test_controlled_end_to_end_workflow_persists_sync_evidence(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    observations = iter(
+        [
+            {
+                "id": 77830382,
+                "path_with_namespace": "Barrot-Agent/B-Agent",
+                "namespace_id": 122592030,
+                "namespace_path": "Barrot-Agent",
+                "namespace_kind": "user",
+                "transfer_completed": False,
+                "operation_state": "queued",
+            },
+            {
+                "id": 77830382,
+                "path_with_namespace": "Barrot-Agent/B-Agent",
+                "namespace_id": 122592030,
+                "namespace_path": "Barrot-Agent",
+                "namespace_kind": "user",
+                "transfer_completed": True,
+                "operation_state": "complete",
+            },
+        ]
+    )
+    queue = WorkQueueController(
+        repair_controller=make_controller(workspace, FakeBrain(repair_payload(path))),
+        sync_controller=SyncController(max_attempts=3, backoff_seconds=1, sleep_fn=lambda _: None),
+    )
+
+    work = queue.run(
+        work_id="e2e-work",
+        project_identity=ProjectIdentity.from_seed("Barrot-Agent/B-Agent").to_dict(),
+        task_title="Repair target",
+        task_body="Fix target",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+        external_sync_plan={
+            "submit_operation": lambda identity: {"submitted": identity["path_with_namespace"]},
+            "observe_state": lambda: next(observations),
+            "is_complete": lambda state, _: bool(state.get("transfer_completed")),
+        },
+    )
+
+    assert work.status == "complete"
+    assert work.queue_advanced is True
+    assert work.sync_operation["status"] == RepairState.COMPLETE.value
+    assert work.sync_operation["last_valid_project"]["path_with_namespace"] == "Barrot-Agent/B-Agent"

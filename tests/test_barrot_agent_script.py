@@ -4,7 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 
-from barrot_agent.orchestration.repository_repair import RepairCycleEvidence
+from barrot_agent.orchestration.repository_repair import RepairCycleEvidence, WorkItemEvidence
 
 
 SCRIPT_PATH = Path("/home/runner/work/B-Agent/B-Agent/scripts/barrot_agent.py")
@@ -18,7 +18,7 @@ def load_script_module(name: str):
     return module
 
 
-def test_barrot_agent_main_routes_through_repository_repair_controller(monkeypatch):
+def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "Fix the reproduced issue.")
     monkeypatch.setenv("TASK_TITLE", "Repair issue")
@@ -33,16 +33,24 @@ def test_barrot_agent_main_routes_through_repository_repair_controller(monkeypat
     class FakeController:
         def __init__(self, **kwargs):
             calls["init"] = kwargs
+    class FakeQueue:
+        def __init__(self, **kwargs):
+            calls["queue_init"] = kwargs
 
         def run(self, **kwargs):
             calls["run"] = kwargs
+            work = WorkItemEvidence(work_id="work-123")
             cycle = RepairCycleEvidence(cycle_id="cycle-123")
             cycle.status = "no_repair_required"
             cycle.current_state = "NO_REPAIR_REQUIRED"
             cycle.report = "Already healthy."
-            return cycle
+            work.repair_cycle = cycle.to_dict()
+            work.status = "complete"
+            work.queue_advanced = True
+            return work
 
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
+    monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
     monkeypatch.setattr(module, "checkout_branch", lambda branch: calls.setdefault("branch", branch))
     monkeypatch.setattr(module, "build_audit_context", lambda title, body: {"inventory": f"{title}:{body}"})
@@ -74,17 +82,25 @@ def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
     class FakeController:
         def __init__(self, **kwargs):
             calls["init"] = kwargs
+    class FakeQueue:
+        def __init__(self, **kwargs):
+            calls["queue_init"] = kwargs
 
         def run(self, **kwargs):
             calls["run"] = kwargs
+            work = WorkItemEvidence(work_id="work-456")
             cycle = RepairCycleEvidence(cycle_id="cycle-456")
             cycle.status = "no_repair_required"
             cycle.current_state = "NO_REPAIR_REQUIRED"
             cycle.report = "Audit only."
             cycle.report_only = True
-            return cycle
+            work.repair_cycle = cycle.to_dict()
+            work.status = "complete"
+            work.queue_advanced = True
+            return work
 
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
+    monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: None)
     monkeypatch.setattr(module, "checkout_branch", lambda branch: None)
     monkeypatch.setattr(module, "build_audit_context", lambda title, body: {"inventory": f"{title}:{body}"})
