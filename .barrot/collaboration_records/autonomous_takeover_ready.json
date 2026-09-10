@@ -1,58 +1,84 @@
 {
-  "work_bundle": "groq_tool_path_hardening_and_repair_takeover",
+  "work_bundle": "night_watcher_durable_repair_architecture",
+  "authoritative_runtime_path": ".github/workflows/barrot-agent.yml -> scripts/barrot_agent.py -> barrot_agent/orchestration/repository_repair.py",
+  "source_materials": {
+    "source_1_night_watcher": {
+      "summary": "Repeated transfer re-submission observed unchanged valid project state until an empty path/namespace response appeared; system must preserve last valid identity, detect no progress, bound retries, persist evidence, and stop safely."
+    },
+    "source_2_copilot_repository_analysis": {
+      "summary": "RepositoryRepairController is the authoritative repair lifecycle; false completion must be evidence-gated and live Groq tool requests must distinguish tool-capable vs non-tool payloads."
+    },
+    "source_3_barrot_requirements": {
+      "summary": "Autonomy requires audit, repair planning, mutation, validation, commit creation, remote verification, evidence persistence, queue advancement gating, and safe resume."
+    }
+  },
+  "cross_correlation": {
+    "agreements": [
+      "Completion must be gated by concrete evidence rather than loop exhaustion or status-file writes.",
+      "Durable state and explicit failure classification are required for safe autonomous resume.",
+      "Remote verification and machine-readable collaboration evidence are mandatory before advancing work."
+    ],
+    "contradictions_resolved": [
+      "The repository had durable repair-cycle evidence but not durable external project identity for queue orchestration.",
+      "The live Groq request path could surface a tool conflict without normalized classification in the final queue outcome."
+    ],
+    "missing_capabilities_closed": [
+      "Preservation of last valid project identity across invalid external observations.",
+      "Bounded observe-only retry/backoff instead of repeated identical submissions.",
+      "Durable work-queue persistence with explicit blocked/retry-exhausted outcomes.",
+      "Queue advancement gating on verified repair completion and optional verified sync completion."
+    ],
+    "duplicated_capabilities_avoided": [
+      "Night-Watcher handling was consolidated into the existing RepositoryRepairController ecosystem instead of creating a parallel repair implementation."
+    ],
+    "unsafe_assumptions_removed": [
+      "Empty path/namespace observations can no longer overwrite a known-valid project identity.",
+      "Unchanged external state no longer implies progress or justify infinite re-submission."
+    ]
+  },
   "actions_performed": [
-    "Traced the live repository repair path from .github/workflows/barrot-agent.yml to scripts/barrot_agent.py and barrot_agent/orchestration/repository_repair.py",
-    "Confirmed the active Groq repair-planning request path previously omitted tools and therefore relied on the provider default non-tool mode",
-    "Added repo_browser.print_tree and repo_browser.search tool support to the live ScriptBrain Groq request loop",
-    "Ensured tool-capable Groq requests send tool_choice=auto and non-tool requests omit tool_choice",
-    "Added safe repo-browser argument validation for empty and escaping paths",
-    "Extended RepositoryRepairController failure handling with BLOCKED state, durable cycle persistence, safe resume metadata, and retry-exhaustion detection",
-    "Added runtime collaboration-record emission for live repair cycles",
-    "Added and ran regression tests for tool conflicts, repo-browser tool calls, persistence, resume behavior, and retry exhaustion"
+    "Kept RepositoryRepairController as the authoritative repair engine and added durable Night-Watcher orchestration around it.",
+    "Added ProjectIdentity validation/preservation logic for path_with_namespace and namespace state.",
+    "Added SyncController with bounded retries, observe-only backoff, invalid-response blocking, and structured attempt evidence.",
+    "Added DurableWorkStore and WorkQueueController to persist work state, resume safely, and prevent queue advancement after failed repair.",
+    "Rewired scripts/barrot_agent.py main() through WorkQueueController and expanded collaboration-record emission.",
+    "Extended tests to cover preserved project identity, invalid empty responses, bounded retries, resume, queue gating, and persisted sync evidence."
   ],
   "files_changed": [
-    "scripts/barrot_agent.py",
+    "barrot_agent/orchestration/__init__.py",
     "barrot_agent/orchestration/repository_repair.py",
+    "scripts/barrot_agent.py",
     "tests/test_barrot_agent_script.py",
     "tests/test_repository_repair.py"
   ],
   "tests": [
     {
-      "command": "python -m pytest --no-cov -q tests/test_barrot_agent_script.py tests/test_repository_repair.py",
-      "result": "passed",
-      "details": "32 passed"
-    },
-    {
-      "command": "python -m compileall -q barrot_agent scripts tests",
+      "command": "python -m compileall -q /home/runner/work/B-Agent/B-Agent/barrot_agent /home/runner/work/B-Agent/B-Agent/scripts /home/runner/work/B-Agent/B-Agent/tests",
       "result": "passed",
       "details": "Completed with one pre-existing SyntaxWarning in barrot_agent/tools/upgrade_bundle.py"
     },
     {
+      "command": "python -m pytest --no-cov -q tests/test_barrot_agent_script.py tests/test_repository_repair.py",
+      "result": "passed",
+      "details": "42 passed"
+    },
+    {
       "command": "python -m pytest --no-cov -q",
       "result": "passed",
-      "details": "224 passed"
+      "details": "234 passed"
     }
   ],
   "results": {
-    "bundle_1": "active live repair path uses RepositoryRepairController with evidence gating and NO_REPAIR_REQUIRED",
-    "bundle_2": "durable cycle persistence, safe resume metadata, blocked-state recording, bounded retries, and unchanged-plan retry exhaustion detection are implemented",
-    "bundle_3": "adversarial regression coverage includes invalid JSON, Groq tool conflict classification, unsafe paths, patch precondition failures, validation failure rollback, remote verification failure, duplicate repair, empty project identity handling, and retry exhaustion"
+    "repair_controller": "RepositoryRepairController remains authoritative for audit, planning, patching, validation, commit creation, remote verification, and completion gating.",
+    "queue_orchestration": "WorkQueueController persists durable work evidence, safe resume metadata, and blocks queue advancement unless repair completes successfully.",
+    "external_state_integrity": "SyncController preserves the last valid project identity, records invalid empty observations, applies bounded backoff, and terminates in BLOCKED instead of looping indefinitely.",
+    "llm_tool_conflict": "Live Groq tool/non-tool request handling remains normalized so tool conflicts are classified as LLM_TOOL_CONFLICT and cannot produce COMPLETE."
   },
-  "failures": [],
   "evidence": {
-    "active_request_path": "scripts/barrot_agent.py -> ScriptBrain.think() -> _groq_payload()/_send_groq_request()",
-    "tool_mode_rule": "tool-capable requests attach repo_browser tools and set tool_choice=auto; plain requests omit tool_choice entirely",
-    "controller_persistence": "barrot_agent/orchestration/repository_repair.py writes cycle records under .git/barrot_repair/repair_cycles/",
-    "runtime_collaboration_record": "scripts/barrot_agent.py writes .barrot/collaboration_records/latest_repository_repair.json on each live run"
-  },
-  "commits": [
-    {
-      "note": "Runtime repository-repair commits are recorded by RepositoryRepairController in RepairCycleEvidence.commit and emitted into live collaboration records."
-    }
-  ],
-  "remote_verification": {
-    "status": "implemented_in_controller",
-    "details": "Remote SHA verification remains evidence-gated in RepositoryRepairController via git push plus git ls-remote verification."
+    "repair_cycle_store": ".git/barrot_repair/repair_cycles/",
+    "work_queue_store": ".git/barrot_repair/work_queue/",
+    "runtime_collaboration_record": ".barrot/collaboration_records/latest_repository_repair.json",
+    "machine_readable_record": ".barrot/collaboration_records/autonomous_takeover_ready.json"
   },
   "final_state": "READY",
   "remaining_blockers": []
