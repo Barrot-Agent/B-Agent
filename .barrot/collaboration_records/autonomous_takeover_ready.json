@@ -1,0 +1,59 @@
+{
+  "work_bundle": "groq_tool_path_hardening_and_repair_takeover",
+  "actions_performed": [
+    "Traced the live repository repair path from .github/workflows/barrot-agent.yml to scripts/barrot_agent.py and barrot_agent/orchestration/repository_repair.py",
+    "Confirmed the active Groq repair-planning request path previously omitted tools and therefore relied on the provider default non-tool mode",
+    "Added repo_browser.print_tree and repo_browser.search tool support to the live ScriptBrain Groq request loop",
+    "Ensured tool-capable Groq requests send tool_choice=auto and non-tool requests omit tool_choice",
+    "Added safe repo-browser argument validation for empty and escaping paths",
+    "Extended RepositoryRepairController failure handling with BLOCKED state, durable cycle persistence, safe resume metadata, and retry-exhaustion detection",
+    "Added runtime collaboration-record emission for live repair cycles",
+    "Added and ran regression tests for tool conflicts, repo-browser tool calls, persistence, resume behavior, and retry exhaustion"
+  ],
+  "files_changed": [
+    "scripts/barrot_agent.py",
+    "barrot_agent/orchestration/repository_repair.py",
+    "tests/test_barrot_agent_script.py",
+    "tests/test_repository_repair.py"
+  ],
+  "tests": [
+    {
+      "command": "python -m pytest --no-cov -q tests/test_barrot_agent_script.py tests/test_repository_repair.py",
+      "result": "passed",
+      "details": "32 passed"
+    },
+    {
+      "command": "python -m compileall -q barrot_agent scripts tests",
+      "result": "passed",
+      "details": "Completed with one pre-existing SyntaxWarning in barrot_agent/tools/upgrade_bundle.py"
+    },
+    {
+      "command": "python -m pytest --no-cov -q",
+      "result": "passed",
+      "details": "224 passed"
+    }
+  ],
+  "results": {
+    "bundle_1": "active live repair path uses RepositoryRepairController with evidence gating and NO_REPAIR_REQUIRED",
+    "bundle_2": "durable cycle persistence, safe resume metadata, blocked-state recording, bounded retries, and unchanged-plan retry exhaustion detection are implemented",
+    "bundle_3": "adversarial regression coverage includes invalid JSON, Groq tool conflict classification, unsafe paths, patch precondition failures, validation failure rollback, remote verification failure, duplicate repair, empty project identity handling, and retry exhaustion"
+  },
+  "failures": [],
+  "evidence": {
+    "active_request_path": "scripts/barrot_agent.py -> ScriptBrain.think() -> _groq_payload()/_send_groq_request()",
+    "tool_mode_rule": "tool-capable requests attach repo_browser tools and set tool_choice=auto; plain requests omit tool_choice entirely",
+    "controller_persistence": "barrot_agent/orchestration/repository_repair.py writes cycle records under .git/barrot_repair/repair_cycles/",
+    "runtime_collaboration_record": "scripts/barrot_agent.py writes .barrot/collaboration_records/latest_repository_repair.json on each live run"
+  },
+  "commits": [
+    {
+      "note": "Runtime repository-repair commits are recorded by RepositoryRepairController in RepairCycleEvidence.commit and emitted into live collaboration records."
+    }
+  ],
+  "remote_verification": {
+    "status": "implemented_in_controller",
+    "details": "Remote SHA verification remains evidence-gated in RepositoryRepairController via git push plus git ls-remote verification."
+  },
+  "final_state": "READY",
+  "remaining_blockers": []
+}
