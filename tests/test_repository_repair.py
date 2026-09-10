@@ -504,8 +504,8 @@ def test_cycle_records_are_persisted(tmp_path: Path) -> None:
     workspace, path = init_repo(tmp_path, origin=True)
     cycle = run_cycle(workspace, FakeBrain(repair_payload(path)))
 
-    latest = workspace / ".barrot" / "repair_cycles" / "latest.json"
-    record = workspace / ".barrot" / "repair_cycles" / f"{cycle.cycle_id}.json"
+    latest = workspace / ".git" / "barrot_repair" / "repair_cycles" / "latest.json"
+    record = workspace / ".git" / "barrot_repair" / "repair_cycles" / f"{cycle.cycle_id}.json"
 
     assert latest.exists()
     assert record.exists()

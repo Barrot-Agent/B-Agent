@@ -327,7 +327,7 @@ class DurableCycleStore:
 
     def __init__(self, workspace: str | Path):
         self.workspace = Path(workspace).resolve()
-        self.base_dir = self.workspace / ".barrot" / "repair_cycles"
+        self.base_dir = self.workspace / ".git" / "barrot_repair" / "repair_cycles"
         self.base_dir.mkdir(parents=True, exist_ok=True)
         self.index_path = self.base_dir / "latest.json"
 
@@ -486,7 +486,7 @@ Rules:
         lowered = message.lower()
         if "429" in lowered or "rate limit" in lowered or "rate-limited" in lowered:
             return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
-        if "tool_choice" in lowered or "tool conflict" in lowered:
+        if "tool_choice" in lowered or "tool choice" in lowered or "tool conflict" in lowered:
             return ModelFailure(ModelFailureCode.TOOL_CONFLICT, message)
         if "retry exhaustion" in lowered:
             return ModelFailure(ModelFailureCode.RETRY_EXHAUSTED, message)
