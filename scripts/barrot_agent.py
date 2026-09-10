@@ -13,6 +13,7 @@ import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+from typing import Any, Callable
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,6 +32,9 @@ ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
+GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
+MAX_TOOL_ROUNDS = 4
+MAX_SEARCH_RESULTS = 50
 
 NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
 
@@ -82,20 +86,142 @@ def repo_inventory(max_files: int = 120, task_text: str = "") -> str:
     return "\n".join(tree)
 
 
-def ask_brain(system: str, user: str) -> str:
-    body = json.dumps(
-        {
-            "model": MODEL,
-            "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-            "max_tokens": 4096,
-            "temperature": 0.2,
-        }
-    ).encode()
+def _tool_error(message: str) -> str:
+    return json.dumps({"success": False, "error": message}, sort_keys=True)
+
+
+class RepoBrowser:
+    def __init__(self, root: Path):
+        self.root = root.resolve()
+
+    def _resolve(self, path: str) -> Path:
+        cleaned = str(path).strip()
+        if not cleaned:
+            raise ValueError("repo_browser path must be non-empty; use '.' for the repository root.")
+        if Path(cleaned).is_absolute():
+            raise ValueError("repo_browser path must be relative to the repository root.")
+        target = (self.root / cleaned).resolve()
+        if target != self.root and self.root not in target.parents:
+            raise ValueError("repo_browser path escapes the repository root.")
+        return target
+
+    @staticmethod
+    def _is_noise(path: Path) -> bool:
+        return any(part in NOISE_PREFIXES or part.startswith(".pytest_cache") for part in path.parts)
+
+    def print_tree(self, args: dict[str, Any]) -> str:
+        try:
+            target = self._resolve(args.get("path", "."))
+            depth = int(args.get("depth", 2) or 2)
+        except (TypeError, ValueError) as exc:
+            return _tool_error(str(exc))
+        depth = max(0, min(depth, 6))
+        if not target.exists():
+            return _tool_error(f"repo_browser path does not exist: {args.get('path', '.')}")
+
+        lines: list[str] = []
+
+        def walk(current: Path, level: int) -> None:
+            relative = "." if current == self.root else str(current.relative_to(self.root))
+            prefix = "  " * level
+            label = relative + ("/" if current.is_dir() and relative != "." else "")
+            lines.append(f"{prefix}{label}")
+            if level >= depth or not current.is_dir():
+                return
+            children = sorted(
+                child for child in current.iterdir() if not self._is_noise(child)
+            )
+            for child in children[:100]:
+                walk(child, level + 1)
+            if len(children) > 100:
+                lines.append(f"{prefix}  ... ({len(children) - 100} more entries omitted)")
+
+        walk(target, 0)
+        return "\n".join(lines[:500])
+
+    def search(self, args: dict[str, Any]) -> str:
+        query = str(args.get("query") or args.get("pattern") or "").strip()
+        if not query:
+            return _tool_error("repo_browser search query must be non-empty.")
+        try:
+            target = self._resolve(args.get("path", "."))
+            recursive = bool(args.get("recursive", True))
+            max_results = int(args.get("max_results", MAX_SEARCH_RESULTS) or MAX_SEARCH_RESULTS)
+            pattern = re.compile(query)
+        except (TypeError, ValueError, re.error) as exc:
+            return _tool_error(str(exc))
+        max_results = max(1, min(max_results, MAX_SEARCH_RESULTS))
+        if not target.exists():
+            return _tool_error(f"repo_browser path does not exist: {args.get('path', '.')}")
+
+        candidates = target.rglob("*") if recursive else target.glob("*")
+        matches: list[dict[str, Any]] = []
+        for candidate in sorted(candidates):
+            if self._is_noise(candidate) or candidate.is_dir():
+                continue
+            relative = str(candidate.relative_to(self.root))
+            if pattern.search(relative):
+                matches.append({"path": relative, "kind": "path"})
+            if len(matches) >= max_results:
+                break
+            try:
+                for line_number, line in enumerate(
+                    candidate.read_text(encoding="utf-8", errors="replace").splitlines(),
+                    start=1,
+                ):
+                    if pattern.search(line):
+                        matches.append(
+                            {
+                                "path": relative,
+                                "kind": "content",
+                                "line": line_number,
+                                "text": line[:200],
+                            }
+                        )
+                    if len(matches) >= max_results:
+                        break
+            except OSError:
+                continue
+            if len(matches) >= max_results:
+                break
+        return json.dumps(
+            {
+                "success": True,
+                "path": "." if target == self.root else str(target.relative_to(self.root)),
+                "query": query,
+                "matches": matches,
+            },
+            sort_keys=True,
+        )
+
+
+def _groq_payload(
+    messages: list[dict[str, Any]],
+    *,
+    tools: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "model": MODEL,
+        "messages": messages,
+        "max_tokens": 4096,
+        "temperature": 0.2,
+    }
+    if tools:
+        payload["tools"] = tools
+        payload["tool_choice"] = "auto"
+    return payload
+
+
+def _send_groq_request(
+    payload: dict[str, Any],
+    *,
+    request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    if request_sender is not None:
+        return request_sender(payload)
+    body = json.dumps(payload).encode()
     request = urllib.request.Request(
-        "https://api.groq.com/openai/v1/chat/completions",
+        GROQ_ENDPOINT,
         data=body,
         headers={
             "Authorization": f"******",
@@ -105,18 +231,127 @@ def ask_brain(system: str, user: str) -> str:
     )
     try:
         with urllib.request.urlopen(request, timeout=90) as response:
-            return json.load(response)["choices"][0]["message"]["content"]
+            return json.load(response)
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:600]
+        lowered = detail.lower()
+        if (
+            exc.code == 400
+            and "tool choice is none" in lowered
+            and "model called a tool" in lowered
+        ):
+            raise RuntimeError(f"LLM tool conflict: {detail}") from exc
+        if exc.code in {401, 403}:
+            raise RuntimeError(f"LLM authentication failed: {detail}") from exc
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"LLM network error: {exc}") from exc
     except TimeoutError as exc:
         raise TimeoutError("Groq request timed out") from exc
 
 
 class ScriptBrain:
+    def __init__(
+        self,
+        *,
+        request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
+        repo_root: Path = ROOT,
+        max_tool_rounds: int = MAX_TOOL_ROUNDS,
+    ):
+        self.request_sender = request_sender
+        self.repo_browser = RepoBrowser(repo_root)
+        self.max_tool_rounds = max_tool_rounds
+        self.tool_funcs = {
+            "repo_browser.print_tree": self.repo_browser.print_tree,
+            "repo_browser.search": self.repo_browser.search,
+        }
+        self.tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": "repo_browser.print_tree",
+                    "description": "Print a real repository tree for a relative path. Use '.' for the repository root.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "minLength": 1},
+                            "depth": {"type": "integer", "minimum": 0, "maximum": 6},
+                        },
+                        "required": ["path"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "repo_browser.search",
+                    "description": "Search real repository file paths and file contents with a regex query inside a relative path.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {"type": "string", "minLength": 1},
+                            "path": {"type": "string", "minLength": 1},
+                            "recursive": {"type": "boolean"},
+                            "max_results": {"type": "integer", "minimum": 1, "maximum": MAX_SEARCH_RESULTS},
+                        },
+                        "required": ["query", "path"],
+                    },
+                },
+            },
+        ]
+
+    def _tool_result(self, tool_call: dict[str, Any]) -> str:
+        function = tool_call.get("function") or {}
+        name = str(function.get("name", "")).strip()
+        raw_arguments = function.get("arguments") or "{}"
+        if name not in self.tool_funcs:
+            raise RuntimeError(f"Unsupported tool requested by LLM: {name}")
+        try:
+            arguments = json.loads(raw_arguments)
+        except json.JSONDecodeError as exc:
+            return _tool_error(f"Invalid JSON arguments for {name}: {exc}")
+        if not isinstance(arguments, dict):
+            return _tool_error(f"Tool arguments for {name} must be an object.")
+        return self.tool_funcs[name](arguments)
+
     def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None) -> str:
-        del history
-        return ask_brain(system or "", message)
+        messages: list[dict[str, Any]] = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        if history:
+            messages.extend(history)
+        messages.append({"role": "user", "content": message})
+
+        for _ in range(self.max_tool_rounds):
+            payload = _groq_payload(messages, tools=self.tools)
+            data = _send_groq_request(payload, request_sender=self.request_sender)
+            try:
+                reply = data["choices"][0]["message"]
+            except (KeyError, IndexError, TypeError) as exc:
+                raise RuntimeError(f"Unexpected Groq response: {str(data)[:600]}") from exc
+            tool_calls = reply.get("tool_calls") or []
+            if tool_calls:
+                messages.append(
+                    {
+                        "role": "assistant",
+                        "content": reply.get("content") or "",
+                        "tool_calls": tool_calls,
+                    }
+                )
+                for tool_call in tool_calls:
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tool_call.get("id", ""),
+                            "content": self._tool_result(tool_call),
+                        }
+                    )
+                continue
+            content = reply.get("content")
+            if not isinstance(content, str) or not content.strip():
+                raise RuntimeError("Groq returned an empty completion.")
+            return content
+        raise RuntimeError("LLM retry exhaustion: tool-calling rounds exceeded without a final answer.")
 
 
 def build_directory_context(all_files: list[str], task_text: str) -> str:
@@ -363,6 +598,42 @@ def create_pull_request(cycle: dict[str, object]) -> None:
         print(result.stderr[:3000])
 
 
+def write_collaboration_record(cycle: dict[str, object]) -> Path:
+    record_dir = ROOT / ".barrot" / "collaboration_records"
+    record_dir.mkdir(parents=True, exist_ok=True)
+    record = {
+        "work_bundle": "autonomous_repository_repair",
+        "cycle_id": cycle.get("cycle_id"),
+        "actions_performed": cycle.get("state_history", []),
+        "files_changed": cycle.get("commit", {}).get("changed_paths", []),
+        "tests": cycle.get("validation", {}),
+        "results": {
+            "status": cycle.get("status"),
+            "repair_verified": cycle.get("repair_verified"),
+            "remote_sync_verified": cycle.get("remote_sync_verified"),
+            "resolution_verified": cycle.get("resolution_verified"),
+        },
+        "failures": cycle.get("failure"),
+        "evidence": {
+            "issue": cycle.get("issue", {}),
+            "repair_plan": cycle.get("repair_plan", {}),
+            "changes": cycle.get("changes", []),
+            "commit": cycle.get("commit", {}),
+            "sync": cycle.get("sync", []),
+        },
+        "commits": [cycle.get("commit", {})] if cycle.get("commit", {}).get("sha") else [],
+        "remote_verification": cycle.get("sync", []),
+        "final_state": cycle.get("current_state"),
+        "remaining_blockers": cycle.get("failure"),
+    }
+    latest = record_dir / "latest_repository_repair.json"
+    latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+    cycle_id = str(cycle.get("cycle_id") or "unknown")
+    per_cycle = record_dir / f"{cycle_id}.json"
+    per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+    return latest
+
+
 def main() -> None:
     if not GROQ_KEY:
         raise SystemExit("GROQ_API_KEY not set")
@@ -386,6 +657,7 @@ def main() -> None:
 
     rendered = json.dumps(cycle.to_dict(), indent=2)
     print(rendered)
+    write_collaboration_record(cycle.to_dict())
 
     if cycle.status == "no_repair_required":
         message = cycle.report or "No deterministic repository repair was required."

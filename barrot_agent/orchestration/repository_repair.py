@@ -31,6 +31,7 @@ class RepairState(str, Enum):
     PATCH_FAILED = "PATCH_FAILED"
     FAILED = "FAILED"
     ROLLED_BACK = "ROLLED_BACK"
+    BLOCKED = "BLOCKED"
 
 
 class ModelFailureCode(str, Enum):
@@ -38,6 +39,10 @@ class ModelFailureCode(str, Enum):
     TOOL_CONFLICT = "LLM_TOOL_CONFLICT"
     INVALID_JSON = "LLM_INVALID_JSON"
     TIMEOUT = "LLM_TIMEOUT"
+    AUTHENTICATION = "LLM_AUTHENTICATION_FAILED"
+    NETWORK = "LLM_NETWORK_ERROR"
+    API_ERROR = "LLM_API_ERROR"
+    RETRY_EXHAUSTED = "LLM_RETRY_EXHAUSTED"
     UNAVAILABLE = "LLM_UNAVAILABLE"
 
 
@@ -153,6 +158,10 @@ class FailureEvidence:
     state: str
     code: str = ""
     message: str = ""
+    failed_operation: str = ""
+    last_valid_state: str = ""
+    required_external_action: str = ""
+    timestamp: float = field(default_factory=time.time)
     rollback_attempted: bool = False
     rollback_succeeded: bool = False
 
@@ -177,6 +186,9 @@ class RepairCycleEvidence:
     synchronization_recorded: bool = False
     report_only: bool = False
     report: str = ""
+    attempt_number: int = 1
+    resumed_from_cycle_id: str = ""
+    project_identity: dict[str, Any] = field(default_factory=dict)
     issue: dict[str, Any] = field(default_factory=dict)
     repair_plan: dict[str, Any] = field(default_factory=dict)
     changeset: dict[str, Any] = field(default_factory=dict)
@@ -190,50 +202,59 @@ class RepairCycleEvidence:
     failure: FailureEvidence | None = None
 
     _ALLOWED_TRANSITIONS: ClassVar[dict[RepairState, set[RepairState]]] = {
-        RepairState.IDLE: {RepairState.AUDITING},
-        RepairState.AUDITING: {RepairState.ANALYZING, RepairState.FAILED},
+        RepairState.IDLE: {RepairState.AUDITING, RepairState.BLOCKED},
+        RepairState.AUDITING: {RepairState.ANALYZING, RepairState.FAILED, RepairState.BLOCKED},
         RepairState.ANALYZING: {
             RepairState.REPAIR_PLANNING,
             RepairState.NO_REPAIR_REQUIRED,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.REPAIR_PLANNING: {
             RepairState.PATCHING,
             RepairState.NO_REPAIR_REQUIRED,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.PATCHING: {
             RepairState.LOCAL_VALIDATION,
             RepairState.PATCH_FAILED,
             RepairState.ROLLED_BACK,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.LOCAL_VALIDATION: {
             RepairState.COMMITTING,
             RepairState.ROLLED_BACK,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.COMMITTING: {
             RepairState.REMOTE_VERIFICATION,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.REMOTE_VERIFICATION: {
             RepairState.POST_REPAIR_VALIDATION,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.POST_REPAIR_VALIDATION: {
             RepairState.SYNCING,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.SYNCING: {
             RepairState.COMPLETE,
             RepairState.FAILED,
+            RepairState.BLOCKED,
         },
         RepairState.COMPLETE: set(),
         RepairState.NO_REPAIR_REQUIRED: set(),
         RepairState.PATCH_FAILED: set(),
         RepairState.FAILED: set(),
         RepairState.ROLLED_BACK: set(),
+        RepairState.BLOCKED: set(),
     }
 
     def transition(self, state: RepairState) -> None:
@@ -299,6 +320,49 @@ class ModelFailure(RepairError):
 def _fingerprint(value: Any) -> str:
     data = json.dumps(value, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+
+class DurableCycleStore:
+    """Persists repair cycle records for bounded retry and safe resume."""
+
+    def __init__(self, workspace: str | Path):
+        self.workspace = Path(workspace).resolve()
+        self.base_dir = self.workspace / ".barrot" / "repair_cycles"
+        self.base_dir.mkdir(parents=True, exist_ok=True)
+        self.index_path = self.base_dir / "latest.json"
+
+    def write(self, cycle: RepairCycleEvidence) -> Path:
+        payload = cycle.to_dict()
+        path = self.base_dir / f"{cycle.cycle_id}.json"
+        path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+        self.index_path.write_text(
+            json.dumps(
+                {
+                    "latest_cycle_id": cycle.cycle_id,
+                    "record_path": str(path.relative_to(self.workspace)),
+                    "project_identity": cycle.project_identity,
+                    "status": cycle.status,
+                    "attempt_number": cycle.attempt_number,
+                    "issue_fingerprint": cycle.issue_fingerprint,
+                    "plan_fingerprint": cycle.plan_fingerprint,
+                    "changeset_fingerprint": cycle.changeset_fingerprint,
+                    "commit_sha": cycle.commit.sha,
+                    "current_state": cycle.current_state,
+                },
+                indent=2,
+                sort_keys=True,
+            ),
+            encoding="utf-8",
+        )
+        return path
+
+    def load_latest(self) -> dict[str, Any] | None:
+        if not self.index_path.exists():
+            return None
+        try:
+            return json.loads(self.index_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return None
 
 
 class AuditEngine:
@@ -374,6 +438,7 @@ Rules:
 - Use mode=no_repair_required when the repository is already healthy for the requested issue.
 - Use mode=report when the task is audit-only or cannot be repaired deterministically.
 - For mode=repair, identify exactly one concrete issue.
+- If repository inspection is needed, use the available repo_browser tools with non-empty relative paths such as ".".
 - reproduction_commands must fail before repair when the issue exists.
 - validation_commands must pass after repair.
 - resolution_commands must specifically re-test the original failure condition.
@@ -423,8 +488,16 @@ Rules:
             return ModelFailure(ModelFailureCode.RATE_LIMITED, message)
         if "tool_choice" in lowered or "tool conflict" in lowered:
             return ModelFailure(ModelFailureCode.TOOL_CONFLICT, message)
+        if "retry exhaustion" in lowered:
+            return ModelFailure(ModelFailureCode.RETRY_EXHAUSTED, message)
+        if "authentication failed" in lowered or "unauthorized" in lowered or "forbidden" in lowered:
+            return ModelFailure(ModelFailureCode.AUTHENTICATION, message)
+        if "network error" in lowered or "name or service not known" in lowered or "connection refused" in lowered:
+            return ModelFailure(ModelFailureCode.NETWORK, message)
         if isinstance(exc, TimeoutError) or "timeout" in lowered:
             return ModelFailure(ModelFailureCode.TIMEOUT, message)
+        if "http " in lowered:
+            return ModelFailure(ModelFailureCode.API_ERROR, message)
         return ModelFailure(ModelFailureCode.UNAVAILABLE, message)
 
     def generate(self, prompt: str) -> RepairDirective:
@@ -837,6 +910,7 @@ class RepositoryRepairController:
         workspace: str | Path,
         workspace_verifier: Callable[[str], tuple[bool, str]] | None = None,
         planner_attempts: int = 3,
+        max_unchanged_attempts: int = 2,
     ):
         self.workspace = Path(workspace).resolve()
         self.audit_engine = AuditEngine()
@@ -848,33 +922,62 @@ class RepositoryRepairController:
         )
         self.git_gateway = GitGateway(self.workspace)
         self.remote_verifier = RemoteVerifier(self.git_gateway)
+        self.cycle_store = DurableCycleStore(self.workspace)
+        self.max_unchanged_attempts = max_unchanged_attempts
 
     @staticmethod
     def _new_cycle_id() -> str:
         return uuid.uuid4().hex[:12]
 
-    @staticmethod
-    def _failure(cycle: RepairCycleEvidence, state: RepairState, code: str, message: str) -> RepairCycleEvidence:
+    def _persist(self, cycle: RepairCycleEvidence) -> None:
+        self.cycle_store.write(cycle)
+
+    def _failure(
+        self,
+        cycle: RepairCycleEvidence,
+        state: RepairState,
+        code: str,
+        message: str,
+        *,
+        failed_operation: str = "",
+        required_external_action: str = "",
+    ) -> RepairCycleEvidence:
+        last_valid_state = cycle.current_state
         cycle.transition(state)
         cycle.failure = FailureEvidence(
             state=state.value,
             code=code,
             message=message,
+            failed_operation=failed_operation,
+            last_valid_state=last_valid_state,
+            required_external_action=required_external_action,
         )
-        cycle.status = "failed"
+        cycle.status = "blocked" if state == RepairState.BLOCKED else "failed"
+        self._persist(cycle)
         return cycle
 
-    @staticmethod
-    def _rolled_back(cycle: RepairCycleEvidence, state: RepairState, message: str, rollback_succeeded: bool) -> RepairCycleEvidence:
+    def _rolled_back(
+        self,
+        cycle: RepairCycleEvidence,
+        state: RepairState,
+        message: str,
+        rollback_succeeded: bool,
+        *,
+        failed_operation: str = "",
+    ) -> RepairCycleEvidence:
+        last_valid_state = cycle.current_state
         cycle.transition(state)
         cycle.failure = FailureEvidence(
             state=state.value,
             code=state.value,
             message=message,
+            failed_operation=failed_operation,
+            last_valid_state=last_valid_state,
             rollback_attempted=True,
             rollback_succeeded=rollback_succeeded,
         )
         cycle.status = "rolled_back" if rollback_succeeded else "failed"
+        self._persist(cycle)
         return cycle
 
     def run(
@@ -888,7 +991,34 @@ class RepositoryRepairController:
         audit_context: dict[str, str],
     ) -> RepairCycleEvidence:
         cycle = RepairCycleEvidence(cycle_id=self._new_cycle_id())
+        latest = self.cycle_store.load_latest() or {}
+        repo_name = str(repo).strip() or str(latest.get("project_identity", {}).get("repository", "")).strip()
+        branch_name = str(branch).strip() or str(latest.get("project_identity", {}).get("branch", "")).strip()
+        if not repo_name or not branch_name:
+            cycle.project_identity = {
+                "repository": str(repo).strip(),
+                "branch": str(branch).strip(),
+            }
+            self._persist(cycle)
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "PROJECT_IDENTITY_MISSING",
+                "Repository and branch must both be non-empty.",
+                failed_operation="initialize_cycle",
+                required_external_action="Provide a non-empty repository and branch for the repair cycle.",
+            )
+        cycle.project_identity = {
+            "repository": repo_name,
+            "branch": branch_name,
+            "task_title": task_title,
+        }
+        if latest.get("project_identity", {}) == cycle.project_identity:
+            cycle.attempt_number = int(latest.get("attempt_number") or 0) + 1
+            cycle.resumed_from_cycle_id = str(latest.get("latest_cycle_id") or "")
+        self._persist(cycle)
         cycle.transition(RepairState.AUDITING)
+        self._persist(cycle)
         prompt = self.audit_engine.build_prompt(
             task_title=task_title,
             task_body=task_body,
@@ -897,22 +1027,31 @@ class RepositoryRepairController:
         cycle.audit_completed = True
 
         cycle.transition(RepairState.ANALYZING)
+        self._persist(cycle)
         try:
             directive = self.repair_planner.generate(prompt)
         except ModelFailure as exc:
-            return self._failure(cycle, RepairState.FAILED, exc.code.value, str(exc))
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                exc.code.value,
+                str(exc),
+                failed_operation="repair_planner.generate",
+            )
 
         if directive.mode == "report":
             cycle.report_only = True
             cycle.report = directive.report
             cycle.transition(RepairState.NO_REPAIR_REQUIRED)
             cycle.status = "no_repair_required"
+            self._persist(cycle)
             return cycle
 
         if directive.mode == "no_repair_required":
             cycle.report = directive.report
             cycle.transition(RepairState.NO_REPAIR_REQUIRED)
             cycle.status = "no_repair_required"
+            self._persist(cycle)
             return cycle
 
         issue = directive.issue
@@ -920,7 +1059,13 @@ class RepositoryRepairController:
         changeset = directive.changeset
 
         if not issue or not isinstance(issue, dict):
-            return self._failure(cycle, RepairState.FAILED, "ISSUE_MISSING", "Planner did not identify a concrete issue.")
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "ISSUE_MISSING",
+                "Planner did not identify a concrete issue.",
+                failed_operation="validate_issue",
+            )
 
         reproduction_commands = issue.get("reproduction_commands")
         validation_commands = issue.get("validation_commands") or issue.get("resolution_commands") or reproduction_commands
@@ -928,12 +1073,18 @@ class RepositoryRepairController:
         summary = str(issue.get("summary", "")).strip()
         files = issue.get("files") or []
         if not summary or not isinstance(files, list) or not files:
-            return self._failure(cycle, RepairState.FAILED, "ISSUE_INVALID", "Issue summary/files are required.")
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "ISSUE_INVALID",
+                "Issue summary/files are required.",
+                failed_operation="validate_issue",
+            )
 
         cycle.issue = {
             "number": issue_number,
-            "repository": repo,
-            "branch": branch,
+            "repository": repo_name,
+            "branch": branch_name,
             **issue,
         }
         cycle.issue_fingerprint = _fingerprint(
@@ -944,11 +1095,18 @@ class RepositoryRepairController:
             }
         )
         cycle.issue_identified = True
+        self._persist(cycle)
 
         try:
             pre_repair = self.validator.reproduce_issue(reproduction_commands)
         except Exception as exc:  # noqa: BLE001
-            return self._failure(cycle, RepairState.FAILED, "REPRODUCE_ERROR", str(exc))
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "REPRODUCE_ERROR",
+                str(exc),
+                failed_operation="reproduce_issue",
+            )
 
         cycle.validation["issue_reproduction"] = asdict(pre_repair)
         cycle.issue_reproduced = pre_repair.issue_reproduced
@@ -956,13 +1114,27 @@ class RepositoryRepairController:
             cycle.report = directive.report or "Issue condition no longer reproduces."
             cycle.transition(RepairState.NO_REPAIR_REQUIRED)
             cycle.status = "no_repair_required"
+            self._persist(cycle)
             return cycle
 
         cycle.transition(RepairState.REPAIR_PLANNING)
+        self._persist(cycle)
         if not repair_plan or not isinstance(repair_plan, dict):
-            return self._failure(cycle, RepairState.FAILED, "PLAN_MISSING", "Planner did not provide a repair plan.")
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "PLAN_MISSING",
+                "Planner did not provide a repair plan.",
+                failed_operation="validate_repair_plan",
+            )
         if not changeset or not isinstance(changeset, dict):
-            return self._failure(cycle, RepairState.FAILED, "CHANGESET_MISSING", "Planner did not provide a changeset.")
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "CHANGESET_MISSING",
+                "Planner did not provide a changeset.",
+                failed_operation="validate_changeset",
+            )
 
         cycle.repair_plan = repair_plan
         cycle.plan_fingerprint = _fingerprint(repair_plan)
@@ -970,6 +1142,21 @@ class RepositoryRepairController:
         cycle.changeset = changeset
         cycle.changeset_fingerprint = _fingerprint(changeset)
         cycle.changeset_created = True
+        if (
+            latest.get("issue_fingerprint") == cycle.issue_fingerprint
+            and latest.get("plan_fingerprint") == cycle.plan_fingerprint
+            and latest.get("changeset_fingerprint") == cycle.changeset_fingerprint
+            and cycle.attempt_number > self.max_unchanged_attempts
+        ):
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                ModelFailureCode.RETRY_EXHAUSTED.value,
+                "Retry exhaustion: repeated identical repair plan and changeset for the same issue.",
+                failed_operation="detect_unchanged_state",
+                required_external_action="Revise the repair plan or provide new repository context before retrying.",
+            )
+        self._persist(cycle)
 
         snapshot_paths = sorted(
             {
@@ -980,26 +1167,58 @@ class RepositoryRepairController:
         try:
             snapshots = self.patch_executor.snapshot(snapshot_paths)
         except Exception as exc:  # noqa: BLE001
-            return self._failure(cycle, RepairState.FAILED, "SNAPSHOT_FAILED", str(exc))
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "SNAPSHOT_FAILED",
+                str(exc),
+                failed_operation="snapshot_workspace",
+            )
 
         cycle.transition(RepairState.PATCHING)
+        self._persist(cycle)
         try:
             cycle.changes, changed_files = self.patch_executor.apply(changeset)
             cycle.changes_applied = bool(changed_files)
         except Exception as exc:  # noqa: BLE001
             rollback_ok = self.patch_executor.rollback(snapshots)
             if rollback_ok:
-                return self._rolled_back(cycle, RepairState.ROLLED_BACK, str(exc), True)
-            return self._failure(cycle, RepairState.PATCH_FAILED, "PATCH_FAILED", str(exc))
+                return self._rolled_back(
+                    cycle,
+                    RepairState.ROLLED_BACK,
+                    str(exc),
+                    True,
+                    failed_operation="apply_patch",
+                )
+            return self._failure(
+                cycle,
+                RepairState.PATCH_FAILED,
+                "PATCH_FAILED",
+                str(exc),
+                failed_operation="apply_patch",
+            )
 
         cycle.transition(RepairState.LOCAL_VALIDATION)
+        self._persist(cycle)
         try:
             local_validation = self.validator.validate_changes(validation_commands)
         except Exception as exc:  # noqa: BLE001
             rollback_ok = self.patch_executor.rollback(snapshots)
             if rollback_ok:
-                return self._rolled_back(cycle, RepairState.ROLLED_BACK, str(exc), True)
-            return self._failure(cycle, RepairState.FAILED, "VALIDATION_ERROR", str(exc))
+                return self._rolled_back(
+                    cycle,
+                    RepairState.ROLLED_BACK,
+                    str(exc),
+                    True,
+                    failed_operation="validate_changes",
+                )
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "VALIDATION_ERROR",
+                str(exc),
+                failed_operation="validate_changes",
+            )
         cycle.validation["local_validation"] = asdict(local_validation)
         cycle.local_validation_passed = local_validation.passed
         if not local_validation.passed:
@@ -1010,15 +1229,18 @@ class RepositoryRepairController:
                     RepairState.ROLLED_BACK,
                     "Local validation failed after patch application.",
                     True,
+                    failed_operation="validate_changes",
                 )
             return self._failure(
                 cycle,
                 RepairState.FAILED,
                 "VALIDATION_FAILED",
                 "Local validation failed and rollback did not complete.",
+                failed_operation="validate_changes",
             )
 
         cycle.transition(RepairState.COMMITTING)
+        self._persist(cycle)
         expected_files = [str(item) for item in changeset.get("expected_files", []) if isinstance(item, str)]
         try:
             cycle.commit = self.git_gateway.commit(
@@ -1026,34 +1248,70 @@ class RepositoryRepairController:
                 expected_files,
             )
         except Exception as exc:  # noqa: BLE001
-            return self._failure(cycle, RepairState.FAILED, "COMMIT_FAILED", str(exc))
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "COMMIT_FAILED",
+                str(exc),
+                failed_operation="git_commit",
+            )
         if not cycle.commit.exists:
-            return self._failure(cycle, RepairState.FAILED, "COMMIT_MISSING", "Commit SHA does not exist locally.")
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "COMMIT_MISSING",
+                "Commit SHA does not exist locally.",
+                failed_operation="git_commit",
+            )
+        self._persist(cycle)
 
         cycle.transition(RepairState.REMOTE_VERIFICATION)
+        self._persist(cycle)
         try:
             remotes = self.git_gateway.configured_remotes()
         except Exception as exc:  # noqa: BLE001
-            return self._failure(cycle, RepairState.FAILED, "REMOTE_LIST_FAILED", str(exc))
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "REMOTE_LIST_FAILED",
+                str(exc),
+                failed_operation="list_remotes",
+                required_external_action="Restore git remote configuration and rerun the repair cycle.",
+            )
 
         if "origin" not in remotes:
-            return self._failure(cycle, RepairState.FAILED, "ORIGIN_MISSING", "Required remote 'origin' is not configured.")
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "ORIGIN_MISSING",
+                "Required remote 'origin' is not configured.",
+                failed_operation="verify_origin_remote",
+                required_external_action="Configure the origin remote before attempting autonomous repair synchronization.",
+            )
 
-        origin_sync = self.remote_verifier.push_and_verify("origin", branch, cycle.commit.sha)
+        origin_sync = self.remote_verifier.push_and_verify("origin", branch_name, cycle.commit.sha)
         cycle.sync.append(origin_sync)
         cycle.commit.remote_verified = origin_sync.verified
 
         cycle.transition(RepairState.POST_REPAIR_VALIDATION)
+        self._persist(cycle)
         try:
             resolution = self.validator.verify_resolution(resolution_commands)
         except Exception as exc:  # noqa: BLE001
-            return self._failure(cycle, RepairState.FAILED, "RESOLUTION_ERROR", str(exc))
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "RESOLUTION_ERROR",
+                str(exc),
+                failed_operation="verify_resolution",
+            )
         cycle.validation["post_repair_verification"] = asdict(resolution)
         cycle.post_repair_validation_passed = resolution.passed
         cycle.resolution_verified = resolution.passed
         cycle.repair_verified = cycle.local_validation_passed and cycle.resolution_verified
 
         cycle.transition(RepairState.SYNCING)
+        self._persist(cycle)
         for remote in remotes:
             if remote == "origin":
                 continue
@@ -1062,20 +1320,20 @@ class RepositoryRepairController:
                     RemoteSyncEvidence(
                         remote=remote,
                         applicable=False,
-                        branch=branch,
+                        branch=branch_name,
                         sha=cycle.commit.sha,
                         reason="Remote sync not applicable.",
                     )
                 )
                 continue
-            cycle.sync.append(self.remote_verifier.push_and_verify(remote, branch, cycle.commit.sha))
+            cycle.sync.append(self.remote_verifier.push_and_verify(remote, branch_name, cycle.commit.sha))
 
         if not any(item.remote == "gitlab" for item in cycle.sync):
             cycle.sync.append(
                 RemoteSyncEvidence(
                     remote="gitlab",
                     applicable=False,
-                    branch=branch,
+                    branch=branch_name,
                     sha=cycle.commit.sha,
                     reason="GitLab remote not configured.",
                 )
@@ -1091,10 +1349,12 @@ class RepositoryRepairController:
                 RepairState.FAILED,
                 "COMPLETION_GATE_BLOCKED",
                 "Completion gate rejected the repair evidence.",
+                failed_operation="completion_gate",
             )
 
         cycle.transition(RepairState.COMPLETE)
         cycle.status = "complete"
+        self._persist(cycle)
         return cycle
 
 

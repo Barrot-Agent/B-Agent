@@ -206,6 +206,17 @@ def test_llm_rate_limit_uses_bounded_retries(tmp_path: Path) -> None:
     assert brain.calls == 3
 
 
+def test_llm_tool_conflict_is_classified_safely(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    brain = FakeBrain(RuntimeError("Tool choice is none, but model called a tool"))
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "failed"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "LLM_TOOL_CONFLICT"
+
+
 def test_invalid_patch_path_is_rejected(tmp_path: Path) -> None:
     workspace, path = init_repo(tmp_path)
     payload = repair_payload(path, expected_files=["../escape.py"])
@@ -487,3 +498,86 @@ def test_issue_and_changeset_fingerprints_are_recorded(tmp_path: Path) -> None:
     assert cycle.issue_fingerprint
     assert cycle.plan_fingerprint
     assert cycle.changeset_fingerprint
+
+
+def test_cycle_records_are_persisted(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path, origin=True)
+    cycle = run_cycle(workspace, FakeBrain(repair_payload(path)))
+
+    latest = workspace / ".barrot" / "repair_cycles" / "latest.json"
+    record = workspace / ".barrot" / "repair_cycles" / f"{cycle.cycle_id}.json"
+
+    assert latest.exists()
+    assert record.exists()
+    assert json.loads(latest.read_text(encoding="utf-8"))["latest_cycle_id"] == cycle.cycle_id
+
+
+def test_empty_project_identity_uses_last_valid_project_identity(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    first = make_controller(workspace, FakeBrain(json.dumps({"mode": "no_repair_required", "report": "healthy"})))
+    cycle = first.run(
+        task_title="Repair target",
+        task_body="Check target",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": path},
+    )
+    assert cycle.status == "no_repair_required"
+
+    second = make_controller(workspace, FakeBrain(json.dumps({"mode": "no_repair_required", "report": "healthy"})))
+    resumed = second.run(
+        task_title="Repair target",
+        task_body="Check target",
+        issue_number="123",
+        repo="",
+        branch="",
+        audit_context={"inventory": path},
+    )
+
+    assert resumed.status == "no_repair_required"
+    assert resumed.project_identity["repository"] == "Barrot-Agent/B-Agent"
+    assert resumed.project_identity["branch"] == "repair/test"
+    assert resumed.resumed_from_cycle_id == cycle.cycle_id
+
+
+def test_repeated_identical_failed_plan_hits_retry_exhaustion(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    payload = repair_payload(
+        path,
+        validation_commands=[failure_command()],
+        resolution_commands=[success_command()],
+    )
+
+    first = RepositoryRepairController(
+        brain=FakeBrain(payload),
+        workspace=workspace,
+        planner_attempts=3,
+        max_unchanged_attempts=1,
+    ).run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+    second = RepositoryRepairController(
+        brain=FakeBrain(payload),
+        workspace=workspace,
+        planner_attempts=3,
+        max_unchanged_attempts=1,
+    ).run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="repair/test",
+        audit_context={"inventory": "barrot_agent/target.py"},
+    )
+
+    assert first.status == "rolled_back"
+    assert second.status == "blocked"
+    assert second.current_state == RepairState.BLOCKED.value
+    assert second.failure is not None
+    assert second.failure.code == "LLM_RETRY_EXHAUSTED"
