@@ -1,0 +1,1111 @@
+{
+  "problem": {
+    "problem_id": "navier_stokes_millennium_prize",
+    "title": "Navier–Stokes Millennium Prize structured research bundle",
+    "domain": "mathematics.fluid_dynamics",
+    "primary_question": "Does the claimed OpenAI construction establish a valid Clay-alternative breakdown result for 3D incompressible Navier–Stokes?",
+    "primary_claims": [
+      "openai_breakdown_r3",
+      "openai_breakdown_periodic"
+    ],
+    "related_problems": [
+      "euler_finite_time_singularity"
+    ],
+    "acceptance_requirements": {
+      "formal_verification_required": true,
+      "independent_verification_required": true,
+      "resolved_adversarial_reviews_required": true
+    },
+    "research_questions": [
+      {
+        "question_id": "clay_requirements",
+        "prompt": "What exactly does Clay require?"
+      },
+      {
+        "question_id": "clay_alternative",
+        "prompt": "Which Clay alternative does the construction establish?"
+      },
+      {
+        "question_id": "energy_vs_velocity",
+        "prompt": "Why can velocity become unbounded while kinetic energy remains bounded?"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "clay_problem_statement",
+      "title": "Navier–Stokes Equations",
+      "author_or_organization": "Clay Mathematics Institute / Charles L. Fefferman",
+      "source_type": "official_problem_statement",
+      "url": "https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf",
+      "publication_date": "",
+      "version": "official pdf",
+      "source_commit": "",
+      "sections": [
+        "Problem description",
+        "Alternatives (C) and (D)",
+        "Whole-space and periodic formulations"
+      ],
+      "equations": [
+        "∂_t u + (u · ∇)u + ∇p = νΔu + f",
+        "∇ · u = 0"
+      ],
+      "theorem_names": [],
+      "definitions": [
+        "3D incompressible Navier–Stokes equations",
+        "global smooth solution",
+        "finite / bounded kinetic energy"
+      ],
+      "citations": [],
+      "relationships": [
+        {
+          "type": "defines_problem",
+          "target": "navier_stokes_millennium_prize"
+        }
+      ]
+    },
+    {
+      "source_id": "openai_report",
+      "title": "On the Navier–Stokes Millennium Prize Problem",
+      "author_or_organization": "OpenAI",
+      "source_type": "research_report",
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "publication_date": "2026-09-08",
+      "version": "public report",
+      "source_commit": "",
+      "sections": [
+        "Navier–Stokes summary",
+        "Euler precursor",
+        "Formalization overview"
+      ],
+      "equations": [
+        "τ = 1 - t"
+      ],
+      "theorem_names": [],
+      "definitions": [
+        "claimed collapsing vortex mechanism",
+        "claimed oscillatory correction",
+        "claimed smooth force construction"
+      ],
+      "citations": [
+        "clay_problem_statement",
+        "openai_navier_stokes_paper",
+        "openai_lean_repo"
+      ],
+      "relationships": [
+        {
+          "type": "announces",
+          "target": "openai_breakdown_r3"
+        },
+        {
+          "type": "announces",
+          "target": "openai_breakdown_periodic"
+        }
+      ]
+    },
+    {
+      "source_id": "openai_navier_stokes_paper",
+      "title": "Finite time blowup for Navier–Stokes",
+      "author_or_organization": "OpenAI",
+      "source_type": "mathematical_paper",
+      "url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+      "publication_date": "2026-09-08",
+      "version": "pdf manuscript",
+      "source_commit": "",
+      "sections": [
+        "whole-space theorem",
+        "periodic theorem",
+        "similarity scaling",
+        "residual matching"
+      ],
+      "equations": [
+        "τ = 1 - t",
+        "radial scale ~ τ^(1/2)",
+        "axial scale ~ τ^(1/2-h)"
+      ],
+      "theorem_names": [
+        "Theorem 1.1"
+      ],
+      "definitions": [
+        "collapsing vortex / self-similar structure",
+        "inward spiral",
+        "axial stretching",
+        "oscillatory correction",
+        "nonlinear momentum flux",
+        "residual cancellation"
+      ],
+      "citations": [
+        "clay_problem_statement",
+        "openai_lean_repo",
+        "literature_leray",
+        "literature_ckn",
+        "literature_ess",
+        "literature_tao",
+        "literature_buckmaster_vicol",
+        "literature_albritton_brue_colombo",
+        "literature_lifschitz_hameiri",
+        "literature_friedlander_vishik",
+        "literature_craik_criminale"
+      ],
+      "relationships": [
+        {
+          "type": "formalized_by",
+          "target": "openai_lean_repo"
+        }
+      ]
+    },
+    {
+      "source_id": "openai_lean_repo",
+      "title": "NavierStokesAndEuler",
+      "author_or_organization": "OpenAI",
+      "source_type": "lean_formalization_repository",
+      "url": "https://github.com/openai/NavierStokesAndEuler",
+      "publication_date": "2026-09-10",
+      "version": "leanprover/lean4:v4.34.0-rc2",
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "sections": [
+        "README whole-space statement",
+        "README periodic statement",
+        "Building the formalizations",
+        "Independent proof checking"
+      ],
+      "equations": [
+        "whole-space breakdownStatement",
+        "periodic breakdown theorem"
+      ],
+      "theorem_names": [
+        "NavierStokesR3.theorem_1_1",
+        "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+        "NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+        "Euler.euler_breakdown_R3"
+      ],
+      "definitions": [
+        "CandidateProperties",
+        "GlobalFiniteEnergySolution",
+        "Comparator challenge theorem names"
+      ],
+      "citations": [
+        "openai_navier_stokes_paper",
+        "openai_euler_paper"
+      ],
+      "relationships": [
+        {
+          "type": "formalizes",
+          "target": "openai_breakdown_r3"
+        },
+        {
+          "type": "formalizes",
+          "target": "openai_breakdown_periodic"
+        },
+        {
+          "type": "formalizes",
+          "target": "euler_precursor_blowup"
+        }
+      ]
+    },
+    {
+      "source_id": "openai_euler_paper",
+      "title": "Finite time blowup for the Euler equation",
+      "author_or_organization": "OpenAI",
+      "source_type": "mathematical_paper",
+      "url": "https://cdn.openai.com/pdf/315b36cd-ec98-4023-8342-93345194ece1/euler.pdf",
+      "publication_date": "2026-09-08",
+      "version": "pdf manuscript",
+      "source_commit": "",
+      "sections": [
+        "Euler singularity theorem",
+        "transition to Navier–Stokes"
+      ],
+      "equations": [],
+      "theorem_names": [
+        "euler_breakdown_R3"
+      ],
+      "definitions": [
+        "unforced incompressible Euler finite-time singularity"
+      ],
+      "citations": [
+        "openai_lean_repo"
+      ],
+      "relationships": [
+        {
+          "type": "precedes",
+          "target": "openai_navier_stokes_paper"
+        }
+      ]
+    },
+    {
+      "source_id": "literature_leray",
+      "title": "Referenced prior work cluster: Leray",
+      "author_or_organization": "Leray",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["classical weak-solution background"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_ckn",
+      "title": "Referenced prior work cluster: Caffarelli–Kohn–Nirenberg",
+      "author_or_organization": "Caffarelli–Kohn–Nirenberg",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["partial regularity background"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_ess",
+      "title": "Referenced prior work cluster: Escauriaza–Seregin–Šverák",
+      "author_or_organization": "Escauriaza–Seregin–Šverák",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["regularity / blow-up criteria background"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_tao",
+      "title": "Referenced prior work cluster: Tao",
+      "author_or_organization": "Tao",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["blow-up and critical-scaling background"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_buckmaster_vicol",
+      "title": "Referenced prior work cluster: Buckmaster/Vicol",
+      "author_or_organization": "Buckmaster/Vicol",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["Euler / convex-integration context"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_albritton_brue_colombo",
+      "title": "Referenced prior work cluster: Albritton/Brué/Colombo",
+      "author_or_organization": "Albritton/Brué/Colombo",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["modern regularity background"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_lifschitz_hameiri",
+      "title": "Referenced prior work cluster: Lifschitz/Hameiri",
+      "author_or_organization": "Lifschitz/Hameiri",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["vortex / stretching context"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_friedlander_vishik",
+      "title": "Referenced prior work cluster: Friedlander/Vishik",
+      "author_or_organization": "Friedlander/Vishik",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["hydrodynamic-instability context"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    },
+    {
+      "source_id": "literature_craik_criminale",
+      "title": "Referenced prior work cluster: Craik/Criminale",
+      "author_or_organization": "Craik/Criminale",
+      "source_type": "literature_reference_cluster",
+      "url": "",
+      "publication_date": "",
+      "version": "",
+      "source_commit": "",
+      "sections": ["spiral / strain mechanism context"],
+      "equations": [],
+      "theorem_names": [],
+      "definitions": [],
+      "citations": [],
+      "relationships": []
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "clay_problem_r3",
+      "statement": "Clay asks whether smooth divergence-free initial data in 3D incompressible Navier–Stokes on ℝ³ can yield a unique global smooth solution with bounded kinetic energy, or whether a finite-time breakdown example exists.",
+      "domain": "navier_stokes",
+      "claim_type": "problem_requirement",
+      "source": "clay_problem_statement",
+      "source_location": "problem description / alternatives",
+      "assumptions": [
+        "3D incompressible Navier–Stokes equations",
+        "whole-space domain ℝ³",
+        "smooth divergence-free initial data",
+        "bounded kinetic-energy requirement"
+      ],
+      "dependencies": [],
+      "provenance": ["clay_problem_statement"]
+    },
+    {
+      "claim_id": "clay_problem_periodic",
+      "statement": "Clay also includes the periodic torus alternative asking for smooth periodic data leading either to global smoothness or a breakdown example on ℝ³/ℤ³.",
+      "domain": "navier_stokes",
+      "claim_type": "problem_requirement",
+      "source": "clay_problem_statement",
+      "source_location": "alternatives (C) and (D)",
+      "assumptions": [
+        "periodic domain ℝ³/ℤ³",
+        "smooth periodic data"
+      ],
+      "dependencies": [],
+      "provenance": ["clay_problem_statement"]
+    },
+    {
+      "claim_id": "openai_breakdown_r3",
+      "statement": "For every positive viscosity, there exist smooth initial data and forcing on ℝ³ for which no global smooth solution with uniformly bounded kinetic energy exists.",
+      "domain": "navier_stokes",
+      "claim_type": "theorem",
+      "source": "openai_lean_repo",
+      "source_location": "README / NavierStokes/R3/Theorem.lean theorem_1_1",
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "assumptions": [
+        "positive viscosity ν > 0",
+        "smooth initial data",
+        "smooth forcing",
+        "whole-space domain ℝ³"
+      ],
+      "dependencies": [
+        "clay_problem_r3",
+        "mechanism_residual_cancellation",
+        "scaling_tau",
+        "bounded_energy_with_blowup"
+      ],
+      "provenance": ["openai_lean_repo", "openai_navier_stokes_paper"]
+    },
+    {
+      "claim_id": "openai_breakdown_periodic",
+      "statement": "For every positive viscosity, there exist smooth periodic initial data and forcing on ℝ³/ℤ³ for which no global smooth solution exists.",
+      "domain": "navier_stokes",
+      "claim_type": "theorem",
+      "source": "openai_lean_repo",
+      "source_location": "README / ComparatorChallenges/NavierStokes.json",
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "assumptions": [
+        "positive viscosity ν > 0",
+        "smooth periodic initial data",
+        "smooth periodic forcing",
+        "periodic torus domain"
+      ],
+      "dependencies": [
+        "clay_problem_periodic",
+        "openai_breakdown_r3"
+      ],
+      "provenance": ["openai_lean_repo", "openai_navier_stokes_paper"]
+    },
+    {
+      "claim_id": "scaling_tau",
+      "statement": "The claimed singular regime is parameterized by τ = 1 - t with radial scale ~ τ^(1/2) and axial scale ~ τ^(1/2-h), for 0 < h < 1/2.",
+      "domain": "navier_stokes",
+      "claim_type": "estimate",
+      "source": "openai_navier_stokes_paper",
+      "source_location": "similarity scaling / NavierStokes/SimilarityHomogeneity.lean",
+      "assumptions": [
+        "τ = 1 - t",
+        "0 < h < 1/2"
+      ],
+      "dependencies": [],
+      "provenance": ["openai_navier_stokes_paper", "openai_lean_repo"]
+    },
+    {
+      "claim_id": "bounded_energy_with_blowup",
+      "statement": "The claim distinguishes pointwise velocity blow-up from total kinetic energy, asserting that concentration on a shrinking anisotropic region can coexist with bounded kinetic energy.",
+      "domain": "navier_stokes",
+      "claim_type": "consequence",
+      "source": "openai_navier_stokes_paper",
+      "source_location": "whole-space theorem / energy discussion",
+      "assumptions": [
+        "anisotropic collapsing support",
+        "bounded global kinetic-energy integral",
+        "velocity becomes unbounded near singular time"
+      ],
+      "dependencies": [
+        "scaling_tau"
+      ],
+      "provenance": ["openai_navier_stokes_paper", "openai_lean_repo"]
+    },
+    {
+      "claim_id": "mechanism_collapsing_vortex",
+      "statement": "The claimed mechanism uses a collapsing vortex / self-similar structure with inward spiral and axial stretching to drive the singular regime.",
+      "domain": "navier_stokes",
+      "claim_type": "intermediate_claim",
+      "source": "openai_navier_stokes_paper",
+      "source_location": "mechanism summary / cited by report",
+      "assumptions": [
+        "self-similar collapsing geometry",
+        "axial stretching",
+        "spiraling transport"
+      ],
+      "dependencies": [
+        "scaling_tau"
+      ],
+      "provenance": ["openai_report", "openai_navier_stokes_paper"]
+    },
+    {
+      "claim_id": "mechanism_residual_cancellation",
+      "statement": "The claimed oscillatory correction and nonlinear momentum flux cancel the singular background residual while leaving a smooth forcing term.",
+      "domain": "navier_stokes",
+      "claim_type": "intermediate_claim",
+      "source": "openai_lean_repo",
+      "source_location": "NavierStokes/SlowResidualMatching.lean / NavierStokes/CorrectionInitialization.lean",
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "assumptions": [
+        "finite slow residual matching",
+        "truncation residual control",
+        "pressure defect initialization"
+      ],
+      "dependencies": [
+        "mechanism_collapsing_vortex",
+        "scaling_tau"
+      ],
+      "provenance": ["openai_lean_repo", "openai_navier_stokes_paper"]
+    },
+    {
+      "claim_id": "smooth_force_requirement",
+      "statement": "The construction requires the external force to remain smooth so the example stays within the admissible Clay forcing class rather than winning by leaving the problem statement.",
+      "domain": "navier_stokes",
+      "claim_type": "consequence",
+      "source": "openai_report",
+      "source_location": "forcing-class discussion",
+      "assumptions": [
+        "force must stay within the claimed admissible class"
+      ],
+      "dependencies": [
+        "mechanism_residual_cancellation"
+      ],
+      "provenance": ["openai_report", "openai_navier_stokes_paper"]
+    },
+    {
+      "claim_id": "lean_formalization_scope",
+      "statement": "The Lean repository formalizes theorem statements, candidate properties, residual identities, energy estimates, and comparator bridges, but formalization is distinct from independent proof acceptance.",
+      "domain": "formal_verification",
+      "claim_type": "formalized_statement",
+      "source": "openai_lean_repo",
+      "source_location": "README / theorem files / comparator challenge json",
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "assumptions": [
+        "Lean files correspond to stated theorem names",
+        "formal verification requires successful compilation or comparator checking"
+      ],
+      "dependencies": [
+        "openai_breakdown_r3",
+        "openai_breakdown_periodic"
+      ],
+      "provenance": ["openai_lean_repo"]
+    },
+    {
+      "claim_id": "euler_precursor_blowup",
+      "statement": "The related Euler result constructs smooth compactly supported divergence-free initial velocity on ℝ³ whose unforced incompressible Euler solution develops a finite-time singularity.",
+      "domain": "euler",
+      "claim_type": "theorem",
+      "source": "openai_lean_repo",
+      "source_location": "README / Euler/Solution.lean",
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "assumptions": [
+        "unforced incompressible Euler",
+        "smooth compactly supported divergence-free initial velocity"
+      ],
+      "dependencies": [],
+      "provenance": ["openai_euler_paper", "openai_lean_repo"]
+    },
+    {
+      "claim_id": "euler_to_navier_strategy",
+      "statement": "The research ladder treats the Euler singularity result as a related simpler problem whose mechanism and proof technology inform the Navier–Stokes construction.",
+      "domain": "research_strategy",
+      "claim_type": "consequence",
+      "source": "openai_report",
+      "source_location": "Euler precursor discussion",
+      "assumptions": [
+        "simpler-related-problem-first methodology"
+      ],
+      "dependencies": [
+        "euler_precursor_blowup"
+      ],
+      "provenance": ["openai_report", "openai_euler_paper"]
+    },
+    {
+      "claim_id": "independent_verification_requirement",
+      "statement": "Independent verification requires more than repeated agreement among related LLM outputs or source descendants; it requires at least one genuinely independent derivation, implementation, formal check, or corroborating literature path.",
+      "domain": "research_methodology",
+      "claim_type": "definition",
+      "source": "openai_report",
+      "source_location": "verification policy",
+      "assumptions": [],
+      "dependencies": [],
+      "provenance": ["openai_report"]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev_clay_equations",
+      "claim_id": "clay_problem_r3",
+      "kind": "definition",
+      "summary": "Clay source defines the 3D incompressible Navier–Stokes equations and global smoothness alternatives.",
+      "source_id": "clay_problem_statement",
+      "source_location": "equations / alternatives",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": ["clay_problem_statement"],
+      "details": {"ancestry": "clay_problem_statement"}
+    },
+    {
+      "evidence_id": "ev_r3_theorem",
+      "claim_id": "openai_breakdown_r3",
+      "kind": "theorem",
+      "summary": "OpenAI README and NavierStokes/R3/Theorem.lean state theorem_1_1 for whole-space breakdown at every positive viscosity.",
+      "source_id": "openai_lean_repo",
+      "source_location": "README / theorem_1_1",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": ["openai_lean_repo"],
+      "details": {"ancestry": "openai_navier_stokes_lineage"}
+    },
+    {
+      "evidence_id": "ev_periodic_theorem",
+      "claim_id": "openai_breakdown_periodic",
+      "kind": "theorem",
+      "summary": "Comparator challenge theorem names and README assert the periodic torus breakdown alternative.",
+      "source_id": "openai_lean_repo",
+      "source_location": "ComparatorChallenges/NavierStokes.json",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": ["openai_lean_repo"],
+      "details": {"ancestry": "openai_navier_stokes_lineage"}
+    },
+    {
+      "evidence_id": "ev_similarity_scaling",
+      "claim_id": "scaling_tau",
+      "kind": "estimate",
+      "summary": "The structured source bundle records τ = 1 - t, radial scale ~ τ^(1/2), and axial scale ~ τ^(1/2-h), aligned with SimilarityHomogeneity formalization loci.",
+      "source_id": "openai_navier_stokes_paper",
+      "source_location": "similarity scaling",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": ["openai_navier_stokes_paper", "openai_lean_repo"],
+      "details": {"ancestry": "openai_navier_stokes_lineage"}
+    },
+    {
+      "evidence_id": "ev_residual_matching",
+      "claim_id": "mechanism_residual_cancellation",
+      "kind": "formalization",
+      "summary": "SlowResidualMatching formalizes finite slow residuals, radial stress primitives, omitted quadratic interactions, and controlled tail bounds.",
+      "source_id": "openai_lean_repo",
+      "source_location": "NavierStokes/SlowResidualMatching.lean",
+      "status": "FORMALIZED",
+      "independence": "formal_verification",
+      "provenance": ["openai_lean_repo"],
+      "details": {"ancestry": "openai_navier_stokes_lineage"}
+    },
+    {
+      "evidence_id": "ev_euler_precursor",
+      "claim_id": "euler_precursor_blowup",
+      "kind": "theorem",
+      "summary": "OpenAI README and Euler/Solution.lean expose euler_breakdown_R3 as the precursor singularity theorem.",
+      "source_id": "openai_lean_repo",
+      "source_location": "README / Euler/Solution.lean",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": ["openai_lean_repo", "openai_euler_paper"],
+      "details": {"ancestry": "openai_euler_lineage"}
+    },
+    {
+      "evidence_id": "ev_independence_policy",
+      "claim_id": "independent_verification_requirement",
+      "kind": "definition",
+      "summary": "The research policy rejects same-lineage confirmations as independent verification.",
+      "source_id": "openai_report",
+      "source_location": "verification policy",
+      "status": "SUPPORTED",
+      "independence": "cross_model_confirmation",
+      "provenance": ["openai_report"],
+      "details": {"ancestry": "openai_navier_stokes_lineage"}
+    }
+  ],
+  "tracks": [
+    {
+      "track_id": "proof_construction",
+      "role": "proof_construction",
+      "strategy": "constructive PDE claim graph anchored in theorem statements and dependencies",
+      "hypothesis": "The claimed whole-space and periodic breakdown results follow if the candidate construction, residual cancellation, and energy statements all hold simultaneously.",
+      "assumptions": ["openai theorem statements correspond to the manuscript claims"],
+      "dependencies": ["mechanism_residual_cancellation", "bounded_energy_with_blowup"],
+      "focus_claims": ["openai_breakdown_r3", "openai_breakdown_periodic"],
+      "intermediate_results": [
+        {"claim_id": "openai_breakdown_r3", "summary": "whole-space theorem statement loaded", "status": "SUPPORTED"}
+      ],
+      "evidence": ["ev_r3_theorem"],
+      "failed_approaches": [],
+      "unresolved_objections": ["independent verification not yet satisfied"],
+      "confidence": 0.62,
+      "provenance": ["openai_lean_repo"]
+    },
+    {
+      "track_id": "disproof_counterexample_search",
+      "role": "disproof/counterexample_search",
+      "strategy": "search for missing assumptions, incorrect scaling, or contradiction with known regularity criteria",
+      "hypothesis": "A defect should appear if the forcing class, energy control, or singularity definition is inconsistent.",
+      "assumptions": [],
+      "dependencies": ["smooth_force_requirement", "bounded_energy_with_blowup"],
+      "focus_claims": ["smooth_force_requirement"],
+      "intermediate_results": [
+        {"claim_id": "smooth_force_requirement", "summary": "forcing admissibility is a critical attack surface", "status": "SUPPORTED"}
+      ],
+      "evidence": [],
+      "failed_approaches": ["No contradiction loaded from current primary bundle"],
+      "unresolved_objections": ["Need independent forcing-class reproduction"],
+      "confidence": 0.41,
+      "provenance": ["barrot_adversarial_track"]
+    },
+    {
+      "track_id": "computational_exploration",
+      "role": "computational_exploration",
+      "strategy": "treat scaling identities and energy-volume tradeoffs as reproducible numerical sanity checks",
+      "hypothesis": "The anisotropic shrinking region can explain bounded L2 energy despite local blow-up only if the scaling ledger is internally coherent.",
+      "assumptions": ["scaling bundle is internally consistent"],
+      "dependencies": ["scaling_tau", "bounded_energy_with_blowup"],
+      "focus_claims": ["scaling_tau", "bounded_energy_with_blowup"],
+      "intermediate_results": [
+        {"claim_id": "bounded_energy_with_blowup", "summary": "energy-versus-velocity tradeoff captured as structured consequence", "status": "SUPPORTED"}
+      ],
+      "evidence": ["ev_similarity_scaling"],
+      "failed_approaches": [],
+      "unresolved_objections": ["No independent numerical reproduction included"],
+      "confidence": 0.53,
+      "provenance": ["openai_navier_stokes_paper"]
+    },
+    {
+      "track_id": "literature_research",
+      "role": "literature_research",
+      "strategy": "map theorem claims onto Clay alternatives and cited prior-work clusters",
+      "hypothesis": "Prior regularity and blow-up literature defines the strongest external challenge surface for the claim.",
+      "assumptions": [],
+      "dependencies": ["clay_problem_r3", "clay_problem_periodic"],
+      "focus_claims": ["clay_problem_r3", "clay_problem_periodic"],
+      "intermediate_results": [
+        {"claim_id": "clay_problem_r3", "summary": "Clay alternatives C and D loaded into source graph", "status": "SUPPORTED"}
+      ],
+      "evidence": ["ev_clay_equations"],
+      "failed_approaches": [],
+      "unresolved_objections": ["Individual cited papers not yet expanded into per-theorem source cards"],
+      "confidence": 0.68,
+      "provenance": ["clay_problem_statement"]
+    },
+    {
+      "track_id": "alternative_derivation",
+      "role": "alternative_derivation",
+      "strategy": "use the Euler precursor as the research-ladder starting point and transfer only mechanism-level insights",
+      "hypothesis": "Useful singularity mechanisms can transfer from Euler to Navier–Stokes without assuming the main claim is already solved.",
+      "assumptions": ["Research ladder can transfer mechanism but not conclusion"],
+      "dependencies": ["euler_precursor_blowup", "euler_to_navier_strategy"],
+      "focus_claims": ["euler_precursor_blowup", "euler_to_navier_strategy"],
+      "intermediate_results": [
+        {"claim_id": "euler_to_navier_strategy", "summary": "Euler precursor contributes transferable research strategy, not automatic proof", "status": "SUPPORTED"}
+      ],
+      "evidence": ["ev_euler_precursor"],
+      "failed_approaches": [],
+      "unresolved_objections": ["Transfer from Euler to Navier–Stokes requires explicit justification claim-by-claim"],
+      "confidence": 0.56,
+      "provenance": ["openai_report", "openai_euler_paper"]
+    },
+    {
+      "track_id": "formalization",
+      "role": "formalization",
+      "strategy": "treat Lean theorem/file coverage as distinct evidence from mathematical acceptance",
+      "hypothesis": "The formal repository can certify exact theorem statements and comparator bridges, but only after controlled compilation and version capture.",
+      "assumptions": ["Lean toolchain and comparator config are correctly identified"],
+      "dependencies": ["lean_formalization_scope"],
+      "focus_claims": ["lean_formalization_scope"],
+      "intermediate_results": [
+        {"claim_id": "lean_formalization_scope", "summary": "formalization loci and theorem names loaded", "status": "FORMALIZED"}
+      ],
+      "evidence": ["ev_residual_matching"],
+      "failed_approaches": [],
+      "unresolved_objections": ["No local Lean build was run in this repository"],
+      "confidence": 0.72,
+      "provenance": ["openai_lean_repo"]
+    },
+    {
+      "track_id": "adversarial_mathematical_verification",
+      "role": "adversarial_mathematical_verification",
+      "strategy": "independently challenge assumptions, scaling, force regularity, and whether formalization actually covers the manuscript implication chain",
+      "hypothesis": "A valid challenge should block acceptance until resolved, even if the main theorem statements are formalized.",
+      "assumptions": [],
+      "dependencies": ["openai_breakdown_r3", "mechanism_residual_cancellation", "smooth_force_requirement"],
+      "focus_claims": ["openai_breakdown_r3", "mechanism_residual_cancellation", "smooth_force_requirement"],
+      "intermediate_results": [
+        {"claim_id": "openai_breakdown_r3", "summary": "challenge loaded: theorem statement alone is insufficient for acceptance", "status": "SUPPORTED"}
+      ],
+      "evidence": [],
+      "failed_approaches": [],
+      "unresolved_objections": ["Need independent reproduction of the force regularity and implication chain"],
+      "confidence": 0.49,
+      "provenance": ["barrot_adversarial_track"]
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "review_id": "adv_force_regularization",
+      "claim_id": "openai_breakdown_r3",
+      "objections": [
+        "The theorem statement is not enough without verifying that the smooth force remains in the admissible Clay class throughout the construction.",
+        "The current bundle does not yet include an independent derivation of the energy-versus-blowup implication."
+      ],
+      "responses": [],
+      "status": "CHALLENGED",
+      "provenance": ["adversarial_mathematical_verification"]
+    }
+  ],
+  "formal_verification": [
+    {
+      "verification_id": "lean_navier_stokes_bundle",
+      "system": "lean",
+      "claim_ids": [
+        "openai_breakdown_r3",
+        "openai_breakdown_periodic",
+        "lean_formalization_scope"
+      ],
+      "theorem_names": [
+        "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+        "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+      ],
+      "source_files": [
+        "NavierStokes/R3/Theorem.lean",
+        "ComparatorChallenges/NavierStokes.json",
+        "NavierStokes/ComparatorSolution.lean"
+      ],
+      "repository": "https://github.com/openai/NavierStokesAndEuler",
+      "repository_path": null,
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "toolchain_version": "leanprover/lean4:v4.34.0-rc2",
+      "command": ["lake", "build"],
+      "dependencies": [
+        "Mathlib",
+        "Lake",
+        "ComparatorChallenges/NavierStokes.json"
+      ]
+    }
+  ],
+  "question_map": [
+    {
+      "question_id": "clay_requirements",
+      "prompt": "What exactly does Clay require?",
+      "claim_ids": ["clay_problem_r3", "clay_problem_periodic"],
+      "source_ids": ["clay_problem_statement"],
+      "answer": {
+        "equations": [
+          "∂_t u + (u · ∇)u + ∇p = νΔu + f",
+          "∇ · u = 0"
+        ],
+        "domains": ["ℝ³", "ℝ³/ℤ³"],
+        "initial_data_assumptions": [
+          "smooth divergence-free initial velocity",
+          "smooth periodic data for the torus alternative"
+        ],
+        "forcing_assumptions": [
+          "admissible smooth forcing in the claimed construction"
+        ],
+        "smoothness_requirements": [
+          "global smooth solution if no singularity occurs",
+          "finite-time breakdown example if the negative alternative holds"
+        ],
+        "bounded_energy_requirements": [
+          "bounded / finite kinetic energy in the whole-space formulation"
+        ],
+        "alternatives": ["C", "D"]
+      }
+    },
+    {
+      "question_id": "clay_alternative",
+      "prompt": "Which Clay alternative does the construction establish?",
+      "claim_ids": ["openai_breakdown_r3", "openai_breakdown_periodic"],
+      "source_ids": ["openai_lean_repo", "clay_problem_statement"],
+      "answer": {
+        "alternatives": [
+          {"label": "C", "domain": "ℝ³", "claim_id": "openai_breakdown_r3"},
+          {"label": "D", "domain": "ℝ³/ℤ³", "claim_id": "openai_breakdown_periodic"}
+        ]
+      }
+    },
+    {
+      "question_id": "initial_data_assumptions",
+      "prompt": "What are the initial-data assumptions?",
+      "claim_ids": ["openai_breakdown_r3", "openai_breakdown_periodic", "euler_precursor_blowup"],
+      "source_ids": ["openai_lean_repo", "clay_problem_statement"],
+      "answer": {
+        "whole_space": ["smooth initial data", "divergence-free velocity field"],
+        "periodic": ["smooth periodic initial data"],
+        "euler_precursor": ["smooth compactly supported divergence-free initial velocity"]
+      }
+    },
+    {
+      "question_id": "forcing_assumptions",
+      "prompt": "What are the forcing assumptions?",
+      "claim_ids": ["openai_breakdown_r3", "openai_breakdown_periodic", "smooth_force_requirement"],
+      "source_ids": ["openai_report", "openai_lean_repo"],
+      "answer": {
+        "whole_space": ["smooth forcing"],
+        "periodic": ["smooth periodic forcing"],
+        "why_it_matters": "The force must remain smooth so the claimed breakdown stays inside the admissible Clay class."
+      }
+    },
+    {
+      "question_id": "energy_vs_velocity",
+      "prompt": "Why can velocity become unbounded while kinetic energy remains bounded?",
+      "claim_ids": ["bounded_energy_with_blowup", "scaling_tau"],
+      "source_ids": ["openai_navier_stokes_paper", "openai_lean_repo"],
+      "answer": {
+        "mechanism": "Pointwise blow-up is claimed to occur on a shrinking anisotropic region whose collapsing volume offsets growth in the local velocity amplitude.",
+        "scaling": {
+          "tau": "1 - t",
+          "radial": "τ^(1/2)",
+          "axial": "τ^(1/2-h)"
+        },
+        "distinction": "Pointwise unboundedness and bounded global L2 energy are tracked as different claims."
+      }
+    },
+    {
+      "question_id": "collapsing_vortex",
+      "prompt": "What is the role of the collapsing vortex?",
+      "claim_ids": ["mechanism_collapsing_vortex"],
+      "source_ids": ["openai_navier_stokes_paper"],
+      "answer": {
+        "role": "It provides the self-similar collapsing geometry, inward spiral, and axial stretching used to organize the singular regime."
+      }
+    },
+    {
+      "question_id": "oscillatory_correction",
+      "prompt": "What is the purpose of the oscillatory correction?",
+      "claim_ids": ["mechanism_residual_cancellation"],
+      "source_ids": ["openai_lean_repo", "openai_navier_stokes_paper"],
+      "answer": {
+        "role": "It contributes nonlinear momentum-flux terms that cancel the singular background residual while keeping the remaining forcing smooth and controlled."
+      }
+    },
+    {
+      "question_id": "what_is_canceled",
+      "prompt": "What is being canceled?",
+      "claim_ids": ["mechanism_residual_cancellation"],
+      "source_ids": ["openai_lean_repo"],
+      "answer": {
+        "target": "the singular background residual / pressure defect left by the leading collapsing profile"
+      }
+    },
+    {
+      "question_id": "smooth_force",
+      "prompt": "Why must the external force remain smooth?",
+      "claim_ids": ["smooth_force_requirement"],
+      "source_ids": ["openai_report"],
+      "answer": {
+        "reason": "Otherwise the example could fall outside the admissible forcing class and would not establish the relevant Clay alternative."
+      }
+    },
+    {
+      "question_id": "analytical_vs_lean",
+      "prompt": "What is the difference between the analytical result and the Lean formalization?",
+      "claim_ids": ["openai_breakdown_r3", "lean_formalization_scope"],
+      "source_ids": ["openai_navier_stokes_paper", "openai_lean_repo"],
+      "answer": {
+        "analytical_result": "The manuscript states the mathematical construction and its implications.",
+        "lean_formalization": "The Lean repository encodes specific theorem statements, residual identities, energy statements, and comparator bridges at a pinned commit and toolchain.",
+        "important_gap": "Formalized does not automatically mean independently accepted or independently verified."
+      }
+    },
+    {
+      "question_id": "what_does_lean_verify",
+      "prompt": "What does Lean actually verify?",
+      "claim_ids": ["lean_formalization_scope"],
+      "source_ids": ["openai_lean_repo"],
+      "answer": {
+        "theorem_names": [
+          "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+          "NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+          "Euler.euler_breakdown_R3"
+        ],
+        "source_files": [
+          "NavierStokes/R3/Theorem.lean",
+          "ComparatorChallenges/NavierStokes.json",
+          "Euler/Solution.lean"
+        ],
+        "toolchain": "leanprover/lean4:v4.34.0-rc2"
+      }
+    },
+    {
+      "question_id": "human_interpretation_gap",
+      "prompt": "Which statements remain dependent on human mathematical interpretation?",
+      "claim_ids": ["lean_formalization_scope", "independent_verification_requirement"],
+      "source_ids": ["openai_lean_repo", "openai_report"],
+      "answer": {
+        "remaining_gaps": [
+          "whether the manuscript-to-formalization correspondence is complete for every informal explanatory step",
+          "whether independent mathematical verification has confirmed the implication chain outside the originating lineage",
+          "whether unresolved adversarial objections have been answered"
+        ]
+      }
+    },
+    {
+      "question_id": "independent_verification",
+      "prompt": "What constitutes independent verification?",
+      "claim_ids": ["independent_verification_requirement"],
+      "source_ids": ["openai_report"],
+      "answer": {
+        "allowed": [
+          "independent mathematical derivation",
+          "independent implementation",
+          "independent formal verification",
+          "independent literature corroboration"
+        ],
+        "disallowed": [
+          "same-model self-confirmation",
+          "same-lineage source repetition"
+        ]
+      }
+    },
+    {
+      "question_id": "falsification_evidence",
+      "prompt": "What evidence would falsify the claimed resolution?",
+      "claim_ids": ["openai_breakdown_r3", "smooth_force_requirement", "mechanism_residual_cancellation"],
+      "source_ids": ["openai_report", "openai_lean_repo"],
+      "answer": {
+        "examples": [
+          "a missing admissibility assumption on the force",
+          "a contradiction in the scaling or energy bookkeeping",
+          "a formalization gap between theorem statement and claimed consequence",
+          "a successful adversarial contradiction against the implication chain"
+        ]
+      }
+    },
+    {
+      "question_id": "relevant_prior_work",
+      "prompt": "Which prior mathematical results are relevant?",
+      "claim_ids": ["openai_breakdown_r3"],
+      "source_ids": [
+        "literature_leray",
+        "literature_ckn",
+        "literature_ess",
+        "literature_tao",
+        "literature_buckmaster_vicol",
+        "literature_albritton_brue_colombo",
+        "literature_lifschitz_hameiri",
+        "literature_friedlander_vishik",
+        "literature_craik_criminale"
+      ],
+      "answer": {
+        "clusters": [
+          "Leray",
+          "Caffarelli–Kohn–Nirenberg",
+          "Escauriaza–Seregin–Šverák",
+          "Tao",
+          "Buckmaster/Vicol",
+          "Albritton/Brué/Colombo",
+          "Lifschitz/Hameiri",
+          "Friedlander/Vishik",
+          "Craik/Criminale"
+        ]
+      }
+    },
+    {
+      "question_id": "euler_contribution",
+      "prompt": "How did the Euler result contribute to the research process?",
+      "claim_ids": ["euler_precursor_blowup", "euler_to_navier_strategy"],
+      "source_ids": ["openai_euler_paper", "openai_report"],
+      "answer": {
+        "ladder": [
+          "related simpler problem: Euler",
+          "finite-time singularity result",
+          "extract mechanism / proof technology",
+          "redirect to Navier–Stokes with new hypotheses"
+        ]
+      }
+    },
+    {
+      "question_id": "computational_vs_proof",
+      "prompt": "Which parts are computational evidence versus mathematical proof?",
+      "claim_ids": ["lean_formalization_scope", "openai_breakdown_r3"],
+      "source_ids": ["openai_lean_repo", "openai_navier_stokes_paper"],
+      "answer": {
+        "mathematical_proof": [
+          "manuscript theorem statements and derivations",
+          "formalized theorem files"
+        ],
+        "computational_or_operational": [
+          "Lean compilation",
+          "comparator checking",
+          "future numerical sanity checks for scaling coherence"
+        ]
+      }
+    },
+    {
+      "question_id": "independent_reproduction_requirements",
+      "prompt": "What would Barrot need to independently reproduce the result?",
+      "claim_ids": ["openai_breakdown_r3", "lean_formalization_scope", "independent_verification_requirement"],
+      "source_ids": ["openai_navier_stokes_paper", "openai_lean_repo", "openai_report"],
+      "answer": {
+        "requirements": [
+          "source graph for assumptions, lemmas, theorems, and dependencies",
+          "independent derivation or checking of scaling and energy claims",
+          "controlled Lean verification at a pinned commit and toolchain",
+          "adversarial review with resolved objections",
+          "at least one genuinely independent verification path"
+        ]
+      }
+    }
+  ]
+}

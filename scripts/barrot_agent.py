@@ -24,6 +24,11 @@ from barrot_agent.orchestration.repository_repair import (
     RepositoryRepairController,
     WorkQueueController,
 )
+from barrot_agent.research import (
+    NavierStokesProblemAdapter,
+    ScientificDiscoveryController,
+    is_scientific_discovery_task,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -586,6 +591,10 @@ def _extract_cycle_data(payload: dict[str, object] | Any) -> dict[str, Any]:
     return _cycle_dict(payload_dict)
 
 
+def _is_research_cycle(payload: dict[str, Any]) -> bool:
+    return "problem_id" in payload and "sources" in payload and "claims" in payload
+
+
 def create_pull_request(cycle: dict[str, object] | Any) -> None:
     cycle_data = _extract_cycle_data(cycle)
     safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
@@ -636,9 +645,41 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
 
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     payload = _work_dict(cycle)
-    cycle_data = _extract_cycle_data(payload)
     record_dir = ROOT / ".barrot" / "collaboration_records"
     record_dir.mkdir(parents=True, exist_ok=True)
+    if _is_research_cycle(payload):
+        record = {
+            "work_bundle": "scientific_discovery",
+            "cycle_id": payload.get("cycle_id"),
+            "problem_id": payload.get("problem_id"),
+            "actions_performed": payload.get("state_history", []),
+            "results": {
+                "status": payload.get("status"),
+                "problem_resolution_status": payload.get("problem_resolution_status"),
+                "acceptance_gate_passed": payload.get("acceptance_gate_passed"),
+            },
+            "evidence": {
+                "problem": payload.get("problem", {}),
+                "sources": payload.get("sources", []),
+                "claims": payload.get("claims", []),
+                "tracks": payload.get("tracks", []),
+                "cross_pollination": payload.get("cross_pollination", []),
+                "formal_verifications": payload.get("formal_verifications", []),
+                "adversarial_reviews": payload.get("adversarial_reviews", []),
+                "unresolved_questions": payload.get("unresolved_questions", []),
+            },
+            "failures": payload.get("failure"),
+            "final_state": payload.get("current_state"),
+            "remaining_blockers": payload.get("unresolved_questions", []),
+        }
+        latest = record_dir / "latest_scientific_discovery.json"
+        latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+        cycle_id = str(payload.get("cycle_id") or "unknown")
+        per_cycle = record_dir / f"{cycle_id}.json"
+        per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+        return latest
+
+    cycle_data = _extract_cycle_data(payload)
     record = {
         "work_bundle": "autonomous_repository_repair",
         "cycle_id": cycle_data.get("cycle_id"),
@@ -713,11 +754,30 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
 
 
 def main() -> None:
-    if not GROQ_KEY:
-        raise SystemExit("GROQ_API_KEY not set")
-
     configure_git()
     checkout_branch(BRANCH)
+
+    if is_scientific_discovery_task(TITLE, TASK):
+        cycle = ScientificDiscoveryController(workspace=ROOT).run(NavierStokesProblemAdapter())
+        rendered = json.dumps(cycle.to_dict(), indent=2)
+        print(rendered)
+        write_collaboration_record(cycle)
+        if cycle.status not in {"complete", "no_solution_claim"}:
+            post_issue_comment(
+                "Barrot scientific discovery failed safely.\n\n```json\n"
+                + rendered[:55000]
+                + "\n```"
+            )
+            raise SystemExit(1)
+        post_issue_comment(
+            "Barrot scientific discovery recorded.\n\n```json\n"
+            + rendered[:55000]
+            + "\n```"
+        )
+        return
+
+    if not GROQ_KEY:
+        raise SystemExit("GROQ_API_KEY not set")
 
     controller = RepositoryRepairController(
         brain=ScriptBrain(),

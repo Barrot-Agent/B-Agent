@@ -62,6 +62,16 @@ try:
 except Exception:
     _registry_available = False
 
+try:
+    from .research import (
+        NavierStokesProblemAdapter,
+        ScientificDiscoveryController,
+    )
+
+    _research_available = True
+except Exception:
+    _research_available = False
+
 __all__ = [
     "AgentEvent",
     "AgentEventType",
@@ -85,3 +95,6 @@ __all__ = [
 
 if _rendering_available:
     __all__ += ["DatasetManager", "AssetLoader", "DatasetAnalytics"]
+
+if _research_available:
+    __all__ += ["ScientificDiscoveryController", "NavierStokesProblemAdapter"]
