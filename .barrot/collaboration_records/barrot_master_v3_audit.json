@@ -1,0 +1,144 @@
+{
+  "version": 3,
+  "timestamp": "2026-09-13T22:48:30Z",
+  "execution_status": "VERIFIED",
+  "live_entrypoint": {
+    "workflow": ".github/workflows/barrot-agent.yml",
+    "script": "scripts/barrot_agent.py",
+    "repair_controller": "barrot_agent/orchestration/repository_repair.py",
+    "scientific_controller": "barrot_agent/research/scientific_discovery.py"
+  },
+  "bundles": {
+    "bundle_1_shared_orchestration_core": {
+      "status": "VERIFIED",
+      "files": [
+        "barrot_agent/orchestration/shared_runtime.py",
+        "barrot_agent/orchestration/__init__.py",
+        "barrot_agent/research/scientific_discovery.py"
+      ],
+      "evidence": [
+        "shared fingerprints, checkpoints, validation, provider failure normalization, durable state store",
+        "scientific discovery now records checkpoints, execution records, retry policy, and completion gate"
+      ]
+    },
+    "bundle_2_multi_agent_research": {
+      "status": "VERIFIED",
+      "files": [
+        "barrot_agent/research/scientific_discovery.py",
+        "tests/test_scientific_discovery.py"
+      ],
+      "evidence": [
+        "durable track planning/execution checkpoints",
+        "resume from checkpoint test",
+        "independence and adversarial gate enforcement"
+      ]
+    },
+    "bundle_3_cross_pollination": {
+      "status": "VERIFIED",
+      "files": [
+        "barrot_agent/research/scientific_discovery.py",
+        "tests/test_scientific_discovery.py"
+      ],
+      "evidence": [
+        "duplicate, invalid, circular, and contradictory transfer handling",
+        "provenance preservation across transfers"
+      ]
+    },
+    "bundle_4_navier_stokes": {
+      "status": "VERIFIED",
+      "files": [
+        "data/research/navier_stokes_research_bundle.json",
+        "barrot_agent/research/scientific_discovery.py",
+        "tests/test_scientific_discovery.py"
+      ],
+      "evidence": [
+        "formal verification remains distinct from independent verification",
+        "default live outcome remains no_solution_claim absent independent proof"
+      ]
+    },
+    "bundle_5_formal_verification_and_red_team": {
+      "status": "VERIFIED",
+      "files": [
+        "barrot_agent/research/scientific_discovery.py",
+        "tests/test_scientific_discovery.py"
+      ],
+      "evidence": [
+        "Lean gateway records theorem metadata, toolchain, outputs, and source-team vs independent distinction",
+        "adversarial review blocks acceptance when unresolved"
+      ]
+    },
+    "bundle_6_engineering_hardening": {
+      "status": "VERIFIED",
+      "files": [
+        "scripts/barrot_capability_audit.py",
+        "scripts/barrot_self_upgrade.py",
+        ".github/workflows/barrot-self-upgrade.yml",
+        "barrot_agent/orchestration/repository_repair.py",
+        "tests/test_v3_scripts.py"
+      ],
+      "evidence": [
+        "durable self-upgrade state",
+        "provider retry evidence",
+        "remote branch verification gate",
+        "NO_REPAIR_REQUIRED path"
+      ]
+    },
+    "bundle_7_creative_engine": {
+      "status": "VERIFIED",
+      "files": [
+        "barrot_agent/creative/production.py",
+        "barrot_agent/creative/__init__.py",
+        "tests/test_scientific_discovery.py"
+      ],
+      "evidence": [
+        "separate creative runtime and persistence namespace",
+        "provider-neutral pending-by-default media engines",
+        "no false claim of generated media"
+      ]
+    }
+  },
+  "tests": [
+    {
+      "test": "compileall",
+      "status": "VERIFIED",
+      "command": "python3 -m compileall -q /home/runner/work/B-Agent/B-Agent/barrot_agent /home/runner/work/B-Agent/B-Agent/scripts /home/runner/work/B-Agent/B-Agent/tests",
+      "result": "passed",
+      "evidence_location": "local shell run 7"
+    },
+    {
+      "test": "targeted_v3_pytest",
+      "status": "VERIFIED",
+      "command": "python3 -m pytest -q -o addopts='' tests/test_scientific_discovery.py tests/test_v3_scripts.py",
+      "result": "20 passed",
+      "evidence_location": "local shell run 16"
+    },
+    {
+      "test": "targeted_repo_pytest",
+      "status": "VERIFIED",
+      "command": "python3 -m pytest -q -o addopts='' tests/test_cognitive_integrity.py tests/test_evolution_engine.py tests/test_claim_integrity.py tests/test_corroboration.py tests/test_evidence_corroboration.py tests/test_source_independence.py tests/test_source_independent_corroboration.py tests/test_evidence_store.py tests/test_evidence_normalization.py tests/test_claim_events.py tests/test_evidence_pipeline_integration.py tests/test_reactive_observers.py tests/test_intelligence_events.py tests/test_evidence_quality.py tests/test_claim_lifecycle.py tests/test_confidence_calibration.py tests/test_weighted_corroboration.py tests/test_risk_manager.py tests/test_coinbase_trader.py tests/test_scientific_discovery.py tests/test_repository_repair.py tests/test_barrot_agent_script.py tests/test_v3_scripts.py",
+      "result": "100 passed",
+      "evidence_location": "local shell run 18"
+    },
+    {
+      "test": "full_pytest",
+      "status": "VERIFIED",
+      "command": "python3 -m pytest -q -o addopts=''",
+      "result": "254 passed",
+      "evidence_location": "local shell run 17"
+    },
+    {
+      "test": "secret_scan",
+      "status": "VERIFIED",
+      "command": "runtime-tools-secret_scanning",
+      "result": "No secrets detected",
+      "evidence_location": "tool result"
+    },
+    {
+      "test": "parallel_validation",
+      "status": "VERIFIED",
+      "command": "parallel_validation",
+      "result": "CodeQL 0 alerts; code review returned no findings",
+      "evidence_location": "tool result"
+    }
+  ]
+}
