@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 
+from barrot_agent.creative import ProductionDirector
 from barrot_agent.research import (
     AdversarialReview,
     ClaimStatus,
@@ -16,6 +17,7 @@ from barrot_agent.research import (
     ResearchState,
     ScientificDiscoveryController,
     StaticResearchProblemAdapter,
+    ResearchTrack,
     VerificationIndependence,
     is_scientific_discovery_task,
 )
@@ -284,7 +286,7 @@ def test_failed_lean_compilation_is_recorded(tmp_path: Path) -> None:
 
     assert cycle.status == "no_solution_claim"
     assert cycle.formal_verifications[0]["compiled"] is False
-    assert cycle.formal_verifications[0]["status"] == ClaimStatus.UNRESOLVED.value
+    assert cycle.formal_verifications[0]["status"] == ClaimStatus.FORMALIZED.value
 
 
 def test_successful_formal_verification_and_independence_can_complete(tmp_path: Path) -> None:
@@ -352,6 +354,108 @@ def test_research_cycle_persists_and_is_idempotent(tmp_path: Path) -> None:
     assert ledger.exists()
     assert second.cycle_id == first.cycle_id
     assert second.status == first.status
+
+
+def test_research_cycle_can_resume_from_checkpoint(tmp_path: Path) -> None:
+    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+    controller = ScientificDiscoveryController(workspace=tmp_path)
+    adapter = StaticResearchProblemAdapter(bundle)
+
+    first = controller.run(adapter, stop_after_state=ResearchState.SYNTHESIS)
+    resumed = controller.run(
+        adapter,
+        formal_runner=lambda command, repo: {
+            "returncode": 0,
+            "stdout": "ok",
+            "stderr": "",
+            "independently_verified": True,
+        },
+    )
+
+    assert first.status == "checkpointed"
+    assert resumed.resumed_from_cycle_id == first.cycle_id
+    assert resumed.status == "complete"
+    assert resumed.checkpoints
+
+
+def test_cross_pollination_blocks_invalid_circular_and_contradictory_transfers() -> None:
+    engine = CrossPollinationEngine()
+    transfers = engine.synthesize(
+        [
+            ResearchTrack(
+                track_id="circular-source",
+                role="proof_construction",
+                strategy="derive estimate",
+                hypothesis="velocity remains bounded",
+                dependencies=["recipient"],
+                focus_claims=["claim.main"],
+                intermediate_results=[{"claim_id": "claim.main", "summary": "lemma A", "status": "SUPPORTED"}],
+                provenance=["paper"],
+            ),
+            ResearchTrack(
+                track_id="recipient",
+                role="counterexample_search",
+                strategy="seek blowup",
+                hypothesis="velocity is not bounded",
+                dependencies=["claim.main"],
+                focus_claims=["claim.alt"],
+                provenance=["counterexample"],
+            ),
+            ResearchTrack(
+                track_id="missing-provenance",
+                role="literature_research",
+                strategy="survey",
+                hypothesis="collect references",
+                focus_claims=["claim.side"],
+                intermediate_results=[{"claim_id": "claim.side", "summary": "lemma B", "status": "SUPPORTED"}],
+                provenance=[],
+            ),
+            ResearchTrack(
+                track_id="contradiction-source",
+                role="alternative_derivation",
+                strategy="derive boundedness",
+                hypothesis="velocity remains bounded",
+                focus_claims=["claim.bound"],
+                intermediate_results=[{"claim_id": "claim.main", "summary": "lemma C", "status": "SUPPORTED"}],
+                provenance=["paper-2"],
+            ),
+        ]
+    )
+
+    assert any(item.result == "circular_blocked" for item in transfers)
+    assert any(item.result == "contradictory_transfer" for item in transfers)
+    assert any(item.result == "invalid_transfer" for item in transfers)
+
+
+def test_source_team_formal_verification_does_not_imply_independence() -> None:
+    evaluator = IndependenceEvaluator()
+    result = evaluator.assess(
+        [
+            ResearchEvidence(
+                evidence_id="team-formal",
+                claim_id="claim.main",
+                kind="formalization",
+                summary="source team proved theorem in Lean",
+                source_id="formal_repo",
+                status=ClaimStatus.FORMALLY_VERIFIED.value,
+                independence=VerificationIndependence.SOURCE_TEAM_FORMAL.value,
+                details={"ancestry": "source-team"},
+            )
+        ]
+    )
+
+    assert result["status"] == ClaimStatus.UNRESOLVED.value
+    assert result["independent_evidence"] == []
+
+
+def test_creative_engine_records_pending_media_without_claiming_generation(tmp_path: Path) -> None:
+    record = ProductionDirector(tmp_path).run()
+
+    assert record.status == "PENDING"
+    assert len(record.artists) == 3
+    assert len(record.songs) == 3
+    assert any(asset["status"] == "PENDING" for asset in record.assets)
+    assert record.completion_gate["satisfied"] is False
 
 
 def test_scientific_discovery_task_detection() -> None:

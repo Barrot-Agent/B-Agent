@@ -72,6 +72,16 @@ try:
 except Exception:
     _research_available = False
 
+try:
+    from .creative import (
+        CreativeProductionRecord,
+        ProductionDirector,
+    )
+
+    _creative_available = True
+except Exception:
+    _creative_available = False
+
 __all__ = [
     "AgentEvent",
     "AgentEventType",
@@ -98,3 +108,6 @@ if _rendering_available:
 
 if _research_available:
     __all__ += ["ScientificDiscoveryController", "NavierStokesProblemAdapter"]
+
+if _creative_available:
+    __all__ += ["ProductionDirector", "CreativeProductionRecord"]

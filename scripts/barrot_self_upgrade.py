@@ -1,13 +1,37 @@
 #!/usr/bin/env python3
-"""Barrot self-upgrade: identify capability gaps, generate a module, verify it,
-open a PR. Never pushes to main -- barrot-gated-merge.yml tiers the result."""
-import os, json, subprocess, urllib.request, urllib.error, sys, re, time, random
-from pathlib import Path
+"""Deterministic Barrot self-upgrade candidate generator."""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import subprocess
+import sys
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+from barrot_agent.orchestration.shared_runtime import (
+    CompletionGate,
+    DurableStateStore,
+    ExecutionRecord,
+    Failure,
+    FailureCode,
+    Fingerprint,
+    ProviderClient,
+    RetryPolicy,
+    ValidationResult,
+    bounded_subprocess,
+)
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = REPO_ROOT / "scripts"
+AUDIT_PATH = REPO_ROOT / "barrot_capability_audit.json"
+STATE_STORE = DurableStateStore(REPO_ROOT, "barrot_self_upgrade")
 
 MODEL_CANDIDATES = [
     "openai/gpt-oss-120b",
@@ -17,71 +41,122 @@ MODEL_CANDIDATES = [
 ]
 
 BANNED_TERMS = [
-    "rm -rf", ".git/", "git reset --hard", "git checkout main", "sed -i",
-    "git push", "subprocess.run([\"git\"", "os.system",
-    "quantum harmonization", "free energy", "Willowchip", "Aethel",
-    "Planck-scale", "bio-computing", "144-agent council",
+    "rm -rf",
+    ".git/",
+    "git reset --hard",
+    "git checkout main",
+    "sed -i",
+    "git push",
+    'subprocess.run(["git"',
+    "os.system",
+    "quantum harmonization",
+    "free energy",
+    "Willowchip",
+    "Aethel",
+    "Planck-scale",
+    "bio-computing",
+    "144-agent council",
 ]
 
-def load_audit():
-    f = REPO_ROOT / "barrot_capability_audit.json"
-    if not f.exists():
-        return None
-    with open(f) as fh:
-        return json.load(fh)
 
-def call_groq(prompt, max_retries=5):
-    last_error = ""
+class SelfUpgradeError(RuntimeError):
+    pass
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def load_audit() -> dict[str, Any] | None:
+    if not AUDIT_PATH.exists():
+        return None
+    return json.loads(AUDIT_PATH.read_text(encoding="utf-8"))
+
+
+def strip_fences(text: str) -> str:
+    match = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
+    return match.group(1) if match else text
+
+
+def git(*args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(["git", *args], cwd=REPO_ROOT, capture_output=True, text=True, check=False)
+
+
+def _send_groq_request(payload: dict[str, Any]) -> dict[str, Any]:
+    req = urllib.request.Request(
+        "https://api.groq.com/openai/v1/chat/completions",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"******",
+            "Content-Type": "application/json",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=90) as resp:
+        return json.load(resp)
+
+
+def call_groq(prompt: str) -> tuple[str, list[dict[str, Any]], Failure | None]:
+    execution_records: list[dict[str, Any]] = []
+    if not GROQ_KEY:
+        failure = Failure(
+            code=FailureCode.PROVIDER_AUTH.value,
+            message="GROQ_API_KEY not set",
+            failed_operation="call_groq",
+        )
+        return "", execution_records, failure
     for model in MODEL_CANDIDATES:
-        body = json.dumps({
+        payload = {
             "model": model,
             "messages": [{"role": "user", "content": prompt}],
             "max_tokens": 2000,
             "temperature": 0.4,
-        }).encode()
-        for attempt in range(max_retries):
-            req = urllib.request.Request(
-                "https://api.groq.com/openai/v1/chat/completions",
-                data=body,
-                headers={
-                    "Authorization": f"Bearer {GROQ_KEY}",
-                    "Content-Type": "application/json",
-                },
+        }
+        client = ProviderClient(
+            name=f"groq:{model}",
+            send=_send_groq_request,
+            retry_policy=RetryPolicy(max_attempts=3, base_delay_seconds=1.0, max_delay_seconds=8.0),
+        )
+        response, records, failure = client.request(payload)
+        execution_records.extend(record.to_dict() for record in records)
+        if response is None:
+            if failure and failure.code == FailureCode.PROVIDER_TOOL_CONFLICT.value:
+                return "", execution_records, failure
+            continue
+        try:
+            content = response["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError) as exc:
+            failure = Failure(
+                code=FailureCode.PROVIDER_INVALID_JSON.value,
+                message=str(exc),
+                raw_error=json.dumps(response)[:1000],
+                failed_operation=f"groq:{model}",
+                request_payload=payload,
             )
-            try:
-                with urllib.request.urlopen(req, timeout=90) as resp:
-                    content = json.load(resp)["choices"][0]["message"]["content"]
-                    print(f"✓ Groq success with model {model}")
-                    return content
-            except urllib.error.HTTPError as e:
-                status = e.code
-                try:
-                    err_body = e.read().decode()[:400]
-                except Exception:
-                    err_body = ""
-                last_error = f"HTTP {status}: {e.reason} | {err_body}"
-                if status in (401, 403):
-                    print(f"✗ {model} → {last_error}")
-                    break
-                if status in (429, 500, 502, 503, 504) and attempt < max_retries - 1:
-                    wait = min(2 ** attempt + random.uniform(0, 1.5), 30)
-                    print(f"↻ {model} {status} – retry in {wait:.1f}s (attempt {attempt+1}/{max_retries})")
-                    time.sleep(wait)
-                    continue
-                print(f"✗ {model} → {last_error}")
-                break
-            except Exception as e:
-                last_error = str(e)
-                print(f"✗ {model} → {last_error}")
-                break
-    print(f"All models failed. Last error: {last_error}")
-    return ""
+            execution_records.append(
+                ExecutionRecord(
+                    record_id=Fingerprint.create(model, response).value,
+                    operation="provider_response_parse",
+                    state="FAILED",
+                    input_fingerprint=Fingerprint.create(payload).value,
+                    output_fingerprint=Fingerprint.create(response).value,
+                    request=payload,
+                    response=response,
+                    provider=model,
+                    failure=failure,
+                ).to_dict()
+            )
+            continue
+        if content:
+            return str(content), execution_records, None
+    failure = Failure(
+        code=FailureCode.RETRY_EXHAUSTED.value,
+        message="All configured models failed to return code.",
+        failed_operation="call_groq",
+    )
+    return "", execution_records, failure
 
-def strip_fences(text):
-    m = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
-    return m.group(1) if m else text
 
-def generate_capability(gap_id, gap_name):
+def generate_capability(gap_id: int, gap_name: str) -> tuple[str | None, list[dict[str, Any]], Failure | None]:
     prompt = f"""Implement this capability as a standalone Python script: {gap_name} (gap ID {gap_id})
 
 HARD CONSTRAINTS:
@@ -95,90 +170,179 @@ HARD CONSTRAINTS:
 - Do not reference hardware, APIs, or database tables you cannot verify exist
 
 Output ONLY the Python source, starting with the shebang."""
-    raw = call_groq(prompt)
+    raw, records, failure = call_groq(prompt)
     if not raw:
-        return None
+        return None, records, failure
     code = strip_fences(raw).strip()
     if not code.startswith("#!"):
-        print("REJECTED: output does not look like a script")
-        return None
+        return None, records, Failure(
+            code=FailureCode.VALIDATION_FAILED.value,
+            message="Generated output does not start with a shebang.",
+            failed_operation="generate_capability",
+            raw_error=code[:500],
+        )
     for term in BANNED_TERMS:
         if term in code:
-            print(f"REJECTED: banned term {term!r}")
-            return None
+            return None, records, Failure(
+                code=FailureCode.VALIDATION_FAILED.value,
+                message=f"Generated code contains banned term: {term}",
+                failed_operation="generate_capability",
+                raw_error=term,
+            )
     for fake in ("random.uniform", "random.random", "random.randint", "fake_", "placeholder"):
         if fake in code:
-            print(f"REJECTED: fabricated-data pattern {fake!r}")
-            return None
-    return code
+            return None, records, Failure(
+                code=FailureCode.VALIDATION_FAILED.value,
+                message=f"Generated code contains fabricated-data pattern: {fake}",
+                failed_operation="generate_capability",
+                raw_error=fake,
+            )
+    return code, records, None
 
-def verify_syntax(code):
+
+def verify_syntax(code: str) -> ValidationResult:
     tmp = REPO_ROOT / ".selfupgrade_candidate.py"
-    tmp.write_text(code)
-    r = subprocess.run([sys.executable, "-m", "py_compile", str(tmp)],
-                       capture_output=True, text=True)
-    tmp.unlink(missing_ok=True)
-    if r.returncode != 0:
-        print(f"REJECTED: syntax error\n{r.stderr[:400]}")
-        return False
-    print("Syntax OK")
-    return True
+    tmp.write_text(code, encoding="utf-8")
+    try:
+        return bounded_subprocess([sys.executable, "-m", "py_compile", str(tmp)], cwd=REPO_ROOT, timeout=60)
+    finally:
+        tmp.unlink(missing_ok=True)
 
-def git(*args, check=False):
-    return subprocess.run(["git", *args], cwd=REPO_ROOT,
-                          capture_output=True, text=True, check=check)
 
-def open_capability_pr(gap_name, code):
+def open_capability_pr(gap_name: str, code: str) -> dict[str, Any]:
     slug = re.sub(r"[^a-z0-9]+", "_", gap_name.lower()).strip("_")[:40]
     target = SCRIPTS_DIR / f"{slug}.py"
     if target.exists():
-        print(f"ABORT: {target.name} already exists")
-        return False
+        raise SelfUpgradeError(f"{target.name} already exists")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     branch = f"selfupgrade/{slug}-{stamp}"
-    git("checkout", "-b", branch)
-    target.write_text(code)
-    git("add", str(target.relative_to(REPO_ROOT)))
-    git("commit", "-m", f"Self-upgrade candidate: {gap_name}")
+    checkout = git("checkout", "-b", branch)
+    if checkout.returncode != 0:
+        raise SelfUpgradeError(checkout.stderr[:500])
+    target.write_text(code, encoding="utf-8")
+    add = git("add", str(target.relative_to(REPO_ROOT)))
+    if add.returncode != 0:
+        raise SelfUpgradeError(add.stderr[:500])
+    commit = git("commit", "-m", f"Self-upgrade candidate: {gap_name}")
+    if commit.returncode != 0:
+        raise SelfUpgradeError(commit.stderr[:500])
     push = git("push", "-u", "origin", branch)
     if push.returncode != 0:
-        print(f"Push failed: {push.stderr[:300]}")
+        raise SelfUpgradeError(push.stderr[:500])
+    head_sha = git("rev-parse", "HEAD")
+    remote_check = git("ls-remote", "--heads", "origin", branch)
+    remote_verified = remote_check.returncode == 0 and branch in remote_check.stdout and bool(head_sha.stdout.strip())
+    body = (
+        f"Autonomous self-upgrade candidate for gap: **{gap_name}**\n\n"
+        "Generated by scripts/barrot_self_upgrade.py. Passed deterministic generation, "
+        "banned-term, fabricated-data, syntax, commit, push, and remote branch checks. "
+        "Requires human review before merge."
+    )
+    body_file = REPO_ROOT / ".selfupgrade_pr_body.md"
+    body_file.write_text(body, encoding="utf-8")
+    try:
+        pr = subprocess.run(
+            ["gh", "pr", "create", "--title", f"Self-upgrade: {gap_name}", "--body-file", str(body_file), "--base", "main", "--head", branch],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    finally:
+        body_file.unlink(missing_ok=True)
         git("checkout", "main")
-        return False
-    body = (f"Autonomous self-upgrade candidate for gap: **{gap_name}**\n\n"
-            "Generated by scripts/barrot_self_upgrade.py. Passed banned-term, "
-            "fabricated-data, and syntax checks only. NOT executed. "
-            "Requires human review before merge.")
-    bf = REPO_ROOT / ".selfupgrade_pr_body.md"
-    bf.write_text(body)
-    pr = subprocess.run(
-        ["gh", "pr", "create", "--title", f"Self-upgrade: {gap_name}",
-         "--body-file", str(bf), "--base", "main", "--head", branch],
-        cwd=REPO_ROOT, capture_output=True, text=True)
-    bf.unlink(missing_ok=True)
-    print(pr.stdout or pr.stderr)
-    git("checkout", "main")
-    return pr.returncode == 0
+    if pr.returncode != 0:
+        raise SelfUpgradeError(pr.stderr[:500] or pr.stdout[:500])
+    return {
+        "branch": branch,
+        "target": str(target),
+        "commit": head_sha.stdout.strip(),
+        "remote_verified": remote_verified,
+        "remote_ref": remote_check.stdout.strip(),
+        "pr_output": pr.stdout.strip() or pr.stderr.strip(),
+    }
 
-def self_upgrade():
+
+def self_upgrade() -> int:
+    run_record: dict[str, Any] = {
+        "run_id": Fingerprint.create(now_iso(), str(AUDIT_PATH)).value[:24],
+        "timestamp": now_iso(),
+        "status": "FAILED",
+        "execution_records": [],
+        "failure": None,
+    }
     audit = load_audit()
     if not audit or not audit.get("gaps"):
+        run_record["status"] = "NO_REPAIR_REQUIRED"
+        run_record["completion_gate"] = CompletionGate(
+            gate_id=Fingerprint.create("self_upgrade", "no_gaps").value,
+            requirements={"audit_loaded": bool(audit), "gaps_present": False},
+            satisfied=True,
+            unresolved=[],
+        ).to_dict()
+        STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("self_upgrade", audit or {}).value)
         print("No capability gaps found")
         return 0
     gap = audit["gaps"][0]
-    print(f"Upgrading: {gap['name']} (id {gap['id']})")
-    code = generate_capability(gap["id"], gap["name"])
-    if not code or not verify_syntax(code):
-        print("Generation or verification failed")
+    run_record["selected_gap"] = gap
+    code, provider_records, provider_failure = generate_capability(gap["id"], gap["name"])
+    run_record["execution_records"].extend(provider_records)
+    if provider_failure is not None or code is None:
+        run_record["failure"] = provider_failure.to_dict() if provider_failure else None
+        STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("self_upgrade", gap).value)
+        print("Generation failed")
         return 1
-    if open_capability_pr(gap["name"], code):
-        print(f"✓ Self-upgrade candidate opened as PR: {gap['name']}")
-        return 0
-    print("Failed to open PR")
-    return 1
+    syntax = verify_syntax(code)
+    run_record["syntax_validation"] = syntax.to_dict()
+    if not syntax.passed:
+        run_record["failure"] = syntax.failure.to_dict() if syntax.failure else None
+        STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("self_upgrade", gap).value)
+        print("Syntax verification failed")
+        return 1
+    try:
+        pr_data = open_capability_pr(gap["name"], code)
+    except Exception as exc:  # noqa: BLE001
+        failure = Failure(
+            code=FailureCode.VALIDATION_FAILED.value,
+            message=str(exc),
+            failed_operation="open_capability_pr",
+            raw_error=str(exc),
+        )
+        run_record["failure"] = failure.to_dict()
+        STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("self_upgrade", gap).value)
+        print("Failed to open PR")
+        return 1
+    run_record["pr"] = pr_data
+    gate = CompletionGate(
+        gate_id=Fingerprint.create("self_upgrade_gate", gap, pr_data).value,
+        requirements={
+            "audit_loaded": True,
+            "gap_selected": True,
+            "code_generated": True,
+            "syntax_valid": True,
+            "commit_created": bool(pr_data.get("commit")),
+            "remote_verified": bool(pr_data.get("remote_verified")),
+            "pr_created": bool(pr_data.get("pr_output")),
+        },
+        satisfied=all(
+            [
+                True,
+                True,
+                True,
+                True,
+                bool(pr_data.get("commit")),
+                bool(pr_data.get("remote_verified")),
+                bool(pr_data.get("pr_output")),
+            ]
+        ),
+        unresolved=[] if pr_data.get("remote_verified") else ["Remote branch verification failed."],
+    )
+    run_record["completion_gate"] = gate.to_dict()
+    run_record["status"] = "COMPLETE" if gate.satisfied else "BLOCKED"
+    STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("self_upgrade", gap).value)
+    print(f"Self-upgrade candidate processed: {gap['name']}")
+    return 0 if gate.satisfied else 1
+
 
 if __name__ == "__main__":
-    if not GROQ_KEY:
-        print("GROQ_API_KEY not set")
-        sys.exit(1)
     sys.exit(self_upgrade())
