@@ -1,6 +1,6 @@
 {
   "designed_not_executed_count": 1,
-  "generated_at": "2026-09-14T00:39:30Z",
+  "generated_at": "2026-09-14T00:40:06Z",
   "records": [
     {
       "COMMAND": "RepositoryRepairController.run(no defect)",
@@ -11,7 +11,7 @@
       ],
       "DESCRIPTION": "healthy repository returns NO_REPAIR_REQUIRED",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-01.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "state": "NO_REPAIR_REQUIRED",
         "status": "no_repair_required"
@@ -28,7 +28,7 @@
       ],
       "DESCRIPTION": "real defect enters deterministic repair lifecycle",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-02.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "states": [
           "IDLE",
@@ -57,7 +57,7 @@
       ],
       "DESCRIPTION": "model success text without concrete change cannot complete repair",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-03.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "failure": "ROLLED_BACK",
         "status": "rolled_back"
@@ -72,7 +72,7 @@
       ],
       "DESCRIPTION": "invalid JSON fails safely",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-04.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "failure": "LLM_INVALID_JSON",
         "status": "failed"
@@ -87,7 +87,7 @@
       ],
       "DESCRIPTION": "tool-call conflict is normalized",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-05.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "failure": "LLM_TOOL_CONFLICT",
         "status": "failed"
@@ -102,7 +102,7 @@
       ],
       "DESCRIPTION": "unsupported tool is rejected",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "duration_ms": 0,
         "error": "UNSUPPORTED_TOOL",
@@ -114,7 +114,7 @@
           "recovery_decision": "",
           "request_payload": {},
           "retry_outcome": "",
-          "timestamp": 1789346368.8712587
+          "timestamp": 1789346405.7057984
         },
         "output": null,
         "output_bytes": 0,
@@ -132,7 +132,7 @@
       ],
       "DESCRIPTION": "unsafe path is blocked",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-07.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "failure": "SNAPSHOT_FAILED",
         "status": "failed"
@@ -147,7 +147,7 @@
       ],
       "DESCRIPTION": "missing precondition blocks patch",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-08.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "failure": "ROLLED_BACK",
         "status": "rolled_back"
@@ -163,7 +163,7 @@
       ],
       "DESCRIPTION": "validation failure rolls back",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-09.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:29Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "rollback": true,
         "status": "rolled_back"
@@ -179,7 +179,7 @@
       ],
       "DESCRIPTION": "resolution failure blocks COMPLETE",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-10.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:29Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
       "RESULT": {
         "resolution_verified": false,
         "status": "failed"
@@ -195,7 +195,7 @@
       ],
       "DESCRIPTION": "commit failure blocks lifecycle",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-11.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:29Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "failure": "git commit failed",
         "status": "failed"
@@ -211,7 +211,7 @@
       ],
       "DESCRIPTION": "remote verification failure blocks COMPLETE",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-12.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:29Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "remote_verified": false,
         "status": "failed"
@@ -227,7 +227,7 @@
       ],
       "DESCRIPTION": "duplicate repair attempt is idempotent and blocks repeated false progress",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-13.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:29Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "first": "complete",
         "second": "no_repair_required"
@@ -243,7 +243,7 @@
       ],
       "DESCRIPTION": "empty namespace cannot overwrite valid identity",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-14.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "last_valid_project": {
           "id": 1,
@@ -264,7 +264,7 @@
       ],
       "DESCRIPTION": "repeated identical API response hits bounded retry exhaustion",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-15.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "attempts": 3,
         "status": "BLOCKED"
@@ -279,7 +279,7 @@
       ],
       "DESCRIPTION": "API outage is classified without false completion",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-16.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "failure": "LLM_UNAVAILABLE",
         "status": "failed"
@@ -295,7 +295,7 @@
       ],
       "DESCRIPTION": "interruption and resume preserve durable work state",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "attempt_count": 2,
         "first": "blocked",
@@ -312,7 +312,7 @@
       ],
       "DESCRIPTION": "retry exhaustion blocks repeated unchanged repair plans",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-18.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "failure": "LLM_RETRY_EXHAUSTED",
         "first": "rolled_back",
@@ -329,7 +329,7 @@
       ],
       "DESCRIPTION": "false mathematical proof does not satisfy acceptance",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-19.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "independent": "UNRESOLVED",
         "status": "no_solution_claim"
@@ -345,7 +345,7 @@
       ],
       "DESCRIPTION": "missing mathematical assumptions remain unresolved",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-20.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "status": "no_solution_claim",
         "unresolved": [
@@ -362,7 +362,7 @@
       ],
       "DESCRIPTION": "failed formalization is recorded without verification",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-21.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "failure": "RepairError",
         "status": "failed"
@@ -378,7 +378,7 @@
       ],
       "DESCRIPTION": "Lean failure remains unresolved",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "formal": {
           "command": [
@@ -406,7 +406,7 @@
           "theorem_names": [
             "main_theorem"
           ],
-          "timestamp": 1789346370.5782697,
+          "timestamp": 1789346406.728326,
           "toolchain_version": "lean4",
           "verification_id": "formal-1"
         },
@@ -423,7 +423,7 @@
       ],
       "DESCRIPTION": "adversarial contradiction blocks acceptance",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-23.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "status": "no_solution_claim",
         "unresolved": [
@@ -440,7 +440,7 @@
       ],
       "DESCRIPTION": "conflicting research groups are preserved as contradiction",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "contradictions": [
           {
@@ -473,7 +473,7 @@
               "group_b_paper"
             ],
             "resolution_status": "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS",
-            "timestamp": 1789346370.5977495
+            "timestamp": 1789346406.7479908
           }
         ]
       },
@@ -487,7 +487,7 @@
       ],
       "DESCRIPTION": "invalid cross-pollination is preserved and blocked",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-25.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "results": [
           "invalid_transfer",
@@ -504,7 +504,7 @@
       ],
       "DESCRIPTION": "provenance collision does not create false independence",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-26.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "pattern": {
           "ancestry_graph": {
@@ -545,7 +545,7 @@
             "e1",
             "e2"
           ],
-          "timestamp": 1789346370.598206
+          "timestamp": 1789346406.7484615
         }
       },
       "STATUS": "VERIFIED",
@@ -559,7 +559,7 @@
       ],
       "DESCRIPTION": "fake independent verification from inherited evidence is rejected",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-27.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "problem_resolution_status": "UNRESOLVED",
         "status": "no_solution_claim"
@@ -575,7 +575,7 @@
       ],
       "DESCRIPTION": "successful formal verification is recorded but not conflated with independence",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-28.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "formal": {
           "command": [
@@ -603,7 +603,7 @@
           "theorem_names": [
             "main_theorem"
           ],
-          "timestamp": 1789346370.6177187,
+          "timestamp": 1789346406.7658646,
           "toolchain_version": "lean4",
           "verification_id": "formal-1"
         },
@@ -620,7 +620,7 @@
       ],
       "DESCRIPTION": "genuine independent mathematical verification requires external evidence",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": "Genuine third-party independent mathematical evidence is not available in this environment; Barrot can verify the NOT_AVAILABLE/UNRESOLVED path but must not fabricate independent verification.",
       "STATUS": "DESIGNED \u2014 NOT EXECUTED",
       "TEST_ID": "case-29"
@@ -633,7 +633,7 @@
       ],
       "DESCRIPTION": "scientific UNRESOLVED path remains explicit",
       "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-30.json",
-      "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+      "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
       "RESULT": {
         "convergence": true,
         "status": "no_solution_claim"
