@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 from barrot_agent.orchestration.shared_runtime import FailureCode, ValidationResult
@@ -60,6 +61,23 @@ def test_self_upgrade_no_gaps_returns_no_repair_required(tmp_path: Path, monkeyp
     assert states
 
 
+def test_self_upgrade_requires_audit_before_no_repair_required(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_missing_audit_test")
+    monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
+    monkeypatch.setattr(module, "STATE_STORE", module.DurableStateStore(tmp_path, "barrot_self_upgrade"))
+
+    code = module.self_upgrade()
+
+    assert code == 1
+    states = list((tmp_path / ".git" / "barrot_self_upgrade" / "states").glob("*.json"))
+    assert states
+    latest = max(states, key=lambda item: item.stat().st_mtime)
+    record = json.loads(latest.read_text(encoding="utf-8"))
+    assert record["status"] == "FAILED"
+    assert record["completion_gate"]["satisfied"] is False
+    assert record["failure"]["failed_operation"] == "load_audit"
+
+
 def test_self_upgrade_blocks_when_remote_verification_fails(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_blocked_test")
     monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
@@ -76,3 +94,65 @@ def test_self_upgrade_blocks_when_remote_verification_fails(tmp_path: Path, monk
     code = module.self_upgrade()
 
     assert code == 1
+
+
+def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_open_pr_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
+    module.SCRIPTS_DIR.mkdir(parents=True)
+
+    calls: list[tuple[str, ...]] = []
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("branch", "--show-current"):
+            return Result(stdout="feature/current\n")
+        if args == ("checkout", "-b", "selfupgrade/gap-20260914153000"):
+            return Result()
+        if args == ("add", "--", "scripts/gap.py"):
+            return Result()
+        if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
+            return Result()
+        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
+            return Result()
+        if args == ("rev-parse", "HEAD"):
+            return Result(stdout="abc123\n")
+        if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
+            return Result(stdout="def456\trefs/heads/selfupgrade/gap-20260914153000\n")
+        if args == ("checkout", "feature/current"):
+            return Result()
+        raise AssertionError(args)
+
+    class DateTimeStub:
+        @staticmethod
+        def now(tz=None):
+            del tz
+
+            class Stamp:
+                def strftime(self, fmt: str) -> str:
+                    assert fmt == "%Y%m%d%H%M%S"
+                    return "20260914153000"
+
+            return Stamp()
+
+    def fake_run(command, cwd, capture_output, text, check):
+        del cwd, capture_output, text, check
+        assert command[:3] == ["gh", "pr", "create"]
+        return Result(stdout="https://example.invalid/pr/1\n")
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "datetime", DateTimeStub)
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+
+    assert result["remote_verified"] is False
+    assert result["restored_branch"] == "feature/current"
+    assert ("checkout", "feature/current") in calls
