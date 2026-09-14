@@ -715,8 +715,15 @@ def test_unchanged_state_is_detected_and_resubmission_is_bounded(tmp_path: Path)
 
 def test_durable_state_survives_interruption_and_resume_uses_last_valid_state(tmp_path: Path) -> None:
     workspace, path = init_repo(tmp_path)
-    controller = make_controller(workspace, FakeBrain(json.dumps({"mode": "no_repair_required", "report": "healthy"})))
-    queue = WorkQueueController(repair_controller=controller)
+
+    class InterruptingController:
+        def __init__(self, repo_workspace: Path):
+            self.workspace = repo_workspace
+
+        def run(self, **kwargs):
+            raise RuntimeError("simulated local interruption")
+
+    queue = WorkQueueController(repair_controller=InterruptingController(workspace))
     identity = {
         "id": 77830382,
         "path_with_namespace": "Barrot-Agent/B-Agent",
@@ -724,16 +731,19 @@ def test_durable_state_survives_interruption_and_resume_uses_last_valid_state(tm
         "namespace_path": "Barrot-Agent",
         "namespace_kind": "user",
     }
-    first = queue.run(
-        work_id="resume-case",
-        project_identity=identity,
-        task_title="Repair target",
-        task_body="Check target",
-        issue_number="123",
-        repo="Barrot-Agent/B-Agent",
-        branch="repair/test",
-        audit_context={"inventory": path},
-    )
+    with pytest.raises(RuntimeError, match="simulated local interruption"):
+        queue.run(
+            work_id="resume-case",
+            project_identity=identity,
+            task_title="Repair target",
+            task_body="Check target",
+            issue_number="123",
+            repo="Barrot-Agent/B-Agent",
+            branch="repair/test",
+            audit_context={"inventory": path},
+        )
+    persisted = workspace / ".git" / "barrot_repair" / "work_queue" / "resume-case.json"
+    payload = json.loads(persisted.read_text(encoding="utf-8"))
     queue_again = WorkQueueController(
         repair_controller=make_controller(workspace, FakeBrain(json.dumps({"mode": "no_repair_required", "report": "healthy"})))
     )
@@ -748,9 +758,10 @@ def test_durable_state_survives_interruption_and_resume_uses_last_valid_state(tm
         audit_context={"inventory": path},
     )
 
-    persisted = workspace / ".git" / "barrot_repair" / "work_queue" / "resume-case.json"
     assert persisted.exists()
-    assert first.project_identity["path_with_namespace"] == "Barrot-Agent/B-Agent"
+    assert payload["current_state"] == "REPAIRING"
+    assert payload["attempt_count"] == 1
+    assert payload["project_identity"]["path_with_namespace"] == "Barrot-Agent/B-Agent"
     assert second.project_identity["path_with_namespace"] == "Barrot-Agent/B-Agent"
     assert second.attempt_count == 2
 
