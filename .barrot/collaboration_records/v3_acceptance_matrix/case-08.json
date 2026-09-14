@@ -4,12 +4,19 @@
     "PatchExecutor"
   ],
   "DESCRIPTION": "missing precondition blocks patch",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-08.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "failure": "ROLLED_BACK",
     "status": "rolled_back"
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-08"
+  "TEST_ID": "case-08",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

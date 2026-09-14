@@ -6,12 +6,19 @@
     "CompletionGate"
   ],
   "DESCRIPTION": "healthy repository returns NO_REPAIR_REQUIRED",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-01.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "state": "NO_REPAIR_REQUIRED",
     "status": "no_repair_required"
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-01"
+  "TEST_ID": "case-01",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

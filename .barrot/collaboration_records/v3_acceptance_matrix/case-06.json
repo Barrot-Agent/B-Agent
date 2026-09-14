@@ -4,8 +4,14 @@
     "ControlledToolExecutor"
   ],
   "DESCRIPTION": "unsupported tool is rejected",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "duration_ms": 0,
     "error": "UNSUPPORTED_TOOL",
@@ -17,7 +23,7 @@
       "recovery_decision": "",
       "request_payload": {},
       "retry_outcome": "",
-      "timestamp": 1789346405.7057984
+      "timestamp": 1789394181.7858615
     },
     "output": null,
     "output_bytes": 0,
@@ -26,5 +32,6 @@
     "truncated": false
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-06"
+  "TEST_ID": "case-06",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

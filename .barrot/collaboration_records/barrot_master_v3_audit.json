@@ -2,6 +2,7 @@
   "acceptance_matrix": {
     "case_directory": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix",
     "designed_not_executed_count": 1,
+    "harness_verified_count": 2,
     "not_executed_cases": [
       {
         "COMMAND": "External independent mathematical verification",
@@ -10,15 +11,216 @@
           "IndependenceEvaluator"
         ],
         "DESCRIPTION": "genuine independent mathematical verification requires external evidence",
+        "DESIGN_STATUS": "DESIGNED",
         "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
-        "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+        "EVIDENCE_SCOPE": "EXTERNAL_REQUIRED",
+        "EXECUTION_STATUS": "NOT_EXECUTED",
+        "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+        "LIMITATIONS": [
+          "Independent third-party mathematical confirmation is unavailable in the current environment.",
+          "Model reasoning, formalization, and local computation are insufficient substitutes for independent verification."
+        ],
+        "NEW_STATUS": "DESIGNED \u2014 NOT EXECUTED",
+        "PREVIOUS_STATUS": "DESIGNED \u2014 NOT EXECUTED",
         "RESULT": "Genuine third-party independent mathematical evidence is not available in this environment; Barrot can verify the NOT_AVAILABLE/UNRESOLVED path but must not fabricate independent verification.",
         "STATUS": "DESIGNED \u2014 NOT EXECUTED",
-        "TEST_ID": "case-29"
+        "TEST_ID": "case-29",
+        "VERIFICATION_LEVEL": "NOT_VERIFIED"
+      }
+    ],
+    "partially_verified_count": 1,
+    "reclassified_cases": [
+      {
+        "COMMAND": "WorkQueueController.run(resume)",
+        "COMPONENTS_TESTED": [
+          "WorkQueueController",
+          "DurableWorkStore"
+        ],
+        "DESCRIPTION": "interruption and resume preserve durable work state",
+        "DESIGN_STATUS": "DESIGNED",
+        "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
+        "EVIDENCE_SCOPE": "LOCAL_SIMULATED_INTERRUPTION",
+        "EXECUTION_STATUS": "EXECUTED",
+        "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+        "LIMITATIONS": [
+          "Verified with a deterministic local interruption simulation after durable queue persistence.",
+          "Does not prove recovery from a genuine remote executor interruption."
+        ],
+        "NEW_STATUS": "PARTIALLY_VERIFIED",
+        "PREVIOUS_STATUS": "VERIFIED",
+        "RESULT": {
+          "attempt_count": 2,
+          "interruption_kind": "simulated_local_exception",
+          "persisted_attempt_count_before_resume": 1,
+          "persisted_state_before_resume": "REPAIRING",
+          "second": "blocked"
+        },
+        "STATUS": "PARTIALLY_VERIFIED",
+        "TEST_ID": "case-17",
+        "VERIFICATION_LEVEL": "PARTIALLY_VERIFIED"
+      },
+      {
+        "COMMAND": "ScientificDiscoveryController.run(formal runner failure)",
+        "COMPONENTS_TESTED": [
+          "LeanVerificationGateway",
+          "ScientificDiscoveryController"
+        ],
+        "DESCRIPTION": "Lean failure remains unresolved",
+        "DESIGN_STATUS": "DESIGNED",
+        "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
+        "EVIDENCE_SCOPE": "HARNESS_ONLY",
+        "EXECUTION_STATUS": "EXECUTED",
+        "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+        "LIMITATIONS": [
+          "Lean execution in this environment is unavailable for the current repository inputs.",
+          "Result is verified through injected formal-runner failure behavior, not live Lean execution."
+        ],
+        "NEW_STATUS": "HARNESS_VERIFIED",
+        "PREVIOUS_STATUS": "VERIFIED",
+        "RESULT": {
+          "formal": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "compiled": false,
+            "dependencies": [
+              "Mathlib"
+            ],
+            "formal_statement": "",
+            "independently_verified": false,
+            "provenance": [],
+            "repository": "https://example.invalid/repo",
+            "returncode": 1,
+            "source_commit": "abc123",
+            "source_files": [
+              "Main.lean"
+            ],
+            "source_location": "",
+            "status": "FORMALIZED",
+            "stderr": "lean failed",
+            "stdout": "",
+            "system": "lean",
+            "theorem_names": [
+              "main_theorem"
+            ],
+            "timestamp": 1789394182.7148554,
+            "toolchain_version": "lean4",
+            "verification_id": "formal-1"
+          },
+          "lean_environment": {
+            "elan": null,
+            "lake": null,
+            "lean": null,
+            "limitations": [
+              "lean binary unavailable",
+              "lake binary unavailable",
+              "elan binary unavailable",
+              "repository contains no tracked Lean source files"
+            ],
+            "live_execution_available": false,
+            "repository_has_lean_sources": false
+          },
+          "status": "no_solution_claim"
+        },
+        "STATUS": "HARNESS_VERIFIED",
+        "TEST_ID": "case-22",
+        "VERIFICATION_LEVEL": "HARNESS_VERIFIED"
+      },
+      {
+        "COMMAND": "ScientificDiscoveryController.run(formal success)",
+        "COMPONENTS_TESTED": [
+          "ScientificDiscoveryController",
+          "LeanVerificationGateway"
+        ],
+        "DESCRIPTION": "successful formal verification is recorded but not conflated with independence",
+        "DESIGN_STATUS": "DESIGNED",
+        "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-28.json",
+        "EVIDENCE_SCOPE": "HARNESS_ONLY",
+        "EXECUTION_STATUS": "EXECUTED",
+        "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+        "LIMITATIONS": [
+          "Lean execution in this environment is unavailable for the current repository inputs.",
+          "Formal success is verified through injected formal-runner output, not live Lean compilation."
+        ],
+        "NEW_STATUS": "HARNESS_VERIFIED",
+        "PREVIOUS_STATUS": "VERIFIED",
+        "RESULT": {
+          "formal": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "compiled": true,
+            "dependencies": [
+              "Mathlib"
+            ],
+            "formal_statement": "",
+            "independently_verified": false,
+            "provenance": [],
+            "repository": "https://example.invalid/repo",
+            "returncode": 0,
+            "source_commit": "abc123",
+            "source_files": [
+              "Main.lean"
+            ],
+            "source_location": "",
+            "status": "FORMALLY_VERIFIED",
+            "stderr": "",
+            "stdout": "ok",
+            "system": "lean",
+            "theorem_names": [
+              "main_theorem"
+            ],
+            "timestamp": 1789394182.7517402,
+            "toolchain_version": "lean4",
+            "verification_id": "formal-1"
+          },
+          "lean_environment": {
+            "elan": null,
+            "lake": null,
+            "lean": null,
+            "limitations": [
+              "lean binary unavailable",
+              "lake binary unavailable",
+              "elan binary unavailable",
+              "repository contains no tracked Lean source files"
+            ],
+            "live_execution_available": false,
+            "repository_has_lean_sources": false
+          },
+          "status": "no_solution_claim"
+        },
+        "STATUS": "HARNESS_VERIFIED",
+        "TEST_ID": "case-28",
+        "VERIFICATION_LEVEL": "HARNESS_VERIFIED"
+      },
+      {
+        "COMMAND": "External independent mathematical verification",
+        "COMPONENTS_TESTED": [
+          "ScientificDiscoveryController",
+          "IndependenceEvaluator"
+        ],
+        "DESCRIPTION": "genuine independent mathematical verification requires external evidence",
+        "DESIGN_STATUS": "DESIGNED",
+        "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
+        "EVIDENCE_SCOPE": "EXTERNAL_REQUIRED",
+        "EXECUTION_STATUS": "NOT_EXECUTED",
+        "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+        "LIMITATIONS": [
+          "Independent third-party mathematical confirmation is unavailable in the current environment.",
+          "Model reasoning, formalization, and local computation are insufficient substitutes for independent verification."
+        ],
+        "NEW_STATUS": "DESIGNED \u2014 NOT EXECUTED",
+        "PREVIOUS_STATUS": "DESIGNED \u2014 NOT EXECUTED",
+        "RESULT": "Genuine third-party independent mathematical evidence is not available in this environment; Barrot can verify the NOT_AVAILABLE/UNRESOLVED path but must not fabricate independent verification.",
+        "STATUS": "DESIGNED \u2014 NOT EXECUTED",
+        "TEST_ID": "case-29",
+        "VERIFICATION_LEVEL": "NOT_VERIFIED"
       }
     ],
     "summary_path": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/barrot_v3_acceptance_matrix.json",
-    "verified_count": 29
+    "verified_count": 26
   },
   "bundles": {
     "bundle_1_shared_orchestration_core": {
@@ -162,55 +364,65 @@
   ],
   "overall_v3_status": "NOT_FULLY_VERIFIED",
   "remaining_blockers": [
+    "Case 17 is only partially verified because the new proof is a deterministic local interruption simulation, not a genuine remote interruption.",
+    "Cases 22 and 28 are only harness-verified because the current environment lacks live Lean tooling and the repository does not contain tracked Lean source inputs for direct execution.",
     "Case 29 cannot be elevated from DESIGNED \u2014 NOT EXECUTED without genuine third-party independent mathematical evidence.",
-    "Full V3 VERIFIED status remains blocked until that external evidence exists or the requirement is narrowed."
+    "Full V3 VERIFIED status remains blocked until those stronger evidence gaps are closed or the requirements are narrowed."
   ],
   "tests": [
     {
-      "command": "python3 -m compileall -q /home/runner/work/B-Agent/B-Agent/barrot_agent /home/runner/work/B-Agent/B-Agent/scripts /home/runner/work/B-Agent/B-Agent/tests",
-      "evidence_location": "local shell run 13",
+      "command": "python3 -m pytest -q --no-cov tests/test_repository_repair.py -k interruption",
+      "evidence_location": "local shell run 5",
+      "result": "1 passed, 35 deselected",
+      "status": "VERIFIED",
+      "test": "targeted_interruption_pytest"
+    },
+    {
+      "command": "python3 -m pytest -q --no-cov tests/test_v3_acceptance_matrix.py",
+      "evidence_location": "local shell run 5",
+      "result": "1 passed",
+      "status": "VERIFIED",
+      "test": "acceptance_matrix_pytest"
+    },
+    {
+      "command": "python3 -m compileall -q barrot_agent scripts tests",
+      "evidence_location": "local shell run 6",
       "result": "passed with one pre-existing SyntaxWarning in barrot_agent/tools/upgrade_bundle.py",
       "status": "VERIFIED",
       "test": "compileall"
     },
     {
-      "command": "python3 -m pytest -q -o addopts='' tests/test_convergence_scenario.py tests/test_scientific_discovery.py tests/test_v3_acceptance_matrix.py tests/test_v3_scripts.py",
-      "evidence_location": "local shell run 12",
-      "result": "46 passed",
+      "command": "python3 -m pytest -q --no-cov tests/test_v3_scripts.py",
+      "evidence_location": "local shell run 6",
+      "result": "4 passed",
       "status": "VERIFIED",
-      "test": "targeted_convergence_and_acceptance_pytest"
+      "test": "targeted_v3_scripts_pytest"
     },
     {
-      "command": "python3 -m pytest -q -o addopts='' tests/test_repository_repair.py tests/test_barrot_agent_script.py tests/test_scientific_discovery.py tests/test_convergence_scenario.py tests/test_v3_acceptance_matrix.py tests/test_v3_scripts.py",
-      "evidence_location": "local shell run 14",
-      "result": "88 passed",
-      "status": "VERIFIED",
-      "test": "targeted_repository_and_v3_pytest"
-    },
-    {
-      "command": "python3 -m pytest -q -o addopts=''",
-      "evidence_location": "local shell run 15",
+      "command": "python3 -m pytest -q --no-cov",
+      "evidence_location": "local shell run 6",
       "result": "280 passed",
       "status": "VERIFIED",
       "test": "full_pytest"
-    },
-    {
-      "command": "runtime-tools-secret_scanning",
-      "evidence_location": "tool result",
-      "result": "No secrets detected",
-      "status": "VERIFIED",
-      "test": "secret_scan"
-    },
-    {
-      "command": "parallel_validation",
-      "evidence_location": "tool result",
-      "result": "CodeQL 0 alerts; code review returned no findings (review engine unavailable due model registry issue)",
-      "status": "VERIFIED",
-      "test": "parallel_validation"
     }
   ],
-  "timestamp": "2026-09-14T00:40:55Z",
+  "timestamp": "2026-09-14T13:56:22Z",
   "verification_gap": [
+    {
+      "reason": "State persistence and resume were reproduced with a deterministic local interruption simulation only; genuine remote interruption evidence is still unavailable.",
+      "status": "PARTIALLY_VERIFIED",
+      "test_id": "case-17"
+    },
+    {
+      "reason": "Lean failure handling is verified through the harness, but live Lean execution is unavailable in the current environment.",
+      "status": "HARNESS_VERIFIED",
+      "test_id": "case-22"
+    },
+    {
+      "reason": "Formal success recording is verified through the harness, but live Lean compilation is unavailable in the current environment.",
+      "status": "HARNESS_VERIFIED",
+      "test_id": "case-28"
+    },
     {
       "reason": "Genuine third-party independent mathematical evidence is unavailable in this environment; the system correctly preserves UNRESOLVED/NOT_AVAILABLE rather than fabricating independent verification.",
       "status": "DESIGNED \u2014 NOT EXECUTED",

@@ -4,12 +4,19 @@
     "LeanVerificationGateway"
   ],
   "DESCRIPTION": "failed formalization is recorded without verification",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-21.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "failure": "RepairError",
     "status": "failed"
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-21"
+  "TEST_ID": "case-21",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

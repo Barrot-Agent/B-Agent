@@ -5,8 +5,17 @@
     "ScientificDiscoveryController"
   ],
   "DESCRIPTION": "Lean failure remains unresolved",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "HARNESS_ONLY",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [
+    "Lean execution in this environment is unavailable for the current repository inputs.",
+    "Result is verified through injected formal-runner failure behavior, not live Lean execution."
+  ],
+  "NEW_STATUS": "HARNESS_VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "formal": {
       "command": [
@@ -34,12 +43,26 @@
       "theorem_names": [
         "main_theorem"
       ],
-      "timestamp": 1789346406.728326,
+      "timestamp": 1789394182.7148554,
       "toolchain_version": "lean4",
       "verification_id": "formal-1"
     },
+    "lean_environment": {
+      "elan": null,
+      "lake": null,
+      "lean": null,
+      "limitations": [
+        "lean binary unavailable",
+        "lake binary unavailable",
+        "elan binary unavailable",
+        "repository contains no tracked Lean source files"
+      ],
+      "live_execution_available": false,
+      "repository_has_lean_sources": false
+    },
     "status": "no_solution_claim"
   },
-  "STATUS": "VERIFIED",
-  "TEST_ID": "case-22"
+  "STATUS": "HARNESS_VERIFIED",
+  "TEST_ID": "case-22",
+  "VERIFICATION_LEVEL": "HARNESS_VERIFIED"
 }

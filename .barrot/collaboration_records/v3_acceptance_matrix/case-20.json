@@ -5,8 +5,14 @@
     "AdversarialReview"
   ],
   "DESCRIPTION": "missing mathematical assumptions remain unresolved",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-20.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "status": "no_solution_claim",
     "unresolved": [
@@ -14,5 +20,6 @@
     ]
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-20"
+  "TEST_ID": "case-20",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

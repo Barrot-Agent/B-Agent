@@ -5,12 +5,19 @@
     "RepositoryRepairController"
   ],
   "DESCRIPTION": "validation failure rolls back",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-09.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:05Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "rollback": true,
     "status": "rolled_back"
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-09"
+  "TEST_ID": "case-09",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

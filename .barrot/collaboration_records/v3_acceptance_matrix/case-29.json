@@ -5,9 +5,19 @@
     "IndependenceEvaluator"
   ],
   "DESCRIPTION": "genuine independent mathematical verification requires external evidence",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "EXTERNAL_REQUIRED",
+  "EXECUTION_STATUS": "NOT_EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [
+    "Independent third-party mathematical confirmation is unavailable in the current environment.",
+    "Model reasoning, formalization, and local computation are insufficient substitutes for independent verification."
+  ],
+  "NEW_STATUS": "DESIGNED \u2014 NOT EXECUTED",
+  "PREVIOUS_STATUS": "DESIGNED \u2014 NOT EXECUTED",
   "RESULT": "Genuine third-party independent mathematical evidence is not available in this environment; Barrot can verify the NOT_AVAILABLE/UNRESOLVED path but must not fabricate independent verification.",
   "STATUS": "DESIGNED \u2014 NOT EXECUTED",
-  "TEST_ID": "case-29"
+  "TEST_ID": "case-29",
+  "VERIFICATION_LEVEL": "NOT_VERIFIED"
 }

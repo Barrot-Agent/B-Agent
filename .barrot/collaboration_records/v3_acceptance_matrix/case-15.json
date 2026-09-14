@@ -4,12 +4,19 @@
     "SyncController"
   ],
   "DESCRIPTION": "repeated identical API response hits bounded retry exhaustion",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-15.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "attempts": 3,
     "status": "BLOCKED"
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-15"
+  "TEST_ID": "case-15",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

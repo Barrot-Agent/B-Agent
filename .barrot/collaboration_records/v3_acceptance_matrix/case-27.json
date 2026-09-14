@@ -5,12 +5,19 @@
     "IndependenceEvaluator"
   ],
   "DESCRIPTION": "fake independent verification from inherited evidence is rejected",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-27.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "problem_resolution_status": "UNRESOLVED",
     "status": "no_solution_claim"
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-27"
+  "TEST_ID": "case-27",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

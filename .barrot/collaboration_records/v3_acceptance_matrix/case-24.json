@@ -4,8 +4,14 @@
     "ConvergenceScenarioEngine"
   ],
   "DESCRIPTION": "conflicting research groups are preserved as contradiction",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "contradictions": [
       {
@@ -38,10 +44,11 @@
           "group_b_paper"
         ],
         "resolution_status": "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS",
-        "timestamp": 1789346406.7479908
+        "timestamp": 1789394182.732386
       }
     ]
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-24"
+  "TEST_ID": "case-24",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

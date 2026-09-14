@@ -4,8 +4,14 @@
     "CrossPollinationEngine"
   ],
   "DESCRIPTION": "invalid cross-pollination is preserved and blocked",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-25.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "results": [
       "invalid_transfer",
@@ -13,5 +19,6 @@
     ]
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-25"
+  "TEST_ID": "case-25",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }

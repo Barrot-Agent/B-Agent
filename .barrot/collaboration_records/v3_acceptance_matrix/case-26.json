@@ -4,8 +4,14 @@
     "ConvergenceScenarioEngine"
   ],
   "DESCRIPTION": "provenance collision does not create false independence",
+  "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-26.json",
-  "EXECUTION_TIMESTAMP": "2026-09-14T00:40:06Z",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "pattern": {
       "ancestry_graph": {
@@ -46,9 +52,10 @@
         "e1",
         "e2"
       ],
-      "timestamp": 1789346406.7484615
+      "timestamp": 1789394182.7327979
     }
   },
   "STATUS": "VERIFIED",
-  "TEST_ID": "case-26"
+  "TEST_ID": "case-26",
+  "VERIFICATION_LEVEL": "VERIFIED"
 }
