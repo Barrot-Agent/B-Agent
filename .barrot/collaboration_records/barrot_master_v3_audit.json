@@ -343,6 +343,68 @@
     "scientific_discovery_checked": true,
     "shared_runtime_integration_checked": true
   },
+  "gap_closure_phase": {
+    "attempted_at": "2026-09-14T17:34:44Z",
+    "case_17": {
+      "changed": false,
+      "reason": "No genuine interrupted remote executor/session was available; only the existing deterministic local interruption simulation remains evidenced.",
+      "status": "PARTIALLY_VERIFIED"
+    },
+    "case_22": {
+      "changed": false,
+      "reason": "Lean tooling is not installed in the current environment and the repository still contains no tracked Lean source inputs tied to the recorded theorem metadata.",
+      "status": "HARNESS_VERIFIED"
+    },
+    "case_28": {
+      "changed": false,
+      "reason": "Formal-success execution still lacks live Lean compilation against real tracked Lean sources in this repository.",
+      "status": "HARNESS_VERIFIED"
+    },
+    "case_29": {
+      "changed": false,
+      "reason": "No genuine independent third-party mathematical verification is available.",
+      "status": "DESIGNED \u2014 NOT EXECUTED"
+    },
+    "live_github_verification": {
+      "branch": {
+        "evidence": [
+          "github branch listing shows copilot/barrot-repo-repair-system at 2b4c584f2696e365f5c133c6167828a632c5e98d",
+          "local git rev-parse HEAD returned 2b4c584f2696e365f5c133c6167828a632c5e98d"
+        ],
+        "local_head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
+        "name": "copilot/barrot-repo-repair-system",
+        "remote_head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
+        "remote_verified": true
+      },
+      "evidence_scope": "LIVE_GITHUB",
+      "limitations": [
+        "This captured live GitHub branch and PR evidence using sanctioned tools, not a direct execution of scripts/barrot_agent.py or scripts/barrot_self_upgrade.py against GitHub from this session.",
+        "The environment does not expose a workflow-dispatch path for executing the live repair or self-upgrade workflow end-to-end from this session.",
+        "Self-upgrade PR creation through scripts/barrot_self_upgrade.py remains unverified on live GitHub despite the real PR created for this branch."
+      ],
+      "pull_request": {
+        "base_branch": "main",
+        "created": true,
+        "draft": true,
+        "head_branch": "copilot/barrot-repo-repair-system",
+        "head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
+        "number": 755,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/755"
+      },
+      "status": "PARTIALLY_VERIFIED",
+      "workflow": {
+        "head_branch": "copilot/barrot-repo-repair-system",
+        "head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
+        "name": "Running Copilot cloud agent",
+        "pull_requests": [
+          755
+        ],
+        "run_id": 34875422189,
+        "status": "in_progress"
+      }
+    },
+    "status": "PARTIALLY_VERIFIED"
+  },
   "integration_points": [
     "barrot_agent/research/scientific_discovery.py now persists convergence_analysis in ResearchCycleRecord and appends a convergence_analysis artifact.",
     "barrot_agent/research/__init__.py and barrot_agent/__init__.py export the convergence/scenario engine types.",
@@ -406,7 +468,7 @@
       "test": "full_pytest"
     }
   ],
-  "timestamp": "2026-09-14T13:56:22Z",
+  "timestamp": "2026-09-14T17:34:44Z",
   "verification_gap": [
     {
       "reason": "State persistence and resume were reproduced with a deterministic local interruption simulation only; genuine remote interruption evidence is still unavailable.",
