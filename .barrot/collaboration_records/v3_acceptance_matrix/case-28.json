@@ -10,10 +10,74 @@
   "EVIDENCE_SCOPE": "HARNESS_ONLY",
   "EXECUTION_STATUS": "EXECUTED",
   "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "GAP_CLOSURE_REASSESSMENT": {
+    "attempted_at": "2026-09-14T18:51:24Z",
+    "bundle_formal_verification_spec": {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "repository": "https://github.com/openai/NavierStokesAndEuler",
+      "repository_path": null,
+      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "source_files": [
+        "NavierStokes/R3/Theorem.lean",
+        "ComparatorChallenges/NavierStokes.json",
+        "NavierStokes/ComparatorSolution.lean"
+      ],
+      "theorem_names": [
+        "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+        "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+      ],
+      "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
+    },
+    "commands": [
+      {
+        "command": "elan --version",
+        "result": "passed",
+        "stdout": "elan 3.1.0"
+      },
+      {
+        "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
+        "result": "passed",
+        "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
+      },
+      {
+        "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
+        "result": "passed",
+        "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
+      },
+      {
+        "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
+        "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
+        "result": "failed",
+        "stderr_excerpt": "unknown module prefix 'NavierStokes'"
+      },
+      {
+        "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
+        "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
+        "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
+        "result": "interrupted",
+        "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
+      }
+    ],
+    "conclusion": "A free local Lean toolchain and genuine external Lean sources are available in this environment, but Barrot's current repository-grounded formal-verification path still cannot execute them end-to-end because the repository contains no tracked Lean sources and the bundle spec leaves repository_path unset.",
+    "live_lean_environment": {
+      "bundle_repository_path": null,
+      "elan": "elan 3.1.0",
+      "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
+      "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+      "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "tracked_repository_lean_sources": false
+    },
+    "status_after_reassessment": "HARNESS_VERIFIED",
+    "status_changed": false
+  },
   "LIMITATIONS": [
     "Lean execution in this environment is unavailable for the current repository inputs.",
     "Formal success is verified through injected formal-runner output, not live Lean compilation."
   ],
+  "LIMITATIONS_CONTEXT": "The top-level LIMITATIONS field reflects the original matrix execution context at EXECUTION_TIMESTAMP; later closure attempts are recorded separately.",
   "NEW_STATUS": "HARNESS_VERIFIED",
   "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {

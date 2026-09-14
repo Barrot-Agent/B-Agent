@@ -344,7 +344,7 @@
     "shared_runtime_integration_checked": true
   },
   "gap_closure_phase": {
-    "attempted_at": "2026-09-14T17:34:44Z",
+    "attempted_at": "2026-09-14T18:51:52Z",
     "case_17": {
       "changed": false,
       "reason": "No genuine interrupted remote executor/session was available; only the existing deterministic local interruption simulation remains evidenced.",
@@ -352,18 +352,86 @@
     },
     "case_22": {
       "changed": false,
-      "reason": "Lean tooling is not installed in the current environment and the repository still contains no tracked Lean source inputs tied to the recorded theorem metadata.",
+      "reason": "A free local Lean toolchain and real external Lean sources were established, but Barrot still cannot execute this case end-to-end from the repository because no tracked Lean sources exist here and the bundle leaves repository_path unset.",
       "status": "HARNESS_VERIFIED"
     },
     "case_28": {
       "changed": false,
-      "reason": "Formal-success execution still lacks live Lean compilation against real tracked Lean sources in this repository.",
+      "reason": "Real Lean execution was attempted against the external OpenAI source tree, but Barrot's repository-grounded formal path remains harness-only for this repository because repository_path is null and the repository itself contains no tracked Lean sources.",
       "status": "HARNESS_VERIFIED"
     },
     "case_29": {
       "changed": false,
       "reason": "No genuine independent third-party mathematical verification is available.",
       "status": "DESIGNED \u2014 NOT EXECUTED"
+    },
+    "lean_gap_closure": {
+      "commands": [
+        {
+          "command": "elan --version",
+          "result": "passed",
+          "stdout": "elan 3.1.0"
+        },
+        {
+          "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
+          "result": "passed",
+          "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
+        },
+        {
+          "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
+          "result": "passed",
+          "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
+        },
+        {
+          "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
+          "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
+          "result": "failed",
+          "stderr_excerpt": "unknown module prefix 'NavierStokes'"
+        },
+        {
+          "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
+          "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
+          "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
+          "result": "interrupted",
+          "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
+        }
+      ],
+      "external_source": {
+        "command": [
+          "lake",
+          "build"
+        ],
+        "repository": "https://github.com/openai/NavierStokesAndEuler",
+        "repository_path": null,
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_files": [
+          "NavierStokes/R3/Theorem.lean",
+          "ComparatorChallenges/NavierStokes.json",
+          "NavierStokes/ComparatorSolution.lean"
+        ],
+        "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "theorem_names": [
+          "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+          "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+        ],
+        "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
+      },
+      "limitations": [
+        "The repository itself still contains no tracked Lean source files for repository-grounded execution.",
+        "The Navier\u2013Stokes bundle still leaves repository_path unset, so ScientificDiscoveryController cannot invoke the real external source tree without additional production-code support.",
+        "The real lake build was executed and progressed substantially but was not allowed to run to completion in this session."
+      ],
+      "status": "PARTIALLY_VERIFIED",
+      "status_changes": {
+        "case_22": false,
+        "case_28": false
+      },
+      "tool_versions": {
+        "elan": "elan 3.1.0",
+        "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
+        "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
+      },
+      "toolchain_established": true
     },
     "live_github_verification": {
       "branch": {
@@ -378,29 +446,56 @@
       },
       "evidence_scope": "LIVE_GITHUB",
       "limitations": [
-        "This captured live GitHub branch and PR evidence using sanctioned tools, not a direct execution of scripts/barrot_agent.py or scripts/barrot_self_upgrade.py against GitHub from this session.",
-        "The environment does not expose a workflow-dispatch path for executing the live repair or self-upgrade workflow end-to-end from this session.",
-        "Self-upgrade PR creation through scripts/barrot_self_upgrade.py remains unverified on live GitHub despite the real PR created for this branch."
+        "This captured live GitHub branch, PR, and Copilot workflow evidence using sanctioned tools, but it did not prove end-to-end execution of scripts/barrot_agent.py or scripts/barrot_self_upgrade.py on GitHub.",
+        "The completed and in-progress linked runs for PR #755 are dynamic Copilot cloud-agent runs, not the repository's Barrot production workflows.",
+        "Without authenticated workflow dispatch or an equivalent trigger path, live end-to-end Barrot repair/self-upgrade execution remains unproven from this session."
       ],
       "pull_request": {
         "base_branch": "main",
         "created": true,
+        "current_head_sha": "f7d560ccc84a57937ddc4643abc16d6b291464f1",
         "draft": true,
         "head_branch": "copilot/barrot-repo-repair-system",
-        "head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
+        "head_sha_at_creation_review": "2b4c584f2696e365f5c133c6167828a632c5e98d",
         "number": 755,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/755"
       },
       "status": "PARTIALLY_VERIFIED",
-      "workflow": {
-        "head_branch": "copilot/barrot-repo-repair-system",
-        "head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
-        "name": "Running Copilot cloud agent",
-        "pull_requests": [
-          755
+      "workflow_review": {
+        "completed_run": {
+          "conclusion": "success",
+          "event": "dynamic",
+          "head_branch": "copilot/barrot-repo-repair-system",
+          "head_sha": "2b4c584f2696e365f5c133c6167828a632c5e98d",
+          "job_id": 104081303950,
+          "job_name": "copilot",
+          "job_steps": [
+            "Prepare Copilot (Linux)",
+            "Processing Request (Linux)",
+            "Clean Up (Linux)"
+          ],
+          "name": "Running Copilot cloud agent",
+          "path": "dynamic/copilot-swe-agent/copilot",
+          "run_id": 34875422189,
+          "status": "completed"
+        },
+        "current_run": {
+          "event": "dynamic",
+          "head_sha": "f7d560ccc84a57937ddc4643abc16d6b291464f1",
+          "name": "Running Copilot cloud agent",
+          "path": "dynamic/copilot-swe-agent/copilot",
+          "run_id": 34879753184,
+          "status": "in_progress"
+        },
+        "gh_cli_status": "gh version 2.100.0 present; gh auth status reported not logged in to any GitHub hosts.",
+        "logs_evidence": [
+          "job logs showed cca-engine events such as parallel_validation and report_progress",
+          "job logs contained no scripts/barrot_agent.py invocation",
+          "job logs contained no scripts/barrot_self_upgrade.py invocation",
+          "job logs contained no barrot-agent.yml or barrot-self-upgrade.yml path execution"
         ],
-        "run_id": 34875422189,
-        "status": "in_progress"
+        "missing_execution_step": "This session had no authenticated or supported workflow-dispatch path to trigger .github/workflows/barrot-agent.yml or .github/workflows/barrot-self-upgrade.yml against GitHub.",
+        "proven_production_execution": false
       }
     },
     "status": "PARTIALLY_VERIFIED"
@@ -426,10 +521,10 @@
   ],
   "overall_v3_status": "NOT_FULLY_VERIFIED",
   "remaining_blockers": [
-    "Case 17 is only partially verified because the new proof is a deterministic local interruption simulation, not a genuine remote interruption.",
-    "Cases 22 and 28 are only harness-verified because the current environment lacks live Lean tooling and the repository does not contain tracked Lean source inputs for direct execution.",
+    "Case 17 is only partially verified because the evidence still covers a deterministic local interruption simulation, not a genuine remote interruption/resume event.",
+    "Cases 22 and 28 remain harness-verified for Barrot because the repository has no tracked Lean sources and the formal-verification bundle leaves repository_path unset, even though a free local Lean toolchain and real external source tree were established.",
     "Case 29 cannot be elevated from DESIGNED \u2014 NOT EXECUTED without genuine third-party independent mathematical evidence.",
-    "Full V3 VERIFIED status remains blocked until those stronger evidence gaps are closed or the requirements are narrowed."
+    "Live end-to-end GitHub execution of .github/workflows/barrot-agent.yml or .github/workflows/barrot-self-upgrade.yml remains blocked by the lack of an authenticated workflow-dispatch or equivalent trigger path from this session."
   ],
   "tests": [
     {

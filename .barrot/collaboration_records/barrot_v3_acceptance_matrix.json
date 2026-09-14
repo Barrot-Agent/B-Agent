@@ -1,5 +1,158 @@
 {
   "designed_not_executed_count": 1,
+  "gap_closure_reassessment": {
+    "attempted_at": "2026-09-14T18:51:52Z",
+    "cases": {
+      "case-17": {
+        "changed": false,
+        "reason": "No genuine interrupted remote executor/session was available; only the existing deterministic local interruption simulation remains evidenced.",
+        "status": "PARTIALLY_VERIFIED"
+      },
+      "case-22": {
+        "attempted_at": "2026-09-14T18:51:52Z",
+        "bundle_formal_verification_spec": {
+          "command": [
+            "lake",
+            "build"
+          ],
+          "repository": "https://github.com/openai/NavierStokesAndEuler",
+          "repository_path": null,
+          "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+          "source_files": [
+            "NavierStokes/R3/Theorem.lean",
+            "ComparatorChallenges/NavierStokes.json",
+            "NavierStokes/ComparatorSolution.lean"
+          ],
+          "theorem_names": [
+            "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+            "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+          ],
+          "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
+        },
+        "commands": [
+          {
+            "command": "elan --version",
+            "result": "passed",
+            "stdout": "elan 3.1.0"
+          },
+          {
+            "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
+            "result": "passed",
+            "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
+          },
+          {
+            "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
+            "result": "passed",
+            "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
+          },
+          {
+            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
+            "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
+            "result": "failed",
+            "stderr_excerpt": "unknown module prefix 'NavierStokes'"
+          },
+          {
+            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
+            "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
+            "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
+            "result": "interrupted",
+            "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
+          }
+        ],
+        "conclusion": "A free local Lean toolchain and genuine external Lean sources are available in this environment, but Barrot's current repository-grounded formal-verification path still cannot execute them end-to-end because the repository contains no tracked Lean sources and the bundle spec leaves repository_path unset.",
+        "live_lean_environment": {
+          "bundle_repository_path": null,
+          "elan": "elan 3.1.0",
+          "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
+          "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+          "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+          "tracked_repository_lean_sources": false
+        },
+        "status_after_reassessment": "HARNESS_VERIFIED",
+        "status_changed": false
+      },
+      "case-28": {
+        "attempted_at": "2026-09-14T18:51:52Z",
+        "bundle_formal_verification_spec": {
+          "command": [
+            "lake",
+            "build"
+          ],
+          "repository": "https://github.com/openai/NavierStokesAndEuler",
+          "repository_path": null,
+          "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+          "source_files": [
+            "NavierStokes/R3/Theorem.lean",
+            "ComparatorChallenges/NavierStokes.json",
+            "NavierStokes/ComparatorSolution.lean"
+          ],
+          "theorem_names": [
+            "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+            "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+          ],
+          "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
+        },
+        "commands": [
+          {
+            "command": "elan --version",
+            "result": "passed",
+            "stdout": "elan 3.1.0"
+          },
+          {
+            "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
+            "result": "passed",
+            "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
+          },
+          {
+            "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
+            "result": "passed",
+            "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
+          },
+          {
+            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
+            "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
+            "result": "failed",
+            "stderr_excerpt": "unknown module prefix 'NavierStokes'"
+          },
+          {
+            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
+            "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
+            "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
+            "result": "interrupted",
+            "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
+          }
+        ],
+        "conclusion": "A free local Lean toolchain and genuine external Lean sources are available in this environment, but Barrot's current repository-grounded formal-verification path still cannot execute them end-to-end because the repository contains no tracked Lean sources and the bundle spec leaves repository_path unset.",
+        "live_lean_environment": {
+          "bundle_repository_path": null,
+          "elan": "elan 3.1.0",
+          "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
+          "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
+          "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+          "tracked_repository_lean_sources": false
+        },
+        "status_after_reassessment": "HARNESS_VERIFIED",
+        "status_changed": false
+      },
+      "case-29": {
+        "changed": false,
+        "reason": "No genuine independent third-party mathematical verification is available.",
+        "status": "DESIGNED \u2014 NOT EXECUTED"
+      }
+    },
+    "github_execution_review": {
+      "completed_run_conclusion": "success",
+      "completed_run_id": 34875422189,
+      "completed_run_path": "dynamic/copilot-swe-agent/copilot",
+      "current_run_id": 34879753184,
+      "current_run_path": "dynamic/copilot-swe-agent/copilot",
+      "current_run_status": "in_progress",
+      "missing_step": "No authenticated workflow-dispatch or equivalent trigger path was available from this session for .github/workflows/barrot-agent.yml or .github/workflows/barrot-self-upgrade.yml.",
+      "pr_number": 755,
+      "proven_production_execution": false
+    },
+    "matrix_counts_changed": false
+  },
   "generated_at": "2026-09-14T13:56:22Z",
   "harness_verified_count": 2,
   "partially_verified_count": 1,
