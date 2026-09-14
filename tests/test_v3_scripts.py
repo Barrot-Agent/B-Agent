@@ -116,7 +116,7 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
             return Result(stdout="feature/current\n")
         if args == ("checkout", "-b", "selfupgrade/gap-20260914153000"):
             return Result()
-        if args == ("add", "--", "scripts/gap.py"):
+        if args == ("add", "scripts/gap.py"):
             return Result()
         if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
             return Result()
