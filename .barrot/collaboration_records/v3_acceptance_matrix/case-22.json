@@ -1,0 +1,45 @@
+{
+  "COMMAND": "ScientificDiscoveryController.run(formal runner failure)",
+  "COMPONENTS_TESTED": [
+    "LeanVerificationGateway",
+    "ScientificDiscoveryController"
+  ],
+  "DESCRIPTION": "Lean failure remains unresolved",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "formal": {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "compiled": false,
+      "dependencies": [
+        "Mathlib"
+      ],
+      "formal_statement": "",
+      "independently_verified": false,
+      "provenance": [],
+      "repository": "https://example.invalid/repo",
+      "returncode": 1,
+      "source_commit": "abc123",
+      "source_files": [
+        "Main.lean"
+      ],
+      "source_location": "",
+      "status": "FORMALIZED",
+      "stderr": "lean failed",
+      "stdout": "",
+      "system": "lean",
+      "theorem_names": [
+        "main_theorem"
+      ],
+      "timestamp": 1789346370.5782697,
+      "toolchain_version": "lean4",
+      "verification_id": "formal-1"
+    },
+    "status": "no_solution_claim"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-22"
+}

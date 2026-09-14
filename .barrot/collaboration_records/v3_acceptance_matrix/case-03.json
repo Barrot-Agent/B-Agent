@@ -1,0 +1,17 @@
+{
+  "COMMAND": "RepositoryRepairController.run(no-op patch)",
+  "COMPONENTS_TESTED": [
+    "RepositoryRepairController",
+    "PatchExecutor",
+    "CompletionGate"
+  ],
+  "DESCRIPTION": "model success text without concrete change cannot complete repair",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-03.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+  "RESULT": {
+    "failure": "ROLLED_BACK",
+    "status": "rolled_back"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-03"
+}

@@ -1,0 +1,47 @@
+{
+  "COMMAND": "ConvergenceScenarioEngine.analyze_observations(conflict)",
+  "COMPONENTS_TESTED": [
+    "ConvergenceScenarioEngine"
+  ],
+  "DESCRIPTION": "conflicting research groups are preserved as contradiction",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "contradictions": [
+      {
+        "assumption_comparison": {
+          "left": [
+            "A1"
+          ],
+          "right": [
+            "A2"
+          ]
+        },
+        "claim_a": "velocity remains bounded",
+        "claim_b": "velocity is not bounded",
+        "contradiction_id": "8396053d53f7aec364134f59049855bad40807d8c1ebce669638ff51eabe9d5d",
+        "domain_comparison": {
+          "left": [],
+          "right": []
+        },
+        "evidence_comparison": {
+          "left": [
+            "e1"
+          ],
+          "right": [
+            "e2"
+          ],
+          "shared": []
+        },
+        "provenance": [
+          "group_a_paper",
+          "group_b_paper"
+        ],
+        "resolution_status": "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS",
+        "timestamp": 1789346370.5977495
+      }
+    ]
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-24"
+}

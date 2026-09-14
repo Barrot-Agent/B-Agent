@@ -1,0 +1,16 @@
+{
+  "COMMAND": "RepositoryRepairController.run(remote verification failure)",
+  "COMPONENTS_TESTED": [
+    "RemoteVerifier",
+    "CompletionGate"
+  ],
+  "DESCRIPTION": "remote verification failure blocks COMPLETE",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-12.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:29Z",
+  "RESULT": {
+    "remote_verified": false,
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-12"
+}

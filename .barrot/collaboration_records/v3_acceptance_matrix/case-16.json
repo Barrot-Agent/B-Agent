@@ -1,0 +1,15 @@
+{
+  "COMMAND": "RepositoryRepairController.run(provider unavailable)",
+  "COMPONENTS_TESTED": [
+    "RepairPlanner"
+  ],
+  "DESCRIPTION": "API outage is classified without false completion",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-16.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "failure": "LLM_UNAVAILABLE",
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-16"
+}

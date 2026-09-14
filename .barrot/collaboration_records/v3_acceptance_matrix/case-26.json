@@ -1,0 +1,54 @@
+{
+  "COMMAND": "ConvergenceScenarioEngine.analyze_observations(shared ancestry)",
+  "COMPONENTS_TESTED": [
+    "ConvergenceScenarioEngine"
+  ],
+  "DESCRIPTION": "provenance collision does not create false independence",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-26.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "pattern": {
+      "ancestry_graph": {
+        "a": {
+          "parents": [],
+          "provenance": [
+            "s1",
+            "p1"
+          ]
+        },
+        "b": {
+          "parents": [],
+          "provenance": [
+            "s2",
+            "p2"
+          ]
+        }
+      },
+      "common_features": [
+        "ancestry:x",
+        "claim:c1"
+      ],
+      "confidence": 0.5,
+      "contradicting_evidence": [],
+      "independence_analysis": {
+        "shared_evidence": [],
+        "shared_provenance": [],
+        "shared_sources": [],
+        "status": "DEPENDENT"
+      },
+      "observations": [
+        "a",
+        "b"
+      ],
+      "pattern_id": "803832cda0e0032a8f59bd1439826f1f8d73ea5adf84be2c49e4f761df43b448",
+      "status": "DUPLICATION",
+      "supporting_evidence": [
+        "e1",
+        "e2"
+      ],
+      "timestamp": 1789346370.598206
+    }
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-26"
+}

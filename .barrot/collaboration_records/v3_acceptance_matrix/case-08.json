@@ -1,0 +1,15 @@
+{
+  "COMMAND": "RepositoryRepairController.run(missing old text)",
+  "COMPONENTS_TESTED": [
+    "PatchExecutor"
+  ],
+  "DESCRIPTION": "missing precondition blocks patch",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-08.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+  "RESULT": {
+    "failure": "ROLLED_BACK",
+    "status": "rolled_back"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-08"
+}

@@ -64,6 +64,7 @@ except Exception:
 
 try:
     from .research import (
+        ConvergenceScenarioEngine,
         NavierStokesProblemAdapter,
         ScientificDiscoveryController,
     )
@@ -107,7 +108,7 @@ if _rendering_available:
     __all__ += ["DatasetManager", "AssetLoader", "DatasetAnalytics"]
 
 if _research_available:
-    __all__ += ["ScientificDiscoveryController", "NavierStokesProblemAdapter"]
+    __all__ += ["ScientificDiscoveryController", "NavierStokesProblemAdapter", "ConvergenceScenarioEngine"]
 
 if _creative_available:
     __all__ += ["ProductionDirector", "CreativeProductionRecord"]

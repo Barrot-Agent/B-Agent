@@ -1,0 +1,45 @@
+{
+  "COMMAND": "ScientificDiscoveryController.run(formal success)",
+  "COMPONENTS_TESTED": [
+    "ScientificDiscoveryController",
+    "LeanVerificationGateway"
+  ],
+  "DESCRIPTION": "successful formal verification is recorded but not conflated with independence",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-28.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "formal": {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "compiled": true,
+      "dependencies": [
+        "Mathlib"
+      ],
+      "formal_statement": "",
+      "independently_verified": false,
+      "provenance": [],
+      "repository": "https://example.invalid/repo",
+      "returncode": 0,
+      "source_commit": "abc123",
+      "source_files": [
+        "Main.lean"
+      ],
+      "source_location": "",
+      "status": "FORMALLY_VERIFIED",
+      "stderr": "",
+      "stdout": "ok",
+      "system": "lean",
+      "theorem_names": [
+        "main_theorem"
+      ],
+      "timestamp": 1789346370.6177187,
+      "toolchain_version": "lean4",
+      "verification_id": "formal-1"
+    },
+    "status": "no_solution_claim"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-28"
+}

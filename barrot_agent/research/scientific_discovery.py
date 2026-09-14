@@ -84,6 +84,47 @@ class VerificationIndependence(str, Enum):
     LITERATURE = "independent_literature_corroboration"
 
 
+class ConvergenceIndependence(str, Enum):
+    INDEPENDENT = "INDEPENDENT"
+    DEPENDENT = "DEPENDENT"
+    PARTIALLY_INDEPENDENT = "PARTIALLY_INDEPENDENT"
+    UNKNOWN = "UNKNOWN"
+    INVALID = "INVALID"
+
+
+class ConvergenceStatus(str, Enum):
+    AGREEMENT = "AGREEMENT"
+    CONVERGENCE = "CONVERGENCE"
+    PARTIAL_CONVERGENCE = "PARTIAL_CONVERGENCE"
+    CONTRADICTION = "CONTRADICTION"
+    DIVERGENCE = "DIVERGENCE"
+    DUPLICATION = "DUPLICATION"
+    INSUFFICIENT_DATA = "INSUFFICIENT_DATA"
+
+
+class ScenarioMaturity(str, Enum):
+    OBSERVED = "OBSERVED"
+    REPORTED = "REPORTED"
+    CORROBORATED = "CORROBORATED"
+    EMERGING = "EMERGING"
+    PLAUSIBLE = "PLAUSIBLE"
+    SPECULATIVE = "SPECULATIVE"
+    UNRESOLVED = "UNRESOLVED"
+    REFUTED = "REFUTED"
+
+
+class ScenarioRelationshipType(str, Enum):
+    DEPENDS_ON = "DEPENDS_ON"
+    ENABLES = "ENABLES"
+    CONSTRAINS = "CONSTRAINS"
+    CORRELATES_WITH = "CORRELATES_WITH"
+    CAUSES = "CAUSES"
+    MAY_CAUSE = "MAY_CAUSE"
+    REQUIRES = "REQUIRES"
+    CONFLICTS_WITH = "CONFLICTS_WITH"
+    SPECULATED_TO_ENABLE = "SPECULATED_TO_ENABLE"
+
+
 TERMINAL_RESEARCH_STATUSES = {"complete", "no_solution_claim", "failed", "blocked"}
 TRANSFERABLE_STATUSES = {
     ClaimStatus.SUPPORTED.value,
@@ -259,6 +300,167 @@ class FormalVerificationRecord:
 
 
 @dataclass
+class ConvergenceObservation:
+    observation_id: str
+    track_id: str
+    research_problem_id: str
+    statement: str
+    features: list[str] = field(default_factory=list)
+    source: str = ""
+    evidence_ids: list[str] = field(default_factory=list)
+    provenance_id: str = ""
+    independence_status: str = ConvergenceIndependence.UNKNOWN.value
+    confidence: float = 0.0
+    timestamp: float = field(default_factory=_timestamp)
+    dependencies: list[str] = field(default_factory=list)
+    parent_observations: list[str] = field(default_factory=list)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ConvergenceObservation":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ConvergencePattern:
+    pattern_id: str
+    observations: list[str]
+    common_features: list[str] = field(default_factory=list)
+    supporting_evidence: list[str] = field(default_factory=list)
+    contradicting_evidence: list[str] = field(default_factory=list)
+    independence_analysis: dict[str, Any] = field(default_factory=dict)
+    ancestry_graph: dict[str, Any] = field(default_factory=dict)
+    confidence: float = 0.0
+    status: str = ConvergenceStatus.INSUFFICIENT_DATA.value
+    timestamp: float = field(default_factory=_timestamp)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ConvergencePattern":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ContradictionAnalysis:
+    contradiction_id: str
+    claim_a: str
+    claim_b: str
+    evidence_comparison: dict[str, Any] = field(default_factory=dict)
+    assumption_comparison: dict[str, Any] = field(default_factory=dict)
+    domain_comparison: dict[str, Any] = field(default_factory=dict)
+    resolution_status: str = ClaimStatus.UNRESOLVED.value
+    provenance: list[str] = field(default_factory=list)
+    timestamp: float = field(default_factory=_timestamp)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ContradictionAnalysis":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ScenarioHypothesis:
+    hypothesis_id: str
+    statement: str
+    derived_from_patterns: list[str] = field(default_factory=list)
+    assumptions: list[str] = field(default_factory=list)
+    supporting_evidence: list[str] = field(default_factory=list)
+    contradicting_evidence: list[str] = field(default_factory=list)
+    required_tests: list[str] = field(default_factory=list)
+    falsification_conditions: list[str] = field(default_factory=list)
+    confidence: float = 0.0
+    status: str = ScenarioMaturity.UNRESOLVED.value
+    provenance: list[str] = field(default_factory=list)
+    timestamp: float = field(default_factory=_timestamp)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ScenarioHypothesis":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ScenarioRelationship:
+    relationship_id: str
+    source_node: str
+    target_node: str
+    relationship_type: str
+    evidence: list[str] = field(default_factory=list)
+    source: str = ""
+    confidence: float = 0.0
+    assumptions: list[str] = field(default_factory=list)
+    provenance: list[str] = field(default_factory=list)
+    status: str = ScenarioMaturity.UNRESOLVED.value
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ScenarioRelationship":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ScenarioEvidence:
+    evidence_id: str
+    statement: str
+    source: str
+    classification: list[str] = field(default_factory=list)
+    verification_status: str = ScenarioMaturity.UNRESOLVED.value
+    provenance: list[str] = field(default_factory=list)
+    timestamp: float = field(default_factory=_timestamp)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ScenarioEvidence":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ConvergenceAnalysis:
+    analysis_id: str
+    research_problem_id: str
+    observations: list[dict[str, Any]] = field(default_factory=list)
+    patterns: list[dict[str, Any]] = field(default_factory=list)
+    contradictions: list[dict[str, Any]] = field(default_factory=list)
+    hypotheses: list[dict[str, Any]] = field(default_factory=list)
+    scenario_graph: list[dict[str, Any]] = field(default_factory=list)
+    temporal_analysis: list[dict[str, Any]] = field(default_factory=list)
+    scenario_materials: list[dict[str, Any]] = field(default_factory=list)
+    current_state: dict[str, Any] = field(default_factory=dict)
+    emerging_signals: list[str] = field(default_factory=list)
+    converging_features: list[str] = field(default_factory=list)
+    dependencies: list[str] = field(default_factory=list)
+    assumptions: list[str] = field(default_factory=list)
+    possible_transitions: list[str] = field(default_factory=list)
+    consequences: list[str] = field(default_factory=list)
+    falsification_tests: list[str] = field(default_factory=list)
+    evidence_status: str = ScenarioMaturity.UNRESOLVED.value
+    blind_mode: bool = False
+    controlled_release_ready: bool = False
+    external_verification_required: bool = False
+    completion_gate: dict[str, Any] = field(default_factory=dict)
+    timestamp: float = field(default_factory=_timestamp)
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "ConvergenceAnalysis":
+        return cls(**data)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
 class AdversarialReview:
     review_id: str
     claim_id: str
@@ -334,6 +536,7 @@ class ResearchCycleRecord:
     evidence: list[dict[str, Any]] = field(default_factory=list)
     tracks: list[dict[str, Any]] = field(default_factory=list)
     cross_pollination: list[dict[str, Any]] = field(default_factory=list)
+    convergence_analysis: dict[str, Any] = field(default_factory=dict)
     formal_verifications: list[dict[str, Any]] = field(default_factory=list)
     adversarial_reviews: list[dict[str, Any]] = field(default_factory=list)
     checkpoints: list[dict[str, Any]] = field(default_factory=list)
@@ -606,6 +809,535 @@ class IndependenceEvaluator:
         }
 
 
+class ConvergenceScenarioEngine:
+    def __init__(self) -> None:
+        self.claim_integrity = ClaimIntegrityEngine()
+
+    def analyze(
+        self,
+        *,
+        research_problem_id: str,
+        domain: str,
+        tracks: list[ResearchTrack],
+        evidence: list[ResearchEvidence],
+        cross_pollination: list[CrossPollinationRecord] | None = None,
+        formal_records: list[FormalVerificationRecord] | None = None,
+        blind_mode: bool = False,
+    ) -> ConvergenceAnalysis:
+        observations = self.build_observations(
+            research_problem_id=research_problem_id,
+            tracks=tracks,
+            evidence=evidence,
+            cross_pollination=cross_pollination or [],
+            formal_records=formal_records or [],
+            blind_mode=blind_mode,
+        )
+        scenario_materials = [
+            self.classify_source_material(source=item.source, statement=item.statement)
+            for item in observations
+            if "remote_viewing" in item.source.lower() or "scenario_material" in item.source.lower()
+        ]
+        return self.analyze_observations(
+            research_problem_id=research_problem_id,
+            domain=domain,
+            observations=observations,
+            blind_mode=blind_mode,
+            scenario_materials=scenario_materials,
+        )
+
+    def build_observations(
+        self,
+        *,
+        research_problem_id: str,
+        tracks: list[ResearchTrack],
+        evidence: list[ResearchEvidence],
+        cross_pollination: list[CrossPollinationRecord],
+        formal_records: list[FormalVerificationRecord],
+        blind_mode: bool,
+    ) -> list[ConvergenceObservation]:
+        evidence_index = {item.evidence_id: item for item in evidence}
+        parents_by_track: dict[str, list[str]] = {}
+        if not blind_mode:
+            for transfer in cross_pollination:
+                if transfer.result in {
+                    "transferred",
+                    "contradictory_transfer",
+                    "duplicate_skipped",
+                }:
+                    parents_by_track.setdefault(transfer.recipient_track_id, []).append(transfer.source_track_id)
+        observations: list[ConvergenceObservation] = []
+        for track in tracks:
+            if track.intermediate_results:
+                results = track.intermediate_results
+            else:
+                results = [{"claim_id": "", "summary": track.hypothesis, "status": ClaimStatus.HYPOTHESIS.value}]
+            for index, result in enumerate(results):
+                if not isinstance(result, dict):
+                    continue
+                statement = str(result.get("summary") or track.hypothesis).strip()
+                observation = ConvergenceObservation(
+                    observation_id=Fingerprint.create(research_problem_id, track.track_id, index, statement).value,
+                    track_id=track.track_id,
+                    research_problem_id=research_problem_id,
+                    statement=statement,
+                    features=self._track_features(track, result, evidence_index),
+                    source=track.provenance[0] if track.provenance else track.role,
+                    evidence_ids=list(track.evidence),
+                    provenance_id=Fingerprint.create(track.provenance, track.evidence, result.get("claim_id", "")).value if track.provenance or track.evidence else "",
+                    confidence=track.confidence,
+                    dependencies=list(track.dependencies),
+                    parent_observations=[] if blind_mode else list(dict.fromkeys(parents_by_track.get(track.track_id, []))),
+                )
+                observations.append(observation)
+        for record in formal_records:
+            observations.append(
+                ConvergenceObservation(
+                    observation_id=Fingerprint.create(research_problem_id, record.verification_id, "formal").value,
+                    track_id=record.verification_id,
+                    research_problem_id=research_problem_id,
+                    statement=(
+                        f"Formal verification record for {', '.join(record.theorem_names) or 'unnamed theorem'}: "
+                        f"{'compiled' if record.compiled else 'formalized only'}"
+                    ),
+                    features=sorted(
+                        {
+                            *(f"formal:{item}" for item in record.theorem_names),
+                            *(f"dependency:{item}" for item in record.dependencies),
+                            f"repository:{record.repository}",
+                            f"source_commit:{record.source_commit}",
+                        }
+                    ),
+                    source=record.repository or "formal_verification",
+                    evidence_ids=[record.verification_id],
+                    provenance_id=Fingerprint.create(record.repository, record.source_commit, record.theorem_names).value,
+                    independence_status=(
+                        ConvergenceIndependence.INDEPENDENT.value
+                        if record.independently_verified
+                        else ConvergenceIndependence.DEPENDENT.value
+                    ),
+                    confidence=1.0 if record.compiled else 0.5,
+                    dependencies=list(record.dependencies),
+                    parent_observations=[],
+                )
+            )
+        return observations
+
+    def analyze_observations(
+        self,
+        *,
+        research_problem_id: str,
+        domain: str,
+        observations: list[ConvergenceObservation],
+        blind_mode: bool = False,
+        scenario_materials: list[ScenarioEvidence] | None = None,
+    ) -> ConvergenceAnalysis:
+        enriched = self._assign_observation_independence(observations)
+        patterns: list[ConvergencePattern] = []
+        contradictions: list[ContradictionAnalysis] = []
+        graph: list[ScenarioRelationship] = []
+        converging_features: set[str] = set()
+        for index, left in enumerate(enriched):
+            for right in enriched[index + 1 :]:
+                pattern = self._analyze_pair(left, right)
+                patterns.append(pattern)
+                if pattern.status in {ConvergenceStatus.CONVERGENCE.value, ConvergenceStatus.PARTIAL_CONVERGENCE.value}:
+                    converging_features.update(pattern.common_features)
+                    provenance = sorted(
+                        {
+                            value
+                            for node in pattern.ancestry_graph.values()
+                            for value in node.get("provenance", [])
+                            if value
+                        }
+                    )
+                    graph.append(
+                        self.build_relationship(
+                            source_node=left.track_id,
+                            target_node=right.track_id,
+                            relationship_type=ScenarioRelationshipType.CORRELATES_WITH.value,
+                            evidence=pattern.supporting_evidence,
+                            source="convergence_analysis",
+                            confidence=pattern.confidence,
+                            assumptions=[],
+                            provenance=provenance,
+                        )
+                    )
+                if pattern.status == ConvergenceStatus.CONTRADICTION.value:
+                    contradictions.append(self._build_contradiction(left, right, pattern))
+                    graph.append(
+                        self.build_relationship(
+                            source_node=left.track_id,
+                            target_node=right.track_id,
+                            relationship_type=ScenarioRelationshipType.CONFLICTS_WITH.value,
+                            evidence=pattern.supporting_evidence,
+                            source="convergence_analysis",
+                            confidence=pattern.confidence,
+                            assumptions=[],
+                            provenance=sorted(set(pattern.ancestry_graph.get(left.observation_id, {}).get("provenance", []) + pattern.ancestry_graph.get(right.observation_id, {}).get("provenance", []))),
+                        )
+                    )
+        hypotheses = self._generate_hypotheses(domain, patterns, contradictions)
+        temporal = self._temporal_analysis(enriched)
+        gate = CompletionGate(
+            gate_id=Fingerprint.create(research_problem_id, hypotheses, contradictions).value,
+            requirements={
+                "observations_recorded": bool(enriched),
+                "independent_convergence_requires_external_verification": all(
+                    hypothesis.required_tests for hypothesis in hypotheses
+                )
+                if hypotheses
+                else True,
+                "no_hypothesis_marked_verified_without_evidence": not any(
+                    hypothesis.status in {ClaimStatus.SUPPORTED.value, ClaimStatus.INDEPENDENTLY_VERIFIED.value}
+                    for hypothesis in hypotheses
+                ),
+            },
+            satisfied=not hypotheses or all(hypothesis.status not in {ClaimStatus.SUPPORTED.value, ClaimStatus.INDEPENDENTLY_VERIFIED.value} for hypothesis in hypotheses),
+            unresolved=[
+                "External verification is required for convergence-derived hypotheses."
+                for hypothesis in hypotheses
+                if hypothesis.required_tests
+            ],
+        )
+        analysis_fingerprint = Fingerprint.create(
+            research_problem_id,
+            [item.observation_id for item in enriched],
+            [item.pattern_id for item in patterns],
+            [item.hypothesis_id for item in hypotheses],
+            blind_mode,
+        ).value
+        return ConvergenceAnalysis(
+            analysis_id=analysis_fingerprint,
+            research_problem_id=research_problem_id,
+            observations=[item.to_dict() for item in enriched],
+            patterns=[item.to_dict() for item in patterns],
+            contradictions=[item.to_dict() for item in contradictions],
+            hypotheses=[item.to_dict() for item in hypotheses],
+            scenario_graph=[item.to_dict() for item in graph],
+            temporal_analysis=temporal,
+            scenario_materials=[item.to_dict() for item in scenario_materials or []],
+            current_state={"observation_count": len(enriched), "pattern_count": len(patterns)},
+            emerging_signals=sorted(converging_features),
+            converging_features=sorted(converging_features),
+            dependencies=sorted({dep for item in enriched for dep in item.dependencies}),
+            assumptions=sorted({feature.removeprefix("assumption:") for item in enriched for feature in item.features if feature.startswith("assumption:")}),
+            possible_transitions=[hypothesis.statement for hypothesis in hypotheses],
+            consequences=[item.claim_b for item in contradictions],
+            falsification_tests=sorted({test for hypothesis in hypotheses for test in hypothesis.falsification_conditions}),
+            evidence_status=(
+                ScenarioMaturity.CORROBORATED.value
+                if any(pattern.status == ConvergenceStatus.CONVERGENCE.value for pattern in patterns)
+                else ScenarioMaturity.UNRESOLVED.value
+            ),
+            blind_mode=blind_mode,
+            controlled_release_ready=blind_mode and bool(enriched),
+            external_verification_required=bool(hypotheses),
+            completion_gate=gate.to_dict(),
+        )
+
+    def build_relationship(
+        self,
+        *,
+        source_node: str,
+        target_node: str,
+        relationship_type: str,
+        evidence: list[str],
+        source: str,
+        confidence: float,
+        assumptions: list[str],
+        provenance: list[str],
+    ) -> ScenarioRelationship:
+        requested = relationship_type
+        effective = requested
+        status = ScenarioMaturity.UNRESOLVED.value
+        if requested == ScenarioRelationshipType.CAUSES.value and len(evidence) < 2:
+            effective = ScenarioRelationshipType.MAY_CAUSE.value
+            status = ScenarioMaturity.SPECULATIVE.value
+        elif requested == ScenarioRelationshipType.CORRELATES_WITH.value:
+            status = ScenarioMaturity.REPORTED.value
+        elif requested == ScenarioRelationshipType.MAY_CAUSE.value:
+            status = ScenarioMaturity.SPECULATIVE.value
+        else:
+            status = ScenarioMaturity.CORROBORATED.value if len(evidence) >= 2 else ScenarioMaturity.EMERGING.value
+        return ScenarioRelationship(
+            relationship_id=Fingerprint.create(source_node, target_node, effective, evidence, provenance).value,
+            source_node=source_node,
+            target_node=target_node,
+            relationship_type=effective,
+            evidence=list(evidence),
+            source=source,
+            confidence=round(confidence, 3),
+            assumptions=list(assumptions),
+            provenance=list(provenance),
+            status=status,
+        )
+
+    def classify_source_material(self, *, source: str, statement: str) -> ScenarioEvidence:
+        return ScenarioEvidence(
+            evidence_id=Fingerprint.create(source, statement, "scenario_material").value,
+            statement=statement,
+            source=source,
+            classification=["SOURCE_REPORTED", "UNVERIFIED", "HYPOTHESIS_MATERIAL"],
+            verification_status=ScenarioMaturity.UNRESOLVED.value,
+            provenance=[source],
+        )
+
+    def _track_features(
+        self,
+        track: ResearchTrack,
+        result: dict[str, Any],
+        evidence_index: dict[str, ResearchEvidence],
+    ) -> list[str]:
+        features = {
+            f"role:{track.role}",
+            *(f"claim:{item}" for item in track.focus_claims),
+            *(f"dependency:{item}" for item in track.dependencies),
+            *(f"assumption:{item}" for item in track.assumptions),
+            *(f"evidence:{item}" for item in track.evidence),
+            *(f"provenance:{item}" for item in track.provenance),
+        }
+        if result.get("claim_id"):
+            features.add(f"claim:{result['claim_id']}")
+        if result.get("status"):
+            features.add(f"status:{result['status']}")
+        for evidence_id in track.evidence:
+            if evidence_id in evidence_index:
+                evidence = evidence_index[evidence_id]
+                features.add(f"source:{evidence.source_id}")
+                ancestry = str(evidence.details.get("ancestry") or evidence.source_id)
+                features.add(f"ancestry:{ancestry}")
+        return sorted(item for item in features if item)
+
+    def _assign_observation_independence(self, observations: list[ConvergenceObservation]) -> list[ConvergenceObservation]:
+        enriched: list[ConvergenceObservation] = []
+        for observation in observations:
+            if observation.independence_status != ConvergenceIndependence.UNKNOWN.value:
+                enriched.append(observation)
+                continue
+            if not observation.provenance_id or not observation.source:
+                observation.independence_status = ConvergenceIndependence.INVALID.value
+            elif observation.parent_observations:
+                observation.independence_status = ConvergenceIndependence.DEPENDENT.value
+            elif any(feature.startswith("source:") for feature in observation.features):
+                observation.independence_status = ConvergenceIndependence.PARTIALLY_INDEPENDENT.value
+            else:
+                observation.independence_status = ConvergenceIndependence.UNKNOWN.value
+            enriched.append(observation)
+        return enriched
+
+    def _analyze_pair(self, left: ConvergenceObservation, right: ConvergenceObservation) -> ConvergencePattern:
+        left_features = set(left.features)
+        right_features = set(right.features)
+        common = sorted(left_features & right_features)
+        shared_evidence = sorted(set(left.evidence_ids) & set(right.evidence_ids))
+        shared_provenance = []
+        if left.provenance_id and left.provenance_id == right.provenance_id:
+            shared_provenance.append(left.provenance_id)
+        independent_status = self._pair_independence(left, right, shared_evidence, common)
+        contradiction = self.claim_integrity.compare(left.statement, right.statement)
+        status = ConvergenceStatus.INSUFFICIENT_DATA.value
+        if independent_status == ConvergenceIndependence.INVALID.value:
+            status = ConvergenceStatus.INSUFFICIENT_DATA.value
+        elif left.observation_id == right.observation_id or (
+            shared_provenance and left.statement == right.statement and set(left.evidence_ids) == set(right.evidence_ids)
+        ):
+            status = ConvergenceStatus.DUPLICATION.value
+        elif contradiction["status"] == "contradiction":
+            status = ConvergenceStatus.CONTRADICTION.value
+        elif common and independent_status == ConvergenceIndependence.INDEPENDENT.value:
+            status = ConvergenceStatus.CONVERGENCE.value if len(common) >= 2 else ConvergenceStatus.AGREEMENT.value
+        elif common and independent_status == ConvergenceIndependence.PARTIALLY_INDEPENDENT.value:
+            status = ConvergenceStatus.PARTIAL_CONVERGENCE.value
+        elif common:
+            status = ConvergenceStatus.DUPLICATION.value if independent_status == ConvergenceIndependence.DEPENDENT.value else ConvergenceStatus.AGREEMENT.value
+        else:
+            status = ConvergenceStatus.DIVERGENCE.value if independent_status == ConvergenceIndependence.INDEPENDENT.value else ConvergenceStatus.INSUFFICIENT_DATA.value
+        confidence = round(min(0.99, 0.2 + (0.15 * len(common)) + (0.1 if independent_status == ConvergenceIndependence.INDEPENDENT.value else 0.0)), 3)
+        ancestry_graph = {
+            left.observation_id: {"parents": left.parent_observations, "provenance": [left.source, left.provenance_id]},
+            right.observation_id: {"parents": right.parent_observations, "provenance": [right.source, right.provenance_id]},
+        }
+        return ConvergencePattern(
+            pattern_id=Fingerprint.create(left.observation_id, right.observation_id, status, common).value,
+            observations=[left.observation_id, right.observation_id],
+            common_features=common,
+            supporting_evidence=sorted(set(left.evidence_ids + right.evidence_ids)),
+            contradicting_evidence=sorted(set(shared_evidence if status == ConvergenceStatus.CONTRADICTION.value else [])),
+            independence_analysis={
+                "status": independent_status,
+                "shared_evidence": shared_evidence,
+                "shared_provenance": shared_provenance,
+                "shared_sources": sorted({left.source, right.source} if left.source == right.source else set()),
+            },
+            ancestry_graph=ancestry_graph,
+            confidence=confidence,
+            status=status,
+        )
+
+    def _pair_independence(
+        self,
+        left: ConvergenceObservation,
+        right: ConvergenceObservation,
+        shared_evidence: list[str],
+        common_features: list[str],
+    ) -> str:
+        if not left.provenance_id or not right.provenance_id:
+            return ConvergenceIndependence.INVALID.value
+        if left.track_id == right.track_id:
+            return ConvergenceIndependence.DEPENDENT.value
+        if set(left.parent_observations) & {right.track_id, right.observation_id}:
+            return ConvergenceIndependence.DEPENDENT.value
+        if set(right.parent_observations) & {left.track_id, left.observation_id}:
+            return ConvergenceIndependence.DEPENDENT.value
+        if left.provenance_id == right.provenance_id or shared_evidence:
+            return ConvergenceIndependence.DEPENDENT.value
+        left_sources = {item.removeprefix("source:") for item in left.features if item.startswith("source:")}
+        right_sources = {item.removeprefix("source:") for item in right.features if item.startswith("source:")}
+        left_ancestry = {item.removeprefix("ancestry:") for item in left.features if item.startswith("ancestry:")}
+        right_ancestry = {item.removeprefix("ancestry:") for item in right.features if item.startswith("ancestry:")}
+        if left_ancestry & right_ancestry:
+            return ConvergenceIndependence.DEPENDENT.value
+        if left_sources & right_sources:
+            return ConvergenceIndependence.PARTIALLY_INDEPENDENT.value
+        if any(feature.startswith("claim:") for feature in common_features):
+            return ConvergenceIndependence.INDEPENDENT.value
+        return ConvergenceIndependence.UNKNOWN.value
+
+    def _build_contradiction(
+        self,
+        left: ConvergenceObservation,
+        right: ConvergenceObservation,
+        pattern: ConvergencePattern,
+    ) -> ContradictionAnalysis:
+        left_assumptions = sorted(item.removeprefix("assumption:") for item in left.features if item.startswith("assumption:"))
+        right_assumptions = sorted(item.removeprefix("assumption:") for item in right.features if item.startswith("assumption:"))
+        left_domains = sorted(item.removeprefix("role:") for item in left.features if item.startswith("role:"))
+        right_domains = sorted(item.removeprefix("role:") for item in right.features if item.startswith("role:"))
+        status = ClaimStatus.DISPUTED.value
+        if left_assumptions != right_assumptions:
+            status = "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS"
+        elif pattern.independence_analysis.get("status") == ConvergenceIndependence.DEPENDENT.value:
+            status = ClaimStatus.UNRESOLVED.value
+        return ContradictionAnalysis(
+            contradiction_id=Fingerprint.create(left.observation_id, right.observation_id, "contradiction").value,
+            claim_a=left.statement,
+            claim_b=right.statement,
+            evidence_comparison={
+                "left": left.evidence_ids,
+                "right": right.evidence_ids,
+                "shared": pattern.independence_analysis.get("shared_evidence", []),
+            },
+            assumption_comparison={"left": left_assumptions, "right": right_assumptions},
+            domain_comparison={"left": left_domains, "right": right_domains},
+            resolution_status=status,
+            provenance=[left.source, right.source],
+        )
+
+    def _generate_hypotheses(
+        self,
+        domain: str,
+        patterns: list[ConvergencePattern],
+        contradictions: list[ContradictionAnalysis],
+    ) -> list[ScenarioHypothesis]:
+        hypotheses: list[ScenarioHypothesis] = []
+        contradiction_map = {item.contradiction_id: item for item in contradictions}
+        for pattern in patterns:
+            if pattern.status not in {
+                ConvergenceStatus.CONVERGENCE.value,
+                ConvergenceStatus.PARTIAL_CONVERGENCE.value,
+                ConvergenceStatus.AGREEMENT.value,
+            }:
+                continue
+            common_claims = [item.removeprefix("claim:") for item in pattern.common_features if item.startswith("claim:")]
+            if not common_claims and not pattern.common_features:
+                continue
+            status = self._hypothesis_status(pattern, contradiction_map)
+            required = self._required_tests_for_domain(domain)
+            hypotheses.append(
+                ScenarioHypothesis(
+                    hypothesis_id=Fingerprint.create(pattern.pattern_id, "hypothesis").value,
+                    statement=(
+                        f"Pattern suggests {' and '.join(common_claims) if common_claims else ', '.join(pattern.common_features[:3])} "
+                        "may represent a reusable scenario rather than proof."
+                    ),
+                    derived_from_patterns=[pattern.pattern_id],
+                    assumptions=sorted(item.removeprefix("assumption:") for item in pattern.common_features if item.startswith("assumption:")),
+                    supporting_evidence=list(pattern.supporting_evidence),
+                    contradicting_evidence=list(pattern.contradicting_evidence),
+                    required_tests=required,
+                    falsification_conditions=[
+                        "Independent evidence disproves the shared feature set.",
+                        "Adversarial review finds an unsupported assumption.",
+                        "Formal or computational validation fails to reproduce the pattern.",
+                    ],
+                    confidence=round(min(0.85, pattern.confidence), 3),
+                    status=status,
+                    provenance=sorted({value for node in pattern.ancestry_graph.values() for value in node.get("provenance", []) if value}),
+                )
+            )
+        return hypotheses
+
+    def _hypothesis_status(
+        self,
+        pattern: ConvergencePattern,
+        contradictions: dict[str, ContradictionAnalysis],
+    ) -> str:
+        if pattern.contradicting_evidence:
+            return ScenarioMaturity.UNRESOLVED.value
+        if pattern.independence_analysis.get("status") == ConvergenceIndependence.INDEPENDENT.value:
+            return ScenarioMaturity.CORROBORATED.value if pattern.status == ConvergenceStatus.CONVERGENCE.value else ScenarioMaturity.EMERGING.value
+        if pattern.independence_analysis.get("status") == ConvergenceIndependence.PARTIALLY_INDEPENDENT.value:
+            return ScenarioMaturity.EMERGING.value
+        return ScenarioMaturity.REPORTED.value if pattern.status == ConvergenceStatus.AGREEMENT.value else ScenarioMaturity.SPECULATIVE.value
+
+    def _required_tests_for_domain(self, domain: str) -> list[str]:
+        lowered = domain.lower()
+        if lowered in {"math", "mathematics"}:
+            return [
+                "FORMAL_VERIFICATION",
+                "INDEPENDENT_DERIVATION",
+                "ADVERSARIAL_REVIEW",
+                "LITERATURE_CHECK",
+            ]
+        if lowered in {"science", "physics", "chemistry", "biology"}:
+            return [
+                "COMPUTATIONAL_TEST",
+                "EXPERIMENTAL_TEST",
+                "SOURCE_CORROBORATION",
+                "ADVERSARIAL_REVIEW",
+            ]
+        if lowered in {"technology", "engineering", "cybersecurity", "economics", "product_research", "future_scenarios", "creative_research"}:
+            return [
+                "LITERATURE_CHECK",
+                "COMPUTATIONAL_TEST",
+                "SOURCE_CORROBORATION",
+                "ADVERSARIAL_REVIEW",
+            ]
+        return ["SOURCE_CORROBORATION", "ADVERSARIAL_REVIEW"]
+
+    def _temporal_analysis(self, observations: list[ConvergenceObservation]) -> list[dict[str, Any]]:
+        if len(observations) < 2:
+            return []
+        ordered = sorted(observations, key=lambda item: item.timestamp)
+        recurring = sorted(set(ordered[0].features).intersection(*(set(item.features) for item in ordered[1:])))
+        new_features = sorted(set(ordered[-1].features) - set(ordered[0].features))
+        disappearing = sorted(set(ordered[0].features) - set(ordered[-1].features))
+        return [
+            {
+                "observation_ids": [item.observation_id for item in ordered],
+                "recurring_features": recurring,
+                "new_features": new_features,
+                "disappearing_features": disappearing,
+                "trend_hypothesis": (
+                    "Recurring structured features persist across observations."
+                    if recurring
+                    else "No recurring structured feature set was established."
+                ),
+                "provenance": [item.source for item in ordered],
+            }
+        ]
+
+
 class ScientificDiscoveryController:
     def __init__(
         self,
@@ -615,6 +1347,7 @@ class ScientificDiscoveryController:
         verifier: LeanVerificationGateway | None = None,
         cross_pollination: CrossPollinationEngine | None = None,
         independence: IndependenceEvaluator | None = None,
+        convergence_engine: ConvergenceScenarioEngine | None = None,
         retry_policy: RetryPolicy | None = None,
     ):
         self.workspace = Path(workspace).resolve()
@@ -622,6 +1355,7 @@ class ScientificDiscoveryController:
         self.verifier = verifier or LeanVerificationGateway()
         self.cross_pollination = cross_pollination or CrossPollinationEngine()
         self.independence = independence or IndependenceEvaluator()
+        self.convergence_engine = convergence_engine or ConvergenceScenarioEngine()
         self.retry_policy = retry_policy or RetryPolicy(max_attempts=3, base_delay_seconds=1.0, max_delay_seconds=8.0)
 
     def run(
@@ -630,6 +1364,7 @@ class ScientificDiscoveryController:
         *,
         formal_runner: Callable[[list[str], str | None], dict[str, Any]] | None = None,
         stop_after_state: ResearchState | None = None,
+        blind_mode: bool = False,
     ) -> ResearchCycleRecord:
         fingerprint = adapter.problem_fingerprint()
         existing = self.ledger_store.load_cycle_by_fingerprint(fingerprint)
@@ -711,6 +1446,25 @@ class ScientificDiscoveryController:
             claim_index = self._materialize_claims(claims, evidence, formal_specs, formal_records, reviews, independence)
             cycle.claims = [claim.to_dict() for claim in claim_index.values()]
             self.ledger_store.write_ledger(claim_index.values())
+            convergence = self.convergence_engine.analyze(
+                research_problem_id=problem.problem_id,
+                domain=problem.domain,
+                tracks=executed_tracks,
+                evidence=evidence,
+                cross_pollination=transfers,
+                formal_records=formal_records,
+                blind_mode=blind_mode,
+            )
+            cycle.convergence_analysis = convergence.to_dict()
+            cycle.artifacts.append(
+                Artifact(
+                    artifact_id=Fingerprint.create(cycle.cycle_id, "convergence_analysis").value,
+                    kind="convergence_analysis",
+                    path="",
+                    fingerprint=Fingerprint.create(cycle.convergence_analysis).value,
+                    metadata={"analysis_id": convergence.analysis_id, "blind_mode": blind_mode},
+                ).to_dict()
+            )
 
             gate = self._acceptance_decision(problem, claim_index, cycle.formal_verifications, cycle.adversarial_reviews)
             cycle.completion_gate = gate.to_dict()

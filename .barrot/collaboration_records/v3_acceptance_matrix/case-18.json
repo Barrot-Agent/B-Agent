@@ -1,0 +1,17 @@
+{
+  "COMMAND": "RepositoryRepairController.run(retry exhaustion)",
+  "COMPONENTS_TESTED": [
+    "RepositoryRepairController",
+    "DurableCycleStore"
+  ],
+  "DESCRIPTION": "retry exhaustion blocks repeated unchanged repair plans",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-18.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "failure": "LLM_RETRY_EXHAUSTED",
+    "first": "rolled_back",
+    "second": "blocked"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-18"
+}

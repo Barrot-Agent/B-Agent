@@ -1,0 +1,30 @@
+{
+  "COMMAND": "ControlledToolExecutor.execute(unsupported)",
+  "COMPONENTS_TESTED": [
+    "ControlledToolExecutor"
+  ],
+  "DESCRIPTION": "unsupported tool is rejected",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+  "RESULT": {
+    "duration_ms": 0,
+    "error": "UNSUPPORTED_TOOL",
+    "failure": {
+      "code": "UNSUPPORTED_TOOL",
+      "failed_operation": "missing",
+      "message": "UNSUPPORTED_TOOL",
+      "raw_error": "UNSUPPORTED_TOOL",
+      "recovery_decision": "",
+      "request_payload": {},
+      "retry_outcome": "",
+      "timestamp": 1789346368.8712587
+    },
+    "output": null,
+    "output_bytes": 0,
+    "success": false,
+    "tool_name": "missing",
+    "truncated": false
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-06"
+}

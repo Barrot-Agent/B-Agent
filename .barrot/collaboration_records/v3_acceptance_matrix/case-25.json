@@ -1,0 +1,17 @@
+{
+  "COMMAND": "CrossPollinationEngine.synthesize(invalid transfer)",
+  "COMPONENTS_TESTED": [
+    "CrossPollinationEngine"
+  ],
+  "DESCRIPTION": "invalid cross-pollination is preserved and blocked",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-25.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "results": [
+      "invalid_transfer",
+      "invalid_transfer"
+    ]
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-25"
+}

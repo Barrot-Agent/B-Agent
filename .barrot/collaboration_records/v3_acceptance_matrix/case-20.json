@@ -1,0 +1,18 @@
+{
+  "COMMAND": "ScientificDiscoveryController.run(adversarial challenge)",
+  "COMPONENTS_TESTED": [
+    "ScientificDiscoveryController",
+    "AdversarialReview"
+  ],
+  "DESCRIPTION": "missing mathematical assumptions remain unresolved",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-20.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:30Z",
+  "RESULT": {
+    "status": "no_solution_claim",
+    "unresolved": [
+      "At least one adversarial mathematical objection remains unresolved."
+    ]
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-20"
+}

@@ -1,0 +1,29 @@
+{
+  "COMMAND": "RepositoryRepairController.run(repair defect)",
+  "COMPONENTS_TESTED": [
+    "RepositoryRepairController",
+    "PatchExecutor",
+    "Validator"
+  ],
+  "DESCRIPTION": "real defect enters deterministic repair lifecycle",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-02.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+  "RESULT": {
+    "states": [
+      "IDLE",
+      "AUDITING",
+      "ANALYZING",
+      "REPAIR_PLANNING",
+      "PATCHING",
+      "LOCAL_VALIDATION",
+      "COMMITTING",
+      "REMOTE_VERIFICATION",
+      "POST_REPAIR_VALIDATION",
+      "SYNCING",
+      "COMPLETE"
+    ],
+    "status": "complete"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-02"
+}

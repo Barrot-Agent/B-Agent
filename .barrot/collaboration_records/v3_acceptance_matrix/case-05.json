@@ -1,0 +1,15 @@
+{
+  "COMMAND": "RepositoryRepairController.run(tool conflict)",
+  "COMPONENTS_TESTED": [
+    "RepairPlanner"
+  ],
+  "DESCRIPTION": "tool-call conflict is normalized",
+  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-05.json",
+  "EXECUTION_TIMESTAMP": "2026-09-14T00:39:28Z",
+  "RESULT": {
+    "failure": "LLM_TOOL_CONFLICT",
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-05"
+}
