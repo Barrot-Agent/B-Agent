@@ -2,8 +2,6 @@ name: Barrot Self-Upgrade
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 0'
 
 permissions:
   contents: write
@@ -13,22 +11,47 @@ jobs:
   audit_and_upgrade:
     runs-on: ubuntu-latest
     env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout requested ref
+        uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
-      - uses: actions/setup-python@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Configure git identity
+
+      - name: Configure Git
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
+          git config user.name "Barrot Self-Upgrade"
+          git config user.email "barrot-self-upgrade@users.noreply.github.com"
+
       - name: Capability audit
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python3 scripts/barrot_capability_audit.py
-      - name: Generate upgrade candidate as PR
+
+      - name: Self-upgrade
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python3 scripts/barrot_self_upgrade.py
-      - name: Commit audit report
-        run: python3 scripts/barrot_self_upgrade.py --persist-audit-report
+
+      - name: Persist generated audit
+        run: |
+          git status --short
+          if git diff --quiet -- barrot_capability_audit.json; then
+            echo "No audit artifact changes."
+          else
+            git add barrot_capability_audit.json
+            git commit -m "chore: update Barrot capability audit"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Final state
+        run: |
+          echo "Final SHA: $(git rev-parse HEAD)"
+          git status --short
