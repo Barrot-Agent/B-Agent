@@ -4,13 +4,17 @@
 from __future__ import annotations
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from barrot_agent.orchestration.shared_runtime import CompletionGate, DurableStateStore, ExecutionRecord, Fingerprint
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 WORKFLOWS_DIR = REPO_ROOT / ".github" / "workflows"
 OUTPUT_PATH = REPO_ROOT / "barrot_capability_audit.json"

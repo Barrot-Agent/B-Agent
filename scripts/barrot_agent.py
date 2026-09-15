@@ -15,7 +15,12 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Callable
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(1, str(SCRIPTS_DIR))
 
 from sandbox import verify_result
 
@@ -30,8 +35,6 @@ from barrot_agent.research import (
     is_scientific_discovery_task,
 )
 
-
-ROOT = Path(__file__).resolve().parents[1]
 REPO = os.environ["REPO"]
 TASK = os.environ.get("TASK_BODY", "")
 TITLE = os.environ.get("TASK_TITLE", "Barrot task")

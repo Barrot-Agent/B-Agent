@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 from barrot_agent.orchestration.shared_runtime import FailureCode, ValidationResult
@@ -15,6 +16,37 @@ def load_script(path: Path, name: str):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+def test_direct_script_import_bootstraps_barrot_agent_package(monkeypatch) -> None:
+    script_path = REPO_ROOT / "scripts" / "barrot_capability_audit.py"
+    package_init = (REPO_ROOT / "barrot_agent" / "__init__.py").resolve()
+    shared_runtime = (REPO_ROOT / "barrot_agent" / "orchestration" / "shared_runtime.py").resolve()
+    original_sys_path = list(sys.path)
+    original_modules = {
+        name: module
+        for name, module in sys.modules.items()
+        if name == "barrot_agent" or name.startswith("barrot_agent.")
+    }
+
+    for name in list(original_modules):
+        sys.modules.pop(name, None)
+
+    script_dir = str((REPO_ROOT / "scripts").resolve())
+    monkeypatch.setattr(sys, "path", [script_dir, *[entry for entry in original_sys_path if entry != script_dir]])
+
+    try:
+        load_script(script_path, "barrot_capability_audit_import_bootstrap_test")
+        package_module = sys.modules["barrot_agent"]
+        shared_runtime_module = sys.modules["barrot_agent.orchestration.shared_runtime"]
+        assert Path(package_module.__file__).resolve() == package_init
+        assert Path(shared_runtime_module.__file__).resolve() == shared_runtime
+    finally:
+        for name in list(sys.modules):
+            if name == "barrot_agent" or name.startswith("barrot_agent."):
+                sys.modules.pop(name, None)
+        sys.modules.update(original_modules)
+        sys.path[:] = original_sys_path
 
 
 def test_capability_audit_writes_verified_report(tmp_path: Path, monkeypatch) -> None:

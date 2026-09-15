@@ -14,6 +14,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from barrot_agent.orchestration.shared_runtime import (
     CompletionGate,
     DurableStateStore,
@@ -28,7 +32,6 @@ from barrot_agent.orchestration.shared_runtime import (
 )
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
-REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 AUDIT_PATH = REPO_ROOT / "barrot_capability_audit.json"
 STATE_STORE = DurableStateStore(REPO_ROOT, "barrot_self_upgrade")
