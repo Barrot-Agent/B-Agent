@@ -171,6 +171,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 16,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 15,
@@ -181,21 +196,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 15,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
           "asset": "XRP"
         }
       ]
@@ -397,6 +397,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "US stocks",
       "cooccurrence_count": 9,
       "example_headlines": [
@@ -422,21 +437,6 @@
         {
           "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
-          "asset": "XRP"
         }
       ]
     },
@@ -4186,6 +4186,21 @@
         },
         {
           "title": "Bitcoin ETFs draw $517M in largest one-day inflow since early May",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
           "asset": "BTC"
         }
       ]
@@ -13433,17 +13448,6 @@
     {
       "entity_a": "ETF",
       "entity_b": "Galaxy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETF",
-      "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
