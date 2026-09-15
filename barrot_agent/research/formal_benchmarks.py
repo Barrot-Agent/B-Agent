@@ -464,7 +464,7 @@ class ExternalLeanProjectImporter:
         declaration_lines: list[str] = []
         for raw_line in chunk.splitlines():
             declaration_lines.append(raw_line.rstrip())
-            if ":=" in raw_line or raw_line.strip().endswith(":"):
+            if ":=" in raw_line:
                 break
         declaration = " ".join(part.strip() for part in declaration_lines if part.strip())
         statement = declaration.split(":=", 1)[0].strip()
