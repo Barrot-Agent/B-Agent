@@ -159,6 +159,25 @@ def test_gateway_records_staged_formal_verification(tmp_path: Path) -> None:
     assert record.independent_checker_result["success"] is True
 
 
+def test_gateway_unavailable_lake_stays_at_build_attempted(tmp_path: Path, monkeypatch) -> None:
+    project_root = create_external_project(tmp_path / "external")
+    formal = ExternalLeanProjectImporter().build_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG)["formal_verification"][0]
+    formal["repository_path"] = str(project_root)
+    monkeypatch.setenv("PATH", "")
+
+    record = LeanVerificationGateway().verify(formal)
+
+    assert record.compiled is False
+    assert record.independently_verified is False
+    assert record.returncode == 127
+    assert record.status == FormalVerificationStatus.BUILD_ATTEMPTED.value
+    assert record.status_history == [
+        FormalVerificationStatus.IMPORTED.value,
+        FormalVerificationStatus.BUILD_ATTEMPTED.value,
+    ]
+    assert "No such file or directory" in record.build_result["stderr"]
+
+
 def test_formal_benchmark_script_materializes_import_only_report(tmp_path: Path, monkeypatch) -> None:
     project_root = create_external_project(tmp_path / "external")
     bundle_out = tmp_path / "bundle.json"

@@ -9,6 +9,7 @@ from pathlib import Path
 from barrot_agent.orchestration.shared_runtime import FailureCode, ValidationResult
 
 REPO_ROOT = Path("/home/runner/work/B-Agent/B-Agent")
+SELF_UPGRADE_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "barrot-self-upgrade.yml"
 
 
 def load_script(path: Path, name: str):
@@ -410,3 +411,12 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert result["remote_verified"] is True
     assert ("commit", "-m", "Weekly capability audit [skip ci]") not in git_in_calls
     assert ("push", "origin", "HEAD:main") not in git_in_calls
+
+
+def test_self_upgrade_workflow_verifies_same_ref_without_branch_switch() -> None:
+    workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
+
+    assert 'ref: ${{ github.ref_name }}' in workflow
+    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
+    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' in workflow
+    assert "git checkout main" not in workflow

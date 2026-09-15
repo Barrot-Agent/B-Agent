@@ -40,6 +40,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
 
+      - name: Install Lean toolchain
+        if: ${{ inputs.attempt_build == true }}
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.33.1
+          "$HOME/.elan/bin/elan" default leanprover/lean4:v4.33.1
+          "$HOME/.elan/bin/lake" --version
+          "$HOME/.elan/bin/lean" --version
+
       - name: Run Anthropic FLT benchmark
         run: |
           args=(python scripts/run_formal_verification_benchmark.py --bundle-out /tmp/anthropic_flt_bundle.json --report-out /tmp/anthropic_flt_report.json --timeout "${{ inputs.timeout_seconds }}")
