@@ -3,7 +3,7 @@
     "xrp_entries": 535,
     "btc_entries": 467
   },
-  "unique_pairs_found": 1656,
+  "unique_pairs_found": 1665,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2251,6 +2251,21 @@
         },
         {
           "title": "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
           "asset": "XRP"
         }
       ]
@@ -4611,6 +4626,96 @@
       ]
     },
     {
+      "entity_a": "CBDC",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CBDC",
+      "entity_b": "commercial banks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CBDC",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "commercial banks",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "commercial banks",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ether",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 2,
@@ -6141,17 +6246,6 @@
     {
       "entity_a": "Federal Reserve",
       "entity_b": "U.S. Senate",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Federal Reserve",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -11672,6 +11766,39 @@
       ]
     },
     {
+      "entity_a": "CBDC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "commercial banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "tokenized deposits",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "Coinpedia",
       "cooccurrence_count": 1,
@@ -12041,6 +12168,72 @@
       "example_headlines": [
         {
           "title": "Ripple\u2019s CEO Sees XRP Hitting $10trn Market Cap - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "Korean markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korean markets",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Korean markets",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
           "asset": "XRP"
         }
       ]
@@ -19620,72 +19813,6 @@
       "example_headlines": [
         {
           "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CBDC",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CBDC",
-      "entity_b": "commercial banks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CBDC",
-      "entity_b": "tokenized deposits",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Federal Reserve",
-      "entity_b": "commercial banks",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Federal Reserve",
-      "entity_b": "tokenized deposits",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "commercial banks",
-      "entity_b": "tokenized deposits",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
           "asset": "BTC"
         }
       ]
