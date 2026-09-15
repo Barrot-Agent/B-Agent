@@ -15,6 +15,8 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Callable, ClassVar
 
+from .shared_runtime import Capability, DefensiveWatchdog
+
 
 class RepairState(str, Enum):
     IDLE = "IDLE"
@@ -1019,8 +1021,9 @@ class StructuredCommandExecutor:
 
     ALLOWED_PROGRAMS = {"python", "python3", "pytest"}
 
-    def __init__(self, workspace: str | Path):
+    def __init__(self, workspace: str | Path, *, watchdog: DefensiveWatchdog | None = None):
         self.workspace = Path(workspace).resolve()
+        self.watchdog = watchdog
 
     @staticmethod
     def _is_path_traversal(argument: str) -> bool:
@@ -1040,6 +1043,10 @@ class StructuredCommandExecutor:
 
     def run(self, command: StructuredCommand) -> CommandEvidence:
         self.validate(command)
+        if self.watchdog is not None:
+            decision = self.watchdog.inspect_command(command.argv())
+            if not decision.allowed:
+                raise RepairError(decision.reason or "Command blocked by watchdog.")
         try:
             completed = subprocess.run(
                 command.argv(),
@@ -1077,11 +1084,16 @@ class PatchExecutor:
         "web/",
         "scripts/emit_signal.py",
         ".github/workflows/",
+        "barrot_agent/orchestration/shared_runtime.py",
+        "barrot_agent/orchestration/repository_repair.py",
+        "scripts/barrot_agent.py",
+        "scripts/barrot_self_upgrade.py",
     )
     ALLOWED_EXTENSIONS = {".py", ".json", ".jsonl", ".yml", ".yaml", ".md", ".txt", ".toml"}
 
-    def __init__(self, workspace: str | Path):
+    def __init__(self, workspace: str | Path, *, watchdog: DefensiveWatchdog | None = None):
         self.workspace = Path(workspace).resolve()
+        self.watchdog = watchdog
 
     def _resolve_path(self, relative_path: str) -> Path:
         if not relative_path or Path(relative_path).is_absolute():
@@ -1154,6 +1166,10 @@ class PatchExecutor:
             updated = current.replace(operation.old, operation.new, 1)
             if updated == current:
                 raise RepairError(f"Patch produced no change in {operation.path}")
+            if self.watchdog is not None:
+                decision = self.watchdog.inspect_patch(path=operation.path, new_content=updated, reason=operation.reason)
+                if not decision.allowed:
+                    raise RepairError(decision.reason or f"Watchdog blocked patch for {operation.path}")
             self._verify_content(operation.path, updated)
             pending_writes.append((target, updated))
             evidence.append(
@@ -1199,8 +1215,9 @@ class Validator:
         workspace: str | Path,
         *,
         workspace_verifier: Callable[[str], tuple[bool, str]] | None = None,
+        watchdog: DefensiveWatchdog | None = None,
     ):
-        self.command_executor = StructuredCommandExecutor(workspace)
+        self.command_executor = StructuredCommandExecutor(workspace, watchdog=watchdog)
         self.workspace = Path(workspace).resolve()
         self.workspace_verifier = workspace_verifier
 
@@ -1279,8 +1296,9 @@ class Validator:
 class GitGateway:
     """Deterministic git operations with evidence capture."""
 
-    def __init__(self, workspace: str | Path):
+    def __init__(self, workspace: str | Path, *, watchdog: DefensiveWatchdog | None = None):
         self.workspace = Path(workspace).resolve()
+        self.watchdog = watchdog
 
     def _run(self, *args: str) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
@@ -1349,6 +1367,20 @@ class GitGateway:
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
+        if self.watchdog is not None:
+            decision = self.watchdog.authorize(
+                Capability.EXTERNAL_ACTION,
+                f"git push {remote} HEAD:{branch}",
+                authorization="repository_sync",
+                process="git push",
+            )
+            if not decision.allowed:
+                return CommandEvidence(
+                    command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+                    success=False,
+                    returncode=None,
+                    error=decision.reason or "Push blocked by watchdog.",
+                )
         result = self._run("push", remote, f"HEAD:{branch}")
         return CommandEvidence(
             command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
@@ -1359,6 +1391,20 @@ class GitGateway:
         )
 
     def remote_head(self, remote: str, branch: str) -> CommandEvidence:
+        if self.watchdog is not None:
+            decision = self.watchdog.authorize(
+                Capability.NETWORK,
+                f"git ls-remote {remote} refs/heads/{branch}",
+                authorization="remote_verification",
+                process="git ls-remote",
+            )
+            if not decision.allowed:
+                return CommandEvidence(
+                    command={"program": "git", "args": ["ls-remote", remote, f"refs/heads/{branch}"]},
+                    success=False,
+                    returncode=None,
+                    error=decision.reason or "Remote verification blocked by watchdog.",
+                )
         result = self._run("ls-remote", remote, f"refs/heads/{branch}")
         stdout = result.stdout[-4000:]
         sha = ""
@@ -1419,14 +1465,16 @@ class RepositoryRepairController:
         max_unchanged_attempts: int = 2,
     ):
         self.workspace = Path(workspace).resolve()
+        self.watchdog = DefensiveWatchdog(self.workspace)
         self.audit_engine = AuditEngine()
         self.repair_planner = RepairPlanner(brain, max_attempts=planner_attempts)
-        self.patch_executor = PatchExecutor(self.workspace)
+        self.patch_executor = PatchExecutor(self.workspace, watchdog=self.watchdog)
         self.validator = Validator(
             self.workspace,
             workspace_verifier=workspace_verifier,
+            watchdog=self.watchdog,
         )
-        self.git_gateway = GitGateway(self.workspace)
+        self.git_gateway = GitGateway(self.workspace, watchdog=self.watchdog)
         self.remote_verifier = RemoteVerifier(self.git_gateway)
         self.cycle_store = DurableCycleStore(self.workspace)
         self.max_unchanged_attempts = max_unchanged_attempts
@@ -1519,6 +1567,7 @@ class RepositoryRepairController:
             "branch": branch_name,
             "task_title": task_title,
         }
+        self.watchdog.set_context(repository=repo_name, task=task_title, session=cycle.cycle_id)
         if latest.get("project_identity", {}) == cycle.project_identity:
             cycle.attempt_number = int(latest.get("attempt_number") or 0) + 1
             cycle.resumed_from_cycle_id = str(latest.get("latest_cycle_id") or "")
@@ -1877,8 +1926,10 @@ class RepositoryRepairController:
         cycle.synchronization_recorded = True
         applicable_sync = [item for item in cycle.sync if item.applicable]
         cycle.remote_sync_verified = all(item.verified for item in applicable_sync)
+        cycle.validation["security_watchdog"] = self.watchdog.snapshot()
 
         if not cycle.can_complete():
+            self.watchdog.record_completion_gate_block("Completion gate rejected repair evidence or remote verification.")
             return self._failure(
                 cycle,
                 RepairState.FAILED,

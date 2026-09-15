@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest PyJWT cryptography
+          pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
 
       - name: Run core test suite
         run: |
