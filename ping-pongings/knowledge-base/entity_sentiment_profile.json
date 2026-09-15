@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 242,
-      "bullish": 130,
+      "total_mentions": 244,
+      "bullish": 132,
       "neutral": 35,
       "bearish": 77,
-      "net_sentiment_score": 0.219,
+      "net_sentiment_score": 0.225,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -459,6 +459,23 @@
       ]
     },
     {
+      "entity": "Ether",
+      "total_mentions": 8,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
+      ]
+    },
+    {
       "entity": "Metaplanet",
       "total_mentions": 8,
       "bullish": 7,
@@ -524,23 +541,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "Ether",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
       ]
     },
     {
@@ -1329,6 +1329,40 @@
       ]
     },
     {
+      "entity": "Bitcoin ETF",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows",
+        "Bitcoin ETFs draw $608M as Ether ETFs see largest inflow since October"
+      ]
+    },
+    {
+      "entity": "Ether ETF",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+        "Bitcoin ETFs draw $608M as Ether ETFs see largest inflow since October"
+      ]
+    },
+    {
       "entity": "Korea",
       "total_mentions": 3,
       "bullish": 3,
@@ -1358,6 +1392,23 @@
         "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
         "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
         "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga"
+      ]
+    },
+    {
+      "entity": "ETFs",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+        "Bitcoin ETFs tear through 2026 outflows in 7-day hot streak"
       ]
     },
     {
@@ -2354,38 +2405,6 @@
       ]
     },
     {
-      "entity": "Bitcoin ETF",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows"
-      ]
-    },
-    {
-      "entity": "Ether ETF",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2"
-      ]
-    },
-    {
       "entity": "Tether",
       "total_mentions": 2,
       "bullish": 1,
@@ -2603,22 +2622,6 @@
       "example_headlines": [
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
-      ]
-    },
-    {
-      "entity": "ETFs",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
       ]
     },
     {

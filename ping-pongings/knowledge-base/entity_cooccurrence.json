@@ -576,6 +576,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "ETF",
       "cooccurrence_count": 7,
@@ -661,21 +676,6 @@
         },
         {
           "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
         }
       ]
@@ -1686,6 +1686,51 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin ETF",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETF",
+      "entity_b": "Ether",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Nasdaq",
       "entity_b": "Ripple",
       "cooccurrence_count": 3,
@@ -1832,6 +1877,21 @@
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
         }
       ]
     },
@@ -3577,36 +3637,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin ETF",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether ETF",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "JPMorgan",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -3622,7 +3652,7 @@
     },
     {
       "entity_a": "Bitcoin ETF",
-      "entity_b": "Ether",
+      "entity_b": "Ether ETF",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -3630,7 +3660,22 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
+          "title": "Bitcoin ETFs draw $608M as Ether ETFs see largest inflow since October",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Ether ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs draw $608M as Ether ETFs see largest inflow since October",
           "asset": "BTC"
         }
       ]
@@ -4036,21 +4081,6 @@
         },
         {
           "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETFs",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
           "asset": "BTC"
         }
       ]
@@ -8027,29 +8057,7 @@
     },
     {
       "entity_a": "Bitcoin ETF",
-      "entity_b": "Ether ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin ETF",
       "entity_b": "JPMorgan",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ether",
-      "entity_b": "Ether ETF",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
