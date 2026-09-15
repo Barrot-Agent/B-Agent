@@ -3,7 +3,7 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_pairs_found": 1624,
+  "unique_pairs_found": 1637,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 71,
+      "cooccurrence_count": 72,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -96,6 +96,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 21,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 20,
@@ -122,21 +137,6 @@
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 19,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -366,6 +366,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 10,
@@ -377,21 +392,6 @@
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
-          "asset": "BTC"
         }
       ]
     },
@@ -891,6 +891,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 5,
@@ -1231,21 +1246,6 @@
         },
         {
           "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
           "asset": "BTC"
         }
       ]
@@ -2146,6 +2146,21 @@
         },
         {
           "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
           "asset": "BTC"
         }
       ]
@@ -4881,6 +4896,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "CoinDesk",
       "entity_b": "Donald Trump",
       "cooccurrence_count": 2,
@@ -5446,6 +5476,21 @@
         },
         {
           "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Standard Chartered",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered Forecasts Bitcoin Will Retest All-Time High - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -13140,17 +13185,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "U.S. Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin may find bear market bottom in August: 10x Research",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Federal Reserve",
       "entity_b": "U.S. Treasury",
       "cooccurrence_count": 1,
@@ -18838,19 +18872,30 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Geoff Kendrick",
+      "entity_a": "Standard Chartered",
+      "entity_b": "U.S. Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Treasury",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
           "asset": "BTC"
         }
       ]
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Standard Chartered",
+      "entity_b": "Geoff Kendrick",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -19317,6 +19362,116 @@
       "example_headlines": [
         {
           "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "B.AI",
+      "entity_b": "BitTorrent",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "B.AI",
+      "entity_b": "JustLend DAO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "B.AI",
+      "entity_b": "MetaMask",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "B.AI",
+      "entity_b": "SUN.io",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitTorrent",
+      "entity_b": "JustLend DAO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitTorrent",
+      "entity_b": "MetaMask",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitTorrent",
+      "entity_b": "SUN.io",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "JustLend DAO",
+      "entity_b": "MetaMask",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "JustLend DAO",
+      "entity_b": "SUN.io",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MetaMask",
+      "entity_b": "SUN.io",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
           "asset": "BTC"
         }
       ]

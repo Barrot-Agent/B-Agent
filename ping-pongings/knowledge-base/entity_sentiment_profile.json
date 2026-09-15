@@ -3,15 +3,15 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_entities_profiled": 505,
+  "unique_entities_profiled": 510,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 237,
-      "bullish": 126,
+      "total_mentions": 240,
+      "bullish": 129,
       "neutral": 35,
       "bearish": 76,
-      "net_sentiment_score": 0.211,
+      "net_sentiment_score": 0.221,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 97,
-      "bullish": 47,
+      "total_mentions": 98,
+      "bullish": 48,
       "neutral": 18,
       "bearish": 32,
-      "net_sentiment_score": 0.155,
+      "net_sentiment_score": 0.163,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 45,
-      "bullish": 27,
+      "total_mentions": 47,
+      "bullish": 29,
       "neutral": 6,
       "bearish": 12,
-      "net_sentiment_score": 0.333,
+      "net_sentiment_score": 0.362,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -159,6 +159,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 22,
+      "bullish": 11,
+      "neutral": 1,
+      "bearish": 10,
+      "net_sentiment_score": 0.045,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 22,
       "bullish": 16,
@@ -173,23 +190,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
         "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 21,
-      "bullish": 10,
-      "neutral": 1,
-      "bearish": 10,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
       ]
     },
     {
@@ -797,6 +797,23 @@
       ]
     },
     {
+      "entity": "Standard Chartered",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+        "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Iran",
       "total_mentions": 5,
       "bullish": 3,
@@ -1008,6 +1025,23 @@
         "BitMEX Sets Close-Only Risk Limits Ahead Of September Wind-Down",
         "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
         "BitMEX hit with 623 BTC lawsuit on day it announces shutdown"
+      ]
+    },
+    {
+      "entity": "U.S. Treasury",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "Bitcoin may find bear market bottom in August: 10x Research",
+        "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk"
       ]
     },
     {
@@ -1262,23 +1296,6 @@
       ]
     },
     {
-      "entity": "Standard Chartered",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
-        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
-        "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019"
-      ]
-    },
-    {
       "entity": "Brad Garlinghouse",
       "total_mentions": 3,
       "bullish": 2,
@@ -1392,23 +1409,6 @@
         "XRP Futures - CME Group",
         "Micro XRP Futures - CME Group",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "U.S. Treasury",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "Bitcoin may find bear market bottom in August: 10x Research",
-        "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk"
       ]
     },
     {
@@ -7499,6 +7499,76 @@
       ],
       "example_headlines": [
         "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It"
+      ]
+    },
+    {
+      "entity": "B.AI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "SUN.io",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "JustLend DAO",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "BitTorrent",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "MetaMask",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
       ]
     }
   ]
