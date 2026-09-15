@@ -3,7 +3,7 @@
     "xrp_entries": 535,
     "btc_entries": 467
   },
-  "unique_entities_profiled": 518,
+  "unique_entities_profiled": 521,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -2861,6 +2861,22 @@
       ]
     },
     {
+      "entity": "RWA",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tokenized Real-World Assets Reach Monthly High As Collateral Demand Grows",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
       "entity": "CBDC",
       "total_mentions": 2,
       "bullish": 2,
@@ -5096,6 +5112,48 @@
       ]
     },
     {
+      "entity": "DeFiLlama",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tokenized Real-World Assets Reach Monthly High As Collateral Demand Grows"
+      ]
+    },
+    {
+      "entity": "tokenized real-world assets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tokenized Real-World Assets Reach Monthly High As Collateral Demand Grows"
+      ]
+    },
+    {
+      "entity": "equities collateral",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tokenized Real-World Assets Reach Monthly High As Collateral Demand Grows"
+      ]
+    },
+    {
       "entity": "U.S. spot Bitcoin ETFs",
       "total_mentions": 1,
       "bullish": 1,
@@ -5723,20 +5781,6 @@
       ],
       "example_headlines": [
         "Bitcoin Treasury Strategy Posts $8.2B Loss As BTC Price Suffered - Bitcoin Magazine"
-      ]
-    },
-    {
-      "entity": "RWA",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
