@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import builtins
 import importlib.util
 import json
 import sys
@@ -46,6 +47,45 @@ def test_direct_script_import_bootstraps_barrot_agent_package(monkeypatch) -> No
             if name == "barrot_agent" or name.startswith("barrot_agent."):
                 sys.modules.pop(name, None)
         sys.modules.update(original_modules)
+        sys.path[:] = original_sys_path
+
+
+def test_capability_audit_import_succeeds_without_requests_dependency(monkeypatch) -> None:
+    script_path = REPO_ROOT / "scripts" / "barrot_capability_audit.py"
+    original_sys_path = list(sys.path)
+    original_modules = {
+        name: module
+        for name, module in sys.modules.items()
+        if name == "barrot_agent" or name.startswith("barrot_agent.")
+    }
+    original_requests = sys.modules.pop("requests", None)
+    original_import = builtins.__import__
+
+    def fake_import(name, globals=None, locals=None, fromlist=(), level=0):
+        if name == "requests":
+            raise ModuleNotFoundError("No module named 'requests'")
+        return original_import(name, globals, locals, fromlist, level)
+
+    for name in list(original_modules):
+        sys.modules.pop(name, None)
+
+    script_dir = str((REPO_ROOT / "scripts").resolve())
+    monkeypatch.setattr(sys, "path", [script_dir, *[entry for entry in original_sys_path if entry != script_dir]])
+    monkeypatch.setattr(builtins, "__import__", fake_import)
+
+    try:
+        module = load_script(script_path, "barrot_capability_audit_missing_requests_test")
+        report = module.audit()
+        assert report["status"] == "VERIFIED"
+    finally:
+        for name in list(sys.modules):
+            if name == "barrot_agent" or name.startswith("barrot_agent."):
+                sys.modules.pop(name, None)
+        sys.modules.update(original_modules)
+        if original_requests is not None:
+            sys.modules["requests"] = original_requests
+        else:
+            sys.modules.pop("requests", None)
         sys.path[:] = original_sys_path
 
 

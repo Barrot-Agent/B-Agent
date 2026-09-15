@@ -17,12 +17,6 @@ RecursiveFeedbackLoop
     Self-improving recursive feedback loop orchestrator.
 """
 
-from .kimi_integration import KimiClient
-from .recursive_feedback import (
-    FeedbackIteration,
-    RecursiveFeedbackLoop,
-    RecursiveFeedbackReport,
-)
 from .smart_agent import (
     AgentEvent,
     AgentEventType,
@@ -44,6 +38,24 @@ from .upgrade_flywheel import (
 __version__ = "2.0.0"
 __author__ = "Barrot-Agent"
 __license__ = "Apache-2.0"
+
+try:
+    from .kimi_integration import KimiClient
+
+    _kimi_available = True
+except Exception:
+    _kimi_available = False
+
+try:
+    from .recursive_feedback import (
+        FeedbackIteration,
+        RecursiveFeedbackLoop,
+        RecursiveFeedbackReport,
+    )
+
+    _feedback_available = True
+except Exception:
+    _feedback_available = False
 
 try:
     from barrot_agent.rendering import AssetLoader, DatasetAnalytics, DatasetManager
@@ -97,15 +109,17 @@ __all__ = [
     "ReasoningResult",
     "UpgradeFlywheel",
     "VerificationResult",
-    "KimiClient",
-    "RecursiveFeedbackLoop",
-    "RecursiveFeedbackReport",
-    "FeedbackIteration",
     "data_registry",
 ]
 
 if _rendering_available:
     __all__ += ["DatasetManager", "AssetLoader", "DatasetAnalytics"]
+
+if _kimi_available:
+    __all__ += ["KimiClient"]
+
+if _feedback_available:
+    __all__ += ["RecursiveFeedbackLoop", "RecursiveFeedbackReport", "FeedbackIteration"]
 
 if _research_available:
     __all__ += ["ScientificDiscoveryController", "NavierStokesProblemAdapter", "ConvergenceScenarioEngine"]
