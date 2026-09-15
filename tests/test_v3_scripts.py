@@ -48,6 +48,45 @@ def test_self_upgrade_normalizes_tool_conflict(monkeypatch) -> None:
     assert failure.code == FailureCode.PROVIDER_TOOL_CONFLICT.value
 
 
+def test_self_upgrade_groq_request_uses_explicit_headers(monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_headers_test")
+    monkeypatch.setattr(module, "GROQ_KEY", "test-key")
+
+    captured: dict[str, object] = {}
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+        def read(self, *args, **kwargs):
+            del args, kwargs
+            return b'{"choices":[{"message":{"content":"ok"}}]}'
+
+    def fake_urlopen(request, timeout=0):
+        captured["url"] = request.full_url
+        captured["timeout"] = timeout
+        captured["headers"] = dict(request.header_items())
+        return Response()
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+
+    response = module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": [{"role": "user", "content": "hello"}]})
+
+    assert response["choices"][0]["message"]["content"] == "ok"
+    assert captured["url"] == "https://api.groq.com/openai/v1/chat/completions"
+    assert captured["timeout"] == 90
+    headers = captured["headers"]
+    assert headers["Authorization"].startswith("Bearer ")
+    assert headers["Authorization"].endswith("test-key")
+    assert headers["Content-type"] == "application/json"
+    assert headers["Accept"] == "application/json"
+    assert headers["User-agent"] == "Barrot-Agent/1.0"
+
+
 def test_self_upgrade_no_gaps_returns_no_repair_required(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_nogap_test")
     monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")

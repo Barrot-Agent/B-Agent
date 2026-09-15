@@ -82,14 +82,20 @@ def git(*args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(["git", *args], cwd=REPO_ROOT, capture_output=True, text=True, check=False)
 
 
+def _groq_headers() -> dict[str, str]:
+    return {
+        "Authorization": "Bearer " + GROQ_KEY,
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "User-Agent": "Barrot-Agent/1.0",
+    }
+
+
 def _send_groq_request(payload: dict[str, Any]) -> dict[str, Any]:
     req = urllib.request.Request(
         "https://api.groq.com/openai/v1/chat/completions",
         data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Authorization": f"******",
-            "Content-Type": "application/json",
-        },
+        headers=_groq_headers(),
     )
     with urllib.request.urlopen(req, timeout=90) as resp:
         return json.load(resp)
