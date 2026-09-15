@@ -11,6 +11,7 @@ from .scientific_discovery import (
     CrossPollinationEngine,
     CrossPollinationRecord,
     EvidenceKind,
+    FormalVerificationStatus,
     FormalVerificationRecord,
     IndependenceEvaluator,
     LeanVerificationGateway,
@@ -35,6 +36,16 @@ from .scientific_discovery import (
     VerificationIndependence,
     is_scientific_discovery_task,
 )
+from .formal_benchmarks import (
+    ANTHROPIC_FLT_IMPORT_CONFIG,
+    AnthropicFermatBenchmarkAdapter,
+    DEFAULT_ANTHROPIC_FLT_ARCHIVE,
+    ExternalLeanProjectImporter,
+    FORMAL_PROVENANCE_EXTERNAL_AI,
+    materialize_anthropic_flt_bundle,
+    prepare_anthropic_flt_bundle_from_archive,
+    select_scientific_problem_adapter,
+)
 
 __all__ = [
     "AdversarialReview",
@@ -49,6 +60,7 @@ __all__ = [
     "CrossPollinationEngine",
     "CrossPollinationRecord",
     "EvidenceKind",
+    "FormalVerificationStatus",
     "FormalVerificationRecord",
     "IndependenceEvaluator",
     "LeanVerificationGateway",
@@ -72,4 +84,12 @@ __all__ = [
     "StaticResearchProblemAdapter",
     "VerificationIndependence",
     "is_scientific_discovery_task",
+    "ANTHROPIC_FLT_IMPORT_CONFIG",
+    "AnthropicFermatBenchmarkAdapter",
+    "DEFAULT_ANTHROPIC_FLT_ARCHIVE",
+    "ExternalLeanProjectImporter",
+    "FORMAL_PROVENANCE_EXTERNAL_AI",
+    "materialize_anthropic_flt_bundle",
+    "prepare_anthropic_flt_bundle_from_archive",
+    "select_scientific_problem_adapter",
 ]

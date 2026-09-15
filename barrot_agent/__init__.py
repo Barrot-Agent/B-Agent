@@ -76,9 +76,11 @@ except Exception:
 
 try:
     from .research import (
+        AnthropicFermatBenchmarkAdapter,
         ConvergenceScenarioEngine,
         NavierStokesProblemAdapter,
         ScientificDiscoveryController,
+        select_scientific_problem_adapter,
     )
 
     _research_available = True
@@ -122,7 +124,13 @@ if _feedback_available:
     __all__ += ["RecursiveFeedbackLoop", "RecursiveFeedbackReport", "FeedbackIteration"]
 
 if _research_available:
-    __all__ += ["ScientificDiscoveryController", "NavierStokesProblemAdapter", "ConvergenceScenarioEngine"]
+    __all__ += [
+        "ScientificDiscoveryController",
+        "NavierStokesProblemAdapter",
+        "AnthropicFermatBenchmarkAdapter",
+        "ConvergenceScenarioEngine",
+        "select_scientific_problem_adapter",
+    ]
 
 if _creative_available:
     __all__ += ["ProductionDirector", "CreativeProductionRecord"]

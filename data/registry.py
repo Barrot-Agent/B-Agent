@@ -32,6 +32,7 @@ _DATA_DIR = Path(__file__).parent.resolve()
 _FILE_MAP: Dict[str, str] = {
     "merge_conflict": "merge_conflict_unified.json",
     "millennium_problems": "millennium_problems_unified.json",
+    "anthropic_fermat_benchmark": "research/anthropic_fermats_last_theorem_bundle.json",
     "navier_stokes_research": "research/navier_stokes_research_bundle.json",
     "mmi_monetization": "mmi_monetization_unified.json",
     "character_capabilities": "character_capabilities_unified.json",
@@ -102,6 +103,11 @@ def load_millennium_problems(force_reload: bool = False) -> Dict[str, Any]:
 def load_navier_stokes_research(force_reload: bool = False) -> Dict[str, Any]:
     """Return the structured Navier–Stokes research bundle."""
     return _load("navier_stokes_research", force_reload)
+
+
+def load_anthropic_fermat_benchmark(force_reload: bool = False) -> Dict[str, Any]:
+    """Return the Anthropic Fermat's Last Theorem benchmark bundle."""
+    return _load("anthropic_fermat_benchmark", force_reload)
 
 
 def load_mmi_monetization(force_reload: bool = False) -> Dict[str, Any]:

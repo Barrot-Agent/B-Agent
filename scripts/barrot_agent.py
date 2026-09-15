@@ -34,9 +34,9 @@ from barrot_agent.orchestration.repository_repair import (
     WorkQueueController,
 )
 from barrot_agent.research import (
-    NavierStokesProblemAdapter,
     ScientificDiscoveryController,
     is_scientific_discovery_task,
+    select_scientific_problem_adapter,
 )
 
 REPO = os.environ["REPO"]
@@ -767,7 +767,7 @@ def main() -> None:
     checkout_branch(BRANCH)
 
     if is_scientific_discovery_task(TITLE, TASK):
-        cycle = ScientificDiscoveryController(workspace=ROOT).run(NavierStokesProblemAdapter())
+        cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
         write_collaboration_record(cycle)

@@ -6,9 +6,11 @@ from pathlib import Path
 
 from barrot_agent.creative import ProductionDirector
 from barrot_agent.research import (
+    AnthropicFermatBenchmarkAdapter,
     AdversarialReview,
     ClaimStatus,
     CrossPollinationEngine,
+    FormalVerificationStatus,
     IndependenceEvaluator,
     LeanVerificationGateway,
     NavierStokesProblemAdapter,
@@ -20,6 +22,7 @@ from barrot_agent.research import (
     ResearchTrack,
     VerificationIndependence,
     is_scientific_discovery_task,
+    select_scientific_problem_adapter,
 )
 
 SCRIPT_PATH = Path("/home/runner/work/B-Agent/B-Agent/scripts/barrot_agent.py")
@@ -286,7 +289,7 @@ def test_failed_lean_compilation_is_recorded(tmp_path: Path) -> None:
 
     assert cycle.status == "no_solution_claim"
     assert cycle.formal_verifications[0]["compiled"] is False
-    assert cycle.formal_verifications[0]["status"] == ClaimStatus.FORMALIZED.value
+    assert cycle.formal_verifications[0]["status"] == FormalVerificationStatus.BUILD_ATTEMPTED.value
 
 
 def test_successful_formal_verification_and_independence_can_complete(tmp_path: Path) -> None:
@@ -307,6 +310,7 @@ def test_successful_formal_verification_and_independence_can_complete(tmp_path: 
     assert cycle.current_state == ResearchState.COMPLETE.value
     assert cycle.problem_resolution_status == ClaimStatus.INDEPENDENTLY_VERIFIED.value
     assert cycle.formal_verifications[0]["compiled"] is True
+    assert cycle.formal_verifications[0]["status"] == FormalVerificationStatus.INDEPENDENTLY_CHECKED.value
 
 
 def test_adversarial_contradiction_blocks_acceptance(tmp_path: Path) -> None:
@@ -460,7 +464,14 @@ def test_creative_engine_records_pending_media_without_claiming_generation(tmp_p
 
 def test_scientific_discovery_task_detection() -> None:
     assert is_scientific_discovery_task("Navier-Stokes review", "formal verification") is True
+    assert is_scientific_discovery_task("FLT benchmark", "Fermat theorem import") is True
     assert is_scientific_discovery_task("Bugfix", "repair parser") is False
+
+
+def test_scientific_problem_selection_chooses_flt_adapter() -> None:
+    adapter = select_scientific_problem_adapter("Formalizing Fermat's Last Theorem", "lean theorem benchmark")
+
+    assert isinstance(adapter, AnthropicFermatBenchmarkAdapter)
 
 
 def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -> None:
@@ -510,7 +521,7 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     monkeypatch.setattr(module, "ScientificDiscoveryController", FakeScientificDiscoveryController)
     monkeypatch.setattr(module, "write_collaboration_record", lambda cycle: calls.setdefault("record", cycle))
     monkeypatch.setattr(module, "post_issue_comment", lambda message: calls.setdefault("comment", message))
-    monkeypatch.setattr(module, "NavierStokesProblemAdapter", lambda: "adapter")
+    monkeypatch.setattr(module, "select_scientific_problem_adapter", lambda title, body: "adapter")
 
     module.main()
 

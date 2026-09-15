@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from dataclasses import asdict, dataclass, field
 from enum import Enum
@@ -56,6 +57,16 @@ class ClaimStatus(str, Enum):
     REFUTED = "REFUTED"
     DISPUTED = "DISPUTED"
     UNRESOLVED = "UNRESOLVED"
+
+
+class FormalVerificationStatus(str, Enum):
+    IMPORTED = "IMPORTED"
+    BUILD_ATTEMPTED = "BUILD_ATTEMPTED"
+    COMPILED = "COMPILED"
+    KERNEL_VERIFIED = "KERNEL_VERIFIED"
+    INDEPENDENTLY_CHECKED = "INDEPENDENTLY_CHECKED"
+    COMPARATOR_VERIFIED = "COMPARATOR_VERIFIED"
+    HUMAN_REVIEWED = "HUMAN_REVIEWED"
 
 
 class EvidenceKind(str, Enum):
@@ -276,18 +287,44 @@ class FormalVerificationRecord:
     theorem_names: list[str]
     source_files: list[str]
     repository: str
+    source_repository: str = ""
     source_commit: str = ""
+    license: str = ""
+    attribution: str = ""
     toolchain_version: str = ""
+    lean_version: str = ""
+    mathlib_version: str = ""
     formal_statement: str = ""
+    theorem_statement: str = ""
     source_location: str = ""
+    root_theorem: str = ""
     command: list[str] = field(default_factory=list)
+    build_command: list[str] = field(default_factory=list)
+    axiom_command: list[str] = field(default_factory=list)
     dependencies: list[str] = field(default_factory=list)
+    dependency_manifest: dict[str, Any] = field(default_factory=dict)
+    theorem_metadata: list[dict[str, Any]] = field(default_factory=list)
+    proof_path: list[dict[str, Any]] = field(default_factory=list)
+    verification_scripts: dict[str, Any] = field(default_factory=dict)
+    compiler_configuration: dict[str, Any] = field(default_factory=dict)
+    external_checker_configuration: dict[str, Any] = field(default_factory=dict)
+    dependency_graph: dict[str, Any] = field(default_factory=dict)
+    build_result: dict[str, Any] = field(default_factory=dict)
+    axiom_result: dict[str, Any] = field(default_factory=dict)
+    primary_kernel_result: dict[str, Any] = field(default_factory=dict)
+    independent_checker: dict[str, Any] = field(default_factory=dict)
+    independent_checker_result: dict[str, Any] = field(default_factory=dict)
+    comparator_result: dict[str, Any] = field(default_factory=dict)
+    execution_timestamp: float = 0.0
+    resource_requirements: dict[str, Any] = field(default_factory=dict)
+    failed_attempts: list[dict[str, Any]] = field(default_factory=list)
     compiled: bool = False
     independently_verified: bool = False
     returncode: int | None = None
     stdout: str = ""
     stderr: str = ""
-    status: str = ClaimStatus.UNASSESSED.value
+    status: str = FormalVerificationStatus.IMPORTED.value
+    status_history: list[str] = field(default_factory=lambda: [FormalVerificationStatus.IMPORTED.value])
     provenance: list[str] = field(default_factory=list)
     timestamp: float = field(default_factory=_timestamp)
 
@@ -641,7 +678,7 @@ class ResearchSourceIngestor:
 
 
 class LeanVerificationGateway:
-    ALLOWED_PROGRAMS = {"lake", "lean", "elan"}
+    ALLOWED_PROGRAMS = {"lake", "lean", "elan", "bash", "sh"}
 
     def verify(
         self,
@@ -649,40 +686,266 @@ class LeanVerificationGateway:
         *,
         runner: Callable[[list[str], str | None], dict[str, Any]] | None = None,
     ) -> FormalVerificationRecord:
-        command = [str(item) for item in spec.get("command", []) if str(item).strip()]
-        if command and command[0] not in self.ALLOWED_PROGRAMS:
-            raise RepairError(f"Unsupported formal verification command: {command[0]}")
+        build_command = [str(item) for item in spec.get("build_command", spec.get("command", [])) if str(item).strip()]
+        axiom_command = [str(item) for item in spec.get("axiom_command", []) if str(item).strip()]
+        comparator_command = [
+            str(item)
+            for item in spec.get("comparator_command", spec.get("verification_scripts", {}).get("comparator", {}).get("command", []))
+            if str(item).strip()
+        ]
+        checker_command = [
+            str(item)
+            for item in spec.get(
+                "independent_checker_command",
+                spec.get("independent_checker", {}).get("command", []),
+            )
+            if str(item).strip()
+        ]
+        for command in (build_command, axiom_command, comparator_command, checker_command):
+            if command and command[0] not in self.ALLOWED_PROGRAMS:
+                raise RepairError(f"Unsupported formal verification command: {command[0]}")
         record = FormalVerificationRecord(
             verification_id=str(spec.get("verification_id") or Fingerprint.create(spec).value),
             system=str(spec.get("system") or "lean"),
             theorem_names=[str(item) for item in spec.get("theorem_names", [])],
             source_files=[str(item) for item in spec.get("source_files", [])],
             repository=str(spec.get("repository") or ""),
+            source_repository=str(spec.get("source_repository") or spec.get("repository") or ""),
             source_commit=str(spec.get("source_commit") or ""),
+            license=str(spec.get("license") or ""),
+            attribution=str(spec.get("attribution") or ""),
             toolchain_version=str(spec.get("toolchain_version") or ""),
+            lean_version=str(spec.get("lean_version") or ""),
+            mathlib_version=str(spec.get("mathlib_version") or ""),
             formal_statement=str(spec.get("formal_statement") or ""),
+            theorem_statement=str(spec.get("theorem_statement") or spec.get("formal_statement") or ""),
             source_location=str(spec.get("source_location") or ""),
-            command=command,
+            root_theorem=str(spec.get("root_theorem") or ""),
+            command=build_command,
+            build_command=build_command,
+            axiom_command=axiom_command,
             dependencies=[str(item) for item in spec.get("dependencies", [])],
-            status=ClaimStatus.FORMALIZED.value,
+            dependency_manifest=dict(spec.get("dependency_manifest") or {}),
+            theorem_metadata=[dict(item) for item in spec.get("theorem_metadata", []) if isinstance(item, dict)],
+            proof_path=[dict(item) for item in spec.get("proof_path", []) if isinstance(item, dict)],
+            verification_scripts=dict(spec.get("verification_scripts") or {}),
+            compiler_configuration=dict(spec.get("compiler_configuration") or {}),
+            external_checker_configuration=dict(spec.get("external_checker_configuration") or {}),
+            dependency_graph=dict(spec.get("dependency_graph") or {}),
+            axiom_result=dict(spec.get("axiom_result") or {}),
+            independent_checker=dict(spec.get("independent_checker") or {}),
+            independent_checker_result=dict(spec.get("independent_checker_result") or {}),
+            comparator_result=dict(spec.get("comparator_result") or {}),
+            resource_requirements=dict(spec.get("resource_requirements") or {}),
+            status=FormalVerificationStatus.IMPORTED.value,
             provenance=[str(item) for item in spec.get("provenance", [])],
         )
-        if runner is not None:
-            result = runner(command, spec.get("repository_path"))
-            record.returncode = int(result.get("returncode", 1))
-            record.stdout = str(result.get("stdout", ""))[-4000:]
-            record.stderr = str(result.get("stderr", ""))[-4000:]
-            record.compiled = record.returncode == 0
-            record.independently_verified = bool(result.get("independently_verified", False))
-        elif spec.get("repository_path"):
-            validation = bounded_subprocess(command, cwd=str(spec.get("repository_path")), timeout=int(spec.get("timeout", 120)))
-            check = validation.checks[0] if validation.checks else {}
-            record.returncode = check.get("returncode")
-            record.stdout = check.get("stdout", "")
-            record.stderr = check.get("stderr", "")
-            record.compiled = validation.passed
-        record.status = ClaimStatus.FORMALLY_VERIFIED.value if record.compiled else ClaimStatus.FORMALIZED.value
+        record.execution_timestamp = _timestamp()
+        repository_path = str(spec.get("repository_path") or "") or None
+        timeout = int(spec.get("timeout", 120))
+        if build_command and (runner is not None or repository_path):
+            self._set_status(record, FormalVerificationStatus.BUILD_ATTEMPTED)
+            build_result = self._execute_command(
+                build_command,
+                repository_path=repository_path,
+                timeout=timeout,
+                runner=runner,
+                phase="build",
+            )
+            record.build_result = build_result
+            record.returncode = build_result.get("exit_code")
+            record.stdout = str(build_result.get("stdout", ""))[-4000:]
+            record.stderr = str(build_result.get("stderr", ""))[-4000:]
+            record.compiled = build_result.get("success") is True
+            record.independently_verified = bool(build_result.get("independently_verified", False))
+            record.primary_kernel_result = {
+                "status": "verified" if record.compiled else "failed",
+                "command": build_command,
+                "exit_code": build_result.get("exit_code"),
+                "elapsed_seconds": build_result.get("elapsed_seconds"),
+                "environment": build_result.get("environment", {}),
+                "warnings": build_result.get("warnings", []),
+                "errors": build_result.get("errors", []),
+            }
+            if record.compiled:
+                self._set_status(record, FormalVerificationStatus.COMPILED)
+                self._set_status(record, FormalVerificationStatus.KERNEL_VERIFIED)
+                if record.independently_verified:
+                    self._set_status(record, FormalVerificationStatus.INDEPENDENTLY_CHECKED)
+            else:
+                record.failed_attempts.append(
+                    {
+                        "phase": "build",
+                        "command": build_command,
+                        "failure": record.stderr or record.stdout or "formal build failed",
+                        "provider": spec.get("provider") or "local_runner",
+                        "retry_count": int(spec.get("retry_count", 0)),
+                    }
+                )
+        if record.compiled and axiom_command:
+            axiom_run = self._execute_command(
+                axiom_command,
+                repository_path=repository_path,
+                timeout=int(spec.get("axiom_timeout", timeout)),
+                runner=runner,
+                phase="axiom_audit",
+            )
+            declared_axioms = self._extract_axioms(axiom_run)
+            merged = dict(record.axiom_result)
+            merged.update(
+                {
+                    "command": axiom_command,
+                    "exit_code": axiom_run.get("exit_code"),
+                    "stdout": str(axiom_run.get("stdout", ""))[-4000:],
+                    "stderr": str(axiom_run.get("stderr", ""))[-4000:],
+                    "declared_axioms": declared_axioms or record.axiom_result.get("declared_axioms", []),
+                    "used_environment_data": bool(declared_axioms) or bool(record.axiom_result.get("used_environment_data")),
+                    "success": axiom_run.get("success", False),
+                }
+            )
+            record.axiom_result = merged
+        if record.compiled and comparator_command:
+            comparator_run = self._execute_command(
+                comparator_command,
+                repository_path=repository_path,
+                timeout=int(spec.get("comparator_timeout", timeout)),
+                runner=runner,
+                phase="comparator",
+            )
+            verdict = self._comparator_verdict(comparator_run)
+            merged = dict(record.comparator_result)
+            merged.update(
+                {
+                    "command": comparator_command,
+                    "exit_code": comparator_run.get("exit_code"),
+                    "stdout": str(comparator_run.get("stdout", ""))[-4000:],
+                    "stderr": str(comparator_run.get("stderr", ""))[-4000:],
+                    "success": comparator_run.get("success", False),
+                    "verdict": verdict,
+                }
+            )
+            record.comparator_result = merged
+            if verdict == "verified":
+                self._set_status(record, FormalVerificationStatus.COMPARATOR_VERIFIED)
+        if record.compiled and checker_command:
+            checker_run = self._execute_command(
+                checker_command,
+                repository_path=repository_path,
+                timeout=int(spec.get("independent_checker_timeout", timeout)),
+                runner=runner,
+                phase="independent_checker",
+            )
+            checker_name = (
+                str(record.independent_checker.get("name") or "")
+                or str(record.external_checker_configuration.get("independent_checker", {}).get("name") or "")
+                or "independent_checker"
+            )
+            merged = dict(record.independent_checker_result)
+            merged.update(
+                {
+                    "checker": checker_name,
+                    "command": checker_command,
+                    "exit_code": checker_run.get("exit_code"),
+                    "stdout": str(checker_run.get("stdout", ""))[-4000:],
+                    "stderr": str(checker_run.get("stderr", ""))[-4000:],
+                    "success": checker_run.get("success", False),
+                }
+            )
+            record.independent_checker_result = merged
+            if checker_run.get("success"):
+                record.independently_verified = True
+                self._set_status(record, FormalVerificationStatus.INDEPENDENTLY_CHECKED)
         return record
+
+    def _execute_command(
+        self,
+        command: list[str],
+        *,
+        repository_path: str | None,
+        timeout: int,
+        runner: Callable[[list[str], str | None], dict[str, Any]] | None,
+        phase: str,
+    ) -> dict[str, Any]:
+        started_at = _timestamp()
+        if runner is not None:
+            raw = runner(command, repository_path)
+            exit_code = raw.get("returncode")
+            stdout = str(raw.get("stdout", ""))
+            stderr = str(raw.get("stderr", ""))
+            success = exit_code == 0
+        elif repository_path:
+            try:
+                validation = bounded_subprocess(command, cwd=repository_path, timeout=timeout)
+            except FileNotFoundError as exc:
+                validation = None
+                exit_code = 127
+                stdout = ""
+                stderr = str(exc)
+                success = False
+            else:
+                check = validation.checks[0] if validation.checks else {}
+                exit_code = check.get("returncode")
+                stdout = str(check.get("stdout", ""))
+                stderr = str(check.get("stderr", ""))
+                success = bool(validation.passed)
+        else:
+            exit_code = None
+            stdout = ""
+            stderr = "repository_path not provided"
+            success = False
+        finished_at = _timestamp()
+        result = {
+            "phase": phase,
+            "command": list(command),
+            "exit_code": exit_code,
+            "stdout": stdout[-12000:],
+            "stderr": stderr[-12000:],
+            "warnings": self._extract_diagnostics(stdout, stderr, keyword="warning"),
+            "errors": self._extract_diagnostics(stdout, stderr, keyword="error"),
+            "elapsed_seconds": round(finished_at - started_at, 3),
+            "started_at": started_at,
+            "completed_at": finished_at,
+            "success": success,
+            "environment": {
+                "cwd": repository_path or "",
+                "timeout_seconds": timeout,
+            },
+        }
+        if runner is not None:
+            for key, value in raw.items():
+                if key not in {"returncode", "stdout", "stderr"}:
+                    result[key] = value
+        return result
+
+    @staticmethod
+    def _extract_diagnostics(stdout: str, stderr: str, *, keyword: str) -> list[str]:
+        results: list[str] = []
+        pattern = re.compile(rf".*{re.escape(keyword)}.*", flags=re.IGNORECASE)
+        for line in f"{stdout}\n{stderr}".splitlines():
+            if pattern.match(line):
+                results.append(line.strip()[:500])
+        return results[:50]
+
+    @staticmethod
+    def _extract_axioms(result: dict[str, Any]) -> list[str]:
+        payload = f"{result.get('stdout', '')}\n{result.get('stderr', '')}"
+        match = re.search(r"depends on axioms:\s*\[([^\]]*)\]", payload)
+        if not match:
+            return []
+        return [item.strip() for item in match.group(1).split(",") if item.strip()]
+
+    @staticmethod
+    def _comparator_verdict(result: dict[str, Any]) -> str:
+        payload = f"{result.get('stdout', '')}\n{result.get('stderr', '')}"
+        if "Your solution is okay!" in payload:
+            return "verified"
+        return "failed" if result.get("exit_code") not in {0, None} else "pending"
+
+    @staticmethod
+    def _set_status(record: FormalVerificationRecord, status: FormalVerificationStatus) -> None:
+        record.status = status.value
+        if status.value not in record.status_history:
+            record.status_history.append(status.value)
 
 
 class CrossPollinationEngine:
@@ -1794,6 +2057,7 @@ def is_scientific_discovery_task(title: str, body: str) -> bool:
         "stokes",
         "scientific discovery",
         "formal verification",
+        "fermat",
         "lean",
         "millennium prize",
         "research question",

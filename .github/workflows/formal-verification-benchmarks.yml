@@ -1,0 +1,57 @@
+name: Formal Verification Benchmarks
+
+on:
+  workflow_dispatch:
+    inputs:
+      benchmark:
+        description: Benchmark to run
+        required: true
+        default: anthropic-flt
+        type: choice
+        options:
+          - anthropic-flt
+      attempt_build:
+        description: Attempt the external Lean build and checker commands
+        required: true
+        default: false
+        type: boolean
+      timeout_seconds:
+        description: Timeout per formal command
+        required: true
+        default: "900"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  anthropic-flt:
+    if: ${{ inputs.benchmark == 'anthropic-flt' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
+
+      - name: Run Anthropic FLT benchmark
+        run: |
+          args=(python scripts/run_formal_verification_benchmark.py --bundle-out /tmp/anthropic_flt_bundle.json --report-out /tmp/anthropic_flt_report.json --timeout "${{ inputs.timeout_seconds }}")
+          if [ "${{ inputs.attempt_build }}" = "true" ]; then
+            args+=(--attempt-build)
+          fi
+          "${args[@]}"
+
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: anthropic-flt-benchmark
+          path: |
+            /tmp/anthropic_flt_bundle.json
+            /tmp/anthropic_flt_report.json
