@@ -3,15 +3,15 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_entities_profiled": 495,
+  "unique_entities_profiled": 498,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 230,
-      "bullish": 121,
+      "total_mentions": 232,
+      "bullish": 122,
       "neutral": 34,
-      "bearish": 75,
-      "net_sentiment_score": 0.2,
+      "bearish": 76,
+      "net_sentiment_score": 0.198,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -193,11 +193,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 19,
+      "total_mentions": 20,
       "bullish": 14,
-      "neutral": 2,
+      "neutral": 3,
       "bearish": 3,
-      "net_sentiment_score": 0.579,
+      "net_sentiment_score": 0.55,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -442,6 +442,23 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 7,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 4,
+      "net_sentiment_score": -0.286,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "The Motley Fool",
       "total_mentions": 7,
       "bullish": 7,
@@ -544,20 +561,20 @@
       ]
     },
     {
-      "entity": "AI",
-      "total_mentions": 6,
-      "bullish": 2,
+      "entity": "Metaplanet",
+      "total_mentions": 7,
+      "bullish": 6,
       "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": -0.167,
+      "bearish": 0,
+      "net_sentiment_score": 0.857,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -609,23 +626,6 @@
         "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.833,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -1011,6 +1011,23 @@
       ]
     },
     {
+      "entity": "Dogecoin",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
+        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1310,6 +1327,40 @@
       ]
     },
     {
+      "entity": "TRX",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
+      ]
+    },
+    {
+      "entity": "Hashdex",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
+        "Hashdex to shut smallest Bitcoin ETF after more than two years",
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives"
+      ]
+    },
+    {
       "entity": "Spot Bitcoin ETF",
       "total_mentions": 3,
       "bullish": 2,
@@ -1361,20 +1412,20 @@
       ]
     },
     {
-      "entity": "Dogecoin",
+      "entity": "DOGE",
       "total_mentions": 3,
       "bullish": 1,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "Bitcoin, Ethereum, XRP, Dogecoin Lift Amid Crypto Bill Optimism: Analyst Flags BTC's 'Biggest Test' ",
-        "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A"
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
       ]
     },
     {
@@ -2603,22 +2654,23 @@
       ]
     },
     {
-      "entity": "TRX",
+      "entity": "Canary",
       "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
+      "bullish": 0,
+      "neutral": 2,
       "bearish": 0,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
+        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {
-      "entity": "Hashdex",
+      "entity": "DEFI",
       "total_mentions": 2,
       "bullish": 0,
       "neutral": 0,
@@ -2630,7 +2682,7 @@
       ],
       "example_headlines": [
         "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
-        "Hashdex to shut smallest Bitcoin ETF after more than two years"
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives"
       ]
     },
     {
@@ -2666,19 +2718,19 @@
       ]
     },
     {
-      "entity": "DOGE",
+      "entity": "CleanCore",
       "total_mentions": 2,
-      "bullish": 1,
+      "bullish": 0,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
       ]
     },
     {
@@ -4128,34 +4180,6 @@
       ]
     },
     {
-      "entity": "Canary",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
-      ]
-    },
-    {
-      "entity": "DEFI",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives"
-      ]
-    },
-    {
       "entity": "US Court of Appeals",
       "total_mentions": 1,
       "bullish": 0,
@@ -4335,20 +4359,6 @@
       ],
       "example_headlines": [
         "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
-      ]
-    },
-    {
-      "entity": "CleanCore",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
       ]
     },
     {
@@ -7233,6 +7243,48 @@
       ],
       "example_headlines": [
         "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Canaan",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump"
+      ]
+    },
+    {
+      "entity": "Strive",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump"
+      ]
+    },
+    {
+      "entity": "US Spot Bitcoin ETF",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives"
       ]
     },
     {
