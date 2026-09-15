@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 533,
-    "btc_entries": 436
+    "btc_entries": 460
   },
-  "unique_pairs_found": 1517,
+  "unique_pairs_found": 1541,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 63,
+      "cooccurrence_count": 65,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -216,6 +216,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 13,
@@ -286,21 +301,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price may fall to $52,000 as demand remains elusive, Nansen analyst says - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -531,6 +531,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Moomoo",
       "cooccurrence_count": 7,
@@ -651,16 +666,16 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "CoinDesk",
+      "entity_a": "Bitcoin",
+      "entity_b": "Bloomberg",
       "cooccurrence_count": 6,
       "example_headlines": [
         {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -786,6 +801,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        },
+        {
+          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Strategy",
       "cooccurrence_count": 5,
@@ -826,21 +856,6 @@
         },
         {
           "title": "Current price of Bitcoin for July 30, 2026 - Fortune",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bloomberg",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
-          "asset": "BTC"
-        },
-        {
-          "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -1221,6 +1236,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "SBI Holdings",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -1551,21 +1581,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Donald Trump",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-          "asset": "XRP"
-        },
-        {
-          "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Korea",
       "entity_b": "Ripple",
       "cooccurrence_count": 3,
@@ -1747,6 +1762,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Nasdaq",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -1801,6 +1831,21 @@
         },
         {
           "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+          "asset": "BTC"
+        },
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -1866,16 +1911,16 @@
       ]
     },
     {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Yahoo Finance",
+      "entity_a": "BTC",
+      "entity_b": "Bloomberg",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
+          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -4282,15 +4327,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "CNBC",
+      "entity_b": "FOREX.com",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+          "title": "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com",
           "asset": "BTC"
         },
         {
-          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "title": "Bitcoin Price Forecast: BTC/USD Recovery Extends 20% as Bulls Eye Key Resistance - FOREX.com",
           "asset": "BTC"
         }
       ]
@@ -4417,6 +4462,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Clarity Act",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Senate",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -4426,21 +4486,6 @@
         },
         {
           "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Donald Trump",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-          "asset": "BTC"
-        },
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -4786,21 +4831,6 @@
         },
         {
           "title": "Sweden\u2019s H100 reports $26M H1 loss driven by falling Bitcoin value",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bloomberg",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Fund Inflows Hit Four-Month High as Hack Rattles Holders - Bloomberg.com",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin ETFs See Largest Outflow in Six Weeks as Token Stagnates - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -11231,17 +11261,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "FOREX.com",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Zhibao",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -12369,17 +12388,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin May Finally Crash Below $60K As August Curse Kicks In - Yahoo! Finance Canada",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Clarity Act",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2",
           "asset": "BTC"
         }
       ]
@@ -17742,6 +17750,28 @@
       ]
     },
     {
+      "entity_a": "BTC/USD",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC/USD Recovery Extends 20% as Bulls Eye Key Resistance - FOREX.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC/USD",
+      "entity_b": "FOREX.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Forecast: BTC/USD Recovery Extends 20% as Bulls Eye Key Resistance - FOREX.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "GNO",
       "cooccurrence_count": 1,
@@ -17825,6 +17855,138 @@
       "example_headlines": [
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "crypto executives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CNBC",
+      "entity_b": "Clarity Act",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CNBC",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CNBC",
+      "entity_b": "crypto executives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clarity Act",
+      "entity_b": "crypto executives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "crypto executives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "US Treasury yields",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Roars Past $70,000 as Yields Sink, Trump Sparks Optimism - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Treasury yields",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Roars Past $70,000 as Yields Sink, Trump Sparks Optimism - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "Donald Trump",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Roars Past $70,000 as Yields Sink, Trump Sparks Optimism - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bloomberg",
+      "entity_b": "US Treasury yields",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Roars Past $70,000 as Yields Sink, Trump Sparks Optimism - Bloomberg.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Donald Trump",
+      "entity_b": "US Treasury yields",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Roars Past $70,000 as Yields Sink, Trump Sparks Optimism - Bloomberg.com",
           "asset": "BTC"
         }
       ]
@@ -18012,6 +18174,116 @@
       "example_headlines": [
         {
           "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "Alexis Cathalifaud",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "Clichmont",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "GPU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI compute",
+      "entity_b": "data center",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alexis Cathalifaud",
+      "entity_b": "Clichmont",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alexis Cathalifaud",
+      "entity_b": "GPU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alexis Cathalifaud",
+      "entity_b": "data center",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clichmont",
+      "entity_b": "GPU",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Clichmont",
+      "entity_b": "data center",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "GPU",
+      "entity_b": "data center",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
           "asset": "BTC"
         }
       ]

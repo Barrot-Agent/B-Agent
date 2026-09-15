@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 533,
-    "btc_entries": 436
+    "btc_entries": 460
   },
-  "unique_entities_profiled": 476,
+  "unique_entities_profiled": 483,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 220,
-      "bullish": 111,
+      "total_mentions": 224,
+      "bullish": 115,
       "neutral": 34,
       "bearish": 75,
-      "net_sentiment_score": 0.164,
+      "net_sentiment_score": 0.179,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 86,
-      "bullish": 38,
+      "total_mentions": 88,
+      "bullish": 40,
       "neutral": 17,
       "bearish": 31,
-      "net_sentiment_score": 0.081,
+      "net_sentiment_score": 0.102,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 41,
-      "bullish": 24,
+      "total_mentions": 42,
+      "bullish": 25,
       "neutral": 6,
       "bearish": 11,
-      "net_sentiment_score": 0.317,
+      "net_sentiment_score": 0.333,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 26,
-      "bullish": 16,
+      "total_mentions": 27,
+      "bullish": 17,
       "neutral": 1,
       "bearish": 9,
-      "net_sentiment_score": 0.269,
+      "net_sentiment_score": 0.296,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -274,6 +274,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 13,
+      "bullish": 5,
+      "neutral": 3,
+      "bearish": 5,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 12,
       "bullish": 9,
@@ -305,22 +321,6 @@
         "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
         "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 12,
-      "bullish": 4,
-      "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": -0.083,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -526,6 +526,23 @@
       ]
     },
     {
+      "entity": "Donald Trump",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
+        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
+      ]
+    },
+    {
       "entity": "AI",
       "total_mentions": 6,
       "bullish": 2,
@@ -608,6 +625,22 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "US hints at more yen intervention: Five things to know in Bitcoin this week",
         "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
+      ]
+    },
+    {
+      "entity": "Bloomberg",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
       ]
     },
     {
@@ -729,23 +762,6 @@
       ]
     },
     {
-      "entity": "Donald Trump",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.2,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
-      ]
-    },
-    {
       "entity": "South Korea",
       "total_mentions": 5,
       "bullish": 4,
@@ -811,19 +827,20 @@
       ]
     },
     {
-      "entity": "Bloomberg",
-      "total_mentions": 5,
-      "bullish": 2,
+      "entity": "Clarity Act",
+      "total_mentions": 4,
+      "bullish": 1,
       "neutral": 0,
       "bearish": 3,
-      "net_sentiment_score": -0.2,
+      "net_sentiment_score": -0.5,
       "assets_seen_in": [
-        "BTC"
+        "BTC",
+        "XRP"
       ],
       "example_headlines": [
-        "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
+        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
       ]
     },
     {
@@ -1042,23 +1059,6 @@
       ]
     },
     {
-      "entity": "Clarity Act",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-        "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
-        "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
-      ]
-    },
-    {
       "entity": "FXStreet",
       "total_mentions": 3,
       "bullish": 2,
@@ -1224,6 +1224,23 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
+      ]
+    },
+    {
+      "entity": "AI compute",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
+        "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It"
       ]
     },
     {
@@ -1405,6 +1422,22 @@
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar",
         "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
         "Crypto Winter or the Big Crash? Where Bitcoin Could Go Next - Morningstar"
+      ]
+    },
+    {
+      "entity": "CNBC",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+        "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC"
       ]
     },
     {
@@ -2154,22 +2187,6 @@
       ]
     },
     {
-      "entity": "AI compute",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
-        "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
       "entity": "RIOT",
       "total_mentions": 2,
       "bullish": 2,
@@ -2734,7 +2751,7 @@
       ]
     },
     {
-      "entity": "CNBC",
+      "entity": "FOREX.com",
       "total_mentions": 2,
       "bullish": 1,
       "neutral": 0,
@@ -2744,8 +2761,8 @@
         "BTC"
       ],
       "example_headlines": [
-        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
-        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
+        "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com",
+        "Bitcoin Price Forecast: BTC/USD Recovery Extends 20% as Bulls Eye Key Resistance - FOREX.com"
       ]
     },
     {
@@ -4994,20 +5011,6 @@
       ]
     },
     {
-      "entity": "FOREX.com",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Analysis: BTC remains weak below 64k - FOREX.com"
-      ]
-    },
-    {
       "entity": "Zhibao",
       "total_mentions": 1,
       "bullish": 1,
@@ -6968,6 +6971,20 @@
       ]
     },
     {
+      "entity": "BTC/USD",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Forecast: BTC/USD Recovery Extends 20% as Bulls Eye Key Resistance - FOREX.com"
+      ]
+    },
+    {
       "entity": "GNO",
       "total_mentions": 1,
       "bullish": 0,
@@ -6979,6 +6996,34 @@
       ],
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "crypto executives",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC"
+      ]
+    },
+    {
+      "entity": "US Treasury yields",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Roars Past $70,000 as Yields Sink, Trump Sparks Optimism - Bloomberg.com"
       ]
     },
     {
@@ -7063,6 +7108,62 @@
       ],
       "example_headlines": [
         "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits"
+      ]
+    },
+    {
+      "entity": "Clichmont",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It"
+      ]
+    },
+    {
+      "entity": "Alexis Cathalifaud",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It"
+      ]
+    },
+    {
+      "entity": "GPU",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It"
+      ]
+    },
+    {
+      "entity": "data center",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It"
       ]
     }
   ]
