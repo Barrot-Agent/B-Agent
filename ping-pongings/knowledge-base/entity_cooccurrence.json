@@ -3,7 +3,7 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_pairs_found": 1568,
+  "unique_pairs_found": 1578,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 66,
+      "cooccurrence_count": 68,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -276,6 +276,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 13,
@@ -302,21 +317,6 @@
         {
           "title": "Current price of Bitcoin for July 23, 2026 - Fortune",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
         }
       ]
     },
@@ -351,6 +351,36 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 9,
@@ -381,21 +411,6 @@
       ]
     },
     {
-      "entity_a": "ETH",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-          "asset": "XRP"
-        },
-        {
-          "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 9,
@@ -421,21 +436,6 @@
         },
         {
           "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -1161,6 +1161,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Coldcard",
       "cooccurrence_count": 4,
@@ -1171,6 +1186,21 @@
         },
         {
           "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -1746,6 +1776,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Spot Bitcoin ETF",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Wall Street",
       "cooccurrence_count": 3,
@@ -1807,15 +1852,15 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Bitcoin Foundation",
+      "entity_b": "ETH",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Bitcoin\u2019s Bear Market May End Before the Four-Year Cycle Predicts - Bitcoin Foundation",
+          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
           "asset": "BTC"
         },
         {
-          "title": "Bitcoin Price Prediction 2026: Will BTC Finally Rally to 100k? - bitcoinfoundation.org",
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "BTC"
         }
       ]
@@ -1861,21 +1906,6 @@
         },
         {
           "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -3906,6 +3936,51 @@
       ]
     },
     {
+      "entity_a": "Aave",
+      "entity_b": "BTCS",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "ETF",
       "entity_b": "Ethereum",
       "cooccurrence_count": 2,
@@ -3946,21 +4021,6 @@
         },
         {
           "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Spot Bitcoin ETF",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -4221,21 +4281,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETH",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) news: Prices retake $65,000 as oil slides, ETH outperforms - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CoinDesk",
       "entity_b": "ETH",
       "cooccurrence_count": 2,
@@ -4411,6 +4456,21 @@
         },
         {
           "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -4821,6 +4881,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Spot Bitcoin ETF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "H100",
       "cooccurrence_count": 2,
@@ -5026,6 +5101,51 @@
         },
         {
           "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Geoff Kendrick",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geoff Kendrick",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
           "asset": "BTC"
         }
       ]
@@ -8893,29 +9013,7 @@
     },
     {
       "entity_a": "Aave",
-      "entity_b": "BTCS",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Aave",
       "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Aave",
-      "entity_b": "Ethereum",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -8938,17 +9036,6 @@
     {
       "entity_a": "BTCS",
       "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTCS",
-      "entity_b": "Ethereum",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -12346,17 +12433,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Spot Bitcoin ETFs",
       "cooccurrence_count": 1,
@@ -14816,17 +14892,6 @@
       "example_headlines": [
         {
           "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Spot Bitcoin ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -17825,40 +17890,7 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "Geoff Kendrick",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Standard Chartered",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "US Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Geoff Kendrick",
-      "entity_b": "Standard Chartered",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -18028,6 +18060,39 @@
       "example_headlines": [
         {
           "title": "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "$64K Support",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Mega-Whale Wallets Surge To 6-Month High As Big Buyers Hold $64K Support - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "$64K Support",
+      "entity_b": "Mega\u2011Whale Wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Mega-Whale Wallets Surge To 6-Month High As Big Buyers Hold $64K Support - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Mega\u2011Whale Wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Mega-Whale Wallets Surge To 6-Month High As Big Buyers Hold $64K Support - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -18242,6 +18307,28 @@
       ]
     },
     {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "ETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "golden cross",
       "cooccurrence_count": 1,
@@ -18352,6 +18439,50 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Geoff Kendrick",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geoff Kendrick",
+      "entity_b": "Spot Bitcoin ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Spot Bitcoin ETF",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "ETFs",
       "entity_b": "institutional investors",
       "cooccurrence_count": 1,
@@ -18369,6 +18500,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "CryptoPotato",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) Price Analysis \u2013 Daily Updates - CryptoPotato",
           "asset": "BTC"
         }
       ]

@@ -3,15 +3,15 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_entities_profiled": 489,
+  "unique_entities_profiled": 491,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 227,
-      "bullish": 118,
+      "total_mentions": 230,
+      "bullish": 121,
       "neutral": 34,
       "bearish": 75,
-      "net_sentiment_score": 0.189,
+      "net_sentiment_score": 0.2,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 91,
-      "bullish": 43,
+      "total_mentions": 93,
+      "bullish": 45,
       "neutral": 17,
       "bearish": 31,
-      "net_sentiment_score": 0.132,
+      "net_sentiment_score": 0.151,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 31,
-      "bullish": 17,
+      "total_mentions": 33,
+      "bullish": 19,
       "neutral": 10,
       "bearish": 4,
-      "net_sentiment_score": 0.419,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -159,6 +159,23 @@
       ]
     },
     {
+      "entity": "Bitcoin Foundation",
+      "total_mentions": 21,
+      "bullish": 10,
+      "neutral": 1,
+      "bearish": 10,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "XRP Ledger",
       "total_mentions": 21,
       "bullish": 19,
@@ -172,23 +189,6 @@
         "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
         "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
         "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Bitcoin Foundation",
-      "total_mentions": 20,
-      "bullish": 9,
-      "neutral": 1,
-      "bearish": 10,
-      "net_sentiment_score": -0.05,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-        "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
-        "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
       ]
     },
     {
@@ -226,6 +226,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 17,
+      "bullish": 8,
+      "neutral": 4,
+      "bearish": 5,
+      "net_sentiment_score": 0.176,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 16,
       "bullish": 1,
@@ -239,22 +255,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 16,
-      "bullish": 8,
-      "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": 0.188,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -290,6 +290,23 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 13,
+      "bullish": 10,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.615,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 12,
       "bullish": 9,
@@ -304,23 +321,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 12,
-      "bullish": 9,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.583,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
       ]
     },
     {
@@ -391,6 +391,23 @@
       ]
     },
     {
+      "entity": "CryptoPotato",
+      "total_mentions": 8,
+      "bullish": 4,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.375,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+        "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
+      ]
+    },
+    {
       "entity": "Coinbase",
       "total_mentions": 8,
       "bullish": 6,
@@ -422,22 +439,6 @@
         "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
         "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
         "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
-      ]
-    },
-    {
-      "entity": "CryptoPotato",
-      "total_mentions": 7,
-      "bullish": 4,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.429,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-        "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-        "Important Ripple (XRP) Announcement, New Investments: August 3 - CryptoPotato"
       ]
     },
     {
@@ -1244,6 +1245,23 @@
       ]
     },
     {
+      "entity": "Standard Chartered",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+        "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019"
+      ]
+    },
+    {
       "entity": "Brad Garlinghouse",
       "total_mentions": 3,
       "bullish": 2,
@@ -1289,6 +1307,23 @@
         "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
         "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
         "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga"
+      ]
+    },
+    {
+      "entity": "Spot Bitcoin ETF",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
+        "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
+        "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019"
       ]
     },
     {
@@ -2236,22 +2271,6 @@
       ]
     },
     {
-      "entity": "Standard Chartered",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
-        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
-      ]
-    },
-    {
       "entity": "Forbes",
       "total_mentions": 2,
       "bullish": 0,
@@ -2537,6 +2556,38 @@
       ]
     },
     {
+      "entity": "BTCS",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
+      "entity": "Aave",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
       "entity": "TRX",
       "total_mentions": 2,
       "bullish": 1,
@@ -2565,22 +2616,6 @@
       "example_headlines": [
         "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
         "Hashdex to shut smallest Bitcoin ETF after more than two years"
-      ]
-    },
-    {
-      "entity": "Spot Bitcoin ETF",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
-        "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk"
       ]
     },
     {
@@ -3066,6 +3101,21 @@
       "example_headlines": [
         "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
         "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK"
+      ]
+    },
+    {
+      "entity": "Geoff Kendrick",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+        "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019"
       ]
     },
     {
@@ -4060,34 +4110,6 @@
       ],
       "example_headlines": [
         "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas"
-      ]
-    },
-    {
-      "entity": "BTCS",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
-      ]
-    },
-    {
-      "entity": "Aave",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
       ]
     },
     {
@@ -6989,20 +7011,6 @@
       ]
     },
     {
-      "entity": "Geoff Kendrick",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
-      ]
-    },
-    {
       "entity": "Geopolitics",
       "total_mentions": 1,
       "bullish": 1,
@@ -7056,6 +7064,34 @@
       ],
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Mega\u2011Whale Wallets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Mega-Whale Wallets Surge To 6-Month High As Big Buyers Hold $64K Support - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "$64K Support",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Mega-Whale Wallets Surge To 6-Month High As Big Buyers Hold $64K Support - Yahoo Finance"
       ]
     },
     {
