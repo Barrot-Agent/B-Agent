@@ -267,3 +267,146 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
     assert result["remote_verified"] is False
     assert result["restored_branch"] == "feature/current"
     assert ("checkout", "feature/current") in calls
+
+
+def test_persist_audit_report_preserves_generated_audit_before_main_sync(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_persist_audit_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
+    monkeypatch.setattr(module, "STATE_STORE", module.DurableStateStore(tmp_path, "barrot_self_upgrade"))
+    audit_text = '{"status":"VERIFIED","gaps":[{"id":1,"name":"Gap"}]}\n'
+    module.AUDIT_PATH.write_text(audit_text, encoding="utf-8")
+
+    calls: list[tuple[str, ...]] = []
+    git_in_calls: list[tuple[str, ...]] = []
+    worktree_path = tmp_path / "worktree"
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    class FakeTempDir:
+        def __init__(self, *_args, **_kwargs):
+            worktree_path.mkdir(exist_ok=True)
+
+        def __enter__(self):
+            return str(worktree_path)
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("fetch", "origin", "main"):
+            return Result()
+        if args == ("worktree", "add", "--detach", str(worktree_path), "origin/main"):
+            worktree_path.mkdir(exist_ok=True)
+            (worktree_path / "barrot_capability_audit.json").write_text('{"status":"STALE"}\n', encoding="utf-8")
+            return Result()
+        if args == ("worktree", "remove", "--force", str(worktree_path)):
+            return Result()
+        if args == ("checkout", "main"):
+            raise AssertionError(
+                "error: Your local changes to the following files would be overwritten by checkout:\n\tbarrot_capability_audit.json"
+            )
+        raise AssertionError(args)
+
+    def fake_git_in(cwd: Path, *args: str):
+        assert cwd == worktree_path
+        git_in_calls.append(args)
+        if args == ("add", "barrot_capability_audit.json"):
+            return Result()
+        if args == ("diff", "--cached", "--quiet", "--", "barrot_capability_audit.json"):
+            return Result(returncode=1)
+        if args == ("commit", "-m", "Weekly capability audit [skip ci]"):
+            return Result()
+        if args == ("rev-parse", "HEAD"):
+            return Result(stdout="persist123\n")
+        if args == ("push", "origin", "HEAD:main"):
+            return Result(stdout="pushed\n")
+        if args == ("ls-remote", "--heads", "origin", "main"):
+            return Result(stdout="persist123\trefs/heads/main\n")
+        raise AssertionError(args)
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "git_in", fake_git_in)
+    monkeypatch.setattr(module.tempfile, "TemporaryDirectory", FakeTempDir)
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: None)
+
+    result = module.persist_audit_report()
+
+    assert result["status"] == "PERSISTED"
+    assert result["remote_verified"] is True
+    assert result["commit"] == "persist123"
+    assert module.AUDIT_PATH.read_text(encoding="utf-8") == audit_text
+    assert json.loads(Path(result["backup_path"]).read_text(encoding="utf-8")) == json.loads(audit_text)
+    assert (worktree_path / "barrot_capability_audit.json").read_text(encoding="utf-8") == audit_text
+    assert ("commit", "-m", "Weekly capability audit [skip ci]") in git_in_calls
+
+
+def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_persist_audit_idempotent_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
+    monkeypatch.setattr(module, "STATE_STORE", module.DurableStateStore(tmp_path, "barrot_self_upgrade"))
+    audit_text = '{"status":"VERIFIED","gaps":[]}\n'
+    module.AUDIT_PATH.write_text(audit_text, encoding="utf-8")
+
+    worktree_path = tmp_path / "worktree-idempotent"
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    class FakeTempDir:
+        def __init__(self, *_args, **_kwargs):
+            worktree_path.mkdir(exist_ok=True)
+
+        def __enter__(self):
+            return str(worktree_path)
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+    def fake_git(*args: str):
+        if args == ("fetch", "origin", "main"):
+            return Result()
+        if args == ("worktree", "add", "--detach", str(worktree_path), "origin/main"):
+            worktree_path.mkdir(exist_ok=True)
+            return Result()
+        if args == ("worktree", "remove", "--force", str(worktree_path)):
+            return Result()
+        raise AssertionError(args)
+
+    git_in_calls: list[tuple[str, ...]] = []
+
+    def fake_git_in(cwd: Path, *args: str):
+        assert cwd == worktree_path
+        git_in_calls.append(args)
+        if args == ("add", "barrot_capability_audit.json"):
+            return Result()
+        if args == ("diff", "--cached", "--quiet", "--", "barrot_capability_audit.json"):
+            return Result(returncode=0)
+        if args == ("rev-parse", "HEAD"):
+            return Result(stdout="mainsha\n")
+        if args == ("ls-remote", "--heads", "origin", "main"):
+            return Result(stdout="mainsha\trefs/heads/main\n")
+        raise AssertionError(args)
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "git_in", fake_git_in)
+    monkeypatch.setattr(module.tempfile, "TemporaryDirectory", FakeTempDir)
+    monkeypatch.setattr(module.time, "sleep", lambda *_args, **_kwargs: None)
+
+    result = module.persist_audit_report()
+
+    assert result["status"] == "NO_CHANGES"
+    assert result["remote_verified"] is True
+    assert ("commit", "-m", "Weekly capability audit [skip ci]") not in git_in_calls
+    assert ("push", "origin", "HEAD:main") not in git_in_calls

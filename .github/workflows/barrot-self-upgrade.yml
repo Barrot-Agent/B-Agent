@@ -31,24 +31,4 @@ jobs:
       - name: Generate upgrade candidate as PR
         run: python3 scripts/barrot_self_upgrade.py
       - name: Commit audit report
-        run: |
-          git checkout main
-          git add barrot_capability_audit.json
-          git diff --cached --quiet || git commit -m "Weekly capability audit [skip ci]"
-          push_with_retry() {
-            local max_attempts=5
-            local attempt=1
-            while [ $attempt -le $max_attempts ]; do
-              if git push; then
-                echo "Pushed on attempt $attempt"
-                return 0
-              fi
-              echo "Push attempt $attempt failed, pulling and retrying..."
-              sleep $(( (RANDOM % 5) + attempt ))
-              git pull --no-rebase --no-edit origin main
-              attempt=$(( attempt + 1 ))
-            done
-            echo "FAILED to push after $max_attempts attempts -- data committed locally but not on main"
-            return 1
-          }
-          push_with_retry
+        run: python3 scripts/barrot_self_upgrade.py --persist-audit-report
