@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 538,
+    "xrp_entries": 542,
     "btc_entries": 469
   },
-  "unique_pairs_found": 1671,
+  "unique_pairs_found": 1680,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -4892,6 +4892,21 @@
         {
           "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
         }
       ]
     },
@@ -12240,18 +12255,106 @@
     },
     {
       "entity_a": "Comoros",
-      "entity_b": "Korean markets",
+      "entity_b": "TradFi",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
           "asset": "XRP"
         }
       ]
     },
     {
       "entity_a": "Comoros",
-      "entity_b": "MEXC",
+      "entity_b": "new token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "tokenized stock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "TradFi",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "new token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "tokenized stock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradFi",
+      "entity_b": "new token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradFi",
+      "entity_b": "tokenized stock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "new token",
+      "entity_b": "tokenized stock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "Korean markets",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

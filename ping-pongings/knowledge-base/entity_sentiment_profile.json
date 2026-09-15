@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 538,
+    "xrp_entries": 542,
     "btc_entries": 469
   },
-  "unique_entities_profiled": 521,
+  "unique_entities_profiled": 523,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -2989,6 +2989,52 @@
       ]
     },
     {
+      "entity": "MEXC",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
+      ]
+    },
+    {
+      "entity": "Comoros",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
+      ]
+    },
+    {
+      "entity": "TradFi",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "Bitcoin could bottom in October, altcoins are \u2018basically dead,\u2019 Swan CEO says"
+      ]
+    },
+    {
       "entity": "B.AI",
       "total_mentions": 2,
       "bullish": 2,
@@ -5238,7 +5284,7 @@
       ]
     },
     {
-      "entity": "MEXC",
+      "entity": "tokenized stock",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -5248,11 +5294,11 @@
         "XRP"
       ],
       "example_headlines": [
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume "
       ]
     },
     {
-      "entity": "Comoros",
+      "entity": "new token",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -5262,7 +5308,7 @@
         "XRP"
       ],
       "example_headlines": [
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume "
       ]
     },
     {
@@ -7185,20 +7231,6 @@
     },
     {
       "entity": "altcoins",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin could bottom in October, altcoins are \u2018basically dead,\u2019 Swan CEO says"
-      ]
-    },
-    {
-      "entity": "TradFi",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
