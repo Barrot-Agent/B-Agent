@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 534,
-    "btc_entries": 460
+    "btc_entries": 461
   },
-  "unique_pairs_found": 1551,
+  "unique_pairs_found": 1568,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 65,
+      "cooccurrence_count": 66,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -187,6 +187,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "ETF",
+      "cooccurrence_count": 15,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "XRP",
       "cooccurrence_count": 14,
       "example_headlines": [
@@ -212,21 +227,6 @@
         {
           "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETF",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-          "asset": "XRP"
         }
       ]
     },
@@ -441,6 +441,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -516,6 +531,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETF",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 7,
@@ -526,21 +556,6 @@
         },
         {
           "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
           "asset": "BTC"
         }
       ]
@@ -647,21 +662,6 @@
         {
           "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETF",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        },
-        {
-          "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
-          "asset": "BTC"
         }
       ]
     },
@@ -826,6 +826,21 @@
         },
         {
           "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -1141,21 +1156,6 @@
         },
         {
           "title": "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "CoinDesk",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -17820,12 +17820,111 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Geoff Kendrick",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geoff Kendrick",
+      "entity_b": "Standard Chartered",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geoff Kendrick",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Standard Chartered",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "US Treasury",
       "entity_b": "US stocks",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
           "title": "Bitcoin price hits 11-week high as US Treasury doubles debt buyback size",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Bitcoin Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin vs. Geopolitics: How Does BTC React to World Conflicts? 10 Years of Price Data Reveal the Tr",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Geopolitics",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin vs. Geopolitics: How Does BTC React to World Conflicts? 10 Years of Price Data Reveal the Tr",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Geopolitics",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin vs. Geopolitics: How Does BTC React to World Conflicts? 10 Years of Price Data Reveal the Tr",
           "asset": "BTC"
         }
       ]
@@ -17936,6 +18035,28 @@
       "example_headlines": [
         {
           "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Crypto Markets Today",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC price breaks out of six-week range to top $71,000. $3 billion in shorts wiped out: Crypto Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Crypto Markets Today",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTC price breaks out of six-week range to top $71,000. $3 billion in shorts wiped out: Crypto Market",
           "asset": "BTC"
         }
       ]
@@ -18156,6 +18277,72 @@
       "example_headlines": [
         {
           "title": "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Treasury buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "Treasury buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury buybacks",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin breaks above 200-day moving average for first time since November",
           "asset": "BTC"
         }
       ]

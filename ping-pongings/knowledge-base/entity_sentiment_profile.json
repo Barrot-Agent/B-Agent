@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 534,
-    "btc_entries": 460
+    "btc_entries": 461
   },
-  "unique_entities_profiled": 485,
+  "unique_entities_profiled": 489,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 225,
-      "bullish": 116,
+      "total_mentions": 226,
+      "bullish": 117,
       "neutral": 34,
       "bearish": 75,
-      "net_sentiment_score": 0.182,
+      "net_sentiment_score": 0.186,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 88,
-      "bullish": 40,
+      "total_mentions": 91,
+      "bullish": 43,
       "neutral": 17,
       "bearish": 31,
-      "net_sentiment_score": 0.102,
+      "net_sentiment_score": 0.132,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -125,6 +125,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 29,
+      "bullish": 19,
+      "neutral": 1,
+      "bearish": 9,
+      "net_sentiment_score": 0.345,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+      ]
+    },
+    {
       "entity": "Moomoo",
       "total_mentions": 27,
       "bullish": 5,
@@ -139,23 +156,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 27,
-      "bullish": 17,
-      "neutral": 1,
-      "bearish": 9,
-      "net_sentiment_score": 0.296,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
       ]
     },
     {
@@ -176,11 +176,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 19,
-      "bullish": 8,
+      "total_mentions": 20,
+      "bullish": 9,
       "neutral": 1,
       "bearish": 10,
-      "net_sentiment_score": -0.105,
+      "net_sentiment_score": -0.05,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -209,6 +209,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 17,
+      "bullish": 12,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.529,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 16,
       "bullish": 1,
@@ -225,20 +242,19 @@
       ]
     },
     {
-      "entity": "ETF",
+      "entity": "Bitcoin (BTC)",
       "total_mentions": 16,
-      "bullish": 11,
-      "neutral": 2,
-      "bearish": 3,
-      "net_sentiment_score": 0.5,
+      "bullish": 8,
+      "neutral": 3,
+      "bearish": 5,
+      "net_sentiment_score": 0.188,
       "assets_seen_in": [
-        "BTC",
-        "XRP"
+        "BTC"
       ],
       "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -271,22 +287,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 13,
-      "bullish": 5,
-      "neutral": 3,
-      "bearish": 5,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -645,6 +645,23 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
+      ]
+    },
+    {
       "entity": "Bloomberg",
       "total_mentions": 6,
       "bullish": 3,
@@ -976,23 +993,6 @@
       ]
     },
     {
-      "entity": "US Treasury",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-        "Bitcoin price hits 11-week high as US Treasury doubles debt buyback size"
-      ]
-    },
-    {
       "entity": "BitMEX",
       "total_mentions": 4,
       "bullish": 0,
@@ -1306,6 +1306,23 @@
         "XRP Futures - CME Group",
         "Micro XRP Futures - CME Group",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "U.S. Treasury",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "Bitcoin may find bear market bottom in August: 10x Research",
+        "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk"
       ]
     },
     {
@@ -2219,6 +2236,22 @@
       ]
     },
     {
+      "entity": "Standard Chartered",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
+      ]
+    },
+    {
       "entity": "Forbes",
       "total_mentions": 2,
       "bullish": 0,
@@ -2580,22 +2613,6 @@
       "example_headlines": [
         "XRP Futures - CME Group",
         "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
-      ]
-    },
-    {
-      "entity": "U.S. Treasury",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -3679,20 +3696,6 @@
       ],
       "example_headlines": [
         "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView"
-      ]
-    },
-    {
-      "entity": "Standard Chartered",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes"
       ]
     },
     {
@@ -6986,6 +6989,34 @@
       ]
     },
     {
+      "entity": "Geoff Kendrick",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
+      ]
+    },
+    {
+      "entity": "Geopolitics",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin vs. Geopolitics: How Does BTC React to World Conflicts? 10 Years of Price Data Reveal the Tr"
+      ]
+    },
+    {
       "entity": "Benjamin Cowen",
       "total_mentions": 1,
       "bullish": 1,
@@ -7025,6 +7056,20 @@
       ],
       "example_headlines": [
         "GnosisDAO Approves Gnosis Chain Shift Toward Ethereum Rollup Model"
+      ]
+    },
+    {
+      "entity": "Crypto Markets Today",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "BTC price breaks out of six-week range to top $71,000. $3 billion in shorts wiped out: Crypto Market"
       ]
     },
     {
@@ -7081,6 +7126,20 @@
       ],
       "example_headlines": [
         "Ethereum Jumps 18% As Spot Volume Surges Across Exchanges"
+      ]
+    },
+    {
+      "entity": "Treasury buybacks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk"
       ]
     },
     {
