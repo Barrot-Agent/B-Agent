@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 534,
-    "btc_entries": 461
+    "btc_entries": 462
   },
-  "unique_pairs_found": 1647,
+  "unique_pairs_found": 1652,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 72,
+      "cooccurrence_count": 73,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -19201,6 +19201,61 @@
       "example_headlines": [
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitget",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Gracy Chen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitget",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Gracy Chen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "Gracy Chen",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
           "asset": "BTC"
         }
       ]

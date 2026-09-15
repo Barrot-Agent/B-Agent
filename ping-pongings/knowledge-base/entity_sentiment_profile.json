@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 534,
-    "btc_entries": 461
+    "btc_entries": 462
   },
-  "unique_entities_profiled": 511,
+  "unique_entities_profiled": 513,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 241,
+      "total_mentions": 242,
       "bullish": 130,
       "neutral": 35,
-      "bearish": 76,
-      "net_sentiment_score": 0.224,
+      "bearish": 77,
+      "net_sentiment_score": 0.219,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 98,
+      "total_mentions": 99,
       "bullish": 48,
       "neutral": 18,
-      "bearish": 32,
-      "net_sentiment_score": 0.163,
+      "bearish": 33,
+      "net_sentiment_score": 0.152,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -7388,6 +7388,34 @@
       ],
       "example_headlines": [
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "Gracy Chen",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
+      ]
+    },
+    {
+      "entity": "Bitget",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
       ]
     },
     {
