@@ -3,7 +3,7 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_entities_profiled": 498,
+  "unique_entities_profiled": 499,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 164,
-      "bullish": 101,
+      "total_mentions": 165,
+      "bullish": 102,
       "neutral": 32,
       "bearish": 31,
-      "net_sentiment_score": 0.427,
+      "net_sentiment_score": 0.43,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 132,
-      "bullish": 82,
+      "total_mentions": 133,
+      "bullish": 83,
       "neutral": 31,
       "bearish": 19,
-      "net_sentiment_score": 0.477,
+      "net_sentiment_score": 0.481,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 33,
-      "bullish": 19,
+      "total_mentions": 34,
+      "bullish": 20,
       "neutral": 10,
       "bearish": 4,
-      "net_sentiment_score": 0.455,
+      "net_sentiment_score": 0.471,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 31,
-      "bullish": 21,
+      "total_mentions": 32,
+      "bullish": 22,
       "neutral": 4,
       "bearish": 6,
-      "net_sentiment_score": 0.484,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -193,11 +193,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 20,
-      "bullish": 14,
+      "total_mentions": 21,
+      "bullish": 15,
       "neutral": 3,
       "bearish": 3,
-      "net_sentiment_score": 0.55,
+      "net_sentiment_score": 0.571,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -259,11 +259,11 @@
     },
     {
       "entity": "Ripple Labs",
-      "total_mentions": 14,
-      "bullish": 9,
+      "total_mentions": 15,
+      "bullish": 10,
       "neutral": 3,
       "bearish": 2,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.533,
       "assets_seen_in": [
         "XRP"
       ],
@@ -275,11 +275,11 @@
     },
     {
       "entity": "ETH",
-      "total_mentions": 14,
-      "bullish": 10,
+      "total_mentions": 15,
+      "bullish": 11,
       "neutral": 1,
       "bearish": 3,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.533,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -408,6 +408,23 @@
       ]
     },
     {
+      "entity": "The Motley Fool",
+      "total_mentions": 8,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
       "entity": "Coinbase",
       "total_mentions": 8,
       "bullish": 6,
@@ -456,23 +473,6 @@
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 7,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -2811,6 +2811,21 @@
       ]
     },
     {
+      "entity": "U.S.",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs See Positive Inflows As September Trading Opens",
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -4684,6 +4699,20 @@
       ]
     },
     {
+      "entity": "spot Ethereum ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs See Positive Inflows As September Trading Opens"
+      ]
+    },
+    {
       "entity": "BitMine",
       "total_mentions": 1,
       "bullish": 1,
@@ -4755,20 +4784,6 @@
     },
     {
       "entity": "SOL",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens"
-      ]
-    },
-    {
-      "entity": "U.S.",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
