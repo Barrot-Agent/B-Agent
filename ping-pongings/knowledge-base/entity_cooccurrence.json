@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 534,
-    "btc_entries": 462
+    "btc_entries": 463
   },
-  "unique_pairs_found": 1652,
+  "unique_pairs_found": 1653,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 73,
+      "cooccurrence_count": 75,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -81,6 +81,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 22,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 21,
@@ -92,21 +107,6 @@
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 21,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -261,6 +261,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 14,
@@ -332,21 +347,6 @@
         {
           "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
-          "asset": "BTC"
         }
       ]
     },
@@ -1357,6 +1357,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Michael Saylor",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "United States",
       "cooccurrence_count": 4,
       "example_headlines": [
@@ -2071,21 +2086,6 @@
         },
         {
           "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Michael Saylor",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
           "asset": "BTC"
         }
       ]
@@ -5136,6 +5136,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Michael Saylor",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
+          "asset": "BTC"
+        },
+        {
+          "title": "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 2,
@@ -5251,6 +5266,36 @@
         },
         {
           "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        },
+        {
+          "title": "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Michael Saylor",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
+          "asset": "BTC"
+        },
+        {
+          "title": "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying",
           "asset": "BTC"
         }
       ]
@@ -13622,17 +13667,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Michael Saylor",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin news today: Here's why Michael Saylor\u2019s Strategy (MSTR) is tracking BTC's 200-week moving av",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "MSTR",
       "cooccurrence_count": 1,
@@ -14678,17 +14712,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "MicroStrategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Corporate Treasury Model",
       "entity_b": "Michael Saylor",
       "cooccurrence_count": 1,
@@ -14701,17 +14724,6 @@
     },
     {
       "entity_a": "Corporate Treasury Model",
-      "entity_b": "MicroStrategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Michael Saylor",
       "entity_b": "MicroStrategy",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -19414,6 +19426,17 @@
       "example_headlines": [
         {
           "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "MicroStrategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying",
           "asset": "BTC"
         }
       ]
