@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 517,
+    "xrp_entries": 533,
     "btc_entries": 436
   },
-  "unique_pairs_found": 1515,
+  "unique_pairs_found": 1517,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 122,
+      "cooccurrence_count": 124,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -81,6 +81,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 20,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 20,
@@ -96,16 +111,16 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 19,
+      "entity_a": "Moomoo",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 18,
       "example_headlines": [
         {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         },
         {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -126,24 +141,9 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 17,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 16,
+      "cooccurrence_count": 17,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -158,6 +158,21 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP.CC",
+      "cooccurrence_count": 16,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP",
       "cooccurrence_count": 15,
       "example_headlines": [
         {
@@ -186,21 +201,6 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
       "cooccurrence_count": 14,
@@ -211,6 +211,21 @@
         },
         {
           "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Moomoo",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
           "asset": "XRP"
         }
       ]
@@ -246,6 +261,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP.CC",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Fortune",
       "cooccurrence_count": 13,
@@ -276,21 +306,6 @@
       ]
     },
     {
-      "entity_a": "Moomoo",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 12,
@@ -301,21 +316,6 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "XRP.CC",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
           "asset": "XRP"
         }
       ]
@@ -1487,6 +1487,36 @@
         {
           "title": "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
+          "asset": "XRP"
         }
       ]
     },
@@ -3362,36 +3392,6 @@
         {
           "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Nasdaq",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        },
-        {
-          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Nasdaq",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        },
-        {
-          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
-          "asset": "XRP"
         }
       ]
     },
@@ -10746,6 +10746,17 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "U.S. spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $142M As September Trading Opens With Inflows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "Coinpedia",
       "cooccurrence_count": 1,
@@ -10862,6 +10873,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple-backed XRP treasury moves closer to Nasdaq debut - Yahoo Finance",
           "asset": "XRP"
         }
       ]
