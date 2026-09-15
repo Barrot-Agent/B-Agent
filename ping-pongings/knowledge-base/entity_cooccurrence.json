@@ -3,12 +3,12 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_pairs_found": 1614,
+  "unique_pairs_found": 1624,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 128,
+      "cooccurrence_count": 129,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -51,6 +51,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 22,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "SEC",
       "cooccurrence_count": 22,
@@ -61,21 +76,6 @@
         },
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 21,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -111,6 +111,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 19,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 19,
@@ -136,21 +151,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 18,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -10418,6 +10418,116 @@
       "example_headlines": [
         {
           "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "Oracle",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "SUI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "Switchboard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Oracle",
+      "entity_b": "SUI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Oracle",
+      "entity_b": "Switchboard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Oracle",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SUI",
+      "entity_b": "Switchboard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SUI",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Switchboard",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
           "asset": "XRP"
         }
       ]
