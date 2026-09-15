@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 535,
-    "btc_entries": 463
+    "btc_entries": 467
   },
-  "unique_pairs_found": 1653,
+  "unique_pairs_found": 1656,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -19587,6 +19587,39 @@
       "example_headlines": [
         {
           "title": "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "event contract derivatives",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "prediction markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "event contract derivatives",
+      "entity_b": "prediction markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
           "asset": "BTC"
         }
       ]

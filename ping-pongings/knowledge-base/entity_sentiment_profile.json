@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 535,
-    "btc_entries": 463
+    "btc_entries": 467
   },
-  "unique_entities_profiled": 513,
+  "unique_entities_profiled": 515,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -425,6 +425,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 8,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 6,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "Coinbase",
       "total_mentions": 8,
       "bullish": 6,
@@ -507,23 +524,6 @@
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 7,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 5,
-      "net_sentiment_score": -0.429,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
       ]
     },
     {
@@ -7564,6 +7564,34 @@
       ],
       "example_headlines": [
         "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
+      ]
+    },
+    {
+      "entity": "event contract derivatives",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
+      ]
+    },
+    {
+      "entity": "prediction markets",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
       ]
     },
     {
