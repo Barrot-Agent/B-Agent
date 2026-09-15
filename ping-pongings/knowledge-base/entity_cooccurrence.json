@@ -3,12 +3,12 @@
     "xrp_entries": 534,
     "btc_entries": 461
   },
-  "unique_pairs_found": 1578,
+  "unique_pairs_found": 1590,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 126,
+      "cooccurrence_count": 127,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -52,6 +52,21 @@
     },
     {
       "entity_a": "XRP",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 21,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 21,
       "example_headlines": [
@@ -76,21 +91,6 @@
         },
         {
           "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 20,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price Prediction: Analyst Says XRP Could Hit $15 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -126,6 +126,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 18,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 18,
@@ -137,21 +152,6 @@
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 17,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -231,6 +231,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 14,
@@ -256,21 +271,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -321,6 +321,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 12,
@@ -332,21 +347,6 @@
         {
           "title": "Bitcoin Price Prediction: Second Bullish Pattern Emerges as BTC Eyes $60K - Yahoo Finance",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 11,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -831,6 +831,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin (BTC)",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 5,
@@ -1116,6 +1131,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US Treasury",
       "cooccurrence_count": 4,
@@ -1186,21 +1216,6 @@
         },
         {
           "title": "Bitcoin Price Forecast: Coldcard Hack Could Push BTC Back to $60K - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -1366,6 +1381,21 @@
         },
         {
           "title": "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1746,16 +1776,16 @@
       ]
     },
     {
-      "entity_a": "BTC",
+      "entity_a": "ETH",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
           "asset": "XRP"
         }
       ]
@@ -2776,21 +2806,6 @@
         },
         {
           "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -3831,21 +3846,6 @@
       ]
     },
     {
-      "entity_a": "ETH",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        },
-        {
-          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ether",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -3872,6 +3872,36 @@
         {
           "title": "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Price of XRP (Ripple) by 2030 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Price of XRP (Ripple) by 2030 - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -8847,29 +8877,7 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "XRP (ticker)",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "South Korea",
-      "entity_b": "XRP (ticker)",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
       "entity_b": "XRP (ticker)",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -10838,6 +10846,116 @@
       ]
     },
     {
+      "entity_a": "ETF",
+      "entity_b": "SOL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "September",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SOL",
+      "entity_b": "September",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SOL",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SOL",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "September",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "September",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "U.S.",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "AI",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 1,
@@ -11130,6 +11248,28 @@
       "example_headlines": [
         {
           "title": "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP (ticker)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Price of XRP (Ripple) by 2030 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP (ticker)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Price of XRP (Ripple) by 2030 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
