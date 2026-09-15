@@ -17,10 +17,14 @@ from typing import Any, Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = Path(__file__).resolve().parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(1, str(SCRIPTS_DIR))
+ROOT_STR = str(ROOT)
+SCRIPTS_DIR_STR = str(SCRIPTS_DIR)
+if ROOT_STR in sys.path:
+    sys.path.remove(ROOT_STR)
+sys.path.insert(0, ROOT_STR)
+if SCRIPTS_DIR_STR in sys.path:
+    sys.path.remove(SCRIPTS_DIR_STR)
+sys.path.insert(1, SCRIPTS_DIR_STR)
 
 from sandbox import verify_result
 

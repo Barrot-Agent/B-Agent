@@ -10,8 +10,10 @@ from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+REPO_ROOT_STR = str(REPO_ROOT)
+if REPO_ROOT_STR in sys.path:
+    sys.path.remove(REPO_ROOT_STR)
+sys.path.insert(0, REPO_ROOT_STR)
 
 from barrot_agent.orchestration.shared_runtime import CompletionGate, DurableStateStore, ExecutionRecord, Fingerprint
 
