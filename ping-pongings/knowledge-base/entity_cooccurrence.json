@@ -3,7 +3,7 @@
     "xrp_entries": 549,
     "btc_entries": 477
   },
-  "unique_pairs_found": 1684,
+  "unique_pairs_found": 1692,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2161,6 +2161,21 @@
         },
         {
           "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+          "asset": "BTC"
+        },
+        {
+          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -5466,6 +5481,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        },
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "S&P 500",
       "entity_b": "Strait of Hormuz",
       "cooccurrence_count": 2,
@@ -5641,21 +5671,6 @@
         },
         {
           "title": "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Satoshi Nakamoto",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
-          "asset": "BTC"
-        },
-        {
-          "title": "Where Will Bitcoin Be in 2030? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -14546,17 +14561,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "Quantum computing",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CNBC",
       "entity_b": "Jim Cramer",
       "cooccurrence_count": 1,
@@ -19986,6 +19990,94 @@
       "example_headlines": [
         {
           "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP",
+      "entity_b": "Quantum computing",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP",
+      "entity_b": "SHRINCS",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BIP",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "SHRINCS",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "SHRINCS",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quantum computing",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SHRINCS",
+      "entity_b": "Satoshi Nakamoto",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
           "asset": "BTC"
         }
       ]

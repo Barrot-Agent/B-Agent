@@ -3,15 +3,15 @@
     "xrp_entries": 549,
     "btc_entries": 477
   },
-  "unique_entities_profiled": 524,
+  "unique_entities_profiled": 526,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 246,
+      "total_mentions": 247,
       "bullish": 134,
-      "neutral": 35,
+      "neutral": 36,
       "bearish": 77,
-      "net_sentiment_score": 0.232,
+      "net_sentiment_score": 0.231,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1547,6 +1547,23 @@
       ]
     },
     {
+      "entity": "Quantum computing",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+        "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
+      ]
+    },
+    {
       "entity": "U.S.",
       "total_mentions": 3,
       "bullish": 3,
@@ -1688,6 +1705,22 @@
         "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
         "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric"
+      ]
+    },
+    {
+      "entity": "Satoshi Nakamoto",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
+        "Where Will Bitcoin Be in 2030? - Yahoo Finance",
+        "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
       ]
     },
     {
@@ -2830,22 +2863,6 @@
       ]
     },
     {
-      "entity": "Quantum computing",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
-        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%"
-      ]
-    },
-    {
       "entity": "SOL",
       "total_mentions": 2,
       "bullish": 1,
@@ -3352,21 +3369,6 @@
       "example_headlines": [
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
-      "entity": "Satoshi Nakamoto",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "'Bitcoin is a zeppelin': Why this historian says BTC looks more like the past than future - Yahoo Fi",
-        "Where Will Bitcoin Be in 2030? - Yahoo Finance"
       ]
     },
     {
@@ -7745,6 +7747,34 @@
       ],
       "example_headlines": [
         "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
+      ]
+    },
+    {
+      "entity": "SHRINCS",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
+      ]
+    },
+    {
+      "entity": "BIP",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
       ]
     },
     {
