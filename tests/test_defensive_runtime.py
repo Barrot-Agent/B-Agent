@@ -14,7 +14,9 @@ from barrot_agent.orchestration.shared_runtime import (
     DefensiveWatchdog,
     Failure,
     FailureCode,
+    IncidentCategory,
     ProviderClient,
+    ThreatClassification,
     ToolRequest,
 )
 
@@ -90,6 +92,33 @@ def test_defensive_runtime_unit_paths(tmp_path: Path) -> None:
                 "expected_files": ["barrot_agent/orchestration/shared_runtime.py"],
             }
         )
+
+
+def test_watchdog_records_runtime_incident_lifecycle(tmp_path: Path) -> None:
+    watchdog = new_watchdog(tmp_path / "incident")
+
+    incident = watchdog.record_runtime_incident(
+        category=IncidentCategory.VERIFICATION_FAILURE,
+        status=ThreatClassification.HUMAN_REVIEW_REQUIRED,
+        summary="workflow dispatch unavailable",
+        requested_action="dispatch CI",
+        authorization="authorized repository repair",
+        result="blocked",
+        evidence=["no GH_TOKEN"],
+        root_cause={"class": IncidentCategory.PERMISSION_FAILURE.value, "kind": "missing_token"},
+        containment_action={"status": "active", "action": "preserve failure visibility"},
+        recovery_action={"status": "blocked", "action": "request human token"},
+        validation_result={"passed": True},
+        verification_result={"status": "blocked"},
+        final_state={"status": "human_authorization_required"},
+    )
+
+    assert incident.category == IncidentCategory.VERIFICATION_FAILURE.value
+    assert incident.root_cause["kind"] == "missing_token"
+    assert incident.containment_action["action"] == "preserve failure visibility"
+    payload = json.loads((tmp_path / "incident" / ".git" / "barrot_security" / "incidents" / f"{incident.incident_id}.json").read_text(encoding="utf-8"))
+    assert payload["verification_result"]["status"] == "blocked"
+    assert payload["final_state"]["status"] == "human_authorization_required"
 
 
 def test_defensive_security_matrix(tmp_path: Path) -> None:

@@ -219,6 +219,16 @@ class ThreatClassification(str, Enum):
     HUMAN_REVIEW_REQUIRED = "HUMAN_REVIEW_REQUIRED"
 
 
+class IncidentCategory(str, Enum):
+    CODE_FAILURE = "CODE_FAILURE"
+    ENVIRONMENT_FAILURE = "ENVIRONMENT_FAILURE"
+    PERMISSION_FAILURE = "PERMISSION_FAILURE"
+    POLICY_FAILURE = "POLICY_FAILURE"
+    STATE_FAILURE = "STATE_FAILURE"
+    PROVIDER_FAILURE = "PROVIDER_FAILURE"
+    VERIFICATION_FAILURE = "VERIFICATION_FAILURE"
+
+
 @dataclass
 class AuthorizationDecision:
     allowed: bool
@@ -242,8 +252,15 @@ class IncidentRecord:
     requested_action: str
     authorization: str
     result: str
+    category: str = ""
     evidence: list[str] = field(default_factory=list)
     provenance: Provenance = field(default_factory=Provenance)
+    root_cause: dict[str, Any] = field(default_factory=dict)
+    containment_action: dict[str, Any] = field(default_factory=dict)
+    recovery_action: dict[str, Any] = field(default_factory=dict)
+    validation_result: dict[str, Any] = field(default_factory=dict)
+    verification_result: dict[str, Any] = field(default_factory=dict)
+    final_state: dict[str, Any] = field(default_factory=dict)
     agent: str = ""
     provider: str = ""
     model: str = ""
@@ -289,6 +306,7 @@ class SecurityLedger:
                         "incident_id": incident.incident_id,
                         "fingerprint": incident.fingerprint,
                         "status": incident.status,
+                        "category": incident.category,
                         "summary": incident.summary,
                         "requested_action": incident.requested_action,
                         "authorization": incident.authorization,
@@ -417,9 +435,18 @@ class DefensiveWatchdog:
         tool: str = "",
         process: str = "",
         credential_scope: str = "",
+        category: IncidentCategory | str = "",
+        root_cause: Mapping[str, Any] | None = None,
+        containment_action: Mapping[str, Any] | None = None,
+        recovery_action: Mapping[str, Any] | None = None,
+        validation_result: Mapping[str, Any] | None = None,
+        verification_result: Mapping[str, Any] | None = None,
+        final_state: Mapping[str, Any] | None = None,
+        provenance: Provenance | None = None,
     ) -> IncidentRecord:
         payload = {
             "status": status.value,
+            "category": category.value if isinstance(category, IncidentCategory) else str(category),
             "summary": summary,
             "requested_action": requested_action,
             "authorization": authorization,
@@ -437,11 +464,19 @@ class DefensiveWatchdog:
             incident_id=Fingerprint.create(time.time(), payload).value[:16],
             fingerprint=Fingerprint.create(payload, sorted(evidence or [])).value,
             status=status.value,
+            category=payload["category"],
             summary=summary,
             requested_action=requested_action,
             authorization=authorization,
             result=result,
             evidence=list(evidence or []),
+            provenance=provenance or Provenance(),
+            root_cause=dict(root_cause or {}),
+            containment_action=dict(containment_action or {}),
+            recovery_action=dict(recovery_action or {}),
+            validation_result=dict(validation_result or {}),
+            verification_result=dict(verification_result or {}),
+            final_state=dict(final_state or {}),
             workspace=str(self.workspace),
             repository=self.repository,
             session=self.session,
@@ -453,6 +488,51 @@ class DefensiveWatchdog:
             safe_mode_active=self.safe_mode_active,
         )
         self.ledger.record(incident)
+        return incident
+
+    def record_runtime_incident(
+        self,
+        *,
+        category: IncidentCategory | str,
+        status: ThreatClassification,
+        summary: str,
+        requested_action: str,
+        authorization: str,
+        result: str,
+        evidence: Iterable[str] | None = None,
+        root_cause: Mapping[str, Any] | None = None,
+        containment_action: Mapping[str, Any] | None = None,
+        recovery_action: Mapping[str, Any] | None = None,
+        validation_result: Mapping[str, Any] | None = None,
+        verification_result: Mapping[str, Any] | None = None,
+        final_state: Mapping[str, Any] | None = None,
+        provider: str = "",
+        tool: str = "",
+        process: str = "",
+        credential_scope: str = "",
+        provenance: Provenance | None = None,
+    ) -> IncidentRecord:
+        incident = self._record_incident(
+            status=status,
+            category=category,
+            summary=summary,
+            requested_action=requested_action,
+            authorization=authorization,
+            result=result,
+            evidence=evidence,
+            root_cause=root_cause,
+            containment_action=containment_action,
+            recovery_action=recovery_action,
+            validation_result=validation_result,
+            verification_result=verification_result,
+            final_state=final_state,
+            provider=provider,
+            tool=tool,
+            process=process,
+            credential_scope=credential_scope,
+            provenance=provenance,
+        )
+        self._persist_state()
         return incident
 
     def set_context(self, *, repository: str = "", session: str = "", task: str = "") -> None:
