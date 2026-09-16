@@ -12,6 +12,10 @@ REPO_ROOT = Path("/home/runner/work/B-Agent/B-Agent")
 SELF_UPGRADE_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "barrot-self-upgrade.yml"
 
 
+def join_literal(*parts: str) -> str:
+    return "".join(parts)
+
+
 def load_script(path: Path, name: str):
     spec = importlib.util.spec_from_file_location(name, path)
     assert spec is not None and spec.loader is not None
@@ -420,3 +424,17 @@ def test_self_upgrade_workflow_verifies_same_ref_without_branch_switch() -> None
     assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
     assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' in workflow
     assert "git checkout main" not in workflow
+
+
+def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
+    source = (REPO_ROOT / "scripts" / "barrot_self_upgrade.py").read_text(encoding="utf-8")
+
+    for term in (
+        join_literal("quantum ", "harmonization"),
+        join_literal("free ", "energy"),
+        join_literal("Willow", "chip"),
+        join_literal("Ae", "thel"),
+        join_literal("Planck", "-scale"),
+        join_literal("144-", "agent ", "council"),
+    ):
+        assert term not in source

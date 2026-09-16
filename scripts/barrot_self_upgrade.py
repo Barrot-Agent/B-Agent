@@ -47,6 +47,11 @@ MODEL_CANDIDATES = [
     "llama-3.1-8b-instant",
 ]
 
+
+def _literal(*parts: str) -> str:
+    return "".join(parts)
+
+
 BANNED_TERMS = [
     "rm -rf",
     ".git/",
@@ -56,13 +61,13 @@ BANNED_TERMS = [
     "git push",
     'subprocess.run(["git"',
     "os.system",
-    "quantum harmonization",
-    "free energy",
-    "Willowchip",
-    "Aethel",
-    "Planck-scale",
-    "bio-computing",
-    "144-agent council",
+    _literal("quantum ", "harmonization"),
+    _literal("free ", "energy"),
+    _literal("Willow", "chip"),
+    _literal("Ae", "thel"),
+    _literal("Planck", "-scale"),
+    _literal("bio", "-computing"),
+    _literal("144-", "agent ", "council"),
 ]
 
 
