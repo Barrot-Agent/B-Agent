@@ -1,17 +1,17 @@
 {
-  "summary": "The XRP signal shows a moderate overall score of **42** with a high news sentiment score of **85** based on **23** recent news entries. Confidence is reported as **0.0**, and the source indicates sentiment data was unavailable due to token errors.\n\n- Timestamp: 2026\u201109\u201116T09:29:25.122207+00:00  \n- Signal text lists one neutral and six bullish XRP\u2011related headlines.  \n- Generated at Unix time **1789550965**.",
+  "summary": "The XRP signal, timestamped\u202f2026\u201109\u201116\u202f11:26:05\u202fUTC, carries a sentiment score of\u202f42 with a confidence of\u202f0.0 and references 23 news entries, yielding a news score of\u202f85. All listed headlines are classified as either neutral or bullish, with the majority marked bullish.  \n\n- Signal score:\u202f42; confidence:\u202f0.0  \n- News score:\u202f85 from\u202f23\u202fentries  \n- Headline sentiment:\u202f1\u202fneutral,\u202f5\u202fbullish.",
   "spoken_line": "XRP signal update. Score 42. Confidence 0.0. Based on 23 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-09-16T09:29:25.122207+00:00",
+    "timestamp": "2026-09-16T11:26:05.256878+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 42,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(23)",
     "news_score": 85,
     "news_entries": 23,
-    "generated_at_unix": 1789550965
+    "generated_at_unix": 1789557965
   }
 }
