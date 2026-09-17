@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 563,
-    "btc_entries": 499
+    "btc_entries": 500
   },
   "unique_pairs_found": 1716,
   "pairs": [
@@ -353,7 +353,7 @@
     {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
-      "cooccurrence_count": 11,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
@@ -4161,6 +4161,66 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "Ether",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ether",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -4172,6 +4232,21 @@
         {
           "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "BTC"
         }
       ]
     },
@@ -9354,61 +9429,6 @@
       "example_headlines": [
         {
           "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "Ether",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "Hyperliquid",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ether",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ether",
-      "entity_b": "Hyperliquid",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "Hyperliquid",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
           "asset": "XRP"
         }
       ]
