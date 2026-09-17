@@ -6,10 +6,10 @@
   ],
   "DESCRIPTION": "interruption and resume preserve durable work state",
   "DESIGN_STATUS": "DESIGNED",
-  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
   "EVIDENCE_SCOPE": "LOCAL_SIMULATED_INTERRUPTION",
   "EXECUTION_STATUS": "EXECUTED",
-  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
   "LIMITATIONS": [
     "Verified with a deterministic local interruption simulation after durable queue persistence.",
     "Does not prove recovery from a genuine remote executor interruption."

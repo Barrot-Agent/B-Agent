@@ -563,7 +563,10 @@ def checkout_branch(branch: str) -> None:
 def post_issue_comment(message: str) -> None:
     if not ISSUE or ISSUE == "0":
         return
-    comment_path = Path("/tmp/barrot_comment_body.md")
+    import tempfile
+
+    with tempfile.TemporaryDirectory(prefix="barrot_comment_") as tmp_dir:
+        comment_path = Path(tmp_dir) / "barrot_comment_body.md"
     comment_path.write_text(message[:60000], encoding="utf-8")
     result = run_gh(["issue", "comment", ISSUE, "--repo", REPO, "--body-file", str(comment_path)])
     if result.returncode != 0:
@@ -624,8 +627,11 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         f"- local_validation_passed: {cycle_data.get('local_validation_passed')}",
         f"- resolution_verified: {cycle_data.get('resolution_verified')}",
     ]
-    pr_path = Path("/tmp/barrot_pr_body.md")
-    pr_path.write_text("\n".join(body), encoding="utf-8")
+    import tempfile
+
+    with tempfile.TemporaryDirectory(prefix="barrot_pr_") as tmp_dir:
+        pr_path = Path(tmp_dir) / "barrot_pr_body.md"
+        pr_path.write_text("\n".join(body), encoding="utf-8")
     result = run_gh(
         [
             "pr",

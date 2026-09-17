@@ -25,6 +25,7 @@ ALLOWED_ACTIONS = {
     "APPLY_PATCH",
     "GIT_STATUS",
     "TERMUX_DROP",
+    "DELIVER_BUNDLE",
 }
 
 

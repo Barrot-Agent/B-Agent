@@ -9,6 +9,7 @@ becomes a scoped branch + PR through barrot-gated-merge.yml.
 import os, json, subprocess, sys, re, urllib.request, urllib.error
 from pathlib import Path
 from datetime import datetime, timezone
+from scripts.barrot_repo_state_manifest import build_manifest
 
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 OPENAI_KEY = os.environ.get("OPENAI_API_KEY") or os.environ.get("CHATGPT_TOKEN", "")
@@ -148,6 +149,8 @@ def repo_snapshot(max_dirs=40):
 
 def allocate_tasks(goal):
     snapshot = repo_snapshot()
+    manifest = build_manifest()
+    manifest_id = manifest["manifest_id"]
     prompt = f"""Refactor goal: {goal}
 
 Real current top-level repo structure:
@@ -175,6 +178,14 @@ Output ONLY JSON:
         seen |= scope
         validated.append(a)
     parsed["assignments"] = validated
+    parsed["repo_manifest_id"] = manifest_id
+    parsed["repo_head"] = manifest["git"]["head"]
+    parsed["repo_branch"] = manifest["git"]["branch"]
+
+    for assignment in validated:
+        if isinstance(assignment, dict):
+            assignment["repo_manifest_id"] = manifest_id
+
     return parsed
 
 

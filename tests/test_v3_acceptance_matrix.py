@@ -37,7 +37,7 @@ from tests.v3_test_harness import (
     write_science_bundle,
 )
 
-REPO_ROOT = Path("/home/runner/work/B-Agent/B-Agent")
+REPO_ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT_DIR = REPO_ROOT / ".barrot" / "collaboration_records" / "v3_acceptance_matrix"
 SUMMARY_PATH = REPO_ROOT / ".barrot" / "collaboration_records" / "barrot_v3_acceptance_matrix.json"
 STATUS_LEVELS = {

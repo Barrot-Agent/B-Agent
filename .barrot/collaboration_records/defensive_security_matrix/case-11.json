@@ -1,0 +1,16 @@
+{
+  "DESCRIPTION": "provider compromise isolates the provider route",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "incident_id": "c00a2e65fa3fdd5f",
+    "isolated_providers": [
+      "groq"
+    ]
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-11",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -7,7 +7,7 @@ from pathlib import Path
 from barrot_agent.orchestration.repository_repair import RepairCycleEvidence, WorkItemEvidence
 
 
-SCRIPT_PATH = Path("/home/runner/work/B-Agent/B-Agent/scripts/barrot_agent.py")
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "barrot_agent.py"
 
 
 def load_script_module(name: str):
@@ -210,7 +210,7 @@ def test_repo_browser_rejects_empty_path_arguments(monkeypatch) -> None:
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
     module = load_script_module("barrot_agent_repo_browser_test")
 
-    browser = module.RepoBrowser(Path("/home/runner/work/B-Agent/B-Agent"))
+    browser = module.RepoBrowser(Path(__file__).resolve().parents[1])
     response = json.loads(browser.print_tree({"path": "", "depth": 1}))
 
     assert response["success"] is False

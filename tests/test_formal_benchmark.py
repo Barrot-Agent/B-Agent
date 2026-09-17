@@ -12,7 +12,7 @@ from barrot_agent.research import (
     LeanVerificationGateway,
 )
 
-SCRIPT_PATH = Path("/home/runner/work/B-Agent/B-Agent/scripts/run_formal_verification_benchmark.py")
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "run_formal_verification_benchmark.py"
 
 
 def load_script_module(name: str):

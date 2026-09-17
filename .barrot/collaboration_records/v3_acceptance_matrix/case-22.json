@@ -6,110 +6,122 @@
   ],
   "DESCRIPTION": "Lean failure remains unresolved",
   "DESIGN_STATUS": "DESIGNED",
-  "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
   "EVIDENCE_SCOPE": "HARNESS_ONLY",
   "EXECUTION_STATUS": "EXECUTED",
-  "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
-  "GAP_CLOSURE_REASSESSMENT": {
-    "attempted_at": "2026-09-14T18:51:24Z",
-    "bundle_formal_verification_spec": {
-      "command": [
-        "lake",
-        "build"
-      ],
-      "repository": "https://github.com/openai/NavierStokesAndEuler",
-      "repository_path": null,
-      "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
-      "source_files": [
-        "NavierStokes/R3/Theorem.lean",
-        "ComparatorChallenges/NavierStokes.json",
-        "NavierStokes/ComparatorSolution.lean"
-      ],
-      "theorem_names": [
-        "NavierStokes.Comparator.navier_stokes_breakdown_R3",
-        "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
-      ],
-      "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
-    },
-    "commands": [
-      {
-        "command": "elan --version",
-        "result": "passed",
-        "stdout": "elan 3.1.0"
-      },
-      {
-        "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
-        "result": "passed",
-        "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
-      },
-      {
-        "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
-        "result": "passed",
-        "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
-      },
-      {
-        "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
-        "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
-        "result": "failed",
-        "stderr_excerpt": "unknown module prefix 'NavierStokes'"
-      },
-      {
-        "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
-        "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
-        "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
-        "result": "interrupted",
-        "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
-      }
-    ],
-    "conclusion": "A free local Lean toolchain and genuine external Lean sources are available in this environment, but Barrot's current repository-grounded formal-verification path still cannot execute them end-to-end because the repository contains no tracked Lean sources and the bundle spec leaves repository_path unset.",
-    "live_lean_environment": {
-      "bundle_repository_path": null,
-      "elan": "elan 3.1.0",
-      "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
-      "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
-      "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
-      "tracked_repository_lean_sources": false
-    },
-    "status_after_reassessment": "HARNESS_VERIFIED",
-    "status_changed": false
-  },
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
   "LIMITATIONS": [
     "Lean execution in this environment is unavailable for the current repository inputs.",
     "Result is verified through injected formal-runner failure behavior, not live Lean execution."
   ],
-  "LIMITATIONS_CONTEXT": "The top-level LIMITATIONS field reflects the original matrix execution context at EXECUTION_TIMESTAMP; later closure attempts are recorded separately.",
   "NEW_STATUS": "HARNESS_VERIFIED",
   "PREVIOUS_STATUS": "VERIFIED",
   "RESULT": {
     "formal": {
+      "attribution": "",
+      "axiom_command": [],
+      "axiom_result": {},
+      "build_command": [
+        "lake",
+        "build"
+      ],
+      "build_result": {
+        "command": [
+          "lake",
+          "build"
+        ],
+        "completed_at": 1789625381.3028653,
+        "elapsed_seconds": 0.0,
+        "environment": {
+          "cwd": "",
+          "timeout_seconds": 120
+        },
+        "errors": [],
+        "exit_code": 1,
+        "phase": "build",
+        "started_at": 1789625381.3028615,
+        "stderr": "lean failed",
+        "stdout": "",
+        "success": false,
+        "warnings": []
+      },
       "command": [
         "lake",
         "build"
       ],
+      "comparator_result": {},
       "compiled": false,
+      "compiler_configuration": {},
       "dependencies": [
         "Mathlib"
       ],
+      "dependency_graph": {},
+      "dependency_manifest": {},
+      "execution_timestamp": 1789625381.3028538,
+      "external_checker_configuration": {},
+      "failed_attempts": [
+        {
+          "command": [
+            "lake",
+            "build"
+          ],
+          "failure": "lean failed",
+          "phase": "build",
+          "provider": "local_runner",
+          "retry_count": 0
+        }
+      ],
       "formal_statement": "",
+      "independent_checker": {},
+      "independent_checker_result": {},
       "independently_verified": false,
+      "lean_version": "",
+      "license": "",
+      "mathlib_version": "",
+      "primary_kernel_result": {
+        "command": [
+          "lake",
+          "build"
+        ],
+        "elapsed_seconds": 0.0,
+        "environment": {
+          "cwd": "",
+          "timeout_seconds": 120
+        },
+        "errors": [],
+        "exit_code": 1,
+        "status": "failed",
+        "warnings": []
+      },
+      "proof_path": [],
       "provenance": [],
       "repository": "https://example.invalid/repo",
+      "resource_requirements": {},
       "returncode": 1,
+      "root_theorem": "",
       "source_commit": "abc123",
       "source_files": [
         "Main.lean"
       ],
       "source_location": "",
-      "status": "FORMALIZED",
+      "source_repository": "https://example.invalid/repo",
+      "status": "BUILD_ATTEMPTED",
+      "status_history": [
+        "IMPORTED",
+        "BUILD_ATTEMPTED"
+      ],
       "stderr": "lean failed",
       "stdout": "",
       "system": "lean",
+      "theorem_metadata": [],
       "theorem_names": [
         "main_theorem"
       ],
-      "timestamp": 1789394182.7148554,
+      "theorem_statement": "",
+      "timestamp": 1789625381.3028517,
       "toolchain_version": "lean4",
-      "verification_id": "formal-1"
+      "verification_id": "formal-1",
+      "verification_scripts": {}
     },
     "lean_environment": {
       "elan": null,

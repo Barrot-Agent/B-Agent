@@ -1,159 +1,6 @@
 {
   "designed_not_executed_count": 1,
-  "gap_closure_reassessment": {
-    "attempted_at": "2026-09-14T18:51:52Z",
-    "cases": {
-      "case-17": {
-        "changed": false,
-        "reason": "No genuine interrupted remote executor/session was available; only the existing deterministic local interruption simulation remains evidenced.",
-        "status": "PARTIALLY_VERIFIED"
-      },
-      "case-22": {
-        "attempted_at": "2026-09-14T18:51:52Z",
-        "bundle_formal_verification_spec": {
-          "command": [
-            "lake",
-            "build"
-          ],
-          "repository": "https://github.com/openai/NavierStokesAndEuler",
-          "repository_path": null,
-          "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
-          "source_files": [
-            "NavierStokes/R3/Theorem.lean",
-            "ComparatorChallenges/NavierStokes.json",
-            "NavierStokes/ComparatorSolution.lean"
-          ],
-          "theorem_names": [
-            "NavierStokes.Comparator.navier_stokes_breakdown_R3",
-            "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
-          ],
-          "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
-        },
-        "commands": [
-          {
-            "command": "elan --version",
-            "result": "passed",
-            "stdout": "elan 3.1.0"
-          },
-          {
-            "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
-            "result": "passed",
-            "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
-          },
-          {
-            "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
-            "result": "passed",
-            "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
-          },
-          {
-            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
-            "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
-            "result": "failed",
-            "stderr_excerpt": "unknown module prefix 'NavierStokes'"
-          },
-          {
-            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
-            "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
-            "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
-            "result": "interrupted",
-            "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
-          }
-        ],
-        "conclusion": "A free local Lean toolchain and genuine external Lean sources are available in this environment, but Barrot's current repository-grounded formal-verification path still cannot execute them end-to-end because the repository contains no tracked Lean sources and the bundle spec leaves repository_path unset.",
-        "live_lean_environment": {
-          "bundle_repository_path": null,
-          "elan": "elan 3.1.0",
-          "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
-          "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
-          "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
-          "tracked_repository_lean_sources": false
-        },
-        "status_after_reassessment": "HARNESS_VERIFIED",
-        "status_changed": false
-      },
-      "case-28": {
-        "attempted_at": "2026-09-14T18:51:52Z",
-        "bundle_formal_verification_spec": {
-          "command": [
-            "lake",
-            "build"
-          ],
-          "repository": "https://github.com/openai/NavierStokesAndEuler",
-          "repository_path": null,
-          "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
-          "source_files": [
-            "NavierStokes/R3/Theorem.lean",
-            "ComparatorChallenges/NavierStokes.json",
-            "NavierStokes/ComparatorSolution.lean"
-          ],
-          "theorem_names": [
-            "NavierStokes.Comparator.navier_stokes_breakdown_R3",
-            "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
-          ],
-          "toolchain_version": "leanprover/lean4:v4.34.0-rc2"
-        },
-        "commands": [
-          {
-            "command": "elan --version",
-            "result": "passed",
-            "stdout": "elan 3.1.0"
-          },
-          {
-            "command": "elan run leanprover/lean4:v4.34.0-rc2 lean --version",
-            "result": "passed",
-            "stdout": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)"
-          },
-          {
-            "command": "elan run leanprover/lean4:v4.34.0-rc2 lake --version",
-            "result": "passed",
-            "stdout": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)"
-          },
-          {
-            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake env lean NavierStokes/ComparatorSolution.lean",
-            "reason": "Direct file execution without the full project build context did not resolve the local module prefix.",
-            "result": "failed",
-            "stderr_excerpt": "unknown module prefix 'NavierStokes'"
-          },
-          {
-            "command": "cd /tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd && lake build NavierStokes.ComparatorSolution",
-            "evidence_file": "/tmp/1789411423935-copilot-tool-output-4872-9b58c14a-a4d1-4a90-bfc4-50dd1329620d.txt",
-            "reason": "A real project build ran against the downloaded OpenAI sources and progressed deeply into Mathlib compilation, but it was manually stopped before completion to avoid an unbounded session wait.",
-            "result": "interrupted",
-            "stdout_excerpt": "\u2714 [1883/1903] Built Mathlib.Data.Nat.Choose.Bounds (3.3s)"
-          }
-        ],
-        "conclusion": "A free local Lean toolchain and genuine external Lean sources are available in this environment, but Barrot's current repository-grounded formal-verification path still cannot execute them end-to-end because the repository contains no tracked Lean sources and the bundle spec leaves repository_path unset.",
-        "live_lean_environment": {
-          "bundle_repository_path": null,
-          "elan": "elan 3.1.0",
-          "lake": "Lake version 5.0.0-src+6a10ac8 (Lean version 4.34.0-rc2)",
-          "lean": "Lean (version 4.34.0-rc2, x86_64-unknown-linux-gnu, commit 6a10ac8c22beadecabdbb0919c2b50214762f91d, Release)",
-          "source_root": "/tmp/navier/NavierStokesAndEuler-f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
-          "tracked_repository_lean_sources": false
-        },
-        "status_after_reassessment": "HARNESS_VERIFIED",
-        "status_changed": false
-      },
-      "case-29": {
-        "changed": false,
-        "reason": "No genuine independent third-party mathematical verification is available.",
-        "status": "DESIGNED \u2014 NOT EXECUTED"
-      }
-    },
-    "github_execution_review": {
-      "completed_run_conclusion": "success",
-      "completed_run_id": 34875422189,
-      "completed_run_path": "dynamic/copilot-swe-agent/copilot",
-      "current_run_id": 34879753184,
-      "current_run_path": "dynamic/copilot-swe-agent/copilot",
-      "current_run_status": "in_progress",
-      "missing_step": "No authenticated workflow-dispatch or equivalent trigger path was available from this session for .github/workflows/barrot-agent.yml or .github/workflows/barrot-self-upgrade.yml.",
-      "pr_number": 755,
-      "proven_production_execution": false
-    },
-    "matrix_counts_changed": false
-  },
-  "generated_at": "2026-09-14T13:56:22Z",
+  "generated_at": "2026-09-17T06:09:41Z",
   "harness_verified_count": 2,
   "partially_verified_count": 1,
   "records": [
@@ -166,10 +13,10 @@
       ],
       "DESCRIPTION": "healthy repository returns NO_REPAIR_REQUIRED",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-01.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-01.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:31Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -190,10 +37,10 @@
       ],
       "DESCRIPTION": "real defect enters deterministic repair lifecycle",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-02.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-02.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:31Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -226,10 +73,10 @@
       ],
       "DESCRIPTION": "model success text without concrete change cannot complete repair",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-03.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-03.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:32Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -248,10 +95,10 @@
       ],
       "DESCRIPTION": "invalid JSON fails safely",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-04.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-04.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -270,10 +117,10 @@
       ],
       "DESCRIPTION": "tool-call conflict is normalized",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-05.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-05.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -292,10 +139,10 @@
       ],
       "DESCRIPTION": "unsupported tool is rejected",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -310,7 +157,7 @@
           "recovery_decision": "",
           "request_payload": {},
           "retry_outcome": "",
-          "timestamp": 1789394181.7858615
+          "timestamp": 1789625373.7738223
         },
         "output": null,
         "output_bytes": 0,
@@ -329,10 +176,10 @@
       ],
       "DESCRIPTION": "unsafe path is blocked",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-07.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-07.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -351,10 +198,10 @@
       ],
       "DESCRIPTION": "missing precondition blocks patch",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-08.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-08.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:34Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -374,10 +221,10 @@
       ],
       "DESCRIPTION": "validation failure rolls back",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-09.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-09.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:21Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:34Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -397,10 +244,10 @@
       ],
       "DESCRIPTION": "resolution failure blocks COMPLETE",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-10.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-10.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:35Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -420,10 +267,10 @@
       ],
       "DESCRIPTION": "commit failure blocks lifecycle",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-11.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-11.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:35Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -443,10 +290,10 @@
       ],
       "DESCRIPTION": "remote verification failure blocks COMPLETE",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-12.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-12.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:36Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -466,10 +313,10 @@
       ],
       "DESCRIPTION": "duplicate repair attempt is idempotent and blocks repeated false progress",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-13.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-13.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:37Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -489,10 +336,10 @@
       ],
       "DESCRIPTION": "empty namespace cannot overwrite valid identity",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-14.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-14.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -517,10 +364,10 @@
       ],
       "DESCRIPTION": "repeated identical API response hits bounded retry exhaustion",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-15.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-15.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -539,10 +386,10 @@
       ],
       "DESCRIPTION": "API outage is classified without false completion",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-16.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-16.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -562,10 +409,10 @@
       ],
       "DESCRIPTION": "interruption and resume preserve durable work state",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
       "EVIDENCE_SCOPE": "LOCAL_SIMULATED_INTERRUPTION",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
       "LIMITATIONS": [
         "Verified with a deterministic local interruption simulation after durable queue persistence.",
         "Does not prove recovery from a genuine remote executor interruption."
@@ -591,10 +438,10 @@
       ],
       "DESCRIPTION": "retry exhaustion blocks repeated unchanged repair plans",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-18.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-18.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -615,10 +462,10 @@
       ],
       "DESCRIPTION": "false mathematical proof does not satisfy acceptance",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-19.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-19.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -638,10 +485,10 @@
       ],
       "DESCRIPTION": "missing mathematical assumptions remain unresolved",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-20.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-20.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -662,10 +509,10 @@
       ],
       "DESCRIPTION": "failed formalization is recorded without verification",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-21.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-21.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -685,10 +532,10 @@
       ],
       "DESCRIPTION": "Lean failure remains unresolved",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
       "EVIDENCE_SCOPE": "HARNESS_ONLY",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
       "LIMITATIONS": [
         "Lean execution in this environment is unavailable for the current repository inputs.",
         "Result is verified through injected formal-runner failure behavior, not live Lean execution."
@@ -697,34 +544,110 @@
       "PREVIOUS_STATUS": "VERIFIED",
       "RESULT": {
         "formal": {
+          "attribution": "",
+          "axiom_command": [],
+          "axiom_result": {},
+          "build_command": [
+            "lake",
+            "build"
+          ],
+          "build_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "completed_at": 1789625381.3028653,
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 1,
+            "phase": "build",
+            "started_at": 1789625381.3028615,
+            "stderr": "lean failed",
+            "stdout": "",
+            "success": false,
+            "warnings": []
+          },
           "command": [
             "lake",
             "build"
           ],
+          "comparator_result": {},
           "compiled": false,
+          "compiler_configuration": {},
           "dependencies": [
             "Mathlib"
           ],
+          "dependency_graph": {},
+          "dependency_manifest": {},
+          "execution_timestamp": 1789625381.3028538,
+          "external_checker_configuration": {},
+          "failed_attempts": [
+            {
+              "command": [
+                "lake",
+                "build"
+              ],
+              "failure": "lean failed",
+              "phase": "build",
+              "provider": "local_runner",
+              "retry_count": 0
+            }
+          ],
           "formal_statement": "",
+          "independent_checker": {},
+          "independent_checker_result": {},
           "independently_verified": false,
+          "lean_version": "",
+          "license": "",
+          "mathlib_version": "",
+          "primary_kernel_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 1,
+            "status": "failed",
+            "warnings": []
+          },
+          "proof_path": [],
           "provenance": [],
           "repository": "https://example.invalid/repo",
+          "resource_requirements": {},
           "returncode": 1,
+          "root_theorem": "",
           "source_commit": "abc123",
           "source_files": [
             "Main.lean"
           ],
           "source_location": "",
-          "status": "FORMALIZED",
+          "source_repository": "https://example.invalid/repo",
+          "status": "BUILD_ATTEMPTED",
+          "status_history": [
+            "IMPORTED",
+            "BUILD_ATTEMPTED"
+          ],
           "stderr": "lean failed",
           "stdout": "",
           "system": "lean",
+          "theorem_metadata": [],
           "theorem_names": [
             "main_theorem"
           ],
-          "timestamp": 1789394182.7148554,
+          "theorem_statement": "",
+          "timestamp": 1789625381.3028517,
           "toolchain_version": "lean4",
-          "verification_id": "formal-1"
+          "verification_id": "formal-1",
+          "verification_scripts": {}
         },
         "lean_environment": {
           "elan": null,
@@ -753,10 +676,10 @@
       ],
       "DESCRIPTION": "adversarial contradiction blocks acceptance",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-23.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-23.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -777,10 +700,10 @@
       ],
       "DESCRIPTION": "conflicting research groups are preserved as contradiction",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -816,7 +739,7 @@
               "group_b_paper"
             ],
             "resolution_status": "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS",
-            "timestamp": 1789394182.732386
+            "timestamp": 1789625381.345144
           }
         ]
       },
@@ -831,10 +754,10 @@
       ],
       "DESCRIPTION": "invalid cross-pollination is preserved and blocked",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-25.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-25.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -855,10 +778,10 @@
       ],
       "DESCRIPTION": "provenance collision does not create false independence",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-26.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-26.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -902,7 +825,7 @@
             "e1",
             "e2"
           ],
-          "timestamp": 1789394182.7327979
+          "timestamp": 1789625381.346577
         }
       },
       "STATUS": "VERIFIED",
@@ -917,10 +840,10 @@
       ],
       "DESCRIPTION": "fake independent verification from inherited evidence is rejected",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-27.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-27.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",
@@ -940,10 +863,10 @@
       ],
       "DESCRIPTION": "successful formal verification is recorded but not conflated with independence",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-28.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-28.json",
       "EVIDENCE_SCOPE": "HARNESS_ONLY",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [
         "Lean execution in this environment is unavailable for the current repository inputs.",
         "Formal success is verified through injected formal-runner output, not live Lean compilation."
@@ -952,34 +875,101 @@
       "PREVIOUS_STATUS": "VERIFIED",
       "RESULT": {
         "formal": {
+          "attribution": "",
+          "axiom_command": [],
+          "axiom_result": {},
+          "build_command": [
+            "lake",
+            "build"
+          ],
+          "build_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "completed_at": 1789625381.469338,
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 0,
+            "phase": "build",
+            "started_at": 1789625381.469335,
+            "stderr": "",
+            "stdout": "ok",
+            "success": true,
+            "warnings": []
+          },
           "command": [
             "lake",
             "build"
           ],
+          "comparator_result": {},
           "compiled": true,
+          "compiler_configuration": {},
           "dependencies": [
             "Mathlib"
           ],
+          "dependency_graph": {},
+          "dependency_manifest": {},
+          "execution_timestamp": 1789625381.4693274,
+          "external_checker_configuration": {},
+          "failed_attempts": [],
           "formal_statement": "",
+          "independent_checker": {},
+          "independent_checker_result": {},
           "independently_verified": false,
+          "lean_version": "",
+          "license": "",
+          "mathlib_version": "",
+          "primary_kernel_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 0,
+            "status": "verified",
+            "warnings": []
+          },
+          "proof_path": [],
           "provenance": [],
           "repository": "https://example.invalid/repo",
+          "resource_requirements": {},
           "returncode": 0,
+          "root_theorem": "",
           "source_commit": "abc123",
           "source_files": [
             "Main.lean"
           ],
           "source_location": "",
-          "status": "FORMALLY_VERIFIED",
+          "source_repository": "https://example.invalid/repo",
+          "status": "KERNEL_VERIFIED",
+          "status_history": [
+            "IMPORTED",
+            "BUILD_ATTEMPTED",
+            "COMPILED",
+            "KERNEL_VERIFIED"
+          ],
           "stderr": "",
           "stdout": "ok",
           "system": "lean",
+          "theorem_metadata": [],
           "theorem_names": [
             "main_theorem"
           ],
-          "timestamp": 1789394182.7517402,
+          "theorem_statement": "",
+          "timestamp": 1789625381.4693248,
           "toolchain_version": "lean4",
-          "verification_id": "formal-1"
+          "verification_id": "formal-1",
+          "verification_scripts": {}
         },
         "lean_environment": {
           "elan": null,
@@ -1008,10 +998,10 @@
       ],
       "DESCRIPTION": "genuine independent mathematical verification requires external evidence",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
       "EVIDENCE_SCOPE": "EXTERNAL_REQUIRED",
       "EXECUTION_STATUS": "NOT_EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [
         "Independent third-party mathematical confirmation is unavailable in the current environment.",
         "Model reasoning, formalization, and local computation are insufficient substitutes for independent verification."
@@ -1031,10 +1021,10 @@
       ],
       "DESCRIPTION": "scientific UNRESOLVED path remains explicit",
       "DESIGN_STATUS": "DESIGNED",
-      "EVIDENCE_PATH": "/home/runner/work/B-Agent/B-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-30.json",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-30.json",
       "EVIDENCE_SCOPE": "LOCAL_LIVE",
       "EXECUTION_STATUS": "EXECUTED",
-      "EXECUTION_TIMESTAMP": "2026-09-14T13:56:22Z",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
       "LIMITATIONS": [],
       "NEW_STATUS": "VERIFIED",
       "PREVIOUS_STATUS": "VERIFIED",

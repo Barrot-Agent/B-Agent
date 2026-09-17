@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Callable, ClassVar
 
 from .shared_runtime import Capability, DefensiveWatchdog
+from ..repository.causality import RepositoryCausality
 
 
 class RepairState(str, Enum):
@@ -1466,6 +1467,7 @@ class RepositoryRepairController:
     ):
         self.workspace = Path(workspace).resolve()
         self.watchdog = DefensiveWatchdog(self.workspace)
+        self.causality = RepositoryCausality(self.workspace)
         self.audit_engine = AuditEngine()
         self.repair_planner = RepairPlanner(brain, max_attempts=planner_attempts)
         self.patch_executor = PatchExecutor(self.workspace, watchdog=self.watchdog)
@@ -1689,6 +1691,46 @@ class RepositoryRepairController:
                 "CHANGESET_MISSING",
                 "Planner did not provide a changeset.",
                 failed_operation="validate_changeset",
+            )
+
+        expected_files = changeset.get("expected_files") or []
+        if not isinstance(expected_files, list) or not all(
+            isinstance(item, str) and item.strip() for item in expected_files
+        ):
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "CHANGESET_FILES_INVALID",
+                "Changeset expected_files must be a non-empty-string list.",
+                failed_operation="validate_changeset_files",
+            )
+
+        try:
+            impact_report = self.causality.analyze_many(expected_files)
+            cycle.validation["repository_impact"] = {
+                "targets": list(expected_files),
+                "impacts": [impact.to_dict() for impact in impact_report],
+                "highest_risk": max(
+                    (impact.risk_level for impact in impact_report),
+                    key={"low": 0, "medium": 1, "high": 2}.get,
+                    default="low",
+                ),
+            }
+        except ValueError as exc:
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "SNAPSHOT_FAILED",
+                str(exc),
+                failed_operation="repository_impact_analysis",
+            )
+        except Exception as exc:  # noqa: BLE001
+            return self._failure(
+                cycle,
+                RepairState.FAILED,
+                "IMPACT_ANALYSIS_ERROR",
+                str(exc),
+                failed_operation="repository_impact_analysis",
             )
 
         cycle.repair_plan = repair_plan

@@ -1,0 +1,33 @@
+V3 PROVIDER RUNTIME INTEGRATION — MINIMAL PATCH
+
+Operate ONLY in the outer repository ~/barrot/Barrot-Agent.
+Do not modify or delete the nested B-Agent repository.
+Do not reset, clean, stash, overwrite, or discard the existing dirty worktree.
+
+Goal:
+Route ScriptBrain's LLM requests through the existing V3 ProviderClient runtime without redesigning the repair architecture.
+
+Requirements:
+1. Use the existing ProviderClient from barrot_agent.orchestration.shared_runtime.
+2. Do not create a second provider abstraction.
+3. Preserve ScriptBrain's bounded tool-calling loop and repository-browser allowlist.
+4. Route every actual LLM request through ProviderClient.request().
+5. Preserve the existing Groq payload and response parsing semantics.
+6. Preserve request_sender injection used by tests.
+7. Keep ProviderClient authoritative for retry, fingerprints, watchdog authorization, execution records, and failure normalization.
+8. Never fabricate an LLM response when the provider fails or is rate-limited.
+9. Propagate provider failure truthfully into the existing repair state machine.
+10. Do not introduce a new provider or dependency.
+11. Do not weaken tool safety, path restrictions, authorization, timeouts, checkpoints, provenance, validation, or completion gates.
+12. Do not modify the RepairDirective contract.
+13. Keep the patch minimal and repository-grounded.
+14. Add focused tests proving provider routing, injected request_sender compatibility, truthful provider failures, preserved tool-calling behavior, and no fabricated completion.
+15. Run compileall and relevant tests.
+16. Run the full suite: python -m pytest tests -q --no-cov
+17. Do not push anything.
+18. Report exact commands and results.
+19. Do not claim success without execution evidence.
+
+The current Groq 429 is real:
+TPD limit 200000, used 197838, requested 3116.
+Do not pretend the provider succeeded.

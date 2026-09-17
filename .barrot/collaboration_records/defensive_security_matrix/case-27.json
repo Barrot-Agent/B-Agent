@@ -1,0 +1,22 @@
+{
+  "DESCRIPTION": "compromised fallback providers stay isolated",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "code": "AUTHORIZATION_DENIED",
+    "failed_operation": "fallback",
+    "message": "Provider fallback is not available for use.",
+    "raw_error": "",
+    "recovery_decision": "abort",
+    "request_payload": {
+      "messages": []
+    },
+    "retry_outcome": "not_retried",
+    "timestamp": 1789568803.1694546
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-27",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

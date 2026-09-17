@@ -16,7 +16,7 @@ def load_script(path: Path, name: str):
     return module
 
 
-REPO_ROOT = Path("/home/runner/work/B-Agent/B-Agent")
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_defensive_self_test_records_current_blocker_categories(tmp_path: Path, monkeypatch) -> None:
@@ -63,6 +63,12 @@ def test_defensive_self_test_records_current_blocker_categories(tmp_path: Path, 
 
     def fake_github_request(path: str, *, method: str = "GET", payload=None):
         del method, payload
+        if path.endswith("/actions/workflows/ci.yml/dispatches"):
+            return {}, None
+        if path.endswith("/actions/workflows/barrot-self-upgrade.yml/dispatches"):
+            return {}, None
+        if path.endswith("/actions/workflows/formal-verification-benchmarks.yml/dispatches"):
+            return {}, None
         if path.endswith("/actions/workflows/ci.yml/runs?branch=main&per_page=20"):
             return {
                 "workflow_runs": [

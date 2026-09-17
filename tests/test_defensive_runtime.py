@@ -21,7 +21,7 @@ from barrot_agent.orchestration.shared_runtime import (
 )
 
 
-REPO_ROOT = Path("/home/runner/work/B-Agent/B-Agent")
+REPO_ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT_DIR = REPO_ROOT / ".barrot" / "collaboration_records" / "defensive_security_matrix"
 SUMMARY_PATH = REPO_ROOT / ".barrot" / "collaboration_records" / "barrot_defensive_security_matrix.json"
 

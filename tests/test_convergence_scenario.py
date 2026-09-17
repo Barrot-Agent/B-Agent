@@ -338,10 +338,10 @@ def test_scenario_maturity_rejection() -> None:
     assert hypothesis["status"] == ScenarioMaturity.EMERGING.value
 
 
-def test_navier_stokes_convergence() -> None:
+def test_navier_stokes_convergence(tmp_path: Path) -> None:
     adapter = NavierStokesProblemAdapter()
     problem, _, _, evidence, tracks, _, formal_specs, _ = adapter.ingest()
-    verifier = ScientificDiscoveryController(workspace=Path("/tmp")).verifier
+    verifier = ScientificDiscoveryController(workspace=tmp_path).verifier
     formal_records = [verifier.verify(spec) for spec in formal_specs]
     analysis = ConvergenceScenarioEngine().analyze(
         research_problem_id=problem.problem_id,

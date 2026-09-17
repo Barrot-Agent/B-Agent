@@ -8,7 +8,7 @@ from pathlib import Path
 
 from barrot_agent.orchestration.shared_runtime import FailureCode, ValidationResult
 
-REPO_ROOT = Path("/home/runner/work/B-Agent/B-Agent")
+REPO_ROOT = Path(__file__).resolve().parents[1]
 SELF_UPGRADE_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "barrot-self-upgrade.yml"
 
 

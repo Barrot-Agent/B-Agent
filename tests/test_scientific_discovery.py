@@ -25,9 +25,9 @@ from barrot_agent.research import (
     select_scientific_problem_adapter,
 )
 
-SCRIPT_PATH = Path("/home/runner/work/B-Agent/B-Agent/scripts/barrot_agent.py")
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "barrot_agent.py"
 BUNDLE_PATH = Path(
-    "/home/runner/work/B-Agent/B-Agent/data/research/navier_stokes_research_bundle.json"
+    str(Path(__file__).resolve().parents[1] / "data" / "research" / "navier_stokes_research_bundle.json")
 )
 
 

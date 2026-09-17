@@ -9341,5 +9341,27 @@
     ],
     "confidence": 0.7,
     "recorded_at": "2026-09-08T21:33:08.164853+00:00"
+  },
+  {
+    "id": "e07e2549a4c3d17e94b7275875acb82ac7076675830e4e2f29b796966db06abf",
+    "operation": "corroboration",
+    "outcome": {
+      "claim_id": "6c60a61607c4e41cc6ed425de40a0b8fca7f99b5b9bb3f9ce7aa9e41a9f5993d",
+      "supporting_records": [],
+      "conflicting_records": [],
+      "independent_supporting_sources": 0,
+      "independent_conflicting_sources": 0,
+      "support_quality": 0.0,
+      "conflict_quality": 0.0,
+      "evidence_count": 0,
+      "corroborated_confidence": 0.5,
+      "status": "insufficient_evidence",
+      "lifecycle_status": "unverified"
+    },
+    "sources": [
+      "fixture-source-001"
+    ],
+    "confidence": 0.5,
+    "recorded_at": "2026-09-17T05:45:43.381657+00:00"
   }
 ]

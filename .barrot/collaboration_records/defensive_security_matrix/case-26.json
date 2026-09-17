@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "malicious recovery attempts remain blocked",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "ADMIN",
+    "incident_id": "a411350afe650da6",
+    "reason": "BARROT_SAFE_MODE is active.",
+    "requested_action": "disable safe mode",
+    "safe_mode_active": true,
+    "threat_classification": "CONTAINED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-26",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}
