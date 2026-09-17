@@ -3,15 +3,15 @@
     "xrp_entries": 556,
     "btc_entries": 487
   },
-  "unique_entities_profiled": 527,
+  "unique_entities_profiled": 530,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 247,
-      "bullish": 134,
+      "total_mentions": 248,
+      "bullish": 135,
       "neutral": 36,
       "bearish": 77,
-      "net_sentiment_score": 0.231,
+      "net_sentiment_score": 0.234,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 173,
-      "bullish": 106,
+      "total_mentions": 175,
+      "bullish": 108,
       "neutral": 33,
       "bearish": 34,
-      "net_sentiment_score": 0.416,
+      "net_sentiment_score": 0.423,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 138,
-      "bullish": 86,
+      "total_mentions": 140,
+      "bullish": 88,
       "neutral": 32,
       "bearish": 20,
-      "net_sentiment_score": 0.478,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 101,
-      "bullish": 50,
+      "total_mentions": 102,
+      "bullish": 51,
       "neutral": 18,
       "bearish": 33,
-      "net_sentiment_score": 0.168,
+      "net_sentiment_score": 0.176,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2253,6 +2253,21 @@
       ]
     },
     {
+      "entity": "CCN.com",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+        "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com"
+      ]
+    },
+    {
       "entity": "Bitcoin ETFs",
       "total_mentions": 2,
       "bullish": 2,
@@ -3904,20 +3919,6 @@
       ]
     },
     {
-      "entity": "CCN.com",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com"
-      ]
-    },
-    {
       "entity": "ZILO",
       "total_mentions": 1,
       "bullish": 1,
@@ -5357,6 +5358,48 @@
       ],
       "example_headlines": [
         "Ripple eyes $13 trillion corporate treasury opportunity to grow RLUSD stablecoin, executive says - C"
+      ]
+    },
+    {
+      "entity": "Louisville Athletics",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
+      ]
+    },
+    {
+      "entity": "Louisville Basketball",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
+      ]
+    },
+    {
+      "entity": "gocards.com",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
       ]
     },
     {
