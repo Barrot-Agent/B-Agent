@@ -3,7 +3,7 @@
     "xrp_entries": 557,
     "btc_entries": 490
   },
-  "unique_entities_profiled": 530,
+  "unique_entities_profiled": 533,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 175,
-      "bullish": 108,
+      "total_mentions": 176,
+      "bullish": 109,
       "neutral": 33,
       "bearish": 34,
-      "net_sentiment_score": 0.423,
+      "net_sentiment_score": 0.426,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -408,6 +408,23 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 8,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 4,
+      "net_sentiment_score": -0.125,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "The Motley Fool",
       "total_mentions": 8,
       "bullish": 8,
@@ -507,23 +524,6 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 7,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 4,
-      "net_sentiment_score": -0.286,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
       ]
     },
     {
@@ -5400,6 +5400,48 @@
       ],
       "example_headlines": [
         "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
+      ]
+    },
+    {
+      "entity": "Justin Sun",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat"
+      ]
+    },
+    {
+      "entity": "Office of Justin Sun",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat"
+      ]
+    },
+    {
+      "entity": "Geneva",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat"
       ]
     },
     {
