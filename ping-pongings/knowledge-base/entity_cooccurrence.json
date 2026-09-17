@@ -3,12 +3,12 @@
     "xrp_entries": 556,
     "btc_entries": 487
   },
-  "unique_pairs_found": 1696,
+  "unique_pairs_found": 1707,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 133,
+      "cooccurrence_count": 135,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 75,
+      "cooccurrence_count": 76,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -186,6 +186,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 16,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 16,
@@ -196,21 +211,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 15,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -921,6 +921,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "SEC",
       "cooccurrence_count": 5,
@@ -931,6 +946,21 @@
         },
         {
           "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1221,21 +1251,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "US Treasury",
       "cooccurrence_count": 4,
@@ -1291,21 +1306,6 @@
         },
         {
           "title": "Bitcoin And Ethereum ETFs Add $492M As Inflow Streak Continues",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1966,6 +1966,21 @@
         },
         {
           "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
           "asset": "XRP"
         }
       ]
@@ -3001,6 +3016,36 @@
         },
         {
           "title": "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
           "asset": "XRP"
         }
       ]
@@ -4606,21 +4651,6 @@
         },
         {
           "title": "Why Is Bitcoin Up Today? - The Motley Fool",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "BTC"
         }
       ]
@@ -7280,29 +7310,7 @@
     },
     {
       "entity_a": "CCN.com",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CCN.com",
       "entity_b": "SBI",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CCN.com",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -12510,6 +12518,127 @@
       "example_headlines": [
         {
           "title": "Ripple eyes $13 trillion corporate treasury opportunity to grow RLUSD stablecoin, executive says - C",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "Louisville Basketball",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "gocards.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Basketball",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Basketball",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Basketball",
+      "entity_b": "gocards.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "gocards.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "gocards.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "CCN.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CCN.com",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
           "asset": "XRP"
         }
       ]
