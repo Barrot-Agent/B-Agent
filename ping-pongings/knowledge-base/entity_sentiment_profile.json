@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 178,
-      "bullish": 111,
+      "total_mentions": 179,
+      "bullish": 112,
       "neutral": 33,
       "bearish": 34,
-      "net_sentiment_score": 0.433,
+      "net_sentiment_score": 0.436,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 142,
-      "bullish": 90,
+      "total_mentions": 143,
+      "bullish": 91,
       "neutral": 32,
       "bearish": 20,
-      "net_sentiment_score": 0.493,
+      "net_sentiment_score": 0.497,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1260,6 +1260,22 @@
       ]
     },
     {
+      "entity": "CCN.com",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
+        "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com"
+      ]
+    },
+    {
       "entity": "Luke Dashjr",
       "total_mentions": 3,
       "bullish": 0,
@@ -2240,6 +2256,21 @@
       ]
     },
     {
+      "entity": "Escrow",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com"
+      ]
+    },
+    {
       "entity": "Evernorth",
       "total_mentions": 2,
       "bullish": 2,
@@ -2267,21 +2298,6 @@
       "example_headlines": [
         "Ripple invests in Zilo and Licuido to assist tokenized capital markets push",
         "Ripple Invests in ZILO and Licuido to Expand XRP Ledger Infrastructure - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "CCN.com",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
-        "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com"
       ]
     },
     {
@@ -3833,20 +3849,6 @@
       ],
       "example_headlines": [
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Escrow",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa"
       ]
     },
     {
