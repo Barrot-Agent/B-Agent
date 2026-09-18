@@ -1,0 +1,37 @@
+{
+  "COMMAND": "ControlledToolExecutor.execute(unsupported)",
+  "COMPONENTS_TESTED": [
+    "ControlledToolExecutor"
+  ],
+  "DESCRIPTION": "unsupported tool is rejected",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "duration_ms": 0,
+    "error": "UNSUPPORTED_TOOL",
+    "failure": {
+      "code": "UNSUPPORTED_TOOL",
+      "failed_operation": "missing",
+      "message": "UNSUPPORTED_TOOL",
+      "raw_error": "UNSUPPORTED_TOOL",
+      "recovery_decision": "",
+      "request_payload": {},
+      "retry_outcome": "",
+      "timestamp": 1789625373.7738223
+    },
+    "output": null,
+    "output_bytes": 0,
+    "success": false,
+    "tool_name": "missing",
+    "truncated": false
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-06",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -1,0 +1,123 @@
+name: Barrot Controlled PR Approval
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Open PR number to approve"
+        required: true
+        type: string
+      expected_head_sha:
+        description: "Expected PR head SHA"
+        required: true
+        type: string
+      reason:
+        description: "Auditable reason for applying approved"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  approve:
+    name: Barrot controlled approval
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_NUMBER: ${{ inputs.pr_number }}
+      EXPECTED_HEAD_SHA: ${{ inputs.expected_head_sha }}
+      APPROVAL_REASON: ${{ inputs.reason }}
+
+    steps:
+      - name: Validate request
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ ! "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "Invalid PR number: $PR_NUMBER" >&2
+            exit 1
+          fi
+
+          if [[ ! "$EXPECTED_HEAD_SHA" =~ ^[0-9a-fA-F]{40}$ ]]; then
+            echo "Invalid expected head SHA." >&2
+            exit 1
+          fi
+
+          if [[ -z "$APPROVAL_REASON" ]]; then
+            echo "Approval reason is required." >&2
+            exit 1
+          fi
+
+      - name: Inspect target PR
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          repo="${GITHUB_REPOSITORY}"
+
+          pr_json="$(gh api             "repos/${repo}/pulls/${PR_NUMBER}"             --jq '{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}')"
+
+          echo "$pr_json"
+
+          state="$(printf '%s' "$pr_json" | jq -r '.state')"
+          base_ref="$(printf '%s' "$pr_json" | jq -r '.base_ref')"
+          head_sha="$(printf '%s' "$pr_json" | jq -r '.head_sha')"
+          head_repo="$(printf '%s' "$pr_json" | jq -r '.head_repo')"
+
+          if [[ "$state" != "open" ]]; then
+            echo "Target PR is not open." >&2
+            exit 1
+          fi
+
+          if [[ "$base_ref" != "main" ]]; then
+            echo "Target PR does not target main." >&2
+            exit 1
+          fi
+
+          if [[ "$head_sha" != "$EXPECTED_HEAD_SHA" ]]; then
+            echo "HEAD SHA mismatch." >&2
+            echo "Expected: $EXPECTED_HEAD_SHA"
+            echo "Actual:   $head_sha"
+            exit 1
+          fi
+
+          if [[ "$head_repo" != "$repo" ]]; then
+            echo "Cross-repository PRs are not eligible." >&2
+            exit 1
+          fi
+
+      - name: Apply approved label
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          repo="${GITHUB_REPOSITORY}"
+
+          gh api             --method POST             "repos/${repo}/issues/${PR_NUMBER}/labels"             -f "labels[]=approved"
+
+      - name: Record approval evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          repo="${GITHUB_REPOSITORY}"
+          timestamp="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+
+          gh pr comment "$PR_NUMBER"             --repo "$repo"             --body "Barrot controlled approval recorded.
+
+PR: #${PR_NUMBER}
+Head SHA: ${EXPECTED_HEAD_SHA}
+Reason: ${APPROVAL_REASON}
+Workflow run: ${GITHUB_SERVER_URL}/${repo}/actions/runs/${GITHUB_RUN_ID}
+Recorded at: ${timestamp}
+
+This action applied the \`approved\` label only. It did not merge the PR."
+
+          echo "BARROT_APPROVAL=PASS"
+          echo "PR_NUMBER=$PR_NUMBER"
+          echo "HEAD_SHA=$EXPECTED_HEAD_SHA"
+          echo "APPROVAL_LABEL=approved"
+          echo "MERGE_PERFORMED=FALSE"

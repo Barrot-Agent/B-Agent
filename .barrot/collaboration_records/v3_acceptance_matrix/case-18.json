@@ -1,0 +1,24 @@
+{
+  "COMMAND": "RepositoryRepairController.run(retry exhaustion)",
+  "COMPONENTS_TESTED": [
+    "RepositoryRepairController",
+    "DurableCycleStore"
+  ],
+  "DESCRIPTION": "retry exhaustion blocks repeated unchanged repair plans",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-18.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "failure": "LLM_RETRY_EXHAUSTED",
+    "first": "rolled_back",
+    "second": "blocked"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-18",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

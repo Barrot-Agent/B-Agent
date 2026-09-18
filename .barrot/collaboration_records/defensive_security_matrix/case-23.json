@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "unauthorized deployment is denied",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "DEPLOY",
+    "incident_id": "b0bde79a2fc07185",
+    "reason": "Requested capability is not authorized.",
+    "requested_action": "deploy to prod",
+    "safe_mode_active": false,
+    "threat_classification": "RESTRICTED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-23",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -8,6 +8,7 @@ from pathlib import Path
 from .actions import Action
 from .executor import BarrotExecutor, ExecutionError
 from barrot_agent.termux import TermuxBridge
+from barrot_agent.orchestration.verified_bundle_delivery import deliver_verified_bundle
 
 
 @dataclass
@@ -167,6 +168,49 @@ class BarrotActionExecutor:
                     success=drop.success,
                     output=drop.path if drop.success else "",
                     error="" if drop.success else drop.reason,
+                )
+
+            if action.type == "DELIVER_BUNDLE":
+                path = action.args["path"]
+                content = action.args["content"]
+
+                if not isinstance(path, str):
+                    raise ExecutionError(
+                        "DELIVER_BUNDLE path must be a string"
+                    )
+
+                if not isinstance(content, str):
+                    raise ExecutionError(
+                        "DELIVER_BUNDLE content must be a string"
+                    )
+
+                verified = deliver_verified_bundle(
+                    self,
+                    path=path,
+                    content=content,
+                )
+
+                if not verified.delivery.success:
+                    return ActionResult(
+                        action=action.type,
+                        success=False,
+                        error=verified.delivery.error,
+                    )
+
+                if not verified.evidence.verified:
+                    return ActionResult(
+                        action=action.type,
+                        success=False,
+                        error=verified.evidence.reason,
+                    )
+
+                return ActionResult(
+                    action=action.type,
+                    success=True,
+                    output=(
+                        f"{verified.evidence.path} "
+                        f"{verified.evidence.delivered_hash}"
+                    ),
                 )
 
             raise ExecutionError(

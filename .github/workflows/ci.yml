@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest PyJWT cryptography
+          pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
 
       - name: Run core test suite
         run: |
@@ -48,4 +48,9 @@ jobs:
             tests/test_weighted_corroboration.py \
             tests/test_risk_manager.py \
             tests/test_coinbase_trader.py \
+            tests/test_repository_repair.py \
+            tests/test_v3_scripts.py \
+            tests/test_defensive_runtime.py \
+            tests/test_scientific_discovery.py \
+            tests/test_formal_benchmark.py \
             -v --no-cov

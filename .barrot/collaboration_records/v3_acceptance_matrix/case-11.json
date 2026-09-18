@@ -1,0 +1,23 @@
+{
+  "COMMAND": "RepositoryRepairController.run(commit failure)",
+  "COMPONENTS_TESTED": [
+    "GitGateway",
+    "RepositoryRepairController"
+  ],
+  "DESCRIPTION": "commit failure blocks lifecycle",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-11.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:35Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "failure": "git commit failed",
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-11",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

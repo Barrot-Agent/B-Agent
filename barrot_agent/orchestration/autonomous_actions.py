@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from .bundle_delivery import BundleDelivery, deliver_bundle
+from .bundle_validation import validate_python_bundle, BundleValidationError
+
 import json
 from dataclasses import dataclass
 
@@ -12,6 +15,34 @@ from .outcome_evaluator import OutcomeEvaluator
 from .learning_filter import LearningFilter
 from .verified_learning_store import VerifiedLearningStore
 from .learning_curriculum import LearningCurriculum
+
+
+def deliver_autonomous_bundle(
+    executor,
+    *,
+    path: str,
+    content: str,
+):
+    """Validate and deliver an approved Python bundle through TERMUX_DROP."""
+    validation = validate_python_bundle(
+        path=path,
+        content=content,
+    )
+
+    if not validation.valid:
+        raise BundleValidationError(
+            validation.reason
+        )
+
+    result = deliver_bundle(
+        executor,
+        BundleDelivery(
+            path=path,
+            content=content,
+        ),
+    )
+
+    return result
 
 
 @dataclass

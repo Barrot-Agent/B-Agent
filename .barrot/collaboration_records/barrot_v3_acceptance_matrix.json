@@ -1,0 +1,1041 @@
+{
+  "designed_not_executed_count": 1,
+  "generated_at": "2026-09-17T06:09:41Z",
+  "harness_verified_count": 2,
+  "partially_verified_count": 1,
+  "records": [
+    {
+      "COMMAND": "RepositoryRepairController.run(no defect)",
+      "COMPONENTS_TESTED": [
+        "RepositoryRepairController",
+        "Validator",
+        "CompletionGate"
+      ],
+      "DESCRIPTION": "healthy repository returns NO_REPAIR_REQUIRED",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-01.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:31Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "state": "NO_REPAIR_REQUIRED",
+        "status": "no_repair_required"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-01",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(repair defect)",
+      "COMPONENTS_TESTED": [
+        "RepositoryRepairController",
+        "PatchExecutor",
+        "Validator"
+      ],
+      "DESCRIPTION": "real defect enters deterministic repair lifecycle",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-02.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:31Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "states": [
+          "IDLE",
+          "AUDITING",
+          "ANALYZING",
+          "REPAIR_PLANNING",
+          "PATCHING",
+          "LOCAL_VALIDATION",
+          "COMMITTING",
+          "REMOTE_VERIFICATION",
+          "POST_REPAIR_VALIDATION",
+          "SYNCING",
+          "COMPLETE"
+        ],
+        "status": "complete"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-02",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(no-op patch)",
+      "COMPONENTS_TESTED": [
+        "RepositoryRepairController",
+        "PatchExecutor",
+        "CompletionGate"
+      ],
+      "DESCRIPTION": "model success text without concrete change cannot complete repair",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-03.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:32Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "ROLLED_BACK",
+        "status": "rolled_back"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-03",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(invalid JSON)",
+      "COMPONENTS_TESTED": [
+        "RepairPlanner"
+      ],
+      "DESCRIPTION": "invalid JSON fails safely",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-04.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "LLM_INVALID_JSON",
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-04",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(tool conflict)",
+      "COMPONENTS_TESTED": [
+        "RepairPlanner"
+      ],
+      "DESCRIPTION": "tool-call conflict is normalized",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-05.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "LLM_TOOL_CONFLICT",
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-05",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ControlledToolExecutor.execute(unsupported)",
+      "COMPONENTS_TESTED": [
+        "ControlledToolExecutor"
+      ],
+      "DESCRIPTION": "unsupported tool is rejected",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-06.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "duration_ms": 0,
+        "error": "UNSUPPORTED_TOOL",
+        "failure": {
+          "code": "UNSUPPORTED_TOOL",
+          "failed_operation": "missing",
+          "message": "UNSUPPORTED_TOOL",
+          "raw_error": "UNSUPPORTED_TOOL",
+          "recovery_decision": "",
+          "request_payload": {},
+          "retry_outcome": "",
+          "timestamp": 1789625373.7738223
+        },
+        "output": null,
+        "output_bytes": 0,
+        "success": false,
+        "tool_name": "missing",
+        "truncated": false
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-06",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(unsafe patch path)",
+      "COMPONENTS_TESTED": [
+        "PatchExecutor"
+      ],
+      "DESCRIPTION": "unsafe path is blocked",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-07.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "SNAPSHOT_FAILED",
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-07",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(missing old text)",
+      "COMPONENTS_TESTED": [
+        "PatchExecutor"
+      ],
+      "DESCRIPTION": "missing precondition blocks patch",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-08.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:34Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "ROLLED_BACK",
+        "status": "rolled_back"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-08",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(validation failure)",
+      "COMPONENTS_TESTED": [
+        "Validator",
+        "RepositoryRepairController"
+      ],
+      "DESCRIPTION": "validation failure rolls back",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-09.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:34Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "rollback": true,
+        "status": "rolled_back"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-09",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(resolution failure)",
+      "COMPONENTS_TESTED": [
+        "Validator",
+        "CompletionGate"
+      ],
+      "DESCRIPTION": "resolution failure blocks COMPLETE",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-10.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:35Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "resolution_verified": false,
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-10",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(commit failure)",
+      "COMPONENTS_TESTED": [
+        "GitGateway",
+        "RepositoryRepairController"
+      ],
+      "DESCRIPTION": "commit failure blocks lifecycle",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-11.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:35Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "git commit failed",
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-11",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(remote verification failure)",
+      "COMPONENTS_TESTED": [
+        "RemoteVerifier",
+        "CompletionGate"
+      ],
+      "DESCRIPTION": "remote verification failure blocks COMPLETE",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-12.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:36Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "remote_verified": false,
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-12",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(duplicate attempt)",
+      "COMPONENTS_TESTED": [
+        "DurableCycleStore",
+        "RepositoryRepairController"
+      ],
+      "DESCRIPTION": "duplicate repair attempt is idempotent and blocks repeated false progress",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-13.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:37Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "first": "complete",
+        "second": "no_repair_required"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-13",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "SyncController.run(empty namespace)",
+      "COMPONENTS_TESTED": [
+        "SyncController",
+        "ProjectIdentity"
+      ],
+      "DESCRIPTION": "empty namespace cannot overwrite valid identity",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-14.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "last_valid_project": {
+          "id": 1,
+          "namespace_id": 2,
+          "namespace_kind": "user",
+          "namespace_path": "Barrot-Agent",
+          "path_with_namespace": "Barrot-Agent/B-Agent"
+        },
+        "status": "BLOCKED"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-14",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "SyncController.run(unchanged observation)",
+      "COMPONENTS_TESTED": [
+        "SyncController"
+      ],
+      "DESCRIPTION": "repeated identical API response hits bounded retry exhaustion",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-15.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "attempts": 3,
+        "status": "BLOCKED"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-15",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(provider unavailable)",
+      "COMPONENTS_TESTED": [
+        "RepairPlanner"
+      ],
+      "DESCRIPTION": "API outage is classified without false completion",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-16.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "LLM_UNAVAILABLE",
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-16",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "WorkQueueController.run(resume)",
+      "COMPONENTS_TESTED": [
+        "WorkQueueController",
+        "DurableWorkStore"
+      ],
+      "DESCRIPTION": "interruption and resume preserve durable work state",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
+      "EVIDENCE_SCOPE": "LOCAL_SIMULATED_INTERRUPTION",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
+      "LIMITATIONS": [
+        "Verified with a deterministic local interruption simulation after durable queue persistence.",
+        "Does not prove recovery from a genuine remote executor interruption."
+      ],
+      "NEW_STATUS": "PARTIALLY_VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "attempt_count": 2,
+        "interruption_kind": "simulated_local_exception",
+        "persisted_attempt_count_before_resume": 1,
+        "persisted_state_before_resume": "REPAIRING",
+        "second": "blocked"
+      },
+      "STATUS": "PARTIALLY_VERIFIED",
+      "TEST_ID": "case-17",
+      "VERIFICATION_LEVEL": "PARTIALLY_VERIFIED"
+    },
+    {
+      "COMMAND": "RepositoryRepairController.run(retry exhaustion)",
+      "COMPONENTS_TESTED": [
+        "RepositoryRepairController",
+        "DurableCycleStore"
+      ],
+      "DESCRIPTION": "retry exhaustion blocks repeated unchanged repair plans",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-18.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "LLM_RETRY_EXHAUSTED",
+        "first": "rolled_back",
+        "second": "blocked"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-18",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(source-team only)",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "CompletionGate"
+      ],
+      "DESCRIPTION": "false mathematical proof does not satisfy acceptance",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-19.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "independent": "UNRESOLVED",
+        "status": "no_solution_claim"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-19",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(adversarial challenge)",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "AdversarialReview"
+      ],
+      "DESCRIPTION": "missing mathematical assumptions remain unresolved",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-20.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "status": "no_solution_claim",
+        "unresolved": [
+          "At least one adversarial mathematical objection remains unresolved."
+        ]
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-20",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(unsupported formal command)",
+      "COMPONENTS_TESTED": [
+        "LeanVerificationGateway"
+      ],
+      "DESCRIPTION": "failed formalization is recorded without verification",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-21.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "failure": "RepairError",
+        "status": "failed"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-21",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(formal runner failure)",
+      "COMPONENTS_TESTED": [
+        "LeanVerificationGateway",
+        "ScientificDiscoveryController"
+      ],
+      "DESCRIPTION": "Lean failure remains unresolved",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
+      "EVIDENCE_SCOPE": "HARNESS_ONLY",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+      "LIMITATIONS": [
+        "Lean execution in this environment is unavailable for the current repository inputs.",
+        "Result is verified through injected formal-runner failure behavior, not live Lean execution."
+      ],
+      "NEW_STATUS": "HARNESS_VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "formal": {
+          "attribution": "",
+          "axiom_command": [],
+          "axiom_result": {},
+          "build_command": [
+            "lake",
+            "build"
+          ],
+          "build_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "completed_at": 1789625381.3028653,
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 1,
+            "phase": "build",
+            "started_at": 1789625381.3028615,
+            "stderr": "lean failed",
+            "stdout": "",
+            "success": false,
+            "warnings": []
+          },
+          "command": [
+            "lake",
+            "build"
+          ],
+          "comparator_result": {},
+          "compiled": false,
+          "compiler_configuration": {},
+          "dependencies": [
+            "Mathlib"
+          ],
+          "dependency_graph": {},
+          "dependency_manifest": {},
+          "execution_timestamp": 1789625381.3028538,
+          "external_checker_configuration": {},
+          "failed_attempts": [
+            {
+              "command": [
+                "lake",
+                "build"
+              ],
+              "failure": "lean failed",
+              "phase": "build",
+              "provider": "local_runner",
+              "retry_count": 0
+            }
+          ],
+          "formal_statement": "",
+          "independent_checker": {},
+          "independent_checker_result": {},
+          "independently_verified": false,
+          "lean_version": "",
+          "license": "",
+          "mathlib_version": "",
+          "primary_kernel_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 1,
+            "status": "failed",
+            "warnings": []
+          },
+          "proof_path": [],
+          "provenance": [],
+          "repository": "https://example.invalid/repo",
+          "resource_requirements": {},
+          "returncode": 1,
+          "root_theorem": "",
+          "source_commit": "abc123",
+          "source_files": [
+            "Main.lean"
+          ],
+          "source_location": "",
+          "source_repository": "https://example.invalid/repo",
+          "status": "BUILD_ATTEMPTED",
+          "status_history": [
+            "IMPORTED",
+            "BUILD_ATTEMPTED"
+          ],
+          "stderr": "lean failed",
+          "stdout": "",
+          "system": "lean",
+          "theorem_metadata": [],
+          "theorem_names": [
+            "main_theorem"
+          ],
+          "theorem_statement": "",
+          "timestamp": 1789625381.3028517,
+          "toolchain_version": "lean4",
+          "verification_id": "formal-1",
+          "verification_scripts": {}
+        },
+        "lean_environment": {
+          "elan": null,
+          "lake": null,
+          "lean": null,
+          "limitations": [
+            "lean binary unavailable",
+            "lake binary unavailable",
+            "elan binary unavailable",
+            "repository contains no tracked Lean source files"
+          ],
+          "live_execution_available": false,
+          "repository_has_lean_sources": false
+        },
+        "status": "no_solution_claim"
+      },
+      "STATUS": "HARNESS_VERIFIED",
+      "TEST_ID": "case-22",
+      "VERIFICATION_LEVEL": "HARNESS_VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(challenged review)",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "AdversarialReview"
+      ],
+      "DESCRIPTION": "adversarial contradiction blocks acceptance",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-23.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "status": "no_solution_claim",
+        "unresolved": [
+          "At least one adversarial mathematical objection remains unresolved."
+        ]
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-23",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ConvergenceScenarioEngine.analyze_observations(conflict)",
+      "COMPONENTS_TESTED": [
+        "ConvergenceScenarioEngine"
+      ],
+      "DESCRIPTION": "conflicting research groups are preserved as contradiction",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "contradictions": [
+          {
+            "assumption_comparison": {
+              "left": [
+                "A1"
+              ],
+              "right": [
+                "A2"
+              ]
+            },
+            "claim_a": "velocity remains bounded",
+            "claim_b": "velocity is not bounded",
+            "contradiction_id": "8396053d53f7aec364134f59049855bad40807d8c1ebce669638ff51eabe9d5d",
+            "domain_comparison": {
+              "left": [],
+              "right": []
+            },
+            "evidence_comparison": {
+              "left": [
+                "e1"
+              ],
+              "right": [
+                "e2"
+              ],
+              "shared": []
+            },
+            "provenance": [
+              "group_a_paper",
+              "group_b_paper"
+            ],
+            "resolution_status": "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS",
+            "timestamp": 1789625381.345144
+          }
+        ]
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-24",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "CrossPollinationEngine.synthesize(invalid transfer)",
+      "COMPONENTS_TESTED": [
+        "CrossPollinationEngine"
+      ],
+      "DESCRIPTION": "invalid cross-pollination is preserved and blocked",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-25.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "results": [
+          "invalid_transfer",
+          "invalid_transfer"
+        ]
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-25",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ConvergenceScenarioEngine.analyze_observations(shared ancestry)",
+      "COMPONENTS_TESTED": [
+        "ConvergenceScenarioEngine"
+      ],
+      "DESCRIPTION": "provenance collision does not create false independence",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-26.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "pattern": {
+          "ancestry_graph": {
+            "a": {
+              "parents": [],
+              "provenance": [
+                "s1",
+                "p1"
+              ]
+            },
+            "b": {
+              "parents": [],
+              "provenance": [
+                "s2",
+                "p2"
+              ]
+            }
+          },
+          "common_features": [
+            "ancestry:x",
+            "claim:c1"
+          ],
+          "confidence": 0.5,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "a",
+            "b"
+          ],
+          "pattern_id": "803832cda0e0032a8f59bd1439826f1f8d73ea5adf84be2c49e4f761df43b448",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "e1",
+            "e2"
+          ],
+          "timestamp": 1789625381.346577
+        }
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-26",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(non-independent evidence)",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "IndependenceEvaluator"
+      ],
+      "DESCRIPTION": "fake independent verification from inherited evidence is rejected",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-27.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "problem_resolution_status": "UNRESOLVED",
+        "status": "no_solution_claim"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-27",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(formal success)",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "LeanVerificationGateway"
+      ],
+      "DESCRIPTION": "successful formal verification is recorded but not conflated with independence",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-28.json",
+      "EVIDENCE_SCOPE": "HARNESS_ONLY",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [
+        "Lean execution in this environment is unavailable for the current repository inputs.",
+        "Formal success is verified through injected formal-runner output, not live Lean compilation."
+      ],
+      "NEW_STATUS": "HARNESS_VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "formal": {
+          "attribution": "",
+          "axiom_command": [],
+          "axiom_result": {},
+          "build_command": [
+            "lake",
+            "build"
+          ],
+          "build_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "completed_at": 1789625381.469338,
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 0,
+            "phase": "build",
+            "started_at": 1789625381.469335,
+            "stderr": "",
+            "stdout": "ok",
+            "success": true,
+            "warnings": []
+          },
+          "command": [
+            "lake",
+            "build"
+          ],
+          "comparator_result": {},
+          "compiled": true,
+          "compiler_configuration": {},
+          "dependencies": [
+            "Mathlib"
+          ],
+          "dependency_graph": {},
+          "dependency_manifest": {},
+          "execution_timestamp": 1789625381.4693274,
+          "external_checker_configuration": {},
+          "failed_attempts": [],
+          "formal_statement": "",
+          "independent_checker": {},
+          "independent_checker_result": {},
+          "independently_verified": false,
+          "lean_version": "",
+          "license": "",
+          "mathlib_version": "",
+          "primary_kernel_result": {
+            "command": [
+              "lake",
+              "build"
+            ],
+            "elapsed_seconds": 0.0,
+            "environment": {
+              "cwd": "",
+              "timeout_seconds": 120
+            },
+            "errors": [],
+            "exit_code": 0,
+            "status": "verified",
+            "warnings": []
+          },
+          "proof_path": [],
+          "provenance": [],
+          "repository": "https://example.invalid/repo",
+          "resource_requirements": {},
+          "returncode": 0,
+          "root_theorem": "",
+          "source_commit": "abc123",
+          "source_files": [
+            "Main.lean"
+          ],
+          "source_location": "",
+          "source_repository": "https://example.invalid/repo",
+          "status": "KERNEL_VERIFIED",
+          "status_history": [
+            "IMPORTED",
+            "BUILD_ATTEMPTED",
+            "COMPILED",
+            "KERNEL_VERIFIED"
+          ],
+          "stderr": "",
+          "stdout": "ok",
+          "system": "lean",
+          "theorem_metadata": [],
+          "theorem_names": [
+            "main_theorem"
+          ],
+          "theorem_statement": "",
+          "timestamp": 1789625381.4693248,
+          "toolchain_version": "lean4",
+          "verification_id": "formal-1",
+          "verification_scripts": {}
+        },
+        "lean_environment": {
+          "elan": null,
+          "lake": null,
+          "lean": null,
+          "limitations": [
+            "lean binary unavailable",
+            "lake binary unavailable",
+            "elan binary unavailable",
+            "repository contains no tracked Lean source files"
+          ],
+          "live_execution_available": false,
+          "repository_has_lean_sources": false
+        },
+        "status": "no_solution_claim"
+      },
+      "STATUS": "HARNESS_VERIFIED",
+      "TEST_ID": "case-28",
+      "VERIFICATION_LEVEL": "HARNESS_VERIFIED"
+    },
+    {
+      "COMMAND": "External independent mathematical verification",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "IndependenceEvaluator"
+      ],
+      "DESCRIPTION": "genuine independent mathematical verification requires external evidence",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-29.json",
+      "EVIDENCE_SCOPE": "EXTERNAL_REQUIRED",
+      "EXECUTION_STATUS": "NOT_EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [
+        "Independent third-party mathematical confirmation is unavailable in the current environment.",
+        "Model reasoning, formalization, and local computation are insufficient substitutes for independent verification."
+      ],
+      "NEW_STATUS": "DESIGNED \u2014 NOT EXECUTED",
+      "PREVIOUS_STATUS": "DESIGNED \u2014 NOT EXECUTED",
+      "RESULT": "Genuine third-party independent mathematical evidence is not available in this environment; Barrot can verify the NOT_AVAILABLE/UNRESOLVED path but must not fabricate independent verification.",
+      "STATUS": "DESIGNED \u2014 NOT EXECUTED",
+      "TEST_ID": "case-29",
+      "VERIFICATION_LEVEL": "NOT_VERIFIED"
+    },
+    {
+      "COMMAND": "ScientificDiscoveryController.run(default unresolved)",
+      "COMPONENTS_TESTED": [
+        "ScientificDiscoveryController",
+        "CompletionGate"
+      ],
+      "DESCRIPTION": "scientific UNRESOLVED path remains explicit",
+      "DESIGN_STATUS": "DESIGNED",
+      "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-30.json",
+      "EVIDENCE_SCOPE": "LOCAL_LIVE",
+      "EXECUTION_STATUS": "EXECUTED",
+      "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+      "LIMITATIONS": [],
+      "NEW_STATUS": "VERIFIED",
+      "PREVIOUS_STATUS": "VERIFIED",
+      "RESULT": {
+        "convergence": true,
+        "status": "no_solution_claim"
+      },
+      "STATUS": "VERIFIED",
+      "TEST_ID": "case-30",
+      "VERIFICATION_LEVEL": "VERIFIED"
+    }
+  ],
+  "verified_count": 26
+}

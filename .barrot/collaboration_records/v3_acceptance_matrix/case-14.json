@@ -1,0 +1,29 @@
+{
+  "COMMAND": "SyncController.run(empty namespace)",
+  "COMPONENTS_TESTED": [
+    "SyncController",
+    "ProjectIdentity"
+  ],
+  "DESCRIPTION": "empty namespace cannot overwrite valid identity",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-14.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "last_valid_project": {
+      "id": 1,
+      "namespace_id": 2,
+      "namespace_kind": "user",
+      "namespace_path": "Barrot-Agent",
+      "path_with_namespace": "Barrot-Agent/B-Agent"
+    },
+    "status": "BLOCKED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-14",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

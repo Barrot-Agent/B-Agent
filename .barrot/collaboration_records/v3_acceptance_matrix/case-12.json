@@ -1,0 +1,23 @@
+{
+  "COMMAND": "RepositoryRepairController.run(remote verification failure)",
+  "COMPONENTS_TESTED": [
+    "RemoteVerifier",
+    "CompletionGate"
+  ],
+  "DESCRIPTION": "remote verification failure blocks COMPLETE",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-12.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:36Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "remote_verified": false,
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-12",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -6,6 +6,9 @@ import subprocess
 import sys
 import time
 import requests
+from pathlib import Path
+
+from barrot_agent.repo_state_corroborator import RepoStateCorroborator
 
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
@@ -288,6 +291,21 @@ def extract_referenced_files(question, repo_root="."):
                 found.append(os.path.join(root, base))
                 break
     return found
+
+
+def corroborate_repository_references(
+    references,
+    manifest_id=None,
+):
+    """Validate repository references against the current manifest."""
+    root = Path(__file__).resolve().parents[1]
+    corroborator = RepoStateCorroborator(root)
+    manifest = corroborator.load_manifest()
+
+    return corroborator.corroborate(
+        manifest_id=manifest_id or manifest["manifest_id"],
+        references=references,
+    )
 
 
 def load_referenced_file_contents(question, max_chars=6000):

@@ -1,0 +1,36 @@
+{
+  "COMMAND": "RepositoryRepairController.run(repair defect)",
+  "COMPONENTS_TESTED": [
+    "RepositoryRepairController",
+    "PatchExecutor",
+    "Validator"
+  ],
+  "DESCRIPTION": "real defect enters deterministic repair lifecycle",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-02.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:31Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "states": [
+      "IDLE",
+      "AUDITING",
+      "ANALYZING",
+      "REPAIR_PLANNING",
+      "PATCHING",
+      "LOCAL_VALIDATION",
+      "COMMITTING",
+      "REMOTE_VERIFICATION",
+      "POST_REPAIR_VALIDATION",
+      "SYNCING",
+      "COMPLETE"
+    ],
+    "status": "complete"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-02",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -1,0 +1,319 @@
+Perform a READ-ONLY architectural audit of the current B-Agent repository against the frozen Massive Micro Ingestion (MMI) specification.
+
+DO NOT MODIFY THE REPOSITORY.
+Do not create, delete, rename, edit, patch, commit, push, branch, create PRs, install dependencies, or acquire external datasets.
+
+Use actual repository evidence as the authority. Inspect files, symbols, tests, workflows, manifests, and persisted repository-state/provenance artifacts.
+
+Do not assume a capability exists because a previous conversation, model response, README, or specification names it.
+
+For every MMI requirement classify:
+EXISTS
+PARTIAL
+ABSENT
+CONFLICT
+UNVERIFIED
+
+Also classify:
+REUSE
+EXTEND
+ADAPT
+NEW
+
+Every EXISTS/PARTIAL conclusion must identify exact repository evidence:
+- file path
+- class/function/symbol
+- actual behavior
+- relevant tests/workflows
+- persisted evidence where applicable
+
+KEEP THESE THREE TRUTHS SEPARATE:
+
+ARCHITECTURAL TRUTH:
+What components actually exist?
+
+KNOWLEDGE TRUTH:
+What knowledge/evidence do they actually establish?
+
+EXECUTION TRUTH:
+What can the system actually prove happened?
+
+Never promote evidence from one category into another without an explicit mechanism establishing that relationship.
+
+MMI REQUIREMENTS:
+
+1. CANONICAL INGESTION CONTRACT
+
+MMI is Barrot's canonical ingestion protocol, not a replacement for specialized ingestors.
+
+2. SEPARATE DEPTHS
+
+Component depth:
+Dataset → Component → Subcomponent → Sub-subcomponent → Sub-sub-subcomponent
+
+Maximum/default: 4 recursive component levels.
+
+Provenance depth:
+Current source → upstream source → upstream source → upstream source → upstream source
+
+Maximum/default: 4 provenance levels.
+
+Never collapse these into one ambiguous depth field.
+
+3. REPRESENTATIONS
+
+Where applicable:
+macro
+micro
+nano
+molecular
+atomic
+fractal
+
+Never fabricate unavailable representations.
+
+States:
+OBSERVED
+PARSED
+DERIVED
+INFERRED
+UNKNOWN
+NOT_PARSABLE
+NOT_APPLICABLE
+
+4. SCOPE BOUNDARIES
+
+Record what was not analyzed and why:
+not present in source
+not parsable
+not applicable
+blocked
+outside permitted scope
+resource limit
+not investigated
+
+5. STATE MACHINE
+
+RECEIVED
+PROVENANCE_CAPTURED
+DECOMPOSED
+REPRESENTATIONS_ASSESSED
+EVIDENCE_NORMALIZED
+CORROBORATION
+GAP_ANALYSIS
+RECONCILIATION
+LEARNING_EXTRACTED
+CAPABILITY_ANALYZED
+ACQUISITION_TARGETS_GENERATED
+VERIFICATION
+MMI_COMPLETE
+
+Stage states:
+COMPLETE
+PARTIAL
+BLOCKED
+UNKNOWN
+NOT_APPLICABLE
+
+Stage requirements:
+REQUIRED
+OPTIONAL
+CONDITIONAL
+
+Conditional stages require applicability determination.
+
+6. PROTOCOL VS KNOWLEDGE COMPLETENESS
+
+These must remain independent.
+
+Example:
+PROTOCOL_STATUS = COMPLETE
+KNOWLEDGE_STATUS = GAPS_REMAINING
+
+7. IDEMPOTENCY
+
+Identity should consider:
+source identity
+source/version identity
+content hash
+component hashes
+MMI protocol version
+
+Possible outcomes:
+NEW_DATASET
+DUPLICATE_RECOGNIZED
+REVALIDATION_REQUESTED
+SOURCE_UPDATED
+PARTIAL_REINGESTION
+
+8. CANONICAL IDENTITY / PROVENANCE
+
+Determine whether the repository provides:
+ingestion_id
+source_id
+component_id
+evidence_id
+dataset_hash
+component_hash
+source_hash
+protocol_version
+timestamps
+
+9. EVIDENCE / CORROBORATION
+
+Determine exactly what existing B-Agent machinery provides for:
+evidence normalization
+support
+contradiction
+source independence
+evidence quality
+confidence
+claim lifecycle
+reconciliation
+
+Do not invent replacement systems.
+
+10. ANTI-SELF-REINFORCEMENT
+
+Relevant provenance classes:
+EXTERNAL_PRIMARY
+EXTERNAL_SECONDARY
+INDEPENDENT_EXTERNAL
+INTERNAL_OBSERVATION
+MODEL_DERIVED
+BARROT_GENERATED
+
+BARROT_GENERATED material must not count as independent corroboration.
+
+11. DISCOVERY VS ACQUISITION
+
+MMI may generate discovery targets from gaps.
+
+Discovery does not automatically authorize acquisition.
+
+Existing acquisition/security/authorization controls remain authoritative.
+
+12. LEARNING / CAPABILITY / SELF-UPGRADE
+
+Determine whether current machinery supports:
+learning
+→ gap identification
+→ capability implication
+→ self-upgrade proposal
+→ testing
+→ verification
+→ gated integration
+
+Reuse existing machinery rather than creating parallel systems.
+
+13. TERMINATION
+
+Determine whether controls exist for:
+MAX_DEPTH
+MAX_ACQUISITION_BUDGET
+MAX_UNRESOLVED_ITERATIONS
+RESOURCE_LIMIT
+DUPLICATE_THRESHOLD
+DIMINISHING_INFORMATION_GAIN
+HUMAN_ESCALATION
+
+Terminal states:
+MMI_COMPLETE
+MMI_PARTIAL
+MMI_BLOCKED
+MMI_ESCALATED
+
+14. EXECUTION LEDGER
+
+MMI requires an append-only, hash-linked, verifiable, traceable execution ledger.
+
+Conceptual record:
+ingestion_id
+stage_id
+sequence
+started_at
+completed_at
+status
+executor
+input_hash
+output_hash
+records_created
+records_modified
+records_referenced
+error_class
+verification_result
+previous_record_hash
+record_hash
+
+Determine whether an equivalent mechanism already exists.
+
+15. DETERMINISTIC COMPLETENESS
+
+The model must NOT declare MMI complete.
+
+Required conceptual chain:
+ACTUAL EXECUTION
+→ PERSISTED ARTIFACTS
+→ EXECUTION LEDGER
+→ DETERMINISTIC STATE EVALUATOR
+→ COMPLETENESS REPORT
+
+Completeness values must derive from persisted records.
+
+16. CONTRADICTIONS
+
+Do not require unresolved contradictions to be artificially resolved.
+
+17. DOCUMENTATION
+
+Documentation alone does not establish implementation.
+
+18. NO DUPLICATE ARCHITECTURE
+
+Do not invent a new subsystem when existing machinery can satisfy the requirement.
+
+PROPOSED MINIMAL V1 DELTA TO EVALUATE ONLY:
+
+barrot_agent/ingestion/mmi_contract.py
+barrot_agent/ingestion/mmi_ledger.py
+scripts/mmi_evaluate.py
+tests/test_mmi_contract.py
+
+Do NOT create these files.
+
+Determine whether they are actually necessary.
+
+REQUIRED REPORT:
+
+1. REPOSITORY IDENTITY
+2. EXECUTIVE ARCHITECTURAL DELTA
+3. REQUIREMENT MATRIX
+4. VERIFIED EXISTING MACHINERY
+5. PARTIAL MACHINERY
+6. ABSENT / UNVERIFIED CAPABILITIES
+7. ARCHITECTURAL CONFLICTS
+8. MINIMAL IMPLEMENTATION DELTA
+9. EXISTING TEST COVERAGE
+10. REQUIRED TEST DELTA
+11. EXECUTION-EVIDENCE ASSESSMENT
+12. UNCERTAINTIES
+13. FINAL RECOMMENDATION
+
+For every existing capability, give exact file paths and symbols whenever possible.
+
+Separate:
+repository evidence
+test evidence
+execution evidence
+documentation evidence
+model inference
+
+Do not implement anything.
+
+FINAL RULE:
+
+MMI records observed and derived knowledge with provenance; models propose interpretations and hypotheses; evidence systems establish support, contradiction, and independence; deterministic infrastructure establishes execution and protocol state; persisted evidence establishes what actually happened.
+
+SHOW WHAT THE REPOSITORY EVIDENCE ESTABLISHES THAT B-AGENT ACTUALLY HAS.
+
+Do not tell us what you think it has.

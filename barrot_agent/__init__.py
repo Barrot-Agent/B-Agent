@@ -17,12 +17,6 @@ RecursiveFeedbackLoop
     Self-improving recursive feedback loop orchestrator.
 """
 
-from .kimi_integration import KimiClient
-from .recursive_feedback import (
-    FeedbackIteration,
-    RecursiveFeedbackLoop,
-    RecursiveFeedbackReport,
-)
 from .smart_agent import (
     AgentEvent,
     AgentEventType,
@@ -46,6 +40,24 @@ __author__ = "Barrot-Agent"
 __license__ = "Apache-2.0"
 
 try:
+    from .kimi_integration import KimiClient
+
+    _kimi_available = True
+except Exception:
+    _kimi_available = False
+
+try:
+    from .recursive_feedback import (
+        FeedbackIteration,
+        RecursiveFeedbackLoop,
+        RecursiveFeedbackReport,
+    )
+
+    _feedback_available = True
+except Exception:
+    _feedback_available = False
+
+try:
     from barrot_agent.rendering import AssetLoader, DatasetAnalytics, DatasetManager
 
     _rendering_available = True
@@ -62,6 +74,29 @@ try:
 except Exception:
     _registry_available = False
 
+try:
+    from .research import (
+        AnthropicFermatBenchmarkAdapter,
+        ConvergenceScenarioEngine,
+        NavierStokesProblemAdapter,
+        ScientificDiscoveryController,
+        select_scientific_problem_adapter,
+    )
+
+    _research_available = True
+except Exception:
+    _research_available = False
+
+try:
+    from .creative import (
+        CreativeProductionRecord,
+        ProductionDirector,
+    )
+
+    _creative_available = True
+except Exception:
+    _creative_available = False
+
 __all__ = [
     "AgentEvent",
     "AgentEventType",
@@ -76,12 +111,26 @@ __all__ = [
     "ReasoningResult",
     "UpgradeFlywheel",
     "VerificationResult",
-    "KimiClient",
-    "RecursiveFeedbackLoop",
-    "RecursiveFeedbackReport",
-    "FeedbackIteration",
     "data_registry",
 ]
 
 if _rendering_available:
     __all__ += ["DatasetManager", "AssetLoader", "DatasetAnalytics"]
+
+if _kimi_available:
+    __all__ += ["KimiClient"]
+
+if _feedback_available:
+    __all__ += ["RecursiveFeedbackLoop", "RecursiveFeedbackReport", "FeedbackIteration"]
+
+if _research_available:
+    __all__ += [
+        "ScientificDiscoveryController",
+        "NavierStokesProblemAdapter",
+        "AnthropicFermatBenchmarkAdapter",
+        "ConvergenceScenarioEngine",
+        "select_scientific_problem_adapter",
+    ]
+
+if _creative_available:
+    __all__ += ["ProductionDirector", "CreativeProductionRecord"]

@@ -8,7 +8,13 @@ from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from typing import Any
 
-from coinbase.rest import RESTClient
+try:
+    from coinbase.rest import RESTClient
+except ModuleNotFoundError:  # pragma: no cover - exercised indirectly in tests
+    class RESTClient:  # type: ignore[override]
+        def __init__(self, *args: Any, **kwargs: Any) -> None:
+            del args, kwargs
+            raise RuntimeError("coinbase package is not installed")
 
 from barrot_agent.trading.risk_manager import RiskManager
 
