@@ -1,17 +1,17 @@
 {
-  "summary": "The signal reports a mixed sentiment with a overall score of\u202f44 and a high news score of\u202f88 based on 12 recent XRP\u2011related headlines. Confidence is listed as\u202f0.0, and the source notes that sentiment data could not be retrieved due to missing tokens and rate\u2011limit errors.\n\n- Timestamp:\u202f2026\u201109\u201118\u202f15:26:24.857321\u202fUTC  \n- Headlines:\u202f1 neutral analysis and 5 bullish technical papers on XRP Ledger consensus, messaging, routing, and AI configuration  \n- Generated at Unix time\u202f1789745184 with 12 news entries considered.",
-  "spoken_line": "Mixed XRP sentiment scores 44 overall, 88 news, 12 headlines, but confidence zero due to missing tokens and rate limit errors. Not financial advice. Informational only. Do your own research.",
+  "summary": "The XRP signal shows a moderate overall score of **44** with a high news sentiment score of **88** based on **12** news entries. Confidence is reported as **0.0**, and the source indicates sentiment data was unavailable due to token errors.\n\n- Timestamp: 2026\u201109\u201118T16:26:55.587459+00:00  \n- Signal text lists one neutral and six bullish XRP\u2011related headlines.  \n- Generated at Unix time **1789748815**.",
+  "spoken_line": "XRP signal update. Score 44. Confidence 0.0. Based on 12 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-09-18T15:26:24.857321+00:00",
+    "timestamp": "2026-09-18T16:26:55.587459+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 44,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(12)",
     "news_score": 88,
     "news_entries": 12,
-    "generated_at_unix": 1789745184
+    "generated_at_unix": 1789748815
   }
 }
