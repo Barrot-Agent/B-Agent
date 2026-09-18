@@ -1,6 +1,7 @@
 """Deterministic repository repair controller for Barrot."""
 
 from __future__ import annotations
+import inspect
 
 import ast
 import hashlib
@@ -988,7 +989,23 @@ Rules:
         last_failure: ModelFailure | None = None
         for attempt in range(1, self.max_attempts + 1):
             try:
-                raw = self.brain.think(prompt, system=self.SYSTEM)
+
+                try:
+                    parameters = inspect.signature(self.brain.think).parameters
+                except (TypeError, ValueError):
+                    parameters = {}
+
+                if "use_tools" in parameters:
+                    raw = self.brain.think(
+                        prompt,
+                        system=self.SYSTEM,
+                        use_tools=False,
+                    )
+                else:
+                    raw = self.brain.think(
+                        prompt,
+                        system=self.SYSTEM,
+                    )
                 payload = self._extract_json(raw)
                 mode = str(payload.get("mode", "")).strip().lower()
                 if mode not in {"repair", "report", "no_repair_required"}:
@@ -1456,6 +1473,85 @@ class RemoteVerifier:
 class RepositoryRepairController:
     """Authoritative repair lifecycle for the live Barrot entrypoint."""
 
+
+    def _barrett_autonomous_audit(
+        self,
+        task_title="",
+        task_body="",
+        repo="",
+        branch="",
+    ):
+        """Perform a read-only repository investigation before repair planning."""
+        brain = getattr(self.repair_planner, "brain", None)
+        think = getattr(brain, "think", None)
+        if not callable(think):
+            return ""
+
+        # The autonomous audit is an additional investigative model call.
+        # Only invoke it when the brain explicitly supports the tool-capable
+        # audit contract. Compatibility brains without use_tools must not
+        # consume the repair planner's bounded retry budget.
+        try:
+            think_parameters = inspect.signature(think).parameters
+        except (TypeError, ValueError):
+            think_parameters = {}
+
+        if "use_tools" not in think_parameters:
+            return ""
+
+        system = """
+You are Barrett performing the repository investigation phase of a repair.
+
+Use your repository inspection tools yourself before making factual claims.
+
+Rules:
+- Inspect the actual repository.
+- Inspect relevant workflow files and relevant tests.
+- Do not invent filenames, directories, CI runs, failures, or evidence.
+- A configured workflow is not proof that a GitHub run failed.
+- Distinguish observed evidence from inference.
+- This phase is READ ONLY. Do not write, patch, commit, push, merge, or mutate.
+- Report:
+  1. files actually inspected,
+  2. observed facts,
+  3. relevant tests and CI configuration,
+  4. reproducibility evidence,
+  5. evidence still required.
+
+Return a plain-text evidence report.
+""".strip()
+
+        message = f"""
+Repository: {repo}
+Branch: {branch}
+Task title: {task_title}
+Task body:
+{task_body}
+
+Perform the repository investigation now. Do not ask the operator to inspect
+the repository for you. Use your repository tools and report only evidence you
+actually observed.
+""".strip()
+
+        try:
+            try:
+                return str(
+                    think(
+                        message,
+                        system=system,
+                        use_tools=True,
+                    )
+                )
+            except TypeError as exc:
+                if "use_tools" not in str(exc):
+                    raise
+                return str(think(message, system=system))
+        except Exception as exc:
+            return (
+                "BARRETT_AUTONOMOUS_AUDIT_FAILED: "
+                f"{type(exc).__name__}: {exc}"
+            )
+
     def __init__(
         self,
         *,
@@ -1576,6 +1672,16 @@ class RepositoryRepairController:
         self._persist(cycle)
         cycle.transition(RepairState.AUDITING)
         self._persist(cycle)
+        barrett_audit = self._barrett_autonomous_audit(
+            task_title=str(locals().get("title", "")),
+            task_body=str(locals().get("task", "")),
+            repo=str(locals().get("repo", "")),
+            branch=str(locals().get("branch", "")),
+        )
+        if barrett_audit:
+            audit_context = dict(locals().get("audit_context") or {})
+            audit_context["barrett_autonomous_audit"] = barrett_audit
+
         prompt = self.audit_engine.build_prompt(
             task_title=task_title,
             task_body=task_body,
