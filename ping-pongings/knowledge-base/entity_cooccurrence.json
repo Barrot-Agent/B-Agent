@@ -3,7 +3,7 @@
     "xrp_entries": 564,
     "btc_entries": 500
   },
-  "unique_pairs_found": 1721,
+  "unique_pairs_found": 1728,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -471,6 +471,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 8,
@@ -571,21 +586,6 @@
         },
         {
           "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
           "asset": "XRP"
         }
       ]
@@ -707,6 +707,21 @@
         {
           "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
+          "asset": "BTC"
         }
       ]
     },
@@ -886,21 +901,6 @@
         },
         {
           "title": "Bitcoin\u2019s BIP-110 enters mandatory signaling with miner support below 3%",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
           "asset": "BTC"
         }
       ]
@@ -1142,6 +1142,21 @@
         {
           "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "STRC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
+          "asset": "BTC"
         }
       ]
     },
@@ -1636,21 +1651,6 @@
         },
         {
           "title": "Luke Dashjr removed as Bitcoin Improvement Proposal editor",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "STRC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
           "asset": "BTC"
         }
       ]
@@ -18937,6 +18937,83 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US dollar reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "dividends",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "US dollar reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "dividends",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "US dollar reserve",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "dividends",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US dollar reserve",
+      "entity_b": "dividends",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy raises $334M through stock sales but buys no Bitcoin",
           "asset": "BTC"
         }
       ]
