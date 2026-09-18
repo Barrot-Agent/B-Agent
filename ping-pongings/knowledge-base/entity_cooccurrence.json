@@ -158,7 +158,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
-      "cooccurrence_count": 17,
+      "cooccurrence_count": 18,
       "example_headlines": [
         {
           "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
@@ -396,6 +396,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF Outflows Hit $201M As Inflow Streak Breaks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 9,
@@ -406,21 +421,6 @@
         },
         {
           "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
         }
       ]
@@ -2026,6 +2026,21 @@
         },
         {
           "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "US spot Bitcoin ETFs",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF Outflows Hit $201M As Inflow Streak Breaks",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
           "asset": "XRP"
         }
       ]
@@ -5012,21 +5027,6 @@
         {
           "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETF",
-      "entity_b": "US spot Bitcoin ETFs",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate",
-          "asset": "BTC"
         }
       ]
     },
