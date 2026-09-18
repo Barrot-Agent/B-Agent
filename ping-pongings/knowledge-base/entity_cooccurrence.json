@@ -3,12 +3,12 @@
     "xrp_entries": 563,
     "btc_entries": 500
   },
-  "unique_pairs_found": 1716,
+  "unique_pairs_found": 1721,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 135,
+      "cooccurrence_count": 137,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -666,6 +666,36 @@
       ]
     },
     {
+      "entity_a": "RLUSD",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "SEC",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 6,
@@ -676,6 +706,36 @@
         },
         {
           "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
         }
       ]
@@ -786,36 +846,6 @@
       ]
     },
     {
-      "entity_a": "RLUSD",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RLUSD",
-      "entity_b": "XRP",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "CryptoQuant",
       "cooccurrence_count": 5,
@@ -872,36 +902,6 @@
         {
           "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "TradingView",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TradingView",
-      "entity_b": "XRP",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
         }
       ]
     },
@@ -1952,6 +1952,21 @@
         {
           "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga",
+          "asset": "XRP"
         }
       ]
     },
@@ -4671,21 +4686,6 @@
       ]
     },
     {
-      "entity_a": "ETF",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "RLUSD",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 2,
@@ -4967,6 +4967,21 @@
         {
           "title": "Bitcoin ETFs draw $517M in largest one-day inflow since early May",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
+          "asset": "XRP"
         }
       ]
     },
@@ -12185,17 +12200,6 @@
     },
     {
       "entity_a": "ETF",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETF",
       "entity_b": "SettleMint",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -12663,6 +12667,61 @@
       "example_headlines": [
         {
           "title": "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Globe and Mail",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Prediction: XRP (Ripple) Will Be Worth This Much in 5 Years - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Globe and Mail",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Prediction: XRP (Ripple) Will Be Worth This Much in 5 Years - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
           "asset": "XRP"
         }
       ]

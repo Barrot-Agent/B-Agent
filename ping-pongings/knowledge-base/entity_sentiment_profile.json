@@ -3,7 +3,7 @@
     "xrp_entries": 563,
     "btc_entries": 500
   },
-  "unique_entities_profiled": 533,
+  "unique_entities_profiled": 534,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 176,
-      "bullish": 109,
+      "total_mentions": 178,
+      "bullish": 111,
       "neutral": 33,
       "bearish": 34,
-      "net_sentiment_score": 0.426,
+      "net_sentiment_score": 0.433,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 140,
-      "bullish": 88,
+      "total_mentions": 142,
+      "bullish": 90,
       "neutral": 32,
       "bearish": 20,
-      "net_sentiment_score": 0.486,
+      "net_sentiment_score": 0.493,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -159,6 +159,23 @@
       ]
     },
     {
+      "entity": "ETF",
+      "total_mentions": 23,
+      "bullish": 17,
+      "neutral": 3,
+      "bearish": 3,
+      "net_sentiment_score": 0.609,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
+        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
+      ]
+    },
+    {
       "entity": "Bitcoin Foundation",
       "total_mentions": 22,
       "bullish": 11,
@@ -173,23 +190,6 @@
         "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
         "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
         "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "ETF",
-      "total_mentions": 22,
-      "bullish": 16,
-      "neutral": 3,
-      "bearish": 3,
-      "net_sentiment_score": 0.591,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-        "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
       ]
     },
     {
@@ -544,6 +544,23 @@
       ]
     },
     {
+      "entity": "TradingView",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.286,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
+      ]
+    },
+    {
       "entity": "Nasdaq",
       "total_mentions": 7,
       "bullish": 7,
@@ -595,20 +612,19 @@
       ]
     },
     {
-      "entity": "TradingView",
+      "entity": "RLUSD",
       "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.167,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -692,22 +708,6 @@
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
-      ]
-    },
-    {
-      "entity": "RLUSD",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -5401,6 +5401,20 @@
       ],
       "example_headlines": [
         "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
+      ]
+    },
+    {
+      "entity": "Globe and Mail",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Prediction: XRP (Ripple) Will Be Worth This Much in 5 Years - The Globe and Mail"
       ]
     },
     {
