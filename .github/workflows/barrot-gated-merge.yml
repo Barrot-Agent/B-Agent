@@ -54,8 +54,8 @@ jobs:
             REASONS=""
             TIER="LOW"
 
-            FAILED=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select(.conclusion=="FAILURE" or .conclusion=="CANCELLED" or .conclusion=="TIMED_OUT")] | length')
-            PENDING=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select(.status=="IN_PROGRESS" or .status=="QUEUED")] | length')
+            FAILED=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select((.name // .context) != "barrot-gated-merge") | select(.conclusion=="FAILURE" or .conclusion=="CANCELLED" or .conclusion=="TIMED_OUT")] | length')
+            PENDING=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select((.name // .context) != "barrot-gated-merge") | select(.status=="IN_PROGRESS" or .status=="QUEUED")] | length')
             [ "$FAILED" -gt 0 ] && REASONS="$REASONS\n- CI checks failing ($FAILED)"
             [ "$PENDING" -gt 0 ] && REASONS="$REASONS\n- CI still running ($PENDING)"
 
