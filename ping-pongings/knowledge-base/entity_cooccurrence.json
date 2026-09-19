@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 574,
+    "xrp_entries": 575,
     "btc_entries": 513
   },
-  "unique_pairs_found": 1747,
+  "unique_pairs_found": 1753,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 26,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -906,6 +906,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "U.S. District Court",
       "entity_b": "XRP",
       "cooccurrence_count": 5,
@@ -1111,21 +1126,6 @@
         },
         {
           "title": "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "CFTC Files Amicus Brief In Polymarket Event Contract Insider Trading Case",
           "asset": "XRP"
         }
       ]
@@ -3201,6 +3201,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "European Union",
       "entity_b": "MiCA",
       "cooccurrence_count": 2,
@@ -4861,6 +4876,21 @@
         },
         {
           "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "White House",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "XRP"
         }
       ]
@@ -7685,17 +7715,6 @@
     {
       "entity_a": "CFTC",
       "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "SEC",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -11181,17 +11200,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "White House",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Event contracts",
       "entity_b": "Gabriel Perez",
       "cooccurrence_count": 1,
@@ -13024,6 +13032,72 @@
       "example_headlines": [
         {
           "title": "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Treasury",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Treasury",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "White House",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "XRP"
         }
       ]
