@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 250,
-      "bullish": 135,
+      "total_mentions": 251,
+      "bullish": 136,
       "neutral": 37,
       "bearish": 78,
-      "net_sentiment_score": 0.228,
+      "net_sentiment_score": 0.231,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 36,
-      "bullish": 25,
+      "total_mentions": 37,
+      "bullish": 26,
       "neutral": 4,
       "bearish": 7,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.514,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -376,11 +376,11 @@
     },
     {
       "entity": "CFTC",
-      "total_mentions": 9,
-      "bullish": 3,
+      "total_mentions": 10,
+      "bullish": 4,
       "neutral": 0,
       "bearish": 6,
-      "net_sentiment_score": -0.333,
+      "net_sentiment_score": -0.2,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -695,6 +695,23 @@
       ]
     },
     {
+      "entity": "U.S. Treasury",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.833,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "CFTC Crypto Asset Rules Enter White House Review",
+        "Bitcoin may find bear market bottom in August: 10x Research"
+      ]
+    },
+    {
       "entity": "Bloomberg",
       "total_mentions": 6,
       "bullish": 3,
@@ -843,23 +860,6 @@
         "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
         "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
         "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "U.S. Treasury",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "CFTC Crypto Asset Rules Enter White House Review",
-        "Bitcoin may find bear market bottom in August: 10x Research"
       ]
     },
     {
@@ -1109,6 +1109,23 @@
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
+      ]
+    },
+    {
+      "entity": "White House",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+        "CFTC Crypto Asset Rules Enter White House Review",
+        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
       ]
     },
     {
@@ -1543,23 +1560,6 @@
         "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
         "Bitcoin ETF inflows return as Ether funds slip into outflows",
         "Bitcoin ETFs add $189M as August net inflows approach $1B"
-      ]
-    },
-    {
-      "entity": "White House",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
-        "CFTC Crypto Asset Rules Enter White House Review",
-        "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
       ]
     },
     {

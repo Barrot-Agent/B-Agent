@@ -3,7 +3,7 @@
     "xrp_entries": 584,
     "btc_entries": 524
   },
-  "unique_pairs_found": 1753,
+  "unique_pairs_found": 1755,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -771,6 +771,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Strategy",
       "cooccurrence_count": 6,
@@ -976,21 +991,6 @@
         },
         {
           "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "SEC",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1566,6 +1566,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "SEC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CLARITY Act",
       "entity_b": "Ripple",
       "cooccurrence_count": 3,
@@ -2031,6 +2046,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "White House",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETF",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 3,
@@ -2266,6 +2296,21 @@
         },
         {
           "title": "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may find bear market bottom in August: 10x Research",
+          "asset": "BTC"
+        },
+        {
+          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -3196,21 +3241,6 @@
         },
         {
           "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "SEC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "XRP"
         }
       ]
@@ -4881,21 +4911,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "White House",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
-          "asset": "XRP"
-        },
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "SEC",
       "entity_b": "U.S. Securities and Exchange Commission",
       "cooccurrence_count": 2,
@@ -5301,6 +5316,66 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "White House",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Treasury",
+      "entity_b": "White House",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "VanEck",
       "cooccurrence_count": 2,
@@ -5581,21 +5656,6 @@
         },
         {
           "title": "BIP-110 dies with a whimper, CLARITY vote punted: Hodler\u2019s Digest, Aug. 9",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "U.S. Treasury",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin may find bear market bottom in August: 10x Research",
-          "asset": "BTC"
-        },
-        {
-          "title": "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -13032,50 +13092,6 @@
       "example_headlines": [
         {
           "title": "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "U.S. Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "White House",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. Treasury",
-      "entity_b": "White House",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "XRP"
         }
       ]
@@ -20952,6 +20968,28 @@
       "example_headlines": [
         {
           "title": "Metaplanet cuts Series 10 stock pool by 41%, plans Hong Kong subsidiary",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CFTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "White House",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "BTC"
         }
       ]
