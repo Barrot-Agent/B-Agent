@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 572,
-    "btc_entries": 511
+    "btc_entries": 512
   },
-  "unique_pairs_found": 1739,
+  "unique_pairs_found": 1743,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -353,7 +353,7 @@
     {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
-      "cooccurrence_count": 12,
+      "cooccurrence_count": 13,
       "example_headlines": [
         {
           "title": "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
@@ -368,7 +368,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin Foundation",
-      "cooccurrence_count": 11,
+      "cooccurrence_count": 12,
       "example_headlines": [
         {
           "title": "Bitcoin Treasury Hyperscale Sells 9% of Its BTC Despite Indefinite Hold Pledge - Bitcoin Foundation",
@@ -772,6 +772,21 @@
     },
     {
       "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
       "entity_b": "Fortune",
       "cooccurrence_count": 6,
       "example_headlines": [
@@ -962,21 +977,6 @@
         {
           "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
         }
       ]
     },
@@ -2236,6 +2236,21 @@
         },
         {
           "title": "Bitcoin-backed loan refinances PowerCompute\u2019s $18M debt at 2%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -5451,21 +5466,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
-        },
-        {
-          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Galaxy Research",
       "cooccurrence_count": 2,
@@ -6181,6 +6181,36 @@
         },
         {
           "title": "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "ETH",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        },
+        {
+          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]
@@ -19841,6 +19871,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Tom Lee",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Tom Lee",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Tom Lee",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Tom Lee",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC/USD",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
@@ -20144,28 +20218,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin price reaches $72.5K as US issues \u2018Economic D-Day\u2019 threat to Iran",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "ETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why Is Crypto Up Today? Bitcoin Hits $71k as Ethereum Surges Past $2,300 - Bitcoin Foundation",
           "asset": "BTC"
         }
       ]

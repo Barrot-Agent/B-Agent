@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 572,
-    "btc_entries": 511
+    "btc_entries": 512
   },
-  "unique_entities_profiled": 541,
+  "unique_entities_profiled": 542,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 102,
+      "total_mentions": 103,
       "bullish": 51,
       "neutral": 18,
-      "bearish": 33,
-      "net_sentiment_score": 0.176,
+      "bearish": 34,
+      "net_sentiment_score": 0.165,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 36,
+      "total_mentions": 37,
       "bullish": 21,
       "neutral": 10,
-      "bearish": 5,
-      "net_sentiment_score": 0.444,
+      "bearish": 6,
+      "net_sentiment_score": 0.405,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -177,11 +177,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 22,
+      "total_mentions": 23,
       "bullish": 11,
       "neutral": 1,
-      "bearish": 10,
-      "net_sentiment_score": 0.045,
+      "bearish": 11,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -227,11 +227,11 @@
     },
     {
       "entity": "ETH",
-      "total_mentions": 17,
+      "total_mentions": 18,
       "bullish": 11,
       "neutral": 1,
-      "bearish": 5,
-      "net_sentiment_score": 0.353,
+      "bearish": 6,
+      "net_sentiment_score": 0.278,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -7741,6 +7741,20 @@
       ],
       "example_headlines": [
         "Benjamin Cowen Says Bitcoin 69-73 Days From Bottom, But Does BTC Still Follow Cycles? - Yahoo Financ"
+      ]
+    },
+    {
+      "entity": "Tom Lee",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation"
       ]
     },
     {
