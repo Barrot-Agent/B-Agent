@@ -3,12 +3,12 @@
     "xrp_entries": 572,
     "btc_entries": 512
   },
-  "unique_pairs_found": 1743,
+  "unique_pairs_found": 1747,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 138,
+      "cooccurrence_count": 139,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 24,
+      "cooccurrence_count": 25,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 23,
+      "cooccurrence_count": 24,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -697,6 +697,21 @@
     },
     {
       "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 6,
       "example_headlines": [
@@ -891,8 +906,8 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "U.S. District Court",
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -1116,8 +1131,8 @@
       ]
     },
     {
-      "entity_a": "U.S. District Court",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "U.S. District Court",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
@@ -1546,21 +1561,6 @@
         },
         {
           "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -12881,6 +12881,50 @@
       "example_headlines": [
         {
           "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Judge",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The Road to Clarity Ends (for now) - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Judge",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The Road to Clarity Ends (for now) - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Judge",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The Road to Clarity Ends (for now) - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Judge",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The Road to Clarity Ends (for now) - Ripple",
           "asset": "XRP"
         }
       ]

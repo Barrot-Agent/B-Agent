@@ -3,7 +3,7 @@
     "xrp_entries": 572,
     "btc_entries": 512
   },
-  "unique_entities_profiled": 542,
+  "unique_entities_profiled": 543,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 179,
+      "total_mentions": 180,
       "bullish": 112,
       "neutral": 33,
-      "bearish": 34,
-      "net_sentiment_score": 0.436,
+      "bearish": 35,
+      "net_sentiment_score": 0.428,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 143,
+      "total_mentions": 144,
       "bullish": 91,
       "neutral": 32,
-      "bearish": 20,
-      "net_sentiment_score": 0.497,
+      "bearish": 21,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 34,
+      "total_mentions": 35,
       "bullish": 24,
       "neutral": 4,
-      "bearish": 6,
-      "net_sentiment_score": 0.529,
+      "bearish": 7,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -628,6 +628,22 @@
       ]
     },
     {
+      "entity": "U.S. District Court",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -725,22 +741,6 @@
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
-      ]
-    },
-    {
-      "entity": "U.S. District Court",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -5487,6 +5487,20 @@
       ],
       "example_headlines": [
         "Prediction: XRP (Ripple) Will Be Worth This Much in 5 Years - The Globe and Mail"
+      ]
+    },
+    {
+      "entity": "Judge",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "The Road to Clarity Ends (for now) - Ripple"
       ]
     },
     {
