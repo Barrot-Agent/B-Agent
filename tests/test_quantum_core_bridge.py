@@ -1,0 +1,63 @@
+from barrot_agent.geometry.quantum import QubitState
+from barrot_agent.geometry.quantum_discovery import QubitStructuralDiscovery
+from barrot_agent.geometry.structural_discovery import (
+    StructuralDiscoveryCore,
+    FeasibilityState,
+)
+
+
+def test_quantum_adapter_registers_with_generic_core():
+    core = StructuralDiscoveryCore()
+    adapter = QubitStructuralDiscovery()
+
+    state = QubitState.from_xyz(0.2, -0.3, 0.4)
+    result = adapter.register_with_core(
+        core,
+        state,
+        representation_id="test_qubit",
+    )
+
+    assert result["representation"].domain == "quantum"
+    assert result["representation"].kind == "qubit_bloch"
+
+    # The generic Core owns representation identity and generates a UUID.
+    assert result["signature"].representation_id == result["representation"].representation_id
+    assert result["signature"].feasibility["bloch_ball"] is FeasibilityState.VALID
+
+
+def test_quantum_core_bridge_preserves_deterministic_invariants():
+    core = StructuralDiscoveryCore()
+    adapter = QubitStructuralDiscovery()
+
+    state = QubitState.from_xyz(0.0, 0.0, 1.0)
+    result = adapter.register_with_core(
+        core,
+        state,
+        representation_id="north_pole",
+    )
+
+    invariants = result["signature"].invariants
+
+    assert invariants["bloch_norm"] == 1.0
+    assert invariants["bloch_norm_squared"] == 1.0
+    assert invariants["purity"] == 1.0
+    assert invariants["trace"] == 1.0
+    assert invariants["positive_semidefinite"] is True
+    assert invariants["state_class"] == "PURE"
+
+
+def test_invalid_quantum_state_reaches_core_as_invalid():
+    core = StructuralDiscoveryCore()
+    adapter = QubitStructuralDiscovery()
+
+    state = QubitState.from_xyz(2.0, 0.0, 0.0)
+
+    result = adapter.register_with_core(
+        core,
+        state,
+        representation_id="invalid_qubit",
+    )
+
+    assert result["analysis"].valid is False
+    assert result["signature"].feasibility["bloch_ball"] is FeasibilityState.INVALID
+    assert result["analysis"].valid is False
