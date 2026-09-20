@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 585,
+    "xrp_entries": 586,
     "btc_entries": 525
   },
-  "unique_pairs_found": 1758,
+  "unique_pairs_found": 1761,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -12729,6 +12729,39 @@
       "example_headlines": [
         {
           "title": "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDT",
+      "entity_b": "ZWTC 2026",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDT",
+      "entity_b": "Zoomex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ZWTC 2026",
+      "entity_b": "Zoomex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
           "asset": "XRP"
         }
       ]
