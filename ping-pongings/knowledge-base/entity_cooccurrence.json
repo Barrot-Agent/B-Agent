@@ -3,7 +3,7 @@
     "xrp_entries": 585,
     "btc_entries": 525
   },
-  "unique_pairs_found": 1755,
+  "unique_pairs_found": 1758,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -13114,6 +13114,39 @@
       "example_headlines": [
         {
           "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Authorisation Gateway",
+      "entity_b": "Financial Conduct Authority",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Authorisation Gateway",
+      "entity_b": "UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Financial Conduct Authority",
+      "entity_b": "UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
           "asset": "XRP"
         }
       ]
