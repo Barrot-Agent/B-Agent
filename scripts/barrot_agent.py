@@ -443,6 +443,16 @@ class ScriptBrain:
             sort_keys=True,
         )
 
+    @staticmethod
+    def _serialize_tool_result(result: Any) -> str:
+        """Normalize tool output to a Groq-compatible tool-message string."""
+        if isinstance(result, str):
+            return result
+        try:
+            return json.dumps(result, ensure_ascii=False, default=str)
+        except (TypeError, ValueError):
+            return str(result)
+
     def _tool_result(self, tool_call: dict[str, Any]) -> str:
         function = tool_call.get("function") or {}
         name = str(function.get("name", "")).strip()
@@ -503,7 +513,9 @@ class ScriptBrain:
                         {
                             "role": "tool",
                             "tool_call_id": tool_call.get("id", ""),
-                            "content": self._tool_result(tool_call),
+                            "content": self._serialize_tool_result(
+                                self._tool_result(tool_call)
+                            ),
                         }
                     )
                 continue
