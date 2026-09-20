@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 584,
-    "btc_entries": 524
+    "xrp_entries": 586,
+    "btc_entries": 525
   },
-  "unique_pairs_found": 1755,
+  "unique_pairs_found": 1761,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -12734,6 +12734,39 @@
       ]
     },
     {
+      "entity_a": "USDT",
+      "entity_b": "ZWTC 2026",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDT",
+      "entity_b": "Zoomex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ZWTC 2026",
+      "entity_b": "Zoomex",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CoinDesk",
       "entity_b": "Corporate Treasury",
       "cooccurrence_count": 1,
@@ -13114,6 +13147,39 @@
       "example_headlines": [
         {
           "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Authorisation Gateway",
+      "entity_b": "Financial Conduct Authority",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Authorisation Gateway",
+      "entity_b": "UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Financial Conduct Authority",
+      "entity_b": "UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
           "asset": "XRP"
         }
       ]
