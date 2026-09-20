@@ -33,11 +33,17 @@ from barrot_agent.orchestration.repository_repair import (
     RepositoryRepairController,
     WorkQueueController,
 )
+from barrot_agent.orchestration.actions import Action, parse_actions
+from barrot_agent.orchestration.action_executor import BarrotActionExecutor
+from barrot_agent.orchestration.bundle_evidence import verify_bundle_delivery
+
 from barrot_agent.research import (
     ScientificDiscoveryController,
     is_scientific_discovery_task,
     select_scientific_problem_adapter,
 )
+
+from scripts.barrot_self_drop_controller_adapter import SelfDropControllerAdapter
 
 REPO = os.environ["REPO"]
 TASK = os.environ.get("TASK_BODY", "")
@@ -275,11 +281,54 @@ class ScriptBrain:
         self.request_sender = request_sender
         self.repo_browser = RepoBrowser(repo_root)
         self.max_tool_rounds = max_tool_rounds
+        # BARROT_SELF_DROP_TOOL_REGISTERED: direct validated self-drop adapter
+        self._self_drop_adapter = SelfDropControllerAdapter()
+
+        def _self_drop(arguments):
+            if not isinstance(arguments, dict):
+                raise TypeError("self_drop arguments must be an object")
+            task_id = str(arguments.get("task_id", "")).strip()
+            action = str(arguments.get("action", "")).strip()
+            if not task_id:
+                raise ValueError("self_drop requires task_id")
+            if not action:
+                raise ValueError("self_drop requires action")
+            return self._self_drop_adapter.dispatch(task_id, action)
+
         self.tool_funcs = {
+            "barrot.deliver_bundle": self._deliver_bundle,
+
             "repo_browser.print_tree": self.repo_browser.print_tree,
             "repo_browser.search": self.repo_browser.search,
+            "self_drop": _self_drop,
         }
         self.tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": "barrot.deliver_bundle",
+                    "description": (
+                        "Deliver a complete valid Python repair bundle into the "
+                        "approved repository workspace. The bundle is validated "
+                        "and SHA-256 verified before success is returned."
+                    ),
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string",
+                                "description": "Repository-relative destination path.",
+                            },
+                            "content": {
+                                "type": "string",
+                                "description": "Complete Python bundle content.",
+                            },
+                        },
+                        "required": ["path", "content"],
+                    },
+                },
+            },
+
             {
                 "type": "function",
                 "function": {
@@ -314,6 +363,59 @@ class ScriptBrain:
             },
         ]
 
+    def _deliver_bundle(self, args: dict[str, Any]) -> str:
+        path = args.get("path")
+        content = args.get("content")
+
+        if not isinstance(path, str) or not path.strip():
+            return _tool_error(
+                "DELIVER_BUNDLE requires a non-empty relative path."
+            )
+
+        if not isinstance(content, str):
+            return _tool_error(
+                "DELIVER_BUNDLE content must be a string."
+            )
+
+        executor = BarrotActionExecutor(ROOT)
+
+        result = executor.execute(
+            Action(
+                type="DELIVER_BUNDLE",
+                args={
+                    "path": path,
+                    "content": content,
+                },
+            )
+        )
+
+        if not result.success:
+            return _tool_error(
+                result.error or "Bundle delivery failed."
+            )
+
+        evidence = verify_bundle_delivery(
+            path=path,
+            content=content,
+        )
+
+        if not evidence.verified:
+            return _tool_error(
+                evidence.reason or "Bundle evidence verification failed."
+            )
+
+        return json.dumps(
+            {
+                "success": True,
+                "action": "DELIVER_BUNDLE",
+                "path": evidence.path,
+                "content_hash": evidence.content_hash,
+                "delivered_hash": evidence.delivered_hash,
+                "verified": True,
+            },
+            sort_keys=True,
+        )
+
     def _tool_result(self, tool_call: dict[str, Any]) -> str:
         function = tool_call.get("function") or {}
         name = str(function.get("name", "")).strip()
@@ -328,7 +430,14 @@ class ScriptBrain:
             return _tool_error(f"Tool arguments for {name} must be an object.")
         return self.tool_funcs[name](arguments)
 
-    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None) -> str:
+    def think(
+        self,
+        message: str,
+        history: list[dict[str, str]] | None = None,
+        system: str | None = None,
+        *,
+        use_tools: bool = True,
+    ) -> str:
         messages: list[dict[str, Any]] = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -336,15 +445,25 @@ class ScriptBrain:
             messages.extend(history)
         messages.append({"role": "user", "content": message})
 
-        for _ in range(self.max_tool_rounds):
-            payload = _groq_payload(messages, tools=self.tools)
-            data = _send_groq_request(payload, request_sender=self.request_sender)
+        for _ in range(self.max_tool_rounds if use_tools else 1):
+            payload = _groq_payload(
+                messages,
+                tools=self.tools if use_tools else None,
+            )
+            data = _send_groq_request(
+                payload,
+                request_sender=self.request_sender,
+            )
             try:
                 reply = data["choices"][0]["message"]
             except (KeyError, IndexError, TypeError) as exc:
-                raise RuntimeError(f"Unexpected Groq response: {str(data)[:600]}") from exc
+                raise RuntimeError(
+                    f"Unexpected Groq response: {str(data)[:600]}"
+                ) from exc
+
             tool_calls = reply.get("tool_calls") or []
-            if tool_calls:
+
+            if use_tools and tool_calls:
                 messages.append(
                     {
                         "role": "assistant",
@@ -361,11 +480,15 @@ class ScriptBrain:
                         }
                     )
                 continue
+
             content = reply.get("content")
             if not isinstance(content, str) or not content.strip():
                 raise RuntimeError("Groq returned an empty completion.")
             return content
-        raise RuntimeError("LLM retry exhaustion: tool-calling rounds exceeded without a final answer.")
+
+        raise RuntimeError(
+            "LLM retry exhaustion: tool-calling rounds exceeded without a final answer."
+        )
 
 
 def build_directory_context(all_files: list[str], task_text: str) -> str:
