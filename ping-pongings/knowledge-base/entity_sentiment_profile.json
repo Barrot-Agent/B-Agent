@@ -3,15 +3,15 @@
     "xrp_entries": 586,
     "btc_entries": 525
   },
-  "unique_entities_profiled": 548,
+  "unique_entities_profiled": 549,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 251,
-      "bullish": 136,
+      "total_mentions": 252,
+      "bullish": 137,
       "neutral": 37,
       "bearish": 78,
-      "net_sentiment_score": 0.231,
+      "net_sentiment_score": 0.234,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 181,
-      "bullish": 113,
+      "total_mentions": 182,
+      "bullish": 114,
       "neutral": 33,
       "bearish": 35,
-      "net_sentiment_score": 0.431,
+      "net_sentiment_score": 0.434,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 144,
-      "bullish": 91,
+      "total_mentions": 145,
+      "bullish": 92,
       "neutral": 32,
       "bearish": 21,
-      "net_sentiment_score": 0.486,
+      "net_sentiment_score": 0.49,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -342,11 +342,11 @@
     },
     {
       "entity": "24/7 Wall St.",
-      "total_mentions": 11,
-      "bullish": 7,
+      "total_mentions": 12,
+      "bullish": 8,
       "neutral": 1,
       "bearish": 3,
-      "net_sentiment_score": 0.364,
+      "net_sentiment_score": 0.417,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -5516,6 +5516,20 @@
       ],
       "example_headlines": [
         "Prediction: XRP (Ripple) Will Be Worth This Much in 5 Years - The Globe and Mail"
+      ]
+    },
+    {
+      "entity": "David Schwartz",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St."
       ]
     },
     {

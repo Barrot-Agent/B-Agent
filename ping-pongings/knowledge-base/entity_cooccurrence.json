@@ -3,12 +3,12 @@
     "xrp_entries": 586,
     "btc_entries": 525
   },
-  "unique_pairs_found": 1761,
+  "unique_pairs_found": 1765,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 139,
+      "cooccurrence_count": 140,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -171,6 +171,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 17,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 16,
@@ -181,21 +196,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 16,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -411,6 +411,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "XRP",
       "cooccurrence_count": 9,
@@ -437,21 +452,6 @@
         {
           "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
         }
       ]
     },
@@ -511,6 +511,21 @@
         },
         {
           "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -651,21 +666,6 @@
       ]
     },
     {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "RLUSD",
       "entity_b": "Ripple",
       "cooccurrence_count": 6,
@@ -797,6 +797,21 @@
         {
           "title": "BTC Price Shrugs Off Coldcard Debacle, Strategy Sale, CLARITY Struggles - galaxy.com",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -991,21 +1006,6 @@
         },
         {
           "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1336,6 +1336,21 @@
         },
         {
           "title": "Bitcoin And Ethereum ETFs Add $492M As Inflow Streak Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -2072,21 +2087,6 @@
         {
           "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin Price Prediction: What Price Will BTC Hit in August? - 24/7 Wall St.",
-          "asset": "BTC"
         }
       ]
     },
@@ -12982,6 +12982,50 @@
       "example_headlines": [
         {
           "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "David Schwartz",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "David Schwartz",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "David Schwartz",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "David Schwartz",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
