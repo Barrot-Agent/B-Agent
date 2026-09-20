@@ -63,11 +63,14 @@ class DensityMatrix:
         return self.a + self.d
 
     def purity(self) -> float:
-        # Tr(rho^2) for a 2x2 matrix.
-        return float(
+        # Tr(rho^2) for a 2x2 matrix. Take .real BEFORE float() --
+        # float() cannot accept a complex value even when its imaginary
+        # part is exactly zero, which crashed this on every real call.
+        result = (
             (self.a * self.a + self.b * self.c)
             + (self.c * self.b + self.d * self.d)
-        ).real
+        )
+        return float(result.real)
 
 
 @dataclass(frozen=True)
