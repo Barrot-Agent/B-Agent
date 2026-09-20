@@ -1,0 +1,20 @@
+{
+  "schema": "barrot.self_drop.bridge.v1",
+  "timestamp_utc": "2026-09-20T00:52:23.963832+00:00",
+  "task_id": "payload_boundary_probe",
+  "action": "SELF_DROP_PROBE",
+  "request": {
+    "action": "SELF_DROP_PROBE",
+    "task_id": "payload_boundary_probe"
+  },
+  "request_file": ".barrot/self_drop/requests/payload_boundary_probe_20260920_005223_903538.json",
+  "generated_bundle": ".barrot/self_drop/inbox/barrot_autonomous_payload_boundary_probe_20260920_005223_903538.sh",
+  "bundle_sha256": "22a69c88ede95be7d0c0cd9408f1c598e1b8ad03f50409c5443386b7fbf9e749",
+  "returncode": 0,
+  "stdout": "BARROT_AUTONOMOUS_SELF_DROP=TRUE\nBARROT_TASK_ID=payload_boundary_probe\nBARROT_ACTION=SELF_DROP_PROBE\nBARROT_EXECUTED_AT=2026-09-20T00:52:23Z\nBARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE\n",
+  "stderr": "",
+  "result_file": ".barrot/self_drop/outbox/barrot_autonomous_payload_boundary_probe_20260920_005223_903538.result",
+  "autonomous_generation": true,
+  "repository_mutation": false,
+  "arbitrary_shell_input": false
+}

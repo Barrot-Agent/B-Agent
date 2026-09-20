@@ -1,0 +1,40 @@
+Barrot V3 autonomous CI repair task.
+
+Repository: Barrot-Agent/B-Agent
+Current branch: barrot/tool-call-resilience
+
+REAL REMOTE CI EVIDENCE:
+The GitHub Actions workflow ci.yml was manually dispatched against the
+current branch and commit. The run completed successfully:
+- run_id: 35251712943
+- conclusion: success
+- commit: 82a0c59f7aea3f86d5873f8b7a0ffa28a6d38639
+- 111 tests passed in the core CI suite
+- complete logs are in:
+  .barrot/ci_remote_evidence/ci_run.log
+- structured result is in:
+  .barrot/ci_remote_evidence/final_run.json
+
+IMPORTANT:
+Do not invent a CI failure.
+Determine whether the red condition being investigated is actually on
+main or is otherwise stale/different from the successful current-branch run.
+
+Inspect:
+1. .barrot/ci_remote_evidence/final_run.json
+2. .barrot/ci_remote_evidence/ci_run.log
+3. .github/workflows/ci.yml
+4. current repository state
+5. main branch / its latest CI state if available through the repository's
+   existing controlled tooling.
+
+If an actual failing main-branch condition exists, establish it with
+evidence, reproduce it locally where possible, create an evidence-backed
+repair, validate it, and use the existing controlled repair/delivery
+infrastructure.
+
+If no failure exists, record NO_REPAIR_REQUIRED with the successful
+evidence and identify the exact remaining synchronization issue.
+
+Never fabricate a failure, test result, commit, remote synchronization,
+or completion state.

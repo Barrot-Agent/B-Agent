@@ -3,12 +3,12 @@
   "DESIGN_STATUS": "DESIGNED",
   "EVIDENCE_SCOPE": "LOCAL_LIVE",
   "EXECUTION_STATUS": "EXECUTED",
-  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "EXECUTION_TIMESTAMP": "2026-09-18T08:47:09Z",
   "RESULT": {
     "final_decision": {
       "allowed": false,
       "capability": "WRITE",
-      "incident_id": "2dc28c0238a957fe",
+      "incident_id": "e1a0af6d78b87603",
       "reason": "Patch content appears to contain credential material.",
       "requested_action": "patch pkg/module.py",
       "safe_mode_active": true,

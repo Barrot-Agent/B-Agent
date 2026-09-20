@@ -1,0 +1,23 @@
+{
+  "objective": "Diagnose and repair the failing GitHub CI for Barrot-Agent/B-Agent",
+  "execution_mode": "AUTONOMOUS_SELF_DROP",
+  "requirements": [
+    "Establish current repository truth using the repository state manifest.",
+    "Corroborate repository paths before relying on them.",
+    "Inspect .github/workflows/ci.yml and its referenced tests.",
+    "Retrieve and analyze actual GitHub CI failure evidence when available.",
+    "Reproduce the failure locally where practical.",
+    "Separate observed evidence from hypotheses.",
+    "Determine the smallest justified repair.",
+    "Generate the repair bundle yourself.",
+    "Use DELIVER_BUNDLE to drop the generated bundle into the approved workspace.",
+    "Verify delivery with SHA-256 evidence.",
+    "Execute the delivered bundle.",
+    "Run affected tests and appropriate regression tests.",
+    "Never use git reset, git clean, git stash, destructive overwrite, or unrelated rollback.",
+    "Commit and push only a validated repair.",
+    "Re-check GitHub CI after the repair is pushed.",
+    "Record evidence for every major state transition.",
+    "Never claim success without execution evidence."
+  ]
+}

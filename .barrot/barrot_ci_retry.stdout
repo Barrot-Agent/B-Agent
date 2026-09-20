@@ -1,0 +1,666 @@
+nohup: ignoring input
+[2026-09-17T13:18:44.486272] === BARROT CI AUTONOMOUS RETRY ===
+[2026-09-17T13:18:44.486717] $ git status --short --branch
+## barrot/tool-call-resilience
+ M .barrot/collaboration_records/barrot_v3_acceptance_matrix.json
+ M .barrot/collaboration_records/latest_repository_repair.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-01.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-02.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-03.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-04.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-05.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-06.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-07.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-08.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-09.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-10.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-11.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-12.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-13.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-14.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-15.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-16.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-17.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-18.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-19.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-20.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-21.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-22.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-23.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-24.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-25.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-26.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-27.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-28.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-29.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-30.json
+ M barrot_agent/orchestration/repository_repair.py
+ M scripts/barrot_agent.py
+?? .barrot/backups/repository_repair_before_barrett_autonomous_audit.py
+?? .barrot/backups/repository_repair_before_brain_compatibility.py
+?? .barrot/backups/scripts_barrot_agent_before_planner_contract.py
+?? .barrot/backups/scripts_barrot_agent_before_scriptbrain_repair.py
+?? .barrot/barrett_overnight.pid
+?? .barrot/barrett_tool_loop_probe.py
+?? .barrot/barrot_ci_retry.pid
+?? .barrot/barrot_ci_retry.stdout
+?? .barrot/barrot_ci_retry_after_quota.py
+?? .barrot/barrot_ci_retry_launcher.pid
+?? .barrot/barrot_ci_self_drop_task.json
+?? .barrot/ci_remote_evidence/
+?? .barrot/collaboration_records/077293d3a99e.json
+?? .barrot/collaboration_records/0cee42a7bb8b.json
+?? .barrot/collaboration_records/1c77250daf1d.json
+?? .barrot/collaboration_records/2aafbc9a2b90.json
+?? .barrot/collaboration_records/90a398b083f8.json
+?? .barrot/collaboration_records/a28422945474.json
+?? .barrot/run_barrot_ci_repair.py
+?? .barrot/self_drop_probe.py
+?? .barrot/sources/
+?? .barrot/start_ci_self_repair.py
+
+[2026-09-17T13:18:44.975048] CAPTURED_CI=success RUN=35251712943 SHA=82a0c59f7aea3f86d5873f8b7a0ffa28a6d38639
+[2026-09-17T13:18:44.975313] WAITING_FOR_LLM_QUOTA=2400s
+[2026-09-17T13:18:44.975455] QUOTA_RETRY_IN=2400s
+[2026-09-17T13:23:45.083121] QUOTA_RETRY_IN=2100s
+[2026-09-17T13:28:45.212202] QUOTA_RETRY_IN=1800s
+[2026-09-17T13:33:45.238796] QUOTA_RETRY_IN=1500s
+[2026-09-17T13:38:45.300094] QUOTA_RETRY_IN=1200s
+[2026-09-17T13:43:45.378566] QUOTA_RETRY_IN=900s
+[2026-09-17T13:48:45.463230] QUOTA_RETRY_IN=600s
+[2026-09-17T13:53:45.531889] QUOTA_RETRY_IN=300s
+[2026-09-17T13:57:45.608977] QUOTA_RETRY_IN=60s
+[2026-09-17T13:58:15.644378] QUOTA_RETRY_IN=30s
+[2026-09-17T13:58:45.653964] QUOTA_WAIT_COMPLETE
+[2026-09-17T13:58:45.660660] $ gh run view 35251712943 --repo Barrot-Agent/B-Agent --json databaseId,status,conclusion,headSha,headBranch,url
+{"conclusion":"success","databaseId":35251712943,"headBranch":"barrot/tool-call-resilience","headSha":"82a0c59f7aea3f86d5873f8b7a0ffa28a6d38639","status":"completed","url":"https://github.com/Barrot-Agent/B-Agent/actions/runs/35251712943"}
+
+[2026-09-17T13:58:46.843816] TASK_WRITTEN=/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/ci_repair_task.txt
+[2026-09-17T13:58:46.845710] LAUNCHING_BARROT
+[2026-09-17T13:58:46.852400] BARROT_PID=13728
+[2026-09-17T13:58:46.853715] BARROT_LAUNCH=PASS
+<unknown>:105: SyntaxWarning: invalid escape sequence '\['
++ git config user.email barrot@barrot-agent.com
++ git config user.name Barrot-Agent
++ git checkout -B barrot/tool-call-resilience
+M	.barrot/collaboration_records/barrot_v3_acceptance_matrix.json
+M	.barrot/collaboration_records/latest_repository_repair.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-01.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-02.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-03.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-04.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-05.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-06.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-07.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-08.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-09.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-10.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-11.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-12.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-13.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-14.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-15.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-16.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-17.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-18.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-19.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-20.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-21.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-22.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-23.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-24.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-25.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-26.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-27.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-28.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-29.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-30.json
+M	barrot_agent/orchestration/repository_repair.py
+M	scripts/barrot_agent.py
+
+Reset branch 'barrot/tool-call-resilience'
+
++ git ls-files
++ git ls-files
+{
+  "work_id": "manual:barrot/tool-call-resilience",
+  "status": "blocked",
+  "current_state": "BLOCKED",
+  "project_identity": {
+    "id": null,
+    "namespace_id": null,
+    "namespace_kind": "unknown",
+    "namespace_path": "Barrot-Agent",
+    "path_with_namespace": "Barrot-Agent/B-Agent"
+  },
+  "attempt_count": 8,
+  "retry_history": [
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "no_repair_required"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "operation": "repository_repair",
+      "result": "failed",
+      "next_state": "BLOCKED"
+    }
+  ],
+  "last_successful_operation": "",
+  "repair_cycle": {
+    "cycle_id": "a403269cb8fe",
+    "status": "failed",
+    "current_state": "FAILED",
+    "state_history": [
+      "IDLE",
+      "AUDITING",
+      "ANALYZING",
+      "FAILED"
+    ],
+    "audit_completed": true,
+    "issue_identified": false,
+    "issue_reproduced": false,
+    "repair_plan_created": false,
+    "changeset_created": false,
+    "changes_applied": false,
+    "local_validation_passed": false,
+    "repair_verified": false,
+    "remote_sync_verified": false,
+    "post_repair_validation_passed": false,
+    "resolution_verified": false,
+    "synchronization_recorded": false,
+    "report_only": false,
+    "report": "",
+    "attempt_number": 1,
+    "resumed_from_cycle_id": "",
+    "project_identity": {
+      "repository": "Barrot-Agent/B-Agent",
+      "branch": "barrot/tool-call-resilience",
+      "task_title": "Investigate main CI state using verified GitHub evidence; repair only an actually reproduced failure"
+    },
+    "issue": {},
+    "repair_plan": {},
+    "changeset": {},
+    "changes": [],
+    "validation": {},
+    "commit": {
+      "created": false,
+      "exists": false,
+      "sha": "",
+      "branch": "",
+      "message": "",
+      "changed_paths": [],
+      "command": {},
+      "timestamp": null,
+      "remote_verified": false
+    },
+    "sync": [],
+    "issue_fingerprint": "",
+    "plan_fingerprint": "",
+    "changeset_fingerprint": "",
+    "failure": {
+      "state": "FAILED",
+      "code": "LLM_RATE_LIMITED",
+      "message": "Groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197665, Requested 2974. Please try again in 4m36.048s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+      "failed_operation": "repair_planner.generate",
+      "last_valid_state": "ANALYZING",
+      "required_external_action": "",
+      "timestamp": 1789667936.0199087,
+      "rollback_attempted": false,
+      "rollback_succeeded": false
+    }
+  },
+  "sync_operation": {},
+  "queue_advanced": false,
+  "evidence": [
+    {
+      "cycle_id": "a0aa3e0d3b16",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "90a398b083f8",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "a28422945474",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "0cee42a7bb8b",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "1c77250daf1d",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "2aafbc9a2b90",
+      "operation": "repository_repair",
+      "result": "no_repair_required",
+      "state": "NO_REPAIR_REQUIRED"
+    },
+    {
+      "cycle_id": "077293d3a99e",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED",
+      "cycle_id": "a403269cb8fe"
+    }
+  ]
+}
+[2026-09-17T13:58:56.533818] BARROT_EXIT_CODE=1
+[2026-09-17T13:58:56.536737] $ git status --short --branch
+## barrot/tool-call-resilience
+ M .barrot/collaboration_records/barrot_v3_acceptance_matrix.json
+ M .barrot/collaboration_records/latest_repository_repair.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-01.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-02.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-03.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-04.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-05.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-06.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-07.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-08.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-09.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-10.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-11.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-12.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-13.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-14.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-15.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-16.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-17.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-18.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-19.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-20.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-21.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-22.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-23.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-24.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-25.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-26.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-27.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-28.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-29.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-30.json
+ M barrot_agent/orchestration/repository_repair.py
+ M scripts/barrot_agent.py
+?? .barrot/backups/repository_repair_before_barrett_autonomous_audit.py
+?? .barrot/backups/repository_repair_before_brain_compatibility.py
+?? .barrot/backups/scripts_barrot_agent_before_planner_contract.py
+?? .barrot/backups/scripts_barrot_agent_before_scriptbrain_repair.py
+?? .barrot/barrett_overnight.pid
+?? .barrot/barrett_tool_loop_probe.py
+?? .barrot/barrot_ci_retry.pid
+?? .barrot/barrot_ci_retry.stdout
+?? .barrot/barrot_ci_retry_after_quota.py
+?? .barrot/barrot_ci_retry_launcher.pid
+?? .barrot/barrot_ci_self_drop_task.json
+?? .barrot/barrot_persistent_ci_supervisor.py
+?? .barrot/ci_remote_evidence/
+?? .barrot/ci_repair_task.txt
+?? .barrot/collaboration_records/077293d3a99e.json
+?? .barrot/collaboration_records/0cee42a7bb8b.json
+?? .barrot/collaboration_records/1c77250daf1d.json
+?? .barrot/collaboration_records/2aafbc9a2b90.json
+?? .barrot/collaboration_records/90a398b083f8.json
+?? .barrot/collaboration_records/a28422945474.json
+?? .barrot/collaboration_records/a403269cb8fe.json
+?? .barrot/persistent_ci_supervisor.json
+?? .barrot/persistent_ci_supervisor.stdout
+?? .barrot/persistent_git_status.txt
+?? .barrot/persistent_supervisor_launcher.pid
+?? .barrot/run_barrot_ci_repair.py
+?? .barrot/self_drop_probe.py
+?? .barrot/sources/
+?? .barrot/start_ci_self_repair.py
+
+[2026-09-17T13:58:56.723525] === BARROT CI RETRY FINISHED ===
+[2026-09-17T14:00:21.134868] QUOTA_RETRY_IN=60s
+[2026-09-17T14:00:51.156292] QUOTA_RETRY_IN=30s
+[2026-09-17T14:01:21.161345] QUOTA_WAIT_COMPLETE
+[2026-09-17T14:01:21.171208] $ gh run view 35251712943 --repo Barrot-Agent/B-Agent --json databaseId,status,conclusion,headSha,headBranch,url
+{"conclusion":"success","databaseId":35251712943,"headBranch":"barrot/tool-call-resilience","headSha":"82a0c59f7aea3f86d5873f8b7a0ffa28a6d38639","status":"completed","url":"https://github.com/Barrot-Agent/B-Agent/actions/runs/35251712943"}
+
+[2026-09-17T14:01:22.297340] TASK_WRITTEN=/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/ci_repair_task.txt
+[2026-09-17T14:01:22.302691] LAUNCHING_BARROT
+[2026-09-17T14:01:22.308086] BARROT_PID=14638
+[2026-09-17T14:01:22.308516] BARROT_LAUNCH=PASS
+<unknown>:105: SyntaxWarning: invalid escape sequence '\['
++ git config user.email barrot@barrot-agent.com
++ git config user.name Barrot-Agent
++ git checkout -B barrot/tool-call-resilience
+M	.barrot/collaboration_records/barrot_v3_acceptance_matrix.json
+M	.barrot/collaboration_records/latest_repository_repair.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-01.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-02.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-03.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-04.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-05.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-06.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-07.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-08.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-09.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-10.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-11.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-12.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-13.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-14.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-15.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-16.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-17.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-18.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-19.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-20.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-21.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-22.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-23.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-24.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-25.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-26.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-27.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-28.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-29.json
+M	.barrot/collaboration_records/v3_acceptance_matrix/case-30.json
+M	barrot_agent/orchestration/repository_repair.py
+M	scripts/barrot_agent.py
+
+Reset branch 'barrot/tool-call-resilience'
+
++ git ls-files
++ git ls-files
+{
+  "work_id": "manual:barrot/tool-call-resilience",
+  "status": "blocked",
+  "current_state": "BLOCKED",
+  "project_identity": {
+    "id": null,
+    "namespace_id": null,
+    "namespace_kind": "unknown",
+    "namespace_path": "Barrot-Agent",
+    "path_with_namespace": "Barrot-Agent/B-Agent"
+  },
+  "attempt_count": 9,
+  "retry_history": [
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "no_repair_required"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "next_state": "BLOCKED",
+      "operation": "repository_repair",
+      "result": "failed"
+    },
+    {
+      "operation": "repository_repair",
+      "result": "failed",
+      "next_state": "BLOCKED"
+    }
+  ],
+  "last_successful_operation": "",
+  "repair_cycle": {
+    "cycle_id": "7c32578fe3fe",
+    "status": "failed",
+    "current_state": "FAILED",
+    "state_history": [
+      "IDLE",
+      "AUDITING",
+      "ANALYZING",
+      "FAILED"
+    ],
+    "audit_completed": true,
+    "issue_identified": false,
+    "issue_reproduced": false,
+    "repair_plan_created": false,
+    "changeset_created": false,
+    "changes_applied": false,
+    "local_validation_passed": false,
+    "repair_verified": false,
+    "remote_sync_verified": false,
+    "post_repair_validation_passed": false,
+    "resolution_verified": false,
+    "synchronization_recorded": false,
+    "report_only": false,
+    "report": "",
+    "attempt_number": 2,
+    "resumed_from_cycle_id": "a403269cb8fe",
+    "project_identity": {
+      "repository": "Barrot-Agent/B-Agent",
+      "branch": "barrot/tool-call-resilience",
+      "task_title": "Investigate main CI state using verified GitHub evidence; repair only an actually reproduced failure"
+    },
+    "issue": {},
+    "repair_plan": {},
+    "changeset": {},
+    "changes": [],
+    "validation": {},
+    "commit": {
+      "created": false,
+      "exists": false,
+      "sha": "",
+      "branch": "",
+      "message": "",
+      "changed_paths": [],
+      "command": {},
+      "timestamp": null,
+      "remote_verified": false
+    },
+    "sync": [],
+    "issue_fingerprint": "",
+    "plan_fingerprint": "",
+    "changeset_fingerprint": "",
+    "failure": {
+      "state": "FAILED",
+      "code": "LLM_RATE_LIMITED",
+      "message": "Groq HTTP 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197858, Requested 3027. Please try again in 6m22.32s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+      "failed_operation": "repair_planner.generate",
+      "last_valid_state": "ANALYZING",
+      "required_external_action": "",
+      "timestamp": 1789668090.8938105,
+      "rollback_attempted": false,
+      "rollback_succeeded": false
+    }
+  },
+  "sync_operation": {},
+  "queue_advanced": false,
+  "evidence": [
+    {
+      "cycle_id": "a0aa3e0d3b16",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "90a398b083f8",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "a28422945474",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "0cee42a7bb8b",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "1c77250daf1d",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "2aafbc9a2b90",
+      "operation": "repository_repair",
+      "result": "no_repair_required",
+      "state": "NO_REPAIR_REQUIRED"
+    },
+    {
+      "cycle_id": "077293d3a99e",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "cycle_id": "a403269cb8fe",
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED"
+    },
+    {
+      "operation": "repository_repair",
+      "result": "failed",
+      "state": "FAILED",
+      "cycle_id": "7c32578fe3fe"
+    }
+  ]
+}
+[2026-09-17T14:01:31.069057] BARROT_EXIT_CODE=1
+[2026-09-17T14:01:31.072531] $ git status --short --branch
+## barrot/tool-call-resilience
+ M .barrot/collaboration_records/barrot_v3_acceptance_matrix.json
+ M .barrot/collaboration_records/latest_repository_repair.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-01.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-02.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-03.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-04.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-05.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-06.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-07.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-08.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-09.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-10.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-11.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-12.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-13.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-14.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-15.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-16.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-17.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-18.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-19.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-20.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-21.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-22.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-23.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-24.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-25.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-26.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-27.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-28.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-29.json
+ M .barrot/collaboration_records/v3_acceptance_matrix/case-30.json
+ M barrot_agent/orchestration/repository_repair.py
+ M scripts/barrot_agent.py
+?? .barrot/backups/repository_repair_before_barrett_autonomous_audit.py
+?? .barrot/backups/repository_repair_before_brain_compatibility.py
+?? .barrot/backups/scripts_barrot_agent_before_planner_contract.py
+?? .barrot/backups/scripts_barrot_agent_before_scriptbrain_repair.py
+?? .barrot/barrett_overnight.pid
+?? .barrot/barrett_tool_loop_probe.py
+?? .barrot/barrot_ci_retry.stdout
+?? .barrot/barrot_ci_retry_after_quota.py
+?? .barrot/barrot_ci_retry_launcher.pid
+?? .barrot/barrot_ci_self_drop_task.json
+?? .barrot/barrot_persistent_ci_supervisor.py
+?? .barrot/ci_remote_evidence/
+?? .barrot/ci_repair_task.txt
+?? .barrot/collaboration_records/077293d3a99e.json
+?? .barrot/collaboration_records/0cee42a7bb8b.json
+?? .barrot/collaboration_records/1c77250daf1d.json
+?? .barrot/collaboration_records/2aafbc9a2b90.json
+?? .barrot/collaboration_records/7c32578fe3fe.json
+?? .barrot/collaboration_records/90a398b083f8.json
+?? .barrot/collaboration_records/a28422945474.json
+?? .barrot/collaboration_records/a403269cb8fe.json
+?? .barrot/persistent_ci_supervisor.json
+?? .barrot/persistent_ci_supervisor.stdout
+?? .barrot/persistent_git_status.txt
+?? .barrot/persistent_supervisor_launcher.pid
+?? .barrot/run_barrot_ci_repair.py
+?? .barrot/self_drop_probe.py
+?? .barrot/sources/
+?? .barrot/start_ci_self_repair.py
+
+[2026-09-17T14:01:31.169742] === BARROT CI RETRY FINISHED ===

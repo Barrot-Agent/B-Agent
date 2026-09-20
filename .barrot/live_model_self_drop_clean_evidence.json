@@ -1,0 +1,6 @@
+{
+  "timestamp_utc": "2026-09-20T01:00:26.341420+00:00",
+  "exception_type": "ModuleNotFoundError",
+  "exception": "No module named 'scripts'",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/data/com.termux/files/home/barrot/Barrot-Agent/scripts/barrot_clean_live_test.py\", line 33, in <module>\n    from scripts.barrot_agent import ScriptBrain\nModuleNotFoundError: No module named 'scripts'\n"
+}

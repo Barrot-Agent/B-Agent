@@ -1,0 +1,1000 @@
+#!/usr/bin/env python3
+"""
+BARROT AGENT — deterministic repository repair worker.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any, Callable
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = Path(__file__).resolve().parent
+ROOT_STR = str(ROOT)
+SCRIPTS_DIR_STR = str(SCRIPTS_DIR)
+if ROOT_STR in sys.path:
+    sys.path.remove(ROOT_STR)
+sys.path.insert(0, ROOT_STR)
+if SCRIPTS_DIR_STR in sys.path:
+    sys.path.remove(SCRIPTS_DIR_STR)
+sys.path.insert(1, SCRIPTS_DIR_STR)
+
+from sandbox import verify_result
+
+from barrot_agent.orchestration.repository_repair import (
+    ProjectIdentity,
+    RepositoryRepairController,
+    WorkQueueController,
+)
+from barrot_agent.orchestration.actions import Action, parse_actions
+from barrot_agent.orchestration.action_executor import BarrotActionExecutor
+from barrot_agent.orchestration.bundle_evidence import verify_bundle_delivery
+
+from barrot_agent.research import (
+    ScientificDiscoveryController,
+    is_scientific_discovery_task,
+    select_scientific_problem_adapter,
+)
+
+from scripts.barrot_self_drop_controller_adapter import SelfDropControllerAdapter
+
+REPO = os.environ["REPO"]
+TASK = os.environ.get("TASK_BODY", "")
+TITLE = os.environ.get("TASK_TITLE", "Barrot task")
+ISSUE = os.environ.get("ISSUE_NUMBER", "")
+BRANCH = os.environ.get("BRANCH", "barrot/task")
+MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
+GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
+GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
+MAX_TOOL_ROUNDS = 4
+MAX_SEARCH_RESULTS = 50
+
+NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
+
+
+def run(args: list[str], *, check: bool = True, quiet: bool = False) -> subprocess.CompletedProcess[str]:
+    print("+", " ".join(args))
+    result = subprocess.run(
+        args,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if not quiet:
+        if result.stdout.strip():
+            print(result.stdout[:3000])
+        if result.stderr.strip():
+            print(result.stderr[:3000])
+    if check and result.returncode != 0:
+        raise RuntimeError(f"command failed: {' '.join(args)}\n{result.stderr[:1000]}")
+    return result
+
+
+def repo_inventory(max_files: int = 120, task_text: str = "") -> str:
+    files = run(["git", "ls-files"], check=False, quiet=True).stdout.splitlines()
+    files = [item for item in files if not any(item.startswith(prefix) for prefix in NOISE_PREFIXES)]
+    top_dirs = sorted({item.split("/")[0] for item in files if "/" in item})
+    lowered = task_text.lower()
+    scope = None
+    for directory in top_dirs:
+        if f"{directory.lower()}/" in lowered:
+            scope = directory
+            break
+    if scope:
+        scoped = [item for item in files if item.startswith(scope + "/")]
+        if scoped:
+            files = scoped
+    cap = len(files) if scope else max_files
+    tree: list[str] = []
+    for item in files[:cap]:
+        try:
+            size = (ROOT / item).stat().st_size
+        except OSError:
+            size = 0
+        tree.append(f"{item} ({size}b)")
+    extra = len(files) - cap
+    if extra > 0:
+        tree.append(f"... ({extra} more files omitted)")
+    return "\n".join(tree)
+
+
+def _tool_error(message: str) -> str:
+    return json.dumps({"success": False, "error": message}, sort_keys=True)
+
+
+class RepoBrowser:
+    def __init__(self, root: Path):
+        self.root = root.resolve()
+
+    def _resolve(self, path: str) -> Path:
+        cleaned = str(path).strip()
+        if not cleaned:
+            raise ValueError("repo_browser path must be non-empty; use '.' for the repository root.")
+        if Path(cleaned).is_absolute():
+            raise ValueError("repo_browser path must be relative to the repository root.")
+        target = (self.root / cleaned).resolve()
+        if target != self.root and self.root not in target.parents:
+            raise ValueError("repo_browser path escapes the repository root.")
+        return target
+
+    @staticmethod
+    def _is_noise(path: Path) -> bool:
+        return any(part in NOISE_PREFIXES or part.startswith(".pytest_cache") for part in path.parts)
+
+    def print_tree(self, args: dict[str, Any]) -> str:
+        try:
+            target = self._resolve(args.get("path", "."))
+            depth = int(args.get("depth", 2) or 2)
+        except (TypeError, ValueError) as exc:
+            return _tool_error(str(exc))
+        depth = max(0, min(depth, 6))
+        if not target.exists():
+            return _tool_error(f"repo_browser path does not exist: {args.get('path', '.')}")
+
+        lines: list[str] = []
+
+        def walk(current: Path, level: int) -> None:
+            relative = "." if current == self.root else str(current.relative_to(self.root))
+            prefix = "  " * level
+            label = relative + ("/" if current.is_dir() and relative != "." else "")
+            lines.append(f"{prefix}{label}")
+            if level >= depth or not current.is_dir():
+                return
+            children = sorted(
+                child for child in current.iterdir() if not self._is_noise(child)
+            )
+            for child in children[:100]:
+                walk(child, level + 1)
+            if len(children) > 100:
+                lines.append(f"{prefix}  ... ({len(children) - 100} more entries omitted)")
+
+        walk(target, 0)
+        return "\n".join(lines[:500])
+
+    def search(self, args: dict[str, Any]) -> str:
+        query = str(args.get("query") or args.get("pattern") or "").strip()
+        if not query:
+            return _tool_error("repo_browser search query must be non-empty.")
+        try:
+            target = self._resolve(args.get("path", "."))
+            recursive = bool(args.get("recursive", True))
+            max_results = int(args.get("max_results", MAX_SEARCH_RESULTS) or MAX_SEARCH_RESULTS)
+            pattern = re.compile(query)
+        except (TypeError, ValueError, re.error) as exc:
+            return _tool_error(str(exc))
+        max_results = max(1, min(max_results, MAX_SEARCH_RESULTS))
+        if not target.exists():
+            return _tool_error(f"repo_browser path does not exist: {args.get('path', '.')}")
+
+        candidates = target.rglob("*") if recursive else target.glob("*")
+        matches: list[dict[str, Any]] = []
+        for candidate in sorted(candidates):
+            if self._is_noise(candidate) or candidate.is_dir():
+                continue
+            relative = str(candidate.relative_to(self.root))
+            if pattern.search(relative):
+                matches.append({"path": relative, "kind": "path"})
+            if len(matches) >= max_results:
+                break
+            try:
+                for line_number, line in enumerate(
+                    candidate.read_text(encoding="utf-8", errors="replace").splitlines(),
+                    start=1,
+                ):
+                    if pattern.search(line):
+                        matches.append(
+                            {
+                                "path": relative,
+                                "kind": "content",
+                                "line": line_number,
+                                "text": line[:200],
+                            }
+                        )
+                    if len(matches) >= max_results:
+                        break
+            except OSError:
+                continue
+            if len(matches) >= max_results:
+                break
+        return json.dumps(
+            {
+                "success": True,
+                "path": "." if target == self.root else str(target.relative_to(self.root)),
+                "query": query,
+                "matches": matches,
+            },
+            sort_keys=True,
+        )
+
+
+def _groq_payload(
+    messages: list[dict[str, Any]],
+    *,
+    tools: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "model": MODEL,
+        "messages": messages,
+        "max_tokens": 4096,
+        "temperature": 0.2,
+    }
+    if tools:
+        payload["tools"] = tools
+        payload["tool_choice"] = "auto"
+    return payload
+
+
+def _send_groq_request(
+    payload: dict[str, Any],
+    *,
+    request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    if request_sender is not None:
+        return request_sender(payload)
+    body = json.dumps(payload).encode()
+    request = urllib.request.Request(
+        GROQ_ENDPOINT,
+        data=body,
+        headers={
+            "Authorization": "Bearer " + GROQ_KEY,
+            "Content-Type": "application/json",
+            "User-Agent": "Barrot-Agent/1.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=90) as response:
+            return json.load(response)
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:600]
+        lowered = detail.lower()
+        if (
+            exc.code == 400
+            and "tool choice is none" in lowered
+            and "model called a tool" in lowered
+        ):
+            raise RuntimeError(f"LLM tool conflict: {detail}") from exc
+        if exc.code in {401, 403}:
+            raise RuntimeError(f"LLM authentication failed: {detail}") from exc
+        raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"LLM network error: {exc}") from exc
+    except TimeoutError as exc:
+        raise TimeoutError("Groq request timed out") from exc
+
+
+class ScriptBrain:
+    def __init__(
+        self,
+        *,
+        request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
+        repo_root: Path = ROOT,
+        max_tool_rounds: int = MAX_TOOL_ROUNDS,
+    ):
+        self.request_sender = request_sender
+        self.repo_browser = RepoBrowser(repo_root)
+        self.max_tool_rounds = max_tool_rounds
+        # BARROT_SELF_DROP_TOOL_REGISTERED: direct validated self-drop adapter
+        self._self_drop_adapter = SelfDropControllerAdapter()
+
+        def _self_drop(arguments):
+            if not isinstance(arguments, dict):
+                raise TypeError("self_drop arguments must be an object")
+            task_id = str(arguments.get("task_id", "")).strip()
+            action = str(arguments.get("action", "")).strip()
+            if not task_id:
+                raise ValueError("self_drop requires task_id")
+            if not action:
+                raise ValueError("self_drop requires action")
+            return self._self_drop_adapter.dispatch(task_id, action)
+
+        self.tool_funcs = {
+            "barrot.deliver_bundle": self._deliver_bundle,
+
+            "repo_browser.print_tree": self.repo_browser.print_tree,
+            "repo_browser.search": self.repo_browser.search,
+            "self_drop": _self_drop,
+        }
+        self.tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": "self_drop",
+                    "description": (
+                        "Generate and execute a validated Barrot autonomous bundle "
+                        "through the approved self-drop path. Only supported "
+                        "self-drop actions are accepted."
+                    ),
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "task_id": {
+                                "type": "string",
+                                "description": "Unique identifier for the autonomous task."
+                            },
+                            "action": {
+                                "type": "string",
+                                "enum": ["SELF_DROP_PROBE"],
+                                "description": "Approved self-drop action."
+                            }
+                        },
+                        "required": ["task_id", "action"],
+                        "additionalProperties": False
+                    }
+                }
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "barrot.deliver_bundle",
+                    "description": (
+                        "Deliver a complete valid Python repair bundle into the "
+                        "approved repository workspace. The bundle is validated "
+                        "and SHA-256 verified before success is returned."
+                    ),
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string",
+                                "description": "Repository-relative destination path.",
+                            },
+                            "content": {
+                                "type": "string",
+                                "description": "Complete Python bundle content.",
+                            },
+                        },
+                        "required": ["path", "content"],
+                    },
+                },
+            },
+
+            {
+                "type": "function",
+                "function": {
+                    "name": "repo_browser.print_tree",
+                    "description": "Print a real repository tree for a relative path. Use '.' for the repository root.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "minLength": 1},
+                            "depth": {"type": "integer", "minimum": 0, "maximum": 6},
+                        },
+                        "required": ["path"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "repo_browser.search",
+                    "description": "Search real repository file paths and file contents with a regex query inside a relative path.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {"type": "string", "minLength": 1},
+                            "path": {"type": "string", "minLength": 1},
+                            "recursive": {"type": "boolean"},
+                            "max_results": {"type": "integer", "minimum": 1, "maximum": MAX_SEARCH_RESULTS},
+                        },
+                        "required": ["query", "path"],
+                    },
+                },
+            },
+        ]
+
+    def _deliver_bundle(self, args: dict[str, Any]) -> str:
+        path = args.get("path")
+        content = args.get("content")
+
+        if not isinstance(path, str) or not path.strip():
+            return _tool_error(
+                "DELIVER_BUNDLE requires a non-empty relative path."
+            )
+
+        if not isinstance(content, str):
+            return _tool_error(
+                "DELIVER_BUNDLE content must be a string."
+            )
+
+        executor = BarrotActionExecutor(ROOT)
+
+        result = executor.execute(
+            Action(
+                type="DELIVER_BUNDLE",
+                args={
+                    "path": path,
+                    "content": content,
+                },
+            )
+        )
+
+        if not result.success:
+            return _tool_error(
+                result.error or "Bundle delivery failed."
+            )
+
+        evidence = verify_bundle_delivery(
+            path=path,
+            content=content,
+        )
+
+        if not evidence.verified:
+            return _tool_error(
+                evidence.reason or "Bundle evidence verification failed."
+            )
+
+        return json.dumps(
+            {
+                "success": True,
+                "action": "DELIVER_BUNDLE",
+                "path": evidence.path,
+                "content_hash": evidence.content_hash,
+                "delivered_hash": evidence.delivered_hash,
+                "verified": True,
+            },
+            sort_keys=True,
+        )
+
+    @staticmethod
+    def _serialize_tool_result(result: Any) -> str:
+        """Normalize tool output to a Groq-compatible tool-message string."""
+        if isinstance(result, str):
+            return result
+        try:
+            return json.dumps(result, ensure_ascii=False, default=str)
+        except (TypeError, ValueError):
+            return str(result)
+
+    def _tool_result(self, tool_call: dict[str, Any]) -> str:
+        function = tool_call.get("function") or {}
+        name = str(function.get("name", "")).strip()
+        raw_arguments = function.get("arguments") or "{}"
+        if name not in self.tool_funcs:
+            raise RuntimeError(f"Unsupported tool requested by LLM: {name}")
+        try:
+            arguments = json.loads(raw_arguments)
+        except json.JSONDecodeError as exc:
+            return _tool_error(f"Invalid JSON arguments for {name}: {exc}")
+        if not isinstance(arguments, dict):
+            return _tool_error(f"Tool arguments for {name} must be an object.")
+        return self.tool_funcs[name](arguments)
+
+    def think(
+        self,
+        message: str,
+        history: list[dict[str, str]] | None = None,
+        system: str | None = None,
+        *,
+        use_tools: bool = True,
+    ) -> str:
+        messages: list[dict[str, Any]] = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        if history:
+            messages.extend(history)
+        messages.append({"role": "user", "content": message})
+
+        for _ in range(self.max_tool_rounds if use_tools else 1):
+            payload = _groq_payload(
+                messages,
+                tools=self.tools if use_tools else None,
+            )
+            data = _send_groq_request(
+                payload,
+                request_sender=self.request_sender,
+            )
+            try:
+                reply = data["choices"][0]["message"]
+            except (KeyError, IndexError, TypeError) as exc:
+                raise RuntimeError(
+                    f"Unexpected Groq response: {str(data)[:600]}"
+                ) from exc
+
+            tool_calls = reply.get("tool_calls") or []
+
+            if use_tools and tool_calls:
+                messages.append(
+                    {
+                        "role": "assistant",
+                        "content": reply.get("content") or "",
+                        "tool_calls": tool_calls,
+                    }
+                )
+                for tool_call in tool_calls:
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tool_call.get("id", ""),
+                            "content": self._serialize_tool_result(
+                                self._tool_result(tool_call)
+                            ),
+                        }
+                    )
+                continue
+
+            content = reply.get("content")
+            if not isinstance(content, str) or not content.strip():
+                raise RuntimeError("Groq returned an empty completion.")
+            return content
+
+        raise RuntimeError(
+            "LLM retry exhaustion: tool-calling rounds exceeded without a final answer."
+        )
+
+
+def build_directory_context(all_files: list[str], task_text: str) -> str:
+    top_dirs = sorted({item.split("/")[0] for item in all_files if "/" in item})
+    lowered = task_text.lower()
+    scope_dir = None
+    for directory in top_dirs:
+        if f"{directory.lower()}/" in lowered:
+            scope_dir = directory
+            break
+    if not scope_dir:
+        return ""
+    scoped_files = [item for item in all_files if item.startswith(scope_dir + "/")]
+    sized: list[tuple[int, str]] = []
+    for item in scoped_files:
+        try:
+            sized.append(((ROOT / item).stat().st_size, item))
+        except OSError:
+            continue
+    sized.sort()
+    budget = 5000
+    shown: list[str] = []
+    omitted: list[str] = []
+    for size, item in sized:
+        if size <= budget:
+            shown.append(item)
+            budget -= size
+        else:
+            omitted.append(item)
+    chunks = [
+        "\n\nREAL FULL CONTENT of files in the scoped directory "
+        "(only these - do NOT describe or invent internals of any other file):"
+    ]
+    for item in shown:
+        try:
+            chunks.append(f"\n=== {item} ===\n{(ROOT / item).read_text(encoding='utf-8')}")
+        except Exception:
+            continue
+    if omitted:
+        chunks.append(
+            "\n\nThe following files exist but their content was NOT shown to you "
+            "(too large for this pass): "
+            + ", ".join(omitted)
+            + ". Do not describe their internals or invent file contents."
+        )
+    return "\n".join(chunks)
+
+
+def build_file_context(task_title: str, task_body: str) -> str:
+    named = re.findall(r"[\w./-]+\.(?:py|jsonl|json|ya?ml|md|txt|toml)", f"{task_title}\n{task_body}")
+    budget = 6000
+    context = ""
+    omitted: list[str] = []
+    for file_path in list(dict.fromkeys(named))[:5]:
+        target = ROOT / file_path
+        if not target.exists() or not target.is_file():
+            continue
+        try:
+            size = target.stat().st_size
+            if size > budget:
+                omitted.append(f"{file_path} ({size}b)")
+                continue
+            content = target.read_text(encoding="utf-8")
+            if len(content) > budget:
+                omitted.append(f"{file_path} ({size}b)")
+                continue
+            context += f"\n=== CURRENT CONTENT OF {file_path} ===\n{content}\n=== END {file_path} ===\n"
+            budget -= len(content)
+        except Exception:
+            continue
+    if omitted:
+        context += (
+            "\n\nThe following named files exist but were too large to include in full: "
+            + ", ".join(omitted)
+            + ". Do not invent their internal contents."
+        )
+    return context
+
+
+def run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        ["gh", *args],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+
+def build_github_context(task_text: str) -> str:
+    lowered = task_text.lower()
+    github_context = ""
+    if "pull request" in lowered or " pr " in lowered or "prs" in lowered:
+        result = run_gh(
+            [
+                "pr",
+                "list",
+                "--repo",
+                REPO,
+                "--state",
+                "open",
+                "--limit",
+                "100",
+                "--json",
+                "number,title,mergeable,additions,deletions,author",
+                "-q",
+                '.[] | "#\\(.number) | \\(.mergeable) | +\\(.additions)/-\\(.deletions) | @\\(.author.login) | \\(.title)"',
+            ]
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            github_context += (
+                "\n=== REAL OPEN PULL REQUESTS (use ONLY these, never invent) ===\n"
+                + result.stdout[:12000]
+                + "\n=== END PRS ===\n"
+            )
+    pr_numbers = re.findall(r"#(\d+)", task_text)
+    if pr_numbers:
+        diffs: list[str] = []
+        for number in dict.fromkeys(pr_numbers):
+            if len(diffs) >= 4:
+                break
+            result = run_gh(["pr", "diff", number, "--repo", REPO])
+            if result.returncode == 0 and result.stdout.strip():
+                diffs.append(f"--- PR #{number} DIFF ---\n{result.stdout[:1200]}")
+        if diffs:
+            github_context += (
+                "\n=== REAL PR DIFFS (actual file changes — judge ONLY from these) ===\n"
+                + "\n\n".join(diffs)
+                + "\n=== END DIFFS ===\n"
+            )
+    if "issue" in lowered:
+        result = run_gh(
+            [
+                "issue",
+                "list",
+                "--repo",
+                REPO,
+                "--state",
+                "open",
+                "--limit",
+                "100",
+                "--json",
+                "number,title,author",
+                "-q",
+                '.[] | "#\\(.number) | \\(.author.login) | \\(.title)"',
+            ]
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            github_context += (
+                "\n=== REAL OPEN ISSUES (use ONLY these, never invent) ===\n"
+                + result.stdout[:8000]
+                + "\n=== END ISSUES ===\n"
+            )
+    return github_context
+
+
+def build_audit_context(task_title: str, task_body: str) -> dict[str, str]:
+    task_text = f"{task_title} {task_body}"
+    inventory = repo_inventory(task_text=task_text)
+    all_files = run(["git", "ls-files"], check=False, quiet=True).stdout.splitlines()
+    file_context = build_file_context(task_title, task_body)
+    directory_context = build_directory_context(all_files, task_text)
+    github_context = build_github_context(task_text)
+    note = ""
+    if file_context:
+        note += (
+            "\n\nIMPORTANT: if editing any shown file, preserve all unrelated content and change only "
+            "what is needed to resolve the reproduced issue."
+        )
+    if github_context:
+        note += (
+            "\n\nCRITICAL: the pull requests and issues above are the only real ones in scope. "
+            "Use them verbatim or do not reference them."
+        )
+    return {
+        "inventory": inventory,
+        "file_context": file_context,
+        "directory_context": directory_context,
+        "github_context": github_context,
+        "note": note,
+    }
+
+
+def configure_git() -> None:
+    run(["git", "config", "user.email", "barrot@barrot-agent.com"])
+    run(["git", "config", "user.name", "Barrot-Agent"])
+
+
+def checkout_branch(branch: str) -> None:
+    result = run(["git", "checkout", "-B", branch], check=False)
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or f"Unable to checkout branch {branch}")
+
+
+def post_issue_comment(message: str) -> None:
+    if not ISSUE or ISSUE == "0":
+        return
+    import tempfile
+
+    with tempfile.TemporaryDirectory(prefix="barrot_comment_") as tmp_dir:
+        comment_path = Path(tmp_dir) / "barrot_comment_body.md"
+    comment_path.write_text(message[:60000], encoding="utf-8")
+    result = run_gh(["issue", "comment", ISSUE, "--repo", REPO, "--body-file", str(comment_path)])
+    if result.returncode != 0:
+        print(result.stderr[:3000], file=sys.stderr)
+
+
+def _cycle_dict(cycle: Any) -> dict[str, Any]:
+    if isinstance(cycle, dict):
+        return cycle
+    if hasattr(cycle, "to_dict"):
+        return cycle.to_dict()
+    raise TypeError("cycle must be a dict or provide to_dict()")
+
+
+def build_project_identity(repo: str) -> dict[str, Any]:
+    return ProjectIdentity.from_seed(repo).to_dict()
+
+
+def _work_dict(payload: dict[str, object] | Any) -> dict[str, Any]:
+    if isinstance(payload, dict):
+        return payload
+    if hasattr(payload, "to_dict"):
+        return payload.to_dict()
+    raise TypeError("payload must be a dict or provide to_dict()")
+
+
+def _extract_cycle_data(payload: dict[str, object] | Any) -> dict[str, Any]:
+    payload_dict = _work_dict(payload)
+    repair_cycle = payload_dict.get("repair_cycle")
+    if isinstance(repair_cycle, dict) and repair_cycle:
+        return repair_cycle
+    return _cycle_dict(payload_dict)
+
+
+def _is_research_cycle(payload: dict[str, Any]) -> bool:
+    return "problem_id" in payload and "sources" in payload and "claims" in payload
+
+
+def create_pull_request(cycle: dict[str, object] | Any) -> None:
+    cycle_data = _extract_cycle_data(cycle)
+    safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
+    head_branch = (
+        str(cycle_data.get("commit", {}).get("branch", "")).strip()
+        or str(cycle_data.get("issue", {}).get("branch", "")).strip()
+        or BRANCH
+    )
+    body = [
+        f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
+        "",
+        f"- cycle_id: {cycle_data.get('cycle_id')}",
+        f"- status: {cycle_data.get('status')}",
+        f"- issue: {cycle_data.get('issue', {}).get('summary', '')}",
+        f"- commit_sha: {cycle_data.get('commit', {}).get('sha', '')}",
+        f"- remote_verified: {cycle_data.get('commit', {}).get('remote_verified', False)}",
+        "",
+        "Validation:",
+        f"- issue_reproduced: {cycle_data.get('issue_reproduced')}",
+        f"- local_validation_passed: {cycle_data.get('local_validation_passed')}",
+        f"- resolution_verified: {cycle_data.get('resolution_verified')}",
+    ]
+    import tempfile
+
+    with tempfile.TemporaryDirectory(prefix="barrot_pr_") as tmp_dir:
+        pr_path = Path(tmp_dir) / "barrot_pr_body.md"
+        pr_path.write_text("\n".join(body), encoding="utf-8")
+    result = run_gh(
+        [
+            "pr",
+            "create",
+            "--repo",
+            REPO,
+            "--title",
+            f"Barrot: {safe_title}",
+            "--body-file",
+            str(pr_path),
+            "--head",
+            head_branch,
+            "--base",
+            "main",
+        ]
+    )
+    if result.returncode != 0 and "already exists" not in (result.stderr + result.stdout).lower():
+        raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "gh pr create failed")
+    if result.stdout.strip():
+        print(result.stdout[:3000])
+    if result.stderr.strip():
+        print(result.stderr[:3000])
+
+
+def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
+    payload = _work_dict(cycle)
+    record_dir = ROOT / ".barrot" / "collaboration_records"
+    record_dir.mkdir(parents=True, exist_ok=True)
+    if _is_research_cycle(payload):
+        record = {
+            "work_bundle": "scientific_discovery",
+            "cycle_id": payload.get("cycle_id"),
+            "problem_id": payload.get("problem_id"),
+            "actions_performed": payload.get("state_history", []),
+            "results": {
+                "status": payload.get("status"),
+                "problem_resolution_status": payload.get("problem_resolution_status"),
+                "acceptance_gate_passed": payload.get("acceptance_gate_passed"),
+            },
+            "evidence": {
+                "problem": payload.get("problem", {}),
+                "sources": payload.get("sources", []),
+                "claims": payload.get("claims", []),
+                "tracks": payload.get("tracks", []),
+                "cross_pollination": payload.get("cross_pollination", []),
+                "convergence_analysis": payload.get("convergence_analysis", {}),
+                "formal_verifications": payload.get("formal_verifications", []),
+                "adversarial_reviews": payload.get("adversarial_reviews", []),
+                "unresolved_questions": payload.get("unresolved_questions", []),
+                "artifacts": payload.get("artifacts", []),
+            },
+            "failures": payload.get("failure"),
+            "final_state": payload.get("current_state"),
+            "remaining_blockers": payload.get("unresolved_questions", []),
+        }
+        latest = record_dir / "latest_scientific_discovery.json"
+        latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+        cycle_id = str(payload.get("cycle_id") or "unknown")
+        per_cycle = record_dir / f"{cycle_id}.json"
+        per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+        return latest
+
+    cycle_data = _extract_cycle_data(payload)
+    record = {
+        "work_bundle": "autonomous_repository_repair",
+        "cycle_id": cycle_data.get("cycle_id"),
+        "actions_performed": cycle_data.get("state_history", []),
+        "files_changed": cycle_data.get("commit", {}).get("changed_paths", []),
+        "tests": cycle_data.get("validation", {}),
+        "results": {
+            "status": cycle_data.get("status"),
+            "repair_verified": cycle_data.get("repair_verified"),
+            "remote_sync_verified": cycle_data.get("remote_sync_verified"),
+            "resolution_verified": cycle_data.get("resolution_verified"),
+            "queue_status": payload.get("status"),
+            "queue_advanced": payload.get("queue_advanced"),
+        },
+        "failures": cycle_data.get("failure"),
+        "evidence": {
+            "issue": cycle_data.get("issue", {}),
+            "repair_plan": cycle_data.get("repair_plan", {}),
+            "changes": cycle_data.get("changes", []),
+            "commit": cycle_data.get("commit", {}),
+            "sync": cycle_data.get("sync", []),
+            "project_identity": payload.get("project_identity", {}),
+            "work_queue": {
+                "work_id": payload.get("work_id"),
+                "current_state": payload.get("current_state"),
+                "retry_history": payload.get("retry_history", []),
+                "sync_operation": payload.get("sync_operation", {}),
+            },
+        },
+        "commits": [cycle_data.get("commit", {})] if cycle_data.get("commit", {}).get("sha") else [],
+        "remote_verification": cycle_data.get("sync", []),
+        "final_state": payload.get("current_state", cycle_data.get("current_state")),
+        "remaining_blockers": payload.get("sync_operation", {}) or cycle_data.get("failure"),
+        "source_materials": {
+            "night_watcher_failure": {
+                "summary": "Repeated unchanged transfer checks ended with empty path/namespace and required safe blocking without overwriting the last valid project identity.",
+                "requirements": [
+                    "preserve last valid project identity",
+                    "reject empty path/namespace observations",
+                    "bound retries and backoff",
+                    "persist retry history and required external action",
+                ],
+            },
+            "copilot_analysis": {
+                "source": ".barrot/collaboration_records/autonomous_takeover_ready.json",
+                "summary": "Existing Barrot repair takeover already required evidence-gated completion, durable cycle persistence, and tool-conflict-safe repair planning.",
+            },
+            "barrot_requirements": {
+                "source": "barrot_agent/orchestration/repository_repair.py",
+                "summary": "The authoritative repair controller requires reproduction, guarded patching, validation, commit evidence, remote verification, and completion gating.",
+            },
+            "cross_correlation": {
+                "agreements": [
+                    "state changes require evidence",
+                    "failures must block false completion",
+                    "durable persistence and safe resume are required",
+                ],
+                "missing_capabilities_filled": [
+                    "durable project identity preservation",
+                    "progress-aware external retry handling",
+                    "queue advancement gating on verified repair success",
+                ],
+            },
+        },
+    }
+    latest = record_dir / "latest_repository_repair.json"
+    latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+    cycle_id = str(cycle_data.get("cycle_id") or "unknown")
+    per_cycle = record_dir / f"{cycle_id}.json"
+    per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
+    return latest
+
+
+def main() -> None:
+    configure_git()
+    checkout_branch(BRANCH)
+
+    if is_scientific_discovery_task(TITLE, TASK):
+        cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
+        rendered = json.dumps(cycle.to_dict(), indent=2)
+        print(rendered)
+        write_collaboration_record(cycle)
+        if cycle.status not in {"complete", "no_solution_claim"}:
+            post_issue_comment(
+                "Barrot scientific discovery failed safely.\n\n```json\n"
+                + rendered[:55000]
+                + "\n```"
+            )
+            raise SystemExit(1)
+        post_issue_comment(
+            "Barrot scientific discovery recorded.\n\n```json\n"
+            + rendered[:55000]
+            + "\n```"
+        )
+        return
+
+    if not GROQ_KEY:
+        raise SystemExit("GROQ_API_KEY not set")
+
+    controller = RepositoryRepairController(
+        brain=ScriptBrain(),
+        workspace=ROOT,
+        workspace_verifier=verify_result,
+    )
+    queue = WorkQueueController(repair_controller=controller)
+    work = queue.run(
+        work_id=f"{ISSUE or 'manual'}:{BRANCH}",
+        project_identity=build_project_identity(REPO),
+        task_title=TITLE,
+        task_body=TASK,
+        issue_number=ISSUE,
+        repo=REPO,
+        branch=BRANCH,
+        audit_context=build_audit_context(TITLE, TASK),
+    )
+    cycle = work.repair_cycle
+
+    rendered = json.dumps(work.to_dict(), indent=2)
+    print(rendered)
+    write_collaboration_record(work)
+
+    if cycle.get("status") == "no_repair_required":
+        if cycle.get("report_only"):
+            return
+        message = cycle.get("report") or "No deterministic repository repair was required."
+        post_issue_comment(message)
+        return
+
+    if cycle.get("status") != "complete" or not work.queue_advanced:
+        post_issue_comment(
+            "Barrot repair failed safely.\n\n```json\n"
+            + rendered[:55000]
+            + "\n```"
+        )
+        raise SystemExit(1)
+
+    create_pull_request(work)
+
+
+if __name__ == "__main__":
+    main()

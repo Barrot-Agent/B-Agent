@@ -232,6 +232,28 @@ def _groq_payload(
     return payload
 
 
+def _send_model_request(payload, *, request_sender=None):
+    """Provider-neutral model boundary; local/OpenAI-compatible by default."""
+    if request_sender is not None:
+        return request_sender(payload)
+    provider = os.environ.get("BARROT_PROVIDER", "local").strip().lower()
+    if provider == "groq":
+        return _send_groq_request(payload)
+    import json as _json
+    import urllib.request as _urllib_request
+    url = os.environ.get("BARROT_MODEL_URL", "http://127.0.0.1:11434/v1/chat/completions").strip()
+    model = os.environ.get("BARROT_MODEL", "local").strip()
+    body = dict(payload); body["model"] = model
+    headers = {"Content-Type": "application/json"}
+    key = os.environ.get("BARROT_MODEL_API_KEY", "").strip()
+    if key: headers["Authorization"] = "Bearer " + key
+    req = _urllib_request.Request(url, data=_json.dumps(body, ensure_ascii=False).encode("utf-8"), headers=headers, method="POST")
+    try:
+        with _urllib_request.urlopen(req, timeout=90) as response:
+            return _json.loads(response.read().decode("utf-8"))
+    except Exception as exc:
+        raise RuntimeError(f"Model provider request failed: {type(exc).__name__}: {exc}") from exc
+
 def _send_groq_request(
     payload: dict[str, Any],
     *,
@@ -487,7 +509,7 @@ class ScriptBrain:
                 messages,
                 tools=self.tools if use_tools else None,
             )
-            data = _send_groq_request(
+            data = _send_model_request(
                 payload,
                 request_sender=self.request_sender,
             )

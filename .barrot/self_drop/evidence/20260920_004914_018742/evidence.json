@@ -1,0 +1,20 @@
+{
+  "schema": "barrot.self_drop.bridge.v1",
+  "timestamp_utc": "2026-09-20T00:49:14.062273+00:00",
+  "task_id": "live_tool_loop_controller_boundary",
+  "action": "SELF_DROP_PROBE",
+  "request": {
+    "action": "SELF_DROP_PROBE",
+    "task_id": "live_tool_loop_controller_boundary"
+  },
+  "request_file": ".barrot/self_drop/requests/live_tool_loop_controller_boundary_20260920_004914_018742.json",
+  "generated_bundle": ".barrot/self_drop/inbox/barrot_autonomous_live_tool_loop_controller_boundary_20260920_004914_018742.sh",
+  "bundle_sha256": "d76ce6e4815f2dad304cede7d15a7ae013a349b2b3813e7728741163f441a958",
+  "returncode": 0,
+  "stdout": "BARROT_AUTONOMOUS_SELF_DROP=TRUE\nBARROT_TASK_ID=live_tool_loop_controller_boundary\nBARROT_ACTION=SELF_DROP_PROBE\nBARROT_EXECUTED_AT=2026-09-20T00:49:14Z\nBARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE\n",
+  "stderr": "",
+  "result_file": ".barrot/self_drop/outbox/barrot_autonomous_live_tool_loop_controller_boundary_20260920_004914_018742.result",
+  "autonomous_generation": true,
+  "repository_mutation": false,
+  "arbitrary_shell_input": false
+}

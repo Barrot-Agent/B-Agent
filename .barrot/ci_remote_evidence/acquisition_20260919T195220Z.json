@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "20260919T195220Z",
+  "repo": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+  "task": "Acquire concrete CI evidence before repository repair",
+  "policy": [
+    "preserve dirty work",
+    "no reset",
+    "no clean",
+    "no stash",
+    "no invented CI evidence"
+  ]
+}

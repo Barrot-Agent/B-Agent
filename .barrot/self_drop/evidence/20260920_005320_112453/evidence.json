@@ -1,0 +1,20 @@
+{
+  "schema": "barrot.self_drop.bridge.v1",
+  "timestamp_utc": "2026-09-20T00:53:20.172657+00:00",
+  "task_id": "clean_live_model_self_drop_probe",
+  "action": "SELF_DROP_PROBE",
+  "request": {
+    "action": "SELF_DROP_PROBE",
+    "task_id": "clean_live_model_self_drop_probe"
+  },
+  "request_file": ".barrot/self_drop/requests/clean_live_model_self_drop_probe_20260920_005320_112453.json",
+  "generated_bundle": ".barrot/self_drop/inbox/barrot_autonomous_clean_live_model_self_drop_probe_20260920_005320_112453.sh",
+  "bundle_sha256": "cb2855cc4cf3d869a3a2dd5fb5fd37c3865d242930c6a1affa2bb027971b7596",
+  "returncode": 0,
+  "stdout": "BARROT_AUTONOMOUS_SELF_DROP=TRUE\nBARROT_TASK_ID=clean_live_model_self_drop_probe\nBARROT_ACTION=SELF_DROP_PROBE\nBARROT_EXECUTED_AT=2026-09-20T00:53:20Z\nBARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE\n",
+  "stderr": "",
+  "result_file": ".barrot/self_drop/outbox/barrot_autonomous_clean_live_model_self_drop_probe_20260920_005320_112453.result",
+  "autonomous_generation": true,
+  "repository_mutation": false,
+  "arbitrary_shell_input": false
+}
