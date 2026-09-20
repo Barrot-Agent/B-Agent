@@ -306,6 +306,33 @@ class ScriptBrain:
             {
                 "type": "function",
                 "function": {
+                    "name": "self_drop",
+                    "description": (
+                        "Generate and execute a validated Barrot autonomous bundle "
+                        "through the approved self-drop path. Only supported "
+                        "self-drop actions are accepted."
+                    ),
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "task_id": {
+                                "type": "string",
+                                "description": "Unique identifier for the autonomous task."
+                            },
+                            "action": {
+                                "type": "string",
+                                "enum": ["SELF_DROP_PROBE"],
+                                "description": "Approved self-drop action."
+                            }
+                        },
+                        "required": ["task_id", "action"],
+                        "additionalProperties": False
+                    }
+                }
+            },
+            {
+                "type": "function",
+                "function": {
                     "name": "barrot.deliver_bundle",
                     "description": (
                         "Deliver a complete valid Python repair bundle into the "
