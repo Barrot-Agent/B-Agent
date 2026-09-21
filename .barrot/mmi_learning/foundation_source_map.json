@@ -1,0 +1,97 @@
+{
+  "bundle": "BARROT_V3_SOURCE_SET_01_FOUNDATIONS",
+  "important_boundary": "These are external reference sources. They do not override Barrot's canonical mission, MMI protocol, governance rules, or repository-verified facts.",
+  "ingestion_method": "MMI",
+  "sources": [
+    {
+      "id": "NIST-AI-100-1",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/01_NIST-AI-100-1.md",
+      "official_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
+      "publisher": "NIST",
+      "role_for_barrot": "AI risk-management vocabulary, governance, measurement, and lifecycle controls.",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "version": "1.0"
+    },
+    {
+      "id": "NIST-AI-600-1",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/02_NIST-AI-600-1.md",
+      "official_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+      "publisher": "NIST",
+      "role_for_barrot": "Generative-AI-specific risk and trustworthiness practices.",
+      "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+      "version": "AI 600-1"
+    },
+    {
+      "id": "OWASP-GENAI-LLM-2026",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/03_OWASP-GENAI-LLM-2026.md",
+      "official_url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "publisher": "OWASP Gen AI Security Project",
+      "role_for_barrot": "LLM/application security threats, mitigations, agentic boundaries, and adversarial knowledge.",
+      "title": "OWASP GenAI LLM Top 10 2026",
+      "version": "2026"
+    },
+    {
+      "id": "MCP-2026-07-28",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/04_MCP-2026-07-28.md",
+      "official_url": "https://modelcontextprotocol.io/specification/2026-07-28",
+      "publisher": "Model Context Protocol",
+      "role_for_barrot": "Tool/resource/prompt interoperability and governed external capability integration.",
+      "title": "Model Context Protocol Specification",
+      "version": "2026-07-28"
+    },
+    {
+      "id": "A2A-1.0.0",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/05_A2A-1.0.0.md",
+      "official_url": "https://a2a-protocol.org/latest/specification/",
+      "publisher": "A2A Protocol",
+      "role_for_barrot": "Agent discovery, capability negotiation, task exchange, and inter-agent interoperability.",
+      "title": "Agent2Agent Protocol Specification",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SLSA-1.2",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/06_SLSA-1.2.md",
+      "official_url": "https://slsa.dev/spec/v1.2/",
+      "publisher": "SLSA / Linux Foundation",
+      "role_for_barrot": "Software supply-chain security, provenance, attestations, and artifact verification.",
+      "title": "SLSA Specification",
+      "version": "1.2"
+    },
+    {
+      "id": "IN-TOTO",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/07_IN-TOTO.md",
+      "official_url": "https://in-toto.io/docs/specs/",
+      "publisher": "in-toto",
+      "role_for_barrot": "Authorized supply-chain steps, artifact rules, materials/products, and verification.",
+      "title": "in-toto Specifications",
+      "version": "Stable v1.0 and current index"
+    },
+    {
+      "id": "OPENTELEMETRY",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/08_OPENTELEMETRY.md",
+      "official_url": "https://opentelemetry.io/docs/",
+      "publisher": "OpenTelemetry",
+      "role_for_barrot": "Traces, metrics, logs, execution lineage, and vendor-neutral observability.",
+      "title": "OpenTelemetry Documentation",
+      "version": "Current"
+    },
+    {
+      "id": "JSON-SCHEMA",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/09_JSON-SCHEMA.md",
+      "official_url": "https://json-schema.org/specification",
+      "publisher": "JSON Schema",
+      "role_for_barrot": "Typed contracts for bundles, operations, handoffs, evidence, and provenance.",
+      "title": "JSON Schema Specification",
+      "version": "Current"
+    },
+    {
+      "id": "PYTEST",
+      "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/10_PYTEST.md",
+      "official_url": "https://docs.pytest.org/en/latest/reference/reference.html",
+      "publisher": "pytest",
+      "role_for_barrot": "Automated validation and regression testing infrastructure.",
+      "title": "pytest Reference",
+      "version": "Current"
+    }
+  ]
+}

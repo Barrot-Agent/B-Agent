@@ -1,0 +1,134 @@
+barrot_agent/smart_agent.py:257:            "through the application of reinforcement learning from human feedback.",
+barrot_agent/smart_agent.py:726:            "title": "Search for learning resources",
+barrot_agent/smart_agent.py:733:            "title": "Produce learning summary",
+barrot_agent/agi/agi_orchestrator.py:13:5. Real-time adaptive learning
+barrot_agent/agi/agi_orchestrator.py:45:    ADAPTIVE_LEARNING = "adaptive_learning"
+barrot_agent/agi/agi_orchestrator.py:60:    LEARNING = "learning"
+barrot_agent/agi/agi_orchestrator.py:73:    learning_rate: float = 0.1
+barrot_agent/agi/agi_orchestrator.py:202:        # Record decision for learning
+barrot_agent/agi/agi_orchestrator.py:266:        self.metrics.learning_rate = min(1.0, self.metrics.learning_rate * 1.05)
+barrot_agent/agi/agi_orchestrator.py:342:        Uses meta-learning to improve individual capabilities without
+barrot_agent/agi/agi_reasoning.py:62:        self.learning_rate = 0.1
+barrot_agent/agi/agi_reasoning.py:118:    def adaptive_learning(self, experience: Dict[str, Any], outcome: str):
+barrot_agent/agi/agi_reasoning.py:177:        Demonstrates AGI-level transfer learning
+barrot_agent/analysis/character_capability_analyzer.py:525:                description="Accelerated learning and knowledge absorption",
+barrot_agent/analysis/character_capability_analyzer.py:922:                real_world_mapping="Continuous learning and optimization",
+barrot_agent/analysis/character_capability_analyzer.py:996:                real_world_mapping="Pattern learning and replication",
+barrot_agent/analysis/email_analyzer.py:26:    LEARNING_OPPORTUNITY = "learning_opportunity"
+barrot_agent/analysis/email_analyzer.py:47:        """Initialize patterns that indicate learning opportunities"""
+barrot_agent/analysis/email_analyzer.py:109:        # Extract learning opportunities
+barrot_agent/analysis/email_analyzer.py:110:        learning_content = self._extract_learning_content(full_content, attachments)
+barrot_agent/analysis/email_analyzer.py:120:            priority, categories, action_items, learning_content, opportunities
+barrot_agent/analysis/email_analyzer.py:136:            "learning_content": learning_content,
+barrot_agent/analysis/email_analyzer.py:201:        # Check for learning opportunities
+barrot_agent/analysis/email_analyzer.py:265:    def _extract_learning_content(
+barrot_agent/analysis/email_analyzer.py:268:        """Extract learning opportunities from email"""
+barrot_agent/analysis/email_analyzer.py:269:        learning_items = []
+barrot_agent/analysis/email_analyzer.py:274:                learning_items.append(
+barrot_agent/analysis/email_analyzer.py:283:                learning_items.append(
+barrot_agent/analysis/email_analyzer.py:287:        return learning_items
+barrot_agent/analysis/email_analyzer.py:340:        learning_content: List[Dict[str, str]],
+barrot_agent/analysis/email_analyzer.py:373:        if learning_content:
+barrot_agent/analysis/email_analyzer.py:374:            score += min(len(learning_content) * 0.1, 0.2)
+barrot_agent/analysis/email_analyzer.py:401:            return "Review for learning - contains useful technical content"
+barrot_agent/ingestion/dependency_micro_ingestion.py:447:                "Machine learning and AI",
+barrot_agent/ingestion/dependency_micro_ingestion.py:451:                "Deep learning research",
+barrot_agent/ingestion/dependency_micro_ingestion.py:454:                "Reinforcement learning",
+barrot_agent/ingestion/dependency_micro_ingestion.py:589:                "Use learning rate scheduling for better convergence",
+barrot_agent/ingestion/dependency_micro_ingestion.py:618:                "Transfer learning pattern",
+barrot_agent/ingestion/dependency_micro_ingestion.py:951:            "machine_learning": ["pytorch", "tensorflow", "scikit-learn"],
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:12:- Continuous learning from resolution outcomes
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:138:    lessons_learned: List[str]
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:151:        self.learning_outcomes: List[LearningOutcome] = []
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:665:                    "Not learning from repeated conflict patterns",
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:670:    def record_learning_outcome(self, outcome: LearningOutcome) -> None:
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:671:        """Record the outcome of a conflict resolution for learning"""
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:672:        self.learning_outcomes.append(outcome)
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:772:        # Export learning outcomes
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:773:        outcomes_file = output_path / "merge_conflict_learning_outcomes.json"
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:775:            json.dump([asdict(o) for o in self.learning_outcomes], f, indent=2)
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:776:        exports["learning_outcomes"] = str(outcomes_file)
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:786:            "total_learning_outcomes": len(self.learning_outcomes),
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:811:        report.append(f"- **Learning Outcomes**: {len(self.learning_outcomes)}\n")
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py:897:    print("🦜 Knowledge base continuously learning and improving...")
+barrot_agent/monetization/mmi_data_analyzer.py:26:    META_LEARNING = "meta_learning"
+barrot_agent/monetization/mmi_data_analyzer.py:27:    TRANSFER_LEARNING = "transfer_learning"
+barrot_agent/monetization/mmi_data_analyzer.py:32:    CONTINUAL_LEARNING = "continual_learning"
+barrot_agent/monetization/mmi_data_analyzer.py:115:                reasoning="Direct path to abstract reasoning mastery. Analysis of winning solutions provides meta-learning patterns.",
+barrot_agent/monetization/mmi_data_analyzer.py:190:                integration_notes="Ingest via arXiv API. Focus on AI alignment, safety, and value learning papers.",
+barrot_agent/monetization/mmi_data_analyzer.py:199:                reasoning="Designed for few-shot learning and transfer. 10+ datasets for cross-domain learning.",
+barrot_agent/monetization/mmi_data_analyzer.py:203:                integration_notes="Download via TensorFlow Datasets. Use for meta-learning experiments.",
+barrot_agent/monetization/mmi_data_analyzer.py:518:3. Apply learnings to benchmark performance
+barrot_agent/monetization/mmi_data_analyzer.py:542:- Better transfer learning across domains
+barrot_agent/monetization/mmi_data_analyzer.py:543:- Stronger meta-learning capabilities
+barrot_agent/monetization/mmi_data_analyzer.py:553:- **Memory Bundles**: Tracking in data-ingestion-log.md and learning-progress.md
+barrot_agent/monetization/mmi_data_analyzer.py:558:- Enhanced meta-learning framework
+barrot_agent/monetization/mmi_data_analyzer.py:583:- [ ] Document lessons learned
+barrot_agent/monetization/monetization_engine.py:125:                competitive_moat="AGI-level understanding + continuous learning from all ingested code patterns",
+barrot_agent/monetization/monetization_engine.py:213:                competitive_moat="Continuous learning from all competitions + AGI reasoning capabilities",
+barrot_agent/monetization/monetization_engine.py:307:                barrot_unique_advantage="Can generate high-quality content across domains. Continuous learning ensures cutting-edge insights.",
+barrot_agent/monetization/monetization_engine.py:383:                competitive_moat="AGI-level strategic thinking + continuous learning from industry best practices",
+barrot_agent/monetization/monetization_engine.py:852:- Document all learnings in memory-bundles
+barrot_agent/orchestration/__init__.py:3:from .learning_filter import (
+barrot_agent/orchestration/__init__.py:7:from .verified_learning_store import (
+barrot_agent/orchestration/__init__.py:10:from .learning_curriculum import (
+barrot_agent/orchestration/barrot_integration.py:151:    def quantum_enhanced_learning(self, learning_data: Dict[str, Any]) -> Dict[str, Any]:
+barrot_agent/orchestration/barrot_integration.py:153:        Enhance learning processes with quantum entanglement principles
+barrot_agent/orchestration/barrot_integration.py:155:        # Create entangled learning states
+barrot_agent/orchestration/barrot_integration.py:156:        learning_approaches = [
+barrot_agent/orchestration/barrot_integration.py:163:        learning_id = f"learning_{hash(str(learning_data))}"
+barrot_agent/orchestration/barrot_integration.py:164:        quantum_state = create_entangled_decision_space(learning_id, learning_approaches)
+barrot_agent/orchestration/barrot_integration.py:166:        # Optimal learning approach via quantum collapse
+barrot_agent/orchestration/barrot_integration.py:167:        optimal_approach = self.quantum_system.collapse_state(learning_id)
+barrot_agent/orchestration/barrot_integration.py:169:        # Apply AGI adaptive learning
+barrot_agent/orchestration/barrot_integration.py:171:            "problem_type": learning_data.get("domain", "general"),
+barrot_agent/orchestration/barrot_integration.py:175:        # Record learning outcome
+barrot_agent/orchestration/barrot_integration.py:176:        outcome = learning_data.get("outcome", "success")
+barrot_agent/orchestration/barrot_integration.py:177:        self.agi_system.adaptive_learning(experience, outcome)
+barrot_agent/orchestration/barrot_integration.py:180:            "learning_data": learning_data,
+barrot_agent/orchestration/barrot_integration.py:182:            "adaptive_learning_applied": True,
+barrot_agent/orchestration/barrot_integration.py:212:                "barrot_goals": ["learning", "automation", "opportunities", "optimization"],
+barrot_agent/orchestration/barrot_integration.py:432:                "learning_rate": self.agi_system.learning_rate,
+barrot_agent/orchestration/autonomous_actions.py:15:from .learning_filter import LearningFilter
+barrot_agent/orchestration/autonomous_actions.py:16:from .verified_learning_store import VerifiedLearningStore
+barrot_agent/orchestration/autonomous_actions.py:17:from .learning_curriculum import LearningCurriculum
+barrot_agent/orchestration/autonomous_actions.py:69:        self.learning_filter = LearningFilter()
+barrot_agent/orchestration/autonomous_actions.py:70:        self.learning_store = VerifiedLearningStore()
+barrot_agent/orchestration/autonomous_actions.py:71:        self.learning_curriculum = LearningCurriculum(
+barrot_agent/orchestration/autonomous_actions.py:73:            learning_store=self.learning_store,
+barrot_agent/orchestration/autonomous_actions.py:218:                learning = self.learning_filter.filter(
+barrot_agent/orchestration/autonomous_actions.py:226:                if learning.accepted:
+barrot_agent/orchestration/autonomous_actions.py:227:                    stored = self.learning_store.append(learning)
+barrot_agent/orchestration/autonomous_actions.py:229:                record["learning"] = {
+barrot_agent/orchestration/autonomous_actions.py:230:                    "accepted": learning.accepted,
+barrot_agent/orchestration/autonomous_actions.py:232:                    "lesson": learning.lesson,
+barrot_agent/orchestration/autonomous_actions.py:233:                    "reason": learning.reason,
+barrot_agent/orchestration/autonomous_actions.py:276:    def run_next_learning_goal(
+barrot_agent/orchestration/autonomous_actions.py:279:        """Select and execute the next progressive learning goal."""
+barrot_agent/orchestration/autonomous_actions.py:281:        goal = self.learning_curriculum.next_goal()
+barrot_agent/orchestration/learning_filter.py:1:"""Filter autonomous outcomes into verified reusable learning records."""
+barrot_agent/orchestration/learning_filter.py:56:        # LIST_FILES alone is useful for navigation but is not deep learning.
+barrot_agent/orchestration/verified_learning_store.py:1:"""Persist only novel verified Barrot learning records."""
+barrot_agent/orchestration/verified_learning_store.py:10:from .learning_filter import LearningRecord
+barrot_agent/orchestration/verified_learning_store.py:14:    """Append accepted and novel learning records to a curated JSONL store."""
+barrot_agent/orchestration/verified_learning_store.py:23:        """Read all persisted verified learning records."""
+barrot_agent/orchestration/verified_learning_store.py:88:        """Persist an accepted learning record only if it is novel."""
+barrot_agent/orchestration/learning_curriculum.py:1:"""Select progressively deeper repository learning goals for Barrot."""
+barrot_agent/orchestration/learning_curriculum.py:7:from .verified_learning_store import VerifiedLearningStore
+barrot_agent/orchestration/learning_curriculum.py:11:    """Choose repository learning goals that require deeper inspection."""
+barrot_agent/orchestration/learning_curriculum.py:16:        learning_store: VerifiedLearningStore | None = None,
+barrot_agent/orchestration/learning_curriculum.py:19:        self.learning_store = (
+barrot_agent/orchestration/learning_curriculum.py:20:            learning_store
+barrot_agent/orchestration/learning_curriculum.py:26:            records = self.learning_store.read_all()
+barrot_agent/orchestration/learning_curriculum.py:45:                    "evaluation, and learning are connected. "
+barrot_agent/mmi_v1.py:152:    learning: list[str] = field(default_factory=list)
+scripts/nih_grants_research.py:14:Topics searched are Barrot's own real, previously-expressed learning
+scripts/barrot_capability_audit.py:30:    5: "Embodied learning (emulator)",
+scripts/barrot_build_knowledge.py:76:        print("LEARNING:", attempt.get("learning"))
+scripts/barrot_recursive_coding.py:14:    / "barrot_code_learning.jsonl"
+scripts/barrot_learning_daemon.py:1:"""Long-running verified progressive learning daemon for Barrot."""
+scripts/barrot_learning_daemon.py:76:            result = loop.run_next_learning_goal()
+scripts/barrot_learning_daemon.py:103:                attempt.get("learning"),
+scripts/barrot_learning_daemon.py:109:                        "barrot: validated autonomous learning "
+tests/test_mmi_v1.py:446:    record.learning.append({
+tests/test_mmi_v1.py:452:    assert record.learning[0]["type"] == ParseState.HYPOTHESIZED.value

@@ -1,0 +1,181 @@
+{
+  "inventory_count": 29,
+  "manifest_source_count": 3,
+  "protocol": "MMI",
+  "records": [
+    {
+      "bytes": 1854,
+      "path": ".barrot/sources/mmi_original_ingest/MMI_INGESTION_LEDGER.jsonl",
+      "sha256": "a27a68ee6c5a9b9c5e913b1760ee08945bfed3d7b771648c7bc5b8290dcd8289",
+      "suffix": ".jsonl"
+    },
+    {
+      "bytes": 4776,
+      "path": ".barrot/sources/mmi_original_ingest/MMI_SOURCE_MANIFEST.json",
+      "sha256": "4e85938e5e08a593d9141a0daba79eae81ef00ab940e8e6536df5dc87184ecbb",
+      "suffix": ".json"
+    },
+    {
+      "bytes": 1546,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/README.md",
+      "sha256": "6a3ae826cd2a1fbc80d5778451a08ee06ae6d345a765f72e450703a70bbeb5e6",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 1089,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/metadata/LOCAL_FILES_SHA256.txt",
+      "sha256": "4e7c6a8a4522d17deb23635107649ec4ee5eaecd69017bd7a93e238cb0aa3455",
+      "suffix": ".txt"
+    },
+    {
+      "bytes": 4317,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/metadata/manifest.json",
+      "sha256": "fc57939afc4b787fb05586729eb324baa9d96dfb670be0e53aaea83b6e643c8f",
+      "suffix": ".json"
+    },
+    {
+      "bytes": 610,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/01_NIST-AI-100-1.md",
+      "sha256": "9b5d683eb2dea84671e01982547f992fdec8b9316ff7e207aa3baf28f5496344",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 650,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/02_NIST-AI-600-1.md",
+      "sha256": "dbf80bab3a6f82ddbda7cedbd71068aa45f8003c0d72cfaf851fe8b09952c7b4",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 575,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/03_OWASP-GENAI-LLM-2026.md",
+      "sha256": "f83f1c04543b286e3257e475bc97cdc4d28fe6689939907ca4526ff30582bddd",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 502,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/04_MCP-2026-07-28.md",
+      "sha256": "f9cfcad5e54dd097584f4dc455f7670a7c2c873db853c0fe12d7a5cefab0e739",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 476,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/05_A2A-1.0.0.md",
+      "sha256": "1c095d6dcc607f81745406fd13d5ff3dd49a6b5d99745368152e521b84187548",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 444,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/06_SLSA-1.2.md",
+      "sha256": "8a3a7b130d7452ebd9673f08a01caf9ae17c02a420dd479b6606a363bcc047a0",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 460,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/07_IN-TOTO.md",
+      "sha256": "bf4620c74a3b4558131f22c5084154fd622e5a9bd9deb44bb3e8e5d837656740",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 446,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/08_OPENTELEMETRY.md",
+      "sha256": "a74378ea263b54ec57f004129c33db6db80bf3461fbd8bbcc1d802e8727aa68c",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 448,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/09_JSON-SCHEMA.md",
+      "sha256": "cf91f8eda84315036da44e96be686e7d8ed38d63420c48a1fd8f2c9981e90a57",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 433,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/10_PYTEST.md",
+      "sha256": "dd8af610bc6eb56fc545f0b30077a0553d5b90ce8df81ff5077fe97551099493",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 53248,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/.coverage",
+      "sha256": "07fe49f4e4e0bc381ab98c86d832ec498bbf8f53fe9aaa98cdb179ecbdb7094f",
+      "suffix": ""
+    },
+    {
+      "bytes": 37,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/.pytest_cache/.gitignore",
+      "sha256": "3ed731b65d06150c138e2dadb0be0697550888a6b47eb8c45ecc9adba8b8e9bd",
+      "suffix": ""
+    },
+    {
+      "bytes": 191,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/.pytest_cache/CACHEDIR.TAG",
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "suffix": ".TAG"
+    },
+    {
+      "bytes": 302,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/.pytest_cache/README.md",
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 2,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/.pytest_cache/v/cache/lastfailed",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "suffix": ""
+    },
+    {
+      "bytes": 475,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/.pytest_cache/v/cache/nodeids",
+      "sha256": "508f02d861505be32715604b978a5ba6873d753e4f2505c9b708aff501857007",
+      "suffix": ""
+    },
+    {
+      "bytes": 890,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/README.md",
+      "sha256": "b0bcf60fc4dbf9d29aeecea48d53fa7589e093019f82a14f7b165894f74e98fb",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 462,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/barrot_agent/structural_analysis/__init__.py",
+      "sha256": "ac44cee4341e27a185044be2587336aa67d95afe5a44bdd3a7d8f1c89373bb1a",
+      "suffix": ".py"
+    },
+    {
+      "bytes": 8287,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/barrot_agent/structural_analysis/core.py",
+      "sha256": "61dff677eb0690b916f45d00bf5125371e0ed1a3d0638f4ab362f96a20cac681",
+      "suffix": ".py"
+    },
+    {
+      "bytes": 6329,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/coverage.xml",
+      "sha256": "8f87e91f1c1502d2ea6c55a37245150610720e801052d7c2ec1a6ac7f0b59c46",
+      "suffix": ".xml"
+    },
+    {
+      "bytes": 2263,
+      "path": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/tests/test_structural_analysis.py",
+      "sha256": "61f9171d8359505b55f3a0c47d037d74f4b55e6af6e58bc2ba2f853492761bff",
+      "suffix": ".py"
+    },
+    {
+      "bytes": 11964,
+      "path": ".barrot/sources/mmi_original_ingest/raw/BARROT_V3_PERMANENT_CONTINUATION_SOURCE.md",
+      "sha256": "25eb5a6dcb2b6cc54ea0f9ab138ef087b2c211b98a92722e6bb1d5da1cfb4af3",
+      "suffix": ".md"
+    },
+    {
+      "bytes": 8314,
+      "path": ".barrot/sources/mmi_original_ingest/raw/BARROT_V3_SOURCE_SET_01_FOUNDATIONS.zip",
+      "sha256": "8ef7d8a8c34bf24f6e582cb655add169de1760d13db80c4acb77b886da9f9dda",
+      "suffix": ".zip"
+    },
+    {
+      "bytes": 15599,
+      "path": ".barrot/sources/mmi_original_ingest/raw/barrot_structural_analysis_core_v1_1.tar.gz",
+      "sha256": "2cbcb68743a9224a753a6be4cf64eb154e0bc8734b36d3f1d1a0258b8989e430",
+      "suffix": ".gz"
+    }
+  ]
+}

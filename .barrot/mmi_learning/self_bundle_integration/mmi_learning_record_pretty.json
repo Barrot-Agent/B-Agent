@@ -1,0 +1,299 @@
+{
+    "candidate_capability_implications": [
+        {
+            "id": "CAP-001",
+            "statement": "Evidence stage should remain explicit when learned facts move through the system.",
+            "status": "candidate"
+        },
+        {
+            "id": "CAP-002",
+            "statement": "Verification status should remain distinct from descriptor similarity.",
+            "status": "candidate"
+        },
+        {
+            "id": "CAP-003",
+            "statement": "Provenance should remain attached to derived structural representations.",
+            "status": "candidate"
+        },
+        {
+            "id": "CAP-004",
+            "statement": "External standards should inform Barrot's architecture without silently overriding repository-verified facts.",
+            "status": "candidate"
+        }
+    ],
+    "foundation_source_map": {
+        "bundle": "BARROT_V3_SOURCE_SET_01_FOUNDATIONS",
+        "important_boundary": "These are external reference sources. They do not override Barrot's canonical mission, MMI protocol, governance rules, or repository-verified facts.",
+        "ingestion_method": "MMI",
+        "sources": [
+            {
+                "id": "NIST-AI-100-1",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/01_NIST-AI-100-1.md",
+                "official_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
+                "publisher": "NIST",
+                "role_for_barrot": "AI risk-management vocabulary, governance, measurement, and lifecycle controls.",
+                "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+                "version": "1.0"
+            },
+            {
+                "id": "NIST-AI-600-1",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/02_NIST-AI-600-1.md",
+                "official_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+                "publisher": "NIST",
+                "role_for_barrot": "Generative-AI-specific risk and trustworthiness practices.",
+                "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+                "version": "AI 600-1"
+            },
+            {
+                "id": "OWASP-GENAI-LLM-2026",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/03_OWASP-GENAI-LLM-2026.md",
+                "official_url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+                "publisher": "OWASP Gen AI Security Project",
+                "role_for_barrot": "LLM/application security threats, mitigations, agentic boundaries, and adversarial knowledge.",
+                "title": "OWASP GenAI LLM Top 10 2026",
+                "version": "2026"
+            },
+            {
+                "id": "MCP-2026-07-28",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/04_MCP-2026-07-28.md",
+                "official_url": "https://modelcontextprotocol.io/specification/2026-07-28",
+                "publisher": "Model Context Protocol",
+                "role_for_barrot": "Tool/resource/prompt interoperability and governed external capability integration.",
+                "title": "Model Context Protocol Specification",
+                "version": "2026-07-28"
+            },
+            {
+                "id": "A2A-1.0.0",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/05_A2A-1.0.0.md",
+                "official_url": "https://a2a-protocol.org/latest/specification/",
+                "publisher": "A2A Protocol",
+                "role_for_barrot": "Agent discovery, capability negotiation, task exchange, and inter-agent interoperability.",
+                "title": "Agent2Agent Protocol Specification",
+                "version": "1.0.0"
+            },
+            {
+                "id": "SLSA-1.2",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/06_SLSA-1.2.md",
+                "official_url": "https://slsa.dev/spec/v1.2/",
+                "publisher": "SLSA / Linux Foundation",
+                "role_for_barrot": "Software supply-chain security, provenance, attestations, and artifact verification.",
+                "title": "SLSA Specification",
+                "version": "1.2"
+            },
+            {
+                "id": "IN-TOTO",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/07_IN-TOTO.md",
+                "official_url": "https://in-toto.io/docs/specs/",
+                "publisher": "in-toto",
+                "role_for_barrot": "Authorized supply-chain steps, artifact rules, materials/products, and verification.",
+                "title": "in-toto Specifications",
+                "version": "Stable v1.0 and current index"
+            },
+            {
+                "id": "OPENTELEMETRY",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/08_OPENTELEMETRY.md",
+                "official_url": "https://opentelemetry.io/docs/",
+                "publisher": "OpenTelemetry",
+                "role_for_barrot": "Traces, metrics, logs, execution lineage, and vendor-neutral observability.",
+                "title": "OpenTelemetry Documentation",
+                "version": "Current"
+            },
+            {
+                "id": "JSON-SCHEMA",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/09_JSON-SCHEMA.md",
+                "official_url": "https://json-schema.org/specification",
+                "publisher": "JSON Schema",
+                "role_for_barrot": "Typed contracts for bundles, operations, handoffs, evidence, and provenance.",
+                "title": "JSON Schema Specification",
+                "version": "Current"
+            },
+            {
+                "id": "PYTEST",
+                "local_artifact": ".barrot/sources/mmi_original_ingest/extracted/foundations/barrot_v3_source_set_01/sources/10_PYTEST.md",
+                "official_url": "https://docs.pytest.org/en/latest/reference/reference.html",
+                "publisher": "pytest",
+                "role_for_barrot": "Automated validation and regression testing infrastructure.",
+                "title": "pytest Reference",
+                "version": "Current"
+            }
+        ]
+    },
+    "generated_at": "2026-09-21T06:48:38.605449+00:00",
+    "observations": [
+        {
+            "evidence": "foundation metadata manifest",
+            "id": "OBS-001",
+            "stage": "observed",
+            "statement": "The foundation bundle contains ten named external reference sources."
+        },
+        {
+            "evidence": "structural_analysis/core.py",
+            "id": "OBS-002",
+            "stage": "observed",
+            "statement": "The Structural Analysis Core explicitly models evidence stage and verification status."
+        },
+        {
+            "evidence": "StructuralAnalyzer.compare_invariants",
+            "id": "OBS-003",
+            "stage": "observed",
+            "statement": "Structural invariant descriptor agreement does not produce an equivalence claim."
+        },
+        {
+            "evidence": "StructuralAnalyzer.analyze",
+            "id": "OBS-004",
+            "stage": "observed",
+            "statement": "Structural signatures preserve provenance and use deterministic canonicalization."
+        }
+    ],
+    "protocol": "MMI",
+    "source_manifest": {
+        "created_at": "2026-09-21T06:42:28.805348+00:00",
+        "parsed_scope": {
+            "foundations_zip": {
+                "files": [
+                    "barrot_v3_source_set_01/README.md",
+                    "barrot_v3_source_set_01/metadata/LOCAL_FILES_SHA256.txt",
+                    "barrot_v3_source_set_01/metadata/manifest.json",
+                    "barrot_v3_source_set_01/sources/01_NIST-AI-100-1.md",
+                    "barrot_v3_source_set_01/sources/02_NIST-AI-600-1.md",
+                    "barrot_v3_source_set_01/sources/03_OWASP-GENAI-LLM-2026.md",
+                    "barrot_v3_source_set_01/sources/04_MCP-2026-07-28.md",
+                    "barrot_v3_source_set_01/sources/05_A2A-1.0.0.md",
+                    "barrot_v3_source_set_01/sources/06_SLSA-1.2.md",
+                    "barrot_v3_source_set_01/sources/07_IN-TOTO.md",
+                    "barrot_v3_source_set_01/sources/08_OPENTELEMETRY.md",
+                    "barrot_v3_source_set_01/sources/09_JSON-SCHEMA.md",
+                    "barrot_v3_source_set_01/sources/10_PYTEST.md"
+                ]
+            },
+            "structural_core_tar": {
+                "files": [
+                    "barrot_refined/.pytest_cache/.gitignore",
+                    "barrot_refined/.pytest_cache/CACHEDIR.TAG",
+                    "barrot_refined/.pytest_cache/README.md",
+                    "barrot_refined/.pytest_cache/v/cache/lastfailed",
+                    "barrot_refined/.pytest_cache/v/cache/nodeids",
+                    "barrot_refined/README.md",
+                    "barrot_refined/barrot_agent/structural_analysis/__init__.py",
+                    "barrot_refined/barrot_agent/structural_analysis/__pycache__/__init__.cpython-313.pyc",
+                    "barrot_refined/barrot_agent/structural_analysis/__pycache__/core.cpython-313.pyc",
+                    "barrot_refined/barrot_agent/structural_analysis/core.py",
+                    "barrot_refined/tests/__pycache__/test_structural_analysis.cpython-313-pytest-9.0.2.pyc",
+                    "barrot_refined/tests/__pycache__/test_structural_analysis.cpython-313.pyc",
+                    "barrot_refined/tests/test_structural_analysis.py"
+                ]
+            }
+        },
+        "protocol": "MMI",
+        "protocol_expansion": "Massive Micro Ingestion",
+        "rules": [
+            "Preserve exact source provenance and SHA-256.",
+            "Do not treat partial parsing as complete.",
+            "Keep observations separate from interpretations.",
+            "Trace source/component depth through level 4 where parsable.",
+            "Preserve contradictions and unresolved gaps.",
+            "External sources do not override repository-verified facts.",
+            "Live repository state takes precedence over mutable historical handoff claims.",
+            "The continuation source supplements, but does not replace, the two original source bundles."
+        ],
+        "source_count": 3,
+        "source_roles": {
+            "historical_handoff": 1,
+            "original_primary": 2
+        },
+        "sources": [
+            {
+                "byte_size": 8314,
+                "event": "source_acquired_for_mmi",
+                "provenance": {
+                    "acquisition_origin": "Main Barrot Infrastructure project source set",
+                    "local_copy": ".barrot/sources/mmi_original_ingest/raw/BARROT_V3_SOURCE_SET_01_FOUNDATIONS.zip",
+                    "parser": "zipfile/tarfile/raw-markdown",
+                    "parser_version": "Python standard library runtime"
+                },
+                "purpose": "Curated Barrot V3 external foundation source set",
+                "role": "original_primary",
+                "sha256": "8ef7d8a8c34bf24f6e582cb655add169de1760d13db80c4acb77b886da9f9dda",
+                "source": "BARROT_V3_SOURCE_SET_01_FOUNDATIONS.zip",
+                "timestamp": "2026-09-21T06:42:28.805348+00:00"
+            },
+            {
+                "byte_size": 15599,
+                "event": "source_acquired_for_mmi",
+                "provenance": {
+                    "acquisition_origin": "Main Barrot Infrastructure project source set",
+                    "local_copy": ".barrot/sources/mmi_original_ingest/raw/barrot_structural_analysis_core_v1_1.tar.gz",
+                    "parser": "zipfile/tarfile/raw-markdown",
+                    "parser_version": "Python standard library runtime"
+                },
+                "purpose": "Structural Analysis Core v1.1 source bundle",
+                "role": "original_primary",
+                "sha256": "2cbcb68743a9224a753a6be4cf64eb154e0bc8734b36d3f1d1a0258b8989e430",
+                "source": "barrot_structural_analysis_core_v1_1.tar.gz",
+                "timestamp": "2026-09-21T06:42:28.805348+00:00"
+            },
+            {
+                "byte_size": 11964,
+                "event": "source_acquired_for_mmi",
+                "provenance": {
+                    "acquisition_origin": "Main Barrot Infrastructure project source set",
+                    "local_copy": ".barrot/sources/mmi_original_ingest/raw/BARROT_V3_PERMANENT_CONTINUATION_SOURCE.md",
+                    "parser": "zipfile/tarfile/raw-markdown",
+                    "parser_version": "Python standard library runtime"
+                },
+                "purpose": "Permanent continuation/handoff context; not a replacement for originals",
+                "role": "historical_handoff",
+                "sha256": "25eb5a6dcb2b6cc54ea0f9ab138ef087b2c211b98a92722e6bb1d5da1cfb4af3",
+                "source": "BARROT_V3_PERMANENT_CONTINUATION_SOURCE.md",
+                "timestamp": "2026-09-21T06:42:28.805348+00:00"
+            }
+        ],
+        "status": "staged_and_parsed"
+    },
+    "source_precedence": {
+        "historical_handoff_sources": 1,
+        "original_primary_sources": 2,
+        "repository_live_state": "authoritative_for_current_implementation"
+    },
+    "structural_core_map": {
+        "classes": [
+            "EvidenceStage",
+            "VerificationStatus",
+            "RelationType",
+            "ConstraintResult",
+            "InvariantResult",
+            "StructuralRelation",
+            "StructuralInput",
+            "StructuralSignature",
+            "StructuralAnalyzer"
+        ],
+        "functions": [
+            "ConstraintResult.__post_init__",
+            "InvariantResult.__post_init__",
+            "StructuralInput.__post_init__",
+            "StructuralSignature.to_dict",
+            "StructuralAnalyzer.__init__",
+            "StructuralAnalyzer.analyze",
+            "StructuralAnalyzer.compare_invariants",
+            "StructuralAnalyzer._canonical"
+        ],
+        "source": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/barrot_agent/structural_analysis/core.py"
+    },
+    "unresolved_gaps": [
+        {
+            "id": "GAP-001",
+            "statement": "This pass does not establish that every foundation source has been independently corroborated against its publisher.",
+            "status": "unresolved"
+        },
+        {
+            "id": "GAP-002",
+            "statement": "This pass does not establish that the existing production learning system has already consumed these sources.",
+            "status": "unresolved"
+        },
+        {
+            "id": "GAP-003",
+            "statement": "This pass does not establish that the Structural Analysis Core should be copied into production unchanged.",
+            "status": "unresolved"
+        }
+    ]
+}

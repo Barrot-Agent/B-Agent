@@ -1,0 +1,42 @@
+barrot_agent/orchestration/autonomous_actions.py:20:def deliver_autonomous_bundle(
+scripts/barrot_agent.py:346:                                "enum": ["SELF_DROP_PROBE"],
+scripts/barrot_mission_bundle_planner.py:8:SELF_DROP_PROBE request for the existing self-drop bridge.
+scripts/barrot_mission_bundle_planner.py:30:ALLOWED_ACTION = "SELF_DROP_PROBE"
+scripts/barrot_mission_bundle_planner.py:53:    path = root / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_mission_bundle_planner.py:161:    allowlisted SELF_DROP_PROBE action.
+scripts/barrot_mission_bundle_planner.py:176:    if next_capability != "AUTONOMOUS_BUNDLE_PRODUCTION":
+scripts/barrot_bundle_validator.py:15:    ROOT / ".barrot" / "autonomous_bundle" / "generated"
+scripts/barrot_bundle_validator.py:19:    ROOT / ".barrot" / "autonomous_bundle" / "handoff"
+scripts/barrot_bundle_validator.py:59:            "development_bundle_*.json"
+scripts/barrot_self_drop_bridge.py:43:ALLOWED_ACTIONS = {"SELF_DROP_PROBE"}
+scripts/barrot_self_drop_bridge.py:113:printf 'BARROT_ACTION=%s\\n' 'SELF_DROP_PROBE'
+scripts/barrot_self_drop_bridge.py:163:    print("AUTONOMOUS_BUNDLE_GENERATION=PASS")
+scripts/barrot_self_drop_controller_adapter.py:8:It deliberately exposes only SELF_DROP_PROBE.
+scripts/barrot_self_drop_controller_adapter.py:27:ALLOWED_ACTION = "SELF_DROP_PROBE"
+scripts/barrot_bundle_spec_generator.py:49:    path = root / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_bundle_spec_generator.py:100:        "AUTONOMOUS_BUNDLE_PRODUCTION"
+scripts/barrot_bundle_spec_generator.py:138:        "schema": "barrot.development_bundle_spec.v1",
+scripts/barrot_bundle_spec_generator.py:206:        / "autonomous_bundle"
+scripts/barrot_bundle_spec_generator.py:216:        f"development_bundle_{stamp}.json"
+scripts/barrot_bundle_spec_generator.py:221:        "schema": "barrot.development_bundle_record.v1",
+scripts/barrot_bundle_spec_generator.py:281:    print("DEVELOPMENT_BUNDLE_SPEC=PASS")
+scripts/barrot_development_bundle_builder.py:31:MISSION = ROOT / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_development_bundle_builder.py:32:SPEC_DIR = ROOT / ".barrot" / "autonomous_bundle" / "specifications"
+scripts/barrot_development_bundle_builder.py:33:BUNDLE_DIR = ROOT / ".barrot" / "autonomous_bundle" / "generated"
+scripts/barrot_development_bundle_builder.py:70:    candidates = sorted(SPEC_DIR.glob("development_bundle_*.json"))
+scripts/barrot_development_bundle_builder.py:80:      2. the persisted development_bundle_record.v1 wrapper.
+scripts/barrot_development_bundle_builder.py:93:    Validate the canonical barrot.development_bundle_spec.v1
+scripts/barrot_development_bundle_builder.py:97:    development_bundle_record.v1 wrapper.
+scripts/barrot_development_bundle_builder.py:120:    if spec["schema"] != "barrot.development_bundle_spec.v1":
+scripts/barrot_development_bundle_builder.py:223:    bundle_id = f"development_bundle_{timestamp}"
+scripts/barrot_development_bundle_builder.py:280:                "capability": "GENERATE_BUNDLE",
+scripts/barrot_development_bundle_builder.py:428:    print("DEVELOPMENT_BUNDLE_BUILD=PASS")
+scripts/barrot_autonomous_continuation.py:16:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:23:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:30:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:37:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:212:                "DEVELOPMENT_BUNDLE_SPECIFICATION",
+scripts/barrot_governed_bundle_executor.py:10:  - execute the existing SELF_DROP_PROBE;
+scripts/barrot_governed_bundle_executor.py:32:    ROOT / ".barrot" / "autonomous_bundle" / "handoff"
+scripts/barrot_governed_bundle_executor.py:36:    ROOT / ".barrot" / "autonomous_bundle" / "execution_evidence"
+scripts/barrot_governed_bundle_executor.py:47:    "GENERATE_BUNDLE",

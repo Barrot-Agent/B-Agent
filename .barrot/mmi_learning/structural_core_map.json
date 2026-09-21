@@ -1,0 +1,24 @@
+{
+  "classes": [
+    "EvidenceStage",
+    "VerificationStatus",
+    "RelationType",
+    "ConstraintResult",
+    "InvariantResult",
+    "StructuralRelation",
+    "StructuralInput",
+    "StructuralSignature",
+    "StructuralAnalyzer"
+  ],
+  "functions": [
+    "ConstraintResult.__post_init__",
+    "InvariantResult.__post_init__",
+    "StructuralInput.__post_init__",
+    "StructuralSignature.to_dict",
+    "StructuralAnalyzer.__init__",
+    "StructuralAnalyzer.analyze",
+    "StructuralAnalyzer.compare_invariants",
+    "StructuralAnalyzer._canonical"
+  ],
+  "source": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/barrot_agent/structural_analysis/core.py"
+}

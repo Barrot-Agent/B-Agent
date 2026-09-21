@@ -1,0 +1,30 @@
+barrot_agent/orchestration/__init__.py:3:from .learning_filter import (
+barrot_agent/orchestration/__init__.py:5:    LearningRecord,
+barrot_agent/orchestration/__init__.py:7:from .verified_learning_store import (
+barrot_agent/orchestration/__init__.py:55:    "LearningRecord",
+barrot_agent/orchestration/autonomous_actions.py:15:from .learning_filter import LearningFilter
+barrot_agent/orchestration/autonomous_actions.py:16:from .verified_learning_store import VerifiedLearningStore
+barrot_agent/orchestration/autonomous_actions.py:69:        self.learning_filter = LearningFilter()
+barrot_agent/orchestration/autonomous_actions.py:70:        self.learning_store = VerifiedLearningStore()
+barrot_agent/orchestration/autonomous_actions.py:73:            learning_store=self.learning_store,
+barrot_agent/orchestration/autonomous_actions.py:218:                learning = self.learning_filter.filter(
+barrot_agent/orchestration/autonomous_actions.py:227:                    stored = self.learning_store.append(learning)
+barrot_agent/orchestration/autonomous_actions.py:276:    def run_next_learning_goal(
+barrot_agent/orchestration/learning_filter.py:10:class LearningRecord:
+barrot_agent/orchestration/learning_filter.py:25:    ) -> LearningRecord:
+barrot_agent/orchestration/learning_filter.py:28:            return LearningRecord(
+barrot_agent/orchestration/learning_filter.py:38:            return LearningRecord(
+barrot_agent/orchestration/learning_filter.py:45:            return LearningRecord(
+barrot_agent/orchestration/learning_filter.py:64:            return LearningRecord(
+barrot_agent/orchestration/learning_filter.py:92:            return LearningRecord(
+barrot_agent/orchestration/learning_filter.py:107:        return LearningRecord(
+barrot_agent/orchestration/verified_learning_store.py:10:from .learning_filter import LearningRecord
+barrot_agent/orchestration/verified_learning_store.py:14:    """Append accepted and novel learning records to a curated JSONL store."""
+barrot_agent/orchestration/verified_learning_store.py:87:    def append(self, record: LearningRecord) -> bool:
+barrot_agent/orchestration/learning_curriculum.py:7:from .verified_learning_store import VerifiedLearningStore
+barrot_agent/orchestration/learning_curriculum.py:16:        learning_store: VerifiedLearningStore | None = None,
+barrot_agent/orchestration/learning_curriculum.py:19:        self.learning_store = (
+barrot_agent/orchestration/learning_curriculum.py:20:            learning_store
+barrot_agent/orchestration/learning_curriculum.py:26:            records = self.learning_store.read_all()
+scripts/barrot_recursive_coding.py:14:    / "barrot_code_learning.jsonl"
+scripts/barrot_learning_daemon.py:76:            result = loop.run_next_learning_goal()

@@ -1,0 +1,64 @@
+{
+  "schema": "barrot.mmi.self_bundle_integration_map.v1",
+  "generated_at": "2026-09-21T06:50:25.101125+00:00",
+  "repository": {
+    "head": "90ba11fbd107e9aea983f24d6e61d5179178f8fd",
+    "branch": "barrot/task"
+  },
+  "purpose": "Map existing MMI learning infrastructure to the existing self-bundle/self-drop delivery infrastructure before production integration.",
+  "production_code_modified": false,
+  "required_bundle_contract_candidates": [
+    "protocol_version",
+    "source_commit",
+    "branch",
+    "generation_timestamp",
+    "artifact_inventory",
+    "per_file_sha256",
+    "bundle_sha256",
+    "validation_commands",
+    "validation_results",
+    "evidence_references",
+    "mmi_source_references",
+    "learning_record_reference",
+    "continuation_state",
+    "next_action"
+  ],
+  "verification_requirements": [
+    "bundle assembly must be deterministic",
+    "manifest must bind the artifact hashes",
+    "validation evidence must be preserved",
+    "MMI provenance must remain traceable",
+    "unresolved gaps must survive continuation",
+    "receiver must verify the bundle before acceptance",
+    "delivery must be restartable/idempotent"
+  ],
+  "important_boundary": "This map does not claim formal SLSA, in-toto, OpenTelemetry, or other standards compliance. Those sources provide architectural reference patterns only.",
+  "files": {
+    "self_drop_candidates.txt": {
+      "path": ".barrot/mmi_learning/self_bundle_integration/self_drop_candidates.txt",
+      "sha256": "12b61e02bdd391a58fc9daa91fda48455558f56fda0f8f9287b0b3b313d341d6",
+      "bytes": 15962
+    },
+    "learning_integration_points.txt": {
+      "path": ".barrot/mmi_learning/self_bundle_integration/learning_integration_points.txt",
+      "sha256": "5ec2c9a86673d7af47695197035e33af576d991c40fbf81af33af27b3d6f7ec2",
+      "bytes": 2702
+    },
+    "delivery_registration_points.txt": {
+      "path": ".barrot/mmi_learning/self_bundle_integration/delivery_registration_points.txt",
+      "sha256": "1c35a7e0fd5ea8cf1105a9e299b38d46f3f3c4e674deee22cf6bd3139e73dc3d",
+      "bytes": 74684
+    },
+    "provenance_points.txt": {
+      "path": ".barrot/mmi_learning/self_bundle_integration/provenance_points.txt",
+      "sha256": "67434b1d450a8f9fde4d67e5f719dddc97218a9db132e5ea7e4e82363a973736",
+      "bytes": 138983
+    },
+    "schema_manifest_inventory.txt": {
+      "path": ".barrot/mmi_learning/self_bundle_integration/schema_manifest_inventory.txt",
+      "sha256": "59be123324d3eed4cf449df552f3654ea515bbdd7d888665116940448f6fb940",
+      "bytes": 8321
+    }
+  },
+  "integration_map_sha256": "1e17d5491f28f1d913c9ebb188ea2764fcceb1f3fd813130a84dcceea4038c2e"
+}

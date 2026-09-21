@@ -1,0 +1,231 @@
+barrot_agent/orchestration/actions.py:27:    "TERMUX_DROP",
+barrot_agent/orchestration/actions.py:28:    "DELIVER_BUNDLE",
+barrot_agent/orchestration/action_executor.py:147:            if action.type == "TERMUX_DROP":
+barrot_agent/orchestration/action_executor.py:153:                        "TERMUX_DROP path must be a string"
+barrot_agent/orchestration/action_executor.py:158:                        "TERMUX_DROP content must be a string"
+barrot_agent/orchestration/action_executor.py:173:            if action.type == "DELIVER_BUNDLE":
+barrot_agent/orchestration/action_executor.py:179:                        "DELIVER_BUNDLE path must be a string"
+barrot_agent/orchestration/action_executor.py:184:                        "DELIVER_BUNDLE content must be a string"
+barrot_agent/orchestration/autonomous_actions.py:5:from .bundle_delivery import BundleDelivery, deliver_bundle
+barrot_agent/orchestration/autonomous_actions.py:20:def deliver_autonomous_bundle(
+barrot_agent/orchestration/autonomous_actions.py:26:    """Validate and deliver an approved Python bundle through TERMUX_DROP."""
+barrot_agent/orchestration/autonomous_actions.py:37:    result = deliver_bundle(
+barrot_agent/orchestration/autonomous_actions.py:140:- TERMUX_DROP
+barrot_agent/orchestration/autonomous_actions.py:151:- TERMUX_DROP may write only inside the configured Termux workspace.
+barrot_agent/orchestration/bundle_delivery.py:26:def deliver_bundle(
+barrot_agent/orchestration/bundle_delivery.py:40:        type="TERMUX_DROP",
+barrot_agent/orchestration/bundle_delivery.py:50:def deliver_bundle_file(
+barrot_agent/orchestration/bundle_delivery.py:56:    return deliver_bundle(
+barrot_agent/orchestration/verified_bundle_delivery.py:12:from .bundle_delivery import BundleDelivery, deliver_bundle
+barrot_agent/orchestration/verified_bundle_delivery.py:40:    delivery = deliver_bundle(
+scripts/barrot_agent.py:46:from scripts.barrot_self_drop_controller_adapter import SelfDropControllerAdapter
+scripts/barrot_agent.py:306:        # BARROT_SELF_DROP_TOOL_REGISTERED: direct validated self-drop adapter
+scripts/barrot_agent.py:307:        self._self_drop_adapter = SelfDropControllerAdapter()
+scripts/barrot_agent.py:309:        def _self_drop(arguments):
+scripts/barrot_agent.py:311:                raise TypeError("self_drop arguments must be an object")
+scripts/barrot_agent.py:315:                raise ValueError("self_drop requires task_id")
+scripts/barrot_agent.py:317:                raise ValueError("self_drop requires action")
+scripts/barrot_agent.py:318:            return self._self_drop_adapter.dispatch(task_id, action)
+scripts/barrot_agent.py:321:            "barrot.deliver_bundle": self._deliver_bundle,
+scripts/barrot_agent.py:325:            "self_drop": _self_drop,
+scripts/barrot_agent.py:331:                    "name": "self_drop",
+scripts/barrot_agent.py:334:                        "through the approved self-drop path. Only supported "
+scripts/barrot_agent.py:335:                        "self-drop actions are accepted."
+scripts/barrot_agent.py:346:                                "enum": ["SELF_DROP_PROBE"],
+scripts/barrot_agent.py:347:                                "description": "Approved self-drop action."
+scripts/barrot_agent.py:358:                    "name": "barrot.deliver_bundle",
+scripts/barrot_agent.py:415:    def _deliver_bundle(self, args: dict[str, Any]) -> str:
+scripts/barrot_agent.py:421:                "DELIVER_BUNDLE requires a non-empty relative path."
+scripts/barrot_agent.py:426:                "DELIVER_BUNDLE content must be a string."
+scripts/barrot_agent.py:433:                type="DELIVER_BUNDLE",
+scripts/barrot_agent.py:459:                "action": "DELIVER_BUNDLE",
+scripts/barrot_private_bundle.py:54:    "purpose": "Barrot private self-drop bundle",
+scripts/barrot_self_drop_smoke.py:3:Barrot Self-Drop Smoke Test
+scripts/barrot_self_drop_smoke.py:7:    place it into the controlled self-drop inbox, execute only the
+scripts/barrot_self_drop_smoke.py:24:ROOT = Path(".barrot/self_drop")
+scripts/barrot_mission_bundle_planner.py:8:SELF_DROP_PROBE request for the existing self-drop bridge.
+scripts/barrot_mission_bundle_planner.py:16:- bypass the existing self-drop bridge.
+scripts/barrot_mission_bundle_planner.py:30:ALLOWED_ACTION = "SELF_DROP_PROBE"
+scripts/barrot_mission_bundle_planner.py:53:    path = root / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_mission_bundle_planner.py:161:    allowlisted SELF_DROP_PROBE action.
+scripts/barrot_mission_bundle_planner.py:176:    if next_capability != "AUTONOMOUS_BUNDLE_PRODUCTION":
+scripts/barrot_mission_bundle_planner.py:182:    if existing_capability != "SELF_DROP":
+scripts/barrot_mission_bundle_planner.py:184:            "existing capability is not SELF_DROP: "
+scripts/barrot_mission_bundle_planner.py:236:    evidence_dir = root / ".barrot" / "self_drop" / "evidence"
+scripts/barrot_bundle_validator.py:15:    ROOT / ".barrot" / "autonomous_bundle" / "generated"
+scripts/barrot_bundle_validator.py:19:    ROOT / ".barrot" / "autonomous_bundle" / "handoff"
+scripts/barrot_bundle_validator.py:59:            "development_bundle_*.json"
+scripts/barrot_bundle_validator.py:218:                "existing_governed_self_drop"
+scripts/barrot_bundle_validator.py:246:            "GOVERNED_SELF_DROP"
+scripts/barrot_self_drop_bridge.py:3:Barrot Self-Drop Bridge
+scripts/barrot_self_drop_bridge.py:37:ROOT = Path(".barrot/self_drop")
+scripts/barrot_self_drop_bridge.py:43:ALLOWED_ACTIONS = {"SELF_DROP_PROBE"}
+scripts/barrot_self_drop_bridge.py:59:    print(f"SELF_DROP_BRIDGE=FAIL")
+scripts/barrot_self_drop_bridge.py:111:printf '%s\\n' 'BARROT_AUTONOMOUS_SELF_DROP=TRUE'
+scripts/barrot_self_drop_bridge.py:113:printf 'BARROT_ACTION=%s\\n' 'SELF_DROP_PROBE'
+scripts/barrot_self_drop_bridge.py:115:printf '%s\\n' 'BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE'
+scripts/barrot_self_drop_bridge.py:135:        "schema": "barrot.self_drop.bridge.v1",
+scripts/barrot_self_drop_bridge.py:157:        and "BARROT_AUTONOMOUS_SELF_DROP=TRUE" in completed.stdout
+scripts/barrot_self_drop_bridge.py:158:        and "BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE"
+scripts/barrot_self_drop_bridge.py:163:    print("AUTONOMOUS_BUNDLE_GENERATION=PASS")
+scripts/barrot_self_drop_bridge.py:173:            if "BARROT_AUTONOMOUS_SELF_DROP=TRUE" in completed.stdout
+scripts/barrot_self_drop_bridge.py:181:            if "BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE"
+scripts/barrot_self_drop_controller_adapter.py:3:Barrot Self-Drop Controller Adapter.
+scripts/barrot_self_drop_controller_adapter.py:6:Barrot's controller/tool layer and the already-tested self-drop bridge.
+scripts/barrot_self_drop_controller_adapter.py:8:It deliberately exposes only SELF_DROP_PROBE.
+scripts/barrot_self_drop_controller_adapter.py:26:BRIDGE = Path("scripts/barrot_self_drop_bridge.py")
+scripts/barrot_self_drop_controller_adapter.py:27:ALLOWED_ACTION = "SELF_DROP_PROBE"
+scripts/barrot_self_drop_controller_adapter.py:30:class SelfDropControllerAdapter:
+scripts/barrot_self_drop_controller_adapter.py:31:    name = "self_drop"
+scripts/barrot_self_drop_controller_adapter.py:39:            raise ValueError(f"unsupported self-drop action: {action}")
+scripts/barrot_self_drop_controller_adapter.py:103:    adapter = SelfDropControllerAdapter()
+scripts/barrot_self_drop_controller_adapter.py:106:        print("usage: barrot_self_drop_controller_adapter.py TASK_ID ACTION")
+scripts/barrot_clean_live_test.py:13:print("BARROT PROVIDER-NEUTRAL SELF-DROP BOUNDARY TEST")
+scripts/barrot_bundle_spec_generator.py:49:    path = root / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_bundle_spec_generator.py:100:        "AUTONOMOUS_BUNDLE_PRODUCTION"
+scripts/barrot_bundle_spec_generator.py:138:        "schema": "barrot.development_bundle_spec.v1",
+scripts/barrot_bundle_spec_generator.py:154:            "continuation_target": mission_data.get(
+scripts/barrot_bundle_spec_generator.py:155:                "continuation_target"
+scripts/barrot_bundle_spec_generator.py:187:                "existing_governed_self_drop"
+scripts/barrot_bundle_spec_generator.py:206:        / "autonomous_bundle"
+scripts/barrot_bundle_spec_generator.py:216:        f"development_bundle_{stamp}.json"
+scripts/barrot_bundle_spec_generator.py:221:        "schema": "barrot.development_bundle_record.v1",
+scripts/barrot_bundle_spec_generator.py:281:    print("DEVELOPMENT_BUNDLE_SPEC=PASS")
+scripts/barrot_development_bundle_builder.py:16:    - execution remains behind the existing governed self-drop boundary
+scripts/barrot_development_bundle_builder.py:31:MISSION = ROOT / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_development_bundle_builder.py:32:SPEC_DIR = ROOT / ".barrot" / "autonomous_bundle" / "specifications"
+scripts/barrot_development_bundle_builder.py:33:BUNDLE_DIR = ROOT / ".barrot" / "autonomous_bundle" / "generated"
+scripts/barrot_development_bundle_builder.py:70:    candidates = sorted(SPEC_DIR.glob("development_bundle_*.json"))
+scripts/barrot_development_bundle_builder.py:80:      2. the persisted development_bundle_record.v1 wrapper.
+scripts/barrot_development_bundle_builder.py:93:    Validate the canonical barrot.development_bundle_spec.v1
+scripts/barrot_development_bundle_builder.py:97:    development_bundle_record.v1 wrapper.
+scripts/barrot_development_bundle_builder.py:120:    if spec["schema"] != "barrot.development_bundle_spec.v1":
+scripts/barrot_development_bundle_builder.py:207:        "existing_governed_self_drop"
+scripts/barrot_development_bundle_builder.py:223:    bundle_id = f"development_bundle_{timestamp}"
+scripts/barrot_development_bundle_builder.py:272:                "Permit later handoff to the existing governed self-drop boundary.",
+scripts/barrot_development_bundle_builder.py:305:                "operation_id": "HANDOFF_TO_SELF_DROP",
+scripts/barrot_development_bundle_builder.py:349:        "continuation": {
+scripts/barrot_development_bundle_builder.py:352:                "GOVERNED_SELF_DROP_HANDOFF"
+scripts/barrot_development_bundle_builder.py:428:    print("DEVELOPMENT_BUNDLE_BUILD=PASS")
+scripts/barrot_autonomous_continuation.py:16:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:23:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:30:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:37:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:38:    / "continuation_evidence"
+scripts/barrot_autonomous_continuation.py:42:    "BARROT-V3-AUTONOMOUS-CONTINUATION"
+scripts/barrot_autonomous_continuation.py:46:class ContinuationError(RuntimeError):
+scripts/barrot_autonomous_continuation.py:69:        raise ContinuationError(
+scripts/barrot_autonomous_continuation.py:80:        raise ContinuationError(
+scripts/barrot_autonomous_continuation.py:100:        raise ContinuationError(
+scripts/barrot_autonomous_continuation.py:110:        raise ContinuationError(
+scripts/barrot_autonomous_continuation.py:116:        "continuation_target",
+scripts/barrot_autonomous_continuation.py:121:            raise ContinuationError(
+scripts/barrot_autonomous_continuation.py:128:        raise ContinuationError(
+scripts/barrot_autonomous_continuation.py:146:def build_continuation_record(
+scripts/barrot_autonomous_continuation.py:156:            "barrot.autonomous_continuation.v1",
+scripts/barrot_autonomous_continuation.py:180:            "continuation_target":
+scripts/barrot_autonomous_continuation.py:182:                    "continuation_target"
+scripts/barrot_autonomous_continuation.py:212:                "DEVELOPMENT_BUNDLE_SPECIFICATION",
+scripts/barrot_autonomous_continuation.py:240:        / f"continuation_{stamp}.json"
+scripts/barrot_autonomous_continuation.py:258:    continuation_path: Path,
+scripts/barrot_autonomous_continuation.py:275:            "barrot.autonomous_continuation_evidence.v1",
+scripts/barrot_autonomous_continuation.py:288:        "continuation_sha256":
+scripts/barrot_autonomous_continuation.py:290:                continuation_path
+scripts/barrot_autonomous_continuation.py:317:        / f"continuation_{stamp}.json"
+scripts/barrot_autonomous_continuation.py:340:    record = build_continuation_record(
+scripts/barrot_autonomous_continuation.py:345:    continuation = write_record(
+scripts/barrot_autonomous_continuation.py:351:        continuation,
+scripts/barrot_autonomous_continuation.py:356:        "BARROT AUTONOMOUS CONTINUATION"
+scripts/barrot_autonomous_continuation.py:373:        "CONTINUATION=PLANNED"
+scripts/barrot_autonomous_continuation.py:385:        f"CONTINUATION={continuation}"
+scripts/barrot_autonomous_continuation.py:391:        "AUTONOMOUS_CONTINUATION=PASS"
+scripts/barrot_governed_bundle_executor.py:10:  - execute the existing SELF_DROP_PROBE;
+scripts/barrot_governed_bundle_executor.py:32:    ROOT / ".barrot" / "autonomous_bundle" / "handoff"
+scripts/barrot_governed_bundle_executor.py:36:    ROOT / ".barrot" / "autonomous_bundle" / "execution_evidence"
+scripts/barrot_governed_bundle_executor.py:43:    "VALIDATED_BUNDLE -> GOVERNED_SELF_DROP"
+scripts/barrot_governed_bundle_executor.py:132:        "existing_governed_self_drop"
+scripts/barrot_governed_bundle_executor.py:135:            "handoff executor is not governed self-drop"
+tests/test_termux_self_drop.py:6:def test_termux_drop_writes_bundle_file(tmp_path):
+tests/test_termux_self_drop.py:10:    content = "BARROT_SELF_DROP_OK\n"
+tests/test_termux_self_drop.py:13:        type="TERMUX_DROP",
+tests/test_termux_self_drop.py:27:def test_termux_drop_round_trip_is_deterministic(tmp_path):
+tests/test_termux_self_drop.py:34:        type="TERMUX_DROP",
+tests/test_termux_self_drop.py:54:def test_termux_drop_rejects_path_outside_workspace(tmp_path):
+tests/test_termux_self_drop.py:60:        type="TERMUX_DROP",
+tests/test_bundle_delivery.py:5:    deliver_bundle,
+tests/test_bundle_delivery.py:10:def test_barrot_can_deliver_bundle_through_existing_termux_drop(tmp_path):
+tests/test_bundle_delivery.py:16:    result = deliver_bundle(
+tests/test_bundle_delivery.py:34:    result = deliver_bundle(
+tests/test_bundle_delivery.py:50:        deliver_bundle(
+tests/test_autonomous_bundle_delivery.py:2:from barrot_agent.orchestration.autonomous_actions import deliver_autonomous_bundle
+tests/test_autonomous_bundle_delivery.py:5:def test_autonomous_layer_can_deliver_bundle(tmp_path):
+tests/test_autonomous_bundle_delivery.py:8:    target = tmp_path / "autonomous_bundle.txt"
+tests/test_autonomous_bundle_delivery.py:9:    content = "BARROT_AUTONOMOUS_BUNDLE_OK\n"
+tests/test_autonomous_bundle_delivery.py:11:    result = deliver_autonomous_bundle(
+tests/test_autonomous_bundle_delivery.py:27:    result = deliver_autonomous_bundle(
+tests/test_autonomous_real_bundle.py:2:from barrot_agent.orchestration.autonomous_actions import deliver_autonomous_bundle
+tests/test_autonomous_real_bundle.py:14:    result = deliver_autonomous_bundle(
+tests/test_autonomous_real_bundle.py:36:def test_autonomous_bundle_rejects_invalid_python(tmp_path):
+tests/test_autonomous_real_bundle.py:44:        deliver_autonomous_bundle(
+tests/test_bundle_evidence.py:2:from barrot_agent.orchestration.autonomous_actions import deliver_autonomous_bundle
+tests/test_bundle_evidence.py:16:    result = deliver_autonomous_bundle(
+tests/test_deliver_bundle_action.py:5:def test_deliver_bundle_action_is_allowed():
+tests/test_deliver_bundle_action.py:10:                    "type": "DELIVER_BUNDLE",
+tests/test_deliver_bundle_action.py:21:    assert actions[0].type == "DELIVER_BUNDLE"
+tests/test_deliver_bundle_action.py:24:def test_deliver_bundle_action_validates_delivers_and_verifies(tmp_path):
+tests/test_deliver_bundle_action.py:30:        type="DELIVER_BUNDLE",
+tests/test_deliver_bundle_action.py:33:            "content": 'def probe():\n    return "DELIVER_BUNDLE_OK"\n',
+tests/test_deliver_bundle_action.py:44:def test_deliver_bundle_action_rejects_invalid_python(tmp_path):
+tests/test_deliver_bundle_action.py:50:        type="DELIVER_BUNDLE",
+tests/test_deliver_bundle_action.py:63:def test_deliver_bundle_action_preserves_workspace_boundary(tmp_path):
+tests/test_deliver_bundle_action.py:69:        type="DELIVER_BUNDLE",
+tests/test_self_drop_bridge.py:9:SCRIPT = Path("scripts/barrot_self_drop_bridge.py")
+tests/test_self_drop_bridge.py:20:def test_allowlisted_self_drop():
+tests/test_self_drop_bridge.py:24:            "action": "SELF_DROP_PROBE",
+tests/test_self_drop_bridge.py:30:    assert "AUTONOMOUS_BUNDLE_GENERATION=PASS" in result.stdout
+tests/test_self_drop_bridge.py:45:    assert "SELF_DROP_BRIDGE=FAIL" in result.stdout
+tests/test_self_drop_bridge.py:53:            "action": "SELF_DROP_PROBE",
+tests/test_self_drop_controller_adapter.py:7:from scripts.barrot_self_drop_controller_adapter import (
+tests/test_self_drop_controller_adapter.py:8:    SelfDropControllerAdapter,
+tests/test_self_drop_controller_adapter.py:12:def test_adapter_registers_self_drop_probe():
+tests/test_self_drop_controller_adapter.py:13:    adapter = SelfDropControllerAdapter()
+tests/test_self_drop_controller_adapter.py:15:    assert adapter.name == "self_drop"
+tests/test_self_drop_controller_adapter.py:16:    assert adapter.can_handle("SELF_DROP_PROBE")
+tests/test_self_drop_controller_adapter.py:21:    adapter = SelfDropControllerAdapter()
+tests/test_self_drop_controller_adapter.py:25:        "SELF_DROP_PROBE",
+tests/test_self_drop_controller_adapter.py:33:    assert "BARROT_AUTONOMOUS_SELF_DROP=TRUE" in result["execution_stdout"]
+tests/test_self_drop_controller_adapter.py:35:        "BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE"
+tests/test_self_drop_controller_adapter.py:46:    adapter = SelfDropControllerAdapter()
+tests/test_self_drop_controller_integration.py:8:def test_controller_registers_and_dispatches_self_drop():
+tests/test_self_drop_controller_integration.py:11:    assert "self_drop" in brain.tool_funcs
+tests/test_self_drop_controller_integration.py:12:    assert callable(brain.tool_funcs["self_drop"])
+tests/test_self_drop_controller_integration.py:14:    result = brain.tool_funcs["self_drop"]({
+tests/test_self_drop_controller_integration.py:16:        "action": "SELF_DROP_PROBE",
+tests/test_mission_bundle_planner.py:20:        "AUTONOMOUS_BUNDLE_PRODUCTION"
+tests/test_mission_bundle_planner.py:22:    assert mission["handoff"]["existing_capability"] == "SELF_DROP"
+tests/test_mission_bundle_planner.py:25:def test_build_proposal_is_self_drop_probe_only():
+tests/test_mission_bundle_planner.py:36:    assert proposal["action"] == "SELF_DROP_PROBE"
+tests/test_bundle_spec_generator.py:23:        "barrot.development_bundle_spec.v1"
+tests/test_bundle_spec_generator.py:44:    assert "self-drop capability" in targets
+tests/test_development_bundle_builder.py:13:    / "barrot_development_bundle_builder.py"
+tests/test_development_bundle_builder.py:17:    "barrot_development_bundle_builder",
+tests/test_development_bundle_builder.py:30:            "barrot.development_bundle_spec.v1",
+tests/test_development_bundle_builder.py:54:            "continuation_target":
+tests/test_development_bundle_builder.py:65:                "self-drop capability",
+tests/test_development_bundle_builder.py:95:                "existing_governed_self_drop",
+tests/test_development_bundle_builder.py:115:        "barrot.development_bundle_spec.v1"
+tests/test_development_bundle_builder.py:182:            "barrot.development_bundle_record.v1",
+tests/test_development_bundle_builder.py:188:        "barrot.development_bundle_spec.v1"
+tests/test_development_bundle_output_contract.py:15:            / "autonomous_bundle"
+tests/test_development_bundle_output_contract.py:18:            "development_bundle_*.json"
+tests/test_autonomous_continuation.py:12:    / "barrot_autonomous_continuation.py"
+tests/test_autonomous_continuation.py:16:    "barrot_autonomous_continuation",
+tests/test_autonomous_continuation.py:35:            "continuation_target":
+tests/test_autonomous_continuation.py:43:                "self-drop capability",
+tests/test_autonomous_continuation.py:67:        module.build_continuation_record(
+tests/test_autonomous_continuation.py:70:            / "autonomous_bundle"
+tests/test_autonomous_continuation.py:103:        module.build_continuation_record(
+tests/test_autonomous_continuation.py:106:            / "autonomous_bundle"
+tests/test_governed_bundle_executor.py:34:            "development_bundle_test",
+tests/test_governed_bundle_executor.py:78:                "existing_governed_self_drop",
+tests/test_governed_bundle_executor.py:92:            "VALIDATED_BUNDLE -> GOVERNED_SELF_DROP",

@@ -1,0 +1,130 @@
+{
+  "protocol": "MMI",
+  "relationship_count": 15,
+  "relationships": [
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "AI risk-management vocabulary, governance, measurement, and lifecycle controls.",
+      "source": "NIST-AI-100-1",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Generative-AI-specific risk and trustworthiness practices.",
+      "source": "NIST-AI-600-1",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "LLM/application security threats, mitigations, agentic boundaries, and adversarial knowledge.",
+      "source": "OWASP-GENAI-LLM-2026",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Tool/resource/prompt interoperability and governed external capability integration.",
+      "source": "MCP-2026-07-28",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Agent discovery, capability negotiation, task exchange, and inter-agent interoperability.",
+      "source": "A2A-1.0.0",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Software supply-chain security, provenance, attestations, and artifact verification.",
+      "source": "SLSA-1.2",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Authorized supply-chain steps, artifact rules, materials/products, and verification.",
+      "source": "IN-TOTO",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Traces, metrics, logs, execution lineage, and vendor-neutral observability.",
+      "source": "OPENTELEMETRY",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Typed contracts for bundles, operations, handoffs, evidence, and provenance.",
+      "source": "JSON-SCHEMA",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_manifest_declared",
+      "relationship": "external_reference_to",
+      "role": "Automated validation and regression testing infrastructure.",
+      "source": "PYTEST",
+      "target_domain": "Barrot V3"
+    },
+    {
+      "evidence_status": "source_code_observed",
+      "relationship": "defines",
+      "source": "STRUCTURAL_CORE_V1_1",
+      "target": "StructuralAnalyzer"
+    },
+    {
+      "evidence_status": "source_code_observed",
+      "relationship": "defines",
+      "source": "STRUCTURAL_CORE_V1_1",
+      "target": "EvidenceStage"
+    },
+    {
+      "evidence_status": "source_code_observed",
+      "relationship": "defines",
+      "source": "STRUCTURAL_CORE_V1_1",
+      "target": "VerificationStatus"
+    },
+    {
+      "evidence_status": "source_code_observed",
+      "relationship": "defines",
+      "source": "STRUCTURAL_CORE_V1_1",
+      "target": "StructuralRelation"
+    },
+    {
+      "evidence_status": "source_code_observed",
+      "relationship": "explicitly_prevents_equivalence_inference",
+      "source": "STRUCTURAL_CORE_V1_1",
+      "target": "compare_invariants"
+    }
+  ],
+  "structural_symbols": {
+    "classes": [
+      "EvidenceStage",
+      "VerificationStatus",
+      "RelationType",
+      "ConstraintResult",
+      "InvariantResult",
+      "StructuralRelation",
+      "StructuralInput",
+      "StructuralSignature",
+      "StructuralAnalyzer"
+    ],
+    "functions": [
+      "ConstraintResult.__post_init__",
+      "InvariantResult.__post_init__",
+      "StructuralInput.__post_init__",
+      "StructuralSignature.to_dict",
+      "StructuralAnalyzer.__init__",
+      "StructuralAnalyzer.analyze",
+      "StructuralAnalyzer.compare_invariants",
+      "StructuralAnalyzer._canonical"
+    ],
+    "source": ".barrot/sources/mmi_original_ingest/extracted/structural_core/barrot_refined/barrot_agent/structural_analysis/core.py"
+  }
+}

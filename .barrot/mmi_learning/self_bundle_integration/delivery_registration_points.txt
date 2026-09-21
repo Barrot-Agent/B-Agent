@@ -1,0 +1,794 @@
+barrot_agent/ingestion/barrot_polymath_ingestion.py:5:Ingests structured knowledge bundles across every polymath domain into the
+barrot_agent/ingestion/barrot_polymath_ingestion.py:39:    """A structured knowledge bundle for a single polymath topic."""
+barrot_agent/ingestion/barrot_polymath_ingestion.py:439:    """Ingests polymath knowledge bundles into the brain corpus."""
+barrot_agent/ingestion/barrot_polymath_ingestion.py:480:        """Persist a single knowledge bundle as JSON."""
+barrot_agent/monetization/mmi_data_analyzer.py:507:4. Track ingestion progress in `memory-bundles/data-ingestion-log.md`
+barrot_agent/monetization/mmi_data_analyzer.py:553:- **Memory Bundles**: Tracking in data-ingestion-log.md and learning-progress.md
+barrot_agent/monetization/mmi_data_analyzer.py:656:    print("   3. Track progress in memory-bundles/")
+barrot_agent/monetization/monetization_engine.py:290:                    "Create dataset bundles for specific use cases",
+barrot_agent/monetization/monetization_engine.py:797:Track in: `memory-bundles/revenue-tracking.md` and `memory-bundles/performance-metrics.md`
+barrot_agent/monetization/monetization_engine.py:810:7. [ ] Track all activities in memory-bundles
+barrot_agent/monetization/monetization_engine.py:852:- Document all learnings in memory-bundles
+barrot_agent/monetization/monetization_engine.py:942:    print("   4. Track revenue in memory-bundles/revenue-tracking.md")
+barrot_agent/orchestration/actions.py:27:    "TERMUX_DROP",
+barrot_agent/orchestration/actions.py:28:    "DELIVER_BUNDLE",
+barrot_agent/orchestration/action_executor.py:11:from barrot_agent.orchestration.verified_bundle_delivery import deliver_verified_bundle
+barrot_agent/orchestration/action_executor.py:147:            if action.type == "TERMUX_DROP":
+barrot_agent/orchestration/action_executor.py:153:                        "TERMUX_DROP path must be a string"
+barrot_agent/orchestration/action_executor.py:158:                        "TERMUX_DROP content must be a string"
+barrot_agent/orchestration/action_executor.py:173:            if action.type == "DELIVER_BUNDLE":
+barrot_agent/orchestration/action_executor.py:179:                        "DELIVER_BUNDLE path must be a string"
+barrot_agent/orchestration/action_executor.py:184:                        "DELIVER_BUNDLE content must be a string"
+barrot_agent/orchestration/action_executor.py:187:                verified = deliver_verified_bundle(
+barrot_agent/orchestration/autonomous_actions.py:5:from .bundle_delivery import BundleDelivery, deliver_bundle
+barrot_agent/orchestration/autonomous_actions.py:6:from .bundle_validation import validate_python_bundle, BundleValidationError
+barrot_agent/orchestration/autonomous_actions.py:20:def deliver_autonomous_bundle(
+barrot_agent/orchestration/autonomous_actions.py:26:    """Validate and deliver an approved Python bundle through TERMUX_DROP."""
+barrot_agent/orchestration/autonomous_actions.py:27:    validation = validate_python_bundle(
+barrot_agent/orchestration/autonomous_actions.py:33:        raise BundleValidationError(
+barrot_agent/orchestration/autonomous_actions.py:37:    result = deliver_bundle(
+barrot_agent/orchestration/autonomous_actions.py:39:        BundleDelivery(
+barrot_agent/orchestration/autonomous_actions.py:140:- TERMUX_DROP
+barrot_agent/orchestration/autonomous_actions.py:151:- TERMUX_DROP may write only inside the configured Termux workspace.
+barrot_agent/orchestration/bundle_delivery.py:1:"""Validated delivery of Barrot-generated implementation bundles."""
+barrot_agent/orchestration/bundle_delivery.py:17:class BundleDelivery:
+barrot_agent/orchestration/bundle_delivery.py:22:class BundleDeliveryError(ValueError):
+barrot_agent/orchestration/bundle_delivery.py:23:    """Raised when a bundle cannot be safely delivered."""
+barrot_agent/orchestration/bundle_delivery.py:26:def deliver_bundle(
+barrot_agent/orchestration/bundle_delivery.py:28:    bundle: BundleDelivery,
+barrot_agent/orchestration/bundle_delivery.py:30:    path = bundle.path
+barrot_agent/orchestration/bundle_delivery.py:31:    content = bundle.content
+barrot_agent/orchestration/bundle_delivery.py:34:        raise BundleDeliveryError("Bundle path must be a non-empty string")
+barrot_agent/orchestration/bundle_delivery.py:37:        raise BundleDeliveryError("Bundle content must be a string")
+barrot_agent/orchestration/bundle_delivery.py:40:        type="TERMUX_DROP",
+barrot_agent/orchestration/bundle_delivery.py:50:def deliver_bundle_file(
+barrot_agent/orchestration/bundle_delivery.py:56:    return deliver_bundle(
+barrot_agent/orchestration/bundle_delivery.py:58:        BundleDelivery(path=path, content=content),
+barrot_agent/orchestration/bundle_delivery.py:64:        raise BundleDeliveryError(
+barrot_agent/orchestration/bundle_delivery.py:65:            f"Bundle delivery failed: {result.error}"
+barrot_agent/orchestration/bundle_delivery.py:71:        raise BundleDeliveryError(
+barrot_agent/orchestration/bundle_delivery.py:72:            f"Bundle delivery reported success but file is missing: {target}"
+barrot_agent/orchestration/bundle_validation.py:1:"""Deterministic validation for Barrot implementation bundles."""
+barrot_agent/orchestration/bundle_validation.py:10:class BundleValidation:
+barrot_agent/orchestration/bundle_validation.py:18:class BundleValidationError(ValueError):
+barrot_agent/orchestration/bundle_validation.py:19:    """Raised when a bundle fails deterministic validation."""
+barrot_agent/orchestration/bundle_validation.py:22:def validate_python_bundle(
+barrot_agent/orchestration/bundle_validation.py:26:) -> BundleValidation:
+barrot_agent/orchestration/bundle_validation.py:28:        raise BundleValidationError(
+barrot_agent/orchestration/bundle_validation.py:29:            "Bundle path must be a non-empty string"
+barrot_agent/orchestration/bundle_validation.py:33:        raise BundleValidationError(
+barrot_agent/orchestration/bundle_validation.py:34:            "Bundle content must be a string"
+barrot_agent/orchestration/bundle_validation.py:40:        return BundleValidation(
+barrot_agent/orchestration/bundle_validation.py:54:    return BundleValidation(
+barrot_agent/orchestration/bundle_evidence.py:1:"""Evidence records for Barrot-generated bundle delivery."""
+barrot_agent/orchestration/bundle_evidence.py:11:class BundleDeliveryEvidence:
+barrot_agent/orchestration/bundle_evidence.py:30:def verify_bundle_delivery(
+barrot_agent/orchestration/bundle_evidence.py:34:) -> BundleDeliveryEvidence:
+barrot_agent/orchestration/bundle_evidence.py:39:        return BundleDeliveryEvidence(
+barrot_agent/orchestration/bundle_evidence.py:44:            reason="Delivered bundle file does not exist.",
+barrot_agent/orchestration/bundle_evidence.py:50:        return BundleDeliveryEvidence(
+barrot_agent/orchestration/bundle_evidence.py:55:            reason="Delivered bundle hash does not match source content.",
+barrot_agent/orchestration/bundle_evidence.py:58:    return BundleDeliveryEvidence(
+barrot_agent/orchestration/verified_bundle_delivery.py:1:"""Validated, delivered, and hash-verified Barrot implementation bundles."""
+barrot_agent/orchestration/verified_bundle_delivery.py:12:from .bundle_delivery import BundleDelivery, deliver_bundle
+barrot_agent/orchestration/verified_bundle_delivery.py:13:from .bundle_evidence import BundleDeliveryEvidence, verify_bundle_delivery
+barrot_agent/orchestration/verified_bundle_delivery.py:14:from .bundle_validation import BundleValidation, validate_python_bundle
+barrot_agent/orchestration/verified_bundle_delivery.py:18:class VerifiedBundleDelivery:
+barrot_agent/orchestration/verified_bundle_delivery.py:19:    validation: BundleValidation
+barrot_agent/orchestration/verified_bundle_delivery.py:21:    evidence: BundleDeliveryEvidence
+barrot_agent/orchestration/verified_bundle_delivery.py:24:def deliver_verified_bundle(
+barrot_agent/orchestration/verified_bundle_delivery.py:29:) -> VerifiedBundleDelivery:
+barrot_agent/orchestration/verified_bundle_delivery.py:30:    validation = validate_python_bundle(
+barrot_agent/orchestration/verified_bundle_delivery.py:37:            f"Bundle validation failed: {validation.reason}"
+barrot_agent/orchestration/verified_bundle_delivery.py:40:    delivery = deliver_bundle(
+barrot_agent/orchestration/verified_bundle_delivery.py:42:        BundleDelivery(
+barrot_agent/orchestration/verified_bundle_delivery.py:48:    evidence = verify_bundle_delivery(
+barrot_agent/orchestration/verified_bundle_delivery.py:53:    return VerifiedBundleDelivery(
+barrot_agent/tools/upgrade_bundle.py:4:║   BARROT-Ω · REPOSITORY UPGRADE BUNDLE · v1.0                      ║
+barrot_agent/tools/upgrade_bundle.py:16:  python3 ~/barrot/upgrade_bundle.py
+barrot_agent/tools/upgrade_bundle.py:450:    print("  BARROT-Ω UPGRADE BUNDLE · Writing files...")
+barrot_agent/creative/production.py:158:        self.store.write_state(production.production_id, production.to_dict(), fingerprint=Fingerprint.create("creative_bundle_v1").value)
+barrot_agent/creative/production.py:230:    return store.load_state_by_fingerprint(Fingerprint.create("creative_bundle_v1").value)
+barrot_agent/research/__init__.py:45:    materialize_anthropic_flt_bundle,
+barrot_agent/research/__init__.py:46:    prepare_anthropic_flt_bundle_from_archive,
+barrot_agent/research/__init__.py:92:    "materialize_anthropic_flt_bundle",
+barrot_agent/research/__init__.py:93:    "prepare_anthropic_flt_bundle_from_archive",
+barrot_agent/research/formal_benchmarks.py:19:    """Import an external Lean project into Barrot's research bundle schema."""
+barrot_agent/research/formal_benchmarks.py:32:    def build_bundle(self, project_root: str | Path, config: dict[str, Any]) -> dict[str, Any]:
+barrot_agent/research/formal_benchmarks.py:74:        bundle = {
+barrot_agent/research/formal_benchmarks.py:259:                        "Bundle provenance is EXTERNAL_AI_FORMALIZATION and the formal verification record uses staged status values.",
+barrot_agent/research/formal_benchmarks.py:352:        return bundle
+barrot_agent/research/formal_benchmarks.py:433:    def materialize_bundle(self, project_root: str | Path, config: dict[str, Any], output_path: str | Path) -> Path:
+barrot_agent/research/formal_benchmarks.py:434:        bundle = self.build_bundle(project_root, config)
+barrot_agent/research/formal_benchmarks.py:437:        path.write_text(json.dumps(bundle, indent=2, sort_keys=True), encoding="utf-8")
+barrot_agent/research/formal_benchmarks.py:760:    def __init__(self, bundle_path: str | Path | None = None):
+barrot_agent/research/formal_benchmarks.py:762:            Path(bundle_path).resolve()
+barrot_agent/research/formal_benchmarks.py:763:            if bundle_path is not None
+barrot_agent/research/formal_benchmarks.py:764:            else Path(__file__).resolve().parents[2] / "data" / "research" / "anthropic_fermats_last_theorem_bundle.json"
+barrot_agent/research/formal_benchmarks.py:776:def materialize_anthropic_flt_bundle(output_path: str | Path, project_root: str | Path) -> Path:
+barrot_agent/research/formal_benchmarks.py:777:    return ExternalLeanProjectImporter().materialize_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG, output_path)
+barrot_agent/research/formal_benchmarks.py:780:def prepare_anthropic_flt_bundle_from_archive(output_path: str | Path, archive_url: str = DEFAULT_ANTHROPIC_FLT_ARCHIVE) -> Path:
+barrot_agent/research/formal_benchmarks.py:784:        return importer.materialize_bundle(extracted, ANTHROPIC_FLT_IMPORT_CONFIG, output_path)
+barrot_agent/research/scientific_discovery.py:647:    def __init__(self, bundle_path: str | Path):
+barrot_agent/research/scientific_discovery.py:648:        self.bundle_path = Path(bundle_path).resolve()
+barrot_agent/research/scientific_discovery.py:650:    def load_bundle(self) -> dict[str, Any]:
+barrot_agent/research/scientific_discovery.py:651:        payload = json.loads(self.bundle_path.read_text(encoding="utf-8"))
+barrot_agent/research/scientific_discovery.py:653:            raise RepairError("Research bundle must be a JSON object.")
+barrot_agent/research/scientific_discovery.py:668:        bundle = self.load_bundle()
+barrot_agent/research/scientific_discovery.py:669:        problem = ResearchProblem.from_dict(bundle["problem"])
+barrot_agent/research/scientific_discovery.py:670:        sources = [ResearchSource.from_dict(item) for item in bundle.get("sources", [])]
+barrot_agent/research/scientific_discovery.py:671:        claims = [ResearchClaim.from_dict(item) for item in bundle.get("claims", [])]
+barrot_agent/research/scientific_discovery.py:672:        evidence = [ResearchEvidence.from_dict(item) for item in bundle.get("evidence", [])]
+barrot_agent/research/scientific_discovery.py:673:        tracks = [ResearchTrack.from_dict(item) for item in bundle.get("tracks", [])]
+barrot_agent/research/scientific_discovery.py:674:        reviews = [AdversarialReview.from_dict(item) for item in bundle.get("adversarial_reviews", [])]
+barrot_agent/research/scientific_discovery.py:675:        formal_specs = [dict(item) for item in bundle.get("formal_verification", []) if isinstance(item, dict)]
+barrot_agent/research/scientific_discovery.py:676:        question_map = [dict(item) for item in bundle.get("question_map", []) if isinstance(item, dict)]
+barrot_agent/research/scientific_discovery.py:1649:                    artifact_id=Fingerprint.create("research_bundle", getattr(adapter, "bundle_path", adapter.problem_id)).value,
+barrot_agent/research/scientific_discovery.py:1650:                    kind="research_bundle",
+barrot_agent/research/scientific_discovery.py:1651:                    path=str(getattr(adapter, "bundle_path", "")),
+barrot_agent/research/scientific_discovery.py:1993:    def __init__(self, bundle_path: str | Path):
+barrot_agent/research/scientific_discovery.py:1994:        self.ingestor = ResearchSourceIngestor(bundle_path)
+barrot_agent/research/scientific_discovery.py:1995:        self.bundle_path = Path(bundle_path).resolve()
+barrot_agent/research/scientific_discovery.py:1996:        self._bundle = self.ingestor.load_bundle()
+barrot_agent/research/scientific_discovery.py:1997:        self.problem_id = str(self._bundle["problem"]["problem_id"])
+barrot_agent/research/scientific_discovery.py:2003:        return Fingerprint.create(self.problem_id, self._bundle).value
+barrot_agent/research/scientific_discovery.py:2007:    def __init__(self, bundle_path: str | Path | None = None):
+barrot_agent/research/scientific_discovery.py:2009:            Path(bundle_path).resolve()
+barrot_agent/research/scientific_discovery.py:2010:            if bundle_path is not None
+barrot_agent/research/scientific_discovery.py:2011:            else Path(__file__).resolve().parents[2] / "data" / "research" / "navier_stokes_research_bundle.json"
+barrot_agent/research/scientific_discovery.py:2016:        question_map = self._bundle.get("question_map", [])
+barrot_agent/research/scientific_discovery.py:2021:        claims = {item["claim_id"]: item for item in self._bundle.get("claims", []) if isinstance(item, dict)}
+barrot_agent/research/scientific_discovery.py:2022:        sources = {item["source_id"]: item for item in self._bundle.get("sources", []) if isinstance(item, dict)}
+scripts/barrot_agent.py:38:from barrot_agent.orchestration.bundle_evidence import verify_bundle_delivery
+scripts/barrot_agent.py:46:from scripts.barrot_self_drop_controller_adapter import SelfDropControllerAdapter
+scripts/barrot_agent.py:306:        # BARROT_SELF_DROP_TOOL_REGISTERED: direct validated self-drop adapter
+scripts/barrot_agent.py:307:        self._self_drop_adapter = SelfDropControllerAdapter()
+scripts/barrot_agent.py:309:        def _self_drop(arguments):
+scripts/barrot_agent.py:311:                raise TypeError("self_drop arguments must be an object")
+scripts/barrot_agent.py:315:                raise ValueError("self_drop requires task_id")
+scripts/barrot_agent.py:317:                raise ValueError("self_drop requires action")
+scripts/barrot_agent.py:318:            return self._self_drop_adapter.dispatch(task_id, action)
+scripts/barrot_agent.py:321:            "barrot.deliver_bundle": self._deliver_bundle,
+scripts/barrot_agent.py:325:            "self_drop": _self_drop,
+scripts/barrot_agent.py:331:                    "name": "self_drop",
+scripts/barrot_agent.py:333:                        "Generate and execute a validated Barrot autonomous bundle "
+scripts/barrot_agent.py:334:                        "through the approved self-drop path. Only supported "
+scripts/barrot_agent.py:335:                        "self-drop actions are accepted."
+scripts/barrot_agent.py:346:                                "enum": ["SELF_DROP_PROBE"],
+scripts/barrot_agent.py:347:                                "description": "Approved self-drop action."
+scripts/barrot_agent.py:358:                    "name": "barrot.deliver_bundle",
+scripts/barrot_agent.py:360:                        "Deliver a complete valid Python repair bundle into the "
+scripts/barrot_agent.py:361:                        "approved repository workspace. The bundle is validated "
+scripts/barrot_agent.py:373:                                "description": "Complete Python bundle content.",
+scripts/barrot_agent.py:415:    def _deliver_bundle(self, args: dict[str, Any]) -> str:
+scripts/barrot_agent.py:421:                "DELIVER_BUNDLE requires a non-empty relative path."
+scripts/barrot_agent.py:426:                "DELIVER_BUNDLE content must be a string."
+scripts/barrot_agent.py:433:                type="DELIVER_BUNDLE",
+scripts/barrot_agent.py:443:                result.error or "Bundle delivery failed."
+scripts/barrot_agent.py:446:        evidence = verify_bundle_delivery(
+scripts/barrot_agent.py:453:                evidence.reason or "Bundle evidence verification failed."
+scripts/barrot_agent.py:459:                "action": "DELIVER_BUNDLE",
+scripts/barrot_agent.py:849:            "work_bundle": "scientific_discovery",
+scripts/barrot_agent.py:883:        "work_bundle": "autonomous_repository_repair",
+scripts/termux_runner.py:3:BARROT-Ω TERMUX RUNNER — executes queued command bundles locally on
+scripts/barrot_build_knowledge.py:1:"""Ask Barrot to build the repository knowledge bundle autonomously."""
+scripts/barrot_defensive_self_test.py:332:    bundle_out = ARTIFACT_DIR / "anthropic_flt_bundle.json"
+scripts/barrot_defensive_self_test.py:341:                "--bundle-out",
+scripts/barrot_defensive_self_test.py:342:                str(bundle_out),
+scripts/barrot_defensive_self_test.py:358:                "--bundle-out",
+scripts/barrot_defensive_self_test.py:359:                str(bundle_out),
+scripts/barrot_defensive_self_test.py:403:            str(bundle_out),
+scripts/barrot_defensive_self_test.py:437:                str(ROOT / "data" / "research" / "anthropic_fermats_last_theorem_bundle.json"),
+scripts/run_formal_verification_benchmark.py:12:DEFAULT_BUNDLE = ROOT / "data" / "research" / "anthropic_fermats_last_theorem_bundle.json"
+scripts/run_formal_verification_benchmark.py:29:    parser.add_argument("--bundle-out", default="", help="Where to write the generated research bundle.")
+scripts/run_formal_verification_benchmark.py:42:        bundle_path = Path(args.bundle_out).resolve() if args.bundle_out else Path(tmp_dir) / "anthropic_flt_bundle.json"
+scripts/run_formal_verification_benchmark.py:45:            importer.materialize_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG, bundle_path)
+scripts/run_formal_verification_benchmark.py:48:            importer.materialize_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG, bundle_path)
+scripts/run_formal_verification_benchmark.py:51:            shutil.copyfile(DEFAULT_BUNDLE, bundle_path)
+scripts/run_formal_verification_benchmark.py:52:        bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
+scripts/run_formal_verification_benchmark.py:53:        if bundle.get("formal_verification"):
+scripts/run_formal_verification_benchmark.py:54:            bundle["formal_verification"][0]["timeout"] = args.timeout
+scripts/run_formal_verification_benchmark.py:56:                bundle["formal_verification"][0]["repository_path"] = str(project_root)
+scripts/run_formal_verification_benchmark.py:57:        bundle_path.write_text(json.dumps(bundle, indent=2, sort_keys=True), encoding="utf-8")
+scripts/run_formal_verification_benchmark.py:58:        cycle = ScientificDiscoveryController(workspace=Path(args.workspace).resolve()).run(StaticResearchProblemAdapter(bundle_path))
+scripts/barrot_private_bundle.py:10:OUT = ROOT / ".barrot" / "private_bundles"
+scripts/barrot_private_bundle.py:14:bundle = OUT / f"barrot_private_bundle_{stamp}.tar.gz"
+scripts/barrot_private_bundle.py:15:manifest = OUT / f"barrot_private_bundle_{stamp}.json"
+scripts/barrot_private_bundle.py:42:with tarfile.open(bundle, "w:gz") as tar:
+scripts/barrot_private_bundle.py:46:sha256 = hashlib.sha256(bundle.read_bytes()).hexdigest()
+scripts/barrot_private_bundle.py:49:    "bundle": bundle.name,
+scripts/barrot_private_bundle.py:54:    "purpose": "Barrot private self-drop bundle",
+scripts/barrot_private_bundle.py:60:print(f"BUNDLE={bundle}")
+scripts/barrot_self_drop_smoke.py:3:Barrot Self-Drop Smoke Test
+scripts/barrot_self_drop_smoke.py:6:    Prove that Barrot's Termux-side runtime can generate a bundle,
+scripts/barrot_self_drop_smoke.py:7:    place it into the controlled self-drop inbox, execute only the
+scripts/barrot_self_drop_smoke.py:8:    generated smoke bundle, and record deterministic evidence.
+scripts/barrot_self_drop_smoke.py:24:ROOT = Path(".barrot/self_drop")
+scripts/barrot_self_drop_smoke.py:47:    bundle = INBOX / f"barrot_generated_smoke_{stamp}.sh"
+scripts/barrot_self_drop_smoke.py:52:printf '%s\\n' 'BARROT_SELF_GENERATED_BUNDLE_EXECUTED=TRUE'
+scripts/barrot_self_drop_smoke.py:57:    bundle.write_text(payload)
+scripts/barrot_self_drop_smoke.py:58:    bundle.chmod(0o700)
+scripts/barrot_self_drop_smoke.py:60:    bundle_hash = sha256(bundle)
+scripts/barrot_self_drop_smoke.py:63:        ["bash", str(bundle)],
+scripts/barrot_self_drop_smoke.py:76:        "bundle": str(bundle),
+scripts/barrot_self_drop_smoke.py:77:        "bundle_sha256": bundle_hash,
+scripts/barrot_self_drop_smoke.py:90:        and "BARROT_SELF_GENERATED_BUNDLE_EXECUTED=TRUE"
+scripts/barrot_self_drop_smoke.py:94:    print(f"BUNDLE_CREATED={'PASS' if bundle.exists() else 'FAIL'}")
+scripts/barrot_self_drop_smoke.py:95:    print(f"SHA256_EVIDENCE={'PASS' if len(bundle_hash) == 64 else 'FAIL'}")
+scripts/barrot_self_drop_smoke.py:96:    print(f"BUNDLE_EXECUTION={'PASS' if completed.returncode == 0 else 'FAIL'}")
+scripts/barrot_self_drop_smoke.py:101:            if "BARROT_SELF_GENERATED_BUNDLE_EXECUTED=TRUE"
+scripts/barrot_mission_bundle_planner.py:3:Barrot V3 mission-driven bundle planner.
+scripts/barrot_mission_bundle_planner.py:8:SELF_DROP_PROBE request for the existing self-drop bridge.
+scripts/barrot_mission_bundle_planner.py:16:- bypass the existing self-drop bridge.
+scripts/barrot_mission_bundle_planner.py:28:PROTOCOL = "BARROT-V3-MISSION-BUNDLE-PLANNER"
+scripts/barrot_mission_bundle_planner.py:30:ALLOWED_ACTION = "SELF_DROP_PROBE"
+scripts/barrot_mission_bundle_planner.py:53:    path = root / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_mission_bundle_planner.py:155:    task_id: str = "mission_next_bundle",
+scripts/barrot_mission_bundle_planner.py:161:    allowlisted SELF_DROP_PROBE action.
+scripts/barrot_mission_bundle_planner.py:176:    if next_capability != "AUTONOMOUS_BUNDLE_PRODUCTION":
+scripts/barrot_mission_bundle_planner.py:182:    if existing_capability != "SELF_DROP":
+scripts/barrot_mission_bundle_planner.py:184:            "existing capability is not SELF_DROP: "
+scripts/barrot_mission_bundle_planner.py:236:    evidence_dir = root / ".barrot" / "self_drop" / "evidence"
+scripts/barrot_mission_bundle_planner.py:244:        f"mission_bundle_proposal_{now}.json"
+scripts/barrot_mission_bundle_planner.py:248:        "schema": "barrot.mission_bundle_proposal.v1",
+scripts/barrot_mission_bundle_planner.py:275:        default="mission_next_bundle",
+scripts/barrot_mission_bundle_planner.py:292:    print("BARROT MISSION BUNDLE PLANNER")
+scripts/barrot_mission_bundle_planner.py:304:    print("MISSION_BUNDLE_PROPOSAL=PASS")
+scripts/barrot_bundle_validator.py:14:BUNDLE_DIR = (
+scripts/barrot_bundle_validator.py:15:    ROOT / ".barrot" / "autonomous_bundle" / "generated"
+scripts/barrot_bundle_validator.py:19:    ROOT / ".barrot" / "autonomous_bundle" / "handoff"
+scripts/barrot_bundle_validator.py:22:PROTOCOL = "BARROT-V3-DEVELOPMENT-BUNDLE-VALIDATOR"
+scripts/barrot_bundle_validator.py:26:class BundleValidationError(RuntimeError):
+scripts/barrot_bundle_validator.py:40:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:49:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:56:def latest_bundle() -> Path:
+scripts/barrot_bundle_validator.py:58:        BUNDLE_DIR.glob(
+scripts/barrot_bundle_validator.py:59:            "development_bundle_*.json"
+scripts/barrot_bundle_validator.py:64:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:65:            "no generated development bundle exists"
+scripts/barrot_bundle_validator.py:71:def validate_bundle(
+scripts/barrot_bundle_validator.py:72:    bundle_path: Path,
+scripts/barrot_bundle_validator.py:75:    data = load_json(bundle_path)
+scripts/barrot_bundle_validator.py:78:        "BARROT-V3-DEVELOPMENT-BUNDLE-BUILDER"
+scripts/barrot_bundle_validator.py:80:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:81:            "unexpected bundle protocol"
+scripts/barrot_bundle_validator.py:87:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:88:            "bundle is not in BUILT_NOT_EXECUTED state"
+scripts/barrot_bundle_validator.py:92:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:93:            "bundle execution_requested must be false"
+scripts/barrot_bundle_validator.py:99:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:100:            "bundle governance is missing"
+scripts/barrot_bundle_validator.py:113:            raise BundleValidationError(
+scripts/barrot_bundle_validator.py:120:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:127:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:132:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:133:            "bundle contains no operations"
+scripts/barrot_bundle_validator.py:138:            raise BundleValidationError(
+scripts/barrot_bundle_validator.py:152:            raise BundleValidationError(
+scripts/barrot_bundle_validator.py:157:            raise BundleValidationError(
+scripts/barrot_bundle_validator.py:158:                "bundle contains an executable operation"
+scripts/barrot_bundle_validator.py:164:        raise BundleValidationError(
+scripts/barrot_bundle_validator.py:177:            raise BundleValidationError(
+scripts/barrot_bundle_validator.py:182:            raise BundleValidationError(
+scripts/barrot_bundle_validator.py:190:    bundle_path: Path,
+scripts/barrot_bundle_validator.py:191:    bundle: dict[str, Any],
+scripts/barrot_bundle_validator.py:203:    bundle_hash = sha256_file(bundle_path)
+scripts/barrot_bundle_validator.py:207:            "barrot.governed_bundle_handoff.v1"
+scripts/barrot_bundle_validator.py:218:                "existing_governed_self_drop"
+scripts/barrot_bundle_validator.py:223:        "source_bundle": {
+scripts/barrot_bundle_validator.py:225:                bundle_path.relative_to(ROOT)
+scripts/barrot_bundle_validator.py:227:            "sha256": bundle_hash,
+scripts/barrot_bundle_validator.py:228:            "protocol": bundle["protocol"],
+scripts/barrot_bundle_validator.py:229:            "bundle_id": bundle["bundle_id"],
+scripts/barrot_bundle_validator.py:235:            "bundle_validated": True,
+scripts/barrot_bundle_validator.py:245:            "VALIDATED_BUNDLE -> "
+scripts/barrot_bundle_validator.py:246:            "GOVERNED_SELF_DROP"
+scripts/barrot_bundle_validator.py:279:        "--bundle",
+scripts/barrot_bundle_validator.py:284:    bundle_path = (
+scripts/barrot_bundle_validator.py:285:        args.bundle.resolve()
+scripts/barrot_bundle_validator.py:286:        if args.bundle
+scripts/barrot_bundle_validator.py:287:        else latest_bundle()
+scripts/barrot_bundle_validator.py:290:    bundle = validate_bundle(
+scripts/barrot_bundle_validator.py:291:        bundle_path
+scripts/barrot_bundle_validator.py:295:        bundle_path,
+scripts/barrot_bundle_validator.py:296:        bundle,
+scripts/barrot_bundle_validator.py:300:        "BARROT DEVELOPMENT BUNDLE VALIDATOR"
+scripts/barrot_bundle_validator.py:309:        "BUNDLE_STATUS=VALIDATED_NOT_EXECUTED"
+scripts/barrot_bundle_validator.py:327:        f"BUNDLE_SHA256={sha256_file(bundle_path)}"
+scripts/barrot_self_drop_bridge.py:3:Barrot Self-Drop Bridge
+scripts/barrot_self_drop_bridge.py:10:  3. creates a deterministic bundle,
+scripts/barrot_self_drop_bridge.py:11:  4. hashes the bundle,
+scripts/barrot_self_drop_bridge.py:13:  6. executes only the generated bundle,
+scripts/barrot_self_drop_bridge.py:37:ROOT = Path(".barrot/self_drop")
+scripts/barrot_self_drop_bridge.py:43:ALLOWED_ACTIONS = {"SELF_DROP_PROBE"}
+scripts/barrot_self_drop_bridge.py:59:    print(f"SELF_DROP_BRIDGE=FAIL")
+scripts/barrot_self_drop_bridge.py:102:    bundle = INBOX / f"barrot_autonomous_{task_id}_{now}.sh"
+scripts/barrot_self_drop_bridge.py:111:printf '%s\\n' 'BARROT_AUTONOMOUS_SELF_DROP=TRUE'
+scripts/barrot_self_drop_bridge.py:113:printf 'BARROT_ACTION=%s\\n' 'SELF_DROP_PROBE'
+scripts/barrot_self_drop_bridge.py:115:printf '%s\\n' 'BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE'
+scripts/barrot_self_drop_bridge.py:118:    bundle.write_text(payload)
+scripts/barrot_self_drop_bridge.py:119:    bundle.chmod(0o700)
+scripts/barrot_self_drop_bridge.py:121:    bundle_hash = sha256(bundle)
+scripts/barrot_self_drop_bridge.py:124:        ["bash", str(bundle)],
+scripts/barrot_self_drop_bridge.py:135:        "schema": "barrot.self_drop.bridge.v1",
+scripts/barrot_self_drop_bridge.py:141:        "generated_bundle": str(bundle),
+scripts/barrot_self_drop_bridge.py:142:        "bundle_sha256": bundle_hash,
+scripts/barrot_self_drop_bridge.py:157:        and "BARROT_AUTONOMOUS_SELF_DROP=TRUE" in completed.stdout
+scripts/barrot_self_drop_bridge.py:158:        and "BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE"
+scripts/barrot_self_drop_bridge.py:163:    print("AUTONOMOUS_BUNDLE_GENERATION=PASS")
+scripts/barrot_self_drop_bridge.py:164:    print(f"SHA256_EVIDENCE={'PASS' if len(bundle_hash) == 64 else 'FAIL'}")
+scripts/barrot_self_drop_bridge.py:173:            if "BARROT_AUTONOMOUS_SELF_DROP=TRUE" in completed.stdout
+scripts/barrot_self_drop_bridge.py:181:            if "BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE"
+scripts/barrot_self_drop_controller_adapter.py:3:Barrot Self-Drop Controller Adapter.
+scripts/barrot_self_drop_controller_adapter.py:6:Barrot's controller/tool layer and the already-tested self-drop bridge.
+scripts/barrot_self_drop_controller_adapter.py:8:It deliberately exposes only SELF_DROP_PROBE.
+scripts/barrot_self_drop_controller_adapter.py:26:BRIDGE = Path("scripts/barrot_self_drop_bridge.py")
+scripts/barrot_self_drop_controller_adapter.py:27:ALLOWED_ACTION = "SELF_DROP_PROBE"
+scripts/barrot_self_drop_controller_adapter.py:30:class SelfDropControllerAdapter:
+scripts/barrot_self_drop_controller_adapter.py:31:    name = "self_drop"
+scripts/barrot_self_drop_controller_adapter.py:39:            raise ValueError(f"unsupported self-drop action: {action}")
+scripts/barrot_self_drop_controller_adapter.py:65:        # the bridge's human-readable summary is the executed bundle stdout.
+scripts/barrot_self_drop_controller_adapter.py:88:            "bundle_sha256": evidence.get("bundle_sha256"),
+scripts/barrot_self_drop_controller_adapter.py:103:    adapter = SelfDropControllerAdapter()
+scripts/barrot_self_drop_controller_adapter.py:106:        print("usage: barrot_self_drop_controller_adapter.py TASK_ID ACTION")
+scripts/barrot_clean_live_test.py:13:print("BARROT PROVIDER-NEUTRAL SELF-DROP BOUNDARY TEST")
+scripts/barrot_bundle_spec_generator.py:3:Barrot V3 — governed development-bundle specification generator.
+scripts/barrot_bundle_spec_generator.py:6:  -> deterministic development bundle specification
+scripts/barrot_bundle_spec_generator.py:25:PROTOCOL = "BARROT-V3-DEVELOPMENT-BUNDLE-SPEC"
+scripts/barrot_bundle_spec_generator.py:29:class BundleSpecError(RuntimeError):
+scripts/barrot_bundle_spec_generator.py:49:    path = root / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_bundle_spec_generator.py:52:        raise BundleSpecError(f"missing active mission: {path}")
+scripts/barrot_bundle_spec_generator.py:57:        raise BundleSpecError(
+scripts/barrot_bundle_spec_generator.py:62:        raise BundleSpecError("mission must be an object")
+scripts/barrot_bundle_spec_generator.py:78:        raise BundleSpecError("governance must be an object")
+scripts/barrot_bundle_spec_generator.py:81:        raise BundleSpecError("handoff must be an object")
+scripts/barrot_bundle_spec_generator.py:84:        raise BundleSpecError("mission section must be an object")
+scripts/barrot_bundle_spec_generator.py:95:            raise BundleSpecError(
+scripts/barrot_bundle_spec_generator.py:100:        "AUTONOMOUS_BUNDLE_PRODUCTION"
+scripts/barrot_bundle_spec_generator.py:102:        raise BundleSpecError(
+scripts/barrot_bundle_spec_generator.py:103:            "mission does not authorize autonomous bundle production"
+scripts/barrot_bundle_spec_generator.py:109:        raise BundleSpecError(
+scripts/barrot_bundle_spec_generator.py:120:        raise BundleSpecError(
+scripts/barrot_bundle_spec_generator.py:127:        raise BundleSpecError(
+scripts/barrot_bundle_spec_generator.py:138:        "schema": "barrot.development_bundle_spec.v1",
+scripts/barrot_bundle_spec_generator.py:184:                "barrot_mission_bundle_planner"
+scripts/barrot_bundle_spec_generator.py:187:                "existing_governed_self_drop"
+scripts/barrot_bundle_spec_generator.py:206:        / "autonomous_bundle"
+scripts/barrot_bundle_spec_generator.py:216:        f"development_bundle_{stamp}.json"
+scripts/barrot_bundle_spec_generator.py:221:        "schema": "barrot.development_bundle_record.v1",
+scripts/barrot_bundle_spec_generator.py:263:    print("BARROT DEVELOPMENT BUNDLE SPEC")
+scripts/barrot_bundle_spec_generator.py:281:    print("DEVELOPMENT_BUNDLE_SPEC=PASS")
+scripts/barrot_development_bundle_builder.py:3:Barrot V3 — Governed Development Bundle Builder
+scripts/barrot_development_bundle_builder.py:6:    Convert a validated development-bundle specification into a concrete,
+scripts/barrot_development_bundle_builder.py:7:    deterministic, reviewable implementation bundle.
+scripts/barrot_development_bundle_builder.py:16:    - execution remains behind the existing governed self-drop boundary
+scripts/barrot_development_bundle_builder.py:31:MISSION = ROOT / ".barrot" / "autonomous_bundle" / "active_mission.json"
+scripts/barrot_development_bundle_builder.py:32:SPEC_DIR = ROOT / ".barrot" / "autonomous_bundle" / "specifications"
+scripts/barrot_development_bundle_builder.py:33:BUNDLE_DIR = ROOT / ".barrot" / "autonomous_bundle" / "generated"
+scripts/barrot_development_bundle_builder.py:36:PROTOCOL = "BARROT-V3-DEVELOPMENT-BUNDLE-BUILDER"
+scripts/barrot_development_bundle_builder.py:70:    candidates = sorted(SPEC_DIR.glob("development_bundle_*.json"))
+scripts/barrot_development_bundle_builder.py:72:        raise RuntimeError("no development bundle specification exists")
+scripts/barrot_development_bundle_builder.py:80:      2. the persisted development_bundle_record.v1 wrapper.
+scripts/barrot_development_bundle_builder.py:85:        if inner.get("protocol") == "BARROT-V3-DEVELOPMENT-BUNDLE-SPEC":
+scripts/barrot_development_bundle_builder.py:93:    Validate the canonical barrot.development_bundle_spec.v1
+scripts/barrot_development_bundle_builder.py:94:    produced by barrot_bundle_spec_generator.py.
+scripts/barrot_development_bundle_builder.py:97:    development_bundle_record.v1 wrapper.
+scripts/barrot_development_bundle_builder.py:120:    if spec["schema"] != "barrot.development_bundle_spec.v1":
+scripts/barrot_development_bundle_builder.py:126:        "BARROT-V3-DEVELOPMENT-BUNDLE-SPEC"
+scripts/barrot_development_bundle_builder.py:207:        "existing_governed_self_drop"
+scripts/barrot_development_bundle_builder.py:217:def build_bundle(spec_path: Path) -> tuple[Path, Path]:
+scripts/barrot_development_bundle_builder.py:223:    bundle_id = f"development_bundle_{timestamp}"
+scripts/barrot_development_bundle_builder.py:225:    bundle = {
+scripts/barrot_development_bundle_builder.py:227:        "bundle_id": bundle_id,
+scripts/barrot_development_bundle_builder.py:264:                "Implement the governed autonomous bundle-generation layer "
+scripts/barrot_development_bundle_builder.py:268:                "Produce a deterministic structured bundle artifact.",
+scripts/barrot_development_bundle_builder.py:269:                "Carry mission and specification provenance into the bundle.",
+scripts/barrot_development_bundle_builder.py:272:                "Permit later handoff to the existing governed self-drop boundary.",
+scripts/barrot_development_bundle_builder.py:273:                "Record enough evidence to reproduce the bundle decision."
+scripts/barrot_development_bundle_builder.py:279:                "operation_id": "GENERATE_GOVERNED_BUNDLE",
+scripts/barrot_development_bundle_builder.py:280:                "capability": "GENERATE_BUNDLE",
+scripts/barrot_development_bundle_builder.py:286:                    "structured_bundle",
+scripts/barrot_development_bundle_builder.py:293:                "operation_id": "VALIDATE_GENERATED_BUNDLE",
+scripts/barrot_development_bundle_builder.py:294:                "capability": "VALIDATE_BUNDLE",
+scripts/barrot_development_bundle_builder.py:297:                    "structured_bundle"
+scripts/barrot_development_bundle_builder.py:305:                "operation_id": "HANDOFF_TO_SELF_DROP",
+scripts/barrot_development_bundle_builder.py:306:                "capability": "EXECUTE_BUNDLE",
+scripts/barrot_development_bundle_builder.py:309:                    "validated_bundle"
+scripts/barrot_development_bundle_builder.py:351:                "BUILT_BUNDLE -> VALIDATED_BUNDLE -> "
+scripts/barrot_development_bundle_builder.py:352:                "GOVERNED_SELF_DROP_HANDOFF"
+scripts/barrot_development_bundle_builder.py:358:    BUNDLE_DIR.mkdir(parents=True, exist_ok=True)
+scripts/barrot_development_bundle_builder.py:360:    payload = canonical_json(bundle)
+scripts/barrot_development_bundle_builder.py:361:    bundle_hash = sha256_bytes(payload)
+scripts/barrot_development_bundle_builder.py:363:    bundle["bundle_sha256"] = bundle_hash
+scripts/barrot_development_bundle_builder.py:366:        bundle,
+scripts/barrot_development_bundle_builder.py:372:    bundle_path = BUNDLE_DIR / f"{bundle_id}.json"
+scripts/barrot_development_bundle_builder.py:373:    bundle_path.write_text(final_payload, encoding="utf-8")
+scripts/barrot_development_bundle_builder.py:377:        "bundle_id": bundle_id,
+scripts/barrot_development_bundle_builder.py:378:        "bundle_file": str(bundle_path.relative_to(ROOT)),
+scripts/barrot_development_bundle_builder.py:379:        "bundle_sha256": sha256_file(bundle_path),
+scripts/barrot_development_bundle_builder.py:394:    evidence_path = BUNDLE_DIR / f"{bundle_id}.evidence.json"
+scripts/barrot_development_bundle_builder.py:405:    return bundle_path, evidence_path
+scripts/barrot_development_bundle_builder.py:415:    bundle_path, evidence_path = build_bundle(spec_path)
+scripts/barrot_development_bundle_builder.py:417:    print("BARROT DEVELOPMENT BUNDLE BUILDER")
+scripts/barrot_development_bundle_builder.py:425:    print(f"BUNDLE={bundle_path}")
+scripts/barrot_development_bundle_builder.py:427:    print(f"BUNDLE_SHA256={sha256_file(bundle_path)}")
+scripts/barrot_development_bundle_builder.py:428:    print("DEVELOPMENT_BUNDLE_BUILD=PASS")
+scripts/barrot_autonomous_continuation.py:16:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:23:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:30:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:37:    / "autonomous_bundle"
+scripts/barrot_autonomous_continuation.py:212:                "DEVELOPMENT_BUNDLE_SPECIFICATION",
+scripts/barrot_governed_bundle_executor.py:3:Barrot V3 — Governed Development Bundle Executor.
+scripts/barrot_governed_bundle_executor.py:5:Consumes an already validated development bundle and its governed handoff.
+scripts/barrot_governed_bundle_executor.py:10:  - execute the existing SELF_DROP_PROBE;
+scripts/barrot_governed_bundle_executor.py:13:  - automatically execute a BUILT_NOT_EXECUTED bundle.
+scripts/barrot_governed_bundle_executor.py:32:    ROOT / ".barrot" / "autonomous_bundle" / "handoff"
+scripts/barrot_governed_bundle_executor.py:36:    ROOT / ".barrot" / "autonomous_bundle" / "execution_evidence"
+scripts/barrot_governed_bundle_executor.py:39:PROTOCOL = "BARROT-V3-GOVERNED-BUNDLE-EXECUTOR"
+scripts/barrot_governed_bundle_executor.py:40:SCHEMA = "barrot.governed_bundle_execution.v1"
+scripts/barrot_governed_bundle_executor.py:43:    "VALIDATED_BUNDLE -> GOVERNED_SELF_DROP"
+scripts/barrot_governed_bundle_executor.py:47:    "GENERATE_BUNDLE",
+scripts/barrot_governed_bundle_executor.py:48:    "VALIDATE_BUNDLE",
+scripts/barrot_governed_bundle_executor.py:49:    "EXECUTE_BUNDLE",
+scripts/barrot_governed_bundle_executor.py:53:class GovernedBundleExecutionError(RuntimeError):
+scripts/barrot_governed_bundle_executor.py:69:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:78:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:83:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:92:    bundle_path: Path,
+scripts/barrot_governed_bundle_executor.py:96:    bundle = load_json(bundle_path)
+scripts/barrot_governed_bundle_executor.py:99:        "barrot.governed_bundle_handoff.v1"
+scripts/barrot_governed_bundle_executor.py:101:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:106:        "BARROT-V3-DEVELOPMENT-BUNDLE-VALIDATOR"
+scripts/barrot_governed_bundle_executor.py:108:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:113:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:120:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:127:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:132:        "existing_governed_self_drop"
+scripts/barrot_governed_bundle_executor.py:134:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:135:            "handoff executor is not governed self-drop"
+scripts/barrot_governed_bundle_executor.py:141:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:155:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:159:    if authorization.get("bundle_validated") is not True:
+scripts/barrot_governed_bundle_executor.py:160:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:161:            "bundle has not been validated"
+scripts/barrot_governed_bundle_executor.py:165:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:170:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:177:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:181:    source_bundle = handoff.get("source_bundle")
+scripts/barrot_governed_bundle_executor.py:183:    if not isinstance(source_bundle, dict):
+scripts/barrot_governed_bundle_executor.py:184:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:185:            "source_bundle missing"
+scripts/barrot_governed_bundle_executor.py:190:            bundle_path.relative_to(ROOT)
+scripts/barrot_governed_bundle_executor.py:196:        expected_path = bundle_path.name
+scripts/barrot_governed_bundle_executor.py:198:    source_path = source_bundle.get("path")
+scripts/barrot_governed_bundle_executor.py:203:        if bundle_path.is_relative_to(ROOT):
+scripts/barrot_governed_bundle_executor.py:204:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:205:                "handoff points to a different bundle"
+scripts/barrot_governed_bundle_executor.py:208:        if source_path != bundle_path.name:
+scripts/barrot_governed_bundle_executor.py:209:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:210:                "handoff points to a different bundle"
+scripts/barrot_governed_bundle_executor.py:213:    actual_hash = sha256_file(bundle_path)
+scripts/barrot_governed_bundle_executor.py:215:    if source_bundle.get("sha256") != actual_hash:
+scripts/barrot_governed_bundle_executor.py:216:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:217:            "bundle SHA-256 does not match governed handoff"
+scripts/barrot_governed_bundle_executor.py:220:    if bundle.get("status") != "BUILT_NOT_EXECUTED":
+scripts/barrot_governed_bundle_executor.py:221:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:222:            "bundle is not BUILT_NOT_EXECUTED"
+scripts/barrot_governed_bundle_executor.py:225:    if bundle.get("execution_requested") is not False:
+scripts/barrot_governed_bundle_executor.py:226:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:227:            "bundle execution_requested must remain false"
+scripts/barrot_governed_bundle_executor.py:230:    governance = bundle.get("governance")
+scripts/barrot_governed_bundle_executor.py:233:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:234:            "bundle governance missing"
+scripts/barrot_governed_bundle_executor.py:239:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:240:                f"bundle governance violation: {key}"
+scripts/barrot_governed_bundle_executor.py:243:    operations = bundle.get("operations")
+scripts/barrot_governed_bundle_executor.py:246:        raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:247:            "bundle operations missing"
+scripts/barrot_governed_bundle_executor.py:252:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:266:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:271:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:273:                "non-executable bundle"
+scripts/barrot_governed_bundle_executor.py:277:            raise GovernedBundleExecutionError(
+scripts/barrot_governed_bundle_executor.py:282:    return handoff, bundle, actual_hash
+scripts/barrot_governed_bundle_executor.py:287:    bundle_path: Path,
+scripts/barrot_governed_bundle_executor.py:290:    handoff, bundle, bundle_hash = validate_handoff(
+scripts/barrot_governed_bundle_executor.py:292:        bundle_path,
+scripts/barrot_governed_bundle_executor.py:324:        "bundle": {
+scripts/barrot_governed_bundle_executor.py:325:            "path": str(bundle_path.relative_to(ROOT)),
+scripts/barrot_governed_bundle_executor.py:326:            "sha256": bundle_hash,
+scripts/barrot_governed_bundle_executor.py:327:            "bundle_id": bundle["bundle_id"],
+scripts/barrot_governed_bundle_executor.py:338:            for operation in bundle["operations"]
+scripts/barrot_governed_bundle_executor.py:342:            "NO_BUNDLE_EXECUTION_REQUESTED"
+scripts/barrot_governed_bundle_executor.py:362:        "--bundle",
+scripts/barrot_governed_bundle_executor.py:374:    bundle_path = args.bundle.resolve()
+scripts/barrot_governed_bundle_executor.py:379:        bundle_path,
+scripts/barrot_governed_bundle_executor.py:382:    print("BARROT GOVERNED BUNDLE EXECUTOR")
+scripts/barrot_governed_bundle_executor.py:385:    print("BUNDLE_EXECUTION=NOT_PERFORMED")
+tests/test_convergence_scenario.py:21:from tests.v3_test_harness import write_science_bundle
+tests/test_convergence_scenario.py:385:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=False, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_convergence_scenario.py:387:    adapter = StaticResearchProblemAdapter(bundle)
+tests/test_formal_benchmark.py:104:def test_external_importer_builds_flt_bundle(tmp_path: Path) -> None:
+tests/test_formal_benchmark.py:108:    bundle = importer.build_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG)
+tests/test_formal_benchmark.py:109:    formal = bundle["formal_verification"][0]
+tests/test_formal_benchmark.py:118:    assert bundle["claims"][0]["claim_id"] == "claim.fermat_last_theorem"
+tests/test_formal_benchmark.py:119:    assert bundle["claims"][0]["dependencies"]
+tests/test_formal_benchmark.py:124:    formal = ExternalLeanProjectImporter().build_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG)["formal_verification"][0]
+tests/test_formal_benchmark.py:164:    formal = ExternalLeanProjectImporter().build_bundle(project_root, ANTHROPIC_FLT_IMPORT_CONFIG)["formal_verification"][0]
+tests/test_formal_benchmark.py:183:    bundle_out = tmp_path / "bundle.json"
+tests/test_formal_benchmark.py:192:        "--bundle-out",
+tests/test_formal_benchmark.py:193:        str(bundle_out),
+tests/test_formal_benchmark.py:201:    assert bundle_out.exists()
+tests/test_scientific_discovery.py:29:BUNDLE_PATH = Path(
+tests/test_scientific_discovery.py:30:    str(Path(__file__).resolve().parents[1] / "data" / "research" / "navier_stokes_research_bundle.json")
+tests/test_scientific_discovery.py:42:def write_bundle(path: Path, *, independent: bool, adversarial_status: str, formal_command: list[str] | None = None) -> Path:
+tests/test_scientific_discovery.py:43:    bundle = {
+tests/test_scientific_discovery.py:210:    path.write_text(json.dumps(bundle, indent=2), encoding="utf-8")
+tests/test_scientific_discovery.py:214:def test_navier_stokes_adapter_loads_authoritative_bundle() -> None:
+tests/test_scientific_discovery.py:282:    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_scientific_discovery.py:286:        StaticResearchProblemAdapter(bundle),
+tests/test_scientific_discovery.py:296:    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_scientific_discovery.py:300:        StaticResearchProblemAdapter(bundle),
+tests/test_scientific_discovery.py:317:    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.CHALLENGED.value)
+tests/test_scientific_discovery.py:321:        StaticResearchProblemAdapter(bundle),
+tests/test_scientific_discovery.py:350:    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_scientific_discovery.py:352:    adapter = StaticResearchProblemAdapter(bundle)
+tests/test_scientific_discovery.py:364:    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_scientific_discovery.py:366:    adapter = StaticResearchProblemAdapter(bundle)
+tests/test_v3_acceptance_matrix.py:37:    write_science_bundle,
+tests/test_v3_acceptance_matrix.py:455:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=False, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_v3_acceptance_matrix.py:456:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle), formal_runner=lambda command, repo: {"returncode": 0, "stdout": "ok", "stderr": ""})
+tests/test_v3_acceptance_matrix.py:462:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.CHALLENGED.value)
+tests/test_v3_acceptance_matrix.py:463:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle), formal_runner=lambda command, repo: {"returncode": 0, "stdout": "ok", "stderr": ""})
+tests/test_v3_acceptance_matrix.py:469:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value, formal_command=["python", "hack.py"])
+tests/test_v3_acceptance_matrix.py:470:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle))
+tests/test_v3_acceptance_matrix.py:478:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_v3_acceptance_matrix.py:479:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle), formal_runner=lambda command, repo: {"returncode": 1, "stdout": "", "stderr": "lean failed"})
+tests/test_v3_acceptance_matrix.py:486:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.CHALLENGED.value)
+tests/test_v3_acceptance_matrix.py:487:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle), formal_runner=lambda command, repo: {"returncode": 0, "stdout": "ok", "stderr": "", "independently_verified": True})
+tests/test_v3_acceptance_matrix.py:550:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=False, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_v3_acceptance_matrix.py:551:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle), formal_runner=lambda command, repo: {"returncode": 0, "stdout": "ok", "stderr": "", "independently_verified": False})
+tests/test_v3_acceptance_matrix.py:559:    bundle = write_science_bundle(tmp_path / "bundle.json", independent=False, adversarial_status=ClaimStatus.SUPPORTED.value)
+tests/test_v3_acceptance_matrix.py:560:    cycle = ScientificDiscoveryController(workspace=tmp_path).run(StaticResearchProblemAdapter(bundle), formal_runner=lambda command, repo: {"returncode": 0, "stdout": "ok", "stderr": ""})
+tests/v3_test_harness.py:141:def write_science_bundle(
+tests/v3_test_harness.py:149:    bundle = {
+tests/v3_test_harness.py:278:    path.write_text(json.dumps(bundle, indent=2), encoding="utf-8")
+tests/test_termux_self_drop.py:6:def test_termux_drop_writes_bundle_file(tmp_path):
+tests/test_termux_self_drop.py:10:    content = "BARROT_SELF_DROP_OK\n"
+tests/test_termux_self_drop.py:13:        type="TERMUX_DROP",
+tests/test_termux_self_drop.py:27:def test_termux_drop_round_trip_is_deterministic(tmp_path):
+tests/test_termux_self_drop.py:34:        type="TERMUX_DROP",
+tests/test_termux_self_drop.py:54:def test_termux_drop_rejects_path_outside_workspace(tmp_path):
+tests/test_termux_self_drop.py:60:        type="TERMUX_DROP",
+tests/test_bundle_delivery.py:2:from barrot_agent.orchestration.bundle_delivery import (
+tests/test_bundle_delivery.py:3:    BundleDelivery,
+tests/test_bundle_delivery.py:4:    BundleDeliveryError,
+tests/test_bundle_delivery.py:5:    deliver_bundle,
+tests/test_bundle_delivery.py:10:def test_barrot_can_deliver_bundle_through_existing_termux_drop(tmp_path):
+tests/test_bundle_delivery.py:13:    target = tmp_path / "barrot_generated_bundle.txt"
+tests/test_bundle_delivery.py:14:    content = "BARROT_GENERATED_BUNDLE_OK\n"
+tests/test_bundle_delivery.py:16:    result = deliver_bundle(
+tests/test_bundle_delivery.py:18:        BundleDelivery(
+tests/test_bundle_delivery.py:29:def test_bundle_delivery_preserves_termux_workspace_safety(tmp_path):
+tests/test_bundle_delivery.py:32:    target = tmp_path.parent / "barrot_bundle_escape.txt"
+tests/test_bundle_delivery.py:34:    result = deliver_bundle(
+tests/test_bundle_delivery.py:36:        BundleDelivery(
+tests/test_bundle_delivery.py:46:def test_bundle_delivery_rejects_invalid_path(tmp_path):
+tests/test_bundle_delivery.py:50:        deliver_bundle(
+tests/test_bundle_delivery.py:52:            BundleDelivery(
+tests/test_bundle_delivery.py:57:    except BundleDeliveryError as exc:
+tests/test_bundle_delivery.py:60:        raise AssertionError("Expected BundleDeliveryError")
+tests/test_autonomous_bundle_delivery.py:2:from barrot_agent.orchestration.autonomous_actions import deliver_autonomous_bundle
+tests/test_autonomous_bundle_delivery.py:5:def test_autonomous_layer_can_deliver_bundle(tmp_path):
+tests/test_autonomous_bundle_delivery.py:8:    target = tmp_path / "autonomous_bundle.txt"
+tests/test_autonomous_bundle_delivery.py:9:    content = "BARROT_AUTONOMOUS_BUNDLE_OK\n"
+tests/test_autonomous_bundle_delivery.py:11:    result = deliver_autonomous_bundle(
+tests/test_autonomous_bundle_delivery.py:27:    result = deliver_autonomous_bundle(
+tests/test_autonomous_real_bundle.py:2:from barrot_agent.orchestration.autonomous_actions import deliver_autonomous_bundle
+tests/test_autonomous_real_bundle.py:5:def test_barrot_can_drop_and_execute_real_python_bundle(tmp_path):
+tests/test_autonomous_real_bundle.py:8:    target = tmp_path / "generated_bundle.py"
+tests/test_autonomous_real_bundle.py:10:    content = '''def barrot_bundle_probe():
+tests/test_autonomous_real_bundle.py:11:    return "BARROT_REAL_BUNDLE_EXECUTED"
+tests/test_autonomous_real_bundle.py:14:    result = deliver_autonomous_bundle(
+tests/test_autonomous_real_bundle.py:33:    assert namespace["barrot_bundle_probe"]() == "BARROT_REAL_BUNDLE_EXECUTED"
+tests/test_autonomous_real_bundle.py:36:def test_autonomous_bundle_rejects_invalid_python(tmp_path):
+tests/test_autonomous_real_bundle.py:39:    target = tmp_path / "invalid_bundle.py"
+tests/test_autonomous_real_bundle.py:41:    from barrot_agent.orchestration.bundle_validation import BundleValidationError
+tests/test_autonomous_real_bundle.py:44:        deliver_autonomous_bundle(
+tests/test_autonomous_real_bundle.py:49:    except BundleValidationError as exc:
+tests/test_autonomous_real_bundle.py:52:        raise AssertionError("Expected BundleValidationError")
+tests/test_bundle_validation.py:1:from barrot_agent.orchestration.bundle_validation import (
+tests/test_bundle_validation.py:2:    BundleValidationError,
+tests/test_bundle_validation.py:3:    validate_python_bundle,
+tests/test_bundle_validation.py:7:def test_valid_python_bundle_is_accepted():
+tests/test_bundle_validation.py:8:    result = validate_python_bundle(
+tests/test_bundle_validation.py:9:        path="generated_bundle.py",
+tests/test_bundle_validation.py:19:def test_invalid_python_bundle_is_rejected():
+tests/test_bundle_validation.py:20:    result = validate_python_bundle(
+tests/test_bundle_validation.py:21:        path="generated_bundle.py",
+tests/test_bundle_validation.py:30:def test_empty_bundle_path_is_rejected():
+tests/test_bundle_validation.py:32:        validate_python_bundle(
+tests/test_bundle_validation.py:36:    except BundleValidationError as exc:
+tests/test_bundle_validation.py:39:        raise AssertionError("Expected BundleValidationError")
+tests/test_bundle_validation.py:42:def test_non_string_bundle_content_is_rejected():
+tests/test_bundle_validation.py:44:        validate_python_bundle(
+tests/test_bundle_validation.py:45:            path="generated_bundle.py",
+tests/test_bundle_validation.py:48:    except BundleValidationError as exc:
+tests/test_bundle_validation.py:51:        raise AssertionError("Expected BundleValidationError")
+tests/test_bundle_evidence.py:2:from barrot_agent.orchestration.autonomous_actions import deliver_autonomous_bundle
+tests/test_bundle_evidence.py:3:from barrot_agent.orchestration.bundle_evidence import (
+tests/test_bundle_evidence.py:6:    verify_bundle_delivery,
+tests/test_bundle_evidence.py:10:def test_bundle_delivery_produces_matching_hash_evidence(tmp_path):
+tests/test_bundle_evidence.py:13:    target = tmp_path / "evidence_bundle.py"
+tests/test_bundle_evidence.py:16:    result = deliver_autonomous_bundle(
+tests/test_bundle_evidence.py:24:    evidence = verify_bundle_delivery(
+tests/test_bundle_evidence.py:35:def test_bundle_delivery_evidence_detects_modified_file(tmp_path):
+tests/test_bundle_evidence.py:36:    target = tmp_path / "modified_bundle.py"
+tests/test_bundle_evidence.py:44:    evidence = verify_bundle_delivery(
+tests/test_bundle_evidence.py:54:def test_bundle_delivery_evidence_detects_missing_file(tmp_path):
+tests/test_bundle_evidence.py:55:    target = tmp_path / "missing_bundle.py"
+tests/test_bundle_evidence.py:58:    evidence = verify_bundle_delivery(
+tests/test_verified_bundle_delivery.py:2:from barrot_agent.orchestration.verified_bundle_delivery import (
+tests/test_verified_bundle_delivery.py:3:    deliver_verified_bundle,
+tests/test_verified_bundle_delivery.py:7:def test_verified_bundle_delivery_completes_full_chain(tmp_path):
+tests/test_verified_bundle_delivery.py:10:    target = tmp_path / "verified_bundle.py"
+tests/test_verified_bundle_delivery.py:12:    return "VERIFIED_BUNDLE_OK"
+tests/test_verified_bundle_delivery.py:15:    result = deliver_verified_bundle(
+tests/test_verified_bundle_delivery.py:39:    assert namespace["probe"]() == "VERIFIED_BUNDLE_OK"
+tests/test_verified_bundle_delivery.py:42:def test_verified_bundle_delivery_rejects_invalid_python(tmp_path):
+tests/test_verified_bundle_delivery.py:45:    target = tmp_path / "invalid_verified_bundle.py"
+tests/test_verified_bundle_delivery.py:48:        deliver_verified_bundle(
+tests/test_verified_bundle_delivery.py:61:def test_verified_bundle_delivery_preserves_workspace_boundary(tmp_path):
+tests/test_verified_bundle_delivery.py:64:    target = tmp_path.parent / "verified_bundle_escape.py"
+tests/test_verified_bundle_delivery.py:66:    result = deliver_verified_bundle(
+tests/test_deliver_bundle_action.py:5:def test_deliver_bundle_action_is_allowed():
+tests/test_deliver_bundle_action.py:10:                    "type": "DELIVER_BUNDLE",
+tests/test_deliver_bundle_action.py:21:    assert actions[0].type == "DELIVER_BUNDLE"
+tests/test_deliver_bundle_action.py:24:def test_deliver_bundle_action_validates_delivers_and_verifies(tmp_path):
+tests/test_deliver_bundle_action.py:30:        type="DELIVER_BUNDLE",
+tests/test_deliver_bundle_action.py:33:            "content": 'def probe():\n    return "DELIVER_BUNDLE_OK"\n',
+tests/test_deliver_bundle_action.py:44:def test_deliver_bundle_action_rejects_invalid_python(tmp_path):
+tests/test_deliver_bundle_action.py:50:        type="DELIVER_BUNDLE",
+tests/test_deliver_bundle_action.py:63:def test_deliver_bundle_action_preserves_workspace_boundary(tmp_path):
+tests/test_deliver_bundle_action.py:69:        type="DELIVER_BUNDLE",
+tests/test_self_drop_bridge.py:9:SCRIPT = Path("scripts/barrot_self_drop_bridge.py")
+tests/test_self_drop_bridge.py:20:def test_allowlisted_self_drop():
+tests/test_self_drop_bridge.py:24:            "action": "SELF_DROP_PROBE",
+tests/test_self_drop_bridge.py:30:    assert "AUTONOMOUS_BUNDLE_GENERATION=PASS" in result.stdout
+tests/test_self_drop_bridge.py:45:    assert "SELF_DROP_BRIDGE=FAIL" in result.stdout
+tests/test_self_drop_bridge.py:53:            "action": "SELF_DROP_PROBE",
+tests/test_self_drop_controller_adapter.py:7:from scripts.barrot_self_drop_controller_adapter import (
+tests/test_self_drop_controller_adapter.py:8:    SelfDropControllerAdapter,
+tests/test_self_drop_controller_adapter.py:12:def test_adapter_registers_self_drop_probe():
+tests/test_self_drop_controller_adapter.py:13:    adapter = SelfDropControllerAdapter()
+tests/test_self_drop_controller_adapter.py:15:    assert adapter.name == "self_drop"
+tests/test_self_drop_controller_adapter.py:16:    assert adapter.can_handle("SELF_DROP_PROBE")
+tests/test_self_drop_controller_adapter.py:21:    adapter = SelfDropControllerAdapter()
+tests/test_self_drop_controller_adapter.py:25:        "SELF_DROP_PROBE",
+tests/test_self_drop_controller_adapter.py:32:    # The executed bundle stdout is authoritative in execution_stdout.
+tests/test_self_drop_controller_adapter.py:33:    assert "BARROT_AUTONOMOUS_SELF_DROP=TRUE" in result["execution_stdout"]
+tests/test_self_drop_controller_adapter.py:35:        "BARROT_AUTONOMOUS_SELF_DROP_COMPLETE=TRUE"
+tests/test_self_drop_controller_adapter.py:40:    assert len(result["bundle_sha256"]) == 64
+tests/test_self_drop_controller_adapter.py:46:    adapter = SelfDropControllerAdapter()
+tests/test_self_drop_controller_integration.py:8:def test_controller_registers_and_dispatches_self_drop():
+tests/test_self_drop_controller_integration.py:11:    assert "self_drop" in brain.tool_funcs
+tests/test_self_drop_controller_integration.py:12:    assert callable(brain.tool_funcs["self_drop"])
+tests/test_self_drop_controller_integration.py:14:    result = brain.tool_funcs["self_drop"]({
+tests/test_self_drop_controller_integration.py:16:        "action": "SELF_DROP_PROBE",
+tests/test_self_drop_controller_integration.py:23:    assert result["bundle_sha256"]
+tests/test_tool_result_serialization.py:9:    result = {"success": True, "bundle_sha256": "abc123"}
+tests/test_tool_result_serialization.py:14:    assert '"bundle_sha256": "abc123"' in serialized
+tests/test_mission_bundle_planner.py:4:from scripts.barrot_mission_bundle_planner import (
+tests/test_mission_bundle_planner.py:20:        "AUTONOMOUS_BUNDLE_PRODUCTION"
+tests/test_mission_bundle_planner.py:22:    assert mission["handoff"]["existing_capability"] == "SELF_DROP"
+tests/test_mission_bundle_planner.py:25:def test_build_proposal_is_self_drop_probe_only():
+tests/test_mission_bundle_planner.py:36:    assert proposal["action"] == "SELF_DROP_PROBE"
+tests/test_bundle_spec_generator.py:4:from scripts.barrot_bundle_spec_generator import (
+tests/test_bundle_spec_generator.py:5:    BundleSpecError,
+tests/test_bundle_spec_generator.py:19:        task_id="test_bundle",
+tests/test_bundle_spec_generator.py:23:        "barrot.development_bundle_spec.v1"
+tests/test_bundle_spec_generator.py:25:    assert spec["task"]["task_id"] == "test_bundle"
+tests/test_bundle_spec_generator.py:44:    assert "self-drop capability" in targets
+tests/test_bundle_spec_generator.py:72:    except BundleSpecError:
+tests/test_bundle_spec_generator.py:90:    except BundleSpecError:
+tests/test_development_bundle_builder.py:13:    / "barrot_development_bundle_builder.py"
+tests/test_development_bundle_builder.py:17:    "barrot_development_bundle_builder",
+tests/test_development_bundle_builder.py:30:            "barrot.development_bundle_spec.v1",
+tests/test_development_bundle_builder.py:33:            "BARROT-V3-DEVELOPMENT-BUNDLE-SPEC",
+tests/test_development_bundle_builder.py:40:                "test_bundle",
+tests/test_development_bundle_builder.py:61:                "bundle generation."
+tests/test_development_bundle_builder.py:65:                "self-drop capability",
+tests/test_development_bundle_builder.py:70:                "bundle generation."
+tests/test_development_bundle_builder.py:93:                "barrot_mission_bundle_planner",
+tests/test_development_bundle_builder.py:95:                "existing_governed_self_drop",
+tests/test_development_bundle_builder.py:105:def test_generated_bundle_is_governed():
+tests/test_development_bundle_builder.py:115:        "barrot.development_bundle_spec.v1"
+tests/test_development_bundle_builder.py:182:            "barrot.development_bundle_record.v1",
+tests/test_development_bundle_builder.py:188:        "barrot.development_bundle_spec.v1"
+tests/test_bundle_validator.py:12:    / "barrot_bundle_validator.py"
+tests/test_bundle_validator.py:16:    "barrot_bundle_validator",
+tests/test_bundle_validator.py:26:def valid_bundle():
+tests/test_bundle_validator.py:29:            "BARROT-V3-DEVELOPMENT-BUNDLE-BUILDER",
+tests/test_bundle_validator.py:30:        "bundle_id":
+tests/test_bundle_validator.py:31:            "test_bundle",
+tests/test_bundle_validator.py:49:                    "GENERATE_GOVERNED_BUNDLE",
+tests/test_bundle_validator.py:51:                    "GENERATE_BUNDLE",
+tests/test_bundle_validator.py:68:def test_valid_bundle_passes(tmp_path):
+tests/test_bundle_validator.py:69:    path = tmp_path / "bundle.json"
+tests/test_bundle_validator.py:74:        json.dumps(valid_bundle()),
+tests/test_bundle_validator.py:78:    result = module.validate_bundle(path)
+tests/test_bundle_validator.py:86:    path = tmp_path / "bundle.json"
+tests/test_bundle_validator.py:90:    bundle = valid_bundle()
+tests/test_bundle_validator.py:92:    bundle["governance"][
+tests/test_bundle_validator.py:97:        json.dumps(bundle),
+tests/test_bundle_validator.py:102:        module.validate_bundle(path)
+tests/test_bundle_validator.py:103:    except module.BundleValidationError:
+tests/test_bundle_validator.py:112:    path = tmp_path / "bundle.json"
+tests/test_bundle_validator.py:116:    bundle = valid_bundle()
+tests/test_bundle_validator.py:118:    bundle["execution_requested"] = True
+tests/test_bundle_validator.py:121:        json.dumps(bundle),
+tests/test_bundle_validator.py:126:        module.validate_bundle(path)
+tests/test_bundle_validator.py:127:    except module.BundleValidationError:
+tests/test_bundle_validator.py:136:    path = tmp_path / "bundle.json"
+tests/test_bundle_validator.py:140:    bundle = valid_bundle()
+tests/test_bundle_validator.py:142:    bundle["operations"][0][
+tests/test_bundle_validator.py:147:        json.dumps(bundle),
+tests/test_bundle_validator.py:152:        module.validate_bundle(path)
+tests/test_bundle_validator.py:153:    except module.BundleValidationError:
+tests/test_bundle_validator.py:162:    path = tmp_path / "bundle.json"
+tests/test_bundle_validator.py:166:    bundle = valid_bundle()
+tests/test_bundle_validator.py:168:    del bundle["provenance"][
+tests/test_bundle_validator.py:173:        json.dumps(bundle),
+tests/test_bundle_validator.py:178:        module.validate_bundle(path)
+tests/test_bundle_validator.py:179:    except module.BundleValidationError:
+tests/test_development_bundle_output_contract.py:10:def test_generated_bundle_provenance_contract():
+tests/test_development_bundle_output_contract.py:15:            / "autonomous_bundle"
+tests/test_development_bundle_output_contract.py:18:            "development_bundle_*.json"
+tests/test_development_bundle_output_contract.py:24:            "No generated development bundle exists"
+tests/test_development_bundle_output_contract.py:27:    bundle = generated[-1]
+tests/test_development_bundle_output_contract.py:30:        bundle.read_text(
+tests/test_development_bundle_output_contract.py:60:    evidence = bundle.with_name(
+tests/test_development_bundle_output_contract.py:61:        bundle.stem
+tests/test_autonomous_continuation.py:39:                "bundle generation."
+tests/test_autonomous_continuation.py:43:                "self-drop capability",
+tests/test_autonomous_continuation.py:61:        "bundle generation."
+tests/test_autonomous_continuation.py:70:            / "autonomous_bundle"
+tests/test_autonomous_continuation.py:106:            / "autonomous_bundle"
+tests/test_governed_bundle_executor.py:13:    / "barrot_governed_bundle_executor.py"
+tests/test_governed_bundle_executor.py:19:        "barrot_governed_bundle_executor",
+tests/test_governed_bundle_executor.py:30:    bundle = {
+tests/test_governed_bundle_executor.py:32:            "BARROT-V3-DEVELOPMENT-BUNDLE-BUILDER",
+tests/test_governed_bundle_executor.py:33:        "bundle_id":
+tests/test_governed_bundle_executor.py:34:            "development_bundle_test",
+tests/test_governed_bundle_executor.py:50:                    "GENERATE_GOVERNED_BUNDLE",
+tests/test_governed_bundle_executor.py:52:                    "GENERATE_BUNDLE",
+tests/test_governed_bundle_executor.py:61:    bundle_path = tmp_path / "bundle.json"
+tests/test_governed_bundle_executor.py:62:    bundle_path.write_text(
+tests/test_governed_bundle_executor.py:63:        json.dumps(bundle, sort_keys=True),
+tests/test_governed_bundle_executor.py:67:    bundle_hash = module.sha256_file(bundle_path)
+tests/test_governed_bundle_executor.py:71:            "barrot.governed_bundle_handoff.v1",
+tests/test_governed_bundle_executor.py:73:            "BARROT-V3-DEVELOPMENT-BUNDLE-VALIDATOR",
+tests/test_governed_bundle_executor.py:78:                "existing_governed_self_drop",
+tests/test_governed_bundle_executor.py:83:            "bundle_validated": True,
+tests/test_governed_bundle_executor.py:92:            "VALIDATED_BUNDLE -> GOVERNED_SELF_DROP",
+tests/test_governed_bundle_executor.py:93:        "source_bundle": {
+tests/test_governed_bundle_executor.py:94:            "path": "bundle.json",
+tests/test_governed_bundle_executor.py:95:            "sha256": bundle_hash,
+tests/test_governed_bundle_executor.py:105:    return module, bundle_path, handoff_path
+tests/test_governed_bundle_executor.py:112:    module, bundle_path, handoff_path = make_artifacts(
+tests/test_governed_bundle_executor.py:125:        bundle_path,
+tests/test_governed_bundle_executor.py:140:def test_tampered_bundle_is_rejected(tmp_path):
+tests/test_governed_bundle_executor.py:141:    module, bundle_path, handoff_path = make_artifacts(
+tests/test_governed_bundle_executor.py:145:    bundle_path.write_text(
+tests/test_governed_bundle_executor.py:146:        bundle_path.read_text(encoding="utf-8")
+tests/test_governed_bundle_executor.py:154:            bundle_path,
+tests/test_governed_bundle_executor.py:156:    except module.GovernedBundleExecutionError as exc:
+tests/test_governed_bundle_executor.py:160:            "tampered bundle was accepted"
+tests/test_governed_bundle_executor.py:165:    module, bundle_path, handoff_path = make_artifacts(
+tests/test_governed_bundle_executor.py:170:        bundle_path.read_text(encoding="utf-8")
+tests/test_governed_bundle_executor.py:175:    bundle_path.write_text(
+tests/test_governed_bundle_executor.py:180:    # The handoff must bind to the exact bundle bytes being tested.
+tests/test_governed_bundle_executor.py:186:    handoff["source_bundle"]["sha256"] = (
+tests/test_governed_bundle_executor.py:187:        module.sha256_file(bundle_path)
+tests/test_governed_bundle_executor.py:197:            bundle_path,
+tests/test_governed_bundle_executor.py:199:    except module.GovernedBundleExecutionError as exc:

@@ -1,0 +1,90 @@
+6:    Convert a validated development-bundle specification into a concrete,
+7:    deterministic, reviewable implementation bundle.
+15:    - preserves provenance and hashes
+23:import json
+31:MISSION = ROOT / ".barrot" / "autonomous_bundle" / "active_mission.json"
+32:SPEC_DIR = ROOT / ".barrot" / "autonomous_bundle" / "specifications"
+33:BUNDLE_DIR = ROOT / ".barrot" / "autonomous_bundle" / "generated"
+39:def canonical_json(value: Any) -> bytes:
+40:    return json.dumps(
+48:def sha256_bytes(data: bytes) -> str:
+49:    return hashlib.sha256(data).hexdigest()
+52:def sha256_file(path: Path) -> str:
+53:    return sha256_bytes(path.read_bytes())
+56:def utc_stamp() -> str:
+60:def load_json(path: Path) -> dict[str, Any]:
+63:    value = json.loads(path.read_text(encoding="utf-8"))
+69:def latest_spec() -> Path:
+70:    candidates = sorted(SPEC_DIR.glob("development_bundle_*.json"))
+72:        raise RuntimeError("no development bundle specification exists")
+76:def unwrap_spec_record(spec: dict[str, Any]) -> dict[str, Any]:
+80:      2. the persisted development_bundle_record.v1 wrapper.
+91:def validate_spec(spec: dict[str, Any]) -> dict[str, Any]:
+93:    Validate the canonical barrot.development_bundle_spec.v1
+94:    produced by barrot_bundle_spec_generator.py.
+97:    development_bundle_record.v1 wrapper.
+106:        "mission",
+111:        "spec_sha256",
+120:    if spec["schema"] != "barrot.development_bundle_spec.v1":
+133:    mission = spec["mission"]
+141:    if not isinstance(mission, dict):
+142:        raise RuntimeError("spec.mission must be an object")
+217:def build_bundle(spec_path: Path) -> tuple[Path, Path]:
+218:    mission = load_json(MISSION)
+219:    spec_record = load_json(spec_path)
+223:    bundle_id = f"development_bundle_{timestamp}"
+225:    bundle = {
+227:        "bundle_id": bundle_id,
+232:        "mission": {
+233:            "mission_file": str(MISSION.relative_to(ROOT)),
+234:            "mission_sha256": sha256_file(MISSION),
+235:            "objective": mission.get("objective"),
+236:            "next_capability": mission.get(
+239:            "existing_capability": mission.get(
+242:            "required_transition": mission.get(
+249:            "spec_sha256": spec["spec_sha256"],
+250:            "spec_record_sha256": sha256_file(spec_path),
+264:                "Implement the governed autonomous bundle-generation layer "
+268:                "Produce a deterministic structured bundle artifact.",
+269:                "Carry mission and specification provenance into the bundle.",
+273:                "Record enough evidence to reproduce the bundle decision."
+285:                "outputs": [
+286:                    "structured_bundle",
+287:                    "provenance",
+288:                    "sha256_evidence"
+297:                    "structured_bundle"
+299:                "outputs": [
+309:                    "validated_bundle"
+311:                "outputs": [
+312:                    "execution_evidence"
+341:        "provenance": {
+343:            "builder_sha256": sha256_file(Path(__file__)),
+344:            "mission_sha256": sha256_file(MISSION),
+345:            "spec_sha256": spec["spec_sha256"],
+346:            "spec_record_sha256": sha256_file(spec_path),
+349:        "continuation": {
+360:    payload = canonical_json(bundle)
+361:    bundle_hash = sha256_bytes(payload)
+363:    bundle["bundle_sha256"] = bundle_hash
+365:    final_payload = json.dumps(
+366:        bundle,
+372:    bundle_path = BUNDLE_DIR / f"{bundle_id}.json"
+373:    bundle_path.write_text(final_payload, encoding="utf-8")
+375:    evidence = {
+377:        "bundle_id": bundle_id,
+378:        "bundle_file": str(bundle_path.relative_to(ROOT)),
+379:        "bundle_sha256": sha256_file(bundle_path),
+381:        "source_spec_sha256": sha256_file(spec_path),
+383:        "source_spec_record_sha256": sha256_file(spec_path),
+384:        "mission_file": str(MISSION.relative_to(ROOT)),
+385:        "mission_sha256": sha256_file(MISSION),
+394:    evidence_path = BUNDLE_DIR / f"{bundle_id}.evidence.json"
+395:    evidence_path.write_text(
+396:        json.dumps(
+397:            evidence,
+405:    return bundle_path, evidence_path
+408:def main() -> int:
+415:    bundle_path, evidence_path = build_bundle(spec_path)
+425:    print(f"BUNDLE={bundle_path}")
+426:    print(f"EVIDENCE={evidence_path}")
+427:    print(f"BUNDLE_SHA256={sha256_file(bundle_path)}")

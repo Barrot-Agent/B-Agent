@@ -1,0 +1,29 @@
+{
+  "schema": "barrot.mmi.bundle.integration.evidence.v1",
+  "generated_at": "2026-09-21T06:55:36.048689+00:00",
+  "repository_head_before_integration": "90ba11fbd107e9aea983f24d6e61d5179178f8fd",
+  "builder": {
+    "path": "scripts/barrot_development_bundle_builder.py",
+    "sha256_after": "3c05c8c94148a64b61b2f2b1707a7e01f71042f253b93015877931226b42716a"
+  },
+  "adapter": {
+    "path": "barrot_agent/orchestration/mmi_bundle_context.py",
+    "sha256": "c6d822ca59812084a8fc8f40165f103c94085e0623b3aaa4d5d573e1b3db16b1"
+  },
+  "focused_tests": {
+    "path": "tests/test_mmi_bundle_context.py",
+    "status": "PASS"
+  },
+  "compile": "PASS",
+  "mmi_context": {
+    "record": ".barrot/mmi_learning/MMI_LEARNING_RECORD.json",
+    "record_sha256": "b0663e070d8745039624575da61a98fc947bc63b00147b17f2f125d06f929844"
+  },
+  "repository_mutation_policy": {
+    "arbitrary_shell": false,
+    "destructive_git_operations": false,
+    "automatic_execution": false,
+    "unverified_mutation": false
+  },
+  "evidence_sha256": "61f5780acc4867ae00ad29cf4a0260d859961f757272a28444bb4f631c950c7e"
+}
