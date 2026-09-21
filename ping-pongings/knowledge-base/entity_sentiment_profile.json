@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 600,
+    "xrp_entries": 602,
     "btc_entries": 541
   },
-  "unique_entities_profiled": 553,
+  "unique_entities_profiled": 556,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 186,
-      "bullish": 117,
+      "total_mentions": 187,
+      "bullish": 118,
       "neutral": 33,
       "bearish": 36,
-      "net_sentiment_score": 0.435,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 149,
-      "bullish": 95,
+      "total_mentions": 150,
+      "bullish": 96,
       "neutral": 32,
       "bearish": 22,
-      "net_sentiment_score": 0.49,
+      "net_sentiment_score": 0.493,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -5624,6 +5624,48 @@
       ],
       "example_headlines": [
         "The Road to Clarity Ends (for now) - Ripple"
+      ]
+    },
+    {
+      "entity": "University of Louisville",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C"
+      ]
+    },
+    {
+      "entity": "Denny Crum Court",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C"
+      ]
+    },
+    {
+      "entity": "Sports Illustrated",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C"
       ]
     },
     {
