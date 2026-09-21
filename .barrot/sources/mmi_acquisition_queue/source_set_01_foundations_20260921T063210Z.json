@@ -1,0 +1,22 @@
+{
+  "execution_requested": false,
+  "human_governance_boundary": true,
+  "next_required_transition": "AUTHORITATIVE_ACQUISITION -> MMI_INGESTION",
+  "ordered_sources": [
+    "NIST-AI-100-1",
+    "NIST-AI-600-1",
+    "OWASP-GENAI-LLM-2026",
+    "MCP-2026-07-28",
+    "A2A-1.0.0",
+    "SLSA-1.2",
+    "IN-TOTO",
+    "OPENTELEMETRY",
+    "JSON-SCHEMA",
+    "PYTEST"
+  ],
+  "protocol": "BARROT-V3-MMI-ACQUISITION",
+  "schema": "barrot.mmi_acquisition_queue.v1",
+  "source_registry_record": ".barrot/sources/source_registry/source_set_01_foundations_20260921T063210Z.json",
+  "source_set": "BARROT_V3_SOURCE_SET_01_FOUNDATIONS",
+  "status": "QUEUED"
+}
