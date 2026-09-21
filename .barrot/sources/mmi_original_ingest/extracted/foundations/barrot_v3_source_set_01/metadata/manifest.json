@@ -1,0 +1,99 @@
+{
+  "bundle": "BARROT_V3_SOURCE_SET_01_FOUNDATIONS",
+  "purpose": "First curated external source acquisition set for Barrot V3.",
+  "created": "2026-09-21",
+  "ingestion_method": "MMI",
+  "important_boundary": "These are external reference sources. They do not override Barrot's canonical mission, MMI protocol, governance rules, or repository-verified facts.",
+  "sources": [
+    {
+      "id": "NIST-AI-100-1",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "version": "1.0",
+      "publisher": "NIST",
+      "official_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
+      "direct_download": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+      "role_for_barrot": "AI risk-management vocabulary, governance, measurement, and lifecycle controls."
+    },
+    {
+      "id": "NIST-AI-600-1",
+      "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+      "version": "AI 600-1",
+      "publisher": "NIST",
+      "official_url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+      "direct_download": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "role_for_barrot": "Generative-AI-specific risk and trustworthiness practices."
+    },
+    {
+      "id": "OWASP-GENAI-LLM-2026",
+      "title": "OWASP GenAI LLM Top 10 2026",
+      "version": "2026",
+      "publisher": "OWASP Gen AI Security Project",
+      "official_url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "direct_download": "https://genai.owasp.org/download/56857/",
+      "role_for_barrot": "LLM/application security threats, mitigations, agentic boundaries, and adversarial knowledge."
+    },
+    {
+      "id": "MCP-2026-07-28",
+      "title": "Model Context Protocol Specification",
+      "version": "2026-07-28",
+      "publisher": "Model Context Protocol",
+      "official_url": "https://modelcontextprotocol.io/specification/2026-07-28",
+      "direct_download": null,
+      "role_for_barrot": "Tool/resource/prompt interoperability and governed external capability integration."
+    },
+    {
+      "id": "A2A-1.0.0",
+      "title": "Agent2Agent Protocol Specification",
+      "version": "1.0.0",
+      "publisher": "A2A Protocol",
+      "official_url": "https://a2a-protocol.org/latest/specification/",
+      "direct_download": null,
+      "role_for_barrot": "Agent discovery, capability negotiation, task exchange, and inter-agent interoperability."
+    },
+    {
+      "id": "SLSA-1.2",
+      "title": "SLSA Specification",
+      "version": "1.2",
+      "publisher": "SLSA / Linux Foundation",
+      "official_url": "https://slsa.dev/spec/v1.2/",
+      "direct_download": null,
+      "role_for_barrot": "Software supply-chain security, provenance, attestations, and artifact verification."
+    },
+    {
+      "id": "IN-TOTO",
+      "title": "in-toto Specifications",
+      "version": "Stable v1.0 and current index",
+      "publisher": "in-toto",
+      "official_url": "https://in-toto.io/docs/specs/",
+      "direct_download": null,
+      "role_for_barrot": "Authorized supply-chain steps, artifact rules, materials/products, and verification."
+    },
+    {
+      "id": "OPENTELEMETRY",
+      "title": "OpenTelemetry Documentation",
+      "version": "Current",
+      "publisher": "OpenTelemetry",
+      "official_url": "https://opentelemetry.io/docs/",
+      "direct_download": null,
+      "role_for_barrot": "Traces, metrics, logs, execution lineage, and vendor-neutral observability."
+    },
+    {
+      "id": "JSON-SCHEMA",
+      "title": "JSON Schema Specification",
+      "version": "Current",
+      "publisher": "JSON Schema",
+      "official_url": "https://json-schema.org/specification",
+      "direct_download": null,
+      "role_for_barrot": "Typed contracts for bundles, operations, handoffs, evidence, and provenance."
+    },
+    {
+      "id": "PYTEST",
+      "title": "pytest Reference",
+      "version": "Current",
+      "publisher": "pytest",
+      "official_url": "https://docs.pytest.org/en/latest/reference/reference.html",
+      "direct_download": null,
+      "role_for_barrot": "Automated validation and regression testing infrastructure."
+    }
+  ]
+}
