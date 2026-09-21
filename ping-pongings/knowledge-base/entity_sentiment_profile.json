@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 596,
+    "xrp_entries": 597,
     "btc_entries": 532
   },
-  "unique_entities_profiled": 552,
+  "unique_entities_profiled": 553,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 185,
-      "bullish": 116,
+      "total_mentions": 186,
+      "bullish": 117,
       "neutral": 33,
       "bearish": 36,
-      "net_sentiment_score": 0.432,
+      "net_sentiment_score": 0.435,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 148,
-      "bullish": 94,
+      "total_mentions": 149,
+      "bullish": 95,
       "neutral": 32,
       "bearish": 22,
-      "net_sentiment_score": 0.486,
+      "net_sentiment_score": 0.49,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -324,6 +324,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 13,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": 0.462,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Strategy",
       "total_mentions": 13,
       "bullish": 7,
@@ -338,23 +355,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 12,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": 0.417,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -527,6 +527,23 @@
       ]
     },
     {
+      "entity": "Donald Trump",
+      "total_mentions": 8,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Crypto Clarity Act News: Trump Agreed to 80% of the Ethics Deal and Ripple (XRP) Jumped 3.9% - 24/7 ",
+        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
+      ]
+    },
+    {
       "entity": "Metaplanet",
       "total_mentions": 8,
       "bullish": 7,
@@ -575,23 +592,6 @@
         "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
         "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
         "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Donald Trump",
-      "total_mentions": 7,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": 0.143,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-        "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss",
-        "BTC news: Trump Media has moved out 7,000 bitcoin, leaving only likely loan collateral - CoinDesk"
       ]
     },
     {
@@ -5324,6 +5324,20 @@
       ],
       "example_headlines": [
         "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews"
+      ]
+    },
+    {
+      "entity": "Crypto Clarity Act",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto Clarity Act News: Trump Agreed to 80% of the Ethics Deal and Ripple (XRP) Jumped 3.9% - 24/7 "
       ]
     },
     {
