@@ -1,6 +1,6 @@
 {
-  "summary": "The signal reports a mixed sentiment with a modest overall score of\u202f44, while the news component is strongly bullish, reflected in a high news_score of\u202f87 from 13 recent entries. All listed headlines are either neutral or bullish, and confidence is reported as\u202f0.0 due to unavailable sentiment data.\n\n- Timestamp:\u202f2026\u201109\u201121\u202f01:05:19 UTC  \n- Overall score:\u202f44; confidence:\u202f0.0  \n- News score:\u202f87 from\u202f13\u202fXRP\u2011related headlines (1 neutral, 5 bullish)",
-  "spoken_line": "Overall sentiment is modest at 44 with zero confidence, but news is very bullish at 87 from thirteen XRP headlines. Not financial advice. Informational only. Do your own research.",
+  "summary": "The signal reports a mixed sentiment with a modest overall score of **44** and a high news relevance score of **87** based on **13** news entries. Confidence is **0.0**, and the source indicates sentiment data could not be retrieved due to token errors and rate limits.\n\n- Timestamp: 2026\u201109\u201121T01:05:19.661738+00:00  \n- Sentiment tags: 1 neutral headline, 5 bullish headlines (all XRP\u2011ledger technical topics)  \n- Source note: sentiment unavailable (GitHub/Groq token missing, 429 error)",
+  "spoken_line": "XRP signal update. Score 44. Confidence 0.0. Based on 13 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
