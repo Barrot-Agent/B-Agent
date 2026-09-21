@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 592,
+    "xrp_entries": 594,
     "btc_entries": 529
   },
-  "unique_entities_profiled": 549,
+  "unique_entities_profiled": 552,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 182,
-      "bullish": 114,
+      "total_mentions": 185,
+      "bullish": 116,
       "neutral": 33,
-      "bearish": 35,
-      "net_sentiment_score": 0.434,
+      "bearish": 36,
+      "net_sentiment_score": 0.432,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 145,
-      "bullish": 92,
+      "total_mentions": 148,
+      "bullish": 94,
       "neutral": 32,
-      "bearish": 21,
-      "net_sentiment_score": 0.49,
+      "bearish": 22,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 48,
-      "bullish": 30,
+      "total_mentions": 49,
+      "bullish": 31,
       "neutral": 6,
       "bearish": 12,
-      "net_sentiment_score": 0.375,
+      "net_sentiment_score": 0.388,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -928,6 +928,22 @@
       ]
     },
     {
+      "entity": "FXStreet",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "USDT",
       "total_mentions": 4,
       "bullish": 3,
@@ -1211,22 +1227,6 @@
       ]
     },
     {
-      "entity": "FXStreet",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-        "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
       "entity": "Japan",
       "total_mentions": 3,
       "bullish": 2,
@@ -1258,6 +1258,22 @@
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
         "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
         "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus"
+      ]
+    },
+    {
+      "entity": "Escrow",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com"
       ]
     },
     {
@@ -2273,21 +2289,6 @@
       ]
     },
     {
-      "entity": "Escrow",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com"
-      ]
-    },
-    {
       "entity": "Evernorth",
       "total_mentions": 2,
       "bullish": 2,
@@ -2760,6 +2761,36 @@
       ]
     },
     {
+      "entity": "Stellar",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com"
+      ]
+    },
+    {
+      "entity": "XLM",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com"
+      ]
+    },
+    {
       "entity": "XRP (ticker)",
       "total_mentions": 2,
       "bullish": 2,
@@ -3166,6 +3197,21 @@
       "example_headlines": [
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "Louisville Athletics",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+        "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24"
       ]
     },
     {
@@ -4385,34 +4431,6 @@
       ]
     },
     {
-      "entity": "Stellar",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "XLM",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet"
-      ]
-    },
-    {
       "entity": "RippleNet",
       "total_mentions": 1,
       "bullish": 1,
@@ -5267,6 +5285,20 @@
       ]
     },
     {
+      "entity": "XRP token",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "SettleMint",
       "total_mentions": 1,
       "bullish": 1,
@@ -5463,20 +5495,6 @@
       ]
     },
     {
-      "entity": "Louisville Athletics",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
-      ]
-    },
-    {
       "entity": "Louisville Basketball",
       "total_mentions": 1,
       "bullish": 1,
@@ -5544,6 +5562,34 @@
       ],
       "example_headlines": [
         "The Road to Clarity Ends (for now) - Ripple"
+      ]
+    },
+    {
+      "entity": "247Sports",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24"
+      ]
+    },
+    {
+      "entity": "NCAA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24"
       ]
     },
     {

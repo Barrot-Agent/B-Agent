@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 592,
+    "xrp_entries": 594,
     "btc_entries": 529
   },
-  "unique_pairs_found": 1765,
+  "unique_pairs_found": 1777,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 140,
+      "cooccurrence_count": 143,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 22,
+      "cooccurrence_count": 23,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -112,6 +112,21 @@
     },
     {
       "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 20,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 20,
       "example_headlines": [
@@ -136,21 +151,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 19,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1056,6 +1056,21 @@
       ]
     },
     {
+      "entity_a": "FXStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "institutional investors",
       "cooccurrence_count": 4,
@@ -1492,7 +1507,7 @@
     },
     {
       "entity_a": "FXStreet",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -1516,6 +1531,36 @@
         },
         {
           "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Escrow",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Escrow",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -2511,21 +2556,6 @@
       ]
     },
     {
-      "entity_a": "FXStreet",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Borrow",
       "cooccurrence_count": 2,
@@ -3091,36 +3121,6 @@
         },
         {
           "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Escrow",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Escrow",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
           "asset": "XRP"
         }
       ]
@@ -4386,6 +4386,111 @@
       ]
     },
     {
+      "entity_a": "FXStreet",
+      "entity_b": "Stellar",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "XLM",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Stellar",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XLM",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stellar",
+      "entity_b": "XLM",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stellar",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XLM",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "XRP (ticker)",
       "cooccurrence_count": 2,
@@ -5312,6 +5417,36 @@
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        },
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+          "asset": "XRP"
+        },
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
         }
       ]
     },
@@ -9655,83 +9790,6 @@
     },
     {
       "entity_a": "FXStreet",
-      "entity_b": "Stellar",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "FXStreet",
-      "entity_b": "XLM",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Stellar",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "XLM",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Stellar",
-      "entity_b": "XLM",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Stellar",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XLM",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "FXStreet",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -12272,6 +12330,61 @@
       ]
     },
     {
+      "entity_a": "Escrow",
+      "entity_b": "XRP token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Escrow",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "XRP token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRP token",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP token",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Nasdaq",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
@@ -12823,28 +12936,6 @@
     },
     {
       "entity_a": "Louisville Athletics",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Louisville Athletics",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Louisville Athletics",
       "entity_b": "gocards.com",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -13070,6 +13161,83 @@
       "example_headlines": [
         {
           "title": "The Road to Clarity Ends (for now) - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "247Sports",
+      "entity_b": "Louisville Athletics",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "247Sports",
+      "entity_b": "NCAA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "247Sports",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "247Sports",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Louisville Athletics",
+      "entity_b": "NCAA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "NCAA",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "NCAA",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24",
           "asset": "XRP"
         }
       ]
