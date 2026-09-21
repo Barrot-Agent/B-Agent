@@ -1,11 +1,11 @@
 {
   "generated_from": {
-    "total_entries": 49,
-    "distilled_entries": 27
+    "total_entries": 60,
+    "distilled_entries": 31
   },
   "claim_type_breakdown": {
-    "product_announcement": 23,
-    "opinion_or_hype": 2,
+    "product_announcement": 26,
+    "opinion_or_hype": 3,
     "proposed_spec_change": 2
   },
   "ranked_candidate_tool_ideas": [
@@ -318,6 +318,42 @@
           "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPNXp2bDZFMlVHNGVIODZibzVKRHpJMDJZTVZPZ2VzYUlSSmhlTmVXcVRid2xMbm5JRmJheTIyZ09EdGtzNEJ6Q0txdmZJbXlaMENMUWdvSnRRUUdFeGs1VnNUTmJDUjFNRVpaWkNsekZFeWExYVNkVy1TNGJXTUlZVg?oc=5",
           "claim_type": "product_announcement",
           "concrete_claim": "OpenAI will shut down ChatGPT Atlas on August\u202f9, and users must export and save their data before migrating to another service."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "AI Agent Browser",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "Cloudflare Launches Kitesurf, a Browser Built for AI Agents - HOKANEWS.COM",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9iNEFPOXFzOUgwekRZZ2hkaXc1UnBZT3JvMUJiOW5iQ1NoUTIwQnF6MDdvQkMxNjYxYTAyU0RvQWRKUXJ6OEFXb3ZmdGk4MlpuZEszelYtTFJKd3ljcGxkRHhuM1BkcTZUamFWSTNiWWpoUkxCVGZUS3U0eW9SSE0?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "Cloudflare has launched Kitesurf, a browser designed specifically for AI agents to browse the web."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "SAP ERP MCP integration connector",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "SAP ERP Exit with the Model Context Protocol - E3-Magazin",
+          "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9Tc2Y1R1hOVlVjdFZDWEthUnBaX2paRGJvRld1MFo0aWFQcHRmTHpDazlDUWpvcXpPN0tBUlZwR3VKTW9hXzE1RXljdTZWS2Jsalc4b3JFWmR2a0FINnppR0JtRlJyaHZIdzgtdVBEaw?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "SAP ERP now supports exits using the Model Context Protocol (MCP) for seamless integration with web agents."
+        }
+      ]
+    },
+    {
+      "candidate_tool_idea": "AI-powered WordPress content assistant",
+      "times_surfaced": 1,
+      "examples": [
+        {
+          "title": "What Is MCP (Model Context Protocol)? A Guide for WordPress Users - Themeisle",
+          "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9HbFhsRW5JM3VaU0luZmlmTXNzRWRGMkdkOFVXZ0hYN2pFUEM5NUlCOURmTlNPZTVQSXhkYzUyUm50NGI3NDhfZE41aFpwODhLSjctWjdrd1ZISU9jdUE?oc=5",
+          "claim_type": "product_announcement",
+          "concrete_claim": "MCP (Model Context Protocol) is a new protocol that enables AI agents to interact with WordPress sites, providing context-aware content generation and management."
         }
       ]
     }
