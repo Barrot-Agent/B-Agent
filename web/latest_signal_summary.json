@@ -1,17 +1,17 @@
 {
-  "summary": "The signal reports a mixed sentiment with a overall score of\u202f44 and a news\u2011driven score of\u202f87 based on 13 recent XRP\u2011related headlines. Confidence is listed as\u202f0.0, and the source notes missing GitHub tokens and a rate\u2011limit error from Groq.\n\n- Timestamp:\u202f2026\u201109\u201121\u202f12:36:30\u202fUTC  \n- Sentiment breakdown:\u202f1 neutral headline, 5 bullish headlines  \n- Source issue:\u202fgithub_failed (missing token) and groq_failed (429 Too Many Requests)",
+  "summary": "The signal reports a mixed sentiment with a modest overall score of **44** but a strong news impact score of **87** from **13** recent XRP\u2011related headlines. All of the listed headlines are either neutral or bullish, and the confidence metric is **0.0**, indicating no confidence rating available.\n\n- Overall sentiment score: **44** (confidence\u202f0.0)  \n- News impact: **87** across **13** entries  \n- Headlines: 1 neutral analysis and 5 bullish technical papers on XRP Ledger consensus and messaging.",
   "spoken_line": "XRP signal update. Score 44. Confidence 0.0. Based on 13 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-09-21T12:36:30.634776+00:00",
+    "timestamp": "2026-09-21T14:30:10.064105+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 44,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(13)",
     "news_score": 87,
     "news_entries": 13,
-    "generated_at_unix": 1789994190
+    "generated_at_unix": 1790001010
   }
 }
