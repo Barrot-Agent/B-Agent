@@ -1,0 +1,21 @@
+{
+  "schema": "barrot.mmi.governed_bundle.integration.v1",
+  "timestamp": "2026-09-21T07:12:24.722863+00:00",
+  "head_before_commit": "5fa5534e39272e199e6a79540397d22c48bfa9fb",
+  "mmi_context": {
+    "path": ".barrot/mmi_learning/self_bundle_integration/final_integration/MMI_BUNDLE_CONTEXT.json",
+    "sha256": "b8e86f21f16bf0a24ffb1164c1b3e88b511e0a7c197152893bb74e1098f4f8ca"
+  },
+  "tests": {
+    "mmi_adapter": "PASS",
+    "builder_syntax": "PASS"
+  },
+  "governance": {
+    "arbitrary_shell": false,
+    "automatic_execution": false,
+    "destructive_git_operations": false,
+    "raw_command_payload": false,
+    "unverified_mutation": false
+  },
+  "evidence_sha256": "5402a8b6a73bb2374ff85afcc10f14eb270e92538de327701cffdd375e8159a0"
+}

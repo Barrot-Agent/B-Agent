@@ -1,0 +1,6 @@
+{
+  "action": "SELF_DROP_PROBE",
+  "command": "rm -rf /",
+  "shell": "echo SHOULD_NOT_RUN",
+  "task_id": "shell_injection_probe"
+}

@@ -1,0 +1,155 @@
+{
+  "schema": "barrot.mmi.bundle_context.v1",
+  "protocol": "MMI",
+  "generated_at": "2026-09-21T07:12:18.443983+00:00",
+  "record_path": ".barrot/mmi_learning/MMI_LEARNING_RECORD.json",
+  "record_sha256": "b0663e070d8745039624575da61a98fc947bc63b00147b17f2f125d06f929844",
+  "observations": [
+    {
+      "evidence": "foundation metadata manifest",
+      "id": "OBS-001",
+      "stage": "observed",
+      "statement": "The foundation bundle contains ten named external reference sources."
+    },
+    {
+      "evidence": "structural_analysis/core.py",
+      "id": "OBS-002",
+      "stage": "observed",
+      "statement": "The Structural Analysis Core explicitly models evidence stage and verification status."
+    },
+    {
+      "evidence": "StructuralAnalyzer.compare_invariants",
+      "id": "OBS-003",
+      "stage": "observed",
+      "statement": "Structural invariant descriptor agreement does not produce an equivalence claim."
+    },
+    {
+      "evidence": "StructuralAnalyzer.analyze",
+      "id": "OBS-004",
+      "stage": "observed",
+      "statement": "Structural signatures preserve provenance and use deterministic canonicalization."
+    }
+  ],
+  "unresolved_gaps": [
+    {
+      "id": "GAP-001",
+      "statement": "This pass does not establish that every foundation source has been independently corroborated against its publisher.",
+      "status": "unresolved"
+    },
+    {
+      "id": "GAP-002",
+      "statement": "This pass does not establish that the existing production learning system has already consumed these sources.",
+      "status": "unresolved"
+    },
+    {
+      "id": "GAP-003",
+      "statement": "This pass does not establish that the Structural Analysis Core should be copied into production unchanged.",
+      "status": "unresolved"
+    }
+  ],
+  "source_manifest": {
+    "created_at": "2026-09-21T06:42:28.805348+00:00",
+    "parsed_scope": {
+      "foundations_zip": {
+        "files": [
+          "barrot_v3_source_set_01/README.md",
+          "barrot_v3_source_set_01/metadata/LOCAL_FILES_SHA256.txt",
+          "barrot_v3_source_set_01/metadata/manifest.json",
+          "barrot_v3_source_set_01/sources/01_NIST-AI-100-1.md",
+          "barrot_v3_source_set_01/sources/02_NIST-AI-600-1.md",
+          "barrot_v3_source_set_01/sources/03_OWASP-GENAI-LLM-2026.md",
+          "barrot_v3_source_set_01/sources/04_MCP-2026-07-28.md",
+          "barrot_v3_source_set_01/sources/05_A2A-1.0.0.md",
+          "barrot_v3_source_set_01/sources/06_SLSA-1.2.md",
+          "barrot_v3_source_set_01/sources/07_IN-TOTO.md",
+          "barrot_v3_source_set_01/sources/08_OPENTELEMETRY.md",
+          "barrot_v3_source_set_01/sources/09_JSON-SCHEMA.md",
+          "barrot_v3_source_set_01/sources/10_PYTEST.md"
+        ]
+      },
+      "structural_core_tar": {
+        "files": [
+          "barrot_refined/.pytest_cache/.gitignore",
+          "barrot_refined/.pytest_cache/CACHEDIR.TAG",
+          "barrot_refined/.pytest_cache/README.md",
+          "barrot_refined/.pytest_cache/v/cache/lastfailed",
+          "barrot_refined/.pytest_cache/v/cache/nodeids",
+          "barrot_refined/README.md",
+          "barrot_refined/barrot_agent/structural_analysis/__init__.py",
+          "barrot_refined/barrot_agent/structural_analysis/__pycache__/__init__.cpython-313.pyc",
+          "barrot_refined/barrot_agent/structural_analysis/__pycache__/core.cpython-313.pyc",
+          "barrot_refined/barrot_agent/structural_analysis/core.py",
+          "barrot_refined/tests/__pycache__/test_structural_analysis.cpython-313-pytest-9.0.2.pyc",
+          "barrot_refined/tests/__pycache__/test_structural_analysis.cpython-313.pyc",
+          "barrot_refined/tests/test_structural_analysis.py"
+        ]
+      }
+    },
+    "protocol": "MMI",
+    "protocol_expansion": "Massive Micro Ingestion",
+    "rules": [
+      "Preserve exact source provenance and SHA-256.",
+      "Do not treat partial parsing as complete.",
+      "Keep observations separate from interpretations.",
+      "Trace source/component depth through level 4 where parsable.",
+      "Preserve contradictions and unresolved gaps.",
+      "External sources do not override repository-verified facts.",
+      "Live repository state takes precedence over mutable historical handoff claims.",
+      "The continuation source supplements, but does not replace, the two original source bundles."
+    ],
+    "source_count": 3,
+    "source_roles": {
+      "historical_handoff": 1,
+      "original_primary": 2
+    },
+    "sources": [
+      {
+        "byte_size": 8314,
+        "event": "source_acquired_for_mmi",
+        "provenance": {
+          "acquisition_origin": "Main Barrot Infrastructure project source set",
+          "local_copy": ".barrot/sources/mmi_original_ingest/raw/BARROT_V3_SOURCE_SET_01_FOUNDATIONS.zip",
+          "parser": "zipfile/tarfile/raw-markdown",
+          "parser_version": "Python standard library runtime"
+        },
+        "purpose": "Curated Barrot V3 external foundation source set",
+        "role": "original_primary",
+        "sha256": "8ef7d8a8c34bf24f6e582cb655add169de1760d13db80c4acb77b886da9f9dda",
+        "source": "BARROT_V3_SOURCE_SET_01_FOUNDATIONS.zip",
+        "timestamp": "2026-09-21T06:42:28.805348+00:00"
+      },
+      {
+        "byte_size": 15599,
+        "event": "source_acquired_for_mmi",
+        "provenance": {
+          "acquisition_origin": "Main Barrot Infrastructure project source set",
+          "local_copy": ".barrot/sources/mmi_original_ingest/raw/barrot_structural_analysis_core_v1_1.tar.gz",
+          "parser": "zipfile/tarfile/raw-markdown",
+          "parser_version": "Python standard library runtime"
+        },
+        "purpose": "Structural Analysis Core v1.1 source bundle",
+        "role": "original_primary",
+        "sha256": "2cbcb68743a9224a753a6be4cf64eb154e0bc8734b36d3f1d1a0258b8989e430",
+        "source": "barrot_structural_analysis_core_v1_1.tar.gz",
+        "timestamp": "2026-09-21T06:42:28.805348+00:00"
+      },
+      {
+        "byte_size": 11964,
+        "event": "source_acquired_for_mmi",
+        "provenance": {
+          "acquisition_origin": "Main Barrot Infrastructure project source set",
+          "local_copy": ".barrot/sources/mmi_original_ingest/raw/BARROT_V3_PERMANENT_CONTINUATION_SOURCE.md",
+          "parser": "zipfile/tarfile/raw-markdown",
+          "parser_version": "Python standard library runtime"
+        },
+        "purpose": "Permanent continuation/handoff context; not a replacement for originals",
+        "role": "historical_handoff",
+        "sha256": "25eb5a6dcb2b6cc54ea0f9ab138ef087b2c211b98a92722e6bb1d5da1cfb4af3",
+        "source": "BARROT_V3_PERMANENT_CONTINUATION_SOURCE.md",
+        "timestamp": "2026-09-21T06:42:28.805348+00:00"
+      }
+    ],
+    "status": "staged_and_parsed"
+  },
+  "context_sha256": "19e296e425dd36405e3ddab969b7481cc5fd478d23cd218638e59f3caf126c81"
+}
