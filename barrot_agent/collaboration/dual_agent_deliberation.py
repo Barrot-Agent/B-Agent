@@ -137,11 +137,17 @@ class DualAgentDeliberation:
         if ref is None:
             ref = self._git("rev-parse", "--abbrev-ref", "HEAD", cwd=evidence_workspace)
 
-        status = self._git(
-            "status",
-            "--porcelain",
-            cwd=evidence_workspace,
-        )
+        try:
+            status = self._git(
+                "status",
+                "--porcelain",
+                cwd=evidence_workspace,
+            )
+        except subprocess.CalledProcessError:
+            # A caller may provide a temporary evidence workspace that is
+            # intentionally not a Git repository. Preserve empty status
+            # rather than failing case creation.
+            status = ""
 
         packet = EvidencePacket(
             case_id=case_id,
@@ -167,8 +173,24 @@ class DualAgentDeliberation:
     def add_report(
         self,
         case_id: str,
-        report: AgentReport,
+        report: AgentReport | None = None,
+        *,
+        agent: str | None = None,
+        proposed_action: str | None = None,
+        interpretation: str | None = None,
+        evidence_refs: list[str] | None = None,
     ) -> DeliberationRecord:
+        if report is None:
+            if agent is None:
+                raise TypeError("agent is required when report is omitted")
+            report = AgentReport(
+                agent=agent,
+                status="PROPOSED",
+                proposed_action=proposed_action or "",
+                interpretation=interpretation or "",
+                evidence_refs=evidence_refs or [],
+            )
+
         record = self.load(case_id)
 
         if report.agent.upper() == "BARRETT":
@@ -234,9 +256,16 @@ class DualAgentDeliberation:
     def record_validation(
         self,
         case_id: str,
-        evidence: list[str],
-        success: bool,
+        evidence: list[str] | None = None,
+        success: bool = False,
+        *,
+        evidence_refs: list[str] | None = None,
     ) -> DeliberationRecord:
+        if evidence is None:
+            evidence = evidence_refs or []
+        elif evidence_refs is not None:
+            evidence = [*evidence, *evidence_refs]
+
         record = self.load(case_id)
         record.validation_evidence.extend(evidence)
 
@@ -319,6 +348,10 @@ class DualAgentDeliberation:
             encoding="utf-8",
         )
         tmp.replace(path)
+
+    def get_case(self, case_id: str) -> DeliberationRecord:
+        """Return an existing deliberation case by identifier."""
+        return self.load(case_id)
 
     def load(self, case_id: str) -> DeliberationRecord:
         data = json.loads(

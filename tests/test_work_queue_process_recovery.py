@@ -5,6 +5,8 @@ import sys
 import time
 from pathlib import Path
 
+from barrot_agent.orchestration.repository_repair import WorkQueueController
+
 
 WORK_ID = "v3-case17-process-recovery"
 
@@ -19,7 +21,6 @@ from pathlib import Path
 sys.path.insert(0, {str(root)!r})
 
 from barrot_agent.orchestration.repository_repair import WorkQueueController
-
 
 class CrashController:
     def run(self, *args, **kwargs):

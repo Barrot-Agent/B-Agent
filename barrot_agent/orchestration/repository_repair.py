@@ -717,12 +717,14 @@ class WorkQueueController:
         self,
         *,
         repair_controller: "RepositoryRepairController",
+        workspace: str | Path | None = None,
         sync_controller: SyncController | None = None,
         work_store: DurableWorkStore | None = None,
     ):
         self.repair_controller = repair_controller
         self.sync_controller = sync_controller or SyncController()
-        self.work_store = work_store or DurableWorkStore(repair_controller.workspace)
+        store_workspace = workspace if workspace is not None else repair_controller.workspace
+        self.work_store = work_store or DurableWorkStore(store_workspace)
 
     def _persist(self, work_item: WorkItemEvidence) -> None:
         self.work_store.write(work_item)
@@ -766,18 +768,75 @@ class WorkQueueController:
 
     def run(
         self,
-        *,
         work_id: str,
-        project_identity: dict[str, Any] | ProjectIdentity,
-        task_title: str,
-        task_body: str,
-        issue_number: str,
-        repo: str,
-        branch: str,
-        audit_context: dict[str, str],
+        *,
+        project_identity: dict[str, Any] | ProjectIdentity | None = None,
+        task_title: str | None = None,
+        task_body: str = "",
+        issue_number: str | None = None,
+        repo: str | None = None,
+        branch: str = "",
+        audit_context: dict[str, str] | None = None,
         advance_operation: str = "repair_queue_advance",
         external_sync_plan: dict[str, Any] | None = None,
     ) -> WorkItemEvidence:
+        legacy_mode = (
+            project_identity is None
+            and task_title is None
+            and issue_number is None
+            and repo is None
+            and not branch
+            and not audit_context
+            and external_sync_plan is None
+        )
+
+        if legacy_mode:
+            loaded = self.work_store.load(work_id)
+            if loaded:
+                work_item = WorkItemEvidence(**loaded)
+                work_item.attempt_count += 1
+            else:
+                work_item = WorkItemEvidence(
+                    work_id=work_id,
+                    attempt_count=1,
+                )
+
+            work_item.current_state = "REPAIRING"
+            self._persist(work_item)
+
+            result = self.repair_controller.run(
+                work_id=work_id,
+                task_title=work_id,
+                task_body="",
+                issue_number=work_id,
+                repo=work_id,
+                branch="",
+                audit_context={},
+            )
+
+            if result is True:
+                work_item.status = "COMPLETE"
+                work_item.current_state = RepairState.COMPLETE.value
+                work_item.queue_advanced = True
+            else:
+                work_item.status = "blocked"
+                work_item.current_state = RepairState.BLOCKED.value
+                work_item.queue_advanced = False
+
+            self._persist(work_item)
+            return work_item
+
+        if project_identity is None:
+            raise RepairError("project_identity is required for full work-queue execution.")
+        if task_title is None:
+            raise RepairError("task_title is required for full work-queue execution.")
+        if issue_number is None:
+            raise RepairError("issue_number is required for full work-queue execution.")
+        if repo is None:
+            raise RepairError("repo is required for full work-queue execution.")
+        if audit_context is None:
+            audit_context = {}
+
         work_item = self._load_or_initialize(
             work_id=work_id,
             project_identity=project_identity,
