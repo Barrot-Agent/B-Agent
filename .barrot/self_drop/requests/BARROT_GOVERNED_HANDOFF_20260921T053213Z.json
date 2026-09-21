@@ -1,0 +1,51 @@
+{
+  "authorized_capability": "GENERATE_BUNDLE",
+  "created_at": "2026-09-21T05:32:13.994137+00:00",
+  "execution_boundary": {
+    "arbitrary_shell": false,
+    "automatic_execution": false,
+    "destructive_git_operations": false,
+    "raw_command_payload": false,
+    "unverified_mutation": false
+  },
+  "governance": {
+    "human_approval_boundary": true,
+    "no_clean": true,
+    "no_reset": true,
+    "no_stash": true,
+    "no_unverified_execution": true,
+    "no_unverified_push": true,
+    "preserve_dirty_work": true
+  },
+  "handoff": {
+    "executor": "existing_governed_self_drop",
+    "from": "BARROT_V3_CONTINUATION",
+    "next_action": "GENERATE_AND_VALIDATE_DEVELOPMENT_BUNDLE",
+    "to": "BARROT_GOVERNED_ENGINEERING_LOOP"
+  },
+  "handoff_sha256": "cb65063e5f4f9549782554a43b592ef574e8c208b77cd7c762e4274a9d044fb8",
+  "mission": {
+    "continuation_target": "Continue the current Barrot V3 build from the live repository state. Do not restart historical work. Preserve existing dirty work and use live repository evidence as authoritative.",
+    "first_priority": "Initialize governed autonomous bundle generation.",
+    "objective": "Enable Barrot to acquire, generate, validate, drop, execute, and evidence its own next development bundles while preserving repository safety, provenance, verification, rollback, and human governance."
+  },
+  "protocol": "BARROT-V3-GOVERNED-DEVELOPMENT-HANDOFF",
+  "protocol_version": 1,
+  "required_transition": "DEVELOPMENT_BUNDLE_SPECIFICATION",
+  "required_validation": [
+    "syntax validation",
+    "scope-appropriate tests",
+    "git diff --check",
+    "provenance evidence",
+    "execution evidence",
+    "rollback path where mutation occurs"
+  ],
+  "schema": "barrot.governed_development_handoff.v1",
+  "source": {
+    "continuation": ".barrot/autonomous_bundle/specifications/continuation_20260921T052805Z.json",
+    "continuation_sha256": "cabfb769e05c74aac2e808320eb8fbc4ba991a1bfabb4c10ce9e1182c437b6b6",
+    "mission": ".barrot/autonomous_bundle/active_mission.json",
+    "mission_sha256": "0e13c81f2c02c756258a8d4d9b65cc32a98987bfe7d872326c24841cbb71739a"
+  },
+  "status": "HANDOFF_REQUESTED"
+}

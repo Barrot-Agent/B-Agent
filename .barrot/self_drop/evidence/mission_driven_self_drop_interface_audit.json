@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-09-21T05:05:43.578400+00:00",
+  "root": "/data/data/com.termux/files/home/barrot/Barrot-Agent",
+  "branch": "barrot/task",
+  "head": "ce616032a55511829cfd4ea8b76691e9944a2609",
+  "status": "M scripts/barrot_clean_live_test.py\n?? .barrot/autonomous_bundle/\n?? .barrot/provider_boundary_evidence.json\n?? .barrot/self_drop/evidence/autonomous_bundle_bootstrap.json\n?? .barrot/self_drop/requests/AUTONOMOUS_BUILD_ACQUISITION.json\n?? .barrot/sources/arxiv_2607_02506/",
+  "files": {
+    "scripts/barrot_self_drop_bridge.py": {
+      "exists": true,
+      "sha256": "0cc812d2fbdb91196fe58d6f7484d334c21fd980fb4f0628c0c4404bce31d0eb",
+      "bytes": 5234
+    },
+    "scripts/barrot_self_drop_controller_adapter.py": {
+      "exists": true,
+      "sha256": "05683b0a8d2d9e9c28caa1236ad418736db9b94f58b0250c55ea21ebed125121",
+      "bytes": 3574
+    },
+    "scripts/barrot_self_drop_smoke.py": {
+      "exists": true,
+      "sha256": "b61ebdefb555e697a7b655cb013ac5ed7776e430d2c0ac3f179738aa83369cac",
+      "bytes": 2863
+    },
+    "scripts/barrot_agent.py": {
+      "exists": true,
+      "sha256": "edc59738bc74500cb9b29721ac0d1dc508ff6d6011319972498933406f445dd0",
+      "bytes": 39098
+    },
+    ".barrot/autonomous_bundle/active_mission.json": {
+      "exists": true,
+      "sha256": "0e13c81f2c02c756258a8d4d9b65cc32a98987bfe7d872326c24841cbb71739a",
+      "bytes": 2248
+    },
+    ".barrot/self_drop/requests/AUTONOMOUS_BUILD_ACQUISITION.json": {
+      "exists": true,
+      "sha256": "0e13c81f2c02c756258a8d4d9b65cc32a98987bfe7d872326c24841cbb71739a",
+      "bytes": 2248
+    }
+  },
+  "bridge_symbols": {
+    "exists": true,
+    "parse": "PASS",
+    "functions": [
+      "stamp",
+      "sha256",
+      "fail",
+      "main"
+    ],
+    "classes": []
+  },
+  "adapter_symbols": {
+    "exists": true,
+    "parse": "PASS",
+    "functions": [
+      "SelfDropControllerAdapter.can_handle",
+      "SelfDropControllerAdapter.dispatch",
+      "main"
+    ],
+    "classes": [
+      "SelfDropControllerAdapter"
+    ]
+  },
+  "brain_self_drop_symbols": {
+    "exists": true,
+    "parse": "PASS",
+    "functions": [
+      "run",
+      "repo_inventory",
+      "_tool_error",
+      "RepoBrowser.__init__",
+      "RepoBrowser._resolve",
+      "RepoBrowser._is_noise",
+      "RepoBrowser.print_tree",
+      "RepoBrowser.search",
+      "_groq_payload",
+      "_send_model_request",
+      "_send_groq_request",
+      "ScriptBrain.__init__",
+      "ScriptBrain._deliver_bundle",
+      "ScriptBrain._serialize_tool_result",
+      "ScriptBrain._tool_result",
+      "ScriptBrain.think",
+      "build_directory_context",
+      "build_file_context",
+      "run_gh",
+      "build_github_context",
+      "build_audit_context",
+      "configure_git",
+      "checkout_branch",
+      "post_issue_comment",
+      "_cycle_dict",
+      "build_project_identity",
+      "_work_dict",
+      "_extract_cycle_data",
+      "_is_research_cycle",
+      "create_pull_request",
+      "write_collaboration_record",
+      "main"
+    ],
+    "classes": [
+      "RepoBrowser",
+      "ScriptBrain"
+    ]
+  },
+  "mission_validation": {
+    "json": "PASS",
+    "required_fields": "PASS",
+    "missing": [],
+    "next_capability": "AUTONOMOUS_BUNDLE_PRODUCTION",
+    "existing_capability": "SELF_DROP",
+    "required_transition": "SELF_DROP -> MISSION_DRIVEN_BUNDLE_DROP"
+  },
+  "syntax": {
+    "status": "PASS",
+    "failures": []
+  }
+}

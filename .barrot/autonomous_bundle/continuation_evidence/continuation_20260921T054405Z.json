@@ -1,0 +1,16 @@
+{
+  "continuation_sha256": "2918ffdcd8c92e4d227fca076513f236a249068c089e514959aa28141bb28fd2",
+  "execution_requested": false,
+  "governance": {
+    "arbitrary_shell": false,
+    "automatic_execution": false,
+    "destructive_git_operations": false,
+    "raw_command_payload": false,
+    "unverified_mutation": false
+  },
+  "mission_sha256": "0e13c81f2c02c756258a8d4d9b65cc32a98987bfe7d872326c24841cbb71739a",
+  "protocol": "BARROT-V3-AUTONOMOUS-CONTINUATION",
+  "record_sha256": "822d977ac180cf3864b345868f3d60816be85c956ee215efa0673ae2eeb9f391",
+  "schema": "barrot.autonomous_continuation_evidence.v1",
+  "status": "PLANNED_NOT_EXECUTED"
+}

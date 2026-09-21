@@ -1,0 +1,33 @@
+{
+  "allowed_transition": "VALIDATED_BUNDLE -> GOVERNED_SELF_DROP",
+  "authorization": {
+    "arbitrary_shell": false,
+    "automatic_execution": false,
+    "bundle_validated": true,
+    "destructive_git_operations": false,
+    "human_governance_boundary": true,
+    "mission_bound": true,
+    "raw_command_payload": false,
+    "specification_bound": true,
+    "unverified_mutation": false
+  },
+  "created_at": "2026-09-21T05:49:06.743716+00:00",
+  "execution": {
+    "reason": "Validation and handoff preparation only. Execution requires a separate governed authorization path.",
+    "requested": false
+  },
+  "handoff": {
+    "execution_requested": false,
+    "executor": "existing_governed_self_drop",
+    "status": "VALIDATED_NOT_EXECUTED"
+  },
+  "protocol": "BARROT-V3-DEVELOPMENT-BUNDLE-VALIDATOR",
+  "protocol_version": "1",
+  "schema": "barrot.governed_bundle_handoff.v1",
+  "source_bundle": {
+    "bundle_id": "development_bundle_20260921T054833Z",
+    "path": ".barrot/autonomous_bundle/generated/development_bundle_20260921T054833Z.json",
+    "protocol": "BARROT-V3-DEVELOPMENT-BUNDLE-BUILDER",
+    "sha256": "c5aaf0234a4b005e8f0d09367677c31e4a726c9cae62599dfdbf32178ec22c3a"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "authorized_capability": "GENERATE_BUNDLE",
+  "continuation_sha256": "cabfb769e05c74aac2e808320eb8fbc4ba991a1bfabb4c10ce9e1182c437b6b6",
+  "created_at": "2026-09-21T05:32:13.994137+00:00",
+  "evidence_sha256": "b6a605743ec595f4a0bbda44f0df6d63910f94436d48ed6768d3a530825a147a",
+  "execution_boundary": {
+    "arbitrary_shell": false,
+    "automatic_execution": false,
+    "destructive_git_operations": false,
+    "raw_command_payload": false,
+    "unverified_mutation": false
+  },
+  "execution_requested": false,
+  "handoff_sha256": "cb65063e5f4f9549782554a43b592ef574e8c208b77cd7c762e4274a9d044fb8",
+  "human_approval_boundary": true,
+  "mission_sha256": "0e13c81f2c02c756258a8d4d9b65cc32a98987bfe7d872326c24841cbb71739a",
+  "protocol": "BARROT-V3-GOVERNED-DEVELOPMENT-HANDOFF",
+  "protocol_version": 1,
+  "schema": "barrot.governed_development_handoff_evidence.v1",
+  "status": "HANDOFF_ACCEPTED_FOR_GOVERNED_BUNDLE_GENERATION"
+}

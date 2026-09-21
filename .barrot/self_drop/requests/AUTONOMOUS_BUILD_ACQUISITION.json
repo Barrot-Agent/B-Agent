@@ -1,0 +1,56 @@
+{
+  "protocol": "BARROT-V3-AUTONOMOUS-BUNDLE-DROP",
+  "protocol_version": 1,
+  "created_at": "2026-09-21T05:03:38.565736+00:00",
+  "mission": {
+    "name": "Barrot V3 Autonomous Build Acquisition",
+    "objective": "Enable Barrot to acquire, generate, validate, drop, execute, and evidence its own next development bundles while preserving repository safety, provenance, verification, rollback, and human governance.",
+    "continuation_target": "Continue the current Barrot V3 build from the live repository state. Do not restart historical work. Preserve existing dirty work and use live repository evidence as authoritative.",
+    "immediate_priority": [
+      "Initialize governed autonomous bundle generation.",
+      "Connect bundle generation to the existing self-drop bridge.",
+      "Preserve provenance for every generated bundle.",
+      "Require validation before execution.",
+      "Record execution evidence.",
+      "Allow validated continuation work to become the next bundle.",
+      "Prepare the system for autonomous continuation of the V3 build."
+    ],
+    "current_build_targets": [
+      "provider-neutral controller",
+      "local-first model execution",
+      "MMI ingestion methodology",
+      "self-drop capability",
+      "controlled self-repair",
+      "verification and evidence",
+      "GitHub/GitLab validated delivery",
+      "Antigravity execution-worker adapter",
+      "autonomous engineering loop"
+    ]
+  },
+  "governance": {
+    "destructive_git_operations": false,
+    "reset": false,
+    "clean": false,
+    "stash": false,
+    "discard_dirty_work": false,
+    "unverified_execution": false,
+    "unverified_push": false,
+    "required_before_acceptance": [
+      "syntax validation",
+      "tests appropriate to changed scope",
+      "git diff --check",
+      "provenance record",
+      "execution evidence",
+      "rollback path where mutation occurs"
+    ]
+  },
+  "handoff": {
+    "next_capability": "AUTONOMOUS_BUNDLE_PRODUCTION",
+    "existing_capability": "SELF_DROP",
+    "required_transition": "SELF_DROP -> MISSION_DRIVEN_BUNDLE_DROP",
+    "human_role": "governance_and_approval_boundary"
+  },
+  "integrity": {
+    "sha256": "bbbbd8261894719fb8114fd841fd3e7154fe07f71ca387b0171da799262bccf0"
+  }
+}
