@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 124,
+  "total_classified": 129,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1117,6 +1117,51 @@
       "relation_type": "complementary",
       "justification": "Both headlines are news articles about XRP Ledger published by CoinDesk, showing that CoinDesk provides coverage that complements the XRP ecosystem.",
       "classified_at": "2026-08-31T10:04:24Z"
+    },
+    {
+      "pair_key": "24/7 Wall St.|Ripple",
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 8,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines present 24/7 Wall St. as the source publishing articles about Ripple, indicating a content association without clear causal, regulatory, competitive, or complementary dynamics.",
+      "classified_at": "2026-09-21T10:03:59Z"
+    },
+    {
+      "pair_key": "Bitcoin|Strategy",
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 8,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines link Strategy actions (boosting cash reserves, raising $2B) with Bitcoin conditions (complex treasury model, flat holdings) without explicit cause-effect language.",
+      "classified_at": "2026-09-21T10:04:02Z"
+    },
+    {
+      "pair_key": "Ripple|The Motley Fool",
+      "entity_a": "Ripple",
+      "entity_b": "The Motley Fool",
+      "cooccurrence_count": 7,
+      "relation_type": "complementary",
+      "justification": "Both headlines are The Motley Fool articles providing analysis or predictions about XRP, indicating a complementary informational relationship.",
+      "classified_at": "2026-09-21T10:04:05Z"
+    },
+    {
+      "pair_key": "The Motley Fool|XRP",
+      "entity_a": "The Motley Fool",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines are The Motley Fool articles providing predictions or advice about XRP, showing coverage but not indicating a specific causal, regulatory, competitive, complementary, or same-event relationship.",
+      "classified_at": "2026-09-21T10:04:08Z"
+    },
+    {
+      "pair_key": "CoinDesk|Ripple",
+      "entity_a": "CoinDesk",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines are CoinDesk articles reporting on Ripple-related topics, showing co-occurrence without a clear causal, regulatory, competitive, complementary, or same-event link.",
+      "classified_at": "2026-09-21T10:04:11Z"
     }
   ]
 }
