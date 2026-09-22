@@ -3,7 +3,7 @@
     "xrp_entries": 630,
     "btc_entries": 575
   },
-  "unique_entities_profiled": 563,
+  "unique_entities_profiled": 565,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 190,
-      "bullish": 120,
+      "total_mentions": 191,
+      "bullish": 121,
       "neutral": 34,
       "bearish": 36,
-      "net_sentiment_score": 0.442,
+      "net_sentiment_score": 0.445,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 38,
-      "bullish": 27,
+      "total_mentions": 39,
+      "bullish": 28,
       "neutral": 4,
       "bearish": 7,
-      "net_sentiment_score": 0.526,
+      "net_sentiment_score": 0.538,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1162,6 +1162,23 @@
       ]
     },
     {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1593,23 +1610,6 @@
         "FTX Insiders Ellison And Wang Finalize CFTC Settlements With Permanent Bans",
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode"
-      ]
-    },
-    {
-      "entity": "U.S. Securities and Exchange Commission",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
       ]
     },
     {
@@ -5837,6 +5837,34 @@
       ],
       "example_headlines": [
         "AI Agent Statistics 2026: Every Number Checked at Its Source"
+      ]
+    },
+    {
+      "entity": "tokenized stock trading venues",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
+      "entity": "digital securities",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
       ]
     },
     {

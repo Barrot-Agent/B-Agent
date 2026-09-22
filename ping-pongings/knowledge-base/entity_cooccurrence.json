@@ -3,7 +3,7 @@
     "xrp_entries": 630,
     "btc_entries": 575
   },
-  "unique_pairs_found": 1813,
+  "unique_pairs_found": 1821,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 27,
+      "cooccurrence_count": 28,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -2131,6 +2131,21 @@
         },
         {
           "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
           "asset": "XRP"
         }
       ]
@@ -5042,21 +5057,6 @@
         {
           "title": "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. Securities and Exchange Commission",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
-          "asset": "XRP"
-        },
-        {
-          "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
-          "asset": "BTC"
         }
       ]
     },
@@ -13808,6 +13808,94 @@
       "example_headlines": [
         {
           "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "digital securities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "tokenized stock trading venues",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "digital securities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "tokenized stock trading venues",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "digital securities",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "tokenized stock trading venues",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "digital securities",
+      "entity_b": "tokenized stock trading venues",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
           "asset": "XRP"
         }
       ]
