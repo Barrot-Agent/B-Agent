@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 615,
+    "xrp_entries": 617,
     "btc_entries": 556
   },
-  "unique_pairs_found": 1792,
+  "unique_pairs_found": 1800,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -636,6 +636,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 7,
@@ -812,21 +827,6 @@
         {
           "title": "Better Buy: XRP (Ripple) vs. Bitcoin - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "BTC"
         }
       ]
     },
@@ -2702,6 +2702,21 @@
         {
           "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDC",
+      "entity_b": "USDT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
         }
       ]
     },
@@ -7078,17 +7093,6 @@
     },
     {
       "entity_a": "Stablecoin",
-      "entity_b": "USDT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "USDC",
       "entity_b": "USDT",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -13551,6 +13555,94 @@
       "example_headlines": [
         {
           "title": "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
           "asset": "XRP"
         }
       ]
