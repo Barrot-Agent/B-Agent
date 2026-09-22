@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 620,
+    "xrp_entries": 622,
     "btc_entries": 561
   },
-  "unique_entities_profiled": 556,
+  "unique_entities_profiled": 559,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 189,
+      "total_mentions": 190,
       "bullish": 120,
-      "neutral": 33,
+      "neutral": 34,
       "bearish": 36,
-      "net_sentiment_score": 0.444,
+      "net_sentiment_score": 0.442,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 152,
+      "total_mentions": 153,
       "bullish": 98,
-      "neutral": 32,
+      "neutral": 33,
       "bearish": 22,
-      "net_sentiment_score": 0.5,
+      "net_sentiment_score": 0.497,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -307,6 +307,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 14,
+      "bullish": 9,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 13,
       "bullish": 10,
@@ -321,23 +338,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 13,
-      "bullish": 9,
-      "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": 0.462,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -5738,6 +5738,48 @@
       ],
       "example_headlines": [
         "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat"
+      ]
+    },
+    {
+      "entity": "bdautomated",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "AI Agent Statistics 2026: Every Number Checked at Its Source"
+      ]
+    },
+    {
+      "entity": "AI agents",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "AI Agent Statistics 2026: Every Number Checked at Its Source"
+      ]
+    },
+    {
+      "entity": "18 publishers",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "AI Agent Statistics 2026: Every Number Checked at Its Source"
       ]
     },
     {
