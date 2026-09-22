@@ -3,7 +3,7 @@
     "xrp_entries": 630,
     "btc_entries": 576
   },
-  "unique_pairs_found": 1821,
+  "unique_pairs_found": 1829,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -786,6 +786,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "SEC",
       "cooccurrence_count": 6,
@@ -992,21 +1007,6 @@
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
         }
       ]
     },
@@ -5447,6 +5447,21 @@
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
         }
       ]
     },
@@ -13153,6 +13168,94 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Hacken",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Proof of Reserves",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hacken",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hacken",
+      "entity_b": "Proof of Reserves",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hacken",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Proof of Reserves",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Proof of Reserves",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Louisville Athletics",
       "entity_b": "Louisville Basketball",
       "cooccurrence_count": 1,
@@ -13665,17 +13768,6 @@
       "example_headlines": [
         {
           "title": "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
           "asset": "XRP"
         }
       ]

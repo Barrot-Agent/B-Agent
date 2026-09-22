@@ -3,7 +3,7 @@
     "xrp_entries": 630,
     "btc_entries": 576
   },
-  "unique_entities_profiled": 565,
+  "unique_entities_profiled": 567,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 191,
-      "bullish": 121,
+      "total_mentions": 192,
+      "bullish": 122,
       "neutral": 34,
       "bearish": 36,
-      "net_sentiment_score": 0.445,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 104,
-      "bullish": 52,
+      "total_mentions": 105,
+      "bullish": 53,
       "neutral": 18,
       "bearish": 34,
-      "net_sentiment_score": 0.173,
+      "net_sentiment_score": 0.181,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1179,6 +1179,22 @@
       ]
     },
     {
+      "entity": "MEXC",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1643,22 +1659,6 @@
         "Ethereum ETFs See Positive Inflows As September Trading Opens",
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
-      ]
-    },
-    {
-      "entity": "MEXC",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -5613,6 +5613,34 @@
       ],
       "example_headlines": [
         "Ripple eyes $13 trillion corporate treasury opportunity to grow RLUSD stablecoin, executive says - C"
+      ]
+    },
+    {
+      "entity": "Hacken",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
+      "entity": "Proof of Reserves",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
