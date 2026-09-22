@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 631,
-    "btc_entries": 578
+    "btc_entries": 579
   },
-  "unique_entities_profiled": 567,
+  "unique_entities_profiled": 569,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 37,
-      "bullish": 21,
+      "total_mentions": 38,
+      "bullish": 22,
       "neutral": 10,
       "bearish": 6,
-      "net_sentiment_score": 0.405,
+      "net_sentiment_score": 0.421,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -160,11 +160,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 24,
-      "bullish": 17,
+      "total_mentions": 25,
+      "bullish": 18,
       "neutral": 3,
       "bearish": 4,
-      "net_sentiment_score": 0.542,
+      "net_sentiment_score": 0.56,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3294,6 +3294,21 @@
       ]
     },
     {
+      "entity": "Fidelity",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -5910,20 +5925,6 @@
       ]
     },
     {
-      "entity": "Fidelity",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
-      ]
-    },
-    {
       "entity": "US Fed",
       "total_mentions": 1,
       "bullish": 0,
@@ -8427,6 +8428,34 @@
       ],
       "example_headlines": [
         "Metaplanet cuts Series 10 stock pool by 41%, plans Hong Kong subsidiary"
+      ]
+    },
+    {
+      "entity": "Fidelity Investments",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
+      ]
+    },
+    {
+      "entity": "Ethereum ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
       ]
     }
   ]

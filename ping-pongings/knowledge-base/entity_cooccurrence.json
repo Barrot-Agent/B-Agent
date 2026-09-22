@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 631,
-    "btc_entries": 578
+    "btc_entries": 579
   },
-  "unique_pairs_found": 1829,
+  "unique_pairs_found": 1838,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1011,6 +1011,21 @@
       ]
     },
     {
+      "entity_a": "ETF",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Add $492M As Inflow Streak Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 5,
@@ -1366,21 +1381,6 @@
         },
         {
           "title": "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETF",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Add $492M As Inflow Streak Continues",
           "asset": "XRP"
         }
       ]
@@ -21864,6 +21864,105 @@
       "example_headlines": [
         {
           "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Ethereum ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Fidelity Investments",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Ethereum ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Fidelity Investments",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum ETFs",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum ETFs",
+      "entity_b": "Fidelity Investments",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fidelity",
+      "entity_b": "Fidelity Investments",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
           "asset": "BTC"
         }
       ]
