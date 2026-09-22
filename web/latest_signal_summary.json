@@ -1,17 +1,17 @@
 {
-  "summary": "The XRP signal, generated at\u202f2026\u201109\u201122\u202f19:23:48\u202fUTC, carries an overall score of\u202f44 with a confidence of\u202f0.0 and a news score of\u202f88 based on\u202f11\u202fnews entries. The headline sentiment is mixed, featuring one neutral analysis and five bullish technical discussions.  \n\n- Timestamp:\u202f2026\u201109\u201122T19:23:48.573760+00:00  \n- Overall score\u202f44, confidence\u202f0.0, news score\u202f88 (11 entries)  \n- Sentiment breakdown:\u202f[neutral]\u202f1\u202fheadline,\u202f[bullish]\u202f5\u202fheadlines.",
+  "summary": "The signal reports a neutral analysis of the XRP Ledger Consensus Protocol and several bullish technical papers on message dissemination, routing, and consensus testing, yielding an overall sentiment score of\u202f44. News coverage is strong, with 11 entries and a news score of\u202f88, though confidence is reported as\u202f0.0 due to missing source tokens.  \n\n- Timestamp:\u202f2026\u201109\u201122\u202f20:26:19\u202fUTC  \n- Sentiment breakdown:\u202f1\u202fneutral,\u202f5\u202fbullish items  \n- Source note: sentiment unavailable (GitHub/Groq token errors) and confidence\u202f0.0.",
   "spoken_line": "XRP signal update. Score 44. Confidence 0.0. Based on 11 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-09-22T19:23:48.573760+00:00",
+    "timestamp": "2026-09-22T20:26:19.495332+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 44,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(11)",
     "news_score": 88,
     "news_entries": 11,
-    "generated_at_unix": 1790105028
+    "generated_at_unix": 1790108779
   }
 }
