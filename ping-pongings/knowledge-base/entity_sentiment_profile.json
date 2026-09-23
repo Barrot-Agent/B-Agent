@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 633,
+    "xrp_entries": 634,
     "btc_entries": 579
   },
-  "unique_entities_profiled": 579,
+  "unique_entities_profiled": 580,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 196,
-      "bullish": 126,
+      "total_mentions": 197,
+      "bullish": 127,
       "neutral": 34,
       "bearish": 36,
-      "net_sentiment_score": 0.459,
+      "net_sentiment_score": 0.462,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 157,
-      "bullish": 102,
+      "total_mentions": 158,
+      "bullish": 103,
       "neutral": 33,
       "bearish": 22,
-      "net_sentiment_score": 0.51,
+      "net_sentiment_score": 0.513,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3262,6 +3262,21 @@
       ]
     },
     {
+      "entity": "Louisville Basketball",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
+        "Ripple Scores Multi-Year Branding Partnership with Louisville Basketball for XRP - FF News"
+      ]
+    },
+    {
       "entity": "University of Louisville",
       "total_mentions": 2,
       "bullish": 2,
@@ -5676,20 +5691,6 @@
       ]
     },
     {
-      "entity": "Louisville Basketball",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t"
-      ]
-    },
-    {
       "entity": "gocards.com",
       "total_mentions": 1,
       "bullish": 1,
@@ -5953,6 +5954,20 @@
       ],
       "example_headlines": [
         "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball"
+      ]
+    },
+    {
+      "entity": "FF News",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Multi-Year Branding Partnership with Louisville Basketball for XRP - FF News"
       ]
     },
     {
