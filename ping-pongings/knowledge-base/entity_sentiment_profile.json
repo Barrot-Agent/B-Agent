@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 644,
+    "xrp_entries": 646,
     "btc_entries": 593
   },
-  "unique_entities_profiled": 587,
+  "unique_entities_profiled": 588,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1212,6 +1212,23 @@
       ]
     },
     {
+      "entity": "B.AI",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
+        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+        "Unlocking the Trillion-Token Era: B.AI\u2019s Global Settlement Layer for the Agent Economy"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1679,23 +1696,6 @@
     },
     {
       "entity": "MetaMask",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
-        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
-        "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
-      ]
-    },
-    {
-      "entity": "B.AI",
       "total_mentions": 3,
       "bullish": 2,
       "neutral": 1,
@@ -5969,6 +5969,20 @@
       ],
       "example_headlines": [
         "HTX Research Examines Stock-Linked Memecoins: A New Connection Between Equity Assets and Crypto Liqu"
+      ]
+    },
+    {
+      "entity": "OpenRouter",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Unlocking the Trillion-Token Era: B.AI\u2019s Global Settlement Layer for the Agent Economy"
       ]
     },
     {
