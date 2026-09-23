@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 638,
-    "btc_entries": 583
+    "btc_entries": 585
   },
-  "unique_pairs_found": 1871,
+  "unique_pairs_found": 1876,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1416,6 +1416,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -1997,21 +2012,6 @@
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETFs",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "BTC"
         }
       ]
     },
@@ -22354,6 +22354,61 @@
       "example_headlines": [
         {
           "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Friday flows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Friday flows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fidelity",
+      "entity_b": "Friday flows",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
           "asset": "BTC"
         }
       ]
