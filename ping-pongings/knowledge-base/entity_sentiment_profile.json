@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 646,
+    "xrp_entries": 647,
     "btc_entries": 594
   },
   "unique_entities_profiled": 588,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 199,
+      "total_mentions": 201,
       "bullish": 127,
-      "neutral": 34,
-      "bearish": 38,
-      "net_sentiment_score": 0.447,
+      "neutral": 35,
+      "bearish": 39,
+      "net_sentiment_score": 0.438,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 160,
+      "total_mentions": 162,
       "bullish": 103,
-      "neutral": 33,
-      "bearish": 24,
-      "net_sentiment_score": 0.494,
+      "neutral": 34,
+      "bearish": 25,
+      "net_sentiment_score": 0.481,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 39,
+      "total_mentions": 40,
       "bullish": 28,
-      "neutral": 4,
+      "neutral": 5,
       "bearish": 7,
-      "net_sentiment_score": 0.538,
+      "net_sentiment_score": 0.525,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -243,6 +243,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 17,
+      "bullish": 11,
+      "neutral": 4,
+      "bearish": 2,
+      "net_sentiment_score": 0.529,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 17,
       "bullish": 8,
@@ -272,22 +288,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 16,
-      "bullish": 11,
-      "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.562,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -375,6 +375,23 @@
       ]
     },
     {
+      "entity": "The Motley Fool",
+      "total_mentions": 10,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
       "entity": "CFTC",
       "total_mentions": 10,
       "bullish": 4,
@@ -389,23 +406,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
         "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 9,
-      "bullish": 9,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -2728,6 +2728,21 @@
       ]
     },
     {
+      "entity": "U.S. courts",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why Is XRP (Ripple) Up Today? - The Motley Fool",
+        "Will XRP (Ripple) Recover by the End of September? - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "GnosisDAO",
       "total_mentions": 2,
       "bullish": 0,
@@ -4471,20 +4486,6 @@
       ],
       "example_headlines": [
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "U.S. courts",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why Is XRP (Ripple) Up Today? - The Motley Fool"
       ]
     },
     {
