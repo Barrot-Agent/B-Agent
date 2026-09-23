@@ -3,15 +3,15 @@
     "xrp_entries": 631,
     "btc_entries": 579
   },
-  "unique_entities_profiled": 569,
+  "unique_entities_profiled": 579,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 252,
-      "bullish": 137,
+      "total_mentions": 253,
+      "bullish": 138,
       "neutral": 37,
       "bearish": 78,
-      "net_sentiment_score": 0.234,
+      "net_sentiment_score": 0.237,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 192,
-      "bullish": 122,
+      "total_mentions": 196,
+      "bullish": 126,
       "neutral": 34,
       "bearish": 36,
-      "net_sentiment_score": 0.448,
+      "net_sentiment_score": 0.459,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 153,
-      "bullish": 98,
+      "total_mentions": 157,
+      "bullish": 102,
       "neutral": 33,
       "bearish": 22,
-      "net_sentiment_score": 0.497,
+      "net_sentiment_score": 0.51,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -644,6 +644,23 @@
       ]
     },
     {
+      "entity": "CLARITY Act",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -775,23 +792,6 @@
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
         "Coldcard hack sparks biggest sub-1 BTC move since FTX: CryptoQuant",
         "Crypto whales accumulate as bear market nears late stage: CryptoQuant"
-      ]
-    },
-    {
-      "entity": "CLARITY Act",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -1643,6 +1643,22 @@
         "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
         "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
         "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
+      ]
+    },
+    {
+      "entity": "Altcoin Buzz",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz",
+        "XRP Price Ripple TA XRP Technical Analysis 2026 - Altcoin Buzz",
+        "Ripple shows how XRP survived CLARITY Act setback, Strategy says Bitcoin never needed it - Altcoin B"
       ]
     },
     {
@@ -3243,6 +3259,21 @@
       "example_headlines": [
         "Louisville Athletics Announces Strategic Brand Partnership with Ripple Bringing XRP Cryptocurrency t",
         "Louisville Athletics Announces Partnership with Ripple, Brings XRP Branding to Basketball Court - 24"
+      ]
+    },
+    {
+      "entity": "University of Louisville",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C",
+        "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball"
       ]
     },
     {
@@ -5155,20 +5186,6 @@
       ]
     },
     {
-      "entity": "Altcoin Buzz",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Prepares XRP Ledger for the Quantum Era Before \u2018Q-Day\u2019 - Altcoin Buzz"
-      ]
-    },
-    {
       "entity": "spot Ethereum ETFs",
       "total_mentions": 1,
       "bullish": 1,
@@ -5729,20 +5746,6 @@
       ]
     },
     {
-      "entity": "University of Louisville",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C"
-      ]
-    },
-    {
       "entity": "Denny Crum Court",
       "total_mentions": 1,
       "bullish": 1,
@@ -5883,6 +5886,76 @@
       ]
     },
     {
+      "entity": "Stripe",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Tempo",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk"
+      ]
+    },
+    {
+      "entity": "AI standard",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Louisville",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball"
+      ]
+    },
+    {
+      "entity": "Cardinals",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball"
+      ]
+    },
+    {
       "entity": "tokenized stock trading venues",
       "total_mentions": 1,
       "bullish": 1,
@@ -5908,6 +5981,76 @@
       ],
       "example_headlines": [
         "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
+      "entity": "European Central Bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "Pontes",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "TARGET Services",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "Eurosystem",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "Digital Euro",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
       ]
     },
     {
