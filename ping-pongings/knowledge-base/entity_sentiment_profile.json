@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 635,
+    "xrp_entries": 636,
     "btc_entries": 581
   },
-  "unique_entities_profiled": 580,
+  "unique_entities_profiled": 581,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 197,
+      "total_mentions": 198,
       "bullish": 127,
       "neutral": 34,
-      "bearish": 36,
-      "net_sentiment_score": 0.462,
+      "bearish": 37,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 158,
+      "total_mentions": 159,
       "bullish": 103,
       "neutral": 33,
-      "bearish": 22,
-      "net_sentiment_score": 0.513,
+      "bearish": 23,
+      "net_sentiment_score": 0.503,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -5716,6 +5716,20 @@
       ],
       "example_headlines": [
         "Prediction: XRP (Ripple) Will Be Worth This Much in 5 Years - The Globe and Mail"
+      ]
+    },
+    {
+      "entity": "NAI500",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Valued at $50 Billion, So Why Is XRP\u2019s Outlook Still Unclear? - NAI500"
       ]
     },
     {
