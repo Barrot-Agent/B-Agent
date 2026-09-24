@@ -3,12 +3,12 @@
     "xrp_entries": 647,
     "btc_entries": 595
   },
-  "unique_pairs_found": 1887,
+  "unique_pairs_found": 1896,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 157,
+      "cooccurrence_count": 159,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -96,6 +96,21 @@
       ]
     },
     {
+      "entity_a": "XRP",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 22,
+      "example_headlines": [
+        {
+          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 22,
@@ -111,24 +126,9 @@
       ]
     },
     {
-      "entity_a": "XRP",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 21,
-      "example_headlines": [
-        {
-          "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -486,6 +486,21 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US stocks",
       "cooccurrence_count": 9,
@@ -502,7 +517,7 @@
     },
     {
       "entity_a": "CoinDesk",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 8,
       "example_headlines": [
         {
@@ -510,7 +525,7 @@
           "asset": "XRP"
         },
         {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
           "asset": "XRP"
         }
       ]
@@ -591,16 +606,31 @@
       ]
     },
     {
-      "entity_a": "CoinDesk",
+      "entity_a": "RLUSD",
       "entity_b": "Ripple",
       "cooccurrence_count": 7,
       "example_headlines": [
         {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
           "asset": "XRP"
         },
         {
-          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -692,36 +722,6 @@
         {
           "title": "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "RLUSD",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RLUSD",
-      "entity_b": "XRP",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
         }
       ]
     },
@@ -1591,6 +1591,21 @@
         },
         {
           "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
           "asset": "XRP"
         }
       ]
@@ -3151,21 +3166,6 @@
         },
         {
           "title": "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        },
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
           "asset": "XRP"
         }
       ]
@@ -5656,6 +5656,36 @@
         },
         {
           "title": "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
           "asset": "XRP"
         }
       ]
@@ -14115,17 +14145,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Stripe",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "Tempo",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -14138,17 +14157,6 @@
     {
       "entity_a": "Stripe",
       "entity_b": "Tempo",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Stripe",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -14406,6 +14414,105 @@
       "example_headlines": [
         {
           "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agent Payments",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agent Payments",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agent Payments",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agent Payments",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinDesk",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP Ledger",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
           "asset": "XRP"
         }
       ]

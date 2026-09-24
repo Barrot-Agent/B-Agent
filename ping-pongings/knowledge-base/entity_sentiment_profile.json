@@ -3,7 +3,7 @@
     "xrp_entries": 647,
     "btc_entries": 595
   },
-  "unique_entities_profiled": 588,
+  "unique_entities_profiled": 590,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 201,
-      "bullish": 127,
+      "total_mentions": 203,
+      "bullish": 129,
       "neutral": 35,
       "bearish": 39,
-      "net_sentiment_score": 0.438,
+      "net_sentiment_score": 0.443,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 162,
-      "bullish": 103,
+      "total_mentions": 164,
+      "bullish": 105,
       "neutral": 34,
       "bearish": 25,
-      "net_sentiment_score": 0.481,
+      "net_sentiment_score": 0.488,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -126,11 +126,11 @@
     },
     {
       "entity": "CoinDesk",
-      "total_mentions": 30,
-      "bullish": 20,
+      "total_mentions": 31,
+      "bullish": 21,
       "neutral": 1,
       "bearish": 9,
-      "net_sentiment_score": 0.367,
+      "net_sentiment_score": 0.387,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -194,11 +194,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 21,
-      "bullish": 19,
+      "total_mentions": 22,
+      "bullish": 20,
       "neutral": 0,
       "bearish": 2,
-      "net_sentiment_score": 0.81,
+      "net_sentiment_score": 0.818,
       "assets_seen_in": [
         "XRP"
       ],
@@ -561,6 +561,22 @@
       ]
     },
     {
+      "entity": "RLUSD",
+      "total_mentions": 7,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 7,
       "bullish": 4,
@@ -609,22 +625,6 @@
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda"
-      ]
-    },
-    {
-      "entity": "RLUSD",
-      "total_mentions": 6,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -3323,6 +3323,21 @@
       ]
     },
     {
+      "entity": "Stripe",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
+      ]
+    },
+    {
       "entity": "Financial Conduct Authority",
       "total_mentions": 2,
       "bullish": 1,
@@ -5987,20 +6002,6 @@
       ]
     },
     {
-      "entity": "Stripe",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk"
-      ]
-    },
-    {
       "entity": "Tempo",
       "total_mentions": 1,
       "bullish": 1,
@@ -6096,6 +6097,34 @@
       ],
       "example_headlines": [
         "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
+      "entity": "AI Agent Payments",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
+      ]
+    },
+    {
+      "entity": "asset managers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk"
       ]
     },
     {
