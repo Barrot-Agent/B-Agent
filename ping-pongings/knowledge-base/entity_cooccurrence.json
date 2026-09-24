@@ -3,12 +3,12 @@
     "xrp_entries": 663,
     "btc_entries": 616
   },
-  "unique_pairs_found": 1931,
+  "unique_pairs_found": 1939,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 159,
+      "cooccurrence_count": 160,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -5792,6 +5792,21 @@
         {
           "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Treasury",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        },
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
         }
       ]
     },
@@ -14411,17 +14426,6 @@
       ]
     },
     {
-      "entity_a": "U.S. Treasury",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "White House",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
@@ -14549,6 +14553,94 @@
       "example_headlines": [
         {
           "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "Iran",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "U.S. Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
           "asset": "XRP"
         }
       ]

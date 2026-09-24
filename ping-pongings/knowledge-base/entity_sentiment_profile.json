@@ -3,7 +3,7 @@
     "xrp_entries": 663,
     "btc_entries": 616
   },
-  "unique_entities_profiled": 605,
+  "unique_entities_profiled": 606,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 205,
+      "total_mentions": 206,
       "bullish": 130,
       "neutral": 36,
-      "bearish": 39,
-      "net_sentiment_score": 0.444,
+      "bearish": 40,
+      "net_sentiment_score": 0.437,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 164,
+      "total_mentions": 165,
       "bullish": 105,
       "neutral": 34,
-      "bearish": 25,
-      "net_sentiment_score": 0.488,
+      "bearish": 26,
+      "net_sentiment_score": 0.479,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -611,6 +611,23 @@
       ]
     },
     {
+      "entity": "U.S. Treasury",
+      "total_mentions": 7,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.571,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "CFTC Crypto Asset Rules Enter White House Review",
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -712,20 +729,20 @@
       ]
     },
     {
-      "entity": "U.S. Treasury",
+      "entity": "Iran",
       "total_mentions": 6,
-      "bullish": 5,
+      "bullish": 3,
       "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.833,
+      "bearish": 2,
+      "net_sentiment_score": 0.167,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "CFTC Crypto Asset Rules Enter White House Review",
-        "Bitcoin may find bear market bottom in August: 10x Research"
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
       ]
     },
     {
@@ -911,22 +928,6 @@
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
-      ]
-    },
-    {
-      "entity": "Iran",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.4,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-        "Bitcoin hits $64K as gold gains while oil shakes off Trump Oman threat"
       ]
     },
     {
@@ -6160,6 +6161,20 @@
       ],
       "example_headlines": [
         "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center"
+      ]
+    },
+    {
+      "entity": "BitBank",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
       ]
     },
     {
