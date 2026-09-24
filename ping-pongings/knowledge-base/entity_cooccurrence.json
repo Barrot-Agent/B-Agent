@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 659,
+    "xrp_entries": 661,
     "btc_entries": 611
   },
-  "unique_pairs_found": 1915,
+  "unique_pairs_found": 1921,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2041,6 +2041,21 @@
         },
         {
           "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
           "asset": "XRP"
         }
       ]
@@ -4746,21 +4761,6 @@
       ]
     },
     {
-      "entity_a": "ETFs",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Aave",
       "entity_b": "BTCS",
       "cooccurrence_count": 2,
@@ -5851,6 +5851,36 @@
         },
         {
           "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
           "asset": "BTC"
         }
       ]
@@ -14777,6 +14807,72 @@
       ]
     },
     {
+      "entity_a": "Bastion",
+      "entity_b": "Bastion Holdings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "National Trust Bank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion Holdings",
+      "entity_b": "National Trust Bank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion Holdings",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "National Trust Bank",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Digital Euro",
       "entity_b": "European Central Bank",
       "cooccurrence_count": 1,
@@ -22819,17 +22915,6 @@
     },
     {
       "entity_a": "Ethereum",
-      "entity_b": "Fidelity",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
       "entity_b": "Fidelity Investments",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -22868,17 +22953,6 @@
       "example_headlines": [
         {
           "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETFs",
-      "entity_b": "Fidelity",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
           "asset": "BTC"
         }
       ]

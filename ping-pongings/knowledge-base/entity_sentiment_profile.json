@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 659,
+    "xrp_entries": 661,
     "btc_entries": 611
   },
-  "unique_entities_profiled": 596,
+  "unique_entities_profiled": 600,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -91,6 +91,23 @@
       ]
     },
     {
+      "entity": "Ethereum",
+      "total_mentions": 40,
+      "bullish": 23,
+      "neutral": 10,
+      "bearish": 7,
+      "net_sentiment_score": 0.4,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
+      ]
+    },
+    {
       "entity": "SEC",
       "total_mentions": 40,
       "bullish": 28,
@@ -105,23 +122,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape"
-      ]
-    },
-    {
-      "entity": "Ethereum",
-      "total_mentions": 39,
-      "bullish": 22,
-      "neutral": 10,
-      "bearish": 7,
-      "net_sentiment_score": 0.385,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation"
       ]
     },
     {
@@ -880,6 +880,40 @@
       ]
     },
     {
+      "entity": "ETFs",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
+      ]
+    },
+    {
+      "entity": "Fidelity",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
+      ]
+    },
+    {
       "entity": "Iran",
       "total_mentions": 5,
       "bullish": 3,
@@ -1094,23 +1128,6 @@
       ]
     },
     {
-      "entity": "ETFs",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-        "Bitcoin ETFs tear through 2026 outflows in 7-day hot streak"
-      ]
-    },
-    {
       "entity": "BitMEX",
       "total_mentions": 4,
       "bullish": 0,
@@ -1226,23 +1243,6 @@
         "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
         "Unlocking the Trillion-Token Era: B.AI\u2019s Global Settlement Layer for the Agent Economy"
-      ]
-    },
-    {
-      "entity": "Fidelity",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
       ]
     },
     {
@@ -6216,6 +6216,62 @@
       ],
       "example_headlines": [
         "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Bastion",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bastion Wins Conditional OCC Approval For National Trust Bank Charter"
+      ]
+    },
+    {
+      "entity": "Office of the Comptroller of the Currency (OCC)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bastion Wins Conditional OCC Approval For National Trust Bank Charter"
+      ]
+    },
+    {
+      "entity": "National Trust Bank",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bastion Wins Conditional OCC Approval For National Trust Bank Charter"
+      ]
+    },
+    {
+      "entity": "Bastion Holdings",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bastion Wins Conditional OCC Approval For National Trust Bank Charter"
       ]
     },
     {
