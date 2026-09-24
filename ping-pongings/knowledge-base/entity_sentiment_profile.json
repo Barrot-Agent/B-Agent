@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 650,
+    "xrp_entries": 652,
     "btc_entries": 600
   },
-  "unique_entities_profiled": 590,
+  "unique_entities_profiled": 595,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 203,
-      "bullish": 129,
-      "neutral": 35,
+      "total_mentions": 205,
+      "bullish": 130,
+      "neutral": 36,
       "bearish": 39,
-      "net_sentiment_score": 0.443,
+      "net_sentiment_score": 0.444,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -409,6 +409,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.778,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "Ether",
       "total_mentions": 9,
       "bullish": 7,
@@ -490,23 +507,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 8,
-      "bullish": 6,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -1390,6 +1390,22 @@
         "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
         "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
         "Ex-Ripple CTO Says XRP Could Overtake Bitcoin as Viral $60 Price Target Gains Traction - CCN.com"
+      ]
+    },
+    {
+      "entity": "European Union",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
     {
@@ -2399,21 +2415,6 @@
       ]
     },
     {
-      "entity": "European Union",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "What Ripple CASP authorisation means under MiCA - Ripple"
-      ]
-    },
-    {
       "entity": "MiCA",
       "total_mentions": 2,
       "bullish": 2,
@@ -2441,6 +2442,21 @@
       "example_headlines": [
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
         "$Ripple (XRP.CC)$ - moomoo.com"
+      ]
+    },
+    {
+      "entity": "European Commission",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "What Ripple CASP authorisation means under MiCA - Ripple",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
     {
@@ -4224,20 +4240,6 @@
       ],
       "example_headlines": [
         "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "European Commission",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "What Ripple CASP authorisation means under MiCA - Ripple"
       ]
     },
     {
@@ -6117,6 +6119,48 @@
       ]
     },
     {
+      "entity": "Stablecore",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions"
+      ]
+    },
+    {
+      "entity": "banks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions"
+      ]
+    },
+    {
+      "entity": "credit unions",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions"
+      ]
+    },
+    {
       "entity": "AI Agent Payments",
       "total_mentions": 1,
       "bullish": 1,
@@ -6128,6 +6172,34 @@
       ],
       "example_headlines": [
         "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
+      ]
+    },
+    {
+      "entity": "Cyber Resilience Act",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
+      ]
+    },
+    {
+      "entity": "European Parliament",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
     {

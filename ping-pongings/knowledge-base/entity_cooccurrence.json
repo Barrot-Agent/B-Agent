@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 650,
+    "xrp_entries": 652,
     "btc_entries": 600
   },
-  "unique_pairs_found": 1897,
+  "unique_pairs_found": 1913,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1356,6 +1356,21 @@
       ]
     },
     {
+      "entity_a": "Coinbase",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Metaplanet",
       "cooccurrence_count": 4,
@@ -1701,6 +1716,21 @@
       ]
     },
     {
+      "entity_a": "European Union",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 3,
@@ -2011,21 +2041,6 @@
         },
         {
           "title": "Coinbase Investor Class Action Can Move Forward, Federal Judge Rules",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "XRP"
         }
       ]
@@ -3336,21 +3351,6 @@
       ]
     },
     {
-      "entity_a": "European Union",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "MiCA",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -3436,6 +3436,36 @@
         },
         {
           "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "European Union",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
           "asset": "XRP"
         }
       ]
@@ -8452,17 +8482,6 @@
     },
     {
       "entity_a": "European Commission",
-      "entity_b": "European Union",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Commission",
       "entity_b": "MiCA",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -8475,17 +8494,6 @@
     {
       "entity_a": "European Commission",
       "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Commission",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -14490,6 +14498,105 @@
       ]
     },
     {
+      "entity_a": "Coinbase",
+      "entity_b": "Stablecore",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "credit unions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecore",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecore",
+      "entity_b": "banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecore",
+      "entity_b": "credit unions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "credit unions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "banks",
+      "entity_b": "credit unions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "AI Agent Payments",
       "entity_b": "RLUSD",
       "cooccurrence_count": 1,
@@ -14540,6 +14647,83 @@
       "example_headlines": [
         {
           "title": "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "European Commission",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "European Parliament",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "European Union",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "European Parliament",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Parliament",
+      "entity_b": "European Union",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Parliament",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
           "asset": "XRP"
         }
       ]
