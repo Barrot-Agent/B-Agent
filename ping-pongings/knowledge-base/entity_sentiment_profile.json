@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 648,
+    "xrp_entries": 649,
     "btc_entries": 595
   },
   "unique_entities_profiled": 590,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 254,
-      "bullish": 139,
+      "total_mentions": 255,
+      "bullish": 140,
       "neutral": 37,
       "bearish": 78,
-      "net_sentiment_score": 0.24,
+      "net_sentiment_score": 0.243,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -160,11 +160,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 25,
-      "bullish": 18,
+      "total_mentions": 26,
+      "bullish": 19,
       "neutral": 3,
       "bearish": 4,
-      "net_sentiment_score": 0.56,
+      "net_sentiment_score": 0.577,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1229,6 +1229,23 @@
       ]
     },
     {
+      "entity": "Fidelity",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1743,22 +1760,6 @@
         "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
-      ]
-    },
-    {
-      "entity": "Fidelity",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows"
       ]
     },
     {
@@ -3335,6 +3336,22 @@
       "example_headlines": [
         "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
         "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
+      ]
+    },
+    {
+      "entity": "Friday flows",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows"
       ]
     },
     {
@@ -8743,20 +8760,6 @@
       ],
       "example_headlines": [
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
-      ]
-    },
-    {
-      "entity": "Friday flows",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows"
       ]
     }
   ]
