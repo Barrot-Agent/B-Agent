@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 653,
-    "btc_entries": 601
+    "btc_entries": 603
   },
-  "unique_entities_profiled": 595,
+  "unique_entities_profiled": 596,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 38,
+      "total_mentions": 39,
       "bullish": 22,
       "neutral": 10,
-      "bearish": 6,
-      "net_sentiment_score": 0.421,
+      "bearish": 7,
+      "net_sentiment_score": 0.385,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2917,6 +2917,22 @@
       ]
     },
     {
+      "entity": "EIP-7702",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+        "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research"
+      ]
+    },
+    {
       "entity": "BTCS",
       "total_mentions": 2,
       "bullish": 1,
@@ -4618,20 +4634,6 @@
       ],
       "example_headlines": [
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "EIP-7702",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research"
       ]
     },
     {
@@ -8636,6 +8638,20 @@
       ],
       "example_headlines": [
         "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk"
+      ]
+    },
+    {
+      "entity": "Phishing research",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research"
       ]
     },
     {

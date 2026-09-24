@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 653,
-    "btc_entries": 601
+    "btc_entries": 603
   },
-  "unique_pairs_found": 1913,
+  "unique_pairs_found": 1915,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -4726,6 +4726,21 @@
         },
         {
           "title": "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "EIP-7702",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "XRP"
+        },
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
           "asset": "BTC"
         }
       ]
@@ -10192,17 +10207,6 @@
       "example_headlines": [
         {
           "title": "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "EIP-7702",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
           "asset": "XRP"
         }
       ]
@@ -22303,6 +22307,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "EIP-7702",
+      "entity_b": "Phishing research",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Phishing research",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "EIP-7702 Wallet Delegation Faces Scrutiny After Phishing Research",
           "asset": "BTC"
         }
       ]
