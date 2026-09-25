@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 678,
+    "xrp_entries": 679,
     "btc_entries": 634
   },
-  "unique_entities_profiled": 615,
+  "unique_entities_profiled": 617,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -611,6 +611,23 @@
       ]
     },
     {
+      "entity": "United States",
+      "total_mentions": 7,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "WisdomTree And MoonPay Expand US Access To Tokenized Funds",
+        "US hints at more yen intervention: Five things to know in Bitcoin this week"
+      ]
+    },
+    {
       "entity": "U.S. Treasury",
       "total_mentions": 7,
       "bullish": 5,
@@ -692,23 +709,6 @@
         "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
         "XRP Holds Above $1 as Ripple Signs Korea\u2019s First Regional Bank. Will It Move XRP? - 24/7 Wall St.",
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
-      ]
-    },
-    {
-      "entity": "United States",
-      "total_mentions": 6,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "US hints at more yen intervention: Five things to know in Bitcoin this week",
-        "Bitcoin Is Losing Its Grip on Crypto: Why Americans Are Looking Beyond BTC in 2026 - Bitcoin Foundat"
       ]
     },
     {
@@ -6442,6 +6442,34 @@
       ],
       "example_headlines": [
         "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
+      ]
+    },
+    {
+      "entity": "WisdomTree",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "WisdomTree And MoonPay Expand US Access To Tokenized Funds"
+      ]
+    },
+    {
+      "entity": "MoonPay",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "WisdomTree And MoonPay Expand US Access To Tokenized Funds"
       ]
     },
     {

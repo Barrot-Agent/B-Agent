@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 678,
+    "xrp_entries": 679,
     "btc_entries": 634
   },
-  "unique_pairs_found": 1963,
+  "unique_pairs_found": 1966,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -15268,6 +15268,39 @@
       "example_headlines": [
         {
           "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MoonPay",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree And MoonPay Expand US Access To Tokenized Funds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MoonPay",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree And MoonPay Expand US Access To Tokenized Funds",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree And MoonPay Expand US Access To Tokenized Funds",
           "asset": "XRP"
         }
       ]
