@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 663,
+    "xrp_entries": 665,
     "btc_entries": 617
   },
-  "unique_pairs_found": 1939,
+  "unique_pairs_found": 1955,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 160,
+      "cooccurrence_count": 162,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -411,6 +411,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "The Motley Fool",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "The Motley Fool",
+      "entity_b": "XRP",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 10,
@@ -436,36 +466,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "The Motley Fool",
-      "entity_b": "XRP",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
           "asset": "XRP"
         }
       ]
@@ -906,6 +906,21 @@
       ]
     },
     {
+      "entity_a": "FXStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "SEC",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 5,
@@ -1072,7 +1087,7 @@
     },
     {
       "entity_a": "FXStreet",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
@@ -1591,21 +1606,6 @@
         },
         {
           "title": "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "FXStreet",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
@@ -15070,6 +15070,182 @@
       "example_headlines": [
         {
           "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenZeppelin",
+      "entity_b": "S&P Global",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenZeppelin",
+      "entity_b": "SPGI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenZeppelin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenZeppelin",
+      "entity_b": "smart contracts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P Global",
+      "entity_b": "SPGI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P Global",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "S&P Global",
+      "entity_b": "smart contracts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SPGI",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SPGI",
+      "entity_b": "smart contracts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "smart contracts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "World",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "World Money",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "World",
+      "entity_b": "World Money",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "World",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "World Money",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
           "asset": "XRP"
         }
       ]

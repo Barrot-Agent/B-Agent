@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 663,
+    "xrp_entries": 665,
     "btc_entries": 617
   },
-  "unique_entities_profiled": 606,
+  "unique_entities_profiled": 613,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 206,
-      "bullish": 130,
+      "total_mentions": 209,
+      "bullish": 131,
       "neutral": 36,
-      "bearish": 40,
-      "net_sentiment_score": 0.437,
+      "bearish": 42,
+      "net_sentiment_score": 0.426,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 165,
+      "total_mentions": 167,
       "bullish": 105,
       "neutral": 34,
-      "bearish": 26,
-      "net_sentiment_score": 0.479,
+      "bearish": 28,
+      "net_sentiment_score": 0.461,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -358,6 +358,23 @@
       ]
     },
     {
+      "entity": "The Motley Fool",
+      "total_mentions": 11,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.636,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 11,
       "bullish": 8,
@@ -372,23 +389,6 @@
         "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
         "Bitcoin ETF Outflows Hit $201M As Inflow Streak Breaks",
         "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
-      ]
-    },
-    {
-      "entity": "The Motley Fool",
-      "total_mentions": 10,
-      "bullish": 9,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-        "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
       ]
     },
     {
@@ -762,6 +762,22 @@
       ]
     },
     {
+      "entity": "FXStreet",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "USDT",
       "total_mentions": 5,
       "bullish": 4,
@@ -977,22 +993,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa",
         "Coldcard exploit sparks Bitcoin flight, \u2018bullish\u2019 crypto consolidation: Hodler\u2019s Digest, August 2"
-      ]
-    },
-    {
-      "entity": "FXStreet",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -1777,6 +1777,22 @@
         "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "Stripe",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
       ]
     },
     {
@@ -3354,21 +3370,6 @@
       "example_headlines": [
         "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C",
         "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball"
-      ]
-    },
-    {
-      "entity": "Stripe",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
-        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
       ]
     },
     {
@@ -6357,6 +6358,104 @@
       ],
       "example_headlines": [
         "Bastion Wins Conditional OCC Approval For National Trust Bank Charter"
+      ]
+    },
+    {
+      "entity": "S&P Global",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
+      ]
+    },
+    {
+      "entity": "OpenZeppelin",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
+      ]
+    },
+    {
+      "entity": "SPGI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
+      ]
+    },
+    {
+      "entity": "smart contracts",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
+      ]
+    },
+    {
+      "entity": "World",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
+      "entity": "World Money",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
+      "entity": "stablecoins",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
       ]
     },
     {
