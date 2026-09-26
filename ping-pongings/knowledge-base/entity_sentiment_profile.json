@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 687,
+    "xrp_entries": 689,
     "btc_entries": 639
   },
-  "unique_entities_profiled": 617,
+  "unique_entities_profiled": 621,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 209,
+      "total_mentions": 210,
       "bullish": 131,
-      "neutral": 36,
+      "neutral": 37,
       "bearish": 42,
-      "net_sentiment_score": 0.426,
+      "net_sentiment_score": 0.424,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 167,
+      "total_mentions": 168,
       "bullish": 105,
-      "neutral": 34,
+      "neutral": 35,
       "bearish": 28,
-      "net_sentiment_score": 0.461,
+      "net_sentiment_score": 0.458,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -143,11 +143,11 @@
     },
     {
       "entity": "Moomoo",
-      "total_mentions": 28,
+      "total_mentions": 29,
       "bullish": 5,
-      "neutral": 21,
+      "neutral": 22,
       "bearish": 2,
-      "net_sentiment_score": 0.107,
+      "net_sentiment_score": 0.103,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3328,6 +3328,21 @@
       ]
     },
     {
+      "entity": "Zoomex",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
+      ]
+    },
+    {
       "entity": "Louisville Athletics",
       "total_mentions": 2,
       "bullish": 2,
@@ -5661,20 +5676,6 @@
       ]
     },
     {
-      "entity": "Zoomex",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli"
-      ]
-    },
-    {
       "entity": "ZWTC 2026",
       "total_mentions": 1,
       "bullish": 1,
@@ -6512,6 +6513,62 @@
       ],
       "example_headlines": [
         "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
+      "entity": "TOKEN2049",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
+      ]
+    },
+    {
+      "entity": "Ollie Bearman",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
+      ]
+    },
+    {
+      "entity": "Echo Live Party",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
+      ]
+    },
+    {
+      "entity": "Singapore",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
       ]
     },
     {
