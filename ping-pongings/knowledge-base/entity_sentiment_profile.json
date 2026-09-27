@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 705,
+    "xrp_entries": 707,
     "btc_entries": 653
   },
-  "unique_entities_profiled": 621,
+  "unique_entities_profiled": 624,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 210,
-      "bullish": 131,
+      "total_mentions": 212,
+      "bullish": 133,
       "neutral": 37,
       "bearish": 42,
-      "net_sentiment_score": 0.424,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 168,
-      "bullish": 105,
+      "total_mentions": 170,
+      "bullish": 107,
       "neutral": 35,
       "bearish": 28,
-      "net_sentiment_score": 0.458,
+      "net_sentiment_score": 0.465,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3123,6 +3123,21 @@
       ]
     },
     {
+      "entity": "CryptoRank",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+        "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan"
+      ]
+    },
+    {
       "entity": "SOL",
       "total_mentions": 2,
       "bullish": 1,
@@ -5242,20 +5257,6 @@
       ]
     },
     {
-      "entity": "CryptoRank",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto"
-      ]
-    },
-    {
       "entity": "spot Ethereum ETFs",
       "total_mentions": 1,
       "bullish": 1,
@@ -6569,6 +6570,48 @@
       ],
       "example_headlines": [
         "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
+      ]
+    },
+    {
+      "entity": "Absa CIB",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz"
+      ]
+    },
+    {
+      "entity": "South Africa",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz"
+      ]
+    },
+    {
+      "entity": "crypto custody",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz"
       ]
     },
     {
