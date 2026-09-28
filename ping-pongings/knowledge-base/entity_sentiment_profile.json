@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 212,
-      "bullish": 133,
+      "total_mentions": 213,
+      "bullish": 134,
       "neutral": 37,
       "bearish": 42,
-      "net_sentiment_score": 0.429,
+      "net_sentiment_score": 0.432,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 170,
-      "bullish": 107,
+      "total_mentions": 171,
+      "bullish": 108,
       "neutral": 35,
       "bearish": 28,
-      "net_sentiment_score": 0.465,
+      "net_sentiment_score": 0.468,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 41,
-      "bullish": 29,
+      "total_mentions": 42,
+      "bullish": 30,
       "neutral": 5,
       "bearish": 7,
-      "net_sentiment_score": 0.537,
+      "net_sentiment_score": 0.548,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -645,6 +645,22 @@
       ]
     },
     {
+      "entity": "FXStreet",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -759,22 +775,6 @@
         "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
-      "entity": "FXStreet",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.2,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -2400,6 +2400,21 @@
       "example_headlines": [
         "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
         "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
+      ]
+    },
+    {
+      "entity": "cryptocurrency market",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -4121,20 +4136,6 @@
       ],
       "example_headlines": [
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com"
-      ]
-    },
-    {
-      "entity": "cryptocurrency market",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance"
       ]
     },
     {
