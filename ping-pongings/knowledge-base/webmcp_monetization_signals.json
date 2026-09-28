@@ -130,7 +130,7 @@
         "github": [
           {
             "name": "nanobrowser/nanobrowser",
-            "stars": 13836,
+            "stars": 13837,
             "forks": 1463,
             "url": "https://github.com/nanobrowser/nanobrowser"
           },
@@ -1157,7 +1157,7 @@
         "github": [
           {
             "name": "holaboss-ai/holaOS",
-            "stars": 11425,
+            "stars": 11426,
             "forks": 726,
             "url": "https://github.com/holaboss-ai/holaOS"
           },
@@ -1201,7 +1201,26 @@
       "candidate_tool_idea": "AI browsing assistant",
       "times_surfaced_in_discourse": 1,
       "monetization_signals": {
-        "github": [],
+        "github": [
+          {
+            "name": "hangwin/mcp-chrome",
+            "stars": 12455,
+            "forks": 1145,
+            "url": "https://github.com/hangwin/mcp-chrome"
+          },
+          {
+            "name": "the-open-agent/openagent",
+            "stars": 5663,
+            "forks": 660,
+            "url": "https://github.com/the-open-agent/openagent"
+          },
+          {
+            "name": "A9T9/RPA",
+            "stars": 2042,
+            "forks": 413,
+            "url": "https://github.com/A9T9/RPA"
+          }
+        ],
         "npm": [
           {
             "name": "assistant-cloud",
@@ -1221,8 +1240,7 @@
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/dokobot"
           }
-        ],
-        "github_error": "HTTP Error 403: Forbidden"
+        ]
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     },
