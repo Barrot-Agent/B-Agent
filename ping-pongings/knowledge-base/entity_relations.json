@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 129,
+  "total_classified": 133,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1162,6 +1162,42 @@
       "relation_type": "correlated_unclear",
       "justification": "Both headlines are CoinDesk articles reporting on Ripple-related topics, showing co-occurrence without a clear causal, regulatory, competitive, complementary, or same-event link.",
       "classified_at": "2026-09-21T10:04:11Z"
+    },
+    {
+      "pair_key": "RLUSD|Ripple",
+      "entity_a": "RLUSD",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 7,
+      "relation_type": "complementary",
+      "justification": "Both headlines describe RLUSD as a Ripple product that supports XRP holders (e.g., borrowing and market growth), indicating RLUSD complements Ripple's ecosystem.",
+      "classified_at": "2026-09-28T10:04:51Z"
+    },
+    {
+      "pair_key": "RLUSD|XRP",
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "relation_type": "complementary",
+      "justification": "The headlines describe XRP holders borrowing Ripple's RLUSD and RLUSD growth tied to the XRP ledger supply, indicating RLUSD functions as a complementary product within the XRP ecosystem.",
+      "classified_at": "2026-09-28T10:04:53Z"
+    },
+    {
+      "pair_key": "Bitcoin|Ether",
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 7,
+      "relation_type": "same_event",
+      "justification": "Both Bitcoin and Ether are mentioned together in the JPMorgan filing headline, indicating they are part of the same ETF positioning event.",
+      "classified_at": "2026-09-28T10:04:57Z"
+    },
+    {
+      "pair_key": "BTC|ETF",
+      "entity_a": "BTC",
+      "entity_b": "ETF",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "Both headlines tie BTC performance or status to Bitcoin ETF activity, indicating a correlation but not a clearly defined causal or regulatory link.",
+      "classified_at": "2026-09-28T10:05:00Z"
     }
   ]
 }
