@@ -3,7 +3,7 @@
     "xrp_entries": 721,
     "btc_entries": 663
   },
-  "unique_pairs_found": 1999,
+  "unique_pairs_found": 2005,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -15325,6 +15325,72 @@
       "example_headlines": [
         {
           "title": "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "FX Perpetuals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "September 21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FX Perpetuals",
+      "entity_b": "September 21",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FX Perpetuals",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "September 21",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
           "asset": "XRP"
         }
       ]

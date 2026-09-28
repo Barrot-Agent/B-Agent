@@ -3,7 +3,7 @@
     "xrp_entries": 721,
     "btc_entries": 663
   },
-  "unique_entities_profiled": 631,
+  "unique_entities_profiled": 634,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -426,6 +426,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 9,
+      "bullish": 4,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.111,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
+      ]
+    },
+    {
       "entity": "Ether",
       "total_mentions": 9,
       "bullish": 7,
@@ -507,23 +524,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
         "Strategy leaves preferred STRC dividend at 12% as price still below par"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 8,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 3,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
-        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
       ]
     },
     {
@@ -6488,6 +6488,48 @@
       ],
       "example_headlines": [
         "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market"
+      ]
+    },
+    {
+      "entity": "USD/BRL",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21"
+      ]
+    },
+    {
+      "entity": "FX Perpetuals",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21"
+      ]
+    },
+    {
+      "entity": "September 21",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21"
       ]
     },
     {
