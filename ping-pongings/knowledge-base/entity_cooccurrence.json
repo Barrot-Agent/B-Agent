@@ -3,7 +3,7 @@
     "xrp_entries": 718,
     "btc_entries": 658
   },
-  "unique_pairs_found": 1996,
+  "unique_pairs_found": 1999,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -12432,6 +12432,39 @@
       "example_headlines": [
         {
           "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Belgian Federal Police",
+      "entity_b": "Crypto wallets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Belgium Police Target Crypto Wallets In Cross-Border Piracy Crackdown",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Belgian Federal Police",
+      "entity_b": "Offshore piracy platforms",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Belgium Police Target Crypto Wallets In Cross-Border Piracy Crackdown",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto wallets",
+      "entity_b": "Offshore piracy platforms",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Belgium Police Target Crypto Wallets In Cross-Border Piracy Crackdown",
           "asset": "XRP"
         }
       ]
