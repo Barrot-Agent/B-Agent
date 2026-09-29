@@ -3,7 +3,7 @@
     "xrp_entries": 727,
     "btc_entries": 671
   },
-  "unique_entities_profiled": 639,
+  "unique_entities_profiled": 641,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 214,
+      "total_mentions": 215,
       "bullish": 135,
       "neutral": 37,
-      "bearish": 42,
-      "net_sentiment_score": 0.435,
+      "bearish": 43,
+      "net_sentiment_score": 0.428,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -577,6 +577,23 @@
       ]
     },
     {
+      "entity": "CLARITY Act",
+      "total_mentions": 7,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 7,
       "bullish": 4,
@@ -691,23 +708,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "CLARITY Act",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -6768,6 +6768,34 @@
       ],
       "example_headlines": [
         "Ripple Reveals Asset Manager Interest as Wild $500 XRP Forecast Resurfaces - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "ChatGPT",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St"
+      ]
+    },
+    {
+      "entity": "24/7 Wall St",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St"
       ]
     },
     {

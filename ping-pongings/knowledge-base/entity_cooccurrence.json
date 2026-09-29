@@ -3,7 +3,7 @@
     "xrp_entries": 727,
     "btc_entries": 671
   },
-  "unique_pairs_found": 2018,
+  "unique_pairs_found": 2023,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1011,6 +1011,21 @@
       ]
     },
     {
+      "entity_a": "CLARITY Act",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 5,
@@ -1246,21 +1261,6 @@
         },
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CLARITY Act",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
           "asset": "XRP"
         }
       ]
@@ -15853,6 +15853,61 @@
       "example_headlines": [
         {
           "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "CLARITY Act",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "ChatGPT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLARITY Act",
+      "entity_b": "ChatGPT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ChatGPT",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
           "asset": "XRP"
         }
       ]
