@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 729,
+    "xrp_entries": 731,
     "btc_entries": 676
   },
-  "unique_entities_profiled": 641,
+  "unique_entities_profiled": 645,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -2005,6 +2005,21 @@
       ]
     },
     {
+      "entity": "tokenized fund",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
+      ]
+    },
+    {
       "entity": "Analyst",
       "total_mentions": 2,
       "bullish": 1,
@@ -3874,20 +3889,6 @@
     },
     {
       "entity": "Aviva",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga"
-      ]
-    },
-    {
-      "entity": "tokenized fund",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -6614,6 +6615,62 @@
       ],
       "example_headlines": [
         "WisdomTree And MoonPay Expand US Access To Tokenized Funds"
+      ]
+    },
+    {
+      "entity": "Ondo",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
+      ]
+    },
+    {
+      "entity": "Oasis Pro",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
+      ]
+    },
+    {
+      "entity": "DTCC",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
+      ]
+    },
+    {
+      "entity": "Fund/SERV",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
       ]
     },
     {
