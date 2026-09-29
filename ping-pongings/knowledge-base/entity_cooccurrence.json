@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 725,
+    "xrp_entries": 726,
     "btc_entries": 669
   },
-  "unique_pairs_found": 2005,
+  "unique_pairs_found": 2018,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 166,
+      "cooccurrence_count": 167,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 26,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 22,
+      "cooccurrence_count": 23,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -15814,6 +15814,39 @@
       ]
     },
     {
+      "entity_a": "Asset Manager",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Reveals Asset Manager Interest as Wild $500 XRP Forecast Resurfaces - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asset Manager",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Reveals Asset Manager Interest as Wild $500 XRP Forecast Resurfaces - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Asset Manager",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Reveals Asset Manager Interest as Wild $500 XRP Forecast Resurfaces - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "FXStreet",
       "entity_b": "cryptocurrency market",
       "cooccurrence_count": 1,
@@ -15930,6 +15963,116 @@
       "example_headlines": [
         {
           "title": "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alpaca",
+      "entity_b": "BNB Chain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alpaca",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alpaca",
+      "entity_b": "Ondo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alpaca",
+      "entity_b": "Ondo Stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNB Chain",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNB Chain",
+      "entity_b": "Ondo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNB Chain",
+      "entity_b": "Ondo Stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Ondo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Ondo Stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ondo Finance",
+      "entity_b": "Ondo Stocks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
           "asset": "XRP"
         }
       ]
