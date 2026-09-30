@@ -3,15 +3,15 @@
     "xrp_entries": 747,
     "btc_entries": 692
   },
-  "unique_entities_profiled": 645,
+  "unique_entities_profiled": 652,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 255,
-      "bullish": 140,
-      "neutral": 37,
+      "total_mentions": 257,
+      "bullish": 141,
+      "neutral": 38,
       "bearish": 78,
-      "net_sentiment_score": 0.243,
+      "net_sentiment_score": 0.245,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 215,
-      "bullish": 135,
+      "total_mentions": 216,
+      "bullish": 136,
       "neutral": 37,
       "bearish": 43,
-      "net_sentiment_score": 0.428,
+      "net_sentiment_score": 0.431,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 105,
-      "bullish": 53,
+      "total_mentions": 106,
+      "bullish": 54,
       "neutral": 18,
       "bearish": 34,
-      "net_sentiment_score": 0.181,
+      "net_sentiment_score": 0.189,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 42,
-      "bullish": 30,
+      "total_mentions": 43,
+      "bullish": 31,
       "neutral": 5,
       "bearish": 7,
-      "net_sentiment_score": 0.548,
+      "net_sentiment_score": 0.558,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 41,
+      "total_mentions": 42,
       "bullish": 24,
-      "neutral": 10,
+      "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.415,
+      "net_sentiment_score": 0.405,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -324,6 +324,23 @@
       ]
     },
     {
+      "entity": "Strategy",
+      "total_mentions": 14,
+      "bullish": 7,
+      "neutral": 5,
+      "bearish": 2,
+      "net_sentiment_score": 0.357,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+        "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+        "Strategy Wants To Pay Preferred Stock Dividends Every Day"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 13,
       "bullish": 10,
@@ -338,23 +355,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 13,
-      "bullish": 7,
-      "neutral": 4,
-      "bearish": 2,
-      "net_sentiment_score": 0.385,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-        "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
       ]
     },
     {
@@ -423,6 +423,23 @@
         "Coinbase Expands Derivatives Trading To UK Professional Clients",
         "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
         "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
+      "entity": "STRC",
+      "total_mentions": 9,
+      "bullish": 3,
+      "neutral": 4,
+      "bearish": 2,
+      "net_sentiment_score": 0.111,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+        "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
       ]
     },
     {
@@ -510,20 +527,19 @@
       ]
     },
     {
-      "entity": "STRC",
+      "entity": "RLUSD",
       "total_mentions": 8,
-      "bullish": 3,
-      "neutral": 3,
-      "bearish": 2,
-      "net_sentiment_score": 0.125,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-        "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-        "Strategy leaves preferred STRC dividend at 12% as price still below par"
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -558,22 +574,6 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
         "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
-      ]
-    },
-    {
-      "entity": "RLUSD",
-      "total_mentions": 7,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -3169,6 +3169,21 @@
       ]
     },
     {
+      "entity": "BitMine",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move",
+        "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B"
+      ]
+    },
+    {
       "entity": "SOL",
       "total_mentions": 2,
       "bullish": 1,
@@ -3389,6 +3404,21 @@
       ]
     },
     {
+      "entity": "Corporate Treasury",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple eyes $13 trillion corporate treasury opportunity to grow RLUSD stablecoin, executive says - C",
+        "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC"
+      ]
+    },
+    {
       "entity": "Louisville Athletics",
       "total_mentions": 2,
       "bullish": 2,
@@ -3495,6 +3525,37 @@
       "example_headlines": [
         "FCA Crypto Authorisation Gateway Opens September 30",
         "FCA Crypto Authorisation Gateway Opens September 30"
+      ]
+    },
+    {
+      "entity": "stablecoins",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD "
+      ]
+    },
+    {
+      "entity": "Strive",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+        "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump"
       ]
     },
     {
@@ -5274,20 +5335,6 @@
       ]
     },
     {
-      "entity": "BitMine",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move"
-      ]
-    },
-    {
       "entity": "Quantum threat",
       "total_mentions": 1,
       "bullish": 0,
@@ -5733,20 +5780,6 @@
       ],
       "example_headlines": [
         "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli"
-      ]
-    },
-    {
-      "entity": "Corporate Treasury",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple eyes $13 trillion corporate treasury opportunity to grow RLUSD stablecoin, executive says - C"
       ]
     },
     {
@@ -6702,20 +6735,6 @@
       ]
     },
     {
-      "entity": "stablecoins",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
-      ]
-    },
-    {
       "entity": "TOKEN2049",
       "total_mentions": 1,
       "bullish": 1,
@@ -6856,6 +6875,34 @@
       ]
     },
     {
+      "entity": "Beast Industries",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B"
+      ]
+    },
+    {
+      "entity": "Eightco",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B"
+      ]
+    },
+    {
       "entity": "European Central Bank",
       "total_mentions": 1,
       "bullish": 1,
@@ -6926,6 +6973,34 @@
       ]
     },
     {
+      "entity": "European Central Bank (ECB)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD "
+      ]
+    },
+    {
+      "entity": "tokenized assets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD "
+      ]
+    },
+    {
       "entity": "Ondo Finance",
       "total_mentions": 1,
       "bullish": 1,
@@ -6979,6 +7054,48 @@
       ],
       "example_headlines": [
         "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks"
+      ]
+    },
+    {
+      "entity": "STRD",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Wants To Pay Preferred Stock Dividends Every Day"
+      ]
+    },
+    {
+      "entity": "STRF",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Wants To Pay Preferred Stock Dividends Every Day"
+      ]
+    },
+    {
+      "entity": "STRK",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Wants To Pay Preferred Stock Dividends Every Day"
       ]
     },
     {
@@ -9349,20 +9466,6 @@
     },
     {
       "entity": "Canaan",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump"
-      ]
-    },
-    {
-      "entity": "Strive",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,

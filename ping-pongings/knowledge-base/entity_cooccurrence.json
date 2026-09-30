@@ -3,7 +3,7 @@
     "xrp_entries": 747,
     "btc_entries": 692
   },
-  "unique_pairs_found": 2033,
+  "unique_pairs_found": 2066,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 76,
+      "cooccurrence_count": 77,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -247,6 +247,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 15,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Coldcard",
       "cooccurrence_count": 14,
       "example_headlines": [
@@ -257,21 +272,6 @@
         {
           "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
         }
       ]
     },
@@ -531,6 +531,21 @@
       ]
     },
     {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Strategy",
       "cooccurrence_count": 8,
@@ -621,16 +636,16 @@
       ]
     },
     {
-      "entity_a": "RLUSD",
-      "entity_b": "XRP",
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
       "cooccurrence_count": 7,
       "example_headlines": [
         {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
           "asset": "XRP"
         },
         {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
           "asset": "XRP"
         }
       ]
@@ -646,6 +661,21 @@
         },
         {
           "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -771,21 +801,6 @@
       ]
     },
     {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy sells MSTR shares, buys back $25M in STRC preferred stock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "TradingView",
       "cooccurrence_count": 6,
@@ -826,21 +841,6 @@
         },
         {
           "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "SEC",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -5331,6 +5331,21 @@
       ]
     },
     {
+      "entity_a": "BitMine",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move",
+          "asset": "XRP"
+        },
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "AI",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -6031,6 +6046,21 @@
         },
         {
           "title": "FCA Crypto Authorisation Gateway Opens September 30",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strive",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump",
           "asset": "BTC"
         }
       ]
@@ -12074,17 +12104,6 @@
       ]
     },
     {
-      "entity_a": "BitMine",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Benzinga",
       "entity_b": "Quantum threat",
       "cooccurrence_count": 1,
@@ -16023,6 +16042,171 @@
       ]
     },
     {
+      "entity_a": "Beast Industries",
+      "entity_b": "BitMine",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Beast Industries",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Beast Industries",
+      "entity_b": "Eightco",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Beast Industries",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMine",
+      "entity_b": "Eightco",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Eightco",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Eightco",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Corporate Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Strive",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Corporate Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Corporate Treasury",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Corporate Treasury",
+      "entity_b": "Strive",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Strive",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strive Adds 1,355 Bitcoin As Corporate Treasury Reaches 26,355 BTC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Digital Euro",
       "entity_b": "European Central Bank",
       "cooccurrence_count": 1,
@@ -16133,6 +16317,105 @@
       ]
     },
     {
+      "entity_a": "European Central Bank (ECB)",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Central Bank (ECB)",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Central Bank (ECB)",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Central Bank (ECB)",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "stablecoins",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Alpaca",
       "entity_b": "BNB Chain",
       "cooccurrence_count": 1,
@@ -16238,6 +16521,105 @@
       "example_headlines": [
         {
           "title": "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "STRD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "STRF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "STRK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRD",
+      "entity_b": "STRF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRD",
+      "entity_b": "STRK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRD",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRF",
+      "entity_b": "STRK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRF",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRK",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
           "asset": "XRP"
         }
       ]
@@ -23692,17 +24074,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Canaan",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strive",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
