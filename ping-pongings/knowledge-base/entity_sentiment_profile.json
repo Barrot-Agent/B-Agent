@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 751,
+    "xrp_entries": 753,
     "btc_entries": 699
   },
-  "unique_entities_profiled": 657,
+  "unique_entities_profiled": 658,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 258,
-      "bullish": 142,
+      "total_mentions": 260,
+      "bullish": 144,
       "neutral": 38,
       "bearish": 78,
-      "net_sentiment_score": 0.248,
+      "net_sentiment_score": 0.254,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 217,
-      "bullish": 137,
+      "total_mentions": 219,
+      "bullish": 139,
       "neutral": 37,
       "bearish": 43,
-      "net_sentiment_score": 0.433,
+      "net_sentiment_score": 0.438,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 173,
-      "bullish": 110,
+      "total_mentions": 174,
+      "bullish": 111,
       "neutral": 35,
       "bearish": 28,
-      "net_sentiment_score": 0.474,
+      "net_sentiment_score": 0.477,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 106,
-      "bullish": 54,
+      "total_mentions": 108,
+      "bullish": 56,
       "neutral": 18,
       "bearish": 34,
-      "net_sentiment_score": 0.189,
+      "net_sentiment_score": 0.204,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 52,
-      "bullish": 33,
+      "total_mentions": 53,
+      "bullish": 34,
       "neutral": 6,
       "bearish": 13,
-      "net_sentiment_score": 0.385,
+      "net_sentiment_score": 0.396,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 43,
-      "bullish": 31,
+      "total_mentions": 44,
+      "bullish": 32,
       "neutral": 5,
       "bearish": 7,
-      "net_sentiment_score": 0.558,
+      "net_sentiment_score": 0.568,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -291,6 +291,23 @@
       ]
     },
     {
+      "entity": "Strategy",
+      "total_mentions": 15,
+      "bullish": 8,
+      "neutral": 5,
+      "bearish": 2,
+      "net_sentiment_score": 0.4,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+        "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+        "Strategy Buys Another 950 Bitcoin As Holdings Reach 846,000 BTC"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 15,
       "bullish": 0,
@@ -321,23 +338,6 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Strategy",
-      "total_mentions": 14,
-      "bullish": 7,
-      "neutral": 5,
-      "bearish": 2,
-      "net_sentiment_score": 0.357,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-        "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
-        "Strategy Wants To Pay Preferred Stock Dividends Every Day"
       ]
     },
     {
@@ -7063,6 +7063,20 @@
       ],
       "example_headlines": [
         "ECB Plans Direct Investment In Tokenized Securities Using Pontes"
+      ]
+    },
+    {
+      "entity": "Treasury",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Treasury Lines Up $30M: Can XRP Reach $3 in 2026? - Yahoo Finance"
       ]
     },
     {
