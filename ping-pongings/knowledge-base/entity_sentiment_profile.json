@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 757,
+    "xrp_entries": 758,
     "btc_entries": 706
   },
-  "unique_entities_profiled": 658,
+  "unique_entities_profiled": 659,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 42,
-      "bullish": 24,
+      "total_mentions": 43,
+      "bullish": 25,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.405,
+      "net_sentiment_score": 0.419,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1129,6 +1129,23 @@
       ]
     },
     {
+      "entity": "Hyperliquid",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 4,
       "bullish": 0,
@@ -1592,23 +1609,6 @@
         "Ripple Lands First Korean Regional Bank Deal as XRP Struggles to Hold $1 - Benzinga",
         "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
         "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga"
-      ]
-    },
-    {
-      "entity": "Hyperliquid",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
       ]
     },
     {
@@ -3155,6 +3155,37 @@
       "example_headlines": [
         "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St.",
         "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Robinhood Chain",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "HTX Research Examines Stock-Linked Memecoins: A New Connection Between Equity Assets and Crypto Liqu"
+      ]
+    },
+    {
+      "entity": "Robinhood",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names"
       ]
     },
     {
@@ -5232,6 +5263,20 @@
       ]
     },
     {
+      "entity": "App revenue",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics"
+      ]
+    },
+    {
       "entity": "Brent crude",
       "total_mentions": 1,
       "bullish": 1,
@@ -6171,20 +6216,6 @@
     },
     {
       "entity": "HTX",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "HTX Research Examines Stock-Linked Memecoins: A New Connection Between Equity Assets and Crypto Liqu"
-      ]
-    },
-    {
-      "entity": "Robinhood Chain",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -7245,20 +7276,6 @@
       ],
       "example_headlines": [
         "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
-      ]
-    },
-    {
-      "entity": "Robinhood",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names"
       ]
     },
     {

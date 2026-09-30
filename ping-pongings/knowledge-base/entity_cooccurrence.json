@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 757,
+    "xrp_entries": 758,
     "btc_entries": 706
   },
-  "unique_pairs_found": 2088,
+  "unique_pairs_found": 2097,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2056,6 +2056,21 @@
         },
         {
           "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
           "asset": "XRP"
         }
       ]
@@ -4607,21 +4622,6 @@
         {
           "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "Hyperliquid",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        },
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "BTC"
         }
       ]
     },
@@ -11631,6 +11631,105 @@
       "example_headlines": [
         {
           "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "App revenue",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "App revenue",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "App revenue",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "App revenue",
+      "entity_b": "Robinhood Chain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Robinhood Chain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "Robinhood Chain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Robinhood",
+      "entity_b": "Robinhood Chain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
           "asset": "XRP"
         }
       ]
