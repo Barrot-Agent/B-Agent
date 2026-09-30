@@ -3,7 +3,7 @@
     "xrp_entries": 749,
     "btc_entries": 694
   },
-  "unique_entities_profiled": 655,
+  "unique_entities_profiled": 657,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 172,
-      "bullish": 109,
+      "total_mentions": 173,
+      "bullish": 110,
       "neutral": 35,
       "bearish": 28,
-      "net_sentiment_score": 0.471,
+      "net_sentiment_score": 0.474,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3594,6 +3594,36 @@
       ]
     },
     {
+      "entity": "European Central Bank",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets",
+        "ECB Plans Direct Investment In Tokenized Securities Using Pontes"
+      ]
+    },
+    {
+      "entity": "Pontes",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets",
+        "ECB Plans Direct Investment In Tokenized Securities Using Pontes"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -6938,34 +6968,6 @@
       ]
     },
     {
-      "entity": "European Central Bank",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
-      ]
-    },
-    {
-      "entity": "Pontes",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets"
-      ]
-    },
-    {
       "entity": "TARGET Services",
       "total_mentions": 1,
       "bullish": 1,
@@ -7033,6 +7035,34 @@
       ],
       "example_headlines": [
         "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD "
+      ]
+    },
+    {
+      "entity": "Euro-area public-sector issuers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Plans Direct Investment In Tokenized Securities Using Pontes"
+      ]
+    },
+    {
+      "entity": "Supranational issuers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ECB Plans Direct Investment In Tokenized Securities Using Pontes"
       ]
     },
     {

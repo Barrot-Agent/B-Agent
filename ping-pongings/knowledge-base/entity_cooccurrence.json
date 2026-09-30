@@ -3,7 +3,7 @@
     "xrp_entries": 749,
     "btc_entries": 694
   },
-  "unique_pairs_found": 2075,
+  "unique_pairs_found": 2084,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -6077,6 +6077,21 @@
         {
           "title": "Bitcoin rally sends crypto stocks soaring as miners, treasury companies jump",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Central Bank",
+      "entity_b": "Pontes",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets",
+          "asset": "XRP"
+        },
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
         }
       ]
     },
@@ -16344,17 +16359,6 @@
     },
     {
       "entity_a": "European Central Bank",
-      "entity_b": "Pontes",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Central Bank",
       "entity_b": "TARGET Services",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -16492,6 +16496,105 @@
       "example_headlines": [
         {
           "title": "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Euro-area public-sector issuers",
+      "entity_b": "European Central Bank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Euro-area public-sector issuers",
+      "entity_b": "Pontes",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Euro-area public-sector issuers",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Euro-area public-sector issuers",
+      "entity_b": "Supranational issuers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Central Bank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Central Bank",
+      "entity_b": "Supranational issuers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Pontes",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Pontes",
+      "entity_b": "Supranational issuers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Supranational issuers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
           "asset": "XRP"
         }
       ]
