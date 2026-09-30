@@ -3,15 +3,15 @@
     "xrp_entries": 748,
     "btc_entries": 692
   },
-  "unique_entities_profiled": 652,
+  "unique_entities_profiled": 653,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 257,
-      "bullish": 141,
+      "total_mentions": 258,
+      "bullish": 142,
       "neutral": 38,
       "bearish": 78,
-      "net_sentiment_score": 0.245,
+      "net_sentiment_score": 0.248,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 216,
-      "bullish": 136,
+      "total_mentions": 217,
+      "bullish": 137,
       "neutral": 37,
       "bearish": 43,
-      "net_sentiment_score": 0.431,
+      "net_sentiment_score": 0.433,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1180,6 +1180,23 @@
       ]
     },
     {
+      "entity": "Strait of Hormuz",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90",
+        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
+      ]
+    },
+    {
       "entity": "White House",
       "total_mentions": 4,
       "bullish": 2,
@@ -1922,22 +1939,6 @@
         "Trump Media Sells More Bitcoin as Truth Social Plans Subscription Fees - Yahoo Finance",
         "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
         "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to "
-      ]
-    },
-    {
-      "entity": "Strait of Hormuz",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
-        "Bitcoin tags $65K as S&P 500 rebounds from 2-week lows on US-Iran rhetoric"
       ]
     },
     {
@@ -5164,6 +5165,20 @@
       ],
       "example_headlines": [
         "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus"
+      ]
+    },
+    {
+      "entity": "Brent crude",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90"
       ]
     },
     {

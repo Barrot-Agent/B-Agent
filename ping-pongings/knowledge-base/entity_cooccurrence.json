@@ -3,7 +3,7 @@
     "xrp_entries": 748,
     "btc_entries": 692
   },
-  "unique_pairs_found": 2066,
+  "unique_pairs_found": 2070,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -157,6 +157,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 19,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "ETF",
       "cooccurrence_count": 19,
       "example_headlines": [
@@ -166,21 +181,6 @@
         },
         {
           "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 18,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -1491,6 +1491,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strait of Hormuz",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -2491,21 +2506,6 @@
         },
         {
           "title": "Trump Media to revamp crypto treasury strategy after $238M Q2 loss",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strait of Hormuz",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment",
           "asset": "BTC"
         }
       ]
@@ -11582,6 +11582,50 @@
       "example_headlines": [
         {
           "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Brent crude",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brent crude",
+      "entity_b": "Strait of Hormuz",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brent crude",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strait of Hormuz",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90",
           "asset": "XRP"
         }
       ]
