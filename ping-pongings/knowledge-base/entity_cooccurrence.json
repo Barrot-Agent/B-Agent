@@ -3,7 +3,7 @@
     "xrp_entries": 748,
     "btc_entries": 692
   },
-  "unique_pairs_found": 2070,
+  "unique_pairs_found": 2072,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -6001,6 +6001,21 @@
         },
         {
           "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CleanSpark",
+      "entity_b": "Sandersville Data Center",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
+          "asset": "XRP"
+        },
+        {
+          "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
           "asset": "BTC"
         }
       ]
@@ -14724,17 +14739,6 @@
     {
       "entity_a": "CleanSpark",
       "entity_b": "Data Center Financing",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CleanSpark",
-      "entity_b": "Sandersville Data Center",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -24639,6 +24643,28 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLSK",
+      "entity_b": "CleanSpark",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CLSK",
+      "entity_b": "Sandersville Data Center",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
           "asset": "BTC"
         }
       ]
