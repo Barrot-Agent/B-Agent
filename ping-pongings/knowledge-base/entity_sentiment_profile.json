@@ -3,7 +3,7 @@
     "xrp_entries": 749,
     "btc_entries": 692
   },
-  "unique_entities_profiled": 654,
+  "unique_entities_profiled": 655,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1495,6 +1495,23 @@
       ]
     },
     {
+      "entity": "United Kingdom",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "FCA Targets Three London Premises In Illegal P2P Crypto Trading Crackdown",
+        "Coinbase Expands Derivatives Trading To UK Professional Clients"
+      ]
+    },
+    {
       "entity": "Riot Platforms",
       "total_mentions": 3,
       "bullish": 3,
@@ -1827,6 +1844,23 @@
         "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
         "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
         "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
+      "entity": "Financial Conduct Authority",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "FCA Crypto Authorisation Gateway Opens September 30",
+        "FCA Targets Three London Premises In Illegal P2P Crypto Trading Crackdown",
+        "FCA Crypto Authorisation Gateway Opens September 30"
       ]
     },
     {
@@ -2650,22 +2684,6 @@
       "example_headlines": [
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
-      ]
-    },
-    {
-      "entity": "United Kingdom",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "Coinbase Expands Derivatives Trading To UK Professional Clients"
       ]
     },
     {
@@ -3510,22 +3528,6 @@
       "example_headlines": [
         "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
         "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center"
-      ]
-    },
-    {
-      "entity": "Financial Conduct Authority",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "FCA Crypto Authorisation Gateway Opens September 30",
-        "FCA Crypto Authorisation Gateway Opens September 30"
       ]
     },
     {
@@ -6751,6 +6753,20 @@
       ],
       "example_headlines": [
         "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
+      "entity": "London",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "FCA Targets Three London Premises In Illegal P2P Crypto Trading Crackdown"
       ]
     },
     {
