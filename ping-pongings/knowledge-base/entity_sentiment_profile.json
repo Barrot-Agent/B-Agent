@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 760,
+    "xrp_entries": 761,
     "btc_entries": 710
   },
-  "unique_entities_profiled": 659,
+  "unique_entities_profiled": 663,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -392,6 +392,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 11,
+      "bullish": 9,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.818,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 11,
       "bullish": 8,
@@ -406,23 +423,6 @@
         "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
         "Bitcoin ETF Outflows Hit $201M As Inflow Streak Breaks",
         "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -7108,6 +7108,62 @@
       ],
       "example_headlines": [
         "Ripple-Backed Treasury Lines Up $30M: Can XRP Reach $3 in 2026? - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Oura",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
+      ]
+    },
+    {
+      "entity": "FINRA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
+      ]
+    },
+    {
+      "entity": "Coinbase Capital Markets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
+      ]
+    },
+    {
+      "entity": "COIN",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
       ]
     },
     {
