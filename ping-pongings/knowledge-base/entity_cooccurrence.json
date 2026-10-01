@@ -3,7 +3,7 @@
     "xrp_entries": 773,
     "btc_entries": 732
   },
-  "unique_pairs_found": 2163,
+  "unique_pairs_found": 2164,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -25678,6 +25678,17 @@
       "example_headlines": [
         {
           "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citi",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
           "asset": "BTC"
         }
       ]
