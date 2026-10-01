@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 766,
+    "xrp_entries": 768,
     "btc_entries": 717
   },
-  "unique_pairs_found": 2107,
+  "unique_pairs_found": 2148,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 31,
+      "cooccurrence_count": 32,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -982,6 +982,21 @@
     },
     {
       "entity_a": "CFTC",
+      "entity_b": "SEC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Crypto Asset Rules Enter White House Review",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
       "entity_b": "XRP",
       "cooccurrence_count": 5,
       "example_headlines": [
@@ -1216,21 +1231,6 @@
         },
         {
           "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "SEC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "CFTC Crypto Asset Rules Enter White House Review",
           "asset": "XRP"
         }
       ]
@@ -1487,6 +1487,21 @@
         {
           "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga",
+          "asset": "XRP"
         }
       ]
     },
@@ -2091,6 +2106,21 @@
       ]
     },
     {
+      "entity_a": "ETF",
+      "entity_b": "SEC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "SEC",
       "cooccurrence_count": 3,
@@ -2132,21 +2162,6 @@
         {
           "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETF",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga",
-          "asset": "XRP"
         }
       ]
     },
@@ -2251,6 +2266,21 @@
         },
         {
           "title": "XRP Price Ripple TA XRP Technical Analysis 2026 - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
           "asset": "XRP"
         }
       ]
@@ -4941,21 +4971,6 @@
       ]
     },
     {
-      "entity_a": "ETF",
-      "entity_b": "SEC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Canary",
       "entity_b": "ETF",
       "cooccurrence_count": 2,
@@ -5642,21 +5657,6 @@
         {
           "title": "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Comoros",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-          "asset": "XRP"
         }
       ]
     },
@@ -16861,6 +16861,347 @@
       ]
     },
     {
+      "entity_a": "Bitwise",
+      "entity_b": "ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitwise",
+      "entity_b": "Form POS AM",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitwise",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitwise",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETF",
+      "entity_b": "Form POS AM",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Form POS AM",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Form POS AM",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ASSX",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ASSX",
+      "entity_b": "REX Shares",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ASSX",
+      "entity_b": "Strive Asset Management",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ASSX",
+      "entity_b": "T-REX 2X Long Strive Daily Target ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "REX Shares",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strive Asset Management",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "T-REX 2X Long Strive Daily Target ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "REX Shares",
+      "entity_b": "Strive Asset Management",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "REX Shares",
+      "entity_b": "T-REX 2X Long Strive Daily Target ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strive Asset Management",
+      "entity_b": "T-REX 2X Long Strive Daily Target ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Kalshi",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "KalshiEX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kalshi",
+      "entity_b": "KalshiEX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kalshi",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "KalshiEX",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "Opportunity Compass",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "Stock Trading Handbook",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Opportunity Compass",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Stock Trading Handbook",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Opportunity Compass",
+      "entity_b": "Stock Trading Handbook",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Opportunity Compass",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stock Trading Handbook",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Alpaca",
       "entity_b": "BNB Chain",
       "cooccurrence_count": 1,
@@ -17065,6 +17406,116 @@
       "example_headlines": [
         {
           "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCIP 2.0",
+      "entity_b": "Chainlink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCIP 2.0",
+      "entity_b": "asset issuers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCIP 2.0",
+      "entity_b": "banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCIP 2.0",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "asset issuers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "asset issuers",
+      "entity_b": "banks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "asset issuers",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "banks",
+      "entity_b": "tokenized assets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
           "asset": "XRP"
         }
       ]

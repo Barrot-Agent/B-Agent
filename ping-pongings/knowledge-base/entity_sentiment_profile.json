@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 766,
+    "xrp_entries": 768,
     "btc_entries": 717
   },
-  "unique_entities_profiled": 663,
+  "unique_entities_profiled": 676,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 260,
+      "total_mentions": 261,
       "bullish": 144,
-      "neutral": 38,
+      "neutral": 39,
       "bearish": 78,
-      "net_sentiment_score": 0.254,
+      "net_sentiment_score": 0.253,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 219,
+      "total_mentions": 220,
       "bullish": 139,
-      "neutral": 37,
+      "neutral": 38,
       "bearish": 43,
-      "net_sentiment_score": 0.438,
+      "net_sentiment_score": 0.436,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 44,
-      "bullish": 32,
-      "neutral": 5,
+      "total_mentions": 46,
+      "bullish": 33,
+      "neutral": 6,
       "bearish": 7,
-      "net_sentiment_score": 0.568,
+      "net_sentiment_score": 0.565,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -160,11 +160,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 26,
+      "total_mentions": 27,
       "bullish": 19,
-      "neutral": 3,
+      "neutral": 4,
       "bearish": 4,
-      "net_sentiment_score": 0.577,
+      "net_sentiment_score": 0.556,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -358,6 +358,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 12,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 6,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "The Motley Fool",
       "total_mentions": 11,
       "bullish": 9,
@@ -372,23 +389,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
         "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 11,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 6,
-      "net_sentiment_score": -0.091,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
       ]
     },
     {
@@ -711,6 +711,23 @@
       ]
     },
     {
+      "entity": "Wall Street",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -828,23 +845,6 @@
       ]
     },
     {
-      "entity": "Wall Street",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
-      ]
-    },
-    {
       "entity": "BIP-110",
       "total_mentions": 5,
       "bullish": 0,
@@ -927,6 +927,22 @@
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
+      ]
+    },
+    {
+      "entity": "MEXC",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
@@ -1245,22 +1261,6 @@
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
-      ]
-    },
-    {
-      "entity": "MEXC",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
@@ -1777,6 +1777,22 @@
         "Ethereum ETFs See Positive Inflows As September Trading Opens",
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
+      ]
+    },
+    {
+      "entity": "Comoros",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K"
       ]
     },
     {
@@ -3377,21 +3393,6 @@
       ]
     },
     {
-      "entity": "Comoros",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
-      ]
-    },
-    {
       "entity": "TradFi",
       "total_mentions": 2,
       "bullish": 2,
@@ -3594,6 +3595,21 @@
       ]
     },
     {
+      "entity": "banks",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+      ]
+    },
+    {
       "entity": "stablecoins",
       "total_mentions": 2,
       "bullish": 2,
@@ -3652,6 +3668,21 @@
       "example_headlines": [
         "ECB Launches Pontes For Central-Bank Settlement Of Tokenized Assets",
         "ECB Plans Direct Investment In Tokenized Securities Using Pontes"
+      ]
+    },
+    {
+      "entity": "tokenized assets",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
       ]
     },
     {
@@ -6439,20 +6470,6 @@
       ]
     },
     {
-      "entity": "banks",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions"
-      ]
-    },
-    {
       "entity": "credit unions",
       "total_mentions": 1,
       "bullish": 1,
@@ -7055,20 +7072,6 @@
       ]
     },
     {
-      "entity": "tokenized assets",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD "
-      ]
-    },
-    {
       "entity": "Euro-area public-sector issuers",
       "total_mentions": 1,
       "bullish": 1,
@@ -7167,6 +7170,146 @@
       ]
     },
     {
+      "entity": "Bitwise",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitwise Updates XRP ETF Prospectus In New SEC Filing"
+      ]
+    },
+    {
+      "entity": "Form POS AM",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitwise Updates XRP ETF Prospectus In New SEC Filing"
+      ]
+    },
+    {
+      "entity": "REX Shares",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive"
+      ]
+    },
+    {
+      "entity": "Strive Asset Management",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive"
+      ]
+    },
+    {
+      "entity": "ASSX",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive"
+      ]
+    },
+    {
+      "entity": "T-REX 2X Long Strive Daily Target ETF",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive"
+      ]
+    },
+    {
+      "entity": "Kalshi",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs"
+      ]
+    },
+    {
+      "entity": "KalshiEX",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs"
+      ]
+    },
+    {
+      "entity": "Opportunity Compass",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K"
+      ]
+    },
+    {
+      "entity": "Stock Trading Handbook",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Expands Opportunity Compass with Stock Trading Handbook to Help Crypto Users Build Investment K"
+      ]
+    },
+    {
       "entity": "Ondo Finance",
       "total_mentions": 1,
       "bullish": 1,
@@ -7262,6 +7405,48 @@
       ],
       "example_headlines": [
         "Strategy Wants To Pay Preferred Stock Dividends Every Day"
+      ]
+    },
+    {
+      "entity": "Chainlink",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "CCIP 2.0",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "asset issuers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
       ]
     },
     {
