@@ -3,7 +3,7 @@
     "xrp_entries": 770,
     "btc_entries": 722
   },
-  "unique_pairs_found": 2148,
+  "unique_pairs_found": 2157,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2372,6 +2372,21 @@
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "USDT",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
+          "asset": "BTC"
         }
       ]
     },
@@ -6931,21 +6946,6 @@
         },
         {
           "title": "Trump Media Expands Bitcoin Holdings to $900 Million While Reporting H1 Unrealized Losses \u2014 What to ",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "USDT",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
-          "asset": "BTC"
-        },
-        {
-          "title": "Russia moves to restrict retail crypto trading to bitcoin, ether and USDT - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -16152,6 +16152,105 @@
       "example_headlines": [
         {
           "title": "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinsBee",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "TRC-20",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinsBee",
+      "entity_b": "TRC-20",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinsBee",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinsBee",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRC-20",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRC-20",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
           "asset": "XRP"
         }
       ]

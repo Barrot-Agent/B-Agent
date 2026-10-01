@@ -3,15 +3,15 @@
     "xrp_entries": 770,
     "btc_entries": 722
   },
-  "unique_entities_profiled": 676,
+  "unique_entities_profiled": 679,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 261,
+      "total_mentions": 262,
       "bullish": 144,
       "neutral": 39,
-      "bearish": 78,
-      "net_sentiment_score": 0.253,
+      "bearish": 79,
+      "net_sentiment_score": 0.248,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -678,6 +678,23 @@
       ]
     },
     {
+      "entity": "USDT",
+      "total_mentions": 6,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -792,23 +809,6 @@
         "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -6943,6 +6943,48 @@
       ],
       "example_headlines": [
         "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz"
+      ]
+    },
+    {
+      "entity": "CoinsBee",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows"
+      ]
+    },
+    {
+      "entity": "TRON",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows"
+      ]
+    },
+    {
+      "entity": "TRC-20",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows"
       ]
     },
     {
