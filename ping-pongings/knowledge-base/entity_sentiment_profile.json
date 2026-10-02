@@ -3,7 +3,7 @@
     "xrp_entries": 790,
     "btc_entries": 752
   },
-  "unique_entities_profiled": 691,
+  "unique_entities_profiled": 695,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 47,
-      "bullish": 33,
+      "total_mentions": 48,
+      "bullish": 34,
       "neutral": 7,
       "bearish": 7,
-      "net_sentiment_score": 0.553,
+      "net_sentiment_score": 0.562,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -7425,6 +7425,62 @@
       ],
       "example_headlines": [
         "Coincheck Group Confirms Executive Chairperson Change In SEC Filing"
+      ]
+    },
+    {
+      "entity": "ARK Venture Fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes"
+      ]
+    },
+    {
+      "entity": "ARK Invest",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes"
+      ]
+    },
+    {
+      "entity": "Distributed Ledger Technology",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes"
+      ]
+    },
+    {
+      "entity": "Tokenized Share Classes",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes"
       ]
     },
     {
