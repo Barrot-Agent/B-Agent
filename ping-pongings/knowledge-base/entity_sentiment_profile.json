@@ -3,7 +3,7 @@
     "xrp_entries": 776,
     "btc_entries": 736
   },
-  "unique_entities_profiled": 683,
+  "unique_entities_profiled": 687,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -3702,6 +3702,21 @@
       ]
     },
     {
+      "entity": "Kalshi",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
+        "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
       "entity": "Futures",
       "total_mentions": 2,
       "bullish": 1,
@@ -7329,20 +7344,6 @@
       ]
     },
     {
-      "entity": "Kalshi",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs"
-      ]
-    },
-    {
       "entity": "KalshiEX",
       "total_mentions": 1,
       "bullish": 1,
@@ -7480,6 +7481,62 @@
       ],
       "example_headlines": [
         "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks"
+      ]
+    },
+    {
+      "entity": "U.S. Senate Banking Committee",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "Tarek Mansour",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "Senate Democrats",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "Republican committee members",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Senate Democrats Demand Public Hearing On Prediction Markets"
       ]
     },
     {
