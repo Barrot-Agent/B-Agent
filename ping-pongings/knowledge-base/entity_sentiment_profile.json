@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 787,
+    "xrp_entries": 788,
     "btc_entries": 748
   },
-  "unique_entities_profiled": 687,
+  "unique_entities_profiled": 691,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 262,
+      "total_mentions": 263,
       "bullish": 144,
       "neutral": 39,
-      "bearish": 79,
-      "net_sentiment_score": 0.248,
+      "bearish": 80,
+      "net_sentiment_score": 0.243,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -10141,6 +10141,62 @@
       ],
       "example_headlines": [
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
+      ]
+    },
+    {
+      "entity": "Chainalysis",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
+      ]
+    },
+    {
+      "entity": "blockchain",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
+      ]
+    },
+    {
+      "entity": "malware operators",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
+      ]
+    },
+    {
+      "entity": "dead drops",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
       ]
     },
     {
