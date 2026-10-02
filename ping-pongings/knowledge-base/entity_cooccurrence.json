@@ -3,12 +3,12 @@
     "xrp_entries": 775,
     "btc_entries": 734
   },
-  "unique_pairs_found": 2164,
+  "unique_pairs_found": 2174,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 168,
+      "cooccurrence_count": 169,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -53,7 +53,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 27,
+      "cooccurrence_count": 28,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 24,
+      "cooccurrence_count": 25,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -2701,6 +2701,36 @@
         },
         {
           "title": "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Senate",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Bounces Back for the Month After Losing 8% on the Senate Vote - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Senate",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Bounces Back for the Month After Losing 8% on the Senate Vote - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -6096,6 +6126,21 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "SEC",
       "cooccurrence_count": 2,
@@ -7336,28 +7381,6 @@
     },
     {
       "entity_a": "Federal Reserve",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. Senate",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. Senate",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -15443,17 +15466,6 @@
     },
     {
       "entity_a": "CFTC",
-      "entity_b": "Coinbase",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
       "entity_b": "US market",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -17367,6 +17379,17 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "U.S. Senate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Bounces Back for the Month After Losing 8% on the Senate Vote - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Alpaca",
       "entity_b": "BNB Chain",
       "cooccurrence_count": 1,
@@ -17681,6 +17704,105 @@
       "example_headlines": [
         {
           "title": "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Derivatives Clearing Organization",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Derivatives Clearing Organization",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Derivatives Clearing Organization",
+      "entity_b": "Futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Derivatives Clearing Organization",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Futures",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
           "asset": "XRP"
         }
       ]

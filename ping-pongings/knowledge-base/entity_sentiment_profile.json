@@ -3,7 +3,7 @@
     "xrp_entries": 775,
     "btc_entries": 734
   },
-  "unique_entities_profiled": 682,
+  "unique_entities_profiled": 683,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 220,
-      "bullish": 139,
+      "total_mentions": 221,
+      "bullish": 140,
       "neutral": 38,
       "bearish": 43,
-      "net_sentiment_score": 0.436,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 174,
-      "bullish": 111,
+      "total_mentions": 175,
+      "bullish": 112,
       "neutral": 35,
       "bearish": 28,
-      "net_sentiment_score": 0.477,
+      "net_sentiment_score": 0.48,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 53,
-      "bullish": 34,
+      "total_mentions": 54,
+      "bullish": 35,
       "neutral": 6,
       "bearish": 13,
-      "net_sentiment_score": 0.396,
+      "net_sentiment_score": 0.407,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -359,11 +359,11 @@
     },
     {
       "entity": "CFTC",
-      "total_mentions": 12,
-      "bullish": 6,
+      "total_mentions": 13,
+      "bullish": 7,
       "neutral": 0,
       "bearish": 6,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.077,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -376,11 +376,11 @@
     },
     {
       "entity": "Coinbase",
-      "total_mentions": 12,
-      "bullish": 10,
+      "total_mentions": 13,
+      "bullish": 11,
       "neutral": 2,
       "bearish": 0,
-      "net_sentiment_score": 0.833,
+      "net_sentiment_score": 0.846,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1346,6 +1346,22 @@
       ]
     },
     {
+      "entity": "USDC",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse"
+      ]
+    },
+    {
       "entity": "Japan",
       "total_mentions": 3,
       "bullish": 2,
@@ -2071,6 +2087,21 @@
       ]
     },
     {
+      "entity": "U.S. Senate",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
+        "Ripple (XRP) Bounces Back for the Month After Losing 8% on the Senate Vote - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Analyst",
       "total_mentions": 2,
       "bullish": 1,
@@ -2164,21 +2195,6 @@
       "example_headlines": [
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls",
         "Lite Strategy Funds $5.4M Buyback With Litecoin Sales And Covered Calls"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -3686,6 +3702,22 @@
       ]
     },
     {
+      "entity": "Futures",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -4144,20 +4176,6 @@
       ],
       "example_headlines": [
         "Japanese game developer launches Bitcoin, altcoin fund with SBI"
-      ]
-    },
-    {
-      "entity": "U.S. Senate",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance"
       ]
     },
     {
@@ -7549,6 +7567,20 @@
       ]
     },
     {
+      "entity": "Derivatives Clearing Organization",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse"
+      ]
+    },
+    {
       "entity": "Goldman Sachs",
       "total_mentions": 1,
       "bullish": 0,
@@ -9492,20 +9524,6 @@
       ],
       "example_headlines": [
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
-      "entity": "Futures",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {
