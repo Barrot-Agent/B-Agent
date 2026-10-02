@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 790,
+    "xrp_entries": 791,
     "btc_entries": 752
   },
-  "unique_pairs_found": 2204,
+  "unique_pairs_found": 2213,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1536,6 +1536,21 @@
       ]
     },
     {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Binance",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -2266,21 +2281,6 @@
         },
         {
           "title": "XRP Price Ripple TA XRP Technical Analysis 2026 - Altcoin Buzz",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Comoros",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
           "asset": "XRP"
         }
       ]
@@ -14690,6 +14690,105 @@
       "example_headlines": [
         {
           "title": "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Assistant",
+      "entity_b": "AI Radar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Assistant",
+      "entity_b": "Comoros",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Assistant",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Assistant",
+      "entity_b": "MEXC AI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Radar",
+      "entity_b": "Comoros",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Radar",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Radar",
+      "entity_b": "MEXC AI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC AI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "MEXC AI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "From Information to Action: MEXC Upgrades AI Across the Trading Journey",
           "asset": "XRP"
         }
       ]
