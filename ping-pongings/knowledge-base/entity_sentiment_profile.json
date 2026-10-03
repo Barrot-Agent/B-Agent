@@ -3,7 +3,7 @@
     "xrp_entries": 793,
     "btc_entries": 753
   },
-  "unique_entities_profiled": 700,
+  "unique_entities_profiled": 702,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 43,
-      "bullish": 25,
+      "total_mentions": 44,
+      "bullish": 26,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.419,
+      "net_sentiment_score": 0.432,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -745,6 +745,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 6,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -792,6 +809,23 @@
         "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
         "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
+      "entity": "Fidelity",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
       ]
     },
     {
@@ -895,23 +929,6 @@
       ]
     },
     {
-      "entity": "BlackRock",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "SPOT BITCOIN $Bitcoin (BTC.CC)$ ETFS POST $853 MILLION IN WEEKLY INFLOWS, BEST PERFORMANCE SINCE APR"
-      ]
-    },
-    {
       "entity": "Standard Chartered",
       "total_mentions": 5,
       "bullish": 4,
@@ -943,23 +960,6 @@
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
-      ]
-    },
-    {
-      "entity": "Fidelity",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
       ]
     },
     {
@@ -7527,6 +7527,34 @@
       ],
       "example_headlines": [
         "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes"
+      ]
+    },
+    {
+      "entity": "ETHA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
+      ]
+    },
+    {
+      "entity": "FETH",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
       ]
     },
     {

@@ -3,7 +3,7 @@
     "xrp_entries": 793,
     "btc_entries": 753
   },
-  "unique_pairs_found": 2222,
+  "unique_pairs_found": 2231,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2401,6 +2401,21 @@
         },
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
           "asset": "XRP"
         }
       ]
@@ -6046,21 +6061,6 @@
         },
         {
           "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "Fidelity",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
           "asset": "BTC"
         }
       ]
@@ -17609,6 +17609,105 @@
       "example_headlines": [
         {
           "title": "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "ETHA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "FETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
+      "entity_b": "FETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "FETH",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FETH",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
           "asset": "XRP"
         }
       ]
