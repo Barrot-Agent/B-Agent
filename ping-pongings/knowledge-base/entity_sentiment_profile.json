@@ -3,7 +3,7 @@
     "xrp_entries": 795,
     "btc_entries": 756
   },
-  "unique_entities_profiled": 716,
+  "unique_entities_profiled": 719,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 108,
+      "total_mentions": 109,
       "bullish": 56,
       "neutral": 18,
-      "bearish": 34,
-      "net_sentiment_score": 0.204,
+      "bearish": 35,
+      "net_sentiment_score": 0.193,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -645,6 +645,23 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 7,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
+      ]
+    },
+    {
       "entity": "U.S. Treasury",
       "total_mentions": 7,
       "bullish": 5,
@@ -659,6 +676,23 @@
         "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
         "CFTC Crypto Asset Rules Enter White House Review",
         "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
+      ]
+    },
+    {
+      "entity": "Iran",
+      "total_mentions": 7,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
+        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
       ]
     },
     {
@@ -779,23 +813,6 @@
       ]
     },
     {
-      "entity": "US Treasury",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
-      ]
-    },
-    {
       "entity": "MEXC",
       "total_mentions": 6,
       "bullish": 6,
@@ -826,23 +843,6 @@
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
-      ]
-    },
-    {
-      "entity": "Iran",
-      "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.167,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
-        "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
-        "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
       ]
     },
     {
@@ -3645,6 +3645,22 @@
       ]
     },
     {
+      "entity": "BitBank",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
+      ]
+    },
+    {
       "entity": "banks",
       "total_mentions": 2,
       "bullish": 2,
@@ -4200,6 +4216,36 @@
       "example_headlines": [
         "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
         "Standard Chartered wavers on $100K Bitcoin year-end call, says it may be \u2018too low\u2019"
+      ]
+    },
+    {
+      "entity": "Gracy Chen",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
+      ]
+    },
+    {
+      "entity": "Bitget",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
       ]
     },
     {
@@ -6552,20 +6598,6 @@
       ],
       "example_headlines": [
         "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center"
-      ]
-    },
-    {
-      "entity": "BitBank",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
       ]
     },
     {
@@ -10349,6 +10381,20 @@
       ]
     },
     {
+      "entity": "US government",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC"
+      ]
+    },
+    {
       "entity": "Reg Crypto",
       "total_mentions": 1,
       "bullish": 0,
@@ -10360,34 +10406,6 @@
       ],
       "example_headlines": [
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
-      ]
-    },
-    {
-      "entity": "Gracy Chen",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
-      ]
-    },
-    {
-      "entity": "Bitget",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
       ]
     },
     {
@@ -10570,6 +10588,34 @@
       ],
       "example_headlines": [
         "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center"
+      ]
+    },
+    {
+      "entity": "OFAC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
+      ]
+    },
+    {
+      "entity": "sanctions",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
       ]
     }
   ]

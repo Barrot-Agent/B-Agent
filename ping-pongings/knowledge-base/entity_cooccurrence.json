@@ -3,7 +3,7 @@
     "xrp_entries": 795,
     "btc_entries": 756
   },
-  "unique_pairs_found": 2268,
+  "unique_pairs_found": 2280,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -6126,6 +6126,21 @@
       ]
     },
     {
+      "entity_a": "BitBank",
+      "entity_b": "Iran",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "XRP"
+        },
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "U.S. Securities and Exchange Commission",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -7186,6 +7201,51 @@
         },
         {
           "title": "Standard Chartered Forecasts Bitcoin Will Retest All-Time High - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitget",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Gracy Chen",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "Gracy Chen",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
           "asset": "BTC"
         }
       ]
@@ -15117,17 +15177,6 @@
       "example_headlines": [
         {
           "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BitBank",
-      "entity_b": "Iran",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
           "asset": "XRP"
         }
       ]
@@ -26298,6 +26347,39 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "US government",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "US government",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Gracy Chen",
+      "entity_b": "US government",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Federal Register",
       "entity_b": "Reg Crypto",
       "cooccurrence_count": 1,
@@ -26342,28 +26424,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "Bitget",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Gracy Chen",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Bitget",
       "cooccurrence_count": 1,
@@ -26376,17 +26436,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Gracy Chen",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitget",
       "entity_b": "Gracy Chen",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -26865,6 +26914,105 @@
       "example_headlines": [
         {
           "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "OFAC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitBank",
+      "entity_b": "sanctions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "OFAC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Iran",
+      "entity_b": "sanctions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "OFAC",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "OFAC",
+      "entity_b": "sanctions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Treasury",
+      "entity_b": "sanctions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
           "asset": "BTC"
         }
       ]
