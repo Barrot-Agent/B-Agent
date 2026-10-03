@@ -3,7 +3,7 @@
     "xrp_entries": 793,
     "btc_entries": 753
   },
-  "unique_pairs_found": 2241,
+  "unique_pairs_found": 2246,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -7021,6 +7021,21 @@
         },
         {
           "title": "How Institutions Should Evaluate Wrapped BTC Assets - Circle Internet Financial",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US Dollar",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+          "asset": "BTC"
+        },
+        {
+          "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
           "asset": "BTC"
         }
       ]
@@ -24698,17 +24713,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "US Dollar",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Federal Reserve",
       "entity_b": "S&P 500",
       "cooccurrence_count": 1,
@@ -25705,6 +25709,61 @@
       "example_headlines": [
         {
           "title": "Bitcoin's jump above $71,000 sets up bullish golden cross pattern - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Treasury yields",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "United States Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury yields",
+      "entity_b": "US Dollar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury yields",
+      "entity_b": "United States Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Dollar",
+      "entity_b": "United States Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
           "asset": "BTC"
         }
       ]

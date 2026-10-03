@@ -3,15 +3,15 @@
     "xrp_entries": 793,
     "btc_entries": 753
   },
-  "unique_entities_profiled": 706,
+  "unique_entities_profiled": 708,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 263,
-      "bullish": 144,
+      "total_mentions": 264,
+      "bullish": 145,
       "neutral": 39,
       "bearish": 80,
-      "net_sentiment_score": 0.243,
+      "net_sentiment_score": 0.246,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -4139,6 +4139,21 @@
       "example_headlines": [
         "Bitcoin Price Prediction: BTC Bullish Signals Persist Despite Short-Term Volatility - Yahoo Finance ",
         "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK"
+      ]
+    },
+    {
+      "entity": "US Dollar",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
+        "US debt tops $40T stoking debate on what it means for Bitcoin"
       ]
     },
     {
@@ -9841,20 +9856,6 @@
       ]
     },
     {
-      "entity": "US Dollar",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance"
-      ]
-    },
-    {
       "entity": "BTC ETFs",
       "total_mentions": 1,
       "bullish": 0,
@@ -10132,6 +10133,34 @@
       ],
       "example_headlines": [
         "Bitcoin's jump above $71,000 sets up bullish golden cross pattern - CoinDesk"
+      ]
+    },
+    {
+      "entity": "United States Treasury",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US debt tops $40T stoking debate on what it means for Bitcoin"
+      ]
+    },
+    {
+      "entity": "Treasury yields",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "US debt tops $40T stoking debate on what it means for Bitcoin"
       ]
     },
     {
