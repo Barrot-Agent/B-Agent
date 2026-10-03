@@ -3,12 +3,12 @@
     "xrp_entries": 792,
     "btc_entries": 753
   },
-  "unique_pairs_found": 2213,
+  "unique_pairs_found": 2222,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 169,
+      "cooccurrence_count": 170,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -2251,6 +2251,36 @@
         },
         {
           "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
           "asset": "XRP"
         }
       ]
@@ -5361,36 +5391,6 @@
       ]
     },
     {
-      "entity_a": "CryptoRank",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "ETF",
       "entity_b": "U.S.",
       "cooccurrence_count": 2,
@@ -6182,6 +6182,21 @@
         {
           "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citi",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        },
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "BTC"
         }
       ]
     },
@@ -18127,6 +18142,105 @@
       ]
     },
     {
+      "entity_a": "Citi",
+      "entity_b": "fiat",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citi",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Citi",
+      "entity_b": "virtual accounts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "fiat",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "virtual accounts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "fiat",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "fiat",
+      "entity_b": "virtual accounts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "stablecoin",
+      "entity_b": "virtual accounts",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BitMEX",
       "entity_b": "Fidelity",
       "cooccurrence_count": 1,
@@ -26229,17 +26343,6 @@
       "example_headlines": [
         {
           "title": "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Citi",
-      "entity_b": "Coinbase",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
           "asset": "BTC"
         }
       ]
