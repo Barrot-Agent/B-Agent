@@ -3,7 +3,7 @@
     "xrp_entries": 793,
     "btc_entries": 753
   },
-  "unique_entities_profiled": 702,
+  "unique_entities_profiled": 706,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1612,6 +1612,23 @@
       ]
     },
     {
+      "entity": "Tether",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain",
+        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
+      ]
+    },
+    {
       "entity": "Korea",
       "total_mentions": 3,
       "bullish": 3,
@@ -2813,22 +2830,6 @@
       "example_headlines": [
         "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
         "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
-      ]
-    },
-    {
-      "entity": "Tether",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
-        "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
       ]
     },
     {
@@ -7555,6 +7556,62 @@
       ],
       "example_headlines": [
         "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
+      ]
+    },
+    {
+      "entity": "Anchorage Digital",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain"
+      ]
+    },
+    {
+      "entity": "LayerZero",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain"
+      ]
+    },
+    {
+      "entity": "USAT",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain"
+      ]
+    },
+    {
+      "entity": "OFT",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain"
       ]
     },
     {
