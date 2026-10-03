@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 793,
+    "xrp_entries": 795,
     "btc_entries": 753
   },
   "unique_entities_profiled": 708,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 222,
+      "total_mentions": 223,
       "bullish": 141,
-      "neutral": 38,
+      "neutral": 39,
       "bearish": 43,
-      "net_sentiment_score": 0.441,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 176,
+      "total_mentions": 177,
       "bullish": 113,
-      "neutral": 35,
+      "neutral": 36,
       "bearish": 28,
-      "net_sentiment_score": 0.483,
+      "net_sentiment_score": 0.48,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 48,
+      "total_mentions": 49,
       "bullish": 34,
-      "neutral": 7,
+      "neutral": 8,
       "bearish": 7,
-      "net_sentiment_score": 0.562,
+      "net_sentiment_score": 0.551,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -194,11 +194,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 22,
+      "total_mentions": 23,
       "bullish": 20,
-      "neutral": 0,
+      "neutral": 1,
       "bearish": 2,
-      "net_sentiment_score": 0.818,
+      "net_sentiment_score": 0.783,
       "assets_seen_in": [
         "XRP"
       ],
@@ -308,6 +308,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 15,
+      "bullish": 12,
+      "neutral": 3,
+      "bearish": 0,
+      "net_sentiment_score": 0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "Fortune",
       "total_mentions": 15,
       "bullish": 0,
@@ -338,23 +355,6 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 14,
-      "bullish": 12,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.857,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
