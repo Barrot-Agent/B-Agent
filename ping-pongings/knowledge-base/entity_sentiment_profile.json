@@ -3,7 +3,7 @@
     "xrp_entries": 796,
     "btc_entries": 756
   },
-  "unique_entities_profiled": 719,
+  "unique_entities_profiled": 724,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 224,
-      "bullish": 141,
+      "total_mentions": 225,
+      "bullish": 142,
       "neutral": 39,
       "bearish": 44,
-      "net_sentiment_score": 0.433,
+      "net_sentiment_score": 0.436,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1297,6 +1297,23 @@
       ]
     },
     {
+      "entity": "Financial Conduct Authority",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "FCA Crypto Authorisation Gateway Opens September 30",
+        "FCA Targets Three London Premises In Illegal P2P Crypto Trading Crackdown",
+        "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -1912,19 +1929,19 @@
       ]
     },
     {
-      "entity": "Financial Conduct Authority",
+      "entity": "UK",
       "total_mentions": 3,
-      "bullish": 1,
+      "bullish": 2,
       "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
         "FCA Crypto Authorisation Gateway Opens September 30",
-        "FCA Targets Three London Premises In Illegal P2P Crypto Trading Crackdown",
+        "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
         "FCA Crypto Authorisation Gateway Opens September 30"
       ]
     },
@@ -1943,6 +1960,23 @@
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
         "Citi plans to launch bitcoin custody for institutional clients later this year - CoinDesk",
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
+      ]
+    },
+    {
+      "entity": "Crypto",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
+        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
       ]
     },
     {
@@ -3613,22 +3647,6 @@
       ]
     },
     {
-      "entity": "UK",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "FCA Crypto Authorisation Gateway Opens September 30",
-        "FCA Crypto Authorisation Gateway Opens September 30"
-      ]
-    },
-    {
       "entity": "Crypto Authorisation Gateway",
       "total_mentions": 2,
       "bullish": 1,
@@ -4036,21 +4054,6 @@
       "example_headlines": [
         "Bitcoin treasury trade \u2018breaking\u2019 and fund holdings drop 10%: Analysis",
         "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying"
-      ]
-    },
-    {
-      "entity": "Crypto",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-        "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
       ]
     },
     {
@@ -7816,6 +7819,76 @@
       ],
       "example_headlines": [
         "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks"
+      ]
+    },
+    {
+      "entity": "Bybit",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "UiPath (PATH)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "Cypherpunk Technologies (CYPH)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "Hut 8 (HUT)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "TradFi perpetual desk",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
       ]
     },
     {

@@ -3,7 +3,7 @@
     "xrp_entries": 796,
     "btc_entries": 756
   },
-  "unique_pairs_found": 2280,
+  "unique_pairs_found": 2295,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2416,6 +2416,21 @@
         },
         {
           "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Financial Conduct Authority",
+      "entity_b": "UK",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "FCA Crypto Authorisation Gateway Opens September 30",
+          "asset": "XRP"
+        },
+        {
+          "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
           "asset": "XRP"
         }
       ]
@@ -6097,21 +6112,6 @@
     },
     {
       "entity_a": "Crypto Authorisation Gateway",
-      "entity_b": "UK",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "FCA Crypto Authorisation Gateway Opens September 30",
-          "asset": "XRP"
-        },
-        {
-          "title": "FCA Crypto Authorisation Gateway Opens September 30",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Financial Conduct Authority",
       "entity_b": "UK",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -18185,6 +18185,116 @@
       ]
     },
     {
+      "entity_a": "Bybit",
+      "entity_b": "Cypherpunk Technologies (CYPH)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bybit",
+      "entity_b": "Hut 8 (HUT)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bybit",
+      "entity_b": "TradFi perpetual desk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bybit",
+      "entity_b": "UiPath (PATH)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cypherpunk Technologies (CYPH)",
+      "entity_b": "Hut 8 (HUT)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cypherpunk Technologies (CYPH)",
+      "entity_b": "TradFi perpetual desk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cypherpunk Technologies (CYPH)",
+      "entity_b": "UiPath (PATH)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hut 8 (HUT)",
+      "entity_b": "TradFi perpetual desk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hut 8 (HUT)",
+      "entity_b": "UiPath (PATH)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradFi perpetual desk",
+      "entity_b": "UiPath (PATH)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Kalshi",
       "entity_b": "Republican committee members",
       "cooccurrence_count": 1,
@@ -18774,6 +18884,61 @@
       "example_headlines": [
         {
           "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto",
+      "entity_b": "Financial Conduct Authority",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto",
+      "entity_b": "UK",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Financial Conduct Authority",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "UK",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
           "asset": "XRP"
         }
       ]
