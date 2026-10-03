@@ -3,7 +3,7 @@
     "xrp_entries": 795,
     "btc_entries": 753
   },
-  "unique_pairs_found": 2247,
+  "unique_pairs_found": 2268,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 33,
+      "cooccurrence_count": 34,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -1521,6 +1521,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -2236,21 +2251,6 @@
         },
         {
           "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. Securities and Exchange Commission",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
-          "asset": "XRP"
-        },
-        {
-          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
           "asset": "XRP"
         }
       ]
@@ -6126,6 +6126,21 @@
       ]
     },
     {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CFTC",
       "entity_b": "Coinbase",
       "cooccurrence_count": 2,
@@ -6136,6 +6151,21 @@
         },
         {
           "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+          "asset": "XRP"
+        },
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
           "asset": "XRP"
         }
       ]
@@ -6182,6 +6212,21 @@
         {
           "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Binance Futures",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        },
+        {
+          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
         }
       ]
     },
@@ -15188,17 +15233,6 @@
     },
     {
       "entity_a": "U.S. Securities and Exchange Commission",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "U.S. Securities and Exchange Commission",
       "entity_b": "digital securities",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -15684,17 +15718,6 @@
     {
       "entity_a": "Binance",
       "entity_b": "September 21",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "USD/BRL",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -17849,6 +17872,160 @@
       ]
     },
     {
+      "entity_a": "Europe",
+      "entity_b": "OKX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Europe",
+      "entity_b": "Shield",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Europe",
+      "entity_b": "VIP 4\u20136",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OKX",
+      "entity_b": "Shield",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OKX",
+      "entity_b": "VIP 4\u20136",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Shield",
+      "entity_b": "VIP 4\u20136",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Crypto traders",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "FX perpetuals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "Crypto traders",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "FX perpetuals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance Futures",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto traders",
+      "entity_b": "FX perpetuals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto traders",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FX perpetuals",
+      "entity_b": "USD/BRL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Alpaca",
       "entity_b": "BNB Chain",
       "cooccurrence_count": 1,
@@ -18064,6 +18241,83 @@
       "example_headlines": [
         {
           "title": "Senate Democrats Demand Public Hearing On Prediction Markets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "crypto-asset",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "token buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "crypto-asset",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "U.S. Securities and Exchange Commission",
+      "entity_b": "token buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "crypto-asset",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "token buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "crypto-asset",
+      "entity_b": "token buybacks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
           "asset": "XRP"
         }
       ]
@@ -21547,17 +21801,6 @@
     {
       "entity_a": "BTC",
       "entity_b": "Spot market",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Binance Futures",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

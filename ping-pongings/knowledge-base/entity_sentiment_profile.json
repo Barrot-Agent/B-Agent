@@ -3,7 +3,7 @@
     "xrp_entries": 795,
     "btc_entries": 753
   },
-  "unique_entities_profiled": 708,
+  "unique_entities_profiled": 716,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 223,
+      "total_mentions": 224,
       "bullish": 141,
       "neutral": 39,
-      "bearish": 43,
-      "net_sentiment_score": 0.439,
+      "bearish": 44,
+      "net_sentiment_score": 0.433,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 49,
+      "total_mentions": 50,
       "bullish": 34,
       "neutral": 8,
-      "bearish": 7,
-      "net_sentiment_score": 0.551,
+      "bearish": 8,
+      "net_sentiment_score": 0.52,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -426,6 +426,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 10,
+      "bullish": 5,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
+      ]
+    },
+    {
       "entity": "STRC",
       "total_mentions": 9,
       "bullish": 3,
@@ -440,23 +457,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy Wants To Pay Preferred Stock Dividends Every Day",
         "Strategy sells MSTR shares, buys back $25M in STRC preferred stock"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 9,
-      "bullish": 4,
-      "neutral": 2,
-      "bearish": 3,
-      "net_sentiment_score": 0.111,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
-        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
       ]
     },
     {
@@ -963,6 +963,23 @@
       ]
     },
     {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
       "entity": "Trump Media",
       "total_mentions": 5,
       "bullish": 1,
@@ -1244,23 +1261,6 @@
         "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
         "CFTC Crypto Asset Rules Enter White House Review",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
-      "entity": "U.S. Securities and Exchange Commission",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
       ]
     },
     {
@@ -3660,6 +3660,21 @@
       ]
     },
     {
+      "entity": "USD/BRL",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
+        "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL"
+      ]
+    },
+    {
       "entity": "stablecoins",
       "total_mentions": 2,
       "bullish": 2,
@@ -3748,6 +3763,22 @@
       "example_headlines": [
         "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
         "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "Binance Futures",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+        "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
       ]
     },
     {
@@ -6734,20 +6765,6 @@
       ]
     },
     {
-      "entity": "USD/BRL",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21"
-      ]
-    },
-    {
       "entity": "FX Perpetuals",
       "total_mentions": 1,
       "bullish": 1,
@@ -7630,6 +7647,90 @@
       ]
     },
     {
+      "entity": "OKX",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe"
+      ]
+    },
+    {
+      "entity": "Shield",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe"
+      ]
+    },
+    {
+      "entity": "VIP 4\u20136",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe"
+      ]
+    },
+    {
+      "entity": "Europe",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe"
+      ]
+    },
+    {
+      "entity": "FX perpetuals",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL"
+      ]
+    },
+    {
+      "entity": "Crypto traders",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL"
+      ]
+    },
+    {
       "entity": "Ondo Finance",
       "total_mentions": 1,
       "bullish": 1,
@@ -7739,6 +7840,34 @@
       ],
       "example_headlines": [
         "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "crypto-asset",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions"
+      ]
+    },
+    {
+      "entity": "token buybacks",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions"
       ]
     },
     {
@@ -8943,20 +9072,6 @@
       ],
       "example_headlines": [
         "S&P 500 Adds $2.1 Trillion in a Month as Bitcoin Stalls Near $64K \u2014 What Is Holding BTC Back? - Bitc"
-      ]
-    },
-    {
-      "entity": "Binance Futures",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
       ]
     },
     {
