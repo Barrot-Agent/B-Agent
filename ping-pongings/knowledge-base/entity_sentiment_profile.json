@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 800,
+    "xrp_entries": 801,
     "btc_entries": 757
   },
-  "unique_entities_profiled": 727,
+  "unique_entities_profiled": 731,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 51,
-      "bullish": 35,
+      "total_mentions": 52,
+      "bullish": 36,
       "neutral": 8,
       "bearish": 8,
-      "net_sentiment_score": 0.529,
+      "net_sentiment_score": 0.538,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -7495,6 +7495,62 @@
       ],
       "example_headlines": [
         "REX Launches 2X Leveraged ETF Tracking Bitcoin Treasury Firm Strive"
+      ]
+    },
+    {
+      "entity": "Cipher Mining (CIPHER)",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Cipher Mining Expands AI Data Center Push With ERCOT Capacity And Long-Term Lease"
+      ]
+    },
+    {
+      "entity": "ERCOT",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Cipher Mining Expands AI Data Center Push With ERCOT Capacity And Long-Term Lease"
+      ]
+    },
+    {
+      "entity": "hyperscaler",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Cipher Mining Expands AI Data Center Push With ERCOT Capacity And Long-Term Lease"
+      ]
+    },
+    {
+      "entity": "AI data center",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Cipher Mining Expands AI Data Center Push With ERCOT Capacity And Long-Term Lease"
       ]
     },
     {
