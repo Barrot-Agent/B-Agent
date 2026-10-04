@@ -3,7 +3,7 @@
     "xrp_entries": 800,
     "btc_entries": 757
   },
-  "unique_pairs_found": 2303,
+  "unique_pairs_found": 2307,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1191,6 +1191,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "institutional investors",
       "cooccurrence_count": 4,
@@ -1581,6 +1596,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "CNBC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+          "asset": "BTC"
+        },
+        {
+          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Coldcard",
       "cooccurrence_count": 4,
@@ -1666,21 +1696,6 @@
         },
         {
           "title": "BTCPay restricts remote Lightning access after attackers steal funds",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin and ethereum prices today, Thursday, August 13, 2026: BTC price trends turn negative - Yahoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Price Prediction: Why Is Bitcoin Dropping? - Yahoo Finance",
           "asset": "BTC"
         }
       ]
@@ -2506,21 +2521,6 @@
         },
         {
           "title": "Crypto Winter or the Big Crash? Where the Bitcoin Price Goes Now - Morningstar",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "CNBC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
-          "asset": "BTC"
-        },
-        {
-          "title": "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
           "asset": "BTC"
         }
       ]
@@ -7216,6 +7216,21 @@
         },
         {
           "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC-USD",
+      "entity_b": "Seeking Alpha",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
+          "asset": "BTC"
+        },
+        {
+          "title": "Why Bitcoin's Bottom May Not Be In Yet (Cryptocurrency:BTC-USD) - Seeking Alpha",
           "asset": "BTC"
         }
       ]
@@ -25396,17 +25411,6 @@
       ]
     },
     {
-      "entity_a": "BTC-USD",
-      "entity_b": "Seeking Alpha",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Seeking Alpha",
       "cooccurrence_count": 1,
@@ -26634,6 +26638,50 @@
       "example_headlines": [
         {
           "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "200\u2011Day EMA",
+      "entity_b": "Bitcoin (BTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: $100K in Sight as BTC Breaks Past 200-Day EMA - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "200\u2011Day EMA",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin Price Prediction: $100K in Sight as BTC Breaks Past 200-Day EMA - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC-USD",
+      "entity_b": "Bitcoin (BTC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin's Bottom May Not Be In Yet (Cryptocurrency:BTC-USD) - Seeking Alpha",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Seeking Alpha",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Why Bitcoin's Bottom May Not Be In Yet (Cryptocurrency:BTC-USD) - Seeking Alpha",
           "asset": "BTC"
         }
       ]

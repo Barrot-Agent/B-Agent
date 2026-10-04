@@ -3,15 +3,15 @@
     "xrp_entries": 800,
     "btc_entries": 757
   },
-  "unique_entities_profiled": 726,
+  "unique_entities_profiled": 727,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 265,
-      "bullish": 146,
+      "total_mentions": 266,
+      "bullish": 147,
       "neutral": 39,
       "bearish": 80,
-      "net_sentiment_score": 0.249,
+      "net_sentiment_score": 0.252,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 54,
-      "bullish": 35,
+      "total_mentions": 55,
+      "bullish": 36,
       "neutral": 6,
       "bearish": 13,
-      "net_sentiment_score": 0.407,
+      "net_sentiment_score": 0.418,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -226,6 +226,22 @@
       ]
     },
     {
+      "entity": "Bitcoin (BTC)",
+      "total_mentions": 19,
+      "bullish": 9,
+      "neutral": 4,
+      "bearish": 6,
+      "net_sentiment_score": 0.158,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
+        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 18,
       "bullish": 4,
@@ -256,22 +272,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Bitcoin (BTC)",
-      "total_mentions": 17,
-      "bullish": 8,
-      "neutral": 4,
-      "bearish": 5,
-      "net_sentiment_score": 0.176,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
-        "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-        "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
       ]
     },
     {
@@ -1347,6 +1347,22 @@
       ]
     },
     {
+      "entity": "CNBC",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
+        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
+        "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC"
+      ]
+    },
+    {
       "entity": "Michael Saylor",
       "total_mentions": 4,
       "bullish": 2,
@@ -2044,7 +2060,7 @@
       ]
     },
     {
-      "entity": "CNBC",
+      "entity": "BTC-USD",
       "total_mentions": 3,
       "bullish": 2,
       "neutral": 0,
@@ -2054,9 +2070,9 @@
         "BTC"
       ],
       "example_headlines": [
-        "Bitcoin may be showing signs of a bottom despite continued consolidation, chart analysts say - CNBC",
-        "Jim Cramer plans to sell his Bitcoin over quantum fears as BTC rises 1.6%",
-        "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC"
+        "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
+        "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
+        "Why Bitcoin's Bottom May Not Be In Yet (Cryptocurrency:BTC-USD) - Seeking Alpha"
       ]
     },
     {
@@ -3957,21 +3973,6 @@
       ]
     },
     {
-      "entity": "BTC-USD",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
-        "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph"
-      ]
-    },
-    {
       "entity": "FOREX.com",
       "total_mentions": 2,
       "bullish": 1,
@@ -4284,6 +4285,21 @@
       "example_headlines": [
         "Why Bitcoin is Falling Despite US Stocks Hitting Record Highs - Yahoo Finance",
         "US debt tops $40T stoking debate on what it means for Bitcoin"
+      ]
+    },
+    {
+      "entity": "Seeking Alpha",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
+        "Why Bitcoin's Bottom May Not Be In Yet (Cryptocurrency:BTC-USD) - Seeking Alpha"
       ]
     },
     {
@@ -10100,20 +10116,6 @@
       ]
     },
     {
-      "entity": "Seeking Alpha",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph"
-      ]
-    },
-    {
       "entity": "BitBox",
       "total_mentions": 1,
       "bullish": 1,
@@ -10489,6 +10491,20 @@
       ],
       "example_headlines": [
         "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock"
+      ]
+    },
+    {
+      "entity": "200\u2011Day EMA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin Price Prediction: $100K in Sight as BTC Breaks Past 200-Day EMA - Yahoo Finance"
       ]
     },
     {
