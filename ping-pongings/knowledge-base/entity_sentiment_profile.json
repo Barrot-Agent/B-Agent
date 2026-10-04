@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 799,
-    "btc_entries": 756
+    "btc_entries": 757
   },
-  "unique_entities_profiled": 724,
+  "unique_entities_profiled": 726,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 264,
-      "bullish": 145,
+      "total_mentions": 265,
+      "bullish": 146,
       "neutral": 39,
       "bearish": 80,
-      "net_sentiment_score": 0.246,
+      "net_sentiment_score": 0.249,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 50,
-      "bullish": 34,
+      "total_mentions": 51,
+      "bullish": 35,
       "neutral": 8,
       "bearish": 8,
-      "net_sentiment_score": 0.52,
+      "net_sentiment_score": 0.529,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 44,
-      "bullish": 26,
+      "total_mentions": 45,
+      "bullish": 27,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.432,
+      "net_sentiment_score": 0.444,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -160,11 +160,11 @@
     },
     {
       "entity": "ETF",
-      "total_mentions": 27,
-      "bullish": 19,
+      "total_mentions": 28,
+      "bullish": 20,
       "neutral": 4,
       "bearish": 4,
-      "net_sentiment_score": 0.556,
+      "net_sentiment_score": 0.571,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -543,6 +543,23 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 8,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
+      ]
+    },
+    {
       "entity": "Donald Trump",
       "total_mentions": 8,
       "bullish": 5,
@@ -594,6 +611,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 7,
       "bullish": 4,
@@ -608,23 +642,6 @@
         "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
         "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
-      "total_mentions": 7,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-        "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
       ]
     },
     {
@@ -779,23 +796,6 @@
       ]
     },
     {
-      "entity": "BlackRock",
-      "total_mentions": 6,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
-      ]
-    },
-    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -926,6 +926,23 @@
         "BTCPay Server Patches Critical LND Credential Bug After Lightning Wallet Drain",
         "Zeus Wallet taken offline after cyberattack, says no customer funds at risk",
         "BTCPay restricts remote Lightning access after attackers steal funds"
+      ]
+    },
+    {
+      "entity": "IBIT",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
       ]
     },
     {
@@ -1095,23 +1112,6 @@
       ]
     },
     {
-      "entity": "IBIT",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M"
-      ]
-    },
-    {
       "entity": "Anthropic",
       "total_mentions": 4,
       "bullish": 3,
@@ -1176,6 +1176,23 @@
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
         "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
         "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
+      ]
+    },
+    {
+      "entity": "TRX",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {
@@ -1692,23 +1709,6 @@
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
         "Digital Asset Leaders Converge at KBW2026 as Partner Lineup Unveiled",
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
-      ]
-    },
-    {
-      "entity": "TRX",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {
@@ -3227,6 +3227,54 @@
       ]
     },
     {
+      "entity": "Illinois",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
+      ]
+    },
+    {
+      "entity": "Digital Asset Tax Act",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
+      ]
+    },
+    {
+      "entity": "Crypto Groups",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
+      ]
+    },
+    {
       "entity": "CleanCore",
       "total_mentions": 2,
       "bullish": 0,
@@ -3240,6 +3288,22 @@
       "example_headlines": [
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
+      ]
+    },
+    {
+      "entity": "Tron Inc.",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
       ]
     },
     {
@@ -3797,6 +3861,22 @@
       "example_headlines": [
         "Kalshi Files To Bring Perpetual Futures To US Stocks And ETFs",
         "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "ETHA",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M"
       ]
     },
     {
@@ -5190,48 +5270,6 @@
       ]
     },
     {
-      "entity": "Illinois",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
-      ]
-    },
-    {
-      "entity": "Digital Asset Tax Act",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
-      ]
-    },
-    {
-      "entity": "Crypto Groups",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Crypto Groups Sue To Block Illinois Digital Asset Tax Act"
-      ]
-    },
-    {
       "entity": "Illinois Department of Revenue",
       "total_mentions": 1,
       "bullish": 1,
@@ -5257,20 +5295,6 @@
       ],
       "example_headlines": [
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot"
-      ]
-    },
-    {
-      "entity": "Tron Inc.",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
       ]
     },
     {
@@ -7595,20 +7619,6 @@
       ],
       "example_headlines": [
         "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes"
-      ]
-    },
-    {
-      "entity": "ETHA",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
       ]
     },
     {
@@ -10535,6 +10545,34 @@
       ],
       "example_headlines": [
         "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
+      ]
+    },
+    {
+      "entity": "ARKB",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M"
+      ]
+    },
+    {
+      "entity": "GBTC",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M"
       ]
     },
     {

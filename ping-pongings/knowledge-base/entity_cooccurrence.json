@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 799,
-    "btc_entries": 756
+    "btc_entries": 757
   },
-  "unique_pairs_found": 2295,
+  "unique_pairs_found": 2303,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -173,7 +173,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "ETF",
-      "cooccurrence_count": 19,
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
@@ -231,6 +231,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 16,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 15,
@@ -241,21 +256,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 15,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
           "asset": "XRP"
         }
       ]
@@ -861,6 +861,21 @@
       ]
     },
     {
+      "entity_a": "ETF",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Add $492M As Inflow Streak Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "Fortune",
       "cooccurrence_count": 6,
@@ -1056,6 +1071,21 @@
       ]
     },
     {
+      "entity_a": "BlackRock",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Donald Trump",
       "cooccurrence_count": 5,
@@ -1111,21 +1141,6 @@
         },
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETF",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Add $492M As Inflow Streak Continues",
           "asset": "XRP"
         }
       ]
@@ -1367,21 +1382,6 @@
         {
           "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "IBIT",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs post $233M inflows, pushing week back into the green",
-          "asset": "BTC"
         }
       ]
     },
@@ -5181,6 +5181,51 @@
       ]
     },
     {
+      "entity_a": "Crypto Groups",
+      "entity_b": "Digital Asset Tax Act",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Groups",
+      "entity_b": "Illinois",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Tax Act",
+      "entity_b": "Illinois",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "XRP"
+        },
+        {
+          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "AI",
       "entity_b": "CleanCore",
       "cooccurrence_count": 2,
@@ -5266,6 +5311,51 @@
         },
         {
           "title": "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "TRX",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "Tron Inc.",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRX",
+      "entity_b": "Tron Inc.",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
           "asset": "BTC"
         }
       ]
@@ -6227,6 +6317,21 @@
         {
           "title": "ECB Plans Direct Investment In Tokenized Securities Using Pontes",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "ETHA",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
         }
       ]
     },
@@ -11036,28 +11141,6 @@
     },
     {
       "entity_a": "Crypto Groups",
-      "entity_b": "Digital Asset Tax Act",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Crypto Groups",
-      "entity_b": "Illinois",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Crypto Groups",
       "entity_b": "Illinois Department of Revenue",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -11070,17 +11153,6 @@
     {
       "entity_a": "Crypto Groups",
       "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Crypto Groups Sue To Block Illinois Digital Asset Tax Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Digital Asset Tax Act",
-      "entity_b": "Illinois",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -11212,39 +11284,6 @@
     },
     {
       "entity_a": "Corporate Crypto",
-      "entity_b": "Tron Inc.",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Nasdaq",
-      "entity_b": "TRX",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Nasdaq",
-      "entity_b": "Tron Inc.",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TRX",
       "entity_b": "Tron Inc.",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -17696,17 +17735,6 @@
       "example_headlines": [
         {
           "title": "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "ETHA",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
           "asset": "XRP"
         }
       ]
@@ -26738,6 +26766,94 @@
       "example_headlines": [
         {
           "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARKB",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARKB",
+      "entity_b": "ETHA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARKB",
+      "entity_b": "GBTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARKB",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "GBTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
+      "entity_b": "GBTC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "GBTC",
+      "entity_b": "IBIT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
           "asset": "BTC"
         }
       ]
