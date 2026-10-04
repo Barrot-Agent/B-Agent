@@ -3,7 +3,7 @@
     "xrp_entries": 801,
     "btc_entries": 758
   },
-  "unique_pairs_found": 2329,
+  "unique_pairs_found": 2342,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -26813,6 +26813,39 @@
       ]
     },
     {
+      "entity_a": "2022",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin RSI bullish divergence draws 2022 comparisons as analysis weighs new price trend",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "2022",
+      "entity_b": "RSI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin RSI bullish divergence draws 2022 comparisons as analysis weighs new price trend",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "RSI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin RSI bullish divergence draws 2022 comparisons as analysis weighs new price trend",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
@@ -26896,6 +26929,116 @@
       "example_headlines": [
         {
           "title": "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "NVDA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Nvidia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Q2 earnings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US stock markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NVDA",
+      "entity_b": "Nvidia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NVDA",
+      "entity_b": "Q2 earnings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "NVDA",
+      "entity_b": "US stock markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nvidia",
+      "entity_b": "Q2 earnings",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nvidia",
+      "entity_b": "US stock markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q2 earnings",
+      "entity_b": "US stock markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets",
           "asset": "BTC"
         }
       ]

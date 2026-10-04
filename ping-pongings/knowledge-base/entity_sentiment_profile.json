@@ -3,15 +3,15 @@
     "xrp_entries": 801,
     "btc_entries": 758
   },
-  "unique_entities_profiled": 733,
+  "unique_entities_profiled": 738,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 268,
-      "bullish": 149,
+      "total_mentions": 270,
+      "bullish": 151,
       "neutral": 39,
       "bearish": 80,
-      "net_sentiment_score": 0.257,
+      "net_sentiment_score": 0.263,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3727,6 +3727,22 @@
       ]
     },
     {
+      "entity": "NVDA",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "HTX Research Examines Stock-Linked Memecoins: A New Connection Between Equity Assets and Crypto Liqu",
+        "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
+      ]
+    },
+    {
       "entity": "Friday flows",
       "total_mentions": 2,
       "bullish": 2,
@@ -6471,20 +6487,6 @@
     },
     {
       "entity": "HTX",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "HTX Research Examines Stock-Linked Memecoins: A New Connection Between Equity Assets and Crypto Liqu"
-      ]
-    },
-    {
-      "entity": "NVDA",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -10572,6 +10574,34 @@
       ]
     },
     {
+      "entity": "RSI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin RSI bullish divergence draws 2022 comparisons as analysis weighs new price trend"
+      ]
+    },
+    {
+      "entity": "2022",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin RSI bullish divergence draws 2022 comparisons as analysis weighs new price trend"
+      ]
+    },
+    {
       "entity": "SHRINCS",
       "total_mentions": 1,
       "bullish": 0,
@@ -10597,6 +10627,48 @@
       ],
       "example_headlines": [
         "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
+      ]
+    },
+    {
+      "entity": "Nvidia",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
+      ]
+    },
+    {
+      "entity": "US stock markets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
+      ]
+    },
+    {
+      "entity": "Q2 earnings",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
       ]
     },
     {
