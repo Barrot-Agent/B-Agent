@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 805,
+    "xrp_entries": 806,
     "btc_entries": 758
   },
-  "unique_entities_profiled": 738,
+  "unique_entities_profiled": 741,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -392,6 +392,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 12,
+      "bullish": 5,
+      "neutral": 3,
+      "bearish": 4,
+      "net_sentiment_score": 0.083,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
+      ]
+    },
+    {
       "entity": "The Motley Fool",
       "total_mentions": 11,
       "bullish": 9,
@@ -406,23 +423,6 @@
         "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
         "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
         "XRP (Ripple) Just Did Something It Hasn't Done Since 2024, and Here's What It Means for Investors - "
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 11,
-      "bullish": 5,
-      "neutral": 2,
-      "bearish": 4,
-      "net_sentiment_score": 0.091,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
-        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
       ]
     },
     {
@@ -1975,6 +1975,23 @@
         "FCA Crypto Authorisation Gateway Opens September 30",
         "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
         "FCA Crypto Authorisation Gateway Opens September 30"
+      ]
+    },
+    {
+      "entity": "Futures",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Lets bStocks Tokenized Equities Count As Futures Margin",
+        "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {
@@ -3989,22 +4006,6 @@
       "example_headlines": [
         "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
         "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
-      ]
-    },
-    {
-      "entity": "Futures",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-        "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
       ]
     },
     {
@@ -8010,6 +8011,48 @@
       ],
       "example_headlines": [
         "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "bStocks",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Lets bStocks Tokenized Equities Count As Futures Margin"
+      ]
+    },
+    {
+      "entity": "Multi-Assets Mode",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Lets bStocks Tokenized Equities Count As Futures Margin"
+      ]
+    },
+    {
+      "entity": "Tokenized equities",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Lets bStocks Tokenized Equities Count As Futures Margin"
       ]
     },
     {
