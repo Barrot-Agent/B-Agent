@@ -246,6 +246,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Coldcard",
+      "cooccurrence_count": 15,
+      "example_headlines": [
+        {
+          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
       "cooccurrence_count": 15,
@@ -257,21 +272,6 @@
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Coldcard",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-          "asset": "BTC"
         }
       ]
     },
@@ -2566,6 +2566,36 @@
         },
         {
           "title": "Ethereum Bull Run Incoming? Tom Lee Sees ETH/BTC Breaking Higher - Bitcoin Foundation",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Galaxy Research",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coldcard",
+      "entity_b": "Galaxy Research",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+          "asset": "BTC"
+        },
+        {
+          "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
           "asset": "BTC"
         }
       ]
@@ -6616,36 +6646,6 @@
         },
         {
           "title": "Do the Coldcard attacks mean all hardware wallets are now insecure?",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Galaxy Research",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coldcard",
-      "entity_b": "Galaxy Research",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
-          "asset": "BTC"
-        },
-        {
-          "title": "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
           "asset": "BTC"
         }
       ]

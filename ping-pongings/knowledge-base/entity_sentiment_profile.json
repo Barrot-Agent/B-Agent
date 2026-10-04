@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 270,
+      "total_mentions": 271,
       "bullish": 151,
       "neutral": 39,
-      "bearish": 80,
-      "net_sentiment_score": 0.263,
+      "bearish": 81,
+      "net_sentiment_score": 0.258,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -209,6 +209,23 @@
       ]
     },
     {
+      "entity": "Coldcard",
+      "total_mentions": 19,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 14,
+      "net_sentiment_score": -0.526,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
+        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
+        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "ETH",
       "total_mentions": 19,
       "bullish": 12,
@@ -239,23 +256,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "Coldcard",
-      "total_mentions": 18,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 13,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
-        "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
-        "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
       ]
     },
     {
@@ -2089,6 +2089,22 @@
         "Bitcoin Price Path To $100,000 Faces A Few Bumps (Cryptocurrency:BTC-USD) - Seeking Alpha",
         "Bitcoin eyes breakout as 6-week symmetrical triangle narrows (BTC-USD:Cryptocurrency) - Seeking Alph",
         "Why Bitcoin's Bottom May Not Be In Yet (Cryptocurrency:BTC-USD) - Seeking Alpha"
+      ]
+    },
+    {
+      "entity": "Galaxy Research",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
+        "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy",
+        "Galaxy puts Coldcard hack losses at 1,789 BTC, with 87% unmoved"
       ]
     },
     {
@@ -4064,21 +4080,6 @@
       "example_headlines": [
         "Bitcoin ETF inflows return as Ether funds slip into outflows",
         "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst"
-      ]
-    },
-    {
-      "entity": "Galaxy Research",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coldcard Bitcoin loss estimate rises to $70M after Galaxy analysis",
-        "Coldcard Bitcoin theft tops $100M across 3 confirmed attack waves: Galaxy"
       ]
     },
     {
