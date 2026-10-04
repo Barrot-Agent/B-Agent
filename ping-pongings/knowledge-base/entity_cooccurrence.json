@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 801,
-    "btc_entries": 757
+    "btc_entries": 758
   },
-  "unique_pairs_found": 2317,
+  "unique_pairs_found": 2329,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -591,6 +591,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin Foundation",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
@@ -781,21 +796,6 @@
         },
         {
           "title": "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Moomoo",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Enters Bottoming Phase as 200-Week MA Support Faces Key Test - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "Crypto Weekly Digest | Bitcoin Climbs to $65K; US BTC ETFs Draw $865M; Mining Founder Calls 44K Bott",
           "asset": "BTC"
         }
       ]
@@ -1147,6 +1147,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 5,
       "example_headlines": [
@@ -1491,21 +1506,6 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETFs",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "ETF",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -1696,6 +1696,21 @@
         },
         {
           "title": "BTCPay restricts remote Lightning access after attackers steal funds",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC.CC",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
+          "asset": "BTC"
+        },
+        {
+          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
           "asset": "BTC"
         }
       ]
@@ -2707,7 +2722,7 @@
     },
     {
       "entity_a": "BTC.CC",
-      "entity_b": "Moomoo",
+      "entity_b": "Bitcoin",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -2715,7 +2730,7 @@
           "asset": "BTC"
         },
         {
-          "title": "Over the past year, $Bitcoin (BTC.CC)$ fell 47%. Our Digital Credit instruments ranged from -27% to ",
+          "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -5496,6 +5511,51 @@
       ]
     },
     {
+      "entity_a": "Core Scientific",
+      "entity_b": "Dan Loeb",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Core Scientific",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Dan Loeb",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "U.S. Securities and Exchange Commission",
       "entity_b": "investment advisers",
       "cooccurrence_count": 2,
@@ -7191,6 +7251,21 @@
       ]
     },
     {
+      "entity_a": "AI",
+      "entity_b": "Bitcoin miners",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
+          "asset": "BTC"
+        },
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US Dollar",
       "cooccurrence_count": 2,
@@ -7201,21 +7276,6 @@
         },
         {
           "title": "US debt tops $40T stoking debate on what it means for Bitcoin",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC.CC",
-      "entity_b": "Bitcoin",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$Bitcoin (BTC.CC)$ Trading volume has dried up on the exchange. - Moomoo",
-          "asset": "BTC"
-        },
-        {
-          "title": "$Bitcoin (BTC.CC)$ just hit it's highest price of the summer. Hooray. - Moomoo",
           "asset": "BTC"
         }
       ]
@@ -11805,39 +11865,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Third Point",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Core Scientific",
-      "entity_b": "Dan Loeb",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Core Scientific",
-      "entity_b": "Third Point",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Dan Loeb",
       "entity_b": "Third Point",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -23607,17 +23634,6 @@
       ]
     },
     {
-      "entity_a": "AI",
-      "entity_b": "Bitcoin miners",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin miners earn under 0.7% of revenue from fees in new 10-year low",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "Bitcoin miners",
       "cooccurrence_count": 1,
@@ -26896,6 +26912,72 @@
       ]
     },
     {
+      "entity_a": "AI",
+      "entity_b": "Core Scientific",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Dan Loeb",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin miners",
+      "entity_b": "Core Scientific",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin miners",
+      "entity_b": "Dan Loeb",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin miners",
+      "entity_b": "Third Point",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "CFTC",
       "entity_b": "event contract derivatives",
       "cooccurrence_count": 1,
@@ -26924,6 +27006,72 @@
       "example_headlines": [
         {
           "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alice Liu",
+      "entity_b": "Binance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "HYPE price could suffer as Binance takes its revenue: Alice Liu",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alice Liu",
+      "entity_b": "CoinMarketCap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "HYPE price could suffer as Binance takes its revenue: Alice Liu",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Alice Liu",
+      "entity_b": "Hyperliquid (HYPE)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "HYPE price could suffer as Binance takes its revenue: Alice Liu",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "CoinMarketCap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "HYPE price could suffer as Binance takes its revenue: Alice Liu",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Hyperliquid (HYPE)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "HYPE price could suffer as Binance takes its revenue: Alice Liu",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinMarketCap",
+      "entity_b": "Hyperliquid (HYPE)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "HYPE price could suffer as Binance takes its revenue: Alice Liu",
           "asset": "BTC"
         }
       ]
