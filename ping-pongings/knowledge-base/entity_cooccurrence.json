@@ -3,7 +3,7 @@
     "xrp_entries": 806,
     "btc_entries": 759
   },
-  "unique_pairs_found": 2352,
+  "unique_pairs_found": 2358,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1311,6 +1311,21 @@
       ]
     },
     {
+      "entity_a": "CCN.com",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 4,
@@ -1793,21 +1808,6 @@
     {
       "entity_a": "CCN.com",
       "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CCN.com",
-      "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -19229,6 +19229,72 @@
       "example_headlines": [
         {
           "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "Kraken",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "TradeStation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kraken",
+      "entity_b": "TradeStation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kraken",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradeStation",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
           "asset": "XRP"
         }
       ]
