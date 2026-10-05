@@ -3,7 +3,7 @@
     "xrp_entries": 810,
     "btc_entries": 764
   },
-  "unique_entities_profiled": 743,
+  "unique_entities_profiled": 745,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 45,
-      "bullish": 27,
+      "total_mentions": 46,
+      "bullish": 28,
       "neutral": 11,
       "bearish": 7,
-      "net_sentiment_score": 0.444,
+      "net_sentiment_score": 0.457,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -980,6 +980,23 @@
       ]
     },
     {
+      "entity": "Hyperliquid",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
       "entity": "U.S. Securities and Exchange Commission",
       "total_mentions": 5,
       "bullish": 1,
@@ -1175,23 +1192,6 @@
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
         "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
         "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
-      ]
-    },
-    {
-      "entity": "Hyperliquid",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
-        "RWA perpetual futures volume nears Bitcoin on Hyperliquid, Binance"
       ]
     },
     {
@@ -3495,6 +3495,21 @@
       ]
     },
     {
+      "entity": "Solana",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
       "entity": "SOL",
       "total_mentions": 2,
       "bullish": 1,
@@ -5787,20 +5802,6 @@
       ],
       "example_headlines": [
         "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens"
       ]
     },
     {
@@ -8279,6 +8280,34 @@
       ],
       "example_headlines": [
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
+      ]
+    },
+    {
+      "entity": "21Shares",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
+      "entity": "Polkadot",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
       ]
     },
     {

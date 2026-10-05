@@ -3,7 +3,7 @@
     "xrp_entries": 810,
     "btc_entries": 764
   },
-  "unique_pairs_found": 2358,
+  "unique_pairs_found": 2367,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1506,6 +1506,21 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "South Korea",
       "cooccurrence_count": 4,
@@ -2131,21 +2146,6 @@
         },
         {
           "title": "XRP Faces $1.55 Resistance as Ripple Prepares XRPL for Quantum Threat - Benzinga",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "Hyperliquid",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        },
-        {
-          "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
           "asset": "XRP"
         }
       ]
@@ -19174,6 +19174,105 @@
       "example_headlines": [
         {
           "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "21Shares",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "21Shares",
+      "entity_b": "Hyperliquid",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "21Shares",
+      "entity_b": "Polkadot",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "21Shares",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Polkadot",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "Polkadot",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Hyperliquid",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polkadot",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
           "asset": "XRP"
         }
       ]
