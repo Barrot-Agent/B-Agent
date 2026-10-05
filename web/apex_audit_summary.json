@@ -1,8 +1,8 @@
 {
   "note": "Real static-analysis audit of this repo's own codebase, run by Barrot's apex_lattice pipeline. No PRs are opened by this process - findings_count/recommendations_count are counts only, not the full detail.",
   "latest_cycle": {
-    "cycle_id": "cycle_3851df50",
-    "completed_at": "2026-09-28T08:06:19.705408+00:00",
+    "cycle_id": "cycle_73bac5be",
+    "completed_at": "2026-10-05T08:09:12.001457+00:00",
     "analyzers_run": [
       "apex_lattice.analyzers.code_analyzer",
       "apex_lattice.analyzers.performance_analyzer",
