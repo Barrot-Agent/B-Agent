@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 271,
+      "total_mentions": 272,
       "bullish": 151,
       "neutral": 39,
-      "bearish": 81,
-      "net_sentiment_score": 0.258,
+      "bearish": 82,
+      "net_sentiment_score": 0.254,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 177,
+      "total_mentions": 178,
       "bullish": 113,
       "neutral": 36,
-      "bearish": 28,
-      "net_sentiment_score": 0.48,
+      "bearish": 29,
+      "net_sentiment_score": 0.472,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 46,
+      "total_mentions": 47,
       "bullish": 28,
       "neutral": 11,
-      "bearish": 7,
-      "net_sentiment_score": 0.457,
+      "bearish": 8,
+      "net_sentiment_score": 0.426,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3820,6 +3820,38 @@
       "example_headlines": [
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows"
+      ]
+    },
+    {
+      "entity": "Chainalysis",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops",
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
+      ]
+    },
+    {
+      "entity": "malware operators",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops",
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
       ]
     },
     {
@@ -10931,35 +10963,7 @@
       ]
     },
     {
-      "entity": "Chainalysis",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
-      ]
-    },
-    {
       "entity": "blockchain",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
-      ]
-    },
-    {
-      "entity": "malware operators",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
