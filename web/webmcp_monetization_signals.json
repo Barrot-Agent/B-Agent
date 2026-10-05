@@ -1,5 +1,5 @@
 {
-  "generated_from": "32 candidate ideas from webmcp_trend_summary.json",
+  "generated_from": "35 candidate ideas from webmcp_trend_summary.json",
   "enriched_candidates": [
     {
       "candidate_tool_idea": "Stateless WebMCP Client",
@@ -14,16 +14,16 @@
             "url": "https://www.npmjs.com/package/@mcp-b/global"
           },
           {
+            "name": "@mcp-b/webmcp-types",
+            "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+          },
+          {
             "name": "@symbiotejs/symbiote",
             "description": "Symbiote.js - zero-dependency close-to-platform frontend library to build super-powered web components",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@symbiotejs/symbiote"
-          },
-          {
-            "name": "@mcp-b/webmcp-polyfill",
-            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
           }
         ]
       },
@@ -36,20 +36,20 @@
         "github": [
           {
             "name": "cyproxio/mcp-for-security",
-            "stars": 629,
-            "forks": 101,
+            "stars": 630,
+            "forks": 102,
             "url": "https://github.com/cyproxio/mcp-for-security"
           },
           {
             "name": "Sfedfcv/redesigned-pancake",
-            "stars": 267,
+            "stars": 268,
             "forks": 0,
             "url": "https://github.com/Sfedfcv/redesigned-pancake"
           },
           {
             "name": "jettbrains/-L-",
             "stars": 160,
-            "forks": 47,
+            "forks": 48,
             "url": "https://github.com/jettbrains/-L-"
           }
         ],
@@ -67,10 +67,10 @@
             "url": "https://www.npmjs.com/package/@mcp-ui/client"
           },
           {
-            "name": "@salesforce/mcp-provider-lwc-experts",
-            "description": "(For Interal Use Only) Provided MCP Tools for code analysis and improvement of LWC components",
+            "name": "@mcp-ui/server",
+            "description": "mcp-ui Server SDK",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@salesforce/mcp-provider-lwc-experts"
+            "url": "https://www.npmjs.com/package/@mcp-ui/server"
           }
         ]
       },
@@ -84,19 +84,19 @@
           {
             "name": "microsoft/azuredatastudio",
             "stars": 7681,
-            "forks": 997,
+            "forks": 994,
             "url": "https://github.com/microsoft/azuredatastudio"
           },
           {
             "name": "GameServerManagers/LinuxGSM",
-            "stars": 4907,
-            "forks": 862,
+            "stars": 4914,
+            "forks": 863,
             "url": "https://github.com/GameServerManagers/LinuxGSM"
           },
           {
             "name": "vitodeploy/vito",
-            "stars": 3244,
-            "forks": 416,
+            "stars": 3249,
+            "forks": 421,
             "url": "https://github.com/vitodeploy/vito"
           }
         ],
@@ -108,16 +108,16 @@
             "url": "https://www.npmjs.com/package/derbados"
           },
           {
+            "name": "@bytelab.studio/ksm",
+            "description": "A KISS server management tool",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@bytelab.studio/ksm"
+          },
+          {
             "name": "@sunwu51/mcp-center",
             "description": "MCP Server management tool that aggregates multiple MCP servers",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@sunwu51/mcp-center"
-          },
-          {
-            "name": "divinodesshcommands",
-            "description": "SSH Commands used for managing Divi Nodes. (Used by Server-Management-Tool, Mobile Mocci, and Vocci)",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/divinodesshcommands"
           }
         ]
       },
@@ -130,13 +130,13 @@
         "github": [
           {
             "name": "nanobrowser/nanobrowser",
-            "stars": 13837,
-            "forks": 1463,
+            "stars": 13957,
+            "forks": 1480,
             "url": "https://github.com/nanobrowser/nanobrowser"
           },
           {
             "name": "kklt92/awesome-ai-extensions",
-            "stars": 530,
+            "stars": 531,
             "forks": 9,
             "url": "https://github.com/kklt92/awesome-ai-extensions"
           },
@@ -155,16 +155,16 @@
             "url": "https://www.npmjs.com/package/playwright"
           },
           {
-            "name": "@playwright/test",
-            "description": "A high-level API to automate web browsers",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@playwright/test"
-          },
-          {
             "name": "@mcp-b/transports",
             "description": "Browser transport implementations for Model Context Protocol (MCP) - postMessage, Chrome extension messaging, and iframe communication for AI agents and LLMs",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/transports"
+          },
+          {
+            "name": "@playwright/test",
+            "description": "A high-level API to automate web browsers",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@playwright/test"
           }
         ]
       },
@@ -177,14 +177,14 @@
         "github": [
           {
             "name": "RobotecAI/rai",
-            "stars": 593,
-            "forks": 76,
+            "stars": 598,
+            "forks": 77,
             "url": "https://github.com/RobotecAI/rai"
           },
           {
             "name": "Genesis1231/Eva01",
-            "stars": 145,
-            "forks": 9,
+            "stars": 146,
+            "forks": 10,
             "url": "https://github.com/Genesis1231/Eva01"
           },
           {
@@ -318,8 +318,8 @@
         "github": [
           {
             "name": "diegorafs/Chrome-DevTools-MCP",
-            "stars": 39,
-            "forks": 5,
+            "stars": 40,
+            "forks": 6,
             "url": "https://github.com/diegorafs/Chrome-DevTools-MCP"
           },
           {
@@ -366,7 +366,7 @@
           {
             "name": "jettbrains/-L-",
             "stars": 160,
-            "forks": 47,
+            "forks": 48,
             "url": "https://github.com/jettbrains/-L-"
           },
           {
@@ -418,14 +418,14 @@
           },
           {
             "name": "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
-            "stars": 314,
+            "stars": 315,
             "forks": 93,
             "url": "https://github.com/chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020"
           },
           {
             "name": "jettbrains/-L-",
             "stars": 160,
-            "forks": 47,
+            "forks": 48,
             "url": "https://github.com/jettbrains/-L-"
           }
         ],
@@ -518,10 +518,10 @@
             "url": "https://www.npmjs.com/package/sonarqube-scanner"
           },
           {
-            "name": "@sonar/scan",
-            "description": "SonarQube/SonarCloud Scanner for the JavaScript world",
+            "name": "qr-scanner",
+            "description": "A javascript QR scanner library",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@sonar/scan"
+            "url": "https://www.npmjs.com/package/qr-scanner"
           }
         ]
       },
@@ -534,6 +534,12 @@
         "github": [],
         "npm": [
           {
+            "name": "pi-mcp-adapter",
+            "description": "MCP (Model Context Protocol) adapter extension for Pi coding agent",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/pi-mcp-adapter"
+          },
+          {
             "name": "chrome-devtools-mcp",
             "description": "MCP server for Chrome DevTools",
             "popularity_score": 1,
@@ -544,12 +550,6 @@
             "description": "Playwright Tools for MCP",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@playwright/mcp"
-          },
-          {
-            "name": "@ag-ui/mcp-apps-middleware",
-            "description": "MCP Apps middleware for AG-UI that enables UI-enabled tools from MCP (Model Context Protocol) servers.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@ag-ui/mcp-apps-middleware"
           }
         ]
       },
@@ -618,7 +618,7 @@
         "github": [
           {
             "name": "jakub-k-slys/substack-gateway-oss",
-            "stars": 31,
+            "stars": 33,
             "forks": 7,
             "url": "https://github.com/jakub-k-slys/substack-gateway-oss"
           },
@@ -649,10 +649,10 @@
             "url": "https://www.npmjs.com/package/@posthog/mcp"
           },
           {
-            "name": "@modelcontextprotocol/sdk",
-            "description": "Model Context Protocol implementation for TypeScript",
+            "name": "supergateway",
+            "description": "Run MCP stdio servers over SSE, Streamable HTTP or visa versa",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk"
+            "url": "https://www.npmjs.com/package/supergateway"
           }
         ]
       },
@@ -712,10 +712,10 @@
             "url": "https://www.npmjs.com/package/@assistant-ui/react"
           },
           {
-            "name": "@assistant-ui/store",
-            "description": "Tap-based state management for @assistant-ui",
+            "name": "assistant-cloud",
+            "description": "Cloud integration for assistant-ui",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@assistant-ui/store"
+            "url": "https://www.npmjs.com/package/assistant-cloud"
           }
         ]
       },
@@ -728,21 +728,21 @@
         "github": [
           {
             "name": "OptimNow/cloud-finops-skills",
-            "stars": 55,
+            "stars": 57,
             "forks": 17,
             "url": "https://github.com/OptimNow/cloud-finops-skills"
+          },
+          {
+            "name": "awesomemotive/wpvibe-ai-mcp",
+            "stars": 20,
+            "forks": 8,
+            "url": "https://github.com/awesomemotive/wpvibe-ai-mcp"
           },
           {
             "name": "vimalgandhi/Docker-Commands-Help-Tips",
             "stars": 20,
             "forks": 9,
             "url": "https://github.com/vimalgandhi/Docker-Commands-Help-Tips"
-          },
-          {
-            "name": "awesomemotive/wpvibe-ai-mcp",
-            "stars": 19,
-            "forks": 8,
-            "url": "https://github.com/awesomemotive/wpvibe-ai-mcp"
           }
         ],
         "npm": [
@@ -759,10 +759,10 @@
             "url": "https://www.npmjs.com/package/@storybook/mcp"
           },
           {
-            "name": "react-i18next",
-            "description": "Internationalization for react done right. Using the i18next i18n ecosystem.",
+            "name": "@ledgerhq/device-management-kit-devtools-core",
+            "description": "Core library for DMK developer tools. Contains:",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/react-i18next"
+            "url": "https://www.npmjs.com/package/@ledgerhq/device-management-kit-devtools-core"
           }
         ]
       },
@@ -788,16 +788,16 @@
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
           },
           {
-            "name": "@mcp-b/webmcp-polyfill",
-            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
-          },
-          {
             "name": "@mcp-b/webmcp-types",
             "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+          },
+          {
+            "name": "@mcp-b/webmcp-polyfill",
+            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
           }
         ]
       },
@@ -838,19 +838,19 @@
         "github": [
           {
             "name": "omkarcloud/google-maps-scraper",
-            "stars": 3556,
-            "forks": 521,
+            "stars": 3583,
+            "forks": 527,
             "url": "https://github.com/omkarcloud/google-maps-scraper"
           },
           {
             "name": "zszszszsz/.config",
             "stars": 359,
-            "forks": 97,
+            "forks": 96,
             "url": "https://github.com/zszszszsz/.config"
           },
           {
             "name": "chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020",
-            "stars": 314,
+            "stars": 315,
             "forks": 93,
             "url": "https://github.com/chrisneagu/FTC-Skystone-Dark-Angels-Romania-2020"
           }
@@ -918,16 +918,16 @@
             "url": "https://github.com/esrakadah/flutter_voice_bridge"
           },
           {
+            "name": "neelmanip-999/HealthBridge-AI-Healthcare",
+            "stars": 2,
+            "forks": 1,
+            "url": "https://github.com/neelmanip-999/HealthBridge-AI-Healthcare"
+          },
+          {
             "name": "siddhbotadara/JOYBOARD",
             "stars": 2,
             "forks": 0,
             "url": "https://github.com/siddhbotadara/JOYBOARD"
-          },
-          {
-            "name": "EGABO-TECH/ExFlo",
-            "stars": 2,
-            "forks": 0,
-            "url": "https://github.com/EGABO-TECH/ExFlo"
           }
         ],
         "npm": [
@@ -988,19 +988,19 @@
         "github": [
           {
             "name": "Sfedfcv/redesigned-pancake",
-            "stars": 267,
+            "stars": 268,
             "forks": 0,
             "url": "https://github.com/Sfedfcv/redesigned-pancake"
           },
           {
             "name": "ukogan/claude-migration-assistant",
             "stars": 64,
-            "forks": 10,
+            "forks": 11,
             "url": "https://github.com/ukogan/claude-migration-assistant"
           },
           {
             "name": "descope/descope-cognito-migration",
-            "stars": 40,
+            "stars": 42,
             "forks": 2,
             "url": "https://github.com/descope/descope-cognito-migration"
           }
@@ -1035,20 +1035,20 @@
         "github": [
           {
             "name": "vercel-labs/agent-browser",
-            "stars": 43295,
-            "forks": 2907,
+            "stars": 43527,
+            "forks": 2938,
             "url": "https://github.com/vercel-labs/agent-browser"
           },
           {
             "name": "reworkd/AgentGPT",
-            "stars": 36296,
-            "forks": 9247,
+            "stars": 36299,
+            "forks": 9235,
             "url": "https://github.com/reworkd/AgentGPT"
           },
           {
             "name": "feder-cr/invisible_playwright_mcp",
-            "stars": 31685,
-            "forks": 4678,
+            "stars": 31777,
+            "forks": 4689,
             "url": "https://github.com/feder-cr/invisible_playwright_mcp"
           }
         ],
@@ -1157,35 +1157,35 @@
         "github": [
           {
             "name": "holaboss-ai/holaOS",
-            "stars": 11426,
-            "forks": 726,
+            "stars": 11461,
+            "forks": 730,
             "url": "https://github.com/holaboss-ai/holaOS"
           },
           {
             "name": "OpenSource03/harnss",
-            "stars": 378,
-            "forks": 43,
+            "stars": 383,
+            "forks": 44,
             "url": "https://github.com/OpenSource03/harnss"
           },
           {
             "name": "DLYZZT/pi-desktop",
-            "stars": 239,
-            "forks": 31,
+            "stars": 254,
+            "forks": 32,
             "url": "https://github.com/DLYZZT/pi-desktop"
           }
         ],
         "npm": [
           {
-            "name": "@ag-ui/aws-strands",
-            "description": "AWS Strands Agents integration for the AG-UI protocol",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@ag-ui/aws-strands"
-          },
-          {
             "name": "agentic-flow",
             "description": "The agentic meta-harness \u2014 freeze the model, evolve the harness. An open runtime that routes each query to the cost-optimal model, evolves its own harness (planner/context/reviewer/retry/tool/memory/score policy) and autonomously repairs code, then orches",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/agentic-flow"
+          },
+          {
+            "name": "@ag-ui/aws-strands",
+            "description": "AWS Strands Agents integration for the AG-UI protocol",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@ag-ui/aws-strands"
           },
           {
             "name": "@a2a-js/sdk",
@@ -1201,26 +1201,7 @@
       "candidate_tool_idea": "AI browsing assistant",
       "times_surfaced_in_discourse": 1,
       "monetization_signals": {
-        "github": [
-          {
-            "name": "hangwin/mcp-chrome",
-            "stars": 12455,
-            "forks": 1145,
-            "url": "https://github.com/hangwin/mcp-chrome"
-          },
-          {
-            "name": "the-open-agent/openagent",
-            "stars": 5663,
-            "forks": 660,
-            "url": "https://github.com/the-open-agent/openagent"
-          },
-          {
-            "name": "A9T9/RPA",
-            "stars": 2042,
-            "forks": 413,
-            "url": "https://github.com/A9T9/RPA"
-          }
-        ],
+        "github": [],
         "npm": [
           {
             "name": "assistant-cloud",
@@ -1235,12 +1216,100 @@
             "url": "https://www.npmjs.com/package/@assistant-ui/react-ai-sdk"
           },
           {
-            "name": "dokobot",
-            "description": "Dokobot - AI browsing assistant that empowers humans & agents to read any page",
+            "name": "assistant-stream",
+            "description": "Streaming utilities for AI assistants",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/dokobot"
+            "url": "https://www.npmjs.com/package/assistant-stream"
           }
-        ]
+        ],
+        "github_error": "HTTP Error 403: Forbidden"
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Integrated web browsing agent for ChatGPT",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@openai/codex",
+            "description": "Codex CLI is a coding agent from OpenAI that runs locally on your computer.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@openai/codex"
+          },
+          {
+            "name": "pi-web-access",
+            "description": "Web search, URL fetching, GitHub repo cloning, PDF extraction, YouTube video understanding, and local video analysis for Pi coding agent. Supports OpenAI, Brave, Parallel, TinyFish, Search1API, Searchinfinity, Querit, Tavily, Firecrawl, Crawl4AI, Jina, SE",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/pi-web-access"
+          },
+          {
+            "name": "@web/dev-server",
+            "description": "Dev server for web applications",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@web/dev-server"
+          }
+        ],
+        "github_error": "HTTP Error 403: Forbidden"
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI Agent Web Interaction Module",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@deepseek-ai/dsh-host-directory-picker",
+            "description": "Abstract workspace-directory picking seam (ctx.directoryPicker) for the DeepSeek Harness web GUI host",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-host-directory-picker"
+          },
+          {
+            "name": "@ai-sdk/perplexity",
+            "description": "The **[Perplexity provider](https://ai-sdk.dev/providers/ai-sdk-providers/perplexity)** for the [AI SDK](https://ai-sdk.dev/docs) contains language model support for Perplexity's Sonar API - a powerful answer engine with real-time web search capabilities.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@ai-sdk/perplexity"
+          },
+          {
+            "name": "@opentelemetry/instrumentation-user-interaction",
+            "description": "OpenTelemetry instrumentation for user interactions as click events in a web application",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@opentelemetry/instrumentation-user-interaction"
+          }
+        ],
+        "github_error": "HTTP Error 403: Forbidden"
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "WebMCP-enabled desktop client",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@mcp-b/webmcp-local-relay",
+            "description": "Local MCP relay for browser WebMCP tools via embed iframe and localhost WebSocket",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-local-relay"
+          },
+          {
+            "name": "@mcp-b/webmcp-ts-sdk",
+            "description": "Thin WebMCP-to-MCP v2 browser adapter with native Chrome tool mirroring",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
+          },
+          {
+            "name": "@mcp-b/global",
+            "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/global"
+          }
+        ],
+        "github_error": "HTTP Error 403: Forbidden"
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     },
