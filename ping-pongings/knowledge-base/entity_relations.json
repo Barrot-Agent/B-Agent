@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 133,
+  "total_classified": 137,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1198,6 +1198,42 @@
       "relation_type": "correlated_unclear",
       "justification": "Both headlines tie BTC performance or status to Bitcoin ETF activity, indicating a correlation but not a clearly defined causal or regulatory link.",
       "classified_at": "2026-09-28T10:05:00Z"
+    },
+    {
+      "pair_key": "Bitcoin|Moomoo",
+      "entity_a": "Bitcoin",
+      "entity_b": "Moomoo",
+      "cooccurrence_count": 8,
+      "relation_type": "same_event",
+      "justification": "Both Bitcoin and Moomoo appear together in the same headline, indicating they are part of the same news digest rather than implying a causal or regulatory link.",
+      "classified_at": "2026-10-05T10:06:59Z"
+    },
+    {
+      "pair_key": "BTC|XRP",
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines mention BTC but contain no information about XRP, making the relationship between BTC and XRP unclear.",
+      "classified_at": "2026-10-05T10:07:02Z"
+    },
+    {
+      "pair_key": "BTC|Strategy",
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines show Strategy raising funds and buying Bitcoin, but they only indicate a temporal association without explicit cause\u2011effect or regulatory context.",
+      "classified_at": "2026-10-05T10:07:04Z"
+    },
+    {
+      "pair_key": "BTC|ETH",
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "The headline states that Ether inflow streaks end as Bitcoin funds rebound, indicating a concurrent inverse movement without explicit causal or competitive language.",
+      "classified_at": "2026-10-05T10:07:10Z"
     }
   ]
 }
