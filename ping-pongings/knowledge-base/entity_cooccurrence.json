@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 814,
-    "btc_entries": 771
+    "btc_entries": 773
   },
-  "unique_pairs_found": 2367,
+  "unique_pairs_found": 2369,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -5206,6 +5206,21 @@
         },
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "Federal Court",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+          "asset": "XRP"
+        },
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
           "asset": "BTC"
         }
       ]
@@ -10913,17 +10928,6 @@
       "example_headlines": [
         {
           "title": "Hashdex Liquidates DEFI As First US Spot Bitcoin ETF Closure Arrives",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Binance",
-      "entity_b": "Federal Court",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
           "asset": "XRP"
         }
       ]
@@ -26973,6 +26977,28 @@
       "example_headlines": [
         {
           "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Binance",
+      "entity_b": "U.S. Court of Appeals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Court",
+      "entity_b": "U.S. Court of Appeals",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
           "asset": "BTC"
         }
       ]

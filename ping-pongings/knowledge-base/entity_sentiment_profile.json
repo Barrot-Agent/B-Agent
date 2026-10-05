@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 814,
-    "btc_entries": 771
+    "btc_entries": 773
   },
-  "unique_entities_profiled": 745,
+  "unique_entities_profiled": 746,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -393,11 +393,11 @@
     },
     {
       "entity": "Binance",
-      "total_mentions": 12,
+      "total_mentions": 13,
       "bullish": 5,
-      "neutral": 3,
+      "neutral": 4,
       "bearish": 4,
-      "net_sentiment_score": 0.083,
+      "net_sentiment_score": 0.077,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -3245,6 +3245,22 @@
       ]
     },
     {
+      "entity": "Federal Court",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules"
+      ]
+    },
+    {
       "entity": "futures",
       "total_mentions": 2,
       "bullish": 1,
@@ -5302,20 +5318,6 @@
     },
     {
       "entity": "US Court of Appeals",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules"
-      ]
-    },
-    {
-      "entity": "Federal Court",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 1,
@@ -10646,6 +10648,20 @@
       ],
       "example_headlines": [
         "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC"
+      ]
+    },
+    {
+      "entity": "U.S. Court of Appeals",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules"
       ]
     },
     {
