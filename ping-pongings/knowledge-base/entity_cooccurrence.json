@@ -3,7 +3,7 @@
     "xrp_entries": 820,
     "btc_entries": 775
   },
-  "unique_pairs_found": 2378,
+  "unique_pairs_found": 2384,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -17357,6 +17357,72 @@
       "example_headlines": [
         {
           "title": "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Avalanche",
+      "entity_b": "Centrifuge",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Avalanche",
+      "entity_b": "New York Life Investment Management",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Avalanche",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Centrifuge",
+      "entity_b": "New York Life Investment Management",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Centrifuge",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "New York Life Investment Management",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
           "asset": "XRP"
         }
       ]

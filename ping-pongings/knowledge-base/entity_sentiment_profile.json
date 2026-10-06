@@ -3,7 +3,7 @@
     "xrp_entries": 820,
     "btc_entries": 775
   },
-  "unique_entities_profiled": 750,
+  "unique_entities_profiled": 753,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1063,6 +1063,22 @@
       ]
     },
     {
+      "entity": "USDC",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
       "entity": "TheStreet",
       "total_mentions": 4,
       "bullish": 2,
@@ -1458,22 +1474,6 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-        "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse"
       ]
     },
     {
@@ -7518,6 +7518,48 @@
       ],
       "example_headlines": [
         "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
+      ]
+    },
+    {
+      "entity": "New York Life Investment Management",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
+      "entity": "Centrifuge",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
+      "entity": "Avalanche",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
       ]
     },
     {
