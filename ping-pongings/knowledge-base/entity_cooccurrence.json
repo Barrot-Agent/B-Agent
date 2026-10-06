@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 814,
+    "xrp_entries": 815,
     "btc_entries": 773
   },
-  "unique_pairs_found": 2373,
+  "unique_pairs_found": 2378,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -787,6 +787,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Metaplanet",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Federal Reserve",
       "cooccurrence_count": 7,
       "example_headlines": [
@@ -901,21 +916,6 @@
         },
         {
           "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Metaplanet",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin's biggest holders, Strategy and Metaplanet, are betting on math, not price - CoinDesk",
           "asset": "BTC"
         }
       ]
@@ -2462,6 +2462,21 @@
         {
           "title": "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
+          "asset": "XRP"
+        },
+        {
+          "title": "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
+          "asset": "BTC"
         }
       ]
     },
@@ -6526,21 +6541,6 @@
         },
         {
           "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "VanEck",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
-          "asset": "BTC"
-        },
-        {
-          "title": "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck",
           "asset": "BTC"
         }
       ]
@@ -15855,6 +15855,17 @@
       ]
     },
     {
+      "entity_a": "Metaplanet",
+      "entity_b": "VanEck",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CFTC",
       "entity_b": "US market",
       "cooccurrence_count": 1,
@@ -18682,6 +18693,17 @@
       ]
     },
     {
+      "entity_a": "CCIP",
+      "entity_b": "Chainlink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Kalshi",
       "entity_b": "Republican committee members",
       "cooccurrence_count": 1,
@@ -18963,6 +18985,39 @@
       "example_headlines": [
         {
           "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "JUMP",
+      "entity_b": "Jumper",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "JUMP",
+      "entity_b": "Legion",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Jumper",
+      "entity_b": "Legion",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ",
           "asset": "XRP"
         }
       ]

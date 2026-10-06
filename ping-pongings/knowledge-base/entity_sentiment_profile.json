@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 814,
+    "xrp_entries": 815,
     "btc_entries": 773
   },
-  "unique_entities_profiled": 746,
+  "unique_entities_profiled": 750,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 272,
+      "total_mentions": 273,
       "bullish": 151,
       "neutral": 39,
-      "bearish": 82,
-      "net_sentiment_score": 0.254,
+      "bearish": 83,
+      "net_sentiment_score": 0.249,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -494,6 +494,23 @@
       ]
     },
     {
+      "entity": "Metaplanet",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+        "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
+        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer"
+      ]
+    },
+    {
       "entity": "US stocks",
       "total_mentions": 9,
       "bullish": 4,
@@ -574,23 +591,6 @@
         "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
         "Crypto Clarity Act News: Trump Agreed to 80% of the Ethics Deal and Ripple (XRP) Jumped 3.9% - 24/7 ",
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
-      ]
-    },
-    {
-      "entity": "Metaplanet",
-      "total_mentions": 8,
-      "bullish": 7,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.875,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-        "Metaplanet CEO shuts down Bitcoin sale speculation after $322M transfer",
-        "Metaplanet\u2019s $322M Bitcoin Transfer Sparks Sale Fears \u2014 CEO Says No BTC Was Sold - Bitcoin Foundatio"
       ]
     },
     {
@@ -1347,6 +1347,23 @@
       ]
     },
     {
+      "entity": "VanEck",
+      "total_mentions": 4,
+      "bullish": 0,
+      "neutral": 2,
+      "bearish": 2,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
+        "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
+        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -2042,22 +2059,6 @@
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
         "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
-      ]
-    },
-    {
-      "entity": "VanEck",
-      "total_mentions": 3,
-      "bullish": 0,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
-        "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation",
-        "VanEck Mid-August 2026 Bitcoin ChainCheck - VanEck"
       ]
     },
     {
@@ -4069,6 +4070,21 @@
       "example_headlines": [
         "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
         "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
+      ]
+    },
+    {
+      "entity": "Chainlink",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
       ]
     },
     {
@@ -8107,6 +8123,20 @@
       ]
     },
     {
+      "entity": "CCIP",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix"
+      ]
+    },
+    {
       "entity": "U.S. Senate Banking Committee",
       "total_mentions": 1,
       "bullish": 0,
@@ -8233,17 +8263,45 @@
       ]
     },
     {
-      "entity": "Chainlink",
+      "entity": "Jumper",
       "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
+      "bullish": 0,
+      "neutral": 1,
       "bearish": 0,
-      "net_sentiment_score": 1.0,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+        "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ"
+      ]
+    },
+    {
+      "entity": "JUMP",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ"
+      ]
+    },
+    {
+      "entity": "Legion",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ"
       ]
     },
     {
