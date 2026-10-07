@@ -1,17 +1,17 @@
 {
-  "summary": "The signal, generated at\u202f2026\u201110\u201107\u202f17:32:24\u202fUTC, assigns XRP a sentiment score of\u202f44 with a confidence of\u202f0.0, while the accompanying news sentiment is\u202f88 based on\u202f11\u202fnews entries. All listed headlines are either neutral or bullish, indicating a predominantly positive technical discussion around the XRP Ledger.\n\n- Timestamp:\u202f2026\u201110\u201107T17:32:24.493936+00:00  \n- Overall score:\u202f44 (confidence\u202f0.0); news score:\u202f88 from\u202f11\u202fentries  \n- Headlines: 1\u202fneutral analysis and 5\u202fbullish papers on consensus, message dissemination, routing, crash testing, and causal AI.",
+  "summary": "The signal, generated at\u202f2026\u201110\u201107\u202f18:36:41\u202fUTC, assigns XRP a sentiment score of\u202f44 with a confidence of\u202f0.0, while the accompanying news metric is\u202f88 based on\u202f11\u202fnews entries. The source notes that sentiment data could not be retrieved due to missing GitHub tokens and a rate\u2011limit error from the Groq API.  \n\n- Timestamp:\u202f2026\u201110\u201107T18:36:41.320242+00:00  \n- Score / Confidence:\u202f44\u202f/\u202f0.0  \n- News score & entries:\u202f88\u202fwith\u202f11\u202farticles",
   "spoken_line": "XRP signal update. Score 44. Confidence 0.0. Based on 11 news entries. Not financial advice. Informational only. Do your own research.",
   "disclaimer": "Not financial advice. Informational only. Do your own research.",
   "audio": "web/generated_audio/latest_signal_summary.wav",
   "tts_error": null,
   "source_signal": {
-    "timestamp": "2026-10-07T17:32:24.493936+00:00",
+    "timestamp": "2026-10-07T18:36:41.320242+00:00",
     "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger | [bullish] Probabilistic Edge Multicast Routing for the XRP Network | [bullish] Pub/Sub Dissemination on the XRP Ledger | [bullish] Consensus Crash Testing: Ripple Decentralization Degree in Adversarial Environme | [bullish] Causal AI for XRPL/GossipSub network configuration",
     "score": 44,
     "confidence": 0.0,
     "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(11)",
     "news_score": 88,
     "news_entries": 11,
-    "generated_at_unix": 1791394344
+    "generated_at_unix": 1791398201
   }
 }
