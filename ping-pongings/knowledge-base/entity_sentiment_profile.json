@@ -3,7 +3,7 @@
     "xrp_entries": 832,
     "btc_entries": 793
   },
-  "unique_entities_profiled": 757,
+  "unique_entities_profiled": 761,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 227,
-      "bullish": 144,
+      "total_mentions": 228,
+      "bullish": 145,
       "neutral": 39,
       "bearish": 44,
-      "net_sentiment_score": 0.441,
+      "net_sentiment_score": 0.443,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -7518,6 +7518,62 @@
       ],
       "example_headlines": [
         "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
+      ]
+    },
+    {
+      "entity": "ShredPay",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ShredPay Joins Jack Henry Network To Bring Stablecoin Infrastructure To Banks"
+      ]
+    },
+    {
+      "entity": "Jack Henry",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ShredPay Joins Jack Henry Network To Bring Stablecoin Infrastructure To Banks"
+      ]
+    },
+    {
+      "entity": "jXchange",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ShredPay Joins Jack Henry Network To Bring Stablecoin Infrastructure To Banks"
+      ]
+    },
+    {
+      "entity": "SymXchange",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "ShredPay Joins Jack Henry Network To Bring Stablecoin Infrastructure To Banks"
       ]
     },
     {
