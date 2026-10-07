@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 838,
-    "btc_entries": 803
+    "btc_entries": 807
   },
-  "unique_entities_profiled": 766,
+  "unique_entities_profiled": 768,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 229,
-      "bullish": 146,
+      "total_mentions": 230,
+      "bullish": 147,
       "neutral": 39,
       "bearish": 44,
-      "net_sentiment_score": 0.445,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 179,
-      "bullish": 114,
+      "total_mentions": 180,
+      "bullish": 115,
       "neutral": 36,
       "bearish": 29,
-      "net_sentiment_score": 0.475,
+      "net_sentiment_score": 0.478,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -11313,6 +11313,34 @@
       ],
       "example_headlines": [
         "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
+      ]
+    },
+    {
+      "entity": "Brevan Howard",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing"
+      ]
+    },
+    {
+      "entity": "Ripple Prime",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing"
       ]
     }
   ]
