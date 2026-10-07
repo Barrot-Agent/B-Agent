@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 839,
-    "btc_entries": 807
+    "btc_entries": 808
   },
   "unique_entities_profiled": 768,
   "entities": [
@@ -1128,6 +1128,23 @@
       ]
     },
     {
+      "entity": "European Union",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
+      ]
+    },
+    {
       "entity": "USD",
       "total_mentions": 4,
       "bullish": 2,
@@ -1543,18 +1560,19 @@
       ]
     },
     {
-      "entity": "European Union",
+      "entity": "European Commission",
       "total_mentions": 3,
-      "bullish": 2,
+      "bullish": 1,
       "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
+        "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
         "What Ripple CASP authorisation means under MiCA - Ripple",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
         "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
@@ -2707,21 +2725,6 @@
       "example_headlines": [
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com",
         "$Ripple (XRP.CC)$ - moomoo.com"
-      ]
-    },
-    {
-      "entity": "European Commission",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "What Ripple CASP authorisation means under MiCA - Ripple",
-        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
     {
@@ -3947,6 +3950,38 @@
       "example_headlines": [
         "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
         "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "Cyber Resilience Act",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
+      ]
+    },
+    {
+      "entity": "European Parliament",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
     {
@@ -6819,34 +6854,6 @@
       ],
       "example_headlines": [
         "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
-      ]
-    },
-    {
-      "entity": "Cyber Resilience Act",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
-      ]
-    },
-    {
-      "entity": "European Parliament",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
       ]
     },
     {

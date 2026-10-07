@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 839,
-    "btc_entries": 807
+    "btc_entries": 808
   },
   "unique_pairs_found": 2419,
   "pairs": [
@@ -1866,6 +1866,21 @@
       ]
     },
     {
+      "entity_a": "European Commission",
+      "entity_b": "European Union",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin Core",
       "cooccurrence_count": 3,
@@ -3721,21 +3736,6 @@
         },
         {
           "title": "Why is XRP rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Commission",
-      "entity_b": "European Union",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
-          "asset": "XRP"
-        },
-        {
-          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
           "asset": "XRP"
         }
       ]
@@ -6452,6 +6452,81 @@
         {
           "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "European Commission",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "European Parliament",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cyber Resilience Act",
+      "entity_b": "European Union",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Commission",
+      "entity_b": "European Parliament",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Parliament",
+      "entity_b": "European Union",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        },
+        {
+          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "BTC"
         }
       ]
     },
@@ -15677,62 +15752,7 @@
     },
     {
       "entity_a": "Cyber Resilience Act",
-      "entity_b": "European Commission",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cyber Resilience Act",
-      "entity_b": "European Parliament",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cyber Resilience Act",
-      "entity_b": "European Union",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cyber Resilience Act",
       "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Commission",
-      "entity_b": "European Parliament",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Parliament",
-      "entity_b": "European Union",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
