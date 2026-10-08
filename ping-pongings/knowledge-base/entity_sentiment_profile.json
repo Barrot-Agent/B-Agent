@@ -3,7 +3,7 @@
     "xrp_entries": 850,
     "btc_entries": 822
   },
-  "unique_entities_profiled": 768,
+  "unique_entities_profiled": 772,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -358,6 +358,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 14,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 7,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 13,
       "bullish": 10,
@@ -372,23 +389,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 13,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 6,
-      "net_sentiment_score": 0.077,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
       ]
     },
     {
@@ -1560,6 +1560,22 @@
       ]
     },
     {
+      "entity": "MiCA",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
       "entity": "European Commission",
       "total_mentions": 3,
       "bullish": 1,
@@ -2010,6 +2026,22 @@
         "FCA Crypto Authorisation Gateway Opens September 30",
         "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
         "FCA Crypto Authorisation Gateway Opens September 30"
+      ]
+    },
+    {
+      "entity": "stablecoins",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -2695,21 +2727,6 @@
       "example_headlines": [
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Bitcoin ETFs add $189M as August net inflows approach $1B"
-      ]
-    },
-    {
-      "entity": "MiCA",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "What Ripple CASP authorisation means under MiCA - Ripple"
       ]
     },
     {
@@ -4000,21 +4017,6 @@
       ]
     },
     {
-      "entity": "stablecoins",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD "
-      ]
-    },
-    {
       "entity": "Strive",
       "total_mentions": 2,
       "bullish": 2,
@@ -4107,6 +4109,21 @@
       ]
     },
     {
+      "entity": "OKX",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
       "entity": "Binance Futures",
       "total_mentions": 2,
       "bullish": 2,
@@ -4135,6 +4152,22 @@
       "example_headlines": [
         "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
         "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "prediction markets",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+        "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
       ]
     },
     {
@@ -8009,20 +8042,6 @@
       ]
     },
     {
-      "entity": "OKX",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe"
-      ]
-    },
-    {
       "entity": "Shield",
       "total_mentions": 1,
       "bullish": 1,
@@ -8275,6 +8294,34 @@
       ]
     },
     {
+      "entity": "Division of Market Oversight",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts"
+      ]
+    },
+    {
+      "entity": "US Commodity Futures Trading Commission",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts"
+      ]
+    },
+    {
       "entity": "Mysten Labs",
       "total_mentions": 1,
       "bullish": 1,
@@ -8342,6 +8389,34 @@
       ],
       "example_headlines": [
         "Sui Testnet v1.80.1 Expands Protocol 137 Features For Node Operators"
+      ]
+    },
+    {
+      "entity": "European Economic Area",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
+      "entity": "institutional users",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -11146,20 +11221,6 @@
     },
     {
       "entity": "event contract derivatives",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
-      ]
-    },
-    {
-      "entity": "prediction markets",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,

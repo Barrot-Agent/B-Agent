@@ -3,7 +3,7 @@
     "xrp_entries": 850,
     "btc_entries": 822
   },
-  "unique_pairs_found": 2419,
+  "unique_pairs_found": 2434,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -6631,6 +6631,21 @@
         },
         {
           "title": "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "prediction markets",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+          "asset": "XRP"
+        },
+        {
+          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
           "asset": "BTC"
         }
       ]
@@ -18983,6 +18998,61 @@
       ]
     },
     {
+      "entity_a": "CFTC",
+      "entity_b": "Division of Market Oversight",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "US Commodity Futures Trading Commission",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Division of Market Oversight",
+      "entity_b": "US Commodity Futures Trading Commission",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Division of Market Oversight",
+      "entity_b": "prediction markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Commodity Futures Trading Commission",
+      "entity_b": "prediction markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "GraphQL",
       "entity_b": "JSON-RPC",
       "cooccurrence_count": 1,
@@ -19088,6 +19158,116 @@
       "example_headlines": [
         {
           "title": "Sui Testnet v1.80.1 Expands Protocol 137 Features For Node Operators",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Economic Area",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Economic Area",
+      "entity_b": "OKX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Economic Area",
+      "entity_b": "institutional users",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Economic Area",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiCA",
+      "entity_b": "OKX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiCA",
+      "entity_b": "institutional users",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MiCA",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OKX",
+      "entity_b": "institutional users",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OKX",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "institutional users",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OKX Tightens European Institutional Trading Guidance Under MiCA",
           "asset": "XRP"
         }
       ]
@@ -28071,17 +28251,6 @@
     {
       "entity_a": "CFTC",
       "entity_b": "event contract derivatives",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CFTC",
-      "entity_b": "prediction markets",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
