@@ -3,7 +3,7 @@
     "xrp_entries": 870,
     "btc_entries": 849
   },
-  "unique_pairs_found": 2458,
+  "unique_pairs_found": 2467,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1761,6 +1761,21 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "Uniswap",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+          "asset": "XRP"
+        },
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CoinDesk",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 3,
@@ -3173,21 +3188,6 @@
     {
       "entity_a": "Ethereum",
       "entity_b": "UNI",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-          "asset": "XRP"
-        },
-        {
-          "title": "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "Uniswap",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -19331,6 +19331,105 @@
       "example_headlines": [
         {
           "title": "Bitget Wallet Says Global Downloads Have Passed 40 Million",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "DeFi",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "DeFi",
+      "entity_b": "Uniswap",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "DeFi",
+      "entity_b": "Uniswap v4",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "DeFi",
+      "entity_b": "custom hooks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Uniswap v4",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "custom hooks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Uniswap",
+      "entity_b": "Uniswap v4",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Uniswap",
+      "entity_b": "custom hooks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Uniswap v4",
+      "entity_b": "custom hooks",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
           "asset": "XRP"
         }
       ]
