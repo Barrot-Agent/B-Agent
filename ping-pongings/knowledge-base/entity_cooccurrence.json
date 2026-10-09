@@ -3,7 +3,7 @@
     "xrp_entries": 870,
     "btc_entries": 849
   },
-  "unique_pairs_found": 2467,
+  "unique_pairs_found": 2470,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -19012,6 +19012,39 @@
       "example_headlines": [
         {
           "title": "Binance Lets bStocks Tokenized Equities Count As Futures Margin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AVAX",
+      "entity_b": "Avalanche",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AVAX",
+      "entity_b": "Bybit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Avalanche",
+      "entity_b": "Bybit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
           "asset": "XRP"
         }
       ]

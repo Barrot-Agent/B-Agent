@@ -3,7 +3,7 @@
     "xrp_entries": 870,
     "btc_entries": 849
   },
-  "unique_entities_profiled": 783,
+  "unique_entities_profiled": 784,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -4096,6 +4096,21 @@
       ]
     },
     {
+      "entity": "Avalanche",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
+      ]
+    },
+    {
       "entity": "Kalshi",
       "total_mentions": 2,
       "bullish": 1,
@@ -4155,6 +4170,21 @@
       "example_headlines": [
         "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
         "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
+      ]
+    },
+    {
+      "entity": "Bybit",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
       ]
     },
     {
@@ -7681,20 +7711,6 @@
       ]
     },
     {
-      "entity": "Avalanche",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
-      ]
-    },
-    {
       "entity": "Bitwise",
       "total_mentions": 1,
       "bullish": 0,
@@ -8171,20 +8187,6 @@
       ]
     },
     {
-      "entity": "Bybit",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage"
-      ]
-    },
-    {
       "entity": "UiPath (PATH)",
       "total_mentions": 1,
       "bullish": 1,
@@ -8280,6 +8282,20 @@
       ],
       "example_headlines": [
         "Binance Lets bStocks Tokenized Equities Count As Futures Margin"
+      ]
+    },
+    {
+      "entity": "AVAX",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
       ]
     },
     {
