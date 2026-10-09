@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 870,
-    "btc_entries": 846
+    "btc_entries": 849
   },
-  "unique_pairs_found": 2455,
+  "unique_pairs_found": 2458,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2507,6 +2507,21 @@
         {
           "title": "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
         }
       ]
     },
@@ -6531,21 +6546,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "Coinbase",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Binance",
       "entity_b": "USD/BRL",
       "cooccurrence_count": 2,
@@ -6646,6 +6646,36 @@
         },
         {
           "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
           "asset": "BTC"
         }
       ]
@@ -19757,17 +19787,6 @@
       ]
     },
     {
-      "entity_a": "CFTC",
-      "entity_b": "USDC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Coinbase",
       "entity_b": "Derivatives Clearing Organization",
       "cooccurrence_count": 1,
@@ -19781,17 +19800,6 @@
     {
       "entity_a": "Coinbase",
       "entity_b": "Futures",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "USDC",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -29058,6 +29066,39 @@
       "example_headlines": [
         {
           "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "Coinbase Clearing LLC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Coinbase Clearing LLC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Clearing LLC",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
           "asset": "BTC"
         }
       ]
