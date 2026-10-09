@@ -3,7 +3,7 @@
     "xrp_entries": 870,
     "btc_entries": 845
   },
-  "unique_pairs_found": 2446,
+  "unique_pairs_found": 2455,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1837,6 +1837,21 @@
     },
     {
       "entity_a": "European Union",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "European Union",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -3616,21 +3631,6 @@
         },
         {
           "title": "Ripple unlocks 1 billion XRP, here's what it actually means for investors - thestreet.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "European Union",
-      "entity_b": "MiCA",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "What Ripple CASP authorisation means under MiCA - Ripple",
           "asset": "XRP"
         }
       ]
@@ -20357,6 +20357,105 @@
       "example_headlines": [
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNY Mellon",
+      "entity_b": "Digital Asset Custody platform",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNY Mellon",
+      "entity_b": "ESMA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNY Mellon",
+      "entity_b": "European Union",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BNY Mellon",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Custody platform",
+      "entity_b": "ESMA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Custody platform",
+      "entity_b": "European Union",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Custody platform",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ESMA",
+      "entity_b": "European Union",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ESMA",
+      "entity_b": "MiCA",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
           "asset": "XRP"
         }
       ]

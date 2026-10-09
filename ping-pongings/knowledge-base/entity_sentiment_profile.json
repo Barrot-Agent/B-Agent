@@ -3,7 +3,7 @@
     "xrp_entries": 870,
     "btc_entries": 845
   },
-  "unique_entities_profiled": 776,
+  "unique_entities_profiled": 779,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -912,6 +912,23 @@
       ]
     },
     {
+      "entity": "European Union",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.4,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
+        "What Ripple CASP authorisation means under MiCA - Ripple",
+        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
+      ]
+    },
+    {
       "entity": "BIP-110",
       "total_mentions": 5,
       "bullish": 0,
@@ -1128,20 +1145,19 @@
       ]
     },
     {
-      "entity": "European Union",
+      "entity": "MiCA",
       "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 1,
+      "bullish": 3,
+      "neutral": 0,
       "bearish": 1,
-      "net_sentiment_score": 0.25,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
         "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
         "What Ripple CASP authorisation means under MiCA - Ripple",
-        "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -1557,22 +1573,6 @@
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
         "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
         "Just In: Ripple Re-Locks 700 Million XRP Back Into Escrow - CoinGape"
-      ]
-    },
-    {
-      "entity": "MiCA",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
-        "What Ripple CASP authorisation means under MiCA - Ripple",
-        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -8825,6 +8825,48 @@
       ],
       "example_headlines": [
         "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
+      ]
+    },
+    {
+      "entity": "BNY Mellon",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA"
+      ]
+    },
+    {
+      "entity": "ESMA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA"
+      ]
+    },
+    {
+      "entity": "Digital Asset Custody platform",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA"
       ]
     },
     {
