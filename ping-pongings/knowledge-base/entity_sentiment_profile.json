@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 274,
+      "total_mentions": 275,
       "bullish": 152,
       "neutral": 39,
-      "bearish": 83,
-      "net_sentiment_score": 0.252,
+      "bearish": 84,
+      "net_sentiment_score": 0.247,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 109,
+      "total_mentions": 110,
       "bullish": 56,
       "neutral": 18,
-      "bearish": 35,
-      "net_sentiment_score": 0.193,
+      "bearish": 36,
+      "net_sentiment_score": 0.182,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1031,6 +1031,23 @@
       ]
     },
     {
+      "entity": "BitMEX",
+      "total_mentions": 5,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 5,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BitMEX Sets Close-Only Risk Limits Ahead Of September Wind-Down",
+        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
+        "BitMEX hit with 623 BTC lawsuit on day it announces shutdown"
+      ]
+    },
+    {
       "entity": "U.S. Securities and Exchange Commission",
       "total_mentions": 5,
       "bullish": 1,
@@ -1276,23 +1293,6 @@
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
         "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
-      ]
-    },
-    {
-      "entity": "BitMEX",
-      "total_mentions": 4,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BitMEX Sets Close-Only Risk Limits Ahead Of September Wind-Down",
-        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26",
-        "BitMEX hit with 623 BTC lawsuit on day it announces shutdown"
       ]
     },
     {

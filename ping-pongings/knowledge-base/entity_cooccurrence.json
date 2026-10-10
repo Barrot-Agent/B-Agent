@@ -3,7 +3,7 @@
     "xrp_entries": 872,
     "btc_entries": 850
   },
-  "unique_pairs_found": 2473,
+  "unique_pairs_found": 2474,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 79,
+      "cooccurrence_count": 80,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -6781,6 +6781,21 @@
         },
         {
           "title": "Bitcoin (BTC), ether (ETH) benefit as altcoins lose their luster: Crypto Markets Today - CoinDesk",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "BitMEX",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "BitMEX Faces Proposed Class Action Seeking Return Of 622 BTC",
+          "asset": "BTC"
+        },
+        {
+          "title": "BitMEX Sets Close-Only Risk Limits Ahead Of September Wind-Down",
           "asset": "BTC"
         }
       ]
@@ -20722,17 +20737,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "BitMEX",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "BitMEX Faces Proposed Class Action Seeking Return Of 622 BTC",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "Crypto Market",
       "cooccurrence_count": 1,
@@ -28318,6 +28322,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin Price Prediction: $100K in Sight as BTC Breaks Past 200-Day EMA - Yahoo Finance",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BitMEX",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BitMEX Sets Close-Only Risk Limits Ahead Of September Wind-Down",
           "asset": "BTC"
         }
       ]
