@@ -3,7 +3,7 @@
     "xrp_entries": 872,
     "btc_entries": 850
   },
-  "unique_entities_profiled": 784,
+  "unique_entities_profiled": 785,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -4035,6 +4035,36 @@
       ]
     },
     {
+      "entity": "OpenZeppelin",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+        "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
+      ]
+    },
+    {
+      "entity": "TRON",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
+      ]
+    },
+    {
       "entity": "Strive",
       "total_mentions": 2,
       "bullish": 2,
@@ -7095,20 +7125,6 @@
       ]
     },
     {
-      "entity": "OpenZeppelin",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
-      ]
-    },
-    {
       "entity": "SPGI",
       "total_mentions": 1,
       "bullish": 1,
@@ -7362,20 +7378,6 @@
     },
     {
       "entity": "CoinsBee",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows"
-      ]
-    },
-    {
-      "entity": "TRON",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -8492,6 +8494,20 @@
       ],
       "example_headlines": [
         "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks"
+      ]
+    },
+    {
+      "entity": "TRON network",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
       ]
     },
     {

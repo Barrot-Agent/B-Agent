@@ -3,7 +3,7 @@
     "xrp_entries": 872,
     "btc_entries": 850
   },
-  "unique_pairs_found": 2470,
+  "unique_pairs_found": 2473,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -19463,6 +19463,39 @@
       "example_headlines": [
         {
           "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenZeppelin",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenZeppelin",
+      "entity_b": "TRON network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "TRON network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network",
           "asset": "XRP"
         }
       ]
