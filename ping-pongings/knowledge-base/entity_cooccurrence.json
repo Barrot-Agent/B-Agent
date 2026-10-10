@@ -3,7 +3,7 @@
     "xrp_entries": 876,
     "btc_entries": 853
   },
-  "unique_pairs_found": 2474,
+  "unique_pairs_found": 2479,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -5686,6 +5686,21 @@
         },
         {
           "title": "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SOL",
+      "entity_b": "Solana",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+          "asset": "XRP"
+        },
+        {
+          "title": "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
           "asset": "XRP"
         }
       ]
@@ -12983,17 +12998,6 @@
     },
     {
       "entity_a": "SOL",
-      "entity_b": "Solana",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SOL",
       "entity_b": "U.S.",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -20116,6 +20120,61 @@
       "example_headlines": [
         {
           "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 12 earnings update",
+      "entity_b": "DeFi Development Corp",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 12 earnings update",
+      "entity_b": "SOL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "August 12 earnings update",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "DeFi Development Corp",
+      "entity_b": "SOL",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "DeFi Development Corp",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
           "asset": "XRP"
         }
       ]

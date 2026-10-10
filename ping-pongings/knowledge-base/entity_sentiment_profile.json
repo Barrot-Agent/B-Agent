@@ -3,7 +3,7 @@
     "xrp_entries": 876,
     "btc_entries": 853
   },
-  "unique_entities_profiled": 785,
+  "unique_entities_profiled": 787,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1946,6 +1946,38 @@
       ]
     },
     {
+      "entity": "Solana",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
+      "entity": "SOL",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
+        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
+      ]
+    },
+    {
       "entity": "MetaMask",
       "total_mentions": 3,
       "bullish": 2,
@@ -3547,36 +3579,6 @@
       "example_headlines": [
         "BitMine Adds 53,501 ETH In $131M Corporate Treasury Move",
         "BitMine ETH Treasury Nears 6 Million Tokens As Total Holdings Reach $17.1B"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
-      ]
-    },
-    {
-      "entity": "SOL",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet"
       ]
     },
     {
@@ -8746,6 +8748,34 @@
       ],
       "example_headlines": [
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
+      ]
+    },
+    {
+      "entity": "DeFi Development Corp",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
+      ]
+    },
+    {
+      "entity": "August 12 earnings update",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
       ]
     },
     {
