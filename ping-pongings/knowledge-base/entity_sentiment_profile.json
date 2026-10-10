@@ -3,7 +3,7 @@
     "xrp_entries": 876,
     "btc_entries": 854
   },
-  "unique_entities_profiled": 787,
+  "unique_entities_profiled": 789,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -594,6 +594,23 @@
       ]
     },
     {
+      "entity": "USDT",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
+      ]
+    },
+    {
       "entity": "CLARITY Act",
       "total_mentions": 7,
       "bullish": 5,
@@ -726,23 +743,6 @@
         "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
         "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 6,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -2075,6 +2075,22 @@
         "World Rolls Out World Money App With Stablecoins And Stripe Integration",
         "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
         "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
+      "entity": "Bybit",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+        "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage"
       ]
     },
     {
@@ -4128,6 +4144,21 @@
       ]
     },
     {
+      "entity": "Oura",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura",
+        "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage"
+      ]
+    },
+    {
       "entity": "Avalanche",
       "total_mentions": 2,
       "bullish": 1,
@@ -4202,21 +4233,6 @@
       "example_headlines": [
         "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
         "Binance Bitcoin volume ratio hits record as futures outweigh spot eight times over"
-      ]
-    },
-    {
-      "entity": "Bybit",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bybit Adds PATH, CYPH And HUT Equity Perpetuals With Up To 25x Leverage",
-        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
       ]
     },
     {
@@ -7575,20 +7591,6 @@
       ]
     },
     {
-      "entity": "Oura",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura"
-      ]
-    },
-    {
       "entity": "FINRA",
       "total_mentions": 1,
       "bullish": 1,
@@ -8300,6 +8302,34 @@
       ],
       "example_headlines": [
         "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
+      ]
+    },
+    {
+      "entity": "OURAUSDT",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "IPO",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage"
       ]
     },
     {
