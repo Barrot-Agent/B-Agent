@@ -3,7 +3,7 @@
     "xrp_entries": 879,
     "btc_entries": 857
   },
-  "unique_entities_profiled": 815,
+  "unique_entities_profiled": 816,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -527,6 +527,23 @@
       ]
     },
     {
+      "entity": "USDT",
+      "total_mentions": 8,
+      "bullish": 5,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 8,
       "bullish": 4,
@@ -591,23 +608,6 @@
         "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
         "Crypto Clarity Act News: Trump Agreed to 80% of the Ethics Deal and Ripple (XRP) Jumped 3.9% - 24/7 ",
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 7,
-      "bullish": 4,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.429,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -1429,6 +1429,22 @@
       ]
     },
     {
+      "entity": "Stripe",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
       "entity": "Financial Conduct Authority",
       "total_mentions": 4,
       "bullish": 2,
@@ -1476,6 +1492,22 @@
         "World Rolls Out World Money App With Stablecoins And Stripe Integration",
         "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
         "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
+      "entity": "TRON",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
+        "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
       ]
     },
     {
@@ -1912,6 +1944,22 @@
       ]
     },
     {
+      "entity": "stablecoin",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+        "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETF",
       "total_mentions": 3,
       "bullish": 2,
@@ -2078,22 +2126,6 @@
       ]
     },
     {
-      "entity": "Stripe",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
-        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
-      ]
-    },
-    {
       "entity": "UK",
       "total_mentions": 3,
       "bullish": 2,
@@ -2108,22 +2140,6 @@
         "FCA Crypto Authorisation Gateway Opens September 30",
         "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
         "FCA Crypto Authorisation Gateway Opens September 30"
-      ]
-    },
-    {
-      "entity": "TRON",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
-        "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
       ]
     },
     {
@@ -3409,21 +3425,6 @@
       "example_headlines": [
         "XRP Futures - CME Group",
         "Bitcoin eyes new August lows as Binance longs face \u2018cleanout\u2019"
-      ]
-    },
-    {
-      "entity": "stablecoin",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
       ]
     },
     {
@@ -8832,6 +8833,20 @@
       ],
       "example_headlines": [
         "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
+      ]
+    },
+    {
+      "entity": "Privy",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows"
       ]
     },
     {

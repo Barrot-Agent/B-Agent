@@ -3,7 +3,7 @@
     "xrp_entries": 879,
     "btc_entries": 857
   },
-  "unique_pairs_found": 2572,
+  "unique_pairs_found": 2581,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -6616,6 +6616,21 @@
         },
         {
           "title": "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "USDT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
           "asset": "XRP"
         }
       ]
@@ -16826,17 +16841,6 @@
       ]
     },
     {
-      "entity_a": "TRON",
-      "entity_b": "USDT",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Asset Manager",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -20330,6 +20334,105 @@
       "example_headlines": [
         {
           "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDT",
+      "entity_b": "stablecoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
           "asset": "XRP"
         }
       ]
