@@ -3,7 +3,7 @@
     "xrp_entries": 879,
     "btc_entries": 858
   },
-  "unique_pairs_found": 2581,
+  "unique_pairs_found": 2585,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 80,
+      "cooccurrence_count": 81,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -457,6 +457,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "US spot Bitcoin ETFs",
       "cooccurrence_count": 10,
       "example_headlines": [
@@ -496,21 +511,6 @@
         },
         {
           "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
           "asset": "XRP"
         }
       ]
@@ -561,6 +561,21 @@
       ]
     },
     {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "SEC",
       "cooccurrence_count": 8,
@@ -571,6 +586,21 @@
         },
         {
           "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Buys Another 950 Bitcoin As Holdings Reach 846,000 BTC",
           "asset": "XRP"
         }
       ]
@@ -696,21 +726,6 @@
       ]
     },
     {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ether",
       "cooccurrence_count": 7,
@@ -736,21 +751,6 @@
         },
         {
           "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Buys Another 950 Bitcoin As Holdings Reach 846,000 BTC",
           "asset": "XRP"
         }
       ]
@@ -1071,6 +1071,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "STRC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BlackRock",
       "entity_b": "IBIT",
       "cooccurrence_count": 5,
@@ -1382,21 +1397,6 @@
         {
           "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "STRC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy sells 1,638 Bitcoin to fund dividends and STRC repurchases",
-          "asset": "BTC"
         }
       ]
     },
@@ -6766,6 +6766,21 @@
         },
         {
           "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "STRC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
         }
       ]
@@ -21098,6 +21113,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "preferred shares",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "preferred shares",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "preferred shares",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "preferred shares",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "21Shares",
       "entity_b": "Ethereum",
       "cooccurrence_count": 1,
@@ -25746,17 +25805,6 @@
       "example_headlines": [
         {
           "title": "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "STRC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
           "asset": "BTC"
         }
       ]
