@@ -3,7 +3,7 @@
     "xrp_entries": 877,
     "btc_entries": 855
   },
-  "unique_entities_profiled": 800,
+  "unique_entities_profiled": 804,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 232,
-      "bullish": 149,
+      "total_mentions": 233,
+      "bullish": 150,
       "neutral": 39,
       "bearish": 44,
-      "net_sentiment_score": 0.453,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 182,
-      "bullish": 117,
+      "total_mentions": 183,
+      "bullish": 118,
       "neutral": 36,
       "bearish": 29,
-      "net_sentiment_score": 0.484,
+      "net_sentiment_score": 0.486,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -177,11 +177,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 24,
-      "bullish": 21,
+      "total_mentions": 25,
+      "bullish": 22,
       "neutral": 1,
       "bearish": 2,
-      "net_sentiment_score": 0.792,
+      "net_sentiment_score": 0.8,
       "assets_seen_in": [
         "XRP"
       ],
@@ -308,6 +308,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 15,
+      "bullish": 10,
+      "neutral": 2,
+      "bearish": 3,
+      "net_sentiment_score": 0.467,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "CFTC",
       "total_mentions": 15,
       "bullish": 8,
@@ -355,23 +372,6 @@
         "Current price of Bitcoin for July 24, 2026 - Fortune",
         "Current price of Bitcoin for July 23, 2026 - Fortune",
         "Current price of Bitcoin for July 22, 2026 - Fortune"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 14,
-      "bullish": 9,
-      "neutral": 2,
-      "bearish": 3,
-      "net_sentiment_score": 0.429,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -3600,6 +3600,21 @@
       ]
     },
     {
+      "entity": "Aptos",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues"
+      ]
+    },
+    {
       "entity": "investment advisers",
       "total_mentions": 2,
       "bullish": 0,
@@ -4067,6 +4082,21 @@
       "example_headlines": [
         "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
         "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force"
+      ]
+    },
+    {
+      "entity": "asset managers",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+        "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes"
       ]
     },
     {
@@ -5932,20 +5962,6 @@
       ]
     },
     {
-      "entity": "Aptos",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise"
-      ]
-    },
-    {
       "entity": "Oracle",
       "total_mentions": 1,
       "bullish": 0,
@@ -7049,20 +7065,6 @@
       ],
       "example_headlines": [
         "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya"
-      ]
-    },
-    {
-      "entity": "asset managers",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk"
       ]
     },
     {
@@ -8351,6 +8353,62 @@
       ],
       "example_headlines": [
         "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage"
+      ]
+    },
+    {
+      "entity": "Aptos Labs",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues"
+      ]
+    },
+    {
+      "entity": "APT",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues"
+      ]
+    },
+    {
+      "entity": "mainnet",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues"
+      ]
+    },
+    {
+      "entity": "validators",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues"
       ]
     },
     {

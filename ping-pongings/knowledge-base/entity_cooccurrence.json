@@ -3,12 +3,12 @@
     "xrp_entries": 877,
     "btc_entries": 855
   },
-  "unique_pairs_found": 2529,
+  "unique_pairs_found": 2540,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 174,
+      "cooccurrence_count": 175,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -98,7 +98,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 23,
+      "cooccurrence_count": 24,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -113,7 +113,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 23,
+      "cooccurrence_count": 24,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -366,6 +366,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 12,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple Labs",
       "entity_b": "SEC",
       "cooccurrence_count": 12,
@@ -397,8 +412,8 @@
     },
     {
       "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 11,
+      "entity_b": "Ripple",
+      "cooccurrence_count": 10,
       "example_headlines": [
         {
           "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
@@ -451,21 +466,6 @@
         },
         {
           "title": "Bitcoin ETF Outflows Hit $201M As Inflow Streak Breaks",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 9,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1906,6 +1906,21 @@
         },
         {
           "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -3766,21 +3781,6 @@
         },
         {
           "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Stablecoin Just Passed $2 Billion. What Does That Mean for XRP? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -6557,6 +6557,51 @@
         {
           "title": "EU Cyber Resilience Act Brings 24-Hour Vulnerability Reporting Into Force",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP Ledger",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes",
+          "asset": "XRP"
         }
       ]
     },
@@ -15923,39 +15968,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "asset managers",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP",
-      "entity_b": "asset managers",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "XRP Ledger",
-      "entity_b": "asset managers",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple says asset managers are preparing for XRP Ledger\u2019s next payments upgrade - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bastion",
       "entity_b": "Bastion Holdings",
       "cooccurrence_count": 1,
@@ -18222,6 +18234,17 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "asset managers",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "U.S. Senate",
       "cooccurrence_count": 1,
@@ -19174,6 +19197,116 @@
       "example_headlines": [
         {
           "title": "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "APT",
+      "entity_b": "Aptos",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "APT",
+      "entity_b": "Aptos Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "APT",
+      "entity_b": "mainnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "APT",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "Aptos Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "mainnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos Labs",
+      "entity_b": "mainnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aptos Labs",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "mainnet",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
           "asset": "XRP"
         }
       ]
