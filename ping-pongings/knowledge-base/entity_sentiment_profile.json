@@ -3,7 +3,7 @@
     "xrp_entries": 877,
     "btc_entries": 855
   },
-  "unique_entities_profiled": 804,
+  "unique_entities_profiled": 806,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 48,
+      "total_mentions": 49,
       "bullish": 29,
-      "neutral": 11,
+      "neutral": 12,
       "bearish": 8,
-      "net_sentiment_score": 0.438,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -275,6 +275,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 17,
+      "bullish": 13,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.765,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "XRP.CC",
       "total_mentions": 16,
       "bullish": 1,
@@ -288,23 +305,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ let's begin.... - moomoo.com"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 16,
-      "bullish": 13,
-      "neutral": 3,
-      "bearish": 0,
-      "net_sentiment_score": 0.812,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -8591,6 +8591,34 @@
       ],
       "example_headlines": [
         "Bitget Wallet Says Global Downloads Have Passed 40 Million"
+      ]
+    },
+    {
+      "entity": "Base",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Base Activity Climbs To 7.5 Million Transactions In A Day"
+      ]
+    },
+    {
+      "entity": "Layer 2",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Base Activity Climbs To 7.5 Million Transactions In A Day"
       ]
     },
     {
