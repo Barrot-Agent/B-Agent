@@ -3,7 +3,7 @@
     "xrp_entries": 877,
     "btc_entries": 855
   },
-  "unique_entities_profiled": 798,
+  "unique_entities_profiled": 800,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1364,6 +1364,22 @@
       ]
     },
     {
+      "entity": "Solana",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi",
+        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
+      ]
+    },
+    {
       "entity": "Comoros",
       "total_mentions": 4,
       "bullish": 4,
@@ -1960,22 +1976,6 @@
         "Ethereum ETFs See Positive Inflows As September Trading Opens",
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens",
-        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
       ]
     },
     {
@@ -4283,6 +4283,21 @@
       ]
     },
     {
+      "entity": "Ondo Finance",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
+        "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
       "entity": "Chainlink",
       "total_mentions": 2,
       "bullish": 1,
@@ -4295,6 +4310,21 @@
       "example_headlines": [
         "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
         "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
+      ]
+    },
+    {
+      "entity": "DeFi",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo Pushes USDY Deeper Into Solana DeFi",
+        "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks"
       ]
     },
     {
@@ -8142,20 +8172,6 @@
       ]
     },
     {
-      "entity": "Ondo Finance",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks"
-      ]
-    },
-    {
       "entity": "Alpaca",
       "total_mentions": 1,
       "bullish": 1,
@@ -8352,6 +8368,34 @@
       ]
     },
     {
+      "entity": "USDY",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
+      "entity": "US Treasuries",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
       "entity": "Division of Market Oversight",
       "total_mentions": 1,
       "bullish": 0,
@@ -8493,20 +8537,6 @@
     },
     {
       "entity": "Uniswap v4",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks"
-      ]
-    },
-    {
-      "entity": "DeFi",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
