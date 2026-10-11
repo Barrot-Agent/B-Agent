@@ -3,7 +3,7 @@
     "xrp_entries": 876,
     "btc_entries": 854
   },
-  "unique_entities_profiled": 789,
+  "unique_entities_profiled": 798,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -746,6 +746,23 @@
       ]
     },
     {
+      "entity": "USDC",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.833,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -876,23 +893,6 @@
         "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.8,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
       ]
     },
     {
@@ -1696,6 +1696,23 @@
       ]
     },
     {
+      "entity": "JPMorgan",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input",
+        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
+      ]
+    },
+    {
       "entity": "Bitcoin ETF",
       "total_mentions": 3,
       "bullish": 3,
@@ -1975,6 +1992,22 @@
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
         "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
+      ]
+    },
+    {
+      "entity": "TRON DAO",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
+        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
+        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
       ]
     },
     {
@@ -2987,19 +3020,18 @@
       ]
     },
     {
-      "entity": "JPMorgan",
+      "entity": "Circle",
       "total_mentions": 2,
-      "bullish": 2,
+      "bullish": 1,
       "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
       "assets_seen_in": [
-        "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-        "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing"
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
       ]
     },
     {
@@ -3757,21 +3789,6 @@
       ]
     },
     {
-      "entity": "TRON DAO",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
-        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent"
-      ]
-    },
-    {
       "entity": "JustLend DAO",
       "total_mentions": 2,
       "bullish": 2,
@@ -3860,6 +3877,21 @@
       "example_headlines": [
         "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C",
         "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball"
+      ]
+    },
+    {
+      "entity": "Justin Sun",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
+        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
       ]
     },
     {
@@ -4065,6 +4097,21 @@
       "example_headlines": [
         "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
         "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
+      ]
+    },
+    {
+      "entity": "TOKEN2049",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
+        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
       ]
     },
     {
@@ -5268,20 +5315,6 @@
     },
     {
       "entity": "Stablecoins",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "Circle",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -6583,20 +6616,6 @@
       ]
     },
     {
-      "entity": "Justin Sun",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat"
-      ]
-    },
-    {
       "entity": "Office of Justin Sun",
       "total_mentions": 1,
       "bullish": 1,
@@ -7294,20 +7313,6 @@
       ],
       "example_headlines": [
         "FCA Targets Three London Premises In Illegal P2P Crypto Trading Crackdown"
-      ]
-    },
-    {
-      "entity": "TOKEN2049",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
       ]
     },
     {
@@ -8543,6 +8548,48 @@
       ]
     },
     {
+      "entity": "StableFX",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
+      ]
+    },
+    {
+      "entity": "Arc",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
+      ]
+    },
+    {
+      "entity": "RFQ",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
+      ]
+    },
+    {
       "entity": "U.S. Senate Banking Committee",
       "total_mentions": 1,
       "bullish": 0,
@@ -8963,6 +9010,62 @@
       ]
     },
     {
+      "entity": "Solana Foundation",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
+      ]
+    },
+    {
+      "entity": "Solana DvP",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
+      ]
+    },
+    {
+      "entity": "MIT license",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
+      ]
+    },
+    {
+      "entity": "financial institutions",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
+      ]
+    },
+    {
       "entity": "BNY Mellon",
       "total_mentions": 1,
       "bullish": 1,
@@ -9002,6 +9105,34 @@
       ],
       "example_headlines": [
         "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA"
+      ]
+    },
+    {
+      "entity": "Blockworks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
+      ]
+    },
+    {
+      "entity": "Digital Asset Summit",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
       ]
     },
     {
