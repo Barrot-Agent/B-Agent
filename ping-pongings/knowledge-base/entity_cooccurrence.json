@@ -3,12 +3,12 @@
     "xrp_entries": 881,
     "btc_entries": 859
   },
-  "unique_pairs_found": 2585,
+  "unique_pairs_found": 2591,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 175,
+      "cooccurrence_count": 177,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,22 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 34,
+      "cooccurrence_count": 35,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SEC",
+      "cooccurrence_count": 29,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -67,21 +82,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "SEC",
-      "cooccurrence_count": 28,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 25,
       "example_headlines": [
@@ -98,7 +98,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 24,
+      "cooccurrence_count": 25,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -113,7 +113,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 24,
+      "cooccurrence_count": 25,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -561,6 +561,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
+          "asset": "XRP"
+        },
+        {
+          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "STRC",
       "entity_b": "Strategy",
       "cooccurrence_count": 8,
@@ -706,21 +721,6 @@
         },
         {
           "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - Yahoo",
-          "asset": "XRP"
-        },
-        {
-          "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
           "asset": "XRP"
         }
       ]
@@ -1101,6 +1101,36 @@
       ]
     },
     {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Donald Trump",
       "cooccurrence_count": 5,
@@ -1426,36 +1456,6 @@
         },
         {
           "title": "NEW: RIPPLE $Ripple (XRP.CC)$ OUTLINES PLAN FOR XRPL QUANTUM RESISTANCE INCLUDING Q-DAY READINESS, M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
           "asset": "XRP"
         }
       ]
@@ -2567,6 +2567,81 @@
         {
           "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brevan Howard",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brevan Howard",
+      "entity_b": "Ripple Prime",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brevan Howard",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Prime",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Prime",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
+          "asset": "XRP"
         }
       ]
     },
@@ -6781,81 +6856,6 @@
         },
         {
           "title": "Strategy turns 1,690 BTC into $108.6M STRC buyback",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brevan Howard",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brevan Howard",
-      "entity_b": "Ripple Prime",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brevan Howard",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Prime",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Prime",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
           "asset": "BTC"
         }
       ]
@@ -20563,6 +20563,28 @@
       ]
     },
     {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "SEC",
       "entity_b": "crypto-asset",
       "cooccurrence_count": 1,
@@ -21581,6 +21603,50 @@
       "example_headlines": [
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$35B alternative investment manager",
+      "entity_b": "Brevan Howard",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$35B alternative investment manager",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$35B alternative investment manager",
+      "entity_b": "Ripple Prime",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "$35B alternative investment manager",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple expands Brevan Howard deal with prime brokerage services",
           "asset": "XRP"
         }
       ]
