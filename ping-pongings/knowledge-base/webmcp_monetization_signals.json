@@ -1,5 +1,5 @@
 {
-  "generated_from": "35 candidate ideas from webmcp_trend_summary.json",
+  "generated_from": "40 candidate ideas from webmcp_trend_summary.json",
   "enriched_candidates": [
     {
       "candidate_tool_idea": "Stateless WebMCP Client",
@@ -8,22 +8,22 @@
         "github": [],
         "npm": [
           {
+            "name": "@mcp-b/webmcp-types",
+            "description": "Compatibility alias for upstream webmcp-types; use webmcp-types directly",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+          },
+          {
             "name": "@mcp-b/global",
             "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/global"
           },
           {
-            "name": "@mcp-b/webmcp-types",
-            "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
+            "name": "@mcp-b/webmcp-polyfill",
+            "description": "Vendored upstream WebMCP polyfill plus temporary declarative tools",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
-          },
-          {
-            "name": "@symbiotejs/symbiote",
-            "description": "Symbiote.js - zero-dependency close-to-platform frontend library to build super-powered web components",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@symbiotejs/symbiote"
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
           }
         ]
       },
@@ -36,21 +36,21 @@
         "github": [
           {
             "name": "cyproxio/mcp-for-security",
-            "stars": 630,
-            "forks": 102,
+            "stars": 631,
+            "forks": 103,
             "url": "https://github.com/cyproxio/mcp-for-security"
           },
           {
             "name": "Sfedfcv/redesigned-pancake",
-            "stars": 268,
+            "stars": 267,
             "forks": 0,
             "url": "https://github.com/Sfedfcv/redesigned-pancake"
           },
           {
-            "name": "jettbrains/-L-",
-            "stars": 160,
-            "forks": 48,
-            "url": "https://github.com/jettbrains/-L-"
+            "name": "graygnatconsole/mcp-audit-tool",
+            "stars": 220,
+            "forks": 5,
+            "url": "https://github.com/graygnatconsole/mcp-audit-tool"
           }
         ],
         "npm": [
@@ -67,10 +67,10 @@
             "url": "https://www.npmjs.com/package/@mcp-ui/client"
           },
           {
-            "name": "@mcp-ui/server",
-            "description": "mcp-ui Server SDK",
+            "name": "@modelcontextprotocol/sdk",
+            "description": "Model Context Protocol implementation for TypeScript",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-ui/server"
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk"
           }
         ]
       },
@@ -83,20 +83,20 @@
         "github": [
           {
             "name": "microsoft/azuredatastudio",
-            "stars": 7681,
+            "stars": 7678,
             "forks": 994,
             "url": "https://github.com/microsoft/azuredatastudio"
           },
           {
             "name": "GameServerManagers/LinuxGSM",
-            "stars": 4914,
-            "forks": 863,
+            "stars": 4913,
+            "forks": 864,
             "url": "https://github.com/GameServerManagers/LinuxGSM"
           },
           {
             "name": "vitodeploy/vito",
             "stars": 3249,
-            "forks": 421,
+            "forks": 419,
             "url": "https://github.com/vitodeploy/vito"
           }
         ],
@@ -114,10 +114,10 @@
             "url": "https://www.npmjs.com/package/@bytelab.studio/ksm"
           },
           {
-            "name": "@sunwu51/mcp-center",
-            "description": "MCP Server management tool that aggregates multiple MCP servers",
+            "name": "divinodesshcommands",
+            "description": "SSH Commands used for managing Divi Nodes. (Used by Server-Management-Tool, Mobile Mocci, and Vocci)",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@sunwu51/mcp-center"
+            "url": "https://www.npmjs.com/package/divinodesshcommands"
           }
         ]
       },
@@ -130,14 +130,14 @@
         "github": [
           {
             "name": "nanobrowser/nanobrowser",
-            "stars": 13957,
-            "forks": 1480,
+            "stars": 14070,
+            "forks": 1488,
             "url": "https://github.com/nanobrowser/nanobrowser"
           },
           {
             "name": "kklt92/awesome-ai-extensions",
-            "stars": 531,
-            "forks": 9,
+            "stars": 532,
+            "forks": 11,
             "url": "https://github.com/kklt92/awesome-ai-extensions"
           },
           {
@@ -177,7 +177,7 @@
         "github": [
           {
             "name": "RobotecAI/rai",
-            "stars": 598,
+            "stars": 602,
             "forks": 77,
             "url": "https://github.com/RobotecAI/rai"
           },
@@ -224,13 +224,13 @@
         "github": [
           {
             "name": "aliyun/alibabacloud-dataworks-mcp-server",
-            "stars": 51,
-            "forks": 16,
+            "stars": 53,
+            "forks": 17,
             "url": "https://github.com/aliyun/alibabacloud-dataworks-mcp-server"
           },
           {
             "name": "ironystock/agentic-obs",
-            "stars": 35,
+            "stars": 38,
             "forks": 6,
             "url": "https://github.com/ironystock/agentic-obs"
           },
@@ -255,10 +255,10 @@
             "url": "https://www.npmjs.com/package/@vercel/detect-agent"
           },
           {
-            "name": "@mastra/core",
-            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "name": "@azure/ai-projects",
+            "description": "Azure AI Projects client library.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mastra/core"
+            "url": "https://www.npmjs.com/package/@azure/ai-projects"
           }
         ]
       },
@@ -318,7 +318,7 @@
         "github": [
           {
             "name": "diegorafs/Chrome-DevTools-MCP",
-            "stars": 40,
+            "stars": 41,
             "forks": 6,
             "url": "https://github.com/diegorafs/Chrome-DevTools-MCP"
           },
@@ -337,16 +337,16 @@
         ],
         "npm": [
           {
-            "name": "@earendil-works/pi-ai",
-            "description": "Unified LLM API with automatic model discovery and provider configuration",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@earendil-works/pi-ai"
-          },
-          {
             "name": "@ironbee-ai/devtools",
             "description": "MCP Server and CLI for IronBee DevTools",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@ironbee-ai/devtools"
+          },
+          {
+            "name": "@earendil-works/pi-ai",
+            "description": "Unified LLM API with automatic model discovery and provider configuration",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@earendil-works/pi-ai"
           },
           {
             "name": "browser-devtools-mcp",
@@ -365,7 +365,7 @@
         "github": [
           {
             "name": "jettbrains/-L-",
-            "stars": 160,
+            "stars": 162,
             "forks": 48,
             "url": "https://github.com/jettbrains/-L-"
           },
@@ -384,6 +384,12 @@
         ],
         "npm": [
           {
+            "name": "gsynchro",
+            "description": "Bidirectional sync of selected project files with a locally mounted folder",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/gsynchro"
+          },
+          {
             "name": "agentic-flow",
             "description": "The agentic meta-harness \u2014 freeze the model, evolve the harness. An open runtime that routes each query to the cost-optimal model, evolves its own harness (planner/context/reviewer/retry/tool/memory/score policy) and autonomously repairs code, then orches",
             "popularity_score": 1,
@@ -394,12 +400,6 @@
             "description": "Playwright Tools for MCP",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@playwright/mcp"
-          },
-          {
-            "name": "@agentic/core",
-            "description": "Agentic AI utils which work with any LLM and TypeScript AI SDK.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@agentic/core"
           }
         ]
       },
@@ -424,7 +424,7 @@
           },
           {
             "name": "jettbrains/-L-",
-            "stars": 160,
+            "stars": 162,
             "forks": 48,
             "url": "https://github.com/jettbrains/-L-"
           }
@@ -459,22 +459,22 @@
         "github": [],
         "npm": [
           {
-            "name": "@mastra/core",
-            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mastra/core"
-          },
-          {
             "name": "@mcp-b/global",
             "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/global"
           },
           {
-            "name": "@mcp-b/react-webmcp",
-            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot",
+            "name": "@mastra/core",
+            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
+            "url": "https://www.npmjs.com/package/@mastra/core"
+          },
+          {
+            "name": "@mcp-b/webmcp-polyfill",
+            "description": "Vendored upstream WebMCP polyfill plus temporary declarative tools",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
           }
         ]
       },
@@ -487,7 +487,7 @@
         "github": [
           {
             "name": "SyedAnas01/mcp-safeguard",
-            "stars": 9,
+            "stars": 10,
             "forks": 6,
             "url": "https://github.com/SyedAnas01/mcp-safeguard"
           },
@@ -568,16 +568,16 @@
             "url": "https://www.npmjs.com/package/@mcp-b/global"
           },
           {
-            "name": "@mcp-b/react-webmcp",
-            "description": "React hooks for Model Context Protocol (MCP) - expose React components as AI tools for Claude, ChatGPT, Cursor, and Copilot",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/react-webmcp"
-          },
-          {
             "name": "@mastra/core",
             "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mastra/core"
+          },
+          {
+            "name": "@ai-sdk/otel",
+            "description": "The **OpenTelemetry integration** for the [AI SDK](https://ai-sdk.dev/docs) collects tracing spans for AI SDK calls and sends them through your configured OpenTelemetry setup.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@ai-sdk/otel"
           }
         ]
       },
@@ -618,7 +618,7 @@
         "github": [
           {
             "name": "jakub-k-slys/substack-gateway-oss",
-            "stars": 33,
+            "stars": 34,
             "forks": 7,
             "url": "https://github.com/jakub-k-slys/substack-gateway-oss"
           },
@@ -700,10 +700,10 @@
         ],
         "npm": [
           {
-            "name": "@aetherwealth/mcp",
-            "description": "Official Aether Wealth MCP server for journals, alerts, forex and crypto market context, and approval-governed broker actions.",
+            "name": "assistant-stream",
+            "description": "Streaming utilities for AI assistants",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@aetherwealth/mcp"
+            "url": "https://www.npmjs.com/package/assistant-stream"
           },
           {
             "name": "@assistant-ui/react",
@@ -728,14 +728,14 @@
         "github": [
           {
             "name": "OptimNow/cloud-finops-skills",
-            "stars": 57,
+            "stars": 58,
             "forks": 17,
             "url": "https://github.com/OptimNow/cloud-finops-skills"
           },
           {
             "name": "awesomemotive/wpvibe-ai-mcp",
             "stars": 20,
-            "forks": 8,
+            "forks": 9,
             "url": "https://github.com/awesomemotive/wpvibe-ai-mcp"
           },
           {
@@ -783,21 +783,21 @@
         "npm": [
           {
             "name": "@mcp-b/webmcp-ts-sdk",
-            "description": "Thin WebMCP-to-MCP v2 browser adapter with native Chrome tool mirroring",
+            "description": "WebMCP browser adapter extending the upstream API with MCP capabilities",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
           },
           {
-            "name": "@mcp-b/webmcp-types",
-            "description": "Strict TypeScript type definitions for the WebMCP core API (document.modelContext)",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
-          },
-          {
             "name": "@mcp-b/webmcp-polyfill",
-            "description": "Strict WebMCP core runtime polyfill for document.modelContext (with deprecated navigator.modelContext alias)",
+            "description": "Vendored upstream WebMCP polyfill plus temporary declarative tools",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-polyfill"
+          },
+          {
+            "name": "@mcp-b/webmcp-types",
+            "description": "Compatibility alias for upstream webmcp-types; use webmcp-types directly",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
           }
         ]
       },
@@ -816,16 +816,16 @@
             "url": "https://www.npmjs.com/package/ajv"
           },
           {
+            "name": "@mcp-b/webmcp-types",
+            "description": "Compatibility alias for upstream webmcp-types; use webmcp-types directly",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+          },
+          {
             "name": "@babel/helper-validator-identifier",
             "description": "Validate identifier/keywords name",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@babel/helper-validator-identifier"
-          },
-          {
-            "name": "fast-xml-parser",
-            "description": "Validate XML, Parse XML, Build XML without C/C++ based libraries",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/fast-xml-parser"
           }
         ]
       },
@@ -838,13 +838,13 @@
         "github": [
           {
             "name": "omkarcloud/google-maps-scraper",
-            "stars": 3583,
-            "forks": 527,
+            "stars": 3612,
+            "forks": 530,
             "url": "https://github.com/omkarcloud/google-maps-scraper"
           },
           {
             "name": "zszszszsz/.config",
-            "stars": 359,
+            "stars": 362,
             "forks": 96,
             "url": "https://github.com/zszszszsz/.config"
           },
@@ -891,16 +891,16 @@
             "url": "https://www.npmjs.com/package/@angular-devkit/build-webpack"
           },
           {
-            "name": "@angular-eslint/builder",
-            "description": "Angular CLI builder for ESLint",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@angular-eslint/builder"
-          },
-          {
             "name": "@syncfusion/ej2-angular-querybuilder",
             "description": "Essential JS 2 QueryBuilder for Angular",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@syncfusion/ej2-angular-querybuilder"
+          },
+          {
+            "name": "@angular-eslint/builder",
+            "description": "Angular CLI builder for ESLint",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@angular-eslint/builder"
           }
         ]
       },
@@ -957,7 +957,14 @@
       "candidate_tool_idea": "Live Auction Inspection Tool",
       "times_surfaced_in_discourse": 1,
       "monetization_signals": {
-        "github": [],
+        "github": [
+          {
+            "name": "Mohammedaaaaaa/egyptcarhub",
+            "stars": 0,
+            "forks": 0,
+            "url": "https://github.com/Mohammedaaaaaa/egyptcarhub"
+          }
+        ],
         "npm": [
           {
             "name": "@deepseek-ai/dsh-tool-cordis",
@@ -988,14 +995,14 @@
         "github": [
           {
             "name": "Sfedfcv/redesigned-pancake",
-            "stars": 268,
+            "stars": 267,
             "forks": 0,
             "url": "https://github.com/Sfedfcv/redesigned-pancake"
           },
           {
             "name": "ukogan/claude-migration-assistant",
-            "stars": 64,
-            "forks": 11,
+            "stars": 65,
+            "forks": 13,
             "url": "https://github.com/ukogan/claude-migration-assistant"
           },
           {
@@ -1019,10 +1026,10 @@
             "url": "https://www.npmjs.com/package/@storybook/addon-mdx-gfm"
           },
           {
-            "name": "@assistant-ui/react",
-            "description": "Open-source TypeScript/React library for building production-grade AI chat experiences",
+            "name": "@assistant-ui/tap",
+            "description": "Reactive state management inspired by React hooks",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@assistant-ui/react"
+            "url": "https://www.npmjs.com/package/@assistant-ui/tap"
           }
         ]
       },
@@ -1035,21 +1042,21 @@
         "github": [
           {
             "name": "vercel-labs/agent-browser",
-            "stars": 43528,
-            "forks": 2938,
+            "stars": 43839,
+            "forks": 2973,
             "url": "https://github.com/vercel-labs/agent-browser"
           },
           {
             "name": "reworkd/AgentGPT",
-            "stars": 36299,
-            "forks": 9234,
+            "stars": 36284,
+            "forks": 9223,
             "url": "https://github.com/reworkd/AgentGPT"
           },
           {
-            "name": "feder-cr/invisible_playwright_mcp",
-            "stars": 31777,
-            "forks": 4688,
-            "url": "https://github.com/feder-cr/invisible_playwright_mcp"
+            "name": "jackwener/OpenCLI",
+            "stars": 30089,
+            "forks": 2934,
+            "url": "https://github.com/jackwener/OpenCLI"
           }
         ],
         "npm": [
@@ -1121,10 +1128,10 @@
             "url": "https://github.com/Jawadnoori1718/HillingOne---Smart-Booking-System"
           },
           {
-            "name": "SheemaMasood381/Autonomous-Event-Planner",
+            "name": "Tanya-garg10/TableGuard-Autonomous-Dark-Factory",
             "stars": 1,
             "forks": 0,
-            "url": "https://github.com/SheemaMasood381/Autonomous-Event-Planner"
+            "url": "https://github.com/Tanya-garg10/TableGuard-Autonomous-Dark-Factory"
           }
         ],
         "npm": [
@@ -1157,20 +1164,20 @@
         "github": [
           {
             "name": "holaboss-ai/holaOS",
-            "stars": 11461,
-            "forks": 730,
+            "stars": 11451,
+            "forks": 729,
             "url": "https://github.com/holaboss-ai/holaOS"
           },
           {
             "name": "OpenSource03/harnss",
-            "stars": 383,
-            "forks": 44,
+            "stars": 384,
+            "forks": 43,
             "url": "https://github.com/OpenSource03/harnss"
           },
           {
             "name": "DLYZZT/pi-desktop",
-            "stars": 254,
-            "forks": 32,
+            "stars": 265,
+            "forks": 33,
             "url": "https://github.com/DLYZZT/pi-desktop"
           }
         ],
@@ -1210,16 +1217,16 @@
             "url": "https://www.npmjs.com/package/assistant-cloud"
           },
           {
-            "name": "@assistant-ui/react-ai-sdk",
-            "description": "Vercel AI SDK adapter for assistant-ui",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@assistant-ui/react-ai-sdk"
-          },
-          {
             "name": "assistant-stream",
             "description": "Streaming utilities for AI assistants",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/assistant-stream"
+          },
+          {
+            "name": "@assistant-ui/react-ai-sdk",
+            "description": "Vercel AI SDK adapter for assistant-ui",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@assistant-ui/react-ai-sdk"
           }
         ],
         "github_error": "HTTP Error 403: Forbidden"
@@ -1250,8 +1257,7 @@
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@web/dev-server"
           }
-        ],
-        "github_error": "HTTP Error 403: Forbidden"
+        ]
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     },
@@ -1259,7 +1265,20 @@
       "candidate_tool_idea": "AI Agent Web Interaction Module",
       "times_surfaced_in_discourse": 1,
       "monetization_signals": {
-        "github": [],
+        "github": [
+          {
+            "name": "TharunNo1/CareLinkAI-Web",
+            "stars": 1,
+            "forks": 3,
+            "url": "https://github.com/TharunNo1/CareLinkAI-Web"
+          },
+          {
+            "name": "ayushsoni05/MedLog-Agent",
+            "stars": 0,
+            "forks": 0,
+            "url": "https://github.com/ayushsoni05/MedLog-Agent"
+          }
+        ],
         "npm": [
           {
             "name": "@deepseek-ai/dsh-host-directory-picker",
@@ -1274,13 +1293,106 @@
             "url": "https://www.npmjs.com/package/@ai-sdk/perplexity"
           },
           {
-            "name": "@opentelemetry/instrumentation-user-interaction",
-            "description": "OpenTelemetry instrumentation for user interactions as click events in a web application",
+            "name": "@opentelemetry/otlp-exporter-base",
+            "description": "OpenTelemetry OTLP Exporter base (for internal use only)",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@opentelemetry/instrumentation-user-interaction"
+            "url": "https://www.npmjs.com/package/@opentelemetry/otlp-exporter-base"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Challenge Submission Platform",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "jettbrains/-L-",
+            "stars": 162,
+            "forks": 48,
+            "url": "https://github.com/jettbrains/-L-"
+          },
+          {
+            "name": "Mdshobu/Liberty-House-Club-Whitepaper",
+            "stars": 35,
+            "forks": 9,
+            "url": "https://github.com/Mdshobu/Liberty-House-Club-Whitepaper"
+          },
+          {
+            "name": "ninadnaik10/codeit",
+            "stars": 22,
+            "forks": 1,
+            "url": "https://github.com/ninadnaik10/codeit"
           }
         ],
-        "github_error": "HTTP Error 403: Forbidden"
+        "npm": [
+          {
+            "name": "pkce-challenge",
+            "description": "Generate or verify a Proof Key for Code Exchange (PKCE) challenge pair",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/pkce-challenge"
+          },
+          {
+            "name": "chofex-cli",
+            "description": "Command-line client for Hack the Andes",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/chofex-cli"
+          },
+          {
+            "name": "goober",
+            "description": "A less than 1KB css-in-js solution",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/goober"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI-powered investment research and analysis agent",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "minhosong88/Investor-Crew",
+            "stars": 10,
+            "forks": 6,
+            "url": "https://github.com/minhosong88/Investor-Crew"
+          },
+          {
+            "name": "mdfaizali390/stocksaigents",
+            "stars": 3,
+            "forks": 2,
+            "url": "https://github.com/mdfaizali390/stocksaigents"
+          },
+          {
+            "name": "wenjack11/AkShare-Investment-Research-Agent",
+            "stars": 2,
+            "forks": 0,
+            "url": "https://github.com/wenjack11/AkShare-Investment-Research-Agent"
+          }
+        ],
+        "npm": [
+          {
+            "name": "deepthink-js",
+            "description": "SOTA NPM module for agentic processes using local or cloud LLMs.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/deepthink-js"
+          },
+          {
+            "name": "@google/genai",
+            "description": "[![NPM Downloads](https://img.shields.io/npm/dw/%40google%2Fgenai)](https://www.npmjs.com/package/@google/genai) [![Node Current](https://img.shields.io/node/v/%40google%2Fgenai)](https://www.npmjs.com/package/@google/genai)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@google/genai"
+          },
+          {
+            "name": "@mimo-ai/plugin",
+            "description": "Plugin SDK for extending MiMoCode",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mimo-ai/plugin"
+          }
+        ]
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     },
@@ -1291,25 +1403,87 @@
         "github": [],
         "npm": [
           {
-            "name": "@mcp-b/webmcp-local-relay",
-            "description": "Local MCP relay for browser WebMCP tools via embed iframe and localhost WebSocket",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-local-relay"
-          },
-          {
             "name": "@mcp-b/webmcp-ts-sdk",
-            "description": "Thin WebMCP-to-MCP v2 browser adapter with native Chrome tool mirroring",
+            "description": "WebMCP browser adapter extending the upstream API with MCP capabilities",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-ts-sdk"
           },
           {
-            "name": "@mcp-b/global",
-            "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
+            "name": "@mcp-b/webmcp-types",
+            "description": "Compatibility alias for upstream webmcp-types; use webmcp-types directly",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/global"
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
+          },
+          {
+            "name": "@mcp-b/webmcp-local-relay",
+            "description": "Local MCP relay for browser WebMCP tools via embed iframe and localhost WebSocket",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-local-relay"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "AI-driven data pipeline orchestration tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "Jiawang1209/AgentDeck",
+            "stars": 0,
+            "forks": 0,
+            "url": "https://github.com/Jiawang1209/AgentDeck"
           }
         ],
-        "github_error": "HTTP Error 403: Forbidden"
+        "npm": [
+          {
+            "name": "@mastra/core",
+            "description": "Mastra is a framework for building AI-powered applications and agents with a modern TypeScript stack.",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@mastra/core"
+          },
+          {
+            "name": "@deepseek-ai/dsh-workflow-ptc",
+            "description": "Workflow orchestration in the shared sandboxed Node PTC runtime",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@deepseek-ai/dsh-workflow-ptc"
+          },
+          {
+            "name": "@langchain/langgraph",
+            "description": "LangGraph",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@langchain/langgraph"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Insurance portal browsing assistant",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [],
+        "npm": [
+          {
+            "name": "@radix-ui/react-portal",
+            "description": "View docs [here](https://radix-ui.com/primitives/docs/utilities/portal).",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@radix-ui/react-portal"
+          },
+          {
+            "name": "@rc-component/portal",
+            "description": "React Portal Component",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@rc-component/portal"
+          },
+          {
+            "name": "@gorhom/portal",
+            "description": "A simplified portal implementation for \u2b55\ufe0f React Native \u2b55\ufe0f",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@gorhom/portal"
+          }
+        ]
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     },
@@ -1317,7 +1491,26 @@
       "candidate_tool_idea": "AI-powered WordPress content assistant",
       "times_surfaced_in_discourse": 1,
       "monetization_signals": {
-        "github": [],
+        "github": [
+          {
+            "name": "sethshoultes/wp-claude-code",
+            "stars": 6,
+            "forks": 1,
+            "url": "https://github.com/sethshoultes/wp-claude-code"
+          },
+          {
+            "name": "ymmreza16/Seo-Content-Assistant",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/ymmreza16/Seo-Content-Assistant"
+          },
+          {
+            "name": "krtrimtech/wp-content-helper",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/krtrimtech/wp-content-helper"
+          }
+        ],
         "npm": [
           {
             "name": "assistant-cloud",
@@ -1326,19 +1519,65 @@
             "url": "https://www.npmjs.com/package/assistant-cloud"
           },
           {
-            "name": "@assistant-ui/react-ai-sdk",
-            "description": "Vercel AI SDK adapter for assistant-ui",
-            "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@assistant-ui/react-ai-sdk"
-          },
-          {
             "name": "assistant-stream",
             "description": "Streaming utilities for AI assistants",
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/assistant-stream"
+          },
+          {
+            "name": "@assistant-ui/react-ai-sdk",
+            "description": "Vercel AI SDK adapter for assistant-ui",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@assistant-ui/react-ai-sdk"
+          }
+        ]
+      },
+      "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
+    },
+    {
+      "candidate_tool_idea": "Enterprise AI Agent Benchmarking Tool",
+      "times_surfaced_in_discourse": 1,
+      "monetization_signals": {
+        "github": [
+          {
+            "name": "ucbepic/data-agent-benchmark-study",
+            "stars": 14,
+            "forks": 3,
+            "url": "https://github.com/ucbepic/data-agent-benchmark-study"
+          },
+          {
+            "name": "Cashcoin123/Cashcoin123",
+            "stars": 3,
+            "forks": 2,
+            "url": "https://github.com/Cashcoin123/Cashcoin123"
+          },
+          {
+            "name": "zavora-ai/mcp-procurement",
+            "stars": 1,
+            "forks": 0,
+            "url": "https://github.com/zavora-ai/mcp-procurement"
           }
         ],
-        "github_error": "HTTP Error 403: Forbidden"
+        "npm": [
+          {
+            "name": "@google/genai",
+            "description": "[![NPM Downloads](https://img.shields.io/npm/dw/%40google%2Fgenai)](https://www.npmjs.com/package/@google/genai) [![Node Current](https://img.shields.io/node/v/%40google%2Fgenai)](https://www.npmjs.com/package/@google/genai)",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@google/genai"
+          },
+          {
+            "name": "@larksuite/cli",
+            "description": "The official CLI for Lark/Feishu open platform",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@larksuite/cli"
+          },
+          {
+            "name": "@vercel/detect-agent",
+            "description": "Detect if code is running in an AI agent or automated development environment",
+            "popularity_score": 1,
+            "url": "https://www.npmjs.com/package/@vercel/detect-agent"
+          }
+        ]
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     }
