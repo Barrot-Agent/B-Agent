@@ -3,7 +3,7 @@
     "xrp_entries": 897,
     "btc_entries": 875
   },
-  "unique_entities_profiled": 829,
+  "unique_entities_profiled": 830,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -930,6 +930,22 @@
       ]
     },
     {
+      "entity": "TRON",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
+      ]
+    },
+    {
       "entity": "Bloomberg",
       "total_mentions": 6,
       "bullish": 3,
@@ -1098,18 +1114,18 @@
       ]
     },
     {
-      "entity": "TRON",
+      "entity": "TRON DAO",
       "total_mentions": 5,
       "bullish": 3,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.4,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.6,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-        "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+        "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
+        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
         "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
       ]
     },
@@ -1427,22 +1443,6 @@
         "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
         "From Information to Action: MEXC Upgrades AI Across the Trading Journey"
-      ]
-    },
-    {
-      "entity": "TRON DAO",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
-        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
-        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
       ]
     },
     {
@@ -2157,6 +2157,22 @@
         "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
         "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access"
+      ]
+    },
+    {
+      "entity": "Geneva",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
+        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
+        "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers"
       ]
     },
     {
@@ -3979,21 +3995,6 @@
       ]
     },
     {
-      "entity": "Geneva",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
-        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
-      ]
-    },
-    {
       "entity": "NVDA",
       "total_mentions": 2,
       "bullish": 2,
@@ -4470,6 +4471,21 @@
       "example_headlines": [
         "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
         "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
+      ]
+    },
+    {
+      "entity": "Privy",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows"
       ]
     },
     {
@@ -8652,6 +8668,20 @@
       ]
     },
     {
+      "entity": "TRON blockchain",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers"
+      ]
+    },
+    {
       "entity": "Bitget Wallet",
       "total_mentions": 1,
       "bullish": 1,
@@ -8943,20 +8973,6 @@
       ],
       "example_headlines": [
         "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher"
-      ]
-    },
-    {
-      "entity": "Privy",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows"
       ]
     },
     {

@@ -3,7 +3,7 @@
     "xrp_entries": 897,
     "btc_entries": 875
   },
-  "unique_pairs_found": 2633,
+  "unique_pairs_found": 2639,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -6932,6 +6932,66 @@
         {
           "title": "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geneva",
+      "entity_b": "TRON",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
+          "asset": "XRP"
+        },
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geneva",
+      "entity_b": "TRON DAO",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
+          "asset": "XRP"
+        },
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "TRON DAO",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
+          "asset": "XRP"
+        },
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "TRON",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        },
+        {
+          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
         }
       ]
     },
@@ -19943,28 +20003,6 @@
     },
     {
       "entity_a": "Geneva",
-      "entity_b": "TRON",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Geneva",
-      "entity_b": "TRON DAO",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Geneva",
       "entity_b": "stablecoins",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -19999,17 +20037,6 @@
     {
       "entity_a": "Switzerland",
       "entity_b": "stablecoins",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TRON",
-      "entity_b": "TRON DAO",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -20036,6 +20063,72 @@
       "example_headlines": [
         {
           "title": "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geneva",
+      "entity_b": "Privy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Geneva",
+      "entity_b": "TRON blockchain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "TRON DAO",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Privy",
+      "entity_b": "TRON blockchain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "TRON blockchain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON DAO",
+      "entity_b": "TRON blockchain",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
           "asset": "XRP"
         }
       ]
@@ -20758,17 +20851,6 @@
     {
       "entity_a": "Privy",
       "entity_b": "Stripe",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Privy",
-      "entity_b": "TRON",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
