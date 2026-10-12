@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-12T16:46:47.599476+00:00",
+  "timestamp": "2026-10-12T17:45:16.261217+00:00",
   "signal_text": "market sideways; low conviction",
-  "score": 0,
-  "confidence": 0.0,
-  "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)",
+  "score": 40,
+  "confidence": 0.75,
+  "source": "groq:neutral",
   "news_score": null,
   "news_entries": 0,
-  "generated_at_unix": 1791823607
+  "generated_at_unix": 1791827116
 }
