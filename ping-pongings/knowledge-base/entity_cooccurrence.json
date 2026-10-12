@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 888,
+    "xrp_entries": 889,
     "btc_entries": 867
   },
-  "unique_pairs_found": 2604,
+  "unique_pairs_found": 2608,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -4476,6 +4476,21 @@
       ]
     },
     {
+      "entity_a": "Stablecoins",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Crypto Influencer",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -4802,6 +4817,21 @@
         {
           "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
         }
       ]
     },
@@ -10184,17 +10214,6 @@
       ]
     },
     {
-      "entity_a": "Stablecoins",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Tether",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
@@ -10801,17 +10820,6 @@
     },
     {
       "entity_a": "Superplanet",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "United States",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -20508,6 +20516,50 @@
       "example_headlines": [
         {
           "title": "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoins",
+      "entity_b": "United States",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stablecoins",
+      "entity_b": "Visa",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "United States",
+      "entity_b": "Visa",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Visa",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
           "asset": "XRP"
         }
       ]
