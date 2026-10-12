@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 889,
+    "xrp_entries": 890,
     "btc_entries": 869
   },
-  "unique_entities_profiled": 823,
+  "unique_entities_profiled": 827,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 277,
+      "total_mentions": 278,
       "bullish": 153,
       "neutral": 40,
-      "bearish": 84,
-      "net_sentiment_score": 0.249,
+      "bearish": 85,
+      "net_sentiment_score": 0.245,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 237,
-      "bullish": 153,
+      "total_mentions": 239,
+      "bullish": 154,
       "neutral": 40,
-      "bearish": 44,
-      "net_sentiment_score": 0.46,
+      "bearish": 45,
+      "net_sentiment_score": 0.456,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 185,
-      "bullish": 120,
+      "total_mentions": 186,
+      "bullish": 121,
       "neutral": 36,
       "bearish": 29,
-      "net_sentiment_score": 0.492,
+      "net_sentiment_score": 0.495,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -410,11 +410,11 @@
     },
     {
       "entity": "The Motley Fool",
-      "total_mentions": 11,
+      "total_mentions": 12,
       "bullish": 9,
       "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.636,
+      "bearish": 3,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -628,6 +628,23 @@
       ]
     },
     {
+      "entity": "U.S. Treasury",
+      "total_mentions": 8,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.375,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "CFTC Crypto Asset Rules Enter White House Review",
+        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
+      ]
+    },
+    {
       "entity": "CLARITY Act",
       "total_mentions": 7,
       "bullish": 5,
@@ -693,23 +710,6 @@
         "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
         "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
         "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
-      ]
-    },
-    {
-      "entity": "U.S. Treasury",
-      "total_mentions": 7,
-      "bullish": 5,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.571,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "CFTC Crypto Asset Rules Enter White House Review",
-        "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network"
       ]
     },
     {
@@ -810,6 +810,22 @@
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
         "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
         "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
       ]
     },
     {
@@ -1014,22 +1030,6 @@
       ]
     },
     {
-      "entity": "Brad Garlinghouse",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
-      ]
-    },
-    {
       "entity": "Hyperliquid",
       "total_mentions": 5,
       "bullish": 3,
@@ -1078,6 +1078,22 @@
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
+      "entity": "Solana",
+      "total_mentions": 5,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi",
+        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -1377,22 +1393,6 @@
         "CFTC Fines Former White House Staffer Over Event Contract Insider Trading",
         "CFTC Crypto Asset Rules Enter White House Review",
         "Data of 54,000 wallet users leaked, CLARITY odds just 10%: Hodler\u2019s Digest"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 4,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Ondo Pushes USDY Deeper Into Solana DeFi",
-        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
       ]
     },
     {
@@ -2089,6 +2089,22 @@
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
         "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
+      ]
+    },
+    {
+      "entity": "Coinpedia",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia",
+        "Ripple [XRP] News Roundup: $2 Billion Whale Buy Meets a Make-Or-Break Resistance Wall - Coinpedia",
+        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -3776,21 +3792,6 @@
       ]
     },
     {
-      "entity": "Coinpedia",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia",
-        "Ripple [XRP] News Roundup: $2 Billion Whale Buy Meets a Make-Or-Break Resistance Wall - Coinpedia"
-      ]
-    },
-    {
       "entity": "Alexis Cathalifaud",
       "total_mentions": 2,
       "bullish": 2,
@@ -4194,6 +4195,21 @@
       "example_headlines": [
         "Binance Announces 24/7 FX Perpetuals With USD/BRL Contract Set For September 21",
         "Binance Brings 24/7 FX Perpetuals To Crypto Traders With USD/BRL"
+      ]
+    },
+    {
+      "entity": "S&P Global",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin",
+        "Bitcoin Falls Back Below $85K As Treasury Yields Jump Above 5%"
       ]
     },
     {
@@ -7217,20 +7233,6 @@
       ]
     },
     {
-      "entity": "S&P Global",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "S&P Global Agrees To Acquire Smart Contract Security Firm OpenZeppelin"
-      ]
-    },
-    {
       "entity": "SPGI",
       "total_mentions": 1,
       "bullish": 1,
@@ -8978,6 +8980,62 @@
       ],
       "example_headlines": [
         "Senate Democrats Demand Public Hearing On Prediction Markets"
+      ]
+    },
+    {
+      "entity": "10-year Treasury yield",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin Falls Back Below $85K As Treasury Yields Jump Above 5%"
+      ]
+    },
+    {
+      "entity": "PMI",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin Falls Back Below $85K As Treasury Yields Jump Above 5%"
+      ]
+    },
+    {
+      "entity": "IBM",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool"
+      ]
+    },
+    {
+      "entity": "Swift",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool"
       ]
     },
     {
