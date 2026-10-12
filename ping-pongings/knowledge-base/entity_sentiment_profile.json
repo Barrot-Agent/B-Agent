@@ -7,11 +7,11 @@
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 276,
+      "total_mentions": 277,
       "bullish": 153,
-      "neutral": 39,
+      "neutral": 40,
       "bearish": 84,
-      "net_sentiment_score": 0.25,
+      "net_sentiment_score": 0.249,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 235,
+      "total_mentions": 236,
       "bullish": 152,
-      "neutral": 39,
+      "neutral": 40,
       "bearish": 44,
-      "net_sentiment_score": 0.46,
+      "net_sentiment_score": 0.458,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -460,6 +460,23 @@
       ]
     },
     {
+      "entity": "USDT",
+      "total_mentions": 9,
+      "bullish": 5,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.444,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
+      ]
+    },
+    {
       "entity": "AI",
       "total_mentions": 9,
       "bullish": 4,
@@ -524,23 +541,6 @@
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 8,
-      "bullish": 5,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -1081,6 +1081,22 @@
       ]
     },
     {
+      "entity": "TRON",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.4,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
+      ]
+    },
+    {
       "entity": "Trump Media",
       "total_mentions": 5,
       "bullish": 1,
@@ -1492,22 +1508,6 @@
         "World Rolls Out World Money App With Stablecoins And Stripe Integration",
         "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
         "OKX Tightens European Institutional Trading Guidance Under MiCA"
-      ]
-    },
-    {
-      "entity": "TRON",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
-        "OpenZeppelin Integrates with TRON to Bring Its Security Standard to the Network"
       ]
     },
     {
@@ -4208,6 +4208,21 @@
       "example_headlines": [
         "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
         "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
+      ]
+    },
+    {
+      "entity": "CoinsBee",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity"
       ]
     },
     {
@@ -7449,20 +7464,6 @@
       ],
       "example_headlines": [
         "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz"
-      ]
-    },
-    {
-      "entity": "CoinsBee",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows"
       ]
     },
     {

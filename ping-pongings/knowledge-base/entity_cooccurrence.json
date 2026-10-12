@@ -3,7 +3,7 @@
     "xrp_entries": 883,
     "btc_entries": 859
   },
-  "unique_pairs_found": 2591,
+  "unique_pairs_found": 2594,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -141,6 +141,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 21,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "Ripple",
       "cooccurrence_count": 20,
@@ -151,21 +166,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 20,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -1611,6 +1611,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "USDT",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Binance",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -2556,7 +2571,7 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "TRON",
       "entity_b": "USDT",
       "cooccurrence_count": 3,
       "example_headlines": [
@@ -2565,8 +2580,8 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant",
-          "asset": "BTC"
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
         }
       ]
     },
@@ -6696,7 +6711,52 @@
       ]
     },
     {
-      "entity_a": "TRON",
+      "entity_a": "Bitcoin",
+      "entity_b": "CoinsBee",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "TRON",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinsBee",
+      "entity_b": "TRON",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinsBee",
       "entity_b": "USDT",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -6705,7 +6765,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
           "asset": "XRP"
         }
       ]
@@ -16769,39 +16829,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "CoinsBee",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "TRC-20",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "TRON",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinsBee",
       "entity_b": "TRC-20",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -16813,18 +16840,7 @@
     },
     {
       "entity_a": "CoinsBee",
-      "entity_b": "TRON",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinsBee",
-      "entity_b": "USDT",
+      "entity_b": "TRC-20",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -17731,6 +17747,39 @@
       "example_headlines": [
         {
           "title": "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CoinsBee",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRON",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDT",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
           "asset": "XRP"
         }
       ]
