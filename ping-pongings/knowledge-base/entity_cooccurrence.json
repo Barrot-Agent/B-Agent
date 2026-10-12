@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 892,
+    "xrp_entries": 894,
     "btc_entries": 871
   },
   "unique_pairs_found": 2626,
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 81,
+      "cooccurrence_count": 82,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -2312,6 +2312,21 @@
         {
           "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot Bitcoin ETF",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs add $347M as BTC falls below $84K after topping $87K",
+          "asset": "XRP"
         }
       ]
     },
@@ -5616,7 +5631,7 @@
       ]
     },
     {
-      "entity_a": "Bitcoin",
+      "entity_a": "BTC",
       "entity_b": "US spot Bitcoin ETF",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -5625,8 +5640,8 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETF inflows return as Ether funds slip into outflows",
-          "asset": "BTC"
+          "title": "Bitcoin ETFs add $347M as BTC falls below $84K after topping $87K",
+          "asset": "XRP"
         }
       ]
     },
@@ -11918,17 +11933,6 @@
       "example_headlines": [
         {
           "title": "Ripple relies on locked XRP reserves to back a $275 million institutional credit line - CryptoSlate",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "US spot Bitcoin ETF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
           "asset": "XRP"
         }
       ]

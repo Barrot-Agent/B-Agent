@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 892,
+    "xrp_entries": 894,
     "btc_entries": 871
   },
   "unique_entities_profiled": 827,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 278,
+      "total_mentions": 279,
       "bullish": 153,
-      "neutral": 40,
+      "neutral": 41,
       "bearish": 85,
-      "net_sentiment_score": 0.245,
+      "net_sentiment_score": 0.244,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 111,
+      "total_mentions": 112,
       "bullish": 57,
-      "neutral": 18,
+      "neutral": 19,
       "bearish": 36,
-      "net_sentiment_score": 0.189,
+      "net_sentiment_score": 0.188,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1362,6 +1362,23 @@
       ]
     },
     {
+      "entity": "US spot Bitcoin ETF",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+        "Bitcoin ETFs add $347M as BTC falls below $84K after topping $87K",
+        "Bitcoin ETF inflows return as Ether funds slip into outflows"
+      ]
+    },
+    {
       "entity": "Strait of Hormuz",
       "total_mentions": 4,
       "bullish": 3,
@@ -1974,23 +1991,6 @@
         "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
         "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
-      ]
-    },
-    {
-      "entity": "US spot Bitcoin ETF",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
-        "Bitcoin ETF inflows return as Ether funds slip into outflows",
-        "Bitcoin ETFs add $189M as August net inflows approach $1B"
       ]
     },
     {
