@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 895,
-    "btc_entries": 872
+    "btc_entries": 873
   },
   "unique_entities_profiled": 827,
   "entities": [
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 49,
-      "bullish": 29,
+      "total_mentions": 50,
+      "bullish": 30,
       "neutral": 12,
       "bearish": 8,
-      "net_sentiment_score": 0.429,
+      "net_sentiment_score": 0.44,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -846,6 +846,23 @@
       ]
     },
     {
+      "entity": "Hyperliquid",
+      "total_mentions": 6,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
       "entity": "ETFs",
       "total_mentions": 6,
       "bullish": 6,
@@ -860,6 +877,23 @@
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
+      ]
+    },
+    {
+      "entity": "Solana",
+      "total_mentions": 6,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi",
+        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -1030,23 +1064,6 @@
       ]
     },
     {
-      "entity": "Hyperliquid",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.2,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
-        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
-      ]
-    },
-    {
       "entity": "BitMEX",
       "total_mentions": 5,
       "bullish": 0,
@@ -1078,22 +1095,6 @@
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Ondo Pushes USDY Deeper Into Solana DeFi",
-        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -4484,6 +4485,38 @@
       "example_headlines": [
         "Base Activity Climbs To 7.5 Million Transactions In A Day",
         "Optimism Says Superchain TVL Has Crossed $14 Billion"
+      ]
+    },
+    {
+      "entity": "21Shares",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
+      "entity": "Polkadot",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
       ]
     },
     {
@@ -9260,34 +9293,6 @@
       ],
       "example_headlines": [
         "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC"
-      ]
-    },
-    {
-      "entity": "21Shares",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
-      ]
-    },
-    {
-      "entity": "Polkadot",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
       ]
     },
     {
