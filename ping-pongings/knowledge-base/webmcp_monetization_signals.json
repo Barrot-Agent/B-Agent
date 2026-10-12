@@ -48,7 +48,7 @@
           },
           {
             "name": "graygnatconsole/mcp-audit-tool",
-            "stars": 220,
+            "stars": 221,
             "forks": 5,
             "url": "https://github.com/graygnatconsole/mcp-audit-tool"
           }
@@ -131,7 +131,7 @@
           {
             "name": "nanobrowser/nanobrowser",
             "stars": 14070,
-            "forks": 1488,
+            "forks": 1487,
             "url": "https://github.com/nanobrowser/nanobrowser"
           },
           {
@@ -1054,7 +1054,7 @@
           },
           {
             "name": "jackwener/OpenCLI",
-            "stars": 30089,
+            "stars": 30091,
             "forks": 2934,
             "url": "https://github.com/jackwener/OpenCLI"
           }
@@ -1208,7 +1208,26 @@
       "candidate_tool_idea": "AI browsing assistant",
       "times_surfaced_in_discourse": 1,
       "monetization_signals": {
-        "github": [],
+        "github": [
+          {
+            "name": "hangwin/mcp-chrome",
+            "stars": 12481,
+            "forks": 1146,
+            "url": "https://github.com/hangwin/mcp-chrome"
+          },
+          {
+            "name": "the-open-agent/openagent",
+            "stars": 5686,
+            "forks": 665,
+            "url": "https://github.com/the-open-agent/openagent"
+          },
+          {
+            "name": "A9T9/RPA",
+            "stars": 2072,
+            "forks": 416,
+            "url": "https://github.com/A9T9/RPA"
+          }
+        ],
         "npm": [
           {
             "name": "assistant-cloud",
@@ -1228,8 +1247,7 @@
             "popularity_score": 1,
             "url": "https://www.npmjs.com/package/@assistant-ui/react-ai-sdk"
           }
-        ],
-        "github_error": "HTTP Error 403: Forbidden"
+        ]
       },
       "note": "Real GitHub/npm activity for similar existing projects - a signal of real-world traction, not a definitive verdict. Product Hunt and Google Trends excluded - see script docstring for why."
     },
@@ -1415,10 +1433,10 @@
             "url": "https://www.npmjs.com/package/@mcp-b/webmcp-types"
           },
           {
-            "name": "@mcp-b/webmcp-local-relay",
-            "description": "Local MCP relay for browser WebMCP tools via embed iframe and localhost WebSocket",
+            "name": "@mcp-b/global",
+            "description": "W3C Web Model Context Protocol (WebMCP) API polyfill. Let AI agents like Claude, ChatGPT, and Gemini interact with your website via document.modelContext.",
             "popularity_score": 1,
-            "url": "https://www.npmjs.com/package/@mcp-b/webmcp-local-relay"
+            "url": "https://www.npmjs.com/package/@mcp-b/global"
           }
         ]
       },
