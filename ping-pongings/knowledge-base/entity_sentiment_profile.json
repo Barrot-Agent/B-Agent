@@ -3,7 +3,7 @@
     "xrp_entries": 883,
     "btc_entries": 859
   },
-  "unique_entities_profiled": 818,
+  "unique_entities_profiled": 822,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1511,6 +1511,23 @@
       ]
     },
     {
+      "entity": "Galaxy",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury",
+        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
+        "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com"
+      ]
+    },
+    {
       "entity": "US",
       "total_mentions": 4,
       "bullish": 1,
@@ -2258,22 +2275,6 @@
         "Ripple expands Brevan Howard deal with prime brokerage services",
         "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
         "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing"
-      ]
-    },
-    {
-      "entity": "Galaxy",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
-        "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com",
-        "Bitcoin ETFs log inflows as cold wallet hack reignites custody debate"
       ]
     },
     {
@@ -8836,6 +8837,62 @@
       ],
       "example_headlines": [
         "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
+      ]
+    },
+    {
+      "entity": "Sky Protocol",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury"
+      ]
+    },
+    {
+      "entity": "sUSDS",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury"
+      ]
+    },
+    {
+      "entity": "SKY",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury"
+      ]
+    },
+    {
+      "entity": "institutional trading business",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury"
       ]
     },
     {
