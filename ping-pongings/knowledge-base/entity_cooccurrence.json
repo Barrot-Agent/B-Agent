@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 896,
+    "xrp_entries": 897,
     "btc_entries": 875
   },
-  "unique_pairs_found": 2626,
+  "unique_pairs_found": 2633,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -637,6 +637,21 @@
     },
     {
       "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 8,
       "example_headlines": [
@@ -767,21 +782,6 @@
         {
           "title": "Hashdex to shut smallest Bitcoin ETF after more than two years",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-          "asset": "XRP"
         }
       ]
     },
@@ -2566,6 +2566,21 @@
         },
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
           "asset": "XRP"
         }
       ]
@@ -6231,21 +6246,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Louisville Athletics",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -6331,6 +6331,21 @@
         },
         {
           "title": "Louisville announces multi-year partnership with Ripple, brings XRP branding to Cardinals basketball",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        },
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
           "asset": "XRP"
         }
       ]
@@ -15077,17 +15092,6 @@
     },
     {
       "entity_a": "ETH",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
       "entity_b": "USDC",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -21077,6 +21081,83 @@
       "example_headlines": [
         {
           "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Silver futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "TokenInsight",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "Silver futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "TokenInsight",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Silver futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "TokenInsight",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Silver futures",
+      "entity_b": "TokenInsight",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve",
           "asset": "XRP"
         }
       ]

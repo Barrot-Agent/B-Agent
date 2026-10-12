@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 896,
+    "xrp_entries": 897,
     "btc_entries": 875
   },
-  "unique_entities_profiled": 827,
+  "unique_entities_profiled": 829,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 112,
-      "bullish": 57,
+      "total_mentions": 113,
+      "bullish": 58,
       "neutral": 19,
       "bearish": 36,
-      "net_sentiment_score": 0.188,
+      "net_sentiment_score": 0.195,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -209,6 +209,23 @@
       ]
     },
     {
+      "entity": "ETH",
+      "total_mentions": 20,
+      "bullish": 13,
+      "neutral": 1,
+      "bearish": 6,
+      "net_sentiment_score": 0.35,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
+        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
+      ]
+    },
+    {
       "entity": "Coldcard",
       "total_mentions": 19,
       "bullish": 4,
@@ -223,23 +240,6 @@
         "Coldcard Security Notice Puts Bitcoin Wallet Entropy Risk Back In Focus",
         "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
         "Coldcard Hardware Bitcoin Wallet Bug Puts Years of BTC Seeds at Risk - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "ETH",
-      "total_mentions": 19,
-      "bullish": 12,
-      "neutral": 1,
-      "bearish": 6,
-      "net_sentiment_score": 0.316,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SharpLink Reports $394M Q2 Loss As Ethereum Revaluation Hits Results",
-        "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds"
       ]
     },
     {
@@ -713,6 +713,22 @@
       ]
     },
     {
+      "entity": "MEXC",
+      "total_mentions": 7,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
       "entity": "Iran",
       "total_mentions": 7,
       "bullish": 3,
@@ -894,22 +910,6 @@
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "Ondo Pushes USDY Deeper Into Solana DeFi",
         "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
-      ]
-    },
-    {
-      "entity": "MEXC",
-      "total_mentions": 6,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
@@ -9041,6 +9041,34 @@
       ],
       "example_headlines": [
         "Bitcoin Falls Back Below $85K As Treasury Yields Jump Above 5%"
+      ]
+    },
+    {
+      "entity": "TokenInsight",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve"
+      ]
+    },
+    {
+      "entity": "Silver futures",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve"
       ]
     },
     {
