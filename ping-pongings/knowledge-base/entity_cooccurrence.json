@@ -3,12 +3,12 @@
     "xrp_entries": 898,
     "btc_entries": 875
   },
-  "unique_pairs_found": 2639,
+  "unique_pairs_found": 2650,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 179,
+      "cooccurrence_count": 181,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 35,
+      "cooccurrence_count": 37,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 29,
+      "cooccurrence_count": 31,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 28,
+      "cooccurrence_count": 29,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 26,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -516,6 +516,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "ETH",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "US stocks",
       "cooccurrence_count": 9,
@@ -591,6 +606,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "SEC",
       "cooccurrence_count": 8,
@@ -637,21 +667,6 @@
     },
     {
       "entity_a": "BTC",
-      "entity_b": "ETH",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Ether, XRP ETF inflow streaks end as Bitcoin funds rebound",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 8,
       "example_headlines": [
@@ -691,6 +706,21 @@
         },
         {
           "title": "XRP Price Explosion Ahead? Analyst Says the Next Major Repricing Could Start Within Months - Bitcoin",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "FXStreet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
@@ -756,16 +786,31 @@
       ]
     },
     {
-      "entity_a": "BTC",
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
       "entity_b": "XRP",
       "cooccurrence_count": 7,
       "example_headlines": [
         {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
           "asset": "XRP"
         }
       ]
@@ -816,21 +861,6 @@
       ]
     },
     {
-      "entity_a": "FXStreet",
-      "entity_b": "XRP",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "SEC",
       "entity_b": "U.S. District Court",
       "cooccurrence_count": 6,
@@ -871,36 +901,6 @@
         },
         {
           "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "XRP",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
           "asset": "XRP"
         }
       ]
@@ -1006,6 +1006,21 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1191,6 +1206,21 @@
       ]
     },
     {
+      "entity_a": "ETH",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ethereum",
       "entity_b": "Hyperliquid",
       "cooccurrence_count": 5,
@@ -1321,21 +1351,6 @@
         },
         {
           "title": "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -1502,21 +1517,6 @@
         {
           "title": "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETH",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        },
-        {
-          "title": "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-          "asset": "XRP"
         }
       ]
     },
@@ -4671,6 +4671,21 @@
       ]
     },
     {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CryptoSlate",
       "entity_b": "Ripple",
       "cooccurrence_count": 2,
@@ -5161,6 +5176,51 @@
         },
         {
           "title": "Why is XRP rallying? - FXStreet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "RippleNet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RippleNet",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RippleNet",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
           "asset": "XRP"
         }
       ]
@@ -6991,6 +7051,36 @@
         },
         {
           "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+          "asset": "XRP"
+        },
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -10938,17 +11028,6 @@
       ]
     },
     {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Korea",
       "entity_b": "Regional Bank",
       "cooccurrence_count": 1,
@@ -11318,39 +11397,6 @@
       "example_headlines": [
         {
           "title": "Why is XRP rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "RippleNet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RippleNet",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RippleNet",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -20607,17 +20653,6 @@
       ]
     },
     {
-      "entity_a": "Circle",
-      "entity_b": "USDC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "RFQ",
       "entity_b": "StableFX",
       "cooccurrence_count": 1,
@@ -21047,6 +21082,61 @@
       ]
     },
     {
+      "entity_a": "Circle",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Treasury Issuance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "Treasury Issuance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury Issuance",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "10-year Treasury yield",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 1,
@@ -21141,17 +21231,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin Falls Back Below $85K As Treasury Yields Jump Above 5%",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
           "asset": "XRP"
         }
       ]
@@ -21295,6 +21374,28 @@
       "example_headlines": [
         {
           "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "FXStreet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Top 3 Price Prediction: Bitcoin, Ethereum, Ripple \u2013 BTC reclaims $84,000, ETH heads toward recent hi",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETH",
+      "entity_b": "FXStreet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Top 3 Price Prediction: Bitcoin, Ethereum, Ripple \u2013 BTC reclaims $84,000, ETH heads toward recent hi",
           "asset": "XRP"
         }
       ]
@@ -22219,6 +22320,50 @@
       "example_headlines": [
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindcx",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindcx",
+      "entity_b": "RippleNet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindcx",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindcx",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
           "asset": "XRP"
         }
       ]

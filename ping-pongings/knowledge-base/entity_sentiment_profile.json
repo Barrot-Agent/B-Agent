@@ -3,7 +3,7 @@
     "xrp_entries": 898,
     "btc_entries": 875
   },
-  "unique_entities_profiled": 830,
+  "unique_entities_profiled": 832,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 240,
-      "bullish": 155,
+      "total_mentions": 243,
+      "bullish": 157,
       "neutral": 40,
-      "bearish": 45,
-      "net_sentiment_score": 0.458,
+      "bearish": 46,
+      "net_sentiment_score": 0.457,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 187,
-      "bullish": 122,
+      "total_mentions": 189,
+      "bullish": 123,
       "neutral": 36,
-      "bearish": 29,
-      "net_sentiment_score": 0.497,
+      "bearish": 30,
+      "net_sentiment_score": 0.492,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 113,
-      "bullish": 58,
+      "total_mentions": 114,
+      "bullish": 59,
       "neutral": 19,
       "bearish": 36,
-      "net_sentiment_score": 0.195,
+      "net_sentiment_score": 0.202,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 55,
+      "total_mentions": 56,
       "bullish": 36,
       "neutral": 6,
-      "bearish": 13,
-      "net_sentiment_score": 0.418,
+      "bearish": 14,
+      "net_sentiment_score": 0.393,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 53,
-      "bullish": 37,
+      "total_mentions": 55,
+      "bullish": 38,
       "neutral": 8,
-      "bearish": 8,
-      "net_sentiment_score": 0.547,
+      "bearish": 9,
+      "net_sentiment_score": 0.527,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -210,11 +210,11 @@
     },
     {
       "entity": "ETH",
-      "total_mentions": 20,
-      "bullish": 13,
+      "total_mentions": 21,
+      "bullish": 14,
       "neutral": 1,
       "bearish": 6,
-      "net_sentiment_score": 0.35,
+      "net_sentiment_score": 0.381,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -645,6 +645,39 @@
       ]
     },
     {
+      "entity": "FXStreet",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
+      "entity": "USDC",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.857,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
       "entity": "CLARITY Act",
       "total_mentions": 7,
       "bullish": 5,
@@ -696,6 +729,22 @@
       ]
     },
     {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 7,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
+      ]
+    },
+    {
       "entity": "US Treasury",
       "total_mentions": 7,
       "bullish": 5,
@@ -710,6 +759,23 @@
         "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
         "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
         "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
+      ]
+    },
+    {
+      "entity": "Solana",
+      "total_mentions": 7,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi",
+        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -743,39 +809,6 @@
         "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%",
         "Bitcoin price slip wipes weekend gains as oil surge hits 5% on Hormuz disappointment"
-      ]
-    },
-    {
-      "entity": "FXStreet",
-      "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-        "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.833,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
       ]
     },
     {
@@ -829,22 +862,6 @@
       ]
     },
     {
-      "entity": "Brad Garlinghouse",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
-      ]
-    },
-    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -893,23 +910,6 @@
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 6,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Ondo Pushes USDY Deeper Into Solana DeFi",
-        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -1876,6 +1876,22 @@
         "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
         "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain",
         "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
+      ]
+    },
+    {
+      "entity": "Circle",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+        "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance"
       ]
     },
     {
@@ -3135,21 +3151,6 @@
       ]
     },
     {
-      "entity": "Circle",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
-        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
-      ]
-    },
-    {
       "entity": "Crypto Influencer",
       "total_mentions": 2,
       "bullish": 2,
@@ -3349,6 +3350,21 @@
       "example_headlines": [
         "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
         "Ripple and Stellar outlook: XRP rally cools, XLM heads toward a make-or-break support - fxstreet.com"
+      ]
+    },
+    {
+      "entity": "RippleNet",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance",
+        "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com"
       ]
     },
     {
@@ -5683,20 +5699,6 @@
       ],
       "example_headlines": [
         "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
-      ]
-    },
-    {
-      "entity": "RippleNet",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Where Will XRP (Ripple) Be in 5 Years? - Yahoo Finance"
       ]
     },
     {
@@ -9032,6 +9034,20 @@
       ]
     },
     {
+      "entity": "Treasury Issuance",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance"
+      ]
+    },
+    {
       "entity": "10-year Treasury yield",
       "total_mentions": 1,
       "bullish": 0,
@@ -9463,6 +9479,20 @@
       ],
       "example_headlines": [
         "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
+      ]
+    },
+    {
+      "entity": "Coindcx",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com"
       ]
     },
     {
