@@ -3,7 +3,7 @@
     "xrp_entries": 906,
     "btc_entries": 885
   },
-  "unique_entities_profiled": 832,
+  "unique_entities_profiled": 833,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -460,6 +460,23 @@
       ]
     },
     {
+      "entity": "AI",
+      "total_mentions": 10,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 4,
+      "net_sentiment_score": 0.1,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
+      ]
+    },
+    {
       "entity": "USDT",
       "total_mentions": 9,
       "bullish": 5,
@@ -474,23 +491,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
         "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
-      ]
-    },
-    {
-      "entity": "AI",
-      "total_mentions": 9,
-      "bullish": 4,
-      "neutral": 1,
-      "bearish": 4,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
-        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
       ]
     },
     {
@@ -645,6 +645,22 @@
       ]
     },
     {
+      "entity": "MEXC",
+      "total_mentions": 8,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
       "entity": "FXStreet",
       "total_mentions": 7,
       "bullish": 4,
@@ -776,22 +792,6 @@
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "Ondo Pushes USDY Deeper Into Solana DeFi",
         "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
-      ]
-    },
-    {
-      "entity": "MEXC",
-      "total_mentions": 7,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
@@ -2206,6 +2206,22 @@
         "FCA Crypto Authorisation Gateway Opens September 30",
         "UK Financial Conduct Authority Formally Opens Crypto Authorisation Regime",
         "FCA Crypto Authorisation Gateway Opens September 30"
+      ]
+    },
+    {
+      "entity": "TOKEN2049",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
+        "MEXC Returns to TOKEN2049 Singapore as Platinum Sponsor with Interactive Experiences and Industry Co",
+        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
       ]
     },
     {
@@ -4278,7 +4294,7 @@
       ]
     },
     {
-      "entity": "TOKEN2049",
+      "entity": "Singapore",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -4289,7 +4305,7 @@
       ],
       "example_headlines": [
         "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
-        "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
+        "MEXC Returns to TOKEN2049 Singapore as Platinum Sponsor with Interactive Experiences and Industry Co"
       ]
     },
     {
@@ -7518,20 +7534,6 @@
       ]
     },
     {
-      "entity": "Singapore",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu"
-      ]
-    },
-    {
       "entity": "Absa CIB",
       "total_mentions": 1,
       "bullish": 1,
@@ -9153,6 +9155,20 @@
       ],
       "example_headlines": [
         "TokenInsight September Report: MEXC Posts Deepest BTC and ETH Futures Depth at $21.03M, Lowest Silve"
+      ]
+    },
+    {
+      "entity": "MEXC Stage",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Returns to TOKEN2049 Singapore as Platinum Sponsor with Interactive Experiences and Industry Co"
       ]
     },
     {
