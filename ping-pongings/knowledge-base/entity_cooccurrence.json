@@ -516,6 +516,21 @@
       ]
     },
     {
+      "entity_a": "STRC",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "ETH",
       "cooccurrence_count": 9,
@@ -586,21 +601,6 @@
         },
         {
           "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
           "asset": "XRP"
         }
       ]
@@ -7082,6 +7082,141 @@
         {
           "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "STRD",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "STRF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRC",
+      "entity_b": "STRK",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRD",
+      "entity_b": "STRF",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRD",
+      "entity_b": "STRK",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRD",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRF",
+      "entity_b": "STRK",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRF",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "STRK",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
         }
       ]
     },
@@ -21473,105 +21608,6 @@
       "example_headlines": [
         {
           "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "STRD",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "STRF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRC",
-      "entity_b": "STRK",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRD",
-      "entity_b": "STRF",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRD",
-      "entity_b": "STRK",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRD",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRF",
-      "entity_b": "STRK",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRF",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "STRK",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
           "asset": "XRP"
         }
       ]
