@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 908,
+    "xrp_entries": 909,
     "btc_entries": 885
   },
-  "unique_entities_profiled": 838,
+  "unique_entities_profiled": 841,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -628,6 +628,23 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 8,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
+      ]
+    },
+    {
       "entity": "U.S. Treasury",
       "total_mentions": 8,
       "bullish": 5,
@@ -758,23 +775,6 @@
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
         "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
         "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
-      ]
-    },
-    {
-      "entity": "US Treasury",
-      "total_mentions": 7,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.429,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions",
-        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks"
       ]
     },
     {
@@ -2222,6 +2222,22 @@
         "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
         "MEXC Returns to TOKEN2049 Singapore as Platinum Sponsor with Interactive Experiences and Industry Co",
         "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
+      ]
+    },
+    {
+      "entity": "Avalanche",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     },
     {
@@ -4397,21 +4413,6 @@
       "example_headlines": [
         "Coinbase Opens IPO Allocations To US Retail Traders Starting With Oura",
         "Bybit Opens Oura Pre-IPO Perpetual Trading With Up To 25x Leverage"
-      ]
-    },
-    {
-      "entity": "Avalanche",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
-        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
       ]
     },
     {
@@ -9659,6 +9660,48 @@
       ],
       "example_headlines": [
         "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
+      ]
+    },
+    {
+      "entity": "Tokenized Treasury Market",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
+      ]
+    },
+    {
+      "entity": "Institutional Investors",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
+      ]
+    },
+    {
+      "entity": "Public Blockchain",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     },
     {
