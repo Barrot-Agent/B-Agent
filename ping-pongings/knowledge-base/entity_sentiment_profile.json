@@ -3,7 +3,7 @@
     "xrp_entries": 912,
     "btc_entries": 886
   },
-  "unique_entities_profiled": 841,
+  "unique_entities_profiled": 843,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1345,6 +1345,22 @@
       ]
     },
     {
+      "entity": "stablecoin",
+      "total_mentions": 4,
+      "bullish": 2,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout",
+        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows"
+      ]
+    },
+    {
       "entity": "Dogecoin",
       "total_mentions": 4,
       "bullish": 1,
@@ -1995,22 +2011,6 @@
       ]
     },
     {
-      "entity": "stablecoin",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
-        "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
-      ]
-    },
-    {
       "entity": "FTX",
       "total_mentions": 3,
       "bullish": 0,
@@ -2189,6 +2189,23 @@
         "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
         "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec",
         "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers"
+      ]
+    },
+    {
+      "entity": "Chainalysis",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops",
+        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout",
+        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
       ]
     },
     {
@@ -3213,6 +3230,21 @@
       ]
     },
     {
+      "entity": "cross\u2011border payments",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect",
+        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout"
+      ]
+    },
+    {
       "entity": "2026",
       "total_mentions": 2,
       "bullish": 0,
@@ -4104,22 +4136,6 @@
       "example_headlines": [
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows"
-      ]
-    },
-    {
-      "entity": "Chainalysis",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops",
-        "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
       ]
     },
     {
@@ -5670,20 +5686,6 @@
       ],
       "example_headlines": [
         "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
-      ]
-    },
-    {
-      "entity": "cross\u2011border payments",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple and Jeonbuk Bank Partner to Modernize Cross-border Payments for Korea\u2019s Regional Banking Sect"
       ]
     },
     {
@@ -9030,6 +9032,34 @@
       ],
       "example_headlines": [
         "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher"
+      ]
+    },
+    {
+      "entity": "global crypto market",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout"
+      ]
+    },
+    {
+      "entity": "2026 Global Crypto Adoption Report",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout"
       ]
     },
     {
