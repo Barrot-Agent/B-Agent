@@ -3,7 +3,7 @@
     "xrp_entries": 924,
     "btc_entries": 901
   },
-  "unique_entities_profiled": 850,
+  "unique_entities_profiled": 854,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1147,6 +1147,23 @@
       ]
     },
     {
+      "entity": "stablecoins",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
       "entity": "Trump Media",
       "total_mentions": 5,
       "bullish": 1,
@@ -1542,22 +1559,6 @@
         "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "stablecoins",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
-        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -12551,6 +12552,62 @@
       ],
       "example_headlines": [
         "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse"
+      ]
+    },
+    {
+      "entity": "Cardano",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Cardano Brings Compliance Rules On-Chain With CIP-0113 Launch"
+      ]
+    },
+    {
+      "entity": "CIP-0113",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Cardano Brings Compliance Rules On-Chain With CIP-0113 Launch"
+      ]
+    },
+    {
+      "entity": "ADA",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Cardano Brings Compliance Rules On-Chain With CIP-0113 Launch"
+      ]
+    },
+    {
+      "entity": "tokenized securities",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Cardano Brings Compliance Rules On-Chain With CIP-0113 Launch"
       ]
     },
     {
