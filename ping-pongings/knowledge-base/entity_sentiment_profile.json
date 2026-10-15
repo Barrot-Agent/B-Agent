@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 920,
-    "btc_entries": 896
+    "btc_entries": 897
   },
-  "unique_entities_profiled": 849,
+  "unique_entities_profiled": 850,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -545,6 +545,23 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 9,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.556,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
+      ]
+    },
+    {
       "entity": "US stocks",
       "total_mentions": 9,
       "bullish": 4,
@@ -642,23 +659,6 @@
         "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
         "Crypto Clarity Act News: Trump Agreed to 80% of the Ethics Deal and Ripple (XRP) Jumped 3.9% - 24/7 ",
         "Trumps\u2019 American Bitcoin reports record BTC output, narrower Q2 loss"
-      ]
-    },
-    {
-      "entity": "US Treasury",
-      "total_mentions": 8,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
-        "US sanctions Iranian maritime firm, says it accepted Bitcoin to evade restrictions"
       ]
     },
     {
@@ -1561,6 +1561,23 @@
       ]
     },
     {
+      "entity": "Avalanche",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
+      ]
+    },
+    {
       "entity": "Bitget",
       "total_mentions": 4,
       "bullish": 1,
@@ -2256,22 +2273,6 @@
         "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
         "MEXC Returns to TOKEN2049 Singapore as Platinum Sponsor with Interactive Experiences and Industry Co",
         "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
-      ]
-    },
-    {
-      "entity": "Avalanche",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
-        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
-        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     },
     {
@@ -4521,6 +4522,22 @@
       "example_headlines": [
         "Ondo And Alpaca Add In-Kind Minting For Tokenized Stocks",
         "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
+      "entity": "AVAX",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     },
     {
@@ -8460,20 +8477,6 @@
       ],
       "example_headlines": [
         "Binance Lets bStocks Tokenized Equities Count As Futures Margin"
-      ]
-    },
-    {
-      "entity": "AVAX",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
       ]
     },
     {
@@ -12548,6 +12551,20 @@
       ],
       "example_headlines": [
         "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse"
+      ]
+    },
+    {
+      "entity": "Tokenized Treasury",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     }
   ]

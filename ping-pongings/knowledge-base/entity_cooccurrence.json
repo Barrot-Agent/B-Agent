@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 920,
-    "btc_entries": 896
+    "btc_entries": 897
   },
-  "unique_pairs_found": 2712,
+  "unique_pairs_found": 2716,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -7086,6 +7086,21 @@
       ]
     },
     {
+      "entity_a": "AVAX",
+      "entity_b": "Avalanche",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
+          "asset": "XRP"
+        },
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "CFTC",
       "entity_b": "prediction markets",
       "cooccurrence_count": 2,
@@ -7531,6 +7546,21 @@
         },
         {
           "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Avalanche",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "XRP"
+        },
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
           "asset": "BTC"
         }
       ]
@@ -19567,17 +19597,6 @@
     },
     {
       "entity_a": "AVAX",
-      "entity_b": "Avalanche",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "AVAX",
       "entity_b": "Bybit",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -23143,17 +23162,6 @@
     {
       "entity_a": "Avalanche",
       "entity_b": "Tokenized Treasury Market",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Avalanche",
-      "entity_b": "US Treasury",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -32101,6 +32109,50 @@
       "example_headlines": [
         {
           "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AVAX",
+      "entity_b": "Tokenized Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "AVAX",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Avalanche",
+      "entity_b": "Tokenized Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Tokenized Treasury",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
           "asset": "BTC"
         }
       ]
