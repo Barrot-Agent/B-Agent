@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 916,
+    "xrp_entries": 919,
     "btc_entries": 894
   },
-  "unique_pairs_found": 2703,
+  "unique_pairs_found": 2709,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 181,
+      "cooccurrence_count": 183,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -98,7 +98,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 26,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -113,7 +113,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 25,
+      "cooccurrence_count": 26,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -456,6 +456,21 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 10,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Strategy",
       "cooccurrence_count": 10,
@@ -502,7 +517,7 @@
     },
     {
       "entity_a": "CoinDesk",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 9,
       "example_headlines": [
         {
@@ -510,7 +525,7 @@
           "asset": "XRP"
         },
         {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
           "asset": "XRP"
         }
       ]
@@ -557,21 +572,6 @@
         {
           "title": "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk",
-          "asset": "XRP"
         }
       ]
     },
@@ -1311,6 +1311,21 @@
       ]
     },
     {
+      "entity_a": "CoinDesk",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+          "asset": "XRP"
+        },
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Ripple",
       "entity_b": "institutional investors",
       "cooccurrence_count": 4,
@@ -1581,6 +1596,36 @@
       ]
     },
     {
+      "entity_a": "CryptoRank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -1801,21 +1846,6 @@
         },
         {
           "title": "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CoinDesk",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-          "asset": "XRP"
-        },
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
           "asset": "XRP"
         }
       ]
@@ -2386,36 +2416,6 @@
         },
         {
           "title": "Bitcoin ETF inflows hit $3.8B in strongest three-week stretch of 2026",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
           "asset": "XRP"
         }
       ]
@@ -7156,6 +7156,21 @@
         },
         {
           "title": "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitget Wallet Says Global Downloads Have Passed 40 Million",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
           "asset": "XRP"
         }
       ]
@@ -20354,17 +20369,6 @@
       ]
     },
     {
-      "entity_a": "Bitget",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitget Wallet Says Global Downloads Have Passed 40 Million",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitget Wallet",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
@@ -21988,6 +21992,72 @@
       "example_headlines": [
         {
           "title": "The Clearing House Picks Quant For US Tokenized Deposit Network",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "CryptoRank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "CoinDesk",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
           "asset": "XRP"
         }
       ]

@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 916,
+    "xrp_entries": 919,
     "btc_entries": 894
   },
   "unique_entities_profiled": 848,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 243,
-      "bullish": 157,
+      "total_mentions": 245,
+      "bullish": 158,
       "neutral": 40,
-      "bearish": 46,
-      "net_sentiment_score": 0.457,
+      "bearish": 47,
+      "net_sentiment_score": 0.453,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 189,
-      "bullish": 123,
+      "total_mentions": 191,
+      "bullish": 124,
       "neutral": 36,
-      "bearish": 30,
-      "net_sentiment_score": 0.492,
+      "bearish": 31,
+      "net_sentiment_score": 0.487,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -125,6 +125,23 @@
       ]
     },
     {
+      "entity": "CoinDesk",
+      "total_mentions": 32,
+      "bullish": 21,
+      "neutral": 1,
+      "bearish": 10,
+      "net_sentiment_score": 0.344,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
+      ]
+    },
+    {
       "entity": "Moomoo",
       "total_mentions": 31,
       "bullish": 7,
@@ -139,23 +156,6 @@
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo",
         "$Ripple (XRP.CC)$ - Moomoo"
-      ]
-    },
-    {
-      "entity": "CoinDesk",
-      "total_mentions": 31,
-      "bullish": 21,
-      "neutral": 1,
-      "bearish": 9,
-      "net_sentiment_score": 0.387,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk",
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "XRP slips below $1 even as a Korean regional bank adopts Ripple Payments - CoinDesk"
       ]
     },
     {
@@ -177,11 +177,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 26,
+      "total_mentions": 27,
       "bullish": 23,
       "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.808,
+      "bearish": 3,
+      "net_sentiment_score": 0.741,
       "assets_seen_in": [
         "XRP"
       ],
@@ -594,6 +594,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 8,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank"
+      ]
+    },
+    {
       "entity": "Nasdaq",
       "total_mentions": 8,
       "bullish": 8,
@@ -725,23 +742,6 @@
         "Ripple Unlocks 30 EU Markets With MiCA License: Can the CLARITY Act Push XRP to $10? - CCN.com",
         "Donald Trump Crypto Summit Signals CLARITY Act Action \u2014 4 AI Models Predict Bitcoin, Ethereum and XR",
         "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
-      ]
-    },
-    {
-      "entity": "BlackRock",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "Bitcoin ETFs post $233M inflows, pushing week back into the green"
       ]
     },
     {
@@ -1446,6 +1446,22 @@
       ]
     },
     {
+      "entity": "CryptoRank",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+        "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+        "Top Ripple Price Predictions as XRP Reclaims $1.50 - CryptoRank"
+      ]
+    },
+    {
       "entity": "Comoros",
       "total_mentions": 4,
       "bullish": 4,
@@ -1542,6 +1558,23 @@
         "World Rolls Out World Money App With Stablecoins And Stripe Integration",
         "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
         "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
+      "entity": "Bitget",
+      "total_mentions": 4,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitget Wallet Says Global Downloads Have Passed 40 Million",
+        "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+        "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC"
       ]
     },
     {
@@ -2028,22 +2061,6 @@
       ]
     },
     {
-      "entity": "CryptoRank",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-        "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-        "Top Ripple Price Predictions as XRP Reclaims $1.50 - CryptoRank"
-      ]
-    },
-    {
       "entity": "Quantum computing",
       "total_mentions": 3,
       "bullish": 1,
@@ -2288,23 +2305,6 @@
         "Binance Lets bStocks Tokenized Equities Count As Futures Margin",
         "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Bitget",
-      "total_mentions": 3,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitget Wallet Says Global Downloads Have Passed 40 Million",
-        "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
-        "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
       ]
     },
     {
