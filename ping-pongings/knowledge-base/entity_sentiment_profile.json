@@ -3,7 +3,7 @@
     "xrp_entries": 924,
     "btc_entries": 902
   },
-  "unique_entities_profiled": 854,
+  "unique_entities_profiled": 857,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -578,6 +578,23 @@
       ]
     },
     {
+      "entity": "USDC",
+      "total_mentions": 8,
+      "bullish": 7,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.875,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 8,
       "bullish": 4,
@@ -708,23 +725,6 @@
         "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
         "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.857,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
       ]
     },
     {
@@ -1345,6 +1345,22 @@
       ]
     },
     {
+      "entity": "Circle",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+        "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance"
+      ]
+    },
+    {
       "entity": "TRX",
       "total_mentions": 4,
       "bullish": 2,
@@ -1943,22 +1959,6 @@
         "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
         "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain",
         "Bitcoin sell pressure \u2018closer to exhaustion\u2019 after $4B USDT market-cap drop: CryptoQuant"
-      ]
-    },
-    {
-      "entity": "Circle",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
-        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
-        "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance"
       ]
     },
     {
@@ -9570,6 +9570,48 @@
       ],
       "example_headlines": [
         "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC"
+      ]
+    },
+    {
+      "entity": "Volante Technologies",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions"
+      ]
+    },
+    {
+      "entity": "major institutions",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions"
+      ]
+    },
+    {
+      "entity": "banking platform",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions"
       ]
     },
     {

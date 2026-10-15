@@ -3,7 +3,7 @@
     "xrp_entries": 924,
     "btc_entries": 902
   },
-  "unique_pairs_found": 2726,
+  "unique_pairs_found": 2735,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2656,6 +2656,21 @@
         },
         {
           "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "USDC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+          "asset": "XRP"
+        },
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
           "asset": "XRP"
         }
       ]
@@ -7186,21 +7201,6 @@
         },
         {
           "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Circle",
-      "entity_b": "USDC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
-          "asset": "XRP"
-        },
-        {
-          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
           "asset": "XRP"
         }
       ]
@@ -22605,6 +22605,105 @@
       "example_headlines": [
         {
           "title": "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Volante Technologies",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "banking platform",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "major institutions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDC",
+      "entity_b": "Volante Technologies",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDC",
+      "entity_b": "banking platform",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDC",
+      "entity_b": "major institutions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Volante Technologies",
+      "entity_b": "banking platform",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Volante Technologies",
+      "entity_b": "major institutions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "banking platform",
+      "entity_b": "major institutions",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Circle Brings USDC Workflows Into Banking Platform Used By Major Institutions",
           "asset": "XRP"
         }
       ]
