@@ -3,7 +3,7 @@
     "xrp_entries": 920,
     "btc_entries": 895
   },
-  "unique_pairs_found": 2709,
+  "unique_pairs_found": 2712,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -22454,6 +22454,39 @@
       "example_headlines": [
         {
           "title": "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ISO 20022",
+      "entity_b": "Oracle",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ISO 20022",
+      "entity_b": "Swift",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Oracle",
+      "entity_b": "Swift",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger",
           "asset": "XRP"
         }
       ]

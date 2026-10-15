@@ -3,7 +3,7 @@
     "xrp_entries": 920,
     "btc_entries": 895
   },
-  "unique_entities_profiled": 848,
+  "unique_entities_profiled": 849,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -3827,6 +3827,21 @@
       ]
     },
     {
+      "entity": "Oracle",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise",
+        "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
+      ]
+    },
+    {
       "entity": "investment advisers",
       "total_mentions": 2,
       "bullish": 0,
@@ -4582,6 +4597,21 @@
       "example_headlines": [
         "Base Activity Climbs To 7.5 Million Transactions In A Day",
         "Optimism Says Superchain TVL Has Crossed $14 Billion"
+      ]
+    },
+    {
+      "entity": "Swift",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+        "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
       ]
     },
     {
@@ -6138,20 +6168,6 @@
     },
     {
       "entity": "SUI",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Switchboard Halts Oracle Operations On SUI And Aptos After Potential Compromise"
-      ]
-    },
-    {
-      "entity": "Oracle",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
@@ -9217,20 +9233,6 @@
       ]
     },
     {
-      "entity": "Swift",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool"
-      ]
-    },
-    {
       "entity": "Letitia James",
       "total_mentions": 1,
       "bullish": 0,
@@ -9508,6 +9510,20 @@
       ],
       "example_headlines": [
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
+      ]
+    },
+    {
+      "entity": "ISO 20022",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
       ]
     },
     {
