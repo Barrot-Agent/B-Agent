@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 925,
+    "xrp_entries": 926,
     "btc_entries": 907
   },
-  "unique_entities_profiled": 857,
+  "unique_entities_profiled": 860,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 245,
-      "bullish": 158,
+      "total_mentions": 246,
+      "bullish": 159,
       "neutral": 40,
       "bearish": 47,
-      "net_sentiment_score": 0.453,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1114,6 +1114,22 @@
       ]
     },
     {
+      "entity": "stablecoin",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
+        "dtcpay Completes $25M Series A As SBI Group Joins Stablecoin Payments Push",
+        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout"
+      ]
+    },
+    {
       "entity": "U.S. Securities and Exchange Commission",
       "total_mentions": 5,
       "bullish": 1,
@@ -1375,22 +1391,6 @@
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
         "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
         "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
-      ]
-    },
-    {
-      "entity": "stablecoin",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
-        "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout",
-        "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows"
       ]
     },
     {
@@ -7358,6 +7358,48 @@
       ],
       "example_headlines": [
         "Coinbase Files To Bring Single-Stock Perpetual Futures To US Market"
+      ]
+    },
+    {
+      "entity": "dtcpay",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "dtcpay Completes $25M Series A As SBI Group Joins Stablecoin Payments Push"
+      ]
+    },
+    {
+      "entity": "SBI Group",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "dtcpay Completes $25M Series A As SBI Group Joins Stablecoin Payments Push"
+      ]
+    },
+    {
+      "entity": "Series A",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "dtcpay Completes $25M Series A As SBI Group Joins Stablecoin Payments Push"
       ]
     },
     {
