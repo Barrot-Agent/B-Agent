@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 927,
-    "btc_entries": 908
+    "btc_entries": 909
   },
-  "unique_pairs_found": 2745,
+  "unique_pairs_found": 2754,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2672,6 +2672,21 @@
         {
           "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "USDC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "BTC"
         }
       ]
     },
@@ -7357,21 +7372,6 @@
     },
     {
       "entity_a": "CFTC",
-      "entity_b": "USDC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "XRP"
-        },
-        {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
       "entity_b": "USDC",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -32472,6 +32472,105 @@
       "example_headlines": [
         {
           "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Coinbase Prime",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Samsung",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Samsung Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Prime",
+      "entity_b": "Samsung",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Prime",
+      "entity_b": "Samsung Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Prime",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Samsung",
+      "entity_b": "Samsung Wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Samsung",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Samsung Wallet",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
           "asset": "BTC"
         }
       ]
