@@ -3,7 +3,7 @@
     "xrp_entries": 932,
     "btc_entries": 921
   },
-  "unique_entities_profiled": 865,
+  "unique_entities_profiled": 873,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 247,
+      "total_mentions": 248,
       "bullish": 160,
-      "neutral": 40,
+      "neutral": 41,
       "bearish": 47,
-      "net_sentiment_score": 0.457,
+      "net_sentiment_score": 0.456,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -4481,6 +4481,21 @@
       ]
     },
     {
+      "entity": "LayerZero",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain",
+        "KelpDAO Sues LayerZero Over $292M rsETH Bridge Exploit"
+      ]
+    },
+    {
       "entity": "OKX",
       "total_mentions": 2,
       "bullish": 1,
@@ -8300,20 +8315,6 @@
       ]
     },
     {
-      "entity": "LayerZero",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain"
-      ]
-    },
-    {
       "entity": "USAT",
       "total_mentions": 1,
       "bullish": 1,
@@ -9473,6 +9474,118 @@
       ],
       "example_headlines": [
         "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions"
+      ]
+    },
+    {
+      "entity": "KelpDAO",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "KelpDAO Sues LayerZero Over $292M rsETH Bridge Exploit"
+      ]
+    },
+    {
+      "entity": "Evercrest Technologies",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "KelpDAO Sues LayerZero Over $292M rsETH Bridge Exploit"
+      ]
+    },
+    {
+      "entity": "Bryan Pellegrino",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "KelpDAO Sues LayerZero Over $292M rsETH Bridge Exploit"
+      ]
+    },
+    {
+      "entity": "rsETH",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "KelpDAO Sues LayerZero Over $292M rsETH Bridge Exploit"
+      ]
+    },
+    {
+      "entity": "Summer Mersinger",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Blockchain Association CEO Summer Mersinger To Step Down In October"
+      ]
+    },
+    {
+      "entity": "Kristin Smith",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Blockchain Association CEO Summer Mersinger To Step Down In October"
+      ]
+    },
+    {
+      "entity": "Blockchain Association",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Blockchain Association CEO Summer Mersinger To Step Down In October"
+      ]
+    },
+    {
+      "entity": "U.S. digital-asset legislation",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Blockchain Association CEO Summer Mersinger To Step Down In October"
       ]
     },
     {
