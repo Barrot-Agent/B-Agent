@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 941,
+    "xrp_entries": 942,
     "btc_entries": 930
   },
-  "unique_entities_profiled": 873,
+  "unique_entities_profiled": 876,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -375,6 +375,23 @@
       ]
     },
     {
+      "entity": "Binance",
+      "total_mentions": 14,
+      "bullish": 6,
+      "neutral": 4,
+      "bearish": 4,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
+        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
+        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
+      ]
+    },
+    {
       "entity": "Federal Reserve",
       "total_mentions": 13,
       "bullish": 10,
@@ -389,23 +406,6 @@
         "XRP Price Slides as Senate Drops Clarity Act and Fed Decision Looms - Yahoo Finance",
         "Fed Research Compares Wholesale CBDC Settlement With Tokenized Deposits",
         "Bitcoin price wedged into \u2018most divided\u2019 FOMC as Iran war spikes oil prices 8%"
-      ]
-    },
-    {
-      "entity": "Binance",
-      "total_mentions": 13,
-      "bullish": 5,
-      "neutral": 4,
-      "bearish": 4,
-      "net_sentiment_score": 0.077,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
-        "Binance Theft Lawsuit Can Proceed In Federal Court, Appeals Panel Rules",
-        "Ripple (XRP) Whales Are Pulling Millions Off Binance: The $2 Level Is Back in Focus - CryptoPotato"
       ]
     },
     {
@@ -4646,6 +4646,21 @@
       "example_headlines": [
         "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
         "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
+      ]
+    },
+    {
+      "entity": "Solana Foundation",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Hires Former Binance CMO For Institutional Push",
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
       ]
     },
     {
@@ -9449,6 +9464,48 @@
       ]
     },
     {
+      "entity": "Rachel Conlan",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Hires Former Binance CMO For Institutional Push"
+      ]
+    },
+    {
+      "entity": "Jamal Raees",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Hires Former Binance CMO For Institutional Push"
+      ]
+    },
+    {
+      "entity": "Polygon Labs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Hires Former Binance CMO For Institutional Push"
+      ]
+    },
+    {
       "entity": "crypto-asset",
       "total_mentions": 1,
       "bullish": 0,
@@ -9950,20 +10007,6 @@
       ],
       "example_headlines": [
         "Ripple expands Brevan Howard deal with prime brokerage services"
-      ]
-    },
-    {
-      "entity": "Solana Foundation",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
       ]
     },
     {
