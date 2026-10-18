@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 960,
+    "xrp_entries": 961,
     "btc_entries": 946
   },
-  "unique_entities_profiled": 882,
+  "unique_entities_profiled": 885,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -511,6 +511,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 9,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.778,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
       "entity": "Ether",
       "total_mentions": 9,
       "bullish": 7,
@@ -641,23 +658,6 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
         "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
-      ]
-    },
-    {
-      "entity": "BlackRock",
-      "total_mentions": 8,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank"
       ]
     },
     {
@@ -4361,6 +4361,21 @@
       ]
     },
     {
+      "entity": "Ondo",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone",
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
       "entity": "Singapore",
       "total_mentions": 2,
       "bullish": 2,
@@ -7547,20 +7562,6 @@
       ]
     },
     {
-      "entity": "Ondo",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
-      ]
-    },
-    {
       "entity": "Oasis Pro",
       "total_mentions": 1,
       "bullish": 1,
@@ -9392,6 +9393,48 @@
       ],
       "example_headlines": [
         "New York Sues Polymarket Over Alleged Illegal Gambling Operation"
+      ]
+    },
+    {
+      "entity": "Ondo Global Markets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
+      "entity": "tokenized portfolios",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
+      "entity": "on\u2011chain tokens",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
       ]
     },
     {
