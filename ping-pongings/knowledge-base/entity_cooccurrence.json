@@ -3,7 +3,7 @@
     "xrp_entries": 952,
     "btc_entries": 941
   },
-  "unique_pairs_found": 2791,
+  "unique_pairs_found": 2810,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -426,6 +426,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
+          "asset": "XRP"
+        },
+        {
+          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Ripple",
       "cooccurrence_count": 10,
@@ -466,21 +481,6 @@
         },
         {
           "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Strategy",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
-          "asset": "XRP"
-        },
-        {
-          "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
           "asset": "XRP"
         }
       ]
@@ -23600,6 +23600,116 @@
       ]
     },
     {
+      "entity_a": "Arjun Sethi",
+      "entity_b": "Kraken",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arjun Sethi",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arjun Sethi",
+      "entity_b": "Payward",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arjun Sethi",
+      "entity_b": "Vugar Usi Zade",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kraken",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kraken",
+      "entity_b": "Payward",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Kraken",
+      "entity_b": "Vugar Usi Zade",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Payward",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "Vugar Usi Zade",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Payward",
+      "entity_b": "Vugar Usi Zade",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "$35B alternative investment manager",
       "entity_b": "Brevan Howard",
       "cooccurrence_count": 1,
@@ -23947,6 +24057,105 @@
       "example_headlines": [
         {
           "title": "BNY Expands Regulated Crypto Custody Across The European Union Under MiCA",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Q3 2026",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Webinar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q3 2026",
+      "entity_b": "Strategy",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q3 2026",
+      "entity_b": "US markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Q3 2026",
+      "entity_b": "Webinar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "US markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Strategy",
+      "entity_b": "Webinar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US markets",
+      "entity_b": "Webinar",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Strategy Sets October 29 Date For Its Next Major Bitcoin Treasury Update",
           "asset": "XRP"
         }
       ]
