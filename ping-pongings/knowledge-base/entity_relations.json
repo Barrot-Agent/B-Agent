@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 141,
+  "total_classified": 144,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1270,6 +1270,33 @@
       "relation_type": "correlated_unclear",
       "justification": "Both headlines involve regulatory matters, yet they do not explicitly connect CFTC and SEC, making their relationship unclear.",
       "classified_at": "2026-10-12T10:10:37Z"
+    },
+    {
+      "pair_key": "Brad Garlinghouse|Ripple",
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 7,
+      "relation_type": "same_event",
+      "justification": "Both headlines directly link Brad Garlinghouse with Ripple in the context of a Wyoming appearance and a market bet, indicating they are mentioned together in the same news events.",
+      "classified_at": "2026-10-19T10:03:47Z"
+    },
+    {
+      "pair_key": "Brad Garlinghouse|XRP",
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "relation_type": "correlated_unclear",
+      "justification": "The headlines show Brad Garlinghouse and XRP mentioned together in contexts of a Wyoming appearance and price speculation, but they do not explicitly define a clear causal, regulatory, competitive, complementary, or same\u2011event relationship.",
+      "classified_at": "2026-10-19T10:03:50Z"
+    },
+    {
+      "pair_key": "SEC|U.S. District Court",
+      "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 6,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines do not contain any explicit information linking the SEC and the U.S. District Court, making their relationship unclear.",
+      "classified_at": "2026-10-19T10:03:53Z"
     }
   ]
 }
