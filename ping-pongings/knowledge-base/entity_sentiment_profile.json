@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 974,
+    "xrp_entries": 975,
     "btc_entries": 967
   },
-  "unique_entities_profiled": 890,
+  "unique_entities_profiled": 891,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 281,
-      "bullish": 155,
+      "total_mentions": 282,
+      "bullish": 156,
       "neutral": 41,
       "bearish": 85,
-      "net_sentiment_score": 0.249,
+      "net_sentiment_score": 0.252,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -712,6 +712,23 @@
       ]
     },
     {
+      "entity": "Solana",
+      "total_mentions": 8,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
       "entity": "FXStreet",
       "total_mentions": 7,
       "bullish": 4,
@@ -775,23 +792,6 @@
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
         "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
         "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 7,
-      "bullish": 7,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Ondo Pushes USDY Deeper Into Solana DeFi",
-        "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia"
       ]
     },
     {
@@ -1127,6 +1127,23 @@
         "Treasury Proposes Stablecoin Licensing Rules Under GENIUS Act",
         "dtcpay Completes $25M Series A As SBI Group Joins Stablecoin Payments Push",
         "Chainalysis Says Crypto Activity Barely Fell Despite $2.1T Market Rout"
+      ]
+    },
+    {
+      "entity": "Avalanche",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.8,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
+        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade"
       ]
     },
     {
@@ -1575,23 +1592,6 @@
         "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Avalanche",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.75,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge",
-        "Bybit Adds Support For Avalanche v1.15.0 Network Upgrade",
-        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     },
     {
@@ -2059,6 +2059,22 @@
         "XRP Futures - CME Group",
         "Micro XRP Futures - CME Group",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Chainlink",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+        "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
+        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
       ]
     },
     {
@@ -4590,21 +4606,6 @@
       ]
     },
     {
-      "entity": "Chainlink",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
-        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
-      ]
-    },
-    {
       "entity": "DeFi",
       "total_mentions": 2,
       "bullish": 2,
@@ -6215,6 +6216,20 @@
       ],
       "example_headlines": [
         "Bitcoin Holds $78K As Strait Of Hormuz Strike Lifts Oil Above $90"
+      ]
+    },
+    {
+      "entity": "Charles Schwab",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum"
       ]
     },
     {
