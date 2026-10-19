@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 978,
+    "xrp_entries": 979,
     "btc_entries": 974
   },
   "unique_entities_profiled": 891,
@@ -243,6 +243,23 @@
       ]
     },
     {
+      "entity": "Coinbase",
+      "total_mentions": 19,
+      "bullish": 15,
+      "neutral": 4,
+      "bearish": 0,
+      "net_sentiment_score": 0.789,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase Expands Derivatives Trading To UK Professional Clients",
+        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
+        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 19,
       "bullish": 9,
@@ -273,23 +290,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
         "Strategy Buys Another 950 Bitcoin As Holdings Reach 846,000 BTC"
-      ]
-    },
-    {
-      "entity": "Coinbase",
-      "total_mentions": 18,
-      "bullish": 14,
-      "neutral": 4,
-      "bearish": 0,
-      "net_sentiment_score": 0.778,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Coinbase Expands Derivatives Trading To UK Professional Clients",
-        "What Would Have to Happen for XRP to Hit $5? - 24/7 Wall St.",
-        "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act"
       ]
     },
     {
@@ -1479,6 +1479,22 @@
       ]
     },
     {
+      "entity": "Chainlink",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+        "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
+        "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave"
+      ]
+    },
+    {
       "entity": "White House",
       "total_mentions": 4,
       "bullish": 2,
@@ -2011,6 +2027,23 @@
       ]
     },
     {
+      "entity": "Aave",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+        "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
+      ]
+    },
+    {
       "entity": "Hashdex",
       "total_mentions": 3,
       "bullish": 0,
@@ -2059,22 +2092,6 @@
         "XRP Futures - CME Group",
         "Micro XRP Futures - CME Group",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
-      ]
-    },
-    {
-      "entity": "Chainlink",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
-        "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
-        "Chainlink Launches CCIP 2.0 With Extra Security Controls For Tokenized Assets"
       ]
     },
     {
@@ -2339,6 +2356,22 @@
         "Binance Lets bStocks Tokenized Equities Count As Futures Margin",
         "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
         "Bitcoin Price Risks Another Drop Below $63K as Futures Rally Lacks Spot Demand - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Base",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Base Activity Climbs To 7.5 Million Transactions In A Day",
+        "Optimism Says Superchain TVL Has Crossed $14 Billion",
+        "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave"
       ]
     },
     {
@@ -3562,22 +3595,6 @@
       ]
     },
     {
-      "entity": "Aave",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
-      ]
-    },
-    {
       "entity": "Cboe",
       "total_mentions": 2,
       "bullish": 2,
@@ -4652,21 +4669,6 @@
       ]
     },
     {
-      "entity": "Base",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Base Activity Climbs To 7.5 Million Transactions In A Day",
-        "Optimism Says Superchain TVL Has Crossed $14 Billion"
-      ]
-    },
-    {
       "entity": "Swift",
       "total_mentions": 2,
       "bullish": 1,
@@ -4742,6 +4744,22 @@
       "example_headlines": [
         "Strategy Wants To Pay Preferred Stock Dividends Every Day",
         "Strategy Wants To Pay Preferred Stock Dividends Every Day"
+      ]
+    },
+    {
+      "entity": "Nvidia",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+        "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
       ]
     },
     {
@@ -12782,20 +12800,6 @@
       ],
       "example_headlines": [
         "SHRINCS BIP published: Quantum-secure Bitcoin comes with a catch"
-      ]
-    },
-    {
-      "entity": "Nvidia",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
       ]
     },
     {

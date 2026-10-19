@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 978,
+    "xrp_entries": 979,
     "btc_entries": 974
   },
-  "unique_pairs_found": 2840,
+  "unique_pairs_found": 2849,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -7216,6 +7216,21 @@
         },
         {
           "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Base",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Base Activity Climbs To 7.5 Million Transactions In A Day",
+          "asset": "XRP"
+        },
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
           "asset": "XRP"
         }
       ]
@@ -20697,17 +20712,6 @@
     },
     {
       "entity_a": "Base",
-      "entity_b": "Coinbase",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Base Activity Climbs To 7.5 Million Transactions In A Day",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Base",
       "entity_b": "Ethereum",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -22671,6 +22675,105 @@
       "example_headlines": [
         {
           "title": "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "Base",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "Chainlink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Aave",
+      "entity_b": "Nvidia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Base",
+      "entity_b": "Chainlink",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Base",
+      "entity_b": "Nvidia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "Coinbase",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "Nvidia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Nvidia",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
           "asset": "XRP"
         }
       ]
