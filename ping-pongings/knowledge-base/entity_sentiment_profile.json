@@ -3,7 +3,7 @@
     "xrp_entries": 985,
     "btc_entries": 985
   },
-  "unique_entities_profiled": 891,
+  "unique_entities_profiled": 893,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 248,
-      "bullish": 160,
+      "total_mentions": 251,
+      "bullish": 161,
       "neutral": 41,
-      "bearish": 47,
-      "net_sentiment_score": 0.456,
+      "bearish": 49,
+      "net_sentiment_score": 0.446,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 192,
+      "total_mentions": 194,
       "bullish": 125,
       "neutral": 36,
-      "bearish": 31,
-      "net_sentiment_score": 0.49,
+      "bearish": 33,
+      "net_sentiment_score": 0.474,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 55,
+      "total_mentions": 56,
       "bullish": 38,
       "neutral": 8,
-      "bearish": 9,
-      "net_sentiment_score": 0.527,
+      "bearish": 10,
+      "net_sentiment_score": 0.5,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -159,6 +159,22 @@
       ]
     },
     {
+      "entity": "XRP Ledger",
+      "total_mentions": 28,
+      "bullish": 23,
+      "neutral": 1,
+      "bearish": 4,
+      "net_sentiment_score": 0.679,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
+        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
+      ]
+    },
+    {
       "entity": "ETF",
       "total_mentions": 28,
       "bullish": 20,
@@ -173,22 +189,6 @@
         "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
         "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
         "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal"
-      ]
-    },
-    {
-      "entity": "XRP Ledger",
-      "total_mentions": 27,
-      "bullish": 23,
-      "neutral": 1,
-      "bearish": 3,
-      "net_sentiment_score": 0.741,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
-        "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
-        "Ripple news: XRP Ledger upgrade brings back features once pulled over critical bugs - CoinDesk"
       ]
     },
     {
@@ -325,6 +325,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 16,
+      "bullish": 10,
+      "neutral": 2,
+      "bearish": 4,
+      "net_sentiment_score": 0.375,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "CFTC",
       "total_mentions": 16,
       "bullish": 8,
@@ -339,23 +356,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
         "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 15,
-      "bullish": 10,
-      "neutral": 2,
-      "bearish": 3,
-      "net_sentiment_score": 0.467,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -460,6 +460,23 @@
       ]
     },
     {
+      "entity": "USDC",
+      "total_mentions": 10,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.9,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
       "entity": "AI",
       "total_mentions": 10,
       "bullish": 5,
@@ -491,23 +508,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
         "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 9,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.889,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
       ]
     },
     {
@@ -678,6 +678,22 @@
       ]
     },
     {
+      "entity": "Brad Garlinghouse",
+      "total_mentions": 8,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
+      ]
+    },
+    {
       "entity": "Donald Trump",
       "total_mentions": 8,
       "bullish": 5,
@@ -776,22 +792,6 @@
         "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
         "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
         "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
-      ]
-    },
-    {
-      "entity": "Brad Garlinghouse",
-      "total_mentions": 7,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.429,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-        "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-        "XRP News: CEO Garlinghouse Says Ripple Revenue Set To More Than Double - Coinpedia"
       ]
     },
     {
@@ -1097,6 +1097,22 @@
       ]
     },
     {
+      "entity": "Circle",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+        "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 5,
       "bullish": 0,
@@ -1375,22 +1391,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "Circle",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
-        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
-        "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance"
       ]
     },
     {
@@ -4623,6 +4623,21 @@
       ]
     },
     {
+      "entity": "validators",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues",
+        "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c"
+      ]
+    },
+    {
       "entity": "DeFi",
       "total_mentions": 2,
       "bullish": 2,
@@ -4666,6 +4681,21 @@
       "example_headlines": [
         "Privy Expands Support for TRON with Enhanced Wallet and Payment Infrastructure for Developers",
         "Privy Expands TRON Support As Stablecoin Payment Infrastructure Grows"
+      ]
+    },
+    {
+      "entity": "Arc",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+        "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp"
       ]
     },
     {
@@ -8673,20 +8703,6 @@
       ]
     },
     {
-      "entity": "validators",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Aptos Ships Mainnet Node v1.49.1 As Validator Upgrade Cycle Continues"
-      ]
-    },
-    {
       "entity": "CCIP",
       "total_mentions": 1,
       "bullish": 0,
@@ -9066,20 +9082,6 @@
     },
     {
       "entity": "StableFX",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc"
-      ]
-    },
-    {
-      "entity": "Arc",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -9790,6 +9792,34 @@
       ],
       "example_headlines": [
         "US Charges Man After Crypto Scam Wallets Received More Than $53M"
+      ]
+    },
+    {
+      "entity": "Socure",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp"
+      ]
+    },
+    {
+      "entity": "Coindesk",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c"
       ]
     },
     {

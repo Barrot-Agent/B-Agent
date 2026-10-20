@@ -3,12 +3,12 @@
     "xrp_entries": 985,
     "btc_entries": 985
   },
-  "unique_pairs_found": 2849,
+  "unique_pairs_found": 2863,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 184,
+      "cooccurrence_count": 186,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 37,
+      "cooccurrence_count": 38,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 31,
+      "cooccurrence_count": 32,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -82,23 +82,8 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 26,
-      "example_headlines": [
-        {
-          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 26,
+      "cooccurrence_count": 27,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -113,7 +98,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 26,
+      "cooccurrence_count": 27,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -121,6 +106,21 @@
         },
         {
           "title": "Breaking: Ripple-Backed XRP Ledger Fix Amendment Goes Live With 85% Consensus Vote - coingape.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 26,
+      "example_headlines": [
+        {
+          "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -351,6 +351,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "XRP",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
       "cooccurrence_count": 13,
@@ -361,21 +376,6 @@
         },
         {
           "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "XRP",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -411,6 +411,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 11,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "The Motley Fool",
       "entity_b": "XRP",
       "cooccurrence_count": 11,
@@ -436,21 +451,6 @@
         },
         {
           "title": "Strategy Raises $2B As Bitcoin Holdings Stay Flat For The Week",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 10,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -601,6 +601,36 @@
         },
         {
           "title": "Prediction: This Will Be the Cryptocurrency XRP's Price by Late 2027 (Hint: It's a Big Move) - The M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
           "asset": "XRP"
         }
       ]
@@ -781,36 +811,6 @@
         },
         {
           "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
           "asset": "XRP"
         }
       ]
@@ -1671,6 +1671,21 @@
       ]
     },
     {
+      "entity_a": "Circle",
+      "entity_b": "USDC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+          "asset": "XRP"
+        },
+        {
+          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "U.S. Treasury",
       "cooccurrence_count": 4,
@@ -2271,6 +2286,21 @@
       ]
     },
     {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "SEC",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP\u2019s $1 Support Hangs By a Thread. Where Does XRP Go? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETFs",
       "entity_b": "Ethereum",
       "cooccurrence_count": 3,
@@ -2691,16 +2721,16 @@
       ]
     },
     {
-      "entity_a": "Circle",
-      "entity_b": "USDC",
+      "entity_a": "Brad Garlinghouse",
+      "entity_b": "SEC",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+          "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
           "asset": "XRP"
         },
         {
-          "title": "Circle Mints 250M USDC On Solana In Fresh Treasury Issuance",
+          "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -4596,6 +4626,21 @@
       ]
     },
     {
+      "entity_a": "Circle",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Stablecoins",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -4696,21 +4741,6 @@
         },
         {
           "title": "XRP News Today : Ripple and Jeonbuk Bank Partner To Bring Faster Payments to Korea - es.tradingview.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "24/7 Wall St.",
-      "entity_b": "SEC",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP\u2019s $1 Support Hangs By a Thread. Where Does XRP Go? - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -7236,16 +7266,31 @@
       ]
     },
     {
-      "entity_a": "Brad Garlinghouse",
-      "entity_b": "SEC",
+      "entity_a": "Arc",
+      "entity_b": "Circle",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Ripple Boss Reveals Why They Are \u2018Very Bullish\u2019 About XRP - Coinpedia",
+          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
           "asset": "XRP"
         },
         {
-          "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arc",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
+          "asset": "XRP"
+        },
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
           "asset": "XRP"
         }
       ]
@@ -10791,17 +10836,6 @@
     {
       "entity_a": "Circle",
       "entity_b": "Tether",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Are Stablecoins Making XRP Unnecessary? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Circle",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -21075,17 +21109,6 @@
     },
     {
       "entity_a": "Arc",
-      "entity_b": "Circle",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Arc",
       "entity_b": "RFQ",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -21098,17 +21121,6 @@
     {
       "entity_a": "Arc",
       "entity_b": "StableFX",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Circle Takes FX Onchain With 24/7 Stablecoin Settlement On Arc",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Arc",
-      "entity_b": "USDC",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -23104,6 +23116,160 @@
       "example_headlines": [
         {
           "title": "US Charges Man After Crypto Scam Wallets Received More Than $53M",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arc",
+      "entity_b": "Socure",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arc",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Circle",
+      "entity_b": "Socure",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Socure",
+      "entity_b": "USDC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Socure",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USDC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St.",
+      "entity_b": "Brad Garlinghouse",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindesk",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindesk",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindesk",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coindesk",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP Ledger",
+      "entity_b": "validators",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
           "asset": "XRP"
         }
       ]
