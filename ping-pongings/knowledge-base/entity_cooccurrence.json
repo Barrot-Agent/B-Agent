@@ -3,12 +3,12 @@
     "xrp_entries": 986,
     "btc_entries": 988
   },
-  "unique_pairs_found": 2863,
+  "unique_pairs_found": 2866,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 186,
+      "cooccurrence_count": 187,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -6271,6 +6271,36 @@
         },
         {
           "title": "XRP price prediction amid RLUSD stablecoin and ETF tailwinds - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cryptonews",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cryptonews",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews",
           "asset": "XRP"
         }
       ]
@@ -14344,29 +14374,7 @@
     },
     {
       "entity_a": "Cryptonews",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cryptonews",
       "entity_b": "South Korea",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Cryptonews",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -23270,6 +23278,39 @@
       "example_headlines": [
         {
           "title": "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Cryptonews",
+      "entity_b": "Multi\u2011Asset Payments Model",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Multi\u2011Asset Payments Model",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Multi\u2011Asset Payments Model",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews",
           "asset": "XRP"
         }
       ]

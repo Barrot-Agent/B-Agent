@@ -3,7 +3,7 @@
     "xrp_entries": 986,
     "btc_entries": 988
   },
-  "unique_entities_profiled": 893,
+  "unique_entities_profiled": 894,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 251,
-      "bullish": 161,
+      "total_mentions": 252,
+      "bullish": 162,
       "neutral": 41,
       "bearish": 49,
-      "net_sentiment_score": 0.446,
+      "net_sentiment_score": 0.448,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 194,
-      "bullish": 125,
+      "total_mentions": 195,
+      "bullish": 126,
       "neutral": 36,
       "bearish": 33,
-      "net_sentiment_score": 0.474,
+      "net_sentiment_score": 0.477,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -4004,6 +4004,21 @@
       ]
     },
     {
+      "entity": "Cryptonews",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews",
+        "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews"
+      ]
+    },
+    {
       "entity": "Alexis Cathalifaud",
       "total_mentions": 2,
       "bullish": 2,
@@ -6628,20 +6643,6 @@
       ],
       "example_headlines": [
         "Ripple, SettleMint Team Up Amid 'Surprisingly Resilient' XRP ETF Flows - Benzinga"
-      ]
-    },
-    {
-      "entity": "Cryptonews",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Prediction: Ripple Edges Bitcoin In South Korea - Cryptonews"
       ]
     },
     {
@@ -9820,6 +9821,20 @@
       ],
       "example_headlines": [
         "Ripple news: XRP Ledger upgrade delayed 10 days after validators reset activation clock - coindesk.c"
+      ]
+    },
+    {
+      "entity": "Multi\u2011Asset Payments Model",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews"
       ]
     },
     {
