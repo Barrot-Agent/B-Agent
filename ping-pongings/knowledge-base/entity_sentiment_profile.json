@@ -3,7 +3,7 @@
     "xrp_entries": 999,
     "btc_entries": 1007
   },
-  "unique_entities_profiled": 894,
+  "unique_entities_profiled": 895,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -460,6 +460,23 @@
       ]
     },
     {
+      "entity": "USDT",
+      "total_mentions": 10,
+      "bullish": 6,
+      "neutral": 3,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
+      ]
+    },
+    {
       "entity": "USDC",
       "total_mentions": 10,
       "bullish": 9,
@@ -491,23 +508,6 @@
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "USDT",
-      "total_mentions": 9,
-      "bullish": 5,
-      "neutral": 3,
-      "bearish": 1,
-      "net_sentiment_score": 0.444,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
       ]
     },
     {
@@ -812,6 +812,23 @@
       ]
     },
     {
+      "entity": "TRON",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -927,22 +944,6 @@
         "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
-      ]
-    },
-    {
-      "entity": "TRON",
-      "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-        "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
-        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
       ]
     },
     {
@@ -1739,6 +1740,23 @@
         "Japanese game developer launches Bitcoin, altcoin fund with SBI",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "Polygon",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
+        "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market"
       ]
     },
     {
@@ -2779,22 +2797,6 @@
     },
     {
       "entity": "JPYC",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
-        "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon"
-      ]
-    },
-    {
-      "entity": "Polygon",
       "total_mentions": 2,
       "bullish": 2,
       "neutral": 0,
@@ -4451,6 +4453,22 @@
       "example_headlines": [
         "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
         "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity"
+      ]
+    },
+    {
+      "entity": "TRC-20",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+        "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market"
       ]
     },
     {
@@ -7777,20 +7795,6 @@
       ],
       "example_headlines": [
         "Absa CIB launches Ripple-powered crypto custody in South Africa - Altcoin Buzz"
-      ]
-    },
-    {
-      "entity": "TRC-20",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows"
       ]
     },
     {
@@ -13195,6 +13199,20 @@
       ],
       "example_headlines": [
         "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
+      ]
+    },
+    {
+      "entity": "MATIC",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market"
       ]
     }
   ]

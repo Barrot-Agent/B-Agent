@@ -3,7 +3,7 @@
     "xrp_entries": 999,
     "btc_entries": 1007
   },
-  "unique_pairs_found": 2866,
+  "unique_pairs_found": 2873,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1671,6 +1671,21 @@
       ]
     },
     {
+      "entity_a": "TRON",
+      "entity_b": "USDT",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Circle",
       "entity_b": "USDC",
       "cooccurrence_count": 4,
@@ -2701,21 +2716,6 @@
         },
         {
           "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TRON",
-      "entity_b": "USDT",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        },
-        {
-          "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
           "asset": "XRP"
         }
       ]
@@ -7097,6 +7097,36 @@
         {
           "title": "USDT On TRON Overtakes Bitcoin In CoinsBee Payment Activity",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRC-20",
+      "entity_b": "TRON",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "TRC-20",
+      "entity_b": "USDT",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
         }
       ]
     },
@@ -17664,28 +17694,6 @@
     {
       "entity_a": "CoinsBee",
       "entity_b": "TRC-20",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TRC-20",
-      "entity_b": "TRON",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "USDT on TRON Becomes Most Used Onchain Payment Option on CoinsBee as Stablecoin Spending Grows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TRC-20",
-      "entity_b": "USDT",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -33827,6 +33835,83 @@
       "example_headlines": [
         {
           "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MATIC",
+      "entity_b": "Polygon",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MATIC",
+      "entity_b": "TRC-20",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MATIC",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MATIC",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polygon",
+      "entity_b": "TRC-20",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polygon",
+      "entity_b": "TRON",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Polygon",
+      "entity_b": "USDT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
           "asset": "BTC"
         }
       ]
