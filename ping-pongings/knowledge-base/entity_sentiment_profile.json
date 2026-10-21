@@ -3,7 +3,7 @@
     "xrp_entries": 1010,
     "btc_entries": 1022
   },
-  "unique_entities_profiled": 904,
+  "unique_entities_profiled": 908,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -2328,6 +2328,23 @@
       ]
     },
     {
+      "entity": "CleanSpark",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
+        "CleanSpark Closes $2.276B Debt Financing As Miner Builds For Its Next Expansion",
+        "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center"
+      ]
+    },
+    {
       "entity": "UK",
       "total_mentions": 3,
       "bullish": 2,
@@ -4269,22 +4286,6 @@
       "example_headlines": [
         "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops",
         "Chainalysis Warns Malware Operators Are Turning Blockchains Into Dead Drops"
-      ]
-    },
-    {
-      "entity": "CleanSpark",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center",
-        "CleanSpark Prices $2.276B Secured Notes For Sandersville Data Center"
       ]
     },
     {
@@ -9668,6 +9669,62 @@
       ],
       "example_headlines": [
         "SEC Clarifies When Crypto Buybacks And Network Upgrades Can Raise Securities Questions"
+      ]
+    },
+    {
+      "entity": "CSPI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanSpark Closes $2.276B Debt Financing As Miner Builds For Its Next Expansion"
+      ]
+    },
+    {
+      "entity": "Bitcoin miner",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanSpark Closes $2.276B Debt Financing As Miner Builds For Its Next Expansion"
+      ]
+    },
+    {
+      "entity": "senior secured notes",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanSpark Closes $2.276B Debt Financing As Miner Builds For Its Next Expansion"
+      ]
+    },
+    {
+      "entity": "debt financing",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanSpark Closes $2.276B Debt Financing As Miner Builds For Its Next Expansion"
       ]
     },
     {
