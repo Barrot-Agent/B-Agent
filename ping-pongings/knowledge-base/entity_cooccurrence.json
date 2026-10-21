@@ -3,12 +3,12 @@
     "xrp_entries": 999,
     "btc_entries": 1008
   },
-  "unique_pairs_found": 2873,
+  "unique_pairs_found": 2899,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 187,
+      "cooccurrence_count": 190,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 38,
+      "cooccurrence_count": 39,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 32,
+      "cooccurrence_count": 33,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -186,6 +186,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 18,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP",
       "cooccurrence_count": 18,
@@ -216,21 +231,6 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
-      "cooccurrence_count": 17,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 17,
@@ -241,6 +241,21 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 16,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -257,21 +272,6 @@
         {
           "title": "Coldcard issues Mk3 warning as experts examine $38M Bitcoin wallet drain",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 15,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-          "asset": "XRP"
         }
       ]
     },
@@ -366,6 +366,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 13,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETH",
       "entity_b": "Ethereum",
       "cooccurrence_count": 13,
@@ -376,21 +391,6 @@
         },
         {
           "title": "BitMine Pushes Ethereum Treasury Past 5.8M ETH",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 12,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -5886,6 +5886,36 @@
       ]
     },
     {
+      "entity_a": "Buyback",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "US spot Bitcoin ETF",
       "cooccurrence_count": 2,
@@ -7352,6 +7382,66 @@
         {
           "title": "Socure Brings AI Identity Checks To Circle\u2019s Arc Onramp",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBM",
+      "entity_b": "Swift",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBM",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Swift",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        },
+        {
+          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
+          "asset": "BTC"
         }
       ]
     },
@@ -12429,28 +12519,6 @@
       "example_headlines": [
         {
           "title": "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Buyback",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Buyback",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -22049,39 +22117,6 @@
     },
     {
       "entity_a": "IBM",
-      "entity_b": "Swift",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "IBM",
-      "entity_b": "The Motley Fool",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "IBM",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Swift",
       "entity_b": "The Motley Fool",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -22093,7 +22128,7 @@
     },
     {
       "entity_a": "Swift",
-      "entity_b": "XRP",
+      "entity_b": "The Motley Fool",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -22120,6 +22155,105 @@
       "example_headlines": [
         {
           "title": "Top 3 Price Prediction: Bitcoin, Ethereum, Ripple \u2013 BTC reclaims $84,000, ETH heads toward recent hi",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK Invest",
+      "entity_b": "Anthropic",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK Invest",
+      "entity_b": "OpenAI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK Invest",
+      "entity_b": "Securitize",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "ARK Invest",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Securitize",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Anthropic",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenAI",
+      "entity_b": "Securitize",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "OpenAI",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Securitize",
+      "entity_b": "Stripe",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
           "asset": "XRP"
         }
       ]
@@ -23324,6 +23458,94 @@
       ]
     },
     {
+      "entity_a": "Buyback",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBM",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBM",
+      "entity_b": "The Globe and Mail",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Swift",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "The Globe and Mail",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Swift",
+      "entity_b": "The Globe and Mail",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "The Globe and Mail",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "JUMP",
       "entity_b": "Jumper",
       "cooccurrence_count": 1,
@@ -24243,6 +24465,105 @@
       "example_headlines": [
         {
           "title": "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI wallets",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI wallets",
+      "entity_b": "Seoul",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI wallets",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI wallets",
+      "entity_b": "privacy tools",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Seoul",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "privacy tools",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Seoul",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Seoul",
+      "entity_b": "privacy tools",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "privacy tools",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
           "asset": "XRP"
         }
       ]
@@ -30630,17 +30951,6 @@
     {
       "entity_a": "Anthropic",
       "entity_b": "Google DeepMind",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Anthropic",
-      "entity_b": "OpenAI",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
