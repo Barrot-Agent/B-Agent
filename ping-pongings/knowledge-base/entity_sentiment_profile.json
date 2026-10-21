@@ -3,7 +3,7 @@
     "xrp_entries": 1005,
     "btc_entries": 1017
   },
-  "unique_entities_profiled": 900,
+  "unique_entities_profiled": 902,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -325,6 +325,23 @@
       ]
     },
     {
+      "entity": "CFTC",
+      "total_mentions": 17,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 8,
+      "net_sentiment_score": 0.059,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
+      ]
+    },
+    {
       "entity": "24/7 Wall St.",
       "total_mentions": 16,
       "bullish": 10,
@@ -339,23 +356,6 @@
         "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
         "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
         "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
-      ]
-    },
-    {
-      "entity": "CFTC",
-      "total_mentions": 16,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 8,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
       ]
     },
     {
@@ -13164,6 +13164,34 @@
       ],
       "example_headlines": [
         "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse"
+      ]
+    },
+    {
+      "entity": "designated contract markets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CFTC Lets Exchanges Convert Index Futures Into True Perpetual Contracts"
+      ]
+    },
+    {
+      "entity": "security index futures",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "CFTC Lets Exchanges Convert Index Futures Into True Perpetual Contracts"
       ]
     },
     {

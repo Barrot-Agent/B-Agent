@@ -3,7 +3,7 @@
     "xrp_entries": 1005,
     "btc_entries": 1017
   },
-  "unique_pairs_found": 2899,
+  "unique_pairs_found": 2902,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -33896,6 +33896,39 @@
       "example_headlines": [
         {
           "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "designated contract markets",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Lets Exchanges Convert Index Futures Into True Perpetual Contracts",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "CFTC",
+      "entity_b": "security index futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Lets Exchanges Convert Index Futures Into True Perpetual Contracts",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "designated contract markets",
+      "entity_b": "security index futures",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "CFTC Lets Exchanges Convert Index Futures Into True Perpetual Contracts",
           "asset": "BTC"
         }
       ]
