@@ -6921,6 +6921,21 @@
       ]
     },
     {
+      "entity_a": "Coinbase",
+      "entity_b": "Stablecore",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Cyber Resilience Act",
       "entity_b": "European Commission",
       "cooccurrence_count": 2,
@@ -16688,17 +16703,6 @@
       "example_headlines": [
         {
           "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "Stablecore",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Stablecore Open Digital Asset Rails To 3,000+ Banks And Credit Unions",
           "asset": "XRP"
         }
       ]
