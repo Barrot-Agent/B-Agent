@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 1009,
+    "xrp_entries": 1010,
     "btc_entries": 1022
   },
-  "unique_entities_profiled": 902,
+  "unique_entities_profiled": 904,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 282,
-      "bullish": 156,
+      "total_mentions": 283,
+      "bullish": 157,
       "neutral": 41,
       "bearish": 85,
-      "net_sentiment_score": 0.252,
+      "net_sentiment_score": 0.254,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -4886,6 +4886,38 @@
       "example_headlines": [
         "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
         "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
+      ]
+    },
+    {
+      "entity": "Bitdeer",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Soluna And Bitdeer Add 7 MW To Texas Bitcoin Mining Deal",
+        "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2"
+      ]
+    },
+    {
+      "entity": "Texas",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Soluna And Bitdeer Add 7 MW To Texas Bitcoin Mining Deal",
+        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
       ]
     },
     {
@@ -10087,6 +10119,34 @@
       ]
     },
     {
+      "entity": "Soluna",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Soluna And Bitdeer Add 7 MW To Texas Bitcoin Mining Deal"
+      ]
+    },
+    {
+      "entity": "Project Kati 1",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Soluna And Bitdeer Add 7 MW To Texas Bitcoin Mining Deal"
+      ]
+    },
+    {
       "entity": "Brazilian Investment Fund",
       "total_mentions": 1,
       "bullish": 1,
@@ -11809,20 +11869,6 @@
       ]
     },
     {
-      "entity": "Bitdeer",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitdeer increased Bitcoin mining output by nearly fivefold in Q2"
-      ]
-    },
-    {
       "entity": "US BTC ETFs",
       "total_mentions": 1,
       "bullish": 1,
@@ -11880,20 +11926,6 @@
     },
     {
       "entity": "Rockdale campus",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
-      ]
-    },
-    {
-      "entity": "Texas",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
