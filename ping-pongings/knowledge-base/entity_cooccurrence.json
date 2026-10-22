@@ -3,12 +3,12 @@
     "xrp_entries": 1011,
     "btc_entries": 1022
   },
-  "unique_pairs_found": 2921,
+  "unique_pairs_found": 2930,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 190,
+      "cooccurrence_count": 194,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -576,6 +576,36 @@
       ]
     },
     {
+      "entity_a": "CryptoPotato",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoPotato",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "RLUSD",
       "entity_b": "XRP",
       "cooccurrence_count": 8,
@@ -756,36 +786,6 @@
       ]
     },
     {
-      "entity_a": "CryptoPotato",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoPotato",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "Ripple (XRP) News and Price Update: July 27 - CryptoPotato",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "RLUSD",
       "entity_b": "Ripple",
       "cooccurrence_count": 7,
@@ -796,6 +796,36 @@
         },
         {
           "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
         }
       ]
@@ -871,36 +901,6 @@
         },
         {
           "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "TradingView",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TradingView",
-      "entity_b": "XRP",
-      "cooccurrence_count": 6,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
         }
       ]
@@ -2731,6 +2731,21 @@
         },
         {
           "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Swift",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
           "asset": "XRP"
         }
       ]
@@ -7431,21 +7446,6 @@
       ]
     },
     {
-      "entity_a": "Swift",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Anthropic",
       "entity_b": "OpenAI",
       "cooccurrence_count": 2,
@@ -7592,6 +7592,21 @@
         {
           "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Swift",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
         }
       ]
     },
@@ -23632,17 +23647,6 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Swift",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "The Globe and Mail",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -23670,6 +23674,28 @@
       "example_headlines": [
         {
           "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "99bitcoins.com",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Ripple Market Cap: $100Bn Milestone Fades on Profit-Taking - 99bitcoins.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "99bitcoins.com",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "XRP Ripple Market Cap: $100Bn Milestone Fades on Profit-Taking - 99bitcoins.com",
           "asset": "XRP"
         }
       ]
@@ -23703,6 +23729,83 @@
       "example_headlines": [
         {
           "title": "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "Swift",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Chainlink",
+      "entity_b": "banking",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "banking",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Swift",
+      "entity_b": "banking",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "banking",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
