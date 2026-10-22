@@ -3,12 +3,12 @@
     "xrp_entries": 1012,
     "btc_entries": 1023
   },
-  "unique_pairs_found": 2930,
+  "unique_pairs_found": 2945,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 194,
+      "cooccurrence_count": 195,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -636,6 +636,36 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "Ripple",
       "cooccurrence_count": 8,
@@ -796,36 +826,6 @@
         },
         {
           "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "TradingView",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "TradingView",
-      "entity_b": "XRP",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
           "asset": "XRP"
         }
       ]
@@ -7457,6 +7457,36 @@
         {
           "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
+          "asset": "XRP"
+        },
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
+          "asset": "XRP"
+        },
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
         }
       ]
     },
@@ -22744,28 +22774,6 @@
       ]
     },
     {
-      "entity_a": "BlackRock",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Whales Keep Buying as Ripple Makes Big BlackRock-Related Announcement - CryptoRank",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bitget",
       "entity_b": "CoinDesk",
       "cooccurrence_count": 1,
@@ -23624,6 +23632,61 @@
       ]
     },
     {
+      "entity_a": "AI agents",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI agents",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI agents",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI agents",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "IBM",
       "entity_b": "Ripple",
       "cooccurrence_count": 1,
@@ -24422,6 +24485,116 @@
       "example_headlines": [
         {
           "title": "Soluna And Bitdeer Add 7 MW To Texas Bitcoin Mining Deal",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "Covered Firm exemption",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "Imperium",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTCS",
+      "entity_b": "Tokenized Securities Venue",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Covered Firm exemption",
+      "entity_b": "Imperium",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Covered Firm exemption",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Covered Firm exemption",
+      "entity_b": "Tokenized Securities Venue",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Imperium",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Imperium",
+      "entity_b": "Tokenized Securities Venue",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Tokenized Securities Venue",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
           "asset": "XRP"
         }
       ]

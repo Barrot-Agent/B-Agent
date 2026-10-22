@@ -3,7 +3,7 @@
     "xrp_entries": 1012,
     "btc_entries": 1023
   },
-  "unique_entities_profiled": 910,
+  "unique_entities_profiled": 913,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 259,
+      "total_mentions": 260,
       "bullish": 166,
       "neutral": 42,
-      "bearish": 51,
-      "net_sentiment_score": 0.444,
+      "bearish": 52,
+      "net_sentiment_score": 0.438,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 202,
+      "total_mentions": 203,
       "bullish": 130,
       "neutral": 37,
-      "bearish": 35,
-      "net_sentiment_score": 0.47,
+      "bearish": 36,
+      "net_sentiment_score": 0.463,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 57,
-      "bullish": 39,
+      "total_mentions": 58,
+      "bullish": 40,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.509,
+      "net_sentiment_score": 0.517,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -511,6 +511,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 10,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
       "entity": "CryptoPotato",
       "total_mentions": 9,
       "bullish": 5,
@@ -528,20 +545,20 @@
       ]
     },
     {
-      "entity": "BlackRock",
+      "entity": "TradingView",
       "total_mentions": 9,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.778,
+      "bullish": 5,
+      "neutral": 1,
+      "bearish": 3,
+      "net_sentiment_score": 0.222,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
+        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
+        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
       ]
     },
     {
@@ -658,23 +675,6 @@
         "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
         "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
         "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
-      ]
-    },
-    {
-      "entity": "TradingView",
-      "total_mentions": 8,
-      "bullish": 5,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.375,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP News August 10: Ripple\u2019s UK Treasury Role Not a Full Endorsement - TradingView",
-        "Ripple Engineer Clarifies Key XRP Ledger Update Metric: What's Important? - tradingview.com",
-        "Big XRP Week Ahead? Ripple CEO Set for Key Wyoming Appearance - TradingView"
       ]
     },
     {
@@ -2075,6 +2075,23 @@
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In",
         "Digital Asset Leaders Converge at KBW2026 as Partner Lineup Unveiled",
         "Upbit Volume Jumps 273% As Bitcoin Rally Pulls Korean Traders Back In"
+      ]
+    },
+    {
+      "entity": "BTCS",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
+        "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks",
+        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
       ]
     },
     {
@@ -3615,22 +3632,6 @@
       ]
     },
     {
-      "entity": "BTCS",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts",
-        "BTCS Repays $8.2M Aave Debt As Ethereum Balance Sheet Strategy Shifts"
-      ]
-    },
-    {
       "entity": "Cboe",
       "total_mentions": 2,
       "bullish": 2,
@@ -4238,6 +4239,21 @@
       "example_headlines": [
         "Justin Sun Establishes the Justin Sun Prize: \u201cMy Wealth Came from Mathematics and Will Return to Mat",
         "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
+      ]
+    },
+    {
+      "entity": "AI agents",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": -0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "AI Agent Statistics 2026: Every Number Checked at Its Source",
+        "AI Agents Opt for Ripple USD Not XRP, While BlackRock Makes Stunning New Prediction - TradingView"
       ]
     },
     {
@@ -7139,20 +7155,6 @@
     },
     {
       "entity": "bdautomated",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "AI Agent Statistics 2026: Every Number Checked at Its Source"
-      ]
-    },
-    {
-      "entity": "AI agents",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 1,
@@ -10229,6 +10231,48 @@
       ],
       "example_headlines": [
         "Soluna And Bitdeer Add 7 MW To Texas Bitcoin Mining Deal"
+      ]
+    },
+    {
+      "entity": "Imperium",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks"
+      ]
+    },
+    {
+      "entity": "Covered Firm exemption",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks"
+      ]
+    },
+    {
+      "entity": "Tokenized Securities Venue",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks"
       ]
     },
     {
