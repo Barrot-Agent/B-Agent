@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1032,
-    "btc_entries": 1050
+    "btc_entries": 1051
   },
-  "unique_pairs_found": 2945,
+  "unique_pairs_found": 2952,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2121,6 +2121,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+          "asset": "XRP"
+        },
+        {
+          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Anthropic",
       "entity_b": "Riot Platforms",
       "cooccurrence_count": 3,
@@ -2687,6 +2702,21 @@
         {
           "title": "Louisville Basketball Embraces Digital Finance with Ripple Partnership and XRP Court Logo on Denny C",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+          "asset": "BTC"
         }
       ]
     },
@@ -4307,21 +4337,6 @@
         {
           "title": "Strategy Buys Another 950 Bitcoin As Holdings Reach 846,000 BTC",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "BlackRock",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-          "asset": "XRP"
-        },
-        {
-          "title": "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2",
-          "asset": "BTC"
         }
       ]
     },
@@ -6742,21 +6757,6 @@
     },
     {
       "entity_a": "Bitcoin",
-      "entity_b": "Fidelity",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
       "entity_b": "Friday flows",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -7246,6 +7246,21 @@
         },
         {
           "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
           "asset": "BTC"
         }
       ]
@@ -19440,17 +19455,6 @@
     {
       "entity_a": "BlackRock",
       "entity_b": "FETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "Fidelity",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -34756,6 +34760,83 @@
       "example_headlines": [
         {
           "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Farside Investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Farside Investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Farside Investors",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Farside Investors",
+      "entity_b": "spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fidelity",
+      "entity_b": "spot Bitcoin ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
           "asset": "BTC"
         }
       ]

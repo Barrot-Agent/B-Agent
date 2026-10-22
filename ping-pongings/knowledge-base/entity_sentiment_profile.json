@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 1032,
-    "btc_entries": 1050
+    "btc_entries": 1051
   },
-  "unique_entities_profiled": 913,
+  "unique_entities_profiled": 915,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 283,
-      "bullish": 157,
+      "total_mentions": 284,
+      "bullish": 158,
       "neutral": 41,
       "bearish": 85,
-      "net_sentiment_score": 0.254,
+      "net_sentiment_score": 0.257,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -443,6 +443,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 11,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.636,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 11,
       "bullish": 8,
@@ -508,23 +525,6 @@
         "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape",
         "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
         "Ripple Integrates AI to Strengthen XRP Ledger Security - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "BlackRock",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
       ]
     },
     {
@@ -795,6 +795,23 @@
       ]
     },
     {
+      "entity": "Fidelity",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
+      ]
+    },
+    {
       "entity": "Iran",
       "total_mentions": 7,
       "bullish": 3,
@@ -927,23 +944,6 @@
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
-      ]
-    },
-    {
-      "entity": "Fidelity",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
       ]
     },
     {
@@ -13480,6 +13480,34 @@
       ],
       "example_headlines": [
         "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market"
+      ]
+    },
+    {
+      "entity": "Farside Investors",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead"
+      ]
+    },
+    {
+      "entity": "spot Bitcoin ETFs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead"
       ]
     }
   ]
