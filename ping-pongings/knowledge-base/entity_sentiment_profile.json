@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 260,
-      "bullish": 166,
+      "total_mentions": 261,
+      "bullish": 167,
       "neutral": 42,
       "bearish": 52,
-      "net_sentiment_score": 0.438,
+      "net_sentiment_score": 0.441,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 203,
-      "bullish": 130,
+      "total_mentions": 204,
+      "bullish": 131,
       "neutral": 37,
       "bearish": 36,
-      "net_sentiment_score": 0.463,
+      "net_sentiment_score": 0.466,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 58,
-      "bullish": 40,
+      "total_mentions": 59,
+      "bullish": 41,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.517,
+      "net_sentiment_score": 0.525,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -260,6 +260,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 19,
+      "bullish": 13,
+      "neutral": 4,
+      "bearish": 2,
+      "net_sentiment_score": 0.579,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Bitcoin (BTC)",
       "total_mentions": 19,
       "bullish": 9,
@@ -273,22 +289,6 @@
         "Bitcoin bounces to $64,300 but the real move waits on the Fed: Crypto Markets Today - CoinDesk",
         "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
         "Sorry everyone, Bitcoin is headed down to $43,500: Michael Terpin"
-      ]
-    },
-    {
-      "entity": "Ripple Labs",
-      "total_mentions": 18,
-      "bullish": 12,
-      "neutral": 4,
-      "bearish": 2,
-      "net_sentiment_score": 0.556,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
       ]
     },
     {
@@ -2163,6 +2163,22 @@
       ]
     },
     {
+      "entity": "Buyback",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+        "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+        "Did XRP Holders Benefit from Ripple\u2019s Buyback? - AOL.ca"
+      ]
+    },
+    {
       "entity": "FTX",
       "total_mentions": 3,
       "bullish": 0,
@@ -3805,21 +3821,6 @@
       "example_headlines": [
         "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
         "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet"
-      ]
-    },
-    {
-      "entity": "Buyback",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
-        "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St."
       ]
     },
     {

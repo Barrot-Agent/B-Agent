@@ -8,7 +8,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 195,
+      "cooccurrence_count": 196,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 39,
+      "cooccurrence_count": 40,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 33,
+      "cooccurrence_count": 34,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -188,7 +188,7 @@
     {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP",
-      "cooccurrence_count": 18,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -231,6 +231,21 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 17,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Ethereum",
       "cooccurrence_count": 17,
@@ -241,21 +256,6 @@
         },
         {
           "title": "Crypto whales accumulate as bear market nears late stage: CryptoQuant",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 16,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -286,6 +286,21 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 14,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -361,21 +376,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 13,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -2387,6 +2387,36 @@
         {
           "title": "Bitcoin (BTC) price news: What next after $853 million in weekly ETF inflows? - CoinDesk",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
         }
       ]
     },
@@ -5901,36 +5931,6 @@
       ]
     },
     {
-      "entity_a": "Buyback",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Buyback",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "XRP News: Ripple\u2019s Buyback Boosts Its Valuation, Not Its Holders - Yahoo Finance",
-          "asset": "XRP"
-        },
-        {
-          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "BTC",
       "entity_b": "US spot Bitcoin ETF",
       "cooccurrence_count": 2,
@@ -7622,6 +7622,36 @@
         {
           "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - AOL.ca",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Buyback",
+      "entity_b": "SEC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - AOL.ca",
+          "asset": "XRP"
         }
       ]
     },
@@ -23605,28 +23635,6 @@
       "example_headlines": [
         {
           "title": "XRP News: Ripple\u2019s Multi-Asset Payments Model Predates Resurfaced XRP Remarks - Cryptonews",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Buyback",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Buyback",
-      "entity_b": "SEC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Did XRP Holders Benefit from Ripple\u2019s Buyback? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
