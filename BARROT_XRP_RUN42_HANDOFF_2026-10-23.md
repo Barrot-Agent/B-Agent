@@ -43,10 +43,11 @@ H4 Market-wide confounding: macro rates, USD strength, BTC/ETH returns, leverage
 Current net effect on XRP demand: UNKNOWN. None of these hypotheses is proven by partner announcements alone.
 
 ## Exact-phrase / creator research
-- "ASK Coin": unresolved; preserve separate candidates and do not assign an XRP link without direct evidence.
-- "actual capital": unresolved; separate ETF creations/redemptions, issuer reserves, exchange turnover, stablecoin mint/redemption and actual bridge flows.
-- "SBIC, ChatGPT SBIC": unresolved; verify the intended entity from primary records before linking it to SBI Group.
-- "Camilla Stephenson": identity/channel mapping and complete public YouTube inventory remain unverified. Do not attribute videos from similar names without evidence.
+- "ASK Coin": public search surfaced an inactive/untracked Ask Coin exchange listing with reserve data unavailable (CoinMarketCap) and the separate Permission Coin token whose ticker is ASK (CoinGecko). These are different candidates; neither is linked to XRP by evidence reviewed here.
+- "actual capital": the phrase appears in secondary XRP institutional-adoption commentary, but no verified link to the user's intended source was found. Claims in that commentary remain unadmitted until reconciled to primary filings, fund disclosures or issuer data. Keep ETF creations/redemptions, issuer reserves, exchange turnover, stablecoin mint/redemption and actual bridge flows as separate fields.
+- "SBIC, ChatGPT SBIC": an official Tokyo Small and Medium Business Investment & Consultation Co., Ltd. profile identifies a Japanese SME investment-development institution commonly called SBIC East Japan. It is distinct from SBI Holdings. No direct XRP/Circle/Coinbase relationship was established for this entity. The exact phrase "ChatGPT SBIC" remains unresolved.
+- "Camilla Stephenson": exact-name public YouTube searches did not establish a channel attributable to this person. The full public-video inventory remains blocked; similarly spelled names/channels are not attributed without identity evidence.
+- Sources: https://coinmarketcap.com/exchanges/ask-coin/ ; https://www.coingecko.com/en/coins/permission-coin ; https://www.sbic.co.jp/
 
 ## Prediction ledger
 - Status: NOT_ISSUED.
