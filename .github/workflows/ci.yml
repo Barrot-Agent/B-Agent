@@ -55,4 +55,4 @@ jobs:
             tests/test_formal_benchmark.py \
             tests/test_run33_workflow_safety.py \
             tests/test_signal_summary_fail_closed.py \
-            -v --no-cov \
+            -v --no-cov
