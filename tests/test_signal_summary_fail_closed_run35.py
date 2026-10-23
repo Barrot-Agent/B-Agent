@@ -49,7 +49,7 @@ def test_probability_must_be_finite_and_in_range():
     base["probability"] = float("nan")
     assert not signal_summary.forecast_is_issuable(base)
     base["probability"] = 0.61
-    assert signal_summary.forecast_is_isuable(base)
+    assert signal_summary.forecast_is_issuable(base)
 
 
 def test_main_fails_closed_without_metadata_and_skips_ai_and_tts(tmp_path, monkeypatch):
@@ -72,7 +72,6 @@ def test_main_fails_closed_without_metadata_and_skips_ai_and_tts(tmp_path, monke
     assert "not issued" in result["spoken_line"].lower()
     assert "Score 44" not in result["spoken_line"]
     assert result["audio"] is None
-
 
 
 def test_valid_forecast_has_deterministic_fallback_when_key_missing(tmp_path, monkeypatch):
