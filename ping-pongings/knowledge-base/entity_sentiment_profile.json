@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1034,
+    "xrp_entries": 1035,
     "btc_entries": 1053
   },
-  "unique_entities_profiled": 927,
+  "unique_entities_profiled": 928,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -1297,6 +1297,22 @@
       ]
     },
     {
+      "entity": "Swift",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+        "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail"
+      ]
+    },
+    {
       "entity": "Trump Media",
       "total_mentions": 5,
       "bullish": 1,
@@ -1644,22 +1660,6 @@
         "Galaxy Adds $100M Of Sky\u2019s sUSDS To Corporate Treasury",
         "Bitcoin OG selling eases as dormant BTC movement hits 4-year low: Galaxy",
         "Bitcoin\u2019s Largest Institutions Launch $15m Security Initiative - galaxy.com"
-      ]
-    },
-    {
-      "entity": "Swift",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": -0.25,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
-        "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St."
       ]
     },
     {
@@ -2490,6 +2490,22 @@
         "Base Activity Climbs To 7.5 Million Transactions In A Day",
         "Optimism Says Superchain TVL Has Crossed $14 Billion",
         "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave"
+      ]
+    },
+    {
+      "entity": "IBM",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+        "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail"
       ]
     },
     {
@@ -4815,18 +4831,18 @@
       ]
     },
     {
-      "entity": "IBM",
+      "entity": "ISO 20022",
       "total_mentions": 2,
-      "bullish": 0,
+      "bullish": 2,
       "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-        "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail"
+        "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+        "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
       ]
     },
     {
@@ -9607,6 +9623,20 @@
       ]
     },
     {
+      "entity": "Digital Asset Haven",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits"
+      ]
+    },
+    {
       "entity": "Rachel Conlan",
       "total_mentions": 1,
       "bullish": 1,
@@ -10178,20 +10208,6 @@
       ],
       "example_headlines": [
         "Citi And Coinbase Bring Stablecoin Payments Into Corporate Banking"
-      ]
-    },
-    {
-      "entity": "ISO 20022",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
       ]
     },
     {

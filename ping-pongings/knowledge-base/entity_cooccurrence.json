@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1034,
+    "xrp_entries": 1035,
     "btc_entries": 1053
   },
-  "unique_pairs_found": 2992,
+  "unique_pairs_found": 2996,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -2806,6 +2806,21 @@
         },
         {
           "title": "Ripple\u2019s CEO Questions XRP\u2019s Central Role: What Does This Mean for Demand? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBM",
+      "entity_b": "Swift",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
           "asset": "XRP"
         }
       ]
@@ -7477,21 +7492,6 @@
     },
     {
       "entity_a": "IBM",
-      "entity_b": "Swift",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "IBM",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -7517,6 +7517,21 @@
         {
           "title": "Is Bitcoin a Buy at $63,000? We Asked 3 AI Models - Yahoo Finance",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ISO 20022",
+      "entity_b": "Swift",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+          "asset": "XRP"
+        },
+        {
+          "title": "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger",
+          "asset": "XRP"
         }
       ]
     },
@@ -22710,6 +22725,50 @@
       ]
     },
     {
+      "entity_a": "Digital Asset Haven",
+      "entity_b": "IBM",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Haven",
+      "entity_b": "ISO 20022",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Haven",
+      "entity_b": "Swift",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "IBM",
+      "entity_b": "ISO 20022",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Binance",
       "entity_b": "Jamal Raees",
       "cooccurrence_count": 1,
@@ -24417,17 +24476,6 @@
     {
       "entity_a": "ISO 20022",
       "entity_b": "Oracle",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ISO 20022",
-      "entity_b": "Swift",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
