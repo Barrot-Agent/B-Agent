@@ -21,6 +21,22 @@ def test_legacy_score_zero_confidence_is_not_issued():
     assert "Confidence 0.0" not in line
 
 
+def test_current_production_payload_is_not_issued():
+    production = {
+        "timestamp": "2026-10-23T15:30:30.524131+00:00",
+        "signal_text": "Recent XRP-relevant headlines: [neutral] Analysis of the XRP Ledger Consensus Protocol | [bullish] To Squelch or not to Squelch: Message Dissemination on the XRP Ledger",
+        "score": 44,
+        "confidence": 0.0,
+        "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests)+news(11)",
+        "news_score": 88,
+        "news_entries": 11,
+        "generated_at_unix": 1792769430,
+    }
+    assert not signal_summary.forecast_is_issuable(production)
+    assert "NOT_ISSUED" in signal_summary.fallback_summary(production)
+    assert "Score 44" not in signal_summary.fallback_line(production)
+
+
 def test_issued_forecast_requires_all_required_fields():
     partial = {
         "forecast_status": "ISSUED",
