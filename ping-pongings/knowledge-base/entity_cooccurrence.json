@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1035,
+    "xrp_entries": 1036,
     "btc_entries": 1055
   },
-  "unique_pairs_found": 2996,
+  "unique_pairs_found": 3004,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1116,6 +1116,21 @@
       ]
     },
     {
+      "entity_a": "Wall Street",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BIP-110",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 5,
@@ -1471,21 +1486,6 @@
         },
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Wall Street",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
           "asset": "XRP"
         }
       ]
@@ -7952,6 +7952,21 @@
         {
           "title": "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        },
+        {
+          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
         }
       ]
     },
@@ -25068,6 +25083,94 @@
       ]
     },
     {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "Digital Asset Lab",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Infrastructure",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Lab",
+      "entity_b": "Morgan Stanley",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Lab",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Lab",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Morgan Stanley",
+      "entity_b": "Wall Street",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Morgan Stanley",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brazil",
       "entity_b": "Brazilian Investment Fund",
       "cooccurrence_count": 1,
@@ -25290,17 +25393,6 @@
     {
       "entity_a": "Crypto Infrastructure",
       "entity_b": "TradeStation",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Crypto Infrastructure",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {

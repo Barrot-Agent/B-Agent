@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1035,
+    "xrp_entries": 1036,
     "btc_entries": 1055
   },
-  "unique_entities_profiled": 928,
+  "unique_entities_profiled": 929,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 263,
-      "bullish": 168,
+      "total_mentions": 264,
+      "bullish": 169,
       "neutral": 42,
       "bearish": 53,
-      "net_sentiment_score": 0.437,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -796,6 +796,23 @@
       ]
     },
     {
+      "entity": "Wall Street",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
+        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
+        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Fidelity",
       "total_mentions": 7,
       "bullish": 6,
@@ -877,23 +894,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "Wall Street",
-      "total_mentions": 6,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
-        "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
-        "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
       ]
     },
     {
@@ -4986,6 +4986,37 @@
       "example_headlines": [
         "21Shares Sets New Staking Payouts Across Five Crypto ETFs",
         "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
+      ]
+    },
+    {
+      "entity": "Morgan Stanley",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+        "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2"
+      ]
+    },
+    {
+      "entity": "Crypto Infrastructure",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+        "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
       ]
     },
     {
@@ -10407,6 +10438,20 @@
       ]
     },
     {
+      "entity": "Digital Asset Lab",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure"
+      ]
+    },
+    {
       "entity": "Brazilian Investment Fund",
       "total_mentions": 1,
       "bullish": 1,
@@ -10506,20 +10551,6 @@
     },
     {
       "entity": "TradeStation",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
-      ]
-    },
-    {
-      "entity": "Crypto Infrastructure",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -12546,20 +12577,6 @@
       ],
       "example_headlines": [
         "Bitcoin price drops to $62.5K as trader warns weekly close may spark more losses"
-      ]
-    },
-    {
-      "entity": "Morgan Stanley",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Morgan Stanley\u2019s BlackRock Bitcoin ETF holdings rise 23% in Q2"
       ]
     },
     {
