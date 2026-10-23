@@ -21,7 +21,7 @@ Keep XRP forecast publication and real-money actions blocked. Current public-mar
 
 ### Circle, USDC, XRPL and Arc
 
-Circle's official USDC page, refreshed **2026-10-22 at 20:00 UTC**, reports **$72.0B in circulation as of October 22** and says reserves equal or exceed circulation; the exact current reserve amount was not visible in the captured page text. It lists native USDC on 38 networks, including the XRP Ledger and Arc. Circle's earlier October 19 snapshot reported $71.9B circulation and $72.2B reserves. These are date-specific issuer figures, not a contradiction. Source: https://www.circle.com/usdc
+Circle's official USDC page, whose page footer shows **October 22, 2026 at 8:00 PM (timezone not specified)**, reports **$72.0B in circulation as of October 22** and says reserves equal or exceed circulation; the exact current reserve amount was not visible in the captured page text. It lists native USDC on 38 networks, including the XRP Ledger and Arc. Circle's earlier October 19 snapshot reported $71.9B circulation and $72.2B reserves. These are date-specific issuer figures, not a contradiction. Source: https://www.circle.com/usdc
 
 Reuters reported on 2026-10-16 that Circle planned expansion into roughly 40 emerging/developing markets; the report cited $73.3B USDC circulation in Q2 and a $100M strategic investment from Binance. The Q2 figure is not a current circulation snapshot and should not override Circle's later dated page. Source: https://www.reuters.com/technology/stablecoin-issuer-circle-push-into-40-new-markets-ceo-says-2026-10-16/
 
