@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 1048,
+    "xrp_entries": 1049,
     "btc_entries": 1070
   },
-  "unique_entities_profiled": 929,
+  "unique_entities_profiled": 930,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 285,
+      "total_mentions": 286,
       "bullish": 158,
       "neutral": 41,
-      "bearish": 86,
-      "net_sentiment_score": 0.253,
+      "bearish": 87,
+      "net_sentiment_score": 0.248,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 264,
+      "total_mentions": 265,
       "bullish": 169,
       "neutral": 42,
-      "bearish": 53,
-      "net_sentiment_score": 0.439,
+      "bearish": 54,
+      "net_sentiment_score": 0.434,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 115,
+      "total_mentions": 116,
       "bullish": 60,
       "neutral": 19,
-      "bearish": 36,
-      "net_sentiment_score": 0.209,
+      "bearish": 37,
+      "net_sentiment_score": 0.198,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -1297,6 +1297,23 @@
       ]
     },
     {
+      "entity": "Bitget",
+      "total_mentions": 5,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitget Wallet Says Global Downloads Have Passed 40 Million",
+        "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+        "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan"
+      ]
+    },
+    {
       "entity": "Swift",
       "total_mentions": 5,
       "bullish": 2,
@@ -1626,23 +1643,6 @@
         "VanEck Flags Heavy Executive Dilution At Bitcoin Treasury Firm Metaplanet",
         "VanEck Mid-July 2026 Bitcoin ChainCheck - VanEck",
         "Bitcoin Treasury Retreat Spreads as Debt Pressure Builds, VanEck Says - Bitcoin Foundation"
-      ]
-    },
-    {
-      "entity": "Bitget",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitget Wallet Says Global Downloads Have Passed 40 Million",
-        "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
-        "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC"
       ]
     },
     {
@@ -9973,6 +9973,20 @@
       ],
       "example_headlines": [
         "US Charges Man After Crypto Scam Wallets Received More Than $53M"
+      ]
+    },
+    {
+      "entity": "Crypto exchange",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan"
       ]
     },
     {

@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1048,
+    "xrp_entries": 1049,
     "btc_entries": 1070
   },
-  "unique_pairs_found": 3004,
+  "unique_pairs_found": 3008,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 83,
+      "cooccurrence_count": 84,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -128,7 +128,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "XRP",
-      "cooccurrence_count": 22,
+      "cooccurrence_count": 23,
       "example_headlines": [
         {
           "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
@@ -547,6 +547,21 @@
     },
     {
       "entity_a": "BTC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
       "entity_b": "ETH",
       "cooccurrence_count": 9,
       "example_headlines": [
@@ -706,21 +721,6 @@
         },
         {
           "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETF inflows slow to $232M as BTC holds under $80K",
           "asset": "XRP"
         }
       ]
@@ -2796,6 +2796,21 @@
       ]
     },
     {
+      "entity_a": "Bitget",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitget Wallet Says Global Downloads Have Passed 40 Million",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "SEC",
       "cooccurrence_count": 3,
@@ -2837,6 +2852,21 @@
         {
           "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Bitget",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
+          "asset": "BTC"
         }
       ]
     },
@@ -7416,21 +7446,6 @@
       ]
     },
     {
-      "entity_a": "Bitget",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitget Wallet Says Global Downloads Have Passed 40 Million",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Base",
       "entity_b": "Coinbase",
       "cooccurrence_count": 2,
@@ -7696,6 +7711,21 @@
         },
         {
           "title": "Strategy Wants To Pay Preferred Stock Dividends Every Day",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Bitget",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
           "asset": "BTC"
         }
       ]
@@ -8896,21 +8926,6 @@
         },
         {
           "title": "Standard Chartered Forecasts Bitcoin Will Retest All-Time High - Yahoo Finance",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "Bitget",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
           "asset": "BTC"
         }
       ]
@@ -23554,6 +23569,50 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "Crypto exchange",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Crypto exchange",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitget",
+      "entity_b": "Crypto exchange",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto exchange",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitget Raises Hack Estimate To $387.5M And Sets Withdrawal Restart Plan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Arc",
       "entity_b": "Socure",
       "cooccurrence_count": 1,
@@ -33988,17 +34047,6 @@
       "example_headlines": [
         {
           "title": "SEC Reg Crypto Proposal Starts 60-Day Federal Register Comment Clock",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Bitget",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K",
           "asset": "BTC"
         }
       ]
