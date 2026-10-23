@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, "barrot/run35-forecast-guard-20261023"]
   pull_request:
     branches: [main]
   workflow_dispatch:
