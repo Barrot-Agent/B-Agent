@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 1052,
-    "btc_entries": 1075
+    "btc_entries": 1076
   },
   "unique_entities_profiled": 930,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 286,
+      "total_mentions": 287,
       "bullish": 158,
       "neutral": 41,
-      "bearish": 87,
-      "net_sentiment_score": 0.248,
+      "bearish": 88,
+      "net_sentiment_score": 0.244,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 265,
+      "total_mentions": 266,
       "bullish": 169,
       "neutral": 42,
-      "bearish": 54,
-      "net_sentiment_score": 0.434,
+      "bearish": 55,
+      "net_sentiment_score": 0.429,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -813,6 +813,23 @@
       ]
     },
     {
+      "entity": "ETFs",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
+      ]
+    },
+    {
       "entity": "Fidelity",
       "total_mentions": 7,
       "bullish": 6,
@@ -928,23 +945,6 @@
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
         "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
         "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
-      ]
-    },
-    {
-      "entity": "ETFs",
-      "total_mentions": 6,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
       ]
     },
     {

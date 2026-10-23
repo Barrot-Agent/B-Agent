@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1052,
-    "btc_entries": 1075
+    "btc_entries": 1076
   },
-  "unique_pairs_found": 3008,
+  "unique_pairs_found": 3009,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -128,7 +128,7 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "XRP",
-      "cooccurrence_count": 23,
+      "cooccurrence_count": 24,
       "example_headlines": [
         {
           "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
@@ -906,6 +906,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "ETF",
       "entity_b": "Ethereum",
       "cooccurrence_count": 6,
@@ -1262,21 +1277,6 @@
         {
           "title": "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "ETFs",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-          "asset": "BTC"
         }
       ]
     },
@@ -35400,6 +35400,17 @@
       "example_headlines": [
         {
           "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETFs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs shed $261M as XRP funds buck weekly outflow trend",
           "asset": "BTC"
         }
       ]
