@@ -3,12 +3,12 @@
     "xrp_entries": 1032,
     "btc_entries": 1051
   },
-  "unique_pairs_found": 2952,
+  "unique_pairs_found": 2982,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 196,
+      "cooccurrence_count": 197,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -127,6 +127,21 @@
     },
     {
       "entity_a": "Bitcoin",
+      "entity_b": "XRP",
+      "cooccurrence_count": 22,
+      "example_headlines": [
+        {
+          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 22,
       "example_headlines": [
@@ -151,21 +166,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - Moomoo",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "XRP",
-      "cooccurrence_count": 21,
-      "example_headlines": [
-        {
-          "title": "Japanese game developer launches Bitcoin, altcoin fund with SBI",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin And Ethereum Edge Higher As Traders Watch Altcoin Rotation",
           "asset": "XRP"
         }
       ]
@@ -666,6 +666,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "Ether",
+      "cooccurrence_count": 8,
+      "example_headlines": [
+        {
+          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "Ripple",
       "cooccurrence_count": 8,
@@ -826,21 +841,6 @@
         },
         {
           "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Ether",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
         }
       ]
@@ -1021,6 +1021,21 @@
         },
         {
           "title": "Is XRP About to Have Its Biggest Year Yet in 2027? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
           "asset": "XRP"
         }
       ]
@@ -1402,7 +1417,7 @@
     },
     {
       "entity_a": "CCN.com",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
@@ -1926,21 +1941,6 @@
       ]
     },
     {
-      "entity_a": "CCN.com",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "XRP Price to $0.18? Bearish Warnings Grow Despite Ripple\u2019s 1B Unlock and SBI Support - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "European Union",
       "entity_b": "MiCA",
       "cooccurrence_count": 3,
@@ -2326,6 +2326,21 @@
         },
         {
           "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
           "asset": "XRP"
         }
       ]
@@ -2807,6 +2822,21 @@
         {
           "title": "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Federal Reserve",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
+          "asset": "BTC"
         }
       ]
     },
@@ -5181,21 +5211,6 @@
       ]
     },
     {
-      "entity_a": "Ether",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Grayscale",
       "entity_b": "SEC",
       "cooccurrence_count": 2,
@@ -6122,6 +6137,21 @@
         {
           "title": "Third Point\u2019s Core Scientific Stake Puts Bitcoin Miner-To-AI Trade In Focus",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Solana",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+          "asset": "XRP"
+        },
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
         }
       ]
     },
@@ -7431,6 +7461,21 @@
       ]
     },
     {
+      "entity_a": "Solana",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia",
+          "asset": "XRP"
+        },
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "IBM",
       "entity_b": "Swift",
       "cooccurrence_count": 2,
@@ -7682,6 +7727,21 @@
         {
           "title": "Ripple vs Chainlink: Which Bet on Swift Pays Off? - 24/7 Wall St.",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin breaks above 200-day moving average for first time since November",
+          "asset": "BTC"
         }
       ]
     },
@@ -8191,21 +8251,6 @@
         },
         {
           "title": "Saylor signals Strategy is \u2018Back\u2019 to Bitcoin buying",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "Federal Reserve",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Bitcoin (BTC) price's July gain survives hawkish Fed, AI meltdown and Coldcard fallout - CoinDesk",
-          "asset": "BTC"
-        },
-        {
-          "title": "Bitcoin Price Forecast: BTC Could Resume Its Rally as Rate Hike Odds Drop to 30% - Yahoo Finance UK",
           "asset": "BTC"
         }
       ]
@@ -13317,17 +13362,6 @@
     {
       "entity_a": "Bitcoin",
       "entity_b": "Charles Schwab",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "Solana",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -21664,17 +21698,6 @@
       ]
     },
     {
-      "entity_a": "Solana",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Privy",
       "entity_b": "Stripe",
       "cooccurrence_count": 1,
@@ -23886,6 +23909,226 @@
       ]
     },
     {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "Jonatan Randin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin (BTC)",
+      "entity_b": "PrimeXBT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "Jonatan Randin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "PrimeXBT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Federal Reserve",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Jonatan Randin",
+      "entity_b": "PrimeXBT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Jonatan Randin",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "PrimeXBT",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "SWIFT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CCN.com",
+      "entity_b": "SWIFT Banking Summit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SWIFT",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "SWIFT Banking Summit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SWIFT",
+      "entity_b": "SWIFT Banking Summit",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SWIFT",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SWIFT Banking Summit",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "US spot crypto ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ether",
+      "entity_b": "US spot crypto ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "US spot crypto ETF",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US spot crypto ETF",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CCIP 2.0",
       "entity_b": "Chainlink",
       "cooccurrence_count": 1,
@@ -25190,6 +25433,116 @@
       "example_headlines": [
         {
           "title": "MEXC and Payward Signal Intent to Explore Broader Collaboration Ahead of TOKEN2049",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Justin Sun",
+      "entity_b": "Quanyu Tang",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Justin Sun",
+      "entity_b": "Southeast University",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Justin Sun",
+      "entity_b": "Wouter van Doorn",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Justin Sun",
+      "entity_b": "Yanyang Li",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quanyu Tang",
+      "entity_b": "Southeast University",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quanyu Tang",
+      "entity_b": "Wouter van Doorn",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Quanyu Tang",
+      "entity_b": "Yanyang Li",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Southeast University",
+      "entity_b": "Wouter van Doorn",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Southeast University",
+      "entity_b": "Yanyang Li",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Wouter van Doorn",
+      "entity_b": "Yanyang Li",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Justin Sun Prize\u2019s New Round Honors Human\u2013AI Collaboration on Erd\u0151s Problems",
           "asset": "XRP"
         }
       ]
@@ -33055,17 +33408,6 @@
       "example_headlines": [
         {
           "title": "Bitcoin (BTC) price analysis: $180,000 targeted on Treasury buybacks - CoinDesk",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin (BTC)",
-      "entity_b": "US Treasury",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin breaks above 200-day moving average for first time since November",
           "asset": "BTC"
         }
       ]
