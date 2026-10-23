@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Signal summary + Groq Orpheus TTS. Real keys only, real errors surfaced."""
+"""Resilient signal summary with deterministic fallback when Groq is unavailable."""
 import json, os, sys, urllib.request, urllib.error
 from pathlib import Path
 
@@ -60,6 +60,26 @@ def speak(text):
     print(f"[tts] OK: {len(raw)} bytes -> {AUDIO_FILE}")
     return str(AUDIO_FILE.relative_to(ROOT)), None
 
+def fallback_summary(signal):
+    """Build a factual summary using only fields already present in the signal."""
+    lines = ["Deterministic XRP signal summary (AI summary unavailable)."]
+    signal_text = signal.get("signal_text")
+    if isinstance(signal_text, str) and signal_text.strip():
+        lines.append(f"Signal text: {signal_text.strip()}")
+    fields = (
+        ("score", "Score"),
+        ("confidence", "Confidence"),
+        ("news_entries", "News entries"),
+        ("news_score", "News score"),
+        ("source", "Source"),
+        ("timestamp", "Timestamp"),
+    )
+    for key, label in fields:
+        value = signal.get(key)
+        if value is not None and value != "":
+            lines.append(f"- {label}: {value}")
+    return "\n".join(lines)
+
 def fallback_line(signal):
     """Deterministic spoken line from real signal fields only."""
     score = signal.get("score")
@@ -75,8 +95,6 @@ def fallback_line(signal):
     return " ".join(bits)
 
 def main():
-    if not KEY:
-        sys.exit("GROQ_API_KEY not set")
     if not SIGNAL_FILE.is_file():
         sys.exit(f"{SIGNAL_FILE} not found")
     signal = json.loads(SIGNAL_FILE.read_text())
@@ -84,21 +102,37 @@ def main():
     base = ("Summarize this XRP signal in 2 sentences, then 3 short bullets. "
             "Use ONLY the values shown. Invent nothing.\n\n"
             + json.dumps(signal, indent=2))
-    summary = chat(base)
-    if not summary:
-        sys.exit("Summary generation failed; nothing written.")
-    spoken = chat("Compress to ONE spoken sentence under 130 characters, "
-                  "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
-    print(f"[compress] raw: {spoken!r}")
-    spoken = " ".join(spoken.replace("*", "").split())
+
+    summary = chat(base) if KEY else ""
+    used_fallback = not bool(summary)
+    if used_fallback:
+        summary = fallback_summary(signal)
+        print("[summary] using deterministic fallback; AI summary unavailable")
+
+    if KEY and not used_fallback:
+        spoken = chat("Compress to ONE spoken sentence under 130 characters, "
+                      "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
+        print(f"[compress] raw: {spoken!r}")
+        spoken = " ".join(spoken.replace("*", "").split())
+    else:
+        spoken = ""
+
     if not spoken or len(spoken) > 140:
         spoken = fallback_line(signal)
         print(f"[compress] using deterministic fallback: {spoken}")
+
     line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
     print(f"[tts] input ({len(line)} chars): {line}")
-    audio, tts_err = speak(line)
+    if KEY:
+        audio, tts_err = speak(line)
+    else:
+        audio = None
+        tts_err = "GROQ_API_KEY not set; TTS skipped"
+        print(f"[tts] skipped: {tts_err}")
+
     SUMMARY_FILE.write_text(json.dumps({
-        "summary": summary, "spoken_line": line, "disclaimer": DISCLAIMER,
+        "summary": summary, "summary_mode": "deterministic_fallback" if used_fallback else "groq",
+        "spoken_line": line, "disclaimer": DISCLAIMER,
         "audio": audio, "tts_error": tts_err,
         "source_signal": signal}, indent=2))
     print("Summary written")
