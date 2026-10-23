@@ -2,6 +2,7 @@
 """Signal summary + Groq Orpheus TTS. Real keys only, real errors surfaced."""
 import json, os, sys, urllib.request, urllib.error
 from pathlib import Path
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 SIGNAL_FILE = ROOT / "web" / "latest_signal.json"
