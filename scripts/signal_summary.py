@@ -2,6 +2,7 @@
 """Signal summary + Groq Orpheus TTS. Real keys only, real errors surfaced."""
 import json, os, sys, urllib.request, urllib.error
 from pathlib import Path
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 SIGNAL_FILE = ROOT / "web" / "latest_signal.json"
@@ -60,48 +61,139 @@ def speak(text):
     print(f"[tts] OK: {len(raw)} bytes -> {AUDIO_FILE}")
     return str(AUDIO_FILE.relative_to(ROOT)), None
 
-def fallback_line(signal):
-    """Deterministic spoken line from real signal fields only."""
-    score = signal.get("score")
-    conf = signal.get("confidence")
-    n = signal.get("news_entries")
-    bits = ["XRP signal update."]
-    if score is not None:
-        bits.append(f"Score {score}.")
-    if conf is not None:
-        bits.append(f"Confidence {conf}.")
-    if n is not None:
-        bits.append(f"Based on {n} news entries.")
-    return " ".join(bits)
+REQUIRED_FORECAST_FIELDS = (
+    "forecast_id",
+    "issued_at",
+    "data_cutoff",
+    "target",
+    "horizon",
+    "assumptions",
+    "probability",
+    "alternatives",
+    "model_version",
+    "feature_snapshot_ids",
+    "calibration_version",
+    "baseline_comparison",
+)
+
+
+def forecast_status(signal):
+    """Only accept a forecast with a complete, explicit, calibratable contract."""
+    forecast = signal.get("forecast")
+    if not isinstance(forecast, dict):
+        return "NOT_ISSUED"
+    for field in REQUIRED_FORECAST_FIELDS:
+        value = forecast.get(field)
+        if value is None or value == "" or value == [] or value == {}:
+            return "NOT_ISSUED"
+    try:
+        probability = float(forecast["probability"])
+    except (TypeError, ValueError):
+        return "NOT_ISSUED"
+    if not 0.0 <= probability <= 1.0:
+        return "NOT_ISSUED"
+    return "ISSUED"
+
+
+def deterministic_summary(signal, status):
+    """Build a safe summary without external providers."""
+    if status == "NOT_ISSUED":
+        parts = [
+            "Forecast status: NOT_ISSUED.",
+            "This artifact contains sentiment/news data only; no calibrated XRP price forecast is available.",
+            "Do not interpret the legacy score as a directional probability.",
+        ]
+        news_score = signal.get("news_score")
+        news_entries = signal.get("news_entries")
+        if news_score is not None:
+            parts.append(f"News sentiment score: {news_score}.")
+        if news_entries is not None:
+            parts.append(f"News entries: {news_entries}.")
+        source = str(signal.get("source", ""))
+        if "sentiment unavailable" in source.lower():
+            parts.append("Sentiment providers were unavailable; provider-failure values are not forecast evidence.")
+        return " ".join(parts)
+
+    forecast = signal["forecast"]
+    return (
+        "Forecast status: ISSUED. "
+        f"Forecast ID: {forecast['forecast_id']}. "
+        f"Target: {forecast['target']}. Horizon: {forecast['horizon']}. "
+        f"Probability: {float(forecast['probability']):.4f}. "
+        f"Data cutoff: {forecast['data_cutoff']}. "
+        f"Model: {forecast['model_version']}. Calibration: {forecast['calibration_version']}. "
+        f"Assumptions: {forecast['assumptions']}. Alternatives: {forecast['alternatives']}."
+    )
+
+
+def fallback_line(signal, status=None):
+    """Deterministic spoken line; never present a sentiment score as a price forecast."""
+    status = status or forecast_status(signal)
+    if status == "NOT_ISSUED":
+        news_score = signal.get("news_score")
+        news_entries = signal.get("news_entries")
+        news_text = f"News sentiment {news_score}" if news_score is not None else "News sentiment unavailable"
+        count_text = f" from {news_entries} entries" if news_entries is not None else ""
+        return (
+            "XRP forecast status NOT ISSUED. Sentiment only; no calibrated price prediction. "
+            f"{news_text}{count_text}."
+        )
+    forecast = signal["forecast"]
+    return (
+        f"XRP forecast issued. Target {forecast['target']}; horizon {forecast['horizon']}; "
+        f"probability {float(forecast['probability']):.2f}."
+    )
+
 
 def main():
-    if not KEY:
-        sys.exit("GROQ_API_KEY not set")
     if not SIGNAL_FILE.is_file():
         sys.exit(f"{SIGNAL_FILE} not found")
-    signal = json.loads(SIGNAL_FILE.read_text())
-    print("SIGNAL KEYS:", list(signal.keys()))
-    base = ("Summarize this XRP signal in 2 sentences, then 3 short bullets. "
-            "Use ONLY the values shown. Invent nothing.\n\n"
-            + json.dumps(signal, indent=2))
-    summary = chat(base)
-    if not summary:
-        sys.exit("Summary generation failed; nothing written.")
-    spoken = chat("Compress to ONE spoken sentence under 130 characters, "
-                  "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
-    print(f"[compress] raw: {spoken!r}")
-    spoken = " ".join(spoken.replace("*", "").split())
-    if not spoken or len(spoken) > 140:
-        spoken = fallback_line(signal)
-        print(f"[compress] using deterministic fallback: {spoken}")
+    signal = json.loads(SIGNAL_FILE.read_text(encoding="utf-8"))
+    status = forecast_status(signal)
+    summary = deterministic_summary(signal, status)
+
+    # LLM summarization is optional. A provider outage must not prevent a fresh,
+    # explicit NOT_ISSUED summary from being written.
+    if status == "ISSUED" and KEY:
+        prompt = (
+            "Summarize this registered forecast. Preserve its forecast status, target, "
+            "horizon, probability, data cutoff, assumptions, and alternatives. Invent nothing.\\n\\n"
+            + json.dumps(signal, indent=2)
+        )
+        generated = chat(prompt)
+        if generated:
+            summary = generated
+
+    spoken = fallback_line(signal, status)
+    if status == "ISSUED" and KEY:
+        compressed = chat(
+            "Compress this forecast into one plain spoken sentence under 130 characters. "
+            "Preserve target, horizon and probability. Reply with the sentence only.\\n\\n" + summary,
+            200,
+        )
+        compressed = " ".join(compressed.replace("*", "").split())
+        if compressed and len(compressed) <= 140:
+            spoken = compressed
+
     line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
-    print(f"[tts] input ({len(line)} chars): {line}")
-    audio, tts_err = speak(line)
+    if KEY:
+        audio, tts_err = speak(line)
+    else:
+        audio = None
+        tts_err = "GROQ_API_KEY not set; TTS skipped; deterministic summary still written"
+
     SUMMARY_FILE.write_text(json.dumps({
-        "summary": summary, "spoken_line": line, "disclaimer": DISCLAIMER,
-        "audio": audio, "tts_error": tts_err,
-        "source_signal": signal}, indent=2))
-    print("Summary written")
+        "summary": summary,
+        "spoken_line": line,
+        "disclaimer": DISCLAIMER,
+        "audio": audio,
+        "tts_error": tts_err,
+        "forecast_status": status,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_signal_timestamp": signal.get("timestamp"),
+        "source_signal": signal,
+    }, indent=2), encoding="utf-8")
+    print(f"Summary written; forecast_status={status}; audio={'available' if audio else 'skipped/unavailable'}")
 
 if __name__ == "__main__":
     main()
