@@ -53,4 +53,4 @@ jobs:
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \
-            tests/test_run33_workflow_safety.py \\\n            tests/test_signal_summary_fail_closed.py \\\n            -v --no-cov
+            tests/test_run33_workflow_safety.py \\\n            tests/test_signal_summary_fail_closed.py \\\n            -v --no-cov \
