@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 1057,
-    "btc_entries": 1080
+    "btc_entries": 1081
   },
   "unique_entities_profiled": 930,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 288,
+      "total_mentions": 289,
       "bullish": 159,
-      "neutral": 41,
+      "neutral": 42,
       "bearish": 88,
-      "net_sentiment_score": 0.247,
+      "net_sentiment_score": 0.246,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2707,6 +2707,22 @@
       ]
     },
     {
+      "entity": "Glassnode",
+      "total_mentions": 3,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": -0.667,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
+        "Bitcoin speculators keep BTC price \u2018pinned\u2019 below $68.7K: Glassnode",
+        "Bitcoin Faces $85,000\u2013$87,500 Supply Test After $80,000 Rebound"
+      ]
+    },
+    {
       "entity": "Satoshi Nakamoto",
       "total_mentions": 3,
       "bullish": 1,
@@ -5138,21 +5154,6 @@
       "example_headlines": [
         "Malaysia Blockchain Week\u2019s OnlyFans scandal, lonely heart scammed for $3.3M: Asia Express",
         "Metaplanet cuts Series 10 stock pool by 41%, plans Hong Kong subsidiary"
-      ]
-    },
-    {
-      "entity": "Glassnode",
-      "total_mentions": 2,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Bitcoin price-metric basket sees longest capitulation since FTX blow-up: Glassnode",
-        "Bitcoin speculators keep BTC price \u2018pinned\u2019 below $68.7K: Glassnode"
       ]
     },
     {
