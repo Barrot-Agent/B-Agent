@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1053,
-    "btc_entries": 1076
+    "btc_entries": 1077
   },
-  "unique_pairs_found": 3009,
+  "unique_pairs_found": 3011,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -23,7 +23,7 @@
     {
       "entity_a": "BTC",
       "entity_b": "Bitcoin",
-      "cooccurrence_count": 84,
+      "cooccurrence_count": 85,
       "example_headlines": [
         {
           "title": "Empery Digital Sells 1,635 Bitcoin As Treasury Buffer Shrinks",
@@ -35070,6 +35070,28 @@
       "example_headlines": [
         {
           "title": "CFTC Lets Exchanges Convert Index Futures Into True Perpetual Contracts",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Puts $25 Million Of Bitcoin On Its Own Balance Sheet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Robinhood",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Robinhood Puts $25 Million Of Bitcoin On Its Own Balance Sheet",
           "asset": "BTC"
         }
       ]

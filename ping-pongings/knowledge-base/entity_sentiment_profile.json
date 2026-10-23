@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 1053,
-    "btc_entries": 1076
+    "btc_entries": 1077
   },
   "unique_entities_profiled": 930,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 287,
-      "bullish": 158,
+      "total_mentions": 288,
+      "bullish": 159,
       "neutral": 41,
       "bearish": 88,
-      "net_sentiment_score": 0.244,
+      "net_sentiment_score": 0.247,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 116,
-      "bullish": 60,
+      "total_mentions": 117,
+      "bullish": 61,
       "neutral": 19,
       "bearish": 37,
-      "net_sentiment_score": 0.198,
+      "net_sentiment_score": 0.205,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -2180,6 +2180,23 @@
       ]
     },
     {
+      "entity": "Robinhood",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names",
+        "Robinhood Puts $25 Million Of Bitcoin On Its Own Balance Sheet"
+      ]
+    },
+    {
       "entity": "FTX",
       "total_mentions": 3,
       "bullish": 0,
@@ -3947,22 +3964,6 @@
       "example_headlines": [
         "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
         "HTX Research Examines Stock-Linked Memecoins: A New Connection Between Equity Assets and Crypto Liqu"
-      ]
-    },
-    {
-      "entity": "Robinhood",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
-        "Robinhood CEO X Hack Shows Why Crypto Scams Still Target Trusted Names"
       ]
     },
     {
