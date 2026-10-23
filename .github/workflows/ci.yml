@@ -54,4 +54,5 @@ jobs:
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \
             tests/test_merge_workflow_safety_run38.py \
+            tests/test_signal_summary_fail_closed_run38.py \
             -v --no-cov
