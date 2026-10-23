@@ -3,7 +3,7 @@
     "xrp_entries": 1034,
     "btc_entries": 1053
   },
-  "unique_entities_profiled": 924,
+  "unique_entities_profiled": 927,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -948,6 +948,22 @@
       ]
     },
     {
+      "entity": "TRON DAO",
+      "total_mentions": 6,
+      "bullish": 4,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
+        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
+        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
+      ]
+    },
+    {
       "entity": "Bloomberg",
       "total_mentions": 6,
       "bullish": 3,
@@ -1148,6 +1164,23 @@
       ]
     },
     {
+      "entity": "TRX",
+      "total_mentions": 5,
+      "bullish": 3,
+      "neutral": 2,
+      "bearish": 0,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "TRON DAO Celebrates Canary Staked TRX ETF (Ticker: TRXS) Debut With Cboe Closing Bell in Chicago"
+      ]
+    },
+    {
       "entity": "BitMEX",
       "total_mentions": 5,
       "bullish": 0,
@@ -1228,22 +1261,6 @@
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Charges 38 Entities Over False Investment Adviser Filings",
         "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
-      ]
-    },
-    {
-      "entity": "TRON DAO",
-      "total_mentions": 5,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
-        "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
-        "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
       ]
     },
     {
@@ -1425,23 +1442,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "From Concrete to Compute: Why Clichmont Is Building AI Infrastructure Instead of Renting It",
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute"
-      ]
-    },
-    {
-      "entity": "TRX",
-      "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 2,
-      "bearish": 0,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-        "Canary Files Fourth Staked TRX ETF Amendment With 1.10% Fee"
       ]
     },
     {
@@ -10192,6 +10192,48 @@
       ],
       "example_headlines": [
         "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
+      ]
+    },
+    {
+      "entity": "Cboe Global Markets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "TRON DAO Celebrates Canary Staked TRX ETF (Ticker: TRXS) Debut With Cboe Closing Bell in Chicago"
+      ]
+    },
+    {
+      "entity": "TRXS",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "TRON DAO Celebrates Canary Staked TRX ETF (Ticker: TRXS) Debut With Cboe Closing Bell in Chicago"
+      ]
+    },
+    {
+      "entity": "Chicago",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "TRON DAO Celebrates Canary Staked TRX ETF (Ticker: TRXS) Debut With Cboe Closing Bell in Chicago"
       ]
     },
     {
