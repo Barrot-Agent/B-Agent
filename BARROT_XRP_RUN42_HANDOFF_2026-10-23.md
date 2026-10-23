@@ -79,7 +79,7 @@ Current net effect on XRP demand: UNKNOWN. None of these hypotheses is proven by
   2. .github/workflows/barrot-gated-merge.yml — manual-only, read-only, report-only; removes schedule, pull_request trigger, status writes and merge commands.
   3. This new handoff file.
 - Branch candidate is NOT deployed. Main is unchanged. No PR was opened because main's active write-enabled merge workflows remain in force.
-- Static verification required: round-trip fetch both branch files and assert no schedule, pull_request trigger, write permissions, gh pr merge, status writes, label writes, or branch updates. A hosted CI run was not available for this branch-only change; do not claim CI passed.
+- Static verification EXECUTED: both patched workflow files were fetched from this branch; YAML parsing passed; workflow_dispatch-only and read-only permissions passed; zero schedule triggers, pull_request triggers, write permissions, merge commands, status writes, label writes, or branch-update commands were found. Hosted CI was not run because no PR was opened; opening a PR remains unsafe while main's active write-enabled merge workflows remain in force.
 
 ## Architecture decisions
 - Preserve immutable source snapshots and timestamps; distinguish source publication time, retrieval time and event time.
