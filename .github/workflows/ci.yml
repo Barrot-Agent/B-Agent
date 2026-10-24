@@ -56,4 +56,5 @@ jobs:
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \
             tests/test_emit_signal_fallback.py \
+            tests/test_signal_summary_fallback.py \
             -v --no-cov
