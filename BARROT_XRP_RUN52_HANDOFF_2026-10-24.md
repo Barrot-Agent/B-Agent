@@ -80,5 +80,16 @@ PR #1130 remains draft and unmerged. No changes to main, no rebase, force-push, 
 
 NOT_ISSUED. A single venue's spot ticker, unsynchronized derivatives observations and trackers with differing ETF universes do not satisfy the prediction gate. Continue to record cutoff, horizon, target, assumptions, probabilities, alternatives and later outcomes for any future forecast.
 
+## Identity research updates
+
+- **ASK Coin remains ambiguous.** Current search identifies at least two distinct candidates: (1) Ask Coin, an exchange listing shown by CoinMarketCap as untracked/inactive with reserve data unavailable; (2) Permission Coin (ticker ASK), a separate token/project with reported Polygon/Base deployments. Do not treat these as the same entity without a matching identifier from the original context.
+- **Camilla Stephenson remains unresolved as the intended YouTube creator.** Exact-name searches surfaced a LinkedIn profile associated with “Let's Sing” in Oxfordshire and separate film-production credits, but no verified YouTube channel or XRP/crypto video inventory. Do not attribute videos based on name similarity.
+- **“Actual capital” remains unresolved.** Focused exact-phrase searches did not produce a sufficiently relevant, independently corroborated XRP/Circle/Coinbase/SBIC reference.
+
+Identity leads:
+- CoinMarketCap Ask Coin exchange listing: https://coinmarketcap.com/exchanges/ask-coin/
+- CoinGecko Permission Coin (ASK): https://www.coingecko.com/en/coins/permission-coin
+- SBIC East Japan's official generative-AI training page remains evidence of AI training only, not an XRP relationship: https://www.sbic.co.jp/training/20250612co/
+
 ## Next action
-Verify CI on the new handoff-bearing head of PR #1130; review branch drift before integration; then implement the fixed-horizon evaluator as a separate reviewed change. Continue SBIC, ASK Coin, “actual capital” and Camilla Stephenson identity research without inventing links.
+Verify CI on the latest handoff-bearing head of PR #1130; review branch drift before integration; then implement the fixed-horizon evaluator as a separate reviewed change. Continue SBIC, ASK Coin, “actual capital” and Camilla Stephenson identity research without inventing links.
