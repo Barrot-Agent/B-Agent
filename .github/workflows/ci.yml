@@ -58,4 +58,5 @@ jobs:
             tests/test_emit_signal_fallback.py \
             tests/test_signal_summary_fallback.py \
             tests/test_signal_accuracy_safety.py \
+            tests/test_platform_orchestration_workflow_safety.py \
             -v --no-cov
