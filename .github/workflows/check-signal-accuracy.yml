@@ -21,7 +21,7 @@ jobs:
       - name: Generate legacy signal outcome diagnostics
         run: python3 scripts/check_signal_accuracy.py
       - name: Upload timestamped outcome snapshot
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: barrot-signal-accuracy-${{ github.run_id }}
