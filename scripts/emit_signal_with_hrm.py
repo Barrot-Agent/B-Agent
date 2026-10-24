@@ -22,12 +22,38 @@ LIVE_PATH = Path("web/latest_signal.json")
 OUT_PATH = Path("web/hrm_sandbox_signal.json")
 
 
+def _is_model_backed_signal(signal):
+    """Reject explicit unavailable/news-only states and legacy provider-failure rows."""
+    status = str(signal.get("signal_status", "")).lower()
+    source = str(signal.get("source", "")).lower()
+    if status:
+        return status in {"model_only", "model_and_news"}
+    return "sentiment unavailable" not in source
+
+
 def main():
     if not LIVE_PATH.exists():
         print(f"SKIP: {LIVE_PATH} not found — run emit_signal.py first.")
         return
 
     live = json.loads(LIVE_PATH.read_text())
+    if not _is_model_backed_signal(live):
+        status = str(live.get("signal_status") or "legacy_provider_unavailable")
+        out = {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "sandbox": True,
+            "note": "Source signal is news-only or unavailable; HRM was not run because model-backed sentiment is required.",
+            "source_status": status,
+            "source_score": live.get("score"),
+            "source_confidence": live.get("confidence"),
+            "hrm_state": "unavailable",
+            "hrm_confidence": 0.0,
+            "hrm_basis": "source_signal_not_model_backed",
+        }
+        OUT_PATH.write_text(json.dumps(out, indent=2))
+        print(json.dumps(out, indent=2))
+        return
+
     sent_sig = score_to_unit(live.get("score", 50))
 
     result = hrm_resolve({
