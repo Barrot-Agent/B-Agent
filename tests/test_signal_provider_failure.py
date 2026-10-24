@@ -149,3 +149,40 @@ def test_shared_status_guard_preserves_legacy_model_backed_records():
     assert SCORE_UTIL.is_model_backed_signal(
         {"score": 61, "source": "github:bullish"}
     ) is True
+
+
+DIGEST = load_script("scripts/daily_digest.py", "daily_digest_signal_status_test")
+
+
+def test_digest_does_not_present_provider_failure_as_directional_signal():
+    text = DIGEST._format_latest_signal({
+        "score": 44,
+        "confidence": 0.0,
+        "news_score": 88,
+        "source": "sentiment unavailable (github_failed; groq_failed)+news(11)",
+    })
+    assert "model signal unavailable" in text
+    assert "no directional forecast issued" in text
+    assert "score 44/100" not in text
+
+
+def test_digest_labels_news_only_record_as_not_forecast():
+    text = DIGEST._format_latest_signal({
+        "score": 88,
+        "signal_status": "news_only",
+        "source": "news_only; sentiment unavailable",
+    })
+    assert "news-only score 88/100" in text
+    assert "no model-backed directional forecast" in text
+
+
+def test_digest_labels_model_backed_score_as_not_calibrated_forecast():
+    text = DIGEST._format_latest_signal({
+        "score": 62,
+        "confidence": 0.7,
+        "model_confidence": 0.7,
+        "signal_status": "model_and_news",
+        "source": "github:bullish+news(3)",
+    })
+    assert "Latest XRP sentiment" in text
+    assert "not a calibrated price forecast" in text

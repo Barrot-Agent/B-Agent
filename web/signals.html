@@ -43,10 +43,13 @@ async function verify() {
       const s = await fetch('latest_signal.json?cb=' + Date.now());
       const sig = await s.json();
       const d = document.getElementById('dir');
-      const _m={'1':'BUY','0':'NULL','-1':'SELL'}; const _dir=_m[String(sig.score)]||'NULL'; d.textContent=_dir;
-      d.className=_dir.toLowerCase();
+      const status = String(sig.signal_status || (String(sig.source || '').toLowerCase().includes('sentiment unavailable') ? 'unavailable' : 'legacy_unknown')).toLowerCase();
+      const modelBacked = status === 'model_only' || status === 'model_and_news';
+      if (status === 'news_only') { d.textContent = 'NEWS ONLY — NOT A FORECAST'; d.className = 'null'; }
+      else if (!modelBacked) { d.textContent = 'SIGNAL UNAVAILABLE'; d.className = 'null'; }
+      else { d.textContent = 'MODEL SCORE ' + String(sig.score) + '/100'; d.className = 'null'; }
       document.getElementById('price').textContent = sig.signal_text || '—';
-      document.getElementById('ts').textContent = 'Generated: ' + (sig.timestamp || '—');
+      document.getElementById('ts').textContent = 'Generated: ' + (sig.timestamp || '—') + ' | Status: ' + status + ' | Model confidence: ' + (sig.model_confidence ?? sig.confidence ?? '—');
       document.getElementById('signal').style.display = 'block';
     } else {
       document.getElementById('err').style.display = 'block';

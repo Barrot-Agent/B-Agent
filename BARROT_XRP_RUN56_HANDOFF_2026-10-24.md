@@ -38,3 +38,6 @@ Only ChatGPT through the authorized GitHub connector is live-tested. Claude, Gro
 3. Reconcile RLUSD/USDC supply at fixed ledger indices and reconcile XRP ETF tracker histories.
 4. Continue exact-phrase research for ASK Coin, actual capital, SBIC/ChatGPT SBIC, and Camilla Stephenson's public YouTube identity without unsupported attribution.
 5. Keep main unchanged; do not merge or deploy without approval and current-base verification.
+
+## Run 56 consumer audit follow-up
+Inspection found that web/signals.html mapped the raw 0–100 score only against exact values -1, 0 and 1, and it ignored signal_status. The daily digest printed score 44/100 as the latest signal even when both model providers failed. The public HF tool description called the record a live ternary signal. This branch now changes the subscriber page to show UNAVAILABLE or NEWS ONLY when model evidence is missing, labels model-backed output as a score rather than a BUY/SELL forecast, changes daily digest wording by signal status, and updates the public tool descriptions to disclose that scores are not calibrated price forecasts. Regression tests cover digest status handling. These changes still require exact-head CI; no main deployment has occurred.
