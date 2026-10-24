@@ -95,5 +95,5 @@ def load_obj_mesh(source: str | Path) -> dict[str, Any]:
         "faces": faces,
         "source_format": "obj",
         "geometry_status": "PARSED",
-        "triangulation": "FAN",
+        "triangulation": "EAR_CLIPPING_WITH_CONVEX_FAN_COMPATIBILITY",
     }
