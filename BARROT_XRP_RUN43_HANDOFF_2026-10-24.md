@@ -97,3 +97,31 @@ Status labels: DESIGNED / EXECUTED / VERIFIED are distinct.
 3. Reconcile Oct 22 ETF flows from issuer pages fund by fund and resolve source-universe/capture gaps.
 4. Capture synchronized Kraken/Coinbase/Binance spot and derivatives data with explicit timestamps and normalized symbols.
 5. Continue official-source research on SBIC, Coinbase/Circle economics, SBI Group payment rails, XRPL USDC usage, ASK Coin, "actual capital", and Camilla Stephenson identity.
+
+
+## Run 43 additional signal-integrity audit (2026-10-24T00:10Z)
+
+### Observed production signal defect
+- Main `web/latest_signal.json` at blob `13bb3f5849424937de6239f1ec50055269bd5fa4b` reports timestamp `2026-10-23T23:25:44.206534+00:00`, score 44, confidence 0.0, news score 88, 11 news entries, and source text reporting missing GitHub model credentials plus Groq HTTP 429.
+- `scripts/emit_signal.py` unconditionally averaged the provider-failure sentinel score 0 with news score 88, producing 44. This is not valid bearish evidence; it is a false midpoint caused by provider failure.
+- `scripts/emit_signal_btc.py` has the same defect; its observed output showed score 37, confidence 0.0, news score 74, and the same provider-unavailable pattern.
+- Candidate branch changes add `model_available` and `score_basis`. If a model is unavailable but a news score exists, the output uses the news-only score and explicitly labels it. If both model and usable news are unavailable, it emits a neutral score-50 placeholder with `score_basis=unavailable_neutral_placeholder`, not a false bearish zero.
+- Regression tests cover both XRP/BTC emitters, news-only fallback, unavailable-neutral placeholder, and normal blended scoring.
+
+### Deterministic summary fallback
+- Main `scripts/signal_summary.py` exits if `GROQ_API_KEY` is missing and exits without writing if summary generation returns empty. That can leave a stale summary next to a newer signal.
+- Candidate branch now generates a deterministic summary from the recorded signal fields when the model key is missing or the summary call fails; it labels the fallback, includes the score basis and limitations, skips TTS without credentials, and records `summary_source` plus `deterministic_fallback_used`.
+- Regression tests cover missing key, provider failure, and successful model summary without live network calls.
+
+### Signal accuracy workflow and metric integrity
+- Main `.github/workflows/check-signal-accuracy.yml` had `contents: write` and a scheduled direct `git push` to main. The observed main head `f3b56667577d043334a3a832ed5798fcc1df7382` is the workflow's commit `Barrot: daily signal accuracy check [skip ci]`; it changed `web/signal_accuracy.json` and `web/signal_history.jsonl`.
+- Main `web/signal_accuracy.json` reports checked_count 1540, correct_count 684, accuracy_pct 44.4. This is a legacy heuristic, not a calibrated forecast-performance metric: it uses a current quote after a minimum-age threshold rather than an exact fixed horizon, lacks a no-change baseline and probability calibration, mixes score bases, and can count provider-unavailable placeholders.
+- Candidate branch converts the scheduled workflow to read-only code access and uploads timestamped `signal_history.jsonl` / `signal_accuracy.json` artifacts for 90 days instead of pushing to main. The script labels the metric `LEGACY_HEURISTIC_NOT_CALIBRATED` and embeds the evaluation method and limitations in the report.
+- Artifact-only operation is an interim containment measure, not a complete persistent outcome ledger. A durable append-only evaluation store with fixed-horizon outcomes and baseline comparison remains a next task.
+
+### CI evidence and blockers
+- CI run 40043334434 on commit `a72bbd9a9c5df8b43b725b0a2398987012974cee` passed 117 tests in 6.21 seconds, including the signal-emitter fallback regressions.
+- CI runs 40043580485 (script metadata) and 40043583314 (artifact-only workflow) completed successfully before the last accuracy test was added.
+- At this handoff revision, full CI run 40043612361 for commit `99329895e174ea3b4317534826b1fbe36d5dd5ef` was still in progress. It is the run that should cover the new accuracy-safety tests; do not mark those tests VERIFIED until its result is read.
+- Separate push-triggered runs named `.github/workflows/barrot-approve-pr.yml` repeatedly fail with zero jobs even though the fetched workflow is manual-only. Root cause remains unknown; these runs are not the core CI suite.
+- Current main head remains `f3b56667577d043334a3a832ed5798fcc1df7382`. No main write, PR, merge, force-push, reset, stash, or rebase was performed.
