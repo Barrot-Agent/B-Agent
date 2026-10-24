@@ -56,7 +56,7 @@ Changes in this candidate:
 - `scripts/check_signal_accuracy.py` excludes news-only, unavailable and legacy provider-failure rows from the model-accuracy denominator, and labels the remaining heuristic as variable-horizon/not calibrated.
 - Added eight deterministic regression tests and included them in the core CI workflow.
 
-**Verification state at handoff creation:** changes are committed to the isolated branch; PR and exact-head CI result are pending. Do not mark as VERIFIED until the exact PR head has a successful CI run. Main has not been modified by this candidate. No merge, rebase, force-push, reset, clean, stash, overwrite or discard.
+**Verification state at handoff creation:** changes are committed to the isolated branch; PR #1133 is open/draft and exact-head CI result is pending. Do not mark as VERIFIED until the exact PR head has a successful CI run. Main has not been modified by this candidate. No merge, rebase, force-push, reset, clean, stash, overwrite or discard.
 
 ## Existing main-branch risk
 The currently observed main signal still has score 44, confidence 0.0, news score 88 and provider-failure text. That is contaminated, not a valid XRP directional signal. Main's daily signal-accuracy workflow still has a schedule, contents:write and direct push to main. The summary workflow still has scheduled/workflow_run triggers and commits summary/audio. Those are separate review items and are not changed in this candidate.
