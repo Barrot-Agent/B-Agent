@@ -1,0 +1,75 @@
+# Barrot XRP Intelligence — Run 44 Handoff
+**Observed cutoff:** approximately 2026-10-24T01:12Z  
+**Priority:** XRP intelligence and prediction-engine mastery  
+**Foundation:** Barrot V3  
+**Forecast state:** NOT_ISSUED
+
+## Current XRP observation
+Kraken public XRP/USD ticker retrieved around 01:08 UTC:
+- Last: $1.28296
+- Bid/ask: $1.28263 / $1.28271
+- 24h VWAP: $1.30813299
+- 24h volume: 10,655,414.54 XRP
+- 24h low/high: $1.28051 / $1.32950
+- 24h open: $1.29344
+- Last is approximately 0.81% below 24h open, 1.92% below VWAP, and 0.19% above the 24h low.
+Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD
+Caveat: API does not expose an explicit quote timestamp; this is single-venue data, not a consolidated quote.
+
+## Circle, Coinbase, SBI and SBIC
+- Circle's English USDC page now displays $72.0B circulation and $72.2B reserves as of Oct 22, 2026, and says native USDC is supported on 38 networks including XRPL and Arc. This corroborates the Run 42 Oct 22 snapshot and supersedes Run 43's stale localized-page observation as the preferred current page. Source: https://www.circle.com/usdc
+- Circle's Oct 16 company article reports >$36T USDC onchain transaction volume, >$315B mint/redeem, $819M distribution/transaction costs in H1 2026, and ~77% of global stablecoin transaction volume in June. These are issuer claims, not independently reconciled measurements. Source: https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win
+- Coinbase Q2 2026 company results report 10.3% crypto trading-volume share, $20B average USDC balances held in Coinbase products and approximately 50% of USDC economics captured over the preceding year. Q3 results are scheduled for Oct 29, 2026; no Q3 results were available at cutoff. Source: https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx
+- Circle's Q2 filing reports $324.6M Q2 and $655.3M H1 2026 distribution costs under the Coinbase arrangement. This establishes material USDC commercial economics, not XRP-specific exposure. Source: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm
+- Coinbase says XRP is supported in retail, Prime and custody with geographic restrictions. This does not establish directional proprietary exposure or eligibility as collateral in every product. Source: https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec
+- SBIC East Japan resolves to Tokyo Small and Medium Business Investment & Consultation Co., Ltd., a Japanese SME investment/development institution, distinct from SBI Holdings. No direct SBIC–XRP/Ripple/Circle/Coinbase relationship was established in reviewed evidence. Source: https://www.sbic.co.jp/company/profile/
+- SBI Ripple Asia separately announced an XRPL-based proof of concept for tokenized deposits/deposit-type digital money on Feb 26, 2026. It is a PoC, not proof of production usage or XRP bridge volume. Source: https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html
+- Competing hypotheses remain: (1) USDC on XRPL complements XRPL utility; (2) USDC on Arc substitutes for some XRP bridge demand; (3) institutions coexist across rails by corridor/currency; (4) macro and broad crypto beta dominate short horizons. No hypothesis is proven; route-level volumes and liquidity data are missing.
+
+## ETF flow evidence
+- Alpha Finance: about +$3.5M Oct 22 daily flow across five funds.
+- XRP Insights: about +2.45M XRP (roughly $3.23M) on Oct 22; +3.34M XRP over Oct 19–22.
+- Trackers differ by coverage, excluded funds and data gaps. Do not average; reconcile issuer-level holdings, creations/redemptions, units and timestamps first.
+Sources: https://alphafinance.io/etf/xrp/ and https://xrp-insights.com/
+
+## Main-branch risks observed
+- Scheduled auto-merge run 40047823257 (Oct 24 01:01 UTC) concluded success while the log reported MERGED=0, SKIPPED=0, FAILED=3. This is a verified false-green reporting defect.
+- Main still has scheduled, write-enabled auto-merge and gated-merge workflows. Main's merge queue is manual-only but has default dry_run=false and max_prs=0 (unlimited), creating a live-action risk if dispatched with defaults.
+- Main signal artifact timestamp: 2026-10-24T00:56:36Z; score 44, confidence 0.0, news_score 88, 11 news entries, model unavailable due missing GitHub model token and Groq HTTP 429. The emitter used provider-failure score 0 as if it were bearish evidence and averaged it with news score 88.
+- Summary workflow run 40047456309 failed on Oct 24 00:56 UTC because Groq hit its daily token limit (used 199,632 of 200,000; request 682 tokens). The script exited without writing a fallback summary.
+- The push-triggered runs named .github/workflows/barrot-approve-pr.yml continue to fail with zero jobs despite the fetched workflow showing workflow_dispatch only. Root cause remains unknown.
+- Additional scheduled main writers remain: XRP/BTC knowledge cycles, BTC paper trader, financial refresh, summary and telemetry. This run did not disable them on main.
+
+## Run 44 branch-only candidate
+Branch: barrot/run44-mainline-guard-20261024
+Base at creation: dce46faf85d246f5e5730d4b5180905b6350869f
+Main observed later: c6d338eabef684d6be8d24910688c440bf7c54cd
+Code head before this handoff file: 635edae699349db8ad7f6361e9d30de1a20a9305
+Compare before handoff: 10 commits ahead, 1 behind; no rebase performed.
+
+Candidate changes:
+1. Auto-merge and gated-merge workflows become manual-only, read-only reports; schedules and merge/write operations removed.
+2. Merge queue defaults to dry-run, max 10, and requires explicit confirm_live_merge=true for live operations; live max is capped at 10.
+3. Accuracy workflow keeps scheduled/manual evaluation but removes direct-main writes and uploads timestamped artifacts.
+4. PingPong workflow becomes a read-only capability report that explicitly states no external AI provider calls or live collaboration are verified.
+5. XRP and BTC signal emitters distinguish provider availability and score basis; provider failure no longer dilutes news score, and no-source fallback is explicitly neutral/unavailable.
+6. Signal summary writes deterministic provenance-aware fallback output when Groq is absent or fails and skips TTS without provider availability.
+7. CI runs on main and barrot/** branches and includes regression tests.
+
+CI run 40048553284 passed **117 tests in 10.70 seconds** on code head fd942d9fe8f74e428d6390daf003344da72fb95f. The merge-queue guard was added afterward; CI run 40048640711 was still in progress when this handoff was prepared. This document-only commit will trigger another CI run. Do not describe the final successor head as verified until that run completes.
+
+No PR opened. No merge, force-push, rebase, reset, clean, stash, overwrite or main-branch write performed by this run. Candidate is not deployed. Do not open a PR while the main auto-merge workflow remains active.
+
+## Platform integration status
+ChatGPT with the authorized GitHub connector was live-tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain designed-only/not live-verified. The PingPong workflow does not establish collaboration.
+
+## Forecast gate
+NOT_ISSUED. No synchronized cross-venue spot/derivatives snapshot with explicit event timestamps, reconciled issuer-level ETF flows, or calibrated leakage-resistant XRP walk-forward evaluation was produced in this run.
+
+## Next actions
+1. Verify CI on the latest Run 44 candidate head.
+2. Keep PR creation deferred until main's scheduled write-enabled auto-merge/gated-merge risk is contained through an approved path.
+3. Audit remaining scheduled main writers and the zero-job approval-workflow anomaly without inventing a cause.
+4. Reconcile ETF flows fund-by-fund; build synchronized spot, derivatives, liquidity, stablecoin and XRPL activity snapshots.
+5. Build a fixed-horizon append-only outcome ledger, no-change baseline, leakage prevention, calibration and drift checks before issuing any forecast.
+6. Continue exact-phrase research for ASK Coin, actual capital, SBIC/ChatGPT SBIC, and the full public YouTube inventory for Camilla Stephenson; verify identities before linking entities.
