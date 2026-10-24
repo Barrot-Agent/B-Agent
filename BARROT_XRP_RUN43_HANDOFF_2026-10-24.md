@@ -144,3 +144,13 @@ Status labels: DESIGNED / EXECUTED / VERIFIED are distinct.
 - Main head: `3ec9bd219e22227007be37a31665a40a254b6e28`.
 - Comparison at snapshot: 27 commits ahead, 1 behind; branch base remains `f3b56667577d043334a3a832ed5798fcc1df7382`.
 - No PR opened, no merge/deployment, and no main write by this run. Current main's scheduled merge and direct-write hazards remain active until an approved containment path is applied.
+
+
+## Final repository/dependency snapshot (2026-10-24T00:15:49Z)
+
+- Current main head at this observation: `e988a405104db38e23ffa0b977940009dea5b6a8`, created by the existing scheduled BTC paper-trader workflow as `Paper trade cycle [skip ci]`. The workflow uses BTC-USD and simulated positions; it writes state/logs to main every 30 minutes. This run did not write to main.
+- Candidate head at this observation: `9dabca643375e481a33d7d878aabaaeaa16d3048`; 28 commits ahead and 2 behind main. No rebase or merge performed.
+- CI run 40044038004 passed 123 tests in 5.70 seconds on that exact candidate head.
+- Targeted scan of 16 workflow files found additional scheduled/write-enabled paths not contained by this branch: autonomous self-deployment, autonomous resolver, self-upgrade, pingpong, knowledge-signal-cycle, knowledge-signal-cycle-btc, financial-data-refresh, signal-summary and task-allocator. The workflow directory has 83 entries including disabled/backup files; a complete file-by-file workflow audit remains incomplete.
+- Dependency audit: active `.github/workflows/ci.yml` does not run `pip-audit`, despite `SECURITY.md` claiming it does; the audit step appears only in a backup workflow. `requirements.txt` and `requirements-dev.txt` use lower bounds without a lockfile; `requirements.tx` is a separate manifest whose consumers are unknown. `PYSEC-2024-232` is a python-jose advisory, but python-jose was not found in the reviewed active manifests, so exposure is not established. Security alert APIs and a full resolved dependency audit were not available in this run.
+- The candidate branch has not been opened as a PR because main still has active scheduled write-enabled merge workflows. No main write, PR, merge, force-push, reset, stash, or rebase was performed by this run.
