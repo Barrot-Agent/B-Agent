@@ -104,3 +104,8 @@ The earlier 117-test pass was on head fd942d9fe8f74e428d6390daf003344da72fb95f. 
 - The previously pending final-head CI completed successfully: [run 40049029580](https://github.com/Barrot-Agent/B-Agent/actions/runs/40049029580), **120 tests passed in 7.04 seconds**, exact code head `13f05d0d7121303c295c0bcddf5b880a8efdb834`.
 - This supersedes the earlier “queued at snapshot” note for that head.
 - The present handoff update is documentation-only; no application code changes follow the verified code head. Main remains `c6d338eabef684d6be8d24910688c440bf7c54cd`; the candidate remains 18 ahead / 1 behind at this comparison. No PR, merge, force-push or main write was performed.
+
+
+## Data-quality correction — Circle reserve timestamp
+The current English Circle USDC page explicitly shows **$72.0B circulation as of October 22, 2026** and lists 38 native networks including XRPL. In this captured page, the reserve amount field is blank. The $72.2B reserve figure belongs to the earlier October 19 snapshot in the prior handoff; do not restate it as an October 22 reserve figure without a dated archived source. This correction supersedes any earlier wording in this handoff that paired $72.2B reserves with October 22.
+Source: https://www.circle.com/usdc
