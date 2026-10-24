@@ -19,7 +19,7 @@ on:
         default: merge-queue
         type: string
       max_prs:
-        description: "Maximum PRs to process. Live merges must be bounded; 0 is forbidden for live merges."
+        description: "Maximum PRs to process. Live merges are capped at 10; 0 is forbidden for live merges."
         required: true
         default: "1"
         type: string
@@ -78,10 +78,7 @@ jobs:
           if [[ "${DRY_RUN}" == "false" ]]; then
             [[ "${CONFIRM_LIVE_MERGE}" == "yes" ]] || { echo "ERROR: live merge requires confirm_live_merge=yes."; exit 2; }
             (( MAX_PRS > 0 )) || { echo "ERROR: live merge requires max_prs greater than zero."; exit 2; }
-          fi
-          if [[ "${MODE}" == "all" && "${DRY_RUN}" == "false" && "${MAX_PRS}" -gt 10 ]]; then
-            echo "ERROR: live mode=all is capped at 10 PRs per run."
-            exit 2
+            (( MAX_PRS <= 10 )) || { echo "ERROR: live merges are capped at 10 PRs per run."; exit 2; }
           fi
           echo "Safety input validation passed."
 
@@ -102,7 +99,7 @@ jobs:
           [[ "${MAX_PRS}" =~ ^[0-9]+$ ]] || { echo "ERROR: max_prs must be a non-negative integer."; exit 2; }
           if [[ "${DRY_RUN}" == "false" ]]; then
             [[ "${CONFIRM_LIVE_MERGE}" == "yes" ]] || { echo "ERROR: live merge requires confirm_live_merge=yes."; exit 2; }
-            (( MAX_PRS > 0 )) || { echo "ERROR: live merge requires max_prs greater than zero."; exit 2; }
+            (( MAX_PRS > 0 && MAX_PRS <= 10 )) || { echo "ERROR: live max_prs must be between 1 and 10."; exit 2; }
           fi
 
           if [[ "${MODE}" == "all" ]]; then
@@ -125,35 +122,55 @@ jobs:
           MERGED=0
           SKIPPED=0
           for PR in "${PR_LIST[@]}"; do
-            INFO="$(gh pr view "${PR}" --repo "${REPO}" --json title,isDraft,mergeable,mergeStateStatus,state,headRefOid,baseRefName)"
+            INFO="$(gh pr view "${PR}" --repo "${REPO}" --json title,isDraft,mergeable,mergeStateStatus,state,headRefOid,baseRefName,statusCheckRollup)"
             TITLE="$(jq -r '.title // ""' <<< "${INFO}")"
             STATE="$(jq -r '.state // ""' <<< "${INFO}")"
             DRAFT="$(jq -r '.isDraft // true' <<< "${INFO}")"
             MERGEABLE="$(jq -r '.mergeable // "UNKNOWN"' <<< "${INFO}")"
             MERGE_STATE="$(jq -r '.mergeStateStatus // "UNKNOWN"' <<< "${INFO}")"
+            BASE_REF="$(jq -r '.baseRefName // ""' <<< "${INFO}")"
             HEAD_SHA="$(jq -r '.headRefOid // ""' <<< "${INFO}")"
+            CHECK_COUNT="$(jq '.statusCheckRollup | length' <<< "${INFO}")"
+            BAD_CHECKS="$(jq '[.statusCheckRollup[]? | (.conclusion // .state // .status // "UNKNOWN" | ascii_upcase) as $s | select($s != "SUCCESS" and $s != "NEUTRAL" and $s != "SKIPPED")] | length' <<< "${INFO}")"
 
-            printf 'PR #%s | %s | state=%s draft=%s mergeable=%s mergeState=%s head=%s\n' "${PR}" "${TITLE}" "${STATE}" "${DRAFT}" "${MERGEABLE}" "${MERGE_STATE}" "${HEAD_SHA}"
+            printf 'PR #%s | %s | state=%s draft=%s mergeable=%s mergeState=%s base=%s checks=%s badChecks=%s head=%s\n' "${PR}" "${TITLE}" "${STATE}" "${DRAFT}" "${MERGEABLE}" "${MERGE_STATE}" "${BASE_REF}" "${CHECK_COUNT}" "${BAD_CHECKS}" "${HEAD_SHA}"
 
-            if [[ "${STATE}" != "OPEN" || "${DRAFT}" == "true" || "${MERGEABLE}" != "MERGEABLE" || "${MERGE_STATE}" != "CLEAN" ]]; then
-              echo "Skipping PR ${PR}: it is not a non-draft, clean, mergeable candidate."
+            if [[ "${STATE}" != "OPEN" || "${DRAFT}" == "true" || "${MERGEABLE}" != "MERGEABLE" || "${MERGE_STATE}" != "CLEAN" || "${BASE_REF}" != "main" || -z "${HEAD_SHA}" || "${CHECK_COUNT}" -eq 0 || "${BAD_CHECKS}" -ne 0 ]]; then
+              echo "Skipping PR ${PR}: it is not a verified, non-draft, clean candidate targeting main."
               SKIPPED=$((SKIPPED + 1))
               continue
             fi
 
             if [[ "${DRY_RUN}" == "true" ]]; then
-              echo "[dry-run] Would merge PR ${PR} using --${MERGE_METHOD}."
+              echo "[dry-run] Would merge PR ${PR} using ${MERGE_METHOD}; no changes made."
               SKIPPED=$((SKIPPED + 1))
               continue
             fi
 
-            # Live merge is possible only after the explicit second confirmation
-            # and bounded max_prs validation above.
-            gh pr merge "${PR}" --repo "${REPO}" --"${MERGE_METHOD}"
+            # Re-read immediately before merge and require the same head SHA plus
+            # passing terminal checks. The merge API receives the expected SHA.
+            CURRENT_INFO="$(gh pr view "${PR}" --repo "${REPO}" --json title,isDraft,mergeable,mergeStateStatus,state,headRefOid,baseRefName,statusCheckRollup)"
+            CURRENT_SHA="$(jq -r '.headRefOid // ""' <<< "${CURRENT_INFO}")"
+            CURRENT_READY="$(jq -r '
+              (.state == "OPEN") and
+              (.isDraft == false) and
+              (.mergeable == "MERGEABLE") and
+              (.mergeStateStatus == "CLEAN") and
+              (.baseRefName == "main") and
+              ((.headRefOid // "") != "") and
+              ((.statusCheckRollup // []) | length > 0) and
+              (([.statusCheckRollup[]? | (.conclusion // .state // .status // "UNKNOWN" | ascii_upcase) as $s | select($s != "SUCCESS" and $s != "NEUTRAL" and $s != "SKIPPED")] | length) == 0)
+            ' <<< "${CURRENT_INFO}")"
+            if [[ "${CURRENT_SHA}" != "${HEAD_SHA}" || "${CURRENT_READY}" != "true" ]]; then
+              echo "Skipping PR ${PR}: head changed or readiness checks no longer pass."
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            MERGE_RESULT="$(gh api --method PUT "repos/${REPO}/pulls/${PR}/merge" -f merge_method="${MERGE_METHOD}" -f sha="${HEAD_SHA}")"
+            MERGED_FLAG="$(jq -r '.merged // false' <<< "${MERGE_RESULT}")"
+            [[ "${MERGED_FLAG}" == "true" ]] || { echo "ERROR: GitHub did not confirm merge for PR ${PR}."; exit 1; }
             MERGED=$((MERGED + 1))
           done
 
           printf 'Run complete: merged=%s skipped=%s\n' "${MERGED}" "${SKIPPED}"
-          if [[ "${DRY_RUN}" == "false" && "${MERGED}" -eq 0 && "${SKIPPED}" -gt 0 ]]; then
-            echo "No PR was merged; inspect skip reasons above."
-          fi
