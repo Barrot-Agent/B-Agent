@@ -89,3 +89,31 @@ def test_main_writes_fallback_after_rate_limit(tmp_path, monkeypatch):
     assert result["provider_error"] == "HTTP 429 rate limited"
     assert "news-only sentiment score 88" in result["summary"]
     assert result["audio"] is None
+
+def test_main_bypasses_summary_model_when_signal_model_is_unavailable(tmp_path, monkeypatch):
+    signal_path = tmp_path / "web" / "latest_signal.json"
+    summary_path = tmp_path / "web" / "latest_signal_summary.json"
+    signal_path.parent.mkdir(parents=True)
+    signal_path.write_text(json.dumps({
+        "score": 44,
+        "confidence": 0.0,
+        "source": "sentiment unavailable (github_failed:missing token; groq_failed:429)+news(11)",
+        "news_score": 88,
+        "news_entries": 11,
+    }))
+    monkeypatch.setattr(module, "SIGNAL_FILE", signal_path)
+    monkeypatch.setattr(module, "SUMMARY_FILE", summary_path)
+    monkeypatch.setattr(module, "AUDIO_DIR", tmp_path / "web" / "generated_audio")
+    monkeypatch.setattr(module, "KEY", "test-key")
+    monkeypatch.setattr(module, "LAST_CHAT_ERROR", None)
+    monkeypatch.setattr(module, "chat", lambda *a, **k: (_ for _ in ()).throw(AssertionError("summarizer must not see contaminated score")))
+    monkeypatch.setattr(module, "speak", lambda *a, **k: (_ for _ in ()).throw(AssertionError("TTS must be skipped")))
+
+    module.main()
+    result = json.loads(summary_path.read_text())
+    assert result["summary_method"] == "deterministic_fallback"
+    assert result["signal_model_available"] is False
+    assert result["summary_model_available"] is False
+    assert "news-only sentiment score 88" in result["summary"]
+    assert "44" not in result["summary"]
+    assert result["audio"] is None
