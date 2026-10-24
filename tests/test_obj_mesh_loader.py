@@ -32,6 +32,23 @@ class ObjMeshLoaderTests(unittest.TestCase):
         )
         mesh = load_obj_mesh(path)
         self.assertEqual(mesh["faces"], [(0, 1, 2), (0, 2, 3)])
+        self.assertEqual(
+            mesh["triangulation"],
+            "EAR_CLIPPING_WITH_CONVEX_FAN_COMPATIBILITY",
+        )
+
+    def test_concave_polygon_is_triangulated(self):
+        path = self.write_obj(
+            "v 0 0 0\nv 3 0 0\nv 3 3 0\nv 2 3 0\n"
+            "v 2 1 0\nv 1 1 0\nv 1 3 0\nv 0 3 0\n"
+            "f 1 2 3 4 5 6 7 8\n"
+        )
+        mesh = load_obj_mesh(path)
+        self.assertEqual(len(mesh["faces"]), 6)
+        self.assertEqual(
+            mesh["triangulation"],
+            "EAR_CLIPPING_WITH_CONVEX_FAN_COMPATIBILITY",
+        )
 
     def test_negative_indices(self):
         path = self.write_obj(
