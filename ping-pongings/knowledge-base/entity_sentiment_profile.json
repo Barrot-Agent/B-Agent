@@ -3,7 +3,7 @@
     "xrp_entries": 1057,
     "btc_entries": 1083
   },
-  "unique_entities_profiled": 930,
+  "unique_entities_profiled": 934,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 266,
-      "bullish": 169,
+      "total_mentions": 270,
+      "bullish": 173,
       "neutral": 42,
       "bearish": 55,
-      "net_sentiment_score": 0.429,
+      "net_sentiment_score": 0.437,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 205,
-      "bullish": 132,
+      "total_mentions": 209,
+      "bullish": 136,
       "neutral": 37,
       "bearish": 36,
-      "net_sentiment_score": 0.468,
+      "net_sentiment_score": 0.478,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 59,
-      "bullish": 41,
+      "total_mentions": 60,
+      "bullish": 42,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.525,
+      "net_sentiment_score": 0.533,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 56,
-      "bullish": 36,
+      "total_mentions": 57,
+      "bullish": 37,
       "neutral": 6,
       "bearish": 14,
-      "net_sentiment_score": 0.393,
+      "net_sentiment_score": 0.404,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -226,6 +226,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 20,
+      "bullish": 14,
+      "neutral": 4,
+      "bearish": 2,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Coinbase",
       "total_mentions": 20,
       "bullish": 16,
@@ -277,22 +293,6 @@
       ]
     },
     {
-      "entity": "Ripple Labs",
-      "total_mentions": 19,
-      "bullish": 13,
-      "neutral": 4,
-      "bearish": 2,
-      "net_sentiment_score": 0.579,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
       "entity": "Strategy",
       "total_mentions": 18,
       "bullish": 11,
@@ -326,6 +326,23 @@
       ]
     },
     {
+      "entity": "24/7 Wall St.",
+      "total_mentions": 17,
+      "bullish": 11,
+      "neutral": 2,
+      "bearish": 4,
+      "net_sentiment_score": 0.412,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
+        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "CFTC",
       "total_mentions": 17,
       "bullish": 9,
@@ -340,23 +357,6 @@
         "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
         "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
         "CFTC Fines Former White House Staffer Over Event Contract Insider Trading"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St.",
-      "total_mentions": 16,
-      "bullish": 10,
-      "neutral": 2,
-      "bearish": 4,
-      "net_sentiment_score": 0.375,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple (XRP) Price Prediction: Analyst Predicts XRP Will Reach $1,000 - 24/7 Wall St.",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-        "Ripple Is Valued at $50 Billion While XRP Trades at $1: Is XRP Undervalued? - 24/7 Wall St."
       ]
     },
     {
@@ -4939,6 +4939,36 @@
       "example_headlines": [
         "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave",
         "Bitcoin eyes $81K as Nvidia earnings beat boosts risk assets"
+      ]
+    },
+    {
+      "entity": "SWIFT",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Swell 2026",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "The Swell 2026 Lineup is Here - ripple.com",
+        "The Swell 2026 Lineup is Here - Ripple"
       ]
     },
     {
@@ -10146,20 +10176,6 @@
       ]
     },
     {
-      "entity": "SWIFT",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com"
-      ]
-    },
-    {
       "entity": "SWIFT Banking Summit",
       "total_mentions": 1,
       "bullish": 1,
@@ -10258,6 +10274,20 @@
       ]
     },
     {
+      "entity": "October 2026",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction for October 2026 - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "Cboe Global Markets",
       "total_mentions": 1,
       "bullish": 1,
@@ -10297,6 +10327,20 @@
       ],
       "example_headlines": [
         "TRON DAO Celebrates Canary Staked TRX ETF (Ticker: TRXS) Debut With Cboe Closing Bell in Chicago"
+      ]
+    },
+    {
+      "entity": "Ripple.com",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "The Swell 2026 Lineup is Here - ripple.com"
       ]
     },
     {
@@ -10451,6 +10495,20 @@
       ],
       "example_headlines": [
         "BTCS Prepares DeFi Business To Provide Liquidity For Tokenized Stocks"
+      ]
+    },
+    {
+      "entity": "Bulls",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance"
       ]
     },
     {
