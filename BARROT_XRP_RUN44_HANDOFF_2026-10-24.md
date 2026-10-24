@@ -84,3 +84,10 @@ NOT_ISSUED. No synchronized cross-venue spot/derivatives snapshot with explicit 
 
 ## Final-head verification caveat
 The earlier 117-test pass was on head fd942d9fe8f74e428d6390daf003344da72fb95f. Additional merge-queue guard, confidence-basis metadata and workflow-safety tests have since been committed. Their latest CI run must be checked on the resulting head before the new candidate is described as fully verified.
+
+
+## Verification update — 2026-10-24T01:13:26Z
+- CI run [40048768702](https://github.com/Barrot-Agent/B-Agent/actions/runs/40048768702) passed **120 tests in 5.97 seconds** on code head `9b0e4174b6b0aa79e892ee00d418432d97639314`.
+- This establishes the signal fallback, confidence-basis metadata, deterministic summary fallback, workflow safety checks and merge-queue confirmation tests on that exact code head.
+- This verification note is a documentation-only successor commit. Its own CI run is expected because the branch trigger is active; check the latest branch-head run before treating the successor commit as verified.
+- At this verification point, main was `c6d338eabef684d6be8d24910688c440bf7c54cd`; the candidate was 16 commits ahead and 1 behind. Main remains unchanged by this work.
