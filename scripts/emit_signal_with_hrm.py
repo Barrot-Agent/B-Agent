@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "core"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "utils"))
 
 from hrm_ternary import hrm_resolve  # noqa: E402
-from score_to_signal import score_to_unit  # noqa: E402
+from score_to_signal import is_model_backed_signal, score_to_unit  # noqa: E402
 
 LIVE_PATH = Path("web/latest_signal.json")
 OUT_PATH = Path("web/hrm_sandbox_signal.json")
@@ -28,6 +28,23 @@ def main():
         return
 
     live = json.loads(LIVE_PATH.read_text())
+    if not is_model_backed_signal(live):
+        status = str(live.get("signal_status") or "legacy_provider_unavailable")
+        out = {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "sandbox": True,
+            "note": "Source signal is news-only or unavailable; HRM was not run because model-backed sentiment is required.",
+            "source_status": status,
+            "source_score": live.get("score"),
+            "source_confidence": live.get("confidence"),
+            "hrm_state": "unavailable",
+            "hrm_confidence": 0.0,
+            "hrm_basis": "source_signal_not_model_backed",
+        }
+        OUT_PATH.write_text(json.dumps(out, indent=2))
+        print(json.dumps(out, indent=2))
+        return
+
     sent_sig = score_to_unit(live.get("score", 50))
 
     result = hrm_resolve({
