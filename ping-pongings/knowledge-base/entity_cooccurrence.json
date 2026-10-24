@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1070,
+    "xrp_entries": 1071,
     "btc_entries": 1097
   },
-  "unique_pairs_found": 3027,
+  "unique_pairs_found": 3035,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1281,6 +1281,21 @@
       ]
     },
     {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 5,
@@ -1666,21 +1681,6 @@
         },
         {
           "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Comoros",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
           "asset": "XRP"
         }
       ]
@@ -6647,6 +6647,21 @@
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
         }
       ]
     },
@@ -15416,17 +15431,6 @@
       ]
     },
     {
-      "entity_a": "MEXC",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Proof of Reserves",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
@@ -24035,6 +24039,94 @@
       "example_headlines": [
         {
           "title": "Jumper to Launch JUMP Token Sale on Legion as it Spins Out to Build the Super-App for Onchain Financ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agents",
+      "entity_b": "Comoros",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agents",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agents",
+      "entity_b": "MEXC CLI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "AI Agents",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "MEXC CLI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Comoros",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC",
+      "entity_b": "MEXC CLI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "MEXC CLI",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC Launches MEXC CLI, Connecting AI Agents From Trading Intent to Execution",
           "asset": "XRP"
         }
       ]
