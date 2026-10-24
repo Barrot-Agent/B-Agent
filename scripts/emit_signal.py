@@ -166,6 +166,38 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     return int(round((num / den + 1) * 50)), used, heads
 
 
+
+def combine_signal_sources(score, confidence, source, news_score, n_news):
+    """Combine only available sources; provider failure is not a market signal."""
+    model_available = not str(source).startswith("sentiment unavailable")
+    if model_available:
+        score = int(max(0, min(100, int(score))))
+        confidence = float(max(0.0, min(1.0, float(confidence))))
+    else:
+        confidence = 0.0
+
+    if news_score is not None:
+        news_score = int(max(0, min(100, int(news_score))))
+        if model_available:
+            return (
+                int(round((score + news_score) / 2)),
+                confidence,
+                f"{source}+news({n_news})",
+                True,
+                "model_and_news_blend",
+            )
+        return (
+            news_score,
+            0.0,
+            f"news_only_fallback(model_unavailable; {source})+news({n_news})",
+            False,
+            "news_only",
+        )
+
+    if model_available:
+        return score, confidence, source, True, "model_only"
+    return 50, 0.0, source, False, "unavailable_neutral_placeholder"
+
 def main():
     news_score, n_news, headlines = _news_score()
     if headlines:
@@ -173,16 +205,17 @@ def main():
     else:
         signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
     score, confidence, source = analyze_signal(signal_text)
-    if news_score is not None:
-        # blend: LLM read of headlines + weighted news score, equal weight
-        score = int(round((score + news_score) / 2))
-        source = f"{source}+news({n_news})"
+    score, confidence, source, model_available, score_basis = combine_signal_sources(
+        score, confidence, source, news_score, n_news
+    )
 
     out = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "signal_text": signal_text,
         "score": score,
         "confidence": confidence,
+        "model_available": model_available,
+        "score_basis": score_basis,
         "source": source,
         "news_score": news_score,
         "news_entries": n_news,
