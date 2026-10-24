@@ -73,3 +73,14 @@ NOT_ISSUED. No synchronized cross-venue spot/derivatives snapshot with explicit 
 4. Reconcile ETF flows fund-by-fund; build synchronized spot, derivatives, liquidity, stablecoin and XRPL activity snapshots.
 5. Build a fixed-horizon append-only outcome ledger, no-change baseline, leakage prevention, calibration and drift checks before issuing any forecast.
 6. Continue exact-phrase research for ASK Coin, actual capital, SBIC/ChatGPT SBIC, and the full public YouTube inventory for Camilla Stephenson; verify identities before linking entities.
+
+
+## Run 44 derivatives and collateral evidence (added 01:13 UTC)
+- CME Group's Q2 2026 report shows the XRP futures suite at 36.6K average daily contracts and $10.8B notional volume; spot-quoted QXRP futures reached 32.1K average daily contracts. These are derivative turnover measures, not net capital inflows or proof of spot XRP purchases. Source: https://www.cmegroup.com/newsletters/quarterly-cryptocurrencies-report/2026-q2-cryptocurrency-highlights.html
+- Coinbase Clearing LLC was registered as a CFTC Derivatives Clearing Organization on Sep 28, 2026, authorized for fully collateralized futures, options on futures and swaps. Source: https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations/64361
+- Coinbase states Coinbase Clearing is USDC-native, with USDC collateral and 24/7 settlement. Separately, Coinbase reported Marex had gone live accepting USDC for initial margin in regulated derivatives clearing, with Coinbase providing custody, instant fiat/USDC conversion and reporting. These are USDC collateral rails; they do not show XRP is eligible collateral in Coinbase Clearing. Sources: https://www.coinbase.com/pl/blog/coinbase-receives-cftc-approval-for-coinbase-clearing-llc and https://www.coinbase.com/en-nl/blog/a-new-standard-for-clearing-marex-and-coinbase-bring-usdc-into-regulated-margin-workflows
+- CFTC's Dec 8, 2025 digital-assets pilot announcement names BTC, ETH and USDC as collateral assets in the pilot; XRP is not named in that announcement. This is scoped evidence about that pilot only, not proof that XRP cannot serve as collateral in any other venue or product. Source: https://www.cftc.gov/PressRoom/PressReleases/9146-25
+- Updated competing hypothesis: institutional XRP derivatives can improve price discovery and hedging access without mechanically creating spot demand (CME contracts are cash-settled); USDC's explicit use in regulated collateral workflows may strengthen USDC utility while substituting for some uses of volatile assets as collateral. Net effect on XRP remains unknown.
+
+## Final-head verification caveat
+The earlier 117-test pass was on head fd942d9fe8f74e428d6390daf003344da72fb95f. Additional merge-queue guard, confidence-basis metadata and workflow-safety tests have since been committed. Their latest CI run must be checked on the resulting head before the new candidate is described as fully verified.
