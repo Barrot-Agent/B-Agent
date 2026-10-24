@@ -106,7 +106,7 @@ def deterministic_summary(signal):
         f"News score: {news_score if news_score is not None else 'unavailable'}",
         f"News entries: {news_entries if news_entries is not None else 'unavailable'}",
     ]
-    return lead + "\\n\\n" + "\\n".join(f"- {item}" for item in bullets)
+    return lead + "\n\n" + "\n".join(f"- {item}" for item in bullets)
 
 
 def fallback_line(signal):
@@ -141,7 +141,7 @@ def main():
     print("SIGNAL KEYS:", list(signal.keys()))
     base = (
         "Summarize this XRP signal in 2 sentences, then 3 short bullets. "
-        "Use ONLY the values shown. Invent nothing.\\n\\n"
+        "Use ONLY the values shown. Invent nothing.\n\n"
         + json.dumps(signal, indent=2)
     )
 
@@ -159,7 +159,7 @@ def main():
         spoken = chat(
             "Compress to ONE spoken sentence under 130 characters, "
             "Plain words only: no markdown, no asterisks, no raw timestamps. "
-            "Reply with the sentence and nothing else.\\n\\n" + summary,
+            "Reply with the sentence and nothing else.\n\n" + summary,
             500,
         )
         print(f"[compress] raw: {spoken!r}")
