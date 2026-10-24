@@ -16,19 +16,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "core"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "utils"))
 
 from hrm_ternary import hrm_resolve  # noqa: E402
-from score_to_signal import score_to_unit  # noqa: E402
+from score_to_signal import is_model_backed_signal, score_to_unit  # noqa: E402
 
 LIVE_PATH = Path("web/latest_signal.json")
 OUT_PATH = Path("web/hrm_sandbox_signal.json")
-
-
-def _is_model_backed_signal(signal):
-    """Reject explicit unavailable/news-only states and legacy provider-failure rows."""
-    status = str(signal.get("signal_status", "")).lower()
-    source = str(signal.get("source", "")).lower()
-    if status:
-        return status in {"model_only", "model_and_news"}
-    return "sentiment unavailable" not in source
 
 
 def main():
@@ -37,7 +28,7 @@ def main():
         return
 
     live = json.loads(LIVE_PATH.read_text())
-    if not _is_model_backed_signal(live):
+    if not is_model_backed_signal(live):
         status = str(live.get("signal_status") or "legacy_provider_unavailable")
         out = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
