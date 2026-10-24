@@ -87,7 +87,7 @@ Only ChatGPT through the authorized GitHub connector is live-tested. Claude, Gro
 - GitHub Actions run 40061501737, job 120775801373, completed successfully.
 - Exact job log: 112 tests passed in 7.39 seconds, including tests/test_accuracy_workflow_safety.py.
 - The separate gated-merge workflow run completed successfully as an audit-only/disabled notice; it is not evidence that a merge gate is operational.
-- Because this handoff is updated after the test run, the new documentation commit will change the PR head and trigger another CI run. The next run must be checked against that new exact head before calling the updated branch verified.
+- This handoff inventory update was included in the tested head 693d14fbd038f790b5cb2fd97ee90edd224b0c20. CI run 40061768809 completed successfully on that exact head; its test log confirms 112 passed in 6.15 seconds. Any later commit must be verified on its own exact head.
 
 ### Additional active main-branch writers identified
 - .github/workflows/knowledge-signal-cycle.yml: hourly schedule, contents:write; commits knowledge-base files, web/latest_signal.json and web/signal_history.jsonl.
