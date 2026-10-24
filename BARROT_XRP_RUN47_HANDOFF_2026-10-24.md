@@ -76,3 +76,27 @@ Only ChatGPT through the authorized GitHub connector is live-tested. Claude, Gro
 4. Collect synchronized spot depth, venue-level OI/funding, issuer-reconciled ETF holdings, XRPL USDC/RLUSD flows and macro series.
 5. Investigate Evernorth execution/collateral details from primary filings and official statements; distinguish announced partnerships from completed transactions.
 6. Continue SBIC, ASK Coin, “actual capital,” and Camilla Stephenson identity research without unsupported attribution.
+
+
+## Run 47 verification and workflow inventory update (2026-10-24 04:16 UTC)
+
+**Correction to earlier wording:** the accuracy workflow is not the only scheduled writer in the repository. It is the specific writer addressed by PR #1126. The broader inventory requires a separate least-privilege review; these existing workflows were not changed by this run.
+
+### Remote CI evidence
+- PR #1126 initial head: 705b7eb3b06316da8909fd91b6f535c1ffc1dc83.
+- GitHub Actions run 40061501737, job 120775801373, completed successfully.
+- Exact job log: 112 tests passed in 7.39 seconds, including tests/test_accuracy_workflow_safety.py.
+- The separate gated-merge workflow run completed successfully as an audit-only/disabled notice; it is not evidence that a merge gate is operational.
+- Because this handoff is updated after the test run, the new documentation commit will change the PR head and trigger another CI run. The next run must be checked against that new exact head before calling the updated branch verified.
+
+### Additional active main-branch writers identified
+- .github/workflows/knowledge-signal-cycle.yml: hourly schedule, contents:write; commits knowledge-base files, web/latest_signal.json and web/signal_history.jsonl.
+- .github/workflows/signal-summary.yml: workflow_run after Knowledge Signal Cycle plus hourly fallback; commits signal-summary JSON and generated audio.
+- .github/workflows/cross-analysis.yml: workflow_run after Knowledge Signal Cycle plus hourly fallback; contents:write; commits entity co-occurrence and sentiment outputs.
+- .github/workflows/scheduler-tick.yml: every 15 minutes; contents:write and actions:write; updates the scheduler queue.
+- .github/workflows/coinbase-paper-trader.yml: every 30 minutes; commits paper-trading state/log. It is explicitly configured for BTC-USD, not XRP.
+- .github/workflows/check-signal-accuracy.yml: daily scheduled writer; addressed by PR #1126, but main remains unchanged until an approved merge.
+- GitHub code search surfaced additional scheduled workflows (including BTC signal cycle, self-benchmark, subscriber sync, content pipeline and others). Search results also include disabled/backup files; they must not be counted as active without exact-path verification.
+
+### Safety boundary
+No other workflow was disabled or modified. Do not bulk-disable scheduled writers: first map each workflow's trigger, permission scope, secrets, external side effects, output files and dependency relationships. Main remains unchanged by this run.
