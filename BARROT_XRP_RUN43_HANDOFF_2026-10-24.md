@@ -134,5 +134,13 @@ Status labels: DESIGNED / EXECUTED / VERIFIED are distinct.
 - The workflow did not call any external AI provider, authenticate to Claude/Grok/Gemini/Copilot/Codex/Hugging Face/Kaggle/Databricks, or receive a verified external agent reply. Its jobs wrote hard-coded PING/PONG text such as "Signal strength: High", "Response quality: Optimal" and "Learning rate: Adaptive".
 - GitHub Actions jobs have separate workspaces. The commit job checked out main again instead of consuming artifacts from the preceding jobs. Its logs show `fatal: pathspec 'Barrot-Agent/logs/' did not match any files`, then `git push` reported "Everything up-to-date"; the overall workflow nevertheless concluded success. This is not evidence of a real bidirectional agent loop or persistent state.
 - Candidate branch replaces the workflow with a manual-only, contents-read capability audit. It explicitly outputs `live_collaboration_verified=false`, `external_api_calls_made=false`, and marks all nine platforms as `designed_only_not_live_verified_by_this_workflow`. It does not commit, push, label, comment, or call external AI APIs.
-- Added regression test: `tests/test_platform_orchestration_workflow_safety.py`; CI was extended to run it on `barrot/**` branches. At the time of this handoff update, the new candidate CI run was queued/in progress; verify the latest run before marking this addition VERIFIED.
+- Added regression test: `tests/test_platform_orchestration_workflow_safety.py`; CI was extended to run it on `barrot/**` branches. CI run 40043968500 on candidate head `c136ffdf25fbeab471386e0263a346b881160802` passed 123 tests in 4.64 seconds, including this test. The following status-refresh commit is documentation-only and should be verified by its own run.
 - The main workflow remains unchanged and active. The candidate has not been merged or deployed.
+
+
+## Final Run 43 verification snapshot (2026-10-24T00:14:40Z)
+- Candidate branch head: `c136ffdf25fbeab471386e0263a346b881160802`.
+- CI run 40043968500: SUCCESS; 123 tests passed in 4.64 seconds on that exact head.
+- Main head: `3ec9bd219e22227007be37a31665a40a254b6e28`.
+- Comparison at snapshot: 27 commits ahead, 1 behind; branch base remains `f3b56667577d043334a3a832ed5798fcc1df7382`.
+- No PR opened, no merge/deployment, and no main write by this run. Current main's scheduled merge and direct-write hazards remain active until an approved containment path is applied.
