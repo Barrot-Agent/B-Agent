@@ -124,7 +124,51 @@ def analyze_signal(signal_text: str):
     except Exception as e:
         last_err = f"{last_err}; groq_failed:{e}"
 
-    return 0, 0.0, f"sentiment unavailable ({last_err})"
+    # Missing providers are unavailable data, not a bearish score of zero.
+    return None, 0.0, f"sentiment unavailable ({last_err})"
+
+
+
+def _compose_signal(model_score, model_confidence, model_source, news_score, news_count):
+    """Compose model/news sentiment without treating provider failure as score zero.
+
+    When the model is unavailable, news-only sentiment is preserved as a distinct
+    basis. If both model and news are unavailable, score 50 is only a UI-compatible
+    placeholder and signal_status explicitly marks the result unavailable.
+    """
+    model_available = model_score is not None
+    if model_available:
+        score = int(model_score)
+        confidence = float(model_confidence)
+        source = model_source
+        signal_status = "model_only"
+        score_basis = "model"
+        if news_score is not None:
+            score = int(round((score + int(news_score)) / 2))
+            source = f"{source}+news({news_count})"
+            signal_status = "model_and_news"
+            score_basis = "model_and_news"
+    elif news_score is not None:
+        score = int(news_score)
+        confidence = 0.0
+        source = f"{model_source}+news_only({news_count})"
+        signal_status = "news_only"
+        score_basis = "news_only"
+    else:
+        score = 50
+        confidence = 0.0
+        source = model_source
+        signal_status = "unavailable"
+        score_basis = "unavailable_placeholder"
+
+    return {
+        "score": score,
+        "confidence": confidence,
+        "source": source,
+        "model_available": model_available,
+        "signal_status": signal_status,
+        "score_basis": score_basis,
+    }
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
@@ -172,11 +216,11 @@ def main():
         signal_text = "Recent XRP-relevant headlines: " + " | ".join(headlines)
     else:
         signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
-    score, confidence, source = analyze_signal(signal_text)
-    if news_score is not None:
-        # blend: LLM read of headlines + weighted news score, equal weight
-        score = int(round((score + news_score) / 2))
-        source = f"{source}+news({n_news})"
+    model_score, confidence, source = analyze_signal(signal_text)
+    composed = _compose_signal(model_score, confidence, source, news_score, n_news)
+    score = composed["score"]
+    confidence = composed["confidence"]
+    source = composed["source"]
 
     out = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -186,6 +230,9 @@ def main():
         "source": source,
         "news_score": news_score,
         "news_entries": n_news,
+        "model_available": composed["model_available"],
+        "signal_status": composed["signal_status"],
+        "score_basis": composed["score_basis"],
         "generated_at_unix": int(time.time()),
     }
 
