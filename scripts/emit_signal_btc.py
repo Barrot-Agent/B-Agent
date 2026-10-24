@@ -160,16 +160,33 @@ def main():
     else:
         signal_text = os.getenv("BARROT_BTC_SIGNAL_TEXT", "market sideways; low conviction")
     score, confidence, source = analyze_signal(signal_text)
+    model_available = not source.startswith("sentiment unavailable")
     if news_score is not None:
-        # blend: LLM read of headlines + weighted news score, equal weight
-        score = int(round((score + news_score) / 2))
-        source = f"{source}+news({n_news})"
+        if model_available:
+            # Blend only when both independent components are actually available.
+            score = int(round((score + news_score) / 2))
+            source = f"{source}+news({n_news})"
+            score_basis = "model_and_news_blend"
+        else:
+            # The model-unavailable sentinel score (0) is not bearish evidence.
+            # Preserve the observed news score and mark the basis explicitly.
+            score = int(news_score)
+            source = f"news_only_fallback(model_unavailable; {source})+news({n_news})"
+            score_basis = "news_only"
+    elif model_available:
+        score_basis = "model_only"
+    else:
+        # Avoid turning a missing model into an extreme bearish score.
+        score = 50
+        score_basis = "unavailable_neutral_placeholder"
 
     out = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "signal_text": signal_text,
         "score": score,
         "confidence": confidence,
+        "model_available": model_available,
+        "score_basis": score_basis,
         "source": source,
         "news_score": news_score,
         "news_entries": n_news,
