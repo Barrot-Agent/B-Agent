@@ -74,12 +74,57 @@ def fallback_line(signal):
         bits.append(f"Based on {n} news entries.")
     return " ".join(bits)
 
+def _needs_source_fallback(signal):
+    """Avoid model/TTS calls when the upstream signal is not model-backed."""
+    status = str(signal.get("signal_status", "")).lower()
+    source = str(signal.get("source", "")).lower()
+    if status in {"unavailable", "news_only"}:
+        return True
+    return not status and "sentiment unavailable" in source
+
+
+def _source_unavailable_payload(signal):
+    """Build a deterministic summary that cannot turn missing sentiment into a market call."""
+    status = str(signal.get("signal_status") or "legacy_provider_unavailable").lower()
+    if status == "news_only":
+        news_score = signal.get("news_score")
+        news_entries = signal.get("news_entries", 0)
+        summary = (
+            f"Model sentiment is unavailable. News-only sentiment score {news_score} "
+            f"from {news_entries} entries is not a calibrated XRP price forecast."
+        )
+    elif status == "unavailable":
+        summary = (
+            "XRP signal unavailable because model sentiment and news inputs are unavailable. "
+            "The compatibility score is not a market signal."
+        )
+    else:
+        summary = (
+            "XRP model sentiment is unavailable because the configured providers failed. "
+            "The legacy score must not be interpreted as a bearish signal."
+        )
+    return {
+        "summary": summary,
+        "spoken_line": "XRP model signal unavailable; no directional forecast issued.",
+        "disclaimer": DISCLAIMER,
+        "audio": None,
+        "tts_error": "skipped_source_signal_unavailable",
+        "summary_method": "deterministic_source_unavailable",
+        "source_signal_status": status,
+        "source_signal": signal,
+    }
+
+
 def main():
-    if not KEY:
-        sys.exit("GROQ_API_KEY not set")
     if not SIGNAL_FILE.is_file():
         sys.exit(f"{SIGNAL_FILE} not found")
     signal = json.loads(SIGNAL_FILE.read_text())
+    if _needs_source_fallback(signal):
+        SUMMARY_FILE.write_text(json.dumps(_source_unavailable_payload(signal), indent=2))
+        print("Source signal is not model-backed; deterministic summary written, model/TTS skipped.")
+        return
+    if not KEY:
+        sys.exit("GROQ_API_KEY not set")
     print("SIGNAL KEYS:", list(signal.keys()))
     base = ("Summarize this XRP signal in 2 sentences, then 3 short bullets. "
             "Use ONLY the values shown. Invent nothing.\n\n"
