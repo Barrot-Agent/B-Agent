@@ -215,6 +215,7 @@ def main():
         "score": score,
         "confidence": confidence,
         "model_available": model_available,
+        "confidence_basis": "model" if model_available else "unavailable",
         "score_basis": score_basis,
         "source": source,
         "news_score": news_score,
