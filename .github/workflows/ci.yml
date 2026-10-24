@@ -53,4 +53,5 @@ jobs:
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \
+            tests/test_fixed_horizon_evaluator.py \
             -v --no-cov
