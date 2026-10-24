@@ -24,6 +24,9 @@ Source: https://api.kraken.com/0/public/Ticker?pair=XRPUSD. The endpoint provide
 - Circle's official transparency page as of Oct 22 reports $72.0B USDC circulation, $72.2B reserves, -$0.6B over seven days, -$3.2B over 30 days, and -$4.4B over 365 days: https://www.circle.com/transparency
 - Coinbase's announced USDC-native clearinghouse and Circle's disclosed commercial/equity relationship with Binance establish institutional collateral/distribution links, not coordinated XRP trading. USDC substitution in XRP bridge workflows is a hypothesis until corridor-level data show it.
 
+## Derivatives observation
+Binance XRPUSDT premiumIndex at 08:40:03 UTC reports mark $1.28120, index $1.28191423, funding -0.002767% per interval, and next funding at 16:00 UTC. Run 50's 04:52:10 UTC snapshot reported +0.004047%; this is a funding sign change across windows, not proof of crowded shorts or future direction. Open interest was not retrievable in this run; synchronized cross-venue funding, basis and liquidation data remain missing. Source: https://fapi.binance.com/fapi/v1/premiumIndex?symbol=XRPUSDT.
+
 ## Repository inspection
 - Authorized GitHub access is live; no request to reconnect was needed.
 - Current main observed at e0aaf3071d36cfb9581eed736a301ed73a6f930e (Cross-analysis refresh [skip ci]).
