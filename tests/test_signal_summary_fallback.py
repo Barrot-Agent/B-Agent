@@ -66,14 +66,19 @@ def test_main_writes_deterministic_summary_without_provider_key(tmp_path, monkey
     assert result["audio"] is None
 
 
-def test_main_writes_fallback_after_rate_limit(tmp_path, monkeypatch):
+def test_main_writes_fallback_after_summary_provider_rate_limit(tmp_path, monkeypatch):
     signal_path = tmp_path / "web" / "latest_signal.json"
     summary_path = tmp_path / "web" / "latest_signal_summary.json"
     signal_path.parent.mkdir(parents=True)
     signal_path.write_text(json.dumps({
-        "score": 44, "confidence": 0.0,
-        "source": "sentiment unavailable (groq_failed:429)+news(11)",
-        "news_score": 88, "news_entries": 11,
+        "score": 63,
+        "confidence": 0.72,
+        "source": "github:bullish",
+        "news_score": None,
+        "news_entries": 0,
+        "model_available": True,
+        "signal_status": "model_only",
+        "score_basis": "model",
     }))
     monkeypatch.setattr(module, "SIGNAL_FILE", signal_path)
     monkeypatch.setattr(module, "SUMMARY_FILE", summary_path)
@@ -87,7 +92,8 @@ def test_main_writes_fallback_after_rate_limit(tmp_path, monkeypatch):
     result = json.loads(summary_path.read_text())
     assert result["summary_method"] == "deterministic_fallback"
     assert result["provider_error"] == "HTTP 429 rate limited"
-    assert "news-only sentiment score 88" in result["summary"]
+    assert "Observed signal score: 63" in result["summary"]
+    assert "news-only sentiment score" not in result["summary"]
     assert result["audio"] is None
 
 def test_main_bypasses_summary_model_when_signal_model_is_unavailable(tmp_path, monkeypatch):
