@@ -74,33 +74,68 @@ def fallback_line(signal):
         bits.append(f"Based on {n} news entries.")
     return " ".join(bits)
 
+def deterministic_summary(signal):
+    """Build a summary only from captured signal fields; invent no market facts."""
+    return (
+        "XRP signal summary. "
+        f"Score: {signal.get('score', 'unavailable')}. "
+        f"Confidence: {signal.get('confidence', 'unavailable')}. "
+        f"Score basis: {signal.get('score_basis', 'legacy/unknown')}. "
+        f"Model available: {signal.get('model_available', 'unknown')}. "
+        f"News entries: {signal.get('news_entries', 'unavailable')}. "
+        f"Source: {signal.get('source', 'unavailable')}."
+    )
+
+
 def main():
-    if not KEY:
-        sys.exit("GROQ_API_KEY not set")
     if not SIGNAL_FILE.is_file():
         sys.exit(f"{SIGNAL_FILE} not found")
     signal = json.loads(SIGNAL_FILE.read_text())
     print("SIGNAL KEYS:", list(signal.keys()))
-    base = ("Summarize this XRP signal in 2 sentences, then 3 short bullets. "
-            "Use ONLY the values shown. Invent nothing.\n\n"
-            + json.dumps(signal, indent=2))
-    summary = chat(base)
+
+    summary = ""
+    summary_source = "deterministic_fallback"
+    if KEY:
+        base = (
+            "Summarize this XRP signal in 2 sentences, then 3 short bullets. "
+            "Use ONLY the values shown. Invent nothing.\\n\\n"
+            + json.dumps(signal, indent=2)
+        )
+        summary = chat(base)
+        if summary:
+            summary_source = "groq"
+
     if not summary:
-        sys.exit("Summary generation failed; nothing written.")
-    spoken = chat("Compress to ONE spoken sentence under 130 characters, "
-                  "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
-    print(f"[compress] raw: {spoken!r}")
-    spoken = " ".join(spoken.replace("*", "").split())
-    if not spoken or len(spoken) > 140:
-        spoken = fallback_line(signal)
-        print(f"[compress] using deterministic fallback: {spoken}")
-    line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
-    print(f"[tts] input ({len(line)} chars): {line}")
-    audio, tts_err = speak(line)
+        summary = deterministic_summary(signal)
+        summary_source = "deterministic_fallback"
+
+    audio = None
+    tts_err = None
+    if KEY and summary_source == "groq":
+        spoken = chat(
+            "Compress to ONE spoken sentence under 130 characters, "
+            "Plain words only: no markdown, no asterisks, no raw timestamps. "
+            "Reply with the sentence and nothing else.\\n\\n" + summary,
+            500,
+        )
+        spoken = " ".join((spoken or "").replace("*", "").split())
+        if not spoken or len(spoken) > 140:
+            spoken = fallback_line(signal)
+        line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
+        audio, tts_err = speak(line)
+    else:
+        line = f"{fallback_line(signal)} {DISCLAIMER}"[:TTS_LIMIT]
+        tts_err = "GROQ_API_KEY not set; TTS skipped" if not KEY else "Summary unavailable from provider; TTS skipped"
+
     SUMMARY_FILE.write_text(json.dumps({
-        "summary": summary, "spoken_line": line, "disclaimer": DISCLAIMER,
-        "audio": audio, "tts_error": tts_err,
-        "source_signal": signal}, indent=2))
+        "summary": summary,
+        "summary_source": summary_source,
+        "spoken_line": line,
+        "disclaimer": DISCLAIMER,
+        "audio": audio,
+        "tts_error": tts_err,
+        "source_signal": signal,
+    }, indent=2))
     print("Summary written")
 
 if __name__ == "__main__":
