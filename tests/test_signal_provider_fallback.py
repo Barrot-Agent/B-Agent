@@ -89,3 +89,36 @@ def test_summary_writes_deterministic_fallback_without_provider_key(tmp_path, mo
     assert result["audio"] is None
     assert "GROQ_API_KEY not set" in result["tts_error"]
     assert "Score: 88" in result["summary"]
+
+
+def test_workflow_merge_guards_are_read_only_and_manual_only():
+    workflow_dir = ROOT / ".github" / "workflows"
+    for name in (
+        "barrot-pr-automerge.yml",
+        "barrot-gated-merge.yml",
+        "Barrot.Cognitive.PingPong.Engine.yml",
+    ):
+        content = (workflow_dir / name).read_text()
+        assert "workflow_dispatch:" in content
+        assert "schedule:" not in content
+        assert "contents: write" not in content
+        assert "pull-requests: write" not in content
+        assert "gh pr merge" not in content
+
+
+def test_merge_queue_requires_explicit_bounded_live_confirmation():
+    content = (ROOT / ".github" / "workflows" / "merge-queue.yml").read_text()
+    assert 'default: "10"' in content
+    assert 'default: "true"' in content
+    assert "confirm_live_merge" in content
+    assert "CONFIRM_LIVE_MERGE" in content
+    assert '[ "$MAX_PRS" -gt 10 ]' in content
+    assert "live mode requires confirm_live_merge=true" in content
+
+
+def test_accuracy_workflow_does_not_push_results_to_main():
+    content = (ROOT / ".github" / "workflows" / "check-signal-accuracy.yml").read_text()
+    assert "contents: read" in content
+    assert "contents: write" not in content
+    assert "git push" not in content
+    assert "actions/upload-artifact@v4" in content
