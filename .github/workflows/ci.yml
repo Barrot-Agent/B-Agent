@@ -57,4 +57,5 @@ jobs:
             tests/test_formal_benchmark.py \
             tests/test_emit_signal_fallback.py \
             tests/test_signal_summary_fallback.py \
+            tests/test_signal_accuracy_safety.py \
             -v --no-cov
