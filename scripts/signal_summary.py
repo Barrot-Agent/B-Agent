@@ -79,7 +79,8 @@ def deterministic_summary(signal):
     return (
         "XRP signal summary. "
         f"Score: {signal.get('score', 'unavailable')}. "
-        f"Confidence: {signal.get('confidence', 'unavailable')}. "
+        f"Confidence: {signal.get('confidence', 'unavailable')} "
+        f"(basis: {signal.get('confidence_basis', 'legacy/unknown')}). "
         f"Score basis: {signal.get('score_basis', 'legacy/unknown')}. "
         f"Model available: {signal.get('model_available', 'unknown')}. "
         f"News entries: {signal.get('news_entries', 'unavailable')}. "
