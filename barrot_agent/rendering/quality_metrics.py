@@ -10,7 +10,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any
+from typing import Any, Sequence
+
+from barrot_agent.rendering.mesh_topology import analyze_mesh_topology
 
 
 class Severity(str, Enum):
@@ -36,8 +38,9 @@ class GeometryReport:
     non_manifold_edges: int
     open_boundaries: int
     uv_overlap_ratio: float
-    is_watertight: bool
+    is_watertight: bool | None
     score: float
+    topology_status: str = "NOT_ASSESSED"
 
     @property
     def issues(self) -> list[ValidationIssue]:
@@ -213,6 +216,8 @@ class QualityMetrics:
         check_textures: bool = True,
         check_materials: bool = True,
         texture_resolution: str = "2k",
+        mesh_vertices: Sequence[Sequence[float]] | None = None,
+        mesh_faces: Sequence[Sequence[int]] | None = None,
     ) -> ValidationReport:
         """
         Run a full quality validation pass on a 3D asset.
@@ -235,7 +240,7 @@ class QualityMetrics:
             Texture atlas resolution (``"1k"`` – ``"8k"``).
         """
         geo = (
-            self._check_geometry(triangle_count)
+            self._check_geometry(triangle_count, mesh_vertices, mesh_faces)
             if check_geometry
             else self._empty_geo(triangle_count)
         )
@@ -277,17 +282,38 @@ class QualityMetrics:
     #  Internal helpers                                                    #
     # ------------------------------------------------------------------ #
 
-    def _check_geometry(self, tris: int) -> GeometryReport:
-        score = max(1.0, 5.0 - (tris / 1_000_000))
+    def _check_geometry(
+        self,
+        tris: int,
+        mesh_vertices: Sequence[Sequence[float]] | None = None,
+        mesh_faces: Sequence[Sequence[int]] | None = None,
+    ) -> GeometryReport:
+        if mesh_vertices is None or mesh_faces is None:
+            return GeometryReport(
+                triangle_count=tris,
+                vertex_count=0,
+                degenerate_triangles=0,
+                non_manifold_edges=0,
+                open_boundaries=0,
+                uv_overlap_ratio=0.0,
+                is_watertight=None,
+                score=0.0,
+                topology_status="NOT_ASSESSED",
+            )
+        measured = analyze_mesh_topology(mesh_vertices, mesh_faces)
         return GeometryReport(
-            triangle_count=tris,
-            vertex_count=int(tris * 0.6),
-            degenerate_triangles=0,
-            non_manifold_edges=0,
-            open_boundaries=0,
-            uv_overlap_ratio=0.02,
-            is_watertight=True,
-            score=round(min(score, 5.0), 2),
+            triangle_count=measured["triangle_count"],
+            vertex_count=measured["vertex_count"],
+            degenerate_triangles=measured["degenerate_triangles"],
+            non_manifold_edges=measured["non_manifold_edges"],
+            open_boundaries=measured["open_boundaries"],
+            uv_overlap_ratio=0.0,
+            is_watertight=measured["is_watertight"],
+            score=round(5.0 if measured["is_watertight"] else max(
+                0.0, 5.0 - measured["degenerate_triangles"]
+                - measured["non_manifold_edges"] - measured["open_boundaries"] / 10
+            ), 2),
+            topology_status=measured["topology_status"],
         )
 
     def _empty_geo(self, tris: int) -> GeometryReport:
@@ -298,8 +324,9 @@ class QualityMetrics:
             non_manifold_edges=0,
             open_boundaries=0,
             uv_overlap_ratio=0.0,
-            is_watertight=True,
-            score=5.0,
+            is_watertight=None,
+            score=0.0,
+            topology_status="NOT_ASSESSED",
         )
 
     def _check_textures(self, count: int, resolution: str) -> TextureReport:
