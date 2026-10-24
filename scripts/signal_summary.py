@@ -159,7 +159,19 @@ def main():
 
     summary = ""
     provider_error = None
-    if KEY:
+    summary_method = "model_generated"
+    signal_model_available = not model_unavailable(signal)
+
+    # Do not send a contaminated compatibility score to another model. If the
+    # signal's own model providers failed, produce a deterministic news-only or
+    # unavailable summary even when the separate summarizer key is healthy.
+    if not signal_model_available:
+        summary = fallback_summary(signal)
+        summary_method = "deterministic_fallback"
+        provider_error = "signal model unavailable; summary model bypassed"
+        LAST_CHAT_ERROR = provider_error
+        print("[chat] skipped: signal model unavailable; using deterministic fallback")
+    elif KEY:
         prompt = (
             "Summarize this XRP signal in 2 sentences, then 3 short bullets. "
             "Use ONLY the values shown. Invent nothing.\n\n"
@@ -172,7 +184,6 @@ def main():
         LAST_CHAT_ERROR = provider_error
         print("[chat] skipped: GROQ_API_KEY missing; using deterministic fallback")
 
-    summary_method = "model_generated"
     if not summary:
         summary = fallback_summary(signal)
         summary_method = "deterministic_fallback"
@@ -210,7 +221,10 @@ def main():
                 "audio": audio,
                 "tts_error": tts_error,
                 "provider_error": provider_error,
-                "model_available": summary_method == "model_generated",
+                # Keep signal-model availability separate from summarizer availability.
+                "model_available": signal_model_available,
+                "signal_model_available": signal_model_available,
+                "summary_model_available": summary_method == "model_generated",
                 "source_signal": signal,
             },
             indent=2,
