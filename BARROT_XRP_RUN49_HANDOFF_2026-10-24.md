@@ -73,9 +73,9 @@ Repository: https://github.com/Barrot-Agent/B-Agent
 - Latest observed main commit: `543b0cdc4f103fdab2e04a32e918aa34e7044a55` (cross-analysis refresh, 2026-10-24 04:53:43 UTC).
 - PR #1126 remains open/draft: https://github.com/Barrot-Agent/B-Agent/pull/1126
 - Candidate branch: `barrot/accuracy-artifact-only-20261024`
-- Candidate head last verified: `c076d1d04c5d02bb19640c4c98e257210449440d`
-- Compare at this cutoff: 8 commits ahead / 6 behind main, merge base `f9e72f25166da3931898f07c380c0a1202618a15`; do not rebase/merge blindly.
-- Exact candidate head has GitHub Actions CI run 40063058905 with success, and the separate gated-merge run 40063058904 completed as a disabled/audit-only notice. These are associated with the exact head observed; any later commit needs its own CI verification.
+- Candidate head last verified at Run 49 cutoff: `c352bd170338ad76b67d8e95e1299c7ae5093cc6`.
+- Compare after Run 49 handoff commit: 9 commits ahead / 6 behind main, merge base `f9e72f25166da3931898f07c380c0a1202618a15`; do not rebase/merge blindly.
+- CI run 40063058905 passed 112 tests in 4.65 seconds on prior head `c076d1d04c5d02bb19640c4c98e257210449440d`. After the Run 49 handoff commit `c352bd170338ad76b67d8e95e1299c7ae5093cc6`, CI run 40064814962 passed 112 tests in 6.11 seconds on that exact head. Run 40064814955 was a separate gated-merge disabled/audit-only notice, not an active merge gate. Any later commit needs its own CI verification.
 - Main was not modified. No merge, force-push, rebase, reset, clean, stash, overwrite or discard was performed.
 
 ### Confirmed active scheduled writers / external side effects on main
