@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
@@ -79,6 +80,17 @@ def main():
         "checked_count": checked,
         "correct_count": correct,
         "accuracy_pct": accuracy,
+        "checked_at_utc": datetime.now(timezone.utc).isoformat(),
+        "price_source": "CoinGecko simple/price current XRP/USD-equivalent quote; exact quote timestamp is not returned by this endpoint",
+        "evaluation_method": "Current quote at the scheduled check for records at least 24 hours old; actual observation horizons vary and are not fixed at exactly 24 hours",
+        "metric_status": "LEGACY_HEURISTIC_NOT_CALIBRATED",
+        "methodology_warning": "This legacy percentage is not a calibrated forecast-performance measure. It has no probability calibration, no-change baseline comparison, and legacy signal bases may include provider-unavailable placeholders.",
+        "known_limitations": [
+            "The outcome uses the current quote at a later scheduled run rather than a fixed-horizon historical quote.",
+            "The 24-hour minimum-age rule does not guarantee an exact 24-hour evaluation horizon.",
+            "The legacy correctness rule treats neutral scores as correct when the absolute price move is below 2%, which is not directly comparable with directional hits.",
+            "Legacy records may mix model-only, blended, news-only, and provider-unavailable signals."
+        ]
     }
     with open(SUMMARY_PATH, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
