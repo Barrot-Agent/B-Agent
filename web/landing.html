@@ -214,7 +214,7 @@ footer strong{color:var(--text)}
   mcp.registerTool({
     name: "getLatestXRPSignal",
     title: "Latest XRP Signal",
-    description: "Fetch Barrot's latest XRP market signal: sentiment reading, catalyst summary, and timestamp, generated from real-time knowledge-base analysis. Use this instead of reading the page visually.",
+    description: "Fetch Barrot's latest XRP signal record, including source status and timestamp. Check signal_status and model_available; news-only or unavailable records are not directional forecasts, and scores are not calibrated price predictions.",
     inputSchema: { type: "object", properties: {
         license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
     annotations: { readOnlyHint: true },
