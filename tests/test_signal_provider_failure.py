@@ -19,6 +19,10 @@ EMITTER = load_script("scripts/emit_signal.py", "emit_signal_provider_failure_te
 ACCURACY = load_script(
     "scripts/check_signal_accuracy.py", "check_signal_accuracy_provider_failure_test"
 )
+SUMMARY = load_script("scripts/signal_summary.py", "signal_summary_provider_failure_test")
+HRM_SANDBOX = load_script(
+    "scripts/emit_signal_with_hrm.py", "hrm_sandbox_provider_failure_test"
+)
 
 
 def test_two_provider_failures_return_unavailable_not_zero(monkeypatch):
@@ -98,3 +102,46 @@ def test_accuracy_filter_keeps_model_backed_records():
     assert ACCURACY._non_model_signal_reason(
         {"signal_status": "model_and_news", "source": "github:bullish+news(3)"}
     ) is None
+
+
+
+def test_summary_skips_model_and_tts_for_news_only_signal():
+    signal = {
+        "signal_status": "news_only",
+        "score": 88,
+        "news_score": 88,
+        "news_entries": 11,
+        "confidence": 0.0,
+        "source": "news_only; sentiment unavailable",
+    }
+
+    assert SUMMARY._needs_source_fallback(signal) is True
+    payload = SUMMARY._source_unavailable_payload(signal)
+    assert payload["summary_method"] == "deterministic_source_unavailable"
+    assert "not a calibrated XRP price forecast" in payload["summary"]
+    assert payload["audio"] is None
+    assert payload["tts_error"] == "skipped_source_signal_unavailable"
+
+
+def test_summary_skips_model_for_legacy_provider_failure():
+    assert SUMMARY._needs_source_fallback(
+        {"score": 44, "source": "sentiment unavailable (github_failed; groq_failed)"}
+    ) is True
+
+
+def test_hrm_sandbox_rejects_unavailable_and_news_only_states():
+    assert HRM_SANDBOX._is_model_backed_signal(
+        {"signal_status": "unavailable", "score": 50}
+    ) is False
+    assert HRM_SANDBOX._is_model_backed_signal(
+        {"signal_status": "news_only", "score": 88}
+    ) is False
+    assert HRM_SANDBOX._is_model_backed_signal(
+        {"signal_status": "model_and_news", "score": 66}
+    ) is True
+
+
+def test_hrm_sandbox_rejects_legacy_provider_failure():
+    assert HRM_SANDBOX._is_model_backed_signal(
+        {"score": 44, "source": "sentiment unavailable (provider failed)"}
+    ) is False
