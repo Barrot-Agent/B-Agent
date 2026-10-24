@@ -68,3 +68,11 @@ Only ChatGPT through the authorized GitHub connector was live-tested in this run
 4. Reconcile ETF flows per issuer and acquire synchronized cross-venue spot/derivatives observations with event timestamps.
 5. Build append-only fixed-horizon outcomes, leakage controls, baseline comparison, calibration and drift checks before issuing XRP predictions.
 6. Keep all changes on the draft branch until approval; main remains unchanged by this run.
+
+
+## Derivatives cross-check (added 2026-10-24T02:07Z)
+- Binance USD-M Futures public premiumIndex timestamp: 2026-10-24T01:40:48Z. XRPUSDT mark $1.29004569, index $1.29071181, current funding +0.007726% per interval, next funding 08:00 UTC. Positive funding means longs pay shorts under Binance's convention; this single observation does not prove crowded longs or direction.
+- Alpha Finance's liquidation map at 2026-10-23T20:17Z reported $2.82B aggregate OI and modelled $7.4M long-liquidation cluster at $1.2969 and $4.6M short cluster at $1.3234. These are older modelled estimates, not current exact liquidation prices.
+- Optimistfi's XRP derivatives page reports $1.6B OI in the headline but $1.3B in the venue table, with roughly $897.1M 24h volume and +8.2% annualized weighted funding. This is an internal data-quality inconsistency.
+- Cross-source OI estimates ($1.3B, $1.6B, $2.82B) are not reconciled because venue coverage, methodology and cutoff differ. Do not combine them as one feature.
+- Forecast remains NOT_ISSUED: no synchronized venue-level open interest, funding, basis, liquidation, order-book depth and spot panel has been backtested.
