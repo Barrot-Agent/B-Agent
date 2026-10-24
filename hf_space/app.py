@@ -198,7 +198,7 @@ TOOLS_SPEC = [
         "type": "function",
         "function": {
             "name": "get_latest_signal",
-            "description": "Current live ternary XRP signal with confidence score from the public endpoint.",
+            "description": "Read the latest XRP signal record and source status. Treat news-only or unavailable provider output as non-directional; scores are not calibrated price forecasts.",
             "parameters": {"type": "object", "properties": {}},
         },
     },
