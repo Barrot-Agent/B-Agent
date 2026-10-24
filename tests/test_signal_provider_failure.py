@@ -20,9 +20,7 @@ ACCURACY = load_script(
     "scripts/check_signal_accuracy.py", "check_signal_accuracy_provider_failure_test"
 )
 SUMMARY = load_script("scripts/signal_summary.py", "signal_summary_provider_failure_test")
-HRM_SANDBOX = load_script(
-    "scripts/emit_signal_with_hrm.py", "hrm_sandbox_provider_failure_test"
-)
+SCORE_UTIL = load_script("utils/score_to_signal.py", "score_to_signal_status_test")
 
 
 def test_two_provider_failures_return_unavailable_not_zero(monkeypatch):
@@ -129,19 +127,25 @@ def test_summary_skips_model_for_legacy_provider_failure():
     ) is True
 
 
-def test_hrm_sandbox_rejects_unavailable_and_news_only_states():
-    assert HRM_SANDBOX._is_model_backed_signal(
+def test_shared_status_guard_rejects_unavailable_and_news_only_states():
+    assert SCORE_UTIL.is_model_backed_signal(
         {"signal_status": "unavailable", "score": 50}
     ) is False
-    assert HRM_SANDBOX._is_model_backed_signal(
+    assert SCORE_UTIL.is_model_backed_signal(
         {"signal_status": "news_only", "score": 88}
     ) is False
-    assert HRM_SANDBOX._is_model_backed_signal(
+    assert SCORE_UTIL.is_model_backed_signal(
         {"signal_status": "model_and_news", "score": 66}
     ) is True
 
 
-def test_hrm_sandbox_rejects_legacy_provider_failure():
-    assert HRM_SANDBOX._is_model_backed_signal(
+def test_shared_status_guard_rejects_legacy_provider_failure():
+    assert SCORE_UTIL.is_model_backed_signal(
         {"score": 44, "source": "sentiment unavailable (provider failed)"}
     ) is False
+
+
+def test_shared_status_guard_preserves_legacy_model_backed_records():
+    assert SCORE_UTIL.is_model_backed_signal(
+        {"score": 61, "source": "github:bullish"}
+    ) is True
