@@ -66,7 +66,7 @@ PR #1135 is open/draft/unmerged, head `48c81881be5b49b8e75f92d688a886ba8310673e`
 To avoid modifying or rewriting existing work, a separate branch was created from the observed main SHA:
 `barrot/run59-freshbase-xrp-signal-accuracy-safety-20261024`
 
-The branch reapplies the previously tested source-signal provenance fix, downstream unavailable-state guards, deterministic regression tests, and read-only artifact-only accuracy workflow. A Run 59 handoff is added. The branch is not merged; no main changes, force-pushes, resets, cleans, stashes, overwrites or discards were performed. CI on the fresh branch and PR creation remain the next verification steps.
+The branch reapplies the previously tested source-signal provenance fix, downstream unavailable-state guards, deterministic regression tests, and read-only artifact-only accuracy workflow. A Run 59 handoff is added. PR #1136 was opened as draft. Fresh-head CI run 40105591488 passed **128 tests in 6.15 seconds** on head `447335f14cd9b2dd6f1659f644f641fadb2c7343`; fail-closed gate run 40105591477 succeeded without merging. This handoff update will create a new head and therefore requires a new exact-head CI run before the PR can be called verified. The branch is not merged; no main changes, force-pushes, resets, cleans, stashes, overwrites or discards were performed.
 
 ## Platform coordination status
 
@@ -74,8 +74,8 @@ Only ChatGPT through the authorized GitHub connector is live-tested in this run.
 
 ## Next actions
 
-1. Open a draft PR from the fresh branch and wait for exact-head CI.
-2. Verify every required regression test on the new head; preserve any failures rather than rerunning blindly.
+1. Verify exact-head CI after this handoff update; preserve any failures rather than rerunning blindly.
+2. Keep PR #1136 draft until the final head is green and required review/approval is obtained.
 3. Keep the source-signal output marked unavailable when providers fail; do not treat sentiment scores as price probabilities.
 4. Reconcile GXRP daily fund shares/holdings and creation-redemption history across Sep 2–28 and the ETP-listing baseline.
 5. Continue the SBIC identity thread, ASK Coin, “actual capital,” “SBIC, ChatGPT SBIC,” and Camilla Stephenson public-channel identity verification.
