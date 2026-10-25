@@ -97,7 +97,7 @@ def fallback_summary(signal):
         count = signal.get("news_entries")
         count_text = f" from {count} news entries" if count is not None else ""
         return (
-            f"Model analysis unavailable. News-only sentiment score {news_score}{count_text} is reported separately; "
+            f"Model analysis unavailable. news-only sentiment score {news_score}{count_text} is reported separately; "
             "the combined score is not a directional signal. No calibrated price prediction is issued."
         )
     score = signal.get("score")
