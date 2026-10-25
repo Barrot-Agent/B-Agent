@@ -127,6 +127,34 @@ def analyze_signal(signal_text: str):
     return 0, 0.0, f"sentiment unavailable ({last_err})"
 
 
+def _is_market_news_entry(entry: dict) -> bool:
+    """Exclude academic/research records from market-news sentiment aggregation.
+
+    Research relevance can be useful to Barrot's knowledge graph, but an academic
+    paper's positive wording is not a contemporaneous market-news catalyst.
+    Keep unknown legacy sources eligible for backward compatibility.
+    """
+    source = str(entry.get("source") or entry.get("source_type") or "").strip().lower()
+    source = source.replace("-", "_").replace(" ", "_")
+    content_type = str(entry.get("content_type") or entry.get("document_type") or "").strip().lower()
+    content_type = content_type.replace("-", "_").replace(" ", "_")
+
+    academic_prefixes = (
+        "academic", "scholarly", "crossref", "semantic_scholar",
+        "openalex", "arxiv",
+    )
+    if source in {"research", "paper", "journal_article", "preprint"}:
+        return False
+    if source.startswith(academic_prefixes):
+        return False
+    if content_type in {
+        "academic", "academic_paper", "research", "research_paper",
+        "scholarly_article", "journal_article", "preprint", "paper",
+    }:
+        return False
+    return True
+
+
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
     from datetime import timedelta
@@ -142,6 +170,8 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
             try:
                 e = json.loads(line)
             except Exception:
+                continue
+            if not _is_market_news_entry(e):
                 continue
             if not e.get("distilled"):
                 continue
