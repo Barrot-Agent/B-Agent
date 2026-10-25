@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 1093,
-    "btc_entries": 1124
+    "btc_entries": 1125
   },
   "unique_entities_profiled": 942,
   "entities": [
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 50,
+      "total_mentions": 51,
       "bullish": 30,
-      "neutral": 12,
+      "neutral": 13,
       "bearish": 8,
-      "net_sentiment_score": 0.44,
+      "net_sentiment_score": 0.431,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -427,6 +427,23 @@
       ]
     },
     {
+      "entity": "BlackRock",
+      "total_mentions": 12,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.583,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
       "entity": "MEXC",
       "total_mentions": 12,
       "bullish": 11,
@@ -474,23 +491,6 @@
         "Strategy Boosts Cash Reserve As Bitcoin Treasury Model Gets More Complex",
         "Strategy Wants To Pay Preferred Stock Dividends Every Day",
         "Strategy Buys 1,665 More Bitcoin And Spends $152M Buying Back STRC"
-      ]
-    },
-    {
-      "entity": "BlackRock",
-      "total_mentions": 11,
-      "bullish": 9,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.636,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
       ]
     },
     {
@@ -763,6 +763,23 @@
       ]
     },
     {
+      "entity": "Fidelity",
+      "total_mentions": 8,
+      "bullish": 6,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.625,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
+      ]
+    },
+    {
       "entity": "FXStreet",
       "total_mentions": 7,
       "bullish": 4,
@@ -843,23 +860,6 @@
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
         "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
         "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
-      ]
-    },
-    {
-      "entity": "Fidelity",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs Add $324.6M As Fidelity Dominates Friday Flows",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound"
       ]
     },
     {
@@ -2062,6 +2062,23 @@
       ]
     },
     {
+      "entity": "Grayscale",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
+        "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows"
+      ]
+    },
+    {
       "entity": "Upbit",
       "total_mentions": 3,
       "bullish": 3,
@@ -2458,6 +2475,23 @@
         "Zoomex to Host Traders After Party During TOKEN2049 Singapore, Connecting Traders and the Web3 Commu",
         "MEXC Returns to TOKEN2049 Singapore as Platinum Sponsor with Interactive Experiences and Industry Co",
         "Justin Sun Shares AI and Quantum Vision at TOKEN2049 Singapore and Blockworks DAS Asia"
+      ]
+    },
+    {
+      "entity": "ETHA",
+      "total_mentions": 3,
+      "bullish": 1,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+        "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+        "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows"
       ]
     },
     {
@@ -3606,22 +3640,6 @@
       ]
     },
     {
-      "entity": "Grayscale",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path",
-        "Grayscale Says SEC Reg Crypto Plan Could Reopen Token Fundraising Path"
-      ]
-    },
-    {
       "entity": "Stellar",
       "total_mentions": 2,
       "bullish": 1,
@@ -4707,22 +4725,6 @@
       "example_headlines": [
         "SEC Clears ARK Venture Fund For Tokenized And Exchange-Traded Share Classes",
         "ARK Brings $1.3B Venture Fund Onchain Through Securitize"
-      ]
-    },
-    {
-      "entity": "ETHA",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-        "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M"
       ]
     },
     {

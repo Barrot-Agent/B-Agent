@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1093,
-    "btc_entries": 1124
+    "btc_entries": 1125
   },
-  "unique_pairs_found": 3059,
+  "unique_pairs_found": 3063,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1686,6 +1686,21 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "USDT",
       "cooccurrence_count": 4,
@@ -2766,21 +2781,6 @@
       ]
     },
     {
-      "entity_a": "Ethereum",
-      "entity_b": "Fidelity",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Financial Conduct Authority",
       "entity_b": "UK",
       "cooccurrence_count": 3,
@@ -2822,6 +2822,36 @@
         {
           "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "ETHA",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
         }
       ]
     },
@@ -7372,7 +7402,7 @@
     },
     {
       "entity_a": "BlackRock",
-      "entity_b": "ETHA",
+      "entity_b": "Ethereum",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -7380,13 +7410,28 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
           "asset": "BTC"
         }
       ]
     },
     {
-      "entity_a": "BlackRock",
+      "entity_a": "ETHA",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
       "entity_b": "Fidelity",
       "cooccurrence_count": 2,
       "example_headlines": [
@@ -7395,7 +7440,7 @@
           "asset": "XRP"
         },
         {
-          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
           "asset": "BTC"
         }
       ]
@@ -19755,17 +19800,6 @@
     },
     {
       "entity_a": "BlackRock",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
       "entity_b": "FETH",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -19777,29 +19811,7 @@
     },
     {
       "entity_a": "ETHA",
-      "entity_b": "Ethereum",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETHA",
       "entity_b": "FETH",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "ETHA",
-      "entity_b": "Fidelity",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -36106,6 +36118,50 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Grayscale",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "ETHA",
+      "entity_b": "Grayscale",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Grayscale",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Fidelity",
+      "entity_b": "Grayscale",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
           "asset": "BTC"
         }
       ]
