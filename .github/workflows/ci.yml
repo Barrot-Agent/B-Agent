@@ -55,4 +55,6 @@ jobs:
             tests/test_formal_benchmark.py \
             tests/test_signal_provider_failure.py \
             tests/test_accuracy_workflow_safety.py \
+            tests/test_signal_summary_fallback.py \
+            tests/test_fixed_horizon_evaluator.py \
             -v --no-cov
