@@ -462,7 +462,7 @@ def test_emit_signal_news_score_excludes_academic_research(tmp_path: Path) -> No
         },
     ]
     log_path = tmp_path / "knowledge.jsonl"
-    log_path.write_text("".join(json.dumps(row) + "\\n" for row in records), encoding="utf-8")
+    log_path.write_text("".join(json.dumps(row) + "\n" for row in records), encoding="utf-8")
 
     score, used, headlines = module._news_score(hours=72, path=str(log_path))
 
@@ -483,7 +483,7 @@ def test_emit_signal_returns_no_market_news_score_for_academic_only(tmp_path: Pa
         "distill": {"sentiment": "bullish", "xrp_relevance": 0.9},
     }
     log_path = tmp_path / "knowledge.jsonl"
-    log_path.write_text(json.dumps(record) + "\\n", encoding="utf-8")
+    log_path.write_text(json.dumps(record) + "\n", encoding="utf-8")
 
     score, used, headlines = module._news_score(hours=72, path=str(log_path))
 
@@ -495,7 +495,7 @@ def test_emit_signal_returns_no_market_news_score_for_academic_only(tmp_path: Pa
 def test_emit_signal_excludes_normalized_academic_source_names() -> None:
     module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_source_type_test")
 
-    assert module._is_market_news_entry({"source": "Academic"})
+    assert not module._is_market_news_entry({"source": "Academic"})
     assert not module._is_market_news_entry({"source": "academic"})
     assert not module._is_market_news_entry({"source": "semantic-scholar"})
     assert not module._is_market_news_entry({"content_type": "research paper"})
