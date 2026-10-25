@@ -19,7 +19,7 @@ def test_provider_failure_does_not_repeat_contaminated_combined_score():
     summary = module.fallback_summary(signal)
     line = module.fallback_line(signal)
     assert "news-only sentiment score 88" in summary
-    assert "combined compatibility score" in summary
+    assert "combined score" in summary
     assert "44" not in summary
     assert "news-only score 88" in line
     assert "Score 44" not in line
