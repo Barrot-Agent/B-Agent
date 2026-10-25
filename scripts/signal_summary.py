@@ -94,6 +94,11 @@ def model_unavailable(signal):
     )
 
 
+
+def _needs_source_fallback(signal):
+    """Compatibility guard: do not summarize unavailable/news-only model output."""
+    return model_unavailable(signal)
+
 def fallback_summary(signal):
     """Describe only valid fields; never repeat a contaminated combined score."""
     status = str(signal.get("signal_status", "")).lower()
