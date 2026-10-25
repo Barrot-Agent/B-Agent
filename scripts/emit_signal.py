@@ -143,13 +143,18 @@ def _is_market_news_entry(entry: dict) -> bool:
         "academic", "scholarly", "crossref", "semantic_scholar",
         "openalex", "arxiv",
     )
-    if source in {"research", "paper", "journal_article", "preprint"}:
+    if source in {
+        "research", "research_paper", "research_article", "paper", "working_paper",
+        "whitepaper", "journal_article", "preprint", "conference_paper",
+        "scholarly_paper", "thesis", "dissertation",
+    }:
         return False
     if source.startswith(academic_prefixes):
         return False
     if content_type in {
         "academic", "academic_paper", "research", "research_paper",
-        "scholarly_article", "journal_article", "preprint", "paper",
+        "scholarly_article", "scholarly_paper", "journal_article", "preprint", "paper",
+        "working_paper", "conference_paper", "thesis", "dissertation", "whitepaper",
     }:
         return False
     return True
@@ -161,7 +166,9 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
 
     if not os.path.exists(path):
         return None, 0, []
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=hours)
+    future_limit = now + timedelta(minutes=5)
     num = den = 0.0
     used = 0
     heads = []
@@ -188,7 +195,7 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
                     ts = ts.replace(tzinfo=timezone.utc)
             except (TypeError, ValueError, OverflowError):
                 continue
-            if ts < cutoff:
+            if ts < cutoff or ts > future_limit:
                 continue
             s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
             num += s * w
