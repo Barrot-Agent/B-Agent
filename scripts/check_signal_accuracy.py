@@ -138,6 +138,51 @@ def _read_evaluation_ids(path: Path) -> set[str]:
     }
 
 
+def _valid_evaluation(record: dict[str, Any]) -> tuple[bool, str | None]:
+    if record.get("record_type") != "evaluation":
+        return False, "not_evaluation_record"
+    if not isinstance(record.get("forecast_id"), str) or not record["forecast_id"].strip():
+        return False, "missing_forecast_id"
+    if record.get("target_definition") != TARGET_DEFINITION:
+        return False, "unsupported_target_definition"
+    horizon = record.get("horizon_seconds")
+    if not isinstance(horizon, int) or isinstance(horizon, bool) or horizon <= 0:
+        return False, "invalid_horizon"
+    issued_dt = _parse_aware_datetime(record.get("issued_at_utc"))
+    cutoff_dt = _parse_aware_datetime(record.get("data_cutoff_utc"))
+    if issued_dt is None or cutoff_dt is None or cutoff_dt > issued_dt:
+        return False, "invalid_evaluation_timestamps"
+    probability = record.get("probability")
+    if not _finite_number(probability) or not 0.0 <= float(probability) <= 1.0:
+        return False, "invalid_evaluation_probability"
+    outcome = record.get("outcome")
+    if isinstance(outcome, bool) or outcome not in (0, 1):
+        return False, "invalid_binary_outcome"
+    observed = record.get("outcome_observed_at_unix")
+    tolerance = record.get("outcome_tolerance_seconds")
+    if not _finite_number(observed):
+        return False, "invalid_evaluation_outcome_timestamp"
+    if not isinstance(tolerance, int) or isinstance(tolerance, bool) or tolerance < 0:
+        return False, "invalid_evaluation_tolerance"
+    target_end = issued_dt.timestamp() + horizon
+    if abs(float(observed) - target_end) > tolerance:
+        return False, "evaluation_outcome_outside_horizon"
+    baseline_probability = record.get("baseline_probability")
+    if not _finite_number(baseline_probability) or not math.isclose(float(baseline_probability), BASELINE_PROBABILITY, abs_tol=1e-12):
+        return False, "invalid_baseline_probability"
+    expected_brier = (float(probability) - int(outcome)) ** 2
+    expected_baseline_brier = (BASELINE_PROBABILITY - int(outcome)) ** 2
+    if not _finite_number(record.get("brier_score")) or not math.isclose(float(record["brier_score"]), expected_brier, rel_tol=0.0, abs_tol=1e-9):
+        return False, "brier_score_mismatch"
+    if not _finite_number(record.get("baseline_brier_score")) or not math.isclose(float(record["baseline_brier_score"]), expected_baseline_brier, rel_tol=0.0, abs_tol=1e-9):
+        return False, "baseline_brier_score_mismatch"
+    if not isinstance(record.get("outcome_source_id"), str) or not record["outcome_source_id"].strip():
+        return False, "missing_outcome_source_id"
+    if not isinstance(record.get("model_version"), str) or not record["model_version"].strip():
+        return False, "missing_model_version"
+    return True, None
+
+
 def _evaluate_pair(forecast: dict[str, Any], outcome: dict[str, Any]) -> tuple[dict[str, Any] | None, str | None]:
     valid_f, reason_f = _valid_forecast(forecast)
     if not valid_f:
@@ -167,6 +212,7 @@ def _evaluate_pair(forecast: dict[str, Any], outcome: dict[str, Any]) -> tuple[d
         "data_cutoff_utc": forecast["data_cutoff_utc"],
         "outcome_observed_at_unix": observed,
         "outcome_source_id": outcome["source_id"],
+        "outcome_tolerance_seconds": tolerance,
         "model_version": forecast["model_version"],
         "probability": p,
         "outcome": y,
@@ -214,11 +260,15 @@ def build_summary(
             continue
         outcomes_by_id.setdefault(record["forecast_id"], []).append(record)
 
-    existing_ids = {
-        str(record["forecast_id"])
-        for record in evaluations
-        if record.get("record_type") == "evaluation" and isinstance(record.get("forecast_id"), str)
-    }
+    valid_existing_evaluations: list[dict[str, Any]] = []
+    invalid_evaluation_records = 0
+    for record in evaluations:
+        ok, _ = _valid_evaluation(record)
+        if ok:
+            valid_existing_evaluations.append(record)
+        elif record.get("record_type") == "evaluation":
+            invalid_evaluation_records += 1
+    existing_ids = {str(record["forecast_id"]) for record in valid_existing_evaluations}
     new_evaluations: list[dict[str, Any]] = []
     ambiguous_outcomes = 0
     unmatched_outcomes = 0
@@ -244,7 +294,7 @@ def build_summary(
 
     evaluation_by_id: dict[str, dict[str, Any]] = {}
     conflicting_evaluation_ids: set[str] = set()
-    for record in evaluations + new_evaluations:
+    for record in valid_existing_evaluations + new_evaluations:
         fid = record.get("forecast_id")
         if record.get("record_type") != "evaluation" or not isinstance(fid, str):
             continue
@@ -290,6 +340,7 @@ def build_summary(
         "legacy_or_invalid_signal_records_seen": legacy_records,
         "invalid_forecast_duplicates": invalid_forecasts,
         "conflicting_evaluation_ids": len(conflicting_evaluation_ids),
+        "invalid_evaluation_records": invalid_evaluation_records,
         "invalid_outcome_records": invalid_outcomes,
         "ambiguous_outcome_sets": ambiguous_outcomes,
         "outcomes_outside_horizon_tolerance": unmatched_outcomes,

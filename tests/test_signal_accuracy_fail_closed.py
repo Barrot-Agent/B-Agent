@@ -123,12 +123,8 @@ def test_duplicate_conflicting_outcomes_are_not_arbitrarily_selected():
 
 
 def test_evaluation_is_idempotent_by_forecast_id():
-    existing = {
-        "record_type": "evaluation",
-        "forecast_id": "xrp-24h-001",
-        "brier_score": 0.09,
-        "baseline_brier_score": 0.25,
-    }
+    existing, reason = module._evaluate_pair(valid_forecast(), valid_outcome())
+    assert existing is not None and reason is None
     summary, new = module.build_summary([valid_forecast()], [valid_outcome()], [existing])
     assert not new
     assert summary["checked_count"] == 1
@@ -237,9 +233,33 @@ def test_conflicting_duplicate_forecast_ids_are_excluded():
 
 
 def test_conflicting_existing_evaluations_are_not_double_counted():
-    e1 = {"record_type": "evaluation", "forecast_id": "xrp-24h-001", "brier_score": 0.09, "baseline_brier_score": 0.25}
-    e2 = {"record_type": "evaluation", "forecast_id": "xrp-24h-001", "brier_score": 0.64, "baseline_brier_score": 0.25}
+    e1, reason1 = module._evaluate_pair(valid_forecast(probability=0.7), valid_outcome())
+    e2, reason2 = module._evaluate_pair(valid_forecast(probability=0.2), valid_outcome())
+    assert e1 is not None and reason1 is None and e2 is not None and reason2 is None
     summary, new = module.build_summary([valid_forecast()], [valid_outcome()], [e1, e2])
     assert not new
     assert summary["checked_count"] == 0
     assert summary["conflicting_evaluation_ids"] == 1
+
+
+def test_corrupt_persisted_brier_record_is_rejected_and_recomputed():
+    valid, reason = module._evaluate_pair(valid_forecast(), valid_outcome())
+    assert valid is not None and reason is None
+    corrupt = dict(valid)
+    corrupt["brier_score"] = 99.0
+    summary, new = module.build_summary([valid_forecast()], [valid_outcome()], [corrupt])
+    assert len(new) == 1
+    assert summary["invalid_evaluation_records"] == 1
+    assert summary["checked_count"] == 1
+    assert math.isclose(summary["mean_brier_score"], 0.09, abs_tol=1e-12)
+
+
+def test_persisted_evaluation_requires_verified_horizon_tolerance():
+    valid, reason = module._evaluate_pair(valid_forecast(), valid_outcome())
+    assert valid is not None and reason is None
+    corrupt = dict(valid)
+    corrupt["outcome_tolerance_seconds"] = 0
+    corrupt["outcome_observed_at_unix"] = float(corrupt["outcome_observed_at_unix"]) + 1
+    summary, new = module.build_summary([valid_forecast()], [valid_outcome()], [corrupt])
+    assert len(new) == 1
+    assert summary["invalid_evaluation_records"] == 1
