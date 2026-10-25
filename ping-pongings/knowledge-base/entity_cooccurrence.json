@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 1086,
+    "xrp_entries": 1087,
     "btc_entries": 1118
   },
-  "unique_pairs_found": 3045,
+  "unique_pairs_found": 3049,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 203,
+      "cooccurrence_count": 204,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -141,6 +141,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 22,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 22,
@@ -171,9 +186,9 @@
       ]
     },
     {
-      "entity_a": "Ripple Labs",
-      "entity_b": "XRP",
-      "cooccurrence_count": 21,
+      "entity_a": "Ripple",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 20,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -196,21 +211,6 @@
         },
         {
           "title": "Bitcoin ETF Inflows Hit $517M As Institutional Demand Returns",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
-      "entity_b": "Ripple Labs",
-      "cooccurrence_count": 19,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -531,6 +531,21 @@
       ]
     },
     {
+      "entity_a": "RLUSD",
+      "entity_b": "XRP",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "STRC",
       "entity_b": "Strategy",
       "cooccurrence_count": 9,
@@ -622,7 +637,7 @@
     },
     {
       "entity_a": "RLUSD",
-      "entity_b": "XRP",
+      "entity_b": "Ripple",
       "cooccurrence_count": 8,
       "example_headlines": [
         {
@@ -826,21 +841,6 @@
         },
         {
           "title": "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "RLUSD",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 7,
-      "example_headlines": [
-        {
-          "title": "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -7307,6 +7307,21 @@
         {
           "title": "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
+          "asset": "XRP"
+        },
+        {
+          "title": "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall",
+          "asset": "XRP"
         }
       ]
     },
@@ -18254,17 +18269,6 @@
       ]
     },
     {
-      "entity_a": "24/7 Wall St",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "ChatGPT",
       "cooccurrence_count": 1,
@@ -25520,6 +25524,50 @@
       "example_headlines": [
         {
           "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "RLUSD",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "24/7 Wall St",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RLUSD",
+      "entity_b": "Ripple Labs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall",
           "asset": "XRP"
         }
       ]

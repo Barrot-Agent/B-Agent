@@ -1,6 +1,6 @@
 {
   "generated_from": {
-    "xrp_entries": 1086,
+    "xrp_entries": 1087,
     "btc_entries": 1118
   },
   "unique_entities_profiled": 938,
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 273,
+      "total_mentions": 274,
       "bullish": 175,
       "neutral": 43,
-      "bearish": 55,
-      "net_sentiment_score": 0.44,
+      "bearish": 56,
+      "net_sentiment_score": 0.434,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 211,
+      "total_mentions": 212,
       "bullish": 137,
       "neutral": 38,
-      "bearish": 36,
-      "net_sentiment_score": 0.479,
+      "bearish": 37,
+      "net_sentiment_score": 0.472,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -210,11 +210,11 @@
     },
     {
       "entity": "Ripple Labs",
-      "total_mentions": 21,
+      "total_mentions": 22,
       "bullish": 15,
       "neutral": 4,
-      "bearish": 2,
-      "net_sentiment_score": 0.619,
+      "bearish": 3,
+      "net_sentiment_score": 0.545,
       "assets_seen_in": [
         "XRP"
       ],
@@ -596,6 +596,22 @@
       ]
     },
     {
+      "entity": "RLUSD",
+      "total_mentions": 9,
+      "bullish": 8,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.778,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
+        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
+        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
+      ]
+    },
+    {
       "entity": "TradingView",
       "total_mentions": 9,
       "bullish": 5,
@@ -677,22 +693,6 @@
         "Bitcoin stable as Fed fave PCE inflation sees first monthly drop in six years",
         "Bitcoin price sinks to 2-week lows as US stocks fail to copy Asia rebound",
         "Gold hits six-week highs on China demand as Bitcoin ignores fresh S&P 500 record"
-      ]
-    },
-    {
-      "entity": "RLUSD",
-      "total_mentions": 8,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Holders Can Now Borrow Ripple's RLUSD on Ethereum Without Selling Their Crypto - Decrypt",
-        "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-        "XRP price news: Up 30% on the week as Ripple backs an RLUSD credit fund - CoinDesk"
       ]
     },
     {
@@ -4589,6 +4589,21 @@
       ]
     },
     {
+      "entity": "24/7 Wall St",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St",
+        "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall"
+      ]
+    },
+    {
       "entity": "Strive",
       "total_mentions": 2,
       "bullish": 2,
@@ -8046,20 +8061,6 @@
     },
     {
       "entity": "ChatGPT",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Price Prediction: We Asked ChatGPT Where XRP Goes Now That the CLARITY Act Failed - 24/7 Wall St"
-      ]
-    },
-    {
-      "entity": "24/7 Wall St",
       "total_mentions": 1,
       "bullish": 0,
       "neutral": 0,
