@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 1079,
+    "xrp_entries": 1081,
     "btc_entries": 1111
   },
-  "unique_pairs_found": 3035,
+  "unique_pairs_found": 3039,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 201,
+      "cooccurrence_count": 203,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 41,
+      "cooccurrence_count": 42,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -53,7 +53,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "SEC",
-      "cooccurrence_count": 35,
+      "cooccurrence_count": 36,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 30,
+      "cooccurrence_count": 31,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 27,
+      "cooccurrence_count": 28,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -173,7 +173,7 @@
     {
       "entity_a": "Ripple Labs",
       "entity_b": "XRP",
-      "cooccurrence_count": 20,
+      "cooccurrence_count": 21,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -203,7 +203,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Ripple Labs",
-      "cooccurrence_count": 18,
+      "cooccurrence_count": 19,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -276,6 +276,21 @@
       ]
     },
     {
+      "entity_a": "Ripple Labs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 15,
+      "example_headlines": [
+        {
+          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Moomoo",
       "entity_b": "XRP.CC",
       "cooccurrence_count": 14,
@@ -301,21 +316,6 @@
         },
         {
           "title": "Can You Stake XRP (Ripple) and Earn Rewards? - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "SEC",
-      "cooccurrence_count": 14,
-      "example_headlines": [
-        {
-          "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -846,6 +846,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 7,
+      "example_headlines": [
+        {
+          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+          "asset": "XRP"
+        },
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "ETF",
       "cooccurrence_count": 7,
@@ -891,8 +906,8 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "U.S. District Court",
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
       "cooccurrence_count": 6,
       "example_headlines": [
         {
@@ -1101,8 +1116,8 @@
       ]
     },
     {
-      "entity_a": "U.S. District Court",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "U.S. District Court",
       "cooccurrence_count": 5,
       "example_headlines": [
         {
@@ -1476,21 +1491,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-          "asset": "XRP"
-        },
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CLARITY Act",
       "entity_b": "Ripple",
       "cooccurrence_count": 4,
@@ -1746,6 +1746,21 @@
       ]
     },
     {
+      "entity_a": "Coinbase",
+      "entity_b": "USDC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Binance",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -1981,6 +1996,21 @@
         },
         {
           "title": "What Ripple CASP authorisation means under MiCA - Ripple",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple Labs",
+      "entity_b": "U.S. District Court",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+          "asset": "XRP"
+        },
+        {
+          "title": "Why is XRP rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
@@ -2886,17 +2916,32 @@
       ]
     },
     {
-      "entity_a": "Coinbase",
-      "entity_b": "USDC",
+      "entity_a": "Ripple",
+      "entity_b": "SWIFT",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
           "asset": "XRP"
         },
         {
-          "title": "Coinbase Gets CFTC Approval For Its Own USDC-Native Clearinghouse",
-          "asset": "BTC"
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SWIFT",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+          "asset": "XRP"
+        },
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "asset": "XRP"
         }
       ]
     },
@@ -4141,21 +4186,6 @@
         },
         {
           "title": "$Ripple (XRP.CC)$ - moomoo.com",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple Labs",
-      "entity_b": "U.S. District Court",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-          "asset": "XRP"
-        },
-        {
-          "title": "Why is XRP rallying? - FXStreet",
           "asset": "XRP"
         }
       ]
@@ -7806,36 +7836,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "SWIFT",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "SWIFT",
-      "entity_b": "XRP",
-      "cooccurrence_count": 2,
-      "example_headlines": [
-        {
-          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
-          "asset": "XRP"
-        },
-        {
-          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "CFTC",
       "entity_b": "USDC",
       "cooccurrence_count": 2,
@@ -8061,6 +8061,21 @@
       ]
     },
     {
+      "entity_a": "SWIFT",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Crypto Infrastructure",
       "entity_b": "XRP",
       "cooccurrence_count": 2,
@@ -8086,6 +8101,141 @@
         },
         {
           "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Coinbase Prime",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Samsung",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase",
+      "entity_b": "Samsung Wallet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Prime",
+      "entity_b": "Samsung",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Prime",
+      "entity_b": "Samsung Wallet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Coinbase Prime",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Samsung",
+      "entity_b": "Samsung Wallet",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Samsung",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Samsung Wallet",
+      "entity_b": "USDC",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+          "asset": "XRP"
+        },
+        {
+          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
           "asset": "BTC"
         }
       ]
@@ -25375,12 +25525,45 @@
       ]
     },
     {
+      "entity_a": "Ripple",
+      "entity_b": "SWIFT\u2011Ripple partnership",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "SWIFT",
+      "entity_b": "SWIFT\u2011Ripple partnership",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SWIFT\u2011Ripple partnership",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - ",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SWIFT\u2011Ripple partnership",
       "entity_b": "Yahoo Finance",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "title": "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - ",
           "asset": "XRP"
         }
       ]
@@ -35534,105 +35717,6 @@
       "example_headlines": [
         {
           "title": "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "Coinbase Prime",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "Samsung",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase",
-      "entity_b": "Samsung Wallet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase Prime",
-      "entity_b": "Samsung",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase Prime",
-      "entity_b": "Samsung Wallet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Coinbase Prime",
-      "entity_b": "USDC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Samsung",
-      "entity_b": "Samsung Wallet",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Samsung",
-      "entity_b": "USDC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Samsung Wallet",
-      "entity_b": "USDC",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
           "asset": "BTC"
         }
       ]

@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1079,
+    "xrp_entries": 1081,
     "btc_entries": 1111
   },
-  "unique_entities_profiled": 936,
+  "unique_entities_profiled": 937,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 271,
-      "bullish": 174,
-      "neutral": 42,
+      "total_mentions": 273,
+      "bullish": 175,
+      "neutral": 43,
       "bearish": 55,
-      "net_sentiment_score": 0.439,
+      "net_sentiment_score": 0.44,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 209,
-      "bullish": 136,
-      "neutral": 37,
+      "total_mentions": 211,
+      "bullish": 137,
+      "neutral": 38,
       "bearish": 36,
-      "net_sentiment_score": 0.478,
+      "net_sentiment_score": 0.479,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 60,
-      "bullish": 42,
+      "total_mentions": 61,
+      "bullish": 43,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.533,
+      "net_sentiment_score": 0.541,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 57,
+      "total_mentions": 58,
       "bullish": 37,
-      "neutral": 6,
+      "neutral": 7,
       "bearish": 14,
-      "net_sentiment_score": 0.404,
+      "net_sentiment_score": 0.397,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -209,6 +209,22 @@
       ]
     },
     {
+      "entity": "Ripple Labs",
+      "total_mentions": 21,
+      "bullish": 15,
+      "neutral": 4,
+      "bearish": 2,
+      "net_sentiment_score": 0.619,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
+        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
+      ]
+    },
+    {
       "entity": "ETH",
       "total_mentions": 21,
       "bullish": 14,
@@ -226,28 +242,12 @@
       ]
     },
     {
-      "entity": "Ripple Labs",
-      "total_mentions": 20,
-      "bullish": 14,
-      "neutral": 4,
-      "bearish": 2,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
-        "Can You Stake XRP (Ripple) and Earn Rewards? - Yahoo Finance",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St."
-      ]
-    },
-    {
       "entity": "Coinbase",
-      "total_mentions": 20,
-      "bullish": 16,
+      "total_mentions": 21,
+      "bullish": 17,
       "neutral": 4,
       "bearish": 0,
-      "net_sentiment_score": 0.8,
+      "net_sentiment_score": 0.81,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -427,6 +427,23 @@
       ]
     },
     {
+      "entity": "USDC",
+      "total_mentions": 11,
+      "bullish": 10,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.909,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
+        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
+      ]
+    },
+    {
       "entity": "STRC",
       "total_mentions": 11,
       "bullish": 5,
@@ -508,23 +525,6 @@
         "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
         "Zoomex Launches ZWTC 2026 Multi-Asset Trading Championship With a Record Prize Pool of Up to 5 Milli",
         "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F"
-      ]
-    },
-    {
-      "entity": "USDC",
-      "total_mentions": 10,
-      "bullish": 9,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.9,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ethereum Turns 11 With $148B Stablecoin Base But Cooler Mainnet Fees",
-        "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-        "New York Life Takes High-Yield Bond Strategy Onchain With Centrifuge"
       ]
     },
     {
@@ -779,6 +779,22 @@
       ]
     },
     {
+      "entity": "U.S. District Court",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 2,
+      "bearish": 1,
+      "net_sentiment_score": 0.429,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
+        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "CLARITY Act",
       "total_mentions": 7,
       "bullish": 5,
@@ -895,22 +911,6 @@
         "Ripple\u2019s XRP Could Hit $100T if Institutions Use It as Collateral: Analyst - cryptopotato.com",
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "XRP at a Crossroads: Why Institutional Adoption Is Growing While the Token Struggles - bitcoinfounda"
-      ]
-    },
-    {
-      "entity": "U.S. District Court",
-      "total_mentions": 6,
-      "bullish": 3,
-      "neutral": 2,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Scores Fresh Regulatory Win\u2014How Come XRP Doesn't React to the News? - Benzinga",
-        "Will XRP (Ripple) Recover in 2026? The 3 Things That Have to Happen First - 24/7 Wall St.",
-        "Why is XRP rallying? - FXStreet"
       ]
     },
     {
@@ -2523,6 +2523,22 @@
         "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
         "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
         "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail"
+      ]
+    },
+    {
+      "entity": "SWIFT",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
+        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+        "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - "
       ]
     },
     {
@@ -4942,21 +4958,6 @@
       ]
     },
     {
-      "entity": "SWIFT",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - CCN.com",
-        "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance"
-      ]
-    },
-    {
       "entity": "Swell 2026",
       "total_mentions": 2,
       "bullish": 2,
@@ -5064,6 +5065,54 @@
       "example_headlines": [
         "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
         "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
+      ]
+    },
+    {
+      "entity": "Samsung",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
+      ]
+    },
+    {
+      "entity": "Samsung Wallet",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
+      ]
+    },
+    {
+      "entity": "Coinbase Prime",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet",
+        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
       ]
     },
     {
@@ -10540,6 +10589,20 @@
       ]
     },
     {
+      "entity": "SWIFT\u2011Ripple partnership",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "SWIFT-Ripple Partnership Rumor Sends XRP Community Into Overdrive, But What\u2019s Actually Confirmed? - "
+      ]
+    },
+    {
       "entity": "Digital Asset Lab",
       "total_mentions": 1,
       "bullish": 1,
@@ -13729,48 +13792,6 @@
       ],
       "example_headlines": [
         "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
-      ]
-    },
-    {
-      "entity": "Samsung",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
-      ]
-    },
-    {
-      "entity": "Samsung Wallet",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
-      ]
-    },
-    {
-      "entity": "Coinbase Prime",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Coinbase And Samsung Bring USDC Directly Into Samsung Wallet"
       ]
     },
     {
