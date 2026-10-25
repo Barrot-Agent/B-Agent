@@ -499,6 +499,9 @@ def test_emit_signal_excludes_normalized_academic_source_names() -> None:
     assert not module._is_market_news_entry({"source": "academic"})
     assert not module._is_market_news_entry({"source": "semantic-scholar"})
     assert not module._is_market_news_entry({"content_type": "research paper"})
+    assert not module._is_market_news_entry({"source": "research_paper"})
+    assert not module._is_market_news_entry({"source": "working-paper"})
+    assert not module._is_market_news_entry({"content_type": "conference paper"})
     assert module._is_market_news_entry({"source": "coindesk"})
     assert module._is_market_news_entry({"title": "legacy item without source"})
 
@@ -523,6 +526,29 @@ def test_emit_signal_news_score_excludes_missing_or_invalid_timestamps(tmp_path:
     ]
     log_path = tmp_path / "knowledge.jsonl"
     log_path.write_text("".join(json.dumps(row) + "\n" for row in records), encoding="utf-8")
+
+    score, used, headlines = module._news_score(hours=72, path=str(log_path))
+
+    assert score is None
+    assert used == 0
+    assert headlines == []
+
+
+
+def test_emit_signal_news_score_excludes_future_timestamps(tmp_path: Path) -> None:
+    from datetime import datetime, timedelta, timezone
+
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_future_timestamp_test")
+    future_stamp = (datetime.now(timezone.utc) + timedelta(minutes=10)).isoformat()
+    record = {
+        "source": "market_news",
+        "title": "Future-dated bullish item",
+        "ingested_at": future_stamp,
+        "distilled": True,
+        "distill": {"sentiment": "bullish", "xrp_relevance": 1.0},
+    }
+    log_path = tmp_path / "knowledge.jsonl"
+    log_path.write_text(json.dumps(record) + "\\n", encoding="utf-8")
 
     score, used, headlines = module._news_score(hours=72, path=str(log_path))
 
