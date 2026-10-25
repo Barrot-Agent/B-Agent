@@ -1,17 +1,17 @@
 {
   "generated_from": {
-    "xrp_entries": 1081,
-    "btc_entries": 1111
+    "xrp_entries": 1082,
+    "btc_entries": 1113
   },
-  "unique_entities_profiled": 937,
+  "unique_entities_profiled": 938,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 289,
-      "bullish": 159,
+      "total_mentions": 290,
+      "bullish": 160,
       "neutral": 42,
       "bearish": 88,
-      "net_sentiment_score": 0.246,
+      "net_sentiment_score": 0.248,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -4711,6 +4711,22 @@
       ]
     },
     {
+      "entity": "Anchorage Digital",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain",
+        "Sui\u2019s Hashi Bitcoin Finance Network Launches With More Than $500 Million Committed"
+      ]
+    },
+    {
       "entity": "LayerZero",
       "total_mentions": 2,
       "bullish": 1,
@@ -4831,6 +4847,22 @@
       "example_headlines": [
         "CFTC Warns Prediction Markets Over Manipulation Risks In \u2018Mention\u2019 Contracts",
         "CFTC Issues Event Contract Guidance As Prediction Markets Face Scrutiny"
+      ]
+    },
+    {
+      "entity": "Sui",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Sui Testnet v1.80.1 Expands Protocol 137 Features For Node Operators",
+        "Sui\u2019s Hashi Bitcoin Finance Network Launches With More Than $500 Million Committed"
       ]
     },
     {
@@ -8573,20 +8605,6 @@
       ]
     },
     {
-      "entity": "Anchorage Digital",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain"
-      ]
-    },
-    {
       "entity": "USAT",
       "total_mentions": 1,
       "bullish": 1,
@@ -8966,20 +8984,6 @@
     },
     {
       "entity": "Mysten Labs",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Sui Testnet v1.80.1 Expands Protocol 137 Features For Node Operators"
-      ]
-    },
-    {
-      "entity": "Sui",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
@@ -13792,6 +13796,20 @@
       ],
       "example_headlines": [
         "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
+      ]
+    },
+    {
+      "entity": "Hashi",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Sui\u2019s Hashi Bitcoin Finance Network Launches With More Than $500 Million Committed"
       ]
     },
     {
