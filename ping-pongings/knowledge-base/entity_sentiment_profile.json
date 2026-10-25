@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1092,
+    "xrp_entries": 1093,
     "btc_entries": 1124
   },
-  "unique_entities_profiled": 938,
+  "unique_entities_profiled": 942,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -427,6 +427,22 @@
       ]
     },
     {
+      "entity": "MEXC",
+      "total_mentions": 12,
+      "bullish": 11,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.917,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
       "entity": "USDC",
       "total_mentions": 11,
       "bullish": 10,
@@ -492,22 +508,6 @@
         "Bitcoin ETFs end 9-day inflow streak as BTC dips below $78K",
         "Bitcoin ETF Outflows Hit $201M As Inflow Streak Breaks",
         "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
-      ]
-    },
-    {
-      "entity": "MEXC",
-      "total_mentions": 11,
-      "bullish": 10,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.909,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
@@ -10283,6 +10283,62 @@
       ],
       "example_headlines": [
         "US crypto ETF inflows cool after $3.3B week but streaks hold"
+      ]
+    },
+    {
+      "entity": "RealStocks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Earnings Season Data: Nearly Half of Tokenized Stock Trading Volume Occurs Outside Regular U.S."
+      ]
+    },
+    {
+      "entity": "U.S. stock market",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Earnings Season Data: Nearly Half of Tokenized Stock Trading Volume Occurs Outside Regular U.S."
+      ]
+    },
+    {
+      "entity": "tokenized stocks",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Earnings Season Data: Nearly Half of Tokenized Stock Trading Volume Occurs Outside Regular U.S."
+      ]
+    },
+    {
+      "entity": "July\u2011August 2026 earnings season",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Earnings Season Data: Nearly Half of Tokenized Stock Trading Volume Occurs Outside Regular U.S."
       ]
     },
     {
