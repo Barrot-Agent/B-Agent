@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
-"""Signal summary + optional Groq TTS with deterministic provider-failure fallback."""
-import json
-import os
-import sys
-import urllib.request
-import urllib.error
+"""Signal summary + Groq Orpheus TTS. Real keys only, real errors surfaced."""
+import json, os, sys, urllib.request, urllib.error
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,70 +13,70 @@ DISCLAIMER = "Not financial advice. Informational only. Do your own research."
 TTS_LIMIT = 200
 LAST_CHAT_ERROR = None
 
-
 def post(url, payload, timeout):
     req = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode(),
-        headers={
-            "Authorization": f"Bearer {KEY}",
-            "Content-Type": "application/json",
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126.0.0.0 Safari/537.36",
-            "Accept": "*/*",
-        },
-    )
+        url, data=json.dumps(payload).encode(),
+        headers={"Authorization": f"Bearer {KEY}",
+                 "Content-Type": "application/json",
+                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) "
+                               "AppleWebKit/537.36 (KHTML, like Gecko) "
+                               "Chrome/126.0.0.0 Safari/537.36",
+                 "Accept": "*/*"})
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            return response.read(), None
-    except urllib.error.HTTPError as exc:
-        return None, f"HTTP {exc.code}: {exc.read().decode('utf-8', 'replace')[:500]}"
-    except Exception as exc:
-        return None, f"{type(exc).__name__}: {exc}"
-
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.read(), None
+    except urllib.error.HTTPError as e:
+        return None, f"HTTP {e.code}: {e.read().decode('utf-8','replace')[:500]}"
+    except Exception as e:
+        return None, f"{type(e).__name__}: {e}"
 
 def chat(prompt, max_tokens=400):
     global LAST_CHAT_ERROR
-    raw, error = post(
-        "https://api.groq.com/openai/v1/chat/completions",
-        {
-            "model": "openai/gpt-oss-120b",
-            "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": max_tokens,
-            "temperature": 0.4,
-            "reasoning_effort": "low",
-        },
-        60,
-    )
-    if error:
-        LAST_CHAT_ERROR = error
-        print(f"[chat] FAILED: {error}")
+    raw, err = post("https://api.groq.com/openai/v1/chat/completions",
+                    {"model": "openai/gpt-oss-120b",
+                     "messages": [{"role": "user", "content": prompt}],
+                     "max_tokens": max_tokens, "temperature": 0.4,
+                     "reasoning_effort": "low"}, 60)
+    if err:
+        LAST_CHAT_ERROR = err
+        print(f"[chat] FAILED: {err}")
         return ""
     LAST_CHAT_ERROR = None
-    message = json.loads(raw)["choices"][0]["message"]
-    output = (message.get("content") or "").strip()
-    if not output:
-        output = (message.get("reasoning") or "").strip()
-    return output
-
+    msg = json.loads(raw)["choices"][0]["message"]
+    out = (msg.get("content") or "").strip()
+    if not out:
+        print(f"[chat] content empty; message keys: {list(msg.keys())}")
+        out = (msg.get("reasoning") or "").strip()
+        if out:
+            print("[chat] recovered from reasoning field")
+    return out
 
 def speak(text):
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-    raw, error = post(
-        "https://api.groq.com/openai/v1/audio/speech",
-        {
-            "model": "canopylabs/orpheus-v1-english",
-            "input": text[:TTS_LIMIT],
-            "voice": "autumn",
-            "response_format": "wav",
-        },
-        90,
-    )
-    if error:
-        print(f"[tts] FAILED (no audio written): {error}")
-        return None, error
+    raw, err = post("https://api.groq.com/openai/v1/audio/speech",
+                    {"model": "canopylabs/orpheus-v1-english",
+                     "input": text[:TTS_LIMIT], "voice": "autumn",
+                     "response_format": "wav"}, 90)
+    if err:
+        print(f"[tts] FAILED (no audio written): {err}")
+        return None, err
     AUDIO_FILE.write_bytes(raw)
+    print(f"[tts] OK: {len(raw)} bytes -> {AUDIO_FILE}")
     return str(AUDIO_FILE.relative_to(ROOT)), None
 
+def fallback_line(signal):
+    """Deterministic spoken line from real signal fields only."""
+    score = signal.get("score")
+    conf = signal.get("confidence")
+    n = signal.get("news_entries")
+    bits = ["XRP signal update."]
+    if score is not None:
+        bits.append(f"Score {score}.")
+    if conf is not None:
+        bits.append(f"Confidence {conf}.")
+    if n is not None:
+        bits.append(f"Based on {n} news entries.")
+    return " ".join(bits)
 
 def model_unavailable(signal):
     status = str(signal.get("signal_status", "")).lower()
@@ -95,7 +91,7 @@ def model_unavailable(signal):
 
 
 def fallback_summary(signal):
-    """Describe only valid fields; never repeat a contaminated combined score."""
+    """Describe valid fields only; never repeat a contaminated combined score."""
     status = str(signal.get("signal_status", "")).lower()
     news_score = signal.get("news_score")
     news_entries = signal.get("news_entries")
@@ -157,14 +153,17 @@ def main():
     signal = json.loads(SIGNAL_FILE.read_text(encoding="utf-8"))
     print("SIGNAL KEYS:", list(signal.keys()))
 
+    base = (
+        "Summarize this XRP signal in 2 sentences, then 3 short bullets. "
+        "Use ONLY the values shown. Invent nothing.\\n\\n"
+        + json.dumps(signal, indent=2)
+    )
     summary = ""
     provider_error = None
     summary_method = "model_generated"
     signal_model_available = not model_unavailable(signal)
 
-    # Do not send a contaminated compatibility score to another model. If the
-    # signal's own model providers failed, produce a deterministic news-only or
-    # unavailable summary even when the separate summarizer key is healthy.
+    # Do not send a contaminated compatibility score to another model.
     if not signal_model_available:
         summary = fallback_summary(signal)
         summary_method = "deterministic_fallback"
@@ -172,12 +171,7 @@ def main():
         LAST_CHAT_ERROR = provider_error
         print("[chat] skipped: signal model unavailable; using deterministic fallback")
     elif KEY:
-        prompt = (
-            "Summarize this XRP signal in 2 sentences, then 3 short bullets. "
-            "Use ONLY the values shown. Invent nothing.\n\n"
-            + json.dumps(signal, indent=2)
-        )
-        summary = chat(prompt)
+        summary = chat(base)
         provider_error = safe_error_label(LAST_CHAT_ERROR)
     else:
         provider_error = "GROQ_API_KEY missing"
@@ -192,11 +186,12 @@ def main():
     if KEY and summary_method == "model_generated":
         spoken = chat(
             "Compress to ONE spoken sentence under 130 characters, plain words only: "
-            "no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n"
+            "no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\\n\\n"
             + summary,
             500,
         )
         provider_error = safe_error_label(LAST_CHAT_ERROR) or provider_error
+
     spoken = " ".join((spoken or "").replace("*", "").split())
     if not spoken or len(spoken) > 140:
         spoken = fallback_line(signal)
@@ -221,7 +216,6 @@ def main():
                 "audio": audio,
                 "tts_error": tts_error,
                 "provider_error": provider_error,
-                # Keep signal-model availability separate from summarizer availability.
                 "model_available": signal_model_available,
                 "signal_model_available": signal_model_available,
                 "summary_model_available": summary_method == "model_generated",
