@@ -36,14 +36,29 @@ def _count_recent_kb(hours=24):
             continue
     return count
 
+def _format_latest_signal(signal):
+    status = str(signal.get("signal_status") or "").lower()
+    source = str(signal.get("source") or "")
+    if status == "news_only":
+        return (f"**Latest XRP record:** news-only score {signal.get('score')}/100; "
+                f"no model-backed directional forecast. Source: `{source}`")
+    if status == "unavailable" or (not status and "sentiment unavailable" in source.lower()):
+        return f"**Latest XRP record:** model signal unavailable; no directional forecast issued. Source: `{source}`"
+    if status in {"model_only", "model_and_news"}:
+        confidence = signal.get("model_confidence", signal.get("confidence", "—"))
+        return (f"**Latest XRP sentiment:** score {signal.get('score')}/100, model confidence {confidence}, "
+                f"status {status}; not a calibrated price forecast. Source: `{source}`")
+    return (f"**Latest XRP record:** legacy status unknown; score {signal.get('score')}/100 is not treated as a forecast. "
+            f"Source: `{source}`")
+
 def main():
     signal = _read_json("web/latest_signal.json")
     accuracy = _read_json("web/signal_accuracy.json")
     lines = ["## Barrot Daily Digest", ""]
     if signal:
-        lines.append(f"**Latest signal:** score {signal.get('score')}/100, confidence {signal.get('confidence')}, source `{signal.get('source')}`")
+        lines.append(_format_latest_signal(signal))
     else:
-        lines.append("**Latest signal:** none yet")
+        lines.append("**Latest XRP record:** none yet")
     lines.append("")
     checked = accuracy.get("checked_count", 0)
     if checked:

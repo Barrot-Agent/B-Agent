@@ -53,4 +53,8 @@ jobs:
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \
+            tests/test_signal_provider_failure.py \
+            tests/test_accuracy_workflow_safety.py \
+            tests/test_signal_summary_fallback.py \
+            tests/test_fixed_horizon_evaluator.py \
             -v --no-cov
