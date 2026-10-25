@@ -99,6 +99,39 @@ def _needs_source_fallback(signal):
     """Compatibility guard: do not summarize unavailable/news-only model output."""
     return model_unavailable(signal)
 
+
+def _source_unavailable_payload(signal):
+    """Compatibility payload for callers that need an explicit unavailable state."""
+    status = str(signal.get("signal_status") or "legacy_provider_unavailable").lower()
+    news_score = signal.get("news_score")
+    news_entries = signal.get("news_entries", 0)
+    if status == "news_only":
+        summary = (
+            f"Model sentiment is unavailable. News-only sentiment score {news_score} "
+            f"from {news_entries} entries is not a calibrated XRP price forecast."
+        )
+    elif status == "unavailable":
+        summary = (
+            "XRP signal unavailable because model sentiment and news inputs are unavailable. "
+            "No directional forecast is issued; this is not a calibrated XRP price forecast."
+        )
+    else:
+        summary = (
+            "XRP model sentiment is unavailable because the configured providers failed. "
+            "The legacy score must not be interpreted as a bearish signal; "
+            "this is not a calibrated XRP price forecast."
+        )
+    return {
+        "summary": summary,
+        "spoken_line": "XRP model signal unavailable; no directional forecast issued.",
+        "disclaimer": DISCLAIMER,
+        "audio": None,
+        "tts_error": "skipped_source_signal_unavailable",
+        "summary_method": "deterministic_source_unavailable",
+        "source_signal_status": status,
+        "source_signal": signal,
+    }
+
 def fallback_summary(signal):
     """Describe only valid fields; never repeat a contaminated combined score."""
     status = str(signal.get("signal_status", "")).lower()
