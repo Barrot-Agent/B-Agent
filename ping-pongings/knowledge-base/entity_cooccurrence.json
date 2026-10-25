@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1094,
+    "xrp_entries": 1095,
     "btc_entries": 1126
   },
-  "unique_pairs_found": 3063,
+  "unique_pairs_found": 3066,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -98,7 +98,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "XRP Ledger",
-      "cooccurrence_count": 27,
+      "cooccurrence_count": 28,
       "example_headlines": [
         {
           "title": "Ripple, Aviva Launch First Tokenized Fund On XRP Ledger: What Does It Mean for XRP? - Benzinga",
@@ -906,6 +906,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 6,
+      "example_headlines": [
+        {
+          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "U.S. District Court",
       "entity_b": "XRP",
       "cooccurrence_count": 6,
@@ -977,21 +992,6 @@
         {
           "title": "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 5,
-      "example_headlines": [
-        {
-          "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
-          "asset": "XRP"
-        },
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
         }
       ]
     },
@@ -1501,6 +1501,21 @@
         },
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
           "asset": "XRP"
         }
       ]
@@ -2162,21 +2177,6 @@
         {
           "title": "Bitcoin price today, BTC to USD live price, marketcap and chart - CoinMarketCap",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin Foundation",
-      "entity_b": "XRP Ledger",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "XRP Blockchain Updates: 5 Major XRPL Changes That Could Transform XRP\u2019s Future - Bitcoin Foundation",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple\u2019s RLUSD Breaks $2 Billion as XRP Ledger Supply Closes In on $1 Billion - Bitcoin Foundation",
-          "asset": "XRP"
         }
       ]
     },
@@ -25690,6 +25690,39 @@
       "example_headlines": [
         {
           "title": "Does RLUSD Hurt XRP? Ripple's Stablecoin Keeps Growing While XRP Sits 59% Below Its High - 24/7 Wall",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin Foundation",
+      "entity_b": "Brazilian fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Brings Brazilian Fund Records to XRP Ledger in Live Regulated Market Rollout - Bitcoin Founda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazilian fund",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Brings Brazilian Fund Records to XRP Ledger in Live Regulated Market Rollout - Bitcoin Founda",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazilian fund",
+      "entity_b": "XRP Ledger",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Brings Brazilian Fund Records to XRP Ledger in Live Regulated Market Rollout - Bitcoin Founda",
           "asset": "XRP"
         }
       ]

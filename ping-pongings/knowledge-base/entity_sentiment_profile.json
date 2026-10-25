@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1094,
+    "xrp_entries": 1095,
     "btc_entries": 1126
   },
-  "unique_entities_profiled": 942,
+  "unique_entities_profiled": 943,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 212,
-      "bullish": 137,
+      "total_mentions": 213,
+      "bullish": 138,
       "neutral": 38,
       "bearish": 37,
-      "net_sentiment_score": 0.472,
+      "net_sentiment_score": 0.474,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -160,11 +160,11 @@
     },
     {
       "entity": "XRP Ledger",
-      "total_mentions": 28,
-      "bullish": 23,
+      "total_mentions": 29,
+      "bullish": 24,
       "neutral": 1,
       "bearish": 4,
-      "net_sentiment_score": 0.679,
+      "net_sentiment_score": 0.69,
       "assets_seen_in": [
         "XRP"
       ],
@@ -193,11 +193,11 @@
     },
     {
       "entity": "Bitcoin Foundation",
-      "total_mentions": 23,
-      "bullish": 11,
+      "total_mentions": 24,
+      "bullish": 12,
       "neutral": 1,
       "bearish": 11,
-      "net_sentiment_score": 0.0,
+      "net_sentiment_score": 0.042,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -10649,6 +10649,20 @@
       ],
       "example_headlines": [
         "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance"
+      ]
+    },
+    {
+      "entity": "Brazilian fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Brings Brazilian Fund Records to XRP Ledger in Live Regulated Market Rollout - Bitcoin Founda"
       ]
     },
     {
