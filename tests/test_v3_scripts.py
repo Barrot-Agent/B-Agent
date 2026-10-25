@@ -548,7 +548,7 @@ def test_emit_signal_news_score_excludes_future_timestamps(tmp_path: Path) -> No
         "distill": {"sentiment": "bullish", "xrp_relevance": 1.0},
     }
     log_path = tmp_path / "knowledge.jsonl"
-    log_path.write_text(json.dumps(record) + "\\n", encoding="utf-8")
+    log_path.write_text(json.dumps(record) + "\n", encoding="utf-8")
 
     score, used, headlines = module._news_score(hours=72, path=str(log_path))
 
