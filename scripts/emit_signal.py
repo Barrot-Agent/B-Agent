@@ -179,12 +179,17 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
             w = float(d.get("xrp_relevance", 0) or 0)
             if w <= 0:
                 continue
+            raw_ts = e.get("ingested_at")
+            if not isinstance(raw_ts, str) or not raw_ts.strip():
+                continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
-                if ts < cutoff:
-                    continue
-            except Exception:
-                pass
+                ts = datetime.fromisoformat(raw_ts.replace("Z", "+00:00"))
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if ts < cutoff:
+                continue
             s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
             num += s * w
             den += w
