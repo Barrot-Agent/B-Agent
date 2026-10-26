@@ -53,4 +53,5 @@ jobs:
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \
+            tests/test_merge_queue_disabled.py \
             -v --no-cov
