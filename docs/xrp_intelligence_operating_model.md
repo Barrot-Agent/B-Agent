@@ -17,6 +17,11 @@ Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevens
 - Circle announced native USDC on XRPL mainnet on 2025-06-12 and said Circle Mint/APIs support it without a third-party bridge. XRP remains XRPL's native asset; USDC is a separate issued token.
 - **Causal restraint:** USDC supply or transfers on XRPL do not automatically establish net XRP buying demand. Measure XRP bridge paths, DEX routing, market-maker inventory, fee/reserve demand, order-book depth, and net flows separately. Complementarity and substitution remain competing hypotheses.
 
+### Open Standard / OUSD — competitive watch
+- Open Standard's official site lists Coinbase and SBI Holdings among network partners and describes OUSD as live across four networks with reserve income shared among partners. However, the same page also displays a future 2026-11-12 launch date, which is after this snapshot date (2026-10-26). Reuters described OUSD as expected later in 2026 in its June 30 report, while a September 30 secondary report says the token launched. The deployment status is therefore recorded as **unresolved**, not assumed live.
+- This could matter to Coinbase-Circle economics: Coinbase has an equity/revenue-sharing relationship with Circle around USDC and is also listed by Open Standard. That could indicate competition, multi-stablecoin distribution, or both; it does not prove Coinbase has ended or reduced its Circle relationship.
+- The official Open Standard page currently lists Ethereum, Solana, Base, and Tempo, not XRPL. Verify actual contract addresses, supply, mint/redemption, reserves, and current chain list before treating OUSD as a live feature or as a direct XRP competitor.
+
 ### Japan and the SBIC ambiguity
 - SBI Group companies publicly announced XRP-enabled remittance expansion to the Philippines, Vietnam, and Indonesia in 2023. This confirms an announced commercial relationship, not present-day volume or price impact.
 - SBI VC Trade and Ripple announced a basic agreement for RLUSD distribution in Japan in 2025; an official 2026 announcement says RLUSD handling began on SBI VC Trade. This is a stablecoin-distribution relationship, not proof of XRP demand.
