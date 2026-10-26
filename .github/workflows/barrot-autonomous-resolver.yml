@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   issues: write
   pull-requests: write
 
@@ -31,69 +32,45 @@ jobs:
       # 1. Failing workflows → open a tracked issue
       # -----------------------------------------------------------------------
       - name: Open issues for failing workflows
+        shell: bash
         run: |
-          set +e
-          echo "=== Scanning for failing workflow runs (last 24 h) ==="
+          set -euo pipefail
+          echo "=== Scanning for workflows whose latest run failed in the last 24 h ==="
 
-          # Collect distinct workflow names that have a failed run in the last 24 h
-          FAILED_WORKFLOWS=$(gh run list \
-            --repo "$REPO" \
-            --status failure \
-            --limit 100 \
-            --json workflowName,conclusion,createdAt \
-            --jq '[.[] | select(.conclusion == "failure") | .workflowName] | unique | .[]' \
-            2>/dev/null || true)
+          # The helper paginates the API, applies the UTC cutoff, and exits nonzero
+          # on API/JSON/pagination errors. An incomplete scan must not look like no failures.
+          FAILED_WORKFLOWS_JSON=$(python scripts/list_recent_failed_workflows.py --repo "$REPO" --hours 24)
 
-          if [ -z "$FAILED_WORKFLOWS" ]; then
-            echo "No failing workflows found."
+          if [ "$FAILED_WORKFLOWS_JSON" = "[]" ]; then
+            echo "No workflows with a latest failed run in the last 24 hours."
           else
-            while IFS= read -r WF_NAME; do
-              LABEL="workflow-failure"
+            while IFS=$'\t' read -r WF_NAME RUN_URL; do
               TITLE="[Auto] Workflow failing: $WF_NAME"
 
-              # Skip if an open issue with this exact title already exists
+              # Query errors fail the step instead of being treated as no existing issue.
               EXISTING=$(gh issue list \
                 --repo "$REPO" \
                 --state open \
                 --search "\"$TITLE\" in:title" \
                 --json number \
-                --jq 'length' \
-                2>/dev/null || echo "0")
+                --jq 'length')
 
               if [ "$EXISTING" -gt "0" ]; then
                 echo "  Issue already open for: $WF_NAME — skipping."
                 continue
               fi
 
-              echo "  Creating issue for failing workflow: $WF_NAME"
+              BODY=$(printf '## Failing workflow: `%s`\n\nThe latest run of workflow `%s` failed within the last 24 hours. Please investigate the root cause, apply a fix, and open a pull request.\n\n**Most recent failed run:** %s\n\n---\n_This issue was opened automatically by the Barrot Autonomous Resolver._' \
+                "$WF_NAME" "$WF_NAME" "$RUN_URL")
 
-              # Fetch the most recent failed run URL for context
-              RUN_URL=$(gh run list \
-                --repo "$REPO" \
-                --workflow "$WF_NAME" \
-                --status failure \
-                --limit 1 \
-                --json url \
-                --jq '.[0].url' \
-                2>/dev/null || echo "")
-
-              BODY=$(printf '## Failing workflow: `%s`\n\nThe workflow `%s` has been failing. Please investigate the root cause, apply a fix, and open a pull request.\n\n**Most recent failed run:** %s\n\n---\n_This issue was opened automatically by the Barrot Autonomous Resolver._' \
-                "$WF_NAME" "$WF_NAME" "${RUN_URL:-_(URL unavailable)_}")
-
-              ASSIGNEE_ARGS=()
+              ISSUE_ARGS=(--repo "$REPO" --title "$TITLE" --body "$BODY")
               if [ -n "$AUTO_ASSIGNEE" ]; then
-                ASSIGNEE_ARGS+=(--assignee "$AUTO_ASSIGNEE")
+                ISSUE_ARGS+=(--assignee "$AUTO_ASSIGNEE")
               fi
 
-              gh issue create \
-                --repo "$REPO" \
-                --title "$TITLE" \
-                --body "$BODY" \
-                "${ASSIGNEE_ARGS[@]}" \
-                2>/dev/null && echo "  ✅ Issue created." \
-                            || echo "  ⚠️  Issue creation failed."
-
-            done <<< "$FAILED_WORKFLOWS"
+              gh issue create "${ISSUE_ARGS[@]}"
+              echo "  Issue created for: $WF_NAME"
+            done < <(printf '%s' "$FAILED_WORKFLOWS_JSON" | jq -r '.[] | [.workflow_name, .url] | @tsv')
           fi
 
       # -----------------------------------------------------------------------
