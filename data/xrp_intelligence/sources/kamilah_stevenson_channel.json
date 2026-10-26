@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0",
+  "record_type": "creator_source_profile",
+  "source_id": "YOUTUBE_CREATOR_KAMILAH_STEVENSON",
+  "mission": "Ingest all publicly available videos from the verified Kamilah Stevenson XRP/markets YouTube channel into Barrot's source database; extract timestamped claims and forecasts; cross-corroborate before using as predictive features.",
+  "creator": {
+    "display_name": "Kamilah Stevenson",
+    "alternate_spelling_seen_in_transcripts": [
+      "Camila Stevenson"
+    ],
+    "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+    "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+    "identity_status": "PROBABLE_MATCH",
+    "identity_evidence": [
+      "Public channel listing for Kamilah Stevenson points to this channel ID.",
+      "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
+      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved."
+    ],
+    "caveats": [
+      "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
+      "Do not conflate this creator with other similarly named accounts without channel-ID verification."
+    ]
+  },
+  "ingestion_policy": {
+    "scope": "ALL_PUBLIC_CHANNEL_VIDEOS",
+    "required_fields": [
+      "video_id",
+      "canonical_url",
+      "title",
+      "published_at",
+      "duration_seconds",
+      "description",
+      "transcript_language",
+      "transcript_availability",
+      "transcript_hash",
+      "retrieved_at_utc",
+      "source_provenance",
+      "claims",
+      "forecast_records",
+      "entities",
+      "citations_in_video",
+      "affiliate_or_sponsorship_disclosures",
+      "independent_corroboration",
+      "contradictions",
+      "confidence",
+      "review_status"
+    ],
+    "content_access": "Public metadata and publicly available transcripts only; respect platform terms and access controls.",
+    "transcript_policy": "Store transcript or authorized transcript reference where permitted; preserve timestamps and transcript hash; if unavailable, record unavailable scope rather than fabricate.",
+    "prediction_policy": "Extract each explicit prediction with original publication cutoff, target, direction, horizon, probability/confidence if stated, assumptions, and later outcome. Do not infer an unstated probability.",
+    "evidence_policy": "Creator statements are claims, not ground truth. Independently corroborate with primary filings, official statements, market data, on-chain data, regulatory records, and independent sources.",
+    "forecasting_policy": "Never use a video published after the forecast cutoff as a feature for that forecast. Prevent look-ahead and survivorship leakage.",
+    "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
+  },
+  "video_inventory_status": {
+    "status": "PARTIAL_SEED_INVENTORY",
+    "completeness_verified": false,
+    "discovered_total_count": null,
+    "indexed_seed_video_count": 6,
+    "missing_work": [
+      "Enumerate every public upload from the channel's videos and shorts surfaces.",
+      "Deduplicate by video ID, preserving live streams and archived replays.",
+      "Retrieve publication metadata and publicly available transcripts.",
+      "Run pagination/change detection and retain a timestamped inventory snapshot.",
+      "Mark deleted, private, members-only, region-restricted, or transcript-unavailable items explicitly where observed."
+    ]
+  },
+  "seed_videos": [
+    {
+      "video_id": "ywQEoYPzhlQ",
+      "title": "XRP Was Built for What's Coming",
+      "canonical_url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "published_date_reported": "2026-03-03",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "themes": [
+        "XRP bridge-asset thesis",
+        "cross-border settlement",
+        "de-dollarization",
+        "institutional adoption"
+      ],
+      "initial_claims_to_test": [
+        "XRP was designed as a neutral bridge asset.",
+        "Geopolitical pressure to reduce reliance on the U.S. dollar could increase demand for alternative settlement infrastructure.",
+        "Institutional adoption may precede visible price appreciation."
+      ],
+      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING"
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "canonical_url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "published_date_reported": "2025-12-24",
+      "source": "YouTube indexed result",
+      "themes": [
+        "XRP versus BTC",
+        "store-of-value versus value-transfer thesis",
+        "institutional holdings"
+      ],
+      "initial_claims_to_test": [
+        "XRP's use case should not be evaluated as if it were identical to Bitcoin's store-of-value narrative.",
+        "Institutional XRP holdings and corporate Bitcoin treasury strategies are different phenomena."
+      ],
+      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING"
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "canonical_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "published_date_reported": "2026-03-19",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "themes": [
+        "XRP allocation",
+        "portfolio sizing",
+        "wealth planning"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; TRANSCRIPT NOT YET INGESTED"
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "canonical_url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "published_date_reported": "2025-12-14",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "themes": [
+        "Ripple corporate/regulatory status",
+        "XRP price versus adoption",
+        "institutional utility"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; PRIMARY CLAIMS REQUIRE OFFICIAL REGULATORY/CORPORATE VERIFICATION"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "canonical_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "published_date_reported": "2026-01-13",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "themes": [
+        "ETF flows",
+        "price impact",
+        "institutional demand"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "canonical_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "published_date_reported": "2026-01-15",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "themes": [
+        "portfolio risk",
+        "market-cycle scenarios",
+        "investor behavior"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+    }
+  ],
+  "required_cross_corroboration_domains": [
+    "Ripple official statements and filings",
+    "XRPL official documentation, amendment status, ledger data, and validated on-chain metrics",
+    "Coinbase, Circle, issuer, exchange, and custodian official statements",
+    "ETF issuer filings and independently reproducible fund-flow data",
+    "Spot and derivatives market data with venue, timestamp, and methodology",
+    "Regulatory primary sources and court/agency documents",
+    "Macro data from official statistical agencies and central banks",
+    "Independent research and public discussion, clearly marked as secondary evidence"
+  ],
+  "forecast_scoring": {
+    "immutable_forecast_id": true,
+    "fixed_horizons": [
+      "24h",
+      "7d",
+      "30d"
+    ],
+    "exact_target_time_price_required": true,
+    "same_venue_or_explicit_cross_venue_normalization": true,
+    "include_transaction_costs_and_baselines": true,
+    "track_calibration_and_brier_score_when_probabilities_exist": true,
+    "missing_target_price_policy": "UNSCORABLE_NOT_A_MISS",
+    "no_claim_of_predictive_accuracy_until_walk_forward_validation": true
+  },
+  "provenance": {
+    "created_at_utc": "2026-10-26T22:15:00Z",
+    "created_by": "Barrot XRP research handoff",
+    "supporting_public_sources": [
+      "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "https://glasp.co/youtube/rv0BAV0vLgo",
+      "https://glasp.co/youtube/QslbjGQD0MU",
+      "https://glasp.co/youtube/ci0FH73lbCs",
+      "https://glasp.co/youtube/cxeX_eu_2H0"
+    ]
+  },
+  "status": "SOURCE_PROFILE_SEEDED; COMPLETE_CHANNEL_INGESTION_NOT_YET_EXECUTED"
+}
