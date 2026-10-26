@@ -1,7 +1,10 @@
+import json
+import subprocess
 import unittest
 from datetime import datetime, timezone
+from unittest.mock import patch
 
-from scripts.list_recent_failed_workflows import ScanError, flatten_pages, select_latest_failures
+from scripts.list_recent_failed_workflows import ScanError, flatten_pages, select_latest_failures, fetch_recent_runs
 
 UTC = timezone.utc
 NOW = datetime(2026, 10, 26, 5, 4, 20, tzinfo=UTC)
@@ -87,6 +90,25 @@ class RecentFailureTests(unittest.TestCase):
     def test_empty_failure_list_only_after_complete_scan(self):
         rows = [run(1, "CI", "2026-10-26T04:00:00Z", "success")]
         self.assertEqual(select_latest_failures(rows, cutoff=CUTOFF, now=NOW), [])
+
+    @patch("scripts.list_recent_failed_workflows.subprocess.run")
+    def test_api_failure_raises_instead_of_returning_empty(self, mock_run):
+        mock_run.side_effect = subprocess.CalledProcessError(1, ["gh", "api"])
+        with self.assertRaises(ScanError):
+            fetch_recent_runs("Barrot-Agent/B-Agent", CUTOFF)
+
+    @patch("scripts.list_recent_failed_workflows.subprocess.run")
+    def test_api_request_uses_pagination_and_created_cutoff(self, mock_run):
+        payload = [{"total_count": 0, "workflow_runs": []}]
+        mock_run.return_value = subprocess.CompletedProcess(
+            args=["gh", "api"], returncode=0,
+            stdout=json.dumps(payload), stderr="",
+        )
+        self.assertEqual(fetch_recent_runs("Barrot-Agent/B-Agent", CUTOFF), [])
+        args = mock_run.call_args.args[0]
+        self.assertIn("--paginate", args)
+        self.assertIn("--slurp", args)
+        self.assertTrue(any("created=%3E%3D2026-10-25T05:04:20Z" in arg for arg in args))
 
 
 if __name__ == "__main__":
