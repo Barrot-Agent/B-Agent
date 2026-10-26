@@ -52,7 +52,7 @@ The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues w
 - [PR #1168 — disable mutation-capable merge queue](https://github.com/Barrot-Agent/B-Agent/pull/1168): open draft; checks were not re-checked in this snapshot.
 - [PR #1161 — disable legacy scheduled accuracy writer](https://github.com/Barrot-Agent/B-Agent/pull/1161): open draft; checks were not re-checked in this snapshot.
 
-The latest main commit observed was `6d73f866e082cf9c0f35a3fdaf924afbca979418` (`Cross-analysis refresh [skip ci]`). The combined-status query returned no statuses; the workflow-run endpoint used in this run returns only PR-triggered runs and returned none for that commit. This is **not** a CI pass and does not prove that no other workflow history exists. Main still contains the invalid signal behavior described above.
+The latest main commit observed at the end of this snapshot was `e49431afe9801044b583abd0451f0d4d7416fc4d` (`Paper trade cycle [skip ci]`). The combined-status query returned no statuses; the workflow-run endpoint used in this run returns only PR-triggered runs and returned none for that commit. This is **not** a CI pass and does not prove that no other workflow history exists. After that newer paper-trade-cycle commit, `web/latest_signal.json` still had the same blob SHA and 2026-10-26 22:29:38 UTC timestamp, with score 44/confidence 0 and provider failures. Main still contains the invalid signal behavior described above.
 
 ## 3. Operating architecture
 
