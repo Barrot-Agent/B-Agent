@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-26T23:10:00Z",
+    "captured_at_utc": "2026-10-26T23:15:00Z",
     "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -24,7 +24,9 @@
       "XRP-C-SBIC-IDENTITY-AMBIGUITY",
       "XRP-C-COINBASE-XRP-ACCESS",
       "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
-      "XRP-C-LEGACY-ACCURACY-INVALID"
+      "XRP-C-LEGACY-ACCURACY-INVALID",
+      "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -400,6 +402,52 @@
         "reports OUSD deployment on Base, Ethereum, Solana and Tempo",
         "secondary report; reconcile with official page's conflicting November 12 launch text"
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+      "title": "Active merge-queue workflow",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "publication_date": "observed 2026-10-26",
+      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "sections": [
+        "workflow_dispatch trigger",
+        "contents and pull-requests write permissions",
+        "mode=all enumerates every open PR",
+        "branch updates and merge call",
+        "does not explicitly query draft or review decision in selected PR fields"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-AGENT-WORKFLOW",
+      "title": "Active Barrot Agent issue/workflow dispatcher",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
+      "publication_date": "observed 2026-10-26",
+      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "sections": [
+        "contents/pull-requests/issues write permissions",
+        "issue label sender gate",
+        "workflow_dispatch task title/body inputs",
+        "model-driven repair worker"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR-1168",
+      "title": "Safety: disable mutation-capable merge queue on fresh main",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "pull_request",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1168",
+      "publication_date": "updated 2026-10-26",
+      "sections": [
+        "draft replacement workflow with read-only permissions",
+        "no-op disabled merge queue",
+        "test_merge_queue_disabled.py added",
+        "CI and fail-closed workflow passed on observed PR head",
+        "not merged"
+      ]
     }
   ],
   "claims": [
@@ -692,6 +740,56 @@
         "SRC-OUSD-REUTERS",
         "SRC-CIRCLE-COINBASE-AGREEMENT",
         "SRC-COINBASE-USDC-INCENTIVES"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "statement": "The active main-branch merge-queue workflow is manually dispatchable, grants contents and pull-request write permissions, exposes a mode that processes every open PR, and can update branches and call the merge API. The workflow does not explicitly query draft status or review-decision/approval fields in the PR metadata it fetches, so it lacks a visible explicit approval gate at workflow level; GitHub branch protection or merge rules may still block a merge. Do not trigger this workflow until gates are independently verified.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "confirmed_configuration_with_risk_assessment",
+      "source": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "supporting_evidence": [
+        "XRP-E-MERGE-QUEUE-WRITE-PATH",
+        "XRP-E-PR-1168-DISABLED-FIX"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Repository branch-protection/ruleset configuration was not inspected in this run; do not assume missing protections."
+      ],
+      "provenance": [
+        "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+        "SRC-BARROT-PR-1168"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
+      "statement": "The active Barrot Agent workflow grants contents, pull-requests, and issues write permissions while running the model-driven repair worker. The issue-label path is sender-gated to the repository owner or Barrot-Agent, but workflow_dispatch also runs the worker with task title/body inputs. This is a high-privilege automation surface that warrants least-privilege token scopes, sandbox review, and explicit branch-protection checks.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "confirmed_configuration_with_risk_assessment",
+      "source": "SRC-BARROT-AGENT-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
+      "supporting_evidence": [
+        "XRP-E-BARROT-AGENT-WRITE-PATH"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.96,
+      "assumptions": [
+        "Actual branch protection and repository access-control settings were not available in this inspection."
+      ],
+      "provenance": [
+        "SRC-BARROT-AGENT-WORKFLOW"
       ],
       "timestamp": 1793055698
     }
@@ -1022,6 +1120,56 @@
           "Partner listing may not imply exclusive distribution or a specific ownership/economic stake in Open Standard."
         ]
       }
+    },
+    {
+      "evidence_id": "XRP-E-MERGE-QUEUE-WRITE-PATH",
+      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "kind": "computational_evidence",
+      "summary": "The current .github/workflows/merge-queue.yml declares workflow_dispatch, contents: write and pull-requests: write, supports mode=all for every open PR, fetches PR title/mergeability/state/branch fields, updates behind branches, and calls the merge API when the returned state is CLEAN/MERGEABLE. The fetched PR fields do not explicitly include isDraft or reviewDecision.",
+      "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-MERGE-QUEUE-WORKFLOW"
+      ],
+      "details": {
+        "risk": "High-impact manual control surface; do not invoke mode=all. Actual merge may still be constrained by branch protection/rulesets, which were not checked here."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR-1168-DISABLED-FIX",
+      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "kind": "independent_verification",
+      "summary": "PR #1168 replaces the active mutation-capable merge queue with a read-only no-op workflow and adds a regression test; it remains an open draft and has not been merged. CI and fail-closed gate passed on the observed PR head.",
+      "source_id": "SRC-BARROT-PR-1168",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1168",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-PR-1168"
+      ],
+      "details": {
+        "state": "OPEN_DRAFT",
+        "merge": "not merged",
+        "approval": "required before any merge"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-BARROT-AGENT-WRITE-PATH",
+      "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
+      "kind": "computational_evidence",
+      "summary": "The active .github/workflows/barrot-agent.yml grants contents: write, pull-requests: write, issues: write; the issue-label path checks that the sender is the repository owner or Barrot-Agent, while workflow_dispatch invokes the repair worker from task title/body inputs.",
+      "source_id": "SRC-BARROT-AGENT-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-AGENT-WORKFLOW"
+      ],
+      "details": {
+        "required_review": "Inspect command sandbox, branch-protection/ruleset settings, and whether write permissions can be reduced per job."
+      }
     }
   ],
   "tracks": [
@@ -1199,6 +1347,44 @@
       "validation": {
         "status": "DESIGN_ONLY; LIVE_ADAPTER_TESTS_PENDING"
       }
+    },
+    {
+      "track_id": "XRP-TRACK-REPO-SAFETY",
+      "role": "repository_security_and_change_control",
+      "strategy": "Audit active workflows for write permissions, merge paths, explicit approvals, draft/review/check gates, branch protection assumptions and prompt-to-command boundaries. Keep dangerous automation disabled until tested gates exist.",
+      "hypothesis": "The active merge queue is a high-impact risk because it can update and attempt to merge many PRs with write permissions, while the replacement safety PR is still draft.",
+      "assumptions": [
+        "GitHub branch protection may add safeguards but was not inspected.",
+        "Workflow code is the observed main-branch version at the recorded snapshot."
+      ],
+      "dependencies": [
+        "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+        "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS"
+      ],
+      "focus_claims": [
+        "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+        "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS"
+      ],
+      "evidence": [
+        "XRP-E-MERGE-QUEUE-WRITE-PATH",
+        "XRP-E-PR-1168-DISABLED-FIX",
+        "XRP-E-BARROT-AGENT-WRITE-PATH"
+      ],
+      "unresolved_objections": [
+        "PR #1168 remains draft; active main workflow has not been disabled.",
+        "Branch protection and rulesets need direct inspection before concluding whether approval/check requirements are enforced externally.",
+        "Barrot Agent workflow has write scopes; review sandbox boundaries and reduce privileges if possible."
+      ],
+      "confidence": 0.98,
+      "provenance": [
+        "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+        "SRC-BARROT-AGENT-WORKFLOW",
+        "SRC-BARROT-PR-1168"
+      ],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "WORKFLOW_SOURCE_AUDITED; REPLACEMENT_PR_CI_PASSED_BUT_NOT_MERGED"
+      }
     }
   ],
   "cross_pollination": [],
@@ -1317,6 +1503,12 @@
       "question": "Verify Open Standard/OUSD current deployment, chain contracts, supply and Coinbase/SBI roles before treating it as a competitor feature.",
       "priority": "HIGH",
       "status": "UNRESOLVED"
+    },
+    {
+      "question_id": "Q-9",
+      "question": "Verify repository branch protection/rulesets and require explicit approvals/required checks for every merge; disable active merge queue before any all-PR mode is used.",
+      "priority": "CRITICAL",
+      "status": "PR_1168_DRAFT_FIX_AVAILABLE_NOT_MERGED"
     }
   ],
   "relationship_graph": {
@@ -1948,7 +2140,23 @@
         "merge_authorized": false
       }
     ],
-    "policy": "Preserve main, V3 code, dirty worktrees and existing branches. Do not merge any draft without user approval. No destructive git operations."
+    "policy": "Preserve main, V3 code, dirty worktrees and existing branches. Do not merge any draft without user approval. No destructive git operations.",
+    "critical_security_findings": [
+      {
+        "finding": "Active .github/workflows/merge-queue.yml has contents/pull-requests write, mode=all, branch-update and merge API behavior; no explicit draft/reviewDecision field is queried in the workflow.",
+        "risk": "HIGH",
+        "status": "OBSERVED_ON_MAIN",
+        "mitigation_pr": 1168,
+        "mitigation_state": "OPEN_DRAFT_NOT_MERGED",
+        "do_not_run": true
+      },
+      {
+        "finding": "Active .github/workflows/barrot-agent.yml grants contents/pull-requests/issues write to a model-driven repair worker; issue label path is sender-gated, workflow_dispatch runs worker from provided task title/body.",
+        "risk": "MEDIUM_HIGH",
+        "status": "OBSERVED_ON_MAIN",
+        "mitigation": "Review least-privilege permissions, command sandbox, branch protections and manual approval gates."
+      }
+    ]
   },
   "video_ingestion": {
     "creator": "Kamilah Stevenson",
@@ -1981,6 +2189,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Do not run the active merge-queue workflow. Independently verify branch protection/rulesets and review PR #1168, which disables the write-capable queue; keep it unmerged until explicit user approval.",
+      "status": "CRITICAL_SAFETY_GATE"
+    },
     {
       "priority": 1,
       "action": "Review PR #1165 on its exact current head and CI; preserve draft status pending user approval. This is the critical fail-closed fix because main currently emits a score with confidence zero after provider failure.",
