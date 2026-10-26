@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1122,
+    "xrp_entries": 1123,
     "btc_entries": 1152
   },
-  "unique_entities_profiled": 964,
+  "unique_entities_profiled": 967,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -914,6 +914,23 @@
       ]
     },
     {
+      "entity": "Uniswap",
+      "total_mentions": 6,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.167,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
+        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
+        "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks"
+      ]
+    },
+    {
       "entity": "institutional investors",
       "total_mentions": 6,
       "bullish": 6,
@@ -1011,23 +1028,6 @@
         "Bitcoin ETF inflows surge after Coldcard hack, but link is unclear: Bloomberg analyst",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com",
         "Hack of Supposedly Safe Bitcoin Tool Tries Faith of the Devoted - Bloomberg.com"
-      ]
-    },
-    {
-      "entity": "Uniswap",
-      "total_mentions": 5,
-      "bullish": 2,
-      "neutral": 1,
-      "bearish": 2,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Uniswap Fee Switch Activation Puts UNI Burn Mechanics Back In Focus",
-        "Uniswap Founder Warns CFTC That US Crypto Builders Are Moving Overseas",
-        "Uniswap v4 Ecosystem Passes 500 Registered Custom Hooks"
       ]
     },
     {
@@ -2492,6 +2492,22 @@
         "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
         "Bitcoin ETFs shed $463M in weekly reversal as Ether ETFs gain $197M",
         "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows"
+      ]
+    },
+    {
+      "entity": "OKX",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.333,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA",
+        "Paxos Labs Launches Gold Token That Can Earn A Return In Gold"
       ]
     },
     {
@@ -4756,21 +4772,6 @@
       "example_headlines": [
         "Anchorage Digital Taps LayerZero To Take USAT Stablecoin Cross-Chain",
         "KelpDAO Sues LayerZero Over $292M rsETH Bridge Exploit"
-      ]
-    },
-    {
-      "entity": "OKX",
-      "total_mentions": 2,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "OKX Shield Offers Up To \u20ac500K Account-Takeover Protection In Europe",
-        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -9811,6 +9812,48 @@
       ],
       "example_headlines": [
         "Solana Foundation Hires Former Binance CMO For Institutional Push"
+      ]
+    },
+    {
+      "entity": "Paxos Labs",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Paxos Labs Launches Gold Token That Can Earn A Return In Gold"
+      ]
+    },
+    {
+      "entity": "PAXGy",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Paxos Labs Launches Gold Token That Can Earn A Return In Gold"
+      ]
+    },
+    {
+      "entity": "PAXG",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Paxos Labs Launches Gold Token That Can Earn A Return In Gold"
       ]
     },
     {
