@@ -36,7 +36,7 @@ The legacy accuracy artifact reports 725/1,588 = 45.7%, but PR #1165 documents t
 - [PR #1168 — disable mutation-capable merge queue](https://github.com/Barrot-Agent/B-Agent/pull/1168): open draft; checks were not re-checked in this snapshot.
 - [PR #1161 — disable legacy scheduled accuracy writer](https://github.com/Barrot-Agent/B-Agent/pull/1161): open draft; checks were not re-checked in this snapshot.
 
-The latest main commit observed was `6d73f866e082cf9c0f35a3fdaf924afbca979418` (`Cross-analysis refresh [skip ci]`). The combined-status query returned no statuses and the workflow-run query returned no PR-triggered runs for that commit. This is **not** a CI pass. Main still contains the invalid signal behavior described above.
+The latest main commit observed was `6d73f866e082cf9c0f35a3fdaf924afbca979418` (`Cross-analysis refresh [skip ci]`). The combined-status query returned no statuses; the workflow-run endpoint used in this run returns only PR-triggered runs and returned none for that commit. This is **not** a CI pass and does not prove that no other workflow history exists. Main still contains the invalid signal behavior described above.
 
 ## 3. Operating architecture
 
