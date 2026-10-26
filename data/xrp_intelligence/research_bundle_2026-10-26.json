@@ -30,7 +30,8 @@
       "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
       "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
       "XRP-C-SBI-MULTI-RAIL-STRATEGY",
-      "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED"
+      "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
+      "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -103,6 +104,11 @@
         "id": "Q-RIPPLE-CIRCLE-MA",
         "question": "Can the reported 2025 Ripple-Circle acquisition approach be independently verified, given later public denial and no confirmed transaction?",
         "status": "DISPUTED"
+      },
+      {
+        "id": "Q-XRP-COLLATERAL",
+        "question": "Does any current CFTC-regulated clearinghouse or FCM explicitly accept XRP itself as collateral, and under what product/account/limits/haircuts?",
+        "status": "UNRESOLVED"
       }
     ]
   },
@@ -545,6 +551,46 @@
         "reports Ripple CEO Brad Garlinghouse denied pursuing Circle acquisition",
         "reports Circle said it was not for sale",
         "explicitly contradicts Bloomberg's earlier report"
+      ]
+    },
+    {
+      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+      "title": "Digital Assets Pilot Program for Tokenized Collateral in Derivatives Markets",
+      "author_or_organization": "U.S. Commodity Futures Trading Commission",
+      "source_type": "official_regulatory_announcement",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+      "publication_date": "2025-12-08",
+      "sections": [
+        "pilot names BTC, ETH and USDC as examples of digital assets used as derivatives collateral",
+        "tokenized-collateral guidance",
+        "does not name XRP in the release text reviewed",
+        "Ripple executive comment on tokenized collateral does not equal XRP-specific eligibility"
+      ]
+    },
+    {
+      "source_id": "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+      "title": "CME Group announces first trades of XRP futures",
+      "author_or_organization": "CME Group",
+      "source_type": "official_derivatives_exchange_announcement",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
+      "publication_date": "2025-05-20",
+      "sections": [
+        "XRP futures launched",
+        "contracts are cash-settled to CME CF XRP-Dollar Reference Rate",
+        "futures listing does not establish XRP collateral eligibility"
+      ]
+    },
+    {
+      "source_id": "SRC-CME-ACCEPTABLE-COLLATERAL",
+      "title": "Acceptable Collateral",
+      "author_or_organization": "CME Group",
+      "source_type": "official_clearing_collateral_policy",
+      "url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "CME Clearing collateral categories and limits",
+        "page text search returned no match for XRP at retrieval",
+        "eligibility remains account/product/clearing-member specific"
       ]
     }
   ],
@@ -997,6 +1043,38 @@
       "provenance": [
         "SRC-RIPPLE-CIRCLE-BLOOMBERG",
         "SRC-RIPPLE-CIRCLE-DENIAL"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "statement": "A Kamilah Stevenson video description published 2025-12-06 claims XRP was approved as acceptable collateral for federally regulated derivatives in the same class as gold, U.S. Treasuries and major FX pairs. The primary sources checked do not substantiate that specific claim: the CFTC's December 2025 pilot release names BTC, ETH and USDC, and CME's XRP futures are cash-settled; CME's acceptable-collateral page returned no XRP match. Keep the claim CHALLENGED pending product/FCM-specific rules; do not declare universal ineligibility from this search alone.",
+      "domain": "collateralization_and_derivatives",
+      "claim_type": "creator_claim_cross_corroboration",
+      "source": "KAMILAH_VIDEO_M8TmDXO7B-0",
+      "source_location": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "supporting_evidence": [
+        "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-CFTC-COLLATERAL-PILOT",
+        "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
+        "XRP-E-CME-ACCEPTABLE-COLLATERAL"
+      ],
+      "derivation_status": "CHALLENGED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.92,
+      "assumptions": [
+        "The indexed video description accurately represents the video's assertion; full transcript has not been captured.",
+        "Collateral eligibility may vary by clearinghouse, FCM, account type, and product."
+      ],
+      "provenance": [
+        "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+        "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+        "SRC-CME-ACCEPTABLE-COLLATERAL"
       ],
       "timestamp": 1793055698
     }
@@ -1484,6 +1562,72 @@
       "details": {
         "effect": "Treat the alleged offer as disputed; do not encode it as confirmed M&A or a direct partnership."
       }
+    },
+    {
+      "evidence_id": "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "unresolved_question",
+      "summary": "Indexed YouTube result attributed to Kamilah Stevenson, published 2025-12-06, describes XRP as approved collateral for federally regulated derivatives in the same class as gold, Treasuries and major FX pairs. Full transcript and exact video title remain unresolved.",
+      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+      "source_location": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "status": "REPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "https://www.youtube.com/watch?v=M8TmDXO7B-0"
+      ],
+      "details": {
+        "title_status": "UNRESOLVED",
+        "transcript_status": "NOT_CAPTURED",
+        "note": "Creator description is a claim, not primary evidence."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CFTC-COLLATERAL-PILOT",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "adversarial_objection",
+      "summary": "CFTC's 2025-12-08 announcement describes a digital-assets collateral pilot and explicitly names BTC, ETH and USDC; the release reviewed does not name XRP as an eligible pilot asset. It also quotes a Ripple stablecoins executive on tokenized collateral generally, which does not establish XRP-specific approval.",
+      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+      "source_location": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+      "status": "CHALLENGED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT"
+      ],
+      "details": {
+        "scope": "The announcement's omission of XRP is not proof that no separate FCM/clearinghouse permits XRP collateral."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "independent_verification",
+      "summary": "CME's May 20, 2025 release says XRP futures are cash-settled to the CME CF XRP-Dollar Reference Rate. Listing a cash-settled XRP derivative is not equivalent to accepting XRP itself as collateral.",
+      "source_id": "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+      "source_location": "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CME-XRP-FUTURES-CASH-SETTLED"
+      ],
+      "details": {
+        "distinction": "Derivative exposure vs collateral eligibility."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CME-ACCEPTABLE-COLLATERAL",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "independent_verification",
+      "summary": "CME Group's official acceptable-collateral page was checked on 2026-10-26; a text search returned no XRP match. This challenges a blanket CME-eligibility claim but does not rule out other venues or FCM-specific arrangements.",
+      "source_id": "SRC-CME-ACCEPTABLE-COLLATERAL",
+      "source_location": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+      "status": "CHALLENGED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CME-ACCEPTABLE-COLLATERAL"
+      ],
+      "details": {
+        "caveat": "Confirm current collateral schedule and FCM policies before concluding."
+      }
     }
   ],
   "tracks": [
@@ -1849,6 +1993,12 @@
       "question": "Keep the Ripple-Circle acquisition story classified as disputed unless a primary filing or direct statement resolves the conflicting media report and denial.",
       "priority": "MEDIUM",
       "status": "DISPUTED"
+    },
+    {
+      "question_id": "Q-12",
+      "question": "Resolve the 2025-12-06 Kamilah collateral video title and transcript; obtain product/FCM-specific collateral schedules to adjudicate the claim.",
+      "priority": "HIGH",
+      "status": "CLAIM_CHALLENGED_PRIMARY_RULES_NEEDED"
     }
   ],
   "relationship_graph": {
@@ -2575,12 +2725,18 @@
     "canonical_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "canonical_channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "catalog_url": "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
-    "indexed_seed_count": 10,
+    "indexed_seed_count": 11,
     "completeness_verified": false,
     "transcripts_captured_and_hashed": 0,
     "screenshot_title_id": "UNRESOLVED",
-    "status": "PARTIAL_SEED_CATALOG_ONLY",
-    "access_blocker": "Complete channel enumeration and permitted transcript access have not been executed; do not claim full ingestion."
+    "status": "PARTIAL_SEED_CATALOG; CLAIM_CROSS-CORROBORATION_STARTED",
+    "access_blocker": "Complete channel enumeration and permitted transcript access have not been executed; do not claim full ingestion.",
+    "last_seed_added": {
+      "video_id": "M8TmDXO7B-0",
+      "published_date_reported": "2025-12-06",
+      "title_resolution_status": "PENDING",
+      "collateral_claim_status": "CHALLENGED_BY_PRIMARY_SOURCES"
+    }
   },
   "unresolved_exact_phrases": [
     {
@@ -2601,6 +2757,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 1,
+      "action": "Resolve the Kamilah 2025-12-06 collateral video title/transcript and check current CFTC/clearinghouse/FCM rules for XRP-specific collateral eligibility; do not conflate XRP futures with XRP collateral.",
+      "status": "ACTIONABLE"
+    },
     {
       "priority": 0,
       "action": "Do not run the active merge-queue workflow. Independently verify branch protection/rulesets and review PR #1168, which disables the write-capable queue; keep it unmerged until explicit user approval.",
