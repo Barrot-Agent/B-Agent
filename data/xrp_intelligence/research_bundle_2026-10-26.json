@@ -1781,17 +1781,28 @@
         "Transcript access may be unavailable or subject to platform terms."
       ],
       "dependencies": [],
-      "focus_claims": [],
-      "evidence": [],
+      "focus_claims": [
+        "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM"
+      ],
+      "evidence": [
+        "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM",
+        "XRP-E-CFTC-COLLATERAL-PILOT",
+        "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
+        "XRP-E-CME-ACCEPTABLE-COLLATERAL"
+      ],
       "unresolved_objections": [
         "Kamilah Stevenson catalog currently has 10 indexed seeds, not a complete inventory.",
         "No full transcript corpus has been captured and hashed.",
         "Screenshot video title still lacks canonical video ID.",
-        "Exact phrase 'ASK Coin' and 'actual capital' remain unresolved."
+        "Exact phrase 'ASK Coin' and 'actual capital' remain unresolved.",
+        "The 2025-12-06 video title and full transcript remain unresolved; the description's collateral claim is challenged by primary sources, but product-specific FCM eligibility must still be checked."
       ],
       "confidence": 0.99,
       "provenance": [
-        "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/sources/kamilah_stevenson_channel.json"
+        "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+        "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+        "SRC-CME-ACCEPTABLE-COLLATERAL"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
