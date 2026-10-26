@@ -34,6 +34,18 @@ def _load_entries():
     return out
 
 
+
+def _non_model_signal_reason(entry):
+    """Return a skip reason for entries that are not model-backed signals."""
+    status = str(entry.get("signal_status", "")).lower()
+    if status == "unavailable":
+        return "signal_unavailable"
+    if status == "news_only":
+        return "news_only_not_model_evaluation"
+    if not status and "sentiment unavailable" in str(entry.get("source", "")).lower():
+        return "legacy_provider_unavailable"
+    return None
+
 def main():
     entries = _load_entries()
     now = time.time()
@@ -41,8 +53,18 @@ def main():
 
     checked = 0
     correct = 0
+    skipped_non_model = 0
     for e in entries:
+        skip_reason = _non_model_signal_reason(e)
+        if skip_reason:
+            e["checked"] = True
+            e["correct"] = None
+            e["skip_reason"] = skip_reason
+            skipped_non_model += 1
+            continue
         if e.get("checked"):
+            if e.get("correct") is None:
+                continue
             if e.get("correct"):
                 correct += 1
             checked += 1
@@ -79,6 +101,8 @@ def main():
         "checked_count": checked,
         "correct_count": correct,
         "accuracy_pct": accuracy,
+        "skipped_non_model_count": skipped_non_model,
+        "method_note": "Legacy directional heuristic with variable actual horizons; not a fixed-horizon calibrated metric.",
     }
     with open(SUMMARY_PATH, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
