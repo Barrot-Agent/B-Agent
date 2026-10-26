@@ -1,5 +1,14 @@
 {
-  "checked_count": 1588,
-  "correct_count": 725,
-  "accuracy_pct": 45.7
+  "status": "NOT_EVALUATED",
+  "checked_count": 0,
+  "correct_count": 0,
+  "accuracy_pct": null,
+  "legacy_metric": {
+    "checked_count": 1588,
+    "correct_count": 725,
+    "accuracy_pct": 45.7,
+    "validity": "NOT_COMPARABLE",
+    "reason": "Legacy variable-horizon evaluator rewrote outcomes using a later current price; this is not calibrated fixed-horizon forecast skill."
+  },
+  "reason": "No calibrated fixed-horizon forecast ledger is configured. Legacy history is preserved unchanged."
 }
