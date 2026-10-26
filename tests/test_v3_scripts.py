@@ -281,6 +281,84 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
     assert existing_body.read_text(encoding="utf-8") == "operator-owned sentinel\n"
 
 
+def test_open_capability_pr_creates_pr_only_after_exact_remote_sha_verification(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_verified_pr_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
+    module.SCRIPTS_DIR.mkdir(parents=True)
+    existing_body = tmp_path / ".selfupgrade_pr_body.md"
+    existing_body.write_text("operator-owned sentinel\n", encoding="utf-8")
+
+    calls: list[tuple[str, ...]] = []
+    pr_calls: list[tuple[str, ...]] = []
+    body_paths: list[Path] = []
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("branch", "--show-current"):
+            return Result(stdout="feature/current\n")
+        if args == ("checkout", "-b", "selfupgrade/gap-20260914153000"):
+            return Result()
+        if args == ("add", "scripts/gap.py"):
+            return Result()
+        if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
+            return Result()
+        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
+            return Result()
+        if args == ("rev-parse", "HEAD"):
+            return Result(stdout="abc123\n")
+        if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
+            return Result(stdout="abc123\trefs/heads/selfupgrade/gap-20260914153000\n")
+        if args == ("checkout", "feature/current"):
+            return Result()
+        raise AssertionError(args)
+
+    class DateTimeStub:
+        @staticmethod
+        def now(tz=None):
+            del tz
+
+            class Stamp:
+                def strftime(self, fmt: str) -> str:
+                    assert fmt == "%Y%m%d%H%M%S"
+                    return "20260914153000"
+
+            return Stamp()
+
+    def fake_run(command, cwd, capture_output, text, check):
+        del cwd, capture_output, text, check
+        pr_calls.append(tuple(command))
+        assert command[:3] == ["gh", "pr", "create"]
+        body_path = Path(command[command.index("--body-file") + 1])
+        body_paths.append(body_path)
+        assert body_path.exists()
+        body = body_path.read_text(encoding="utf-8")
+        assert "remote_branch_verification: passed" in body
+        assert "abc123" in body
+        return Result(stdout="https://example.invalid/pr/verified\n")
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "datetime", DateTimeStub)
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+
+    assert result["remote_verified"] is True
+    assert result["status"] == "PR_CREATED"
+    assert result["pr_output"] == "https://example.invalid/pr/verified"
+    assert result["restored_branch"] == "feature/current"
+    assert len(pr_calls) == 1
+    assert len(body_paths) == 1 and not body_paths[0].exists()
+    assert existing_body.read_text(encoding="utf-8") == "operator-owned sentinel\n"
+    assert ("checkout", "feature/current") in calls
+
+
 def test_open_capability_pr_restores_branch_when_push_fails(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_push_failure_test")
     monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
