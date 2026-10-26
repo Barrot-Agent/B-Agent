@@ -1,6 +1,6 @@
 {
   "note": "Relationships classified from real co-occurrence headlines via direct Groq classification - not embeddings, not a fine-tuned model (neither is available on this infrastructure). Grounded strictly in the actual headlines shown to the model.",
-  "total_classified": 144,
+  "total_classified": 148,
   "relations": [
     {
       "pair_key": "Ripple|XRP",
@@ -1297,6 +1297,42 @@
       "relation_type": "correlated_unclear",
       "justification": "The provided headlines do not contain any explicit information linking the SEC and the U.S. District Court, making their relationship unclear.",
       "classified_at": "2026-10-19T10:03:53Z"
+    },
+    {
+      "pair_key": "Ripple|TradingView",
+      "entity_a": "Ripple",
+      "entity_b": "TradingView",
+      "cooccurrence_count": 8,
+      "relation_type": "complementary",
+      "justification": "Both headlines are articles published on TradingView that discuss Ripple-related topics, indicating TradingView serves as a platform complementing Ripple's news.",
+      "classified_at": "2026-10-26T10:06:54Z"
+    },
+    {
+      "pair_key": "TradingView|XRP",
+      "entity_a": "TradingView",
+      "entity_b": "XRP",
+      "cooccurrence_count": 8,
+      "relation_type": "complementary",
+      "justification": "Both headlines are XRP-focused articles published on TradingView, showing TradingView acts as an informational source about XRP.",
+      "classified_at": "2026-10-26T10:06:57Z"
+    },
+    {
+      "pair_key": "U.S. District Court|XRP",
+      "entity_a": "U.S. District Court",
+      "entity_b": "XRP",
+      "cooccurrence_count": 6,
+      "relation_type": "correlated_unclear",
+      "justification": "The provided headlines mention XRP but do not reference the U.S. District Court, so no clear relationship can be inferred.",
+      "classified_at": "2026-10-26T10:07:00Z"
+    },
+    {
+      "pair_key": "Bitcoin|ETFs",
+      "entity_a": "Bitcoin",
+      "entity_b": "ETFs",
+      "cooccurrence_count": 6,
+      "relation_type": "same_event",
+      "justification": "The headline links Bitcoin and Ethereum ETFs together in the same event of pulling $825M as institutional demand returns.",
+      "classified_at": "2026-10-26T10:07:03Z"
     }
   ]
 }
