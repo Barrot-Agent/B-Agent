@@ -75,6 +75,7 @@ def test_buy_is_capped_at_twenty_percent_of_cash_and_sell_is_position_capped():
     )
     assert result == "sold $400.00 at $100.00"
     assert portfolio["position_size"] == 0.0
+    assert portfolio["position_product"] is None
     assert math.isclose(portfolio["cash_usd"], 1200.0)
     assert portfolio["trade_count"] == 5
 
