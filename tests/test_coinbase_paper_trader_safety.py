@@ -88,3 +88,24 @@ def test_workflow_is_manual_read_only_and_does_not_push_simulation_state():
     assert "git commit" not in workflow
     assert "git add" not in workflow
     assert "actions/upload-artifact@" in workflow
+
+
+def test_legacy_open_position_missing_product_is_repaired_on_valid_hold():
+    portfolio = state()
+    portfolio["position_product"] = None
+    result = module.execute_paper_trade(
+        portfolio, {"action": "hold", "amount_usd": 0, "reasoning": "legacy state"}, 100.0
+    )
+    assert result == "held -- no action taken"
+    assert portfolio["position_product"] == "BTC-USD"
+
+
+def test_mismatched_position_product_blocks_trade_without_mutation():
+    portfolio = state()
+    portfolio["position_product"] = "ETH-USD"
+    before = portfolio.copy()
+    result = module.execute_paper_trade(
+        portfolio, {"action": "sell", "amount_usd": 100, "reasoning": "test"}, 100.0
+    )
+    assert result == "held -- position product mismatch"
+    assert portfolio == before
