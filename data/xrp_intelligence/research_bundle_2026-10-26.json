@@ -1,0 +1,1738 @@
+{
+  "schema_version": "1.0",
+  "bundle_type": "barrot_research_source_bundle",
+  "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
+  "snapshot": {
+    "captured_at_utc": "2026-10-26T23:01:38Z",
+    "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+    "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
+    "forecast_status": "NOT_ISSUED",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_AND_CONFIDENCE_ZERO",
+    "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access."
+  },
+  "problem": {
+    "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
+    "title": "Evidence-led XRP market intelligence and forecast validity",
+    "domain": "financial_market_research",
+    "primary_question": "Which observable market, institutional, regulatory, liquidity and macro variables provide reproducible out-of-sample information about XRP returns and risk, and which popular adoption narratives fail to translate into XRP demand?",
+    "primary_claims": [
+      "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
+      "XRP-C-USDC-NATIVE-ON-XRPL",
+      "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "XRP-C-SBI-RLUSD-JAPAN",
+      "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "XRP-C-COINBASE-XRP-ACCESS",
+      "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "XRP-C-LEGACY-ACCURACY-INVALID"
+    ],
+    "related_problems": [
+      "BARROT-V3-EXECUTION-VERIFICATION",
+      "KAMILAH-STEVENSON-VIDEO-INGESTION",
+      "SBIC-ENTITY-RESOLUTION"
+    ],
+    "acceptance_requirements": {
+      "public_sources_only": true,
+      "source_provenance_required": true,
+      "claims_separated_from_inference": true,
+      "disconfirming_evidence_required": true,
+      "walk_forward_validation_required": true,
+      "immutable_forecasts_required": true,
+      "leakage_prevention_required": true,
+      "shadow_only_until_validated": true,
+      "merge_without_approval": false
+    },
+    "research_questions": [
+      {
+        "id": "Q-SBIC",
+        "question": "Which legal entity is meant by the phrase 'SBIC, ChatGPT SBIC' in its original context?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-ASK-COIN",
+        "question": "What asset, company or phrase is meant by 'ASK Coin' in the original source?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-ACTUAL-CAPITAL",
+        "question": "What specific event, metric or claim is meant by 'actual capital'?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-VIDEO-INVENTORY",
+        "question": "What is the complete canonical inventory of public Kamilah Stevenson videos, Shorts and livestreams, and which have accessible transcripts?",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "Q-USDC-XRP-PRICE",
+        "question": "Do changes in native USDC supply/flows on XRPL predict net XRP bridge demand or price after controlling for market beta, liquidity, derivatives and macro variables?",
+        "status": "UNTESTED"
+      },
+      {
+        "id": "Q-SBI-FLOWS",
+        "question": "What current XRP volumes, inventory and collateral flows are attributable to SBI-related products, rather than inferred from announcements?",
+        "status": "UNTESTED"
+      },
+      {
+        "id": "Q-COINBASE-CIRCLE-TERMS",
+        "question": "What are the current Coinbase-Circle ownership, revenue-share and distribution terms from latest filings?",
+        "status": "PARTIAL"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "SRC-XRPL-XRP-OVERVIEW",
+      "title": "XRP Overview",
+      "author_or_organization": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/about/xrp",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "XRP as XRPL native asset",
+        "Ripple/XRP distinction",
+        "bridge-asset and collateral use cases"
+      ],
+      "relationships": [
+        {
+          "source_node": "XRP",
+          "target_node": "XRP Ledger",
+          "relationship_type": "NATIVE_ASSET_OF",
+          "status": "SUPPORTED_BY_PRIMARY_SOURCE"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-XRPL-TOKENS",
+      "title": "Tokens: differences between XRP and other XRPL tokens",
+      "author_or_organization": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/docs/concepts/tokens",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "XRP versus issued tokens",
+        "reserve and transaction-cost roles"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-XRP-SUPPORT",
+      "title": "Ripple SEC Lawsuit / XRP support status",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_exchange_support",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec",
+      "publication_date": "page shows updated July 13; year not explicit in extracted result",
+      "sections": [
+        "XRP relisting",
+        "retail, Prime and custody support",
+        "jurisdiction restrictions"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-XRPL",
+      "title": "Now Available: USDC on the XRPL",
+      "author_or_organization": "Circle",
+      "source_type": "official_issuer_announcement",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publication_date": "2025-06-12",
+      "sections": [
+        "Native USDC on XRPL mainnet",
+        "Circle Mint and API support",
+        "no bridge required"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-STATUS",
+      "title": "USDC",
+      "author_or_organization": "Circle",
+      "source_type": "official_issuer_information",
+      "url": "https://www.circle.com/usdc",
+      "publication_date": "page states 38 native networks as of 2026-09-16",
+      "sections": [
+        "USDC reserve model",
+        "supported networks",
+        "circulation and institutional access"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-COINBASE-AGREEMENT",
+      "title": "Ushering in the next chapter for USDC",
+      "author_or_organization": "Circle Investor Relations",
+      "source_type": "official_corporate_announcement",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "publication_date": "2023",
+      "sections": [
+        "Circle remains issuer",
+        "Coinbase equity stake",
+        "reserve income and distribution revenue sharing"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-USDC-INCENTIVES",
+      "title": "USDC Incentive Program",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_exchange_program",
+      "url": "https://help.coinbase.com/en/prime/usdc",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "market-maker incentives",
+        "USDC minting incentives",
+        "revenue based on USDC held on Coinbase and third-party platforms"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-XRP-REMIT",
+      "title": "XRP-enabled Ripple remittance solution expanded to Philippines, Vietnam and Indonesia",
+      "author_or_organization": "SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple via SBI Group",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "publication_date": "2023-09-06",
+      "sections": [
+        "XRP used in announced cross-border remittance service",
+        "SBI Remit",
+        "SBI VC Trade",
+        "SBI Ripple Asia joint venture with Ripple"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RLUSD-MOU",
+      "title": "SBI Group and Ripple sign basic agreement to issue and distribute RLUSD in Japan",
+      "author_or_organization": "SBI Holdings and Ripple",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "publication_date": "2025-08-22",
+      "sections": [
+        "RLUSD Japan distribution plan",
+        "SBI VC Trade",
+        "Ripple subsidiary Standard Custody"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RLUSD-START",
+      "title": "RLUSD handling begins on SBI VC Trade",
+      "author_or_organization": "SBI VC Trade and Ripple",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publication_date": "2026-06-24",
+      "sections": [
+        "domestic RLUSD handling launch",
+        "SBI VC Trade",
+        "Ripple partnership"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-XRP-MARKET",
+      "title": "XRP/JPY leverage-trading spread campaign",
+      "author_or_organization": "SBI VC Trade via SBI Holdings",
+      "source_type": "official_exchange_announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
+      "publication_date": "2026-06-22",
+      "sections": [
+        "XRP/JPY leverage market access",
+        "spread campaign terms",
+        "temporary promotion; not proof of net flows"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CRYPTO-IDENTITY",
+      "title": "SBI Crypto incident disclosure",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/1002_15808.html",
+      "publication_date": "2025-10-02",
+      "sections": [
+        "SBI Crypto described as mining subsidiary",
+        "separate asset-management entities from SBI VC Trade and BITPOINT Japan"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CRYPTO-PROFILE",
+      "title": "What is SBI Crypto?",
+      "author_or_organization": "SBI Crypto",
+      "source_type": "official_company_privacy_notice",
+      "url": "https://www.sbicrypto.com/en/privacy/",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "SBI Crypto company identity",
+        "cryptocurrency mining",
+        "wholly owned SBI Holdings subsidiary"
+      ]
+    },
+    {
+      "source_id": "SRC-TOKYO-SBIC-PROFILE",
+      "title": "Company profile",
+      "author_or_organization": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "Tokyo SBIC legal identity",
+        "SME investment-development mandate",
+        "established 1963"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-ARC",
+      "title": "Circle launches Arc mainnet",
+      "author_or_organization": "Circle",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publication_date": "2026-09-16",
+      "sections": [
+        "Circle's own L1 strategy",
+        "USDC and financial market infrastructure",
+        "institutional/ecosystem builder launch claims"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-LATEST-SIGNAL",
+      "title": "Barrot current latest signal artifact",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "2026-10-26T23:01:38Z",
+      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "sections": [
+        "timestamp 2026-10-26T22:29:38Z",
+        "score 44",
+        "confidence 0",
+        "provider failures",
+        "news score 88 across 11 entries"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-LEGACY-ACCURACY",
+      "title": "Barrot legacy signal accuracy artifact",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+      "publication_date": "2026-10-26T23:01:38Z",
+      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "sections": [
+        "1588 checked",
+        "725 correct",
+        "45.7 percent; invalid variable-horizon measure per PR #1165"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR-1165",
+      "title": "XRP integrity: fail closed on unavailable sentiment; retire invalid accuracy metric",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "pull_request",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
+      "publication_date": "updated 2026-10-26",
+      "sections": [
+        "fail-closed provider validation",
+        "academic-paper contamination filter",
+        "NOT_ISSUED output",
+        "read-only/artifact-only evaluation",
+        "draft; CI and fail-closed workflow passed on head"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR-1155",
+      "title": "XRP market data: require synchronized event-time inputs",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "pull_request",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1155",
+      "publication_date": "updated 2026-10-26",
+      "sections": [
+        "XRP/USD spot, XRP/USDT perpetual, USDT/USD synchronized inputs",
+        "stale/future/skew validation",
+        "126 tests passed on reported merge ref",
+        "draft; not merged"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
+      "statement": "Coinbase and Circle have direct strategic and economic ties around USDC: Circle remains issuer, Coinbase has an equity stake, and their agreement shares revenue tied to USDC holdings/distribution.",
+      "domain": "market_structure",
+      "claim_type": "corporate_fact",
+      "source": "SRC-CIRCLE-COINBASE-AGREEMENT",
+      "source_location": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-CIRCLE-PRIMARY"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The 2023 announced agreement remains materially operative; latest contract amendments and revenue split must be verified from current filings."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-COINBASE-AGREEMENT",
+        "SRC-COINBASE-USDC-INCENTIVES"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
+      "statement": "Circle announced native USDC on XRPL mainnet on 2025-06-12, with Circle Mint and APIs supporting the network; this is USDC issued on XRPL, not XRP itself.",
+      "domain": "stablecoins",
+      "claim_type": "corporate_and_protocol_fact",
+      "source": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-XRP-NATIVE-ASSET"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The issuer announcement is accurate for launch; current supply, activity, and liquidity must be separately measured."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-TOKENS"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "statement": "USDC availability or rising stablecoin activity on XRPL does not by itself prove increased net spot demand for XRP; the price effect depends on actual XRP bridge routing, inventory/collateral demand, fee/reserve needs, and market depth.",
+      "domain": "market_structure",
+      "claim_type": "testable_inference",
+      "source": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "supporting_evidence": [
+        "XRP-E-USDC-XRP-DECOUPLING"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-POTENTIAL-COMPLEMENTARITY"
+      ],
+      "derivation_status": "HYPOTHESIS",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.78,
+      "assumptions": [
+        "Measure XRPL token activity separately from XRP spot purchases, bridge paths, DEX routing, and inventory held by market makers."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-XRP-OVERVIEW",
+        "SRC-XRPL-TOKENS"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "statement": "SBI Group entities and Ripple publicly announced an XRP-enabled remittance service expansion to the Philippines, Vietnam, and Indonesia in 2023; this confirms an announced commercial relationship, not current transaction volume or price impact.",
+      "domain": "payments_and_institutional_adoption",
+      "claim_type": "historical_corporate_fact_with_limit",
+      "source": "SRC-SBI-XRP-REMIT",
+      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-XRP-REMIT"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The announcement describes the intended service at that date; present-day volumes and route composition remain unverified."
+      ],
+      "provenance": [
+        "SRC-SBI-XRP-REMIT"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-RLUSD-JAPAN",
+      "statement": "SBI VC Trade and Ripple announced a basic agreement for RLUSD distribution in Japan in 2025, and an official 2026 announcement states RLUSD handling began on SBI VC Trade; this is a stablecoin distribution link and not proof of increased XRP demand.",
+      "domain": "stablecoins_and_japan",
+      "claim_type": "corporate_fact_with_limit",
+      "source": "SRC-SBI-RLUSD-START",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-RLUSD-START"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "Measure RLUSD circulation, redemption, venue volumes, and any linked XRP bridge usage separately."
+      ],
+      "provenance": [
+        "SRC-SBI-RLUSD-MOU",
+        "SRC-SBI-RLUSD-START"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "statement": "The intended referent of 'SBIC' in the user's phrase remains unresolved. Public evidence supports at least two distinct Japan-linked identities: Tokyo SBIC East Japan, an SME investment-development company, and SBI Crypto Co., Ltd., an SBI Holdings mining subsidiary. The XRP context also includes SBI Holdings, SBI VC Trade, and SBI Ripple Asia, but it does not establish which entity the phrase denotes.",
+      "domain": "entity_resolution",
+      "claim_type": "identity_ambiguity",
+      "source": "SRC-TOKYO-SBIC-PROFILE",
+      "source_location": "https://www.sbic.co.jp/company/profile/ ; https://www.sbicrypto.com/en/privacy/ ; https://www.sbigroup.co.jp/news/2025/1002_15808.html",
+      "supporting_evidence": [
+        "XRP-E-TOKYO-SBIC-IDENTITY",
+        "XRP-E-SBI-CRYPTO-IDENTITY",
+        "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "UNRESOLVED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.2,
+      "assumptions": [
+        "A context-specific audio/video/source occurrence is needed to resolve intended meaning."
+      ],
+      "provenance": [
+        "SRC-TOKYO-SBIC-PROFILE",
+        "SRC-SBI-CRYPTO-PROFILE",
+        "SRC-SBI-CRYPTO-IDENTITY",
+        "SRC-SBI-XRP-REMIT"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-XRP-ACCESS",
+      "statement": "Coinbase's own support page says XRP is supported on Coinbase Retail, Prime, and Custody, with jurisdiction restrictions including Japan, New York State, and Singapore; this is a platform-access fact, not a forecast of net inflows.",
+      "domain": "exchange_positioning",
+      "claim_type": "official_platform_fact",
+      "source": "SRC-COINBASE-XRP-SUPPORT",
+      "source_location": "https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-XRP-SUPPORT"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.97,
+      "assumptions": [
+        "Platform support and jurisdiction availability can change; refresh before using as a live feature."
+      ],
+      "provenance": [
+        "SRC-COINBASE-XRP-SUPPORT"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "statement": "The latest main-branch signal artifact timestamped 2026-10-26T22:29:38Z reports score 44 and confidence 0 while both model providers failed (missing GitHub model credentials and Groq HTTP 429); the news score is 88 from 11 entries dominated by XRPL research-paper titles. This output must not be treated as a valid XRP forecast.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "observed_runtime_failure_and_gate",
+      "source": "SRC-BARROT-LATEST-SIGNAL",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-ARTIFACT",
+        "XRP-E-PR-1165-ROOT-CAUSE"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "This is the observed artifact at retrieval time; later scheduled runs may produce new artifacts."
+      ],
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL",
+        "SRC-BARROT-PR-1165"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
+      "statement": "The repository's legacy 45.7% accuracy value (725/1588) is recorded in the artifact but is not a defensible out-of-sample skill estimate because the legacy evaluator used variable horizons and rewrote mutable history; it must not be described as calibrated forecast accuracy.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "metric_validity_assessment",
+      "source": "SRC-BARROT-PR-1165",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
+      "supporting_evidence": [
+        "XRP-E-LEGACY-ACCURACY-ARTIFACT",
+        "XRP-E-PR-1165-ROOT-CAUSE"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "A replacement metric requires immutable forecasts with fixed horizons, exact target times, a stable price source, baselines, and no look-ahead."
+      ],
+      "provenance": [
+        "SRC-BARROT-LEGACY-ACCURACY",
+        "SRC-BARROT-PR-1165"
+      ],
+      "timestamp": 1793055698
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "XRP-E-COINBASE-CIRCLE-PRIMARY",
+      "claim_id": "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
+      "kind": "independent_verification",
+      "summary": "Circle's official 2023 announcement says Circle remains the issuer, Coinbase is taking an equity stake, and reserve income/distribution usage revenue is shared under the agreement. Coinbase's USDC incentive page independently describes revenue tied to USDC balances on Coinbase and third-party platforms.",
+      "source_id": "SRC-CIRCLE-COINBASE-AGREEMENT",
+      "source_location": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CIRCLE-COINBASE-AGREEMENT",
+        "SRC-COINBASE-USDC-INCENTIVES"
+      ],
+      "details": {
+        "caveat": "Current revenue splits and contract amendments need latest filings; do not infer a fixed current percentage."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-USDC-XRPL",
+      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
+      "kind": "independent_verification",
+      "summary": "Circle's June 12, 2025 release states USDC is live natively on XRPL mainnet and Circle Mint/APIs support it without a third-party bridge.",
+      "source_id": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL"
+      ],
+      "details": {
+        "limit": "This confirms issuer launch and support, not current supply, transfer volume, or XRP market impact."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-XRP-NATIVE-ASSET",
+      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
+      "kind": "independent_verification",
+      "summary": "XRPL documentation distinguishes native XRP from other issued XRPL tokens.",
+      "source_id": "SRC-XRPL-TOKENS",
+      "source_location": "https://xrpl.org/docs/concepts/tokens",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-XRPL-TOKENS"
+      ],
+      "details": {
+        "implication": "USDC on XRPL is not XRP and is not itself evidence of net XRP acquisition."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-USDC-XRP-DECOUPLING",
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "kind": "unresolved_question",
+      "summary": "USDC is a distinct issued token on XRPL. Need event-level measurements of XRP/fiat and XRP/stablecoin order books, XRP bridge paths, DEX routing, fees/reserve demand, and inventory before attributing stablecoin growth to XRP price demand.",
+      "source_id": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-XRP-OVERVIEW"
+      ],
+      "details": {
+        "falsification": "If new USDC flows repeatedly cause measured increases in XRP bridge turnover, net inventory demand, or fee/reserve needs after controls, the no-direct-inference hypothesis should be revised."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-POTENTIAL-COMPLEMENTARITY",
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "kind": "adversarial_objection",
+      "summary": "Counter-hypothesis: USDC could make XRPL more attractive for settlement and trading, indirectly increasing XRP bridge or market-making use in some paths.",
+      "source_id": "SRC-XRPL-XRP-OVERVIEW",
+      "source_location": "https://xrpl.org/about/xrp",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-XRPL-XRP-OVERVIEW",
+        "SRC-CIRCLE-USDC-XRPL"
+      ],
+      "details": {
+        "required_test": "Compare routes that use XRP as a bridge against direct stablecoin/stablecoin settlement and measure net XRP inventory changes."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-XRP-REMIT",
+      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "kind": "independent_verification",
+      "summary": "SBI Group's September 6, 2023 announcement names SBI Remit, SBI VC Trade, Ripple and the SBI/Ripple joint venture SBI Ripple Asia in an XRP-enabled remittance expansion to the Philippines, Vietnam and Indonesia.",
+      "source_id": "SRC-SBI-XRP-REMIT",
+      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-XRP-REMIT"
+      ],
+      "details": {
+        "limit": "A launch announcement is not a current transaction-volume series; current route use and bridge composition remain to be collected."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-RLUSD-START",
+      "claim_id": "XRP-C-SBI-RLUSD-JAPAN",
+      "kind": "independent_verification",
+      "summary": "SBI/Ripple's June 24, 2026 announcement states RLUSD handling began on SBI VC Trade following the August 2025 basic agreement.",
+      "source_id": "SRC-SBI-RLUSD-START",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-RLUSD-MOU",
+        "SRC-SBI-RLUSD-START"
+      ],
+      "details": {
+        "limit": "This is RLUSD distribution, not direct evidence of XRP net buying or usage as collateral."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-TOKYO-SBIC-IDENTITY",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "independent_verification",
+      "summary": "Tokyo SBIC's official profile identifies Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan), an SME investment-development company established in 1963; no XRP or crypto link is established by this profile.",
+      "source_id": "SRC-TOKYO-SBIC-PROFILE",
+      "source_location": "https://www.sbic.co.jp/company/profile/",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-TOKYO-SBIC-PROFILE"
+      ],
+      "details": {
+        "identity": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
+        "crypto_link": "none established in this source"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-CRYPTO-IDENTITY",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "independent_verification",
+      "summary": "SBI Crypto's company notice describes a Japanese SBI Holdings subsidiary engaged in cryptocurrency mining; SBI Holdings' 2025 incident disclosure distinguishes SBI Crypto from SBI VC Trade and BITPOINT Japan in asset management.",
+      "source_id": "SRC-SBI-CRYPTO-PROFILE",
+      "source_location": "https://www.sbicrypto.com/en/privacy/",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-SBI-CRYPTO-PROFILE",
+        "SRC-SBI-CRYPTO-IDENTITY"
+      ],
+      "details": {
+        "identity": "SBI Crypto Co., Ltd.",
+        "xrp_relation": "No direct XRP operating role established by these sources."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "unresolved_question",
+      "summary": "The XRP-linked SBI entities found in primary announcements are SBI Holdings, SBI VC Trade, SBI Remit and SBI Ripple Asia; these do not establish that the phrase 'SBIC' means SBI Crypto or Tokyo SBIC.",
+      "source_id": "SRC-SBI-XRP-REMIT",
+      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-CRYPTO-IDENTITY",
+        "SRC-TOKYO-SBIC-PROFILE"
+      ],
+      "details": {
+        "required_next_step": "Find the original sentence/audio/video in which 'SBIC, ChatGPT SBIC' was heard or written."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-XRP-SUPPORT",
+      "claim_id": "XRP-C-COINBASE-XRP-ACCESS",
+      "kind": "independent_verification",
+      "summary": "Coinbase's support page states XRP support on Retail, Prime and Custody and names Japan, New York State and Singapore as restricted jurisdictions.",
+      "source_id": "SRC-COINBASE-XRP-SUPPORT",
+      "source_location": "https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-COINBASE-XRP-SUPPORT"
+      ],
+      "details": {
+        "caveat": "This page's updated date lacks a year in the extracted snippet; refresh before live deployment."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-ARTIFACT",
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "kind": "computational_evidence",
+      "summary": "Main's latest_signal.json at 2026-10-26T22:29:38.241936Z reports score 44, confidence 0, news_score 88, 11 news entries, and explicit failures: missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429.",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL"
+      ],
+      "details": {
+        "decision": "Do not publish or use this as a directional forecast; expected state is forecast_status NOT_ISSUED."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR-1165-ROOT-CAUSE",
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "kind": "independent_verification",
+      "summary": "PR #1165 documents provider failures being converted to numeric zero and blended with news sentiment, plus research-paper contamination in news scoring; it adds fail-closed behavior and NOT_ISSUED handling.",
+      "source_id": "SRC-BARROT-PR-1165",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-PR-1165"
+      ],
+      "details": {
+        "state": "OPEN_DRAFT",
+        "ci": "CI and Barrot Gated Merge (fail-closed) runs reported success on this PR head",
+        "merge": "not merged; no approval to merge"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-LEGACY-ACCURACY-ARTIFACT",
+      "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
+      "kind": "computational_evidence",
+      "summary": "Current legacy artifact contains checked_count=1588, correct_count=725, accuracy_pct=45.7.",
+      "source_id": "SRC-BARROT-LEGACY-ACCURACY",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-LEGACY-ACCURACY"
+      ],
+      "details": {
+        "interpretation": "Recorded arithmetic only; not evidence of fixed-horizon forecast skill."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-LEGACY-ACCURACY-INVALID-METHOD",
+      "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
+      "kind": "adversarial_objection",
+      "summary": "PR #1165 describes the legacy evaluator as variable-horizon, using a later current price and mutating history; the resulting percentage is not calibrated forecast accuracy.",
+      "source_id": "SRC-BARROT-PR-1165",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-PR-1165"
+      ],
+      "details": {
+        "replacement": "Immutable forecast ledger with exact target time, fixed horizon, venue-normalized prices, baselines, costs, and probability calibration."
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "track_id": "XRP-TRACK-CIRCLE-COINBASE",
+      "role": "corporate_and_stablecoin_market_structure",
+      "strategy": "Map official corporate agreements, USDC issuance/distribution, incentive programs, and cross-chain liquidity separately from XRP demand.",
+      "hypothesis": "Coinbase-Circle alignment strengthens USDC distribution and liquidity; the effect on XRP is indirect and sign-ambiguous.",
+      "assumptions": [
+        "Current agreement terms can change.",
+        "USDC liquidity on XRPL can be used without XRP in some flows."
+      ],
+      "dependencies": [
+        "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
+        "XRP-C-USDC-NATIVE-ON-XRPL",
+        "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND"
+      ],
+      "focus_claims": [
+        "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
+        "XRP-C-USDC-NATIVE-ON-XRPL",
+        "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND"
+      ],
+      "evidence": [
+        "XRP-E-COINBASE-CIRCLE-PRIMARY",
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-USDC-XRP-DECOUPLING"
+      ],
+      "unresolved_objections": [
+        "Measure whether USDC-on-XRPL flows substitute for XRP bridge paths or expand them.",
+        "Latest Coinbase-Circle revenue-sharing terms and distribution metrics require current filings."
+      ],
+      "confidence": 0.75,
+      "provenance": [
+        "SRC-CIRCLE-COINBASE-AGREEMENT",
+        "SRC-COINBASE-USDC-INCENTIVES",
+        "SRC-CIRCLE-USDC-XRPL"
+      ],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "PARTIAL_PRIMARY_SOURCE_REVIEW",
+        "independent_market_data": "PENDING"
+      }
+    },
+    {
+      "track_id": "XRP-TRACK-SBI-JAPAN",
+      "role": "japan_institutional_adoption_and_entity_resolution",
+      "strategy": "Separate SBI Holdings, SBI VC Trade, SBI Remit, SBI Ripple Asia, SBI Crypto, and Tokyo SBIC; map legal entities before attributing capital or XRP flow.",
+      "hypothesis": "SBI Group has genuine XRP-related payments and RLUSD distribution activity, but the acronym SBIC is not resolved and partnership headlines do not prove price impact.",
+      "assumptions": [
+        "Announcements are historical unless current activity is verified.",
+        "RLUSD flows are not equivalent to XRP purchases."
+      ],
+      "dependencies": [
+        "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+        "XRP-C-SBI-RLUSD-JAPAN",
+        "XRP-C-SBIC-IDENTITY-AMBIGUITY"
+      ],
+      "focus_claims": [
+        "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+        "XRP-C-SBI-RLUSD-JAPAN",
+        "XRP-C-SBIC-IDENTITY-AMBIGUITY"
+      ],
+      "evidence": [
+        "XRP-E-SBI-XRP-REMIT",
+        "XRP-E-SBI-RLUSD-START",
+        "XRP-E-TOKYO-SBIC-IDENTITY",
+        "XRP-E-SBI-CRYPTO-IDENTITY"
+      ],
+      "unresolved_objections": [
+        "Find original context for 'SBIC, ChatGPT SBIC'.",
+        "Collect current SBI VC Trade volume and XRP/JPY order-book/derivatives history.",
+        "Verify whether the 2023 remittance routes still use XRP and in what proportions."
+      ],
+      "confidence": 0.72,
+      "provenance": [
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-RLUSD-MOU",
+        "SRC-SBI-RLUSD-START",
+        "SRC-TOKYO-SBIC-PROFILE"
+      ],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "PRIMARY_ANNOUNCEMENTS_VERIFIED; FLOWS_UNMEASURED"
+      }
+    },
+    {
+      "track_id": "XRP-TRACK-MICROSTRUCTURE",
+      "role": "market_data_and_forecast_integrity",
+      "strategy": "Use synchronized event-time spot, perpetual and FX observations; reject stale/misaligned inputs; record venue and order-book depth; do not issue forecast when provider or source validity gates fail.",
+      "hypothesis": "Current main sentiment pipeline can emit non-forecast scores during provider failure; fail-closed PRs are necessary before prediction-engine performance can be evaluated.",
+      "assumptions": [
+        "Repository PR tests are not equivalent to live provider reliability.",
+        "Market data access and timestamps must be independently checked."
+      ],
+      "dependencies": [
+        "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+        "XRP-C-LEGACY-ACCURACY-INVALID"
+      ],
+      "focus_claims": [
+        "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+        "XRP-C-LEGACY-ACCURACY-INVALID"
+      ],
+      "evidence": [
+        "XRP-E-MAIN-SIGNAL-ARTIFACT",
+        "XRP-E-PR-1165-ROOT-CAUSE",
+        "XRP-E-LEGACY-ACCURACY-INVALID-METHOD"
+      ],
+      "unresolved_objections": [
+        "PR #1165 remains unmerged, so main still emits the invalid score.",
+        "PR #1155 remains unmerged; its 126 tests passed on the reported merge ref, but live market ingestion is not integrated.",
+        "Latest main commit is an automated [skip ci] commit with no associated run/status found in this query."
+      ],
+      "confidence": 0.99,
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL",
+        "SRC-BARROT-PR-1165",
+        "SRC-BARROT-PR-1155"
+      ],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "MAIN_ARTIFACT_INSPECTED; FIXES_DRAFT_AND_NOT_MERGED"
+      }
+    },
+    {
+      "track_id": "XRP-TRACK-VIDEO-INGESTION",
+      "role": "creator_claims_and_forecast_scoring",
+      "strategy": "Enumerate canonical channel by video ID; capture permitted transcripts with hashes and timestamps; extract each claim/forecast; cross-check before use; score forecasts only after horizon closes.",
+      "hypothesis": "Creator videos can improve context and event discovery but should not be treated as independent market evidence unless each claim is corroborated.",
+      "assumptions": [
+        "Only public/authorized data is collected.",
+        "Transcript access may be unavailable or subject to platform terms."
+      ],
+      "dependencies": [],
+      "focus_claims": [],
+      "evidence": [],
+      "unresolved_objections": [
+        "Kamilah Stevenson catalog currently has 10 indexed seeds, not a complete inventory.",
+        "No full transcript corpus has been captured and hashed.",
+        "Screenshot video title still lacks canonical video ID.",
+        "Exact phrase 'ASK Coin' and 'actual capital' remain unresolved."
+      ],
+      "confidence": 0.99,
+      "provenance": [
+        "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/sources/kamilah_stevenson_channel.json"
+      ],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "PARTIAL_SEED_CATALOG_ONLY"
+      }
+    },
+    {
+      "track_id": "XRP-TRACK-PLATFORM-COORDINATION",
+      "role": "multi_platform_independent_review",
+      "strategy": "Use explicit capability/auth/permission map; no adapter may claim a platform is connected until a test records successful auth, least-privilege scope, request/response, timestamp and handoff receipt.",
+      "hypothesis": "Independent model reviews can expose blind spots only when inputs, evidence provenance and disagreement are preserved; model agreement alone is not independent corroboration.",
+      "assumptions": [
+        "Platform access may vary by account and product.",
+        "No unverified credentials or private data are used."
+      ],
+      "dependencies": [],
+      "focus_claims": [],
+      "evidence": [],
+      "unresolved_objections": [
+        "No live cross-platform collaboration has been verified for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks in this run."
+      ],
+      "confidence": 0.98,
+      "provenance": [],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "DESIGN_ONLY; LIVE_ADAPTER_TESTS_PENDING"
+      }
+    }
+  ],
+  "cross_pollination": [],
+  "convergence_analysis": {
+    "status": "INSUFFICIENT_DATA",
+    "independence": "UNKNOWN",
+    "summary": "Corporate announcements corroborate that ecosystem relationships exist; they do not establish a causal XRP price effect. Market-flow and event-time data are still required."
+  },
+  "formal_verification": [],
+  "adversarial_reviews": [
+    {
+      "review_id": "XRP-REDTEAM-USDC-01",
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "objections": [
+        "USDC may make XRPL more useful and indirectly increase XRP bridge use, DEX routing or market-maker inventory.",
+        "A lack of immediate price response does not falsify long-run utility or delayed demand."
+      ],
+      "evidence": [
+        "XRP-E-POTENTIAL-COMPLEMENTARITY",
+        "XRP-E-USDC-XRP-DECOUPLING"
+      ],
+      "responses": [
+        "Separate XRPL stablecoin transfers from XRP transfer routes and measure net XRP inventory and order-book response.",
+        "Use predeclared event windows, controls, and counterfactual venues."
+      ],
+      "status": "UNRESOLVED",
+      "reviewer_role": "independent_market_structure_red_team",
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-XRP-OVERVIEW"
+      ]
+    },
+    {
+      "review_id": "XRP-REDTEAM-SBI-01",
+      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "objections": [
+        "A company announcement proves announced intent/service, not present usage, transaction size, or net spot demand.",
+        "Stablecoin distribution can expand without requiring XRP in every payment path."
+      ],
+      "evidence": [
+        "XRP-E-SBI-XRP-REMIT",
+        "XRP-E-SBI-RLUSD-START"
+      ],
+      "responses": [
+        "Collect current volumes and payment-path composition; label missing data explicitly.",
+        "Avoid using partner count or press-release frequency as a direct price feature."
+      ],
+      "status": "UNRESOLVED",
+      "reviewer_role": "independent_market_structure_red_team",
+      "provenance": [
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-RLUSD-START"
+      ]
+    },
+    {
+      "review_id": "XRP-REDTEAM-SIGNAL-01",
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "objections": [
+        "A single provider-failure snapshot may be transient; it does not prove every future output is invalid.",
+        "However, a numeric score with confidence zero and explicit provider failures must not be scored as a forecast."
+      ],
+      "evidence": [
+        "XRP-E-MAIN-SIGNAL-ARTIFACT",
+        "XRP-E-PR-1165-ROOT-CAUSE"
+      ],
+      "responses": [
+        "Retain the observed snapshot and add regression tests; do not infer forecast skill from unavailable outputs."
+      ],
+      "status": "SUPPORTED",
+      "reviewer_role": "independent_prediction_integrity_red_team",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL",
+        "SRC-BARROT-PR-1165"
+      ]
+    }
+  ],
+  "question_map": [
+    {
+      "question_id": "Q-1",
+      "question": "Resolve SBIC legal identity from the exact original phrase/source.",
+      "priority": "HIGH",
+      "status": "UNRESOLVED"
+    },
+    {
+      "question_id": "Q-2",
+      "question": "Enumerate all public videos on Kamilah Stevenson's canonical channel and capture permitted transcript metadata/hash.",
+      "priority": "HIGH",
+      "status": "BLOCKED_ON_COMPLETE_ENUMERATION_AND_TRANSCRIPT_ACCESS"
+    },
+    {
+      "question_id": "Q-3",
+      "question": "Measure Coinbase/Circle USDC distribution and market-maker incentives, then distinguish USDC flows on XRPL from XRP spot demand.",
+      "priority": "HIGH",
+      "status": "PARTIAL_PRIMARY_SOURCE_EVIDENCE"
+    },
+    {
+      "question_id": "Q-4",
+      "question": "Collect synchronized XRP/USD, XRP/USDT perpetual and USDT/USD history with venue/timestamps and order-book depth.",
+      "priority": "HIGH",
+      "status": "PR_1155_DRAFT_FIX_AVAILABLE_NOT_MERGED"
+    },
+    {
+      "question_id": "Q-5",
+      "question": "Replace invalid variable-horizon accuracy with immutable fixed-horizon forecasts and calibrated walk-forward scoring.",
+      "priority": "CRITICAL",
+      "status": "PR_1165_DRAFT_FIX_AVAILABLE_NOT_MERGED"
+    },
+    {
+      "question_id": "Q-6",
+      "question": "Test nine-platform adapters with least-privilege authentication and signed/traceable handoffs.",
+      "priority": "MEDIUM",
+      "status": "DESIGN_ONLY"
+    }
+  ],
+  "relationship_graph": {
+    "nodes": [
+      {
+        "id": "XRP",
+        "type": "native_digital_asset",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-XRPL-XRP-OVERVIEW",
+          "SRC-XRPL-TOKENS"
+        ]
+      },
+      {
+        "id": "XRPL",
+        "type": "public_ledger",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-XRPL-XRP-OVERVIEW"
+        ]
+      },
+      {
+        "id": "Ripple",
+        "type": "company",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT",
+          "SRC-SBI-RLUSD-START"
+        ]
+      },
+      {
+        "id": "Coinbase",
+        "type": "exchange_custodian_distribution_platform",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-COINBASE-XRP-SUPPORT",
+          "SRC-CIRCLE-COINBASE-AGREEMENT",
+          "SRC-COINBASE-USDC-INCENTIVES"
+        ]
+      },
+      {
+        "id": "Circle",
+        "type": "stablecoin_issuer_financial_infrastructure",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-CIRCLE-COINBASE-AGREEMENT",
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-CIRCLE-ARC"
+        ]
+      },
+      {
+        "id": "USDC",
+        "type": "stablecoin",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-CIRCLE-USDC-STATUS"
+        ]
+      },
+      {
+        "id": "RLUSD",
+        "type": "stablecoin",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-RLUSD-MOU",
+          "SRC-SBI-RLUSD-START"
+        ]
+      },
+      {
+        "id": "SBI Holdings",
+        "type": "financial_group",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT",
+          "SRC-SBI-RLUSD-START",
+          "SRC-SBI-CRYPTO-IDENTITY"
+        ]
+      },
+      {
+        "id": "SBI VC Trade",
+        "type": "exchange_and_digital_asset_service",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT",
+          "SRC-SBI-RLUSD-START",
+          "SRC-SBI-XRP-MARKET"
+        ]
+      },
+      {
+        "id": "SBI Remit",
+        "type": "remittance_service",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT"
+        ]
+      },
+      {
+        "id": "SBI Ripple Asia",
+        "type": "joint_venture",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT"
+        ]
+      },
+      {
+        "id": "SBI Crypto",
+        "type": "crypto_mining_subsidiary",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-CRYPTO-PROFILE",
+          "SRC-SBI-CRYPTO-IDENTITY"
+        ]
+      },
+      {
+        "id": "Tokyo SBIC East Japan",
+        "type": "SME_investment_development_company",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-TOKYO-SBIC-PROFILE"
+        ]
+      },
+      {
+        "id": "Barrot V3",
+        "type": "execution_and_verification_foundation",
+        "status": "PROJECT_CONSTRAINT",
+        "source_ids": [
+          "SRC-BARROT-PR-1165",
+          "SRC-BARROT-PR-1155"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "source": "Coinbase",
+        "target": "Circle",
+        "relationship_type": "EQUITY_AND_REVENUE_SHARING",
+        "classification": "CONFIRMED_CORPORATE_RELATIONSHIP",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-COINBASE-AGREEMENT",
+          "SRC-COINBASE-USDC-INCENTIVES"
+        ],
+        "caveat": "Current contract economics must be refreshed from current filings."
+      },
+      {
+        "source": "Circle",
+        "target": "USDC",
+        "relationship_type": "ISSUER",
+        "classification": "CONFIRMED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-CIRCLE-USDC-STATUS",
+          "SRC-CIRCLE-USDC-XRPL"
+        ]
+      },
+      {
+        "source": "Circle",
+        "target": "XRPL",
+        "relationship_type": "NATIVE_USDC_DEPLOYMENT",
+        "classification": "CONFIRMED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL"
+        ],
+        "caveat": "Does not imply Circle uses XRP as a required bridge asset."
+      },
+      {
+        "source": "XRP",
+        "target": "XRPL",
+        "relationship_type": "NATIVE_ASSET_OF",
+        "classification": "CONFIRMED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-XRPL-XRP-OVERVIEW",
+          "SRC-XRPL-TOKENS"
+        ]
+      },
+      {
+        "source": "Coinbase",
+        "target": "XRP",
+        "relationship_type": "RETAIL_PRIME_CUSTODY_SUPPORT",
+        "classification": "CONFIRMED_WITH_JURISDICTION_LIMITS",
+        "confidence": 0.97,
+        "source_ids": [
+          "SRC-COINBASE-XRP-SUPPORT"
+        ]
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "SBI VC Trade",
+        "relationship_type": "SUBSIDIARY",
+        "classification": "CONFIRMED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT",
+          "SRC-SBI-RLUSD-START"
+        ]
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "SBI Ripple Asia",
+        "relationship_type": "JOINT_VENTURE_WITH_RIPPLE",
+        "classification": "CONFIRMED",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT"
+        ]
+      },
+      {
+        "source": "SBI Remit",
+        "target": "XRP",
+        "relationship_type": "ANNOUNCED_XRP_ENABLED_REMITTANCE",
+        "classification": "HISTORICAL_ANNOUNCEMENT_CURRENT_FLOW_UNVERIFIED",
+        "confidence": 0.96,
+        "source_ids": [
+          "SRC-SBI-XRP-REMIT"
+        ]
+      },
+      {
+        "source": "SBI VC Trade",
+        "target": "RLUSD",
+        "relationship_type": "JAPAN_HANDLING_AND_DISTRIBUTION",
+        "classification": "CONFIRMED_2026_ANNOUNCEMENT",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-RLUSD-MOU",
+          "SRC-SBI-RLUSD-START"
+        ]
+      },
+      {
+        "source": "SBI Crypto",
+        "target": "SBI Holdings",
+        "relationship_type": "MINING_SUBSIDIARY",
+        "classification": "CONFIRMED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-CRYPTO-PROFILE",
+          "SRC-SBI-CRYPTO-IDENTITY"
+        ]
+      },
+      {
+        "source": "Tokyo SBIC East Japan",
+        "target": "XRP",
+        "relationship_type": "NO_LINK_ESTABLISHED",
+        "classification": "UNKNOWN_NOT_EVIDENCED",
+        "confidence": 0.05,
+        "source_ids": [
+          "SRC-TOKYO-SBIC-PROFILE"
+        ],
+        "caveat": "Absence in this profile is not proof no indirect link exists."
+      },
+      {
+        "source": "Circle",
+        "target": "Ripple",
+        "relationship_type": "STABLECOIN_MARKET_OVERLAP_AND_POTENTIAL_COMPETITION",
+        "classification": "ANALYTICAL_INFERENCE_NOT_CONFIRMED_PARTNERSHIP",
+        "confidence": 0.7,
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-SBI-RLUSD-START",
+          "SRC-CIRCLE-ARC"
+        ],
+        "caveat": "Both stablecoins can coexist on XRPL; no direct Circle-Ripple partnership is established by these sources."
+      },
+      {
+        "source": "USDC",
+        "target": "XRP",
+        "relationship_type": "POTENTIAL_COMPLEMENT_OR_SUBSTITUTE_IN_SETTLEMENT",
+        "classification": "COMPETING_HYPOTHESES",
+        "confidence": 0.5,
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-XRPL-XRP-OVERVIEW"
+        ],
+        "caveat": "Require route-level flows, inventory and market response; do not force one causal story."
+      }
+    ]
+  },
+  "scenario_hypotheses": [
+    {
+      "hypothesis_id": "H-XRP-USDC-COMPLEMENT",
+      "statement": "Native USDC increases XRPL settlement liquidity and application activity, which may indirectly increase XRP bridge/DEX/collateral use on routes where XRP is economically optimal.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-POTENTIAL-COMPLEMENTARITY"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-USDC-XRP-DECOUPLING"
+      ],
+      "required_tests": [
+        "Measure USDC supply and transfer flows on XRPL",
+        "Measure XRP path payments, DEX volume, market-maker inventory and net spot flow",
+        "Control for BTC/ETH beta, macro news, volatility, funding and venue liquidity"
+      ],
+      "falsification_conditions": [
+        "USDC activity grows while XRP bridge usage, net XRP inventory and controlled return response remain unchanged or decline over predeclared windows."
+      ]
+    },
+    {
+      "hypothesis_id": "H-XRP-USDC-SUBSTITUTE",
+      "statement": "USDC and RLUSD permit dollar-denominated settlement on XRPL and associated platforms without requiring XRP in every transaction, so ecosystem activity can rise without proportional XRP demand.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-XRP-NATIVE-ASSET",
+        "XRP-E-SBI-RLUSD-START"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-POTENTIAL-COMPLEMENTARITY"
+      ],
+      "required_tests": [
+        "Classify transaction paths into XRP bridge versus direct stablecoin settlement",
+        "Estimate net XRP inventory and exchange flow around stablecoin launches"
+      ],
+      "falsification_conditions": [
+        "Stablecoin expansion consistently precedes incremental XRP bridge demand and positive risk-adjusted returns after controls."
+      ]
+    },
+    {
+      "hypothesis_id": "H-SBI-ADOPTION-FLOW",
+      "statement": "SBI's XRP-enabled remittance history and RLUSD distribution can increase access to digital settlement in Japan/Asia, but price impact depends on current transaction path, volumes and inventory rather than partnership announcements alone.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-SBI-XRP-REMIT",
+        "XRP-E-SBI-RLUSD-START"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION"
+      ],
+      "required_tests": [
+        "Get current SBI VC Trade XRP/JPY spot and derivatives volume",
+        "Verify current remittance corridor status and percentage of payments using XRP",
+        "Measure XRP inventory and market depth around verified volume changes"
+      ],
+      "falsification_conditions": [
+        "Current activity is absent or settlement primarily uses stablecoins/fiat with no measurable XRP bridge inventory effect."
+      ]
+    },
+    {
+      "hypothesis_id": "H-COINBASE-CIRCLE-LIQUIDITY",
+      "statement": "Coinbase-Circle equity/revenue alignment and USDC incentives may strengthen stablecoin distribution and liquidity, but effects on XRP may be indirect and sign-ambiguous.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-CIRCLE-PRIMARY",
+        "XRP-E-COINBASE-XRP-SUPPORT"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-USDC-XRP-DECOUPLING"
+      ],
+      "required_tests": [
+        "Retrieve latest Coinbase/Circle filings and current USDC distribution by platform/network",
+        "Measure XRP order-book depth and flows alongside USDC liquidity and broad-market controls"
+      ],
+      "falsification_conditions": [
+        "No reproducible effect after controls, or flows rotate into stablecoins without increased XRP demand."
+      ]
+    }
+  ],
+  "platform_coordination": [
+    {
+      "platform": "ChatGPT",
+      "intended_role": "Evidence synthesis, structured claim extraction, red-team synthesis, source-ledger maintenance.",
+      "connection_state": "CURRENT_ENVIRONMENT_ACTIVE",
+      "authentication_state": "GitHub connector access verified for Barrot-Agent/B-Agent; web research used.",
+      "permissions": "Repository read/write through connected GitHub tools was available; this run only reads main and prepares a branch/PR.",
+      "data_flow": "Public web and repository artifacts into this research bundle.",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Claude",
+      "intended_role": "Independent alternative-hypothesis review and counterargument generation.",
+      "connection_state": "NOT_TESTED",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Grok",
+      "intended_role": "Public social-discourse discovery and timestamped sentiment sampling, with bot/selection-bias controls.",
+      "connection_state": "NOT_TESTED",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Gemini",
+      "intended_role": "Public video discovery and multimodal/transcript analysis where authorized.",
+      "connection_state": "NOT_TESTED",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Copilot",
+      "intended_role": "Repository and workflow review, static analysis and code review.",
+      "connection_state": "NOT_TESTED_AS_A_SEPARATE_PLATFORM",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Codex",
+      "intended_role": "Deterministic code changes, tests, repository-level execution and verification.",
+      "connection_state": "NOT_TESTED_AS_A_SEPARATE_PLATFORM",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Hugging Face",
+      "intended_role": "Public dataset/model discovery and reproducible model-card review.",
+      "connection_state": "NOT_TESTED",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Kaggle",
+      "intended_role": "Reproducible notebook experiments and public historical dataset analysis.",
+      "connection_state": "NOT_TESTED",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    },
+    {
+      "platform": "Databricks",
+      "intended_role": "Potential governed feature store, historical data lake, scheduled ingestion and drift monitoring.",
+      "connection_state": "NOT_TESTED",
+      "authentication_state": "UNKNOWN",
+      "permissions": "NOT_VERIFIED",
+      "data_flow": "NONE",
+      "live_collaboration_with_other_platforms": false
+    }
+  ],
+  "architecture_decisions": [
+    {
+      "id": "ADR-XRP-001",
+      "decision": "All source observations carry source ID, canonical URL, retrieval timestamp UTC, publication/event timestamp, payload hash, version and access/usage constraints.",
+      "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-002",
+      "decision": "Separate raw source statements, independently verified facts, inferences, hypotheses, speculation and unknowns; preserve contradictory evidence and minority objections.",
+      "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-003",
+      "decision": "Prediction feature store is event-time/cutoff-aware; any observation published or received after the forecast cutoff is excluded.",
+      "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-004",
+      "decision": "Every forecast is immutable and stores cutoff, target, venue, horizon, probability/confidence, assumptions, alternative scenarios, source set and later outcome.",
+      "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-005",
+      "decision": "No forecast when provider outputs are missing/invalid or market observations fail freshness/skew checks; output NOT_ISSUED.",
+      "status": "DESIGNED_IN_PR_1165_AND_PR_1155; NOT_YET_ON_MAIN"
+    },
+    {
+      "id": "ADR-XRP-006",
+      "decision": "Score fixed horizons only after target time; report calibration/Brier score for probabilities, directional accuracy, MAE/RMSE where appropriate, baseline comparisons, transaction-cost sensitivity and confidence intervals.",
+      "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-007",
+      "decision": "No real-money use until walk-forward out-of-sample and shadow evaluation establish stable performance; paper trader stays manual-only pending explicit approval.",
+      "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-008",
+      "decision": "Adapters use least privilege and fallback paths; platform connection and handoff require an observed auth test and receipt, not a plan or tool-name assumption.",
+      "status": "DESIGNED"
+    }
+  ],
+  "repository_audit": {
+    "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_main_commit_ci": "No associated workflow run or status was returned for this [skip ci] commit in the current query; this is not a pass.",
+    "current_signal": {
+      "timestamp": "2026-10-26T22:29:38.241936Z",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_failures": [
+        "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+        "Groq HTTP 429 Too Many Requests"
+      ],
+      "disposition": "INVALID_FOR_FORECASTING"
+    },
+    "legacy_accuracy": {
+      "checked_count": 1588,
+      "correct_count": 725,
+      "accuracy_pct": 45.7,
+      "disposition": "INVALID_AS_OUT_OF_SAMPLE_SKILL_METRIC_VARIABLE_HORIZON_AND_MUTABLE_HISTORY"
+    },
+    "signal_history": {
+      "path": "web/signal_history.jsonl",
+      "observed_lines": 0,
+      "interpretation": "The current file fetch returned empty content; verify whether this is intentional after PR #1165 and whether scheduled writers still target other legacy artifacts."
+    },
+    "relevant_open_drafts": [
+      {
+        "pr": 1165,
+        "title": "XRP integrity: fail closed on unavailable sentiment; retire invalid accuracy metric",
+        "head_sha": "e8ae692bd06f78cbec9b7bf4ad2715052051d23b",
+        "ci": "CI and Barrot Gated Merge (fail-closed) both completed successfully on observed PR head",
+        "state": "OPEN_DRAFT",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1155,
+        "title": "XRP market data: require synchronized event-time inputs",
+        "head_sha": "f9be50c331410c8e148f3889a2b0f7a20187ea8f",
+        "ci": "Reported 126 tests passed in 4.68 seconds on merge ref; fail-closed gate passed with merge disabled",
+        "state": "OPEN_DRAFT",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1166,
+        "title": "Safety: deterministic XRP summary fallback and artifact-only workflow",
+        "head_sha": "2ba1eb813822cfa2d1eebe24225a798462639ff8",
+        "ci": "CI and fail-closed workflow reported successful",
+        "state": "OPEN_DRAFT",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1168,
+        "title": "Safety: disable mutation-capable merge queue on fresh main",
+        "head_sha": "4bdb914b7a4fb7b38defb91f05832e149326d88f",
+        "ci": "Not re-checked in this snapshot",
+        "state": "OPEN_DRAFT",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1161,
+        "title": "Safety: disable legacy scheduled accuracy writer pending fixed-horizon evaluation",
+        "head_sha": "8941ef193b30ba02e098ef4c9f0aac11f89a8630",
+        "ci": "Not re-checked in this snapshot",
+        "state": "OPEN_DRAFT",
+        "merge_authorized": false
+      }
+    ],
+    "policy": "Preserve main, V3 code, dirty worktrees and existing branches. Do not merge any draft without user approval. No destructive git operations."
+  },
+  "video_ingestion": {
+    "creator": "Kamilah Stevenson",
+    "canonical_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "canonical_channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+    "catalog_url": "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
+    "indexed_seed_count": 10,
+    "completeness_verified": false,
+    "transcripts_captured_and_hashed": 0,
+    "screenshot_title_id": "UNRESOLVED",
+    "status": "PARTIAL_SEED_CATALOG_ONLY",
+    "access_blocker": "Complete channel enumeration and permitted transcript access have not been executed; do not claim full ingestion."
+  },
+  "unresolved_exact_phrases": [
+    {
+      "phrase": "ASK Coin",
+      "status": "UNRESOLVED",
+      "finding": "Targeted exact-phrase search in public web and repository did not identify a reliable intended entity; original source context is needed."
+    },
+    {
+      "phrase": "actual capital",
+      "status": "UNRESOLVED",
+      "finding": "Too ambiguous to bind to an XRP entity or metric without the original sentence/source."
+    },
+    {
+      "phrase": "SBIC, ChatGPT SBIC",
+      "status": "UNRESOLVED",
+      "finding": "No reliable exact match; do not resolve by acronym expansion alone."
+    }
+  ],
+  "forecast_register": [],
+  "next_actions": [
+    {
+      "priority": 1,
+      "action": "Review PR #1165 on its exact current head and CI; preserve draft status pending user approval. This is the critical fail-closed fix because main currently emits a score with confidence zero after provider failure.",
+      "status": "ACTIONABLE"
+    },
+    {
+      "priority": 2,
+      "action": "Review PR #1155 exact head, tests, freshness/skew thresholds and current-main delta; keep draft until user approval.",
+      "status": "ACTIONABLE"
+    },
+    {
+      "priority": 3,
+      "action": "Build immutable fixed-horizon forecast and outcome ledger, then replace the invalid legacy accuracy metric only after exact-target and baseline tests pass.",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "priority": 4,
+      "action": "Resolve SBIC from original context; separate SBI Crypto and Tokyo SBIC from SBI VC Trade/SBI Ripple Asia.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "priority": 5,
+      "action": "Obtain complete authorized public video inventory and transcript access; do not infer completeness from the 10 seed records.",
+      "status": "BLOCKED"
+    },
+    {
+      "priority": 6,
+      "action": "Collect historical event-time spot/perpetual/FX and order-book data; run leakage-safe walk-forward and shadow evaluation.",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "priority": 7,
+      "action": "Test adapter authentication, permissions, structured handoff and independent-review receipts for each target platform before calling it connected.",
+      "status": "NOT_TESTED"
+    }
+  ]
+}
