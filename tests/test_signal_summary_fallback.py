@@ -87,4 +87,3 @@ def test_workflow_is_read_only_and_artifact_only():
     assert "git push" not in workflow
     assert "git commit" not in workflow
     assert "contents: write" not in workflow
-}
