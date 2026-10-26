@@ -29,7 +29,8 @@
       "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
       "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
       "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
-      "XRP-C-SBI-MULTI-RAIL-STRATEGY"
+      "XRP-C-SBI-MULTI-RAIL-STRATEGY",
+      "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -97,6 +98,11 @@
         "id": "Q-SBI-MULTI-RAIL",
         "question": "Do SBI's Visa and Fasset initiatives complement or substitute XRP-enabled remittance routes in production?",
         "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-RIPPLE-CIRCLE-MA",
+        "question": "Can the reported 2025 Ripple-Circle acquisition approach be independently verified, given later public denial and no confirmed transaction?",
+        "status": "DISPUTED"
       }
     ]
   },
@@ -513,6 +519,32 @@
         "SBI Remit and Fasset MOU",
         "stablecoin payment infrastructure and international remittance",
         "not proof that XRP is or is not used in any route"
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+      "title": "Ripple reportedly offered to buy stablecoin rival Circle",
+      "author_or_organization": "Bloomberg",
+      "source_type": "independent_news_reporting_with_anonymous_sources",
+      "url": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
+      "publication_date": "2025-04-30",
+      "sections": [
+        "reports a $4-$5 billion proposed acquisition offer based on unnamed sources",
+        "reports Circle rejected it as too low",
+        "reported transaction not confirmed by official filings in this research snapshot"
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-CIRCLE-DENIAL",
+      "title": "Brad Garlinghouse says Ripple never made a bid to acquire Circle",
+      "author_or_organization": "The Block",
+      "source_type": "secondary_news_reporting_of_public_denial",
+      "url": "https://www.theblock.co/news/deals/2025-06-03-brad-garlinghouse-says-ripple-never-made-a-bid-to-acquire-circle-contradicting-recent-reports-356818",
+      "publication_date": "2025-06-03",
+      "sections": [
+        "reports Ripple CEO Brad Garlinghouse denied pursuing Circle acquisition",
+        "reports Circle said it was not for sale",
+        "explicitly contradicts Bloomberg's earlier report"
       ]
     }
   ],
@@ -937,6 +969,34 @@
         "SRC-SBI-RIPPLE-ASIA-POC",
         "SRC-SBI-VISA-MOU",
         "SRC-SBI-FASSET-MOU"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
+      "statement": "Bloomberg reported on 2025-04-30, citing unnamed sources, that Ripple offered $4-$5 billion for Circle and Circle rejected it; a June 2025 report then quoted Ripple CEO Brad Garlinghouse denying that Ripple pursued the acquisition and reported Circle said it was not for sale. The alleged offer is disputed reporting, not a confirmed transaction or partnership.",
+      "domain": "corporate_strategy_and_stablecoins",
+      "claim_type": "conflicting_media_reports_and_public_denial",
+      "source": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+      "source_location": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
+      "supporting_evidence": [
+        "XRP-E-RIPPLE-CIRCLE-BLOOMBERG-REPORT"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-RIPPLE-CIRCLE-DENIAL"
+      ],
+      "derivation_status": "DISPUTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.92,
+      "assumptions": [
+        "Reporting can be accurate about a proposal but the later denial and lack of public transaction filings must remain visible.",
+        "No acquisition should be inferred from these reports."
+      ],
+      "provenance": [
+        "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+        "SRC-RIPPLE-CIRCLE-DENIAL"
       ],
       "timestamp": 1793055698
     }
@@ -1392,6 +1452,38 @@
       "details": {
         "limit": "MOU does not establish production deployment or whether any route uses XRP."
       }
+    },
+    {
+      "evidence_id": "XRP-E-RIPPLE-CIRCLE-BLOOMBERG-REPORT",
+      "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
+      "kind": "independent_verification",
+      "summary": "Bloomberg reported on 2025-04-30, citing people familiar with the matter, that Ripple proposed a $4-$5 billion takeover of Circle and Circle rejected it as too low.",
+      "source_id": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+      "source_location": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
+      "status": "REPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-RIPPLE-CIRCLE-BLOOMBERG"
+      ],
+      "details": {
+        "limitation": "Anonymous-source reporting; not confirmed by a public filing in this ledger."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-RIPPLE-CIRCLE-DENIAL",
+      "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
+      "kind": "adversarial_objection",
+      "summary": "The Block reported on 2025-06-03 that Ripple CEO Brad Garlinghouse told Georgetown Law professor Chris Brummer that Ripple never pursued an acquisition of Circle; the article also said a Circle representative stated Circle was not for sale.",
+      "source_id": "SRC-RIPPLE-CIRCLE-DENIAL",
+      "source_location": "https://www.theblock.co/news/deals/2025-06-03-brad-garlinghouse-says-ripple-never-made-a-bid-to-acquire-circle-contradicting-recent-reports-356818",
+      "status": "CHALLENGED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-RIPPLE-CIRCLE-DENIAL"
+      ],
+      "details": {
+        "effect": "Treat the alleged offer as disputed; do not encode it as confirmed M&A or a direct partnership."
+      }
     }
   ],
   "tracks": [
@@ -1751,6 +1843,12 @@
       "question": "Attribute SBI Remit's cumulative remittance total to XRP vs fiat/stablecoin rails using primary route-level volumes, not aggregate company totals.",
       "priority": "HIGH",
       "status": "UNRESOLVED"
+    },
+    {
+      "question_id": "Q-11",
+      "question": "Keep the Ripple-Circle acquisition story classified as disputed unless a primary filing or direct statement resolves the conflicting media report and denial.",
+      "priority": "MEDIUM",
+      "status": "DISPUTED"
     }
   ],
   "relationship_graph": {
@@ -2142,6 +2240,18 @@
           "SRC-SBI-RIPPLE-ASIA-POC"
         ],
         "caveat": "XRPL infrastructure use does not automatically require XRP as a bridge asset."
+      },
+      {
+        "source": "Ripple",
+        "target": "Circle",
+        "relationship_type": "REPORTED_ACQUISITION_APPROACH",
+        "classification": "DISPUTED_MEDIA_REPORT_WITH_SUBSEQUENT_DENIAL",
+        "confidence": 0.5,
+        "source_ids": [
+          "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+          "SRC-RIPPLE-CIRCLE-DENIAL"
+        ],
+        "caveat": "No confirmed acquisition or partnership established; retain both report and denial."
       }
     ]
   },
