@@ -220,7 +220,53 @@
       "https://glasp.co/youtube/cxeX_eu_2H0",
       "https://www.youtube.com/watch?v=8xiy8w2YlfY"
     ],
-    "last_updated_at_utc": "2026-10-26T22:20:00Z"
+    "last_updated_at_utc": "2026-10-26T22:24:00Z"
   },
-  "status": "SOURCE_PROFILE_SEEDED; COMPLETE_CHANNEL_INGESTION_NOT_YET_EXECUTED"
+  "status": "SOURCE_PROFILE_SEEDED; COMPLETE_CHANNEL_INGESTION_NOT_YET_EXECUTED",
+  "cross_corroboration_findings": [
+    {
+      "finding_id": "XRPL-CONFIDENTIAL-TRANSFERS-001",
+      "related_video_id": "8xiy8w2YlfY",
+      "claim": "Confidential Transfers could improve institutional suitability by shielding MPT balances and transfer amounts while retaining cryptographic verification and optional auditor disclosure.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_FEATURE_DESIGN; ADOPTION_IMPACT_IS_HYPOTHESIS",
+      "primary_sources": [
+        "https://xrpl.org/docs/concepts/tokens/fungible-tokens/confidential-transfers",
+        "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+        "https://xrpl.org/resources/known-amendments"
+      ],
+      "corroborated_details": [
+        "The specification describes confidential transfers for Multi-Purpose Tokens using EC-ElGamal and zero-knowledge proofs.",
+        "The design preserves supply/accounting invariants and includes optional auditor encryption.",
+        "Feature availability and amendment activation must be checked separately from the existence of a final specification."
+      ],
+      "counterpoints": [
+        "Technical capability does not prove banks have deployed it or that it increases demand for XRP as an asset.",
+        "The documented feature applies to MPT balances/transfers; it should not be generalized to every XRP payment or every XRPL transaction type.",
+        "The known-amendments page lists ConfidentialTransfer with default vote No in the latest stable release; activation status must be checked at each data cutoff."
+      ],
+      "prediction_use": "Do not encode as bullish price signal without independent evidence of activation, production use, measurable flows, and market response."
+    },
+    {
+      "finding_id": "XRPL-SPONSOR-AMENDMENT-001",
+      "related_video_id": "8xiy8w2YlfY",
+      "claim": "Sponsored Fees and Reserves may let an end user transact without personally holding XRP.",
+      "evidence_class": "FEATURE_DESIGN_CONFIRMED; MAINNET_ACTIVATION_NOT_CONFIRMED",
+      "primary_sources": [
+        "https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves",
+        "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-aug2026",
+        "https://xrpl.org/resources/known-amendments"
+      ],
+      "corroborated_details": [
+        "The official documentation describes sponsors paying fees and reserve requirements for sponsees.",
+        "Sponsorship does not transfer XRP to the sponsee; the sponsor retains the XRP used to back reserves.",
+        "An official September 21, 2026 vulnerability report states the Sponsor amendment had not been activated on Mainnet at that report date and would wait for the fix in xrpld v3.4.0."
+      ],
+      "counterpoints": [
+        "Do not describe the feature as live on Mainnet without a fresh official amendment-status check.",
+        "Lower onboarding friction could increase XRPL activity without proportionally increasing spot XRP demand.",
+        "The reserve sponsorship model itself has operational/security constraints and was subject to a disclosed Devnet vulnerability."
+      ],
+      "prediction_use": "Track amendment status, sponsor usage, new active accounts, fee/reserve sponsorship volumes, and market liquidity separately; no direct bullish inference."
+    }
+  ]
 }
