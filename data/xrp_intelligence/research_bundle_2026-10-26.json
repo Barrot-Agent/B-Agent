@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-26T23:01:38Z",
+    "captured_at_utc": "2026-10-26T23:10:00Z",
     "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -77,6 +77,11 @@
         "id": "Q-COINBASE-CIRCLE-TERMS",
         "question": "What are the current Coinbase-Circle ownership, revenue-share and distribution terms from latest filings?",
         "status": "PARTIAL"
+      },
+      {
+        "id": "Q-OUSD",
+        "question": "Is OUSD actually live and at what circulating supply/chain distribution as of the snapshot cutoff, given inconsistent official-site launch dates and conflicting dated reports?",
+        "status": "UNRESOLVED"
       }
     ]
   },
@@ -341,6 +346,60 @@
         "126 tests passed on reported merge ref",
         "draft; not merged"
       ]
+    },
+    {
+      "source_id": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "title": "Open USD / Open Standard official site",
+      "author_or_organization": "Open Standard",
+      "source_type": "official_project_site",
+      "url": "https://openusd.inc/",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "site claims OUSD is live on four chains",
+        "site lists Coinbase and SBI Holdings among network partners",
+        "site claims reserve income sharing and free mint/redeem",
+        "same page also displays future launch date 2026-11-12; internal status inconsistency"
+      ],
+      "relationships": [
+        {
+          "source_node": "Coinbase",
+          "target_node": "Open Standard",
+          "relationship_type": "LISTED_NETWORK_PARTNER",
+          "status": "OFFICIAL_SELF_CLAIM_NEEDS_INDEPENDENT_VERIFICATION"
+        },
+        {
+          "source_node": "SBI Holdings",
+          "target_node": "Open Standard",
+          "relationship_type": "LISTED_NETWORK_PARTNER",
+          "status": "OFFICIAL_SELF_CLAIM_NEEDS_INDEPENDENT_VERIFICATION"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-OUSD-REUTERS",
+      "title": "Consortium including Visa and Mastercard jointly launches new global stablecoin network",
+      "author_or_organization": "Reuters",
+      "source_type": "independent_news_reporting",
+      "url": "https://www.reuters.com/business/consortium-including-visa-mastercard-jointly-launch-new-global-stablecoin-2026-06-30/",
+      "publication_date": "2026-06-30",
+      "sections": [
+        "Open Standard network announcement",
+        "OUSD expected later in 2026 at time of publication",
+        "proposed fee-free mint/redeem",
+        "reserve income sharing with participating network partners"
+      ]
+    },
+    {
+      "source_id": "SRC-OUSD-SECONDARY-LAUNCH",
+      "title": "Open Standard debuts OUSD stablecoin across Base, Ethereum and Solana",
+      "author_or_organization": "The Crypto Times",
+      "source_type": "secondary_news_reporting",
+      "url": "https://www.cryptotimes.io/2026/09/30/open-standard-debuts-ousd-stablecoin-across-base-ethereum-solana/",
+      "publication_date": "2026-09-30",
+      "sections": [
+        "reports OUSD deployment on Base, Ethereum, Solana and Tempo",
+        "secondary report; reconcile with official page's conflicting November 12 launch text"
+      ]
     }
   ],
   "claims": [
@@ -574,6 +633,65 @@
       "provenance": [
         "SRC-BARROT-LEGACY-ACCURACY",
         "SRC-BARROT-PR-1165"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-OUSD-LAUNCH-STATUS",
+      "statement": "Open Standard's official site lists Coinbase and SBI Holdings among network partners and describes OUSD as live on four chains, but the same page also displays a future 2026-11-12 launch date; Reuters previously described the token as expected later in 2026, while a September 2026 secondary report says it launched. Treat partner and launch details as issuer/reporter claims with unresolved current deployment status until chain-level contract and supply evidence is verified.",
+      "domain": "stablecoin_competition_and_corporate_strategy",
+      "claim_type": "conflicting_public_launch_status",
+      "source": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "source_location": "https://openusd.inc/",
+      "supporting_evidence": [
+        "XRP-E-OUSD-OFFICIAL-STATUS",
+        "XRP-E-OUSD-REUTERS",
+        "XRP-E-OUSD-SECONDARY-LAUNCH"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "UNRESOLVED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.82,
+      "assumptions": [
+        "Official page content may combine current state and scheduled future launch content.",
+        "Secondary report's launch assertion requires on-chain or issuer confirmation."
+      ],
+      "provenance": [
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+        "SRC-OUSD-REUTERS",
+        "SRC-OUSD-SECONDARY-LAUNCH"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
+      "statement": "If OUSD's shared reserve-income model is deployed at scale and Coinbase participates while retaining its Circle equity/revenue-sharing relationship, this may represent portfolio diversification or competitive coexistence that changes stablecoin distribution incentives; it does not establish a direct XRP price effect.",
+      "domain": "corporate_strategy_and_stablecoins",
+      "claim_type": "testable_corporate_strategy_hypothesis",
+      "source": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "source_location": "https://openusd.inc/",
+      "supporting_evidence": [
+        "XRP-E-OUSD-OFFICIAL-STATUS",
+        "XRP-E-COINBASE-CIRCLE-PRIMARY"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "HYPOTHESIS",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.62,
+      "assumptions": [
+        "Coinbase and SBI Holdings partner listing is current and accurate.",
+        "OUSD's live supply, actual distribution and reserve-sharing mechanics can be verified.",
+        "Current Coinbase-Circle agreement terms remain materially operative."
+      ],
+      "provenance": [
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+        "SRC-OUSD-REUTERS",
+        "SRC-CIRCLE-COINBASE-AGREEMENT",
+        "SRC-COINBASE-USDC-INCENTIVES"
       ],
       "timestamp": 1793055698
     }
@@ -829,6 +947,81 @@
       "details": {
         "replacement": "Immutable forecast ledger with exact target time, fixed horizon, venue-normalized prices, baselines, costs, and probability calibration."
       }
+    },
+    {
+      "evidence_id": "XRP-E-OUSD-OFFICIAL-STATUS",
+      "claim_id": "XRP-C-OUSD-LAUNCH-STATUS",
+      "kind": "unresolved_question",
+      "summary": "Open Standard's official page lists Coinbase and SBI Holdings as network partners and claims OUSD is live on four chains with shared reserve income, but the page also displays a future 2026-11-12 launch date. Treat current status as internally inconsistent rather than as verified live deployment.",
+      "source_id": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "source_location": "https://openusd.inc/",
+      "status": "UNRESOLVED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL"
+      ],
+      "details": {
+        "contradiction": "Top page says live now and reports circulation; lower page content labels launch for 2026-11-12, which is future relative to snapshot date 2026-10-26.",
+        "required_verification": [
+          "Check official token contract addresses and on-chain supply for each listed network.",
+          "Check official Open Standard announcement and reserve reports with timestamps.",
+          "Confirm whether Coinbase and SBI Holdings roles are launch partners, access providers, or broader consortium members."
+        ]
+      }
+    },
+    {
+      "evidence_id": "XRP-E-OUSD-REUTERS",
+      "claim_id": "XRP-C-OUSD-LAUNCH-STATUS",
+      "kind": "independent_verification",
+      "summary": "Reuters reported on 2026-06-30 that the Open Standard network was launched and OUSD was expected later in 2026, with a model of fee-free mint/redeem and reserve income sharing. This is an earlier time-bounded report, not proof of current token supply.",
+      "source_id": "SRC-OUSD-REUTERS",
+      "source_location": "https://www.reuters.com/business/consortium-including-visa-mastercard-jointly-launch-new-global-stablecoin-2026-06-30/",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-OUSD-REUTERS"
+      ],
+      "details": {
+        "as_of": "2026-06-30",
+        "limitation": "Published before the current snapshot; it describes the announced plan at that date."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-OUSD-SECONDARY-LAUNCH",
+      "claim_id": "XRP-C-OUSD-LAUNCH-STATUS",
+      "kind": "independent_verification",
+      "summary": "A 2026-09-30 secondary report says OUSD debuted across Base, Ethereum, Solana and Tempo. Treat as a lead for verification because the official page contains conflicting launch-date content.",
+      "source_id": "SRC-OUSD-SECONDARY-LAUNCH",
+      "source_location": "https://www.cryptotimes.io/2026/09/30/open-standard-debuts-ousd-stablecoin-across-base-ethereum-solana/",
+      "status": "REPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-OUSD-SECONDARY-LAUNCH"
+      ],
+      "details": {
+        "required_next_step": "Verify contract addresses and circulating supply directly on chain and against issuer disclosures."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-OUSD-COINBASE-CIRCLE-STRATEGY",
+      "claim_id": "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
+      "kind": "unresolved_question",
+      "summary": "Coinbase is named in Circle's official USDC revenue-sharing/equity announcement and is listed on Open Standard's official partner page. This could reflect diversification or coexistence; current economics, volumes and net effects require measurement.",
+      "source_id": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "source_location": "https://openusd.inc/",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+        "SRC-CIRCLE-COINBASE-AGREEMENT"
+      ],
+      "details": {
+        "counter_hypotheses": [
+          "OUSD competes with USDC for distribution and reserve economics.",
+          "Coinbase can distribute multiple stablecoins without ending its Circle relationship.",
+          "Partner listing may not imply exclusive distribution or a specific ownership/economic stake in Open Standard."
+        ]
+      }
     }
   ],
   "tracks": [
@@ -849,7 +1042,9 @@
       "focus_claims": [
         "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
         "XRP-C-USDC-NATIVE-ON-XRPL",
-        "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND"
+        "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+        "XRP-C-OUSD-LAUNCH-STATUS",
+        "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY"
       ],
       "evidence": [
         "XRP-E-COINBASE-CIRCLE-PRIMARY",
@@ -858,13 +1053,17 @@
       ],
       "unresolved_objections": [
         "Measure whether USDC-on-XRPL flows substitute for XRP bridge paths or expand them.",
-        "Latest Coinbase-Circle revenue-sharing terms and distribution metrics require current filings."
+        "Latest Coinbase-Circle revenue-sharing terms and distribution metrics require current filings.",
+        "Open Standard/OUSD launch status is inconsistent across official site and dated reports; verify on-chain deployment before assigning a market-impact feature."
       ],
       "confidence": 0.75,
       "provenance": [
         "SRC-CIRCLE-COINBASE-AGREEMENT",
         "SRC-COINBASE-USDC-INCENTIVES",
-        "SRC-CIRCLE-USDC-XRPL"
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+        "SRC-OUSD-REUTERS",
+        "SRC-OUSD-SECONDARY-LAUNCH"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -1112,6 +1311,12 @@
       "question": "Test nine-platform adapters with least-privilege authentication and signed/traceable handoffs.",
       "priority": "MEDIUM",
       "status": "DESIGN_ONLY"
+    },
+    {
+      "question_id": "Q-8",
+      "question": "Verify Open Standard/OUSD current deployment, chain contracts, supply and Coinbase/SBI roles before treating it as a competitor feature.",
+      "priority": "HIGH",
+      "status": "UNRESOLVED"
     }
   ],
   "relationship_graph": {
@@ -1241,6 +1446,25 @@
         "source_ids": [
           "SRC-BARROT-PR-1165",
           "SRC-BARROT-PR-1155"
+        ]
+      },
+      {
+        "id": "Open Standard",
+        "type": "stablecoin_network_consortium",
+        "status": "OFFICIAL_SELF_CLAIM_LAUNCH_STATUS_UNRESOLVED",
+        "source_ids": [
+          "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+          "SRC-OUSD-REUTERS"
+        ]
+      },
+      {
+        "id": "OUSD",
+        "type": "stablecoin",
+        "status": "REPORTED_LAUNCH_STATUS_UNRESOLVED",
+        "source_ids": [
+          "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+          "SRC-OUSD-REUTERS",
+          "SRC-OUSD-SECONDARY-LAUNCH"
         ]
       }
     ],
@@ -1388,6 +1612,42 @@
           "SRC-XRPL-XRP-OVERVIEW"
         ],
         "caveat": "Require route-level flows, inventory and market response; do not force one causal story."
+      },
+      {
+        "source": "Coinbase",
+        "target": "Open Standard",
+        "relationship_type": "LISTED_NETWORK_PARTNER",
+        "classification": "OFFICIAL_SELF_CLAIM_LAUNCH_STATUS_UNRESOLVED",
+        "confidence": 0.8,
+        "source_ids": [
+          "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+          "SRC-OUSD-REUTERS"
+        ],
+        "caveat": "Partner role and OUSD launch state require independent confirmation; no exclusivity implied."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "Open Standard",
+        "relationship_type": "LISTED_NETWORK_PARTNER",
+        "classification": "OFFICIAL_SELF_CLAIM_LAUNCH_STATUS_UNRESOLVED",
+        "confidence": 0.8,
+        "source_ids": [
+          "SRC-OUSD-OPENSTANDARD-OFFICIAL"
+        ],
+        "caveat": "Official partner-list claim; do not conflate this relationship with SBI VC Trade's XRP/RLUSD operations."
+      },
+      {
+        "source": "OUSD",
+        "target": "USDC",
+        "relationship_type": "POTENTIAL_STABLECOIN_COMPETITION",
+        "classification": "TESTABLE_INFERENCE",
+        "confidence": 0.65,
+        "source_ids": [
+          "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+          "SRC-CIRCLE-COINBASE-AGREEMENT",
+          "SRC-COINBASE-USDC-INCENTIVES"
+        ],
+        "caveat": "Potential competition for distribution and reserve economics; current supply/adoption and contract terms need verification."
       }
     ]
   },
@@ -1469,6 +1729,28 @@
       ],
       "falsification_conditions": [
         "No reproducible effect after controls, or flows rotate into stablecoins without increased XRP demand."
+      ]
+    },
+    {
+      "hypothesis_id": "H-OUSD-COINBASE-CIRCLE",
+      "statement": "Coinbase's listed participation in Open Standard/OUSD while maintaining an equity and revenue-sharing relationship with Circle may indicate a multi-stablecoin distribution strategy; if OUSD adoption scales, USDC economics may face competition, but XRP effects depend on which chains and payment routes capture flow.",
+      "status": "UNRESOLVED_REPORTED_LAUNCH",
+      "supporting_evidence": [
+        "XRP-E-OUSD-OFFICIAL-STATUS",
+        "XRP-E-OUSD-REUTERS",
+        "XRP-E-OUSD-SECONDARY-LAUNCH",
+        "XRP-E-COINBASE-CIRCLE-PRIMARY"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Verify OUSD contract addresses, supply, mint/redemption, reserves, and chain distribution from primary on-chain/issuer records.",
+        "Check current Coinbase-Circle filings for USDC revenue share and distribution terms.",
+        "Confirm whether XRPL is supported; official page currently lists Ethereum, Solana, Base and Tempo, not XRPL.",
+        "Measure whether OUSD distribution shifts USDC or XRP-related liquidity after controls."
+      ],
+      "falsification_conditions": [
+        "OUSD remains small/non-operational or has no material overlap with Coinbase/Circle flows.",
+        "Coinbase's OUSD participation is limited to non-exclusive infrastructure access without meaningful economic substitution."
       ]
     }
   ],
@@ -1707,6 +1989,11 @@
     {
       "priority": 2,
       "action": "Review PR #1155 exact head, tests, freshness/skew thresholds and current-main delta; keep draft until user approval.",
+      "status": "ACTIONABLE"
+    },
+    {
+      "priority": 2,
+      "action": "Resolve Open Standard/OUSD launch-status contradiction using contract addresses, on-chain supply and current issuer/reserve reports; then update Coinbase-Circle competition hypothesis.",
       "status": "ACTIONABLE"
     },
     {
