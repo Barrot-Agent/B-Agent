@@ -217,8 +217,11 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
     monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
     module.SCRIPTS_DIR.mkdir(parents=True)
+    existing_body = tmp_path / ".selfupgrade_pr_body.md"
+    existing_body.write_text("operator-owned sentinel\\n", encoding="utf-8")
 
     calls: list[tuple[str, ...]] = []
+    pr_calls: list[tuple[str, ...]] = []
 
     class Result:
         def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
@@ -229,7 +232,7 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
     def fake_git(*args: str):
         calls.append(args)
         if args == ("branch", "--show-current"):
-            return Result(stdout="feature/current\n")
+            return Result(stdout="feature/current\\n")
         if args == ("checkout", "-b", "selfupgrade/gap-20260914153000"):
             return Result()
         if args == ("add", "scripts/gap.py"):
@@ -239,9 +242,9 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
         if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
             return Result()
         if args == ("rev-parse", "HEAD"):
-            return Result(stdout="abc123\n")
+            return Result(stdout="abc123\\n")
         if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
-            return Result(stdout="def456\trefs/heads/selfupgrade/gap-20260914153000\n")
+            return Result(stdout="def456\\trefs/heads/selfupgrade/gap-20260914153000\\n")
         if args == ("checkout", "feature/current"):
             return Result()
         raise AssertionError(args)
@@ -260,18 +263,73 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
 
     def fake_run(command, cwd, capture_output, text, check):
         del cwd, capture_output, text, check
-        assert command[:3] == ["gh", "pr", "create"]
-        return Result(stdout="https://example.invalid/pr/1\n")
+        pr_calls.append(tuple(command))
+        return Result(stdout="https://example.invalid/pr/1\\n")
 
     monkeypatch.setattr(module, "git", fake_git)
     monkeypatch.setattr(module, "datetime", DateTimeStub)
     monkeypatch.setattr(module.subprocess, "run", fake_run)
 
-    result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+    result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\\nprint(1)\\n")
 
     assert result["remote_verified"] is False
+    assert result["status"] == "REMOTE_VERIFICATION_FAILED"
+    assert result["pr_output"] == ""
     assert result["restored_branch"] == "feature/current"
     assert ("checkout", "feature/current") in calls
+    assert pr_calls == []
+    assert existing_body.read_text(encoding="utf-8") == "operator-owned sentinel\\n"
+
+
+def test_open_capability_pr_restores_branch_when_push_fails(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_push_failure_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
+    module.SCRIPTS_DIR.mkdir(parents=True)
+
+    calls: list[tuple[str, ...]] = []
+    pr_calls: list[tuple[str, ...]] = []
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("branch", "--show-current"):
+            return Result(stdout="feature/current\\n")
+        if len(args) == 3 and args[:2] == ("checkout", "-b"):
+            return Result()
+        if args == ("add", "scripts/gap.py"):
+            return Result()
+        if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
+            return Result()
+        if len(args) == 4 and args[:3] == ("push", "-u", "origin"):
+            return Result(returncode=1, stderr="push rejected")
+        if args == ("checkout", "feature/current"):
+            return Result()
+        raise AssertionError(args)
+
+    def fake_run(command, cwd, capture_output, text, check):
+        del cwd, capture_output, text, check
+        pr_calls.append(tuple(command))
+        return Result(stdout="unexpected PR")
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    try:
+        module.open_capability_pr("Gap", "#!/usr/bin/env python3\\nprint(1)\\n")
+    except module.SelfUpgradeError as exc:
+        assert "push rejected" in str(exc)
+    else:
+        raise AssertionError("push failure must abort self-upgrade delivery")
+
+    assert ("checkout", "feature/current") in calls
+    assert pr_calls == []
+    assert not any(call[:2] == ("branch", "-D") for call in calls)
 
 
 def test_persist_audit_report_preserves_generated_audit_before_main_sync(tmp_path: Path, monkeypatch) -> None:
