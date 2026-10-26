@@ -57,13 +57,14 @@
     "status": "PARTIAL_SEED_INVENTORY",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 6,
+    "indexed_seed_video_count": 7,
     "missing_work": [
       "Enumerate every public upload from the channel's videos and shorts surfaces.",
       "Deduplicate by video ID, preserving live streams and archived replays.",
       "Retrieve publication metadata and publicly available transcripts.",
       "Run pagination/change detection and retain a timestamped inventory snapshot.",
-      "Mark deleted, private, members-only, region-restricted, or transcript-unavailable items explicitly where observed."
+      "Mark deleted, private, members-only, region-restricted, or transcript-unavailable items explicitly where observed.",
+      "Resolve the screenshot video 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' to a canonical video ID; do not guess based on thumbnail alone."
     ]
   },
   "seed_videos": [
@@ -159,6 +160,27 @@
         "investor behavior"
       ],
       "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP’s Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "canonical_url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "published_date_reported": "2026-07-30",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "themes": [
+        "XRPL amendments",
+        "Confidential Transfers",
+        "Sponsored Fees and Reserves",
+        "institutional adoption",
+        "validator voting"
+      ],
+      "claims_to_extract_and_test": [
+        "Confidential Transfers are a major institutional adoption catalyst.",
+        "Sponsored Fees and Reserves could let users transact without personally holding XRP.",
+        "The 80% validator threshold and two-week voting period are correctly characterized in the video."
+      ],
+      "claim_status": "DESCRIPTION_AND_CHAPTERS_INDEXED; FULL_TRANSCRIPT_AND_PRIMARY_SOURCE_CHECKS_PENDING"
     }
   ],
   "required_cross_corroboration_domains": [
@@ -195,8 +217,10 @@
       "https://glasp.co/youtube/rv0BAV0vLgo",
       "https://glasp.co/youtube/QslbjGQD0MU",
       "https://glasp.co/youtube/ci0FH73lbCs",
-      "https://glasp.co/youtube/cxeX_eu_2H0"
-    ]
+      "https://glasp.co/youtube/cxeX_eu_2H0",
+      "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+    ],
+    "last_updated_at_utc": "2026-10-26T22:20:00Z"
   },
   "status": "SOURCE_PROFILE_SEEDED; COMPLETE_CHANNEL_INGESTION_NOT_YET_EXECUTED"
 }
