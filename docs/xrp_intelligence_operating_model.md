@@ -35,6 +35,12 @@ The legacy accuracy artifact reports 725/1,588 = 45.7%, but PR #1165 documents t
 
 ## 2. High-priority repository work already present
 
+**Critical workflow safety finding (observed on main):** `.github/workflows/merge-queue.yml` currently grants `contents: write` and `pull-requests: write`, supports a manually dispatched `mode=all` that processes every open PR, updates branches, and calls the merge API when its queried merge state is clean/mergeable. The workflow does not explicitly query draft status or review-decision/approval fields. GitHub branch protection may still constrain actual merges, but its rulesets were not verified here. **Do not run this workflow, especially `mode=all`, until approval/check gates are independently verified.** PR #1168 replaces it with a read-only no-op workflow, but remains an open draft and is not merged.
+
+The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues write to a model-driven repair worker. The issue-label path is sender-gated to the repository owner or Barrot-Agent; `workflow_dispatch` also runs the worker from supplied task title/body. Review branch protection, command-sandbox boundaries and least-privilege scopes before expanding this automation.
+
+
+
 - [PR #1165 — fail closed on unavailable sentiment and retire invalid accuracy](https://github.com/Barrot-Agent/B-Agent/pull/1165): open draft; observed CI and fail-closed workflow completed successfully on its head. Not merged. It should remain unmerged until explicit approval.
 - [PR #1155 — synchronized XRP spot/perpetual/FX event-time inputs](https://github.com/Barrot-Agent/B-Agent/pull/1155): open draft; PR description reports 126 tests passed on its merge ref and fail-closed gate passed with merge disabled. Not merged. Live market ingestion is not established by these tests.
 - [PR #1166 — deterministic XRP summary fallback and artifact-only workflow](https://github.com/Barrot-Agent/B-Agent/pull/1166): open draft; observed workflow results were successful. Not merged.
