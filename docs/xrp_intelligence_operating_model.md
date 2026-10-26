@@ -25,6 +25,9 @@ Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevens
 ### Japan and the SBIC ambiguity
 - SBI Group companies publicly announced XRP-enabled remittance expansion to the Philippines, Vietnam, and Indonesia in 2023. This confirms an announced commercial relationship, not present-day volume or price impact.
 - SBI VC Trade and Ripple announced a basic agreement for RLUSD distribution in Japan in 2025; an official 2026 announcement says RLUSD handling began on SBI VC Trade. This is a stablecoin-distribution relationship, not proof of XRP demand.
+- SBI Remit officially reported cumulative international remittance handling above **JPY 2.5 trillion** on May 27, 2026. This is the whole service's cumulative total; the announcement does not attribute that amount to XRP or Ripple ODL.
+- SBI Ripple Asia reported a conceptual proof of concept for tokenized deposits and deposit-type digital money in February 2026, considering XRPL as the blockchain base. A PoC is not production deployment or proof of XRP demand.
+- SBI Group also announced an exploratory digital-finance/payments MOU with Visa and an SBI Remit/Fasset remittance-infrastructure MOU after a strategic SBI investment in Fasset. These establish a multi-rail strategy, not a confirmed replacement for or increase in XRP usage.
 - “SBIC” remains unresolved. The official Tokyo SBIC East Japan profile identifies an SME investment-development company. SBI Crypto is a separate SBI Holdings mining subsidiary. XRP-related announcements name SBI Holdings, SBI VC Trade, SBI Remit, and SBI Ripple Asia; they do not prove which entity was intended by the phrase “SBIC, ChatGPT SBIC.”
 - “ASK Coin” and “actual capital” also remain unresolved without the original source sentence or recording. Do not guess from acronym similarity.
 
