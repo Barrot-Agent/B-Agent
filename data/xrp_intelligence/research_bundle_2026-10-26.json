@@ -4,7 +4,7 @@
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
     "captured_at_utc": "2026-10-26T23:15:00Z",
-    "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+    "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
     "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_AND_CONFIDENCE_ZERO",
@@ -322,7 +322,7 @@
       "source_type": "repository_artifact",
       "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
       "publication_date": "2026-10-26T23:01:38Z",
-      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "source_commit": "e49431afe9801044b583abd0451f0d4d7416fc4d",
       "sections": [
         "timestamp 2026-10-26T22:29:38Z",
         "score 44",
@@ -338,7 +338,7 @@
       "source_type": "repository_artifact",
       "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
       "publication_date": "2026-10-26T23:01:38Z",
-      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "source_commit": "e49431afe9801044b583abd0451f0d4d7416fc4d",
       "sections": [
         "1588 checked",
         "725 correct",
@@ -2647,9 +2647,9 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
-    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
-    "latest_main_commit_ci": "The combined-status query returned no statuses. The workflow-run endpoint used in this run returns only PR-triggered runs and returned none for this commit. This is not a CI pass and does not prove that no other workflow history exists.",
+    "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
+    "latest_main_commit_message": "Paper trade cycle [skip ci]",
+    "latest_main_commit_ci": "Combined-status query returned no statuses and the workflow-run query returned no PR-triggered runs for e49431afe9801044b583abd0451f0d4d7416fc4d. This is not a CI pass.",
     "current_signal": {
       "timestamp": "2026-10-26T22:29:38.241936Z",
       "score": 44,
@@ -2731,7 +2731,8 @@
         "status": "OBSERVED_ON_MAIN",
         "mitigation": "Review least-privilege permissions, command sandbox, branch protections and manual approval gates."
       }
-    ]
+    ],
+    "latest_signal_staleness": "The latest main signal blob SHA remained b014c0b096e249af3e771d215edc32fdbab1b3aa and its timestamp remained 2026-10-26T22:29:38.241936Z when re-fetched after the newer paper-trade-cycle commit."
   },
   "video_ingestion": {
     "creator": "Kamilah Stevenson",
