@@ -13,9 +13,6 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "core"))
 sys.path.insert(0, str(REPO_ROOT / "utils"))
 
-from hrm_ternary import hrm_resolve  # noqa: E402
-from score_to_signal import score_to_unit  # noqa: E402
-
 LIVE_PATH = Path("web/latest_signal.json")
 OUT_PATH = Path("web/hrm_sandbox_signal.json")
 
@@ -49,6 +46,11 @@ def main():
     ):
         _write_not_issued("source sentiment score is unavailable or invalid")
         return
+
+    # Import the heavier numerical dependency only after validating the input.
+    # An unavailable score should be handled even in a minimal CI environment.
+    from hrm_ternary import hrm_resolve
+    from score_to_signal import score_to_unit
 
     result = hrm_resolve({
         "orderbook": 0.0,
