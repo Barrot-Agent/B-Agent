@@ -31,7 +31,9 @@
       "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
       "XRP-C-SBI-MULTI-RAIL-STRATEGY",
       "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
-      "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM"
+      "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+      "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -108,6 +110,11 @@
       {
         "id": "Q-XRP-COLLATERAL",
         "question": "Does any current CFTC-regulated clearinghouse or FCM explicitly accept XRP itself as collateral, and under what product/account/limits/haircuts?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-USDC-XRPL-SPLIT",
+        "question": "What share of Circle's reported H1 2026 USDC transaction volume and mint/redeem activity occurred on XRPL, and what fraction involved XRP bridge paths?",
         "status": "UNRESOLVED"
       }
     ]
@@ -592,6 +599,46 @@
         "page text search returned no match for XRP at retrieval",
         "eligibility remains account/product/clearing-member specific"
       ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-10Q-2026Q2",
+      "title": "Circle Internet Group Form 10-Q for quarter ended June 30, 2026",
+      "author_or_organization": "Circle Internet Group, Inc. / U.S. SEC",
+      "source_type": "official_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publication_date": "2026-Q2 filing; accessed 2026-10-26",
+      "sections": [
+        "Q2 2026 distribution costs in connection with Coinbase agreements $324.6M vs $332.3M Q2 2025",
+        "H1 2026 distribution costs in connection with Coinbase agreements $655.3M vs $635.5M H1 2025",
+        "Circle on-platform USDC daily weighted-average share 19.5% in Q2 2026 and 18.3% H1 2026",
+        "reserve income and distribution costs depend on USDC circulation, reserve return rates and platform balances"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "author_or_organization": "Circle",
+      "source_type": "official_corporate_blog",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "publication_date": "2026-10-16",
+      "sections": [
+        "Circle reports more than $36T USDC on-chain transaction volume in H1 2026",
+        "Circle reports more than $315B minted/redeemed in H1 2026",
+        "Circle reports $819M in H1 2026 distribution-partner and transaction costs",
+        "aggregate metrics cover USDC across the network, not specifically XRPL"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-10K-2025",
+      "title": "Coinbase Global, Inc. Form 10-K for year ended December 31, 2025",
+      "author_or_organization": "Coinbase Global, Inc. / U.S. SEC",
+      "source_type": "official_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000015/coin-20251231.htm",
+      "publication_date": "2025 fiscal-year filing; accessed 2026-10-26",
+      "sections": [
+        "Coinbase reported stablecoin revenue increase including $417.7M due to higher average USDC balances held in Coinbase products and $314.1M due to higher average off-platform USDC balances",
+        "stablecoin revenue also sensitive to lower average interest rates"
+      ]
     }
   ],
   "claims": [
@@ -1075,6 +1122,59 @@
         "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
         "SRC-CME-XRP-FUTURES-CASH-SETTLED",
         "SRC-CME-ACCEPTABLE-COLLATERAL"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+      "statement": "Circle's 2026 Q2 SEC filing reports distribution costs connected with Coinbase agreements of $324.6M for Q2 2026 and $655.3M for H1 2026, versus $332.3M and $635.5M in the corresponding 2025 periods. Coinbase's 2025 10-K separately reports a $417.7M increase in stablecoin revenue from higher average USDC balances held in Coinbase products and a $314.1M increase from higher average off-platform USDC balances. These filings confirm a material economic link, but the figures have different accounting definitions and must not be added together as if they were the same revenue stream.",
+      "domain": "corporate_strategy_and_stablecoin_economics",
+      "claim_type": "current_sec_reported_financial_metrics",
+      "source": "SRC-CIRCLE-10Q-2026Q2",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
+        "XRP-E-COINBASE-STABLECOIN-REVENUE-2025"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "SEC filings report accounting categories as defined by each company; do not sum across issuers or treat costs as net profit.",
+        "2026 H1/Q2 data is historical and does not predict future distribution payments."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-10Q-2026Q2",
+        "SRC-COINBASE-10K-2025"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS",
+      "statement": "Circle reported more than $36 trillion of USDC on-chain transaction volume and more than $315 billion minted/redeemed in H1 2026, alongside $819 million of distribution-partner and transaction costs. These are Circle-reported network-wide aggregates, not XRPL-only flows and not evidence of net XRP buying demand.",
+      "domain": "stablecoin_flows_and_liquidity",
+      "claim_type": "issuer_reported_aggregate_metric_with_scope_limit",
+      "source": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "source_location": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-USDC-H1-2026-METRICS"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Issuer-reported aggregates may use internal methodology; verify methodology and chain-level breakdown before modeling.",
+        "Transaction volume is not the same as net capital inflow or net token acquisition."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-USDC-ECONOMICS-2026",
+        "SRC-CIRCLE-10Q-2026Q2"
       ],
       "timestamp": 1793055698
     }
@@ -1630,6 +1730,58 @@
       "details": {
         "caveat": "Confirm current collateral schedule and FCM policies before concluding."
       }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
+      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+      "kind": "independent_verification",
+      "summary": "Circle's SEC Form 10-Q reports distribution costs in connection with Coinbase agreements of $324.6M for Q2 2026 and $655.3M for H1 2026, compared with $332.3M and $635.5M in the corresponding 2025 periods. The filing explains Coinbase allocations depend on USDC balances and broader ecosystem-growth economics.",
+      "source_id": "SRC-CIRCLE-10Q-2026Q2",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CIRCLE-10Q-2026Q2"
+      ],
+      "details": {
+        "Q2_2026_USD_millions": 324.6,
+        "Q2_2025_USD_millions": 332.3,
+        "H1_2026_USD_millions": 655.3,
+        "H1_2025_USD_millions": 635.5,
+        "interpretation": "Reported distribution costs connected with Coinbase agreements; not Coinbase's net profit and not an XRP-specific flow."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-STABLECOIN-REVENUE-2025",
+      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+      "kind": "independent_verification",
+      "summary": "Coinbase's 2025 Form 10-K attributes $417.7M of stablecoin revenue increase to higher average USDC balances in Coinbase products and $314.1M to higher average off-platform USDC balances, partly offset by lower interest rates.",
+      "source_id": "SRC-COINBASE-10K-2025",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000015/coin-20251231.htm",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-COINBASE-10K-2025"
+      ],
+      "details": {
+        "limit": "These are year-over-year revenue-change drivers in Coinbase's accounting, not the same measure as Circle's distribution costs."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-USDC-H1-2026-METRICS",
+      "claim_id": "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS",
+      "kind": "independent_verification",
+      "summary": "Circle's October 16, 2026 corporate blog reports H1 2026 USDC on-chain transaction volume above $36T, mint/redeem volume above $315B, and $819M paid in distribution-partner and transaction costs.",
+      "source_id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "source_location": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-CIRCLE-USDC-ECONOMICS-2026"
+      ],
+      "details": {
+        "scope": "All supported USDC network activity as reported by Circle; no XRPL-specific volume split in this source."
+      }
     }
   ],
   "tracks": [
@@ -1652,17 +1804,24 @@
         "XRP-C-USDC-NATIVE-ON-XRPL",
         "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
         "XRP-C-OUSD-LAUNCH-STATUS",
-        "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY"
+        "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
+        "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+        "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS"
       ],
       "evidence": [
         "XRP-E-COINBASE-CIRCLE-PRIMARY",
         "XRP-E-CIRCLE-USDC-XRPL",
-        "XRP-E-USDC-XRP-DECOUPLING"
+        "XRP-E-USDC-XRP-DECOUPLING",
+        "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
+        "XRP-E-COINBASE-STABLECOIN-REVENUE-2025",
+        "XRP-E-CIRCLE-USDC-H1-2026-METRICS"
       ],
       "unresolved_objections": [
         "Measure whether USDC-on-XRPL flows substitute for XRP bridge paths or expand them.",
         "Latest Coinbase-Circle revenue-sharing terms and distribution metrics require current filings.",
-        "Open Standard/OUSD launch status is inconsistent across official site and dated reports; verify on-chain deployment before assigning a market-impact feature."
+        "Open Standard/OUSD launch status is inconsistent across official site and dated reports; verify on-chain deployment before assigning a market-impact feature.",
+        "Circle's reported $36T USDC on-chain transaction volume is aggregate across networks and cannot be attributed to XRPL or XRP without chain/route-level breakdown.",
+        "Coinbase and Circle financial metrics use different accounting definitions; do not add distribution costs and revenue changes together."
       ],
       "confidence": 0.75,
       "provenance": [
@@ -1671,7 +1830,10 @@
         "SRC-CIRCLE-USDC-XRPL",
         "SRC-OUSD-OPENSTANDARD-OFFICIAL",
         "SRC-OUSD-REUTERS",
-        "SRC-OUSD-SECONDARY-LAUNCH"
+        "SRC-OUSD-SECONDARY-LAUNCH",
+        "SRC-CIRCLE-10Q-2026Q2",
+        "SRC-CIRCLE-USDC-ECONOMICS-2026",
+        "SRC-COINBASE-10K-2025"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -2012,6 +2174,12 @@
       "question": "Resolve the 2025-12-06 Kamilah collateral video title and transcript; obtain product/FCM-specific collateral schedules to adjudicate the claim.",
       "priority": "HIGH",
       "status": "CLAIM_CHALLENGED_PRIMARY_RULES_NEEDED"
+    },
+    {
+      "question_id": "Q-13",
+      "question": "Use Circle's Q2 2026 10-Q and Coinbase's 2025 10-K as separate accounting baselines; obtain XRPL-specific USDC supply/flow and XRP bridge-path data before drawing price conclusions.",
+      "priority": "HIGH",
+      "status": "PARTIAL_PRIMARY_FINANCIALS_VERIFIED_CHAIN_SPLIT_PENDING"
     }
   ],
   "relationship_graph": {
@@ -2824,6 +2992,11 @@
     {
       "priority": 4,
       "action": "Use SBI's official JPY 2.5 trillion cumulative remittance figure only as aggregate context; obtain corridor-level XRP usage, and verify production status of SBI Ripple Asia PoC, Visa MOU, and Fasset MOU.",
+      "status": "ACTIONABLE"
+    },
+    {
+      "priority": 3,
+      "action": "Parse Circle's 2026 Q2 10-Q and Coinbase's 2025 10-K into dated financial features; collect XRPL-specific USDC supply/transfer volumes and XRP bridge-path/market-depth metrics separately.",
       "status": "ACTIONABLE"
     }
   ]
