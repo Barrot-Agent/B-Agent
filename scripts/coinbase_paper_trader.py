@@ -173,6 +173,17 @@ def execute_paper_trade(state, decision, current_price):
 
     action = decision["action"]
     amount_usd = decision["amount_usd"]
+    expected_product = os.getenv("PRODUCT_ID", "BTC-USD")
+    current_position = state.get("position_size", 0) or 0
+    current_product = state.get("position_product")
+
+    # Repair legacy open positions that predate position_product tracking.
+    # Never combine a position labeled for another product with this cycle.
+    if current_position > 0:
+        if current_product is None:
+            state["position_product"] = expected_product
+        elif current_product != expected_product:
+            return "held -- position product mismatch"
 
     if action == "buy" and amount_usd > 0:
         amount_usd = min(amount_usd, state["cash_usd"] * 0.2, state["cash_usd"])
@@ -183,6 +194,7 @@ def execute_paper_trade(state, decision, current_price):
         prev_cost = (state["avg_entry_price"] or 0) * state["position_size"]
         state["avg_entry_price"] = (prev_cost + amount_usd) / total_qty if total_qty else None
         state["position_size"] = total_qty
+        state["position_product"] = expected_product
         state["cash_usd"] -= amount_usd
         state["trade_count"] += 1
         return f"bought ${amount_usd:.2f} at ${current_price:.2f}"
@@ -194,6 +206,7 @@ def execute_paper_trade(state, decision, current_price):
         state["position_size"] -= sell_qty
         if state["position_size"] <= 0.00000001:
             state["position_size"] = 0.0
+            state["position_product"] = None
             state["avg_entry_price"] = None
         state["trade_count"] += 1
         return f"sold ${proceeds:.2f} at ${current_price:.2f}"
