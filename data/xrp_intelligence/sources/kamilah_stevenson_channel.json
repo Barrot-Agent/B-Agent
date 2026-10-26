@@ -54,17 +54,18 @@
     "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_SEED_INVENTORY",
+    "status": "PARTIAL_INDEXED_INVENTORY",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 7,
+    "indexed_seed_video_count": 9,
     "missing_work": [
-      "Enumerate every public upload from the channel's videos and shorts surfaces.",
-      "Deduplicate by video ID, preserving live streams and archived replays.",
-      "Retrieve publication metadata and publicly available transcripts.",
-      "Run pagination/change detection and retain a timestamped inventory snapshot.",
-      "Mark deleted, private, members-only, region-restricted, or transcript-unavailable items explicitly where observed.",
-      "Resolve the screenshot video 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' to a canonical video ID; do not guess based on thumbnail alone."
+      "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
+      "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
+      "Retrieve permitted/public transcript text or references; hash the exact captured transcript and preserve timestamps.",
+      "Extract each explicit claim and forecast separately; preserve source wording and classify fact, interpretation, forecast, opinion, and promotional claim.",
+      "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
+      "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
+      "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
     ]
   },
   "seed_videos": [
@@ -181,6 +182,51 @@
         "The 80% validator threshold and two-week voting period are correctly characterized in the video."
       ],
       "claim_status": "DESCRIPTION_AND_CHAPTERS_INDEXED; FULL_TRANSCRIPT_AND_PRIMARY_SOURCE_CHECKS_PENDING"
+    },
+    {
+      "video_id": "pFru4idBTMA",
+      "title": "XRP Tokenization: $3.5 Billion Just Settled on XRPL — And Nobody Is Watching",
+      "canonical_url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "published_date_reported": "2026-05-12",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "themes": [
+        "XRPL tokenized real-world assets",
+        "RLUSD",
+        "institutional adoption",
+        "ledger activity versus XRP price"
+      ],
+      "claims_to_extract_and_test": [
+        "Claim that $3.5 billion in tokenized real-world assets settled on XRPL over the preceding 30 days and $900 million on April 24, 2026.",
+        "Claim that RLUSD market capitalization crossed $1 billion.",
+        "Claim that daily XRPL payment volume consistently exceeded $1.7 million in settlement flow.",
+        "Claim that Archax committed to bringing another $1 billion in tokenized assets onto XRPL by mid-2026.",
+        "Claim that Ondo Finance, Guggenheim, OpenEden, and Archax are building on XRPL for the described reasons."
+      ],
+      "corroboration_priority": "HIGH",
+      "claim_status": "DESCRIPTION_ONLY; NUMERIC CLAIMS NOT YET INDEPENDENTLY VERIFIED",
+      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
+    },
+    {
+      "video_id": "Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "canonical_url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "published_date_reported": "2025-12-03",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "themes": [
+        "XRP ETFs",
+        "macro liquidity",
+        "Federal Reserve policy",
+        "U.S. legislation",
+        "market scenarios"
+      ],
+      "claims_to_extract_and_test": [
+        "Forecasts or scenarios relating to 2026 Federal Reserve policy, stimulus, Digital Asset Clarity Act, quantitative easing, and global liquidity shifts.",
+        "Any explicit XRP price target, directional prediction, or time-bound catalyst stated in the video."
+      ],
+      "claim_status": "DESCRIPTION_ONLY; EXPLICIT FORECASTS AND OUTCOMES NOT YET SCORED",
+      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
     }
   ],
   "required_cross_corroboration_domains": [
@@ -218,11 +264,13 @@
       "https://glasp.co/youtube/QslbjGQD0MU",
       "https://glasp.co/youtube/ci0FH73lbCs",
       "https://glasp.co/youtube/cxeX_eu_2H0",
-      "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+      "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "https://www.youtube.com/watch?v=Gy4BuGhAWE8"
     ],
-    "last_updated_at_utc": "2026-10-26T22:24:00Z"
+    "last_updated_at_utc": "2026-10-26T23:10:00Z"
   },
-  "status": "SOURCE_PROFILE_SEEDED; COMPLETE_CHANNEL_INGESTION_NOT_YET_EXECUTED",
+  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
     {
       "finding_id": "XRPL-CONFIDENTIAL-TRANSFERS-001",
