@@ -26,7 +26,10 @@
       "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
       "XRP-C-LEGACY-ACCURACY-INVALID",
       "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
-      "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS"
+      "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
+      "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
+      "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
+      "XRP-C-SBI-MULTI-RAIL-STRATEGY"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -83,6 +86,16 @@
       {
         "id": "Q-OUSD",
         "question": "Is OUSD actually live and at what circulating supply/chain distribution as of the snapshot cutoff, given inconsistent official-site launch dates and conflicting dated reports?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-SBI-CUMULATIVE-VOLUME",
+        "question": "What fraction of SBI Remit's JPY 2.5 trillion cumulative remittance volume uses XRP/Ripple ODL, by corridor and period?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-SBI-MULTI-RAIL",
+        "question": "Do SBI's Visa and Fasset initiatives complement or substitute XRP-enabled remittance routes in production?",
         "status": "UNRESOLVED"
       }
     ]
@@ -448,6 +461,59 @@
         "CI and fail-closed workflow passed on observed PR head",
         "not merged"
       ]
+    },
+    {
+      "source_id": "SRC-SBI-REMIT-CUMULATIVE",
+      "title": "SBI Remit cumulative international remittance amount exceeds JPY 2.5 trillion",
+      "author_or_organization": "SBI Remit via SBI Holdings",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0529_16356.html",
+      "publication_date": "2026-05-29",
+      "sections": [
+        "cumulative remittance amount exceeded JPY 2.5 trillion on 2026-05-27",
+        "company-wide total; announcement does not attribute all volume to XRP or Ripple payment rails"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RIPPLE-ASIA-POC",
+      "title": "Proof of concept for tokenized deposits and deposit-type digital money using existing financial infrastructure",
+      "author_or_organization": "SBI Ripple Asia via SBI Holdings",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "publication_date": "2026-02-26",
+      "sections": [
+        "conceptual proof of concept",
+        "tokenized deposits and deposit-type digital money",
+        "XRPL considered as blockchain base",
+        "not evidence of production deployment or XRP market demand"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-MOU",
+      "title": "SBI Group and Visa sign basic agreement to explore digital finance and payments collaboration",
+      "author_or_organization": "SBI Holdings and Visa Japan",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "publication_date": "2026-05-01",
+      "sections": [
+        "exploration of digital finance and payment collaboration",
+        "stablecoins and digital assets in scope",
+        "memorandum of understanding, not proof of launched product"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-FASSET-MOU",
+      "title": "SBI Remit and Fasset sign basic agreement for next-generation international remittance infrastructure",
+      "author_or_organization": "SBI Holdings and SBI Remit",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "publication_date": "2026-06-18",
+      "sections": [
+        "SBI Holdings says strategic investment in Fasset in May 2026",
+        "SBI Remit and Fasset MOU",
+        "stablecoin payment infrastructure and international remittance",
+        "not proof that XRP is or is not used in any route"
+      ]
     }
   ],
   "claims": [
@@ -790,6 +856,87 @@
       ],
       "provenance": [
         "SRC-BARROT-AGENT-WORKFLOW"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
+      "statement": "SBI Remit officially reported cumulative international remittance handling exceeded JPY 2.5 trillion on 2026-05-27. This is a scale metric for SBI Remit's overall service and must not be attributed to XRP, Ripple ODL, or a specific corridor without a separate breakdown.",
+      "domain": "payments_and_capital_flows",
+      "claim_type": "official_aggregate_metric_with_attribution_limit",
+      "source": "SRC-SBI-REMIT-CUMULATIVE",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0529_16356.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-REMIT-CUMULATIVE"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The issuer-reported cumulative figure is accurate as stated; currency conversion and route-level composition are not supplied in this release."
+      ],
+      "provenance": [
+        "SRC-SBI-REMIT-CUMULATIVE",
+        "SRC-SBI-XRP-REMIT"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
+      "statement": "SBI Ripple Asia reported a conceptual proof of concept for tokenized deposits and deposit-type digital money using existing financial infrastructure and considering XRPL as the blockchain base. This confirms exploratory development, not production deployment, XRP collateral demand, or XRP-based settlement volume.",
+      "domain": "institutional_adoption_and_tokenization",
+      "claim_type": "official_poc_with_production_limit",
+      "source": "SRC-SBI-RIPPLE-ASIA-POC",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-RIPPLE-ASIA-POC"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The release describes a conceptual PoC; subsequent production rollout must be verified independently."
+      ],
+      "provenance": [
+        "SRC-SBI-RIPPLE-ASIA-POC"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
+      "statement": "SBI's public activity spans XRP-related remittance, RLUSD distribution, XRPL proof-of-concept work, and separate exploration of Visa and Fasset digital-payment/stablecoin relationships. This suggests a multi-rail strategy; it could complement XRP usage or substitute stablecoin/other rails for some flows. Net XRP impact is unknown without route-level data.",
+      "domain": "corporate_strategy_and_payment_rails",
+      "claim_type": "testable_strategic_inference",
+      "source": "SRC-SBI-VISA-MOU",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-MULTI-RAIL-STRATEGY",
+        "XRP-E-SBI-REMIT-CUMULATIVE",
+        "XRP-E-SBI-RIPPLE-ASIA-POC",
+        "XRP-E-SBI-FASSET-MOU"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "HYPOTHESIS",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.72,
+      "assumptions": [
+        "MOU and PoC announcements may not progress to commercial deployment.",
+        "SBI Group entities must be tracked separately; activity of one subsidiary does not establish activity of another."
+      ],
+      "provenance": [
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-RLUSD-START",
+        "SRC-SBI-RIPPLE-ASIA-POC",
+        "SRC-SBI-VISA-MOU",
+        "SRC-SBI-FASSET-MOU"
       ],
       "timestamp": 1793055698
     }
@@ -1170,6 +1317,81 @@
       "details": {
         "required_review": "Inspect command sandbox, branch-protection/ruleset settings, and whether write permissions can be reduced per job."
       }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-REMIT-CUMULATIVE",
+      "claim_id": "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
+      "kind": "independent_verification",
+      "summary": "SBI Remit's official May 29, 2026 release says cumulative international remittance handling exceeded JPY 2.5 trillion on May 27, 2026.",
+      "source_id": "SRC-SBI-REMIT-CUMULATIVE",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0529_16356.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-REMIT-CUMULATIVE"
+      ],
+      "details": {
+        "attribution_limit": "This total is not broken down by XRP/Ripple rail, corridor, transaction count, or current-period flow."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-RIPPLE-ASIA-POC",
+      "claim_id": "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
+      "kind": "independent_verification",
+      "summary": "SBI Ripple Asia's February 26, 2026 release describes a conceptual proof of concept for tokenized deposits and deposit-type digital money and says XRPL was considered as the blockchain base.",
+      "source_id": "SRC-SBI-RIPPLE-ASIA-POC",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-RIPPLE-ASIA-POC"
+      ],
+      "details": {
+        "limit": "PoC does not prove production use or require XRP as a bridge asset."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-MULTI-RAIL-STRATEGY",
+      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
+      "kind": "unresolved_question",
+      "summary": "SBI announced exploratory digital-payments/stablecoin collaboration with Visa and a separate SBI Remit/Fasset MOU while maintaining publicly announced XRP/Ripple and RLUSD relationships. The portfolio is multi-rail; the net allocation of flows remains unknown.",
+      "source_id": "SRC-SBI-VISA-MOU",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-SBI-VISA-MOU",
+        "SRC-SBI-FASSET-MOU",
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-RLUSD-START"
+      ],
+      "details": {
+        "counter_hypotheses": [
+          "New rails may complement XRPL and broaden institutional demand.",
+          "Stablecoin/fiat rails may substitute for XRP bridge use on some corridors."
+        ],
+        "required_data": [
+          "Corridor-level XRP usage",
+          "Stablecoin issuance/redemption/settlement volume",
+          "Actual deployment dates and production volumes"
+        ]
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-FASSET-MOU",
+      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
+      "kind": "independent_verification",
+      "summary": "SBI's June 18, 2026 release states SBI Holdings invested strategically in Fasset in May 2026 and SBI Remit signed an MOU with Fasset for next-generation international remittance infrastructure; the release describes Fasset's stablecoin payment infrastructure.",
+      "source_id": "SRC-SBI-FASSET-MOU",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-FASSET-MOU"
+      ],
+      "details": {
+        "limit": "MOU does not establish production deployment or whether any route uses XRP."
+      }
     }
   ],
   "tracks": [
@@ -1236,25 +1458,39 @@
       "focus_claims": [
         "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
         "XRP-C-SBI-RLUSD-JAPAN",
-        "XRP-C-SBIC-IDENTITY-AMBIGUITY"
+        "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+        "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
+        "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
+        "XRP-C-SBI-MULTI-RAIL-STRATEGY"
       ],
       "evidence": [
         "XRP-E-SBI-XRP-REMIT",
         "XRP-E-SBI-RLUSD-START",
         "XRP-E-TOKYO-SBIC-IDENTITY",
-        "XRP-E-SBI-CRYPTO-IDENTITY"
+        "XRP-E-SBI-CRYPTO-IDENTITY",
+        "XRP-E-SBI-REMIT-CUMULATIVE",
+        "XRP-E-SBI-RIPPLE-ASIA-POC",
+        "XRP-E-SBI-MULTI-RAIL-STRATEGY",
+        "XRP-E-SBI-FASSET-MOU"
       ],
       "unresolved_objections": [
         "Find original context for 'SBIC, ChatGPT SBIC'.",
         "Collect current SBI VC Trade volume and XRP/JPY order-book/derivatives history.",
-        "Verify whether the 2023 remittance routes still use XRP and in what proportions."
+        "Verify whether the 2023 remittance routes still use XRP and in what proportions.",
+        "SBI Remit's JPY 2.5 trillion cumulative remittance figure is aggregate; no XRP-specific volume breakdown was found in the announcement.",
+        "SBI Ripple Asia's XRPL tokenized-deposit work is a conceptual PoC, not verified production activity.",
+        "SBI's Visa and Fasset relationships may represent complementary or substitutive rails; route-level flow data is needed."
       ],
       "confidence": 0.72,
       "provenance": [
         "SRC-SBI-XRP-REMIT",
         "SRC-SBI-RLUSD-MOU",
         "SRC-SBI-RLUSD-START",
-        "SRC-TOKYO-SBIC-PROFILE"
+        "SRC-TOKYO-SBIC-PROFILE",
+        "SRC-SBI-REMIT-CUMULATIVE",
+        "SRC-SBI-RIPPLE-ASIA-POC",
+        "SRC-SBI-VISA-MOU",
+        "SRC-SBI-FASSET-MOU"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -1509,6 +1745,12 @@
       "question": "Verify repository branch protection/rulesets and require explicit approvals/required checks for every merge; disable active merge queue before any all-PR mode is used.",
       "priority": "CRITICAL",
       "status": "PR_1168_DRAFT_FIX_AVAILABLE_NOT_MERGED"
+    },
+    {
+      "question_id": "Q-10",
+      "question": "Attribute SBI Remit's cumulative remittance total to XRP vs fiat/stablecoin rails using primary route-level volumes, not aggregate company totals.",
+      "priority": "HIGH",
+      "status": "UNRESOLVED"
     }
   ],
   "relationship_graph": {
@@ -1657,6 +1899,22 @@
           "SRC-OUSD-OPENSTANDARD-OFFICIAL",
           "SRC-OUSD-REUTERS",
           "SRC-OUSD-SECONDARY-LAUNCH"
+        ]
+      },
+      {
+        "id": "Visa",
+        "type": "payments_network",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-VISA-MOU"
+        ]
+      },
+      {
+        "id": "Fasset",
+        "type": "stablecoin_and_digital_asset_payment_platform",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-SBI-FASSET-MOU"
         ]
       }
     ],
@@ -1840,6 +2098,50 @@
           "SRC-COINBASE-USDC-INCENTIVES"
         ],
         "caveat": "Potential competition for distribution and reserve economics; current supply/adoption and contract terms need verification."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "Visa",
+        "relationship_type": "DIGITAL_FINANCE_AND_PAYMENT_MOU",
+        "classification": "CONFIRMED_MOU_NOT_DEPLOYMENT",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-VISA-MOU"
+        ],
+        "caveat": "Exploratory agreement including digital assets/stablecoins; no production volume or XRP role established."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "Fasset",
+        "relationship_type": "STRATEGIC_INVESTMENT",
+        "classification": "OFFICIAL_ANNOUNCEMENT",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-SBI-FASSET-MOU"
+        ],
+        "caveat": "Announcement says strategic investment in May 2026; investment terms and ongoing flows not quantified here."
+      },
+      {
+        "source": "SBI Remit",
+        "target": "Fasset",
+        "relationship_type": "NEXT_GENERATION_REMITTANCE_MOU",
+        "classification": "CONFIRMED_MOU_NOT_DEPLOYMENT",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-FASSET-MOU"
+        ],
+        "caveat": "Do not assume the MOU replaces or uses XRP-based routes."
+      },
+      {
+        "source": "SBI Ripple Asia",
+        "target": "XRPL",
+        "relationship_type": "TOKENIZED_DEPOSIT_CONCEPTUAL_POC",
+        "classification": "CONFIRMED_POC_NOT_PRODUCTION",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-RIPPLE-ASIA-POC"
+        ],
+        "caveat": "XRPL infrastructure use does not automatically require XRP as a bridge asset."
       }
     ]
   },
@@ -2233,6 +2535,11 @@
       "priority": 7,
       "action": "Test adapter authentication, permissions, structured handoff and independent-review receipts for each target platform before calling it connected.",
       "status": "NOT_TESTED"
+    },
+    {
+      "priority": 4,
+      "action": "Use SBI's official JPY 2.5 trillion cumulative remittance figure only as aggregate context; obtain corridor-level XRP usage, and verify production status of SBI Ripple Asia PoC, Visa MOU, and Fasset MOU.",
+      "status": "ACTIONABLE"
     }
   ]
 }
