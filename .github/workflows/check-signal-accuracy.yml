@@ -6,23 +6,22 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install requests
-      - name: Check signal accuracy
+      - name: Produce explicit evaluation status
         run: python3 scripts/check_signal_accuracy.py
-      - name: Commit results
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add web/signal_history.jsonl web/signal_accuracy.json
-          git diff --cached --quiet || git commit -m "Barrot: daily signal accuracy check [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload evaluation status (no repository write)
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-evaluation-status
+          path: web/signal_accuracy.json
+          if-no-files-found: error
+          retention-days: 30
