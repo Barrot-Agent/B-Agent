@@ -57,7 +57,7 @@
     "status": "PARTIAL_INDEXED_INVENTORY",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 10,
+    "indexed_seed_video_count": 11,
     "missing_work": [
       "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
       "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
@@ -256,6 +256,32 @@
         "Verify the 100-million figure against timestamped, independently reproducible on-chain and bridge data."
       ],
       "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer."
+    },
+    {
+      "video_id": "M8TmDXO7B-0",
+      "title": "UNRESOLVED_TITLE — XRP collateral claim video",
+      "canonical_url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "published_date_reported": "2025-12-06",
+      "source": "YouTube indexed result attributed to Kamilah Stevenson",
+      "source_url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "title_resolution_status": "PENDING",
+      "themes": [
+        "CFTC digital-asset collateral pilot",
+        "derivatives-market collateral",
+        "XRP institutional positioning"
+      ],
+      "claims_to_extract_and_test": [
+        "Video description claims XRP was approved as acceptable collateral for federally regulated derivatives in the same class as gold, U.S. Treasuries and major FX pairs.",
+        "Verify whether any CFTC pilot, clearinghouse rule, FCM policy or product-specific collateral schedule explicitly includes XRP; do not infer eligibility from a general tokenized-collateral initiative.",
+        "Distinguish XRP futures being listed and cash-settled from XRP itself being accepted as collateral."
+      ],
+      "independent_primary_sources_to_check": [
+        "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+        "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
+        "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html"
+      ],
+      "claim_status": "DESCRIPTION_CLAIM_CHALLENGED_BY_AVAILABLE_PRIMARY_SOURCE_SCOPE; FULL_TRANSCRIPT_AND_PRODUCT_SPECIFIC_COLLATERAL_RULE_CHECK_PENDING",
+      "note": "CFTC's 2025-12-08 release names BTC, ETH and USDC in its digital-assets collateral pilot; CME's XRP futures announcement says contracts are cash-settled. These sources do not establish that XRP itself was approved as collateral. This is not proof that no venue/FCM has separate XRP collateral policies."
     }
   ],
   "required_cross_corroboration_domains": [
@@ -296,9 +322,11 @@
       "https://www.youtube.com/watch?v=8xiy8w2YlfY",
       "https://www.youtube.com/watch?v=pFru4idBTMA",
       "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
-      "https://www.youtube.com/watch?v=qtT2hLeFkM0"
+      "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+      "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html"
     ],
-    "last_updated_at_utc": "2026-10-26T23:35:00Z"
+    "last_updated_at_utc": "2026-10-26T23:15:00Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
