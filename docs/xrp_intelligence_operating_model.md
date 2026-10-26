@@ -7,7 +7,7 @@
 
 Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json).
 
-Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 10 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
+Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
 ## 1. Current evidence-led findings
 
@@ -31,6 +31,7 @@ Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevens
 - SBI Group also announced an exploratory digital-finance/payments MOU with Visa and an SBI Remit/Fasset remittance-infrastructure MOU after a strategic SBI investment in Fasset. These establish a multi-rail strategy, not a confirmed replacement for or increase in XRP usage.
 - “SBIC” remains unresolved. The official Tokyo SBIC East Japan profile identifies an SME investment-development company. SBI Crypto is a separate SBI Holdings mining subsidiary. XRP-related announcements name SBI Holdings, SBI VC Trade, SBI Remit, and SBI Ripple Asia; they do not prove which entity was intended by the phrase “SBIC, ChatGPT SBIC.”
 - “ASK Coin” and “actual capital” also remain unresolved without the original source sentence or recording. Do not guess from acronym similarity.
+- A further indexed Kamilah video (ID `M8TmDXO7B-0`, reported 2025-12-06; exact title unresolved) claims XRP was approved as collateral for federally regulated derivatives alongside gold, Treasuries and major FX pairs. The CFTC's 2025-12-08 collateral-pilot release names BTC, ETH and USDC but not XRP, and CME says its XRP futures are cash-settled; the current CME acceptable-collateral page returned no XRP match. The claim is **challenged, not finally refuted**: a product/FCM-specific rule may exist, so verify the exact rule before reaching a universal conclusion.
 
 ### Prediction-engine integrity — critical
 The current `main` artifact `web/latest_signal.json` was timestamped **2026-10-26 22:29:38 UTC** and reports score 44, confidence 0, news score 88 from 11 entries, and provider failures (missing GitHub model credentials and Groq HTTP 429). The text is dominated by XRPL research-paper titles. This must not be consumed or published as a directional XRP forecast.
