@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1108,
+    "xrp_entries": 1110,
     "btc_entries": 1141
   },
-  "unique_entities_profiled": 947,
+  "unique_entities_profiled": 950,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -762,6 +762,23 @@
       ]
     },
     {
+      "entity": "ETFs",
+      "total_mentions": 8,
+      "bullish": 7,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.75,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Mantle Says Tokenized Asset Count Has Jumped From 71 To 1,473 This Year"
+      ]
+    },
+    {
       "entity": "U.S. Treasury",
       "total_mentions": 8,
       "bullish": 5,
@@ -863,23 +880,6 @@
       ]
     },
     {
-      "entity": "ETFs",
-      "total_mentions": 7,
-      "bullish": 6,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.714,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns",
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
-        "Bitcoin And Ethereum ETFs Pull $825M As Institutional Demand Returns"
-      ]
-    },
-    {
       "entity": "Iran",
       "total_mentions": 7,
       "bullish": 3,
@@ -961,6 +961,23 @@
         "Ethena Brings USDe and sUSDe to TRON, Expanding Digital Dollar Access Across Its Stablecoin Ecosyste",
         "TRON Expands MetaMask Connectivity Across B.AI, SUN.io, JustLend DAO and BitTorrent",
         "TRON Surpasses $30T in Total Transaction Volume as it Secures its Place as Leading Chain for Stablec"
+      ]
+    },
+    {
+      "entity": "stablecoins",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -1326,23 +1343,6 @@
         "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
         "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
         "World Rolls Out World Money App With Stablecoins And Stripe Integration"
-      ]
-    },
-    {
-      "entity": "stablecoins",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
-        "OKX Tightens European Institutional Trading Guidance Under MiCA"
       ]
     },
     {
@@ -10077,6 +10077,48 @@
       ],
       "example_headlines": [
         "US Charges Man After Crypto Scam Wallets Received More Than $53M"
+      ]
+    },
+    {
+      "entity": "Mantle",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Mantle Says Tokenized Asset Count Has Jumped From 71 To 1,473 This Year"
+      ]
+    },
+    {
+      "entity": "real-world assets",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Mantle Says Tokenized Asset Count Has Jumped From 71 To 1,473 This Year"
+      ]
+    },
+    {
+      "entity": "major issuers",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Mantle Says Tokenized Asset Count Has Jumped From 71 To 1,473 This Year"
       ]
     },
     {
