@@ -57,7 +57,7 @@
     "status": "PARTIAL_INDEXED_INVENTORY",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 9,
+    "indexed_seed_video_count": 10,
     "missing_work": [
       "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
       "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
@@ -227,6 +227,35 @@
       ],
       "claim_status": "DESCRIPTION_ONLY; EXPLICIT FORECASTS AND OUTCOMES NOT YET SCORED",
       "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
+    },
+    {
+      "video_id": "qtT2hLeFkM0",
+      "title": "More Than 100 Million XRP Just Moved Into Flare — And Holders Did It Voluntarily",
+      "canonical_url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "published_date_reported": "2026-08-25",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "themes": [
+        "XRP wrapped into FXRP",
+        "Flare DeFi",
+        "XRP supply availability",
+        "on-chain activity",
+        "custody and smart-contract risk"
+      ],
+      "claims_to_extract_and_test": [
+        "Claim that more than 100 million XRP was moved into Flare's FXRP system.",
+        "Claim that the XRP was voluntarily locked by holders and represented one-to-one by FXRP rather than newly created XRP.",
+        "Claim that wrapped XRP reduces freely available sale supply and creates organic demand.",
+        "Claim that lending, borrowing, collateral, staking, and potential yield materially alter XRP demand or market structure."
+      ],
+      "corroboration_priority": "HIGH",
+      "claim_status": "TITLE_AND_DESCRIPTION_INDEXED; METRIC AND FLOW VERIFICATION PENDING",
+      "counterpoints_to_test": [
+        "FXRP minting/wrapping is not the same as burning XRP; backing can return to circulation through redemption.",
+        "Locked/wrapped supply may reduce immediate liquid float but does not by itself establish net buying pressure or a price impact.",
+        "Verify the 100-million figure against timestamped, independently reproducible on-chain and bridge data."
+      ],
+      "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer."
     }
   ],
   "required_cross_corroboration_domains": [
@@ -266,9 +295,10 @@
       "https://glasp.co/youtube/cxeX_eu_2H0",
       "https://www.youtube.com/watch?v=8xiy8w2YlfY",
       "https://www.youtube.com/watch?v=pFru4idBTMA",
-      "https://www.youtube.com/watch?v=Gy4BuGhAWE8"
+      "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "https://www.youtube.com/watch?v=qtT2hLeFkM0"
     ],
-    "last_updated_at_utc": "2026-10-26T23:10:00Z"
+    "last_updated_at_utc": "2026-10-26T23:35:00Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
