@@ -1600,7 +1600,7 @@
   "repository_audit": {
     "main_tip_sha": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
     "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
-    "latest_main_commit_ci": "No associated workflow run or status was returned for this [skip ci] commit in the current query; this is not a pass.",
+    "latest_main_commit_ci": "The combined-status query returned no statuses. The workflow-run endpoint used in this run returns only PR-triggered runs and returned none for this commit. This is not a CI pass and does not prove that no other workflow history exists.",
     "current_signal": {
       "timestamp": "2026-10-26T22:29:38.241936Z",
       "score": 44,
