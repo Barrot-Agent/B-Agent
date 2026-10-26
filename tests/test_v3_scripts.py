@@ -438,3 +438,90 @@ def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
         join_literal("144-", "agent ", "council"),
     ):
         assert term not in source
+
+
+# Run 84 signal-integrity regression tests. These validate signal semantics,
+# not calibrated price-forecast performance.
+def test_emit_signal_parser_rejects_malformed_provider_output() -> None:
+    import pytest
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_parser_run84")
+    assert module._score_from_text('{"score":71,"confidence":0.8,"label":"bullish"}') == (71, 0.8, "bullish")
+    for payload in (
+        "not-json", "[]", "null", '{"score":true,"confidence":0.5,"label":"neutral"}',
+        '{"score":101,"confidence":0.5,"label":"bullish"}',
+        '{"score":50,"confidence":NaN,"label":"neutral"}',
+        '{"score":50,"confidence":0.5,"label":"unsupported"}',
+        '{"score":50,"confidence":0.5}',
+    ):
+        with pytest.raises(ValueError):
+            module._score_from_text(payload)
+
+
+def test_emit_signal_news_score_excludes_academic_and_bad_timestamps(tmp_path: Path) -> None:
+    from datetime import datetime, timedelta, timezone
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_news_run84")
+    now = datetime.now(timezone.utc)
+    valid_ts = now.isoformat()
+    rows = [
+        {"source":"Reuters", "distilled":True, "ingested_at":valid_ts, "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"valid news"},
+        {"source":"academic", "distilled":True, "ingested_at":valid_ts, "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"paper"},
+        {"source":"Crossref", "distilled":True, "ingested_at":valid_ts, "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"metadata record"},
+        {"source":"Reuters", "distilled":True, "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"missing timestamp"},
+        {"source":"Reuters", "distilled":True, "ingested_at":"2026-10-25T15:00:00", "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"naive timestamp"},
+        {"source":"Reuters", "distilled":True, "ingested_at":(now-timedelta(hours=80)).isoformat(), "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"stale"},
+        {"source":"Reuters", "distilled":True, "ingested_at":(now+timedelta(minutes=10)).isoformat(), "distill":{"xrp_relevance":1,"sentiment":"bullish"}, "title":"future"},
+    ]
+    path = tmp_path / "knowledge.jsonl"
+    path.write_text("\n".join(json.dumps(row) for row in rows) + "\n", encoding="utf-8")
+    score, count, headlines = module._news_score(path=str(path))
+    assert (score, count) == (100, 1)
+    assert headlines == ["[bullish] valid news"]
+
+
+def test_emit_signal_provider_failure_is_unavailable_not_bearish_zero(monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_provider_failure_run84")
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.delenv("GH_MODELS_TOKEN", raising=False)
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    model_score, confidence, source = module.analyze_signal("test")
+    assert model_score is None
+    assert confidence == 0.0
+    assert "sentiment unavailable" in source
+
+
+def test_emit_signal_provider_failure_never_publishes_midpoint(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_main_unavailable_run84")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.delenv("GH_MODELS_TOKEN", raising=False)
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    monkeypatch.setattr(module, "_news_score", lambda: (88, 11, ["[bullish] sample headline"]))
+    class Response:
+        def json(self):
+            return {"ripple":{"usd":1.30}}
+    monkeypatch.setattr(module.requests, "get", lambda *args, **kwargs: Response())
+    module.main()
+    record = json.loads((tmp_path / "web" / "latest_signal.json").read_text(encoding="utf-8"))
+    assert record["score"] is None
+    assert record["news_score"] == 88
+    assert record["signal_status"] == "news_only"
+    assert record["score_basis"] == "news"
+    assert record["forecast_status"] == "NOT_ISSUED"
+    assert record["model_available"] is False
+
+
+def test_emit_signal_valid_model_and_news_are_explicitly_separated(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_main_blend_run84")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(module, "_news_score", lambda: (88, 11, ["[bullish] sample headline"]))
+    monkeypatch.setattr(module, "analyze_signal", lambda _text: (63, 0.72, "github:neutral"))
+    class Response:
+        def json(self):
+            return {"ripple":{"usd":1.30}}
+    monkeypatch.setattr(module.requests, "get", lambda *args, **kwargs: Response())
+    module.main()
+    record = json.loads((tmp_path / "web" / "latest_signal.json").read_text(encoding="utf-8"))
+    assert record["score"] == 76
+    assert record["model_score"] == 63
+    assert record["signal_status"] == "model_and_news"
+    assert record["forecast_status"] == "NOT_ISSUED"
