@@ -6,7 +6,7 @@ Barrot (Groq) makes a real buy/sell/hold decision against real current prices.
 All positions and cash are SIMULATED. No Coinbase API key used or needed here.
 """
 
-import os, json, urllib.request, urllib.error
+import os, json, math, urllib.request, urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -74,6 +74,42 @@ def extract_json(text):
         return None
 
 
+
+def normalize_decision(decision):
+    """Fail closed on malformed model output before simulated state can change."""
+    def invalid(reason):
+        return {
+            "action": "hold",
+            "amount_usd": 0.0,
+            "reasoning": f"INVALID_DECISION: {reason}",
+        }
+
+    if not isinstance(decision, dict):
+        return invalid("decision must be a JSON object")
+
+    action = decision.get("action")
+    if not isinstance(action, str) or action.lower() not in {"buy", "sell", "hold"}:
+        return invalid("action must be buy, sell, or hold")
+    action = action.lower()
+
+    raw_amount = decision.get("amount_usd", 0)
+    if isinstance(raw_amount, bool) or raw_amount is None:
+        return invalid("amount_usd must be a finite non-negative number")
+    try:
+        amount = float(raw_amount)
+    except (TypeError, ValueError, OverflowError):
+        return invalid("amount_usd must be a finite non-negative number")
+    if not math.isfinite(amount) or amount < 0:
+        return invalid("amount_usd must be a finite non-negative number")
+
+    reasoning = decision.get("reasoning", "")
+    if not isinstance(reasoning, str):
+        return invalid("reasoning must be text")
+
+    if action == "hold":
+        amount = 0.0
+    return {"action": action, "amount_usd": amount, "reasoning": reasoning}
+
 def load_state():
     if STATE_FILE.exists():
         try:
@@ -121,12 +157,22 @@ Output ONLY JSON: {{"action": "buy|sell|hold", "amount_usd": 0, "reasoning": "..
     parsed = extract_json(response)
     if not parsed:
         return {"action": "hold", "amount_usd": 0, "reasoning": "failed to parse decision"}
-    return parsed
+    return normalize_decision(parsed)
 
 
 def execute_paper_trade(state, decision, current_price):
-    action = decision.get("action", "hold")
-    amount_usd = float(decision.get("amount_usd", 0) or 0)
+    decision = normalize_decision(decision)
+    if decision["reasoning"].startswith("INVALID_DECISION:"):
+        return "held -- invalid paper decision"
+
+    if isinstance(current_price, bool) or not isinstance(current_price, (int, float)):
+        return "held -- invalid current price"
+    if not math.isfinite(float(current_price)) or float(current_price) <= 0:
+        return "held -- invalid current price"
+    current_price = float(current_price)
+
+    action = decision["action"]
+    amount_usd = decision["amount_usd"]
 
     if action == "buy" and amount_usd > 0:
         amount_usd = min(amount_usd, state["cash_usd"] * 0.2, state["cash_usd"])
@@ -168,7 +214,14 @@ def run():
     if not ticker:
         print("Could not fetch real ticker data -- aborting this cycle")
         raise SystemExit(1)
-    current_price = float(ticker["price"])
+    try:
+        current_price = float(ticker["price"])
+    except (KeyError, TypeError, ValueError, OverflowError):
+        print("Coinbase ticker returned an invalid price -- aborting this cycle")
+        raise SystemExit(1)
+    if not math.isfinite(current_price) or current_price <= 0:
+        print("Coinbase ticker returned a non-finite or non-positive price -- aborting this cycle")
+        raise SystemExit(1)
     recent_trades = fetch_recent_trades(PRODUCT_ID)
 
     state = load_state()
