@@ -33,6 +33,7 @@ import pandas as pd
 from kaggle.api.kaggle_api_extended import KaggleApiExtended
 from sklearn.dummy import DummyClassifier, DummyRegressor
 from sklearn.preprocessing import LabelEncoder
+from kaggle_submission_policy import submissions_allowed
 
 logging.basicConfig(
     level=logging.INFO,
@@ -193,16 +194,19 @@ def _train_and_predict(comp_dir: Path) -> Optional[Path]:
     return out_path
 
 
-def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> None:
+def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> bool:
+    """Submit one prediction file; return whether the API accepted the request."""
     try:
         api.competition_submit(
             file_name=str(submission_path),
             message=SUBMISSION_MESSAGE,
             competition=competition,
         )
-        log.info("✅ Submitted to %s", competition)
+        log.info("Submitted to %s", competition)
+        return True
     except Exception as exc:
         log.warning("Submission to %s failed: %s", competition, exc)
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -229,8 +233,13 @@ def main() -> None:
             results.append({"competition": name, "status": "skipped (data parse error)"})
             continue
 
-        _submit(api, name, submission_path)
-        results.append({"competition": name, "status": "submitted"})
+        if submissions_allowed():
+            submitted = _submit(api, name, submission_path)
+            status = "submitted" if submitted else "submission failed"
+        else:
+            status = "dry-run (submission disabled)"
+            log.info("Submission disabled by default; generated file retained at %s", submission_path)
+        results.append({"competition": name, "status": status})
 
     log.info("\n=== Summary ===")
     for r in results:

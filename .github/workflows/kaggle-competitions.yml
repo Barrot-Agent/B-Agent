@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '0 0 * * *'   # daily at 00:00 UTC
   workflow_dispatch:
+    inputs:
+      allow_submissions:
+        description: "Actually submit generated baseline predictions to Kaggle (external action)"
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   kaggle-auto:
@@ -28,5 +34,6 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-          KAGGLE_MAX_COMPETITIONS: '5'
-        run: python kaggle_competitions_automation.py
+          KAGGLE_ALLOW_SUBMISSIONS: ${{ github.event_name == 'workflow_dispatch' && inputs.allow_submissions == true }}
+          KAGGLE_MAX_COMPETITIONS: '1'
+        run: python scripts/kaggle_competitions_automation.py
