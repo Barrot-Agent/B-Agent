@@ -47,6 +47,7 @@ jobs:
             tests/test_confidence_calibration.py \
             tests/test_weighted_corroboration.py \
             tests/test_risk_manager.py \
+            tests/test_xrp_market_data_gate.py \
             tests/test_coinbase_trader.py \
             tests/test_repository_repair.py \
             tests/test_v3_scripts.py \
