@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1122,
-    "btc_entries": 1151
+    "btc_entries": 1152
   },
-  "unique_entities_profiled": 962,
+  "unique_entities_profiled": 964,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -931,6 +931,23 @@
       ]
     },
     {
+      "entity": "Standard Chartered",
+      "total_mentions": 6,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
+        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
+        "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance"
+      ]
+    },
+    {
       "entity": "South Korea",
       "total_mentions": 6,
       "bullish": 5,
@@ -1161,23 +1178,6 @@
         "Riot\u2019s Anthropic Deal Shows Bitcoin Miners Are Moving Deeper Into AI Compute",
         "ARK Brings $1.3B Venture Fund Onchain Through Securitize",
         "Anthropic strikes $9B compute deal with Bitcoin miner Riot: Report"
-      ]
-    },
-    {
-      "entity": "Standard Chartered",
-      "total_mentions": 5,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "\u2018Not Looking Good\u2019\u2014XRP Price Shock As Standard Chartered Holds $28 - Forbes",
-        "Standard Chartered analyst eyes $100K BTC as US Treasury doubles long-end buybacks",
-        "Standard Chartered makes new Bitcoin prediction on Treasury news - Yahoo Finance"
       ]
     },
     {
@@ -14165,6 +14165,34 @@
       ],
       "example_headlines": [
         "Polygon Opens Its Money Stack To TRON\u2019s $94 Billion USDT Market"
+      ]
+    },
+    {
+      "entity": "Zodia Custody",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Standard Chartered Moves To Take Full Control Of Zodia Custody"
+      ]
+    },
+    {
+      "entity": "Standard Chartered I H Limited",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Standard Chartered Moves To Take Full Control Of Zodia Custody"
       ]
     },
     {
