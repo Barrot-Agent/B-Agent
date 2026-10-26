@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1103,
+    "xrp_entries": 1106,
     "btc_entries": 1138
   },
-  "unique_entities_profiled": 943,
+  "unique_entities_profiled": 947,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 274,
-      "bullish": 175,
-      "neutral": 43,
+      "total_mentions": 277,
+      "bullish": 177,
+      "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.434,
+      "net_sentiment_score": 0.437,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 213,
+      "total_mentions": 214,
       "bullish": 138,
-      "neutral": 38,
+      "neutral": 39,
       "bearish": 37,
-      "net_sentiment_score": 0.474,
+      "net_sentiment_score": 0.472,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -210,11 +210,11 @@
     },
     {
       "entity": "Ripple Labs",
-      "total_mentions": 22,
+      "total_mentions": 23,
       "bullish": 15,
-      "neutral": 4,
+      "neutral": 5,
       "bearish": 3,
-      "net_sentiment_score": 0.545,
+      "net_sentiment_score": 0.522,
       "assets_seen_in": [
         "XRP"
       ],
@@ -410,6 +410,22 @@
       ]
     },
     {
+      "entity": "MEXC",
+      "total_mentions": 13,
+      "bullish": 12,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.923,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
+        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
+        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
+      ]
+    },
+    {
       "entity": "The Motley Fool",
       "total_mentions": 12,
       "bullish": 9,
@@ -441,22 +457,6 @@
         "BlackRock Cuts IBIT In-Kind Conversion Minimum To $1M",
         "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
         "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
-      ]
-    },
-    {
-      "entity": "MEXC",
-      "total_mentions": 12,
-      "bullish": 11,
-      "neutral": 1,
-      "bearish": 0,
-      "net_sentiment_score": 0.917,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
-        "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
-        "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc"
       ]
     },
     {
@@ -696,6 +696,22 @@
       ]
     },
     {
+      "entity": "FXStreet",
+      "total_mentions": 8,
+      "bullish": 5,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.25,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
+        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
+        "Why is XRP rallying? - FXStreet"
+      ]
+    },
+    {
       "entity": "Nasdaq",
       "total_mentions": 8,
       "bullish": 8,
@@ -780,22 +796,6 @@
       ]
     },
     {
-      "entity": "FXStreet",
-      "total_mentions": 7,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": 0.143,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
-        "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
-        "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
       "entity": "U.S. District Court",
       "total_mentions": 7,
       "bullish": 4,
@@ -843,6 +843,23 @@
         "New XRP Ledger amendments target $530 million in tokenized Wall Street assets - coindesk.com",
         "Ripple (XRP) Makes Major Wall Street Push With New Institutional Trading Business - CryptoPotato",
         "Ripple Is Now Brokering Wall Street Equities. Where Does XRP Fit? - 24/7 Wall St."
+      ]
+    },
+    {
+      "entity": "Hyperliquid",
+      "total_mentions": 7,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": 0.143,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
+        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
+        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
       ]
     },
     {
@@ -931,23 +948,6 @@
       ]
     },
     {
-      "entity": "Hyperliquid",
-      "total_mentions": 6,
-      "bullish": 4,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
-        "Robinhood Chain Revenue Tops Ethereum In 24-Hour App Metrics",
-        "21Shares Sets New Staking Payouts Across Five Crypto ETFs"
-      ]
-    },
-    {
       "entity": "TRON DAO",
       "total_mentions": 6,
       "bullish": 4,
@@ -1010,6 +1010,22 @@
         "XRP Climbs After SBI Holdings Valued Stake In Ripple At $41.2bn - MarketForces Africa",
         "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
         "XRP Price Tanks On Corporate Selloffs, Clarity Act Delay - MarketForces Africa"
+      ]
+    },
+    {
+      "entity": "TheStreet",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 2,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
+        "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
+        "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
       ]
     },
     {
@@ -1214,6 +1230,23 @@
       ]
     },
     {
+      "entity": "DOGE",
+      "total_mentions": 5,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 3,
+      "net_sentiment_score": -0.2,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
+        "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
+        "MEXC Leads SOL and DOGE Market-Price Liquidity in CoinGecko\u2019s 2026 CEX Report"
+      ]
+    },
+    {
       "entity": "Avalanche",
       "total_mentions": 5,
       "bullish": 4,
@@ -1395,19 +1428,19 @@
       ]
     },
     {
-      "entity": "TheStreet",
+      "entity": "Escrow",
       "total_mentions": 4,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.0,
+      "bullish": 3,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.75,
       "assets_seen_in": [
         "XRP"
       ],
       "example_headlines": [
-        "Crypto analyst unveils one factor that could send XRP to $100 trillion - thestreet.com",
-        "XRP holders can now borrow Ripple's stablecoin - thestreet.com",
-        "Nearly 1 billion XRP just vanished from market, and Ripple had nothing to do with it - thestreet.com"
+        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
+        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com"
       ]
     },
     {
@@ -1511,23 +1544,6 @@
       ]
     },
     {
-      "entity": "DOGE",
-      "total_mentions": 4,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 3,
-      "net_sentiment_score": -0.5,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "CleanCore Dumps Dogecoin Treasury To Fund $100M AI Pivot",
-        "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
-        "CleanCore\u2019s $800M AI Contract Shows Dogecoin Treasury Firms Are Changing Shape"
-      ]
-    },
-    {
       "entity": "US spot Bitcoin ETF",
       "total_mentions": 4,
       "bullish": 2,
@@ -1592,6 +1608,22 @@
         "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
         "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
         "Top Ripple Price Predictions as XRP Reclaims $1.50 - CryptoRank"
+      ]
+    },
+    {
+      "entity": "SOL",
+      "total_mentions": 4,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.5,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
+        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
       ]
     },
     {
@@ -1808,22 +1840,6 @@
         "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "US hints at more yen intervention: Five things to know in Bitcoin this week"
-      ]
-    },
-    {
-      "entity": "Escrow",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Gains As Ripple Releases $1bn From Escrow Before Protocol Update - MarketForces Africa",
-        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - Yahoo Finance",
-        "Ripple Locks 1B XRP Back in Escrow as Viral $6,000 XRP Model Sparks Debate - CCN.com"
       ]
     },
     {
@@ -2277,22 +2293,6 @@
         "Ethereum ETFs See Positive Inflows As September Trading Opens",
         "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and "
-      ]
-    },
-    {
-      "entity": "SOL",
-      "total_mentions": 3,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.333,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Japan\u2019s Remixpoint dumps altcoins, leaves 1,506 BTC as sole crypto bet",
-        "DeFi Development Corp Adds 47,706 SOL As Treasury Passes 2.5M Tokens"
       ]
     },
     {
@@ -5114,6 +5114,22 @@
       "example_headlines": [
         "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
         "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
+      ]
+    },
+    {
+      "entity": "Crypto.com",
+      "total_mentions": 2,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "House Oversight Chair Comer Probes Crypto.com, Hyperliquid & PredictIt Over Identity Checks",
+        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
       ]
     },
     {
@@ -10666,6 +10682,20 @@
       ]
     },
     {
+      "entity": "CoinGecko",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC Leads SOL and DOGE Market-Price Liquidity in CoinGecko\u2019s 2026 CEX Report"
+      ]
+    },
+    {
       "entity": "SWIFT\u2011Ripple partnership",
       "total_mentions": 1,
       "bullish": 0,
@@ -10691,6 +10721,48 @@
       ],
       "example_headlines": [
         "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure"
+      ]
+    },
+    {
+      "entity": "James Comer",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "House Oversight Chair Comer Probes Crypto.com, Hyperliquid & PredictIt Over Identity Checks"
+      ]
+    },
+    {
+      "entity": "PredictIt",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "House Oversight Chair Comer Probes Crypto.com, Hyperliquid & PredictIt Over Identity Checks"
+      ]
+    },
+    {
+      "entity": "U.S. House Oversight Committee",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": -1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "House Oversight Chair Comer Probes Crypto.com, Hyperliquid & PredictIt Over Identity Checks"
       ]
     },
     {
@@ -11755,20 +11827,6 @@
       ],
       "example_headlines": [
         "Bitcoin slides on the final day of July while equities boom - CoinDesk"
-      ]
-    },
-    {
-      "entity": "Crypto.com",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
       ]
     },
     {
