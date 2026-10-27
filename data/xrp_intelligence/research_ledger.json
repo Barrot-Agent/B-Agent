@@ -16,10 +16,10 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T21:05:14Z",
+    "captured_at_utc": "2026-10-27T21:08:25Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+      "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -49,8 +49,12 @@
           "title": "Research: add evidence-led XRP intelligence ledger snapshot",
           "state": "open",
           "draft": true,
-          "head_sha": "40740433a977fdf46b8c39ffbf9424dfa7f5be10",
-          "mergeable": true
+          "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success",
+            "Merge disabled pending gate verification": "success"
+          }
         },
         {
           "number": 1202,
@@ -68,6 +72,88 @@
         "id": 10863829,
         "name": "Fall Back",
         "enforcement": "disabled"
+      },
+      "current_main_commit": {
+        "message": "Use low reasoning effort for concise bundle generation (#1218)",
+        "authored_at_utc": "2026-10-27T21:06:48Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+      },
+      "current_ci": {
+        "repository": "Barrot-Agent/B-Agent",
+        "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+        "main_commit": {
+          "message": "Use low reasoning effort for concise bundle generation (#1218)",
+          "authored_at_utc": "2026-10-27T21:06:48Z",
+          "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+        },
+        "main_branch_protected": true,
+        "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+        "main_ci": {
+          "run_id": 40583993078,
+          "conclusion": "success",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078"
+        },
+        "main_databricks_deploy": {
+          "run_id": 40583993212,
+          "conclusion": "failure",
+          "root_cause": "Main workflow still calls python deploy_databricks.py while the script is under scripts/deploy_databricks.py.",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212"
+        },
+        "main_operations_pipeline": {
+          "run_id": 40583993172,
+          "conclusion": "failure",
+          "root_cause": "Push rejected as non-fast-forward. This confirms a direct-push failure; whether a concurrent workflow caused it remains unproven.",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172"
+        },
+        "approval_workflow_anomaly": {
+          "run_id": 40584131729,
+          "event": "push",
+          "conclusion": "failure",
+          "jobs_returned": 0,
+          "root_cause": "UNRESOLVED. The currently fetched workflow definition declares workflow_dispatch only, but the recorded run event is push; exact triggering semantics still require diagnosis.",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584131729"
+        },
+        "research_pr_validation": {
+          "pr": 1195,
+          "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+          "ci_run_id": 40584140982,
+          "ci": "success",
+          "gate_run_id": 40584140846,
+          "gate": "success",
+          "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+          "note": "These checks validate repository tests and fail-closed merge gate only; they do not validate prediction skill or deploy the research system."
+        },
+        "safety_prs": [
+          {
+            "pr": 1193,
+            "mergeable": false,
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+            "state": "open",
+            "note": "Fail-closed signal-integrity fix remains unmerged."
+          },
+          {
+            "pr": 1194,
+            "mergeable": false,
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+            "state": "open",
+            "note": "Read-only merge-queue safety fix remains unmerged; main workflow remains mutation-capable."
+          }
+        ],
+        "recent_merged_prs": [
+          {
+            "pr": 1217,
+            "merged": true,
+            "merge_commit_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1217"
+          },
+          {
+            "pr": 1218,
+            "merged": true,
+            "merge_commit_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
+          }
+        ],
+        "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
       }
     },
     "critical_engine_findings": [
@@ -171,7 +257,7 @@
         "id": "WORKFLOW-PUSH-RACE-006",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "critical",
-        "status": "DIRECT_MAIN_WRITE_PATHS_CONFIRMED_ON_MAIN",
+        "status": "DIRECT_MAIN_WRITE_PATHS_CONFIRMED; NON_FAST_FORWARD_FAILURE_REPRODUCED_IN_LATEST_RUN",
         "files": [
           {
             "path": ".github/workflows/knowledge-signal-cycle.yml",
@@ -189,7 +275,7 @@
         "finding": "Main still has scheduled data workflows with contents:write and git push to main, plus a manually dispatchable merge queue with contents:write and pull-requests:write that can update branches and merge PRs. A fresh Barrot Operations Pipeline run failed on a non-fast-forward push. The failed push is consistent with a stale local ref or concurrent writer; a concurrent-run collision is plausible but not proven.",
         "consequence": "Mutable signal/history writes can race, fail or publish unreviewed generated data; the merge queue remains a separate consequential mutation path.",
         "proposed_fix": "Build an idempotent append-only research-data branch or reviewed promotion path with snapshot hashes and provenance, then remove direct generated-data pushes to main; keep merge queue read-only until effective approval/check gates are verified.",
-        "verification": "Current main workflow YAML and run logs inspected; no fix merged; no main change made."
+        "verification": "Latest main Barrot Operations Pipeline run 40583993172 failed with a non-fast-forward push. A concurrent writer remains a hypothesis, not a proven cause. Main still contains direct-write workflows; no changes were merged by this run."
       }
     ],
     "research_findings": [
@@ -821,38 +907,83 @@
       "forecast_rule": "Treat data releases as timestamped surprises relative to consensus, not just levels; freeze vintages to avoid revision leakage.",
       "fomc_status_at_cutoff": "FOMC meeting scheduled Oct 27–28, 2026; no October decision was available at this cutoff."
     },
-    "repository_ci": [
-      {
-        "run_id": 40583623783,
-        "name": "CI",
+    "repository_ci": {
+      "repository": "Barrot-Agent/B-Agent",
+      "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+      "main_commit": {
+        "message": "Use low reasoning effort for concise bundle generation (#1218)",
+        "authored_at_utc": "2026-10-27T21:06:48Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+      },
+      "main_branch_protected": true,
+      "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+      "main_ci": {
+        "run_id": 40583993078,
         "conclusion": "success",
-        "head_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583623783"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078"
       },
-      {
-        "run_id": 40583624160,
-        "name": "Deploy to Databricks",
+      "main_databricks_deploy": {
+        "run_id": 40583993212,
         "conclusion": "failure",
-        "root_cause": "workflow invokes python deploy_databricks.py; script exists at scripts/deploy_databricks.py",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583624160"
+        "root_cause": "Main workflow still calls python deploy_databricks.py while the script is under scripts/deploy_databricks.py.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212"
       },
-      {
-        "run_id": 40583623975,
-        "name": "Barrot Operations Pipeline",
+      "main_operations_pipeline": {
+        "run_id": 40583993172,
         "conclusion": "failure",
-        "root_cause": "push rejected as non-fast-forward; log advises pull before push; a concurrent-write race is plausible but not proven",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583623975"
+        "root_cause": "Push rejected as non-fast-forward. This confirms a direct-push failure; whether a concurrent workflow caused it remains unproven.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172"
       },
-      {
-        "run_id": 40583621671,
-        "name": ".github/workflows/barrot-approve-pr.yml",
-        "conclusion": "failure",
+      "approval_workflow_anomaly": {
+        "run_id": 40584131729,
         "event": "push",
+        "conclusion": "failure",
         "jobs_returned": 0,
-        "root_cause": "unresolved; do not infer cause from zero-job response",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583621671"
-      }
-    ]
+        "root_cause": "UNRESOLVED. The currently fetched workflow definition declares workflow_dispatch only, but the recorded run event is push; exact triggering semantics still require diagnosis.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584131729"
+      },
+      "research_pr_validation": {
+        "pr": 1195,
+        "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+        "ci_run_id": 40584140982,
+        "ci": "success",
+        "gate_run_id": 40584140846,
+        "gate": "success",
+        "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+        "note": "These checks validate repository tests and fail-closed merge gate only; they do not validate prediction skill or deploy the research system."
+      },
+      "safety_prs": [
+        {
+          "pr": 1193,
+          "mergeable": false,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+          "state": "open",
+          "note": "Fail-closed signal-integrity fix remains unmerged."
+        },
+        {
+          "pr": 1194,
+          "mergeable": false,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+          "state": "open",
+          "note": "Read-only merge-queue safety fix remains unmerged; main workflow remains mutation-capable."
+        }
+      ],
+      "recent_merged_prs": [
+        {
+          "pr": 1217,
+          "merged": true,
+          "merge_commit_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1217"
+        },
+        {
+          "pr": 1218,
+          "merged": true,
+          "merge_commit_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
+        }
+      ],
+      "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
+    }
   },
   "sources": [
     {
@@ -1245,6 +1376,23 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED",
         "market_data_approved_for_model": "FALSE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:08:25Z",
+      "update_type": "APPEND_ONLY_REPOSITORY_CI_DELTA",
+      "snapshot_id": "XRP-REPO-DELTA-2026-10-27T210825Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2108Z.json",
+      "snapshot_blob_sha": "01a7f3ccb92c2eedfeec3ec2c115d0d22efcfc69",
+      "details": "Refreshed the research handoff after main advanced from cdbd5fb2 to 6c91a862 through merged PR #1218. Confirmed research PR #1195 exact-head CI and fail-closed gate passed. Main CI passed, while Databricks deployment and Barrot Operations Pipeline failed; the approval workflow still reports push-event failures with zero jobs and unresolved cause.",
+      "validation": {
+        "json_parse": "PASS",
+        "main_sha_refreshed": "PASS",
+        "research_pr_tests": "PASS",
+        "research_pr_fail_closed_gate": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
       }
     }
   ]
