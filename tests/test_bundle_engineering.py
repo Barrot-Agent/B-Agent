@@ -323,3 +323,27 @@ def test_controller_recovers_once_from_malformed_json():
     assert calls["count"] == 2
     assert result.status == "READY_FOR_EXECUTION_REVIEW"
 
+def test_controller_recovers_once_from_empty_completion():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    bundle = sample_bundle()
+    calls = {"count": 0}
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            calls["count"] += 1
+            if calls["count"] == 1:
+                raise RuntimeError("Groq returned an empty completion.")
+            assert "previous response was empty" in prompt.lower()
+            return json.dumps(bundle)
+
+    result = BundleEngineeringController(FakeBrain()).run(
+        objective=bundle["objective"],
+        constraints=bundle["constraints"],
+    )
+
+    assert calls["count"] == 2
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+
