@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "record_type": "xrp_intelligence_research_ledger",
   "ledger_policy": {
-    "purpose": "Durable, append-only evidence ledger for XRP ecosystem research and forecast-engine validation.",
+    "purpose": "Highest-priority Barrot mission: XRP intelligence and prediction-engine mastery, with Barrot V3 preserved as the execution and verification foundation.",
     "update_rule": "Append timestamped snapshots; never silently rewrite historical evidence, forecasts, or outcomes.",
     "evidence_classes": [
       "CONFIRMED_PRIMARY_SOURCE",
@@ -1101,7 +1101,33 @@
         ],
         "next_action": "Rebuild OI from venue-level public endpoints at a common UTC cutoff; separate perpetuals, dated futures and options; normalize USD/USDT/USDC conversions; preserve raw payload hashes."
       }
-    ]
+    ],
+    "mission_priority": {
+      "highest_priority": "XRP intelligence and prediction-engine mastery",
+      "execution_and_verification_foundation": "Barrot V3",
+      "operating_mode": "Quiet, sustained, non-disruptive research using lawful public or authorized sources",
+      "mandatory_controls": [
+        "Separate confirmed facts, sourced claims, inference, speculation, unknowns and disconfirming evidence.",
+        "No unauthorized access, deception, private data, manipulation or illegal activity.",
+        "No forecast without timestamped cutoff, fixed horizon, target, assumptions, probability/confidence, alternatives, model version and outcome scoring protocol.",
+        "No real-money use before walk-forward validation, calibration, leakage controls, drift monitoring and paper/shadow evaluation.",
+        "Preserve dirty worktrees and current V3 code; never reset, clean, stash, overwrite, discard, force-push, merge or make consequential external changes without approval.",
+        "Treat DESIGNED, EXECUTED and VERIFIED as distinct; record evidence for every claimed action.",
+        "Do not claim live collaboration across target platforms without tested authentication, permissions and end-to-end evidence."
+      ],
+      "target_platforms": [
+        "ChatGPT",
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "forecast_status": "NOT_ISSUED"
+    }
   },
   "sources": [
     {
@@ -1624,6 +1650,47 @@
         "main_modified": false,
         "merge_performed": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:13:07Z",
+      "update_type": "MISSION_PRIORITY_POLICY_LOCKED",
+      "details": "Made XRP intelligence and prediction-engine mastery the explicit highest-priority Barrot mission while retaining Barrot V3 as the execution and verification foundation. Recorded the nine target platforms, evidence standards, forecast validation requirements and non-destructive repository invariants in the durable ledger.",
+      "validation": {
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "relationship_source_integrity": "PASS",
+        "hypothesis_source_integrity": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "ci_status": "PENDING_FOR_THIS_COMMIT"
+      }
     }
-  ]
+  ],
+  "mission_priority": {
+    "highest_priority": "XRP intelligence and prediction-engine mastery",
+    "execution_and_verification_foundation": "Barrot V3",
+    "operating_mode": "Quiet, sustained, non-disruptive research using lawful public or authorized sources",
+    "mandatory_controls": [
+      "Separate confirmed facts, sourced claims, inference, speculation, unknowns and disconfirming evidence.",
+      "No unauthorized access, deception, private data, manipulation or illegal activity.",
+      "No forecast without timestamped cutoff, fixed horizon, target, assumptions, probability/confidence, alternatives, model version and outcome scoring protocol.",
+      "No real-money use before walk-forward validation, calibration, leakage controls, drift monitoring and paper/shadow evaluation.",
+      "Preserve dirty worktrees and current V3 code; never reset, clean, stash, overwrite, discard, force-push, merge or make consequential external changes without approval.",
+      "Treat DESIGNED, EXECUTED and VERIFIED as distinct; record evidence for every claimed action.",
+      "Do not claim live collaboration across target platforms without tested authentication, permissions and end-to-end evidence."
+    ],
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  }
 }
