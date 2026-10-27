@@ -236,8 +236,9 @@ def _groq_fallback_models(primary_model: str) -> list[str]:
         if configured
         else [
             "openai/gpt-oss-20b",
-            "llama-3.3-70b-versatile",
-            "qwen/qwen3-32b",
+            "llama-3.1-8b-instant",
+            "openai/gpt-oss-safeguard-20b",
+            "qwen/qwen3.8-27b",
         ]
     )
     seen = {primary_model}
@@ -254,6 +255,7 @@ def _send_groq_request(
     *,
     request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
     _model_fallback_attempted: bool = False,
+    _rate_limit_retry: bool = False,
 ) -> dict[str, Any]:
     if request_sender is not None:
         return request_sender(payload)
@@ -281,6 +283,22 @@ def _send_groq_request(
             raise RuntimeError(f"LLM tool conflict: {detail}") from exc
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
+        if exc.code == 429 and "tokens per minute" in lowered and not _rate_limit_retry:
+            retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
+            if retry_match:
+                retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
+                if 0 < retry_seconds <= 60:
+                    print(
+                        f"Groq per-minute rate limit reached; retrying current model once in {retry_seconds:.1f}s.",
+                        file=sys.stderr,
+                    )
+                    time.sleep(retry_seconds)
+                    return _send_groq_request(
+                        payload,
+                        request_sender=request_sender,
+                        _model_fallback_attempted=_model_fallback_attempted,
+                        _rate_limit_retry=True,
+                    )
         if exc.code == 429 and "tokens per day" in lowered and not _model_fallback_attempted:
             primary_model = str(payload.get("model") or MODEL)
             fallback_models = _groq_fallback_models(primary_model)
