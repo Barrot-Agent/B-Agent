@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate a signal summary and optional TTS without failing closed data open."""
 import json
+import math
 import os
 import sys
 import urllib.request
@@ -91,14 +92,18 @@ def speak(text):
 
 
 def signal_requires_fallback(signal):
-    """A zero-confidence or provider-failed signal must not receive model interpretation."""
+    """Reject invalid confidence and provider failures before model interpretation."""
     try:
         confidence = float(signal.get("confidence"))
     except (TypeError, ValueError):
         return True
+    # NaN passes ordinary <= comparisons, and infinities/out-of-range values
+    # are not valid probabilities. Fail closed before any model summary call.
+    if not math.isfinite(confidence) or not 0 < confidence <= 1:
+        return True
     source = str(signal.get("source", "")).lower()
     unavailable_markers = ("unavailable", "failed", "rate limit", "http 429")
-    return confidence <= 0 or any(marker in source for marker in unavailable_markers)
+    return any(marker in source for marker in unavailable_markers)
 
 
 def deterministic_summary(signal, forecast_blocked=None):
