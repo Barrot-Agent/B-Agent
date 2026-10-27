@@ -600,3 +600,13 @@ def test_barrot_groq_payload_uses_bounded_completion_budget(monkeypatch) -> None
 
     assert payload["max_tokens"] == 2048
 
+def test_barrot_bundle_authoring_caps_repository_context(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_bundle_context_budget_test",
+    )
+    assert module.MAX_TOOL_ROUNDS == 4
+    source = (REPO_ROOT / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
+    assert ")[:10000]," in source
+
