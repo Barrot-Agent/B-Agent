@@ -118,7 +118,7 @@ def test_news_gate_uses_published_event_time_and_accepts_rss_dates(tmp_path: Pat
         },
     ]
     path = tmp_path / "event_time_news.jsonl"
-    path.write_text("\\n".join(json.dumps(item) for item in entries) + "\\n", encoding="utf-8")
+    path.write_text("\n".join(json.dumps(item) for item in entries) + "\n", encoding="utf-8")
     score, count, headlines = module._news_score(path=str(path))
     assert score == 100
     assert count == 1
