@@ -33,6 +33,8 @@ from barrot_agent.orchestration.repository_repair import (
     RepositoryRepairController,
     WorkQueueController,
 )
+from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore
 from barrot_agent.research import (
     ScientificDiscoveryController,
     is_scientific_discovery_task,
@@ -794,23 +796,81 @@ def main() -> None:
     if not GROQ_KEY:
         raise SystemExit("GROQ_API_KEY not set")
 
+    work_id = f"{ISSUE or 'manual'}:{BRANCH}"
+    brain = ScriptBrain()
+    audit_context = build_audit_context(TITLE, TASK)
+    lifecycle_store = BundleLifecycleStore(ROOT)
+    bundle_constraints = [
+        "Preserve the exact user objective and constraints across revisions.",
+        "Do not perform consequential external actions without required authorization.",
+        "Never claim completion without recorded validation, commit, remote verification, and resolution evidence.",
+        "Use the existing RepositoryRepairController and WorkQueueController; do not create a parallel executor.",
+        "Bound retries, persist state and evidence, and stop safely on invalid output or failed gates.",
+    ]
+    try:
+        bundle_result = BundleEngineeringController(brain, max_revision_attempts=2).run(
+            objective=f"{TITLE.strip()}\n\n{TASK.strip()}".strip(),
+            constraints=bundle_constraints,
+            repository_context=(
+                audit_context.get("inventory", "")
+                + audit_context.get("file_context", "")
+                + audit_context.get("directory_context", "")
+            )[:18000],
+        )
+    except Exception as exc:  # fail closed before repository mutation
+        message = (
+            "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
+            f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+        )
+        post_issue_comment(message)
+        raise SystemExit(message) from exc
+
+    lifecycle_path = lifecycle_store.save_plan(work_id, bundle_result)
+    print(f"Bundle plan persisted: {lifecycle_path}")
+    print(
+        "Bundle gate:",
+        bundle_result.status,
+        "quality_score=",
+        bundle_result.review.quality_score,
+        "fingerprint=",
+        bundle_result.review.fingerprint,
+    )
+    if bundle_result.status != "READY_FOR_EXECUTION_REVIEW":
+        message = (
+            "Barrot bundle failed its deterministic quality gate; repository repair was not started.\n\n"
+            + json.dumps(bundle_result.to_dict(), indent=2)[:12000]
+        )
+        post_issue_comment(message)
+        raise SystemExit(1)
+
     controller = RepositoryRepairController(
-        brain=ScriptBrain(),
+        brain=brain,
         workspace=ROOT,
         workspace_verifier=verify_result,
     )
     queue = WorkQueueController(repair_controller=controller)
     work = queue.run(
-        work_id=f"{ISSUE or 'manual'}:{BRANCH}",
+        work_id=work_id,
         project_identity=build_project_identity(REPO),
         task_title=TITLE,
         task_body=TASK,
         issue_number=ISSUE,
         repo=REPO,
         branch=BRANCH,
-        audit_context=build_audit_context(TITLE, TASK),
+        audit_context=audit_context,
     )
     cycle = work.repair_cycle
+    cycle_data = cycle if isinstance(cycle, dict) else {}
+    lifecycle_store.record_execution(work_id, {
+        "status": cycle_data.get("status", getattr(work, "status", "UNKNOWN")),
+        "cycle_id": cycle_data.get("cycle_id"),
+        "queue_advanced": getattr(work, "queue_advanced", False),
+        "commit_sha": (cycle_data.get("commit") or {}).get("sha", ""),
+        "local_validation_passed": cycle_data.get("local_validation_passed"),
+        "remote_verified": (cycle_data.get("commit") or {}).get("remote_verified", False),
+        "resolution_verified": cycle_data.get("resolution_verified", False),
+        "failure": cycle_data.get("failure"),
+    })
 
     rendered = json.dumps(work.to_dict(), indent=2)
     print(rendered)
