@@ -287,3 +287,28 @@ A fresh vidIQ channel search was blocked by insufficient credits. No credits wer
 ## Run 9 verification — latest research head
 
 Exact head `a706b7ccdf68bd961cfcb3132d23ecf1773b370f` passed [CI run 40510936006](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510936006): **111 tests in 5.11 seconds**. Fail-closed gate [40510935876](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510935876) passed. PR #1170 remains draft and unmerged. The current-main integration is not verified; the research branch's base is 64 commits behind, with the observed difference limited to generated runtime/log/signal/knowledge-base/deployment-report files.
+
+
+## Run 10 — Current-main signal and repository safety review
+
+**Session clock supplied to this run:** 2026-10-27T11:10:00Z. The GitHub connector did not expose an independent retrieval timestamp. Do not treat Git author/committer timestamps as an independent wall clock.
+
+- Current main ref returned by GitHub: `ea8dc4d95b6336c42e553595de601100f0c61583`, commit message `Cross-analysis refresh [skip ci]`, commit timestamp `2026-10-27T13:56:42Z`. GitHub verification metadata reports the commit unsigned/unverified. The connector's workflow-run adapter returned no PR-triggered runs for this main SHA; this does not prove no CI ran.
+- Current `web/latest_signal.json` blob SHA: `4766b5bdb7d14115abd67f1a2b76bca0efe9ddee`, artifact timestamp `2026-10-27T13:34:46.507398Z`. It reports score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429. The headline sample is XRPL protocol/academic research. **Forecast remains `NOT_ISSUED`; exclude this snapshot from time-sensitive evaluation until cross-system time order is independently reconciled.**
+- Current `web/latest_signal_summary.json` blob SHA: `de9eb9fd5cee850b70ff396e6e80ddce85fb32d4`. It repeats score 44/confidence 0 and narrates positive technical interest without `summary_mode` or `forecast_status`. PR #1190's deterministic fallback is still draft and is not effective on main.
+- Main's `.github/workflows/merge-queue.yml` remains mutation-capable if manually dispatched: `contents: write`, `pull-requests: write`, `mode=all`, `max_prs=0` (unlimited), `dry_run=false`, branch-update API calls and merge commands. Do not dispatch it. Effective branch protection remains unverified.
+- Review of PR #1187 uncovered a regression in its proposed `.github/workflows/ci.yml` patch: it removes `tests/test_risk_manager.py` from the core test command while adding `tests/test_merge_queue_safety.py`. A fresh-main successor must retain the risk-manager suite and add the safety suite. PR #1187 remains draft and does not change main.
+- PR #1190 exact head `46c088f98c14810601251e611fe956cbc2b3b6a5` passed CI run [40510228609](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228609), 130 tests in 4.45 seconds, and fail-closed gate [40510228598](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228598). It remains draft/unmerged. Main advanced six commits from its recorded base; the 11-file base-to-main delta contains generated runtime/knowledge-base/signal data, not code/workflow files. The PR branch and main have diverged; current-main integration remains unverified.
+- The repository search returned **53 open PRs**. Keep existing branches and drafts intact; do not close duplicates automatically or merge.
+- Durable bundle after this checkpoint: **121 sources, 84 claims, 122 evidence records, 7 tracks, 52 graph nodes, 75 edges, and 19 competing hypotheses**. Duplicate source/claim/evidence IDs and broken source/claim/evidence references: zero.
+- The bundle and this handoff were updated on the existing research branch only. No main write, merge, force-push, workflow dispatch, or destructive worktree operation occurred.
+
+### Next actions
+
+1. Reconcile cross-system clock ordering with an independently measured retrieval timestamp; keep current signal out of time-sensitive forecasting until then.
+2. Create a fresh-main, draft-only merge-queue safety PR that removes mutation permissions/commands and preserves `tests/test_risk_manager.py` while adding the merge-queue regression tests.
+3. Recheck exact-head CI and fail-closed gate after the latest ledger/handoff commits; preserve PR #1170 as draft pending independent review and current-main integration.
+4. Review PR #1190's current base/head and required checks; do not merge automatically.
+5. Continue XRP feature-store work only with synchronized event-time spot/perpetual/OI/funding/basis/depth data; retain `NOT_ISSUED` until quality gates and fixed-horizon evaluation pass.
+6. Continue exact-phrase and public-video identity work; keep the two Kamilah/Camila channel IDs separate until first-party evidence establishes identity.
+
