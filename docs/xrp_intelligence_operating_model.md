@@ -450,3 +450,14 @@ No main-branch write, merge, force-push, workflow dispatch, real-money action, o
 
 - Added the explicit PR #1193 CI evidence record `XRP-E-PR1193-CI-20261027-RUN13C` after read-back detected its claim reference was present before the evidence object had been serialized. The next read-back must confirm all claim/evidence references resolve.
 - Bundle update commit: `ebc292b2f5927966c3ad7dbf5dabbf38fc80bc23`.
+
+
+### Run 13 merge-queue safety successor
+
+- Current main tip resolved as `f422acc504b4b539790b7611e6386a0c5c825b62`. Compared with shared research base `a3e0f0198510634420f925eef8cea384aca51b12`, main is 99 commits ahead; the 15-file delta consists only of generated runtime/log/signal/knowledge-base/audio/deployment-report artifacts, not code or workflow files.
+- Main `.github/workflows/merge-queue.yml` remains mutation-capable and must not be dispatched. The current file still grants write permissions and contains branch-update and merge commands; effective branch protection remains unverified.
+- Created fresh-main draft [PR #1194](https://github.com/Barrot-Agent/B-Agent/pull/1194), head `66c1be927a230e458c51b43eff308eec74253a47`, base `f422acc504b4b539790b7611e6386a0c5c825b62`. Its four-file diff replaces the merge queue with a manual-only/read-only no-op, preserves `tests/test_risk_manager.py`, adds merge-queue safety regression coverage, and updates documentation. Gate [40556571610](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556571610) passed; CI [40556571599](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556571599) was in progress at capture.
+- PR #1193's exact-head CI passed 130 tests and its gate passed. Main advanced one commit after its base; the only main-side delta is `AUTONOMOUS_DEPLOYMENT_REPORT.md`. PR #1193 remains draft/unmerged.
+- Updated machine-readable bundle commit: `a031f21bc17d76632991a0a35b8687539f06d379`. Re-read and validate all IDs and references after the update.
+
+No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
