@@ -2246,6 +2246,62 @@
         "Fail-closed gate run 40518284880 completed successfully; exact-head CI run 40518285106 remains queued at latest status read.",
         "Draft and unmerged; main unchanged."
       ]
+    },
+    {
+      "source_id": "SRC-GLASP-QSLBJGQD0MU-20261027",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "author_or_organization": "Glasp indexed video page; attributed creator Kamilah Stevenson",
+      "source_type": "third_party_video_index_and_partial_transcript",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "publication_date": "2025-12-14",
+      "source_commit": null,
+      "sections": [
+        "The Glasp page labels the creator Kamilah Stevenson and exposes a partial transcript opening that says “What's up? It's Camila Stevenson around here.”",
+        "YouTube video ID is present in the canonical YouTube URL: QslbjGQD0MU.",
+        "This third-party page is metadata/transcript evidence only; not proof of canonical channel ownership or truth of any financial claim."
+      ]
+    },
+    {
+      "source_id": "SRC-GLASP-CI0FH73LBCS-20261027",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "author_or_organization": "Glasp indexed video page; attributed creator Kamilah Stevenson",
+      "source_type": "third_party_video_index_and_partial_transcript",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "publication_date": "2026-01-13",
+      "source_commit": null,
+      "sections": [
+        "The Glasp page labels the creator Kamilah Stevenson and exposes a partial transcript opening that says “Hey, it's Camila Stevenson.”",
+        "YouTube video ID is present in the canonical YouTube URL: ci0FH73lbCs.",
+        "This third-party page is metadata/transcript evidence only; not proof of canonical channel ownership or truth of any financial claim."
+      ]
+    },
+    {
+      "source_id": "SRC-GLASP-RV0BAV0VLOGO-20261027",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "author_or_organization": "Glasp indexed video page; attributed creator Kamilah Stevenson",
+      "source_type": "third_party_video_index_and_partial_transcript",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "publication_date": "2026-03-19",
+      "source_commit": null,
+      "sections": [
+        "The Glasp page labels the creator Kamilah Stevenson; title and date visible, transcript body not exposed in the opened page.",
+        "YouTube video ID is present in the canonical YouTube URL: rv0BAV0vLgo.",
+        "This third-party page is metadata/transcript evidence only; not proof of canonical channel ownership or truth of any financial claim."
+      ]
+    },
+    {
+      "source_id": "SRC-GLASP-CXEXEU2H0-20261027",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "author_or_organization": "Glasp indexed video page; attributed creator Kamilah Stevenson",
+      "source_type": "third_party_video_index_and_partial_transcript",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "publication_date": "2026-01-15",
+      "source_commit": null,
+      "sections": [
+        "The Glasp page labels the creator Kamilah Stevenson and exposes a partial transcript opening that says “Hey, it's Camila Stevenson around here.”",
+        "YouTube video ID is present in the canonical YouTube URL: cxeX_eu_2H0.",
+        "This third-party page is metadata/transcript evidence only; not proof of canonical channel ownership or truth of any financial claim."
+      ]
     }
   ],
   "claims": [
@@ -4483,6 +4539,34 @@
         "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
         "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN10",
         "SRC-BARROT-PR1187-REVIEW-FINDING-20261027-RUN10"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-KAMILAH-CAMILA-ALIAS-20261027-RUN10",
+      "statement": "Four public Glasp index pages attribute videos to Kamilah Stevenson; two visible transcript excerpts self-identify the speaker as Camila Stevenson. This corroborates a spelling-variant lead and supports keeping these videos in the candidate inventory, but it does not prove that the two observed YouTube channel IDs belong to the same person. Full public-channel enumeration remains unverified.",
+      "domain": "creator_source_identity_and_video_provenance",
+      "claim_type": "third_party_index_metadata_observation",
+      "source": "SRC-GLASP-QSLBJGQD0MU-20261027",
+      "source_location": "https://glasp.co/youtube/QslbjGQD0MU",
+      "supporting_evidence": [
+        "XRP-E-KAMILAH-CAMILA-ALIAS-20261027-RUN10"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "THIRD_PARTY_METADATA_OBSERVED; IDENTITY_NOT_RESOLVED",
+      "independent_verification_status": "FOUR_GLasp_PAGES_READ; YOUTUBE_CHANNEL_PAGE_FETCH_THROTTLED; NO_FIRST_PARTY_CROSS_LINK",
+      "adversarial_status": "A third-party author label and transcript self-introduction do not establish channel ownership; two distinct channel IDs must remain separate absent first-party cross-link.",
+      "acceptance_status": "RETAIN_AS_CANDIDATE_SOURCE; DO_NOT_MERGE_CHANNEL_IDENTITIES",
+      "confidence": 0.96,
+      "assumptions": [
+        "Glasp pages accurately reflect the listed YouTube title/date and the visible partial transcript text.",
+        "A visible transcript excerpt is not a complete transcript and cannot establish the full set of claims made in the video."
+      ],
+      "provenance": [
+        "SRC-GLASP-QSLBJGQD0MU-20261027",
+        "SRC-GLASP-CI0FH73LBCS-20261027",
+        "SRC-GLASP-RV0BAV0VLOGO-20261027",
+        "SRC-GLASP-CXEXEU2H0-20261027"
       ],
       "timestamp": 1793099400
     }
@@ -6996,6 +7080,65 @@
         "gate_status": "success",
         "merged": false
       }
+    },
+    {
+      "evidence_id": "XRP-E-KAMILAH-CAMILA-ALIAS-20261027-RUN10",
+      "claim_id": "XRP-C-KAMILAH-CAMILA-ALIAS-20261027-RUN10",
+      "kind": "third_party_video_metadata_and_partial_transcript",
+      "summary": "Opened Glasp pages show: QslbjGQD0MU (Dec 14, 2025), ci0FH73lbCs (Jan 13, 2026), rv0BAV0vLgo (Mar 19, 2026), and cxeX_eu_2H0 (Jan 15, 2026), each attributed to Kamilah Stevenson. The visible transcript excerpts for QslbjGQD0MU and ci0FH73lbCs say the speaker is Camila Stevenson; cxeX_eu_2H0 also begins with Camila Stevenson. The YouTube channel page fetch was throttled and no first-party cross-link between candidate channel IDs was established.",
+      "source_id": "SRC-GLASP-QSLBJGQD0MU-20261027",
+      "source_location": "https://glasp.co/youtube/QslbjGQD0MU",
+      "status": "PARTIAL_VIDEO_METADATA_VERIFIED; CHANNEL_IDENTITY_UNRESOLVED",
+      "independence": "third-party index; videos share an attributed creator label, not independent confirmation of identity",
+      "provenance": [
+        "SRC-GLASP-QSLBJGQD0MU-20261027",
+        "SRC-GLASP-CI0FH73LBCS-20261027",
+        "SRC-GLASP-RV0BAV0VLOGO-20261027",
+        "SRC-GLASP-CXEXEU2H0-20261027"
+      ],
+      "details": {
+        "videos": [
+          {
+            "video_id": "QslbjGQD0MU",
+            "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+            "published_date": "2025-12-14",
+            "page_url": "https://glasp.co/youtube/QslbjGQD0MU",
+            "transcript_excerpt_available": true,
+            "transcript_self_name": "Camila Stevenson"
+          },
+          {
+            "video_id": "ci0FH73lbCs",
+            "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+            "published_date": "2026-01-13",
+            "page_url": "https://glasp.co/youtube/ci0FH73lbCs",
+            "transcript_excerpt_available": true,
+            "transcript_self_name": "Camila Stevenson"
+          },
+          {
+            "video_id": "rv0BAV0vLgo",
+            "title": "How Much XRP Do You ACTUALLY Need?",
+            "published_date": "2026-03-19",
+            "page_url": "https://glasp.co/youtube/rv0BAV0vLgo",
+            "transcript_excerpt_available": false,
+            "transcript_self_name": null
+          },
+          {
+            "video_id": "cxeX_eu_2H0",
+            "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+            "published_date": "2026-01-15",
+            "page_url": "https://glasp.co/youtube/cxeX_eu_2H0",
+            "transcript_excerpt_available": true,
+            "transcript_self_name": "Camila Stevenson"
+          }
+        ],
+        "canonical_channel_ids_observed": [
+          "UCqUPJMQdkCN6lsLVDnichPA",
+          "UCXm6KAr1WHF6UN7g5b2W7wg"
+        ],
+        "first_party_cross_link_found": false,
+        "full_inventory_verified": false,
+        "full_transcripts_reviewed": false
+      }
     }
   ],
   "tracks": [
@@ -7415,7 +7558,7 @@
       "question_id": "Q-2",
       "question": "Enumerate all public videos on Kamilah Stevenson's canonical channel and capture permitted transcript metadata/hash.",
       "priority": "HIGH",
-      "status": "BLOCKED_ON_COMPLETE_ENUMERATION_AND_TRANSCRIPT_ACCESS"
+      "status": "PARTIAL_INDEXED_INVENTORY; FOUR_GLasp_VIDEO_PAGES_RECHECKED; COMPLETE_PUBLIC_ENUMERATION_AND_TRANSCRIPT_HASHING_PENDING"
     },
     {
       "question_id": "Q-3",
@@ -7493,7 +7636,7 @@
       "question_id": "Q-16",
       "question": "Enumerate all public uploads on Kamilah Stevenson's canonical channel using the public uploads playlist/API with pagination; deduplicate videos, Shorts and archived lives; capture permitted transcript hashes and independently verify claims before using them as features.",
       "priority": "HIGH",
-      "status": "VIDIQ_RECENT_150_ROW_SAMPLE; 1,239 PROVIDER-REPORTED TOTAL; COMPLETE_ENUMERATION_PENDING"
+      "status": "PARTIAL_INDEXED_INVENTORY; FOUR_GLasp_VIDEO_PAGES_RECHECKED; COMPLETE_PUBLIC_ENUMERATION_AND_TRANSCRIPT_HASHING_PENDING"
     },
     {
       "question_id": "Q-17",
@@ -7505,7 +7648,7 @@
       "question_id": "Q-18",
       "question": "Recover the exact original source context for 'ASK Coin' and 'actual capital'; test the Ask Coin exchange listing only as a literal-name candidate and keep the intended referent unresolved until the original sentence/video timestamp is located.",
       "priority": "HIGH",
-      "status": "ASK_COIN_LITERAL_LISTING_CANDIDATE_ONLY; ACTUAL_CAPITAL_CONTEXT_MISSING"
+      "status": "EXACT_PHRASE_SEARCH_REPEATED_2026-10-27; ASK_COIN_LITERAL_LISTING_CANDIDATE_ONLY; ACTUAL_CAPITAL_ORIGINAL_CONTEXT_MISSING; INTENDED_REFERENT_UNRESOLVED"
     },
     {
       "question_id": "Q-SBI-VISA-XRP-CONVERSION-VOLUME-20261027",
@@ -7571,7 +7714,7 @@
       "question_id": "Q-YOUTUBE-CHANNEL-IDENTITY-20261027",
       "question": "Verify the first-party identity and canonical upload inventory for the channel referenced as Camilla/Camila/Kamilah Stevenson without merging distinct YouTube channel IDs.",
       "priority": "HIGH",
-      "status": "TWO_CHANNEL_IDS_OBSERVED; VIDIQ_CREDIT_BLOCK; FIRST_PARTY_CROSS_LINK_AND_FULL_ENUMERATION_PENDING"
+      "status": "TWO_CHANNEL_IDS_OBSERVED; FOUR_GLasp_PAGES_ATTRIBUTE_VIDEOS_TO_KAMILAH; VISIBLE_TRANSCRIPTS_USE_CAMILA; NO_FIRST_PARTY_CROSS_LINK; FULL_ENUMERATION_PENDING"
     }
   ],
   "relationship_graph": {
