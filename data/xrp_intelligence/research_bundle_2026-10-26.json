@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T11:02:28.000Z",
+    "captured_at_utc": "2026-10-27T11:05:00.000Z",
     "main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -1825,6 +1825,46 @@
         "Source field reports missing GitHub model credentials and Groq HTTP 429.",
         "Disposition: invalid for directional forecasting; no forecast issued."
       ]
+    },
+    {
+      "source_id": "SRC-SBI-FY2026-PRESENTATION-2026-05-01",
+      "title": "SBI Holdings FY2026 financial results presentation: Ripple equity stake and XRP distribution",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_investor_presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "publication_date": "2026-05-01",
+      "sections": [
+        "SBI describes its Ripple equity stake as approximately 9%.",
+        "The presentation separately diagrams XRP supply categories using quantities as of 2026-04-27, including market-circulating XRP, Ripple-held XRP, XRP in escrow and XRP burned as transaction fees.",
+        "The presentation does not provide a reconciled current direct XRP token inventory across every SBI Group legal entity."
+      ]
+    },
+    {
+      "source_id": "SRC-CRYPTO-NEWS-SBI-10B-XRP-CLARIFICATION-2026-02-16",
+      "title": "Report on SBI chairman's correction of claim that SBI holds $10 billion in XRP",
+      "author_or_organization": "crypto.news",
+      "source_type": "secondary_news_report_of_public_social_post",
+      "url": "https://crypto.news/sbi-holdings-says-10b-xrp-talk-is-false/",
+      "publication_date": "2026-02-16",
+      "sections": [
+        "The report quotes SBI chairman Yoshitaka Kitao as distinguishing approximately 9% ownership of Ripple Labs from direct ownership of $10 billion in XRP.",
+        "The article links to a public social-media post, but the original post content was not retrievable in this pass; treat the quotation as secondary-reported until the primary post is independently captured."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1188-CONFIDENCE-GUARD-20261027",
+      "title": "PR #1188: fail-closed validation for non-finite and out-of-range confidence",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_pull_request_and_ci",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1188",
+      "publication_date": "2026-10-27T11:04:56Z",
+      "source_commit": "0674e22870305a2f36386b004ac182a7a1561892",
+      "sections": [
+        "scripts/signal_summary.py now rejects NaN, positive/negative infinity, confidence <= 0, and confidence > 1 before model interpretation.",
+        "tests/test_signal_summary_fallback.py adds regression coverage for NaN, infinities, -0.01 and 1.01.",
+        "Exact-head CI run 40493439626 succeeded; fail-closed gate 40493439824 succeeded.",
+        "PR remains draft and unmerged; fix is not active on main."
+      ]
     }
   ],
   "claims": [
@@ -3506,6 +3546,58 @@
         "SRC-BARROT-MAIN-SIGNAL-20261027T103031Z"
       ],
       "timestamp": 1793098948
+    },
+    {
+      "claim_id": "XRP-C-SBI-RIPPLE-EQUITY-NOT-DIRECT-XRP-20261027",
+      "statement": "SBI Holdings' official FY2026 presentation describes an approximately 9% equity stake in Ripple and separately presents XRP supply/distribution categories. A February 2026 secondary report quotes SBI chairman Yoshitaka Kitao correcting a claim that SBI held $10 billion in XRP and distinguishing Ripple equity from token ownership. The equity stake must not be counted as a direct XRP token balance; these sources do not establish the exact current XRP inventory held directly across all SBI Group entities.",
+      "domain": "institutional_ownership_and_capital_classification",
+      "claim_type": "official_equity_disclosure_plus_secondary_report_of_public_correction",
+      "source": "SRC-SBI-FY2026-PRESENTATION-2026-05-01",
+      "source_location": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "supporting_evidence": [
+        "XRP-E-SBI-RIPPLE-EQUITY-STATED-20260501",
+        "XRP-E-SBI-10B-XRP-CLAIM-CORRECTION-20260216"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "EQUITY_STAKE_CONFIRMED_BY_SBI_PRESENTATION; DIRECT_TOKEN_INVENTORY_NOT_ESTABLISHED",
+      "independent_verification_status": "PRIMARY_SBI_PRESENTATION_PLUS_SECONDARY_REPORT; ORIGINAL_SOCIAL_POST_NOT_RETRIEVED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "EQUITY_VS_TOKEN_DISTINCTION_SUPPORTED; CURRENT_DIRECT_XRP_BALANCE_UNKNOWN",
+      "confidence": 0.94,
+      "assumptions": [
+        "The approximately 9% figure is a reported equity ownership interest and is not equivalent to direct XRP token ownership.",
+        "The secondary report's quotation should be upgraded only after primary-post capture or independent SBI confirmation."
+      ],
+      "provenance": [
+        "SRC-SBI-FY2026-PRESENTATION-2026-05-01",
+        "SRC-CRYPTO-NEWS-SBI-10B-XRP-CLARIFICATION-2026-02-16"
+      ],
+      "timestamp": 1793099100
+    },
+    {
+      "claim_id": "XRP-C-PR1188-CONFIDENCE-GUARD-20261027",
+      "statement": "Draft PR #1188 now rejects non-finite and out-of-range confidence values before model interpretation, with regression tests for NaN, positive/negative infinity, -0.01 and 1.01. Exact-head CI and the fail-closed gate passed on head 0674e22870305a2f36386b004ac182a7a1561892. The change is implemented and CI-verified on the draft branch, not merged or active on main.",
+      "domain": "prediction_engine_integrity_and_defensive_validation",
+      "claim_type": "repository_change_with_exact_head_ci_evidence",
+      "source": "SRC-BARROT-PR1188-CONFIDENCE-GUARD-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1188",
+      "supporting_evidence": [
+        "XRP-E-PR1188-CONFIDENCE-GUARD-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "BRANCH_IMPLEMENTED_AND_EXACT_HEAD_CI_PASS",
+      "independent_verification_status": "GITHUB_CI_RUNS_CONFIRMED; MAIN_NOT_CHANGED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "DRAFT_FIX_VERIFIED_ON_BRANCH; HUMAN_REVIEW_AND_MERGE_REQUIRED",
+      "confidence": 0.99,
+      "assumptions": [
+        "CI runs correspond to the exact branch head identified in the source record.",
+        "The confidence validator is one necessary input guard, not proof that the complete forecast is calibrated or valid."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1188-CONFIDENCE-GUARD-20261027"
+      ],
+      "timestamp": 1793099100
     }
   ],
   "evidence": [
@@ -5344,6 +5436,64 @@
         "realized_arc_volume": "UNKNOWN",
         "xrp_asset_use_or_substitution": "NOT_ESTABLISHED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-RIPPLE-EQUITY-STATED-20260501",
+      "claim_id": "XRP-C-SBI-RIPPLE-EQUITY-NOT-DIRECT-XRP-20261027",
+      "kind": "official_investor_presentation",
+      "summary": "SBI Holdings' FY2026 results presentation says SBI holds approximately 9% of Ripple and separately shows XRP distribution categories as of 2026-04-27. It distinguishes corporate equity exposure from the XRP supply diagram but does not publish a reconciled direct XRP inventory for every SBI entity.",
+      "source_id": "SRC-SBI-FY2026-PRESENTATION-2026-05-01",
+      "source_location": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "status": "OFFICIAL_EQUITY_STAKE_STATEMENT; DIRECT_TOKEN_INVENTORY_NOT_DISCLOSED",
+      "independence": "primary_company_investor_presentation",
+      "provenance": [
+        "SRC-SBI-FY2026-PRESENTATION-2026-05-01"
+      ],
+      "details": {
+        "reported_ripple_equity_stake": "approximately 9%",
+        "xrp_supply_snapshot_date": "2026-04-27",
+        "direct_sbi_group_xrp_balance": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-10B-XRP-CLAIM-CORRECTION-20260216",
+      "claim_id": "XRP-C-SBI-RIPPLE-EQUITY-NOT-DIRECT-XRP-20261027",
+      "kind": "secondary_report_of_public_social_post",
+      "summary": "A February 16, 2026 crypto.news article reports that SBI chairman Yoshitaka Kitao rejected the claim SBI held $10 billion in XRP and said the relevant exposure was around 9% of Ripple Labs. The original linked post was not directly retrieved in this pass.",
+      "source_id": "SRC-CRYPTO-NEWS-SBI-10B-XRP-CLARIFICATION-2026-02-16",
+      "source_location": "https://crypto.news/sbi-holdings-says-10b-xrp-talk-is-false/",
+      "status": "SECONDARY_REPORTED_QUOTE; PRIMARY_POST_RETRIEVAL_PENDING",
+      "independence": "secondary_news_report",
+      "provenance": [
+        "SRC-CRYPTO-NEWS-SBI-10B-XRP-CLARIFICATION-2026-02-16"
+      ],
+      "details": {
+        "reported_speaker": "Yoshitaka Kitao",
+        "reported_date": "2026-02-16",
+        "original_post_url": "https://x.com/yoshitaka_kitao/status/2022851705772138784",
+        "original_post_content_retrieved": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1188-CONFIDENCE-GUARD-20261027",
+      "claim_id": "XRP-C-PR1188-CONFIDENCE-GUARD-20261027",
+      "kind": "exact_head_ci_and_source_diff",
+      "summary": "On draft PR #1188 head 0674e22870305a2f36386b004ac182a7a1561892, signal_requires_fallback uses math.isfinite and requires 0 < confidence <= 1; regression tests cover NaN, infinities, negative and >1 values. CI run 40493439626 and fail-closed gate 40493439824 both completed successfully.",
+      "source_id": "SRC-BARROT-PR1188-CONFIDENCE-GUARD-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1188",
+      "status": "EXACT_HEAD_CI_PASS; PR_DRAFT_UNMERGED",
+      "independence": "repository_diff_plus_github_actions_run_metadata",
+      "provenance": [
+        "SRC-BARROT-PR1188-CONFIDENCE-GUARD-20261027"
+      ],
+      "details": {
+        "head_sha": "0674e22870305a2f36386b004ac182a7a1561892",
+        "ci_run_id": 40493439626,
+        "ci_conclusion": "success",
+        "fail_closed_run_id": 40493439824,
+        "fail_closed_conclusion": "success",
+        "main_modified": false
+      }
     }
   ],
   "tracks": [
@@ -6995,6 +7145,17 @@
           "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ],
         "caveat": "A validator role and stated collaboration do not imply exclusive alignment or abandonment of XRP-related businesses."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "Ripple",
+        "relationship_type": "APPROX_9_PERCENT_EQUITY_STAKE_REPORTED_BY_SBI",
+        "classification": "OFFICIAL_SBI_PRESENTATION; NOT_DIRECT_XRP_TOKEN_OWNERSHIP",
+        "confidence": 0.96,
+        "source_ids": [
+          "SRC-SBI-FY2026-PRESENTATION-2026-05-01"
+        ],
+        "caveat": "This is corporate equity exposure. It must not be treated as a direct XRP token balance; exact current token holdings across SBI Group entities remain unknown."
       }
     ]
   },
@@ -7942,6 +8103,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 1,
+      "action": "Review PR #1188's exact-head confidence guard: CI 40493439626 and fail-closed gate 40493439824 passed on 0674e22870305a2f36386b004ac182a7a1561892; keep draft unmerged pending independent review.",
+      "status": "BRANCH_CHANGE_AND_CI_VERIFIED; MAIN_UNCHANGED"
+    },
+    {
+      "priority": 1,
+      "action": "Capture the primary public statement attributed to SBI chairman Yoshitaka Kitao on the $10B XRP rumor; keep the equity/token distinction, but leave direct current SBI-group XRP inventory unknown unless official holdings data are disclosed.",
+      "status": "OFFICIAL_SBI_PRESENTATION_CONFIRMS_APPROX_9_PERCENT_RIPPLE_EQUITY; SECONDARY_REPORT_QUOTES_CORRECTION; ORIGINAL_POST_NOT_RETRIEVED"
+    },
     {
       "priority": 0,
       "action": "Monitor Circle Arc and SBI's stated USDC/JPYSC intent using verified contract, supply, redemption and event-time transfer data; compare with SBI-linked XRP remittance/reward flows and matched control corridors. Treat this as multi-rail intent, not proof of XRP substitution.",
