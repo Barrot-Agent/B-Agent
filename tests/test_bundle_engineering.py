@@ -248,3 +248,15 @@ def test_controller_rejects_objective_or_constraint_drift():
             objective="Teach Barrot to author and improve work bundles.",
             constraints=bundle["constraints"],
         )
+
+
+def test_revision_cannot_change_bundle_identity():
+    original = sample_bundle()
+    original["tasks"][0]["tests"] = []
+    revised = copy.deepcopy(original)
+    revised["revision"] = 2
+    revised["parent_fingerprint"] = bundle_fingerprint(original)
+    revised["bundle_id"] = "different-bundle"
+    revised["tasks"][0]["tests"] = ["python -m pytest -q tests/test_bundle_engineering.py"]
+    with pytest.raises(BundleEngineeringError, match="identity"):
+        validate_bundle_revision(original, revised)
