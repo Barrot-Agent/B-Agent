@@ -646,3 +646,51 @@ def test_tool_free_bundle_brain_uses_smaller_completion_budget(monkeypatch) -> N
     assert captured["max_tokens"] == 1024
     assert captured["response_format"] == {"type": "json_object"}
 
+def test_groq_json_validation_failure_retries_without_response_format(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_json_mode_fallback_test",
+    )
+    monkeypatch.setattr(module, "GROQ_KEY", "test-key")
+    seen: list[dict[str, object]] = []
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+        def read(self, *args, **kwargs):
+            del args, kwargs
+            return b'{"choices":[{"message":{"content":"{}"}}]}'
+
+    def fake_urlopen(request, timeout=0):
+        del timeout
+        payload = json.loads(request.data.decode("utf-8"))
+        seen.append(payload)
+        if "response_format" in payload:
+            raise urllib.error.HTTPError(
+                "https://api.groq.com/openai/v1/chat/completions",
+                400,
+                "Bad Request",
+                hdrs=None,
+                fp=io.BytesIO(b'{"error":{"code":"json_validate_failed","message":"Failed to validate JSON","failed_generation":""}}'),
+            )
+        return Response()
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    result = module._send_groq_request(
+        {"model": "openai/gpt-oss-20b", "messages": [], "response_format": {"type": "json_object"}}
+    )
+
+    assert result["choices"][0]["message"]["content"] == "{}"
+    assert len(seen) == 2
+    assert "response_format" in seen[0]
+    assert "response_format" not in seen[1]
+

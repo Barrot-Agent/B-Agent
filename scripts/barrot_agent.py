@@ -256,6 +256,7 @@ def _send_groq_request(
     request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
     _model_fallback_attempted: bool = False,
     _rate_limit_retry: bool = False,
+    _json_mode_retry: bool = False,
 ) -> dict[str, Any]:
     if request_sender is not None:
         return request_sender(payload)
@@ -281,6 +282,25 @@ def _send_groq_request(
             and "model called a tool" in lowered
         ):
             raise RuntimeError(f"LLM tool conflict: {detail}") from exc
+        if (
+            exc.code == 400
+            and "json_validate_failed" in lowered
+            and payload.get("response_format")
+            and not _json_mode_retry
+        ):
+            print(
+                "Groq rejected strict JSON mode; retrying once without response_format.",
+                file=sys.stderr,
+            )
+            fallback_payload = dict(payload)
+            fallback_payload.pop("response_format", None)
+            return _send_groq_request(
+                fallback_payload,
+                request_sender=request_sender,
+                _model_fallback_attempted=_model_fallback_attempted,
+                _rate_limit_retry=_rate_limit_retry,
+                _json_mode_retry=True,
+            )
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
         if exc.code == 429 and "tokens per minute" in lowered and not _rate_limit_retry:
