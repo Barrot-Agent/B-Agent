@@ -461,3 +461,11 @@ No main-branch write, merge, force-push, workflow dispatch, real-money action, o
 - Updated machine-readable bundle commit: `a031f21bc17d76632991a0a35b8687539f06d379`. Re-read and validate all IDs and references after the update.
 
 No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
+
+
+### Run 13 merge-queue CI closure
+
+- Fresh-main [PR #1194](https://github.com/Barrot-Agent/B-Agent/pull/1194) head `66c1be927a230e458c51b43eff308eec74253a47` passed exact-head CI [40556571599](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556571599): **116 tests passed in 4.98 seconds**. Fail-closed gate [40556571610](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556571610) passed. PR remains draft/unmerged; the unsafe main workflow remains active until an approved merge.
+- GitHub job log timestamp `2026-10-27T18:05:04Z` exceeds the supplied session-clock estimate `17:50:00Z`. Retrieval time is not exposed; retain the clock-ordering caveat.
+- The last research-ledger head before this closure, `148615b9459b9ab3e8097c9a7ea46d9399c0dd5a`, had no PR-triggered workflow runs returned by the connector. The next handoff commit changes the head again; exact-head checks must be re-read and not inferred from older passing runs.
+- Updated machine-readable bundle commit: `08ae0e6e8a658ee1dfec9c5312647ff919a7bbee`.
