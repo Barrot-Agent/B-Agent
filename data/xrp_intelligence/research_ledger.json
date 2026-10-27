@@ -16,7 +16,7 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T21:08:25Z",
+    "captured_at_utc": "2026-10-27T21:09:42Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
@@ -159,9 +159,10 @@
       "current_research_checks": {
         "tests": "success",
         "gate": "success",
+        "as_of_utc": "2026-10-27T21:09:14Z",
         "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282225",
         "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282627",
-        "as_of_utc": "2026-10-27T21:09:42Z"
+        "note": "Validation applies to head d4fd1a before the later ledger-linking commit; later head must pass CI independently."
       }
     },
     "critical_engine_findings": [
