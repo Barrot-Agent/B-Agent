@@ -127,13 +127,48 @@ def analyze_signal(signal_text: str):
     return 0, 0.0, f"sentiment unavailable ({last_err})"
 
 
+def _is_market_news_entry(entry: dict) -> bool:
+    """Exclude academic/research records from market-news sentiment aggregation.
+
+    Research relevance can be useful to Barrot's knowledge graph, but an academic
+    paper's positive wording is not a contemporaneous market-news catalyst.
+    Keep unknown legacy sources eligible for backward compatibility.
+    """
+    source = str(entry.get("source") or entry.get("source_type") or "").strip().lower()
+    source = source.replace("-", "_").replace(" ", "_")
+    content_type = str(entry.get("content_type") or entry.get("document_type") or "").strip().lower()
+    content_type = content_type.replace("-", "_").replace(" ", "_")
+
+    academic_prefixes = (
+        "academic", "scholarly", "crossref", "semantic_scholar",
+        "openalex", "arxiv",
+    )
+    if source in {
+        "research", "research_paper", "research_article", "paper", "working_paper",
+        "whitepaper", "journal_article", "preprint", "conference_paper",
+        "scholarly_paper", "thesis", "dissertation",
+    }:
+        return False
+    if source.startswith(academic_prefixes):
+        return False
+    if content_type in {
+        "academic", "academic_paper", "research", "research_paper",
+        "scholarly_article", "scholarly_paper", "journal_article", "preprint", "paper",
+        "working_paper", "conference_paper", "thesis", "dissertation", "whitepaper",
+    }:
+        return False
+    return True
+
+
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
     from datetime import timedelta
 
     if not os.path.exists(path):
         return None, 0, []
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=hours)
+    future_limit = now + timedelta(minutes=5)
     num = den = 0.0
     used = 0
     heads = []
@@ -143,18 +178,25 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
                 e = json.loads(line)
             except Exception:
                 continue
+            if not _is_market_news_entry(e):
+                continue
             if not e.get("distilled"):
                 continue
             d = e.get("distill", {})
             w = float(d.get("xrp_relevance", 0) or 0)
             if w <= 0:
                 continue
+            raw_ts = e.get("ingested_at")
+            if not isinstance(raw_ts, str) or not raw_ts.strip():
+                continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
-                if ts < cutoff:
-                    continue
-            except Exception:
-                pass
+                ts = datetime.fromisoformat(raw_ts.replace("Z", "+00:00"))
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if ts < cutoff or ts > future_limit:
+                continue
             s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
             num += s * w
             den += w
