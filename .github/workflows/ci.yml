@@ -55,4 +55,6 @@ jobs:
             tests/test_formal_benchmark.py \
             tests/test_bundle_engineering.py \
             tests/test_bundle_lifecycle.py \
+            tests/test_xrp_signal_integrity.py \
+            tests/test_signal_summary_fallback.py \
             -v --no-cov
