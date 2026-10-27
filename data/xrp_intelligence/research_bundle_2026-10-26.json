@@ -3,8 +3,8 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:06:08.988Z",
-    "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
+    "captured_at_utc": "2026-10-27T00:11:06.856Z",
+    "main_tip_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
     "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_AND_CONFIDENCE_ZERO",
@@ -232,6 +232,31 @@
         "725 correct",
         "45.7 percent; invalid variable-horizon measure per PR #1165"
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-LEGACY-ACCURACY-CURRENT-20261027",
+      "title": "Current main legacy accuracy artifact",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "direct_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+      "publication_date": "re-fetched 2026-10-27",
+      "sections": [
+        "checked_count=1612",
+        "correct_count=749",
+        "accuracy_pct=46.5"
+      ],
+      "relationships": [
+        {
+          "source_node": "Legacy variable-horizon evaluator",
+          "target_node": "Displayed accuracy metric",
+          "relationship_type": "GENERATES_INVALID_METRIC",
+          "status": "OBSERVED_MAIN_ARTIFACT"
+        }
+      ],
+      "snapshot": {
+        "retrieved_at_utc": "2026-10-27T00:11:06.856Z",
+        "blob_sha": "6f805abfea24a7cf975dab92ab9291b2aab22d25"
+      }
     },
     {
       "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
@@ -1019,14 +1044,15 @@
     },
     {
       "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
-      "statement": "The repository's legacy 45.7% accuracy value (725/1588) is recorded in the artifact but is not a defensible out-of-sample skill estimate because the legacy evaluator used variable horizons and rewrote mutable history; it must not be described as calibrated forecast accuracy.",
+      "statement": "The current main legacy accuracy artifact reports 46.5% (749/1612), replacing the earlier 45.7% (725/1588) snapshot. Neither value is a defensible out-of-sample skill estimate: the current main evaluator uses variable elapsed horizons, compares to later current prices, and mutates outcome fields. Treat the metric as NOT_COMPARABLE until immutable fixed-horizon outcomes, baselines, and calibration are implemented.",
       "domain": "prediction_engine_integrity",
       "claim_type": "metric_validity_assessment",
       "source": "SRC-BARROT-PR-1165",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
       "supporting_evidence": [
         "XRP-E-LEGACY-ACCURACY-ARTIFACT",
-        "XRP-E-PR-1165-ROOT-CAUSE"
+        "XRP-E-PR-1165-ROOT-CAUSE",
+        "XRP-E-LEGACY-ACCURACY-ARTIFACT-20261027"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -1039,9 +1065,10 @@
       ],
       "provenance": [
         "SRC-BARROT-LEGACY-ACCURACY",
-        "SRC-BARROT-PR-1165"
+        "SRC-BARROT-PR-1165",
+        "SRC-BARROT-LEGACY-ACCURACY-CURRENT-20261027"
       ],
-      "timestamp": 1793055698
+      "timestamp": 1793059866
     },
     {
       "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
@@ -1701,6 +1728,28 @@
       ],
       "details": {
         "interpretation": "Recorded arithmetic only; not evidence of fixed-horizon forecast skill."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-LEGACY-ACCURACY-ARTIFACT-20261027",
+      "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
+      "kind": "direct_repository_artifact_observation",
+      "summary": "The latest main artifact reports checked_count=1612, correct_count=749, accuracy_pct=46.5. This is a legacy variable-horizon result, not calibrated fixed-horizon out-of-sample skill; the current main evaluator still compares entries against a later current price and mutates outcome fields.",
+      "source_id": "SRC-BARROT-LEGACY-ACCURACY-CURRENT-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+      "status": "OBSERVED_METRIC_METHOD_INVALID",
+      "independence": "direct_repository_artifact_and_source_code",
+      "provenance": [
+        "SRC-BARROT-LEGACY-ACCURACY-CURRENT-20261027",
+        "SRC-BARROT-LEGACY-ACCURACY",
+        "SRC-BARROT-PR-1165"
+      ],
+      "details": {
+        "checked_count": 1612,
+        "correct_count": 749,
+        "accuracy_pct": 46.5,
+        "validity": "NOT_COMPARABLE",
+        "main_commit": "b161bf0c8dfbf14f9f60d898dac1ee05e2b50fa2"
       }
     },
     {
@@ -2582,7 +2631,7 @@
       "question_id": "Q-9",
       "question": "Verify repository branch protection/rulesets and require explicit approvals/required checks for every merge; disable active merge queue before any all-PR mode is used.",
       "priority": "CRITICAL",
-      "status": "PR_1168_OPEN_DRAFT_STALE_15_COMMITS; ONE_LISTED_RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
+      "status": "PR_1173_OPEN_DRAFT; GATE_PASSED_CI_PENDING; RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
     },
     {
       "question_id": "Q-10",
@@ -3344,9 +3393,9 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
-    "latest_main_commit_message": "Paper trade cycle [skip ci]",
-    "latest_main_commit_ci": "Combined-status query returned no statuses and the workflow-run query returned no PR-triggered runs for e49431afe9801044b583abd0451f0d4d7416fc4d. This is not a CI pass.",
+    "main_tip_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+    "latest_main_commit_message": "chore: Barrot telemetry report",
+    "latest_main_commit_ci": "At main tip 2bae7ccdfbec8f9536cb40950110c72e949f5073, the observed workflow-run query returned Pages build/deployment success (40424459820); no core CI run was observed for that exact main SHA. This is not evidence that the core suite passed on main.",
     "current_signal": {
       "timestamp": "2026-10-26T23:25:41.820784Z",
       "score": 44,
@@ -3358,40 +3407,44 @@
         "Groq HTTP 429 Too Many Requests"
       ],
       "blob_sha": "a74f8cacf498ce6936d538a1cdc0925605379cb1",
-      "retrieved_at_utc": "2026-10-27T00:05:31.488Z",
-      "age_minutes_at_retrieval": 39.8,
+      "retrieved_at_utc": "2026-10-27T00:11:06.856Z",
+      "age_minutes_at_retrieval": 45.4,
       "disposition": "INVALID_FOR_FORECASTING"
     },
     "legacy_accuracy": {
-      "checked_count": 1588,
-      "correct_count": 725,
-      "accuracy_pct": 45.7,
-      "disposition": "INVALID_AS_OUT_OF_SAMPLE_SKILL_METRIC_VARIABLE_HORIZON_AND_MUTABLE_HISTORY"
+      "checked_count": 1612,
+      "correct_count": 749,
+      "accuracy_pct": 46.5,
+      "validity": "NOT_COMPARABLE",
+      "source_sha": "6f805abfea24a7cf975dab92ab9291b2aab22d25",
+      "method": "variable horizon / later current price / mutable outcomes",
+      "status": "MAIN_NOT_YET_FIXED"
     },
     "signal_history": {
       "path": "web/signal_history.jsonl",
-      "observed_lines": 0,
-      "interpretation": "The current file fetch returned empty content; verify whether this is intentional after PR #1165 and whether scheduled writers still target other legacy artifacts."
+      "observed_lines": null,
+      "observed_lines_verified": false,
+      "interpretation": "The file-fetch adapter returned an empty content payload, but the main commit diff shows many JSONL records and the accuracy artifact reports 1,612 checked records. Empty fetch content is not evidence that the history file is empty. Exact line count and full file integrity were not independently verified in this run."
     },
     "relevant_open_drafts": [
       {
         "pr": 1165,
         "title": "XRP integrity: fail closed on unavailable sentiment; retire invalid accuracy metric",
         "head_sha": "e8ae692bd06f78cbec9b7bf4ad2715052051d23b",
-        "ci": "Last observed CI and fail-closed gate passed on head e8ae692bd06f78cbec9b7bf4ad2715052051d23b; branch diverged and is 30 commits behind current main.",
+        "ci": "Stale legacy head; fresh-main successor PR #1172 now has exact-head CI (123 passed) and fail-closed gate success against current main.",
         "state": "OPEN_DRAFT_STALE_BASE",
         "merge_authorized": false,
-        "behind_main_commits": 30,
+        "behind_main_commits": 38,
         "ahead_main_commits": 7
       },
       {
         "pr": 1155,
         "title": "XRP market data: require synchronized event-time inputs",
         "head_sha": "f9be50c331410c8e148f3889a2b0f7a20187ea8f",
-        "ci": "Last observed CI passed on merge ref; branch diverged and is 79 commits behind current main.",
+        "ci": "Stale by 87 commits; last reported tests were on an old merge ref.",
         "state": "OPEN_DRAFT_STALE_BASE",
         "merge_authorized": false,
-        "behind_main_commits": 79,
+        "behind_main_commits": 87,
         "ahead_main_commits": 3
       },
       {
@@ -3406,10 +3459,10 @@
         "pr": 1168,
         "title": "Safety: disable mutation-capable merge queue on fresh main",
         "head_sha": "4bdb914b7a4fb7b38defb91f05832e149326d88f",
-        "ci": "Latest observed CI and fail-closed gate passed on head 4bdb914b7a4fb7b38defb91f05832e149326d88f; branch diverged and is 15 commits behind current main.",
+        "ci": "Stale by 23 commits; fresh-main successor PR #1173 has CI in progress and fail-closed gate success.",
         "state": "OPEN_DRAFT_STALE_BASE",
         "merge_authorized": false,
-        "behind_main_commits": 15,
+        "behind_main_commits": 23,
         "ahead_main_commits": 3
       },
       {
@@ -3427,8 +3480,8 @@
         "finding": "Active .github/workflows/merge-queue.yml has contents/pull-requests write, mode=all, branch-update and merge API behavior; no explicit draft/reviewDecision field is queried in the workflow.",
         "risk": "HIGH",
         "status": "OBSERVED_ON_MAIN",
-        "mitigation_pr": 1168,
-        "mitigation_state": "OPEN_DRAFT_NOT_MERGED",
+        "mitigation_pr": 1173,
+        "mitigation_state": "OPEN_DRAFT_CI_PENDING; GATE_PASSED",
         "do_not_run": true
       },
       {
@@ -3446,7 +3499,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "The current main web/latest_signal.json blob SHA is a74f8cacf498ce6936d538a1cdc0925605379cb1 and its artifact timestamp is 2026-10-26T23:25:41.820784Z; it was 39.8 minutes old at retrieval 2026-10-27T00:05:31.488Z. Score 44/confidence 0 remains invalid because both model providers failed and the news input is dominated by XRPL research/protocol titles.",
+    "latest_signal_staleness": "The current main web/latest_signal.json blob SHA is a74f8cacf498ce6936d538a1cdc0925605379cb1 and its artifact timestamp is 2026-10-26T23:25:41.820784Z; it was 45.4 minutes old at retrieval 2026-10-27T00:11:06.856Z. Score 44/confidence 0 remains invalid because both model providers failed and the news input is dominated by XRPL protocol/research-paper titles.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -3462,21 +3515,17 @@
       "interpretation": "The listed ruleset is disabled; effective branch protection remains unknown because the separate endpoint was inaccessible. Do not run merge queue."
     },
     "pr1170_validation": {
-      "last_completed_head_sha": "4febf9db9222f86d9707214ace75561625416d08",
-      "last_completed_ci_run": 40423957351,
+      "last_completed_head_sha": "0ec991026775903c7c718e65b39fef6636d070f6",
+      "last_completed_ci_run": 40424225971,
       "last_completed_ci_conclusion": "success",
-      "last_completed_fail_closed_gate_run": 40423957548,
+      "last_completed_fail_closed_gate_run": 40424225980,
       "last_completed_gate_conclusion": "success",
       "last_completed_gate_step": "Fail closed",
       "merge_performed": false,
-      "subsequent_commits_after_tested_head": [
-        "92f951203ef618b301493f8a71cd59ef124ccce2",
-        "893ae69f19fcd0bf4db764ed07856354f7215a1f"
-      ],
-      "latest_head_at_snapshot": "893ae69f19fcd0bf4db764ed07856354f7215a1f",
-      "latest_head_validation_status": "PENDING_EXACT_HEAD_CI_AND_GATE",
-      "validated_at_utc": "2026-10-27T00:04:32Z",
-      "note": "The CI and gate evidence is for 4febf9 only. Later JSON/graph commits require fresh checks; do not describe them as tested yet."
+      "tested_base_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
+      "current_main_tip": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+      "latest_head_validation_status": "PASSED_ON_STALE_BASE; CURRENT_MAIN_REVALIDATION_REQUIRED",
+      "note": "The last passing CI/gate run tested the PR merge ref against base e49431. PR #1170 is now 9 commits behind current main; revalidate against current main before considering any merge."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -3526,6 +3575,21 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Do not merge. PR #1172 is the fresh-main fail-closed signal/accuracy candidate: 123 tests passed and the fail-closed gate passed against main tip 2bae7cc. It remains draft and one unrelated commit behind; inspect current mergeability and require explicit approval.",
+      "status": "TESTED_DRAFT; APPROVAL_REQUIRED"
+    },
+    {
+      "priority": 0,
+      "action": "Do not run the active merge queue. Fresh-main PR #1173 replaces it with a manual read-only stop; fail-closed gate passed and CI was still in progress at last observation. Effective branch protection remains unverified because the branch-protection endpoint returned 403.",
+      "status": "SAFETY_FIX_PENDING_CI"
+    },
+    {
+      "priority": 1,
+      "action": "Revalidate PR #1170 on current main; its last passing CI/gate were against stale base e49431 and it is now 9 commits behind.",
+      "status": "STALE_BASE_REVALIDATION_REQUIRED"
+    },
     {
       "priority": 0,
       "action": "Wait for exact-head CI and fail-closed gate on the current XRP research PR head after the latest source-ledger and SBIC relationship-graph updates; previous head 4febf9 passed, but later commits were not part of that test run.",
