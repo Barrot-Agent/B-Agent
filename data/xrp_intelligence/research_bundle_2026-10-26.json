@@ -3,11 +3,11 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T09:13:00Z",
+    "captured_at_utc": "2026-10-27T09:14:00Z",
     "main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING: latest signal timestamp 2026-10-27T08:38:05.688945Z, score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials, Groq HTTP 429, XRPL protocol/research headline contamination. Summary workflow had a transient Groq 429 failure; deterministic fallback is tested in draft PR #1188. Forecast NOT_ISSUED.",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: latest signal timestamp 2026-10-27T08:38:05.688945Z, score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials, Groq HTTP 429, XRPL protocol/research headline contamination. Summary workflow had a transient Groq 429 failure; deterministic fallback is tested in draft PR #1188. Forecast NOT_ISSUED. Current main latest_signal_summary.json is also misleading: it interprets technical research headlines positively despite confidence 0; PR #1188 proposes deterministic NOT_ISSUED output. The existing summary workflow still commits/pushes artifacts directly to main and requires separate review.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
     "latest_signal_timestamp": "2026-10-27T08:38:05.688945+00:00",
     "latest_signal_blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
@@ -64,7 +64,9 @@
       "XRP-C-CIRCLE-ARC-SBI-VALIDATOR-20261027",
       "XRP-C-PR1187-MERGE-QUEUE-STOP-20261027",
       "XRP-C-PR1188-SIGNAL-SUMMARY-FALLBACK-20261027",
-      "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION-CA3A399-20261027"
+      "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION-CA3A399-20261027",
+      "XRP-C-SUMMARY-MISLEADS-ON-CONFIDENCE-ZERO-20261027",
+      "XRP-C-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1685,6 +1687,41 @@
         "Current main delta is generated runtime/log/signal data and deployment report only, but current-base integration remains unverified.",
         "A passing exact-head CI run is not approval to merge."
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-LATEST-SUMMARY-MISLEADING-20261027",
+      "title": "Main-branch signal summary interprets a zero-confidence, provider-failed signal as positive technical interest",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "direct_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "publication_date": "retrieved 2026-10-27T09:14Z; source signal timestamp 2026-10-27T08:38:05.688945Z",
+      "retrieved_at_utc": "2026-10-27T09:14:00Z",
+      "sections": [
+        "Summary calls score 44 'moderate' and news score 88 'high', then says headlines indicate 'predominantly positive technical interest'.",
+        "The embedded source signal has confidence 0 and reports missing GitHub model credentials and Groq HTTP 429.",
+        "Summary JSON does not include summary_mode or an explicit NOT_ISSUED status."
+      ],
+      "source_limitations": [
+        "The summary is a model-generated interpretation of academic/protocol headlines, not evidence of market direction.",
+        "The summary artifact is stale relative to retrieval and the summary workflow can fail under provider rate limits."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027",
+      "title": "Signal-summary workflow commits and pushes generated artifacts directly to main",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "repository_workflow_configuration",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "publication_date": "observed 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T09:14:00Z",
+      "sections": [
+        "Workflow runs after Knowledge Signal Cycle and on hourly fallback schedule.",
+        "After generating summary/TTS, it stages web/latest_signal_summary.json and web/generated_audio, commits, then runs git push or git pull --no-rebase followed by git push."
+      ],
+      "source_limitations": [
+        "The workflow configuration shows a direct main-write path; effective repository protection and race/conflict behavior are not established by the file alone.",
+        "No change to this workflow was made in this run; review and authorization are required before altering its publication model."
+      ]
     }
   ],
   "claims": [
@@ -3189,6 +3226,55 @@
         "SRC-BARROT-PR1170-CI-HEAD-CA3A399-20261027"
       ],
       "timestamp": 1793092354
+    },
+    {
+      "claim_id": "XRP-C-SUMMARY-MISLEADS-ON-CONFIDENCE-ZERO-20261027",
+      "statement": "The current main-branch signal summary describes score 44 as moderate, news score 88 as high, and academic/protocol XRPL headlines as predominantly positive technical interest even though the embedded signal has confidence 0 and provider failures. This is a misleading interpretation of an invalid signal and supports a deterministic NOT_ISSUED summary fallback.",
+      "domain": "prediction_engine_signal_integrity",
+      "claim_type": "observed_summary_quality_failure",
+      "source": "SRC-BARROT-LATEST-SUMMARY-MISLEADING-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "supporting_evidence": [
+        "XRP-E-SUMMARY-INTERPRETS-INVALID-SIGNAL-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "DIRECT_SUMMARY_AND_EMBEDDED_SIGNAL_OBSERVED",
+      "independent_verification_status": "REPOSITORY_ARTIFACT_PAIR_OBSERVED; MARKET_DIRECTION_NOT_INFERRED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "NO_MODEL_INTERPRETATION_WHEN_SIGNAL_CONFIDENCE_ZERO_OR_PROVIDER_FAILED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The summary artifact corresponds to the embedded source signal.",
+        "A zero-confidence source must not be characterized as a directional market conclusion."
+      ],
+      "provenance": [
+        "SRC-BARROT-LATEST-SUMMARY-MISLEADING-20261027"
+      ],
+      "timestamp": 1793090285
+    },
+    {
+      "claim_id": "XRP-C-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027",
+      "statement": "The main signal-summary workflow commits generated summary/audio artifacts and pushes directly to main, with a git pull --no-rebase fallback after push failure. This is an existing repository mutation path and has not been changed in this run. Its publication model and race/conflict behavior require separate review before any modification.",
+      "domain": "repository_execution_safety",
+      "claim_type": "observed_workflow_write_path",
+      "source": "SRC-BARROT-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "supporting_evidence": [
+        "XRP-E-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "WORKFLOW_SOURCE_INSPECTED",
+      "independent_verification_status": "CONFIGURATION_CONFIRMED; EFFECTIVE_BRANCH_PROTECTION_AND_RUNTIME_RACE_NOT_VERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "REVIEW_SEPARATELY; DO_NOT_CHANGE_PUBLICATION_MODEL_WITHOUT_APPROVAL",
+      "confidence": 0.99,
+      "assumptions": [
+        "The inspected main-branch workflow is the active workflow configuration."
+      ],
+      "provenance": [
+        "SRC-BARROT-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
+      ],
+      "timestamp": 1793090340
     }
   ],
   "evidence": [
@@ -4840,6 +4926,47 @@
         "elapsed_seconds": 6.06,
         "gate_run": 40478995323,
         "merged": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SUMMARY-INTERPRETS-INVALID-SIGNAL-20261027",
+      "claim_id": "XRP-C-SUMMARY-MISLEADS-ON-CONFIDENCE-ZERO-20261027",
+      "kind": "summary_artifact_quality_failure",
+      "summary": "The current summary artifact describes score 44 as moderate and news score 88 as high, then interprets XRPL protocol/research headlines as predominantly positive technical interest despite source confidence 0 and explicit provider failures.",
+      "source_id": "SRC-BARROT-LATEST-SUMMARY-MISLEADING-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "status": "MISLEADING_INTERPRETATION_OBSERVED; DETERMINISTIC_NOT_ISSUED_FALLBACK_REQUIRED",
+      "independence": "direct_repository_runtime_artifact",
+      "provenance": [
+        "SRC-BARROT-LATEST-SUMMARY-MISLEADING-20261027"
+      ],
+      "details": {
+        "summary_blob_sha": "e93e1cc5cf14cd27c66f3bf79cc7d82ebe90be61",
+        "source_signal_blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
+        "source_confidence": 0,
+        "source_score": 44,
+        "source_news_score": 88,
+        "summary_mode_field_present": false,
+        "not_issued_status_present": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027",
+      "claim_id": "XRP-C-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027",
+      "kind": "workflow_mutation_path_review",
+      "summary": "The signal-summary workflow explicitly commits generated summary/audio files and pushes directly to main, with a pull --no-rebase fallback if push fails. This is an existing mutation path, not changed in this run.",
+      "source_id": "SRC-BARROT-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "status": "CONFIGURATION_OBSERVED; POLICY_AND_CONFLICT_BEHAVIOR_REVIEW_PENDING",
+      "independence": "direct_repository_workflow_configuration",
+      "provenance": [
+        "SRC-BARROT-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
+      ],
+      "details": {
+        "workflow_blob_sha": "1718b45beaf1f8aa002ce332b2b828d27049508b",
+        "direct_git_push": true,
+        "pull_rebase_fallback": true,
+        "modified_in_this_run": false
       }
     }
   ],
@@ -6756,6 +6883,15 @@
         "XRP-E-SIGNAL-SUMMARY-429-FAILURE-20261027",
         "XRP-E-PR1188-CI-20261027"
       ]
+    },
+    {
+      "id": "ADR-XRP-010",
+      "decision": "A summary artifact must not translate protocol/academic headline sentiment into a market-direction interpretation when source confidence is zero or required providers failed. Persist a deterministic NOT_ISSUED status. Separately review any workflow that writes generated artifacts directly to main.",
+      "status": "SUMMARY_FALLBACK_DESIGNED_AND_TESTED_IN_PR_1188; WORKFLOW_PUBLICATION_REVIEW_PENDING",
+      "evidence": [
+        "XRP-E-SUMMARY-INTERPRETS-INVALID-SIGNAL-20261027",
+        "XRP-E-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
+      ]
     }
   ],
   "repository_audit": {
@@ -6893,6 +7029,14 @@
         "mitigation_pr": 1173,
         "mitigation_state": "OPEN_DRAFT_CURRENT_MAIN_CI_AND_FAIL_CLOSED_GATE_PASSED; EFFECTIVE_BRANCH_PROTECTION_UNVERIFIED",
         "do_not_run": true
+      },
+      {
+        "finding": "Signal-summary workflow writes generated summary/audio artifacts directly to main and attempts pull --no-rebase then push on failure.",
+        "risk": "MEDIUM_HIGH",
+        "status": "OBSERVED_ON_MAIN_WORKFLOW_CONFIGURATION",
+        "mitigation": "Review publication model and race behavior; do not alter without approval.",
+        "mitigation_pr": 1188,
+        "mitigation_scope": "PR #1188 fixes deterministic summary fallback only; it does not change workflow's direct-push behavior."
       }
     ],
     "latest_signal_staleness": "Main latest_signal.json blob a52a1410d176960ff05634e6cbbfc5b191cb5621, timestamp 2026-10-27T08:38:05.688945Z; age approximately 34.9 minutes at 2026-10-27T09:13Z. Score 44, confidence 0, news score 88 from 11 entries; provider failures and academic/protocol headline contamination remain. Invalid for forecasting.",
@@ -6994,7 +7138,7 @@
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     },
-    "last_audit_at_utc": "2026-10-27T09:13:00Z",
+    "last_audit_at_utc": "2026-10-27T09:14:00Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE",
       "receiver_pr": 1182,
@@ -7079,6 +7223,16 @@
       "open_pr_count": 51,
       "pattern": "Multiple duplicate/stale draft PRs remain open for merge-queue safety, XRP signal integrity, and related research; newer candidates include #1187 and #1188. No PRs were closed or merged in this run.",
       "action": "Keep newest tested candidates for review; do not auto-close or merge older branches without comparing diffs and preserving history."
+    },
+    "current_signal_summary": {
+      "retrieved_at_utc": "2026-10-27T09:14:00Z",
+      "blob_sha": "e93e1cc5cf14cd27c66f3bf79cc7d82ebe90be61",
+      "source_signal_timestamp": "2026-10-27T08:38:05.688945+00:00",
+      "summary_mode_field_present": false,
+      "forecast_status_field_present": false,
+      "interpretation": "Calls score 44 moderate and news score 88 high, infers positive technical interest despite confidence 0 and provider failures; invalid interpretation, not a forecast.",
+      "mitigation_pr": 1188,
+      "mitigation_state": "DRAFT_CI_PASS_NOT_EFFECTIVE_ON_MAIN"
     }
   },
   "video_ingestion": {
@@ -7268,6 +7422,11 @@
       "priority": 1,
       "action": "Verify Circle Arc founding-validator activity for SBI Group using independent public network/validator data and partner disclosures; separately measure USDC and XRP routing by corridor. Do not infer XRP demand from validator membership or XRPL infrastructure use.",
       "status": "OFFICIAL_ANNOUNCEMENT_RECORDED; OPERATIONAL_ACTIVITY_AND_XRP_FLOWS_UNKNOWN"
+    },
+    {
+      "priority": 1,
+      "action": "Review .github/workflows/signal-summary.yml direct-main write path separately from PR #1188: it commits generated artifacts and uses git pull --no-rebase then push on failure. Preserve current publication behavior until a reviewed alternative is approved; assess concurrent-run races and branch-protection interactions.",
+      "status": "WORKFLOW_CONFIGURATION_OBSERVED; NO_CHANGE_MADE; APPROVAL_REQUIRED"
     }
   ]
 }
