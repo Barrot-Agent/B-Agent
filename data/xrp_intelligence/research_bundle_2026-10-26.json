@@ -1977,6 +1977,57 @@
         "The evidence does not establish whether the cause is event/trigger mismatch, GitHub run bookkeeping, workflow parsing/configuration, or an external workflow invocation.",
         "Do not treat this zero-job run as evidence that the approval job executed or as a passing safety gate."
       ]
+    },
+    {
+      "source_id": "SRC-SBIC-TOKYO-OFFICIAL-HOME-20261027",
+      "title": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC) official site",
+      "author_or_organization": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_website",
+      "url": "https://www.sbic.co.jp/",
+      "publication_date": "accessed 2026-10-27",
+      "source_commit": null,
+      "sections": [
+        "The official website names the organization 東京中小企業投資育成株式会社 (Tokyo Small and Medium Business Investment & Consultation Co., Ltd.) and brands it as SBIC.",
+        "The organization describes itself as a policy implementation institution supporting equity capital and stable growth of small and medium businesses under Japan's Small and Medium Business Investment & Consultation Company Act."
+      ],
+      "source_limitations": [
+        "This is a Japanese SME investment-development institution, not SBI Holdings' historical SBI Capital Co., Ltd.",
+        "The page does not establish an XRP, Ripple or crypto-market relationship."
+      ]
+    },
+    {
+      "source_id": "SRC-SBIC-NAGOYA-OFFICIAL-20261027",
+      "title": "Nagoya Small and Medium Business Investment & Consultation Co. official company profile",
+      "author_or_organization": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "publication_date": "accessed 2026-10-27",
+      "source_commit": null,
+      "sections": [
+        "The official company profile names Nagoya Small and Medium Business Investment & Consultation Co., Ltd. and explicitly uses the English short name 'SBIC Central Japan'.",
+        "The profile identifies its operating region as Aichi, Gifu, Mie, Toyama and Ishikawa prefectures and lists Tokyo and Osaka sister companies."
+      ],
+      "source_limitations": [
+        "This is a separate regional SME investment-development company from Tokyo SBIC and from SBI Holdings' historical SBI Capital Co., Ltd.",
+        "The profile does not establish an XRP, Ripple or crypto-market relationship."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CAPITAL-HISTORICAL-2004-OFFICIAL",
+      "title": "SBI Capital's mezzanine investment and DIP financing business announcement",
+      "author_or_organization": "Softbank Investment / SBI Holdings historical corporate archive",
+      "source_type": "official_historical_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2004/0819_624.html",
+      "publication_date": "2004-08-19",
+      "source_commit": null,
+      "sections": [
+        "The official announcement calls SBI Capital Co., Ltd. 'SBIC' and describes it as a subsidiary operating corporate revitalization and buyout funds.",
+        "The release describes a subsidiary, SBI Capital Solutions Co., Ltd., entering mezzanine investment and debtor-in-possession financing."
+      ],
+      "source_limitations": [
+        "Historical acronym usage does not establish present-day legal continuity or the intended meaning of the user's phrase.",
+        "The announcement concerns corporate investment and restructuring, not XRP."
+      ]
     }
   ],
   "claims": [
@@ -2528,7 +2579,7 @@
     },
     {
       "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
-      "statement": "The intended referent of 'SBIC' in the phrase 'SBIC, ChatGPT SBIC' remains unresolved. Official evidence identifies Tokyo SBIC East Japan as a company explicitly using SBIC in its English name; SBI Holdings historically used 'SBIC' for a Tokyo-based SBI CAPITAL Co., Ltd. in a 2007 announcement; SBI Holdings separately lists SBI Capital, SBI Crypto, and SBI Ripple Asia as distinct group-company entries as of 2026-10-07; and SBI Holdings announced a separate SBI Capital Co., Ltd. in South Korea in 2021. None of these sources proves which entity the phrase denotes, or establishes an XRP link for the non-XRP investment entities.",
+      "statement": "The intended referent of 'SBIC' in the phrase 'SBIC, ChatGPT SBIC' remains unresolved. Official Japanese sources confirm multiple distinct uses: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. uses SBIC branding; Nagoya Small and Medium Business Investment & Consultation Co., Ltd. uses 'SBIC Central Japan'; and SBI Holdings historically called its buyout/corporate-revitalization subsidiary SBI Capital Co., Ltd. 'SBIC' in 2004 and 2007. These are not interchangeable identities. None of the sources identifies the intended referent of the original phrase or establishes an XRP relationship for the SME-investment entities.",
       "domain": "entity_resolution",
       "claim_type": "identity_ambiguity",
       "source": "SRC-TOKYO-SBIC-PROFILE",
@@ -2539,14 +2590,17 @@
         "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
         "XRP-E-SBI-GROUP-ENTITY-SEPARATION-2026",
         "XRP-E-SBI-CAPITAL-KOREA-2021",
-        "XRP-E-SBI-CAPITAL-JAPAN-SBIC-2007"
+        "XRP-E-SBI-CAPITAL-JAPAN-SBIC-2007",
+        "XRP-E-SBIC-TOKYO-IDENTITY-20261027",
+        "XRP-E-SBIC-NAGOYA-IDENTITY-20261027",
+        "XRP-E-SBI-CAPITAL-2004-IDENTITY-20261027"
       ],
       "contradicting_evidence": [],
       "derivation_status": "UNRESOLVED",
-      "independent_verification_status": "UNASSESSED",
+      "independent_verification_status": "MULTIPLE_OFFICIAL_ENTITY_SOURCES; ORIGINAL_PHRASE_CONTEXT_STILL_MISSING",
       "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.25,
+      "acceptance_status": "ACRONYM_AMBIGUITY_CONFIRMED; INTENDED_REFERENT_UNRESOLVED; NO_XRP_LINK_INFERRED",
+      "confidence": 0.99,
       "assumptions": [
         "A context-specific audio/video/source occurrence is needed to resolve intended meaning."
       ],
@@ -2557,7 +2611,10 @@
         "SRC-SBI-XRP-REMIT",
         "SRC-SBI-GROUP-COMPANIES-2026-10-07",
         "SRC-SBI-CAPITAL-KOREA-2021",
-        "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
+        "SRC-SBI-CAPITAL-JAPAN-SBIC-2007",
+        "SRC-SBIC-TOKYO-OFFICIAL-HOME-20261027",
+        "SRC-SBIC-NAGOYA-OFFICIAL-20261027",
+        "SRC-SBI-CAPITAL-HISTORICAL-2004-OFFICIAL"
       ],
       "timestamp": 1793059417
     },
@@ -5988,6 +6045,61 @@
         "root_cause": "UNRESOLVED",
         "blind_rerun": false
       }
+    },
+    {
+      "evidence_id": "XRP-E-SBIC-TOKYO-IDENTITY-20261027",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "official_current_entity_identity",
+      "summary": "Tokyo's official website names Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and uses SBIC branding; it describes a Japanese SME investment-development policy institution.",
+      "source_id": "SRC-SBIC-TOKYO-OFFICIAL-HOME-20261027",
+      "source_location": "https://www.sbic.co.jp/",
+      "status": "OFFICIAL_IDENTITY_CONFIRMED; XRP_LINK_NOT_ESTABLISHED",
+      "independence": "official_entity_website",
+      "provenance": [
+        "SRC-SBIC-TOKYO-OFFICIAL-HOME-20261027"
+      ],
+      "details": {
+        "entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "acronym": "SBIC",
+        "crypto_relationship": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBIC-NAGOYA-IDENTITY-20261027",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "official_current_entity_identity",
+      "summary": "Nagoya's official profile names Nagoya Small and Medium Business Investment & Consultation Co., Ltd. and explicitly uses 'SBIC Central Japan', separate from Tokyo SBIC.",
+      "source_id": "SRC-SBIC-NAGOYA-OFFICIAL-20261027",
+      "source_location": "https://www.sbic-cj.co.jp/company/about/",
+      "status": "OFFICIAL_IDENTITY_CONFIRMED; DISTINCT_REGIONAL_ENTITY; XRP_LINK_NOT_ESTABLISHED",
+      "independence": "official_entity_website",
+      "provenance": [
+        "SRC-SBIC-NAGOYA-OFFICIAL-20261027"
+      ],
+      "details": {
+        "entity": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "short_name": "SBIC Central Japan",
+        "crypto_relationship": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-CAPITAL-2004-IDENTITY-20261027",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "official_historical_entity_identity",
+      "summary": "SBI Holdings' 2004 official release calls the buyout/corporate-revitalization subsidiary SBI Capital Co., Ltd. 'SBIC'. This is a distinct historical acronym use from the Tokyo/Nagoya regional SME investment-development companies.",
+      "source_id": "SRC-SBI-CAPITAL-HISTORICAL-2004-OFFICIAL",
+      "source_location": "https://www.sbigroup.co.jp/news/2004/0819_624.html",
+      "status": "OFFICIAL_HISTORICAL_ACRONYM_USAGE_CONFIRMED; CURRENT_LEGAL_CONTINUITY_UNRESOLVED; XRP_LINK_NOT_ESTABLISHED",
+      "independence": "official_historical_corporate_announcement",
+      "provenance": [
+        "SRC-SBI-CAPITAL-HISTORICAL-2004-OFFICIAL"
+      ],
+      "details": {
+        "entity": "SBI Capital Co., Ltd. (historical, Japan)",
+        "acronym": "SBIC",
+        "publication_date": "2004-08-19",
+        "crypto_relationship": "NOT_ESTABLISHED"
+      }
     }
   ],
   "tracks": [
@@ -6683,12 +6795,15 @@
       {
         "id": "SBIC phrase",
         "type": "unresolved_entity_reference",
-        "status": "UNRESOLVED",
+        "status": "UNRESOLVED_REFERENCE; THREE DISTINCT OFFICIAL JAPANESE ACRONYM USES VERIFIED",
         "source_ids": [
           "SRC-TOKYO-SBIC-PROFILE",
           "SRC-SBI-CAPITAL-JAPAN-SBIC-2007",
           "SRC-SBI-CAPITAL-KOREA-2021",
-          "SRC-SBI-GROUP-COMPANIES-2026-10-07"
+          "SRC-SBI-GROUP-COMPANIES-2026-10-07",
+          "SRC-SBIC-TOKYO-OFFICIAL-HOME-20261027",
+          "SRC-SBIC-NAGOYA-OFFICIAL-20261027",
+          "SRC-SBI-CAPITAL-HISTORICAL-2004-OFFICIAL"
         ]
       },
       {
@@ -6910,6 +7025,14 @@
         "status": "SECONDARY_AGGREGATE_SNAPSHOT_THROUGH_2026-10-23; FUND_BY_FUND_ISSUER_RECONCILIATION_REQUIRED",
         "source_ids": [
           "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
+        ]
+      },
+      {
+        "id": "Nagoya SBIC Central Japan",
+        "type": "regional_SME_investment_development_company",
+        "status": "FACT_OFFICIAL_ENTITY; NO_XRP_LINK_ESTABLISHED",
+        "source_ids": [
+          "SRC-SBIC-NAGOYA-OFFICIAL-20261027"
         ]
       }
     ],
@@ -7682,6 +7805,28 @@
           "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027"
         ],
         "caveat": "The artifact must not be used as a directional XRP forecast or as a time-sensitive feature until provider availability, news relevance, and clock ordering are independently validated."
+      },
+      {
+        "source": "SBIC phrase",
+        "target": "Nagoya SBIC Central Japan",
+        "relationship_type": "POSSIBLE_REFERENT",
+        "classification": "OFFICIAL_ACRONYM_MATCH; ORIGINAL_CONTEXT_ABSENT",
+        "confidence": 0.3,
+        "source_ids": [
+          "SRC-SBIC-NAGOYA-OFFICIAL-20261027"
+        ],
+        "caveat": "Official use of SBIC Central Japan is confirmed, but no evidence identifies it as the referent of 'SBIC, ChatGPT SBIC'; no XRP relationship is established."
+      },
+      {
+        "source": "Nagoya SBIC Central Japan",
+        "target": "XRP",
+        "relationship_type": "NO_LINK_ESTABLISHED",
+        "classification": "UNKNOWN_NOT_EVIDENCED",
+        "confidence": 0.05,
+        "source_ids": [
+          "SRC-SBIC-NAGOYA-OFFICIAL-20261027"
+        ],
+        "caveat": "The official profile does not establish an XRP relationship; absence from this source is not proof no indirect relationship exists."
       }
     ]
   },
@@ -8745,8 +8890,8 @@
     },
     {
       "phrase": "SBIC, ChatGPT SBIC",
-      "status": "UNRESOLVED; MULTIPLE OFFICIAL JAPANESE CANDIDATES CONFIRMED",
-      "finding": "Official SBI Holdings sources used 'SBIC' for SBI Capital Co., Ltd. in 2004–2007; a separate Tokyo Small and Medium Business Investment & Consultation Co. also uses SBIC branding. SBI Capital and SBI Ripple Asia are separately listed entities. No source identifies which candidate the phrase 'SBIC, ChatGPT SBIC' intended, and no XRP relationship is inferred from acronym similarity. Original video/audio/sentence remains required."
+      "status": "UNRESOLVED; THREE DISTINCT OFFICIAL JAPANESE SBIC USES VERIFIED",
+      "finding": "Official sources distinguish (1) Tokyo Small and Medium Business Investment & Consultation Co., Ltd. using SBIC branding, (2) Nagoya Small and Medium Business Investment & Consultation Co., Ltd. using 'SBIC Central Japan', and (3) historical SBI Capital Co., Ltd., which SBI Holdings called SBIC in 2004–2007. These are separate entities or historical uses. Exact phrase searches did not recover the original sentence/video context. No XRP relationship is inferred from acronym similarity."
     }
   ],
   "forecast_register": [],
