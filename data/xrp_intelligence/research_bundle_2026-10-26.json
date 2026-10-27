@@ -2028,6 +2028,92 @@
         "Historical acronym usage does not establish present-day legal continuity or the intended meaning of the user's phrase.",
         "The announcement concerns corporate investment and restructuring, not XRP."
       ]
+    },
+    {
+      "source_id": "SRC-BLS-CPI-SEP-2026",
+      "title": "Consumer Price Index — September 2026",
+      "author_or_organization": "U.S. Bureau of Labor Statistics",
+      "source_type": "official_statistical_release",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+      "publication_date": "2026-10-14",
+      "source_commit": null,
+      "sections": [
+        "CPI-U +0.6% month over month seasonally adjusted",
+        "All-items CPI +3.7% year over year",
+        "Core CPI +0.3% month over month and +2.6% year over year",
+        "Gasoline +9.1% month over month, contributing over half the monthly headline increase"
+      ]
+    },
+    {
+      "source_id": "SRC-BLS-EMPLOYMENT-SEP-2026",
+      "title": "Employment Situation — September 2026",
+      "author_or_organization": "U.S. Bureau of Labor Statistics",
+      "source_type": "official_statistical_release",
+      "url": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+      "publication_date": "2026-10-02",
+      "source_commit": null,
+      "sections": [
+        "Unemployment rate 4.2%",
+        "Nonfarm payroll employment +29,000",
+        "Average hourly earnings +0.1% month over month and +3.0% year over year",
+        "July and August payroll gains revised down by a combined 60,000"
+      ]
+    },
+    {
+      "source_id": "SRC-BEA-GDP-Q2-2026",
+      "title": "Gross Domestic Product — Third Estimate, Q2 2026",
+      "author_or_organization": "U.S. Bureau of Economic Analysis",
+      "source_type": "official_statistical_release_and_data_page",
+      "url": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "publication_date": "2026-09-30",
+      "source_commit": null,
+      "sections": [
+        "Real GDP +2.2% annualized in Q2 2026",
+        "Q1 2026 revised growth +2.5%",
+        "Third estimate release date September 30, 2026"
+      ]
+    },
+    {
+      "source_id": "SRC-BEA-RELEASE-SCHEDULE-2026-10-29",
+      "title": "BEA release schedule: Q3 2026 GDP advance estimate and September Personal Income and Outlays",
+      "author_or_organization": "U.S. Bureau of Economic Analysis",
+      "source_type": "official_release_schedule",
+      "url": "https://www.bea.gov/news/schedule/full",
+      "publication_date": "observed 2026-10-27",
+      "source_commit": null,
+      "sections": [
+        "Q3 2026 GDP advance estimate scheduled October 29, 2026 at 8:30 a.m.",
+        "September 2026 Personal Income and Outlays scheduled October 29, 2026 at 8:30 a.m."
+      ]
+    },
+    {
+      "source_id": "SRC-FOMC-MINUTES-2026-09-16",
+      "title": "Minutes of the Federal Open Market Committee, September 15–16, 2026",
+      "author_or_organization": "Board of Governors of the Federal Reserve System",
+      "source_type": "official_central_bank_minutes",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+      "publication_date": "2026-10-07",
+      "source_commit": null,
+      "sections": [
+        "Target federal funds rate raised 25 basis points to 3.75%–4.00%, effective September 17",
+        "Minutes describe resilient domestic spending and solid economic activity",
+        "Persistent inflation and geopolitical tensions pushed energy prices higher over the intermeeting period"
+      ]
+    },
+    {
+      "source_id": "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+      "title": "Personal Income and Outlays — August 2026",
+      "author_or_organization": "U.S. Bureau of Economic Analysis",
+      "source_type": "official_statistical_release",
+      "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-August-2026",
+      "publication_date": "2026-09-30",
+      "source_commit": null,
+      "sections": [
+        "PCE price index +3.4% year over year in August",
+        "Core PCE +3.0% year over year",
+        "Personal consumption expenditures +0.9% month over month; real PCE +0.6%",
+        "September PCE release scheduled October 29, 2026"
+      ]
     }
   ],
   "claims": [
@@ -3925,6 +4011,166 @@
         "SRC-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS-40501781971"
       ],
       "timestamp": 1793103070
+    },
+    {
+      "claim_id": "XRP-C-MACRO-GDP-RELEASE-STATUS-20261027",
+      "statement": "As of the October 27 snapshot, BEA's latest GDP estimate reports real GDP growth of 2.2% annualized in Q2 2026 after 2.5% in Q1; the Q3 advance estimate is scheduled for October 29 and is not yet an observed release in this snapshot.",
+      "domain": "us_macro_regime",
+      "claim_type": "official_statistical_fact_and_release_calendar",
+      "source": "SRC-BEA-GDP-Q2-2026",
+      "source_location": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "supporting_evidence": [
+        "XRP-E-MACRO-GDP-Q2-2026",
+        "XRP-E-MACRO-Q3-GDP-SCHEDULE-20261029"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "PRIMARY_SOURCE_VERIFIED",
+      "adversarial_status": "OPEN_TO_REVISION",
+      "acceptance_status": "ACCEPTED_FACT_WITH_VINTAGE_LIMIT",
+      "confidence": 0.99,
+      "assumptions": [
+        "GDP estimates are revised; each vintage must remain immutable.",
+        "The Q3 advance estimate has not been released as of the captured October 27 session snapshot."
+      ],
+      "provenance": [
+        "SRC-BEA-GDP-Q2-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-MACRO-LABOR-SEP-2026",
+      "statement": "The September 2026 U.S. unemployment rate was 4.2% and nonfarm payroll employment increased by 29,000; July and August payroll estimates were revised down by a combined 60,000. This is evidence of weak hiring momentum, not by itself proof of recession.",
+      "domain": "us_macro_regime",
+      "claim_type": "official_statistical_fact_with_caveated_interpretation",
+      "source": "SRC-BLS-EMPLOYMENT-SEP-2026",
+      "source_location": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+      "supporting_evidence": [
+        "XRP-E-MACRO-LABOR-SEP-2026"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "PRIMARY_SOURCE_VERIFIED",
+      "adversarial_status": "OPEN_TO_REVISION",
+      "acceptance_status": "ACCEPTED_FACT; INTERPRETATION_PROVISIONAL",
+      "confidence": 0.99,
+      "assumptions": [
+        "Monthly payroll estimates are revised and may be noisy.",
+        "The unemployment rate is a lagging indicator and does not alone determine recession status."
+      ],
+      "provenance": [
+        "SRC-BLS-EMPLOYMENT-SEP-2026"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-MACRO-CPI-SEP-2026",
+      "statement": "U.S. CPI rose 0.6% month over month and 3.7% year over year in September 2026; core CPI rose 0.3% month over month and 2.6% year over year. Gasoline prices rose 9.1% during the month and accounted for over half of the headline monthly increase.",
+      "domain": "us_macro_inflation",
+      "claim_type": "official_statistical_fact",
+      "source": "SRC-BLS-CPI-SEP-2026",
+      "source_location": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+      "supporting_evidence": [
+        "XRP-E-MACRO-CPI-SEP-2026"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "PRIMARY_SOURCE_VERIFIED",
+      "adversarial_status": "OPEN_TO_REVISION",
+      "acceptance_status": "ACCEPTED_FACT",
+      "confidence": 0.99,
+      "assumptions": [
+        "CPI is not the Federal Reserve's preferred inflation measure; PCE is tracked separately.",
+        "Seasonal adjustment and later revisions can change historical estimates."
+      ],
+      "provenance": [
+        "SRC-BLS-CPI-SEP-2026"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-MACRO-PCE-AUG-2026",
+      "statement": "In August 2026, headline PCE inflation was 3.4% year over year and core PCE inflation was 3.0%; nominal consumer spending rose 0.9% month over month and real PCE rose 0.6%. September PCE data were scheduled for October 29, 2026.",
+      "domain": "us_macro_inflation_and_consumption",
+      "claim_type": "official_statistical_fact_and_release_calendar",
+      "source": "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+      "source_location": "https://www.bea.gov/news/2026/personal-income-and-outlays-August-2026",
+      "supporting_evidence": [
+        "XRP-E-MACRO-PCE-AUG-2026",
+        "XRP-E-MACRO-REAL-CONSUMPTION-AUG-2026"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "PRIMARY_SOURCE_VERIFIED",
+      "adversarial_status": "OPEN_TO_REVISION",
+      "acceptance_status": "ACCEPTED_FACT_WITH_VINTAGE_LIMIT",
+      "confidence": 0.99,
+      "assumptions": [
+        "August figures may be revised in later BEA releases.",
+        "Nominal spending and real spending measure different things."
+      ],
+      "provenance": [
+        "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-MACRO-FOMC-SEP-2026",
+      "statement": "The FOMC raised its target range by 25 basis points to 3.75%–4.00%, effective September 17, 2026. Its minutes describe solid activity and resilient spending alongside persistent inflation and geopolitical tensions that pushed energy prices higher; this is a mixed growth/inflation backdrop rather than a direct recession declaration.",
+      "domain": "monetary_policy_and_geopolitics",
+      "claim_type": "official_policy_action_and_statement",
+      "source": "SRC-FOMC-MINUTES-2026-09-16",
+      "source_location": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+      "supporting_evidence": [
+        "XRP-E-MACRO-FOMC-SEP-2026"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "PRIMARY_SOURCE_VERIFIED",
+      "adversarial_status": "OPEN_TO_REVISION",
+      "acceptance_status": "ACCEPTED_FACT; MARKET_EFFECT_UNTESTED",
+      "confidence": 0.99,
+      "assumptions": [
+        "FOMC statements describe the committee's assessment and do not guarantee the future path of activity or inflation.",
+        "The effect of policy on XRP must be measured rather than assumed."
+      ],
+      "provenance": [
+        "SRC-FOMC-MINUTES-2026-09-16"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-MACRO-RECESSION-STATUS-20261027",
+      "statement": "The public data captured by October 27, 2026 do not establish that a U.S. recession is imminent: Q2 real GDP was positive, unemployment was 4.2%, and August real consumption grew. At the same time, September payroll growth was weak and inflation remained elevated. Q3 GDP and September PCE were still pending, so the correct state is mixed risk with no confirmed recession—not a confident recession call.",
+      "domain": "us_recession_risk_and_xrp_macro_transmission",
+      "claim_type": "cross_source_inference",
+      "source": "SRC-BEA-GDP-Q2-2026",
+      "source_location": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "supporting_evidence": [
+        "XRP-E-MACRO-RECESSION-STATUS-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "INFERRED",
+      "independent_verification_status": "MULTIPLE_OFFICIAL_PRIMARY_SOURCES_CROSS_CHECKED",
+      "adversarial_status": "MINORITY_OBJECTION_RETAINED: labor momentum and energy inflation may deteriorate faster than GDP data reveal",
+      "acceptance_status": "PROVISIONAL; NO_RECESSION_PROBABILITY_ASSIGNED",
+      "confidence": 0.92,
+      "assumptions": [
+        "Recession dating is retrospective and cannot be established from a single monthly indicator.",
+        "The Q3 advance estimate and September PCE release were not available in this snapshot.",
+        "Market prices may react to expectations before official releases."
+      ],
+      "provenance": [
+        "SRC-BEA-GDP-Q2-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29",
+        "SRC-BLS-EMPLOYMENT-SEP-2026",
+        "SRC-BLS-CPI-SEP-2026",
+        "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+        "SRC-FOMC-MINUTES-2026-09-16"
+      ],
+      "timestamp": 1793099400
     }
   ],
   "evidence": [
@@ -6100,6 +6346,163 @@
         "publication_date": "2004-08-19",
         "crypto_relationship": "NOT_ESTABLISHED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-GDP-Q2-2026",
+      "claim_id": "XRP-C-MACRO-GDP-RELEASE-STATUS-20261027",
+      "kind": "official_statistical_release",
+      "summary": "BEA's Q2 third estimate reports +2.2% annualized real GDP growth, after +2.5% in Q1.",
+      "source_id": "SRC-BEA-GDP-Q2-2026",
+      "source_location": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-BEA-GDP-Q2-2026"
+      ],
+      "details": {
+        "vintage": "2026-09-30",
+        "event_period": "2026-Q2",
+        "use": "Macro regime feature; preserve release vintage."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-Q3-GDP-SCHEDULE-20261029",
+      "claim_id": "XRP-C-MACRO-GDP-RELEASE-STATUS-20261027",
+      "kind": "official_release_calendar",
+      "summary": "BEA schedules the Q3 2026 GDP advance estimate for October 29, 2026 at 8:30 a.m.; it was not yet available in the October 27 snapshot.",
+      "source_id": "SRC-BEA-RELEASE-SCHEDULE-2026-10-29",
+      "source_location": "https://www.bea.gov/news/schedule/full",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29"
+      ],
+      "details": {
+        "scheduled_release": "2026-10-29T08:30:00-04:00",
+        "event_period": "2026-Q3",
+        "leakage_guard": "Do not use the unreleased value in features before publication."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-LABOR-SEP-2026",
+      "claim_id": "XRP-C-MACRO-LABOR-SEP-2026",
+      "kind": "official_statistical_release",
+      "summary": "BLS reports September unemployment 4.2%, payroll employment +29,000, and combined downward revisions of 60,000 to July/August payrolls.",
+      "source_id": "SRC-BLS-EMPLOYMENT-SEP-2026",
+      "source_location": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-BLS-EMPLOYMENT-SEP-2026"
+      ],
+      "details": {
+        "release_date": "2026-10-02",
+        "period": "2026-09",
+        "interpretation": "Weak hiring momentum; not sufficient alone to confirm recession."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-CPI-SEP-2026",
+      "claim_id": "XRP-C-MACRO-CPI-SEP-2026",
+      "kind": "official_statistical_release",
+      "summary": "BLS reports CPI +0.6% m/m and +3.7% y/y; core CPI +0.3% m/m and +2.6% y/y; gasoline +9.1% m/m.",
+      "source_id": "SRC-BLS-CPI-SEP-2026",
+      "source_location": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-BLS-CPI-SEP-2026"
+      ],
+      "details": {
+        "release_date": "2026-10-14",
+        "period": "2026-09",
+        "interpretation": "Energy-driven headline inflation may constrain policy easing; causal market effect untested."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-PCE-AUG-2026",
+      "claim_id": "XRP-C-MACRO-PCE-AUG-2026",
+      "kind": "official_statistical_release",
+      "summary": "BEA reports headline PCE +3.4% y/y and core PCE +3.0% y/y in August; September PCE was scheduled for October 29.",
+      "source_id": "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+      "source_location": "https://www.bea.gov/news/2026/personal-income-and-outlays-August-2026",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29"
+      ],
+      "details": {
+        "release_date": "2026-09-30",
+        "period": "2026-08",
+        "next_release": "2026-10-29"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-REAL-CONSUMPTION-AUG-2026",
+      "claim_id": "XRP-C-MACRO-PCE-AUG-2026",
+      "kind": "official_statistical_release",
+      "summary": "BEA reports nominal PCE +0.9% m/m and real PCE +0.6% m/m in August, a counterweight to a near-term recession thesis.",
+      "source_id": "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+      "source_location": "https://www.bea.gov/news/2026/personal-income-and-outlays-August-2026",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026"
+      ],
+      "details": {
+        "period": "2026-08",
+        "interpretation": "One month of consumption growth does not rule out future recession."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-FOMC-SEP-2026",
+      "claim_id": "XRP-C-MACRO-FOMC-SEP-2026",
+      "kind": "official_central_bank_minutes",
+      "summary": "FOMC minutes document a 25 bp rate increase to 3.75%–4.00%, resilient domestic spending, persistent inflation and geopolitical energy-price pressure.",
+      "source_id": "SRC-FOMC-MINUTES-2026-09-16",
+      "source_location": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+      "status": "SUPPORTED",
+      "independence": "official_primary_source",
+      "provenance": [
+        "SRC-FOMC-MINUTES-2026-09-16"
+      ],
+      "details": {
+        "meeting_dates": "2026-09-15/16",
+        "effective_date": "2026-09-17",
+        "interpretation": "Mixed growth/inflation regime; not a recession declaration."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MACRO-RECESSION-STATUS-20261027",
+      "claim_id": "XRP-C-MACRO-RECESSION-STATUS-20261027",
+      "kind": "cross_source_synthesis",
+      "summary": "Positive Q2 GDP and August real consumption counter a claim that recession is already established; weak September payroll growth, elevated CPI/PCE and restrictive rates support downside-risk monitoring. Q3 GDP and September PCE remain pending.",
+      "source_id": "SRC-BEA-GDP-Q2-2026",
+      "source_location": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "status": "INFERRED_NOT_CONFIRMED",
+      "independence": "cross_source_synthesis_not_independent_source",
+      "provenance": [
+        "SRC-BEA-GDP-Q2-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29",
+        "SRC-BLS-EMPLOYMENT-SEP-2026",
+        "SRC-BLS-CPI-SEP-2026",
+        "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+        "SRC-FOMC-MINUTES-2026-09-16"
+      ],
+      "details": {
+        "disconfirming_evidence": [
+          "Positive Q2 real GDP",
+          "August real PCE growth"
+        ],
+        "supporting_risk_evidence": [
+          "September payroll +29,000",
+          "September CPI +3.7% y/y",
+          "August core PCE +3.0% y/y",
+          "FOMC cited geopolitical energy-price pressure"
+        ],
+        "forecast_status": "No recession probability assigned; no XRP forecast inferred."
+      }
     }
   ],
   "tracks": [
@@ -6373,6 +6776,63 @@
       "validation": {
         "status": "WORKFLOW_SOURCE_AUDITED; REPLACEMENT_PR_CI_PASSED_BUT_NOT_MERGED"
       }
+    },
+    {
+      "track_id": "XRP-TRACK-MACRO-REGIME",
+      "role": "us_macro_regime_and_xrp_risk_transmission",
+      "strategy": "Capture official macro releases with publication/event time, retrieval time, revision vintage and payload hash. Separate release facts from market response. Test incremental out-of-sample forecast value beyond BTC beta, dollar, rates and liquidity baselines.",
+      "hypothesis": "An inflationary slowdown may raise risk-off volatility, while positive GDP/consumption and a 4.2% unemployment rate leave a soft-landing counter-hypothesis viable; neither determines XRP direction.",
+      "assumptions": [
+        "Official releases may be revised and must be stored by vintage.",
+        "Recession dating is retrospective; no single indicator establishes imminence.",
+        "The October 29 Q3 GDP and September PCE releases are unavailable before publication."
+      ],
+      "dependencies": [
+        "XRP-C-MACRO-GDP-RELEASE-STATUS-20261027",
+        "XRP-C-MACRO-LABOR-SEP-2026",
+        "XRP-C-MACRO-CPI-SEP-2026",
+        "XRP-C-MACRO-PCE-AUG-2026",
+        "XRP-C-MACRO-FOMC-SEP-2026",
+        "XRP-C-MACRO-RECESSION-STATUS-20261027"
+      ],
+      "focus_claims": [
+        "XRP-C-MACRO-GDP-RELEASE-STATUS-20261027",
+        "XRP-C-MACRO-LABOR-SEP-2026",
+        "XRP-C-MACRO-CPI-SEP-2026",
+        "XRP-C-MACRO-PCE-AUG-2026",
+        "XRP-C-MACRO-FOMC-SEP-2026",
+        "XRP-C-MACRO-RECESSION-STATUS-20261027"
+      ],
+      "evidence": [
+        "XRP-E-MACRO-GDP-Q2-2026",
+        "XRP-E-MACRO-Q3-GDP-SCHEDULE-20261029",
+        "XRP-E-MACRO-LABOR-SEP-2026",
+        "XRP-E-MACRO-CPI-SEP-2026",
+        "XRP-E-MACRO-PCE-AUG-2026",
+        "XRP-E-MACRO-REAL-CONSUMPTION-AUG-2026",
+        "XRP-E-MACRO-FOMC-SEP-2026",
+        "XRP-E-MACRO-RECESSION-STATUS-20261027"
+      ],
+      "unresolved_objections": [
+        "Q3 GDP and September PCE are pending as of the snapshot.",
+        "The market can anticipate macro releases; publication time is not the same as the first tradable market response.",
+        "Macro correlations can disappear after controlling for BTC, DXY, rates, oil and derivatives leverage.",
+        "Do not use current revised macro series in historical backtests without release vintages."
+      ],
+      "confidence": 0.72,
+      "provenance": [
+        "SRC-BLS-CPI-SEP-2026",
+        "SRC-BLS-EMPLOYMENT-SEP-2026",
+        "SRC-BEA-GDP-Q2-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29",
+        "SRC-FOMC-MINUTES-2026-09-16",
+        "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026"
+      ],
+      "state": "TRACK_EXECUTION",
+      "validation": {
+        "status": "OFFICIAL_PRIMARY_SOURCES_CAPTURED; POINT_IN_TIME_FEATURE_STORE_AND_PREDICTIVE_LINK_UNTESTED",
+        "independent_market_data": "PENDING"
+      }
     }
   ],
   "cross_pollination": [],
@@ -6605,6 +7065,12 @@
       "question": "How much XRP is actually posted or wrapped as collateral in Coinbase-accessed Morpho USDC loans on Base, and do loan originations or liquidations measurably change spot liquidity or sell pressure?",
       "priority": "HIGH",
       "status": "PRODUCT_ELIGIBILITY_CONFIRMED; ACTUAL_ONCHAIN_UTILIZATION_AND_MARKET_EFFECT_UNTESTED"
+    },
+    {
+      "question_id": "Q-MACRO-XRP-REGIME-20261027",
+      "question": "Do U.S. macro-regime features (inflation, employment, GDP, Fed policy, dollar and energy prices) add calibrated out-of-sample XRP forecast value beyond BTC beta and market-liquidity baselines?",
+      "priority": "HIGH",
+      "status": "OFFICIAL_DATA_CAPTURED; RELEASE_VINTAGE_FEATURE_STORE_AND_WALK_FORWARD_TEST_PENDING"
     }
   ],
   "relationship_graph": {
@@ -7033,6 +7499,44 @@
         "status": "FACT_OFFICIAL_ENTITY; NO_XRP_LINK_ESTABLISHED",
         "source_ids": [
           "SRC-SBIC-NAGOYA-OFFICIAL-20261027"
+        ]
+      },
+      {
+        "id": "US Economy",
+        "type": "macroeconomic_system",
+        "status": "FACT_WITH_CURRENT_VINTAGE",
+        "source_ids": [
+          "SRC-BLS-CPI-SEP-2026",
+          "SRC-BLS-EMPLOYMENT-SEP-2026",
+          "SRC-BEA-GDP-Q2-2026",
+          "SRC-BEA-RELEASE-SCHEDULE-2026-10-29",
+          "SRC-FOMC-MINUTES-2026-09-16",
+          "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026"
+        ]
+      },
+      {
+        "id": "Federal Reserve",
+        "type": "central_bank",
+        "status": "FACT",
+        "source_ids": [
+          "SRC-FOMC-MINUTES-2026-09-16"
+        ]
+      },
+      {
+        "id": "US Inflation",
+        "type": "macroeconomic_indicator_cluster",
+        "status": "FACT_WITH_CURRENT_VINTAGE",
+        "source_ids": [
+          "SRC-BLS-CPI-SEP-2026",
+          "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026"
+        ]
+      },
+      {
+        "id": "US Labor Market",
+        "type": "macroeconomic_indicator_cluster",
+        "status": "FACT_WITH_CURRENT_VINTAGE",
+        "source_ids": [
+          "SRC-BLS-EMPLOYMENT-SEP-2026"
         ]
       }
     ],
@@ -7827,6 +8331,58 @@
           "SRC-SBIC-NAGOYA-OFFICIAL-20261027"
         ],
         "caveat": "The official profile does not establish an XRP relationship; absence from this source is not proof no indirect relationship exists."
+      },
+      {
+        "source": "Federal Reserve",
+        "target": "US Economy",
+        "relationship_type": "POLICY_RATE_AND_LIQUIDITY_TRANSMISSION",
+        "classification": "CONFIRMED_POLICY_ACTION; MACRO_EFFECTS_CONDITIONAL",
+        "confidence": 0.95,
+        "source_ids": [
+          "SRC-FOMC-MINUTES-2026-09-16"
+        ],
+        "caveat": "The policy-rate action is confirmed; the size and timing of its effects on growth, liquidity and asset prices must be estimated."
+      },
+      {
+        "source": "US Economy",
+        "target": "XRP",
+        "relationship_type": "MACRO_RISK_APPETITE_USD_AND_LIQUIDITY_CHANNEL",
+        "classification": "INFERRED_CAUSAL_MECHANISM_UNTESTED",
+        "confidence": 0.68,
+        "source_ids": [
+          "SRC-BEA-GDP-Q2-2026",
+          "SRC-BLS-EMPLOYMENT-SEP-2026",
+          "SRC-BLS-CPI-SEP-2026",
+          "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+          "SRC-FOMC-MINUTES-2026-09-16",
+          "SRC-XRPL-XRP-OVERVIEW"
+        ],
+        "caveat": "No direct relationship is claimed. Test conditional on BTC returns, DXY, real yields, oil, credit spreads, spot depth and derivatives leverage."
+      },
+      {
+        "source": "US Inflation",
+        "target": "Federal Reserve",
+        "relationship_type": "INFLATION_CONSTRAINT_ON_POLICY_EASING",
+        "classification": "SUPPORTED_BY_OFFICIAL_FOMC_STATEMENT",
+        "confidence": 0.9,
+        "source_ids": [
+          "SRC-BLS-CPI-SEP-2026",
+          "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
+          "SRC-FOMC-MINUTES-2026-09-16"
+        ],
+        "caveat": "Inflation data and policy statements are confirmed; future policy response remains uncertain."
+      },
+      {
+        "source": "US Labor Market",
+        "target": "US Economy",
+        "relationship_type": "EMPLOYMENT_CYCLE_SIGNAL",
+        "classification": "OFFICIAL_STATISTICS_WITH_INFERRED_CYCLE_MEANING",
+        "confidence": 0.9,
+        "source_ids": [
+          "SRC-BLS-EMPLOYMENT-SEP-2026",
+          "SRC-BEA-GDP-Q2-2026"
+        ],
+        "caveat": "Monthly payroll estimates are revised and labor indicators can lag broader activity."
       }
     ]
   },
@@ -8234,6 +8790,51 @@
         "Out-of-sample testing shows ETF flow features add no stable information beyond simple baselines.",
         "The apparent flow/price divergence disappears after aligning the correct trading sessions and fund reporting timestamps."
       ]
+    },
+    {
+      "hypothesis_id": "H-MACRO-INFLATIONARY-SLOWDOWN-XRP-20261027",
+      "statement": "The energy-led inflation shock, restrictive policy rates and weak September payroll growth may increase recession/risk-off risk and pressure XRP liquidity or valuation even if its settlement utility improves. This is a scenario, not a recession or XRP-price forecast.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-MACRO-CPI-SEP-2026",
+        "XRP-E-MACRO-LABOR-SEP-2026",
+        "XRP-E-MACRO-FOMC-SEP-2026"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-MACRO-GDP-Q2-2026",
+        "XRP-E-MACRO-REAL-CONSUMPTION-AUG-2026"
+      ],
+      "required_tests": [
+        "Use only point-in-time macro vintages available at each forecast cutoff.",
+        "Compare XRP returns and liquidity to BTC beta, DXY, real yields, oil, credit spreads, spot depth, OI, funding and liquidation variables.",
+        "Run walk-forward tests against naive and macro-only baselines; evaluate calibration and stability by regime."
+      ],
+      "falsification_conditions": [
+        "Macro features add no stable out-of-sample lift beyond BTC/rates/dollar/market-liquidity baselines.",
+        "Inflation eases, activity and employment remain resilient, and XRP's conditional downside does not increase during the predeclared stress window."
+      ]
+    },
+    {
+      "hypothesis_id": "H-MACRO-SOFT-LANDING-VS-RECESSION-20261027",
+      "statement": "Positive Q2 GDP and August real consumption, with unemployment still at 4.2%, leave a soft-landing/no-imminent-recession scenario viable. If inflation moderates and policy expectations stabilize, risk assets including XRP could benefit, but this does not establish XRP-specific outperformance.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-MACRO-GDP-Q2-2026",
+        "XRP-E-MACRO-REAL-CONSUMPTION-AUG-2026",
+        "XRP-E-MACRO-LABOR-SEP-2026"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-MACRO-CPI-SEP-2026",
+        "XRP-E-MACRO-FOMC-SEP-2026"
+      ],
+      "required_tests": [
+        "Track Q3 GDP and September PCE only after their actual publication timestamps.",
+        "Compare XRP conditional returns with BTC and broad risk assets under falling versus rising real yields and DXY.",
+        "Pre-register regime definitions and use revision-aware, point-in-time data."
+      ],
+      "falsification_conditions": [
+        "Subsequent official data show sustained contraction with deteriorating employment/consumption, or macro variables fail to improve XRP out-of-sample forecasts versus baselines."
+      ]
     }
   ],
   "platform_coordination": [
@@ -8376,6 +8977,19 @@
       "evidence": [
         "XRP-E-SUMMARY-INTERPRETS-INVALID-SIGNAL-20261027",
         "XRP-E-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
+      ]
+    },
+    {
+      "id": "ADR-XRP-011",
+      "decision": "News features must retain source publication/event time separately from ingestion time. Live sentiment eligibility requires valid timezone-aware publication time and ingestion time; stale re-ingested articles and materially future-dated publications are excluded. Historical backtests must respect the earliest ingestion/availability time.",
+      "status": "IMPLEMENTED_IN_DRAFT_PR1190; EXACT_HEAD_CI_PENDING_AFTER_EVENT_TIME_REGRESSION_TEST",
+      "rationale": "A fresh ingested_at value alone can make an old article appear current. The repository's RSS ingestor already preserves the publisher's pubDate in the published field; use it as event time and keep ingestion time for availability/leakage control.",
+      "evidence": [
+        "XRP-E-MACRO-RECESSION-STATUS-20261027"
+      ],
+      "provenance": [
+        "SRC-BLS-CPI-SEP-2026",
+        "SRC-BEA-RELEASE-SCHEDULE-2026-10-29"
       ]
     }
   ],
@@ -8925,6 +9539,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Use publisher event time, not ingestion time alone, for news freshness. PR #1190 now validates RSS published/pubDate against the 72-hour event window and adds regression tests for stale articles re-ingested today, future-dated articles and RFC 822 RSS dates; exact-head CI is pending after this update.",
+      "status": "CODE_AND_TESTS_UPDATED_ON_DRAFT_BRANCH; EXACT_HEAD_CI_PENDING"
+    },
+    {
+      "priority": 0,
+      "action": "On October 29, capture the actual BEA Q3 GDP advance estimate and September Personal Income and Outlays release only after publication; store publication timestamp, retrieval timestamp, release vintage and payload hash before any forecast feature uses them.",
+      "status": "RELEASE_SCHEDULE_CONFIRMED; DATA_NOT_YET_AVAILABLE_AS_OF_2026-10-27"
+    },
     {
       "priority": 0,
       "action": "Recheck the current main tip, latest_signal.json and latest_signal_summary.json using an independently consistent clock. Current returned signal timestamp 12:41:39Z and main commit timestamp 13:10:50Z are later than the supplied 11:10Z session clock; connector retrieval time is not exposed. Exclude this signal from time-sensitive forecast features until ordering is resolved.",
