@@ -525,6 +525,40 @@ def test_create_audit_pull_request_rejects_unverifiable_output(tmp_path: Path, m
         raise AssertionError("Expected missing PR URL to fail closed.")
 
 
+def test_audit_completion_gate_does_not_claim_pr_or_main_sync_when_no_changes(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_completion_gate_test")
+    monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
+    monkeypatch.setattr(module, "STATE_STORE", module.DurableStateStore(tmp_path, "barrot_self_upgrade"))
+    module.AUDIT_PATH.write_text('{"status":"VERIFIED","gaps":[]}\n', encoding="utf-8")
+    monkeypatch.setattr(
+        module,
+        "persist_audit_report",
+        lambda: {
+            "status": "NO_CHANGES",
+            "remote_verified": True,
+            "commit": "mainsha",
+            "audit_fingerprint": "fingerprint",
+            "branch": None,
+            "pr_url": None,
+        },
+    )
+
+    result = module.persist_audit_report_to_main()
+
+    assert result == 0
+    states = list((tmp_path / ".git" / "barrot_self_upgrade" / "states").glob("*.json"))
+    assert states
+    record = max(states, key=lambda item: item.stat().st_mtime)
+    saved = json.loads(record.read_text(encoding="utf-8"))
+    requirements = saved["completion_gate"]["requirements"]
+    assert saved["status"] == "COMPLETE"
+    assert requirements["direct_main_push_attempted"] is False
+    assert requirements["review_pr_required"] is False
+    assert requirements["review_pr_created"] is False
+    assert requirements["audit_persisted"] is True
+    assert saved["completion_gate"]["satisfied"] is True
+
+
 def test_self_upgrade_workflow_persists_audit_through_review_pr_without_direct_push() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
