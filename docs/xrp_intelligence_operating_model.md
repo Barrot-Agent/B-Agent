@@ -275,3 +275,10 @@ The news freshness gate was also tightened in draft PR #1190: the RSS ingestion 
 ## Event-time gate verification correction — PR #1190
 
 The publication-time enhancement is now **EXECUTED and VERIFIED on the draft branch**, not merely designed. Exact-head CI run [40510228609](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228609) passed **130 tests in 4.45 seconds**, including the regression test for stale articles re-ingested today, future-dated publication times and RFC 822 RSS dates. Fail-closed gate [40510228598](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228598) passed. The change remains on draft PR #1190 and is not effective on main.
+
+
+## Public-video identity discrepancy — 2026-10-27
+
+A public YouTube search surfaced a second channel candidate, **UCXm6KAr1WHF6UN7g5b2W7wg** with handle **@KamilahStevensonXrpStocks**, while the existing catalog uses **UCqUPJMQdkCN6lsLVDnichPA**. The transcript for video `jVrBm0dDJ24` spells the speaker “Camila Stevenson”; the requested name is “Camilla Stephenson,” and the catalog says “Kamilah Stevenson.” No first-party cross-link proves these are the same person/channel. Keep the two channel inventories separate and do not attribute claims across them until identity is verified.
+
+A fresh vidIQ channel search was blocked by insufficient credits. No credits were charged, and the tool explicitly said not to retry before its reported November 27, 2026 refresh. The complete public-video inventory and transcript review remain unverified. Candidate channel pages: https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA and https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg
