@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T08:10:00Z",
+    "captured_at_utc": "2026-10-27T08:12:00Z",
     "main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -55,7 +55,10 @@
       "XRP-C-CIRCLE-CPN-MANAGED-PAYMENTS-20261027",
       "XRP-C-CIRCLE-ARC-COMPETITIVE-RAIL-20261027",
       "XRP-C-SBI-RIPPLE-ASIA-XRPL-POC-NOT-XRP-DEMAND-20261027",
-      "XRP-C-MAIN-SIGNAL-INVALID-20261027T073749Z"
+      "XRP-C-MAIN-SIGNAL-INVALID-20261027T073749Z",
+      "XRP-C-MARKET-CLOSE-20261026",
+      "XRP-C-DERIVS-SNAPSHOT-TRADRADAR-20261024",
+      "XRP-C-DERIVS-COVERAGE-NONCOMPARABLE-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -148,6 +151,11 @@
         "id": "Q-SBI-TOKENIZED-DEPOSITS-XRP-REQUIREMENT",
         "question": "Does SBI Ripple Asia's tokenized-deposit proof of concept use XRP as an asset, or only XRPL as ledger infrastructure; is any production deployment disclosed?",
         "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-XRP-DERIVATIVES-COVERAGE-NORMALIZATION",
+        "question": "Can XRP open-interest, funding and liquidation snapshots be reconciled to contract-level exchange data with aligned event timestamps, venue coverage and contract definitions?",
+        "status": "UNTESTED"
       }
     ]
   },
@@ -1520,6 +1528,55 @@
       "source_limitations": [
         "Repository artifact, not a market-price forecast or independently validated news dataset; main tip SHA not independently resolved in this run."
       ]
+    },
+    {
+      "source_id": "SRC-COINCODEX-XRP-HISTORICAL-20261026",
+      "title": "XRP historical daily OHLCV data, October 21–26, 2026",
+      "author_or_organization": "CoinCodex",
+      "source_type": "secondary_market_data_aggregator",
+      "url": "https://coincodex.com/crypto/ripple/historical-data/",
+      "publication_date": "Daily intervals through 2026-10-26",
+      "retrieved_at_utc": "2026-10-27T08:12:00Z",
+      "sections": [
+        "CoinCodex lists the Oct 25–26 interval with open $1.30, high $1.31, low $1.29, close $1.29 and volume $1.24B.",
+        "The page lists the Oct 21–22 interval with open $1.33, high $1.40, low $1.33, close $1.36 and volume $1.72B.",
+        "These are aggregator OHLCV records; interval labeling, exchange composition, and volume methodology must be verified before joining to exchange-level derivatives data."
+      ],
+      "source_limitations": [
+        "Secondary aggregator; not exchange-native trades; daily interval boundaries and venue aggregation need normalization."
+      ]
+    },
+    {
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+      "title": "XRP perpetual derivatives aggregate snapshot",
+      "author_or_organization": "TradRadar",
+      "source_type": "secondary_derivatives_aggregator",
+      "url": "https://tradradar.io/markets/xrp",
+      "publication_date": "Updated 2026-10-24 03:55 UTC",
+      "retrieved_at_utc": "2026-10-27T08:12:00Z",
+      "sections": [
+        "Page displayed mark price $1.2895, 24-hour change -2.45%, open interest $1.73B across seven exchanges, OI change -3.02%, OI-weighted funding +0.0052% per eight hours, and at least $6M liquidations with $5.65M longs and $345.33K shorts.",
+        "The page reports a 3.90 long/short ratio, but the dashboard's venue and contract coverage must be treated as source-specific."
+      ],
+      "source_limitations": [
+        "Snapshot is dated 2026-10-24, not current 2026-10-27 data; aggregate methodology and venue coverage require independent verification."
+      ]
+    },
+    {
+      "source_id": "SRC-KODEXIUS-XRP-DERIVATIVES-20261023",
+      "title": "XRP perpetual futures open interest and funding by contract",
+      "author_or_organization": "Kodexius",
+      "source_type": "secondary_derivatives_aggregator",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "publication_date": "Updated 2026-10-23 21:53 UTC",
+      "retrieved_at_utc": "2026-10-27T08:12:00Z",
+      "sections": [
+        "Page displayed $806.27M open interest across seven listed contracts, $931.13M 24-hour volume and +0.0100% OI-weighted eight-hour funding.",
+        "Venue examples included Binance XRPUSDT $406.02M OI, Bybit XRPUSDT $132.22M, Hyperliquid XRP/USDC $113.18M and OKX XRP-USDT-SWAP $85.71M."
+      ],
+      "source_limitations": [
+        "Different as-of time and contract universe from other dashboards; must not be averaged with TradRadar's $1.73B figure without contract-level reconciliation."
+      ]
     }
   ],
   "claims": [
@@ -2800,6 +2857,82 @@
         "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z"
       ],
       "timestamp": 1793088480
+    },
+    {
+      "claim_id": "XRP-C-MARKET-CLOSE-20261026",
+      "statement": "CoinCodex's historical page lists XRP's Oct 25–26, 2026 interval at $1.30 open, $1.31 high, $1.29 low, $1.29 close and $1.24B volume; its Oct 21–22 interval closed at $1.36. This is a source-specific daily OHLCV snapshot, not a synchronized multi-venue price or a forecast.",
+      "domain": "market_structure_and_historical_features",
+      "claim_type": "secondary_market_data_snapshot",
+      "source": "SRC-COINCODEX-XRP-HISTORICAL-20261026",
+      "source_location": "https://coincodex.com/crypto/ripple/historical-data/",
+      "supporting_evidence": [
+        "XRP-E-MARKET-CLOSE-20261026"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SOURCE_REPORTED_DAILY_OHLCV; VENUE_COMPOSITION_NOT_RECONCILED",
+      "independent_verification_status": "SINGLE_SECONDARY_AGGREGATOR; CROSS-VENUE RECONCILIATION PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "HISTORICAL_FEATURE_CANDIDATE; NOT_A_FORECAST",
+      "confidence": 0.85,
+      "assumptions": [
+        "CoinCodex's interval labels and OHLCV values were transcribed correctly.",
+        "Volume methodology and constituent venues may differ from exchange-native data."
+      ],
+      "provenance": [
+        "SRC-COINCODEX-XRP-HISTORICAL-20261026"
+      ],
+      "timestamp": 1793088720
+    },
+    {
+      "claim_id": "XRP-C-DERIVS-SNAPSHOT-TRADRADAR-20261024",
+      "statement": "TradRadar's 2026-10-24 03:55 UTC dashboard displayed XRP derivatives open interest of $1.73B across seven exchanges, OI down 3.02% over 24 hours, OI-weighted funding +0.0052% per eight hours, and at least $6M in liquidations, mostly longs. This dated aggregate is consistent with a possible long-deleveraging episode but does not establish current positioning or a directional forecast.",
+      "domain": "derivatives_leverage_and_liquidation_risk",
+      "claim_type": "dated_secondary_derivatives_snapshot",
+      "source": "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+      "source_location": "https://tradradar.io/markets/xrp",
+      "supporting_evidence": [
+        "XRP-E-DERIVS-SNAPSHOT-TRADRADAR-20261024"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SOURCE_REPORTED_DATED_DERIVATIVES_SNAPSHOT",
+      "independent_verification_status": "SECONDARY_AGGREGATOR; VENUE-LEVEL RAW SERIES PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "HISTORICAL_CONTEXT_ONLY; CURRENT_SIGNAL_UNAVAILABLE",
+      "confidence": 0.78,
+      "assumptions": [
+        "The dashboard's aggregate values and timestamp are correctly represented.",
+        "Long-liquidation totals do not imply that the entire market was net long or that a specific price move was caused by liquidations."
+      ],
+      "provenance": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261024"
+      ],
+      "timestamp": 1793088720
+    },
+    {
+      "claim_id": "XRP-C-DERIVS-COVERAGE-NONCOMPARABLE-20261027",
+      "statement": "TradRadar reported $1.73B XRP derivatives open interest across seven exchanges at 2026-10-24 03:55 UTC, while Kodexius reported $806.27M across seven listed contracts at 2026-10-23 21:53 UTC. Because the timestamps, contract universes and aggregation methods differ, these figures are not directly comparable and must not be averaged or treated as a market-wide discrepancy without contract-level reconciliation.",
+      "domain": "market_data_quality_and_derivatives_coverage",
+      "claim_type": "source_coverage_and_timestamp_caveat",
+      "source": "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+      "source_location": "https://tradradar.io/markets/xrp",
+      "supporting_evidence": [
+        "XRP-E-DERIVS-COVERAGE-DISAGREEMENT-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "BOTH_SOURCE_SNAPSHOTS_OBSERVED; DIRECT_COMPARABILITY_NOT_ESTABLISHED",
+      "independent_verification_status": "TWO_SECONDARY_DASHBOARDS; RAW_CONTRACT_LEVEL_RECONCILIATION_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "DO_NOT_MERGE_SERIES_UNTIL_COVERAGE_AND_TIMEBASE_NORMALIZED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Each dashboard's displayed values and as-of timestamps are accurately transcribed.",
+        "Different coverage may explain much or all of the numeric difference."
+      ],
+      "provenance": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+        "SRC-KODEXIUS-XRP-DERIVATIVES-20261023"
+      ],
+      "timestamp": 1793088720
     }
   ],
   "evidence": [
@@ -4255,6 +4388,73 @@
         ],
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-MARKET-CLOSE-20261026",
+      "claim_id": "XRP-C-MARKET-CLOSE-20261026",
+      "kind": "historical_ohlcv_snapshot",
+      "summary": "CoinCodex lists XRP at $1.30 open/$1.31 high/$1.29 low/$1.29 close with $1.24B volume for the Oct 25–26 interval; the Oct 21–22 interval closed at $1.36.",
+      "source_id": "SRC-COINCODEX-XRP-HISTORICAL-20261026",
+      "source_location": "https://coincodex.com/crypto/ripple/historical-data/",
+      "status": "SOURCE_REPORTED; AGGREGATION_METHODOLOGY_UNVERIFIED",
+      "independence": "single_secondary_market_data_aggregator",
+      "provenance": [
+        "SRC-COINCODEX-XRP-HISTORICAL-20261026"
+      ],
+      "details": {
+        "interval_end": "2026-10-26",
+        "open_usd": 1.3,
+        "high_usd": 1.31,
+        "low_usd": 1.29,
+        "close_usd": 1.29,
+        "volume_usd": 1240000000,
+        "prior_interval_close_usd": 1.36
+      }
+    },
+    {
+      "evidence_id": "XRP-E-DERIVS-SNAPSHOT-TRADRADAR-20261024",
+      "claim_id": "XRP-C-DERIVS-SNAPSHOT-TRADRADAR-20261024",
+      "kind": "dated_perpetual_derivatives_snapshot",
+      "summary": "TradRadar's 2026-10-24 03:55 UTC snapshot reports $1.73B OI, -3.02% OI change, +0.0052% eight-hour weighted funding and at least $6M liquidations, mostly longs.",
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+      "source_location": "https://tradradar.io/markets/xrp",
+      "status": "DATED_SECONDARY_SNAPSHOT; CURRENT_STATE_NOT_ESTABLISHED",
+      "independence": "single_secondary_derivatives_aggregator",
+      "provenance": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261024"
+      ],
+      "details": {
+        "as_of_utc": "2026-10-24T03:55:00Z",
+        "open_interest_usd": 1730000000,
+        "oi_change_24h_pct": -3.02,
+        "funding_8h_pct": 0.0052,
+        "liquidations_24h_min_usd": 6000000,
+        "long_liquidations_usd": 5650000,
+        "short_liquidations_usd": 345330,
+        "long_short_ratio": 3.9
+      }
+    },
+    {
+      "evidence_id": "XRP-E-DERIVS-COVERAGE-DISAGREEMENT-20261027",
+      "claim_id": "XRP-C-DERIVS-COVERAGE-NONCOMPARABLE-20261027",
+      "kind": "cross_dashboard_coverage_comparison",
+      "summary": "TradRadar and Kodexius display materially different XRP OI aggregates at different as-of times and under different coverage labels; contract-level definitions are needed before comparing them.",
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+      "source_location": "https://tradradar.io/markets/xrp",
+      "status": "COMPARABILITY_NOT_ESTABLISHED",
+      "independence": "two_secondary_dashboards",
+      "provenance": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+        "SRC-KODEXIUS-XRP-DERIVATIVES-20261023"
+      ],
+      "details": {
+        "tradradar_oi_usd": 1730000000,
+        "tradradar_as_of_utc": "2026-10-24T03:55:00Z",
+        "kodexius_oi_usd": 806270000,
+        "kodexius_as_of_utc": "2026-10-23T21:53:00Z",
+        "coverage_mismatch": true,
+        "averaging_allowed": false
+      }
     }
   ],
   "tracks": [
@@ -4748,6 +4948,12 @@
       "question": "Does SBI Ripple Asia's tokenized-deposit proof of concept use XRP as an asset, or only XRPL as ledger infrastructure; is any production deployment disclosed?",
       "priority": "HIGH",
       "status": "UNRESOLVED"
+    },
+    {
+      "question_id": "Q-XRP-DERIVATIVES-COVERAGE-NORMALIZATION",
+      "question": "Can XRP open-interest, funding and liquidation snapshots be reconciled to contract-level exchange data with aligned event timestamps, venue coverage and contract definitions?",
+      "priority": "HIGH",
+      "status": "UNTESTED"
     }
   ],
   "relationship_graph": {
@@ -5987,6 +6193,35 @@
         "SRC-CIRCLE-USDC-XRPL"
       ],
       "confidence": 0.6
+    },
+    {
+      "hypothesis_id": "H-XRP-LEVERAGE-UNWIND-VS-NEW-SHORTS-20261027",
+      "statement": "A decline in XRP price alongside falling open interest and larger long than short liquidations can be consistent with long-position deleveraging; alternatively, venue coverage, time alignment, basis trades or new short positions may explain the observations. The currently available snapshots are dated and use different aggregation universes, so this is a testable hypothesis, not a current market conclusion.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-MARKET-CLOSE-20261026",
+        "XRP-E-DERIVS-SNAPSHOT-TRADRADAR-20261024"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-DERIVS-COVERAGE-DISAGREEMENT-20261027"
+      ],
+      "required_tests": [
+        "Acquire synchronized exchange-native spot/perpetual trades, OI, funding, liquidation and order-book depth at a fixed interval.",
+        "Normalize contract denomination, venue coverage, event timestamps and units before aggregation.",
+        "Compare OI changes with price, funding, basis, liquidations and spot order flow using predeclared event windows.",
+        "Benchmark against a simple price/volume-only baseline and test walk-forward without leakage."
+      ],
+      "falsification_conditions": [
+        "Aligned venue-native data show no meaningful OI decline or long-liquidation skew in the same window.",
+        "The apparent pattern disappears after normalizing venue and contract coverage.",
+        "Price movement is better explained by spot flows or macro beta with no incremental predictive value from leverage features."
+      ],
+      "provenance": [
+        "SRC-COINCODEX-XRP-HISTORICAL-20261026",
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261024",
+        "SRC-KODEXIUS-XRP-DERIVATIVES-20261023"
+      ],
+      "confidence": 0.5
     }
   ],
   "platform_coordination": [
@@ -6130,7 +6365,7 @@
       ],
       "blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
       "retrieved_at_utc": "2026-10-27T08:10:00Z",
-      "age_minutes_at_retrieval": 32.2,
+      "age_minutes_at_retrieval": 34.2,
       "disposition": "INVALID_FOR_FORECASTING; score confidence zero, providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
     },
     "legacy_accuracy": {
@@ -6233,7 +6468,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "Main web/latest_signal.json blob b0b77c436ef1efddb4092855f937c6307419e107, timestamp 2026-10-27T07:37:49.603416Z; age approximately 32.2 minutes at 2026-10-27T08:10:00Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
+    "latest_signal_staleness": "Main web/latest_signal.json blob b0b77c436ef1efddb4092855f937c6307419e107, timestamp 2026-10-27T07:37:49.603416Z; age approximately 34.2 minutes at 2026-10-27T08:12:00Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -6332,7 +6567,7 @@
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     },
-    "last_audit_at_utc": "2026-10-27T08:10:00Z",
+    "last_audit_at_utc": "2026-10-27T08:12:00Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE",
       "receiver_pr": 1182,
@@ -6435,6 +6670,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 1,
+      "action": "Build a synchronized XRP feature store from exchange-native spot/perpetual OHLCV, OI, funding, basis, liquidation and depth data. Do not average secondary OI dashboards with different as-of times and contract universes; record the source-coverage discrepancy and test whether leverage-unwind features add out-of-sample value.",
+      "status": "DATED_SECONDARY_SNAPSHOTS_RECORDED; NORMALIZED_RAW_SERIES_PENDING"
+    },
     {
       "priority": 1,
       "action": "Track Circle Arc adoption and SBI Ripple Asia tokenized-deposit deployment separately from XRP asset demand. Measure corridor routing and XRP bridge/fee flows; do not infer XRP demand from ledger adoption or stablecoin network launch announcements.",
