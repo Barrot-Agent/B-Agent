@@ -96,6 +96,19 @@ def test_rejects_redirect_to_untrusted_host(monkeypatch, tmp_path):
         receive(tmp_path)
 
 
+@pytest.mark.parametrize(
+    "final_url",
+    [
+        f"https://raw.githubusercontent.com/Barrot-Agent/B-Agent/{'b' * 40}/data/termux_bundles/{BUNDLE_ID}.json",
+        f"https://raw.githubusercontent.com/Barrot-Agent/B-Agent/{COMMIT}/data/termux_bundles/other-probe.json",
+    ],
+)
+def test_rejects_redirect_to_different_pinned_manifest_identity(monkeypatch, tmp_path, final_url):
+    patch_fetch(monkeypatch, make_manifest(), final_url)
+    with pytest.raises(receiver.BundleReceiveError, match="pinned manifest identity"):
+        receive(tmp_path)
+
+
 def test_rejects_manifest_hash_mismatch(monkeypatch, tmp_path):
     patch_fetch(monkeypatch, make_manifest(sha256="0" * 64))
     with pytest.raises(receiver.BundleReceiveError, match="does not match the manifest"):
