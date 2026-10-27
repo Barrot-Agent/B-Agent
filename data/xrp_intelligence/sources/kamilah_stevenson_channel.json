@@ -15,7 +15,8 @@
     "identity_evidence": [
       "Public channel listing for Kamilah Stevenson points to this channel ID.",
       "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
-      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved."
+      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved.",
+      "Glasp indexed pages opened 2026-10-27: QslbjGQD0MU (2025-12-14), ci0FH73lbCs (2026-01-13), rv0BAV0vLgo (2026-03-19), and cxeX_eu_2H0 (2026-01-15) are attributed by the third-party index to Kamilah Stevenson. Visible transcript excerpts for QslbjGQD0MU, ci0FH73lbCs, and cxeX_eu_2H0 use the self-introduction Camila Stevenson. This supports recording the spelling variant, not merging the two observed YouTube channel IDs; no first-party cross-link was found and the YouTube channel fetch was throttled."
     ],
     "caveats": [
       "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
@@ -66,7 +67,27 @@
       "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
       "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
       "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
-    ]
+    ],
+    "latest_recheck": {
+      "session_clock_utc": "2026-10-27T11:10:00Z",
+      "retrieval_timestamp_exposed": false,
+      "third_party_pages_opened": 4,
+      "video_ids": [
+        "QslbjGQD0MU",
+        "ci0FH73lbCs",
+        "rv0BAV0vLgo",
+        "cxeX_eu_2H0"
+      ],
+      "transcript_excerpt_ids": [
+        "QslbjGQD0MU",
+        "ci0FH73lbCs",
+        "cxeX_eu_2H0"
+      ],
+      "first_party_channel_fetch": "THROTTLED",
+      "full_inventory_verified": false,
+      "full_transcript_reviewed": false,
+      "identity_disposition": "KEEP_TWO_CHANNEL_IDS_SEPARATE; CAMILA IS A TRANSCRIPT SPELLING VARIANT ONLY UNTIL FIRST-PARTY CROSS-LINK"
+    }
   },
   "seed_videos": [
     {
@@ -328,7 +349,7 @@
     ],
     "last_updated_at_utc": "2026-10-26T23:15:00Z"
   },
-  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
+  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; THIRD_PARTY_VIDEO_METADATA_RECHECKED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
     {
       "finding_id": "XRPL-CONFIDENTIAL-TRANSFERS-001",
