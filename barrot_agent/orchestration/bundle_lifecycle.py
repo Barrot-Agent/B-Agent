@@ -16,7 +16,7 @@ class BundleLifecycleStore:
 
     def __init__(self, workspace: str | Path):
         self.workspace = Path(workspace).resolve()
-        self.root = self.workspace / ".barrot" / "bundles"
+        self.root = self.workspace / ".git" / "barrot_repair" / "bundles"
 
     @staticmethod
     def _key(work_id: str) -> str:
