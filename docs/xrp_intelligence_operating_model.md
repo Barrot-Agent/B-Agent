@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 00:13:38 UTC  
+**Snapshot:** 2026-10-27 07:03:56 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest JSON shape before this snapshot: **53 source records, 24 claims, 46 evidence records, 6 research tracks, and a 22-node/27-edge graph**; the full reference check is rerun after the latest commits.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after this run: **74 source records, 44 claims, 69 evidence records, 6 research tracks, 33 relationship nodes, 47 graph edges, and 11 competing scenario hypotheses**. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -94,3 +94,30 @@ Only the current ChatGPT environment's web research and connected GitHub reposit
 ## Evidence boundary
 
 This snapshot is a source-led research bundle and repository audit, not a finished XRP price forecast. Official announcements prove the described announcements or product availability; they do not by themselves prove market adoption, net capital flows, XRP demand, or price causality. No forecast was issued in this snapshot.
+
+
+## Automation checkpoint — 2026-10-27 07:03:56 UTC
+
+### New evidence added
+
+- **SBI VISA Crypto Card:** SBI VC Trade, Aplus and Visa announced a card whose points can be automatically exchanged into a selected asset from BTC, ETH or XRP; a VCTRADE account is required. This is a documented retail reward-conversion channel, not a quantified XRP capital-flow observation. XRP selection rate, execution venue, funding path and net retained XRP remain unknown. Source: [SBI Holdings, 2026-05-01](https://www.sbigroup.co.jp/news/2026/0501_16304.html).
+- **Circle–Tazapay:** Circle announced a definitive agreement on 2026-09-08 to acquire Tazapay, describing 60+ banking/fintech partners and 100+ payout markets. Closing was expected in 2027 subject to approvals. This is planned payment-rail expansion, not a completed acquisition or an XRP integration. Source: [Circle, 2026-09-08](https://investor.circle.com/news/news-details/2026/Circle-Expands-Global-Payments-Infrastructure-with-Agreement-to-Acquire-Singapore-Based-Cross-Border-Payments-Platform-Tazapay/).
+- **Evernorth capital structure:** an SEC 424B3 prospectus reports 23,638,882 Class A shares outstanding as of 2026-10-09 and lists additional potential issuance categories, including warrants, convertible notes, exchangeable units, Class C conversions, incentive-plan shares and ESPP shares. Do not blindly sum conditional categories; reconcile actual conversions, exercises, facility draws and XRP balances before calculating XRP per diluted share. Source: [SEC prospectus](https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm).
+
+### Current repository/signal state
+
+- Main tip: `c91caad4a4718e6c2e3a8c4f826eed403363a1c1`, latest commit `Auto cycle (BTC): ingest + distill + blended signal [skip ci]`. No core CI run was observed for this exact generated-data tip.
+- Compared with PR #1170's tested base `a3e0f0198510634420f925eef8cea384aca51b12`, main is 20 commits ahead; the delta contains `AUTONOMOUS_DEPLOYMENT_REPORT.md` and generated runtime configuration/log/signal files, but no Python/source/workflow files. This is not a substitute for exact-head CI and current-main integration validation.
+- Current `web/latest_signal.json` blob `4d625f52356bbf80fe17d3f0bf942938779283fb`, timestamp `2026-10-27T06:45:40.110346Z`: score 44, confidence 0, news score 88 from 11 entries. GitHub model credentials are missing and Groq returned HTTP 429. The headlines concern academic XRPL consensus/network research, not verified market-moving news. **Forecast remains `NOT_ISSUED`.**
+- Existing research PR #1170 was at validated head `716a632efb07c5c00fa5d3847f7ecf8ce0095680` before this ledger update. New ledger commit `a34249941e224a0fc114e95831c24927f4e85b36` now contains the additional evidence; exact-head CI and fail-closed gate must be rechecked.
+- PR #1182 remains draft/unmerged. Its receiver code and prior exact-head CI are verified, but no physical Moto G7 receipt has been observed. Do not start `scripts/termux_runner.py watch`; it executes queued shell commands, pulls main, and commits/pushes queue state.
+
+### New causal tests
+
+- SBI card rewards: measure XRP reward conversion volume, user selection, execution route, retained balances and selling offsets before estimating any market effect.
+- Circle–Tazapay: verify closing and post-close corridor-level USDC settlement volumes; test both complementarity with XRP and substitution away from XRP against control corridors.
+- Evernorth: reconcile actual equity issuance and net cash-funded XRP purchases versus in-kind XRP contributions; evaluate XRP per diluted share rather than headline treasury size.
+
+### Validation boundary
+
+The ledger JSON parsed successfully. Source, claim and evidence identifiers are unique, and checked claim/evidence/source/graph/hypothesis/primary-claim references resolved. This was a deterministic structural validation, not the full repository test suite. The new ledger head is awaiting exact-head CI. No merge, main-branch write, force-push, physical-device delivery, or real-money action occurred.
