@@ -1,0 +1,46 @@
+name: Capability Discovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      gap_name:
+        description: "Capability gap to search for solutions to"
+        required: true
+        default: "System degradation prediction"
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GAP_NAME: ${{ github.event.inputs.gap_name }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: python3 scripts/capability_discovery.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add capability_discovery_*.json
+          [ -f ping-pongings/knowledge-base/capability_usage_docs.jsonl ] && git add ping-pongings/knowledge-base/capability_usage_docs.jsonl
+          git diff --cached --quiet || git commit -m "Capability discovery run [skip ci]"
+          push_with_retry() {
+            local max_attempts=5
+            local attempt=1
+            while [ $attempt -le $max_attempts ]; do
+              if git push; then
+                echo "Pushed on attempt $attempt"
+                return 0
+              fi
+              echo "Push attempt $attempt failed, pulling and retrying..."
+              sleep $(( (RANDOM % 5) + attempt ))
+              git pull --no-rebase --no-edit origin main
+              attempt=$(( attempt + 1 ))
+            done
+            echo "FAILED to push after $max_attempts attempts -- data committed locally but not on main"
+            return 1
+          }
+          push_with_retry

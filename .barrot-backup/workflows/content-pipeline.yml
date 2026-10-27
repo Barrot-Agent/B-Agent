@@ -1,0 +1,31 @@
+name: Content Pipeline
+
+on:
+  schedule:
+    # Runs at :55 every 6 hours — after cross-analysis (at :50) has enriched the knowledge base
+    - cron: '55 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Draft content
+        run: python3 scripts/content_pipeline.py
+      - name: Commit draft
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add content/
+          git diff --cached --quiet || git commit -m "Barrot: new content draft [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

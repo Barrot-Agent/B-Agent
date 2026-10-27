@@ -1,0 +1,117 @@
+# Documentation Ingestion Configuration for Barrot-Agent
+# This file configures the documentation sources for automated ingestion
+
+ingestion_config:
+  version: "1.0"
+  timestamp: "2026-01-01T00:39:00Z"
+  
+  output:
+    directory: "ingested_docs"
+    format: "text"  # text, json, markdown
+    include_metadata: true
+    
+  platforms:
+    github:
+      enabled: true
+      name: "GitHub Documentation"
+      base_url: "https://docs.github.com"
+      key_sections:
+        - "/en/get-started"
+        - "/en/actions"
+        - "/en/rest"
+        - "/en/graphql"
+        - "/en/copilot"
+        - "/en/code-security"
+        - "/en/pull-requests"
+      update_frequency: "daily"
+      priority: "high"
+      
+    copilot:
+      enabled: true
+      name: "GitHub Copilot Documentation"
+      base_url: "https://docs.github.com"
+      key_sections:
+        - "/en/copilot"
+        - "/en/copilot/using-github-copilot"
+        - "/en/copilot/configuring-github-copilot"
+        - "/en/copilot/managing-copilot"
+        - "/en/copilot/troubleshooting-github-copilot"
+      update_frequency: "daily"
+      priority: "high"
+      
+    copilot_cookbook:
+      enabled: true
+      name: "GitHub Copilot Cookbook"
+      base_url: "https://docs.github.com"
+      key_sections:
+        - "/en/copilot/example-prompts-for-github-copilot-chat"
+        - "/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+        - "/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide"
+      update_frequency: "daily"
+      priority: "high"
+      notes: "Practical recipes and patterns for using GitHub Copilot effectively"
+      
+    claude_skills:
+      enabled: true
+      name: "Claude Skills Documentation"
+      base_url: "https://support.anthropic.com"
+      key_sections:
+        - "/en/collections"
+        - "/en/articles"
+      update_frequency: "weekly"
+      priority: "medium"
+      notes: "Claude AI educational platform and skills documentation"
+      
+    openai:
+      enabled: true
+      name: "OpenAI/ChatGPT Documentation"
+      base_url: "https://platform.openai.com"
+      key_sections:
+        - "/docs/introduction"
+        - "/docs/quickstart"
+        - "/docs/guides"
+        - "/docs/api-reference"
+        - "/docs/models"
+        - "/docs/assistants"
+        - "/docs/guides/prompt-engineering"
+      update_frequency: "daily"
+      priority: "high"
+      
+    snowflake:
+      enabled: true
+      name: "Snowflake Documentation"
+      base_url: "https://docs.snowflake.com"
+      key_sections:
+        - "/en/user-guide"
+        - "/en/sql-reference"
+        - "/en/developer-guide"
+        - "/en/data-loading"
+        - "/en/user-guide/ml-functions"
+        - "/en/user-guide/security"
+        - "/en/user-guide/performance-optimization"
+      update_frequency: "weekly"
+      priority: "medium"
+      
+  ingestion_settings:
+    rate_limit:
+      requests_per_minute: 30
+      delay_between_requests: 1  # seconds
+    retry:
+      max_attempts: 3
+      backoff_factor: 2
+    timeout:
+      connection: 10  # seconds
+      read: 30  # seconds
+    user_agent: "Mozilla/5.0 (compatible; Barrot-Agent/1.0; Documentation Ingestion Bot)"
+    
+  processing:
+    extract_code_blocks: true
+    extract_links: true
+    remove_navigation: true
+    clean_whitespace: true
+    
+  integration:
+    update_manifest: true
+    manifest_path: "INGESTION_MANIFEST.md"
+    log_to_file: true
+    log_path: "ingestion_logs"

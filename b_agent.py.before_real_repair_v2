@@ -1,0 +1,200 @@
+
+SYSTEM_PROMPT = """
+You are Barrot, an autonomous software engineering agent.
+
+Operate using evidence from the repository and command results.
+
+Rules:
+- Do not invent repository facts.
+- Inspect the smallest relevant files before proposing changes.
+- Prefer minimal, reversible repairs.
+- Do not modify unrelated files.
+- Validate changes after they are made.
+- Report uncertainty explicitly when evidence is insufficient.
+- Preserve working functionality.
+- Never claim a repair succeeded unless validation confirms it.
+- When asked to repair a repository, identify the smallest root cause,
+  apply the smallest safe repair, and continue validation until the
+  repository passes or no safe repair remains.
+""".strip()
+
+#!/data/data/com.termux/files/usr/bin/python3
+import os
+import sys
+import json
+import base64
+import logging
+import argparse
+from pathlib import Path
+from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
+from datetime import datetime
+
+import httpx
+from rich import print
+from rich.prompt import Prompt
+from rich.console import Console
+from rich.markdown import Markdown
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+log = logging.getLogger("b_agent")
+console = Console()
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
+TARGET_REPO = os.getenv("TARGET_REPO", "Barrot-Agent/B-Agent")
+
+if not GROQ_API_KEY or not GH_TOKEN:
+    console.print(
+        "[yellow]Starting autonomous repository repair loop...[/yellow]"
+    )
+    console.print(
+        "Running repository validation attempt 1/3..."
+    )
+
+    commit_sha = create_repository_repair_commit(
+        repo,
+        audit,
+    )
+
+    console.print(
+        "[green]REPOSITORY REPAIR LOOP COMPLETE[/green]"
+    )
+    console.print(
+        f"[green]Verified repair commit: {commit_sha}[/green]"
+    )
+
+    context = build_repo_context(
+        repo,
+        max_total_chars=120000,
+    )
+
+    messages = [
+        {
+            "role": "system",
+            "content": SYSTEM_PROMPT,
+        },
+        {
+            "role": "system",
+            "content": context,
+        },
+    ]
+
+    while True:
+        user_input = Prompt.ask(
+            "[bold cyan]You[/bold cyan]"
+        ).strip()
+
+        if user_input.lower() in {
+            "exit",
+            "quit",
+        }:
+            break
+
+        messages.append(
+            {
+                "role": "user",
+                "content": user_input,
+            }
+        )
+
+        answer = llm.chat(messages)
+
+        messages.append(
+            {
+                "role": "assistant",
+                "content": answer,
+            }
+        )
+
+        try:
+            changes = json.loads(answer)
+        except json.JSONDecodeError:
+            console.print(Markdown(answer))
+            continue
+
+        if not isinstance(changes, dict):
+            console.print(Markdown(answer))
+            continue
+
+        if not all(
+            isinstance(path, str)
+            and isinstance(content, str)
+            for path, content in changes.items()
+        ):
+            console.print(Markdown(answer))
+            continue
+
+        branch = (
+            "b-agent/"
+            + datetime.now().strftime(
+                "%Y%m%d-%H%M%S"
+            )
+        )
+
+        repo.ensure_branch(branch)
+
+        console.print(
+            f"[yellow]Applying "
+            f"{len(changes)} file change(s)...[/yellow]"
+        )
+
+        for path, content in changes.items():
+            repo.commit_file(
+                path=path,
+                content=content,
+                branch=branch,
+                message=f"B-Agent update: {path}",
+            )
+            console.print(
+                f"[green]Updated:[/green] {path}"
+            )
+
+        pr_url = repo.open_pr(
+            head=branch,
+            title="B-Agent automated changes",
+            body=(
+                "Automated changes generated "
+                "by B-Agent."
+            ),
+        )
+
+        console.print(
+            f"[bold green]PR CREATED:[/bold green] "
+            f"{pr_url}"
+        )
+
+        if args.auto_merge:
+            pr_response = repo.client.get(
+                pr_url.replace(
+                    "https://github.com/",
+                    "https://api.github.com/repos/"
+                ).replace(
+                    "/pull/",
+                    "/pulls/"
+                )
+            )
+
+            if pr_response.status_code == 200:
+                pr_number = (
+                    pr_response.json()["number"]
+                )
+
+                merge_result = repo.merge_pr(
+                    pr_number
+                )
+
+                console.print(
+                    "[bold green]"
+                    "AUTO-MERGE RESULT:"
+                    "[/bold green]"
+                )
+                console.print(
+                    json.dumps(
+                        merge_result,
+                        indent=2,
+                    )
+                )
+
+
+if __name__ == "__main__":
+    main()

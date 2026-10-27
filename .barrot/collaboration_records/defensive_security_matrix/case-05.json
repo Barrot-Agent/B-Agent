@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "safe mode blocks further writes",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "WRITE",
+    "incident_id": "203ca923bb07af1d",
+    "reason": "BARROT_SAFE_MODE is active.",
+    "requested_action": "write file",
+    "safe_mode_active": true,
+    "threat_classification": "CONTAINED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-05",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

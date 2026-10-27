@@ -1,0 +1,184 @@
+BARROT TASK — DUAL-AGENT DELIBERATION
+
+Implement the Barrot V3 Dual-Agent Deliberation layer directly in this repository.
+
+GOAL
+
+Create an evidence-backed communication protocol between Barrett and ChatGPT so both can independently examine the same repository evidence, record separate analyses, exchange them, identify agreement/disagreement, and never treat agent agreement itself as verification.
+
+Integrate with the EXISTING Barrot architecture.
+Do NOT create a parallel state, evidence, research, or completion architecture.
+
+REQUIRED
+
+1. SHARED EVIDENCE PACKET
+
+Include:
+- case/task ID
+- repository identity
+- branch/ref
+- commit SHA
+- working-tree fingerprint
+- relevant files
+- relevant diffs
+- commands/results
+- tests
+- failures
+- artifacts
+- timestamps
+- provenance
+
+2. INDEPENDENT REPORTS
+
+Maintain separate BARRETT and CHATGPT reports.
+
+Each report contains:
+- observations
+- evidence references
+- interpretation
+- proposed action
+- risks
+- objections
+- unresolved questions
+- status/confidence
+
+Never overwrite one agent's report with the other.
+
+3. DELIBERATION RECORD
+
+Persist:
+- evidence
+- both reports
+- agreements
+- disagreements
+- disputed claims
+- required evidence
+- proposed resolution
+- validation evidence
+- final decision
+- provenance
+
+4. DISAGREEMENT GATE
+
+Material disagreement must produce:
+
+DISPUTED
+
+Do not automatically execute the disputed action.
+
+5. AGREEMENT IS NOT VERIFICATION
+
+Even when both agents agree, deterministic repository validation is still required.
+
+6. PRESERVE EXISTING SAFETY
+
+Do not bypass:
+- tool allowlists
+- path restrictions
+- security gates
+- human authority gates
+- validation gates
+- completion gates
+- checkpoints
+- provenance
+- deterministic fingerprints
+
+7. PERSISTENCE AND RESUME
+
+A deliberation must survive interruption and resume from persisted state.
+
+8. ANTI-CIRCULARITY
+
+Barrett repeating ChatGPT's conclusion, or ChatGPT repeating Barrett's conclusion, must not qualify as independent analysis.
+
+Each report must reference independently observed evidence.
+
+9. CHATGPT BRIDGE
+
+Implement provider-neutral JSON import/export for ChatGPT deliberation packets.
+
+Do NOT require an OpenAI API or paid service.
+
+Local file exchange must work.
+
+10. FIRST REAL CASE
+
+Use the current remaining failure:
+
+tests/test_barrot_agent_script.py::test_create_pull_request_accepts_cycle_objects
+
+Current evidence:
+
+297 tests passed.
+1 test failed.
+
+Failure:
+
+scripts/barrot_agent.py:628 attempts to write:
+
+/tmp/barrot_pr_body.md
+
+Termux reports:
+
+PermissionError: [Errno 13] Permission denied
+
+Do NOT modify the test to hide this failure.
+
+Analyze the production defect and fix the production code using an appropriate temporary-file mechanism while preserving create_pull_request behavior.
+
+Do NOT use a hard-coded /tmp path.
+
+11. ADD TESTS
+
+Add tests for:
+- independent reports
+- evidence persistence
+- disagreement detection
+- DISPUTED gate
+- agreement without verification
+- provenance
+- deterministic fingerprints
+- resume
+- anti-circularity
+- ChatGPT import/export
+- Barrett import/export
+- /tmp portability defect
+
+12. VALIDATION
+
+Run:
+
+python -m compileall -q barrot_agent scripts tests
+
+python -m pytest tests/test_barrot_agent_script.py -q --no-cov
+
+python -m pytest tests -q --no-cov
+
+Do not claim VERIFIED or COMPLETE unless actual evidence supports it.
+
+13. REPORT
+
+Return:
+
+A. Files changed
+B. Architecture integrated
+C. Schemas
+D. Evidence flow
+E. Disagreement behavior
+F. Current failure analysis
+G. Tests executed and exact results
+H. Remaining blockers
+I. Git status
+J. Commit SHA if committed
+
+IMPORTANT
+
+Do not fabricate ChatGPT participation.
+
+Until an actual ChatGPT packet is imported, ChatGPT status must be:
+
+AWAITING_EXTERNAL_AGENT_INPUT
+
+Barrett must independently analyze the current failure first.
+
+Do not claim that ChatGPT agrees with Barrett unless an actual ChatGPT report exists.

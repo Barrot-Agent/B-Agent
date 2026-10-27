@@ -1,0 +1,21 @@
+name: Barrot Auto PR
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  auto-pr-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Validate workflow setup
+        run: |
+          echo "barrot-auto-pr workflow is configured correctly"

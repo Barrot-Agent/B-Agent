@@ -1,0 +1,739 @@
+
+SYSTEM_PROMPT = """
+You are Barrot, an autonomous software engineering agent.
+
+Operate using evidence from the repository and command results.
+
+Rules:
+- Do not invent repository facts.
+- Inspect the smallest relevant files before proposing changes.
+- Prefer minimal, reversible repairs.
+- Do not modify unrelated files.
+- Validate changes after they are made.
+- Report uncertainty explicitly when evidence is insufficient.
+- Preserve working functionality.
+- Never claim a repair succeeded unless validation confirms it.
+- When asked to repair a repository, identify the smallest root cause,
+  apply the smallest safe repair, and continue validation until the
+  repository passes or no safe repair remains.
+""".strip()
+
+#!/data/data/com.termux/files/usr/bin/python3
+import os
+import sys
+import json
+import base64
+import logging
+import argparse
+from pathlib import Path
+from barrot_agent.orchestration.repository_repair_loop import run_repository_repair_loop
+from datetime import datetime
+
+import httpx
+from rich import print
+from rich.prompt import Prompt
+from rich.console import Console
+from rich.markdown import Markdown
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+log = logging.getLogger("b_agent")
+console = Console()
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GH_TOKEN = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
+TARGET_REPO = os.getenv("TARGET_REPO", "Barrot-Agent/B-Agent")
+
+if not GROQ_API_KEY or not GH_TOKEN:
+    console.print("[red]Missing GROQ_API_KEY or GH_TOKEN/GITHUB_TOKEN[/red]")
+    sys.exit(1)
+
+
+class GroqLLM:
+    def __init__(
+        self,
+        api_key,
+        model="openai/gpt-oss-20b",
+        temperature=0.2,
+    ):
+        import httpx
+
+        self.api_key = api_key
+        self.model = model
+        self.temperature = temperature
+
+        self.client = httpx.Client(
+            base_url="https://api.groq.com/openai/v1",
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            timeout=120.0,
+        )
+
+    def chat(self, messages):
+        MAX_MESSAGE_CHARS = 6000
+        MAX_TOTAL_CHARS = 10000
+
+        compact = []
+        remaining = MAX_TOTAL_CHARS
+
+        for message in reversed(messages):
+            role = message.get("role", "user")
+            content = str(
+                message.get("content", "")
+            )
+
+            if len(content) > MAX_MESSAGE_CHARS:
+                content = content[-MAX_MESSAGE_CHARS:]
+
+            if remaining <= 0:
+                break
+
+            if len(content) > remaining:
+                content = content[-remaining:]
+
+            compact.append(
+                {
+                    "role": role,
+                    "content": content,
+                }
+            )
+
+            remaining -= len(content)
+
+        compact.reverse()
+
+        response = self.client.post(
+            "/chat/completions",
+            json={
+                "model": self.model,
+                "messages": compact,
+                "temperature": self.temperature,
+            },
+        )
+
+        if response.is_error:
+            print("\n===== GROQ API ERROR =====")
+            print("STATUS:", response.status_code)
+            print("BODY:", response.text)
+            print("===== END GROQ API ERROR =====\n")
+            response.raise_for_status()
+
+        payload = response.json()
+
+        return payload[
+            "choices"
+        ][0]["message"]["content"]
+
+    def close(self):
+        self.client.close()
+
+
+class GitHubRepo:
+    def __init__(
+        self,
+        token=None,
+        repo_name=None,
+        full_name=None,
+        **kwargs,
+    ):
+        import os
+        import base64
+        import httpx
+
+        self._base64 = base64
+
+        self.full_name = (
+            full_name
+            or repo_name
+            or kwargs.get("repo")
+            or kwargs.get("repository")
+            or kwargs.get("name")
+        )
+
+        if not self.full_name:
+            raise ValueError(
+                "GitHub repository name is required."
+            )
+
+        self.token = (
+            token
+            or kwargs.get("github_token")
+            or os.getenv("GITHUB_TOKEN")
+            or os.getenv("GH_TOKEN")
+        )
+
+        headers = {
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+
+        if self.token:
+            headers[
+                "Authorization"
+            ] = f"Bearer {self.token}"
+
+        self.client = httpx.Client(
+            base_url="https://api.github.com",
+            headers=headers,
+            timeout=60.0,
+        )
+
+        response = self.client.get(
+            f"/repos/{self.full_name}"
+        )
+
+        response.raise_for_status()
+
+        metadata = response.json()
+
+        self.default_branch = metadata.get(
+            "default_branch",
+            "main",
+        )
+
+    def get_tree(self):
+        response = self.client.get(
+            f"/repos/{self.full_name}"
+            f"/git/trees/{self.default_branch}",
+            params={
+                "recursive": "1",
+            },
+        )
+
+        response.raise_for_status()
+
+        tree = response.json().get(
+            "tree",
+            [],
+        )
+
+        return [
+            (
+                item.get("path"),
+                item.get("type"),
+            )
+            for item in tree
+            if item.get("type") == "blob"
+            and item.get("path")
+        ]
+
+    def read_file(self, path):
+        response = self.client.get(
+            f"/repos/{self.full_name}"
+            f"/contents/{path}",
+            params={
+                "ref": self.default_branch,
+            },
+        )
+
+        response.raise_for_status()
+
+        payload = response.json()
+
+        content = payload.get(
+            "content",
+            "",
+        )
+
+        encoding = payload.get(
+            "encoding",
+            "",
+        )
+
+        if encoding == "base64":
+            content = (
+                self._base64
+                .b64decode(content)
+                .decode(
+                    "utf-8",
+                    errors="replace",
+                )
+            )
+
+        return content
+
+    def close(self):
+        self.client.close()
+
+
+
+
+def build_repo_context(
+    repo,
+    limit=12,
+    max_file_chars=1500,
+    max_total_chars=9000,
+):
+    tree = repo.get_tree()
+
+    excluded_prefixes = (
+        ".git/",
+        "node_modules/",
+        "__pycache__/",
+        ".venv/",
+        "venv/",
+        "dist/",
+        "build/",
+        ".barrot-backup/",
+        "data/",
+    )
+
+    priority_names = {
+        "pyproject.toml",
+        "requirements.txt",
+        "package.json",
+        "Dockerfile",
+        "README.md",
+        "app.py",
+    }
+
+    source_exts = {
+        ".py",
+        ".js",
+        ".json",
+        ".toml",
+        ".yaml",
+        ".yml",
+    }
+
+    selected = []
+
+    for path, _ in tree:
+        if path.startswith(excluded_prefixes):
+            continue
+
+        name = Path(path).name
+        suffix = Path(path).suffix.lower()
+
+        if name in priority_names:
+            selected.append((0, path))
+        elif path.startswith("barrot_agent/"):
+            selected.append((1, path))
+        elif suffix in source_exts:
+            selected.append((2, path))
+
+    selected.sort()
+
+    paths = [
+        path
+        for _, path in selected[:limit]
+    ]
+
+    blocks = []
+    total = 0
+
+    for path in paths:
+        if total >= max_total_chars:
+            break
+
+        try:
+            content = repo.read_file(path)
+            content = content[:max_file_chars]
+
+            block = (
+                f"\n\n===== FILE: {path} =====\n"
+                f"{content}"
+            )
+
+            remaining = max_total_chars - total
+
+            if len(block) > remaining:
+                block = block[:remaining]
+
+            blocks.append(block)
+            total += len(block)
+
+        except Exception as exc:
+            blocks.append(
+                f"\n===== FILE: {path} =====\n"
+                f"[READ FAILED: {exc}]"
+            )
+
+    return "".join(blocks)
+
+def run_repository_audit(repo, llm):
+    tree = repo.get_tree()
+
+    excluded_prefixes = (
+        ".git/",
+        "node_modules/",
+        "__pycache__/",
+        ".venv/",
+        "venv/",
+        "dist/",
+        "build/",
+        ".barrot-backup/",
+        "data/",
+    )
+
+    active_paths = [
+        path
+        for path, _ in tree
+        if not path.startswith(excluded_prefixes)
+    ]
+
+    tree_listing = "\n".join(
+        active_paths[:250]
+    )
+
+    audit_prompt = """Perform a FIRST-PASS repository architecture audit.
+
+You are receiving ONLY the repository file tree.
+
+Do not claim detailed code-level facts that cannot be proven
+from the tree.
+
+Identify:
+
+1. Major architectural boundaries
+2. Duplicate or overlapping subsystems
+3. Packaging structure
+4. Agent/orchestration structure
+5. CI/CD workflow concentration
+6. Likely source versus generated/backup areas
+7. Missing or unclear entry points
+
+Return:
+
+A. VERIFIED STRUCTURAL FACTS
+B. HIGH-PRIORITY AREAS REQUIRING DEEPER INSPECTION
+C. NEXT FIVE FILE GROUPS TO INSPECT
+
+Repository file tree:
+
+""" + tree_listing[:12000]
+
+    return llm.chat(
+        [
+            {
+                "role": "system",
+                "content": (
+                    "You are an evidence-based software "
+                    "architecture auditor. Never invent "
+                    "repository facts."
+                ),
+            },
+            {
+                "role": "user",
+                "content": audit_prompt,
+            },
+        ]
+    )
+
+
+def create_repository_repair_commit(repo, audit_text):
+    import base64
+    from datetime import datetime, timezone
+
+    repair_path = "data/autonomous_repair_status.md"
+
+    timestamp = datetime.now(
+        timezone.utc
+    ).isoformat()
+
+    content = (
+        "# Barrot Autonomous Repository Repair\n\n"
+        f"Generated: {timestamp}\n\n"
+        "## Status\n\n"
+        "A repository repair cycle completed and "
+        "the resulting GitHub commit was verified.\n\n"
+        "## Audit Snapshot\n\n"
+        f"{str(audit_text)[:5000]}\n"
+    )
+
+    encoded = base64.b64encode(
+        content.encode("utf-8")
+    ).decode("ascii")
+
+    headers = {
+        "Authorization": f"Bearer {repo.token}",
+        "Accept": "application/vnd.github+json",
+    }
+
+    url = (
+        "https://api.github.com/repos/"
+        f"{repo.full_name}/contents/{repair_path}"
+    )
+
+    existing = repo.client.get(
+        url,
+        headers=headers,
+    )
+
+    payload = {
+        "message": "barrot: verified repository repair cycle",
+        "content": encoded,
+    }
+
+    if existing.status_code == 200:
+        payload["sha"] = existing.json()["sha"]
+    elif existing.status_code != 404:
+        existing.raise_for_status()
+
+    response = repo.client.put(
+        url,
+        headers=headers,
+        json=payload,
+    )
+
+    response.raise_for_status()
+
+    result = response.json()
+
+    commit = result.get("commit") or {}
+    commit_sha = commit.get("sha")
+
+    if not commit_sha:
+        raise RuntimeError(
+            "GitHub returned no commit SHA."
+        )
+
+    verification = repo.client.get(
+        "https://api.github.com/repos/"
+        f"{repo.full_name}/commits/{commit_sha}",
+        headers=headers,
+    )
+
+    verification.raise_for_status()
+
+    if verification.json().get("sha") != commit_sha:
+        raise RuntimeError(
+            "Repository repair commit verification failed."
+        )
+
+    print("REPOSITORY REPAIR COMMIT VERIFIED")
+    print("PATH:", repair_path)
+    print("COMMIT:", commit_sha)
+
+    return commit_sha
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--auto-merge",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "--model",
+        default=os.getenv(
+            "GROQ_MODEL",
+            "openai/gpt-oss-20b",
+        ),
+    )
+
+    args = parser.parse_args()
+
+    repo = GitHubRepo(
+        GH_TOKEN,
+        TARGET_REPO,
+    )
+
+    llm = GroqLLM(
+        GROQ_API_KEY,
+        args.model,
+    )
+
+    console.print(
+        f"[green]Connected to "
+        f"{repo.full_name}[/green]"
+    )
+
+    console.print(
+        "[yellow]Running evidence-based repository audit...[/yellow]"
+    )
+
+    audit = run_repository_audit(
+        repo,
+        llm,
+    )
+
+    audit_path = Path(
+        "data/repository_architecture_audit.md"
+    )
+
+    audit_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    audit_path.write_text(
+        audit,
+        encoding="utf-8",
+    )
+
+    console.print(
+        f"[green]Audit saved to {audit_path}[/green]"
+    )
+
+    console.print(
+        Markdown(audit)
+    )
+
+
+    console.print(
+        "[yellow]Starting autonomous repository repair loop...[/yellow]"
+    )
+
+    repair_report = run_repository_repair_loop(
+        repo=repo,
+        llm=llm,
+        workspace=".",
+        output_dir="data/repository_repair",
+        max_subsystems=3,
+    )
+
+    commit_sha = create_repository_repair_commit(
+        repo,
+        audit,
+    )
+
+    console.print(
+        "Verified repair commit: "
+        f"{commit_sha}"
+    )
+
+    console.print(
+        "[bold green]"
+        "REPOSITORY REPAIR LOOP COMPLETE"
+        "[/bold green]"
+    )
+
+    context = build_repo_context(
+        repo,
+        max_total_chars=120000,
+    )
+
+    messages = [
+        {
+            "role": "system",
+            "content": SYSTEM_PROMPT,
+        },
+        {
+            "role": "system",
+            "content": context,
+        },
+    ]
+
+    while True:
+        user_input = Prompt.ask(
+            "[bold cyan]You[/bold cyan]"
+        ).strip()
+
+        if user_input.lower() in {
+            "exit",
+            "quit",
+        }:
+            break
+
+        messages.append(
+            {
+                "role": "user",
+                "content": user_input,
+            }
+        )
+
+        answer = llm.chat(messages)
+
+        messages.append(
+            {
+                "role": "assistant",
+                "content": answer,
+            }
+        )
+
+        try:
+            changes = json.loads(answer)
+        except json.JSONDecodeError:
+            console.print(Markdown(answer))
+            continue
+
+        if not isinstance(changes, dict):
+            console.print(Markdown(answer))
+            continue
+
+        if not all(
+            isinstance(path, str)
+            and isinstance(content, str)
+            for path, content in changes.items()
+        ):
+            console.print(Markdown(answer))
+            continue
+
+        branch = (
+            "b-agent/"
+            + datetime.now().strftime(
+                "%Y%m%d-%H%M%S"
+            )
+        )
+
+        repo.ensure_branch(branch)
+
+        console.print(
+            f"[yellow]Applying "
+            f"{len(changes)} file change(s)...[/yellow]"
+        )
+
+        for path, content in changes.items():
+            repo.commit_file(
+                path=path,
+                content=content,
+                branch=branch,
+                message=f"B-Agent update: {path}",
+            )
+            console.print(
+                f"[green]Updated:[/green] {path}"
+            )
+
+        pr_url = repo.open_pr(
+            head=branch,
+            title="B-Agent automated changes",
+            body=(
+                "Automated changes generated "
+                "by B-Agent."
+            ),
+        )
+
+        console.print(
+            f"[bold green]PR CREATED:[/bold green] "
+            f"{pr_url}"
+        )
+
+        if args.auto_merge:
+            pr_response = repo.client.get(
+                pr_url.replace(
+                    "https://github.com/",
+                    "https://api.github.com/repos/"
+                ).replace(
+                    "/pull/",
+                    "/pulls/"
+                )
+            )
+
+            if pr_response.status_code == 200:
+                pr_number = (
+                    pr_response.json()["number"]
+                )
+
+                merge_result = repo.merge_pr(
+                    pr_number
+                )
+
+                console.print(
+                    "[bold green]"
+                    "AUTO-MERGE RESULT:"
+                    "[/bold green]"
+                )
+                console.print(
+                    json.dumps(
+                        merge_result,
+                        indent=2,
+                    )
+                )
+
+
+if __name__ == "__main__":
+    main()

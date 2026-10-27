@@ -1,0 +1,145 @@
+**1. Actual modules & public API surface (as present in this chunk)**  
+
+| Module (import path) | Public symbols (classes, constants, functions) |
+|----------------------|-----------------------------------------------|
+| `barrot_agent.ternary` | `ANCHOR` (float), `Ternary` (class) – static methods `resolve`, `label`, `color`, `gate`, `confidence` |
+| `barrot_agent.tools.file_drop_tool` | `FileDropTool` (class) – methods `__init__`, `execute`, `describe` |
+| `barrot_agent.tools.repo_command_tool` | `RepoCommandTool` (class) – methods `__init__`, `execute` |
+| `barrot_agent.tools.repo_inspect_tool` | `RepoInspectTool` (class) – methods `__init__`, `execute` |
+| `barrot_agent.tools.drop_router` | `DropResult` (dataclass), `DropRouter` (class) – methods `__init__`, `_inside_repository`, `_checksum`, `_safe_destination` (truncated) |
+
+No other symbols are exported from the files shown.
+
+---
+
+**2. Meaningful executable branches / error paths**
+
+| Symbol | Branch / error path | What it exercises |
+|--------|---------------------|--------------------|
+| `Ternary.resolve` | `if s > ANCHOR * n` → `VALID`<br>`elif s < -ANCHOR * n` → `DRIFT`<br>`else` → `NULL` | 3‑way decision on summed signals |
+| `Ternary.gate` | Same three‑way structure on a single value | 3‑way decision on one value |
+| `Ternary.confidence` | `if not signals` → `0.0`<br>`else` → compute majority & proportion | Empty‑input guard and majority‑vote calculation |
+| `Ternary.label` / `Ternary.color` | Dictionary lookup – **KeyError** if `t` not in `{‑1,0,1}` (not caught) | Error path for invalid ternary value |
+| `RepoCommandTool.execute` | `result.returncode == 0` → `success=True`<br>`else` → `success=False`<br>Construction of `output` – includes stdout only, stderr only, both, or none | Success‑flag logic and output concatenation |
+| `RepoInspectTool.execute` | `if not requested.exists()` → early failure<br>`except ValueError` (escape) → early failure<br>`if requested.is_file()` vs directory walk → branch on target type<br>`if include_content` → read file, compute hash, slice content<br>`except Exception as exc` → record `content_error` | Existence check, repository‑root escape, file‑vs‑dir handling, optional content extraction, file‑read error handling |
+| `DropRouter._inside_repository` | `try/except ValueError` → returns `True` or `False` | Path‑inside‑repo guard |
+| `DropRouter._checksum` | Loop over file chunks – not a branch but a distinct execution path (I/O) |
+| `DropRouter._safe_destination` (visible part) | `if not destination_path.is_absolute(): …` → uses `self.repository` (which **does not exist**) → raises `AttributeError` | Immediate implementation defect |
+
+---
+
+**3. Practical pytest cases that can be written **without inventing** any API**
+
+Below are concrete test ideas that map 1‑to‑1 to the code above.
+
+| Target | Test case | Expected assertion |
+|--------|-----------|---------------------|
+| `Ternary.resolve` | `resolve(0.8, 0.8)` → sum = 1.6, n = 2, `1.6 > ANCHOR*2 (≈1.414)` | returns `Ternary.VALID (1)` |
+| | `resolve(-1.0, -0.5)` → sum = ‑1.5, n = 2, `‑1.5 < -ANCHOR*2` | returns `Ternary.DRIFT (‑1)` |
+| | `resolve(0.2, -0.1)` → sum = 0.1, n = 2, falls in the middle | returns `Ternary.NULL (0)` |
+| `Ternary.gate` | `gate(0.9)` → > ANCHOR → VALID | 1 |
+| | `gate(-0.9)` → < ‑ANCHOR → DRIFT | ‑1 |
+| | `gate(0.3)` → inside → NULL | 0 |
+| `Ternary.confidence` | `confidence()` → no args | `0.0` |
+| | `confidence(1,1,‑1)` → majority = 1, 2/3 → `≈0.6667` | `== 2/3` |
+| | `confidence(‑1,‑1,‑1,1)` → majority = ‑1, 3/4 → `0.75` | `== 0.75` |
+| `Ternary.label` / `color` | `label(1)`, `label(0)`, `label(-1)` → correct strings | `"VALID"`, `"NULL"`, `"DRIFT"` |
+| | `color(-1)`, `color(0)`, `color(1)` → correct emojis | `"🔴"`, `"🟡"`, `"🟢"` |
+| | `label(2)` (or any non‑{‑1,0,1}) → raises `KeyError` | `pytest.raises(KeyError)` |
+| `RepoCommandTool.execute` | Mock `subprocess.run` to return `returncode=0`, `stdout="ok"`, `stderr=""` → `success=True`, `message="ok"` | dict fields |
+| | Mock `returncode=1`, `stdout="out"`, `stderr="err"` → `success=False`, `message="out\nerr"` | dict fields |
+| | Mock `returncode=0`, both empty → `message="Command completed successfully."` | dict fields |
+| `RepoInspectTool.execute` | **a)** Target does not exist → `success=False`, correct message. |
+| | **b)** Target points outside repo (`../outside`) → `success=False`, escape message. |
+| | **c)** Target is a **file**: create a temporary file, call `execute(file_path.name, include_content=True)`. Assert `files_inspected == 1`, `files[0]["content"]` equals file text, `sha256` matches manual hash. |
+| | **d)** Target is a **directory** containing several files plus a `.git` folder and `__pycache__`. Verify those excluded files are not listed. |
+| | **e)** `include_content=False` → each file dict lacks `content` and `sha256`. |
+| | **f)** File that raises on `read_text` (e.g., a binary file opened with `errors="replace"` normally succeeds, but we can simulate by monkey‑patching `Path.read_text` to raise `OSError`). Assert `content_error` key present. |
+| `FileDropTool.execute` | Patch a stub `DropRouter` that records the arguments and returns a fabricated `DropResult(success=True, source="src", destination="dst", action="copied", message="ok", checksum="abc")`. Call `FileDropTool(...).execute("src","dst")` and assert the returned dict mirrors the stub. |
+| `FileDropTool.describe` | Simple call – assert required keys (`name`, `description`, `parameters`) exist and values match the source. |
+| `DropRouter._inside_repository` | Create a temporary directory as repo root. Test a path inside (`repo_root / "sub/file.txt"` ) → `True`. Test a path outside (`Path("/tmp/outside")`) → `False`. |
+| `DropRouter._checksum` | Write a known small file, compute expected SHA‑256, call `_checksum` (via a temporary subclass exposing it) and compare. |
+| `DropRouter._safe_destination` (visible code) | Call the method with a relative destination and assert that it raises `AttributeError` because `self.repository` is undefined – this confirms the implementation defect. |
+
+All of the above are directly supported by the code; no extra functions are invented.
+
+---
+
+**4. Estimated newly covered lines**
+
+| File | Approx. total executable lines* | Lines exercised by the tests above |
+|------|--------------------------------|------------------------------------|
+| `ternary.py` | ~30 | 25‑28 (resolve, gate, confidence, label, color) |
+| `file_drop_tool.py` | ~25 | 20 (execute, describe, constructor) |
+| `repo_command_tool.py` | ~20 | 18 (execute, output handling) |
+| `repo_inspect_tool.py` | ~80 | 70 (early‑exit branches, file walk, content extraction, error path) |
+| `drop_router.py` | ~30 (visible part) | 22 (inside_repository true/false, checksum, safe_destination error) |
+| **Total** | ~185 | ~145‑150 |
+
+> **Result:** Roughly 78 % – 81 % of the lines that are currently executable in this chunk will be exercised by the test matrix described, comfortably exceeding the 70 % target for this part of the repository.
+
+---
+
+**5. Dependencies that must be mocked / faked**
+
+| Dependency | Where it appears | Reason for mocking |
+|------------|------------------|--------------------|
+| `subprocess.run` | `RepoCommandTool.execute` | Avoid actually running shell commands; control `returncode`, `stdout`, `stderr`, and `timeout`. |
+| `DropRouter` (its `drop` method) | `FileDropTool.execute` | We only need to verify that `execute` forwards the result; we do not want file‑system side‑effects. |
+| Filesystem (real files) | `RepoInspectTool.execute`, `DropRouter._checksum` | Use `tmp_path` / `tempfile` fixtures to create temporary directories/files. No need to mock `Path` itself; real temporary files are cheap and deterministic. |
+| `Path.read_text` (exception path) | `RepoInspectTool.execute` | For the `content_error` branch we can monkey‑patch `Path.read_text` on a specific path to raise an exception. |
+| `os` / `shutil` (unused in visible part) | Not needed for current tests (the truncated part of `_safe_destination` is not exercised beyond the error). |
+
+No network or heavy external services are required.
+
+---
+
+**6. Implementation defects that are directly observable from the source**
+
+| Location | Defect description | Why it matters for correctness / testing |
+|----------|--------------------|-------------------------------------------|
+| `DropRouter._safe_destination` (lines 31‑38) | References `self.repository`, which is never defined (the attribute is `self.repository_root`). The method will raise an `AttributeError` as soon as the `if not destination_path.is_absolute():` branch is taken. | Tests that call this method will fail; the bug must be fixed (replace `self.repository` with `self.repository_root`). |
+| `Ternary.label` & `Ternary.color` | Direct dictionary indexing without validation – passing any integer other than ‑1, 0, 1 raises `KeyError`. The docstring implies the method “returns a label” for any ternary value, but invalid inputs cause an uncaught exception. | A robust library should raise a custom error or return a sentinel; the current behavior may break callers that accidentally pass out‑of‑range values. |
+| `RepoInspectTool.execute` – `include_content` branch | Reads the whole file into memory (`content[:12000]`), but for very large files the initial `read_text` could consume massive RAM before truncation. Not a test failure, but a scalability concern. | Not a functional defect for the test suite but worth noting for production usage. |
+| `RepoInspectTool.execute` – `max_files` truncation | The function silently drops files beyond `max_files` without warning; callers may assume all files were inspected. | Again a design‑choice issue; tests should verify that only the first `max_files` are returned. |
+| `RepoCommandTool.execute` – `shell=True` | Allows injection if the `command` string is user‑controlled. Not a defect in the isolated test scope, but a security consideration. | No test needed; just an observation. |
+
+---
+
+### Quick test‑file skeleton (pytest) – just to illustrate the structure
+
+```python
+# tests/test_ternary.py
+import pytest
+from barrot_agent.ternary import Ternary, ANCHOR
+
+def test_resolve_valid():
+    assert Ternary.resolve(0.8, 0.8) == Ternary.VALID
+
+def test_resolve_drift():
+    assert Ternary.resolve(-1.0, -0.5) == Ternary.DRIFT
+
+def test_resolve_null():
+    assert Ternary.resolve(0.2, -0.1) == Ternary.NULL
+
+def test_gate_boundaries():
+    assert Ternary.gate(ANCHOR + 0.01) == Ternary.VALID
+    assert Ternary.gate(-(ANCHOR + 0.01)) == Ternary.DRIFT
+    assert Ternary.gate(0.0) == Ternary.NULL
+
+def test_confidence():
+    assert Ternary.confidence() == 0.0
+    assert Ternary.confidence(1, 1, -1) == 2/3
+    assert Ternary.confidence(-1, -1, -1, 1) == 0.75
+
+def test_label_and_color():
+    for val, lbl, col in [(1, "VALID", "🟢"),
+                          (0, "NULL", "🟡"),
+                          (-1, "DRIFT", "🔴")]:
+        assert Ternary.label(val) == lbl
+        assert Ternary.color(val) == col
+    with pytest.raises(KeyError):
+        Ternary.label(2)
+```
+
+Similar small, focused modules can be written for each of the other classes, using `monkeypatch`, `tmp_path`, and `unittest.mock` as outlined above. Running the full suite will push the coverage for this chunk well beyond the 70 % requirement.

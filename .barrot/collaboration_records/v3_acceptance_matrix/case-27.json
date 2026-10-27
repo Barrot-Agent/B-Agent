@@ -1,0 +1,23 @@
+{
+  "COMMAND": "ScientificDiscoveryController.run(non-independent evidence)",
+  "COMPONENTS_TESTED": [
+    "ScientificDiscoveryController",
+    "IndependenceEvaluator"
+  ],
+  "DESCRIPTION": "fake independent verification from inherited evidence is rejected",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-27.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "problem_resolution_status": "UNRESOLVED",
+    "status": "no_solution_claim"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-27",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

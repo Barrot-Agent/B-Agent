@@ -1,0 +1,29 @@
+name: Barrot Transparency Audit
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Run apex_lattice audit (no PR side effects)
+        run: python3 scripts/apex_audit_summary.py
+      - name: Summarize self-benchmark history
+        run: python3 scripts/benchmark_summary.py
+      - name: Commit summaries
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/apex_audit_summary.json ping-pongings/knowledge-base/apex_audit_history.jsonl ping-pongings/knowledge-base/benchmark_summary.json web/apex_audit_summary.json web/benchmark_summary.json
+          git diff --cached --quiet || git commit -m "Barrot transparency audit refresh [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

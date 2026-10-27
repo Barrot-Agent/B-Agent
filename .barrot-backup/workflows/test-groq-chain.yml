@@ -1,0 +1,25 @@
+name: Test Groq Chain
+
+on:
+  workflow_dispatch:
+    inputs:
+      headline:
+        description: 'Test headline'
+        required: false
+        default: 'SEC drops lawsuit against Ripple, XRP surges 15%'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+      TEST_HEADLINE: ${{ github.event.inputs.headline }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Test classify_with_self_consistency
+        run: python3 scripts/groq_chain.py

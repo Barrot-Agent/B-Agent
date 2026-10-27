@@ -1,0 +1,107 @@
+**1. Actual modules & public‑API surface in this chunk**
+
+| File (module) | Public symbols (importable) | Short description |
+|---------------|-----------------------------|-------------------|
+| **`<script‑file>`** (the “stand‑alone” runner) | `call_gradio(prompt, seed=0, randomize_seed=True, width=1024, height=1024, guidance_scale=3.5, steps=28)`  <br> `main()` (executed only when `__name__ == "__main__"` – can be called directly in tests) | Helper that talks to the remote Gradio endpoint, parses the SSE stream and returns the final JSON payload; `main` orchestrates a download of the generated image. |
+| **`barrot_agent.models`** | `GRANITE_METADATA` (constant)  <br> `ModelManager` (class) – public methods: `__init__(config=None)`, `is_loaded` (property), `get_metadata()`, `load()`, `unload()` | Minimal wrapper around a Hugging‑Face vision‑2‑seq model. |
+| **`barrot_agent.mcp_adapters`** (partial view) | `AdapterResult` (dataclass)  <br> `BaseMCPAdapter` (abstract base class) | “Stable” adapter contract – only the two symbols are exported in the current chunk. (The rest of the class is cut‑off, so we only list what is present.) |
+
+> **Note** – All other imported symbols (`os`, `json`, `urllib.request`, `time`, `logging`, `dataclasses`, etc.) are implementation‑detail only; they are **not** part of the public API.
+
+---
+
+**2. Meaningful executable branches / error paths**
+
+| Location | Branch condition | Behaviour / error |
+|----------|------------------|-------------------|
+| `call_gradio` – header creation | `if HF_TOKEN:` | Adds `Authorization` header; otherwise no auth header. |
+| POST response handling | `event_id = submit_resp.get("event_id")`  → `if not event_id:` | Raises `RuntimeError("No event_id …")` when the JSON response lacks `event_id`. |
+| SSE loop – line parsing | `if line.startswith("event:")` | Updates `current_event`. |
+| SSE loop – data line detection | `if not line.startswith("data:"):` | Skips non‑data lines. |
+| SSE loop – payload filtering | `if payload in ("", "[DONE]", "null"):` | Ignores empty/terminal markers. |
+| SSE loop – JSON decode | `try: parsed = json.loads(payload) except JSONDecodeError:` | Silently continues on malformed JSON. |
+| SSE loop – event‑type handling | `if current_event == "generating": … elif current_event == "complete": …` | Prints a preview message vs. captures the final payload (`last_data = parsed; break`). |
+| After SSE loop | `if not last_data:` | Raises `RuntimeError("No 'complete' event …")` when a final event never arrived. |
+| `main` – token warning | `if not HF_TOKEN:` | Emits a warning on stdout. |
+| `main` – download flow | (no explicit branch – but network I/O may raise; not a code branch). |
+| `ModelManager.__init__` | `config or ModelConfig()` – always creates a config object. |
+| `ModelManager.is_loaded` | Returns `self._model is not None`. |
+| `ModelManager.get_metadata` | Returns a **copy** of the constant dict (no branch). |
+| `ModelManager.load` – import block | `except ImportError as exc:` → logs & re‑raises. |
+| `ModelManager.load` – config‑driven kwargs | `if self.config.load_in_8bit:` → adds `load_in_8bit`; `elif self.config.load_in_4bit:` → adds `load_in_4bit`; `elif self.config.tensor_type == "bf16":` → adds `torch_dtype`. |
+| `ModelManager.load` – device mapping | `if self.config.device != "auto":` → explicit device map; else `"auto"`. |
+| `ModelManager.load` – generic exception | `except Exception as exc:` → logs error & re‑raises. |
+| `ModelManager.unload` – conditional deletions | `if self._model is not None:` / `if self._processor is not None:` → delete and set to `None`. |
+
+These are the **only** logical forks that a unit test can force or observe.
+
+---
+
+**3. Practical pytest cases that are *directly* supported by the code**
+
+Below are concrete test ideas, grouped by module, that hit the branches identified above without having to modify the source.
+
+| Module | Test name | What it exercises |
+|--------|-----------|--------------------|
+| **`call_gradio`** | `test_call_gradio_successful_complete_event` | Mock `urlopen` for POST → returns `{"event_id":"123"}`; mock SSE stream to yield a `"generating"` line then a `"complete"` line with a valid JSON payload. Verify the returned dict equals the payload. |
+| | `test_call_gradio_missing_event_id_raises` | POST mock returns `{}`. Expect `RuntimeError`. |
+| | `test_call_gradio_no_complete_event_raises` | SSE stream yields only `"generating"` lines (or ends without a `"complete"`). Expect `RuntimeError`. |
+| | `test_call_gradio_malformed_json_is_ignored` | SSE stream yields a `"complete"` line whose payload is `"{bad json"`. The loop should skip it and eventually raise the “no complete” error (or continue if a later good payload appears). |
+| | `test_call_gradio_auth_header_present_when_token_set` | Set `os.environ["HF_TOKEN"] = "TOKEN"`; patch `urlopen` to capture the request object and assert the `Authorization` header is `"Bearer TOKEN"`. |
+| | `test_call_gradio_auth_header_absent_when_token_missing` | Ensure the request for the SSE poll does **not** contain an `Authorization` entry when the env var is empty. |
+| | `test_main_warns_when_no_token` | Clear `HF_TOKEN`, run `main()` with `urlopen` mocked to return a minimal successful flow, capture `stdout` and assert the warning line appears. |
+| | `test_main_download_writes_file` | Mock the image‑URL request to return `b'binarydata'`; mock `open` (e.g. `tmp_path / "file"`); after `main()` assert that the file was written with the exact bytes. |
+| **`ModelManager`** | `test_is_loaded_initially_false` | Instantiate a manager, assert `manager.is_loaded is False`. |
+| | `test_get_metadata_is_copy` | `meta = mgr.get_metadata(); meta["model_id"] = "tampered"`; assert original constant unchanged (`GRANITE_METADATA["model_id"]`). |
+| | `test_load_adds_8bit_flag` | Create a `ModelConfig` with `load_in_8bit=True`; monkey‑patch `torch` and `transformers.AutoModelForVision2Seq.from_pretrained` to capture `load_kwargs`; assert `"load_in_8bit"` key present. |
+| | `test_load_adds_4bit_flag` | Same as above but `load_in_4bit=True`. |
+| | `test_load_adds_bf16_dtype` | Config `tensor_type="bf16"`; assert `torch_dtype` equals `torch.bfloat16`. |
+| | `test_load_device_map_non_auto` | Config `device="cpu"`; assert `device_map` is `"cpu"`. |
+| | `test_load_uses_auto_when_device_auto` | Config default (`device="auto"`); assert `device_map` is `"auto"`. |
+| | `test_load_import_error_propagates` | Temporarily remove `torch` from `sys.modules` and make the import raise `ImportError`; call `load()` and assert the exception bubbles up. |
+| | `test_load_generic_exception_propagates` | Mock `AutoModelForVision2Seq.from_pretrained` to raise `RuntimeError`; ensure `load()` re‑raises it. |
+| | `test_unload_clears_internal_refs` | After a successful (mocked) `load()`, call `unload()`; assert `manager._model is None` and `manager._processor is None`. |
+
+All of the above can be written with standard `pytest` + `unittest.mock` (or `pytest-mock`). No extra test helpers are required beyond what the code already exposes.
+
+---
+
+**4. Estimated newly covered lines**
+
+| File | Approx. total lines | Lines that become exercised by the test set above |
+|------|--------------------|---------------------------------------------------|
+| script (call_gradio + main) | ~80 | ~55‑60 (everything except the trivial `if __name__ == "__main__":` guard). |
+| `barrot_agent/models.py` | ~70 | ~45‑50 (constructor, `is_loaded`, `get_metadata`, all branches inside `load`, and `unload`). |
+| `barrot_agent/mcp_adapters.py` | ~30 (only the part shown) | ~15‑20 (dataclass creation and the existence of the abstract base – no branches in the snippet). |
+
+Assuming the repository’s current coverage is **≈ 64 %**, adding the above tests would likely push the overall coverage **to the low‑70 % range (≈ 71‑73 %)** – comfortably above the 70 % target.
+
+---
+
+**5. Dependencies that need to be mocked**
+
+| Dependency | Why it must be mocked | Typical mock approach |
+|------------|----------------------|-----------------------|
+| `urllib.request.urlopen` (both POST and SSE GET) | Performs real HTTP requests; SSE stream is an iterator of bytes. | `mock.patch("urllib.request.urlopen")` returning a context‑manager mock whose `__enter__` yields an object with `.read()`/`.__iter__()` as needed. |
+| `json.load` (used on the POST response) | To feed a controlled dict without network I/O. | Provide a mock file‑like object whose `read` returns a JSON string, or simply set `mock_urlopen.return_value.__enter__.return_value = io.BytesIO(b'{"event_id":"123"}')` and let `json.load` work naturally. |
+| `os.makedirs`, `time.strftime`, `open`, `os.path.join` | `main()` writes a file; we don’t want to touch the real filesystem. | Patch `os.makedirs` (no‑op), `open` with `mock.mock_open()`, and `time.strftime` to a deterministic value. |
+| `torch`, `transformers.AutoModelForVision2Seq`, `transformers.AutoProcessor` | Heavy external libraries; we only need to verify they are called with the correct arguments. | Insert lightweight dummy modules into `sys.modules` (e.g. a simple `class Dummy: pass`) and set `from_pretrained` to a `Mock`. |
+| `barrot_agent.logger.get_logger` (indirect) | Logging side‑effects are irrelevant for logic. | Patch `barrot_agent.logger.get_logger` to return a `Mock` with `info`, `error` methods that do nothing. |
+| Environment variables (`HF_TOKEN`, `IMAGE_PROMPT`) | Test different auth / prompt paths. | Use `monkeypatch.setenv` or temporarily modify `os.environ`. |
+
+All mocks are straightforward and do **not** alter the production code.
+
+---
+
+**6. Implementation defects that the source directly reveals**
+
+| Defect / questionable behaviour | Evidence in code | Potential impact |
+|--------------------------------|------------------|------------------|
+| **Missing handling of non‑200 HTTP responses** – `urllib.request.urlopen` will raise `URLError`/`HTTPError`, which bubbles out as an uncaught exception. The function does not translate this into a user‑friendly error. | No `try/except` around the two `urlopen` calls. | A network failure crashes the CLI rather than returning a clear message. |
+| **`HF_TOKEN` empty string is treated as “no token” for the POST request but *is* sent as an empty Authorization header for the SSE poll** (`headers={"Authorization": headers.get("Authorization", "")}`) – the header key will be present with an empty value, which some servers reject. | The conditional for the GET request only checks `if HF_TOKEN` (truthy), not `if headers.get("Authorization")`. | Might cause 401 errors when the environment variable is defined but empty. |
+| **`load()`’s device‑map logic** – When `self.config.device != "auto"` the code sets `load_kwargs["device_map"] = self.config.device`. The `device_map` argument expects a *mapping* (e.g. `{"": "cpu"}`) or the string `"auto"`; passing a plain device string (e.g. `"cpu"`) is not a documented usage for `from_pretrained`. | Direct assignment without validation. | Could raise a runtime error for certain device values. |
+| **`ModelManager.unload()` does not reset the logger state** – It logs “Model unloaded.” even if the manager never loaded a model. This is benign but noisy. | No guard around the log statement. | Minor – just extra log noise. |
+| **`call_gradio` silently discards malformed SSE payloads** – The `except JSONDecodeError: continue` swallows any JSON error, making debugging of server‑side issues harder. | Explicit `continue` on `JSONDecodeError`. | Users may get a “No complete event” error without knowing the payload was actually received but malformed. |
+| **`call_gradio` does not enforce a maximum number of SSE iterations** – If the server never sends a `complete` event, the loop could run indefinitely until the request times‑out (180 s). While a timeout exists, a more graceful early‑exit (e.g., max retries) would be nicer. | Loop runs until break or request timeout. | Potentially long‑running hangs. |
+
+All

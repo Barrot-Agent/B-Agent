@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "audit-log suppression attempts are denied",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "WRITE",
+    "incident_id": "0678ae786a215f4e",
+    "reason": "Instruction-bypass language is not trusted.",
+    "requested_action": "disable logging",
+    "safe_mode_active": false,
+    "threat_classification": "SUSPICIOUS"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-16",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

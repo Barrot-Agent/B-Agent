@@ -1,0 +1,92 @@
+[
+  {
+    "tool_name": "Git Rerere",
+    "category": "Built-in Git",
+    "description": "Reuse Recorded Resolution - automatically applies previously recorded conflict resolutions",
+    "use_cases": [
+      "Repetitive conflicts during rebases",
+      "Long-lived feature branches",
+      "Recurring merge patterns"
+    ],
+    "installation": "Built into Git, enable with: git config --global rerere.enabled true",
+    "basic_usage": "Automatically activated when enabled, records and replays resolutions",
+    "advanced_features": [
+      "Manual rerere training",
+      "Rerere diff viewing",
+      "Resolution database management"
+    ],
+    "integration_notes": "Enable globally for all repositories or per-repository"
+  },
+  {
+    "tool_name": "Meld",
+    "category": "Visual Merge Tool",
+    "description": "Visual diff and merge tool with three-way merge support",
+    "use_cases": [
+      "Complex merge conflicts",
+      "Visual comparison needed",
+      "Side-by-side conflict resolution"
+    ],
+    "installation": "apt-get install meld (Linux) or brew install meld (macOS)",
+    "basic_usage": "git mergetool --tool=meld",
+    "advanced_features": [
+      "Three-way merge view",
+      "Syntax highlighting",
+      "Directory comparison"
+    ],
+    "integration_notes": "Configure as default merge tool in Git config"
+  },
+  {
+    "tool_name": "KDiff3",
+    "category": "Visual Merge Tool",
+    "description": "Advanced merge tool with automatic conflict resolution",
+    "use_cases": [
+      "Three-way merges",
+      "Automatic merge attempts",
+      "Complex directory merges"
+    ],
+    "installation": "apt-get install kdiff3 or brew install kdiff3",
+    "basic_usage": "git mergetool --tool=kdiff3",
+    "advanced_features": [
+      "Automatic merge mode",
+      "Configurable merge logic",
+      "Directory comparison"
+    ],
+    "integration_notes": "Excellent for automated resolution attempts"
+  },
+  {
+    "tool_name": "VS Code Merge Editor",
+    "category": "IDE Integration",
+    "description": "Built-in merge conflict resolution in VS Code",
+    "use_cases": [
+      "In-editor conflict resolution",
+      "Quick conflict handling",
+      "Inline conflict markers"
+    ],
+    "installation": "Built into VS Code",
+    "basic_usage": "Open conflicted file, click 'Accept' buttons or edit manually",
+    "advanced_features": [
+      "Three-way merge view",
+      "Side-by-side comparison",
+      "IntelliSense during resolution"
+    ],
+    "integration_notes": "Seamlessly integrated with Git in VS Code"
+  },
+  {
+    "tool_name": "Semantic Merge",
+    "category": "Language-Aware",
+    "description": "Language-aware merge tool that understands code structure",
+    "use_cases": [
+      "Refactoring merges",
+      "Large-scale code reorganization",
+      "Syntax-aware merging"
+    ],
+    "installation": "Commercial tool from Plastic SCM",
+    "basic_usage": "Configure as Git merge driver",
+    "advanced_features": [
+      "Understands code structure",
+      "Smart refactoring merges",
+      "Language-specific rules"
+    ],
+    "integration_notes": "Premium solution for complex codebases"
+  }
+]

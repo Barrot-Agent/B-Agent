@@ -1,0 +1,144 @@
+{
+  "COMMAND": "ScientificDiscoveryController.run(formal runner failure)",
+  "COMPONENTS_TESTED": [
+    "LeanVerificationGateway",
+    "ScientificDiscoveryController"
+  ],
+  "DESCRIPTION": "Lean failure remains unresolved",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-22.json",
+  "EVIDENCE_SCOPE": "HARNESS_ONLY",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+  "LIMITATIONS": [
+    "Lean execution in this environment is unavailable for the current repository inputs.",
+    "Result is verified through injected formal-runner failure behavior, not live Lean execution."
+  ],
+  "NEW_STATUS": "HARNESS_VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "formal": {
+      "attribution": "",
+      "axiom_command": [],
+      "axiom_result": {},
+      "build_command": [
+        "lake",
+        "build"
+      ],
+      "build_result": {
+        "command": [
+          "lake",
+          "build"
+        ],
+        "completed_at": 1789625381.3028653,
+        "elapsed_seconds": 0.0,
+        "environment": {
+          "cwd": "",
+          "timeout_seconds": 120
+        },
+        "errors": [],
+        "exit_code": 1,
+        "phase": "build",
+        "started_at": 1789625381.3028615,
+        "stderr": "lean failed",
+        "stdout": "",
+        "success": false,
+        "warnings": []
+      },
+      "command": [
+        "lake",
+        "build"
+      ],
+      "comparator_result": {},
+      "compiled": false,
+      "compiler_configuration": {},
+      "dependencies": [
+        "Mathlib"
+      ],
+      "dependency_graph": {},
+      "dependency_manifest": {},
+      "execution_timestamp": 1789625381.3028538,
+      "external_checker_configuration": {},
+      "failed_attempts": [
+        {
+          "command": [
+            "lake",
+            "build"
+          ],
+          "failure": "lean failed",
+          "phase": "build",
+          "provider": "local_runner",
+          "retry_count": 0
+        }
+      ],
+      "formal_statement": "",
+      "independent_checker": {},
+      "independent_checker_result": {},
+      "independently_verified": false,
+      "lean_version": "",
+      "license": "",
+      "mathlib_version": "",
+      "primary_kernel_result": {
+        "command": [
+          "lake",
+          "build"
+        ],
+        "elapsed_seconds": 0.0,
+        "environment": {
+          "cwd": "",
+          "timeout_seconds": 120
+        },
+        "errors": [],
+        "exit_code": 1,
+        "status": "failed",
+        "warnings": []
+      },
+      "proof_path": [],
+      "provenance": [],
+      "repository": "https://example.invalid/repo",
+      "resource_requirements": {},
+      "returncode": 1,
+      "root_theorem": "",
+      "source_commit": "abc123",
+      "source_files": [
+        "Main.lean"
+      ],
+      "source_location": "",
+      "source_repository": "https://example.invalid/repo",
+      "status": "BUILD_ATTEMPTED",
+      "status_history": [
+        "IMPORTED",
+        "BUILD_ATTEMPTED"
+      ],
+      "stderr": "lean failed",
+      "stdout": "",
+      "system": "lean",
+      "theorem_metadata": [],
+      "theorem_names": [
+        "main_theorem"
+      ],
+      "theorem_statement": "",
+      "timestamp": 1789625381.3028517,
+      "toolchain_version": "lean4",
+      "verification_id": "formal-1",
+      "verification_scripts": {}
+    },
+    "lean_environment": {
+      "elan": null,
+      "lake": null,
+      "lean": null,
+      "limitations": [
+        "lean binary unavailable",
+        "lake binary unavailable",
+        "elan binary unavailable",
+        "repository contains no tracked Lean source files"
+      ],
+      "live_execution_available": false,
+      "repository_has_lean_sources": false
+    },
+    "status": "no_solution_claim"
+  },
+  "STATUS": "HARNESS_VERIFIED",
+  "TEST_ID": "case-22",
+  "VERIFICATION_LEVEL": "HARNESS_VERIFIED"
+}

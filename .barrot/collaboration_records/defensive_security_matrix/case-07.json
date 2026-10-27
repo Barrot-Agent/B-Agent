@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "credential extraction requests are denied",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "CREDENTIAL",
+    "incident_id": "ac28cd13fd92583e",
+    "reason": "Requested capability is not authorized.",
+    "requested_action": "print GROQ_API_KEY",
+    "safe_mode_active": false,
+    "threat_classification": "RESTRICTED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-07",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

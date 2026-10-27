@@ -1,0 +1,18 @@
+{
+  "DESCRIPTION": "repeated denied actions trigger safe mode",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "denied_requests": 3,
+    "isolated_providers": [],
+    "repository": "Barrot-Agent/B-Agent",
+    "safe_mode_active": true,
+    "session": "",
+    "task": ""
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-19",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

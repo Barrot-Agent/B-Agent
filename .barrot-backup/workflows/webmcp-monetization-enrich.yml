@@ -1,0 +1,35 @@
+name: WebMCP Monetization Enrichment
+
+on:
+  # Fire immediately after WebMCP Trend Digest produces fresh candidate ideas
+  workflow_run:
+    workflows: ["WebMCP Trend Digest"]
+    types: [completed]
+    branches: [main]
+  # Fallback cron in case the upstream run is skipped
+  schedule:
+    - cron: '30 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Enrich candidates with monetization signals
+        run: python3 scripts/webmcp_monetization_enrich.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/webmcp_monetization_signals.json web/webmcp_monetization_signals.json
+          git diff --cached --quiet || git commit -m "WebMCP monetization enrichment cycle [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

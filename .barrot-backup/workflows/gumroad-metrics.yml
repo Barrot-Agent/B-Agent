@@ -1,0 +1,29 @@
+name: Gumroad Metrics
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    env:
+      GUMROAD_ACCESS_TOKEN: ${{ secrets.GUMROAD_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Fetch aggregate metrics
+        run: python3 scripts/gumroad_metrics.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/gumroad_metrics.json
+          git diff --cached --quiet || git commit -m "Gumroad metrics refresh [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

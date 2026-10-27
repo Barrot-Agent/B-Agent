@@ -1,0 +1,113 @@
+name: Barrot Gated Merge
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+
+jobs:
+  gated-merge:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+      MAX_FILES: 25
+      MAX_LINES: 1500
+      FAST_MODE: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      SINGLE_PR: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Evaluate, report status, and merge (scheduled/dispatch only)
+        run: |
+          set +e
+          PROTECTED='^(hf_space/|core/|web/|scripts/emit_signal.py|\.github/workflows/)'
+          BANNED='130\.8M|144-agent|Willowchip|Aethel|Planck-scale|Loihi|quantum harmonization|free energy'
+
+          if [ "$FAST_MODE" = "true" ]; then
+            PRS="$SINGLE_PR"
+          else
+            PRS=$(gh api "repos/$REPO/pulls?state=open&per_page=100" --paginate --jq '.[].number')
+          fi
+          [ -z "$PRS" ] && { echo "No PRs to evaluate."; exit 0; }
+
+          for PR in $PRS; do
+            echo ""
+            echo "===== PR #$PR ====="
+            INFO=$(gh pr view "$PR" --repo "$REPO" --json title,labels,files,additions,deletions,statusCheckRollup,headRefOid)
+            TITLE=$(echo "$INFO" | jq -r '.title')
+            SHA=$(echo "$INFO" | jq -r '.headRefOid')
+            APPROVED=$(echo "$INFO" | jq -r '[.labels[].name] | index("approved") // empty')
+            FILES=$(echo "$INFO" | jq -r '.files[].path')
+            NFILES=$(echo "$FILES" | wc -l)
+            NLINES=$(echo "$INFO" | jq -r '.additions + .deletions')
+            echo "  $TITLE"
+            echo "  sha=$SHA files=$NFILES lines=$NLINES approved=${APPROVED:+yes}"
+
+            REASONS=""
+            TIER="LOW"
+
+            FAILED=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select(.conclusion=="FAILURE" or .conclusion=="CANCELLED" or .conclusion=="TIMED_OUT")] | length')
+            PENDING=$(echo "$INFO" | jq -r '[.statusCheckRollup[]? | select(.status=="IN_PROGRESS" or .status=="QUEUED")] | length')
+            [ "$FAILED" -gt 0 ] && REASONS="$REASONS\n- CI checks failing ($FAILED)"
+            [ "$PENDING" -gt 0 ] && REASONS="$REASONS\n- CI still running ($PENDING)"
+
+            DIFF=$(gh pr diff "$PR" --repo "$REPO" 2>/dev/null | grep '^+' || true)
+            HITS=$(echo "$DIFF" | grep -Eio "$BANNED" | sort -u | tr '\n' ' ')
+            [ -n "$HITS" ] && { REASONS="$REASONS\n- Fiction vocabulary in diff: $HITS"; TIER="HIGH"; }
+
+            TOUCHED=$(echo "$FILES" | grep -E "$PROTECTED" | tr '\n' ' ')
+            if [ -n "$TOUCHED" ]; then
+              PROTECTED_DELETIONS=$(echo "$INFO" | jq -r --arg re "$PROTECTED" '[.files[] | select(.path | test($re)) | select(.deletions > 0)] | length')
+              if [ "$PROTECTED_DELETIONS" -gt 0 ]; then
+                TIER="HIGH"
+                if [ -z "$APPROVED" ]; then
+                  REASONS="$REASONS\n- HIGH RISK: modifies/deletes existing lines in protected paths (needs 'approved' label): $TOUCHED"
+                fi
+              else
+                TIER="MEDIUM"
+                echo "  Protected paths touched but PURE ADDITIONS ONLY (no deletions) -> tier MEDIUM, no approval required: $TOUCHED"
+              fi
+            fi
+
+            if [ -z "$APPROVED" ]; then
+              [ "$NFILES" -gt "$MAX_FILES" ] && { REASONS="$REASONS\n- Too many files ($NFILES > $MAX_FILES); needs 'approved' label"; TIER="HIGH"; }
+              [ "$NLINES" -gt "$MAX_LINES" ] && { REASONS="$REASONS\n- Too many lines ($NLINES > $MAX_LINES); needs 'approved' label"; TIER="HIGH"; }
+            fi
+
+            echo "  Risk tier: $TIER"
+
+            RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+
+            if [ -n "$REASONS" ]; then
+              echo "  BLOCKED:$(printf "$REASONS")"
+              DESC=$(printf "$REASONS" | head -1 | sed 's/^- //' | cut -c1-140)
+              gh api "repos/$REPO/statuses/$SHA" -f state=failure -f context=barrot-gated-merge \
+                -f description="Blocked (tier $TIER): $DESC" -f target_url="$RUN_URL" >/dev/null 2>&1
+              MARKER="<!-- barrot-gated-merge -->"
+              HAS=$(gh pr view "$PR" --repo "$REPO" --json comments --jq "[.comments[] | select(.body | contains(\"$MARKER\"))] | length")
+              if [ "$HAS" = "0" ]; then
+                gh pr comment "$PR" --repo "$REPO" --body "$(printf "%s\n**Barrot Gated Merge — held back (tier: %s)**\n%s\n\n_Apply the \`approved\` label to override path/size gates. CI and content gates cannot be overridden._" "$MARKER" "$TIER" "$(printf "$REASONS")")" >/dev/null 2>&1
+              fi
+              continue
+            fi
+
+            echo "  All gates passed (tier: $TIER)."
+            gh api "repos/$REPO/statuses/$SHA" -f state=success -f context=barrot-gated-merge \
+              -f description="All gates passed (tier $TIER)" -f target_url="$RUN_URL" >/dev/null 2>&1
+
+            if [ "$FAST_MODE" = "true" ]; then
+              echo "  Fast-mode (PR event): status reported, merge deferred to next scheduled pass."
+              continue
+            fi
+
+            echo "  Merging."
+            gh pr merge "$PR" --repo "$REPO" --squash 2>&1 || echo "  merge failed (will retry next cycle)"
+          done

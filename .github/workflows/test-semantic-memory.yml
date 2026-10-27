@@ -1,0 +1,24 @@
+name: Test Semantic Memory
+
+on:
+  workflow_dispatch:
+    inputs:
+      query:
+        description: 'Test query'
+        required: false
+        default: 'regulatory action affecting XRP'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+      MEMORY_TEST_QUERY: ${{ github.event.inputs.query }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Test query_relevant
+        run: python3 scripts/semantic_memory.py

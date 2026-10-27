@@ -1,0 +1,43 @@
+REPAIR THE EXISTING LLM TOOL-CALL BOUNDARY — MINIMAL PATCH
+
+Operate ONLY in the outer repository ~/barrot/Barrot-Agent.
+Do not modify the nested B-Agent repository.
+Do not reset, clean, stash, overwrite, or discard the existing dirty worktree.
+Do not push.
+
+Evidence:
+- scripts/barrot_agent.py ScriptBrain.think() sends repository-browser tools to Groq.
+- Groq recently returned HTTP 400 because it generated repo_browser.search with path="".
+- tests/test_barrot_agent_script.py already contains test_repo_browser_rejects_empty_path_arguments.
+- RepoBrowser.search() safely resolves/rejects invalid paths.
+- Therefore DO NOT weaken RepoBrowser path validation or change the existing empty-path safety test.
+
+Goal:
+Make malformed LLM tool calls fail safely at the tool-call boundary instead of becoming an avoidable provider HTTP 400 when possible.
+
+Requirements:
+1. Preserve the existing tool schemas and repository path restrictions.
+2. Preserve RepoBrowser's rejection of empty/invalid paths.
+3. Preserve request_sender injection and existing tool-calling tests.
+4. Do not fabricate a final LLM answer after an invalid tool call.
+5. Do not silently reinterpret arbitrary malformed arguments into a different repository path.
+6. If a malformed tool call can safely be returned to the model as a tool error within the existing conversation loop, do that.
+7. If the provider itself rejects the malformed request before Barrot receives it, record/propagate the provider failure truthfully; do not pretend the tool was executed.
+8. Keep ScriptBrain's bounded tool-round limit.
+9. Preserve existing provider/runtime safety semantics.
+10. Do not introduce a new provider or dependency.
+11. Add focused regression coverage for the exact path="" tool-call scenario.
+12. Preserve the existing test that empty repository-browser paths are rejected.
+13. Run:
+    python -m compileall -q barrot_agent scripts tests
+    python -m pytest tests/test_barrot_agent_script.py -q --no-cov
+    python -m pytest tests -q --no-cov
+14. Report exact results.
+15. Do not commit or push.
+16. Do not claim success unless the tests actually pass.
+
+Important:
+The previous Groq error was:
+Tool call validation failed because repo_browser.search path had minLength 1 but received "".
+
+Do not solve this by changing minLength to 0.

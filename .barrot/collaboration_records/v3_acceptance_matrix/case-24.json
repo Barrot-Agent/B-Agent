@@ -1,0 +1,54 @@
+{
+  "COMMAND": "ConvergenceScenarioEngine.analyze_observations(conflict)",
+  "COMPONENTS_TESTED": [
+    "ConvergenceScenarioEngine"
+  ],
+  "DESCRIPTION": "conflicting research groups are preserved as contradiction",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-24.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:41Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "contradictions": [
+      {
+        "assumption_comparison": {
+          "left": [
+            "A1"
+          ],
+          "right": [
+            "A2"
+          ]
+        },
+        "claim_a": "velocity remains bounded",
+        "claim_b": "velocity is not bounded",
+        "contradiction_id": "8396053d53f7aec364134f59049855bad40807d8c1ebce669638ff51eabe9d5d",
+        "domain_comparison": {
+          "left": [],
+          "right": []
+        },
+        "evidence_comparison": {
+          "left": [
+            "e1"
+          ],
+          "right": [
+            "e2"
+          ],
+          "shared": []
+        },
+        "provenance": [
+          "group_a_paper",
+          "group_b_paper"
+        ],
+        "resolution_status": "BOTH_SUPPORTED_UNDER_DIFFERENT_ASSUMPTIONS",
+        "timestamp": 1789625381.345144
+      }
+    ]
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-24",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

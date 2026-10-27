@@ -1,0 +1,24 @@
+{
+  "COMMAND": "RepositoryRepairController.run(no-op patch)",
+  "COMPONENTS_TESTED": [
+    "RepositoryRepairController",
+    "PatchExecutor",
+    "CompletionGate"
+  ],
+  "DESCRIPTION": "model success text without concrete change cannot complete repair",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-03.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:32Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "failure": "ROLLED_BACK",
+    "status": "rolled_back"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-03",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -1,0 +1,24 @@
+stages:
+  - test
+  - diagnose
+
+default:
+  image: python:3.11
+
+before_script:
+  - python -m pip install --upgrade pip
+  - pip install -e ".[dev]" || pip install pytest pytest-cov
+
+test:
+  stage: test
+  script:
+    - pytest -q --disable-warnings --maxfail=5
+
+workflow_diagnosis:
+  stage: diagnose
+  script:
+    - echo "=== Python syntax check ==="
+    - python -m compileall -q barrot_agent scripts
+    - echo "=== Repository status ==="
+    - git status --short
+  allow_failure: true

@@ -1,0 +1,28 @@
+name: Check Signal Accuracy
+
+on:
+  schedule:
+    - cron: '55 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Check signal accuracy
+        run: python3 scripts/check_signal_accuracy.py
+      - name: Commit results
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add web/signal_history.jsonl web/signal_accuracy.json
+          git diff --cached --quiet || git commit -m "Barrot: daily signal accuracy check [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

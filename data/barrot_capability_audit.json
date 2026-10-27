@@ -1,0 +1,141 @@
+{
+  "timestamp": "2026-08-07T00:44:43Z",
+  "current_capabilities": 67,
+  "target_capabilities": 15,
+  "gaps": [
+    {
+      "id": 1,
+      "name": "Market analysis + trading recommendations",
+      "priority": "medium"
+    },
+    {
+      "id": 2,
+      "name": "System degradation prediction",
+      "priority": "medium"
+    },
+    {
+      "id": 3,
+      "name": "Resource allocation ($5M engine)",
+      "priority": "medium"
+    },
+    {
+      "id": 4,
+      "name": "Multi-agent coordination",
+      "priority": "medium"
+    },
+    {
+      "id": 5,
+      "name": "Embodied learning (emulator)",
+      "priority": "medium"
+    },
+    {
+      "id": 6,
+      "name": "Creative content production (Stupid Sindy)",
+      "priority": "medium"
+    },
+    {
+      "id": 8,
+      "name": "Data contradiction resolution",
+      "priority": "medium"
+    },
+    {
+      "id": 9,
+      "name": "Video analysis + autofix",
+      "priority": "medium"
+    },
+    {
+      "id": 11,
+      "name": "Real-time security monitoring",
+      "priority": "high"
+    },
+    {
+      "id": 12,
+      "name": "Autonomous testing framework",
+      "priority": "high"
+    },
+    {
+      "id": 13,
+      "name": "Performance optimization pipeline",
+      "priority": "high"
+    },
+    {
+      "id": 14,
+      "name": "Knowledge graph construction",
+      "priority": "high"
+    },
+    {
+      "id": 15,
+      "name": "Cross-domain knowledge synthesis",
+      "priority": "high"
+    }
+  ],
+  "current": [
+    "signal_summary.py",
+    "make_track.py",
+    "scheduler.py",
+    "entity_cooccurrence.py",
+    "speak.py",
+    "entity_coverage.py",
+    "vader_check.py",
+    "patch_add_monetization_tool.py",
+    "knowledge_distill.py",
+    "benchmark_summary.py",
+    "auto_backend_bootstrap.py",
+    "barrot_self_upgrade.py",
+    "dump_brain_corpus.py",
+    "resolve_issue.py",
+    "barrot_capability_audit.py",
+    "patch_landing_monetization.py",
+    "entity_sentiment_profile.py",
+    "webmcp_monetization_enrich.py",
+    "sindy_series_generator.py",
+    "research_synthesis.py",
+    "entity_relation_classifier.py",
+    "data_contradiction_resolver.py",
+    "webmcp_trend_distill.py",
+    "sentiment_shift.py",
+    "webmcp_trend_ingest.py",
+    "sandbox.py",
+    "corroborate.py",
+    "knowledge_distill_btc.py",
+    "nih_grants_research.py",
+    "video_analysis_autofix.py",
+    "patch_add_analysis_tools.py",
+    "frontier_gap_analysis.py",
+    "emit_signal_btc.py",
+    "a2a_server.py",
+    "termux_runner.py",
+    "semantic_memory.py",
+    "wire_in_hrm.py",
+    "emit_signal.py",
+    "patch_add_transparency_tools.py",
+    "emit_signal_with_hrm.py",
+    "ask_barrot.py",
+    "content_pipeline.py",
+    "gumroad_metrics.py",
+    "check_signal_accuracy.py",
+    "groq_chain.py",
+    "webmcp_trend_summary.py",
+    "market_analysis_engine.py",
+    "self_benchmark.py",
+    "pillars_check.py",
+    "patch_add_trend_digest_tool.py",
+    "audio_ingest.py",
+    "autonomous_design_engine.py",
+    "mmi_compiler.py",
+    "webmcp_live_sandbox.py",
+    "write_lyrics.py",
+    "pingpong.py",
+    "apex_audit_summary.py",
+    "daily_digest.py",
+    "patch_add_btc_tool.py",
+    "check_table_freshness.py",
+    "self_schedule.py",
+    "frontier_ingest.py",
+    "knowledge_ingest.py",
+    "research_topics.py",
+    "frontier_distill.py",
+    "financial_data_refresh.py",
+    "knowledge_ingest_btc.py"
+  ]
+}

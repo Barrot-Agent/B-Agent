@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "corrupted checkpoints trigger containment",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "READ",
+    "incident_id": "6a69067f95884600",
+    "reason": "Checkpoint payload is corrupted.",
+    "requested_action": "checkpoint load",
+    "safe_mode_active": true,
+    "threat_classification": "CONTAINED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-25",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

@@ -1,0 +1,29 @@
+{
+  "COMMAND": "WorkQueueController.run(resume)",
+  "COMPONENTS_TESTED": [
+    "WorkQueueController",
+    "DurableWorkStore"
+  ],
+  "DESCRIPTION": "interruption and resume preserve durable work state",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-17.json",
+  "EVIDENCE_SCOPE": "LOCAL_SIMULATED_INTERRUPTION",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:39Z",
+  "LIMITATIONS": [
+    "Verified with a deterministic local interruption simulation after durable queue persistence.",
+    "Does not prove recovery from a genuine remote executor interruption."
+  ],
+  "NEW_STATUS": "PARTIALLY_VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "attempt_count": 2,
+    "interruption_kind": "simulated_local_exception",
+    "persisted_attempt_count_before_resume": 1,
+    "persisted_state_before_resume": "REPAIRING",
+    "second": "blocked"
+  },
+  "STATUS": "PARTIALLY_VERIFIED",
+  "TEST_ID": "case-17",
+  "VERIFICATION_LEVEL": "PARTIALLY_VERIFIED"
+}

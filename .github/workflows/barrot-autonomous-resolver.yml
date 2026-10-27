@@ -1,0 +1,167 @@
+name: Barrot Autonomous Resolver
+
+# Continuously monitors failing workflows and open GitHub issues,
+# then routes each one toward autonomous fixing.
+# Resulting PRs are picked up and merged by the Barrot Auto-Merge PRs workflow.
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  resolve:
+    name: Route failures for autonomous fixing
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+      AUTO_ASSIGNEE: ${{ vars.COPILOT_ASSIGNEE }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # -----------------------------------------------------------------------
+      # 1. Failing workflows → open a tracked issue
+      # -----------------------------------------------------------------------
+      - name: Open issues for failing workflows
+        run: |
+          set +e
+          echo "=== Scanning for failing workflow runs (last 24 h) ==="
+
+          # Collect distinct workflow names that have a failed run in the last 24 h
+          FAILED_WORKFLOWS=$(gh run list \
+            --repo "$REPO" \
+            --status failure \
+            --limit 100 \
+            --json workflowName,conclusion,createdAt \
+            --jq '[.[] | select(.conclusion == "failure") | .workflowName] | unique | .[]' \
+            2>/dev/null || true)
+
+          if [ -z "$FAILED_WORKFLOWS" ]; then
+            echo "No failing workflows found."
+          else
+            while IFS= read -r WF_NAME; do
+              LABEL="workflow-failure"
+              TITLE="[Auto] Workflow failing: $WF_NAME"
+
+              # Skip if an open issue with this exact title already exists
+              EXISTING=$(gh issue list \
+                --repo "$REPO" \
+                --state open \
+                --search "\"$TITLE\" in:title" \
+                --json number \
+                --jq 'length' \
+                2>/dev/null || echo "0")
+
+              if [ "$EXISTING" -gt "0" ]; then
+                echo "  Issue already open for: $WF_NAME — skipping."
+                continue
+              fi
+
+              echo "  Creating issue for failing workflow: $WF_NAME"
+
+              # Fetch the most recent failed run URL for context
+              RUN_URL=$(gh run list \
+                --repo "$REPO" \
+                --workflow "$WF_NAME" \
+                --status failure \
+                --limit 1 \
+                --json url \
+                --jq '.[0].url' \
+                2>/dev/null || echo "")
+
+              BODY=$(printf '## Failing workflow: `%s`\n\nThe workflow `%s` has been failing. Please investigate the root cause, apply a fix, and open a pull request.\n\n**Most recent failed run:** %s\n\n---\n_This issue was opened automatically by the Barrot Autonomous Resolver._' \
+                "$WF_NAME" "$WF_NAME" "${RUN_URL:-_(URL unavailable)_}")
+
+              ASSIGNEE_ARGS=()
+              if [ -n "$AUTO_ASSIGNEE" ]; then
+                ASSIGNEE_ARGS+=(--assignee "$AUTO_ASSIGNEE")
+              fi
+
+              gh issue create \
+                --repo "$REPO" \
+                --title "$TITLE" \
+                --body "$BODY" \
+                "${ASSIGNEE_ARGS[@]}" \
+                2>/dev/null && echo "  ✅ Issue created." \
+                            || echo "  ⚠️  Issue creation failed."
+
+            done <<< "$FAILED_WORKFLOWS"
+          fi
+
+      # -----------------------------------------------------------------------
+      # 2. Optionally assign unassigned issues when a valid assignee is configured
+      # -----------------------------------------------------------------------
+      - name: Assign unassigned issues
+        run: |
+          set +e
+          if [ -z "$AUTO_ASSIGNEE" ]; then
+            echo "No COPILOT_ASSIGNEE repository variable configured; skipping issue assignment."
+            exit 0
+          fi
+          echo "=== Scanning for open issues with no assignees ==="
+
+          UNASSIGNED=$(gh issue list \
+            --repo "$REPO" \
+            --state open \
+            --limit 100 \
+            --json number,title,assignees \
+            --jq '.[] | select(.assignees | length == 0) | .number' \
+            2>/dev/null || true)
+
+          if [ -z "$UNASSIGNED" ]; then
+            echo "No unassigned open issues found."
+          else
+            while IFS= read -r ISSUE_NUM; do
+              echo "  Assigning issue #$ISSUE_NUM to $AUTO_ASSIGNEE…"
+              gh issue edit "$ISSUE_NUM" \
+                --repo "$REPO" \
+                --add-assignee "$AUTO_ASSIGNEE" \
+                2>/dev/null && echo "  ✅ Issue #$ISSUE_NUM assigned." \
+                            || echo "  ⚠️  Could not assign issue #$ISSUE_NUM."
+            done <<< "$UNASSIGNED"
+          fi
+
+          echo "=== Barrot Autonomous Resolver cycle complete ==="
+
+      # -----------------------------------------------------------------------
+      # 3. Optionally assign unassigned pull requests when a valid assignee is configured
+      # -----------------------------------------------------------------------
+      - name: Assign unassigned pull requests
+        run: |
+          set +e
+          if [ -z "$AUTO_ASSIGNEE" ]; then
+            echo "No COPILOT_ASSIGNEE repository variable configured; skipping pull request assignment."
+            exit 0
+          fi
+          echo "=== Scanning for open pull requests with no assignees ==="
+
+          UNASSIGNED_PRS=$(gh pr list \
+            --repo "$REPO" \
+            --state open \
+            --limit 100 \
+            --json number,title,assignees \
+            --jq '.[] | select(.assignees | length == 0) | .number' \
+            2>/dev/null || true)
+
+          if [ -z "$UNASSIGNED_PRS" ]; then
+            echo "No unassigned open pull requests found."
+          else
+            while IFS= read -r PR_NUM; do
+              echo "  Assigning PR #$PR_NUM to $AUTO_ASSIGNEE…"
+              gh pr edit "$PR_NUM" \
+                --repo "$REPO" \
+                --add-assignee "$AUTO_ASSIGNEE" \
+                2>/dev/null && echo "  ✅ PR #$PR_NUM assigned." \
+                            || echo "  ⚠️  Could not assign PR #$PR_NUM."
+            done <<< "$UNASSIGNED_PRS"
+          fi
+
+          echo "=== Barrot Autonomous Resolver cycle complete ==="

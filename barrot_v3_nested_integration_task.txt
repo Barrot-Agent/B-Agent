@@ -1,0 +1,119 @@
+OUTER V3 NESTED AUTONOMY INTEGRATION TASK
+
+Operate ONLY on the OUTER repository:
+~/barrot/Barrot-Agent
+
+DO NOT modify the nested repository:
+~/barrot/Barrot-Agent/B-Agent
+
+DO NOT merge, rebase, reset, clean, delete, overwrite, or push the nested B-Agent repository or cinematic-clean branch.
+
+The nested cinematic-clean branch is SOURCE MATERIAL ONLY.
+
+Nested capabilities discovered:
+- barrot_agent/repository_causality.py
+- barrot_agent/autonomy/change_impact.py
+- barrot_agent/autonomy/change_gate.py
+- barrot_agent/autonomy/change_executor.py
+- barrot_agent/autonomy/validation.py
+- barrot_agent/evolution/adaptive_policy.py
+- barrot_agent/evolution/feedback_store.py
+- Riemann harvesting/test changes
+
+The OUTER V3 architecture is authoritative.
+
+Existing V3 infrastructure includes:
+- barrot_agent/orchestration/shared_runtime.py
+- barrot_agent/orchestration/repository_repair.py
+- barrot_agent/orchestration/action_executor.py
+- barrot_agent/orchestration/executor.py
+- barrot_agent/orchestration/repair_loop.py
+- barrot_agent/orchestration/validated_publisher.py
+- barrot_agent/orchestration/verifier.py
+- barrot_agent/orchestration/sync_manager.py
+- barrot_agent/research/scientific_discovery.py
+
+Do not create duplicate runtimes, executors, validation systems, evidence systems, or completion gates.
+
+FIRST perform a compatibility analysis.
+
+Determine what the outer V3 system already provides and what functionality from the nested branch is genuinely missing.
+
+Integration requirements:
+
+1. Repository impact/causality analysis may be adapted into V3 if genuinely useful.
+2. Use existing V3 Evidence, Provenance, Fingerprint, ExecutionRecord, Checkpoint, and ValidationResult structures.
+3. Do NOT copy the nested ValidationResult.
+4. Do NOT copy the nested ChangeExecutor as a second executor.
+5. Do NOT replace existing V3 authorization or completion gates with the nested ChangeGate.
+6. Do NOT import AdaptiveRiskPolicy in a way that allows historical outcomes or model behavior to weaken hard safety boundaries.
+7. Feedback data may be retained only where it provides useful evidence/learning.
+8. Hard safety boundaries remain deterministic and bounded.
+9. Preserve existing V3 path restrictions, tool allowlists, authorization, checkpoints, fingerprints, retries, timeouts, provenance, validation, and completion gates.
+10. Agreement, model output, file existence, commit existence, or zero exit status alone must never establish verification.
+11. Never claim VERIFIED without actual evidence establishing verification.
+12. Do not modify the nested repository.
+
+If repository causality is integrated, it should support the V3 repair chain:
+
+AUDIT
+→ IMPACT ANALYSIS
+→ SAFETY/AUTHORIZATION GATE
+→ PLAN
+→ GUARDED PATCH
+→ LOCAL VALIDATION
+→ COMMIT
+→ REMOTE VERIFICATION
+→ POST-REPAIR VALIDATION
+→ RESOLUTION PROOF
+→ SYNC
+→ COMPLETION GATE
+
+Add focused tests for any integrated functionality.
+
+Tests must cover:
+- impact analysis
+- dependency/dependent detection
+- related-test detection
+- deterministic risk calculation
+- V3 evidence/provenance integration
+- safety-gate interaction
+- rejection of unsafe/high-impact changes
+- duplicate executor/validation prevention
+- deterministic behavior
+- false-completion resistance
+
+Before changing anything:
+- inspect the outer architecture
+- inspect the nested implementations
+- identify overlaps
+- identify genuinely missing functionality
+
+Then implement only the justified integration.
+
+Run:
+
+python -m compileall -q barrot_agent scripts tests
+
+python -m pytest tests -q --no-cov
+
+Also run targeted tests for every changed component.
+
+Do NOT push automatically.
+
+Produce a truthful report containing:
+- outer files inspected
+- nested files inspected
+- capabilities already present
+- genuinely missing capabilities
+- files changed
+- files intentionally not imported
+- tests added
+- compile result
+- full test result
+- targeted test results
+- unresolved issues
+- exact commit SHA if a commit was created
+- truthful final status
+
+Never fabricate execution, verification, test, commit, or remote results.

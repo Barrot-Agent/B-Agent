@@ -1,0 +1,29 @@
+{
+  "DESCRIPTION": "lateral movement outside the workspace is denied",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "duration_ms": 0,
+    "error": "UNSAFE_PATH",
+    "failure": {
+      "code": "UNSAFE_PATH",
+      "failed_operation": "read",
+      "message": "UNSAFE_PATH",
+      "raw_error": "UNSAFE_PATH",
+      "recovery_decision": "",
+      "request_payload": {},
+      "retry_outcome": "",
+      "timestamp": 1789568803.1543598
+    },
+    "output": null,
+    "output_bytes": 0,
+    "success": false,
+    "tool_name": "read",
+    "truncated": false
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-20",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

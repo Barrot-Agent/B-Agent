@@ -1,0 +1,35 @@
+name: Make Track
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Theme/mood for the instrumental (e.g. "late night highway drive, melancholy but hopeful")'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  make_track:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      MUSICGPT_API_KEY: ${{ secrets.MUSICGPT_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+      TRACK_THEME: ${{ github.event.inputs.theme }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Generate track
+        run: python3 scripts/make_track.py
+      - name: Commit track + log
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add music/
+          git diff --cached --quiet || git commit -m "New track generated [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

@@ -1,0 +1,43 @@
+name: Barrot Task Allocator
+
+on:
+  workflow_dispatch:
+    inputs:
+      goal:
+        description: "Refactor goal for Barrot to split across barrot/gpt/ibm_bob"
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  allocate:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      CHATGPT_TOKEN: ${{ secrets.CHATGPT_TOKEN }}
+      REFACTOR_GOAL: ${{ github.event.inputs.goal }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Configure git identity
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+      - name: Diagnose available secrets (names only)
+        run: gh secret list || echo "gh secret list not permitted with this token"
+      - name: Allocate and dispatch
+        run: python3 scripts/barrot_task_allocator.py
+      - name: Commit allocation record
+        run: |
+          git checkout main
+          git add allocation_run_*.json tasks/ 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Task allocation run [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

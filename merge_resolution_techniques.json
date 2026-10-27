@@ -1,0 +1,140 @@
+[
+  {
+    "technique_id": "RT001",
+    "name": "Accept Both Changes with Manual Review",
+    "description": "Merge both changes and manually review for correctness",
+    "applicable_types": [
+      "content"
+    ],
+    "strategy": "accept_both",
+    "commands": [
+      "# Manual editing required",
+      "git add <file>",
+      "git commit -m 'Resolved conflict by merging both changes'"
+    ],
+    "prerequisites": [
+      "Understanding of code context",
+      "Review capability"
+    ],
+    "success_rate": 0.85,
+    "risk_level": "Medium",
+    "automation_level": "Semi-Automated"
+  },
+  {
+    "technique_id": "RT002",
+    "name": "Whitespace Normalization",
+    "description": "Automatically resolve whitespace-only conflicts",
+    "applicable_types": [
+      "whitespace"
+    ],
+    "strategy": "auto_merge",
+    "commands": [
+      "git merge -Xignore-space-change <branch>",
+      "git merge -Xignore-all-space <branch>"
+    ],
+    "prerequisites": [
+      "Git 2.0+"
+    ],
+    "success_rate": 0.98,
+    "risk_level": "Low",
+    "automation_level": "Fully Automated"
+  },
+  {
+    "technique_id": "RT003",
+    "name": "Three-Way Merge with Common Ancestor",
+    "description": "Use common ancestor to intelligently merge changes",
+    "applicable_types": [
+      "content"
+    ],
+    "strategy": "three_way_merge",
+    "commands": [
+      "git merge-base <branch1> <branch2>",
+      "git merge-file <current> <base> <incoming>"
+    ],
+    "prerequisites": [
+      "Access to merge base"
+    ],
+    "success_rate": 0.75,
+    "risk_level": "Medium",
+    "automation_level": "Semi-Automated"
+  },
+  {
+    "technique_id": "RT004",
+    "name": "Import Statement Smart Merge",
+    "description": "Intelligently merge import statements alphabetically",
+    "applicable_types": [
+      "content"
+    ],
+    "strategy": "auto_merge",
+    "commands": [
+      "# Python: Sort imports with isort",
+      "isort <file>",
+      "# JavaScript: Sort with eslint",
+      "eslint --fix <file>"
+    ],
+    "prerequisites": [
+      "Code formatters installed"
+    ],
+    "success_rate": 0.95,
+    "risk_level": "Low",
+    "automation_level": "Fully Automated"
+  },
+  {
+    "technique_id": "RT005",
+    "name": "Configuration Key Merge",
+    "description": "Merge configuration files by key, keeping all unique keys",
+    "applicable_types": [
+      "content"
+    ],
+    "strategy": "semantic_merge",
+    "commands": [
+      "# Use specialized config merge tools",
+      "# JSON: jq for merging",
+      "# YAML: yq for merging"
+    ],
+    "prerequisites": [
+      "Config-aware merge tools"
+    ],
+    "success_rate": 0.9,
+    "risk_level": "Low",
+    "automation_level": "Fully Automated"
+  },
+  {
+    "technique_id": "RT006",
+    "name": "Recursive Strategy with Patience",
+    "description": "Use patience diff algorithm for better merge results",
+    "applicable_types": [
+      "content"
+    ],
+    "strategy": "recursive",
+    "commands": [
+      "git merge -s recursive -X patience <branch>",
+      "git merge -s recursive -X diff-algorithm=patience <branch>"
+    ],
+    "prerequisites": [
+      "Git 1.7.10+"
+    ],
+    "success_rate": 0.8,
+    "risk_level": "Low",
+    "automation_level": "Automated"
+  },
+  {
+    "technique_id": "RT007",
+    "name": "Rerere (Reuse Recorded Resolution)",
+    "description": "Automatically apply previously recorded conflict resolutions",
+    "applicable_types": [
+      "content"
+    ],
+    "strategy": "auto_merge",
+    "commands": [
+      "git config --global rerere.enabled true",
+      "# Git will automatically reuse resolutions"
+    ],
+    "prerequisites": [
+      "Git rerere enabled"
+    ],
+    "success_rate": 0.99,
+    "risk_level": "Very Low",
+    "automation_level": "Fully Automated"
+  }
+]

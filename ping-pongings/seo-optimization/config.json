@@ -1,0 +1,178 @@
+{
+  "seo_version": "1.0.0",
+  "last_updated": "2025-12-20T23:09:05.623Z",
+  
+  "configuration": {
+    "auto_optimization": true,
+    "metadata_enrichment": true,
+    "semantic_indexing": true,
+    "link_optimization": true,
+    "content_analysis": true
+  },
+  
+  "optimization_rules": {
+    "title_optimization": {
+      "max_length": 60,
+      "include_keywords": true,
+      "brand_suffix": "| Barrot Agent",
+      "avoid_duplication": true
+    },
+    "meta_description": {
+      "max_length": 160,
+      "min_length": 120,
+      "include_keywords": true,
+      "call_to_action": true
+    },
+    "keywords": {
+      "primary_count": 3,
+      "secondary_count": 7,
+      "density_target": 0.02,
+      "prominence_threshold": 0.5
+    },
+    "content_structure": {
+      "min_word_count": 300,
+      "heading_hierarchy": true,
+      "paragraph_length_max": 150,
+      "bullet_points_preferred": true
+    },
+    "links": {
+      "internal_links_min": 3,
+      "external_authority_min": 0.7,
+      "nofollow_for_untrusted": true,
+      "anchor_text_diversity": true
+    }
+  },
+  
+  "semantic_indexing": {
+    "enabled": true,
+    "vector_dimensions": 512,
+    "similarity_threshold": 0.75,
+    "language_models": [
+      "semantic_embeddings",
+      "contextual_understanding",
+      "intent_recognition"
+    ]
+  },
+  
+  "content_types": [
+    {
+      "type": "knowledge_article",
+      "priority": "high",
+      "optimization_level": "full",
+      "indexing": "immediate"
+    },
+    {
+      "type": "agent_documentation",
+      "priority": "high",
+      "optimization_level": "full",
+      "indexing": "immediate"
+    },
+    {
+      "type": "protocol_specification",
+      "priority": "medium",
+      "optimization_level": "standard",
+      "indexing": "scheduled"
+    },
+    {
+      "type": "system_log",
+      "priority": "low",
+      "optimization_level": "minimal",
+      "indexing": "optional"
+    }
+  ],
+  
+  "ranking_factors": {
+    "content_quality": {
+      "weight": 0.30,
+      "sub_factors": [
+        "originality",
+        "depth",
+        "accuracy",
+        "freshness"
+      ]
+    },
+    "relevance": {
+      "weight": 0.25,
+      "sub_factors": [
+        "keyword_match",
+        "semantic_similarity",
+        "intent_alignment"
+      ]
+    },
+    "authority": {
+      "weight": 0.20,
+      "sub_factors": [
+        "source_credibility",
+        "citation_count",
+        "expert_verification"
+      ]
+    },
+    "user_engagement": {
+      "weight": 0.15,
+      "sub_factors": [
+        "click_through_rate",
+        "time_on_page",
+        "bounce_rate"
+      ]
+    },
+    "technical_quality": {
+      "weight": 0.10,
+      "sub_factors": [
+        "load_speed",
+        "mobile_friendly",
+        "structured_data"
+      ]
+    }
+  },
+  
+  "metadata_schemas": {
+    "schema_org": {
+      "enabled": true,
+      "types": [
+        "Article",
+        "TechArticle",
+        "HowTo",
+        "FAQPage",
+        "WebPage"
+      ]
+    },
+    "open_graph": {
+      "enabled": true,
+      "required_properties": [
+        "og:title",
+        "og:type",
+        "og:url",
+        "og:description",
+        "og:image"
+      ]
+    },
+    "twitter_cards": {
+      "enabled": true,
+      "card_type": "summary_large_image"
+    },
+    "custom_metadata": {
+      "enabled": true,
+      "fields": [
+        "barrot:agent",
+        "barrot:domain",
+        "barrot:quality_score",
+        "barrot:last_verified"
+      ]
+    }
+  },
+  
+  "performance_targets": {
+    "index_freshness_minutes": 5,
+    "query_response_time_ms": 100,
+    "relevance_score_target": 0.85,
+    "user_satisfaction_target": 0.90
+  },
+  
+  "monitoring": {
+    "track_rankings": true,
+    "track_click_through": true,
+    "track_user_behavior": true,
+    "track_conversion": true,
+    "reporting_frequency": "daily"
+  }
+}

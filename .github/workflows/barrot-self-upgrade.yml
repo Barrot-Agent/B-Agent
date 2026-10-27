@@ -1,0 +1,69 @@
+name: Barrot Self-Upgrade
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  audit_and_upgrade:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout requested ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure Git
+        run: |
+          git config user.name "Barrot Self-Upgrade"
+          git config user.email "barrot-self-upgrade@users.noreply.github.com"
+
+      - name: Capability audit
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python3 scripts/barrot_capability_audit.py
+
+      - name: Self-upgrade
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python3 scripts/barrot_self_upgrade.py
+
+      - name: Persist generated audit
+        run: |
+          git status --short
+          if git diff --quiet -- barrot_capability_audit.json; then
+            echo "No audit artifact changes."
+          else
+            git add barrot_capability_audit.json
+            git commit -m "chore: update Barrot capability audit"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Verify remote ref
+        run: |
+          local_sha="$(git rev-parse HEAD)"
+          remote_ref="$(git ls-remote --heads origin "${GITHUB_REF_NAME}")"
+          remote_sha="$(printf '%s\n' "${remote_ref}" | awk 'NR==1 {print $1}')"
+          echo "Local SHA: ${local_sha}"
+          echo "Remote ref: ${remote_ref}"
+          if [ -z "${remote_sha}" ] || [ "${local_sha}" != "${remote_sha}" ]; then
+            echo "Remote verification failed for ${GITHUB_REF_NAME}" >&2
+            exit 1
+          fi
+
+      - name: Final state
+        run: |
+          echo "Final SHA: $(git rev-parse HEAD)"
+          git status --short

@@ -1,0 +1,43 @@
+name: Sync Self-Hosted Brain
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "self_hosted_brain/**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install huggingface_hub
+      - name: Deploy self_hosted_brain/ to its own Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python3 - << 'SCRIPT'
+          from huggingface_hub import HfApi
+          import os
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          repo_id = "Scribedpengenius/Barrot-Brain-SelfHosted"
+          try:
+              api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
+          except Exception as e:
+              print("create_repo note:", e)
+          api.upload_folder(
+              folder_path="self_hosted_brain",
+              repo_id=repo_id,
+              repo_type="space",
+              commit_message="Deploy self-hosted brain",
+          )
+          secret = os.environ.get("BRAIN_SHARED_SECRET", "")
+          if secret:
+              api.add_space_secret(repo_id, "BRAIN_SHARED_SECRET", secret)
+              print("shared secret propagated")
+          print("DEPLOYED")
+          SCRIPT
