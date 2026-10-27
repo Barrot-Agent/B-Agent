@@ -3,16 +3,16 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T09:14:00Z",
-    "main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+    "captured_at_utc": "2026-10-27T10:04:36.395Z",
+    "main_tip_sha": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING: latest signal timestamp 2026-10-27T08:38:05.688945Z, score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials, Groq HTTP 429, XRPL protocol/research headline contamination. Summary workflow had a transient Groq 429 failure; deterministic fallback is tested in draft PR #1188. Forecast NOT_ISSUED. Current main latest_signal_summary.json is also misleading: it interprets technical research headlines positively despite confidence 0; PR #1188 proposes deterministic NOT_ISSUED output. The existing summary workflow still commits/pushes artifacts directly to main and requires separate review.",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: main latest_signal.json retrieved at 2026-10-27T10:04:36.395Z, source timestamp 2026-10-27T09:33:53.222424+00:00, blob 96e4e669d0f430dc0892577e81b404e005a43f30; score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429, XRPL protocol/research headline contamination. Forecast NOT_ISSUED. Coinbase's official docs confirm XRP eligibility for USDC borrowing through Morpho on Base and cbXRP on Base; actual collateral usage and market impact remain unknown.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
-    "latest_signal_timestamp": "2026-10-27T08:38:05.688945+00:00",
-    "latest_signal_blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
-    "main_tip_sha_last_explicitly_observed": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
-    "main_tip_sha_status": "Main tip 80b4f72580c719132903891a3dafe99fcc1fd1ca observed at 2026-10-27T09:13Z; 35 commits ahead of research base across 14 generated runtime/log/signal and deployment-report files; no code/workflow files changed in comparison."
+    "latest_signal_timestamp": "2026-10-27T09:33:53.222424+00:00",
+    "latest_signal_blob_sha": "96e4e669d0f430dc0892577e81b404e005a43f30",
+    "main_tip_sha_last_explicitly_observed": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
+    "main_tip_sha_status": "Main tip f9f9278a47396ba5e9f8bdaabaa6039b9d81a918 observed at 2026-10-27T10:04:36.395Z; compare from research base a3e0f0198510634420f925eef8cea384aca51b12 shows 40 commits ahead and 14 generated runtime/log/signal/deployment-report files changed, with no code/workflow files in the observed delta. Current-main integration still requires exact-head validation."
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -1722,6 +1722,77 @@
         "The workflow configuration shows a direct main-write path; effective repository protection and race/conflict behavior are not established by the file alone.",
         "No change to this workflow was made in this run; review and authorization are required before altering its publication model."
       ]
+    },
+    {
+      "source_id": "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+      "title": "Coinbase crypto-backed USDC loans updated to include XRP collateral",
+      "author_or_organization": "Coinbase",
+      "source_type": "official_product_announcement",
+      "url": "https://www.coinbase.com/en-au/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+      "publication_date": "Updated 2026-09-29 per Coinbase page",
+      "retrieved_at_utc": "2026-10-27T10:04:36.395Z",
+      "sections": [
+        "Coinbase says eligible U.S. customers outside New York can borrow up to 100,000 USDC against XRP and certain other assets.",
+        "Borrowing is powered by Morpho on Base; availability and limits depend on collateral and region.",
+        "Product eligibility does not establish actual XRP collateral balances, loan originations, net spot buying or price impact."
+      ],
+      "source_limitations": [
+        "Issuer-authored product disclosure; actual XRP loan usage and on-chain positions were not quantified in this source.",
+        "Regional availability can change; verify current eligibility before using as a live feature."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+      "title": "Coinbase DeFi Borrow eligibility and operating model",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_platform_documentation",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publication_date": "Accessed 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T10:04:36.395Z",
+      "sections": [
+        "Lists XRP among eligible collateral assets for USDC borrowing through the Morpho protocol on Base.",
+        "Availability is restricted by region, including U.S. residents in New York; collateral options can vary by loan terms.",
+        "The Coinbase interface provides access to the Morpho protocol; actual XRP-specific usage is not disclosed."
+      ],
+      "source_limitations": [
+        "Eligibility and product description only; not evidence of realized XRP collateral utilization."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-WRAPPED-XRP-2026-10-27",
+      "title": "Coinbase Wrapped Assets: cbXRP on Base",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_platform_documentation",
+      "url": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "publication_date": "Accessed 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T10:04:36.395Z",
+      "sections": [
+        "Coinbase identifies Coinbase Wrapped XRP (cbXRP) on Base.",
+        "Coinbase describes its wrapped assets as backed 1:1 by underlying assets held in Coinbase custody.",
+        "This establishes the documented wrapped-asset representation but not the specific contract path used by every XRP-backed loan or actual supply/flow."
+      ],
+      "source_limitations": [
+        "The page does not provide current cbXRP circulating supply, reserve attestations, loan collateral balances or liquidation history."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z",
+      "title": "Main-branch XRP signal artifact at 2026-10-27T09:33:53Z",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "2026-10-27T09:33:53.222424+00:00",
+      "retrieved_at_utc": "2026-10-27T10:04:36.395Z",
+      "source_commit": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
+      "sections": [
+        "Signal score 44 and confidence 0.0.",
+        "News score 88 from 11 entries, dominated by XRPL protocol/research headlines.",
+        "Source records missing GitHub model credentials and Groq HTTP 429; artifact is invalid for directional forecasting."
+      ],
+      "source_limitations": [
+        "Generated artifact, not independent market evidence.",
+        "The artifact is used only to record Barrot prediction-engine quality state, not to infer XRP direction."
+      ]
     }
   ],
   "claims": [
@@ -3275,6 +3346,107 @@
         "SRC-BARROT-SIGNAL-SUMMARY-WORKFLOW-DIRECT-PUSH-20261027"
       ],
       "timestamp": 1793090340
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-XRP-USDC-LOANS-20261027",
+      "statement": "Coinbase's official product pages list XRP as eligible collateral for USDC crypto-backed borrowing through the Morpho protocol on Base, with a stated maximum of $100,000 for XRP-backed borrowing and U.S. availability excluding New York. This confirms product eligibility, not actual XRP collateral balances, loan utilization, incremental spot buying or price impact.",
+      "domain": "institutional_collateral_and_onchain_lending",
+      "claim_type": "official_product_eligibility",
+      "source": "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+      "source_location": "https://www.coinbase.com/en-au/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-XRP-USDC-LOAN-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_AS_PRODUCT_ELIGIBILITY; ACTUAL_USAGE_UNKNOWN",
+      "independent_verification_status": "MULTIPLE_COINBASE_OFFICIAL_PAGES; ONCHAIN_USAGE_NOT_MEASURED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "PRODUCT_ELIGIBILITY_CONFIRMED; CAPITAL_FLOW_EFFECT_UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "Current product availability and limits may vary by region and loan terms.",
+        "No public aggregate XRP-specific borrowing or collateral utilization was found in the cited pages."
+      ],
+      "provenance": [
+        "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+      ],
+      "timestamp": 1793095476
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-CBXRP-BASE-20261027",
+      "statement": "Coinbase's official wrapped-assets documentation lists cbXRP on Base and describes wrapped assets as backed 1:1 by underlying assets held in Coinbase custody. This documents a cross-chain XRP representation; it does not establish that every XRP-backed USDC loan uses cbXRP or disclose current cbXRP supply, reserve reconciliation or loan utilization.",
+      "domain": "wrapped_assets_and_cross_chain_collateral",
+      "claim_type": "official_platform_documentation",
+      "source": "SRC-COINBASE-WRAPPED-XRP-2026-10-27",
+      "source_location": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-CBXRP-BASE-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_AS_DOCUMENTED_PRODUCT; LIVE_SUPPLY_AND_USAGE_UNKNOWN",
+      "independent_verification_status": "PRIMARY_COINBASE_DOCUMENTATION; ONCHAIN_CONTRACT_AND_RESERVE_RECONCILIATION_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "WRAPPED_ASSET_LISTING_CONFIRMED; LOAN_PATH_AND_UTILIZATION_UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The help page accurately describes Coinbase's current wrapped-asset program.",
+        "A 1:1 product description is not a substitute for independent current reserve and contract-state reconciliation."
+      ],
+      "provenance": [
+        "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+      ],
+      "timestamp": 1793095476
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-MORPHO-LIQUIDATION-RISK-20261027",
+      "statement": "Coinbase's help documentation says crypto collateral is locked in Morpho and may be liquidated if the loan-to-value threshold is breached. Because XRP is listed as eligible collateral, this creates a conditional XRP liquidation channel; actual XRP-backed loan balances, thresholds by market, liquidation events and market impact remain unknown.",
+      "domain": "collateral_risk_and_derivatives",
+      "claim_type": "official_mechanics_with_conditional_market_risk_inference",
+      "source": "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+      "source_location": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-MORPHO-LIQUIDATION-RISK-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "COLLATERAL_MECHANICS_CONFIRMED; XRP_SPECIFIC_LIQUIDATION_EFFECT_UNTESTED",
+      "independent_verification_status": "OFFICIAL_PRODUCT_DOCUMENTATION; ACTUAL_POSITIONS_AND_LIQUIDATIONS_NOT_MEASURED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "MECHANISM_CONFIRMED; MAGNITUDE_UNKNOWN",
+      "confidence": 0.97,
+      "assumptions": [
+        "XRP collateral uses the documented product's liquidation mechanics when a loan is opened.",
+        "The magnitude of forced selling depends on actual positions, market conditions, collateral rules and liquidation routing."
+      ],
+      "provenance": [
+        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+      ],
+      "timestamp": 1793095476
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T093353Z",
+      "statement": "The main-branch signal artifact retrieved for timestamp 2026-10-27T09:33:53Z reports score 44, confidence 0.0 and news score 88 from 11 entries while identifying missing GitHub model credentials and Groq HTTP 429. XRPL protocol/research headlines dominate the news set. This artifact is invalid for directional forecasting and supports NOT_ISSUED status.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "observed_runtime_artifact",
+      "source": "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-INVALID-20261027T093353Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "DIRECTLY_OBSERVED_ARTIFACT; NOT_A_MARKET_FORECAST",
+      "independent_verification_status": "MAIN_BRANCH_FILE_READ; MARKET-DIRECTIONAL_VALIDITY_NOT_ESTABLISHED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "FORECAST_NOT_ISSUED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The retrieved artifact represents the main-branch signal at the stated retrieval time.",
+        "The artifact's numeric score is not a calibrated price-direction probability."
+      ],
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z"
+      ],
+      "timestamp": 1793095476
     }
   ],
   "evidence": [
@@ -4968,6 +5140,100 @@
         "pull_rebase_fallback": true,
         "modified_in_this_run": false
       }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-XRP-USDC-LOAN-20261027",
+      "claim_id": "XRP-C-COINBASE-XRP-USDC-LOANS-20261027",
+      "kind": "official_product_documentation",
+      "summary": "Coinbase's updated product page says eligible customers can borrow up to $100,000 USDC against XRP; borrowing is powered by Morpho on Base and U.S. availability excludes New York. No XRP-specific loan originations or collateral balances are reported.",
+      "source_id": "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+      "source_location": "https://www.coinbase.com/en-au/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+      "status": "SUPPORTED_AS_PRODUCT_ELIGIBILITY; ACTUAL_USAGE_UNKNOWN",
+      "independence": "primary_coinbase_product_announcement",
+      "provenance": [
+        "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+      ],
+      "details": {
+        "maximum_borrow_usdc": 100000,
+        "collateral_asset": "XRP",
+        "disbursement_asset": "USDC",
+        "lending_protocol": "Morpho",
+        "chain": "Base",
+        "us_region_availability": "United States excluding New York, subject to eligibility",
+        "actual_xrp_collateral_balance": "UNKNOWN",
+        "actual_loan_originations": "UNKNOWN",
+        "net_spot_demand_effect": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-CBXRP-BASE-20261027",
+      "claim_id": "XRP-C-COINBASE-CBXRP-BASE-20261027",
+      "kind": "official_wrapped_asset_documentation",
+      "summary": "Coinbase lists cbXRP on Base and describes Coinbase Wrapped Assets as backed 1:1 by corresponding underlying assets held in Coinbase custody. The page does not report current cbXRP supply or prove the exact collateral path used by each XRP-backed loan.",
+      "source_id": "SRC-COINBASE-WRAPPED-XRP-2026-10-27",
+      "source_location": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "status": "SUPPORTED_AS_DOCUMENTED_PRODUCT; LIVE_SUPPLY_AND_USAGE_UNKNOWN",
+      "independence": "primary_coinbase_platform_documentation",
+      "provenance": [
+        "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+      ],
+      "details": {
+        "wrapped_asset": "cbXRP",
+        "network": "Base",
+        "stated_backing_ratio": "1:1",
+        "backing_description": "underlying assets held in Coinbase custody",
+        "current_supply": "UNKNOWN",
+        "independent_reserve_reconciliation": "NOT_PERFORMED",
+        "loan_collateral_path": "NOT_ESTABLISHED_FOR_EVERY_LOAN"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-MORPHO-LIQUIDATION-RISK-20261027",
+      "claim_id": "XRP-C-COINBASE-MORPHO-LIQUIDATION-RISK-20261027",
+      "kind": "official_collateral_mechanics",
+      "summary": "Coinbase says crypto collateral is locked in Morpho until repayment; if loan-to-value exceeds the liquidation threshold, collateral may be liquidated and a penalty fee charged. This is a conditional risk mechanism, not evidence of realized XRP liquidations.",
+      "source_id": "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+      "source_location": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+      "status": "MECHANICS_CONFIRMED; XRP_SPECIFIC_EVENT_COUNTS_UNKNOWN",
+      "independence": "primary_coinbase_help_documentation",
+      "provenance": [
+        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+      ],
+      "details": {
+        "collateral_locked_on_morpho": true,
+        "liquidation_condition": "loan-to-value threshold exceeded",
+        "penalty_fee": "documented",
+        "xrp_specific_liquidation_events": "UNKNOWN",
+        "aggregate_xrp_collateral_balance": "UNKNOWN",
+        "market_depth_and_forced_sale_impact": "NOT_MEASURED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-INVALID-20261027T093353Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T093353Z",
+      "kind": "repository_runtime_artifact",
+      "summary": "Main latest_signal.json at retrieved blob SHA 96e4e669d0f430dc0892577e81b404e005a43f30 reports score 44, confidence 0.0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429. The headline set is dominated by XRPL protocol/research topics.",
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "INVALID_FOR_DIRECTIONAL_FORECASTING",
+      "independence": "direct_main_branch_artifact_read",
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z"
+      ],
+      "details": {
+        "signal_timestamp": "2026-10-27T09:33:53.222424+00:00",
+        "blob_sha": "96e4e669d0f430dc0892577e81b404e005a43f30",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429"
+        ],
+        "disposition": "NOT_ISSUED"
+      }
     }
   ],
   "tracks": [
@@ -5467,6 +5733,12 @@
       "question": "Can XRP open-interest, funding and liquidation snapshots be reconciled to contract-level exchange data with aligned event timestamps, venue coverage and contract definitions?",
       "priority": "HIGH",
       "status": "UNTESTED"
+    },
+    {
+      "question_id": "Q-COINBASE-XRP-MORPHO-USDC-COLLATERAL-20261027",
+      "question": "How much XRP is actually posted or wrapped as collateral in Coinbase-accessed Morpho USDC loans on Base, and do loan originations or liquidations measurably change spot liquidity or sell pressure?",
+      "priority": "HIGH",
+      "status": "PRODUCT_ELIGIBILITY_CONFIRMED; ACTUAL_ONCHAIN_UTILIZATION_AND_MARKET_EFFECT_UNTESTED"
     }
   ],
   "relationship_graph": {
@@ -5480,7 +5752,10 @@
           "SRC-XRPL-TOKENS",
           "SRC-EVERNORTH-CLOSE-2026-10-09",
           "SRC-SEC-EVERNORTH-2026-10-23",
-          "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
+          "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10",
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+          "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
         ]
       },
       {
@@ -5514,7 +5789,10 @@
           "SRC-COINBASE-USDC-INCENTIVES",
           "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10",
           "SRC-EVERNORTH-PARTNERS-2026-10-14",
-          "SRC-EVERNORTH-CIO-2026-10-12"
+          "SRC-EVERNORTH-CIO-2026-10-12",
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+          "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
         ]
       },
       {
@@ -5533,7 +5811,9 @@
         "status": "FACT",
         "source_ids": [
           "SRC-CIRCLE-USDC-XRPL",
-          "SRC-CIRCLE-USDC-STATUS"
+          "SRC-CIRCLE-USDC-STATUS",
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
         ]
       },
       {
@@ -5799,9 +6079,46 @@
       {
         "id": "Barrot main XRP signal artifact",
         "type": "prediction_engine_runtime_artifact",
-        "status": "OBSERVED_2026-10-27T07:37:49Z; CONFIDENCE_ZERO_PROVIDER_FAILURES; NOT_A_VALID_FORECAST",
+        "status": "OBSERVED_2026-10-27T09:33:53Z; CONFIDENCE_ZERO_PROVIDER_FAILURES; NOT_A_VALID_FORECAST",
         "source_ids": [
-          "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z"
+          "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z",
+          "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z"
+        ]
+      },
+      {
+        "id": "Morpho",
+        "type": "onchain_lending_protocol",
+        "status": "OFFICIAL_PRODUCT_INTEGRATION; ACTUAL_XRP_COLLATERAL_USAGE_UNKNOWN",
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ]
+      },
+      {
+        "id": "Base",
+        "type": "layer_2_blockchain",
+        "status": "OFFICIAL_PRODUCT_NETWORK; ACTUAL_XRP_COLLATERAL_USAGE_UNKNOWN",
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+          "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+        ]
+      },
+      {
+        "id": "Coinbase USDC crypto-backed loan product",
+        "type": "crypto_backed_lending_product",
+        "status": "XRP_ELIGIBLE_COLLATERAL; ACTUAL_XRP_LOAN_VOLUME_UNKNOWN",
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ]
+      },
+      {
+        "id": "Coinbase Wrapped XRP (cbXRP)",
+        "type": "wrapped_xrp_asset_on_base",
+        "status": "OFFICIAL_DOCUMENTATION; CURRENT_SUPPLY_AND_RESERVE_RECONCILIATION_UNKNOWN",
+        "source_ids": [
+          "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
         ]
       }
     ],
@@ -6436,6 +6753,77 @@
           "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ],
         "caveat": "Circle's launch announcement lists SBI Group in Arc's founding validator cohort. This confirms an announced network relationship, not XRP asset use, XRP purchases, or XRP routing."
+      },
+      {
+        "source": "Coinbase",
+        "target": "Coinbase USDC crypto-backed loan product",
+        "relationship_type": "PROVIDES_INTERFACE_TO_USDC_COLLATERAL_BORROWING",
+        "classification": "CONFIRMED_OFFICIAL_PRODUCT_DESCRIPTION",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ],
+        "caveat": "Coinbase provides the interface; borrowing is executed through Morpho. Product eligibility does not establish realized loan volume."
+      },
+      {
+        "source": "XRP",
+        "target": "Coinbase USDC crypto-backed loan product",
+        "relationship_type": "ELIGIBLE_COLLATERAL_ASSET",
+        "classification": "CONFIRMED_PRODUCT_ELIGIBILITY; ACTUAL_USAGE_UNKNOWN",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ],
+        "caveat": "Up to $100,000 USDC is the stated XRP-backed borrowing limit; actual XRP collateral balances, originations and price impact are not disclosed. U.S. availability excludes New York."
+      },
+      {
+        "source": "Coinbase USDC crypto-backed loan product",
+        "target": "Morpho",
+        "relationship_type": "ONCHAIN_LENDING_BACKEND",
+        "classification": "CONFIRMED_OFFICIAL_PRODUCT_DESCRIPTION",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ],
+        "caveat": "The product interface is not the same as Coinbase itself lending from its own balance sheet; actual market positions require on-chain verification."
+      },
+      {
+        "source": "Morpho",
+        "target": "Base",
+        "relationship_type": "LENDING_PROTOCOL_DEPLOYMENT",
+        "classification": "CONFIRMED_OFFICIAL_PRODUCT_DESCRIPTION",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ],
+        "caveat": "This identifies the documented network integration, not the size of XRP collateral markets."
+      },
+      {
+        "source": "Coinbase Wrapped XRP (cbXRP)",
+        "target": "XRP",
+        "relationship_type": "WRAPPED_REPRESENTATION_STATED_BACKED_1_TO_1",
+        "classification": "CONFIRMED_COINBASE_DOCUMENTATION; LIVE_RESERVE_RECONCILIATION_NOT_PERFORMED",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+        ],
+        "caveat": "Coinbase documents cbXRP on Base and 1:1 backing by underlying assets in Coinbase custody; current circulating supply and reserve reconciliation were not measured."
+      },
+      {
+        "source": "Coinbase USDC crypto-backed loan product",
+        "target": "USDC",
+        "relationship_type": "LOAN_DISBURSEMENT_ASSET",
+        "classification": "CONFIRMED_OFFICIAL_PRODUCT_DESCRIPTION",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        ],
+        "caveat": "The borrowed asset is USDC; this does not itself establish incremental USDC issuance or XRP demand."
       }
     ]
   },
@@ -6749,6 +7137,59 @@
         "SRC-KODEXIUS-XRP-DERIVATIVES-20261023"
       ],
       "confidence": 0.5
+    },
+    {
+      "hypothesis_id": "H-XRP-COINBASE-MORPHO-UTILITY-VS-SELLING-20261027",
+      "statement": "Coinbase's USDC loan product lists XRP as eligible collateral. If material numbers of holders borrow USDC rather than sell XRP, the product could reduce immediate spot sell pressure and increase XRP's collateral utility. A listing alone does not prove usage or price impact; demand may be negligible or offset by other flows.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-XRP-USDC-LOAN-20261027",
+        "XRP-E-COINBASE-CBXRP-BASE-20261027"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Identify public Morpho/Base markets and contract addresses relevant to Coinbase's XRP-backed USDC loan product; verify contract identity from official docs before querying.",
+        "Measure cbXRP circulating supply, holder concentration, pool collateral balances, borrow balances and net deposits with event-time snapshots.",
+        "Compare changes in XRP spot inventory/order-book depth with actual collateralized borrowing and control for BTC beta, macro conditions, funding and exchange flows.",
+        "Separate the hypothetical avoided spot sale from new XRP purchases; borrowing against existing holdings is not a new purchase."
+      ],
+      "falsification_conditions": [
+        "XRP-backed borrowing is negligible relative to XRP spot liquidity and exchange inventory.",
+        "Measured borrowing has no stable incremental association with spot sell pressure or liquidity after controls.",
+        "Any apparent relationship disappears under walk-forward tests or is dominated by broader market beta."
+      ],
+      "provenance": [
+        "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+        "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+        "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+      ],
+      "confidence": 0.55
+    },
+    {
+      "hypothesis_id": "H-XRP-COINBASE-MORPHO-LIQUIDATION-CHANNEL-20261027",
+      "statement": "The same XRP-collateralized USDC lending product creates a conditional liquidation channel. If XRP prices fall enough to breach loan-to-value thresholds, Morpho may liquidate collateral; the effect could amplify selling, or be immaterial if utilization is low, liquidation is orderly, or the collateral pool is small.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-XRP-USDC-LOAN-20261027",
+        "XRP-E-COINBASE-MORPHO-LIQUIDATION-RISK-20261027"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Verify exact Morpho markets, collateral factors, liquidation thresholds, liquidation incentives and any XRP-specific wrapper contracts.",
+        "Collect public liquidation events and collateral/borrow balances at point-in-time snapshots; estimate the USD and XRP quantity exposed at each price level.",
+        "Test liquidation events against XRP market depth and realized slippage, controlling for exchange-wide liquidations and general crypto volatility.",
+        "Keep eligibility, open interest, posted collateral, borrowed USDC and executed liquidations as separate variables."
+      ],
+      "falsification_conditions": [
+        "No meaningful XRP collateral balances or liquidation events are found in the relevant public contracts.",
+        "Observed liquidations are small relative to venue depth and do not add measurable explanatory power beyond ordinary market volatility.",
+        "Apparent impact disappears after correcting event timestamps and controlling for other liquidation venues."
+      ],
+      "provenance": [
+        "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
+        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+      ],
+      "confidence": 0.55
     }
   ],
   "platform_coordination": [
@@ -6895,22 +7336,22 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
-    "latest_main_commit_message": "Paper trade cycle [skip ci]",
-    "latest_main_commit_ci": "Main tip 80b4f72580c719132903891a3dafe99fcc1fd1ca changes only web/paper_trading_log.jsonl (+1 record) and is marked [skip ci]; no core CI run was observed for this exact SHA in this pass.",
+    "main_tip_sha": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
+    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_main_commit_ci": "Main tip f9f9278a47396ba5e9f8bdaabaa6039b9d81a918 is a [skip ci] generated cross-analysis refresh; no exact-SHA core CI run was returned by the commit-run query. Do not treat main CI as verified for this SHA.",
     "current_signal": {
-      "timestamp": "2026-10-27T08:38:05.688945+00:00",
+      "timestamp": "2026-10-27T09:33:53.222424+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
       "news_entries": 11,
       "provider_failures": [
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
-        "Groq HTTP 429 Too Many Requests; current signal source reports provider unavailable"
+        "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
-      "retrieved_at_utc": "2026-10-27T09:13:00Z",
-      "age_minutes_at_retrieval": 34.9,
+      "blob_sha": "96e4e669d0f430dc0892577e81b404e005a43f30",
+      "retrieved_at_utc": "2026-10-27T10:04:36.395Z",
+      "age_minutes_at_retrieval": 30.7,
       "disposition": "INVALID_FOR_FORECASTING; score confidence zero, model providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
     },
     "legacy_accuracy": {
@@ -6964,9 +7405,9 @@
       {
         "pr": 1182,
         "title": "Safety: add hash-verified data-only Termux bundle receiver",
-        "head_sha": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
-        "ci": "Exact-head CI passed 120 tests in 6.05s; fail-closed gate passed. Main advanced one generated paper-trading-log commit after the tested base.",
-        "state": "OPEN_DRAFT_CI_PASS_DEVICE_RECEIPT_PENDING",
+        "head_sha": "51435dffb1d685322bd7aaf36667a21792d11f09",
+        "ci": "Redirect-identity regression fix added after review; exact-head CI pending for head 51435dffb1d685322bd7aaf36667a21792d11f09. Previous head 0ba6a561d59b2665402d5f5fbe950c3337dbbb8d had 120 tests and fail-closed gate pass. Physical device receipt still pending.",
+        "state": "OPEN_DRAFT; REDIRECT_IDENTITY_REGRESSION_ADDED; NEW_HEAD_CI_PENDING; DEVICE_RECEIPT_PENDING",
         "merge_authorized": false
       },
       {
@@ -7039,7 +7480,7 @@
         "mitigation_scope": "PR #1188 fixes deterministic summary fallback only; it does not change workflow's direct-push behavior."
       }
     ],
-    "latest_signal_staleness": "Main latest_signal.json blob a52a1410d176960ff05634e6cbbfc5b191cb5621, timestamp 2026-10-27T08:38:05.688945Z; age approximately 34.9 minutes at 2026-10-27T09:13Z. Score 44, confidence 0, news score 88 from 11 entries; provider failures and academic/protocol headline contamination remain. Invalid for forecasting.",
+    "latest_signal_staleness": "Main latest_signal.json blob 96e4e669d0f430dc0892577e81b404e005a43f30, timestamp 2026-10-27T09:33:53.222424+00:00; age 30.7 minutes at retrieval 2026-10-27T10:04:36.395Z. Score 44, confidence 0, news score 88 from 11 entries; provider failures and protocol/research headline contamination remain. Invalid for forecasting.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -7061,16 +7502,16 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "MAIN_TIP_AND_DELTA_AUDIT_RECORDED; NEW_HEAD_REVALIDATION_REQUIRED",
-      "state": "OPEN_DRAFT; LATEST_EXACT_HEAD_CI_AND_GATE_PASS; BASE_35_COMMITS_BEHIND_CURRENT_MAIN; REVIEW_REQUIRED",
+      "latest_ledger_revision_status": "NEW_COINBASE_XRP_USDC_COLLATERAL_RESEARCH_AND_CURRENT_SIGNAL_SNAPSHOT_COMMITTED; EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PENDING",
+      "state": "OPEN_DRAFT; NEW_REVISION_CI_PENDING; BASE_40_COMMITS_BEHIND_CURRENT_MAIN; REVIEW_REQUIRED",
       "note": "Latest PR #1170 head ca3a399e0283b08d97f2283eaf50c16b55c59d49 passed CI run 40478995350 (111 tests in 6.06s) and fail-closed gate 40478995323. Main is 35 commits ahead of base; the observed 14-file delta is generated runtime/log/signal data and deployment report only. Current-base integration is still unverified; do not merge automatically.",
       "last_completed_head_sha": "ca3a399e0283b08d97f2283eaf50c16b55c59d49",
       "last_completed_ci_run": 40478995350,
       "last_completed_ci_conclusion": "success; 111 tests passed in 6.06s",
       "last_completed_fail_closed_gate_run": 40478995323,
       "last_completed_gate_conclusion": "success",
-      "current_main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
-      "base_to_main_commits_ahead": 35,
+      "current_main_tip_sha": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
+      "base_to_main_commits_ahead": 40,
       "base_to_main_changed_files": 14,
       "base_to_main_code_or_workflow_changes": false
     },
@@ -7136,22 +7577,28 @@
       "safe_receiver_gate_conclusion": "success",
       "safe_receiver_focused_tests": 9,
       "safe_receiver_total_ci_tests": 120,
-      "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
+      "safe_receiver_state": "NEW_REDIRECT_IDENTITY_FIX_COMMITTED; EXACT_HEAD_CI_PENDING; PHYSICAL_DEVICE_RECEIPT_PENDING",
+      "last_validated_head_sha": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+      "latest_candidate_head_sha": "51435dffb1d685322bd7aaf36667a21792d11f09",
+      "latest_candidate_ci_status": "PENDING",
+      "latest_candidate_change": "Validate that HTTP redirects preserve the exact pinned manifest commit and bundle ID; added regression cases for redirected commit and bundle-ID changes."
     },
-    "last_audit_at_utc": "2026-10-27T09:14:00Z",
+    "last_audit_at_utc": "2026-10-27T10:04:36.395Z",
     "physical_termux_delivery": {
-      "status": "NOT_VERIFIED_ON_DEVICE",
+      "status": "NOT_VERIFIED_ON_DEVICE; NEW_RECEIVER_HEAD_CI_PENDING",
       "receiver_pr": 1182,
       "receiver_commit": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
       "exact_head_ci": "120 tests passed and fail-closed gate passed in previously observed run",
       "device_receipt": "NOT_OBSERVED",
-      "unsafe_legacy_runner": "scripts/termux_runner.py executes queued commands with shell=True, pulls main in watch mode, and commits/pushes queue state; do not run unattended."
+      "unsafe_legacy_runner": "scripts/termux_runner.py executes queued commands with shell=True, pulls main in watch mode, and commits/pushes queue state; do not run unattended.",
+      "last_validated_receiver_commit": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+      "latest_candidate_receiver_commit": "51435dffb1d685322bd7aaf36667a21792d11f09"
     },
     "main_delta_since_research_base": {
       "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "current_main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+      "current_main_tip_sha": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
       "comparison_status": "ahead",
-      "commits_ahead": 35,
+      "commits_ahead": 40,
       "changed_file_count": 14,
       "changed_files": [
         "AUTONOMOUS_DEPLOYMENT_REPORT.md",
@@ -7170,7 +7617,7 @@
         "web/signal_history_btc.jsonl"
       ],
       "code_or_workflow_files_changed": false,
-      "interpretation": "The research PR base is 35 commits behind main, but the observed base-to-main delta consists of generated runtime/log/signal data and the deployment report only. This reduces apparent code/workflow conflict risk but does not replace current-base integration checks."
+      "interpretation": "Observed base-to-main delta consists of generated runtime/log/signal data and deployment report only. This lowers apparent code conflict risk but does not replace current-main integration checks."
     },
     "signal_summary_failure": {
       "run_id": 40474891738,
@@ -7219,10 +7666,10 @@
       "merge_authorized": false
     },
     "open_pr_inventory_observation": {
-      "observed_at_utc": "2026-10-27T09:13:00Z",
+      "observed_at_utc": "2026-10-27T10:04:36.395Z",
       "open_pr_count": 51,
       "pattern": "Multiple duplicate/stale draft PRs remain open for merge-queue safety, XRP signal integrity, and related research; newer candidates include #1187 and #1188. No PRs were closed or merged in this run.",
-      "action": "Keep newest tested candidates for review; do not auto-close or merge older branches without comparing diffs and preserving history."
+      "action": "51 open PRs observed. Preserve duplicate/stale drafts; do not auto-close or merge. New Coinbase collateral evidence added to the XRP research ledger; Termux receiver branch now has a redirect-identity regression fix and requires exact-head CI."
     },
     "current_signal_summary": {
       "retrieved_at_utc": "2026-10-27T09:14:00Z",
@@ -7303,6 +7750,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Keep directional XRP forecasting at NOT_ISSUED until the main signal has valid model inputs, relevant-news classification and synchronized point-in-time spot/perpetual/OI/funding/basis/depth data. Current main signal timestamp 2026-10-27T09:33:53Z has confidence 0 and provider failures.",
+      "status": "INVALID_SIGNAL_OBSERVED_ON_MAIN; PROVIDER_RECOVERY_AND_EVENT_TIME_FEATURE_STORE_REQUIRED"
+    },
+    {
+      "priority": 0,
+      "action": "Quantify Coinbase–Morpho XRP collateral activity on Base: verify official market/contract identities, cbXRP supply and reserve path, posted XRP collateral, USDC borrow balances and liquidation events with event-time snapshots. Separate product eligibility from actual usage; test both avoided spot selling and forced-liquidation hypotheses.",
+      "status": "OFFICIAL_PRODUCT_ELIGIBILITY_CONFIRMED; ACTUAL_XRP_COLLATERAL_BALANCES_AND_LIQUIDATIONS_UNKNOWN; NO_PRICE_EFFECT_INFERRED"
+    },
     {
       "priority": 1,
       "action": "Build a synchronized XRP feature store from exchange-native spot/perpetual OHLCV, OI, funding, basis, liquidation and depth data. Do not average secondary OI dashboards with different as-of times and contract universes; record the source-coverage discrepancy and test whether leverage-unwind features add out-of-sample value.",
