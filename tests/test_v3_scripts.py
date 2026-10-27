@@ -608,7 +608,7 @@ def test_barrot_bundle_authoring_caps_repository_context(monkeypatch) -> None:
     )
     assert module.MAX_TOOL_ROUNDS == 4
     source = (REPO_ROOT / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
-    assert ")[:10000]," in source
+    assert ")[:2000]," in source
 
 def test_barrot_bundle_brain_can_disable_tools(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
@@ -625,4 +625,23 @@ def test_barrot_bundle_brain_can_disable_tools(monkeypatch) -> None:
         tools=brain.tools,
     )
     assert "tools" not in payload
+
+def test_tool_free_bundle_brain_uses_smaller_completion_budget(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_bundle_token_budget_test",
+    )
+    captured: dict[str, object] = {}
+
+    def fake_send(payload, request_sender=None):
+        del request_sender
+        captured.update(payload)
+        return {"choices": [{"message": {"content": "ok"}}]}
+
+    monkeypatch.setattr(module, "_send_groq_request", fake_send)
+    brain = module.ScriptBrain(enable_tools=False)
+
+    assert brain.think("Return one concise JSON object.") == "ok"
+    assert captured["max_tokens"] == 768
 
