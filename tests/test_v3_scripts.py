@@ -512,3 +512,9 @@ def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> N
     assert calls["count"] == 2
     assert sleeps == [120.0]
 
+    # Groq can report daily quota reset delays longer than 20 minutes.
+    # Such explicit delays remain bounded and should still be retried.
+    assert "retry_seconds <= 1800" in (
+        REPO_ROOT / "scripts" / "barrot_agent.py"
+    ).read_text(encoding="utf-8")
+
