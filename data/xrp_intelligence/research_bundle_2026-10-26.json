@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:12:30.248Z",
+    "captured_at_utc": "2026-10-27T00:13:38.668Z",
     "main_tip_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -340,6 +340,27 @@
       ]
     },
     {
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-60E788",
+      "title": "CI run for research PR #1170 head 60e788",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424938717",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "head 60e78875ea06821e3692543bb6512871545aabf5",
+        "111 tests passed in 6.03 seconds",
+        "merge ref base e49431afe9801044b583abd0451f0d4d7416fc4d"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1170 head 60e788",
+          "target_node": "Core test suite",
+          "relationship_type": "VALIDATED_BY",
+          "status": "SUCCESS_ON_STALE_BASE"
+        }
+      ]
+    },
+    {
       "source_id": "SRC-BARROT-PR1170-GATE-20261027",
       "title": "Fail-closed gate run for XRP research bundle PR #1170",
       "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
@@ -355,6 +376,27 @@
         {
           "source_node": "PR #1170 head",
           "target_node": "Fail-closed merge gate",
+          "relationship_type": "CHECKED_BY",
+          "status": "SUCCESS_MERGE_DISABLED"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1170-GATE-HEAD-60E788",
+      "title": "Fail-closed gate run for research PR #1170 head 60e788",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_safety_gate_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424938673",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "fail-closed gate passed",
+        "merge disabled",
+        "no merge occurred"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1170 head 60e788",
+          "target_node": "Fail-closed gate",
           "relationship_type": "CHECKED_BY",
           "status": "SUCCESS_MERGE_DISABLED"
         }
@@ -1272,13 +1314,14 @@
     },
     {
       "claim_id": "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
-      "statement": "PR #1170 head 0ec991026775903c7c718e65b39fef6636d070f6 passed CI run 40424225971 and fail-closed gate run 40424225980 against stale base e49431afe9801044b583abd0451f0d4d7416fc4d. The PR is now 9 commits behind current main 2bae7ccdfbec8f9536cb40950110c72e949f5073, so those passes do not validate the current-main merge ref. Subsequent ledger/graph changes also require exact-head checks.",
+      "statement": "PR #1170 head 60e78875ea06821e3692543bb6512871545aabf5 passed CI run 40424938717 (111 tests in 6.03 seconds) and fail-closed gate 40424938673 against stale base e49431afe9801044b583abd0451f0d4d7416fc4d. Current main is 2bae7ccdfbec8f9536cb40950110c72e949f5073 and the PR is 9 commits behind; these checks do not validate the current-main merge ref. The subsequent research-ledger snapshot commit requires its own exact-head checks.",
       "domain": "repository_validation",
       "claim_type": "observed_ci_validation",
       "source": "SRC-BARROT-PR1170-CI-20261027",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423957351",
       "supporting_evidence": [
-        "XRP-E-PR1170-CI-GATE-EXACT-HEAD"
+        "XRP-E-PR1170-CI-GATE-EXACT-HEAD",
+        "XRP-E-PR1170-CI-GATE-HEAD-60E788"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -1292,9 +1335,11 @@
       ],
       "provenance": [
         "SRC-BARROT-PR1170-CI-20261027",
-        "SRC-BARROT-PR1170-GATE-20261027"
+        "SRC-BARROT-PR1170-GATE-20261027",
+        "SRC-BARROT-PR1170-CI-HEAD-60E788",
+        "SRC-BARROT-PR1170-GATE-HEAD-60E788"
       ],
-      "timestamp": 1793059950
+      "timestamp": 1793060018
     },
     {
       "claim_id": "XRP-C-PR1172-SIGNAL-INTEGRITY-TESTS-PASS",
@@ -2100,6 +2145,28 @@
         "head_sha": "4febf9db9222f86d9707214ace75561625416d08",
         "ci_run": 40423957351,
         "gate_run": 40423957548,
+        "merge_performed": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-CI-GATE-HEAD-60E788",
+      "claim_id": "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
+      "kind": "direct_ci_run_observation",
+      "summary": "Research PR #1170 head 60e78875ea06821e3692543bb6512871545aabf5 passed CI run 40424938717 with 111 tests in 6.03 seconds and fail-closed gate run 40424938673. Both checks used the PR merge ref against stale base e49431afe9801044b583abd0451f0d4d7416fc4d, not current main 2bae7ccdfbec8f9536cb40950110c72e949f5073. This ledger update advances the branch again and needs its own checks.",
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-60E788",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424938717",
+      "status": "VERIFIED_ON_EXACT_HEAD_STALE_BASE",
+      "independence": "direct_github_actions_observation",
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-60E788",
+        "SRC-BARROT-PR1170-GATE-HEAD-60E788"
+      ],
+      "details": {
+        "head_sha": "60e78875ea06821e3692543bb6512871545aabf5",
+        "tested_base_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
+        "current_main_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+        "tests_passed": 111,
+        "duration_seconds": 6.03,
         "merge_performed": false
       }
     },
@@ -3701,16 +3768,18 @@
       "interpretation": "The listed ruleset is disabled; effective branch protection remains unknown because the separate endpoint was inaccessible. Do not run merge queue."
     },
     "pr1170_validation": {
-      "last_completed_head_sha": "0ec991026775903c7c718e65b39fef6636d070f6",
-      "last_completed_ci_run": 40424225971,
+      "last_completed_head_sha": "60e78875ea06821e3692543bb6512871545aabf5",
+      "last_completed_ci_run": 40424938717,
       "last_completed_ci_conclusion": "success",
-      "last_completed_fail_closed_gate_run": 40424225980,
+      "tests_passed": 111,
+      "duration_seconds": 6.03,
+      "last_completed_fail_closed_gate_run": 40424938673,
       "last_completed_gate_conclusion": "success",
       "tested_base_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
       "current_main_tip": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
       "behind_current_main": 9,
-      "latest_head_validation_status": "PASSED_ON_STALE_BASE; CURRENT_MAIN_REVALIDATION_REQUIRED",
-      "note": "The latest research PR head was tested against stale base e49431; current main is 2bae7 and the PR is 9 commits behind. The current research branch ledger updates themselves also require exact-head CI."
+      "latest_head_validation_status": "PASSED_ON_STALE_BASE; NEW_LEDGER_COMMIT_REQUIRES_RECHECK",
+      "note": "Exact-head CI/gate passed on 60e788 against stale base e49431. This snapshot update advances the branch; the new head needs its own CI/gate. Do not merge without current-main validation and explicit approval."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
