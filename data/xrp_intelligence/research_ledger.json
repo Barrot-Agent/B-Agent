@@ -190,6 +190,16 @@
           "SRC-XRPL-TX-COST",
           "SRC-XRPL-RESERVES"
         ]
+      },
+      {
+        "id": "CIRCLE-SCALE-007",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "ISSUER_REPORTED_SCALE_METRICS; INDEPENDENT_METHODOLOGY_CHECK_PENDING",
+        "claim": "Circle's October 16, 2026 blog reports that USDC processed more than USD 36 trillion in on-chain transaction volume during H1 2026, Circle minted and redeemed more than USD 315 billion of USDC in that period, paid USD 819 million to distribution partners and transaction costs, and estimated USDC at roughly 77% of global stablecoin transaction volume by June 2026, up from 60% a year earlier.",
+        "limits": "These are issuer-reported figures. On-chain transfer volume is not equivalent to net capital inflow, unique end-user payments, or XRP demand; volume may include repeated transfers, trading, arbitrage and internal settlement. Methodology and independent comparability require review.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-ECONOMICS-2026"
+        ]
       }
     ],
     "relationship_graph": [
@@ -288,6 +298,15 @@
           "SRC-CIRCLE-USDC-XRPL"
         ],
         "status": "INFERENCE; NET_EFFECT_UNKNOWN"
+      },
+      {
+        "from": "Binance",
+        "relation": "announced USD 100 million strategic equity investment plus a five-year USDC promotion/integration agreement",
+        "to": "Circle / USDC",
+        "evidence_ids": [
+          "SRC-CIRCLE-BINANCE-2026"
+        ],
+        "status": "ANNOUNCED_2026-09-22; REALIZED DISTRIBUTION EFFECT NOT YET MEASURED"
       }
     ],
     "competing_hypotheses": [
@@ -343,6 +362,20 @@
           "Different dashboards report different fund universes and flow totals; holdings changes can reflect stale issuer data or coverage gaps; derivatives/offshore activity and macro shocks can dominate."
         ],
         "test_plan": "Reconcile every fund against issuer holdings/NAV files; preserve original snapshots; calculate creation/redemption changes in XRP and USD; model lagged relationships against price, depth, leverage and market beta with walk-forward testing."
+      },
+      {
+        "id": "H5-STABLECOIN-DISTRIBUTION",
+        "hypothesis": "USDC market share and stablecoin volume are strongly shaped by distribution, exchange integration and partner economics; those forces may grow XRPL stablecoin activity without producing proportional XRP price demand.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-USDC-ECONOMICS-2026",
+          "SRC-CIRCLE-BINANCE-2026",
+          "SRC-COINBASE-Q2-2026",
+          "SRC-CIRCLE-USDC-XRPL"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Issuer-reported transfer volume may include repeated transfers or trading activity; market-share definitions can differ; XRPL's share of USDC activity and incremental XRP acquisition are not established by these aggregate figures."
+        ],
+        "test_plan": "Compare stablecoin volume by chain, venue and issuer; separate transfer count, unique senders/receivers, exchange settlement, bridge/mint/redeem flows and net issuance; estimate whether changes predict marginal XRP demand after controlling for market beta, leverage and liquidity."
       }
     ],
     "market_observations": [
@@ -629,6 +662,24 @@
       "title": "Public search result: Kamilah Stevenson | XRP & Stocks",
       "accessed_at_utc": "2026-10-27T19:02:34Z",
       "note": "Different channel ID than the repository candidate; do not merge identities without evidence."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-27T19:08:30Z",
+      "note": "Circle-reported H1 2026 transaction-volume, mint/redemption and distribution-cost figures; independent methodology and comparability not verified."
+    },
+    {
+      "id": "SRC-CIRCLE-BINANCE-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "title": "Binance invests USD 100 million in Circle and renews USDC commercial agreement",
+      "published_at": "2026-09-22",
+      "accessed_at_utc": "2026-10-27T19:08:30Z",
+      "note": "Official announcement of investment and five-year agreement; actual incremental USDC distribution effect remains to be measured."
     }
   ],
   "limitations": [
@@ -657,6 +708,13 @@
         "ci_at_recording": "Tests in progress; fail-closed merge gate passed",
         "merge_performed": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:08:30Z",
+      "update_type": "RESEARCH_ENRICHMENT",
+      "details": "Added Circle's issuer-reported H1 2026 USDC scale metrics, the September 22, 2026 Binance investment/USDC distribution agreement, an evidence-linked relationship edge, and a competing distribution-economics hypothesis.",
+      "validation": "JSON parse and evidence-reference integrity check executed before commit.",
+      "no_forecast_issued": true
     }
   ]
 }
