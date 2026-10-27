@@ -243,7 +243,7 @@ def test_controller_rejects_objective_or_constraint_drift():
         def think(self, prompt, system=None):
             return json.dumps(bundle)
 
-    with pytest.raises(BundleEngineeringError, match="objective"):
+    with pytest.raises(BundleEngineeringError, match="objective after correction"):
         BundleEngineeringController(FakeBrain()).run(
             objective="Teach Barrot to author and improve work bundles.",
             constraints=bundle["constraints"],
@@ -268,3 +268,34 @@ def test_authoring_refuses_to_start_without_explicit_constraints():
             objective="Build autonomous bundle engineering.",
             constraints=[],
         )
+
+def test_controller_recovers_once_from_objective_drift():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    expected_objective = "Teach Barrot to author and improve work bundles."
+    bundle = sample_bundle()
+    bad = copy.deepcopy(bundle)
+    bad["objective"] = "A shortened objective."
+    calls = {"count": 0}
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            calls["count"] += 1
+            if calls["count"] == 1:
+                return json.dumps(bad)
+            assert "EXACTLY as supplied below" in prompt
+            corrected = copy.deepcopy(bundle)
+            corrected["objective"] = expected_objective
+            return json.dumps(corrected)
+
+    result = BundleEngineeringController(FakeBrain()).run(
+        objective=expected_objective,
+        constraints=bundle["constraints"],
+    )
+
+    assert calls["count"] == 2
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+    assert result.bundle["objective"] == expected_objective
+

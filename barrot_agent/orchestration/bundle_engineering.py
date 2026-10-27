@@ -381,10 +381,32 @@ class BundleEngineeringController:
             repository_context=repository_context,
         )
         current = self._ask(prompt)
+        if (
+            current.get("objective") != objective.strip()
+            or current.get("constraints") != constraints
+        ):
+            # Recover once from a model that summarized or reordered invariants.
+            # The original request remains authoritative; a second mismatch blocks safely.
+            correction_prompt = f"""The previous draft failed the strict objective/constraint invariant check.
+Revise the bundle so its plan addresses the full requested objective, and copy the objective and constraints
+EXACTLY as supplied below. Do not summarize, paraphrase, reorder, omit, or add to these fields.
+Return one complete JSON object only. Preserve useful repository-grounded task detail, and do not claim
+execution or completion.
+
+Exact objective JSON string:
+{json.dumps(objective.strip(), ensure_ascii=False)}
+
+Exact constraints JSON array:
+{json.dumps(constraints, ensure_ascii=False)}
+
+Previous draft to correct:
+{json.dumps(current, ensure_ascii=False)}
+"""
+            current = self._ask(correction_prompt)
         if current.get("objective") != objective.strip():
-            raise BundleEngineeringError("Authored bundle changed the requested objective.")
+            raise BundleEngineeringError("Authored bundle changed the requested objective after correction.")
         if current.get("constraints") != constraints:
-            raise BundleEngineeringError("Authored bundle changed or reordered mandatory constraints.")
+            raise BundleEngineeringError("Authored bundle changed or reordered mandatory constraints after correction.")
 
         review = review_work_bundle(current)
         attempts: list[dict[str, Any]] = [{
