@@ -270,3 +270,8 @@ Official releases show a mixed, inflation-constrained regime rather than confirm
 Competing scenarios are now recorded: (1) inflationary slowdown/risk-off pressure despite XRP utility, and (2) soft landing with no imminent recession if consumption remains resilient and inflation moderates. Neither receives a numerical recession probability or XRP direction from this evidence. Test macro features against BTC beta, DXY, real yields, oil, credit spreads, spot depth and derivatives leverage using point-in-time release vintages and walk-forward baselines.
 
 The news freshness gate was also tightened in draft PR #1190: the RSS ingestion script stores the publisher's `published` field, so scoring now requires a valid publication/event timestamp as well as a valid ingestion timestamp. This prevents an old article re-ingested today from being treated as a new event. Exact-head CI is pending after the regression-test update.
+
+
+## Event-time gate verification correction — PR #1190
+
+The publication-time enhancement is now **EXECUTED and VERIFIED on the draft branch**, not merely designed. Exact-head CI run [40510228609](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228609) passed **130 tests in 4.45 seconds**, including the regression test for stale articles re-ingested today, future-dated publication times and RFC 822 RSS dates. Fail-closed gate [40510228598](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228598) passed. The change remains on draft PR #1190 and is not effective on main.
