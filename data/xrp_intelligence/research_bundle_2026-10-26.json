@@ -2114,6 +2114,20 @@
         "Personal consumption expenditures +0.9% month over month; real PCE +0.6%",
         "September PCE release scheduled October 29, 2026"
       ]
+    },
+    {
+      "source_id": "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027",
+      "title": "Public YouTube search result: Kamilah Stevenson | XRP & Stocks",
+      "author_or_organization": "YouTube public search result",
+      "source_type": "public_search_result_metadata",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "publication_date": "observed 2026-10-27",
+      "source_commit": null,
+      "sections": [
+        "Search result identifies channel ID UCXm6KAr1WHF6UN7g5b2W7wg and title 'Kamilah Stevenson | XRP & Stocks'.",
+        "Search result lists handle @KamilahStevensonXrpStocks and a description about stocks, crypto and market insights.",
+        "The existing video catalog uses a different channel ID, UCqUPJMQdkCN6lsLVDnichPA; no first-party cross-link between these IDs was verified."
+      ]
     }
   ],
   "claims": [
@@ -4169,6 +4183,33 @@
         "SRC-BLS-CPI-SEP-2026",
         "SRC-BEA-PERSONAL-INCOME-OUTLAYS-AUG-2026",
         "SRC-FOMC-MINUTES-2026-09-16"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-KAMILAH-CHANNEL-IDENTITY-UNRESOLVED-20261027",
+      "statement": "Public metadata currently surfaces two different YouTube channel IDs associated with the name Kamilah Stevenson: the existing catalog candidate UCqUPJMQdkCN6lsLVDnichPA and a public search result UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks. A transcript of video jVrBm0dDJ24 identifies the speaker as 'Camila Stevenson'. No first-party cross-link establishes whether these refer to the same person or channel; keep the inventories separate until identity is verified.",
+      "domain": "public_video_identity_and_source_provenance",
+      "claim_type": "observed_identity_discrepancy",
+      "source": "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027",
+      "source_location": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "supporting_evidence": [
+        "XRP-E-KAMILAH-CHANNEL-ID-MISMATCH-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "OBSERVED_DISCREPANCY",
+      "independent_verification_status": "MULTIPLE_PUBLIC_METADATA_RECORDS; NO_IDENTITY_LINK",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "DO_NOT_MERGE_IDENTITIES",
+      "confidence": 0.99,
+      "assumptions": [
+        "Channel IDs are distinct stable identifiers even if display names overlap.",
+        "Search-index metadata can be stale; first-party channel pages and cross-links take precedence."
+      ],
+      "provenance": [
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027",
+        "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+        "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
       ],
       "timestamp": 1793099400
     }
@@ -6503,6 +6544,29 @@
         ],
         "forecast_status": "No recession probability assigned; no XRP forecast inferred."
       }
+    },
+    {
+      "evidence_id": "XRP-E-KAMILAH-CHANNEL-ID-MISMATCH-20261027",
+      "claim_id": "XRP-C-KAMILAH-CHANNEL-IDENTITY-UNRESOLVED-20261027",
+      "kind": "public_metadata_cross_check",
+      "summary": "The existing catalog points to channel ID UCqUPJMQdkCN6lsLVDnichPA, while a public YouTube search result surfaces UCXm6KAr1WHF6UN7g5b2W7wg with handle @KamilahStevensonXrpStocks. The transcript source separately spells the speaker 'Camila Stevenson'. These records do not prove common identity.",
+      "source_id": "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027",
+      "source_location": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "status": "CONFLICT_IDENTITY_UNRESOLVED",
+      "independence": "public_search_metadata_not_independent_identity_confirmation",
+      "provenance": [
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027",
+        "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+        "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+      ],
+      "details": {
+        "catalog_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "search_candidate_channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "search_candidate_handle": "@KamilahStevensonXrpStocks",
+        "transcript_speaker_spelling": "Camila Stevenson",
+        "vidiq_status": "Not enough credits; no credits charged; tool explicitly instructed not to retry before the reported 2026-11-27 refresh.",
+        "next_step": "Verify first-party channel links or an authenticated YouTube channel inventory before merging catalogs."
+      }
     }
   ],
   "tracks": [
@@ -6683,7 +6747,9 @@
         "No full transcript corpus has been captured and hashed.",
         "Screenshot video title still lacks canonical video ID.",
         "Exact phrase 'ASK Coin' and 'actual capital' remain unresolved.",
-        "The 2025-12-06 video title and full transcript remain unresolved; the description's collateral claim is challenged by primary sources, but product-specific FCM eligibility must still be checked."
+        "The 2025-12-06 video title and full transcript remain unresolved; the description's collateral claim is challenged by primary sources, but product-specific FCM eligibility must still be checked.",
+        "Public search surfaced a second channel ID UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks; do not merge with catalog candidate UCqUPJMQdkCN6lsLVDnichPA until first-party identity cross-link is verified.",
+        "vidIQ credit balance blocked further channel searches; tool instructed no retry before 2026-11-27."
       ],
       "confidence": 0.99,
       "provenance": [
@@ -6694,7 +6760,7 @@
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
-        "status": "PARTIAL_SEED_CATALOG_ONLY"
+        "status": "IDENTITY_DISCREPANCY_OBSERVED; TWO_CHANNEL_CANDIDATES_KEPT_SEPARATE; FULL_ENUMERATION_PENDING"
       }
     },
     {
@@ -7071,6 +7137,12 @@
       "question": "Do U.S. macro-regime features (inflation, employment, GDP, Fed policy, dollar and energy prices) add calibrated out-of-sample XRP forecast value beyond BTC beta and market-liquidity baselines?",
       "priority": "HIGH",
       "status": "OFFICIAL_DATA_CAPTURED; RELEASE_VINTAGE_FEATURE_STORE_AND_WALK_FORWARD_TEST_PENDING"
+    },
+    {
+      "question_id": "Q-YOUTUBE-CHANNEL-IDENTITY-20261027",
+      "question": "Verify the first-party identity and canonical upload inventory for the channel referenced as Camilla/Camila/Kamilah Stevenson without merging distinct YouTube channel IDs.",
+      "priority": "HIGH",
+      "status": "TWO_CHANNEL_IDS_OBSERVED; VIDIQ_CREDIT_BLOCK; FIRST_PARTY_CROSS_LINK_AND_FULL_ENUMERATION_PENDING"
     }
   ],
   "relationship_graph": {
@@ -7537,6 +7609,23 @@
         "status": "FACT_WITH_CURRENT_VINTAGE",
         "source_ids": [
           "SRC-BLS-EMPLOYMENT-SEP-2026"
+        ]
+      },
+      {
+        "id": "Kamilah channel candidate UCqUPJMQdkCN6lsLVDnichPA",
+        "type": "youtube_channel_candidate",
+        "status": "CATALOG_CANDIDATE; IDENTITY_NOT_CROSS_LINKED",
+        "source_ids": [
+          "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+          "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+        ]
+      },
+      {
+        "id": "Kamilah channel candidate UCXm6KAr1WHF6UN7g5b2W7wg",
+        "type": "youtube_channel_candidate",
+        "status": "PUBLIC_SEARCH_RESULT; IDENTITY_NOT_CROSS_LINKED",
+        "source_ids": [
+          "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027"
         ]
       }
     ],
@@ -8383,6 +8472,19 @@
           "SRC-BEA-GDP-Q2-2026"
         ],
         "caveat": "Monthly payroll estimates are revised and labor indicators can lag broader activity."
+      },
+      {
+        "source": "Kamilah channel candidate UCqUPJMQdkCN6lsLVDnichPA",
+        "target": "Kamilah channel candidate UCXm6KAr1WHF6UN7g5b2W7wg",
+        "relationship_type": "POSSIBLE_SAME_CREATOR_UNVERIFIED",
+        "classification": "IDENTITY_HYPOTHESIS_ONLY",
+        "confidence": 0.35,
+        "source_ids": [
+          "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+          "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-UCXM6-20261027",
+          "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+        ],
+        "caveat": "The channel IDs differ and no first-party cross-link was verified. Do not merge video inventories or attribute claims across these channels."
       }
     ]
   },
@@ -9480,8 +9582,8 @@
     "completeness_verified": false,
     "transcripts_captured_and_hashed": 5,
     "screenshot_title_id": "vPebfa4Mdwo",
-    "status": "DRAFT_CATALOG_EXPANDED_TO_28_SEEDS; 150 RECENT FORMAT ROWS OBSERVED; ONE LONG TRANSCRIPT RETRIEVED BUT NOT HASHED; FULL ENUMERATION NOT VERIFIED",
-    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format without pagination. The latest jVrBm0dDJ24 transcript was retrieved (166,512 characters) but not hashed or fully reviewed in this run. Complete channel enumeration, transcript integrity hashing and timestamped forecast extraction remain pending. On 2026-10-27T07:14Z an exact-phrase vidIQ YouTube search was attempted but the provider returned Not enough credits; no credits were charged and the tool reports refresh on 2026-11-27. A public web search for the phrases in channel titles/snippets returned no resolving result. Do not infer meanings; full channel enumeration and transcript-level exact-phrase search remain pending. On 2026-10-27T09:00Z, a fresh public web search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and the canonical channel did not resolve the original phrase context; no new video IDs or phrase meanings were inferred. vidIQ credits remain unavailable until the reported 2026-11-27 refresh.",
+    "status": "TWO DISTINCT CHANNEL IDS SURFACED; IDENTITY UNRESOLVED; FULL ENUMERATION NOT VERIFIED; VIDIQ CREDITS UNAVAILABLE UNTIL REPORTED 2026-11-27 REFRESH",
+    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format without pagination. The latest jVrBm0dDJ24 transcript was retrieved (166,512 characters) but not hashed or fully reviewed in this run. Complete channel enumeration, transcript integrity hashing and timestamped forecast extraction remain pending. On 2026-10-27T07:14Z an exact-phrase vidIQ YouTube search was attempted but the provider returned Not enough credits; no credits were charged and the tool reports refresh on 2026-11-27. A public web search for the phrases in channel titles/snippets returned no resolving result. Do not infer meanings; full channel enumeration and transcript-level exact-phrase search remain pending. On 2026-10-27T09:00Z, a fresh public web search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and the canonical channel did not resolve the original phrase context; no new video IDs or phrase meanings were inferred. vidIQ credits remain unavailable until the reported 2026-11-27 refresh. A public YouTube search surfaced channel ID UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks, distinct from catalog candidate UCqUPJMQdkCN6lsLVDnichPA. The transcript spells the speaker 'Camila Stevenson'. No first-party cross-link verified; keep inventories separate. A fresh vidIQ channel search was blocked by insufficient credits, no credits charged, and the tool explicitly said not to retry before its 2026-11-27 refresh.",
     "last_seed_added": {
       "video_id": "bNJ4lzZEqtA",
       "published_date_reported": "2026-10-24",
@@ -9518,7 +9620,22 @@
       "new_transcripts_hashed_in_this_refresh": 0
     },
     "last_phrase_search_attempt_at_utc": "2026-10-27T07:14:00Z",
-    "last_phrase_search_status": "BLOCKED_BY_VIDIQ_CREDIT_BALANCE; NO_CREDITS_CHARGED; PUBLIC_WEB_TITLE/SNIPPET_SEARCH_DID_NOT_RESOLVE_TERMS"
+    "last_phrase_search_status": "BLOCKED_BY_VIDIQ_CREDIT_BALANCE; NO_CREDITS_CHARGED; PUBLIC_WEB_TITLE/SNIPPET_SEARCH_DID_NOT_RESOLVE_TERMS",
+    "identity_candidates": [
+      {
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "origin": "Existing vidIQ catalog",
+        "status": "CURRENT_CATALOG_CANDIDATE; NOT_CROSS_LINKED"
+      },
+      {
+        "channel_id": "UCXm6KAr1WHF6UN7g5b2W7wg",
+        "channel_url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+        "handle": "@KamilahStevensonXrpStocks",
+        "origin": "Public YouTube search result",
+        "status": "SEPARATE_CANDIDATE; NOT_MERGED"
+      }
+    ]
   },
   "unresolved_exact_phrases": [
     {
@@ -9535,10 +9652,20 @@
       "phrase": "SBIC, ChatGPT SBIC",
       "status": "UNRESOLVED; THREE DISTINCT OFFICIAL JAPANESE SBIC USES VERIFIED",
       "finding": "Official sources distinguish (1) Tokyo Small and Medium Business Investment & Consultation Co., Ltd. using SBIC branding, (2) Nagoya Small and Medium Business Investment & Consultation Co., Ltd. using 'SBIC Central Japan', and (3) historical SBI Capital Co., Ltd., which SBI Holdings called SBIC in 2004–2007. These are separate entities or historical uses. Exact phrase searches did not recover the original sentence/video context. No XRP relationship is inferred from acronym similarity."
+    },
+    {
+      "phrase": "Camilla Stephenson / Camila Stevenson / Kamilah Stevenson channel identity",
+      "status": "UNRESOLVED; TWO CHANNEL IDS OBSERVED",
+      "finding": "The catalog uses UCqUPJMQdkCN6lsLVDnichPA; public search surfaced UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks; one transcript spells the speaker Camila Stevenson. No first-party link proves they are the same. Keep inventories separate."
     }
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Resolve the Camilla/Camila/Kamilah Stevenson channel identity from first-party channel pages or authorized YouTube inventory. Current catalog ID UCqUPJMQdkCN6lsLVDnichPA differs from public-search candidate UCXm6KAr1WHF6UN7g5b2W7wg; vidIQ has no credits and explicitly instructed no retry before its reported 2026-11-27 refresh. Keep catalogs separate until verified.",
+      "status": "IDENTITY_DISCREPANCY_RECORDED; VIDIQ_BLOCKED; NO_UNSUPPORTED_MERGE"
+    },
     {
       "priority": 0,
       "action": "Use publisher event time, not ingestion time alone, for news freshness. PR #1190 validates RSS published/pubDate against the 72-hour event window and has regression coverage for stale re-ingested articles, future-dated articles and RFC 822 RSS dates; exact-head CI passed 130 tests and the fail-closed gate passed.",
