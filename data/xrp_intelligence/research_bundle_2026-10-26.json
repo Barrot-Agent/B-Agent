@@ -3,12 +3,14 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T06:22:00Z",
-    "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
+    "captured_at_utc": "2026-10-27T07:03:56Z",
+    "main_tip_sha": "c91caad4a4718e6c2e3a8c4f826eed403363a1c1",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_CONFIDENCE_ZERO_AND_ACADEMIC_NEWS_CONTAMINATION",
-    "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access."
+    "current_signal_disposition": "INVALID_FOR_FORECASTING_CONFIDENCE_ZERO_PROVIDER_FAILURES_AND_ACADEMIC_XRPL_PROTOCOL_HEADLINES_CONTAMINATING_MARKET_NEWS",
+    "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
+    "latest_signal_timestamp": "2026-10-27T06:45:40.110346+00:00",
+    "latest_signal_blob_sha": "4d625f52356bbf80fe17d3f0bf942938779283fb"
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -44,7 +46,10 @@
       "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
       "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z",
       "XRP-C-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
-      "XRP-C-ASK-COIN-ENTITY-AMBIGUITY-20261027"
+      "XRP-C-ASK-COIN-ENTITY-AMBIGUITY-20261027",
+      "XRP-C-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027",
+      "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
+      "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1359,6 +1364,50 @@
         "The listing labels the exchange untracked/inactive and does not show tracked volume or reserves.",
         "This is a candidate match for the string only; no primary source or channel transcript was found tying it to the user's exact phrase or XRP."
       ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01",
+      "title": "SBI VISA Crypto Card: card points automatically exchanged into selected crypto asset",
+      "author_or_organization": "SBI VC Trade; Aplus; Visa Worldwide Japan; SBI Holdings",
+      "source_type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "publication_date": "2026-05-01",
+      "retrieved_at_utc": "2026-10-27T07:03:56Z",
+      "sections": [
+        "SBI VC Trade, Aplus and Visa announced cards whose accumulated points can be automatically exchanged into one selected asset from BTC, ETH or XRP.",
+        "A VCTRADE service account is required to receive the crypto asset.",
+        "The announcement describes a retail reward-conversion channel; it does not disclose XRP conversion volume, execution venue, acquisition source, or net market impact."
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
+      "title": "Circle signs agreement to acquire Tazapay cross-border payments platform",
+      "author_or_organization": "Circle Internet Group",
+      "source_type": "official_corporate_release",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Expands-Global-Payments-Infrastructure-with-Agreement-to-Acquire-Singapore-Based-Cross-Border-Payments-Platform-Tazapay/",
+      "publication_date": "2026-09-08",
+      "retrieved_at_utc": "2026-10-27T07:03:56Z",
+      "sections": [
+        "Circle announced a definitive agreement to acquire Singapore-based B2B cross-border payments platform Tazapay.",
+        "Circle's announcement says Tazapay brings more than 60 banking and fintech partners and more than 100 payout markets.",
+        "The acquisition was expected to close in 2027 subject to customary conditions and regulatory approvals; completion is not established by this announcement.",
+        "The announcement is evidence of Circle's planned payment-rail expansion, not evidence of XRP usage or realized payment flows."
+      ]
+    },
+    {
+      "source_id": "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027",
+      "title": "Evernorth 424B3 prospectus: outstanding shares and additional potential issuance categories",
+      "author_or_organization": "Evernorth Holdings Inc.; U.S. Securities and Exchange Commission",
+      "source_type": "SEC_prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "publication_date": "SEC filing date not independently resolved in this pass; retrieved 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T07:03:56Z",
+      "sections": [
+        "The prospectus reports 23,638,882 Class A common shares outstanding as of 2026-10-09.",
+        "That figure excludes multiple additional potential issuance categories, including warrants, convertible notes, exchangeable units, Class C conversions, incentive-plan shares and ESPP shares.",
+        "The disclosed categories have distinct conditions and must not be blindly summed into a single fully diluted count without reconciling contractual terms and overlap.",
+        "Capital-structure overhang affects XRP exposure per share and should be analyzed separately from gross treasury XRP."
+      ]
     }
   ],
   "claims": [
@@ -2457,6 +2506,81 @@
         "SRC-ASK-COIN-CMC-LISTING-20261027"
       ],
       "timestamp": 1793082120
+    },
+    {
+      "claim_id": "XRP-C-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027",
+      "statement": "SBI VC Trade, Aplus and Visa announced on 2026-05-01 a card product that automatically exchanges accumulated points into one selected crypto asset from BTC, ETH or XRP and requires a VCTRADE account. This establishes a potential retail XRP reward-conversion channel, but actual XRP conversion volume, execution venue, funding source and net market impact are unknown.",
+      "domain": "retail_distribution_and_capital_flows",
+      "claim_type": "official_product_announcement_with_flow_limits",
+      "source": "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_OFFICIAL_PRODUCT_ANNOUNCEMENT",
+      "independent_verification_status": "SINGLE_PRIMARY_ANNOUNCEMENT; REALIZED_VOLUME_AND_EXECUTION_PATH_UNKNOWN",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "PRODUCT_CHANNEL_CONFIRMED; XRP_FLOW_AND_PRICE_EFFECT_NOT_ESTABLISHED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The announcement accurately describes the product mechanics.",
+        "Product availability does not establish how many users select XRP or whether resulting conversions create incremental spot purchases."
+      ],
+      "provenance": [
+        "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+      ],
+      "timestamp": 1793084636
+    },
+    {
+      "claim_id": "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
+      "statement": "Circle announced a definitive agreement on 2026-09-08 to acquire Tazapay, a cross-border payments platform described as having 60+ banking and fintech partners and 100+ payout markets. The agreement was expected to close in 2027 subject to approvals. This is a planned expansion of Circle's payments distribution, not a completed acquisition, an XRP integration, or evidence of realized USDC/XRP flows.",
+      "domain": "payments_rails_and_corporate_strategy",
+      "claim_type": "official_proposed_acquisition_with_completion_caveat",
+      "source": "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Expands-Global-Payments-Infrastructure-with-Agreement-to-Acquire-Singapore-Based-Cross-Border-Payments-Platform-Tazapay/",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-TAZAPAY-EXPANSION-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_ANNOUNCEMENT; CLOSING_AND_IMPLEMENTATION_UNVERIFIED",
+      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; CLOSING_STATUS_AND_REALIZED_FLOWS_REQUIRE_FOLLOWUP",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "AGREEMENT_ANNOUNCED; NOT_TREATED_AS_CLOSED_OR_AS_XRP_DEMAND",
+      "confidence": 0.98,
+      "assumptions": [
+        "Circle's announcement accurately describes the proposed transaction and Tazapay's network reach.",
+        "Partner counts and payout-market counts do not establish payment volumes, incremental adoption or asset-routing choice."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
+      ],
+      "timestamp": 1793084636
+    },
+    {
+      "claim_id": "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027",
+      "statement": "Evernorth's SEC prospectus reports 23,638,882 Class A shares outstanding as of 2026-10-09 and separately lists several categories of potential additional issuance excluded from that figure, including warrants, convertible notes, exchangeable units, Class C conversions, incentive-plan shares and ESPP shares. This creates a capital-structure and XRP-per-share measurement requirement; the categories are conditional and must not be blindly summed as a fully diluted share count.",
+      "domain": "institutional_capital_flows_and_equity_structure",
+      "claim_type": "SEC_disclosure_with_conditional_dilution_caveat",
+      "source": "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-DILUTION-OVERHANG-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_SEC_PROSPECTUS_DISCLOSURE",
+      "independent_verification_status": "PRIMARY_REGULATORY_FILING; FULLY_DILUTED_SCENARIO_RECONCILIATION_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "SHARE-COUNT-OVERHANG-CONFIRMED; FULLY_DILUTED_COUNT_AND_PER-SHARE_EFFECT_NOT_CALCULATED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The share count and excluded issuance categories are accurately transcribed from the prospectus.",
+        "Different contingent issuance categories may have different conditions and interactions; their headline values are not automatically additive."
+      ],
+      "provenance": [
+        "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027"
+      ],
+      "timestamp": 1793084636
     }
   ],
   "evidence": [
@@ -3694,6 +3818,77 @@
         "intended_referent": "UNKNOWN",
         "xrp_relationship": "NOT_ESTABLISHED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027",
+      "claim_id": "XRP-C-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027",
+      "kind": "official_product_announcement",
+      "summary": "The May 1, 2026 SBI Group release says card points can automatically convert to a selected asset from BTC, ETH or XRP and a VCTRADE account is required.",
+      "source_id": "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "status": "SUPPORTED_PRODUCT_CHANNEL; FLOW_UNKNOWN",
+      "independence": "single_primary_corporate_announcement",
+      "provenance": [
+        "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+      ],
+      "details": {
+        "eligible_reward_assets": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "conversion_mechanism": "points automatically exchanged into selected crypto asset",
+        "account_requirement": "SBI VC Trade VCTRADE account",
+        "xrp_conversion_volume": "UNKNOWN",
+        "execution_venue_and_funding_path": "UNKNOWN",
+        "net_spot_demand": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-TAZAPAY-EXPANSION-20261027",
+      "claim_id": "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
+      "kind": "official_corporate_release",
+      "summary": "Circle announced a definitive agreement to acquire Tazapay, describing 60+ banking/fintech partners and 100+ payout markets; closing was expected in 2027 subject to approvals.",
+      "source_id": "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Expands-Global-Payments-Infrastructure-with-Agreement-to-Acquire-Singapore-Based-Cross-Border-Payments-Platform-Tazapay/",
+      "status": "AGREEMENT_ANNOUNCED; CLOSING_NOT_VERIFIED",
+      "independence": "single_primary_corporate_announcement",
+      "provenance": [
+        "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
+      ],
+      "details": {
+        "banking_and_fintech_partners_claimed": ">60",
+        "payout_markets_claimed": ">100",
+        "expected_closing": "2027 subject to customary conditions and regulatory approvals",
+        "realized_usdc_flows": "UNKNOWN",
+        "xrp_integration": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-DILUTION-OVERHANG-20261027",
+      "claim_id": "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027",
+      "kind": "SEC_prospectus_disclosure",
+      "summary": "The SEC prospectus states 23,638,882 Class A shares were outstanding as of October 9, 2026, excluding multiple conditional or potentially issuable share categories.",
+      "source_id": "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "status": "SUPPORTED_PRIMARY_FILING; FULLY_DILUTED_SCENARIO_PENDING",
+      "independence": "primary_regulatory_filing",
+      "provenance": [
+        "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027"
+      ],
+      "details": {
+        "class_a_outstanding_as_of_2026_10_09": 23638882,
+        "excluded_potential_categories": {
+          "pubco_warrants_up_to": 11739645,
+          "convertible_notes_initial_conversion_shares": 3585278,
+          "exchangeable_company_units": 22953128,
+          "class_c_conversion_shares": 31392746,
+          "incentive_plan_reserved_shares": 8930929,
+          "espp_reserved_shares": 1786185
+        },
+        "warning": "These categories have different contractual conditions and must not be blindly summed; verify the latest filing, conversions, redemptions, exercise and actual share issuance before computing dilution.",
+        "xrp_per_diluted_share": "NOT_CALCULATED"
+      }
     }
   ],
   "tracks": [
@@ -4145,6 +4340,24 @@
       "question": "Recover the exact original source context for 'ASK Coin' and 'actual capital'; test the Ask Coin exchange listing only as a literal-name candidate and keep the intended referent unresolved until the original sentence/video timestamp is located.",
       "priority": "HIGH",
       "status": "ASK_COIN_LITERAL_LISTING_CANDIDATE_ONLY; ACTUAL_CAPITAL_CONTEXT_MISSING"
+    },
+    {
+      "question_id": "Q-SBI-VISA-XRP-CONVERSION-VOLUME-20261027",
+      "question": "What actual monthly XRP reward-conversion volume, execution venue, funding path and net retained XRP are attributable to SBI VISA Crypto Card?",
+      "priority": "HIGH",
+      "status": "UNKNOWN; PRODUCT ANNOUNCEMENT ONLY"
+    },
+    {
+      "question_id": "Q-CIRCLE-TAZAPAY-REALIZED-FLOWS-20261027",
+      "question": "Did Circle's proposed Tazapay acquisition close, and what post-close USDC corridor volumes and asset-routing shares were realized versus control rails?",
+      "priority": "HIGH",
+      "status": "ACQUISITION CLOSING AND FLOWS UNVERIFIED"
+    },
+    {
+      "question_id": "Q-EVERNORTH-FULLY-DILUTED-XRP-PER-SHARE-20261027",
+      "question": "What is Evernorth's reconciled fully diluted share count after actual warrant exercise, conversions, unit exchanges, equity-facility draws and other issuance?",
+      "priority": "HIGH",
+      "status": "POTENTIAL CATEGORIES DISCLOSED; RECONCILIATION PENDING"
     }
   ],
   "relationship_graph": {
@@ -4422,6 +4635,31 @@
         "status": "LITERAL_NAME_MATCH_ONLY; CMC_LABELS_UNTRACKED_INACTIVE; INTENDED_REFERENT_AND_XRP_LINK_UNKNOWN",
         "source_ids": [
           "SRC-ASK-COIN-CMC-LISTING-20261027"
+        ]
+      },
+      {
+        "id": "SBI VISA Crypto Card",
+        "type": "retail_crypto_reward_card",
+        "status": "OFFICIAL_PRODUCT_ANNOUNCEMENT; XRP_OPTION_AVAILABLE; ACTUAL_CONVERSION_VOLUME_UNKNOWN",
+        "source_ids": [
+          "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+        ]
+      },
+      {
+        "id": "Tazapay",
+        "type": "cross_border_payments_platform",
+        "status": "CIRCLE_ACQUISITION_AGREEMENT_ANNOUNCED; CLOSING_AND_REALIZED_FLOWS_UNVERIFIED",
+        "source_ids": [
+          "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
+        ]
+      },
+      {
+        "id": "Evernorth equity and potential dilution",
+        "type": "public_equity_financing_and_share_issuance",
+        "status": "SEC_DISCLOSED_POTENTIAL_ISSUANCE_CATEGORIES; ACTUAL_FACILITY_DRAWS_AND_FULLY_DILUTED_RECONCILIATION_UNKNOWN",
+        "source_ids": [
+          "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027",
+          "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
         ]
       }
     ],
@@ -4862,7 +5100,7 @@
         "confidence": 0.55,
         "source_ids": [
           "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
-          "SRC-EVERNORTH-SEC-PIPE-20261023"
+          "SRC-SEC-EVERNORTH-2026-10-23"
         ],
         "caveat": "Do not count facility capacity as XRP demand; reconcile future share issuance, proceeds use, wallet balances and XRP per diluted share."
       },
@@ -4887,6 +5125,73 @@
           "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
         ],
         "caveat": "Displayed CDE product metrics are distinct from Coinbase Global Exchange cross-collateral eligibility; no global market inference or price forecast is established."
+      },
+      {
+        "source": "SBI VC Trade",
+        "target": "SBI VISA Crypto Card",
+        "relationship_type": "CRYPTO_ACCOUNT_AND_REWARD_CONVERSION_PROVIDER",
+        "classification": "OFFICIAL_PRODUCT_ANNOUNCEMENT; CONVERSION_VOLUME_UNKNOWN",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+        ],
+        "caveat": "The announcement requires a VCTRADE account; it does not disclose execution venue, market sourcing or realized volumes."
+      },
+      {
+        "source": "Visa",
+        "target": "SBI VISA Crypto Card",
+        "relationship_type": "CARD_NETWORK_PARTNER",
+        "classification": "OFFICIAL_PRODUCT_ANNOUNCEMENT",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+        ],
+        "caveat": "This card relationship does not establish a direct Visa-Circle or Visa-XRP institutional investment relationship."
+      },
+      {
+        "source": "SBI VISA Crypto Card",
+        "target": "XRP",
+        "relationship_type": "OPTIONAL_REWARD_ASSET",
+        "classification": "PRODUCT_CHANNEL_CONFIRMED; ACTUAL_XRP_CONVERSIONS_UNKNOWN",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+        ],
+        "caveat": "Eligibility as a reward asset is not evidence of user selection, net purchases, retained balances or price impact."
+      },
+      {
+        "source": "Circle",
+        "target": "Tazapay",
+        "relationship_type": "PROPOSED_ACQUISITION",
+        "classification": "DEFINITIVE_AGREEMENT_ANNOUNCED; CLOSING_SUBJECT_TO_APPROVALS",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
+        ],
+        "caveat": "Do not represent the acquisition as completed or treat partner counts as realized payment volumes."
+      },
+      {
+        "source": "Tazapay",
+        "target": "USDC payment distribution",
+        "relationship_type": "POTENTIAL_CROSS_BORDER_DISTRIBUTION_EXPANSION",
+        "classification": "PROPOSED_STRATEGIC_RATIONALE; IMPLEMENTATION_AND_FLOWS_UNKNOWN",
+        "confidence": 0.85,
+        "source_ids": [
+          "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
+        ],
+        "caveat": "The announcement does not establish XRP routing, incremental USDC issuance or substitution versus other rails."
+      },
+      {
+        "source": "Evernorth",
+        "target": "Evernorth equity and potential dilution",
+        "relationship_type": "PUBLIC_EQUITY_CAPITAL_STRUCTURE",
+        "classification": "SEC_DISCLOSED_POTENTIAL_ISSUANCE; REALIZED_DILUTION_NOT_FULLY_RECONCILED",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027",
+          "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
+        ],
+        "caveat": "Treasury XRP, cash-funded purchases, in-kind contributions and shares issued must be reconciled separately to calculate XRP per diluted share."
       }
     ]
   },
@@ -5088,9 +5393,56 @@
       ],
       "provenance": [
         "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
-        "SRC-EVERNORTH-SEC-PIPE-20261023"
+        "SRC-SEC-EVERNORTH-2026-10-23"
       ],
       "confidence": 0.8
+    },
+    {
+      "hypothesis_id": "H-SBI-CARD-REWARD-FLOW-VS-NOISE-20261027",
+      "statement": "SBI's XRP-selectable card rewards may create incremental recurring retail XRP acquisition, but the effect could be negligible relative to venue-wide turnover or offset by immediate sales and reward-program funding mechanics.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Find disclosed monthly reward conversion volumes, user counts, XRP selection share and execution/funding route.",
+        "Measure net XRP credited and retained after rewards, sales, fees and any internal inventory transfers.",
+        "Compare verified flows with market turnover and use predeclared event windows; do not infer price impact from product launch alone."
+      ],
+      "falsification_conditions": [
+        "The program does not support XRP in the relevant current product version.",
+        "Verified XRP conversion volumes are immaterial relative to market turnover or are fully offset by selling/other flows."
+      ],
+      "provenance": [
+        "SRC-SBI-VISA-CRYPTO-CARD-2026-05-01"
+      ],
+      "confidence": 0.65
+    },
+    {
+      "hypothesis_id": "H-CIRCLE-TAZAPAY-USDC-COMPLEMENT-SUBSTITUTE-20261027",
+      "statement": "If Circle's proposed Tazapay acquisition closes and its payout network adopts USDC, the expanded rails could either complement XRP-based bridge liquidity in some corridors or substitute for XRP in corridors where dollar-stablecoin settlement is cheaper and easier to access. No direction of XRP demand follows from the acquisition announcement alone.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-TAZAPAY-EXPANSION-20261027",
+        "XRP-E-CIRCLE-USDC-XRPL"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Verify closing and later integration milestones.",
+        "Collect corridor-level payout volumes, settlement asset, liquidity-provider inventory, fees, settlement time and failed-payment rates.",
+        "Compare changes against control corridors and alternative stablecoin/fiat rails while controlling for macro and crypto-market conditions."
+      ],
+      "falsification_conditions": [
+        "The acquisition does not close.",
+        "Post-close disclosures show no USDC integration or no measurable corridor-level change.",
+        "Observed XRP routing and demand do not change relative to controls despite USDC expansion."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
+        "SRC-CIRCLE-USDC-XRPL"
+      ],
+      "confidence": 0.65
     }
   ],
   "platform_coordination": [
@@ -5219,11 +5571,11 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
-    "latest_main_commit_message": "Paper trade cycle [skip ci]",
-    "latest_main_commit_ci": "Latest observed main tip abaf1085343045fafb5cbe4228d33b805c75f3fd is a generated paper-trading cycle marked [skip ci]; no core CI run was observed for this exact SHA. Compared with PR #1182's tested base ef4e4b625b44b8c1aa4ee30cff0d3b95dbddc419, main-only delta was web/paper_trading_log.jsonl; no code/workflow files changed in that delta.",
+    "main_tip_sha": "c91caad4a4718e6c2e3a8c4f826eed403363a1c1",
+    "latest_main_commit_message": "Auto cycle (BTC): ingest + distill + blended signal [skip ci]",
+    "latest_main_commit_ci": "Current main tip c91caad4a4718e6c2e3a8c4f826eed403363a1c1 is an automated generated-data cycle marked [skip ci]; no core CI run was observed for this exact SHA. Compared with PR #1170's tested base a3e0f0198510634420f925eef8cea384aca51b12, main is 20 commits ahead and changes only AUTONOMOUS_DEPLOYMENT_REPORT.md plus generated runtime config/log/signal files; no Python/source/workflow files changed in the diff. This does not make the older PR head current-main validated.",
     "current_signal": {
-      "timestamp": "2026-10-27T05:30:48.745392+00:00",
+      "timestamp": "2026-10-27T06:45:40.110346+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -5232,10 +5584,10 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "3e5906924ab64d7bd1fb0fb312aa9c7652205fc1",
-      "retrieved_at_utc": "2026-10-27T06:12:00Z",
-      "age_minutes_at_retrieval": 41.2,
-      "disposition": "INVALID_FOR_FORECASTING_ACADEMIC_XRPL_RESEARCH_HEADLINES_CONTAMINATE_NEWS_SCORE_AND_PROVIDER_SENTIMENT_UNAVAILABLE"
+      "blob_sha": "4d625f52356bbf80fe17d3f0bf942938779283fb",
+      "retrieved_at_utc": "2026-10-27T07:03:56Z",
+      "age_minutes_at_retrieval": 18.3,
+      "disposition": "INVALID_FOR_FORECASTING; signal_text consists of academic/protocol headlines about XRPL consensus, message dissemination, multicast routing and gossip/network configuration; these are not verified market-moving news; model sentiment unavailable."
     },
     "legacy_accuracy": {
       "checked_count": 1612,
@@ -5272,10 +5624,10 @@
       {
         "pr": 1170,
         "title": "Research: durable XRP intelligence ledger and relationship graph",
-        "head_sha": "PENDING_AFTER_THIS_LEDGER_UPDATE",
-        "ci": "Previous refreshed head passed; this update requires a new exact-head run.",
-        "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-        "merge_authorized": false
+        "ci": "Previous exact-head CI passed 111 tests and fail-closed gate; this new ledger commit requires fresh exact-head CI.",
+        "state": "OPEN_DRAFT; NEW_LEDGER_CONTENT; EXACT_HEAD_CI_PENDING",
+        "merge_authorized": false,
+        "last_validated_head_sha": "716a632efb07c5c00fa5d3847f7ecf8ce0095680"
       },
       {
         "pr": 1177,
@@ -5408,6 +5760,15 @@
       "safe_receiver_focused_tests": 9,
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
+    },
+    "last_audit_at_utc": "2026-10-27T07:03:56Z",
+    "physical_termux_delivery": {
+      "status": "NOT_VERIFIED_ON_DEVICE",
+      "receiver_pr": 1182,
+      "receiver_commit": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+      "exact_head_ci": "120 tests passed and fail-closed gate passed in previously observed run",
+      "device_receipt": "NOT_OBSERVED",
+      "unsafe_legacy_runner": "scripts/termux_runner.py executes queued commands with shell=True, pulls main in watch mode, and commits/pushes queue state; do not run unattended."
     }
   },
   "video_ingestion": {
@@ -5535,6 +5896,21 @@
       "priority": 1,
       "action": "Resolve the exact original source context for 'ASK Coin', 'actual capital' and 'SBIC, ChatGPT SBIC'. Preserve the Ask Coin exchange listing as an unverified literal-name candidate; do not connect it to XRP or a specific person/entity without a canonical video timestamp and primary-source confirmation.",
       "status": "MULTIPLE_CANDIDATES_RECORDED; ORIGINAL_CONTEXT_REQUIRED"
+    },
+    {
+      "priority": 1,
+      "action": "Measure SBI VISA Crypto Card XRP reward conversion volume, execution venue, funding source and net retained XRP; product availability is not a capital-flow measurement.",
+      "status": "PRODUCT_CHANNEL_CONFIRMED; VOLUME_UNKNOWN"
+    },
+    {
+      "priority": 1,
+      "action": "Track Circle-Tazapay transaction closing and later USDC corridor integration; compare asset routing against XRP/fiat/stablecoin control corridors before inferring complementarity or substitution.",
+      "status": "AGREEMENT_ANNOUNCED; CLOSING_AND_FLOWS_UNVERIFIED"
+    },
+    {
+      "priority": 1,
+      "action": "Reconcile Evernorth's outstanding shares, warrants, convertible notes, exchangeable units, Class C conversion rights, incentive plan, ESPP and equity-facility drawdowns before computing XRP per diluted share.",
+      "status": "SEC_DISCLOSURES_CAPTURED; FULLY_DILUTED_RECONCILIATION_PENDING"
     }
   ]
 }
