@@ -444,3 +444,9 @@ No main-branch write, merge, force-push, workflow dispatch, real-money action, o
 - The research bundle now contains 141 sources, 98 claims, 138 evidence records, 53 relationship nodes, 76 edges, 19 competing hypotheses and 0 forecasts. Structural validation is repeated after read-back.
 
 No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
+
+
+### Ledger integrity correction — Run 13
+
+- Added the explicit PR #1193 CI evidence record `XRP-E-PR1193-CI-20261027-RUN13C` after read-back detected its claim reference was present before the evidence object had been serialized. The next read-back must confirm all claim/evidence references resolve.
+- Bundle update commit: `ebc292b2f5927966c3ad7dbf5dabbf38fc80bc23`.
