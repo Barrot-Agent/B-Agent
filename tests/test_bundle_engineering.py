@@ -159,3 +159,92 @@ def test_revision_requires_correct_parent_and_exact_revision_increment():
     revised["revision"] = 3
     with pytest.raises(BundleEngineeringError, match="increase by exactly one"):
         validate_bundle_revision(original, revised)
+
+
+def test_controller_authors_and_returns_ready_bundle():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    bundle = sample_bundle()
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            assert "work-bundle engineer" in system
+            assert "Create an executable" in prompt
+            return json.dumps(bundle)
+
+    result = BundleEngineeringController(FakeBrain()).run(
+        objective=bundle["objective"],
+        constraints=bundle["constraints"],
+        repository_context="verified repository context",
+    )
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+    assert result.review.valid is True
+    assert result.attempts[0]["kind"] == "draft"
+
+
+def test_controller_revises_a_deficient_bundle_before_ready():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    original = sample_bundle()
+    original["tasks"][0]["tests"] = []
+    revised = copy.deepcopy(original)
+    revised["revision"] = 2
+    revised["parent_fingerprint"] = bundle_fingerprint(original)
+    revised["tasks"][0]["tests"] = ["python -m pytest -q tests/test_bundle_engineering.py"]
+    responses = iter([json.dumps(original), json.dumps(revised)])
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            return next(responses)
+
+    result = BundleEngineeringController(FakeBrain(), max_revision_attempts=1).run(
+        objective=original["objective"],
+        constraints=original["constraints"],
+    )
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+    assert result.review.valid is True
+    assert len(result.attempts) == 2
+    assert result.attempts[1]["accepted"] is True
+
+
+def test_controller_blocks_when_quality_does_not_reach_gate():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    bundle = sample_bundle()
+    bundle["tasks"][0]["tests"] = []
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            return json.dumps(bundle)
+
+    result = BundleEngineeringController(FakeBrain(), max_revision_attempts=0).run(
+        objective=bundle["objective"],
+        constraints=bundle["constraints"],
+    )
+    assert result.status == "BLOCKED_BUNDLE_QUALITY"
+    assert result.review.valid is False
+
+
+def test_controller_rejects_objective_or_constraint_drift():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    bundle = sample_bundle()
+    bundle["objective"] = "Quietly change the goal."
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            return json.dumps(bundle)
+
+    with pytest.raises(BundleEngineeringError, match="objective"):
+        BundleEngineeringController(FakeBrain()).run(
+            objective="Teach Barrot to author and improve work bundles.",
+            constraints=bundle["constraints"],
+        )
