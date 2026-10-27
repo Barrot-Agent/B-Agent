@@ -511,4 +511,4 @@ def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> N
     assert result == {"ok": True}
     assert calls["count"] == 2
     assert sleeps == [120.0]
-\n
+
