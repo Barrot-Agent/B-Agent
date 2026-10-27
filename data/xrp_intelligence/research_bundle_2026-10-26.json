@@ -2235,15 +2235,16 @@
       "author_or_organization": "Barrot-Agent/B-Agent",
       "source_type": "repository_pull_request_and_ci_metadata",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
-      "publication_date": "Created 2026-10-27T14:08:30Z; CI/gate runs 40518285106 and 40518284880 were queued at last read",
+      "publication_date": "Latest status read: fail-closed gate run 40518284880 completed success; exact-head CI run 40518285106 remains queued. Connector retrieval timestamp unavailable.",
       "source_commit": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
       "sections": [
         "Branch based on exact main SHA 882b3d3f13165501642756769e74ff48251efb75",
         "Four changed files: merge-queue workflow, CI workflow, merge-queue documentation and tests/test_merge_queue_safety.py",
         "Read-only manual workflow removes write permissions, branch-update commands, comments, pushes and merge commands",
         "CI keeps tests/test_risk_manager.py and adds tests/test_merge_queue_safety.py",
-        "Six static safety tests; exact-head CI run 40518285106 and fail-closed gate 40518284880 were queued at last read",
-        "Draft and unmerged; main unchanged"
+        "Draft and unmerged; main unchanged",
+        "Fail-closed gate run 40518284880 completed successfully; exact-head CI run 40518285106 remains queued at latest status read.",
+        "Draft and unmerged; main unchanged."
       ]
     }
   ],
@@ -4460,7 +4461,7 @@
     },
     {
       "claim_id": "XRP-C-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
-      "statement": "Fresh-main draft PR #1192 replaces the mutation-capable merge queue with a manual read-only notice and preserves the existing risk-manager regression suite while adding merge-queue safety tests. Static read-back confirms the intended four-file change, but exact-head CI and the fail-closed gate were queued at last observation, so the change is designed and submitted for review but not yet tested end-to-end or effective on main.",
+      "statement": "Fresh-main draft PR #1192 replaces the mutation-capable merge queue with a manual read-only notice and preserves the existing risk-manager regression suite while adding merge-queue safety tests. Static read-back confirms the intended four-file change and the fail-closed gate has passed, but exact-head CI remains queued; the change is not yet fully tested end-to-end or effective on main.",
       "domain": "barrot_repository_security_and_ci_coverage",
       "claim_type": "proposed_mitigation_state",
       "source": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
@@ -4469,10 +4470,10 @@
         "XRP-E-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10"
       ],
       "contradicting_evidence": [],
-      "derivation_status": "STATIC_READ_BACK_VERIFIED; CI_PENDING",
+      "derivation_status": "STATIC_READ_BACK_VERIFIED; FAIL-CLOSED GATE PASS; CORE CI PENDING",
       "independent_verification_status": "CURRENT_MAIN_BASE_CONFIRMED_AT_BRANCH_CREATION; FOUR_FILE_DIFF_AND_CI_LIST_READ_BACK",
       "adversarial_status": "The PR is not effective on main; effective branch protection remains unverified; queued CI is not a pass",
-      "acceptance_status": "DRAFT_ONLY; WAIT_FOR_EXACT_HEAD_CI_AND_GATE; NO_MERGE",
+      "acceptance_status": "DRAFT_ONLY; WAIT_FOR_EXACT_HEAD_CI; NO_MERGE",
       "confidence": 0.99,
       "assumptions": [
         "The PR metadata and branch contents returned by GitHub correspond to the stated head SHA.",
@@ -6968,10 +6969,10 @@
       "evidence_id": "XRP-E-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
       "claim_id": "XRP-C-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
       "kind": "fresh_main_pr_static_review",
-      "summary": "PR #1192 head ae556915bb49911edecf1c01c2f8a823ed6a0766 changes only four intended files. Read-back confirms the merge queue is manual-only/read-only with no merge or branch-update commands; CI includes both tests/test_risk_manager.py and tests/test_merge_queue_safety.py. At last read, CI run 40518285106 and fail-closed gate 40518284880 were queued.",
+      "summary": "PR #1192 head ae556915bb49911edecf1c01c2f8a823ed6a0766 changes only four intended files. Read-back confirms the merge queue is manual-only/read-only with no merge or branch-update commands; CI includes both tests/test_risk_manager.py and tests/test_merge_queue_safety.py. Fail-closed gate 40518284880 completed successfully; exact-head CI 40518285106 remains queued.",
       "source_id": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
-      "status": "DESIGNED_AND_STATICALLY_VERIFIED; CI_PENDING; DRAFT_UNMERGED",
+      "status": "STATIC_READBACK_PASS; FAIL_CLOSED_GATE_PASS; CORE_CI_PENDING; DRAFT_UNMERGED",
       "independence": "direct branch read-back and PR/run metadata",
       "provenance": [
         "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10"
@@ -6992,7 +6993,7 @@
         "ci_run": 40518285106,
         "ci_status": "queued",
         "gate_run": 40518284880,
-        "gate_status": "queued",
+        "gate_status": "success",
         "merged": false
       }
     }
@@ -9693,7 +9694,7 @@
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "RUN 9 RESEARCH BUNDLE AND HANDOFF UPDATED; EXACT-HEAD CI AND FAIL-CLOSED GATE PASSED",
-      "state": "OPEN_DRAFT; CURRENT_HEAD_EXACT_CI_111_PASS; FAIL_CLOSED_GATE_PASS; RESEARCH_BRANCH_AND_MAIN_DIVERGED; CURRENT_MAIN_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED",
+      "state": "OPEN_DRAFT; PREVIOUS_HEAD_917276_CI_PASS; CURRENT_HEAD_D4735_CI_AND_GATE_QUEUED; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
       "note": "Latest research branch head a706b7ccdf68bd961cfcb3132d23ecf1773b370f passed exact-head CI run 40510936006 (111 tests, 5.11s) and fail-closed gate 40510935876. Main tip observed as 2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf; compare from base a3e0f0198510634420f925eef8cea384aca51b12 shows 64 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. The GitHub timestamps are ahead of the supplied session clock; current-base integration remains unverified. Do not merge automatically.",
       "last_completed_head_sha": "9172763078a99e67c752ec79a1019a7f1ad716b7",
       "last_completed_ci_run": 40511108302,
@@ -9715,11 +9716,11 @@
       "research_branch_commits_from_common_base": 86,
       "main_delta_changed_files": 14,
       "main_delta_code_or_workflow_files_changed": false,
-      "current_head_sha": "37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4",
-      "current_head_ci_run": 40518084094,
-      "current_head_ci_status": "in_progress",
-      "current_head_gate_run": 40518084025,
-      "current_head_gate_status": "success"
+      "current_head_sha": "d4735be3d0582424c6fb66e2c3de0faa8143d1da",
+      "current_head_ci_run": 40518437874,
+      "current_head_ci_status": "queued",
+      "current_head_gate_run": 40518437737,
+      "current_head_gate_status": "queued"
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -9947,14 +9948,14 @@
         "pr": 1170,
         "title": "Research: durable XRP intelligence ledger and relationship graph",
         "state": "OPEN_DRAFT",
-        "head_sha": "37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4",
-        "ci_run": 40518084094,
-        "ci": "IN_PROGRESS; prior head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests in 5.85s",
-        "gate_run": 40518084025,
-        "gate": "PASS; no merge",
+        "head_sha": "d4735be3d0582424c6fb66e2c3de0faa8143d1da",
+        "ci_run": 40518437874,
+        "ci": "QUEUED; previous head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests",
+        "gate_run": 40518437737,
+        "gate": "QUEUED",
         "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
         "merge_authorized": false,
-        "status": "OPEN_DRAFT; CURRENT_HEAD_CI_IN_PROGRESS; FAIL-CLOSED GATE PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
+        "status": "OPEN_DRAFT; LATEST_HEAD_CI_AND_GATE_QUEUED; PRIOR_HEAD_CI_PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
         "current_main_tip_sha": "ea8dc4d95b6336c42e553595de601100f0c61583"
       },
       {
@@ -10020,8 +10021,8 @@
         "ci_run": 40518285106,
         "ci": "QUEUED",
         "gate_run": 40518284880,
-        "gate": "QUEUED",
-        "status": "OPEN_DRAFT; FRESH_MAIN; STATIC_READBACK_PASS; CI_AND_GATE_PENDING; NOT_EFFECTIVE_ON_MAIN",
+        "gate": "PASS",
+        "status": "OPEN_DRAFT; FRESH_MAIN; STATIC_READBACK_PASS; GATE_PASS; EXACT_HEAD_CI_PENDING; NOT_EFFECTIVE_ON_MAIN",
         "merge_authorized": false
       }
     ],
@@ -10097,8 +10098,8 @@
       "ci_run": 40518285106,
       "ci_status": "queued",
       "fail_closed_gate_run": 40518284880,
-      "gate_status": "queued",
-      "state": "OPEN_DRAFT; FRESH_MAIN_BASE; STATIC_READBACK_PASS; EXACT_HEAD_CI_AND_GATE_PENDING; NOT_EFFECTIVE_ON_MAIN",
+      "gate_status": "success",
+      "state": "OPEN_DRAFT; FRESH_MAIN_BASE; STATIC_READBACK_PASS; FAIL_CLOSED_GATE_PASS; EXACT_HEAD_CI_QUEUED; NOT_EFFECTIVE_ON_MAIN",
       "merge_authorized": false
     }
   },
@@ -10193,12 +10194,12 @@
     {
       "priority": 0,
       "action": "Wait for exact-head CI run 40518285106 and fail-closed gate 40518284880 on PR #1192. Confirm both conclude successfully before marking the merge-queue safety fix tested; do not dispatch the workflow or merge the PR.",
-      "status": "FRESH_MAIN_DRAFT; STATIC_READBACK_PASS; CI_AND_GATE_QUEUED"
+      "status": "FAIL-CLOSED GATE PASS; EXACT-HEAD CI 40518285106 QUEUED"
     },
     {
       "priority": 0,
       "action": "Verify latest research-ledger branch head 37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4. Its previous head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests, but the latest CI run 40518084094 is still in progress; fail-closed gate 40518084025 passed.",
-      "status": "LATEST_LEDGER_HEAD_CI_IN_PROGRESS; GATE_PASS"
+      "status": "LATEST RESEARCH HEAD CI 40518437874 AND GATE 40518437737 QUEUED; PRIOR HEAD PASSED"
     },
     {
       "priority": 0,
