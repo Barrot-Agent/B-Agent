@@ -332,10 +332,12 @@ class ScriptBrain:
         request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
         repo_root: Path = ROOT,
         max_tool_rounds: int = MAX_TOOL_ROUNDS,
+        enable_tools: bool = True,
     ):
         self.request_sender = request_sender
         self.repo_browser = RepoBrowser(repo_root)
         self.max_tool_rounds = max_tool_rounds
+        self.enable_tools = enable_tools
         self.tool_funcs = {
             "repo_browser.print_tree": self.repo_browser.print_tree,
             "repo_browser.search": self.repo_browser.search,
@@ -373,6 +375,8 @@ class ScriptBrain:
                 },
             },
         ]
+        if not self.enable_tools:
+            self.tools = []
 
     def _tool_result(self, tool_call: dict[str, Any]) -> str:
         function = tool_call.get("function") or {}
@@ -858,6 +862,7 @@ def main() -> None:
 
     work_id = f"{ISSUE or 'manual'}:{BRANCH}"
     brain = ScriptBrain()
+    bundle_brain = ScriptBrain(enable_tools=False)
     audit_context = build_audit_context(TITLE, TASK)
     lifecycle_store = BundleLifecycleStore(ROOT)
     bundle_constraints = [
@@ -868,7 +873,7 @@ def main() -> None:
         "Bound retries, persist state and evidence, and stop safely on invalid output or failed gates.",
     ]
     try:
-        bundle_result = BundleEngineeringController(brain, max_revision_attempts=2).run(
+        bundle_result = BundleEngineeringController(bundle_brain, max_revision_attempts=2).run(
             objective=TITLE.strip(),
             constraints=bundle_constraints,
             task_context=TASK.strip(),

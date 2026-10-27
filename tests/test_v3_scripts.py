@@ -610,3 +610,19 @@ def test_barrot_bundle_authoring_caps_repository_context(monkeypatch) -> None:
     source = (REPO_ROOT / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
     assert ")[:10000]," in source
 
+def test_barrot_bundle_brain_can_disable_tools(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_bundle_brain_no_tools_test",
+    )
+
+    brain = module.ScriptBrain(enable_tools=False)
+
+    assert brain.tools == []
+    payload = module._groq_payload(
+        [{"role": "user", "content": "Return one concise JSON object."}],
+        tools=brain.tools,
+    )
+    assert "tools" not in payload
+
