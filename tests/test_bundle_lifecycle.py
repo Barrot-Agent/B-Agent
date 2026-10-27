@@ -74,3 +74,36 @@ def test_live_entrypoint_wires_bundle_gate_before_repair():
     assert "READY_FOR_EXECUTION_REVIEW" in source
     assert "record_execution" in source
     assert "WorkQueueController" in imports
+
+
+
+def test_task_evidence_is_append_only_and_latest_state_survives_reload(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("resume-me", Result())
+    store.record_task_execution("resume-me", "task-a", {"status": "RUNNING"})
+    store.record_task_execution("resume-me", "task-a", {"status": "COMPLETE", "queue_advanced": True})
+    latest = store.latest_task_states("resume-me")
+    assert latest["task-a"]["status"] == "COMPLETE"
+    payload = store.load("resume-me")
+    assert len(payload["task_states"]["task-a"]) == 2
+
+
+def test_task_evidence_requires_existing_plan_and_task_id(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    with pytest.raises(FileNotFoundError):
+        store.record_task_execution("missing", "task-a", {"status": "RUNNING"})
+    store.save_plan("resume-me", Result())
+    with pytest.raises(ValueError, match="task_id"):
+        store.record_task_execution("resume-me", " ", {"status": "RUNNING"})
+
+
+def test_save_plan_preserves_execution_evidence_for_identical_bundle(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    result = Result()
+    store.save_plan("resume-me", result)
+    store.record_task_execution("resume-me", "task-a", {"status": "COMPLETE"})
+    store.record_execution("resume-me", {"status": "COMPLETE"})
+    store.save_plan("resume-me", result)
+    payload = store.load("resume-me")
+    assert payload["task_states"]["task-a"][-1]["status"] == "COMPLETE"
+    assert payload["execution_evidence"][-1]["status"] == "COMPLETE"
