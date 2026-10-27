@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 1128,
-    "btc_entries": 1159
+    "xrp_entries": 1135,
+    "btc_entries": 1164
   },
-  "unique_pairs_found": 3131,
+  "unique_pairs_found": 3142,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 205,
+      "cooccurrence_count": 206,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -5271,6 +5271,21 @@
       ]
     },
     {
+      "entity_a": "US Treasury",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        },
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETH",
       "entity_b": "Ether",
       "cooccurrence_count": 2,
@@ -7262,6 +7277,51 @@
         {
           "title": "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "National Trust Bank",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "National Trust Bank",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
         }
       ]
     },
@@ -12310,17 +12370,6 @@
     },
     {
       "entity_a": "Treasury Department",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "US Treasury",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -17380,28 +17429,6 @@
       ]
     },
     {
-      "entity_a": "Bastion",
-      "entity_b": "National Trust Bank",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bastion",
-      "entity_b": "Office of the Comptroller of the Currency (OCC)",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bastion Holdings",
       "entity_b": "National Trust Bank",
       "cooccurrence_count": 1,
@@ -17414,17 +17441,6 @@
     },
     {
       "entity_a": "Bastion Holdings",
-      "entity_b": "Office of the Comptroller of the Currency (OCC)",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "National Trust Bank",
       "entity_b": "Office of the Comptroller of the Currency (OCC)",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -26527,6 +26543,94 @@
       "example_headlines": [
         {
           "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Superstate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "USTB",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superstate",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superstate",
+      "entity_b": "USTB",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superstate",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Treasury",
+      "entity_b": "USTB",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USTB",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
           "asset": "XRP"
         }
       ]
@@ -36372,6 +36476,39 @@
       "example_headlines": [
         {
           "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "National Trust Bank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
           "asset": "BTC"
         }
       ]
