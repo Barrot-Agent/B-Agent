@@ -645,6 +645,7 @@ def test_tool_free_bundle_brain_uses_smaller_completion_budget(monkeypatch) -> N
     assert brain.think("Return one concise JSON object.") == "ok"
     assert captured["max_tokens"] == 1024
     assert captured["response_format"] == {"type": "json_object"}
+    assert captured["reasoning_effort"] == "low"
 
 def test_groq_json_validation_failure_retries_without_response_format(monkeypatch) -> None:
     import io
