@@ -465,3 +465,50 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
 
     assert observed["body"] == "test failure report"
 
+def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_groq_daily_limit_retry_test",
+    )
+    monkeypatch.setattr(module, "GROQ_KEY", "test-key")
+    sleeps: list[float] = []
+    calls = {"count": 0}
+    monkeypatch.setattr(module.time, "sleep", lambda seconds: sleeps.append(seconds))
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+        def read(self, *args, **kwargs):
+            del args, kwargs
+            return b'{"ok": true}'
+
+    def fake_urlopen(request, timeout=0):
+        del request, timeout
+        calls["count"] += 1
+        if calls["count"] == 1:
+            body = b'{"error":{"message":"tokens per day limit reached. Please try again in 2m0s."}}'
+            raise urllib.error.HTTPError(
+                "https://api.groq.com/openai/v1/chat/completions",
+                429,
+                "Too Many Requests",
+                hdrs=None,
+                fp=io.BytesIO(body),
+            )
+        return Response()
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    result = module._send_groq_request({"model": "test", "messages": []})
+
+    assert result == {"ok": True}
+    assert calls["count"] == 2
+    assert sleeps == [120.0]
+
