@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T06:15:00Z",
+    "captured_at_utc": "2026-10-27T06:21:00Z",
     "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -42,7 +42,8 @@
       "XRP-C-MAIN-SIGNAL-INVALID-20261027T053048Z",
       "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027",
       "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
-      "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z"
+      "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z",
+      "XRP-C-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1318,6 +1319,31 @@
         "New metadata-only catalog entries cover XRP custody, SEC/CFTC, SWIFT, Japan macro, SBI remittance, escrow/fees, Evernorth and tokenization; titles are research leads, not verified factual claims.",
         "No new transcript was retrieved in this refresh; existing transcript hashes in the draft catalog remain separately recorded."
       ]
+    },
+    {
+      "source_id": "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "title": "vidIQ transcript retrieval: What’s Stopping XRP From Hitting $10? I Asked For Proof (ft. Apex Crypto)",
+      "author_or_organization": "Kamilah Stevenson channel / vidIQ transcript provider",
+      "source_type": "public_video_transcript_retrieval_metadata",
+      "url": "https://www.youtube.com/watch?v=jVrBm0dDJ24",
+      "publication_date": "2026-10-22T02:05:56Z",
+      "retrieved_at_utc": "2026-10-27T06:21:00Z",
+      "catalog_branch": "research/vidiq-evidence-refresh-20261027",
+      "catalog_commit": "9ab8c6a0898ce74472a4c89c9a6e34d99b5399cb",
+      "transcript_metadata": {
+        "language": "en",
+        "character_count": 166512,
+        "sha256": null,
+        "stored_in_repository": false,
+        "full_text_reviewed": false
+      },
+      "sections": [
+        "vidIQ transcript tool returned an English transcript with 166,512 characters.",
+        "Opening identifies the speaker as 'Camila Stevenson' while the canonical channel is labeled 'Kamilah Stevenson'; preserve this spelling discrepancy.",
+        "Opening introduces guest Jesse from Apex Crypto Insight and frames discussion around XRP price drivers, Ripple's stablecoin, Quant and central-bank systems.",
+        "Only opening/closing excerpts were inspected in this run; the full transcript was not hashed or fully reviewed.",
+        "The $10 price-target framing in the title is not a validated forecast and must not be scored without explicit horizon, assumptions and falsification conditions."
+      ]
     }
   ],
   "claims": [
@@ -2365,6 +2391,32 @@
         "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z"
       ],
       "timestamp": 1793081700
+    },
+    {
+      "claim_id": "XRP-C-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "statement": "On 2026-10-27 at 06:21 UTC, the vidIQ transcript tool returned 166,512 characters of English captions for public video jVrBm0dDJ24, titled 'What’s Stopping XRP From Hitting $10? I Asked For Proof (ft. Apex Crypto)'. The retrieval is documented, but no SHA-256 was computed, the full text was not reviewed in this run, and no price forecast is accepted from the title or partial excerpts.",
+      "domain": "public_commentary_transcript_provenance_and_forecast_extraction",
+      "claim_type": "transcript_retrieval_provenance_with_review_pending",
+      "source": "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "source_location": "https://www.youtube.com/watch?v=jVrBm0dDJ24",
+      "supporting_evidence": [
+        "XRP-E-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_PROVIDER_RESPONSE_METADATA",
+      "independent_verification_status": "SINGLE_PROVIDER_RESPONSE; HASH_NOT_COMPUTED; FULL_REVIEW_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "RETRIEVAL_CONFIRMED; NOT_FORECAST_FEATURE_READY",
+      "confidence": 0.99,
+      "assumptions": [
+        "The character count refers to the provider response received in this run.",
+        "No forecast target, horizon, probability, assumptions or falsification criteria have been extracted and verified yet.",
+        "The creator/channel name discrepancy remains unresolved and is not normalized."
+      ],
+      "provenance": [
+        "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+      ],
+      "timestamp": 1793082060
     }
   ],
   "evidence": [
@@ -3550,6 +3602,37 @@
           "Zzo61P6Yf78"
         ]
       }
+    },
+    {
+      "evidence_id": "XRP-E-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "claim_id": "XRP-C-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "kind": "connected_provider_transcript_retrieval_metadata",
+      "summary": "vidIQ returned an English transcript of 166,512 characters for jVrBm0dDJ24. Transcript was not hashed or fully reviewed in this run; title's $10 target is not accepted as a forecast.",
+      "source_id": "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "source_location": "https://www.youtube.com/watch?v=jVrBm0dDJ24",
+      "status": "RETRIEVED; HASH_AND_FULL_REVIEW_PENDING",
+      "independence": "single_provider_transcript_response",
+      "provenance": [
+        "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+      ],
+      "details": {
+        "retrieved_at_utc": "2026-10-27T06:21:00Z",
+        "character_count": 166512,
+        "language": "en",
+        "sha256": null,
+        "stored_in_repository": false,
+        "full_text_reviewed": false,
+        "inspected_scope": "opening and closing excerpts only",
+        "opening_topic_frame": [
+          "XRP price drivers",
+          "Ripple stablecoin",
+          "Quant",
+          "central-bank systems"
+        ],
+        "speaker_name_variant": "Camila Stevenson in transcript; channel display name Kamilah Stevenson",
+        "price_target_title_only": true,
+        "do_not_score_as_forecast": true
+      }
     }
   ],
   "tracks": [
@@ -3989,6 +4072,12 @@
       "question": "Enumerate all public uploads on Kamilah Stevenson's canonical channel using the public uploads playlist/API with pagination; deduplicate videos, Shorts and archived lives; capture permitted transcript hashes and independently verify claims before using them as features.",
       "priority": "HIGH",
       "status": "VIDIQ_RECENT_150_ROW_SAMPLE; 1,239 PROVIDER-REPORTED TOTAL; COMPLETE_ENUMERATION_PENDING"
+    },
+    {
+      "question_id": "Q-17",
+      "question": "Hash and fully review the transcript for jVrBm0dDJ24; extract any explicit XRP price target, forecast horizon, assumptions, confidence/probability, falsification conditions and promotion disclosures, then independently verify each claim.",
+      "priority": "HIGH",
+      "status": "TRANSCRIPT_RETRIEVED_166512_CHARS; HASH_AND_FULL_REVIEW_PENDING"
     }
   ],
   "relationship_graph": {
@@ -5116,9 +5205,9 @@
       {
         "pr": 1177,
         "title": "Research: refresh vidIQ transcript evidence and XRP relationships",
-        "head_sha": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
-        "ci": "New catalog metadata refresh committed; exact-head CI must complete.",
-        "state": "OPEN_DRAFT_CI_PENDING_AFTER_REFRESH",
+        "head_sha": "9ab8c6a0898ce74472a4c89c9a6e34d99b5399cb",
+        "ci": "Catalog received transcript-retrieval metadata update; exact-head CI pending.",
+        "state": "OPEN_DRAFT_CI_PENDING_AFTER_TRANSCRIPT_METADATA_UPDATE",
         "merge_authorized": false
       },
       {
@@ -5177,9 +5266,9 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_VIDIQ_REFRESH",
+      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_TRANSCRIPT_METADATA_UPDATE",
       "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-      "note": "This ledger revision adds a fresh vidIQ channel metadata sample and links the updated draft catalog PR #1177. The 150 recent format rows are not a complete inventory. Re-run exact-head CI and fail-closed gate for this ledger revision."
+      "note": "This ledger revision adds transcript retrieval provenance for jVrBm0dDJ24 (166,512 characters; no hash/full review) and links to the refreshed draft catalog PR #1177. No price forecast is scored from the title. Re-run exact-head CI and fail-closed gate for this ledger revision."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -5212,14 +5301,14 @@
       "note": "Exact-head CI and fail-closed gate passed after current-main refresh; main unchanged and PR remains draft/unmerged."
     },
     "pr1177_validation": {
-      "head_sha": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
+      "head_sha": "9ab8c6a0898ce74472a4c89c9a6e34d99b5399cb",
       "tested_base_sha": "5f8ac35d7016737c415534a7bfe97dacff6789f9",
       "ci_run": 40447916375,
       "ci_conclusion": "in_progress",
       "fail_closed_gate_run": 40447916263,
       "gate_conclusion": "success",
-      "state": "CI_PENDING_AFTER_METADATA_REFRESH",
-      "note": "New vidIQ snapshot reports 1,239 videos and 15 uploads in the last seven days; catalog now has 28 curated seeds and still does not claim full enumeration. Re-run exact-head CI and gate for this revision."
+      "state": "CI_PENDING_AFTER_TRANSCRIPT_METADATA_UPDATE",
+      "note": "Catalog now records retrieval of 166,512 English transcript characters for jVrBm0dDJ24, but no SHA-256 was computed and the full text was not reviewed. Re-run exact-head CI and gate; full forecast extraction remains pending."
     },
     "self_drop": {
       "inspected_at_utc": "2026-10-27T06:12:00Z",
@@ -5255,8 +5344,8 @@
     "completeness_verified": false,
     "transcripts_captured_and_hashed": 5,
     "screenshot_title_id": "vPebfa4Mdwo",
-    "status": "DRAFT_CATALOG_EXPANDED_TO_28_SEEDS; RECENT_150_FORMAT_ROWS_OBSERVED; FULL_ENUMERATION_NOT_VERIFIED",
-    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format and expose no pagination cursor. The catalog PR remains draft. Complete public-upload enumeration across Videos, Shorts and archived live streams, plus transcript review, is still pending.",
+    "status": "DRAFT_CATALOG_EXPANDED_TO_28_SEEDS; 150 RECENT FORMAT ROWS OBSERVED; ONE LONG TRANSCRIPT RETRIEVED BUT NOT HASHED; FULL ENUMERATION NOT VERIFIED",
+    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format without pagination. The latest jVrBm0dDJ24 transcript was retrieved (166,512 characters) but not hashed or fully reviewed in this run. Complete channel enumeration, transcript integrity hashing and timestamped forecast extraction remain pending.",
     "last_seed_added": {
       "video_id": "bNJ4lzZEqtA",
       "published_date_reported": "2026-10-24",
@@ -5284,7 +5373,13 @@
       "curated_seed_count": 28,
       "existing_hash_only_transcript_records": 5,
       "new_transcripts_captured": 0,
-      "full_inventory_verified": false
+      "full_inventory_verified": false,
+      "last_transcript_retrieval_video_id": "jVrBm0dDJ24",
+      "last_transcript_retrieval_at_utc": "2026-10-27T06:21:00Z",
+      "last_transcript_character_count": 166512,
+      "last_transcript_hash": null,
+      "last_transcript_full_reviewed": false,
+      "new_transcripts_hashed_in_this_refresh": 0
     }
   },
   "unresolved_exact_phrases": [
@@ -5355,6 +5450,11 @@
       "priority": 1,
       "action": "Complete Kamilah Stevenson channel inventory using the canonical public uploads playlist/API with pagination, deduplicate all formats, preserve timestamped snapshots and capture permitted transcript hashes. Treat titles about payment apps, banks, Japan, SWIFT, SEC/CFTC, custody and Evernorth as claims to verify, not facts.",
       "status": "VIDIQ_RECENT_SAMPLE_REFRESHED; FULL_ENUMERATION_AND_NEW_TRANSCRIPTS_PENDING"
+    },
+    {
+      "priority": 1,
+      "action": "Complete integrity hashing and timestamped forecast extraction for the retrieved jVrBm0dDJ24 transcript. Do not infer a $10 forecast from the title; record exact speaker, target, horizon, assumptions, confidence, alternatives, invalidation conditions and later outcome.",
+      "status": "TRANSCRIPT_RETRIEVED; HASH_AND_REVIEW_PENDING"
     }
   ]
 }
