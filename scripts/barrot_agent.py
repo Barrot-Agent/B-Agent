@@ -112,9 +112,7 @@ class RepoBrowser:
         self.root = root.resolve()
 
     def _resolve(self, path: str) -> Path:
-        cleaned = str(path).strip()
-        if not cleaned:
-            raise ValueError("repo_browser path must be non-empty; use '.' for the repository root.")
+        cleaned = str(path).strip() or "."
         if Path(cleaned).is_absolute():
             raise ValueError("repo_browser path must be relative to the repository root.")
         target = (self.root / cleaned).resolve()
@@ -236,9 +234,7 @@ def _groq_fallback_models(primary_model: str) -> list[str]:
         if configured
         else [
             "openai/gpt-oss-20b",
-            "llama-3.1-8b-instant",
-            "openai/gpt-oss-safeguard-20b",
-            "qwen/qwen3.8-27b",
+            "openai/gpt-oss-20b",
         ]
     )
     seen = {primary_model}
@@ -353,10 +349,9 @@ class ScriptBrain:
                     "parameters": {
                         "type": "object",
                         "properties": {
-                            "path": {"type": "string", "minLength": 1},
+                            "path": {"type": "string"},
                             "depth": {"type": "integer", "minimum": 0, "maximum": 6},
                         },
-                        "required": ["path"],
                     },
                 },
             },
@@ -373,7 +368,7 @@ class ScriptBrain:
                             "recursive": {"type": "boolean"},
                             "max_results": {"type": "integer", "minimum": 1, "maximum": MAX_SEARCH_RESULTS},
                         },
-                        "required": ["query", "path"],
+                        "required": ["query"],
                     },
                 },
             },

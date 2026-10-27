@@ -558,3 +558,18 @@ def test_barrot_groq_tpm_limit_retries_same_model_once(monkeypatch) -> None:
     assert calls["count"] == 2
     assert sleeps == [5.1]
 
+def test_repo_browser_search_treats_empty_path_as_repository_root(monkeypatch, tmp_path: Path) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_empty_repo_path_test",
+    )
+    (tmp_path / "bundle_id.txt").write_text("bundle_id evidence", encoding="utf-8")
+    browser = module.RepoBrowser(tmp_path)
+
+    result = json.loads(browser.search({"query": "bundle_id", "path": ""}))
+
+    assert result["success"] is True
+    assert result["path"] == "."
+    assert result["matches"]
+
