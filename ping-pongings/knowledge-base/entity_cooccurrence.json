@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1135,
-    "btc_entries": 1163
+    "btc_entries": 1164
   },
-  "unique_pairs_found": 3139,
+  "unique_pairs_found": 3142,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -7277,6 +7277,51 @@
         {
           "title": "Ripple Confirms Asset Managers Are Prepared for XRP Ledger's Upcoming Batch Upgrade: What It Changes",
           "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "National Trust Bank",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "National Trust Bank",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
         }
       ]
     },
@@ -17384,28 +17429,6 @@
       ]
     },
     {
-      "entity_a": "Bastion",
-      "entity_b": "National Trust Bank",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bastion",
-      "entity_b": "Office of the Comptroller of the Currency (OCC)",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Bastion Holdings",
       "entity_b": "National Trust Bank",
       "cooccurrence_count": 1,
@@ -17418,17 +17441,6 @@
     },
     {
       "entity_a": "Bastion Holdings",
-      "entity_b": "Office of the Comptroller of the Currency (OCC)",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "National Trust Bank",
       "entity_b": "Office of the Comptroller of the Currency (OCC)",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -36464,6 +36476,39 @@
       "example_headlines": [
         {
           "title": "Treasury Sanctions BitBank Over Iranian Crypto Sanctions-Evasion Network",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bastion",
+      "entity_b": "Bitcoin",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "National Trust Bank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "Office of the Comptroller of the Currency (OCC)",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bastion Wins Conditional OCC Approval For National Trust Bank Charter",
           "asset": "BTC"
         }
       ]
