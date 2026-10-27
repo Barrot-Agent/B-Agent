@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_market_data_quality_snapshot",
+  "snapshot_id": "XRP-MARKET-DATA-QUALITY-2026-10-27T211139Z",
+  "captured_at_utc": "2026-10-27T21:11:39Z",
+  "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+  "observation": {
+    "metric": "XRP futures open interest",
+    "values": [
+      {
+        "source_id": "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z",
+        "value_usd": 1440000000,
+        "as_of_utc": "2026-10-27T21:02:00Z",
+        "scope": "provider-reported all-exchange aggregate; likely perpetual-centric, exact contract universe not independently verified"
+      },
+      {
+        "source_id": "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+        "value_usd": 835760000,
+        "as_of_utc": "2026-10-27T17:16:00Z",
+        "scope": "7 XRP perpetual contracts"
+      },
+      {
+        "source_id": "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+        "value_usd": 2920000000,
+        "as_of_utc": "UNKNOWN_PAGE_TIMESTAMP",
+        "scope": "CoinGlass XRP futures dashboard; contract universe not pinned"
+      },
+      {
+        "source_id": "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+        "value_usd": 1220000000,
+        "as_of_utc": "2026-10-27T03:10:00Z",
+        "scope": "9-exchange public-API aggregate; stale same-day snapshot"
+      }
+    ],
+    "quality_finding": "Displayed aggregate open interest spans approximately $0.836B to $2.92B, a roughly 3.5x range. This is not enough to conclude that any source is wrong: timestamps, venue coverage, linear/inverse contracts, perps versus dated futures and quote-currency conversions may differ. The feature must remain excluded until a harmonized contract universe is defined.",
+    "approved_for_model_features": false,
+    "next_test": "Reconstruct per-exchange/per-contract OI at a common UTC cutoff, preserve source raw payload hashes, distinguish perpetuals from dated futures and options, normalize USD/USDT/USDC conversions, and compare the summed contract-level series to each vendor."
+  }
+}
