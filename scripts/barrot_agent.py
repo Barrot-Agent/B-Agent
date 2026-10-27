@@ -938,7 +938,7 @@ def main() -> None:
             )
         except Exception as exc:  # fail closed before repository mutation
             message = (
-                "Barrot bundle authoring/review failed safely; repository repair was not started.\\n\\n"
+                "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
                 f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
             )
             post_issue_comment(message)
@@ -970,15 +970,15 @@ def main() -> None:
     queue = WorkQueueController(repair_controller=controller)
     def execute_bundle_task(task: dict[str, Any]) -> Any:
         task_title = f"{TITLE} — {task['title']}"
-        task_body = "\\n".join([
+        task_body = "\n".join([
             f"Parent objective: {TITLE}",
             f"Original user request: {TASK}",
             f"Bundle task ID: {task['id']}",
             f"Task description: {task['description']}",
             "Target files: " + ", ".join(task.get("files", [])),
-            "Acceptance criteria:\\n- " + "\\n- ".join(task.get("acceptance_criteria", [])),
-            "Required tests:\\n- " + "\\n- ".join(task.get("tests", [])),
-            "Rollback plan:\\n- " + "\\n- ".join(task.get("rollback_plan", [])),
+            "Acceptance criteria:\n- " + "\n- ".join(task.get("acceptance_criteria", [])),
+            "Required tests:\n- " + "\n- ".join(task.get("tests", [])),
+            "Rollback plan:\n- " + "\n- ".join(task.get("rollback_plan", [])),
             "Only perform this task after its declared dependencies are complete. Validate the result using the existing repair workflow.",
         ])
         task_context = build_audit_context(task_title, task_body)
@@ -1002,7 +1002,7 @@ def main() -> None:
     work = dispatch.get("last_result")
     if work is None:
         message = (
-            "Barrot bundle execution is blocked: no verified task result is available.\\n\\n"
+            "Barrot bundle execution is blocked: no verified task result is available.\n\n"
             + json.dumps({
                 "completed_task_ids": dispatch["completed_task_ids"],
                 "blocked_tasks": dispatch["blocked_tasks"],
@@ -1041,9 +1041,9 @@ def main() -> None:
 
     if not dispatch["complete"]:
         post_issue_comment(
-            "Barrot bundle execution is blocked; unfinished tasks were not reported complete.\\n\\n```json\\n"
+            "Barrot bundle execution is blocked; unfinished tasks were not reported complete.\n\n```json\n"
             + json.dumps({"completed_task_ids": dispatch["completed_task_ids"], "blocked_tasks": dispatch["blocked_tasks"]}, indent=2)[:50000]
-            + "\\n```"
+            + "\n```"
         )
         raise SystemExit(1)
 
@@ -1054,7 +1054,7 @@ def main() -> None:
         post_issue_comment(message)
         return
 
-    if cycle.get("status") != "complete" or not work.queue_advanced:
+    if cycle.get("status") != "complete" or not work_data.get("queue_advanced", False):
         post_issue_comment(
             "Barrot repair failed safely.\n\n```json\n"
             + rendered[:55000]
