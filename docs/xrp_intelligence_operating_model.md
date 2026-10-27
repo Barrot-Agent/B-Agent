@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 11:07:00 UTC  
+**Snapshot:** 2026-10-27 11:10:00 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after run 8: **100 source records, 67 claims, 98 evidence records, 6 research tracks, 44 relationship nodes, 66 graph edges, and 16 competing scenario hypotheses**. Latest branch validation found unique source/claim/evidence IDs and resolved source, claim, evidence, graph and hypothesis references. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after run 8: **101 source records, 68 claims, 99 evidence records, 6 research tracks, 45 relationship nodes, 67 graph edges, and 17 competing scenario hypotheses**. Latest branch validation found unique source/claim/evidence IDs and resolved source, claim, evidence, graph and hypothesis references. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -224,3 +224,10 @@ Sources: [Coinbase Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/16
 - SBI's official FY2026 presentation reports an approximately 9% Ripple equity stake, which must not be counted as direct XRP holdings. A secondary report quotes chairman Yoshitaka Kitao correcting the $10B XRP claim, but the original post was not retrievable; exact direct SBI-group XRP inventory remains unknown.
 - Circle's official Arc launch statement confirms SBI as a founding validator and quotes SBI's stated intention to leverage USDC and JPYSC. This supports multi-rail intent only; actual flows and any XRP substitution remain unmeasured.
 - Current bundle commit: `379cae39daebd3d30f45fb136896d7b008d933a9`; deterministic JSON validation passed with 100 sources, 67 claims, 98 evidence records, 44 nodes, 66 edges and 16 hypotheses. Exact-head CI for this newest revision is pending.
+
+
+## ETF flow checkpoint — 2026-10-27 11:10 UTC
+
+XRP Insights' October 24 supply report estimates that six U.S. spot XRP ETFs plus BITW recorded **+1,529,454 XRP** net flows from the October 16 close through the October 23 close, ending at **1,193,209,830 XRP** held and about **$1.57B** in combined net assets. It reports XRP down approximately **2.3%** over the week and an October 23 outflow of about **1.81M XRP**. The provider excludes GXRP from flow totals while correcting a scrape gap. Sources: [dated weekly report](https://xrp-insights.com/news/xrp-supply-report-2026-10-24) and [downloadable daily data](https://xrp-insights.com/data).
+
+Interpretation: positive weekly fund flows coexisted with a falling price. This does not establish that ETF flows failed to support price, nor that derivatives caused the decline. Fund-level issuer reconciliation, the GXRP data gap, exchange-native spot depth, and synchronized perpetual OI/funding/basis/liquidation data are required to distinguish competing explanations. The ledger adds a flow-versus-price divergence hypothesis and tests against simple baselines; no forecast is inferred from this aggregate.
