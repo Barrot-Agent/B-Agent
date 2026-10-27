@@ -2592,6 +2592,21 @@
         "draft/unmerged",
         "no merge authorized"
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1194-CI-20261027-RUN13B",
+      "title": "PR #1194 exact-head CI and fail-closed gate results",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow_checks",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+      "publication_date": "CI run 40556571599 success, 116 tests in 4.98 seconds; gate 40556571610 success. Job log timestamp 2026-10-27T18:05:04Z is later than supplied session-clock estimate 17:50Z; external clock ordering unresolved.",
+      "source_commit": "66c1be927a230e458c51b43eff308eec74253a47",
+      "sections": [
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40556571599",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40556571610",
+        "exact head 66c1be927a230e458c51b43eff308eec74253a47",
+        "draft/unmerged; no merge authorized"
+      ]
     }
   ],
   "claims": [
@@ -5167,17 +5182,18 @@
     },
     {
       "claim_id": "XRP-C-PR1194-VALIDATION-20261027-RUN13",
-      "statement": "Fresh-main PR #1194 replaces the mutation-capable merge queue with a manual-only, read-only no-op, removes branch-update/merge commands, preserves the existing risk-manager test, and adds merge-queue safety regression tests. Its fail-closed gate passed; exact-head CI was still in progress at capture. The PR remains draft/unmerged.",
+      "statement": "Fresh-main PR #1194 replaces the mutation-capable merge queue with a manual-only, read-only no-op, removes branch-update/merge commands, preserves the existing risk-manager test, and adds merge-queue safety regression tests. Exact-head CI run 40556571599 passed 116 tests in 4.98 seconds and fail-closed gate 40556571610 passed. The PR remains draft/unmerged.",
       "domain": "repository_security_and_change_control",
       "claim_type": "proposed_safety_change_and_validation_state",
       "source": "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
       "supporting_evidence": [
-        "XRP-E-PR1194-VALIDATION-20261027-RUN13"
+        "XRP-E-PR1194-VALIDATION-20261027-RUN13",
+        "XRP-E-PR1194-CI-20261027-RUN13B"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
-      "independent_verification_status": "FOUR_FILE_DIFF_READBACK_VERIFIED; GATE_PASS; CI_PENDING; MAIN_UNCHANGED",
+      "independent_verification_status": "FOUR_FILE_DIFF_READBACK_VERIFIED; EXACT_HEAD_CI_PASS_116_TESTS; GATE_PASS; DRAFT_UNMERGED",
       "adversarial_status": "OPEN",
       "acceptance_status": "DRAFT_ONLY_NO_MERGE_AUTHORIZED",
       "confidence": 0.99,
@@ -5186,7 +5202,8 @@
         "Effective branch protection is not independently verified."
       ],
       "provenance": [
-        "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13"
+        "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13",
+        "SRC-BARROT-PR1194-CI-20261027-RUN13B"
       ],
       "timestamp": 1793123400
     }
@@ -8138,10 +8155,10 @@
       "evidence_id": "XRP-E-PR1194-VALIDATION-20261027-RUN13",
       "claim_id": "XRP-C-PR1194-VALIDATION-20261027-RUN13",
       "kind": "workflow_check_and_branch_readback",
-      "summary": "PR #1194 head 66c1be927a230e458c51b43eff308eec74253a47 is based on main f422acc504b4b539790b7611e6386a0c5c825b62. Its four-file diff replaces the merge queue with a manual-only/read-only no-op, preserves tests/test_risk_manager.py in CI, and adds safety tests. Gate 40556571610 passed; CI 40556571599 was in progress at capture.",
+      "summary": "Fresh-main PR #1194 replaces the mutation-capable merge queue with a manual-only, read-only no-op, removes branch-update/merge commands, preserves the existing risk-manager test, and adds merge-queue safety regression tests. Exact-head CI run 40556571599 passed 116 tests in 4.98 seconds and fail-closed gate 40556571610 passed. The PR remains draft/unmerged.",
       "source_id": "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
-      "status": "PARTIAL_PENDING_CI",
+      "status": "SUPPORTED",
       "independence": "direct_branch_readback_plus_GitHub_Actions_status",
       "provenance": [
         "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13"
@@ -8151,7 +8168,9 @@
         "base_sha": "f422acc504b4b539790b7611e6386a0c5c825b62",
         "changed_files": 4,
         "ci_run": 40556571599,
-        "ci_status": "in_progress",
+        "ci_status": "success",
+        "tests_passed": 116,
+        "elapsed_seconds": 4.98,
         "gate_run": 40556571610,
         "gate_status": "success",
         "manual_only": true,
@@ -8161,6 +8180,34 @@
         "safety_test_included": true,
         "draft": true,
         "merged": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1194-CI-20261027-RUN13B",
+      "claim_id": "XRP-C-PR1194-VALIDATION-20261027-RUN13",
+      "kind": "workflow_check_observation",
+      "summary": "PR #1194 head 66c1be927a230e458c51b43eff308eec74253a47 passed exact-head CI run 40556571599 with 116 tests in 4.98s and fail-closed gate 40556571610. PR remains draft/unmerged.",
+      "source_id": "SRC-BARROT-PR1194-CI-20261027-RUN13B",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+      "status": "SUPPORTED",
+      "independence": "GitHub_Actions_exact_head_status_and_job_log",
+      "provenance": [
+        "SRC-BARROT-PR1194-CI-20261027-RUN13B"
+      ],
+      "details": {
+        "head_sha": "66c1be927a230e458c51b43eff308eec74253a47",
+        "base_sha": "f422acc504b4b539790b7611e6386a0c5c825b62",
+        "ci_run": 40556571599,
+        "ci_status": "success",
+        "tests_passed": 116,
+        "elapsed_seconds": 4.98,
+        "gate_run": 40556571610,
+        "gate_status": "success",
+        "draft": true,
+        "merged": false,
+        "remote_job_log_timestamp_utc": "2026-10-27T18:05:04Z",
+        "session_clock_estimate_utc": "2026-10-27T17:50:00Z",
+        "clock_order_status": "REMOTE LOG TIMESTAMP LATER THAN SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
       }
     }
   ],
@@ -9237,9 +9284,10 @@
       {
         "id": "PR #1194 merge queue safety fix",
         "type": "proposed_repository_safety_change",
-        "status": "DRAFT; GATE_PASS; CI_PENDING; UNMERGED",
+        "status": "DRAFT; EXACT_HEAD_CI_PASS_116_TESTS; GATE_PASS; UNMERGED",
         "source_ids": [
-          "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13"
+          "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13",
+          "SRC-BARROT-PR1194-CI-20261027-RUN13B"
         ]
       }
     ],
@@ -11269,12 +11317,12 @@
         "head_sha": "66c1be927a230e458c51b43eff308eec74253a47",
         "base_sha": "f422acc504b4b539790b7611e6386a0c5c825b62",
         "ci_run": 40556571599,
-        "ci": "IN_PROGRESS_AT_CAPTURE",
+        "ci": "PASS; 116 TESTS IN 4.98S",
         "gate_run": 40556571610,
         "gate": "PASS",
         "changed_files": 4,
         "merge_authorized": false,
-        "status": "OPEN_DRAFT; GATE_PASS; CI_PENDING; CURRENT_MAIN_BASE; NO_MERGE"
+        "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_MAIN_BASE; NO_MERGE"
       }
     ],
     "pr1190_validation": {
@@ -11397,11 +11445,14 @@
       "base_sha": "f422acc504b4b539790b7611e6386a0c5c825b62",
       "changed_files": 4,
       "ci_run": 40556571599,
-      "ci_status": "IN_PROGRESS_AT_CAPTURE",
+      "ci_status": "SUCCESS",
+      "tests_passed": 116,
+      "elapsed_seconds": 4.98,
       "fail_closed_gate_run": 40556571610,
       "gate_status": "SUCCESS",
-      "state": "OPEN_DRAFT; GATE_PASS; CI_PENDING; CURRENT_MAIN_BASE; UNMERGED",
-      "merge_authorized": false
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_PASS_116_TESTS; GATE_PASS; CURRENT_MAIN_BASE; UNMERGED",
+      "merge_authorized": false,
+      "clock_order_status": "Remote job log timestamp 18:05:04Z later than supplied session-clock estimate 17:50Z; retrieval timestamp unexposed."
     }
   },
   "video_ingestion": {
@@ -11494,13 +11545,18 @@
   "next_actions": [
     {
       "priority": 0,
+      "action": "Recheck exact-head CI and fail-closed gate for the latest research-ledger PR #1170 head after the latest bundle/handoff edits. The connector returned no PR-triggered workflow runs for head 148615b9459b9ab3e8097c9a7ea46d9399c0dd5a; prior-head results must not be reused.",
+      "status": "LATEST_HEAD_CHECKS_NOT_RETURNED; VERIFICATION_PENDING"
+    },
+    {
+      "priority": 0,
       "action": "Do not dispatch main merge-queue workflow: current main still has write permissions, all-open-PR mode, branch-update and merge commands. PR #1194 is draft/unmerged and does not change main.",
       "status": "CURRENT_MAIN_RISK_CONFIRMED; DO_NOT_DISPATCH"
     },
     {
       "priority": 0,
       "action": "PR #1194 is a fresh-main four-file replacement for the mutation-capable merge queue. Gate 40556571610 passed; exact-head CI 40556571599 was still in progress at capture. Recheck exact-head CI, then keep draft pending independent review and branch-protection verification.",
-      "status": "FRESH_MAIN_PR_CREATED; GATE_PASS; CI_PENDING; NO_MERGE"
+      "status": "FRESH_MAIN_PR_CREATED; EXACT_HEAD_CI_PASS_116_TESTS; GATE_PASS; DRAFT_ONLY; NO_MERGE"
     },
     {
       "priority": 0,
