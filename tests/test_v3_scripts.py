@@ -477,6 +477,54 @@ def test_persist_audit_report_does_not_open_pr_when_remote_sha_mismatches(tmp_pa
     assert "no PR was opened" in result["error"]
 
 
+def test_create_audit_pull_request_uses_expected_base_and_verifies_url(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_create_audit_pr_test")
+    branch = "barrot/audit-report-test"
+    url = "https://github.com/Barrot-Agent/B-Agent/pull/1234"
+    captured: dict[str, object] = {}
+
+    class Result:
+        returncode = 0
+        stdout = url + "\n"
+        stderr = ""
+
+    def fake_run(args, **kwargs):
+        captured["args"] = args
+        captured["kwargs"] = kwargs
+        return Result()
+
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    result = module.create_audit_pull_request(tmp_path, branch, "a" * 40, "fingerprint-123")
+
+    args = captured["args"]
+    kwargs = captured["kwargs"]
+    assert result == url
+    assert args[:3] == ["gh", "pr", "create"]
+    assert args[args.index("--base") + 1] == "main"
+    assert args[args.index("--head") + 1] == branch
+    assert kwargs["cwd"] == tmp_path
+    assert "not merged automatically" in args[args.index("--body") + 1]
+
+
+def test_create_audit_pull_request_rejects_unverifiable_output(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_create_audit_pr_invalid_output_test")
+
+    class Result:
+        returncode = 0
+        stdout = "created pull request"
+        stderr = ""
+
+    monkeypatch.setattr(module.subprocess, "run", lambda *_args, **_kwargs: Result())
+
+    try:
+        module.create_audit_pull_request(tmp_path, "barrot/audit-report-test", "b" * 40, "fingerprint-456")
+    except module.SelfUpgradeError as exc:
+        assert "verifiable pull-request URL" in str(exc)
+    else:
+        raise AssertionError("Expected missing PR URL to fail closed.")
+
+
 def test_self_upgrade_workflow_persists_audit_through_review_pr_without_direct_push() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
