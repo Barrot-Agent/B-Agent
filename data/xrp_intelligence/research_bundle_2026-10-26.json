@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T06:12:00Z",
+    "captured_at_utc": "2026-10-27T06:15:00Z",
     "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -40,7 +40,8 @@
       "XRP-C-MAIN-SIGNAL-INVALID-20261027T043242Z",
       "XRP-C-EVERNORTH-EQUITY-FACILITY-20261023",
       "XRP-C-MAIN-SIGNAL-INVALID-20261027T053048Z",
-      "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027"
+      "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027",
+      "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1255,6 +1256,33 @@
         "Exact-head CI run 40459515907 passed 120 tests in 6.05 seconds; fail-closed gate run 40459515898 passed with merge disabled.",
         "This is code/CI evidence only; physical Moto G7 delivery receipt remains pending."
       ]
+    },
+    {
+      "source_id": "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "title": "Coinbase Derivatives Exchange nano XRP perpetual product page — point-in-time market snapshot",
+      "author_or_organization": "Coinbase",
+      "source_type": "exchange_product_page_market_snapshot",
+      "url": "https://www.coinbase.com/en-br/futures/XPP-20DEC30-CDE",
+      "publication_date": "retrieved 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T06:15:00Z",
+      "snapshot": {
+        "price_usd": 1.29,
+        "open_interest_usd": 24700000,
+        "volume_24h_usd": 22620000,
+        "funding_rate_percent_per_period": 0.0001,
+        "funding_direction": "LONG_PAYS_SHORT",
+        "displayed_24h_high_usd": 1.31,
+        "displayed_24h_low_usd": 1.27,
+        "displayed_1y_high_usd": 2.7,
+        "displayed_1y_low_usd": 0.92,
+        "contract_size_xrp": 500
+      },
+      "sections": [
+        "Coinbase product page identifies the nano XRP Perpetual Futures contract as trading on Coinbase Derivatives Exchange (CDE), not the Coinbase Global Exchange cross-collateral product.",
+        "Displayed snapshot at retrieval: $1.29 price, $24.7M open interest, $22.62M 24-hour volume, funding 0.0001% with long pays short.",
+        "The page does not expose a precise market-data event timestamp; figures are a retrieval-time snapshot and may change.",
+        "Do not infer global XRP open interest, total leverage, or directional expected return from this one product page."
+      ]
     }
   ],
   "claims": [
@@ -2250,6 +2278,32 @@
         "SRC-PR1182-TERMUX-RECEIVER-20261027"
       ],
       "timestamp": 1793081520
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "statement": "At retrieval on 2026-10-27T06:15:00Z, Coinbase's nano XRP Perpetual Futures page for Coinbase Derivatives Exchange displayed approximately $1.29 price, $24.7 million open interest, $22.62 million 24-hour volume, and a 0.0001% funding rate with longs paying shorts. This is a product-specific snapshot with no exact underlying data timestamp; it is not a measure of global XRP derivatives positioning or a directional forecast.",
+      "domain": "xrp_derivatives_market_structure",
+      "claim_type": "exchange_product_market_snapshot_with_scope_limit",
+      "source": "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "source_location": "https://www.coinbase.com/en-br/futures/XPP-20DEC30-CDE",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_EXCHANGE_PRODUCT_PAGE_AT_RETRIEVAL",
+      "independent_verification_status": "SINGLE_VENUE_PRODUCT_PAGE; SYNCHRONIZED_MULTI_VENUE_HISTORY_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "POINT_IN_TIME_OBSERVATION_ONLY",
+      "confidence": 0.98,
+      "assumptions": [
+        "The dynamic page values were current when retrieved but may update between observations.",
+        "The CDE nano XRP perpetual product must not be conflated with Global Exchange cross-collateral eligibility or Coinbase International Exchange products.",
+        "No global open-interest, liquidity, or price-direction inference is warranted without synchronized cross-venue history."
+      ],
+      "provenance": [
+        "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
+      ],
+      "timestamp": 1793081700
     }
   ],
   "evidence": [
@@ -3360,6 +3414,31 @@
         "receiver_executes_payload": false,
         "receiver_modifies_git": false
       }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "claim_id": "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "kind": "direct_exchange_product_market_snapshot",
+      "summary": "Coinbase's CDE nano XRP Perpetual Futures page displayed $1.29 price, $24.7M open interest, $22.62M 24h volume, 0.0001% funding with longs paying shorts, and displayed 24h high/low of $1.31/$1.27 at retrieval.",
+      "source_id": "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "source_location": "https://www.coinbase.com/en-br/futures/XPP-20DEC30-CDE",
+      "status": "OBSERVED_POINT_IN_TIME; UNDERLYING_EVENT_TIMESTAMP_NOT_EXPOSED",
+      "independence": "exchange_published_product_page",
+      "provenance": [
+        "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
+      ],
+      "details": {
+        "retrieved_at_utc": "2026-10-27T06:15:00Z",
+        "product": "Coinbase Derivatives Exchange nano XRP Perpetual Futures",
+        "price_usd": 1.29,
+        "open_interest_usd": 24700000,
+        "volume_24h_usd": 22620000,
+        "funding_rate_percent_per_period": 0.0001,
+        "funding_direction": "LONG_PAYS_SHORT",
+        "contract_size_xrp": 500,
+        "exact_market_data_timestamp": "NOT_EXPOSED_BY_PAGE",
+        "scope_warning": "One product/venue only; do not equate to global XRP open interest or Coinbase Global Exchange collateral balances."
+      }
     }
   ],
   "tracks": [
@@ -3787,6 +3866,12 @@
       "question": "Track Evernorth's committed equity facility drawdowns, actual share issuance, proceeds deployment, wallet-confirmed XRP acquisitions and XRP per diluted share.",
       "priority": "HIGH",
       "status": "FACILITY_CONFIRMED_BY_SEC; DRAWDOWNS_AND_USE_OF_PROCEEDS_UNKNOWN"
+    },
+    {
+      "question_id": "Q-15",
+      "question": "Build synchronized point-in-time XRP spot/perpetual histories across Coinbase CDE, Coinbase Global Exchange, Binance, Bybit and other major venues, preserving each product's contract specification, funding timestamp, open interest, volume and order-book depth.",
+      "priority": "HIGH",
+      "status": "ONE_COINBASE_CDE_PRODUCT_SNAPSHOT_RECORDED; SYNCHRONIZED_MULTI_VENUE_HISTORY_PENDING"
     }
   ],
   "relationship_graph": {
@@ -4510,6 +4595,17 @@
           "SRC-PR1182-TERMUX-RECEIVER-20261027"
         ],
         "caveat": "The receiver writes only to the local phone when executed there; cloud CI does not establish a device-side receipt."
+      },
+      {
+        "source": "Coinbase",
+        "target": "XRP",
+        "relationship_type": "COINBASE_CDE_NANO_XRP_PERPETUAL_FUTURES",
+        "classification": "PRODUCT_PAGE_MARKET_SNAPSHOT_ONLY; VENUE_SPECIFIC",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
+        ],
+        "caveat": "Displayed CDE product metrics are distinct from Coinbase Global Exchange cross-collateral eligibility; no global market inference or price forecast is established."
       }
     ]
   },
@@ -5109,6 +5205,11 @@
       "priority": 1,
       "action": "Track Evernorth's committed equity facility with CF Principal Investments LLC: actual draws, new shares issued, net proceeds, disclosed use of proceeds, wallet-confirmed XRP purchases and XRP per diluted share. Do not treat facility capacity as current XRP demand.",
       "status": "SEC_FACILITY_CONFIRMED; DRAWDOWNS_AND_PROCEEDS_USE_UNKNOWN"
+    },
+    {
+      "priority": 1,
+      "action": "Collect synchronized XRP spot/perpetual histories across major venues with event timestamps, funding, open interest, liquidation coverage and order-book depth. Keep Coinbase CDE nano perpetual data separate from Global Exchange collateral eligibility and International Exchange contracts.",
+      "status": "ONE_PRODUCT_SNAPSHOT_RECORDED; HISTORICAL_FEATURE_STORE_PENDING"
     }
   ]
 }
