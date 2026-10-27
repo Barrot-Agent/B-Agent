@@ -589,3 +589,14 @@ def test_repo_browser_tool_schema_allows_empty_root_path(monkeypatch) -> None:
     assert "minLength" not in properties["path"]
     assert "path" not in required
 
+def test_barrot_groq_payload_uses_bounded_completion_budget(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_groq_completion_budget_test",
+    )
+
+    payload = module._groq_payload([{"role": "user", "content": "Return a concise JSON bundle."}])
+
+    assert payload["max_tokens"] == 2048
+
