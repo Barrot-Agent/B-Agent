@@ -3,16 +3,16 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T10:04:56.579Z",
-    "main_tip_sha": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
+    "captured_at_utc": "2026-10-27T11:02:28.000Z",
+    "main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING: main latest_signal.json retrieved at 2026-10-27T10:04:36.395Z, source timestamp 2026-10-27T09:33:53.222424+00:00, blob 96e4e669d0f430dc0892577e81b404e005a43f30; score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429, XRPL protocol/research headline contamination. Forecast NOT_ISSUED. Coinbase's official docs confirm XRP eligibility for USDC borrowing through Morpho on Base and cbXRP on Base; actual collateral usage and market impact remain unknown.",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: main latest_signal.json retrieved during run 8; score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429, XRPL protocol/research headline contamination. Forecast NOT_ISSUED. Circle's official Arc announcement quotes SBI Group's intent to leverage both USDC and JPYSC; realized Arc volume and any XRP substitution remain unknown.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
-    "latest_signal_timestamp": "2026-10-27T09:33:53.222424+00:00",
-    "latest_signal_blob_sha": "96e4e669d0f430dc0892577e81b404e005a43f30",
-    "main_tip_sha_last_explicitly_observed": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
-    "main_tip_sha_status": "Main tip f9f9278a47396ba5e9f8bdaabaa6039b9d81a918 observed at 2026-10-27T10:04:36.395Z; compare from research base a3e0f0198510634420f925eef8cea384aca51b12 shows 40 commits ahead and 14 generated runtime/log/signal/deployment-report files changed, with no code/workflow files in the observed delta. Current-main integration still requires exact-head validation."
+    "latest_signal_timestamp": "2026-10-27T10:30:31.099032+00:00",
+    "latest_signal_blob_sha": "d193c5bf1a4da48d596d606e120335043ae3380d",
+    "main_tip_sha_last_explicitly_observed": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
+    "main_tip_sha_status": "Main tip 98db0f67cf5958bdf8a02123e8a2ea7261fe13ff observed at 2026-10-27T10:54:37Z. Latest signal file read during this run has blob SHA d193c5bf1a4da48d596d606e120335043ae3380d and signal timestamp 2026-10-27T10:30:31.099032Z. Repository integration status remains separate from signal validity."
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -1810,6 +1810,21 @@
       "source_limitations": [
         "Product mechanics only; no XRP-specific on-chain utilization or liquidation event counts supplied."
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T103031Z",
+      "title": "Main-branch XRP signal artifact retrieved during run 8",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "2026-10-27T10:30:31.099032Z",
+      "source_commit": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
+      "sections": [
+        "Main-branch artifact reports score 44 and confidence 0.0.",
+        "News score is 88 from 11 entries; listed headlines are XRPL consensus, routing, dissemination and academic/protocol topics.",
+        "Source field reports missing GitHub model credentials and Groq HTTP 429.",
+        "Disposition: invalid for directional forecasting; no forecast issued."
+      ]
     }
   ],
   "claims": [
@@ -3220,13 +3235,14 @@
     },
     {
       "claim_id": "XRP-C-CIRCLE-ARC-SBI-VALIDATOR-20261027",
-      "statement": "Circle's September 16, 2026 Arc public-mainnet announcement lists SBI Group among the founding validator cohort. This confirms an announced institutional network-participation relationship between Circle's Arc and SBI Group. It does not establish production XRP routing, XRP purchases, or measurable XRP demand.",
+      "statement": "Circle's September 16, 2026 Arc public-mainnet announcement lists SBI Group among the founding validator cohort and quotes SBI leadership saying SBI intends to deepen collaboration using both USDC and JPYSC on Arc. This confirms announced institutional participation and stated multi-stablecoin intent, not realized transaction volume, XRP routing, or XRP demand.",
       "domain": "institutional_relationships_and_payment_rails",
       "claim_type": "official_announcement_with_asset_demand_boundary",
       "source": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
       "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
       "supporting_evidence": [
-        "XRP-E-CIRCLE-ARC-SBI-VALIDATOR-20261027"
+        "XRP-E-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+        "XRP-E-CIRCLE-ARC-SBI-USDC-JPYSC-INTENT-20261027"
       ],
       "contradicting_evidence": [],
       "derivation_status": "OFFICIAL_ANNOUNCEMENT_CONFIRMS_LISTED_VALIDATOR_ROLE; OPERATIONAL_ACTIVITY_UNVERIFIED",
@@ -3235,7 +3251,8 @@
       "acceptance_status": "RELATIONSHIP_CONFIRMED_AS_ANNOUNCED; XRP_DEMAND_NOT_INFERRED",
       "confidence": 0.98,
       "assumptions": [
-        "Circle's announcement accurately lists the founding validator cohort."
+        "Circle's announcement accurately lists the founding validator cohort.",
+        "The quoted statement expresses intended collaboration; realized production flows still require independent measurement."
       ],
       "provenance": [
         "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
@@ -3464,6 +3481,31 @@
         "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z"
       ],
       "timestamp": 1793095476
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T103031Z",
+      "statement": "The main-branch latest_signal.json retrieved during this run has blob SHA d193c5bf1a4da48d596d606e120335043ae3380d and reports timestamp 2026-10-27T10:30:31.099032Z, score 44, confidence 0.0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429. Its headlines concern XRPL protocol/research topics, so this artifact is invalid for directional forecasting and the forecast remains NOT_ISSUED.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "directly_observed_repository_runtime_artifact",
+      "source": "SRC-BARROT-MAIN-SIGNAL-20261027T103031Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-INVALID-20261027T103031Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "MAIN_BRANCH_ARTIFACT_READ; NOT_A_DIRECTIONAL_FORECAST",
+      "independent_verification_status": "DIRECT_FILE_READ_AND_BLOB_SHA; MARKET_DIRECTIONAL_VALIDITY_NOT_ESTABLISHED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "FORECAST_NOT_ISSUED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The retrieved file is the main-branch artifact at the observed repository tip.",
+        "The numeric score is not a calibrated price-direction probability."
+      ],
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T103031Z"
+      ],
+      "timestamp": 1793098948
     }
   ],
   "evidence": [
@@ -5251,6 +5293,57 @@
         ],
         "disposition": "NOT_ISSUED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-INVALID-20261027T103031Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T103031Z",
+      "kind": "main_branch_runtime_artifact",
+      "summary": "Direct read of main/web/latest_signal.json returned blob SHA d193c5bf1a4da48d596d606e120335043ae3380d and timestamp 2026-10-27T10:30:31.099032Z; score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials and Groq HTTP 429. The content is not suitable for directional forecasting.",
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T103031Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "INVALID_FOR_DIRECTIONAL_FORECASTING",
+      "independence": "direct_repository_file_read",
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T103031Z"
+      ],
+      "details": {
+        "signal_timestamp": "2026-10-27T10:30:31.099032Z",
+        "blob_sha": "d193c5bf1a4da48d596d606e120335043ae3380d",
+        "main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429"
+        ],
+        "disposition": "NOT_ISSUED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-ARC-SBI-USDC-JPYSC-INTENT-20261027",
+      "claim_id": "XRP-C-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+      "kind": "official_corporate_statement_on_intended_network_use",
+      "summary": "Circle's investor announcement quotes SBI leadership stating that SBI will leverage both USDC and JPYSC on Arc, while listing SBI Group in the founding validator cohort. This is an announced intent, not independently verified production volume or XRP substitution.",
+      "source_id": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "status": "ANNOUNCED_INTENT_CONFIRMED; REALIZED_FLOWS_UNKNOWN",
+      "independence": "primary_corporate_announcement_with_named_SBI_statement",
+      "provenance": [
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+      ],
+      "details": {
+        "announcement_date": "2026-09-16",
+        "validator": "SBI Group",
+        "named_assets": [
+          "USDC",
+          "JPYSC"
+        ],
+        "jPYSC_description": "Trust-type yen-pegged stablecoin issued by SBI Shinsei Trust, as described in the Circle announcement",
+        "realized_arc_volume": "UNKNOWN",
+        "xrp_asset_use_or_substitution": "NOT_ESTABLISHED"
+      }
     }
   ],
   "tracks": [
@@ -6080,7 +6173,7 @@
       {
         "id": "Circle Arc mainnet",
         "type": "stablecoin_native_settlement_blockchain",
-        "status": "MAINNET_LAUNCHED_2026-09-16_PER_CIRCLE; SBI_GROUP_LISTED_AS_FOUNDING_VALIDATOR; REALIZED_VOLUME_AND_XRP_SUBSTITUTION_UNKNOWN",
+        "status": "MAINNET_LAUNCHED_2026-09-16_PER_CIRCLE; SBI_GROUP_LISTED_AS_FOUNDING_VALIDATOR_AND_STATED_INTENT_TO_LEVERAGE_USDC_JPYSC; REALIZED_VOLUME_AND_XRP_SUBSTITUTION_UNKNOWN",
         "source_ids": [
           "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ]
@@ -6147,6 +6240,22 @@
         "status": "ANALYTICAL_CONCEPT_NOT_A_LEGAL_ENTITY",
         "source_ids": [
           "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
+        ]
+      },
+      {
+        "id": "SBI Shinsei Trust",
+        "type": "trust_bank_and_stablecoin_issuer",
+        "status": "IDENTIFIED_IN_CIRCLE_ARC_ANNOUNCEMENT; CURRENT_JPYSC_SUPPLY_AND_ONCHAIN_FLOWS_NOT_MEASURED",
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ]
+      },
+      {
+        "id": "JPYSC",
+        "type": "trust_type_yen_pegged_stablecoin",
+        "status": "NAMED_IN_CIRCLE_SBI_ARC_STATEMENT; REALIZED_ARC_USAGE_AND_SUPPLY_UNKNOWN",
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ]
       }
     ],
@@ -6853,6 +6962,39 @@
           "SRC-COINBASE-DEFI-BORROW-2026-10-27"
         ],
         "caveat": "The borrowed asset is USDC; this does not itself establish incremental USDC issuance or XRP demand."
+      },
+      {
+        "source": "SBI Shinsei Trust",
+        "target": "JPYSC",
+        "relationship_type": "ISSUER_AS_DESCRIBED_IN_CIRCLE_ANNOUNCEMENT",
+        "classification": "ANNOUNCED_ISSUER_RELATIONSHIP; LIVE_SUPPLY_NOT_MEASURED",
+        "confidence": 0.97,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "Issuer identity and stated stablecoin type are sourced from the Circle/SBI announcement; independently audited circulating supply and Arc activity were not measured."
+      },
+      {
+        "source": "Circle Arc mainnet",
+        "target": "JPYSC",
+        "relationship_type": "STATED_INTENDED_USE_ALONGSIDE_USDC",
+        "classification": "ANNOUNCED_INTENT_NOT_VERIFIED_TRANSACTION_FLOW",
+        "confidence": 0.94,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "SBI leadership said it looks forward to leveraging USDC and JPYSC on Arc; this does not establish actual settlement volumes or substitution for XRP."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "Circle Arc mainnet",
+        "relationship_type": "FOUNDING_VALIDATOR_AND_STATED_MULTI_STABLECOIN_COLLABORATION",
+        "classification": "OFFICIAL_ANNOUNCEMENT; OPERATIONAL_VOLUME_UNKNOWN",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "A validator role and stated collaboration do not imply exclusive alignment or abandonment of XRP-related businesses."
       }
     ]
   },
@@ -7219,6 +7361,27 @@
         "SRC-COINBASE-DEFI-BORROW-2026-10-27"
       ],
       "confidence": 0.55
+    },
+    {
+      "hypothesis_id": "H-SBI-MULTIRAIL-PORTFOLIO-20261027",
+      "statement": "SBI Group's announced Circle Arc founding-validator role and stated intent to leverage USDC and JPYSC may reflect a multi-rail institutional strategy alongside its documented Ripple/XRP ecosystem relationships. Alternative explanations include corridor-specific economics, diversification, governance participation, or competitive hedging. The announcements alone do not establish XRP displacement or additional XRP demand.",
+      "status": "OPEN_INFERENCE",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+        "XRP-E-CIRCLE-ARC-SBI-USDC-JPYSC-INTENT-20261027"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Measure Arc mainnet transaction volume and stablecoin transfer volume by asset and corridor with timestamped snapshots.",
+        "Verify JPYSC contract/issuer details, supply, redemption mechanics and actual Arc usage from primary sources.",
+        "Measure SBI-linked XRP trading, remittance and reward-channel flows where publicly observable, without equating product availability with usage.",
+        "Compare affected corridors with matched corridors not using Arc or XRP to distinguish substitution from overall growth."
+      ],
+      "falsification_conditions": [
+        "Primary evidence shows the quoted USDC/JPYSC Arc intent was withdrawn or never implemented.",
+        "Synchronized flow data shows no meaningful Arc stablecoin usage in the corridors hypothesized to overlap with XRP routes.",
+        "Observed XRP corridor volume rises alongside Arc volume without a relative decline in comparable XRP-mediated routes, weakening the substitution hypothesis."
+      ]
     }
   ],
   "platform_coordination": [
@@ -7781,7 +7944,12 @@
   "next_actions": [
     {
       "priority": 0,
-      "action": "Keep directional XRP forecasting at NOT_ISSUED until the main signal has valid model inputs, relevant-news classification and synchronized point-in-time spot/perpetual/OI/funding/basis/depth data. Current main signal timestamp 2026-10-27T09:33:53Z has confidence 0 and provider failures.",
+      "action": "Monitor Circle Arc and SBI's stated USDC/JPYSC intent using verified contract, supply, redemption and event-time transfer data; compare with SBI-linked XRP remittance/reward flows and matched control corridors. Treat this as multi-rail intent, not proof of XRP substitution.",
+      "status": "ANNOUNCED_RELATIONSHIP_VERIFIED; REALIZED_ARC_AND_XRP_FLOWS_UNKNOWN"
+    },
+    {
+      "priority": 0,
+      "action": "Keep directional XRP forecasting at NOT_ISSUED until model inputs are available, news relevance is validated and synchronized point-in-time spot/perpetual/OI/funding/basis/depth data pass quality checks. Latest retrieved main signal timestamp 2026-10-27T10:30:31.099032Z has confidence 0, missing GitHub model credentials and Groq HTTP 429.",
       "status": "INVALID_SIGNAL_OBSERVED_ON_MAIN; PROVIDER_RECOVERY_AND_EVENT_TIME_FEATURE_STORE_REQUIRED"
     },
     {
@@ -7801,8 +7969,8 @@
     },
     {
       "priority": 0,
-      "action": "Keep main signal NOT_ISSUED: latest artifact timestamp 2026-10-27T08:38:05.688945Z has score 44/confidence 0/news score 88, missing GitHub model credentials, Groq HTTP 429 and academic/protocol headline contamination. The summary workflow also failed once on Groq token-per-day 429; PR #1188 adds a deterministic fallback but remains draft.",
-      "status": "INVALID_MAIN_SIGNAL_OBSERVED; PR1188_TESTED_DRAFT; FORECAST_BLOCKED"
+      "action": "Keep directional XRP forecasting at NOT_ISSUED until model inputs are available, news relevance is validated and synchronized point-in-time spot/perpetual/OI/funding/basis/depth data pass quality checks. Latest retrieved main signal timestamp 2026-10-27T10:30:31.099032Z has confidence 0, missing GitHub model credentials and Groq HTTP 429.",
+      "status": "INVALID_SIGNAL_OBSERVED_ON_MAIN; PROVIDER_RECOVERY_AND_EVENT_TIME_FEATURE_STORE_REQUIRED"
     },
     {
       "priority": 0,
@@ -7811,8 +7979,8 @@
     },
     {
       "priority": 0,
-      "action": "Do not issue a directional XRP forecast from the latest inspected main signal timestamped 2026-10-27T05:30:48Z. It reports score 44/confidence 0/news score 88 with missing GitHub model credentials, Groq HTTP 429 and academic/protocol headline contamination. PR #1178 remains draft/unmerged.",
-      "status": "INVALID_SIGNAL_OBSERVED; FIX_TESTED_ON_DRAFT"
+      "action": "Keep directional XRP forecasting at NOT_ISSUED until model inputs are available, news relevance is validated and synchronized point-in-time spot/perpetual/OI/funding/basis/depth data pass quality checks. Latest retrieved main signal timestamp 2026-10-27T10:30:31.099032Z has confidence 0, missing GitHub model credentials and Groq HTTP 429.",
+      "status": "INVALID_SIGNAL_OBSERVED_ON_MAIN; PROVIDER_RECOVERY_AND_EVENT_TIME_FEATURE_STORE_REQUIRED"
     },
     {
       "priority": 0,
