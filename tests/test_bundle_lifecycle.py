@@ -212,3 +212,54 @@ def test_dispatcher_increments_attempt_after_interrupted_failed_attempt(tmp_path
     history = store.load("bundle")["task_states"]["task-a"]
     running_records = [item for item in history if item.get("status") == "running"]
     assert running_records[-1]["attempt"] == 2
+
+
+
+def test_dispatcher_recovers_verified_queue_result_without_reexecuting_task(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    recovered = _complete_task_result("task-a")
+    execute_calls = []
+    recover_calls = []
+
+    def recover(task):
+        recover_calls.append(task["id"])
+        return recovered
+
+    def execute(task):
+        execute_calls.append(task["id"])
+        return _complete_task_result(task["id"])
+
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=execute,
+        recover_task=recover,
+    )
+    assert result["complete"] is True
+    assert recover_calls == ["task-a"]
+    assert execute_calls == []
+    latest = store.latest_task_states("bundle")["task-a"]
+    assert latest["recovered_from_queue"] is True
+    assert latest["result"]["repair_cycle"]["commit"]["sha"] == "sha-task-a"
+
+
+def test_dispatcher_executes_when_recovery_evidence_is_missing(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    calls = []
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: (calls.append(task["id"]) or _complete_task_result(task["id"])),
+        recover_task=lambda task: None,
+    )
+    assert result["complete"] is True
+    assert calls == ["task-a"]
+    assert store.latest_task_states("bundle")["task-a"]["recovered_from_queue"] is False
