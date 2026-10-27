@@ -16,7 +16,7 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T22:06:04Z",
+    "captured_at_utc": "2026-10-27T22:09:23Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
@@ -106,7 +106,7 @@
           "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
           "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
           "current_head_status": "NOT_VERIFIED",
-          "note": "Last recorded successful code CI predates current main; current main changes since then are generated-data-only commits, and no status contexts were returned for current main."
+          "note": "Last recorded successful code CI predates current main; current main changes since then were generated-data-only."
         },
         "main_databricks_deploy": {
           "run_id": 40583993212,
@@ -381,6 +381,40 @@
           "SRC-REPO-PR-1220-2026-10-27",
           "SRC-REPO-CI-1220-2026-10-27",
           "SRC-REPO-GATE-1220-2026-10-27"
+        ]
+      },
+      {
+        "id": "SIGNAL-INTEGRITY-PR-1220-VERIFIED-20261027T2209Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; DRAFT_UNMERGED",
+        "finding": "Fresh-main PR #1220 applies fail-closed XRP signal handling, event-time/news-source quality checks, immutable legacy accuracy semantics, deterministic summary fallback and artifact-only summary/evaluation workflows. The exact PR head passed 164 tests in 6.11 seconds and the fail-closed gate.",
+        "consequence": "The proposed repair has repository test evidence but is not deployed. Current main still contains the invalid score-44/confidence-0 artifact and the 46.5% variable-horizon accuracy artifact until the reviewed fix is merged and behavior is reverified.",
+        "limits": "Tests do not establish predictive performance. The hourly knowledge-signal workflow direct-main write remains a separate blocker.",
+        "files": [
+          {
+            "path": "scripts/emit_signal.py"
+          },
+          {
+            "path": "scripts/check_signal_accuracy.py"
+          },
+          {
+            "path": "scripts/signal_summary.py"
+          },
+          {
+            "path": ".github/workflows/check-signal-accuracy.yml"
+          },
+          {
+            "path": ".github/workflows/signal-summary.yml"
+          },
+          {
+            "path": ".github/workflows/ci.yml"
+          }
+        ],
+        "source_ids": [
+          "SRC-REPO-PR-1220-2026-10-27",
+          "SRC-REPO-CI-1220-2026-10-27T2209Z",
+          "SRC-REPO-GATE-1220-2026-10-27T2209Z"
         ]
       }
     ],
@@ -1111,7 +1145,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. Current main sentiment is invalid under provider failure; XRP derivatives OI and the two-snapshot USDC supply delta remain blocked as model features.",
+      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. Signal-integrity repair passed repository tests but remains an unmerged draft; market-data quality blockers remain.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -1274,7 +1308,7 @@
         "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
         "current_head_status": "NOT_VERIFIED",
-        "note": "Last recorded successful code CI predates current main; current main changes since then are generated-data-only commits, and no status contexts were returned for current main."
+        "note": "Last recorded successful code CI predates current main; current main changes since then were generated-data-only."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -1342,13 +1376,16 @@
         "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
         "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
         "ci_run_id": 40592404749,
-        "ci": "in_progress_at_snapshot",
+        "ci": "success",
+        "tests_passed": 164,
+        "duration_seconds": 6.11,
         "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
         "gate_run_id": 40592404758,
         "gate": "success",
         "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
         "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
-        "note": "Draft only. Gate success is not a test pass or approval to merge."
+        "state": "open_draft_unmerged",
+        "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       }
     },
     "market_data_quality_findings": [
@@ -1405,17 +1442,17 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-REPO-SAFETY-DELTA-2026-10-27T220604Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2206Z.json",
-    "snapshot_blob_sha": "e429ea0f71345c04d9f6dc8e5537477b6a83373d",
-    "current_research_head_before_ledger_update": "e96f7d9ffb02157aa2435be854e94ff1a2fa753a",
+    "snapshot_id": "XRP-CI-VERIFICATION-2026-10-27T220923Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2209Z.json",
+    "snapshot_blob_sha": "a9fabdbcb5b3bcf33684f97572299a6d8e9c4497",
+    "current_research_head_before_ledger_update": "b6898db2e1466894ead756599d45bfa9d1881f4e",
     "current_research_checks": {
-      "tests": "PENDING_FOR_CURRENT_HEAD",
-      "gate": "PENDING_FOR_CURRENT_HEAD",
-      "as_of_utc": "2026-10-27T22:03:13Z",
+      "tests": "PENDING_FOR_THIS_LEDGER_COMMIT",
+      "gate": "PENDING_FOR_THIS_LEDGER_COMMIT",
+      "as_of_utc": "2026-10-27T22:09:23Z",
       "test_run_url": null,
       "gate_run_url": null,
-      "note": "Ledger update creates a new commit; current PR head must be re-read and checks verified."
+      "note": "This ledger update creates a new research-branch commit; PR #1220 test results apply to its own head only."
     }
   },
   "sources": [
@@ -2091,6 +2128,22 @@
         "forecast_status": "NOT_ISSUED",
         "pr_1220_ci": "IN_PROGRESS_AT_CAPTURE",
         "pr_1220_gate": "SUCCESS"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:09:23Z",
+      "update_type": "APPEND_ONLY_VERIFIED_SIGNAL_INTEGRITY_CI_RESULT",
+      "snapshot_id": "XRP-CI-VERIFICATION-2026-10-27T220923Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2209Z.json",
+      "snapshot_blob_sha": "a9fabdbcb5b3bcf33684f97572299a6d8e9c4497",
+      "details": "Verified PR #1220 exact-head CI completed successfully with 164 tests passing in 6.11 seconds and its fail-closed gate passed. PR remains draft and unmerged; current main signal and legacy accuracy artifacts remain invalid until a reviewed fix is deployed.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "ci_exact_head": "PASS_164_TESTS",
+        "fail_closed_gate": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
       }
     }
   ],
