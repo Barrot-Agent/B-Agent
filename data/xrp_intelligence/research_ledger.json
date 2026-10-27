@@ -190,12 +190,32 @@
       },
       "latest_research_branch_state": {
         "branch": "research/xrp-ledger-20261027-1902z",
-        "head_before_ledger_update": "494a766495f0137f8538f6cfb75e9537f2a8918a",
         "pr": 1195,
-        "status": "open_draft_diverged",
-        "ahead_by": 27,
+        "head_before_status_update": "50464e7374a289b6569e205cffd386c5437d4a47",
+        "state": "open_draft_diverged",
+        "ahead_by": 32,
         "behind_by": 45,
-        "note": "Historical evidence and snapshots are preserved. Do not merge the stale branch; prepare a fresh-main successor only after artifact validation."
+        "mergeable": true,
+        "observed_at_utc": "2026-10-27T22:10:20Z",
+        "source_ids": [
+          "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z"
+        ],
+        "note": "Preserve this branch and all snapshots. Do not merge; create a fresh-main successor only after artifact integrity checks."
+      },
+      "current_pr_1220_state": {
+        "pr": 1220,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+        "state": "open",
+        "draft": true,
+        "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+        "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "mergeable": true,
+        "ci": "success",
+        "tests_passed": 164,
+        "ci_run_id": 40592404749,
+        "gate": "success",
+        "gate_run_id": 40592404758,
+        "observed_at_utc": "2026-10-27T22:10:20Z"
       }
     },
     "critical_engine_findings": [
@@ -1334,11 +1354,11 @@
       },
       "research_pr_validation": {
         "pr": 1195,
-        "previous_head_sha": "75ddbb869bb5db621fb163653c6ddaa5da75c7ae",
-        "ci": "PENDING_FOR_CURRENT_HEAD",
-        "gate": "PENDING_FOR_CURRENT_HEAD",
+        "head_before_ledger_update": "50464e7374a289b6569e205cffd386c5437d4a47",
+        "ci": "NOT_VERIFIED_FOR_THIS_LEDGER_UPDATE",
+        "gate": "NOT_VERIFIED_FOR_THIS_LEDGER_UPDATE",
         "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-        "note": "The current ledger update is a new commit after the previously recorded checks. Validate the latest PR head; do not reuse older CI as proof for this commit."
+        "note": "Previous checks do not cover the new ledger-only commit."
       },
       "safety_prs": [
         {
@@ -1445,14 +1465,14 @@
     "snapshot_id": "XRP-CI-VERIFICATION-2026-10-27T220923Z",
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2209Z.json",
     "snapshot_blob_sha": "a9fabdbcb5b3bcf33684f97572299a6d8e9c4497",
-    "current_research_head_before_ledger_update": "b6898db2e1466894ead756599d45bfa9d1881f4e",
+    "current_research_head_before_ledger_update": "50464e7374a289b6569e205cffd386c5437d4a47",
     "current_research_checks": {
       "tests": "PENDING_FOR_THIS_LEDGER_COMMIT",
       "gate": "PENDING_FOR_THIS_LEDGER_COMMIT",
-      "as_of_utc": "2026-10-27T22:09:23Z",
+      "as_of_utc": "2026-10-27T22:10:20Z",
       "test_run_url": null,
       "gate_run_url": null,
-      "note": "This ledger update creates a new research-branch commit; PR #1220 test results apply to its own head only."
+      "note": "This ledger-only update creates a new commit; the research branch has not been revalidated at the resulting head."
     }
   },
   "sources": [
@@ -1882,6 +1902,14 @@
       "title": "PR #1220 fail-closed gate completed successfully",
       "accessed_at_utc": "2026-10-27T22:09:23Z",
       "note": "Fail-closed gate completed successfully for PR #1220. It did not merge the PR; review and explicit approval remain required."
+    },
+    {
+      "id": "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "title": "Current state of XRP research ledger PR #1195",
+      "accessed_at_utc": "2026-10-27T22:10:20Z",
+      "note": "Current GitHub comparison reports the preserved research branch is open/draft, 32 commits ahead and 45 behind observed main, with mergeable=true. Do not merge; the branch contains historical research snapshots and needs a reviewed fresh-main successor."
     }
   ],
   "limitations": [
@@ -2141,6 +2169,21 @@
         "snapshot_json": "PASS_READBACK",
         "ci_exact_head": "PASS_164_TESTS",
         "fail_closed_gate": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:10:20Z",
+      "update_type": "APPEND_ONLY_CURRENT_RESEARCH_BRANCH_DIVERGENCE_CHECK",
+      "details": "Rechecked current repository refs after PR #1220 CI completed. Main remains at a371918; PR #1220 remains open/draft with 164 tests and fail-closed gate passing. PR #1195 remains open/draft, 32 commits ahead and 45 behind main; preserve it and do not merge.",
+      "validation": {
+        "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "pr_1220_ci": "PASS_164_TESTS",
+        "pr_1220_gate": "PASS",
+        "pr_1195_ahead_by": 32,
+        "pr_1195_behind_by": 45,
         "main_modified": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
