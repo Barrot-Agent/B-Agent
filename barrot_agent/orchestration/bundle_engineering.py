@@ -365,7 +365,25 @@ class BundleEngineeringController:
 
     def _ask(self, prompt: str) -> dict[str, Any]:
         raw = self.brain.think(prompt, system=self.SYSTEM)
-        return self._parse_bundle(raw)
+        try:
+            return self._parse_bundle(raw)
+        except BundleEngineeringError as exc:
+            if "invalid JSON" not in str(exc):
+                raise
+            # One bounded regeneration avoids failing on a truncated or malformed
+            # model response while preserving the original prompt and its invariants.
+            recovery_prompt = f"""Your previous response was not valid JSON. Regenerate the complete answer for the
+original request below as exactly one valid JSON object. Do not use Markdown fences or prose.
+Keep the plan concise enough to fit in one response; do not omit required fields or truncate strings.
+
+Original request:
+{prompt}
+
+Invalid response to replace (diagnostic context only; do not copy malformed syntax):
+{str(raw)[:8000]}
+"""
+            recovered = self.brain.think(recovery_prompt, system=self.SYSTEM)
+            return self._parse_bundle(recovered)
 
     def run(
         self,
