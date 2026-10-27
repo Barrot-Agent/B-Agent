@@ -9,6 +9,7 @@ import math
 import os
 import time
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
 import requests
 
@@ -200,16 +201,38 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
             if any(marker in title_text for marker in ACADEMIC_TITLE_MARKERS):
                 continue
 
-            raw_timestamp = entry.get("ingested_at")
-            if not isinstance(raw_timestamp, str) or not raw_timestamp.strip():
+            raw_ingested = entry.get("ingested_at")
+            if not isinstance(raw_ingested, str) or not raw_ingested.strip():
                 continue
             try:
-                timestamp = datetime.fromisoformat(raw_timestamp.replace("Z", "+00:00"))
+                ingested_at = datetime.fromisoformat(raw_ingested.replace("Z", "+00:00"))
             except (ValueError, TypeError):
                 continue
-            if timestamp.tzinfo is None or timestamp.utcoffset() is None:
+            if ingested_at.tzinfo is None or ingested_at.utcoffset() is None:
                 continue
-            if timestamp < cutoff or timestamp > now + timedelta(minutes=5):
+            if ingested_at > now + timedelta(minutes=5):
+                continue
+
+            # Fresh ingestion is not the same as a fresh market event. Require
+            # the publisher's event time so re-ingested old articles cannot
+            # masquerade as current sentiment. RSS pubDate values are RFC 822.
+            raw_published = (
+                entry.get("published")
+                or entry.get("published_at")
+                or entry.get("publication_timestamp")
+            )
+            if not isinstance(raw_published, str) or not raw_published.strip():
+                continue
+            try:
+                published_at = datetime.fromisoformat(raw_published.replace("Z", "+00:00"))
+            except (ValueError, TypeError):
+                try:
+                    published_at = parsedate_to_datetime(raw_published)
+                except (ValueError, TypeError, OverflowError):
+                    continue
+            if published_at.tzinfo is None or published_at.utcoffset() is None:
+                continue
+            if published_at < cutoff or published_at > now + timedelta(minutes=5):
                 continue
 
             try:
