@@ -956,6 +956,24 @@
       "details": "Added the latest announced federal funds target range and marked the Oct 27–28 FOMC decision as a pending event at the snapshot cutoff.",
       "validation": "JSON parse and source-reference integrity check executed before commit.",
       "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T20:02:20Z",
+      "update_type": "APPEND_ONLY_RUN_SNAPSHOT",
+      "snapshot_id": "XRP-RUN-2026-10-27T200220Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2002Z.json",
+      "snapshot_blob_sha": "b5a76e44ec2a9e7ffd5d9f92a236ec869b83d962",
+      "details": "Appended a timestamped evidence snapshot covering current XRP market-data quality, Coinbase/Circle/USDC relationships, Circle Arc, Standard Chartered/LMAX collateral plans, BNY XRP/RLUSD custody, C2FO/RLUSD settlement plans, SBIC versus SBI identity, public video leads, platform capability status, and current repository/CI blockers.",
+      "validation": {
+        "json_parse": "PASS",
+        "unique_source_ids": "PASS",
+        "relationship_source_reference_integrity": "PASS",
+        "hypothesis_source_reference_integrity": "PASS",
+        "forecast_status": "NOT_ISSUED",
+        "exact_stored_snapshot_re_read": "PASS",
+        "merge_performed": false,
+        "main_modified": false
+      }
     }
   ]
 }
