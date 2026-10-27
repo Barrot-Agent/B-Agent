@@ -221,6 +221,8 @@ def build_bundle_authoring_prompt(
         raise BundleEngineeringError("Objective must be non-empty.")
     if not isinstance(constraints, list) or any(not isinstance(x, str) or not x.strip() for x in constraints):
         raise BundleEngineeringError("Constraints must be a list of non-empty strings.")
+    if not constraints:
+        raise BundleEngineeringError("At least one explicit safety or task constraint is required.")
     return f"""You are Barrot's work-bundle engineer. Return one JSON object only.
 
 Create an executable, repository-grounded bundle for this objective:
