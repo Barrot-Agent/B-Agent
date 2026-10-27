@@ -156,6 +156,7 @@ def dispatch_bundle_tasks(
     work_id: str,
     bundle: dict[str, Any],
     execute_task: Any,
+    recover_task: Any = None,
 ) -> dict[str, Any]:
     """Execute ready bundle tasks through the caller's existing queue and resume from evidence.
 
@@ -166,6 +167,8 @@ def dispatch_bundle_tasks(
         raise ValueError("bundle must contain a non-empty tasks list")
     if not callable(execute_task):
         raise ValueError("execute_task must be callable")
+    if recover_task is not None and not callable(recover_task):
+        raise ValueError("recover_task must be callable when provided")
 
     tasks = bundle["tasks"]
     task_by_id: dict[str, dict[str, Any]] = {}
@@ -233,7 +236,10 @@ def dispatch_bundle_tasks(
                 "attempt": attempt_number,
             })
             try:
-                result = execute_task(task)
+                result = recover_task(task) if recover_task is not None else None
+                recovered_from_queue = result is not None
+                if result is None:
+                    result = execute_task(task)
                 last_result = result
                 raw = result if isinstance(result, dict) else result.to_dict()
                 cycle = raw.get("repair_cycle", raw)
@@ -251,6 +257,7 @@ def dispatch_bundle_tasks(
                     "failure": cycle.get("failure"),
                     "depends_on": dependencies,
                     "result": raw,
+                    "recovered_from_queue": recovered_from_queue,
                 }
                 store.record_task_execution(work_id, task_id, evidence)
                 if is_complete(evidence):
