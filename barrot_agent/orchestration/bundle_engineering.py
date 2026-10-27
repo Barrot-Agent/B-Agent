@@ -391,7 +391,7 @@ class BundleEngineeringController:
             "quality_score": review.quality_score,
             "finding_codes": [item.code for item in review.findings],
         }]
-        if review.valid:
+        if review.valid and not review.findings:
             return BundleEngineeringResult("READY_FOR_EXECUTION_REVIEW", current, review, tuple(attempts))
 
         for revision_number in range(1, self.max_revision_attempts + 1):
