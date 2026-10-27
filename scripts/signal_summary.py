@@ -11,6 +11,7 @@ AUDIO_FILE = AUDIO_DIR / "latest_signal_summary.wav"
 KEY = os.environ.get("GROQ_API_KEY", "")
 DISCLAIMER = "Not financial advice. Informational only. Do your own research."
 TTS_LIMIT = 200
+LAST_CHAT_ERROR = None
 
 def post(url, payload, timeout):
     req = urllib.request.Request(
@@ -30,14 +31,17 @@ def post(url, payload, timeout):
         return None, f"{type(e).__name__}: {e}"
 
 def chat(prompt, max_tokens=400):
+    global LAST_CHAT_ERROR
     raw, err = post("https://api.groq.com/openai/v1/chat/completions",
                     {"model": "openai/gpt-oss-120b",
                      "messages": [{"role": "user", "content": prompt}],
                      "max_tokens": max_tokens, "temperature": 0.4,
                      "reasoning_effort": "low"}, 60)
     if err:
+        LAST_CHAT_ERROR = err
         print(f"[chat] FAILED: {err}")
         return ""
+    LAST_CHAT_ERROR = None
     msg = json.loads(raw)["choices"][0]["message"]
     out = (msg.get("content") or "").strip()
     if not out:
@@ -74,34 +78,133 @@ def fallback_line(signal):
         bits.append(f"Based on {n} news entries.")
     return " ".join(bits)
 
+def model_unavailable(signal):
+    status = str(signal.get("signal_status", "")).lower()
+    source = str(signal.get("source", "")).lower()
+    return (
+        signal.get("model_available") is False
+        or status in {"unavailable", "news_only"}
+        or any(marker in source for marker in ("sentiment unavailable", "github_failed:", "groq_failed:"))
+    )
+
+
+def fallback_summary(signal):
+    """Deterministic fallback; never repeat a contaminated combined score."""
+    news_score = signal.get("news_score")
+    if model_unavailable(signal):
+        if news_score is None or str(signal.get("signal_status", "")).lower() == "unavailable":
+            return "Signal unavailable. No directional forecast is issued; this is not a calibrated price prediction."
+        count = signal.get("news_entries")
+        count_text = f" from {count} news entries" if count is not None else ""
+        return (
+            f"Model analysis unavailable. news-only sentiment score {news_score}{count_text} is reported separately; "
+            "the combined score is not a directional signal. No calibrated price prediction is issued."
+        )
+    score = signal.get("score")
+    if score is None:
+        return "No model score available. No directional forecast is issued; this is not a calibrated price prediction."
+    confidence = signal.get("confidence")
+    confidence_text = f"; confidence field {confidence}" if confidence is not None else ""
+    return f"Observed signal score: {score}{confidence_text}. Sentiment only, not a calibrated price prediction."
+
+
+def fallback_line(signal):
+    if model_unavailable(signal):
+        news_score = signal.get("news_score")
+        if news_score is None:
+            return "XRP signal unavailable; no directional forecast."
+        count = signal.get("news_entries")
+        count_text = f" from {count} headlines" if count is not None else ""
+        return f"XRP model unavailable; news-only score {news_score}{count_text}; no directional forecast."
+    score = signal.get("score")
+    confidence = signal.get("confidence")
+    parts = ["XRP signal update."]
+    if score is not None:
+        parts.append(f"Score {score}.")
+    if confidence is not None:
+        parts.append(f"Confidence {confidence}.")
+    return " ".join(parts)
+
+
+def safe_error_label(error):
+    if not error:
+        return None
+    text = str(error)
+    for code, label in ((429, "HTTP 429 rate limited"), (401, "HTTP 401 unauthorized"), (403, "HTTP 403 forbidden")):
+        if f"HTTP {code}" in text:
+            return label
+    return text.split(":", 1)[0][:100]
+
+
 def main():
-    if not KEY:
-        sys.exit("GROQ_API_KEY not set")
+    global LAST_CHAT_ERROR
     if not SIGNAL_FILE.is_file():
         sys.exit(f"{SIGNAL_FILE} not found")
-    signal = json.loads(SIGNAL_FILE.read_text())
+    signal = json.loads(SIGNAL_FILE.read_text(encoding="utf-8"))
     print("SIGNAL KEYS:", list(signal.keys()))
-    base = ("Summarize this XRP signal in 2 sentences, then 3 short bullets. "
-            "Use ONLY the values shown. Invent nothing.\n\n"
-            + json.dumps(signal, indent=2))
-    summary = chat(base)
-    if not summary:
-        sys.exit("Summary generation failed; nothing written.")
-    spoken = chat("Compress to ONE spoken sentence under 130 characters, "
-                  "Plain words only: no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\n\n" + summary, 500)
-    print(f"[compress] raw: {spoken!r}")
-    spoken = " ".join(spoken.replace("*", "").split())
+
+    summary_method = "model_generated"
+    provider_error = None
+    signal_model_available = not model_unavailable(signal)
+    if not signal_model_available:
+        summary = fallback_summary(signal)
+        summary_method = "deterministic_fallback"
+        provider_error = "signal model unavailable; summarizer bypassed"
+        LAST_CHAT_ERROR = provider_error
+    elif not KEY:
+        summary = fallback_summary(signal)
+        summary_method = "deterministic_fallback"
+        provider_error = "GROQ_API_KEY missing"
+        LAST_CHAT_ERROR = provider_error
+    else:
+        prompt = (
+            "Summarize this XRP signal in 2 sentences, then 3 short bullets. "
+            "Use ONLY the values shown. Invent nothing.\\n\\n"
+            + json.dumps(signal, indent=2)
+        )
+        summary = chat(prompt)
+        provider_error = safe_error_label(LAST_CHAT_ERROR)
+        if not summary:
+            summary = fallback_summary(signal)
+            summary_method = "deterministic_fallback"
+
+    spoken = ""
+    if KEY and summary_method == "model_generated":
+        spoken = chat(
+            "Compress to ONE spoken sentence under 130 characters, plain words only: "
+            "no markdown, no asterisks, no raw timestamps. Reply with the sentence and nothing else.\\n\\n"
+            + summary,
+            500,
+        )
+        provider_error = safe_error_label(LAST_CHAT_ERROR) or provider_error
+    spoken = " ".join((spoken or "").replace("*", "").split())
     if not spoken or len(spoken) > 140:
         spoken = fallback_line(signal)
-        print(f"[compress] using deterministic fallback: {spoken}")
+
     line = f"{spoken} {DISCLAIMER}"[:TTS_LIMIT]
-    print(f"[tts] input ({len(line)} chars): {line}")
-    audio, tts_err = speak(line)
+    audio = None
+    if KEY and summary_method == "model_generated" and not LAST_CHAT_ERROR:
+        audio, tts_error = speak(line)
+    else:
+        tts_error = "skipped because signal/summarizer provider was unavailable or key was missing"
+
+    SUMMARY_FILE.parent.mkdir(parents=True, exist_ok=True)
     SUMMARY_FILE.write_text(json.dumps({
-        "summary": summary, "spoken_line": line, "disclaimer": DISCLAIMER,
-        "audio": audio, "tts_error": tts_err,
-        "source_signal": signal}, indent=2))
-    print("Summary written")
+        "summary": summary,
+        "summary_method": summary_method,
+        "summary_status": "available" if summary else "unavailable",
+        "spoken_line": line,
+        "disclaimer": DISCLAIMER,
+        "audio": audio,
+        "tts_error": tts_error,
+        "provider_error": provider_error,
+        "model_available": signal_model_available,
+        "signal_model_available": signal_model_available,
+        "summary_model_available": summary_method == "model_generated",
+        "source_signal": signal,
+    }, indent=2), encoding="utf-8")
+    print(f"Summary written ({summary_method})")
+
 
 if __name__ == "__main__":
     main()
