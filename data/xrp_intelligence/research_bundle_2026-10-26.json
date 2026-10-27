@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-26T23:15:00Z",
+    "captured_at_utc": "2026-10-27T00:02:27.442Z",
     "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -121,205 +121,18 @@
   },
   "sources": [
     {
-      "source_id": "SRC-XRPL-XRP-OVERVIEW",
-      "title": "XRP Overview",
-      "author_or_organization": "XRPL.org",
-      "source_type": "official_protocol_documentation",
-      "url": "https://xrpl.org/about/xrp",
-      "publication_date": "accessed 2026-10-26",
+      "source_id": "SRC-BARROT-AGENT-WORKFLOW",
+      "title": "Active Barrot Agent issue/workflow dispatcher",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
+      "publication_date": "observed 2026-10-26",
+      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
       "sections": [
-        "XRP as XRPL native asset",
-        "Ripple/XRP distinction",
-        "bridge-asset and collateral use cases"
-      ],
-      "relationships": [
-        {
-          "source_node": "XRP",
-          "target_node": "XRP Ledger",
-          "relationship_type": "NATIVE_ASSET_OF",
-          "status": "SUPPORTED_BY_PRIMARY_SOURCE"
-        }
-      ]
-    },
-    {
-      "source_id": "SRC-XRPL-TOKENS",
-      "title": "Tokens: differences between XRP and other XRPL tokens",
-      "author_or_organization": "XRPL.org",
-      "source_type": "official_protocol_documentation",
-      "url": "https://xrpl.org/docs/concepts/tokens",
-      "publication_date": "accessed 2026-10-26",
-      "sections": [
-        "XRP versus issued tokens",
-        "reserve and transaction-cost roles"
-      ]
-    },
-    {
-      "source_id": "SRC-COINBASE-XRP-SUPPORT",
-      "title": "Ripple SEC Lawsuit / XRP support status",
-      "author_or_organization": "Coinbase Help",
-      "source_type": "official_exchange_support",
-      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec",
-      "publication_date": "page shows updated July 13; year not explicit in extracted result",
-      "sections": [
-        "XRP relisting",
-        "retail, Prime and custody support",
-        "jurisdiction restrictions"
-      ]
-    },
-    {
-      "source_id": "SRC-CIRCLE-USDC-XRPL",
-      "title": "Now Available: USDC on the XRPL",
-      "author_or_organization": "Circle",
-      "source_type": "official_issuer_announcement",
-      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
-      "publication_date": "2025-06-12",
-      "sections": [
-        "Native USDC on XRPL mainnet",
-        "Circle Mint and API support",
-        "no bridge required"
-      ]
-    },
-    {
-      "source_id": "SRC-CIRCLE-USDC-STATUS",
-      "title": "USDC",
-      "author_or_organization": "Circle",
-      "source_type": "official_issuer_information",
-      "url": "https://www.circle.com/usdc",
-      "publication_date": "page states 38 native networks as of 2026-09-16",
-      "sections": [
-        "USDC reserve model",
-        "supported networks",
-        "circulation and institutional access"
-      ]
-    },
-    {
-      "source_id": "SRC-CIRCLE-COINBASE-AGREEMENT",
-      "title": "Ushering in the next chapter for USDC",
-      "author_or_organization": "Circle Investor Relations",
-      "source_type": "official_corporate_announcement",
-      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
-      "publication_date": "2023",
-      "sections": [
-        "Circle remains issuer",
-        "Coinbase equity stake",
-        "reserve income and distribution revenue sharing"
-      ]
-    },
-    {
-      "source_id": "SRC-COINBASE-USDC-INCENTIVES",
-      "title": "USDC Incentive Program",
-      "author_or_organization": "Coinbase Help",
-      "source_type": "official_exchange_program",
-      "url": "https://help.coinbase.com/en/prime/usdc",
-      "publication_date": "accessed 2026-10-26",
-      "sections": [
-        "market-maker incentives",
-        "USDC minting incentives",
-        "revenue based on USDC held on Coinbase and third-party platforms"
-      ]
-    },
-    {
-      "source_id": "SRC-SBI-XRP-REMIT",
-      "title": "XRP-enabled Ripple remittance solution expanded to Philippines, Vietnam and Indonesia",
-      "author_or_organization": "SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple via SBI Group",
-      "source_type": "official_corporate_announcement",
-      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
-      "publication_date": "2023-09-06",
-      "sections": [
-        "XRP used in announced cross-border remittance service",
-        "SBI Remit",
-        "SBI VC Trade",
-        "SBI Ripple Asia joint venture with Ripple"
-      ]
-    },
-    {
-      "source_id": "SRC-SBI-RLUSD-MOU",
-      "title": "SBI Group and Ripple sign basic agreement to issue and distribute RLUSD in Japan",
-      "author_or_organization": "SBI Holdings and Ripple",
-      "source_type": "official_corporate_announcement",
-      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
-      "publication_date": "2025-08-22",
-      "sections": [
-        "RLUSD Japan distribution plan",
-        "SBI VC Trade",
-        "Ripple subsidiary Standard Custody"
-      ]
-    },
-    {
-      "source_id": "SRC-SBI-RLUSD-START",
-      "title": "RLUSD handling begins on SBI VC Trade",
-      "author_or_organization": "SBI VC Trade and Ripple",
-      "source_type": "official_corporate_announcement",
-      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
-      "publication_date": "2026-06-24",
-      "sections": [
-        "domestic RLUSD handling launch",
-        "SBI VC Trade",
-        "Ripple partnership"
-      ]
-    },
-    {
-      "source_id": "SRC-SBI-XRP-MARKET",
-      "title": "XRP/JPY leverage-trading spread campaign",
-      "author_or_organization": "SBI VC Trade via SBI Holdings",
-      "source_type": "official_exchange_announcement",
-      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
-      "publication_date": "2026-06-22",
-      "sections": [
-        "XRP/JPY leverage market access",
-        "spread campaign terms",
-        "temporary promotion; not proof of net flows"
-      ]
-    },
-    {
-      "source_id": "SRC-SBI-CRYPTO-IDENTITY",
-      "title": "SBI Crypto incident disclosure",
-      "author_or_organization": "SBI Holdings",
-      "source_type": "official_corporate_announcement",
-      "url": "https://www.sbigroup.co.jp/news/2025/1002_15808.html",
-      "publication_date": "2025-10-02",
-      "sections": [
-        "SBI Crypto described as mining subsidiary",
-        "separate asset-management entities from SBI VC Trade and BITPOINT Japan"
-      ]
-    },
-    {
-      "source_id": "SRC-SBI-CRYPTO-PROFILE",
-      "title": "What is SBI Crypto?",
-      "author_or_organization": "SBI Crypto",
-      "source_type": "official_company_privacy_notice",
-      "url": "https://www.sbicrypto.com/en/privacy/",
-      "publication_date": "accessed 2026-10-26",
-      "sections": [
-        "SBI Crypto company identity",
-        "cryptocurrency mining",
-        "wholly owned SBI Holdings subsidiary"
-      ]
-    },
-    {
-      "source_id": "SRC-TOKYO-SBIC-PROFILE",
-      "title": "Company profile",
-      "author_or_organization": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
-      "source_type": "official_company_profile",
-      "url": "https://www.sbic.co.jp/company/profile/",
-      "publication_date": "accessed 2026-10-26",
-      "sections": [
-        "Tokyo SBIC legal identity",
-        "SME investment-development mandate",
-        "established 1963"
-      ]
-    },
-    {
-      "source_id": "SRC-CIRCLE-ARC",
-      "title": "Circle launches Arc mainnet",
-      "author_or_organization": "Circle",
-      "source_type": "official_corporate_announcement",
-      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
-      "publication_date": "2026-09-16",
-      "sections": [
-        "Circle's own L1 strategy",
-        "USDC and financial market infrastructure",
-        "institutional/ecosystem builder launch claims"
+        "contents/pull-requests/issues write permissions",
+        "issue label sender gate",
+        "workflow_dispatch task title/body inputs",
+        "model-driven repair worker"
       ]
     },
     {
@@ -339,6 +152,31 @@
       ]
     },
     {
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-20261026T232541Z",
+      "title": "Barrot main-branch latest signal artifact — 2026-10-26 23:25:41 UTC",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "direct_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "artifact timestamp 2026-10-26T23:25:41.820784Z; re-fetched 2026-10-27",
+      "sections": [
+        "current score and confidence",
+        "news-derived score and headline text",
+        "provider failure status"
+      ],
+      "relationships": [
+        {
+          "source_node": "Barrot XRP signal pipeline",
+          "target_node": "XRP forecast publication",
+          "relationship_type": "CURRENT_SIGNAL_GATE_INPUT",
+          "status": "INVALID_FOR_FORECASTING"
+        }
+      ],
+      "snapshot": {
+        "blob_sha": "a74f8cacf498ce6936d538a1cdc0925605379cb1",
+        "retrieved_at_utc": "2026-10-27T00:02:27.442Z"
+      }
+    },
+    {
       "source_id": "SRC-BARROT-LEGACY-ACCURACY",
       "title": "Barrot legacy signal accuracy artifact",
       "author_or_organization": "Barrot-Agent/B-Agent",
@@ -350,6 +188,36 @@
         "1588 checked",
         "725 correct",
         "45.7 percent; invalid variable-horizon measure per PR #1165"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+      "title": "Active merge-queue workflow",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "publication_date": "observed 2026-10-26",
+      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "sections": [
+        "workflow_dispatch trigger",
+        "contents and pull-requests write permissions",
+        "mode=all enumerates every open PR",
+        "branch updates and merge call",
+        "does not explicitly query draft or review decision in selected PR fields"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR-1155",
+      "title": "XRP market data: require synchronized event-time inputs",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "pull_request",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1155",
+      "publication_date": "updated 2026-10-26",
+      "sections": [
+        "XRP/USD spot, XRP/USDT perpetual, USDT/USD synchronized inputs",
+        "stale/future/skew validation",
+        "126 tests passed on reported merge ref",
+        "draft; not merged"
       ]
     },
     {
@@ -368,17 +236,208 @@
       ]
     },
     {
-      "source_id": "SRC-BARROT-PR-1155",
-      "title": "XRP market data: require synchronized event-time inputs",
+      "source_id": "SRC-BARROT-PR-1168",
+      "title": "Safety: disable mutation-capable merge queue on fresh main",
       "author_or_organization": "Barrot-Agent/B-Agent",
       "source_type": "pull_request",
-      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1155",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1168",
       "publication_date": "updated 2026-10-26",
       "sections": [
-        "XRP/USD spot, XRP/USDT perpetual, USDT/USD synchronized inputs",
-        "stale/future/skew validation",
-        "126 tests passed on reported merge ref",
-        "draft; not merged"
+        "draft replacement workflow with read-only permissions",
+        "no-op disabled merge queue",
+        "test_merge_queue_disabled.py added",
+        "CI and fail-closed workflow passed on observed PR head",
+        "not merged"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-RULESET-STATUS-20261027T000154Z",
+      "title": "Repository ruleset enforcement status",
+      "author_or_organization": "GitHub REST API",
+      "source_type": "direct_repository_security_configuration",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
+      "publication_date": "retrieved 2026-10-27T00:02:27.442Z",
+      "sections": [
+        "repository branch rulesets",
+        "enforcement status"
+      ],
+      "relationships": [
+        {
+          "source_node": "Barrot-Agent/B-Agent main branch",
+          "target_node": "Repository ruleset enforcement",
+          "relationship_type": "PROTECTION_CONFIGURATION",
+          "status": "OBSERVED_RULESET_DISABLED"
+        }
+      ],
+      "snapshot": {
+        "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
+        "observed_rulesets": [
+          {
+            "id": 10863829,
+            "name": "Fall Back",
+            "target": "branch",
+            "enforcement": "disabled"
+          }
+        ],
+        "branch_protection_endpoint": "403 Resource not accessible by integration; branch protection remains unverified"
+      }
+    },
+    {
+      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+      "title": "Digital Assets Pilot Program for Tokenized Collateral in Derivatives Markets",
+      "author_or_organization": "U.S. Commodity Futures Trading Commission",
+      "source_type": "official_regulatory_announcement",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+      "publication_date": "2025-12-08",
+      "sections": [
+        "pilot names BTC, ETH and USDC as examples of digital assets used as derivatives collateral",
+        "tokenized-collateral guidance",
+        "does not name XRP in the release text reviewed",
+        "Ripple executive comment on tokenized collateral does not equal XRP-specific eligibility"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-10Q-2026Q2",
+      "title": "Circle Internet Group Form 10-Q for quarter ended June 30, 2026",
+      "author_or_organization": "Circle Internet Group, Inc. / U.S. SEC",
+      "source_type": "official_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publication_date": "2026-Q2 filing; accessed 2026-10-26",
+      "sections": [
+        "Q2 2026 distribution costs in connection with Coinbase agreements $324.6M vs $332.3M Q2 2025",
+        "H1 2026 distribution costs in connection with Coinbase agreements $655.3M vs $635.5M H1 2025",
+        "Circle on-platform USDC daily weighted-average share 19.5% in Q2 2026 and 18.3% H1 2026",
+        "reserve income and distribution costs depend on USDC circulation, reserve return rates and platform balances"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-ARC",
+      "title": "Circle launches Arc mainnet",
+      "author_or_organization": "Circle",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publication_date": "2026-09-16",
+      "sections": [
+        "Circle's own L1 strategy",
+        "USDC and financial market infrastructure",
+        "institutional/ecosystem builder launch claims"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-COINBASE-AGREEMENT",
+      "title": "Ushering in the next chapter for USDC",
+      "author_or_organization": "Circle Investor Relations",
+      "source_type": "official_corporate_announcement",
+      "url": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "publication_date": "2023",
+      "sections": [
+        "Circle remains issuer",
+        "Coinbase equity stake",
+        "reserve income and distribution revenue sharing"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "author_or_organization": "Circle",
+      "source_type": "official_corporate_blog",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "publication_date": "2026-10-16",
+      "sections": [
+        "Circle reports more than $36T USDC on-chain transaction volume in H1 2026",
+        "Circle reports more than $315B minted/redeemed in H1 2026",
+        "Circle reports $819M in H1 2026 distribution-partner and transaction costs",
+        "aggregate metrics cover USDC across the network, not specifically XRPL"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-STATUS",
+      "title": "USDC",
+      "author_or_organization": "Circle",
+      "source_type": "official_issuer_information",
+      "url": "https://www.circle.com/usdc",
+      "publication_date": "page states 38 native networks as of 2026-09-16",
+      "sections": [
+        "USDC reserve model",
+        "supported networks",
+        "circulation and institutional access"
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-USDC-XRPL",
+      "title": "Now Available: USDC on the XRPL",
+      "author_or_organization": "Circle",
+      "source_type": "official_issuer_announcement",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publication_date": "2025-06-12",
+      "sections": [
+        "Native USDC on XRPL mainnet",
+        "Circle Mint and API support",
+        "no bridge required"
+      ]
+    },
+    {
+      "source_id": "SRC-CME-ACCEPTABLE-COLLATERAL",
+      "title": "Acceptable Collateral",
+      "author_or_organization": "CME Group",
+      "source_type": "official_clearing_collateral_policy",
+      "url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "CME Clearing collateral categories and limits",
+        "page text search returned no match for XRP at retrieval",
+        "eligibility remains account/product/clearing-member specific"
+      ]
+    },
+    {
+      "source_id": "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+      "title": "CME Group announces first trades of XRP futures",
+      "author_or_organization": "CME Group",
+      "source_type": "official_derivatives_exchange_announcement",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
+      "publication_date": "2025-05-20",
+      "sections": [
+        "XRP futures launched",
+        "contracts are cash-settled to CME CF XRP-Dollar Reference Rate",
+        "futures listing does not establish XRP collateral eligibility"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-10K-2025",
+      "title": "Coinbase Global, Inc. Form 10-K for year ended December 31, 2025",
+      "author_or_organization": "Coinbase Global, Inc. / U.S. SEC",
+      "source_type": "official_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000015/coin-20251231.htm",
+      "publication_date": "2025 fiscal-year filing; accessed 2026-10-26",
+      "sections": [
+        "Coinbase reported stablecoin revenue increase including $417.7M due to higher average USDC balances held in Coinbase products and $314.1M due to higher average off-platform USDC balances",
+        "stablecoin revenue also sensitive to lower average interest rates"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-USDC-INCENTIVES",
+      "title": "USDC Incentive Program",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_exchange_program",
+      "url": "https://help.coinbase.com/en/prime/usdc",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "market-maker incentives",
+        "USDC minting incentives",
+        "revenue based on USDC held on Coinbase and third-party platforms"
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-XRP-SUPPORT",
+      "title": "Ripple SEC Lawsuit / XRP support status",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_exchange_support",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/cryptocurrency-trading-pairs/ripple-sec",
+      "publication_date": "page shows updated July 13; year not explicit in extracted result",
+      "sections": [
+        "XRP relisting",
+        "retail, Prime and custody support",
+        "jurisdiction restrictions"
       ]
     },
     {
@@ -436,49 +495,68 @@
       ]
     },
     {
-      "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
-      "title": "Active merge-queue workflow",
-      "author_or_organization": "Barrot-Agent/B-Agent",
-      "source_type": "repository_workflow",
-      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
-      "publication_date": "observed 2026-10-26",
-      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "source_id": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+      "title": "Ripple reportedly offered to buy stablecoin rival Circle",
+      "author_or_organization": "Bloomberg",
+      "source_type": "independent_news_reporting_with_anonymous_sources",
+      "url": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
+      "publication_date": "2025-04-30",
       "sections": [
-        "workflow_dispatch trigger",
-        "contents and pull-requests write permissions",
-        "mode=all enumerates every open PR",
-        "branch updates and merge call",
-        "does not explicitly query draft or review decision in selected PR fields"
+        "reports a $4-$5 billion proposed acquisition offer based on unnamed sources",
+        "reports Circle rejected it as too low",
+        "reported transaction not confirmed by official filings in this research snapshot"
       ]
     },
     {
-      "source_id": "SRC-BARROT-AGENT-WORKFLOW",
-      "title": "Active Barrot Agent issue/workflow dispatcher",
-      "author_or_organization": "Barrot-Agent/B-Agent",
-      "source_type": "repository_workflow",
-      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
-      "publication_date": "observed 2026-10-26",
-      "source_commit": "6d73f866e082cf9c0f35a3fdaf924afbca979418",
+      "source_id": "SRC-RIPPLE-CIRCLE-DENIAL",
+      "title": "Brad Garlinghouse says Ripple never made a bid to acquire Circle",
+      "author_or_organization": "The Block",
+      "source_type": "secondary_news_reporting_of_public_denial",
+      "url": "https://www.theblock.co/news/deals/2025-06-03-brad-garlinghouse-says-ripple-never-made-a-bid-to-acquire-circle-contradicting-recent-reports-356818",
+      "publication_date": "2025-06-03",
       "sections": [
-        "contents/pull-requests/issues write permissions",
-        "issue label sender gate",
-        "workflow_dispatch task title/body inputs",
-        "model-driven repair worker"
+        "reports Ripple CEO Brad Garlinghouse denied pursuing Circle acquisition",
+        "reports Circle said it was not for sale",
+        "explicitly contradicts Bloomberg's earlier report"
       ]
     },
     {
-      "source_id": "SRC-BARROT-PR-1168",
-      "title": "Safety: disable mutation-capable merge queue on fresh main",
-      "author_or_organization": "Barrot-Agent/B-Agent",
-      "source_type": "pull_request",
-      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1168",
-      "publication_date": "updated 2026-10-26",
+      "source_id": "SRC-SBI-CRYPTO-IDENTITY",
+      "title": "SBI Crypto incident disclosure",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/1002_15808.html",
+      "publication_date": "2025-10-02",
       "sections": [
-        "draft replacement workflow with read-only permissions",
-        "no-op disabled merge queue",
-        "test_merge_queue_disabled.py added",
-        "CI and fail-closed workflow passed on observed PR head",
-        "not merged"
+        "SBI Crypto described as mining subsidiary",
+        "separate asset-management entities from SBI VC Trade and BITPOINT Japan"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CRYPTO-PROFILE",
+      "title": "What is SBI Crypto?",
+      "author_or_organization": "SBI Crypto",
+      "source_type": "official_company_privacy_notice",
+      "url": "https://www.sbicrypto.com/en/privacy/",
+      "publication_date": "accessed 2026-10-26",
+      "sections": [
+        "SBI Crypto company identity",
+        "cryptocurrency mining",
+        "wholly owned SBI Holdings subsidiary"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-FASSET-MOU",
+      "title": "SBI Remit and Fasset sign basic agreement for next-generation international remittance infrastructure",
+      "author_or_organization": "SBI Holdings and SBI Remit",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "publication_date": "2026-06-18",
+      "sections": [
+        "SBI Holdings says strategic investment in Fasset in May 2026",
+        "SBI Remit and Fasset MOU",
+        "stablecoin payment infrastructure and international remittance",
+        "not proof that XRP is or is not used in any route"
       ]
     },
     {
@@ -508,6 +586,32 @@
       ]
     },
     {
+      "source_id": "SRC-SBI-RLUSD-MOU",
+      "title": "SBI Group and Ripple sign basic agreement to issue and distribute RLUSD in Japan",
+      "author_or_organization": "SBI Holdings and Ripple",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html",
+      "publication_date": "2025-08-22",
+      "sections": [
+        "RLUSD Japan distribution plan",
+        "SBI VC Trade",
+        "Ripple subsidiary Standard Custody"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RLUSD-START",
+      "title": "RLUSD handling begins on SBI VC Trade",
+      "author_or_organization": "SBI VC Trade and Ripple",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publication_date": "2026-06-24",
+      "sections": [
+        "domestic RLUSD handling launch",
+        "SBI VC Trade",
+        "Ripple partnership"
+      ]
+    },
+    {
       "source_id": "SRC-SBI-VISA-MOU",
       "title": "SBI Group and Visa sign basic agreement to explore digital finance and payments collaboration",
       "author_or_organization": "SBI Holdings and Visa Japan",
@@ -521,123 +625,76 @@
       ]
     },
     {
-      "source_id": "SRC-SBI-FASSET-MOU",
-      "title": "SBI Remit and Fasset sign basic agreement for next-generation international remittance infrastructure",
-      "author_or_organization": "SBI Holdings and SBI Remit",
+      "source_id": "SRC-SBI-XRP-MARKET",
+      "title": "XRP/JPY leverage-trading spread campaign",
+      "author_or_organization": "SBI VC Trade via SBI Holdings",
+      "source_type": "official_exchange_announcement",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
+      "publication_date": "2026-06-22",
+      "sections": [
+        "XRP/JPY leverage market access",
+        "spread campaign terms",
+        "temporary promotion; not proof of net flows"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-XRP-REMIT",
+      "title": "XRP-enabled Ripple remittance solution expanded to Philippines, Vietnam and Indonesia",
+      "author_or_organization": "SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple via SBI Group",
       "source_type": "official_corporate_announcement",
-      "url": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
-      "publication_date": "2026-06-18",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "publication_date": "2023-09-06",
       "sections": [
-        "SBI Holdings says strategic investment in Fasset in May 2026",
-        "SBI Remit and Fasset MOU",
-        "stablecoin payment infrastructure and international remittance",
-        "not proof that XRP is or is not used in any route"
+        "XRP used in announced cross-border remittance service",
+        "SBI Remit",
+        "SBI VC Trade",
+        "SBI Ripple Asia joint venture with Ripple"
       ]
     },
     {
-      "source_id": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
-      "title": "Ripple reportedly offered to buy stablecoin rival Circle",
-      "author_or_organization": "Bloomberg",
-      "source_type": "independent_news_reporting_with_anonymous_sources",
-      "url": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
-      "publication_date": "2025-04-30",
-      "sections": [
-        "reports a $4-$5 billion proposed acquisition offer based on unnamed sources",
-        "reports Circle rejected it as too low",
-        "reported transaction not confirmed by official filings in this research snapshot"
-      ]
-    },
-    {
-      "source_id": "SRC-RIPPLE-CIRCLE-DENIAL",
-      "title": "Brad Garlinghouse says Ripple never made a bid to acquire Circle",
-      "author_or_organization": "The Block",
-      "source_type": "secondary_news_reporting_of_public_denial",
-      "url": "https://www.theblock.co/news/deals/2025-06-03-brad-garlinghouse-says-ripple-never-made-a-bid-to-acquire-circle-contradicting-recent-reports-356818",
-      "publication_date": "2025-06-03",
-      "sections": [
-        "reports Ripple CEO Brad Garlinghouse denied pursuing Circle acquisition",
-        "reports Circle said it was not for sale",
-        "explicitly contradicts Bloomberg's earlier report"
-      ]
-    },
-    {
-      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
-      "title": "Digital Assets Pilot Program for Tokenized Collateral in Derivatives Markets",
-      "author_or_organization": "U.S. Commodity Futures Trading Commission",
-      "source_type": "official_regulatory_announcement",
-      "url": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
-      "publication_date": "2025-12-08",
-      "sections": [
-        "pilot names BTC, ETH and USDC as examples of digital assets used as derivatives collateral",
-        "tokenized-collateral guidance",
-        "does not name XRP in the release text reviewed",
-        "Ripple executive comment on tokenized collateral does not equal XRP-specific eligibility"
-      ]
-    },
-    {
-      "source_id": "SRC-CME-XRP-FUTURES-CASH-SETTLED",
-      "title": "CME Group announces first trades of XRP futures",
-      "author_or_organization": "CME Group",
-      "source_type": "official_derivatives_exchange_announcement",
-      "url": "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
-      "publication_date": "2025-05-20",
-      "sections": [
-        "XRP futures launched",
-        "contracts are cash-settled to CME CF XRP-Dollar Reference Rate",
-        "futures listing does not establish XRP collateral eligibility"
-      ]
-    },
-    {
-      "source_id": "SRC-CME-ACCEPTABLE-COLLATERAL",
-      "title": "Acceptable Collateral",
-      "author_or_organization": "CME Group",
-      "source_type": "official_clearing_collateral_policy",
-      "url": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+      "source_id": "SRC-TOKYO-SBIC-PROFILE",
+      "title": "Company profile",
+      "author_or_organization": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
+      "source_type": "official_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
       "publication_date": "accessed 2026-10-26",
       "sections": [
-        "CME Clearing collateral categories and limits",
-        "page text search returned no match for XRP at retrieval",
-        "eligibility remains account/product/clearing-member specific"
+        "Tokyo SBIC legal identity",
+        "SME investment-development mandate",
+        "established 1963"
       ]
     },
     {
-      "source_id": "SRC-CIRCLE-10Q-2026Q2",
-      "title": "Circle Internet Group Form 10-Q for quarter ended June 30, 2026",
-      "author_or_organization": "Circle Internet Group, Inc. / U.S. SEC",
-      "source_type": "official_sec_filing",
-      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-      "publication_date": "2026-Q2 filing; accessed 2026-10-26",
+      "source_id": "SRC-XRPL-TOKENS",
+      "title": "Tokens: differences between XRP and other XRPL tokens",
+      "author_or_organization": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/docs/concepts/tokens",
+      "publication_date": "accessed 2026-10-26",
       "sections": [
-        "Q2 2026 distribution costs in connection with Coinbase agreements $324.6M vs $332.3M Q2 2025",
-        "H1 2026 distribution costs in connection with Coinbase agreements $655.3M vs $635.5M H1 2025",
-        "Circle on-platform USDC daily weighted-average share 19.5% in Q2 2026 and 18.3% H1 2026",
-        "reserve income and distribution costs depend on USDC circulation, reserve return rates and platform balances"
+        "XRP versus issued tokens",
+        "reserve and transaction-cost roles"
       ]
     },
     {
-      "source_id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
-      "title": "The Economics of USDC and Why Our Partners Win",
-      "author_or_organization": "Circle",
-      "source_type": "official_corporate_blog",
-      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
-      "publication_date": "2026-10-16",
+      "source_id": "SRC-XRPL-XRP-OVERVIEW",
+      "title": "XRP Overview",
+      "author_or_organization": "XRPL.org",
+      "source_type": "official_protocol_documentation",
+      "url": "https://xrpl.org/about/xrp",
+      "publication_date": "accessed 2026-10-26",
       "sections": [
-        "Circle reports more than $36T USDC on-chain transaction volume in H1 2026",
-        "Circle reports more than $315B minted/redeemed in H1 2026",
-        "Circle reports $819M in H1 2026 distribution-partner and transaction costs",
-        "aggregate metrics cover USDC across the network, not specifically XRPL"
-      ]
-    },
-    {
-      "source_id": "SRC-COINBASE-10K-2025",
-      "title": "Coinbase Global, Inc. Form 10-K for year ended December 31, 2025",
-      "author_or_organization": "Coinbase Global, Inc. / U.S. SEC",
-      "source_type": "official_sec_filing",
-      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000015/coin-20251231.htm",
-      "publication_date": "2025 fiscal-year filing; accessed 2026-10-26",
-      "sections": [
-        "Coinbase reported stablecoin revenue increase including $417.7M due to higher average USDC balances held in Coinbase products and $314.1M due to higher average off-platform USDC balances",
-        "stablecoin revenue also sensitive to lower average interest rates"
+        "XRP as XRPL native asset",
+        "Ripple/XRP distinction",
+        "bridge-asset and collateral use cases"
+      ],
+      "relationships": [
+        {
+          "source_node": "XRP",
+          "target_node": "XRP Ledger",
+          "relationship_type": "NATIVE_ASSET_OF",
+          "status": "SUPPORTED_BY_PRIMARY_SOURCE"
+        }
       ]
     }
   ],
@@ -825,14 +882,15 @@
     },
     {
       "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
-      "statement": "The latest main-branch signal artifact timestamped 2026-10-26T22:29:38Z reports score 44 and confidence 0 while both model providers failed (missing GitHub model credentials and Groq HTTP 429); the news score is 88 from 11 entries dominated by XRPL research-paper titles. This output must not be treated as a valid XRP forecast.",
+      "statement": "The latest main-branch signal artifact timestamped 2026-10-26T23:25:41.820784Z reports score 44 and confidence 0 while both model providers failed (missing GitHub model credentials and Groq HTTP 429); the news score is 88 from 11 entries dominated by XRPL research-paper/protocol titles. This output must not be treated as a valid XRP forecast.",
       "domain": "prediction_engine_integrity",
       "claim_type": "observed_runtime_failure_and_gate",
       "source": "SRC-BARROT-LATEST-SIGNAL",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
       "supporting_evidence": [
         "XRP-E-MAIN-SIGNAL-ARTIFACT",
-        "XRP-E-PR-1165-ROOT-CAUSE"
+        "XRP-E-PR-1165-ROOT-CAUSE",
+        "XRP-E-MAIN-SIGNAL-ARTIFACT-2325Z"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -845,9 +903,10 @@
       ],
       "provenance": [
         "SRC-BARROT-LATEST-SIGNAL",
-        "SRC-BARROT-PR-1165"
+        "SRC-BARROT-PR-1165",
+        "SRC-BARROT-LATEST-SIGNAL-20261026T232541Z"
       ],
-      "timestamp": 1793055698
+      "timestamp": 1793059347
     },
     {
       "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
@@ -936,14 +995,15 @@
     },
     {
       "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
-      "statement": "The active main-branch merge-queue workflow is manually dispatchable, grants contents and pull-request write permissions, exposes a mode that processes every open PR, and can update branches and call the merge API. The workflow does not explicitly query draft status or review-decision/approval fields in the PR metadata it fetches, so it lacks a visible explicit approval gate at workflow level; GitHub branch protection or merge rules may still block a merge. Do not trigger this workflow until gates are independently verified.",
+      "statement": "The active main-branch merge-queue workflow is manually dispatchable, grants contents and pull-request write permissions, exposes a mode that processes every open PR, and can update branches and call the merge API. The workflow does not explicitly query draft status or review-decision/approval fields in the PR metadata it fetches, so it lacks a visible explicit approval gate at workflow level; GitHub branch protection or merge rules may still block a merge. Do not trigger this workflow until gates are independently verified. The GitHub rulesets collection also returned one branch-target ruleset with enforcement disabled; the branch-protection endpoint was inaccessible (403), so effective branch protection remains unverified.",
       "domain": "repository_security_and_change_control",
       "claim_type": "confirmed_configuration_with_risk_assessment",
       "source": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
       "supporting_evidence": [
         "XRP-E-MERGE-QUEUE-WRITE-PATH",
-        "XRP-E-PR-1168-DISABLED-FIX"
+        "XRP-E-PR-1168-DISABLED-FIX",
+        "XRP-E-BRANCH-RULESET-DISABLED-20261027"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -952,13 +1012,15 @@
       "acceptance_status": "UNRESOLVED",
       "confidence": 0.98,
       "assumptions": [
-        "Repository branch-protection/ruleset configuration was not inspected in this run; do not assume missing protections."
+        "Repository branch-protection/ruleset configuration was not inspected in this run; do not assume missing protections.",
+        "The observed disabled ruleset is not evidence that branch protection is absent; the separate branch-protection endpoint was inaccessible to the connected integration."
       ],
       "provenance": [
         "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
-        "SRC-BARROT-PR-1168"
+        "SRC-BARROT-PR-1168",
+        "SRC-BARROT-RULESET-STATUS-20261027T000154Z"
       ],
-      "timestamp": 1793055698
+      "timestamp": 1793059347
     },
     {
       "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
@@ -1181,20 +1243,94 @@
   ],
   "evidence": [
     {
-      "evidence_id": "XRP-E-COINBASE-CIRCLE-PRIMARY",
-      "claim_id": "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
+      "evidence_id": "XRP-E-BARROT-AGENT-WRITE-PATH",
+      "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
+      "kind": "computational_evidence",
+      "summary": "The active .github/workflows/barrot-agent.yml grants contents: write, pull-requests: write, issues: write; the issue-label path checks that the sender is the repository owner or Barrot-Agent, while workflow_dispatch invokes the repair worker from task title/body inputs.",
+      "source_id": "SRC-BARROT-AGENT-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-AGENT-WORKFLOW"
+      ],
+      "details": {
+        "required_review": "Inspect command sandbox, branch-protection/ruleset settings, and whether write permissions can be reduced per job."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-BRANCH-RULESET-DISABLED-20261027",
+      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "kind": "direct_repository_security_configuration_observation",
+      "summary": "The repository rulesets collection returned one branch-target ruleset named 'Fall Back' with enforcement disabled. The branch-protection endpoint returned 403 Resource not accessible by integration; actual branch-protection configuration could not be inspected. This confirms no protection from that listed ruleset, but does not prove branch protection is absent.",
+      "source_id": "SRC-BARROT-RULESET-STATUS-20261027T000154Z",
+      "source_location": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
+      "status": "OBSERVED_PARTIAL_SECURITY_CONFIGURATION",
+      "independence": "direct_github_api_observation",
+      "provenance": [
+        "SRC-BARROT-RULESET-STATUS-20261027T000154Z",
+        "SRC-BARROT-MERGE-QUEUE-WORKFLOW"
+      ],
+      "details": {
+        "ruleset_id": 10863829,
+        "ruleset_name": "Fall Back",
+        "enforcement": "disabled",
+        "branch_protection_access": "FORBIDDEN_BY_CONNECTED_INTEGRATION",
+        "merge_queue_should_run": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CFTC-COLLATERAL-PILOT",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "adversarial_objection",
+      "summary": "CFTC's 2025-12-08 announcement describes a digital-assets collateral pilot and explicitly names BTC, ETH and USDC; the release reviewed does not name XRP as an eligible pilot asset. It also quotes a Ripple stablecoins executive on tokenized collateral generally, which does not establish XRP-specific approval.",
+      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+      "source_location": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+      "status": "CHALLENGED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT"
+      ],
+      "details": {
+        "scope": "The announcement's omission of XRP is not proof that no separate FCM/clearinghouse permits XRP collateral.",
+        "chronology": "The CFTC pilot announcement is dated 2025-12-08, while the indexed Kamilah video is reported published 2025-12-06. The later announcement cannot itself substantiate a claim made two days earlier; an earlier product/FCM rule would be needed.",
+        "required_prior_source": "Locate the exact earlier regulatory notice, clearinghouse rule, FCM collateral schedule, or official approval the video may have referenced."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
+      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
       "kind": "independent_verification",
-      "summary": "Circle's official 2023 announcement says Circle remains the issuer, Coinbase is taking an equity stake, and reserve income/distribution usage revenue is shared under the agreement. Coinbase's USDC incentive page independently describes revenue tied to USDC balances on Coinbase and third-party platforms.",
-      "source_id": "SRC-CIRCLE-COINBASE-AGREEMENT",
-      "source_location": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "summary": "Circle's SEC Form 10-Q reports distribution costs in connection with Coinbase agreements of $324.6M for Q2 2026 and $655.3M for H1 2026, compared with $332.3M and $635.5M in the corresponding 2025 periods. The filing explains Coinbase allocations depend on USDC balances and broader ecosystem-growth economics.",
+      "source_id": "SRC-CIRCLE-10Q-2026Q2",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
       "status": "SUPPORTED",
       "independence": "independent_literature_corroboration",
       "provenance": [
-        "SRC-CIRCLE-COINBASE-AGREEMENT",
-        "SRC-COINBASE-USDC-INCENTIVES"
+        "SRC-CIRCLE-10Q-2026Q2"
       ],
       "details": {
-        "caveat": "Current revenue splits and contract amendments need latest filings; do not infer a fixed current percentage."
+        "Q2_2026_USD_millions": 324.6,
+        "Q2_2025_USD_millions": 332.3,
+        "H1_2026_USD_millions": 655.3,
+        "H1_2025_USD_millions": 635.5,
+        "interpretation": "Reported distribution costs connected with Coinbase agreements; not Coinbase's net profit and not an XRP-specific flow."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-USDC-H1-2026-METRICS",
+      "claim_id": "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS",
+      "kind": "independent_verification",
+      "summary": "Circle's October 16, 2026 corporate blog reports H1 2026 USDC on-chain transaction volume above $36T, mint/redeem volume above $315B, and $819M paid in distribution-partner and transaction costs.",
+      "source_id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "source_location": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-CIRCLE-USDC-ECONOMICS-2026"
+      ],
+      "details": {
+        "scope": "All supported USDC network activity as reported by Circle; no XRPL-specific volume split in this source."
       }
     },
     {
@@ -1214,139 +1350,68 @@
       }
     },
     {
-      "evidence_id": "XRP-E-XRP-NATIVE-ASSET",
-      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
+      "evidence_id": "XRP-E-CME-ACCEPTABLE-COLLATERAL",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
       "kind": "independent_verification",
-      "summary": "XRPL documentation distinguishes native XRP from other issued XRPL tokens.",
-      "source_id": "SRC-XRPL-TOKENS",
-      "source_location": "https://xrpl.org/docs/concepts/tokens",
+      "summary": "CME Group's official acceptable-collateral page was checked on 2026-10-26; a text search returned no XRP match. This challenges a blanket CME-eligibility claim but does not rule out other venues or FCM-specific arrangements.",
+      "source_id": "SRC-CME-ACCEPTABLE-COLLATERAL",
+      "source_location": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
+      "status": "CHALLENGED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CME-ACCEPTABLE-COLLATERAL"
+      ],
+      "details": {
+        "caveat": "Confirm current collateral schedule and FCM policies before concluding."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "independent_verification",
+      "summary": "CME's May 20, 2025 release says XRP futures are cash-settled to the CME CF XRP-Dollar Reference Rate. Listing a cash-settled XRP derivative is not equivalent to accepting XRP itself as collateral.",
+      "source_id": "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+      "source_location": "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
       "status": "SUPPORTED",
       "independence": "independent_literature_corroboration",
       "provenance": [
-        "SRC-XRPL-TOKENS"
+        "SRC-CME-XRP-FUTURES-CASH-SETTLED"
       ],
       "details": {
-        "implication": "USDC on XRPL is not XRP and is not itself evidence of net XRP acquisition."
+        "distinction": "Derivative exposure vs collateral eligibility."
       }
     },
     {
-      "evidence_id": "XRP-E-USDC-XRP-DECOUPLING",
-      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
-      "kind": "unresolved_question",
-      "summary": "USDC is a distinct issued token on XRPL. Need event-level measurements of XRP/fiat and XRP/stablecoin order books, XRP bridge paths, DEX routing, fees/reserve demand, and inventory before attributing stablecoin growth to XRP price demand.",
-      "source_id": "SRC-CIRCLE-USDC-XRPL",
-      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
-      "status": "UNRESOLVED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-CIRCLE-USDC-XRPL",
-        "SRC-XRPL-XRP-OVERVIEW"
-      ],
-      "details": {
-        "falsification": "If new USDC flows repeatedly cause measured increases in XRP bridge turnover, net inventory demand, or fee/reserve needs after controls, the no-direct-inference hypothesis should be revised."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-POTENTIAL-COMPLEMENTARITY",
-      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
-      "kind": "adversarial_objection",
-      "summary": "Counter-hypothesis: USDC could make XRPL more attractive for settlement and trading, indirectly increasing XRP bridge or market-making use in some paths.",
-      "source_id": "SRC-XRPL-XRP-OVERVIEW",
-      "source_location": "https://xrpl.org/about/xrp",
-      "status": "UNRESOLVED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-XRPL-XRP-OVERVIEW",
-        "SRC-CIRCLE-USDC-XRPL"
-      ],
-      "details": {
-        "required_test": "Compare routes that use XRP as a bridge against direct stablecoin/stablecoin settlement and measure net XRP inventory changes."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-XRP-REMIT",
-      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "evidence_id": "XRP-E-COINBASE-CIRCLE-PRIMARY",
+      "claim_id": "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
       "kind": "independent_verification",
-      "summary": "SBI Group's September 6, 2023 announcement names SBI Remit, SBI VC Trade, Ripple and the SBI/Ripple joint venture SBI Ripple Asia in an XRP-enabled remittance expansion to the Philippines, Vietnam and Indonesia.",
-      "source_id": "SRC-SBI-XRP-REMIT",
-      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
-      "status": "SUPPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "SRC-SBI-XRP-REMIT"
-      ],
-      "details": {
-        "limit": "A launch announcement is not a current transaction-volume series; current route use and bridge composition remain to be collected."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-RLUSD-START",
-      "claim_id": "XRP-C-SBI-RLUSD-JAPAN",
-      "kind": "independent_verification",
-      "summary": "SBI/Ripple's June 24, 2026 announcement states RLUSD handling began on SBI VC Trade following the August 2025 basic agreement.",
-      "source_id": "SRC-SBI-RLUSD-START",
-      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
-      "status": "SUPPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "SRC-SBI-RLUSD-MOU",
-        "SRC-SBI-RLUSD-START"
-      ],
-      "details": {
-        "limit": "This is RLUSD distribution, not direct evidence of XRP net buying or usage as collateral."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-TOKYO-SBIC-IDENTITY",
-      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
-      "kind": "independent_verification",
-      "summary": "Tokyo SBIC's official profile identifies Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan), an SME investment-development company established in 1963; no XRP or crypto link is established by this profile.",
-      "source_id": "SRC-TOKYO-SBIC-PROFILE",
-      "source_location": "https://www.sbic.co.jp/company/profile/",
-      "status": "SUPPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "SRC-TOKYO-SBIC-PROFILE"
-      ],
-      "details": {
-        "identity": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
-        "crypto_link": "none established in this source"
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-CRYPTO-IDENTITY",
-      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
-      "kind": "independent_verification",
-      "summary": "SBI Crypto's company notice describes a Japanese SBI Holdings subsidiary engaged in cryptocurrency mining; SBI Holdings' 2025 incident disclosure distinguishes SBI Crypto from SBI VC Trade and BITPOINT Japan in asset management.",
-      "source_id": "SRC-SBI-CRYPTO-PROFILE",
-      "source_location": "https://www.sbicrypto.com/en/privacy/",
+      "summary": "Circle's official 2023 announcement says Circle remains the issuer, Coinbase is taking an equity stake, and reserve income/distribution usage revenue is shared under the agreement. Coinbase's USDC incentive page independently describes revenue tied to USDC balances on Coinbase and third-party platforms.",
+      "source_id": "SRC-CIRCLE-COINBASE-AGREEMENT",
+      "source_location": "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
       "status": "SUPPORTED",
       "independence": "independent_literature_corroboration",
       "provenance": [
-        "SRC-SBI-CRYPTO-PROFILE",
-        "SRC-SBI-CRYPTO-IDENTITY"
+        "SRC-CIRCLE-COINBASE-AGREEMENT",
+        "SRC-COINBASE-USDC-INCENTIVES"
       ],
       "details": {
-        "identity": "SBI Crypto Co., Ltd.",
-        "xrp_relation": "No direct XRP operating role established by these sources."
+        "caveat": "Current revenue splits and contract amendments need latest filings; do not infer a fixed current percentage."
       }
     },
     {
-      "evidence_id": "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
-      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
-      "kind": "unresolved_question",
-      "summary": "The XRP-linked SBI entities found in primary announcements are SBI Holdings, SBI VC Trade, SBI Remit and SBI Ripple Asia; these do not establish that the phrase 'SBIC' means SBI Crypto or Tokyo SBIC.",
-      "source_id": "SRC-SBI-XRP-REMIT",
-      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
-      "status": "UNRESOLVED",
+      "evidence_id": "XRP-E-COINBASE-STABLECOIN-REVENUE-2025",
+      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+      "kind": "independent_verification",
+      "summary": "Coinbase's 2025 Form 10-K attributes $417.7M of stablecoin revenue increase to higher average USDC balances in Coinbase products and $314.1M to higher average off-platform USDC balances, partly offset by lower interest rates.",
+      "source_id": "SRC-COINBASE-10K-2025",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000015/coin-20251231.htm",
+      "status": "SUPPORTED",
       "independence": "independent_literature_corroboration",
       "provenance": [
-        "SRC-SBI-XRP-REMIT",
-        "SRC-SBI-CRYPTO-IDENTITY",
-        "SRC-TOKYO-SBIC-PROFILE"
+        "SRC-COINBASE-10K-2025"
       ],
       "details": {
-        "required_next_step": "Find the original sentence/audio/video in which 'SBIC, ChatGPT SBIC' was heard or written."
+        "limit": "These are year-over-year revenue-change drivers in Coinbase's accounting, not the same measure as Circle's distribution costs."
       }
     },
     {
@@ -1366,37 +1431,21 @@
       }
     },
     {
-      "evidence_id": "XRP-E-MAIN-SIGNAL-ARTIFACT",
-      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
-      "kind": "computational_evidence",
-      "summary": "Main's latest_signal.json at 2026-10-26T22:29:38.241936Z reports score 44, confidence 0, news_score 88, 11 news entries, and explicit failures: missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429.",
-      "source_id": "SRC-BARROT-LATEST-SIGNAL",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
-      "status": "SUPPORTED",
-      "independence": "independent_implementation",
+      "evidence_id": "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM",
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "kind": "unresolved_question",
+      "summary": "Indexed YouTube result attributed to Kamilah Stevenson, published 2025-12-06, describes XRP as approved collateral for federally regulated derivatives in the same class as gold, Treasuries and major FX pairs. Full transcript and exact video title remain unresolved.",
+      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+      "source_location": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "status": "REPORTED",
+      "independence": "same_source_confirmation",
       "provenance": [
-        "SRC-BARROT-LATEST-SIGNAL"
+        "https://www.youtube.com/watch?v=M8TmDXO7B-0"
       ],
       "details": {
-        "decision": "Do not publish or use this as a directional forecast; expected state is forecast_status NOT_ISSUED."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-PR-1165-ROOT-CAUSE",
-      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
-      "kind": "independent_verification",
-      "summary": "PR #1165 documents provider failures being converted to numeric zero and blended with news sentiment, plus research-paper contamination in news scoring; it adds fail-closed behavior and NOT_ISSUED handling.",
-      "source_id": "SRC-BARROT-PR-1165",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
-      "status": "SUPPORTED",
-      "independence": "independent_implementation",
-      "provenance": [
-        "SRC-BARROT-PR-1165"
-      ],
-      "details": {
-        "state": "OPEN_DRAFT",
-        "ci": "CI and Barrot Gated Merge (fail-closed) runs reported success on this PR head",
-        "merge": "not merged; no approval to merge"
+        "title_status": "UNRESOLVED",
+        "transcript_status": "NOT_CAPTURED",
+        "note": "Creator description is a claim, not primary evidence."
       }
     },
     {
@@ -1429,6 +1478,78 @@
       ],
       "details": {
         "replacement": "Immutable forecast ledger with exact target time, fixed horizon, venue-normalized prices, baselines, costs, and probability calibration."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-ARTIFACT",
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "kind": "computational_evidence",
+      "summary": "Main's latest_signal.json at 2026-10-26T22:29:38.241936Z reports score 44, confidence 0, news_score 88, 11 news entries, and explicit failures: missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429.",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL"
+      ],
+      "details": {
+        "decision": "Do not publish or use this as a directional forecast; expected state is forecast_status NOT_ISSUED."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-ARTIFACT-2325Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "kind": "direct_repository_artifact_observation",
+      "summary": "Re-fetched web/latest_signal.json from main. Its artifact timestamp is 2026-10-26T23:25:41.820784Z; score=44, confidence=0, news_score=88 from 11 entries, with provider failures (missing GitHub model credentials and Groq HTTP 429). Headline text is dominated by XRPL protocol/research-paper titles. It is not a directional XRP forecast.",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-20261026T232541Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "OBSERVED_INVALID_FOR_FORECASTING",
+      "independence": "direct_artifact_observation",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-20261026T232541Z"
+      ],
+      "details": {
+        "blob_sha": "a74f8cacf498ce6936d538a1cdc0925605379cb1",
+        "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
+        "age_minutes_at_retrieval": 36.8,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MERGE-QUEUE-WRITE-PATH",
+      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "kind": "computational_evidence",
+      "summary": "The current .github/workflows/merge-queue.yml declares workflow_dispatch, contents: write and pull-requests: write, supports mode=all for every open PR, fetches PR title/mergeability/state/branch fields, updates behind branches, and calls the merge API when the returned state is CLEAN/MERGEABLE. The fetched PR fields do not explicitly include isDraft or reviewDecision.",
+      "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "status": "SUPPORTED",
+      "independence": "independent_implementation",
+      "provenance": [
+        "SRC-BARROT-MERGE-QUEUE-WORKFLOW"
+      ],
+      "details": {
+        "risk": "High-impact manual control surface; do not invoke mode=all. Actual merge may still be constrained by branch protection/rulesets, which were not checked here."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-OUSD-COINBASE-CIRCLE-STRATEGY",
+      "claim_id": "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
+      "kind": "unresolved_question",
+      "summary": "Coinbase is named in Circle's official USDC revenue-sharing/equity announcement and is listed on Open Standard's official partner page. This could reflect diversification or coexistence; current economics, volumes and net effects require measurement.",
+      "source_id": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "source_location": "https://openusd.inc/",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+        "SRC-CIRCLE-COINBASE-AGREEMENT"
+      ],
+      "details": {
+        "counter_hypotheses": [
+          "OUSD competes with USDC for distribution and reserve economics.",
+          "Coinbase can distribute multiple stablecoins without ending its Circle relationship.",
+          "Partner listing may not imply exclusive distribution or a specific ownership/economic stake in Open Standard."
+        ]
       }
     },
     {
@@ -1486,40 +1607,38 @@
       }
     },
     {
-      "evidence_id": "XRP-E-OUSD-COINBASE-CIRCLE-STRATEGY",
-      "claim_id": "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
-      "kind": "unresolved_question",
-      "summary": "Coinbase is named in Circle's official USDC revenue-sharing/equity announcement and is listed on Open Standard's official partner page. This could reflect diversification or coexistence; current economics, volumes and net effects require measurement.",
-      "source_id": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
-      "source_location": "https://openusd.inc/",
+      "evidence_id": "XRP-E-POTENTIAL-COMPLEMENTARITY",
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "kind": "adversarial_objection",
+      "summary": "Counter-hypothesis: USDC could make XRPL more attractive for settlement and trading, indirectly increasing XRP bridge or market-making use in some paths.",
+      "source_id": "SRC-XRPL-XRP-OVERVIEW",
+      "source_location": "https://xrpl.org/about/xrp",
       "status": "UNRESOLVED",
       "independence": "independent_literature_corroboration",
       "provenance": [
-        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
-        "SRC-CIRCLE-COINBASE-AGREEMENT"
+        "SRC-XRPL-XRP-OVERVIEW",
+        "SRC-CIRCLE-USDC-XRPL"
       ],
       "details": {
-        "counter_hypotheses": [
-          "OUSD competes with USDC for distribution and reserve economics.",
-          "Coinbase can distribute multiple stablecoins without ending its Circle relationship.",
-          "Partner listing may not imply exclusive distribution or a specific ownership/economic stake in Open Standard."
-        ]
+        "required_test": "Compare routes that use XRP as a bridge against direct stablecoin/stablecoin settlement and measure net XRP inventory changes."
       }
     },
     {
-      "evidence_id": "XRP-E-MERGE-QUEUE-WRITE-PATH",
-      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
-      "kind": "computational_evidence",
-      "summary": "The current .github/workflows/merge-queue.yml declares workflow_dispatch, contents: write and pull-requests: write, supports mode=all for every open PR, fetches PR title/mergeability/state/branch fields, updates behind branches, and calls the merge API when the returned state is CLEAN/MERGEABLE. The fetched PR fields do not explicitly include isDraft or reviewDecision.",
-      "source_id": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "evidence_id": "XRP-E-PR-1165-ROOT-CAUSE",
+      "claim_id": "XRP-C-MAIN-SIGNAL-NOT-FORECAST",
+      "kind": "independent_verification",
+      "summary": "PR #1165 documents provider failures being converted to numeric zero and blended with news sentiment, plus research-paper contamination in news scoring; it adds fail-closed behavior and NOT_ISSUED handling.",
+      "source_id": "SRC-BARROT-PR-1165",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
       "status": "SUPPORTED",
       "independence": "independent_implementation",
       "provenance": [
-        "SRC-BARROT-MERGE-QUEUE-WORKFLOW"
+        "SRC-BARROT-PR-1165"
       ],
       "details": {
-        "risk": "High-impact manual control surface; do not invoke mode=all. Actual merge may still be constrained by branch protection/rulesets, which were not checked here."
+        "state": "OPEN_DRAFT",
+        "ci": "CI and Barrot Gated Merge (fail-closed) runs reported success on this PR head",
+        "merge": "not merged; no approval to merge"
       }
     },
     {
@@ -1538,97 +1657,6 @@
         "state": "OPEN_DRAFT",
         "merge": "not merged",
         "approval": "required before any merge"
-      }
-    },
-    {
-      "evidence_id": "XRP-E-BARROT-AGENT-WRITE-PATH",
-      "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
-      "kind": "computational_evidence",
-      "summary": "The active .github/workflows/barrot-agent.yml grants contents: write, pull-requests: write, issues: write; the issue-label path checks that the sender is the repository owner or Barrot-Agent, while workflow_dispatch invokes the repair worker from task title/body inputs.",
-      "source_id": "SRC-BARROT-AGENT-WORKFLOW",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
-      "status": "SUPPORTED",
-      "independence": "independent_implementation",
-      "provenance": [
-        "SRC-BARROT-AGENT-WORKFLOW"
-      ],
-      "details": {
-        "required_review": "Inspect command sandbox, branch-protection/ruleset settings, and whether write permissions can be reduced per job."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-REMIT-CUMULATIVE",
-      "claim_id": "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
-      "kind": "independent_verification",
-      "summary": "SBI Remit's official May 29, 2026 release says cumulative international remittance handling exceeded JPY 2.5 trillion on May 27, 2026.",
-      "source_id": "SRC-SBI-REMIT-CUMULATIVE",
-      "source_location": "https://www.sbigroup.co.jp/news/2026/0529_16356.html",
-      "status": "SUPPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "SRC-SBI-REMIT-CUMULATIVE"
-      ],
-      "details": {
-        "attribution_limit": "This total is not broken down by XRP/Ripple rail, corridor, transaction count, or current-period flow."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-RIPPLE-ASIA-POC",
-      "claim_id": "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
-      "kind": "independent_verification",
-      "summary": "SBI Ripple Asia's February 26, 2026 release describes a conceptual proof of concept for tokenized deposits and deposit-type digital money and says XRPL was considered as the blockchain base.",
-      "source_id": "SRC-SBI-RIPPLE-ASIA-POC",
-      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
-      "status": "SUPPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "SRC-SBI-RIPPLE-ASIA-POC"
-      ],
-      "details": {
-        "limit": "PoC does not prove production use or require XRP as a bridge asset."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-MULTI-RAIL-STRATEGY",
-      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
-      "kind": "unresolved_question",
-      "summary": "SBI announced exploratory digital-payments/stablecoin collaboration with Visa and a separate SBI Remit/Fasset MOU while maintaining publicly announced XRP/Ripple and RLUSD relationships. The portfolio is multi-rail; the net allocation of flows remains unknown.",
-      "source_id": "SRC-SBI-VISA-MOU",
-      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
-      "status": "UNRESOLVED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-SBI-VISA-MOU",
-        "SRC-SBI-FASSET-MOU",
-        "SRC-SBI-XRP-REMIT",
-        "SRC-SBI-RLUSD-START"
-      ],
-      "details": {
-        "counter_hypotheses": [
-          "New rails may complement XRPL and broaden institutional demand.",
-          "Stablecoin/fiat rails may substitute for XRP bridge use on some corridors."
-        ],
-        "required_data": [
-          "Corridor-level XRP usage",
-          "Stablecoin issuance/redemption/settlement volume",
-          "Actual deployment dates and production volumes"
-        ]
-      }
-    },
-    {
-      "evidence_id": "XRP-E-SBI-FASSET-MOU",
-      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
-      "kind": "independent_verification",
-      "summary": "SBI's June 18, 2026 release states SBI Holdings invested strategically in Fasset in May 2026 and SBI Remit signed an MOU with Fasset for next-generation international remittance infrastructure; the release describes Fasset's stablecoin payment infrastructure.",
-      "source_id": "SRC-SBI-FASSET-MOU",
-      "source_location": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
-      "status": "SUPPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "SRC-SBI-FASSET-MOU"
-      ],
-      "details": {
-        "limit": "MOU does not establish production deployment or whether any route uses XRP."
       }
     },
     {
@@ -1664,123 +1692,197 @@
       }
     },
     {
-      "evidence_id": "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM",
-      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "evidence_id": "XRP-E-SBI-CRYPTO-IDENTITY",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "independent_verification",
+      "summary": "SBI Crypto's company notice describes a Japanese SBI Holdings subsidiary engaged in cryptocurrency mining; SBI Holdings' 2025 incident disclosure distinguishes SBI Crypto from SBI VC Trade and BITPOINT Japan in asset management.",
+      "source_id": "SRC-SBI-CRYPTO-PROFILE",
+      "source_location": "https://www.sbicrypto.com/en/privacy/",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-SBI-CRYPTO-PROFILE",
+        "SRC-SBI-CRYPTO-IDENTITY"
+      ],
+      "details": {
+        "identity": "SBI Crypto Co., Ltd.",
+        "xrp_relation": "No direct XRP operating role established by these sources."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-FASSET-MOU",
+      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
+      "kind": "independent_verification",
+      "summary": "SBI's June 18, 2026 release states SBI Holdings invested strategically in Fasset in May 2026 and SBI Remit signed an MOU with Fasset for next-generation international remittance infrastructure; the release describes Fasset's stablecoin payment infrastructure.",
+      "source_id": "SRC-SBI-FASSET-MOU",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-FASSET-MOU"
+      ],
+      "details": {
+        "limit": "MOU does not establish production deployment or whether any route uses XRP."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-MULTI-RAIL-STRATEGY",
+      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
       "kind": "unresolved_question",
-      "summary": "Indexed YouTube result attributed to Kamilah Stevenson, published 2025-12-06, describes XRP as approved collateral for federally regulated derivatives in the same class as gold, Treasuries and major FX pairs. Full transcript and exact video title remain unresolved.",
-      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
-      "source_location": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
-      "status": "REPORTED",
-      "independence": "same_source_confirmation",
-      "provenance": [
-        "https://www.youtube.com/watch?v=M8TmDXO7B-0"
-      ],
-      "details": {
-        "title_status": "UNRESOLVED",
-        "transcript_status": "NOT_CAPTURED",
-        "note": "Creator description is a claim, not primary evidence."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-CFTC-COLLATERAL-PILOT",
-      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
-      "kind": "adversarial_objection",
-      "summary": "CFTC's 2025-12-08 announcement describes a digital-assets collateral pilot and explicitly names BTC, ETH and USDC; the release reviewed does not name XRP as an eligible pilot asset. It also quotes a Ripple stablecoins executive on tokenized collateral generally, which does not establish XRP-specific approval.",
-      "source_id": "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
-      "source_location": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
-      "status": "CHALLENGED",
+      "summary": "SBI announced exploratory digital-payments/stablecoin collaboration with Visa and a separate SBI Remit/Fasset MOU while maintaining publicly announced XRP/Ripple and RLUSD relationships. The portfolio is multi-rail; the net allocation of flows remains unknown.",
+      "source_id": "SRC-SBI-VISA-MOU",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "status": "UNRESOLVED",
       "independence": "independent_literature_corroboration",
       "provenance": [
-        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT"
+        "SRC-SBI-VISA-MOU",
+        "SRC-SBI-FASSET-MOU",
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-RLUSD-START"
       ],
       "details": {
-        "scope": "The announcement's omission of XRP is not proof that no separate FCM/clearinghouse permits XRP collateral.",
-        "chronology": "The CFTC pilot announcement is dated 2025-12-08, while the indexed Kamilah video is reported published 2025-12-06. The later announcement cannot itself substantiate a claim made two days earlier; an earlier product/FCM rule would be needed.",
-        "required_prior_source": "Locate the exact earlier regulatory notice, clearinghouse rule, FCM collateral schedule, or official approval the video may have referenced."
+        "counter_hypotheses": [
+          "New rails may complement XRPL and broaden institutional demand.",
+          "Stablecoin/fiat rails may substitute for XRP bridge use on some corridors."
+        ],
+        "required_data": [
+          "Corridor-level XRP usage",
+          "Stablecoin issuance/redemption/settlement volume",
+          "Actual deployment dates and production volumes"
+        ]
       }
     },
     {
-      "evidence_id": "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
-      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "evidence_id": "XRP-E-SBI-REMIT-CUMULATIVE",
+      "claim_id": "XRP-C-SBI-REMIT-CUMULATIVE-VOLUME",
       "kind": "independent_verification",
-      "summary": "CME's May 20, 2025 release says XRP futures are cash-settled to the CME CF XRP-Dollar Reference Rate. Listing a cash-settled XRP derivative is not equivalent to accepting XRP itself as collateral.",
-      "source_id": "SRC-CME-XRP-FUTURES-CASH-SETTLED",
-      "source_location": "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html",
-      "status": "SUPPORTED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-CME-XRP-FUTURES-CASH-SETTLED"
-      ],
-      "details": {
-        "distinction": "Derivative exposure vs collateral eligibility."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-CME-ACCEPTABLE-COLLATERAL",
-      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
-      "kind": "independent_verification",
-      "summary": "CME Group's official acceptable-collateral page was checked on 2026-10-26; a text search returned no XRP match. This challenges a blanket CME-eligibility claim but does not rule out other venues or FCM-specific arrangements.",
-      "source_id": "SRC-CME-ACCEPTABLE-COLLATERAL",
-      "source_location": "https://www.cmegroup.com/solutions/clearing/financial-and-collateral-management/acceptable-collateral.html",
-      "status": "CHALLENGED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-CME-ACCEPTABLE-COLLATERAL"
-      ],
-      "details": {
-        "caveat": "Confirm current collateral schedule and FCM policies before concluding."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
-      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
-      "kind": "independent_verification",
-      "summary": "Circle's SEC Form 10-Q reports distribution costs in connection with Coinbase agreements of $324.6M for Q2 2026 and $655.3M for H1 2026, compared with $332.3M and $635.5M in the corresponding 2025 periods. The filing explains Coinbase allocations depend on USDC balances and broader ecosystem-growth economics.",
-      "source_id": "SRC-CIRCLE-10Q-2026Q2",
-      "source_location": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-      "status": "SUPPORTED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-CIRCLE-10Q-2026Q2"
-      ],
-      "details": {
-        "Q2_2026_USD_millions": 324.6,
-        "Q2_2025_USD_millions": 332.3,
-        "H1_2026_USD_millions": 655.3,
-        "H1_2025_USD_millions": 635.5,
-        "interpretation": "Reported distribution costs connected with Coinbase agreements; not Coinbase's net profit and not an XRP-specific flow."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-COINBASE-STABLECOIN-REVENUE-2025",
-      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
-      "kind": "independent_verification",
-      "summary": "Coinbase's 2025 Form 10-K attributes $417.7M of stablecoin revenue increase to higher average USDC balances in Coinbase products and $314.1M to higher average off-platform USDC balances, partly offset by lower interest rates.",
-      "source_id": "SRC-COINBASE-10K-2025",
-      "source_location": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000015/coin-20251231.htm",
-      "status": "SUPPORTED",
-      "independence": "independent_literature_corroboration",
-      "provenance": [
-        "SRC-COINBASE-10K-2025"
-      ],
-      "details": {
-        "limit": "These are year-over-year revenue-change drivers in Coinbase's accounting, not the same measure as Circle's distribution costs."
-      }
-    },
-    {
-      "evidence_id": "XRP-E-CIRCLE-USDC-H1-2026-METRICS",
-      "claim_id": "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS",
-      "kind": "independent_verification",
-      "summary": "Circle's October 16, 2026 corporate blog reports H1 2026 USDC on-chain transaction volume above $36T, mint/redeem volume above $315B, and $819M paid in distribution-partner and transaction costs.",
-      "source_id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
-      "source_location": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "summary": "SBI Remit's official May 29, 2026 release says cumulative international remittance handling exceeded JPY 2.5 trillion on May 27, 2026.",
+      "source_id": "SRC-SBI-REMIT-CUMULATIVE",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0529_16356.html",
       "status": "SUPPORTED",
       "independence": "same_source_confirmation",
       "provenance": [
-        "SRC-CIRCLE-USDC-ECONOMICS-2026"
+        "SRC-SBI-REMIT-CUMULATIVE"
       ],
       "details": {
-        "scope": "All supported USDC network activity as reported by Circle; no XRPL-specific volume split in this source."
+        "attribution_limit": "This total is not broken down by XRP/Ripple rail, corridor, transaction count, or current-period flow."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-RIPPLE-ASIA-POC",
+      "claim_id": "XRP-C-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC",
+      "kind": "independent_verification",
+      "summary": "SBI Ripple Asia's February 26, 2026 release describes a conceptual proof of concept for tokenized deposits and deposit-type digital money and says XRPL was considered as the blockchain base.",
+      "source_id": "SRC-SBI-RIPPLE-ASIA-POC",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-RIPPLE-ASIA-POC"
+      ],
+      "details": {
+        "limit": "PoC does not prove production use or require XRP as a bridge asset."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-RLUSD-START",
+      "claim_id": "XRP-C-SBI-RLUSD-JAPAN",
+      "kind": "independent_verification",
+      "summary": "SBI/Ripple's June 24, 2026 announcement states RLUSD handling began on SBI VC Trade following the August 2025 basic agreement.",
+      "source_id": "SRC-SBI-RLUSD-START",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-RLUSD-MOU",
+        "SRC-SBI-RLUSD-START"
+      ],
+      "details": {
+        "limit": "This is RLUSD distribution, not direct evidence of XRP net buying or usage as collateral."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "unresolved_question",
+      "summary": "The XRP-linked SBI entities found in primary announcements are SBI Holdings, SBI VC Trade, SBI Remit and SBI Ripple Asia; these do not establish that the phrase 'SBIC' means SBI Crypto or Tokyo SBIC.",
+      "source_id": "SRC-SBI-XRP-REMIT",
+      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-CRYPTO-IDENTITY",
+        "SRC-TOKYO-SBIC-PROFILE"
+      ],
+      "details": {
+        "required_next_step": "Find the original sentence/audio/video in which 'SBIC, ChatGPT SBIC' was heard or written."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-XRP-REMIT",
+      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "kind": "independent_verification",
+      "summary": "SBI Group's September 6, 2023 announcement names SBI Remit, SBI VC Trade, Ripple and the SBI/Ripple joint venture SBI Ripple Asia in an XRP-enabled remittance expansion to the Philippines, Vietnam and Indonesia.",
+      "source_id": "SRC-SBI-XRP-REMIT",
+      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-SBI-XRP-REMIT"
+      ],
+      "details": {
+        "limit": "A launch announcement is not a current transaction-volume series; current route use and bridge composition remain to be collected."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-TOKYO-SBIC-IDENTITY",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "independent_verification",
+      "summary": "Tokyo SBIC's official profile identifies Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan), an SME investment-development company established in 1963; no XRP or crypto link is established by this profile.",
+      "source_id": "SRC-TOKYO-SBIC-PROFILE",
+      "source_location": "https://www.sbic.co.jp/company/profile/",
+      "status": "SUPPORTED",
+      "independence": "same_source_confirmation",
+      "provenance": [
+        "SRC-TOKYO-SBIC-PROFILE"
+      ],
+      "details": {
+        "identity": "Tokyo Small and Medium Business Investment & Consultation Co. (SBIC East Japan)",
+        "crypto_link": "none established in this source"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-USDC-XRP-DECOUPLING",
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "kind": "unresolved_question",
+      "summary": "USDC is a distinct issued token on XRPL. Need event-level measurements of XRP/fiat and XRP/stablecoin order books, XRP bridge paths, DEX routing, fees/reserve demand, and inventory before attributing stablecoin growth to XRP price demand.",
+      "source_id": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "status": "UNRESOLVED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-XRP-OVERVIEW"
+      ],
+      "details": {
+        "falsification": "If new USDC flows repeatedly cause measured increases in XRP bridge turnover, net inventory demand, or fee/reserve needs after controls, the no-direct-inference hypothesis should be revised."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-XRP-NATIVE-ASSET",
+      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
+      "kind": "independent_verification",
+      "summary": "XRPL documentation distinguishes native XRP from other issued XRPL tokens.",
+      "source_id": "SRC-XRPL-TOKENS",
+      "source_location": "https://xrpl.org/docs/concepts/tokens",
+      "status": "SUPPORTED",
+      "independence": "independent_literature_corroboration",
+      "provenance": [
+        "SRC-XRPL-TOKENS"
+      ],
+      "details": {
+        "implication": "USDC on XRPL is not XRP and is not itself evidence of net XRP acquisition."
       }
     }
   ],
@@ -1917,18 +2019,21 @@
       "evidence": [
         "XRP-E-MAIN-SIGNAL-ARTIFACT",
         "XRP-E-PR-1165-ROOT-CAUSE",
-        "XRP-E-LEGACY-ACCURACY-INVALID-METHOD"
+        "XRP-E-LEGACY-ACCURACY-INVALID-METHOD",
+        "XRP-E-MAIN-SIGNAL-ARTIFACT-2325Z"
       ],
       "unresolved_objections": [
         "PR #1165 remains unmerged, so main still emits the invalid score.",
         "PR #1155 remains unmerged; its 126 tests passed on the reported merge ref, but live market ingestion is not integrated.",
-        "Latest main commit is an automated [skip ci] commit with no associated run/status found in this query."
+        "Latest main commit is an automated [skip ci] commit with no associated run/status found in this query.",
+        "Latest main signal artifact 2026-10-26T23:25:41.820784Z still reports score 44/confidence 0 with both providers failed; no forecast should be issued."
       ],
       "confidence": 0.99,
       "provenance": [
         "SRC-BARROT-LATEST-SIGNAL",
         "SRC-BARROT-PR-1165",
-        "SRC-BARROT-PR-1155"
+        "SRC-BARROT-PR-1155",
+        "SRC-BARROT-LATEST-SIGNAL-20261026T232541Z"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -2015,18 +2120,21 @@
       "evidence": [
         "XRP-E-MERGE-QUEUE-WRITE-PATH",
         "XRP-E-PR-1168-DISABLED-FIX",
-        "XRP-E-BARROT-AGENT-WRITE-PATH"
+        "XRP-E-BARROT-AGENT-WRITE-PATH",
+        "XRP-E-BRANCH-RULESET-DISABLED-20261027"
       ],
       "unresolved_objections": [
         "PR #1168 remains draft; active main workflow has not been disabled.",
         "Branch protection and rulesets need direct inspection before concluding whether approval/check requirements are enforced externally.",
-        "Barrot Agent workflow has write scopes; review sandbox boundaries and reduce privileges if possible."
+        "Barrot Agent workflow has write scopes; review sandbox boundaries and reduce privileges if possible.",
+        "Current rulesets API returned one branch-target ruleset with enforcement disabled; branch-protection endpoint returned 403 to the connected integration. Effective protection remains unverified."
       ],
       "confidence": 0.98,
       "provenance": [
         "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
         "SRC-BARROT-AGENT-WORKFLOW",
-        "SRC-BARROT-PR-1168"
+        "SRC-BARROT-PR-1168",
+        "SRC-BARROT-RULESET-STATUS-20261027T000154Z"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -2155,7 +2263,7 @@
       "question_id": "Q-9",
       "question": "Verify repository branch protection/rulesets and require explicit approvals/required checks for every merge; disable active merge queue before any all-PR mode is used.",
       "priority": "CRITICAL",
-      "status": "PR_1168_DRAFT_FIX_AVAILABLE_NOT_MERGED"
+      "status": "PR_1168_OPEN_DRAFT; ONE_LISTED_RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
     },
     {
       "question_id": "Q-10",
@@ -2819,7 +2927,7 @@
     "latest_main_commit_message": "Paper trade cycle [skip ci]",
     "latest_main_commit_ci": "Combined-status query returned no statuses and the workflow-run query returned no PR-triggered runs for e49431afe9801044b583abd0451f0d4d7416fc4d. This is not a CI pass.",
     "current_signal": {
-      "timestamp": "2026-10-26T22:29:38.241936Z",
+      "timestamp": "2026-10-26T23:25:41.820784Z",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -2828,6 +2936,9 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
+      "blob_sha": "a74f8cacf498ce6936d538a1cdc0925605379cb1",
+      "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
+      "age_minutes_at_retrieval": 36.8,
       "disposition": "INVALID_FOR_FORECASTING"
     },
     "legacy_accuracy": {
@@ -2900,7 +3011,21 @@
         "mitigation": "Review least-privilege permissions, command sandbox, branch protections and manual approval gates."
       }
     ],
-    "latest_signal_staleness": "The latest main signal blob SHA remained b014c0b096e249af3e771d215edc32fdbab1b3aa and its timestamp remained 2026-10-26T22:29:38.241936Z when re-fetched after the newer paper-trade-cycle commit."
+    "latest_signal_staleness": "The current main web/latest_signal.json blob SHA is a74f8cacf498ce6936d538a1cdc0925605379cb1 and its artifact timestamp is 2026-10-26T23:25:41.820784Z; it was 36.8 minutes old at retrieval 2026-10-27T00:02:27.442Z. Score 44/confidence 0 remains invalid because both model providers failed and the news input is dominated by XRPL research/protocol titles.",
+    "current_ruleset_observation": {
+      "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
+      "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
+      "observed_rulesets": [
+        {
+          "id": 10863829,
+          "name": "Fall Back",
+          "target": "branch",
+          "enforcement": "disabled"
+        }
+      ],
+      "branch_protection_endpoint_status": "403 Resource not accessible by integration",
+      "interpretation": "The listed ruleset is disabled; effective branch protection remains unknown because the separate endpoint was inaccessible. Do not run merge queue."
+    }
   },
   "video_ingestion": {
     "creator": "Kamilah Stevenson",
@@ -2939,6 +3064,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Review PR #1165 on its exact head; latest observed CI and fail-closed gate both passed. Keep draft/unmerged pending user approval because main still emits score 44/confidence 0 after provider failure.",
+      "status": "TESTED_DRAFT_FIX; APPROVAL_REQUIRED"
+    },
+    {
+      "priority": 0,
+      "action": "Do not run the active merge queue. PR #1168 is open/draft and its latest observed CI and fail-closed gate passed, but the repository's only listed branch ruleset is disabled and branch-protection configuration could not be read (403); retain the block until an authorized admin verifies effective protection and review/check gates.",
+      "status": "CRITICAL_SAFETY_GATE; MAIN_UNCHANGED"
+    },
     {
       "priority": 1,
       "action": "Resolve the Kamilah 2025-12-06 collateral video title/transcript and check current CFTC/clearinghouse/FCM rules for XRP-specific collateral eligibility; do not conflate XRP futures with XRP collateral.",
