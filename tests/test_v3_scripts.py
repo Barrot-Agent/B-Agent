@@ -598,7 +598,7 @@ def test_barrot_groq_payload_uses_bounded_completion_budget(monkeypatch) -> None
 
     payload = module._groq_payload([{"role": "user", "content": "Return a concise JSON bundle."}])
 
-    assert payload["max_tokens"] == 2048
+    assert payload["max_tokens"] == 1536
 
 def test_barrot_bundle_authoring_caps_repository_context(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")

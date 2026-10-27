@@ -218,7 +218,7 @@ def _groq_payload(
     payload: dict[str, Any] = {
         "model": MODEL,
         "messages": messages,
-        "max_tokens": 2048,
+        "max_tokens": 1536,
         "temperature": 0.2,
     }
     if tools:
