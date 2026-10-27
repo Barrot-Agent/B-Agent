@@ -287,6 +287,8 @@ def validate_bundle_revision(
         raise BundleEngineeringError("Original and revised bundles must be objects.")
     if revised.get("objective") != original.get("objective"):
         raise BundleEngineeringError("A revision cannot silently change the original objective.")
+    if revised.get("bundle_id") != original.get("bundle_id"):
+        raise BundleEngineeringError("A revision cannot silently change the bundle identity.")
     if revised.get("constraints") != original.get("constraints"):
         raise BundleEngineeringError("A revision cannot weaken or rewrite the original constraints.")
     original_revision = original.get("revision")
