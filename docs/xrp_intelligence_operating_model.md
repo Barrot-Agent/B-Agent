@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 07:03:56 UTC  
+**Snapshot:** 2026-10-27 07:15:00 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after this run: **74 source records, 44 claims, 69 evidence records, 6 research tracks, 33 relationship nodes, 47 graph edges, and 11 competing scenario hypotheses**. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after this run: **76 source records, 44 claims, 71 evidence records, 6 research tracks, 33 relationship nodes, 47 graph edges, and 11 competing scenario hypotheses**. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -121,3 +121,35 @@ This snapshot is a source-led research bundle and repository audit, not a finish
 ### Validation boundary
 
 The ledger JSON parsed successfully. Source, claim and evidence identifiers are unique, and checked claim/evidence/source/graph/hypothesis/primary-claim references resolved. This was a deterministic structural validation, not the full repository test suite. The new ledger head is awaiting exact-head CI. No merge, main-branch write, force-push, physical-device delivery, or real-money action occurred.
+
+
+## Automation checkpoint — 2026-10-27 07:15 UTC
+
+### Coinbase–Circle economics refreshed from current-period sources
+
+- Coinbase's Q2 2026 earnings release says average USDC held in Coinbase products reached **$20B**, more than 30% of USDC in circulation at quarter-end, and Coinbase captured approximately 50% of USDC economics over the prior year. Treat the 50% figure as company-reported, not an independently reconstructed share.
+- Coinbase's Q2 2026 SEC 10-Q reports a **$45.4M year-over-year increase in USDC rewards expense** driven by higher average customer USDC balances in Coinbase products, partially offset by a lower rewards rate. This demonstrates that USDC balance growth has material distribution/reward economics for Coinbase. It does not establish XRP buying, XRP collateral utilization or an XRP price effect.
+- Circle's separate Q2 2026 10-Q reports distribution costs connected with Coinbase agreements. The accounting measures are not directly additive and must be modeled separately. The ledger now includes the Coinbase Q2 10-Q and investor release as independent primary-source records, linked to the existing Coinbase–Circle claim.
+
+Sources: [Coinbase Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000088/coin-20260630.htm), [Coinbase Q2 2026 earnings release](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q2-Earnings-Everything-Exchange-Drives-3rd-Consecutive-Quarter-of-Record-Crypto-Trading-Volume-Market-Share-Revenue-Diversification-and-Resilience/default.aspx).
+
+### Fresh-main repository fixes
+
+- [PR #1185](https://github.com/Barrot-Agent/B-Agent/pull/1185) ports XRP signal-integrity and invalid-accuracy fixes onto main `0190c81914f921455725e73add58d5527aae8148`. Exact-head CI [40465761883](https://github.com/Barrot-Agent/B-Agent/actions/runs/40465761883) passed **129 tests in 6.05 seconds**; fail-closed gate [40465761680](https://github.com/Barrot-Agent/B-Agent/actions/runs/40465761680) passed. Draft and unmerged.
+- [PR #1186](https://github.com/Barrot-Agent/B-Agent/pull/1186) disables the mutation-capable merge queue with read-only permissions and regression coverage. Exact-head CI [40465834856](https://github.com/Barrot-Agent/B-Agent/actions/runs/40465834856) passed **112 tests in 4.36 seconds**; fail-closed gate [40465834779](https://github.com/Barrot-Agent/B-Agent/actions/runs/40465834779) passed. Draft and unmerged.
+- Older PRs #1173 and #1178 now link to these fresh-main successors; do not merge the older stale heads. Main remains unchanged.
+- The approval-workflow anomaly persists: push-event runs for `.github/workflows/barrot-approve-pr.yml` fail with zero jobs despite the same file blob declaring only `workflow_dispatch`. Root cause remains unresolved; no blind rerun.
+
+### Current signal and video-search boundary
+
+- Main remains at `0190c81914f921455725e73add58d5527aae8148`; no core CI was observed for this generated-data commit marked `[skip ci]`.
+- `web/latest_signal.json` remains timestamped `2026-10-27T06:45:40.110346Z`, score 44, confidence 0, news score 88 from 11 academic/protocol headlines, with missing GitHub model credentials and Groq HTTP 429. Forecast remains `NOT_ISSUED`.
+- An exact-phrase vidIQ search was attempted at 07:14 UTC but the tool reported insufficient credits; no credits were charged and its message states the balance refreshes on 2026-11-27. A public web title/snippet search did not resolve “ASK Coin,” “actual capital,” or “SBIC, ChatGPT SBIC.” Their meanings remain unresolved. Full channel enumeration is still unverified.
+- Safe Termux receiver PR #1182 remains draft; exact-head CI passed earlier, but the physical Moto G7 receipt has not been observed. Do not start the legacy command-executing watcher.
+
+### Ledger integrity and validation boundary
+
+- Machine-readable ledger: **76 sources, 44 claims, 71 evidence records, 33 relationship nodes, 47 edges, 11 competing scenarios**.
+- Deterministic validation passed: JSON parsed; source/claim/evidence IDs unique; all checked source, claim, evidence, graph, hypothesis and primary-claim references resolved.
+- Latest ledger commit `18cd87f1192802b67dac9d9c4f759b6327915cc1` adds Coinbase Q2 evidence and refreshes PR/signal/video-search handoff state. Exact-head CI must be rechecked after the following documentation commit.
+- No forecast was issued, no PR was merged, main was not written, and no real-money action occurred.
