@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:05:49.157Z",
+    "captured_at_utc": "2026-10-27T00:06:08.988Z",
     "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -1161,7 +1161,7 @@
     },
     {
       "claim_id": "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
-      "statement": "The latest PR #1170 head 4febf9db9222f86d9707214ace75561625416d08 passed GitHub Actions CI run 40423957351 and fail-closed gate run 40423957548; the gate's job explicitly states merge is disabled. This verifies the tested code/data paths on that head, not live XRP prediction skill.",
+      "statement": "PR #1170 head 4febf9db9222f86d9707214ace75561625416d08 passed CI run 40423957351 and fail-closed gate run 40423957548; the gate explicitly kept merging disabled. Subsequent source-ledger and relationship-graph commits advanced the branch beyond that tested head and require their own exact-head checks. This validates the prior tested data/code path, not live XRP prediction skill.",
       "domain": "repository_validation",
       "claim_type": "observed_ci_validation",
       "source": "SRC-BARROT-PR1170-CI-20261027",
@@ -1176,13 +1176,14 @@
       "acceptance_status": "VALIDATION_ONLY_NOT_MERGE_AUTHORIZATION",
       "confidence": 0.99,
       "assumptions": [
-        "CI run corresponds to exact PR head; tests validate code paths, not live-market accuracy."
+        "CI run corresponds to exact PR head; tests validate code paths, not live-market accuracy.",
+        "The later SBIC evidence and graph commits were not part of the 4febf9 test head."
       ],
       "provenance": [
         "SRC-BARROT-PR1170-CI-20261027",
         "SRC-BARROT-PR1170-GATE-20261027"
       ],
-      "timestamp": 1793059531
+      "timestamp": 1793059569
     },
     {
       "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
@@ -3461,14 +3462,21 @@
       "interpretation": "The listed ruleset is disabled; effective branch protection remains unknown because the separate endpoint was inaccessible. Do not run merge queue."
     },
     "pr1170_validation": {
-      "head_sha": "4febf9db9222f86d9707214ace75561625416d08",
-      "ci_run": 40423957351,
-      "ci_conclusion": "success",
-      "fail_closed_gate_run": 40423957548,
-      "gate_conclusion": "success",
-      "gate_step": "Fail closed",
+      "last_completed_head_sha": "4febf9db9222f86d9707214ace75561625416d08",
+      "last_completed_ci_run": 40423957351,
+      "last_completed_ci_conclusion": "success",
+      "last_completed_fail_closed_gate_run": 40423957548,
+      "last_completed_gate_conclusion": "success",
+      "last_completed_gate_step": "Fail closed",
       "merge_performed": false,
-      "validated_at_utc": "2026-10-27T00:05:31.488Z"
+      "subsequent_commits_after_tested_head": [
+        "92f951203ef618b301493f8a71cd59ef124ccce2",
+        "893ae69f19fcd0bf4db764ed07856354f7215a1f"
+      ],
+      "latest_head_at_snapshot": "893ae69f19fcd0bf4db764ed07856354f7215a1f",
+      "latest_head_validation_status": "PENDING_EXACT_HEAD_CI_AND_GATE",
+      "validated_at_utc": "2026-10-27T00:04:32Z",
+      "note": "The CI and gate evidence is for 4febf9 only. Later JSON/graph commits require fresh checks; do not describe them as tested yet."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -3518,6 +3526,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Wait for exact-head CI and fail-closed gate on the current XRP research PR head after the latest source-ledger and SBIC relationship-graph updates; previous head 4febf9 passed, but later commits were not part of that test run.",
+      "status": "PENDING_EXACT_HEAD_VALIDATION"
+    },
     {
       "priority": 0,
       "action": "Keep the active merge queue unused. The only listed repository ruleset is disabled and branch-protection configuration is inaccessible (403); PR #1168 remains draft and is 15 commits behind current main. Rebase/fresh-base validation and authorized protection review are required before any merge.",
