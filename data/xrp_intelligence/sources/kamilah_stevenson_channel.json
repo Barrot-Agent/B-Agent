@@ -12,16 +12,18 @@
     "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
-    "identity_status": "PROBABLE_MATCH",
+    "identity_status": "PROBABLE_MATCH; TRANSCRIPT_NAME_VARIANT_UNRESOLVED",
     "identity_evidence": [
       "Public channel listing for Kamilah Stevenson points to this channel ID.",
       "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
       "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved.",
-      "vidIQ's public channel-video results and exact title search resolve the previously unresolved title “XRP Got Everything We Waited For. So Why Isn’t It Soaring?” to canonical video ID vPebfa4Mdwo on channel UCqUPJMQdkCN6lsLVDnichPA."
+      "vidIQ's public channel-video results and exact title search resolve the previously unresolved title “XRP Got Everything We Waited For. So Why Isn’t It Soaring?” to canonical video ID vPebfa4Mdwo on channel UCqUPJMQdkCN6lsLVDnichPA.",
+      "vidIQ transcript for AJqjwT5ueG4 contains the speaker's self-introduction as “Camila Stevenson” at 0:15, while the channel is labeled “Kamilah Stevenson”; this is a real name-variant discrepancy requiring verification."
     ],
     "caveats": [
       "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
-      "Do not conflate this creator with other similarly named accounts without channel-ID verification."
+      "Do not conflate this creator with other similarly named accounts without channel-ID verification.",
+      "Do not silently normalize Kamilah/Camila or Stephenson/Stevenson; preserve each source's exact spelling until identity is independently confirmed."
     ]
   },
   "ingestion_policy": {
@@ -69,8 +71,21 @@
       "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
       "Retrieve and hash transcripts for the newly indexed videos with transcript_capture.status=NOT_CAPTURED.",
       "Enumerate all public uploads across channel videos, Shorts, live streams and archived lives; vidIQ's current listing calls are a partial snapshot, not proof of full enumeration.",
-      "Locate original SBI Holdings executive source for the 'XRP will get very expensive' paraphrase; preserve original wording and context before scoring any forecast."
-    ]
+      "Locate original SBI Holdings executive source for the 'XRP will get very expensive' paraphrase; preserve original wording and context before scoring any forecast.",
+      "Resolve the creator-name mismatch: the channel is labeled Kamilah Stevenson, while the transcript for video AJqjwT5ueG4 self-identifies the speaker as Camila Stevenson at 0:15; check the canonical description/creator statement before treating the spellings as equivalent."
+    ],
+    "latest_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/kamilah_vidiq_recent_uploads_2026-10-27.json",
+      "captured_at_utc": "2026-10-27T02:03:11Z",
+      "raw_records": 150,
+      "unique_video_ids": 150,
+      "formats": [
+        "long",
+        "short",
+        "live"
+      ],
+      "complete_channel_inventory": false
+    }
   },
   "seed_videos": [
     {
@@ -472,7 +487,9 @@
           "classification": "HYPOTHESIS",
           "note": "Even if a partner enables XRP, actual incremental net purchases, holding behavior, market-maker inventory, and price impact must be measured rather than assumed."
         }
-      ]
+      ],
+      "disclosure_note": "Transcript promotes a third-party “Q trading” service, mentions a $100 funding bonus and a description link; verify the description's affiliate/sponsorship disclosure before using the video as neutral analysis.",
+      "identity_note": "Transcript self-introduces the speaker as “Camila Stevenson” at 0:15; channel display name is “Kamilah Stevenson”. Keep identity variant unresolved."
     }
   ],
   "required_cross_corroboration_domains": [
@@ -526,7 +543,7 @@
       "https://www.sbigroup.co.jp/news/2007/0216_349.html",
       "https://www.sbigroup.co.jp/news/2007/0521_852.html"
     ],
-    "last_updated_at_utc": "2026-10-27T02:05:49.673Z"
+    "last_updated_at_utc": "2026-10-27T02:06:46.417Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
@@ -929,6 +946,18 @@
         "https://developer.paypal.com/crypto/",
         "https://www.paxos.com/pyusd",
         "https://www.schwab.com/learn/story/crypto-futures-solana-ripple-now-on-thinkorswim"
+      ]
+    },
+    {
+      "update_id": "VIDIQ-INVENTORY-AND-CREATOR-NAME-REVIEW-20261027",
+      "updated_at_utc": "2026-10-27T02:06:46.417Z",
+      "type": "INVENTORY_SNAPSHOT_AND_SOURCE_IDENTITY_CAVEAT",
+      "summary": "Added a timestamped recent-upload snapshot covering 50 long-form, 50 Shorts, and 50 live results (150 unique video IDs). It is not a complete archive. Corrected stale inventory count from 10 to 15. The transcript of AJqjwT5ueG4 self-identifies as 'Camila Stevenson' while the channel is labeled 'Kamilah Stevenson'; the variant is now explicitly unresolved. The same transcript includes a third-party Q-trading promotion, a $100 funding bonus, and a description link, so sponsorship/affiliate disclosure must be checked.",
+      "evidence_urls": [
+        "https://www.youtube.com/watch?v=AJqjwT5ueG4",
+        "https://docs.paxos.com/guides/developer/blockchains",
+        "https://www.paypal.com/us/cshelp/article/paypal-cryptocurrency-faqs-help565",
+        "https://developer.paypal.com/crypto/"
       ]
     }
   ]
