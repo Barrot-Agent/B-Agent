@@ -8982,7 +8982,7 @@
     {
       "id": "ADR-XRP-011",
       "decision": "News features must retain source publication/event time separately from ingestion time. Live sentiment eligibility requires valid timezone-aware publication time and ingestion time; stale re-ingested articles and materially future-dated publications are excluded. Historical backtests must respect the earliest ingestion/availability time.",
-      "status": "IMPLEMENTED_IN_DRAFT_PR1190; EXACT_HEAD_CI_PENDING_AFTER_EVENT_TIME_REGRESSION_TEST",
+      "status": "IMPLEMENTED_AND_TESTED_IN_DRAFT_PR1190; EXACT_HEAD_CI_PASS; NOT_ON_MAIN",
       "rationale": "A fresh ingested_at value alone can make an old article appear current. The repository's RSS ingestor already preserves the publisher's pubDate in the published field; use it as event time and keep ingestion time for availability/leakage control.",
       "evidence": [
         "XRP-E-MACRO-RECESSION-STATUS-20261027"
@@ -9442,32 +9442,32 @@
         "pr": 1190,
         "title": "Safety: fail closed on unavailable XRP sentiment (fresh main)",
         "state": "OPEN_DRAFT",
-        "head_sha": "fe8c4649a0813aba0cb22da8050f4a8a651540cf",
+        "head_sha": "46c088f98c14810601251e611fe956cbc2b3b6a5",
         "base_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
-        "ci_run": 40509822221,
-        "ci": "PASS; 129 tests in 4.99s",
-        "gate_run": 40509822091,
+        "ci_run": 40510228609,
+        "ci": "PASS; 130 tests in 4.45s",
+        "gate_run": 40510228598,
         "gate": "PASS; no merge",
-        "status": "FRESH_MAIN_SUCCESSOR; EXACT_HEAD_CI_PASS; ONE_GENERATED_COMMIT_BEHIND_AT_CREATION; REVIEW_REQUIRED",
+        "status": "FRESH_MAIN_SUCCESSOR; EXACT_HEAD_CI_PASS; PUBLICATION_EVENT_TIME_GUARD_TESTED; REVIEW_REQUIRED",
         "merge_authorized": false
       }
     ],
     "pr1190_validation": {
-      "head_sha": "fe8c4649a0813aba0cb22da8050f4a8a651540cf",
+      "head_sha": "46c088f98c14810601251e611fe956cbc2b3b6a5",
       "branch": "safety/xrp-signal-integrity-current-main-20261027-1110z",
       "branch_creation_base_sha": "438562a7e3f5b871ed637d46054b3b533af9eca5",
       "pr_base_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
       "files_changed": 10,
-      "ci_run": 40509822221,
+      "ci_run": 40510228609,
       "ci_conclusion": "success",
-      "tests_passed": 129,
-      "elapsed_seconds": 4.99,
-      "fail_closed_gate_run": 40509822091,
+      "tests_passed": 130,
+      "elapsed_seconds": 4.45,
+      "fail_closed_gate_run": 40510228598,
       "gate_conclusion": "success",
       "main_only_delta_since_branch_creation": [
         "web/paper_trading_log.jsonl"
       ],
-      "state": "OPEN_DRAFT_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; ONE_GENERATED_COMMIT_BEHIND_AT_PR_CREATION; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN",
+      "state": "OPEN_DRAFT_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; PUBLICATION_EVENT_TIME_GUARD_TESTED; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN",
       "merge_authorized": false
     }
   },
@@ -9541,8 +9541,8 @@
   "next_actions": [
     {
       "priority": 0,
-      "action": "Use publisher event time, not ingestion time alone, for news freshness. PR #1190 now validates RSS published/pubDate against the 72-hour event window and adds regression tests for stale articles re-ingested today, future-dated articles and RFC 822 RSS dates; exact-head CI is pending after this update.",
-      "status": "CODE_AND_TESTS_UPDATED_ON_DRAFT_BRANCH; EXACT_HEAD_CI_PENDING"
+      "action": "Use publisher event time, not ingestion time alone, for news freshness. PR #1190 validates RSS published/pubDate against the 72-hour event window and has regression coverage for stale re-ingested articles, future-dated articles and RFC 822 RSS dates; exact-head CI passed 130 tests and the fail-closed gate passed.",
+      "status": "CODE_AND_TESTS_UPDATED_ON_DRAFT_PR1190; EXACT_HEAD_CI_PASS; 130 TESTS; NOT_ON_MAIN"
     },
     {
       "priority": 0,
