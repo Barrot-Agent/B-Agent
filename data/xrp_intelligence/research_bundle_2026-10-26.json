@@ -8018,6 +8018,34 @@
         "session_clock_estimate_utc": "2026-10-27T17:50:00Z",
         "clock_order_status": "REMOTE LOG TIMESTAMP LATER THAN SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-PR1193-CI-20261027-RUN13C",
+      "claim_id": "XRP-C-PR1193-VALIDATION-20261027-RUN13",
+      "kind": "workflow_check_observation",
+      "summary": "PR #1193 head 789b639d2553a0d4389d8cf49a1a0b9fb6b80e17 passed CI run 40556174720 with 130 tests in 6.13s and fail-closed gate 40556174861. PR remains draft/unmerged.",
+      "source_id": "SRC-BARROT-PR1193-CI-20261027-RUN13C",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+      "status": "SUPPORTED",
+      "independence": "GitHub_Actions_exact_head_status_and_job_log",
+      "provenance": [
+        "SRC-BARROT-PR1193-CI-20261027-RUN13C"
+      ],
+      "details": {
+        "head_sha": "789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
+        "base_sha": "79b17591c5f685ce4a123a82bf24c72f73f29d10",
+        "ci_run": 40556174720,
+        "ci_status": "success",
+        "tests_passed": 130,
+        "elapsed_seconds": 6.13,
+        "gate_run": 40556174861,
+        "gate_status": "success",
+        "draft": true,
+        "merged": false,
+        "remote_job_log_timestamp_utc": "2026-10-27T18:02:42Z",
+        "session_clock_estimate_utc": "2026-10-27T17:50:00Z",
+        "clock_order_status": "REMOTE LOG TIMESTAMP LATER THAN SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
+      }
     }
   ],
   "tracks": [
