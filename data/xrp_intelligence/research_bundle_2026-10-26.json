@@ -3,11 +3,11 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:13:38.668Z",
-    "main_tip_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+    "captured_at_utc": "2026-10-27T04:12:17.316Z",
+    "main_tip_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_AND_CONFIDENCE_ZERO",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_CONFIDENCE_ZERO_AND_ACADEMIC_NEWS_CONTAMINATION",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access."
   },
   "problem": {
@@ -1008,6 +1008,112 @@
           "status": "SUPPORTED_BY_PRIMARY_SOURCE"
         }
       ]
+    },
+    {
+      "source_id": "SRC-EVERNORTH-CLOSE-2026-10-09",
+      "title": "Evernorth Completes Business Combination with Armada Acquisition Corp. II",
+      "author_or_organization": "Evernorth Holdings Inc. / Nasdaq press release distribution",
+      "source_type": "official_company_press_release",
+      "url": "https://www.nasdaq.com/press-release/evernorth-completes-business-combination-armada-acquisition-corp-ii-2026-10-09",
+      "publication_date": "2026-10-09",
+      "sections": [
+        "Business combination completed 2026-10-09.",
+        "At closing, reported approximately 473 million XRP and approximately $300 million gross cash proceeds before transaction expenses.",
+        "Named investors include SBI Group and Ripple.",
+        "Release expected XRPN trading to begin 2026-10-12."
+      ]
+    },
+    {
+      "source_id": "SRC-EVERNORTH-PARTNERS-2026-10-14",
+      "title": "Evernorth to Begin Deploying from 473 Million XRP Treasury with Ripple, Kraken, Coinbase and BitGo",
+      "author_or_organization": "Evernorth Holdings Inc. / Nasdaq press release distribution",
+      "source_type": "official_company_press_release",
+      "url": "https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo",
+      "publication_date": "2026-10-14",
+      "sections": [
+        "Names Ripple, Kraken, Coinbase and BitGo as inaugural institutional execution partners.",
+        "Strategies were intended to begin Q4 2026; agreements subject to customary closing conditions and required approvals.",
+        "This release says shares began trading 2026-10-08, conflicting with the SEC filing and Nasdaq event page that say 2026-10-12. Preserve the discrepancy."
+      ]
+    },
+    {
+      "source_id": "SRC-SEC-EVERNORTH-2026-10-23",
+      "title": "Evernorth Holdings Inc. SEC filing dated 2026-10-23: capital, XRP acquisition and share disclosures",
+      "author_or_organization": "Evernorth Holdings Inc. / U.S. Securities and Exchange Commission",
+      "source_type": "official_sec_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "publication_date": "2026-10-23",
+      "sections": [
+        "Reports 26,094,680 Class A shares outstanding as of 2026-10-22 and an arrangement for up to 5,218,935 shares to be sold to Cantor from time to time.",
+        "Reports $214.1 million in cash proceeds used to purchase 84,365,876 XRP.",
+        "Separately reports 261,919,096 XRP raised through private-placement subscription agreements.",
+        "Reports a Ripple facility increased to $10 million and $9.7 million borrowed as of 2026-10-07.",
+        "States XRPN trading began 2026-10-12, conflicting with the October 14 release's October 8 sentence."
+      ]
+    },
+    {
+      "source_id": "SRC-NASDAQ-EVERNORTH-TRADING-DATE-2026-10-14",
+      "title": "Evernorth Rings the Nasdaq Stock Market Closing Bell",
+      "author_or_organization": "Nasdaq",
+      "source_type": "official_exchange_event",
+      "url": "https://www.nasdaq.com/events/evernorth-rings-closing-bell",
+      "publication_date": "2026-10-14",
+      "sections": [
+        "Nasdaq event page states business combination completed 2026-10-09 and XRPN shares began trading 2026-10-12."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10",
+      "title": "How does cross collateral work?",
+      "author_or_organization": "Coinbase Help / Global Exchange",
+      "source_type": "official_platform_documentation",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "publication_date": "accessed 2026-10-27",
+      "sections": [
+        "XRP listed as eligible collateral for Global Exchange perpetual-futures positions, subject to product/region eligibility.",
+        "Organization-level collateral caps use average daily quantity.",
+        "Collateral valuation uses market value in USDC.",
+        "Actual XRP collateral posted and utilization are not disclosed."
+      ]
+    },
+    {
+      "source_id": "SRC-EVERNORTH-CIO-2026-10-12",
+      "title": "Evernorth Names Hugo Jeandesboz Chief Investment Officer",
+      "author_or_organization": "Evernorth Holdings Inc. / Nasdaq press release distribution",
+      "source_type": "official_company_press_release",
+      "url": "https://www.nasdaq.com/press-release/evernorth-names-hugo-jeandesboz-chief-investment-officer-2026-10-12",
+      "publication_date": "2026-10-12",
+      "sections": [
+        "Hugo Jeandesboz named CIO to lead XRP treasury allocation, liquidity management and active management.",
+        "Evernorth says he previously served as Co-CIO at Coinbase Asset Management and led Solutions investment strategies.",
+        "Prior employment does not establish privileged information-sharing or specific trading activity."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+      "title": "SBI Holdings announces investment in Evernorth's XRP treasury business",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+      "publication_date": "2025-10-21",
+      "sections": [
+        "SBI Holdings announced an investment in Evernorth's PIPE alongside Ripple and other investors.",
+        "Evernorth's 2026 closing announcement lists SBI Group among investors.",
+        "Exact current stake and SBI-directed spot XRP flows remain unverified."
+      ]
+    },
+    {
+      "source_id": "KAMILAH_VIDEO_M8TmDXO7B-0",
+      "title": "UNRESOLVED_TITLE — XRP collateral claim video (metadata lead)",
+      "author_or_organization": "Kamilah Stevenson channel display name; speaker identity variant unresolved",
+      "source_type": "public_youtube_video_metadata_lead",
+      "url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "publication_date": "2025-12-06 (reported)",
+      "sections": [
+        "Video metadata lead used by an existing collateral-claim record.",
+        "Full transcript has not been captured; title and speaker identity require verification.",
+        "Treat the creator's collateral claim as challenged by CFTC/CME primary-source checks already recorded in this bundle."
+      ]
     }
   ],
   "claims": [
@@ -1665,6 +1771,166 @@
         "SRC-XRPL-TOKENS"
       ],
       "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-EVERNORTH-TREASURY-LISTING",
+      "statement": "Evernorth completed its business combination on 2026-10-09 and reported approximately 473 million XRP at closing. Its SEC filing and Nasdaq event page state XRPN trading began 2026-10-12, while an October 14 Evernorth release says October 8; the source conflict is preserved. The treasury establishes corporate XRP exposure, not that all holdings were purchased in open markets.",
+      "domain": "institutional_capital_flows",
+      "claim_type": "confirmed_corporate_disclosure_with_source_conflict",
+      "source": "SRC-EVERNORTH-CLOSE-2026-10-09",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-completes-business-combination-armada-acquisition-corp-ii-2026-10-09",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-TREASURY-LISTING",
+        "XRP-E-EVERNORTH-TRADING-DATE-SEC"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-EVERNORTH-PR-DATE-DISCREPANCY"
+      ],
+      "derivation_status": "SUPPORTED_WITH_DATE_DISCREPANCY_RECORDED",
+      "independent_verification_status": "CROSS_SOURCE_PRIMARY_DOCUMENTS; HOLDINGS_SOURCE_MIX_REQUIRES_RECONCILIATION",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Reported treasury is a company disclosure at closing, not a live on-chain balance.",
+        "SEC filing and Nasdaq event page are the working date evidence; conflicting release sentence retained."
+      ],
+      "provenance": [
+        "SRC-EVERNORTH-CLOSE-2026-10-09",
+        "SRC-SEC-EVERNORTH-2026-10-23",
+        "SRC-NASDAQ-EVERNORTH-TRADING-DATE-2026-10-14",
+        "SRC-EVERNORTH-PARTNERS-2026-10-14"
+      ],
+      "timestamp": 1793074337
+    },
+    {
+      "claim_id": "XRP-C-EVERNORTH-CAPITAL-SOURCES",
+      "statement": "Evernorth's October 23 SEC filing describes $214.1 million of cash proceeds used to purchase 84,365,876 XRP and separately reports 261,919,096 XRP raised through private-placement subscription agreements. It also reports $9.7 million borrowed as of October 7 under a Ripple facility increased to $10 million, 26,094,680 Class A shares outstanding as of October 22, and an arrangement for up to 5,218,935 shares to be sold to Cantor from time to time. Treasury formation has mixed acquisition/contribution and financing channels; the full 473 million XRP must not be treated as fresh spot demand.",
+      "domain": "capital_flows_and_corporate_finance",
+      "claim_type": "official_sec_filing_fact_with_market_impact_unresolved",
+      "source": "SRC-SEC-EVERNORTH-2026-10-23",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-CASH-PURCHASE-84M",
+        "XRP-E-EVERNORTH-IN-KIND-PRIVATE-PLACEMENT"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "PRIMARY_FILING; RECONCILE_WITH_ON_CHAIN_AND_LATER_FILINGS",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.97,
+      "assumptions": [
+        "Amounts are time-specific filing disclosures.",
+        "Potential share-sale capacity is not evidence shares were sold.",
+        "Cash-funded purchases do not disclose execution venues or net price impact."
+      ],
+      "provenance": [
+        "SRC-SEC-EVERNORTH-2026-10-23"
+      ],
+      "timestamp": 1793074337
+    },
+    {
+      "claim_id": "XRP-C-EVERNORTH-EXECUTION-PARTNERS",
+      "statement": "Evernorth announced Ripple, Kraken, Coinbase and BitGo as institutional execution partners for strategies intended to begin in Q4 2026. This establishes an announced relationship, not that any named partner has already executed trades, acquired XRP or generated measurable net flows.",
+      "domain": "institutional_market_structure",
+      "claim_type": "official_company_announcement_with_execution_status_unverified",
+      "source": "SRC-EVERNORTH-PARTNERS-2026-10-14",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-EXECUTION-PARTNERS"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_ANNOUNCEMENT; EXECUTION_NOT_VERIFIED",
+      "independent_verification_status": "SINGLE_ISSUER_ANNOUNCEMENT",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.97,
+      "assumptions": [
+        "Partnerships may change or remain subject to conditions.",
+        "No partner-level orders, balances or transaction data were disclosed."
+      ],
+      "provenance": [
+        "SRC-EVERNORTH-PARTNERS-2026-10-14"
+      ],
+      "timestamp": 1793074337
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-XRP-CROSS-COLLATERAL",
+      "statement": "Coinbase's Global Exchange documentation lists XRP as eligible cross-collateral for perpetual-futures positions, subject to product/region eligibility, organization-level average-daily-quantity limits and valuation rules. This confirms eligibility, not actual posted collateral, utilization or incremental spot demand; cross-collateral can also change leverage and liquidation pathways.",
+      "domain": "exchange_positioning_and_derivatives",
+      "claim_type": "official_platform_documentation",
+      "source": "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10",
+      "source_location": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-XRP-CROSS-COLLATERAL"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_PRODUCT_ELIGIBILITY",
+      "independent_verification_status": "SINGLE_PLATFORM_DOCUMENTATION; ACTUAL_USAGE_UNKNOWN",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "Documentation may change and applies only to eligible products/regions.",
+        "Aggregate posted-collateral data are unavailable."
+      ],
+      "provenance": [
+        "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
+      ],
+      "timestamp": 1793074337
+    },
+    {
+      "claim_id": "XRP-C-EVERNORTH-CIO-COINBASE-LINK",
+      "statement": "Evernorth identifies Hugo Jeandesboz as its CIO for XRP treasury allocation and liquidity management and says he previously served as Co-CIO at Coinbase Asset Management. This is a confirmed personnel link, not evidence of privileged information-sharing or Coinbase purchasing XRP for Evernorth.",
+      "domain": "people_and_entity_relationships",
+      "claim_type": "official_personnel_disclosure_with_inference_boundary",
+      "source": "SRC-EVERNORTH-CIO-2026-10-12",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-names-hugo-jeandesboz-chief-investment-officer-2026-10-12",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-CIO-COINBASE-LINK"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "SINGLE_COMPANY_ANNOUNCEMENT",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The announcement accurately summarizes prior employment.",
+        "Former employment alone does not imply a continuing legal, data-sharing or trading relationship."
+      ],
+      "provenance": [
+        "SRC-EVERNORTH-CIO-2026-10-12"
+      ],
+      "timestamp": 1793074337
+    },
+    {
+      "claim_id": "XRP-C-SBI-EVERNORTH-INVESTMENT",
+      "statement": "SBI Holdings announced an investment in Evernorth's PIPE in October 2025, and Evernorth's 2026 closing announcement lists SBI Group among investors. This confirms a strategic capital relationship; the current stake, subsequent purchases and SBI-directed open-market XRP flow require separate evidence.",
+      "domain": "institutional_capital_flows",
+      "claim_type": "confirmed_investment_announcement_with_flow_limits",
+      "source": "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+      "source_location": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-EVERNORTH-INVESTMENT",
+        "XRP-E-EVERNORTH-TREASURY-LISTING"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_INVESTMENT_RELATIONSHIP",
+      "independent_verification_status": "CROSS_SOURCE_CORPORATE_ANNOUNCEMENTS; CURRENT_STAKE_UNVERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.97,
+      "assumptions": [
+        "Group-level investor references do not identify exact share class or current percentage.",
+        "Equity investment is not equivalent to direct spot XRP purchases."
+      ],
+      "provenance": [
+        "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+        "SRC-EVERNORTH-CLOSE-2026-10-09"
+      ],
+      "timestamp": 1793074337
     }
   ],
   "evidence": [
@@ -2488,6 +2754,153 @@
       "details": {
         "implication": "USDC on XRPL is not XRP and is not itself evidence of net XRP acquisition."
       }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-TREASURY-LISTING",
+      "claim_id": "XRP-C-EVERNORTH-TREASURY-LISTING",
+      "kind": "official_company_disclosure",
+      "summary": "Evernorth announced completion on 2026-10-09 and approximately 473 million XRP at closing with approximately $300 million gross cash proceeds before expenses.",
+      "source_id": "SRC-EVERNORTH-CLOSE-2026-10-09",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-completes-business-combination-armada-acquisition-corp-ii-2026-10-09",
+      "status": "SUPPORTED",
+      "independence": "issuer_disclosure",
+      "provenance": [
+        "SRC-EVERNORTH-CLOSE-2026-10-09"
+      ],
+      "details": {
+        "limit": "Treasury has mixed acquisition/contribution sources; not all holdings are established as open-market purchases."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-TRADING-DATE-SEC",
+      "claim_id": "XRP-C-EVERNORTH-TREASURY-LISTING",
+      "kind": "official_sec_filing",
+      "summary": "The October 23 SEC filing says XRPN shares began trading 2026-10-12 and reports 26,094,680 Class A shares outstanding as of 2026-10-22.",
+      "source_id": "SRC-SEC-EVERNORTH-2026-10-23",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "status": "SUPPORTED",
+      "independence": "issuer_filing",
+      "provenance": [
+        "SRC-SEC-EVERNORTH-2026-10-23"
+      ],
+      "details": {
+        "limit": "The October 14 company release instead says October 8; conflict retained."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-PR-DATE-DISCREPANCY",
+      "claim_id": "XRP-C-EVERNORTH-TREASURY-LISTING",
+      "kind": "source_conflict",
+      "summary": "The October 14 Evernorth partner release says shares began trading October 8, while the SEC filing and Nasdaq event page say October 12.",
+      "source_id": "SRC-EVERNORTH-PARTNERS-2026-10-14",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo",
+      "status": "CONFLICT_RECORDED",
+      "independence": "issuer_release_conflict",
+      "provenance": [
+        "SRC-EVERNORTH-PARTNERS-2026-10-14",
+        "SRC-SEC-EVERNORTH-2026-10-23",
+        "SRC-NASDAQ-EVERNORTH-TRADING-DATE-2026-10-14"
+      ],
+      "details": {
+        "resolution": "Use SEC and Nasdaq event page as working date; retain conflicting sentence until corrected."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-CASH-PURCHASE-84M",
+      "claim_id": "XRP-C-EVERNORTH-CAPITAL-SOURCES",
+      "kind": "official_sec_filing",
+      "summary": "The SEC filing says $214.1 million in cash proceeds was used to purchase 84,365,876 XRP.",
+      "source_id": "SRC-SEC-EVERNORTH-2026-10-23",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "status": "SUPPORTED",
+      "independence": "issuer_filing",
+      "provenance": [
+        "SRC-SEC-EVERNORTH-2026-10-23"
+      ],
+      "details": {
+        "limit": "Execution dates, venues and net market impact are not established by this excerpt."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-IN-KIND-PRIVATE-PLACEMENT",
+      "claim_id": "XRP-C-EVERNORTH-CAPITAL-SOURCES",
+      "kind": "official_sec_filing",
+      "summary": "The same filing separately reports 261,919,096 XRP raised through private-placement subscription agreements, a Ripple facility and potential share-sale capacity.",
+      "source_id": "SRC-SEC-EVERNORTH-2026-10-23",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "status": "SUPPORTED",
+      "independence": "issuer_filing",
+      "provenance": [
+        "SRC-SEC-EVERNORTH-2026-10-23"
+      ],
+      "details": {
+        "limit": "In-kind XRP must not be counted as fresh spot purchases; potential share-sale capacity is not proof of sales."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-EXECUTION-PARTNERS",
+      "claim_id": "XRP-C-EVERNORTH-EXECUTION-PARTNERS",
+      "kind": "official_company_disclosure",
+      "summary": "Evernorth named Ripple, Kraken, Coinbase and BitGo as execution partners and said strategies were intended to begin in Q4 2026.",
+      "source_id": "SRC-EVERNORTH-PARTNERS-2026-10-14",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-begin-deploying-473-million-xrp-treasury-ripple-kraken-coinbase-and-bitgo",
+      "status": "SUPPORTED",
+      "independence": "issuer_disclosure",
+      "provenance": [
+        "SRC-EVERNORTH-PARTNERS-2026-10-14"
+      ],
+      "details": {
+        "limit": "Announcement is not transaction-level evidence; actual deployment remains unverified."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-COINBASE-XRP-CROSS-COLLATERAL",
+      "claim_id": "XRP-C-COINBASE-XRP-CROSS-COLLATERAL",
+      "kind": "official_platform_documentation",
+      "summary": "Coinbase lists XRP as eligible Global Exchange cross-collateral with average-daily-quantity caps and USDC valuation, but discloses no posted XRP balances.",
+      "source_id": "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10",
+      "source_location": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "status": "SUPPORTED",
+      "independence": "platform_documentation",
+      "provenance": [
+        "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
+      ],
+      "details": {
+        "limit": "Eligibility is not utilization or net buying."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-CIO-COINBASE-LINK",
+      "claim_id": "XRP-C-EVERNORTH-CIO-COINBASE-LINK",
+      "kind": "official_company_disclosure",
+      "summary": "Evernorth announced Hugo Jeandesboz as CIO and identified him as a former Coinbase Asset Management Co-CIO.",
+      "source_id": "SRC-EVERNORTH-CIO-2026-10-12",
+      "source_location": "https://www.nasdaq.com/press-release/evernorth-names-hugo-jeandesboz-chief-investment-officer-2026-10-12",
+      "status": "SUPPORTED",
+      "independence": "issuer_disclosure",
+      "provenance": [
+        "SRC-EVERNORTH-CIO-2026-10-12"
+      ],
+      "details": {
+        "limit": "Prior employment does not prove special information-sharing or trading."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-EVERNORTH-INVESTMENT",
+      "claim_id": "XRP-C-SBI-EVERNORTH-INVESTMENT",
+      "kind": "official_corporate_release",
+      "summary": "SBI Holdings announced an investment in Evernorth's PIPE in 2025; Evernorth later listed SBI Group among investors.",
+      "source_id": "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+      "source_location": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+      "status": "SUPPORTED",
+      "independence": "cross_source_corporate_announcements",
+      "provenance": [
+        "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+        "SRC-EVERNORTH-CLOSE-2026-10-09"
+      ],
+      "details": {
+        "limit": "Current stake and direct SBI XRP trading remain unverified."
+      }
     }
   ],
   "tracks": [
@@ -2919,7 +3332,10 @@
         "status": "FACT",
         "source_ids": [
           "SRC-XRPL-XRP-OVERVIEW",
-          "SRC-XRPL-TOKENS"
+          "SRC-XRPL-TOKENS",
+          "SRC-EVERNORTH-CLOSE-2026-10-09",
+          "SRC-SEC-EVERNORTH-2026-10-23",
+          "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
         ]
       },
       {
@@ -2937,7 +3353,10 @@
         "status": "FACT",
         "source_ids": [
           "SRC-SBI-XRP-REMIT",
-          "SRC-SBI-RLUSD-START"
+          "SRC-SBI-RLUSD-START",
+          "SRC-EVERNORTH-PARTNERS-2026-10-14",
+          "SRC-SEC-EVERNORTH-2026-10-23",
+          "SRC-EVERNORTH-CLOSE-2026-10-09"
         ]
       },
       {
@@ -2947,7 +3366,10 @@
         "source_ids": [
           "SRC-COINBASE-XRP-SUPPORT",
           "SRC-CIRCLE-COINBASE-AGREEMENT",
-          "SRC-COINBASE-USDC-INCENTIVES"
+          "SRC-COINBASE-USDC-INCENTIVES",
+          "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10",
+          "SRC-EVERNORTH-PARTNERS-2026-10-14",
+          "SRC-EVERNORTH-CIO-2026-10-12"
         ]
       },
       {
@@ -2985,7 +3407,9 @@
         "source_ids": [
           "SRC-SBI-XRP-REMIT",
           "SRC-SBI-RLUSD-START",
-          "SRC-SBI-CRYPTO-IDENTITY"
+          "SRC-SBI-CRYPTO-IDENTITY",
+          "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+          "SRC-EVERNORTH-CLOSE-2026-10-09"
         ]
       },
       {
@@ -3108,6 +3532,25 @@
         "status": "FACT_LISTED_AS_OF_2026-10-07; LEGAL_ENTITY_MAPPING_TO_HISTORICAL_JAPAN_ENTITY_UNRESOLVED",
         "source_ids": [
           "SRC-SBI-GROUP-COMPANIES-2026-10-07"
+        ]
+      },
+      {
+        "id": "Evernorth",
+        "type": "publicly_traded_XRP_treasury_company",
+        "status": "CONFIRMED_PUBLIC_COMPANY; CURRENT_HOLDINGS_REQUIRE_REFRESH",
+        "source_ids": [
+          "SRC-EVERNORTH-CLOSE-2026-10-09",
+          "SRC-EVERNORTH-PARTNERS-2026-10-14",
+          "SRC-SEC-EVERNORTH-2026-10-23",
+          "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21"
+        ]
+      },
+      {
+        "id": "Hugo Jeandesboz",
+        "type": "investment_executive",
+        "status": "CONFIRMED_ROLE_ANNOUNCED_2026-10-12",
+        "source_ids": [
+          "SRC-EVERNORTH-CIO-2026-10-12"
         ]
       }
     ],
@@ -3414,6 +3857,87 @@
           "SRC-SBI-CRYPTO-PROFILE"
         ],
         "caveat": "Identity and mining activity do not establish XRP exposure."
+      },
+      {
+        "source": "Evernorth",
+        "target": "XRP",
+        "relationship_type": "TREASURY_HOLDINGS",
+        "classification": "CONFIRMED_AT_2026-10-09_CLOSE; CURRENT_BALANCE_REQUIRES_REFRESH",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-EVERNORTH-CLOSE-2026-10-09",
+          "SRC-SEC-EVERNORTH-2026-10-23"
+        ],
+        "caveat": "Reported 473M XRP has mixed acquisition/contribution sources; not all holdings are fresh spot purchases."
+      },
+      {
+        "source": "Evernorth",
+        "target": "Coinbase",
+        "relationship_type": "INSTITUTIONAL_EXECUTION_PARTNER_ANNOUNCED",
+        "classification": "OFFICIAL_ANNOUNCEMENT; ACTUAL_EXECUTION_UNVERIFIED",
+        "confidence": 0.97,
+        "source_ids": [
+          "SRC-EVERNORTH-PARTNERS-2026-10-14"
+        ],
+        "caveat": "Q4 strategies were forward-looking and subject to conditions; no transaction-level flows are established."
+      },
+      {
+        "source": "Evernorth",
+        "target": "Ripple",
+        "relationship_type": "STRATEGIC_INVESTOR_AND_XRP_OR_CREDIT_RELATIONSHIP",
+        "classification": "PUBLIC_DISCLOSURES_CONFIRMED; CURRENT_BALANCES_REQUIRE_REFRESH",
+        "confidence": 0.95,
+        "source_ids": [
+          "SRC-EVERNORTH-CLOSE-2026-10-09",
+          "SRC-SEC-EVERNORTH-2026-10-23",
+          "SRC-EVERNORTH-PARTNERS-2026-10-14"
+        ],
+        "caveat": "Separate investment, XRP contribution, credit and trading; figures are time-specific."
+      },
+      {
+        "source": "Evernorth",
+        "target": "SBI Holdings",
+        "relationship_type": "STRATEGIC_INVESTOR",
+        "classification": "CONFIRMED_PUBLIC_ANNOUNCEMENTS",
+        "confidence": 0.97,
+        "source_ids": [
+          "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
+          "SRC-EVERNORTH-CLOSE-2026-10-09"
+        ],
+        "caveat": "Equity investment does not establish SBI's direct spot XRP buying or current stake."
+      },
+      {
+        "source": "Coinbase",
+        "target": "XRP",
+        "relationship_type": "CROSS_COLLATERAL_ELIGIBILITY",
+        "classification": "CONFIRMED_PLATFORM_DOCUMENTATION; UTILIZATION_UNKNOWN",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
+        ],
+        "caveat": "Eligible Global Exchange products/regions only; posted collateral and spot-flow impact unknown."
+      },
+      {
+        "source": "Hugo Jeandesboz",
+        "target": "Coinbase",
+        "relationship_type": "FORMER_COINBASE_ASSET_MANAGEMENT_CO_CIO",
+        "classification": "CONFIRMED_IN_EVERNORTH_ANNOUNCEMENT",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-EVERNORTH-CIO-2026-10-12"
+        ],
+        "caveat": "Former employment does not prove ongoing data-sharing or trading."
+      },
+      {
+        "source": "Hugo Jeandesboz",
+        "target": "Evernorth",
+        "relationship_type": "CHIEF_INVESTMENT_OFFICER",
+        "classification": "CONFIRMED_2026-10-12_ANNOUNCEMENT",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-EVERNORTH-CIO-2026-10-12"
+        ],
+        "caveat": "Monitor later filings for role changes."
       }
     ]
   },
@@ -3517,6 +4041,78 @@
       "falsification_conditions": [
         "OUSD remains small/non-operational or has no material overlap with Coinbase/Circle flows.",
         "Coinbase's OUSD participation is limited to non-exclusive infrastructure access without meaningful economic substitution."
+      ]
+    },
+    {
+      "hypothesis_id": "H-EVERNORTH-NET-SPOT-DEMAND",
+      "statement": "Evernorth's documented cash-funded XRP purchases and any subsequent acquisitions may create incremental net spot demand beyond in-kind contributions, particularly if holdings are retained rather than lent or sold.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-CASH-PURCHASE-84M",
+        "XRP-E-EVERNORTH-TREASURY-LISTING"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-EVERNORTH-IN-KIND-PRIVATE-PLACEMENT"
+      ],
+      "required_tests": [
+        "Separate cash purchases from contributed XRP in SEC filings and on-chain movements.",
+        "Track treasury balances, exchange netflows, acquisitions, sales and lending.",
+        "Control for BTC/ETH beta, macro news, volatility, funding, liquidity and broad XRP flows."
+      ],
+      "falsification_conditions": [
+        "Treasury growth comes from contributions/internal transfers rather than market purchases with no persistent net outflow from liquid venues.",
+        "No reproducible incremental demand or risk-adjusted response follows verified cash-funded acquisitions."
+      ],
+      "confidence": 0.5,
+      "provenance": [
+        "SRC-SEC-EVERNORTH-2026-10-23",
+        "SRC-EVERNORTH-CLOSE-2026-10-09"
+      ]
+    },
+    {
+      "hypothesis_id": "H-EVERNORTH-DEPLOYMENT-LEVERAGE-AND-SUPPLY",
+      "statement": "Deploying Evernorth's treasury through institutional yield, lending or market-making strategies could improve liquidity and utility, but may also make XRP borrowable, induce hedging/leverage, increase liquidation risk or coincide with equity issuance; net price effect is sign-ambiguous.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-EXECUTION-PARTNERS",
+        "XRP-E-EVERNORTH-IN-KIND-PRIVATE-PLACEMENT"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-EVERNORTH-CASH-PURCHASE-84M"
+      ],
+      "required_tests": [
+        "Verify actual strategy activation, counterparties, custody and lending/rehypothecation permissions.",
+        "Monitor XRPN filings, share issuance, XRP transfers, exchange deposits, open interest, funding and liquidations.",
+        "Compare verified deployment events with matched controls and net spot/derivative flows."
+      ],
+      "falsification_conditions": [
+        "No deployment, lending, hedging or additional issuance occurs and observed flows remain indistinguishable from controls."
+      ],
+      "confidence": 0.5,
+      "provenance": [
+        "SRC-EVERNORTH-PARTNERS-2026-10-14",
+        "SRC-SEC-EVERNORTH-2026-10-23"
+      ]
+    },
+    {
+      "hypothesis_id": "H-COINBASE-XRP-COLLATERAL-SIGN-AMBIGUOUS",
+      "statement": "XRP collateral eligibility at Coinbase Global Exchange may increase balance-sheet utility and collateral demand, but cross-margining can also facilitate leverage and amplify forced liquidation; eligibility alone does not determine spot demand.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-COINBASE-XRP-CROSS-COLLATERAL"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Seek public or authorized time-series data for collateral utilization, haircuts, average-daily-quantity caps, open interest and liquidations.",
+        "Test whether verified utilization changes precede net XRP exchange outflows or purchases after controls.",
+        "Keep eligibility categorical until utilization is observed; never impute balances."
+      ],
+      "falsification_conditions": [
+        "Eligibility remains unused or immaterial, with no measured change in collateral, inventory or controlled market response."
+      ],
+      "confidence": 0.5,
+      "provenance": [
+        "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
       ]
     }
   ],
@@ -3646,11 +4242,11 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
-    "latest_main_commit_message": "chore: Barrot telemetry report",
-    "latest_main_commit_ci": "At main tip 2bae7ccdfbec8f9536cb40950110c72e949f5073, the observed workflow-run query returned Pages build/deployment success (40424459820); no core CI run was observed for that exact main SHA. This is not evidence that the core suite passed on main.",
+    "main_tip_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
+    "latest_main_commit_message": "Paper trade cycle [skip ci]",
+    "latest_main_commit_ci": "Current main tip is a generated paper-trading cycle marked [skip ci]; no core CI run was observed for this exact SHA in this inspection, so core-suite success on main is not established.",
     "current_signal": {
-      "timestamp": "2026-10-26T23:25:41.820784Z",
+      "timestamp": "2026-10-27T03:35:06.972041+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -3659,10 +4255,10 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "a74f8cacf498ce6936d538a1cdc0925605379cb1",
-      "retrieved_at_utc": "2026-10-27T00:11:06.856Z",
-      "age_minutes_at_retrieval": 45.4,
-      "disposition": "INVALID_FOR_FORECASTING"
+      "blob_sha": "e8b9582c9e7a4d9aea1971885a4b292aceda5ae3",
+      "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
+      "age_minutes_at_retrieval": 37.2,
+      "disposition": "INVALID_FOR_FORECASTING_ACADEMIC_XRPL_RESEARCH_HEADLINES_CONTAMINATE_NEWS_SCORE_AND_PROVIDER_SENTIMENT_UNAVAILABLE"
     },
     "legacy_accuracy": {
       "checked_count": 1612,
@@ -3681,49 +4277,35 @@
     },
     "relevant_open_drafts": [
       {
-        "pr": 1165,
-        "title": "XRP integrity: fail closed on unavailable sentiment; retire invalid accuracy metric",
-        "head_sha": "e8ae692bd06f78cbec9b7bf4ad2715052051d23b",
-        "ci": "Stale legacy head; fresh-main successor PR #1172 now has exact-head CI (123 passed) and fail-closed gate success against current main.",
-        "state": "OPEN_DRAFT_STALE_BASE",
-        "merge_authorized": false,
-        "behind_main_commits": 38,
-        "ahead_main_commits": 7
-      },
-      {
-        "pr": 1155,
-        "title": "XRP market data: require synchronized event-time inputs",
-        "head_sha": "f9be50c331410c8e148f3889a2b0f7a20187ea8f",
-        "ci": "Stale by 87 commits; last reported tests were on an old merge ref.",
-        "state": "OPEN_DRAFT_STALE_BASE",
-        "merge_authorized": false,
-        "behind_main_commits": 87,
-        "ahead_main_commits": 3
-      },
-      {
-        "pr": 1166,
-        "title": "Safety: deterministic XRP summary fallback and artifact-only workflow",
-        "head_sha": "2ba1eb813822cfa2d1eebe24225a798462639ff8",
-        "ci": "CI and fail-closed workflow reported successful",
-        "state": "OPEN_DRAFT",
+        "pr": 1173,
+        "title": "Safety: disable mutation-capable merge queue pending reviewed gates",
+        "head_sha": "b82530aface6331f4544fbc48f97156c8014ce55",
+        "ci": "Exact-head CI and fail-closed gate passed against refreshed main.",
+        "state": "OPEN_DRAFT_CURRENT_MAIN_VALIDATED",
         "merge_authorized": false
       },
       {
-        "pr": 1168,
-        "title": "Safety: disable mutation-capable merge queue on fresh main",
-        "head_sha": "4bdb914b7a4fb7b38defb91f05832e149326d88f",
-        "ci": "Stale by 23 commits; fresh-main successor PR #1173 has CI in progress and fail-closed gate success.",
-        "state": "OPEN_DRAFT_STALE_BASE",
-        "merge_authorized": false,
-        "behind_main_commits": 23,
-        "ahead_main_commits": 3
+        "pr": 1178,
+        "title": "Safety: fail closed on XRP sentiment and summaries; retire invalid accuracy",
+        "head_sha": "a1ada32ca09aa5680931e4791bc81a3984cb8d0e",
+        "ci": "Exact-head CI and fail-closed gate passed against refreshed main.",
+        "state": "OPEN_DRAFT_CURRENT_MAIN_VALIDATED",
+        "merge_authorized": false
       },
       {
-        "pr": 1161,
-        "title": "Safety: disable legacy scheduled accuracy writer pending fixed-horizon evaluation",
-        "head_sha": "8941ef193b30ba02e098ef4c9f0aac11f89a8630",
-        "ci": "Not re-checked in this snapshot",
-        "state": "OPEN_DRAFT",
+        "pr": 1170,
+        "title": "Research: durable XRP intelligence ledger and relationship graph",
+        "head_sha": "PENDING_AFTER_THIS_LEDGER_UPDATE",
+        "ci": "Previous refreshed head passed; this update requires a new exact-head run.",
+        "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1177,
+        "title": "Research: refresh vidIQ transcript evidence and XRP relationships",
+        "head_sha": "9099a9b2db6220be559a3c90db55a6db8f74cdf0",
+        "ci": "Gate passed; exact-head CI in progress at last observation.",
+        "state": "OPEN_DRAFT_CI_PENDING",
         "merge_authorized": false
       }
     ],
@@ -3734,7 +4316,7 @@
         "risk": "HIGH",
         "status": "OBSERVED_ON_MAIN",
         "mitigation_pr": 1173,
-        "mitigation_state": "OPEN_DRAFT_CI_PENDING; GATE_PASSED",
+        "mitigation_state": "OPEN_DRAFT_CURRENT_MAIN_CI_AND_FAIL_CLOSED_GATE_PASSED; APPROVAL_REQUIRED",
         "do_not_run": true
       },
       {
@@ -3747,14 +4329,14 @@
         "finding": "The rulesets endpoint returned one branch-target ruleset named 'Fall Back' with enforcement disabled. Branch-protection endpoint returned 403 to the connected integration, so effective protection remains unverified.",
         "risk": "HIGH",
         "status": "OBSERVED_PARTIAL_CONFIGURATION",
-        "mitigation_pr": 1168,
-        "mitigation_state": "OPEN_DRAFT_STALE_BASE",
+        "mitigation_pr": 1173,
+        "mitigation_state": "OPEN_DRAFT_CURRENT_MAIN_CI_AND_FAIL_CLOSED_GATE_PASSED; EFFECTIVE_BRANCH_PROTECTION_UNVERIFIED",
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "The current main web/latest_signal.json blob SHA is a74f8cacf498ce6936d538a1cdc0925605379cb1 and its artifact timestamp is 2026-10-26T23:25:41.820784Z; it was 45.4 minutes old at retrieval 2026-10-27T00:11:06.856Z. Score 44/confidence 0 remains invalid because both model providers failed and the news input is dominated by XRPL protocol/research-paper titles.",
+    "latest_signal_staleness": "Current main web/latest_signal.json blob e8b9582c9e7a4d9aea1971885a4b292aceda5ae3 timestamp 2026-10-27T03:35:06.972041+00:00; age 37.2 minutes at 2026-10-27T04:12:17.316Z. Score 44, confidence 0 and news score 88 from 11 entries remain invalid for forecasting because providers failed and the news set is dominated by XRPL protocol/research-paper titles.",
     "current_ruleset_observation": {
-      "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
+      "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
       "observed_rulesets": [
         {
@@ -3765,21 +4347,18 @@
         }
       ],
       "branch_protection_endpoint_status": "403 Resource not accessible by integration",
-      "interpretation": "The listed ruleset is disabled; effective branch protection remains unknown because the separate endpoint was inaccessible. Do not run merge queue."
+      "interpretation": "The only listed branch-target ruleset remains disabled. Effective branch protection is unknown; do not run the mutation-capable merge queue."
     },
     "pr1170_validation": {
-      "last_completed_head_sha": "60e78875ea06821e3692543bb6512871545aabf5",
-      "last_completed_ci_run": 40424938717,
-      "last_completed_ci_conclusion": "success",
-      "tests_passed": 111,
-      "duration_seconds": 6.03,
-      "last_completed_fail_closed_gate_run": 40424938673,
-      "last_completed_gate_conclusion": "success",
-      "tested_base_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
-      "current_main_tip": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
-      "behind_current_main": 9,
-      "latest_head_validation_status": "PASSED_ON_STALE_BASE; NEW_LEDGER_COMMIT_REQUIRES_RECHECK",
-      "note": "Exact-head CI/gate passed on 60e788 against stale base e49431. This snapshot update advances the branch; the new head needs its own CI/gate. Do not merge without current-main validation and explicit approval."
+      "previous_validated_head_sha": "3dd251b93bb0e302bbb52865f1041b1724ef5dd5",
+      "previous_ci_run": 40447888442,
+      "previous_ci_conclusion": "success",
+      "previous_fail_closed_gate_run": 40447888468,
+      "previous_gate_conclusion": "success",
+      "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
+      "latest_ledger_revision_status": "PENDING_EXACT_HEAD_CI_AND_GATE_AFTER_THIS_UPDATE",
+      "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
+      "note": "This commit adds Evernorth/Coinbase/SBI evidence and current main paper-trading record. Verify exact-head CI and gate before treating this revision as tested."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -3790,6 +4369,36 @@
       "root_cause": "UNRESOLVED",
       "blind_rerun": false,
       "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838"
+    },
+    "pr1173_validation": {
+      "head_sha": "b82530aface6331f4544fbc48f97156c8014ce55",
+      "tested_base_sha": "5f8ac35d7016737c415534a7bfe97dacff6789f9",
+      "ci_run": 40447746711,
+      "ci_conclusion": "success",
+      "fail_closed_gate_run": 40447746653,
+      "gate_conclusion": "success",
+      "state": "OPEN_DRAFT_CURRENT_MAIN_VALIDATED; APPROVAL_REQUIRED",
+      "note": "Exact-head CI and fail-closed gate passed after current-main refresh; main unchanged and PR remains draft/unmerged."
+    },
+    "pr1178_validation": {
+      "head_sha": "a1ada32ca09aa5680931e4791bc81a3984cb8d0e",
+      "tested_base_sha": "5f8ac35d7016737c415534a7bfe97dacff6789f9",
+      "ci_run": 40447839531,
+      "ci_conclusion": "success",
+      "fail_closed_gate_run": 40447839600,
+      "gate_conclusion": "success",
+      "state": "OPEN_DRAFT_CURRENT_MAIN_VALIDATED; APPROVAL_REQUIRED",
+      "note": "Exact-head CI and fail-closed gate passed after current-main refresh; main unchanged and PR remains draft/unmerged."
+    },
+    "pr1177_validation": {
+      "head_sha": "9099a9b2db6220be559a3c90db55a6db8f74cdf0",
+      "tested_base_sha": "5f8ac35d7016737c415534a7bfe97dacff6789f9",
+      "ci_run": 40447916375,
+      "ci_conclusion": "in_progress",
+      "fail_closed_gate_run": 40447916263,
+      "gate_conclusion": "success",
+      "state": "CI_PENDING_ON_CURRENT_MAIN",
+      "note": "Gate passed; exact-head CI was in progress at last observation."
     }
   },
   "video_ingestion": {
@@ -3831,43 +4440,53 @@
   "next_actions": [
     {
       "priority": 0,
-      "action": "Do not merge. PR #1172 is the fresh-main fail-closed signal/accuracy candidate: 123 tests passed and the fail-closed gate passed against main tip 2bae7cc. It remains draft and one unrelated commit behind; inspect current mergeability and require explicit approval.",
+      "action": "Do not dispatch or enable the active mutation-capable merge queue. PR #1173 contains a read-only stop and exact-head CI plus fail-closed gate passed on its refreshed head; it remains draft/unmerged and needs independent review and authorized approval. The sole listed ruleset is disabled and effective branch protection is unverified.",
+      "status": "SAFETY_FIX_TESTED; APPROVAL_REQUIRED"
+    },
+    {
+      "priority": 0,
+      "action": "Review PR #1178, the current-main XRP signal-integrity and deterministic-summary fix. Exact-head CI and fail-closed gate passed, but it remains draft/unmerged. Main's score 44/confidence 0/news score 88 artifact is invalid; do not issue a directional forecast until the fix is reviewed, merged by an authorized person and the pipeline is verified.",
       "status": "TESTED_DRAFT; APPROVAL_REQUIRED"
     },
     {
       "priority": 0,
-      "action": "Do not run the active merge queue. Fresh-main PR #1173 replaces it with a manual read-only stop; fail-closed gate passed and CI was still in progress at last observation. Effective branch protection remains unverified because the branch-protection endpoint returned 403.",
-      "status": "SAFETY_FIX_PENDING_CI"
+      "action": "The XRP research bundle now records Evernorth's reported 473M XRP treasury, mixed cash-purchase/private-placement sources, Coinbase execution-partner announcement and collateral eligibility, Hugo Jeandesboz's prior Coinbase Asset Management role, and SBI's investment. This ledger revision needs exact-head CI and gate.",
+      "status": "LEDGER_UPDATED; VALIDATION_PENDING"
+    },
+    {
+      "priority": 0,
+      "action": "Check exact-head CI for PR #1177 after the current-main refresh. Its fail-closed gate passed but CI was in progress at last observation; the 150-video vidIQ snapshot is partial, not a complete channel inventory.",
+      "status": "CI_PENDING"
     },
     {
       "priority": 1,
-      "action": "Revalidate PR #1170 on current main; its last passing CI/gate were against stale base e49431 and it is now 9 commits behind.",
-      "status": "STALE_BASE_REVALIDATION_REQUIRED"
-    },
-    {
-      "priority": 0,
-      "action": "Wait for exact-head CI and fail-closed gate on the current XRP research PR head after the latest source-ledger and SBIC relationship-graph updates; previous head 4febf9 passed, but later commits were not part of that test run.",
-      "status": "PENDING_EXACT_HEAD_VALIDATION"
-    },
-    {
-      "priority": 0,
-      "action": "Keep the active merge queue unused. The only listed repository ruleset is disabled and branch-protection configuration is inaccessible (403); PR #1168 remains draft and is 15 commits behind current main. Rebase/fresh-base validation and authorized protection review are required before any merge.",
-      "status": "CRITICAL_SAFETY_GATE"
-    },
-    {
-      "priority": 0,
-      "action": "PR #1165 is a tested fail-closed candidate but is 30 commits behind current main. Create/review a fresh-base equivalent and run exact-head CI before any merge; user approval is required.",
-      "status": "TESTED_STALE_DRAFT; APPROVAL_REQUIRED"
-    },
-    {
-      "priority": 0,
-      "action": "PR #1155 is 79 commits behind current main. Do not merge its older head; port its event-time validator onto a fresh base and run exact-head tests.",
-      "status": "TESTED_STALE_DRAFT; FRESH_BASE_REQUIRED"
+      "action": "Resolve Evernorth's trading-date discrepancy: the October 14 partner release says October 8, while its SEC filing and Nasdaq event page say October 12. Preserve both sources.",
+      "status": "SOURCE_CONFLICT_RECORDED"
     },
     {
       "priority": 1,
-      "action": "Investigate why barrot-approve-pr.yml produced a push-event failure with zero jobs while the inspected workflow declares workflow_dispatch only; preserve run evidence and do not blindly rerun.",
+      "action": "Investigate why barrot-approve-pr.yml produced a push-event failure with zero jobs while the inspected workflow declares workflow_dispatch only; preserve evidence and do not blindly rerun.",
       "status": "ROOT_CAUSE_UNRESOLVED"
+    },
+    {
+      "priority": 1,
+      "action": "Continue resolving 'SBIC, ChatGPT SBIC', 'ASK Coin' and 'actual capital'. Official evidence supports a historical SBI Capital use of SBIC in Japan in 2007, but the intended original referent remains unresolved.",
+      "status": "ENTITY_AND_PHRASE_RESOLUTION_OPEN"
+    },
+    {
+      "priority": 1,
+      "action": "Measure actual Evernorth treasury changes, Coinbase XRP collateral utilization and XRP spot/derivative flows before assigning predictive features. Maintain incremental-demand and leverage/supply hypotheses; do not infer market impact from eligibility or announcements.",
+      "status": "HYPOTHESES_DEFINED; FLOW_DATA_PENDING"
+    },
+    {
+      "priority": 1,
+      "action": "Build fixed-horizon, immutable, leakage-resistant forecasts with walk-forward baselines, calibration, uncertainty, drift monitoring and paper/shadow outcomes. Keep forecast_register empty until each forecast records cutoff, horizon, target, assumptions, probability, alternatives and eventual outcome.",
+      "status": "DESIGNED; OUT_OF_SAMPLE_VALIDATION_PENDING"
+    },
+    {
+      "priority": 2,
+      "action": "Platform coordination remains a capability/authentication/permission/data-flow design, not live nine-platform collaboration. Verify adapters and permissions separately and preserve minority objections and red-team reviews.",
+      "status": "DESIGNED; LIVE_CONNECTIONS_UNVERIFIED"
     }
   ]
 }
