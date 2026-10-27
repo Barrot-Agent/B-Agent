@@ -16,7 +16,7 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T22:09:23Z",
+    "captured_at_utc": "2026-10-27T22:11:49Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
@@ -191,16 +191,16 @@
       "latest_research_branch_state": {
         "branch": "research/xrp-ledger-20261027-1902z",
         "pr": 1195,
-        "head_before_status_update": "50464e7374a289b6569e205cffd386c5437d4a47",
+        "head_at_snapshot_capture": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
         "state": "open_draft_diverged",
-        "ahead_by": 32,
+        "ahead_by": 33,
         "behind_by": 45,
         "mergeable": true,
-        "observed_at_utc": "2026-10-27T22:10:20Z",
+        "observed_at_utc": "2026-10-27T22:11:49Z",
         "source_ids": [
           "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z"
         ],
-        "note": "Preserve this branch and all snapshots. Do not merge; create a fresh-main successor only after artifact integrity checks."
+        "note": "Preserve all research artifacts. Do not merge the stale branch; create a fresh-main successor only after artifact validation."
       },
       "current_pr_1220_state": {
         "pr": 1220,
@@ -604,6 +604,20 @@
         "source_ids": [
           "SRC-CIRCLE-USDC-XRPL-OPS-2026",
           "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ]
+      },
+      {
+        "id": "YOUTUBE-IDENTITY-CANDIDATE-KAMILAH-2026",
+        "evidence_class": "PUBLIC_YOUTUBE_INDEXED_RESULTS",
+        "status": "TOPIC_MATCH_CANDIDATE; EXACT_CAMILLA_IDENTITY_UNVERIFIED; INVENTORY_INCOMPLETE",
+        "claim": "Public YouTube indexing returned the channel 'Kamilah Stevenson | Xrp & Stocks' (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) and at least two indexed videos by Kamilah Stevenson on XRP/global liquidity. The requested spelling 'Camilla Stephenson' differs.",
+        "interpretation": "Kamilah Stevenson is a strong topical candidate, but identity must remain unresolved without a first-party cross-link or matching channel metadata. The videos' macro/XRP explanations are creator hypotheses, not independent evidence of causal market effects.",
+        "limits": "The YouTube channel page fetch was throttled. Search-indexed results do not prove an exhaustive inventory of videos, Shorts, livestreams or archived public uploads. A third-party video referring to Kamilah is excluded from her upload list.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+          "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+          "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+          "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
         ]
       }
     ],
@@ -1106,13 +1120,16 @@
         "last_searched_at_utc": "2026-10-27T21:09:42Z"
       },
       "Camilla Stephenson": {
-        "status": "CANONICAL_XRP_CHANNEL_UNRESOLVED",
-        "finding": "Exact-spelling search surfaced unrelated film/location-management professionals and did not establish an XRP channel. Keep these people separate from Kamilah/Camila Stevenson candidates; no complete video inventory claimed.",
+        "status": "CANDIDATE_CHANNEL_FOUND; EXACT_IDENTITY_UNRESOLVED",
+        "finding": "Public YouTube indexing found the channel Kamilah Stevenson | Xrp & Stocks (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) and two indexed videos by Kamilah Stevenson about XRP/global liquidity. The requested spelling Camilla Stephenson differs; no first-party cross-link proves the identities match. A separate video uploaded by Alina X is excluded from Kamilah's own uploads.",
         "source_ids": [
-          "SRC-CAMILLA-STEPHENSON-BCG",
-          "SRC-CAMILLA-STEPHENSON-MFJF"
+          "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+          "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+          "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+          "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
         ],
-        "inventory_status": "INCOMPLETE"
+        "inventory_status": "PARTIAL_INDEXED_RESULTS_ONLY; ALL_PUBLIC_UPLOADS_NOT_VERIFIED",
+        "last_searched_at_utc": "2026-10-27T22:11:49Z"
       }
     },
     "platform_capability_map": [
@@ -1354,11 +1371,17 @@
       },
       "research_pr_validation": {
         "pr": 1195,
-        "head_before_ledger_update": "50464e7374a289b6569e205cffd386c5437d4a47",
-        "ci": "NOT_VERIFIED_FOR_THIS_LEDGER_UPDATE",
-        "gate": "NOT_VERIFIED_FOR_THIS_LEDGER_UPDATE",
+        "validated_head_sha": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
+        "ci_run_id": 40592783577,
+        "ci": "success",
+        "tests_passed": 145,
+        "duration_seconds": 5.81,
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783577",
+        "gate_run_id": 40592783253,
+        "gate": "success",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783253",
         "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-        "note": "Previous checks do not cover the new ledger-only commit."
+        "note": "These checks validate head 44a9ce7 only. Later snapshot/ledger commits are newer."
       },
       "safety_prs": [
         {
@@ -1462,17 +1485,19 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CI-VERIFICATION-2026-10-27T220923Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2209Z.json",
-    "snapshot_blob_sha": "a9fabdbcb5b3bcf33684f97572299a6d8e9c4497",
-    "current_research_head_before_ledger_update": "50464e7374a289b6569e205cffd386c5437d4a47",
+    "snapshot_id": "XRP-VIDEO-IDENTITY-CI-DELTA-2026-10-27T221149Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2211Z.json",
+    "snapshot_blob_sha": "9604ac89fd89bb4ec8601426f2009dbe997e78c3",
+    "current_research_head_before_ledger_update": "c1e0e4a8ccbae8d0e99073986e9c39f5869ea9f0",
     "current_research_checks": {
-      "tests": "PENDING_FOR_THIS_LEDGER_COMMIT",
-      "gate": "PENDING_FOR_THIS_LEDGER_COMMIT",
-      "as_of_utc": "2026-10-27T22:10:20Z",
-      "test_run_url": null,
-      "gate_run_url": null,
-      "note": "This ledger-only update creates a new commit; the research branch has not been revalidated at the resulting head."
+      "last_verified_head": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
+      "tests": "PASS_145_TESTS_ON_PREVIOUS_HEAD",
+      "gate": "PASS_ON_PREVIOUS_HEAD",
+      "tests_run_id": 40592783577,
+      "gate_run_id": 40592783253,
+      "current_ledger_update": "PENDING_VERIFICATION",
+      "as_of_utc": "2026-10-27T22:11:49Z",
+      "note": "This update creates a newer ledger-only commit; do not claim the new commit itself has passed CI until its run completes."
     }
   },
   "sources": [
@@ -1910,6 +1935,57 @@
       "title": "Current state of XRP research ledger PR #1195",
       "accessed_at_utc": "2026-10-27T22:10:20Z",
       "note": "Current GitHub comparison reports the preserved research branch is open/draft, 32 commits ahead and 45 behind observed main, with mergeable=true. Do not merge; the branch contains historical research snapshots and needs a reviewed fresh-main successor."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+      "evidence_class": "PUBLIC_YOUTUBE_CHANNEL_RESULT",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "Kamilah Stevenson | Xrp & Stocks public channel page",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "YouTube indexed a public channel with this title and channel ID. The channel description focuses on stocks, crypto, market insights and long-term investing. The requested exact spelling is Camilla Stephenson; identity equivalence is not established."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published_at": "2026-03-06",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "YouTube indexed this video as posted by Kamilah Stevenson. Its description advances a thesis linking oil shocks, yen carry-trade unwinds, global liquidity and XRP. Those are creator claims requiring independent testing, not established causal facts. Indexed engagement counts are a point-in-time observation only."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=Z-NeZwa3gsA",
+      "title": "STOP Watching Candles! The MASSIVE Liquidity Shift That Will Move Crypto FIRST",
+      "published_at": "2025-11-26",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "YouTube indexed this video as posted by Kamilah Stevenson. The description discusses liquidity, government spending, quantitative tightening and crypto-market timing. Treat the claims as hypotheses; not proof of actual capital flows or XRP price causality."
+    },
+    {
+      "id": "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "title": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+      "published_at": "2025-12-16",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "Indexed uploader is Alina X, not Kamilah Stevenson. The video references Kamilah but is a third-party upload and must not be counted as one of her own public videos."
+    },
+    {
+      "id": "SRC-REPO-CI-1195-2026-10-27T2211Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783577",
+      "title": "Research PR #1195 exact-head CI completed successfully",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "Tests job completed successfully for research branch head 44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2. Job logs report 145 passed in 5.81 seconds. The subsequent snapshot and ledger-only commits are newer and were not covered by this run."
+    },
+    {
+      "id": "SRC-REPO-GATE-1195-2026-10-27T2211Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783253",
+      "title": "Research PR #1195 fail-closed gate completed successfully",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "Fail-closed gate completed successfully for research branch head 44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2. It did not merge the PR and does not verify XRP prediction performance."
     }
   ],
   "limitations": [
@@ -2184,6 +2260,23 @@
         "pr_1220_gate": "PASS",
         "pr_1195_ahead_by": 32,
         "pr_1195_behind_by": 45,
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:11:49Z",
+      "update_type": "APPEND_ONLY_VIDEO_IDENTITY_CANDIDATE_AND_RESEARCH_BRANCH_CI",
+      "snapshot_id": "XRP-VIDEO-IDENTITY-CI-DELTA-2026-10-27T221149Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2211Z.json",
+      "snapshot_blob_sha": "9604ac89fd89bb4ec8601426f2009dbe997e78c3",
+      "details": "Added a public YouTube channel candidate named Kamilah Stevenson | Xrp & Stocks and two indexed videos on XRP/liquidity. The exact requested identity Camilla Stephenson remains unverified and the public-video inventory is incomplete. Also verified research PR #1195 head 44a9ce7 passed 145 tests in 5.81 seconds and its fail-closed gate passed; subsequent ledger commits remain unverified.",
+      "validation": {
+        "video_identity": "CANDIDATE_ONLY",
+        "public_video_inventory": "INCOMPLETE",
+        "research_pr_1195_ci": "PASS_145_TESTS_ON_HEAD_44a9ce7",
+        "research_pr_1195_gate": "PASS_ON_HEAD_44a9ce7",
         "main_modified": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
