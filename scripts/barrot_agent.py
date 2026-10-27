@@ -216,6 +216,7 @@ def _groq_payload(
     tools: list[dict[str, Any]] | None = None,
     max_tokens: int = 1536,
     json_mode: bool = False,
+    reasoning_effort: str | None = None,
 ) -> dict[str, Any]:
     payload: dict[str, Any] = {
         "model": MODEL,
@@ -228,6 +229,8 @@ def _groq_payload(
         payload["tool_choice"] = "auto"
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
+    if reasoning_effort:
+        payload["reasoning_effort"] = reasoning_effort
     return payload
 
 
@@ -430,6 +433,7 @@ class ScriptBrain:
                 tools=self.tools,
                 max_tokens=1024 if not self.enable_tools else 1536,
                 json_mode=not self.enable_tools,
+                reasoning_effort="low" if not self.enable_tools else None,
             )
             data = _send_groq_request(payload, request_sender=self.request_sender)
             try:
