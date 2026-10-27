@@ -3,16 +3,16 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T08:08:00Z",
-    "main_tip_sha": "0190c81914f921455725e73add58d5527aae8148",
+    "captured_at_utc": "2026-10-27T08:10:00Z",
+    "main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
     "current_signal_disposition": "INVALID_FOR_FORECASTING_CONFIDENCE_ZERO_PROVIDER_FAILURES_AND_ACADEMIC_XRPL_PROTOCOL_HEADLINES_CONTAMINATING_MARKET_NEWS; main artifact refreshed 2026-10-27T07:37:49.603416Z",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
     "latest_signal_timestamp": "2026-10-27T07:37:49.603416+00:00",
     "latest_signal_blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
-    "main_tip_sha_last_explicitly_observed": "0190c81914f921455725e73add58d5527aae8148",
-    "main_tip_sha_status": "Last explicit main-tip observation was 2026-10-27T07:17:00Z; current main tip was not independently resolved in this run. The main signal artifact was fetched separately."
+    "main_tip_sha_last_explicitly_observed": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+    "main_tip_sha_status": "Current main tip resolved at 2026-10-27T08:10:00Z via compare main...main; prior tip 0190c81914f921455725e73add58d5527aae8148 is historical only."
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -6115,9 +6115,9 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "0190c81914f921455725e73add58d5527aae8148",
-    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
-    "latest_main_commit_ci": "Main tip 0190c81914f921455725e73add58d5527aae8148 is a generated cross-analysis refresh marked [skip ci]; no core CI run was observed for this exact SHA. Current main signal remains stale and invalid for forecasting.",
+    "main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+    "latest_main_commit_message": "Paper trade cycle [skip ci]",
+    "latest_main_commit_ci": "Main tip f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f changes only web/paper_trading_log.jsonl and is marked [skip ci]; no core CI run was observed for this exact SHA in this pass.",
     "current_signal": {
       "timestamp": "2026-10-27T07:37:49.603416+00:00",
       "score": 44,
@@ -6129,8 +6129,8 @@
         "Groq HTTP 429 Too Many Requests"
       ],
       "blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
-      "retrieved_at_utc": "2026-10-27T08:08:00Z",
-      "age_minutes_at_retrieval": 30.2,
+      "retrieved_at_utc": "2026-10-27T08:10:00Z",
+      "age_minutes_at_retrieval": 32.2,
       "disposition": "INVALID_FOR_FORECASTING; score confidence zero, providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
     },
     "legacy_accuracy": {
@@ -6233,7 +6233,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "Main web/latest_signal.json blob b0b77c436ef1efddb4092855f937c6307419e107, timestamp 2026-10-27T07:37:49.603416Z; age approximately 30.2 minutes at 2026-10-27T08:08:00Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
+    "latest_signal_staleness": "Main web/latest_signal.json blob b0b77c436ef1efddb4092855f937c6307419e107, timestamp 2026-10-27T07:37:49.603416Z; age approximately 32.2 minutes at 2026-10-27T08:10:00Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -6255,9 +6255,18 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "ARC_SBI_POC_AND_2026-10-27T073749Z_SIGNAL_SNAPSHOT_ADDED; EXACT_HEAD_REVALIDATION_RUNNING",
-      "state": "OPEN_DRAFT_REVALIDATION_RUNNING",
-      "note": "Current ledger revision adds Circle Arc mainnet and SBI Ripple Asia tokenized-deposit proof-of-concept evidence, records the latest main signal blob, and updates primary-claim/question-map references. Exact-head CI and fail-closed gate are running; do not merge automatically."
+      "latest_ledger_revision_status": "MAIN_TIP_AND_DELTA_AUDIT_RECORDED; NEW_HEAD_REVALIDATION_REQUIRED",
+      "state": "OPEN_DRAFT; PREVIOUS_EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_LEDGER_HEAD_REVALIDATION_REQUIRED",
+      "note": "Head 3f9b642bf54c480e85b7d642a2091dca7eb597c0 passed CI run 40471837201 and fail-closed gate 40471837302. This ledger update records current main tip f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f and the 28-commit/14-file generated-data delta; the resulting new PR head must be revalidated. Do not merge automatically.",
+      "last_completed_head_sha": "3f9b642bf54c480e85b7d642a2091dca7eb597c0",
+      "last_completed_ci_run": 40471837201,
+      "last_completed_ci_conclusion": "success",
+      "last_completed_fail_closed_gate_run": 40471837302,
+      "last_completed_gate_conclusion": "success",
+      "current_main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+      "base_to_main_commits_ahead": 28,
+      "base_to_main_changed_files": 14,
+      "base_to_main_code_or_workflow_changes": false
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -6323,7 +6332,7 @@
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     },
-    "last_audit_at_utc": "2026-10-27T08:08:00Z",
+    "last_audit_at_utc": "2026-10-27T08:10:00Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE",
       "receiver_pr": 1182,
@@ -6331,6 +6340,31 @@
       "exact_head_ci": "120 tests passed and fail-closed gate passed in previously observed run",
       "device_receipt": "NOT_OBSERVED",
       "unsafe_legacy_runner": "scripts/termux_runner.py executes queued commands with shell=True, pulls main in watch mode, and commits/pushes queue state; do not run unattended."
+    },
+    "main_delta_since_research_base": {
+      "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
+      "current_main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+      "comparison_status": "ahead",
+      "commits_ahead": 28,
+      "changed_file_count": 14,
+      "changed_files": [
+        "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+        "ping-pongings/knowledge-base/config.json",
+        "ping-pongings/knowledge-base/config_btc.json",
+        "ping-pongings/knowledge-base/entity_cooccurrence.json",
+        "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+        "ping-pongings/knowledge-base/log.jsonl",
+        "ping-pongings/knowledge-base/log_btc.jsonl",
+        "ping-pongings/knowledge-base/sentiment_shift.json",
+        "web/latest_signal.json",
+        "web/latest_signal_btc.json",
+        "web/latest_signal_summary.json",
+        "web/paper_trading_log.jsonl",
+        "web/signal_history.jsonl",
+        "web/signal_history_btc.jsonl"
+      ],
+      "code_or_workflow_files_changed": false,
+      "interpretation": "The tested research PR base is 28 commits behind main, but the observed base-to-main file delta contains generated runtime/log/signal data and the deployment report only. This reduces the apparent code/workflow conflict risk but does not replace current-main CI or an explicit branch refresh."
     }
   },
   "video_ingestion": {
