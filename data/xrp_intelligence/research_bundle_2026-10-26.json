@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:05:31.488Z",
+    "captured_at_utc": "2026-10-27T00:05:49.157Z",
     "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -2771,6 +2771,41 @@
         "source_ids": [
           "SRC-SBI-FASSET-MOU"
         ]
+      },
+      {
+        "id": "SBIC phrase",
+        "type": "unresolved_entity_reference",
+        "status": "UNRESOLVED",
+        "source_ids": [
+          "SRC-TOKYO-SBIC-PROFILE",
+          "SRC-SBI-CAPITAL-JAPAN-SBIC-2007",
+          "SRC-SBI-CAPITAL-KOREA-2021",
+          "SRC-SBI-GROUP-COMPANIES-2026-10-07"
+        ]
+      },
+      {
+        "id": "SBI CAPITAL Co., Ltd. (Japan, historical)",
+        "type": "historical_investment_and_buyout_fund_manager",
+        "status": "FACT_HISTORICAL_IDENTITY; CURRENT_LEGAL_CONTINUITY_UNRESOLVED",
+        "source_ids": [
+          "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
+        ]
+      },
+      {
+        "id": "SBI Capital Co., Ltd. (South Korea)",
+        "type": "investment_and_fund_business",
+        "status": "FACT_ANNOUNCED_2021; CURRENT_OPERATING_STATUS_NOT_VERIFIED",
+        "source_ids": [
+          "SRC-SBI-CAPITAL-KOREA-2021"
+        ]
+      },
+      {
+        "id": "SBI Capital (current group listing)",
+        "type": "group_company_listing",
+        "status": "FACT_LISTED_AS_OF_2026-10-07; LEGAL_ENTITY_MAPPING_TO_HISTORICAL_JAPAN_ENTITY_UNRESOLVED",
+        "source_ids": [
+          "SRC-SBI-GROUP-COMPANIES-2026-10-07"
+        ]
       }
     ],
     "edges": [
@@ -3009,6 +3044,73 @@
           "SRC-RIPPLE-CIRCLE-DENIAL"
         ],
         "caveat": "No confirmed acquisition or partnership established; retain both report and denial."
+      },
+      {
+        "source": "SBIC phrase",
+        "target": "Tokyo SBIC East Japan",
+        "relationship_type": "POSSIBLE_REFERENT",
+        "classification": "AMBIGUOUS_CANDIDATE_EXACT_SBIC_BRANDING",
+        "confidence": 0.35,
+        "source_ids": [
+          "SRC-TOKYO-SBIC-PROFILE"
+        ],
+        "caveat": "Strong literal acronym/name match in Japan, but original phrase context is absent and no XRP relationship is established."
+      },
+      {
+        "source": "SBIC phrase",
+        "target": "SBI CAPITAL Co., Ltd. (Japan, historical)",
+        "relationship_type": "POSSIBLE_REFERENT",
+        "classification": "AMBIGUOUS_CANDIDATE_HISTORICAL_ACRONYM_USAGE",
+        "confidence": 0.25,
+        "source_ids": [
+          "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
+        ],
+        "caveat": "SBI Holdings explicitly used SBIC for this Tokyo company in a 2007 announcement; present-day legal continuity and intended reference are unresolved."
+      },
+      {
+        "source": "SBIC phrase",
+        "target": "SBI Capital Co., Ltd. (South Korea)",
+        "relationship_type": "POSSIBLE_REFERENT",
+        "classification": "AMBIGUOUS_CANDIDATE_NAME_SIMILARITY_ONLY",
+        "confidence": 0.12,
+        "source_ids": [
+          "SRC-SBI-CAPITAL-KOREA-2021"
+        ],
+        "caveat": "A distinct Korea-based company was announced in 2021; the source does not call it SBIC or link it to XRP."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "SBI Capital Co., Ltd. (South Korea)",
+        "relationship_type": "OWNERSHIP_AT_2021_ANNOUNCEMENT",
+        "classification": "CONFIRMED_OFFICIAL_ANNOUNCEMENT",
+        "confidence": 0.95,
+        "source_ids": [
+          "SRC-SBI-CAPITAL-KOREA-2021"
+        ],
+        "caveat": "SBI Group ownership was stated as 100% in the 2021 announcement; current ownership/operating status not independently refreshed."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "SBI Capital (current group listing)",
+        "relationship_type": "GROUP_COMPANY_LISTING",
+        "classification": "CONFIRMED_OFFICIAL_LISTING",
+        "confidence": 0.9,
+        "source_ids": [
+          "SRC-SBI-GROUP-COMPANIES-2026-10-07"
+        ],
+        "caveat": "Group-company list establishes listing, not the legal mapping between same-named historical/current entities."
+      },
+      {
+        "source": "SBI Holdings",
+        "target": "SBI Crypto",
+        "relationship_type": "GROUP_COMPANY_LISTING",
+        "classification": "CONFIRMED_OFFICIAL_LISTING",
+        "confidence": 0.95,
+        "source_ids": [
+          "SRC-SBI-GROUP-COMPANIES-2026-10-07",
+          "SRC-SBI-CRYPTO-PROFILE"
+        ],
+        "caveat": "Identity and mining activity do not establish XRP exposure."
       }
     ]
   },
