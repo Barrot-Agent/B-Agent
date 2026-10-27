@@ -1939,6 +1939,44 @@
         "The PR remains draft and unmerged; current-main integration is not verified.",
         "GitHub run/commit timestamps are metadata and must not be treated as independent wall-clock calibration."
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027",
+      "title": "Exact-head CI and fail-closed gate after research ledger and handoff checkpoint",
+      "author_or_organization": "Barrot-Agent/B-Agent GitHub Actions",
+      "source_type": "github_actions_validation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "publication_date": "2026-10-27T12:11:11Z",
+      "source_commit": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
+      "sections": [
+        "CI run 40501785484 completed successfully on exact PR head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568; job logs show 111 passed in 6.13 seconds.",
+        "Fail-closed gate run 40501785554 completed successfully on the same head; it did not merge the PR.",
+        "GitHub reports run creation at 12:11:11Z, later than the session clock supplied for this run (11:10Z). Repository validation status is directly observed, but the platform/session wall-clock relation remains unresolved."
+      ],
+      "source_limitations": [
+        "CI verifies repository tests, not predictive performance of XRP forecasts.",
+        "The research PR remains draft and unmerged; current-main integration is not verified.",
+        "GitHub run timestamps are retained as platform metadata and are not independent wall-clock measurements."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS-40501781971",
+      "title": "Push-event workflow run with zero jobs for workflow_dispatch-only approval workflow",
+      "author_or_organization": "Barrot-Agent/B-Agent GitHub Actions",
+      "source_type": "github_actions_anomaly_observation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501781971",
+      "publication_date": "2026-10-27T12:11:10Z",
+      "source_commit": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
+      "sections": [
+        "Run 40501781971 reports event=push, conclusion=failure, zero jobs, and run name '.github/workflows/barrot-approve-pr.yml' on head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568.",
+        "The workflow file at that exact branch head and on main has the same blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; the inspected YAML declares workflow_dispatch only.",
+        "The run's jobs endpoint returns total_count=0. No rerun was performed."
+      ],
+      "source_limitations": [
+        "The run has no job records/logs to reveal a runtime failure point.",
+        "The evidence does not establish whether the cause is event/trigger mismatch, GitHub run bookkeeping, workflow parsing/configuration, or an external workflow invocation.",
+        "Do not treat this zero-job run as evidence that the approval job executed or as a passing safety gate."
+      ]
     }
   ],
   "claims": [
@@ -3779,6 +3817,57 @@
         "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027"
       ],
       "timestamp": 1793102981
+    },
+    {
+      "claim_id": "XRP-C-PR1170-CI-HEAD-68D2-20261027",
+      "statement": "Research PR #1170 head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568 passed CI run 40501785484 with 111 tests in 6.13 seconds and passed fail-closed gate 40501785554. The gate did not merge the PR. The PR remains draft, its base is 55 commits behind the observed main tip, and the GitHub run timestamps are later than the supplied session clock; current-main integration remains unverified.",
+      "domain": "repository_validation",
+      "claim_type": "observed_exact_head_ci_and_fail_closed_gate",
+      "source": "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "supporting_evidence": [
+        "XRP-E-PR1170-CI-HEAD-68D2-20261027",
+        "XRP-E-PR1170-GATE-HEAD-68D2-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_BY_GITHUB_ACTIONS_RUN_AND_JOB_LOGS",
+      "independent_verification_status": "EXACT_HEAD_CI_AND_GATE_PASS; BASE_DIVERGENCE_AND_CLOCK_DISCREPANCY_RECORDED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "VALIDATION_ONLY_NOT_MERGE_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "The run head SHA matches the latest research branch head.",
+        "CI success does not establish market-forecast skill or current-main integration."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027"
+      ],
+      "timestamp": 1793103071
+    },
+    {
+      "claim_id": "XRP-C-APPROVAL-WORKFLOW-EMPTY-PUSH-RUN-40501781971",
+      "statement": "GitHub run 40501781971 is recorded as a push-event failure for .github/workflows/barrot-approve-pr.yml at head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568, with zero jobs. The workflow file at that exact head and on main has identical blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declares workflow_dispatch only. This narrows the investigation but does not resolve the cause; no job execution is evidenced.",
+      "domain": "repository_workflow_observability",
+      "claim_type": "observed_zero_job_workflow_run_with_unresolved_trigger",
+      "source": "SRC-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS-40501781971",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501781971",
+      "supporting_evidence": [
+        "XRP-E-APPROVAL-WORKFLOW-EMPTY-PUSH-RUN-40501781971"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "GITHUB_RUN_METADATA_AND_EXACT_HEAD_WORKFLOW_BLOB_OBSERVED",
+      "independent_verification_status": "RUN_EVENT_AND_ZERO_JOBS_CONFIRMED; ROOT_CAUSE_UNRESOLVED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "FAILURE_NOT_PASS; DO_NOT_RERUN_BLINDLY",
+      "confidence": 0.99,
+      "assumptions": [
+        "GitHub's run metadata accurately reports the event and zero job count.",
+        "Matching workflow blob hashes establish identical workflow content, not why GitHub created the run."
+      ],
+      "provenance": [
+        "SRC-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS-40501781971"
+      ],
+      "timestamp": 1793103070
     }
   ],
   "evidence": [
@@ -5832,6 +5921,72 @@
         "head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
         "conclusion": "success",
         "merge_performed": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-CI-HEAD-68D2-20261027",
+      "claim_id": "XRP-C-PR1170-CI-HEAD-68D2-20261027",
+      "kind": "exact_head_ci_run_and_test_log",
+      "summary": "CI run 40501785484 completed successfully on PR #1170 head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568. The Tests job log ends with 111 passed in 6.13 seconds.",
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501785484",
+      "status": "PASS; EXACT_HEAD",
+      "independence": "github_actions_run_and_job_log",
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027"
+      ],
+      "details": {
+        "run_id": 40501785484,
+        "head_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
+        "conclusion": "success",
+        "tests_passed": 111,
+        "elapsed_seconds": 6.13
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-GATE-HEAD-68D2-20261027",
+      "claim_id": "XRP-C-PR1170-CI-HEAD-68D2-20261027",
+      "kind": "fail_closed_merge_gate_result",
+      "summary": "Fail-closed gate run 40501785554 completed successfully on PR #1170 head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568. It did not merge the draft PR.",
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501785554",
+      "status": "PASS; MERGE_NOT_PERFORMED",
+      "independence": "github_actions_run_metadata",
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-68D2-20261027"
+      ],
+      "details": {
+        "run_id": 40501785554,
+        "head_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
+        "conclusion": "success",
+        "merge_performed": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-APPROVAL-WORKFLOW-EMPTY-PUSH-RUN-40501781971",
+      "claim_id": "XRP-C-APPROVAL-WORKFLOW-EMPTY-PUSH-RUN-40501781971",
+      "kind": "workflow_run_metadata_and_zero_job_count",
+      "summary": "Run 40501781971 reports event=push, conclusion=failure, path .github/workflows/barrot-approve-pr.yml, head 68d2005500e1d55c8d6b6c0ed8b250c3de9a5568; jobs API reports total_count=0. The workflow blob SHA is 7047d1ebf27c5151b5a844ad375ac583a2e193e4 both on that branch head and on main, with workflow_dispatch-only trigger content.",
+      "source_id": "SRC-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS-40501781971",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501781971",
+      "status": "FAILURE; ZERO_JOBS; ROOT_CAUSE_UNRESOLVED",
+      "independence": "github_actions_run_metadata_plus_exact_head_and_main_file_reads",
+      "provenance": [
+        "SRC-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS-40501781971"
+      ],
+      "details": {
+        "run_id": 40501781971,
+        "event": "push",
+        "conclusion": "failure",
+        "jobs_total": 0,
+        "head_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
+        "workflow_blob_sha_branch": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+        "workflow_blob_sha_main": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+        "declared_triggers": [
+          "workflow_dispatch"
+        ],
+        "root_cause": "UNRESOLVED",
+        "blind_rerun": false
       }
     }
   ],
@@ -8248,20 +8403,20 @@
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "RUN 8 RESEARCH BUNDLE AND HANDOFF UPDATED; EXACT-HEAD CI AND FAIL-CLOSED GATE PASSED",
-      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; BASE_DIVERGENCE_REMAINS; CURRENT_MAIN_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED",
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; BASE_55_COMMITS_BEHIND; CURRENT_MAIN_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED",
       "note": "Latest research branch head 2e9e15ecbfba2565d97e853e95349105fe95f095 passed exact-head CI run 40501588457 (111 tests, 6.27s) and fail-closed gate 40501588459. Main tip observed as 0b5e845f4b2a19f6e6919c07b8d2077b31f54db1; compare from base a3e0f0198510634420f925eef8cea384aca51b12 shows 55 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. The GitHub timestamps are ahead of the supplied session clock; current-base integration remains unverified. Do not merge automatically.",
       "last_completed_head_sha": "5f5d307750a4afae89c831b8a6330565d2f79585",
-      "last_completed_ci_run": 40501588457,
+      "last_completed_ci_run": 40501785484,
       "last_completed_ci_conclusion": "success",
-      "last_completed_fail_closed_gate_run": 40501588459,
+      "last_completed_fail_closed_gate_run": 40501785554,
       "last_completed_gate_conclusion": "success; merge not performed",
       "current_main_tip_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
       "base_to_main_commits_ahead": 55,
       "base_to_main_changed_files": 14,
       "base_to_main_code_or_workflow_changes": false,
-      "last_validated_head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
+      "last_validated_head_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
       "tests_passed": 111,
-      "elapsed_seconds": 6.27,
+      "elapsed_seconds": 6.13,
       "session_clock_utc": "2026-10-27T11:10:00Z",
       "github_run_created_at_utc": "2026-10-27T12:09:41Z",
       "clock_order_status": "UNRESOLVED; GITHUB RUN TIMESTAMP LATER THAN SESSION CLOCK",
@@ -8275,7 +8430,24 @@
       "inspected_workflow_trigger": "workflow_dispatch only",
       "root_cause": "UNRESOLVED",
       "blind_rerun": false,
-      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838"
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838",
+      "latest_run_id": 40501781971,
+      "latest_run_event": "push",
+      "latest_run_conclusion": "failure",
+      "latest_run_jobs_total": 0,
+      "latest_run_head_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
+      "workflow_blob_sha_main": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "workflow_blob_sha_head": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "inspected_trigger": "workflow_dispatch only",
+      "candidate_explanations": [
+        "Event/trigger mismatch or GitHub run bookkeeping generated a zero-job run for a push not declared by the workflow.",
+        "Workflow parsing/configuration or an external workflow invocation issue not exposed by the zero-job run metadata."
+      ],
+      "disconfirming_evidence": [
+        "The exact-head and main workflow file hashes match, so this is not explained by a stale workflow file on the research branch.",
+        "The workflow file contains one declared trigger, workflow_dispatch; no push trigger is present in the inspected content."
+      ],
+      "next_step": "Inspect workflow run/check-suite provenance and repository Actions settings without rerunning the failed zero-job run; do not treat it as a passing gate."
     },
     "pr1173_validation": {
       "head_sha": "b82530aface6331f4544fbc48f97156c8014ce55",
@@ -8463,10 +8635,11 @@
       "latest_observed_main_commit_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
       "main_commit_timestamp_utc": "2026-10-27T12:05:39Z",
       "latest_signal_timestamp_utc": "2026-10-27T11:28:59.234196Z",
-      "research_branch_commit_timestamp_utc": "2026-10-27T12:09:36Z",
-      "ci_run_created_at_utc": "2026-10-27T12:09:41Z",
+      "research_branch_commit_timestamp_utc": "2026-10-27T12:11:08Z",
+      "ci_run_created_at_utc": "2026-10-27T12:11:11Z",
       "retrieval_time_exposed": false,
-      "status": "UNRESOLVED_CLOCK_ORDER_CONFLICT; RECHECK_ON_NEXT_RUN; DO_NOT_USE_GITHUB_COMMIT_TIMESTAMPS_AS_INDEPENDENT_CLOCK"
+      "status": "UNRESOLVED_CLOCK_ORDER_CONFLICT; RECHECK_ON_NEXT_RUN; DO_NOT_USE_GITHUB_COMMIT_TIMESTAMPS_AS_INDEPENDENT_CLOCK",
+      "research_branch_latest_commit_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568"
     },
     "current_open_pr_snapshot": [
       {
@@ -8578,6 +8751,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Investigate the zero-job approval workflow run by reading check-suite/workflow provenance and repository Actions settings. Exact-head and main workflow file hashes match and the file declares workflow_dispatch only; run 40501781971 reports push/failure/zero jobs. Root cause remains unresolved; do not rerun blindly or treat as a passing gate.",
+      "status": "EVENT_AND_ZERO_JOBS_VERIFIED; ROOT_CAUSE_UNRESOLVED"
+    },
     {
       "priority": 0,
       "action": "Recheck GitHub main tip and latest_signal.json with an independently consistent clock. The returned artifact timestamp 11:28:59Z and commit timestamp 12:05:39Z are later than this run's 11:10Z session clock, and the connector did not expose retrieval time. Keep this artifact out of time-sensitive forecast features until ordering is resolved.",
