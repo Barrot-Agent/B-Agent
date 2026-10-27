@@ -1920,6 +1920,25 @@
         "Exclude this snapshot from time-sensitive forecast features and outcome evaluation until the source clock/order discrepancy is reconciled.",
         "A score with confidence zero and explicit provider failures is not a directional forecast, regardless of the numeric score or news score."
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027",
+      "title": "Exact-head CI and fail-closed gate for XRP research ledger clock-conflict checkpoint",
+      "author_or_organization": "Barrot-Agent/B-Agent GitHub Actions",
+      "source_type": "github_actions_validation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "publication_date": "2026-10-27T12:09:41Z",
+      "source_commit": "2e9e15ecbfba2565d97e853e95349105fe95f095",
+      "sections": [
+        "CI run 40501588457 completed successfully on exact PR head 2e9e15ecbfba2565d97e853e95349105fe95f095; job logs show 111 passed in 6.27 seconds.",
+        "Fail-closed gate run 40501588459 completed successfully on the same head and did not merge the PR.",
+        "The GitHub API reports these runs were created at 2026-10-27T12:09:41Z, while the session clock supplied for this run is 11:10Z. The CI result is verifiable as a GitHub run status; its wall-clock relation to the assistant session remains inconsistent."
+      ],
+      "source_limitations": [
+        "Passing tests validate repository behavior and schema checks, not XRP market forecast accuracy.",
+        "The PR remains draft and unmerged; current-main integration is not verified.",
+        "GitHub run/commit timestamps are metadata and must not be treated as independent wall-clock calibration."
+      ]
     }
   ],
   "claims": [
@@ -3733,6 +3752,33 @@
         "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027"
       ],
       "timestamp": 1793100539
+    },
+    {
+      "claim_id": "XRP-C-PR1170-CI-HEAD-2E9E-20261027",
+      "statement": "Research PR #1170 head 2e9e15ecbfba2565d97e853e95349105fe95f095 passed exact-head CI run 40501588457 with 111 tests in 6.27 seconds and passed fail-closed gate 40501588459. The gate did not merge the PR. GitHub reports run creation at 12:09:41Z, later than the session clock supplied as 11:10Z; CI status is verified, but wall-clock ordering is unresolved and current-main integration remains unverified.",
+      "domain": "repository_validation",
+      "claim_type": "observed_exact_head_ci_and_fail_closed_gate_with_clock_discrepancy",
+      "source": "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "supporting_evidence": [
+        "XRP-E-PR1170-CI-HEAD-2E9E-20261027",
+        "XRP-E-PR1170-GATE-HEAD-2E9E-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_BY_GITHUB_ACTIONS_RUN_AND_JOB_LOGS",
+      "independent_verification_status": "EXACT_HEAD_CI_AND_GATE_PASS; SESSION_CLOCK_ORDER_CONFLICT",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "VALIDATION_ONLY_NOT_MERGE_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "The CI run head SHA matches the latest research branch commit.",
+        "CI success does not establish forecast skill or current-main integration.",
+        "GitHub run timestamps are retained as platform metadata, not independently verified wall-clock time."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027"
+      ],
+      "timestamp": 1793102981
     }
   ],
   "evidence": [
@@ -5748,6 +5794,45 @@
         ],
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-CI-HEAD-2E9E-20261027",
+      "claim_id": "XRP-C-PR1170-CI-HEAD-2E9E-20261027",
+      "kind": "exact_head_ci_run_and_test_log",
+      "summary": "GitHub Actions CI run 40501588457 completed successfully for PR #1170 head 2e9e15ecbfba2565d97e853e95349105fe95f095. The Tests job log ends with 111 passed in 6.27 seconds.",
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501588457",
+      "status": "PASS; EXACT_HEAD",
+      "independence": "github_actions_run_and_job_log",
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027"
+      ],
+      "details": {
+        "run_id": 40501588457,
+        "head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
+        "conclusion": "success",
+        "tests_passed": 111,
+        "elapsed_seconds": 6.27
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-GATE-HEAD-2E9E-20261027",
+      "claim_id": "XRP-C-PR1170-CI-HEAD-2E9E-20261027",
+      "kind": "fail_closed_merge_gate_result",
+      "summary": "Fail-closed gate run 40501588459 completed successfully for PR #1170 head 2e9e15ecbfba2565d97e853e95349105fe95f095; it did not merge the draft PR.",
+      "source_id": "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40501588459",
+      "status": "PASS; MERGE_NOT_PERFORMED",
+      "independence": "github_actions_run_metadata",
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027"
+      ],
+      "details": {
+        "run_id": 40501588459,
+        "head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
+        "conclusion": "success",
+        "merge_performed": false
+      }
     }
   ],
   "tracks": [
@@ -6401,7 +6486,8 @@
         "status": "PROJECT_CONSTRAINT",
         "source_ids": [
           "SRC-BARROT-PR-1165",
-          "SRC-BARROT-PR-1155"
+          "SRC-BARROT-PR-1155",
+          "SRC-BARROT-PR1170-CI-HEAD-2E9E-20261027"
         ]
       },
       {
@@ -8162,17 +8248,24 @@
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "RUN 8 RESEARCH BUNDLE AND HANDOFF UPDATED; EXACT-HEAD CI AND FAIL-CLOSED GATE PASSED",
-      "state": "OPEN_DRAFT; EXACT_HEAD_CI_PASS; BASE_47_COMMITS_BEHIND_CURRENT_MAIN; CURRENT_BASE_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED",
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; BASE_DIVERGENCE_REMAINS; CURRENT_MAIN_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED",
       "note": "Latest exact head 5f5d307750a4afae89c831b8a6330565d2f79585 passed CI run 40493603110 and fail-closed gate 40493602935. Main is 47 commits ahead of base; the observed delta contains 14 generated runtime/log/signal/deployment-report files and no code/workflow files. Current-base integration remains unverified; do not merge automatically.",
       "last_completed_head_sha": "5f5d307750a4afae89c831b8a6330565d2f79585",
-      "last_completed_ci_run": 40493603110,
-      "last_completed_ci_conclusion": "success; test count not exposed in retrieved job metadata",
-      "last_completed_fail_closed_gate_run": 40493602935,
-      "last_completed_gate_conclusion": "success",
+      "last_completed_ci_run": 40501588457,
+      "last_completed_ci_conclusion": "success",
+      "last_completed_fail_closed_gate_run": 40501588459,
+      "last_completed_gate_conclusion": "success; merge not performed",
       "current_main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
       "base_to_main_commits_ahead": 47,
       "base_to_main_changed_files": 14,
-      "base_to_main_code_or_workflow_changes": false
+      "base_to_main_code_or_workflow_changes": false,
+      "last_validated_head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
+      "tests_passed": 111,
+      "elapsed_seconds": 6.27,
+      "session_clock_utc": "2026-10-27T11:10:00Z",
+      "github_run_created_at_utc": "2026-10-27T12:09:41Z",
+      "clock_order_status": "UNRESOLVED; GITHUB RUN TIMESTAMP LATER THAN SESSION CLOCK",
+      "merge_authorized": false
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -8364,6 +8457,16 @@
       "github_commit_timestamp_utc": "2026-10-27T12:05:39Z",
       "retrieval_timestamp_exposed": false,
       "disposition": "DO_NOT_INFER_WALL_CLOCK_ORDER_FROM_COMMIT_METADATA; RECHECK ON NEXT RUN"
+    },
+    "github_clock_consistency_observation": {
+      "session_clock_utc": "2026-10-27T11:10:00Z",
+      "latest_observed_main_commit_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+      "main_commit_timestamp_utc": "2026-10-27T12:05:39Z",
+      "latest_signal_timestamp_utc": "2026-10-27T11:28:59.234196Z",
+      "research_branch_commit_timestamp_utc": "2026-10-27T12:09:36Z",
+      "ci_run_created_at_utc": "2026-10-27T12:09:41Z",
+      "retrieval_time_exposed": false,
+      "status": "UNRESOLVED_CLOCK_ORDER_CONFLICT; RECHECK_ON_NEXT_RUN; DO_NOT_USE_GITHUB_COMMIT_TIMESTAMPS_AS_INDEPENDENT_CLOCK"
     }
   },
   "video_ingestion": {
