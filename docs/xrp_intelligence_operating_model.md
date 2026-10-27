@@ -255,3 +255,18 @@ Interpretation: positive weekly fund flows coexisted with a falling price. This 
 - Current main still has the mutation-capable merge queue and direct-to-main artifact workflows. PR #1190's workflow changes are not effective on main until reviewed and approved. Do not run the merge queue or merge automatically.
 - Main-to-research-base comparison remains generated-data-only (64 commits ahead, 14 changed runtime/log/signal/knowledge-base/deployment-report files, no code/workflow changes); current-main core CI is not verified for the latest `[skip ci]` main tip.
 - Next: independently review #1190, verify its current base and CI/gate state, then continue fixed-horizon market-data validation. No directional forecast, merge, main write, force-push, physical-device delivery, or real-money action occurred.
+
+
+## Macro regime checkpoint — official releases available by October 27, 2026
+
+Official releases show a mixed, inflation-constrained regime rather than confirmed imminent recession:
+
+- BEA's latest GDP vintage reports Q2 2026 real GDP growth of **2.2% annualized**, after 2.5% in Q1. The Q3 advance estimate is scheduled for **October 29 at 8:30 a.m. ET** and must not be treated as observed before release. Sources: https://www.bea.gov/data/gdp/gross-domestic-product and https://www.bea.gov/news/schedule/full
+- BLS reports September unemployment of **4.2%** and nonfarm payroll growth of **29,000**, with July/August payroll estimates revised down by 60,000 combined. This signals weak hiring momentum but does not alone establish recession. Source: https://www.bls.gov/news.release/archives/empsit_10022026.htm
+- September CPI rose **0.6% month over month** and **3.7% year over year**; core CPI was 2.6% year over year. Gasoline rose 9.1% in the month and accounted for over half the headline increase. Source: https://www.bls.gov/news.release/archives/cpi_10142026.htm
+- August PCE inflation was **3.4% year over year**, core PCE 3.0%; nominal consumer spending rose 0.9% and real PCE 0.6% month over month. September PCE is scheduled for October 29. Source: https://www.bea.gov/news/2026/personal-income-and-outlays-August-2026
+- FOMC minutes record a 25 bp increase to **3.75%–4.00%**, with resilient spending and solid activity alongside persistent inflation and geopolitical energy-price pressure. Source: https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm
+
+Competing scenarios are now recorded: (1) inflationary slowdown/risk-off pressure despite XRP utility, and (2) soft landing with no imminent recession if consumption remains resilient and inflation moderates. Neither receives a numerical recession probability or XRP direction from this evidence. Test macro features against BTC beta, DXY, real yields, oil, credit spreads, spot depth and derivatives leverage using point-in-time release vintages and walk-forward baselines.
+
+The news freshness gate was also tightened in draft PR #1190: the RSS ingestion script stores the publisher's `published` field, so scoring now requires a valid publication/event timestamp as well as a valid ingestion timestamp. This prevents an old article re-ingested today from being treated as a new event. Exact-head CI is pending after the regression-test update.
