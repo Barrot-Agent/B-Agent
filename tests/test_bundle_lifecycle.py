@@ -53,3 +53,24 @@ def test_lifecycle_does_not_interpolate_work_id_into_path(tmp_path):
     path = store.save_plan("../../outside", Result())
     assert path.resolve().is_relative_to((tmp_path / ".git" / "barrot_repair" / "bundles").resolve())
     assert json.loads(path.read_text())["work_id"] == "../../outside"
+
+
+def test_live_entrypoint_wires_bundle_gate_before_repair():
+    import ast
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    source = (root / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    imports = {
+        alias.name
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ImportFrom)
+        for alias in node.names
+    }
+    assert "BundleEngineeringController" in imports
+    assert "BundleLifecycleStore" in imports
+    assert "BundleEngineeringController" in source
+    assert "READY_FOR_EXECUTION_REVIEW" in source
+    assert "record_execution" in source
+    assert "WorkQueueController" in imports
