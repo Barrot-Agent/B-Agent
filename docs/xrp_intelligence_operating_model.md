@@ -340,3 +340,42 @@ Exact head `a706b7ccdf68bd961cfcb3132d23ecf1773b370f` passed [CI run 40510936006
 - PR #1192's exact-head core CI and fail-closed gate both passed. The proposed queue remains draft, unmerged, and ineffective on main until approval.
 - Research branch head `ad19e7558ddd1e89c64fe016abb3727a63284dfb` has two checks queued (CI run [40518932257](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518932257) and fail-closed gate [40518932286](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518932286)); neither conclusion was available at the last read. An earlier head `8950bd7db0c5d09802c832ca1262f6383fd6198e` returned zero check runs. Do not transfer prior-head CI results to a newer head. This handoff edit creates another branch commit; re-read exact-head checks after it.
 - Main remains at `882b3d3f13165501642756769e74ff48251efb75`; the signal remains invalid for forecasting and the cross-system timestamp ordering remains unresolved. Forecast status: `NOT_ISSUED`.
+
+
+## Run 11 addendum — Current signal integrity, CI verification and main-tip refresh
+
+Captured at **2026-10-27T15:07:14Z**. The connected GitHub read confirms main tip `ab76414688d88444d021d837c2b3af2d10200c0b` (commit timestamp 14:57:15Z). The connector does not expose an independent retrieval timestamp.
+
+### Forecast status: NOT_ISSUED
+
+- Main `web/latest_signal.json` blob `f794a17dbb7165e32e8ed729ecc6e7de6f9bf892` carries payload timestamp `2026-10-27T14:34:30.605666Z`, score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429. The visible headline set is dominated by XRPL protocol/research-paper topics, not validated market-moving news.
+- Main `scripts/emit_signal.py` blob `7b21ee712114ae2a983f75f3b702f2966e305be4` still defaults malformed model JSON to neutral values and blends news sentiment even when provider sentiment is unavailable. Its news age gate uses ingestion time and does not require a valid publisher/event time. The main signal remains invalid for forecasting.
+- Main summary blob `b15413a71c347a3b16df2dc521e5b33a3a6d0c36` lacks explicit `summary_mode` and `forecast_status` fields. The legacy accuracy artifact remains 749/1,612 = 46.5%, but its variable-horizon/mutable-outcome method is **NOT_COMPARABLE**, not validated predictive skill.
+- Remote signal and main-commit timestamps precede the current session clock. Retrieval time remains unavailable, but the current snapshot no longer has the earlier session-clock inversion. No directional forecast was issued.
+
+### Exact-head verification
+
+- Research PR #1170 head `ad19e7558ddd1e89c64fe016abb3727a63284dfb`: CI run [40518932257](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518932257) and fail-closed gate [40518932286](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518932286) both completed successfully. The returned job summary did not expose the test count.
+- Signal-integrity PR #1190 head `46c088f98c14810601251e611fe956cbc2b3b6a5`: [CI 40510228609](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228609) passed 130 tests in 4.45 seconds; [gate 40510228598](https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228598) passed. Main is 14 commits ahead of its base, with generated runtime/log/signal/knowledge-base changes only. The fix remains draft/unmerged and is not effective on main.
+- Merge-queue safety PR #1192 head `ae556915bb49911edecf1c01c2f8a823ed6a0766`: [CI 40518285106](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518285106) and [gate 40518284880](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518284880) passed. Test count was not exposed. Main is seven commits ahead of its base, with generated data/log/signal changes only. The PR remains draft/unmerged. Its test file defines the same function name twice with identical assertions; remove the duplicate before approval.
+- Main's active `.github/workflows/merge-queue.yml` still grants `contents: write` and `pull-requests: write`, supports `mode=all`, and contains branch-update/merge operations. **Do not dispatch it.** PR #1192 is not yet effective on main. Effective branch protection remains unverified.
+- Main-side comparison from research base `a3e0f0198510634420f925eef8cea384aca51b12` shows 77 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base/deployment-report data; no code/workflow files changed in that main-side delta. The research branch is 96 commits ahead of its base. This does not prove integration or eliminate branch divergence.
+
+### Durable ledger update
+
+- Research bundle read-back now contains **132 sources, 92 claims, 130 evidence records, 52 relationship nodes, 75 edges, and 19 competing hypotheses**.
+- Validation passed: source/claim/evidence IDs are unique and all claim-to-source, claim-to-evidence, evidence-to-claim and evidence-to-source references resolve.
+- New records capture the current invalid signal, the confirmed main emitter defect, the still-active mutation-capable merge queue, and exact-head status for PRs #1170, #1190 and #1192.
+- The ledger commit is `6a3cc7343e11e04c889b74cf2065e58f95448a1f`. The handoff update creates another commit; re-read the resulting branch head and exact-head CI/gate before treating this revision as verified.
+
+### Next actions
+
+1. Keep all fixes draft and unmerged pending review and explicit approval. Do not modify main directly.
+2. Re-run exact-head CI and the fail-closed gate for the new research-ledger/handoff head after this documentation commit.
+3. Review PR #1190 against current main before any approval; verify that fail-closed signal semantics, publication-time filtering, deterministic summary fallback and history immutability survive integration.
+4. Review PR #1192, remove the duplicate test function name in a minimal follow-up, and independently verify effective branch protection. Do not run the active merge queue.
+5. Preserve `NOT_ISSUED` until synchronized event-time market features, immutable fixed-horizon outcomes, walk-forward baselines, leakage controls, calibration and shadow evaluation pass.
+6. Continue exact-phrase research for `ASK Coin`, `actual capital`, and `SBIC, ChatGPT SBIC`; original context still does not resolve these references. Keep the two candidate Stevenson channel IDs separate; full public-video enumeration and transcript hashing/review remain incomplete.
+7. Platform coordination remains a capability/auth/data-flow design only. Do not claim live collaboration among the nine target platforms without verified connection evidence.
+
+No main-branch write, merge, force-push, workflow dispatch, trade, reset, clean, stash, overwrite, discard, or branch deletion occurred in this run.
