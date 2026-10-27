@@ -76,7 +76,7 @@ def _write_approvals(approvals):
     )
     try:
         temporary.write_text(
-            json.dumps(approvals, ensure_ascii=False, indent=2, sort_keys=True) + "\\n",
+            json.dumps(approvals, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
         )
         os.chmod(temporary, 0o600)
