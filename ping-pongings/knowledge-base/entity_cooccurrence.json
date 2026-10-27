@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1142,
+    "xrp_entries": 1144,
     "btc_entries": 1172
   },
-  "unique_pairs_found": 3151,
+  "unique_pairs_found": 3154,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1356,6 +1356,21 @@
       ]
     },
     {
+      "entity_a": "BlackRock",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "Bitcoin Foundation",
       "cooccurrence_count": 5,
@@ -1778,21 +1793,6 @@
     {
       "entity_a": "BlackRock",
       "entity_b": "ETHA",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ethereum ETFs Pull In $270M As BlackRock Leads September 21 Rebound",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
-      "entity_b": "Fidelity",
       "cooccurrence_count": 4,
       "example_headlines": [
         {
@@ -8461,6 +8461,36 @@
         },
         {
           "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "BlackRock",
+      "entity_b": "Farside Investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Farside Investors",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "XRP"
+        },
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
           "asset": "BTC"
         }
       ]
@@ -28027,6 +28057,39 @@
       ]
     },
     {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "BlackRock",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "Farside Investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "Fidelity",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Coinbase Ireland",
       "entity_b": "High Court",
       "cooccurrence_count": 1,
@@ -37125,29 +37188,7 @@
     },
     {
       "entity_a": "BlackRock",
-      "entity_b": "Farside Investors",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "BlackRock",
       "entity_b": "spot Bitcoin ETFs",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
-          "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "Farside Investors",
-      "entity_b": "Fidelity",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
