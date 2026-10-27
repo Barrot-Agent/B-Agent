@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1129,
-    "btc_entries": 1160
+    "xrp_entries": 1134,
+    "btc_entries": 1163
   },
-  "unique_entities_profiled": 967,
+  "unique_entities_profiled": 969,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 277,
-      "bullish": 177,
+      "total_mentions": 278,
+      "bullish": 178,
       "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.437,
+      "net_sentiment_score": 0.439,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 214,
-      "bullish": 138,
+      "total_mentions": 215,
+      "bullish": 139,
       "neutral": 39,
       "bearish": 37,
-      "net_sentiment_score": 0.472,
+      "net_sentiment_score": 0.474,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -494,6 +494,23 @@
       ]
     },
     {
+      "entity": "US Treasury",
+      "total_mentions": 11,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 2,
+      "net_sentiment_score": 0.636,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+        "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
+        "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base"
+      ]
+    },
+    {
       "entity": "US spot Bitcoin ETFs",
       "total_mentions": 11,
       "bullish": 8,
@@ -559,23 +576,6 @@
         "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
         "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
-      ]
-    },
-    {
-      "entity": "US Treasury",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 2,
-      "net_sentiment_score": 0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-        "PrimeXBT Insights: Bitcoin rallied through a rate hike; Can it rally through a bond selloff?",
-        "Avalanche Tokenized Treasury Market Reaches $545 Million After Rapid Growth"
       ]
     },
     {
@@ -10946,6 +10946,34 @@
       ],
       "example_headlines": [
         "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger"
+      ]
+    },
+    {
+      "entity": "Superstate",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base"
+      ]
+    },
+    {
+      "entity": "USTB",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base"
       ]
     },
     {
