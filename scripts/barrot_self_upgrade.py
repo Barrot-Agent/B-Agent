@@ -331,6 +331,8 @@ def open_capability_pr(gap_name: str, code: str) -> dict[str, Any]:
         }
     except Exception:
         if candidate_written and not candidate_committed:
+            # Unstage only this generated candidate before deleting it; do not touch operator changes.
+            git("reset", "--", str(target.relative_to(REPO_ROOT)))
             target.unlink(missing_ok=True)
         raise
     finally:
