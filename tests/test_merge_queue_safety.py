@@ -48,9 +48,3 @@ def test_ci_preserves_risk_manager_coverage_and_runs_merge_queue_safety():
     ci = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
     assert "tests/test_risk_manager.py" in ci
     assert "tests/test_merge_queue_safety.py" in ci
-
-
-def test_ci_preserves_risk_manager_coverage_and_runs_merge_queue_safety():
-    ci = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
-    assert "tests/test_risk_manager.py" in ci
-    assert "tests/test_merge_queue_safety.py" in ci
