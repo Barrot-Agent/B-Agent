@@ -212,7 +212,7 @@ def test_self_upgrade_blocks_when_remote_verification_fails(tmp_path: Path, monk
     assert code == 1
 
 
-def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_path: Path, monkeypatch) -> None:
+def test_open_capability_pr_blocks_remote_sha_mismatch_and_restores_branch(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_open_pr_test")
     monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
@@ -236,10 +236,10 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
             return Result()
         if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
             return Result()
-        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
-            return Result()
         if args == ("rev-parse", "HEAD"):
             return Result(stdout="abc123\n")
+        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
+            return Result()
         if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
             return Result(stdout="def456\trefs/heads/selfupgrade/gap-20260914153000\n")
         if args == ("checkout", "feature/current"):
@@ -258,21 +258,19 @@ def test_open_capability_pr_requires_exact_remote_sha_and_restores_branch(tmp_pa
 
             return Stamp()
 
-    def fake_run(command, cwd, capture_output, text, check):
-        del cwd, capture_output, text, check
-        assert command[:3] == ["gh", "pr", "create"]
-        return Result(stdout="https://example.invalid/pr/1\n")
+    def fake_run(*_args, **_kwargs):
+        raise AssertionError("gh pr create must not run when remote SHA verification fails")
 
     monkeypatch.setattr(module, "git", fake_git)
     monkeypatch.setattr(module, "datetime", DateTimeStub)
     monkeypatch.setattr(module.subprocess, "run", fake_run)
 
-    result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+    with pytest.raises(module.SelfUpgradeError, match="Remote branch SHA verification failed"):
+        module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
 
-    assert result["remote_verified"] is False
-    assert result["restored_branch"] == "feature/current"
     assert ("checkout", "feature/current") in calls
-
+    assert ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000") in calls
+    assert not (tmp_path / ".selfupgrade_pr_body.md").exists()
 
 def test_persist_audit_report_preserves_generated_audit_before_main_sync(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_persist_audit_test")
