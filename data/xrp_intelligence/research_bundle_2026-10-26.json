@@ -3,8 +3,8 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T04:12:17.316Z",
-    "main_tip_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
+    "captured_at_utc": "2026-10-27T05:06:58Z",
+    "main_tip_sha": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
     "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_CONFIDENCE_ZERO_AND_ACADEMIC_NEWS_CONTAMINATION",
@@ -33,7 +33,11 @@
       "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
       "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
       "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
-      "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS"
+      "XRP-C-USDC-H1-2026-AGGREGATE-FLOWS",
+      "XRP-C-CIRCLE-BINANCE-STRATEGIC-EXPANSION",
+      "XRP-C-USDC-SUPPLY-2026-10-22",
+      "XRP-C-BARROT-SELF-DROP-LOCAL-ONLY",
+      "XRP-C-MAIN-SIGNAL-INVALID-20261027T043242Z"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -592,12 +596,16 @@
       "author_or_organization": "Circle",
       "source_type": "official_issuer_information",
       "url": "https://www.circle.com/usdc",
-      "publication_date": "page states 38 native networks as of 2026-09-16",
+      "publication_date": "Circle page reports circulation/reserves as of 2026-10-22 and 38 native networks as of 2026-09-16; retrieved 2026-10-27",
       "sections": [
         "USDC reserve model",
         "supported networks",
-        "circulation and institutional access"
-      ]
+        "circulation and institutional access",
+        "Circle reports USDC circulation of $72.0 billion and reserves of $72.2 billion as of 2026-10-22.",
+        "Circle reports native support on 38 blockchain networks as of 2026-09-16, including XRPL.",
+        "These global issuer-level metrics do not disclose XRPL-specific USDC flows or XRP bridge-path share."
+      ],
+      "retrieved_at_utc": "2026-10-27T05:06:58Z"
     },
     {
       "source_id": "SRC-CIRCLE-USDC-XRPL",
@@ -1113,6 +1121,72 @@
         "Video metadata lead used by an existing collateral-claim record.",
         "Full transcript has not been captured; title and speaker identity require verification.",
         "Treat the creator's collateral claim as challenged by CFTC/CME primary-source checks already recorded in this bundle."
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-BINANCE-2026-09-22",
+      "title": "Binance invests $100 million in Circle; five-year commercial agreement",
+      "author_or_organization": "Circle Internet Group",
+      "source_type": "official_corporate_release",
+      "url": "https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+      "publication_date": "2026-09-22",
+      "retrieved_at_utc": "2026-10-27T05:06:58Z",
+      "sections": [
+        "Circle announced a $100 million strategic equity investment from Binance.",
+        "The parties announced a renewed five-year commercial agreement focused on expanding USDC access, especially across emerging markets.",
+        "The announcement establishes a Circle-Binance equity and distribution relationship, not a direct XRP transaction or a change to Coinbase-Circle contract terms."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-TERMUX-SELF-DROP-20261027",
+      "title": "Barrot native TERMUX_DROP implementation and local queue runner — code audit",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_code_audit",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/barrot_agent/orchestration/action_executor.py",
+      "publication_date": "observed 2026-10-27",
+      "source_commit": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+      "retrieved_at_utc": "2026-10-27T05:06:58Z",
+      "sections": [
+        "barrot_agent/orchestration/actions.py allows TERMUX_DROP and DELIVER_BUNDLE.",
+        "action_executor.py routes TERMUX_DROP through TermuxBridge initialized with the configured workspace as its allowed root.",
+        "tests/test_termux_self_drop.py proves writes and path rejection inside a temporary test workspace; it does not prove delivery from a cloud task to the physical Moto G7.",
+        "scripts/termux_runner.py is a separate local queue runner. Its watch mode automatically pulls origin/main, executes pending queue entries as shell commands, commits queue state and attempts pushes/pull-and-push on failure.",
+        "Do not start the existing watcher or execute queued commands until the queue trust boundary and push behavior are reviewed."
+      ],
+      "related_urls": [
+        "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/barrot_agent/orchestration/bundle_delivery.py",
+        "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/barrot_agent/orchestration/action_executor.py",
+        "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/tests/test_termux_self_drop.py",
+        "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/scripts/termux_runner.py"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-20261027T043242Z",
+      "title": "Barrot main-branch XRP signal artifact — 2026-10-27 04:32:42 UTC",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "direct_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "2026-10-27T04:32:42.124752+00:00",
+      "source_commit": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+      "retrieved_at_utc": "2026-10-27T05:06:58Z",
+      "snapshot": {
+        "blob_sha": "6d9a6a9cca2d85e658af2a06093fbc89e65c6f9d",
+        "signal_timestamp": "2026-10-27T04:32:42.124752+00:00",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429 Too Many Requests"
+        ],
+        "disposition": "INVALID_FOR_FORECASTING"
+      },
+      "sections": [
+        "Artifact timestamp and blob SHA recorded from the default branch.",
+        "Score 44 and confidence 0 with missing model credentials and Groq HTTP 429.",
+        "News score 88 from 11 entries is contaminated by academic XRPL protocol/research-paper headlines.",
+        "No directional forecast should be issued from this artifact."
       ]
     }
   ],
@@ -1931,6 +2005,106 @@
         "SRC-EVERNORTH-CLOSE-2026-10-09"
       ],
       "timestamp": 1793074337
+    },
+    {
+      "claim_id": "XRP-C-CIRCLE-BINANCE-STRATEGIC-EXPANSION",
+      "statement": "On 2026-09-22 Circle announced a $100 million strategic equity investment from Binance and a renewed five-year commercial agreement to expand USDC access, especially in emerging markets. This confirms a direct Circle-Binance capital/distribution relationship; it does not establish direct XRP buying, XRPL flow volume, or any change to Coinbase-Circle contract terms.",
+      "domain": "stablecoin_distribution_and_corporate_strategy",
+      "claim_type": "official_corporate_announcement_with_scope_limits",
+      "source": "SRC-CIRCLE-BINANCE-2026-09-22",
+      "source_location": "https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-BINANCE-STRATEGIC-EXPANSION"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_OFFICIAL_ANNOUNCEMENT",
+      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; IMPLEMENTATION_AND_FLOW_EFFECT_UNVERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The announcement accurately describes the investment and commercial agreement.",
+        "Announced distribution strategy does not by itself establish realized USDC issuance, XRP flows or market impact."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-BINANCE-2026-09-22"
+      ],
+      "timestamp": 1793077618
+    },
+    {
+      "claim_id": "XRP-C-USDC-SUPPLY-2026-10-22",
+      "statement": "Circle's official USDC page reported $72.0 billion in circulation and $72.2 billion in reserves as of 2026-10-22, and native support on 38 networks as of 2026-09-16, including XRPL. These issuer-reported global totals establish scale and reserve coverage at those timestamps, not XRPL-specific supply, net capital inflow, XRP bridge demand or XRP price impact.",
+      "domain": "stablecoin_supply_and_liquidity",
+      "claim_type": "issuer_reported_dated_supply_snapshot_with_scope_limits",
+      "source": "SRC-CIRCLE-USDC-STATUS",
+      "source_location": "https://www.circle.com/usdc",
+      "supporting_evidence": [
+        "XRP-E-USDC-SUPPLY-20261022"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_ISSUER_REPORTED_SNAPSHOT",
+      "independent_verification_status": "SINGLE_ISSUER_PAGE; CHAIN_LEVEL_SPLIT_UNVERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Figures are issuer-published and may be updated after the stated as-of date.",
+        "Global circulation and reserves are not equivalent to net capital entering XRP markets."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-USDC-STATUS"
+      ],
+      "timestamp": 1793077618
+    },
+    {
+      "claim_id": "XRP-C-BARROT-SELF-DROP-LOCAL-ONLY",
+      "statement": "Barrot's repository contains a native TERMUX_DROP/DELIVER_BUNDLE path, and tests verify writes to a temporary workspace with rejection of paths outside the configured workspace. This proves the repository-level local write mechanism, not that a cloud task can write directly to the physical Moto G7. The separate scripts/termux_runner.py watch mode pulls origin/main and executes queued shell commands, then commits/pushes queue state; it must not be started without reviewing and hardening its command-queue trust boundary and write behavior.",
+      "domain": "barrot_v3_execution_and_verification",
+      "claim_type": "source_code_audit_with_device_execution_boundary",
+      "source": "SRC-BARROT-TERMUX-SELF-DROP-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/barrot_agent/orchestration/action_executor.py",
+      "supporting_evidence": [
+        "XRP-E-BARROT-TERMUX-SELF-DROP-CODE"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "CODE_PATH_CONFIRMED; PHYSICAL_DEVICE_PATH_UNVERIFIED",
+      "independent_verification_status": "SOURCE_AND_TEST_INSPECTION_ONLY; NO_MOTO_G7_EXECUTION_RECEIPT",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The physical phone may have a different checkout or configuration from current main.",
+        "A cloud-side file write cannot cross into the phone without a running, authenticated device-side receiver or another explicit transport."
+      ],
+      "provenance": [
+        "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+      ],
+      "timestamp": 1793077618
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T043242Z",
+      "statement": "The main-branch artifact timestamped 2026-10-27T04:32:42.124752Z has score 44, confidence 0, and news score 88 from 11 entries while both model routes are unavailable (missing GitHub model credentials and Groq HTTP 429); its headlines include XRPL protocol/research papers. This is a fresh but invalid signal artifact, not a directional forecast.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "observed_runtime_artifact_and_forecast_gate",
+      "source": "SRC-BARROT-LATEST-SIGNAL-20261027T043242Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-BARROT-LATEST-SIGNAL-20261027T043242Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_DIRECT_ARTIFACT_INSPECTION",
+      "independent_verification_status": "SINGLE_REPOSITORY_ARTIFACT; MODEL_OUTPUT_UNAVAILABLE",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The artifact reflects the scheduled job at its recorded timestamp; later runs may differ.",
+        "The score must not be interpreted as a calibrated probability or expected return."
+      ],
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-20261027T043242Z"
+      ],
+      "timestamp": 1793077618
     }
   ],
   "evidence": [
@@ -2901,6 +3075,74 @@
       "details": {
         "limit": "Current stake and direct SBI XRP trading remain unverified."
       }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-BINANCE-STRATEGIC-EXPANSION",
+      "claim_id": "XRP-C-CIRCLE-BINANCE-STRATEGIC-EXPANSION",
+      "kind": "official_corporate_release",
+      "summary": "Circle announced a $100 million strategic equity investment from Binance and a five-year commercial agreement to expand USDC access.",
+      "source_id": "SRC-CIRCLE-BINANCE-2026-09-22",
+      "source_location": "https://www.circle.com/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+      "status": "SUPPORTED",
+      "independence": "single_primary_corporate_announcement",
+      "provenance": [
+        "SRC-CIRCLE-BINANCE-2026-09-22"
+      ],
+      "details": {
+        "limit": "Does not establish direct XRP buying, XRPL-specific flows, or any change to Coinbase-Circle contract terms."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-USDC-SUPPLY-20261022",
+      "claim_id": "XRP-C-USDC-SUPPLY-2026-10-22",
+      "kind": "official_issuer_status_page",
+      "summary": "Circle's USDC page reported $72.0B circulation and $72.2B reserves as of 2026-10-22, and native issuance on 38 networks as of 2026-09-16 including XRPL.",
+      "source_id": "SRC-CIRCLE-USDC-STATUS",
+      "source_location": "https://www.circle.com/usdc",
+      "status": "SUPPORTED",
+      "independence": "single_issuer_page",
+      "provenance": [
+        "SRC-CIRCLE-USDC-STATUS"
+      ],
+      "details": {
+        "limit": "No XRPL-only supply or XRP bridge-path breakdown is supplied."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-BARROT-TERMUX-SELF-DROP-CODE",
+      "claim_id": "XRP-C-BARROT-SELF-DROP-LOCAL-ONLY",
+      "kind": "repository_source_and_test_inspection",
+      "summary": "Main contains TERMUX_DROP through TermuxBridge with workspace-root restriction; tests cover a temporary workspace. The separate queue watcher pulls main and executes shell commands, so device-side end-to-end delivery is unverified and watcher use is unsafe without further review.",
+      "source_id": "SRC-BARROT-TERMUX-SELF-DROP-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/0c8a6f818d91f49872fc2e55d28b0a7c56254d20/barrot_agent/orchestration/action_executor.py",
+      "status": "SUPPORTED_CODE_INSPECTION",
+      "independence": "repository_source_code_plus_unit_tests",
+      "provenance": [
+        "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+      ],
+      "details": {
+        "local_test": "tests/test_termux_self_drop.py uses a temporary directory and verifies path escape rejection.",
+        "device_test": "NOT_RUN; no physical Moto G7 execution receipt.",
+        "safety": "Do not start scripts/termux_runner.py watch until arbitrary shell queue and push/pull behavior are reviewed."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-BARROT-LATEST-SIGNAL-20261027T043242Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T043242Z",
+      "kind": "direct_repository_runtime_artifact",
+      "summary": "Artifact timestamp 2026-10-27T04:32:42.124752+00:00; score 44; confidence 0; news score 88 from 11 entries; missing GitHub model credentials and Groq 429.",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-20261027T043242Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "SUPPORTED",
+      "independence": "direct_main_branch_artifact",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-20261027T043242Z"
+      ],
+      "details": {
+        "blob_sha": "6d9a6a9cca2d85e658af2a06093fbc89e65c6f9d",
+        "main_tip_observed": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+        "disposition": "INVALID_FOR_FORECASTING"
+      }
     }
   ],
   "tracks": [
@@ -3552,6 +3794,30 @@
         "source_ids": [
           "SRC-EVERNORTH-CIO-2026-10-12"
         ]
+      },
+      {
+        "id": "Binance",
+        "type": "crypto_exchange_and_stablecoin_distribution_platform",
+        "status": "FACT_OFFICIAL_CIRCLE_ANNOUNCEMENT_2026-09-22",
+        "source_ids": [
+          "SRC-CIRCLE-BINANCE-2026-09-22"
+        ]
+      },
+      {
+        "id": "Termux local runner",
+        "type": "device_side_queue_executor",
+        "status": "CODE_PRESENT; UNSAFE_QUEUE_BEHAVIOR_REQUIRES_REVIEW",
+        "source_ids": [
+          "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+        ]
+      },
+      {
+        "id": "Physical Moto G7 Termux runtime",
+        "type": "user_device_execution_environment",
+        "status": "CURRENT_CHECKOUT_AND_END_TO_END_DELIVERY_NOT_VERIFIED",
+        "source_ids": [
+          "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+        ]
       }
     ],
     "edges": [
@@ -3938,6 +4204,39 @@
           "SRC-EVERNORTH-CIO-2026-10-12"
         ],
         "caveat": "Monitor later filings for role changes."
+      },
+      {
+        "source": "Circle",
+        "target": "Binance",
+        "relationship_type": "STRATEGIC_EQUITY_INVESTMENT_AND_FIVE_YEAR_USDC_DISTRIBUTION_AGREEMENT",
+        "classification": "CONFIRMED_OFFICIAL_ANNOUNCEMENT_2026-09-22",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-CIRCLE-BINANCE-2026-09-22"
+        ],
+        "caveat": "No direct XRP buying, XRPL-specific flow, or alteration to Coinbase-Circle terms is established."
+      },
+      {
+        "source": "Barrot V3",
+        "target": "Termux local runner",
+        "relationship_type": "DEVICE_SIDE_QUEUE_EXECUTION",
+        "classification": "CODE_PATH_PRESENT; DEVICE_RECEIPT_UNVERIFIED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+        ],
+        "caveat": "The runner's watch mode pulls main, executes queued shell commands and attempts Git writes; do not run until queue trust boundary is hardened."
+      },
+      {
+        "source": "Termux local runner",
+        "target": "Physical Moto G7 Termux runtime",
+        "relationship_type": "REQUIRES_LOCAL_INSTALL_AND_EXECUTION",
+        "classification": "ARCHITECTURAL_REQUIREMENT; NOT_DEVICE_VERIFIED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+        ],
+        "caveat": "No end-to-end bundle receipt or checksum from the physical phone was observed in this run."
       }
     ]
   },
@@ -4242,11 +4541,11 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
+    "main_tip_sha": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
     "latest_main_commit_message": "Paper trade cycle [skip ci]",
-    "latest_main_commit_ci": "Current main tip is a generated paper-trading cycle marked [skip ci]; no core CI run was observed for this exact SHA in this inspection, so core-suite success on main is not established.",
+    "latest_main_commit_ci": "Latest observed main tip is a generated paper-trading cycle marked [skip ci]; no core CI run was observed for this exact SHA, so core-suite success on main is not established.",
     "current_signal": {
-      "timestamp": "2026-10-27T03:35:06.972041+00:00",
+      "timestamp": "2026-10-27T04:32:42.124752+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -4255,9 +4554,9 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "e8b9582c9e7a4d9aea1971885a4b292aceda5ae3",
-      "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
-      "age_minutes_at_retrieval": 37.2,
+      "blob_sha": "6d9a6a9cca2d85e658af2a06093fbc89e65c6f9d",
+      "retrieved_at_utc": "2026-10-27T05:06:58Z",
+      "age_minutes_at_retrieval": 34.3,
       "disposition": "INVALID_FOR_FORECASTING_ACADEMIC_XRPL_RESEARCH_HEADLINES_CONTAMINATE_NEWS_SCORE_AND_PROVIDER_SENTIMENT_UNAVAILABLE"
     },
     "legacy_accuracy": {
@@ -4334,7 +4633,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "Current main web/latest_signal.json blob e8b9582c9e7a4d9aea1971885a4b292aceda5ae3 timestamp 2026-10-27T03:35:06.972041+00:00; age 37.2 minutes at 2026-10-27T04:12:17.316Z. Score 44, confidence 0 and news score 88 from 11 entries remain invalid for forecasting because providers failed and the news set is dominated by XRPL protocol/research-paper titles.",
+    "latest_signal_staleness": "Current main web/latest_signal.json blob 6d9a6a9cca2d85e658af2a06093fbc89e65c6f9d, timestamp 2026-10-27T04:32:42.124752+00:00; age approximately 34.3 minutes at 2026-10-27T05:06:58Z. Score 44, confidence 0, news score 88 from 11 entries remain invalid for forecasting because providers failed and the news set is dominated by XRPL protocol/research-paper titles.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -4350,15 +4649,15 @@
       "interpretation": "The only listed branch-target ruleset remains disabled. Effective branch protection is unknown; do not run the mutation-capable merge queue."
     },
     "pr1170_validation": {
-      "previous_validated_head_sha": "3dd251b93bb0e302bbb52865f1041b1724ef5dd5",
-      "previous_ci_run": 40447888442,
+      "previous_validated_head_sha": "ae7c9e99101e930bf41bb267337631a26d5a5c63",
+      "previous_ci_run": 40448455904,
       "previous_ci_conclusion": "success",
-      "previous_fail_closed_gate_run": 40447888468,
+      "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "PENDING_EXACT_HEAD_CI_AND_GATE_AFTER_THIS_UPDATE",
       "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-      "note": "This commit adds Evernorth/Coinbase/SBI evidence and current main paper-trading record. Verify exact-head CI and gate before treating this revision as tested."
+      "note": "This revision adds Circle-Binance strategic distribution evidence, a dated USDC supply snapshot, current main signal artifact and a code-level self-drop/device-boundary audit. Verify exact-head CI and fail-closed gate before treating this revision as tested."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -4399,6 +4698,21 @@
       "gate_conclusion": "success",
       "state": "CI_PENDING_ON_CURRENT_MAIN",
       "note": "Gate passed; exact-head CI was in progress at last observation."
+    },
+    "self_drop": {
+      "inspected_at_utc": "2026-10-27T05:06:58Z",
+      "source_commit": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+      "native_actions": [
+        "TERMUX_DROP",
+        "DELIVER_BUNDLE"
+      ],
+      "local_path": "BarrotActionExecutor -> TermuxBridge.drop_text",
+      "workspace_restriction": "TermuxBridge is initialized with configured workspace as allowed root.",
+      "unit_test_evidence": "tests/test_termux_self_drop.py verifies writes to temporary workspace and rejects path escape.",
+      "device_delivery_state": "NOT_VERIFIED_ON_PHYSICAL_MOTO_G7",
+      "queue_bridge": "scripts/termux_runner.py",
+      "safety_blocker": "watch mode pulls origin/main and executes arbitrary queued shell commands, then commits/pushes queue state; do not start before trust-boundary review.",
+      "next_step": "Inspect actual new-phone checkout and configuration; design/verify a restricted bundle-only receiver before enabling remote queue delivery."
     }
   },
   "video_ingestion": {
@@ -4440,52 +4754,37 @@
   "next_actions": [
     {
       "priority": 0,
-      "action": "Do not dispatch or enable the active mutation-capable merge queue. PR #1173 contains a read-only stop and exact-head CI plus fail-closed gate passed on its refreshed head; it remains draft/unmerged and needs independent review and authorized approval. The sole listed ruleset is disabled and effective branch protection is unverified.",
-      "status": "SAFETY_FIX_TESTED; APPROVAL_REQUIRED"
-    },
-    {
-      "priority": 0,
-      "action": "Review PR #1178, the current-main XRP signal-integrity and deterministic-summary fix. Exact-head CI and fail-closed gate passed, but it remains draft/unmerged. Main's score 44/confidence 0/news score 88 artifact is invalid; do not issue a directional forecast until the fix is reviewed, merged by an authorized person and the pipeline is verified.",
+      "action": "Do not dispatch the active mutation-capable merge queue. PR #1173 has exact-head CI and fail-closed gate evidence but remains draft/unmerged; independent review and authorized approval are required. Effective branch protection remains unverified.",
       "status": "TESTED_DRAFT; APPROVAL_REQUIRED"
     },
     {
       "priority": 0,
-      "action": "The XRP research bundle now records Evernorth's reported 473M XRP treasury, mixed cash-purchase/private-placement sources, Coinbase execution-partner announcement and collateral eligibility, Hugo Jeandesboz's prior Coinbase Asset Management role, and SBI's investment. This ledger revision needs exact-head CI and gate.",
-      "status": "LEDGER_UPDATED; VALIDATION_PENDING"
+      "action": "Do not issue a directional XRP forecast from the current main signal. The 2026-10-27T04:32:42Z artifact reports score 44/confidence 0/news score 88 with provider failures and academic-news contamination. PR #1178 remains draft/unmerged pending review and exact-head integration checks.",
+      "status": "INVALID_SIGNAL_OBSERVED; FIX_TESTED_ON_DRAFT"
     },
     {
       "priority": 0,
-      "action": "Check exact-head CI for PR #1177 after the current-main refresh. Its fail-closed gate passed but CI was in progress at last observation; the 150-video vidIQ snapshot is partial, not a complete channel inventory.",
-      "status": "CI_PENDING"
+      "action": "Restore Barrot self-drop end-to-end on the new Moto G7. The native TERMUX_DROP path exists, but tests prove only local workspace writes. Do not start scripts/termux_runner.py watch: it pulls main, executes arbitrary queued shell commands and commits/pushes state. Inspect the actual phone checkout, then use a restricted bundle-only receiver and require a device-side checksum receipt.",
+      "status": "CODE_PATH_CONFIRMED; DEVICE_PATH_UNVERIFIED; SAFE_BRIDGE_REQUIRED"
     },
     {
       "priority": 1,
-      "action": "Resolve Evernorth's trading-date discrepancy: the October 14 partner release says October 8, while its SEC filing and Nasdaq event page say October 12. Preserve both sources.",
-      "status": "SOURCE_CONFLICT_RECORDED"
+      "action": "Record Circle's 2026-09-22 $100M Binance equity investment and five-year USDC distribution agreement, plus Circle's $72.0B circulation/$72.2B reserves snapshot dated 2026-10-22. Measure realized distribution and XRPL-specific flows separately; do not infer XRP demand.",
+      "status": "OFFICIAL_ANNOUNCEMENT_AND_ISSUER_SNAPSHOT_RECORDED; CHAIN_LEVEL_FLOWS_UNKNOWN"
     },
     {
       "priority": 1,
-      "action": "Investigate why barrot-approve-pr.yml produced a push-event failure with zero jobs while the inspected workflow declares workflow_dispatch only; preserve evidence and do not blindly rerun.",
-      "status": "ROOT_CAUSE_UNRESOLVED"
-    },
-    {
-      "priority": 1,
-      "action": "Continue resolving 'SBIC, ChatGPT SBIC', 'ASK Coin' and 'actual capital'. Official evidence supports a historical SBI Capital use of SBIC in Japan in 2007, but the intended original referent remains unresolved.",
-      "status": "ENTITY_AND_PHRASE_RESOLUTION_OPEN"
-    },
-    {
-      "priority": 1,
-      "action": "Measure actual Evernorth treasury changes, Coinbase XRP collateral utilization and XRP spot/derivative flows before assigning predictive features. Maintain incremental-demand and leverage/supply hypotheses; do not infer market impact from eligibility or announcements.",
-      "status": "HYPOTHESES_DEFINED; FLOW_DATA_PENDING"
-    },
-    {
-      "priority": 1,
-      "action": "Build fixed-horizon, immutable, leakage-resistant forecasts with walk-forward baselines, calibration, uncertainty, drift monitoring and paper/shadow outcomes. Keep forecast_register empty until each forecast records cutoff, horizon, target, assumptions, probability, alternatives and eventual outcome.",
+      "action": "Continue fixed-horizon, immutable, leakage-resistant forecast evaluation with walk-forward baselines, calibration, uncertainty, drift monitoring and paper/shadow outcomes. Keep forecast_register empty until a fully specified forecast and outcome record can be validated.",
       "status": "DESIGNED; OUT_OF_SAMPLE_VALIDATION_PENDING"
     },
     {
+      "priority": 1,
+      "action": "Continue resolving 'SBIC, ChatGPT SBIC', 'ASK Coin' and 'actual capital' from original source context; preserve multiple SBIC candidates and source conflicts rather than guessing.",
+      "status": "ENTITY_AND_PHRASE_RESOLUTION_OPEN"
+    },
+    {
       "priority": 2,
-      "action": "Platform coordination remains a capability/authentication/permission/data-flow design, not live nine-platform collaboration. Verify adapters and permissions separately and preserve minority objections and red-team reviews.",
+      "action": "Platform coordination remains a capability/authentication/permission/data-flow design, not live nine-platform collaboration. Verify adapters and permissions separately and retain minority objections/red-team review.",
       "status": "DESIGNED; LIVE_CONNECTIONS_UNVERIFIED"
     }
   ]
