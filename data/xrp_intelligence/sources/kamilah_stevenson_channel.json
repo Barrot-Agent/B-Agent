@@ -16,7 +16,8 @@
       "Public channel listing for Kamilah Stevenson points to this channel ID.",
       "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
       "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved.",
-      "Glasp indexed pages opened 2026-10-27: QslbjGQD0MU (2025-12-14), ci0FH73lbCs (2026-01-13), rv0BAV0vLgo (2026-03-19), and cxeX_eu_2H0 (2026-01-15) are attributed by the third-party index to Kamilah Stevenson. Visible transcript excerpts for QslbjGQD0MU, ci0FH73lbCs, and cxeX_eu_2H0 use the self-introduction Camila Stevenson. This supports recording the spelling variant, not merging the two observed YouTube channel IDs; no first-party cross-link was found and the YouTube channel fetch was throttled."
+      "Glasp indexed pages opened 2026-10-27: QslbjGQD0MU (2025-12-14), ci0FH73lbCs (2026-01-13), rv0BAV0vLgo (2026-03-19), and cxeX_eu_2H0 (2026-01-15) are attributed by the third-party index to Kamilah Stevenson. Visible transcript excerpts for QslbjGQD0MU, ci0FH73lbCs, and cxeX_eu_2H0 use the self-introduction Camila Stevenson. This supports recording the spelling variant, not merging the two observed YouTube channel IDs; no first-party cross-link was found and the YouTube channel fetch was throttled.",
+      "Run 13 public web refresh opened four existing Glasp-indexed video pages: QslbjGQD0MU (2025-12-14), ci0FH73lbCs (2026-01-13), rv0BAV0vLgo (2026-03-19), and cxeX_eu_2H0 (2026-01-15). All pages attribute the videos to Kamilah Stevenson; three visible transcript excerpts self-identify the speaker as Camila Stevenson. This confirms the spelling variant in those indexed pages but does not establish a first-party link between the two observed YouTube channel IDs."
     ],
     "caveats": [
       "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
@@ -55,7 +56,7 @@
     "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_INDEXED_INVENTORY",
+    "status": "PARTIAL_INDEXED_INVENTORY; FOUR EXISTING VIDEO SEEDS RECONFIRMED; EXACT-PHRASE SEARCH NONRESOLVING; FULL CHANNEL INVENTORY NOT VERIFIED",
     "completeness_verified": false,
     "discovered_total_count": null,
     "indexed_seed_video_count": 11,
@@ -69,7 +70,7 @@
       "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
     ],
     "latest_recheck": {
-      "session_clock_utc": "2026-10-27T11:10:00Z",
+      "session_clock_utc": "2026-10-27T17:50:00Z",
       "retrieval_timestamp_exposed": false,
       "third_party_pages_opened": 4,
       "video_ids": [
@@ -83,10 +84,24 @@
         "ci0FH73lbCs",
         "cxeX_eu_2H0"
       ],
-      "first_party_channel_fetch": "THROTTLED",
+      "first_party_channel_fetch": "NOT_ATTEMPTED_IN_THIS_REFRESH; PREVIOUS_FETCH_THROTTLED",
       "full_inventory_verified": false,
       "full_transcript_reviewed": false,
-      "identity_disposition": "KEEP_TWO_CHANNEL_IDS_SEPARATE; CAMILA IS A TRANSCRIPT SPELLING VARIANT ONLY UNTIL FIRST-PARTY CROSS-LINK"
+      "identity_disposition": "KEEP_TWO_CHANNEL_IDS_SEPARATE; THREE_VISIBLE_TRANSCRIPT EXCERPTS SELF-IDENTIFY AS CAMILA; NO FIRST-PARTY CROSS-LINK VERIFIED",
+      "exact_phrase_search": {
+        "queries": [
+          "\"ASK Coin\" XRP YouTube",
+          "\"actual capital\" XRP cryptocurrency",
+          "\"SBIC, ChatGPT SBIC\" XRP",
+          "site:youtube.com/@drkamilahstevenson \"ASK Coin\" XRP",
+          "site:youtube.com/@drkamilahstevenson \"actual capital\" XRP",
+          "site:youtube.com/watch \"SBIC, ChatGPT SBIC\" XRP",
+          "site:youtube.com/watch \"actual capital\" \"Camila Stevenson\" XRP",
+          "site:youtube.com/watch \"ASK Coin\" \"Kamilah Stevenson\" XRP"
+        ],
+        "result": "NO_RESULTS_FOR_THE_TARGETED_EXACT_PHRASE_QUERIES",
+        "interpretation": "No phrase meaning inferred from empty search results."
+      }
     }
   },
   "seed_videos": [
@@ -347,7 +362,7 @@
       "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
       "https://www.cmegroup.com/media-room/press-releases/2025/5/20/cme_group_announcesfirsttradesofxrpfutures.html"
     ],
-    "last_updated_at_utc": "2026-10-26T23:15:00Z"
+    "last_updated_at_utc": "2026-10-27T17:50:00Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; THIRD_PARTY_VIDEO_METADATA_RECHECKED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
