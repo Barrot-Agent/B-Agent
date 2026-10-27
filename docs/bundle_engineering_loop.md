@@ -28,4 +28,6 @@ A version 1.0 bundle includes a stable bundle ID, objective, revision, mandatory
 
 ## Current integration boundary
 
-This module and its tests provide the author/review/revise engine. The live `scripts/barrot_agent.py` task lifecycle must next be wired to call it and persist its output alongside the repair-cycle evidence. Until that integration and its end-to-end tests are complete, do not claim Barrot autonomously authors bundles in the production task path.
+The live `scripts/barrot_agent.py` entrypoint now runs bundle authoring and deterministic review before invoking the existing `WorkQueueController` and `RepositoryRepairController`. A failed authoring/review step blocks repository mutation. The bundle and its revision/review evidence are stored atomically under `.git/barrot_repair/bundles/<work-key>/lifecycle.json`, keeping runtime state out of the worktree; the resulting repair outcome is appended to that record.
+
+This is the first production-path integration, not full multi-task autonomy. The current queue still executes the original issue as one evidence-gated repair cycle; it does not yet dispatch every task in a generated bundle as a separate resumable queue item. That next step requires task-level idempotency, dependency-aware advancement, per-task completion evidence, and interruption/resume tests. Do not claim full autonomous bundle execution until those tests and a controlled end-to-end run pass.
