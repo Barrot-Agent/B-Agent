@@ -495,7 +495,7 @@ def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> N
         del request, timeout
         calls["count"] += 1
         if calls["count"] == 1:
-            body = b'{"error":{"message":"tokens per day limit reached. Please try again in 2m0s."}}'
+            body = b'{"error":{"message":"tokens per day limit reached. Please try again in 22m0s."}}'
             raise urllib.error.HTTPError(
                 "https://api.groq.com/openai/v1/chat/completions",
                 429,
@@ -510,5 +510,6 @@ def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> N
 
     assert result == {"ok": True}
     assert calls["count"] == 2
-    assert sleeps == [120.0]
+    assert sleeps == [1320.0]
+
 
