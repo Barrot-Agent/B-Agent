@@ -636,5 +636,27 @@
     "Company press releases establish what the company announced; they do not independently verify adoption volume, economic effect or future price.",
     "No directional XRP price forecast is issued in this snapshot.",
     "vidIQ API calls failed for insufficient credits; no credits were charged and those calls were not retried."
+  ],
+  "run_updates": [
+    {
+      "recorded_at_utc": "2026-10-27T19:06:43Z",
+      "update_type": "PR_CREATED",
+      "pr_number": 1195,
+      "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "branch": "research/xrp-ledger-20261027-1902z",
+      "initial_head_sha": "e76e7aa551d5fe05d39117c34b24395298861117",
+      "main_sha_at_pr_creation": "5d1d7bfd25c95e983133120e9585d591e6123de3",
+      "verification_at_recording": {
+        "json_parse": "PASS",
+        "required_field_checks": "PASS",
+        "source_id_resolution": "PASS",
+        "relationship_edges": 10,
+        "competing_hypotheses": 4,
+        "platform_entries": 9,
+        "forecast_status": "NOT_ISSUED",
+        "ci_at_recording": "Tests in progress; fail-closed merge gate passed",
+        "merge_performed": false
+      }
+    }
   ]
 }
