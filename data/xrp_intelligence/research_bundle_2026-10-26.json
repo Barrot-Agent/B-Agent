@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T06:21:00Z",
+    "captured_at_utc": "2026-10-27T06:22:00Z",
     "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -43,7 +43,8 @@
       "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027",
       "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
       "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z",
-      "XRP-C-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
+      "XRP-C-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z",
+      "XRP-C-ASK-COIN-ENTITY-AMBIGUITY-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1344,6 +1345,20 @@
         "Only opening/closing excerpts were inspected in this run; the full transcript was not hashed or fully reviewed.",
         "The $10 price-target framing in the title is not a validated forecast and must not be scored without explicit horizon, assumptions and falsification conditions."
       ]
+    },
+    {
+      "source_id": "SRC-ASK-COIN-CMC-LISTING-20261027",
+      "title": "CoinMarketCap listing for Ask Coin exchange",
+      "author_or_organization": "CoinMarketCap",
+      "source_type": "third_party_exchange_listing",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "publication_date": "page retrieved 2026-10-27; page crawl dated 5 months prior",
+      "retrieved_at_utc": "2026-10-27T06:22:00Z",
+      "sections": [
+        "CoinMarketCap has a literal-name listing titled 'Ask Coin' under exchanges, not a token page.",
+        "The listing labels the exchange untracked/inactive and does not show tracked volume or reserves.",
+        "This is a candidate match for the string only; no primary source or channel transcript was found tying it to the user's exact phrase or XRP."
+      ]
     }
   ],
   "claims": [
@@ -2417,6 +2432,31 @@
         "SRC-VIDIQ-TRANSCRIPT-JVRBMD0DJ24-20261027T0621Z"
       ],
       "timestamp": 1793082060
+    },
+    {
+      "claim_id": "XRP-C-ASK-COIN-ENTITY-AMBIGUITY-20261027",
+      "statement": "A CoinMarketCap page currently lists 'Ask Coin' as an exchange, marked untracked/inactive with no tracked volume/reserve data. This is only a literal-name candidate; it does not resolve whether 'ASK Coin' in the original research context refers to this exchange, a token, a different project, or a transcription error, and it establishes no XRP relationship.",
+      "domain": "exact_phrase_entity_resolution",
+      "claim_type": "third_party_listing_candidate_with_intent_unresolved",
+      "source": "SRC-ASK-COIN-CMC-LISTING-20261027",
+      "source_location": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "supporting_evidence": [
+        "XRP-E-ASK-COIN-CMC-LISTING-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_THIRD_PARTY_LISTING_ONLY",
+      "independent_verification_status": "NO_PRIMARY_SOURCE_OR_ORIGINAL_CONTEXT_FOUND",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "CANDIDATE_ONLY; ORIGINAL_REFERENT_UNRESOLVED; NO_XRP_LINK",
+      "confidence": 0.98,
+      "assumptions": [
+        "CoinMarketCap's status describes that listing at retrieval, not necessarily the present legal or operational status of an entity under a similar name.",
+        "Exact phrase similarity does not establish that this is the intended entity."
+      ],
+      "provenance": [
+        "SRC-ASK-COIN-CMC-LISTING-20261027"
+      ],
+      "timestamp": 1793082120
     }
   ],
   "evidence": [
@@ -3633,6 +3673,27 @@
         "price_target_title_only": true,
         "do_not_score_as_forecast": true
       }
+    },
+    {
+      "evidence_id": "XRP-E-ASK-COIN-CMC-LISTING-20261027",
+      "claim_id": "XRP-C-ASK-COIN-ENTITY-AMBIGUITY-20261027",
+      "kind": "third_party_exchange_listing",
+      "summary": "CoinMarketCap's Ask Coin exchange page labels the listing untracked/inactive and reports no tracked volume or reserve data. This is not a primary source and does not link the name to XRP.",
+      "source_id": "SRC-ASK-COIN-CMC-LISTING-20261027",
+      "source_location": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "status": "LITERAL_NAME_CANDIDATE_ONLY",
+      "independence": "third_party_listing_provider",
+      "provenance": [
+        "SRC-ASK-COIN-CMC-LISTING-20261027"
+      ],
+      "details": {
+        "listing_category": "exchange",
+        "listing_status": "untracked/inactive",
+        "tracked_volume": "not tracked",
+        "reserves": "unavailable",
+        "intended_referent": "UNKNOWN",
+        "xrp_relationship": "NOT_ESTABLISHED"
+      }
     }
   ],
   "tracks": [
@@ -4078,6 +4139,12 @@
       "question": "Hash and fully review the transcript for jVrBm0dDJ24; extract any explicit XRP price target, forecast horizon, assumptions, confidence/probability, falsification conditions and promotion disclosures, then independently verify each claim.",
       "priority": "HIGH",
       "status": "TRANSCRIPT_RETRIEVED_166512_CHARS; HASH_AND_FULL_REVIEW_PENDING"
+    },
+    {
+      "question_id": "Q-18",
+      "question": "Recover the exact original source context for 'ASK Coin' and 'actual capital'; test the Ask Coin exchange listing only as a literal-name candidate and keep the intended referent unresolved until the original sentence/video timestamp is located.",
+      "priority": "HIGH",
+      "status": "ASK_COIN_LITERAL_LISTING_CANDIDATE_ONLY; ACTUAL_CAPITAL_CONTEXT_MISSING"
     }
   ],
   "relationship_graph": {
@@ -4347,6 +4414,14 @@
         "status": "DRAFT; EXACT_HEAD_CI_PASS; PHYSICAL_DEVICE_RECEIPT_PENDING",
         "source_ids": [
           "SRC-PR1182-TERMUX-RECEIVER-20261027"
+        ]
+      },
+      {
+        "id": "Ask Coin exchange (CoinMarketCap listing)",
+        "type": "untracked_exchange_name_candidate",
+        "status": "LITERAL_NAME_MATCH_ONLY; CMC_LABELS_UNTRACKED_INACTIVE; INTENDED_REFERENT_AND_XRP_LINK_UNKNOWN",
+        "source_ids": [
+          "SRC-ASK-COIN-CMC-LISTING-20261027"
         ]
       }
     ],
@@ -5266,9 +5341,9 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_TRANSCRIPT_METADATA_UPDATE",
+      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_EXACT_PHRASE_UPDATE",
       "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-      "note": "This ledger revision adds transcript retrieval provenance for jVrBm0dDJ24 (166,512 characters; no hash/full review) and links to the refreshed draft catalog PR #1177. No price forecast is scored from the title. Re-run exact-head CI and fail-closed gate for this ledger revision."
+      "note": "This ledger revision records the CoinMarketCap Ask Coin exchange listing as a literal-name candidate only, updates the exact-phrase unresolved register for ASK Coin/actual capital/SBIC, and retains the requirement for original source context. Re-run exact-head CI and fail-closed gate."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -5385,18 +5460,18 @@
   "unresolved_exact_phrases": [
     {
       "phrase": "ASK Coin",
-      "status": "UNRESOLVED",
-      "finding": "Targeted exact-phrase search in public web and repository did not identify a reliable intended entity; original source context is needed."
+      "status": "UNRESOLVED; LITERAL EXCHANGE-LISTING CANDIDATE FOUND",
+      "finding": "CoinMarketCap lists an 'Ask Coin' exchange page and labels it untracked/inactive with no tracked volume/reserves. This is a possible literal-name match only; no primary source or original transcript context ties it to the user's phrase or XRP. Do not treat it as a resolved entity."
     },
     {
       "phrase": "actual capital",
       "status": "UNRESOLVED",
-      "finding": "Too ambiguous to bind to an XRP entity or metric without the original sentence/source."
+      "finding": "The original sentence, speaker, timestamp and source remain missing. Keep separate from market capitalization, gross capital raised, net cash inflows and deployed spot purchases; do not assign one meaning without context."
     },
     {
       "phrase": "SBIC, ChatGPT SBIC",
-      "status": "UNRESOLVED",
-      "finding": "Exact intended referent remains unresolved. Official sources now establish multiple distinct candidates: Tokyo SBIC East Japan; historical Japanese SBI CAPITAL (called SBIC in a 2007 SBI Holdings announcement); current SBI Capital and SBI Crypto as separate SBI Group listings; and a separately announced SBI Capital in South Korea. The original video/audio/sentence is still required to identify intent. Do not attribute XRP exposure to an entity merely because its name resembles the acronym."
+      "status": "UNRESOLVED; MULTIPLE OFFICIAL JAPANESE CANDIDATES CONFIRMED",
+      "finding": "Official SBI Holdings sources used 'SBIC' for SBI Capital Co., Ltd. in 2004–2007; a separate Tokyo Small and Medium Business Investment & Consultation Co. also uses SBIC branding. SBI Capital and SBI Ripple Asia are separately listed entities. No source identifies which candidate the phrase 'SBIC, ChatGPT SBIC' intended, and no XRP relationship is inferred from acronym similarity. Original video/audio/sentence remains required."
     }
   ],
   "forecast_register": [],
@@ -5455,6 +5530,11 @@
       "priority": 1,
       "action": "Complete integrity hashing and timestamped forecast extraction for the retrieved jVrBm0dDJ24 transcript. Do not infer a $10 forecast from the title; record exact speaker, target, horizon, assumptions, confidence, alternatives, invalidation conditions and later outcome.",
       "status": "TRANSCRIPT_RETRIEVED; HASH_AND_REVIEW_PENDING"
+    },
+    {
+      "priority": 1,
+      "action": "Resolve the exact original source context for 'ASK Coin', 'actual capital' and 'SBIC, ChatGPT SBIC'. Preserve the Ask Coin exchange listing as an unverified literal-name candidate; do not connect it to XRP or a specific person/entity without a canonical video timestamp and primary-source confirmation.",
+      "status": "MULTIPLE_CANDIDATES_RECORDED; ORIGINAL_CONTEXT_REQUIRED"
     }
   ]
 }
