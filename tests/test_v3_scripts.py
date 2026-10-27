@@ -510,3 +510,51 @@ def test_barrot_groq_daily_token_limit_falls_back_without_waiting(monkeypatch) -
 
     assert result == {"ok": True}
     assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+
+def test_barrot_groq_tpm_limit_retries_same_model_once(monkeypatch) -> None:
+    import io
+    import urllib.error
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_groq_tpm_retry_test",
+    )
+    monkeypatch.setattr(module, "GROQ_KEY", "test-key")
+    sleeps: list[float] = []
+    calls = {"count": 0}
+    monkeypatch.setattr(module.time, "sleep", lambda seconds: sleeps.append(seconds))
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+        def read(self, *args, **kwargs):
+            del args, kwargs
+            return b'{"ok": true}'
+
+    def fake_urlopen(request, timeout=0):
+        del request, timeout
+        calls["count"] += 1
+        if calls["count"] == 1:
+            body = b'{"error":{"message":"tokens per minute limit reached. Please try again in 5.1s."}}'
+            raise urllib.error.HTTPError(
+                "https://api.groq.com/openai/v1/chat/completions",
+                429,
+                "Too Many Requests",
+                hdrs=None,
+                fp=io.BytesIO(body),
+            )
+        return Response()
+
+    monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
+    result = module._send_groq_request({"model": "openai/gpt-oss-20b", "messages": []})
+
+    assert result == {"ok": True}
+    assert calls["count"] == 2
+    assert sleeps == [5.1]
+
