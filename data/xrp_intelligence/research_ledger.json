@@ -16,7 +16,7 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T22:11:49Z",
+    "captured_at_utc": "2026-10-27T22:13:13Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
@@ -191,16 +191,16 @@
       "latest_research_branch_state": {
         "branch": "research/xrp-ledger-20261027-1902z",
         "pr": 1195,
-        "head_at_snapshot_capture": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
+        "head_at_snapshot_capture": "87003b6ff4c85c0f698c38199385538133be7403",
         "state": "open_draft_diverged",
-        "ahead_by": 33,
+        "ahead_by": 35,
         "behind_by": 45,
         "mergeable": true,
-        "observed_at_utc": "2026-10-27T22:11:49Z",
+        "observed_at_utc": "2026-10-27T22:13:13Z",
         "source_ids": [
           "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z"
         ],
-        "note": "Preserve all research artifacts. Do not merge the stale branch; create a fresh-main successor only after artifact validation."
+        "note": "Preserve all historical snapshots. Do not merge the stale branch; prepare a fresh-main successor only after artifact validation."
       },
       "current_pr_1220_state": {
         "pr": 1220,
@@ -618,6 +618,23 @@
           "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
           "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
           "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
+        ]
+      },
+      {
+        "id": "USDC-SUPPLY-CROSS-SOURCE-RECONCILIATION-2026",
+        "evidence_class": "MULTI_SOURCE_RECONCILIATION",
+        "status": "CURRENT_VALUES_CONVERGE; HISTORICAL_METRIC_SCOPE_CONFLICT; FLOW_FEATURE_BLOCKED",
+        "claim": "For Oct 26-27, Circle's rounded page value ($71.0B), DefiLlama-derived reporting ($71.71B on Oct 26), CoinGecko-based data ($71.19B on Oct 27), SatoshiMacro ($71.26B on Oct 27) and Stablecoin Beat ($71.2B on Oct 26) cluster around $71.0B-$71.7B. However, the prior issuer-reported $72.0B Oct 22 observation conflicts with third-party market-cap estimates around $74.0B for Oct 22.",
+        "interpretation": "The current-window values broadly corroborate the ~$71B level after rounding and timestamp differences. The historical mismatch shows that issuer-reported circulation, third-party market cap and different observation times cannot be treated as one exact time series. A separate DefiLlama-derived series reports a $2.6B USDC decrease from Oct 7 to Oct 26, but it does not identify destination, chain allocation or XRP flows.",
+        "limits": "No same-provider daily mint/burn series, XRPL-specific USDC supply/transfer series, venue balance series or causal link to XRP net order flow has been verified. Do not treat the prior $1B dashboard delta as a precise redemption estimate.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
         ]
       }
     ],
@@ -1050,6 +1067,22 @@
           "Users can select BTC or ETH instead; reward conversion may be netted by a provider and does not prove persistent holding."
         ],
         "test_plan": "Look for subsequent issuer/product disclosures of reward conversion totals, eligibility, conversion timing and asset-selection mix; do not estimate price impact without realized volume and liquidity data."
+      },
+      {
+        "id": "H15-USDC-SUPPLY-SCOPE-VS-FLOW",
+        "hypothesis": "Observed USDC supply changes combine real contraction with differences in metric definition, timestamp and source coverage; a raw issuer-page delta is not a clean flow feature.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
+        ],
+        "test_plan": "Store daily same-provider observations with exact metric definition and timestamps; reconcile issuer mint/burn and reserve reports; measure chain-specific USDC and venue balances; test any lagged XRP association out of sample."
       }
     ],
     "market_observations": [
@@ -1099,6 +1132,23 @@
         "source_ids": [
           "SRC-CIRCLE-TRANSPARENCY-2026",
           "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "USDC-CIRCULATION-CROSS-SOURCE-2026-10-27",
+        "evidence_class": "MULTI_SOURCE_RECONCILIATION",
+        "as_of_date": "2026-10-26/27",
+        "observation": "Circle rounds current circulation to $71.0B for Oct 26; third-party sources report about $71.2B (Stablecoin Beat), $71.71B (DefiLlama-derived Oct 26), $71.189B market-data supply (CoinGecko Oct 27), and $71.26B (SatoshiMacro Oct 27). CoinLore estimates market cap around $74.0B on Oct 22, versus prior issuer-reported $72.0B circulation on that date.",
+        "interpretation": "Current readings broadly cluster after rounding/timing differences; the historical $2B gap indicates metric/source mismatch. DefiLlama-derived data suggests USDC fell about $2.6B Oct 7-26, but the cause and destination are unknown.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
         ],
         "approved_for_model_features": false
       }
@@ -1371,17 +1421,17 @@
       },
       "research_pr_validation": {
         "pr": 1195,
-        "validated_head_sha": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
-        "ci_run_id": 40592783577,
+        "validated_head_sha": "87003b6ff4c85c0f698c38199385538133be7403",
+        "ci_run_id": 40593004800,
         "ci": "success",
         "tests_passed": 145,
-        "duration_seconds": 5.81,
-        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783577",
-        "gate_run_id": 40592783253,
+        "duration_seconds": 5.52,
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593004800",
+        "gate_run_id": 40593004803,
         "gate": "success",
-        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783253",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593004803",
         "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-        "note": "These checks validate head 44a9ce7 only. Later snapshot/ledger commits are newer."
+        "note": "These checks validate head 87003b6 only; the 2213Z snapshot and this ledger update are newer."
       },
       "safety_prs": [
         {
@@ -1457,6 +1507,23 @@
           "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
         ],
         "next_action": "Capture daily supply and reserve dashboard values with source-page hashes; reconcile monthly attestations and issuer-level mint/burn data; collect XRPL-specific USDC supply and transfer activity before feature admission."
+      },
+      {
+        "id": "USDC-SUPPLY-CROSS-SOURCE-SCOPE-2026-10-27",
+        "severity": "HIGH",
+        "status": "BLOCKED_PENDING_SAME_PROVIDER_SERIES_AND_SCOPE_RECONCILIATION",
+        "finding": "USDC snapshots around Oct 26-27 cluster near $71B-$71.7B across Circle and third-party trackers, but the Oct 22 issuer circulation figure ($72B) conflicts with third-party market-cap estimates around $74B.",
+        "interpretation": "The apparent difference is likely affected by measurement definition, timing and source coverage. The third-party reported $2.6B decrease from Oct 7 to Oct 26 is a separate observation and does not identify destination or XRP flows.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
+        ],
+        "next_action": "Use a single provider and metric for daily time-series features; independently reconcile issuer mint/burn, total supply and chain-level distribution; keep the feature blocked until stable and reproducible."
       }
     ],
     "mission_priority": {
@@ -1485,19 +1552,19 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-VIDEO-IDENTITY-CI-DELTA-2026-10-27T221149Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2211Z.json",
-    "snapshot_blob_sha": "9604ac89fd89bb4ec8601426f2009dbe997e78c3",
-    "current_research_head_before_ledger_update": "c1e0e4a8ccbae8d0e99073986e9c39f5869ea9f0",
+    "snapshot_id": "USDC-SUPPLY-RECONCILIATION-2026-10-27T221313Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2213Z.json",
+    "snapshot_blob_sha": "ba2968fe2fb7dea6e36b069a2ef4fc22003f297b",
+    "current_research_head_before_ledger_update": "6ee801d55785e605c35b97ac65353e7c56b7e8ff",
     "current_research_checks": {
-      "last_verified_head": "44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2",
-      "tests": "PASS_145_TESTS_ON_PREVIOUS_HEAD",
-      "gate": "PASS_ON_PREVIOUS_HEAD",
-      "tests_run_id": 40592783577,
-      "gate_run_id": 40592783253,
+      "last_verified_head": "87003b6ff4c85c0f698c38199385538133be7403",
+      "tests": "PASS_145_TESTS",
+      "gate": "PASS",
+      "tests_run_id": 40593004800,
+      "gate_run_id": 40593004803,
       "current_ledger_update": "PENDING_VERIFICATION",
-      "as_of_utc": "2026-10-27T22:11:49Z",
-      "note": "This update creates a newer ledger-only commit; do not claim the new commit itself has passed CI until its run completes."
+      "as_of_utc": "2026-10-27T22:13:13Z",
+      "note": "This update creates a newer research-ledger commit; its exact-head CI must be checked separately."
     }
   },
   "sources": [
@@ -1986,6 +2053,48 @@
       "title": "Research PR #1195 fail-closed gate completed successfully",
       "accessed_at_utc": "2026-10-27T22:11:49Z",
       "note": "Fail-closed gate completed successfully for research branch head 44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2. It did not merge the PR and does not verify XRP prediction performance."
+    },
+    {
+      "id": "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+      "evidence_class": "SECONDARY_REPORT_OF_PUBLIC_AGGREGATOR_DATA",
+      "url": "https://www.coindaro.com/stablecoin-supply-drop-usdc-usdt-defillama/",
+      "title": "DefiLlama-based USDC and stablecoin supply report",
+      "published_at": "2026-10-26",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Report reads DefiLlama values at 06:54 UTC on Oct 26: USDC about $71.71B on Oct 26 versus $74.31B on Oct 7, a $2.6B decrease; total dollar stablecoin supply about $302.4B. Secondary reporting of aggregator data; does not show destination or XRP flows."
+    },
+    {
+      "id": "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+      "evidence_class": "SECONDARY_PUBLIC_TRACKER",
+      "url": "https://satoshimacro.com/tools/crypto/markets/stablecoin-supply/",
+      "title": "SatoshiMacro stablecoin supply dashboard",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Dashboard shows USDC about $71.26B as of Oct 27 and -5.5% over 30 days; total dollar stablecoin supply about $301.5B. It cites DefiLlama and refreshes twice daily; secondary tracker, not issuer reserve data."
+    },
+    {
+      "id": "SRC-USDCORG-COINGECKO-2026-10-27",
+      "evidence_class": "THIRD_PARTY_MARKET_DATA",
+      "url": "https://usdc.org/stats",
+      "title": "USDC circulating supply stats using CoinGecko",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Page reports 71,189,358,490 USDC units and market cap about $71.15B for an Oct 27 UTC observation, sourced to CoinGecko. This is third-party market data and not the same thing as an issuer reserve attestation."
+    },
+    {
+      "id": "SRC-STABLECOINBEAT-USDC-2026-10-26",
+      "evidence_class": "THIRD_PARTY_MARKET_DATA",
+      "url": "https://stablecoinbeat.com/charts/market-cap/",
+      "title": "Stablecoin Beat daily market-cap snapshot",
+      "published_at": "2026-10-26",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Tracker says USDC about $71.2B and total stablecoin market about $299.9B as of Oct 26 15:40 UTC. It uses a par-value/market-cap series and should be compared only after metric scope and timing are aligned."
+    },
+    {
+      "id": "SRC-COINLORE-USDC-HIST-2026-10-22",
+      "evidence_class": "THIRD_PARTY_HISTORICAL_MARKET_CAP",
+      "url": "https://www.coinlore.com/coin/USD-Coin/historical-data",
+      "title": "CoinLore USDC historical market-cap table",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Historical table shows estimated USDC market cap about $74.0B on Oct 22 and $74.1B on Oct 23. This is a third-party price-times-supply estimate, not necessarily comparable to Circle's reported $72.0B circulation snapshot on Oct 22."
     }
   ],
   "limitations": [
@@ -2280,6 +2389,25 @@
         "main_modified": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:13:13Z",
+      "update_type": "APPEND_ONLY_USDC_CROSS_SOURCE_RECONCILIATION",
+      "snapshot_id": "USDC-SUPPLY-RECONCILIATION-2026-10-27T221313Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2213Z.json",
+      "snapshot_blob_sha": "ba2968fe2fb7dea6e36b069a2ef4fc22003f297b",
+      "details": "Added independent DefiLlama-based, CoinGecko-based, SatoshiMacro, Stablecoin Beat and CoinLore observations. Current Oct 26-27 readings broadly cluster around $71.0B-$71.7B, but the prior issuer-reported $72B Oct 22 value conflicts with third-party market-cap estimates near $74B. The earlier $1B issuer-page delta is not treated as a precise redemption estimate; the supply feature remains blocked. Research branch head 87003b6 passed 145 tests in 5.52s and its gate passed; this new snapshot/ledger update is newer.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "source_ids_unique": "PENDING_POST_WRITE_READBACK",
+        "cross_source_refs": "PENDING_POST_WRITE_READBACK",
+        "research_pr_1195_ci": "PASS_145_TESTS_ON_HEAD_87003b6",
+        "research_pr_1195_gate": "PASS_ON_HEAD_87003b6",
+        "model_feature_admission": "BLOCKED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
       }
     }
   ],
