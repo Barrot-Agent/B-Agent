@@ -415,3 +415,11 @@ Captured at **2026-10-27T17:02:57Z** using the session time source. The GitHub c
 4. Continue source-backed entity/flow research, especially actual USDC-on-XRPL activity versus XRP bridge/DEX usage, current SBI/RLUSD deployment evidence, and the unresolved original exact phrases.
 
 No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred in this run.
+
+
+### Run 12 verification closure — 2026-10-27T17:06:04Z
+
+- Main advanced from `97a937af5119345dd2e625b2d19670e2e75e1338` to `042e66ff2e79b3b301250be6e691b1c42dfd1561` by one commit that changed only `web/paper_trading_log.jsonl` (+1 generated record). The current signal blob and merge-queue workflow blob are unchanged.
+- Research PR #1170 head `d716260148624b419704a6aa6e84897b71ecfcd8` passed exact-head CI [40547263320](https://github.com/Barrot-Agent/B-Agent/actions/runs/40547263320) and fail-closed gate [40547263344](https://github.com/Barrot-Agent/B-Agent/actions/runs/40547263344). Test count was not exposed. This head remains draft/unmerged and is 92 commits behind current main.
+- The new main delta since the prior snapshot is generated paper-trading data only; no code/workflow fix reached main. Forecast remains `NOT_ISSUED`.
+- This verification-closure edit creates a new PR head; exact-head CI/gate must be checked again for the resulting commit. Do not transfer the above run results to that new head.
