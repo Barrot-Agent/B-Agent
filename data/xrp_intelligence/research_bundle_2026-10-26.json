@@ -4,15 +4,15 @@
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
     "captured_at_utc": "2026-10-27T11:10:00.000Z",
-    "main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
+    "main_tip_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING: main latest_signal.json blob d193c5bf1a4da48d596d606e120335043ae3380d, signal timestamp 2026-10-27T10:30:31.099032Z; score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials and Groq HTTP 429, protocol/research headline contamination. Forecast NOT_ISSUED.",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: latest returned main latest_signal.json blob afa655928d35a8b4fac1ac9f7c5a50e6df93cdc1, timestamp 2026-10-27T12:41:39.854175Z, score 44/confidence 0, news score 88 from 11 academic/protocol headlines, missing GitHub model credentials and Groq HTTP 429. Artifact timestamp and main commit timestamp are later than the supplied session clock; retrieval timestamp unavailable. Forecast NOT_ISSUED.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
-    "latest_signal_timestamp": "2026-10-27T10:30:31.099032+00:00",
-    "latest_signal_blob_sha": "d193c5bf1a4da48d596d606e120335043ae3380d",
-    "main_tip_sha_last_explicitly_observed": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
-    "main_tip_sha_status": "Main tip 98db0f67cf5958bdf8a02123e8a2ea7261fe13ff observed at 2026-10-27T10:54:37Z; direct compare from research base a3e0f0198510634420f925eef8cea384aca51b12 shows 47 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. Current-main core CI not verified for this [skip ci] tip."
+    "latest_signal_timestamp": "2026-10-27T12:41:39.854175+00:00",
+    "latest_signal_blob_sha": "afa655928d35a8b4fac1ac9f7c5a50e6df93cdc1",
+    "main_tip_sha_last_explicitly_observed": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
+    "main_tip_sha_status": "Observed GitHub main tip 2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf; commit timestamp 2026-10-27T13:10:50Z is later than supplied session clock 2026-10-27T11:10:00Z. Connector retrieval timestamp is not exposed; clock ordering remains unresolved."
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -8380,11 +8380,11 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
-    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
-    "latest_main_commit_ci": "Latest observed main commit 98db0f67cf5958bdf8a02123e8a2ea7261fe13ff was created 2026-10-27T10:54:37Z and touches only three generated knowledge-base files. Commit message includes [skip ci]; no exact-SHA core CI run was returned. Main core CI is not verified for this tip.",
+    "main_tip_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
+    "latest_main_commit_message": "Paper trade cycle [skip ci]",
+    "latest_main_commit_ci": "Latest observed main tip 2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf was created 2026-10-27T13:10:50Z and touches only web/paper_trading_log.jsonl. Commit message includes [skip ci]; exact-SHA core CI is not verified. Commit timestamp is ahead of the supplied session clock; retrieval timestamp unavailable.",
     "current_signal": {
-      "timestamp": "2026-10-27T10:30:31.099032+00:00",
+      "timestamp": "2026-10-27T12:41:39.854175+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -8393,10 +8393,11 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "d193c5bf1a4da48d596d606e120335043ae3380d",
-      "retrieved_at_utc": "2026-10-27T11:07:00.000Z",
-      "age_minutes_at_retrieval": 36.5,
-      "disposition": "INVALID_FOR_FORECASTING; confidence zero, providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
+      "blob_sha": "afa655928d35a8b4fac1ac9f7c5a50e6df93cdc1",
+      "retrieved_at_utc": null,
+      "age_minutes_at_retrieval": null,
+      "retrieval_time_exposed": false,
+      "disposition": "INVALID_FOR_FORECASTING; confidence zero, providers unavailable, academic/protocol headline contamination, and timestamp is later than the supplied session clock. No directional forecast issued."
     },
     "legacy_accuracy": {
       "checked_count": 1612,
@@ -8525,7 +8526,7 @@
         "mitigation_scope": "PR #1188 fixes deterministic summary fallback only; it does not change workflow's direct-push behavior."
       }
     ],
-    "latest_signal_staleness": "Latest returned main artifact blob 6f588de8dd5684e64d5a69e6b95e0e2fc0288d8d has source timestamp 2026-10-27T11:28:59.234196Z, score 44, confidence 0, news score 88/11, missing GitHub model credentials and Groq HTTP 429. Its timestamp and main commit timestamp 12:05:39Z are later than the session clock 11:10Z; retrieval time is not exposed. Exclude from time-sensitive forecasting until clock order is reconciled.",
+    "latest_signal_staleness": "Latest returned main artifact blob afa655928d35a8b4fac1ac9f7c5a50e6df93cdc1 has source timestamp 2026-10-27T12:41:39.854175Z, score 44, confidence 0, news score 88/11, missing GitHub model credentials and Groq HTTP 429. Its timestamp and main commit timestamp 2026-10-27T13:10:50Z are later than supplied session clock 2026-10-27T11:10:00Z; retrieval time is not exposed. Exclude from time-sensitive forecasting until clock order is reconciled.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -8666,9 +8667,9 @@
     },
     "main_delta_since_research_base": {
       "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "current_main_tip_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+      "current_main_tip_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
       "comparison_status": "ahead",
-      "commits_ahead": 55,
+      "commits_ahead": 64,
       "changed_file_count": 14,
       "changed_files": [
         "AUTONOMOUS_DEPLOYMENT_REPORT.md",
@@ -8687,7 +8688,7 @@
         "web/signal_history_btc.jsonl"
       ],
       "code_or_workflow_files_changed": false,
-      "interpretation": "Direct compare from research base to latest main tip shows only generated runtime/log/signal/knowledge-base data and deployment report changed; no code/workflow files in this observed delta. This does not replace current-main integration CI."
+      "interpretation": "Direct compare from research base to current observed main tip shows only generated runtime/log/signal/knowledge-base data and deployment report changed; no code/workflow files in this observed delta. This does not replace current-main integration CI."
     },
     "signal_summary_failure": {
       "run_id": 40474891738,
@@ -8730,7 +8731,7 @@
       "ci_conclusion": "success; test count not exposed in retrieved job metadata",
       "fail_closed_gate_run": 40493439824,
       "gate_conclusion": "success",
-      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NONFINITE_AND_OUT_OF_RANGE_CONFIDENCE_GUARD_ADDED; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN",
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NONFINITE_AND_OUT_OF_RANGE_CONFIDENCE_GUARD_ADDED; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN; SUPERSEDED_BY_FRESH_MAIN_SUCCESSOR_PR1190; DO_NOT_MERGE_AT_STALE_HEAD",
       "merge_authorized": false
     },
     "open_pr_inventory_observation": {
@@ -8740,19 +8741,18 @@
       "action": "51 open PRs observed. Preserve duplicate/stale drafts; do not auto-close or merge. New Coinbase collateral evidence added to the XRP research ledger; Termux receiver branch now has a redirect-identity regression fix and requires exact-head CI."
     },
     "current_signal_summary": {
-      "retrieved_at_utc": "2026-10-27T09:14:00Z",
-      "blob_sha": "e93e1cc5cf14cd27c66f3bf79cc7d82ebe90be61",
-      "source_signal_timestamp": "2026-10-27T08:38:05.688945+00:00",
+      "retrieved_at_utc": null,
+      "blob_sha": "1231c479e831f14fe531666df5d7de60ad8cbc1f",
+      "source_signal_timestamp": "2026-10-27T12:41:39.854175+00:00",
       "summary_mode_field_present": false,
       "forecast_status_field_present": false,
-      "interpretation": "Calls score 44 moderate and news score 88 high, infers positive technical interest despite confidence 0 and provider failures; invalid interpretation, not a forecast.",
-      "mitigation_pr": 1188,
-      "mitigation_state": "DRAFT_CI_PASS_NOT_EFFECTIVE_ON_MAIN"
+      "retrieval_time_exposed": false,
+      "interpretation": "Repeats score 44 and confidence 0, and describes academic/protocol headlines as positive technical interest. Invalid summary interpretation; not a forecast. Deterministic fallback is proposed in PR #1190 and not effective on main."
     },
     "latest_observed_main_signal": {
-      "source_id": "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027",
-      "blob_sha": "6f588de8dd5684e64d5a69e6b95e0e2fc0288d8d",
-      "signal_timestamp_utc": "2026-10-27T11:28:59.234196Z",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027-RUN",
+      "blob_sha": "afa655928d35a8b4fac1ac9f7c5a50e6df93cdc1",
+      "signal_timestamp_utc": "2026-10-27T12:41:39.854175Z",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -8761,30 +8761,28 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429"
       ],
-      "main_tip_sha_returned": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
-      "main_commit_timestamp_utc": "2026-10-27T12:05:39Z",
+      "main_tip_sha_returned": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
+      "main_commit_timestamp_utc": "2026-10-27T13:10:50Z",
       "session_clock_utc": "2026-10-27T11:10:00Z",
-      "retrieval_timestamp_exposed": false,
-      "clock_order_status": "UNRESOLVED; SOURCE AND COMMIT TIMESTAMPS ARE AHEAD OF SESSION CLOCK",
+      "retrieval_time_exposed": false,
+      "clock_order_status": "UNRESOLVED; SIGNAL AND COMMIT TIMESTAMPS ARE AHEAD OF SESSION CLOCK",
       "forecast_disposition": "NOT_ISSUED; EXCLUDE_FROM_TIME_SENSITIVE_EVALUATION_PENDING_RECHECK"
     },
-    "main_tip_sha_observed": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+    "main_tip_sha_observed": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
     "main_tip_timestamp_conflict": {
       "session_clock_utc": "2026-10-27T11:10:00Z",
-      "github_commit_timestamp_utc": "2026-10-27T12:05:39Z",
+      "github_commit_timestamp_utc": "2026-10-27T13:10:50Z",
+      "latest_signal_timestamp_utc": "2026-10-27T12:41:39.854175Z",
       "retrieval_timestamp_exposed": false,
-      "disposition": "DO_NOT_INFER_WALL_CLOCK_ORDER_FROM_COMMIT_METADATA; RECHECK ON NEXT RUN"
+      "disposition": "UNRESOLVED_CROSS_SYSTEM_CLOCK_ORDER; DO NOT INFER WALL-CLOCK ORDER FROM GIT COMMIT METADATA"
     },
     "github_clock_consistency_observation": {
       "session_clock_utc": "2026-10-27T11:10:00Z",
-      "latest_observed_main_commit_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
-      "main_commit_timestamp_utc": "2026-10-27T12:05:39Z",
-      "latest_signal_timestamp_utc": "2026-10-27T11:28:59.234196Z",
-      "research_branch_commit_timestamp_utc": "2026-10-27T12:11:08Z",
-      "ci_run_created_at_utc": "2026-10-27T12:11:11Z",
+      "latest_observed_main_commit_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
+      "main_commit_timestamp_utc": "2026-10-27T13:10:50Z",
+      "latest_signal_timestamp_utc": "2026-10-27T12:41:39.854175Z",
       "retrieval_time_exposed": false,
-      "status": "UNRESOLVED_CLOCK_ORDER_CONFLICT; RECHECK_ON_NEXT_RUN; DO_NOT_USE_GITHUB_COMMIT_TIMESTAMPS_AS_INDEPENDENT_CLOCK",
-      "research_branch_latest_commit_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568"
+      "status": "UNRESOLVED_CLOCK_ORDER_CONFLICT; RECHECK_ON_NEXT_RUN; DO_NOT_USE_GITHUB_COMMIT_TIMESTAMPS_AS_INDEPENDENT_CLOCK"
     },
     "current_open_pr_snapshot": [
       {
@@ -8825,8 +8823,39 @@
         "base_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
         "status": "Earlier exact-head CI and fail-closed gate passed; current-main integration not verified",
         "merge_authorized": false
+      },
+      {
+        "pr": 1190,
+        "title": "Safety: fail closed on unavailable XRP sentiment (fresh main)",
+        "state": "OPEN_DRAFT",
+        "head_sha": "fe8c4649a0813aba0cb22da8050f4a8a651540cf",
+        "base_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
+        "ci_run": 40509822221,
+        "ci": "PASS; 129 tests in 4.99s",
+        "gate_run": 40509822091,
+        "gate": "PASS; no merge",
+        "status": "FRESH_MAIN_SUCCESSOR; EXACT_HEAD_CI_PASS; ONE_GENERATED_COMMIT_BEHIND_AT_CREATION; REVIEW_REQUIRED",
+        "merge_authorized": false
       }
-    ]
+    ],
+    "pr1190_validation": {
+      "head_sha": "fe8c4649a0813aba0cb22da8050f4a8a651540cf",
+      "branch": "safety/xrp-signal-integrity-current-main-20261027-1110z",
+      "branch_creation_base_sha": "438562a7e3f5b871ed637d46054b3b533af9eca5",
+      "pr_base_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
+      "files_changed": 10,
+      "ci_run": 40509822221,
+      "ci_conclusion": "success",
+      "tests_passed": 129,
+      "elapsed_seconds": 4.99,
+      "fail_closed_gate_run": 40509822091,
+      "gate_conclusion": "success",
+      "main_only_delta_since_branch_creation": [
+        "web/paper_trading_log.jsonl"
+      ],
+      "state": "OPEN_DRAFT_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; ONE_GENERATED_COMMIT_BEHIND_AT_PR_CREATION; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN",
+      "merge_authorized": false
+    }
   },
   "video_ingestion": {
     "creator": "Kamilah Stevenson",
@@ -8896,6 +8925,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Recheck the current main tip, latest_signal.json and latest_signal_summary.json using an independently consistent clock. Current returned signal timestamp 12:41:39Z and main commit timestamp 13:10:50Z are later than the supplied 11:10Z session clock; connector retrieval time is not exposed. Exclude this signal from time-sensitive forecast features until ordering is resolved.",
+      "status": "CLOCK_ORDER_CONFLICT_RECORDED; FORECAST_NOT_ISSUED; FOLLOW_UP_REQUIRED"
+    },
+    {
+      "priority": 0,
+      "action": "Independently review fresh-main PR #1190; exact-head CI run 40509822221 passed 129 tests in 4.99 seconds and fail-closed gate 40509822091 passed. Recheck current main/base and exact-head checks before any approval; keep draft and do not merge automatically.",
+      "status": "BRANCH_CHANGE_AND_EXACT_HEAD_CI_GATE_VERIFIED; REVIEW_REQUIRED; MAIN_UNCHANGED"
+    },
     {
       "priority": 0,
       "action": "Investigate the zero-job approval workflow run by reading check-suite/workflow provenance and repository Actions settings. Exact-head and main workflow file hashes match and the file declares workflow_dispatch only; run 40501781971 reports push/failure/zero jobs. Root cause remains unresolved; do not rerun blindly or treat as a passing gate.",
