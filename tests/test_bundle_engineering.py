@@ -299,3 +299,27 @@ def test_controller_recovers_once_from_objective_drift():
     assert result.status == "READY_FOR_EXECUTION_REVIEW"
     assert result.bundle["objective"] == expected_objective
 
+def test_controller_recovers_once_from_malformed_json():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    bundle = sample_bundle()
+    responses = iter(["{\"schema_version\": \"1.0\", \"objective\": \"", json.dumps(bundle)])
+    calls = {"count": 0}
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            calls["count"] += 1
+            if calls["count"] == 2:
+                assert "not valid JSON" in prompt
+            return next(responses)
+
+    result = BundleEngineeringController(FakeBrain()).run(
+        objective=bundle["objective"],
+        constraints=bundle["constraints"],
+    )
+
+    assert calls["count"] == 2
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+
