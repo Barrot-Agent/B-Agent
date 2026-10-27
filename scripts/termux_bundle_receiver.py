@@ -50,7 +50,8 @@ def validate_url(url: str) -> tuple[str, str]:
 def _fetch(url: str) -> dict[str, object]:
     request = Request(url, headers={"User-Agent": "Barrot-Termux-Bundle-Receiver/1.0", "Accept": "application/json"})
     with urlopen(request, timeout=20) as response:
-        validate_url(response.geturl())
+        if validate_url(response.geturl()) != validate_url(url):
+            raise BundleReceiveError("Redirect changed the pinned manifest identity.")
         raw = response.read(MAX_MANIFEST_BYTES + 1)
     if len(raw) > MAX_MANIFEST_BYTES:
         raise BundleReceiveError("Manifest exceeds the 2 MB limit.")
