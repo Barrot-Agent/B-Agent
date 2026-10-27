@@ -364,23 +364,32 @@ class BundleEngineeringController:
         return payload
 
     def _ask(self, prompt: str) -> dict[str, Any]:
-        raw = self.brain.think(prompt, system=self.SYSTEM)
+        raw: Any = None
         try:
+            raw = self.brain.think(prompt, system=self.SYSTEM)
             return self._parse_bundle(raw)
-        except BundleEngineeringError as exc:
-            if "invalid JSON" not in str(exc):
+        except (RuntimeError, BundleEngineeringError) as exc:
+            reason = str(exc).lower()
+            recoverable = (
+                "empty completion" in reason
+                or "invalid json" in reason
+                or "empty bundle content" in reason
+            )
+            if not recoverable:
                 raise
-            # One bounded regeneration avoids failing on a truncated or malformed
+            # One bounded regeneration avoids failing on an empty or malformed
             # model response while preserving the original prompt and its invariants.
-            recovery_prompt = f"""Your previous response was not valid JSON. Regenerate the complete answer for the
-original request below as exactly one valid JSON object. Do not use Markdown fences or prose.
-Keep the plan concise enough to fit in one response; do not omit required fields or truncate strings.
+            diagnostic = str(raw)[:8000] if raw is not None else "<empty model completion>"
+            recovery_prompt = f"""Your previous response was empty or was not valid JSON.
+Regenerate the complete answer for the original request below as exactly one valid JSON object.
+Do not use Markdown fences or prose. Keep the plan concise enough to fit in one response;
+do not omit required fields or truncate strings.
 
 Original request:
 {prompt}
 
-Invalid response to replace (diagnostic context only; do not copy malformed syntax):
-{str(raw)[:8000]}
+Previous response / diagnostic context (replace it; do not copy malformed syntax):
+{diagnostic}
 """
             recovered = self.brain.think(recovery_prompt, system=self.SYSTEM)
             return self._parse_bundle(recovered)
