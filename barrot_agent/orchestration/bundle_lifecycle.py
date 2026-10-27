@@ -193,9 +193,9 @@ def dispatch_bundle_tasks(
 
     latest = store.latest_task_states(work_id)
     completed = {task_id for task_id, record in latest.items() if is_complete(record)}
+    last_result: Any = next((latest[task_id].get("result") for task_id in reversed(list(task_by_id)) if task_id in completed and latest[task_id].get("result") is not None), None)
     executed: list[str] = []
     blocked: dict[str, str] = {}
-    last_result: Any = None
     remaining = {task["id"] for task in tasks} - completed
 
     # Iterate until no more dependency-ready work can be advanced.
@@ -248,6 +248,7 @@ def dispatch_bundle_tasks(
                     "commit_sha": commit.get("sha", ""),
                     "failure": cycle.get("failure"),
                     "depends_on": dependencies,
+                    "result": raw,
                 }
                 store.record_task_execution(work_id, task_id, evidence)
                 if is_complete(evidence):
