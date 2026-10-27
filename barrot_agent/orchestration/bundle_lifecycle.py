@@ -224,11 +224,13 @@ def dispatch_bundle_tasks(
             if any(dep not in completed for dep in dependencies):
                 continue
 
+            saved_payload = store.load(work_id) or {}
+            task_history = (saved_payload.get("task_states") or {}).get(task_id, [])
+            attempt_number = len(task_history) + 1 if isinstance(task_history, list) else 1
             store.record_task_execution(work_id, task_id, {
                 "status": "running",
                 "depends_on": dependencies,
-                "attempt": len(store.latest_task_states(work_id).get(task_id, {}).get("attempt", [])) + 1
-                if isinstance(store.latest_task_states(work_id).get(task_id, {}).get("attempt"), list) else 1,
+                "attempt": attempt_number,
             })
             try:
                 result = execute_task(task)
