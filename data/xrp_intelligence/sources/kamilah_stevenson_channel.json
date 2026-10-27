@@ -12,18 +12,20 @@
     "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
-    "identity_status": "PROBABLE_MATCH; TRANSCRIPT_NAME_VARIANT_UNRESOLVED",
+    "identity_status": "USER_CONFIRMED_TARGET_CHANNEL; TRANSCRIPT_NAME_VARIANT_UNRESOLVED",
     "identity_evidence": [
       "Public channel listing for Kamilah Stevenson points to this channel ID.",
       "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
       "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved.",
       "vidIQ's public channel-video results and exact title search resolve the previously unresolved title “XRP Got Everything We Waited For. So Why Isn’t It Soaring?” to canonical video ID vPebfa4Mdwo on channel UCqUPJMQdkCN6lsLVDnichPA.",
-      "vidIQ transcript for AJqjwT5ueG4 contains the speaker's self-introduction as “Camila Stevenson” at 0:15, while the channel is labeled “Kamilah Stevenson”; this is a real name-variant discrepancy requiring verification."
+      "vidIQ transcript for AJqjwT5ueG4 contains the speaker's self-introduction as “Camila Stevenson” at 0:15, while the channel is labeled “Kamilah Stevenson”; this is a real name-variant discrepancy requiring verification.",
+      "Prior user context confirms Kamilah Stevenson as the target creator/channel; this transcript's self-introduction as “Camila Stevenson” remains a spelling discrepancy and is not silently normalized."
     ],
     "caveats": [
       "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
       "Do not conflate this creator with other similarly named accounts without channel-ID verification.",
-      "Do not silently normalize Kamilah/Camila or Stephenson/Stevenson; preserve each source's exact spelling until identity is independently confirmed."
+      "Do not silently normalize Kamilah/Camila or Stephenson/Stevenson; preserve each source's exact spelling until identity is independently confirmed.",
+      "The target channel is user-confirmed, but the exact relationship between the channel display name “Kamilah Stevenson” and transcript self-introduction “Camila Stevenson” is unresolved."
     ]
   },
   "ingestion_policy": {
@@ -564,7 +566,7 @@
       "https://www.sbigroup.co.jp/news/2007/0216_349.html",
       "https://www.sbigroup.co.jp/news/2007/0521_852.html"
     ],
-    "last_updated_at_utc": "2026-10-27T02:08:17.234Z"
+    "last_updated_at_utc": "2026-10-27T02:10:03.805Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
@@ -987,6 +989,12 @@
       "type": "CHANNEL_SIZE_AND_INVENTORY_GAP",
       "summary": "vidIQ reported 1,239 total videos, 143,000 subscribers, 18,111,240 total views, and 80 videos published from 2026-09-26 through 2026-10-27. The 150-video recent-format snapshot is approximately 12.1% of that reported total; this is a partial snapshot, not full public-channel enumeration.",
       "caveat": "Counts are provider-reported and do not substitute for canonical enumeration across Videos, Shorts, live and archived streams."
+    },
+    {
+      "update_id": "VIDIQ-IDENTITY-CONTEXT-RECONCILIATION-20261027",
+      "updated_at_utc": "2026-10-27T02:10:03.805Z",
+      "type": "IDENTITY_PROVENANCE_RECONCILIATION",
+      "summary": "Preserved prior user confirmation of Kamilah Stevenson as the target channel while retaining the transcript's different self-introduction spelling, Camila Stevenson, as an unresolved source-level discrepancy. No name normalization performed."
     }
   ]
 }
