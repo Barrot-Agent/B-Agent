@@ -193,3 +193,22 @@ def test_dispatcher_blocks_dependents_when_prerequisite_fails(tmp_path):
     assert result["complete"] is False
     assert calls == ["task-a", "task-c"]
     assert "task-b" in result["blocked_tasks"]
+
+
+
+def test_dispatcher_increments_attempt_after_interrupted_failed_attempt(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    store.record_task_execution("bundle", "task-a", {"status": "failed", "reason": "transient"})
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: _complete_task_result(task["id"]),
+    )
+    assert result["complete"] is True
+    history = store.load("bundle")["task_states"]["task-a"]
+    running_records = [item for item in history if item.get("status") == "running"]
+    assert running_records[-1]["attempt"] == 2
