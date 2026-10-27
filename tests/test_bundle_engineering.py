@@ -347,3 +347,17 @@ def test_controller_recovers_once_from_empty_completion():
     assert calls["count"] == 2
     assert result.status == "READY_FOR_EXECUTION_REVIEW"
 
+def test_authoring_prompt_keeps_task_context_separate_from_exact_objective():
+    from barrot_agent.orchestration.bundle_engineering import build_bundle_authoring_prompt
+
+    prompt = build_bundle_authoring_prompt(
+        objective="Barrot live smoke test",
+        constraints=["Preserve the exact objective."],
+        task_context="Persist bundle lifecycle and execution outcome evidence.",
+        repository_context="scripts/barrot_agent.py",
+    )
+
+    assert "Create an executable, repository-grounded bundle for this objective:\nBarrot live smoke test" in prompt
+    assert "Persist bundle lifecycle and execution outcome evidence." in prompt
+    assert "Observed repository context" in prompt
+

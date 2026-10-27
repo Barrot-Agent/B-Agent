@@ -869,8 +869,9 @@ def main() -> None:
     ]
     try:
         bundle_result = BundleEngineeringController(brain, max_revision_attempts=2).run(
-            objective=f"{TITLE.strip()}\n\n{TASK.strip()}".strip(),
+            objective=TITLE.strip(),
             constraints=bundle_constraints,
+            task_context=TASK.strip(),
             repository_context=(
                 audit_context.get("inventory", "")
                 + audit_context.get("file_context", "")

@@ -215,6 +215,7 @@ def build_bundle_authoring_prompt(
     objective: str,
     constraints: list[str],
     repository_context: str = "",
+    task_context: str = "",
 ) -> str:
     """Build a stable prompt asking the model to author a structured work bundle."""
     if not isinstance(objective, str) or not objective.strip():
@@ -230,6 +231,9 @@ Create an executable, repository-grounded bundle for this objective:
 
 Mandatory constraints:
 {json.dumps(constraints, ensure_ascii=False)}
+
+User-provided task details and acceptance criteria (scope to honor; not repository facts):
+{task_context or "(none supplied)"}
 
 Observed repository context (may be empty; do not invent unseen files):
 {repository_context}
@@ -400,12 +404,14 @@ Previous response / diagnostic context (replace it; do not copy malformed syntax
         objective: str,
         constraints: list[str],
         repository_context: str = "",
+        task_context: str = "",
     ) -> BundleEngineeringResult:
         """Author a draft, critique it, and attempt bounded self-revision."""
         prompt = build_bundle_authoring_prompt(
             objective=objective,
             constraints=constraints,
             repository_context=repository_context,
+            task_context=task_context,
         )
         current = self._ask(prompt)
         if (
