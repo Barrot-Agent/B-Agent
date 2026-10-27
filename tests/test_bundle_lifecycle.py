@@ -107,3 +107,89 @@ def test_save_plan_preserves_execution_evidence_for_identical_bundle(tmp_path):
     payload = store.load("resume-me")
     assert payload["task_states"]["task-a"][-1]["status"] == "COMPLETE"
     assert payload["execution_evidence"][-1]["status"] == "COMPLETE"
+
+
+
+def _complete_task_result(task_id):
+    return {
+        "status": "complete",
+        "queue_advanced": True,
+        "repair_cycle": {
+            "cycle_id": "cycle-" + task_id,
+            "status": "complete",
+            "local_validation_passed": True,
+            "resolution_verified": True,
+            "commit": {"sha": "sha-" + task_id, "remote_verified": True},
+        },
+    }
+
+
+def test_dispatcher_respects_dependencies_and_records_evidence(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    bundle = {"tasks": [
+        {"id": "task-c", "depends_on": ["task-b"]},
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+    ]}
+    calls = []
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle=bundle,
+        execute_task=lambda task: (calls.append(task["id"]) or _complete_task_result(task["id"])),
+    )
+    assert result["complete"] is True
+    assert calls == ["task-a", "task-b", "task-c"]
+    states = store.latest_task_states("bundle")
+    assert all(states[task_id]["status"] == "complete" for task_id in calls)
+    assert states["task-a"]["result"]["repair_cycle"]["commit"]["sha"] == "sha-task-a"
+
+
+def test_dispatcher_resume_skips_completed_tasks(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    store.record_task_execution("bundle", "task-a", {
+        "status": "complete", "queue_advanced": True, "local_validation_passed": True,
+        "remote_verified": True, "resolution_verified": True, "result": _complete_task_result("task-a"),
+    })
+    calls = []
+    bundle = {"tasks": [
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+    ]}
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle=bundle,
+        execute_task=lambda task: (calls.append(task["id"]) or _complete_task_result(task["id"])),
+    )
+    assert result["complete"] is True
+    assert calls == ["task-b"]
+    assert result["last_result"]["repair_cycle"]["cycle_id"] == "cycle-task-b"
+
+
+def test_dispatcher_blocks_dependents_when_prerequisite_fails(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    calls = []
+    bundle = {"tasks": [
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+        {"id": "task-c", "depends_on": []},
+    ]}
+    def execute(task):
+        calls.append(task["id"])
+        if task["id"] == "task-a":
+            return {"status": "failed", "queue_advanced": False, "repair_cycle": {"status": "failed"}}
+        return _complete_task_result(task["id"])
+    result = dispatch_bundle_tasks(store=store, work_id="bundle", bundle=bundle, execute_task=execute)
+    assert result["complete"] is False
+    assert calls == ["task-a", "task-c"]
+    assert "task-b" in result["blocked_tasks"]
