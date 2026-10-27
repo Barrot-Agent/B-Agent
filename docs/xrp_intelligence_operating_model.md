@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 00:12:30 UTC  
+**Snapshot:** 2026-10-27 00:13:38 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest validated JSON shape before this snapshot: **51 source records, 24 claims, 45 evidence records, 6 research tracks, and a 22-node/27-edge graph**; the full reference check is rerun after the latest commits.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest JSON shape before this snapshot: **53 source records, 24 claims, 46 evidence records, 6 research tracks, and a 22-node/27-edge graph**; the full reference check is rerun after the latest commits.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -57,7 +57,7 @@ The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues w
 
 The latest main commit observed for this snapshot is `2bae7ccdfbec8f9536cb40950110c72e949f5073` (`chore: Barrot telemetry report`). At the latest main tip, the observed workflow-run query showed Pages build/deployment success only; no core CI run was observed for that exact main SHA. This is not evidence that the core suite passed on main. The signal artifact was re-fetched at 2026-10-27 00:11:06 UTC with blob SHA `a74f8cacf498ce6936d538a1cdc0925605379cb1` and timestamp 2026-10-26 23:25:41.820784 UTC, still reporting score 44/confidence 0 and provider failures. The current accuracy artifact reports 46.5% (749/1,612), but that metric is methodologically invalid. `web/signal_history.jsonl` returned an empty payload through the file connector even though the main commit diff contains many JSONL rows; treat the line count as unverified, not zero.
 
-**Research PR validation boundary:** PR #1170 head `0ec991026775903c7c718e65b39fef6636d070f6` passed CI run [40424225971](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225971) and fail-closed gate [40424225980](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225980), but those checks used stale base `e49431afe9801044b583abd0451f0d4d7416fc4d`; PR #1170 is now 9 commits behind current main and needs revalidation against current main. Its latest ledger update advanced the branch to `ded53d7e731ec41f7087889ba82029c9cfd3d183`; exact-head CI/gate for that update is pending.
+**Research PR validation boundary:** PR #1170 head `0ec991026775903c7c718e65b39fef6636d070f6` passed CI run [40424225971](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225971) and fail-closed gate [40424225980](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225980), but those checks used stale base `e49431afe9801044b583abd0451f0d4d7416fc4d`; PR #1170 is now 9 commits behind current main and needs revalidation against current main. Head `60e78875ea06821e3692543bb6512871545aabf5` passed 111 tests in 6.03 seconds and the fail-closed gate against stale base `e49431afe9801044b583abd0451f0d4d7416fc4d`. The subsequent research-ledger update commit `e506820929905c62db2e074627cb63b9f490f46d` was pending exact-head CI/gate at this snapshot.
 
 **Unresolved workflow anomaly:** run [40423949838](https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838) reported event `push` and failure for `.github/workflows/barrot-approve-pr.yml`, but its jobs endpoint returned zero jobs. The inspected workflow YAML on main and the research branch declares `workflow_dispatch` only. No job logs exist; root cause remains unresolved. It was not blindly rerun.
 
