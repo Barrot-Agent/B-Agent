@@ -6,7 +6,8 @@
   "creator": {
     "display_name": "Kamilah Stevenson",
     "alternate_spelling_seen_in_transcripts": [
-      "Camila Stevenson"
+      "Camila Stevenson",
+      "Camilla Stevenson"
     ],
     "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
@@ -15,7 +16,8 @@
     "identity_evidence": [
       "Public channel listing for Kamilah Stevenson points to this channel ID.",
       "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
-      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved."
+      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved.",
+      "vidIQ's public channel-video results and exact title search resolve the previously unresolved title “XRP Got Everything We Waited For. So Why Isn’t It Soaring?” to canonical video ID vPebfa4Mdwo on channel UCqUPJMQdkCN6lsLVDnichPA."
     ],
     "caveats": [
       "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
@@ -54,10 +56,10 @@
     "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_INDEXED_INVENTORY",
+    "status": "PARTIAL_INDEXED_INVENTORY; RECENT LONG-FORM/LIVE/SHORT SURFACES QUERIED; FULL ENUMERATION NOT VERIFIED",
     "completeness_verified": false,
     "discovered_total_count": null,
-    "indexed_seed_video_count": 10,
+    "indexed_seed_video_count": 15,
     "missing_work": [
       "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
       "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
@@ -65,7 +67,9 @@
       "Extract each explicit claim and forecast separately; preserve source wording and classify fact, interpretation, forecast, opinion, and promotional claim.",
       "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
       "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
-      "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
+      "Retrieve and hash transcripts for the newly indexed videos with transcript_capture.status=NOT_CAPTURED.",
+      "Enumerate all public uploads across channel videos, Shorts, live streams and archived lives; vidIQ's current listing calls are a partial snapshot, not proof of full enumeration.",
+      "Locate original SBI Holdings executive source for the 'XRP will get very expensive' paraphrase; preserve original wording and context before scoring any forecast."
     ]
   },
   "seed_videos": [
@@ -256,6 +260,181 @@
         "Verify the 100-million figure against timestamped, independently reproducible on-chain and bridge data."
       ],
       "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer."
+    },
+    {
+      "video_id": "vPebfa4Mdwo",
+      "title": "XRP Got Everything We Waited For. So Why Isn’t It Soaring?",
+      "canonical_url": "https://www.youtube.com/watch?v=vPebfa4Mdwo",
+      "published_date_reported": "2026-10-20",
+      "source": "vidIQ channel video listing and transcript",
+      "themes": [
+        "XRP price versus adoption",
+        "institutional demand",
+        "ETF flows",
+        "XRP versus Ripple corporate success",
+        "liquidity and float"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T01:05:00Z",
+        "view_count": 21280,
+        "like_count": 1039,
+        "comment_count": 131,
+        "duration": "PT1H7M44S",
+        "views_per_hour": 14.496
+      },
+      "transcript_capture": {
+        "language": "en",
+        "character_count": 65393,
+        "sha256": "357676d53174294bf1fdc21fda982fa3904bb45c7ec2cb948cfe54f792ccc827",
+        "captured_at_utc": "2026-10-27T01:05:00Z",
+        "provider": "vidIQ transcript tool",
+        "transcript_stored_in_repository": false
+      },
+      "claims_to_extract_and_test": [
+        "Creator argues that legal clarity, exchange relistings, ETF access and institutional adoption have not automatically produced a sustained XRP price increase.",
+        "Creator states that Ripple's corporate success and institutions using XRP are distinct from institutions needing to hold XRP.",
+        "Creator makes quantitative claims about long-term unmoved supply, ETF holdings and escrow; figures and definitions require independent point-in-time verification."
+      ],
+      "counter_hypotheses": [
+        "Adoption and infrastructure improvements may have delayed rather than absent price effects.",
+        "Macro liquidity, derivatives positioning, market-wide risk appetite and circulating float may dominate short-run price response.",
+        "XRPL activity can grow through USDC or other issued assets without proportional spot XRP demand."
+      ],
+      "claim_status": "TRANSCRIPT_CAPTURED_AND_HASHED; CLAIMS_PARAPHRASED; NUMERIC_CLAIMS_NOT_INDEPENDENTLY_VERIFIED"
+    },
+    {
+      "video_id": "DTMlC5DjtPU",
+      "title": "SBI's CEO Just Said XRP Will Get Very Expensive",
+      "canonical_url": "https://www.youtube.com/watch?v=DTMlC5DjtPU",
+      "published_date_reported": "2026-06-14",
+      "source": "vidIQ YouTube search and transcript",
+      "themes": [
+        "SBI Holdings leadership statements",
+        "Japan",
+        "XRP price prediction",
+        "US regulatory clarity"
+      ],
+      "transcript_capture": {
+        "language": "en",
+        "character_count": 716,
+        "sha256": "e5d8cbf11f7ee558ff3387af7c09673a4fa97b70eedebbf7a904a0ba212c6b0d",
+        "captured_at_utc": "2026-10-27T01:05:00Z",
+        "provider": "vidIQ transcript tool",
+        "transcript_stored_in_repository": false
+      },
+      "claims_to_extract_and_test": [
+        "The short transcript attributes a claim that the SBI Holdings CEO expects XRP to become very expensive.",
+        "The short transcript also attributes a claim that U.S. legislative clarity is important to institutional digital-asset settlement expansion."
+      ],
+      "required_verification": [
+        "Locate the original SBI Holdings CEO speech, interview, filing or official statement and exact date.",
+        "Do not treat the creator's paraphrase as a direct quotation or a probability-calibrated forecast."
+      ],
+      "claim_status": "SECONDARY_CLAIM_CAPTURED; ORIGINAL_EXECUTIVE_SOURCE_NOT_YET_LOCATED"
+    },
+    {
+      "video_id": "SYdQI_Hd8tI",
+      "title": "191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral",
+      "canonical_url": "https://www.youtube.com/watch?v=SYdQI_Hd8tI",
+      "published_date_reported": "2026-10-10",
+      "source": "vidIQ channel video listing and transcript",
+      "themes": [
+        "derivatives liquidations",
+        "XRP collateral eligibility",
+        "Ripple Prime",
+        "Japan institutional lending"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T01:05:00Z",
+        "view_count": 22296,
+        "like_count": 995,
+        "comment_count": 47,
+        "duration": "PT1H1M24S",
+        "views_per_hour": 5.238372
+      },
+      "transcript_capture": {
+        "language": "en",
+        "character_count": 59837,
+        "sha256": "37b1bb2791e72646e9dcc15a6b09552342de1a0b374ebe76c8899cb19f85ed22",
+        "captured_at_utc": "2026-10-27T01:05:00Z",
+        "provider": "vidIQ transcript tool",
+        "transcript_stored_in_repository": false
+      },
+      "claims_to_extract_and_test": [
+        "Creator reports roughly $1.05 billion in liquidations and about 191,000 traders liquidated over an approximately 24-hour window; validate the exact date, venue coverage and CoinGlass methodology.",
+        "Creator connects XRP collateral eligibility with institutional adoption and a Japan-based financial group's XRP lending activity."
+      ],
+      "verification_findings": [
+        "Coinbase Global Exchange's official help page lists XRP among assets eligible as cross-collateral; this confirms product eligibility, not actual balances posted by clients.",
+        "SBI VC Trade's public lending product accepts XRP from customers; that establishes a customer-facing crypto lending service, not a verified institutional bank/fund lending program.",
+        "Ripple Prime's official acquisition materials specifically describe RLUSD as collateral for prime-brokerage products; do not conflate RLUSD collateral with XRP collateral."
+      ],
+      "claim_status": "TRANSCRIPT_CAPTURED_AND_HASHED; PRODUCT_ELIGIBILITY_CORROBORATED; LIQUIDATION_TOTAL_AND_INSTITUTIONAL_USAGE_REQUIRE_TIME-ALIGNED_VERIFICATION"
+    },
+    {
+      "video_id": "M3SrCk61x88",
+      "title": "BlackRock Helped Rebuild Finance After the Last Crisis. Could XRP Be Part of the Next Reset?",
+      "canonical_url": "https://www.youtube.com/watch?v=M3SrCk61x88",
+      "published_date_reported": "2026-10-26",
+      "source": "vidIQ channel video listing and transcript",
+      "themes": [
+        "macro liquidity",
+        "Japan rates and FX",
+        "institutional collateral",
+        "XRP utility",
+        "financial-system stress"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T01:05:00Z",
+        "view_count": 1960,
+        "like_count": 317,
+        "comment_count": 52,
+        "duration": "PT1H1M3S",
+        "views_per_hour": 1960
+      },
+      "transcript_capture": {
+        "language": "en",
+        "character_count": 59139,
+        "sha256": "e7f31bfeae4d215e0a265d90f0fbfcf9bab46bc9acf58432c33b05a2e582737e",
+        "captured_at_utc": "2026-10-27T01:05:00Z",
+        "provider": "vidIQ transcript tool",
+        "transcript_stored_in_repository": false
+      },
+      "claims_to_extract_and_test": [
+        "Creator links XRP's near-term price to bond-market conditions, Japan and macroeconomic stress.",
+        "Creator states that trading firms can post XRP as collateral and that a major Japanese financial group is building XRP lending for banks and funds."
+      ],
+      "verification_findings": [
+        "XRP collateral eligibility on Coinbase Global Exchange is documented in official product help.",
+        "SBI VC Trade's public XRP lending product is confirmed, but the claimed bank/fund institutional program is not established by that product page.",
+        "Macro causal claims need time-aligned rate, FX, bond-yield, funding, basis, liquidation and XRP order-book data; narrative coincidence is not causal proof."
+      ],
+      "claim_status": "TRANSCRIPT_CAPTURED_AND_HASHED; CLAIMS_PARAPHRASED; INSTITUTIONAL_JAPAN_CLAIM_NOT_YET_CORROBORATED"
+    },
+    {
+      "video_id": "AJqjwT5ueG4",
+      "title": "The Biggest Payment Apps Are About To Offer XRP (here's what this means)",
+      "canonical_url": "https://www.youtube.com/watch?v=AJqjwT5ueG4",
+      "published_date_reported": "2026-10-25",
+      "source": "vidIQ channel video listing",
+      "themes": [
+        "payment apps",
+        "distribution",
+        "XRP access",
+        "retail demand"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T01:05:00Z",
+        "view_count": 13185,
+        "like_count": 735,
+        "comment_count": 66,
+        "duration": "PT11M11S"
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "next_action": "Retrieve transcript; extract exact named payment apps and distinguish XRP trading access from XRP payment/settlement use."
+      },
+      "claim_status": "METADATA_CAPTURED; CLAIMS_NOT_YET_EXTRACTED"
     }
   ],
   "required_cross_corroboration_domains": [
@@ -296,9 +475,20 @@
       "https://www.youtube.com/watch?v=8xiy8w2YlfY",
       "https://www.youtube.com/watch?v=pFru4idBTMA",
       "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
-      "https://www.youtube.com/watch?v=qtT2hLeFkM0"
+      "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx",
+      "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "https://www.coinbase.com/en-pt/international-exchange",
+      "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "https://www.sbivc.co.jp/services/lending",
+      "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/",
+      "https://www.sbigroup.co.jp/news/2007/0216_349.html",
+      "https://www.sbigroup.co.jp/news/2007/0521_852.html"
     ],
-    "last_updated_at_utc": "2026-10-26T23:35:00Z"
+    "last_updated_at_utc": "2026-10-27T01:05:00Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
@@ -345,6 +535,321 @@
         "The reserve sponsorship model itself has operational/security constraints and was subject to a disclosed Devnet vulnerability."
       ],
       "prediction_use": "Track amendment status, sponsor usage, new active accounts, fee/reserve sponsorship volumes, and market liquidity separately; no direct bullish inference."
+    },
+    {
+      "finding_id": "COINBASE-CIRCLE-USDC-ECONOMICS-001",
+      "claim": "Coinbase and Circle have a direct strategic/economic relationship around USDC.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_PARTNERSHIP; CURRENT_ECONOMIC_TERMS_REQUIRE_LATEST_FILINGS",
+      "corroborated_details": [
+        "Circle's 2023 announcement says Coinbase took an equity stake in Circle and the firms share reserve interest income based on platform-held USDC, with equal sharing of interest income from broader distribution and usage."
+      ],
+      "counterpoints": [
+        "The 2023 announcement does not by itself establish current ownership percentage or current contractual terms; recheck current filings for changes."
+      ],
+      "primary_sources": [
+        "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx"
+      ]
+    },
+    {
+      "finding_id": "CIRCLE-USDC-XRPL-001",
+      "claim": "Circle launched native USDC on the XRP Ledger on June 12, 2025.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_DEPLOYMENT; XRP_PRICE_IMPACT_UNPROVEN",
+      "corroborated_details": [
+        "Circle states USDC is natively available on XRPL mainnet and Circle Mint/APIs support it; no bridge is required to use native USDC on XRPL."
+      ],
+      "counterpoints": [
+        "USDC is an issued stablecoin and is not the XRPL native asset XRP. XRPL activity using USDC does not automatically create proportional XRP investment demand and may substitute for XRP in some payment paths."
+      ],
+      "primary_sources": [
+        "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+      ]
+    },
+    {
+      "finding_id": "COINBASE-XRP-COLLATERAL-001",
+      "claim": "XRP is listed as an eligible cross-collateral asset on Coinbase Global Exchange.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_PRODUCT_ELIGIBILITY; ACTUAL_CLIENT_USAGE_UNKNOWN",
+      "corroborated_details": [
+        "Coinbase's official cross-collateral help page explicitly lists XRP among accepted collateral assets in addition to USDC."
+      ],
+      "counterpoints": [
+        "Eligibility does not establish how much XRP clients post, collateral haircuts, utilization, limits, net demand or resulting spot-price effects. Product scope is Coinbase Global Exchange; do not silently generalize to every Coinbase venue or account."
+      ],
+      "primary_sources": [
+        "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work"
+      ]
+    },
+    {
+      "finding_id": "COINBASE-XRP-USDC-DERIVATIVES-001",
+      "claim": "Coinbase International Exchange lists XRP perpetual futures in a USDC-settled institutional derivatives venue.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_LISTED_PRODUCT; FLOW_AND_OPEN_INTEREST_NOT_CAPTURED",
+      "corroborated_details": [
+        "Coinbase's International Exchange product page lists XRP perpetual futures and states that markets are USDC-settled; access is restricted to eligible non-U.S. institutions/jurisdictions."
+      ],
+      "counterpoints": [
+        "A listing confirms market access, not current liquidity, open interest, institutional positioning or spot demand."
+      ],
+      "primary_sources": [
+        "https://www.coinbase.com/en-pt/international-exchange"
+      ]
+    },
+    {
+      "finding_id": "SBI-XRP-REMITTANCE-001",
+      "claim": "SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple announced expansion of XRP-bridged remittances to Philippines, Vietnam and Indonesia in September 2023.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_ANNOUNCED_SERVICE_SCOPE; CURRENT_ROUTE_VOLUMES_UNKNOWN",
+      "corroborated_details": [
+        "SBI's release says SBI VC Trade sends XRP in response to remittance requests and names XRP as a bridge currency in the described scheme."
+      ],
+      "counterpoints": [
+        "The release is historical and does not provide current route-level volume, share of all SBI remittances, current active status per corridor, or net XRP inventory/demand."
+      ],
+      "primary_sources": [
+        "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+      ]
+    },
+    {
+      "finding_id": "SBI-XRP-LENDING-SCOPE-001",
+      "claim": "SBI VC Trade's customer-facing lending service accepts XRP.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_RETAIL/CUSTOMER_LENDING_PRODUCT; INSTITUTIONAL_BANK_FUND_PROGRAM_NOT_CONFIRMED",
+      "corroborated_details": [
+        "SBI VC Trade's public lending page lists XRP among eligible assets; its 2021 release announced XRP support for VCTRADE LENDING."
+      ],
+      "counterpoints": [
+        "This is not evidence that SBI is lending XRP to banks/funds as described in the video. Counterparty type, outstanding balances, lending utilization, terms and institutional program status remain unknown."
+      ],
+      "primary_sources": [
+        "https://www.sbivc.co.jp/services/lending",
+        "https://www.sbigroup.co.jp/news/pr/2021/0204_12322.html"
+      ]
+    },
+    {
+      "finding_id": "SBI-RLUSD-JAPAN-001",
+      "claim": "SBI VC Trade began handling Ripple USD (RLUSD) in Japan on June 24, 2026.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_PRODUCT_LAUNCH; XRP_DEMAND_EFFECT_UNPROVEN",
+      "corroborated_details": [
+        "SBI's June 24, 2026 announcement says SBI VC Trade began handling RLUSD through VCTRADE."
+      ],
+      "counterpoints": [
+        "RLUSD adoption can strengthen Ripple's stablecoin business without necessarily requiring XRP as a holding asset; any XRP effect requires measured flow and inventory evidence."
+      ],
+      "primary_sources": [
+        "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+      ]
+    },
+    {
+      "finding_id": "SBI-XRPL-TOKENIZED-DEPOSITS-POC-001",
+      "claim": "SBI Ripple Asia announced a proof of concept for tokenized deposits/deposit-backed digital money using XRPL as a contemplated blockchain on February 26, 2026.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_POC_SCOPE; PRODUCTION_DEPLOYMENT_NOT_CONFIRMED",
+      "corroborated_details": [
+        "The announcement describes a conceptual proof of low-cost implementation using existing financial infrastructure, Money Tap and an SBI Ripple Asia token-issuance platform, with XRPL considered as the blockchain."
+      ],
+      "counterpoints": [
+        "A PoC or contemplated design is not a live production deployment; tokenized deposits do not inherently require XRP as the economic asset."
+      ],
+      "primary_sources": [
+        "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html"
+      ]
+    },
+    {
+      "finding_id": "RIPPLE-PRIME-RLUSD-COLLATERAL-001",
+      "claim": "Ripple's official Hidden Road acquisition announcement says RLUSD would be used as collateral across prime-brokerage products; the later close announcement says RLUSD was being used as collateral for some products.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_RLUSD_COLLATERAL; DOES_NOT_CONFIRM_XRP_COLLATERAL_AT_RIPPLE_PRIME",
+      "corroborated_details": [
+        "Ripple announced the $1.25 billion Hidden Road acquisition on April 8, 2025 and announced the close/rebrand as Ripple Prime on October 24, 2025. The close announcement refers to RLUSD as collateral and certain derivatives customers holding RLUSD balances."
+      ],
+      "counterpoints": [
+        "Do not substitute XRP for RLUSD in this claim. Ripple Prime's U.S. OTC spot product includes XRP and permits cross-margining of spot transactions/holdings with other portfolio products, but that alone does not prove XRP is an accepted collateral asset at Ripple Prime."
+      ],
+      "primary_sources": [
+        "https://ripple.com/ripple-press/ripple-acquires-prime-broker/",
+        "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/"
+      ]
+    },
+    {
+      "finding_id": "SBIC-HISTORICAL-IDENTITY-001",
+      "claim": "SBI Holdings used 'SBIC' as an abbreviation for SBI Capital Co., Ltd. in official 2007 releases.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_ONE_HISTORICAL_EXPANSION; USER'S_INTENDED_REFERENT_UNRESOLVED",
+      "corroborated_details": [
+        "A February 16, 2007 SBI Holdings release explicitly defines SBI Capital Co., Ltd. as 'SBIC'; a May 21, 2007 release describes the company as a buyout-investment JV involving SBI and Goldman Sachs."
+      ],
+      "counterpoints": [
+        "This proves a historical Japanese corporate use of the acronym, not that it is the intended meaning in the user's original phrase 'SBIC, ChatGPT SBIC'. Preserve alternative candidates until the original context is recovered."
+      ],
+      "primary_sources": [
+        "https://www.sbigroup.co.jp/news/2007/0216_349.html",
+        "https://www.sbigroup.co.jp/news/2007/0521_852.html"
+      ]
+    }
+  ],
+  "research_updates": [
+    {
+      "snapshot_id": "VIDIQ-XRP-2026-10-27-0105Z",
+      "captured_at_utc": "2026-10-27T01:05:00Z",
+      "capture_method": "vidIQ connected tools: public channel metadata, channel video listing, exact-title YouTube search and available public captions",
+      "inventory_scope": "Recent listing snapshots queried for long-form, Shorts and live formats; not a complete channel enumeration.",
+      "resolved_items": [
+        "The previously unresolved title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' resolves to video ID vPebfa4Mdwo.",
+        "Four available English transcript responses were hashed; full transcript text is not stored in this repository file."
+      ],
+      "relationship_graph_edges": [
+        {
+          "from": "Coinbase",
+          "relation": "equity stake and USDC reserve-income/distribution economics",
+          "to": "Circle",
+          "status": "PRIMARY_SOURCE_CONFIRMED",
+          "source_urls": [
+            "https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx"
+          ]
+        },
+        {
+          "from": "Circle",
+          "relation": "issues native USDC on",
+          "to": "XRP Ledger (XRPL)",
+          "status": "PRIMARY_SOURCE_CONFIRMED",
+          "source_urls": [
+            "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+          ]
+        },
+        {
+          "from": "Coinbase Global Exchange",
+          "relation": "lists XRP as eligible cross-collateral",
+          "to": "XRP",
+          "status": "PRODUCT_ELIGIBILITY_CONFIRMED; ACTUAL_USAGE_UNKNOWN",
+          "source_urls": [
+            "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work"
+          ]
+        },
+        {
+          "from": "Coinbase International Exchange",
+          "relation": "offers XRP perpetual futures settled in",
+          "to": "USDC",
+          "status": "PRODUCT_LISTING_CONFIRMED; LIQUIDITY/OI_NOT_CAPTURED",
+          "source_urls": [
+            "https://www.coinbase.com/en-pt/international-exchange"
+          ]
+        },
+        {
+          "from": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+          "relation": "announced XRP-bridged remittance corridors",
+          "to": "Ripple Payments",
+          "status": "HISTORICAL_PRIMARY_SOURCE_CONFIRMED; CURRENT_ROUTE_VOLUME_UNKNOWN",
+          "source_urls": [
+            "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+          ]
+        },
+        {
+          "from": "SBI VC Trade",
+          "relation": "launched handling of",
+          "to": "RLUSD",
+          "status": "PRIMARY_SOURCE_CONFIRMED_2026-06-24",
+          "source_urls": [
+            "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+          ]
+        },
+        {
+          "from": "SBI Ripple Asia",
+          "relation": "announced tokenized-deposit PoC considering",
+          "to": "XRPL",
+          "status": "POC_SCOPE_CONFIRMED; PRODUCTION_NOT_CONFIRMED",
+          "source_urls": [
+            "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html"
+          ]
+        },
+        {
+          "from": "Ripple Prime",
+          "relation": "documents prime-brokerage collateral use of",
+          "to": "RLUSD",
+          "status": "PRIMARY_SOURCE_CONFIRMED; DO_NOT_CONFLATE_WITH_XRP",
+          "source_urls": [
+            "https://ripple.com/insights/ripple-closes-hidden-road-acquisition/"
+          ]
+        }
+      ],
+      "competing_hypotheses": [
+        {
+          "id": "H1_ADOPTION_NOT_EQUAL_XRP_DEMAND",
+          "hypothesis": "Growth in Ripple corporate business, XRPL transactions, stablecoins or tokenized deposits does not necessarily produce proportional spot XRP demand.",
+          "tests": [
+            "Measure XRP-required versus XRP-optional payment routes; bridge asset inventory and turnover; on-ledger asset mix; fees/reserves; independent market response."
+          ],
+          "disconfirming_evidence": [
+            "Sustained independently measured growth in XRP inventory held for settlement/collateral, with time-aligned net spot demand and out-of-sample price impact."
+          ]
+        },
+        {
+          "id": "H2_DELAYED_FUNDAMENTAL_PASS_THROUGH",
+          "hypothesis": "Infrastructure and regulatory improvements may affect XRP price with a lag rather than immediately.",
+          "tests": [
+            "Pre-register event windows; compare matched controls and broad-market/Bitcoin factors; use walk-forward models and placebo dates."
+          ],
+          "disconfirming_evidence": [
+            "Repeated null/negative incremental price response after controls and across out-of-sample event windows."
+          ]
+        },
+        {
+          "id": "H3_MACRO_AND_POSITIONING_DOMINATE_SHORT_RUN",
+          "hypothesis": "Rates, USDJPY, global liquidity, risk appetite, funding/basis and liquidations may dominate short-horizon XRP price movement.",
+          "tests": [
+            "Timestamped synchronized rates/FX/spot/perpetual data, open interest, funding, liquidation and order-book depth; compare against simple BTC and market baselines."
+          ],
+          "disconfirming_evidence": [
+            "XRP-specific flow and adoption variables reliably improve out-of-sample performance after costs and macro/market controls."
+          ]
+        },
+        {
+          "id": "H4_COLLATERAL_ELIGIBILITY_IS_OPTIONALITY_NOT_FLOW",
+          "hypothesis": "Accepting XRP as collateral can create utility but is not itself evidence of actual use, net buying pressure or higher price.",
+          "tests": [
+            "Venue-specific accepted collateral, haircuts, caps, utilization and time series of posted XRP balances, if publicly available."
+          ],
+          "disconfirming_evidence": [
+            "Verified growth in posted XRP balances and repeatable incremental spot demand/market-depth effects."
+          ]
+        },
+        {
+          "id": "H5_USDC_ON_XRPL_HAS_AMBIGUOUS_XRP_EFFECT",
+          "hypothesis": "Native USDC may expand XRPL liquidity/activity while substituting for XRP in some transfer legs.",
+          "tests": [
+            "Measure USDC/XRP pair volumes, cross-currency pathfinding, bridge-asset use, transaction types and net XRP balances before/after deployment."
+          ],
+          "disconfirming_evidence": [
+            "Observed activity growth consistently requiring XRP bridge liquidity with no material substitution."
+          ]
+        }
+      ],
+      "open_unknowns": [
+        "Exact intended meaning of 'SBIC, ChatGPT SBIC' remains unresolved despite a confirmed historical SBI Capital expansion.",
+        "'ASK Coin' and 'actual capital' still require original phrase context.",
+        "Actual Coinbase XRP collateral balances/utilization are unknown.",
+        "The claim that Japanese institutions/banks/funds are building a dedicated XRP lending program is not established by the public SBI retail/customer lending page.",
+        "Current route-level XRP remittance volumes, XRP bridge-path share and causal spot-price effects are unknown."
+      ],
+      "platform_integration_status": {
+        "ChatGPT": "VERIFIED_CURRENT_ENVIRONMENT: GitHub and vidIQ tools were successfully invoked in this research run; this does not mean Barrot's Termux runtime is connected to them.",
+        "vidIQ": "VERIFIED_CURRENT_ENVIRONMENT: public channel listing, exact-title search and transcript calls succeeded.",
+        "Claude": "NOT_TESTED",
+        "Grok": "NOT_TESTED",
+        "Gemini": "NOT_TESTED",
+        "Copilot": "NOT_TESTED",
+        "Codex": "NOT_TESTED",
+        "HuggingFace": "REPOSITORY_DESIGN/EXTERNAL-SPACE ACCESS ONLY; CURRENT AUTHORIZED TEST NOT RUN THIS SNAPSHOT",
+        "Kaggle": "REPOSITORY WORKFLOW EXISTS; CURRENT AUTHORIZED TEST NOT RUN THIS SNAPSHOT",
+        "Databricks": "NOT_TESTED"
+      },
+      "sources": [
+        {
+          "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+          "type": "issuer_blog",
+          "date": "2026-10-16",
+          "note": "Circle-reported USDC metrics; treat as issuer-reported and methodology-dependent, not independent verification."
+        },
+        {
+          "url": "https://www.sbigroup.co.jp/news/2007/0216_349.html",
+          "type": "official_company_release",
+          "date": "2007-02-16",
+          "note": "Historical use of SBIC for SBI Capital Co., Ltd.; does not resolve user's intended referent."
+        }
+      ],
+      "status": "EXECUTED_PUBLIC_RESEARCH_SNAPSHOT; NOT_FULL_CHANNEL_INGESTION; NOT_A_PRICE_FORECAST"
     }
   ]
 }
