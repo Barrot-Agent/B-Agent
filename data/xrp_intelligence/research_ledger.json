@@ -200,6 +200,19 @@
         "source_ids": [
           "SRC-CIRCLE-USDC-ECONOMICS-2026"
         ]
+      },
+      {
+        "id": "STABLECOIN-COLLATERAL-008",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "CURRENT_ISSUER_DISCLOSURES_LOCATED; INDEPENDENT_RESERVE-REPORT_RECONCILIATION_PENDING",
+        "claim": "Circle's transparency page reports USDC circulation of USD 72.0B and reserves of USD 72.2B as of October 22, 2026, with monthly third-party assurance and reserve holdings separated from Circle's operating funds. Ripple's RLUSD transparency page reports USD 2,382.8M circulating and USD 2,528.0M in reserve funds as of October 22, 2026; the ratio calculated from those displayed balances is about 106.1%.",
+        "interpretation": "USDC and RLUSD are dollar-denominated reserve-backed stablecoins, not XRP. Their reserve balances, issuance/redemption flows, treasury composition and partner distribution economics can influence stablecoin liquidity and issuer revenues; they do not by themselves prove capital is entering XRP.",
+        "limits": "Figures are issuer-published dashboard values. Verify monthly attestation documents, measurement timestamps, reserve eligibility and reconciliation details before using them as model features. Dashboard values may update.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-ECONOMICS-2026"
+        ]
       }
     ],
     "relationship_graph": [
@@ -307,6 +320,15 @@
           "SRC-CIRCLE-BINANCE-2026"
         ],
         "status": "ANNOUNCED_2026-09-22; REALIZED DISTRIBUTION EFFECT NOT YET MEASURED"
+      },
+      {
+        "from": "Standard Custody & Trust Company / Ripple",
+        "relation": "publishes segregated reserve balances and monthly independent attestations for",
+        "to": "RLUSD",
+        "evidence_ids": [
+          "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026"
+        ],
+        "status": "ISSUER_DISCLOSURE_AS_OF_2026-10-22"
       }
     ],
     "competing_hypotheses": [
@@ -376,6 +398,20 @@
           "Issuer-reported transfer volume may include repeated transfers or trading activity; market-share definitions can differ; XRPL's share of USDC activity and incremental XRP acquisition are not established by these aggregate figures."
         ],
         "test_plan": "Compare stablecoin volume by chain, venue and issuer; separate transfer count, unique senders/receivers, exchange settlement, bridge/mint/redeem flows and net issuance; estimate whether changes predict marginal XRP demand after controlling for market beta, leverage and liquidity."
+      },
+      {
+        "id": "H6-COLLATERAL-FLOWS",
+        "hypothesis": "Stablecoin reserve assets and mint/redemption flows influence Circle/Ripple stablecoin liquidity, reserve income and distribution incentives, but are not equivalent to XRP investment flows.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-ECONOMICS-2026",
+          "SRC-COINBASE-Q2-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Reserve balances can rise while stablecoin circulation or XRP price falls; reserve assets are mostly dollar instruments, and stablecoin settlement can substitute for XRP in some use cases rather than increase XRP demand."
+        ],
+        "test_plan": "Track daily stablecoin circulation, reserves, net mint/redemption, reserve composition, issuer/partner distribution and chain-level activity separately; test lagged effects on XRPL activity and XRP market purchases while controlling for macro rates, crypto beta and derivatives leverage."
       }
     ],
     "market_observations": [
@@ -680,6 +716,24 @@
       "published_at": "2026-09-22",
       "accessed_at_utc": "2026-10-27T19:08:30Z",
       "note": "Official announcement of investment and five-year agreement; actual incremental USDC distribution effect remains to be measured."
+    },
+    {
+      "id": "SRC-CIRCLE-TRANSPARENCY-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle transparency and stability: USDC reserve balances and issuance/redemption",
+      "published_at": "2026-10-22 dashboard snapshot",
+      "accessed_at_utc": "2026-10-27T19:09:30Z",
+      "note": "Issuer-published dashboard reports $72.0B circulation and $72.2B reserves as of Oct 22, 2026, plus issuance/redemption windows and monthly third-party assurance."
+    },
+    {
+      "id": "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "title": "Ripple USD transparency reports",
+      "published_at": "2026-10-22 dashboard snapshot",
+      "accessed_at_utc": "2026-10-27T19:09:30Z",
+      "note": "Issuer-published dashboard reports $2,382.8M RLUSD circulation and $2,528.0M reserve funds as of Oct 22, 2026; monthly independent attestation reports are linked."
     }
   ],
   "limitations": [
@@ -714,6 +768,13 @@
       "update_type": "RESEARCH_ENRICHMENT",
       "details": "Added Circle's issuer-reported H1 2026 USDC scale metrics, the September 22, 2026 Binance investment/USDC distribution agreement, an evidence-linked relationship edge, and a competing distribution-economics hypothesis.",
       "validation": "JSON parse and evidence-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:09:30Z",
+      "update_type": "COLLATERAL_AND_CAPITAL_FLOW_ENRICHMENT",
+      "details": "Added current issuer-published USDC/RLUSD reserve balances, an explicitly derived RLUSD reserve-to-circulation ratio, evidence-linked reserve relationships and a competing collateral-flow hypothesis.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
       "no_forecast_issued": true
     }
   ]
