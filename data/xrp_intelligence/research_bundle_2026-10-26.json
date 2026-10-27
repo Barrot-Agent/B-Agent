@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T07:15:00Z",
+    "captured_at_utc": "2026-10-27T07:17:00Z",
     "main_tip_sha": "0190c81914f921455725e73add58d5527aae8148",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -49,7 +49,8 @@
       "XRP-C-ASK-COIN-ENTITY-AMBIGUITY-20261027",
       "XRP-C-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027",
       "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
-      "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027"
+      "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027",
+      "XRP-C-CIRCLE-CPN-MANAGED-PAYMENTS-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1389,9 +1390,10 @@
       "retrieved_at_utc": "2026-10-27T07:03:56Z",
       "sections": [
         "Circle announced a definitive agreement to acquire Singapore-based B2B cross-border payments platform Tazapay.",
-        "Circle's announcement says Tazapay brings more than 60 banking and fintech partners and more than 100 payout markets.",
-        "The acquisition was expected to close in 2027 subject to customary conditions and regulatory approvals; completion is not established by this announcement.",
-        "The announcement is evidence of Circle's planned payment-rail expansion, not evidence of XRP usage or realized payment flows."
+        "Circle's announcement reports more than $25 billion of annualized payment volume, 60+ banking and fintech partners, and local payout rails covering 100+ markets; the metrics are company-reported and not XRP-specific.",
+        "Circle states approximately 60% of Tazapay's transaction volume already includes stablecoins; the release's footnote limits the relevant stablecoin services to payment and conversion facilitation, not investment advice.",
+        "The acquisition was expected to close in 2027 subject to customary closing conditions and regulatory approvals; completion is not established by this announcement.",
+        "The announcement is evidence of Circle's planned payment-rail expansion, not evidence of XRP usage, realized post-acquisition flows or price impact."
       ]
     },
     {
@@ -1435,6 +1437,21 @@
         "Coinbase reported average USDC held in Coinbase products reached $20 billion in Q2 2026, more than 30% of all USDC in circulation at quarter-end.",
         "Coinbase said it captured approximately 50% of all USDC economics over the prior year; this is a company-reported characterization, not an independently reconstructed revenue share.",
         "These figures show Coinbase's strategic distribution and economic position in USDC, not a direct XRP flow or proof that USDC growth increases or decreases XRP demand."
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08",
+      "title": "Circle launches CPN Managed Payments for stablecoin settlement without direct asset management by partners",
+      "author_or_organization": "Circle Internet Group",
+      "source_type": "official_corporate_product_release",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-CPN-Managed-Payments-a-Full-Stack-Platform-for-Seamless-Stablecoin-Settlement/default.aspx",
+      "publication_date": "2026-04-08",
+      "retrieved_at_utc": "2026-10-27T07:17:00Z",
+      "sections": [
+        "Circle launched Circle Payments Network Managed Payments for PSPs, fintechs, banks and global enterprises that want stablecoin settlement while interacting in fiat and not directly holding or managing digital assets.",
+        "Circle says it manages USDC minting and burning, payment orchestration, compliance controls and blockchain infrastructure.",
+        "Circle describes a stack using payouts across 20+ blockchains and domestic payment rails connected to Circle Payments Network fiat payout corridors.",
+        "This confirms a managed stablecoin payment product and Circle's stated operating model; it does not prove XRP is never used by any intermediary or establish corridor-level XRP displacement."
       ]
     }
   ],
@@ -2566,7 +2583,7 @@
     },
     {
       "claim_id": "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
-      "statement": "Circle announced a definitive agreement on 2026-09-08 to acquire Tazapay, a cross-border payments platform described as having 60+ banking and fintech partners and 100+ payout markets. The agreement was expected to close in 2027 subject to approvals. This is a planned expansion of Circle's payments distribution, not a completed acquisition, an XRP integration, or evidence of realized USDC/XRP flows.",
+      "statement": "Circle announced a definitive agreement on 2026-09-08 to acquire Tazapay, reporting >$25B annualized payment volume, 60+ banking/fintech partners, 100+ payout markets and approximately 60% of Tazapay transaction volume already including stablecoins. These are company-reported operating metrics. The agreement was expected to close in 2027 subject to approvals. This is planned Circle payment-rail expansion, not a completed acquisition, an XRP integration, or evidence of realized USDC/XRP flows.",
       "domain": "payments_rails_and_corporate_strategy",
       "claim_type": "official_proposed_acquisition_with_completion_caveat",
       "source": "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
@@ -2576,18 +2593,19 @@
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED_ANNOUNCEMENT; CLOSING_AND_IMPLEMENTATION_UNVERIFIED",
-      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; CLOSING_STATUS_AND_REALIZED_FLOWS_REQUIRE_FOLLOWUP",
+      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; REPORTED_VOLUME_AND_STABLECOIN_SHARE_NOT_INDEPENDENTLY_RECONSTRUCTED; CLOSING_AND_REALIZED_FLOWS_REQUIRE_FOLLOWUP",
       "adversarial_status": "OPEN",
       "acceptance_status": "AGREEMENT_ANNOUNCED; NOT_TREATED_AS_CLOSED_OR_AS_XRP_DEMAND",
       "confidence": 0.98,
       "assumptions": [
         "Circle's announcement accurately describes the proposed transaction and Tazapay's network reach.",
-        "Partner counts and payout-market counts do not establish payment volumes, incremental adoption or asset-routing choice."
+        "Circle's reported volume, partner and stablecoin-share metrics are company-reported and do not establish XRP routing or net incremental volume.",
+        "Acquisition completion and post-close integration must be separately verified."
       ],
       "provenance": [
         "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
       ],
-      "timestamp": 1793084636
+      "timestamp": 1793085420
     },
     {
       "claim_id": "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027",
@@ -2613,6 +2631,31 @@
         "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027"
       ],
       "timestamp": 1793084636
+    },
+    {
+      "claim_id": "XRP-C-CIRCLE-CPN-MANAGED-PAYMENTS-20261027",
+      "statement": "Circle launched CPN Managed Payments on 2026-04-08 for PSPs, fintechs, banks and enterprises to access stablecoin settlement while remaining in fiat workflows; Circle says it manages USDC mint/burn, payment orchestration, compliance and blockchain infrastructure, with payout connectivity across 20+ blockchains and domestic rails. This confirms Circle's managed payment-rail strategy but does not prove that XRP is never used by intermediaries or establish XRP corridor displacement.",
+      "domain": "payments_rails_and_stablecoin_operating_model",
+      "claim_type": "official_product_launch_with_routing_limits",
+      "source": "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-CPN-Managed-Payments-a-Full-Stack-Platform-for-Seamless-Stablecoin-Settlement/default.aspx",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-CPN-MANAGED-PAYMENTS-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_OFFICIAL_PRODUCT_LAUNCH",
+      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; PARTNER_ADOPTION_AND_CORRIDOR_FLOWS_UNVERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "MANAGED_STABLECOIN_SERVICE_CONFIRMED; XRP_SUBSTITUTION_OR_COMPLEMENTARITY_UNTESTED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Circle's release accurately describes the product's intended operating model.",
+        "Product architecture and advertised rails do not reveal every downstream intermediary's asset routing."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
+      ],
+      "timestamp": 1793085420
     }
   ],
   "evidence": [
@@ -3880,7 +3923,7 @@
       "evidence_id": "XRP-E-CIRCLE-TAZAPAY-EXPANSION-20261027",
       "claim_id": "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
       "kind": "official_corporate_release",
-      "summary": "Circle announced a definitive agreement to acquire Tazapay, describing 60+ banking/fintech partners and 100+ payout markets; closing was expected in 2027 subject to approvals.",
+      "summary": "Circle announced a definitive agreement to acquire Tazapay, reporting >$25B annualized payment volume, 60+ banking/fintech partners, 100+ payout markets and approximately 60% of transaction volume including stablecoins; closing expected in 2027 subject to approvals.",
       "source_id": "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
       "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Expands-Global-Payments-Infrastructure-with-Agreement-to-Acquire-Singapore-Based-Cross-Border-Payments-Platform-Tazapay/",
       "status": "AGREEMENT_ANNOUNCED; CLOSING_NOT_VERIFIED",
@@ -3889,11 +3932,14 @@
         "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
       ],
       "details": {
+        "annualized_payment_volume_claimed_usd": ">25B (company-reported; as of July 31, 2026 per release footnote)",
         "banking_and_fintech_partners_claimed": ">60",
         "payout_markets_claimed": ">100",
+        "transaction_volume_including_stablecoins_claimed": "approximately 60%",
         "expected_closing": "2027 subject to customary conditions and regulatory approvals",
-        "realized_usdc_flows": "UNKNOWN",
-        "xrp_integration": "NOT_ESTABLISHED"
+        "realized_post_acquisition_flows": "UNKNOWN",
+        "xrp_integration": "NOT_ESTABLISHED",
+        "source_limit": "Single corporate release; stablecoin services footnote describes payment/conversion facilitation, not investment or advisory service."
       }
     },
     {
@@ -3960,6 +4006,36 @@
         "year_over_year_increase_usdc_rewards_sales_marketing_expense_usd": 45400000,
         "offset": "partially offset by lower rewards rate",
         "xrp_flow": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-CPN-MANAGED-PAYMENTS-20261027",
+      "claim_id": "XRP-C-CIRCLE-CPN-MANAGED-PAYMENTS-20261027",
+      "kind": "official_corporate_product_release",
+      "summary": "Circle's April 8, 2026 release says CPN Managed Payments lets partners access stablecoin settlement while remaining in fiat workflows and that Circle manages USDC mint/burn, orchestration, compliance and blockchain infrastructure.",
+      "source_id": "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-CPN-Managed-Payments-a-Full-Stack-Platform-for-Seamless-Stablecoin-Settlement/default.aspx",
+      "status": "SUPPORTED_PRODUCT_DESCRIPTION; PARTNER_ADOPTION_AND_XRP_ROUTING_UNKNOWN",
+      "independence": "single_primary_corporate_product_release",
+      "provenance": [
+        "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
+      ],
+      "details": {
+        "partner_types": [
+          "payment service providers",
+          "fintechs",
+          "banks",
+          "global enterprises"
+        ],
+        "circle_managed_functions": [
+          "USDC minting and burning",
+          "payment orchestration",
+          "compliance controls",
+          "blockchain infrastructure"
+        ],
+        "payout_connectivity_claimed": "20+ blockchains and domestic payment rails",
+        "xrp_usage": "NOT_ESTABLISHED",
+        "realized_corridor_volumes": "UNKNOWN"
       }
     }
   ],
@@ -4436,6 +4512,12 @@
       "question": "How do Coinbase-Circle USDC economics, Coinbase-held balances and reward costs change with reserve rates, USDC supply and distribution mix, and are any resulting effects measurable in XRP corridors?",
       "priority": "HIGH",
       "status": "BASELINE_Q2_2026_RECORDED; RATE_SENSITIVITY_AND_XRP_FLOW_LINK_UNKNOWN"
+    },
+    {
+      "question_id": "Q-CIRCLE-CPN-ROUTING-AND-XRP-SUBSTITUTION-20261027",
+      "question": "What post-launch CPN Managed Payments partners and corridors use USDC, and do controlled corridor data show XRP bridge use increasing, decreasing or unchanged?",
+      "priority": "HIGH",
+      "status": "PRODUCT_LAUNCHED; PARTNER-LEVEL ADOPTION_AND_XRP_ROUTING_UNKNOWN"
     }
   ],
   "relationship_graph": {
@@ -4738,6 +4820,14 @@
         "source_ids": [
           "SRC-EVERNORTH-424B3-CAPITAL-STRUCTURE-20261027",
           "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
+        ]
+      },
+      {
+        "id": "Circle Payments Network Managed Payments",
+        "type": "managed_stablecoin_payment_orchestration_product",
+        "status": "LAUNCHED_2026-04-08; CIRCLE_MANAGES_USDC_LIFECYCLE; PARTNER_ADOPTION_AND_XRP_ROUTING_UNKNOWN",
+        "source_ids": [
+          "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
         ]
       }
     ],
@@ -5273,6 +5363,28 @@
           "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
         ],
         "caveat": "Treasury XRP, cash-funded purchases, in-kind contributions and shares issued must be reconciled separately to calculate XRP per diluted share."
+      },
+      {
+        "source": "Circle",
+        "target": "Circle Payments Network Managed Payments",
+        "relationship_type": "OPERATES_MANAGED_STABLECOIN_PAYMENT_SERVICE",
+        "classification": "OFFICIAL_PRODUCT_LAUNCH",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
+        ],
+        "caveat": "Product description is not evidence of partner adoption volume or XRP routing."
+      },
+      {
+        "source": "Circle Payments Network Managed Payments",
+        "target": "USDC",
+        "relationship_type": "MANAGED_ISSUANCE_BURN_AND_SETTLEMENT_ASSET",
+        "classification": "OFFICIAL_PRODUCT_DESCRIPTION",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
+        ],
+        "caveat": "USDC use in the managed product does not establish that XRP is absent from every intermediary or alternative corridor."
       }
     ]
   },
@@ -5506,13 +5618,15 @@
       "status": "PLAUSIBLE_UNTESTED",
       "supporting_evidence": [
         "XRP-E-CIRCLE-TAZAPAY-EXPANSION-20261027",
-        "XRP-E-CIRCLE-USDC-XRPL"
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-CIRCLE-CPN-MANAGED-PAYMENTS-20261027"
       ],
       "contradicting_evidence": [],
       "required_tests": [
         "Verify closing and later integration milestones.",
         "Collect corridor-level payout volumes, settlement asset, liquidity-provider inventory, fees, settlement time and failed-payment rates.",
-        "Compare changes against control corridors and alternative stablecoin/fiat rails while controlling for macro and crypto-market conditions."
+        "Compare changes against control corridors and alternative stablecoin/fiat rails while controlling for macro and crypto-market conditions.",
+        "Measure CPN Managed Payments partner adoption and corridor settlement assets after launch; distinguish disclosed USDC settlement from any intermediary bridge-asset use."
       ],
       "falsification_conditions": [
         "The acquisition does not close.",
@@ -5521,7 +5635,8 @@
       ],
       "provenance": [
         "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08",
-        "SRC-CIRCLE-USDC-XRPL"
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
       ],
       "confidence": 0.65
     }
@@ -5654,7 +5769,7 @@
   "repository_audit": {
     "main_tip_sha": "0190c81914f921455725e73add58d5527aae8148",
     "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
-    "latest_main_commit_ci": "Main tip 0190c81914f921455725e73add58d5527aae8148 is a generated cross-analysis refresh marked [skip ci]; no core CI run was observed for this exact SHA. The current signal artifact remains stale at 2026-10-27T06:45:40.110346Z with confidence 0 and provider failures. Do not treat scheduled generated-data cycles as forecast validation.",
+    "latest_main_commit_ci": "Main tip 0190c81914f921455725e73add58d5527aae8148 is a generated cross-analysis refresh marked [skip ci]; no core CI run was observed for this exact SHA. Current main signal remains stale and invalid for forecasting.",
     "current_signal": {
       "timestamp": "2026-10-27T06:45:40.110346+00:00",
       "score": 44,
@@ -5666,8 +5781,8 @@
         "Groq HTTP 429 Too Many Requests"
       ],
       "blob_sha": "4d625f52356bbf80fe17d3f0bf942938779283fb",
-      "retrieved_at_utc": "2026-10-27T07:15:00Z",
-      "age_minutes_at_retrieval": 29.3,
+      "retrieved_at_utc": "2026-10-27T07:17:00Z",
+      "age_minutes_at_retrieval": 31.3,
       "disposition": "INVALID_FOR_FORECASTING; signal_text consists of academic/protocol headlines about XRPL consensus, message dissemination, multicast routing and gossip/network configuration; model sentiment unavailable."
     },
     "legacy_accuracy": {
@@ -5860,7 +5975,7 @@
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     },
-    "last_audit_at_utc": "2026-10-27T07:15:00Z",
+    "last_audit_at_utc": "2026-10-27T07:17:00Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE",
       "receiver_pr": 1182,
