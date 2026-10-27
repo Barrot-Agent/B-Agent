@@ -95,7 +95,7 @@ def test_duplicate_task_ids_are_rejected():
 def test_non_object_bundle_fails_closed():
     result = review_work_bundle("not-json-object")
     assert result.valid is False
-    assert result.quality_score == 75
+    assert result.quality_score == 0
     assert result.findings[0].code == "BUNDLE_NOT_OBJECT"
 
 
