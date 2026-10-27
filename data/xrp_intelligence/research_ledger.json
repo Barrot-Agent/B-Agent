@@ -16,10 +16,10 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T22:03:13Z",
+    "captured_at_utc": "2026-10-27T22:06:04Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
+      "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -65,6 +65,18 @@
           "head_sha": "e2defad51375a3dece0b2e3e9b64a3b1fabddd8f",
           "mergeable": true,
           "blocker": "Proposed fix branch is based on an older main; current main still fails on deploy_databricks.py path."
+        },
+        {
+          "number": 1220,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+          "title": "Safety: fail closed on unavailable XRP signals (fresh main)",
+          "state": "open",
+          "draft": true,
+          "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+          "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+          "mergeable": true,
+          "ci": "in_progress",
+          "gate": "success"
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -74,17 +86,17 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "message": "Cross-analysis refresh [skip ci]",
-        "authored_at_utc": "2026-10-27T21:52:06Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/26bc78368692aa4b4ef6e32a9464d1cb75f55fb6"
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-27T22:04:47Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
+        "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
         "main_commit": {
-          "message": "Cross-analysis refresh [skip ci]",
-          "authored_at_utc": "2026-10-27T21:52:06Z",
-          "url": "https://github.com/Barrot-Agent/B-Agent/commit/26bc78368692aa4b4ef6e32a9464d1cb75f55fb6"
+          "message": "Paper trade cycle [skip ci]",
+          "authored_at_utc": "2026-10-27T22:04:47Z",
+          "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
         },
         "main_branch_protected": true,
         "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
@@ -94,7 +106,7 @@
           "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
           "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
           "current_head_status": "NOT_VERIFIED",
-          "note": "The last recorded successful code CI predates current main. The intervening observed commits changed generated runtime/log/signal files only; the connector returned no status contexts for current main."
+          "note": "Last recorded successful code CI predates current main; current main changes since then are generated-data-only commits, and no status contexts were returned for current main."
         },
         "main_databricks_deploy": {
           "run_id": 40583993212,
@@ -168,11 +180,22 @@
         "note": "Validation applies to head d4fd1a before the later ledger-linking commit; later head must pass CI independently."
       },
       "main_commit_delta_since_last_observed": {
-        "previous_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
-        "commits_ahead": 6,
-        "changed_files": 13,
-        "changed_scope": "Generated runtime data, knowledge-base logs, signals and paper-trading log only; no code or workflow files in the observed diff.",
-        "finding": "Automated generated-data writes to main continue. Earlier non-fast-forward failures do not prove a concurrent-writer cause."
+        "previous_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
+        "commits_ahead": 1,
+        "changed_files": 1,
+        "changed_scope": [
+          "web/paper_trading_log.jsonl"
+        ],
+        "finding": "The latest main commit appends a BTC-USD paper-trading HOLD record; it does not change XRP model code or the XRP signal artifact."
+      },
+      "latest_research_branch_state": {
+        "branch": "research/xrp-ledger-20261027-1902z",
+        "head_before_ledger_update": "494a766495f0137f8538f6cfb75e9537f2a8918a",
+        "pr": 1195,
+        "status": "open_draft_diverged",
+        "ahead_by": 27,
+        "behind_by": 45,
+        "note": "Historical evidence and snapshots are preserved. Do not merge the stale branch; prepare a fresh-main successor only after artifact validation."
       }
     },
     "critical_engine_findings": [
@@ -327,6 +350,38 @@
         "consequence": "Mutable signal and simulation history continues to be committed directly to main, reducing separation between generated observations and reviewed code and complicating reproducible evaluation.",
         "limits": "The commit comparison establishes changed-file scope, not whether every generated value is valid or whether concurrent writers caused earlier push failures.",
         "next_action": "Create and test an idempotent append-only data branch or artifact-promotion path before changing any current writer; retain provenance and historical outcomes."
+      },
+      {
+        "id": "XRP-SIGNAL-ARTIFACT-INVALID-20261027T220604Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "critical",
+        "status": "OBSERVED_ON_MAIN; FRESH_MAIN_FIX_PROPOSED_IN_OPEN_DRAFT_PR_1220",
+        "files": [
+          {
+            "path": "web/latest_signal.json"
+          },
+          {
+            "path": "web/latest_signal_summary.json"
+          },
+          {
+            "path": "web/signal_accuracy.json"
+          },
+          {
+            "path": "scripts/emit_signal.py"
+          },
+          {
+            "path": "scripts/check_signal_accuracy.py"
+          }
+        ],
+        "finding": "The current main XRP signal artifact still reports score 44, confidence 0, news score 88 from 11 entries while the source field says the GitHub model token is missing and Groq returned HTTP 429. The headlines include academic/protocol research papers labeled bullish. The legacy accuracy artifact still reports 46.5% from 1,612 variable-horizon, mutable-outcome records.",
+        "consequence": "The score is not a valid directional forecast and the legacy accuracy percentage is not evidence of calibrated predictive skill.",
+        "proposed_fix": "Draft PR #1220 ports fail-closed sentiment handling, event-time/source-quality checks, immutable NOT_COMPARABLE legacy accuracy semantics, deterministic summary fallback, artifact-only summary/evaluation workflows and regression tests.",
+        "verification": "The fail-closed gate succeeded for PR #1220; exact-head CI was in progress at snapshot cutoff. No fix is treated as deployed.",
+        "source_ids": [
+          "SRC-REPO-PR-1220-2026-10-27",
+          "SRC-REPO-CI-1220-2026-10-27",
+          "SRC-REPO-GATE-1220-2026-10-27"
+        ]
       }
     ],
     "research_findings": [
@@ -1056,7 +1111,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. XRP derivatives open interest remains blocked pending contract-universe harmonization; the Circle USDC supply delta is only two issuer-dashboard snapshots and is not an XRP flow proxy.",
+      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. Current main sentiment is invalid under provider failure; XRP derivatives OI and the two-snapshot USDC supply delta remain blocked as model features.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -1125,7 +1180,10 @@
       "Track SBI VISA Crypto Card reward-conversion disclosures and distinguish selected-asset rewards from realized XRP market purchases.",
       "Capture Circle USDC circulation/reserves and XRPL-native USDC supply/transfer series at fixed UTC cutoffs; do not infer XRP flows from total USDC supply.",
       "Preserve PR #1195 but do not merge its stale branch; it is 44 commits behind observed main and 24 commits ahead, so validate all artifacts before a fresh-main successor.",
-      "Record that generated runtime/signal files continue to be committed directly to main; design a safe idempotent append-only persistence path before altering writers."
+      "Record that generated runtime/signal files continue to be committed directly to main; design a safe idempotent append-only persistence path before altering writers.",
+      "Verify completion and exact-head result of PR #1220 CI; keep the PR draft and unmerged until independent review.",
+      "Port the signal-integrity repair only through the fresh-main PR; do not treat provider-failure score 44/confidence 0 or legacy 46.5% accuracy as predictive evidence.",
+      "Design the append-only research-data/artifact promotion path before changing scheduled workflows that currently write generated data to main."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-27T21:05:14Z",
@@ -1202,11 +1260,11 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
+      "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
       "main_commit": {
-        "message": "Cross-analysis refresh [skip ci]",
-        "authored_at_utc": "2026-10-27T21:52:06Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/26bc78368692aa4b4ef6e32a9464d1cb75f55fb6"
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-27T22:04:47Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
       },
       "main_branch_protected": true,
       "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
@@ -1216,7 +1274,7 @@
         "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
         "current_head_status": "NOT_VERIFIED",
-        "note": "The last recorded successful code CI predates current main. The intervening observed commits changed generated runtime/log/signal files only; the connector returned no status contexts for current main."
+        "note": "Last recorded successful code CI predates current main; current main changes since then are generated-data-only commits, and no status contexts were returned for current main."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -1278,7 +1336,20 @@
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
         }
       ],
-      "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
+      "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run.",
+      "signal_integrity_pr_1220": {
+        "pr": 1220,
+        "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+        "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "ci_run_id": 40592404749,
+        "ci": "in_progress_at_snapshot",
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
+        "gate_run_id": 40592404758,
+        "gate": "success",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
+        "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+        "note": "Draft only. Gate success is not a test pass or approval to merge."
+      }
     },
     "market_data_quality_findings": [
       {
@@ -1334,9 +1405,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-ECOSYSTEM-DELTA-2026-10-27T220313Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2203Z.json",
-    "snapshot_blob_sha": "77babf3902d80f0ee91b72ccca0b619f8b6306a7",
+    "snapshot_id": "XRP-REPO-SAFETY-DELTA-2026-10-27T220604Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2206Z.json",
+    "snapshot_blob_sha": "e429ea0f71345c04d9f6dc8e5537477b6a83373d",
     "current_research_head_before_ledger_update": "e96f7d9ffb02157aa2435be854e94ff1a2fa753a",
     "current_research_checks": {
       "tests": "PENDING_FOR_CURRENT_HEAD",
@@ -1726,6 +1797,38 @@
       "title": "Circle public USDC circulation and supported-network snapshot",
       "accessed_at_utc": "2026-10-27T22:03:13Z",
       "note": "Circle's public page displayed $71.0B USDC in circulation as of October 26, 2026, and states native USDC support on 38 networks as of September 16, 2026, including XRPL. The USD reserve figure was not rendered in the capture. Treat as issuer-displayed data, not an independently reconstructed daily mint/burn series."
+    },
+    {
+      "id": "SRC-REPO-MAIN-DELTA-2026-10-27T2206Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "title": "Observed current main head: paper-trading log append",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "Compare from prior observed main 26bc783 to current main a371918 reports one additional commit, Paper trade cycle [skip ci], modifying web/paper_trading_log.jsonl only. No code/workflow change in this delta."
+    },
+    {
+      "id": "SRC-REPO-PR-1220-2026-10-27",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+      "title": "Fresh-main XRP signal-integrity safety PR",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "Draft PR #1220 was created from current main SHA a371918. It changes 10 files, preserves current bundle-engineering tests in CI, and remains unmerged. Exact-head CI was in progress at the captured checkpoint."
+    },
+    {
+      "id": "SRC-REPO-CI-1220-2026-10-27",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
+      "title": "PR #1220 exact-head CI run",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "GitHub Actions reported CI in progress for head 32699de5938559ee1080ed05dac91195d7efebd0 at the captured checkpoint. Do not mark tests passed until a completed successful result is observed."
+    },
+    {
+      "id": "SRC-REPO-GATE-1220-2026-10-27",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
+      "title": "PR #1220 fail-closed gate run",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "GitHub Actions reported Barrot Gated Merge (fail-closed) completed successfully for PR #1220. This gate did not merge the PR and does not substitute for CI or review."
     }
   ],
   "limitations": [
@@ -1954,6 +2057,24 @@
         "main_modified": false,
         "merge_performed": false,
         "ci_status": "PENDING_FOR_THIS_COMMIT"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:08:48Z",
+      "update_type": "APPEND_ONLY_REPOSITORY_SIGNAL_INTEGRITY_AND_SAFETY_PR_DELTA",
+      "snapshot_id": "XRP-REPO-SAFETY-DELTA-2026-10-27T220604Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2206Z.json",
+      "snapshot_blob_sha": "e429ea0f71345c04d9f6dc8e5537477b6a83373d",
+      "details": "Recorded current main SHA a371918 with a paper-trading-log-only commit after 26bc783. Captured invalid XRP signal and legacy accuracy status. Added fresh-main draft PR #1220 with the previously tested signal-integrity repair; fail-closed gate passed, exact-head CI remained in progress at capture time.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "unique_source_ids": "PENDING_POST_WRITE_READBACK",
+        "critical_finding_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "pr_1220_ci": "IN_PROGRESS_AT_CAPTURE",
+        "pr_1220_gate": "SUCCESS"
       }
     }
   ],
