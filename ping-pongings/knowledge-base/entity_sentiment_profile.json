@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1141,
+    "xrp_entries": 1142,
     "btc_entries": 1171
   },
-  "unique_entities_profiled": 969,
+  "unique_entities_profiled": 971,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 278,
-      "bullish": 178,
+      "total_mentions": 279,
+      "bullish": 179,
       "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.439,
+      "net_sentiment_score": 0.441,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 61,
-      "bullish": 43,
+      "total_mentions": 62,
+      "bullish": 44,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.541,
+      "net_sentiment_score": 0.548,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -5163,6 +5163,22 @@
       "example_headlines": [
         "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
         "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
+      ]
+    },
+    {
+      "entity": "Goldman Sachs",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
       ]
     },
     {
@@ -10815,6 +10831,34 @@
       ]
     },
     {
+      "entity": "Treasury Fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails"
+      ]
+    },
+    {
+      "entity": "Crypto Institutional Rails",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails"
+      ]
+    },
+    {
       "entity": "HANetf",
       "total_mentions": 1,
       "bullish": 1,
@@ -11526,20 +11570,6 @@
       ],
       "example_headlines": [
         "Irish Central Bank Fines Coinbase Unit \u20ac3.25 Million Over Customer Fund Safeguards"
-      ]
-    },
-    {
-      "entity": "Goldman Sachs",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "CLARITY hopes fade, BitMEX shuts as lawsuit looms: Hodler\u2019s Digest, July 26"
       ]
     },
     {

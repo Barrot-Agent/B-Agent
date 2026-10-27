@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1141,
+    "xrp_entries": 1142,
     "btc_entries": 1171
   },
-  "unique_pairs_found": 3142,
+  "unique_pairs_found": 3151,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -38,7 +38,7 @@
     {
       "entity_a": "SEC",
       "entity_b": "XRP",
-      "cooccurrence_count": 42,
+      "cooccurrence_count": 43,
       "example_headlines": [
         {
           "title": "Could Buying XRP Today Set You Up for Life? - The Motley Fool",
@@ -26284,6 +26284,105 @@
       "example_headlines": [
         {
           "title": "Morgan Stanley Launches \u2018Digital Asset Lab\u2019 To Test Wall Street Crypto Infrastructure",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Institutional Rails",
+      "entity_b": "Goldman Sachs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Institutional Rails",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Institutional Rails",
+      "entity_b": "Treasury Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Institutional Rails",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Goldman Sachs",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Goldman Sachs",
+      "entity_b": "Treasury Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Goldman Sachs",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "Treasury Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Treasury Fund",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Goldman Sachs Connects $100 Billion Treasury Fund To Crypto Institutional Rails",
           "asset": "XRP"
         }
       ]
