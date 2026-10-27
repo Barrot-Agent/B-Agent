@@ -265,7 +265,7 @@ def _send_groq_request(
             retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
             if retry_match:
                 retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
-                if 0 < retry_seconds <= 1200:
+                if 0 < retry_seconds <= 1800:
                     print(
                         f"Groq daily token quota reached; retrying once in {retry_seconds:.1f}s.",
                         file=sys.stderr,
