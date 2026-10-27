@@ -206,7 +206,7 @@ def review_work_bundle(bundle: Any) -> BundleReview:
 
     penalty = sum(SEVERITY_WEIGHT.get(item.severity, 1) for item in findings)
     score = max(0, 100 - penalty)
-    valid = not any(item.severity == "critical" for item in findings)
+    valid = not any(item.severity in {"critical", "high"} for item in findings)
     return BundleReview(valid, score, fingerprint, tuple(findings))
 
 
