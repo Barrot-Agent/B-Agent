@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:03:37.710Z",
+    "captured_at_utc": "2026-10-27T00:05:31.488Z",
     "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -136,6 +136,49 @@
       ]
     },
     {
+      "source_id": "SRC-BARROT-APPROVAL-WORKFLOW-20261027",
+      "title": "Barrot controlled PR approval workflow definition",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "workflow_configuration",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "publication_date": "observed 2026-10-27",
+      "sections": [
+        "workflow_dispatch-only trigger",
+        "contents read and pull-requests write",
+        "expected head SHA validation",
+        "approved label only; no merge"
+      ],
+      "relationships": [
+        {
+          "source_node": "Barrot controlled PR approval workflow",
+          "target_node": "Manual approval label",
+          "relationship_type": "CAN_APPLY_AFTER_VALIDATION",
+          "status": "WORKFLOW_DISPATCH_ONLY_IN_INSPECTED_YAML"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027",
+      "title": "Unexpected push-triggered approval workflow run with zero jobs",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_anomaly",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "event reported as push",
+        "conclusion failure",
+        "zero jobs returned"
+      ],
+      "relationships": [
+        {
+          "source_node": "Barrot controlled PR approval workflow",
+          "target_node": "Push event run",
+          "relationship_type": "UNEXPECTED_TRIGGER",
+          "status": "ROOT_CAUSE_UNRESOLVED"
+        }
+      ]
+    },
+    {
       "source_id": "SRC-BARROT-LATEST-SIGNAL",
       "title": "Barrot current latest signal artifact",
       "author_or_organization": "Barrot-Agent/B-Agent",
@@ -248,6 +291,48 @@
         "test_merge_queue_disabled.py added",
         "CI and fail-closed workflow passed on observed PR head",
         "not merged"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1170-CI-20261027",
+      "title": "CI run for XRP research bundle PR #1170 latest head",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423957351",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "CI test suite",
+        "latest PR head 4febf9db9222f86d9707214ace75561625416d08",
+        "completed successfully"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1170 head",
+          "target_node": "CI validation",
+          "relationship_type": "VALIDATED_BY",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1170-GATE-20261027",
+      "title": "Fail-closed gate run for XRP research bundle PR #1170",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_safety_gate_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423957548",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "fail-closed gate",
+        "merge disabled",
+        "latest PR head"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1170 head",
+          "target_node": "Fail-closed merge gate",
+          "relationship_type": "CHECKED_BY",
+          "status": "SUCCESS_MERGE_DISABLED"
+        }
       ]
     },
     {
@@ -776,6 +861,82 @@
   ],
   "claims": [
     {
+      "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
+      "statement": "The active Barrot Agent workflow grants contents, pull-requests, and issues write permissions while running the model-driven repair worker. The issue-label path is sender-gated to the repository owner or Barrot-Agent, but workflow_dispatch also runs the worker with task title/body inputs. This is a high-privilege automation surface that warrants least-privilege token scopes, sandbox review, and explicit branch-protection checks.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "confirmed_configuration_with_risk_assessment",
+      "source": "SRC-BARROT-AGENT-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
+      "supporting_evidence": [
+        "XRP-E-BARROT-AGENT-WRITE-PATH"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.96,
+      "assumptions": [
+        "Actual branch protection and repository access-control settings were not available in this inspection."
+      ],
+      "provenance": [
+        "SRC-BARROT-AGENT-WORKFLOW"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-BARROT-APPROVAL-WORKFLOW-ANOMALY",
+      "statement": "A GitHub Actions run associated with PR #1170 reported event=push and failure for .github/workflows/barrot-approve-pr.yml but returned zero jobs, while the inspected workflow YAML on main and the research branch declares only workflow_dispatch. The cause is unresolved; do not infer that approval logic executed and do not blindly rerun it.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "observed_workflow_anomaly",
+      "source": "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838",
+      "supporting_evidence": [
+        "XRP-E-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "OBSERVED_ANOMALY_ROOT_CAUSE_UNRESOLVED",
+      "independent_verification_status": "RUN_METADATA_AND_WORKFLOW_YAML_INSPECTED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "DO_NOT_RERUN_BLINDLY",
+      "confidence": 0.97,
+      "assumptions": [
+        "The workflow file inspected on main and branch matches the definition used by the anomalous run; run metadata and workflow YAML can disagree if historical definitions/events are involved."
+      ],
+      "provenance": [
+        "SRC-BARROT-APPROVAL-WORKFLOW-20261027",
+        "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027"
+      ],
+      "timestamp": 1793059531
+    },
+    {
+      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
+      "statement": "Circle's 2026 Q2 SEC filing reports distribution costs connected with Coinbase agreements of $324.6M for Q2 2026 and $655.3M for H1 2026, versus $332.3M and $635.5M in the corresponding 2025 periods. Coinbase's 2025 10-K separately reports a $417.7M increase in stablecoin revenue from higher average USDC balances held in Coinbase products and a $314.1M increase from higher average off-platform USDC balances. These filings confirm a material economic link, but the figures have different accounting definitions and must not be added together as if they were the same revenue stream.",
+      "domain": "corporate_strategy_and_stablecoin_economics",
+      "claim_type": "current_sec_reported_financial_metrics",
+      "source": "SRC-CIRCLE-10Q-2026Q2",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
+        "XRP-E-COINBASE-STABLECOIN-REVENUE-2025"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "SEC filings report accounting categories as defined by each company; do not sum across issuers or treat costs as net profit.",
+        "2026 H1/Q2 data is historical and does not predict future distribution payments."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-10Q-2026Q2",
+        "SRC-COINBASE-10K-2025"
+      ],
+      "timestamp": 1793055698
+    },
+    {
       "claim_id": "XRP-C-COINBASE-CIRCLE-ECONOMIC-TIES",
       "statement": "Coinbase and Circle have direct strategic and economic ties around USDC: Circle remains issuer, Coinbase has an equity stake, and their agreement shares revenue tied to USDC holdings/distribution.",
       "domain": "market_structure",
@@ -801,144 +962,6 @@
       "timestamp": 1793055698
     },
     {
-      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
-      "statement": "Circle announced native USDC on XRPL mainnet on 2025-06-12, with Circle Mint and APIs supporting the network; this is USDC issued on XRPL, not XRP itself.",
-      "domain": "stablecoins",
-      "claim_type": "corporate_and_protocol_fact",
-      "source": "SRC-CIRCLE-USDC-XRPL",
-      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
-      "supporting_evidence": [
-        "XRP-E-CIRCLE-USDC-XRPL",
-        "XRP-E-XRP-NATIVE-ASSET"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "SUPPORTED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.99,
-      "assumptions": [
-        "The issuer announcement is accurate for launch; current supply, activity, and liquidity must be separately measured."
-      ],
-      "provenance": [
-        "SRC-CIRCLE-USDC-XRPL",
-        "SRC-XRPL-TOKENS"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
-      "statement": "USDC availability or rising stablecoin activity on XRPL does not by itself prove increased net spot demand for XRP; the price effect depends on actual XRP bridge routing, inventory/collateral demand, fee/reserve needs, and market depth.",
-      "domain": "market_structure",
-      "claim_type": "testable_inference",
-      "source": "SRC-CIRCLE-USDC-XRPL",
-      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
-      "supporting_evidence": [
-        "XRP-E-USDC-XRP-DECOUPLING"
-      ],
-      "contradicting_evidence": [
-        "XRP-E-POTENTIAL-COMPLEMENTARITY"
-      ],
-      "derivation_status": "HYPOTHESIS",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.78,
-      "assumptions": [
-        "Measure XRPL token activity separately from XRP spot purchases, bridge paths, DEX routing, and inventory held by market makers."
-      ],
-      "provenance": [
-        "SRC-CIRCLE-USDC-XRPL",
-        "SRC-XRPL-XRP-OVERVIEW",
-        "SRC-XRPL-TOKENS"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
-      "statement": "SBI Group entities and Ripple publicly announced an XRP-enabled remittance service expansion to the Philippines, Vietnam, and Indonesia in 2023; this confirms an announced commercial relationship, not current transaction volume or price impact.",
-      "domain": "payments_and_institutional_adoption",
-      "claim_type": "historical_corporate_fact_with_limit",
-      "source": "SRC-SBI-XRP-REMIT",
-      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
-      "supporting_evidence": [
-        "XRP-E-SBI-XRP-REMIT"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "SUPPORTED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.98,
-      "assumptions": [
-        "The announcement describes the intended service at that date; present-day volumes and route composition remain unverified."
-      ],
-      "provenance": [
-        "SRC-SBI-XRP-REMIT"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-SBI-RLUSD-JAPAN",
-      "statement": "SBI VC Trade and Ripple announced a basic agreement for RLUSD distribution in Japan in 2025, and an official 2026 announcement states RLUSD handling began on SBI VC Trade; this is a stablecoin distribution link and not proof of increased XRP demand.",
-      "domain": "stablecoins_and_japan",
-      "claim_type": "corporate_fact_with_limit",
-      "source": "SRC-SBI-RLUSD-START",
-      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
-      "supporting_evidence": [
-        "XRP-E-SBI-RLUSD-START"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "SUPPORTED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.99,
-      "assumptions": [
-        "Measure RLUSD circulation, redemption, venue volumes, and any linked XRP bridge usage separately."
-      ],
-      "provenance": [
-        "SRC-SBI-RLUSD-MOU",
-        "SRC-SBI-RLUSD-START"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
-      "statement": "The intended referent of 'SBIC' in the phrase 'SBIC, ChatGPT SBIC' remains unresolved. Official evidence identifies Tokyo SBIC East Japan as a company explicitly using SBIC in its English name; SBI Holdings historically used 'SBIC' for a Tokyo-based SBI CAPITAL Co., Ltd. in a 2007 announcement; SBI Holdings separately lists SBI Capital, SBI Crypto, and SBI Ripple Asia as distinct group-company entries as of 2026-10-07; and SBI Holdings announced a separate SBI Capital Co., Ltd. in South Korea in 2021. None of these sources proves which entity the phrase denotes, or establishes an XRP link for the non-XRP investment entities.",
-      "domain": "entity_resolution",
-      "claim_type": "identity_ambiguity",
-      "source": "SRC-TOKYO-SBIC-PROFILE",
-      "source_location": "https://www.sbic.co.jp/company/profile/ ; https://www.sbicrypto.com/en/privacy/ ; https://www.sbigroup.co.jp/news/2025/1002_15808.html",
-      "supporting_evidence": [
-        "XRP-E-TOKYO-SBIC-IDENTITY",
-        "XRP-E-SBI-CRYPTO-IDENTITY",
-        "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
-        "XRP-E-SBI-GROUP-ENTITY-SEPARATION-2026",
-        "XRP-E-SBI-CAPITAL-KOREA-2021",
-        "XRP-E-SBI-CAPITAL-JAPAN-SBIC-2007"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "UNRESOLVED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.25,
-      "assumptions": [
-        "A context-specific audio/video/source occurrence is needed to resolve intended meaning."
-      ],
-      "provenance": [
-        "SRC-TOKYO-SBIC-PROFILE",
-        "SRC-SBI-CRYPTO-PROFILE",
-        "SRC-SBI-CRYPTO-IDENTITY",
-        "SRC-SBI-XRP-REMIT",
-        "SRC-SBI-GROUP-COMPANIES-2026-10-07",
-        "SRC-SBI-CAPITAL-KOREA-2021",
-        "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
-      ],
-      "timestamp": 1793059417
-    },
-    {
       "claim_id": "XRP-C-COINBASE-XRP-ACCESS",
       "statement": "Coinbase's own support page says XRP is supported on Coinbase Retail, Prime, and Custody, with jurisdiction restrictions including Japan, New York State, and Singapore; this is a platform-access fact, not a forecast of net inflows.",
       "domain": "exchange_positioning",
@@ -959,6 +982,64 @@
       ],
       "provenance": [
         "SRC-COINBASE-XRP-SUPPORT"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
+      "statement": "A Kamilah Stevenson video description published 2025-12-06 claims XRP was approved as acceptable collateral for federally regulated derivatives in the same class as gold, U.S. Treasuries and major FX pairs. The primary sources checked do not substantiate that specific claim: the CFTC's December 2025 pilot release names BTC, ETH and USDC, and CME's XRP futures are cash-settled; CME's acceptable-collateral page returned no XRP match. Keep the claim CHALLENGED pending product/FCM-specific rules; do not declare universal ineligibility from this search alone.",
+      "domain": "collateralization_and_derivatives",
+      "claim_type": "creator_claim_cross_corroboration",
+      "source": "KAMILAH_VIDEO_M8TmDXO7B-0",
+      "source_location": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "supporting_evidence": [
+        "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-CFTC-COLLATERAL-PILOT",
+        "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
+        "XRP-E-CME-ACCEPTABLE-COLLATERAL"
+      ],
+      "derivation_status": "CHALLENGED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.92,
+      "assumptions": [
+        "The indexed video description accurately represents the video's assertion; full transcript has not been captured.",
+        "Collateral eligibility may vary by clearinghouse, FCM, account type, and product."
+      ],
+      "provenance": [
+        "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
+        "SRC-CME-XRP-FUTURES-CASH-SETTLED",
+        "SRC-CME-ACCEPTABLE-COLLATERAL"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
+      "statement": "The repository's legacy 45.7% accuracy value (725/1588) is recorded in the artifact but is not a defensible out-of-sample skill estimate because the legacy evaluator used variable horizons and rewrote mutable history; it must not be described as calibrated forecast accuracy.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "metric_validity_assessment",
+      "source": "SRC-BARROT-PR-1165",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
+      "supporting_evidence": [
+        "XRP-E-LEGACY-ACCURACY-ARTIFACT",
+        "XRP-E-PR-1165-ROOT-CAUSE"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "A replacement metric requires immutable forecasts with fixed horizons, exact target times, a stable price source, baselines, and no look-ahead."
+      ],
+      "provenance": [
+        "SRC-BARROT-LEGACY-ACCURACY",
+        "SRC-BARROT-PR-1165"
       ],
       "timestamp": 1793055698
     },
@@ -988,18 +1069,19 @@
         "SRC-BARROT-PR-1165",
         "SRC-BARROT-LATEST-SIGNAL-20261026T232541Z"
       ],
-      "timestamp": 1793059347
+      "timestamp": 1793059531
     },
     {
-      "claim_id": "XRP-C-LEGACY-ACCURACY-INVALID",
-      "statement": "The repository's legacy 45.7% accuracy value (725/1588) is recorded in the artifact but is not a defensible out-of-sample skill estimate because the legacy evaluator used variable horizons and rewrote mutable history; it must not be described as calibrated forecast accuracy.",
-      "domain": "prediction_engine_integrity",
-      "claim_type": "metric_validity_assessment",
-      "source": "SRC-BARROT-PR-1165",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1165",
+      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
+      "statement": "The active main-branch merge-queue workflow is manually dispatchable, grants contents and pull-request write permissions, exposes a mode that processes every open PR, and can update branches and call the merge API. The workflow does not explicitly query draft status or review-decision/approval fields in the PR metadata it fetches, so it lacks a visible explicit approval gate at workflow level; GitHub branch protection or merge rules may still block a merge. Do not trigger this workflow until gates are independently verified. The GitHub rulesets collection also returned one branch-target ruleset with enforcement disabled; the branch-protection endpoint was inaccessible (403), so effective branch protection remains unverified.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "confirmed_configuration_with_risk_assessment",
+      "source": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
       "supporting_evidence": [
-        "XRP-E-LEGACY-ACCURACY-ARTIFACT",
-        "XRP-E-PR-1165-ROOT-CAUSE"
+        "XRP-E-MERGE-QUEUE-WRITE-PATH",
+        "XRP-E-PR-1168-DISABLED-FIX",
+        "XRP-E-BRANCH-RULESET-DISABLED-20261027"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -1008,11 +1090,43 @@
       "acceptance_status": "UNRESOLVED",
       "confidence": 0.98,
       "assumptions": [
-        "A replacement metric requires immutable forecasts with fixed horizons, exact target times, a stable price source, baselines, and no look-ahead."
+        "Repository branch-protection/ruleset configuration was not inspected in this run; do not assume missing protections.",
+        "The observed disabled ruleset is not evidence that branch protection is absent; the separate branch-protection endpoint was inaccessible to the connected integration."
       ],
       "provenance": [
-        "SRC-BARROT-LEGACY-ACCURACY",
-        "SRC-BARROT-PR-1165"
+        "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
+        "SRC-BARROT-PR-1168",
+        "SRC-BARROT-RULESET-STATUS-20261027T000154Z"
+      ],
+      "timestamp": 1793059347
+    },
+    {
+      "claim_id": "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
+      "statement": "If OUSD's shared reserve-income model is deployed at scale and Coinbase participates while retaining its Circle equity/revenue-sharing relationship, this may represent portfolio diversification or competitive coexistence that changes stablecoin distribution incentives; it does not establish a direct XRP price effect.",
+      "domain": "corporate_strategy_and_stablecoins",
+      "claim_type": "testable_corporate_strategy_hypothesis",
+      "source": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+      "source_location": "https://openusd.inc/",
+      "supporting_evidence": [
+        "XRP-E-OUSD-OFFICIAL-STATUS",
+        "XRP-E-COINBASE-CIRCLE-PRIMARY"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "HYPOTHESIS",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.62,
+      "assumptions": [
+        "Coinbase and SBI Holdings partner listing is current and accurate.",
+        "OUSD's live supply, actual distribution and reserve-sharing mechanics can be verified.",
+        "Current Coinbase-Circle agreement terms remain materially operative."
+      ],
+      "provenance": [
+        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
+        "SRC-OUSD-REUTERS",
+        "SRC-CIRCLE-COINBASE-AGREEMENT",
+        "SRC-COINBASE-USDC-INCENTIVES"
       ],
       "timestamp": 1793055698
     },
@@ -1046,85 +1160,87 @@
       "timestamp": 1793055698
     },
     {
-      "claim_id": "XRP-C-OUSD-COINBASE-CIRCLE-STRATEGY",
-      "statement": "If OUSD's shared reserve-income model is deployed at scale and Coinbase participates while retaining its Circle equity/revenue-sharing relationship, this may represent portfolio diversification or competitive coexistence that changes stablecoin distribution incentives; it does not establish a direct XRP price effect.",
-      "domain": "corporate_strategy_and_stablecoins",
-      "claim_type": "testable_corporate_strategy_hypothesis",
-      "source": "SRC-OUSD-OPENSTANDARD-OFFICIAL",
-      "source_location": "https://openusd.inc/",
+      "claim_id": "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
+      "statement": "The latest PR #1170 head 4febf9db9222f86d9707214ace75561625416d08 passed GitHub Actions CI run 40423957351 and fail-closed gate run 40423957548; the gate's job explicitly states merge is disabled. This verifies the tested code/data paths on that head, not live XRP prediction skill.",
+      "domain": "repository_validation",
+      "claim_type": "observed_ci_validation",
+      "source": "SRC-BARROT-PR1170-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423957351",
       "supporting_evidence": [
-        "XRP-E-OUSD-OFFICIAL-STATUS",
-        "XRP-E-COINBASE-CIRCLE-PRIMARY"
+        "XRP-E-PR1170-CI-GATE-EXACT-HEAD"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "OBSERVED_GITHUB_ACTIONS",
+      "adversarial_status": "NOT_ASSESSED",
+      "acceptance_status": "VALIDATION_ONLY_NOT_MERGE_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "CI run corresponds to exact PR head; tests validate code paths, not live-market accuracy."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-20261027",
+        "SRC-BARROT-PR1170-GATE-20261027"
+      ],
+      "timestamp": 1793059531
+    },
+    {
+      "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
+      "statement": "Bloomberg reported on 2025-04-30, citing unnamed sources, that Ripple offered $4-$5 billion for Circle and Circle rejected it; a June 2025 report then quoted Ripple CEO Brad Garlinghouse denying that Ripple pursued the acquisition and reported Circle said it was not for sale. The alleged offer is disputed reporting, not a confirmed transaction or partnership.",
+      "domain": "corporate_strategy_and_stablecoins",
+      "claim_type": "conflicting_media_reports_and_public_denial",
+      "source": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+      "source_location": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
+      "supporting_evidence": [
+        "XRP-E-RIPPLE-CIRCLE-BLOOMBERG-REPORT"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-RIPPLE-CIRCLE-DENIAL"
+      ],
+      "derivation_status": "DISPUTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.92,
+      "assumptions": [
+        "Reporting can be accurate about a proposal but the later denial and lack of public transaction filings must remain visible.",
+        "No acquisition should be inferred from these reports."
+      ],
+      "provenance": [
+        "SRC-RIPPLE-CIRCLE-BLOOMBERG",
+        "SRC-RIPPLE-CIRCLE-DENIAL"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
+      "statement": "SBI's public activity spans XRP-related remittance, RLUSD distribution, XRPL proof-of-concept work, and separate exploration of Visa and Fasset digital-payment/stablecoin relationships. This suggests a multi-rail strategy; it could complement XRP usage or substitute stablecoin/other rails for some flows. Net XRP impact is unknown without route-level data.",
+      "domain": "corporate_strategy_and_payment_rails",
+      "claim_type": "testable_strategic_inference",
+      "source": "SRC-SBI-VISA-MOU",
+      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-MULTI-RAIL-STRATEGY",
+        "XRP-E-SBI-REMIT-CUMULATIVE",
+        "XRP-E-SBI-RIPPLE-ASIA-POC",
+        "XRP-E-SBI-FASSET-MOU"
       ],
       "contradicting_evidence": [],
       "derivation_status": "HYPOTHESIS",
       "independent_verification_status": "UNASSESSED",
       "adversarial_status": "UNRESOLVED",
       "acceptance_status": "UNRESOLVED",
-      "confidence": 0.62,
+      "confidence": 0.72,
       "assumptions": [
-        "Coinbase and SBI Holdings partner listing is current and accurate.",
-        "OUSD's live supply, actual distribution and reserve-sharing mechanics can be verified.",
-        "Current Coinbase-Circle agreement terms remain materially operative."
+        "MOU and PoC announcements may not progress to commercial deployment.",
+        "SBI Group entities must be tracked separately; activity of one subsidiary does not establish activity of another."
       ],
       "provenance": [
-        "SRC-OUSD-OPENSTANDARD-OFFICIAL",
-        "SRC-OUSD-REUTERS",
-        "SRC-CIRCLE-COINBASE-AGREEMENT",
-        "SRC-COINBASE-USDC-INCENTIVES"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
-      "statement": "The active main-branch merge-queue workflow is manually dispatchable, grants contents and pull-request write permissions, exposes a mode that processes every open PR, and can update branches and call the merge API. The workflow does not explicitly query draft status or review-decision/approval fields in the PR metadata it fetches, so it lacks a visible explicit approval gate at workflow level; GitHub branch protection or merge rules may still block a merge. Do not trigger this workflow until gates are independently verified. The GitHub rulesets collection also returned one branch-target ruleset with enforcement disabled; the branch-protection endpoint was inaccessible (403), so effective branch protection remains unverified.",
-      "domain": "repository_security_and_change_control",
-      "claim_type": "confirmed_configuration_with_risk_assessment",
-      "source": "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
-      "supporting_evidence": [
-        "XRP-E-MERGE-QUEUE-WRITE-PATH",
-        "XRP-E-PR-1168-DISABLED-FIX",
-        "XRP-E-BRANCH-RULESET-DISABLED-20261027"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "SUPPORTED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.98,
-      "assumptions": [
-        "Repository branch-protection/ruleset configuration was not inspected in this run; do not assume missing protections.",
-        "The observed disabled ruleset is not evidence that branch protection is absent; the separate branch-protection endpoint was inaccessible to the connected integration."
-      ],
-      "provenance": [
-        "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
-        "SRC-BARROT-PR-1168",
-        "SRC-BARROT-RULESET-STATUS-20261027T000154Z"
-      ],
-      "timestamp": 1793059347
-    },
-    {
-      "claim_id": "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
-      "statement": "The active Barrot Agent workflow grants contents, pull-requests, and issues write permissions while running the model-driven repair worker. The issue-label path is sender-gated to the repository owner or Barrot-Agent, but workflow_dispatch also runs the worker with task title/body inputs. This is a high-privilege automation surface that warrants least-privilege token scopes, sandbox review, and explicit branch-protection checks.",
-      "domain": "repository_security_and_change_control",
-      "claim_type": "confirmed_configuration_with_risk_assessment",
-      "source": "SRC-BARROT-AGENT-WORKFLOW",
-      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-agent.yml",
-      "supporting_evidence": [
-        "XRP-E-BARROT-AGENT-WRITE-PATH"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "SUPPORTED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.96,
-      "assumptions": [
-        "Actual branch protection and repository access-control settings were not available in this inspection."
-      ],
-      "provenance": [
-        "SRC-BARROT-AGENT-WORKFLOW"
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-RLUSD-START",
+        "SRC-SBI-RIPPLE-ASIA-POC",
+        "SRC-SBI-VISA-MOU",
+        "SRC-SBI-FASSET-MOU"
       ],
       "timestamp": 1793055698
     },
@@ -1178,107 +1294,14 @@
       "timestamp": 1793055698
     },
     {
-      "claim_id": "XRP-C-SBI-MULTI-RAIL-STRATEGY",
-      "statement": "SBI's public activity spans XRP-related remittance, RLUSD distribution, XRPL proof-of-concept work, and separate exploration of Visa and Fasset digital-payment/stablecoin relationships. This suggests a multi-rail strategy; it could complement XRP usage or substitute stablecoin/other rails for some flows. Net XRP impact is unknown without route-level data.",
-      "domain": "corporate_strategy_and_payment_rails",
-      "claim_type": "testable_strategic_inference",
-      "source": "SRC-SBI-VISA-MOU",
-      "source_location": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "claim_id": "XRP-C-SBI-RLUSD-JAPAN",
+      "statement": "SBI VC Trade and Ripple announced a basic agreement for RLUSD distribution in Japan in 2025, and an official 2026 announcement states RLUSD handling began on SBI VC Trade; this is a stablecoin distribution link and not proof of increased XRP demand.",
+      "domain": "stablecoins_and_japan",
+      "claim_type": "corporate_fact_with_limit",
+      "source": "SRC-SBI-RLUSD-START",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
       "supporting_evidence": [
-        "XRP-E-SBI-MULTI-RAIL-STRATEGY",
-        "XRP-E-SBI-REMIT-CUMULATIVE",
-        "XRP-E-SBI-RIPPLE-ASIA-POC",
-        "XRP-E-SBI-FASSET-MOU"
-      ],
-      "contradicting_evidence": [],
-      "derivation_status": "HYPOTHESIS",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.72,
-      "assumptions": [
-        "MOU and PoC announcements may not progress to commercial deployment.",
-        "SBI Group entities must be tracked separately; activity of one subsidiary does not establish activity of another."
-      ],
-      "provenance": [
-        "SRC-SBI-XRP-REMIT",
-        "SRC-SBI-RLUSD-START",
-        "SRC-SBI-RIPPLE-ASIA-POC",
-        "SRC-SBI-VISA-MOU",
-        "SRC-SBI-FASSET-MOU"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
-      "statement": "Bloomberg reported on 2025-04-30, citing unnamed sources, that Ripple offered $4-$5 billion for Circle and Circle rejected it; a June 2025 report then quoted Ripple CEO Brad Garlinghouse denying that Ripple pursued the acquisition and reported Circle said it was not for sale. The alleged offer is disputed reporting, not a confirmed transaction or partnership.",
-      "domain": "corporate_strategy_and_stablecoins",
-      "claim_type": "conflicting_media_reports_and_public_denial",
-      "source": "SRC-RIPPLE-CIRCLE-BLOOMBERG",
-      "source_location": "https://www.bloomberg.com/news/articles/2025-04-30/ripple-is-said-to-have-offered-to-buy-stablecoin-rival-circle",
-      "supporting_evidence": [
-        "XRP-E-RIPPLE-CIRCLE-BLOOMBERG-REPORT"
-      ],
-      "contradicting_evidence": [
-        "XRP-E-RIPPLE-CIRCLE-DENIAL"
-      ],
-      "derivation_status": "DISPUTED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.92,
-      "assumptions": [
-        "Reporting can be accurate about a proposal but the later denial and lack of public transaction filings must remain visible.",
-        "No acquisition should be inferred from these reports."
-      ],
-      "provenance": [
-        "SRC-RIPPLE-CIRCLE-BLOOMBERG",
-        "SRC-RIPPLE-CIRCLE-DENIAL"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-KAMILAH-XRP-COLLATERAL-CLAIM",
-      "statement": "A Kamilah Stevenson video description published 2025-12-06 claims XRP was approved as acceptable collateral for federally regulated derivatives in the same class as gold, U.S. Treasuries and major FX pairs. The primary sources checked do not substantiate that specific claim: the CFTC's December 2025 pilot release names BTC, ETH and USDC, and CME's XRP futures are cash-settled; CME's acceptable-collateral page returned no XRP match. Keep the claim CHALLENGED pending product/FCM-specific rules; do not declare universal ineligibility from this search alone.",
-      "domain": "collateralization_and_derivatives",
-      "claim_type": "creator_claim_cross_corroboration",
-      "source": "KAMILAH_VIDEO_M8TmDXO7B-0",
-      "source_location": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
-      "supporting_evidence": [
-        "XRP-E-KAMILAH-COLLATERAL-VIDEO-CLAIM"
-      ],
-      "contradicting_evidence": [
-        "XRP-E-CFTC-COLLATERAL-PILOT",
-        "XRP-E-CME-XRP-FUTURES-CASH-SETTLED",
-        "XRP-E-CME-ACCEPTABLE-COLLATERAL"
-      ],
-      "derivation_status": "CHALLENGED",
-      "independent_verification_status": "UNASSESSED",
-      "adversarial_status": "UNRESOLVED",
-      "acceptance_status": "UNRESOLVED",
-      "confidence": 0.92,
-      "assumptions": [
-        "The indexed video description accurately represents the video's assertion; full transcript has not been captured.",
-        "Collateral eligibility may vary by clearinghouse, FCM, account type, and product."
-      ],
-      "provenance": [
-        "https://www.youtube.com/watch?v=M8TmDXO7B-0",
-        "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT",
-        "SRC-CME-XRP-FUTURES-CASH-SETTLED",
-        "SRC-CME-ACCEPTABLE-COLLATERAL"
-      ],
-      "timestamp": 1793055698
-    },
-    {
-      "claim_id": "XRP-C-COINBASE-CIRCLE-CURRENT-ECONOMICS",
-      "statement": "Circle's 2026 Q2 SEC filing reports distribution costs connected with Coinbase agreements of $324.6M for Q2 2026 and $655.3M for H1 2026, versus $332.3M and $635.5M in the corresponding 2025 periods. Coinbase's 2025 10-K separately reports a $417.7M increase in stablecoin revenue from higher average USDC balances held in Coinbase products and a $314.1M increase from higher average off-platform USDC balances. These filings confirm a material economic link, but the figures have different accounting definitions and must not be added together as if they were the same revenue stream.",
-      "domain": "corporate_strategy_and_stablecoin_economics",
-      "claim_type": "current_sec_reported_financial_metrics",
-      "source": "SRC-CIRCLE-10Q-2026Q2",
-      "source_location": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-      "supporting_evidence": [
-        "XRP-E-CIRCLE-COINBASE-CURRENT-PAYMENTS",
-        "XRP-E-COINBASE-STABLECOIN-REVENUE-2025"
+        "XRP-E-SBI-RLUSD-START"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -1287,12 +1310,98 @@
       "acceptance_status": "UNRESOLVED",
       "confidence": 0.99,
       "assumptions": [
-        "SEC filings report accounting categories as defined by each company; do not sum across issuers or treat costs as net profit.",
-        "2026 H1/Q2 data is historical and does not predict future distribution payments."
+        "Measure RLUSD circulation, redemption, venue volumes, and any linked XRP bridge usage separately."
       ],
       "provenance": [
-        "SRC-CIRCLE-10Q-2026Q2",
-        "SRC-COINBASE-10K-2025"
+        "SRC-SBI-RLUSD-MOU",
+        "SRC-SBI-RLUSD-START"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBI-XRP-REMIT-RELATIONSHIP",
+      "statement": "SBI Group entities and Ripple publicly announced an XRP-enabled remittance service expansion to the Philippines, Vietnam, and Indonesia in 2023; this confirms an announced commercial relationship, not current transaction volume or price impact.",
+      "domain": "payments_and_institutional_adoption",
+      "claim_type": "historical_corporate_fact_with_limit",
+      "source": "SRC-SBI-XRP-REMIT",
+      "source_location": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-XRP-REMIT"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The announcement describes the intended service at that date; present-day volumes and route composition remain unverified."
+      ],
+      "provenance": [
+        "SRC-SBI-XRP-REMIT"
+      ],
+      "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "statement": "The intended referent of 'SBIC' in the phrase 'SBIC, ChatGPT SBIC' remains unresolved. Official evidence identifies Tokyo SBIC East Japan as a company explicitly using SBIC in its English name; SBI Holdings historically used 'SBIC' for a Tokyo-based SBI CAPITAL Co., Ltd. in a 2007 announcement; SBI Holdings separately lists SBI Capital, SBI Crypto, and SBI Ripple Asia as distinct group-company entries as of 2026-10-07; and SBI Holdings announced a separate SBI Capital Co., Ltd. in South Korea in 2021. None of these sources proves which entity the phrase denotes, or establishes an XRP link for the non-XRP investment entities.",
+      "domain": "entity_resolution",
+      "claim_type": "identity_ambiguity",
+      "source": "SRC-TOKYO-SBIC-PROFILE",
+      "source_location": "https://www.sbic.co.jp/company/profile/ ; https://www.sbicrypto.com/en/privacy/ ; https://www.sbigroup.co.jp/news/2025/1002_15808.html",
+      "supporting_evidence": [
+        "XRP-E-TOKYO-SBIC-IDENTITY",
+        "XRP-E-SBI-CRYPTO-IDENTITY",
+        "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
+        "XRP-E-SBI-GROUP-ENTITY-SEPARATION-2026",
+        "XRP-E-SBI-CAPITAL-KOREA-2021",
+        "XRP-E-SBI-CAPITAL-JAPAN-SBIC-2007"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "UNRESOLVED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.25,
+      "assumptions": [
+        "A context-specific audio/video/source occurrence is needed to resolve intended meaning."
+      ],
+      "provenance": [
+        "SRC-TOKYO-SBIC-PROFILE",
+        "SRC-SBI-CRYPTO-PROFILE",
+        "SRC-SBI-CRYPTO-IDENTITY",
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-GROUP-COMPANIES-2026-10-07",
+        "SRC-SBI-CAPITAL-KOREA-2021",
+        "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
+      ],
+      "timestamp": 1793059417
+    },
+    {
+      "claim_id": "XRP-C-USDC-DOES-NOT-PROVE-XRP-DEMAND",
+      "statement": "USDC availability or rising stablecoin activity on XRPL does not by itself prove increased net spot demand for XRP; the price effect depends on actual XRP bridge routing, inventory/collateral demand, fee/reserve needs, and market depth.",
+      "domain": "market_structure",
+      "claim_type": "testable_inference",
+      "source": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "supporting_evidence": [
+        "XRP-E-USDC-XRP-DECOUPLING"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-POTENTIAL-COMPLEMENTARITY"
+      ],
+      "derivation_status": "HYPOTHESIS",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.78,
+      "assumptions": [
+        "Measure XRPL token activity separately from XRP spot purchases, bridge paths, DEX routing, and inventory held by market makers."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-XRP-OVERVIEW",
+        "SRC-XRPL-TOKENS"
       ],
       "timestamp": 1793055698
     },
@@ -1321,6 +1430,32 @@
         "SRC-CIRCLE-10Q-2026Q2"
       ],
       "timestamp": 1793055698
+    },
+    {
+      "claim_id": "XRP-C-USDC-NATIVE-ON-XRPL",
+      "statement": "Circle announced native USDC on XRPL mainnet on 2025-06-12, with Circle Mint and APIs supporting the network; this is USDC issued on XRPL, not XRP itself.",
+      "domain": "stablecoins",
+      "claim_type": "corporate_and_protocol_fact",
+      "source": "SRC-CIRCLE-USDC-XRPL",
+      "source_location": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-XRP-NATIVE-ASSET"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "UNASSESSED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The issuer announcement is accurate for launch; current supply, activity, and liquidity must be separately measured."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-USDC-XRPL",
+        "SRC-XRPL-TOKENS"
+      ],
+      "timestamp": 1793055698
     }
   ],
   "evidence": [
@@ -1338,6 +1473,27 @@
       ],
       "details": {
         "required_review": "Inspect command sandbox, branch-protection/ruleset settings, and whether write permissions can be reduced per job."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS",
+      "claim_id": "XRP-C-BARROT-APPROVAL-WORKFLOW-ANOMALY",
+      "kind": "direct_workflow_run_observation",
+      "summary": "Run 40423949838 reported event=push, conclusion=failure, and jobs endpoint total_count=0. The inspected .github/workflows/barrot-approve-pr.yml on main and branch declares workflow_dispatch only and has no push trigger. Root cause is unresolved; no job logs exist to prove that any approval action ran.",
+      "source_id": "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838",
+      "status": "OBSERVED_ANOMALY_ROOT_CAUSE_UNRESOLVED",
+      "independence": "direct_github_actions_api_and_workflow_yaml",
+      "provenance": [
+        "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027",
+        "SRC-BARROT-APPROVAL-WORKFLOW-20261027"
+      ],
+      "details": {
+        "run_id": 40423949838,
+        "event": "push",
+        "conclusion": "failure",
+        "jobs_total": 0,
+        "blind_rerun": false
       }
     },
     {
@@ -1739,6 +1895,26 @@
         "state": "OPEN_DRAFT",
         "merge": "not merged",
         "approval": "required before any merge"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-CI-GATE-EXACT-HEAD",
+      "claim_id": "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
+      "kind": "direct_ci_run_observation",
+      "summary": "On exact PR #1170 head 4febf9db9222f86d9707214ace75561625416d08, CI run 40423957351 completed successfully and fail-closed gate run 40423957548 completed successfully. Gate job name was 'Merge disabled pending gate verification'; its 'Fail closed' step passed. No merge occurred.",
+      "source_id": "SRC-BARROT-PR1170-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423957351",
+      "status": "VERIFIED_ON_EXACT_HEAD",
+      "independence": "direct_github_actions_observation",
+      "provenance": [
+        "SRC-BARROT-PR1170-CI-20261027",
+        "SRC-BARROT-PR1170-GATE-20261027"
+      ],
+      "details": {
+        "head_sha": "4febf9db9222f86d9707214ace75561625416d08",
+        "ci_run": 40423957351,
+        "gate_run": 40423957548,
+        "merge_performed": false
       }
     },
     {
@@ -2248,26 +2424,35 @@
       ],
       "focus_claims": [
         "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
-        "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS"
+        "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
+        "XRP-C-BARROT-APPROVAL-WORKFLOW-ANOMALY",
+        "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION"
       ],
       "evidence": [
         "XRP-E-MERGE-QUEUE-WRITE-PATH",
         "XRP-E-PR-1168-DISABLED-FIX",
         "XRP-E-BARROT-AGENT-WRITE-PATH",
-        "XRP-E-BRANCH-RULESET-DISABLED-20261027"
+        "XRP-E-BRANCH-RULESET-DISABLED-20261027",
+        "XRP-E-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS",
+        "XRP-E-PR1170-CI-GATE-EXACT-HEAD"
       ],
       "unresolved_objections": [
         "PR #1168 remains draft; active main workflow has not been disabled.",
         "Branch protection and rulesets need direct inspection before concluding whether approval/check requirements are enforced externally.",
         "Barrot Agent workflow has write scopes; review sandbox boundaries and reduce privileges if possible.",
-        "Current rulesets API returned one branch-target ruleset with enforcement disabled; branch-protection endpoint returned 403 to the connected integration. Effective protection remains unverified."
+        "Current rulesets API returned one branch-target ruleset with enforcement disabled; branch-protection endpoint returned 403 to the connected integration. Effective protection remains unverified.",
+        "Unexpected push-triggered .github/workflows/barrot-approve-pr.yml run failed with zero jobs despite inspected YAML declaring workflow_dispatch only; root cause remains unresolved and was not blindly rerun."
       ],
       "confidence": 0.98,
       "provenance": [
         "SRC-BARROT-MERGE-QUEUE-WORKFLOW",
         "SRC-BARROT-AGENT-WORKFLOW",
         "SRC-BARROT-PR-1168",
-        "SRC-BARROT-RULESET-STATUS-20261027T000154Z"
+        "SRC-BARROT-RULESET-STATUS-20261027T000154Z",
+        "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027",
+        "SRC-BARROT-APPROVAL-WORKFLOW-20261027",
+        "SRC-BARROT-PR1170-CI-20261027",
+        "SRC-BARROT-PR1170-GATE-20261027"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -2396,7 +2581,7 @@
       "question_id": "Q-9",
       "question": "Verify repository branch protection/rulesets and require explicit approvals/required checks for every merge; disable active merge queue before any all-PR mode is used.",
       "priority": "CRITICAL",
-      "status": "PR_1168_OPEN_DRAFT; ONE_LISTED_RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
+      "status": "PR_1168_OPEN_DRAFT_STALE_15_COMMITS; ONE_LISTED_RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
     },
     {
       "question_id": "Q-10",
@@ -3070,8 +3255,8 @@
         "Groq HTTP 429 Too Many Requests"
       ],
       "blob_sha": "a74f8cacf498ce6936d538a1cdc0925605379cb1",
-      "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
-      "age_minutes_at_retrieval": 36.8,
+      "retrieved_at_utc": "2026-10-27T00:05:31.488Z",
+      "age_minutes_at_retrieval": 39.8,
       "disposition": "INVALID_FOR_FORECASTING"
     },
     "legacy_accuracy": {
@@ -3090,17 +3275,21 @@
         "pr": 1165,
         "title": "XRP integrity: fail closed on unavailable sentiment; retire invalid accuracy metric",
         "head_sha": "e8ae692bd06f78cbec9b7bf4ad2715052051d23b",
-        "ci": "CI and Barrot Gated Merge (fail-closed) both completed successfully on observed PR head",
-        "state": "OPEN_DRAFT",
-        "merge_authorized": false
+        "ci": "Last observed CI and fail-closed gate passed on head e8ae692bd06f78cbec9b7bf4ad2715052051d23b; branch diverged and is 30 commits behind current main.",
+        "state": "OPEN_DRAFT_STALE_BASE",
+        "merge_authorized": false,
+        "behind_main_commits": 30,
+        "ahead_main_commits": 7
       },
       {
         "pr": 1155,
         "title": "XRP market data: require synchronized event-time inputs",
         "head_sha": "f9be50c331410c8e148f3889a2b0f7a20187ea8f",
-        "ci": "Reported 126 tests passed in 4.68 seconds on merge ref; fail-closed gate passed with merge disabled",
-        "state": "OPEN_DRAFT",
-        "merge_authorized": false
+        "ci": "Last observed CI passed on merge ref; branch diverged and is 79 commits behind current main.",
+        "state": "OPEN_DRAFT_STALE_BASE",
+        "merge_authorized": false,
+        "behind_main_commits": 79,
+        "ahead_main_commits": 3
       },
       {
         "pr": 1166,
@@ -3114,9 +3303,11 @@
         "pr": 1168,
         "title": "Safety: disable mutation-capable merge queue on fresh main",
         "head_sha": "4bdb914b7a4fb7b38defb91f05832e149326d88f",
-        "ci": "Not re-checked in this snapshot",
-        "state": "OPEN_DRAFT",
-        "merge_authorized": false
+        "ci": "Latest observed CI and fail-closed gate passed on head 4bdb914b7a4fb7b38defb91f05832e149326d88f; branch diverged and is 15 commits behind current main.",
+        "state": "OPEN_DRAFT_STALE_BASE",
+        "merge_authorized": false,
+        "behind_main_commits": 15,
+        "ahead_main_commits": 3
       },
       {
         "pr": 1161,
@@ -3142,9 +3333,17 @@
         "risk": "MEDIUM_HIGH",
         "status": "OBSERVED_ON_MAIN",
         "mitigation": "Review least-privilege permissions, command sandbox, branch protections and manual approval gates."
+      },
+      {
+        "finding": "The rulesets endpoint returned one branch-target ruleset named 'Fall Back' with enforcement disabled. Branch-protection endpoint returned 403 to the connected integration, so effective protection remains unverified.",
+        "risk": "HIGH",
+        "status": "OBSERVED_PARTIAL_CONFIGURATION",
+        "mitigation_pr": 1168,
+        "mitigation_state": "OPEN_DRAFT_STALE_BASE",
+        "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "The current main web/latest_signal.json blob SHA is a74f8cacf498ce6936d538a1cdc0925605379cb1 and its artifact timestamp is 2026-10-26T23:25:41.820784Z; it was 36.8 minutes old at retrieval 2026-10-27T00:02:27.442Z. Score 44/confidence 0 remains invalid because both model providers failed and the news input is dominated by XRPL research/protocol titles.",
+    "latest_signal_staleness": "The current main web/latest_signal.json blob SHA is a74f8cacf498ce6936d538a1cdc0925605379cb1 and its artifact timestamp is 2026-10-26T23:25:41.820784Z; it was 39.8 minutes old at retrieval 2026-10-27T00:05:31.488Z. Score 44/confidence 0 remains invalid because both model providers failed and the news input is dominated by XRPL research/protocol titles.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T00:02:27.442Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -3158,6 +3357,26 @@
       ],
       "branch_protection_endpoint_status": "403 Resource not accessible by integration",
       "interpretation": "The listed ruleset is disabled; effective branch protection remains unknown because the separate endpoint was inaccessible. Do not run merge queue."
+    },
+    "pr1170_validation": {
+      "head_sha": "4febf9db9222f86d9707214ace75561625416d08",
+      "ci_run": 40423957351,
+      "ci_conclusion": "success",
+      "fail_closed_gate_run": 40423957548,
+      "gate_conclusion": "success",
+      "gate_step": "Fail closed",
+      "merge_performed": false,
+      "validated_at_utc": "2026-10-27T00:05:31.488Z"
+    },
+    "approval_workflow_anomaly": {
+      "run_id": 40423949838,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_total": 0,
+      "inspected_workflow_trigger": "workflow_dispatch only",
+      "root_cause": "UNRESOLVED",
+      "blind_rerun": false,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838"
     }
   },
   "video_ingestion": {
@@ -3199,73 +3418,23 @@
   "next_actions": [
     {
       "priority": 0,
-      "action": "Review PR #1165 on its exact head; latest observed CI and fail-closed gate both passed. Keep draft/unmerged pending user approval because main still emits score 44/confidence 0 after provider failure.",
-      "status": "TESTED_DRAFT_FIX; APPROVAL_REQUIRED"
-    },
-    {
-      "priority": 0,
-      "action": "Do not run the active merge queue. PR #1168 is open/draft and its latest observed CI and fail-closed gate passed, but the repository's only listed branch ruleset is disabled and branch-protection configuration could not be read (403); retain the block until an authorized admin verifies effective protection and review/check gates.",
-      "status": "CRITICAL_SAFETY_GATE; MAIN_UNCHANGED"
-    },
-    {
-      "priority": 1,
-      "action": "Resolve the Kamilah 2025-12-06 collateral video title/transcript and check current CFTC/clearinghouse/FCM rules for XRP-specific collateral eligibility; do not conflate XRP futures with XRP collateral.",
-      "status": "ACTIONABLE"
-    },
-    {
-      "priority": 0,
-      "action": "Do not run the active merge-queue workflow. Independently verify branch protection/rulesets and review PR #1168, which disables the write-capable queue; keep it unmerged until explicit user approval.",
+      "action": "Keep the active merge queue unused. The only listed repository ruleset is disabled and branch-protection configuration is inaccessible (403); PR #1168 remains draft and is 15 commits behind current main. Rebase/fresh-base validation and authorized protection review are required before any merge.",
       "status": "CRITICAL_SAFETY_GATE"
     },
     {
+      "priority": 0,
+      "action": "PR #1165 is a tested fail-closed candidate but is 30 commits behind current main. Create/review a fresh-base equivalent and run exact-head CI before any merge; user approval is required.",
+      "status": "TESTED_STALE_DRAFT; APPROVAL_REQUIRED"
+    },
+    {
+      "priority": 0,
+      "action": "PR #1155 is 79 commits behind current main. Do not merge its older head; port its event-time validator onto a fresh base and run exact-head tests.",
+      "status": "TESTED_STALE_DRAFT; FRESH_BASE_REQUIRED"
+    },
+    {
       "priority": 1,
-      "action": "Review PR #1165 on its exact current head and CI; preserve draft status pending user approval. This is the critical fail-closed fix because main currently emits a score with confidence zero after provider failure.",
-      "status": "ACTIONABLE"
-    },
-    {
-      "priority": 2,
-      "action": "Review PR #1155 exact head, tests, freshness/skew thresholds and current-main delta; keep draft until user approval.",
-      "status": "ACTIONABLE"
-    },
-    {
-      "priority": 2,
-      "action": "Resolve Open Standard/OUSD launch-status contradiction using contract addresses, on-chain supply and current issuer/reserve reports; then update Coinbase-Circle competition hypothesis.",
-      "status": "ACTIONABLE"
-    },
-    {
-      "priority": 3,
-      "action": "Build immutable fixed-horizon forecast and outcome ledger, then replace the invalid legacy accuracy metric only after exact-target and baseline tests pass.",
-      "status": "NOT_IMPLEMENTED"
-    },
-    {
-      "priority": 4,
-      "action": "Resolve SBIC from original context; separate SBI Crypto and Tokyo SBIC from SBI VC Trade/SBI Ripple Asia.",
-      "status": "UNRESOLVED"
-    },
-    {
-      "priority": 5,
-      "action": "Obtain complete authorized public video inventory and transcript access; do not infer completeness from the 10 seed records.",
-      "status": "BLOCKED"
-    },
-    {
-      "priority": 6,
-      "action": "Collect historical event-time spot/perpetual/FX and order-book data; run leakage-safe walk-forward and shadow evaluation.",
-      "status": "NOT_IMPLEMENTED"
-    },
-    {
-      "priority": 7,
-      "action": "Test adapter authentication, permissions, structured handoff and independent-review receipts for each target platform before calling it connected.",
-      "status": "NOT_TESTED"
-    },
-    {
-      "priority": 4,
-      "action": "Use SBI's official JPY 2.5 trillion cumulative remittance figure only as aggregate context; obtain corridor-level XRP usage, and verify production status of SBI Ripple Asia PoC, Visa MOU, and Fasset MOU.",
-      "status": "ACTIONABLE"
-    },
-    {
-      "priority": 3,
-      "action": "Parse Circle's 2026 Q2 10-Q and Coinbase's 2025 10-K into dated financial features; collect XRPL-specific USDC supply/transfer volumes and XRP bridge-path/market-depth metrics separately.",
-      "status": "ACTIONABLE"
+      "action": "Investigate why barrot-approve-pr.yml produced a push-event failure with zero jobs while the inspected workflow declares workflow_dispatch only; preserve run evidence and do not blindly rerun.",
+      "status": "ROOT_CAUSE_UNRESOLVED"
     }
   ]
 }
