@@ -265,9 +265,14 @@ def test_open_capability_pr_blocks_remote_sha_mismatch_and_restores_branch(tmp_p
     monkeypatch.setattr(module, "datetime", DateTimeStub)
     monkeypatch.setattr(module.subprocess, "run", fake_run)
 
-    with pytest.raises(module.SelfUpgradeError, match="Remote branch SHA verification failed"):
+    caught = None
+    try:
         module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+    except module.SelfUpgradeError as exc:
+        caught = str(exc)
 
+    assert caught is not None
+    assert "Remote branch SHA verification failed" in caught
     assert ("checkout", "feature/current") in calls
     assert ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000") in calls
     assert not (tmp_path / ".selfupgrade_pr_body.md").exists()
