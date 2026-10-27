@@ -491,3 +491,11 @@ No main-branch write, merge, force-push, workflow dispatch, real-money action, o
 - Next: keep forecasts disabled; keep the active main merge queue unused; request independent review/approval for PRs #1193 and #1194; verify branch protection and current-base diffs before any merge. Continue XRP research with event-time and route-level evidence, preserving counter-hypotheses and uncertainty.
 
 No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
+
+
+### Run 14 ledger integrity correction
+
+- Post-write validation found one pre-existing provenance-format issue: the Kamilah collateral-video claim and its source-evidence record used the raw YouTube URL where the ledger schema expects the existing source ID.
+- Normalized both provenance references to `KAMILAH_VIDEO_M8TmDXO7B-0`; the source record already existed, so no new identity or factual claim was introduced.
+- This is a provenance-link correction only. The video's full transcript remains uncaptured; the collateral assertion remains challenged by the recorded CFTC/CME evidence.
+- The new research-bundle head requires its own exact-head CI and fail-closed gate. Prior-head checks do not transfer.
