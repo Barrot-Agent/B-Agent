@@ -2531,7 +2531,7 @@
       "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
       "source_type": "repository_workflow_checks",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
-      "publication_date": "Observed at session-clock estimate 2026-10-27T17:50:00Z; head 789b639d2553a0d4389d8cf49a1a0b9fb6b80e17; fail-closed gate 40556174861 success; CI 40556174720 in progress",
+      "publication_date": "Observed at session-clock estimate 2026-10-27T17:50:00Z; PR head 789b639d2553a0d4389d8cf49a1a0b9fb6b80e17; CI 40556174720 passed 130 tests in 6.13s and gate 40556174861 passed. GitHub job log timestamp is later than session-clock estimate; clock ordering unresolved.",
       "source_commit": "789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
       "sections": [
         "fresh branch based on main 79b17591c5f685ce4a123a82bf24c72f73f29d10",
@@ -2540,6 +2540,21 @@
         "gate success",
         "CI in progress",
         "no main write or merge"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1193-CI-20261027-RUN13C",
+      "title": "PR #1193 exact-head CI and fail-closed gate results",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow_checks",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+      "publication_date": "CI run 40556174720 success, 130 tests in 6.13 seconds; fail-closed gate 40556174861 success. Job log timestamp 2026-10-27T18:02:42Z is later than supplied session-clock estimate 17:50Z; external clock ordering unresolved.",
+      "source_commit": "789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
+      "sections": [
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40556174720",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40556174861",
+        "exact head 789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
+        "draft/unmerged; no merge authorized"
       ]
     }
   ],
@@ -5087,17 +5102,18 @@
     },
     {
       "claim_id": "XRP-C-PR1193-VALIDATION-20261027-RUN13",
-      "statement": "Fresh-main PR #1193 ports the previously tested 10-file fail-closed XRP signal-integrity change onto main SHA 79b17591c5f685ce4a123a82bf24c72f73f29d10. Its fail-closed gate passed, while exact-head CI was still in progress at observation time. It remains draft/unmerged and is not effective on main.",
+      "statement": "Fresh-main PR #1193 ports the previously tested 10-file fail-closed XRP signal-integrity change onto main SHA 79b17591c5f685ce4a123a82bf24c72f73f29d10. Exact-head CI run 40556174720 passed 130 tests in 6.13 seconds and fail-closed gate 40556174861 passed. It remains draft/unmerged and is not effective on main.",
       "domain": "repository_verification",
       "claim_type": "exact_head_workflow_check_state",
       "source": "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
       "supporting_evidence": [
-        "XRP-E-PR1193-VALIDATION-20261027-RUN13"
+        "XRP-E-PR1193-VALIDATION-20261027-RUN13",
+        "XRP-E-PR1193-CI-20261027-RUN13C"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
-      "independent_verification_status": "GATE_PASS; CI_PENDING_AT_CAPTURE; NO_MERGE",
+      "independent_verification_status": "EXACT_HEAD_CI_PASS_130_TESTS; GATE_PASS; DRAFT_UNMERGED; NOT_ON_MAIN",
       "adversarial_status": "OPEN",
       "acceptance_status": "DRAFT_ONLY_NO_MERGE_AUTHORIZED",
       "confidence": 0.99,
@@ -5106,7 +5122,8 @@
         "A passing gate does not substitute for CI or review."
       ],
       "provenance": [
-        "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13"
+        "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13",
+        "SRC-BARROT-PR1193-CI-20261027-RUN13C"
       ],
       "timestamp": 1793123400
     }
@@ -7977,10 +7994,10 @@
       "evidence_id": "XRP-E-PR1193-VALIDATION-20261027-RUN13",
       "claim_id": "XRP-C-PR1193-VALIDATION-20261027-RUN13",
       "kind": "workflow_check_and_branch_readback",
-      "summary": "PR #1193 head 789b639d2553a0d4389d8cf49a1a0b9fb6b80e17 contains the 10-file fail-closed signal-integrity repair. Gate run 40556174861 succeeded; CI run 40556174720 was in progress at capture. Draft/unmerged.",
+      "summary": "PR #1193 head 789b639d2553a0d4389d8cf49a1a0b9fb6b80e17: CI run 40556174720 passed 130 tests in 6.13s and fail-closed gate 40556174861 succeeded. The PR remains draft/unmerged.",
       "source_id": "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
-      "status": "PARTIAL_PENDING_CI",
+      "status": "SUPPORTED",
       "independence": "GitHub_Actions_exact_head_status_plus_branch_readback",
       "provenance": [
         "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13"
@@ -7990,11 +8007,16 @@
         "base_sha": "79b17591c5f685ce4a123a82bf24c72f73f29d10",
         "changed_files": 10,
         "ci_run": 40556174720,
-        "ci_status": "in_progress",
+        "ci_status": "success",
+        "tests_passed": 130,
+        "elapsed_seconds": 6.13,
         "gate_run": 40556174861,
         "gate_status": "success",
         "draft": true,
-        "merged": false
+        "merged": false,
+        "remote_job_log_timestamp_utc": "2026-10-27T18:02:42Z",
+        "session_clock_estimate_utc": "2026-10-27T17:50:00Z",
+        "clock_order_status": "REMOTE LOG TIMESTAMP LATER THAN SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
       }
     }
   ],
@@ -9061,9 +9083,10 @@
       {
         "id": "PR #1193 XRP signal integrity fix",
         "type": "proposed_repository_safety_change",
-        "status": "DRAFT; GATE_PASS; CI_PENDING; UNMERGED",
+        "status": "DRAFT; EXACT_HEAD_CI_PASS_130_TESTS; GATE_PASS; UNMERGED",
         "source_ids": [
-          "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13"
+          "SRC-BARROT-PR1193-VALIDATION-20261027-RUN13",
+          "SRC-BARROT-PR1193-CI-20261027-RUN13C"
         ]
       }
     ],
@@ -11064,12 +11087,12 @@
         "head_sha": "789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
         "base_sha": "79b17591c5f685ce4a123a82bf24c72f73f29d10",
         "ci_run": 40556174720,
-        "ci": "IN_PROGRESS_AT_CAPTURE",
+        "ci": "PASS; 130 TESTS IN 6.13S",
         "gate_run": 40556174861,
         "gate": "PASS",
         "changed_files": 10,
         "merge_authorized": false,
-        "status": "OPEN_DRAFT; GATE_PASS; CI_PENDING; CURRENT_MAIN_BASE; NO_MERGE"
+        "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_MAIN_BASE; NO_MERGE"
       }
     ],
     "pr1190_validation": {
@@ -11174,11 +11197,14 @@
       "base_sha": "79b17591c5f685ce4a123a82bf24c72f73f29d10",
       "changed_files": 10,
       "ci_run": 40556174720,
-      "ci_status": "IN_PROGRESS_AT_CAPTURE",
+      "ci_status": "SUCCESS",
+      "tests_passed": 130,
+      "elapsed_seconds": 6.13,
       "fail_closed_gate_run": 40556174861,
       "gate_status": "SUCCESS",
-      "state": "OPEN_DRAFT; GATE_PASS; CI_PENDING; NOT_EFFECTIVE_ON_MAIN; NO_MERGE",
-      "merge_authorized": false
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_PASS_130_TESTS; GATE_PASS; NOT_EFFECTIVE_ON_MAIN; NO_MERGE",
+      "merge_authorized": false,
+      "clock_order_status": "GitHub job log timestamp 18:02:42Z later than supplied session-clock estimate 17:50Z; retrieval timestamp unexposed."
     }
   },
   "video_ingestion": {
@@ -11272,7 +11298,7 @@
     {
       "priority": 0,
       "action": "PR #1193 is based on current main and ports the 10-file fail-closed signal fix; fail-closed gate 40556174861 passed but CI run 40556174720 was still in progress at capture. Recheck exact-head CI, inspect the resulting diff and keep the PR draft until independent review.",
-      "status": "FRESH_MAIN_PR_CREATED; GATE_PASS; CI_PENDING; NO_MERGE"
+      "status": "FRESH_MAIN_PR_CREATED; EXACT_HEAD_CI_PASS_130_TESTS; GATE_PASS; DRAFT_ONLY; NO_MERGE"
     },
     {
       "priority": 0,
