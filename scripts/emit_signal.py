@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
+"""Emit an XRP sentiment artifact without converting missing evidence into a score.
+
+This module emits sentiment metadata only. It does not issue a calibrated price
+forecast; forecast_status therefore remains NOT_ISSUED.
+"""
 import json
+import math
 import os
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
 import requests
 
@@ -11,32 +18,75 @@ GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 
 DEFAULT_GITHUB_MODEL = os.getenv("GITHUB_MODEL", "openai/gpt-4.1-mini")
 DEFAULT_GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
-
 TIMEOUT = float(os.getenv("SIGNAL_HTTP_TIMEOUT", "20"))
+VALID_LABELS = {"bullish", "neutral", "bearish"}
+ACADEMIC_SOURCE_MARKERS = (
+    "academic", "arxiv", "scholarly", "research paper", "research_paper",
+    "peer-reviewed", "peer reviewed", "preprint", "journal article",
+    "conference paper", "conference proceedings", "working paper",
+)
+ACADEMIC_DOMAIN_MARKERS = (
+    "arxiv.org", "doi.org", "semanticscholar.org", "researchgate.net",
+    "openreview.net", "dl.acm.org", "acm.org", "ieeexplore.ieee.org",
+    "ieee.org", "link.springer.com", "springer.com", "sciencedirect.com",
+    "ssrn.com",
+)
+# Narrow title signatures observed in contaminated XRP sentiment inputs. These
+# are supplemental to provenance/domain checks, not a general news classifier.
+ACADEMIC_TITLE_MARKERS = (
+    "analysis of the xrp ledger consensus protocol",
+    "to squelch or not to squelch",
+    "probabilistic edge multicast routing",
+    "pub/sub dissemination on the xrp ledger",
+    "consensus crash testing",
+    "causal ai for xrpl/gossipsub",
+    "dissemination on the xrp ledger",
+    "gossipsub network configuration",
+)
 
 
 def _post_json(url: str, headers: dict, payload: dict, timeout: float = TIMEOUT):
-    r = requests.post(url, headers=headers, json=payload, timeout=timeout)
-    r.raise_for_status()
-    return r.json()
+    response = requests.post(url, headers=headers, json=payload, timeout=timeout)
+    response.raise_for_status()
+    return response.json()
 
 
 def _extract_text(resp_json: dict) -> str:
     try:
-        return resp_json.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
-    except Exception:
+        value = resp_json.get("choices", [{}])[0].get("message", {}).get("content", "")
+        return value.strip() if isinstance(value, str) else ""
+    except (AttributeError, IndexError, TypeError):
         return ""
 
 
 def _score_from_text(text: str):
+    """Return a validated (score, confidence, label) tuple, or None.
+
+    Missing keys, malformed JSON, coercions, non-finite confidence, and
+    out-of-range values are unavailable evidence—not neutral sentiment.
+    """
+    if not isinstance(text, str) or not text.strip():
+        return None
     try:
         data = json.loads(text)
-        score = int(max(0, min(100, int(data.get("score", 50)))))
-        confidence = float(max(0.0, min(1.0, float(data.get("confidence", 0.5)))))
-        label = str(data.get("label", "neutral"))
-        return score, confidence, label
-    except Exception:
-        return 50, 0.5, "neutral"
+    except (json.JSONDecodeError, TypeError):
+        return None
+    if not isinstance(data, dict):
+        return None
+
+    score = data.get("score")
+    confidence = data.get("confidence")
+    label = data.get("label")
+    if isinstance(score, bool) or not isinstance(score, int) or not 0 <= score <= 100:
+        return None
+    if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+        return None
+    confidence = float(confidence)
+    if not math.isfinite(confidence) or not 0.0 <= confidence <= 1.0:
+        return None
+    if not isinstance(label, str) or label.strip().lower() not in VALID_LABELS:
+        return None
+    return score, confidence, label.strip().lower()
 
 
 def _build_messages(signal_text: str):
@@ -44,15 +94,12 @@ def _build_messages(signal_text: str):
         {
             "role": "system",
             "content": (
-                "You are a strict sentiment classifier for crypto/market status lines. "
-                "Return ONLY compact JSON with keys: score (0-100 int), confidence (0-1 float), "
-                "label (bullish|neutral|bearish). No markdown."
+                "Classify only the sentiment of the supplied crypto/market text. "
+                "Return ONLY JSON with score (integer 0-100), confidence (number 0-1), "
+                "and label (bullish|neutral|bearish). Do not claim to predict price."
             ),
         },
-        {
-            "role": "user",
-            "content": f"Classify sentiment for: {signal_text}",
-        },
+        {"role": "user", "content": f"Classify sentiment for: {signal_text}"},
     ]
 
 
@@ -60,153 +107,191 @@ def _call_github_models(signal_text: str):
     token = os.getenv("GITHUB_TOKEN") or os.getenv("GH_MODELS_TOKEN") or ""
     if not token:
         raise RuntimeError("missing GITHUB_TOKEN/GH_MODELS_TOKEN")
-
     payload = {
         "model": DEFAULT_GITHUB_MODEL,
         "messages": _build_messages(signal_text),
         "temperature": 0.1,
     }
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json",
-    }
-
-    data = _post_json(GITHUB_MODELS_ENDPOINT, headers, payload)
-    txt = _extract_text(data)
-    score, conf, label = _score_from_text(txt)
-    return score, conf, f"github:{label}"
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    parsed = _score_from_text(_extract_text(_post_json(GITHUB_MODELS_ENDPOINT, headers, payload)))
+    if parsed is None:
+        raise ValueError("invalid GitHub Models sentiment JSON contract")
+    score, confidence, label = parsed
+    return score, confidence, f"github:{label}"
 
 
 def _call_groq(signal_text: str):
     key = os.getenv("GROQ_API_KEY", "")
     if not key:
         raise RuntimeError("missing GROQ_API_KEY")
-
-    # Opt-in real chain-of-thought + self-consistency classifier
-    # (Wei et al. 2022, Wang et al. 2023) - uses 3x Groq calls per
-    # classification instead of 1x, so this is gated behind an env var
-    # rather than silently tripling token usage on the live pipeline.
-    # Set USE_SELF_CONSISTENCY=1 to enable.
     if os.getenv("USE_SELF_CONSISTENCY", "") == "1":
         try:
             from groq_chain import classify_with_self_consistency
             result = classify_with_self_consistency(signal_text)
-            return result["score"], result["confidence"], f"groq_sc:{result['label']}"
+            parsed = _score_from_text(json.dumps(result))
+            if parsed is not None:
+                score, confidence, label = parsed
+                return score, confidence, f"groq_sc:{label}"
         except Exception:
-            pass  # fall through to the original single-shot call below
+            pass
 
     payload = {
         "model": DEFAULT_GROQ_MODEL,
         "messages": _build_messages(signal_text),
         "temperature": 0.1,
     }
-    headers = {
-        "Authorization": f"Bearer {key}",
-        "Content-Type": "application/json",
-    }
-
-    data = _post_json(GROQ_ENDPOINT, headers, payload)
-    txt = _extract_text(data)
-    score, conf, label = _score_from_text(txt)
-    return score, conf, f"groq:{label}"
+    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+    parsed = _score_from_text(_extract_text(_post_json(GROQ_ENDPOINT, headers, payload)))
+    if parsed is None:
+        raise ValueError("invalid Groq sentiment JSON contract")
+    score, confidence, label = parsed
+    return score, confidence, f"groq:{label}"
 
 
 def analyze_signal(signal_text: str):
-    last_err = None
-
-    try:
-        return _call_github_models(signal_text)
-    except Exception as e:
-        last_err = f"github_failed:{e}"
-
-    try:
-        return _call_groq(signal_text)
-    except Exception as e:
-        last_err = f"{last_err}; groq_failed:{e}"
-
-    return 0, 0.0, f"sentiment unavailable ({last_err})"
+    errors = []
+    for provider_name, provider in (
+        ("github", _call_github_models),
+        ("groq", _call_groq),
+    ):
+        try:
+            return provider(signal_text)
+        except Exception as exc:
+            errors.append(f"{provider_name}_failed:{exc}")
+    return None, None, "sentiment unavailable (" + "; ".join(errors) + ")"
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
-    """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
-    from datetime import timedelta
+    """Return a freshness-gated sentiment score or (None, 0, []).
 
+    Records with missing/invalid/naive timestamps, materially future timestamps,
+    academic provenance, invalid weights, or unknown sentiment are excluded.
+    """
     if not os.path.exists(path):
         return None, 0, []
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=hours)
     num = den = 0.0
     used = 0
-    heads = []
-    with open(path) as f:
-        for line in f:
+    headlines = []
+    with open(path, encoding="utf-8") as source_file:
+        for line in source_file:
             try:
-                e = json.loads(line)
-            except Exception:
+                entry = json.loads(line)
+            except (json.JSONDecodeError, TypeError):
                 continue
-            if not e.get("distilled"):
+            if not isinstance(entry, dict) or not entry.get("distilled"):
                 continue
-            d = e.get("distill", {})
-            w = float(d.get("xrp_relevance", 0) or 0)
-            if w <= 0:
+            distill = entry.get("distill")
+            if not isinstance(distill, dict):
+                continue
+
+            provenance = " ".join(
+                str(entry.get(key, ""))
+                for key in (
+                    "source", "source_type", "category", "publisher", "domain",
+                    "url", "feed", "doi", "authors",
+                )
+            ).lower()
+            title_text = str(entry.get("title", "")).lower()
+            if any(marker in provenance for marker in ACADEMIC_SOURCE_MARKERS):
+                continue
+            if any(marker in provenance for marker in ACADEMIC_DOMAIN_MARKERS):
+                continue
+            if any(marker in title_text for marker in ACADEMIC_TITLE_MARKERS):
+                continue
+
+            raw_ingested = entry.get("ingested_at")
+            if not isinstance(raw_ingested, str) or not raw_ingested.strip():
                 continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
-                if ts < cutoff:
+                ingested_at = datetime.fromisoformat(raw_ingested.replace("Z", "+00:00"))
+            except (ValueError, TypeError):
+                continue
+            if ingested_at.tzinfo is None or ingested_at.utcoffset() is None:
+                continue
+            if ingested_at > now + timedelta(minutes=5):
+                continue
+
+            # Fresh ingestion is not the same as a fresh market event. Require
+            # the publisher's event time so re-ingested old articles cannot
+            # masquerade as current sentiment. RSS pubDate values are RFC 822.
+            raw_published = (
+                entry.get("published")
+                or entry.get("published_at")
+                or entry.get("publication_timestamp")
+            )
+            if not isinstance(raw_published, str) or not raw_published.strip():
+                continue
+            try:
+                published_at = datetime.fromisoformat(raw_published.replace("Z", "+00:00"))
+            except (ValueError, TypeError):
+                try:
+                    published_at = parsedate_to_datetime(raw_published)
+                except (ValueError, TypeError, OverflowError):
                     continue
-            except Exception:
-                pass
-            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
-            num += s * w
-            den += w
+            if published_at.tzinfo is None or published_at.utcoffset() is None:
+                continue
+            if published_at < cutoff or published_at > now + timedelta(minutes=5):
+                continue
+
+            try:
+                weight = float(distill.get("xrp_relevance", 0) or 0)
+            except (TypeError, ValueError):
+                continue
+            if not math.isfinite(weight) or weight <= 0:
+                continue
+            sentiment = distill.get("sentiment")
+            if not isinstance(sentiment, str) or sentiment.lower() not in VALID_LABELS:
+                continue
+            sentiment = sentiment.lower()
+            sentiment_value = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}[sentiment]
+            num += sentiment_value * weight
+            den += weight
             used += 1
-            if w >= 0.5 and len(heads) < 6:
-                heads.append(f"[{d.get('sentiment')}] {e.get('title','')[:80]}")
+            if weight >= 0.5 and len(headlines) < 6:
+                title = str(entry.get("title", ""))[:80]
+                headlines.append(f"[{sentiment}] {title}")
+
     if den == 0:
         return None, 0, []
-    return int(round((num / den + 1) * 50)), used, heads
+    return int(round((num / den + 1.0) * 50.0)), used, headlines
 
 
 def main():
-    news_score, n_news, headlines = _news_score()
+    news_score, news_count, headlines = _news_score()
     if headlines:
         signal_text = "Recent XRP-relevant headlines: " + " | ".join(headlines)
     else:
         signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
-    score, confidence, source = analyze_signal(signal_text)
-    if news_score is not None:
-        # blend: LLM read of headlines + weighted news score, equal weight
-        score = int(round((score + news_score) / 2))
-        source = f"{source}+news({n_news})"
 
-    out = {
+    model_score, confidence, source = analyze_signal(signal_text)
+    if model_score is None:
+        score = None
+        confidence = None
+        signal_status = "news_only" if news_score is not None else "unavailable"
+    else:
+        score = int(round((model_score + news_score) / 2)) if news_score is not None else model_score
+        signal_status = "model_plus_news" if news_score is not None else "model_only"
+
+    output = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
+        "generated_at_unix": int(time.time()),
         "signal_text": signal_text,
+        "model_score": model_score,
         "score": score,
         "confidence": confidence,
         "source": source,
+        "signal_status": signal_status,
+        "forecast_status": "NOT_ISSUED",
         "news_score": news_score,
-        "news_entries": n_news,
-        "generated_at_unix": int(time.time()),
+        "news_entries": news_count,
     }
 
     os.makedirs("web", exist_ok=True)
-    with open("web/latest_signal.json", "w", encoding="utf-8") as f:
-        json.dump(out, f, indent=2)
-    try:
-        _pr = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "ripple", "vs_currencies": "usd"},
-            timeout=6,
-        )
-        price_now = float(_pr.json().get("ripple", {}).get("usd", 0))
-    except Exception:
-        price_now = 0.0
-    hist_entry = dict(out)
-    hist_entry["price_at_emission"] = price_now
-    with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
-        print(json.dumps(hist_entry), file=hf)
-
-    print(json.dumps(out))
+    with open("web/latest_signal.json", "w", encoding="utf-8") as output_file:
+        json.dump(output, output_file, indent=2)
+    print(json.dumps(output))
 
 
 if __name__ == "__main__":
