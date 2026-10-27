@@ -412,6 +412,19 @@
           "Reserve balances can rise while stablecoin circulation or XRP price falls; reserve assets are mostly dollar instruments, and stablecoin settlement can substitute for XRP in some use cases rather than increase XRP demand."
         ],
         "test_plan": "Track daily stablecoin circulation, reserves, net mint/redemption, reserve composition, issuer/partner distribution and chain-level activity separately; test lagged effects on XRPL activity and XRP market purchases while controlling for macro rates, crypto beta and derivatives leverage."
+      },
+      {
+        "id": "H7-MACRO-LIQUIDITY",
+        "hypothesis": "Over short XRP horizons, changes in real yields, dollar strength, risk appetite and crypto leverage may dominate the price impact of individual adoption announcements; the sign can reverse across regimes.",
+        "supporting_evidence": [
+          "SRC-BEA-GDP-Q2-2026",
+          "SRC-BLS-EMPLOYMENT-SEP-2026",
+          "SRC-BLS-CPI-SEP-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "XRP-specific supply, exchange flows, ETF creations/redemptions, legal/regulatory events or market-maker inventory can dominate during asset-specific shocks; no fitted model has established relative importance yet."
+        ],
+        "test_plan": "Build release-vintage features for CPI/PCE, jobs, GDP, Treasury real yields, DXY, VIX, credit spreads and policy-rate expectations; model surprise vs consensus, use event-time controls and walk-forward ablation against crypto-market beta and XRP-specific flow features."
       }
     ],
     "market_observations": [
@@ -552,7 +565,68 @@
       "Resolve Camilla Stephenson identity; enumerate channel videos, Shorts, live streams and archives by canonical channel ID; extract permitted transcripts and timestamped claims.",
       "Search exact phrases ASK Coin, actual capital and SBIC, ChatGPT SBIC in their original media/context; keep unresolved until evidence exists.",
       "Verify each of the nine platform adapters with a test call, identity, scope, data-flow record and output provenance before describing live collaboration."
-    ]
+    ],
+    "macro_context": {
+      "as_of_utc": "2026-10-27T19:10:30Z",
+      "status": "LATEST_OFFICIAL_RELEASES_CAPTURED; FED_POLICY_AND_MARKET_PRICES_REQUIRE_FRESHER_SNAPSHOT",
+      "observations": [
+        {
+          "metric": "Real GDP",
+          "period": "2026-Q2 third estimate",
+          "value": "2.2% annualized",
+          "comparison": "2026-Q1 revised to 2.5%",
+          "published_at": "2026-09-30",
+          "source_ids": [
+            "SRC-BEA-GDP-Q2-2026"
+          ],
+          "interpretation": "Growth remains positive in the latest published quarter; this is not evidence of an already-confirmed recession. Q3 release is listed by BEA for 2026-10-29."
+        },
+        {
+          "metric": "PCE price indexes",
+          "period": "2026-Q2 third estimate",
+          "value": "PCE +5.0% annualized; core PCE +3.3% annualized",
+          "published_at": "2026-09-30",
+          "source_ids": [
+            "SRC-BEA-GDP-Q2-2026"
+          ],
+          "interpretation": "Price pressure remained elevated in the quarterly national-accounts estimate; do not confuse this annualized quarterly measure with 12-month CPI."
+        },
+        {
+          "metric": "Unemployment rate",
+          "period": "2026-09",
+          "value": "4.2%",
+          "comparison": "4.1% in July and August 2026",
+          "published_at": "2026-10",
+          "source_ids": [
+            "SRC-BLS-EMPLOYMENT-SEP-2026"
+          ],
+          "interpretation": "Labor-market slack increased modestly on the household-survey measure; not sufficient alone to diagnose recession."
+        },
+        {
+          "metric": "CPI inflation",
+          "period": "2026-09 year over year",
+          "value": "All-items CPI +3.7%; gasoline +34.2%; electricity +4.4%",
+          "published_at": "2026-10",
+          "source_ids": [
+            "SRC-BLS-CPI-SEP-2026"
+          ],
+          "interpretation": "Energy price pressure can complicate disinflation and rate expectations; verify the complete CPI release and revisions before feature engineering."
+        }
+      ],
+      "provisional_read": "Mixed growth/inflation backdrop: positive latest GDP growth alongside elevated price measures and a small rise in unemployment. Macro risk is two-sided—higher-for-longer rates can pressure risk assets, while weaker growth or easing expectations can support liquidity but also signal stress. No recession probability or XRP direction is inferred from these few indicators alone.",
+      "missing_inputs": [
+        "latest FOMC decision and statement",
+        "current Treasury yields and real yields",
+        "DXY",
+        "VIX",
+        "credit spreads",
+        "Fed funds futures repricing",
+        "latest monthly PCE/CPI detail",
+        "Q3 2026 GDP release after publication",
+        "crypto-wide spot flows and leverage"
+      ],
+      "forecast_rule": "Treat data releases as timestamped surprises relative to consensus, not just levels; freeze vintages to avoid revision leakage."
+    }
   },
   "sources": [
     {
@@ -734,6 +808,33 @@
       "published_at": "2026-10-22 dashboard snapshot",
       "accessed_at_utc": "2026-10-27T19:09:30Z",
       "note": "Issuer-published dashboard reports $2,382.8M RLUSD circulation and $2,528.0M reserve funds as of Oct 22, 2026; monthly independent attestation reports are linked."
+    },
+    {
+      "id": "SRC-BEA-GDP-Q2-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bea.gov/index.php/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-2nd",
+      "title": "BEA third estimate of 2026 Q2 GDP and corporate profits",
+      "published_at": "2026-09-30",
+      "accessed_at_utc": "2026-10-27T19:10:30Z",
+      "note": "Real GDP +2.2% annualized; Q1 revised to +2.5%; PCE +5.0% and core PCE +3.3% annualized in the quarterly national-accounts release. Next release listed as Oct 29, 2026."
+    },
+    {
+      "id": "SRC-BLS-EMPLOYMENT-SEP-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bls.gov/news.release/empsit.htm",
+      "title": "BLS Employment Situation, September 2026",
+      "published_at": "2026-10",
+      "accessed_at_utc": "2026-10-27T19:10:30Z",
+      "note": "Household survey reports unemployment at 4.2% in September 2026 versus 4.1% in July and August."
+    },
+    {
+      "id": "SRC-BLS-CPI-SEP-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bls.gov/cpi/",
+      "title": "BLS CPI release page and September 2026 price highlights",
+      "published_at": "2026-10",
+      "accessed_at_utc": "2026-10-27T19:10:30Z",
+      "note": "BLS reports all-items CPI +3.7% year over year for September 2026, gasoline +34.2%, electricity +4.4%; October CPI scheduled for Nov 10, 2026."
     }
   ],
   "limitations": [
@@ -774,6 +875,13 @@
       "recorded_at_utc": "2026-10-27T19:09:30Z",
       "update_type": "COLLATERAL_AND_CAPITAL_FLOW_ENRICHMENT",
       "details": "Added current issuer-published USDC/RLUSD reserve balances, an explicitly derived RLUSD reserve-to-circulation ratio, evidence-linked reserve relationships and a competing collateral-flow hypothesis.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:10:30Z",
+      "update_type": "MACRO_CONTEXT_ENRICHMENT",
+      "details": "Added official Q2 GDP, September labor and CPI observations with publication dates, regime interpretation, missing variables and a macro-liquidity competing hypothesis.",
       "validation": "JSON parse and source-reference integrity check executed before commit.",
       "no_forecast_issued": true
     }
