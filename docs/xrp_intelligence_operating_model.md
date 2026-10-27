@@ -312,3 +312,20 @@ Exact head `a706b7ccdf68bd961cfcb3132d23ecf1773b370f` passed [CI run 40510936006
 5. Continue XRP feature-store work only with synchronized event-time spot/perpetual/OI/funding/basis/depth data; retain `NOT_ISSUED` until quality gates and fixed-horizon evaluation pass.
 6. Continue exact-phrase and public-video identity work; keep the two Kamilah/Camila channel IDs separate until first-party evidence establishes identity.
 
+
+
+## Run 10 addendum — Fresh-main merge-queue successor
+
+- PR [#1192](https://github.com/Barrot-Agent/B-Agent/pull/1192) was opened as a draft from exact main SHA `882b3d3f13165501642756769e74ff48251efb75`. The preflight re-read showed main still at that SHA.
+- The proposed workflow is manual-only and read-only, with no branch-update, push, comment, or merge command. Static read-back verified exactly four changed files.
+- The CI list preserves `tests/test_risk_manager.py` and adds `tests/test_merge_queue_safety.py`. Six deterministic safety tests cover manual-only triggering, read-only permissions, absence of mutating commands, explicit disabled state, and preservation of both test suites.
+- Exact-head CI run [40518285106](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518285106) and fail-closed gate [40518284880](https://github.com/Barrot-Agent/B-Agent/actions/runs/40518284880) were queued at last observation. **Do not mark this PR tested until both runs are completed successfully.** It remains draft/unmerged and does not change main.
+- The previous PR #1187 is not reused unchanged because its proposed CI patch removes the existing risk-manager suite. PR #1187 remains open/draft; no branch was deleted or force-updated.
+- The current repository search returns **54 open PRs** after #1192 creation. Duplicate/stale PRs remain untouched.
+- Updated ledger after this addendum's associated bundle commit: **122 sources, 85 claims, 123 evidence records, 7 tracks, 52 graph nodes, 75 edges, 19 competing hypotheses**. Duplicate source/claim/evidence IDs and broken claim/source/evidence references: zero.
+
+### Current exact-head verification status at handoff
+
+- Research ledger branch before the latest addendum commit: `37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4`. Its prior head `9172763078a99e67c752ec79a1019a7f1ad716b7` passed 111 tests in 5.85 seconds; fail-closed gate passed. CI for `37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4` was still in progress at the last read. The new ledger commit requires a fresh exact-head check.
+- Main remains at `882b3d3f13165501642756769e74ff48251efb75` as of the latest ref read; commit timestamp `14:07:45Z` is later than the supplied `11:10Z` session clock. Retrieval time is unavailable. Forecast remains `NOT_ISSUED`.
+- No main write, merge, force-push, workflow dispatch, real-money action, reset, clean, stash, overwrite, discard, or branch deletion occurred.
