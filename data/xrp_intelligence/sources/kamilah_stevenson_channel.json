@@ -431,10 +431,48 @@
         "duration": "PT11M11S"
       },
       "transcript_capture": {
-        "status": "NOT_CAPTURED",
-        "next_action": "Retrieve transcript; extract exact named payment apps and distinguish XRP trading access from XRP payment/settlement use."
+        "status": "CAPTURED_AND_HASHED",
+        "provider": "vidIQ",
+        "language": "en",
+        "retrieved_at_utc": "2026-10-27T02:05:49.673Z",
+        "character_count": 11503,
+        "sha256": "f15bfc8437c056c7567b516d0fcf5cfd9206d67b1aa2eef140059df5d8193b54",
+        "storage_policy": "HASH_ONLY; transcript text not committed to repository",
+        "review_status": "KEY_CLAIMS_REVIEWED; PARTNER AVAILABILITY AND ETF FLOW CLAIMS REQUIRE FURTHER VERIFICATION"
       },
-      "claim_status": "METADATA_CAPTURED; CLAIMS_NOT_YET_EXTRACTED"
+      "claim_status": "TRANSCRIPT_CAPTURED; CLAIMS_EXTRACTED; PRIMARY_SOURCE_CHECKS_PARTIAL",
+      "claims_to_test": [
+        {
+          "claim": "Paxos added XRP to its supported brokerage/custody asset set, enabling partner platforms to integrate it.",
+          "timestamp": "1:04-2:40",
+          "classification": "PARTIALLY_CORROBORATED",
+          "note": "Current Paxos platform documentation lists XRP for trading and custody; the claim that it was added specifically 'last week' is not established by the current list alone."
+        },
+        {
+          "claim": "PayPal, Venmo, and Charles Schwab customers can soon buy XRP through their existing apps.",
+          "timestamp": "1:19-2:40; 7:32-10:43",
+          "classification": "NOT_CONFIRMED_AS_CUSTOMER_AVAILABILITY",
+          "note": "The speaker explicitly says partner support does not mean those partners have enabled XRP. PayPal's current US consumer crypto list omits XRP. PayPal's merchant Pay with Crypto allow-list includes XRP, but that is not proof of XRP buy/hold availability in PayPal or Venmo."
+        },
+        {
+          "claim": "Paxos operates the crypto service for PayPal, Venmo, and Schwab.",
+          "timestamp": "1:19-2:22",
+          "classification": "PARTIALLY_SUPPORTED",
+          "note": "Paxos confirms that some crypto trading/custody services are performed for PayPal and Venmo. The specific Schwab service-provider relationship was not established by the primary sources checked in this pass."
+        },
+        {
+          "claim": "XRP spot ETFs had bought about $1.8 billion since launch in November 2025.",
+          "timestamp": "8:21-8:37",
+          "classification": "UNVERIFIED",
+          "note": "No independently sourced, date-stamped flow series was captured in this pass; do not use this number as a feature until verified against issuer/fund data."
+        },
+        {
+          "claim": "A future app rollout could add retail demand for XRP.",
+          "timestamp": "8:37-10:43",
+          "classification": "HYPOTHESIS",
+          "note": "Even if a partner enables XRP, actual incremental net purchases, holding behavior, market-maker inventory, and price impact must be measured rather than assumed."
+        }
+      ]
     }
   ],
   "required_cross_corroboration_domains": [
@@ -488,7 +526,7 @@
       "https://www.sbigroup.co.jp/news/2007/0216_349.html",
       "https://www.sbigroup.co.jp/news/2007/0521_852.html"
     ],
-    "last_updated_at_utc": "2026-10-27T01:05:00Z"
+    "last_updated_at_utc": "2026-10-27T02:05:49.673Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
@@ -678,6 +716,32 @@
         "https://www.sbigroup.co.jp/news/2007/0216_349.html",
         "https://www.sbigroup.co.jp/news/2007/0521_852.html"
       ]
+    },
+    {
+      "finding_id": "PAXOS-XRP-PARTNER-DISTRIBUTION-001",
+      "related_video_id": "AJqjwT5ueG4",
+      "claim": "Paxos's platform support for XRP could make it easier for partner apps to offer the asset, but that does not mean PayPal, Venmo, or Schwab currently offer XRP for consumer purchase or that future integration will generate net spot demand.",
+      "evidence_class": "PAXOS_PLATFORM_SUPPORT_CONFIRMED; PAYPAL_CONSUMER_XRP_AVAILABILITY_NOT_CONFIRMED; FUTURE_DEMAND_IS_HYPOTHESIS",
+      "primary_sources": [
+        "https://docs.paxos.com/guides/developer/blockchains",
+        "https://www.paypal.com/us/cshelp/article/paypal-cryptocurrency-faqs-help565",
+        "https://developer.paypal.com/crypto/",
+        "https://www.paxos.com/pyusd",
+        "https://www.schwab.com/learn/story/crypto-futures-solana-ripple-now-on-thinkorswim"
+      ],
+      "corroborated_details": [
+        "Paxos's current official asset documentation lists XRP as an asset supported for trading and custody on its platform.",
+        "PayPal's US consumer crypto FAQ currently lists PYUSD, BTC, ETH, LTC, BCH, SOL, and LINK; XRP is not listed.",
+        "PayPal's merchant Pay with Crypto developer page includes XRP in a crypto payment allow-list. This is a different product flow from buying/holding XRP inside the PayPal or Venmo consumer app.",
+        "Paxos states that some crypto custody/trading services are performed for PayPal and Venmo; this does not establish the same provider relationship for Schwab.",
+        "The transcript itself distinguishes platform capability from a partner actually enabling XRP."
+      ],
+      "counterpoints": [
+        "A supported asset on a provider platform does not prove an app partner has activated it.",
+        "A listing or integration does not by itself prove incremental net buying, sustained holding, reduced liquid float, or a price effect.",
+        "The stated $1.8 billion spot ETF flow figure remains unverified in this record."
+      ],
+      "prediction_use": "Treat as a catalyst watchlist item only. Require a dated partner announcement, consumer-product support page, and independently sourced flow/market response before adding a positive price feature."
     }
   ],
   "research_updates": [
@@ -850,6 +914,22 @@
         }
       ],
       "status": "EXECUTED_PUBLIC_RESEARCH_SNAPSHOT; NOT_FULL_CHANNEL_INGESTION; NOT_A_PRICE_FORECAST"
+    },
+    {
+      "update_id": "VIDIQ-TRANSCRIPT-AJQJWT5UEG4-20261027",
+      "updated_at_utc": "2026-10-27T02:05:49.673Z",
+      "type": "TRANSCRIPT_CAPTURE_AND_PRIMARY_SOURCE_CROSSCHECK",
+      "video_id": "AJqjwT5ueG4",
+      "transcript_sha256": "f15bfc8437c056c7567b516d0fcf5cfd9206d67b1aa2eef140059df5d8193b54",
+      "transcript_character_count": 11503,
+      "summary": "Captured English transcript via connected vidIQ; extracted five time-stamped claims. Paxos currently documents XRP as supported for trading/custody, but PayPal's consumer buy/hold list does not include XRP; PayPal merchant crypto checkout support is a separate use case. The video itself says partners must independently enable XRP. $1.8B ETF-flow claim and the asserted Schwab/Paxos relationship remain unverified.",
+      "sources": [
+        "https://docs.paxos.com/guides/developer/blockchains",
+        "https://www.paypal.com/us/cshelp/article/paypal-cryptocurrency-faqs-help565",
+        "https://developer.paypal.com/crypto/",
+        "https://www.paxos.com/pyusd",
+        "https://www.schwab.com/learn/story/crypto-futures-solana-ripple-now-on-thinkorswim"
+      ]
     }
   ]
 }
