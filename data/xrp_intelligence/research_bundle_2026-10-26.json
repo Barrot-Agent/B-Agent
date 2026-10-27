@@ -8249,14 +8249,14 @@
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "RUN 8 RESEARCH BUNDLE AND HANDOFF UPDATED; EXACT-HEAD CI AND FAIL-CLOSED GATE PASSED",
       "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; BASE_DIVERGENCE_REMAINS; CURRENT_MAIN_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED",
-      "note": "Latest exact head 5f5d307750a4afae89c831b8a6330565d2f79585 passed CI run 40493603110 and fail-closed gate 40493602935. Main is 47 commits ahead of base; the observed delta contains 14 generated runtime/log/signal/deployment-report files and no code/workflow files. Current-base integration remains unverified; do not merge automatically.",
+      "note": "Latest research branch head 2e9e15ecbfba2565d97e853e95349105fe95f095 passed exact-head CI run 40501588457 (111 tests, 6.27s) and fail-closed gate 40501588459. Main tip observed as 0b5e845f4b2a19f6e6919c07b8d2077b31f54db1; compare from base a3e0f0198510634420f925eef8cea384aca51b12 shows 55 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. The GitHub timestamps are ahead of the supplied session clock; current-base integration remains unverified. Do not merge automatically.",
       "last_completed_head_sha": "5f5d307750a4afae89c831b8a6330565d2f79585",
       "last_completed_ci_run": 40501588457,
       "last_completed_ci_conclusion": "success",
       "last_completed_fail_closed_gate_run": 40501588459,
       "last_completed_gate_conclusion": "success; merge not performed",
-      "current_main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
-      "base_to_main_commits_ahead": 47,
+      "current_main_tip_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+      "base_to_main_commits_ahead": 55,
       "base_to_main_changed_files": 14,
       "base_to_main_code_or_workflow_changes": false,
       "last_validated_head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
@@ -8349,9 +8349,9 @@
     },
     "main_delta_since_research_base": {
       "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "current_main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
+      "current_main_tip_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
       "comparison_status": "ahead",
-      "commits_ahead": 47,
+      "commits_ahead": 55,
       "changed_file_count": 14,
       "changed_files": [
         "AUTONOMOUS_DEPLOYMENT_REPORT.md",
@@ -8370,7 +8370,7 @@
         "web/signal_history_btc.jsonl"
       ],
       "code_or_workflow_files_changed": false,
-      "interpretation": "Direct compare from base a3e0f0198510634420f925eef8cea384aca51b12 to main tip 98db0f67cf5958bdf8a02123e8a2ea7261fe13ff shows 47 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report; no code/workflow files in this observed delta. Current-base integration still requires validation."
+      "interpretation": "Direct compare from research base to latest main tip shows only generated runtime/log/signal/knowledge-base data and deployment report changed; no code/workflow files in this observed delta. This does not replace current-main integration CI."
     },
     "signal_summary_failure": {
       "run_id": 40474891738,
@@ -8467,7 +8467,48 @@
       "ci_run_created_at_utc": "2026-10-27T12:09:41Z",
       "retrieval_time_exposed": false,
       "status": "UNRESOLVED_CLOCK_ORDER_CONFLICT; RECHECK_ON_NEXT_RUN; DO_NOT_USE_GITHUB_COMMIT_TIMESTAMPS_AS_INDEPENDENT_CLOCK"
-    }
+    },
+    "current_open_pr_snapshot": [
+      {
+        "pr": 1170,
+        "title": "Research: durable XRP intelligence ledger and relationship graph",
+        "state": "OPEN_DRAFT",
+        "head_sha": "2e9e15ecbfba2565d97e853e95349105fe95f095",
+        "ci_run": 40501588457,
+        "ci": "PASS; 111 tests in 6.27s",
+        "gate_run": 40501588459,
+        "gate": "PASS; no merge",
+        "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1185,
+        "title": "Safety: fail closed on invalid XRP sentiment and retire legacy accuracy (fresh main)",
+        "state": "OPEN_DRAFT",
+        "head_sha": "755795e70a4d33bd0d41e1454d4f4629ff116086",
+        "base_sha": "0190c81914f921455725e73add58d5527aae8148",
+        "status": "Earlier exact-head CI and fail-closed gate passed; current-main integration not verified",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1187,
+        "title": "Safety: disable mutation-capable merge queue on current main",
+        "state": "OPEN_DRAFT",
+        "head_sha": "72810849a91d828f4f9604c65375340f8f23f55c",
+        "base_sha": "13d99a5a68e37e316e1505dba3f76e3cdc890323",
+        "status": "Earlier exact-head CI and fail-closed gate passed; active main workflow remains mutation-capable",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1188,
+        "title": "Reliability: persist deterministic XRP summary when Groq is unavailable",
+        "state": "OPEN_DRAFT",
+        "head_sha": "0674e22870305a2f36386b004ac182a7a1561892",
+        "base_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+        "status": "Earlier exact-head CI and fail-closed gate passed; current-main integration not verified",
+        "merge_authorized": false
+      }
+    ]
   },
   "video_ingestion": {
     "creator": "Kamilah Stevenson",
