@@ -569,10 +569,13 @@ def post_issue_comment(message: str) -> None:
 
     with tempfile.TemporaryDirectory(prefix="barrot_comment_") as tmp_dir:
         comment_path = Path(tmp_dir) / "barrot_comment_body.md"
-    comment_path.write_text(message[:60000], encoding="utf-8")
-    result = run_gh(["issue", "comment", ISSUE, "--repo", REPO, "--body-file", str(comment_path)])
-    if result.returncode != 0:
-        print(result.stderr[:3000], file=sys.stderr)
+        comment_path.write_text(message[:60000], encoding="utf-8")
+        result = run_gh(
+            ["issue", "comment", ISSUE, "--repo", REPO, "--body-file", str(comment_path)],
+            check=False,
+        )
+        if result.returncode != 0:
+            print(result.stderr[:3000], file=sys.stderr)
 
 
 def _cycle_dict(cycle: Any) -> dict[str, Any]:
