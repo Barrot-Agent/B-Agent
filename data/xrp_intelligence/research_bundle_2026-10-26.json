@@ -1900,6 +1900,26 @@
         "Flow estimates depend on issuer-reported holdings and data-gap treatment; excluded GXRP flow means totals are not complete across all tracked products.",
         "A weekly flow/price divergence does not establish causality or forecast direction."
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027",
+      "title": "Main latest_signal.json returned with unresolved timestamp ordering",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_artifact_and_clock_consistency_observation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "2026-10-27T11:28:59.234196Z",
+      "source_commit": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+      "sections": [
+        "The GitHub default-branch latest_signal.json response contains timestamp 2026-10-27T11:28:59.234196+00:00, score 44, confidence 0.0, news_score 88 from 11 entries.",
+        "The artifact source field reports missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429; the listed headlines are primarily XRPL protocol/academic research topics.",
+        "The same GitHub API response identifies main commit 0b5e845f4b2a19f6e6919c07b8d2077b31f54db1 with Git author/committer timestamp 2026-10-27T12:05:39Z.",
+        "The session clock available to this run was 2026-10-27T11:10:00Z. Both the artifact timestamp and commit timestamp are later than that clock. The connector did not provide an independently measured retrieval timestamp, so ordering cannot be resolved from this response alone."
+      ],
+      "source_limitations": [
+        "Do not treat the artifact or commit timestamp as a verified wall-clock retrieval time.",
+        "Exclude this snapshot from time-sensitive forecast features and outcome evaluation until the source clock/order discrepancy is reconciled.",
+        "A score with confidence zero and explicit provider failures is not a directional forecast, regardless of the numeric score or news score."
+      ]
     }
   ],
   "claims": [
@@ -3687,6 +3707,32 @@
         "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
       ],
       "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-CLOCK-CONFLICT-20261027",
+      "statement": "The GitHub main-branch latest_signal.json response contains score 44, confidence 0, news_score 88 from 11 entries and explicit missing-GitHub-credentials/Groq-429 failures. The returned artifact timestamp (11:28:59Z) and main commit timestamp (12:05:39Z) are later than the session clock (11:10Z), while connector retrieval time is not independently exposed. The artifact is invalid for forecasting, and its event-time ordering must remain unresolved until rechecked against a consistent clock.",
+      "domain": "prediction_engine_integrity_and_data_provenance",
+      "claim_type": "observed_repository_artifact_with_clock_order_conflict",
+      "source": "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-CLOCK-CONFLICT-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "OBSERVED_ARTIFACT; CLOCK_ORDER_CONFLICT_UNRESOLVED",
+      "independent_verification_status": "GITHUB_CONTENT_AND_COMMIT_METADATA_OBSERVED; WALL_CLOCK_RETRIEVAL_TIME_NOT_EXPOSED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "INVALID_FOR_FORECASTING; EXCLUDE_FROM_TIME_SENSITIVE_EVALUATION_PENDING_CLOCK_RECONCILIATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "The session clock supplied to the assistant is the relevant comparison clock for this run.",
+        "Git commit timestamps are author-controlled metadata and are not independently trusted as wall-clock evidence.",
+        "A subsequent retrieval with a consistent clock may resolve the discrepancy."
+      ],
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027"
+      ],
+      "timestamp": 1793100539
     }
   ],
   "evidence": [
@@ -5672,6 +5718,36 @@
         "gXRP_flow_treatment": "EXCLUDED_FROM_FLOW_TOTAL_DURING_SCRAPE_GAP_CORRECTION",
         "causal_effect_on_price": "NOT_ESTABLISHED"
       }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-CLOCK-CONFLICT-20261027",
+      "claim_id": "XRP-C-MAIN-SIGNAL-CLOCK-CONFLICT-20261027",
+      "kind": "repository_artifact_snapshot_and_clock_consistency_check",
+      "summary": "GitHub returned latest_signal.json blob 6f588de8dd5684e64d5a69e6b95e0e2fc0288d8d with signal timestamp 2026-10-27T11:28:59.234196Z, score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials and Groq HTTP 429. Main commit 0b5e845f4b2a19f6e6919c07b8d2077b31f54db1 reports 12:05:39Z, later than the session clock 11:10Z. Retrieval wall-clock time was not supplied; exclude from time-sensitive forecasting pending reconciliation.",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "INVALID_FOR_FORECASTING; CLOCK_ORDER_CONFLICT; NO_FORECAST_ISSUED",
+      "independence": "github_repository_content_and_commit_metadata; retrieval_clock_not_independently_measured",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027"
+      ],
+      "details": {
+        "artifact_blob_sha": "6f588de8dd5684e64d5a69e6b95e0e2fc0288d8d",
+        "main_commit_sha": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+        "main_commit_timestamp_utc": "2026-10-27T12:05:39Z",
+        "artifact_timestamp_utc": "2026-10-27T11:28:59.234196Z",
+        "session_clock_utc": "2026-10-27T11:10:00Z",
+        "retrieval_timestamp_exposed": false,
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429"
+        ],
+        "forecast_status": "NOT_ISSUED"
+      }
     }
   ],
   "tracks": [
@@ -6517,10 +6593,11 @@
       {
         "id": "Barrot main XRP signal artifact",
         "type": "prediction_engine_runtime_artifact",
-        "status": "OBSERVED_2026-10-27T09:33:53Z; CONFIDENCE_ZERO_PROVIDER_FAILURES; NOT_A_VALID_FORECAST",
+        "status": "LATEST_RETURNED_ARTIFACT_INVALID_FOR_FORECASTING; PROVIDER_FAILURES; CLOCK_ORDER_UNRESOLVED",
         "source_ids": [
           "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z",
-          "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z"
+          "SRC-BARROT-MAIN-SIGNAL-20261027T093353Z",
+          "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027"
         ]
       },
       {
@@ -7353,6 +7430,17 @@
           "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
         ],
         "caveat": "Holdings and flows are aggregated from issuer data by a secondary provider; GXRP flows are excluded during a reported scrape correction. Holdings do not establish active trading, net market impact, or a directional price signal."
+      },
+      {
+        "source": "Barrot main XRP signal artifact",
+        "target": "XRP",
+        "relationship_type": "PROPOSED_FORECAST_INPUT",
+        "classification": "INVALID_INPUT; PROVIDER_FAILURES_AND_CLOCK_ORDER_CONFLICT",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027"
+        ],
+        "caveat": "The artifact must not be used as a directional XRP forecast or as a time-sensitive feature until provider availability, news relevance, and clock ordering are independently validated."
       }
     ]
   },
@@ -8051,7 +8139,7 @@
         "mitigation_scope": "PR #1188 fixes deterministic summary fallback only; it does not change workflow's direct-push behavior."
       }
     ],
-    "latest_signal_staleness": "Main latest_signal.json blob d193c5bf1a4da48d596d606e120335043ae3380d, timestamp 2026-10-27T10:30:31.099032Z; retrieved 2026-10-27T11:07:00Z. Score 44, confidence 0, news score 88/11 entries; missing GitHub model credentials and Groq HTTP 429; protocol/research headline contamination remains. Invalid for forecasting.",
+    "latest_signal_staleness": "Latest returned main artifact blob 6f588de8dd5684e64d5a69e6b95e0e2fc0288d8d has source timestamp 2026-10-27T11:28:59.234196Z, score 44, confidence 0, news score 88/11, missing GitHub model credentials and Groq HTTP 429. Its timestamp and main commit timestamp 12:05:39Z are later than the session clock 11:10Z; retrieval time is not exposed. Exclude from time-sensitive forecasting until clock order is reconciled.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -8154,7 +8242,7 @@
       "latest_candidate_ci_status": "PASS",
       "latest_candidate_change": "Reject redirects that change the pinned manifest commit or bundle ID; current exact-head CI and fail-closed gate pass. Physical device receipt remains pending."
     },
-    "last_audit_at_utc": "2026-10-27T11:07:00.000Z",
+    "last_audit_at_utc": "2026-10-27T11:10:00.000Z",
     "physical_termux_delivery": {
       "status": "CURRENT_RECEIVER_HEAD_CI_PASS; DEVICE_RECEIPT_PENDING",
       "receiver_pr": 1182,
@@ -8250,6 +8338,32 @@
       "interpretation": "Calls score 44 moderate and news score 88 high, infers positive technical interest despite confidence 0 and provider failures; invalid interpretation, not a forecast.",
       "mitigation_pr": 1188,
       "mitigation_state": "DRAFT_CI_PASS_NOT_EFFECTIVE_ON_MAIN"
+    },
+    "latest_observed_main_signal": {
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-CLOCK-CONFLICT-20261027",
+      "blob_sha": "6f588de8dd5684e64d5a69e6b95e0e2fc0288d8d",
+      "signal_timestamp_utc": "2026-10-27T11:28:59.234196Z",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_failures": [
+        "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+        "Groq HTTP 429"
+      ],
+      "main_tip_sha_returned": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+      "main_commit_timestamp_utc": "2026-10-27T12:05:39Z",
+      "session_clock_utc": "2026-10-27T11:10:00Z",
+      "retrieval_timestamp_exposed": false,
+      "clock_order_status": "UNRESOLVED; SOURCE AND COMMIT TIMESTAMPS ARE AHEAD OF SESSION CLOCK",
+      "forecast_disposition": "NOT_ISSUED; EXCLUDE_FROM_TIME_SENSITIVE_EVALUATION_PENDING_RECHECK"
+    },
+    "main_tip_sha_observed": "0b5e845f4b2a19f6e6919c07b8d2077b31f54db1",
+    "main_tip_timestamp_conflict": {
+      "session_clock_utc": "2026-10-27T11:10:00Z",
+      "github_commit_timestamp_utc": "2026-10-27T12:05:39Z",
+      "retrieval_timestamp_exposed": false,
+      "disposition": "DO_NOT_INFER_WALL_CLOCK_ORDER_FROM_COMMIT_METADATA; RECHECK ON NEXT RUN"
     }
   },
   "video_ingestion": {
@@ -8320,6 +8434,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Recheck GitHub main tip and latest_signal.json with an independently consistent clock. The returned artifact timestamp 11:28:59Z and commit timestamp 12:05:39Z are later than this run's 11:10Z session clock, and the connector did not expose retrieval time. Keep this artifact out of time-sensitive forecast features until ordering is resolved.",
+      "status": "CLOCK_ORDER_CONFLICT_RECORDED; FOLLOW-UP_RECHECK_REQUIRED"
+    },
     {
       "priority": 0,
       "action": "Reconcile XRP ETF flows issuer-by-issuer through the 2026-10-23 close, especially the GXRP scrape-gap treatment, then align flows with spot depth and derivatives deleveraging before testing any predictive effect.",
