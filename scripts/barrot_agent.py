@@ -229,11 +229,31 @@ def _groq_payload(
     return payload
 
 
+def _groq_fallback_models(primary_model: str) -> list[str]:
+    configured = os.environ.get("BRAIN_FALLBACK_MODELS", "").strip()
+    candidates = (
+        [item.strip() for item in configured.split(",") if item.strip()]
+        if configured
+        else [
+            "openai/gpt-oss-20b",
+            "llama-3.3-70b-versatile",
+            "qwen/qwen3-32b",
+        ]
+    )
+    seen = {primary_model}
+    result: list[str] = []
+    for candidate in candidates:
+        if candidate not in seen:
+            seen.add(candidate)
+            result.append(candidate)
+    return result
+
+
 def _send_groq_request(
     payload: dict[str, Any],
     *,
     request_sender: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
-    _rate_limit_retry: bool = False,
+    _model_fallback_attempted: bool = False,
 ) -> dict[str, Any]:
     if request_sender is not None:
         return request_sender(payload)
@@ -261,21 +281,29 @@ def _send_groq_request(
             raise RuntimeError(f"LLM tool conflict: {detail}") from exc
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
-        if exc.code == 429 and not _rate_limit_retry and "tokens per day" in lowered:
-            retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
-            if retry_match:
-                retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
-                if 0 < retry_seconds <= 1800:
-                    print(
-                        f"Groq daily token quota reached; retrying once in {retry_seconds:.1f}s.",
-                        file=sys.stderr,
-                    )
-                    time.sleep(retry_seconds)
+        if exc.code == 429 and "tokens per day" in lowered and not _model_fallback_attempted:
+            primary_model = str(payload.get("model") or MODEL)
+            fallback_models = _groq_fallback_models(primary_model)
+            failures: list[str] = []
+            for fallback_model in fallback_models:
+                fallback_payload = dict(payload)
+                fallback_payload["model"] = fallback_model
+                print(
+                    f"Groq daily token quota reached for {primary_model}; trying fallback model {fallback_model}.",
+                    file=sys.stderr,
+                )
+                try:
                     return _send_groq_request(
-                        payload,
+                        fallback_payload,
                         request_sender=request_sender,
-                        _rate_limit_retry=True,
+                        _model_fallback_attempted=True,
                     )
+                except RuntimeError as fallback_exc:
+                    failures.append(f"{fallback_model}: {fallback_exc}")
+            details = "; ".join(failures) if failures else "no fallback models configured"
+            raise RuntimeError(
+                f"Groq daily token quota exhausted for {primary_model}; all configured fallback models failed. {details}"
+            ) from exc
         raise RuntimeError(f"Groq HTTP {exc.code}: {detail}") from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM network error: {exc}") from exc

@@ -465,19 +465,18 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
 
     assert observed["body"] == "test failure report"
 
-def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> None:
+def test_barrot_groq_daily_token_limit_falls_back_without_waiting(monkeypatch) -> None:
     import io
     import urllib.error
 
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.delenv("BRAIN_FALLBACK_MODELS", raising=False)
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
-        "barrot_agent_groq_daily_limit_retry_test",
+        "barrot_agent_groq_daily_limit_fallback_test",
     )
     monkeypatch.setattr(module, "GROQ_KEY", "test-key")
-    sleeps: list[float] = []
-    calls = {"count": 0}
-    monkeypatch.setattr(module.time, "sleep", lambda seconds: sleeps.append(seconds))
+    calls: list[str] = []
 
     class Response:
         def __enter__(self):
@@ -492,9 +491,10 @@ def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> N
             return b'{"ok": true}'
 
     def fake_urlopen(request, timeout=0):
-        del request, timeout
-        calls["count"] += 1
-        if calls["count"] == 1:
+        del timeout
+        payload = json.loads(request.data.decode("utf-8"))
+        calls.append(payload["model"])
+        if len(calls) == 1:
             body = b'{"error":{"message":"tokens per day limit reached. Please try again in 22m0s."}}'
             raise urllib.error.HTTPError(
                 "https://api.groq.com/openai/v1/chat/completions",
@@ -506,10 +506,7 @@ def test_barrot_groq_daily_token_limit_waits_once_then_retries(monkeypatch) -> N
         return Response()
 
     monkeypatch.setattr(module.urllib.request, "urlopen", fake_urlopen)
-    result = module._send_groq_request({"model": "test", "messages": []})
+    result = module._send_groq_request({"model": "openai/gpt-oss-120b", "messages": []})
 
     assert result == {"ok": True}
-    assert calls["count"] == 2
-    assert sleeps == [1320.0]
-
-
+    assert calls == ["openai/gpt-oss-120b", "openai/gpt-oss-20b"]
