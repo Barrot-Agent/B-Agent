@@ -3,24 +3,24 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T15:07:14Z",
-    "main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
+    "captured_at_utc": "2026-10-27T17:02:57Z",
+    "main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING: blob f794a17dbb7165e32e8ed729ecc6e7de6f9bf892, timestamp 2026-10-27T14:34:30.605666Z, score 44/confidence 0, news_score 88/11, provider failures; protocol/research headline contamination. Forecast NOT_ISSUED.",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: blob 5d9d076d82bea905981c0ed64b7648732d48f817, timestamp 2026-10-27T16:25:46.819838+00:00, score 44/confidence 0, news_score 88/11, missing GitHub model credentials and Groq HTTP 429; protocol/research headline contamination. Forecast NOT_ISSUED.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
-    "latest_signal_timestamp": "2026-10-27T14:34:30.605666Z",
-    "latest_signal_blob_sha": "f794a17dbb7165e32e8ed729ecc6e7de6f9bf892",
-    "main_tip_sha_last_explicitly_observed": "ab76414688d88444d021d837c2b3af2d10200c0b",
-    "main_tip_sha_status": "Main ref confirmed identical to ab76414688d88444d021d837c2b3af2d10200c0b; commit timestamp 2026-10-27T14:57:15Z precedes session clock 2026-10-27T15:07:14Z. Retrieval timestamp is not exposed.",
+    "latest_signal_timestamp": "2026-10-27T16:25:46.819838+00:00",
+    "latest_signal_blob_sha": "5d9d076d82bea905981c0ed64b7648732d48f817",
+    "main_tip_sha_last_explicitly_observed": "97a937af5119345dd2e625b2d19670e2e75e1338",
+    "main_tip_sha_status": "Main ref observed through compare_commits at 2026-10-27T17:02:57Z; main tip 97a937af5119345dd2e625b2d19670e2e75e1338. Latest signal artifact timestamp 2026-10-27T16:25:46.819838+00:00 precedes session clock. Connector retrieval timestamp and commit timestamp were not exposed in this read.",
     "remote_state_observation": {
-      "session_clock_utc": "2026-10-27T15:07:14Z",
+      "session_clock_utc": "2026-10-27T17:02:57Z",
       "retrieval_timestamp_utc": null,
       "retrieval_timestamp_exposed": false,
-      "main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "main_commit_timestamp_utc": "2026-10-27T14:57:15Z",
-      "latest_signal_timestamp_utc": "2026-10-27T14:34:30.605666Z",
-      "status": "Remote timestamps precede session clock; retrieval timestamp not exposed; chronology consistent for this snapshot."
+      "main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "main_commit_timestamp_utc": null,
+      "latest_signal_timestamp_utc": "2026-10-27T16:25:46.819838+00:00",
+      "status": "Artifact timestamp precedes session clock; main commit timestamp and independent retrieval timestamp not exposed."
     }
   },
   "problem": {
@@ -2403,6 +2403,88 @@
         "Main is 7 commits ahead of base 882b3d3f13165501642756769e74ff48251efb75; 7 changed files are generated data/log/signal only.",
         "Test patch contains the same function name twice with identical assertions; remove duplicate before approval.",
         "PR remains draft/unmerged; effective branch protection unverified."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T162546Z-RUN12",
+      "title": "Main-branch XRP signal artifact observed during run 12",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "Artifact timestamp 2026-10-27T16:25:46.819838+00:00; observed at session clock 2026-10-27T17:02:57Z; connector retrieval timestamp not exposed",
+      "source_commit": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "sections": [
+        "score=44",
+        "confidence=0.0",
+        "news_score=88 from 11 entries",
+        "missing GitHub model credentials",
+        "Groq HTTP 429",
+        "XRPL protocol/research headlines",
+        "forecast disposition NOT_ISSUED"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN12",
+      "title": "Active main-branch merge-queue workflow observed during run 12",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "publication_date": "Observed at session clock 2026-10-27T17:02:57Z; connector retrieval timestamp not exposed",
+      "source_commit": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "sections": [
+        "workflow_dispatch",
+        "contents: write",
+        "pull-requests: write",
+        "mode=all",
+        "max_prs defaults to 0 (unlimited)",
+        "dry_run defaults false",
+        "branch-update API operation",
+        "gh pr merge command"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1170-CHECKS-20261027-RUN12",
+      "title": "Research PR #1170 exact-head CI and fail-closed gate",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow_checks",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "publication_date": "Observed at 2026-10-27T17:02:57Z; exact head 5415d4829d9d96a08982c44fbe6cd0149649e99d; CI 40528500824 success; gate 40528500878 success",
+      "source_commit": "5415d4829d9d96a08982c44fbe6cd0149649e99d",
+      "sections": [
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40528500824",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40528500878",
+        "PR remains draft/unmerged"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1190-CHECKS-20261027-RUN12",
+      "title": "Signal-integrity PR #1190 exact-head CI and fail-closed gate",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow_checks",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1190",
+      "publication_date": "Observed at 2026-10-27T17:02:57Z; exact head 46c088f98c14810601251e611fe956cbc2b3b6a5; CI 40510228609 success (130 tests); gate 40510228598 success",
+      "source_commit": "46c088f98c14810601251e611fe956cbc2b3b6a5",
+      "sections": [
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228609",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40510228598",
+        "PR remains draft/unmerged"
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1192-CHECKS-20261027-RUN12",
+      "title": "Merge-queue safety PR #1192 exact-head CI and fail-closed gate",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_workflow_checks",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
+      "publication_date": "Observed at 2026-10-27T17:02:57Z; exact head 9db13cc88af6652a7a6cab72ea364ff92702c20e; CI 40528634532 success; gate 40528634847 success",
+      "source_commit": "9db13cc88af6652a7a6cab72ea364ff92702c20e",
+      "sections": [
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40528634532",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/40528634847",
+        "read-only/manual-only workflow verified by source read-back",
+        "risk-manager test retained",
+        "duplicate safety-test definition count=1",
+        "PR remains draft/unmerged"
       ]
     }
   ],
@@ -4820,6 +4902,84 @@
         "SRC-BARROT-PR1192-VALIDATION-20261027-RUN11"
       ],
       "timestamp": 1793113634
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T162546Z-RUN12",
+      "statement": "The latest observed main-branch signal artifact at 2026-10-27T16:25:46.819838+00:00 reports score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429; its headline sample is dominated by XRPL protocol/research topics. This output is invalid for directional forecasting and the forecast remains NOT_ISSUED.",
+      "domain": "market_signal_quality",
+      "claim_type": "confirmed_repository_artifact_state",
+      "source": "SRC-BARROT-MAIN-SIGNAL-20261027T162546Z-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-INVALID-20261027T162546Z-RUN12"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "ARTIFACT_READBACK_VERIFIED; MARKET_NEWS_INDEPENDENCE_AND_LIVE_MARKET_VALIDATION_NOT_VERIFIED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "NOT_ACCEPTED_FOR_FORECASTING",
+      "confidence": 0.99,
+      "assumptions": [
+        "The artifact is the value served from main at the observed reference.",
+        "A numeric score is not a forecast unless target, horizon, event-time features and calibrated probability are defined."
+      ],
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T162546Z-RUN12"
+      ],
+      "timestamp": 1793120577
+    },
+    {
+      "claim_id": "XRP-C-MAIN-MERGE-QUEUE-STILL-MUTATING-20261027-RUN12",
+      "statement": "Main at 97a937af5119345dd2e625b2d19670e2e75e1338 still contains a manually dispatchable merge-queue workflow with write permissions, all-open-PR mode, branch-update operations and merge commands. PR #1192's read-only replacement is draft/unmerged; the main-branch risk remains active. Do not dispatch the workflow.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "confirmed_configuration_with_risk_assessment",
+      "source": "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "supporting_evidence": [
+        "XRP-E-MAIN-MERGE-QUEUE-MUTATION-RISK-20261027-RUN12"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "MAIN_WORKFLOW_READBACK_VERIFIED; EFFECTIVE_BRANCH_PROTECTION_UNVERIFIED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "OPEN_RISK; NO_DISPATCH",
+      "confidence": 0.99,
+      "assumptions": [
+        "GitHub connector did not expose effective branch-protection/ruleset settings."
+      ],
+      "provenance": [
+        "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN12"
+      ],
+      "timestamp": 1793120577
+    },
+    {
+      "claim_id": "XRP-C-PR-EXACT-HEAD-CHECKS-20261027-RUN12",
+      "statement": "Exact-head GitHub Actions CI and fail-closed gate checks passed for PR #1170 head 5415d4829d9d96a08982c44fbe6cd0149649e99d, PR #1190 head 46c088f98c14810601251e611fe956cbc2b3b6a5, and PR #1192 head 9db13cc88af6652a7a6cab72ea364ff92702c20e. PR #1190's CI reports 130 passing tests. All three remain draft/unmerged; successful branch checks do not establish integration into main.",
+      "domain": "repository_verification",
+      "claim_type": "exact_head_workflow_check_state",
+      "source": "SRC-BARROT-PR1170-CHECKS-20261027-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "supporting_evidence": [
+        "XRP-E-PR1170-HEAD-CHECKS-20261027-RUN12",
+        "XRP-E-PR1190-HEAD-CHECKS-20261027-RUN12",
+        "XRP-E-PR1192-HEAD-CHECKS-20261027-RUN12"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "EXACT_HEAD_CI_AND_GATE_VERIFIED; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
+      "adversarial_status": "UNRESOLVED",
+      "acceptance_status": "DRAFT_ONLY; NO_MERGE_AUTHORIZED",
+      "confidence": 0.99,
+      "assumptions": [
+        "GitHub Actions conclusions correspond to the exact recorded commit SHAs.",
+        "CI success does not prove production behavior or branch protection."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1170-CHECKS-20261027-RUN12",
+        "SRC-BARROT-PR1190-CHECKS-20261027-RUN12",
+        "SRC-BARROT-PR1192-CHECKS-20261027-RUN12"
+      ],
+      "timestamp": 1793120577
     }
   ],
   "evidence": [
@@ -7530,6 +7690,111 @@
         "main_delta_files": 7,
         "duplicate_test_function_name": true
       }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-INVALID-20261027T162546Z-RUN12",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T162546Z-RUN12",
+      "kind": "repository_artifact_observation",
+      "summary": "At observed main tip 97a937af5119345dd2e625b2d19670e2e75e1338, web/latest_signal.json blob 5d9d076d82bea905981c0ed64b7648732d48f817 has artifact timestamp 2026-10-27T16:25:46.819838+00:00, score 44, confidence 0, news score 88 from 11 entries, missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429. Its headline sample is dominated by XRPL protocol/research titles. The artifact is invalid for directional forecasting.",
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T162546Z-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "SUPPORTED",
+      "independence": "same_repository_artifact; independent_market_validation_not_performed",
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T162546Z-RUN12"
+      ],
+      "details": {
+        "main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+        "blob_sha": "5d9d076d82bea905981c0ed64b7648732d48f817",
+        "session_clock_utc": "2026-10-27T17:02:57Z",
+        "retrieval_timestamp_exposed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-MERGE-QUEUE-MUTATION-RISK-20261027-RUN12",
+      "claim_id": "XRP-C-MAIN-MERGE-QUEUE-STILL-MUTATING-20261027-RUN12",
+      "kind": "repository_workflow_readback",
+      "summary": "At main tip 97a937af5119345dd2e625b2d19670e2e75e1338, .github/workflows/merge-queue.yml blob 19b41e2894fdf1b835498fca3eeab870c3b4c8b1 remains manually dispatchable with contents/pull-requests write permissions, mode=all, unlimited default max_prs, dry_run=false, branch-update API calls and gh pr merge. The draft replacement PR #1192 is not effective on main.",
+      "source_id": "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "status": "SUPPORTED",
+      "independence": "direct_configuration_readback",
+      "provenance": [
+        "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN12"
+      ],
+      "details": {
+        "main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+        "workflow_blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+        "effective_branch_protection": "UNVERIFIED",
+        "do_not_dispatch": true
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1170-HEAD-CHECKS-20261027-RUN12",
+      "claim_id": "XRP-C-PR-EXACT-HEAD-CHECKS-20261027-RUN12",
+      "kind": "workflow_check_observation",
+      "summary": "Research PR #1170 exact head 5415d4829d9d96a08982c44fbe6cd0149649e99d has CI run 40528500824 and fail-closed gate run 40528500878 both completed successfully. Test count was not exposed in the returned job metadata. PR remains draft/unmerged and its branch is 91 commits behind current main.",
+      "source_id": "SRC-BARROT-PR1170-CHECKS-20261027-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1170",
+      "status": "SUPPORTED",
+      "independence": "GitHub_Actions_exact_head_status",
+      "provenance": [
+        "SRC-BARROT-PR1170-CHECKS-20261027-RUN12"
+      ],
+      "details": {
+        "head_sha": "5415d4829d9d96a08982c44fbe6cd0149649e99d",
+        "ci_run": 40528500824,
+        "ci_conclusion": "success",
+        "gate_run": 40528500878,
+        "gate_conclusion": "success",
+        "merged": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1190-HEAD-CHECKS-20261027-RUN12",
+      "claim_id": "XRP-C-PR-EXACT-HEAD-CHECKS-20261027-RUN12",
+      "kind": "workflow_check_observation",
+      "summary": "Signal-integrity PR #1190 exact head 46c088f98c14810601251e611fe956cbc2b3b6a5 has CI run 40510228609 passing 130 tests and fail-closed gate run 40510228598 completed successfully. PR remains draft/unmerged; its fix is not effective on main.",
+      "source_id": "SRC-BARROT-PR1190-CHECKS-20261027-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1190",
+      "status": "SUPPORTED",
+      "independence": "GitHub_Actions_exact_head_status",
+      "provenance": [
+        "SRC-BARROT-PR1190-CHECKS-20261027-RUN12"
+      ],
+      "details": {
+        "head_sha": "46c088f98c14810601251e611fe956cbc2b3b6a5",
+        "ci_run": 40510228609,
+        "tests_passed": 130,
+        "gate_run": 40510228598,
+        "merged": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1192-HEAD-CHECKS-20261027-RUN12",
+      "claim_id": "XRP-C-PR-EXACT-HEAD-CHECKS-20261027-RUN12",
+      "kind": "workflow_check_and_source_readback",
+      "summary": "Merge-queue safety PR #1192 exact head 9db13cc88af6652a7a6cab72ea364ff92702c20e has CI run 40528634532 and fail-closed gate run 40528634847 both completed successfully. Current branch read-back confirms the workflow is manual-only/read-only with no merge or branch-update commands, CI retains tests/test_risk_manager.py and tests/test_merge_queue_safety.py, and the duplicate test definition count is one. PR remains draft/unmerged and is 20 commits behind current main.",
+      "source_id": "SRC-BARROT-PR1192-CHECKS-20261027-RUN12",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
+      "status": "SUPPORTED",
+      "independence": "GitHub_Actions_exact_head_status_plus_direct_branch_readback",
+      "provenance": [
+        "SRC-BARROT-PR1192-CHECKS-20261027-RUN12"
+      ],
+      "details": {
+        "head_sha": "9db13cc88af6652a7a6cab72ea364ff92702c20e",
+        "ci_run": 40528634532,
+        "ci_conclusion": "success",
+        "gate_run": 40528634847,
+        "gate_conclusion": "success",
+        "risk_manager_test_retained": true,
+        "safety_test_retained": true,
+        "duplicate_test_definitions": 1,
+        "merged": false,
+        "main_commits_ahead_of_base": 20
+      }
     }
   ],
   "tracks": [
@@ -10059,11 +10324,11 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
+    "main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
     "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
     "latest_main_commit_ci": "Exact-SHA main CI not independently verified by this adapter; it returns PR-triggered workflow runs only.",
     "current_signal": {
-      "timestamp": "2026-10-27T14:34:30.605666Z",
+      "timestamp": "2026-10-27T16:25:46.819838+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -10072,7 +10337,7 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429"
       ],
-      "blob_sha": "f794a17dbb7165e32e8ed729ecc6e7de6f9bf892",
+      "blob_sha": "5d9d076d82bea905981c0ed64b7648732d48f817",
       "retrieved_at_utc": null,
       "age_minutes_at_retrieval": null,
       "retrieval_time_exposed": false,
@@ -10230,19 +10495,19 @@
       "latest_ledger_revision_status": "RUN 9 RESEARCH BUNDLE AND HANDOFF UPDATED; EXACT-HEAD CI AND FAIL-CLOSED GATE PASSED",
       "state": "OPEN_DRAFT; CURRENT_HEAD_CI_PASS; FAIL_CLOSED_GATE_PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED; NO_MERGE",
       "note": "Latest research branch head a706b7ccdf68bd961cfcb3132d23ecf1773b370f passed exact-head CI run 40510936006 (111 tests, 5.11s) and fail-closed gate 40510935876. Main tip observed as 2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf; compare from base a3e0f0198510634420f925eef8cea384aca51b12 shows 64 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. The GitHub timestamps are ahead of the supplied session clock; current-base integration remains unverified. Do not merge automatically.",
-      "last_completed_head_sha": "ad19e7558ddd1e89c64fe016abb3727a63284dfb",
-      "last_completed_ci_run": 40518932257,
+      "last_completed_head_sha": "5415d4829d9d96a08982c44fbe6cd0149649e99d",
+      "last_completed_ci_run": 40528500824,
       "last_completed_ci_conclusion": "success; test count not exposed",
-      "last_completed_fail_closed_gate_run": 40518932286,
+      "last_completed_fail_closed_gate_run": 40528500878,
       "last_completed_gate_conclusion": "success",
-      "current_main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "base_to_main_commits_ahead": 77,
+      "current_main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "base_to_main_commits_ahead": 91,
       "base_to_main_changed_files": 14,
       "base_to_main_code_or_workflow_changes": false,
       "last_validated_head_sha": "68d2005500e1d55c8d6b6c0ed8b250c3de9a5568",
       "tests_passed": null,
       "elapsed_seconds": null,
-      "session_clock_utc": "2026-10-27T15:07:14Z",
+      "session_clock_utc": "2026-10-27T17:02:57Z",
       "github_run_created_at_utc": "not independently timestamped; log lines report 2026-10-27T13:19Z",
       "clock_order_status": "UNRESOLVED; GITHUB RUN TIMESTAMP LATER THAN SESSION CLOCK",
       "merge_authorized": false,
@@ -10250,11 +10515,14 @@
       "research_branch_commits_from_common_base": 86,
       "main_delta_changed_files": 14,
       "main_delta_code_or_workflow_files_changed": false,
-      "current_head_sha": "ad19e7558ddd1e89c64fe016abb3727a63284dfb",
-      "current_head_ci_run": 40518932257,
-      "current_head_ci_status": "SUCCESS",
-      "current_head_gate_run": 40518932286,
-      "current_head_gate_status": "SUCCESS"
+      "current_head_sha": "5415d4829d9d96a08982c44fbe6cd0149649e99d",
+      "current_head_ci_run": 40528500824,
+      "current_head_ci_status": "SUCCESS; TEST COUNT NOT EXPOSED",
+      "current_head_gate_run": 40528500878,
+      "current_head_gate_status": "SUCCESS",
+      "research_branch_commits_ahead_of_main": 99,
+      "research_branch_commits_behind_main": 91,
+      "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; BRANCH_DIVERGED; CURRENT_MAIN_INTEGRATION_UNVERIFIED; NO_MERGE"
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -10341,7 +10609,7 @@
       "latest_candidate_ci_status": "PASS",
       "latest_candidate_change": "Reject redirects that change the pinned manifest commit or bundle ID; current exact-head CI and fail-closed gate pass. Physical device receipt remains pending."
     },
-    "last_audit_at_utc": "2026-10-27T15:07:14Z",
+    "last_audit_at_utc": "2026-10-27T17:02:57Z",
     "physical_termux_delivery": {
       "status": "CURRENT_RECEIVER_HEAD_CI_PASS; DEVICE_RECEIPT_PENDING",
       "receiver_pr": 1182,
@@ -10443,9 +10711,9 @@
       "interpretation": "Summary repeats score 44/confidence 0 without explicit summary_mode or forecast_status. Not a forecast; PR #1190 remains unmerged."
     },
     "latest_observed_main_signal": {
-      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T143430Z-RUN11",
-      "blob_sha": "f794a17dbb7165e32e8ed729ecc6e7de6f9bf892",
-      "signal_timestamp_utc": "2026-10-27T14:34:30.605666Z",
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T162546Z-RUN12",
+      "blob_sha": "5d9d076d82bea905981c0ed64b7648732d48f817",
+      "signal_timestamp_utc": "2026-10-27T16:25:46.819838+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -10454,44 +10722,46 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429"
       ],
-      "main_tip_sha_returned": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "main_commit_timestamp_utc": "2026-10-27T14:57:15Z",
-      "session_clock_utc": "2026-10-27T15:07:14Z",
+      "main_tip_sha_returned": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "main_commit_timestamp_utc": null,
+      "session_clock_utc": "2026-10-27T17:02:57Z",
       "retrieval_time_exposed": false,
-      "clock_order_status": "REMOTE TIMESTAMPS PRECEDE SESSION CLOCK; RETRIEVAL TIME UNEXPOSED",
+      "clock_order_status": "ARTIFACT TIMESTAMP PRECEDES SESSION CLOCK; MAIN COMMIT/RETRIEVAL TIMESTAMP NOT EXPOSED",
       "forecast_disposition": "NOT_ISSUED; signal invalid for forecasting"
     },
-    "main_tip_sha_observed": "ab76414688d88444d021d837c2b3af2d10200c0b",
+    "main_tip_sha_observed": "97a937af5119345dd2e625b2d19670e2e75e1338",
     "main_tip_timestamp_conflict": {
-      "session_clock_utc": "2026-10-27T15:07:14Z",
-      "latest_observed_main_commit_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "main_commit_timestamp_utc": "2026-10-27T14:57:15Z",
-      "latest_signal_timestamp_utc": "2026-10-27T14:34:30.605666Z",
+      "session_clock_utc": "2026-10-27T17:02:57Z",
+      "latest_observed_main_commit_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "main_commit_timestamp_utc": null,
+      "latest_signal_timestamp_utc": "2026-10-27T16:25:46.819838+00:00",
       "retrieval_time_exposed": false,
-      "status": "REMOTE TIMESTAMPS PRECEDE SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
+      "status": "NO_SIGNAL-TO-SESSION CLOCK INVERSION IN THIS SNAPSHOT; MAIN COMMIT TIMESTAMP AND RETRIEVAL TIME UNEXPOSED"
     },
     "github_clock_consistency_observation": {
-      "session_clock_utc": "2026-10-27T15:07:14Z",
-      "latest_observed_main_commit_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "main_commit_timestamp_utc": "2026-10-27T14:57:15Z",
-      "latest_signal_timestamp_utc": "2026-10-27T14:34:30.605666Z",
+      "session_clock_utc": "2026-10-27T17:02:57Z",
+      "latest_observed_main_commit_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "main_commit_timestamp_utc": null,
+      "latest_signal_timestamp_utc": "2026-10-27T16:25:46.819838+00:00",
       "retrieval_time_exposed": false,
-      "status": "REMOTE TIMESTAMPS PRECEDE SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
+      "status": "ARTIFACT TIMESTAMP PRECEDES SESSION CLOCK; MAIN COMMIT TIMESTAMP AND RETRIEVAL TIME UNEXPOSED"
     },
     "current_open_pr_snapshot": [
       {
         "pr": 1170,
         "title": "Research: durable XRP intelligence ledger and relationship graph",
         "state": "OPEN_DRAFT",
-        "head_sha": "ad19e7558ddd1e89c64fe016abb3727a63284dfb",
-        "ci_run": 40518932257,
+        "head_sha": "5415d4829d9d96a08982c44fbe6cd0149649e99d",
+        "ci_run": 40528500824,
         "ci": "PASS; test count not exposed",
-        "gate_run": 40518932286,
+        "gate_run": 40528500878,
         "gate": "PASS",
         "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
         "merge_authorized": false,
-        "status": "OPEN_DRAFT; CURRENT_HEAD_CI_AND_GATE_PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
-        "current_main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b"
+        "status": "OPEN_DRAFT; CURRENT_HEAD_CI_AND_GATE_PASS; BRANCH_DIVERGED_FROM_MAIN; MAIN_INTEGRATION_UNVERIFIED",
+        "current_main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+        "main_commits_ahead": 91,
+        "main_commits_behind_research_branch": 91
       },
       {
         "pr": 1185,
@@ -10530,9 +10800,9 @@
         "ci": "PASS; 130 tests",
         "gate_run": 40510228598,
         "gate": "PASS",
-        "status": "OPEN_DRAFT; CHECKS_PASS; MAIN_INTEGRATION_UNVERIFIED",
+        "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_EFFECTIVE_ON_MAIN; CURRENT_BASE_INTEGRATION_UNVERIFIED",
         "merge_authorized": false,
-        "current_main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
+        "current_main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
         "main_commits_ahead": 14
       },
       {
@@ -10552,51 +10822,31 @@
         "pr": 1192,
         "title": "Safety: disable merge queue on current main and preserve risk tests",
         "state": "OPEN_DRAFT",
-        "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+        "head_sha": "9db13cc88af6652a7a6cab72ea364ff92702c20e",
         "base_sha": "882b3d3f13165501642756769e74ff48251efb75",
-        "ci_run": 40518285106,
+        "ci_run": 40528634532,
         "ci": "PASS; test count not exposed",
-        "gate_run": 40518284880,
+        "gate_run": 40528634847,
         "gate": "PASS",
-        "status": "OPEN_DRAFT; CHECKS_PASS; REVIEW_CLEANUP_REQUIRED",
+        "status": "OPEN_DRAFT; CURRENT_HEAD_CI_AND_GATE_PASS; 20 COMMITS BEHIND MAIN; NOT_EFFECTIVE_ON_MAIN; BRANCH_PROTECTION_UNVERIFIED",
         "merge_authorized": false,
         "mergeable": true,
-        "current_main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-        "main_commits_ahead": 7
+        "current_main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+        "main_commits_ahead": 20,
+        "branch_commits_ahead_of_main": 5
       }
     ],
     "pr1190_validation": {
       "head_sha": "46c088f98c14810601251e611fe956cbc2b3b6a5",
-      "branch": "safety/xrp-signal-integrity-current-main-20261027-1110z",
-      "branch_creation_base_sha": "438562a7e3f5b871ed637d46054b3b533af9eca5",
-      "pr_base_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
-      "current_main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "main_commits_since_pr_base": 14,
-      "main_delta_file_count": 11,
-      "main_delta_files": [
-        "ping-pongings/knowledge-base/config_btc.json",
-        "ping-pongings/knowledge-base/entity_cooccurrence.json",
-        "ping-pongings/knowledge-base/entity_sentiment_profile.json",
-        "ping-pongings/knowledge-base/log_btc.jsonl",
-        "ping-pongings/knowledge-base/sentiment_shift.json",
-        "web/latest_signal.json",
-        "web/latest_signal_btc.json",
-        "web/latest_signal_summary.json",
-        "web/paper_trading_log.jsonl",
-        "web/signal_history.jsonl",
-        "web/signal_history_btc.jsonl"
-      ],
-      "main_delta_code_or_workflow_files_changed": false,
-      "head_to_main_merge_base": "438562a7e3f5b871ed637d46054b3b533af9eca5",
+      "base_sha": "2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf",
       "ci_run": 40510228609,
       "ci_conclusion": "success",
       "tests_passed": 130,
-      "elapsed_seconds": 4.45,
       "fail_closed_gate_run": 40510228598,
       "gate_conclusion": "success",
-      "state": "OPEN_DRAFT; EXACT_HEAD_CI_PASS_130_TESTS; FAIL_CLOSED_GATE_PASS; MAIN_14_COMMITS_AHEAD; CURRENT_MAIN_INTEGRATION_UNVERIFIED; REVIEW_REQUIRED; NO_MERGE",
+      "current_main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
       "merge_authorized": false,
-      "last_rechecked_at_utc": "2026-10-27T15:07:14Z"
+      "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; FIX_NOT_EFFECTIVE_ON_MAIN; CURRENT_MAIN_INTEGRATION_UNVERIFIED"
     },
     "pr1189_validation": {
       "head_sha": "e9f5924b0f73f5fb8dfd69381f963b65f978fda5",
@@ -10660,35 +10910,28 @@
       "main_changed_by_this_run": false
     },
     "pr1192_validation": {
-      "pr": 1192,
-      "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+      "head_sha": "9db13cc88af6652a7a6cab72ea364ff92702c20e",
       "base_sha": "882b3d3f13165501642756769e74ff48251efb75",
-      "main_tip_at_branch_creation": "882b3d3f13165501642756769e74ff48251efb75",
-      "changed_files": [
-        ".github/workflows/ci.yml",
-        ".github/workflows/merge-queue.yml",
-        "docs/merge-queue.md",
-        "tests/test_merge_queue_safety.py"
-      ],
-      "static_readback_pass": true,
-      "risk_manager_test_preserved": true,
-      "safety_test_included": true,
-      "safety_test_count": 6,
-      "ci_run": 40518285106,
-      "ci_status": "success",
-      "fail_closed_gate_run": 40518284880,
-      "gate_status": "success",
-      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; MAIN_7_COMMITS_AHEAD; NOT_EFFECTIVE_ON_MAIN; REVIEW_CLEANUP_REQUIRED; EFFECTIVE_BRANCH_PROTECTION_UNVERIFIED",
-      "merge_authorized": false,
+      "ci_run": 40528634532,
       "ci_conclusion": "success",
-      "current_main_tip_sha": "ab76414688d88444d021d837c2b3af2d10200c0b",
-      "main_commits_since_pr_base": 7,
-      "main_delta_file_count": 7,
-      "main_delta_code_or_workflow_files_changed": false,
-      "last_rechecked_at_utc": "2026-10-27T15:07:14Z",
-      "review_notes": [
-        "tests/test_merge_queue_safety.py defines the same test function name twice with identical assertions; remove duplicate in a minimal follow-up before approval."
-      ]
+      "tests_passed": null,
+      "fail_closed_gate_run": 40528634847,
+      "gate_conclusion": "success",
+      "current_main_tip_sha": "97a937af5119345dd2e625b2d19670e2e75e1338",
+      "main_commits_ahead_of_base": 20,
+      "branch_commits_ahead_of_main": 5,
+      "branch_commits_behind_main": 20,
+      "readback": {
+        "manual_only": true,
+        "read_only_permissions": true,
+        "mutating_commands_in_workflow": 0,
+        "risk_manager_test_retained": true,
+        "safety_test_retained": true,
+        "duplicate_test_definitions": 1
+      },
+      "effective_branch_protection": "UNVERIFIED",
+      "merge_authorized": false,
+      "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; BRANCH_DIVERGED; FIX_NOT_EFFECTIVE_ON_MAIN; REVIEW_REQUIRED"
     }
   },
   "video_ingestion": {
@@ -10768,8 +11011,8 @@
     },
     {
       "phrase": "SBIC, ChatGPT SBIC",
-      "status": "UNRESOLVED; THREE DISTINCT OFFICIAL JAPANESE SBIC USES VERIFIED",
-      "finding": "Official sources distinguish (1) Tokyo Small and Medium Business Investment & Consultation Co., Ltd. using SBIC branding, (2) Nagoya Small and Medium Business Investment & Consultation Co., Ltd. using 'SBIC Central Japan', and (3) historical SBI Capital Co., Ltd., which SBI Holdings called SBIC in 2004–2007. These are separate entities or historical uses. Exact phrase searches did not recover the original sentence/video context. No XRP relationship is inferred from acronym similarity."
+      "status": "UNRESOLVED; MULTIPLE OFFICIAL JAPAN CANDIDATES IDENTIFIED; ORIGINAL REFERENT UNKNOWN",
+      "finding": "Official sources confirm distinct SBIC uses: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), Nagoya Small and Medium Business Investment & Consultation Co. (SBIC Central Japan), and historical SBI Holdings usage of SBIC for SBI Capital Co., Ltd. The exact phrase 'SBIC, ChatGPT SBIC' lacks original source context, so the intended referent remains unresolved. No XRP link is established for the SME-investment entities; SBI Group is separately relevant through SBI Ripple Asia, SBI VC Trade, and RLUSD/XRPL announcements."
     },
     {
       "phrase": "Camilla Stephenson / Camila Stevenson / Kamilah Stevenson channel identity",
@@ -10781,13 +11024,58 @@
   "next_actions": [
     {
       "priority": 0,
+      "action": "Main at 97a937af5119345dd2e625b2d19670e2e75e1338 still emits score 44/confidence 0 and news_score 88/11 after missing GitHub model credentials and Groq HTTP 429; the current artifact is invalid. Keep forecast status NOT_ISSUED.",
+      "status": "CURRENT_MAIN_READBACK_VERIFIED; NOT_ISSUED"
+    },
+    {
+      "priority": 0,
+      "action": "Do not dispatch the main merge queue. Current main workflow remains mutation-capable; PR #1192 is tested but draft/unmerged and 20 commits behind main. Effective branch protection remains unverified.",
+      "status": "HIGH_RISK_WORKFLOW_REMAINS_ON_MAIN; DO_NOT_DISPATCH"
+    },
+    {
+      "priority": 0,
+      "action": "Review and obtain explicit approval for PR #1192; its exact head 9db13cc has passing CI run 40528634532 and fail-closed gate 40528634847. Before any merge, revalidate current base, branch protection and all required checks.",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_ONLY; NO_MERGE"
+    },
+    {
+      "priority": 0,
+      "action": "Review PR #1190's fail-closed signal fix. Exact head 46c088f has 130 passing tests and a passing gate, but the fix is not effective on main.",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_ONLY; NO_MERGE"
+    },
+    {
+      "priority": 1,
+      "action": "Research ledger PR #1170 exact head 5415d48 has passing CI 40528500824 and gate 40528500878. It is 91 commits behind current main; keep draft and revalidate integration and exact-head checks after every edit.",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; BRANCH_DIVERGED; NO_MERGE"
+    },
+    {
+      "priority": 1,
+      "action": "SBIC identity remains unresolved without the original phrase context. Preserve separate candidates: Tokyo SBIC East Japan, Nagoya SBIC Central Japan, and historical SBI Capital usage. Do not conflate them with SBI Holdings or infer an XRP relationship for the SME-investment firms.",
+      "status": "OFFICIAL_CANDIDATES_DOCUMENTED; ORIGINAL_REFERENT_UNRESOLVED"
+    },
+    {
+      "priority": 1,
+      "action": "Continue route-level analysis of Circle USDC on XRPL, Coinbase-Circle USDC economics, and SBI Group/Ripple/RLUSD/XRPL links. Separate confirmed platform/product facts from actual on-chain flows and any XRP price effect.",
+      "status": "PRIMARY_SOURCE_RELATIONSHIPS_DOCUMENTED; FLOW_CAUSALITY_UNVERIFIED"
+    },
+    {
+      "priority": 1,
+      "action": "Keep the nine-platform collaboration map in DESIGN status until each adapter's authentication, permissions, data flow and handoff are tested. Retain independent red-team objections.",
+      "status": "DESIGNED; LIVE_CROSS_PLATFORM_COLLABORATION_NOT_VERIFIED"
+    },
+    {
+      "priority": 1,
+      "action": "Continue exact-phrase research for ASK Coin, actual capital, and SBIC/ChatGPT SBIC; enumerate public Stevenson videos only from verified first-party channel identities and preserve candidate catalogs separately.",
+      "status": "PARTIALLY_RESEARCHED; ORIGINAL_CONTEXT_AND_VIDEO_INVENTORY_INCOMPLETE"
+    },
+    {
+      "priority": 0,
       "action": "PR #1192 exact-head core CI run 40518285106 and fail-closed gate 40518284880 both passed. Keep the PR draft and unmerged; inspect human review and effective branch protection before any approval. Main remains unchanged.",
-      "status": "EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_ONLY; NOT_EFFECTIVE_ON_MAIN"
+      "status": "HISTORICAL_HEAD_SUPERSEDED_BY_RUN12; CURRENT_HEAD_9DB13CC_HAS_CI_AND_GATE_PASS"
     },
     {
       "priority": 1,
       "action": "Recheck research branch head after this ledger update. Pre-update head ad19e7558ddd1e89c64fe016abb3727a63284dfb passed CI 40518932257 and gate 40518932286; do not transfer those results to the new commit.",
-      "status": "PRE_UPDATE_HEAD_PASS; POST_UPDATE_HEAD_CHECKS_PENDING"
+      "status": "HISTORICAL_HEAD_SUPERSEDED_BY_RUN12; CURRENT_HEAD_5415D48_HAS_CI_AND_GATE_PASS"
     },
     {
       "priority": 0,
@@ -10802,7 +11090,7 @@
     {
       "priority": 0,
       "action": "Session clock 2026-10-27T15:07:14Z; main tip ab76414688d88444d021d837c2b3af2d10200c0b timestamp 14:57:15Z; signal timestamp 14:34:30.605666Z. Remote timestamps precede session clock, but retrieval time is not exposed. Forecast remains NOT_ISSUED.",
-      "status": "CURRENT_SNAPSHOT_TIME_ORDER_CONSISTENT; RETRIEVAL_TIME_UNEXPOSED; FORECAST_NOT_ISSUED"
+      "status": "HISTORICAL_SNAPSHOT_SUPERSEDED_BY_RUN12"
     },
     {
       "priority": 0,
@@ -10817,12 +11105,12 @@
     {
       "priority": 0,
       "action": "Do not dispatch the main merge queue. Current main tip ab76414688d88444d021d837c2b3af2d10200c0b retains write permissions and merge/update commands; PR #1192 remains draft and effective branch protection is unverified.",
-      "status": "HIGH_RISK_WORKFLOW_REMAINS_ON_MAIN; DO_NOT_DISPATCH"
+      "status": "CURRENT_RISK_CONFIRMED_RUN12; DO_NOT_DISPATCH"
     },
     {
       "priority": 0,
       "action": "Current signal blob f794a17dbb7165e32e8ed729ecc6e7de6f9bf892 at 2026-10-27T14:34:30.605666Z reports score 44/confidence 0, news_score 88/11 and provider failures; summary blob b15413a71c347a3b16df2dc521e5b33a3a6d0c36 lacks explicit summary_mode/forecast_status. PR #1190 remains unmerged; forecast NOT_ISSUED.",
-      "status": "SIGNAL_AND_SUMMARY_INVALID; FIX_DRAFT_UNMERGED"
+      "status": "HISTORICAL_SIGNAL_SUPERSEDED_BY_RUN12"
     },
     {
       "priority": 0,
