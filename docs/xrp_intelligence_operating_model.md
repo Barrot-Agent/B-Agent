@@ -35,9 +35,9 @@ Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevens
 - A further indexed Kamilah video (ID `M8TmDXO7B-0`, reported 2025-12-06; exact title unresolved) claims XRP was approved as collateral for federally regulated derivatives alongside gold, Treasuries and major FX pairs. The CFTC's 2025-12-08 collateral-pilot release names BTC, ETH and USDC but not XRP, and CME says its XRP futures are cash-settled; the current CME acceptable-collateral page returned no XRP match. The claim is **challenged, not finally refuted**: the video is indexed as published 2025-12-06, two days before the CFTC pilot announcement on 2025-12-08, so that later announcement cannot itself substantiate what the video said. An earlier product/FCM-specific rule may exist; verify it before reaching a universal conclusion.
 
 ### Prediction-engine integrity — critical
-The current `main` artifact `web/latest_signal.json` was re-fetched at **2026-10-27 00:02:27 UTC**. Its artifact timestamp is **2026-10-26 23:25:41.820784 UTC** (about 39.8 minutes old at retrieval), and it reports score 44, confidence 0, news score 88 from 11 entries, and provider failures (missing GitHub model credentials and Groq HTTP 429). The text is dominated by XRPL protocol/research-paper titles. This must not be consumed or published as a directional XRP forecast.
+The current `main` artifact `web/latest_signal.json` was re-fetched at **2026-10-27 00:11:06 UTC**. Its artifact timestamp is **2026-10-26 23:25:41.820784 UTC** (about 45.4 minutes old at retrieval), and it reports score 44, confidence 0, news score 88 from 11 entries, and provider failures (missing GitHub model credentials and Groq HTTP 429). The text is dominated by XRPL protocol/research-paper titles. This must not be consumed or published as a directional XRP forecast.
 
-The legacy accuracy artifact reports 725/1,588 = 45.7%, but PR #1165 documents that the old evaluator used variable horizons, compared against a later current price, and mutated history. That percentage is not a calibrated out-of-sample skill estimate.
+The current legacy accuracy artifact reports 749/1,612 = 46.5%, replacing the previous 45.7% snapshot. PR #1165 documents that the old evaluator used variable horizons, compared against a later current price, and mutated history. Neither percentage is a calibrated out-of-sample skill estimate; treat the metric as `NOT_COMPARABLE` until immutable fixed-horizon outcomes are validated.
 
 ## 2. High-priority repository work already present
 
@@ -49,13 +49,13 @@ The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues w
 
 
 
-- [PR #1165 — fail closed on unavailable sentiment and retire invalid accuracy](https://github.com/Barrot-Agent/B-Agent/pull/1165): open draft; last observed CI and fail-closed gate passed on its recorded head, but it is 7 commits ahead and 30 commits behind current main. Its test evidence is stale relative to main. Do not merge that head; port/reconcile onto a fresh base and rerun exact-head checks, then await explicit approval.
-- [PR #1155 — synchronized XRP spot/perpetual/FX event-time inputs](https://github.com/Barrot-Agent/B-Agent/pull/1155): open draft; its last reported tests passed on an old merge ref, but it is 3 commits ahead and 79 commits behind current main. Do not merge that head; port/reconcile onto a fresh base and rerun exact-head checks. Live market ingestion is not established by its tests.
+- [PR #1165 — fail closed on unavailable sentiment and retire invalid accuracy](https://github.com/Barrot-Agent/B-Agent/pull/1165): open draft; last observed CI and fail-closed gate passed on its recorded head, but it is 7 commits ahead and 38 commits behind current main. Its test evidence is stale relative to main. Do not merge that head; port/reconcile onto a fresh base and rerun exact-head checks, then await explicit approval.
+- [PR #1155 — synchronized XRP spot/perpetual/FX event-time inputs](https://github.com/Barrot-Agent/B-Agent/pull/1155): open draft; its last reported tests passed on an old merge ref, but it is 3 commits ahead and 87 commits behind current main. Do not merge that head; port/reconcile onto a fresh base and rerun exact-head checks. Live market ingestion is not established by its tests.
 - [PR #1166 — deterministic XRP summary fallback and artifact-only workflow](https://github.com/Barrot-Agent/B-Agent/pull/1166): open draft; observed workflow results were successful. Not merged.
-- [PR #1168 — disable mutation-capable merge queue](https://github.com/Barrot-Agent/B-Agent/pull/1168): open draft; its CI and fail-closed gate passed on the recorded head, but it is 3 commits ahead and 15 commits behind current main. Its fix is not applied to main.
+- [PR #1168 — disable mutation-capable merge queue](https://github.com/Barrot-Agent/B-Agent/pull/1168): open draft; its CI and fail-closed gate passed on the recorded head, but it is 3 commits ahead and 23 commits behind current main. Its fix is not applied to main.
 - [PR #1161 — disable legacy scheduled accuracy writer](https://github.com/Barrot-Agent/B-Agent/pull/1161): open draft; checks were not re-checked in this snapshot.
 
-The latest main commit observed for this snapshot is `2bae7ccdfbec8f9536cb40950110c72e949f5073` (`chore: Barrot telemetry report`). At the latest main tip, the observed workflow-run query showed Pages build/deployment success only; no core CI run was observed for that exact main SHA. This is not evidence that the core suite passed on main. The signal artifact was subsequently re-fetched with blob SHA `a74f8cacf498ce6936d538a1cdc0925605379cb1` and timestamp 2026-10-26 23:25:41.820784 UTC, still reporting score 44/confidence 0 and provider failures. Main still contains the invalid signal behavior described above.
+The latest main commit observed for this snapshot is `2bae7ccdfbec8f9536cb40950110c72e949f5073` (`chore: Barrot telemetry report`). At the latest main tip, the observed workflow-run query showed Pages build/deployment success only; no core CI run was observed for that exact main SHA. This is not evidence that the core suite passed on main. The signal artifact was re-fetched at 2026-10-27 00:11:06 UTC with blob SHA `a74f8cacf498ce6936d538a1cdc0925605379cb1` and timestamp 2026-10-26 23:25:41.820784 UTC, still reporting score 44/confidence 0 and provider failures. The current accuracy artifact reports 46.5% (749/1,612), but that metric is methodologically invalid. `web/signal_history.jsonl` returned an empty payload through the file connector even though the main commit diff contains many JSONL rows; treat the line count as unverified, not zero.
 
 **Research PR validation boundary:** PR #1170 head `0ec991026775903c7c718e65b39fef6636d070f6` passed CI run [40424225971](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225971) and fail-closed gate [40424225980](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225980), but those checks used stale base `e49431afe9801044b583abd0451f0d4d7416fc4d`; PR #1170 is now 9 commits behind current main and needs revalidation against current main.
 
@@ -82,13 +82,14 @@ Only the current ChatGPT environment's web research and connected GitHub reposit
 
 ## 5. Next action order
 
-1. Review PR #1165 on its exact head; verify the fail-closed behavior and retain draft state until approval. It addresses a currently observed invalid signal on main.
-2. Review PR #1155 against current main; verify timestamp/freshness/skew logic and tests. Keep draft until approval.
-3. Build an immutable fixed-horizon forecast/outcome ledger before re-enabling any accuracy percentage.
-4. Collect historical event-time spot, perpetual, FX and order-book data; then conduct leakage-safe walk-forward and shadow evaluation.
-5. Resolve the original source of “SBIC, ChatGPT SBIC,” “ASK Coin,” and “actual capital.”
-6. Complete the canonical Kamilah Stevenson channel inventory, capture permitted transcript metadata/text with hashes, and extract timestamped claims/forecasts. The existing eleven indexed seed records are not full ingestion.
-7. Test platform adapters only when real authentication/permissions are available; do not claim integration before a successful end-to-end test.
+1. Review fresh-main PR #1172: its exact tested head passed 123 tests and the fail-closed gate on a merge ref based on current main; keep draft until explicit approval.
+2. Review fresh-main PR #1173: its fail-closed gate passed and CI was pending at last observation; keep the mutation-capable merge queue unused until the stop is validated and effective branch protection is independently confirmed.
+3. Revalidate the older PR #1165 and #1155 work on current main; they are 38 and 87 commits behind, respectively, and must not be merged at their stale heads.
+4. Build an immutable fixed-horizon forecast/outcome ledger before re-enabling any accuracy percentage.
+5. Collect historical event-time spot, perpetual, FX and order-book data; then conduct leakage-safe walk-forward and shadow evaluation.
+6. Resolve the original source of “SBIC, ChatGPT SBIC,” “ASK Coin,” and “actual capital.”
+7. Complete the canonical Kamilah Stevenson channel inventory, capture permitted transcript metadata/text with hashes, and extract timestamped claims/forecasts. The existing eleven indexed seed records are not full ingestion.
+8. Test platform adapters only when real authentication/permissions are available; do not claim integration before a successful end-to-end test.
 
 ## Evidence boundary
 
