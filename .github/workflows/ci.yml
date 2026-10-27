@@ -49,6 +49,7 @@ jobs:
             tests/test_risk_manager.py \
             tests/test_coinbase_trader.py \
             tests/test_repository_repair.py \
+            tests/test_barrot_agent_script.py \
             tests/test_v3_scripts.py \
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \

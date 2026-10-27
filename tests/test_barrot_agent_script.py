@@ -231,6 +231,9 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     def fake_run_gh(args):
         calls["args"] = args
+        body_path = Path(args[args.index("--body-file") + 1])
+        assert body_path.is_file(), "PR body file must exist while gh is reading it"
+        calls["body"] = body_path.read_text(encoding="utf-8")
 
         class Result:
             returncode = 0
@@ -244,3 +247,32 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     assert calls["args"][8] == "--head"
     assert calls["args"][9] == "repair/from-cycle"
+    assert "- cycle_id: cycle-123" in calls["body"]
+    assert "- commit_sha: abc123" in calls["body"]
+
+
+def test_post_issue_comment_body_file_exists_during_cli_call(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    monkeypatch.setenv("ISSUE_NUMBER", "17")
+    module = load_script_module("barrot_agent_issue_comment_tempfile_test")
+    calls: dict[str, object] = {}
+
+    def fake_run_gh(args):
+        body_path = Path(args[args.index("--body-file") + 1])
+        assert body_path.is_file(), "issue comment body file must exist while gh is reading it"
+        calls["args"] = args
+        calls["body"] = body_path.read_text(encoding="utf-8")
+
+        class Result:
+            returncode = 0
+            stdout = ""
+            stderr = ""
+
+        return Result()
+
+    monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    module.post_issue_comment("persistent issue comment")
+
+    assert calls["args"][:3] == ["issue", "comment", "17"]
+    assert calls["body"] == "persistent issue comment"

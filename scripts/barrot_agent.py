@@ -567,8 +567,8 @@ def post_issue_comment(message: str) -> None:
 
     with tempfile.TemporaryDirectory(prefix="barrot_comment_") as tmp_dir:
         comment_path = Path(tmp_dir) / "barrot_comment_body.md"
-    comment_path.write_text(message[:60000], encoding="utf-8")
-    result = run_gh(["issue", "comment", ISSUE, "--repo", REPO, "--body-file", str(comment_path)])
+        comment_path.write_text(message[:60000], encoding="utf-8")
+        result = run_gh(["issue", "comment", ISSUE, "--repo", REPO, "--body-file", str(comment_path)])
     if result.returncode != 0:
         print(result.stderr[:3000], file=sys.stderr)
 
@@ -632,22 +632,22 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
     with tempfile.TemporaryDirectory(prefix="barrot_pr_") as tmp_dir:
         pr_path = Path(tmp_dir) / "barrot_pr_body.md"
         pr_path.write_text("\n".join(body), encoding="utf-8")
-    result = run_gh(
-        [
-            "pr",
-            "create",
-            "--repo",
-            REPO,
-            "--title",
-            f"Barrot: {safe_title}",
-            "--body-file",
-            str(pr_path),
-            "--head",
-            head_branch,
-            "--base",
-            "main",
-        ]
-    )
+        result = run_gh(
+            [
+                "pr",
+                "create",
+                "--repo",
+                REPO,
+                "--title",
+                f"Barrot: {safe_title}",
+                "--body-file",
+                str(pr_path),
+                "--head",
+                head_branch,
+                "--base",
+                "main",
+            ]
+        )
     if result.returncode != 0 and "already exists" not in (result.stderr + result.stdout).lower():
         raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "gh pr create failed")
     if result.stdout.strip():
