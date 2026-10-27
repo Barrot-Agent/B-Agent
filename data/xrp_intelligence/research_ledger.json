@@ -154,6 +154,14 @@
           }
         ],
         "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
+      },
+      "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
+      "current_research_checks": {
+        "tests": "success",
+        "gate": "success",
+        "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282225",
+        "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282627",
+        "as_of_utc": "2026-10-27T21:09:42Z"
       }
     },
     "critical_engine_findings": [
@@ -393,6 +401,20 @@
           "SRC-COINBASE-10Q-Q2-2026",
           "SRC-CIRCLE-10Q-Q2-2026"
         ]
+      },
+      {
+        "id": "COINBASE-XRP-DERIVATIVE-ACCESS-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_PLUS_COMPANY_REPORTED",
+        "status": "XRP_SPOT_CUSTODY_AND_DERIVATIVES_ACCESS_DOCUMENTED; NET_PRICE_EFFECT_UNKNOWN",
+        "claim": "Coinbase reports 10.3% crypto trading-volume market share in Q2 2026, $20B average USDC balances in Coinbase products, and approximately 50% of USDC economics captured over the preceding year. Coinbase's global derivatives documentation lists XRP options for eligible non-US customers in supported regions, executed on Deribit and settled in USDC; Coinbase Derivatives Exchange also documents a USD-denominated nano XRP perpetual-style futures contract.",
+        "interpretation": "Coinbase is a significant access, custody, derivatives and stablecoin distribution venue. XRP derivatives can alter hedging, basis and liquidity conditions, but do not establish net spot accumulation or a bullish directional effect.",
+        "limits": "Broad market share is not XRP-specific; derivatives can be long or short; USDC settlement does not imply use of XRPL-native USDC; market statistics from product pages require timestamp validation.",
+        "source_ids": [
+          "SRC-COINBASE-Q2-2026-IR",
+          "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+          "SRC-COINBASE-XRP-PERP-FUTURES",
+          "SRC-COINBASE-ASSET-DISCLOSURES"
+        ]
       }
     ],
     "relationship_graph": [
@@ -555,6 +577,33 @@
           "SRC-COINBASE-10Q-Q2-2026"
         ],
         "status": "CONFIRMED_BY_SEC_FILING; CURRENT_POSITION_SIZE_UNKNOWN"
+      },
+      {
+        "from": "Coinbase",
+        "relation": "reports Q2 2026 market-share gains and USDC distribution economics",
+        "to": "Crypto trading and USDC ecosystem",
+        "evidence_ids": [
+          "SRC-COINBASE-Q2-2026-IR"
+        ],
+        "status": "COMPANY_REPORTED"
+      },
+      {
+        "from": "Coinbase Global Derivatives",
+        "relation": "offers XRP options on Deribit infrastructure, settled in USDC for eligible supported-region customers outside the US",
+        "to": "XRP options / USDC settlement",
+        "evidence_ids": [
+          "SRC-COINBASE-GLOBAL-OPTIONS-XRP"
+        ],
+        "status": "CONFIRMED_PRODUCT_DOCUMENTATION"
+      },
+      {
+        "from": "Coinbase Derivatives Exchange",
+        "relation": "documents USD-denominated nano XRP perpetual-style futures",
+        "to": "XRP derivatives",
+        "evidence_ids": [
+          "SRC-COINBASE-XRP-PERP-FUTURES"
+        ],
+        "status": "CONFIRMED_PRODUCT_DOCUMENTATION; CURRENT_MARKET_FIELDS_NOT_VERIFIED"
       }
     ],
     "competing_hypotheses": [
@@ -675,6 +724,19 @@
           "Aggregate open interest may include hedged positions; account ratios do not measure notional exposure; vendor venue coverage and liquidation feeds may be incomplete."
         ],
         "test_plan": "Obtain synchronized exchange-level OI, funding, basis, depth, liquidations, spot volume and price returns; estimate event-time and walk-forward predictive value against a simple market-beta baseline."
+      },
+      {
+        "id": "H10-COINBASE-XRP-DERIVATIVES",
+        "hypothesis": "Coinbase's XRP spot/custody and derivatives access can improve market access and price discovery, but its net spot effect is conditional on client positioning, dealer hedging, basis, collateral and liquidity.",
+        "supporting_evidence": [
+          "SRC-COINBASE-Q2-2026-IR",
+          "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+          "SRC-COINBASE-XRP-PERP-FUTURES"
+        ],
+        "disconfirming_evidence": [
+          "Derivatives permit short exposure and hedging; broad market-share gains are not XRP-specific; contract activity may net out without net spot accumulation; USDC settlement does not imply XRP purchases."
+        ],
+        "test_plan": "Collect contract-level OI, volume, funding, basis, options delta/gamma/open interest, spot depth, market-maker inventory proxies and exchange netflows; test event windows and walk-forward out-of-sample lift versus market-beta and price/volume baselines."
       }
     ],
     "market_observations": [
@@ -705,21 +767,27 @@
     "phrase_investigation": {
       "ASK Coin": {
         "status": "UNRESOLVED",
-        "finding": "Exact-phrase public search did not establish a reliable XRP-specific meaning; no definition assigned."
+        "finding": "Exact-phrase public search did not establish a reliable XRP-specific meaning; no definition assigned. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
+        "last_searched_at_utc": "2026-10-27T21:09:42Z"
       },
       "actual capital": {
         "status": "UNRESOLVED",
-        "finding": "Search results were generic or unrelated; requires original context and source timestamp."
+        "finding": "Search results were generic or unrelated; requires original context and source timestamp. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
+        "last_searched_at_utc": "2026-10-27T21:09:42Z"
       },
       "SBIC, ChatGPT SBIC": {
         "status": "UNRESOLVED",
-        "finding": "No reliable exact-match source found. Do not treat this as a verified organization, acronym expansion or instruction."
+        "finding": "No reliable exact-match source found. Do not treat this as a verified organization, acronym expansion or instruction. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
+        "last_searched_at_utc": "2026-10-27T21:09:42Z"
       },
       "Camilla Stephenson": {
-        "status": "IDENTITY_UNRESOLVED",
-        "finding": "No canonical YouTube channel/video inventory was verified for the exact name Camilla Stephenson. The repository's candidate Kamilah Stevenson channel ID UCqUPJMQdkCN6lsLVDnichPA is only a probable match, while public search surfaced a Kamilah Stevenson XRP & Stocks channel with a different ID UCXm6KAr1WHF6UN7g5b2W7wg. These must not be conflated.",
-        "inventory_status": "INCOMPLETE; no claim that all public uploads have been enumerated.",
-        "tooling_limit": "vidIQ lookups were attempted but returned insufficient credits; no credits were charged and those calls were not retried. Public web search was used as a fallback."
+        "status": "CANONICAL_XRP_CHANNEL_UNRESOLVED",
+        "finding": "Exact-spelling search surfaced unrelated film/location-management professionals and did not establish an XRP channel. Keep these people separate from Kamilah/Camila Stevenson candidates; no complete video inventory claimed.",
+        "source_ids": [
+          "SRC-CAMILLA-STEPHENSON-BCG",
+          "SRC-CAMILLA-STEPHENSON-MFJF"
+        ],
+        "inventory_status": "INCOMPLETE"
       }
     },
     "platform_capability_map": [
@@ -832,7 +900,11 @@
       "Refresh/reconcile PR #1193 and #1194 against current main without merging; verify branch protection via authorized permission or alternative public evidence before asserting required checks.",
       "Reconcile PR #1202 against current main only without force-push or discarding work; main still invokes the wrong Databricks script path.",
       "Cross-check current XRP derivatives data from raw exchange endpoints and a second independent aggregate source before adding model features.",
-      "Continue original-context search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and verify the canonical Camilla/Kamilah/Camila Stevenson channel before claiming complete video coverage."
+      "Continue original-context search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and verify the canonical Camilla/Kamilah/Camila Stevenson channel before claiming complete video coverage.",
+      "Measure Coinbase XRP derivatives separately by product, jurisdiction and settlement currency; do not combine USD futures with USDC-settled offshore options.",
+      "Keep the Circle-to-Coinbase USDC distribution relationship distinct from any assumed XRP accumulation or XRPL-native USDC use.",
+      "Resolve the original source of the phrase Camilla Stephenson before enumerating the full video inventory.",
+      "Continue exact-phrase source tracing for ASK Coin, actual capital and SBIC/ChatGPT SBIC."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-27T21:05:14Z",
@@ -1245,6 +1317,47 @@
       "published_at": "2026-10-27T21:02:00Z",
       "accessed_at_utc": "2026-10-27T21:05:14Z",
       "note": "Third-party aggregate snapshot: XRP $1.32; open interest $1.44B (+2.2%/24h); average funding +0.0092%/8h; $1.2M liquidations ($845K shorts, $306K longs); 74.5% of Binance accounts with XRP positions long. Cross-venue methodology not independently verified; do not use as a model feature without raw venue corroboration."
+    },
+    {
+      "id": "SRC-COINBASE-Q2-2026-IR",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q2-Earnings-Everything-Exchange-Drives-3rd-Consecutive-Quarter-of-Record-Crypto-Trading-Volume-Market-Share-Revenue-Diversification-and-Resilience/default.aspx",
+      "title": "Coinbase Q2 2026 earnings release",
+      "published_at": "2026-07-30",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Coinbase reports Q2 crypto trading-volume market share 10.3%, third consecutive quarterly gain; average USDC held in Coinbase products $20B, more than 30% of USDC in circulation at quarter-end; approximately 50% of USDC economics captured by Coinbase over the prior year. Company-reported metrics, not XRP-specific flow data."
+    },
+    {
+      "id": "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-options",
+      "title": "Coinbase Global Derivatives crypto options help page",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Coinbase states global options are available to eligible customers in supported regions outside the US for BTC, ETH, SOL, AVAX, HYPE and XRP; options are executed on Deribit infrastructure and settled in USDC. This does not imply XRPL-native USDC is used for settlement."
+    },
+    {
+      "id": "SRC-COINBASE-XRP-PERP-FUTURES",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.coinbase.com/futures/XPP-20DEC30-CDE",
+      "title": "Coinbase Derivatives Exchange XRP perpetual-style futures product page",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Coinbase product page describes a nano XRP perpetual-style futures contract, 500 XRP per contract, USD currency and funding mechanism. Page-rendered price/open-interest fields can be delayed or stale; do not reuse them as current observations without a fresh timestamped data capture."
+    },
+    {
+      "id": "SRC-CAMILLA-STEPHENSON-BCG",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.comedy.co.uk/people/camilla_stephenson/",
+      "title": "British Comedy Guide profile for a Camilla Stephenson",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Exact-spelling public search result identifies a crew member/location manager with credits including Stan & Ollie (2019). This is a possible name collision only, not proof of identity with the requested XRP-video creator."
+    },
+    {
+      "id": "SRC-CAMILLA-STEPHENSON-MFJF",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://myfirstjobinfilm.com/UK/mentors/camilla-stephenson",
+      "title": "My First Job in Film mentor profile for a Camilla Stephenson",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Public profile describes a location-management professional. Included only as name-disambiguation evidence; not linked to the XRP-video creator."
     }
   ],
   "limitations": [
@@ -1398,6 +1511,25 @@
         "hypothesis_sources_resolve": "PASS",
         "unique_source_ids": "PASS",
         "snapshot_re_read": "PASS"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:10:28Z",
+      "update_type": "SNAPSHOT_LEDGER_LINK_AND_RESEARCH_ENRICHMENT",
+      "snapshot_id": "XRP-RESEARCH-DELTA-2026-10-27T210942Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2109Z.json",
+      "snapshot_blob_sha": "f930df74afa783338480bbdda070d7bb8b2a200d",
+      "details": "Linked the existing Coinbase/XRP-derivatives and Camilla Stephenson disambiguation snapshot into the durable ledger; added official Coinbase Q2/product sources and explicit counter-hypotheses. Exact-head CI and fail-closed gate passed on the immediately prior research commit d4fd1a; the ledger-linking commit itself requires a fresh CI result.",
+      "validation": {
+        "json_parse": "PASS",
+        "snapshot_re_read": "PASS",
+        "source_id_integrity": "PASS",
+        "relationship_source_integrity": "PASS",
+        "unique_source_ids": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "hypothesis_source_integrity": "PASS"
       }
     }
   ]
