@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:02:46.722Z",
+    "captured_at_utc": "2026-10-27T00:03:37.710Z",
     "main_tip_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -521,6 +521,49 @@
       ]
     },
     {
+      "source_id": "SRC-SBI-CAPITAL-JAPAN-SBIC-2007",
+      "title": "Capital and business alliance in middle-market investment; SBI CAPITAL abbreviation",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_historical_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2007/0521_852.html",
+      "publication_date": "2007-05-21",
+      "sections": [
+        "SBI Capital Co., Ltd. in Japan",
+        "SBI Holdings disclosed SBIC as abbreviation in the announcement",
+        "Buyout and enterprise revitalization fund management",
+        "40% stake transferred to Goldman Sachs group affiliate"
+      ],
+      "relationships": [
+        {
+          "source_node": "SBI Holdings",
+          "target_node": "SBI CAPITAL Co., Ltd. (Japan, 2007)",
+          "relationship_type": "HISTORICAL_OWNERSHIP_AND_JV",
+          "status": "OFFICIAL_HISTORICAL_ANNOUNCEMENT"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CAPITAL-KOREA-2021",
+      "title": "Announcement of investment company establishment in Korea",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_corporate_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2021/0208_12326.html",
+      "publication_date": "2021-02-08",
+      "sections": [
+        "SBI Capital Co., Ltd. established in South Korea",
+        "Investment and fund business",
+        "SBI Group ownership announced as 100%"
+      ],
+      "relationships": [
+        {
+          "source_node": "SBI Holdings",
+          "target_node": "SBI Capital Co., Ltd. (South Korea)",
+          "relationship_type": "WHOLLY_OWNED_AT_ANNOUNCEMENT",
+          "status": "OFFICIAL_ANNOUNCEMENT"
+        }
+      ]
+    },
+    {
       "source_id": "SRC-SBI-CRYPTO-IDENTITY",
       "title": "SBI Crypto incident disclosure",
       "author_or_organization": "SBI Holdings",
@@ -557,6 +600,39 @@
         "SBI Remit and Fasset MOU",
         "stablecoin payment infrastructure and international remittance",
         "not proof that XRP is or is not used in any route"
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-GROUP-COMPANIES-2026-10-07",
+      "title": "SBI Group companies overview (as of 2026-10-07)",
+      "author_or_organization": "SBI Holdings",
+      "source_type": "official_corporate_group_listing",
+      "url": "https://www.sbigroup.co.jp/english/company/group/overview.html",
+      "publication_date": "as of 2026-10-07",
+      "sections": [
+        "SBI Capital listed as a group company",
+        "SBI Crypto listed as a group company",
+        "SBI Ripple Asia listed as a group company"
+      ],
+      "relationships": [
+        {
+          "source_node": "SBI Holdings",
+          "target_node": "SBI Capital",
+          "relationship_type": "GROUP_LISTING",
+          "status": "OFFICIAL_LISTING"
+        },
+        {
+          "source_node": "SBI Holdings",
+          "target_node": "SBI Crypto",
+          "relationship_type": "GROUP_LISTING",
+          "status": "OFFICIAL_LISTING"
+        },
+        {
+          "source_node": "SBI Holdings",
+          "target_node": "SBI Ripple Asia",
+          "relationship_type": "GROUP_LISTING",
+          "status": "OFFICIAL_LISTING"
+        }
       ]
     },
     {
@@ -829,7 +905,7 @@
     },
     {
       "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
-      "statement": "The intended referent of 'SBIC' in the user's phrase remains unresolved. Public evidence supports at least two distinct Japan-linked identities: Tokyo SBIC East Japan, an SME investment-development company, and SBI Crypto Co., Ltd., an SBI Holdings mining subsidiary. The XRP context also includes SBI Holdings, SBI VC Trade, and SBI Ripple Asia, but it does not establish which entity the phrase denotes.",
+      "statement": "The intended referent of 'SBIC' in the phrase 'SBIC, ChatGPT SBIC' remains unresolved. Official evidence identifies Tokyo SBIC East Japan as a company explicitly using SBIC in its English name; SBI Holdings historically used 'SBIC' for a Tokyo-based SBI CAPITAL Co., Ltd. in a 2007 announcement; SBI Holdings separately lists SBI Capital, SBI Crypto, and SBI Ripple Asia as distinct group-company entries as of 2026-10-07; and SBI Holdings announced a separate SBI Capital Co., Ltd. in South Korea in 2021. None of these sources proves which entity the phrase denotes, or establishes an XRP link for the non-XRP investment entities.",
       "domain": "entity_resolution",
       "claim_type": "identity_ambiguity",
       "source": "SRC-TOKYO-SBIC-PROFILE",
@@ -837,14 +913,17 @@
       "supporting_evidence": [
         "XRP-E-TOKYO-SBIC-IDENTITY",
         "XRP-E-SBI-CRYPTO-IDENTITY",
-        "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION"
+        "XRP-E-SBI-XRP-ECOSYSTEM-DISTINCTION",
+        "XRP-E-SBI-GROUP-ENTITY-SEPARATION-2026",
+        "XRP-E-SBI-CAPITAL-KOREA-2021",
+        "XRP-E-SBI-CAPITAL-JAPAN-SBIC-2007"
       ],
       "contradicting_evidence": [],
       "derivation_status": "UNRESOLVED",
       "independent_verification_status": "UNASSESSED",
       "adversarial_status": "UNRESOLVED",
       "acceptance_status": "UNRESOLVED",
-      "confidence": 0.2,
+      "confidence": 0.25,
       "assumptions": [
         "A context-specific audio/video/source occurrence is needed to resolve intended meaning."
       ],
@@ -852,9 +931,12 @@
         "SRC-TOKYO-SBIC-PROFILE",
         "SRC-SBI-CRYPTO-PROFILE",
         "SRC-SBI-CRYPTO-IDENTITY",
-        "SRC-SBI-XRP-REMIT"
+        "SRC-SBI-XRP-REMIT",
+        "SRC-SBI-GROUP-COMPANIES-2026-10-07",
+        "SRC-SBI-CAPITAL-KOREA-2021",
+        "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
       ],
-      "timestamp": 1793055698
+      "timestamp": 1793059417
     },
     {
       "claim_id": "XRP-C-COINBASE-XRP-ACCESS",
@@ -1692,6 +1774,41 @@
       }
     },
     {
+      "evidence_id": "XRP-E-SBI-CAPITAL-JAPAN-SBIC-2007",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "official_historical_corporate_announcement",
+      "summary": "SBI Holdings' 2007-05-21 announcement used 'SBIC' for SBI CAPITAL Co., Ltd., a Tokyo-based company established in 2001 for buyout and enterprise-revitalization fund management; the release described a 40% stake transfer to a Goldman Sachs group affiliate. This is historical acronym usage, not proof that this is the current intended entity.",
+      "source_id": "SRC-SBI-CAPITAL-JAPAN-SBIC-2007",
+      "source_location": "https://www.sbigroup.co.jp/news/2007/0521_852.html",
+      "status": "SUPPORTED_HISTORICAL_USAGE",
+      "independence": "primary_historical_corporate_source",
+      "provenance": [
+        "SRC-SBI-CAPITAL-JAPAN-SBIC-2007"
+      ],
+      "details": {
+        "as_of_date": "2007-05-21",
+        "current_legal_continuity": "not established"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-CAPITAL-KOREA-2021",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "official_corporate_announcement",
+      "summary": "SBI Holdings' 2021-02-08 release announced establishment of SBI Capital Co., Ltd. in South Korea for investment and fund business, with SBI Group ownership stated as 100%. This is a Korea-based entity and should not be conflated with Tokyo SBIC East Japan or the historical Japanese SBI CAPITAL entity.",
+      "source_id": "SRC-SBI-CAPITAL-KOREA-2021",
+      "source_location": "https://www.sbigroup.co.jp/news/2021/0208_12326.html",
+      "status": "SUPPORTED",
+      "independence": "primary_corporate_source",
+      "provenance": [
+        "SRC-SBI-CAPITAL-KOREA-2021"
+      ],
+      "details": {
+        "country": "South Korea",
+        "announcement_date": "2021-02-08",
+        "current_operating_status": "not independently verified in this run"
+      }
+    },
+    {
       "evidence_id": "XRP-E-SBI-CRYPTO-IDENTITY",
       "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
       "kind": "independent_verification",
@@ -1723,6 +1840,22 @@
       ],
       "details": {
         "limit": "MOU does not establish production deployment or whether any route uses XRP."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-GROUP-ENTITY-SEPARATION-2026",
+      "claim_id": "XRP-C-SBIC-IDENTITY-AMBIGUITY",
+      "kind": "official_group_listing",
+      "summary": "SBI Holdings' English group-company overview dated 2026-10-07 lists SBI Capital, SBI Crypto, and SBI Ripple Asia as separate group-company entries. This supports entity separation but does not identify which one the phrase 'SBIC, ChatGPT SBIC' refers to.",
+      "source_id": "SRC-SBI-GROUP-COMPANIES-2026-10-07",
+      "source_location": "https://www.sbigroup.co.jp/english/company/group/overview.html",
+      "status": "SUPPORTED",
+      "independence": "primary_corporate_source",
+      "provenance": [
+        "SRC-SBI-GROUP-COMPANIES-2026-10-07"
+      ],
+      "details": {
+        "interpretation": "Distinct group entries; no inference that the entities have the same business or XRP exposure."
       }
     },
     {
@@ -2221,7 +2354,7 @@
       "question_id": "Q-1",
       "question": "Resolve SBIC legal identity from the exact original phrase/source.",
       "priority": "HIGH",
-      "status": "UNRESOLVED"
+      "status": "MULTIPLE_OFFICIAL_CANDIDATES_FOUND; ORIGINAL_CONTEXT_REQUIRED"
     },
     {
       "question_id": "Q-2",
@@ -3059,7 +3192,7 @@
     {
       "phrase": "SBIC, ChatGPT SBIC",
       "status": "UNRESOLVED",
-      "finding": "No reliable exact match; do not resolve by acronym expansion alone."
+      "finding": "Exact intended referent remains unresolved. Official sources now establish multiple distinct candidates: Tokyo SBIC East Japan; historical Japanese SBI CAPITAL (called SBIC in a 2007 SBI Holdings announcement); current SBI Capital and SBI Crypto as separate SBI Group listings; and a separately announced SBI Capital in South Korea. The original video/audio/sentence is still required to identify intent. Do not attribute XRP exposure to an entity merely because its name resembles the acronym."
     }
   ],
   "forecast_register": [],
