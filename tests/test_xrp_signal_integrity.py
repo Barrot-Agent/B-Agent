@@ -58,13 +58,14 @@ def test_provider_failures_return_unavailable_not_zero(monkeypatch):
 def test_news_gate_rejects_missing_naive_future_and_academic_timestamps(tmp_path: Path):
     module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_news_gate")
     now = datetime.now(timezone.utc)
+    published = now.isoformat()
     entries = [
-        {"distilled": True, "distill": {"xrp_relevance": 1, "sentiment": "bullish"}, "title": "missing timestamp"},
-        {"distilled": True, "ingested_at": now.replace(tzinfo=None).isoformat(), "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
-        {"distilled": True, "ingested_at": (now + timedelta(minutes=10)).isoformat(), "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
-        {"distilled": True, "ingested_at": now.isoformat(), "source": "academic", "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
-        {"distilled": True, "ingested_at": "not-a-time", "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
-        {"distilled": True, "ingested_at": now.isoformat(), "distill": {"xrp_relevance": 1, "sentiment": "unverified"}},
+        {"distilled": True, "published": published, "distill": {"xrp_relevance": 1, "sentiment": "bullish"}, "title": "missing ingestion timestamp"},
+        {"distilled": True, "ingested_at": now.replace(tzinfo=None).isoformat(), "published": published, "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
+        {"distilled": True, "ingested_at": (now + timedelta(minutes=10)).isoformat(), "published": published, "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
+        {"distilled": True, "ingested_at": now.isoformat(), "published": published, "source": "academic", "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
+        {"distilled": True, "ingested_at": "not-a-time", "published": published, "distill": {"xrp_relevance": 1, "sentiment": "bullish"}},
+        {"distilled": True, "ingested_at": now.isoformat(), "published": published, "distill": {"xrp_relevance": 1, "sentiment": "unverified"}},
     ]
     path = tmp_path / "news.jsonl"
     path.write_text("\n".join(json.dumps(item) for item in entries) + "\n", encoding="utf-8")
@@ -75,8 +76,8 @@ def test_news_gate_accepts_recent_timestamped_entries(tmp_path: Path):
     module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_news_valid")
     now = datetime.now(timezone.utc).isoformat()
     entries = [
-        {"distilled": True, "ingested_at": now, "source": "wire-a", "title": "A", "distill": {"xrp_relevance": 0.8, "sentiment": "bullish"}},
-        {"distilled": True, "ingested_at": now, "source": "wire-b", "title": "B", "distill": {"xrp_relevance": 0.2, "sentiment": "bearish"}},
+        {"distilled": True, "ingested_at": now, "published": now, "source": "wire-a", "title": "A", "distill": {"xrp_relevance": 0.8, "sentiment": "bullish"}},
+        {"distilled": True, "ingested_at": now, "published": now, "source": "wire-b", "title": "B", "distill": {"xrp_relevance": 0.2, "sentiment": "bearish"}},
     ]
     path = tmp_path / "news.jsonl"
     path.write_text("\n".join(json.dumps(item) for item in entries) + "\n", encoding="utf-8")
@@ -84,6 +85,44 @@ def test_news_gate_accepts_recent_timestamped_entries(tmp_path: Path):
     assert score == 80
     assert count == 2
     assert len(headlines) == 1
+
+
+
+def test_news_gate_uses_published_event_time_and_accepts_rss_dates(tmp_path: Path):
+    module = load_script(REPO_ROOT / "scripts" / "emit_signal.py", "emit_signal_event_time_gate")
+    now = datetime.now(timezone.utc)
+    entries = [
+        {
+            "distilled": True,
+            "ingested_at": now.isoformat(),
+            "published": (now - timedelta(days=4)).isoformat(),
+            "source": "wire-a",
+            "title": "Old story re-ingested today",
+            "distill": {"xrp_relevance": 1.0, "sentiment": "bullish"},
+        },
+        {
+            "distilled": True,
+            "ingested_at": now.isoformat(),
+            "published": (now + timedelta(minutes=10)).isoformat(),
+            "source": "wire-b",
+            "title": "Future-dated story",
+            "distill": {"xrp_relevance": 1.0, "sentiment": "bullish"},
+        },
+        {
+            "distilled": True,
+            "ingested_at": now.isoformat(),
+            "published": now.strftime("%a, %d %b %Y %H:%M:%S +0000"),
+            "source": "wire-c",
+            "title": "Recent RSS story",
+            "distill": {"xrp_relevance": 1.0, "sentiment": "bullish"},
+        },
+    ]
+    path = tmp_path / "event_time_news.jsonl"
+    path.write_text("\\n".join(json.dumps(item) for item in entries) + "\\n", encoding="utf-8")
+    score, count, headlines = module._news_score(path=str(path))
+    assert score == 100
+    assert count == 1
+    assert headlines == ["[bullish] Recent RSS story"]
 
 
 def test_news_gate_rejects_observed_research_titles_and_academic_urls(tmp_path: Path):
@@ -103,6 +142,7 @@ def test_news_gate_rejects_observed_research_titles_and_academic_urls(tmp_path: 
         entries.append({
             "distilled": True,
             "ingested_at": now,
+            "published": now,
             "source": "online_articles",
             "feed": "https://news.google.com/rss/search?q=xrp",
             "url": "https://arxiv.org/abs/2026.0000" if index == len(titles) - 1 else "https://news.google.com/rss/articles/example",
