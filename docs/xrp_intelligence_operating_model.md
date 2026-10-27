@@ -423,3 +423,15 @@ No main-branch write, merge, force-push, workflow dispatch, real-money action, o
 - Research PR #1170 head `d716260148624b419704a6aa6e84897b71ecfcd8` passed exact-head CI [40547263320](https://github.com/Barrot-Agent/B-Agent/actions/runs/40547263320) and fail-closed gate [40547263344](https://github.com/Barrot-Agent/B-Agent/actions/runs/40547263344). Test count was not exposed. This head remains draft/unmerged and is 92 commits behind current main.
 - The new main delta since the prior snapshot is generated paper-trading data only; no code/workflow fix reached main. Forecast remains `NOT_ISSUED`.
 - This verification-closure edit creates a new PR head; exact-head CI/gate must be checked again for the resulting commit. Do not transfer the above run results to that new head.
+
+
+### Run 13 checkpoint — 2026-10-27T17:50:00Z (session-clock estimate)
+
+- Re-read current main through the GitHub connector. The latest `web/latest_signal.json` blob is `88a522bb75ad6b5142293ad1790f9c2da3899230`, timestamp `2026-10-27T17:22:27.901001Z`: score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429. Headlines are dominated by XRPL protocol/research topics. Forecast remains `NOT_ISSUED`.
+- Main tip resolved as `79b17591c5f685ce4a123a82bf24c72f73f29d10` from the fresh PR #1193 base. The commit record reports `2026-10-27T17:52:01Z`, later than the supplied session-clock estimate `17:50:00Z`; connector retrieval time is not exposed. Record clock ordering as unresolved; do not infer precise chronology from these timestamps.
+- Main `.github/workflows/merge-queue.yml` blob `19b41e2894fdf1b835498fca3eeab870c3b4c8b1` remains mutation-capable: write permissions, `mode=all`, unlimited default processing, `dry_run=false`, branch-update and merge commands. Do not dispatch it. PR #1192 is still draft/unmerged and effective branch protection is unverified.
+- Created fresh-main draft [PR #1193](https://github.com/Barrot-Agent/B-Agent/pull/1193) by porting only the 10 files changed in previously tested PR #1190. Head `789b639d2553a0d4389d8cf49a1a0b9fb6b80e17`, base `79b17591c5f685ce4a123a82bf24c72f73f29d10`. Fail-closed gate [40556174861](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556174861) passed; exact-head CI [40556174720](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556174720) was in progress at capture. This PR is not merged and its fix is not effective on main.
+- Updated the machine-readable research bundle with source, claim and evidence records for the current signal, main merge-queue risk and PR #1193; preserved the forecast register empty. Bundle write commit: `62d3dae5b8880a967a814756f55b1da0e83f1e08`.
+- Next: recheck PR #1193 exact-head CI and inspect the final diff; keep it draft pending independent review. Continue XRP research only with event-time/route-level evidence; do not infer XRP demand from stablecoin launches or protocol headlines.
+
+No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
