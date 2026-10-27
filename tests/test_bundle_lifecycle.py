@@ -51,5 +51,5 @@ def test_execution_cannot_start_without_persisted_plan(tmp_path):
 def test_lifecycle_does_not_interpolate_work_id_into_path(tmp_path):
     store = BundleLifecycleStore(tmp_path)
     path = store.save_plan("../../outside", Result())
-    assert path.resolve().is_relative_to((tmp_path / ".barrot" / "bundles").resolve())
+    assert path.resolve().is_relative_to((tmp_path / ".git" / "barrot_repair" / "bundles").resolve())
     assert json.loads(path.read_text())["work_id"] == "../../outside"
