@@ -1,5 +1,16 @@
 """Barrot orchestration components."""
 
+from .bundle_engineering import (
+    BundleEngineeringError,
+    BundleFinding,
+    BundleReview,
+    build_bundle_authoring_prompt,
+    build_bundle_improvement_prompt,
+    bundle_fingerprint,
+    review_work_bundle,
+    validate_bundle_revision,
+)
+
 from .learning_filter import (
     LearningFilter,
     LearningRecord,
@@ -51,6 +62,14 @@ from .repository_repair import (
 )
 
 __all__ = [
+    "BundleEngineeringError",
+    "BundleFinding",
+    "BundleReview",
+    "build_bundle_authoring_prompt",
+    "build_bundle_improvement_prompt",
+    "bundle_fingerprint",
+    "review_work_bundle",
+    "validate_bundle_revision",
     "LearningFilter",
     "LearningRecord",
     "VerifiedLearningStore",
