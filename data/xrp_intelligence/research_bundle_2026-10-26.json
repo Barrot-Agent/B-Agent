@@ -52,7 +52,10 @@
       "XRP-C-SBI-VISA-CRYPTO-CARD-REWARD-CHANNEL-20261027",
       "XRP-C-CIRCLE-TAZAPAY-EXPANSION-20261027",
       "XRP-C-EVERNORTH-DILUTION-OVERHANG-20261027",
-      "XRP-C-CIRCLE-CPN-MANAGED-PAYMENTS-20261027"
+      "XRP-C-CIRCLE-CPN-MANAGED-PAYMENTS-20261027",
+      "XRP-C-CIRCLE-ARC-COMPETITIVE-RAIL-20261027",
+      "XRP-C-SBI-RIPPLE-ASIA-XRPL-POC-NOT-XRP-DEMAND-20261027",
+      "XRP-C-MAIN-SIGNAL-INVALID-20261027T073749Z"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -4733,6 +4736,18 @@
       "question": "What post-launch CPN Managed Payments partners and corridors use USDC, and do controlled corridor data show XRP bridge use increasing, decreasing or unchanged?",
       "priority": "HIGH",
       "status": "PRODUCT_LAUNCHED; PARTNER-LEVEL ADOPTION_AND_XRP_ROUTING_UNKNOWN"
+    },
+    {
+      "question_id": "Q-CIRCLE-ARC-XRP-SUBSTITUTION",
+      "question": "Does Arc's USDC-denominated gas and StableFX model measurably substitute for or complement XRP-mediated settlement in specific corridors?",
+      "priority": "HIGH",
+      "status": "UNTESTED"
+    },
+    {
+      "question_id": "Q-SBI-TOKENIZED-DEPOSITS-XRP-REQUIREMENT",
+      "question": "Does SBI Ripple Asia's tokenized-deposit proof of concept use XRP as an asset, or only XRPL as ledger infrastructure; is any production deployment disclosed?",
+      "priority": "HIGH",
+      "status": "UNRESOLVED"
     }
   ],
   "relationship_graph": {
@@ -5980,8 +5995,8 @@
       "intended_role": "Evidence synthesis, structured claim extraction, red-team synthesis, source-ledger maintenance.",
       "connection_state": "CURRENT_ENVIRONMENT_ACTIVE",
       "authentication_state": "GitHub connector access verified for Barrot-Agent/B-Agent; web research used.",
-      "permissions": "Repository read/write through connected GitHub tools was available; this run only reads main and prepares a branch/PR.",
-      "data_flow": "Public web and repository artifacts into this research bundle.",
+      "permissions": "GitHub connector read/write verified for the existing research PR branch; main was read-only in this run.",
+      "data_flow": "Public web and repository artifacts into the research bundle; latest changes written only to existing draft research branch research/xrp-intelligence-ledger-20261026. No main-branch write.",
       "live_collaboration_with_other_platforms": false
     },
     {
@@ -6104,7 +6119,7 @@
     "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
     "latest_main_commit_ci": "Main tip 0190c81914f921455725e73add58d5527aae8148 is a generated cross-analysis refresh marked [skip ci]; no core CI run was observed for this exact SHA. Current main signal remains stale and invalid for forecasting.",
     "current_signal": {
-      "timestamp": "2026-10-27T06:45:40.110346+00:00",
+      "timestamp": "2026-10-27T07:37:49.603416+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -6113,10 +6128,10 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "4d625f52356bbf80fe17d3f0bf942938779283fb",
-      "retrieved_at_utc": "2026-10-27T07:17:00Z",
-      "age_minutes_at_retrieval": 31.3,
-      "disposition": "INVALID_FOR_FORECASTING; signal_text consists of academic/protocol headlines about XRPL consensus, message dissemination, multicast routing and gossip/network configuration; model sentiment unavailable."
+      "blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
+      "retrieved_at_utc": "2026-10-27T08:08:00Z",
+      "age_minutes_at_retrieval": 30.2,
+      "disposition": "INVALID_FOR_FORECASTING; score confidence zero, providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
     },
     "legacy_accuracy": {
       "checked_count": 1612,
@@ -6218,7 +6233,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "Current main web/latest_signal.json blob 3e5906924ab64d7bd1fb0fb312aa9c7652205fc1, timestamp 2026-10-27T05:30:48.745392+00:00; age approximately 41.2 minutes at 2026-10-27T06:12:00Z. Score 44, confidence 0, news score 88 from 11 entries remain invalid for forecasting because providers failed and the news set is dominated by XRPL protocol/research-paper titles.",
+    "latest_signal_staleness": "Main web/latest_signal.json blob b0b77c436ef1efddb4092855f937c6307419e107, timestamp 2026-10-27T07:37:49.603416Z; age approximately 30.2 minutes at 2026-10-27T08:08:00Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -6240,9 +6255,9 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_EXACT_PHRASE_UPDATE",
-      "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-      "note": "This ledger revision records the CoinMarketCap Ask Coin exchange listing as a literal-name candidate only, updates the exact-phrase unresolved register for ASK Coin/actual capital/SBIC, and retains the requirement for original source context. Re-run exact-head CI and fail-closed gate."
+      "latest_ledger_revision_status": "ARC_SBI_POC_AND_2026-10-27T073749Z_SIGNAL_SNAPSHOT_ADDED; EXACT_HEAD_REVALIDATION_RUNNING",
+      "state": "OPEN_DRAFT_REVALIDATION_RUNNING",
+      "note": "Current ledger revision adds Circle Arc mainnet and SBI Ripple Asia tokenized-deposit proof-of-concept evidence, records the latest main signal blob, and updates primary-claim/question-map references. Exact-head CI and fail-closed gate are running; do not merge automatically."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -6308,7 +6323,7 @@
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     },
-    "last_audit_at_utc": "2026-10-27T07:17:00Z",
+    "last_audit_at_utc": "2026-10-27T08:08:00Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE",
       "receiver_pr": 1182,
