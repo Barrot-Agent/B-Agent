@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 07:17:00 UTC  
+**Snapshot:** 2026-10-27 11:05:00 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after this run: **77 source records, 45 claims, 72 evidence records, 6 research tracks, 34 relationship nodes, 49 graph edges, and 11 competing scenario hypotheses**. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after run 8: **99 source records, 66 claims, 95 evidence records, 6 research tracks, 44 relationship nodes, 66 graph edges, and 16 competing scenario hypotheses**. Latest branch validation found unique source/claim/evidence IDs and resolved source, claim, evidence, graph and hypothesis references. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -187,3 +187,26 @@ Sources: [Coinbase Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/16
 - Ledger commit: `eb379e74a8ae48c25d8b469c86bbe7fcf8af62dd`. This changes the head of draft PR [#1170](https://github.com/Barrot-Agent/B-Agent/pull/1170); exact-head CI and the fail-closed gate must be rechecked. No merge or main-branch write occurred.
 - The current signal remains `NOT_ISSUED`. Provider availability, market-news classification, fixed-horizon evaluation and out-of-sample calibration remain blockers.
 - Circle Arc adoption, XRPL USDC route-level volume, SBI proof-of-concept production status, and XRP-specific flows remain unknown. No live nine-platform collaboration is claimed.
+
+
+## Run 8 checkpoint — 2026-10-27 11:05 UTC
+
+### Research updates
+- Refreshed the main-branch signal observation from `web/latest_signal.json`: signal timestamp `2026-10-27T10:30:31.099032Z`, blob SHA `d193c5bf1a4da48d596d606e120335043ae3380d`, main tip observed as `98db0f67cf5958bdf8a02123e8a2ea7261fe13ff`. It reports score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials and Groq HTTP 429; academic/protocol XRPL headlines remain contamination. Forecast stays `NOT_ISSUED`.
+- Strengthened the Circle–SBI Arc relationship: Circle's official launch release names SBI Group in Arc's founding-validator cohort and quotes SBI leadership as intending to leverage both USDC and JPYSC. The evidence supports announced multi-rail intent, not actual volumes, exclusivity, XRP displacement or additional XRP demand. Added JPYSC and SBI Shinsei Trust graph nodes plus explicit issuer/intended-use edges.
+- Added SBI Holdings' official FY2026 investor presentation, which reports an approximately 9% Ripple equity stake and separately shows XRP supply categories as of 2026-04-27. A secondary report attributes to SBI chairman Yoshitaka Kitao a correction of the viral claim that SBI held $10B in XRP; the linked primary social post was not retrievable in this pass. The ledger therefore distinguishes Ripple equity from direct token inventory and leaves current direct XRP balances across SBI entities unknown.
+- Reconfirmed the Evernorth filing distinction: $214.1M cash proceeds used to purchase 84,365,876 XRP is not equivalent to the separately reported 261,919,096 XRP associated with private-placement subscription agreements. The full treasury must not be interpreted as fresh open-market demand.
+
+### Engineering and validation
+- Draft PR [#1188](https://github.com/Barrot-Agent/B-Agent/pull/1188) was extended to reject NaN, positive/negative infinity, confidence <= 0, and confidence > 1 before model interpretation. Added regression coverage for NaN, infinities, -0.01 and 1.01.
+- Exact-head CI run [40493439626](https://github.com/Barrot-Agent/B-Agent/actions/runs/40493439626) completed successfully; fail-closed gate [40493439824](https://github.com/Barrot-Agent/B-Agent/actions/runs/40493439824) also succeeded on head `0674e22870305a2f36386b004ac182a7a1561892`. This is branch-verified, not merged or active on main.
+- Updated research bundle commit: `dcdddd007ee3c42b01086e509b561da50cc6e527`. JSON parsed and source/claim/evidence/node IDs were unique; all checked source, claim, evidence, graph and hypothesis references resolved. Current bundle: 99 sources, 66 claims, 95 evidence records, 44 graph nodes, 66 graph edges, 16 hypotheses.
+- Main remains unchanged by this run. Draft PRs remain unmerged. No physical Moto G7 receipt was observed; cloud-to-phone delivery is still unverified.
+
+### Next actions
+1. Keep directional XRP forecasts at `NOT_ISSUED` until source relevance, provider availability, synchronized point-in-time market data and calibrated fixed-horizon evaluation pass.
+2. Measure actual Arc/USDC/JPYSC activity and compare against SBI-linked XRP channels and matched corridors; do not infer substitution from validator membership.
+3. Retrieve the original Kitao post or another primary SBI disclosure before treating the $10B-XRP correction as primary-source verified; do not conflate SBI's Ripple equity with direct XRP holdings.
+4. Independently review PR #1188's confidence guard; keep it draft until authorized approval.
+5. Continue the complete public-video inventory for the verified Kamilah Stevenson channel and exact-phrase research for `ASK Coin`, `actual capital`, and `SBIC, ChatGPT SBIC`.
+6. Preserve main, worktrees, existing PR content and the unsafe legacy Termux watcher state; do not enable the command-executing watcher. Obtain a real device receipt before marking phone delivery verified.
