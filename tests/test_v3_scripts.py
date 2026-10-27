@@ -212,6 +212,40 @@ def test_self_upgrade_blocks_when_remote_verification_fails(tmp_path: Path, monk
     assert code == 1
 
 
+def test_open_capability_pr_refuses_dirty_worktree_without_touching_operator_changes(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_dirty_worktree_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
+    module.SCRIPTS_DIR.mkdir(parents=True)
+
+    calls: list[tuple[str, ...]] = []
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("status", "--porcelain", "--untracked-files=all"):
+            return Result(stdout="M  unrelated.py\n")
+        raise AssertionError(f"Git operation must not proceed with dirty tree: {args}")
+
+    monkeypatch.setattr(module, "git", fake_git)
+
+    caught = None
+    try:
+        module.open_capability_pr("Gap", "#!/usr/bin/env python3\\nprint(1)\\n")
+    except module.SelfUpgradeError as exc:
+        caught = str(exc)
+
+    assert caught is not None
+    assert "working tree is not clean" in caught
+    assert calls == [("status", "--porcelain", "--untracked-files=all")]
+    assert not (module.SCRIPTS_DIR / "gap.py").exists()
+
+
 def test_open_capability_pr_blocks_remote_sha_mismatch_and_restores_branch(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_open_pr_test")
     monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
@@ -228,6 +262,8 @@ def test_open_capability_pr_blocks_remote_sha_mismatch_and_restores_branch(tmp_p
 
     def fake_git(*args: str):
         calls.append(args)
+        if args == ("status", "--porcelain", "--untracked-files=all"):
+            return Result(stdout="")
         if args == ("branch", "--show-current"):
             return Result(stdout="feature/current\n")
         if args == ("checkout", "-b", "selfupgrade/gap-20260914153000"):
