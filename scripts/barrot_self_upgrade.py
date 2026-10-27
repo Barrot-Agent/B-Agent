@@ -223,12 +223,16 @@ Output ONLY the Python source, starting with the shebang."""
 
 
 def verify_syntax(code: str) -> ValidationResult:
-    tmp = REPO_ROOT / ".selfupgrade_candidate.py"
-    tmp.write_text(code, encoding="utf-8")
-    try:
-        return bounded_subprocess([sys.executable, "-m", "py_compile", str(tmp)], cwd=REPO_ROOT, timeout=60)
-    finally:
-        tmp.unlink(missing_ok=True)
+    # Syntax-check generated code outside the operator's checkout. A fixed
+    # filename here could overwrite and then delete an operator-owned file.
+    with tempfile.TemporaryDirectory(prefix="barrot-self-upgrade-syntax-") as temp_dir:
+        candidate = Path(temp_dir) / "candidate.py"
+        candidate.write_text(code, encoding="utf-8")
+        return bounded_subprocess(
+            [sys.executable, "-m", "py_compile", str(candidate)],
+            cwd=Path(temp_dir),
+            timeout=60,
+        )
 
 
 def open_capability_pr(gap_name: str, code: str) -> dict[str, Any]:
