@@ -2235,7 +2235,7 @@
       "author_or_organization": "Barrot-Agent/B-Agent",
       "source_type": "repository_pull_request_and_ci_metadata",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
-      "publication_date": "Latest status read: fail-closed gate run 40518284880 completed success; exact-head CI run 40518285106 remains queued. Connector retrieval timestamp unavailable.",
+      "publication_date": "Latest status read: exact-head CI run 40518285106 completed successfully; fail-closed gate run 40518284880 completed successfully. PR remains draft/unmerged.",
       "source_commit": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
       "sections": [
         "Branch based on exact main SHA 882b3d3f13165501642756769e74ff48251efb75",
@@ -2244,6 +2244,9 @@
         "CI keeps tests/test_risk_manager.py and adds tests/test_merge_queue_safety.py",
         "Draft and unmerged; main unchanged",
         "Fail-closed gate run 40518284880 completed successfully; exact-head CI run 40518285106 remains queued at latest status read.",
+        "Draft and unmerged; main unchanged.",
+        "Exact-head CI run 40518285106 completed successfully; core test job passed. Test count was not exposed in the retrieved job summary.",
+        "Fail-closed gate run 40518284880 completed successfully.",
         "Draft and unmerged; main unchanged."
       ]
     },
@@ -4517,7 +4520,7 @@
     },
     {
       "claim_id": "XRP-C-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
-      "statement": "Fresh-main draft PR #1192 replaces the mutation-capable merge queue with a manual read-only notice and preserves the existing risk-manager regression suite while adding merge-queue safety tests. Static read-back confirms the intended four-file change and the fail-closed gate has passed, but exact-head CI remains queued; the change is not yet fully tested end-to-end or effective on main.",
+      "statement": "Fresh-main draft PR #1192 replaces the mutation-capable merge queue with a manual read-only notice and preserves the existing risk-manager regression suite while adding merge-queue safety tests. Static read-back, exact-head core CI and the fail-closed gate all passed. The change remains draft and is not effective on main; effective branch protection is still unverified.",
       "domain": "barrot_repository_security_and_ci_coverage",
       "claim_type": "proposed_mitigation_state",
       "source": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
@@ -4526,10 +4529,10 @@
         "XRP-E-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10"
       ],
       "contradicting_evidence": [],
-      "derivation_status": "STATIC_READ_BACK_VERIFIED; FAIL-CLOSED GATE PASS; CORE CI PENDING",
+      "derivation_status": "STATIC_READ_BACK_VERIFIED; EXACT_HEAD_CORE_CI_PASS; FAIL_CLOSED_GATE_PASS",
       "independent_verification_status": "CURRENT_MAIN_BASE_CONFIRMED_AT_BRANCH_CREATION; FOUR_FILE_DIFF_AND_CI_LIST_READ_BACK",
       "adversarial_status": "The PR is not effective on main; effective branch protection remains unverified; queued CI is not a pass",
-      "acceptance_status": "DRAFT_ONLY; WAIT_FOR_EXACT_HEAD_CI; NO_MERGE",
+      "acceptance_status": "DRAFT_ONLY; REVIEW_REQUIRED; NO_MERGE",
       "confidence": 0.99,
       "assumptions": [
         "The PR metadata and branch contents returned by GitHub correspond to the stated head SHA.",
@@ -7053,10 +7056,10 @@
       "evidence_id": "XRP-E-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
       "claim_id": "XRP-C-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
       "kind": "fresh_main_pr_static_review",
-      "summary": "PR #1192 head ae556915bb49911edecf1c01c2f8a823ed6a0766 changes only four intended files. Read-back confirms the merge queue is manual-only/read-only with no merge or branch-update commands; CI includes both tests/test_risk_manager.py and tests/test_merge_queue_safety.py. Fail-closed gate 40518284880 completed successfully; exact-head CI 40518285106 remains queued.",
+      "summary": "PR #1192 head ae556915bb49911edecf1c01c2f8a823ed6a0766 changes only four intended files. Read-back confirms a manual-only/read-only merge queue with no merge or branch-update commands; CI includes both tests/test_risk_manager.py and tests/test_merge_queue_safety.py. Exact-head CI 40518285106 and fail-closed gate 40518284880 completed successfully; the connector's job summary did not expose the test count.",
       "source_id": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
       "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
-      "status": "STATIC_READBACK_PASS; FAIL_CLOSED_GATE_PASS; CORE_CI_PENDING; DRAFT_UNMERGED",
+      "status": "STATIC_READBACK_PASS; EXACT_HEAD_CORE_CI_PASS; FAIL_CLOSED_GATE_PASS; DRAFT_UNMERGED",
       "independence": "direct branch read-back and PR/run metadata",
       "provenance": [
         "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10"
@@ -7075,10 +7078,11 @@
         "safety_test_included": true,
         "safety_test_count": 6,
         "ci_run": 40518285106,
-        "ci_status": "queued",
+        "ci_status": "success",
         "gate_run": 40518284880,
         "gate_status": "success",
-        "merged": false
+        "merged": false,
+        "test_count_exposed": false
       }
     },
     {
@@ -9837,7 +9841,7 @@
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "RUN 9 RESEARCH BUNDLE AND HANDOFF UPDATED; EXACT-HEAD CI AND FAIL-CLOSED GATE PASSED",
-      "state": "OPEN_DRAFT; PREVIOUS_HEAD_917276_CI_PASS; CURRENT_HEAD_D4735_CI_AND_GATE_QUEUED; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
+      "state": "OPEN_DRAFT; PREVIOUS_HEAD_917276_CI_PASS; CURRENT_HEAD_8950BD7_NO_CHECK_RUNS_RETURNED; CURRENT_HEAD_CI_NOT_VERIFIED; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
       "note": "Latest research branch head a706b7ccdf68bd961cfcb3132d23ecf1773b370f passed exact-head CI run 40510936006 (111 tests, 5.11s) and fail-closed gate 40510935876. Main tip observed as 2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf; compare from base a3e0f0198510634420f925eef8cea384aca51b12 shows 64 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. The GitHub timestamps are ahead of the supplied session clock; current-base integration remains unverified. Do not merge automatically.",
       "last_completed_head_sha": "9172763078a99e67c752ec79a1019a7f1ad716b7",
       "last_completed_ci_run": 40511108302,
@@ -9859,11 +9863,11 @@
       "research_branch_commits_from_common_base": 86,
       "main_delta_changed_files": 14,
       "main_delta_code_or_workflow_files_changed": false,
-      "current_head_sha": "d4735be3d0582424c6fb66e2c3de0faa8143d1da",
-      "current_head_ci_run": 40518437874,
-      "current_head_ci_status": "queued",
-      "current_head_gate_run": 40518437737,
-      "current_head_gate_status": "queued"
+      "current_head_sha": "8950bd7db0c5d09802c832ca1262f6383fd6198e",
+      "current_head_ci_run": null,
+      "current_head_ci_status": "NO_CHECK_RUNS_RETURNED_BY_GITHUB_CHECK-RUNS_ENDPOINT",
+      "current_head_gate_run": null,
+      "current_head_gate_status": "NO_CHECK_RUNS_RETURNED_BY_GITHUB_CHECK-RUNS_ENDPOINT"
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -10091,14 +10095,14 @@
         "pr": 1170,
         "title": "Research: durable XRP intelligence ledger and relationship graph",
         "state": "OPEN_DRAFT",
-        "head_sha": "d4735be3d0582424c6fb66e2c3de0faa8143d1da",
-        "ci_run": 40518437874,
-        "ci": "QUEUED; previous head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests",
-        "gate_run": 40518437737,
-        "gate": "QUEUED",
+        "head_sha": "8950bd7db0c5d09802c832ca1262f6383fd6198e",
+        "ci_run": null,
+        "ci": "NO CHECK RUNS RETURNED FOR CURRENT HEAD; previous head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests",
+        "gate_run": null,
+        "gate": "NO CHECK RUNS RETURNED FOR CURRENT HEAD",
         "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
         "merge_authorized": false,
-        "status": "OPEN_DRAFT; LATEST_HEAD_CI_AND_GATE_QUEUED; PRIOR_HEAD_CI_PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
+        "status": "OPEN_DRAFT; LATEST HEAD CI NOT VERIFIED; PRIOR HEAD CI PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
         "current_main_tip_sha": "ea8dc4d95b6336c42e553595de601100f0c61583"
       },
       {
@@ -10162,11 +10166,12 @@
         "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
         "base_sha": "882b3d3f13165501642756769e74ff48251efb75",
         "ci_run": 40518285106,
-        "ci": "QUEUED",
+        "ci": "PASS; core test job success; test count not exposed",
         "gate_run": 40518284880,
         "gate": "PASS",
-        "status": "OPEN_DRAFT; FRESH_MAIN; STATIC_READBACK_PASS; GATE_PASS; EXACT_HEAD_CI_PENDING; NOT_EFFECTIVE_ON_MAIN",
-        "merge_authorized": false
+        "status": "OPEN_DRAFT; FRESH_MAIN; STATIC_READBACK_PASS; EXACT_HEAD_CI_AND_GATE_PASS; NOT_EFFECTIVE_ON_MAIN",
+        "merge_authorized": false,
+        "mergeable": true
       }
     ],
     "pr1190_validation": {
@@ -10215,11 +10220,33 @@
     "last_run_current_observations": {
       "session_clock_utc": "2026-10-27T11:10:00Z",
       "retrieval_timestamp_exposed": false,
-      "main_tip_sha": "ea8dc4d95b6336c42e553595de601100f0c61583",
-      "main_tip_commit_timestamp_utc": "2026-10-27T13:56:42Z",
+      "main_tip_sha": "882b3d3f13165501642756769e74ff48251efb75",
+      "main_tip_commit_timestamp_utc": "2026-10-27T14:07:45Z",
       "latest_signal_blob_sha": "4766b5bdb7d14115abd67f1a2b76bca0efe9ddee",
       "latest_signal_timestamp_utc": "2026-10-27T13:34:46.507398Z",
-      "open_pr_count_returned": 53,
+      "open_pr_count_returned": 54,
+      "pr1192": {
+        "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+        "ci_run": 40518285106,
+        "ci_status": "success",
+        "gate_run": 40518284880,
+        "gate_status": "success",
+        "draft": true,
+        "merged": false
+      },
+      "pr1170_latest_head": "8950bd7db0c5d09802c832ca1262f6383fd6198e",
+      "pr1170_check_runs_returned": 0,
+      "pr1170_exact_head_ci_status": "NOT_VERIFIED",
+      "video_identity_recheck": {
+        "third_party_pages": 4,
+        "transcript_excerpt_ids": [
+          "QslbjGQD0MU",
+          "ci0FH73lbCs",
+          "cxeX_eu_2H0"
+        ],
+        "first_party_channel_fetch": "THROTTLED",
+        "channel_ids_kept_separate": true
+      },
       "forecast_status": "NOT_ISSUED",
       "main_changed_by_this_run": false
     },
@@ -10239,11 +10266,12 @@
       "safety_test_included": true,
       "safety_test_count": 6,
       "ci_run": 40518285106,
-      "ci_status": "queued",
+      "ci_status": "success",
       "fail_closed_gate_run": 40518284880,
       "gate_status": "success",
-      "state": "OPEN_DRAFT; FRESH_MAIN_BASE; STATIC_READBACK_PASS; FAIL_CLOSED_GATE_PASS; EXACT_HEAD_CI_QUEUED; NOT_EFFECTIVE_ON_MAIN",
-      "merge_authorized": false
+      "state": "OPEN_DRAFT; FRESH_MAIN_BASE; STATIC_READBACK_PASS; EXACT_HEAD_CI_AND_GATE_PASS; NOT_EFFECTIVE_ON_MAIN; REVIEW_REQUIRED",
+      "merge_authorized": false,
+      "ci_conclusion": "success"
     }
   },
   "video_ingestion": {
@@ -10334,6 +10362,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "PR #1192 exact-head core CI run 40518285106 and fail-closed gate 40518284880 both passed. Keep the PR draft and unmerged; inspect human review and effective branch protection before any approval. Main remains unchanged.",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_ONLY; NOT_EFFECTIVE_ON_MAIN"
+    },
+    {
+      "priority": 1,
+      "action": "Recheck exact-head checks for research branch head 8950bd7db0c5d09802c832ca1262f6383fd6198e. The check-runs endpoint returned zero checks for that head; do not infer success from the prior head's passing CI.",
+      "status": "LATEST_RESEARCH_HEAD_CI_NOT_VERIFIED; PRIOR_HEAD_CI_PASS"
+    },
     {
       "priority": 0,
       "action": "Wait for exact-head CI run 40518285106 and fail-closed gate 40518284880 on PR #1192. Confirm both conclude successfully before marking the merge-queue safety fix tested; do not dispatch the workflow or merge the PR.",
