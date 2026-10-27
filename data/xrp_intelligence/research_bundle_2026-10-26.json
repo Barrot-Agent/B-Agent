@@ -3,11 +3,11 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T11:07:00.000Z",
+    "captured_at_utc": "2026-10-27T11:10:00.000Z",
     "main_tip_sha": "98db0f67cf5958bdf8a02123e8a2ea7261fe13ff",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING: main latest_signal.json read during run 8; score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429, XRPL protocol/research headline contamination. Forecast NOT_ISSUED. Circle's official Arc release quotes SBI's stated intent to leverage USDC and JPYSC; realized flows and XRP substitution remain unknown.",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: main latest_signal.json blob d193c5bf1a4da48d596d606e120335043ae3380d, signal timestamp 2026-10-27T10:30:31.099032Z; score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials and Groq HTTP 429, protocol/research headline contamination. Forecast NOT_ISSUED.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
     "latest_signal_timestamp": "2026-10-27T10:30:31.099032+00:00",
     "latest_signal_blob_sha": "d193c5bf1a4da48d596d606e120335043ae3380d",
@@ -1880,6 +1880,26 @@
         "PR remains draft and unmerged; base a3e0f0198510634420f925eef8cea384aca51b12 is 47 commits behind current main tip 98db0f67cf5958bdf8a02123e8a2ea7261fe13ff.",
         "Observed base-to-main delta contains 14 generated runtime/log/signal/deployment-report files and no code/workflow files; this does not replace current-base integration validation."
       ]
+    },
+    {
+      "source_id": "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24",
+      "title": "XRP ETF weekly supply and flow report through October 23, 2026",
+      "author_or_organization": "XRP Insights",
+      "source_type": "secondary_market_data_aggregation_from_issuer_holdings",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-24",
+      "publication_date": "2026-10-24",
+      "sections": [
+        "Report estimates US XRP ETFs (six spot funds plus BITW) had net inflows of 1.529 million XRP from the October 16 close through October 23 close, about $2.03 million using each day's XRP price.",
+        "Reported combined holdings were 1,193,209,830 XRP and combined net assets about $1.57 billion at October 23 close.",
+        "The report says October 23 alone recorded a net outflow of 1.81 million XRP.",
+        "XRP closed the week around $1.28, down approximately 2.3% week over week, despite positive weekly net ETF flows.",
+        "The report excludes GXRP from flow totals while correcting a scrape gap; its holdings still count in totals."
+      ],
+      "source_limitations": [
+        "Secondary aggregation, not an issuer or regulator filing.",
+        "Flow estimates depend on issuer-reported holdings and data-gap treatment; excluded GXRP flow means totals are not complete across all tracked products.",
+        "A weekly flow/price divergence does not establish causality or forecast direction."
+      ]
     }
   ],
   "claims": [
@@ -3641,6 +3661,32 @@
         "SRC-BARROT-PR1170-CI-HEAD-5F5D-20261027"
       ],
       "timestamp": 1793099220
+    },
+    {
+      "claim_id": "XRP-C-XRP-ETF-FLOWS-PRICE-DIVERGENCE-20261024",
+      "statement": "XRP Insights' October 24, 2026 report estimates that six US spot XRP ETFs plus BITW had net inflows of about 1.529 million XRP from the October 16 close through October 23 close, ending with about 1.1932 billion XRP and $1.57 billion in net assets, while XRP's weekly close was down about 2.3%. The report excludes GXRP from flow totals during a scrape-gap correction and reports a 1.81 million XRP outflow on October 23. This divergence shows that the reported ETF flow series alone did not determine the weekly price move; it does not identify the cause.",
+      "domain": "institutional_flows_and_market_structure",
+      "claim_type": "secondary_market_data_observation_with_causal_limit",
+      "source": "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24",
+      "source_location": "https://xrp-insights.com/news/xrp-supply-report-2026-10-24",
+      "supporting_evidence": [
+        "XRP-E-XRP-ETF-FLOWS-PRICE-DIVERGENCE-20261024"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "REPORTED_FLOW_SNAPSHOT; CROSS_SOURCE_RECONCILIATION_REQUIRED",
+      "independent_verification_status": "SECONDARY_AGGREGATION; ISSUER_LEVEL_RECONCILIATION_AND_GXRP_GAP_REMAIN",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "FLOW_SNAPSHOT_PROVISIONAL; NO_CAUSAL_OR_DIRECTIONAL_INFERENCE",
+      "confidence": 0.86,
+      "assumptions": [
+        "The provider's holdings-change method is broadly consistent across included funds.",
+        "The reported exclusion of GXRP from flows may understate or otherwise alter total daily creations/redemptions.",
+        "Price and flow windows are aligned only at reported close intervals; intraday causal timing is not established."
+      ],
+      "provenance": [
+        "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
+      ],
+      "timestamp": 1793099400
     }
   ],
   "evidence": [
@@ -5602,6 +5648,30 @@
         "conclusion": "success",
         "merge_performed": false
       }
+    },
+    {
+      "evidence_id": "XRP-E-XRP-ETF-FLOWS-PRICE-DIVERGENCE-20261024",
+      "claim_id": "XRP-C-XRP-ETF-FLOWS-PRICE-DIVERGENCE-20261024",
+      "kind": "dated_aggregated_etf_holdings_and_flows",
+      "summary": "XRP Insights reports +1,529,454 XRP net flows for Oct 19–23, 2026, ending at 1,193,209,830 XRP and about $1.57B net assets; XRP closed the week down about 2.3%. The source excludes GXRP from flow totals during a scrape-gap correction and reports Oct 23 net outflows of 1.81M XRP.",
+      "source_id": "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24",
+      "source_location": "https://xrp-insights.com/data",
+      "status": "PROVISIONAL_SECONDARY_DATA; RECONCILE_ISSUER_BY_ISSUER",
+      "independence": "secondary_aggregation_of_issuer_holdings",
+      "provenance": [
+        "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
+      ],
+      "details": {
+        "window_start": "2026-10-16 close",
+        "window_end": "2026-10-23 close",
+        "net_flow_xrp": 1529454,
+        "total_xrp_held": 1193209830,
+        "combined_net_assets_usd": 1570000000,
+        "weekly_price_change_pct": -2.3,
+        "oct_23_flow_xrp": -1810000,
+        "gXRP_flow_treatment": "EXCLUDED_FROM_FLOW_TOTAL_DURING_SCRAPE_GAP_CORRECTION",
+        "causal_effect_on_price": "NOT_ESTABLISHED"
+      }
     }
   ],
   "tracks": [
@@ -6515,6 +6585,14 @@
         "source_ids": [
           "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ]
+      },
+      {
+        "id": "US spot XRP ETFs",
+        "type": "regulated_fund_wrappers_holding_xrp",
+        "status": "SECONDARY_AGGREGATE_SNAPSHOT_THROUGH_2026-10-23; FUND_BY_FUND_ISSUER_RECONCILIATION_REQUIRED",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
+        ]
       }
     ],
     "edges": [
@@ -7264,6 +7342,17 @@
           "SRC-SBI-FY2026-PRESENTATION-2026-05-01"
         ],
         "caveat": "This is corporate equity exposure. It must not be treated as a direct XRP token balance; exact current token holdings across SBI Group entities remain unknown."
+      },
+      {
+        "source": "US spot XRP ETFs",
+        "target": "XRP",
+        "relationship_type": "REPORTED_CUSTODIAL_HOLDINGS_AND_CREATION_REDEMPTION_FLOWS",
+        "classification": "SECONDARY_AGGREGATE_DATA; FUND_LEVEL_RECONCILIATION_PENDING",
+        "confidence": 0.86,
+        "source_ids": [
+          "SRC-XRP-ETF-FLOW-SNAPSHOT-2026-10-24"
+        ],
+        "caveat": "Holdings and flows are aggregated from issuer data by a secondary provider; GXRP flows are excluded during a reported scrape correction. Holdings do not establish active trading, net market impact, or a directional price signal."
       }
     ]
   },
@@ -7650,6 +7739,26 @@
         "Primary evidence shows the quoted USDC/JPYSC Arc intent was withdrawn or never implemented.",
         "Synchronized flow data shows no meaningful Arc stablecoin usage in the corridors hypothesized to overlap with XRP routes.",
         "Observed XRP corridor volume rises alongside Arc volume without a relative decline in comparable XRP-mediated routes, weakening the substitution hypothesis."
+      ]
+    },
+    {
+      "hypothesis_id": "H-XRP-ETF-FLOW-PRICE-DIVERGENCE-20261027",
+      "statement": "Positive weekly XRP ETF net flows can coexist with a falling XRP price because other venue supply, derivatives deleveraging, macro risk, fund-flow timing or data gaps may dominate; alternatively, ETF flows may absorb supply with a lag and not prevent short-horizon declines. Neither explanation is established by a weekly aggregate.",
+      "status": "OPEN_COMPETING_CAUSAL_HYPOTHESES",
+      "supporting_evidence": [
+        "XRP-E-XRP-ETF-FLOWS-PRICE-DIVERGENCE-20261024"
+      ],
+      "contradicting_evidence": [],
+      "required_tests": [
+        "Reconcile daily fund-by-fund issuer holdings and creations/redemptions, including GXRP catch-up treatment.",
+        "Align ETF flow timestamps with spot order-book depth, exchange-native perpetual open interest, funding, basis and liquidation events.",
+        "Compare XRP with matched crypto assets and macro controls over fixed horizons using event-time walk-forward evaluation.",
+        "Test whether ETF flow features add incremental predictive value over price/volume and derivatives baselines."
+      ],
+      "falsification_conditions": [
+        "Issuer-level reconciliation materially changes the sign or size of the reported weekly net flow.",
+        "Out-of-sample testing shows ETF flow features add no stable information beyond simple baselines.",
+        "The apparent flow/price divergence disappears after aligning the correct trading sessions and fund reporting timestamps."
       ]
     }
   ],
@@ -8211,6 +8320,11 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Reconcile XRP ETF flows issuer-by-issuer through the 2026-10-23 close, especially the GXRP scrape-gap treatment, then align flows with spot depth and derivatives deleveraging before testing any predictive effect.",
+      "status": "SECONDARY_REPORT_SHOWS_POSITIVE_WEEKLY_FLOWS_WITH_NEGATIVE_PRICE; CAUSAL_EXPLANATION_UNRESOLVED"
+    },
     {
       "priority": 1,
       "action": "Review PR #1188's exact-head confidence guard: CI 40493439626 and fail-closed gate 40493439824 passed on 0674e22870305a2f36386b004ac182a7a1561892; keep draft unmerged pending independent review.",
