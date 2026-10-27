@@ -558,3 +558,13 @@ def test_barrot_groq_tpm_limit_retries_same_model_once(monkeypatch) -> None:
     assert calls["count"] == 2
     assert sleeps == [5.1]
 
+
+
+def test_databricks_deploy_workflow_uses_existing_script_path() -> None:
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "deploy-databricks.yml"
+    script_path = REPO_ROOT / "scripts" / "deploy_databricks.py"
+    workflow = workflow_path.read_text(encoding="utf-8")
+
+    assert script_path.is_file()
+    assert "run: python scripts/deploy_databricks.py" in workflow
+    assert "run: python deploy_databricks.py" not in workflow
