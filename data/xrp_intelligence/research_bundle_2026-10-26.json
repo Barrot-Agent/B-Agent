@@ -3,14 +3,16 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T07:17:00Z",
+    "captured_at_utc": "2026-10-27T08:08:00Z",
     "main_tip_sha": "0190c81914f921455725e73add58d5527aae8148",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING_CONFIDENCE_ZERO_PROVIDER_FAILURES_AND_ACADEMIC_XRPL_PROTOCOL_HEADLINES_CONTAMINATING_MARKET_NEWS",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING_CONFIDENCE_ZERO_PROVIDER_FAILURES_AND_ACADEMIC_XRPL_PROTOCOL_HEADLINES_CONTAMINATING_MARKET_NEWS; main artifact refreshed 2026-10-27T07:37:49.603416Z",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
-    "latest_signal_timestamp": "2026-10-27T06:45:40.110346+00:00",
-    "latest_signal_blob_sha": "4d625f52356bbf80fe17d3f0bf942938779283fb"
+    "latest_signal_timestamp": "2026-10-27T07:37:49.603416+00:00",
+    "latest_signal_blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
+    "main_tip_sha_last_explicitly_observed": "0190c81914f921455725e73add58d5527aae8148",
+    "main_tip_sha_status": "Last explicit main-tip observation was 2026-10-27T07:17:00Z; current main tip was not independently resolved in this run. The main signal artifact was fetched separately."
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -132,6 +134,16 @@
       {
         "id": "Q-USDC-XRPL-SPLIT",
         "question": "What share of Circle's reported H1 2026 USDC transaction volume and mint/redeem activity occurred on XRPL, and what fraction involved XRP bridge paths?",
+        "status": "UNRESOLVED"
+      },
+      {
+        "id": "Q-CIRCLE-ARC-XRP-SUBSTITUTION",
+        "question": "Does Arc's USDC-denominated gas and StableFX model measurably substitute for or complement XRP-mediated settlement in specific corridors?",
+        "status": "UNTESTED"
+      },
+      {
+        "id": "Q-SBI-TOKENIZED-DEPOSITS-XRP-REQUIREMENT",
+        "question": "Does SBI Ripple Asia's tokenized-deposit proof of concept use XRP as an asset, or only XRPL as ledger infrastructure; is any production deployment disclosed?",
         "status": "UNRESOLVED"
       }
     ]
@@ -1453,6 +1465,58 @@
         "Circle describes a stack using payouts across 20+ blockchains and domestic payment rails connected to Circle Payments Network fiat payout corridors.",
         "This confirms a managed stablecoin payment product and Circle's stated operating model; it does not prove XRP is never used by any intermediary or establish corridor-level XRP displacement."
       ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+      "title": "Circle launches Arc mainnet, an economic operating system for the internet",
+      "author_or_organization": "Circle Internet Group, Inc.",
+      "source_type": "official_corporate_mainnet_launch",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "publication_date": "2026-09-16",
+      "retrieved_at_utc": "2026-10-27T08:08:00Z",
+      "sections": [
+        "Circle announced Arc public mainnet launch on 2026-09-16, with more than 100 institutional and ecosystem builders claimed at launch.",
+        "Circle describes fees paid in USDC, sub-second finality, native integration with USDC/EURC and StableFX, and institutional participation.",
+        "This is Circle's description of its own network and launch; it is not independent evidence of sustained throughput, XRP displacement, or price impact."
+      ],
+      "source_limitations": [
+        "Single primary corporate release; operational performance and realized adoption require independent measurement."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26",
+      "title": "SBI Ripple Asia proof of concept for tokenized deposits and deposit-type digital money using existing financial infrastructure",
+      "author_or_organization": "SBI Ripple Asia Co., Ltd. / SBI Holdings",
+      "source_type": "official_joint_venture_proof_of_concept_release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "publication_date": "2026-02-26",
+      "retrieved_at_utc": "2026-10-27T08:08:00Z",
+      "sections": [
+        "The release describes a proof of concept for lower-cost tokenized deposits and deposit-type digital money using SBI's MoneyTap service and an SBI Ripple Asia token issuance platform.",
+        "The release says use of XRPL is contemplated in the model.",
+        "A proof-of-concept description does not establish production deployment, XRP acquisition, XRP as bridge asset, or measurable XRP transaction demand."
+      ],
+      "source_limitations": [
+        "Primary corporate source; production rollout, customer volumes, XRP asset usage, and settlement inventory are not disclosed in this release."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z",
+      "title": "Barrot B-Agent main-branch latest XRP signal artifact, observed at 2026-10-27T07:37:49Z",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "public_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "artifact timestamp 2026-10-27T07:37:49.603416Z",
+      "retrieved_at_utc": "2026-10-27T08:08:00Z",
+      "source_blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
+      "sections": [
+        "Artifact reports score 44, confidence 0.0, news_score 88, and 11 news entries.",
+        "Model sentiment is unavailable because GitHub model credentials are missing and Groq returned HTTP 429.",
+        "Headline set contains XRPL consensus, dissemination, routing, and protocol research topics rather than a validated market-news set."
+      ],
+      "source_limitations": [
+        "Repository artifact, not a market-price forecast or independently validated news dataset; main tip SHA not independently resolved in this run."
+      ]
     }
   ],
   "claims": [
@@ -2656,6 +2720,83 @@
         "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
       ],
       "timestamp": 1793085420
+    },
+    {
+      "claim_id": "XRP-C-CIRCLE-ARC-COMPETITIVE-RAIL-20261027",
+      "statement": "Circle announced Arc public mainnet on 2026-09-16 and describes USDC-denominated gas fees, sub-second finality, and native integration with USDC/EURC and StableFX. This establishes a competing stablecoin-native settlement-network design. It does not establish that Arc has displaced XRP in production corridors or caused any XRP price/flow change.",
+      "domain": "stablecoin_networks_and_payment_rail_competition",
+      "claim_type": "official_network_launch_with_competition_hypothesis",
+      "source": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-ARC-MAINNET-20261027"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-CIRCLE-USDC-XRPL"
+      ],
+      "derivation_status": "SUPPORTED_AS_CIRCLE_ANNOUNCEMENT; MARKET_SUBSTITUTION_UNPROVEN",
+      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; INDEPENDENT_ADOPTION_AND_PERFORMANCE_DATA_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "NETWORK_LAUNCH_CONFIRMED; XRP_FLOW_OR_PRICE_EFFECT_UNKNOWN",
+      "confidence": 0.98,
+      "assumptions": [
+        "Circle's release accurately describes its intended Arc architecture.",
+        "Network availability and advertised design do not by themselves establish material realized volume or competitor displacement."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+      ],
+      "timestamp": 1793088480
+    },
+    {
+      "claim_id": "XRP-C-SBI-RIPPLE-ASIA-XRPL-POC-NOT-XRP-DEMAND-20261027",
+      "statement": "SBI Ripple Asia's 2026-02-26 release describes a proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and a token-issuance platform, with XRPL contemplated in the model. This supports an XRPL infrastructure use case but does not establish production deployment, XRP purchases, XRP as a bridge asset, or measurable XRP demand.",
+      "domain": "japan_institutional_adoption_and_tokenization",
+      "claim_type": "official_proof_of_concept_with_native_asset_distinction",
+      "source": "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "supporting_evidence": [
+        "XRP-E-SBI-RIPPLE-ASIA-XRPL-POC-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_AS_OFFICIAL_POC_DESCRIPTION; PRODUCTION_AND_XRP_ASSET_USAGE_UNVERIFIED",
+      "independent_verification_status": "SINGLE_PRIMARY_CORPORATE_SOURCE; NO PRODUCTION METRICS FOUND IN THIS PASS",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "XRPL_USE_CONTEMPLATED_IN_POC; XRP_DEMAND_NOT_ESTABLISHED",
+      "confidence": 0.98,
+      "assumptions": [
+        "The Japanese-language corporate release is accurately translated and summarized.",
+        "The word 'contemplated' / 'assumed' in the release is not equivalent to confirmed production deployment."
+      ],
+      "provenance": [
+        "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
+      ],
+      "timestamp": 1793088480
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T073749Z",
+      "statement": "The main-branch latest_signal.json artifact timestamped 2026-10-27T07:37:49.603416Z reports score 44, confidence 0, news score 88 from 11 entries, and unavailable model sentiment because GitHub model credentials are missing and Groq returned HTTP 429. Its listed headlines concern XRPL consensus/network research. This artifact is invalid for directional forecasting; no forecast is issued.",
+      "domain": "prediction_engine_signal_integrity",
+      "claim_type": "direct_repository_observation_and_forecast_gate",
+      "source": "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-INVALID-20261027T073749Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "DIRECTLY_OBSERVED_IN_MAIN_ARTIFACT",
+      "independent_verification_status": "BLOB_READ_BACK_VERIFIED; CURRENT_MAIN_TIP_SHA_NOT_RESOLVED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "FORECAST_STATUS_NOT_ISSUED",
+      "confidence": 0.99,
+      "assumptions": [
+        "The fetched main-branch blob is the currently served repository artifact at retrieval time.",
+        "A numeric sentiment score with zero confidence and failed model providers is not a valid directional forecast."
+      ],
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z"
+      ],
+      "timestamp": 1793088480
     }
   ],
   "evidence": [
@@ -4037,6 +4178,80 @@
         "xrp_usage": "NOT_ESTABLISHED",
         "realized_corridor_volumes": "UNKNOWN"
       }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-ARC-MAINNET-20261027",
+      "claim_id": "XRP-C-CIRCLE-ARC-COMPETITIVE-RAIL-20261027",
+      "kind": "official_mainnet_launch_release",
+      "summary": "Circle's 2026-09-16 release describes Arc mainnet, USDC-denominated gas fees, sub-second finality, native USDC/EURC integration and StableFX. These features may compete with some stablecoin-settlement use cases but do not establish XRP displacement.",
+      "source_id": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "status": "SUPPORTED_AS_COMPANY_ANNOUNCEMENT; ADOPTION_AND_XRP_EFFECT_UNVERIFIED",
+      "independence": "single_primary_corporate_release",
+      "provenance": [
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+      ],
+      "details": {
+        "announcement_date": "2026-09-16",
+        "advertised_fee_asset": "USDC",
+        "advertised_finality": "sub-second",
+        "advertised_integrations": [
+          "USDC",
+          "EURC",
+          "StableFX"
+        ],
+        "claimed_builders_at_launch": ">100 institutional and ecosystem builders",
+        "realized_volume": "UNKNOWN",
+        "xrp_displacement": "NOT_ESTABLISHED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SBI-RIPPLE-ASIA-XRPL-POC-20261027",
+      "claim_id": "XRP-C-SBI-RIPPLE-ASIA-XRPL-POC-NOT-XRP-DEMAND-20261027",
+      "kind": "official_joint_venture_proof_of_concept_release",
+      "summary": "SBI Ripple Asia's 2026-02-26 release describes a proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and a token issuance platform, with XRPL contemplated in the model. It does not state that XRP itself is required as the bridge asset or that the model is in production.",
+      "source_id": "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26",
+      "source_location": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "status": "SUPPORTED_AS_POC_DESCRIPTION; PRODUCTION_AND_XRP_ASSET_USAGE_UNKNOWN",
+      "independence": "single_primary_corporate_source",
+      "provenance": [
+        "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
+      ],
+      "details": {
+        "release_date": "2026-02-26",
+        "proof_of_concept": true,
+        "contemplated_ledger": "XRPL",
+        "adjacent_existing_rail": "MoneyTap",
+        "production_deployment": "UNKNOWN",
+        "xrp_bridge_usage": "UNKNOWN",
+        "measurable_xrp_flow": "UNKNOWN"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-INVALID-20261027T073749Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T073749Z",
+      "kind": "public_repository_runtime_artifact",
+      "summary": "The main latest_signal.json blob timestamped 2026-10-27T07:37:49.603416Z reports score 44, confidence 0.0, news_score 88, 11 entries, missing GitHub model credentials, Groq HTTP 429, and protocol/research headlines. It is not a valid directional forecast.",
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "DIRECTLY_OBSERVED; INVALID_FOR_FORECASTING",
+      "independence": "repository_runtime_artifact",
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z"
+      ],
+      "details": {
+        "timestamp": "2026-10-27T07:37:49.603416+00:00",
+        "blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429"
+        ],
+        "forecast_status": "NOT_ISSUED"
+      }
     }
   ],
   "tracks": [
@@ -4829,6 +5044,30 @@
         "source_ids": [
           "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
         ]
+      },
+      {
+        "id": "Circle Arc mainnet",
+        "type": "stablecoin_native_settlement_blockchain",
+        "status": "MAINNET_LAUNCHED_2026-09-16_PER_CIRCLE; REALIZED_VOLUME_AND_XRP_SUBSTITUTION_UNKNOWN",
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ]
+      },
+      {
+        "id": "SBI Ripple Asia tokenized-deposit proof of concept",
+        "type": "institutional_tokenized_deposit_proof_of_concept",
+        "status": "OFFICIAL_POC_RELEASE_2026-02-26; XRPL_CONTEMPLATED; PRODUCTION_AND_XRP_ASSET_USAGE_UNKNOWN",
+        "source_ids": [
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
+        ]
+      },
+      {
+        "id": "Barrot main XRP signal artifact",
+        "type": "prediction_engine_runtime_artifact",
+        "status": "OBSERVED_2026-10-27T07:37:49Z; CONFIDENCE_ZERO_PROVIDER_FAILURES; NOT_A_VALID_FORECAST",
+        "source_ids": [
+          "SRC-BARROT-MAIN-SIGNAL-20261027T073749Z"
+        ]
       }
     ],
     "edges": [
@@ -5385,6 +5624,72 @@
           "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
         ],
         "caveat": "USDC use in the managed product does not establish that XRP is absent from every intermediary or alternative corridor."
+      },
+      {
+        "source": "Circle",
+        "target": "Circle Arc mainnet",
+        "relationship_type": "LAUNCHED_AND_OPERATES_NETWORK",
+        "classification": "OFFICIAL_CORPORATE_ANNOUNCEMENT",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "Corporate release confirms announcement and described design, not independently measured network adoption."
+      },
+      {
+        "source": "Circle Arc mainnet",
+        "target": "USDC",
+        "relationship_type": "USDC_DENOMINATED_GAS_AND_NATIVE_ECOSYSTEM_INTEGRATION",
+        "classification": "OFFICIAL_DESIGN_DESCRIPTION",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "Does not establish XRP displacement or realized transaction share."
+      },
+      {
+        "source": "Circle Arc mainnet",
+        "target": "XRP Ledger",
+        "relationship_type": "POTENTIAL_COMPETING_STABLECOIN_SETTLEMENT_RAIL",
+        "classification": "CAUSAL_HYPOTHESIS_NOT_CONFIRMED_FLOW",
+        "confidence": 0.55,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "Competition depends on actual corridor adoption, asset routing, cost, liquidity and settlement outcomes; USDC also exists natively on XRPL."
+      },
+      {
+        "source": "SBI Ripple Asia",
+        "target": "SBI Ripple Asia tokenized-deposit proof of concept",
+        "relationship_type": "ANNOUNCED_PROOF_OF_CONCEPT",
+        "classification": "OFFICIAL_JOINT_VENTURE_RELEASE",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
+        ],
+        "caveat": "A proof of concept is not a production rollout."
+      },
+      {
+        "source": "SBI Ripple Asia tokenized-deposit proof of concept",
+        "target": "XRP Ledger",
+        "relationship_type": "XRPL_CONTEMPLATED_FOR_TOKENIZED_DEPOSIT_MODEL",
+        "classification": "OFFICIAL_POC_DESCRIPTION",
+        "confidence": 0.95,
+        "source_ids": [
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
+        ],
+        "caveat": "XRPL infrastructure use does not establish XRP as bridge asset, collateral, or material demand source."
+      },
+      {
+        "source": "SBI Ripple Asia tokenized-deposit proof of concept",
+        "target": "XRP",
+        "relationship_type": "XRP_ASSET_USAGE_NOT_ESTABLISHED",
+        "classification": "EVIDENCE_GAP",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
+        ],
+        "caveat": "Do not infer native XRP demand from ledger adoption alone."
       }
     ]
   },
@@ -5639,6 +5944,34 @@
         "SRC-CIRCLE-CPN-MANAGED-PAYMENTS-2026-04-08"
       ],
       "confidence": 0.65
+    },
+    {
+      "hypothesis_id": "H-CIRCLE-ARC-COMPETITION-VS-COMPLEMENT-20261027",
+      "statement": "Circle's Arc mainnet, with USDC-denominated fees and Circle-native stablecoin/FX services, may substitute for XRP-mediated liquidity in some settlement corridors if institutions route stablecoin flows directly through Arc. Conversely, Circle's multichain strategy and native USDC on XRPL may complement XRPL activity. Neither direction follows from the launch announcement alone.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-ARC-MAINNET-20261027",
+        "XRP-E-CIRCLE-USDC-XRPL"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-CIRCLE-USDC-XRPL"
+      ],
+      "required_tests": [
+        "Collect Arc public activity/volume, USDC issuance and redemption by chain, and XRPL native USDC transfer data with event-time cutoffs.",
+        "Separate USDC transfers on XRPL from XRP bridge-path swaps and XRP fee/reserve requirements.",
+        "Compare matched payment corridors and fees before/after Arc integrations, controlling for FX, crypto beta, liquidity and competing stablecoins.",
+        "Require independent partner disclosures or on-chain evidence before assigning institutional volume to a route."
+      ],
+      "falsification_conditions": [
+        "Arc adoption does not materially affect the target corridors.",
+        "Observed XRP bridge demand and liquidity are unchanged relative to matched controls after verified Arc integration.",
+        "Observed growth is explained by general stablecoin expansion or market beta rather than route substitution."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+        "SRC-CIRCLE-USDC-XRPL"
+      ],
+      "confidence": 0.6
     }
   ],
   "platform_coordination": [
@@ -6053,6 +6386,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 1,
+      "action": "Track Circle Arc adoption and SBI Ripple Asia tokenized-deposit deployment separately from XRP asset demand. Measure corridor routing and XRP bridge/fee flows; do not infer XRP demand from ledger adoption or stablecoin network launch announcements.",
+      "status": "OFFICIAL_ANNOUNCEMENTS_RECORDED; PRODUCTION_FLOWS_AND_XRP_ASSET_USAGE_UNKNOWN"
+    },
+    {
+      "priority": 0,
+      "action": "Keep latest main signal NOT_ISSUED: artifact at 2026-10-27T07:37:49.603416Z has confidence 0, unavailable model providers (missing GitHub model credentials; Groq 429), and XRPL protocol/research headlines in the market-news list. Restore provider availability and market-news classification before forecasting.",
+      "status": "INVALID_MAIN_SIGNAL_OBSERVED; FORECAST_BLOCKED"
+    },
     {
       "priority": 0,
       "action": "Do not dispatch the active mutation-capable merge queue. PR #1173 has exact-head CI and fail-closed gate evidence but remains draft/unmerged; independent review and authorized approval are required. Effective branch protection remains unverified.",
