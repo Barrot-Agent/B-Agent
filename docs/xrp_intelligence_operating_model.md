@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 07:15:00 UTC  
+**Snapshot:** 2026-10-27 07:17:00 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after this run: **76 source records, 44 claims, 71 evidence records, 6 research tracks, 33 relationship nodes, 47 graph edges, and 11 competing scenario hypotheses**. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after this run: **77 source records, 45 claims, 72 evidence records, 6 research tracks, 34 relationship nodes, 49 graph edges, and 11 competing scenario hypotheses**. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -153,3 +153,19 @@ Sources: [Coinbase Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/16
 - Deterministic validation passed: JSON parsed; source/claim/evidence IDs unique; all checked source, claim, evidence, graph, hypothesis and primary-claim references resolved.
 - Latest ledger commit `18cd87f1192802b67dac9d9c4f759b6327915cc1` adds Coinbase Q2 evidence and refreshes PR/signal/video-search handoff state. Exact-head CI must be rechecked after the following documentation commit.
 - No forecast was issued, no PR was merged, main was not written, and no real-money action occurred.
+
+
+## Automation checkpoint — 2026-10-27 07:17 UTC
+
+### Circle's managed-payment architecture and Tazapay volume detail
+
+- Circle's April 8, 2026 CPN Managed Payments release describes a model where PSPs, fintechs, banks and enterprises can access stablecoin settlement while remaining in fiat workflows; Circle says it manages USDC mint/burn, payment orchestration, compliance and blockchain infrastructure, with payout connectivity across 20+ blockchains and domestic rails. This is a confirmed product description, not proof of partner adoption or that XRP is never used by downstream intermediaries. Source: [Circle CPN Managed Payments](https://investor.circle.com/news/news-details/2026/Circle-Launches-CPN-Managed-Payments-a-Full-Stack-Platform-for-Seamless-Stablecoin-Settlement/default.aspx).
+- Circle's September 8, 2026 Tazapay acquisition announcement reports **more than $25B annualized payment volume**, 60+ banking/fintech partners, 100+ payout markets and approximately **60% of Tazapay transaction volume already including stablecoins**. These are issuer-reported metrics, with annualized volume reported as of July 31, 2026; the acquisition was proposed and expected to close in 2027 subject to approvals. They are not XRP-specific volume and do not establish a price effect. Source: [Circle–Tazapay announcement](https://investor.circle.com/news/news-details/2026/Circle-Expands-Global-Payments-Infrastructure-with-Agreement-to-Acquire-Singapore-Based-Cross-Border-Payments-Platform-Tazapay/).
+- The ledger adds a managed-payments node and edges, and extends the stablecoin complement-versus-substitute hypothesis with explicit corridor-level falsification tests.
+
+### Validation checkpoint
+
+- Ledger: **77 sources, 45 claims, 72 evidence records, 34 relationship nodes, 49 edges, 11 competing scenarios**.
+- Deterministic validation passed: JSON parsed; source, claim and evidence IDs are unique; all checked source, claim, evidence, graph, hypothesis and primary-claim references resolved.
+- Latest ledger commit `363e2bfeed675ba04e465254bb9df7203c037ef8` adds Circle's managed-payment architecture and Tazapay volume disclosures. This documentation commit creates a new PR head; exact-head CI must be rechecked.
+- Main remains `0190c81914f921455725e73add58d5527aae8148`; the latest signal remains invalid and no forecast was issued. PRs #1185 and #1186 remain draft/unmerged despite passing their exact-head CI and fail-closed gates. Physical Moto G7 delivery remains unverified.
