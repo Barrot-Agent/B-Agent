@@ -708,7 +708,7 @@ def test_termux_runner_blocks_unapproved_tasks_and_preserves_queue(tmp_path: Pat
         "status": "pending",
         "results": [],
     }
-    queue_path.write_text(json.dumps(task) + "\\n", encoding="utf-8")
+    queue_path.write_text(json.dumps(task) + "\n", encoding="utf-8")
     monkeypatch.setattr(module, "QUEUE_PATH", str(queue_path))
     monkeypatch.setattr(module, "APPROVAL_STORE_PATH", approval_path)
     monkeypatch.setattr(
@@ -735,12 +735,12 @@ def test_termux_runner_approval_is_local_command_bound_and_single_use(tmp_path: 
     approval_path = tmp_path / "approved_tasks.json"
     task = {
         "id": "task5678",
-        "commands": ["python -c \\"print('reviewed')\\""],
+        "commands": ["echo reviewed"],
         "note": "approved test",
         "status": "pending",
         "results": [],
     }
-    queue_path.write_text(json.dumps(task) + "\\n", encoding="utf-8")
+    queue_path.write_text(json.dumps(task) + "\n", encoding="utf-8")
     monkeypatch.setattr(module, "QUEUE_PATH", str(queue_path))
     monkeypatch.setattr(module, "APPROVAL_STORE_PATH", approval_path)
     monkeypatch.setattr("builtins.input", lambda _prompt: "APPROVE task5678")
@@ -764,7 +764,7 @@ def test_termux_runner_rejects_nonmatching_local_approval_phrase(tmp_path: Path,
         "status": "pending",
         "results": [],
     }
-    queue_path.write_text(json.dumps(task) + "\\n", encoding="utf-8")
+    queue_path.write_text(json.dumps(task) + "\n", encoding="utf-8")
     monkeypatch.setattr(module, "QUEUE_PATH", str(queue_path))
     monkeypatch.setattr(module, "APPROVAL_STORE_PATH", approval_path)
     monkeypatch.setattr("builtins.input", lambda _prompt: "yes")
