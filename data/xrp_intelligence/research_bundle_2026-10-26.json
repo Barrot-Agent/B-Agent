@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T10:04:36.395Z",
+    "captured_at_utc": "2026-10-27T10:04:56.579Z",
     "main_tip_sha": "f9f9278a47396ba5e9f8bdaabaa6039b9d81a918",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -1793,6 +1793,23 @@
         "Generated artifact, not independent market evidence.",
         "The artifact is used only to record Barrot prediction-engine quality state, not to infer XRP direction."
       ]
+    },
+    {
+      "source_id": "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27",
+      "title": "Coinbase USDC loan collateral, lockup and liquidation mechanics",
+      "author_or_organization": "Coinbase Help",
+      "source_type": "official_platform_documentation",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
+      "publication_date": "Accessed 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T10:04:56.579Z",
+      "sections": [
+        "Coinbase says collateral is held on Morpho to secure repayment and remains locked until the loan is fully repaid.",
+        "If loan-to-value exceeds the liquidation threshold, collateral may be liquidated and a penalty fee charged.",
+        "The help page does not disclose XRP-specific collateral balances, liquidations or market impact."
+      ],
+      "source_limitations": [
+        "Product mechanics only; no XRP-specific on-chain utilization or liquidation event counts supplied."
+      ]
     }
   ],
   "claims": [
@@ -3403,7 +3420,7 @@
       "statement": "Coinbase's help documentation says crypto collateral is locked in Morpho and may be liquidated if the loan-to-value threshold is breached. Because XRP is listed as eligible collateral, this creates a conditional XRP liquidation channel; actual XRP-backed loan balances, thresholds by market, liquidation events and market impact remain unknown.",
       "domain": "collateral_risk_and_derivatives",
       "claim_type": "official_mechanics_with_conditional_market_risk_inference",
-      "source": "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+      "source": "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27",
       "source_location": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
       "supporting_evidence": [
         "XRP-E-COINBASE-MORPHO-LIQUIDATION-RISK-20261027"
@@ -3419,7 +3436,7 @@
         "The magnitude of forced selling depends on actual positions, market conditions, collateral rules and liquidation routing."
       ],
       "provenance": [
-        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27"
       ],
       "timestamp": 1793095476
     },
@@ -5193,12 +5210,12 @@
       "claim_id": "XRP-C-COINBASE-MORPHO-LIQUIDATION-RISK-20261027",
       "kind": "official_collateral_mechanics",
       "summary": "Coinbase says crypto collateral is locked in Morpho until repayment; if loan-to-value exceeds the liquidation threshold, collateral may be liquidated and a penalty fee charged. This is a conditional risk mechanism, not evidence of realized XRP liquidations.",
-      "source_id": "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+      "source_id": "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27",
       "source_location": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/collateral",
       "status": "MECHANICS_CONFIRMED; XRP_SPECIFIC_EVENT_COUNTS_UNKNOWN",
       "independence": "primary_coinbase_help_documentation",
       "provenance": [
-        "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+        "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27"
       ],
       "details": {
         "collateral_locked_on_morpho": true,
@@ -6091,7 +6108,8 @@
         "status": "OFFICIAL_PRODUCT_INTEGRATION; ACTUAL_XRP_COLLATERAL_USAGE_UNKNOWN",
         "source_ids": [
           "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
-          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+          "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27"
         ]
       },
       {
@@ -6101,7 +6119,8 @@
         "source_ids": [
           "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
           "SRC-COINBASE-DEFI-BORROW-2026-10-27",
-          "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+          "SRC-COINBASE-WRAPPED-XRP-2026-10-27",
+          "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27"
         ]
       },
       {
@@ -6110,7 +6129,8 @@
         "status": "XRP_ELIGIBLE_COLLATERAL; ACTUAL_XRP_LOAN_VOLUME_UNKNOWN",
         "source_ids": [
           "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
-          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+          "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27"
         ]
       },
       {
@@ -6119,6 +6139,14 @@
         "status": "OFFICIAL_DOCUMENTATION; CURRENT_SUPPLY_AND_RESERVE_RECONCILIATION_UNKNOWN",
         "source_ids": [
           "SRC-COINBASE-WRAPPED-XRP-2026-10-27"
+        ]
+      },
+      {
+        "id": "USDC payment distribution",
+        "type": "payment_distribution_channel_concept",
+        "status": "ANALYTICAL_CONCEPT_NOT_A_LEGAL_ENTITY",
+        "source_ids": [
+          "SRC-CIRCLE-TAZAPAY-ACQUISITION-2026-09-08"
         ]
       }
     ],
@@ -6701,7 +6729,7 @@
       },
       {
         "source": "Circle Arc mainnet",
-        "target": "XRP Ledger",
+        "target": "XRPL",
         "relationship_type": "POTENTIAL_COMPETING_STABLECOIN_SETTLEMENT_RAIL",
         "classification": "CAUSAL_HYPOTHESIS_NOT_CONFIRMED_FLOW",
         "confidence": 0.55,
@@ -6723,7 +6751,7 @@
       },
       {
         "source": "SBI Ripple Asia tokenized-deposit proof of concept",
-        "target": "XRP Ledger",
+        "target": "XRPL",
         "relationship_type": "XRPL_CONTEMPLATED_FOR_TOKENIZED_DEPOSIT_MODEL",
         "classification": "OFFICIAL_POC_DESCRIPTION",
         "confidence": 0.95,
@@ -6786,7 +6814,8 @@
         "confidence": 0.99,
         "source_ids": [
           "SRC-COINBASE-USDC-LOAN-XRP-2026-09-29",
-          "SRC-COINBASE-DEFI-BORROW-2026-10-27"
+          "SRC-COINBASE-DEFI-BORROW-2026-10-27",
+          "SRC-COINBASE-USDC-LOAN-COLLATERAL-2026-10-27"
         ],
         "caveat": "The product interface is not the same as Coinbase itself lending from its own balance sheet; actual market positions require on-chain verification."
       },
@@ -7583,7 +7612,7 @@
       "latest_candidate_ci_status": "PENDING",
       "latest_candidate_change": "Validate that HTTP redirects preserve the exact pinned manifest commit and bundle ID; added regression cases for redirected commit and bundle-ID changes."
     },
-    "last_audit_at_utc": "2026-10-27T10:04:36.395Z",
+    "last_audit_at_utc": "2026-10-27T10:04:56.579Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE; NEW_RECEIVER_HEAD_CI_PENDING",
       "receiver_pr": 1182,
