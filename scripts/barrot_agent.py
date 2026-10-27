@@ -993,11 +993,35 @@ def main() -> None:
             audit_context=task_context,
         )
 
+    def recover_completed_bundle_task(task: dict[str, Any]) -> dict[str, Any] | None:
+        # Close the crash window where WorkQueueController persisted a successful
+        # repair but the process died before bundle lifecycle evidence was appended.
+        task_work_id = f"{work_id}:task:{task['id']}"
+        saved_work = queue.work_store.load(task_work_id)
+        if not isinstance(saved_work, dict) or saved_work.get("status") != "complete":
+            return None
+        if saved_work.get("queue_advanced") is not True:
+            return None
+        cycle = saved_work.get("repair_cycle")
+        if not isinstance(cycle, dict) or cycle.get("status") != "complete":
+            return None
+        commit = cycle.get("commit") or {}
+        if not (
+            cycle.get("local_validation_passed") is True
+            and commit.get("remote_verified") is True
+            and cycle.get("resolution_verified") is True
+            and isinstance(commit.get("sha"), str)
+            and commit.get("sha")
+        ):
+            return None
+        return saved_work
+
     dispatch = dispatch_bundle_tasks(
         store=lifecycle_store,
         work_id=work_id,
         bundle=bundle_result.bundle,
         execute_task=execute_bundle_task,
+        recover_task=recover_completed_bundle_task,
     )
     work = dispatch.get("last_result")
     if work is None:
