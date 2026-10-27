@@ -695,3 +695,79 @@ def test_groq_json_validation_failure_retries_without_response_format(monkeypatc
     assert "response_format" in seen[0]
     assert "response_format" not in seen[1]
 
+
+
+def test_termux_runner_blocks_unapproved_tasks_and_preserves_queue(tmp_path: Path, monkeypatch, capsys) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "termux_runner.py", "termux_runner_unapproved_test")
+    queue_path = tmp_path / "termux_tasks.jsonl"
+    approval_path = tmp_path / "approved_tasks.json"
+    task = {
+        "id": "task1234",
+        "commands": ["echo should-not-run"],
+        "note": "test task",
+        "status": "pending",
+        "results": [],
+    }
+    queue_path.write_text(json.dumps(task) + "\\n", encoding="utf-8")
+    monkeypatch.setattr(module, "QUEUE_PATH", str(queue_path))
+    monkeypatch.setattr(module, "APPROVAL_STORE_PATH", approval_path)
+    monkeypatch.setattr(
+        module,
+        "_run_task",
+        lambda _task: (_ for _ in ()).throw(AssertionError("unapproved command executed")),
+    )
+    monkeypatch.setattr(
+        module,
+        "_git_commit_push",
+        lambda *_args: (_ for _ in ()).throw(AssertionError("unapproved task persisted")),
+    )
+
+    assert module.process_pending() == 0
+    saved = json.loads(queue_path.read_text(encoding="utf-8"))
+    assert saved["status"] == "pending"
+    assert not approval_path.exists()
+    assert "local approval required" in capsys.readouterr().out
+
+
+def test_termux_runner_approval_is_local_command_bound_and_single_use(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "termux_runner.py", "termux_runner_approval_test")
+    queue_path = tmp_path / "termux_tasks.jsonl"
+    approval_path = tmp_path / "approved_tasks.json"
+    task = {
+        "id": "task5678",
+        "commands": ["python -c \\"print('reviewed')\\""],
+        "note": "approved test",
+        "status": "pending",
+        "results": [],
+    }
+    queue_path.write_text(json.dumps(task) + "\\n", encoding="utf-8")
+    monkeypatch.setattr(module, "QUEUE_PATH", str(queue_path))
+    monkeypatch.setattr(module, "APPROVAL_STORE_PATH", approval_path)
+    monkeypatch.setattr("builtins.input", lambda _prompt: "APPROVE task5678")
+
+    assert module.approve_task("task5678") is True
+    assert module._approval_matches(task)
+    changed = dict(task, commands=["echo changed-after-approval"])
+    assert not module._approval_matches(changed)
+    assert module._consume_task_approval(task)
+    assert not module._approval_matches(task)
+
+
+def test_termux_runner_rejects_nonmatching_local_approval_phrase(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "termux_runner.py", "termux_runner_wrong_approval_test")
+    queue_path = tmp_path / "termux_tasks.jsonl"
+    approval_path = tmp_path / "approved_tasks.json"
+    task = {
+        "id": "task9012",
+        "commands": ["echo no"],
+        "note": "approval phrase test",
+        "status": "pending",
+        "results": [],
+    }
+    queue_path.write_text(json.dumps(task) + "\\n", encoding="utf-8")
+    monkeypatch.setattr(module, "QUEUE_PATH", str(queue_path))
+    monkeypatch.setattr(module, "APPROVAL_STORE_PATH", approval_path)
+    monkeypatch.setattr("builtins.input", lambda _prompt: "yes")
+
+    assert module.approve_task("task9012") is False
+    assert not approval_path.exists()
