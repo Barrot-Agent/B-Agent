@@ -2607,6 +2607,22 @@
         "exact head 66c1be927a230e458c51b43eff308eec74253a47",
         "draft/unmerged; no merge authorized"
       ]
+    },
+    {
+      "source_id": "SRC-WEB-EXACT-PHRASE-SEARCH-20261027-RUN13",
+      "title": "Targeted exact-phrase web search and public video-index recheck",
+      "author_or_organization": "Public web search; Glasp indexed YouTube pages; CoinMarketCap",
+      "source_type": "public_search_observation",
+      "url": "https://coinmarketcap.com/pl/exchanges/ask-coin/",
+      "publication_date": "Observed at session-clock estimate 2026-10-27T17:50:00Z; search retrieval timestamp not exposed",
+      "source_commit": "research/xrp-intelligence-ledger-20261026",
+      "sections": [
+        "targeted exact-phrase YouTube searches returned no results",
+        "CoinMarketCap marks Ask Coin as untracked/inactive with no tracked volume/reserve data",
+        "four existing Glasp video seeds reconfirmed",
+        "three visible transcripts self-identify as Camila Stevenson",
+        "channel identity remains unresolved; no first-party cross-link verified"
+      ]
     }
   ],
   "claims": [
@@ -5204,6 +5220,36 @@
       "provenance": [
         "SRC-BARROT-PR1194-VALIDATION-20261027-RUN13",
         "SRC-BARROT-PR1194-CI-20261027-RUN13B"
+      ],
+      "timestamp": 1793123400
+    },
+    {
+      "claim_id": "XRP-C-EXACT-PHRASES-UNRESOLVED-20261027-RUN13",
+      "statement": "Targeted exact-phrase searches for 'ASK Coin', 'actual capital', and 'SBIC, ChatGPT SBIC' in XRP/YouTube contexts did not establish the intended referents. A CoinMarketCap Ask Coin exchange listing is a literal-name candidate marked untracked/inactive with no tracked volume or reserve data; no source connects it to the user's intended phrase or XRP. Four indexed Kamilah Stevenson video seeds were reconfirmed, but the Camila/Kamilah spelling variant and two channel IDs remain unresolved without first-party cross-link evidence.",
+      "domain": "source_resolution_and_video_provenance",
+      "claim_type": "negative_search_result_with_unresolved_entity_identity",
+      "source": "SRC-WEB-EXACT-PHRASE-SEARCH-20261027-RUN13",
+      "source_location": "https://coinmarketcap.com/pl/exchanges/ask-coin/",
+      "supporting_evidence": [
+        "XRP-E-EXACT-PHRASES-UNRESOLVED-20261027-RUN13"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_AS_SEARCH_OBSERVATION_ONLY",
+      "independent_verification_status": "PUBLIC_SEARCH_AND_THIRD_PARTY_PAGE_READBACK; ORIGINAL_PHRASE_CONTEXT_NOT_FOUND; CHANNEL_IDENTITY_NOT_VERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED; NO_ENTITY_MERGE",
+      "confidence": 0.99,
+      "assumptions": [
+        "Search result absence is not proof that the phrase never appeared in a video or source.",
+        "Third-party transcript/index attribution is not first-party channel identity evidence."
+      ],
+      "provenance": [
+        "SRC-WEB-EXACT-PHRASE-SEARCH-20261027-RUN13",
+        "SRC-ASK-COIN-CMC-LISTING-20261027",
+        "SRC-GLASP-QSLBJGQD0MU-20261027",
+        "SRC-GLASP-CI0FH73LBCS-20261027",
+        "SRC-GLASP-RV0BAV0VLOGO-20261027",
+        "SRC-GLASP-CXEXEU2H0-20261027"
       ],
       "timestamp": 1793123400
     }
@@ -8208,6 +8254,78 @@
         "remote_job_log_timestamp_utc": "2026-10-27T18:05:04Z",
         "session_clock_estimate_utc": "2026-10-27T17:50:00Z",
         "clock_order_status": "REMOTE LOG TIMESTAMP LATER THAN SESSION CLOCK; RETRIEVAL TIME UNEXPOSED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-EXACT-PHRASES-UNRESOLVED-20261027-RUN13",
+      "claim_id": "XRP-C-EXACT-PHRASES-UNRESOLVED-20261027-RUN13",
+      "kind": "targeted_public_search_and_page_readback",
+      "summary": "Exact phrase searches for the three unresolved terms in XRP/YouTube contexts returned no resolving results. CoinMarketCap's Ask Coin page states volume is not tracked, listing is untracked/inactive and reserve data is unavailable. Four existing Glasp video seeds were re-opened; three visible transcript excerpts say 'Camila Stevenson' while the byline says Kamilah Stevenson. This does not establish the original phrase meanings or merge two channel IDs.",
+      "source_id": "SRC-WEB-EXACT-PHRASE-SEARCH-20261027-RUN13",
+      "source_location": "https://coinmarketcap.com/pl/exchanges/ask-coin/",
+      "status": "SUPPORTED_AS_SEARCH_OBSERVATION_ONLY",
+      "independence": "public_search_results_and_third_party_page_readback",
+      "provenance": [
+        "SRC-WEB-EXACT-PHRASE-SEARCH-20261027-RUN13",
+        "SRC-ASK-COIN-CMC-LISTING-20261027",
+        "SRC-GLASP-QSLBJGQD0MU-20261027",
+        "SRC-GLASP-CI0FH73LBCS-20261027",
+        "SRC-GLASP-RV0BAV0VLOGO-20261027",
+        "SRC-GLASP-CXEXEU2H0-20261027"
+      ],
+      "details": {
+        "captured_at_utc_estimate": "2026-10-27T17:50:00Z",
+        "retrieval_timestamp_exposed": false,
+        "targeted_queries": [
+          "\"ASK Coin\" XRP YouTube",
+          "\"actual capital\" XRP cryptocurrency",
+          "\"SBIC, ChatGPT SBIC\" XRP",
+          "site:youtube.com/@drkamilahstevenson \"ASK Coin\" XRP",
+          "site:youtube.com/@drkamilahstevenson \"actual capital\" XRP",
+          "site:youtube.com/watch \"SBIC, ChatGPT SBIC\" XRP",
+          "site:youtube.com/watch \"actual capital\" \"Camila Stevenson\" XRP",
+          "site:youtube.com/watch \"ASK Coin\" \"Kamilah Stevenson\" XRP"
+        ],
+        "exact_youtube_query_result": "NO_RESULTS_FOR_THE_TARGETED_EXACT_PHRASE_QUERIES",
+        "broad_web_result": "CoinMarketCap Ask Coin exchange listing found; page marks it untracked/inactive, volume not tracked and reserve data unavailable. This is a literal-name candidate only.",
+        "video_identity_observation": {
+          "glasp_indexed_videos": [
+            {
+              "video_id": "QslbjGQD0MU",
+              "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+              "published_date": "2025-12-14",
+              "url": "https://glasp.co/youtube/QslbjGQD0MU",
+              "byline": "Kamilah Stevenson",
+              "transcript_self_identification": "Camila Stevenson"
+            },
+            {
+              "video_id": "ci0FH73lbCs",
+              "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+              "published_date": "2026-01-13",
+              "url": "https://glasp.co/youtube/ci0FH73lbCs",
+              "byline": "Kamilah Stevenson",
+              "transcript_self_identification": "Camila Stevenson"
+            },
+            {
+              "video_id": "rv0BAV0vLgo",
+              "title": "How Much XRP Do You ACTUALLY Need?",
+              "published_date": "2026-03-19",
+              "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+              "byline": "Kamilah Stevenson",
+              "transcript_availability": "No transcript excerpt shown in the opened page"
+            },
+            {
+              "video_id": "cxeX_eu_2H0",
+              "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+              "published_date": "2026-01-15",
+              "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+              "byline": "Kamilah Stevenson",
+              "transcript_self_identification": "Camila Stevenson"
+            }
+          ],
+          "first_party_channel_identity": "NOT_VERIFIED_IN_THIS_REFRESH; previous first-party channel fetch was throttled",
+          "interpretation": "The pages corroborate existing catalog seeds and the spelling variant; they do not prove that the two observed YouTube channel IDs belong to the same person."
+        }
       }
     }
   ],
@@ -11464,7 +11582,7 @@
     "completeness_verified": false,
     "transcripts_captured_and_hashed": 5,
     "screenshot_title_id": "vPebfa4Mdwo",
-    "status": "TWO DISTINCT CHANNEL IDS SURFACED; IDENTITY UNRESOLVED; FULL ENUMERATION NOT VERIFIED; VIDIQ CREDITS UNAVAILABLE UNTIL REPORTED 2026-11-27 REFRESH",
+    "status": "TWO DISTINCT CHANNEL IDS SURFACED; IDENTITY UNRESOLVED; FOUR EXISTING INDEXED VIDEO SEEDS RECONFIRMED; FULL ENUMERATION NOT VERIFIED; EXACT PHRASES UNRESOLVED",
     "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format without pagination. The latest jVrBm0dDJ24 transcript was retrieved (166,512 characters) but not hashed or fully reviewed in this run. Complete channel enumeration, transcript integrity hashing and timestamped forecast extraction remain pending. On 2026-10-27T07:14Z an exact-phrase vidIQ YouTube search was attempted but the provider returned Not enough credits; no credits were charged and the tool reports refresh on 2026-11-27. A public web search for the phrases in channel titles/snippets returned no resolving result. Do not infer meanings; full channel enumeration and transcript-level exact-phrase search remain pending. On 2026-10-27T09:00Z, a fresh public web search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and the canonical channel did not resolve the original phrase context; no new video IDs or phrase meanings were inferred. vidIQ credits remain unavailable until the reported 2026-11-27 refresh. A public YouTube search surfaced channel ID UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks, distinct from catalog candidate UCqUPJMQdkCN6lsLVDnichPA. The transcript spells the speaker 'Camila Stevenson'. No first-party cross-link verified; keep inventories separate. A fresh vidIQ channel search was blocked by insufficient credits, no credits charged, and the tool explicitly said not to retry before its 2026-11-27 refresh.",
     "last_seed_added": {
       "video_id": "bNJ4lzZEqtA",
@@ -11517,32 +11635,93 @@
         "origin": "Public YouTube search result",
         "status": "SEPARATE_CANDIDATE; NOT_MERGED"
       }
-    ]
+    ],
+    "last_public_phrase_search_at_utc": "2026-10-27T17:50:00Z",
+    "last_public_phrase_search_status": "TARGETED_EXACT_PHRASE_SEARCHES_RETURNED_NO_RESOLVING_RESULTS; BROAD_SEARCH_FOUND_ONLY_LITERAL_ASK_COIN_LISTING; NO_MEANING_INFERRED",
+    "last_public_web_search": {
+      "captured_at_utc_estimate": "2026-10-27T17:50:00Z",
+      "retrieval_timestamp_exposed": false,
+      "targeted_queries": [
+        "\"ASK Coin\" XRP YouTube",
+        "\"actual capital\" XRP cryptocurrency",
+        "\"SBIC, ChatGPT SBIC\" XRP",
+        "site:youtube.com/@drkamilahstevenson \"ASK Coin\" XRP",
+        "site:youtube.com/@drkamilahstevenson \"actual capital\" XRP",
+        "site:youtube.com/watch \"SBIC, ChatGPT SBIC\" XRP",
+        "site:youtube.com/watch \"actual capital\" \"Camila Stevenson\" XRP",
+        "site:youtube.com/watch \"ASK Coin\" \"Kamilah Stevenson\" XRP"
+      ],
+      "exact_youtube_query_result": "NO_RESULTS_FOR_THE_TARGETED_EXACT_PHRASE_QUERIES",
+      "broad_web_result": "CoinMarketCap Ask Coin exchange listing found; page marks it untracked/inactive, volume not tracked and reserve data unavailable. This is a literal-name candidate only.",
+      "video_identity_observation": {
+        "glasp_indexed_videos": [
+          {
+            "video_id": "QslbjGQD0MU",
+            "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+            "published_date": "2025-12-14",
+            "url": "https://glasp.co/youtube/QslbjGQD0MU",
+            "byline": "Kamilah Stevenson",
+            "transcript_self_identification": "Camila Stevenson"
+          },
+          {
+            "video_id": "ci0FH73lbCs",
+            "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+            "published_date": "2026-01-13",
+            "url": "https://glasp.co/youtube/ci0FH73lbCs",
+            "byline": "Kamilah Stevenson",
+            "transcript_self_identification": "Camila Stevenson"
+          },
+          {
+            "video_id": "rv0BAV0vLgo",
+            "title": "How Much XRP Do You ACTUALLY Need?",
+            "published_date": "2026-03-19",
+            "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+            "byline": "Kamilah Stevenson",
+            "transcript_availability": "No transcript excerpt shown in the opened page"
+          },
+          {
+            "video_id": "cxeX_eu_2H0",
+            "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+            "published_date": "2026-01-15",
+            "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+            "byline": "Kamilah Stevenson",
+            "transcript_self_identification": "Camila Stevenson"
+          }
+        ],
+        "first_party_channel_identity": "NOT_VERIFIED_IN_THIS_REFRESH; previous first-party channel fetch was throttled",
+        "interpretation": "The pages corroborate existing catalog seeds and the spelling variant; they do not prove that the two observed YouTube channel IDs belong to the same person."
+      }
+    }
   },
   "unresolved_exact_phrases": [
     {
       "phrase": "ASK Coin",
-      "status": "UNRESOLVED; LITERAL EXCHANGE-LISTING CANDIDATE FOUND",
-      "finding": "CoinMarketCap lists an 'Ask Coin' exchange page and labels it untracked/inactive with no tracked volume/reserves. This is a possible literal-name match only; no primary source or original transcript context ties it to the user's phrase or XRP. Do not treat it as a resolved entity."
+      "status": "UNRESOLVED; LITERAL EXCHANGE-LISTING CANDIDATE FOUND; TARGETED EXACT-QUERY SEARCH NONRESOLVING",
+      "finding": "CoinMarketCap lists an 'Ask Coin' exchange page and labels it untracked/inactive with no tracked volume/reserves. This is a possible literal-name match only; no primary source or original transcript context ties it to the user's phrase or XRP. Do not treat it as a resolved entity. Targeted XRP/YouTube exact-phrase searches on 2026-10-27 returned no resolving result; CoinMarketCap still marks the listing untracked/inactive with no tracked volume or reserve data."
     },
     {
       "phrase": "actual capital",
-      "status": "UNRESOLVED",
-      "finding": "The original sentence, speaker, timestamp and source remain missing. Keep separate from market capitalization, gross capital raised, net cash inflows and deployed spot purchases; do not assign one meaning without context."
+      "status": "UNRESOLVED; TARGETED EXACT-QUERY SEARCH NONRESOLVING",
+      "finding": "The original sentence, speaker, timestamp and source remain missing. Keep separate from market capitalization, gross capital raised, net cash inflows and deployed spot purchases; do not assign one meaning without context. Targeted XRP/YouTube exact-phrase searches on 2026-10-27 returned no resolving result; the original sentence, speaker and timestamp remain unknown."
     },
     {
       "phrase": "SBIC, ChatGPT SBIC",
-      "status": "UNRESOLVED; MULTIPLE OFFICIAL JAPAN CANDIDATES IDENTIFIED; ORIGINAL REFERENT UNKNOWN",
-      "finding": "Official sources confirm distinct SBIC uses: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), Nagoya Small and Medium Business Investment & Consultation Co. (SBIC Central Japan), and historical SBI Holdings usage of SBIC for SBI Capital Co., Ltd. The exact phrase 'SBIC, ChatGPT SBIC' lacks original source context, so the intended referent remains unresolved. No XRP link is established for the SME-investment entities; SBI Group is separately relevant through SBI Ripple Asia, SBI VC Trade, and RLUSD/XRPL announcements."
+      "status": "UNRESOLVED; MULTIPLE OFFICIAL JAPAN CANDIDATES; TARGETED EXACT-QUERY SEARCH NONRESOLVING",
+      "finding": "Official sources confirm distinct SBIC uses: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), Nagoya Small and Medium Business Investment & Consultation Co. (SBIC Central Japan), and historical SBI Holdings usage of SBIC for SBI Capital Co., Ltd. The exact phrase 'SBIC, ChatGPT SBIC' lacks original source context, so the intended referent remains unresolved. No XRP link is established for the SME-investment entities; SBI Group is separately relevant through SBI Ripple Asia, SBI VC Trade, and RLUSD/XRPL announcements. Targeted exact-phrase searches returned no result that identifies the intended referent; keep the official Japanese SBIC candidates separate."
     },
     {
       "phrase": "Camilla Stephenson / Camila Stevenson / Kamilah Stevenson channel identity",
-      "status": "UNRESOLVED; TWO CHANNEL IDS OBSERVED",
-      "finding": "The catalog uses UCqUPJMQdkCN6lsLVDnichPA; public search surfaced UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks; one transcript spells the speaker Camila Stevenson. No first-party link proves they are the same. Keep inventories separate."
+      "status": "UNRESOLVED; TWO CHANNEL IDS OBSERVED; FOUR INDEXED VIDEO SEEDS RECONFIRMED",
+      "finding": "The catalog uses UCqUPJMQdkCN6lsLVDnichPA; public search surfaced UCXm6KAr1WHF6UN7g5b2W7wg / @KamilahStevensonXrpStocks; one transcript spells the speaker Camila Stevenson. No first-party link proves they are the same. Keep inventories separate. Four Glasp-indexed videos remain existing catalog seeds; three visible transcript excerpts self-identify as Camila Stevenson while the byline says Kamilah Stevenson. No first-party cross-link verified."
     }
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 1,
+      "action": "Continue resolving ASK Coin, actual capital, and SBIC/ChatGPT SBIC from original video/source context. Run 13 targeted exact-phrase searches returned no resolving results; retain the Ask Coin CMC listing as a literal candidate only. Keep the two Stevenson channel IDs separate and do not treat indexed video seeds as a complete channel inventory.",
+      "status": "PUBLIC_SEARCH_REFRESH_RECORDED; ORIGINAL_CONTEXT_AND_FULL_VIDEO_INVENTORY_UNRESOLVED"
+    },
     {
       "priority": 0,
       "action": "Recheck exact-head CI and fail-closed gate for the latest research-ledger PR #1170 head after the latest bundle/handoff edits. The connector returned no PR-triggered workflow runs for head 148615b9459b9ab3e8097c9a7ea46d9399c0dd5a; prior-head results must not be reused.",
