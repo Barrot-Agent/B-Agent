@@ -876,7 +876,7 @@ def main() -> None:
                 audit_context.get("inventory", "")
                 + audit_context.get("file_context", "")
                 + audit_context.get("directory_context", "")
-            )[:18000],
+            )[:10000],
         )
     except Exception as exc:  # fail closed before repository mutation
         message = (
