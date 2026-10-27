@@ -260,3 +260,11 @@ def test_revision_cannot_change_bundle_identity():
     revised["tasks"][0]["tests"] = ["python -m pytest -q tests/test_bundle_engineering.py"]
     with pytest.raises(BundleEngineeringError, match="identity"):
         validate_bundle_revision(original, revised)
+
+
+def test_authoring_refuses_to_start_without_explicit_constraints():
+    with pytest.raises(BundleEngineeringError, match="constraint"):
+        build_bundle_authoring_prompt(
+            objective="Build autonomous bundle engineering.",
+            constraints=[],
+        )
