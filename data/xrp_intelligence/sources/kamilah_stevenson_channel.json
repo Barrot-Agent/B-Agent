@@ -75,7 +75,8 @@
       "Enumerate all public uploads across channel videos, Shorts, live streams and archived lives; vidIQ's current listing calls are a partial snapshot, not proof of full enumeration.",
       "Locate original SBI Holdings executive source for the 'XRP will get very expensive' paraphrase; preserve original wording and context before scoring any forecast.",
       "Resolve the creator-name mismatch: the channel is labeled Kamilah Stevenson, while the transcript for video AJqjwT5ueG4 self-identifies the speaker as Camila Stevenson at 0:15; check the canonical description/creator statement before treating the spellings as equivalent.",
-      "vidIQ recent channel-video calls return at most 50 entries per format and no pagination cursor; enumerate the canonical public uploads playlist and deduplicate all 1,239 reported uploads before claiming completeness."
+      "vidIQ recent channel-video calls return at most 50 entries per format and no pagination cursor; enumerate the canonical public uploads playlist and deduplicate all 1,239 reported uploads before claiming completeness.",
+      "Retrieve/hash and review the transcript for jVrBm0dDJ24; extract each explicit XRP target, forecast horizon, assumptions, probability/confidence, invalidation conditions and any paid-promotion disclosures before scoring it."
     ],
     "latest_snapshot": {
       "path": "data/xrp_intelligence/snapshots/kamilah_vidiq_recent_uploads_2026-10-27.json",
@@ -859,15 +860,21 @@
         "views_per_hour": 76.555556
       },
       "transcript_capture": {
-        "status": "NOT_CAPTURED",
-        "provider": "vidIQ",
-        "retrieved_at_utc": null,
-        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+        "status": "RETRIEVED; HASH_PENDING",
+        "provider": "vidIQ transcript tool",
+        "language": "en",
+        "retrieved_at_utc": "2026-10-27T06:21:00Z",
+        "character_count": 166512,
+        "sha256": null,
+        "hash_status": "NOT_COMPUTED_IN_THIS_RUN",
+        "transcript_stored_in_repository": false,
+        "review_status": "FULL_TEXT_REVIEW_AND_TIMESTAMPED_FORECAST_EXTRACTION_PENDING",
+        "note": "Transcript retrieval returned 166,512 characters. Only opening/closing excerpts were inspected in this run. The opening self-identifies the speaker as 'Camila Stevenson' while the channel is labeled 'Kamilah Stevenson'; preserve the spelling discrepancy. Do not score any price target from the title alone."
       },
       "claims_to_test": [
         "Extract every explicit price forecast, horizon, assumptions and falsifier; test circulating supply, liquidity and market-depth assumptions rather than accepting a price target."
       ],
-      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+      "claim_status": "TRANSCRIPT_RETRIEVED; HASH_AND_FULL_CLAIM_EXTRACTION_PENDING"
     },
     {
       "video_id": "pYsaqQabwWw",
@@ -1449,6 +1456,25 @@
         "Video titles are not fact verification.",
         "New seeds are metadata-only and have no transcript capture in this run.",
         "A 50-per-format query is not a complete channel inventory."
+      ]
+    },
+    {
+      "update_id": "VIDIQ-TRANSCRIPT-RETRIEVAL-JVRBMD0DJ24-20261027T0621Z",
+      "updated_at_utc": "2026-10-27T06:21:00Z",
+      "type": "TRANSCRIPT_RETRIEVAL_HASH_PENDING",
+      "video_id": "jVrBm0dDJ24",
+      "title": "What’s Stopping XRP From Hitting $10? I Asked For Proof (ft. Apex Crypto)",
+      "canonical_url": "https://www.youtube.com/watch?v=jVrBm0dDJ24",
+      "transcript_character_count": 166512,
+      "language": "en",
+      "sha256": null,
+      "status": "RETRIEVED_BUT_NOT_HASHED_OR_FULLY_REVIEWED",
+      "summary": "vidIQ returned an English transcript of 166,512 characters. The opening introduces the guest as Jesse from Apex Crypto Insight and frames discussion around XRP price drivers, Ripple's stablecoin, Quant and central-bank systems. The transcript's opening self-identification uses 'Camila Stevenson', preserving the existing channel-name discrepancy. Full timestamped claim/forecast extraction and independent corroboration remain pending.",
+      "caveats": [
+        "The video title is not evidence that XRP will reach $10.",
+        "The full transcript text was not stored in the repository in this run.",
+        "No SHA-256 was computed in this run; do not describe the transcript as hashed.",
+        "Do not use this video as a forecast feature until targets, horizons and falsifiers are extracted and verified."
       ]
     }
   ]
