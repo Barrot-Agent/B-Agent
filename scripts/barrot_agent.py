@@ -731,22 +731,23 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
     with tempfile.TemporaryDirectory(prefix="barrot_pr_") as tmp_dir:
         pr_path = Path(tmp_dir) / "barrot_pr_body.md"
         pr_path.write_text("\n".join(body), encoding="utf-8")
-    result = run_gh(
-        [
-            "pr",
-            "create",
-            "--repo",
-            REPO,
-            "--title",
-            f"Barrot: {safe_title}",
-            "--body-file",
-            str(pr_path),
-            "--head",
-            head_branch,
-            "--base",
-            "main",
-        ]
-    )
+        # GitHub CLI must read the body before the temporary directory is removed.
+        result = run_gh(
+            [
+                "pr",
+                "create",
+                "--repo",
+                REPO,
+                "--title",
+                f"Barrot: {safe_title}",
+                "--body-file",
+                str(pr_path),
+                "--head",
+                head_branch,
+                "--base",
+                "main",
+            ]
+        )
     if result.returncode != 0 and "already exists" not in (result.stderr + result.stdout).lower():
         raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "gh pr create failed")
     if result.stdout.strip():
