@@ -177,6 +177,31 @@ def test_self_upgrade_no_gaps_returns_no_repair_required(tmp_path: Path, monkeyp
     assert states
 
 
+def test_verify_syntax_uses_disposable_directory_and_preserves_operator_file(tmp_path: Path, monkeypatch) -> None:
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_syntax_isolation_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    operator_file = tmp_path / ".selfupgrade_candidate.py"
+    operator_file.write_text("operator-owned content\\n", encoding="utf-8")
+    calls: list[tuple[list[str], Path, int]] = []
+
+    def fake_bounded_subprocess(command, *, cwd, timeout):
+        calls.append((command, Path(cwd), timeout))
+        return ValidationResult(passed=True, summary="syntax ok")
+
+    monkeypatch.setattr(module, "bounded_subprocess", fake_bounded_subprocess)
+
+    result = module.verify_syntax("#!/usr/bin/env python3\\nprint('ok')\\n")
+
+    assert result.passed is True
+    assert len(calls) == 1
+    command, cwd, timeout = calls[0]
+    assert timeout == 60
+    assert cwd != tmp_path
+    assert Path(command[-1]).parent == cwd
+    assert not Path(command[-1]).exists()
+    assert operator_file.read_text(encoding="utf-8") == "operator-owned content\\n"
+
+
 def test_self_upgrade_requires_audit_before_no_repair_required(tmp_path: Path, monkeypatch) -> None:
     module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_missing_audit_test")
     monkeypatch.setattr(module, "AUDIT_PATH", tmp_path / "barrot_capability_audit.json")
