@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 11:05:00 UTC  
+**Snapshot:** 2026-10-27 11:07:00 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after run 8: **99 source records, 66 claims, 95 evidence records, 6 research tracks, 44 relationship nodes, 66 graph edges, and 16 competing scenario hypotheses**. Latest branch validation found unique source/claim/evidence IDs and resolved source, claim, evidence, graph and hypothesis references. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest machine-readable JSON after run 8: **100 source records, 67 claims, 98 evidence records, 6 research tracks, 44 relationship nodes, 66 graph edges, and 16 competing scenario hypotheses**. Latest branch validation found unique source/claim/evidence IDs and resolved source, claim, evidence, graph and hypothesis references. The run parsed the JSON and checked unique source/claim/evidence IDs plus source, claim, evidence, graph, hypothesis and primary-claim references; all checked references resolved.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -210,3 +210,17 @@ Sources: [Coinbase Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/16
 4. Independently review PR #1188's confidence guard; keep it draft until authorized approval.
 5. Continue the complete public-video inventory for the verified Kamilah Stevenson channel and exact-phrase research for `ASK Coin`, `actual capital`, and `SBIC, ChatGPT SBIC`.
 6. Preserve main, worktrees, existing PR content and the unsafe legacy Termux watcher state; do not enable the command-executing watcher. Obtain a real device receipt before marking phone delivery verified.
+
+
+## Run 8 final audit refresh — 2026-10-27 11:07 UTC
+
+- Current observed main tip: `98db0f67cf5958bdf8a02123e8a2ea7261fe13ff`, commit `Cross-analysis refresh [skip ci]`. Exact-SHA core CI was not returned for this tip; main CI is not verified.
+- Direct comparison from the research PR base `a3e0f0198510634420f925eef8cea384aca51b12` to current main shows **47 commits ahead and 14 changed files**. All observed changed files are generated runtime/log/signal/knowledge-base data or the deployment report; no code/workflow files are in that delta. This reduces apparent code conflict risk but does not replace current-base integration validation.
+- Main `web/latest_signal.json` was directly read at blob SHA `d193c5bf1a4da48d596d606e120335043ae3380d`; signal timestamp `2026-10-27T10:30:31.099032Z`. It reports score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials, Groq HTTP 429, and XRPL protocol/research headline contamination. Forecast remains `NOT_ISSUED`.
+- The active main `.github/workflows/merge-queue.yml` was re-read (blob SHA `19b41e2894fdf1b835498fca3eeab870c3b4c8b1`). It still grants `contents: write` and `pull-requests: write`, offers `mode=all` with unlimited default processing, and includes branch-update/merge API behavior. PR #1187's read-only mitigation remains draft/unmerged. **Do not run the active queue.** Effective branch protection remains unverified because the connected integration cannot read the branch-protection endpoint.
+- PR #1170 head `5f5d307750a4afae89c831b8a6330565d2f79585` passed CI `40493603110` and gate `40493602935`; the latest subsequent bundle refresh commit is `379cae39daebd3d30f45fb136896d7b008d933a9`, so exact-head CI must complete for that newest revision before treating the ledger PR as fully validated.
+- PR #1182 receiver head `51435dffb1d685322bd7aaf36667a21792d11f09` passed CI `40485352421` and gate `40485352621`. Redirect identity checks are in the tested branch. Physical Moto G7 receipt is still absent, so device delivery is not verified.
+- PR #1188 head `0674e22870305a2f36386b004ac182a7a1561892` passed CI `40493439626` and gate `40493439824`; confidence guard now rejects NaN, infinities, non-positive confidence and values above 1. Draft/unmerged; not active on main.
+- SBI's official FY2026 presentation reports an approximately 9% Ripple equity stake, which must not be counted as direct XRP holdings. A secondary report quotes chairman Yoshitaka Kitao correcting the $10B XRP claim, but the original post was not retrievable; exact direct SBI-group XRP inventory remains unknown.
+- Circle's official Arc launch statement confirms SBI as a founding validator and quotes SBI's stated intention to leverage USDC and JPYSC. This supports multi-rail intent only; actual flows and any XRP substitution remain unmeasured.
+- Current bundle commit: `379cae39daebd3d30f45fb136896d7b008d933a9`; deterministic JSON validation passed with 100 sources, 67 claims, 98 evidence records, 44 nodes, 66 edges and 16 hypotheses. Exact-head CI for this newest revision is pending.
