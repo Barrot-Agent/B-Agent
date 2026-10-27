@@ -1829,6 +1829,22 @@
       "title": "PR #1220 fail-closed gate run",
       "accessed_at_utc": "2026-10-27T22:08:48Z",
       "note": "GitHub Actions reported Barrot Gated Merge (fail-closed) completed successfully for PR #1220. This gate did not merge the PR and does not substitute for CI or review."
+    },
+    {
+      "id": "SRC-REPO-CI-1220-2026-10-27T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
+      "title": "PR #1220 exact-head CI completed successfully",
+      "accessed_at_utc": "2026-10-27T22:09:23Z",
+      "note": "Tests job completed successfully for head 32699de5938559ee1080ed05dac91195d7efebd0. Job logs report 164 passed in 6.11 seconds. This verifies the repository test suite, not predictive skill or deployment."
+    },
+    {
+      "id": "SRC-REPO-GATE-1220-2026-10-27T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
+      "title": "PR #1220 fail-closed gate completed successfully",
+      "accessed_at_utc": "2026-10-27T22:09:23Z",
+      "note": "Fail-closed gate completed successfully for PR #1220. It did not merge the PR; review and explicit approval remain required."
     }
   ],
   "limitations": [
