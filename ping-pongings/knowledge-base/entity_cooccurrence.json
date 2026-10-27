@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1147,
-    "btc_entries": 1177
+    "btc_entries": 1178
   },
-  "unique_pairs_found": 3154,
+  "unique_pairs_found": 3156,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -8461,6 +8461,21 @@
         },
         {
           "title": "Ethereum ETFs Break Five-Day Outflow Run With $14.9 Million Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "Farside Investors",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ethereum ETFs Lose $201.9 Million As Bitcoin Funds Return To Inflows",
           "asset": "BTC"
         }
       ]
@@ -28069,17 +28084,6 @@
     },
     {
       "entity_a": "Bitcoin ETFs",
-      "entity_b": "Farside Investors",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin ETFs",
       "entity_b": "Fidelity",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -36929,6 +36933,28 @@
       "example_headlines": [
         {
           "title": "Cardano Brings Compliance Rules On-Chain With CIP-0113 Launch",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin ETFs",
+      "entity_b": "Ethereum ETFs",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Lose $201.9 Million As Bitcoin Funds Return To Inflows",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum ETFs",
+      "entity_b": "Farside Investors",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ethereum ETFs Lose $201.9 Million As Bitcoin Funds Return To Inflows",
           "asset": "BTC"
         }
       ]
