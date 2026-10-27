@@ -60,10 +60,10 @@
     "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_INDEXED_INVENTORY; RECENT LONG-FORM/LIVE/SHORT SURFACES QUERIED; FULL ENUMERATION NOT VERIFIED",
+    "status": "PARTIAL_INDEXED_INVENTORY; 150 RECENT FORMAT ROWS OBSERVED AT 2026-10-27T06:15Z; FULL ENUMERATION NOT VERIFIED",
     "completeness_verified": false,
     "discovered_total_count": 1239,
-    "indexed_seed_video_count": 15,
+    "indexed_seed_video_count": 28,
     "missing_work": [
       "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
       "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
@@ -74,7 +74,8 @@
       "Retrieve and hash transcripts for the newly indexed videos with transcript_capture.status=NOT_CAPTURED.",
       "Enumerate all public uploads across channel videos, Shorts, live streams and archived lives; vidIQ's current listing calls are a partial snapshot, not proof of full enumeration.",
       "Locate original SBI Holdings executive source for the 'XRP will get very expensive' paraphrase; preserve original wording and context before scoring any forecast.",
-      "Resolve the creator-name mismatch: the channel is labeled Kamilah Stevenson, while the transcript for video AJqjwT5ueG4 self-identifies the speaker as Camila Stevenson at 0:15; check the canonical description/creator statement before treating the spellings as equivalent."
+      "Resolve the creator-name mismatch: the channel is labeled Kamilah Stevenson, while the transcript for video AJqjwT5ueG4 self-identifies the speaker as Camila Stevenson at 0:15; check the canonical description/creator statement before treating the spellings as equivalent.",
+      "vidIQ recent channel-video calls return at most 50 entries per format and no pagination cursor; enumerate the canonical public uploads playlist and deduplicate all 1,239 reported uploads before claiming completeness."
     ],
     "latest_snapshot": {
       "path": "data/xrp_intelligence/snapshots/kamilah_vidiq_recent_uploads_2026-10-27.json",
@@ -99,15 +100,38 @@
     },
     "channel_stats_snapshot": {
       "provider": "vidIQ",
-      "captured_at_utc": "2026-10-27T02:08:17.234Z",
+      "captured_at_utc": "2026-10-27T06:15:00Z",
       "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
       "reported_total_videos": 1239,
       "reported_subscribers": 143000,
-      "reported_total_views": 18111240,
-      "videos_published_2026_09_26_to_2026_10_27": 80,
-      "views_gained_same_period": 1336486,
-      "subscribers_gained_same_period": 2000,
-      "caveat": "Third-party channel statistics; counts may not equal canonical public-upload enumeration and should be rechecked against channel surfaces."
+      "reported_total_views": 18121799,
+      "period_start": "2026-10-20",
+      "period_end": "2026-10-27",
+      "videos_published": 15,
+      "views_gained": 290987,
+      "subscribers_gained": 1000,
+      "caveat": "Provider-reported channel statistics. Dynamic totals can differ from the canonical public-upload enumeration; keep completeness_verified=false."
+    },
+    "latest_listing_observation": {
+      "captured_at_utc": "2026-10-27T06:15:00Z",
+      "provider": "vidIQ connected public-channel tools",
+      "format_counts": {
+        "long": 50,
+        "short": 50,
+        "live": 50
+      },
+      "raw_result_rows": 150,
+      "unique_ids_across_this_refresh": "NOT_RECOMPUTED; do not assume the three result sets are 150 unique IDs",
+      "sample_new_seed_records_added": 13,
+      "existing_seed_metadata_records_refreshed": 3,
+      "complete_channel_inventory": false,
+      "reported_channel_total_videos": 1239,
+      "reported_subscribers": 143000,
+      "reported_total_views": 18121799,
+      "reported_videos_published_2026_10_20_to_2026_10_27": 15,
+      "reported_views_gained_same_period": 290987,
+      "reported_subscribers_gained_same_period": 1000,
+      "caveat": "Each call returned up to 50 recent entries by format and provided no pagination cursor. This is a fresh partial sample, not a complete archive."
     }
   },
   "seed_videos": [
@@ -313,12 +337,12 @@
         "liquidity and float"
       ],
       "metadata_snapshot": {
-        "as_of_utc": "2026-10-27T01:05:00Z",
-        "view_count": 21280,
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 21296,
         "like_count": 1039,
         "comment_count": 131,
         "duration": "PT1H7M44S",
-        "views_per_hour": 14.496
+        "views_per_hour": 13.954198
       },
       "transcript_capture": {
         "language": "en",
@@ -423,12 +447,12 @@
         "financial-system stress"
       ],
       "metadata_snapshot": {
-        "as_of_utc": "2026-10-27T01:05:00Z",
-        "view_count": 1960,
-        "like_count": 317,
-        "comment_count": 52,
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 10059,
+        "like_count": 532,
+        "comment_count": 121,
         "duration": "PT1H1M3S",
-        "views_per_hour": 1960
+        "views_per_hour": 1676.5
       },
       "transcript_capture": {
         "language": "en",
@@ -462,11 +486,12 @@
         "retail demand"
       ],
       "metadata_snapshot": {
-        "as_of_utc": "2026-10-27T01:05:00Z",
-        "view_count": 13185,
-        "like_count": 735,
-        "comment_count": 66,
-        "duration": "PT11M11S"
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 13465,
+        "like_count": 741,
+        "comment_count": 69,
+        "duration": "PT11M11S",
+        "views_per_hour": 288.551724
       },
       "transcript_capture": {
         "status": "CAPTURED_AND_HASHED",
@@ -513,6 +538,396 @@
       ],
       "disclosure_note": "Transcript promotes a third-party “Q trading” service, mentions a $100 funding bonus and a description link; verify the description's affiliate/sponsorship disclosure before using the video as neutral analysis.",
       "identity_note": "Transcript self-introduces the speaker as “Camila Stevenson” at 0:15; channel display name is “Kamilah Stevenson”. Keep identity variant unresolved."
+    },
+    {
+      "video_id": "bNJ4lzZEqtA",
+      "title": "The RIGHT Way to Hold Your XRP in 2026 (For Maximum Security)",
+      "canonical_url": "https://www.youtube.com/watch?v=bNJ4lzZEqtA",
+      "published_date_reported": "2026-10-24",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "custody",
+        "self-custody",
+        "operational security"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 14567,
+        "like_count": 735,
+        "comment_count": 66,
+        "duration": "PT10M",
+        "views_per_hour": 118.1707317
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Verify any custody/security claims against current official wallet, exchange and hardware-wallet documentation; title alone does not establish a best method."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "vRlw4BV-cGE",
+      "title": "This NEW Bank Deal Shows Exactly Where XRP Is Headed",
+      "canonical_url": "https://www.youtube.com/watch?v=vRlw4BV-cGE",
+      "published_date_reported": "2026-10-20",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "institutional adoption",
+        "bank partnerships",
+        "XRP demand"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 39035,
+        "like_count": 1301,
+        "comment_count": 127,
+        "duration": "PT12M58S",
+        "views_per_hour": 65.961832
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Identify the named bank and agreement from the transcript; verify announcement scope, product availability and whether XRP is actually used in settlement."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "gIwgoCv4BO4",
+      "title": "This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)",
+      "canonical_url": "https://www.youtube.com/watch?v=gIwgoCv4BO4",
+      "published_date_reported": "2026-10-18",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "regulation",
+        "SEC proposal",
+        "market access"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 29279,
+        "like_count": 1186,
+        "comment_count": 67,
+        "duration": "PT11M33S",
+        "views_per_hour": 2.79365
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Identify the exact SEC proposal and docket; distinguish proposed rules from adopted rules and verify any XRP-specific effect."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "wbfO0SwR1IY",
+      "title": "Did SWIFT Just Change XRP Forever? (The Truth)",
+      "canonical_url": "https://www.youtube.com/watch?v=wbfO0SwR1IY",
+      "published_date_reported": "2026-10-15",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "payment rails",
+        "SWIFT",
+        "Ripple interoperability"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 79142,
+        "like_count": 2473,
+        "comment_count": 255,
+        "duration": "PT13M9S",
+        "views_per_hour": 8.04
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Verify the exact SWIFT announcement and whether it names Ripple, XRPL or XRP; do not infer XRP demand from generic interoperability."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "eG-_9vKcRug",
+      "title": "Japan Just Ended 30 Years of Free Money. Watch Your XRP.",
+      "canonical_url": "https://www.youtube.com/watch?v=eG-_9vKcRug",
+      "published_date_reported": "2026-10-02",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "Japan macroeconomics",
+        "yen carry trade",
+        "XRP volatility"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 57664,
+        "like_count": 2244,
+        "comment_count": 75,
+        "duration": "PT13M8S",
+        "views_per_hour": 0.32
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Check the Bank of Japan decision and actual rate path; test the claimed XRP link using synchronized USDJPY, yields, funding and XRP returns."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "Shd2rwZ6l2s",
+      "title": "Where Your XRP Fee Actually Goes (It's Not Who You Think)",
+      "canonical_url": "https://www.youtube.com/watch?v=Shd2rwZ6l2s",
+      "published_date_reported": "2026-10-21",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "XRPL transaction fees",
+        "burn mechanics",
+        "protocol economics"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 3562,
+        "like_count": 149,
+        "comment_count": 12,
+        "duration": "PT48S",
+        "views_per_hour": 26.984848
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Verify fee and burn mechanics against official XRPL documentation; distinguish transaction fees from corporate revenue."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "bYe47bYPJ-c",
+      "title": "Ripple Unlocked 1 Billion XRP Again. Most Of It Went Back Under Lock",
+      "canonical_url": "https://www.youtube.com/watch?v=bYe47bYPJ-c",
+      "published_date_reported": "2026-10-20",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "escrow",
+        "supply",
+        "monthly unlocks"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 7254,
+        "like_count": 216,
+        "comment_count": 9,
+        "duration": "PT45S",
+        "views_per_hour": 46.5
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Verify the specific escrow transactions and re-lock amounts on-ledger; distinguish gross unlock from net circulating supply change."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "UiAcKwMuoIQ",
+      "title": "How Evernorth Plans To Add More XRP",
+      "canonical_url": "https://www.youtube.com/watch?v=UiAcKwMuoIQ",
+      "published_date_reported": "2026-10-17",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "Evernorth treasury",
+        "capital raises",
+        "XRP per share"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 5515,
+        "like_count": 178,
+        "comment_count": 7,
+        "duration": "PT43S",
+        "views_per_hour": null
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Compare transcript claims with Evernorth SEC filings; separate actual cash-funded purchases from in-kind XRP contributions and potential share issuance."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "KvSUXS5FFR0",
+      "title": "SBI Used XRP To Send Money From Japan To the Philippines",
+      "canonical_url": "https://www.youtube.com/watch?v=KvSUXS5FFR0",
+      "published_date_reported": "2026-10-11",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "SBI Remit",
+        "Japan-Philippines corridor",
+        "XRP payment rails"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 3972,
+        "like_count": 143,
+        "comment_count": 8,
+        "duration": "PT30S",
+        "views_per_hour": 5.6875
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Verify the historical corridor announcement and identify whether the current route uses XRP today; do not infer current volume from a past launch."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "ZKV6VLIHAnk",
+      "title": "Why Japan Is Bringing Its Money Home",
+      "canonical_url": "https://www.youtube.com/watch?v=ZKV6VLIHAnk",
+      "published_date_reported": "2026-10-18",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "Japan capital flows",
+        "yen",
+        "macro liquidity"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 3025,
+        "like_count": 130,
+        "comment_count": 5,
+        "duration": "PT50S",
+        "views_per_hour": null
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Identify the exact flow series cited and compare it with official Japanese portfolio and balance-of-payments data before linking it to XRP."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "jVrBm0dDJ24",
+      "title": "What’s Stopping XRP From Hitting $10? I Asked For Proof (ft. Apex Crypto)",
+      "canonical_url": "https://www.youtube.com/watch?v=jVrBm0dDJ24",
+      "published_date_reported": "2026-10-22",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "valuation scenarios",
+        "market capitalization",
+        "forecast falsification"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 54754,
+        "like_count": 2455,
+        "comment_count": 304,
+        "duration": "PT2H29M59S",
+        "views_per_hour": 76.555556
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Extract every explicit price forecast, horizon, assumptions and falsifier; test circulating supply, liquidity and market-depth assumptions rather than accepting a price target."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "pYsaqQabwWw",
+      "title": "The CFTC Just Said What XRP Holders Waited Years to Hear",
+      "canonical_url": "https://www.youtube.com/watch?v=pYsaqQabwWw",
+      "published_date_reported": "2026-10-08",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "CFTC",
+        "regulatory classification",
+        "market structure"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 44821,
+        "like_count": 1637,
+        "comment_count": 100,
+        "duration": "PT10M27S",
+        "views_per_hour": 0.42
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Identify the exact CFTC statement, date and legal authority; separate staff comments, guidance, enforcement actions and binding rules."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
+    },
+    {
+      "video_id": "Zzo61P6Yf78",
+      "title": "BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.",
+      "canonical_url": "https://www.youtube.com/watch?v=Zzo61P6Yf78",
+      "published_date_reported": "2026-10-13",
+      "source": "vidIQ public channel listing captured 2026-10-27T06:15:00Z; metadata-only refresh",
+      "themes": [
+        "tokenization",
+        "BlackRock",
+        "institutional market structure"
+      ],
+      "metadata_snapshot": {
+        "as_of_utc": "2026-10-27T06:15:00Z",
+        "view_count": 21491,
+        "like_count": 1133,
+        "comment_count": 47,
+        "duration": "PT11M37S",
+        "views_per_hour": 15.617363
+      },
+      "transcript_capture": {
+        "status": "NOT_CAPTURED",
+        "provider": "vidIQ",
+        "retrieved_at_utc": null,
+        "reason": "Metadata-only listing refresh; transcript was not retrieved in this run."
+      },
+      "claims_to_test": [
+        "Verify the named product, issuer and network from primary sources; determine whether XRP is used or merely the video connects broader tokenization to XRP."
+      ],
+      "claim_status": "TITLE_ONLY; CLAIMS_UNVERIFIED"
     }
   ],
   "required_cross_corroboration_domains": [
@@ -568,7 +983,7 @@
     ],
     "last_updated_at_utc": "2026-10-27T02:10:03.805Z"
   },
-  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
+  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; 28 CURATED SEEDS; 150 RECENT FORMAT ROWS OBSERVED AT 06:15Z; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_EXECUTED",
   "cross_corroboration_findings": [
     {
       "finding_id": "XRPL-CONFIDENTIAL-TRANSFERS-001",
@@ -995,6 +1410,46 @@
       "updated_at_utc": "2026-10-27T02:10:03.805Z",
       "type": "IDENTITY_PROVENANCE_RECONCILIATION",
       "summary": "Preserved prior user confirmation of Kamilah Stevenson as the target channel while retaining the transcript's different self-introduction spelling, Camila Stevenson, as an unresolved source-level discrepancy. No name normalization performed."
+    },
+    {
+      "update_id": "VIDIQ-RECENT-CHANNEL-REFRESH-20261027T0615Z",
+      "updated_at_utc": "2026-10-27T06:15:00Z",
+      "type": "RECENT_CHANNEL_METADATA_AND_MARKET_CLAIM_REFRESH",
+      "summary": "Fresh vidIQ public listing calls returned 50 recent long-form videos, 50 Shorts and 50 live videos; the tool exposes no pagination cursor, so the 150 rows are a partial sample and full enumeration remains unverified. Channel stats at the same retrieval reported 1,239 total videos, 143,000 subscribers and 18,121,799 views; for 2026-10-20 through 2026-10-27, +15 videos, +290,987 views and +1,000 subscribers. Added 13 title-only records across custody, SEC/CFTC, SWIFT, Japan macro, SBI remittance, escrow, fees, Evernorth and tokenization; refreshed metadata for AJqjwT5ueG4, M3SrCk61x88 and vPebfa4Mdwo. No new transcripts were captured in this refresh.",
+      "source_urls": [
+        "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+        "https://www.youtube.com/watch?v=AJqjwT5ueG4",
+        "https://www.youtube.com/watch?v=M3SrCk61x88",
+        "https://www.youtube.com/watch?v=vPebfa4Mdwo"
+      ],
+      "sample_new_video_ids": [
+        "bNJ4lzZEqtA",
+        "vRlw4BV-cGE",
+        "gIwgoCv4BO4",
+        "wbfO0SwR1IY",
+        "eG-_9vKcRug",
+        "Shd2rwZ6l2s",
+        "bYe47bYPJ-c",
+        "UiAcKwMuoIQ",
+        "KvSUXS5FFR0",
+        "ZKV6VLIHAnk",
+        "jVrBm0dDJ24",
+        "pYsaqQabwWw",
+        "Zzo61P6Yf78"
+      ],
+      "current_channel_stats": {
+        "reported_total_videos": 1239,
+        "subscribers": 143000,
+        "total_views": 18121799,
+        "videos_published_2026_10_20_to_2026_10_27": 15,
+        "views_gained": 290987,
+        "subscribers_gained": 1000
+      },
+      "caveats": [
+        "Video titles are not fact verification.",
+        "New seeds are metadata-only and have no transcript capture in this run.",
+        "A 50-per-format query is not a complete channel inventory."
+      ]
     }
   ]
 }
