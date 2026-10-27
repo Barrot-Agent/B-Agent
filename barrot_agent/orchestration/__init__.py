@@ -1,7 +1,9 @@
 """Barrot orchestration components."""
 
 from .bundle_engineering import (
+    BundleEngineeringController,
     BundleEngineeringError,
+    BundleEngineeringResult,
     BundleFinding,
     BundleReview,
     build_bundle_authoring_prompt,
@@ -62,7 +64,9 @@ from .repository_repair import (
 )
 
 __all__ = [
+    "BundleEngineeringController",
     "BundleEngineeringError",
+    "BundleEngineeringResult",
     "BundleFinding",
     "BundleReview",
     "build_bundle_authoring_prompt",
