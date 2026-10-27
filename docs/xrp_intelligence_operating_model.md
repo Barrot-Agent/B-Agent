@@ -1,6 +1,6 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-26 23:01:38 UTC  
+**Snapshot:** 2026-10-27 00:02:27 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
@@ -35,7 +35,7 @@ Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevens
 - A further indexed Kamilah video (ID `M8TmDXO7B-0`, reported 2025-12-06; exact title unresolved) claims XRP was approved as collateral for federally regulated derivatives alongside gold, Treasuries and major FX pairs. The CFTC's 2025-12-08 collateral-pilot release names BTC, ETH and USDC but not XRP, and CME says its XRP futures are cash-settled; the current CME acceptable-collateral page returned no XRP match. The claim is **challenged, not finally refuted**: the video is indexed as published 2025-12-06, two days before the CFTC pilot announcement on 2025-12-08, so that later announcement cannot itself substantiate what the video said. An earlier product/FCM-specific rule may exist; verify it before reaching a universal conclusion.
 
 ### Prediction-engine integrity — critical
-The current `main` artifact `web/latest_signal.json` was timestamped **2026-10-26 22:29:38 UTC** and reports score 44, confidence 0, news score 88 from 11 entries, and provider failures (missing GitHub model credentials and Groq HTTP 429). The text is dominated by XRPL research-paper titles. This must not be consumed or published as a directional XRP forecast.
+The current `main` artifact `web/latest_signal.json` was re-fetched at **2026-10-27 00:02:27 UTC**. Its artifact timestamp is **2026-10-26 23:25:41.820784 UTC** (about 36.8 minutes old at retrieval), and it reports score 44, confidence 0, news score 88 from 11 entries, and provider failures (missing GitHub model credentials and Groq HTTP 429). The text is dominated by XRPL protocol/research-paper titles. This must not be consumed or published as a directional XRP forecast.
 
 The legacy accuracy artifact reports 725/1,588 = 45.7%, but PR #1165 documents that the old evaluator used variable horizons, compared against a later current price, and mutated history. That percentage is not a calibrated out-of-sample skill estimate.
 
@@ -45,6 +45,8 @@ The legacy accuracy artifact reports 725/1,588 = 45.7%, but PR #1165 documents t
 
 The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues write to a model-driven repair worker. The issue-label path is sender-gated to the repository owner or Barrot-Agent; `workflow_dispatch` also runs the worker from supplied task title/body. Review branch protection, command-sandbox boundaries and least-privilege scopes before expanding this automation.
 
+**Fresh ruleset check (2026-10-27 00:02 UTC):** the repository rulesets endpoint returned one branch-target ruleset named `Fall Back` with enforcement `disabled`. The branch-protection endpoint returned `403 Resource not accessible by integration`; effective branch protection could not be inspected. This does not prove branch protection is absent, but the observed ruleset provides no active protection. Do not run the merge queue. PR #1168 remains a draft and must not be treated as already applied.
+
 
 
 - [PR #1165 — fail closed on unavailable sentiment and retire invalid accuracy](https://github.com/Barrot-Agent/B-Agent/pull/1165): open draft; observed CI and fail-closed workflow completed successfully on its head. Not merged. It should remain unmerged until explicit approval.
@@ -53,7 +55,7 @@ The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues w
 - [PR #1168 — disable mutation-capable merge queue](https://github.com/Barrot-Agent/B-Agent/pull/1168): open draft; checks were not re-checked in this snapshot.
 - [PR #1161 — disable legacy scheduled accuracy writer](https://github.com/Barrot-Agent/B-Agent/pull/1161): open draft; checks were not re-checked in this snapshot.
 
-The latest main commit observed at the end of this snapshot was `e49431afe9801044b583abd0451f0d4d7416fc4d` (`Paper trade cycle [skip ci]`). The combined-status query returned no statuses; the workflow-run endpoint used in this run returns only PR-triggered runs and returned none for that commit. This is **not** a CI pass and does not prove that no other workflow history exists. After that newer paper-trade-cycle commit, `web/latest_signal.json` still had the same blob SHA and 2026-10-26 22:29:38 UTC timestamp, with score 44/confidence 0 and provider failures. Main still contains the invalid signal behavior described above.
+The latest main commit observed for this snapshot is `e49431afe9801044b583abd0451f0d4d7416fc4d` (`Paper trade cycle [skip ci]`). The PR-triggered workflow query returned no runs for that commit; this is **not** a CI pass and does not prove that no other workflow history exists. The signal artifact was subsequently re-fetched with blob SHA `a74f8cacf498ce6936d538a1cdc0925605379cb1` and timestamp 2026-10-26 23:25:41.820784 UTC, still reporting score 44/confidence 0 and provider failures. Main still contains the invalid signal behavior described above.
 
 ## 3. Operating architecture
 
@@ -77,7 +79,7 @@ Only the current ChatGPT environment's web research and connected GitHub reposit
 3. Build an immutable fixed-horizon forecast/outcome ledger before re-enabling any accuracy percentage.
 4. Collect historical event-time spot, perpetual, FX and order-book data; then conduct leakage-safe walk-forward and shadow evaluation.
 5. Resolve the original source of “SBIC, ChatGPT SBIC,” “ASK Coin,” and “actual capital.”
-6. Complete the canonical Kamilah Stevenson channel inventory, capture permitted transcript metadata/text with hashes, and extract timestamped claims/forecasts. The existing ten seeds are not full ingestion.
+6. Complete the canonical Kamilah Stevenson channel inventory, capture permitted transcript metadata/text with hashes, and extract timestamped claims/forecasts. The existing eleven indexed seed records are not full ingestion.
 7. Test platform adapters only when real authentication/permissions are available; do not claim integration before a successful end-to-end test.
 
 ## Evidence boundary
