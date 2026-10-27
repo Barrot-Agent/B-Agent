@@ -214,11 +214,12 @@ def _groq_payload(
     messages: list[dict[str, Any]],
     *,
     tools: list[dict[str, Any]] | None = None,
+    max_tokens: int = 1536,
 ) -> dict[str, Any]:
     payload: dict[str, Any] = {
         "model": MODEL,
         "messages": messages,
-        "max_tokens": 1536,
+        "max_tokens": max_tokens,
         "temperature": 0.2,
     }
     if tools:
@@ -401,7 +402,11 @@ class ScriptBrain:
         messages.append({"role": "user", "content": message})
 
         for _ in range(self.max_tool_rounds):
-            payload = _groq_payload(messages, tools=self.tools)
+            payload = _groq_payload(
+                messages,
+                tools=self.tools,
+                max_tokens=768 if not self.enable_tools else 1536,
+            )
             data = _send_groq_request(payload, request_sender=self.request_sender)
             try:
                 reply = data["choices"][0]["message"]
@@ -881,7 +886,7 @@ def main() -> None:
                 audit_context.get("inventory", "")
                 + audit_context.get("file_context", "")
                 + audit_context.get("directory_context", "")
-            )[:10000],
+            )[:2000],
         )
     except Exception as exc:  # fail closed before repository mutation
         message = (
