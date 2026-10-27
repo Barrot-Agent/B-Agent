@@ -643,5 +643,6 @@ def test_tool_free_bundle_brain_uses_smaller_completion_budget(monkeypatch) -> N
     brain = module.ScriptBrain(enable_tools=False)
 
     assert brain.think("Return one concise JSON object.") == "ok"
-    assert captured["max_tokens"] == 768
+    assert captured["max_tokens"] == 1024
+    assert captured["response_format"] == {"type": "json_object"}
 
