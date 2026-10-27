@@ -974,6 +974,24 @@
         "merge_performed": false,
         "main_modified": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T20:06:11Z",
+      "update_type": "APPEND_ONLY_RESEARCH_AND_CI_DELTA",
+      "snapshot_id": "XRP-DELTA-2026-10-27T200611Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2006Z.json",
+      "snapshot_blob_sha": null,
+      "details": "Strengthened the likely Kamilah/Camila/Camilla Stevenson channel lead using public indexed metadata and an interview transcript; added one new video lead while keeping canonical identity and full inventory explicitly unverified. Also recorded PR #1202's isolated Databricks script-path fix and passing exact-head CI.",
+      "validation": {
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "video_source_reference_integrity": "PASS",
+        "PR1202_tests": "PASS",
+        "PR1202_fail_closed_gate": "PASS",
+        "full_video_inventory": "NOT_COMPLETE",
+        "merge_performed": false,
+        "main_modified": false
+      }
     }
   ]
 }
