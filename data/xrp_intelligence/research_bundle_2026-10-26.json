@@ -3,16 +3,16 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T08:12:00Z",
-    "main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+    "captured_at_utc": "2026-10-27T09:10:00Z",
+    "main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
-    "current_signal_disposition": "INVALID_FOR_FORECASTING_CONFIDENCE_ZERO_PROVIDER_FAILURES_AND_ACADEMIC_XRPL_PROTOCOL_HEADLINES_CONTAMINATING_MARKET_NEWS; main artifact refreshed 2026-10-27T07:37:49.603416Z",
+    "current_signal_disposition": "INVALID_FOR_FORECASTING: latest main artifact timestamp 2026-10-27T08:38:05.688945Z has score 44, confidence 0, news score 88/11 entries, missing GitHub model credentials, Groq HTTP 429, and XRPL protocol/research headline contamination. Signal-summary run 40474891738 also failed on Groq token-per-day 429; later retry succeeded. PR #1188 adds deterministic fallback but remains draft. Forecast status NOT_ISSUED.",
     "data_access_policy": "Lawful public/authorized sources only; no deception, private data, market manipulation, or unauthorized access.",
-    "latest_signal_timestamp": "2026-10-27T07:37:49.603416+00:00",
-    "latest_signal_blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
-    "main_tip_sha_last_explicitly_observed": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
-    "main_tip_sha_status": "Current main tip resolved at 2026-10-27T08:10:00Z via compare main...main; prior tip 0190c81914f921455725e73add58d5527aae8148 is historical only."
+    "latest_signal_timestamp": "2026-10-27T08:38:05.688945+00:00",
+    "latest_signal_blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
+    "main_tip_sha_last_explicitly_observed": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+    "main_tip_sha_status": "Main tip 80b4f72580c719132903891a3dafe99fcc1fd1ca observed at 2026-10-27T09:09Z; 35 commits ahead of research base a3e0f0198510634420f925eef8cea384aca51b12 across 14 files, all generated runtime/log/signal artifacts and deployment report; no code/workflow files changed in this comparison."
   },
   "problem": {
     "problem_id": "BARROT-XRP-INTELLIGENCE-2026-10-26",
@@ -58,7 +58,12 @@
       "XRP-C-MAIN-SIGNAL-INVALID-20261027T073749Z",
       "XRP-C-MARKET-CLOSE-20261026",
       "XRP-C-DERIVS-SNAPSHOT-TRADRADAR-20261024",
-      "XRP-C-DERIVS-COVERAGE-NONCOMPARABLE-20261027"
+      "XRP-C-DERIVS-COVERAGE-NONCOMPARABLE-20261027",
+      "XRP-C-MAIN-SIGNAL-INVALID-20261027T083805Z",
+      "XRP-C-SIGNAL-SUMMARY-429-FAILURE-20261027",
+      "XRP-C-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+      "XRP-C-PR1187-MERGE-QUEUE-STOP-20261027",
+      "XRP-C-PR1188-SIGNAL-SUMMARY-FALLBACK-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1488,10 +1493,13 @@
       "sections": [
         "Circle announced Arc public mainnet launch on 2026-09-16, with more than 100 institutional and ecosystem builders claimed at launch.",
         "Circle describes fees paid in USDC, sub-second finality, native integration with USDC/EURC and StableFX, and institutional participation.",
-        "This is Circle's description of its own network and launch; it is not independent evidence of sustained throughput, XRP displacement, or price impact."
+        "This is Circle's description of its own network and launch; it is not independent evidence of sustained throughput, XRP displacement, or price impact.",
+        "Circle's 2026-09-16 public-mainnet announcement lists SBI Group among Arc's founding validator cohort, alongside Visa and other financial-market institutions.",
+        "This confirms an announced Circle Arc–SBI Group network-participation relationship; actual validator activity, corridor flows and XRP asset demand remain unverified."
       ],
       "source_limitations": [
-        "Single primary corporate release; operational performance and realized adoption require independent measurement."
+        "Single primary corporate release; operational performance and realized adoption require independent measurement.",
+        "Founding-validator inclusion is an official announcement, not an independent measure of validator uptime, transaction share, or XRP use."
       ]
     },
     {
@@ -1576,6 +1584,86 @@
       ],
       "source_limitations": [
         "Different as-of time and contract universe from other dashboards; must not be averaged with TradRadar's $1.73B figure without contract-level reconciliation."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T083805Z",
+      "title": "Barrot main-branch XRP signal artifact — 2026-10-27 08:38:05 UTC",
+      "author_or_organization": "Barrot-Agent/B-Agent repository",
+      "source_type": "direct_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "artifact timestamp 2026-10-27T08:38:05.688945Z",
+      "retrieved_at_utc": "2026-10-27T09:10:00Z",
+      "sections": [
+        "score=44; confidence=0.0; news_score=88; news_entries=11",
+        "source reports missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429",
+        "headline set is dominated by XRPL consensus, gossip, routing and academic/protocol research titles"
+      ],
+      "source_limitations": [
+        "The artifact is invalid for directional forecasting; headlines do not establish market-moving news or price direction.",
+        "Snapshot is stale relative to retrieval time and no synchronized exchange-native features were attached."
+      ],
+      "snapshot": {
+        "blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
+        "retrieved_at_utc": "2026-10-27T09:10:00Z"
+      }
+    },
+    {
+      "source_id": "SRC-BARROT-SIGNAL-SUMMARY-RUN-40474891738",
+      "title": "Generate Signal Summary workflow failure during Groq token-per-day rate limit",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40474891738",
+      "publication_date": "2026-10-27T08:38:15Z",
+      "retrieved_at_utc": "2026-10-27T09:10:00Z",
+      "sections": [
+        "The summary step failed after Groq returned HTTP 429 with token-per-day usage 199761/200000 and requested 638 tokens.",
+        "scripts/signal_summary.py printed 'Summary generation failed; nothing written.' and exited nonzero.",
+        "A later run, 40475359546, completed successfully at 2026-10-27T08:42:17Z."
+      ],
+      "source_limitations": [
+        "This is a transient provider-rate-limit observation; later retry success does not validate the underlying XRP signal.",
+        "The log does not establish the provider's future availability."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1187-CI-20261027",
+      "title": "Fresh-main merge-queue safety PR #1187 exact-head validation",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_and_safety_gate",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1187",
+      "publication_date": "2026-10-27T09:05:08Z",
+      "retrieved_at_utc": "2026-10-27T09:10:00Z",
+      "source_commit": "72810849a91d828f4f9604c65375340f8f23f55c",
+      "sections": [
+        "PR #1187 proposes a manual read-only merge-queue notice, removes write permissions and mutation commands, and adds regression tests.",
+        "Exact-head CI run 40478074260 passed 112 tests in 5.77 seconds.",
+        "Fail-closed gate run 40478074297 passed.",
+        "PR remains draft and unmerged; its base was 13d99a5a68e37e316e1505dba3f76e3cdc890323."
+      ],
+      "source_limitations": [
+        "Main later advanced to 80b4f72580c719132903891a3dafe99fcc1fd1ca with one generated paper_trading_log.jsonl record only; the PR has not been refreshed to that tip.",
+        "A passing test verifies the proposed branch, not effective GitHub branch protection."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1188-CI-20261027",
+      "title": "Deterministic signal-summary fallback PR #1188 exact-head validation",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_and_safety_gate",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1188",
+      "publication_date": "2026-10-27T09:08:23Z",
+      "retrieved_at_utc": "2026-10-27T09:10:00Z",
+      "source_commit": "5b254ff5c47b41e4ac3e36a8e942aa0c05169e86",
+      "sections": [
+        "PR #1188 adds deterministic, field-only summary fallback for zero/missing confidence and provider failure, and persists JSON when TTS is unavailable.",
+        "Exact-head CI run 40478476319 passed 116 tests in 5.72 seconds.",
+        "Fail-closed gate run 40478476333 passed.",
+        "PR is draft, unmerged, and based on main tip 80b4f72580c719132903891a3dafe99fcc1fd1ca."
+      ],
+      "source_limitations": [
+        "The fix is not effective on main until reviewed and approved for merge.",
+        "Tests verify repository behavior, not future Groq availability."
       ]
     }
   ],
@@ -1807,7 +1895,8 @@
       "supporting_evidence": [
         "XRP-E-MERGE-QUEUE-WRITE-PATH",
         "XRP-E-PR-1168-DISABLED-FIX",
-        "XRP-E-BRANCH-RULESET-DISABLED-20261027"
+        "XRP-E-BRANCH-RULESET-DISABLED-20261027",
+        "XRP-E-PR1187-CI-20261027"
       ],
       "contradicting_evidence": [],
       "derivation_status": "SUPPORTED",
@@ -2933,6 +3022,128 @@
         "SRC-KODEXIUS-XRP-DERIVATIVES-20261023"
       ],
       "timestamp": 1793088720
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T083805Z",
+      "statement": "The main-branch latest_signal.json artifact timestamped 2026-10-27T08:38:05.688945Z reports score 44, confidence 0, news score 88 from 11 entries, and unavailable sentiment due to missing GitHub model credentials and Groq HTTP 429. Its headline list is dominated by XRPL protocol/research topics. This artifact is invalid for directional forecasting; no forecast is issued.",
+      "domain": "prediction_engine_signal_integrity",
+      "claim_type": "direct_runtime_artifact_quality_assessment",
+      "source": "SRC-BARROT-MAIN-SIGNAL-20261027T083805Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-MAIN-SIGNAL-INVALID-20261027T083805Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "DIRECT_ARTIFACT_OBSERVED; FORECAST_VALIDITY_GATE_FAILS",
+      "independent_verification_status": "REPOSITORY_ARTIFACT_AND_PROVIDER_ERRORS_OBSERVED; MARKET_DIRECTION_NOT_INFERRED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "DO_NOT_ISSUE_DIRECTIONAL_FORECAST",
+      "confidence": 0.99,
+      "assumptions": [
+        "The artifact and provider error string are accurately captured.",
+        "A zero-confidence signal is not a valid directional forecast."
+      ],
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T083805Z"
+      ],
+      "timestamp": 1793090285
+    },
+    {
+      "claim_id": "XRP-C-SIGNAL-SUMMARY-429-FAILURE-20261027",
+      "statement": "The Generate Signal Summary workflow failed at 2026-10-27T08:38Z because Groq returned HTTP 429 for token-per-day rate limiting; scripts/signal_summary.py exited without writing the summary. A later retry succeeded. This is a transient provider failure and does not validate the underlying XRP signal.",
+      "domain": "prediction_engine_operational_reliability",
+      "claim_type": "observed_provider_rate_limit_and_fallback_gap",
+      "source": "SRC-BARROT-SIGNAL-SUMMARY-RUN-40474891738",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40474891738",
+      "supporting_evidence": [
+        "XRP-E-SIGNAL-SUMMARY-429-FAILURE-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "DIRECT_CI_LOG_OBSERVED; LATER_RETRY_SUCCEEDED",
+      "independent_verification_status": "GITHUB_ACTIONS_LOG_AND_LATER_RUN_OBSERVED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "REQUIRE_DETERMINISTIC_FALLBACK_AND_PERSISTED_PROVIDER_ERROR",
+      "confidence": 0.99,
+      "assumptions": [
+        "The displayed provider response reflects the failure cause.",
+        "Later retry success does not imply persistent provider availability."
+      ],
+      "provenance": [
+        "SRC-BARROT-SIGNAL-SUMMARY-RUN-40474891738"
+      ],
+      "timestamp": 1793090302
+    },
+    {
+      "claim_id": "XRP-C-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+      "statement": "Circle's September 16, 2026 Arc public-mainnet announcement lists SBI Group among the founding validator cohort. This confirms an announced institutional network-participation relationship between Circle's Arc and SBI Group. It does not establish production XRP routing, XRP purchases, or measurable XRP demand.",
+      "domain": "institutional_relationships_and_payment_rails",
+      "claim_type": "official_announcement_with_asset_demand_boundary",
+      "source": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "supporting_evidence": [
+        "XRP-E-CIRCLE-ARC-SBI-VALIDATOR-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "OFFICIAL_ANNOUNCEMENT_CONFIRMS_LISTED_VALIDATOR_ROLE; OPERATIONAL_ACTIVITY_UNVERIFIED",
+      "independent_verification_status": "PRIMARY_CORPORATE_SOURCE; INDEPENDENT_VALIDATOR_ACTIVITY_AND_XRP_FLOWS_NOT_VERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "RELATIONSHIP_CONFIRMED_AS_ANNOUNCED; XRP_DEMAND_NOT_INFERRED",
+      "confidence": 0.98,
+      "assumptions": [
+        "Circle's announcement accurately lists the founding validator cohort."
+      ],
+      "provenance": [
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+      ],
+      "timestamp": 1793090305
+    },
+    {
+      "claim_id": "XRP-C-PR1187-MERGE-QUEUE-STOP-20261027",
+      "statement": "PR #1187 replaces the active mutation-capable merge queue with a manual read-only fail-closed notice and adds regression coverage. Its exact head passed 112 tests and the fail-closed gate. It remains draft and unmerged, so the main-branch workflow remains active until an authorized merge.",
+      "domain": "repository_safety_and_execution_foundation",
+      "claim_type": "tested_draft_mitigation",
+      "source": "SRC-BARROT-PR1187-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1187",
+      "supporting_evidence": [
+        "XRP-E-PR1187-CI-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_MAIN_EFFECT_NOT_ESTABLISHED",
+      "independent_verification_status": "GITHUB_ACTIONS_RUNS_OBSERVED; EFFECTIVE_BRANCH_PROTECTION_UNVERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "KEEP_DRAFT_PENDING_REVIEW_AND_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "GitHub run records correspond to the reported PR head."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1187-CI-20261027"
+      ],
+      "timestamp": 1793090308
+    },
+    {
+      "claim_id": "XRP-C-PR1188-SIGNAL-SUMMARY-FALLBACK-20261027",
+      "statement": "PR #1188 adds deterministic, field-only summary generation when the XRP signal has zero/missing confidence or provider failure, and persists a summary even when TTS is unavailable. Its exact head passed 116 tests and the fail-closed gate. The fix remains draft and is not yet effective on main.",
+      "domain": "prediction_engine_operational_reliability",
+      "claim_type": "tested_draft_mitigation",
+      "source": "SRC-BARROT-PR1188-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1188",
+      "supporting_evidence": [
+        "XRP-E-PR1188-CI-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "EXACT_HEAD_CI_AND_GATE_PASS; MAIN_NOT_MODIFIED",
+      "independent_verification_status": "GITHUB_ACTIONS_RUNS_OBSERVED; HUMAN_REVIEW_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "KEEP_DRAFT_PENDING_REVIEW_AND_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "The tests cover the intended fallback behavior; provider availability remains outside test scope."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1188-CI-20261027"
+      ],
+      "timestamp": 1793090310
     }
   ],
   "evidence": [
@@ -4455,6 +4666,114 @@
         "coverage_mismatch": true,
         "averaging_allowed": false
       }
+    },
+    {
+      "evidence_id": "XRP-E-MAIN-SIGNAL-INVALID-20261027T083805Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T083805Z",
+      "kind": "invalid_runtime_signal_snapshot",
+      "summary": "Main latest_signal.json at 2026-10-27T08:38:05.688945Z reports score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429; listed headlines are primarily XRPL protocol/research topics.",
+      "source_id": "SRC-BARROT-MAIN-SIGNAL-20261027T083805Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "INVALID_FOR_FORECASTING; NOT_ISSUED",
+      "independence": "direct_repository_runtime_artifact",
+      "provenance": [
+        "SRC-BARROT-MAIN-SIGNAL-20261027T083805Z"
+      ],
+      "details": {
+        "as_of_utc": "2026-10-27T08:38:05.688945Z",
+        "retrieved_at_utc": "2026-10-27T09:10:00Z",
+        "blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "evidence_id": "XRP-E-SIGNAL-SUMMARY-429-FAILURE-20261027",
+      "claim_id": "XRP-C-SIGNAL-SUMMARY-429-FAILURE-20261027",
+      "kind": "provider_rate_limit_failure_log",
+      "summary": "The scheduled signal-summary workflow failed when Groq returned HTTP 429 token-per-day limit; the script exited before writing the summary JSON. A later retry succeeded, showing transient provider failure rather than permanent workflow failure.",
+      "source_id": "SRC-BARROT-SIGNAL-SUMMARY-RUN-40474891738",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40474891738",
+      "status": "FAILURE_OBSERVED; LATER_RETRY_SUCCEEDED; DETERMINISTIC_FALLBACK_REQUIRED",
+      "independence": "direct_ci_log",
+      "provenance": [
+        "SRC-BARROT-SIGNAL-SUMMARY-RUN-40474891738"
+      ],
+      "details": {
+        "http_status": 429,
+        "rate_limit_type": "tokens_per_day",
+        "used_tokens": 199761,
+        "limit_tokens": 200000,
+        "requested_tokens": 638,
+        "later_successful_run": 40475359546
+      }
+    },
+    {
+      "evidence_id": "XRP-E-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+      "claim_id": "XRP-C-CIRCLE-ARC-SBI-VALIDATOR-20261027",
+      "kind": "official_institutional_network_participation_announcement",
+      "summary": "Circle's September 16, 2026 Arc public-mainnet announcement lists SBI Group among the founding validator cohort. This documents an announced Circle–SBI network relationship; it does not establish XRP usage or flows.",
+      "source_id": "SRC-CIRCLE-ARC-MAINNET-2026-09-16",
+      "source_location": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "status": "OFFICIAL_ANNOUNCEMENT; OPERATIONAL_ACTIVITY_AND_XRP_FLOWS_UNKNOWN",
+      "independence": "primary_corporate_announcement",
+      "provenance": [
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+      ],
+      "details": {
+        "announcement_date": "2026-09-16",
+        "network": "Arc",
+        "validator_member": "SBI Group",
+        "other_named_validator": "Visa",
+        "xrp_asset_use_established": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1187-CI-20261027",
+      "claim_id": "XRP-C-PR1187-MERGE-QUEUE-STOP-20261027",
+      "kind": "exact_head_ci_and_fail_closed_gate",
+      "summary": "PR #1187 head 72810849a91d828f4f9604c65375340f8f23f55c passed CI with 112 tests in 5.77 seconds and passed fail-closed gate 40478074297. It remains draft and unmerged.",
+      "source_id": "SRC-BARROT-PR1187-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40478074260",
+      "status": "VERIFIED_ON_PR_HEAD; NOT_EFFECTIVE_ON_MAIN",
+      "independence": "github_actions_exact_head",
+      "provenance": [
+        "SRC-BARROT-PR1187-CI-20261027"
+      ],
+      "details": {
+        "head_sha": "72810849a91d828f4f9604c65375340f8f23f55c",
+        "base_sha": "13d99a5a68e37e316e1505dba3f76e3cdc890323",
+        "ci_run": 40478074260,
+        "tests_passed": 112,
+        "elapsed_seconds": 5.77,
+        "gate_run": 40478074297,
+        "merged": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1188-CI-20261027",
+      "claim_id": "XRP-C-PR1188-SIGNAL-SUMMARY-FALLBACK-20261027",
+      "kind": "exact_head_ci_and_fail_closed_gate",
+      "summary": "PR #1188 head 5b254ff5c47b41e4ac3e36a8e942aa0c05169e86 passed CI with 116 tests in 5.72 seconds and passed fail-closed gate 40478476333. It remains draft and unmerged.",
+      "source_id": "SRC-BARROT-PR1188-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40478476319",
+      "status": "VERIFIED_ON_PR_HEAD; NOT_EFFECTIVE_ON_MAIN",
+      "independence": "github_actions_exact_head",
+      "provenance": [
+        "SRC-BARROT-PR1188-CI-20261027"
+      ],
+      "details": {
+        "head_sha": "5b254ff5c47b41e4ac3e36a8e942aa0c05169e86",
+        "base_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+        "ci_run": 40478476319,
+        "tests_passed": 116,
+        "elapsed_seconds": 5.72,
+        "gate_run": 40478476333,
+        "merged": false
+      }
     }
   ],
   "tracks": [
@@ -5041,7 +5360,8 @@
           "SRC-SBI-RLUSD-START",
           "SRC-SBI-CRYPTO-IDENTITY",
           "SRC-SBI-EVERNORTH-INVESTMENT-2025-10-21",
-          "SRC-EVERNORTH-CLOSE-2026-10-09"
+          "SRC-EVERNORTH-CLOSE-2026-10-09",
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ]
       },
       {
@@ -5269,7 +5589,7 @@
       {
         "id": "Circle Arc mainnet",
         "type": "stablecoin_native_settlement_blockchain",
-        "status": "MAINNET_LAUNCHED_2026-09-16_PER_CIRCLE; REALIZED_VOLUME_AND_XRP_SUBSTITUTION_UNKNOWN",
+        "status": "MAINNET_LAUNCHED_2026-09-16_PER_CIRCLE; SBI_GROUP_LISTED_AS_FOUNDING_VALIDATOR; REALIZED_VOLUME_AND_XRP_SUBSTITUTION_UNKNOWN",
         "source_ids": [
           "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
         ]
@@ -5911,6 +6231,17 @@
           "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSIT-POC-2026-02-26"
         ],
         "caveat": "Do not infer native XRP demand from ledger adoption alone."
+      },
+      {
+        "source": "Circle",
+        "target": "SBI Holdings",
+        "relationship_type": "ANNOUNCED_ARC_FOUNDING_VALIDATOR_PARTICIPATION",
+        "classification": "OFFICIAL_CIRCLE_ANNOUNCEMENT_2026-09-16; ACTUAL_VALIDATOR_ACTIVITY_AND_XRP_FLOWS_UNVERIFIED",
+        "confidence": 0.98,
+        "source_ids": [
+          "SRC-CIRCLE-ARC-MAINNET-2026-09-16"
+        ],
+        "caveat": "Circle's launch announcement lists SBI Group in Arc's founding validator cohort. This confirms an announced network relationship, not XRP asset use, XRP purchases, or XRP routing."
       }
     ]
   },
@@ -6168,11 +6499,12 @@
     },
     {
       "hypothesis_id": "H-CIRCLE-ARC-COMPETITION-VS-COMPLEMENT-20261027",
-      "statement": "Circle's Arc mainnet, with USDC-denominated fees and Circle-native stablecoin/FX services, may substitute for XRP-mediated liquidity in some settlement corridors if institutions route stablecoin flows directly through Arc. Conversely, Circle's multichain strategy and native USDC on XRPL may complement XRPL activity. Neither direction follows from the launch announcement alone.",
+      "statement": "Circle's Arc mainnet, with USDC-denominated fees and Circle-native stablecoin/FX services, may substitute for XRP-mediated liquidity in some settlement corridors if institutions route stablecoin flows directly through Arc. Conversely, Circle's multichain strategy and native USDC on XRPL may complement XRPL activity. Neither direction follows from the launch announcement alone. Circle's launch release also lists SBI Group as an Arc founding validator, adding an institutional link but not evidence of XRP flow or substitution.",
       "status": "PLAUSIBLE_UNTESTED",
       "supporting_evidence": [
         "XRP-E-CIRCLE-ARC-MAINNET-20261027",
-        "XRP-E-CIRCLE-USDC-XRPL"
+        "XRP-E-CIRCLE-USDC-XRPL",
+        "XRP-E-CIRCLE-ARC-SBI-VALIDATOR-20261027"
       ],
       "contradicting_evidence": [
         "XRP-E-CIRCLE-USDC-XRPL"
@@ -6181,7 +6513,8 @@
         "Collect Arc public activity/volume, USDC issuance and redemption by chain, and XRPL native USDC transfer data with event-time cutoffs.",
         "Separate USDC transfers on XRPL from XRP bridge-path swaps and XRP fee/reserve requirements.",
         "Compare matched payment corridors and fees before/after Arc integrations, controlling for FX, crypto beta, liquidity and competing stablecoins.",
-        "Require independent partner disclosures or on-chain evidence before assigning institutional volume to a route."
+        "Require independent partner disclosures or on-chain evidence before assigning institutional volume to a route.",
+        "Verify SBI Group's actual Arc validator operation and public network activity; keep that separate from SBI's XRP-related products and XRPL activity."
       ],
       "falsification_conditions": [
         "Arc adoption does not materially affect the target corridors.",
@@ -6347,26 +6680,35 @@
       "id": "ADR-XRP-008",
       "decision": "Adapters use least privilege and fallback paths; platform connection and handoff require an observed auth test and receipt, not a plan or tool-name assumption.",
       "status": "DESIGNED"
+    },
+    {
+      "id": "ADR-XRP-009",
+      "decision": "When confidence is zero/missing or the signal source records provider failure, do not ask a language model to interpret the signal. Persist a deterministic field-only summary with explicit NOT_ISSUED status; TTS is optional and must not block JSON summary persistence.",
+      "status": "DESIGNED_AND_TESTED_IN_PR_1188; NOT_ON_MAIN",
+      "evidence": [
+        "XRP-E-SIGNAL-SUMMARY-429-FAILURE-20261027",
+        "XRP-E-PR1188-CI-20261027"
+      ]
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+    "main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
     "latest_main_commit_message": "Paper trade cycle [skip ci]",
-    "latest_main_commit_ci": "Main tip f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f changes only web/paper_trading_log.jsonl and is marked [skip ci]; no core CI run was observed for this exact SHA in this pass.",
+    "latest_main_commit_ci": "Main tip 80b4f72580c719132903891a3dafe99fcc1fd1ca changes only web/paper_trading_log.jsonl (+1 record) and is marked [skip ci]; no core CI run was observed for this exact SHA in this pass.",
     "current_signal": {
-      "timestamp": "2026-10-27T07:37:49.603416+00:00",
+      "timestamp": "2026-10-27T08:38:05.688945+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
       "news_entries": 11,
       "provider_failures": [
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
-        "Groq HTTP 429 Too Many Requests"
+        "Groq HTTP 429 Too Many Requests; current signal source reports provider unavailable"
       ],
-      "blob_sha": "b0b77c436ef1efddb4092855f937c6307419e107",
-      "retrieved_at_utc": "2026-10-27T08:10:00Z",
-      "age_minutes_at_retrieval": 34.2,
-      "disposition": "INVALID_FOR_FORECASTING; score confidence zero, providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
+      "blob_sha": "a52a1410d176960ff05634e6cbbfc5b191cb5621",
+      "retrieved_at_utc": "2026-10-27T09:10:00Z",
+      "age_minutes_at_retrieval": 31,
+      "disposition": "INVALID_FOR_FORECASTING; score confidence zero, model providers unavailable, and headline set dominated by XRPL protocol/research topics; no directional forecast issued."
     },
     "legacy_accuracy": {
       "checked_count": 1612,
@@ -6441,6 +6783,24 @@
         "ci": "Exact-head CI run 40465834856 passed 112 tests in 4.36s; fail-closed gate 40465834779 passed.",
         "state": "OPEN_DRAFT_FRESH_MAIN_CI_PASS_REVIEW_REQUIRED",
         "merge_authorized": false
+      },
+      {
+        "pr": 1187,
+        "title": "Safety: disable mutation-capable merge queue on current main",
+        "head_sha": "72810849a91d828f4f9604c65375340f8f23f55c",
+        "base_sha": "13d99a5a68e37e316e1505dba3f76e3cdc890323",
+        "ci": "Exact-head CI passed 112 tests in 5.77s; fail-closed gate passed; current main is one generated paper-trading-log commit ahead.",
+        "state": "OPEN_DRAFT_REVIEW_REQUIRED_NOT_EFFECTIVE_ON_MAIN",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1188,
+        "title": "Reliability: persist deterministic XRP summary when Groq is unavailable",
+        "head_sha": "5b254ff5c47b41e4ac3e36a8e942aa0c05169e86",
+        "base_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+        "ci": "Exact-head CI passed 116 tests in 5.72s; fail-closed gate passed.",
+        "state": "OPEN_DRAFT_REVIEW_REQUIRED_NOT_EFFECTIVE_ON_MAIN",
+        "merge_authorized": false
       }
     ],
     "policy": "Preserve main, V3 code, dirty worktrees and existing branches. Do not merge any draft without user approval. No destructive git operations.",
@@ -6449,8 +6809,8 @@
         "finding": "Active .github/workflows/merge-queue.yml has contents/pull-requests write, mode=all, branch-update and merge API behavior; no explicit draft/reviewDecision field is queried in the workflow.",
         "risk": "HIGH",
         "status": "OBSERVED_ON_MAIN",
-        "mitigation_pr": 1173,
-        "mitigation_state": "OPEN_DRAFT_CURRENT_MAIN_CI_AND_FAIL_CLOSED_GATE_PASSED; APPROVAL_REQUIRED",
+        "mitigation_pr": 1187,
+        "mitigation_state": "PR #1187 exact-head CI (112 tests) and fail-closed gate passed; draft/unmerged. Active main workflow remains mutation-capable until authorized merge; effective branch protection remains unverified.",
         "do_not_run": true
       },
       {
@@ -6468,7 +6828,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "Main web/latest_signal.json blob b0b77c436ef1efddb4092855f937c6307419e107, timestamp 2026-10-27T07:37:49.603416Z; age approximately 34.2 minutes at 2026-10-27T08:12:00Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
+    "latest_signal_staleness": "Main web/latest_signal.json blob a52a1410d176960ff05634e6cbbfc5b191cb5621, timestamp 2026-10-27T08:38:05.688945Z; age approximately 31 minutes at 2026-10-27T09:10Z. Score 44, confidence 0, news score 88 from 11 entries. Model providers failed and headline set is dominated by XRPL protocol/research topics; invalid for forecasting.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -6491,15 +6851,15 @@
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
       "latest_ledger_revision_status": "MAIN_TIP_AND_DELTA_AUDIT_RECORDED; NEW_HEAD_REVALIDATION_REQUIRED",
-      "state": "OPEN_DRAFT; PREVIOUS_EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_LEDGER_HEAD_REVALIDATION_REQUIRED",
-      "note": "Head 3f9b642bf54c480e85b7d642a2091dca7eb597c0 passed CI run 40471837201 and fail-closed gate 40471837302. This ledger update records current main tip f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f and the 28-commit/14-file generated-data delta; the resulting new PR head must be revalidated. Do not merge automatically.",
-      "last_completed_head_sha": "3f9b642bf54c480e85b7d642a2091dca7eb597c0",
-      "last_completed_ci_run": 40471837201,
-      "last_completed_ci_conclusion": "success",
-      "last_completed_fail_closed_gate_run": 40471837302,
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; BASE_35_COMMITS_BEHIND_CURRENT_MAIN; REVIEW_REQUIRED",
+      "note": "Current PR #1170 head 641737d9578490ccb3e26944fe4d1e0071bd7462 passed CI run 40472127585 and fail-closed gate 40472127629. Current main is 35 commits ahead of research base a3e0f0198510634420f925eef8cea384aca51b12; comparison shows 14 generated runtime/log/signal files and deployment report only, no code/workflow files. Keep draft; exact-head pass does not substitute for current-base integration.",
+      "last_completed_head_sha": "641737d9578490ccb3e26944fe4d1e0071bd7462",
+      "last_completed_ci_run": 40472127585,
+      "last_completed_ci_conclusion": "success; 111 tests passed",
+      "last_completed_fail_closed_gate_run": 40472127629,
       "last_completed_gate_conclusion": "success",
-      "current_main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
-      "base_to_main_commits_ahead": 28,
+      "current_main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+      "base_to_main_commits_ahead": 35,
       "base_to_main_changed_files": 14,
       "base_to_main_code_or_workflow_changes": false
     },
@@ -6567,7 +6927,7 @@
       "safe_receiver_total_ci_tests": 120,
       "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     },
-    "last_audit_at_utc": "2026-10-27T08:12:00Z",
+    "last_audit_at_utc": "2026-10-27T09:10:00Z",
     "physical_termux_delivery": {
       "status": "NOT_VERIFIED_ON_DEVICE",
       "receiver_pr": 1182,
@@ -6578,9 +6938,9 @@
     },
     "main_delta_since_research_base": {
       "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "current_main_tip_sha": "f9dfee7ec951683b18ca6f5d2a0ebe246b75b70f",
+      "current_main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
       "comparison_status": "ahead",
-      "commits_ahead": 28,
+      "commits_ahead": 35,
       "changed_file_count": 14,
       "changed_files": [
         "AUTONOMOUS_DEPLOYMENT_REPORT.md",
@@ -6599,7 +6959,53 @@
         "web/signal_history_btc.jsonl"
       ],
       "code_or_workflow_files_changed": false,
-      "interpretation": "The tested research PR base is 28 commits behind main, but the observed base-to-main file delta contains generated runtime/log/signal data and the deployment report only. This reduces the apparent code/workflow conflict risk but does not replace current-main CI or an explicit branch refresh."
+      "interpretation": "The research PR base is 35 commits behind main, but the observed base-to-main delta consists of generated runtime/log/signal data and the deployment report only. This reduces apparent code/workflow conflict risk but does not replace current-base integration checks."
+    },
+    "signal_summary_failure": {
+      "run_id": 40474891738,
+      "event": "workflow_run",
+      "conclusion": "failure",
+      "failed_step": "Generate summary + TTS",
+      "error": "Groq HTTP 429 token-per-day limit: 199761/200000 tokens used; 638 requested; script exited 'Summary generation failed; nothing written.'",
+      "later_retry_run": 40475359546,
+      "later_retry_conclusion": "success",
+      "root_cause": "Provider rate limit was observed; the script had no deterministic fallback for initial summary generation.",
+      "mitigation_pr": 1188,
+      "mitigation_head_sha": "5b254ff5c47b41e4ac3e36a8e942aa0c05169e86",
+      "mitigation_ci_run": 40478476319,
+      "mitigation_ci_conclusion": "success; 116 tests passed",
+      "mitigation_gate_run": 40478476333,
+      "mitigation_gate_conclusion": "success",
+      "mitigation_state": "DRAFT_UNMERGED; NOT_EFFECTIVE_ON_MAIN"
+    },
+    "pr1187_validation": {
+      "head_sha": "72810849a91d828f4f9604c65375340f8f23f55c",
+      "base_sha": "13d99a5a68e37e316e1505dba3f76e3cdc890323",
+      "ci_run": 40478074260,
+      "ci_conclusion": "success",
+      "tests_passed": 112,
+      "elapsed_seconds": 5.77,
+      "fail_closed_gate_run": 40478074297,
+      "gate_conclusion": "success",
+      "current_main_tip_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+      "current_main_ahead_by": 1,
+      "current_main_delta": [
+        "web/paper_trading_log.jsonl (+1 generated record)"
+      ],
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN",
+      "merge_authorized": false
+    },
+    "pr1188_validation": {
+      "head_sha": "5b254ff5c47b41e4ac3e36a8e942aa0c05169e86",
+      "base_sha": "80b4f72580c719132903891a3dafe99fcc1fd1ca",
+      "ci_run": 40478476319,
+      "ci_conclusion": "success",
+      "tests_passed": 116,
+      "elapsed_seconds": 5.72,
+      "fail_closed_gate_run": 40478476333,
+      "gate_conclusion": "success",
+      "state": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; REVIEW_REQUIRED; NOT_EFFECTIVE_ON_MAIN",
+      "merge_authorized": false
     }
   },
   "video_ingestion": {
@@ -6612,7 +7018,7 @@
     "transcripts_captured_and_hashed": 5,
     "screenshot_title_id": "vPebfa4Mdwo",
     "status": "DRAFT_CATALOG_EXPANDED_TO_28_SEEDS; 150 RECENT FORMAT ROWS OBSERVED; ONE LONG TRANSCRIPT RETRIEVED BUT NOT HASHED; FULL ENUMERATION NOT VERIFIED",
-    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format without pagination. The latest jVrBm0dDJ24 transcript was retrieved (166,512 characters) but not hashed or fully reviewed in this run. Complete channel enumeration, transcript integrity hashing and timestamped forecast extraction remain pending. On 2026-10-27T07:14Z an exact-phrase vidIQ YouTube search was attempted but the provider returned Not enough credits; no credits were charged and the tool reports refresh on 2026-11-27. A public web search for the phrases in channel titles/snippets returned no resolving result. Do not infer meanings; full channel enumeration and transcript-level exact-phrase search remain pending.",
+    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format without pagination. The latest jVrBm0dDJ24 transcript was retrieved (166,512 characters) but not hashed or fully reviewed in this run. Complete channel enumeration, transcript integrity hashing and timestamped forecast extraction remain pending. On 2026-10-27T07:14Z an exact-phrase vidIQ YouTube search was attempted but the provider returned Not enough credits; no credits were charged and the tool reports refresh on 2026-11-27. A public web search for the phrases in channel titles/snippets returned no resolving result. Do not infer meanings; full channel enumeration and transcript-level exact-phrase search remain pending. On 2026-10-27T09:00Z, a fresh public web search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and the canonical channel did not resolve the original phrase context; no new video IDs or phrase meanings were inferred. vidIQ credits remain unavailable until the reported 2026-11-27 refresh.",
     "last_seed_added": {
       "video_id": "bNJ4lzZEqtA",
       "published_date_reported": "2026-10-24",
@@ -6682,13 +7088,13 @@
     },
     {
       "priority": 0,
-      "action": "Keep latest main signal NOT_ISSUED: artifact at 2026-10-27T07:37:49.603416Z has confidence 0, unavailable model providers (missing GitHub model credentials; Groq 429), and XRPL protocol/research headlines in the market-news list. Restore provider availability and market-news classification before forecasting.",
-      "status": "INVALID_MAIN_SIGNAL_OBSERVED; FORECAST_BLOCKED"
+      "action": "Keep main signal NOT_ISSUED: latest artifact timestamp 2026-10-27T08:38:05.688945Z has score 44/confidence 0/news score 88, missing GitHub model credentials, Groq HTTP 429 and academic/protocol headline contamination. The summary workflow also failed once on Groq token-per-day 429; PR #1188 adds a deterministic fallback but remains draft.",
+      "status": "INVALID_MAIN_SIGNAL_OBSERVED; PR1188_TESTED_DRAFT; FORECAST_BLOCKED"
     },
     {
       "priority": 0,
-      "action": "Do not dispatch the active mutation-capable merge queue. PR #1173 has exact-head CI and fail-closed gate evidence but remains draft/unmerged; independent review and authorized approval are required. Effective branch protection remains unverified.",
-      "status": "TESTED_DRAFT; APPROVAL_REQUIRED"
+      "action": "Do not dispatch the active mutation-capable merge queue. PR #1187 is a fresh-main read-only stop with 112 exact-head tests and fail-closed gate passed; it remains draft/unmerged and its base is one generated paper-trading-log commit behind current main. Effective branch protection remains unverified.",
+      "status": "PR1187_TESTED_DRAFT; APPROVAL_REQUIRED; MAIN_WORKFLOW_STILL_MUTATION_CAPABLE"
     },
     {
       "priority": 0,
@@ -6774,6 +7180,21 @@
       "priority": 2,
       "action": "Resume exact-phrase and complete channel inventory work when vidIQ credits refresh or a lawful paginated public-source route is available; no meaning inferred from missing search results.",
       "status": "VIDIQ_CREDITS_EXHAUSTED_UNTIL_2026-11-27; WEB_TITLE_SEARCH_NONRESOLVING"
+    },
+    {
+      "priority": 0,
+      "action": "Review PR #1188 deterministic summary fallback: exact-head CI passed 116 tests and fail-closed gate passed. Keep draft until human review; after authorized merge, verify that a provider 429 still writes a NOT_ISSUED JSON summary and does not imply forecast validity.",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_UNMERGED"
+    },
+    {
+      "priority": 0,
+      "action": "Review PR #1187 read-only merge-queue stop; keep the main merge queue unused until the PR is authorized and merged and effective branch protection is independently verified.",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; BASE_ONE_GENERATED_LOG_COMMIT_BEHIND; DRAFT_UNMERGED"
+    },
+    {
+      "priority": 1,
+      "action": "Verify Circle Arc founding-validator activity for SBI Group using independent public network/validator data and partner disclosures; separately measure USDC and XRP routing by corridor. Do not infer XRP demand from validator membership or XRPL infrastructure use.",
+      "status": "OFFICIAL_ANNOUNCEMENT_RECORDED; OPERATIONAL_ACTIVITY_AND_XRP_FLOWS_UNKNOWN"
     }
   ]
 }
