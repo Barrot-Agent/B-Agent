@@ -16,10 +16,10 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T19:02:34Z",
+    "captured_at_utc": "2026-10-27T21:05:14Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "e1da2cdb3bc371364ca81af76915f5b84237a5cf",
+      "main_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -30,11 +30,8 @@
           "state": "open",
           "draft": true,
           "head_sha": "789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
-          "checks": {
-            "Tests": "success",
-            "Merge disabled pending gate verification": "success"
-          },
-          "blocker": "A workflow run associated with this head failed; the workflow-run jobs endpoint returned zero jobs, so root cause is not diagnosed. Do not infer why it failed."
+          "mergeable": false,
+          "blocker": "Current API reports not mergeable against current main; fail-closed fix remains unmerged."
         },
         {
           "number": 1194,
@@ -43,13 +40,35 @@
           "state": "open",
           "draft": true,
           "head_sha": "66c1be927a230e458c51b43eff308eec74253a47",
-          "checks": {
-            "Tests": "success",
-            "Merge disabled pending gate verification": "success"
-          },
-          "blocker": "Not merged; mutation-capable merge queue remains present on main until a reviewed change lands."
+          "mergeable": false,
+          "blocker": "Current API reports not mergeable against current main; mutating workflow remains on main."
+        },
+        {
+          "number": 1195,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+          "title": "Research: add evidence-led XRP intelligence ledger snapshot",
+          "state": "open",
+          "draft": true,
+          "head_sha": "40740433a977fdf46b8c39ffbf9424dfa7f5be10",
+          "mergeable": true
+        },
+        {
+          "number": 1202,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1202",
+          "title": "Fix Databricks deployment script path",
+          "state": "open",
+          "draft": true,
+          "head_sha": "e2defad51375a3dece0b2e3e9b64a3b1fabddd8f",
+          "mergeable": true,
+          "blocker": "Proposed fix branch is based on an older main; current main still fails on deploy_databricks.py path."
         }
-      ]
+      ],
+      "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+      "fallback_ruleset": {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      }
     },
     "critical_engine_findings": [
       {
@@ -147,6 +166,30 @@
           "provider failure produces UNAVAILABLE and NOT_ISSUED",
           "manual reviewed promotion is reproducible"
         ]
+      },
+      {
+        "id": "WORKFLOW-PUSH-RACE-006",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "critical",
+        "status": "DIRECT_MAIN_WRITE_PATHS_CONFIRMED_ON_MAIN",
+        "files": [
+          {
+            "path": ".github/workflows/knowledge-signal-cycle.yml",
+            "blob_sha": "d6def0741028f313cc6f46d1ef6f0d0be7269edc"
+          },
+          {
+            "path": ".github/workflows/financial-data-refresh.yml",
+            "blob_sha": "ac8086cddc68111685f2e2e3668d96c946e5b351"
+          },
+          {
+            "path": ".github/workflows/merge-queue.yml",
+            "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1"
+          }
+        ],
+        "finding": "Main still has scheduled data workflows with contents:write and git push to main, plus a manually dispatchable merge queue with contents:write and pull-requests:write that can update branches and merge PRs. A fresh Barrot Operations Pipeline run failed on a non-fast-forward push. The failed push is consistent with a stale local ref or concurrent writer; a concurrent-run collision is plausible but not proven.",
+        "consequence": "Mutable signal/history writes can race, fail or publish unreviewed generated data; the merge queue remains a separate consequential mutation path.",
+        "proposed_fix": "Build an idempotent append-only research-data branch or reviewed promotion path with snapshot hashes and provenance, then remove direct generated-data pushes to main; keep merge queue read-only until effective approval/check gates are verified.",
+        "verification": "Current main workflow YAML and run logs inspected; no fix merged; no main change made."
       }
     ],
     "research_findings": [
@@ -240,6 +283,29 @@
           "SRC-CIRCLE-TRANSPARENCY-2026",
           "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
           "SRC-CIRCLE-USDC-ECONOMICS-2026"
+        ]
+      },
+      {
+        "id": "BNY-RIPPLE-CUSTODY-2026-10-27",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "XRP_AND_RLUSD_CUSTODY_SUPPORT_ANNOUNCED; FUTURE_FINANCE_WORK_CONDITIONAL",
+        "claim": "BNY states that its Digital Asset Custody platform now supports XRP and RLUSD. BNY and Ripple intend to enable direct RLUSD mint/redemption through BNY and are exploring tokenized trade finance/supply-chain finance with C2FO; future plans are subject to final approvals.",
+        "interpretation": "This is a new institutional custody and potential settlement/collateral rail. It lowers a potential operational barrier but does not prove client balances, collateral use, XRP acquisition or positive price impact.",
+        "limits": "No custody balances, net XRP flow, product usage volume or completed C2FO launch was disclosed in the announcement.",
+        "source_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ]
+      },
+      {
+        "id": "COINBASE-CIRCLE-USDC-ECONOMICS-2026Q2",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "Q2_FILINGS_CONFIRM_DIRECT_DISTRIBUTION_ECONOMICS_AND_CHANGING_EQUITY_EXPOSURE",
+        "claim": "Circle reported Q2 2026 USDC circulation of $73.3B and on-chain transaction volume of $14.8T. Q2 revenue and reserve income were $701.3M, including $667.7M reserve income. Circle's H1 filing says distribution costs paid to Coinbase rose $19.8M due to higher reserve income, partially offset by a lower Coinbase share of average USDC on-platform balances. Coinbase's Q2 filing reports all-time-high average USDC held in its products and a partial sale of its Circle investment during Q1 2026.",
+        "interpretation": "Coinbase's Circle relationship is operationally significant through distribution economics and has a changing equity component. It is not evidence of XRP accumulation or a price-support arrangement.",
+        "limits": "Stablecoin transfer volume is not equivalent to net capital inflow, unique payments, or XRP demand. Coinbase's latest filing does not establish current net XRP holdings.",
+        "source_ids": [
+          "SRC-COINBASE-10Q-Q2-2026",
+          "SRC-CIRCLE-10Q-Q2-2026"
         ]
       }
     ],
@@ -357,6 +423,52 @@
           "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026"
         ],
         "status": "ISSUER_DISCLOSURE_AS_OF_2026-10-22"
+      },
+      {
+        "from": "BNY",
+        "relation": "institutional custody support now includes",
+        "to": "XRP and RLUSD",
+        "evidence_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "status": "CONFIRMED_BY_JOINT_COMPANY_ANNOUNCEMENT",
+        "xrp_relationship": "DIRECT_CUSTODY_SUPPORT; CLIENT_HOLDINGS_AND_FLOWS_UNKNOWN"
+      },
+      {
+        "from": "BNY and Ripple",
+        "relation": "intend to enable direct mint/redemption through BNY for",
+        "to": "RLUSD",
+        "evidence_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "status": "PLANNED_SUBJECT_TO_APPROVALS"
+      },
+      {
+        "from": "Ripple and BNY",
+        "relation": "exploring supply-chain finance with",
+        "to": "C2FO",
+        "evidence_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "status": "EXPLORATORY_NOT_LAUNCHED"
+      },
+      {
+        "from": "Circle",
+        "relation": "reported Q2 USDC reserve income and distribution costs paid to",
+        "to": "Coinbase",
+        "evidence_ids": [
+          "SRC-CIRCLE-10Q-Q2-2026"
+        ],
+        "status": "CONFIRMED_BY_SEC_FILING"
+      },
+      {
+        "from": "Coinbase",
+        "relation": "holds/held an equity investment in, with partial sale reported in Q1 2026",
+        "to": "Circle",
+        "evidence_ids": [
+          "SRC-COINBASE-10Q-Q2-2026"
+        ],
+        "status": "CONFIRMED_BY_SEC_FILING; CURRENT_POSITION_SIZE_UNKNOWN"
       }
     ],
     "competing_hypotheses": [
@@ -454,6 +566,29 @@
           "XRP-specific supply, exchange flows, ETF creations/redemptions, legal/regulatory events or market-maker inventory can dominate during asset-specific shocks; no fitted model has established relative importance yet."
         ],
         "test_plan": "Build release-vintage features for CPI/PCE, jobs, GDP, Treasury real yields, DXY, VIX, credit spreads and policy-rate expectations; model surprise vs consensus, use event-time controls and walk-forward ablation against crypto-market beta and XRP-specific flow features."
+      },
+      {
+        "id": "H8-INSTITUTIONAL-CUSTODY-OPTIONALITY",
+        "hypothesis": "New institutional custody support can lower operational barriers and expand the feasible set of XRP/RLUSD use cases, but price impact requires evidence of incremental XRP holdings, collateral acceptance, market-maker inventory changes or spot demand.",
+        "supporting_evidence": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "counter_hypotheses": [
+          "Custody is safekeeping infrastructure; clients may hold zero XRP or use stablecoins/tokenized receivables instead.",
+          "Future RLUSD mint/redeem and C2FO trade-finance work is conditional and may not launch or may not require XRP."
+        ],
+        "test_plan": "Track later BNY disclosures, custody balance/volume metrics if public, actual XRPL transfer and exchange flows, collateral schedules and dated product-launch evidence; compare event windows with matched crypto assets and macro controls."
+      },
+      {
+        "id": "H9-LEVERAGE-CROWDING-VS-SHORT-COVER",
+        "hypothesis": "Positive funding and elevated Binance account-long skew may indicate crowded long exposure, while the reported greater short-liquidation amount could indicate recent short covering; the combination is insufficient to infer next-period direction.",
+        "supporting_evidence": [
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "counter_hypotheses": [
+          "Aggregate open interest may include hedged positions; account ratios do not measure notional exposure; vendor venue coverage and liquidation feeds may be incomplete."
+        ],
+        "test_plan": "Obtain synchronized exchange-level OI, funding, basis, depth, liquidations, spot volume and price returns; estimate event-time and walk-forward predictive value against a simple market-beta baseline."
       }
     ],
     "market_observations": [
@@ -467,6 +602,17 @@
           "SRC-XRP-ETF-TRACKER-A",
           "SRC-XRP-ETF-TRACKER-B",
           "SRC-XRP-ETF-TRACKER-C"
+        ]
+      },
+      {
+        "id": "XRP-DERIV-2026-10-27T2102Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-27T21:02:00Z",
+        "observation": "Liqwall reported XRP at $1.32, aggregate open interest $1.44B (+2.2% over 24h), average funding +0.0092% per 8h, $1.2M 24h liquidations ($845K shorts, $306K longs), and 74.5% of Binance accounts with XRP positions long.",
+        "interpretation": "Positive funding and elevated Binance account-long skew coexist with rising OI and higher reported short liquidations. This is mixed positioning context, not a directional forecast.",
+        "quality": "Single secondary aggregate; raw exchange cross-check and independent aggregate cross-check not completed; not approved for model features.",
+        "source_ids": [
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
         ]
       }
     ],
@@ -540,7 +686,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Main signal integrity is compromised by provider-failure coercion/blending; legacy 46.5% metric is not comparable forecast skill; ETF observations conflict by universe; historical feature and outcome ledger is not yet verified as immutable and fixed-horizon.",
+      "reason": "No synchronized multi-venue feature store or validated fixed-horizon model performance; current derivatives snapshot is single-provider and uncorroborated; institutional announcements do not imply net XRP demand.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -594,10 +740,16 @@
       "Resolve SBIC versus SBI Holdings from the original phrase source; keep separate graph nodes until then.",
       "Resolve Camilla Stephenson identity; enumerate channel videos, Shorts, live streams and archives by canonical channel ID; extract permitted transcripts and timestamped claims.",
       "Search exact phrases ASK Coin, actual capital and SBIC, ChatGPT SBIC in their original media/context; keep unresolved until evidence exists.",
-      "Verify each of the nine platform adapters with a test call, identity, scope, data-flow record and output provenance before describing live collaboration."
+      "Verify each of the nine platform adapters with a test call, identity, scope, data-flow record and output provenance before describing live collaboration.",
+      "Prioritize safe persistent research-data architecture: stop scheduled generated-data writes to main only after an idempotent append-only branch/artifact promotion path preserves continuity.",
+      "Diagnose why barrot-ops attempted a non-fast-forward push and serialize or remove direct main writes only through a reviewed, tested branch/PR.",
+      "Refresh/reconcile PR #1193 and #1194 against current main without merging; verify branch protection via authorized permission or alternative public evidence before asserting required checks.",
+      "Reconcile PR #1202 against current main only without force-push or discarding work; main still invokes the wrong Databricks script path.",
+      "Cross-check current XRP derivatives data from raw exchange endpoints and a second independent aggregate source before adding model features.",
+      "Continue original-context search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and verify the canonical Camilla/Kamilah/Camila Stevenson channel before claiming complete video coverage."
     ],
     "macro_context": {
-      "as_of_utc": "2026-10-27T19:10:30Z",
+      "as_of_utc": "2026-10-27T21:05:14Z",
       "status": "LATEST_OFFICIAL_RELEASES_CAPTURED; FED_POLICY_AND_MARKET_PRICES_REQUIRE_FRESHER_SNAPSHOT",
       "observations": [
         {
@@ -666,8 +818,41 @@
         "Q3 2026 GDP release after publication",
         "crypto-wide spot flows and leverage"
       ],
-      "forecast_rule": "Treat data releases as timestamped surprises relative to consensus, not just levels; freeze vintages to avoid revision leakage."
-    }
+      "forecast_rule": "Treat data releases as timestamped surprises relative to consensus, not just levels; freeze vintages to avoid revision leakage.",
+      "fomc_status_at_cutoff": "FOMC meeting scheduled Oct 27–28, 2026; no October decision was available at this cutoff."
+    },
+    "repository_ci": [
+      {
+        "run_id": 40583623783,
+        "name": "CI",
+        "conclusion": "success",
+        "head_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583623783"
+      },
+      {
+        "run_id": 40583624160,
+        "name": "Deploy to Databricks",
+        "conclusion": "failure",
+        "root_cause": "workflow invokes python deploy_databricks.py; script exists at scripts/deploy_databricks.py",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583624160"
+      },
+      {
+        "run_id": 40583623975,
+        "name": "Barrot Operations Pipeline",
+        "conclusion": "failure",
+        "root_cause": "push rejected as non-fast-forward; log advises pull before push; a concurrent-write race is plausible but not proven",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583623975"
+      },
+      {
+        "run_id": 40583621671,
+        "name": ".github/workflows/barrot-approve-pr.yml",
+        "conclusion": "failure",
+        "event": "push",
+        "jobs_returned": 0,
+        "root_cause": "unresolved; do not infer cause from zero-job response",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583621671"
+      }
+    ]
   },
   "sources": [
     {
@@ -893,6 +1078,42 @@
       "title": "Federal Reserve October 2026 calendar",
       "accessed_at_utc": "2026-10-27T19:11:00Z",
       "note": "Official calendar lists the FOMC meeting for Oct 27–28 and press conference on Oct 28; no October decision was available at this snapshot cutoff."
+    },
+    {
+      "id": "SRC-BNY-RIPPLE-CUSTODY-2026-10-27",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "title": "BNY and Ripple expand custody and tokenized trade-finance collaboration",
+      "published_at": "2026-10-27",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "BNY says XRP and RLUSD are now supported on its Digital Asset Custody platform. BNY/Ripple plans for direct RLUSD mint/redemption through BNY and tokenized trade finance/C2FO supply-chain finance remain intended future initiatives subject to approvals."
+    },
+    {
+      "id": "SRC-COINBASE-10Q-Q2-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000088/coin-20260630.htm",
+      "title": "Coinbase Global, Inc. Form 10-Q for quarter ended June 30, 2026",
+      "published_at": "2026-08",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "Company filing reports Q2 revenue $1.220B, net loss $359.5M, assets on platform $245.9B, all-time-high average USDC held in Coinbase products, and a partial sale of Coinbase's Circle investment in Q1 2026. Use reported period and definitions; not XRP net-flow data."
+    },
+    {
+      "id": "SRC-CIRCLE-10Q-Q2-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "title": "Circle Internet Group, Inc. Form 10-Q for quarter ended June 30, 2026",
+      "published_at": "2026-08",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "Circle reports Q2 USDC circulation $73.3B and on-chain transaction volume $14.8T; Q2 revenue and reserve income $701.3M, reserve income $667.7M. H1 distribution costs paid to Coinbase increased $19.8M due to higher reserve income, partially offset by a lower Coinbase share of average USDC on-platform balances. Transfer volume is not net capital inflow or unique-user payment count."
+    },
+    {
+      "id": "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://liqwall.com/coins/xrp",
+      "title": "Liqwall XRP derivatives snapshot",
+      "published_at": "2026-10-27T21:02:00Z",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "Third-party aggregate snapshot: XRP $1.32; open interest $1.44B (+2.2%/24h); average funding +0.0092%/8h; $1.2M liquidations ($845K shorts, $306K longs); 74.5% of Binance accounts with XRP positions long. Cross-venue methodology not independently verified; do not use as a model feature without raw venue corroboration."
     }
   ],
   "limitations": [
@@ -1006,6 +1227,24 @@
         "video_source_reference_integrity": "PASS",
         "main_modified": false,
         "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:05:14Z",
+      "update_type": "APPEND_ONLY_RESEARCH_AND_REPOSITORY_DELTA",
+      "snapshot_id": "XRP-RUN-2026-10-27T210514Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2105Z.json",
+      "snapshot_blob_sha": "c1f6858a35c92c6ea6247c4485f253ec5b6f1314",
+      "details": "Added the Oct 27 BNY/Ripple custody announcement and conditional RLUSD/C2FO plans; reconciled Coinbase/Circle Q2 SEC disclosures and distribution economics; captured a timestamped but uncorroborated XRP derivatives snapshot; refreshed current main SHA, PR mergeability, branch-protection access limits, Databricks path failure, non-fast-forward operations failure and remaining direct-main write paths.",
+      "validation": {
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "snapshot_blob_sha": "RECORDED",
+        "repository_state_refreshed": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "market_data_approved_for_model": "FALSE"
       }
     }
   ]
