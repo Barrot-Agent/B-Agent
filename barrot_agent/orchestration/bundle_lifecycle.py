@@ -1,0 +1,96 @@
+"""Durable, append-only evidence store for Barrot's work-bundle lifecycle."""
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import re
+import tempfile
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+
+class BundleLifecycleStore:
+    """Persist bundle versions and execution evidence without unsafe path interpolation."""
+
+    def __init__(self, workspace: str | Path):
+        self.workspace = Path(workspace).resolve()
+        self.root = self.workspace / ".barrot" / "bundles"
+
+    @staticmethod
+    def _key(work_id: str) -> str:
+        value = str(work_id).strip()
+        if not value:
+            raise ValueError("work_id must be non-empty")
+        return hashlib.sha256(value.encode("utf-8")).hexdigest()[:32]
+
+    def _directory(self, work_id: str) -> Path:
+        target = (self.root / self._key(work_id)).resolve()
+        if self.root.resolve() not in target.parents:
+            raise ValueError("bundle path escaped lifecycle store")
+        return target
+
+    @staticmethod
+    def _atomic_json(path: Path, payload: dict[str, Any]) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fd, temporary = tempfile.mkstemp(prefix=".bundle-", suffix=".tmp", dir=path.parent)
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as stream:
+                json.dump(payload, stream, ensure_ascii=False, indent=2, sort_keys=True)
+                stream.write("\n")
+                stream.flush()
+                os.fsync(stream.fileno())
+            os.replace(temporary, path)
+        except Exception:
+            try:
+                os.unlink(temporary)
+            except OSError:
+                pass
+            raise
+
+    def save_plan(self, work_id: str, result: Any) -> Path:
+        """Persist exact plan, deterministic review, revision attempts, and current state."""
+        directory = self._directory(work_id)
+        payload = {
+            "schema_version": "1.0",
+            "work_id": work_id,
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+            "status": getattr(result, "status", "UNKNOWN"),
+            "bundle": getattr(result, "bundle", None),
+            "review": result.review.to_dict() if getattr(result, "review", None) else None,
+            "attempts": list(getattr(result, "attempts", []) or []),
+            "execution_evidence": [],
+        }
+        path = directory / "lifecycle.json"
+        self._atomic_json(path, payload)
+        return path
+
+    def record_execution(self, work_id: str, evidence: dict[str, Any]) -> Path:
+        """Append execution evidence to the durable lifecycle record."""
+        path = self._directory(work_id) / "lifecycle.json"
+        if not path.is_file():
+            raise FileNotFoundError("bundle lifecycle must be initialized before execution")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if payload.get("work_id") != work_id:
+            raise ValueError("bundle lifecycle work_id mismatch")
+        history = payload.setdefault("execution_evidence", [])
+        if not isinstance(history, list):
+            raise ValueError("execution evidence must be a list")
+        history.append({
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
+            **evidence,
+        })
+        payload["updated_at"] = datetime.now(timezone.utc).isoformat()
+        payload["execution_status"] = evidence.get("status", "UNKNOWN")
+        self._atomic_json(path, payload)
+        return path
+
+    def load(self, work_id: str) -> dict[str, Any] | None:
+        path = self._directory(work_id) / "lifecycle.json"
+        if not path.is_file():
+            return None
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if payload.get("work_id") != work_id:
+            raise ValueError("bundle lifecycle work_id mismatch")
+        return payload
