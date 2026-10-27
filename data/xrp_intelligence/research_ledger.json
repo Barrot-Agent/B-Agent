@@ -1456,6 +1456,58 @@
       "published_at": "2026-10-27T03:10:00Z",
       "accessed_at_utc": "2026-10-27T21:11:39Z",
       "note": "A stale same-day snapshot reported approximately $1.22B open interest across 9 exchanges and OI-weighted funding around +0.0072%/8h. Use only as a coverage/time comparison, not as a current value."
+    },
+    {
+      "id": "SRC-SBI-VISA-XRP-CARD-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "title": "SBI Group, Aplus and Visa announce crypto-reward credit card",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release says SBI VC Trade, Aplus and Visa announced card products whose reward points can be exchanged for BTC, ETH or XRP. Realized XRP conversion volume, purchase execution, holding duration and price effect are not disclosed."
+    },
+    {
+      "id": "SRC-SBI-RLUSD-JAPAN-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "title": "SBI VC Trade and Ripple announce Japanese RLUSD handling",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release says SBI VC Trade and Ripple began handling RLUSD after scheduled maintenance on June 24, 2026, describing it as a Japan-first Type 4 electronic payment instrument. This is stablecoin distribution, not proof of XRP purchases or collateral use."
+    },
+    {
+      "id": "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "title": "SBI Ripple Asia concept study for tokenized deposits and deposit-type digital money",
+      "published_at": "2026-02-26",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release describes a proof-of-concept considering existing MoneyTap infrastructure, an SBI Ripple Asia token-issuance platform and XRPL as a possible blockchain for tokenized deposits/deposit-type digital money. It is a conceptual study, not verified production deployment or proof XRP is the settlement asset."
+    },
+    {
+      "id": "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "title": "SBI Ripple Asia and dsrv labs research blockchain remittance/payment for Japan-Korea",
+      "published_at": "2026-02-24",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release describes joint research into blockchain-based remittance/payment for Japan-Korea, with XRPL considered as candidate infrastructure. The release establishes research intent, not a production corridor, realized volume or XRP bridge-asset usage."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-XRPL-OPS-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "title": "Circle USDC on XRPL operational documentation",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Circle documents USDC as native on XRPL; qualified Circle Mint customers can convert fiat to XRPL USDC and redeem to USD, and Circle Mint/APIs can move USDC across supported chains. The XRPL total-supply field was not rendered in the captured page; no current XRPL supply is inferred."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/usdc",
+      "title": "Circle public USDC circulation and supported-network snapshot",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Circle's public page displayed $71.0B USDC in circulation as of October 26, 2026, and states native USDC support on 38 networks as of September 16, 2026, including XRPL. The USD reserve figure was not rendered in the capture. Treat as issuer-displayed data, not an independently reconstructed daily mint/burn series."
     }
   ],
   "limitations": [
