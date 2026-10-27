@@ -440,6 +440,8 @@ def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
         assert term not in source
 
 def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("ISSUE_NUMBER", "1197")
     module = load_script(
         REPO_ROOT / "scripts" / "barrot_agent.py",
         "barrot_agent_comment_tempfile_lifetime_test",
