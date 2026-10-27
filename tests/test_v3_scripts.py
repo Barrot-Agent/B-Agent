@@ -454,8 +454,7 @@ def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> No
         returncode = 0
         stderr = ""
 
-    def fake_run_gh(args, check=False):
-        del check
+    def fake_run_gh(args):
         body_path = Path(args[args.index("--body-file") + 1])
         assert body_path.is_file(), "comment body must exist while gh reads it"
         observed["body"] = body_path.read_text(encoding="utf-8")
