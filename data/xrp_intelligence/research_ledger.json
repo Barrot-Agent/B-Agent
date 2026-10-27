@@ -16,7 +16,7 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T21:09:42Z",
+    "captured_at_utc": "2026-10-27T21:11:39Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
@@ -738,6 +738,20 @@
           "Derivatives permit short exposure and hedging; broad market-share gains are not XRP-specific; contract activity may net out without net spot accumulation; USDC settlement does not imply XRP purchases."
         ],
         "test_plan": "Collect contract-level OI, volume, funding, basis, options delta/gamma/open interest, spot depth, market-maker inventory proxies and exchange netflows; test event windows and walk-forward out-of-sample lift versus market-beta and price/volume baselines."
+      },
+      {
+        "id": "H11-OI-COVERAGE-NORMALIZATION",
+        "hypothesis": "Large discrepancies in reported XRP aggregate open interest are primarily due to differing contract/venue coverage, timestamps and currency conversion, rather than an actual 3.5x instantaneous market change.",
+        "supporting_evidence": [
+          "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+          "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+          "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Exact page timestamps and contract universes are not fully disclosed for all sources; some discrepancy may reflect real market moves between snapshots, and vendor calculations may also contain data-quality errors."
+        ],
+        "test_plan": "Capture venue-level public API responses at the same UTC cutoff, normalize contracts and quote currencies, sum open interest by contract, compare against vendor definitions and repeat across a walk-forward history."
       }
     ],
     "market_observations": [
@@ -763,6 +777,20 @@
         "source_ids": [
           "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
         ]
+      },
+      {
+        "id": "XRP-OI-COVERAGE-COMPARISON-2026-10-27T2111Z",
+        "evidence_class": "DATA_QUALITY_FINDING",
+        "as_of_date": "2026-10-27T21:11:39Z",
+        "observation": "Public aggregators report approximately $0.836B, $1.22B, $1.44B and $2.92B in XRP derivatives open interest, but at different times and with non-harmonized contract/venue coverage.",
+        "interpretation": "This is a measurement-universe problem until proven otherwise; it is not a valid market-direction signal.",
+        "source_ids": [
+          "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+          "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+          "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "approved_for_model_features": false
       }
     ],
     "phrase_investigation": {
@@ -841,7 +869,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "No synchronized multi-venue feature store or validated fixed-horizon model performance; current derivatives snapshot is single-provider and uncorroborated; institutional announcements do not imply net XRP demand.",
+      "reason": "No synchronized multi-venue feature store or validated fixed-horizon model performance; aggregate XRP open interest differs materially across public vendors with non-harmonized coverage, and the latest single-provider derivatives snapshot remains uncorroborated. No price forecast is issued.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -905,7 +933,8 @@
       "Measure Coinbase XRP derivatives separately by product, jurisdiction and settlement currency; do not combine USD futures with USDC-settled offshore options.",
       "Keep the Circle-to-Coinbase USDC distribution relationship distinct from any assumed XRP accumulation or XRPL-native USDC use.",
       "Resolve the original source of the phrase Camilla Stephenson before enumerating the full video inventory.",
-      "Continue exact-phrase source tracing for ASK Coin, actual capital and SBIC/ChatGPT SBIC."
+      "Continue exact-phrase source tracing for ASK Coin, actual capital and SBIC/ChatGPT SBIC.",
+      "Harmonize XRP futures open-interest coverage across raw exchange APIs and aggregators before admitting OI/funding/liquidation aggregates into the feature store."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-27T21:05:14Z",
@@ -1056,7 +1085,23 @@
         }
       ],
       "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
-    }
+    },
+    "market_data_quality_findings": [
+      {
+        "id": "XRP-OI-COVERAGE-DIVERGENCE-2026-10-27",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_UNIVERSE_HARMONIZATION",
+        "finding": "Four public derivatives aggregates display XRP open interest values from about $835.76M to $2.92B across different timestamps and stated/unstated contract universes. Liqwall reports $1.44B at 21:02 UTC, Kodexius $835.76M across 7 perpetual contracts at 17:16 UTC, CoinGlass $2.92B with an unspecified exact page timestamp, and SwoleCharts approximately $1.22B across 9 exchanges at 03:10 UTC.",
+        "interpretation": "The spread likely reflects differing venue/contract coverage, timestamps or calculation methods, but no cause is confirmed. Do not select a single aggregate as ground truth or admit it to the feature store until reconciled.",
+        "source_ids": [
+          "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+          "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+          "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "next_action": "Rebuild OI from venue-level public endpoints at a common UTC cutoff; separate perpetuals, dated futures and options; normalize USD/USDT/USDC conversions; preserve raw payload hashes."
+      }
+    ]
   },
   "sources": [
     {
@@ -1359,6 +1404,32 @@
       "title": "My First Job in Film mentor profile for a Camilla Stephenson",
       "accessed_at_utc": "2026-10-27T21:09:42Z",
       "note": "Public profile describes a location-management professional. Included only as name-disambiguation evidence; not linked to the XRP-video creator."
+    },
+    {
+      "id": "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "title": "Kodexius XRP perpetual futures aggregate",
+      "published_at": "2026-10-27T17:16:00Z",
+      "accessed_at_utc": "2026-10-27T21:11:39Z",
+      "note": "Reports XRP perpetual open interest $835.76M across 7 contracts, OI-weighted funding +0.0096% per 8h and 24h volume $1.03B at 17:16 UTC. Contract/venue coverage is narrower than some all-futures aggregators; not comparable without universe reconciliation."
+    },
+    {
+      "id": "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "title": "CoinGlass XRP futures dashboard",
+      "accessed_at_utc": "2026-10-27T21:11:39Z",
+      "note": "Page displayed XRP around $1.3108, futures volume $2.36B/24h, spot volume $422.13M/24h, market cap $82.87B and open interest $2.92B at access time. Exact measurement timestamp and contract universe need to be pinned; do not assume it matches perpetual-only aggregators."
+    },
+    {
+      "id": "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://swolecharts.com/exchanges/binance/XRP",
+      "title": "SwoleCharts XRP derivatives public-API aggregate",
+      "published_at": "2026-10-27T03:10:00Z",
+      "accessed_at_utc": "2026-10-27T21:11:39Z",
+      "note": "A stale same-day snapshot reported approximately $1.22B open interest across 9 exchanges and OI-weighted funding around +0.0072%/8h. Use only as a coverage/time comparison, not as a current value."
     }
   ],
   "limitations": [
@@ -1531,6 +1602,27 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED",
         "hypothesis_source_integrity": "PASS"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:11:39Z",
+      "update_type": "APPEND_ONLY_MARKET_DATA_QUALITY_DELTA",
+      "snapshot_id": "XRP-MARKET-DATA-QUALITY-2026-10-27T211139Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2111Z.json",
+      "snapshot_blob_sha": "82341d6b547079926dafa04c605e8022a9f009b8",
+      "details": "Added a cross-provider XRP open-interest comparison. Current public aggregates range from about $835.76M to $2.92B at differing timestamps and universes; no source was selected as ground truth. The feature remains blocked pending contract-level harmonization.",
+      "validation": {
+        "json_parse": "PASS",
+        "snapshot_re_read": "PASS",
+        "source_id_integrity": "PASS",
+        "unique_source_ids": "PASS",
+        "relationship_source_integrity": "PASS",
+        "hypothesis_source_integrity": "PASS",
+        "raw_exchange_reconstruction": "NOT_DONE",
+        "model_feature_admission": "BLOCKED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
       }
     }
   ]
