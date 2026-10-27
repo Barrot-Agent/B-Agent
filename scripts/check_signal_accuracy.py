@@ -1,88 +1,103 @@
 #!/usr/bin/env python3
-import json
-import time
-from pathlib import Path
+"""Safely retire the legacy variable-horizon accuracy metric.
 
-import requests
+The old evaluator compared historical signals with a later current price at
+variable delays and rewrote source history. That result is not fixed-horizon
+forecast skill. This replacement never mutates history and reports
+NOT_EVALUATED until an immutable fixed-horizon forecast ledger is configured.
+It preserves any prior legacy accuracy summary as explicitly NOT_COMPARABLE.
+"""
+import json
+from datetime import datetime, timezone
+from pathlib import Path
 
 HISTORY_PATH = Path("web/signal_history.jsonl")
 SUMMARY_PATH = Path("web/signal_accuracy.json")
-MIN_AGE_SECONDS = 24 * 3600
-
-
-def _get_xrp_price():
-    try:
-        r = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "ripple", "vs_currencies": "usd"},
-            timeout=6,
-        )
-        return float(r.json().get("ripple", {}).get("usd", 0))
-    except Exception:
-        return 0.0
+LEGACY_REASON = (
+    "Legacy variable-horizon evaluation used later current prices and mutable "
+    "outcomes; it is not calibrated fixed-horizon forecast skill."
+)
 
 
 def _load_entries():
     if not HISTORY_PATH.exists():
         return []
-    out = []
-    for line in HISTORY_PATH.read_text(encoding="utf-8").splitlines():
-        try:
-            out.append(json.loads(line))
-        except Exception:
-            continue
-    return out
+    entries = []
+    with HISTORY_PATH.open(encoding="utf-8") as source_file:
+        for line in source_file:
+            try:
+                entry = json.loads(line)
+            except (json.JSONDecodeError, TypeError):
+                continue
+            if isinstance(entry, dict):
+                entries.append(entry)
+    return entries
+
+
+def _load_previous_summary():
+    try:
+        value = json.loads(SUMMARY_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, TypeError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def _preserve_legacy_metric(previous):
+    existing = previous.get("legacy_metric")
+    if isinstance(existing, dict):
+        checked = existing.get("checked_count")
+        correct = existing.get("correct_count")
+        accuracy = existing.get("accuracy_pct")
+        if (
+            isinstance(checked, int) and not isinstance(checked, bool)
+            and isinstance(correct, int) and not isinstance(correct, bool)
+            and isinstance(accuracy, (int, float)) and not isinstance(accuracy, bool)
+        ):
+            metric = dict(existing)
+            metric["validity"] = "NOT_COMPARABLE"
+            metric["reason"] = metric.get("reason") or LEGACY_REASON
+            return metric
+
+    checked = previous.get("checked_count")
+    correct = previous.get("correct_count")
+    accuracy = previous.get("accuracy_pct")
+    if (
+        isinstance(checked, int) and not isinstance(checked, bool)
+        and isinstance(correct, int) and not isinstance(correct, bool)
+        and isinstance(accuracy, (int, float)) and not isinstance(accuracy, bool)
+    ):
+        return {
+            "checked_count": checked,
+            "correct_count": correct,
+            "accuracy_pct": accuracy,
+            "validity": "NOT_COMPARABLE",
+            "reason": LEGACY_REASON,
+        }
+    return None
 
 
 def main():
-    entries = _load_entries()
-    now = time.time()
-    current_price = _get_xrp_price()
-
-    checked = 0
-    correct = 0
-    for e in entries:
-        if e.get("checked"):
-            if e.get("correct"):
-                correct += 1
-            checked += 1
-            continue
-        emitted_at = e.get("generated_at_unix", 0)
-        if not emitted_at or (now - emitted_at) < MIN_AGE_SECONDS:
-            continue
-        price_then = e.get("price_at_emission", 0)
-        score = e.get("score", 50)
-        if not price_then or not current_price:
-            continue
-        moved_up = current_price > price_then
-        called_bullish = score > 60
-        called_bearish = score < 40
-        if called_bullish:
-            was_correct = moved_up
-        elif called_bearish:
-            was_correct = not moved_up
-        else:
-            was_correct = abs(current_price - price_then) / price_then < 0.02
-        e["checked"] = True
-        e["correct"] = was_correct
-        e["price_at_check"] = current_price
-        checked += 1
-        if was_correct:
-            correct += 1
-
-    with open(HISTORY_PATH, "w", encoding="utf-8") as f:
-        for e in entries:
-            print(json.dumps(e), file=f)
-
-    accuracy = round(100 * correct / checked, 1) if checked else None
+    legacy_entries = _load_entries()
+    previous = _load_previous_summary()
+    legacy_metric = _preserve_legacy_metric(previous)
     summary = {
-        "checked_count": checked,
-        "correct_count": correct,
-        "accuracy_pct": accuracy,
+        "status": "NOT_EVALUATED",
+        "checked_count": 0,
+        "correct_count": 0,
+        "accuracy_pct": None,
+        "legacy_history_rows": len(legacy_entries),
+        "evaluated_at": datetime.now(timezone.utc).isoformat(),
+        "reason": (
+            "No validated immutable fixed-horizon forecast ledger is configured. "
+            "Legacy history is preserved unchanged."
+        ),
     }
-    with open(SUMMARY_PATH, "w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=2)
+    if legacy_metric is not None:
+        summary["legacy_metric"] = legacy_metric
+    SUMMARY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    SUMMARY_PATH.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary))
+    return summary
 
 
 if __name__ == "__main__":
