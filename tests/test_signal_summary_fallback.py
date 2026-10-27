@@ -24,6 +24,11 @@ def test_valid_signal_is_not_marked_invalid_only_by_positive_score():
     signal = {"score": 55, "confidence": 0.7, "source": "model"}
     assert signal_summary.signal_requires_fallback(signal) is False
 
+def test_non_finite_and_out_of_range_confidence_fails_closed():
+    for confidence in (float("nan"), float("inf"), float("-inf"), -0.01, 1.01):
+        signal = {"score": 55, "confidence": confidence, "source": "model"}
+        assert signal_summary.signal_requires_fallback(signal) is True
+
 
 def test_main_persists_summary_when_provider_key_is_missing(monkeypatch, tmp_path):
     signal_file = tmp_path / "latest_signal.json"
