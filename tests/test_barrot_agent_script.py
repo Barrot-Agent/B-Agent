@@ -231,6 +231,12 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     def fake_run_gh(args):
         calls["args"] = args
+        body_path = Path(args[args.index("--body-file") + 1])
+        calls["body_path"] = body_path
+        assert body_path.is_file()
+        body = body_path.read_text(encoding="utf-8")
+        assert "cycle-123" in body
+        assert "abc123" in body
 
         class Result:
             returncode = 0
@@ -244,3 +250,4 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     assert calls["args"][8] == "--head"
     assert calls["args"][9] == "repair/from-cycle"
+    assert not calls["body_path"].exists()
