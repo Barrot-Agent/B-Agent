@@ -262,7 +262,7 @@ def _send_groq_request(
         if exc.code in {401, 403}:
             raise RuntimeError(f"LLM authentication failed: {detail}") from exc
         if exc.code == 429 and not _rate_limit_retry and "tokens per day" in lowered:
-            retry_match = re.search(r"try again in\\s+(?:(\\d+)m)?([\\d.]+)s", lowered)
+            retry_match = re.search(r"try again in\s+(?:(\d+)m)?([\d.]+)s", lowered)
             if retry_match:
                 retry_seconds = int(retry_match.group(1) or 0) * 60 + float(retry_match.group(2))
                 if 0 < retry_seconds <= 1200:
