@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 1147,
-    "btc_entries": 1177
+    "btc_entries": 1178
   },
   "unique_entities_profiled": 971,
   "entities": [
@@ -1461,6 +1461,23 @@
       ]
     },
     {
+      "entity": "Bitcoin ETFs",
+      "total_mentions": 4,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
+        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+        "Bitcoin ETFs add $189M as August net inflows approach $1B"
+      ]
+    },
+    {
       "entity": "MiCA",
       "total_mentions": 4,
       "bullish": 3,
@@ -1890,23 +1907,6 @@
         "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
         "BREAKING: Ripple Moves XRP to Binance After $50M Subwallet Transfers - CoinGape",
         "Just In: Ripple Re-Locks 700 Million XRP Back Into Escrow - CoinGape"
-      ]
-    },
-    {
-      "entity": "Bitcoin ETFs",
-      "total_mentions": 3,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs pull in $244M, 3-day inflow streak tops $626M",
-        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
-        "Bitcoin ETFs add $189M as August net inflows approach $1B"
       ]
     },
     {
@@ -2691,6 +2691,23 @@
         "Ripple expands Brevan Howard deal with prime brokerage services",
         "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing",
         "Ripple Prime Expands Brevan Howard Deal Into Multi-Asset Clearing And Financing"
+      ]
+    },
+    {
+      "entity": "Farside Investors",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+        "Ethereum ETFs Lose $201.9 Million As Bitcoin Funds Return To Inflows",
+        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead"
       ]
     },
     {
@@ -5247,22 +5264,6 @@
       ]
     },
     {
-      "entity": "Farside Investors",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
-        "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead"
-      ]
-    },
-    {
       "entity": "Poolin",
       "total_mentions": 2,
       "bullish": 0,
@@ -5665,6 +5666,21 @@
       "example_headlines": [
         "Bitget CEO sees Bitcoin near current levels at year-end, doubts US will buy BTC",
         "Bitget CEO isn\u2019t buying the Bitcoin rally \u2014 She\u2019s waiting for $50K"
+      ]
+    },
+    {
+      "entity": "Ethereum ETFs",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC"
+      ],
+      "example_headlines": [
+        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows",
+        "Ethereum ETFs Lose $201.9 Million As Bitcoin Funds Return To Inflows"
       ]
     },
     {
@@ -14055,20 +14071,6 @@
     },
     {
       "entity": "Fidelity Investments",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "Ethereum ETFs Add $29.4M Friday As Fidelity Leads Reported Flows"
-      ]
-    },
-    {
-      "entity": "Ethereum ETFs",
       "total_mentions": 1,
       "bullish": 1,
       "neutral": 0,
