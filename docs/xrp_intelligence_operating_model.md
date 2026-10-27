@@ -169,3 +169,21 @@ Sources: [Coinbase Q2 2026 Form 10-Q](https://www.sec.gov/Archives/edgar/data/16
 - Deterministic validation passed: JSON parsed; source, claim and evidence IDs are unique; all checked source, claim, evidence, graph, hypothesis and primary-claim references resolved.
 - Latest ledger commit `363e2bfeed675ba04e465254bb9df7203c037ef8` adds Circle's managed-payment architecture and Tazapay volume disclosures. This documentation commit creates a new PR head; exact-head CI must be rechecked.
 - Main remains `0190c81914f921455725e73add58d5527aae8148`; the latest signal remains invalid and no forecast was issued. PRs #1185 and #1186 remain draft/unmerged despite passing their exact-head CI and fail-closed gates. Physical Moto G7 delivery remains unverified.
+
+## Automation checkpoint — 2026-10-27 08:08 UTC
+
+### Circle Arc and SBI Ripple Asia: ledger adoption is not XRP demand
+
+- Circle's 2026-09-16 Arc mainnet announcement describes USDC-denominated gas fees, sub-second finality, native USDC/EURC integration, StableFX and more than 100 institutional/ecosystem builders at launch. This is a company-announced competing stablecoin-native settlement design. It does not prove material realized volume, XRP displacement, or a price effect. Source: [Circle Arc mainnet release](https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx).
+- SBI Ripple Asia's 2026-02-26 release describes a proof of concept for tokenized deposits and deposit-type digital money using MoneyTap and a token-issuance platform, with XRPL contemplated in the model. This supports an institutional XRPL infrastructure use case, not production deployment, XRP as bridge asset, collateral, or a measurable XRP flow. Source: [SBI Holdings / SBI Ripple Asia release](https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html).
+- Added a competing Arc substitution-versus-complementarity hypothesis with corridor-level tests, falsification conditions and the explicit counterpoint that native USDC also exists on XRPL.
+- Added an immutable-style repository observation of main `web/latest_signal.json` at `2026-10-27T07:37:49.603416Z`, blob SHA `b0b77c436ef1efddb4092855f937c6307419e107`. It reports score 44, confidence 0, news score 88 from 11 entries, missing GitHub model credentials, Groq HTTP 429 and XRPL protocol/research headlines. It remains invalid for forecasting; no directional forecast was issued.
+- The exact main tip SHA was not independently resolved in this pass. The last explicitly recorded tip is retained as a historical observation, not represented as a verified current tip.
+
+### Ledger integrity and validation boundary
+
+- Ledger now contains **80 sources, 48 claims, 75 evidence records, 37 relationship nodes, 55 graph edges and 12 competing scenario hypotheses**.
+- Deterministic validation passed before the write: JSON parsed; source/claim/evidence/node/hypothesis IDs were unique; all checked claim-source, claim-evidence, evidence-source, evidence-claim and graph-source references resolved.
+- Ledger commit: `eb379e74a8ae48c25d8b469c86bbe7fcf8af62dd`. This changes the head of draft PR [#1170](https://github.com/Barrot-Agent/B-Agent/pull/1170); exact-head CI and the fail-closed gate must be rechecked. No merge or main-branch write occurred.
+- The current signal remains `NOT_ISSUED`. Provider availability, market-news classification, fixed-horizon evaluation and out-of-sample calibration remain blockers.
+- Circle Arc adoption, XRPL USDC route-level volume, SBI proof-of-concept production status, and XRP-specific flows remain unknown. No live nine-platform collaboration is claimed.
