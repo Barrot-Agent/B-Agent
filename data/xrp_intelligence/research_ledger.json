@@ -1669,15 +1669,19 @@
     "snapshot_blob_sha": "1efb0b0744664c0e237bc16e054abebebd258199",
     "current_research_head_before_ledger_update": "b8bf31b5d1c729ae8807580e7266620854d0747f",
     "current_research_checks": {
-      "last_verified_head": "09e3ab4f0d976aadd0e733139a38d87de8952b6e",
+      "last_verified_head": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
       "tests": "PASS_145_TESTS",
+      "tests_run_id": 40593506611,
+      "tests_duration_seconds": 5.89,
       "gate": "PASS",
-      "tests_run_id": 40593202456,
-      "gate_run_id": 40593202473,
-      "current_ledger_update": "PENDING_VERIFICATION",
-      "as_of_utc": "2026-10-27T22:14:48Z",
-      "note": "This ledger update creates a newer research commit; verify its exact-head CI separately."
-    }
+      "gate_run_id": 40593506632,
+      "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593506611",
+      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593506632",
+      "current_metadata_update": "PENDING_VERIFICATION",
+      "as_of_utc": "2026-10-27T22:16:38Z",
+      "note": "Exact-head CI and fail-closed gate passed for cc16b4b. This metadata-only ledger commit creates a newer head; verify that head's run before claiming it passed."
+    },
+    "current_research_head_before_final_verification_record": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30"
   },
   "sources": [
     {
@@ -2615,6 +2619,20 @@
         "forecast_status": "NOT_ISSUED",
         "main_modified": false,
         "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:16:38Z",
+      "update_type": "APPEND_ONLY_FINAL_RESEARCH_LEDGER_CI_VERIFICATION",
+      "validated_commit": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
+      "details": "Verified exact-head CI completed successfully with 145 tests passing in 5.89 seconds and the fail-closed gate passed. This validation applies to cc16b4b; the following ledger metadata commit is newer and must be checked separately.",
+      "validation": {
+        "ci": "PASS_145_TESTS",
+        "gate": "PASS",
+        "validated_head_sha": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
       }
     }
   ],
