@@ -435,3 +435,12 @@ No main-branch write, merge, force-push, workflow dispatch, real-money action, o
 - Next: recheck PR #1193 exact-head CI and inspect the final diff; keep it draft pending independent review. Continue XRP research only with event-time/route-level evidence; do not infer XRP demand from stablecoin launches or protocol headlines.
 
 No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
+
+
+### Run 13 validation closure — remote CI result
+
+- Fresh-main [PR #1193](https://github.com/Barrot-Agent/B-Agent/pull/1193) head `789b639d2553a0d4389d8cf49a1a0b9fb6b80e17` passed exact-head CI [40556174720](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556174720): **130 tests passed in 6.13 seconds**. The fail-closed gate [40556174861](https://github.com/Barrot-Agent/B-Agent/actions/runs/40556174861) also passed. The PR remains draft/unmerged; the fix is not effective on main.
+- The CI job log reports `2026-10-27T18:02:42Z`, later than the supplied session-clock estimate `17:50:00Z`; connector retrieval time is not exposed. Record this as a remote/session clock-order conflict. CI conclusion and test output are verified independently of exact wall-clock ordering.
+- The research bundle now contains 141 sources, 98 claims, 138 evidence records, 53 relationship nodes, 76 edges, 19 competing hypotheses and 0 forecasts. Structural validation is repeated after read-back.
+
+No main-branch write, merge, force-push, workflow dispatch, real-money action, or destructive workspace operation occurred.
