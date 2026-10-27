@@ -60,7 +60,7 @@
   "video_inventory_status": {
     "status": "PARTIAL_INDEXED_INVENTORY; RECENT LONG-FORM/LIVE/SHORT SURFACES QUERIED; FULL ENUMERATION NOT VERIFIED",
     "completeness_verified": false,
-    "discovered_total_count": null,
+    "discovered_total_count": 1239,
     "indexed_seed_video_count": 15,
     "missing_work": [
       "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
@@ -84,7 +84,28 @@
         "short",
         "live"
       ],
-      "complete_channel_inventory": false
+      "complete_channel_inventory": false,
+      "seed_ids_already_in_snapshot": [
+        "vPebfa4Mdwo",
+        "SYdQI_Hd8tI",
+        "M3SrCk61x88",
+        "AJqjwT5ueG4"
+      ],
+      "seed_inventory_union_count": 161,
+      "reported_channel_total": 1239,
+      "approximate_reported_coverage_pct": 12.1
+    },
+    "channel_stats_snapshot": {
+      "provider": "vidIQ",
+      "captured_at_utc": "2026-10-27T02:08:17.234Z",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "reported_total_videos": 1239,
+      "reported_subscribers": 143000,
+      "reported_total_views": 18111240,
+      "videos_published_2026_09_26_to_2026_10_27": 80,
+      "views_gained_same_period": 1336486,
+      "subscribers_gained_same_period": 2000,
+      "caveat": "Third-party channel statistics; counts may not equal canonical public-upload enumeration and should be rechecked against channel surfaces."
     }
   },
   "seed_videos": [
@@ -543,7 +564,7 @@
       "https://www.sbigroup.co.jp/news/2007/0216_349.html",
       "https://www.sbigroup.co.jp/news/2007/0521_852.html"
     ],
-    "last_updated_at_utc": "2026-10-27T02:06:46.417Z"
+    "last_updated_at_utc": "2026-10-27T02:08:17.234Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
@@ -959,6 +980,13 @@
         "https://www.paypal.com/us/cshelp/article/paypal-cryptocurrency-faqs-help565",
         "https://developer.paypal.com/crypto/"
       ]
+    },
+    {
+      "update_id": "VIDIQ-CHANNEL-STATS-20261027",
+      "updated_at_utc": "2026-10-27T02:08:17.234Z",
+      "type": "CHANNEL_SIZE_AND_INVENTORY_GAP",
+      "summary": "vidIQ reported 1,239 total videos, 143,000 subscribers, 18,111,240 total views, and 80 videos published from 2026-09-26 through 2026-10-27. The 150-video recent-format snapshot is approximately 12.1% of that reported total; this is a partial snapshot, not full public-channel enumeration.",
+      "caveat": "Counts are provider-reported and do not substitute for canonical enumeration across Videos, Shorts, live and archived streams."
     }
   ]
 }
