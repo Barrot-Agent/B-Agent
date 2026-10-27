@@ -438,3 +438,29 @@ def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
         join_literal("144-", "agent ", "council"),
     ):
         assert term not in source
+
+def test_barrot_issue_comment_temp_file_exists_during_gh_call(monkeypatch) -> None:
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_comment_tempfile_lifetime_test",
+    )
+    observed: dict[str, str] = {}
+    monkeypatch.setattr(module, "ISSUE", "1197")
+    monkeypatch.setattr(module, "REPO", "Barrot-Agent/B-Agent")
+
+    class Result:
+        returncode = 0
+        stderr = ""
+
+    def fake_run_gh(args, check=False):
+        del check
+        body_path = Path(args[args.index("--body-file") + 1])
+        assert body_path.is_file(), "comment body must exist while gh reads it"
+        observed["body"] = body_path.read_text(encoding="utf-8")
+        return Result()
+
+    monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    module.post_issue_comment("test failure report")
+
+    assert observed["body"] == "test failure report"
+
