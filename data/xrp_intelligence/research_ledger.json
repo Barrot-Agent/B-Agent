@@ -16,10 +16,10 @@
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T21:11:39Z",
+    "captured_at_utc": "2026-10-27T22:03:13Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+      "main_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -74,24 +74,27 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "message": "Use low reasoning effort for concise bundle generation (#1218)",
-        "authored_at_utc": "2026-10-27T21:06:48Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+        "message": "Cross-analysis refresh [skip ci]",
+        "authored_at_utc": "2026-10-27T21:52:06Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/26bc78368692aa4b4ef6e32a9464d1cb75f55fb6"
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+        "main_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
         "main_commit": {
-          "message": "Use low reasoning effort for concise bundle generation (#1218)",
-          "authored_at_utc": "2026-10-27T21:06:48Z",
-          "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+          "message": "Cross-analysis refresh [skip ci]",
+          "authored_at_utc": "2026-10-27T21:52:06Z",
+          "url": "https://github.com/Barrot-Agent/B-Agent/commit/26bc78368692aa4b4ef6e32a9464d1cb75f55fb6"
         },
         "main_branch_protected": true,
         "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
         "main_ci": {
           "run_id": 40583993078,
           "conclusion": "success",
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078"
+          "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
+          "current_head_status": "NOT_VERIFIED",
+          "note": "The last recorded successful code CI predates current main. The intervening observed commits changed generated runtime/log/signal files only; the connector returned no status contexts for current main."
         },
         "main_databricks_deploy": {
           "run_id": 40583993212,
@@ -163,6 +166,13 @@
         "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282225",
         "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282627",
         "note": "Validation applies to head d4fd1a before the later ledger-linking commit; later head must pass CI independently."
+      },
+      "main_commit_delta_since_last_observed": {
+        "previous_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+        "commits_ahead": 6,
+        "changed_files": 13,
+        "changed_scope": "Generated runtime data, knowledge-base logs, signals and paper-trading log only; no code or workflow files in the observed diff.",
+        "finding": "Automated generated-data writes to main continue. Earlier non-fast-forward failures do not prove a concurrent-writer cause."
       }
     },
     "critical_engine_findings": [
@@ -285,6 +295,38 @@
         "consequence": "Mutable signal/history writes can race, fail or publish unreviewed generated data; the merge queue remains a separate consequential mutation path.",
         "proposed_fix": "Build an idempotent append-only research-data branch or reviewed promotion path with snapshot hashes and provenance, then remove direct generated-data pushes to main; keep merge queue read-only until effective approval/check gates are verified.",
         "verification": "Latest main Barrot Operations Pipeline run 40583993172 failed with a non-fast-forward push. A concurrent writer remains a hypothesis, not a proven cause. Main still contains direct-write workflows; no changes were merged by this run."
+      },
+      {
+        "id": "MAIN-GENERATED-DATA-CONTINUES-20261027",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "OBSERVED_ON_CURRENT_MAIN; SAFE_PERSISTENCE_REDESIGN_STILL_REQUIRED",
+        "files": [
+          {
+            "path": "web/latest_signal.json",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "web/latest_signal_summary.json",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "web/signal_history.jsonl",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "web/paper_trading_log.jsonl",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "ping-pongings/knowledge-base/log.jsonl",
+            "observed_main_delta": "modified"
+          }
+        ],
+        "finding": "Main advanced six commits from 6c91a862be06c02f01814c47f831da54aa306b88 to 26bc78368692aa4b4ef6e32a9464d1cb75f55fb6. The observed diff changes 13 generated runtime, signal, log and paper-trading files; no code or workflow files changed. Generated-data writes to main continued after the previous checkpoint.",
+        "consequence": "Mutable signal and simulation history continues to be committed directly to main, reducing separation between generated observations and reviewed code and complicating reproducible evaluation.",
+        "limits": "The commit comparison establishes changed-file scope, not whether every generated value is valid or whether concurrent writers caused earlier push failures.",
+        "next_action": "Create and test an idempotent append-only data branch or artifact-promotion path before changing any current writer; retain provenance and historical outcomes."
       }
     ],
     "research_findings": [
@@ -415,6 +457,44 @@
           "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
           "SRC-COINBASE-XRP-PERP-FUTURES",
           "SRC-COINBASE-ASSET-DISCLOSURES"
+        ]
+      },
+      {
+        "id": "SBI-MULTI-RAIL-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_WITH_INFERENCE",
+        "status": "MULTIPLE_DISTINCT_PRODUCTS_AND_RESEARCH_ACTIVITIES_CONFIRMED; REALIZED_XRP_FLOWS_UNKNOWN",
+        "claim": "Official SBI Group releases document a Visa-linked rewards card whose reward points can convert to BTC, ETH or XRP; SBI VC Trade handling of RLUSD in Japan; an SBI Ripple Asia proof-of-concept considering XRPL for tokenized deposits and deposit-type digital money; and separate SBI Ripple Asia–dsrv labs Japan–Korea remittance/payment research considering XRPL.",
+        "interpretation": "These are distinct products and research tracks in the broader SBI ecosystem. They show multiple potential digital-asset rails, not proof of one integrated XRP-demand mechanism or a direct SBIC East Japan relationship.",
+        "limits": "XRP reward conversion volume, production corridor volume, actual XRPL use, XRP bridge-asset share, collateral eligibility and net market demand remain undisclosed or unverified.",
+        "source_ids": [
+          "SRC-SBI-VISA-XRP-CARD-2026",
+          "SRC-SBI-RLUSD-JAPAN-2026",
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026",
+          "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026"
+        ]
+      },
+      {
+        "id": "USDC-CIRCULATION-DELTA-2026-10-27",
+        "evidence_class": "COMPANY_REPORTED_DASHBOARD_OBSERVATION",
+        "status": "DISPLAYED_SUPPLY_DELTA_OBSERVED; CAUSE_AND_CHAIN_ALLOCATION_UNKNOWN",
+        "claim": "Circle's public USDC page displayed $71.0B in circulation as of October 26, 2026. The prior ledger snapshot recorded $72.0B as of October 22, implying a displayed change of about -$1.0B (-1.39%) over four days.",
+        "interpretation": "This is a comparison of two issuer-dashboard snapshots, not a verified daily netflow series. It may reflect net redemptions/issuance, snapshot timing or scope changes. It does not show whether funds entered or exited XRP, XRPL or crypto markets.",
+        "limits": "Exact daily mint/burn path, XRPL-specific USDC supply, cross-chain rebalancing and venue distribution changes are unknown. This observation is not approved as a model feature.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ]
+      },
+      {
+        "id": "USDC-XRPL-RAIL-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "NATIVE_USDC_AND_CIRCLE_MINT_FUNCTIONS_DOCUMENTED; XRP_PRICE_EFFECT_UNKNOWN",
+        "claim": "Circle documents USDC as natively issued on XRPL, with qualified Circle Mint customers able to convert fiat to XRPL USDC and redeem it to USD, and Circle APIs supporting cross-chain USDC movement.",
+        "interpretation": "This confirms a dollar-stablecoin rail on XRPL. USDC can increase ledger utility and liquidity while also substituting for XRP in some transfer/settlement use cases; net impact on marginal XRP demand is unknown.",
+        "limits": "Current XRPL-native USDC supply, transfer volume, incremental XRP fee burn and linked net XRP order flow are not verified.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
         ]
       }
     ],
@@ -605,6 +685,60 @@
           "SRC-COINBASE-XRP-PERP-FUTURES"
         ],
         "status": "CONFIRMED_PRODUCT_DOCUMENTATION; CURRENT_MARKET_FIELDS_NOT_VERIFIED"
+      },
+      {
+        "from": "SBI VC Trade / Aplus / Visa",
+        "relation": "announced a rewards card whose points can convert to",
+        "to": "BTC, ETH or XRP",
+        "evidence_ids": [
+          "SRC-SBI-VISA-XRP-CARD-2026"
+        ],
+        "status": "CONFIRMED_PRODUCT_ANNOUNCEMENT; REALIZED_XRP_CONVERSION_VOLUME_UNKNOWN"
+      },
+      {
+        "from": "SBI VC Trade",
+        "relation": "announced Japanese handling/distribution of",
+        "to": "Ripple RLUSD",
+        "evidence_ids": [
+          "SRC-SBI-RLUSD-JAPAN-2026"
+        ],
+        "status": "ANNOUNCED_LAUNCHED_2026-06-24; XRP_DEMAND_NOT_ESTABLISHED"
+      },
+      {
+        "from": "SBI Ripple Asia",
+        "relation": "conceptual proof-of-concept considers",
+        "to": "XRPL for tokenized deposits and deposit-type digital money",
+        "evidence_ids": [
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026"
+        ],
+        "status": "CONCEPTUAL_POC; PRODUCTION_NOT_VERIFIED"
+      },
+      {
+        "from": "SBI Ripple Asia and dsrv labs",
+        "relation": "research blockchain use for",
+        "to": "Japan–Korea remittance and payment corridors, with XRPL considered",
+        "evidence_ids": [
+          "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026"
+        ],
+        "status": "RESEARCH_STAGE; PRODUCTION_VOLUME_UNKNOWN"
+      },
+      {
+        "from": "Circle",
+        "relation": "documents native issuance and qualified mint/redeem access for",
+        "to": "USDC on XRPL",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026"
+        ],
+        "status": "CONFIRMED_BY_ISSUER_DOCUMENTATION; XRPL_SUPPLY_NOT_RENDERED"
+      },
+      {
+        "from": "Circle",
+        "relation": "publicly displayed $71.0B USDC circulation as of 2026-10-26",
+        "to": "USDC global circulation",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ],
+        "status": "ISSUER_DASHBOARD_OBSERVATION; DAILY_NETFLOWS_UNKNOWN"
       }
     ],
     "competing_hypotheses": [
@@ -752,6 +886,47 @@
           "Exact page timestamps and contract universes are not fully disclosed for all sources; some discrepancy may reflect real market moves between snapshots, and vendor calculations may also contain data-quality errors."
         ],
         "test_plan": "Capture venue-level public API responses at the same UTC cutoff, normalize contracts and quote currencies, sum open interest by contract, compare against vendor definitions and repeat across a walk-forward history."
+      },
+      {
+        "id": "H12-SBI-MULTI-RAIL-OPTIONALITY",
+        "hypothesis": "SBI Group ecosystem activity is best modeled as multiple parallel rails—XRP rewards conversion, RLUSD distribution and separate XRPL research tracks—rather than as one unified XRP-demand mechanism.",
+        "supporting_evidence": [
+          "SRC-SBI-VISA-XRP-CARD-2026",
+          "SRC-SBI-RLUSD-JAPAN-2026",
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026",
+          "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "A coordinated group-level strategy could connect these initiatives, but the public announcements do not establish shared flows or integrated product routing.",
+          "Some initiatives may remain small, experimental or non-production."
+        ],
+        "test_plan": "Track official launch status, product terms, reported transaction/reward volumes, exchange or chain-level flows and corporate filings; maintain separate entity/product nodes until direct integration is documented."
+      },
+      {
+        "id": "H13-USDC-SUPPLY-FLOW-INTERPRETATION",
+        "hypothesis": "A short-window change in total USDC circulation is a stablecoin issuance/redemption and distribution observation; it should not be treated as an XRP flow proxy without chain-level and venue-level linkage.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Cross-chain rebalancing or exchange settlement can move USDC between venues and networks without changing total supply; dashboard scope and timing may differ.",
+          "Stablecoin liquidity changes could affect crypto risk appetite indirectly, but the sign and lag are regime-dependent."
+        ],
+        "test_plan": "Capture daily Circle supply and mint/burn data, XRPL USDC issuer/holder/transfer series, exchange USDC balances, XRP spot order flow and macro controls at fixed UTC cutoffs; test lagged relationships out of sample."
+      },
+      {
+        "id": "H14-XRP-REWARD-CONVERSION-CHANNEL",
+        "hypothesis": "SBI VISA Crypto Card's XRP-selectable reward conversion creates a potential retail XRP acquisition channel, but its magnitude and price effect are unknown and may be negligible relative to exchange and derivatives flows.",
+        "supporting_evidence": [
+          "SRC-SBI-VISA-XRP-CARD-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "No realized reward conversion volume or purchase execution data is disclosed in the announcement.",
+          "Users can select BTC or ETH instead; reward conversion may be netted by a provider and does not prove persistent holding."
+        ],
+        "test_plan": "Look for subsequent issuer/product disclosures of reward conversion totals, eligibility, conversion timing and asset-selection mix; do not estimate price impact without realized volume and liquidity data."
       }
     ],
     "market_observations": [
@@ -789,6 +964,18 @@
           "SRC-XRP-DERIV-COINGLASS-2026-10-27",
           "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
           "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "USDC-CIRCULATION-DELTA-2026-10-26",
+        "evidence_class": "COMPANY_REPORTED_DASHBOARD_DELTA",
+        "as_of_date": "2026-10-26",
+        "observation": "Circle's page displayed $71.0B in USDC circulation as of Oct 26 versus a prior captured $72.0B as of Oct 22, a displayed $1.0B (-1.39%) decline across four calendar days.",
+        "interpretation": "Issuer-dashboard comparison only. Net mint/burn path, chain allocation and cause are unverified; not an XRP flow proxy.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
         ],
         "approved_for_model_features": false
       }
@@ -869,7 +1056,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "No synchronized multi-venue feature store or validated fixed-horizon model performance; aggregate XRP open interest differs materially across public vendors with non-harmonized coverage, and the latest single-provider derivatives snapshot remains uncorroborated. No price forecast is issued.",
+      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. XRP derivatives open interest remains blocked pending contract-universe harmonization; the Circle USDC supply delta is only two issuer-dashboard snapshots and is not an XRP flow proxy.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -934,7 +1121,11 @@
       "Keep the Circle-to-Coinbase USDC distribution relationship distinct from any assumed XRP accumulation or XRPL-native USDC use.",
       "Resolve the original source of the phrase Camilla Stephenson before enumerating the full video inventory.",
       "Continue exact-phrase source tracing for ASK Coin, actual capital and SBIC/ChatGPT SBIC.",
-      "Harmonize XRP futures open-interest coverage across raw exchange APIs and aggregators before admitting OI/funding/liquidation aggregates into the feature store."
+      "Harmonize XRP futures open-interest coverage across raw exchange APIs and aggregators before admitting OI/funding/liquidation aggregates into the feature store.",
+      "Track SBI VISA Crypto Card reward-conversion disclosures and distinguish selected-asset rewards from realized XRP market purchases.",
+      "Capture Circle USDC circulation/reserves and XRPL-native USDC supply/transfer series at fixed UTC cutoffs; do not infer XRP flows from total USDC supply.",
+      "Preserve PR #1195 but do not merge its stale branch; it is 44 commits behind observed main and 24 commits ahead, so validate all artifacts before a fresh-main successor.",
+      "Record that generated runtime/signal files continue to be committed directly to main; design a safe idempotent append-only persistence path before altering writers."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-27T21:05:14Z",
@@ -1011,30 +1202,35 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+      "main_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
       "main_commit": {
-        "message": "Use low reasoning effort for concise bundle generation (#1218)",
-        "authored_at_utc": "2026-10-27T21:06:48Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/6c91a862be06c02f01814c47f831da54aa306b88"
+        "message": "Cross-analysis refresh [skip ci]",
+        "authored_at_utc": "2026-10-27T21:52:06Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/26bc78368692aa4b4ef6e32a9464d1cb75f55fb6"
       },
       "main_branch_protected": true,
       "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
       "main_ci": {
         "run_id": 40583993078,
         "conclusion": "success",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078"
+        "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
+        "current_head_status": "NOT_VERIFIED",
+        "note": "The last recorded successful code CI predates current main. The intervening observed commits changed generated runtime/log/signal files only; the connector returned no status contexts for current main."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
         "conclusion": "failure",
-        "root_cause": "Main workflow still calls python deploy_databricks.py while the script is under scripts/deploy_databricks.py.",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212"
+        "root_cause": "Workflow calls python deploy_databricks.py while the implementation is under scripts/deploy_databricks.py.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212",
+        "status_note": "Open fix candidate; no deployment executed."
       },
       "main_operations_pipeline": {
         "run_id": 40583993172,
         "conclusion": "failure",
-        "root_cause": "Push rejected as non-fast-forward. This confirms a direct-push failure; whether a concurrent workflow caused it remains unproven.",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172"
+        "root_cause": "A push was rejected as non-fast-forward. A concurrent writer is plausible but unproven.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172",
+        "status_note": "Historical failure; subsequent generated-data commits show automated writes resumed."
       },
       "approval_workflow_anomaly": {
         "run_id": 40584131729,
@@ -1046,13 +1242,11 @@
       },
       "research_pr_validation": {
         "pr": 1195,
-        "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
-        "ci_run_id": 40584140982,
-        "ci": "success",
-        "gate_run_id": 40584140846,
-        "gate": "success",
+        "previous_head_sha": "75ddbb869bb5db621fb163653c6ddaa5da75c7ae",
+        "ci": "PENDING_FOR_CURRENT_HEAD",
+        "gate": "PENDING_FOR_CURRENT_HEAD",
         "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-        "note": "These checks validate repository tests and fail-closed merge gate only; they do not validate prediction skill or deploy the research system."
+        "note": "The current ledger update is a new commit after the previously recorded checks. Validate the latest PR head; do not reuse older CI as proof for this commit."
       },
       "safety_prs": [
         {
@@ -1100,6 +1294,18 @@
           "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
         ],
         "next_action": "Rebuild OI from venue-level public endpoints at a common UTC cutoff; separate perpetuals, dated futures and options; normalize USD/USDT/USDC conversions; preserve raw payload hashes."
+      },
+      {
+        "id": "USDC-SUPPLY-SNAPSHOT-COMPARABILITY-2026-10-27",
+        "severity": "MEDIUM",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_DAILY_SERIES_AND_CHAIN_ALLOCATION",
+        "finding": "Circle's displayed total USDC circulation was $72.0B in the prior Oct 22 snapshot and $71.0B as of Oct 26 on the current page.",
+        "interpretation": "The apparent -$1.0B change is issuer-reported and potentially useful as a liquidity-context observation, but two snapshots cannot identify the daily mint/burn path or link the change to XRP flows.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ],
+        "next_action": "Capture daily supply and reserve dashboard values with source-page hashes; reconcile monthly attestations and issuer-level mint/burn data; collect XRPL-specific USDC supply and transfer activity before feature admission."
       }
     ],
     "mission_priority": {
@@ -1127,6 +1333,18 @@
         "Databricks"
       ],
       "forecast_status": "NOT_ISSUED"
+    },
+    "snapshot_id": "XRP-ECOSYSTEM-DELTA-2026-10-27T220313Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2203Z.json",
+    "snapshot_blob_sha": "77babf3902d80f0ee91b72ccca0b619f8b6306a7",
+    "current_research_head_before_ledger_update": "e96f7d9ffb02157aa2435be854e94ff1a2fa753a",
+    "current_research_checks": {
+      "tests": "PENDING_FOR_CURRENT_HEAD",
+      "gate": "PENDING_FOR_CURRENT_HEAD",
+      "as_of_utc": "2026-10-27T22:03:13Z",
+      "test_run_url": null,
+      "gate_run_url": null,
+      "note": "Ledger update creates a new commit; current PR head must be re-read and checks verified."
     }
   },
   "sources": [
@@ -1715,6 +1933,26 @@
         "main_modified": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED",
+        "ci_status": "PENDING_FOR_THIS_COMMIT"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:03:13Z",
+      "update_type": "APPEND_ONLY_SBI_RAILS_USDC_SUPPLY_AND_REPO_STATE_DELTA",
+      "snapshot_id": "XRP-ECOSYSTEM-DELTA-2026-10-27T220313Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2203Z.json",
+      "snapshot_blob_sha": "77babf3902d80f0ee91b72ccca0b619f8b6306a7",
+      "details": "Added official-source records for SBI's XRP-selectable reward card, Japan RLUSD handling, SBI Ripple Asia's XRPL-related conceptual deposit PoC and Japan–Korea remittance research, plus Circle's native XRPL USDC documentation and Oct 26 circulation display. Recorded the apparent $1B/1.39% four-day USDC circulation change as issuer-dashboard-only, not an XRP flow proxy. Current main advanced six commits and 13 generated-data files since the prior observed SHA; no code/workflow files changed. PR #1195 is 44 commits behind and 24 ahead of observed main.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "unique_source_ids": "PENDING_POST_WRITE_READBACK",
+        "research_finding_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "relationship_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "hypothesis_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "model_feature_admission": "BLOCKED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false,
         "ci_status": "PENDING_FOR_THIS_COMMIT"
       }
     }
