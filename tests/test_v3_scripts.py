@@ -573,3 +573,19 @@ def test_repo_browser_search_treats_empty_path_as_repository_root(monkeypatch, t
     assert result["path"] == "."
     assert result["matches"]
 
+def test_repo_browser_tool_schema_allows_empty_root_path(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script(
+        REPO_ROOT / "scripts" / "barrot_agent.py",
+        "barrot_agent_search_path_schema_test",
+    )
+    search_tool = next(
+        tool for tool in module.ScriptBrain().tools
+        if tool["function"]["name"] == "repo_browser.search"
+    )
+    properties = search_tool["function"]["parameters"]["properties"]
+    required = search_tool["function"]["parameters"].get("required", [])
+
+    assert "minLength" not in properties["path"]
+    assert "path" not in required
+
