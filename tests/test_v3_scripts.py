@@ -237,6 +237,102 @@ def test_self_upgrade_blocks_when_remote_verification_fails(tmp_path: Path, monk
     assert code == 1
 
 
+def test_open_capability_pr_creates_pr_only_after_exact_remote_sha_verification(tmp_path: Path, monkeypatch) -> None:
+    import shutil
+
+    module = load_script(REPO_ROOT / "scripts" / "barrot_self_upgrade.py", "barrot_self_upgrade_isolated_worktree_success_test")
+    monkeypatch.setattr(module, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(module, "SCRIPTS_DIR", tmp_path / "scripts")
+    module.SCRIPTS_DIR.mkdir(parents=True)
+    worktree_path = tmp_path / "candidate-worktree"
+    calls: list[tuple[str, ...]] = []
+    isolated_calls: list[tuple[Path, tuple[str, ...]]] = []
+
+    class Result:
+        def __init__(self, *, returncode: int = 0, stdout: str = "", stderr: str = ""):
+            self.returncode = returncode
+            self.stdout = stdout
+            self.stderr = stderr
+
+    class FakeTempDir:
+        def __init__(self, *_args, **_kwargs):
+            worktree_path.mkdir(exist_ok=True)
+
+        def __enter__(self):
+            return str(worktree_path)
+
+        def __exit__(self, exc_type, exc, tb):
+            del exc_type, exc, tb
+            return False
+
+    def fake_git(*args: str):
+        calls.append(args)
+        if args == ("fetch", "origin", "main"):
+            return Result()
+        if len(args) == 6 and args[:3] == ("worktree", "add", "-b"):
+            Path(args[4]).mkdir(parents=True, exist_ok=True)
+            (Path(args[4]) / "scripts").mkdir(parents=True, exist_ok=True)
+            return Result()
+        if args == ("worktree", "remove", "--force", str(worktree_path)):
+            return Result()
+        raise AssertionError(f"Unexpected operation against operator checkout: {args}")
+
+    def fake_git_in(cwd: Path, *args: str):
+        isolated_calls.append((cwd, args))
+        assert cwd == worktree_path
+        if args == ("add", "--", "scripts/gap.py"):
+            return Result()
+        if args == ("diff", "--cached", "--name-only"):
+            return Result(stdout="scripts/gap.py\n")
+        if args == ("commit", "-m", "Self-upgrade candidate: Gap"):
+            return Result()
+        if args == ("rev-parse", "HEAD"):
+            return Result(stdout="abc123\n")
+        if args == ("push", "-u", "origin", "selfupgrade/gap-20260914153000"):
+            return Result()
+        if args == ("ls-remote", "--heads", "origin", "selfupgrade/gap-20260914153000"):
+            return Result(stdout="abc123\trefs/heads/selfupgrade/gap-20260914153000\n")
+        raise AssertionError(args)
+
+    class DateTimeStub:
+        @staticmethod
+        def now(tz=None):
+            del tz
+            class Stamp:
+                def strftime(self, fmt: str) -> str:
+                    assert fmt == "%Y%m%d%H%M%S"
+                    return "20260914153000"
+            return Stamp()
+
+    def fake_run(command, cwd, capture_output, text, check):
+        del capture_output, text, check
+        assert cwd == worktree_path
+        assert command[:3] == ["gh", "pr", "create"]
+        body_path = Path(command[command.index("--body-file") + 1])
+        assert body_path.parent == worktree_path
+        body = body_path.read_text(encoding="utf-8")
+        assert "commit: abc123" in body
+        assert "remote_branch_verification: passed" in body
+        return Result(stdout="https://example.invalid/pr/1\n")
+
+    monkeypatch.setattr(module, "git", fake_git)
+    monkeypatch.setattr(module, "git_in", fake_git_in)
+    monkeypatch.setattr(module, "datetime", DateTimeStub)
+    monkeypatch.setattr(module.tempfile, "TemporaryDirectory", FakeTempDir)
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+
+    result = module.open_capability_pr("Gap", "#!/usr/bin/env python3\nprint(1)\n")
+
+    assert result["remote_verified"] is True
+    assert result["commit"] == "abc123"
+    assert result["restored_branch"] == "unchanged (isolated worktree)"
+    assert result["pr_output"] == "https://example.invalid/pr/1"
+    assert all(cwd == worktree_path for cwd, _args in isolated_calls)
+    assert ("worktree", "remove", "--force", str(worktree_path)) in calls
+    assert not list(worktree_path.glob(".selfupgrade-pr-body-*.md"))
+    shutil.rmtree(worktree_path, ignore_errors=True)
+
+
 def test_open_capability_pr_uses_isolated_worktree_and_preserves_operator_changes(tmp_path: Path, monkeypatch) -> None:
     import shutil
 
