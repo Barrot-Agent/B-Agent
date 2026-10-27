@@ -2228,6 +2228,23 @@
         "Proposed .github/workflows/ci.yml diff removes tests/test_risk_manager.py while adding tests/test_merge_queue_safety.py",
         "The existing risk-manager regression suite must be retained in a fresh-main successor"
       ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
+      "title": "Fresh-main merge-queue safety successor PR #1192",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_pull_request_and_ci_metadata",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
+      "publication_date": "Created 2026-10-27T14:08:30Z; CI/gate runs 40518285106 and 40518284880 were queued at last read",
+      "source_commit": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+      "sections": [
+        "Branch based on exact main SHA 882b3d3f13165501642756769e74ff48251efb75",
+        "Four changed files: merge-queue workflow, CI workflow, merge-queue documentation and tests/test_merge_queue_safety.py",
+        "Read-only manual workflow removes write permissions, branch-update commands, comments, pushes and merge commands",
+        "CI keeps tests/test_risk_manager.py and adds tests/test_merge_queue_safety.py",
+        "Six static safety tests; exact-head CI run 40518285106 and fail-closed gate 40518284880 were queued at last read",
+        "Draft and unmerged; main unchanged"
+      ]
     }
   ],
   "claims": [
@@ -4438,6 +4455,33 @@
       ],
       "provenance": [
         "SRC-BARROT-PR1190-VALIDATION-20261027-RUN10"
+      ],
+      "timestamp": 1793099400
+    },
+    {
+      "claim_id": "XRP-C-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
+      "statement": "Fresh-main draft PR #1192 replaces the mutation-capable merge queue with a manual read-only notice and preserves the existing risk-manager regression suite while adding merge-queue safety tests. Static read-back confirms the intended four-file change, but exact-head CI and the fail-closed gate were queued at last observation, so the change is designed and submitted for review but not yet tested end-to-end or effective on main.",
+      "domain": "barrot_repository_security_and_ci_coverage",
+      "claim_type": "proposed_mitigation_state",
+      "source": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
+      "supporting_evidence": [
+        "XRP-E-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "STATIC_READ_BACK_VERIFIED; CI_PENDING",
+      "independent_verification_status": "CURRENT_MAIN_BASE_CONFIRMED_AT_BRANCH_CREATION; FOUR_FILE_DIFF_AND_CI_LIST_READ_BACK",
+      "adversarial_status": "The PR is not effective on main; effective branch protection remains unverified; queued CI is not a pass",
+      "acceptance_status": "DRAFT_ONLY; WAIT_FOR_EXACT_HEAD_CI_AND_GATE; NO_MERGE",
+      "confidence": 0.99,
+      "assumptions": [
+        "The PR metadata and branch contents returned by GitHub correspond to the stated head SHA.",
+        "Static content checks do not substitute for CI or effective repository protection."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
+        "SRC-BARROT-MAIN-MERGE-QUEUE-20261027-RUN10",
+        "SRC-BARROT-PR1187-REVIEW-FINDING-20261027-RUN10"
       ],
       "timestamp": 1793099400
     }
@@ -6918,6 +6962,38 @@
         "main_commits_since_base": 6,
         "main_delta_file_count": 11,
         "main_delta_contains_code_or_workflow_changes": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
+      "claim_id": "XRP-C-PR1192-READONLY-QUEUE-PRESERVES-RISK-CI-20261027-RUN10",
+      "kind": "fresh_main_pr_static_review",
+      "summary": "PR #1192 head ae556915bb49911edecf1c01c2f8a823ed6a0766 changes only four intended files. Read-back confirms the merge queue is manual-only/read-only with no merge or branch-update commands; CI includes both tests/test_risk_manager.py and tests/test_merge_queue_safety.py. At last read, CI run 40518285106 and fail-closed gate 40518284880 were queued.",
+      "source_id": "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1192",
+      "status": "DESIGNED_AND_STATICALLY_VERIFIED; CI_PENDING; DRAFT_UNMERGED",
+      "independence": "direct branch read-back and PR/run metadata",
+      "provenance": [
+        "SRC-BARROT-PR1192-MERGE-QUEUE-SAFETY-20261027-RUN10"
+      ],
+      "details": {
+        "pr": 1192,
+        "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+        "base_sha": "882b3d3f13165501642756769e74ff48251efb75",
+        "changed_files": [
+          ".github/workflows/ci.yml",
+          ".github/workflows/merge-queue.yml",
+          "docs/merge-queue.md",
+          "tests/test_merge_queue_safety.py"
+        ],
+        "risk_manager_test_preserved": true,
+        "safety_test_included": true,
+        "safety_test_count": 6,
+        "ci_run": 40518285106,
+        "ci_status": "queued",
+        "gate_run": 40518284880,
+        "gate_status": "queued",
+        "merged": false
       }
     }
   ],
@@ -9621,7 +9697,7 @@
       "note": "Latest research branch head a706b7ccdf68bd961cfcb3132d23ecf1773b370f passed exact-head CI run 40510936006 (111 tests, 5.11s) and fail-closed gate 40510935876. Main tip observed as 2d10c49bc8f4dd0d60dbf6cb435490e7ddb4dabf; compare from base a3e0f0198510634420f925eef8cea384aca51b12 shows 64 commits ahead and 14 changed files, all generated runtime/log/signal/knowledge-base data or deployment report. The GitHub timestamps are ahead of the supplied session clock; current-base integration remains unverified. Do not merge automatically.",
       "last_completed_head_sha": "9172763078a99e67c752ec79a1019a7f1ad716b7",
       "last_completed_ci_run": 40511108302,
-      "last_completed_ci_conclusion": "success",
+      "last_completed_ci_conclusion": "success; 111 tests in 5.85 seconds",
       "last_completed_fail_closed_gate_run": 40511107883,
       "last_completed_gate_conclusion": "success",
       "current_main_tip_sha": "ea8dc4d95b6336c42e553595de601100f0c61583",
@@ -9638,7 +9714,12 @@
       "main_commits_from_common_base": 70,
       "research_branch_commits_from_common_base": 86,
       "main_delta_changed_files": 14,
-      "main_delta_code_or_workflow_files_changed": false
+      "main_delta_code_or_workflow_files_changed": false,
+      "current_head_sha": "37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4",
+      "current_head_ci_run": 40518084094,
+      "current_head_ci_status": "in_progress",
+      "current_head_gate_run": 40518084025,
+      "current_head_gate_status": "success"
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -9812,10 +9893,10 @@
       "observed_session_clock_utc": "2026-10-27T11:10:00Z",
       "retrieval_timestamp_exposed": false,
       "query": "repo:Barrot-Agent/B-Agent is:open",
-      "open_pr_count_returned": 53,
-      "scope": "GitHub search returned 53 open pull requests",
+      "open_pr_count_returned": 54,
+      "scope": "GitHub search returned 54 open pull requests after PR #1192 was created",
       "pattern": "Multiple overlapping draft PRs exist for XRP signal integrity and merge-queue safety. Preserve branches; do not auto-close or merge.",
-      "action": "Review and reuse existing fixes where possible; any fresh-main successor must be minimal, preserve existing CI coverage, and remain draft/unmerged."
+      "action": "PR #1192 is a fresh-main read-only merge-queue successor; it preserves tests/test_risk_manager.py, correcting a CI-list omission found in PR #1187. Wait for exact-head CI and gate; no merge."
     },
     "current_signal_summary": {
       "retrieved_at_utc": null,
@@ -9866,14 +9947,14 @@
         "pr": 1170,
         "title": "Research: durable XRP intelligence ledger and relationship graph",
         "state": "OPEN_DRAFT",
-        "head_sha": "9172763078a99e67c752ec79a1019a7f1ad716b7",
-        "ci_run": 40511108302,
-        "ci": "PASS; 111 tests in 5.85s",
-        "gate_run": 40511107883,
+        "head_sha": "37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4",
+        "ci_run": 40518084094,
+        "ci": "IN_PROGRESS; prior head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests in 5.85s",
+        "gate_run": 40518084025,
         "gate": "PASS; no merge",
         "base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
         "merge_authorized": false,
-        "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; BRANCH_DIVERGED_FROM_CURRENT_MAIN; INTEGRATION_UNVERIFIED",
+        "status": "OPEN_DRAFT; CURRENT_HEAD_CI_IN_PROGRESS; FAIL-CLOSED GATE PASS; CURRENT_MAIN_INTEGRATION_UNVERIFIED",
         "current_main_tip_sha": "ea8dc4d95b6336c42e553595de601100f0c61583"
       },
       {
@@ -9928,6 +10009,19 @@
         "gate_run": 40507516663,
         "gate": "PASS; no merge",
         "status": "OPEN_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_MAIN_INTEGRATION_NOT_RECHECKED",
+        "merge_authorized": false
+      },
+      {
+        "pr": 1192,
+        "title": "Safety: disable merge queue on current main and preserve risk tests",
+        "state": "OPEN_DRAFT",
+        "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+        "base_sha": "882b3d3f13165501642756769e74ff48251efb75",
+        "ci_run": 40518285106,
+        "ci": "QUEUED",
+        "gate_run": 40518284880,
+        "gate": "QUEUED",
+        "status": "OPEN_DRAFT; FRESH_MAIN; STATIC_READBACK_PASS; CI_AND_GATE_PENDING; NOT_EFFECTIVE_ON_MAIN",
         "merge_authorized": false
       }
     ],
@@ -9984,6 +10078,28 @@
       "open_pr_count_returned": 53,
       "forecast_status": "NOT_ISSUED",
       "main_changed_by_this_run": false
+    },
+    "pr1192_validation": {
+      "pr": 1192,
+      "head_sha": "ae556915bb49911edecf1c01c2f8a823ed6a0766",
+      "base_sha": "882b3d3f13165501642756769e74ff48251efb75",
+      "main_tip_at_branch_creation": "882b3d3f13165501642756769e74ff48251efb75",
+      "changed_files": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/merge-queue.yml",
+        "docs/merge-queue.md",
+        "tests/test_merge_queue_safety.py"
+      ],
+      "static_readback_pass": true,
+      "risk_manager_test_preserved": true,
+      "safety_test_included": true,
+      "safety_test_count": 6,
+      "ci_run": 40518285106,
+      "ci_status": "queued",
+      "fail_closed_gate_run": 40518284880,
+      "gate_status": "queued",
+      "state": "OPEN_DRAFT; FRESH_MAIN_BASE; STATIC_READBACK_PASS; EXACT_HEAD_CI_AND_GATE_PENDING; NOT_EFFECTIVE_ON_MAIN",
+      "merge_authorized": false
     }
   },
   "video_ingestion": {
@@ -10074,6 +10190,16 @@
   ],
   "forecast_register": [],
   "next_actions": [
+    {
+      "priority": 0,
+      "action": "Wait for exact-head CI run 40518285106 and fail-closed gate 40518284880 on PR #1192. Confirm both conclude successfully before marking the merge-queue safety fix tested; do not dispatch the workflow or merge the PR.",
+      "status": "FRESH_MAIN_DRAFT; STATIC_READBACK_PASS; CI_AND_GATE_QUEUED"
+    },
+    {
+      "priority": 0,
+      "action": "Verify latest research-ledger branch head 37c6850bd9b42aed18fdfdcfe1d1ac054bb812e4. Its previous head 9172763078a99e67c752ec79a1019a7f1ad716b7 passed 111 tests, but the latest CI run 40518084094 is still in progress; fail-closed gate 40518084025 passed.",
+      "status": "LATEST_LEDGER_HEAD_CI_IN_PROGRESS; GATE_PASS"
+    },
     {
       "priority": 0,
       "action": "Reconcile cross-system time ordering with an independently measured retrieval clock before using main signal snapshots. Current signal timestamp 13:34:46Z and main commit timestamp 13:56:42Z exceed supplied session clock 11:10Z; connector retrieval time is not exposed.",
