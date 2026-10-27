@@ -447,7 +447,8 @@
         "supporting_evidence": [
           "SRC-BEA-GDP-Q2-2026",
           "SRC-BLS-EMPLOYMENT-SEP-2026",
-          "SRC-BLS-CPI-SEP-2026"
+          "SRC-BLS-CPI-SEP-2026",
+          "SRC-FED-FUNDSRATE-2026"
         ],
         "disconfirming_or_alternative_evidence": [
           "XRP-specific supply, exchange flows, ETF creations/redemptions, legal/regulatory events or market-maker inventory can dominate during asset-specific shocks; no fitted model has established relative importance yet."
@@ -640,11 +641,22 @@
             "SRC-BLS-CPI-SEP-2026"
           ],
           "interpretation": "Energy price pressure can complicate disinflation and rate expectations; verify the complete CPI release and revisions before feature engineering."
+        },
+        {
+          "metric": "Federal funds target range and upcoming policy decision",
+          "period": "Latest announced target range as of 2026-10-27; FOMC meeting 2026-10-27 to 2026-10-28",
+          "value": "3.75%–4.00% target range effective 2026-09-17; October meeting is in progress and its decision has not yet been released at this snapshot cutoff",
+          "published_at": "2026-09-16/17 for latest announced decision; October meeting calendar current as of 2026-10-27",
+          "source_ids": [
+            "SRC-FED-FUNDSRATE-2026",
+            "SRC-FED-OCT-2026"
+          ],
+          "interpretation": "Do not use the September rate as the eventual October outcome. The next statement and press conference can reprice yields, the dollar, risk assets and crypto quickly; preserve the pre-announcement cutoff separately from post-announcement observations."
         }
       ],
       "provisional_read": "Mixed growth/inflation backdrop: positive latest GDP growth alongside elevated price measures and a small rise in unemployment. Macro risk is two-sided—higher-for-longer rates can pressure risk assets, while weaker growth or easing expectations can support liquidity but also signal stress. No recession probability or XRP direction is inferred from these few indicators alone.",
       "missing_inputs": [
-        "latest FOMC decision and statement",
+        "October 27–28, 2026 FOMC decision and press conference once released; preserve a pre-event snapshot before updating the regime",
         "current Treasury yields and real yields",
         "DXY",
         "VIX",
@@ -864,6 +876,23 @@
       "published_at": "2026-10",
       "accessed_at_utc": "2026-10-27T19:10:30Z",
       "note": "BLS reports all-items CPI +3.7% year over year for September 2026, gasoline +34.2%, electricity +4.4%; October CPI scheduled for Nov 10, 2026."
+    },
+    {
+      "id": "SRC-FED-FUNDSRATE-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/FOMC/fundsrate.htm",
+      "title": "Federal Reserve target federal funds rate history",
+      "published_at": "2026-09-17 latest listed effective change",
+      "accessed_at_utc": "2026-10-27T19:11:00Z",
+      "note": "Official history lists a 25 basis-point increase on Sep 17, 2026, to a 3.75%–4.00% target range."
+    },
+    {
+      "id": "SRC-FED-OCT-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm?view=calendar",
+      "title": "Federal Reserve October 2026 calendar",
+      "accessed_at_utc": "2026-10-27T19:11:00Z",
+      "note": "Official calendar lists the FOMC meeting for Oct 27–28 and press conference on Oct 28; no October decision was available at this snapshot cutoff."
     }
   ],
   "limitations": [
@@ -918,6 +947,13 @@
       "recorded_at_utc": "2026-10-27T19:10:45Z",
       "update_type": "WORKFLOW_WRITE_PATH_AUDIT",
       "details": "Confirmed scheduled knowledge-signal and daily accuracy workflows write generated artifacts/history directly to main; added safe persistence redesign blocker and regression-test requirements.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:11:00Z",
+      "update_type": "FOMC_EVENT_CONTEXT",
+      "details": "Added the latest announced federal funds target range and marked the Oct 27–28 FOMC decision as a pending event at the snapshot cutoff.",
       "validation": "JSON parse and source-reference integrity check executed before commit.",
       "no_forecast_issued": true
     }
