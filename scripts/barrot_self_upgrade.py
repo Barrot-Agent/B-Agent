@@ -542,7 +542,7 @@ def persist_audit_report_to_main() -> int:
             gate_id=Fingerprint.create("persist_audit_report", "failed").value,
             requirements={
                 "audit_preserved": AUDIT_PATH.exists(),
-                "main_mutated": False,
+                "direct_main_push_attempted": False,
                 "audit_persisted": False,
                 "review_pr_created": False,
                 "remote_verified": False,
@@ -565,9 +565,10 @@ def persist_audit_report_to_main() -> int:
         gate_id=Fingerprint.create("persist_audit_report", result).value,
         requirements={
             "audit_preserved": True,
-            "main_unchanged": True,
+            "direct_main_push_attempted": False,
             "audit_persisted": result.get("status") in {"NO_CHANGES", "PR_OPENED"},
-            "review_pr_created": result.get("status") in {"NO_CHANGES", "PR_OPENED"},
+            "review_pr_required": result.get("status") != "NO_CHANGES",
+            "review_pr_created": bool(result.get("pr_url")),
             "remote_verified": bool(result.get("remote_verified")),
         },
         satisfied=bool(successful),
