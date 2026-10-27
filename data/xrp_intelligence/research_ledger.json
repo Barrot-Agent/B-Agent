@@ -992,6 +992,21 @@
         "merge_performed": false,
         "main_modified": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T20:06:51Z",
+      "update_type": "SNAPSHOT_BLOB_SHA_VERIFIED",
+      "snapshot_id": "XRP-DELTA-2026-10-27T200611Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2006Z.json",
+      "snapshot_blob_sha": "5662551d3d7b0c007b3c3605967bca083577fc8e",
+      "validation": {
+        "exact_stored_file_re_read": "PASS",
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "video_source_reference_integrity": "PASS",
+        "main_modified": false,
+        "merge_performed": false
+      }
     }
   ]
 }
