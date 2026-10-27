@@ -3,7 +3,7 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T00:11:06.856Z",
+    "captured_at_utc": "2026-10-27T00:12:30.248Z",
     "main_tip_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
@@ -355,6 +355,90 @@
         {
           "source_node": "PR #1170 head",
           "target_node": "Fail-closed merge gate",
+          "relationship_type": "CHECKED_BY",
+          "status": "SUCCESS_MERGE_DISABLED"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1172-CI-20261027",
+      "title": "CI run for fresh-main signal-integrity PR #1172",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424555094",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "exact head b217ac9e07e5dbd69f1500498b9836ae5f652bd6",
+        "123 tests passed in 6.15 seconds",
+        "merge ref base 2bae7ccdfbec8f9536cb40950110c72e949f5073"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1172",
+          "target_node": "Core test suite",
+          "relationship_type": "VALIDATED_BY",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1172-GATE-20261027",
+      "title": "Fail-closed gate run for fresh-main signal-integrity PR #1172",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_safety_gate_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424555133",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "fail-closed step passed",
+        "merge disabled",
+        "no merge occurred"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1172",
+          "target_node": "Fail-closed gate",
+          "relationship_type": "CHECKED_BY",
+          "status": "SUCCESS_MERGE_DISABLED"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1173-CI-20261027",
+      "title": "CI run for fresh-main merge-queue stop PR #1173",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_ci_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424684986",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "exact head 0c690d8213dba7b2291b0ad91f348f1e0028bc70",
+        "112 tests passed in 5.91 seconds",
+        "merge ref base 2bae7ccdfbec8f9536cb40950110c72e949f5073"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1173",
+          "target_node": "Merge queue disabled regression suite",
+          "relationship_type": "VALIDATED_BY",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-PR1173-GATE-20261027",
+      "title": "Fail-closed gate run for fresh-main merge-queue stop PR #1173",
+      "author_or_organization": "GitHub Actions / Barrot-Agent/B-Agent",
+      "source_type": "repository_safety_gate_run",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424685037",
+      "publication_date": "2026-10-27",
+      "sections": [
+        "fail-closed step passed",
+        "merge disabled",
+        "no merge occurred"
+      ],
+      "relationships": [
+        {
+          "source_node": "PR #1173",
+          "target_node": "Fail-closed gate",
           "relationship_type": "CHECKED_BY",
           "status": "SUCCESS_MERGE_DISABLED"
         }
@@ -1188,7 +1272,7 @@
     },
     {
       "claim_id": "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
-      "statement": "PR #1170 head 4febf9db9222f86d9707214ace75561625416d08 passed CI run 40423957351 and fail-closed gate run 40423957548; the gate explicitly kept merging disabled. Subsequent source-ledger and relationship-graph commits advanced the branch beyond that tested head and require their own exact-head checks. This validates the prior tested data/code path, not live XRP prediction skill.",
+      "statement": "PR #1170 head 0ec991026775903c7c718e65b39fef6636d070f6 passed CI run 40424225971 and fail-closed gate run 40424225980 against stale base e49431afe9801044b583abd0451f0d4d7416fc4d. The PR is now 9 commits behind current main 2bae7ccdfbec8f9536cb40950110c72e949f5073, so those passes do not validate the current-main merge ref. Subsequent ledger/graph changes also require exact-head checks.",
       "domain": "repository_validation",
       "claim_type": "observed_ci_validation",
       "source": "SRC-BARROT-PR1170-CI-20261027",
@@ -1210,7 +1294,59 @@
         "SRC-BARROT-PR1170-CI-20261027",
         "SRC-BARROT-PR1170-GATE-20261027"
       ],
-      "timestamp": 1793059569
+      "timestamp": 1793059950
+    },
+    {
+      "claim_id": "XRP-C-PR1172-SIGNAL-INTEGRITY-TESTS-PASS",
+      "statement": "Fresh-main PR #1172 head b217ac9e07e5dbd69f1500498b9836ae5f652bd6 passed 123 tests in 6.15 seconds on a merge ref based on main 2bae7ccdfbec8f9536cb40950110c72e949f5073; its fail-closed gate also passed with merge disabled. The PR remains draft/unmerged, so main's unsafe behavior remains active.",
+      "domain": "repository_validation",
+      "claim_type": "observed_ci_validation",
+      "source": "SRC-BARROT-PR1172-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424555094",
+      "supporting_evidence": [
+        "XRP-E-PR1172-CI-GATE-EXACT-HEAD"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "OBSERVED_GITHUB_ACTIONS",
+      "adversarial_status": "NOT_ASSESSED",
+      "acceptance_status": "VALIDATION_ONLY_NOT_MERGE_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "CI validation does not establish live-market predictive skill.",
+        "PR is still draft and has not changed main."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1172-CI-20261027",
+        "SRC-BARROT-PR1172-GATE-20261027"
+      ],
+      "timestamp": 1793059950
+    },
+    {
+      "claim_id": "XRP-C-PR1173-MERGE-QUEUE-STOP-TESTS-PASS",
+      "statement": "Fresh-main PR #1173 head 0c690d8213dba7b2291b0ad91f348f1e0028bc70 passed 112 tests in 5.91 seconds on a merge ref based on main 2bae7ccdfbec8f9536cb40950110c72e949f5073; its fail-closed gate passed with merge disabled. The PR remains draft/unmerged, so the mutation-capable merge queue remains active on main until an approved change is merged.",
+      "domain": "repository_security_and_change_control",
+      "claim_type": "observed_ci_validation",
+      "source": "SRC-BARROT-PR1173-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424684986",
+      "supporting_evidence": [
+        "XRP-E-PR1173-CI-GATE-EXACT-HEAD"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED",
+      "independent_verification_status": "OBSERVED_GITHUB_ACTIONS",
+      "adversarial_status": "NOT_ASSESSED",
+      "acceptance_status": "VALIDATION_ONLY_NOT_MERGE_AUTHORIZATION",
+      "confidence": 0.99,
+      "assumptions": [
+        "CI validates the disabled workflow on the merge ref, not the safety of the active main workflow after merge.",
+        "PR is still draft and has not changed main."
+      ],
+      "provenance": [
+        "SRC-BARROT-PR1173-CI-20261027",
+        "SRC-BARROT-PR1173-GATE-20261027"
+      ],
+      "timestamp": 1793059950
     },
     {
       "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
@@ -1968,6 +2104,48 @@
       }
     },
     {
+      "evidence_id": "XRP-E-PR1172-CI-GATE-EXACT-HEAD",
+      "claim_id": "XRP-C-PR1172-SIGNAL-INTEGRITY-TESTS-PASS",
+      "kind": "direct_ci_run_observation",
+      "summary": "CI run 40424555094 completed successfully with 123 tests passing in 6.15 seconds on PR head b217ac9e07e5dbd69f1500498b9836ae5f652bd6, merge ref based on main 2bae7ccdfbec8f9536cb40950110c72e949f5073. Fail-closed gate 40424555133 also passed; merge remained disabled.",
+      "source_id": "SRC-BARROT-PR1172-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424555094",
+      "status": "VERIFIED_ON_EXACT_HEAD_AND_CURRENT_BASE",
+      "independence": "direct_github_actions_observation",
+      "provenance": [
+        "SRC-BARROT-PR1172-CI-20261027",
+        "SRC-BARROT-PR1172-GATE-20261027"
+      ],
+      "details": {
+        "head_sha": "b217ac9e07e5dbd69f1500498b9836ae5f652bd6",
+        "base_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+        "tests_passed": 123,
+        "duration_seconds": 6.15,
+        "merge_performed": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1173-CI-GATE-EXACT-HEAD",
+      "claim_id": "XRP-C-PR1173-MERGE-QUEUE-STOP-TESTS-PASS",
+      "kind": "direct_ci_run_observation",
+      "summary": "CI run 40424684986 completed successfully with 112 tests passing in 5.91 seconds on PR head 0c690d8213dba7b2291b0ad91f348f1e0028bc70, merge ref based on main 2bae7ccdfbec8f9536cb40950110c72e949f5073. Fail-closed gate 40424685037 also passed; merge remained disabled.",
+      "source_id": "SRC-BARROT-PR1173-CI-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40424684986",
+      "status": "VERIFIED_ON_EXACT_HEAD_AND_CURRENT_BASE",
+      "independence": "direct_github_actions_observation",
+      "provenance": [
+        "SRC-BARROT-PR1173-CI-20261027",
+        "SRC-BARROT-PR1173-GATE-20261027"
+      ],
+      "details": {
+        "head_sha": "0c690d8213dba7b2291b0ad91f348f1e0028bc70",
+        "base_sha": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+        "tests_passed": 112,
+        "duration_seconds": 5.91,
+        "merge_performed": false
+      }
+    },
+    {
       "evidence_id": "XRP-E-RIPPLE-CIRCLE-BLOOMBERG-REPORT",
       "claim_id": "XRP-C-RIPPLE-CIRCLE-ACQUISITION-REPORT-DISPUTED",
       "kind": "independent_verification",
@@ -2476,7 +2654,9 @@
         "XRP-C-MERGE-QUEUE-AUTOMATION-RISK",
         "XRP-C-BARROT-AGENT-WRITE-PERMISSIONS",
         "XRP-C-BARROT-APPROVAL-WORKFLOW-ANOMALY",
-        "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION"
+        "XRP-C-PR1170-RESEARCH-BUNDLE-VALIDATION",
+        "XRP-C-PR1172-SIGNAL-INTEGRITY-TESTS-PASS",
+        "XRP-C-PR1173-MERGE-QUEUE-STOP-TESTS-PASS"
       ],
       "evidence": [
         "XRP-E-MERGE-QUEUE-WRITE-PATH",
@@ -2484,7 +2664,9 @@
         "XRP-E-BARROT-AGENT-WRITE-PATH",
         "XRP-E-BRANCH-RULESET-DISABLED-20261027",
         "XRP-E-BARROT-APPROVAL-WORKFLOW-ZERO-JOBS",
-        "XRP-E-PR1170-CI-GATE-EXACT-HEAD"
+        "XRP-E-PR1170-CI-GATE-EXACT-HEAD",
+        "XRP-E-PR1172-CI-GATE-EXACT-HEAD",
+        "XRP-E-PR1173-CI-GATE-EXACT-HEAD"
       ],
       "unresolved_objections": [
         "PR #1168 remains draft; active main workflow has not been disabled.",
@@ -2502,7 +2684,11 @@
         "SRC-BARROT-APPROVAL-WORKFLOW-RUN-20261027",
         "SRC-BARROT-APPROVAL-WORKFLOW-20261027",
         "SRC-BARROT-PR1170-CI-20261027",
-        "SRC-BARROT-PR1170-GATE-20261027"
+        "SRC-BARROT-PR1170-GATE-20261027",
+        "SRC-BARROT-PR1172-CI-20261027",
+        "SRC-BARROT-PR1172-GATE-20261027",
+        "SRC-BARROT-PR1173-CI-20261027",
+        "SRC-BARROT-PR1173-GATE-20261027"
       ],
       "state": "TRACK_EXECUTION",
       "validation": {
@@ -2631,7 +2817,7 @@
       "question_id": "Q-9",
       "question": "Verify repository branch protection/rulesets and require explicit approvals/required checks for every merge; disable active merge queue before any all-PR mode is used.",
       "priority": "CRITICAL",
-      "status": "PR_1173_OPEN_DRAFT; GATE_PASSED_CI_PENDING; RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
+      "status": "PR_1173_CI_AND_GATE_PASS; STILL_DRAFT; RULESET_DISABLED; BRANCH_PROTECTION_UNVERIFIED_403"
     },
     {
       "question_id": "Q-10",
@@ -3520,12 +3706,11 @@
       "last_completed_ci_conclusion": "success",
       "last_completed_fail_closed_gate_run": 40424225980,
       "last_completed_gate_conclusion": "success",
-      "last_completed_gate_step": "Fail closed",
-      "merge_performed": false,
       "tested_base_sha": "e49431afe9801044b583abd0451f0d4d7416fc4d",
       "current_main_tip": "2bae7ccdfbec8f9536cb40950110c72e949f5073",
+      "behind_current_main": 9,
       "latest_head_validation_status": "PASSED_ON_STALE_BASE; CURRENT_MAIN_REVALIDATION_REQUIRED",
-      "note": "The last passing CI/gate run tested the PR merge ref against base e49431. PR #1170 is now 9 commits behind current main; revalidate against current main before considering any merge."
+      "note": "The latest research PR head was tested against stale base e49431; current main is 2bae7 and the PR is 9 commits behind. The current research branch ledger updates themselves also require exact-head CI."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
