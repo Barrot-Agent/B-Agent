@@ -41,7 +41,8 @@
       "XRP-C-EVERNORTH-EQUITY-FACILITY-20261023",
       "XRP-C-MAIN-SIGNAL-INVALID-20261027T053048Z",
       "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027",
-      "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
+      "XRP-C-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z",
+      "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1283,6 +1284,40 @@
         "The page does not expose a precise market-data event timestamp; figures are a retrieval-time snapshot and may change.",
         "Do not infer global XRP open interest, total leverage, or directional expected return from this one product page."
       ]
+    },
+    {
+      "source_id": "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+      "title": "Kamilah Stevenson channel: vidIQ public listing and channel statistics refresh",
+      "author_or_organization": "vidIQ connected public-channel tools",
+      "source_type": "third_party_public_channel_metadata_snapshot",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+      "publication_date": "retrieved 2026-10-27",
+      "retrieved_at_utc": "2026-10-27T06:15:00Z",
+      "source_commit": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
+      "catalog_pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1177",
+      "snapshot": {
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "reported_total_videos": 1239,
+        "reported_subscribers": 143000,
+        "reported_total_views": 18121799,
+        "videos_published_2026_10_20_to_2026_10_27": 15,
+        "views_gained_2026_10_20_to_2026_10_27": 290987,
+        "subscribers_gained_2026_10_20_to_2026_10_27": 1000,
+        "recent_listing_rows": {
+          "long": 50,
+          "short": 50,
+          "live": 50
+        },
+        "complete_inventory": false,
+        "transcripts_captured_in_this_refresh": 0
+      },
+      "sections": [
+        "vidIQ recent channel listing returned up to 50 long-form, 50 Shorts and 50 live videos; the current action has no pagination cursor, so the 150 rows are not a complete archive.",
+        "Channel statistics at retrieval reported 1,239 total videos, 143,000 subscribers and 18,121,799 total views.",
+        "For 2026-10-20 through 2026-10-27, provider reported 15 new uploads, 290,987 additional views and 1,000 additional subscribers.",
+        "New metadata-only catalog entries cover XRP custody, SEC/CFTC, SWIFT, Japan macro, SBI remittance, escrow/fees, Evernorth and tokenization; titles are research leads, not verified factual claims.",
+        "No new transcript was retrieved in this refresh; existing transcript hashes in the draft catalog remain separately recorded."
+      ]
     }
   ],
   "claims": [
@@ -2302,6 +2337,32 @@
       ],
       "provenance": [
         "SRC-COINBASE-CDE-XRP-PERP-SNAPSHOT-20261027T0615Z"
+      ],
+      "timestamp": 1793081700
+    },
+    {
+      "claim_id": "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z",
+      "statement": "At retrieval on 2026-10-27T06:15:00Z, vidIQ reported 1,239 videos, 143,000 subscribers and 18,121,799 channel views for the user-confirmed Kamilah Stevenson channel. The 2026-10-20 to 2026-10-27 interval showed 15 uploads, 290,987 additional views and 1,000 additional subscribers. Recent-listing calls returned up to 50 long-form, 50 Shorts and 50 live entries; this is a partial metadata sample, not a complete enumeration of all public uploads. Video titles are leads to verify, not facts.",
+      "domain": "public_commentary_inventory_and_source_provenance",
+      "claim_type": "provider_reported_channel_stats_and_partial_recent_listing",
+      "source": "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+      "source_location": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+      "supporting_evidence": [
+        "XRP-E-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_CONNECTED_PROVIDER_RESPONSE",
+      "independent_verification_status": "THIRD_PARTY_STATS; CANONICAL_PUBLIC_UPLOAD_ENUMERATION_PENDING",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "PARTIAL_INVENTORY_ONLY; COMPLETENESS_NOT_VERIFIED",
+      "confidence": 0.99,
+      "assumptions": [
+        "vidIQ channel counts are provider-reported and can differ from canonical public-upload enumeration.",
+        "The 50-per-format listings may overlap prior snapshots and are not guaranteed to contain 150 unique IDs unless deduplicated.",
+        "No claim in a video title is accepted as fact without transcript review and independent corroboration."
+      ],
+      "provenance": [
+        "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z"
       ],
       "timestamp": 1793081700
     }
@@ -3439,6 +3500,56 @@
         "exact_market_data_timestamp": "NOT_EXPOSED_BY_PAGE",
         "scope_warning": "One product/venue only; do not equate to global XRP open interest or Coinbase Global Exchange collateral balances."
       }
+    },
+    {
+      "evidence_id": "XRP-E-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+      "claim_id": "XRP-C-KAMILAH-CHANNEL-METADATA-REFRESH-20261027T0615Z",
+      "kind": "connected_provider_public_metadata_snapshot",
+      "summary": "vidIQ returned 50 recent long-form, 50 Shorts and 50 live listing rows; channel stats reported 1,239 videos, 143,000 subscribers and 18,121,799 views, with +15 uploads, +290,987 views and +1,000 subscribers for 2026-10-20 through 2026-10-27.",
+      "source_id": "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z",
+      "source_location": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+      "status": "PROVIDER_RESPONSE_CAPTURED; FULL_INVENTORY_NOT_VERIFIED",
+      "independence": "third_party_public_channel_metadata_provider",
+      "provenance": [
+        "SRC-VIDIQ-KAMILAH-CHANNEL-REFRESH-20261027T0615Z"
+      ],
+      "details": {
+        "retrieved_at_utc": "2026-10-27T06:15:00Z",
+        "recent_rows": {
+          "long": 50,
+          "short": 50,
+          "live": 50,
+          "total": 150
+        },
+        "full_channel_inventory": false,
+        "reported_total_videos": 1239,
+        "reported_subscribers": 143000,
+        "reported_total_views": 18121799,
+        "reported_uploads_7d": 15,
+        "reported_views_gained_7d": 290987,
+        "reported_subscribers_gained_7d": 1000,
+        "catalog_branch": "research/vidiq-evidence-refresh-20261027",
+        "catalog_pr": 1177,
+        "catalog_head_after_refresh": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
+        "curated_seed_records_in_draft_catalog": 28,
+        "seed_records_with_transcript_hash": 5,
+        "new_transcripts_captured_in_this_refresh": 0,
+        "representative_new_ids": [
+          "bNJ4lzZEqtA",
+          "vRlw4BV-cGE",
+          "gIwgoCv4BO4",
+          "wbfO0SwR1IY",
+          "eG-_9vKcRug",
+          "Shd2rwZ6l2s",
+          "bYe47bYPJ-c",
+          "UiAcKwMuoIQ",
+          "KvSUXS5FFR0",
+          "ZKV6VLIHAnk",
+          "jVrBm0dDJ24",
+          "pYsaqQabwWw",
+          "Zzo61P6Yf78"
+        ]
+      }
     }
   ],
   "tracks": [
@@ -3872,6 +3983,12 @@
       "question": "Build synchronized point-in-time XRP spot/perpetual histories across Coinbase CDE, Coinbase Global Exchange, Binance, Bybit and other major venues, preserving each product's contract specification, funding timestamp, open interest, volume and order-book depth.",
       "priority": "HIGH",
       "status": "ONE_COINBASE_CDE_PRODUCT_SNAPSHOT_RECORDED; SYNCHRONIZED_MULTI_VENUE_HISTORY_PENDING"
+    },
+    {
+      "question_id": "Q-16",
+      "question": "Enumerate all public uploads on Kamilah Stevenson's canonical channel using the public uploads playlist/API with pagination; deduplicate videos, Shorts and archived lives; capture permitted transcript hashes and independently verify claims before using them as features.",
+      "priority": "HIGH",
+      "status": "VIDIQ_RECENT_150_ROW_SAMPLE; 1,239 PROVIDER-REPORTED TOTAL; COMPLETE_ENUMERATION_PENDING"
     }
   ],
   "relationship_graph": {
@@ -4999,9 +5116,9 @@
       {
         "pr": 1177,
         "title": "Research: refresh vidIQ transcript evidence and XRP relationships",
-        "head_sha": "9099a9b2db6220be559a3c90db55a6db8f74cdf0",
-        "ci": "Gate passed; exact-head CI in progress at last observation.",
-        "state": "OPEN_DRAFT_CI_PENDING",
+        "head_sha": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
+        "ci": "New catalog metadata refresh committed; exact-head CI must complete.",
+        "state": "OPEN_DRAFT_CI_PENDING_AFTER_REFRESH",
         "merge_authorized": false
       },
       {
@@ -5060,9 +5177,9 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_THIS_LEDGER_UPDATE",
+      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_VIDIQ_REFRESH",
       "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-      "note": "This ledger revision adds the Oct 23 Evernorth SEC equity-facility filing, the latest 05:30 UTC invalid signal artifact, and PR #1182's exact-head CI-verified data-only Termux receiver. Re-run exact-head CI and fail-closed gate for this ledger revision; PR #1182 CI does not transfer to PR #1170."
+      "note": "This ledger revision adds a fresh vidIQ channel metadata sample and links the updated draft catalog PR #1177. The 150 recent format rows are not a complete inventory. Re-run exact-head CI and fail-closed gate for this ledger revision."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -5095,14 +5212,14 @@
       "note": "Exact-head CI and fail-closed gate passed after current-main refresh; main unchanged and PR remains draft/unmerged."
     },
     "pr1177_validation": {
-      "head_sha": "9099a9b2db6220be559a3c90db55a6db8f74cdf0",
+      "head_sha": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
       "tested_base_sha": "5f8ac35d7016737c415534a7bfe97dacff6789f9",
       "ci_run": 40447916375,
       "ci_conclusion": "in_progress",
       "fail_closed_gate_run": 40447916263,
       "gate_conclusion": "success",
-      "state": "CI_PENDING_ON_CURRENT_MAIN",
-      "note": "Gate passed; exact-head CI was in progress at last observation."
+      "state": "CI_PENDING_AFTER_METADATA_REFRESH",
+      "note": "New vidIQ snapshot reports 1,239 videos and 15 uploads in the last seven days; catalog now has 28 curated seeds and still does not claim full enumeration. Re-run exact-head CI and gate for this revision."
     },
     "self_drop": {
       "inspected_at_utc": "2026-10-27T06:12:00Z",
@@ -5134,17 +5251,40 @@
     "canonical_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "canonical_channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "catalog_url": "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/sources/kamilah_stevenson_channel.json",
-    "indexed_seed_count": 11,
+    "indexed_seed_count": 28,
     "completeness_verified": false,
-    "transcripts_captured_and_hashed": 0,
-    "screenshot_title_id": "UNRESOLVED",
-    "status": "PARTIAL_SEED_CATALOG; CLAIM_CROSS-CORROBORATION_STARTED",
-    "access_blocker": "Complete channel enumeration and permitted transcript access have not been executed; do not claim full ingestion.",
+    "transcripts_captured_and_hashed": 5,
+    "screenshot_title_id": "vPebfa4Mdwo",
+    "status": "DRAFT_CATALOG_EXPANDED_TO_28_SEEDS; RECENT_150_FORMAT_ROWS_OBSERVED; FULL_ENUMERATION_NOT_VERIFIED",
+    "access_blocker": "vidIQ recent channel-video calls return at most 50 entries per format and expose no pagination cursor. The catalog PR remains draft. Complete public-upload enumeration across Videos, Shorts and archived live streams, plus transcript review, is still pending.",
     "last_seed_added": {
-      "video_id": "M8TmDXO7B-0",
-      "published_date_reported": "2025-12-06",
-      "title_resolution_status": "PENDING",
-      "collateral_claim_status": "CHALLENGED_BY_PRIMARY_SOURCES"
+      "video_id": "bNJ4lzZEqtA",
+      "published_date_reported": "2026-10-24",
+      "title": "The RIGHT Way to Hold Your XRP in 2026 (For Maximum Security)",
+      "title_only_status": "METADATA_CAPTURED; TRANSCRIPT_NOT_CAPTURED; CLAIMS_UNVERIFIED"
+    },
+    "catalog_pr": 1177,
+    "catalog_branch": "research/vidiq-evidence-refresh-20261027",
+    "catalog_head_sha": "5cf3d7b835166fa7b70b4815854f6a2aced9c3da",
+    "latest_vidiq_observation": {
+      "captured_at_utc": "2026-10-27T06:15:00Z",
+      "format_rows": {
+        "long": 50,
+        "short": 50,
+        "live": 50
+      },
+      "total_rows": 150,
+      "unique_ids_verified": false,
+      "reported_total_videos": 1239,
+      "reported_subscribers": 143000,
+      "reported_total_views": 18121799,
+      "reported_uploads_2026_10_20_to_2026_10_27": 15,
+      "reported_views_gained": 290987,
+      "reported_subscribers_gained": 1000,
+      "curated_seed_count": 28,
+      "existing_hash_only_transcript_records": 5,
+      "new_transcripts_captured": 0,
+      "full_inventory_verified": false
     }
   },
   "unresolved_exact_phrases": [
@@ -5210,6 +5350,11 @@
       "priority": 1,
       "action": "Collect synchronized XRP spot/perpetual histories across major venues with event timestamps, funding, open interest, liquidation coverage and order-book depth. Keep Coinbase CDE nano perpetual data separate from Global Exchange collateral eligibility and International Exchange contracts.",
       "status": "ONE_PRODUCT_SNAPSHOT_RECORDED; HISTORICAL_FEATURE_STORE_PENDING"
+    },
+    {
+      "priority": 1,
+      "action": "Complete Kamilah Stevenson channel inventory using the canonical public uploads playlist/API with pagination, deduplicate all formats, preserve timestamped snapshots and capture permitted transcript hashes. Treat titles about payment apps, banks, Japan, SWIFT, SEC/CFTC, custody and Evernorth as claims to verify, not facts.",
+      "status": "VIDIQ_RECENT_SAMPLE_REFRESHED; FULL_ENUMERATION_AND_NEW_TRANSCRIPTS_PENDING"
     }
   ]
 }
