@@ -1392,7 +1392,12 @@
         "research_pr_fail_closed_gate": "PASS",
         "main_modified": false,
         "merge_performed": false,
-        "forecast_status": "NOT_ISSUED"
+        "forecast_status": "NOT_ISSUED",
+        "source_id_integrity": "PASS",
+        "new_edge_sources_resolve": "PASS",
+        "hypothesis_sources_resolve": "PASS",
+        "unique_source_ids": "PASS",
+        "snapshot_re_read": "PASS"
       }
     }
   ]
