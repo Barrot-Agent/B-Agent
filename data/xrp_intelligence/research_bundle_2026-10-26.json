@@ -3,8 +3,8 @@
   "bundle_type": "barrot_research_source_bundle",
   "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; preserve Barrot V3 as execution and verification foundation.",
   "snapshot": {
-    "captured_at_utc": "2026-10-27T05:06:58Z",
-    "main_tip_sha": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+    "captured_at_utc": "2026-10-27T06:12:00Z",
+    "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
     "classification": "PUBLIC_SOURCE_RESEARCH_PLUS_PUBLIC_REPOSITORY_ARTIFACTS",
     "forecast_status": "NOT_ISSUED",
     "current_signal_disposition": "INVALID_FOR_FORECASTING_PROVIDER_FAILURE_CONFIDENCE_ZERO_AND_ACADEMIC_NEWS_CONTAMINATION",
@@ -37,7 +37,10 @@
       "XRP-C-CIRCLE-BINANCE-STRATEGIC-EXPANSION",
       "XRP-C-USDC-SUPPLY-2026-10-22",
       "XRP-C-BARROT-SELF-DROP-LOCAL-ONLY",
-      "XRP-C-MAIN-SIGNAL-INVALID-20261027T043242Z"
+      "XRP-C-MAIN-SIGNAL-INVALID-20261027T043242Z",
+      "XRP-C-EVERNORTH-EQUITY-FACILITY-20261023",
+      "XRP-C-MAIN-SIGNAL-INVALID-20261027T053048Z",
+      "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027"
     ],
     "related_problems": [
       "BARROT-V3-EXECUTION-VERIFICATION",
@@ -1188,6 +1191,70 @@
         "News score 88 from 11 entries is contaminated by academic XRPL protocol/research-paper headlines.",
         "No directional forecast should be issued from this artifact."
       ]
+    },
+    {
+      "source_id": "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
+      "title": "Evernorth Form 8-K: committed equity facility with CF Principal Investments LLC",
+      "author_or_organization": "Evernorth Holdings Inc. / U.S. Securities and Exchange Commission",
+      "source_type": "SEC_Form_8-K_primary_filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "publication_date": "2026-10-23",
+      "retrieved_at_utc": "2026-10-27T06:12:00Z",
+      "filing_accession": "000162828026067061",
+      "sections": [
+        "Items 1.01 and 3.02: Common Stock Purchase Agreement dated 2026-10-23 with CF Principal Investments LLC (Cantor).",
+        "Evernorth may, at its option and subject to conditions, sell up to 5,218,935 newly issued Class A shares.",
+        "The facility is structured similarly to an at-the-market equity facility; actual sale timing and amounts are at Evernorth's discretion.",
+        "Purchase pricing is generally 97% of applicable VWAP, with volume, ownership and threshold-price limits.",
+        "Facility capacity does not establish actual draws, proceeds deployment, or additional XRP purchases."
+      ]
+    },
+    {
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-20261027T053048Z",
+      "title": "Barrot main-branch XRP signal artifact — 2026-10-27 05:30:48 UTC",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "direct_repository_runtime_artifact",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "publication_date": "2026-10-27T05:30:48.745392+00:00",
+      "source_commit": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
+      "retrieved_at_utc": "2026-10-27T06:12:00Z",
+      "snapshot": {
+        "blob_sha": "3e5906924ab64d7bd1fb0fb312aa9c7652205fc1",
+        "signal_timestamp": "2026-10-27T05:30:48.745392+00:00",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "provider_failures": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429 Too Many Requests"
+        ],
+        "disposition": "INVALID_FOR_FORECASTING"
+      },
+      "sections": [
+        "Main tip at retrieval: abaf1085343045fafb5cbe4228d33b805c75f3fd; this tip advanced from 0c8a6f818d91f49872fc2e55d28b0a7c56254d20 only through a generated paper_trading_log.jsonl record.",
+        "Artifact reports score 44, confidence 0, news score 88 from 11 entries.",
+        "Both model routes unavailable: missing GitHub model credentials and Groq HTTP 429.",
+        "Headline list is dominated by XRPL protocol/research-paper titles, contaminating market-news sentiment.",
+        "No directional forecast should be issued from this artifact."
+      ]
+    },
+    {
+      "source_id": "SRC-PR1182-TERMUX-RECEIVER-20261027",
+      "title": "PR #1182: hash-verified data-only Termux bundle receiver",
+      "author_or_organization": "Barrot-Agent/B-Agent",
+      "source_type": "repository_pull_request_and_ci_evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1182",
+      "publication_date": "2026-10-27T06:10:21Z",
+      "source_commit": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+      "retrieved_at_utc": "2026-10-27T06:12:00Z",
+      "sections": [
+        "Adds scripts/termux_bundle_receiver.py: immutable raw GitHub URL allowlist, independent expected SHA-256, size/schema/path checks, atomic create-if-absent delivery.",
+        "Receiver never executes payloads and does not pull, commit, or push Git state.",
+        "Local temporary test harness: 9 receiver tests passed.",
+        "Exact-head CI run 40459515907 passed 120 tests in 6.05 seconds; fail-closed gate run 40459515898 passed with merge disabled.",
+        "This is code/CI evidence only; physical Moto G7 delivery receipt remains pending."
+      ]
     }
   ],
   "claims": [
@@ -2105,6 +2172,84 @@
         "SRC-BARROT-LATEST-SIGNAL-20261027T043242Z"
       ],
       "timestamp": 1793077618
+    },
+    {
+      "claim_id": "XRP-C-EVERNORTH-EQUITY-FACILITY-20261023",
+      "statement": "Evernorth's 2026-10-23 SEC Form 8-K confirms a committed equity facility with CF Principal Investments LLC that permits Evernorth, at its discretion and subject to conditions, to sell up to 5,218,935 newly issued Class A shares. This is a potential capital-raising channel and potential common-share dilution; the filing alone does not establish that shares have been sold, how much capital has been raised, or that proceeds purchased XRP.",
+      "domain": "institutional_capital_flows_and_xrp_treasury_per_share_economics",
+      "claim_type": "confirmed_sec_filing_fact_with_market_effect_unresolved",
+      "source": "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-EQUITY-FACILITY-20261023"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-EVERNORTH-CASH-PURCHASE-84M"
+      ],
+      "derivation_status": "SUPPORTED_PRIMARY_SEC_FILING",
+      "independent_verification_status": "PRIMARY_SEC_FILING; ACTUAL_DRAWS_NOT_VERIFIED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "FACT_CONFIRMED; XRP_PER_SHARE_AND_SPOT_DEMAND_EFFECT_UNRESOLVED",
+      "confidence": 0.99,
+      "assumptions": [
+        "Actual facility drawdowns, shares issued, realized proceeds and use of proceeds require later filings or company disclosures.",
+        "The facility may fund XRP purchases, other corporate uses, or remain unused; no specific use is inferred here.",
+        "Share-count dilution and XRP accumulation must be measured together as XRP per diluted share."
+      ],
+      "provenance": [
+        "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
+      ],
+      "timestamp": 1793081520
+    },
+    {
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T053048Z",
+      "statement": "The latest inspected main-branch signal artifact, timestamped 2026-10-27T05:30:48.745392Z, still reports score 44, confidence 0, and news score 88 from 11 entries while GitHub model credentials are missing and Groq returns HTTP 429. Its headlines are dominated by XRPL protocol/research-paper topics. It is not a valid directional XRP forecast.",
+      "domain": "prediction_engine_integrity",
+      "claim_type": "observed_runtime_artifact_and_forecast_gate",
+      "source": "SRC-BARROT-LATEST-SIGNAL-20261027T053048Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "supporting_evidence": [
+        "XRP-E-BARROT-LATEST-SIGNAL-20261027T053048Z"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_DIRECT_ARTIFACT_INSPECTION",
+      "independent_verification_status": "SINGLE_REPOSITORY_ARTIFACT; MODEL_OUTPUT_UNAVAILABLE",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "UNRESOLVED; FORECAST_NOT_ISSUED",
+      "confidence": 0.99,
+      "assumptions": [
+        "This is a point-in-time artifact and may be superseded by a later scheduled run.",
+        "Score 44 is not a calibrated probability or expected return."
+      ],
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-20261027T053048Z"
+      ],
+      "timestamp": 1793081520
+    },
+    {
+      "claim_id": "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027",
+      "statement": "Barrot's native TERMUX_DROP and DELIVER_BUNDLE actions write through a local filesystem bridge, so they affect the filesystem of the process executing them and do not by themselves bridge a cloud workspace to the physical Moto G7. Draft PR #1182 adds a hash-verified, data-only GitHub transport with nine focused tests; exact-head CI passed 120 tests and the fail-closed gate passed. End-to-end delivery on the physical phone remains unverified until a device-side receipt is produced.",
+      "domain": "barrot_v3_execution_and_device_delivery_verification",
+      "claim_type": "repository_root_cause_and_ci_verified_mitigation_with_device_gate_pending",
+      "source": "SRC-PR1182-TERMUX-RECEIVER-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1182",
+      "supporting_evidence": [
+        "XRP-E-PR1182-TERMUX-RECEIVER-CI-20261027"
+      ],
+      "contradicting_evidence": [],
+      "derivation_status": "SUPPORTED_REPOSITORY_INSPECTION_AND_EXACT_HEAD_CI",
+      "independent_verification_status": "CI_VERIFIED; PHYSICAL_DEVICE_NOT_TESTED",
+      "adversarial_status": "OPEN",
+      "acceptance_status": "PARTIAL_CODE_VERIFIED_DEVICE_RECEIPT_PENDING",
+      "confidence": 0.99,
+      "assumptions": [
+        "The GitHub Actions result verifies the PR head in the cloud runner, not the user's local Termux environment.",
+        "The receiver transports data only and must not be treated as an execution channel."
+      ],
+      "provenance": [
+        "SRC-PR1182-TERMUX-RECEIVER-20261027"
+      ],
+      "timestamp": 1793081520
     }
   ],
   "evidence": [
@@ -3143,6 +3288,78 @@
         "main_tip_observed": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
         "disposition": "INVALID_FOR_FORECASTING"
       }
+    },
+    {
+      "evidence_id": "XRP-E-EVERNORTH-EQUITY-FACILITY-20261023",
+      "claim_id": "XRP-C-EVERNORTH-EQUITY-FACILITY-20261023",
+      "kind": "primary_sec_filing",
+      "summary": "Evernorth's Oct 23, 2026 Form 8-K says it may, at its option and subject to conditions, sell up to 5,218,935 newly issued Class A shares to CF Principal Investments LLC. Pricing is generally 97% of applicable VWAP with volume, ownership and threshold-price limits.",
+      "source_id": "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
+      "source_location": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "status": "SUPPORTED_PRIMARY_FILING",
+      "independence": "primary_regulatory_filing",
+      "provenance": [
+        "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
+      ],
+      "details": {
+        "maximum_new_class_a_shares": 5218935,
+        "counterpart": "CF Principal Investments LLC (Cantor)",
+        "facility_date": "2026-10-23",
+        "company_option_to_sell": true,
+        "general_purchase_price": "97% of applicable VWAP, subject to contractual terms",
+        "actual_drawdowns": "UNKNOWN",
+        "shares_actually_issued_under_facility": "UNKNOWN",
+        "proceeds_used_to_purchase_xrp": "NOT_ESTABLISHED",
+        "analytical_implication": "Track issued shares, realized proceeds, XRP acquisitions and XRP per diluted share together; facility capacity is not a spot-flow observation."
+      }
+    },
+    {
+      "evidence_id": "XRP-E-BARROT-LATEST-SIGNAL-20261027T053048Z",
+      "claim_id": "XRP-C-MAIN-SIGNAL-INVALID-20261027T053048Z",
+      "kind": "direct_repository_runtime_artifact",
+      "summary": "Main web/latest_signal.json timestamp 2026-10-27T05:30:48.745392Z; score 44; confidence 0; news score 88 from 11 entries; missing GitHub model credentials and Groq HTTP 429; academic/protocol headlines contaminate sentiment.",
+      "source_id": "SRC-BARROT-LATEST-SIGNAL-20261027T053048Z",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "status": "SUPPORTED",
+      "independence": "direct_main_branch_artifact",
+      "provenance": [
+        "SRC-BARROT-LATEST-SIGNAL-20261027T053048Z"
+      ],
+      "details": {
+        "blob_sha": "3e5906924ab64d7bd1fb0fb312aa9c7652205fc1",
+        "main_tip_observed": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
+        "disposition": "INVALID_FOR_FORECASTING",
+        "directional_forecast_issued": false
+      }
+    },
+    {
+      "evidence_id": "XRP-E-PR1182-TERMUX-RECEIVER-CI-20261027",
+      "claim_id": "XRP-C-BARROT-TERMUX-RECEIVER-TESTED-DEVICE-PENDING-20261027",
+      "kind": "exact_head_ci_and_source_inspection",
+      "summary": "PR #1182 head 0ba6a561d59b2665402d5f5fbe950c3337dbbb8d adds a data-only Termux bundle receiver. CI run 40459515907 passed 120 tests in 6.05 seconds; fail-closed gate 40459515898 passed with merging disabled. Nine focused tests also passed in a temporary local harness.",
+      "source_id": "SRC-PR1182-TERMUX-RECEIVER-20261027",
+      "source_location": "https://github.com/Barrot-Agent/B-Agent/pull/1182",
+      "status": "CI_PASS; DEVICE_RECEIPT_PENDING",
+      "independence": "github_actions_and_direct_repository_inspection",
+      "provenance": [
+        "SRC-PR1182-TERMUX-RECEIVER-20261027"
+      ],
+      "details": {
+        "head_sha": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+        "tested_base_sha": "ef4e4b625b44b8c1aa4ee30cff0d3b95dbddc419",
+        "current_main_sha_at_followup": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
+        "main_only_delta": [
+          "web/paper_trading_log.jsonl"
+        ],
+        "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40459515907",
+        "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40459515898",
+        "focused_tests_passed": 9,
+        "total_ci_tests_passed": 120,
+        "physical_moto_g7_receipt_observed": false,
+        "payload_sha256": "0c325c51207d650a8c3cf113fde9105c770a574d04a452bd06a06172c41cd6cf",
+        "receiver_executes_payload": false,
+        "receiver_modifies_git": false
+      }
     }
   ],
   "tracks": [
@@ -3564,6 +3781,12 @@
       "question": "Use Circle's Q2 2026 10-Q and Coinbase's 2025 10-K as separate accounting baselines; obtain XRPL-specific USDC supply/flow and XRP bridge-path data before drawing price conclusions.",
       "priority": "HIGH",
       "status": "PARTIAL_PRIMARY_FINANCIALS_VERIFIED_CHAIN_SPLIT_PENDING"
+    },
+    {
+      "question_id": "Q-14",
+      "question": "Track Evernorth's committed equity facility drawdowns, actual share issuance, proceeds deployment, wallet-confirmed XRP acquisitions and XRP per diluted share.",
+      "priority": "HIGH",
+      "status": "FACILITY_CONFIRMED_BY_SEC; DRAWDOWNS_AND_USE_OF_PROCEEDS_UNKNOWN"
     }
   ],
   "relationship_graph": {
@@ -3817,6 +4040,22 @@
         "status": "CURRENT_CHECKOUT_AND_END_TO_END_DELIVERY_NOT_VERIFIED",
         "source_ids": [
           "SRC-BARROT-TERMUX-SELF-DROP-20261027"
+        ]
+      },
+      {
+        "id": "CF Principal Investments LLC (Cantor)",
+        "type": "committed_equity_facility_counterparty",
+        "status": "NAMED_IN_EVERNORTH_2026-10-23_SEC_8-K; ACTUAL_PURCHASES_UNKNOWN",
+        "source_ids": [
+          "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
+        ]
+      },
+      {
+        "id": "Barrot Termux bundle receiver PR #1182",
+        "type": "data_only_bundle_receiver",
+        "status": "DRAFT; EXACT_HEAD_CI_PASS; PHYSICAL_DEVICE_RECEIPT_PENDING",
+        "source_ids": [
+          "SRC-PR1182-TERMUX-RECEIVER-20261027"
         ]
       }
     ],
@@ -4237,6 +4476,40 @@
           "SRC-BARROT-TERMUX-SELF-DROP-20261027"
         ],
         "caveat": "No end-to-end bundle receipt or checksum from the physical phone was observed in this run."
+      },
+      {
+        "source": "Evernorth",
+        "target": "CF Principal Investments LLC (Cantor)",
+        "relationship_type": "COMMITTED_EQUITY_FACILITY_UP_TO_5_218_935_NEW_CLASS_A_SHARES",
+        "classification": "SEC_8K_CONFIRMED_CAPACITY_ACTUAL_DRAWS_UNKNOWN",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023"
+        ],
+        "caveat": "Evernorth controls whether and when to sell shares, subject to conditions; facility availability is not evidence of actual capital raised or XRP purchases."
+      },
+      {
+        "source": "Evernorth",
+        "target": "XRP",
+        "relationship_type": "POTENTIAL_FACILITY_PROCEEDS_TO_XRP_ACQUISITIONS",
+        "classification": "INFERENCE_ONLY_ACTUAL_DRAWS_AND_PROCEEDS_USE_UNKNOWN",
+        "confidence": 0.55,
+        "source_ids": [
+          "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
+          "SRC-EVERNORTH-SEC-PIPE-20261023"
+        ],
+        "caveat": "Do not count facility capacity as XRP demand; reconcile future share issuance, proceeds use, wallet balances and XRP per diluted share."
+      },
+      {
+        "source": "Barrot V3",
+        "target": "Barrot Termux bundle receiver PR #1182",
+        "relationship_type": "HASH_VERIFIED_DATA_ONLY_BUNDLE_TRANSPORT",
+        "classification": "DRAFT_EXACT_HEAD_CI_VERIFIED_PHYSICAL_DEVICE_UNVERIFIED",
+        "confidence": 0.99,
+        "source_ids": [
+          "SRC-PR1182-TERMUX-RECEIVER-20261027"
+        ],
+        "caveat": "The receiver writes only to the local phone when executed there; cloud CI does not establish a device-side receipt."
       }
     ]
   },
@@ -4413,6 +4686,34 @@
       "provenance": [
         "SRC-COINBASE-XRP-CROSS-COLLATERAL-2026-10"
       ]
+    },
+    {
+      "hypothesis_id": "H-EVERNORTH-FACILITY-CAPITAL-VS-DILUTION-20261027",
+      "statement": "If Evernorth draws its committed equity facility and deploys net proceeds into XRP, holdings and potential spot demand may increase; however, newly issued shares and the facility's discounted pricing can dilute existing holders. The relevant outcome is verified net XRP acquired and XRP per diluted share, not headline treasury size or facility capacity.",
+      "status": "PLAUSIBLE_UNTESTED",
+      "supporting_evidence": [
+        "XRP-E-EVERNORTH-EQUITY-FACILITY-20261023",
+        "XRP-E-EVERNORTH-CASH-PURCHASE-84M",
+        "XRP-E-EVERNORTH-IN-KIND-PRIVATE-PLACEMENT"
+      ],
+      "contradicting_evidence": [
+        "XRP-E-EVERNORTH-TREASURY-LISTING"
+      ],
+      "required_tests": [
+        "Track subsequent 8-K, S-1/424B3 and share-count disclosures for actual facility drawdowns and shares issued.",
+        "Reconcile net proceeds, disclosed use of proceeds, wallet-confirmed XRP acquisitions, and treasury XRP balances.",
+        "Compute XRP per diluted share before and after each financing event; separate in-kind contributions from cash-funded spot purchases.",
+        "Use predeclared event windows and controls for XRP market beta, liquidity, volatility and derivatives positioning."
+      ],
+      "falsification_conditions": [
+        "The facility remains unused and no facility-related share issuance or XRP purchase occurs during its term.",
+        "If draws occur, net XRP per diluted share fails to increase after accounting for all newly issued shares and XRP contributions."
+      ],
+      "provenance": [
+        "SRC-EVERNORTH-SEC-EQUITY-FACILITY-20261023",
+        "SRC-EVERNORTH-SEC-PIPE-20261023"
+      ],
+      "confidence": 0.8
     }
   ],
   "platform_coordination": [
@@ -4541,11 +4842,11 @@
     }
   ],
   "repository_audit": {
-    "main_tip_sha": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+    "main_tip_sha": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
     "latest_main_commit_message": "Paper trade cycle [skip ci]",
-    "latest_main_commit_ci": "Latest observed main tip is a generated paper-trading cycle marked [skip ci]; no core CI run was observed for this exact SHA, so core-suite success on main is not established.",
+    "latest_main_commit_ci": "Latest observed main tip abaf1085343045fafb5cbe4228d33b805c75f3fd is a generated paper-trading cycle marked [skip ci]; no core CI run was observed for this exact SHA. Compared with PR #1182's tested base ef4e4b625b44b8c1aa4ee30cff0d3b95dbddc419, main-only delta was web/paper_trading_log.jsonl; no code/workflow files changed in that delta.",
     "current_signal": {
-      "timestamp": "2026-10-27T04:32:42.124752+00:00",
+      "timestamp": "2026-10-27T05:30:48.745392+00:00",
       "score": 44,
       "confidence": 0,
       "news_score": 88,
@@ -4554,9 +4855,9 @@
         "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
         "Groq HTTP 429 Too Many Requests"
       ],
-      "blob_sha": "6d9a6a9cca2d85e658af2a06093fbc89e65c6f9d",
-      "retrieved_at_utc": "2026-10-27T05:06:58Z",
-      "age_minutes_at_retrieval": 34.3,
+      "blob_sha": "3e5906924ab64d7bd1fb0fb312aa9c7652205fc1",
+      "retrieved_at_utc": "2026-10-27T06:12:00Z",
+      "age_minutes_at_retrieval": 41.2,
       "disposition": "INVALID_FOR_FORECASTING_ACADEMIC_XRPL_RESEARCH_HEADLINES_CONTAMINATE_NEWS_SCORE_AND_PROVIDER_SENTIMENT_UNAVAILABLE"
     },
     "legacy_accuracy": {
@@ -4606,6 +4907,14 @@
         "ci": "Gate passed; exact-head CI in progress at last observation.",
         "state": "OPEN_DRAFT_CI_PENDING",
         "merge_authorized": false
+      },
+      {
+        "pr": 1182,
+        "title": "Safety: add hash-verified data-only Termux bundle receiver",
+        "head_sha": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+        "ci": "Exact-head CI passed 120 tests in 6.05s; fail-closed gate passed. Main advanced one generated paper-trading-log commit after the tested base.",
+        "state": "OPEN_DRAFT_CI_PASS_DEVICE_RECEIPT_PENDING",
+        "merge_authorized": false
       }
     ],
     "policy": "Preserve main, V3 code, dirty worktrees and existing branches. Do not merge any draft without user approval. No destructive git operations.",
@@ -4633,7 +4942,7 @@
         "do_not_run": true
       }
     ],
-    "latest_signal_staleness": "Current main web/latest_signal.json blob 6d9a6a9cca2d85e658af2a06093fbc89e65c6f9d, timestamp 2026-10-27T04:32:42.124752+00:00; age approximately 34.3 minutes at 2026-10-27T05:06:58Z. Score 44, confidence 0, news score 88 from 11 entries remain invalid for forecasting because providers failed and the news set is dominated by XRPL protocol/research-paper titles.",
+    "latest_signal_staleness": "Current main web/latest_signal.json blob 3e5906924ab64d7bd1fb0fb312aa9c7652205fc1, timestamp 2026-10-27T05:30:48.745392+00:00; age approximately 41.2 minutes at 2026-10-27T06:12:00Z. Score 44, confidence 0, news score 88 from 11 entries remain invalid for forecasting because providers failed and the news set is dominated by XRPL protocol/research-paper titles.",
     "current_ruleset_observation": {
       "retrieved_at_utc": "2026-10-27T04:12:17.316Z",
       "endpoint": "https://api.github.com/repos/Barrot-Agent/B-Agent/rulesets",
@@ -4655,9 +4964,9 @@
       "previous_fail_closed_gate_run": 40448455756,
       "previous_gate_conclusion": "success",
       "tested_base_sha": "a3e0f0198510634420f925eef8cea384aca51b12",
-      "latest_ledger_revision_status": "PENDING_EXACT_HEAD_CI_AND_GATE_AFTER_THIS_UPDATE",
+      "latest_ledger_revision_status": "REVALIDATION_REQUIRED_AFTER_THIS_LEDGER_UPDATE",
       "state": "OPEN_DRAFT_REVALIDATION_REQUIRED",
-      "note": "This revision adds Circle-Binance strategic distribution evidence, a dated USDC supply snapshot, current main signal artifact and a code-level self-drop/device-boundary audit. Verify exact-head CI and fail-closed gate before treating this revision as tested."
+      "note": "This ledger revision adds the Oct 23 Evernorth SEC equity-facility filing, the latest 05:30 UTC invalid signal artifact, and PR #1182's exact-head CI-verified data-only Termux receiver. Re-run exact-head CI and fail-closed gate for this ledger revision; PR #1182 CI does not transfer to PR #1170."
     },
     "approval_workflow_anomaly": {
       "run_id": 40423949838,
@@ -4700,19 +5009,28 @@
       "note": "Gate passed; exact-head CI was in progress at last observation."
     },
     "self_drop": {
-      "inspected_at_utc": "2026-10-27T05:06:58Z",
-      "source_commit": "0c8a6f818d91f49872fc2e55d28b0a7c56254d20",
+      "inspected_at_utc": "2026-10-27T06:12:00Z",
+      "source_commit": "abaf1085343045fafb5cbe4228d33b805c75f3fd",
       "native_actions": [
         "TERMUX_DROP",
         "DELIVER_BUNDLE"
       ],
-      "local_path": "BarrotActionExecutor -> TermuxBridge.drop_text",
-      "workspace_restriction": "TermuxBridge is initialized with configured workspace as allowed root.",
-      "unit_test_evidence": "tests/test_termux_self_drop.py verifies writes to temporary workspace and rejects path escape.",
+      "local_path": "BarrotActionExecutor -> TermuxBridge.drop_text -> process-local filesystem",
+      "workspace_restriction": "TermuxBridge is initialized with the configured process workspace as allowed root; this does not bridge a cloud workspace to a physical phone.",
+      "unit_test_evidence": "tests/test_termux_self_drop.py verifies local temporary-workspace writes and path-escape rejection.",
       "device_delivery_state": "NOT_VERIFIED_ON_PHYSICAL_MOTO_G7",
       "queue_bridge": "scripts/termux_runner.py",
-      "safety_blocker": "watch mode pulls origin/main and executes arbitrary queued shell commands, then commits/pushes queue state; do not start before trust-boundary review.",
-      "next_step": "Inspect actual new-phone checkout and configuration; design/verify a restricted bundle-only receiver before enabling remote queue delivery."
+      "safety_blocker": "watch mode pulls origin/main, executes arbitrary queued shell commands with shell=True, and commits/pushes queue state; do not start unattended.",
+      "next_step": "On the physical Moto G7, fetch the reviewed receiver commit without changing the worktree, verify the Git blob SHA, and run the harmless probe into $HOME/.barrot/inbox. Require the printed receipt and independently matching payload SHA-256 before declaring end-to-end delivery verified.",
+      "safe_receiver_pr": 1182,
+      "safe_receiver_head_sha": "0ba6a561d59b2665402d5f5fbe950c3337dbbb8d",
+      "safe_receiver_ci_run": 40459515907,
+      "safe_receiver_ci_conclusion": "success",
+      "safe_receiver_gate_run": 40459515898,
+      "safe_receiver_gate_conclusion": "success",
+      "safe_receiver_focused_tests": 9,
+      "safe_receiver_total_ci_tests": 120,
+      "safe_receiver_state": "DRAFT_CI_VERIFIED_DEVICE_RECEIPT_PENDING"
     }
   },
   "video_ingestion": {
@@ -4759,13 +5077,13 @@
     },
     {
       "priority": 0,
-      "action": "Do not issue a directional XRP forecast from the current main signal. The 2026-10-27T04:32:42Z artifact reports score 44/confidence 0/news score 88 with provider failures and academic-news contamination. PR #1178 remains draft/unmerged pending review and exact-head integration checks.",
+      "action": "Do not issue a directional XRP forecast from the latest inspected main signal timestamped 2026-10-27T05:30:48Z. It reports score 44/confidence 0/news score 88 with missing GitHub model credentials, Groq HTTP 429 and academic/protocol headline contamination. PR #1178 remains draft/unmerged.",
       "status": "INVALID_SIGNAL_OBSERVED; FIX_TESTED_ON_DRAFT"
     },
     {
       "priority": 0,
-      "action": "Restore Barrot self-drop end-to-end on the new Moto G7. The native TERMUX_DROP path exists, but tests prove only local workspace writes. Do not start scripts/termux_runner.py watch: it pulls main, executes arbitrary queued shell commands and commits/pushes state. Inspect the actual phone checkout, then use a restricted bundle-only receiver and require a device-side checksum receipt.",
-      "status": "CODE_PATH_CONFIRMED; DEVICE_PATH_UNVERIFIED; SAFE_BRIDGE_REQUIRED"
+      "action": "Complete the physical Moto G7 test using safe receiver PR #1182: fetch immutable commit 0ba6a561d59b2665402d5f5fbe950c3337dbbb8d without changing the worktree, verify its Git blob SHA and receive the harmless probe with independent SHA-256. Never start scripts/termux_runner.py watch.",
+      "status": "RECEIVER_CODE_AND_CI_VERIFIED; DEVICE_RECEIPT_PENDING"
     },
     {
       "priority": 1,
@@ -4786,6 +5104,11 @@
       "priority": 2,
       "action": "Platform coordination remains a capability/authentication/permission/data-flow design, not live nine-platform collaboration. Verify adapters and permissions separately and retain minority objections/red-team review.",
       "status": "DESIGNED; LIVE_CONNECTIONS_UNVERIFIED"
+    },
+    {
+      "priority": 1,
+      "action": "Track Evernorth's committed equity facility with CF Principal Investments LLC: actual draws, new shares issued, net proceeds, disclosed use of proceeds, wallet-confirmed XRP purchases and XRP per diluted share. Do not treat facility capacity as current XRP demand.",
+      "status": "SEC_FACILITY_CONFIRMED; DRAWDOWNS_AND_PROCEEDS_USE_UNKNOWN"
     }
   ]
 }
