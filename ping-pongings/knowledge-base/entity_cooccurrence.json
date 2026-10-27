@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 1129,
+    "xrp_entries": 1131,
     "btc_entries": 1160
   },
-  "unique_pairs_found": 3131,
+  "unique_pairs_found": 3139,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 205,
+      "cooccurrence_count": 206,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -5267,6 +5267,21 @@
         {
           "title": "Coinbase And Ripple CEOs Reportedly Meet Howard Lutnick Over CLARITY Act",
           "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Treasury",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
+          "asset": "XRP"
+        },
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
         }
       ]
     },
@@ -12310,17 +12325,6 @@
     },
     {
       "entity_a": "Treasury Department",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "US Treasury Buyback Expansion Adds New Macro Liquidity Signal For Bitcoin Traders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "US Treasury",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -26527,6 +26531,94 @@
       "example_headlines": [
         {
           "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Superstate",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "USTB",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superstate",
+      "entity_b": "US Treasury",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superstate",
+      "entity_b": "USTB",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Superstate",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "US Treasury",
+      "entity_b": "USTB",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "USTB",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
           "asset": "XRP"
         }
       ]
