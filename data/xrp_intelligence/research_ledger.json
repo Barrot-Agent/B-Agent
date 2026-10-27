@@ -67,7 +67,7 @@
             "blob_sha": "1ce6c6042bbae34ecf611ec5175e3e10f9b38d23"
           }
         ],
-        "finding": "On main, malformed model JSON is coerced to (50, 0.5, neutral). If both sentiment providers fail, analyze_signal returns score 0 and confidence 0.0 with an unavailable-source string; main then blends that score with the news score when one exists. The checked-in latest summary records missing GitHub/Groq credentials and a Groq HTTP 429, yet still reports score 44 with confidence 0.0 and news_score 88 from 11 entries.",
+        "finding": "On main, malformed model JSON is coerced to (50, 0.5, neutral). If both sentiment providers fail, analyze_signal returns score 0 and confidence 0.0 with an unavailable-source string; main then blends that score with the news score when one exists. The checked-in latest summary records missing GitHub/Groq credentials and a Groq HTTP 429, yet still reports score 44 with confidence 0.0 and news_score 88 from 11 entries. The latest checked-in summary also classifies XRP Ledger consensus/dissemination research papers as bullish news, contaminating the sentiment input.",
         "consequence": "A provider outage can be represented as a numeric sentiment score and blended with unrelated news sentiment. This is not a valid directional forecast and can contaminate downstream features.",
         "proposed_fix": "PR #1193 validates the sentiment schema, preserves provider failure as unavailable, gates event-time freshness and academic-source contamination, prevents blending unavailable model sentiment into a score, and makes summaries deterministic with forecast_status NOT_ISSUED.",
         "verification": "PR #1193 exact-head Tests and fail-closed gate passed. Changes remain unmerged and must not be treated as deployed."
@@ -119,6 +119,34 @@
         ],
         "finding": "Main workflow has contents:write and pull-requests:write, permits mode=all, can update branches, merge pull requests and delete branches. PR #1194 replaces it with a read-only audit/no-op pending verified protections.",
         "verification": "PR #1194 exact-head Tests and fail-closed gate passed; not merged."
+      },
+      {
+        "id": "WORKFLOW-AUTO-PUSH-005",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "CURRENT_MAIN_HAS_AUTOMATED_MAIN_WRITE_PATH; SAFE_PERSISTENCE_REDESIGN_REQUIRED",
+        "files": [
+          {
+            "path": ".github/workflows/knowledge-signal-cycle.yml",
+            "blob_sha": "d6def0741028f313cc6f46d1ef6f0d0be7269edc"
+          },
+          {
+            "path": ".github/workflows/check-signal-accuracy.yml",
+            "blob_sha": "014806e842a14b3961c4b80f9c4a6e855da3f65e"
+          }
+        ],
+        "finding": "The scheduled Knowledge Signal Cycle runs hourly with contents:write, ingests/distills news, emits a blended signal, commits knowledge-base logs/config plus latest_signal and signal_history, then pushes directly to main. The daily accuracy workflow also has contents:write and rewrites signal_history before pushing. This can persist contaminated signal outputs and mutate outcome history without reviewed promotion.",
+        "limits": "Simply removing persistence would break continuity and may cause repeated ingestion. A safe replacement must preserve idempotent ingestion and durable snapshots while moving generated data off main or into reviewed promotion.",
+        "proposed_fix": "Design a dedicated append-only research-data branch or immutable artifact/snapshot promotion path with provenance, idempotency, retention and explicit review. Keep code changes on PR branches; never push model-generated signal/history directly to main.",
+        "relation_to_existing_pr": "PR #1193 hardens the accuracy evaluator/workflow but does not replace the hourly Knowledge Signal Cycle's direct main write-back.",
+        "tests_required": [
+          "no direct push to main from scheduled data workflow",
+          "idempotent ingestion on rerun",
+          "source provenance and snapshot hash preserved",
+          "historical forecast/outcome rows immutable",
+          "provider failure produces UNAVAILABLE and NOT_ISSUED",
+          "manual reviewed promotion is reproducible"
+        ]
       }
     ],
     "research_findings": [
@@ -556,6 +584,7 @@
       ]
     },
     "next_actions": [
+      "Design and test a durable, idempotent research-data persistence path that stops scheduled signal/knowledge workflows from writing generated data and mutable accuracy outcomes directly to main; do not remove persistence before a safe replacement exists.",
       "Review and land PR #1193 only after independent review and diagnosis or explicit acceptance of the unresolved failed workflow; do not merge automatically.",
       "Review PR #1194 and verify effective branch protection, required checks, review and approval controls before any merge queue is re-enabled.",
       "Refactor barrot_agent/analysis/xrp_telemetry_matrix.py to remove hardcoded prices, sentiment and MAX_LIQUIDITY claims; add tests.",
@@ -882,6 +911,13 @@
       "recorded_at_utc": "2026-10-27T19:10:30Z",
       "update_type": "MACRO_CONTEXT_ENRICHMENT",
       "details": "Added official Q2 GDP, September labor and CPI observations with publication dates, regime interpretation, missing variables and a macro-liquidity competing hypothesis.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:10:45Z",
+      "update_type": "WORKFLOW_WRITE_PATH_AUDIT",
+      "details": "Confirmed scheduled knowledge-signal and daily accuracy workflows write generated artifacts/history directly to main; added safe persistence redesign blocker and regression-test requirements.",
       "validation": "JSON parse and source-reference integrity check executed before commit.",
       "no_forecast_issued": true
     }
