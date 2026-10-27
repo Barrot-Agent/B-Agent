@@ -1,11 +1,11 @@
 # Barrot XRP Intelligence — Operating Model and Handoff
 
-**Snapshot:** 2026-10-27 00:11:06 UTC  
+**Snapshot:** 2026-10-27 00:12:30 UTC  
 **Priority:** XRP intelligence and prediction-engine mastery  
 **Foundation:** Preserve Barrot V3 as execution/verification foundation  
 **Current forecast state:** `NOT_ISSUED` — the latest main-branch signal is not a valid forecast.
 
-Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json).
+Machine-readable source bundle, claims, evidence, relationship graph, hypotheses, platform map, repo audit, and next actions: [`data/xrp_intelligence/research_bundle_2026-10-26.json`](../data/xrp_intelligence/research_bundle_2026-10-26.json). Latest validated JSON shape before this snapshot: **51 source records, 24 claims, 45 evidence records, 6 research tracks, and a 22-node/27-edge graph**; the full reference check is rerun after the latest commits.
 
 Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevenson_channel.json`](../data/xrp_intelligence/sources/kamilah_stevenson_channel.json). It currently has 11 indexed seed records; it is **not** a complete channel inventory and no full transcript corpus has been captured and hashed.
 
@@ -37,7 +37,7 @@ Kamilah Stevenson video catalog: [`data/xrp_intelligence/sources/kamilah_stevens
 ### Prediction-engine integrity — critical
 The current `main` artifact `web/latest_signal.json` was re-fetched at **2026-10-27 00:11:06 UTC**. Its artifact timestamp is **2026-10-26 23:25:41.820784 UTC** (about 45.4 minutes old at retrieval), and it reports score 44, confidence 0, news score 88 from 11 entries, and provider failures (missing GitHub model credentials and Groq HTTP 429). The text is dominated by XRPL protocol/research-paper titles. This must not be consumed or published as a directional XRP forecast.
 
-The current legacy accuracy artifact reports 749/1,612 = 46.5%, replacing the previous 45.7% snapshot. PR #1165 documents that the old evaluator used variable horizons, compared against a later current price, and mutated history. Neither percentage is a calibrated out-of-sample skill estimate; treat the metric as `NOT_COMPARABLE` until immutable fixed-horizon outcomes are validated.
+The current legacy accuracy artifact reports 749/1,612 = 46.5%, replacing the previous 45.7% snapshot. PR #1165 documents that the old evaluator used variable horizons, compared against a later current price, and mutated history. Neither percentage is a calibrated out-of-sample skill estimate; treat the metric as `NOT_COMPARABLE` until immutable fixed-horizon outcomes are validated. Fresh-main PR #1172 now contains the read-only replacement and passed 123 tests on its tested merge ref, but remains draft/unmerged.
 
 ## 2. High-priority repository work already present
 
@@ -57,13 +57,13 @@ The active `.github/workflows/barrot-agent.yml` also grants contents/PR/issues w
 
 The latest main commit observed for this snapshot is `2bae7ccdfbec8f9536cb40950110c72e949f5073` (`chore: Barrot telemetry report`). At the latest main tip, the observed workflow-run query showed Pages build/deployment success only; no core CI run was observed for that exact main SHA. This is not evidence that the core suite passed on main. The signal artifact was re-fetched at 2026-10-27 00:11:06 UTC with blob SHA `a74f8cacf498ce6936d538a1cdc0925605379cb1` and timestamp 2026-10-26 23:25:41.820784 UTC, still reporting score 44/confidence 0 and provider failures. The current accuracy artifact reports 46.5% (749/1,612), but that metric is methodologically invalid. `web/signal_history.jsonl` returned an empty payload through the file connector even though the main commit diff contains many JSONL rows; treat the line count as unverified, not zero.
 
-**Research PR validation boundary:** PR #1170 head `0ec991026775903c7c718e65b39fef6636d070f6` passed CI run [40424225971](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225971) and fail-closed gate [40424225980](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225980), but those checks used stale base `e49431afe9801044b583abd0451f0d4d7416fc4d`; PR #1170 is now 9 commits behind current main and needs revalidation against current main.
+**Research PR validation boundary:** PR #1170 head `0ec991026775903c7c718e65b39fef6636d070f6` passed CI run [40424225971](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225971) and fail-closed gate [40424225980](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424225980), but those checks used stale base `e49431afe9801044b583abd0451f0d4d7416fc4d`; PR #1170 is now 9 commits behind current main and needs revalidation against current main. Its latest ledger update advanced the branch to `ded53d7e731ec41f7087889ba82029c9cfd3d183`; exact-head CI/gate for that update is pending.
 
 **Unresolved workflow anomaly:** run [40423949838](https://github.com/Barrot-Agent/B-Agent/actions/runs/40423949838) reported event `push` and failure for `.github/workflows/barrot-approve-pr.yml`, but its jobs endpoint returned zero jobs. The inspected workflow YAML on main and the research branch declares `workflow_dispatch` only. No job logs exist; root cause remains unresolved. It was not blindly rerun.
 
 **Fresh-main signal-integrity fix:** [PR #1172](https://github.com/Barrot-Agent/B-Agent/pull/1172) ports the fail-closed sentiment parser, academic-title filtering, unavailable-score HRM guard, and read-only legacy accuracy evaluator. Exact PR head `b217ac9e07e5dbd69f1500498b9836ae5f652bd6` passed **123 tests in 6.15 seconds** on a merge ref based on current main `2bae7ccdfbec8f9536cb40950110c72e949f5073`; [CI run 40424555094](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424555094) and [fail-closed gate 40424555133](https://github.com/Barrot-Agent/B-Agent/actions/runs/40424555133) both passed. The PR remains draft and unmerged.
 
-**Fresh-main merge-queue stop:** [PR #1173](https://github.com/Barrot-Agent/B-Agent/pull/1173) replaces the active mutation-capable merge queue with a manual read-only stop and adds a regression test. Its fail-closed gate passed; CI was still running at last check. It remains draft and unmerged.
+**Fresh-main merge-queue stop:** [PR #1173](https://github.com/Barrot-Agent/B-Agent/pull/1173) replaces the active mutation-capable merge queue with a manual read-only stop and adds a regression test. Its exact-head CI passed **112 tests in 5.91 seconds** and its fail-closed gate passed against current main `2bae7ccdfbec8f9536cb40950110c72e949f5073`. It remains draft and unmerged.
 
 ## 3. Operating architecture
 
