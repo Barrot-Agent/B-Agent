@@ -18,13 +18,22 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T17:14:18Z",
+    "captured_at_utc": "2026-10-28T18:11:35Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
+      "main_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
+        {
+          "number": 1262,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1262",
+          "title": "Safety: bind paper-trading positions to product identity on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "646ab4e837da4fc08a058e9be576e0b97b200221",
+          "status": "Exact-head CI passed 153 tests in 5.56s; fail-closed gate passed; draft/unmerged."
+        },
         {
           "number": 1259,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1259",
@@ -141,25 +150,34 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "23b30639e2631364d97a32f2213faab574c345fb",
+        "sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
         "message": "Paper trade cycle [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/23b30639e2631364d97a32f2213faab574c345fb",
-        "observed_at_utc": "2026-10-28T17:04:56Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
+        "observed_at_utc": "2026-10-28T17:04:55.924138Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "main_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
         "main_branch_protected": true,
         "branch_protection_details": "Endpoint reported protected=true previously, but detailed protection returns 403; required-check contexts/checks were empty in the observable response. Effective merge enforcement remains unverified.",
         "main_ci": {
           "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-          "note": "Latest main commit is a generated paper-trading-log append marked [skip ci]; exact-head main CI was not verified."
+          "note": "Current main head is a generated paper-trading-log append marked [skip ci]; exact-head main CI was not verified."
         },
         "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-        "note": "No main-branch write was performed by this run."
+        "note": "No main-branch write was performed by this run.",
+        "pr_1262": {
+          "head_sha": "646ab4e837da4fc08a058e9be576e0b97b200221",
+          "ci_status": "PASS",
+          "tests_passed": 153,
+          "duration_seconds": 5.56,
+          "ci_run_id": 40742371827,
+          "gate_status": "PASS",
+          "gate_run_id": 40742372165
+        }
       },
       "current_research_head": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
       "current_research_checks": {
@@ -1221,6 +1239,22 @@
           "SRC-GH-PAPER-TRADER-STATE-2026-10-28T1658Z",
           "SRC-GH-PAPER-TRADER-CODE-2026-10-28T1658Z",
           "SRC-GH-PR-1261-2026-10-28T1658Z"
+        ]
+      },
+      {
+        "id": "PAPER-TRADER-PRODUCT-IDENTITY-FRESH-MAIN-2026-10-28T1811Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "FRESH_MAIN_FIX_PR1262_CI_AND_GATE_PASS; DRAFT_UNMERGED; STATE_UNCHANGED",
+        "finding": "Main paper-trading state has a nonzero simulated position and average entry while position_product is null. A fresh-main successor PR #1262 adds a fail-closed product identity guard and regression tests.",
+        "consequence": "Merging the guard without a separately approved state reconciliation will cause the paper trader to abort before model invocation. Do not infer or rewrite product identity from logs automatically.",
+        "proposed_fix": "Review PR #1262 and separately approve any state reconciliation only after replaying and validating the full immutable trade log; preserve the current state until then.",
+        "verification": "PR #1262 exact-head CI passed 153 tests in 5.56 seconds and the fail-closed gate passed. PR remains draft/unmerged; no main write or state mutation.",
+        "source_ids": [
+          "SRC-GH-PAPER-STATE-2026-10-28T1811Z",
+          "SRC-GH-PR1262-2026-10-28T1811Z",
+          "SRC-GH-PR1262-CI-2026-10-28T1811Z",
+          "SRC-GH-PR1262-GATE-2026-10-28T1811Z"
         ]
       }
     ],
@@ -2850,6 +2884,17 @@
           "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z"
         ],
         "uncertainty": "Venue coverage, quote cutoff and page timestamp timezone are unknown."
+      },
+      {
+        "id": "FOMC-HOLD-HAWKISH-DISSENT-2026-10-28T1811Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "OFFICIAL_DECISION_CONFIRMED; XRP_CAUSAL_EFFECT_UNKNOWN",
+        "claim": "The FOMC maintained the federal funds target range at 3.75%-4.00% on a 10-2 vote; two dissenters preferred a 25 basis point increase.",
+        "interpretation": "A hold can reduce immediate policy-tightening pressure, while hawkish dissents and elevated inflation can sustain higher-for-longer expectations. Neither channel establishes a directional XRP effect.",
+        "source_ids": [
+          "SRC-FED-FOMC-STATEMENT-2026-10-28"
+        ],
+        "uncertainty": "No synchronized post-release XRP, BTC, DXY, Treasury-yield or derivatives response was admitted in this run."
       }
     ],
     "relationship_graph": [
@@ -4779,6 +4824,28 @@
           "No evidence shows RLUSD currently displacing XRP bridge paths or changing collateral utilization."
         ],
         "test_plan": "Measure changes in XRP bridge-path share, route-level settlement volumes, RLUSD collateral eligibility/haircuts/utilization after actual launch, and XRP liquidity/market depth; preserve null hypothesis and confounder controls."
+      },
+      {
+        "id": "H-FOMC-HOLD-RISK-RELIEF-2026-10-28T1811Z",
+        "hypothesis": "The rate hold may relieve immediate tightening pressure and support risk-asset liquidity relative to an unexpected hike.",
+        "supporting_evidence": [
+          "SRC-FED-FOMC-STATEMENT-2026-10-28"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Two voting members preferred a 25 bp hike; statement says inflation remains elevated; yields or the dollar may rise if markets interpret the communication as hawkish."
+        ],
+        "test_plan": "Compare XRP and BTC returns, DXY, nominal/real Treasury yields, spot depth, funding and open interest at synchronized 5m/30m/4h/24h windows; freeze pre-event prices and control for simultaneous geopolitical news."
+      },
+      {
+        "id": "H-FOMC-HAWKISH-DISSENT-RISK-RESTRAINT-2026-10-28T1811Z",
+        "hypothesis": "The two dissents in favor of a hike may reinforce higher-for-longer expectations and constrain speculative crypto demand despite the hold.",
+        "supporting_evidence": [
+          "SRC-FED-FOMC-STATEMENT-2026-10-28"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The Committee did not raise rates at this meeting; market pricing may already have anticipated a hold and the dissent may have little incremental information."
+        ],
+        "test_plan": "Compare post-statement changes in Fed-funds futures, Treasury yields, DXY and crypto risk measures to pre-event consensus; retain a null effect if response is small or inconsistent."
       }
     ],
     "market_observations": [
@@ -5606,8 +5673,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T16:17:39.305Z",
-      "last_run_update": "Expanded the institutional relationship graph: Coinbase's own blog corroborates RLUSD launch across Prime/Exchange/Retail and XRPL/Base/Ethereum; BNY supports XRP/RLUSD custody; Ripple's OCC trust-bank approval and C2FO/Robinhood initiatives are documented but several operational steps remain future or unmeasured; Ripple Prime clients can access Coinbase Derivatives XRP futures through Nodal Clear. These announcements do not establish net XRP demand or a price signal.",
+      "last_checked_utc": "2026-10-28T18:11:35Z",
+      "last_run_update": "Added official Oct 28 FOMC decision and two competing macro hypotheses; no synchronized post-event market response was admitted. Created fresh-main PR #1262 for paper-trader product identity; exact-head CI passed 153 tests in 5.56s and fail-closed gate passed. Existing state remains untouched.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -5650,7 +5717,8 @@
         "2026-10-28T16:08:14.181Z: PR #1260 is four commits ahead and one generated paper-trading-log commit behind current main; refresh base/checks before approval.",
         "2026-10-28T16:08:14.181Z: public Kamilah/Camila Stevenson channel records do not establish identity with Camilla Stephenson; public video inventory remains partial.",
         "2026-10-28T16:12:47.105Z: Ripple-Coinbase RLUSD distribution announcement is company-reported; Coinbase-side confirmation and venue-level volumes not captured.",
-        "2026-10-28T16:12:47.105Z: RLUSD collateral support on Coinbase Global Exchange is announced future functionality, not live; do not model it as current collateral demand."
+        "2026-10-28T16:12:47.105Z: RLUSD collateral support on Coinbase Global Exchange is announced future functionality, not live; do not model it as current collateral demand.",
+        "Post-FOMC XRP/BTC, DXY, Treasury yields and derivatives response not synchronized; no event-direction forecast issued."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -5686,18 +5754,20 @@
       ]
     },
     "next_actions": [
+      "Capture synchronized post-FOMC XRP/BTC spot, DXY, Treasury yields, funding and open interest; keep event response separate from pre-event features.",
+      "Keep PR #1262 draft/unmerged until the legacy paper-trading position is reconciled by a separate evidence-backed, approved procedure.",
+      "Record exact-head CI/gate results for the new research-index commit after it is written.",
       "Capture Coinbase-side RLUSD balances/volume and confirm the actual activation date, eligible products and haircuts for Global Exchange collateral; keep it marked future until live evidence appears.",
       "Track BNY XRP/RLUSD assets under custody, reserve attestations, BNY direct mint/redeem activation, C2FO Instant Pay live status/volume and Robinhood XRPL institutional settlement disclosures.",
       "Track Ripple Prime access to Coinbase Derivatives alongside CFTC positions, open interest, basis and venue share; do not infer direction from access alone.",
       "Reconcile spot/volume/OI source universes and common UTC cutoffs before feature admission.",
       "Capture Coinbase Q3 results after the 2026-10-29 after-market release.",
       "Preserve PR #1260 as draft/unmerged; refresh main base and checks before approval.",
-      "Investigate recurring approval-workflow push failures with zero jobs; root cause unknown.",
-      "Keep forecasts NOT_ISSUED until fixed-horizon walk-forward skill, calibration and shadow evaluation are verified."
+      "Investigate recurring approval-workflow push failures with zero jobs; root cause unknown."
     ],
     "macro_context": {
-      "as_of_utc": "2026-10-28T16:06:19.676Z",
-      "status": "FRESH_SECONDARY_PRE_FOMC_MARKET_SNAPSHOT_ADDED; POLICY_OUTCOME_NOT_YET_AVAILABLE_AT_CAPTURE",
+      "as_of_utc": "2026-10-28T18:11:35Z",
+      "status": "OFFICIAL_FOMC_DECISION_PUBLISHED; POST_EVENT_XRP_RESPONSE_NOT_SYNCHRONIZED",
       "observations": [
         {
           "metric": "Real GDP",
@@ -5781,11 +5851,20 @@
             "SRC-REUTERS-USD-YIELDS-FED-2026-10-28T1600Z"
           ],
           "interpretation": "Secondary time-sensitive macro context. Freeze this pre-event vintage; verify the actual policy outcome and official market series before feature use. No XRP direction inferred."
+        },
+        {
+          "metric": "Federal funds target range and FOMC decision",
+          "period": "2026-10-28 FOMC statement",
+          "value": "Target range maintained at 3.75%-4.00%; vote 10-2; Lisa D. Cook and Beth M. Hammack dissented in favor of a 25 bp increase.",
+          "published_at": "2026-10-28T18:00:00Z",
+          "source_ids": [
+            "SRC-FED-FOMC-STATEMENT-2026-10-28"
+          ],
+          "interpretation": "Official statement says activity is expanding at a strong pace, inflation remains elevated, and geopolitical uncertainty remains elevated. This is macro event context, not a directional XRP signal; the immediate market response has not been captured on synchronized venues."
         }
       ],
-      "provisional_read": "Macro event risk remains two-sided. The reported strong dollar and near-5% Treasury yield could pressure risk assets, but this is a secondary pre-decision snapshot and not a standalone XRP predictor.",
+      "provisional_read": "The Fed held rates but two members preferred a hike. This creates competing channels: no immediate additional tightening versus a hawkish dissent signal. Do not infer XRP direction without synchronized post-statement prices, yields, DXY, BTC and derivatives data.",
       "missing_inputs": [
-        "October 27–28, 2026 FOMC decision and press conference once released; preserve a pre-event snapshot before updating the regime",
         "current Treasury yields and real yields",
         "DXY",
         "VIX",
@@ -5794,10 +5873,10 @@
         "latest monthly PCE/CPI detail",
         "Q3 2026 GDP release after publication",
         "crypto-wide spot flows and leverage",
-        "Actual 2026-10-28 FOMC decision and press conference after release; preserve this pre-event snapshot separately."
+        "Synchronized post-FOMC XRP/BTC spot, Treasury yields, DXY, funding and open interest at fixed UTC cutoffs; press-conference remarks after release."
       ],
       "forecast_rule": "Treat data releases as timestamped surprises relative to consensus, not just levels; freeze vintages to avoid revision leakage.",
-      "fomc_status_at_cutoff": "FOMC meeting scheduled Oct 27–28, 2026; no October decision was available at this cutoff."
+      "fomc_status_at_cutoff": "Official October 28 statement published at 18:00 UTC; post-statement market response and press-conference remarks not yet captured."
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
@@ -6212,6 +6291,16 @@
           "SRC-COINGECKO-XRP-MARKET-2026-10-28T1615Z",
           "SRC-COINMARKETCAP-XRP-MARKET-2026-10-28T1615Z"
         ]
+      },
+      {
+        "id": "XRP-HISTORICAL-BAR-VS-CURRENT-QUOTE-2026-10-28T1811Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "HISTORICAL_ONLY; CURRENT_FEATURE_ADMISSION_BLOCKED",
+        "finding": "Yahoo Finance's XRP-USD history page displays an October 26 daily close near $1.2820; this is a historical bar and not synchronized with October 28 secondary quote snapshots near $1.31-$1.33.",
+        "interpretation": "Do not label this as a same-time provider disagreement. Store the bar under its own date, timezone and interval; current-quote comparisons require aligned venue and UTC cutoffs.",
+        "source_ids": [
+          "SRC-YAHOO-XRP-HISTORY-2026-10-28T1811Z"
+        ]
       }
     ],
     "mission_priority": {
@@ -6239,18 +6328,18 @@
         "Databricks"
       ],
       "forecast_status": "NOT_ISSUED",
-      "as_of_utc": "2026-10-28T17:14:18Z",
+      "as_of_utc": "2026-10-28T18:11:35Z",
       "primary": "XRP intelligence and prediction-engine mastery",
       "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
       "current_forecast_status": "NOT_ISSUED",
-      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1714Z.json",
-      "next_action": "Record the latest index CI/gate evidence, preserve the research branch without merging, review PR #1261 only after the existing paper position is reconciled, and keep timestamp-inconsistent XRP observations out of prediction features."
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
+      "next_action": "Record post-FOMC synchronized market response; keep PR #1262 draft until the legacy paper-trading position is reconciled by approved evidence-backed procedure; verify the new ledger-index CI/gate."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1714Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1714Z.json",
-    "current_research_head_before_ledger_update": "ace47adb77a43892986763ae217509905fccaaac",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1811Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
+    "current_research_head_before_ledger_update": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
     "current_research_checks": {
-      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PENDING; PR1262_EXACT_HEAD_CI_AND_GATE_PASS; NEW_INDEX_CI_PENDING",
       "previous_index_head": "ace47adb77a43892986763ae217509905fccaaac",
       "previous_index_ci": {
         "status": "PASS",
@@ -6264,10 +6353,20 @@
         "run_id": 40733637093,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733637093"
       },
-      "new_index_ci": "PENDING_AFTER_WRITE",
-      "new_index_gate": "PENDING_AFTER_WRITE"
+      "pr1262_ci": {
+        "status": "PASS",
+        "tests_passed": 153,
+        "duration_seconds": 5.56,
+        "run_id": 40742371827,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742371827"
+      },
+      "pr1262_gate": {
+        "status": "PASS",
+        "run_id": 40742372165,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742372165"
+      }
     },
-    "current_research_head_before_final_verification_record": "PENDING_AFTER_INDEX_COMMIT",
+    "current_research_head_before_final_verification_record": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -7119,6 +7218,16 @@
           "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
         ],
         "interpretation": "Distribution is confirmed; Global Exchange collateral support remains future, and market/bridge-demand effects are unknown."
+      },
+      {
+        "id": "FOMC-DECISION-2026-10-28-2026-10-28T1811Z",
+        "date": "2026-10-28",
+        "event": "Federal Reserve maintained the target range at 3.75%-4.00%; 10-2 vote with two members preferring a 25 bp hike.",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-FED-FOMC-STATEMENT-2026-10-28"
+        ],
+        "interpretation": "High-impact macro event. Measure market response against a frozen pre-event baseline; no XRP direction inferred."
       }
     ],
     "current_pr_1238_state": {
@@ -7161,8 +7270,8 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T16:58:50Z",
-      "current_main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+      "observed_at_utc": "2026-10-28T18:11:35Z",
+      "current_main_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
       "findings": [
         {
           "path": ".github/workflows/barrot-ops.yml",
@@ -7342,15 +7451,15 @@
         "other generated-data writers not exhaustively re-audited"
       ],
       "current_main_commit": {
-        "sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+        "sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
         "message": "Paper trade cycle [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/03bf7c009bfd166a2993a44cc08ee09f632b6e76",
-        "observed_at_utc": "2026-10-28T16:05:07Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
+        "observed_at_utc": "2026-10-28T17:04:55.924138Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
       },
-      "open_pr_count": 89,
+      "open_pr_count": 92,
       "latest_signal_artifact": {
         "timestamp": "2026-10-28T09:24:33.644225+00:00",
         "score": 44,
@@ -7429,7 +7538,7 @@
         "source_id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1501Z"
       },
       "approval_workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
-      "approval_workflow_observation": "workflow_dispatch-only content; both inspected runs returned zero jobs; root cause unresolved",
+      "approval_workflow_observation": "Current main workflow_dispatch-only file verified at capture; previous push-event zero-job runs remain unexplained. Root cause UNKNOWN.",
       "signal_summary_blob_sha": "1718b45beaf1f8aa002ce332b2b828d27049508b",
       "signal_summary_observation": "still commits generated JSON/audio directly to main; artifact-only proposal #1260 remains draft/unmerged"
     },
@@ -7566,7 +7675,7 @@
         "index": 12
       }
     ],
-    "current_main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
+    "current_main_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
     "current_pr_1245_state": {
       "pr": 1245,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
@@ -7600,7 +7709,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "ace47adb77a43892986763ae217509905fccaaac",
+    "current_research_head_this_run": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
     "correction_note": "This snapshot carries forward the corrected source IDs from the preserved 1712Z correction2 snapshot. The earlier 1709Z and 1711Z snapshots remain unchanged for audit history.",
     "current_pr_1246_state": {
       "pr": 1246,
@@ -7721,7 +7830,9 @@
       "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture.",
       "2026-10-28T1709Z: research ledger branch is 49 commits ahead and 36 behind current main. Preserve it and do not merge as-is; any carry-forward must be a reviewed fresh-main successor.",
       "2026-10-28T1711Z: generic market-cap explanations clarify that market cap is not actual capital inflow, but the original context of the exact phrase 'actual capital' remains unresolved.",
-      "2026-10-28T1711Z: an Investing.com XRP quote has an unnormalized page timestamp and remains excluded from feature admission."
+      "2026-10-28T1711Z: an Investing.com XRP quote has an unnormalized page timestamp and remains excluded from feature admission.",
+      "2026-10-28T18:11:35Z: no synchronized post-FOMC XRP/BTC spot, DXY, Treasury-yield, funding and open-interest response was captured; forecast remains NOT_ISSUED.",
+      "2026-10-28T18:11:35Z: paper-trading state has nonzero position size but null product identity; PR #1262 is a draft safety guard, and no state reconciliation was performed."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -7733,9 +7844,20 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "current_open_pr_count": 91,
-    "current_open_prs_observed_at_utc": "2026-10-28T17:09:12Z",
+    "current_open_pr_count": 92,
+    "current_open_prs_observed_at_utc": "2026-10-28T18:11:35Z",
     "current_open_prs": [
+      {
+        "number": 1262,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1262",
+        "title": "Safety: bind paper-trading positions to product identity on fresh main",
+        "state": "open",
+        "draft": true,
+        "base_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
+        "head_sha": "646ab4e837da4fc08a058e9be576e0b97b200221",
+        "head_branch": "safety/paper-trader-product-identity-fresh-main-20261028-1807z",
+        "updated_at": "2026-10-28T18:08:45Z"
+      },
       {
         "number": 1260,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1260",
@@ -8093,7 +8215,7 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction2.json",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
     "repository_security_audit": {
       "observed_at_utc": "2026-10-28T16:08:14.181Z",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -8221,11 +8343,11 @@
       "new_market_observations": 0,
       "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
       "forecast_status": "NOT_ISSUED",
-      "source_records": 447,
-      "run_updates": 90,
-      "limitations": 82,
+      "source_records": 457,
+      "run_updates": 91,
+      "limitations": 84,
       "relationship_edges": 101,
-      "competing_hypotheses": 63,
+      "competing_hypotheses": 65,
       "market_observations": 48
     },
     "current_pr_1260_state": {
@@ -8262,7 +8384,7 @@
       "status": "OPEN_DRAFT_UNMERGED; exact-head CI 150 tests/5.78s PASS; fail-closed gate PASS; one generated paper-trading-log commit behind current main.",
       "current_main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76"
     },
-    "current_open_pr_count_status": "91 open PRs returned by GitHub Search API at 2026-10-28T17:09:12Z; current_open_prs is a curated subset.",
+    "current_open_pr_count_status": "GitHub Search API returned 92 open PRs at this capture; the first 100 result page included all 92.",
     "current_pr_1261_state": {
       "pr": 1261,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1261",
@@ -8295,17 +8417,63 @@
         "run_id": 40731998907,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731998907"
       },
-      "mergeable": true
+      "mergeable": true,
+      "successor_pr": 1262,
+      "successor_url": "https://github.com/Barrot-Agent/B-Agent/pull/1262",
+      "successor_status": "OPEN_DRAFT_UNMERGED; fresh-main successor exact-head CI/gate passed; existing paper state remains untouched."
     },
-    "snapshot_blob_sha": "cdce68b866bfbd921495d769c719f9dfb345de7a",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T17:14:18Z",
-    "snapshot_commit_sha": "bc3dee89122d34b8f3d671f70deb04587e2ffa3e",
+    "current_pr_1262_state": {
+      "pr": 1262,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1262",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "branch": "safety/paper-trader-product-identity-fresh-main-20261028-1807z",
+      "base_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
+      "head_sha": "646ab4e837da4fc08a058e9be576e0b97b200221",
+      "ahead_by": 3,
+      "behind_by": 0,
+      "changed_files": [
+        "scripts/coinbase_paper_trader.py",
+        "tests/test_paper_trader_product_state.py",
+        ".github/workflows/ci.yml"
+      ],
+      "regression_tests": 8,
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 153,
+        "duration_seconds": 5.56,
+        "run_id": 40742371827,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742371827"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40742372165,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742372165"
+      },
+      "mergeable_reported": "NOT_RELIABLY_REFRESHED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "deployment_executed": false,
+      "limitation": "Current simulated position remains nonzero with null position_product. Do not merge until separately reconciled through an approved evidence-backed procedure.",
+      "source_ids": [
+        "SRC-GH-PAPER-STATE-2026-10-28T1811Z",
+        "SRC-GH-PR1262-2026-10-28T1811Z",
+        "SRC-GH-PR1262-CI-2026-10-28T1811Z",
+        "SRC-GH-PR1262-GATE-2026-10-28T1811Z"
+      ]
+    },
+    "snapshot_blob_sha": "2fa79353639877e21909f157421ee77f3bbd928c",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T18:11:35Z",
+    "snapshot_commit_sha": "ea59772ee38e21eb568fba8354fe00d238a2d3a1",
     "post_snapshot_verification": {
-      "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
+      "status": "SNAPSHOT_READBACK_PASS; NEW_INDEX_CI_PENDING",
       "snapshot_blob_readback_ok": true,
       "source_ids_unique": true,
       "missing_source_refs": 0,
-      "note": "Snapshot JSON parsed and blob SHA read back; new index commit requires exact-head CI and fail-closed gate."
+      "pr1262_ci": "PASS_153_TESTS_5.56S",
+      "pr1262_gate": "PASS",
+      "new_index_ci": "PENDING_AFTER_WRITE",
+      "new_index_gate": "PENDING_AFTER_WRITE",
+      "note": "Exact-head CI/gate evidence for the newly written index is not yet available."
     }
   },
   "sources": [
@@ -11924,6 +12092,86 @@
       "title": "Research index ace47adb fail-closed gate passed",
       "accessed_at_utc": "2026-10-28T17:14:18Z",
       "note": "Fail-closed gate completed successfully for research index commit ace47adb77a43892986763ae217509905fccaaac. The new 1714 snapshot/index commit requires its own checks."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
+      "title": "Current main head and generated paper-trading log append",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Search/compare verified main at this commit; diff changes web/paper_trading_log.jsonl only. This run did not write main."
+    },
+    {
+      "id": "SRC-GH-PAPER-STATE-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Current simulated paper-trading state identity gap",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479; position_size is nonzero and avg_entry_price is set while position_product is null. State was read only and not changed."
+    },
+    {
+      "id": "SRC-GH-PR1262-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1262",
+      "title": "Fresh-main paper-trader position identity safety PR",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Draft PR head 646ab4e837da4fc08a058e9be576e0b97b200221, based on main d45da0ccefcf1f6131201f3498a5bdafebddd1e0; 3 commits ahead, 0 behind at comparison. No merge or state rewrite."
+    },
+    {
+      "id": "SRC-GH-PR1262-CI-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742371827",
+      "title": "PR #1262 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Exact head 646ab4e837da4fc08a058e9be576e0b97b200221; Tests job succeeded; logs report 153 passed in 5.56 seconds."
+    },
+    {
+      "id": "SRC-GH-PR1262-GATE-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742372165",
+      "title": "PR #1262 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Gated workflow completed successfully in fail-closed mode; this is not merge approval."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-WORKFLOW-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Current approval workflow contents",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Current main file blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; declares workflow_dispatch only. Previously observed push-event zero-job runs remain unexplained; this file inspection alone does not establish root cause."
+    },
+    {
+      "id": "SRC-FED-FOMC-STATEMENT-2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "title": "Federal Reserve FOMC statement, October 28, 2026",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Official statement says target range maintained at 3.75%-4.00%, vote 10-2; Lisa D. Cook and Beth M. Hammack dissented in favor of a 25 bp increase. Statement says activity strong, inflation elevated, geopolitical uncertainty elevated."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-TRANSPARENCY-2026-10-28T1811Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Page displays Oct 22, 2026 snapshot: $72.0B circulation, $72.2B reserves; -$0.6B 7-day, -$3.2B 30-day, -$4.4B 365-day net circulation. Not a live Oct 28 chain-attributed flow."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-28T1811Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 results schedule",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Official IR notice says Q3 2026 results will publish Oct 29, 2026 after market close; results not yet available at this capture."
+    },
+    {
+      "id": "SRC-YAHOO-XRP-HISTORY-2026-10-28T1811Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://au.finance.yahoo.com/quote/XRP-USD/history/",
+      "title": "Yahoo Finance XRP-USD historical data page",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Displayed historical row for Oct 26, 2026 close near $1.2820. This is a dated historical bar, not a synchronized current quote; retain only as historical context pending provider/interval normalization."
     }
   ],
   "limitations": [
@@ -12008,7 +12256,9 @@
     "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture.",
     "2026-10-28T1709Z: research branch remains 49 commits ahead and 36 behind main. Preserve the branch; do not merge as-is. Any carry-forward must be a reviewed fresh-main successor.",
     "2026-10-28T1711Z: generic market-cap explanations clarify market cap is not actual capital inflow, but the originating context of the exact phrase 'actual capital' remains unresolved.",
-    "2026-10-28T1711Z: Investing.com UK XRP quote carries a page timestamp that could not be normalized to UTC; it remains excluded from synchronized feature admission."
+    "2026-10-28T1711Z: Investing.com UK XRP quote carries a page timestamp that could not be normalized to UTC; it remains excluded from synchronized feature admission.",
+    "2026-10-28T18:11:35Z: FOMC statement published and recorded; no synchronized post-release XRP response admitted.",
+    "2026-10-28T18:11:35Z: PR #1262 guard is draft/unmerged; current simulated paper position remains unidentified and unchanged."
   ],
   "run_updates": [
     {
@@ -14118,15 +14368,49 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T18:11:35Z",
+      "update_type": "FOMC_EVENT_AND_FRESH_MAIN_PAPER_TRADER_GUARD",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1811Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
+      "details": "Inspected current GitHub state first. Main at d45da0ccefcf1f6131201f3498a5bdafebddd1e0; paper state has nonzero simulated position and null product identity. Created fresh-main draft PR #1262 from that exact main head. Exact-head CI passed 153 tests in 5.56s and fail-closed gate passed. No merge or state rewrite. Added official FOMC hold/dissent event and competing hypotheses; post-event XRP response remains unsynchronized.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-2026-10-28T1811Z",
+        "SRC-GH-PAPER-STATE-2026-10-28T1811Z",
+        "SRC-GH-PR1262-2026-10-28T1811Z",
+        "SRC-GH-PR1262-CI-2026-10-28T1811Z",
+        "SRC-GH-PR1262-GATE-2026-10-28T1811Z",
+        "SRC-GH-APPROVAL-WORKFLOW-2026-10-28T1811Z",
+        "SRC-FED-FOMC-STATEMENT-2026-10-28",
+        "SRC-CIRCLE-USDC-TRANSPARENCY-2026-10-28T1811Z",
+        "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-28T1811Z",
+        "SRC-YAHOO-XRP-HISTORY-2026-10-28T1811Z"
+      ],
+      "validation": {
+        "snapshot_json_parse": "PASS",
+        "snapshot_blob_readback": "PASS",
+        "source_ids_unique": "PASS",
+        "missing_source_refs": 0,
+        "pr1262_ci": "PASS_153_TESTS_5.56S",
+        "pr1262_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "real_money_trading": "NONE",
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T17:14:18Z",
+    "as_of_utc": "2026-10-28T18:11:35Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
-    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1714Z.json",
-    "next_action": "Verify exact-head CI/gate for the 1714 index; keep the research branch preserved and do not merge as-is; reconcile the existing paper position before any PR approval; continue synchronized XRP data collection."
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
+    "next_action": "Capture synchronized post-FOMC XRP/BTC market response; keep PR #1262 draft until paper-trading state reconciliation is approved; verify the new ledger-index CI/gate."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -14345,25 +14629,14 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "bc3dee89122d34b8f3d671f70deb04587e2ffa3e",
-  "current_research_head_this_run": "bc3dee89122d34b8f3d671f70deb04587e2ffa3e",
+  "current_research_head_before_ledger_update": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+  "current_research_head_this_run": "ea59772ee38e21eb568fba8354fe00d238a2d3a1",
   "current_research_checks": {
-    "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SNAPSHOT_READBACK_OK; NEW_INDEX_CI_AND_GATE_PENDING",
-    "previous_index_head": "ace47adb77a43892986763ae217509905fccaaac",
-    "previous_index_ci": {
-      "status": "PASS",
-      "tests_passed": 145,
-      "duration_seconds": 6.32,
-      "run_id": 40733635623,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733635623"
-    },
-    "previous_index_gate": {
-      "status": "PASS",
-      "run_id": 40733637093,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733637093"
-    },
-    "snapshot_commit_sha": "bc3dee89122d34b8f3d671f70deb04587e2ffa3e",
-    "snapshot_blob_sha": "cdce68b866bfbd921495d769c719f9dfb345de7a",
+    "status": "SNAPSHOT_READBACK_PASS; NEW_INDEX_CI_PENDING",
+    "snapshot_commit_sha": "ea59772ee38e21eb568fba8354fe00d238a2d3a1",
+    "snapshot_blob_sha": "2fa79353639877e21909f157421ee77f3bbd928c",
+    "pr1262_ci": "PASS_153_TESTS_5.56S",
+    "pr1262_gate": "PASS",
     "new_index_ci": "PENDING_AFTER_WRITE",
     "new_index_gate": "PENDING_AFTER_WRITE"
   }
