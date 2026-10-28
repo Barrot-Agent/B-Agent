@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T16:10:48.820Z",
+    "captured_at_utc": "2026-10-28T16:12:47.105Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -169,13 +169,12 @@
           "note": "Latest main commit is generated-data-only and marked [skip ci]."
         }
       },
-      "current_research_head": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
+      "current_research_head": "9b8c8ff26bf7902f477fe737210c4866d777d7a9",
       "current_research_checks": {
         "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-        "previous_index_head": "4a43aeccf24c3c7a00d8e6cda51105fa3323f475",
-        "previous_index_ci_run_id": 40723004529,
+        "previous_index_ci_run_id": 40723476174,
         "previous_index_tests_passed": 145,
-        "previous_index_gate_run_id": 40723004501
+        "previous_index_gate_run_id": 40723476214
       },
       "main_commit_delta_since_last_observed": {
         "previous_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
@@ -620,7 +619,7 @@
         "pr": 1260,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1260",
         "state": "OPEN_DRAFT_UNMERGED",
-        "base_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+        "base_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
         "head_sha": "c4ce599faeed469760b093484919785b74cda123",
         "ahead_by": 4,
         "behind_by": 1,
@@ -647,7 +646,8 @@
         "merge_performed": false,
         "deployment_executed": false,
         "limitation": "Exact-head tests verify fail-closed summary behavior and read-only workflow text; they do not establish XRP predictive skill or durable feature storage.",
-        "status": "OPEN_DRAFT_UNMERGED; exact-head CI 150 tests/5.78s PASS; fail-closed gate PASS; one generated paper-trading-log commit behind current main."
+        "status": "OPEN_DRAFT_UNMERGED; exact-head CI 150 tests/5.78s PASS; fail-closed gate PASS; one generated paper-trading-log commit behind current main.",
+        "current_main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76"
       },
       "current_pr_1258": {
         "pr": 1258,
@@ -683,19 +683,19 @@
       "approval_workflow_anomaly": {
         "status": "REPRODUCED_PUSH_EVENT_ZERO_JOBS; ROOT_CAUSE_UNKNOWN",
         "latest_run": {
-          "id": 40722991997,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722991997",
+          "id": 40723467039,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723467039",
           "event": "push",
           "branch": "research/xrp-ledger-fresh-main-20261028-1217z",
-          "head_sha": "4a43aeccf24c3c7a00d8e6cda51105fa3323f475",
+          "head_sha": "b5e4a8f438e20c43e5a9c651933901c955df7a83",
           "conclusion": "failure",
           "jobs": 0
         },
         "prior_run": {
-          "id": 40722982080,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722982080",
+          "id": 40723406339,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723406339",
           "event": "push",
-          "head_sha": "9b8a1a09c063a6edd2dd810f316b85ca335a3019",
+          "head_sha": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
           "conclusion": "failure",
           "jobs": 0
         },
@@ -6143,8 +6143,8 @@
       "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1506Z.json",
       "next_action": "Verify CI and fail-closed gate on the new 15:06 ledger-index head; preserve the 15:01 snapshot and its exact-head verification record."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1610Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1610Z.json",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1612Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1612Z.json",
     "current_research_head_before_ledger_update": "b6fb038aa15a38101350550ac3644150e8856a78",
     "current_research_checks": {
       "status": "PRIOR_HEAD_PASS; NEW_HEAD_PENDING",
@@ -7949,22 +7949,22 @@
       "merge_performed": false
     },
     "ledger_metrics": {
-      "source_records": 392,
-      "run_updates": 79,
+      "source_records": 397,
+      "run_updates": 80,
       "limitations": 76,
-      "relationship_edges": 88,
-      "competing_hypotheses": 54,
+      "relationship_edges": 91,
+      "competing_hypotheses": 56,
       "market_observations": 45
     },
-    "snapshot_blob_sha": "f6363b2a30b367f611bbf399626b75169d012e91",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:11:10.831Z",
-    "snapshot_commit_sha": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
+    "snapshot_blob_sha": "37445bfa7d9097c17741f9cb353c8ef450dc6c04",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:12:47.105Z",
+    "snapshot_commit_sha": "9b8c8ff26bf7902f477fe737210c4866d777d7a9",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
       "source_ids_unique": true,
       "missing_source_refs": 0,
-      "note": "Snapshot read back and parsed; new ledger-index commit requires exact-head CI and gate."
+      "note": "Snapshot JSON parsed after write and blob SHA recorded. New index commit requires exact-head CI and gate."
     }
   },
   "sources": [
@@ -11143,6 +11143,46 @@
       "title": "Approval workflow push failure with zero jobs after index push",
       "accessed_at_utc": "2026-10-28T16:11:10.831Z",
       "note": "Run 40722991997 on research branch index commit 4a43aec reports push event, failure, and zero jobs. Workflow file at event head is dispatch-only; no job executed."
+    },
+    {
+      "id": "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "title": "Ripple and Coinbase announce RLUSD distribution partnership",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Ripple's joint-announcement release dated 2026-10-28 says RLUSD is available for retail and institutional clients through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with 1:1 conversion from USD and supported USD stablecoins; deposits/withdrawals are supported on XRPL, Base and Ethereum; Ripple will provide liquidity on Base. It says RLUSD collateral availability for Coinbase Global Exchange customers will follow, so collateral support is announced future functionality, not live at this cutoff. Coinbase-side corroboration and actual volumes are not yet captured."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1611Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723476174",
+      "title": "Research ledger index b5e4a8f CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Exact-head CI on research index commit b5e4a8f438e20c43e5a9c651933901c955df7a83 passed 145 tests in 4.89 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1611Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723476214",
+      "title": "Research ledger index b5e4a8f fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Fail-closed gate run 40723476214 passed for research index commit b5e4a8f438e20c43e5a9c651933901c955df7a83."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1610Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723406339",
+      "title": "Approval workflow push failure with zero jobs after snapshot commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Run 40723406339 on research branch snapshot commit c0ece2ea881e906a6440ed04efbca35f3efa050d reports push event, failure, and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1610Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723467039",
+      "title": "Approval workflow push failure with zero jobs after index commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Run 40723467039 on research branch index commit b5e4a8f438e20c43e5a9c651933901c955df7a83 reports push event, failure, and zero jobs. Workflow content at the event head declares workflow_dispatch only; no job executed."
     }
   ],
   "limitations": [
@@ -13047,6 +13087,33 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T16:12:47.105Z",
+      "update_type": "RIPPLE_COINBASE_RLUSD_LAUNCH_AND_COLLATERAL_STATUS",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1612Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1612Z.json",
+      "details": "Added Ripple's 2026-10-28 announcement that RLUSD is available through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with deposits/withdrawals on XRPL, Base and Ethereum; Global Exchange collateral support is future functionality, not live. Added relationship edges and competing hypotheses for complementarity vs USDC substitution and for future collateral effects. Also recorded the latest two approval-workflow zero-job failures. Previous index head b5e4a8f passed 145 tests in 4.89s and gate; new snapshot/index checks pending.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-GH-LEDGER-CI-2026-10-28T1611Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1611Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1610Z-A",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1610Z-B"
+      ],
+      "validation": {
+        "previous_index_ci": "PASS_145_TESTS_4.89S",
+        "previous_index_gate": "PASS",
+        "snapshot_json_parse": "PENDING_AFTER_WRITE",
+        "snapshot_blob_readback": "PENDING_AFTER_WRITE",
+        "source_id_uniqueness": "PENDING_AFTER_WRITE",
+        "missing_source_refs": 0,
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "source_ids_unique": true
+      }
     }
   ],
   "mission_priority": {
@@ -13274,13 +13341,12 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
-  "current_research_head_this_run": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
+  "current_research_head_before_ledger_update": "b5e4a8f438e20c43e5a9c651933901c955df7a83",
+  "current_research_head_this_run": "b5e4a8f438e20c43e5a9c651933901c955df7a83",
   "current_research_checks": {
     "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-    "previous_index_head": "4a43aeccf24c3c7a00d8e6cda51105fa3323f475",
-    "previous_index_ci_run_id": 40723004529,
+    "previous_index_ci_run_id": 40723476174,
     "previous_index_tests_passed": 145,
-    "previous_index_gate_run_id": 40723004501
+    "previous_index_gate_run_id": 40723476214
   }
 }
