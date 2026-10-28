@@ -4575,7 +4575,10 @@
     "The approval workflow run 40760954364 reports event=push and zero jobs although the current workflow blob is identical on main and the research branch and declares workflow_dispatch only. Root cause remains unresolved; no fix is claimed.",
     "Fresh XRP spot quote and volume captures are not synchronized: provider timestamps and daily-vs-rolling intervals differ. Keep provider observations separate until cutoffs and venue universes are normalized.",
     "ETF-flow trackers differ in fund coverage and use holdings-change methods; Maketo also notes incomplete reporting can create missing bars. Do not equate missing with zero or admit a unified ETF-flow feature before issuer-level reconciliation.",
-    "PR #1265 targets a research branch; core CI pull_request trigger only targets main, so the current pointer migration has six local synthetic tests but no automated exact-head CI or fail-closed gate."
+    "PR #1265 targets a research branch; core CI pull_request trigger only targets main, so the current pointer migration has six local synthetic tests but no automated exact-head CI or fail-closed gate.",
+    "2026-10-28T2208Z: current main head fadcb97e has no observable combined-status entries; branch metadata reports protected=true but detailed protection and effective required checks remain unverified.",
+    "2026-10-28T2208Z: PR #1266 exact-head CI/gate passed (150 tests/5.63s), but it remains draft/unmerged; main still runs the provider-dependent direct-write signal-summary workflow.",
+    "2026-10-28T2208Z: the latest compact-index successor commit will not have automated CI/gate evidence unless a supported trigger runs; snapshot readback and pointer/source integrity are verified separately from index CI."
   ],
   "run_updates": [
     {
@@ -7310,6 +7313,110 @@
       "force_push": false,
       "deployment": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-28T22:09:08.131Z",
+      "update_type": "POST_FOMC_CAPTURE_GROQ_RATE_LIMIT_ROOT_CAUSE_AND_FRESH_MAIN_SUMMARY_FIX",
+      "main_sha": "fadcb97e28854889ea69ebb90fcd12909cfa5640",
+      "previous_main_sha": "3a52d4977b5d795079c4f51403d146a25fbd4a9d",
+      "main_commit_message": "Paper trade cycle [skip ci]",
+      "main_commit_at_utc": "2026-10-28T22:04:41Z",
+      "main_changed_paths": [
+        "web/paper_trading_log.jsonl"
+      ],
+      "paper_log_blob_sha": "9959f23847bfd644f612769f000e08048e94205d",
+      "paper_state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+      "paper_log_rows": 2351,
+      "malformed_json_rows": 0,
+      "timestamp_order_errors": 0,
+      "product_ids": [
+        "BTC-USD"
+      ],
+      "action_counts": {
+        "buy": 36,
+        "sell": 89,
+        "hold": 2226,
+        "other": 0
+      },
+      "portfolio_value_mismatch_count": 0,
+      "replay_matches_persisted_state": true,
+      "replayed_state": {
+        "cash_usd": 8011.936613782476,
+        "position_size": 0.024901276579239066,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "trade_count": 125
+      },
+      "state_mutated": false,
+      "position_product_write_authorized": false,
+      "provider_failure": {
+        "run_id": 40771243683,
+        "http_status": 429,
+        "quota": "TPD 200000; used 199784; requested 638",
+        "summary_written": false
+      },
+      "pr1266": {
+        "head_sha": "3cade14183ec61df00e3fb67a11eb4e01585513f",
+        "base_sha": "3a52d4977b5d795079c4f51403d146a25fbd4a9d",
+        "ci_status": "PASS",
+        "tests_passed": 150,
+        "duration_seconds": 5.63,
+        "ci_run_id": 40777101158,
+        "gate_status": "PASS",
+        "gate_run_id": 40777100966,
+        "draft": true,
+        "merged": false
+      },
+      "approval_workflow_zero_job_run": {
+        "run_id": 40777082543,
+        "event": "push",
+        "conclusion": "failure",
+        "job_count": 0,
+        "root_cause": "UNKNOWN"
+      },
+      "fomc": {
+        "decision": "HOLD",
+        "target_range_percent": [
+          3.75,
+          4
+        ],
+        "vote": "10-2",
+        "dissenters": [
+          "Lisa D. Cook",
+          "Beth M. Hammack"
+        ],
+        "decision_at_utc": "2026-10-28T18:00:00Z",
+        "post_event_market_panel": "NOT_CAPTURED"
+      },
+      "market_feature_admission": {
+        "xrp_aggregate_open_interest": "BLOCK_UNTIL_VENUE_CONTRACT_CUTOFF_NORMALIZATION",
+        "xrp_spot_volume": "BLOCK_UNTIL_SYNCHRONIZED",
+        "xrp_etf_flows": "BLOCK_UNTIL_FUND_LEVEL_RECONCILIATION",
+        "post_fomc_event_features": "BLOCK_UNTIL_SYNCHRONIZED_POST_RELEASE_PANEL"
+      },
+      "open_pr_count": 96,
+      "pr1265_head_before_update": "4582ca9f0b516345046a25090375561b57dd9236",
+      "forecast_status": "NOT_ISSUED",
+      "source_ids": [
+        "SRC-RUN13-MAIN-HEAD-20261028T2208Z",
+        "SRC-RUN13-MAIN-CROSS-ANALYSIS-20261028T2151Z",
+        "SRC-RUN13-MAIN-STATUS-20261028T2208Z",
+        "SRC-RUN13-PAPER-LOG-20261028T2208Z",
+        "SRC-RUN13-PAPER-STATE-20261028T2208Z",
+        "SRC-RUN13-GROQ-RATE-LIMIT-20261028T2121Z",
+        "SRC-RUN13-PR1266-20261028T2208Z",
+        "SRC-RUN13-PR1266-CI-20261028T2205Z",
+        "SRC-RUN13-PR1266-GATE-20261028T2205Z",
+        "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2204Z",
+        "SRC-RUN13-APPROVAL-WORKFLOW-CONTENT-20261028T2208Z",
+        "SRC-RUN13-FOMC-STATEMENT-20261028",
+        "SRC-RUN13-TRADRADAR-XRP-20261028T1500Z",
+        "SRC-RUN13-KAIRO-XRP-20261028T1630Z",
+        "SRC-RUN13-CIRCLE-USDC-20261028T2208Z",
+        "SRC-RUN13-COINBASE-Q3-DATE-20261028T2208Z",
+        "SRC-RUN13-OPEN-PR-INVENTORY-20261028T2208Z",
+        "SRC-RUN13-PR1265-STATE-20261028T2208Z"
+      ]
     }
   ],
   "mission_priority": {
@@ -7537,7 +7644,7 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "4582ca9f0b516345046a25090375561b57dd9236",
+  "current_research_head_before_ledger_update": "faeb24d2e4a921f56f627694a8a46ca444754d62",
   "current_research_head_this_run": "64a9420189c421615dfe289f4ecc65fec758411e",
   "current_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; INDEX_CI_PENDING",
@@ -7551,8 +7658,8 @@
   },
   "ledger_metrics": {
     "source_records": 551,
-    "run_updates": 110,
-    "limitations": 95,
+    "run_updates": 111,
+    "limitations": 98,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
     "market_observations": 61,
@@ -7561,10 +7668,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 480179,
+    "index_characters_before_this_update": 488381,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 602178,
-    "index_characters": 488381
+    "index_characters": 492807
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -7596,7 +7703,7 @@
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
       "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62",
-      "verified_index_head_before_update": "4582ca9f0b516345046a25090375561b57dd9236",
+      "verified_index_head_before_update": "faeb24d2e4a921f56f627694a8a46ca444754d62",
       "source_reference_count": 320,
       "missing_source_references": 0,
       "ci": {
