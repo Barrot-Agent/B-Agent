@@ -278,3 +278,51 @@ def test_changed_request_fingerprint_does_not_reuse_old_task_evidence(tmp_path):
     assert payload["request_fingerprint"] == "sha256:request-two"
     assert payload["task_states"] == {}
     assert payload["execution_evidence"] == []
+
+
+def test_dispatcher_resumes_after_interruption_between_tasks(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("interrupted-bundle", Result())
+    bundle = {"tasks": [
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+    ]}
+    calls = []
+
+    def interrupted_execute(task):
+        calls.append(task["id"])
+        if task["id"] == "task-b":
+            raise RuntimeError("simulated process interruption")
+        return _complete_task_result(task["id"])
+
+    with pytest.raises(RuntimeError, match="simulated process interruption"):
+        dispatch_bundle_tasks(
+            store=store,
+            work_id="interrupted-bundle",
+            bundle=bundle,
+            execute_task=interrupted_execute,
+        )
+
+    # A fresh dispatcher/store instance represents a process restart. The first
+    # task must remain durably complete; only the unfinished dependent is retried.
+    restarted_store = BundleLifecycleStore(tmp_path)
+    resumed_calls = []
+    resumed = dispatch_bundle_tasks(
+        store=restarted_store,
+        work_id="interrupted-bundle",
+        bundle=bundle,
+        execute_task=lambda task: (
+            resumed_calls.append(task["id"]) or _complete_task_result(task["id"])
+        ),
+    )
+
+    assert calls == ["task-a", "task-b"]
+    assert resumed_calls == ["task-b"]
+    assert resumed["complete"] is True
+    assert resumed["completed_task_ids"] == ["task-a", "task-b"]
+    latest = restarted_store.latest_task_states("interrupted-bundle")
+    assert latest["task-a"]["status"] == "complete"
+    assert latest["task-b"]["status"] == "complete"
+
