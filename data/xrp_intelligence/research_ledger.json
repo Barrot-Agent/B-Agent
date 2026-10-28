@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T14:17:05Z",
+    "captured_at_utc": "2026-10-28T14:19:27Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
@@ -161,10 +161,10 @@
         "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
         "note": "No main-branch write was performed by this run."
       },
-      "current_research_head": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
+      "current_research_head": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
       "current_research_checks": {
         "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
-        "note": "The 14:17 snapshot is committed; the index update commit must be checked separately."
+        "note": "The 14:19 snapshot is committed; verify the following index commit separately."
       },
       "main_commit_delta_since_last_observed": {
         "previous_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
@@ -589,7 +589,16 @@
         "successor_pr": 1258,
         "note": "Stale predecessor; preserve, do not merge as-is."
       },
-      "current_open_pr_count": 89
+      "current_open_pr_count": 89,
+      "current_pr_1258_state": {
+        "ahead_by": 1,
+        "behind_by": 1,
+        "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+        "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_status": "PASS_147_TESTS_6.41S",
+        "gate_status": "PASS"
+      }
     },
     "critical_engine_findings": [
       {
@@ -2272,14 +2281,15 @@
       {
         "id": "XRP-ETF-FLOW-TRACKER-DISAGREEMENT-20261028T1410Z",
         "evidence_class": "SECONDARY_UNVERIFIED",
-        "status": "MODEL_FEATURE_BLOCKED_PENDING_FUND_UNIVERSE_RECONCILIATION",
+        "status": "SUPERSEDED_WITH_SCOPE_CLARIFICATION",
         "claim": "For 27 Oct 2026, XRP Insights reports -433,940 XRP across six spot funds plus BITW, excluding GXRP from flow calculations, while Maketo displays $0 for the latest observation and warns that incomplete reporting can leave a day without a bar.",
         "interpretation": "The discrepancy may reflect different fund universes, timing, partial reporting or stale tracker data. Neither value is admitted to the prediction feature store until sponsor-level holdings, creations/redemptions and settlement dates are reconciled.",
         "source_ids": [
           "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS",
           "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO"
         ],
-        "uncertainty": "Tracker source independence and identical fund coverage are not established."
+        "uncertainty": "Tracker source independence and identical fund coverage are not established.",
+        "correction_note": "The refreshed XRP Insights data page shows a 2-settled-trading-day aggregate of -3,132,685 XRP for 26-27 Oct, not a single-day figure. The previously captured -433,940 XRP daily observation is not independently validated by the latest headline and must not be treated as an authoritative daily row until per-fund CSV rows are reconciled. The page excludes GXRP flows, includes BITW, and says holdings changes can include index rebalancing or fee effects."
       },
       {
         "id": "COINBASE-Q3-EARNINGS-EVENT-20261028T1410Z",
@@ -2383,6 +2393,51 @@
         "interpretation": "This is a workflow-level no-job event, not an executed approval action. The runtime anomaly persists.",
         "source_ids": [
           "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1415Z"
+        ],
+        "uncertainty": "Why the workflow was scheduled and why no jobs were instantiated remains unknown."
+      },
+      {
+        "id": "XRP-ETF-FLOW-AGGREGATE-20261028T1419Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "AGGREGATE_OBSERVATION; NOT_A_SINGLE_DAY_FLOW",
+        "claim": "XRP Insights' refreshed dataset page, generated at 13:50:05Z and data-as-of 27 Oct 2026, reports net flow of -3,132,685 XRP (about -$4.1M) over two settled trading days, 26-27 Oct, with 1,190,077,145 XRP held.",
+        "interpretation": "This is a two-day aggregate over six US spot ETFs plus BITW; GXRP flow is excluded. Flow is computed from holdings deltas and can include non-creation/redemption effects such as BITW rebalancing or fees paid in XRP. Do not treat the aggregate as the 27 Oct daily flow.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z"
+        ],
+        "uncertainty": "Per-fund CSV rows could not be retrieved through the current web-download path, so daily reconciliation remains incomplete."
+      },
+      {
+        "id": "XRP-ETF-FLOW-UNIVERSE-DIFFERENCE-20261028T1419Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "NOT_COMPARABLE_PENDING_PER_FUND_RECONCILIATION",
+        "claim": "Maketo reports $0 for 27 Oct and -$3.6M for 26 Oct, while XRP Insights reports a -3.132685M XRP aggregate across 26-27 Oct. Maketo's visible table lists five tickers (XRP, XRPZ, XRPC, TOXR, GXRP); XRP Insights states coverage of six spot ETFs plus BITW and excludes GXRP flow.",
+        "interpretation": "Differences in fund universe, USD-versus-XRP presentation, settlement timing and excluded-flow treatment can explain some or all of the discrepancy. Do not use either aggregate as a standalone signal until the same funds' issuer-reported holdings are reconciled by date.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z",
+          "SRC-MAKETO-XRP-ETF-FLOWS-2026-10-28T1419Z"
+        ],
+        "uncertainty": "Per-fund CSV reconciliation not completed; source independence is not established."
+      },
+      {
+        "id": "LEDGER-INDEX-CI-VERIFIED-20261028T1419Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "PASS_ON_PRIOR_INDEX_HEAD",
+        "claim": "Research ledger index head c1e42a30f632e4ceedb9cf368390843f1c77a035 passed CI with 145 tests in 5.85s and the fail-closed gate; snapshot 2026-10-28T1417Z blob SHA 820918a5fbdecbde2d5a383f3ffbe3b63faff3b3 matches the index and its source-reference audit found no missing references.",
+        "interpretation": "This verifies the prior ledger head, not the new 14:19 snapshot/index commits.",
+        "source_ids": [
+          "SRC-GH-LEDGER-CI-2026-10-28T1418Z"
+        ],
+        "uncertainty": "The next index head still requires its own exact-head CI/gate."
+      },
+      {
+        "id": "APPROVAL-ZERO-JOB-LATEST-20261028T1419Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "FAILURE_WITH_ZERO_JOBS; ROOT_CAUSE_UNKNOWN",
+        "claim": "Approval workflow run 40704629868 is a push-event failure with zero jobs on the ledger branch update.",
+        "interpretation": "No approval job executed. The runtime anomaly remains unresolved.",
+        "source_ids": [
+          "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1418Z"
         ],
         "uncertainty": "Why the workflow was scheduled and why no jobs were instantiated remains unknown."
       }
@@ -4444,6 +4499,26 @@
         "source_ids": [
           "SRC-CFTC-XRP-POSITIONS-2026-10-13"
         ]
+      },
+      {
+        "id": "XRP-ETF-INSIGHTS-2DAY-FLOW-2026-10-26-27",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-26/27",
+        "observation": "XRP Insights reports -3,132,685 XRP net flow (about -$4.1M) over two settled trading days and 1,190,077,145 XRP held as of 27 Oct.",
+        "interpretation": "Six spot ETFs plus BITW; GXRP flow excluded. Not a single-day observation and not directly comparable to the Maketo five-ticker table.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z"
+        ]
+      },
+      {
+        "id": "XRP-ETF-MAKETO-DAILY-2026-10-26-27",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-26/27",
+        "observation": "Maketo shows -$3.6M on 26 Oct, $0 on 27 Oct, about +$0.6M over the past week and +$15M over the past month; visible per-fund table lists XRP, XRPZ, XRPC, TOXR and GXRP.",
+        "interpretation": "Different visible fund universe and reporting method from XRP Insights; do not net against the two-day XRP-denominated aggregate.",
+        "source_ids": [
+          "SRC-MAKETO-XRP-ETF-FLOWS-2026-10-28T1419Z"
+        ]
       }
     ],
     "phrase_investigation": {
@@ -4706,8 +4781,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T14:17:05Z",
-      "last_run_update": "Added official CFTC dated positioning baseline, identified non-comparable XRP spot-volume aggregations, verified prior ledger-head CI after source catalog backfill, and recorded another zero-job approval-workflow run. No directional forecast issued.",
+      "last_checked_utc": "2026-10-28T14:19:27Z",
+      "last_run_update": "Refined ETF-flow analysis using XRP Insights' refreshed dataset methodology: its latest headline is a 2-day aggregate, while Maketo's daily table shows a different fund universe. Added verified CFTC dated positioning and recorded prior ledger CI pass. Forecast remains NOT_ISSUED.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -4738,7 +4813,10 @@
         "Approval workflow still produces zero-job failures; event metadata is inconsistent across API views and root cause is unresolved.",
         "CoinCodex daily volume and Decrypt rolling 24-hour volume are not comparable; raw synchronized venue data is still required.",
         "Latest CFTC XRP report verified in this run is as of 13 Oct; treat as historical, not current.",
-        "New 14:17 snapshot/index requires exact-head CI and fail-closed gate."
+        "New 14:17 snapshot/index requires exact-head CI and fail-closed gate.",
+        "ETF daily-flow feature remains blocked until per-fund holdings and fund universe are reconciled; the prior -433,940 XRP single-day capture is not confirmed by the current headline.",
+        "Current 14:19 snapshot/index requires exact-head CI and fail-closed gate.",
+        "Approval workflow zero-job failure persists."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -4773,12 +4851,12 @@
       ]
     },
     "next_actions": [
-      "Verify exact-head CI and gate for the new 14:17 ledger index.",
-      "Reconcile spot volume on identical UTC windows and source universes before model admission.",
-      "Add CFTC XRP contract positions as dated historical features only; retrieve the next official report when available.",
-      "Keep PR #1258 and #1259 draft/unmerged pending review; do not modify main.",
-      "Continue durable append-only staging and reviewed promotion design.",
-      "Continue exact phrase and Camilla Stephenson identity resolution without inventing matches."
+      "Verify exact-head CI and gate for the 14:19 ledger index.",
+      "Reconcile XRP Insights per-fund CSV/JSON holdings with Maketo's five-ticker daily table and issuer source pages; keep missing/excluded distinct from zero.",
+      "Continue synchronized raw venue quote/volume ingestion; CoinCodex daily volume and Decrypt rolling 24-hour volume are not comparable.",
+      "Use CFTC positions as dated historical futures features only; no current all-venue leverage inference.",
+      "Keep PR #1258 and #1259 draft/unmerged pending review; preserve main.",
+      "Continue SBIC and exact-phrase research and resolve the canonical Camilla Stephenson channel before claiming exhaustive video coverage."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4908,8 +4986,8 @@
       "approval_workflow_anomaly": {
         "status": "ROOT_CAUSE_UNRESOLVED; ZERO-JOB FAILURES RECURRED",
         "latest_run": {
-          "id": 40704232417,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704232417",
+          "id": 40704629868,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704629868",
           "event": "push",
           "conclusion": "failure",
           "jobs": 0
@@ -5479,6 +5557,16 @@
         "gate_run_id": 40704246886,
         "gate_status": "PASS",
         "verified_at_utc": "2026-10-28T14:16:20Z"
+      },
+      "latest_verified_ledger_head": {
+        "sha": "c1e42a30f632e4ceedb9cf368390843f1c77a035",
+        "ci_run_id": 40704638698,
+        "ci_status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 5.85,
+        "gate_run_id": 40704638807,
+        "gate_status": "PASS",
+        "verified_at_utc": "2026-10-28T14:18:49Z"
       }
     },
     "market_data_quality_findings": [
@@ -5823,6 +5911,18 @@
           "SRC-CFTC-XRP-POSITIONS-2026-10-13"
         ],
         "next_test": "Check the next official CFTC publication and compare contract codes/units consistently."
+      },
+      {
+        "id": "XRP-ETF-DAILY-AGGREGATE-UNIVERSE-WINDOW-20261028T1419Z",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED",
+        "finding": "The latest XRP Insights headline is a two-settled-day aggregate (-3.132685M XRP over 26-27 Oct), whereas Maketo displays daily USD flows for a five-ticker table, with -$3.6M on 26 Oct and $0 on 27 Oct. XRP Insights covers six spot ETFs plus BITW and excludes GXRP flow.",
+        "interpretation": "The earlier -433,940 XRP single-day value is not validated by the current headline. Reconcile each fund's issuer-reported holdings at identical settlement dates before constructing daily net-flow features.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z",
+          "SRC-MAKETO-XRP-ETF-FLOWS-2026-10-28T1419Z"
+        ],
+        "next_test": "Retrieve the XRP Insights CSV or JSON per-fund rows, compare against issuer pages, align the fund universe and settlement date, and distinguish missing/excluded from zero."
       }
     ],
     "mission_priority": {
@@ -5851,12 +5951,12 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1417Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1417Z.json",
-    "current_research_head_before_ledger_update": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1419Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1419Z.json",
+    "current_research_head_before_ledger_update": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
     "current_research_checks": {
       "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
-      "note": "The 14:17 snapshot is committed; the index update commit must be checked separately."
+      "note": "The 14:19 snapshot is committed; verify the following index commit separately."
     },
     "current_research_head_before_final_verification_record": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
     "platform_coordination_architecture": {
@@ -6598,6 +6698,16 @@
           "SRC-CFTC-XRP-POSITIONS-2026-10-13"
         ],
         "interpretation": "Historical positioning only; not a current 28 Oct snapshot."
+      },
+      {
+        "id": "XRP-ETF-DATA-REFRESH-2026-10-28T1350Z",
+        "date": "2026-10-28",
+        "event": "XRP Insights ETF totals dataset refreshed; data-as-of 27 Oct reports a 2-day aggregate net flow of -3.132685M XRP",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z"
+        ],
+        "interpretation": "The figure covers 26-27 Oct and is not a single-day flow; per-fund reconciliation remains pending."
       }
     ],
     "current_pr_1238_state": {
@@ -7479,7 +7589,7 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1417Z.json",
     "repository_security_audit": {
       "observed_at_utc": "2026-10-28T14:10:26Z",
       "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
@@ -7622,15 +7732,15 @@
       "ci_status": "PASS_147_TESTS_4.18S",
       "gate_status": "PASS"
     },
-    "snapshot_blob_sha": "820918a5fbdecbde2d5a383f3ffbe3b63faff3b3",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T14:17:05Z",
-    "snapshot_commit_sha": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
+    "snapshot_blob_sha": "5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T14:19:27Z",
+    "snapshot_commit_sha": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
     "post_snapshot_verification": {
       "verified_at_utc": null,
       "status": "PENDING_EXACT_HEAD_CI_AFTER_INDEX_UPDATE",
-      "snapshot_blob_sha": "820918a5fbdecbde2d5a383f3ffbe3b63faff3b3",
+      "snapshot_blob_sha": "5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa",
       "snapshot_hash_matches_index": true,
-      "note": "Prior snapshot/index head d4ef807 passed 145 tests in 4.78s and the gate. This 14:17 snapshot/index pair requires its own exact-head CI/gate."
+      "note": "The 14:17 snapshot/index head passed 145 tests and the gate. This 14:19 snapshot/index pair requires its own exact-head CI/gate."
     }
   },
   "sources": [
@@ -10521,6 +10631,38 @@
       "title": "Approval workflow zero-job run, 28 Oct 2026",
       "accessed_at_utc": "2026-10-28T14:17:05Z",
       "note": "Run reported event=push, failure, and zero jobs on the research branch update. No job executed. Root cause remains unknown."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "title": "XRP Insights ETF Daily Totals JSON, data as of 27 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "JSON metadata generated 2026-10-28T13:50:05Z, data_as_of 2026-10-27. Page reports -3,132,685 XRP (about -$4.1M) net flow across two settled trading days, 26-27 Oct, and 1,190,077,145 XRP holdings. Coverage is six US spot XRP ETFs plus BITW; GXRP flow is excluded. Flow is derived from holdings deltas and may include BITW rebalancing or XRP-denominated fee effects."
+    },
+    {
+      "id": "SRC-MAKETO-XRP-ETF-FLOWS-2026-10-28T1419Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "title": "Maketo XRP ETF daily flow page, refreshed 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "Page reports $0 for 27 Oct, -$3.6M for 26 Oct, about +$0.6M over the past week and +$15M over the past month. Visible daily table lists XRP, XRPZ, XRPC, TOXR and GXRP; this differs from XRP Insights' stated six spot ETFs plus BITW coverage."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1418Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704638698",
+      "title": "Research ledger index CI on c1e42a3",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "Exact-head CI passed 145 tests in 5.85s on c1e42a30f632e4ceedb9cf368390843f1c77a035; fail-closed gate run 40704638807 passed. This verifies the prior 14:17 snapshot/index head, not the new 14:19 pair."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1418Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704629868",
+      "title": "Approval workflow zero-job run on research branch update",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "Run recorded event=push, conclusion=failure, and zero jobs. No approval action ran; root cause remains unresolved."
     }
   ],
   "limitations": [
@@ -10592,7 +10734,9 @@
     "Current main still has generated-data direct-write workflows; durable append-only staging and reviewed promotion remain unimplemented.",
     "CoinCodex daily XRP volume and Decrypt rolling 24-hour XRP volume differ by roughly 14.8x and are not comparable without source-universe and cutoff reconciliation.",
     "The latest CFTC XRP report verified in this run is positions as of 13 Oct 2026, updated 16 Oct; it is historical rather than current to 28 Oct.",
-    "Approval workflow continues to produce zero-job failures; root cause remains unresolved."
+    "Approval workflow continues to produce zero-job failures; root cause remains unresolved.",
+    "The XRP Insights per-fund CSV link returned an unsupported content-type error through the current web retrieval path; per-fund daily reconciliation remains incomplete.",
+    "XRP Insights and Maketo flow observations have different fund universes and aggregation windows; do not treat their aggregates as directly comparable."
   ],
   "run_updates": [
     {
@@ -12228,15 +12372,39 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T14:19:27Z",
+      "update_type": "XRP_ETF_FLOW_UNIVERSE_AND_WINDOW_RECONCILIATION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1419Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1419Z.json",
+      "details": "Refreshed XRP Insights methodology: its latest headline is a two-settled-day aggregate, not a single-day flow; Maketo's visible table has a different fund universe and daily USD observations. Added the prior index-head CI/gate result and the latest zero-job approval workflow failure. The per-fund CSV link could not be retrieved through the current web-download path, so no fund-level reconciliation is claimed.",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-2026-10-28T1419Z",
+        "SRC-GH-LEDGER-CI-2026-10-28T1418Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1418Z"
+      ],
+      "validation": {
+        "new_source_count": 4,
+        "source_ids_unique": true,
+        "snapshot_blob_sha": "5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa",
+        "snapshot_commit_sha": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
+        "previous_index_head_ci": "PASS_145_TESTS_5.85S",
+        "previous_index_head_gate": "PASS",
+        "current_index_head_ci": "PENDING",
+        "main_modified_by_this_run": false,
+        "forecast_status": "NOT_ISSUED"
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T14:17:05Z",
+    "as_of_utc": "2026-10-28T14:19:27Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
-    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1417Z.json",
-    "next_action": "Verify exact-head CI for the 14:17 ledger index; then reconcile XRP spot-volume universes and ingest CFTC positioning as a dated historical feature."
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1419Z.json",
+    "next_action": "Verify exact-head CI for the 14:19 ledger index; then reconcile ETF daily flows by fund and settlement date."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
