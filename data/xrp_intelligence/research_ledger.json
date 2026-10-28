@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T16:14:00.840Z",
+    "captured_at_utc": "2026-10-28T16:15:36.321Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -169,12 +169,12 @@
           "note": "Latest main commit is generated-data-only and marked [skip ci]."
         }
       },
-      "current_research_head": "4161f6c417aac7d5efaaa62962ae02f948dd7198",
+      "current_research_head": "18d7ef94484edd8fa31463ac6df2ea8ed270effe",
       "current_research_checks": {
         "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-        "previous_index_ci_run_id": 40723753640,
+        "previous_index_ci_run_id": 40723952011,
         "previous_index_tests_passed": 145,
-        "previous_index_gate_run_id": 40723753371
+        "previous_index_gate_run_id": 40723952236
       },
       "main_commit_delta_since_last_observed": {
         "previous_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
@@ -683,19 +683,19 @@
       "approval_workflow_anomaly": {
         "status": "REPRODUCED_PUSH_EVENT_ZERO_JOBS; ROOT_CAUSE_UNKNOWN",
         "latest_run": {
-          "id": 40723742229,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723742229",
+          "id": 40723947446,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723947446",
           "event": "push",
           "branch": "research/xrp-ledger-fresh-main-20261028-1217z",
-          "head_sha": "294ae245774db645e4e173761b4aebe4b5be4c59",
+          "head_sha": "a782a6ee8e1d903240fed3de88171fe9b65b5eb1",
           "conclusion": "failure",
           "jobs": 0
         },
         "prior_run": {
-          "id": 40723730565,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723730565",
+          "id": 40723937393,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723937393",
           "event": "push",
-          "head_sha": "9b8c8ff26bf7902f477fe737210c4866d777d7a9",
+          "head_sha": "4161f6c417aac7d5efaaa62962ae02f948dd7198",
           "conclusion": "failure",
           "jobs": 0
         },
@@ -6143,8 +6143,8 @@
       "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1506Z.json",
       "next_action": "Verify CI and fail-closed gate on the new 15:06 ledger-index head; preserve the 15:01 snapshot and its exact-head verification record."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1614Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1614Z.json",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1615Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1615Z.json",
     "current_research_head_before_ledger_update": "b6fb038aa15a38101350550ac3644150e8856a78",
     "current_research_checks": {
       "status": "PRIOR_HEAD_PASS; NEW_HEAD_PENDING",
@@ -7949,16 +7949,16 @@
       "merge_performed": false
     },
     "ledger_metrics": {
-      "source_records": 404,
-      "run_updates": 81,
+      "source_records": 411,
+      "run_updates": 82,
       "limitations": 76,
-      "relationship_edges": 92,
-      "competing_hypotheses": 57,
-      "market_observations": 45
+      "relationship_edges": 93,
+      "competing_hypotheses": 59,
+      "market_observations": 46
     },
-    "snapshot_blob_sha": "f6b1ecb95317b35d5bb070474b39b7a80597f074",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:14:00.840Z",
-    "snapshot_commit_sha": "4161f6c417aac7d5efaaa62962ae02f948dd7198",
+    "snapshot_blob_sha": "4fbfb1bc7f1cc92f6d5266ccfedad3841d109845",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:15:36.321Z",
+    "snapshot_commit_sha": "18d7ef94484edd8fa31463ac6df2ea8ed270effe",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
@@ -11239,6 +11239,62 @@
       "evidence_class": "REPOSITORY_OBSERVATION",
       "accessed_at_utc": "2026-10-28T16:14:00.840Z",
       "note": "Run 40723742229 on research branch index commit 294ae24 reports push event, failure and zero jobs. Workflow content declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-CIRCLE-COINBASE-COLLABORATION-SEC-S1-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm",
+      "title": "Circle SEC S-1: Coinbase USDC collaboration economics",
+      "evidence_class": "CONFIRMED_REGULATORY_FILING",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Circle's 2025 SEC S-1 describes the August 2023 Collaboration Agreement: Circle pays Coinbase for USDC distribution and ecosystem growth; Coinbase receives 50% of the residual payment base after issuer retention and payments to other approved participants, with the allocation linked to platform-held balances. The agreement also afforded Coinbase a minority equity stake at that time. The filing reports Coinbase platform-held USDC at about 21% of circulation on 2025-06-30 and daily weighted average about 23% during H1 2025. Current equity ownership percentage after the IPO is not established here."
+    },
+    {
+      "id": "SRC-COINGECKO-XRP-MARKET-2026-10-28T1615Z",
+      "url": "https://www.coingecko.com/en/coins/xrp?chart=7_days",
+      "title": "CoinGecko XRP spot and derivatives aggregate snapshot",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Dynamic page captured around 2026-10-28 16:15 UTC displays XRP around $1.31, roughly +0.3% over 24h, $1.662B 24h volume, $4.013B perps open interest, 0.0102% 8h funding and $1.31-$1.34 24h range. Exact data cutoff and contract universe are not explicit; not admitted as a fixed-cutoff feature."
+    },
+    {
+      "id": "SRC-COINMARKETCAP-XRP-MARKET-2026-10-28T1615Z",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "title": "CoinMarketCap XRP market snapshot",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Dynamic page captured around 2026-10-28 16:15 UTC displays price around $1.31, +0.32% 24h, market cap about $83.01B, 24h volume about $1.81B and $1.31-$1.34 range. Exact cutoff/venue universe not explicit; not admitted as a fixed-cutoff feature."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1614Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723952011",
+      "title": "Research ledger index a782a6ee CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Exact-head CI on index commit a782a6ee8e1d903240fed3de88171fe9b65b5eb1 passed 145 tests in 6.01 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1614Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723952236",
+      "title": "Research ledger index a782a6ee fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Fail-closed gate run 40723952236 passed for index commit a782a6ee8e1d903240fed3de88171fe9b65b5eb1."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1614Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723937393",
+      "title": "Approval workflow push failure with zero jobs after collateral snapshot",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Run 40723937393 on research branch snapshot commit 4161f6c reports push event, failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1614Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723947446",
+      "title": "Approval workflow push failure with zero jobs after index update",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Run 40723947446 on research branch index commit a782a6e reports push event, failure and zero jobs. Workflow content declares workflow_dispatch only; no job executed."
     }
   ],
   "limitations": [
@@ -13199,6 +13255,36 @@
         "forecast_status": "NOT_ISSUED",
         "source_ids_unique": true
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T16:15:36.321Z",
+      "update_type": "COINBASE_CIRCLE_ECONOMICS_AND_XRP_MULTI_SOURCE_MARKET_QUALITY",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1615Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1615Z.json",
+      "details": "Added Circle SEC S-1 evidence for Coinbase USDC distribution economics, Coinbase Q2 metrics, and multiple provider snapshots showing unresolved XRP spot-volume/perps-OI universe differences. Added competing hypotheses for Coinbase's USDC incentives vs RLUSD multi-issuer distribution and for market-data normalization. Previous index head a782a6ee passed 145 tests in 6.01s and fail-closed gate; new snapshot/index checks pending.",
+      "source_ids": [
+        "SRC-CIRCLE-COINBASE-COLLABORATION-SEC-S1-2025",
+        "SRC-COINGECKO-XRP-MARKET-2026-10-28T1615Z",
+        "SRC-COINMARKETCAP-XRP-MARKET-2026-10-28T1615Z",
+        "SRC-XRP-PRICE-COINCODEX-2026-10-26",
+        "SRC-GH-LEDGER-CI-2026-10-28T1614Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1614Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1614Z-A",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1614Z-B"
+      ],
+      "validation": {
+        "previous_index_ci": "PASS_145_TESTS_6.01S",
+        "previous_index_gate": "PASS",
+        "snapshot_json_parse": "PENDING_AFTER_WRITE",
+        "snapshot_blob_readback": "PENDING_AFTER_WRITE",
+        "source_id_uniqueness": "PENDING_AFTER_WRITE",
+        "missing_source_refs": 0,
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "source_ids_unique": true
+      }
     }
   ],
   "mission_priority": {
@@ -13426,12 +13512,12 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "294ae245774db645e4e173761b4aebe4b5be4c59",
-  "current_research_head_this_run": "294ae245774db645e4e173761b4aebe4b5be4c59",
+  "current_research_head_before_ledger_update": "a782a6ee8e1d903240fed3de88171fe9b65b5eb1",
+  "current_research_head_this_run": "a782a6ee8e1d903240fed3de88171fe9b65b5eb1",
   "current_research_checks": {
     "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-    "previous_index_ci_run_id": 40723753640,
+    "previous_index_ci_run_id": 40723952011,
     "previous_index_tests_passed": 145,
-    "previous_index_gate_run_id": 40723753371
+    "previous_index_gate_run_id": 40723952236
   }
 }
